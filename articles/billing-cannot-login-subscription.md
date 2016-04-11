@@ -3,7 +3,7 @@
 	description="Informationen zur Problembehandlung bei einigen häufig auftretenden Anmeldeproblemen bei Azure-Abonnements"
 	services="billing"
 	documentationCenter=""
-	authors="Lin.Gen"
+	authors="vikdesai"
 	manager="jarrettr"
 	editor="na"
 	tags="billing"
@@ -16,7 +16,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="03/30/2016"
-	ms.author="Lin.Gen"/>
+	ms.author="vikdesai"/>
 
 # Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten
 
