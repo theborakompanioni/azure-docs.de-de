@@ -92,7 +92,8 @@ Verwaltungsportal|manage.windowsazure.com|manage.windowsazure.us
 Allgemein|*.windows.net|*.usgovcloudapi.net
 Core|*.core.windows.net|*.core.usgovcloudapi.net
 Compute|*.cloudapp.net|*.usgovcloudapp.net
-Blob-Speicher|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
+Blob-Speicher|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net
+Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
 Tabellenspeicher|*.table.core.windows.net|*.table.core.usgovcloudapi.net
 Dienstverwaltung|management.core.windows.net|management.core.usgovcloudapi.net
 SQL-Datenbank|*.database.windows.net|*.database.usgovcloudapi.net
