@@ -189,7 +189,7 @@ True oder False, je nachdem, ob ist der Wert null oder nicht null ist.
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 **Beispiel**
@@ -694,7 +694,7 @@ Gibt an, ob das Argument eine leere Zeichenfolge oder isnull ist.
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 
