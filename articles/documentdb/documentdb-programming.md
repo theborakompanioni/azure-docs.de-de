@@ -857,7 +857,8 @@ Alle DocumentDB-Vorgänge können RESTful-basiert ausgeführt werden. Gespeicher
 	}
 
 
-Die gespeicherte Prozedur wird durch Ausführung einer POST-Anforderung für den URI „dbs/testdb/colls/testColl/sprocs“ registriert, wobei der Textteil die zu erstellende gespeicherte Prozedur enthält. Trigger und UDFs können auf ähnliche Weise registriert werden: durch einen POST bezüglich /triggers bzw. /udfs. Diese gespeicherte Prozedur kann dann durch Anlegen einer POST-Anforderung für ihren Ressourcenlink ausgeführt werden:
+Die gespeicherte Prozedur wird durch Ausführung einer POST-Anforderung für den URI „dbs/testdb/colls/testColl/sprocs“ registriert, wobei der Textteil die zu erstellende gespeicherte Prozedur enthält. Trigger und UDFs können auf ähnliche Weise registriert werden: durch einen POST bezüglich /triggers bzw. /udfs. 
+Diese gespeicherte Prozedur kann dann durch Anlegen einer POST-Anforderung für ihren Ressourcenlink ausgeführt werden:
 
 	POST https://<url>/sprocs/<sproc> HTTP/1.1
 	authorization: <<auth>>

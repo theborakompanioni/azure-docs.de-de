@@ -185,7 +185,7 @@ True oder False, je nachdem, ob ist der Wert null oder nicht null ist.
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 **Beispiel**
@@ -530,7 +530,7 @@ Die Regeln sind mit JavaScript identisch.
 
 Zeichenfolgen können entweder in einfachen oder doppelten Anführungszeichen eingeschlossen sein.
 
-Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z.B. `\t` (Tab), `\n` (Zeilenvorschub) und Instanzen der einschließenden Anführungszeichen mit einem Escapezeichen zu versehen.
+Es wird ein umgekehrter Schrägstrich (`\`) verwendet, um Zeichen wie z.B. `\t` (Tab), `\n` (Zeilenvorschub) und Instanzen der einschließenden Anführungszeichen mit einem Escapezeichen zu versehen.
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`

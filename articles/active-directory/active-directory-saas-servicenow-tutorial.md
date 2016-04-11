@@ -185,7 +185,7 @@ Im Rahmen dieses Verfahrens müssen Sie ein Base-64-codiertes Zertifikat in Ihre
 
     f. Geben Sie im Textfeld **ServiceNow Homepage** die URL zur Homepage Ihrer ServiceNow-Instanz ein.
 
-    > [AZURE.NOTE] Die URL zur Homepage der ServiceNow-Instanz ist eine Verkettung Ihrer **ServiceNow-Mandanten-URL** und **/navpage.do** (z.B. **https://fabrikam.service-now.com/navpage.do*)
+    > [AZURE.NOTE] Die URL zur Homepage der ServiceNow-Instanz ist eine Verkettung Ihrer **ServiceNow-Mandanten-URL** und **/navpage.do** (z.B. *https://fabrikam.service-now.com/navpage.do*)
  
 
     g. Geben Sie im Textfeld **Entity ID / Issuer** die URL Ihres ServiceNow-Mandanten ein.
@@ -232,19 +232,19 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 2. Stellen Sie auf der Seite **Geben Sie Ihre ServiceNow-Anmeldeinformationen ein, um die automatische Benutzerbereitstellung zu aktivieren** die folgenden Konfigurationseinstellungen bereit: Benutzerbereitstellung konfigurieren
 
-     2\.1. Geben Sie im Textfeld **ServiceNow-Instanzname** den Namen des ServiceNow-Instanz ein.
+     2.1. Geben Sie im Textfeld **ServiceNow-Instanzname** den Namen des ServiceNow-Instanz ein.
 
-     2\.2. Geben Sie im Textfeld **Administratorbenutzername für ServiceNow** den Namen des ServiceNow-Administratorkontos ein.
+     2.2. Geben Sie im Textfeld **Administratorbenutzername für ServiceNow** den Namen des ServiceNow-Administratorkontos ein.
 
-     2\.3. Geben Sie im Textfeld **ServiceNow-Administratorkennwort** das Kennwort für dieses Konto ein.
+     2.3. Geben Sie im Textfeld **ServiceNow-Administratorkennwort** das Kennwort für dieses Konto ein.
 
-     2\.4. Klicken Sie auf **Überprüfen**, um die Konfiguration zu überprüfen.
+     2.4. Klicken Sie auf **Überprüfen**, um die Konfiguration zu überprüfen.
 
-     2\.5. Klicken Sie auf **Weiter**, um die Seite **Nächste Schritte** zu öffnen.
+     2.5. Klicken Sie auf **Weiter**, um die Seite **Nächste Schritte** zu öffnen.
 
-     2\.6. Wenn Sie alle Benutzer für diese Anwendung bereitstellen möchten, wählen Sie **Dieser Anwendung automatisch alle Benutzerkonten im Verzeichnis bereitstellen**. <br><br> ![Nächste Schritte](./media/active-directory-saas-servicenow-tutorial/IC698804.png "Nächste Schritte")
+     2.6. Wenn Sie alle Benutzer für diese Anwendung bereitstellen möchten, wählen Sie **Dieser Anwendung automatisch alle Benutzerkonten im Verzeichnis bereitstellen**. <br><br> ![Nächste Schritte](./media/active-directory-saas-servicenow-tutorial/IC698804.png "Nächste Schritte")
 
-     2\.7. Klicken Sie auf der Seite **Nächste Schritte** auf **Abgeschlossen**, um die Konfiguration zu speichern.
+     2.7. Klicken Sie auf der Seite **Nächste Schritte** auf **Abgeschlossen**, um die Konfiguration zu speichern.
 
 
 

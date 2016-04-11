@@ -127,10 +127,12 @@ Sobald der Cluster erstellt wurde, können Sie Ihren Cluster im Portal überprü
 
 1. Wechseln Sie zu **Durchsuchen**, und klicken Sie auf **Service Fabric-Cluster**.
 
-2. Suchen Sie Ihren Cluster, und klicken Sie darauf. ![Screenshot der Suche nach dem Cluster im Portal.][BrowseCluster]
+2. Suchen Sie Ihren Cluster, und klicken Sie darauf. 
 
-3. Sie können jetzt die Details Ihres Clusters, einschließlich der öffentlichen IP-Adresse, im Dashboard anzeigen. Wenn Sie die Maus über **Öffentliche IP-Adresse des Clusters** bewegen, wird eine Zwischenablage angezeigt, in die Sie die Adresse kopieren können, indem Sie hinein klicken. ![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]
+![Screenshot der Suche nach dem Cluster im Portal.][BrowseCluster]
+3. Sie können jetzt die Details Ihres Clusters, einschließlich der öffentlichen IP-Adresse, im Dashboard anzeigen. Wenn Sie die Maus über **Öffentliche IP-Adresse des Clusters** bewegen, wird eine Zwischenablage angezeigt, in die Sie die Adresse kopieren können, indem Sie hinein klicken. 
 
+![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]
   Der Abschnitt **Knotenmonitor** auf dem Dashboardblatt des Clusters gibt die Anzahl von virtuellen Computern an, die fehlerfrei bzw. fehlerhaft sind. Weitere Informationen zur Clusterintegrität finden Sie unter [Service Fabric health model introduction (Einführung in die Service Fabric-Integritätsüberwachung)](service-fabric-health-introduction.md).
 
 >[AZURE.NOTE] Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es üblicherweise nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zunächst eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.
@@ -147,7 +149,7 @@ Nach Abschluss der Clustereinrichtung können Sie jetzt eine Verbindung herstell
 
 ### Herstellen einer Verbindung mit einem sicheren Cluster
 
-    1. Run the following to set up the certificate on the machine that you are going to use to run the "Connect-serviceFabricCluster" PowerShell command.
+    1. Führen Sie die folgenden Befehle aus, um das Zertifikat auf dem Computer einzurichten, den Sie zum Ausführen des PowerShell-Befehls „Connect-serviceFabricCluster“ verwenden möchten.
 
         ```powershell
         Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -155,7 +157,7 @@ Nach Abschluss der Clustereinrichtung können Sie jetzt eine Verbindung herstell
                 -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
         ```
 
-    2. Run the following PowerShell command to connect to a secure cluster. The certificate details are the same ones that you gave on the portal.
+    2. Führen Sie den folgenden PS aus, um die Verbindung zu einem sicheren Cluster auszuführen. Die Details des Zertifikats entsprechen Ihren Angaben im Portal.
 
         ```powershell
         Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -165,7 +167,7 @@ Nach Abschluss der Clustereinrichtung können Sie jetzt eine Verbindung herstell
                   -StoreLocation CurrentUser -StoreName My
         ```
 
-        For example, the PowerShell command above should look similar to the following:
+Beispielsweise sollte der PS-Befehls oben wie der Folgende aussehen.
 
         ```powershell
         Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
