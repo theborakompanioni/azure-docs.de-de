@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="02/03/2016" 
+    ms.date="03/30/2016" 
     ms.author="arramac"/>
     
 # Arbeiten mit Geodaten in Azure DocumentDB
@@ -28,7 +28,7 @@ In diesem [Github-Projekt](https://github.com/Azure/azure-documentdb-dotnet/blob
 
 ## Einführung in räumliche Daten
 
-Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und werden deshalb Geodaten genannt. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Übliche Anwendungsbeispiele sind häufig Abfragen der Entfernung, z. B. "alle Cafés in der Nähe meines aktuellen Standorts suchen".
+Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und werden deshalb Geodaten genannt. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Übliche Anwendungsbeispiele sind häufig Abfragen der Entfernung, z. B. "alle Cafés in der Nähe meines aktuellen Standorts suchen".
 
 ### GeoJSON
 DocumentDB unterstützt eine Volltextindizierung und Abfrage von Geopunktdaten, die mithilfe der [GeoJSON-Spezifikation](http://geojson.org/geojson-spec.html) dargestellt werden. GeoJSON-Datenstrukturen sind stets gültige JSON-Objekte, weshalb sie mit DocumentDB gespeichert und ohne spezielle Tools oder Bibliotheken abgefragt werden können. Die DocumentDB SDKs bieten Hilfsklassen und Methoden, die das Arbeiten mit räumlichen Daten erleichtern.
@@ -102,7 +102,7 @@ Beim Erstellen von Dokumenten, die GeoJSON-Werte enthalten, werden diese automat
        }
     };
 
-    client.createDocument(collectionLink, userProfileDocument, function (err, created) {
+    client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfileDocument, (err, created) => {
         // additional code within the callback
     });
 
@@ -124,7 +124,7 @@ Wenn Sie mit dem .NET (oder Java) SDK arbeiten, können Sie die neuen "Point"- u
     }
     
     await client.CreateDocumentAsync(
-        collection.SelfLink, 
+        UriFactory.CreateDocumentCollectionUri("db", "profiles"), 
         new UserProfile 
         { 
             Name = "documentdb", 
@@ -163,7 +163,7 @@ DocumentDB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospati
 </tr>
 </table>
 
-Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST\_DISTANCE-Funktion verwendet.
+Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST\_DISTANCE-Funktion verwendet.
 
 **Abfrage**
 
@@ -181,7 +181,7 @@ Wenn Sie die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen
 
 ST\_WITHIN kann verwendet werden, um zu prüfen, ob ein Punkt innerhalb eines Polygons liegt. Polygone werden häufig verwendet, um Umgrenzungen wie Postleitzahlen, Staatsgrenzen oder natürliche Gebilde darzustellen. Wenn Sie wiederum die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen, werden Abfragen nach enthaltenen Elementen effizient über den Index beantwortet.
 
-Polygonargumente in ST\_WITHIN dürfen nur einen einzigen Ring enthalten, d. h. die Polygone dürfen keine Löcher aufweisen. Überprüfen Sie die [DocumentDB-Grenzen](documentdb-limits.md) auf die maximale Anzahl von Punkten in einem Polygon, die für eine ST\_WITHIN-Abfrage zulässig ist.
+Polygonargumente in ST\_WITHIN dürfen nur einen einzigen Ring enthalten, d. h. die Polygone dürfen keine Löcher aufweisen. Überprüfen Sie die [DocumentDB-Grenzen](documentdb-limits.md) auf die maximale Anzahl von Punkten in einem Polygon, die für eine ST\_WITHIN-Abfrage zulässig ist.
 
 **Abfrage**
 
@@ -233,11 +233,11 @@ Diese Funktionen können auch verwendet werden, um Polygone zu überprüfen. Bei
 
 Das .NET SDK für DocumentDB stellt auch die Stub-Methoden `Distance()` und `Within()` für die Verwendung in LINQ-Ausdrücken bereit. Der LINQ-Anbieter für DocumentDB übersetzt diese Methodenaufrufe in entsprechende integrierte SQL-Funktionsaufrufe (ST\_DISTANCE bzw. ST\_WITHIN).
 
-Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der DocumentDB-Sammlung findet, deren Wert "location" sich in einem Radius von 30 km um den angegebenen Punkt befindet.
+Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der DocumentDB-Sammlung findet, deren Wert "location" sich in einem Radius von 30 km um den angegebenen Punkt befindet.
 
 **LINQ-Abfrage der Entfernung**
 
-    foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(collection.SelfLink)
+    foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
         .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
@@ -259,7 +259,7 @@ Und hier ist eine Abfrage für die Suche nach allen Dokumenten, deren Position s
             })
         });
 
-    foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(collection.SelfLink)
+    foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
         .Where(a => a.Location.Within(rectangularArea)))
     {
         Console.WriteLine("\t" + user);
@@ -276,7 +276,7 @@ Kurz gesagt, die Geometrie wird von geodätischen Koordinaten auf eine 2D-Ebene 
 
 Wenn Sie eine Indizierungsrichtlinie angeben, die einen räumlichen Index für "/*" (alle Pfade) enthält, werden alle in der Sammlung gefundenen Punkte für effiziente räumliche Abfragen (ST\_WITHIN und ST\_DISTANCE) indiziert. Räumliche Indizes haben keinen Genauigkeitswert und verwenden stets einen Standardwert für die Genauigkeit.
 
-Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter räumlicher Indizierung, d. h. dass alle in Dokumenten für räumliche Abfragen gefundenen GeoJSON-Punkte indiziert werden. Wenn Sie die Indizierungsrichtlinie im Azure-Portal ändern, können Sie die folgende JSON für die Indizierungsrichtlinie angeben, um die räumliche Indizierung für Ihre Sammlung zu aktivieren.
+Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter räumlicher Indizierung, d. h. dass alle in Dokumenten für räumliche Abfragen gefundenen GeoJSON-Punkte indiziert werden. Wenn Sie die Indizierungsrichtlinie im Azure-Portal ändern, können Sie die folgende JSON für die Indizierungsrichtlinie angeben, um die räumliche Indizierung für Ihre Sammlung zu aktivieren.
 
 **JSON-Sammlungsindizierungsrichtlinie mit aktivierter räumlicher Indizierung**
 
@@ -288,9 +288,9 @@ Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter r
              "path":"/*",
              "indexes":[
                 {
-                   "kind":"Hash",
+                   "kind":"Range",
                    "dataType":"String",
-                   "precision":3
+                   "precision":-1
                 },
                 {
                    "kind":"Range",
@@ -312,40 +312,31 @@ Hier ist ein Codeausschnitt in .NET, der veranschaulicht, wie eine Sammlung mit 
 
 **Erstellen einer Sammlung mit räumlicher Indizierung**
 
-    IndexingPolicy spatialIndexingPolicy = new IndexingPolicy();
-    spatialIndexingPolicy.IncludedPaths.Add(new IncludedPath
-    {
-        Path = "/*",
-        Indexes = new System.Collections.ObjectModel.Collection<Index>()
-            {
-                new RangeIndex(DataType.Number) { Precision = -1 },
-                new RangeIndex(DataType.String) { Precision = -1 },
-                new SpatialIndex(DataType.Point)
-            }
-    });
-
-    Console.WriteLine("Creating new collection...");
-    collection = await client.CreateDocumentCollectionAsync(dbLink, collectionDefinition);
+    DocumentCollection spatialData = new DocumentCollection()
+    spatialData.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point)); //override to turn spatial on by default
+    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), spatialData);
 
 Hier wird gezeigt, wie Sie eine vorhandene Sammlung so ändern können, dass die räumliche Indizierung für Punkte verwendet wird, die in Dokumenten gespeichert sind.
 
 **Ändern einer vorhandenen Sammlung mit räumlicher Indizierung**
 
     Console.WriteLine("Updating collection with spatial indexing enabled in indexing policy...");
-    collection.IndexingPolicy = spatialIndexingPolicy; 
+    collection.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point));
     await client.ReplaceDocumentCollectionAsync(collection);
 
     Console.WriteLine("Waiting for indexing to complete...");
     long indexTransformationProgress = 0;
     while (indexTransformationProgress < 100)
     {
-        ResourceResponse<DocumentCollection> response = await client.ReadDocumentCollectionAsync(collection.SelfLink);
+        ResourceResponse<DocumentCollection> response = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"));
         indexTransformationProgress = response.IndexTransformationProgress;
 
         await Task.Delay(TimeSpan.FromSeconds(1));
     }
 
 > [AZURE.NOTE] Wenn der GeoJSON-Wert "location" innerhalb des Dokuments fehlerhaft oder ungültig ist, wird er nicht für räumliche Abfragen indiziert. Sie können Werte von "location" mit ST\_ISVALID und ST\_ISVALIDDETAILED überprüfen.
+>
+> Enthält Ihre Sammlungsdefinition einen Partitionsschlüssel, wird der Fortschritt der Indextransformation nicht gemeldet.
 
 ## Nächste Schritte
 Nachdem Sie die ersten Schritte mit räumlichen Daten in DocumentDB ausgeführt haben, haben Sie folgende Möglichkeiten:
@@ -355,4 +346,4 @@ Nachdem Sie die ersten Schritte mit räumlichen Daten in DocumentDB ausgeführt 
 - Weitere Informationen zu [DocumentDB-Abfragen](documentdb-sql-query.md)
 - Weitere Informationen zu [DocumentDB-Indizierungsrichtlinien](documentdb-indexing-policies.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0330_2016-->

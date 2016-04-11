@@ -1,10 +1,4 @@
 
-
-
-Alle virtuellen Maschinen, die Sie mit dem klassischen Bereitstellungsmodell in Azure erstellen, können automatisch über einen privaten Netzwerkkanal mit anderen virtuellen Maschinen im gleichen Clouddienst oder Virtual Network kommunizieren. Computer im Internet oder anderen virtuellen Netzwerken erfordern jedoch von den Endpunkten, dass sie den eingehenden Netzwerkdatenverkehr auf einen virtuellen Computer leiten.
-
-Beim Erstellen einer virtuellen Maschine im klassischen Azure-Portal werden die Endpunkte für Remote Desktop und Windows PowerShell Remoting Secure Shell (SSH) in der Regel automatisch erstellt – je nachdem, welches Betriebssystem Sie wählen. Sie können zusätzliche Endpunkte beim Erstellen des virtuellen Computers oder später nach Bedarf konfigurieren.
-
 Jeder Endpunkt verfügt über einen *öffentlichen* und einen *privaten Port*:
 
 - Der öffentliche Port wird von Azure-Lastenausgleich verwendet, um eingehenden Datenverkehr an den virtuellen Computer aus dem Internet zu überwachen.
@@ -12,9 +6,9 @@ Jeder Endpunkt verfügt über einen *öffentlichen* und einen *privaten Port*:
 
 Die Standardwerte für das IP-Protokoll und die TCP- oder UDP-Ports für bekannte Netzwerkprotokolle werden bereitgestellt, wenn Sie mit dem klassischen Azure-Portal Endpunkte erstellen. Bei benutzerdefinierten Endpunkten müssen Sie das richtige IP-Protokoll (TCP oder UDP) und die öffentlichen und privaten Ports angeben. Um nach dem Zufallsprinzip eingehenden Datenverkehr auf mehrere virtuelle Computer zu verteilen, müssen Sie einen Lastenausgleich, bestehend aus mehreren Endpunkten, erstellen.
 
-Nachdem Sie einen Endpunkt erstellt haben, können Sie eine Zugriffssteuerungsliste (ACL) zum Definieren von Regeln verwenden, die eingehenden Datenverkehr an den öffentlichen Port des Endpunkts basierend der Quell-IP-Adresse zulassen oder verweigern. Wenn der virtuelle Computer in Azure ist, sollten Sie stattdessen Netzwerk-Sicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
+Nachdem Sie einen Endpunkt erstellt haben, können Sie eine Zugriffssteuerungsliste (ACL) zum Definieren von Regeln verwenden, die eingehenden Datenverkehr an den öffentlichen Port des Endpunkts basierend der Quell-IP-Adresse zulassen oder verweigern. Wenn der virtuelle Computer in Azure ist, sollten Sie stattdessen Netzwerk-Sicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
 
-> [AZURE.NOTE]\: Die Firewallkonfiguration für virtuelle Computer erfolgt in Azure für Remote Desktop und Secure Shell (SSH) sowie in den meisten Fällen für die dem Windows PowerShell-Remoting zugeordneten Ports automatisch. Für Ports, die für alle anderen Endpunkte angegeben werden, wird keine Konfiguration der Firewall des virtuellen Computers automatisch durchgeführt. Wenn Sie einen Endpunkt für den virtuellen Computer erstellen, müssen Sie sicherstellen, dass die Firewall des virtuellen Computers außerdem den Datenverkehr für das Protokoll und den privaten Port entsprechend der Endpunktkonfiguration ermöglicht.
+> [AZURE.NOTE]Firewall-Konfiguration für virtuelle Computer in Azure erfolgt automatisch für Remote Desktop und Secure Shell (SSH) und in den meisten Fällen für Windows PowerShell-Remoting zugeordnete Ports. Für Ports, die für alle anderen Endpunkte angegeben werden, wird keine Konfiguration der Firewall des virtuellen Computers automatisch durchgeführt. Wenn Sie einen Endpunkt für den virtuellen Computer erstellen, müssen Sie sicherstellen, dass die Firewall des virtuellen Computers außerdem den Datenverkehr für das Protokoll und den privaten Port entsprechend der Endpunktkonfiguration ermöglicht.
 
 ## Erstellen eines Endpunkts
 
@@ -40,7 +34,7 @@ Der neue Endpunkt wird auf der Seite **Endpunkte** aufgeführt.
 
 ![Endpunkt erfolgreich erstellt](./media/virtual-machines-common-classic-setup-endpoints/endpointwindowsnew.png)
 
-Ein Azure-PowerShell-Cmdlet zum Einrichten finden Sie unter [Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx). Wenn Sie die Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus verwenden, geben Sie den Befehl **azure vm endpoint create** ein.
+ 
 
 ## Verwaltung der ACL für einen Endpunkt
 
@@ -48,7 +42,7 @@ Zum Definieren der Computer, die Datenverkehr senden können, kann die ACL für 
 
 > [AZURE.NOTE] Wenn der Endpunkt Teil eines Satzes mit Lastenausgleich ist, werden alle Änderungen, die Sie an der ACL oder an einem Endpunkt vornehmen, auf alle Endpunkte in diesem Satz angewendet.
 
-Befindet sich der virtuelle Computer in einem virtuellen Azure-Netzwerk, sollten Sie anstelle von ACLs Netzwerksicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
+Befindet sich der virtuelle Computer in einem virtuellen Azure-Netzwerk, sollten Sie anstelle von ACLs Netzwerksicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
 
 1.	Melden Sie sich beim klassischen Azure-Portal an, falls noch nicht geschehen.
 2.	Klicken Sie auf **Virtuelle Computer** und dann auf den Namen des virtuellen Computers, den Sie konfigurieren möchten.
@@ -64,13 +58,6 @@ Befindet sich der virtuelle Computer in einem virtuellen Azure-Netzwerk, sollten
 
 Sie können Regeln verwenden, um nur Verkehr von bestimmten Computern zuzulassen, die Ihren Computern im Internet entsprechen oder um Datenverkehr von bestimmten, bekannten Adressbereichen zu verweigern.
 
-Die Regeln werden der Reihe nach, beginnend mit der ersten und endend mit der letzten Regel, bewertet. Dies bedeutet, dass die Regeln gemäß der Restriktivität geordnet werden sollen. Beispiele und weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste?](../virtual-network/virtual-networks-acl/).
+Die Regeln werden der Reihe nach, beginnend mit der ersten und endend mit der letzten Regel, bewertet. Dies bedeutet, dass die Regeln gemäß der Restriktivität geordnet werden sollen. Beispiele und weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste?](../articles/virtual-network/virtual-networks-acl.md).
 
-Informationen dazu, wie Sie ein Azure PowerShell-Cmdlet für die Einrichtung verwenden, finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](../virtual-network/virtual-networks-acl-powershell.md).
-
-
-## Zusätzliche Ressourcen
-
-[Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff im Ressourcen-Manager unter Verwendung von PowerShell](load-balancer-get-started-internet-arm-ps.md)
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

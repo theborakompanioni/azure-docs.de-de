@@ -14,11 +14,55 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="03/29/2016"
 	ms.author="nitinme"/>
 
 
 # Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
+
+## Hinweise für die HDInsight-Version vom 29.03.2016
+
+Die vollständigen Versionsnummern für mit dieser Version bereitgestellte HDInsight-Cluster:
+
+* HDInsight (Windows) 2.1.10.875.2159884 (HDP 1.3.12.0-01795 – unverändert)
+* HDInsight (Windows) 3.0.6.875.2159884 (HDP 2.0.13.0-2117 – unverändert)
+* HDInsight (Windows) 3.1.4.875.2159884 (HDP 2.1.15.0-2374 – unverändert)
+* HDInsight (Windows) 3.2.7.875.2159884 (HDP 2.2.9.1-7 – unverändert)
+* HDInsight (Windows) 3.3.0.875.2159884 (HDP 2.3.3.1-16)
+* HDInsight (Linux) 3.2.1000.0.7193255 (HDP 2.2.9.1-8 – unverändert)
+* HDInsight (Linux) 3.3.1000.0.7193255 (HDP 2.3.3.1-7 – unverändert)
+* HDInsight (Linux) 3.4.1000.0.7195842 (HDP 2.4.1.0-327)
+* SDK 1.5.8
+
+Diese Version enthält die folgenden Updates.
+
+| Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| HDInsight-Version 3.4 hinzugefügt und HDP-Versionen aller HDInsight-Cluster aktualisiert. | In dieser Version haben wir die HDInsight-Version 3.4 (auf Grundlage von HDP 2.4) hinzugefügt und auch andere HDP-Versionen aktualisiert. Anmerkungen zur HDP-Version 2.4 finden Sie [hier](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html). Weitere Informationen zu HDInsight-Versionen finden Sie [hier](hdinsight-component-versioning.md).| Service | Alle Linux-Cluster| –
+| HDInsight Premium | HDInsight ist jetzt in zwei Kategorien verfügbar: Standard und Premium. HDInsight Premium befindet sich derzeit in der Vorschauphase und ist nur für Hadoop- und Spark-Cluster unter Linux verfügbar. Weitere Informationen finden Sie [hier](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium).| Service | Hadoop und Spark unter Linux| –
+| Microsoft R Server | HDInsight Premium bietet Microsoft R Server, das mit Hadoop- und Spark-Clustern unter Linux verwendet werden kann. Weitere Informationen finden Sie unter [Overview of R Server on HDInsight](hdinsight-hadoop-r-server-overview.md) (Übersicht über R Server in HDInsight).| Service | Hadoop und Spark unter Linux| N/V
+| Spark 1.6.0 | HDInsight 3.4-Cluster enthalten jetzt Spark 1.6.0| Service | Spark-Cluster unter Linux| –
+| Jupyter Notebook-Erweiterungen | Jupyter Notebooks mit Spark-Clustern bieten jetzt zusätzliche Spark-Kernel. Dazu gehören auch Erweiterungen wie die Verwendung von %%magic, die automatische Visualisierung und die Integration mit Python-Visualisierungsbibliotheken (z.B. Matplotlib). Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md). | Service | Spark-Cluster unter Linux | N/V
+
+## Hinweise für die HDInsight-Version vom 22.03.2016
+
+Die vollständigen Versionsnummern für mit dieser Version bereitgestellte HDInsight-Cluster:
+
+* HDInsight (Windows) 2.1.10.875.2159884 (HDP 1.3.12.0-01795 – unverändert)
+* HDInsight (Windows) 3.0.6.875.2159884 (HDP 2.0.13.0-2117 – unverändert)
+* HDInsight (Windows) 3.1.4.875.2159884 (HDP 2.1.15.0-2374 – unverändert)
+* HDInsight (Windows) 3.2.7.875.2159884 (HDP 2.2.9.1-7 – unverändert)
+* HDInsight (Windows) 3.3.0.875.2159884 (HDP 2.3.3.1-16)
+* HDInsight (Linux) 3.2.1000.0.7193255 (HDP 2.2.9.1-8 – unverändert)
+* HDInsight (Linux) 3.3.1000.0.7193255 (HDP 2.3.3.1-7 – unverändert)
+* SDK 1.5.8
+
+Diese Version enthält die folgenden Updates.
+
+| Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| –
+
 
 ## Hinweise für die HDInsight-Version vom 10.03.2016
 
@@ -75,7 +119,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| HDInsight-Version 3.3 hinzugefügt und HDInsight-Versionen aller HDInsight-Cluster aktualisiert. | In dieser Version haben wir die HDInsight-Version 3.3 (auf Grundlage von HDP 2.3) hinzugefügt und auch andere HDP-Versionen aktualisiert. Anmerkungen zur HDP-Version 2.3 finden Sie [hier](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html). Weitere Informationen zu HDInsight-Versionen finden Sie [hier](https://azure.microsoft.com/de-DE/documentation/articles/hdinsight-component-versioning/).| Dienst | Alle| –
+| HDInsight-Version 3.3 hinzugefügt und HDP-Versionen aller HDInsight-Cluster aktualisiert. | In dieser Version haben wir die HDInsight-Version 3.3 (auf Grundlage von HDP 2.3) hinzugefügt und auch andere HDP-Versionen aktualisiert. Anmerkungen zur HDP-Version 2.3 finden Sie [hier](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html). Weitere Informationen zu HDInsight-Versionen finden Sie [hier](hdinsight-component-versioning.md).| Dienst | Alle| –
 
 ## Hinweise für die HDInsight-Version vom 30.11.2015
 
@@ -130,7 +174,7 @@ Diese Version enthält die folgenden Updates.
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | HDP-Standardversion in HDP 2.2 geändert | Die Standardversion für HDInsight-Windows-Cluster wird in HDP 2.2 geändert. HDInsight-Version 3.2 (HDP 2.2) ist seit Februar 2015 allgemein verfügbar. Bei dieser Änderung wird die Standardversion des Clusters nur umgekehrt, sofern keine explizite Auswahl getroffen wurde, als der Cluster mit dem Azure-Portal, über PowerShell-Cmdlets oder das SDK bereitgestellt wurde. | Service | Alle| N/V |
-|Änderungen am Namensformat des virtuellen Computers zur Bereitstellung mehrerer HDInsight-Komponenten auf Linux-Clustern in einem einzelnen Virtual Network | Die Unterstützung für die Bereitstellung mehrerer HDInsight-Linux-Cluster in einem einzelnen virtuellen Netzwerk wird in dieser Version hinzugefügt. Hierbei hat sich das Format der Namen von virtuellen Computern im Cluster von headnode\*, workernode\* und zookeepernode\* in hn\*, wn\* bzw. zk\* geändert. Es ist keine empfohlene Vorgehensweise, eine direkte Abhängigkeit vom Format der Namen virtueller Computer zu verwenden, da sie Änderungen unterliegt. Verwenden Sie „hostname -f“ auf dem lokalen Computer oder Ambari-APIs, um die Liste mit den Hosts zu bestimmen, sowie die Zuordnung von Komponenten zu Hosts. Weitere Informationen finden Sie unter [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) und [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md). | Service | HDInsight-Cluster unter Linux | N/V |
+|Änderungen am Namensformat des virtuellen Computers zur Bereitstellung mehrerer HDInsight-Komponenten auf Linux-Clustern in einem einzelnen Virtual Network | Die Unterstützung für die Bereitstellung mehrerer HDInsight-Linux-Cluster in einem einzelnen virtuellen Netzwerk wird in dieser Version hinzugefügt. Hierbei hat sich das Format der Namen von virtuellen Computern im Cluster von headnode*, workernode* und zookeepernode* in hn*, wn* bzw. zk* geändert. Es ist keine empfohlene Vorgehensweise, eine direkte Abhängigkeit vom Format der Namen virtueller Computer zu verwenden, da sie Änderungen unterliegt. Verwenden Sie „hostname -f“ auf dem lokalen Computer oder Ambari-APIs, um die Liste mit den Hosts zu bestimmen, sowie die Zuordnung von Komponenten zu Hosts. Weitere Informationen finden Sie unter [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) und [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md). | Service | HDInsight-Cluster unter Linux | N/V |
 | Konfigurationsänderungen | Für HDInsight 3.1-Cluster sind jetzt die folgenden Konfigurationen aktiviert: <ul><li>tez.yarn.ats.enabled und yarn.log.server.url. So können der Anwendungszeitachsenserver und der Protokollserver als Server für Protokolle dienen.</li></ul>Für HDInsight 3.2-Cluster wurden die folgenden Konfigurationen geändert: <ul><li>mapreduce.fileoutputcommitter.algorithm.version wurde auf 2 festgelegt. Dies ermöglicht die Verwendung der Version V2 von FileOutputCommitter.</li></ul> | Service | Alle | N/V |
 
 
@@ -1497,4 +1541,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

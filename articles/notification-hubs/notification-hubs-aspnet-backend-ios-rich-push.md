@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs – Umfassende Pushbenachrichtigungen
@@ -21,7 +21,7 @@
 
 ##Übersicht
 
-Um Benutzer augenblicklich mit umfassenden Inhalten zu versorgen, kann eine Anwendung Pushbenachrichtigungen senden. Diese Benachrichtigungen fördern Benutzerinteraktionen und bieten Inhalte wie URLs, Audio, Bilder/Coupons und mehr. Dieses Lernprogramm baut auf dem Thema [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-notify-users.md) auf und veranschaulicht das Senden von Pushbenachrichtigungen mit Nutzlasten (z. B. ein Bild).
+Um Benutzer augenblicklich mit umfassenden Inhalten zu versorgen, kann eine Anwendung Pushbenachrichtigungen senden. Diese Benachrichtigungen fördern Benutzerinteraktionen und bieten Inhalte wie URLs, Audio, Bilder/Coupons und mehr. Dieses Lernprogramm baut auf dem Thema [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-notify-users.md) auf und veranschaulicht das Senden von Pushbenachrichtigungen mit Nutzlasten (z. B. ein Bild).
 
 
 Dieses Lernprogramm ist zu iOS 7 und 8 kompatibel.
@@ -381,4 +381,4 @@ Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachr
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0330_2016-->

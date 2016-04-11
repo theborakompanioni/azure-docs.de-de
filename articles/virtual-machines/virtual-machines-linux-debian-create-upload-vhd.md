@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Debian 7- und 8-VHD-Dateien für die Bereitstellung in Azure erstellt werden."
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="SuperScottz"
+	authors="szarkos"
 	manager="timlt"
 	editor=""
     tags="azure-resource-manager,azure-service-management"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
-	ms.author="mingzhan"/>
+	ms.date="03/25/2016"
+	ms.author="szark"/>
 
 
 
@@ -34,7 +34,23 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits ein Debian Linux-Be
 - Alle virtuellen Festplatten müssen eine Größe aufweisen, die ein Vielfaches von 1 MB ist.
 
 
-## Debian 7.x und 8.x
+## Verwenden von azure-manage zum Erstellen von Debian-VHDs
+
+Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure-manage](https://gitlab.credativ.com/de/azure-manage)-Skripts von [Credativ](http://www.credativ.com/). Dies ist der empfohlene Ansatz, mit dem vermieden werden kann, ein Image von Grund auf neu zu erstellen. Wenn Sie beispielsweise eine Debian 8-VHD erstellen möchten, führen Sie die folgenden Befehle aus, um azure-manage (und Abhängigkeiten) herunterzuladen und das Skript „azure\_build\_image“ auszuführen:
+
+	# sudo apt-get update
+	# sudo apt-get install git qemu-utils mbr kpartx debootstrap
+
+	# sudo apt-get install python3-pip
+	# sudo pip3 install azure-storage azure-servicemanagement-legacy pytest pyyaml
+	# git clone https://gitlab.credativ.com/de/azure-manage.git
+	# cd azure-manage
+	# sudo pip3 install .
+
+	# sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+
+
+## Manuelles Vorbereiten einer Debian-VHD
 
 1. Wählen Sie im Hyper-V-Manager den virtuellen Computer aus.
 
@@ -44,22 +60,42 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits ein Debian Linux-Be
 
 4. Bearbeiten Sie die Datei `/etc/default/grub` und ändern Sie den **GRUB\_CMDLINE\_LINUX**-Parameter wie folgt, um zusätzliche Kernelparameter für Azure einzubinden.
 
-        GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200 earlyprintk=ttyS0,115200 rootdelay=30"
 
 5. Erstellen Sie Grub neu und führen Sie Folgendes aus:
 
         # sudo update-grub
 
-6. Installieren Sie die Abhängigkeitspakete für Azure Linux Agent:
+6. Fügen Sie „/etc/apt/sources.list“ die Debian-Azure-Repositorys für Debian 6 oder 7 hinzu:
 
-        # apt-get install -y git parted
+	**Debian 6.x „Wheezy“**
 
-7.	Installieren Sie entsprechend der [Anleitung](virtual-machines-linux-update-agent.md) den Azure Linux-Agent aus GitHub, und wählen Sie Version 2.0.14 aus:
+		deb http://debian-archive.trafficmanager.net/debian wheezy-backports main
+		deb-src http://debian-archive.trafficmanager.net/debian wheezy-backports main
+		deb http://debian-archive.trafficmanager.net/debian-azure wheezy main
+		deb-src http://debian-archive.trafficmanager.net/debian-azure wheezy main
 
-			# wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent
-			# chmod +x waagent
-			# cp waagent /usr/sbin
-			# /usr/sbin/waagent -install -verbose
+
+	**Debian 7.x „Jessie“**
+
+		deb http://debian-archive.trafficmanager.net/debian jessie-backports main
+		deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+		deb http://debian-archive.trafficmanager.net/debian-azure jessie main
+		deb-src http://debian-archive.trafficmanager.net/debian-azure jessie main
+
+
+7. Installieren des Azure Linux Agent:
+
+		# sudo apt-get update
+		# sudo apt-get install waagent
+
+8. Für Debian 7 muss der 3.16-basierte Kernel aus dem wheezy-backports-Repository ausgeführt werden. Erstellen Sie zunächst eine Datei namens „/etc/apt/preferences.d/linux.pref“ mit dem folgenden Inhalt:
+
+		Package: linux-image-amd64 initramfs-tools
+		Pin: release n=wheezy-backports
+		Pin-Priority: 500
+
+	Führen Sie dann „sudo apt-get install linux-image-amd64“ aus, um den neuen Kernel zu installieren.
 
 8. Setzen Sie den virtuellen Computer zurück und bereiten Sie ihn für die Bereitstellung in Azure vor. Führen Sie Folgendes aus:
 
@@ -69,16 +105,9 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits ein Debian Linux-Be
 
 9. Klicken Sie im Hyper-V-Manager auf **Aktion -> Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
-## Verwenden eines Credativ-Skripts zum Erstellen einer Debian-VHD
-
-Auf der Credativ-Website steht ein Skript zu Verfügung, mit dem Sie die Debian-VHD automatisch erstellen können. Sie können es [hier](https://gitlab.credativ.com/de/azure-manage) herunterladen und auf Ihrer Linux-VM installieren. Zum Erstellen einer Debian-VHD (z. B. Debian 7) führen Sie Folgendes aus:
-
-        # azure_build_image --option release=wheezy --option image_prefix=lilidebian7 --option image_size_gb=30 SECTION
-
-Falls bei der Verwendung dieses Skripts ein Problem auftritt, wenden Sie sich [hier](https://gitlab.credativ.com/groups/de/issues) an Credativ.
 
 ## Nächste Schritte
 
-Sie können jetzt mit Ihrer Debian-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md) aus.
+Sie können jetzt mit Ihrer Debian-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 unter [Creating and uploading a virtual hard disk that contains the Linux operating system](virtual-machines-linux-classic-create-upload-vhd.md) (Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält) aus.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

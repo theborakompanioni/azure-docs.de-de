@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="03/23/2016"
 	ms.author="jeedes"/>
 
 
@@ -65,7 +65,7 @@ Zum Konfigurieren der Integration von ADP GlobalView in Azure AD müssen Sie ADP
 4. Klicken Sie unten auf der Seite auf **Hinzufügen**.<br><br> ![Anwendungen][3]<br>
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.<br><br> ![Anwendungen][4]<br>
 6. Geben Sie im Suchfeld als Suchbegriff **ADP GlobalView** ein.<br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_01.png)<br>
-7. Wählen Sie im Ergebnisbereich **ADP GlobalView** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>
+7. Wählen Sie im Ergebnisbereich die Option **ADP GlobalView** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_06.png)<br>
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens „Britta Simon“ veranschaulicht werden, wie das einmalige Anmelden von Azure AD in ADP GlobalView konfiguriert und getestet werden kann.
@@ -74,7 +74,7 @@ Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer i
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei ADP GlobalView müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Erstellen eines ADP GlobalView-Testbenutzers](#creating-a-adp-globalview-test-user)**, um eine Entsprechung von Britta Simon in ADP GlobalView zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
@@ -100,10 +100,10 @@ Bevor Sie die SAML-Assertion konfigurieren können, müssen Sie sich an Ihr ADP 
 3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** folgende Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_04.png) <br>
 
 
-    a. Geben Sie im Textfeld **Bezeichner** die URL zum Identifizieren der ADP GlobalView-Anwendung ein. Verwenden Sie hierbei eines der folgenden Muster: **https://<Servername>.globalview.adp.com/federate2**, **https://<Servername>.globalview.adp.com/federate**
+    a. Geben Sie im Textfeld **Bezeichner** die URL zum Identifizieren der ADP GlobalView-Anwendung ein. Verwenden Sie hierbei eines der folgenden Muster: **https://<Servername>.globalview.adp.com/federate2** oder **https://<Servername>.globalview.adp.com/federate**
 
 
-    b. Geben Sie im Textfeld **Antwort-URL** die URL ein, die von Azure AD zum Posten der Antwort an die ADP GlobalView-Anwendung verwendet. Verwenden Sie hierbei eines der folgenden Muster: **https://<Servername>.globalview.adp.com/federate2/sp/ACS.saml2**, **https://<Servername>.globalview.adp.com/federate/sp/ACS.saml2**
+    b. Geben Sie im Textfeld **Antwort-URL** die URL ein, die von Azure AD zum Posten der Antwort an die ADP GlobalView-Anwendung verwendet wird. Verwenden Sie hierbei eines der folgenden Muster: **https://<Servername>.globalview.adp.com/federate2/sp/ACS.saml2** oder **https://<Servername>.globalview.adp.com/federate/sp/ACS.saml2**
 
     c. Klicken Sie auf **Weiter**.
 
@@ -190,7 +190,7 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Benutzer zuweisen][201] <br>
 
-2. Wählen Sie in der Anwendungsliste **ADP GlobalView** aus. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_50.png) <br>
+2. Wählen Sie in der Anwendungsliste die Option **ADP GlobalView** aus. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_50.png) <br>
 
 1. Klicken Sie im oberen Menü auf **Benutzer**. <br><br>![Benutzer zuweisen][203] <br>
 
@@ -229,4 +229,4 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-adpglobalview-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-adpglobalview-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

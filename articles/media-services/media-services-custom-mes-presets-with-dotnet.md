@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Ausführen von Aufgaben für die erweiterte Codierung durch Anpassen der Media Encoder Standard-Voreinstellungen" 
+	pageTitle="Erweiterte Codierung mit Media Encoder-Standard" 
 	description="In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. In diesem Thema wird die Verwendung des Media Services .NET SDK zum Erstellen einer Aufgabe und eines Auftrags für die Codierung erläutert. Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für den Codierungsauftrag angeben." 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016"    
+	ms.date="03/27/2016"    
 	ms.author="juliako"/>
 
 
-#Ausführen von Aufgaben für die erweiterte Codierung durch Anpassen der Media Encoder Standard-Voreinstellungen
+#Erweiterte Codierung mit Media Encoder-Standard
 
 ##Übersicht
 
-In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. Das Thema zeigt die [Verwendung von .NET zum Erstellen einer Codierungsaufgabe und eines Auftrags, der diese Aufgabe ausführt](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet). Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für die Codierungsaufgabe angeben. Eine Beschreibung der Elemente, die von den Voreinstellungen verwendet werden, finden Sie in [diesem Dokument](https://msdn.microsoft.com/library/mt269962.aspx).
+In diesem Thema wird erläutert, wie Sie die erweiterten Codierungsaufgaben mithilfe von Media Encoder-Standard ausführen. Das Thema zeigt die [Verwendung von .NET zum Erstellen einer Codierungsaufgabe und eines Auftrags, der diese Aufgabe ausführt](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet). Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für die Codierungsaufgabe angeben. Eine Beschreibung der Elemente, die von den Voreinstellungen verwendet werden, finden Sie in [diesem Dokument](https://msdn.microsoft.com/library/mt269962.aspx).
 
 Die benutzerdefinierten Voreinstellungen, die die folgenden Codierungsaufgaben ausführen, werden veranschaulicht:
 
@@ -30,14 +30,15 @@ Die benutzerdefinierten Voreinstellungen, die die folgenden Codierungsaufgaben a
 - [Erstellen einer Überlagerung](media-services-custom-mes-presets-with-dotnet.md#overlay)
 - [Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio](media-services-custom-mes-presets-with-dotnet.md#silent_audio)
 - [Deaktivieren des automatischen Deinterlacings](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
+- [Nur Audio-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 
-##<a id="encoding_with_dotnet"></a>Codierung mit Media Services .NET SDK
+##<a id="encoding_with_dotnet"></a>Codierung mit der Media Services .NET SDK
 
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
 - Erstellen eines Codierungsauftrags.
 - Abrufen eines Verweises auf den Media Encoder Standard-Encoder
-- Laden der benutzerdefinierten XML- oder JSON-Voreinstellung. Sie können die XML- oder JSON-Voreinstellung (z. B. [XML](media-services-custom-mes-presets-with-dotnet.md#xml) oder [JSON](media-services-custom-mes-presets-with-dotnet.md#json)) in einer Datei speichern und die Datei mit dem folgenden Code laden:
+- Laden der benutzerdefinierten XML- oder JSON-Voreinstellung. Sie können die XML- oder JSON-Voreinstellung (z.B. [XML](media-services-custom-mes-presets-with-dotnet.md#xml) oder [JSON](media-services-custom-mes-presets-with-dotnet.md#json)) in einer Datei speichern und die Datei mit dem folgenden Code laden:
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
@@ -238,7 +239,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.
 
->[AZURE.NOTE]Die Einstellung **SceneChangeDetection** in der folgenden Voreinstellung kann nur auf „true“ festgelegt werden, wenn eine Codierung als Single-Bitrate-Video erfolgt. Wenn eine Codierung als Multi-Bitrate-Video erfolgt und **SceneChangeDetection** auf „true“ festgelegt ist, gibt der Encoder einen Fehler zurück.
+>[AZURE.NOTE]Die Einstellung **SceneChangeDetection** in der folgenden Voreinstellung kann nur auf TRUE festgelegt werden, wenn eine Codierung als Single-Bitrate-Video erfolgt. Wenn eine Codierung als Multi-Bitrate-Video erfolgt und **SceneChangeDetection** auf TRUE festgelegt ist, gibt der Encoder einen Fehler zurück.
 
 
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
@@ -444,7 +445,7 @@ Es gelten die folgenden Bedingungen:
 
 Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Assets verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. Beachten Sie, dass **Sources** oben im Schemas platziert werden muss.
+Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. Beachten Sie, dass **Sources** oben im Schema platziert werden muss.
  
 ###<a id="json"></a>JSON-Voreinstellung
 	
@@ -691,7 +692,7 @@ Media Encoder Standard ermöglicht die Überlagerung eines Bildes mit einem vorh
 
 Zusätzlich zur Definition einer Voreinstellungsdatei müssen Sie Media Services darüber informieren, welche Datei im Asset das Überlagerungsbild und welche Datei das Quellvideo darstellt, das mit dem Bild überlagert werden soll. Die Videodatei muss die **primäre** Datei sein.
 
-Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z. B. die darauf folgende Einstellung) zum Erstellen der Codierungsaufgabe.
+Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Einstellung) zum Erstellen der Codierungsaufgabe.
 
 >[AZURE.NOTE]Aktuelle Einschränkungen:
 >
@@ -896,7 +897,55 @@ Sie können das automatische Deinterlacing deaktivieren. Diese Option wird jedoc
 	</Sources>
 
 
+##<a id="audio_only"></a>Nur Audio-Voreinstellungen
 
+Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio und AAC Good Quality Audio.
+
+###AAC Audio 
+
+	{
+	  "Version": 1.0,
+	  "Codecs": [
+	    {
+	      "Profile": "AACLC",
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 128,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_AAC_{AudioBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
+
+###AAC Good Quality Audio
+
+	{
+	  "Version": 1.0,
+	  "Codecs": [
+	    {
+	      "Profile": "AACLC",
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 192,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_AAC_{AudioBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
 
 ##Media Services-Lernpfade
 
@@ -910,4 +959,4 @@ Sie können das automatische Deinterlacing deaktivieren. Diese Option wird jedoc
 
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

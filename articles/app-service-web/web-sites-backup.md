@@ -31,7 +31,7 @@ Für Web-Apps können die folgenden Informationen gesichert werden:
 
 * Web-App-Konfiguration
 * Dateiinhalte der Web-App
-* Jede Azure SQL- und jede MySQL-Datenbank, die mit der Web-App verbunden ist (Sie können auswählen, welche gesichert werden sollen.)
+* Jede Azure SQL- und jede MySQL-Datenbank, die mit Ihrer App verbunden ist (Sie können auswählen, welche im Backup gesichert werden sollen.)
 
 Diese Informationen werden in dem von Ihnen angegebenen Azure-Speicherkonto und -Container gesichert.
 
@@ -114,8 +114,8 @@ Sie können jederzeit eine manuelle Sicherung vornehmen.
 
 Manchmal möchten Sie nicht alles in Ihrer Web-App sichern. Hier sind einige Beispiele:
 
--	Sie [richten wöchentliche Sicherungen](web-sites-backup.md#configure-automated-backups) der Web-App ein, die statische Inhalte enthält, die sich nie ändern, z. B. alte Blogbeiträge oder Bilder.
--	Ihre Web-App verfügt über mehr als 10 GB an Inhalten (der maximale Umfang, der auf einmal gesichert werden kann).
+-	Sie [richten wöchentliche Sicherungen](web-sites-backup.md#configure-automated-backups) der Web-App ein, die statische Inhalte enthält, die sich nie ändern, z. B. alte Blogbeiträge oder Bilder.
+-	Ihre Web-App verfügt über mehr als 10 GB an Inhalten (der maximale Umfang, der auf einmal gesichert werden kann).
 -	Sie möchten die Protokolldateien nicht sichern.
 
 Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werden sollen.
@@ -189,4 +189,4 @@ Informationen zu den ersten Schritten mit Azure finden Sie unter [Kostenlose Mic
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

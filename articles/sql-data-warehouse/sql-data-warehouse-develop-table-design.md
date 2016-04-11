@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Tabellenentwurf in SQL Data Warehouse #
@@ -59,7 +59,7 @@ In SQL Data Warehouse werden die folgenden allgemeinen Geschäftsdatentypen unte
 
 Sie können Spalten in Ihrem Data Warehouse identifizieren, die inkompatible Typen enthalten, indem Sie die folgende Abfrage verwenden:
 
-```
+```sql
 SELECT  t.[name]
 ,       c.[name]
 ,       c.[system_type_id]
@@ -138,7 +138,7 @@ Die Roundrobin-Verteilung ist eine Methode, mit der Daten so gleichmäßig wie m
 
 Es folgt ein Beispiel für eine verteilte Roundrobin-Tabelle:
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -158,7 +158,7 @@ WITH
 
 Dies ist ebenfalls ein Beispiel für eine verteilte Roundrobin-Tabelle:
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -205,7 +205,7 @@ Wie unten dargestellt, kann die Hashverteilung sehr effektiv für die Abfrageopt
 
 Unten ist eine Tabelle angegeben, für die eine Hashverteilung nach ProductKey durchgeführt wurde.
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -230,7 +230,7 @@ Tabellenpartitionen werden unterstützt und sind einfach zu definieren.
 
 Beispiel: Partitionierung von SQL Data Warehouse mit dem `CREATE TABLE`-Befehl:
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (
     [ProductKey]            int          NOT NULL
@@ -306,4 +306,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

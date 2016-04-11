@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/18/2015" 
+	ms.date="03/28/2016" 
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-dotnet-getting-started.md)
-> - [What Happened](vs-active-directory-dotnet-what-happened.md)
+> - [Erste Schritte](vs-active-directory-dotnet-getting-started.md)
+> - [Was ist passiert?](vs-active-directory-dotnet-what-happened.md)
  
 ##Erfordern von Authentifizierung für den Zugriff auf Controller 
 
@@ -77,4 +77,4 @@ Wenn Sie Ihrer Ansicht SignIn-/SignOut-Steuerelemente hinzufügen möchten, kön
 
 [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

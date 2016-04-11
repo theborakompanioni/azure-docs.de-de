@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -16,7 +16,7 @@
    ms.date="03/14/2016"
    ms.author="carlrab"/>
 
-# Beheben von Kompatibilitätsproblemen der SQL Server-Datenbank vor der Migration zu SQL-Datenbank
+# Beheben von Kompatibilitätsproblemen der SQL Server-Datenbank mit SQL Server Management Studio vor der Migration zu einer SQL-Datenbank
 
 Wenn Sie ermitteln, dass Ihre SQL Server-Quelldatenbank nicht kompatibel ist, haben Sie eine Reihe von Optionen, um die identifizierten Datenbankkompatibilitäts-Probleme zu beheben.
 
@@ -33,4 +33,4 @@ Verwenden Sie SQL Server Management Studio zum Beheben von Komptatibilitätsprob
 
 [Wählen Sie die Migrationsmethode aus](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

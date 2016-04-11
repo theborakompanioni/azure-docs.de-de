@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/14/2016"
+   ms.date="03/25/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Tabellenpartitionen in SQL Data Warehouse
@@ -38,9 +38,9 @@ Tabellenpartitionen sind in der Regel doppelt hilfreich:
 Wenn DBAs gruppierte ColumnStore-Indizes in SQL DW erstellen, müssen sie einen weiteren Faktor berücksichtigen: die Zeilenanzahl. Mit CCI-Tabellen lassen sich eine höhere Komprimierung sowie eine bessere SQL DW-Abfrageleistung erzielen. Aufgrund der internen Funktionsweise der Komprimierung in SQL DW muss jede Partition in einer CCI-Tabelle eine relativ hohe Anzahl von Zeilen besitzen, damit die Daten komprimiert werden. Darüber hinaus werden die Daten von SQL DW breit gestreut, und jede Verteilung wird wiederum durch Partitionen unterteilt. Für eine optimale Komprimierung und Leistung sind pro Verteilung und Partition mindestens 100.000 Zeilen erforderlich. Für das obige Beispiel bedeutet das: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL DW 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens sechs Millionen Zeilen pro Monat umfassen (oder 216 Millionen Zeilen, wenn alle Monate aufgefüllt sind). Enthält eine Tabelle deutlich weniger Zeilen als mindestens empfohlen, sollte der Datenbankadministrator die Tabelle ggf. mit weniger Partitionen erstellen, um die Zeilenanzahl pro Verteilung zu erhöhen.
 
 
-Verwenden Sie eine Abfrage wie unten, um die Größe der aktuellen Datenbank auf Partitionsebene zu ändern:
+Verwenden Sie zum Ändern der Größe Ihrer aktuellen SQL Server-Datenbank auf Partitionsebene eine Abfrage wie die folgende:
 
-```
+```sql
 SELECT      s.[name]                        AS      [schema_name]
 ,           t.[name]                        AS      [table_name]
 ,           i.[name]                        AS      [index_name]
@@ -54,7 +54,7 @@ SELECT      s.[name]                        AS      [schema_name]
 FROM        sys.schemas s
 JOIN        sys.tables t                    ON      t.[schema_id]         = s.[schema_id]
 JOIN        sys.partitions p                ON      p.[object_id]         = t.[object_id]
-JOIN        sys.allocation_units a          ON      a.[container_id]        = p.[partition_id]
+JOIN        sys.allocation_units a          ON      a.[container_id]      = p.[partition_id]
 JOIN        sys.indexes i                   ON      i.[object_id]         = p.[object_id]
                                             AND     i.[index_id]          = p.[index_id]
 JOIN        sys.data_spaces ds              ON      ds.[data_space_id]    = i.[data_space_id]
@@ -83,7 +83,7 @@ MPP-Partitionsgröße = SMP-Partitionsgröße/Anzahl von Verteilungen
 
 Mit der folgenden Abfrage können Sie feststellen, über wie viele Verteilungen Ihre SQL Data Warehouse-Datenbank verfügt:
 
-```
+```sql
 SELECT  COUNT(*)
 FROM    sys.pdw_distributions
 ;
@@ -96,7 +96,7 @@ Eine letzte Information, die Sie der Tabellenpartitionsentscheidung berücksicht
 
 Informationen über die Zuordnung von Arbeitsspeicher pro Verteilung erhalten Sie durch Abfragen der dynamischen Resource Governor-Verwaltungsansichten. In der Praxis ist die Arbeitsspeicherzuweisung kleiner als in den folgenden Abbildungen. Die Abbildung bietet jedoch eine Richtlinie, die Sie für die Größe der Partitionen für Verwaltungsvorgänge verwenden können.
 
-```
+```sql
 SELECT  rp.[name]								AS [pool_name]
 ,       rp.[max_memory_kb]						AS [max_memory_kb]
 ,       rp.[max_memory_kb]/1024					AS [max_memory_mb]
@@ -122,7 +122,7 @@ Die effizienteste Methode, um eine Partition zu teilen, die bereits Daten enthä
 
 Im Folgenden finden Sie ein Beispiel für eine partitionierte Columnstore-Tabelle, die eine Zeile in jeder Partition enthält:
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (
         [ProductKey]            int          NOT NULL
@@ -157,7 +157,7 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 
 Anschließend können wir mit der `sys.partitions`-Katalogsicht die Zeilenanzahl abfragen:
 
-```
+```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
 ,       i.[name] as Index_name
 ,       p.partition_number as Partition_nmbr
@@ -174,7 +174,7 @@ WHERE t.[name] = 'FactInternetSales'
 
 Wenn wir versuchen, diese Tabelle aufzuteilen, erhalten wir einen Fehler:
 
-```
+```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
@@ -182,7 +182,7 @@ Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement 
 
 Wir können jedoch auch `CTAS` zum Erstellen einer neuen Tabelle zum Speichern von Daten verwenden.
 
-```
+```sql
 CREATE TABLE dbo.FactInternetSales_20000101
     WITH    (   DISTRIBUTION = HASH(ProductKey)
             ,   CLUSTERED COLUMNSTORE INDEX
@@ -200,7 +200,7 @@ WHERE   1=2
 
 Ein Wechsel ist zulässig, da die Partitionsgrenzen ausgerichtet sind. Dadurch verbleibt die Quelltabelle mit einer leeren Partition, die wir später aufteilen können.
 
-```
+```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Wir müssen nun lediglich die Daten mit `CTAS` an die neuen Partitionsgrenzen anpassen und wieder in die Haupttabelle zurückführen.
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
     WITH    (   DISTRIBUTION = HASH([ProductKey])
             ,   CLUSTERED COLUMNSTORE INDEX
@@ -229,7 +229,7 @@ ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.Fa
 
 Nach Abschluss der Datenverschiebung empfiehlt es sich, die Statistiken für die Zieltabelle zu aktualisieren, um sicherzustellen, dass sie genau die neue Verteilung der Daten in den entsprechenden Partitionen wiedergeben:
 
-```
+```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
@@ -238,7 +238,7 @@ Um ein **Rosten** der Tabellendefinition in Ihrem Quellcodeverwaltungssystem zu 
 
 1. Erstellen der Tabelle als partitionierte Tabelle ohne Partitionswerte
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (
     [ProductKey]            int          NOT NULL
@@ -262,7 +262,7 @@ WITH
 
 2. Führen Sie einen `SPLIT` für die Tabelle als Teil des Bereitstellungsprozesses durch:
 
-```
+```sql
 -- Create a table containing the partition boundaries
 
 CREATE TABLE #partitions
@@ -336,4 +336,4 @@ Nachdem Sie Ihr Datenbankschema erfolgreich in SQL Data Warehouse migriert haben
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

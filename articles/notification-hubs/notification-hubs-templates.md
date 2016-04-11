@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/25/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # Vorlagen
@@ -99,9 +99,9 @@ Die an den Notification Hub gesendete Nachricht enthält die folgenden Eigenscha
 
 
 <table border="1">
-<tr><td>day1\_image</td><td>day2\_image</td><td>day3\_image</td><td>day4\_image</td><td>day5\_image</td></tr>
-<tr><td>day1\_tempC</td><td>day2\_tempC</td><td>day3\_tempC</td><td>day4\_tempC</td><td>day5\_tempC</td></tr>
-<tr><td>day1\_tempF</td><td>day2\_tempF</td><td>day3\_tempF</td><td>day4\_tempF</td><td>day5\_tempF</td></tr>
+<tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
+<tr><td>day1_tempC</td><td>day2_tempC</td><td>day3_tempC</td><td>day4_tempC</td><td>day5_tempC</td></tr>
+<tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
 </table><br/>
 
 
@@ -127,9 +127,7 @@ In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
 | $(prop, n) | Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
 | .(prop, n) | Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet n Zeichen nicht. Bei .(title, 20) mit der Eingabeeigenschaft "This is the title line" erhalten Sie **This is the title...**. |
 | %(prop) | Ähnlich wie $(name) mit der Ausnahme, dass die Ausgabe URI-codiert ist. |
-| #(prop) | Wird in JSON-Vorlagen verwendet (z. B. für iOS- und Android-Vorlagen).<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z. B. Apple-Vorlagen). In diesem Fall ist die JSON-Ausgabe eine Zahl, wenn diese Funktion nicht von "{','}" umschlossen ist (z. B. 'myJsonProperty' : '#(name)') und im JavaScript-Format in eine Zahl ausgewertet wird, z. B.: regexp: (0|(&#91;1-9&#93;&#91;0-9&#93;*))(.&#91;0-9&#93;+)?((e|E)(+|-)?&#91;0-9&#93;+)?.<br><br>'badge : '#(name)' wird beispielsweise zu 'badge' : 40 (und nicht zu '40'). |
-| 'text' oder "text" | Ein Literal. Literale enthalten beliebigen Text, der in einfache oder doppelte Anführungszeichen eingeschlossen ist. |
-| expr1 + expr2 | Der Verkettungsoperator, der zwei Ausdrücke zu einer Zeichenfolge verbindet.
+| #(prop) | Wird in JSON-Vorlagen verwendet (z. B. für iOS- und Android-Vorlagen).<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z. B. Apple-Vorlagen). In diesem Fall ist die JSON-Ausgabe eine Zahl, wenn diese Funktion nicht von "{','}" umschlossen ist (z. B. 'myJsonProperty' : '#(name)') und im JavaScript-Format in eine Zahl ausgewertet wird, z. B.: regexp: (0|(&#91;1-9&#93;&#91;0-9&#93;*))(.&#91;0-9&#93;+)?((e|E)(+|-)?&#91;0-9&#93;+)?.<br><br>'badge : '#(name)' wird beispielsweise zu 'badge' : 40 (und nicht zu '40'). | | 'text' oder "text" | Ein Literal. Literale enthalten beliebigen Text, der in einfache oder doppelte Anführungszeichen eingeschlossen ist. | | expr1 + expr2 | Der Verkettungsoperator, der zwei Ausdrücke zu einer Zeichenfolge verbindet.
 
 Die Ausdrücke können eine der oben beschriebenen Formen aufweisen.
 
@@ -157,4 +155,4 @@ Wie oben erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschwe
 	  </visual>
 	</tile>
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016-->

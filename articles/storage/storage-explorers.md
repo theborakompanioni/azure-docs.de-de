@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="03/30/2016"
 	ms.author="micurd"/>
 
-# Microsoft Azure-Speicher-Explorer
+# Windows Azure-Speicher-Explorer
 
 Benutzer von Azure Storage möchten häufig dazu in der Lage sein, ihre Daten in einem „Explorer“ anzuzeigen. Hierbei handelt es sich um ein Tool, mit dem die Daten in einem Speicherkonto angezeigt werden.
 
@@ -52,7 +52,7 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure-Speicher-Explorer. Diese
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td>Testversion</td>
+    <td>J</td>
     <td>X</td>
     <td></td>
     <td></td>
@@ -63,8 +63,8 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure-Speicher-Explorer. Diese
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td></td>
-    <td></td>
+    <td>X</td>
+    <td>X</td>
     <td></td>
     <td>J</td>
     <td></td>
@@ -160,7 +160,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td>X</td>
     <td>X</td>
     <td></td>
-    <td>Y</td>
+    <td>J</td>
     <td></td>
     <td>X</td>
     <td></td>
@@ -230,7 +230,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td>X</td>
     <td>X</td>
     <td></td>
-    <td>Y</td>
+    <td>J</td>
     <td>X</td>
     <td></td>
     <td></td>
@@ -252,4 +252,4 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
   </tr>
 </table>
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

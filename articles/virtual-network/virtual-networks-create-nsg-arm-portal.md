@@ -36,11 +36,11 @@ Führen Sie die nachstehenden Schritte aus, um die Netzwerksicherheitsgruppe **N
 1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 2. Klicken Sie auf **Durchsuchen >** > **Netzwerksicherheitsgruppen**.
 
-	![Azure-Portal – NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
+    ![Azure-Portal – NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
 
 3. Klicken Sie im Blatt **Netzwerksicherheitsgruppen** auf **Hinzufügen**.
-
-	![Azure-Portal – NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
+  
+    ![Azure-Portal – NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
 
 4. Erstellen Sie im Blatt **Netzwerksicherheitsgruppe erstellen** in der Ressourcengruppe *RG-NSG* eine NSG mit dem Namen *NSG-FrontEnd*, und klicken Sie dann auf **Erstellen**.
 
@@ -103,4 +103,4 @@ Führen Sie die folgenden Schritte aus, um die Netzwerksicherheitsgruppe **NSG-B
 - Erfahren Sie, wie Sie [vorhandene NSGs verwalten](virtual-network-manage-nsg-arm-portal.md).
 - [Aktivieren Sie die Protokollierung](virtual-network-nsg-manage-log.md) für NSGs.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

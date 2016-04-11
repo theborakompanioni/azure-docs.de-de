@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Laden von Beispieldaten in SQL Data Warehouse
@@ -51,26 +51,32 @@ Sie können die Beispieldaten auch mit herkömmlichen Mitteln analysieren. Wie i
 
 Sie können eine einfache SELECT-Anweisung ausführen, um alle Informationen zu den Mitarbeitern abzurufen:
 
-	SELECT * FROM DimEmployee;
+```sql
+SELECT * FROM DimEmployee;
+```
 
 Sie können auch eine komplexere Abfrage mithilfe von Konstrukten wie GROUP BY ausführen, um den Gesamtbetrag für alle Verkäufe an jedem Tag anzuzeigen:
 
-	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
-	FROM FactInternetSales
-	GROUP BY OrderDateKey
-	ORDER BY OrderDateKey;
+```sql
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey
+;
+```
 
 Sie können sogar die WHERE-Klausel verwenden, um Aufträge vor einem bestimmten Datum herauszufiltern:
 
-	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
-	FROM FactInternetSales
-	WHERE OrderDateKey > '20020801'
-	GROUP BY OrderDateKey
-	ORDER BY OrderDateKey;
+```sql
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+WHERE OrderDateKey > '20020801'
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey
+;
+```
 
 SQL Data Warehouse unterstützt fast alle T-SQL-Konstrukte, die auch von SQL Server unterstützt werden. Einige der Unterschiede sind in der Dokumentation zum [Migrieren von Code][] angegeben.
-
-
 
 ## Nächste Schritte
 Nachdem Sie sich schon etwas mit den Beispieldaten vertraut gemacht haben, können Sie sich nun mit der [Entwicklung][], dem [Laden][] oder dem [Migrieren][] befassen.
@@ -95,4 +101,4 @@ Nachdem Sie sich schon etwas mit den Beispieldaten vertraut gemacht haben, könn
 <!--Other Web references-->
 [Sample Data Scripts]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

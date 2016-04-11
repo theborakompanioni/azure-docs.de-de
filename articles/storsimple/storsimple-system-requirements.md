@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="03/15/2016"
+   ms.date="03/23/2016"
    ms.author="alkohli"/>
 
 # StorSimple-Software, hohe Verfügbarkeit und Netzwerkanforderungen
@@ -52,7 +52,7 @@ Die folgenden Sofwareanforderungen gelten für die optionalen StorSimple-Kompone
  
 ## Netzwerkanforderungen für Ihr StorSimple-Gerät
 
-Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der Firewall für iSCSI-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden. In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das StorSimple-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z. B. ausgehende Verbindungen mit dem Internet.
+Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der Firewall für iSCSI-, Cloud- und Verwaltungsdatenverkehr geöffnet werden. In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das StorSimple-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z. B. ausgehende Verbindungen mit dem Internet.
 
 | Portnr.<sup>1,2</sup> | ein oder aus | Portbereich | Erforderlich | Hinweise |
 |------------------------|-----------|------------|----------|-------| 
@@ -77,7 +77,7 @@ Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der
 
 Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr StorSimple-Gerät und StorSimple Manager-Dienst hängen von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern ab. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Das bedeutet, dass der Netzwerkadministrator die Firewallregeln für Ihren StorSimple nach Bedarf überwachen und aktualisieren muss.
 
-Es ist empfehlenswert, die Firewallregeln in den meisten Fällen großzügig festzulegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
+Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf den festen StorSimple IP-Adressen in den meisten Fällen recht locker festzulegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
 
 > [AZURE.NOTE] Die Geräte-(Quellen-)IPs sollten immer für alle aktivierten Netzwerkschnittstellen eingerichtet sein. Die Ziel-IPs sollten in den [ IP-Bereich des Azure-Rechenzentrums](https://www.microsoft.com/de-DE/download/confirmation.aspx?id=41653) festgelegt werden.
 
@@ -85,6 +85,7 @@ Es ist empfehlenswert, die Firewallregeln in den meisten Fällen großzügig fes
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus| Cloudaktivierte Netzwerkschnittstellen |
+|`http://*.backup.windowsazure.com`|Geräteregistrierung| Nur DATA 0|
 |`http://crl.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.windows.net/*` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> | Feste IPs des Controllers |
@@ -126,12 +127,7 @@ Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik 
 		
 	| Netzwerkschnittstelle | Cloudfähig | Nicht cloudfähig mit Gateway |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+	| Data 0 | 1 | - | | Data 1 | 2 | 20 | | Data 2 | 3 | 30 | | Data 3 | 4 | 40 | | Data 4 | 5 | 50 | | Data 5 | 6 | 60 |
 
 
 - Der Clouddatenverkehr wird in folgender Reihenfolge über die Netzwerkschnittstellen weitergeleitet:
@@ -167,7 +163,7 @@ Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik 
 
 Befolgen Sie zusätzlich zu den oben genannten Netzwerkanforderungen die folgenden bewährten Methoden, um eine optimale Leistung für Ihre StorSimple-Lösung zu gewährleisten:
 
-- Stellen Sie sicher, dass für das StorSimple-Gerät jederzeit eine dedizierte Bandbreite von 40 MBit/s (oder mehr) zur Verfügung steht. Diese Bandbreite sollte nicht gemeinsam mit anderen Anwendungen genutzt werden.
+- Stellen Sie sicher, dass für das StorSimple-Gerät jederzeit eine dedizierte Bandbreite von 40 MBit/s (oder mehr) zur Verfügung steht. Diese Bandbreite sollte nicht mit anderen Anwendungen gemeinsam verwendet werden (oder die Zuweisungen sollten durch die Verwendung von QoS-Richtlinien garantiert werden).
 
 - Stellen Sie sicher, dass jederzeit eine Netzwerkverbindung mit dem Internet verfügbar ist. Zeitweise unterbrochene oder unzuverlässige Internetverbindungen mit den Geräten, also auch eine Unterbrechung der Internetverbindung, führt zu einer nicht unterstützten Konfiguration.
 
@@ -279,4 +275,4 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/08/2016"
+   ms.date="03/22/2016"
    ms.author="rickbyh"/>
 
 # Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit  
@@ -28,7 +28,7 @@ Wenn Sie sich in Microsoft Azure SQL-Datenbank für den Dienst registrieren, wer
 
 Das Serverebenenprinzipal-Konto von Azure SQL-Datenbank verfügt immer über die Berechtigung, die gesamte Sicherheit auf Server- und Datenbankebene zu verwalten. In diesem Thema wird beschrieben, wie Sie den Serverebenenprinzipal und andere Konten verwenden können, um in SQL-Datenbank Anmeldungen und Datenbanken zu verwalten.
 
-Azure-Benutzer, die auf SQL-Datenbank mittels Access Control auf Azure-Rollenbasis und Azure-Ressourcen-Manager-REST-API zugreifen, erhalten Berechtigungen gemäß ihrer Azure-Rollen. Die Aktionen der Azure-Rollenmitglieder führt das Datenbankmodul für sie aus. Sie sind nicht vom Datenbank-Engine-Berechtigungsmodell betroffen und werden in diesem Thema nicht behandelt. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles/#sql-db-contributor).
+Azure-Benutzer, die über die rollenbasierte Access Control (Role-Based Access Control, RBAC) von Azure und die Azure Resource Manager-REST-API auf SQL-Datenbank zugreifen, erhalten Berechtigungen gemäß ihren Azure-Rollen. Diese Rollen ermöglichen den Zugriff auf Vorgänge der Verwaltungsebene, jedoch nicht auf Vorgänge der Datenebene. Zu den Vorgängen der Verwaltungsebene zählt u.a. die Möglichkeit, verschiedene Eigenschaften und Schemaelemente in SQL-Datenbank zu lesen. Darüber hinaus werden das Erstellen, Löschen und Konfigurieren einiger Features auf Serverebene im Zusammenhang mit SQL-Datenbank ermöglicht. Bei vielen dieser Vorgänge auf Verwaltungsebene handelt es sich um die Elemente, die Sie bei Verwendung des Azure-Portals sehen und konfigurieren können. Bei Verwendung der RBAC-Rollen werden die Aktionen der Azure-Rollenmitglieder innerhalb der Datenbank (z.B. das Auflisten von Tabellen) vom Datenbankmodul für sie ausgeführt, sodass diese nicht von den GRANT/REVOKE/DENY-Anweisungen des SQL Server-Standardberechtigungssystems betroffen sind. Die RBAC-Rollen beinhalten nicht die Möglichkeit zum Lesen oder Ändern von Daten, da es sich dabei um Vorgänge der Datenebene handelt. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 
 > [AZURE.IMPORTANT] Mit SQL-Datenbank V12 können sich Benutzer gegenüber der Datenbank authentifizieren, indem sie Benutzer für eigenständige Datenbanken verwenden. Benutzer für eigenständige Datenbanken benötigen keine Anmeldungen. Dies verbessert die Portabilität von Datenbanken, reduziert aber auch die Fähigkeit des Serverebenenprinzipals, den Zugriff auf die Datenbank zu steuern. Das Aktivieren von Benutzern für eigenständige Datenbanken ist mit wichtigen Auswirkungen auf die Sicherheit verbunden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx), [Eigenständige Datenbanken](https://technet.microsoft.com/library/ff929071.aspx) und [CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx) und [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
 
@@ -176,4 +176,4 @@ SELECT * FROM sys.databases;
 
 [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md) [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

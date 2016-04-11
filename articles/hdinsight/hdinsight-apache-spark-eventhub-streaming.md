@@ -24,17 +24,17 @@ Das Spark-Streaming ist eine Erweiterung der Spark-Kern-API zum Erstellen von sk
 
 In diesem Tutorial erfahren Sie, wie Sie einen Azure Event Hub erstellen, Nachrichten mit einer Konsolenanwendung in Java für einen Event Hub erfassen und mit einer Spark-Anwendung, geschrieben in Scala, parallel abrufen. Diese Anwendung verwendet die Daten, die über Event Hubs gestreamt werden, und leitet sie an verschiedene Ausgaben weiter (Azure Storage Blob, Hive-Tabelle und SQL-Tabelle).
 
-> [AZURE.NOTE] Für die Anweisungen in diesem Artikel benötigen Sie beide Versionen des Azure-Portals. Zum Erstellen eines Event Hubs verwenden Sie das [Azure-Portal](https://manage.windowsazure.com). Für das Arbeiten mit dem HDInsight Spark-Cluster nutzen Sie das [Azure-Vorschauportal](https://ms.portal.azure.com/).
+> [AZURE.NOTE] Für die Anweisungen in diesem Artikel benötigen Sie beide Versionen des Azure-Portals. Verwenden Sie das [klassische Azure-Portal](https://manage.windowsazure.com), um einen Event Hub zu erstellen. Verwenden Sie das [Azure-Portal](https://ms.portal.azure.com/), um mit dem HDInsight Spark-Cluster zu arbeiten.
 
 **Voraussetzungen:**
 
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- Einen Apache Spark-Cluster. Anleitungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+- Einen Apache Spark-Cluster. Anleitungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 - Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Eine Java-IDE. In diesem Artikel wird IntelliJ IDEA 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
-- Microsoft JDBC-Treiber für SQL Server Version 4.1 oder höher. Dies ist erforderlich, um die Ereignisdaten in eine SQL Server-Datenbank zu schreiben. Das Installationspaket finden Sie [hier](https://msdn.microsoft.com/sqlserver/aa937724.aspx).
+- Eine Java-IDE. In diesem Artikel wird IntelliJ IDEA 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
+- Microsoft JDBC-Treiber für SQL Server Version 4.1 oder höher. Dies ist erforderlich, um die Ereignisdaten in eine SQL Server-Datenbank zu schreiben. Das Installationspaket finden Sie [hier](https://msdn.microsoft.com/sqlserver/aa937724.aspx).
 - Eine Azure SQL-Datenbank. Anleitungen finden Sie unter [Erstellen einer SQL-Datenbank in wenigen Minuten](../sql-database/sql-database-get-started.md)
 
 ## Was ist die Aufgabe dieser Lösung?
@@ -49,7 +49,7 @@ Die Streaminglösung bietet den folgenden Workflow:
 
 ## Erstellen eines Azure Event Hubs
 
-1. Wählen Sie im [Azure-Portal](https://manage.windowsazure.com) die Optionen **NEU** > **Service Bus** > **Event Hub** > **Benutzerdefiniert erstellen**.
+1. Wählen Sie im [Azure-Portal](https://manage.windowsazure.com) die Optionen **NEU** > **Service Bus** > **Event Hub** > **Benutzerdefiniert Erstellen**.
 
 2. Geben Sie im Bildschirm **Neuen Event Hub hinzufügen** einen Wert für **Event Hub-Name** ein, wählen Sie die **Region** aus, in der der Hub erstellt werden soll, und erstellen Sie einen neuen Namespace, oder wählen Sie einen vorhandenen Namespace aus. Klicken Sie auf den **Pfeil**, um fortzufahren.
 
@@ -64,10 +64,12 @@ Die Streaminglösung bietet den folgenden Workflow:
 4. Klicken Sie auf den erstellten Event Hub und dann auf **Konfigurieren**, und erstellen Sie zwei Zugriffsrichtlinien für den Event Hub.
 
 	<table>
-<tr><th>Name</th><th>Berechtigungen</th></tr>
-<tr><td>mysendpolicy</td><td>Send</td></tr>
-<tr><td>myreceivepolicy</td><td>Empfangen</td></tr>
-</table>Klicken Sie nach dem Erstellen der Berechtigungen auf das Symbol **Speichern** am unteren Seitenrand. Hiermit werden die freigegebenen Zugriffsrichtlinien erstellt, die zum Senden (**mysendpolicy**) und Überwachen (**myreceivepolicy**) dieses Event Hubs verwendet werden.
+	<tr><th>Name</th><th>Berechtigungen</th></tr>
+	<tr><td>mysendpolicy</td><td>Send</td></tr>
+	<tr><td>myreceivepolicy</td><td>Empfangen</td></tr>
+	</table>
+
+	Klicken Sie nach dem Erstellen der Berechtigungen auf das Symbol **Speichern** am unteren Seitenrand. Hiermit werden die freigegebenen Zugriffsrichtlinien erstellt, die zum Senden (**mysendpolicy**) und Überwachen (**myreceivepolicy**) dieses Event Hubs verwendet werden.
 
 	![Richtlinien](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policies.png "Erstellen von Event Hub-Richtlinien")
 
@@ -127,7 +129,7 @@ Eine Scala-Beispielanwendung, die das Ereignis empfängt und an verschiedene Zie
 
 		Dabei wird die JAR-Datei aus dem Spark-Cluster auf den lokalen Computer kopiert.
 
-	* **JDBC-JAR-Treiberdatei**. Diese ist erforderlich, um die Nachrichten von Event Hub in eine Azure SQL-Datenbank zu schreiben. Sie können Version 4.1 oder höher der JAR-Datei [hier](https://msdn.microsoft.com/de-DE/sqlserver/aa937724.aspx) herunterladen.
+	* **JDBC-JAR-Treiberdatei**. Diese ist erforderlich, um die Nachrichten von Event Hub in eine Azure SQL-Datenbank zu schreiben. Sie können Version 4.1 oder höher der JAR-Datei [hier](https://msdn.microsoft.com/de-DE/sqlserver/aa937724.aspx) herunterladen.
 	
 
 		Fügen Sie der Projektbibliothek einen Verweis auf diese JAR-Dateien hinzu. Führen Sie die folgenden Schritte aus:
@@ -298,7 +300,7 @@ Folgendes sollte angezeigt werden:
 
 ### Ausführen von Anwendungen für den Empfang der Ereignisse in einer Azure SQL-Datenbanktabelle
 
-Stellen Sie vor diesem Schritt sicher, dass Sie eine Azure SQL-Datenbank erstellt haben. Sie benötigen die Werte für Datenbankname, Datenbankservername und die Anmeldeinformationen des Datenbankadministrators als Parameter. Sie müssen jedoch nicht die Datenbanktabelle erstellen. Die Streaminganwendung erstellt sie automatisch.
+Stellen Sie vor diesem Schritt sicher, dass Sie eine Azure SQL-Datenbank erstellt haben. Sie benötigen die Werte für Datenbankname, Datenbankservername und die Anmeldeinformationen des Datenbankadministrators als Parameter. Sie müssen jedoch nicht die Datenbanktabelle erstellen. Die Streaminganwendung erstellt sie automatisch.
 
 Öffnen Sie ein Eingabeaufforderungsfenster, navigieren Sie zu dem Verzeichnis, in dem Sie CURL installiert haben, und führen Sie den folgenden Befehl aus:
 
@@ -308,7 +310,7 @@ Die Parameter in der Datei **inputSQL.txt** sind wie folgt definiert:
 
 	{ "file":"wasb:///example/jars/microsoft-spark-streaming-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureSQLTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--sql-server-fqdn", "<database-server-name>.database.windows.net", "--sql-database-name", "mysparkdatabase", "--database-username", "sparkdbadmin", "--database-password", "<put-password-here>", "--event-sql-table", "EventContent" ], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
-Um sicherzustellen, dass die Anwendung erfolgreich ausgeführt wird, können Sie mit SQL Server Management Studio eine Verbindung zur Azure SQL-Datenbank herstellen. Informationen hierzu finden Sie unter [Herstellen einer Verbindung zur SQL-Datenbank mit SQL Server Management Studio](sql-database/sql-database-connect-query-ssms). Nachdem Sie die Verbindung zur Datenbank hergestellt haben, navigieren Sie zur **EventContent**-Tabelle, die von der Streaminganwendung erstellt wurde. Sie können eine schnelle Abfrage ausführen, um Daten aus der Tabelle abzurufen. Führen Sie die folgende Abfrage aus:
+Um sicherzustellen, dass die Anwendung erfolgreich ausgeführt wird, können Sie mit SQL Server Management Studio eine Verbindung zur Azure SQL-Datenbank herstellen. Informationen hierzu finden Sie unter [Herstellen einer Verbindung zur SQL-Datenbank mit SQL Server Management Studio](sql-database/sql-database-connect-query-ssms). Nachdem Sie die Verbindung zur Datenbank hergestellt haben, navigieren Sie zur **EventContent**-Tabelle, die von der Streaminganwendung erstellt wurde. Sie können eine schnelle Abfrage ausführen, um Daten aus der Tabelle abzurufen. Führen Sie die folgende Abfrage aus:
 
 	SELECT * FROM EventCount
 
@@ -372,4 +374,4 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

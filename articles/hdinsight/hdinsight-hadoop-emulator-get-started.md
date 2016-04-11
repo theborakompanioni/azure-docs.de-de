@@ -82,8 +82,6 @@ Zudem sollten mehrere lokale Dienste installiert worden sein. Nachfolgend wird e
 
 Die Dienste im Zusammenhang mit dem HDInsight-Emulator werden nicht automatisch gestartet. Führen Sie an der Hadoop-Befehlszeile unter "C:\\hdp" (Standardspeicherort) den Befehl **start\_local\_hdp\_services.cmd** aus, um die Dienste zu starten. Führen Sie **set-onebox-autostart.cmd** aus, um die Dienste beim Computer-Neustart automatisch zu starten.
 
-Informationen zu bekannten Problemen beim Installieren und Ausführen des HDInsight-Emulators finden Sie in den [Anmerkungen zu dieser Version des HDInsight-Emulators](hdinsight-emulator-release-notes.md). Das Installationsprotokoll befindet sich im Verzeichnis **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log**.
-
 ##<a name="vstools"></a>Erste Schritte mit den HDInsight-Tools für Visual Studio
 
 Die HDInsight-Tools für Visual Studio dienen zum Herstellen einer Verbindung mit dem HDInsight-Emulator. Informationen zur Verwendung von Visual Studio-Tools mit HDInsight-Clustern in Azure finden Sie unter [Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md).
@@ -508,7 +506,7 @@ In diesem Lernprogramm zu MapReduce haben Sie den HDInsight-Emulator – eine Ha
 
 - [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [Entwickeln von Java MapReduce-Programmen für HDInsight](hdinsight-develop-deploy-java-mapreduce.md)
-- [Anmerkungen zu dieser Version von HDInsight Emulator](hdinsight-emulator-release-notes.md)
+- [Entwickeln von Hadoop-Streaming-MapReduce-Programmen in C# für HDInsight](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [MSDN-Forum zur Erörterung von Themen rund um HDInsight](http://social.msdn.microsoft.com/Forums/hdinsight)
 
 
@@ -521,12 +519,12 @@ In diesem Lernprogramm zu MapReduce haben Sie den HDInsight-Emulator – eine Ha
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 
 [hdinsight-emulator-install]: http://www.microsoft.com/web/gallery/install.aspx?appid=HDINSIGHT
-[hdinsight-emulator-release-notes]: hdinsight-emulator-release-notes.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-develop-deploy-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-versions]: hdinsight-component-versioning.md
 
 [Powershell-install-configure]: powershell-install-configure.md
@@ -536,4 +534,4 @@ In diesem Lernprogramm zu MapReduce haben Sie den HDInsight-Emulator – eine Ha
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

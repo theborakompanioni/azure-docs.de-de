@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
-   ms.author="mfussell"/>
+   ms.date="03/24/2016"
+   ms.author="msfussell"/>
 
 # RunAs: Ausführen einer Service Fabric-Anwendung mit verschiedenen Sicherheitsberechtigungen
 Azure Service Fabric bietet die Möglichkeit zum Schützen von Anwendungen, die im Cluster unter verschiedenen Benutzerkonten ausgeführt werden, was auch als **RunAs** (Ausführen als) bezeichnet wird. Mit Service Fabric werden auch die Ressourcen geschützt, die von Anwendungen mit dem Benutzerkonto genutzt werden, z. B. Dateien, Verzeichnisse und Zertifikate.
@@ -110,7 +110,7 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ~~~
 
-Notieren Sie anschließend den Namen des Knotens, unter dem der Dienst bereitgestellt und im Service Fabric-Explorer gestartet wurde, z. B. Knoten 1. Navigieren Sie als Nächstes zum Arbeitsordner der Anwendungsinstanz, um die Datei „out.txt“ zu ermitteln, in der der Wert von **TestVariable** angezeigt wird. Wenn die Bereitstellung z. B. auf Knoten 2 erfolgt ist, können Sie für **MyApplicationType** auf diesen Pfad zugreifen:
+Notieren Sie anschließend den Namen des Knotens, unter dem der Dienst bereitgestellt und im Service Fabric-Explorer gestartet wurde, z.B. Knoten 2. Navigieren Sie als Nächstes zum Arbeitsordner der Anwendungsinstanz, um die Datei „out.txt“ zu ermitteln, in der der Wert von **TestVariable** angezeigt wird. Wenn die Bereitstellung z. B. auf Knoten 2 erfolgt ist, können Sie für **MyApplicationType** auf diesen Pfad zugreifen:
 
 ~~~
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
@@ -351,4 +351,4 @@ Das folgende Anwendungsmanifest zeigt viele der zuvor beschriebenen Einstellunge
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

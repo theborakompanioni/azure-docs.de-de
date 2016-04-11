@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
+	ms.date="03/21/2016" 
 	ms.author="riande"/>
 
 # Erstellen einer ASP.NET MVC-App mit Authentifizierung, SQL-Datenbank und Bereitstellung in Azure App Service
@@ -53,9 +53,7 @@ Zur Einrichtung Ihrer Entwicklungsumgebung müssen Sie [Visual Studio 2013 Updat
 
 	!["Neues Projekt" im Menü "Datei"](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/gs13newproj.png)
 
-1. Erweitern Sie im Dialogfeld **Neues Projekt** den Eintrag **C#**, und wählen Sie unter **Installierte Vorlagen** die Option **Web** aus. Wählen Sie dann **ASP.NET-Webanwendung** aus.
-
-1. Nennen Sie die Anwendung **ContactManager**, und klicken Sie auf **OK**.
+1. Erweitern Sie im Dialogfeld **Neues Projekt** den Eintrag **C#**, und wählen Sie unter **Installierte Vorlagen** die Option **Web** aus. Wählen Sie dann **ASP.NET-Webanwendung** aus. Nennen Sie die Anwendung **ContactManager**, und klicken Sie auf **OK**.
 
 	![Dialogfeld "Neues Projekt"](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13newprojdb.png)
  
@@ -67,29 +65,35 @@ Zur Einrichtung Ihrer Entwicklungsumgebung müssen Sie [Visual Studio 2013 Updat
 
 1. Klicken Sie auf **OK**.
 
-3. Wenn das Dialogfeld **Microsoft Azure-Web-App-Einstellungen konfigurieren** angezeigt wird, stellen Sie sicher, dass Sie bei Azure angemeldet sind. Melden Sie sich an, falls noch nicht erfolgt, oder geben Sie Ihre Anmeldeinformationen erneut ein, falls die Anmeldung abgelaufen ist.
+1. Das Dialogfeld **Einstellungen der Microsoft Azure-Web-App konfigurieren** wird angezeigt. Möglicherweise müssen Sie sich anmelden, wenn Sie noch nicht angemeldet sind. Wenn Ihre Anmeldung abgelaufen ist, geben Sie Ihre Anmeldeinformationen erneut ein.
 
-	![Anmeldeinformationen erneut eingeben](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/reentercredentials.png)
-
-2. Wenn Sie einen Namen für Ihre Web-App angeben möchten, ändern Sie den Wert im Feld **Web-App-Name**.
+1. Optional: Ändern Sie den Wert im Feld **Web-App-Name** (siehe Abbildung unten).
 
 	Der Name muss innerhalb der Domäne "azurewebsites.net" eindeutig sein, da die URL der Web-App "{name}.azurewebsites.net" lauten wird. Der Konfigurations-Assistent schlägt einen eindeutigen Namen vor, für den eine Nummer an Projektnamen "ContactManager" angefügt wird, was für dieses Tutorial in Ordnung ist.
 
-5. Wählen Sie in der Dropdownliste **App Service-Plan** die Option **Neuen App Service-Plan erstellen** aus, und geben Sie einen Namen ein, z. B. "StandardWeb" wie in der Abbildung.
-
-	Falls gewünscht, können Sie einen App Service-Plan auswählen, über den Sie bereits verfügen. Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-
-5. Wählen Sie in der Dropdownliste **Ressourcengruppe** die Option **Neue Ressourcengruppe erstellen** aus, und geben Sie einen Namen ein, z. B. "ExampleMVC" wie in der Abbildung.
+5. Wählen Sie in der Dropdownlist **Ressourcengruppe** eine vorhandene Gruppe aus, oder **erstellen Sie eine neue Ressourcengruppe** (siehe Abbildung unten).
 
 	Falls gewünscht, können Sie eine Ressourcengruppe auswählen, über die Sie bereits verfügen. Doch wenn Sie eine neue Ressourcengruppe erstellen, die Sie nur für dieses Tutorial verwenden, können Sie einfach alle Azure-Ressourcen für das Tutorial löschen, wenn Sie sie nicht mehr benötigen. Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
 
-7. Wählen Sie eine Region in Ihrer Nähe.
+5. Wählen Sie in der Dropdownliste **App Service-Plan** einen vorhandenen Plan aus, oder **erstellen Sie einen neuen App Service-Plan** (siehe Abbildung unten).
 
-	Klicken Sie noch nicht auf **OK**. Im nächsten Schritt konfigurieren Sie die Datenbankressource. Das Dialogfeld sieht nun wie in der folgenden Abbildung aus.
+	Falls gewünscht, können Sie einen App Service-Plan auswählen, über den Sie bereits verfügen. Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
-	![Neue Plan- und Ressourcengruppe](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newplanandgroup.png)
- 
-2. Wählen Sie **Neuen Server erstellen** aus, und geben Sie einen Servernamen, Benutzernamen und ein Kennwort ein.
+1. Klicken Sie auf **Zusätzliche Azure-Dienste durchsuchen**, um eine SQL-­Datenbank hinzuzufügen.
+
+	![Hinzufügen neuer Dienste](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/n2.png)
+
+1. Klicken Sie auf das Pluszeichen **+**, um eine SQL-Datenbank hinzuzufügen.
+
+	![Neue SQL-Datenbank](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/nsql.png)
+
+1. Klicken Sie im Dialogfeld **SQL-Datenbank konfigurieren** auf **Neu**:
+
+	![Name und Kennwort für SQL-Administrator](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/nc.png)
+
+1. Geben Sie einen Namen für den Administrator und ein sicheres Kennwort ein.
+
+	![Neue SQL-Datenbank](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/np.png)
 
 	Der Servername muss eindeutig sein. Er kann Kleinbuchstaben, Ziffern und Bindestriche enthalten. Ein nachgestellter Bindestrich ist nicht zulässig. Der Benutzername und das Kennwort sind neue Anmeldeinformationen, die Sie für den neuen Server erstellen.
 
@@ -99,7 +103,7 @@ Zur Einrichtung Ihrer Entwicklungsumgebung müssen Sie [Visual Studio 2013 Updat
 
 	![Verwenden einer neuen Datenbank](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newdb.png)
 
-4. Klicken Sie auf **OK**.
+4. Tippen Sie auf **Erstellen**.
 
 	Visual Studio erstellt das Webprojekt "ContactManager", die Ressourcengruppe und den App Service-Plan, den Sie angegeben haben, und eine Web-App in Azure App Service mit dem angegebenen Namen.
 
@@ -109,54 +113,13 @@ Zur Einrichtung Ihrer Entwicklungsumgebung müssen Sie [Visual Studio 2013 Updat
 
 	![\_Layout.cshtml in Solution Explorer][newapp004]
 
-1. Ersetzen Sie den Inhalt der Datei *Layout.cshtml* durch den folgenden Code.
+1. Ersetzen Sie den ActionLink in der Datei *Layout.cshtml* durch den folgenden Code.
 
-		<!DOCTYPE html>
-		<html>
-		<head>
-		    <meta charset="utf-8" />
-		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		    <title>@ViewBag.Title - Contact Manager</title>
-		    @Styles.Render("~/Content/css")
-		    @Scripts.Render("~/bundles/modernizr")
-		
-		</head>
-		<body>
-		    <div class="navbar navbar-inverse navbar-fixed-top">
-		        <div class="container">
-		            <div class="navbar-header">
-		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                </button>
-		                @Html.ActionLink("CM Demo", "Index", "Cm", new { area = "" }, new { @class = "navbar-brand" })
-		            </div>
-		            <div class="navbar-collapse collapse">
-		                <ul class="nav navbar-nav">
-		                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-		                    <li>@Html.ActionLink("About", "About", "Home")</li>
-		                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-		                </ul>
-		                @Html.Partial("_LoginPartial")
-		            </div>
-		        </div>
-		    </div>
-		    <div class="container body-content">
-		        @RenderBody()
-		        <hr />
-		        <footer>
-		            <p>&copy; @DateTime.Now.Year - Contact Manager</p>
-		        </footer>
-		    </div>
-		
-		    @Scripts.Render("~/bundles/jquery")
-		    @Scripts.Render("~/bundles/bootstrap")
-		    @RenderSection("scripts", required: false)
-		</body>
-		</html>
 
-	Dieser Code ändert den Namen der Anwendung in der Kopf- und Fußzeile von "My ASP.NET Application" und "Application name" in "Contact Manager" und "CM Demo".
+	@Html.ActionLink("CM Demo", "Index", "Contacts", new { area = "" }, new { @class = "navbar-brand" })
+		           
+
+	Stellen Sie sicher, dass Sie den dritten Parameter von „Home“ in „Contacts“ ändern. Mit dem Markup oben wird der Link „Contacts“ auf jeder Seite zur Index-Methode des Contacts-Controllers erstellt. Ändern Sie den Namen der Anwendung in der Kopf- und Fußzeile von „My ASP.NET Application“ und „Application name“ in „Contact Manager“ bzw. „CM Demo“.
  
 ### Lokales Ausführen der Anwendung
 
@@ -282,7 +245,6 @@ Mit dem ASP.NET MVC-Gerüstfeature kann automatisch Code generiert werden, der E
 
 1. Wählen Sie unter **Datenkontextklasse** die Option **ApplicationDbContext (ContactManager.Models)** aus. **ApplicationDbContext** wird für die Mitgliedschaftsdatenbank und die Kontaktdaten verwendet.
 
-1. Geben Sie im Texteingabefeld **Controllername** die Zeichenfolge CmController als Controllernamen ein.
 
 	![Kontextdialogfeld "Neue Daten"](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss5.PNG)
 
@@ -372,7 +334,7 @@ Die nächste Aufgabe besteht darin, das Feature [Code First-Migrationen](http://
                 );
         }
 
-	Mit diesem Code wird die Datenbank mit den Kontaktinformationen initialisiert (es wird ein Seeding dafür ausgeführt). Weitere Informationen zum Ausführen eines Seedings für die Datenbank finden Sie unter [Seeding and Debugging Entity Framework (EF) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) (in englischer Sprache).
+	Mit diesem Code wird die Datenbank mit den Kontaktinformationen initialisiert (es wird ein Seeding dafür ausgeführt). Weitere Informationen zum Ausführen eines Seedings für die Datenbank finden Sie unter [Seeding and Debugging Entity Framework (EF) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) (in englischer Sprache). Erstellen Sie das Projekt, um sich zu vergewissern, dass keine Kompilierungsfehler vorhanden sind.
 
 6. Geben Sie im Fenster **Paket-Manager-Konsole** den folgenden Befehl ein:
 
@@ -445,7 +407,7 @@ In diesem Abschnitt fügen Sie der Mitgliedschaftsdatenbank einen lokalen Benutz
 
 	![Codebild](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
-	Dieser Code erstellt die neue Rolle *canEdit* sowie den neuen lokalen Benutzer *user1@contoso.com* und fügt *user1@contoso.com* der Rolle *canEdit* hinzu. Weitere Informationen finden Sie in den [ASP.NET Identity-Tutorials](http://www.asp.net/identity/overview/features-api) auf der ASP.NET-Website.
+	Dieser Code erstellt die neue Rolle *canEdit* sowie den neuen lokalen Benutzer **user1@contoso.com* und fügt **user1@contoso.com* der Rolle *canEdit* hinzu. Weitere Informationen finden Sie in den [ASP.NET Identity-Tutorials](http://www.asp.net/identity/overview/features-api) auf der ASP.NET-Website.
 
 ## Verwenden von temporärem Code zum Hinzufügen neuer Benutzer mit Anmeldung zu sozialen Netzwerken zur Rolle "canEdit"  ##
 
@@ -501,7 +463,7 @@ Drücken Sie in der Paket-Manager-Konsole die NACH-OBEN-TASTE, um den folgenden 
 
 		Update-Database
 
-Mit dem **Update-Database**-Befehl wird die **Seed**-Methode ausgeführt, und mit dieser wird die **AddUserAndRole**-Methode ausgeführt, die Sie zuvor hinzugefügt haben. Die **AddUserAndRole**-Methode erstellt den Benutzer *user1@contoso.com* und fügt ihn der Rolle *canEdit* hinzu.
+Mit dem **Update-Database**-Befehl wird die **Seed**-Methode ausgeführt, und mit dieser wird die **AddUserAndRole**-Methode ausgeführt, die Sie zuvor hinzugefügt haben. Die **AddUserAndRole**-Methode erstellt den Benutzer **user1@contoso.com* und fügt ihn der Rolle *canEdit* hinzu.
 
 ## Schützen der Anwendung durch SSL und das Attribut "Authorize" ##
 
@@ -580,7 +542,7 @@ In diesem Abschnitt wenden Sie das [Authorize](http://msdn.microsoft.com/library
 
 1. Klicken Sie auf den Link **About** oder **Contact**. Sie werden zur Anmeldeseite weitergeleitet, da anonyme Benutzer diese Seiten nicht anzeigen können.
 
-1. Klicken Sie auf den Link **Register as a new user**, und fügen Sie einen lokalen Benutzer mit der E-Mail-Adresse *joe@contoso.com* hinzu. Stellen Sie sicher, dass *Joe* die Seiten Home, About und Contact anzeigen kann.
+1. Klicken Sie auf den Link **Register as a new user**, und fügen Sie einen lokalen Benutzer mit der E-Mail-Adresse **joe@contoso.com* hinzu. Stellen Sie sicher, dass *Joe* die Seiten Home, About und Contact anzeigen kann.
 
 	![Anmeldung](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss14.PNG)
 
@@ -588,9 +550,10 @@ In diesem Abschnitt wenden Sie das [Authorize](http://msdn.microsoft.com/library
 
 1. Klicken Sie auf einen Bearbeitungslink auf der Seite. Sie werden zur Anmeldeseite weitergeleitet (da kein neuer lokaler Benutzer zur Rolle *canEdit* hinzugefügt wurde).
 
-1. Melden Sie sich als *user1@contoso.com* mit dem Kennwort "P\_assw0rd1" an (das "0" in "word" ist eine Null). Sie werden zu der Bearbeitungsseite weitergeleitet, die Sie zuvor ausgewählt haben.
+1. Melden Sie sich als **user1@contoso.com* mit dem Kennwort "P\_assw0rd1" an (das "0" in "word" ist eine Null). Sie werden zu der Bearbeitungsseite weitergeleitet, die Sie zuvor ausgewählt haben.
+2. 
 
-	Wenn Sie sich nicht mit diesem Konto und Kennwort anmelden können, versuchen Sie, das Kennwort aus dem Quellcode zu kopieren und einzufügen. Sollten Sie sich dennoch nicht anmelden können, überprüfen Sie in der Spalte **UserName** der Tabelle **AspNetUsers**, ob *user1@contoso.com* wirklich hinzugefügt wurde.
+	Wenn Sie sich nicht mit diesem Konto und Kennwort anmelden können, versuchen Sie, das Kennwort aus dem Quellcode zu kopieren und einzufügen. Sollten Sie sich dennoch nicht anmelden können, überprüfen Sie in der Spalte **UserName** der Tabelle **AspNetUsers**, ob **user1@contoso.com* wirklich hinzugefügt wurde.
 
 1. Stellen Sie sicher, dass Sie Daten ändern können.
 
@@ -604,17 +567,16 @@ In diesem Abschnitt wenden Sie das [Authorize](http://msdn.microsoft.com/library
 
 1. Klicken Sie im Dialogfeld **Web veröffentlichen** auf der linken Seite auf **Einstellungen**.
 
-2. Klicken Sie auf das Symbol **v**, um die **Remoteverbindungszeichenfolge** für **ApplicationDbContext** auszuwählen, und wählen Sie die Datenbank aus, die Sie beim Anlegen des Projekts erstellt haben.
+2. Wählen Sie unter **ApplicationDbContext** die Datenbank aus, die Sie beim Erstellen des Projekts erstellt haben.
    
-	![Einstellungen](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
 
 1. Wählen Sie unter **ContactManagerContext** die Option **Execute Code First Migrations** aus.
 
-	![Einstellungen](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc3.png)
+	![Einstellungen](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
 
 1. Klicken Sie auf **Veröffentlichen**.
 
-1. Melden Sie sich als *user1@contoso.com* mit dem Kennwort "P\_assw0rd1" an, und überprüfen Sie, ob Sie die Daten bearbeiten können.
+1. Melden Sie sich als **user1@contoso.com* mit dem Kennwort "P\_assw0rd1" an, und überprüfen Sie, ob Sie die Daten bearbeiten können.
 
 1. Melden Sie sich ab.
 
@@ -698,7 +660,7 @@ In diesem Abschnitt wenden Sie das [Authorize](http://msdn.microsoft.com/library
 
 	![CM-Seite](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrr8.png)
  
-1. Beachten Sie, dass sich die ID des Google-Kontos, bei dem Sie sich registriert haben, und die ID von *user1@contoso.com* in der Rolle **canEdit** befinden. Dies sollten die einzigen Benutzer in der Rolle **canEdit** sein. (Wird im nächsten Schritt überprüft.)
+1. Beachten Sie, dass sich die ID des Google-Kontos, bei dem Sie sich registriert haben, und die ID von **user1@contoso.com* in der Rolle **canEdit** befinden. Dies sollten die einzigen Benutzer in der Rolle **canEdit** sein. (Wird im nächsten Schritt überprüft.)
 
 	![CM-Seite](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/s2.png)
  
@@ -706,7 +668,7 @@ In diesem Abschnitt wenden Sie das [Authorize](http://msdn.microsoft.com/library
 
 	![CM-Seite](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rs1.png)
  
-3. Stellen Sie sicher, dass die **UserId** von *user1@contoso.com* und dem registrierten Google-Konto stammt.
+3. Stellen Sie sicher, dass die **UserId** von **user1@contoso.com* und dem registrierten Google-Konto stammt.
 
 ## Problembehandlung
 
@@ -797,4 +759,4 @@ Dieses Tutorial wurden von [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (T
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

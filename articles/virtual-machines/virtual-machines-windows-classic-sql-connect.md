@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer (Klassisch)| Microsoft Azure"
 	description="In diesem Thema werden mit dem klassischen Bereitstellungsmodell erstellte Ressourcen verwendet, und es beschreibt, wie Sie eine Verbindung mit SQL Server auf einem virtuellen Computer in Azure herstellen. Die Szenarien unterscheiden sich abhängig von der Netzwerkkonfiguration und dem Clientstandort."
 	services="virtual-machines-windows"
@@ -7,13 +7,13 @@
 	manager="jeffreyg"
 	editor="monicar"    
 	tags="azure-service-management"/>
-<tags 
+<tags
 	ms.service="virtual-machines-windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/18/2015"
+	ms.date="03/24/2016"
 	ms.author="jroth" />
 
 # Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)
@@ -28,9 +28,9 @@ Das Konfigurieren von Verbindungen mit SQL Server bei der Ausführung auf einem 
 
 Es gibt jedoch einige Aspekte bei SQL Server-Verbindungen, die insbesondere Azure VMs betreffen. Dieser Artikel behandelt eine Reihe [allgemeiner Konnektivitätsszenarien](#connection-scenarios) und beschreibt dann [ausführliche Schritte für das Konfigurieren von SQL Server-Konnektivität auf einer Azure-VM](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
-Der Schwerpunkt dieses Artikels liegt auf Konnektivität. Eine vollständige Anleitung, die Bereitstellung und Konnektivität behandelt, finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-classic-portal-sql.md).
+In diesem Artikel wird beschrieben, wie eine Verbindung zu einem vorhandenen virtuellen SQL Server-Computer hergestellt werden kann, der das klassische Modell verwendet.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. Wenn Sie Resource Manager-VMs verwenden, finden Sie weitere Informationen unter [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](virtual-machines-windows-sql-connect.md) (Verbinden mit einem virtuellen SQL Server-Computer in Azure mithilfe von Resource Manager).
 
 ## Konnektivitätsszenarien
 
@@ -72,7 +72,7 @@ Führen Sie zunächst die [Schritte in diesem Artikel zum Konfigurieren der Konn
 
 Vorausgesetzt, Sie haben DNS konfiguriert, können Sie eine Verbindung mit Ihrer SQL Server-Instanz herstellen, indem Sie den VM-Hostnamen für SQL Server in der Verbindungszeichenfolge angeben. Im folgenden Beispiel wird angenommen, dass darüber hinaus Windows-Authentifizierung konfiguriert und dem Benutzer Zugriff auf die SQL Server-Instanz erteilt wurde.
 
-	"Server=mysqlvm;Integrated Security=true" 
+	"Server=mysqlvm;Integrated Security=true"
 
 Beachten Sie, dass Sie in diesem Szenario auch die IP-Adresse der VM angeben könnten.
 
@@ -102,12 +102,10 @@ Der Verbindungspfad wird von folgendem Diagramm zusammengefasst:
 
 ## Nächste Schritte
 
-Anweisungen zur Bereitstellung für diese Konnektivitätsschritte finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-classic-portal-sql.md).
-
 Wenn Sie außerdem AlwaysOn-Verfügbarkeitsgruppen zum Erzielen von hoher Verfügbarkeit und Notfallwiederherstellung einsetzen möchten, sollten Sie die Implementierung eines Listeners in Erwägung ziehen. Datenbankclients stellen dann Verbindungen mit dem Listener anstelle direkter Verbindungen mit den SQL Server-Instanzen her. Der Listener leitet Clients auf das primäre Replikat in der Verfügbarkeitsgruppe um. Weitere Informationen finden Sie unter [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
 
 Es ist wichtig, alle bewährten Sicherheitsmethoden für SQL Server bei der Ausführung auf virtuellen Azure-Computern durchzuarbeiten. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-security.md).
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

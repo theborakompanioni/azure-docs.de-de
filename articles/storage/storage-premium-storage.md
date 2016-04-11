@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads | Microsoft Azure"
-	description="Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Virtuelle Computer der Azure-DS-Serie und -GS-Serie unterstützen Premium-Speicher."
+	description="Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Virtuelle Computer der Azure-DS-, DSv2- und -GS-Serie unterstützen Storage Premium."
 	services="storage"
 	documentationCenter=""
 	authors="ms-prkhad"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/03/2016"
+	ms.date="03/28/2016"
 	ms.author="prkhad"/>
 
 
@@ -35,7 +35,7 @@ Informationen zu den ersten Schritten mit Azure Premium-Speicher finden Sie auf 
 
 ## Storage Premium-Funktionen
 
-**Storage Premium-Datenträger:** Azure Storage Premium unterstützt VM-Datenträger, die an virtuelle Azure-Computer der DS- oder GS-Serie angefügt werden können. Bei Verwendung von Storage Premium haben Sie die Wahl zwischen drei Datenträgergrößen: P10 (128 GiB), P20 (512 GiB) und P30 (1024 GiB), jeweils mit eigenen Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere dieser Datenträger an Ihren virtuellen Computer der DS- oder GS-Serie anfügen. Im folgenden Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+**Storage Premium-Datenträger:** Azure Storage Premium unterstützt VM-Datenträger, die an virtuelle Azure-Computer der DS-, DSv2- oder GS-Serie angefügt werden können. Bei Verwendung von Storage Premium haben Sie die Wahl zwischen drei Datenträgergrößen: P10 (128 GiB), P20 (512 GiB) und P30 (1024 GiB), jeweils mit eigenen Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere dieser Datenträger an Ihren virtuellen Computer der DS-, DSv2- oder GS-Serie anfügen. Im folgenden Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 **Storage Premium-Seitenblob:** Storage Premium unterstützt Azure-Seitenblobs, die verwendet werden, um persistente Datenträger für virtuelle Azure-Computer zu speichern. Storage Premium unterstützt derzeit nicht Azure Block Blobs, Azure Append Blobs, Azure Files, Azure Tables oder Azure Queues.
 
@@ -43,38 +43,38 @@ Informationen zu den ersten Schritten mit Azure Premium-Speicher finden Sie auf 
 
 **Lokal redundanter Storage Premium:** Ein Storage Premium-Konto ist lokal redundant (LRS) und verwaltet drei Kopien der Daten innerhalb einer einzelnen Region. Überlegungen zur Georeplikation bei der Verwendung von Storage Premium finden Sie in diesem Artikel im Abschnitt [Momentaufnahmen und Kopieren von Blobs](#snapshots-and-copy-blob).
 
-Azure verwendet das Speicherkonto als Container für Ihr Betriebssystem und die Datenträger. Wenn Sie einen virtuellen Azure-Computer der DS- oder GS-Serie erstellen und ein Azure Storage Premium-Konto auswählen, werden Ihr Betriebssystem und die Datenträger in diesem Speicherkonto gespeichert.
+Azure verwendet das Speicherkonto als Container für Ihr Betriebssystem und die Datenträger. Wenn Sie einen virtuellen Azure-Computer der DS-, DSv2- oder GS-Serie erstellen und ein Azure Storage Premium-Konto auswählen, werden Ihr Betriebssystem und die Datenträger in diesem Speicherkonto gespeichert.
 
 Sie können den Premium-Speicher für Datenträger auf zwei Arten verwenden:
-- Erstellen Sie zunächst ein neues Storage Premium-Konto. Wählen Sie beim Erstellen eines neuen virtuellen DS- oder GS-Computers dann das Storage Premium-Konto in den Speicherkonfigurationseinstellungen aus. Oder
-- Erstellen Sie beim Erstellen eines neuen virtuellen DS- oder GS-Computers in den Speicherkonfigurationseinstellungen ein neues Storage Premium-Konto, oder lassen Sie über das Azure-Portal ein Storage Premium-Standardkonto erstellen.
+- Erstellen Sie zunächst ein neues Storage Premium-Konto. Wählen Sie beim Erstellen eines neuen virtuellen DS-, DSv2- oder GS-Computers dann das Storage Premium-Konto in den Speicherkonfigurationseinstellungen aus. Oder
+- Erstellen Sie beim Erstellen eines neuen virtuellen DS-, DSv2- oder GS-Computers in den Speicherkonfigurationseinstellungen ein neues Storage Premium-Konto, oder lassen Sie über das Azure-Portal ein Storage Premium-Standardkonto erstellen.
 
 
 Schrittweise Anweisungen finden Sie im Abschnitt [Schnellstart](#quick-start) weiter unten in diesem Artikel.
 
 >[AZURE.NOTE] Ein Premium-Speicherkonto kann keinem benutzerdefinierten Domänennamen zugeordnet werden.
 
-## Virtuelle Computer der DS- und GS-Serie
+## Virtuelle Computer der DS-, DSv2- und GS-Serie
 
-Storage Premium unterstützt virtuelle Azure-Computer der DS- und GS-Serie. Mit der DS- oder GS-Serie der virtuellen Computer können Sie Datenträger des Standard- und Premium-Speichers verwenden. Sie können jedoch keine Datenträger des Premium-Speichers mit virtuellen Computern verwenden, die nicht zur DS- oder GS-Serie gehören. Weitere Informationen zu den verfügbaren Typen und Größen von virtuellen Azure-Computern finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md). Im Folgenden sind einige Funktionen der virtuellen Computer der DS- und GS-Serie aufgeführt.
+Storage Premium unterstützt virtuelle Azure-Computer der DS-, DSv2- und GS-Serie. Mit der DS-, DSv2- oder GS-Serie der virtuellen Computer können Sie Datenträger des Standard- und Premium-Speichers verwenden. Sie können jedoch keine Datenträger des Premium-Speichers mit virtuellen Computern verwenden, die nicht zur DS- oder GS-Serie gehören. Weitere Informationen zu den verfügbaren Typen und Größen von virtuellen Azure-Computern finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md). Im Folgenden sind einige Funktionen der virtuellen Computer der DS-, DSv2- und GS-Serie aufgeführt.
 
 **Clouddienst:** Virtuelle Computer der DS-Serie können einem Clouddienst hinzugefügt werden, der nur virtuelle Computer der DS-Serie umfasst. Fügen Sie virtuelle Computer der DS-Serie nicht einem vorhandenen Clouddienst mit virtuellen Computer hinzu, die nicht aus der DS-Serie stammen. Sie können vorhandene virtuelle Festplatten zu einem neuen Clouddienst migrieren, in dem nur virtuelle Computer der DS-Serie ausgeführt werden. Wenn Sie für den neuen Clouddienst dieselbe virtuelle IP-Adresse (VIP) beibehalten möchten, unter der die virtuellen Computer der DS-Serie gehostet werden, verwenden Sie [reservierte IP-Adressen](../virtual-network/virtual-networks-instance-level-public-ip.md). Virtuelle Computer der GS-Serie können einem vorhandenen Clouddienst hinzugefügt werden, in dem ausschließlich virtuelle Computer der G-Serie ausgeführt werden.
 
-**Betriebssystemdatenträger:** Die virtuellen Azure-Computer der DS-Serie und GS-Serie können so konfiguriert werden, dass sie einen Betriebssystemdatenträger verwenden, der entweder in einem Standard-Speicherkonto oder einem Storage Premium-Konto gehostet wird. Wenn Sie den Betriebssystemdatenträger nur zum Starten verwenden, sollten Sie die Verwendung eines auf dem Standardspeicher basierenden Betriebssystemdatenträgers in Erwägung ziehen. Dadurch ergeben sich ähnliche Kostenvorteile und Leistungsergebnisse nach dem Hochfahren wie bei Storage Premium. Wenn Sie auf dem Betriebssystemdatenträger neben dem Starten weitere Aufgaben ausführen, verwenden Sie Premium-Speicher, da er bessere Leistungsergebnisse bietet. Wenn Ihre Anwendung vom Betriebssystemdatenträger liest und auf diesen Datenträger schreibt, bietet ein auf Premium-Speicher basierender Betriebssystemdatenträger eine bessere Leistung für Ihren virtuellen Computer.
+**Betriebssystemdatenträger:** Die virtuellen Azure-Computer der DS-, DSv2- und GS-Serie können so konfiguriert werden, dass sie einen Betriebssystemdatenträger verwenden, der entweder in einem Standard-Speicherkonto oder einem Storage Premium-Konto gehostet wird. Wenn Sie den Betriebssystemdatenträger nur zum Starten verwenden, sollten Sie die Verwendung eines auf dem Standardspeicher basierenden Betriebssystemdatenträgers in Erwägung ziehen. Dadurch ergeben sich ähnliche Kostenvorteile und Leistungsergebnisse nach dem Hochfahren wie bei Storage Premium. Wenn Sie auf dem Betriebssystemdatenträger neben dem Starten weitere Aufgaben ausführen, verwenden Sie Premium-Speicher, da er bessere Leistungsergebnisse bietet. Wenn Ihre Anwendung vom Betriebssystemdatenträger liest und auf diesen Datenträger schreibt, bietet ein auf Premium-Speicher basierender Betriebssystemdatenträger eine bessere Leistung für Ihren virtuellen Computer.
 
-**Datenträger:** Auf demselben virtuellen Computer der DS-Serie bzw. GS-Serie können Sie sowohl Storage Premium- als auch Standard-Speicherdatenträger verwenden. Mit Storage Premium können Sie einen virtuellen Computer der DS- oder GS-Serie bereitstellen und mehrere persistente Datenträger an einen virtuellen Computer anhängen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen.
+**Datenträger:** Auf demselben virtuellen Computer der DS-, DSv2 - oder GS-Serie können Sie sowohl Storage Premium- als auch Standard-Speicherdatenträger verwenden. Mit Storage Premium können Sie einen virtuellen Computer der DS-, DSv2- oder GS-Serie bereitstellen und mehrere persistente Datenträger an einen virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen.
 
 > [AZURE.NOTE] Wenn Sie Daten über Premium-Speicher-Datenträger mithilfe von [Speicherplätzen](http://technet.microsoft.com/library/hh831739.aspx) verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolume aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Standardmäßig können Sie auf der Server-Manager-Benutzeroberfläche Spalten für bis zu 8 Datenträger einrichten. Wenn Sie jedoch mehr als 8 Datenträger besitzen, müssen Sie PowerShell verwenden, um das Volumen zu erstellen. Außerdem müssen Sie die Anzahl der Spalten manuell angeben. Andernfalls verwendet die Server-Manager-Benutzeroberfläche weiterhin 8 Spalten, auch wenn Sie mehr Datenträger besitzen. Wenn Sie beispielsweise 32 Datenträger in einem einzelnen Stripeset besitzen, sollten Sie 32 Spalten angeben. Sie können mit dem *NumberOfColumns*-Parameter des PowerShell-Cmdlets [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) die Anzahl der vom virtuellen Datenträger verwendeten Spalten angeben. Weitere Informationen finden Sie unter [Übersicht über Speicherplätze](http://technet.microsoft.com/library/hh831739.aspx) und [Häufig gestellte Fragen zu Speicherplätzen](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
 
-**Cache:** Virtuelle Computer der DS- und GS-Serie verfügen über eine einzigartige Cachefunktion, mit der Sie eine hohe Durchsatzrate mit geringer Latenz erzielen können, die die zugrunde liegende Storage Premium-Datenträgerleistung übersteigt. Sie können die Datenträger-Cacherichtlinie auf den Storage Premium-Datenträgern als „ReadOnly“, „ReadWrite“ oder „None“ konfigurieren. Die standardmäßige Datenträger-Cacherichtlinie lautet „ReadOnly“ für alle Premium-Datenträger und „ReadWrite“ für Betriebssystemdatenträger. Verwenden Sie jeweils die richtige Konfigurationseinstellung, um die optimale Leistung für Ihre Anwendung zu erreichen. Legen Sie beispielsweise für Datenträger mit hohem Leseaufkommen oder schreibgeschützte Datenträger, z. B. SQL Server-Datendateien, die Datenträger-Cacherichtlinie auf „ReadOnly“ fest. Legen Sie die Datenträger-Cacherichtlinie bei Datenträgern mit hohem Schreibaufkommen oder mit der Eigenschaft „Nur Schreiben“ dagegen auf „None“ fest. Weitere Informationen zur Optimierung Ihres Entwurfs mit Storage Premium finden Sie unter [Hohe Anwendungsleistung mit Storage Premium](storage-premium-storage-performance.md).
+**Cache:** Virtuelle Computer der DS-, DSv2- und GS-Serie verfügen über eine einzigartige Cachefunktion, mit der Sie eine hohe Durchsatzrate mit geringer Latenz erzielen können, die die zugrunde liegende Storage Premium-Datenträgerleistung übersteigt. Sie können die Datenträger-Cacherichtlinie auf den Storage Premium-Datenträgern als „ReadOnly“, „ReadWrite“ oder „None“ konfigurieren. Die standardmäßige Datenträger-Cacherichtlinie lautet „ReadOnly“ für alle Premium-Datenträger und „ReadWrite“ für Betriebssystemdatenträger. Verwenden Sie jeweils die richtige Konfigurationseinstellung, um die optimale Leistung für Ihre Anwendung zu erreichen. Legen Sie beispielsweise für Datenträger mit hohem Leseaufkommen oder schreibgeschützte Datenträger, z. B. SQL Server-Datendateien, die Datenträger-Cacherichtlinie auf „ReadOnly“ fest. Legen Sie die Datenträger-Cacherichtlinie bei Datenträgern mit hohem Schreibaufkommen oder mit der Eigenschaft „Nur Schreiben“ dagegen auf „None“ fest. Weitere Informationen zur Optimierung Ihres Entwurfs mit Storage Premium finden Sie unter [Hohe Anwendungsleistung mit Storage Premium](storage-premium-storage-performance.md).
 
 **Analyse:** Um die Leistung virtueller Computer anhand von Datenträgern in Storage Premium-Konten zu analysieren, können Sie im Azure-Portal die Diagnose für virtuelle Azure-Computer aktivieren. Einzelheiten erfahren Sie unter [Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/) (in englischer Sprache). Die Datenträgerleistung können Sie mithilfe von auf dem Betriebssystem basierenden Tools analysieren, z. B. [Windows-Leistungsüberwachung](https://technet.microsoft.com/library/cc749249.aspx) für virtuelle Windows-Computer und [IOSTAT](http://linux.die.net/man/1/iostat) für virtuelle Linux-Computer.
 
-**Skalierungslimits und Leistung virtueller Computer:** Jede Größe für virtuelle Computer der DS- und GS-Serie verfügt über Skalierungslimits und Leistungsspezifikationen für IOPS, Bandbreite und die Anzahl der Datenträger, die pro virtuellem Computer angefügt werden können. Stellen Sie bei Verwendung von Storage Premium-Datenträgern mit virtuellen Computern der DS- oder GS-Serie sicher, dass auf dem virtuellen Computer ausreichend IOPS und Bandbreite für den Datenverkehr des Datenträgers verfügbar sind. Bei einem virtuellen Computer vom Typ „STANDARD\_DS1“ steht für Premium-Speicherdatenträgerverkehr beispielsweise eine dedizierte Bandbreite von 32 MB pro Sekunde zur Verfügung. Ein Storage Premium-Datenträger des Typs „P10“ kann eine Bandbreite von 100 MB pro Sekunde bereitstellen. Mit einem an diesen virtuellen Computer angefügten Storage Premium-Datenträger des Typs „P10“ sind maximal 32 MB pro Sekunde möglich (nicht bis zu 100 MB pro Sekunde, wie sie der P10-Datenträger bereitstellen kann).
+**Skalierungslimits und Leistung virtueller Computer:** Jede Größe für virtuelle Computer der DS-, DSv2- und GS-Serie verfügt über Skalierungslimits und Leistungsspezifikationen für IOPS, Bandbreite und die Anzahl von Datenträgern, die pro virtuellem Computer angefügt werden können. Stellen Sie bei Verwendung von Storage Premium-Datenträgern mit virtuellen Computern der DS-, DSv2- oder GS-Serie sicher, dass auf dem virtuellen Computer ausreichend IOPS und Bandbreite für den Datenverkehr des Datenträgers verfügbar sind. Bei einem virtuellen Computer vom Typ „STANDARD\_DS1“ steht für Premium-Speicherdatenträgerverkehr beispielsweise eine dedizierte Bandbreite von 32 MB pro Sekunde zur Verfügung. Ein Storage Premium-Datenträger des Typs „P10“ kann eine Bandbreite von 100 MB pro Sekunde bereitstellen. Mit einem an diesen virtuellen Computer angefügten Storage Premium-Datenträger des Typs „P10“ sind maximal 32 MB pro Sekunde möglich (nicht bis zu 100 MB pro Sekunde, wie sie der P10-Datenträger bereitstellen kann).
 
 Derzeit ist der größte virtuelle Computer der DS-Serie der STANDARD\_DS14. Er kann bis zu 512 MB pro Sekunde auf allen Datenträgern bereitstellen. Der größte virtuelle Computer der GS-Serie ist der STANDARD\_GS5. Er kann bis zu 2.000 MB pro Sekunde auf allen Datenträgern bereitstellen. Beachten Sie, dass diese Limits nur für den Datenträgerverkehr und nicht für Cachetreffer- und Netzwerkverkehr gelten. Für den Netzwerkdatenverkehr virtueller Computer steht eine separate Bandbreite zur Verfügung. Diese unterscheidet sich von der dedizierten Bandbreite für Premium-Speicherdatenträger.
 
-Aktuelle Informationen zu maximalen IOPS- und Durchsatzwerten (d.h. Bandbreitenwerte) für virtuelle Computer der DS- und GS-Serie finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md). Informationen zu Datenträgern des Premium-Speichers und ihren IOPs und Durchsatzlimits finden Sie in diesem Artikel in der Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele bei der Verwendung des Premium-Speichers](#scalability-and-performance-targets-whde-DEing-premium-storage).
+Aktuelle Informationen zu maximalen IOPS- und Durchsatzwerten (d.h. Bandbreitenwerte) für virtuelle Computer der DS-, DSv2- und GS-Serie finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md). Informationen zu Datenträgern des Premium-Speichers und ihren IOPs und Durchsatzlimits finden Sie in diesem Artikel in der Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele bei der Verwendung des Premium-Speichers](#scalability-and-performance-targets-whde-DEing-premium-storage).
 
 ## Skalierbarkeits- und Leistungsziele für Storage Premium
 
@@ -142,7 +142,7 @@ Wenn Sie einen Datenträger für ein Premium-Speicherkonto bereitstellen, hänge
 </tbody>
 </table>
 
-> [AZURE.NOTE] Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite für den Datenverkehr des Datenträgers verfügbar ist. Informationen hierzu finden Sie weiter oben in diesem Artikel im Abschnitt [Virtuelle Computer der DS- und GS-Serie](#ds-and-gs-series-vms). Andernfalls werden der Datenträgerdurchsatz und IOPS auf niedrigere Werte beschränkt. Die Grundlage für diese Beschränkung bilden die Limits der virtuellen Computer und nicht die in der vorherigen Tabelle aufgeführten Datenträgerlimits.
+> [AZURE.NOTE] Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite für den Datenverkehr des Datenträgers verfügbar ist. Informationen hierzu finden Sie weiter oben in diesem Artikel im Abschnitt [Virtuelle Computer der DS-, DSv2- und GS-Serie](#ds-dsv2-and-gs-series-vms). Andernfalls werden der Datenträgerdurchsatz und IOPS auf niedrigere Werte beschränkt. Die Grundlage für diese Beschränkung bilden die Limits der virtuellen Computer und nicht die in der vorherigen Tabelle aufgeführten Datenträgerlimits.
 
 Es folgen einige wichtige Punkte, die Sie in Bezug auf die Skalierbarkeits- und Leistungsziele für Storage Premium wissen müssen:
 
@@ -180,7 +180,7 @@ Es folgen einige wichtige Punkte, die Sie in Bezug auf die Skalierbarkeits- und 
 </tbody>
 </table>
 
-- **Cachetreffer:** Cachetreffer werden durch die zugeordneten IOPS-/Durchsatzwerte des Datenträgers nicht eingeschränkt. Beispielsweise unterliegen Lesevorgänge, die vom Cache verarbeitet werden, bei Verwendung eines Datenträgers mit der Cacheeinstellung ReadOnly für einen virtuellen Computer der DS- oder GS-Serie nicht den Einschränkungen für Storage Premium-Datenträger. Daher können Sie einen sehr hohen Durchsatz mit einem Datenträger erzielen, wenn der Workload vorwiegend aus Lesevorgängen besteht. Beachten Sie, dass für den Cache separate IOPS-/Durchsatzlimits auf Ebene des virtuellen Computers basierend auf der Größe des virtuellen Computers gelten. Virtuelle Computer der DS-Serie bieten etwa 4.000 IOPS und 33 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs. Virtuelle Computer der GS-Serie weisen eine Beschränkung von 5.000 IOPS und 50 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs auf.
+- **Cachetreffer:** Cachetreffer werden durch die zugeordneten IOPS-/Durchsatzwerte des Datenträgers nicht eingeschränkt. Beispielsweise unterliegen Lesevorgänge, die vom Cache verarbeitet werden, bei Verwendung eines Datenträgers mit der Cacheeinstellung ReadOnly für einen virtuellen Computer der DS-, DSv2- oder GS-Serie nicht den Einschränkungen für Storage Premium-Datenträger. Daher können Sie einen sehr hohen Durchsatz mit einem Datenträger erzielen, wenn der Workload vorwiegend aus Lesevorgängen besteht. Beachten Sie, dass für den Cache separate IOPS-/Durchsatzlimits auf Ebene des virtuellen Computers basierend auf der Größe des virtuellen Computers gelten. Virtuelle Computer der DS-Serie bieten etwa 4.000 IOPS und 33 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs. Virtuelle Computer der GS-Serie weisen eine Beschränkung von 5.000 IOPS und 50 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs auf.
 
 ## Drosselung
 Möglicherweise bemerken Sie eine Drosselung, wenn bei der IOPS oder beim Durchsatz der Anwendung die zugewiesenen Grenzwerte für einen Storage Premium-Datenträger überschritten werden oder der gesamte Datenträgerverkehr auf allen Datenträgern des virtuellen Computers das Bandbreitenlimit des Datenträgers für den virtuellen Computer überschreitet. Um die Drosselung zu verhindern, sollten Sie die Anzahl der ausstehenden E/A-Anforderungen für Datenträger einschränken, und zwar basierend auf den Skalierbarkeits- und Leistungszielen für den bereitgestellten Datenträger und auf der für den virtuellen Computer verfügbaren Datenträgerbandbreite.
@@ -340,7 +340,7 @@ Bei der Verwendung des Premium-Speichers gelten die folgenden Abrechnungserwägu
 
 **Ausgehende Datenübertragungen:** [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 
-Ausführliche Informationen zu den Preisen für den Premium-Speicher und für virtuelle Computern der DS- und der GS-Serie finden Sie unter:
+Ausführliche Informationen zu den Preisen für Storage Premium und für virtuelle Computer der DS-, DSv2- und GS-Serie finden Sie unter:
 
 - [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Preisgestaltung für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/)
@@ -350,6 +350,7 @@ Ausführliche Informationen zu den Preisen für den Premium-Speicher und für vi
 ## Erstellen und Verwenden eines Premium-Speicherkontos für den Datenträger eines virtuellen Computers
 
 In diesem Abschnitt werden die folgenden Szenarios unter Verwendung des Azure-Portals, von Azure PowerShell und der Azure-Befehlszeilenschnittstelle veranschaulicht:
+
 - Gewusst wie: Erstellen eines Storage Premium-Kontos.
 - Gewusst wie: Erstellen eines virtuellen Computers und Anfügen eines Datenträgers an den virtuellen Computer bei Verwendung von Storage Premium.
 - Gewusst wie: Ändern der Datenträger-Cacherichtlinie eines an einen virtuellen Computer angefügten Datenträgers.
@@ -376,11 +377,11 @@ In diesem Abschnitt wird gezeigt, wie ein Storage Premium-Konto mit dem Azure-Po
 
 #### II. Erstellen eines virtuellen Azure-Computers über das Azure-Portal
 
-Sie müssen einen virtuellen Computer der DS- oder GS-Serie erstellen, um Storage Premium verwenden zu können. Führen Sie die unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-tutorial.md) beschriebenen Schritte aus, um einen neuen virtuellen Computer der DS- oder GS-Serie zu erstellen.
+Sie müssen einen virtuellen Computer der DS-, DSv2- oder GS-Serie erstellen, um Storage Premium verwenden zu können. Führen Sie die unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) beschriebenen Schritte aus, um einen neuen virtuellen Computer der DS-, DSv2- oder GS-Serie zu erstellen.
 
 #### III. Anfügen eines Storage Premium-Datenträgers über das Azure-Portal
 
-1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen Computer der DS- oder GS-Serie im Azure-Portal.
+1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen Computer der DS-, DSv2- oder GS-Serie im Azure-Portal.
 2. Navigieren Sie unter **Alle Einstellungen** für den virtuellen Computer zu **Datenträger**, und klicken Sie auf **Neuen anfügen**.
 3. Geben Sie den Namen des Datenträgers ein, und wählen Sie unter **Typ** die Option **Premium** aus. Wählen Sie die gewünschte Einstellung für **Größe** und **Hostzwischenspeicherung** aus.
 
@@ -390,7 +391,7 @@ Weitere ausführlichere Schritte finden Sie unter [Gewusst wie: Anfügen eines D
 
 #### IV. Ändern der Datenträger-Cacherichtlinie über das Azure-Portal
 
-1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen Computer der DS- oder GS-Serie im Azure-Portal.
+1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen Computer der DS-, DSv2- oder GS-Serie im Azure-Portal.
 2. Navigieren Sie unter „Alle Einstellungen“ für den virtuellen Computer zu „Datenträger“, und klicken Sie auf den zu ändernden Datenträger.
 3. Legen Sie für die Option „Hostzwischenspeicherung“ den gewünschten Wert fest: „None“, „ReadOnly“ oder „ReadWrite“.
 
@@ -423,7 +424,7 @@ Erstellen Sie im nächsten Schritt einen neuen virtuellen Computer der DS-Serie,
 
 #### III. Anfügen eines Storage Premium-Datenträgers über Azure PowerShell
 
-Wenn Sie mehr Speicherplatz für Ihren virtuellen Computer benötigen, fügen Sie einen neuen Datenträger an einen vorhandenen virtuellen Computer der DS- oder GS-Serie an, nachdem dieser erstellt wurde, indem Sie die folgenden PowerShell-Cmdlets im Konsolenfenster ausführen:
+Wenn Sie mehr Speicherplatz für Ihren virtuellen Computer benötigen, fügen Sie einen neuen Datenträger an einen vorhandenen virtuellen Computer der DS-, DSv2- oder GS-Serie an, nachdem dieser erstellt wurde, indem Sie die folgenden PowerShell-Cmdlets im Konsolenfenster ausführen:
 
     	$storageAccount = "yourpremiumaccount"
     	$vmName ="yourVM"
@@ -478,13 +479,13 @@ Beachten Sie, dass die Cacherichtlinienoptionen „ReadOnly“, „None“ oder 
 
 ## Häufig gestellte Fragen
 
-1. **Kann ich Storage Premium- sowie Standard-Datenträger an einen virtuellen Computer der DS- und GS-Serie anfügen?**
+1. **Kann ich Storage Premium- sowie Standard-Datenträger an einen virtuellen Computer der DS-, DSv2- und GS-Serie anfügen?**
 
-	Ja. Sie können Storage Premium- und Standard-Datenträger an einen virtuellen Computer der DS- und GS-Serie anfügen.
+	Ja. Sie können Storage Premium- und Standard-Datenträger an einen virtuellen Computer der DS-, DSv2- und GS-Serie anfügen.
 
-2. **Kann ich Storage Premium- sowie Standard-Datenträger an einen virtuellen Computer der D- und G-Serie anfügen?**
+2. **Kann ich Storage Premium- sowie Standard-Datenträger an einen virtuellen Computer der D-, Dv2- oder G-Serie anfügen?**
 
-	Nein. An virtuelle Computer, die nicht aus der DS- oder GS-Serie stammen, können Sie nur Standard-Datenträger anfügen.
+	Nein. An virtuelle Computer, die nicht aus der DS-, DSv2- oder GS-Serie stammen, können Sie nur Standard-Datenträger anfügen.
 
 3. **Welche Kosten fallen für mich an, wenn ich einen Storage Premium-Datenträger von einer vorhandenen virtuellen Festplatte mit einer Größe von 80 GB erstelle?**
 
@@ -494,17 +495,17 @@ Beachten Sie, dass die Cacherichtlinienoptionen „ReadOnly“, „None“ oder 
 
 	Es gibt Festkosten für jede Datenträgergröße, die mit bestimmten IOPS- und Durchsatzwerten bereitgestellt wird. Gegebenenfalls fallen nur für die ausgehende Bandbreite und die Momentaufnahmenkapazität weitere Kosten an. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-5. **Wo kann ich die Startdiagnose für meinen virtuellen Computer der DS- oder GS-Serie speichern?**
+5. **Wo kann ich die Startdiagnose für meinen virtuellen Computer der DS-, DSv2- oder GS-Serie speichern?**
 
-	Erstellen Sie ein Standardspeicherkonto, um die Startdiagnose Ihres virtuellen Computers der DS- oder GS-Serie zu speichern.
+	Erstellen Sie ein Standardspeicherkonto, um die Startdiagnose Ihres virtuellen Computers der DS-, DSv2- oder GS-Serie zu speichern.
 
 6. **Welche IOPS- und Durchsatzwerte erhalte ich über den Datenträgercache?**
 
 	Die kombinierte Beschränkung für den Cache und die lokale SSD für virtuelle Computer der DS-Serie liegt bei 4.000 IOPS pro Kern und 33 MB pro Sekunde und Kern. Virtuelle Computer der GS-Serie bieten 5.000 IOPS pro Kern und 50 MB pro Sekunde und Kern.
 
-7. **Was ist die lokale SSD in einem virtuellen Computer der DS- oder GS-Serie?**
+7. **Was ist die lokale SSD in einem virtuellen Computer der DS-, DSv2- oder GS-Serie?**
 
-	Bei der lokalen SSD handelt es sich um einen temporären Speicher, der in einem virtuellen Computer der DS- oder GS-Serie enthalten ist. Für diesen temporären Speicher fallen keine zusätzlichen Kosten an. Es wird davon abgeraten, dass Sie diesen temporären Speicher (die lokale SSD) zum Speichern Ihrer Anwendungsdaten verwenden, da die Daten in Azure Blob Storage nicht permanent gespeichert werden.
+	Bei der lokalen SSD handelt es sich um einen temporären Speicher, der in einem virtuellen Computer der DS-, DSv2- oder GS-Serie enthalten ist. Für diesen temporären Speicher fallen keine zusätzlichen Kosten an. Es wird davon abgeraten, dass Sie diesen temporären Speicher (die lokale SSD) zum Speichern Ihrer Anwendungsdaten verwenden, da die Daten in Azure Blob Storage nicht permanent gespeichert werden.
 
 8. **Kann ich mein Standard-Speicherkonto in ein Storage Premium-Konto umwandeln?**
 
@@ -537,4 +538,4 @@ Weitere Informationen zu Azure Storage Premium finden Sie in den folgenden Artik
 [Image1]: ./media/storage-premium-storage/Azure_pricing_tier.png
 [Image2]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -64,8 +64,7 @@ Zum Konfigurieren der Integration von Secure Deliver in Azure AD müssen Sie Sec
 4. Klicken Sie unten auf der Seite auf **Hinzufügen**.<br><br> ![Anwendungen][3]<br>
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.<br><br> ![Anwendungen][4]<br>
 6. Geben Sie im Suchfeld **Secure Deliver** ein.<br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_01.png)<br>
-7. Wählen Sie im Ergebnisbereich **Secure Deliver** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>
-
+7. Wählen Sie im Ergebnisbereich **Secure Deliver** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_02.png)<br>
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Secure Deliver konfiguriert und getestet werden kann.
 
@@ -76,8 +75,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Secure Del
 
 1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines Secure Deliver-Testbenutzers](#creating-a-secure-deliver-test-user)**, um eine Entsprechung von Britta Simon in Secure Deliver zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
+4. **[Erstellen eines Secure Deliver-Testbenutzers](#creating-a-secure-deliver-test-user)** – um eine Entsprechung von Britta Simon in Secure Deliver zu erstellen, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -95,14 +94,14 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** folgende Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_04.png) <br>
 
 
-    a. Geben Sie im Textfeld „Anmelde-URL“ die URL, die von Ihren Benutzern zur Anmeldung bei der Secure Deliver-Anwendung verwendet wird, nach folgendem Muster ein: **https://<Unternehmensname>.i-securedeliver.jp/sd/<Unternehmensname>**.
+    a. Geben Sie im Textfeld „Anmelde-URL“ die URL, die von Ihren Benutzern zur Anmeldung bei der Secure Deliver-Anwendung verwendet wird, nach folgendem Muster ein: **https://<Name des Unternehmens>.i-securedeliver.jp/sd/<Name des Unternehmens>**.
 
     b. Klicken Sie auf **Weiter**.
 
 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Secure Deliver** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_05.png) <br>
 
-    a. Klicken Sie auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer.
+    a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
     b. Klicken Sie auf **Weiter**.
 
@@ -156,7 +155,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_07.png) <br>
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_08.png) <br>
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_08.png) <br>
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -175,7 +174,7 @@ Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch
 
 ### Zuweisen des Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf Secure Deliver erhält. <br><br>![Benutzer zuweisen][200] <br>
+Das Ziel dieses Abschnitts besteht darin, Britta Simon das einmalige Anmelden bei Azure zu ermöglichen, indem sie Zugriff auf Secure Deliver erhält. <br><br>![Benutzer zuweisen][200] <br>
 
 **Um Britta Simon Secure Deliver zuzuweisen, führen Sie die folgenden Schritte aus:**
 
@@ -220,4 +219,4 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

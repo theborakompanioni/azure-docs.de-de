@@ -16,8 +16,6 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
-
-
 # PowerShell-Skript zum Ermitteln der für einen Pool für elastische Datenbanken geeigneten Datenbanken
 
 Mit dem PowerShell-Skript in diesem Artikel werden die zusammengefassten eDTU-Werte für Benutzerdatenbanken auf einem SQL-Datenbankserver geschätzt. Mit dem Skript werden Daten erfasst, während es ausgeführt wird. Für eine typische Produktionsworkload sollten Sie das Skript für mindestens einen Tag ausführen. Idealerweise sollten Sie das Skript für eine Dauer ausführen, die die typische Workload der Datenbanken darstellt – also ausreichend lange, um die Daten zu erfassen, die einer normalen und einer maximalen Auslastung der Datenbanken entsprechen. Wenn Sie das Skript eine Woche oder auch länger ausführen, erhalten Sie wahrscheinlich eine genauere Schätzung.
@@ -268,4 +266,4 @@ Nach Abschluss des Skripts wird die geschätzte Anzahl eDTUs ausgegeben, die fü
     }
         
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="03/30/2016" 
 	ms.author="arramac"/>
 
 # Partitionieren von Daten in DocumentDB mit dem .NET SDK
 
-Azure DocumentDB ist ein Dokumentdatenbankdienst, der Ihnen durch Bereitstellung von Sammlungen mithilfe von [SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) und [REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) (auch **Sharding** genannt) eine nahtlose Skalierung Ihres Kontos ermöglicht. Um die Entwicklung von partitionierten Anwendungen zu vereinfachen und die Menge der für Partitionierungsaufgaben erforderlichen Codebausteine zu reduzieren, wurden Funktionen in das .NET-, das Node.js- und das Java-SDK eingefügt, mit denen sich Anwendungen leichter erstellen lassen, die über mehrere Partitionen horizontal hochskaliert werden.
+Azure DocumentDB unterstützt Sammlungen, die zentral hochskaliert werden und somit [über viel Speicherplatz und Durchsatz verfügen können](documentdb-partition-data.md). Es gibt allerdings Anwendungsfälle, in denen es vorteilhaft ist, das Partitionierungsverhalten präzise kontrollieren zu können. Um die für Partitionierungsaufgaben erforderlichen Codebausteine zu reduzieren, wurden Funktionen in die .NET-, Node.js- und Java-SDKs eingefügt, mit denen sich Anwendungen leichter erstellen lassen, die über mehrere Sammlungen horizontal hochskaliert werden.
 
 In diesem Artikel werden die Klassen und Schnittstellen im .NET SKDK betrachtet, und es wird erläutert, wie Sie diese für die Entwicklung partitionierter Anwendungen verwenden können
 
@@ -26,8 +26,8 @@ In diesem Artikel werden die Klassen und Schnittstellen im .NET SKDK betrachtet,
 
 Bevor wir genauer auf das Thema Partitionierung eingehen, betrachten wir einige grundlegende DocumentDB-Konzepte in Zusammenhang mit der Partitionierung. Jedes Azure DocumentDB-Datenbankkonto besteht aus einer Reihe von Datenbanken, die jeweils mehrere Sammlungen umfassen, die wiederum gespeicherte Prozeduren, Trigger, UDFs, Dokumente und zugehörige Anhänge enthalten können. Sammlungen können in DocumentDB als Partitionen behandelt werden und weisen folgende Merkmale auf:
 
-- Sammlungen sind physische Partitionen, nicht lediglich logische Container. Deshalb ergibt sich ein Leistungsvorteil beim Abfragen oder Verarbeiten von Dokumenten, die sich in der gleichen Sammlung befinden.
-- Sammlungen sind die Grenzen für ACID-Transaktionen, also gespeicherte Prozeduren und Trigger.
+- Sammlungen bieten Leistungsisolation. Es entsteht daher ein Leistungsvorteil, wenn Sie ähnliche Dokumente innerhalb der gleichen Auflistung sortieren. Für Zeitreihendaten möchten Sie z.B. Daten für den letzten Monat platzieren, die häufig in einer Sammlung mit höherem bereitgestellten Durchsatz abgefragt werden, während ältere Daten innerhalb von Sammlungen mit niedrigem bereitgestellten Durchsatz platziert werden.
+- ACID-Transaktionen, also z.B. gespeicherte Prozeduren und Trigger, können keine Sammlung umfassen. Transaktionen werden in einem einzelnen Partitionsschlüsselwert in einer Sammlung angelegt.
 - Sammlungen erzwingen kein Schema und können daher für JSON-Dokumente des gleichen Typs oder unterschiedlicher Typen verwendet werden.
 
 Ab Version [1\.1.0 des Azure DocumentDB .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) können Sie Dokumentvorgänge direkt in einer Datenbank durchführen. Intern verwendet der [DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) den "PartitionResolver", den Sie angegeben haben, damit die Datenbank Anforderungen an die entsprechende Sammlung weiterleitet.
@@ -102,13 +102,13 @@ Bei der Hashpartitionierung werden basierend auf dem Wert einer Hashfunktion Par
 
 Ein einfaches Hashpartitionierungsschema über *N* Sammlungen könnte darin bestehen, dass für ein beliebiges Dokument *hash(d) mod N* berechnet wird, um zu ermitteln, in welcher Sammlung es sich befindet. Ein Problem mit diesem einfachen Verfahren ist jedoch, dass es nicht gut funktioniert, wenn Sie neue Sammlungen hinzufügen oder Sammlungen entfernen, da dafür fast alle Daten neu zusammengestellt werden müssten. Das [konsistente Hashing](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.23.3738) ist ein bekannter Algorithmus, der dieses Problem löst, indem ein Hashingschema implementiert wird, das die Anzahl der während des Erstellens oder Entfernens von Sammlungen erforderlichen Datenverschiebungen minimiert.
 
-Die [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)-Klasse implementiert die Logik zum Erstellen eines konsistenten Hashrings über die in der [IHashGenerator](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.ihashgenerator.aspx)-Schnittstelle angegebene Hashfunktion. Standardmäßig verwendet der "HashPartitionResolver" eine MD5-Hashfunktion, Sie können diese jedoch durch Ihre eigene Hashingimplementierung ersetzen. Der "HashPartitionResolver" erstellt intern für jede Sammlung 16 Hashes oder "virtuelle Knoten" innerhalb des Hashrings, um eine einheitlichere Verteilung von Dokumenten über die Sammlung zu erreichen. Sie können diese Zahl jedoch variieren, um Datenasymmetrien und die Menge an clientseitigen Berechnungsvorgängen auszubalancieren.
+Die [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)-Klasse implementiert die Logik zum Erstellen eines konsistenten Hashrings über die in der [IHashGenerator](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.ihashgenerator.aspx)-Schnittstelle angegebene Hashfunktion. Standardmäßig verwendet der "HashPartitionResolver" eine MD5-Hashfunktion, Sie können diese jedoch durch Ihre eigene Hashingimplementierung ersetzen. Der "HashPartitionResolver" erstellt intern für jede Sammlung 16 Hashes oder "virtuelle Knoten" innerhalb des Hashrings, um eine einheitlichere Verteilung von Dokumenten über die Sammlung zu erreichen. Sie können diese Zahl jedoch variieren, um Datenasymmetrien und die Menge an clientseitigen Berechnungsvorgängen auszubalancieren.
 
 **Konsistentes Hashing mit "HashPartitionResolver":** ![Diagramm zur Veranschaulichung, wie "HashPartitionResolver" einen Hashring erstellt](media/documentdb-sharding/HashPartitionResolver.JPG)
 
 ## RangePartitionResolver
 
-In einer Bereichspartitionierung werden Partitionen basierend darauf zugewiesen, ob der Partitionsschlüssel in einem bestimmten Bereich liegt. Dies wird häufig für Partitionierungen mit time stamp-Eigenschaften verwendet (z. B. eventTime zwischen dem 1. April 2015 und dem 14. April 2015). Die [RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx)-Klasse unterstützt Sie dabei, eine Zuordnung zwischen einem "Range<T>" und einem "self-link" für eine Sammlung zu verwalten.
+In einer Bereichspartitionierung werden Partitionen basierend darauf zugewiesen, ob der Partitionsschlüssel in einem bestimmten Bereich liegt. Dies wird häufig für Partitionierungen mit time stamp-Eigenschaften verwendet (z. B. eventTime zwischen dem 1. April 2015 und dem 14. April 2015). Die [RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx)-Klasse unterstützt Sie dabei, eine Zuordnung zwischen einem "Range<T>" und einem "self-link" für eine Sammlung zu verwalten.
 
 [Range<T>](https://msdn.microsoft.com/library/azure/mt126048.aspx) ist eine einfache Klasse, die Bereiche aller Typen verwaltet, die "IComparable<T>" und "IEquatable<T>" wie etwa Zeichenfolgen oder Zahlen implementieren. Für alle Lese- und Erstellungsvorgänge können Sie einen frei wählbaren Bereich übergeben. Der Resolver identifiziert alle Kandidatensammlungen, indem er die Bereiche der Partitionen identifiziert, die sich mit dem angeforderten Bereich überschneiden. Diese Funktion kann bei der Durchführung von Bereichsabfragen in Zeitreihendaten nützlich sein.
 
@@ -116,7 +116,7 @@ In einer Bereichspartitionierung werden Partitionen basierend darauf zugewiesen,
 
 ![Diagramm zur Veranschaulichung, wie die Bereichspartitionierung Anforderungen gleichmäßig auf Partitionen verteilt](media/documentdb-sharding/partition-range.png)
 
-Ein Sonderfall der Bereichspartitionierung liegt vor, wenn es sich bei dem Bereich nur um einzigen diskreten Wert handelt. Dies wird zuweilen auch als "Lookuppartitionierung" bezeichnet. Dies wird häufig zur regionsbasierten Partitionierung (z. B. die Partition für Skandinavien umfasst Norwegen, Dänemark und Schweden) oder zur Partitionierung von Mandanten in einer mehrinstanzenfähigen Anwendung verwendet.
+Ein Sonderfall der Bereichspartitionierung liegt vor, wenn es sich bei dem Bereich nur um einzigen diskreten Wert handelt. Dies wird zuweilen auch als "Lookuppartitionierung" bezeichnet. Dies wird häufig zur regionsbasierten Partitionierung (z. B. die Partition für Skandinavien umfasst Norwegen, Dänemark und Schweden) oder zur Partitionierung von Mandanten in einer mehrinstanzenfähigen Anwendung verwendet.
 
 ## Beispiele 
 
@@ -134,12 +134,11 @@ Diese Beispiele sind Open-Source-basiert, und wir freuen uns, wenn Sie Pullanfor
 >[AZURE.NOTE] Die Übertragungsrate bei der Erstellung von Sammlungen ist durch DocumentDB begrenzt, die Durchführung einiger der hier gezeigten Beispielmethoden kann also einige Minuten in Anspruch nehmen.
 
 ##Häufig gestellte Fragen
-**Warum unterstützt DocumentDB die clientseitige Partitionierung anstelle einer serverseitigen Partitionierung?**
+** Unterstützt DocumentDB serverseitige Partitionierung?**
 
-DocumentDB unterstützt die clientseitige Partitionierung aus verschiedenen Gründen:
+Ja, DocumentDB unterstützt [serverseitige Partitionierung](documentdb-partition-data.md). DocumentDB unterstützt auch die clientseitige Partitionierung über clientseitige Partitionsresolver für erweiterte Anwendungsfälle.
 
-- Es ist für Entwickler sehr schwierig, das Konzept einer Sammlung zu abstrahieren, ohne eine der drei grundlegenden Aspekte zu vernachlässigen: konsistente Indizierung/Abfragen, hohe Verfügbarkeit und ACID-Transaktionsgarantien. 
-- Dokumentendatenbanken erfordern häufig viel Flexibilität hinsichtlich der Definition von Partitionierungsstrategien, eine Voraussetzung, die sich durch einen serverseitigen Ansatz möglicherweise nicht erfüllen lässt. 
+** Wann sollte ich serverseitige und wann clientseitige Partitionierung verwenden?** In den meisten Anwendungsfällen empfehlen wir die Verwendung einer serverseitigen Partitionierung, da sie die Verwaltungsaufgaben für das Partitionieren von Daten und das Routing von Anforderungen übernimmt. Wenn Sie jedoch Bereichspartitionierung benötigen oder einen spezialisierten Anwendungsfall für die Leistungsisolation zwischen verschiedenen Werten von Partitionsschlüsseln haben, ist die clientseitige Partitionierung möglicherweise der beste Ansatz.
 
 **Wie füge ich eine Sammlung zu meinem Partitionierungsschema hinzu oder entferne sie daraus?**
 
@@ -154,13 +153,13 @@ Sie können die Partitionierungszustände als JSON serialisieren und in Konfigur
 Sie können "PartitionResolver" verketten, indem Sie Ihren eigenen "IPartitionResolver" implementieren, der intern einen oder mehrere vorhandene Resolver verwendet. Ein Beispiel finden Sie im "TransitionHashPartitionResolver" im Beispielprojekt.
 
 ##Referenzen
-* [Partitionieren von Codebeispielen in GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning)
-* [Partitionieren von Daten mit DocumentDB-Konzepten](documentdb-partition-data.md)
+* [Partitionieren von Daten mit DocumentDB](documentdb-partition-data.md)
 * [DocumentDB-Sammlungen und -Leistungsstufen](documentdb-performance-levels.md)
+* [Partitionieren von Codebeispielen in GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning)
 * [DocumentDB .NET SDK-Dokumentation in MSDN](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB-Einschränkungen](documentdb-limits.md)
 * [DocumentDB-Blog mit Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0330_2016-->

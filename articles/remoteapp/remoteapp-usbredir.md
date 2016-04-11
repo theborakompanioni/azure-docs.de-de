@@ -12,14 +12,14 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="02/11/2016" 
+    ms.date="03/28/2016" 
     ms.author="elizapo" />
 
 
 
 # Wie werden USB-Geräte in Azure RemoteApp umgeleitet?
 
-Die Geräteumleitung ermöglicht Benutzern das Verwenden der an ihren Computer oder ihr Tablet angeschlossenen USB-Geräte mit den Apps in Azure RemoteApp. Wenn Sie z. B. Skype über Azure RemoteApp freigegeben haben, müssen die Benutzer ihre Gerätekameras verwenden können.
+Die Geräteumleitung ermöglicht Benutzern das Verwenden der an ihren Computer oder ihr Tablet angeschlossenen USB-Geräte mit den Apps in Azure RemoteApp. Wenn Sie z. B. Skype über Azure RemoteApp freigegeben haben, müssen die Benutzer ihre Gerätekameras verwenden können.
 
 Bevor Sie fortfahren, lesen Sie zunächst die Informationen zur USB-Umleitung unter [Verwenden von Umleitungen in Azure RemoteApp](remoteapp-redirection.md). Der empfohlene Befehl „nusbdevicestoredirect:s:*“ funktioniert jedoch nicht bei USB-Webcams und möglicherweise auch nicht bei einigen USB-Druckern oder -Multifunktionsgeräten. Es ist vorgesehen, dass der Azure RemoteApp-Administrator aus Sicherheitsgründen die Umleitung entweder über die Geräteklassen-GUID oder Geräte-Instanz-ID aktivieren muss, ehe die Benutzer diese Geräte nutzen können.
 
@@ -48,11 +48,11 @@ Eine bessere Möglichkeit bzw. die zweite Option ist, die folgenden Schritte zu 
 
 Beispiel:
 
-		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "usbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s:<Class Guid value>"
 
 Sie können mehrere Geräteumleitungen in einem Cmdlet zusammenfassen. Beispiel: Zum Umleiten von lokalem Speicher und einer USB-Webcam sieht das Cmdlet folgendermaßen aus:
 
-		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`usbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:<Class Guid value>"
 
 Wenn Sie die Geräteumleitung anhand der Klassen-GUID festlegen, werden alle Geräte umgeleitet, die der Klassen-GUID in der angegebenen Sammlung entsprechen. Wenn es beispielsweise mehrere Computer im lokalen Netzwerk gibt, die die gleiche USB-Webcam haben, können Sie mithilfe eines einzelnen Cmdlets alle Webcams umleiten.
 
@@ -65,16 +65,16 @@ Der schwierigste Teil dieser Methode ist das Ermitteln der USB-Geräteinstanz-ID
 1. Aktivieren Sie die Umleitung in der Remotedesktopsitzung wie unter [Wie kann ich meine Geräte und Ressourcen in einer Remotedesktopsitzung verwenden?](http://windows.microsoft.com/de-DE/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session) beschrieben.
 2. Öffnen Sie eine Remotedesktopverbindung, und klicken Sie auf **Optionen anzeigen**.
 3. Klicken Sie auf **Speichern unter**, um die aktuellen Verbindungseinstellungen in einer RDP-Datei zu speichern. ![Speichern der Einstellungen als RDP-Datei](./media/remoteapp-usbredir/ra-saveasrdp.png)
-4. Wählen Sie einen Dateinamen und Speicherort aus, z. B. „MeineVerbindung.rdp“ und „Dieser PC\\Dokumente“, und speichern Sie die Datei.
+4. Wählen Sie einen Dateinamen und Speicherort aus, z. B. „MeineVerbindung.rdp“ und „Dieser PC\\Dokumente“, und speichern Sie die Datei.
 5. Öffnen Sie die Datei „MeineVerbindung.rdp“ in einem Text-Editor, und suchen Sie die Instanz-ID des Geräts, das Sie umleiten möchten.
 
 Verwenden Sie anschließend die Instanz-ID im folgenden Cmdlet:
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "usbdevicestoredirect:s: USB<Device InstanceID value>"
+	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB<Device InstanceID value>"
 
 
 
 ### Helfen Sie uns, Ihnen zu helfen 
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

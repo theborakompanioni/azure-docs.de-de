@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/03/2016" 
+   ms.date="03/23/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Erste Schritte mit Transparent Data Encryption (TDE)
@@ -32,7 +32,7 @@ Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren
 1. Stellen Sie eine Verbindung mit der Datenbank *master* auf dem Server her, auf dem die Datenbank gehostet wird. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
 
-```
+```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
@@ -43,7 +43,7 @@ Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu deaktivier
 1. Stellen Sie eine Verbindung mit der Datenbank *master* her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
 
-```
+```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um den Verschlüsselungsstatus für ein 
 1. Stellen Sie eine Verbindung mit der Datenbank *master* oder einer Instanzdatenbank her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
 
-```
+```sql
 SELECT
 	[name],
 	[is_encrypted]
@@ -73,4 +73,4 @@ Das Ergebnis ```1``` steht für eine verschlüsselte Datenbank, und mit ```0``` 
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -1,5 +1,5 @@
 
-In diesem Artikel wird gezeigt, wie mit Azure-Ressourcen-Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle (Azure-CLI) die folgenden allgemeinen Aufgaben zum Bereitstellen und Verwalten von virtuellen Azure-Computern automatisiert werden. Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](virtual-machines-linux-app-frameworks.md).
+In diesem Artikel wird gezeigt, wie mit Azure-Ressourcen-Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle (Azure-CLI) die folgenden allgemeinen Aufgaben zum Bereitstellen und Verwalten von virtuellen Azure-Computern automatisiert werden. Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 
 
 - [Schnelles Erstellen eines virtuellen Computers in Azure](#quick-create-a-vm-in-azure)
@@ -35,9 +35,9 @@ Sie können die Azure-CLI mit dem folgenden [Docker-Image](https://registry.hub.
 
 Wenn Sie noch kein Azure-Abonnement aber ein MDSN-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren. Oder Sie registrieren sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-[Melden Sie sich jetzt interaktiv bei Ihrem Azure-Konto an](../xplat-cli-connect.md#use-the-log-in-method), indem Sie `azure login` eingeben. Folgen Sie dann den Aufforderungen für eine interaktive Anmeldung bei Ihrem Azure-Konto.
+[Melden Sie sich jetzt interaktiv bei Ihrem Azure-Konto an](../articles/xplat-cli-connect.md#use-the-log-in-method), indem Sie `azure login` eingeben. Folgen Sie dann den Aufforderungen für eine interaktive Anmeldung bei Ihrem Azure-Konto.
 
-> [AZURE.NOTE] Wenn Sie über eine Arbeits- oder Schulkonto-ID verfügen und wissen, dass die zweistufige Authentifizierung nicht aktiviert ist, können Sie **auch** `azure login -u` zusammen mit der Arbeits- oder Schulkonto-ID verwenden, um sich *ohne* interaktive Sitzung anzumelden. Wenn Sie nicht über eine Arbeits- oder Schulkonto-ID verfügen, können Sie [eine Arbeits- oder Schulkonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](virtual-machines-windows-create-aad-work-id.md), um sich in gleicher Weise anzumelden.
+> [AZURE.NOTE] Wenn Sie über eine Arbeits- oder Schulkonto-ID verfügen und wissen, dass die zweistufige Authentifizierung nicht aktiviert ist, können Sie **auch** `azure login -u` zusammen mit der Arbeits- oder Schulkonto-ID verwenden, um sich *ohne* interaktive Sitzung anzumelden. Wenn Sie nicht über eine Arbeits- oder Schulkonto-ID verfügen, können Sie [eine Arbeits- oder Schulkonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md), um sich in gleicher Weise anzumelden.
 
 Ihr Konto kann über mehrere Abonnements verfügen. Sie können Ihre Abonnements durch Eingabe von `azure account list` auflisten, was etwa wie folgt aussieht:
 
@@ -75,7 +75,7 @@ Sie können dann den gesamten Lebenszyklus der Gruppenressourcen mithilfe von Re
 - Vorgänge zu überwachen.
 - Ressourcen mit zusätzlichen Metadaten zur besseren Nachverfolgung auszuzeichnen.
 
-Weitere Informationen zu Azure-Ressourcengruppen und wie Sie sie nutzen können finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md). Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
+Weitere Informationen zu Azure-Ressourcengruppen und wie Sie sie nutzen können finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/resource-group-overview.md). Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../articles/resource-group-authoring-templates.md).
 
 ## <a id="quick-create-a-vm-in-azure"></a>Aufgabe: Schnelles Erstellen eines virtuellen Computers in Azure
 
@@ -97,7 +97,7 @@ Erstellen Sie zunächst die Ressourcengruppe.
     info:    group create command OK
 
 
-Zweitens benötigen Sie ein Image. Informationen zur Suche eines Images mit der Azure-CLI finden Sie unter [Navigieren zwischen und Aussuchen von Azure Virtual Machine-Images mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-cli-ps-findimage.md). Doch für diesen Artikel finden Sie hier eine kurze Liste beliebter Images. Für diese Schnellerfassung verwenden wir das CoreOSs Stable-Image.
+Zweitens benötigen Sie ein Image. Informationen zur Suche eines Images mit der Azure-CLI finden Sie unter [Navigieren zwischen und Aussuchen von Azure Virtual Machine-Images mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md). Doch für diesen Artikel finden Sie hier eine kurze Liste beliebter Images. Für diese Schnellerfassung verwenden wir das CoreOSs Stable-Image.
 
 > [AZURE.NOTE] Sie können für "ComputeImageVersion" sowohl in der Vorlagensprache als auch in der Azure-Befehlszeilenschnittstelle auch einfach "latest" als Parameter angeben. Dies ermöglicht es Ihnen, immer die neueste gepatchte Version des Image zu verwenden, ohne Ihre Skripts oder Vorlagen ändern zu müssen. Dies wird nachfolgend gezeigt.
 
@@ -666,9 +666,9 @@ Auch hier müssen Sie die Werte finden, die Sie für die Parameter eingeben, die
 
 Natürlich benötigen Sie dafür eine VHD-Datei. Sie können entweder eine bereits vorhandene Datei in Azure verwenden oder eine hochladen.
 
-Informationen zu Windows-basierten virtuellen Computern finden Sie in [Erstellen und Hochladen einer Windows Server-VHD in Azure](virtual-machines-windows-classic-createupload-vhd.md).
+Informationen zu Windows-basierten virtuellen Computern finden Sie in [Erstellen und Hochladen einer Windows Server-VHD in Azure](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md).
 
-Anweisungen für Linux-basierte virtuelle Computer finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md).
+Anweisungen für Linux-basierte virtuelle Computer finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md).
 
 ### Schritt 3: Erstellen des virtuellen Computers mit der Vorlage
 
@@ -1160,7 +1160,7 @@ Beachten Sie, dass erneute Bereitstellungen in einer Ressourcengruppe möglich s
 
 ## <a id="show-the-log-for-a-resource-group-deployment"></a>Aufgabe: Anzeigen des Protokolls zu einer Ressourcengruppenbereitstellung
 
-Dieses tritt häufig beim Erstellen oder Verwenden von Vorlagen auf. Der Aufruf zur Anzeige von Bereitstellungsprotokollen für eine Gruppe ist `azure group log show <groupname>`. Es werden eine Menge Informationen angezeigt, die für das Verständnis hilfreich sind, warum etwas passiert ist oder auch nicht. (Weitere Informationen zur Problembehandlung für Ihre Bereitstellungen sowie andere Informationen zu Problemen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-group-deploy-debug.md).)
+Dieses tritt häufig beim Erstellen oder Verwenden von Vorlagen auf. Der Aufruf zur Anzeige von Bereitstellungsprotokollen für eine Gruppe ist `azure group log show <groupname>`. Es werden eine Menge Informationen angezeigt, die für das Verständnis hilfreich sind, warum etwas passiert ist oder auch nicht. (Weitere Informationen zur Problembehandlung für Ihre Bereitstellungen sowie andere Informationen zu Problemen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](../articles/resource-manager-troubleshoot-deployments-cli.md).)
 
 Auf bestimmte Ziel-Fehler z. B. können Sie Tools wie **Jq** verwenden, um Dinge genauer abzufragen. Zum Beispiel, welche individuellen Fehler Sie korrigieren müssen. Im folgenden Beispiel wird **jq** zum Analysieren eines Bereitstellungsprotokolls für die **lbgroup** verwendet, um nach Fehlern zu suchen.
 
@@ -1243,7 +1243,7 @@ Suchen Sie dann nach "myVM1":
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>Aufgabe: Anmelden bei einem Linux-basierten virtuellen Computer
 
-In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](virtual-machines-linux-ssh-from-linux.md).
+In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md).
 
 ## <a id="stop-a-virtual-machine"></a>Aufgabe: Anhalten eines virtuellen Computers
 
@@ -1276,9 +1276,9 @@ Anschließend müssen Sie den Datenträger wie gewohnt in Linux (oder Windows) e
 
 ## Nächste Schritte
 
-Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit dem **arm**-Modus finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](xplat-cli-azure-resource-manager.md). Weitere Informationen zu Azure-Ressourcen und deren Konzepten erhalten Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
+Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit dem **arm**-Modus finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](../articles/xplat-cli-azure-resource-manager.md). Weitere Informationen zu Azure-Ressourcen und deren Konzepten erhalten Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/resource-group-overview.md).
 
 
-Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](virtual-machines-linux-app-frameworks.md).
+Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

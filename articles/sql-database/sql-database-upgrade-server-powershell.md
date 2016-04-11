@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="Durchführen eines Upgrades auf Azure SQL-Datenbank V12 mithilfe von PowerShell | Microsoft Azure" 
-	description="Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der zugehörigen Datenbanken in einen Pool für elastische Datenbanken mithilfe von PowerShell." 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jeffreyg" 
+<properties
+	pageTitle="Durchführen eines Upgrades auf Azure SQL-Datenbank V12 mithilfe von PowerShell | Microsoft Azure"
+	description="Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der zugehörigen Datenbanken in einen Pool für elastische Datenbanken mithilfe von PowerShell."
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jeffreyg"
 	editor=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/23/2016" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/18/2016"
 	ms.author="sstein"/>
 
 # Upgrade auf Azure SQL-Datenbank V12 mithilfe von PowerShell
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-upgrade-server-portal.md)
+- [Azure-Portal](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
@@ -42,7 +42,7 @@ Beachten Sie, dass Ihre Datenbanken während des gesamten Upgradevorgangs online
 
 Das Upgrade auf SQL-Datenbank V12 kann nicht rückgängig gemacht werden. Nach dem Upgrade kann der Server nicht auf V11 zurückgesetzt werden.
 
-Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-service-tier-advisor.md) und [Empfehlungen zu elastischen Pools](sql-database-elastic-pool-portal.md#step-2-choose-a-pricing-tier) erst dann zur Verfügung, wenn der Dienst Zeit für die Evaluierung der Workloads auf dem neuen Server hat. Der Empfehlungsverlauf für V11-Server gilt nicht für V12-Server und wird daher nicht beibehalten.
+Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-service-tier-advisor.md) und [Empfehlungen zu elastischen Pools](sql-database-elastic-pool-create-portal.md) erst dann zur Verfügung, wenn der Dienst Zeit für die Evaluierung der Workloads auf dem neuen Server hat. Der Empfehlungsverlauf für V11-Server gilt nicht für V12-Server und wird daher nicht beibehalten.
 
 ## Vorbereiten des Upgrades
 
@@ -51,7 +51,7 @@ Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-serv
 - **Öffnen Sie folgende Ports, falls Sie Clients auf einer Azure-VM verwenden**: Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank V12 herstellt und der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie die Portbereiche 11000 – 11999 und 14000 – 14999 auf dem virtuellen Computer öffnen. Weitere Informationen finden Sie unter [Ports für SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 
-## Voraussetzungen 
+## Voraussetzungen
 
 Für das Upgrade eines Servers auf V12 mit PowerShell, muss Azure PowerShell installiert sein und ausgeführt werden. Je nach Version müssen Sie eventuell in den Ressourcen-Manager-Modus wechseln, um auf die PowerShell-Cmdlets für Azure-Ressourcen-Manager zuzugreifen.
 
@@ -78,9 +78,9 @@ Die folgenden Befehle werden für das soeben ausgewählte Abonnement ausgeführt
 
 Zum Abrufen der Empfehlung für das Serverupgrade führen Sie das folgende Cmdlet aus:
 
-    $hint = Get-AzureRmSqlServerUpgradeHint -ResourceGroupName “resourcegroup1” -ServerName “server1” 
+    $hint = Get-AzureRmSqlServerUpgradeHint -ResourceGroupName “resourcegroup1” -ServerName “server1”
 
-Weitere Informationen finden Sie unter [Erstellen und Verwalten eines elastischen Azure SQL-Datenbankpools](sql-database-elastic-pool-portal.md#elastic-database-pool-pricing-tier-recommendations) und [Tarifempfehlungen für Azure SQL-Datenbank](sql-database-service-tier-advisor.md).
+Weitere Informationen finden Sie unter [Erstellen eines skalierbaren Pools für elastische SQL-Datenbanken im Azure-Portal](sql-database-elastic-pool-create-portal.md) und [Tarifempfehlungen für SQL-Datenbank](sql-database-service-tier-advisor.md).
 
 
 
@@ -100,22 +100,22 @@ Mit dem Ausführen dieses Befehls beginnt der Upgradevorgang. Sie können die Au
     # Adding the account
     #
     Add-AzureRmAccount
-    
+
     # Setting the variables
     #
-    $SubscriptionName = 'YOUR_SUBSCRIPTION' 
-    $ResourceGroupName = 'YOUR_RESOURCE_GROUP' 
-    $ServerName = 'YOUR_SERVER' 
-    
-    # Selecting the right subscription 
-    # 
-    Select-AzureRmSubscription -SubscriptionName $SubscriptionName 
-    
-    # Getting the upgrade recommendations 
+    $SubscriptionName = 'YOUR_SUBSCRIPTION'
+    $ResourceGroupName = 'YOUR_RESOURCE_GROUP'
+    $ServerName = 'YOUR_SERVER'
+
+    # Selecting the right subscription
     #
-    $hint = Get-AzureRmSqlServerUpgradeHint -ResourceGroupName $ResourceGroupName -ServerName $ServerName 
-    
-    # Starting the upgrade process 
+    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+
+    # Getting the upgrade recommendations
+    #
+    $hint = Get-AzureRmSqlServerUpgradeHint -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+
+    # Starting the upgrade process
     #
     Start-AzureRmSqlServerUpgrade -ResourceGroupName $ResourceGroupName -ServerName $ServerName -ServerVersion 12.0 -DatabaseCollection $hint.Databases -ElasticPoolCollection $hint.ElasticPools  
 
@@ -125,42 +125,42 @@ Mit dem Ausführen dieses Befehls beginnt der Upgradevorgang. Sie können die Au
 Wenn die Vorschläge für Ihren Server und das Geschäftsszenario nicht geeignet sind, können Sie auswählen, wie das Upgrade Ihrer Datenbanken durchgeführt wird und sie entweder einzelnen oder elastischen Datenbanken zuordnen.
 
 Die Parameter "ElasticPoolCollection" und "DatabaseCollection" sind optional:
-    
+
     # Creating elastic pool mapping
     #
-    $elasticPool = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties 
-    $elasticPool.DatabaseDtuMax = 100 
-    $elasticPool.DatabaseDtuMin = 0 
-    $elasticPool.Dtu = 800 
-    $elasticPool.Edition = "Standard" 
-    $elasticPool.DatabaseCollection = ("DB1", “DB2”, “DB3”, “DB4”) 
-    $elasticPool.Name = "elasticpool_1" 
-    $elasticPool.StorageMb = 800 
-     
+    $elasticPool = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties
+    $elasticPool.DatabaseDtuMax = 100
+    $elasticPool.DatabaseDtuMin = 0
+    $elasticPool.Dtu = 800
+    $elasticPool.Edition = "Standard"
+    $elasticPool.DatabaseCollection = ("DB1", “DB2”, “DB3”, “DB4”)
+    $elasticPool.Name = "elasticpool_1"
+    $elasticPool.StorageMb = 800
+
     # Creating single database mapping for 2 databases. DBMain1 mapped to S0 and DBMain2 mapped to S2
     #
-    $databaseMap1 = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties 
-    $databaseMap1.Name = "DBMain1" 
-    $databaseMap1.TargetEdition = "Standard" 
+    $databaseMap1 = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties
+    $databaseMap1.Name = "DBMain1"
+    $databaseMap1.TargetEdition = "Standard"
     $databaseMap1.TargetServiceLevelObjective = "S0"
-    
-    $databaseMap2 = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties 
-    $databaseMap2.Name = "DBMain2" 
-    $databaseMap2.TargetEdition = "Standard" 
+
+    $databaseMap2 = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties
+    $databaseMap2.Name = "DBMain2"
+    $databaseMap2.TargetEdition = "Standard"
     $databaseMap2.TargetServiceLevelObjective = "S2"
-     
+
     # Starting the upgrade
     #
-    Start-AzureRmSqlServerUpgrade –ResourceGroupName resourcegroup1 –ServerName server1 -Version 12.0 -DatabaseCollection @($databaseMap1, $databaseMap2) -ElasticPoolCollection @($elasticPool) 
+    Start-AzureRmSqlServerUpgrade –ResourceGroupName resourcegroup1 –ServerName server1 -Version 12.0 -DatabaseCollection @($databaseMap1, $databaseMap2) -ElasticPoolCollection @($elasticPool)
 
-    
+
 
 ## Überwachen von Datenbanken nach dem Upgrade auf SQL-Datenbank V12
 
 
 Nach dem Upgrade wird empfohlen, die Datenbank aktiv zu überwachen, um sicherzustellen, dass Anwendungen mit der gewünschten Leistung ausgeführt werden. Außerdem sollte die Nutzung optimiert werden.
 
-Zusätzlich zur Überwachung einzelner Datenbanken können Sie [mithilfe des Portals](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool) oder mit [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) auch Pools für elastische Datenbanken überwachen.
+Zusätzlich zur Überwachung einzelner Datenbanken können Sie [mithilfe des Portals](sql-database-elastic-pool-manage-portal.md) oder mit [PowerShell](sql-database-elastic-pool-manage-powershell.md) auch Pools für elastische Datenbanken überwachen.
 
 
 **Ressourcenverbrauchsdaten:** Für Basic-, Standard- und Premium-Datenbanken sind Ressourcenverbrauchsdaten über die dynamische Verwaltungssicht (DMV) [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) in der Benutzerdatenbank verfügbar. Diese dynamische Verwaltungssicht stellt beinahe in Echtzeit Informationen zum Ressourcenverbrauch mit einer Genauigkeit von 15 Sekunden für die vorhergehende Stunde des Betriebs zur Verfügung. Der prozentuale DTU-Verbrauch für ein Intervall wird als maximaler prozentualer Verbrauch von CPU-, E/A- und Protokollressourcen berechnet. Die folgende Abfrage berechnet den durchschnittlichen prozentualen DTU-Verbrauch während der letzten Stunde:
@@ -190,7 +190,7 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festle
 
 ## Nächste Schritte
 
-- [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-portal.md) und Hinzufügen einiger oder aller Datenbanken zum Pool.
+- [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-portal.md) und Hinzufügen einiger oder aller Datenbanken zum Pool.
 - [Ändern der Dienstebene und Leistungsstufe Ihrer Datenbank](sql-database-scale-up.md).
 
 
@@ -201,4 +201,4 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festle
 - [Start-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
 - [Stop-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -23,7 +23,7 @@
 
 Ein Hadoop-Cluster besteht aus mehreren virtuellen Computern (Knoten), die zur verteilten Verarbeitung von Aufgaben im Cluster verwendet werden. Azure abstrahiert die Implementierungsdetails der Installation und Konfiguration einzelner Knoten, sodass Sie nur allgemeine Konfigurationsinformationen bereitstellen müssen. In diesem Artikel lernen Sie diese Konfigurationseinstellungen kennen.
 
->[AZURE.NOTE] Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen für Linux-basierte Cluster finden Sie unter [Erstellen von Windows-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+>[AZURE.NOTE] Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Weitere Informationen zu Linux-basierten Clustern finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ##Clustertypen
 
@@ -243,4 +243,4 @@ In diesem Artikel haben Sie grundlegende Informationen zum Erstellen eines Windo
 | [.NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM-Vorlagen](hdinsight-hadoop-create-windows-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

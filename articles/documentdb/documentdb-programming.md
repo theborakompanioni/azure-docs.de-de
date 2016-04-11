@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="03/30/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
@@ -52,7 +52,7 @@ Dieser Ansatz von *„JavaScript als modernes T-SQL“* befreit die Anwendungsen
 
 Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird auf vielen Plattformen, z. B. .NET, Node.js und JavaScript, über die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx), [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und [Client-SDKs](documentdb-sdk-dotnet.md) unterstützt.
 
-**In diesem Tutorial wird das** [Node.js-SDK mit Q Promises](http://azure.github.io/azure-documentdb-node-q/) **verwendet**, um die Syntax und Verwendung von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen (User Defined Functions, UDFs) zu veranschaulichen.
+**In diesem Tutorial wird das [Node.js-SDK mit Q Promises](http://azure.github.io/azure-documentdb-node-q/) verwendet**, um die Syntax und Verwendung von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen (User Defined Functions, UDFs) zu veranschaulichen.
 
 ## Gespeicherte Prozeduren
 
@@ -74,7 +74,7 @@ Gespeicherte Prozeduren werden pro Sammlung registriert und können auf beliebig
 
 	// register the stored procedure
 	var createdStoredProcedure;
-	client.createStoredProcedureAsync(collection._self, helloWorldStoredProc)
+	client.createStoredProcedureAsync('dbs/testdb/colls/testColl', helloWorldStoredProc)
 		.then(function (response) {
 		    createdStoredProcedure = response.resource;
 		    console.log("Successfully created stored procedure");
@@ -86,7 +86,7 @@ Gespeicherte Prozeduren werden pro Sammlung registriert und können auf beliebig
 Nachdem die gespeicherte Prozedur registriert wurde, können wir sie für die Sammlung ausführen und die an den Client zurückgegebenen Ergebnisse lesen.
 
 	// execute the stored procedure
-	client.executeStoredProcedureAsync(createdStoredProcedure._self)
+	client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld')
 		.then(function (response) {
 		    console.log(response.result); // "Hello, World"
 		}, function (err) {
@@ -101,21 +101,21 @@ Dieses Beispiel möchten wir jetzt erweitern und datenbankbezogenere Funktionen 
 ### Beispiel: Schreiben einer gespeicherten Prozedur zum Erstellen eines Dokuments 
 Der nächste Codeausschnitt veranschaulicht, wie das Kontextobjekt für die Interaktion mit DocumentDB-Ressourcen verwendet wird.
 
-	var createDocumentStoredProc = {
-	    id: "createMyDocument",
-	    body: function createMyDocument(documentToCreate) {
-	        var context = getContext();
-	        var collection = context.getCollection();
-	
-	        var accepted = collection.createDocument(collection.getSelfLink(),
-	              documentToCreate,
-				function (err, documentCreated) {
-				    if (err) throw new Error('Error' + err.message);
-				    context.getResponse().setBody(documentCreated.id)
-				});
-	        if (!accepted) return;
-	    }
-	}
+    var createDocumentStoredProc = {
+        id: "createMyDocument",
+        body: function createMyDocument(documentToCreate) {
+            var context = getContext();
+            var collection = context.getCollection();
+
+            var accepted = collection.createDocument(collection.getSelfLink(),
+                  documentToCreate,
+                  function (err, documentCreated) {
+                      if (err) throw new Error('Error' + err.message);
+                      context.getResponse().setBody(documentCreated.id)
+                  });
+            if (!accepted) return;
+        }
+    }
 
 
 Diese gespeicherte Prozedur übernimmt "documentToCreate", den in der aktuellen Sammlung zu erstellenden Text eines Dokuments, als Eingabe. Alle derartigen Vorgänge sind asynchron und von JavaScript-Funktionsrückrufen abhängig. Die Rückruffunktion verfügt über zwei Parameter, einer für das Fehlerobjekt, wenn der Vorgang fehlschlägt, und ein anderer für das erstellte Objekt. Innerhalb des Rückrufs können die Benutzer entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass ein Rückruf nicht bereitgestellt wird und ein Fehler auftritt, löst die DocumentDB-Laufzeitumgebung einen Fehler aus.
@@ -123,7 +123,7 @@ Diese gespeicherte Prozedur übernimmt "documentToCreate", den in der aktuellen 
 Im obigen Beispiel löst der Rückruf einen Fehler aus, wenn der Vorgang fehlschlägt. Andernfalls wird die ID des erstellten Dokuments als Text für die Antwort an den Client festgelegt. Diese gespeicherte Prozedur wird mit Eingabeparametern wie folgt ausgeführt:
 
 	// register the stored procedure
-	client.createStoredProcedureAsync(collection._self, createDocumentStoredProc)
+	client.createStoredProcedureAsync('dbs/testdb/colls/testColl', createDocumentStoredProc)
 		.then(function (response) {
 		    var createdStoredProcedure = response.resource;
 	
@@ -134,7 +134,7 @@ Im obigen Beispiel löst der Rückruf einen Fehler aus, wenn der Vorgang fehlsch
 		        author: "Douglas Adams"
 		    };
 	
-		    return client.executeStoredProcedureAsync(createdStoredProcedure._self,
+		    return client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/createMyDocument',
 	              docToCreate);
 		}, function (error) {
 		    console.log("Error", error);
@@ -221,6 +221,8 @@ In DocumentDB wird JavaScript im gleichen Speicherbereich wie die Datenbank geho
 	);
 
 Diese gespeicherte Prozedur verwendet Transaktionen innerhalb einer Spiele-App, um in einem einzelnen Vorgang Objekte zwischen zwei Spielern auszutauschen. Die gespeicherte Prozedur versucht dabei zwei Dokumente zu lesen, die jeweils der Spieler-ID entsprechen, die als Argument übergeben wird. Wenn beide Spielerdokumente gefunden werden, aktualisiert die gespeicherte Prozedur die Dokumente, indem deren Objekte ausgetauscht werden. Wenn währenddessen Fehler auftreten, wird eine JavaScript-Ausnahme ausgelöst, durch die die Transaktion vorbehaltlos abgebrochen wird.
+
+Wenn die Sammlung, für die die gespeicherte Prozedur registriert ist, eine Sammlung mit nur einer Partition ist, wird der Bereich der Transaktion auf alle Dokumente der Sammlung ausgedehnt. Falls die Sammlung partitioniert ist, werden gespeicherte Prozeduren im Transaktionsbereich eines einzelnen Partitionsschlüssels ausgeführt. Jede Ausführung einer gespeicherten Prozedur muss dann einen Partitionsschlüsselwert enthalten, der dem Bereich entspricht, in dem die Transaktion ausgeführt werden muss. Weitere Informationen finden Sie unter [DocumentDB-Partitionierung](documentdb-partition-data.md).
 
 ### Commit und Rollback
 Transaktionen sind fest im JavaScript-Programmiermodell von DocumentDB integriert. Innerhalb einer JavaScript-Funktion werden alle Vorgänge automatisch von einer einzelnen Transaktion umschlossen. Wenn das JavaScript ohne Ausnahmen abgeschlossen wird, werden die für die Datenbank vorgenommenen Vorgänge bestätigt. Die Anweisungen "BEGIN TRANSACTION" und "COMMIT TRANSACTION" für relationale Datenbanken sind in DocumentDB praktisch eingeschlossen.
@@ -405,7 +407,7 @@ Das folgende Beispiel veranschaulicht nachgestellte Trigger:
 Der Trigger kann, wie im folgenden Beispiel gezeigt, registriert werden.
 
 	// register post-trigger
-	client.createTriggerAsync(collection.self, updateMetadataTrigger)
+	client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
 		.then(function(createdTrigger) { 
 		    var docToCreate = { 
 		        name: "artist_profile_1023",
@@ -457,12 +459,12 @@ Das folgende Beispiel erstellt eine UDF, um die Einkommenssteuer auf Basis der S
 Die UDF kann anschließend wie im folgenden Beispiel in Abfragen verwendet werden:
 
 	// register UDF
-	client.createUserDefinedFunctionAsync(collection.self, taxUdf)
+	client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 		.then(function(response) { 
 		    console.log("Created", response.resource);
 	
 		    var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000'; 
-		    return client.queryDocuments(collection.self,
+		    return client.queryDocuments('dbs/testdb/colls/testColl',
 	               query).toArrayAsync();
 		}, function(error) {
 		    console.log("Error" , error);
@@ -477,63 +479,63 @@ Die UDF kann anschließend wie im folgenden Beispiel in Abfragen verwendet werde
 ## JavaScript-Language Integrated Query (LINQ)-API
 Zusätzlich zu Abfragen mithilfe der SQL-Grammatik von DocumentDB ermöglicht das serverseitige SDK die Durchführung optimierter Abfragen mithilfe einer flüssigen JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie lodash vergleichbar ist, Prädikatfunktionen in verkettbare Funktionsaufrufe übergeben. Abfragen werden von der JavaScript-Laufzeit zur effizienten Ausführung mithilfe von DocumentDB-Indizes analysiert.
 
-> [AZURE.NOTE] `__` (doppelter Unterstrich) ist ein Alias für `getContext().getCollection()`.
-> <br/>
-> Sie können also `__` oder `getContext().getCollection()` verwenden, um auf die JavaScript-Abfrage-API zuzugreifen.
+> [AZURE.NOTE] `__` (doppelter Unterstrich) ist ein Alias für `getContext().getCollection()`. <br/> Sie können also `__` oder `getContext().getCollection()` verwenden, um auf die JavaScript-Abfrage-API zuzugreifen.
 
-Folgende Funktionen werden unterstützt:
+Beispiele für unterstützte Funktionen:
 <ul>
 <li>
-<b>chain() ... .value([callback] [, options])</b>
+<b>chain() ... .value([Rückruf] [, Optionen])</b>
 <ul>
 <li>
-Startet einen verketteten Aufruf, der mit „value()“ abgeschlossen werden muss.
+Startet einen verketteten Aufruf, der auf „value()“ enden muss.
 </li>
 </ul>
 </li>
 <li>
-<b>filter(predicateFunction [, options] [, callback])</b>
+<b>filter(predicateFunction [, Optionen] [, Rückruf])</b>
 <ul>
 <li>
-Filtert die Eingabe anhand einer Prädikatfunktion, die „true/false“ zurückgibt, um Eingabedokumente in den resultierenden Satz einzuschließen oder auszuschließen. Diese Funktion verhält sich ähnlich wie eine WHERE-Klausel in SQL.
+Filtert die Eingabe mit einer Prädikatfunktion, die „true“/„false“ zurückgibt, um Eingabedokumente für die sich ergebende Gruppe zu filtern. Verhält sich ähnlich wie eine WHERE-Klausel in SQL.
 </li>
 </ul>
 </li>
 <li>
-<b>map(transformationFunction [, options] [, callback])</b>
+<b>map(transformationFunction [, Optionen] [, Rückruf])</b>
 <ul>
-<li> Wendet anhand einer angegebenen Transformationsfunktion eine Projektion an, die jedes Eingabeelement einem JavaScript-Objekt oder -Wert zuordnet. Diese Funktion verhält sich ähnlich wie eine SELECT-Klausel in SQL.
+<li>
+Wendet eine Projektion unter Verwendung einer Transformationsfunktion an, bei der jedes Eingabeelement einem JavaScript-Objekt oder -Wert zugeordnet wird. Verhält sich ähnlich wie eine SELECT-Klausel in SQL.
 </li>
 </ul>
 </li>
 <li>
-<b>pluck([propertyName] [, options] [, callback])</b>
+<b>pluck([propertyName] [, Optionen] [, Rückruf])</b>
 <ul>
 <li>
-Dies ist eine Kurzform für eine Zuordnung, die den Wert einer einzelnen Eigenschaft aus jedem Eingabeelement extrahiert.
+Dies ist eine Abkürzung für eine Zuordnung, mit der der Wert einer einzelnen Eigenschaft aus jedem Eingabeelement extrahiert wird.
 </li>
 </ul>
 </li>
 <li>
-<b>flatten([isShallow] [, options] [, callback])</b>
+<b>flatten([isShallow] [, Optionen] [, Rückruf])</b>
 <ul>
-<li> Kombiniert und vereinfacht Arrays aus jedem Eingabeelement zu einem einzigen Array. Diese Funktion verhält sich ähnlich wie „SelectMany“ in LINQ.
+<li>
+Kombiniert und vereinfacht Arrays für alle Eingabeelemente zu einem einzelnen Array. Verhält sich ähnlich wie SelectMany in LINQ.
 </li>
 </ul>
 </li>
 <li>
-<b>sortBy([predicate] [, options] [, callback])</b>
+<b>sortBy([Prädikat] [, Optionen] [, Rückruf])</b>
 <ul>
 <li>
-Erzeugt einen neuen Satz von Dokumenten, indem die Dokumente im Eingabedokument-Datenstrom anhand des angegebenen Prädikats in aufsteigender Reihenfolge sortiert werden. Diese Funktion verhält sich ähnlich wie eine ORDER BY-Klausel in LINQ.
+Produzieren Sie eine neue Gruppe von Dokumenten, indem Sie die Dokumente im Eingabedokument-Datenstrom mit dem angegebenen Prädikat in aufsteigender Reihenfolge sortieren. Verhält sich ähnlich wie eine ORDER BY-Klausel in SQL.
 </li>
 </ul>
 </li>
 <li>
-<b>sortByDescending([predicate] [, options] [, callback])</b>
+<b>sortByDescending([Prädikat] [, Optionen] [, Rückruf])</b>
 <ul>
 <li>
-Erzeugt einen neuen Satz von Dokumenten, indem die Dokumente im Eingabedokument-Datenstrom anhand des angegebenen Prädikats in absteigender Reihenfolge sortiert werden. Diese Funktion verhält sich ähnlich wie eine ORDER BY X DESC-Klausel in SQL.
+Produzieren Sie eine neue Gruppe von Dokumenten, indem Sie die Dokumente im Eingabedokument-Datenstrom mit dem angegebenen Prädikat in absteigender Reihenfolge sortieren. Verhält sich ähnlich wie eine ORDER BY X DESC-Klausel in SQL.
 </li>
 </ul>
 </li>
@@ -636,7 +638,7 @@ FROM docs
 </td>
 <td>
 <pre>
-\_\_.map(function(doc) {
+__.map(function(doc) {
     return doc;
 });
 </pre>
@@ -646,12 +648,13 @@ FROM docs
 <tr>
 <td>
 <pre>
-SELECT docs.id, docs.message AS msg, docs.actions FROM docs
+SELECT docs.id, docs.message AS msg, docs.actions 
+FROM docs
 </pre>
 </td>
 <td>
 <pre>
-\_\_.map(function(doc) {
+__.map(function(doc) {
     return {
         id: doc.id,
         msg: doc.message,
@@ -667,29 +670,30 @@ SELECT docs.id, docs.message AS msg, docs.actions FROM docs
 <pre>
 SELECT * 
 FROM docs 
-WHERE docs.id="X998\_Y998"
+WHERE docs.id="X998_Y998"
 </pre>
 </td>
 <td>
 <pre>
-\_\_.filter(function(doc) {
-    return doc.id === "X998\_Y998";
+__.filter(function(doc) {
+    return doc.id === "X998_Y998";
 });
 </pre>
 </td>
-<td>Fragt Dokumente mit dem folgenden Prädikat ab: id = "X998\_Y998".</td>
+<td>Fragt Dokumente mit dem folgenden Prädikat ab: id = "X998_Y998".</td>
 </tr>
 <tr>
 <td>
 <pre>
 SELECT *
-FROM docs WHERE ARRAY\_CONTAINS(docs.Tags, 123)
+FROM docs
+WHERE ARRAY_CONTAINS(docs.Tags, 123)
 </pre>
 </td>
 <td>
 <pre>
-\_\_.filter(function(x) {
-    return x.Tags && x.Tags.indexOf(123) > -1;
+__.filter(function(x) {
+    return x.Tags &amp;&amp; x.Tags.indexOf(123) > -1;
 });
 </pre>
 </td>
@@ -699,14 +703,15 @@ FROM docs WHERE ARRAY\_CONTAINS(docs.Tags, 123)
 <td>
 <pre>
 SELECT docs.id, docs.message AS msg
-FROM docs WHERE docs.id="X998\_Y998"
+FROM docs 
+WHERE docs.id="X998_Y998"
 </pre>
 </td>
 <td>
 <pre>
-\_\_.chain()
+__.chain()
     .filter(function(doc) {
-        return doc.id === "X998\_Y998";
+        return doc.id === "X998_Y998";
     })
     .map(function(doc) {
         return {
@@ -717,7 +722,7 @@ FROM docs WHERE docs.id="X998\_Y998"
     .value();
 </pre>
 </td>
-<td>Fragt Dokumente mit einem Prädikat, id = "X998\_Y998", ab und projiziert anschließend die ID und die Meldung (Alias für „msg“).</td>
+<td>Fragt Dokumente mit einem Prädikat, id = "X998_Y998", ab und projiziert anschließend die ID und die Meldung (Alias für „msg“).</td>
 </tr>
 <tr>
 <td>
@@ -725,24 +730,24 @@ FROM docs WHERE docs.id="X998\_Y998"
 SELECT VALUE tag
 FROM docs
 JOIN tag IN docs.Tags
-ORDER BY docs.\_ts
+ORDER BY docs._ts
 </pre>
 </td>
 <td>
 <pre>
-\_\_.chain()
+__.chain()
     .filter(function(doc) {
-        return doc.Tags && Array.isArray(doc.Tags);
+        return doc.Tags &amp;&amp; Array.isArray(doc.Tags);
     })
     .sortBy(function(doc) {
-    	return doc.\_ts;
+    	return doc._ts;
     })
     .pluck("Tags")
     .flatten()
     .value()
 </pre>
 </td>
-<td>Filtert nach Dokumenten mit einer Array-Eigenschaft „Tags“, sortiert die resultierenden Dokumente anhand der Zeitstempel-Systemeigenschaft „\_ts“ und projiziert und vereinfacht anschließend das Tags-Array.</td>
+<td>Filtert nach Dokumenten mit einer Array-Eigenschaft „Tags“, sortiert die resultierenden Dokumente anhand der Zeitstempel-Systemeigenschaft „_ts“ und projiziert und vereinfacht anschließend das Tags-Array.</td>
 </tr>
 </tbody>
 </table>
@@ -781,13 +786,13 @@ Zusätzlich zum [Node.js](documentdb-sdk-node.md)-Client unterstützt DocumentDB
 	};
 	
 	// register stored procedure
-	StoredProcedure createdStoredProcedure = await client.CreateStoredProcedureAsync(collection.SelfLink, markAntiquesSproc);
+	StoredProcedure createdStoredProcedure = await client.CreateStoredProcedureAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), markAntiquesSproc);
 	dynamic document = new Document() { Id = "Borges_112" };
 	document.Title = "Aleph";
 	document.Year = 1949;
 	
 	// execute stored procedure
-	Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(createdStoredProcedure.SelfLink, document, 1920);
+	Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "sproc"), document, 1920);
 
 
 Dieses Beispiel zeigt, wie mit dem [.NET-SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) ein vorangestellter Trigger und ein Dokument mit aktiviertem Trigger erstellt werden.
@@ -804,7 +809,7 @@ Dieses Beispiel zeigt, wie mit dem [.NET-SDK](https://msdn.microsoft.com/library
 	    TriggerType = TriggerType.Pre
 	};
 	
-	Document createdItem = await client.CreateDocumentAsync(collection.SelfLink, new Document { Id = "documentdb" },
+	Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), new Document { Id = "documentdb" },
 	    new RequestOptions
 	    {
 	        PreTriggerInclude = new List<string> { "CapitalizeName" },
@@ -822,7 +827,7 @@ Das nachfolgende Beispiel veranschaulicht die Erstellung einer benutzerdefiniert
 	    }"
 	};
 	
-	foreach (Book book in client.CreateDocumentQuery(collection.SelfLink,
+	foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollectionUri("db", "coll"),
 	    "SELECT * FROM Books b WHERE udf.LOWER(b.Title) = 'war and peace'"))
 	{
 	    Console.WriteLine("Read {0} from query", book);
@@ -852,8 +857,7 @@ Alle DocumentDB-Vorgänge können RESTful-basiert ausgeführt werden. Gespeicher
 	}
 
 
-Die gespeicherte Prozedur wird durch Ausführung einer POST-Anforderung für den URI "dbs/sehcAA==/colls/sehcAIE2Qy4=/sprocs" registriert, wobei der Textteil die zu erstellende gespeicherte Prozedur enthält. Trigger und UDFs können auf ähnliche Weise registriert werden: durch einen POST bezüglich /triggers bzw. /udfs.
-Diese gespeicherte Prozedur kann dann durch Anlegen einer POST-Anforderung für ihren Ressourcenlink ausgeführt werden:
+Die gespeicherte Prozedur wird durch Ausführung einer POST-Anforderung für den URI „dbs/testdb/colls/testColl/sprocs“ registriert, wobei der Textteil die zu erstellende gespeicherte Prozedur enthält. Trigger und UDFs können auf ähnliche Weise registriert werden: durch einen POST bezüglich /triggers bzw. /udfs. Diese gespeicherte Prozedur kann dann durch Anlegen einer POST-Anforderung für ihren Ressourcenlink ausgeführt werden:
 
 	POST https://<url>/sprocs/<sproc> HTTP/1.1
 	authorization: <<auth>>
@@ -919,4 +923,4 @@ Weitere Informationen zur serverseitigen DocumentDB-Programmierung finden Sie au
 - [Dienstorientierte Datenbankarchitektur](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 - [Hosten der .NET-Lautzeitumgebung in Microsoft SQL Server](http://dl.acm.org/citation.cfm?id=1007669)
 
-<!---HONumber=AcomDC_0224_2016--->
+<!---HONumber=AcomDC_0330_2016-->

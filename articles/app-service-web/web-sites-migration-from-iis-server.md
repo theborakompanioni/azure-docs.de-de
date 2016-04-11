@@ -21,7 +21,7 @@
 
 Sie können Ihre vorhandene Websites, die auf Internet Information Service (IIS) 6 oder höher ausgeführt werden, problemlos zu [App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) migrieren.
 
->[AZURE.IMPORTANT] Der Support für Windows Server 2003 läuft am 14. Juli 2015 aus. Wenn Sie derzeit Websites auf einem IIS-Server unter Windows Server 2003 hosten, bietet Web-Apps eine risikoarme, kostengünstige und wenig aufwendige Möglichkeit, Ihre Websites online zu halten. Der Migrations-Assistent für Web-Apps kann Sie bei der Automatisierung des Migrationsprozesses unterstützen.
+>[AZURE.IMPORTANT] Der Support für Windows Server 2003 ist am 14. Juli 2015 ausgelaufen. Wenn Sie derzeit Websites auf einem IIS-Server unter Windows Server 2003 hosten, bietet Web-Apps eine risikoarme, kostengünstige und wenig aufwendige Möglichkeit, Ihre Websites online zu halten. Der Migrations-Assistent für Web-Apps kann Sie bei der Automatisierung des Migrationsprozesses unterstützen.
 
 Der [Migrations-Assistent für Web-Apps](https://www.movemetothecloud.net/) kann die IIS-Server-Installation analysieren, identifizieren, welche Websites zu App Service migriert werden, alle Elemente markieren, die nicht migriert werden können oder auf der Plattform nicht unterstützt werden, und dann die Websites und zugeordneten Datenbanken nach Azure migrieren.
 
@@ -135,4 +135,4 @@ In diesem Abschnitt werden Sie schrittweise durch ein Beispiel zum Migrieren ein
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

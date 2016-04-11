@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/25/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # Registrierungsverwaltung
@@ -28,10 +28,10 @@ In diesem Thema wird erläutert, wie Geräte bei Notification Hubs registriert w
 Die Geräteregistrierung bei einem Notification Hub erfolgt mithilfe einer **Registrierung** oder **Installation**.
 
 #### Registrierungen
-Eine Registrierung ist eine untergeordnete Entität eines Notification Hubs. Während der Registrierung wird das PNS (Platform Notification Service)-Handle für ein Gerät Tags und ggf. einer Vorlage zugeordnet. Das PNS-Handle könnte einem ChannelURI, einem Gerätetoken oder einer GCM-Registrierungs-ID entsprechen. Tags werden verwendet, um Benachrichtigungen an die richtige Gruppe von Gerätehandles weiterzuleiten. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-routing-tag-expressions.md). Vorlagen werden verwendet, um Transformationen pro Registrierung zu implementieren. Weitere Informationen finden Sie unter [Vorlagen](notification-hubs-templates.md).
+Bei einer Registrierung wird das PNS-Handle (Platform Notification Service) für ein Gerät Tags und ggf. einer Vorlage zugeordnet. Das PNS-Handle könnte einem ChannelURI, einem Gerätetoken oder einer GCM-Registrierungs-ID entsprechen. Tags werden verwendet, um Benachrichtigungen an die richtige Gruppe von Gerätehandles weiterzuleiten. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-routing-tag-expressions.md). Vorlagen werden verwendet, um Transformationen pro Registrierung zu implementieren. Weitere Informationen finden Sie unter [Vorlagen](notification-hubs-templates.md).
 
 #### Installationen
-Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist jedoch der neueste und beste Ansatz zum Registrieren Ihrer Geräte.
+Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt. Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](https://msdn.microsoft.com/library/mt621153.aspx) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) verwenden können.
 
 Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen beschrieben:
 
@@ -39,9 +39,7 @@ Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen
 * Das Installationsmodell erleichtert die Ausführung individueller Pushvorgänge für bestimmte Geräte. Bei jeder installationsbasierten Registrierung wird automatisch das Systemtag **"$InstallationId:[installationId]"** hinzugefügt. So können Sie ein Sendetag für ein bestimmtes Gerät aufrufen, ohne dass zusätzlicher Code geschrieben werden muss.
 * Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) angefordert. Dies ist besonders nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
 
-Installationen werden derzeit nur vom [Notification Hub SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) unterstützt. Weitere Informationen finden Sie unter der [Installation-Klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation.aspx). Um über ein Clientgerät unter Verwendung einer Installations-ID ohne Back-End eine Registrierung vorzunehmen, müssen Sie derzeit die [Notification Hubs-REST-API](https://msdn.microsoft.com/library/mt621153.aspx) verwenden.
-
-Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) oder [Installationseigenschaften](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Create or Overwrite an Installation with REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) (Erstellen oder Überschreiben einer Installation mit der REST-API) oder [Installation Properties](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) (Installationseigenschaften).
 
 	// Example installation format to show some supported properties
 	{
@@ -332,4 +330,4 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
 
 Die Nebenläufigkeit zwischen Registrierungsupdates muss vom Back-End behandelt werden. Service Bus unterstützt die Steuerung für optimistische Nebenläufigkeit für die Registrierungsverwaltung. Auf der HTTP-Ebene wird dies durch die Verwendung von ETag für Registrierungsverwaltungsvorgänge implementiert. Dieses Feature wird von Microsoft-SDKs, die eine Ausnahme auslösen, wenn ein Update aus Gründen der Nebenläufigkeit abgelehnt wird, transparent verwendet. Das Back-End ist dafür verantwortlich, diese Ausnahmen zu behandeln und das Update ggf. zu wiederholen.
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -15,10 +15,9 @@
 	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
-
 # Analytics-Beispiele für Application Insights
 
-[Analytics](app-analytics.md) ist ein leistungsfähiges Suchmodul für Ihre [Application Insights](app-insights-overview.md)-Telemetrie. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben. Es gibt auch eine [Einführung in die Sprache](app-analytics-tour.md), die sich für die ersten Schritte empfiehlt.
+[Analytics](app-analytics.md) ermöglicht die Ausführung leistungsstarker Abfragen der von [Application Insights](app-insights-overview.md) gesammelten Telemetriedaten. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben. Es gibt auch eine [Einführung in die Sprache](app-analytics-tour.md), die sich für die ersten Schritte empfiehlt.
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -437,4 +436,4 @@ JobHistory
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

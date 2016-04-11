@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/23/2016" 
+	ms.date="03/30/2016" 
 	ms.author="mimig"/>
 
 
@@ -23,7 +23,7 @@
 ## Datenbankfragen zu den Grundlagen von Microsoft Azure DocumentDB
 
 ### Was ist Microsoft Azure DocumentDB? 
-Microsoft Azure DocumentDB ist eine umfassend skalierbare, als Dienst verfügbare NoSQL-Dokumentdatenbank, die umfangreiche Abfragen von nicht schematisierten Daten ermöglicht, konfigurierbare, zuverlässige Leistung bietet und eine schnelle Bereitstellung ermöglicht – und all das auf einer verwalteten Plattform, die auf der Leistungsfähigkeit und Reichweite von Microsoft Azure basiert. DocumentDB ist die geeignete Lösung für mobile und Webanwendungen, wenn vorhersagbarer Durchsatz, niedrige Latenz und schemafreie Datenmodelle wichtige Anforderungen sind. DocumentDB bietet Schemaflexibilität und umfassende Indizierung über ein systemeigenes JSON-Datenmodell und beinhaltet die Transaktionsunterstützung mehrerer Dokumente durch integriertes JavaScript.
+Microsoft Azure DocumentDB ist eine umfassend skalierbare, als Dienst verfügbare NoSQL-Dokumentdatenbank, die umfangreiche Abfragen von nicht schematisierten Daten ermöglicht, konfigurierbare, zuverlässige Leistung bietet und eine schnelle Bereitstellung ermöglicht – und all das auf einer verwalteten Plattform, die auf der Leistungsfähigkeit und Reichweite von Microsoft Azure basiert. DocumentDB ist die geeignete Lösung für Web-, Mobil-, Gaming- und IoT-Anwendungen, wenn vorhersagbarer Durchsatz, niedrige Latenz und schemafreie Datenmodelle wichtige Anforderungen sind. DocumentDB bietet Schemaflexibilität und umfassende Indizierung über ein systemeigenes JSON-Datenmodell und beinhaltet die Transaktionsunterstützung mehrerer Dokumente durch integriertes JavaScript.
   
 Weitere Datenbankfragen, -antworten und -anweisungen zur Bereitstellung und Verwendung des Diensts finden Sie auf der Seite [DocumentDB-Dokumentation](https://azure.microsoft.com/documentation/services/documentdb/).
 
@@ -37,19 +37,27 @@ Nein, DocumentDB speichert Daten als JSON-Dokumentsammlungen. Weitere Informatio
 Ja, DocumentDB ermöglicht Anwendungen das Speichern beliebiger JSON-Dokumente ohne Schemadefinition oder -hinweise. Die Daten stehen unmittelbar zur Abfrage über die DocumentDB SQL-Abfrageschnittstelle zur Verfügung.
 
 ### Unterstützt DocumentDB ACID-Transaktionen?
-Ja, DocumentDB unterstützt dokumentübergreifende Transaktionen, die in Form von gespeicherten JavaScript-Prozeduren und Triggern ausgedrückt werden. Die Transaktionen werden einer Sammlung zugeordnet und mit ACID-Semantik nach dem Prinzip „alles oder nichts“ ausgeführt. Sie sind dabei von anderem gleichzeitig ausgeführtem Code und Benutzeranforderungen isoliert. Falls bei der serverseitigen Ausführung des JavaScript-Anwendungscodes ein Ausnahmefehler auftritt, wird für die gesamte Transaktion ein Rollback durchgeführt.
+Ja, DocumentDB unterstützt dokumentübergreifende Transaktionen, die in Form von gespeicherten JavaScript-Prozeduren und Triggern ausgedrückt werden. Die Transaktionen werden einer Partition in jeder Sammlung zugeordnet und mit ACID-Semantik nach dem Prinzip „alles oder nichts“ ausgeführt. Sie sind dabei von anderem gleichzeitig ausgeführtem Code und Benutzeranforderungen isoliert. Falls bei der serverseitigen Ausführung des JavaScript-Anwendungscodes ein Ausnahmefehler auftritt, wird für die gesamte Transaktion ein Rollback durchgeführt.
 
 ### Was sind die typischen Anwendungsfälle für DocumentDB?  
-DocumentDB ist eine gute Wahl für neue Web- und mobile Anwendungen, wenn Skalierung, Leistung und Abfrage schemafreier Daten wichtig sind. DocumentDB eignet sich für schnelle Entwicklungen und die Unterstützung kontinuierlicher Iterationen von Anwendungsdatenmodellen. Anwendungen, die von Benutzern erzeugte Inhalte und Daten verwalten, sind ein [häufiger Anwendungsfall von DocumentDB](documentdb-use-cases.md).
+DocumentDB ist eine gute Wahl für neue Web-, Mobil-, Gaming- und IoT-Anwendungen, bei denen Dinge wie automatische Skalierung, vorhersagbare Leistung, kurze Reaktionszeiten im Millisekundenbereich und die Möglichkeit zum Abfragen von schemalosen Daten wichtig sind. DocumentDB eignet sich für schnelle Entwicklungen und die Unterstützung kontinuierlicher Iterationen von Anwendungsdatenmodellen. Anwendungen, die von Benutzern erzeugte Inhalte und Daten verwalten, sind ein [häufiger Anwendungsfall von DocumentDB](documentdb-use-cases.md).
+
+### Wie wird bei DocumentDB für eine vorhersagbare Leistung gesorgt?
+In DocumentDB wird der Durchsatz in Anforderungseinheiten gemessen. 1 Anforderungseinheit entspricht dem Durchsatz der GET-Anforderung für ein Dokument mit einer Größe von 1 KB. Jeder Vorgang in DocumentDB (einschließlich der Ausführung von Lese- und Schreibvorgängen, SQL-Abfragen sowie gespeicherten Prozeduren) verfügt über einen deterministischen Wert für die Anforderungseinheiten, der auf dem erforderlichen Durchsatz zum Abschließen des Vorgangs basiert. Im Hinblick auf den Durchsatz Ihrer Anwendung müssen Sie sich also keine Gedanken um das Zusammenspiel von CPU, E/A-Leistung und Arbeitsspeicher machen, sondern können mit einer einzigen Kennzahl arbeiten: der Anforderungseinheit.
+
+Jede DocumentDB-Sammlung kann mit bereitgestelltem Durchsatz reserviert werden (Anforderungseinheiten des Durchsatzes pro Sekunde). Für Anwendungen jeder Skalierung können Sie ein Benchmarking einzelner Anforderungen durchführen, um deren Werte für die Anforderungseinheiten zu messen. Außerdem können Sie Sammlungen bereitstellen, um die Gesamtsumme der Anforderungseinheiten über alle Anforderungen hinweg zu verarbeiten. Sie können den Durchsatz der Sammlung auch zentral hoch- oder herunterskalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. Weitere Informationen zu Anforderungseinheiten und Hilfe zum Ermitteln Ihrer Sammlungsanforderungen finden Sie unter [Verwalten der Leistung und Kapazität](documentdb-manage.md).
 
 ### Ist DocumentDB mit HIPAA kompatibel?
 Ja, DocumentDB ist mit HIPAA kompatibel. HIPAA gibt Anforderungen für die Verwendung, Offenlegung und den Schutz von individuell identifizierbaren Gesundheitsinformationen vor. Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/de-DE/TrustCenter/Compliance/HIPAA).
 
-### Was sind die Größenbeschränkungen von DocumentDB?
-DocumentDB-Konten können hinsichtlich Speicher und Durchsatz durch Hinzufügen von Sammlungen skaliert werden. Die Dienstkontingente für die Anzahl der Sammlungen finden Sie unter [DocumentDB-Grenzen](documentdb-limits.md). Wenn Sie weitere Sammlungen benötigen, [wenden Sie sich an den Support](documentdb-increase-limits.md), um das Kontokontingent zu erhöhen.
+### Wie lauten die Speicherbeschränkungen von DocumentDB? 
+Es gibt keine theoretische Beschränkung in Bezug auf die Gesamtmenge der Daten, die von einer Sammlung in DocumentDB gespeichert werden kann. Falls Sie mehr als 250 GB an Daten in einer einzelnen Sammlung speichern möchten, [wenden Sie sich bitte an den Support](documentdb-increase-limits.md), um Ihr Kontokontingent erhöhen zu lassen.
+
+### Wo liegen die Durchsatzgrenzwerte von DocumentDB? 
+Es gibt kein theoretisches Limit für den Gesamtdurchsatz, der von einer Sammlung in DocumentDB unterstützt werden kann, wenn Ihre Workload in etwa gleichmäßig auf eine ausreichend große Zahl von Partitionsschlüsseln verteilt werden kann. Falls Sie pro Sammlung oder Konto mehr als 250.000 Anforderungseinheiten pro Sekunde verwenden möchten, [wenden Sie sich bitte an den Support](documentdb-increase-limits.md), um Ihr Kontokontingent erhöhen zu lassen.
 
 ### Wie viel kostet Microsoft Azure DocumentDB?
-Ausführliche Informationen dazu finden Sie auf der Seite [DocumentDB – Preise](http://go.microsoft.com/fwlink/p/?LinkID=402317). Die Nutzungsgebühren für DocumentDB werden bestimmt von der verwendeten Anzahl von Sammlungen, der Anzahl der Stunden, die die Sammlungen online waren, und der [Leistungsebene](documentdb-performance-levels.md) jeder Sammlung.
+Ausführliche Informationen dazu finden Sie auf der Seite [DocumentDB – Preise](https://azure.microsoft.com/pricing/details/documentdb/). Die Nutzungsgebühren für DocumentDB werden von der verwendeten Anzahl von Sammlungen, der Anzahl von Stunden, die die Sammlungen online waren, und dem genutzten Speicher und bereitgestellten Durchsatz für jede Sammlung bestimmt.
 
 ### Ist ein kostenloses Konto verfügbar?
 Wenn Azure für Sie neu ist, können Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren. Sie erhalten ein Guthaben von 200 US-Dollar für 30 Tage, in denen Sie alle Azure-Dienste ausprobieren können. Wenn Sie ein Visual Studio-Abonnement besitzen, haben Sie Anspruch auf ein [kostenloses Azure-Guthaben von 150 US-Dollar pro Monat](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), das Sie für beliebige Azure-Dienste nutzen können.
@@ -69,12 +77,9 @@ Ein Hauptschlüssel ist ein Sicherheitstoken für den Zugriff auf alle Ressource
 Datenbanken können über das [Azure-Portal]() erstellt werden, wie in [Erstellen einer DocumentDB-Datenbank](documentdb-create-database.md) beschrieben, über eines der [DocumentDB-SDKs](documentdb-sdk-dotnet.md) oder über die [REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx).
 
 ### Was ist eine Sammlung?
-Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Abfragen und Transaktionen sind Sammlungen zugeordnet. Sie können heterogene (nicht zusammenhängende) JSON-Dokumente in einer Sammlung speichern, die alle automatisch indiziert werden.
+Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Eine Sammlung ist eine fakturierbare Entität, bei der die [Kosten](documentdb-performance-levels.md) durch die Leistungsebene bestimmt werden, die mit der Sammlung verknüpft ist. Sammlungen können eine oder mehrere Partitionen bzw. Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
 
-Sammlungen sind zudem die Abrechnungseinheiten für DocumentDB. Die monatlichen Nutzungsgebühren für DocumentDB werden bestimmt von der verwendeten Anzahl von Sammlungen, der Anzahl der Stunden, die die Sammlungen online waren, und der [Leistungsebene](documentdb-performance-levels.md) jeder Sammlung. Weitere Informationen finden Sie unter [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/).
-
-### Gibt es Beschränkungen für Datenbanken und Sammlungen?
-Jede Sammlung ist mit einer Zuweisung an Datenbankspeicher und bereitgestelltem Durchsatz auf einer der unterstützten [Leistungsebenen](documentdb-performance-levels.md) ausgestattet. Außerdem sind für jede vom Dienst verwaltete Ressource Kontingente angegeben. Eine Übersicht aller Grenzwerte finden Sie unter [DocumentDB-Grenzen und -Kontingente](documentdb-limits.md). Informationen zum Beantragen einer Änderung Ihrer Kontobegrenzungen finden Sie unter [Anfordern von erhöhten DocumentDB-Kontobegrenzungen](documentdb-increase-limits.md).
+Sammlungen sind zudem die Abrechnungseinheiten für DocumentDB. Die Kosten für jede Sammlung werden basierend auf dem bereitgestellten Durchsatz und dem verwendeten Speicherplatz pro Stunde berechnet. Weitere Informationen finden Sie unter [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/).
 
 ### Wie richte ich Benutzer und Berechtigungen ein?
 Sie können Benutzer und Berechtigungen mit einem des [DocumentDB SDKs](documentdb-sdk-dotnet.md) oder mithilfe der [REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) erstellen.
@@ -84,7 +89,7 @@ Sie können Benutzer und Berechtigungen mit einem des [DocumentDB SDKs](document
 ### Wie beginne ich beim Entwickeln mit DocumentDB?
 [SDKs](documentdb-sdk-dotnet.md) sind für .NET, Python, Node.js, JavaScript und Java verfügbar. Entwickler können außerdem die [RESTful HTTP-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) zur Interaktion mit DocumentDB-Ressourcen auf einer Vielzahl von Plattformen und mit verschiedenen Sprachen nutzen.
 
-Beispiele der [.NET](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](https://github.com/Azure/azure-documentdb-node/tree/master/samples) und [Python](https://github.com/Azure/azure-documentdb-python) SDKs für DocumentDB sind auf GitHub verfügbar.
+Beispiele der [.NET](documentdb-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](documentdb-nodejs-samples.md) und [Python](documentdb-python-samples.md) SDKs für DocumentDB sind auf GitHub verfügbar.
 
 ### Unterstützt DocumentDB SQL?
 Die DocumentDB-SQL-Abfragesprache ist eine erweiterte Teilmenge der Abfragefunktionalität, die von SQL unterstützt wird. Die DocumentDB SQL-Abfragesprache bietet umfassende hierarchische und relationale Operatoren sowie die Erweiterbarkeit über JavaScript-basierte benutzerdefinierte Funktionen. Die JSON-Grammatik ermöglicht die Modellierung von JSON-Dokumenten als Struktur mit den Beschriftungen als Strukturknoten. Dies wird sowohl von den automatischen Indizierungstechniken als auch beim SQL-Abfragedialekt von DocumentDB verwendet. Ausführliche Informationen zur Verwendung der SQL-Grammatik finden Sie im Artikel [Abfragen von DocumentDB][query].
@@ -96,7 +101,7 @@ Die in DocumentDB unterstützten primitiven Datentypen sind dieselben wie in JSO
 DocumentDB unterstützt die Steuerung für optimistische Parallelität (OCC) durch HTTP-Entitätstags oder ETags. Jede DocumentDB-Ressource verfügt über einen ETag, und DocumentDB-Clients schließen ihre aktuelle Leseversion in Schreibanforderungen ein. Falls der ETag aktuell ist, wird die Änderung festgeschrieben. Wurde der Wert extern geändert, lehnt der Server den Schreibvorgang mit dem Antwortcode „HTTP 412“ für eine nicht zutreffende Voraussetzung ab. Clients müssen die neueste Version der Ressource lesen und die Anforderung wiederholen.
 
 ### Wie führe ich Transaktionen in DocumentDB durch?
-DocumentDB unterstützt sprachintegrierte Transaktionen über gespeicherte JavaScript-Prozeduren und Trigger. Alle Datenbankoperationen in Skripts werden unter Momentaufnahmeisolation zur Sammlung zugeordnet. Eine Momentaufnahme der Dokumentversionen (ETags) wird zu Beginn der Transaktion angefertigt und erst dann festgeschrieben, wenn das Skript erfolgreich ausgeführt wurde. Falls JavaScript einen Fehler ausgibt, wird für die Transaktion ein Rollback ausgeführt. Weitere Einzelheiten finden Sie unter [Serverseitige DocumentDB-Programmierung](documentdb-programming.md).
+DocumentDB unterstützt sprachintegrierte Transaktionen über gespeicherte JavaScript-Prozeduren und Trigger. Alle Datenbankvorgänge in Skripts werden per Momentaufnahmeisolation ausgeführt, für die die Sammlung als Bereich gilt, wenn es sich um eine Sammlung mit einer Partition handelt. Es kann sich auch um Dokumente innerhalb desselben Partitionsschlüsselwerts handeln, wenn die Sammlung partitioniert ist. Eine Momentaufnahme der Dokumentversionen (ETags) wird zu Beginn der Transaktion angefertigt und erst dann festgeschrieben, wenn das Skript erfolgreich ausgeführt wurde. Falls JavaScript einen Fehler ausgibt, wird für die Transaktion ein Rollback ausgeführt. Weitere Einzelheiten finden Sie unter [Serverseitige DocumentDB-Programmierung](documentdb-programming.md).
 
 ### Wie kann ich Masseneinfügung für Dokumente in DocumentDB ausführen? 
 Es gibt drei Möglichkeiten zur Masseneinfügung von Dokumenten in DocumentDB:
@@ -115,4 +120,4 @@ Ja. Da es sich bei DocumentDB um einen RESTful-Dienst handelt, sind Ressourcenli
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

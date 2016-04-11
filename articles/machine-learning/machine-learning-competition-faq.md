@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Machine Learning-Wettbewerb – FAQ | Microsoft Azure"
-	description="Häufig gestellte Fragen zu Microsoft Cortana Analytics Suite-Wettbewerben"
+	pageTitle="Microsoft Cortana Analytics-Wettbewerbe – häufig gestellte Fragen | Microsoft Azure"
+	description="Häufig gestellte Fragen zu Microsoft Cortana Analytics-Wettbewerben."
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
@@ -16,7 +16,15 @@
 	ms.date="03/11/2016"
 	ms.author="haining;chlovel;garye"/>
 
-# Microsoft Cortana Analytics Suite-Wettbewerbe – häufig gestellte Fragen
+# Microsoft Cortana Analytics-Wettbewerbe – häufig gestellte Fragen
+
+**Was sind Cortana Analytics-Wettbewerbe?**
+
+Microsoft kündigt Cortana Analytics-Wettbewerbe an. Cortana Analytics-Wettbewerbe ermöglichen uns, eine globale Community Datenbegeisterter durch das gemeinsame Lösen einiger der komplexesten Data Science-Probleme der Welt zu vereinen. Cortana Analytics-Wettbewerbe ermöglichen Datenbegeisterten aus der ganzen Welt, zu wetteifern und äußerst präzise und intelligente Data Science-Modelle zu erstellen. Unsere ausgerichteten Wettbewerbe basieren auf eindeutigen Datasets, die erstmals öffentlich verfügbar gemacht wurden. Teilnehmer können Preise gewinnen oder über unsere öffentliche Bestenliste (Top 10) Anerkennung erhalten. Klicken Sie [hier](http://aka.ms/CIComp), um auf die Wettbewerbshomepage zu gelangen.
+
+**Wie oft wird Microsoft neue Wettbewerbe veröffentlichen?**
+
+Wir werden regelmäßig Erstanbieterwettbewerbe von Microsoft starten (etwa alle 8-12 Wochen).
 
 **Wo kann ich allgemeine Fragen zu Data Science stellen?**
 
@@ -24,43 +32,61 @@ Bitte verwenden Sie unser [Microsoft Azure Machine Learning-Forum](https://socia
 
 **Wie kann ich an einem Wettbewerb teilnehmen?**
 
-Erstellen Sie ein kostenloses oder kostenpflichtiges Konto in [Microsoft Azure Machine Learning](https://studio.azureml.net/?selectAccess=true&o=2%22%20\t%20%22_blank). Folgen Sie dem Wettbewerbstutorial und schauen Sie sich das kurze Video an.
+Greifen Sie über den Cortana Analytics-Katalog auf die Wettbewerbshomepage zu. Diese Seite enthält alle aktuellen Wettbewerbe. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs. Klicken Sie [hier](http://aka.ms/CIComp), um auf die Wettbewerbshomepage zu gelangen.
+
+1. Suchen Sie den Wettbewerb, an dem Sie teilnehmen möchten, im Cortana Analytics-Katalog. Lesen Sie sich alle Anweisungen durch und schauen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche „Enter Competition“ (am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Wahrscheinlich verwenden Sie den Großteil Ihrer Zeit für diesen Schritt.   
+
+2. Erstellen Sie mit dem trainierten Modell aus dem Starterexperiment ein Vorhersageexperiment. Passen Sie anschließend sorgfältig das Ein- und Ausgabeschema des Webdiensts an, um sicherzustellen, dass diese den in der Wettbewerbsdokumentation angegeben Anforderungen entsprechen. Das Tutorialdokument wird im Allgemeinen detaillierte Anweisungen hierzu enthalten. Sie können auch das Videotutorial anschauen, falls eines existiert.
+
+3. Stellen Sie aus Ihrem Vorhersageexperiment heraus einen Webdienst bereit. Testen Sie Ihren Webdienst mithilfe der Schaltfläche „Test“ oder der für Sie automatisch erstellten Excel-Vorlage, um sicherzustellen, dass er ordnungsgemäß funktioniert.
+
+4. Reichen Sie Ihren Webdienst als Wettbewerbsbeitrag ein, und sehen Sie sich Ihre öffentliche Bewertung auf der Wettbewerbsseite des Cortana Intelligence-Katalogs an. Und freuen Sie sich, wenn Sie es in die Bestenliste schaffen! Nachdem Sie einen Beitrag erfolgreich eingereicht haben, können Sie zurück zum kopierten Starterexperiment gehen, den Vorgang wiederholen, Ihr Vorhersageexperiment und Ihren Webdienst aktualisieren und einen neuen Beitrag einreichen.
+
+**Kann ich Open Source-Tools für die Teilnahme an diesen Wettbewerben verwenden?**
+
+Die Wettbewerbsteilnehmer verwenden zum Entwickeln der Data Science-Modelle Azure Machine Learning Studio, einen cloudbasierten Dienst innerhalb von Cortana Intelligence Suite, und erstellen Wettbewerbsbeiträge zum Einreichen. ML Studio bietet nicht nur eine grafische Benutzeroberfläche zum Erstellen von Machine-Learning-Experimenten, sondern erlaubt auch die Verwendung Ihrer eigenen R- und/oder Python-Skripts für die native Ausführung. Die Laufzeit von R und Python in ML Studio enthält umfangreiche Pakete für die Open Source-Programmiersprachen R und Python. Sie können außerdem auch Ihre eigenen Pakete als Teil des Experiments importieren. ML Studio verfügt auch über einen integrierten Jupyter Notebook-Dienst, um Ihnen das freie Durchsuchen von Daten zu ermöglichen. Natürlich können Sie die im Wettbewerb verwendeten Datasets jederzeit herunterladen und in Ihrem Lieblingstool außerhalb von ML Studio erkunden.
 
 **Muss ich ein Datenexperte sein, um teilnehmen zu dürfen?**
 
-Nein. Wir empfehlen Datenbegeisterten, Data Science-Interessierten und anderen Data Science-Laien sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen.
+Nein. Wir empfehlen Datenbegeisterten, Data Science-Interessierten und anderen angehenden Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Sie richten sich an:
+* Datenentwickler, Datenexperten, BI- und Analyseexperten – Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind
+* Data Stewards – Personen, die sich mit den Daten auskennen, und sowohl wissen was sie bedeuten als auch wie und wofür sie genutzt werden sollen
+* Studenten und Forscher – Personen, die derzeit datenbezogene Fähigkeiten über akademische Programme an Universitäten erlernen, oder Teilnehmer an massiven offenen Online-Kursen (Massive Open Online Courses; MOOCs)
 
-**Wie lange dauert das?**
 
-Sie können sich innerhalb von etwa 10-15 Minuten für den Wettbewerb anmelden und ein Datenmodell erstellen. Die Verfeinerung Ihres Vorhersageexperiments kann auch länger als 15 Minuten dauern, abhängig davon, wie gut Sie sich mit maschinellem Lernen auskennen.
+**Kann ich mit meinen Kollegen zusammen als Team teilnehmen?**
 
-**Wie wird meine Bewertung berechnet? Wird sie während des Wettbewerbs und nach dem Wettbewerb unterschiedlich berechnet? Was sind öffentliche und private Bewertungen?**
+Die Wettbewerbsplattform unterstützt derzeit keine Teilnahme als Team. Jeder Wettbewerbsbeitrag ist an eine einzelne Benutzeridentität gebunden.
 
-1.  Das gesamte DataSet wurde nach dem Zufallsprinzip mit Schichtung in Trainings-(60 %) und Testdaten (die restlichen 40 %) aufgeteilt. Die Zufallsaufteilung ist geschichtet in geografischer Raum + Segment + Untergruppe, um sicherzustellen, dass die Bezeichnungsverteilungen in den Trainings- sowie den Testdaten in jeder Region konsistent sind.  
+**Muss ich für die Teilnahme an einem Wettbewerb bezahlen?**
 
-2.  Die Trainingsdaten wurden hochgeladen und Ihnen als Teil des Starterexperiments in der Readermodulkonfiguration zur Verfügung gestellt.
-
-3.  Die Testdaten wurden weiter unterteilt in öffentliche und private Testdaten mit derselben Schichtung (60 % öffentliche Testdaten und 40 % private Testdaten).
-
-4.  Die öffentlichen Testdaten wurden für die erste Bewertungsrunde verwendet. Das Ergebnis wird als öffentliche Bewertung bezeichnet und ist das, was Sie beim Einreichen Ihres Eintrags in Ihrem Einreichungsverlauf erhalten haben. Diese Bewertung erfolgte jedes Mal, wenn Sie einen Eintrag eingereicht haben. Auf Grundlage dieser öffentlichen Bewertung werden Sie in die öffentliche Bestenliste eingeordnet.
-
-5.  Die privaten Testdaten wurden für die finale Bewertungsrunde nach Ende des Wettbewerbs verwendet. Dies wird als private Bewertung bezeichnet.
-
-6.  Von jedem Teilnehmer werden die 5 Einträge mit der höchsten öffentlichen Bewertung automatisch ausgewählt, um die private Bewertung zu berechnen. Der Eintrag mit der höchsten privaten Bewertung wurde für das Endranking ausgewählt, auf Grundlage dessen schließlich die Gewinner bestimmt wurden.
-
-**Muss ich für die Teilnahme bezahlen?**
-
-Nein, Sie können einen kostenlosen Arbeitsbereich in Microsoft Azure Machine Learning einrichten, um teilnehmen zu können. Bedenken Sie, dass Sie unter einem Gastkonto keine Daten speichern können. Stellen Sie daher sicher, dass Sie Ihren Eintrag einreichen, bevor die kostenlose 8-Stunden-Version abläuft.
+Die Teilnahme an Wettbewerben ist kostenlos. Jedoch ist für die Teilnahme der Zugriff auf einen Azure Machine Learning-Arbeitsbereich erforderlich. Sie können einen kostenlosen Arbeitsbereich ohne eine Kreditkarte erstellen, indem Sie sich einfach mit einem gültigen Microsoft- oder Office 365-Konto anmelden. Wenn Sie bereits Azure- oder Cortana Analytics Suite-Kunde sind, können Sie innerhalb desselben Azure-Abonnements einen Standardarbeitsbereich erstellen und verwenden. Wenn Sie ein Azure-Abonnement erwerben möchten, klicken Sie [hier](https://azure.microsoft.com/pricing). Beachten Sie, dass die üblichen Gebühren anfallen, wenn Sie einen Standardarbeitsbereich zum Erstellen von Experimenten verwenden. Preisinformationen zu Azure Machine Learning finden Sie [hier](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-**Wie kann ich mein Abonnement auf ein kostenpflichtiges Abonnement aktualisieren?**
+**Was sind öffentliche und private Bewertungen?**
 
-Sie können Ihr Abonnement in Microsoft Azure Marketplace kaufen oder aktualisieren. Die FAQ zu Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/machine-learning/).
+Bei den meisten Wettbewerben werden Sie feststellen, dass Sie für jeden Ihrer Beiträge im Allgemeinen innerhalb von 10-20 Minuten eine öffentliche Bewertung erhalten. Nach Ende des Wettbewerbs erhalten Sie jedoch eine private Bewertung, die für die endgültige Rangliste verwendet wird. Folgendes geschieht:
 
-**Was ist die Schaltfläche „Try Belize“?**
+* Das gesamte im Wettbewerb verwendete Dataset wird nach dem Zufallsprinzip mit Schichtung in Trainings- und Testdaten (die restlichen Daten) aufgeteilt. Die Zufallsaufteilung ist geschichtet, um sicherzustellen, dass die Bezeichnungsverteilungen in den Trainings- sowie den Testdaten konsistent sind.
+ 
+* Die Trainingsdaten werden hochgeladen und Ihnen als Teil des Starterexperiments in der Readermodulkonfiguration zur Verfügung gestellt.
 
-(Einschließlich Webdienstportal-Anweisungen und Screenshot mit Anleitung, um Schritte rückgängig zu machen)
+* Die Testdaten werden weiter unterteilt in öffentliche und private Testdaten mit derselben Schichtung.
+
+* Die öffentlichen Testdaten werden für die erste Bewertungsrunde verwendet. Das Ergebnis wird als öffentliche Bewertung bezeichnet und ist das, was beim Einreichen Ihres Beitrags in Ihrem Einreichungsverlauf angezeigt wird. Diese Bewertung wird für jeden Beitrag, den Sie einreichen, berechnet. Auf Grundlage dieser öffentlichen Bewertung werden Sie in die öffentliche Bestenliste eingeordnet.
+
+* Die privaten Testdaten werden für die finale Bewertungsrunde nach Ende des Wettbewerbs verwendet. Dies wird als private Bewertung bezeichnet.
+
+* Von jedem Teilnehmer wird aus den Beiträgen mit der höchsten öffentlichen Bewertung eine feste Anzahl Beiträge, die je nach Wettbewerb variieren kann, automatisch für die private Bewertungsrunde ausgewählt. Der Beitrag mit der höchsten privaten Bewertung wird dann für die endgültige Rangliste ausgewählt, auf Grundlage derer schließlich die Gewinner bestimmt werden.
+
+**Können Kunden einen Wettbewerb auf unserer Plattform ausrichten?**
+
+Wir laden Drittanbieterorganisationen ein, mit uns zusammenzuarbeiten und sowohl öffentliche als auch private Wettbewerbe auf unserer Plattform auszurichten. Wir verfügen über ein Team, das für solche Wettbewerbe zuständig ist und sich gerne mit Ihnen zusammen mit den hierfür notwendigen Prozessen auseinandersetzt. Für weitere Informationen wenden Sie sich über [compsupport@microsoft.com](mailto:compsupport@microsoft.com) an uns.
+
+**Welche Einschränkungen gelten für Einreichungen?**
+
+Bei einem typischen Wettbewerb kann die Anzahl von Beiträgen, die Sie innerhalb einer Zeitspanne von 24 Stunden (UTC-Zeit: 00:00:00 bis 23:59:59) und die Gesamtanzahl von Beiträgen, die Sie während der Dauer des Wettbewerbs einreichen können, begrenzt sein. Sie erhalten ordnungsgemäße Fehlermeldungen, wenn Sie eine Einschränkung überschreiten.
 
 **Was geschieht, wenn ich einen Wettbewerb gewinne?**
 
@@ -68,6 +94,22 @@ Microsoft überprüft die Ergebnisse der privaten Bestenliste und wird dann Kont
 
 **Wie erhalte ich das Preisgeld, wenn ich einen Wettbewerb gewinne?**
 
-Wenn Sie einen Wettbewerb gewonnen haben, müssen Sie eine Teilnahmeberechtigungs- und Lizenzerklärung sowie ein Freigabeformular unterschreiben. Dieses Formular bekräftigt die Wettbewerbsregeln. Gewinner müssen ein US-Steuerformular „W-9“ oder „W-8BEN“ ausfüllen, wenn Sie keine Steuerzahler in den USA sind.
+Wenn Sie einen Wettbewerb gewonnen haben, müssen Sie eine Teilnahmeberechtigungs- und Lizenzerklärung sowie ein Freigabeformular unterschreiben. Dieses Formular bekräftigt die Wettbewerbsregeln. Gewinner müssen ein US-Steuerformular „W-9“ oder „W-8BEN“ ausfüllen, wenn Sie keine Steuerzahler in den USA sind. Wir werden im Rahmen des Preisauszahlungsprozesses alle Gewinner über Ihre Registrierungs-E-Mail-Adresse benachrichtigen. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions).
 
-<!---HONumber=AcomDC_0323_2016-->
+**Was geschieht, wenn mehr als ein Beitrag dieselbe Bewertung erhält?**
+
+In einem solchen Fall wird nach dem Zeitpunkt der Einreichung entschieden. Der früher eingereichte Beitrag gewinnt gegenüber dem später eingereichten Beitrag.
+
+**Kann ich für die Teilnahme einen Gast-Arbeitsbereich verwenden?**
+
+Nein. Sie müssen für die Teilnahme einen kostenlosen oder einen Standardarbeitsbereich verwenden. Sie können das Starterexperiment des Wettbewerbs in einem Gast-Arbeitsbereich öffnen. Sie werden jedoch keinen gültigen Beitrag zum Einreichen erstellen können.
+
+**Kann ich für die Teilnahme einen Arbeitsbereich in jeder beliebigen Azure-Region verwenden?**
+
+Die Wettbewerbsplattform unterstützt derzeit nur die Einreichung von Beiträgen aus Arbeitsbereichen in der Azure-Region „USA, Süden-Mitte“. Alle kostenlosen Arbeitsbereiche befinden sich in der Region „USA, Süden-Mitte“. Wenn Sie sich jedoch dazu entschließen, einen Standardarbeitsbereich zu verwenden, vergewissern Sie sich, dass dieser sich in der Azure-Region „USA, Süden-Mitte“ befindet. Andernfalls wird Ihr Beitrag nicht erfolgreich eingereicht.
+
+**Bewahren wir die Lösungen/Beiträge der Benutzer aus den Wettbewerben auf?**
+
+Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions).
+
+<!---HONumber=AcomDC_0330_2016-->

@@ -1,6 +1,3 @@
-Cloud Computing ist ein häufig verwendeter Begriff, der in der IT-Branche mehr und mehr an Bedeutung gewinnt – in kleinen Unternehmen ebenso wie in großen und multinationalen Konzernen. Microsoft Azure ist die Plattform für Clouddienste von Microsoft, die ein umfangreiches Spektrum an neuen Möglichkeiten bietet. Nun können Kunden Anwendungen schnell als Clouddienste bereitstellen bzw. die Bereitstellung aufheben und sind nicht mehr durch technische oder budgetbezogene Aspekte eingeschränkt. Anstatt Zeit und Geld in die Hardwareinfrastruktur zu investieren, können sich Unternehmen auf die Anwendung, Geschäftsprozesse und ihre Vorteile für Kunden und Benutzer konzentrieren.
-
-Mit den Microsoft Azure Virtual Machines-Diensten bietet Microsoft eine umfassende IaaS-Plattform (Infrastructure-as-a-Service). Auf SAP NetWeaver basierende Anwendungen werden auf Azure Virtual Machines (IaaS) unterstützt. Die folgende Whitepaper beschreiben, wie auf SAP NetWeaver basierende Anwendungen in Microsoft Azure als Plattform der Wahl geplant und implementiert werden.
 
 ## Planung und Implementierung
 
@@ -39,24 +36,4 @@ Aktualisierung: September 2015
 
 [Dieses Handbuch jetzt herunterladen](http://go.microsoft.com/fwlink/?LinkID=521971)
 
-## SAP NetWeaver in Azure – HA
-
-Titel: SAP NetWeaver in Azure – Clustering von SAP ASCS/SCS-Instanzen mithilfe von Windows Server-Failoverclustern in Azure mit SIOS DataKeeper
-
-Zusammenfassung: In diesem Dokument wird beschrieben, wie SIOS DataKeeper verwendet wird, um eine hoch verfügbare SAP ASCS/SCS-Konfiguration in Azure einzurichten. SAP schützt die Single Point of Failure-Komponenten wie SAP ASCS/SCS oder Enqueue Replication Services mit Windows Server-Failoverclusterkonfigurationen, die freigegebene Datenträger erfordern. Diese SAP-Komponenten sind für die Funktionalität eines SAP-Systems unverzichtbar. Aus diesem Grund müssen Funktionen für hohe Verfügbarkeit eingerichtet sein, um sicherzustellen, dass diese Komponenten einen Ausfall eines Servers oder eines virtuellen Computers tolerieren – z. B. mit Windows-Clusterkonfigurationen für Bare-Metal- und Hyper-V-Umgebungen. Seit August 2015 kann Azure selbst keine freigegebenen Datenträger bereitstellen, die für die Windows-basierten hoch verfügbaren Konfigurationen für diese kritischen SAP-Komponenten erforderlich wären. Jedoch können mit dem Produkt DataKeeper von SIOS auf der Azure IaaS-Plattform Windows Server-Failoverclusterkonfigurationen erstellt werden, wie sie für SAP ASCS/SCS erforderlich sind. Dieses Whitepaper beschreibt die einzelnen Schritte zur Installation einer Windows Server-Failoverclusterkonfiguration mit freigegebenen Datenträgern, die von SIOS Datakeeper in Azure bereitgestellt werden. Im Whitepaper werden Konfigurationsdetails in Azure, Windows und SAP erläutert, die für eine optimale Funktionsweise der hoch verfügbaren Konfiguration sorgen. Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
-
-Aktualisierung: August 2015
-
-[Dieses Handbuch jetzt herunterladen](http://go.microsoft.com/fwlink/?LinkId=613056)
-
-## SAP NetWeaver auf virtuellen Azure SUSE-Linux-Computern
-
-Titel: Testen von SAP NetWeaver in Microsoft Azure SUSE-Linux-VMs
-
-Zusammenfassung: Zu diesem Zeitpunkt gibt es keinen offiziellen SAP-Support für das Ausführen von SAP NetWeaver auf virtuellen Azure-Linux-Computern. Dennoch möchten Kunden möglicherweise einige Tests ausführen oder ziehen es in Betracht, die SAP-Demo oder Übungssysteme auf Azure Linux-VMs auszuführen, solange keine Notwendigkeit besteht, mit dem SAP-Support Kontakt aufzunehmen. Dieser Artikel soll beim Einrichten von Azure SUSE-Linux-VMs für die Ausführung von SAP helfen und bietet einige grundlegende Tipps, um häufige potenzielle Stolperfallen zu vermeiden.
-
-Aktualisiert: Dezember 2015
-
-[Diesen Artikel finden Sie hier.](virtual-machines-linux-sap-on-suse-quickstart.md)
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

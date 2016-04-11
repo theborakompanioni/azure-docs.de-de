@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="03/23/2016"
 	ms.author="tomfitz"/>
 
 # Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen
@@ -145,7 +145,7 @@ Es könnte anfangs angenommen werden, dass eine Vorlage den Nutzern die größtm
 
 Oberflächlich betrachtet erscheinen Konfigurationen in freier Form ideal. Sie ermöglichen Ihnen, einen VM-Typ auszuwählen und eine beliebige Anzahl von Knoten und an diese Knoten angeschlossene Datenträger anzugeben, und zwar als Parameter für eine Vorlage. Wenn Sie jedoch bei Vorlagen genauer hinsehen, mit denen mehrere virtuelle Computer mit verschiedenen Größen bereitgestellt werden, sind zusätzliche Überlegungen anzustellen, die diese Wahl in einer Vielzahl von Szenarien weniger geeignet erscheinen lassen.
 
-Im Artikel [Größen für Virtual Machine und Clouddienste in Azure](http://msdn.microsoft.com/library/azure/dn641267.aspx) auf der Azure-Website sind die verschiedenen VM-Typen und verfügbaren Größen sowie jeweils die Anzahl langlebiger Datenträger (2, 4, 8, 16 oder 32) angegeben, die angefügt werden können. Jeder angeschlossene Datenträger bietet 500 IOPS (E/A-Vorgänge pro Sekunde), und Vielfache dieser Laufwerke können über einen Multiplikator dieser Anzahl von IOPS in einem Pool zusammengefasst werden. Beispielsweise können 16 Datenträger in einem Pool zusammengefasst werden, um 8.000 IOPS bereitzustellen. Das Bilden von Pools erfolgt über eine Konfiguration im Betriebssystem unter Verwendung von Microsoft Windows-Speicherplätzen oder RAID (Redundant Array of Inexpensive Disks) unter Linux.
+Auf der Seite [Sizes for virtual machines](./virtual-machines/virtual-machines-windows-sizes.md) (Größen für virtuelle Computer) werden die verschiedenen VM-Typen und verfügbaren Größen sowie jeweils die Anzahl langlebiger Datenträger (2, 4, 8, 16, oder 32) angegeben, die angefügt werden können. Jeder angeschlossene Datenträger bietet 500 IOPS (E/A-Vorgänge pro Sekunde), und Vielfache dieser Laufwerke können über einen Multiplikator dieser Anzahl von IOPS in einem Pool zusammengefasst werden. Beispielsweise können 16 Datenträger in einem Pool zusammengefasst werden, um 8.000 IOPS bereitzustellen. Das Bilden von Pools erfolgt über eine Konfiguration im Betriebssystem unter Verwendung von Microsoft Windows-Speicherplätzen oder RAID (Redundant Array of Inexpensive Disks) unter Linux.
 
 Eine Konfiguration in freier Form ermöglicht die Auswahl einer Reihe von VM-Instanzen, von verschiedenen VM-Typen und -Größen für diese Instanzen, einer Anzahl von Datenträgern, die basierend auf dem VM-Typ variieren kann, sowie von einem oder mehreren Skripts zum Konfigurieren des VM-Inhalts.
 
@@ -379,8 +379,7 @@ Wenn Sie Ihre Vorlage im Marketplace veröffentlichen möchten, richten Sie einf
 
 ## Nächste Schritte
 
-- Kontextbezogene Beispiele zum Umsetzen der in diesem Thema vorgestellten Entwurfsgrundsätze finden Sie unter [Kontextbezogene Beispiele bewährter Methoden für die Implementierung von Vorlagen](best-practices-resource-manager-examples.md).
 - Empfehlungen für die Sicherheitseinstellungen im Azure-Ressourcen-Manager finden Sie unter [Sicherheitsaspekte für Azure-Ressourcen-Manager](best-practices-resource-manager-security.md).
 - Informationen zur Freigabe des Status in Vorlagen finden Sie unter [Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-state.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

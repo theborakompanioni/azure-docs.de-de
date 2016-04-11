@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="03/22/2016"
    ms.author="alkohli" />
 
 # Ändern des Gerätemodus auf Ihrem StorSimple-Gerät
@@ -57,13 +57,14 @@ Wenn Ihr System in den Wiederherstellungsmodus wechselt, sollten Sie sich mit de
 #### So ermitteln Sie den aktuellen Gerätemodus
 
 1. Melden Sie sich bei der seriellen Gerätekonsole an, indem Sie die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console) ausführen.
+
 2. Sehen Sie sich die Bannermeldung im Menü der seriellen Konsole des Geräts an. Diese Meldung gibt explizit an, ob sich das Gerät im Wartungsmodus oder im Wiederherstellungsmodus befindet. Wenn die Meldung keine bestimmten Informationen zum Systemmodus enthält, befindet sich das Gerät im normalen Modus.
 
 ## Ändern des StorSimple-Gerätemodus 
 
 Sie können das StorSimple-Gerät (vom normalen Modus) in den Wartungsmodus versetzen, um Wartungsaufgaben auszuführen oder Wartungsmodus-Updates zu installieren. Führen Sie die folgenden Schritte aus, um den Wartungsmodus zu starten oder zu beenden.
 
-> [AZURE.IMPORTANT] Vergewissern Sie sich vor dem Starten des Wartungsmodus, dass beide Gerätecontroller fehlerfrei funktionieren, indem Sie den **Hardwarestatus** auf der Seite **Wartung** im klassischen Azure-Portal überprüfen. Wenn der Controller nicht fehlerfrei funktioniert, wenden Sie sich für die nächsten Schritte an Microsoft-Support. Für weitere Informationen [kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md).
+> [AZURE.IMPORTANT] Vergewissern Sie sich vor dem Starten des Wartungsmodus, dass beide Gerätecontroller fehlerfrei funktionieren, indem Sie den **Hardwarestatus** auf der Seite **Wartung** im klassischen Azure-Portal überprüfen. Falls einer oder beide Controller nicht fehlerfrei funktionieren, wenden Sie sich für die nächsten Schritte an den Microsoft-Support. Für weitere Informationen [kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md).
 
 #### So wechseln Sie in den Wartungsmodus
 
@@ -97,4 +98,4 @@ Sie können das StorSimple-Gerät (vom normalen Modus) in den Wartungsmodus vers
 
 Hier erfahren Sie, wie Sie auf Ihrem StorSimple-Gerät [Updates im normalen Modus und im Wartungsmodus installieren](storsimple-update-device.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

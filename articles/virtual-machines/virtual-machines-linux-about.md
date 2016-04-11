@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Über virtuelle Azure-Computer | Microsoft Azure"
-	description="Machen Sie sich mit den Grundlagen von virtuellen Azure-Computern mithilfe von beiden Bereitstellungsmodellen vertraut."
+	pageTitle="Über virtuelle Linux-Computer | Microsoft Azure"
+	description="Machen Sie sich mit den Grundlagen von virtuellen Linux-Computern in Azure unter Verwendung beider Bereitstellungsmodelle vertraut."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,14 +17,14 @@
 	ms.date="03/10/2016"
 	ms.author="cynthn"/>
 
-#Über virtuelle Azure-Computer 
+#Über virtuelle Linux-Computer in Azure
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
 Virtuelle Azure-Computer sind eine von mehreren bedarfsgesteuerten, skalierbaren Computerressourcen, die von Azure angeboten werden. In der Regel wählen Sie eine virtuelle Maschine, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen, als die anderen Optionen bieten.
 
-Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Allerdings müssen Sie den virtuellen Computer verwalten – Konfigurieren, Patchen und Verwalten der Software, die auf dem virtuellen Computer ausgeführt wird.
+Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Allerdings müssen Sie den virtuellen Computer verwalten – Konfigurieren, Patchen und Verwalten der Software, die auf dem virtuellen Computer ausgeführt wird. Außerdem erhalten Sie Informationen [über virtuelle Azure-Computer](virtual-machines-windows-about.md)
 
 Anhand dieser Tabelle können Sie die von Azure angebotenen Auswahlmöglichkeiten vergleichen.
 
@@ -32,14 +32,14 @@ Anhand dieser Tabelle können Sie die von Azure angebotenen Auswahlmöglichkeite
 
 ## Nächste Schritte
 
-Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in nur wenigen Schritten einen einfachen virtuellen Computer. Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-cli-create.md).
+Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in nur wenigen Schritten einen einfachen virtuellen Computer. Anweisungen dazu finden Sie unter [Create a virtual machine running Linux](virtual-machines-linux-cli-create.md) (Erstellen eines virtuellen Linux-Computers).
 
 Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-creation-choices.md).
 
 
 <!--links-->
 [App Service]: app-service-choose-me.md
-[Virtuelle Computer]: #tellmevm
-[Cloud-Dienste]: cloud-services-choose-me.md
+[Virtual Machines]: #tellmevm
+[Cloud Services]: cloud-services-choose-me.md
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/11/2016" 
+	ms.date="03/30/2016" 
 	ms.author="arramac"/>
 
 # SQL-Abfrage und SQL-Syntax in DocumentDB
@@ -1223,7 +1223,7 @@ Hier sehen Sie ein Beispiel für die Registrierung einer UDF in der DocumentDB-D
 	   };
 	   
 	   UserDefinedFunction createdUdf = client.CreateUserDefinedFunctionAsync(
-	       collectionSelfLink/* link of the parent collection*/, 
+	       UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
 	       regexMatchUdf).Result;  
                                                                              
 Im vorherigen Beispiel wird eine UDF mit dem Namen `REGEX_MATCH` erstellt. Es werden die beiden JSON-Zeichenfolgenwerte `input` und `pattern` akzeptiert, und es wird überprüft, ob der erste Wert mit dem im zweiten Wert angegebenen Muster übereinstimmt. Hierfür wird die string.match()-JavaScript-Funktion verwendet.
@@ -1285,7 +1285,9 @@ Wir erweitern den Funktionsumfang von UDFs im folgenden Beispiel um konditionale
 	                }"
             };
 
-            UserDefinedFunction createdUdf = await client.CreateUserDefinedFunctionAsync(collection.SelfLink, seaLevelUdf);
+            UserDefinedFunction createdUdf = await client.CreateUserDefinedFunctionAsync(
+                UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
+                seaLevelUdf);
 	
 	
 Hier sehen Sie ein Verwendungsbeispiel für die UDF.
@@ -2316,7 +2318,7 @@ Das nächste Beispiel zeigt Verknüpfungen mithilfe von LINQ-SelectMany.
 
 Der .NET-Client durchläuft automatisch alle Seiten der Abfrageergebnisse in den foreach-Blöcken, wie oben gezeigt. Die im Abschnitt zur REST-API vorgestellten Abfrageoptionen sind auch im .NET SDK über die Klassen `FeedOptions` und `FeedResponse` in der CreateDocumentQuery-Methode verfügbar. Die Anzahl der Ergebnisse pro Seite kann über die `MaxItemCount`-Einstellung gesteuert werden.
 
-Entwickler können die Seitenaufteilung steuern, indem sie ein `IDocumentQueryable`-Element mit dem `IQueryable`-Objekt erstellen und anschließend die ` ResponseContinuationToken`-Werte auslesen und als `RequestContinuationToken` in `FeedOptions` zurückgeben. `EnableScanInQuery` kann festgelegt werden, um Suchen zu aktivieren, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt werden kann.
+Sie können die Seitenaufteilung steuern, indem sie ein `IDocumentQueryable`-Element mit dem `IQueryable`-Objekt erstellen, anschließend die ` ResponseContinuationToken`-Werte auslesen und als `RequestContinuationToken` in `FeedOptions` zurückgeben. `EnableScanInQuery` kann festgelegt werden, um Suchen zu aktivieren, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt werden kann. Für partitionierte Sammlungen können Sie `PartitionKey` zum Ausführen der Abfrage gegen eine einzelne Partition verwenden (obwohl DocumentDB dies automatisch aus dem Abfragetext extrahieren kann) und `EnableCrossPartitionQuery`, um Abfragen auszuführen, die möglicherweise gegen mehrere Partitionen ausgeführt werden müssen.
 
 Weitere Beispiele, die Abfragen enthalten, finden Sie unter [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net).
 
@@ -2367,9 +2369,9 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
 7.	JavaScript-Spezifikation [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8.	LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
 9.	Abfrageauswertungstechniken für große Datenbanken [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
-10.	Abfrageverarbeitung in parallelen relationalen Datenbanksystemen, IEEE Computer Society Press, 1994
-11.	Lu, Ooi, Tan, Abfrageverarbeitung in parallelen relationalen Datenbanksystemen, IEEE Computer Society Press, 1994.
-12.	Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing, SIGMOD 2008.
+10.	Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994
+11.	Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994.
+12.	Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing, SIGMOD 2008.
 13.     G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
 
@@ -2378,4 +2380,4 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

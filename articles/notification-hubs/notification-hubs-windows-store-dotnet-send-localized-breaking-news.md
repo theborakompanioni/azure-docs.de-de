@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/15/2015" 
+	ms.date="03/28/2016" 
 	ms.author="wesmc"/>
 
 # Verwenden von Notification Hubs zum Senden lokalisierter Nachrichten
@@ -39,14 +39,14 @@ Dieses Szenario besteht aus zwei Teilen:
 
 Sie müssen zuvor das Lernprogramm [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] abschließen und den Code verfügbar haben, da dieses Lernprogramm direkt auf dem Code aufbaut.
 
-Außerdem benötigen Sie Visual Studio 2012 oder höher.
+Außerdem benötigen Sie Visual Studio 2012 oder höher.
 
 
 ##Konzepte von Vorlagen
 
 Im Lernprogramm [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] haben Sie eine App erstellt, in der Benutzer mit **tags** Nachrichten aus verschiedenen Kategorien abonnieren können. Viele Apps richten sich jedoch an verschiedene Märkte und müssen lokalisiert werden. In diesen Fällen muss auch der Inhalt der Benachrichtigungen lokalisiert und an die korrekten Geräte ausgeliefert werden. In diesem Artikel erfahren Sie, wie Sie mit dem **template**-Feature von Notification Hubs lokalisierte Benachrichtigungen für Nachrichten verschicken können.
 
-Hinweis: Sie können mehrere Versionen der einzelnen Tags erstellen, um lokalisierte Benachrichtigungen zu verschicken. Für Englisch, Französisch und Mandarin müssen Sie z. B. drei verschiedene Markierungen für Weltnachrichten erstellen: "world\_en", "world\_fr" und "world\_ch". Anschließend müssten Sie eine lokalisierte Version der Nachrichten an die einzelnen Tags schicken. Dieser Artikel verwendet Vorlagen, um die Anzahl der Tags einzugrenzen und den Versand mehrerer Nachrichten zu vermeiden.
+Hinweis: Sie können mehrere Versionen der einzelnen Tags erstellen, um lokalisierte Benachrichtigungen zu verschicken. Für Englisch, Französisch und Mandarin müssen Sie z. B. drei verschiedene Markierungen für Weltnachrichten erstellen: "world\_en", "world\_fr" und "world\_ch". Anschließend müssten Sie eine lokalisierte Version der Nachrichten an die einzelnen Tags schicken. Dieser Artikel verwendet Vorlagen, um die Anzahl der Tags einzugrenzen und den Versand mehrerer Nachrichten zu vermeiden.
 
 Mit Vorlagen können Sie auf einer hohen Ebene festlegen, wie ein bestimmtes Gerät eine Benachrichtigung empfangen soll. Die Vorlage gibt das exakte Format der Nutzlast anhand von Eigenschaften an, die Teil der von Ihrem Back-End verschickten Nachricht sind. In unserem Fall senden wir eine sprachenunabhängige Nachricht, die alle unterstützten Sprachen enthält:
 
@@ -56,7 +56,7 @@ Mit Vorlagen können Sie auf einer hohen Ebene festlegen, wie ein bestimmtes Ger
 		"News_Mandarin": "..."
 	}
 
-Anschließend stellen wir sicher, dass sich die Geräte mit einer Vorlage registrieren, die auf die korrekte Eigenschaft verweist. Eine Windows Store-App, die einfache Popupmeldungen empfangen möchte, registriert sich z. B. mit beliebigen zugehörigen Tags für die folgende Vorlage:
+Anschließend stellen wir sicher, dass sich die Geräte mit einer Vorlage registrieren, die auf die korrekte Eigenschaft verweist. Eine Windows Store-App, die einfache Popupmeldungen empfangen möchte, registriert sich z. B. mit beliebigen zugehörigen Tags für die folgende Vorlage:
 
 	<toast>
 	  <visual>
@@ -135,7 +135,7 @@ Fügen Sie ein Sprachen-Kombinationsfeld zu Ihrer MainPage.xaml hinzu:
             return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
 
-	Beachten Sie, dass wir anstelle der Methode *RegisterNativeAsync* nun *RegisterTemplateAsync* aufrufen: Wir registrieren ein bestimmtes Benachrichtigungsformat, dessen Vorlage von der Sprache abhängt. Außerdem geben wir einen Namen für die Vorlage an („localizedWNSTemplateExample“), da wir möglicherweise mehrere Vorlagen registrieren möchten (z. B. eine für Popupbenachrichtigungen und eine für Kacheln). In diesem Fall wird der Name benötigt, um die Registrierungen ändern oder löschen zu können.
+	Beachten Sie, dass wir anstelle der Methode *RegisterNativeAsync* nun *RegisterTemplateAsync* aufrufen: Wir registrieren ein bestimmtes Benachrichtigungsformat, dessen Vorlage von der Sprache abhängt. Außerdem geben wir einen Namen für die Vorlage an („localizedWNSTemplateExample“), da wir möglicherweise mehrere Vorlagen registrieren möchten (z. B. eine für Popupbenachrichtigungen und eine für Kacheln). In diesem Fall wird der Name benötigt, um die Registrierungen ändern oder löschen zu können.
 
 	Wenn sich ein Gerät für mehrere Vorlagen mit demselben Tag registriert, werden bei einer eingehenden Nachricht für das entsprechende Tag mehrere Benachrichtigungen an das Gerät verschickt (eine pro Vorlage). Dies ist hilfreich, um dieselbe logische Nachricht in mehreren visuellen Darstellungen anzuzeigen, z. B. als Signal und als Popupbenachrichtigung in einer Windows Store-App.
 
@@ -227,4 +227,4 @@ Fügen Sie ein Sprachen-Kombinationsfeld zu Ihrer MainPage.xaml hinzu:
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

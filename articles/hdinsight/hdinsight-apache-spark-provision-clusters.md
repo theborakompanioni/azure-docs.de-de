@@ -71,16 +71,16 @@ Sie können zusätzliche Komponenten installieren oder die Clusterkonfiguration 
 
 Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
-##<a id="portal"></a> Mit dem Azure-Vorschauportal
+##<a id="portal"></a> Verwenden des Azure-Portals
 
 Spark-Cluster in HDInsight verwenden als Standarddateisystem einen Azure-BLOB-Speichercontainer. Sie benötigen ein Azure-Speicherkonto im entsprechenden Rechenzentrum, um einen HDInsight-Cluster erstellen zu können. Weitere Informationen finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zum Erstellen eines Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos][azure-create-storageaccount].
 
 **So erstellen Sie einen HDInsight-Cluster mit der benutzerdefinierten Erstellungsoption**
 
-1. Melden Sie sich beim [Azure-Vorschauportal](https://portal.azure.com) an.
-2. Klicken Sie auf **NEU**, **Datenanalyse** und anschließend auf **HDInsight**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie auf **NEU**, auf **Datenanalyse** und anschließend auf **HDInsight**.
 
-    ![Erstellen eines neuen Clusters im Azure-Vorschauportal](./media/hdinsight-apache-spark-provision-clusters/hdispark.createcluster.1.png "Erstellen eines neuen Clusters im Azure-Vorschauportal")
+    ![Erstellen eines neuen Clusters im Azure-Portal](./media/hdinsight-apache-spark-provision-clusters/hdispark.createcluster.1.png "Erstellen eines neuen Clusters im Azure-Portal")
 
 3. Geben Sie einen **Clusternamen** ein, wählen Sie **Spark** als **Clustertyp** aus, und wählen Sie in der Dropdownliste **Clusterbetriebssystem** den Eintrag **Windows Server 2012 R2 Datacenter** aus. Wenn der Clustername verfügbar ist, wird neben dem Namen ein grünes Häkchen angezeigt.
 
@@ -154,7 +154,7 @@ Spark-Cluster in HDInsight verwenden als Standarddateisystem einen Azure-BLOB-Sp
 	| ------------------ | --------------------- |
 	| ![Erstellungsanzeige im Startmenü](./media/hdinsight-apache-spark-provision-clusters/provisioning.png) | ![Kachel für einen erstellten Cluster](./media/hdinsight-apache-spark-provision-clusters/provisioned.png) |
 
-	> [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
+	> [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
 
 11. Klicken Sie nach Abschluss der Erstellung im Startmenü auf die Kachel für den Cluster, um das Clusterblatt zu öffnen. Auf dem Clusterblatt werden grundlegende Informationen zum Cluster angezeigt, z. B. der Name, die zugehörige Ressourcengruppe, der Standort, das Betriebssystem, die URL für das Cluster-Dashboard usw.
 
@@ -176,9 +176,9 @@ Spark-Cluster in HDInsight verwenden als Standarddateisystem einen Azure-BLOB-Sp
 
 	* **Benutzer** (![Benutzersymbol](./media/hdinsight-apache-spark-provision-clusters/users.png)): Dient zum Festlegen der Berechtigungen für die _Portalverwaltung_ dieses Clusters für andere Benutzer in Ihrem Azure-Abonnement.
 
-		> [AZURE.IMPORTANT] Die hier vorgenommenen Einstellungen betreffen _nur_ den Zugriff und die Berechtigungen für diesen Cluster im Azure-Vorschauportal und haben keine Auswirkung darauf, wer eine Verbindung mit dem HDInsight-Cluster herstellen oder Aufträge übermitteln kann.
+		> [AZURE.IMPORTANT] Die hier vorgenommenen Einstellungen betreffen _nur_ den Zugriff und die Berechtigungen für diesen Cluster im Azure-Portal und haben keine Auswirkung darauf, wer eine Verbindung mit dem HDInsight-Cluster herstellen oder Aufträge übermitteln kann.
 
-	* **Tags** (![Tagsymbol](./media/hdinsight-apache-spark-provision-clusters/tags.png)): Mithilfe von Tags können Sie Schlüssel-Wert-Paare festlegen, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen __Projekt__ erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
+	* **Tags** (![Tagsymbol](./media/hdinsight-apache-spark-provision-clusters/tags.png)): Mithilfe von Tags können Sie Schlüssel-Wert-Paare festlegen, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen __Projekt__ erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
 
 	* **Cluster-Dashboard**: Öffnet das Blatt „Cluster-Dashboard“, auf dem Sie das Cluster-Dashboard selbst oder Zeppelin und Jupyter Notebooks starten können.
 
@@ -203,8 +203,8 @@ Geben Sie den Spark-Clustertyp an:
 
 ##<a id="nextsteps"></a> Nächste Schritte
 
-* Unter [Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools-v1.md) finden Sie Informationen zur Verwendung von Apache Spark in HDInsight mit BI-Tools wie Power BI und Tableau.
-* Unter [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md) finden Sie Informationen zum Erstellen von Machine Learning-Anwendungen mit Apache Spark in HDInsight.
+* Unter [Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools-v1.md) finden Sie Informationen zur Verwendung von Apache Spark in HDInsight mit BI-Tools wie Power BI und Tableau.
+* Unter [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md) finden Sie Informationen zum Erstellen von Machine Learning-Anwendungen mit Apache Spark in HDInsight.
 * Unter [Verwenden von Spark in HDInsight zum Erstellen von Echtzeit-Streaminganwendungen](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md) finden Sie Informationen zum Erstellen von Streaminganwendungen mit Apache Spark in HDInsight.
 * Unter [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager-v1.md) finden Sie Informationen zur Verwendung des Ressourcen-Managers zum Verwalten von Ressourcen, die dem Spark-Cluster zugeordnet sind.
 
@@ -242,4 +242,4 @@ Geben Sie den Spark-Clustertyp an:
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "Verwenden von Sqoop mit HDInsight"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -3,6 +3,7 @@
 	description="Bereitstellungsanweisungen zum Aktivieren von Microsoft Passport in Ihrer Organisation."
 	services="active-directory"
 	documentationCenter=""
+	keywords="Konfigurieren von Microsoft Passport, Bereitstellen von Microsoft Passport for Work"
 	authors="femila"
 	manager="stevenpo"
 	editor=""
@@ -14,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/19/2015"
+	ms.date="03/23/2016"
 	ms.author="femila"/>
 
 
@@ -25,7 +26,7 @@ Nach der Verknüpfung von in die Domäne eingebundenen Windows 10-Geräten mit A
 ## Bereitstellen von System Center Configuration Manager, Version 1509 für Technical Preview
 Für das Bereitstellen von Benutzerzertifikaten anhand von Microsoft Passport-Schüsseln sind folgende Elemente erforderlich:
 
-- **System Center Configuration Manager, Version 1509 für Technical Preview** Weitere Informationen erhalten Sie unter [Microsoft System Center Configuration Manager Technical Preview](https://technet.microsoft.com/library/dn965439.aspx#BKMK_TP3Update) und [System Center Configuration Manager Team Blog](http://blogs.technet.com/b/configmgrteam/archive/2015/09/23/now-available-update-for-system-center-config-manager-tp3.aspx) (System Center Configuration Manager: Team-Blog).
+- **System Center Configuration Manager Version 1509 for Technical Preview**. Weitere Informationen erhalten Sie unter [Microsoft System Center Configuration Manager Technical Preview](https://technet.microsoft.com/library/dn965439.aspx#BKMK_TP3Update) und [System Center Configuration Manager Team Blog](http://blogs.technet.com/b/configmgrteam/archive/2015/09/23/now-available-update-for-system-center-config-manager-tp3.aspx).
 - **Public Key-Infrastruktur (PKI):** Für das Aktivieren von Microsoft Passport for Work mit Benutzerzertifikaten ist eine PKI erforderlich. Wenn diese nicht vorhanden ist oder Sie sie nicht für Benutzerzertifikate verwenden möchten, können Sie folgendermaßen vorgehen:
  - **Bereitstellen eines Domänencontrollers:** Stellen Sie einen neuen Domänencontroller mit Windows Server 2016 (Build 10551 oder höher) bereit, und befolgen Sie die Schritte zum [Installieren eines Replikatdomänencontrollers in einer vorhandenen Domäne](https://technet.microsoft.com/library/jj574134.aspx) bzw. zum [Installieren einer neuen Active Directory-Gesamtstruktur beim Erstellen einer neuen Umgebung](https://technet.microsoft.com/library/jj574166). (Die ISO-Dateien stehen unter [Signiant Media Exchange](https://datatransfer.microsoft.com/signiant_media_exchange/spring/main?sdkAccessible=true) zum Download bereit.)
 
@@ -33,9 +34,9 @@ Für das Bereitstellen von Benutzerzertifikaten anhand von Microsoft Passport-Sc
 
  Mithilfe von Active Directory-Gruppenrichtlinien unter Windows Server lassen sich in die Domäne eingebundene Windows 10-Geräte so konfigurieren, dass bei der Windows-Anmeldung eines Benutzers Microsoft Passport-Anmeldeinformationen bereitgestellt werden:
 
-1. 	Öffnen Sie den Server-Manager, und navigieren Sie zu **Extras** > **Gruppenrichtlinienverwaltung**.
+1. 	Öffnen Sie den Server-Manager, und navigieren Sie zu **Tools** > **Gruppenrichtlinienverwaltung**.
 2.	Navigieren Sie von der Gruppenrichtlinienverwaltung zu dem Domänenknoten, der der Domäne entspricht, in der Sie Azure AD Join aktivieren möchten.
-3.	Klicken Sie mit der rechten Maustaste auf Ihr **Gruppenrichtlinienobjekt**, und wählen Sie dann **Neu** aus. Geben Sie Ihrem Gruppenrichtlinienobjekt einen Namen, z. B. „Microsoft Passport aktivieren“. Klicken Sie auf **OK**.
+3.	Klicken Sie mit der rechten Maustaste auf **Gruppenrichtlinienobjekte**, und wählen Sie dann **Neu** aus. Geben Sie Ihrem Gruppenrichtlinienobjekt einen Namen, z. B. „Microsoft Passport aktivieren“. Klicken Sie auf **OK**.
 4.	Klicken Sie mit der rechten Maustaste auf Ihr neues Gruppenrichtlinienobjekt, und wählen Sie dann **Bearbeiten** aus.
 5.	Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Passport for Work**.
 6.	Klicken Sie mit der rechten Maustaste auf **Passport for Work aktivieren**, und wählen Sie dann **Bearbeiten** aus.
@@ -51,7 +52,7 @@ Führen Sie den folgenden PowerShell-Befehl aus:
     powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "& {New-ItemProperty "HKLM:\Software\Policies\Microsoft\PassportForWork" -Name "Enabled" -Value 1 -PropertyType "DWord" -Force}"
 
 ## Konfigurieren des Zertifikatprofils zum Verwenden des Registrierungszertifikats „Passport for Work“ im Configuration Manager
-Konfigurieren Sie für das Verwenden der zertifikatbasierten Passport for Work-Anmeldung/Microsoft Hello das Zertifikatprofil (**Assets & Compliance** -> **Kompatibilitätseinstellungen** -> **Company Resource Access** -> **Zertifikatprofile**). Wählen Sie eine Vorlage mit Smartcard-Anmeldung und erweiterter Schlüsselverwendung (Extended Key Usage, EKU) aus.
+Konfigurieren Sie für das Verwenden der zertifikatbasierten Passport for Work-Anmeldung/Microsoft Hello das Zertifikatprofil (**Bestand und Kompatibilität** -> **Kompatibilitätseinstellungen** -> **Zugriff auf Unternehmensressourcen** -> **Zertifikatprofile**). Wählen Sie eine Vorlage mit Smartcard-Anmeldung und erweiterter Schlüsselverwendung (Extended Key Usage, EKU) aus.
 
 ## Einrichten einer geplante Aufgabe zum Anfordern der Zertifikatauswertung
 Die geplante Aufgabe ist eine kurzfristige Lösung. Administratoren müssen eine geplante Aufgabe erstellen, die überwacht, ob ein Passport for Work-Container erstellt wurde, und dann eine Zertifikatsauswertung anfordern. Der geplante Task wird ausgelöst, wenn der Passport for Work-Container aktiviert wird. Durch den Task wird die Verzögerung bei der Einrichtung von Container und PIN und ihre Verfügbarkeit für die Verwendung bei der nächsten Anmeldung reduziert.
@@ -118,4 +119,4 @@ Hier der Beispiel-XML-Code:
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

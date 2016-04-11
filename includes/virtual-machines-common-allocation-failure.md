@@ -1,8 +1,5 @@
-Wenn Sie einen virtuellen Computer erstellen, beendete virtuelle Computer (zuordnungsaufgehobene) neu starten oder die Größe eines virtuellen Computers ändern, weist Microsoft Azure Ihrem Abonnement Compute-Ressourcen zu. Unter Umständen erhalten Sie beim Ausführen dieser Schritte auch dann gelegentlich Fehler, wenn Sie die Grenzwerte des Azure-Abonnements noch nicht erreicht haben. In diesem Artikel werden die Ursachen einiger häufig auftretender Zuordnungsfehler erläutert und mögliche Abhilfemaßnahmen vorgeschlagen. Diese Informationen können auch hilfreich sein, wenn Sie die Bereitstellung Ihrer Dienste planen.
 
-Im Abschnitt „Allgemeine Schritte zur Problembehandlung“ finden Sie Schritte für häufig auftretende Probleme. Der Abschnitt „Ausführliche Problembehandlungsschritte“ enthält Lösungsschritte für spezifische Fehlermeldungen. Bevor Sie beginnen, lesen Sie die Hintergrundinformationen zur Funktionsweise der Zuordnung und zu den Ursachen von Zuordnungsfehlern.
-
-Suchen Sie in den Azure-Foren bei [MSDN und Stack Overflow](https://azure.microsoft.com/support/forums/), falls Sie ihr Azure-Problem mit diesem Artikel nicht beheben konnten. Sie können Ihr Problem in diesen Foren veröffentlichen oder auf Twitter an den @AzureSupport senden. Darüber hinaus können Sie eine Azure-Supportanfrage stellen, indem Sie auf der [Website des Azure-Supports](https://azure.microsoft.com/support/options/) die Option **Support erhalten** auswählen.
+Suchen Sie in den Azure-Foren bei [MSDN und Stack Overflow](https://azure.microsoft.com/support/forums/), falls Sie ihr Azure-Problem mit diesem Artikel nicht beheben konnten. Sie können Ihr Problem in diesen Foren veröffentlichen oder auf Twitter an den @AzureSupport senden. Darüber hinaus können Sie eine Azure-Supportanfrage stellen, indem Sie auf der Website des [Azure-Supports](https://azure.microsoft.com/support/options/) die Option **Support erhalten** auswählen.
 ## Hintergrundinformationen
 ### Funktionsweise der Zuordnung
 Für die Server in Azure-Rechenzentren wird eine Partitionierung in Cluster vorgenommen. Normalerweise wird versucht, eine Zuordnungsanforderung in mehreren Clustern durchzuführen. Es ist aber möglich, dass bestimmte Einschränkungen der Zuordnungsanforderung die Azure-Plattform zwingen, die Anforderung nur in einen Cluster zu versuchen. In diesem Artikel wird dies als „verknüpft mit einem Cluster“ bezeichnet. Das unten stehende Diagramm 1 zeigt den Fall einer normalen Zuordnung, die in mehreren Clustern versucht wird. Diagramm 2 zeigt den Fall einer mit dem Cluster 2 verknüpften Zuordnung, da dort der vorhandene Clouddienst „CS\_1“ oder die Verfügbarkeitsgruppe gehostet wird. ![Zuordnungsdiagramm](./media/virtual-machines-common-allocation-failure/Allocation1.png)
@@ -19,13 +16,13 @@ Mit diesen Schritten können Sie viele Zuordnungsfehler virtueller Computer behe
 
 - Ändern Sie die Größe des virtuellen Computers.<br> Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > [Ihr virtueller Computer] > **Einstellungen** > **Größe**. Ausführliche Schritte finden Sie unter [Ändern der Größe des virtuellen Computers](https://msdn.microsoft.com/library/dn168976.aspx).
 
-- Löschen Sie alle virtuellen Computer aus dem Clouddienst, und erstellen Sie die virtuellen Computer neu.<br> Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > [Ihr virtueller Computer] > **Löschen**. Klicken Sie auf **Neu** > **Compute** > [Virtuelles Computerimage].
+- Löschen Sie alle virtuellen Computer aus dem Clouddienst, und erstellen Sie virtuelle Computer neu.<br> Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > [Ihr virtueller Computer] > **Löschen**. Klicken Sie auf **Neu** > **Compute** > [Image des virtuellen Computers].
 
 ### Problembehandlung bei häufigen Zuordnungsfehler im Azure-Ressourcen-Manager-Bereitstellungsmodell
 
 Mit diesen Schritten können Sie viele Zuordnungsfehler virtueller Computer beheben:
 
-- Beenden Sie alle virtuellen Computer einer Verfügbarkeitsgruppe (Aufhebung der Zuordnung), und starten Sie die einzelnen virtuellen Computer dann neu.<br> Zum Beenden: Klicken Sie auf **Ressourcengruppen** > [Ihre Ressourcengruppe] > **Ressourcen** > [Ihre Verfügbarkeitsgruppe] > **Virtual Machines** > [Ihr virtueller Computer] > **Beenden**.
+- Beenden Sie alle virtuellen Computer einer Verfügbarkeitsgruppe (heben Sie die Zuordnung auf), und starten Sie die einzelnen virtuellen Computer dann neu.<br> Zum Beenden: Klicken Sie auf **Ressourcengruppen** > [Ihre Ressourcengruppe] > **Ressourcen** > [Ihre Verfügbarkeitsgruppe] > **Virtual Machines** > [Ihr virtueller Computer] > **Beenden**.
 
 	Wählen Sie nach dem Beenden aller virtuellen Computer den ersten virtuellen Computer aus, und klicken Sie auf **Starten**.
 
@@ -133,7 +130,7 @@ Bevor regionale virtuelle Netzwerke eingeführt wurden, mussten Sie einem Virtua
 
 Falls Sie keine Affinitätsgruppe benötigen, erstellen Sie ein neues regionales virtuelles Netzwerk für die neuen Ressourcen, die Sie hinzufügen, und [verbinden Sie Ihr vorhandenes virtuelles Netzwerk mit dem neuen virtuellen Netzwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Weitere Informationen zu regionalen virtuellen Netzwerken finden Sie [hier](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-Alternativ dazu können Sie [Ihr auf der Affinitätsgruppe basierendes virtuelles Netzwerk zu einem regionalen virtuellen Netzwerk migrieren](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/) und dann die gewünschten Ressourcen wieder hinzufügen.
+Alternativ dazu können Sie [Ihr auf einer Affinitätsgruppe basierendes virtuelles Netzwerk zu einem regionalen virtuellen Netzwerk migrieren](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/) und dann die gewünschten Ressourcen wieder hinzufügen.
 
 ### Problembehandlung für spezifische Zuordnungsfehlerszenarios im Azure-Ressourcen-Manager-Bereitstellungsmodell
 Dies sind häufig vorkommende Zuordnungsszenarien, die bewirken, dass eine Zuordnungsanforderung „verknüpft“ wird. Die einzelnen Szenarien werden weiter unten in diesem Artikel genauer erläutert.
@@ -204,4 +201,4 @@ Wählen Sie eine neue Größe des virtuellen Computers für die Zuordnung aus. W
 
 „Auf dem Server ist ein interner Fehler aufgetreten. Versuchen Sie die Anforderung erneut.“ Oder „Für den Dienst konnte keine Zuordnung erstellt werden.“
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/30/2015"
+	ms.date="03/30/2016"
 	ms.author="genli"/>
 
 # Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten
@@ -24,17 +24,13 @@ Dieser Artikel hilft Ihnen bei der Problembehandlung einiger häufiger Ursachen 
 
 ## Auf welches Portal möchten Sie zugreifen?
 
-Kontobesitzer können nur auf das [Kontocenter](https://account.windowsazure.com/) zugreifen, während Dienstadministratoren und Co-Administratoren Zugriff auf das [Azure-Portal](https://manage.windowsazure.com/) haben.
+Ein Kontoadministrator kann nur auf das [Kontocenter](https://account.windowsazure.com/) zugreifen, während Dienstadministratoren und Co-Administratoren nur Zugriff auf das [Azure-Portal](https://portal.azure.com) oder das [klassische Azure-Portal](https://manage.windowsazure.com/) haben.
 
-Klicken Sie auf die folgenden Links, um Anweisungen zum Aktualisieren der Administratorrollen zu erhalten:
-
-- [So aktualisieren Sie den Dienstadministrator für Ihr Konto](./billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)
-
-- [So fügen Sie einen neuen Co-Administrator im Verwaltungsportal hinzu](./billing-add-change-azure-subscription-administrator.md#add-a-co-administrator-for-a-subscription)
+Weitere Informationen zu den Azure-Administratorrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](billing-add-change-azure-subscription-administrator.md).
 
 ## Ist Ihr Abonnement mit einem Microsoft-Konto oder Organisationskonto verknüpft?
 
-Ihr Microsoft-Konto ist die E-Mail-Adresse, die Sie zusammen mit Ihrem Kennwort verwenden, um sich bei Windows Live-Programmen oder -Diensten anzumelden, z. B. bei Outlook, Hotmail, MSN oder OneDrive. Sie können ein Microsoft-Konto mit einer beliebigen E-Mail-Adresse einrichten, z. B. auch mit Ihrer Firmen-E-Mail-Adresse. Weitere Informationen finden Sie unter [www.microsoft.com/account](http://www.microsoft.com/account).
+Ihr Microsoft-Konto ist die E-Mail-Adresse, die Sie zusammen mit Ihrem Kennwort verwenden, um sich bei Windows Live-Programmen oder -Diensten anzumelden, z. B. bei Outlook, Hotmail, MSN oder OneDrive. Sie können ein Microsoft-Konto mit einer beliebigen E-Mail-Adresse einrichten, z. B. auch mit Ihrer Firmen-E-Mail-Adresse. Weitere Informationen finden Sie unter [www.microsoft.com/account](http://www.microsoft.com/account).
 
 Wenn Ihr Konto mit einem Organisationskonto verknüpft ist, wählen Sie die richtige Anmeldeoption aus (siehe Abbildung unten). Weitere Informationen zur Verwendung eines Organisationskontos finden Sie unter [Als Unternehmen für Azure registrieren](./active-directory/sign-up-organization.md).
 
@@ -42,7 +38,7 @@ Wenn Ihr Konto mit einem Organisationskonto verknüpft ist, wählen Sie die rich
 
 ## Co-Administrator: Verwenden Sie den richtigen Kontotyp zum Verwalten anderer Konten?
 
-- Wenn Sie mit einem Microsoft-Konto angemeldet sind, können Sie nur andere Microsoft-Konten als Co-Administratoren hinzufügen. Dies ist eine Sicherheitsanforderung und verhindert, dass nicht zu einer Organisation gehörende Konten erkennen, ob bestimmte Konten (z. B. janedoe@contoso.com) gültig sind.
+- Wenn Sie mit einem Microsoft-Konto angemeldet sind, können Sie nur andere Microsoft-Konten als Co-Administratoren hinzufügen. Dies ist eine Sicherheitsanforderung und verhindert, dass nicht zu einer Organisation gehörende Konten erkennen, ob bestimmte Konten (z. B. janedoe@contoso.com) gültig sind.
 - Wenn Sie mit einem Organisationskonto angemeldet sind, können Sie andere Organisationskonten in Ihrer Organisation als Co-Administratoren hinzufügen. Beispielsweise kann abby@contoso.com das Konto bob@contoso.com als Dienstadministrator oder Co-Administrator hinzufügen, nicht jedoch john@notcontoso.com. Mit einem Organisationskonto angemeldete Benutzer können zudem Benutzer mit Microsoft-Konten als Dienstadministrator oder Co-Administrator hinzufügen.
 
 Nachdem es jetzt möglich ist, sich bei Azure mit einem Organisationskonto anzumelden, ändern sich die folgenden Kontoanforderungen für Dienstadministratoren und Co-Administratoren:
@@ -56,4 +52,4 @@ Nachdem es jetzt möglich ist, sich bei Azure mit einem Organisationskonto anzum
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf „Support erhalten“. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

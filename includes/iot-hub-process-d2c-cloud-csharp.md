@@ -19,13 +19,15 @@ Um sicherzustellen, dass keine Nachrichten außerhalb des Deduplizierungsfenster
 ### Bereitstellen eines Azure-Speicherkontos und einer Service Bus-Warteschlange
 Zum Verwenden der [EventProcessorHost]-Klasse müssen Sie über ein Azure-Speicherkonto verfügen, damit von **EventProcessorHost** Prüfpunktinformationen aufgezeichnet werden können. Sie können ein vorhandenes Speicherkonto verwenden oder mithilfe der Anweisungen unter [Informationen zu Azure Storage] ein neues Konto erstellen. Notieren Sie sich die Verbindungszeichenfolge für das Speicherkonto.
 
-Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Verarbeitung von interaktiven Nachrichten zu aktivieren. Sie können eine Warteschlange programmgesteuert mit einem Deduplizierungsfenster von einer Stunde erstellen. Dies ist unter [Verwenden von Service Bus-Warteschlangen][Service Bus Queue] beschrieben. Oder führen Sie im [klassischen Azure-Portal] die folgenden Schritte aus:
+> [AZURE.NOTE] Stellen Sie beim Kopieren und Einfügen der Speicherkonto-Verbindungszeichenfolge sicher, dass keine Leerzeichen in die Verbindungszeichenfolge aufgenommen werden.
 
-1. Klicken Sie unten links auf **NEU** und dann auf **App Services**, **Service Bus**, **Warteschlange** und **Benutzerdefiniert erstellen**. Geben Sie den Namen **d2ctutorial** ein, wählen Sie eine Region, und verwenden Sie einen vorhandenen Namespace, oder erstellen Sie einen neuen. Wählen Sie auf der nächsten Seite dann **Doppelte Erkennung aktivieren**, und legen Sie **Fenster für Duplikaterkennungsverlauf-Zeitpunkt** auf eine Stunde fest. Klicken Sie anschließend auf das Häkchen, um die Konfiguration der Warteschlange zu speichern.
+Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Verarbeitung von interaktiven Nachrichten zu aktivieren. Sie können eine Warteschlange programmgesteuert mit einem Deduplizierungsfenster von einer Stunde erstellen. Dies ist unter [Gewusst wie: Verwenden von Service Bus-Warteschlangen][Service Bus Queue] beschrieben. Oder führen Sie im [klassischen Azure-Portal] die folgenden Schritte aus:
+
+1. Klicken Sie unten links auf **NEU** und dann auf **App Services**, **Service Bus**, **Warteschlange** und **Benutzerdefiniert erstellen**. Geben Sie den Namen **d2ctutorial** ein, wählen Sie eine Region aus, und verwenden Sie einen vorhandenen Namespace, oder erstellen Sie einen neuen. Wählen Sie dann auf der nächsten Seite **Doppelte Erkennung aktivieren** aus, und legen Sie **Fenster für Duplikaterkennungsverlauf-Zeitpunkt** auf eine Stunde fest. Klicken Sie anschließend auf das Häkchen, um die Konfiguration der Warteschlange zu speichern.
 
     ![][30]
 
-2. Klicken Sie in der Liste mit den Service Bus-Warteschlangen auf **d2ctutorial** und dann auf **Konfigurieren**. Erstellen Sie zwei SAS-Richtlinien: eine mit dem Namen **send** und **Send**-Berechtigungen, und eine mit dem Namen **listen** mit **Listen**-Berechtigungen. Klicken Sie unten auf **Speichern**, wenn Sie fertig sind.
+2. Klicken Sie in der Liste mit den Service Bus-Warteschlangen auf **d2ctutorial** und dann auf **Konfigurieren**. Erstellen Sie zwei SAS-Richtlinien: eine mit dem Namen **send** und Berechtigungen zum **Senden** und eine mit dem Namen **listen** und Berechtigungen zum **Abhören**. Klicken Sie unten auf **Speichern**, wenn Sie fertig sind.
 
     ![][31]
 
@@ -41,7 +43,7 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProcessDeviceToCloudMessages**, und klicken Sie dann auf **NuGet-Pakete verwalten**. Das Dialogfeld **NuGet-Paket-Manager** wird angezeigt.
 
-3. Suchen Sie nach **WindowsAzure.ServiceBus**. klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird das [Azure Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
+3. Suchen Sie nach **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird das [Azure Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
 
 4. Suchen Sie nach **Microsoft Azure Service Bus Event Hub – EventProcessorHost**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird das NuGet-Paket [Azure Service Bus Event Hub - EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
 
@@ -196,9 +198,9 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
     Die **EventProcessorHost**-Klasse ruft diese Klasse auf, um von IoT Hub empfangene D2C-Nachrichten zu verarbeiten. Mit dem Code in dieser Klasse wird die Logik zum zuverlässigen Speichern von Nachrichten in einem Blobcontainer implementiert, und interaktive Nachrichten werden an die Service Bus-Warteschlange weitergeleitet. Die **OpenAsync**-Methode initialisiert die **currentBlockInitOffset**-Variable, mit der der aktuelle Offset der ersten Nachricht nachverfolgt wird, die von diesem Ereignisprozessor gelesen wird. Denken Sie daran, dass jeder Prozessor für eine bestimmte Partition verantwortlich ist.
     
-    Mit der **ProcessEventsAsync**-Methode wird ein Nachrichtenbatch von IoT Hub empfangen und wie folgt verarbeitet: Interaktive Nachrichten werden an die Service Bus-Warteschlange gesendet, und Datenpunkt-Nachrichten werden an den Arbeitsspeicherpuffer mit dem Namen **toAppend** angehängt. Falls der Arbeitsspeicherpuffer das Blocklimit von 4 Mb erreicht oder die Service Bus-Deduplizierungszeitfenster seit dem letzten Prüfpunkt abgelaufen sind (in diesem Lernprogramm eine Stunde), wird ein Prüfpunkt ausgelöst.
+    Mit der **ProcessEventsAsync**-Methode wird ein Nachrichtenbatch von IoT Hub empfangen und wie folgt verarbeitet: Interaktive Nachrichten werden an die Service Bus-Warteschlange gesendet, und Datenpunktnachrichten werden an den Arbeitsspeicherpuffer mit dem Namen **toAppend** angefügt. Falls der Arbeitsspeicherpuffer das Blocklimit von 4 Mb erreicht oder die Service Bus-Deduplizierungszeitfenster seit dem letzten Prüfpunkt abgelaufen sind (in diesem Lernprogramm eine Stunde), wird ein Prüfpunkt ausgelöst.
 
-    Mit der **AppendAndCheckpoint**-Methode wird zuerst eine „blockId“ für den anzufügenden Block generiert. Für den Azure-Speicher ist es erforderlich, dass alle Block-IDs die gleiche Länge haben. Die Methode füllt den Offset daher mit führenden Nullen auf: `currentBlockInitOffset.ToString("0000000000000000000000000")`. Wenn ein Block mit dieser ID im Blob bereits vorhanden ist, überschreibt die Methode ihn mit dem aktuellen Inhalt des Puffers.
+    Mit der **AppendAndCheckpoint**-Methode wird zuerst eine „blockId“ für den anzufügenden Block generiert. Für Azure Storage ist es erforderlich, dass alle Block-IDs dieselbe Länge haben. Die Methode füllt den Offset daher mit führenden Nullen auf: `currentBlockInitOffset.ToString("0000000000000000000000000")`. Wenn ein Block mit dieser ID im Blob bereits vorhanden ist, überschreibt die Methode ihn mit dem aktuellen Inhalt des Puffers.
 
     > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Lernprogramm eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn sie eine bestimmte Größe erreichen (ein Azure-Blockblob kann maximal 195 Gb groß sein) oder wenn ein bestimmter Zeitraum verstrichen ist.
 
@@ -208,7 +210,7 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
     using Microsoft.ServiceBus.Messaging;
     ```
 
-9. Ändern Sie die **Main**-Methode wie unten gezeigt in der **Program**-Klasse, und ersetzen Sie die IoT Hub-Verbindungszeichenfolge **iothubowner** (aus dem Lernprogramm [Erste Schritte mit IoT Hub]), die Speicherverbindungszeichenfolge und die Service Bus-Verbindungszeichenfolge durch **Send**-Berechtigungen für die Warteschlange mit dem Namen **d2ctutorial**:
+9. Ändern Sie die **Main**-Methode wie unten gezeigt in der **Program**-Klasse, und ersetzen Sie die IoT Hub-Verbindungszeichenfolge **iothubowner** (aus dem Tutorial [Erste Schritte mit IoT Hub]), die Speicherverbindungszeichenfolge und die Service Bus-Verbindungszeichenfolge durch Berechtigungen zum **Senden** für die Warteschlange mit dem Namen **d2ctutorial**:
 
     ```
     static void Main(string[] args)
@@ -229,7 +231,7 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
     }
     ```
     
-    > [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm eine einzelne Instanz der [EventProcessorHost]-Klasse verwendet. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs].
+    > [AZURE.NOTE] Der Einfachheit halber wird in diesem Tutorial eine einzelne Instanz der [EventProcessorHost]-Klasse verwendet. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs].
 
 ## Empfangen von interaktiven Nachrichten
 In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die interaktive Nachrichten aus der Service Bus-Warteschlange empfängt. Weitere Informationen zum Aufbau einer Lösung mit Service Bus finden Sie im Artikel zum [Erstellen von Anwendungen mit mehreren Ebenen mit Service Bus][].
@@ -312,4 +314,4 @@ In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die interaktive Nac
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

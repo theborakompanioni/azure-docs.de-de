@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016"
+	ms.date="03/28/2016"
 	ms.author="stepsic"/>
 	
 # Verwenden von Logik-App-Features
@@ -61,6 +61,11 @@ Diese Logik-App könnte dazu führen, dass Sie sehr viele E-Mail-Nachrichten erh
 
 7.  Ziehen Sie abschließend das Feld mit der E-Mail in das Feld **If Yes**. Damit erhalten Sie nur dann eine E-Mail, wenn die Anzahl der Follower erreicht ist.
 
+## Iteration einer Liste mit forEach
+
+Die forEach-Schleife erwartet ein Array, über das eine Aktion wiederholt wird. Handelt es sich nicht um ein Array, schlägt der Ablauf fehl. Wenn Aktion1 beispielsweise ein Array von Nachrichten ausgibt, und Sie jede Nachricht senden möchten, können Sie diese forEach-Anweisung in den Eigenschaften Ihrer Aktion einfügen: forEach: „@action('action1').outputs.messages“
+ 
+
 ## Verwenden der Codeansicht zum Bearbeiten einer Logik-App
 
 Außer im Designer können Sie die Definition einer Logik-App wie folgt direkt bearbeiten.
@@ -91,7 +96,7 @@ Der folgende Code aktualisiert die vorhandene Logik-App so, dass Parameter für 
  
 Parameter sind eine gute Möglichkeit, Werte auszuwählen, die Sie wahrscheinlich häufig ändern. Sie sind besonders nützlich, wenn Sie Parameter in verschiedenen Umgebungen überschreiben müssen. Weitere Informationen zum Überschreiben von Parametern auf Grundlage der Umgebung finden Sie in unserer [REST-API-Dokumentation](https://msdn.microsoft.com/library/mt643787.aspx).
 
-Wenn Sie nun auf **Speichern** klicken, werden Ihnen stündlich alle neuen Tweets mit mehr als 5 Retweets in einen Ordner namens **tweets** in Ihrer Dropbox übermittelt.
+Wenn Sie nun auf **Speichern** klicken, werden Ihnen stündlich alle neuen Tweets mit mehr als 5 Retweets in einen Ordner namens **Tweets** in Ihrer Dropbox übermittelt.
 
 Mehr Informationen zu Logik-App-Definitionen finden Sie unter [Logik-App-Definitionen erstellen](app-service-logic-author-definitions.md).
 
@@ -102,9 +107,9 @@ Es gibt mehrere Möglichkeiten zum Starten des Workflows, der in der Logik-App d
 Ein Wiederholungstrigger wird in einem von Ihnen angegebenen Intervall ausgeführt. Wenn der Trigger bedingte Logik aufweist, bestimmt der Trigger, ob der Workflow ausgeführt werden muss oder nicht. Ein Trigger gibt an, dass er ausgeführt werden sollte, indem der Statuscode `200` zurückgegeben wird. Wenn er nicht ausgeführt werden muss, wird der Statuscode `202` zurückgegeben.
 
 ### Rückruf mit REST-APIs
-Dienste können einen Logik-App-Endpunkt zum Starten eines Workflows aufrufen. Weitere Informationen finden Sie unter [Logik-Apps als aufrufbare Endpunkte](app-service-logic-connector-http.md). Um eine solche Logik-App bei Bedarf zu starten, klicken Sie auf der Befehlsleiste auf die Schaltfläche **Jetzt ausführen**.
+Dienste können einen Logik-App-Endpunkt zum Starten eines Workflows aufrufen. Weitere Informationen finden Sie unter [Logik-Apps als aufrufbare Endpunkte](app-service-logic-connector-http.md). Um eine solche Logik-App bei Bedarf zu starten, klicken Sie in der Befehlsleiste auf die Schaltfläche **Jetzt ausführen**.
 
 <!-- Shared links -->
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

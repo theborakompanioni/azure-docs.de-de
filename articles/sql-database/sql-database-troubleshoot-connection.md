@@ -13,25 +13,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/12/2016"
+	ms.date="03/29/2016"
 	ms.author="daleche"/>
 
-# Problembehandlung bei Fehlern wie „Die Datenbank auf dem Server ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später“ und anderen Verbindungsfehlern
-„Die Datenbank <dbname> auf dem Server <servername> ist zurzeit nicht verfügbar....“ ist der häufigste vorübergehende Verbindungsfehler für Azure SQL-Datenbank. Vorübergehende Verbindungsfehler werden normalerweise durch ein geplantes Ereignis (z. B. ein Softwareupgrade) oder ein ungeplantes Ereignis (z. B. einen Prozessabsturz) verursacht. Diese sind im Allgemeinen kurzlebig und dauern zwischen wenigen Sekunden und höchstens einer Minute. Wenn ein anderer Fehler auftritt, untersuchen Sie die [Fehlermeldung](sql-database-develop-error-messages.md) auf Hinweise zur Ursache. Bestimmen Sie, ob das Problem vorübergehend oder dauerhaft ist, und folgen Sie der Anleitung in diesem Thema.
+# Die Problembehandlung für die Fehlermeldung „Datenbank &lt;x&gt; auf Server &lt;y&gt; ist zurzeit nicht verfügbar. Bitte wiederholen Sie den Verbindungsversuch später.“
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+Wenn eine Anwendung eine Verbindung zu einer Azure SQL-Datenbank herstellt, wird die folgende Fehlermeldung angezeigt:
+
+```
+Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
+```
+
+> [AZURE.NOTE] Diese ist eine in der Regel vorübergehende (kurzlebige) Fehlermeldung.
+
+Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguriert) wird und Ihre Anwendung die Verbindung zur SQL-Datenbank verliert. Ereignisse bei der Neukonfiguration von SQL-Datenbanken werden durch geplante Ereignisse (z.B. Softwareupgrades) oder ungeplante Ereignisse (z.B. einen Prozessabsturz oder einen Lastenausgleich) hervorgerufen. Die meisten bei einer Neukonfiguration auftretenden Ereignisse sind normalerweise kurzlebig und sollten innerhalb von höchstens 60 Sekunden beendet werden. Trotzdem kann das Beenden dieser Ereignisse beizeiten länger dauern, so z.B., wenn eine große Transaktion eine lang andauernde Wiederherstellung auslöst.
 
 ## Schritte zum Beheben vorübergehender Verbindungsprobleme
-1.	Informationen zu bekannten Ausfällen finden Sie im [Microsoft Azure-Service-Dashboard](https://azure.microsoft.com/status).
-2.	Stellen Sie sicher, dass Ihre App Wiederholungslogik verwendet. Informationen zu allgemeinen Wiederholungsstrategien finden Sie unter [Verbindungsprobleme](sql-database-connectivity-issues.md) und [Bewährte Methoden und Entwurfsrichtlinien](sql-database-connect-central-recommendations.md). Untersuchen Sie anschließend [Codebeispiele](sql-database-develop-quick-start-client-code-samples.md) auf Details.
-3.	Sobald eine Datenbank sich ihren Ressourcenbegrenzungen nähert, kann dies wie ein vorübergehendes Verbindungsproblem aussehen. Siehe [Problembehandlung bei Leistungsproblemen](sql-database-troubleshoot-performance.md).
-4.	Wenn die Verbindungsprobleme anhalten, stellen Sie eine Azure-Supportanfrage, indem Sie auf der Website des [Azure-Supports](https://azure.microsoft.com/support/options) die Option **Support erhalten** auswählen.
+1.	Ziehen Sie das [Microsoft Azure Service-Dashboard](https://azure.microsoft.com/status) für alle bekannten Ausfälle zu Rat, die während der Fehlermeldung durch die Anwendung aufgetreten sind.
+2. Für Anwendungen, die Verbindungen zu einem Clouddienst wie Azure SQL-Datenbank herstellen, sollten Sie regelmäßige Rekonfigurationsereignisse erwarten. Daher sollten Sie eine Wiederholungslogik zur Fehlerbehandlung implementieren, anstatt Benutzern diese Anwendungsfehler anzuzeigen. Weitere Informationen und allgemeine Wiederholungsstrategien finden Sie in dem Abschnitt [Vorübergehende Fehler](sql-database-connectivity-issues.md) und in den [Wichtigen Empfehlungen](sql-database-connect-central-recommendations.md). Ausführliche Beschreibungen finden Sie bei den [Codebeispielen](sql-database-develop-quick-start-client-code-samples.md).
+3.	Wenn sich eine Datenbank ihren Ressourcenbegrenzungen nähert, kann dies wie ein vorübergehendes Verbindungsproblem aussehen. Siehe [Problembehandlung bei Leistungsproblemen](sql-database-troubleshoot-performance.md).
+4.	Wenn Verbindungsprobleme weiterhin bestehen, die Fehlerdauer 60 Sekunden überschreitet oder der Fehler an einem Tag mehrfach auftritt, schicken Sie eine Azure-Supportanforderung, indem Sie auf der [Azure-Support](https://azure.microsoft.com/support/options)-Website **Support erhalten** auswählen.
 
-## Schritte zum Beheben dauerhafter Verbindungsprobleme
-Wenn die App überhaupt keine Verbindung herstellen kann, ist der Grund meist die IP- und Firewallkonfiguration. Dies kann die Neukonfiguration des Netzwerks auf Clientseite (z. B. eine neue IP-Adresse oder ein neuer Proxy) einschließen. Falsch geschriebene Verbindungsparameter, z. B. in der Verbindungszeichenfolge, sind auch nicht unüblich.
+## Nächste Schritte
+- Wenn es sich um einen anderen Fehler handelt, überprüfen Sie die [Fehlermeldung](sql-database-develop-error-messages.md) bezüglich der Hinweise auf mögliche Ursachen.
+- Wenn der Fehler dauerhaft ist, lesen Sie die Hilfestellungen in dem Artikel [Troubleshoot common connection issues to SQL Azure Database](sql-database-troubleshoot-common-connection-issues.md) (Behandlung häufiger Verbindungsprobleme mit Azure SQL-Datenbanken).
 
-1.	Richten Sie [Firewallregeln](sql-database-configure-firewall-settings.md) so ein, dass die IP-Adresse des Clients zugelassen wird.
-2.	Stellen Sie für alle Firewalls zwischen Client und Internet sicher, dass Port 1433 für ausgehende Verbindungen geöffnet ist.
-3.	Überprüfen Sie die Verbindungszeichenfolge und andere Verbindungseinstellungen. Siehe im Thema [Verbindungsprobleme](sql-database-connectivity-issues.md) den Abschnitt „Verbindungszeichenfolge“.
-4.	Überprüfen Sie im Dashboard den Dienststatus. Wenn Sie glauben, dass es sich um einen regionalen Ausfall handelt, finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) Schritte zum Wiederherstellen in einer neuen Region.
-5.	Wenn die Verbindungsprobleme anhalten, stellen Sie eine Azure-Supportanfrage, indem Sie auf der Website des [Azure-Supports](https://azure.microsoft.com/support/options) die Option **Support erhalten** auswählen.
-
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->
