@@ -20,40 +20,24 @@
 
 # Herstellen einer Verbindung mit SQL-Datenbank mithilfe von Ruby unter Mac OS X (Yosemite)
 
-
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
+Dieses Thema enthält ein Ruby-Codebeispiel, das auf einem Macintosh-Computer mit Yosemite ausgeführt wird, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen.
 
-Dieses Thema enthält ein Ruby-Codebeispiel, das auf einem Macintosh-Computer mit Yosemite für die Verbindung mit einer Datenbank in Azure SQL-Datenbank ausgeführt wird.
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
-## Voraussetzungen
+[Voraussetzungen für die Verwendung des TinyTDS Ruby-Treibers für SQL Server](https://msdn.microsoft.com/library/mt711041.aspx#Mac)
 
-### Installieren der erforderlichen Module
-
-Öffnen Sie das Terminal, und installieren Sie Folgendes:
-
-**1) Homebrew**: Führen Sie den folgenden Befehl über das Terminal aus. Damit wird der Homebrew-Paket-Manager auf Ihren Computer heruntergeladen.
-
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-**2) FreeTDS:** Führen Sie den folgenden Befehl über das Terminal aus. Dadurch wird FreeTDS, das für das Funktionieren von TinyTDS erforderlich ist, auf Ihrem Computer installiert.
-
-    brew install FreeTDS
-
-**3) TinyTDS:** Führen Sie den folgenden Befehl über das Terminal aus. Dadurch wird TinyTDS auf Ihrem Computer installiert.
-
-    gem install tiny_tds
-
-### Eine SQL-Datenbank
+## Schritt 2: Erstellen einer SQL-Datenbank
 
 Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank. Sie sollten unbedingt die Anleitung zum Erstellen einer **AdventureWorks-Datenbankvorlage** befolgen. Die unten gezeigten Beispiele funktionieren nur mit dem **AdventureWorks-Schema**.
 
 
-## Schritt 1: Abrufen der Verbindungsdetails
+## Schritt 3: Abrufen der Verbindungsdetails
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## Schritt 2: Verbinden
+## Schritt 4: Verbinden
 
 Die [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds)-Funktion dient zum Verbinden mit einer SQL-Datenbank.
 
@@ -62,7 +46,7 @@ Die [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds)-Funktion dien
     host: 'yourserver.database.windows.net', port: 1433,
     database: 'AdventureWorks', azure:true
 
-## Schritt 3: Ausführen einer Abfrage
+## Schritt 5: Ausführen einer Abfrage
 
 Die Funktion [TinyTds::Result](https://github.com/rails-sqlserver/tiny_tds) wird verwendet, um ein Resultset aus einer Abfrage in einer SQL-Datenbank abzurufen. Diese Funktion akzeptiert eine Abfrage und gibt ein Resultset zurück. Das Resultset läuft mithilfe von [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds) durch.
 
@@ -76,7 +60,7 @@ Die Funktion [TinyTds::Result](https://github.com/rails-sqlserver/tiny_tds) wird
     puts row
     end
 
-## Schritt 4: Einfügen einer Zeile
+## Schritt 6: Einfügen einer Zeile
 
 In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Anweisung sicher ausführen, Parameter zum Schutz Ihrer Anwendung vor einer [Einschleusung von SQL-Befehlen](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) übergeben und den automatisch generierten [Primärschlüsselwert](https://msdn.microsoft.com/library/ms179610.aspx) abrufen.
 
@@ -106,4 +90,4 @@ Zum Ausrichten am [Datetime](http://msdn.microsoft.com/library/ms187819.aspx)-Fo
     puts row
     end
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

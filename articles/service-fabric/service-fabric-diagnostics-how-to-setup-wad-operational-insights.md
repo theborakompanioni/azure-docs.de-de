@@ -3,7 +3,7 @@
    description="In diesem Artikel wird beschrieben, wie Sie Azure-Diagnose und Azure Operational Insights so konfigurieren, dass Protokolle aus einem Service Fabric-Cluster unter Azure gesammelt werden."
    services="service-fabric"
    documentationCenter=".net"
-   authors="kunaldsingh"
+   authors="ms-toddabel"
    manager="timlt"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="03/25/2016"
    ms.author="toddabel"/>
 
 
@@ -21,163 +21,20 @@
 
 Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort vereinfacht die Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten. Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung „Azure-Diagnose“, mit der Protokolle an Azure Storage hochgeladen werden.
 
-Bei Azure Operational Insights (Teil der Microsoft Operations Management Suite) handelt es sich um eine SaaS-Lösung, die das Analysieren und Durchsuchen von Protokollen vereinfacht. In den folgenden Schritten wird beschrieben, wie Sie die Erweiterung „Azure-Diagnose“ auf den VMs in einem Cluster einrichten, um Protokolle an einen zentralen Speicherort hochzuladen. Anschließend erfahren Sie, wie Sie Operational Insights so konfigurieren, dass die Protokolle abgerufen werden und im Operational Insights-Portal angezeigt werden können.
+Bei Azure [Operational Insights](https://azure.microsoft.com/services/operational-insights/) (Teil der Microsoft Operations Management Suite) handelt es sich um eine SaaS-Lösung, die das Analysieren und Durchsuchen von Protokollen vereinfacht. In den folgenden Schritten wird beschrieben, wie Sie die Erweiterung „Azure-Diagnose“ auf den VMs in einem Cluster einrichten, um Protokolle an einen zentralen Speicherort hochzuladen. Anschließend erfahren Sie, wie Sie Operational Insights so konfigurieren, dass die Protokolle abgerufen werden und im Operational Insights-Portal angezeigt werden können.
 
 Operational Insights identifiziert die Quellen für die unterschiedlichen Arten von Protokollen, die von einem Service Fabric-Cluster hochgeladen werden, anhand der Namen der Speichertabellen, in denen sie gespeichert sind. Die Erweiterung „Azure-Diagnose“ muss daher so konfiguriert werden, dass die Namen der Speichertabellen, an die die Protokolle hochgeladen werden, den Namen entsprechen, nach denen von Operational Insights gesucht wird. Die Namen der Speichertabellen können Sie den in diesem Dokument enthaltenen Beispielkonfigurationseinstellungen entnehmen.
 
-## Empfohlene Artikel
-* [Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics.md) (bezieht sich auf Azure Cloud Services, enthält jedoch hilfreiche Informationen und Beispiele)
-* [Operational Insights](https://azure.microsoft.com/services/operational-insights/)
-* [Azure Resource Manager](https://azure.microsoft.com/resource-group-overview/)
 
 ## Voraussetzungen
 Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzuführen:
-* [Azure PowerShell](https://azure.microsoft.com/powershell-install-configure/)
-* [Azure Resource Manager-Client](https://github.com/projectkudu/ARMClient)
 
-## Andere Protokollquellen, die gesammelt werden können
-1. **Service Fabric-Protokolle:** Werden von der Plattform für standardmäßige ETW- und EventSource-Kanäle ausgegeben. Protokolle können unterschiedlicher Art sein:
-  - Betriebsereignisse: Protokolle für Vorgänge, die von der Service Fabric-Plattform durchgeführt werden. Beispiele hierfür wären die Erstellung von Anwendungen und Diensten, Knotenzustandsänderungen und Upgradeinformationen.
-  - [Ereignisse des Actor-Programmiermodells](service-fabric-reliable-actors-diagnostics.md)
-  - [Ereignisse des Reliable Services-Programmiermodells](service-fabric-reliable-services-diagnostics.md)
-2. **Anwendungsereignisse:** Ereignisse, die von Ihrem Dienstcode ausgegeben werden und mit der EventSource-Hilfsklasse der Visual Studio-Vorlagen ausgegeben werden. Weitere Informationen zum Schreiben von Protokollen aus Ihrer Anwendung finden Sie in [diesem Artikel zur Überwachung und Diagnose von Diensten in einer lokalen Installation](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+* [Azure PowerShell](../powershell-install-configure.md)
+* [Operational Insights](https://azure.microsoft.com/services/operational-insights/)
 
-
-## Bereitstellen der Diagnoseerweiterung für einen Service Fabric-Cluster zum Sammeln und Hochladen von Protokollen
-Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf allen VMs des Service Fabric-Clusters bereitgestellt werden. Die Diagnoseerweiterung sammelt Protokolle auf allen VMs und lädt sie an das angegebene Speicherkonto hoch. Je nachdem, ob Sie das Azure-Portal oder den Azure-Ressourcen-Manager verwenden und ob die Bereitstellung im Rahmen der Clustererstellung oder für einen bereits vorhandenen Cluster erfolgt, variieren die Schritte etwas. Wir sehen uns nun die Schritte für die einzelnen Szenarien an.
-
-### Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung über das Portal
-Um die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster enthaltenen VMs bereitzustellen, wird die in der folgenden Abbildung gezeigte Diagnoseeinstellung verwendet. Sie ist standardmäßig aktiviert. ![Azure-Diagnose-Einstellung im Portal für die Clustererstellung](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/portal-cluster-creation-diagnostics-setting.png)
-
-### Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung mithilfe des Azure-Ressourcen-Managers
-Wenn Sie einen Cluster mithilfe des Ressourcen-Managers erstellen möchten, müssen Sie der Ressourcen-Manager-Vorlage vom Typ „Vollständiger Cluster“ vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-cluster-5-node-1-nodetype-wad).
-
-Wenn Sie sich die Diagnoseeinstellung in der Ressourcen-Manager-Vorlage ansehen möchten, suchen Sie nach **WadCfg**. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link). Alternativ können Sie das Ressourcen-Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Informationen zu den Parametern, die an den Befehl übergeben werden müssen, finden Sie weiter unten.
-
-Außerdem müssen Sie vor dem Aufrufen dieses Bereitstellungsbefehls unter Umständen einige Setupschritte ausführen. So müssen Sie eventuell Ihr Azure-Konto hinzufügen (`Add-AzureAccount`), ein Abonnement auswählen (`Select-AzureSubscription`), in den Ressourcen-Manager-Modus wechseln (`Switch-AzureMode AzureResourceManager`) und ggf. die Ressourcengruppe erstellen (`New-AzureResourceGroup`).
-
-```powershell
-
-New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
-```
-
-### <a name="deploywadarm"></a>Bereitstellen der Diagnoseerweiterung für einen vorhandenen Cluster
-Einem bereits vorhandenen Cluster ohne Diagnosebereitstellung können Sie die Diagnose wie folgt hinzufügen: Erstellen Sie mit dem unten angegebenen JSON-Code die beiden Dateien „WadConfigUpdate.json“ und „WadConfigUpdateParams.json“:
-
-##### WadConfigUpdate.json
-
-```json
-
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-
-  "parameters": {
-        "vmNamePrefix": {
-      "type": "string"
-    },
-        "applicationDiagnosticsStorageAccountName": {
-      "type": "string"
-    },
-        "vmCount": {
-            "type": "int"
-    }
-  },
-
-  "resources": [
-    {
-      "apiVersion": "2015-05-01-preview",
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('vmNamePrefix'),copyIndex(0),'/Microsoft.Insights.VMDiagnosticsSettings')]",
-            "location": "[resourceGroup().location]",
-      "properties": {
-        "type": "IaaSDiagnostics",
-                "typeHandlerVersion": "1.5",
-        "publisher": "Microsoft.Azure.Diagnostics",
-                "autoUpgradeMinorVersion": true,
-        "settings": {
-                    "WadCfg": {
-            "DiagnosticMonitorConfiguration": {
-                            "overallQuotaInMB": "50000",
-                "EtwProviders": {
-                    "EtwEventSourceProviderConfiguration": [
-                        {
-                            "provider": "Microsoft-ServiceFabric-Actors",
-                            "scheduledTransferKeywordFilter": "1",
-                                        "scheduledTransferPeriod": "PT5M",
-                            "DefaultEvents": { "eventDestination": "ServiceFabricReliableActorEventTable" }
-                        },
-                        {
-                            "provider": "Microsoft-ServiceFabric-Services",
-                            "DefaultEvents": { "eventDestination": "ServiceFabricReliableServiceEventTable" },
-                                        "scheduledTransferPeriod": "PT5M"
-                        }
-                    ],
-                    "EtwManifestProviderConfiguration": [
-                        {
-                            "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-                            "scheduledTransferKeywordFilter": "4611686018427387904",
-                                        "scheduledTransferLogLevelFilter": "Information",
-                                        "scheduledTransferPeriod": "PT5M",
-                            "DefaultEvents": { "eventDestination": "ServiceFabricSystemEventTable" }
-                        }
-                    ]
-                }
-            }
-    },
-                    "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountName')]"
-                },
-                "protectedSettings": {
-                    "storageAccountName": "[parameters('applicationDiagnosticsStorageAccountName')]",
-                    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-05-01-preview').key1]",
-                    "storageAccountEndPoint": "https://core.windows.net/"
-                }
-            },
-            "copy": {
-                "name": "vmExtensionLoop",
-                "count": "[parameters('vmCount')]"
-            }
-        }
-    ],
-
-    "outputs": {
-    }
-}
-```
-
-##### WadConfigUpdateParams.json
-Ersetzen Sie „vmNamePrefix“ durch das Präfix, das Sie beim Erstellen des Clusters für VM-Namen ausgewählt haben. Legen Sie dann „vmStorageAccountName“ auf das Speicherkonto fest, in das Sie die Protokolle der VMs hochladen möchten.
-
-```json
-
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmNamePrefix": {
-            "value": "VM"
-        },
-        "applicationDiagnosticsStorageAccountName": {
-            "value": "testdiagacc"
-        },
-        "vmCount": {
-            "value": 5
-        }
-    }
-}
-```
-
-Passen Sie die wie oben beschrieben erstellten JSON-Dateien an die Einzelheiten Ihrer Umgebung an. Rufen Sie dann den folgenden Befehl auf, und übergeben Sie dabei den Namen der Ressourcengruppe für Ihren Service Fabric-Cluster. Nach erfolgreicher Ausführung des Befehls wird die Diagnose auf allen VMs bereitgestellt, und es wird damit begonnen, die Protokolle aus dem Cluster an Tabellen im angegebenen Azure-Speicherkonto hochzuladen.
-
-Vor dem Aufrufen des Bereitstellungsbefehls sind unter Umständen noch einige Setupschritte erforderlich – etwa das Hinzufügen Ihres Azure-Kontos (`Add-AzureAccount`), das Auswählen des richtigen Abonnements (`Select-AzureSubscription`) und das Wechseln in den Resource Manager-Modus (`Switch-AzureMode AzureResourceManager`).
-
-```ps
-
-New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToWADConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
-```
 
 ## Einrichten von Operational Insights zum Anzeigen und Durchsuchen von Clusterprotokollen
-Nachdem die Diagnose im Cluster eingerichtet wurde und Protokolle an ein Speicherkonto hochgeladen werden, muss Operational Insights so eingerichtet werden, dass Sie alle Clusterprotokolle über das Operational Insights-Portal anzeigen, durchsuchen und abfragen können.
+Im Artikel zum Thema [How to collect logs with Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) (Sammeln von Protokollen mit Azure-Diagnose) finden Sie eine Schritt-für-Schritt-Anleitung zum Aktivieren von Protokollen, die an ein Azure-Speicherkonto gesendet werden. Nachdem die Diagnose im Cluster eingerichtet wurde und Protokolle an ein Speicherkonto hochgeladen werden, muss Operational Insights so eingerichtet werden, dass Sie alle Clusterprotokolle über das Operational Insights-Portal anzeigen, durchsuchen und abfragen können.
 
 ### Erstellen eines Operational Insights-Arbeitsbereichs
 Die Schritte zum Erstellen eines Operational Insights-Arbeitsbereichs werden im unten angegebenen Artikel beschrieben. Dort werden zwei unterschiedliche Vorgehensweisen für die Arbeitsbereichserstellung beschrieben. Wählen Sie die Methode, die auf der Verwendung von Azure-Portal und Abonnement basiert. Sie benötigen den Namen des Operational Insights-Arbeitsbereichs in den weiteren Abschnitten dieses Dokuments. Erstellen Sie den Operational Insights-Arbeitsbereich mit dem Abonnement, das Sie auch zum Erstellen aller Clusterressourcen (einschließlich Speicherkonten) verwendet haben.
@@ -327,4 +184,4 @@ Sie müssen den EtwEventSourceProviderConfiguration-Abschnitt in der Datei „Wa
 ## Nächste Schritte
 Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) und [Reliable Services](service-fabric-reliable-services-diagnostics.md) ausgegeben werden, um besser zu verstehen, welche Ereignisse Sie beim Behandeln von Problemen untersuchen sollten.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

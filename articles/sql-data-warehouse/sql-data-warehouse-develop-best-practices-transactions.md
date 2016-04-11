@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/27/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess"/>
 
 # Optimieren von Transaktionen für SQL Data Warehouse
@@ -89,7 +89,7 @@ Unten sind vier Beispiele angegeben, die veranschaulichen, wie Sie Code für Vor
 ### Optimieren umfangreicher Löschvorgänge per CTAS
 Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen die Daten mit `SELECT` auszuwählen, die Sie behalten möchten. Sie können per [CTAS][] eine neue Tabelle erstellen. Verwenden Sie nach dem Erstellen ein [RENAME OBJECT][]-Befehlspaar, um die Namen der Tabellen auszutauschen.
 
-```
+```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
 
 --Step 01. Create a new table select only the records we want to kep (PromotionKey 2)
@@ -124,7 +124,7 @@ Im Beispiel unten wurde eine vollständige Tabellenaktualisierung in einen `CTAS
 
 In diesem Fall fügen wir dem Umsatz in der Tabelle nachträglich einen Rabattbetrag hinzu:
 
-```
+```sql
 --Step 01. Create a new table containing the "Update". 
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
@@ -192,7 +192,7 @@ Schritte zum Durchführen eines Partitionswechsels:
 
 Um die zu wechselnden Partitionen besser ermitteln zu können, erstellen wir zuerst ein Hilfsverfahren wie im Beispiel unten.
 
-```
+```sql
 CREATE PROCEDURE dbo.partition_data_get
 	@schema_name		   NVARCHAR(128)
 ,	@table_name			   NVARCHAR(128)
@@ -240,7 +240,7 @@ Mit diesem Verfahren wird die Wiederverwendung von Code erhöht, und das Partiti
 
 Im Code unten sind die fünf oben erwähnten Schritte enthalten, mit denen eine vollständige Partitionswechselroutine erzielt werden kann.
 
-```
+```sql
 --Create a partitioned aligned empty table to switch out the data 
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
@@ -346,7 +346,7 @@ Bei großen Datenänderungsvorgängen kann es sinnvoll sein, den Vorgang in Teil
 
 Unten ist ein funktionierendes Beispiel angegeben. Für die Batchgröße wurde ein Beispielwert gewählt, um die Vorgehensweise zu verdeutlichen. In Wirklichkeit wäre der Wert für die Batchgröße deutlich höher.
 
-```
+```sql
 SET NO_COUNT ON;
 IF OBJECT_ID('tempdb..#t') IS NOT NULL
 BEGIN
@@ -436,4 +436,4 @@ Weitere Entwicklungstipps und Inhalte zu den gezeigten Beispielen finden Sie in 
 <!--MSDN references-->
 [alter index]: https://msdn.microsoft.com/de-DE/library/ms188388.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

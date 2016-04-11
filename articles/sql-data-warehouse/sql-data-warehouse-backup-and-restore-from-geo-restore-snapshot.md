@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/09/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess"/>
 
 # Wiederherstellen einer Datenbank nach einem Ausfall in SQL Data Warehouse
@@ -52,7 +52,7 @@ Um eine Datenbank wiederherzustellen, verwenden Sie das Cmdlets [Start-AzureSqlD
 5. Erstellen Sie die Wiederherstellungsanforderung für die Datenbank.
 6. Überwachen Sie den Fortschritt der Wiederherstellung.
 
-```
+```Powershell
 
 Login-AzureRmAccount
 Get-AzureRmSubscription
@@ -113,4 +113,4 @@ Informationen zu den Geschäftskontinuitätsfeatures anderer Azure SQL-Datenbank
 [Azure-Portal]: https://portal.azure.com/
 [Wenden Sie sich an den Support]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

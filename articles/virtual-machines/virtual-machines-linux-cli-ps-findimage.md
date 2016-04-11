@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Navigieren zu und Auswählen von Images virtueller Computer | Microsoft Azure"
-   description="Erfahren Sie, wie Sie den Herausgeber, das Angebot und die SKU für Images ermitteln, wenn Sie mit dem Ressourcen-Manager-Bereitstellungsmodell einen virtuellen Azure-Computer erstellen."
+   pageTitle="Navigieren zu und Auswählen von Linux-VM-Images | Microsoft Azure"
+   description="Erfahren Sie, wie Sie den Herausgeber, das Angebot und die SKU für Images ermitteln, wenn Sie mit dem Resource Manager-Bereitstellungsmodell einen virtuellen Linux-Computer erstellen."
    services="virtual-machines-linux"
    documentationCenter=""
    authors="squillace"
@@ -15,11 +15,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="12/08/2015"
+   ms.date="03/14/2016"
    ms.author="rasquill"/>
 
-# Navigieren zwischen und Aussuchen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle
+# Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell
+
+In diesem Thema wird beschrieben wie Sie Herausgeber, Angebote, SKUs und Versionen für jeden Ort finden, an dem Sie etwas bereitstellen möchten. Beispielsweise sind einige der häufig verwendeten Linux-VM-Images die folgenden:
+
+**Tabelle mit häufig verwendeten Linux-Images**
+
+
+| PublisherName | Angebot | Sku |
+|:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
+| OpenLogic | CentOS | 7 |
+| OpenLogic | CentOS | 7\.1 |
+| Canonical | UbuntuServer | 12\.04.5-LTS |
+| Canonical | UbuntuServer | 14\.04.2-LTS |
+
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

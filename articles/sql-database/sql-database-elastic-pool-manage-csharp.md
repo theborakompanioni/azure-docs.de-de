@@ -16,7 +16,7 @@
     ms.date="03/15/2016"
     ms.author="sstein"/>
 
-# Verwalten eines Pools für elastische Datenbanken (C#)
+# Verwalten und Skalieren eines Pools für elastische Datenbanken mit C&#x23;
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-elastic-pool-manage-portal.md)
@@ -36,7 +36,7 @@ In den Beispielen wird die [SQL-Datenbankbibliothek für .NET](https://msdn.micr
 
 
 
-## Aktualisieren eines elastischen Datenbankpools
+## Aktualisieren eines Pools
 
 
     // Retrieve existing pool properties
@@ -60,7 +60,7 @@ In den Beispielen wird die [SQL-Datenbankbibliothek für .NET](https://msdn.micr
 
 
 
-## Verschieben einer vorhandenen Datenbank in einen Pool für elastische Datenbanken
+## Verschieben einer vorhandenen Datenbank in einen Pool
 
 
     // Update database service objective to add the database to a pool
@@ -88,7 +88,7 @@ In den Beispielen wird die [SQL-Datenbankbibliothek für .NET](https://msdn.micr
 
 
 
-## Erstellen einer neuen Datenbank in einem elastischen Datenbankpool
+## Erstellen einer neuen Datenbank in einem Pool
 
 
     // Create a new database in the pool
@@ -111,7 +111,7 @@ In den Beispielen wird die [SQL-Datenbankbibliothek für .NET](https://msdn.micr
 
 
 
-## Auflisten aller Datenbanken in einem elastischen Datenbankpool
+## Auflisten aller Datenbanken in einem Pool:
 
 Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 
@@ -126,7 +126,7 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 
 
 
-## Verwalten eines Pools für elastische Datenbanken C&#x23; Beispiel
+## Beispiel: Verwalten eines Pool mit C&#x23;
 
 Die folgenden Bibliotheken sind erforderlich, um dieses Beispiel auszuführen. Verwenden Sie den folgenden Befehl zur Installation über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
 
@@ -148,7 +148,7 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
     {
     class Program
     {
-        // elastic database pool variables
+        // pool variables
         static string poolName = "elasticPool1";
         static string poolEdition = "Standard";
         static int poolDtus = 400;
@@ -191,7 +191,7 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
             ServerGetResponse srvr = CreateServer();
             Console.WriteLine("Creation of server " + srvr.Server.Name + ": " + srvr.StatusCode.ToString());
 
-            // Create an elastic database pool
+            // Create a pool
             Console.WriteLine("Creating elastic database pool with 400 pool eDTUs... ");
             ElasticPoolCreateOrUpdateResponse epool = CreateElasticDatabasePool();
             Console.WriteLine("Creation of pool " + epool.ElasticPool.Name + ": " + epool.Status.ToString());
@@ -212,7 +212,7 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
             Console.WriteLine("Press Enter to update the pool to 1200 pool eDTUs.");
             Console.ReadLine();
 
-            // Update the elastic database pool
+            // Update the pool
             Console.WriteLine("Updating elastic database pool to 1200 pool eDTUs...");
             ElasticPoolCreateOrUpdateResponse epool2 = UpdateElasticDatabasePool();
             Console.WriteLine("Update of pool " + epool2.ElasticPool.Name + ": " + epool2.Status.ToString());
@@ -457,4 +457,4 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
 - [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 - [Referenz zu Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

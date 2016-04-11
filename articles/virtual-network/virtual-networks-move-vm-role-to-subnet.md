@@ -12,12 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/22/2016"
    ms.author="telmos" />
 
 # Verschieben eines virtuellen Computers oder einer Rolleninstanz in ein anderes Subnetz
 
 Sie können PowerShell verwenden, um Ihre virtuellen Computer im selben virtuellen Netzwerk (VNet) zwischen Subnetzen zu verschieben. Rolleninstanzen können anstatt mit PowerShell mithilfe der CSCFG-Datei verschoben werden.
+
+>[AZURE.NOTE] Dieser Artikel enthält Informationen, die sich nur auf klassische Azure-Bereitstellungen beziehen.
 
 Gründe für das Verschieben virtueller Computer in ein anderes Subnetz Die Subnetzmigration ist sinnvoll, wenn das ältere Subnetz zu klein ist und aufgrund von vorhandenen virtuellen Computer in diesem Subnetz nicht erweitert werden kann. In diesem Fall können Sie ein neues, größeres Subnetz erstellen und die virtuellen Computer zum neuen Subnetz migrieren. Nach Abschluss der Migration können Sie das alte leere Subnetz löschen.
 
@@ -51,4 +53,4 @@ Bearbeiten Sie zum Verschieben einer Rolleninstanz die CSCFG-Datei. Im folgenden
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

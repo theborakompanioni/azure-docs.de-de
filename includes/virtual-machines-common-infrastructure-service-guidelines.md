@@ -6,7 +6,7 @@ In diesem Leitfaden werden viele Bereiche behandelt, bei denen Planung der Schl�
 
 Dieser Artikel basiert auf dem Inhalt im Blogbeitrag [Azure Implementation Guidelines](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx) (in englischer Sprache). Vielen Dank an Santiago Cánepa (Application Development Manager bei Microsoft), Hugo Salcedo (Application Development Manager bei Microsoft) für ihr ursprüngliches Material.
 
-> [AZURE.NOTE] Affinitätsgruppen sind veraltet. Ihre Verwendung wird hier nicht beschrieben. Weitere Informationen finden Sie unter [Informationen zu regionalen VNETs und Affinitätsgruppen](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+> [AZURE.NOTE] Affinitätsgruppen sind veraltet. Ihre Verwendung wird hier nicht beschrieben. Weitere Informationen finden Sie unter [Informationen zu regionalen VNETs und Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
 ## 1\. Benennungskonventionen
 
@@ -140,7 +140,7 @@ Azure-Speicher sind ein wesentlicher Bestandteil vieler Azure-Lösungen. Azure-S
 
 Es sind zwei Arten von Speicherkonten in Azure verfügbar. Mit einem Standardspeicherkonto erhalten Sie Zugriff auf Blobspeicher (zum Speichern von Datenträgern in virtuellen Azure-Computern) sowie auf Tabellen-, Warteschlangen- und Dateispeicher. Premium-Speicher wurde für Anwendungen mit hoher Leistung, wie z. B. SQL Server in einem AlwaysOn-Cluster, entworfen und unterstützt derzeit nur virtuelle Azure-Datenträger.
 
-Speicherkonten sind an Skalierbarkeitsziele gebunden. Machen Sie sich unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#storage-limits) mit den aktuellen Azure-Speichergrenzwerten vertraut. Informationen hierzu finden Sie auch unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage-scalability-targets.md).
+Speicherkonten sind an Skalierbarkeitsziele gebunden. Machen Sie sich unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md#storage-limits) mit den aktuellen Azure-Speichergrenzwerten vertraut. Informationen hierzu finden Sie auch unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/storage-scalability-targets.md).
 
 Azure erstellt virtuelle Computer mit Betriebssystem-Datenträger, einem temporären Datenträger und null oder mehreren optionalen Datenträgern. Der Betriebssystem-Datenträger und Datenträger mit Daten sind Azure-Seitenblobs, während der temporäre Datenträger sich im lokalen Speicher des Knotens befindet, in dem auch der Computer gespeichert ist. Dadurch eignet sich der temporäre Datenträger nicht für Daten, die während eines Systemneustarts beibehalten werden müssen, da der Computer im Hintergrund von einem Knoten zu einem anderen migriert werden kann, wodurch Daten auf diesem Datenträger verloren gehen. Speichern Sie keine Daten im temporären Laufwerk.
 
@@ -149,7 +149,7 @@ Betriebssystem-Datenträger und Datenträger mit Daten verfügen über eine maxi
 ### Stripesetdatenträger
 Neben der Möglichkeit, Datenträger mit mehr als 1023 GB zu erstellen, wird durch Datenträgerstriping in vielen Fällen die Leistung verbessert, indem mehrere Blobs als Speicher für ein einzelnes Volume dienen können. Mit Striping läuft die erforderliche E/A zum Schreiben und Lesen von Daten aus einem einzigen logischen Datenträger parallel ab.
 
-Azure erzwingt Grenzwerte für die Anzahl von Datenträgern und die verfügbare Bandbreite, die sich nach der Größe des virtuellen Computers richten. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md).
+Azure erzwingt Grenzwerte für die Anzahl von Datenträgern und die verfügbare Bandbreite, die sich nach der Größe des virtuellen Computers richten. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
 
 Wenn Sie Datenträgerstriping für Azure-Datenträger verwenden, beachten Sie die folgenden Richtlinien:
 
@@ -409,15 +409,15 @@ Diese Konfiguration umfasst:
 
 ## Zusätzliche Ressourcen
 
-[Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#storage-limits)
+[Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md#storage-limits)
 
-[Größen für virtuelle Computer](virtual-machines-linux-sizes.md)
+[Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md)
 
-[Skalierbarkeits- und Leistungsziele für Azure-Speicher](../storage-scalability-targets.md)
+[Skalierbarkeits- und Leistungsziele für Azure-Speicher](../articles/storage/storage-scalability-targets.md)
 
 [Datacenter extension reference architecture diagram (in englischer Sprache)](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
 
 [Azure Compute-, Network- and Storage-Anbieter unter dem Azure-Ressourcen-Manager](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

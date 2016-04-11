@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Pool für elastische Datenbanken für SQL-Datenbanken | Microsoft Azure"
 	description="Erfahren Sie, wie Sie das explosionsartige Wachstum von SQL-Datenbanken mit Pools für elastische Datenbanken verwalten können, sodass die verfügbaren Ressourcen von vielen Datenbanken gemeinsam genutzt werden."
-	keywords="elastische Datenbank, SQL-Datenbanken"	
+	keywords="elastische Datenbank, SQL-Datenbanken"
 	services="sql-database"
 	documentationCenter=""
 	authors="sidneyh"
@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="02/11/2016"
+	ms.date="03/24/2016"
 	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -20,7 +20,7 @@
 
 # Verwalten des explosionsartigen Wachstums von SQL-Datenbanken durch die Verwendung elastischer Datenbanken zur gemeinsamen Ressourcennutzung
 
-Ein SaaS-Entwickler muss Dutzende, Hunderte oder sogar Tausende von SQL-Datenbanken erstellen und verwalten. Elastische Pools vereinfachen die Erstellung, Wartung und Leistungsverwaltung über diese Datenbanken hinweg innerhalb eines von Ihnen kontrollierten Budgets. Fügen Sie dem Pool je nach Bedarf Datenbanken hinzu, oder entfernen Sie diese. Sie können innerhalb weniger Minuten über das Microsoft Azure-Portal oder mit [PowerShell](sql-database-elastic-pool-powershell.md) oder [C#](sql-database-elastic-pool-csharp.md) für Ihre SQL-Datenbanken einen [Pool für elastische Datenbanken erstellen](sql-database-elastic-pool-portal.md).
+Ein SaaS-Entwickler muss Dutzende, Hunderte oder sogar Tausende von SQL-Datenbanken erstellen und verwalten. Elastische Pools vereinfachen die Erstellung, Wartung und Leistungsverwaltung über diese Datenbanken hinweg innerhalb eines von Ihnen kontrollierten Budgets. Fügen Sie dem Pool je nach Bedarf Datenbanken hinzu, oder entfernen Sie diese. Weitere Informationen finden Sie unter [Erstellen eines skalierbaren Pools für elastische SQL-Datenbanken im Azure-Portal](sql-database-elastic-pool-create-portal.md), unter [PowerShell](sql-database-elastic-pool-powershell.md) oder unter [C#](sql-database-elastic-pool-csharp.md).
 
 Weitere Informationen zur API und zu Fehlern finden Sie unter [Referenz für Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md).
 
@@ -63,9 +63,9 @@ Derzeit unterstützen elastische Datenbanken in der Vorschau die meisten [Funkti
 
 Datenbanken in einem Pool für elastische Datenbanken werden automatisch vom System gesichert, und die Aufbewahrungsrichtlinie für die Sicherung stimmt mit der entsprechenden Dienstebene für einzelne Datenbanken überein. Die Datenbanken der einzelnen Ebenen haben also jeweils einen anderen Wiederherstellungsbereich:
 
-* **Basic-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten sieben Tage möglich. 
+* **Basic-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten sieben Tage möglich.
 * **Standard-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten 14 Tage möglich.
-* **Premium-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten 35 Tage möglich. 
+* **Premium-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten 35 Tage möglich.
 
 Während der Vorschau werden Datenbanken in einem Pool als eine neue Datenbank im gleichen Pool wiederhergestellt. Gelöschte Datenbanken werden immer als eigenständige Datenbank außerhalb des Pools in der niedrigsten Leistungsstufe für diese Dienstebene wiederhergestellt. Beispielsweise wird eine elastische Datenbank in einem Standard-Pool, die gelöscht wird, als S0-Datenbank wiederhergestellt. Sie können Datenbank-Wiederherstellungsvorgänge über das Azure-Verwaltungsportal oder programmgesteuert mithilfe der REST-API ausführen. PowerShell-Cmdlet-Unterstützung wird demnächst zur Verfügung stehen.
 
@@ -86,4 +86,4 @@ Das Exportieren einer Datenbank aus einem Pool wird unterstützt. Derzeit wird d
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -26,36 +26,19 @@
 
 Dieses Thema enthält ein Node.js-Codebeispiel, das unter Ubuntu Linux ausgeführt wird. Das Beispiel stellt mithilfe des Tedious-Treibers eine Verbindung mit Azure SQL-Datenbank her.
 
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
-## Voraussetzungen
+[Prerequisites for using the Tedious Node.js Driver for SQL Server](https://msdn.microsoft.com/library/mt652094.aspx#Ubuntu-Linux) (Voraussetzungen für die Verwendung des Tedious Node.js-Treibers für SQL Server)
 
-
-Öffnen Sie das Terminal, und installieren Sie **node** und **npm**, sofern diese Komponenten noch nicht auf Ihrem Computer installiert sind.
-
-
-	sudo apt-get install node
-	sudo apt-get install npm
-
-
-Nach der Konfiguration Ihres Computers mit **node** und **npm** navigieren Sie zu dem Verzeichnis, in dem Sie das Node.js-Projekt erstellen möchten, und geben die folgenden Befehle ein.
-
-
-	sudo npm init
-	sudo npm install tedious
-
-
-**npm init** erstellt ein node-Projekt. Wenn Sie während der Projekterstellung die Standardeinstellungen beibehalten möchten, drücken Sie die EINGABETASTE, bis das Projekt erstellt wurde. Im Projektverzeichnis wird nun die Datei **package.json** angezeigt.
-
-
-### Eine SQL-Datenbank
+## Schritt 2: Erstellen einer SQL-Datenbank
 
 Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank. Sie sollten unbedingt die Anleitung zum Erstellen einer **AdventureWorks-Datenbankvorlage** befolgen. Die unten gezeigten Beispiele funktionieren nur mit dem **AdventureWorks-Schema**.
 
-## Schritt 1: Abrufen der Verbindungsdetails
+## Schritt 3: Abrufen der Verbindungsdetails
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## Schritt 2: Verbinden
+## Schritt 4: Verbinden
 
 Die [new Connection](http://pekim.github.io/tedious/api-connection.html)-Funktion dient zum Herstellen einer Verbindung mit der SQL-Datenbank.
 
@@ -74,10 +57,10 @@ Die [new Connection](http://pekim.github.io/tedious/api-connection.html)-Funktio
 	});
 
 
-## Schritt 3: Ausführen einer Abfrage
+## Schritt 5: Ausführen einer Abfrage
 
 
-Alle SQL-Anweisungen werden mithilfe der [new Request()](http://pekim.github.io/tedious/api-request.html)-Funktion ausgeführt. Wenn die Anweisung Zeilen zurückgibt, z. B. eine select-Anweisung, können Sie diese mithilfe der [request.on()](http://pekim.github.io/tedious/api-request.html)-Funktion abrufen. Wenn keine Zeilen vorhanden sind, gibt die [request.on()](http://pekim.github.io/tedious/api-request.html)-Funktion leere Listen zurück.
+Alle SQL-Anweisungen werden mithilfe der [new Request()](http://pekim.github.io/tedious/api-request.html)-Funktion ausgeführt. Wenn die Anweisung Zeilen zurückgibt, z. B. eine select-Anweisung, können Sie diese mithilfe der [request.on()](http://pekim.github.io/tedious/api-request.html)-Funktion abrufen. Wenn keine Zeilen vorhanden sind, gibt die [request.on()](http://pekim.github.io/tedious/api-request.html)-Funktion leere Listen zurück.
 
 
 	var Connection = require('tedious').Connection;
@@ -123,7 +106,7 @@ Alle SQL-Anweisungen werden mithilfe der [new Request()](http://pekim.github.io/
 	}
 
 
-## Schritt 4: Einfügen einer Zeile
+## Schritt 6: Einfügen einer Zeile
 
 In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Anweisung sicher ausführen, Parameter zum Schutz Ihrer Anwendung vor einer [Einschleusung von SQL-Befehlen](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) übergeben und den automatisch generierten [Primärschlüsselwert](https://msdn.microsoft.com/library/ms179610.aspx) abrufen.
 
@@ -172,4 +155,4 @@ In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.co
 
 Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0330_2016-->

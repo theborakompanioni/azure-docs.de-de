@@ -32,7 +32,8 @@ U-SQL | JSON-Verarbeitung | 2 | Ausstehend | [@mumian](https://github.com/mumian
 Dienst | Interaktion mit Curl | 3 |Ausstehend |[@mumian](https://github.com/mumian)
 U-SQL | Partitionierte Tabellen |1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | Leistungsoptimierung | 2 | Ausstehend | [@MikeRys](https://github.com/mikerys) | 
-U-SQL | Handbuch für Programmierer | 2 | Ausstehend | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | U-SQL UDO Handbuch für Programmierer | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | U-SQL Handbuch für Programmierer | 2 | Ausstehend | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | Erste Schritte mit U-SQL für Entwickler mit T-SQL-Erfahrung | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) | [@MikeRys](https://github.com/mikerys)
 U-SQL | Erste Schritte mit U-SQL für Entwickler mit Hive-Erfahrung | 1 | Ausstehend | [@mumian](https://github.com/mumian)| [@MikeRys](https://github.com/mikerys)
 U-SQL | Grammatik mit Railroad-Diagrammen | 1 | In Arbeit mit [Railroad Diagram Generator](http://bottlecaps.de/rr/ui) (in englischer Sprache) | [@mwinkle](https://github.com/mwinkle) | [@mwinkle](https://github.com/mwinkle)
@@ -42,7 +43,7 @@ Tools | Verwenden des Diagnosetools | 1 | Ausstehend | [@mumian](https://github.
 U-SQL | Erläutert Techniken für bereichsbasierte JOINs | 1 | Ausstehend | [@MikeRys](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 U-SQL | ADLS-Authentifizierungsoptionen | 1 | Ausstehend | [@ArindamC](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 U-SQL | Auftragsübermittlung mit der plattformübergreifenden CLI | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) |[@mwinkle](https://github.com/mwinkle) 
-U-SQL | Updates der Referenzdokumentation für REDUCE und COMBINE | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) |[@mwinkle](https://github.com/mwinkle)
+U-SQL | Updates der Referenzdokumentation für REDUCE und COMBINE | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) |[@MikeRys](https://github.com/mikerys)
 Tools | Komponententests für Ihre U-SQL-UDFs (Azure Data Lake-Tools) für Visual Studio | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) |[@xiaoyong](https://github.com/zxzxy1988)
 Tools | Auftragsdiagramme und Scheitelpunktausführungsansicht in Azure Data Lake-Tools für Visual Studio | 1 | Ausstehend | [@edmacauley](https://github.com/edmacauley) |[@xiaoyong](https://github.com/zxzxy1988)
 
@@ -61,4 +62,4 @@ Für das Senden von Feedback bezüglich des Rückstands stehen mehrere Optionen 
 * Senden Sie im [Azure-Inhaltsrepository](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md) eine Pull-Anforderung für dieses Dokument.
 * Senden Sie eine E-Mail an [adlafeedback@microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

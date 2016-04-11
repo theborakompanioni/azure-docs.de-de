@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/28/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Laden von Daten in SQL Data Warehouse
@@ -43,7 +43,7 @@ In den folgenden Abschnitten werden die einzelnen Schritte ausführlich beschrie
 
 Um die Dateien für das Verschieben in Azure vorzubereiten, müssen Sie diese in Flatfiles exportieren. Dazu eignet sich besonders das Befehlszeilenprogramm BCP. Wenn Sie noch nicht über dieses Dienstprogramm verfügen, können Sie es mit den [Microsoft-Befehlszeilenprogrammen für SQL Server][] herunterladen. Ein BCP-Beispielbefehl kann wie folgt aussehen:
 
-```
+```sql
 bcp "select top 10 * from <table>" queryout "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Query
 or
 bcp <table> out "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Table
@@ -53,7 +53,7 @@ Um den Durchsatz zu maximieren, können Sie versuchen, den Prozess durch das gle
 
 Beachten Sie außerdem in Hinsicht auf das Laden mit PolyBase, dass UTF-16 noch nicht von PolyBase unterstützt wird und alle Dateien UTF-8 aufweisen müssen. Dies kann auf einfache Weise durch Einfügen des "-c"-Flags in den BCP-Befehl erreicht werden, oder Sie können auch mit dem folgenden Code Flatfiles aus UTF-16 in UTF-8 konvertieren:
 
-```
+```PowerShell
 Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
 ```
 
@@ -92,9 +92,9 @@ Da sich die Daten nun in Azure-Speicher-Blobs befinden, werden sie mit PolyBase 
 
 3. **Erstellen eines externen Dateiformats.** Externe Dateiformate können ebenfalls wiederverwendet werden und müssen nur erstellt werden, wenn Sie einen neuen Dateityp hochladen.
 
-4. **Erstellen einer externen Datenquelle.** Wenn auf ein Speicherkonto verwiesen wird, kann eine externe Datenquelle beim Laden aus demselben Container verwendet werden. Verwenden Sie für den Parameter "LOCATION" einen Speicherort im Format "wasbs://mycontainer@ test.blob.core.windows.net/path".
+4. **Erstellen einer externen Datenquelle.** Wenn auf ein Speicherkonto verwiesen wird, kann eine externe Datenquelle beim Laden aus demselben Container verwendet werden. Verwenden Sie für den Parameter LOCATION einen Speicherort im Format „wasbs://mycontainer@ test.blob.core.windows.net“.
 
-```
+```sql
 -- Creating master key
 CREATE MASTER KEY;
 
@@ -133,7 +133,7 @@ Nach dem Konfigurieren von PolyBase können Sie Daten direkt in SQL Data Warehou
 
 1. Verwenden Sie den Befehl "CREATE EXTERNAL TABLE" zum Definieren der Struktur Ihrer Daten. Um sicherzustellen, dass der Status Ihrer Daten schnell und effizient erfasst wird, wird empfohlen, ein Skript für die SQL Server-Tabelle in SSMS zu erstellen und dann eine manuelle Anpassung entsprechend den Unterschieden der externen Tabelle vorzunehmen. Nach dem Erstellen einer externen Tabelle in Azure verweist diese weiterhin auf den gleichen Speicherort, selbst wenn Daten aktualisiert oder zusätzliche Daten hinzugefügt werden.  
 
-```
+```sql
 -- Creating external table pointing to file stored in Azure Storage
 CREATE EXTERNAL TABLE <External Table Name>
 (
@@ -148,7 +148,7 @@ WITH
 
 2. Laden Sie Daten mit einer Anweisung vom Typ "CREATE TABLE...AS SELECT".
 
-```
+```sql
 CREATE TABLE <Table Name>
 WITH
 (
@@ -170,7 +170,7 @@ Zusätzlich zur Anweisung "`CREATE TABLE...AS SELECT`" können Sie mit einer Anw
 Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie unter dem Thema [Statistiken][] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
 
-```
+```sql
 create statistics [<name>] on [<Table Name>] ([<Column Name>]);
 create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 ```
@@ -202,4 +202,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 [Azure-Speicherdokumentation]: https://azure.microsoft.com/de-DE/documentation/articles/storage-create-storage-account/
 [Dokumentation zu ExpressRoute]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

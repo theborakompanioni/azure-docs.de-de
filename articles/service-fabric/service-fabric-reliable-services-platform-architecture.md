@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Services-Architektur | Microsoft Azure"
-   description="Übersicht über die Reliable Services-Architektur für zustandsbehaftete und zustandslose Dienste"
+   pageTitle="Reliable Services-Architektur | Microsoft Azure"
+   description="Übersicht über die Reliable Services-Architektur für zustandsbehaftete und zustandslose Dienste"
    services="service-fabric"
    documentationCenter=".net"
    authors="AlanWarwick"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/03/2015"
+   ms.date="03/30/2016"
    ms.author="alanwar"/>
 
 # Architektur für zustandsbehaftete und zustandslose Reliable Services
@@ -27,7 +27,7 @@ Reliable Services von Azure Service Fabric können zustandsbehaftet oder zustand
 
 ### Zustandsbehafteter Reliable Service
 
-Ein zustandsbehafteter Reliable Service kann von der Klasse StatefulService oder StatefulServiceBase abgeleitet werden. Beide Basisklassen werden von Service Fabric bereitgestellt. Sie bieten verschiedene Unterstützungs- und Abstraktionsstufen, damit der zustandsbehaftete Dienst eine Verbindung mit Service Fabric herstellen und als Dienst innerhalb des Service Fabric-Cluster agieren kann.
+Ein zustandsbehafteter Reliable Service kann von der Klasse StatefulService oder StatefulServiceBase abgeleitet werden. Beide Basisklassen werden von Service Fabric bereitgestellt. Sie bieten verschiedene Unterstützungs- und Abstraktionsstufen, damit der zustandsbehaftete Dienst eine Verbindung mit Service Fabric herstellen und als Dienst innerhalb des Service Fabric-Cluster agieren kann.
 
 „StatefulService“ wird von „StatefulServiceBase“ abgeleitet. „StatefulServiceBase“ bietet Diensten mehr Flexibilität, erfordert jedoch mehr Kenntnisse über Service Fabric. Weitere Informationen zum Schreiben von Diensten mit den Klassen „StatefulService“ und „StatefulServiceBase“ finden Sie in der [Übersicht über Reliable Services](service-fabric-reliable-services-introduction.md) und im Artikel über die [erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md).
 
@@ -57,15 +57,13 @@ Der Transaktionsreplikator verwendet ein Protokoll, um Zustandsinformationen auc
 
 ### Protokoll
 
-Die Protokollierungskomponente bietet einen leistungsfähigen persistenten Speicher, der für Schreibvorgänge auf herkömmliche rotierende Festplatten oder auf SSDs optimiert werden kann. Auch eine Optimierung für eine möglichst effiziente Speicherplatznutzung ist möglich. Das Protokolldesign sieht vor, dass sich der persistente Speicher (also die Festplatten) lokal auf den Knoten befindet, die den zustandsbehafteten Dienst ausführen. Dies macht sich im Vergleich zu einem persistenten Speicher, der sich nicht lokal auf dem Knoten befindet, durch geringere Latenzen und einen höheren Durchsatz bemerkbar.
+Die Protokollierungskomponente bietet einen leistungsfähigen persistenten Speicher, der für Schreibvorgänge auf herkömmliche rotierende Festplatten oder auf SSDs optimiert werden kann. Das Protokolldesign sieht vor, dass sich der persistente Speicher (also die Festplatten) lokal auf den Knoten befindet, die den zustandsbehafteten Dienst ausführen. Im Gegensatz zu einem persistenten, sich nicht lokal auf den Knoten befindlichen Remotespeicher ermöglicht dies geringere Latenzen und einen höheren Durchsatz.
 
-Die Protokollierungskomponente verwendet zwei Arten von Protokolldateien. Es gibt eine knotenübergreifende freigegebene Protokolldatei, die auf einem Datenträger gespeichert werden sollte, der nur für diese Protokolldatei verwendet wird. Diese Datei befindet sich im Knotenarbeitsverzeichnis von Service Fabric. Jedes Replikat für den Dienst verfügt ebenfalls über eine dedizierte Protokolldatei. Diese wird im Arbeitsverzeichnis des Diensts gespeichert.
+Die Protokollierungskomponente verwendet mehrere Protokolldateien. Eine ist knotenübergreifend freigegeben und wird von allen Replikaten verwendet, da sie die niedrigste Latenz und den höchsten Durchsatz zum Speichern von Daten bieten kann. Standardmäßig befindet sich das freigegebene Protokoll im Service Fabric-Knotenarbeitsverzeichnis. Es kann aber auch so konfiguriert werden, dass es an einem anderen Ort, idealerweise auf einem extra dafür reservierten Datenträger gespeichert wird. Jedes Replikat für den Dienst verfügt ebenfalls über eine dedizierte Protokolldatei. Das dedizierte Protokoll wird im Arbeitsverzeichnis des Diensts gespeichert. Es gibt keinen Mechanismus zum Konfigurieren eines anderen Speicherorts für das dedizierte Protokoll.
 
-Das freigegebene Protokoll fungiert als Übergangsbereich für die Zustandsinformationen. Die dedizierte Protokolldatei ist dagegen das endgültige Ziel und dient zur dauerhaften Speicherung der Informationen. Die Zustandsinformationen werden in diesem Fall zunächst in die freigegebene Protokolldatei geschrieben und anschließend im Hintergrund in der dedizierten Protokolldatei gespeichert. Auf diese Weise erfolgen Schreibvorgänge in das freigegebene Protokoll mit geringstmöglicher Latenz und höchstmöglichem Durchsatz, was den Dienst insgesamt beschleunigt.
+Das freigegebene Protokoll fungiert als Übergangsbereich für die Zustandsinformationen des Replikats. Die dedizierte Protokolldatei hingegen ist das endgültige Ziel, an dem diese Informationen persistent gespeichert werden. Die Zustandsinformationen werden in diesem Fall zunächst in die freigegebene Protokolldatei geschrieben und anschließend im Hintergrund zeitverzögert in die dedizierte Protokolldatei verschoben. Auf diese Weise erfolgen Schreibvorgänge in das freigegebene Protokoll mit der geringstmöglichen Latenz und dem höchstmöglichen Durchsatz, was den Dienst insgesamt beschleunigt.
 
-Wenn die Protokollierungskomponente jedoch mithilfe der Einstellung „OptimizeForLocalSSD“ für SSDs optimiert wurde, werden die Zustandsinformationen unter Umgehung der freigegebenen Protokolldatei direkt in die dedizierte Protokolldatei geschrieben. Da bei SSDs keine durch Lesekopfbewegungen bedingten Verzögerungen auftreten, hat das direkte Schreiben in die dedizierte Protokolldatei keinerlei Nachteile.
-
-Wenn die Protokollierungskomponente mithilfe der Einstellung „OptimizeLogForLowerDiskUsage“ für die Minimierung der Speicherplatzbelegung optimiert wird, werden für die dedizierten Protokolldateien NTFS-Dateien mit geringer Datendichte erstellt. Da Protokolldateien in der Regel nicht immer vollständig mit Zustandsinformationen gefüllt sind, kann durch die Verwendung von Dateien mit geringer Datendichte der Speicherplatz überdimensioniert werden, um Platz für mehr Replikate zu bieten. Wenn die Protokollierungskomponente nicht auf diese Weise konfiguriert ist, wird der Speicherplatz für die Protokolldateien vorab zugeordnet. Die Protokollierungskomponente kann in diesem Fall direkt in die leistungsstärkste Datei geschrieben werden.
+Lese- und Schreibvorgänge zum freigegebenen Protokoll erfolgen über direkte E/A an einen vorab zugeordneten Speicherplatz auf dem Datenträger für die freigegebene Protokolldatei. Um eine optimale Nutzung des Speicherplatzes auf dem Laufwerk mit dedizierten Protokollen zu ermöglichen, wird die dedizierte Protokolldatei als NTFS-Datei mit geringer Datendichte erstellt. Beachten Sie, dass dadurch übermäßig viel Festplattenspeicherplatz bereitgestellt werden kann, und dass das Betriebssystem möglicherweise für die dedizierten Protokolldateien die Verwendung von deutlich mehr Festplattenspeicher meldet, als tatsächlich der Fall ist.
 
 Abgesehen von einer minimalen Benutzermodusschnittstelle wird das Protokoll als Kernelmodustreiber geschrieben. Durch die Ausführung als Kernelmodustreiber kann das Protokoll allen Diensten, die es verwenden, die höchste Leistung bereitstellen.
 
@@ -99,4 +97,4 @@ Weitere Informationen zu Service Fabric finden Sie unter:
 
 [Konfigurieren von Reliable Services](service-fabric-reliable-services-configuration.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0330_2016-->

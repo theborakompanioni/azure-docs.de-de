@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="03/30/2016"
 	ms.author="anhoh"/>
 
 # Anfordern von erhöhten DocumentDB-Kontolimits
@@ -29,20 +29,8 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 Die folgende Tabelle beschreibt die DocumentDB-Kontingente, die durch Kontaktaufnahme mit dem Azure-Support angepasst werden können:
 
-|Entität |Kontingent (Standardangebot)|
-|-------|--------|
-|Datenbankkonten |5
-|Anzahl gespeicherter Prozeduren, Trigger und UDFs pro Sammlung |Jeweils 25
-|Maximale Sammlungen pro Datenbankkonto |100
-|Maximaler Dokumentspeicher pro Datenbank (100 Sammlungen) |1 TB
-|Maximale Anzahl von UDFs pro Abfrage |2
-|Maximale Anzahl von JOINs pro Abfrage |5
-|Maximale Anzahl von UND-Klauseln pro Abfrage |20
-|Maximale Anzahl von ODER-Klauseln pro Abfrage |20
-|Maximale Anzahl von Werten pro IN-Ausdruck |200
-|Maximale Anzahl von Punkten in einem Polygon-Argument in einer ST\_WITHIN-Abfrage |16
-|Maximale Anzahl von Sammlungserstellungen pro Minute |5
-|Maximale Anzahl von Skalierungsvorgängen pro Minute |5
+[AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
+
 
 ##<a id="RequestQuotaIncrease"></a>Anfordern einer Kontingentanpassung
 Die folgenden Schritte zeigen, wie Sie eine Kontingentanpassung anfordern.
@@ -75,4 +63,4 @@ Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanfo
 ##<a name="NextSteps"></a> Nächste Schritte
 - Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

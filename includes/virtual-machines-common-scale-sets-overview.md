@@ -10,7 +10,7 @@ Sehen Sie sich diese Videos an, um weitere Informationen zu VM-Skalierungsgruppe
 
 ## Erstellen und Verwalten von VM-Skalierungsgruppen
 
-VM-Skalierungsgruppen können mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) definiert und bereitgestellt werden, ganz genauso wie einzelne virtuelle Azure-Ressourcen-Manager-Computer. Daher können alle standardmäßigen Azure-Ressourcen-Manager-Bereitstellungsmethoden verwendet werden. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
+VM-Skalierungsgruppen können mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) definiert und bereitgestellt werden, ganz genauso wie einzelne virtuelle Azure-Ressourcen-Manager-Computer. Daher können alle standardmäßigen Azure-Ressourcen-Manager-Bereitstellungsmethoden verwendet werden. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../articles/resource-group-authoring-templates.md).
 
 Eine Reihe von Beispielvorlagen für VM-Skalierungsgruppen finden Sie im GitHub-Repository für Azure-Schnellstartvorlagen:
 
@@ -26,7 +26,7 @@ Wenn Sie die Anzahl der virtuellen Computer in einer VM-Skalierungsgruppe erhöh
 
 Wenn Sie eine Vorlage erneut bereitstellen, um die Kapazität zu erhöhen, können Sie dafür eine viel kleinere Vorlage definieren, die nur die SKU und die geänderte Kapazität enthält. Ein entsprechendes Beispiel finden Sie hier: [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json).
 
-Die Schritte, mit denen eine Skalierungsgruppe erstellt wird, die automatisch skaliert wird, werden unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machines-windows-ps-vmss-create.md) erläutert.
+Die Schritte, mit denen eine Skalierungsgruppe erstellt wird, die automatisch skaliert wird, werden unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](../articles/virtual-machines/virtual-machines-windows-ps-vmss-create.md) erläutert.
 
 ## Überwachen der VM-Skalierungsgruppe
 
@@ -79,7 +79,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **F.** Welche anderen Ressourceneinschränkungen bestehen für VM-Skalierungsgruppen?
 
-**A.** Während der Vorschauperiode dürfen höchstens 500 virtuelle Computer in mehreren Skalierungsgruppen pro Region erstellt werden. Die vorhandenen [Diensteinschränkungen des Azure-Abonnements](../azure-subscription-service-limits.md) gelten.
+**A.** Während der Vorschauperiode dürfen höchstens 500 virtuelle Computer in mehreren Skalierungsgruppen pro Region erstellt werden. Die vorhandenen [Diensteinschränkungen des Azure-Abonnements](../articles/azure-subscription-service-limits.md) gelten.
 
 **F.** Werden Datenträger innerhalb von VM-Skalierungsgruppen unterstützt?
 
@@ -130,4 +130,4 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **A.** Ja. Eine VM-Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit 3 Fehlerdomänen (FDs) und 5 Updatedomänen (UDs). Unter virtualMachineProfile brauchen Sie nichts zu konfigurieren. In künftigen Versionen werden VM-Skalierungsgruppen wahrscheinlich mehrere Mandanten umspannen, aber derzeit entspricht eine Skalierungsgruppe einer einzigen Verfügbarkeitsgruppe.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

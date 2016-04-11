@@ -17,7 +17,7 @@ Traffic Manager verwendet drei Lastenausgleichsmethoden, um den Datenverkehr zu 
 - **Leistung**: Verwenden Sie diese Methode, wenn sich die Endpunkte an unterschiedlichen geografischen Standorten befinden und anfordernde Clients den "nächstgelegenen" Endpunkt (im Hinblick auf die geringste Latenzzeit) verwenden sollen.
 - **Roundrobin**: Verwenden Sie diese Methode, wenn Sie die Last auf eine Reihe von Clouddiensten im gleichen Rechenzentrum oder auf Clouddienste oder Websites in verschiedenen Rechenzentren verteilen möchten.
 
-Weitere Informationen finden Sie unter [Traffic Manager-Lastenausgleichsmethoden](../traffic-manager/traffic-manager-load-balancing-methods.md).
+Weitere Informationen finden Sie unter [Traffic Manager-Lastenausgleichsmethoden](../articles/traffic-manager/traffic-manager-load-balancing-methods.md).
 
 Das folgende Diagramm zeigt ein Beispiel für die Roundrobin-Lastenausgleichsmethode, bei der der Datenverkehr zwischen unterschiedlichen Clouddiensten verteilt wird.
 
@@ -30,7 +30,7 @@ Im Folgenden die grundlegende Vorgehensweise:
 3.	Traffic Manager wählt den nächsten Clouddienst in der Round-Robin-Liste und sendet den DNS-Namen zurück. Der DNS-Server des Internetclients löst den Namen in eine IP-Adresse auf und sendet diese an den Internetclient.
 4.	Der Internetclient wählt eine Verbindung mit dem Clouddienst von Traffic Manager aus.
 
-Weitere Informationen finden Sie unter [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
+Weitere Informationen finden Sie unter [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md).
 
 ## Azure-Lastenausgleich für virtuelle Computer ##
 
@@ -42,7 +42,7 @@ Das folgende Diagramm zeigt einen Endpunkt für Standard-Datenverkehr (unverschl
 
 ![loadbalancing](./media/virtual-machines-common-load-balance/LoadBalancing.png)
 
-Weitere Informationen finden Sie unter [Azure-Lastenausgleichsmodul](../load-balancer/load-balancer-overview.md). Die Schritte zum Erstellen einer Gruppe mit Lastenausgleich finden Sie unter [Konfigurieren einer Gruppe mit Lastenausgleich](../load-balancer/load-balancer-internet-getstarted.md).
+Weitere Informationen finden Sie unter [Azure-Lastenausgleichsmodul](../articles/load-balancer/load-balancer-overview.md). Die Schritte zum Erstellen einer Gruppe mit Lastenausgleich finden Sie unter [Konfigurieren einer Gruppe mit Lastenausgleich](../articles/load-balancer/load-balancer-internet-getstarted.md).
 
 Azure ist auch in der Lage, Lasten innerhalb eines Clouddiensts oder virtuellen Netzwerks auszugleichen. Diese Methode wird als interner Lastenausgleich bezeichnet und kann wie folgt verwendet werden:
 
@@ -58,15 +58,15 @@ Das folgende Diagramm zeigt ein Beispiel eines internen Endpunkts mit Lastenausg
 
 ## Überlegungen zu Load Balancer
 
-Ein Load Balancer ist standardmäßig so konfiguriert, dass ein Timeout erfolgt, wenn sich eine Sitzung 4 Minuten im Leerlauf befindet. Wenn Ihre Anwendung hinter einem Load Balancer eine Verbindung länger als 4 Minuten im Leerlauf lässt und keine Keep-Alive-Konfiguration aufweist, wird die Verbindung getrennt. Sie können das Load Balancer-Verhalten so ändern, dass eine [längere Timeouteinstellung für Azure Load Balancer](../load-balancer/load-balancer-tcp-idle-timeout.md) zugelassen wird.
+Ein Load Balancer ist standardmäßig so konfiguriert, dass ein Timeout erfolgt, wenn sich eine Sitzung 4 Minuten im Leerlauf befindet. Wenn Ihre Anwendung hinter einem Load Balancer eine Verbindung länger als 4 Minuten im Leerlauf lässt und keine Keep-Alive-Konfiguration aufweist, wird die Verbindung getrennt. Sie können das Load Balancer-Verhalten so ändern, dass eine [längere Timeouteinstellung für Azure Load Balancer](../articles/load-balancer/load-balancer-tcp-idle-timeout.md) zugelassen wird.
 
-Eine weitere Überlegung betrifft den Typ des Verteilungsmodus, der von Azure Load Balancer unterstützt wird. Sie können die Quell-IP-Affinität (Quell-IP, Ziel-IP) oder das Quell-IP-Protokoll (Quell-IP, Ziel-IP und Protokoll) konfigurieren. Weitere Informationen finden Sie unter [Azure Load Balancer-Verteilungsmodus (Quell-IP-Affinität)](../load-balancer/load-balancer-distribution-mode.md).
+Eine weitere Überlegung betrifft den Typ des Verteilungsmodus, der von Azure Load Balancer unterstützt wird. Sie können die Quell-IP-Affinität (Quell-IP, Ziel-IP) oder das Quell-IP-Protokoll (Quell-IP, Ziel-IP und Protokoll) konfigurieren. Weitere Informationen finden Sie unter [Azure Load Balancer-Verteilungsmodus (Quell-IP-Affinität)](../articles/load-balancer/load-balancer-distribution-mode.md).
 
 
 ## Nächste Schritte
 
-Die Schritte zum Erstellen einer Gruppe mit Lastenausgleich finden Sie unter [Konfigurieren einer internen Gruppe mit Lastenausgleich](../load-balancer/load-balancer-internal-getstarted.md).
+Die Schritte zum Erstellen einer Gruppe mit Lastenausgleich finden Sie unter [Konfigurieren einer internen Gruppe mit Lastenausgleich](../articles/load-balancer/load-balancer-internal-getstarted.md).
 
-Weitere Informationen zum Lastenausgleich finden Sie unter [Interner Lastenausgleich](../load-balancer/load-balancer-internal-overview.md).
+Weitere Informationen zum Lastenausgleich finden Sie unter [Interner Lastenausgleich](../articles/load-balancer/load-balancer-internal-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

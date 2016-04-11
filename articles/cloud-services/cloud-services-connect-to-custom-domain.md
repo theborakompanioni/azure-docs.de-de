@@ -3,7 +3,7 @@
   description="Erfahren Sie, wie Sie mithilfe von PowerShell und der AD-Domänenerweiterung eine Verbindung zwischen Ihren Web-/Workerrollen und einer benutzerdefinierten AD-Domäne herstellen."
   services="cloud-services"
   documentationCenter=""
-  authors="VMak"
+  authors="Thraka"
   manager="timlt"
   editor=""/>
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/05/2015"
+    ms.date="03/25/2016"
     ms.author="adegeo"/>
 
 # Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
@@ -70,11 +70,11 @@ Erstellen Sie zu diesem Zweck über PowerShell mithilfe der unten stehenden Befe
 
 $vnetname = '<your-vnet-name>'
 $subnetname = '<your-subnet-name>'
-$vmsvc1 = ‘<your-hosted-service>’
-$vm1 = ‘<your-vm-name>’
-$username = ‘<your-username>’
-$password = ‘<your-password>’
-$ affgrp = ‘<your- affgrp>’
+$vmsvc1 = '<your-hosted-service>'
+$vm1 = '<your-vm-name>'
+$username = '<your-username>'
+$password = '<your-password>'
+$affgrp = '<your- affgrp>'
 
 # Create a VM and add it to the Virtual Network
 
@@ -134,26 +134,26 @@ Sobald Ihr Clouddienstprojekt auf Azure bereitgestellt ist, verbinden Sie Ihre R
 ```powershell
 # Initialize domain variables
 
-$domain = ‘<your-domain-name>’;
-$dmuser = ‘$domain<your-username>’;
-$dmpswd = '<your-domain-password>';
-$dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force;
-$dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd);
+$domain = '<your-domain-name>'
+$dmuser = '$domain<your-username>'
+$dmpswd = '<your-domain-password>'
+$dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force
+$dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd)
 
 # Add AD Domain Extension to the cloud service roles
 
-Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35;
+Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-Und das ist auch schon alles.
+Das ist schon alles.
 
 Ihre Clouddienste sollten nun Ihrem benutzerdefinierten Domänencontroller beigetreten sein. Wenn Sie mehr über die verschiedenen verfügbaren Optionen zur Konfiguration der AD-Domänenerweiterung erfahren möchten, nutzen Sie die PowerShell-Hilfe, wie unten gezeigt.
 
 ```powershell
-help Set-AzureServiceADDomainExtension;
-help New-AzureServiceADDomainExtensionConfig;
+help Set-AzureServiceADDomainExtension
+help New-AzureServiceADDomainExtensionConfig
 ```
 
 Wir möchten gerne von Ihnen wissen, ob Sie eine Erweiterung nützlich fänden, mit der ein virtueller Computer zu einem Domänencontroller heraufgestuft werden kann. Wenn Sie also der Meinung sind, eine solche Erweiterung wäre nützlich, geben Sie uns bitte Feedback im Kommentarbereich.
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0330_2016-->

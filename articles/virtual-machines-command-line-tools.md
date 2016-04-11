@@ -19,7 +19,7 @@
 
 # Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](azure-cli-arm-commands.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines/azure-cli-arm-commands.md).
 
 Dieser Artikel enthält die Syntax und Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen im klassischen Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM) ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen.
 
@@ -27,9 +27,9 @@ Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](xplat
 
 Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Service Management-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
-Optionale Parameter werden in eckigen Klammern angezeigt (z.B. `[parameter]`). Alle anderen Parameter müssen angegeben werden.
+Optionale Parameter sind in eckigen Klammern angegeben (Beispiel: `[parameter]`). Alle anderen Parameter müssen angegeben werden.
 
-Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z. B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` ermöglicht ausführliche Ausgaben, und der Parameter `-vv` ermöglicht noch detailliertere ausführliche Ausgaben. Mit der Option `--json` erfolgt die Ausgabe im reinen JSON-Format.
+Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z. B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` liefert eine ausführliche Ausgabe. Bei Verwendung des Parameters `-vv` fällt die Ausgabe sogar noch ausführlicher aus. Mit der Option `--json` erfolgt die Ausgabe im reinen JSON-Format.
 
 ## Festlegen des Service Management-Modus
 
@@ -1446,7 +1446,7 @@ Dieser Befehl löscht alle Zeilen aus der Tabelle.
 
 ### <a name="Mobile_Scripts"></a>Befehle zum Verwalten von Skripts
 
-Mit den Befehlen in diesem Abschnitt können Sie die Serverskripts eines Mobile Service verwalten. Weitere Informationen erhalten Sie unter [Verwenden von Serverskripts in Mobile Services.](../mobile-services/mobile-services-how-to-use-server-scripts.md).
+Mit den Befehlen in diesem Abschnitt können Sie die Serverskripts eines Mobile Service verwalten. Weitere Informationen erhalten Sie unter [Verwenden von Serverskripts in Mobile Services.](mobile-services/mobile-services-how-to-use-server-scripts.md).
 
 **mobile script list [Optionen] [Dienstname]**
 
@@ -2348,4 +2348,4 @@ Löscht einen DNS-Servereintrag aus der Netzwerkkonfiguration.
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

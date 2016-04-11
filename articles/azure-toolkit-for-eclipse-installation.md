@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="03/09/2016" 
+    ms.date="03/28/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
@@ -22,7 +22,7 @@
 
 Das Azure Toolkit für Eclipse stellt Vorlagen und Funktionen bereit, die Ihnen das einfache Erstellen, Entwickeln, Testen und Bereitstellen von Azure-Anwendungen mithilfe der Eclipse-Entwicklungsumgebung ermöglichen. Es handelt sich um ein Open-Source-Projekt, dessen Quellcode unter der Apache-Lizenz 2.0 auf der GitHub-Website des Projekts verfügbar ist:
 
-<https://github.com/MSOpenTech/WindowsAzureToolkitForEclipseWithJava>.
+<https://github.com/microsoft/azure-tools-for-java>
 
 Die folgenden Schritte veranschaulichen die Installation des Azure-Toolkits für Eclipse.
 
@@ -35,7 +35,7 @@ Die folgenden Schritte veranschaulichen die Installation des Azure-Toolkits für
 	![Installieren des Azure-Toolkits für Eclipse][ic590123]
 3. Geben Sie im Dialogfeld <strong>Available Software</strong> im Textfeld <strong>Work with</strong> den Text <strong>http://dl.microsoft.com/eclipse</strong> ein, und drücken Sie dann die <strong>EINGABETASTE</strong>.
 4. Aktivieren Sie im Fenster <strong>Name</strong> die Option <strong>Azure Toolkit for Eclipse</strong>, und deaktivieren Sie <strong>Contact all update sites during install to find required software</strong>. Der Bildschirm sieht dann etwa wie folgt aus:
-	 ![Installieren des Azure-Toolkits für Eclipse][ic719482]
+	![Installieren des Azure-Toolkits für Eclipse][ic719482]
 5. Nach dem Erweitern von <strong>Azure Toolkit for Eclipse</strong> sehen Sie die folgenden Elemente:
     * **Azure Access Control Services Filter:** Diese Komponente bietet Unterstützung für die Authentifizierung von Benutzern mit Azure ACS.
     * **Azure Common Plugin:** Diese Komponente enthält die gemeinsam verwendeten Funktionen als Basis für die weiteren Komponenten.
@@ -72,4 +72,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic590123]: ./media/azure-toolkit-for-eclipse-installation/ic590123.png
 [ic719482]: ./media/azure-toolkit-for-eclipse-installation/ic719482.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

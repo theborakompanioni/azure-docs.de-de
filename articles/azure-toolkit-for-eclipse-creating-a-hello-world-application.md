@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Erstellen einer Hello World-Anwendung für Azure in Eclipse"
+    pageTitle="Erstellen einer Hello World-Anwendung für Azure in Eclipse "
     description="Erfahren Sie, wie Sie eine einfache Hello World-Anwendung mit dem Azure-Toolkit für Eclipse erstellen."
     services=""
     documentationCenter="java"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="03/04/2016" 
+    ms.date="03/28/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690944.aspx -->
@@ -61,7 +61,7 @@ Wenn Ihre Java-Webanwendung zum Testen bereit steht, können Sie sie auf einem a
 
 1. Klicken Sie im Projektexplorer von Eclipse auf **MyHelloWorld**.
 1. Klicken Sie auf der Eclipse-Symbolleiste auf die Schaltfläche **Publish to Azure Cloud**
-    ![][ic710882]
+  ![][ic710882].
 1. Wenn Sie diese Anwendung zum ersten Mal in Azure veröffentlichen und Sie zuvor noch kein Azure-Bereitstellungsprojekt für diese Anwendung erstellt haben, wird automatisch ein Azure-Bereitstellungsprojekt für Sie erstellt. In der Regel wird Ihnen die folgende Eingabeaufforderung angezeigt, die auch das JDK-Paket und den Anwendungsserver auflistet. Beide werden automatisch bereitgestellt, um Ihre Anwendung auszuführen.
     ![][ic789598]
     Auf diesem abgekürzten Weg können Sie Ihre Anwendung schnell und einfach in Azure testen, ohne einen bestimmten Server oder ein JDK zu konfigurieren und ohne dabei Standardeinstellungen zu verändern. Wenn Sie mit den Standardeinstellungen zufrieden sind, klicken Sie auf **OK**, um die folgenden Schritte auszuführen.
@@ -195,4 +195,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic719491]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic719491.png
 [ic789598]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic789598.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

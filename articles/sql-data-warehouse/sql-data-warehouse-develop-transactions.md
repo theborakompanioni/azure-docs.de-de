@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Transaktionen in SQL Data Warehouse
@@ -57,7 +57,7 @@ SQL Data Warehouse verwendet die XACT\_STATE()-Funktion, um eine fehlgeschlagene
 
 In SQL Server kann ein Codefragment angezeigt werden, das wie folgt aussieht:
 
-```
+```sql
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
@@ -83,7 +83,7 @@ Beachten Sie, dass die `SELECT`-Anweisung vor der `ROLLBACK`-Anweisung auftritt.
 
 In SQL Data Warehouse müsste der Code wie folgt aussehen:
 
-```
+```sql
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
@@ -140,4 +140,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

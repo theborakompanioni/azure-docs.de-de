@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="03/28/2016"
 	ms.author="v-shysun"/>
 
 # Behandeln von Problemen bei der Datenbankleistung mithilfe von Azure SQL-Datenbank
@@ -30,4 +30,4 @@ Sie können jederzeit den [Tarif](sql-database-service-tiers.md) einer Einzeldat
 
 Wenn die Leistungsprobleme anhalten, wenden Sie sich an den Support, um ein Supportticket zu öffnen.
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

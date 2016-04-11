@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # Erstellen einer neuen Salesforce-API in PowerApps Enterprise
 
 > [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/create-api-salesforce.md)
+- [Logik-Apps](../articles/connectors/connectors-create-api-salesforce.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-salesforce.md)
 
 Fügen Sie die Salesforce-API der App Service-Umgebung Ihrer Organisation (Mandant) hinzu.
@@ -82,7 +82,7 @@ Eine neue Salesforce-App wird erstellt. Diese App können Sie in der Konfigurati
 
 ## Informationen zu REST-APIs
 
-[Salesforce-REST-API](../connectors/create-api-salesforce.md) – Referenz.
+Referenz zur [REST-API für Salesforce](../connectors/connectors-create-api-salesforce.md)
 
 ## Zusammenfassung und nächste Schritte
 In diesem Thema haben Sie die Salesforce-API zu PowerApps Enterprise hinzugefügt. Als Nächstes können Sie den Zugriff für Benutzer auf die API einrichten, damit sie den Apps der Benutzer hinzugefügt werden kann:
@@ -101,4 +101,4 @@ In diesem Thema haben Sie die Salesforce-API zu PowerApps Enterprise hinzugefüg
 [14]: ./media/powerapps-create-api-salesforce/browseall.png
 [15]: ./media/powerapps-create-api-salesforce/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

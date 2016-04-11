@@ -23,9 +23,9 @@ Für Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bes
 Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritten:
 
 1. Erstellen Sie eine Schnittstelle, die vom Dienst implementiert werden soll. Diese Schnittstelle definiert die Methoden, die für den Remoteprozeduraufruf für Ihren Dienst verfügbar sind. Bei den Methoden muss es sich um asynchrone Methoden handeln, die einen Task zurückgeben. Die Schnittstelle muss `Microsoft.ServiceFabric.Services.Remoting.IService` implementieren, um zu signalisieren, dass der Dienst über eine Remotingschnittstelle verfügt.
-2. Verwenden Sie `Microsoft.ServiceFabric.Services.Remoting.Runtime.ServiceRemotingListener` in Ihrem Dienst. Dies ist eine `ICommunicationListener`-Implementierung, die Remotingfunktionen bereitstellt.
+2. Verwenden Sie `FabricTransportServiceRemotingListener` in Ihrem Dienst. Dies ist eine `ICommunicationListener`-Implementierung, die Remotingfunktionen bereitstellt.
 
-Dieser Hello World-Dienst macht beispielsweise eine einzelne Methode verfügbar, um „Hello World“ per Remoteprozeduraufruf abzurufen:
+Dieser Hello World-Dienst macht beispielsweise eine einzelne Methode verfügbar, um „Hello World“ per Remoteprozeduraufruf abzurufen:
 
 ```csharp
 public interface IHelloWorldStateful : IService
@@ -37,7 +37,9 @@ internal class HelloWorldStateful : StatefulService, IHelloWorldStateful
 {
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
-        return new[] { new ServiceReplicaListener(parameters => new ServiceRemotingListener<HelloWorldStateful>(parameters, this)) };
+        return new[]{
+                new ServiceReplicaListener(
+                    (context) => new FabricTransportServiceRemotingListener(context,this))};
     }
 
     public Task<string> GetHelloWorld()
@@ -47,7 +49,7 @@ internal class HelloWorldStateful : StatefulService, IHelloWorldStateful
 }
 
 ```
-> [AZURE.NOTE]Bei den Argumenten und Rückgabetypen in der Dienstschnittstelle kann es sich um einfache, komplexe oder benutzerdefinierte Typen handeln. Sie müssen jedoch von [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) von .NET serialisiert werden können.
+> [AZURE.NOTE] Bei den Argumenten und Rückgabetypen in der Dienstschnittstelle kann es sich um einfache, komplexe oder benutzerdefinierte Typen handeln. Sie müssen jedoch von [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) von .NET serialisiert werden können.
 
 
 ## Aufrufen von Remotedienstmethoden
@@ -70,4 +72,6 @@ Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weit
 
 * [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+* [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
+
+<!---HONumber=AcomDC_0330_2016-->

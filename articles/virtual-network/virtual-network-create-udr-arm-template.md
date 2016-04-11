@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie haben auch die Möglichkeit, [benutzerdefinierte Routen im klassischen Bereitstellungsmodus zu erstellen](virtual-networks-udr-how-to.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
@@ -31,7 +31,7 @@
 
 Sie können die [Beispielvorlage](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR) anzeigen und herunterladen.
 
-Im Abschnitt unten wird die Definition für die benutzerdefinierte Route (UDR) des Front-Ends in der Datei **azuredeploy-vnet-nsg-udr.json** basierend auf dem obigen Szenario gezeigt.
+Im nachstehenden Abschnitt wird die Definition für die benutzerdefinierte Route (UDR) des Front-Ends in der Datei **azuredeploy-vnet-nsg-udr.json** basierend auf dem obigen Szenario gezeigt.
 
 	"apiVersion": "2015-06-15",
 	"type": "Microsoft.Network/routeTables",
@@ -396,4 +396,4 @@ Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilensc
 
 >[AZURE.TIP] Falls Sie nicht alle Ressourcen sehen, führen Sie den Befehl `azure group deployment show` aus, um sicherzustellen, dass der Bereitstellungsstatus der Bereitstellung *Erfolgreich* lautet.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

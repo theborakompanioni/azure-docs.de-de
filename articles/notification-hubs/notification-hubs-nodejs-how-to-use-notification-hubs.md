@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="03/08/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
@@ -230,4 +230,4 @@ Mit den obigen Beispielcodeausschnitten können Sie problemlos eine Dienstinfras
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

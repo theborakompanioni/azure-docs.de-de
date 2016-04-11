@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # Wiederherstellen einer Datenbank nach einem Benutzerfehler in SQL Data Warehouse
@@ -44,7 +44,7 @@ Zur Wiederherstellung einer Datenbank verwenden Sie das [Start-AzureSqlDatabaseR
 6. Stellen Sie die Datenbank mit dem gewünschten Wiederherstellungspunkt wieder her.
 7. Überwachen Sie den Fortschritt der Wiederherstellung.
 
-```
+```Powershell
 
 Login-AzureRmAccount
 Get-AzureRmSubscription
@@ -95,7 +95,7 @@ Zur Wiederherstellung einer gelöschten Datenbank mithilfe der Zeitpunktwiederhe
 3. Wählen Sie das Abonnement aus, das die gelöschte Datenbank enthält, die wiederhergestellt werden soll.
 4. Suchen Sie in der Liste der gelöschten Datenbanken die Datenbank und das zugehörige Löschdatum.
 
-```
+```Powershell
 Get-AzureSqlDatabase -RestorableDropped -ServerName "<YourServerName>"
 ```
 
@@ -141,4 +141,4 @@ Informationen zu den Geschäftskontinuitätsfeatures anderer Azure SQL-Datenbank
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

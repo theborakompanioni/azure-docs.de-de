@@ -13,15 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/01/2016"
+    ms.date="03/24/2016"
     ms.author="ddove;sidneyh"/>
 
 # Übersicht über Features für elastische Datenbanken
 
 Mit den Features für **elastische Datenbanken** können Sie nahezu unbegrenzt viele Datenbankressourcen der **Azure SQL-Datenbank** zur Erstellung von Lösungen für transaktionale Workloads und insbesondere Software-as-a-Service (SaaS)-Anwendungen verwenden. Die Features für elastische Datenbanken umfassen Folgendes:
 
-* Tools für elastische Datenbanken: Diese beiden Tools vereinfachen die Entwicklung und Verwaltung von Sharded-Datenbanklösungen. Zur Verfügung stehen die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) und das [Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md). 
-* [Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) (Vorschauversion): Bei einem Pool handelt es sich um eine Sammlung von Datenbanken, der Sie jederzeit Datenbanken hinzufügen bzw. aus der Sie jederzeit Datenbanken entfernen können. Die Datenbanken im Pool teilen sich eine feste Menge an Ressourcen – sogenannten DTUs (Database Transaction Units). Sie zahlen einen festen Preis für die Ressourcen. Dadurch können Sie problemlos Ihre Kosten kalkulieren und die Leistung verwalten. 
+* Tools für elastische Datenbanken: Diese beiden Tools vereinfachen die Entwicklung und Verwaltung von Sharded-Datenbanklösungen. Zur Verfügung stehen die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) und das [Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md).
+* [Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) (Vorschauversion): Bei einem Pool handelt es sich um eine Sammlung von Datenbanken, der Sie jederzeit Datenbanken hinzufügen bzw. aus der Sie jederzeit Datenbanken entfernen können. Die Datenbanken im Pool teilen sich eine feste Menge an Ressourcen – sogenannten DTUs (Database Transaction Units). Sie zahlen einen festen Preis für die Ressourcen. Dadurch können Sie problemlos Ihre Kosten kalkulieren und die Leistung verwalten.
 * [Aufträge für elastische Datenbanken](sql-database-elastic-jobs-overview.md) (Vorschauversion): Verwalten Sie eine große Anzahl von Azure SQL-Datenbanken mithilfe von Aufträgen. Führen Sie mithilfe von Aufträgen ganz einfach administrative Vorgänge aus, z. B. Schemaänderungen, die Verwaltung von Anmeldeinformationen, Verweisdatenupdates, die Leistungsdatensammlung oder die Mandanten- (Kunden-) Telemetrieerfassung.
 * [Abfrage für elastische Datenbanken](sql-database-elastic-query-overview.md) (Vorschauversion): Mit der Abfrage können Sie eine Transact-SQL-Abfrage für mehrere Datenbanken ausführen. Dies ermöglicht eine Verknüpfung mit Berichtstools wie Excel, PowerBI, Tableau usw.
 
@@ -33,13 +33,13 @@ Eine Druckversion dieser Grafik finden Sie in der [Übersicht zu elastischen Dat
 
 Die Datenbankfarbe symbolisiert Schemas. Datenbanken mit der gleichen Farbe verwenden die gleichen Schemas.
 
-1. Eine Reihe von **Azure SQL-Datenbanken** werden von Azure unter Verwendung einer Shardingarchitektur gehostet. 
+1. Eine Reihe von **Azure SQL-Datenbanken** werden von Azure unter Verwendung einer Shardingarchitektur gehostet.
 2. Die **Clientbibliothek für elastische Datenbanken** dient zum Verwalten einer Shardgruppe.
-3. Eine Teilmenge der Datenbanken wird einem **Pool für elastische Datenbanken** zugewiesen. (Siehe [Verwalten des explosionsartigen Wachstums elastischer Datenbanken](sql-database-elastic-pool.md).) 
+3. Eine Teilmenge der Datenbanken wird einem **Pool für elastische Datenbanken** zugewiesen. (Siehe [Verwalten des explosionsartigen Wachstums elastischer Datenbanken](sql-database-elastic-pool.md).)
 4. Ein **Auftrag für die elastische Datenbank** führt T-SQL-Skripts für alle Datenbanken aus.
 5. Mit dem **Split-Merge-Tool** werden Daten zwischen Shards verschoben.
 6. Mit der **Abfrage für elastische Datenbanken** können Sie eine Abfrage für alle Datenbanken in der Shardgruppe erstellen.
-  
+
 ## Versprechen und Herausforderungen
 
 Flexibilität und Skalierbarkeit für Cloudanwendungen lassen sich bei Compute und Blob-Speicher durch einfaches Hinzufügen oder Entfernen von Einheiten erreichen. Bei der zustandsbehafteten Datenverarbeitung in relationalen Datenbanken ist es jedoch eine Herausforderung geblieben. Diese Herausforderungen treten vor allem in den beiden folgenden Szenarien auf:
@@ -93,7 +93,7 @@ Unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elasti
 
 Zur Verwendung des Split-Merge-Tools müssen Sie die [Sicherheit konfigurieren](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegungen zum Preis und zur Leistung von Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) sowie im [Tutorial](sql-database-elastic-pool-portal.md) zum Erstellen eines neuen Pools.
+Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegungen zum Preis und zur Leistung von Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) sowie im [Tutorial](sql-database-elastic-pool-create-portal.md) zum Erstellen eines neuen Pools.
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -108,4 +108,4 @@ Was können wir besser tun? Wird das Feature in diesem Thema deutlich erklärt? 
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

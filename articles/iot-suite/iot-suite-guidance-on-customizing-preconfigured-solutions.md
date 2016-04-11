@@ -30,20 +30,11 @@ Der Quellcode für die vorkonfigurierten Lösungen ist auf GitHub in den folgend
 
 Der Quellcode für die vorkonfigurierten Lösungen wird bereitgestellt, um Muster und Verfahren zum Implementieren der umfassenden Funktionalität von IoT-Lösungen mithilfe von Azure IoT Suite zu veranschaulichen. Weitere Informationen zur Erstellung und Bereitstellung von Lösungen finden Sie in den GitHub-Repositorys.
 
-## Verwalten der Berechtigungen in einer vorkonfigurierten Lösung
-Das Lösungs-Portal für jede vorkonfigurierte Lösung wird als eine neue Azure Active Directory-Anwendung erstellt. Sie können die Berechtigungen für das Lösungs-Portal (AAD-Anwendung) wie folgt verwalten:
-
-1. Öffnen Sie das [klassische Azure-Portal](https://manage.windowsazure.com).
-2. Navigieren Sie zur AAD-Anwendung, indem Sie **Anwendungen im Besitz meines Unternehmens** auswählen und dann auf das Häkchen klicken.
-3. Navigieren Sie zu **Benutzer**, und weisen Sie Mitglieder in Ihrem Azure Active Directory-Mandanten einer Rolle zu. 
-
-Die Anwendung wird standardmäßig mit den Rollen **Administrator**, **Read Only** und **Implicit Read Only** bereitgestellt. **Implicit Read Only** wird Benutzern gewährt, die Mitglied des Azure Active Directory-Mandanten sind, denen jedoch keine Rolle zugewiesen wurde. Sie können die Datei [RolePermissions.cs](https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs) ändern, nachdem Sie das GitHub-Repository verzweigt haben, und dann die Projektmappe erneut bereitstellen.
-
 ## Ändern der vorkonfigurierten Regeln
 
 Die Remoteüberwachungslösung enthält drei [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Aufträge, um die Geräteinformationen, Telemetriedaten und Regellogik für die Lösung zu implementieren.
 
-Die drei Stream Analytics-Aufträge und ihre Syntax werden ausführlich unter [Exemplarische Vorgehensweise für die vorkonfigurierte Lösung zur Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md) beschrieben.
+Die drei Stream Analytics-Aufträge und ihre Syntax werden ausführlich unter [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md) beschrieben.
 
 Sie können diese Aufträge direkt bearbeiten, um die Logik zu ändern oder spezifische Logik für das Szenario hinzuzufügen. Sie finden die Stream Analytics-Aufträge wie folgt:
  
@@ -53,7 +44,7 @@ Sie können diese Aufträge direkt bearbeiten, um die Logik zu ändern oder spez
 4. Beenden Sie den Auftrag, indem Sie aus den Befehlen **Beenden** auswählen. 
 5. Bearbeiten Sie die Eingaben, die Abfrage und die Ausgaben.
 
-    Eine einfache Änderung besteht darin, die Abfrage für den **Rules**-Auftrag so zu ändern, dass **„<“** anstelle von **„>“** verwendet wird. Das Lösungs-Portal zeigt weiterhin **„>“** an, wenn Sie eine Regel bearbeiten, aber Sie werden feststellen, dass sich das Verhalten aufgrund der Änderung am zugrunde liegenden Auftrag umkehrt.
+    Eine einfache Änderung besteht darin, die Abfrage für den Auftrag **Regeln** so zu ändern, dass **„<“** anstelle von **„>“** verwendet wird. Das Lösungsportal zeigt weiterhin **„>“** an, wenn Sie eine Regel bearbeiten. Sie werden allerdings feststellen, dass sich das Verhalten aufgrund der Änderung am zugrunde liegenden Auftrag umkehrt.
 
 6. Starten des Auftrags
 
@@ -75,20 +66,81 @@ Der Quellcode der Remoteüberwachungslösung (auf den oben verwiesen wird) enth�
 
 Der vorkonfigurierte Simulator in der vorkonfigurierten Lösung zur Remoteüberwachung ist ein Kühlgerät, das Telemetriedaten zu Temperatur und Feuchtigkeit ausgibt. Sie können den Simulator im Projekt [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) ändern, wenn Sie das GitHub-Repository verzweigt haben.
 
-Darüber hinaus stellt Azure IoT ein [C-SDK-Beispiel](https://github.com/Azure/azure-iot-sdks/c/serializer/samples/remote_monitoring) bereit, das mit der vorkonfigurierten Remoteüberwachungslösung verwendet werden kann.
+Darüber hinaus stellt Azure IoT ein [C-SDK-Beispiel](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring) bereit, das mit der vorkonfigurierten Remoteüberwachungslösung verwendet werden kann.
 
 ### Erstellen und Verwenden eines eigenen (physischen) Geräts
 
 Die [Azure IoT-SDKs](https://github.com/Azure/azure-iot-sdks) bieten Bibliotheken zum Verbinden zahlreicher Gerätetypen (Sprachen und Betriebssysteme) mit IoT-Lösungen.
 
+## Manuelles Einrichten der Anwendungsrollen
+
+Das folgende Verfahren beschreibt das Hinzufügen von **Admin**- und **ReadOnly**-Anwendungsrollen zu einer vorkonfigurierten Lösung. Beachten Sie, dass von azureiotsuite.com bereitgestellte, vorkonfigurierte Lösungen die **Admin**- und **ReadOnly**-Rollen bereits enthalten.
+
+Mitglieder der **ReadOnly**-Rolle können das Dashboard und die Geräteliste einsehen, dürfen jedoch keine Geräte hinzufügen, Geräteattribute ändern oder Befehle senden. Mitglieder der **Admin**-Rolle haben vollen Zugriff auf alle Funktionen in der Lösung.
+
+1. Melden Sie sich beim [klassischen Azure-Portal][lnk-classic-portal] an.
+
+2. Wählen Sie **Active Directory** aus.
+
+3. Klicken Sie auf den Namen des AAD-Mandanten, den Sie bei der Bereitstellung Ihrer Lösung verwendet haben.
+
+4. Klicken Sie auf **Anwendungen**.
+
+5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt. Wenn Ihre Anwendung nicht in der Liste erscheint, gehen Sie in der Dropdownliste **Anzeigen** auf **Anwendungen im Besitz meines Unternehmens**, und klicken Sie auf das Häkchen.
+
+6.  Klicken Sie unten auf der Seite auf **Manifest verwalten** und dann auf **Manifest herunterladen**.
+
+7. Dadurch wird eine JSON-Datei auf Ihren lokalen Computer heruntergeladen. Öffnen Sie diese Datei zur Bearbeitung in einem Text-Editor Ihrer Wahl.
+
+8. In der dritten Zeile der JSON-Datei steht:
+
+  ```
+  "appRoles" : [],
+  ```
+  Ersetzen Sie dies durch Folgendes:
+
+  ```
+  "appRoles": [
+  {
+  "allowedMemberTypes": [
+  "User"
+  ],
+  "description": "Administrator access to the application",
+  "displayName": "Admin",
+  "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "isEnabled": true,
+  "value": "Admin"
+  },
+  {
+  "allowedMemberTypes": [
+  "User"
+  ],
+  "description": "Read only access to device information",
+  "displayName": "Read Only",
+  "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
+  "isEnabled": true,
+  "value": "ReadOnly"
+  } ],
+  ```
+
+9. Speichern Sie die aktualisierte JSON-Datei (Sie können die vorhandene Datei überschreiben).
+
+10.  Wählen Sie im Azure-Verwaltungsportal unten auf der Seite **Manifest verwalten**, dann **Manifest hochladen**, um die zuvor gespeicherte JSON-Datei hochzuladen.
+
+11. Sie haben nun die **Admin**- und **ReadOnly**-Rollen zu Ihrer Anwendung hinzugefügt.
+
+12. Um einem Benutzer eine dieser Rollen in Ihrem Verzeichnis zuzuweisen, lesen Sie [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions].
+
 ## Feedback
 
-Haben Sie Anpassungsvorschläge für dieses Dokument? Fügen Sie Vorschläge für neue Funktionen im [Benutzerforum](https://feedback.azure.com/forums/321918-azure-iot) hinzu, oder kommentieren Sie diesen Artikel weiter unten.
+Haben Sie Anpassungsvorschläge für dieses Dokument? Falls Sie Vorschläge für neue Funktionen haben, bringen Sie diese gerne bei [UserVoice](https://feedback.azure.com/forums/321918-azure-iot) ein, oder kommentieren Sie diesen Artikel weiter unten.
 
 ## Nächste Schritte
 
 Weitere Informationen zu IoT-Geräten finden Sie auf der [Azure IoT-Entwicklerwebsite](https://azure.microsoft.com/develop/iot/), die entsprechende Links und Dokumente enthält.
 
 [IoT-Geräte-SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
+[lnk-permissions]: iot-suite-permissions.md
+[lnk-classic-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

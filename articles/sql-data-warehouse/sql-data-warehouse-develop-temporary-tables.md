@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="mausher;jrj;barbkess;sonyama"/>
 
 # Temporäre Tabellen in SQL Data Warehouse
@@ -24,7 +24,7 @@ Dieser Artikel enthält einige wichtige Anleitungen zur Verwendung von temporär
 ## Erstellen von temporären Tabellen
 Das Erstellen einer temporären Tabelle ist sehr unkompliziert. Sie müssen nur dem Tabellennamen das Zeichen # voranstellen, wie im folgenden Beispiel gezeigt:
 
-```
+```sql
 CREATE TABLE #stats_ddl
 (
 	[schema_name]			NVARCHAR(128) NOT NULL
@@ -44,7 +44,7 @@ WITH
 
 Temporäre Tabellen können auch mit `CTAS` auf genau die gleiche Weise erstellt werden.
 
-```
+```sql
 CREATE TABLE #stats_ddl
 WITH
 (
@@ -102,7 +102,7 @@ FROM    t1
 
 Damit Ihre `CREATE TABLE`-Anweisungen erfolgreich sind, müssen Sie sicherstellen, dass die Tabelle noch nicht in der Sitzung vorhanden ist. Dies kann mit einer einfachen Überprüfung auf das Vorhandensein nach dem folgenden Muster erledigt werden:
 
-```
+```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
 BEGIN
 	DROP TABLE #stats_ddl
@@ -113,7 +113,7 @@ END
 
 Es ist auch eine gute Idee, mit `DROP TABLE` temporäre Tabellen zu entfernen, wenn Sie sie in Ihrem Code nicht mehr benötigen.
 
-```
+```sql
 DROP TABLE #stats_ddl
 ```
 
@@ -127,7 +127,7 @@ Im Folgenden erstellen wir ein Beispiel.
 
 Mit der folgenden gespeicherten Prozedur werden die oben genannten Beispiele zusammengeführt. Mit dem Code können die DDL-Anweisungen generiert werden, die zum Aktualisieren der Statistiken für jede Spalte in der Datenbank erforderlich sind:
 
-```
+```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
 (   @update_type    tinyint -- 1 default 2 fullscan 3 sample 4 resample
 	,@sample_pct     tinyint
@@ -209,7 +209,7 @@ In SQL Data Warehouse ist es möglich, diese temporäre Tabelle außerhalb der P
 
 Dies kann zu modularerem und besser verwaltbarem Code führen. Betrachten Sie das folgende Beispiel:
 
-```
+```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
 
 DECLARE @i INT              = 1
@@ -254,4 +254,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

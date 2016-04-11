@@ -35,7 +35,7 @@ In diesem Abschnitt werden einige der wichtigsten konzeptuellen Unterschiede zwi
 | Clouddienst für virtuelle Computer |	Beim Clouddienst handelte es sich um einen Container für die virtuellen Computer, für den Plattformverfügbarkeit sowie Lastenausgleich erforderlich waren. | Der Clouddienst ist kein erforderliches Objekt zum Erstellen eines virtuellen Computers mithilfe des neuen Modells mehr. |
 | Verfügbarkeitsgruppen | Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. | Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die eine hohe Verfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
 | Affinitätsgruppen |	Zum Erstellen von virtuellen Netzwerken waren Affinitätsgruppen erforderlich. Dies ist jedoch seit der Einführung regionaler virtueller Netzwerke nicht mehr erforderlich. |Zur Vereinfachung ist das Affinitätsgruppenkonzept in über den Azure-Ressourcen-Manager verfügbaren APIs nicht vorhanden. |
-| Lastenausgleich | Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. | Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. [Weitere Informationen](resource-groups-networking.md) |
+| Lastenausgleich | Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. | Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. [Weitere Informationen](../articles/resource-groups-networking.md) |
 |Virtuelle IP-Adresse | Clouddienste erhalten eine Standard-VIP (virtuelle IP-Adresse), wenn ihnen ein virtueller Computer hinzugefügt wird. Die virtuelle IP-Adresse ist dem impliziten Lastenausgleich zugeordnet. | Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Dynamische öffentliche IP-Adressen können einem Lastenausgleich zugewiesen werden. Öffentliche IP-Adressen können mithilfe von Sicherheitsgruppen gesichert werden. |
 |Reservierte IP-Adresse|	Sie können eine IP-Adresse in Azure reservieren und einem Clouddienst zuordnen, um die Persistenz der IP-Adresse sicherzustellen. | Die Öffentliche IP-Adresse kann im Modus „Static“ erstellt werden. Sie bietet die gleiche Funktionalität wie eine reservierte IP-Adresse („Reserved IP Address“). Statische öffentliche IP-Adressen können nur direkt einem Lastenausgleich zugewiesen werden. |
 |Öffentliche IP-Adresse (PIP) pro virtuellem Computer | Öffentliche IP-Adressen können virtuellen Computern auch direkt zugeordnet werden. | Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Netzwerkschnittstellen können jedoch nur dynamische öffentliche IP-Adressen zugewiesen werden, um direkt öffentliche IPs pro virtuellem Computer abzurufen. |
@@ -53,11 +53,11 @@ Das Azure-Portal bietet weiterhin die Möglichkeit, virtuelle Computer gleichzei
 
 ### Microsoft Azure PowerShell
 
-Azure PowerShell wird zwei Bereitstellungsmodi bieten: den **AzureServiceManagement**-Modus und den **AzureResourceManager**-Modus. Der AzureResourceManager-Modus enthält jetzt auch die Cmdlets zum Verwalten von virtuellen Computern, virtuellen Netzwerken und Speicherkonten. Weitere Informationen dazu finden Sie [hier](../powershell-azure-resource-manager.md).
+Azure PowerShell wird zwei Bereitstellungsmodi bieten: den **AzureServiceManagement**-Modus und den **AzureResourceManager**-Modus. Der AzureResourceManager-Modus enthält jetzt auch die Cmdlets zum Verwalten von virtuellen Computern, virtuellen Netzwerken und Speicherkonten. Weitere Informationen dazu finden Sie [hier](../articles/powershell-azure-resource-manager.md).
 
 ### Azure-Befehlszeilenschnittstelle
 
-Der Azure-Befehlszeilenschnittstelle (Azure-CLI) wird zwei Bereitstellungsmodi bieten: den **AzureServiceManagement**-Modus und den **AzureResourceManager**-Modus. Der AzureResourceManager-Modus enthält jetzt auch Befehle zum Verwalten von virtuellen Computern, virtuellen Netzwerken und Speicherkonten. Weitere Informationen dazu finden Sie [hier](xplat-cli-azure-resource-manager.md).
+Der Azure-Befehlszeilenschnittstelle (Azure-CLI) wird zwei Bereitstellungsmodi bieten: den **AzureServiceManagement**-Modus und den **AzureResourceManager**-Modus. Der AzureResourceManager-Modus enthält jetzt auch Befehle zum Verwalten von virtuellen Computern, virtuellen Netzwerken und Speicherkonten. Weitere Informationen dazu finden Sie [hier](../articles/xplat-cli-azure-resource-manager.md).
 
 ### Visual Studio
 
@@ -79,11 +79,11 @@ Dies wird zurzeit nicht unterstützt. Sie können jedoch die VHD-Dateien aus ein
 
 **Welche Auswirkungen gibt es auf das Kontingent meines Abonnements?**
 
-Die Kontingente für virtuelle Computer, virtuelle Netzwerke und Speicherkonten, die über die neuen Azure-Ressourcen-Manager-APIs erstellt wurden, und Ihre aktuell vorhandenen Kontingente sind separat. Jedes Abonnement erhält neue Kontingente, um die Ressourcen mit den neuen APIs zu erstellen. Weitere Informationen zu den zusätzlichen Kontingenten finden Sie [hier](../azure-subscription-service-limits.md).
+Die Kontingente für virtuelle Computer, virtuelle Netzwerke und Speicherkonten, die über die neuen Azure-Ressourcen-Manager-APIs erstellt wurden, und Ihre aktuell vorhandenen Kontingente sind separat. Jedes Abonnement erhält neue Kontingente, um die Ressourcen mit den neuen APIs zu erstellen. Weitere Informationen zu den zusätzlichen Kontingenten finden Sie [hier](../articles/azure-subscription-service-limits.md).
 
 **Kann ich meine automatisierten Skripts zur Bereitstellung virtueller Computer, virtueller Netzwerke, Speicherkonten usw. durch die neuen Azure-Ressourcen-Manager-APIs weiterhin verwenden?**
 
-Die Automatisierungen und Skripts, die Sie erstellt haben, bleiben für die vorhandenen virtuellen Computer und virtuellen Netzwerke funktionsfähig, die im Azure-Dienstverwaltungsmodus erstellt wurden. Die Skripts müssen jedoch aktualisiert werden, damit das neue Schema zum Erstellen der gleichen Ressourcen über den neuen Azure-Ressourcen-Manager-Modus verwendet werden kann. Informieren Sie sich näher über das Ändern Ihrer [Azure-CLI-Skripts](virtual-machines-linux-cli-manage.md).
+Die Automatisierungen und Skripts, die Sie erstellt haben, bleiben für die vorhandenen virtuellen Computer und virtuellen Netzwerke funktionsfähig, die im Azure-Dienstverwaltungsmodus erstellt wurden. Die Skripts müssen jedoch aktualisiert werden, damit das neue Schema zum Erstellen der gleichen Ressourcen über den neuen Azure-Ressourcen-Manager-Modus verwendet werden kann. Informieren Sie sich näher über das Ändern Ihrer [Azure-CLI-Skripts](../articles/virtual-machines/virtual-machines-linux-cli-manage.md).
 
 **Können die mit den neuen Azure-Ressourcen-Manager-APIs erstellten virtuellen Netzwerke mit meinem Express Route-Schaltkreis verbunden werden?**
 
@@ -93,4 +93,4 @@ Dies wird zurzeit nicht unterstützt. Die mit den neuen Azure-Ressourcen-Manager
 
 Einen umfassenden Satz von Startervorlagen finden Sie unter [Schnellstartvorlagen für den Azure-Ressourcen-Manager](https://azure.microsoft.com/documentation/templates/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

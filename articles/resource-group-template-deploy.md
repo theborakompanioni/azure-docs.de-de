@@ -16,7 +16,7 @@
    ms.date="03/21/2016"
    ms.author="tomfitz"/>
 
-# Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage
+# Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen
 
 In diesem Thema wird erläutert, wie Ihre Anwendung mit Azure Resource Manager-Vorlagen in Azure bereitgestellt wird. Es wird gezeigt, wie Sie Ihre Ressourcen mithilfe von Azure PowerShell, der Azure-Befehlszeilenschnittstelle, der REST-API oder des Azure-Portals bereitstellen können.
 
@@ -292,4 +292,4 @@ Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Ers
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -1,7 +1,7 @@
 
 <properties 
-    pageTitle="Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten | Microsoft Azure"
-	description="Informationen zum Verwenden von Azure RemoteApp mit meinen Office 365-Benutzerkonten"
+    pageTitle="Wie speichert Azure RemoteApp Benutzerdaten und -einstellungen? | Microsoft Azure"
+	description="Erfahren Sie, wie Azure RemoteApp Benutzerdaten mit dem Benutzerprofil-Datenträger speichert."
 	services="remoteapp"
 	documentationCenter="" 
 	authors="lizap" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/04/2015" 
+    ms.date="03/28/2016" 
     ms.author="elizapo" />
 
 # Wie speichert Azure RemoteApp Benutzerdaten und -einstellungen?
@@ -26,12 +26,12 @@ Jeder Benutzerprofil-Datenträger verfügt über 50 GB permanenten Speicher und 
 
 Lesen Sie weiter, um mehr über die Besonderheiten von Benutzerprofildaten zu erfahren.
 
->[AZURE.NOTE]Müssen Sie den Benutzerprofil-Datenträger (User Profile Disks,UPD) deaktivieren? Dies ist nun möglich. Die Details dazu finden Sie im Blogbeitrag von Pavithra [Disable User Profile Disks (UPDs) in Azure RemoteApp](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx).
+>[AZURE.NOTE] Müssen Sie den Benutzerprofil-Datenträger (User Profile Disks,UPD) deaktivieren? Dies ist nun möglich. Die Details dazu finden Sie im Blogbeitrag von Pavithra [Disable User Profile Disks (UPDs) in Azure RemoteApp](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx).
 
 
 ## Wie kann ein Administrator auf die Daten zugreifen?
 
-Wenn Sie Zugriff auf die Daten für einen Ihrer Benutzer benötigen (für die Wiederherstellung im Notfall oder wenn der Benutzer das Unternehmen verlässt), wenden Sie sich an den Support von [Azure RemoteApp](mailto:remoteappforum@microsoft.com), und stellen Sie die Abonnementinformationen für die Sammlung und die Identität des Benutzers bereit. Das Team von Azure RemoteApp stellt Ihnen eine URL für die virtuelle Festplatte zur Verfügung. Laden Sie diese VHD herunter, und rufen Sie alle Dokumente oder Dateien ab, die Sie benötigen. Die virtuelle Festplatte hat eine Größe von 50 GB, weshalb das Herunterladen ein wenig Zeit in Anspruch nimmt.
+Wenn Sie Zugriff auf die Daten für einen Ihrer Benutzer benötigen (für die Wiederherstellung im Notfall oder wenn der Benutzer das Unternehmen verlässt), wenden Sie sich an den Support von [Azure RemoteApp](mailto:remoteappforum@microsoft.com), und stellen Sie die Abonnementinformationen für die Sammlung und die Identität des Benutzers bereit. Das Team von Azure RemoteApp stellt Ihnen eine URL für die virtuelle Festplatte zur Verfügung. Laden Sie diese VHD herunter, und rufen Sie alle Dokumente oder Dateien ab, die Sie benötigen. Die virtuelle Festplatte hat eine Größe von 50 GB, weshalb das Herunterladen ein wenig Zeit in Anspruch nimmt.
 
 
 ## Werden die Daten gesichert?
@@ -82,9 +82,9 @@ Ja, Sie können das Azure RemoteApp-Team darum bitten, Benutzerprofil-Datenträg
 
 In den folgenden Situationen möchten Sie Benutzerprofil-Datenträger möglicherweise deaktivieren:
 
-- Sie benötigen Vollzugriff auf und Kontrolle über Benutzerdaten (z. B. zu Überwachungs- und Prüfzwecken bei Finanzinstituten).
+- Sie benötigen Vollzugriff auf und Kontrolle über Benutzerdaten (z. B. zu Überwachungs- und Prüfzwecken bei Finanzinstituten).
 - Sie verfügen über lokale Lösungen zur Benutzerprofilverwaltung, die Sie in Ihrer in die Domäne eingebundenen Azure RemoteApp-Bereitstellung weiter nutzen möchten. Dazu muss der Profil-Agent in das Gold-Image geladen werden. 
-- Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud (z. B. OneDrive for Business) oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
+- Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud (z. B. OneDrive for Business) oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
 
 Weitere Informationen finden Sie unter [Deaktivieren von Benutzerprofil-Datenträgern (UPDs) in Azure RemoteApp](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx).
 
@@ -121,6 +121,10 @@ Wenn Sie ein Startskript ausführen möchten, beginnen Sie mit dem Erstellen ein
 
 ![Erstellen Sie eine Systemaufgabe, die ausgeführt wird, wenn sich ein Benutzer anmeldet.](./media/remoteapp-upd/upd2.png)
 
+Ändern Sie in der Registerkarte **Allgemein** unbedingt das **Benutzerkonto** in den Sicherheitsoptionen auf „VORDEFINIERT\\Benutzer“.
+
+![Ändern Sie das Benutzerkonto zu einer Gruppe](./media/remoteapp-upd/upd4.png)
+
 Die geplante Aufgabe wird mit den Anmeldeinformationen des Benutzers Ihr Startskript starten. Planen Sie die Ausführung der Aufgabe jedes Mal, wenn sich ein Benutzer anmeldet.
 
 ![Legen Sie den Trigger für die Aufgabe auf "Bei Anmeldung" fest.](./media/remoteapp-upd/upd3.png)
@@ -137,4 +141,22 @@ Nein, dies wird von Azure RemoteApp nicht unterstützt, da der RDSH genutzt wird
 
 Nein, dies wird von Azure RemoteApp nicht unterstützt.
 
-<!---HONumber=AcomDC_1217_2015-->
+## Kann ich die Daten auf dem virtuellen Computer auch lokal speichern?
+
+NEIN, Daten, die zwar auf der VM, aber nicht auf dem Benutzerprofil-Datenträger gespeichert werden, gehen verloren. Die Wahrscheinlichkeit ist hoch, dass der Benutzer bei der nächsten Sitzung in Azure RemoteApp nicht den gleichen virtuellen Computer wie zuvor erhält. Wir ordnen Benutzern keinen bestimmten virtuellen Computer zu. Der Benutzer meldet sich beim nächsten Mal also nicht auf demselben virtuellen Computer an, und die Daten gehen verloren. Wenn die Sammlung aktualisiert wird, werden die vorhandenen virtuellen Computer zudem durch neue ersetzt – wodurch alle auf der VM gespeicherten Daten verloren gehen. Für die Datenspeicherung empfehlen sich daher der Benutzerprofil-Datenträger, freigegebener Speicher wie Azure Files, Dateiserver in einem VNET oder die Cloud mithilfe von OneDrive for Business oder einem anderen unterstützten Cloudspeichersystem wie DropBox.
+
+## Wie stelle ich eine Azure-Dateifreigabe mithilfe von PowerShell auf einem virtuellen Computer bereit?
+
+Mithilfe des Net-PSDrive-Cmdlets können Sie das Laufwerk wie folgt bereitstellen:
+
+    New-PSDrive -Name <drive-name> -PSProvider FileSystem -Root \<storage-account-name>.file.core.windows.net<share-name> -Credential :<storage-account-name>
+
+
+Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
+
+    cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
+
+
+So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
+
+<!---HONumber=AcomDC_0330_2016-->

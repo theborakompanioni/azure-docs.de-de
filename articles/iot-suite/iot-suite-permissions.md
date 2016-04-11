@@ -66,7 +66,9 @@ Es gibt zwei definierte und eine implizite Rolle in der Anwendung, die erstellt 
 
 -   **IMPLICIT READ ONLY:** Identisch mit „READ ONLY“, wird jedoch allen Benutzern Ihres AAD-Mandanten gewährt. Dies ist zur Vereinfachung während der Entwicklung erfolgt. Sie können diese Rolle durch Ändern der Quelldatei [RolePermissions.cs][lnk-resource-cs] entfernen.
 
-### Ändern von Anwendungsrollen
+### Ändern von Anwendungsrollen eines Benutzers
+
+Mithilfe des folgenden Verfahrens können Sie einen Benutzer in Ihrem Active Directory zum Administratoren Ihrer vorkonfigurierten Lösung ernennen.
 
 Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ändern:
 
@@ -74,19 +76,17 @@ Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ä
 
 2. Wählen Sie **Active Directory** aus.
 
-3. Klicken Sie auf den Namen Ihres AAD-Mandanten.
+3. Klicken Sie auf den Namen Ihres AAD-Mandanten (dies ist das Verzeichnis, das Sie bei der Bereitstellung der Lösung auf azureiotsuite.com ausgewählt haben).
 
 4. Klicken Sie auf **Anwendungen**.
 
-5. Wenn Ihre Anwendung nicht in der Liste enthalten ist, wechseln Sie im der Dropdownliste **Anzeigen** zu **Anwendung im Besitz meines Unternehmens**, und klicken Sie auf das Häkchen.
-
-6. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt.
+5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt. Wenn Ihre Anwendung nicht in der Liste enthalten ist, wechseln Sie im der Dropdownliste **Anzeigen** zu **Anwendung im Besitz meines Unternehmens**, und klicken Sie auf das Häkchen.
 
 7. Klicken Sie auf **Benutzer**.
 
 8. Wählen Sie den Benutzer aus, dessen Rolle gewechselt werden soll.
 
-9. Klicken Sie auf die Schaltfläche „Zuweisen“. Für die Rolle, die zugewiesen werden soll, klicken Sie auf das Häkchen.
+9. Klicken Sie auf **Zuweisen**, und wählen Sie die Rolle (z.B. **Admin**), die sie dem Benutzer zuweisen wollen. Klicken Sie auf das Häkchen.
 
 ## Häufig gestellte Fragen
 
@@ -145,4 +145,4 @@ Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfe
 [lnk-admin-roles]: https://azure.microsoft.com/documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="03/30/2016"
 	ms.author="daleche"/>
 
 
@@ -26,22 +26,24 @@ In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergeh
 
 ## Vorübergehender Fehler
 
-Bei einem vorübergehenden Fehler besteht ein zugrunde liegendes Problem, das sich nach kurzer Zeit selbst löst. Wenn das Azure-System Hardwareressourcen für einen besseren Lastenausgleich bei verschiedenen Workloads rasch verschiebt, treten gelegentlich vorübergehende Fehler auf. Während dieser Neukonfiguration kann es bei Azure SQL-Datenbank zu Verbindungsproblemen kommen.
+Bei einem vorübergehenden Fehler besteht ein zugrunde liegendes Problem, das sich nach kurzer Zeit selbst löst. Wenn das Azure-System Hardwareressourcen für einen besseren Lastenausgleich bei verschiedenen Workloads rasch verschiebt, treten gelegentlich vorübergehende Fehler auf. Die meisten dieser Neukonfigurationsereignisse dauern weniger als 60 Sekunden. Während dieser Neukonfiguration kann es bei Azure SQL-Datenbank zu Verbindungsproblemen kommen. Anwendungen, die eine Verbindung mit Azure SQL-Datenbank herstellen, sollten so konzipiert sein, dass die Anwendung diese vorübergehenden Fehler erwartet und durch Implementierung von Wiederholungslogik in ihrem Code behebt, anstatt sie den Benutzern als Anwendungsfehler anzuzeigen.
 
 Wenn Ihr Clientprogramm ADO.NET verwendet, wird eine **SqlException**-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren. Die **Number**-Eigenschaft kann mit der Liste der vorübergehenden Fehler im oberen Bereich des Themas verglichen werden: [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen](sql-database-develop-error-messages.md).
+
+<a id="connection-versus-command" name="connection-versus-command"></a>
 
 ### Vorübergehende Fehler bei Verbindungsherstellung und Befehlen
 
 Sie können je nach Situation versuchen, die SQL-Verbindung erneut zu verwenden oder wiederherzustellen:
 
-* **Beim Versuch, eine Verbindung herzustellen, tritt ein vorübergehender Fehler auf:** Versuchen Sie, die Verbindung wiederherzustellen, nachdem Sie einige Sekunden gewartet haben.
+* **Beim Versuch, eine Verbindung herzustellen, tritt ein vorübergehender Fehler auf:** Wiederholen Sie den Verbindungsversuch nach einigen Sekunden.
 
 * **Bei einem SQL-Abfragebefehl tritt ein vorübergehender Fehler auf:** Versuchen Sie nicht sofort, den Befehl erneut auszuführen. Stattdessen sollte die Verbindung nach einer Verzögerungszeit neu hergestellt werden. Anschließend kann der Befehl erneut ausgeführt werden.
 
 
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
-## Wiederholungslogik für vorübergehende Fehler
+### Wiederholungslogik für vorübergehende Fehler
 
 
 Clientprogramme, bei denen gelegentlich ein vorübergehender Fehler auftritt, sind stabiler, wenn sie Wiederholungslogik enthalten.
@@ -49,8 +51,9 @@ Clientprogramme, bei denen gelegentlich ein vorübergehender Fehler auftritt, si
 
 Wenn Ihr Programm über Middleware eines Drittanbieters mit Azure SQL-Datenbank kommuniziert, wenden Sie sich an diesen Anbieter, um Informationen dazu zu erhalten, ob die Middleware Wiederholungslogik umfasst.
 
+<a id="principles-for-retry" name="principles-for-retry"></a>
 
-### Prinzipien für Wiederholungsversuche
+#### Prinzipien für Wiederholungsversuche
 
 
 - Wenn beim Versuch, eine Verbindung herzustellen, ein vorübergehender Fehler auftritt, sollte der Versuch wiederholt werden.
@@ -74,7 +77,7 @@ Wenn Ihr Programm über Middleware eines Drittanbieters mit Azure SQL-Datenbank 
  - Dennoch sollten Wiederholungen nach nur wenigen Sekunden vermieden werden, um eine Überlastung des Systems durch eine große Anzahl von Anforderungen zu verhindern.
 
 
-### Steigerung der Intervalle zwischen Wiederholungsversuchen
+#### Steigerung der Intervalle zwischen Wiederholungsversuchen
 
 
 
@@ -85,7 +88,7 @@ Eine Erörterung der *Sperrfrist* für Clients, die ADO.NET verwenden, finden Si
 Darüber hinaus kann es sinnvoll sein, eine maximale Anzahl von Wiederholungsversuchen festzulegen, bevor das Programm beendet wird.
 
 
-### Codebeispiele mit Wiederholungslogik
+#### Codebeispiele mit Wiederholungslogik
 
 
 Auf der folgenden Seite finden Sie Codebeispiele mit Wiederholungslogik in diversen Programmiersprachen:
@@ -95,13 +98,13 @@ Auf der folgenden Seite finden Sie Codebeispiele mit Wiederholungslogik in diver
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
-## Testen der Wiederholungslogik
+#### Testen der Wiederholungslogik
 
 
 Um Ihre Wiederholungslogik zu testen, müssen Sie einen Fehler simulieren oder verursachen, der behandelt werden kann, während Ihr Programm weiterhin ausgeführt wird.
 
 
-### Testen der Logik, indem der Computer vom Netzwerk getrennt wird
+##### Testen der Logik, indem der Computer vom Netzwerk getrennt wird
 
 
 Eine Möglichkeit, um Ihre Wiederholungslogik zu testen, besteht darin, Ihren Clientcomputer vom Netzwerk zu trennen, während das Programm ausgeführt wird. Folgender Fehler tritt auf:
@@ -119,11 +122,11 @@ Um diesen Test in der Praxis umzusetzen, trennen Sie Ihren Computer vom Netzwerk
 2. Das Programm führt den ersten Verbindungsversuch durch.
 3. Nachdem der Fehler ermittelt wurde, wird 11001 aus der Liste entfernt.
 4. Eine Meldung fordert den Benutzer auf, den Computer an das Netzwerk anzuschließen.
- - Die weitere Ausführung wird angehalten (über die Methode **Console.ReadLine** oder über ein Dialogfeld mit der Schaltfläche „OK“) Nachdem der Computer mit dem Netzwerk verbunden wurde, drückt der Benutzer die EINGABETASTE.
+ - Die weitere Ausführung wird angehalten (über die **Console.ReadLine**-Methode oder über ein Dialogfeld mit der Schaltfläche „OK“). Nachdem der Computer mit dem Netzwerk verbunden wurde, drückt der Benutzer die EINGABETASTE.
 5. Es wird erneut versucht, eine Verbindung herzustellen (dieser Versuch sollte erfolgreich sein).
 
 
-### Testen der Logik, indem beim Herstellen der Verbindung ein falscher Datenbankname eingegeben wird
+##### Testen der Logik, indem beim Herstellen der Verbindung ein falscher Datenbankname eingegeben wird
 
 
 Ihr Programm kann vor dem ersten Verbindungsversuch mit Absicht einen falschen Benutzernamen verwenden. Folgender Fehler tritt auf:
@@ -143,23 +146,12 @@ In der Praxis könnte Ihr Programm einen Laufzeitparameter ermitteln, der folgen
 4. „WRONG\_“ wird vom Benutzernamen entfernt.
 5. Es wird erneut versucht, eine Verbindung herzustellen (dieser Versuch sollte erfolgreich sein).
 
-
-<a id="a-connection-connection-string" name="a-connection-connection-string"></a>
-
-## Verbindung: Verbindungszeichenfolge
-
-
-Die für die Verbindung mit Azure SQL-Datenbank erforderliche Verbindungszeichenfolge unterscheidet sich geringfügig von der Zeichenfolge für die Verbindung mit Microsoft SQL Server. Sie können die Verbindungszeichenfolge für Ihre Datenbank aus dem [Azure-Portal](https://portal.azure.com/) kopieren.
-
-
-[AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
-
-
+<a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
 ### SqlConnection-Parameter von .NET für wiederholte Verbindungsversuche
 
 
-Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection** eine Verbindung mit Azure SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher verwenden, damit Sie die Funktion für wiederholte Verbindungsversuche nutzen können. Details der Funktion finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=393996).
+Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection** eine Verbindung mit Azure SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher verwenden, damit Sie das Feature für wiederholte Verbindungsversuche nutzen können. Details der Funktion finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=393996).
 
 
 <!--
@@ -169,7 +161,7 @@ Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClie
 
 Beim Erstellen der [Verbindungszeichenfolge](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) für Ihr **SqlConnection**-Objekt sollten Sie die Werte der folgenden Parameter abstimmen:
 
-- ConnectRetryCount &nbsp;&nbsp;*(Der Standardwert ist 0. Der Bereich reicht von 0 bis 255.)*
+- ConnectRetryCount &nbsp;&nbsp;*(Der Standardwert ist 1. Der Bereich reicht von 0 bis 255.)*
 - ConnectRetryInterval &nbsp;&nbsp;*(Der Standardwert ist 1 Sekunde. Der Bereich reicht von 1 bis 60.)*
 - Verbindungstimeout &nbsp;&nbsp;*(Der Standardwert ist 15 Sekunden. Der Bereich reicht von 0 bis 2147483647.)*
 
@@ -180,8 +172,9 @@ Insbesondere sollte für Ihre ausgewählten Werte die folgende Gleichung gelten:
 
 Beispiel: Wenn die Anzahl 3 ist und das Intervall 10 Sekunden beträgt, wäre ein Timeout von nur 29 Sekunden für das System nicht ganz ausreichend für den 3. und letzten Verbindungsversuch: 29 < 3 * 10.
 
+<a id="connection-versus-command" name="connection-versus-command"></a>
 
-#### Vorübergehende Fehler bei Verbindungsherstellung und Befehlen
+### Vorübergehende Fehler bei Verbindungsherstellung und Befehlen
 
 
 Mit den Parametern **ConnectRetryCount** und **ConnectRetryInterval** kann Ihr **SqlConnection**-Objekt den Verbindungsversuch wiederholen, ohne Ihr Programm zu unterbrechen, sodass das Programm die Steuerung behält. Die Wiederholungen können in folgenden Situationen auftreten:
@@ -196,11 +189,24 @@ Es gibt eine Besonderheit. Wenn ein vorübergehender Fehler auftritt, während I
 
 Angenommen, Ihre Anwendung verfügt über eine zuverlässige benutzerdefinierte Wiederholungslogik. Sie könnte den Verbindungsvorgang 4 Mal wiederholen. Wenn Sie **ConnectRetryInterval** und **ConnectRetryCount** = 3 zur Verbindungszeichenfolge hinzufügen, erhöhen Sie die Anzahl der Wiederholungsversuche auf 4 * 3 = 12 Wiederholungen. Möglicherweise ist eine so hohe Anzahl von Wiederholungsversuchen nicht erwünscht.
 
+<a id="a-connection-connection-string" name="a-connection-connection-string"></a>
+
+## Verbindungen mit Azure SQL-Datenbank
+
+<a id="c-connection-string" name="c-connection-string"></a>
+
+### Verbindung: Verbindungszeichenfolge
+
+
+Die für die Verbindung mit Azure SQL-Datenbank erforderliche Verbindungszeichenfolge unterscheidet sich geringfügig von der Zeichenfolge für die Verbindung mit Microsoft SQL Server. Sie können die Verbindungszeichenfolge für Ihre Datenbank aus dem [Azure-Portal](https://portal.azure.com/) kopieren.
+
+
+[AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
 
-## Verbindung: IP-Adresse
+### Verbindung: IP-Adresse
 
 
 Der SQL-Datenbankserver muss so konfiguriert werden, dass er Verbindungen von der IP-Adresse des Computers akzeptiert, auf dem Ihr Clientprogramm gehostet wird. Bearbeiten Sie dazu die Firewalleinstellungen über das [Azure-Portal](https://portal.azure.com/).
@@ -217,7 +223,7 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Konfigurieren von Firewa
 
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-## Verbindung: Ports
+### Verbindung: Ports
 
 
 Üblicherweise muss lediglich auf dem Computer, auf dem Ihr Clientprogramm gehostet wird, sichergestellt werden, dass Port 1433 für die ausgehende Kommunikation geöffnet ist.
@@ -243,7 +249,7 @@ Hintergrundinformationen zur Konfiguration von Ports und IP-Adressen finden Sie 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-## Verbindung: ADO.NET 4.6.1
+### Verbindung: ADO.NET 4.6.1
 
 
 Wenn Ihr Programm ADO.NET-Klassen wie **System.Data.SqlClient.SqlConnection** für die Verbindung mit Azure SQL-Datenbank verwendet, sollten Sie .NET Framework 4.6.1 oder höher verwenden.
@@ -251,7 +257,7 @@ Wenn Ihr Programm ADO.NET-Klassen wie **System.Data.SqlClient.SqlConnection** f�
 
 ADO.NET 4.6.1:
 
-- Für Azure SQL-Datenbank wird die Zuverlässigkeit erhöht, wenn Sie eine Verbindung mit der Methode **SqlConnection.Open** öffnen. Die Methode **Öffnen** umfasst jetzt die bestmöglichen Wiederholungsmechanismen als Reaktion auf bestimmte vorübergehende Fehler innerhalb des Verbindungstimeout-Zeitraums.
+- Für Azure SQL-Datenbank wird die Zuverlässigkeit erhöht, wenn Sie eine Verbindung mit der **SqlConnection.Open**-Methode öffnen. Die **Open**-Methode umfasst jetzt die bestmöglichen Wiederholungsmechanismen als Reaktion auf bestimmte vorübergehende Fehler innerhalb des Verbindungstimeout-Zeitraums.
 - Verbindungspooling wird unterstützt. Dies umfasst eine effiziente Überprüfung, ob das für Ihr Programm zur Verfügung gestellte Verbindungsobjekt funktioniert.
 
 
@@ -261,12 +267,16 @@ Bei Verwendung eines Verbindungsobjekts aus einem Verbindungspool sollte Ihr Pro
 
 Wenn Sie ADO.NET 4.0 oder früher verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen.
 
-- Ab November 2015 können Sie [ADO.NET 4.6.1 herunterladen ](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
+- Ab November 2015 können Sie [ADO.NET 4.6.1 herunterladen](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
 
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
-## Diagnose: Testen, ob Hilfsprogramme eine Verbindung herstellen können
+## Diagnose
+
+<a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
+
+### Diagnose: Testen, ob Hilfsprogramme eine Verbindung herstellen können
 
 
 Wenn Ihr Programm keine Verbindung mit Azure SQL-Datenbank herstellen kann, können Sie zu Diagnosezwecken versuchen, eine Verbindung mit einem Hilfsprogramm herzustellen. Idealerweise verwendet das Hilfsprogramm für die Verbindung dieselbe Bibliothek wie Ihr Programm.
@@ -275,7 +285,7 @@ Wenn Ihr Programm keine Verbindung mit Azure SQL-Datenbank herstellen kann, kön
 Auf einem Windows-Computer können Sie die folgenden Hilfsprogramme nutzen:
 
 - SQL Server Management Studio (ssms.exe), das ADO.NET für die Verbindung nutzt, oder
-- oder „sqlcmd.exe“, das [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) für die Verbindung nutzt.
+- „sqlcmd.exe“, das [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) für die Verbindung nutzt.
 
 
 Sobald die Verbindung hergestellt wurde, testen Sie, ob eine kurze SQL SELECT-Abfrage erfolgreich ausgeführt wird.
@@ -283,7 +293,7 @@ Sobald die Verbindung hergestellt wurde, testen Sie, ob eine kurze SQL SELECT-Ab
 
 <a id="f-diagnostics-check-open-ports" name="f-diagnostics-check-open-ports"></a>
 
-## Diagnose: Überprüfen der offenen Ports
+### Diagnose: Überprüfen der offenen Ports
 
 
 Angenommen, Sie vermuten, dass aufgrund von Portproblemen keine Verbindung hergestellt werden kann. Sie können auf Ihrem Computer ein Hilfsprogramm ausführen, das Informationen zu den Portkonfigurationen zurückgibt.
@@ -319,7 +329,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-## Diagnose: Protokollieren Ihrer Fehler
+### Diagnose: Protokollieren Ihrer Fehler
 
 
 Periodisch auftretende Probleme lassen sich mitunter am besten diagnostizieren, indem Sie über mehrere Tage oder Wochen hinweg ein allgemeines Muster ermitteln.
@@ -335,7 +345,7 @@ Enterprise Library 6 (EntLib60) bietet verwaltete Klassen zur Unterstützung bei
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
-## Diagnose: Überprüfen der Systemprotokolle auf Fehler
+### Diagnose: Überprüfen der Systemprotokolle auf Fehler
 
 
 Nachfolgend finden Sie einige Transact-SQL-SELECT-Anweisungen, mit denen Fehler- und andere Informationen aus Protokollen abgefragt werden.
@@ -343,9 +353,10 @@ Nachfolgend finden Sie einige Transact-SQL-SELECT-Anweisungen, mit denen Fehler-
 
 | Protokollabfrage | Beschreibung |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) zeigt Informationen zu einzelnen Ereignissen an, darunter einige, die zu vorübergehenden Fehlern oder Verbindungsfehlern führen können.<br/><br/>Idealerweise können Sie die Werte **start\_time** oder **end\_time** mit Informationen zum Zeitpunkt der Probleme bei Ihren Clientprogrammen in Beziehung bringen.<br/><br/>**TIPP:** Zur Ausführung dieser Abfrage müssen Sie eine Verbindung mit der **Masterdatenbank** herstellen. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` | [sys.event\_log](http://msdn.microsoft.com/library/dn270018.aspx) zeigt Informationen zu einzelnen Ereignissen an, darunter einige, die zu vorübergehenden Fehlern oder Verbindungsfehlern führen können.<br/><br/>Idealerweise können Sie die Werte **start\_time** oder **end\_time** mit Informationen zum Zeitpunkt der Probleme bei Ihrem Clientprogramm in Verbindung bringen.<br/><br/>**TIPP:** Zur Ausführung dieser Abfrage müssen Sie eine Verbindung mit der **Masterdatenbank** herstellen. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` | Für eine weitere Diagnose zeigt [sys.database\_connection\_stats](http://msdn.microsoft.com/library/dn269986.aspx) die Gesamtzahl verschiedener Ereignistypen an.<br/><br/>**TIPP:** Zur Ausführung dieser Abfrage müssen Sie eine Verbindung mit der **Masterdatenbank** herstellen. |
 
+<a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
 ### Diagnose: Suche nach Problemereignissen im Protokoll von SQL-Datenbank
 
@@ -414,6 +425,7 @@ Ein kurzes C#-Codebeispiel unter Verwendung von EntLib60 in der Wiederholungslog
 
 > [AZURE.NOTE] Der Quellcode für EntLib60 steht zum öffentlichen [Download](http://go.microsoft.com/fwlink/p/?LinkID=290898) bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
 
+<a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
 ### EntLib60-Klassen für vorübergehende Fehler und Wiederholungsversuche
 
@@ -451,6 +463,7 @@ Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
 - NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
 
+<a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
 ### EntLib60: der Protokollierungsblock
 
@@ -466,6 +479,7 @@ Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
 Einzelheiten finden Sie hier: [5 – Protokollierung leicht gemacht: mit dem Protokollierungsanwendungsblock](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)
 
+<a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
 ### Quellcode der IsTransient-Methode von EntLib60
 
@@ -542,12 +556,13 @@ public bool IsTransient(Exception ex)
 ```
 
 
-## Weitere Informationen
+## Nächste Schritte
 
+- Informationen zur Problembehandlung bei anderen häufigen Problemen mit der Verbindung zu Azure SQL-Datenbank erhalten Sie unter [Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
 
 - [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 
 
 - [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckwiederholungsbibliothek, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

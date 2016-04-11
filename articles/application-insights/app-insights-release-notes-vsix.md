@@ -1,21 +1,66 @@
-<properties 
-	pageTitle="Versionshinweise zur Visual Studio-Erweiterung für Application Insights" 
-	description="Die neuesten Updates für Visual Studio-Tools für Application Insights" 
-	services="application-insights" 
+<properties
+	pageTitle="Versionshinweise für Visual Studio-Erweiterung für Developer Analytics"
+	description="Neueste Updates für Visual Studio-Tools für Developer Analytics"
+	services="application-insights"
     documentationCenter=""
-	authors="aruna" 
+	authors="aruna"
 	manager="douge"/>
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/26/2016" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/28/2016"
 	ms.author="acearun"/>
- 
-# Versionshinweise zu Application Insights-Tools für Visual Studio
 
+# Versionshinweise – Developer Analytics Tools
+##### Application Insights- und HockeyApp-Analysen in Visual Studio
+## Version 5.2
+Wir freuen uns, die Einführung von HockeyApp-Szenarien in Visual Studio ankündigen zu können. Die erste Integration, die wir ermöglicht haben, ist die Beta-Distribution von universellen Windows-Apps und Windows Forms-Apps in VS.
+
+Mit der Beta-Distribution können Sie frühe Versionen Ihrer Apps für die Verteilung an eine ausgewählte Gruppe von Kunden oder Testpersonen in HockeyApp hochladen. Die Beta-Distribution kann vor einer größeren Veröffentlichung in Kombination mit der HockeyApp-Absturzerfassung und den Funktionen für Benutzerfeedback wertvolle Informationen zu Ihrer App liefern. Sie können diese Informationen nutzen, um Probleme der App zu beheben, bevor diese zu einem größeren Problem werden (schlechte Bewertungen, negatives Feedback usw.).
+
+Informieren Sie sich darüber, wie einfach es ist, Builds für die Beta-Distribution aus VS hochzuladen…
+### Universelle Windows-Apps
+Das Kontextmenü für einen UWP-Projektknoten enthält jetzt eine Option zum Hochladen Ihres Builds in HockeyApp.
+
+![Kontextmenü des Projekts für universelle Apps](./media/app-insights-release-notes-vsix/UniversalContextMenu.png)
+
+Wenn Sie die Option wählen, wird das Dialogfeld für den HockeyApp-Upload angezeigt. Sie benötigen ein HockeyApp-Konto, um den Build hochzuladen. Es macht nichts, wenn Sie ein neuer Benutzer sind. Das Erstellen eines Kontos ist ein einfacher Prozess.
+
+Nachdem die Verbindung hergestellt wurde, wird das Formular für den Upload im Dialogfeld angezeigt.
+
+![Dialogfeld „Upload“ für universelle Apps](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
+
+Wählen Sie den Inhalt für den Upload aus (appxbundle oder appx), und wählen Sie im Assistenten dann die Veröffentlichungsoptionen aus. Auf der nächsten Seite können Sie optional die Versionshinweise hinzufügen. Wählen Sie die Option „Fertig stellen“, um den Upload zu starten.
+
+Nach Abschluss des Uploads wird ein HockeyApp-Popup mit der Bestätigung und einem Link zur App im HockeyApp-Portal angezeigt.
+
+![Popup „Upload abgeschlossen“](./media/app-insights-release-notes-vsix/UploadComplete.png)
+
+Das ist schon alles. Sie haben mit wenigen Klicks einen Build für die Beta-Distribution hochgeladen.
+
+Im HockeyApp-Portal können Sie Ihre Anwendung auf verschiedene Arten verwalten (Benutzer einladen, Absturzberichte und Feedback anzeigen, Details ändern usw.).
+
+![HockeyApp-Portal](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
+
+Weitere Informationen zur App-Verwaltung finden Sie in der [Hockey App Knowledge Base](http://support.hockeyapp.net/kb/app-management-2).
+
+### Windows Forms-Apps
+Das Kontextmenü für einen Windows Forms-Projektknoten enthält eine Option zum Hochladen Ihres Builds in HockeyApp.
+
+![Kontextmenü des Projekts für Windows Forms-Apps](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
+
+Das HockeyApp-Dialogfeld für Uploads wird angezeigt. Es ähnelt dem Dialogfeld für universelle Windows-Apps.
+
+![Dialogfeld „Upload“ für Windows Forms-Apps](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
+
+Beachten Sie, dass dieser Assistent ein zusätzliches Feld zum Angeben der App-Version enthält. Für universelle Apps werden die Informationen aus dem Manifest eingefügt. Win Forms verfügen leider nicht über eine Ressource dieser Art, sodass die Informationen manuell angegeben werden müssen.
+
+Der Rest des Ablaufs ähnelt dem Ablauf für universelle Apps. Sie können im HockeyApp-Portal den Build auswählen, Optionen für die Veröffentlichung nutzen, Versionshinweise hinzufügen, einen Upload durchführen und Verwaltungsschritte ausführen.
+
+So einfach ist dieser Vorgang. Probieren Sie es aus, und teilen Sie uns Ihre Meinung mit.
 ## Version 4.3
 ### Suchen von Telemetriedaten aus lokalen Debugsitzungen
 In dieser Version führen wir eine Möglichkeit zum Suchen nach Application Insights-Telemetriedaten ein, die in der Visual Studio-Debugsitzung generiert wurden. Die Suche war bisher nur möglich, wenn Sie Ihre App bei Application Insights registriert hatten. Ab dieser Version muss für die App nur das Application Insights-SDK installiert werden, um lokale Telemetriedaten zu suchen.
@@ -39,7 +84,7 @@ In dieser Version haben wir Features zum Suchen von Daten im Ereigniskontext sow
 ###- Protokollierung mit 0 Klicks
 Wenn Sie NLog, Log4Net oder System.Diagnostics für die Ablaufverfolgung verwenden, dann müssen Sie nicht alle Ihre Ablaufverfolgungen nach Application Insights verschieben. Die Application Insights-Protokollierungsadapter sind nun direkt in die normale Konfigurationsoberfläche integriert. Falls Sie bereits eines dieser Protokollierungsframeworks konfiguriert haben, können Sie dies folgendermaßen erreichen:
 ####Wenn Sie bereits Application Insights hinzugefügt haben
-- Klicken Sie mit der rechten Maustaste auf den Projektknoten, wählen Sie „Application Insights“ und dann „Application Insights konfigurieren“ aus. Vergewissern Sie sich, dass der richtige Adapter im Konfigurationsfenster hinzugefügt werden kann. 
+- Klicken Sie mit der rechten Maustaste auf den Projektknoten, wählen Sie „Application Insights“ und dann „Application Insights konfigurieren“ aus. Vergewissern Sie sich, dass der richtige Adapter im Konfigurationsfenster hinzugefügt werden kann.
 - Wenn Sie die Projektmappe erstellen, können Sie auch im Popupfenster, das oben rechts angezeigt wird, auf „Konfigurieren“ klicken. ![Anmeldungspopup](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
 Nachdem Sie den Protokollierungsadapter installiert haben, können Sie die Anwendung ausführen und überprüfen, ob die Daten wie folgt auf der Registerkarte der Diagnosetools angezeigt werden: ![Ablaufverfolgungen](./media/app-insights-release-notes-vsix/Traces.png)
@@ -69,7 +114,7 @@ Durch Klicken auf den Hyperlink gelangen Sie zu dem Ort, an dem die ausgewählte
 
 ![Klicken auf die Ausnahme](./media/app-insights-release-notes-vsix/jumptocode.png)
 
-###Neue Einstiegspunkte für Suchvorgänge im Projektmappen-Explorer 
+###Neue Einstiegspunkte für Suchvorgänge im Projektmappen-Explorer
 
 ![Einstiegspunkt im Projektmappen-Explorer](./media/app-insights-release-notes-vsix/searchentry.png)
 
@@ -100,10 +145,8 @@ Sie müssen sich nicht mehr bei Azure anmelden, um Application Insights-Pakete I
 
 ###Unterstützung von Geräten
 
-Im Rahmen der *Connect();* 2015 haben wir [angekündigt](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/), dass unsere Mobile DevOps-Umgebung für Geräte HockeyApp ist. HockeyApp unterstützt Sie beim Verteilen der Beta-Builds an Ihre Tester, beim Sammeln und Analysieren von allen Abstürzen Ihrer App und beim Sammeln von Feedback direkt von Ihren Kunden. HockeyApp unterstützt Sie auf jeder beliebigen Plattform, auf der Sie Ihre mobile Anwendung erstellen, z. B. iOS, Android oder Windows oder eine plattformübergreifende Lösung wie Xamarin, Cordova oder Unity.
+Im Rahmen der *Connect();* 2015 haben wir [angekündigt](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/), dass HockeyApp unsere Mobile DevOps-Umgebung für Geräte ist. HockeyApp unterstützt Sie beim Verteilen der Beta-Builds an Ihre Tester, beim Sammeln und Analysieren von allen Abstürzen Ihrer App und beim Sammeln von Feedback direkt von Ihren Kunden. HockeyApp unterstützt Sie auf jeder beliebigen Plattform, auf der Sie Ihre mobile Anwendung erstellen, z. B. iOS, Android oder Windows oder eine plattformübergreifende Lösung wie Xamarin, Cordova oder Unity.
 
 In zukünftigen Versionen der Application Insights-Erweiterung werden wir neue Funktionen einführen, die eine stärkere Integration zwischen HockeyApp und Visual Studio ermöglichen. Beginnen Sie mit HockeyApp, indem Sie einfach den NuGet-Verweis hinzufügen: Weitere Informationen finden Sie in der [Dokumentation](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone).
 
- 
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->
