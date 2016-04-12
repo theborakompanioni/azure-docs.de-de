@@ -20,8 +20,10 @@
 # Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit dem klassischen Azure-Portal
 
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
+- [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Azure-Portal – klassisch](vpn-gateway-site-to-site-create.md)
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
+
 
 Dieser Artikel führt Sie durch den Erstellungsvorgang eines virtuellen Netzwerks und einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk. Standort-zu-Standort-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden. Dieser Artikel gilt für das klassische Bereitstellungsmodell, und es wird das klassische Azure-Portal verwendet.
 
@@ -107,4 +109,4 @@ Als Nächstes konfigurieren Sie das Gateway für das virtuelle Netzwerk, um eine
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

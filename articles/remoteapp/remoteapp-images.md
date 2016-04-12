@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="01/07/2016"
+    ms.date="04/05/2016"
     ms.author="elizapo" />
 
 # Was enthalten Azure RemoteApp-Vorlagenimages?
@@ -31,7 +31,7 @@ Ihr Azure RemoteApp-Abonnement beinhaltet drei Vorlagenimages:
 Im Folgenden erhalten Sie ausführliche Informationen zum Inhalt der einzelnen Images.
 
 ## Windows Server 2012 R2 ("einfaches Image")
-Dieses Image basiert auf dem Betriebssystem Microsoft Windows Server 2012 R2 Datacenter und weist die folgenden Rollen und Features auf, die zum Erfüllen der Anforderungen an Azure RemoteApp-Vorlagenimages installiert wurden:
+Dieses Image basiert auf dem Betriebssystem Microsoft Windows Server 2012 R2 Datacenter und weist die folgenden Rollen und Features auf, die zum Erfüllen der Anforderungen an Azure RemoteApp-Vorlagenimages installiert wurden:
 
 
 - .NET Framework 4.5, 3.5.1 und 3.5
@@ -80,9 +80,9 @@ Sowie die folgenden Anwendungen:
 - PowerMap
 
 
-Die vollständige Funktionalität der Office 365 ProPlus-Anwendungen ist nur für Benutzer mit einem Office 365 ProPlus-Plan verfügbar. Weitere Informationen zu Office 365-Abonnementplänen finden Sie unter [Office 365-Servicepläne](http://technet.microsoft.com/library/office-365-plan-options.aspx). Haben Sie noch Fragen? Prüfen Sie die Informationen unter [Office 365 + RemoteApp](remoteapp-o365.md). Lesen Sie auch den neuen Artikel [Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp](remoteapp-officesubscription.md).
+Die vollständige Funktionalität der Office 365 ProPlus-Anwendungen ist nur für Benutzer mit einem Office 365 ProPlus-Plan verfügbar. Weitere Informationen zu Office 365-Abonnementplänen finden Sie unter [Office 365-Servicepläne](http://technet.microsoft.com/library/office-365-plan-options.aspx). Haben Sie noch Fragen? Prüfen Sie die Informationen unter [Office 365 + RemoteApp](remoteapp-o365.md). Lesen Sie auch den neuen Artikel [Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp](remoteapp-officesubscription.md).
 
-Beachten Sie, dass Sie Office 365 ProPlus, Visio Pro und Project Pro separat lizenzieren müssen – sie verfügen jeweils über eine eigene Lizenz.
+Beachten Sie, dass Sie Office 365 ProPlus, Visio Pro und Project Pro separat lizenzieren müssen – sie verfügen jeweils über eine eigene Lizenz.
 
 ## Microsoft Office 2013 Professional Plus (nur Testversion)
 Während des kostenlosen Testzeitraums können Sie den Dienst mit dem Office 2013-Image testen.
@@ -102,6 +102,6 @@ Dieses Image ist eine Erweiterung des einfachen Images und enthält neben den Ko
 - Word
 - Microsoft Office-Korrekturhilfen
 
-> [AZURE.IMPORTANT]**Rechtliche Hinweise**: Dieses Image enthält keine Microsoft Office-Lizenz und *kann nicht für die Produktion verwendet werden*. Das Image von Office 2013 Professional Plus dient nur zu Testzwecken. Wenn Sie Office-Apps in Azure RemoteApp für die Produktion verwenden möchten, müssen Sie das Office 365 ProPlus-Image verwenden. Weitere Informationen zur Office-Lizenzierung finden Sie unter [Verwenden von Office 365 mit Azure RemoteApp](remoteapp-o365.md)
+> [AZURE.IMPORTANT]**Rechtliche Hinweise**: Dieses Image enthält keine Microsoft Office-Lizenz und *kann nicht für die Produktion verwendet werden*. Das Image von Office 2013 Professional Plus dient nur zu Testzwecken. Wenn Sie Office-Apps in Azure RemoteApp für die Produktion verwenden möchten, müssen Sie das Office 365 ProPlus-Image verwenden. Weitere Informationen zur Office-Lizenzierung finden Sie unter [Verwenden von Office 365 mit Azure RemoteApp](remoteapp-o365.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0406_2016-->

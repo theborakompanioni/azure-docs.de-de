@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Schnelles Erstellen einer Linux-VM in Azure mithilfe der Befehlszeilenschnittstelle (CLI) | Microsoft Azure"
-   description="Erstellen Sie auf schnelle Weise eine Linux-VM in Azure mithilfe der Befehlszeilenschnittstelle (CLI)."
+   pageTitle="Erstellen einer Linux-VM in Azure mithilfe der Befehlszeilenschnittstelle (CLI) | Microsoft Azure"
+   description="Erstellen Sie einen virtuellen Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle."
    services="virtual-machines-linux"
    documentationCenter=""
    authors="vlivech"
@@ -10,32 +10,29 @@
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="03/28/2016"
+   ms.date="04/04/2016"
    ms.author="v-livech"/>
 
 
-# Schnelles Erstellen einer Linux-VM in Azure mithilfe der Befehlszeilenschnittstelle (CLI)
+# Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle
 
-Dieser Artikel zeigt, wie Sie mit dem `azure vm quick-create`-Befehl über [die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auf schnelle Weise eine neue Linux-VM erstellen können.
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Befehls `azure vm quick-create` der Azure-Befehlszeilenschnittstelle schnell einen virtuellen Linux-Computer in Azure erstellen. Mit diesem Befehl wird ein virtueller Computer mit einer grundlegenden Infrastruktur erstellt, den Sie zum schnellen Entwickeln von Prototypen oder Testen eines Konzepts verwenden können. Für die Schritte in diesem Artikel ist ein Azure-Konto ([kostenlose Testversion herunterladen](https://azure.microsoft.com/pricing/free-trial/)) und [die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`) erforderlich.
 
-[AZURE.NOTE] In diesem Thema wird veranschaulicht, wie Sie in einer einfachen Azure-Umgebung auf schnelle Weise eine Linux-VM für Tests und andere kurzlebige Szenarios erstellen. Zur Verwendung in der Produktion und anderen länger andauernden Szenarios sollten Sie Azure-Umgebungen für Ihre Linux-VMs erstellen, die mehr Sicherheit bieten.
+## Kurze Zusammenfassung der Befehle
 
-Voraussetzungen: [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), [öffentliche und private SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md), eine Azure-Ressourcengruppe (eine Ressourcengruppe wird weiter unten erstellt) und die Azure-Befehlszeilenschnittstelle, die installiert und mithilfe von `azure config mode arm` in den ARM-Modus umgeschaltet wurde.
-
-## Zusammenfassung der Schnellbefehle
-
-Sie müssen nur einen Befehl verwenden:
-
-1. `azure vm quick-create`
+```
+# One command to quickly the VM that prompts for arguments
+chrisL@fedora$ azure vm quick-create
+```
 
 ## Ausführliche exemplarische Vorgehensweise
 
 ### Erstellen der Linux-VM
 
-Im folgenden Befehl können Sie ein beliebiges Image verwenden, aber in diesem Beispiel wird `canonical:ubuntuserver:14.04.2-LTS:latest` verwendet, um auf schnelle Weise eine VM zu erstellen. (Um ein Image im Marketplace zu finden, können Sie [ein Image suchen](virtual-machines-linux-cli-ps-findimage.md), oder Sie können [Ihr eigenes benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).) Etwa Folgendes sollte angezeigt werden:
+Im folgenden Befehl können Sie ein beliebiges Image verwenden, aber in diesem Beispiel wird `canonical:ubuntuserver:14.04.2-LTS:latest` verwendet, um auf schnelle Weise einen virtuellen Computer zu erstellen. (Um ein Image im Marketplace zu finden, können Sie [ein Image suchen](virtual-machines-linux-cli-ps-findimage.md) oder [Ihr eigenes benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).) Etwa Folgendes sollte angezeigt werden:
 
 Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
 
@@ -47,7 +44,7 @@ Resource group name: exampleResourceGroup
 Virtual machine name: exampleVMname
 Location name: westus
 Operating system Type [Windows, Linux]: linux
-ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to the user image: canonical:ubuntuserver:14.04.2-LTS:latest
+ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to the user image: Canonical:UbuntuServer:14.04.4-LTS:latest
 User name: ops
 Password: *********
 Confirm password: *********
@@ -127,7 +124,7 @@ info:    vm quick-create command OK
 
 Sie können jetzt eine SSH-Verbindung mit Ihrer VM auf dem SSH-Standardport 22 herstellen.
 
-`azure vm quick-create` erstellt auf schnelle Weise eine VM, sodass Sie sich anmelden und arbeiten können. Sie besitzt jedoch keine komplexe Umgebung. Wenn Sie Ihre Umgebung anpassen möchten, können Sie [eine Azure Resource Manager-Vorlage verwenden, um schnell eine bestimmte Bereitstellung zu erstellen](virtual-machines-linux-cli-deploy-templates.md), oder Sie können [Ihre eigene benutzerdefinierte Umgebung für eine Linux-VM direkt mit Befehlen der Azure-Befehlszeilenschnittstelle erstellen](virtual-machines-linux-cli-deploy-templates.md).
+`azure vm quick-create` erstellt auf schnelle Weise einen virtuellen Computer, sodass Sie sich anmelden und arbeiten können. Sie besitzt jedoch keine komplexe Umgebung. Wenn Sie Ihre Umgebung anpassen möchten, können Sie [eine Azure Resource Manager-Vorlage verwenden, um schnell eine bestimmte Bereitstellung zu erstellen](virtual-machines-linux-cli-deploy-templates.md), oder Sie können [Ihre eigene benutzerdefinierte Umgebung für einen virtuellen Linux-Computer direkt mit Befehlen der Azure-Befehlszeilenschnittstelle erstellen](virtual-machines-linux-cli-deploy-templates.md).
 
 Das obige Beispiel erstellt:
 
@@ -149,4 +146,4 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 
 sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, Konfiguration und Orchestrierung.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

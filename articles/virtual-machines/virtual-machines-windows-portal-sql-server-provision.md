@@ -12,7 +12,7 @@
 <tags
 	ms.service="virtual-machines-windows"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="03/24/2016"
@@ -168,17 +168,17 @@ In der folgenden Tabelle sind die Parameter aufgeführt, die zum Konfigurieren d
 
 |PARAMETER|BESCHREIBUNG|BEISPIEL|
 |----------|----------|-------|
-|**Schlüsseltresor-URL** | Gibt den Speicherort des Schlüsseltresors an.|https://contosokeyvault.vault.azure.net/ |
-|**Azure-Schlüsseltresor-Prinzipalname** |Gibt den Namen des Azure Active Directory-Dienstprinzipals an. Wird auch als Client-ID bezeichnet. |fde2b411-33d5-4e11-af04eb07b669ccf2|
-| **Geheimer Schlüssel des Azure-Schlüsseltresor-Prinzipals**|Die Azure-Schlüsseltresor-Integration erstellt Anmeldeinformationen in SQL Server, damit die virtuelle Maschine Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation. | 9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=|
-|**Name der Anmeldeinformationen**|Wählen Sie einen Namen zum Identifizieren der Anmeldeinformationen.| mycred1|
+|**Schlüsseltresor-URL** |Gibt den Speicherort des Schlüsseltresors an.|https://contosokeyvault.vault.azure.net/ |
+|**Prinzipalname** |Gibt den Namen des Azure Active Directory-Dienstprinzipals an. Wird auch als Client-ID bezeichnet. |fde2b411-33d5-4e11-af04eb07b669ccf2|
+| **Geheimer Schlüssel des Prinzipals**|Der geheime Schlüssel des Azure Active Directory-Dienstprinzipals. Wird auch als geheimer Clientschlüssel bezeichnet. | 9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=|
+|**Name der Anmeldeinformationen**|**Anmeldeinformationsname**: Die Azure-Schlüsseltresor-Integration erstellt Anmeldeinformationen in SQL Server, damit der virtuelle Computer Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation.| mycred1|
 
-Weitere Informationen finden Sie unter [Configure Azure Key Vault Integration for SQL Server on Azure VMs](virtual-machines-windows-classic-ps-sql-keyvault.md) (Konfigurieren der Azure-Schlüsseltresorintegration für SQL Server auf Azure Virtual Machines).
+Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern ](virtual-machines-windows-classic-ps-sql-keyvault.md).
 
 ## 5\. Zusammenfassung prüfen
 Überprüfen Sie die Zusammenfassung, und klicken Sie auf **OK**, um SQL Server, die Ressourcengruppe und die für diesen virtuellen Computer angegebenen Ressourcen zu erstellen. Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schaltfläche **Benachrichtigungen** oben auf der Seite wird der grundlegende Status der Bereitstellung angezeigt.
 
-##<a id="Open"> Öffnen des virtuellen Computers mithilfe von Remotedesktop und vollständige Einrichtung
+##<a id="Open">Öffnen des virtuellen Computers mithilfe von Remotedesktop und vollständige Einrichtung
 Führen Sie diese Schritte aus, um Remotedesktop zum Öffnen der virtuellen Maschine zu verwenden:
 
 1.	Nach der Erstellung der Azure-VM wird auf dem Azure-Dashboard ein Symbol für die VM angezeigt. Klicken Sie auf das Symbol, um Informationen zur VM anzuzeigen.
@@ -194,7 +194,7 @@ Wenn Sie über das Internet eine Verbindung mit Ihrem SQL Server-Datenbankmodul 
 
 Falls Sie das Portal verwenden, um mit dem Resource Manager ein SQL Server-VM-Image bereitzustellen, wurden diese Schritte für Sie ausgeführt, wenn Sie für die SQL-Konnektivitätsoption **Öffentlich** auswählen und die SQL Server-Authentifizierung aktivieren. Sie müssen aber noch einige verbleibende Schritte ausführen, um über das Internet auf die SQL Server-Instanz zugreifen zu können.
 
->[AZURE.NOTE] Wenn Sie bei der Bereitstellung nicht die Option „Öffentlich“ gewählt haben, müssen Sie weitere Schritte ausführen, um den Zugriff auf die SQL Server-Instanz über das Internet zu ermöglichen. Weitere Informationen finden Sie unter [Connect to a SQL Server Virtual Machine (Resource Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md) (Verbinden mit einem virtuellen SQL Server -Computer (Resource Manager) | Microsoft Azure).
+>[AZURE.NOTE] Wenn Sie bei der Bereitstellung nicht die Option „Öffentlich“ gewählt haben, müssen Sie weitere Schritte ausführen, um den Zugriff auf die SQL Server-Instanz über das Internet zu ermöglichen. Weitere Informationen finden Sie unter [Connect to a SQL Server Virtual Machine (Resource Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md) (Verbinden mit einem virtuellen SQL Server-Computer (Resource Manager) | Microsoft Azure).
 
 Die folgenden Schritte sind nicht erforderlich, wenn Sie auf Ihre virtuelle Maschine nur lokal oder innerhalb eines Virtual Network zugreifen müssen.
 
@@ -203,4 +203,4 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie auf Ihre virtuelle Masc
 ##<a id="Next">Nächste Schritte
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

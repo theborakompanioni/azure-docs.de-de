@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article"
-	ms.date="03/17/2016" 
+	ms.date="04/04/2016" 
 	ms.author="cephalin"
 />
 	
@@ -67,7 +67,7 @@ Wir stellen jetzt eine Web-App unter Azure App Service bereit.
 
 4. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen mit dem nächsten Befehl. Die URL der Web-App lautet http://&lt;app_name>.azurewebsites.net.
 
-        azure site create --git <app_name> 
+        azure site create --git <app_name>
       
     >[AZURE.NOTE] Wenn Sie für Ihr Azure-Abonnement noch nie zuvor Anmeldeinformationen für die Bereitstellung eingerichtet haben, werden Sie aufgefordert, diese zu erstellen. Diese Anmeldeinformationen und nicht Ihre Anmeldeinformationen für das Azure-Konto werden von App Service ausschließlich für Git-Bereitstellungen und FTP-Anmeldungen verwendet.
     
@@ -85,11 +85,9 @@ Herzlichen Glückwunsch! Sie haben Ihre App in Azure App Service bereitgestellt.
 
 ## Verfolgen der Liveausführung der App
 
-Führen Sie diesen Befehl aus, um die Liveausführung der App in Azure zu verfolgen:
+Führen Sie den folgenden Befehl aus einem beliebigen Verzeichnis in Ihrem Repository aus, um die Liveausführung der App in Azure zu verfolgen:
 
-    azure site browse <app_name>
-
-Wenn die Fehlermeldung `Site <app_name> does not exist or has no hostnames` angezeigt wird, können Sie versuchen, den Befehl nach einigen Sekunden erneut auszuführen. Bei einigen Apps, z. B. Java-Apps, dauert das Abschließen der Bereitstellung länger.
+    azure site browse
 
 ## Durchführen von Updates für die App
 
@@ -141,4 +139,4 @@ Es sind auch weitere Inhalte dazu verfügbar, welche unterschiedlichen Apps Sie 
 - [Erstellen von mobilen Apps](/documentation/learning-paths/appservice-mobileapps/)
 - [Erstellen von API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

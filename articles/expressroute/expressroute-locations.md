@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
+   ms.date="03/31/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
@@ -60,6 +60,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **[Aryaka Networks](http://www.aryaka.com/)** | Unterstützt | Unterstützt | Amsterdam, Silicon Valley, Singapore, Tokyo, Washington DC |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Unterstützt | Unterstützt | Amsterdam, Chicago, Dallas, London, Silicon Valley, Singapore, Sydney, Washington DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Tokio, Washington, D.C. |
+|**CenturyLink** | In Kürze verfügbar | In Kürze verfügbar| Silicon Valley |
 |**China Telecom Global** | Unterstützt | Nicht unterstützt | Hongkong |
 |**Cologix** | Unterstützt | In Kürze verfügbar | Montreal+, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | Unterstützt | Unterstützt | Amsterdam, Dublin, London |
@@ -72,21 +73,21 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **Internet Solutions – Cloud Connect** | Unterstützt | Unterstützt | Amsterdam, London |
 | **Interxion** | Unterstützt | Unterstützt | Amsterdam, London |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | Unterstützt | Amsterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Silicon Valley, Washington DC |
-| **Megaport** | Unterstützt | Unterstützt | Dallas, Las Vegas+, Los Angeles, Melbourne, New York, Seattle, Sydney, Washington DC |
+| **Megaport** | Unterstützt | Unterstützt | Dallas, Las Vegas+, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
 | **MTN** | Unterstützt | Unterstützt | London |
 | **NEXTDC** | Unterstützt | Unterstützt | Melbourne, Sydney |
 | **NTT Communications** | Unterstützt | Unterstützt | London, Osaka, Tokyo |
 | **[Orange](http://www.orange-business.com/)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Washington, D.C. |
 | **PCCW Global Limited** | Unterstützt | Unterstützt | Hongkong |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | Unterstützt | Nicht unterstützt | Singapur |
-| **SoftBank** | In Kürze verfügbar | In Kürze verfügbar | Osaka, Tokio | 
-| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | Unterstützt | Unterstützt | Amsterdam, Chennai, Hongkong, London, Mumbai, Singapur, Washington, D.C. |
+| **SoftBank** | Unterstützt | Unterstützt | Osaka, Tokio | 
+| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | Unterstützt | Unterstützt | Amsterdam, Chennai, Hongkong, London, Mumbai, Silicon Valley, Singapur, Washington DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | Unterstützt | Unterstützt | Amsterdam, London |
 | **Telenor** | Unterstützt | Unterstützt | Amsterdam, London |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | Unterstützt | Nicht unterstützt | Melbourne, Sydney |
-| **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Sydney, Tokio, Washington, D.C. |
+| **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **Vodafone** | Unterstützt | Nicht unterstützt | London | 
-| **[Zayo Group](http://www.zayo.com/solutions/industries/connect-to-cloud-data-centers/cloud-connectivity/microsoft-expressroute/)** | Unterstützt | Unterstützt | Chicago, Los Angeles, New York, Seattle, Silicon Valley, Washington, D.C. |
+| **[Zayo Group](http://www.zayo.com/solutions/industries/connect-to-cloud-data-centers/cloud-connectivity/microsoft-expressroute/)** | Unterstützt | Unterstützt | Chicago, Los Angeles, New York, Silicon Valley, Toronto, Washington DC |
 
  **+** steht für "In Kürze"
 
@@ -96,10 +97,10 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 
 | **Service Provider** |**Microsoft Azure** | **Office 365** | **Standorte** |
 |-----------------------|--------------------|----------------|---------------|
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Unterstützt | In Kürze verfügbar | Chicago, Washington DC |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Unterstützt | Unterstützt | Chicago, Washington DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Chicago, New York+, Washington DC |
 | **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Unterstützt | Unterstützt | Chicago, New York+, Washington DC |
 
 #### China
 
@@ -144,14 +145,15 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 
 |**Systemintegrator**|**Kontinent**|
 |---|---|
+|**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**|Europa|
 |**[Nimbo](http://www.nimbo.com/)**|US||
-|**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**|EMEA|
-|**[Project Leadership](http://www.projectleadership.net/azure)** | US |
+|**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | Asien |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | US |
+|**[Project Leadership](http://www.projectleadership.net/azure)** | US |
 
 ## Nächste Schritte
 
 - Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 - Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

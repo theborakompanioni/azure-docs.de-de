@@ -40,7 +40,7 @@ Azure Machine Learning bietet nicht nur Tools zur Modellierung von Predictive An
 
 Predictive Analytics verwendet verschiedene statistische Verfahren – in diesem Fall maschinelle Lernprozesse –, um gesammelte oder aktuelle Daten auf Muster oder Trends zu untersuchen und anschließend zukünftige Ereignisse vorhersagen zu können.
 
-Azure Machine Learning ist eine besonders leistungsstarke Predictive Analytics-Lösung: Sie können mit einer sofort nutzbaren Algorithmusbibliothek arbeiten, Modelle auf einem mit dem Internet verbundenen Computer erstellen – ohne weitere Geräte oder Infrastruktur erwerben zu müssen – und Ihre Vorhersagelösung schnell bereitstellen. Im [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) und im [Cortana Analytics-Katalog](http://gallery.azureml.net/) (früher Azure Machine Learning-Katalog) finden Sie sofort nutzbare Beispiele und Lösungen.
+Azure Machine Learning ist eine besonders leistungsstarke Predictive Analytics-Lösung: Sie können mit einer sofort nutzbaren Algorithmusbibliothek arbeiten, Modelle auf einem mit dem Internet verbundenen Computer erstellen – ohne weitere Geräte oder Infrastruktur erwerben zu müssen – und Ihre Vorhersagelösung schnell bereitstellen. Im [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) und im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) finden Sie sofort nutzbare Beispiele und Lösungen.
 
 ## Entwickeln von vollständigen Lösungen für das maschinelle Lernen in der Cloud
 
@@ -53,9 +53,9 @@ Erstellen Sie Vorhersagemodelle in [Machine Learning Studio](machine-learning-wh
 ![Was ist Predictive Analytics? Beispiel eines Predictive Analytics-Experiments in Azure Machine Learning Studio](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
 * Nutzen Sie die umfangreiche Bibliothek mit [Machine Learning-Algorithmen und -Modulen](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) in Machine Learning Studio, um sofort mit dem Entwickeln von Vorhersagemodellen zu beginnen. Wählen Sie aus einer Bibliothek mit Beispielexperimenten, R- und Python-Paketen sowie erstklassigen Algorithmen aus Microsoft-Produktbereichen wie Xbox und Bing aus. Erweitern Sie Studio-Module mit Ihren eigenen benutzerdefinierten [R](machine-learning-r-quickstart.md)- und [Python](machine-learning-execute-python-scripts.md)-Skripts.
-* Im [Cortana Analytics-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md) können Sie Analyselösungen testen, die von anderen Benutzern erstellt wurden, oder eigene mithilfe von Azure-Diensten einschließlich Machine Learning, HDInsight (Hadoop), Stream Analytics und Data Lake Analytics sowie Azure-Big Data-Speicher und Datenverwaltungsdienste beitragen. Über soziale Netzwerke wie LinkedIn und Twitter können Sie Fragen oder Kommentare zu Experimenten an die Community senden oder Links zu Experimenten freigeben.  
+* Im [Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md) können Sie Analyselösungen testen, die von anderen Benutzern erstellt wurden, oder eigene Analyselösungen mithilfe von Azure-Diensten (einschließlich Machine Learning, HDInsight (Hadoop), Stream Analytics und Data Lake Analytics) sowie Azure-Big Data-Speicher und Datenverwaltungsdiensten beitragen. Über soziale Netzwerke wie LinkedIn und Twitter können Sie Fragen oder Kommentare zu Experimenten an die Community senden oder Links zu Experimenten freigeben.  
 
-	![Probieren Sie Vorhersageexperimente aus, oder ergänzen Sie den Azure Cortana Analytics-Katalog durch eigene Experimente](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-analytics-gallery.png)
+	![Probieren Sie Vorhersageexperimente aus, oder ergänzen Sie den Azure Cortana Intelligence-Katalog durch eigene Experimente.](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-analytics-gallery.png)
 
 ### Operationalisieren von Predictive Analytics-Lösungen: Erwerben von Webdiensten oder Veröffentlichen eigener Dienste
 
@@ -118,4 +118,4 @@ Die Grundlagen der Vorhersageanalyse und des maschinellen Lernens werden anhand 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="Übersicht über Azure IoT Hub | Microsoft Azure"
- description="Enthält eine Übersicht über den Azure IoT Hub-Dienst, z. B. Informationen zu Gerätekonnektivität, Kommunikationsmustern und dienstgestütztem Kommunikationsmuster."
+ description="Übersicht über den Azure IoT Hub-Dienst, z.B. IoT-Architektur, Gerätekonnektivität, Kommunikationsmuster und dienstgestütztes Kommunikationsmuster."
  services="iot-hub"
  documentationCenter=""
  authors="dominicbetts"
@@ -27,7 +27,7 @@ Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige un
 - Bietet eine umfassende Überwachung der Ereignisse zur Verwaltung der Gerätekonnektivität und -identität.
 - Gerätebibliotheken für die gängigsten Sprachen und Plattformen
 
-![IoT Hub als Cloudgateway?][img-architecture]
+![Azure IoT Hub als Cloudgateway in der IoT-Lösung][img-architecture]
 
 ## Anforderungen an die IoT-Gerätekonnektivität
 
@@ -41,7 +41,7 @@ Mit IoT Hub und den Gerätebibliotheken können Sie die Anforderungen erfüllen,
 - Sie müssen unter Umständen proprietäre, benutzerdefinierte oder branchenspezifische Anwendungsprotokolle verwenden.
 - Sie können mit vielen gängigen Hardware- und Softwareplattformen erstellt werden.
 
-Zusätzlich zu den obigen Anforderungen muss jede IoT-Lösung auch Skalierbarkeit, Sicherheit und Zuverlässigkeit bieten. Die sich ergebenden Verbindungsanforderungen sind schwierig und zeitaufwändig zu implementieren, wenn herkömmliche Technologie verwendet wird, z. B. Webcontainer und Nachrichtenbroker.
+Zusätzlich zu den obigen Anforderungen muss jede IoT-Lösung auch Skalierbarkeit, Sicherheit und Zuverlässigkeit bieten. Die sich ergebenden Verbindungsanforderungen sind schwierig und zeitaufwändig zu implementieren, wenn herkömmliche Technologie verwendet wird, z. B. Webcontainer und Nachrichtenbroker.
 
 ## Gründe für die Verwendung von Azure IoT Hub
 
@@ -49,11 +49,11 @@ Mit Azure IoT Hub werden die Verbindungsanforderungen für Geräte wie folgt erf
 
 -   **Authentifizierung pro Gerät und sichere Verbindung:** Sie können jedes Gerät mit seinem eigenen Sicherheitsschlüssel bereitstellen, damit es eine Verbindung mit IoT Hub herstellen kann. Die [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] speichert Geräteidentitäten und Schlüssel in einer Lösung. Das Back-End einer Lösung kann einzelne Geräte einer Positiv- oder Negativliste hinzufügen und so die vollständige Kontrolle über den Gerätezugriff erlangen.
 
--   **Überwachung von Gerätekonnektivitätsvorgängen**. Sie können detaillierte Betriebsprotokolle zu Ereignissen im Zusammenhang mit Verwaltungsvorgängen für Geräteidentität und -konnektivität empfangen. Dadurch kann Ihre IoT-Lösung mühelos Verbindungsprobleme ausmachen, so z. B. Geräte, die versuchen, sich mit den falschen Anmeldeinformationen anzumelden, Nachrichten zu häufig senden oder alle C2D-Nachrichten zurückweisen.
+-   **Überwachung von Gerätekonnektivitätsvorgängen**. Sie können detaillierte Betriebsprotokolle zu Ereignissen im Zusammenhang mit Verwaltungsvorgängen für Geräteidentität und -konnektivität empfangen. Dadurch kann Ihre IoT-Lösung mühelos Verbindungsprobleme ausmachen, so z. B. Geräte, die versuchen, sich mit den falschen Anmeldeinformationen anzumelden, Nachrichten zu häufig senden oder alle C2D-Nachrichten zurückweisen.
 
 -   **Umfassender Satz von Gerätebibliotheken:** Azure IoT-Geräte-SDKs sind für die unterschiedlichsten Sprachen und Plattformen verfügbar und werden dafür unterstützt – C für viele Linux-Distributionen, Windows und Echtzeitbetriebssysteme. Azure IoT-Geräte-SDKs unterstützen auch verwaltete Sprachen wie C#, Java und JavaScript.
 
--   **IoT-Protokolle und -Erweiterbarkeit:** Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, macht IoT Hub ein öffentliches Protokoll verfügbar, mit dem Geräte die Protokolle MQTT 3.1.1, HTTP 1.1 und AMQP 1.0 nativ verwenden können. Sie können IoT Hub auch erweitern, um Unterstützung für benutzerdefinierte Protokolle durch Anpassen der Open Source-Komponente [Azure IoT-Protokollgateway][protocol-gateway] bereitzustellen. Sie können das Azure IoT-Protokollgateway in der Cloud oder lokal ausführen.
+-   **IoT-Protokolle und -Erweiterbarkeit:** Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, macht IoT Hub ein öffentliches Protokoll verfügbar, mit dem Geräte die Protokolle MQTT 3.1.1, HTTP 1.1 und AMQP 1.0 nativ verwenden können. Sie können IoT Hub auch erweitern, um Unterstützung für benutzerdefinierte Protokolle durch Anpassen der Open Source-Komponente [Azure IoT-Protokollgateway][protocol-gateway] bereitzustellen. Sie können das Azure IoT-Protokollgateway in der Cloud oder lokal ausführen.
 
 -   **Skalierung:** Azure IoT Hub kann auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skaliert werden.
 
@@ -63,21 +63,21 @@ Diese Vorteile gelten für viele Kommunikationsmuster. Mit IoT Hub haben Sie der
 
 -   **Zuverlässiges Cloud-to-Device (C2D)-Messaging (bzw. *Befehle*):** Das Back-End der Lösung kann IoT Hub zum Senden von Nachrichten mit einer garantierten einmaligen Zustellung an einzelne Dienste verwenden. Jede Nachricht verfügt über eine individuelle Einstellung für die Lebensdauer, und das Back-End kann sowohl Zustellungs- als auch Ablaufnachweise anfordern. So wird die vollständige Transparenz des Lebenszyklus einer C2D-Nachricht sichergestellt. Anschließend können Sie eine Geschäftslogik mit Vorgängen implementieren, die auf Geräten ausgeführt werden.
 
-Sie können auch andere gängige Muster implementieren, z. B. das Hoch- und Herunterladen von Dateien, indem Sie in IoT Hub IoT-spezifische Features nutzen. Zu diesen Features gehören die einheitliche Identitätsverwaltung für Geräte, Verbindungsüberwachung und Skalierung.
+Sie können auch andere gängige Muster implementieren, z. B. das Hoch- und Herunterladen von Dateien, indem Sie in IoT Hub IoT-spezifische Features nutzen. Zu diesen Features gehören die einheitliche Identitätsverwaltung für Geräte, Verbindungsüberwachung und Skalierung.
 
 Im Artikel zum [Vergleich von IoT Hub und Event Hubs][lnk-compare] werden die wesentlichen Unterschiede zwischen diesen beiden Diensten beschrieben. Besonderer Fokus liegt dabei auf den Vorteilen der Verwendung von IoT Hub in IoT-Lösungn .
 
 ## Gateways
 
-Ein Gateway in einer IoT-Lösung ist i. d. R. entweder ein in der Cloud bereitgestelltes [Protokollgateway][lnk-gateway] oder ein [Bereichsgateway][lnk-field-gateway], das lokal mit Ihren Geräten bereitgestellt wird. Ein Protokollgateway führt die Protokollübersetzung, z. B. von MQTT in AMQP, durch. Ein Bereichsgateway stellt lokale Verwaltungsdienste für Ihre Geräte bereit. Es kann sich hierbei um ein spezielles Gerät oder eine Software handeln, die auf vorhandener Hardware ausgeführt wird. Beide Gatewaytypen fungieren als Vermittler zwischen Ihren Geräten und dem IoT Hub.
+Ein Gateway in einer IoT-Lösung ist i. d. R. entweder ein in der Cloud bereitgestelltes [Protokollgateway][lnk-gateway] oder ein [Bereichsgateway][lnk-field-gateway], das lokal mit Ihren Geräten bereitgestellt wird. Ein Protokollgateway führt die Protokollübersetzung, z. B. von MQTT in AMQP, durch. Ein Bereichsgateway stellt lokale Verwaltungsdienste für Ihre Geräte bereit. Es kann sich hierbei um ein spezielles Gerät oder eine Software handeln, die auf vorhandener Hardware ausgeführt wird. Beide Gatewaytypen fungieren als Vermittler zwischen Ihren Geräten und dem IoT Hub.
 
-Ein Bereichsgateway unterscheidet sich von einem einfachen Gerät für das Routing von Datenverkehr (z. B. einem Gerät für die Netzwerkadressübersetzung (NAT) oder einer Firewall), da es üblicherweise eine aktive Rolle bei der Verwaltung des Zugriffs und des Informationsflusses in der Lösung hat.
+Ein Bereichsgateway unterscheidet sich von einem einfachen Gerät für das Routing von Datenverkehr (z. B. einem Gerät für die Netzwerkadressübersetzung (NAT) oder einer Firewall), da es üblicherweise eine aktive Rolle bei der Verwaltung des Zugriffs und des Informationsflusses in der Lösung hat.
 
 Eine Lösung kann sowohl Protokoll- als auch Bereichsgateways enthalten.
 
 ## Funktionsweise von IoT Hub
 
-Azure IoT Hub implementiert das Muster für die [dienstgestützte Kommunikation][lnk-service-assisted-pattern], um die Interaktionen zwischen Ihren Geräten und dem Back-End der Lösung zu vermitteln. Das Ziel der dienstgestützten Kommunikation ist die Einrichtung von vertrauenswürdigen, bidirektionalen Kommunikationspfaden zwischen Steuersystemen, z. B. IoT Hub, und speziellen Geräten, die im nicht vertrauenswürdigen physischen Raum bereitgestellt werden. Für das Muster gelten die folgenden Grundsätze:
+Azure IoT Hub implementiert das Muster für die [dienstgestützte Kommunikation][lnk-service-assisted-pattern], um die Interaktionen zwischen Ihren Geräten und dem Back-End der Lösung zu vermitteln. Das Ziel der dienstgestützten Kommunikation ist die Einrichtung von vertrauenswürdigen, bidirektionalen Kommunikationspfaden zwischen Steuersystemen, z. B. IoT Hub, und speziellen Geräten, die im nicht vertrauenswürdigen physischen Raum bereitgestellt werden. Für das Muster gelten die folgenden Grundsätze:
 
 - Sicherheit hat Vorrang vor allen anderen Funktionen.
 - Geräte akzeptieren keine unerwünschten Netzwerkinformationen. Ein Gerät stellt alle Verbindungen und Routen nur in ausgehender Richtung her. Damit ein Gerät einen Befehl vom Back-End erhalten kann, muss das Gerät regelmäßig eine Verbindung initiieren, um eine Prüfung auf ausstehende Befehle durchzuführen, die verarbeitet werden müssen.
@@ -112,4 +112,4 @@ Weitere Informationen zu Azure IoT Hub finden Sie unter den folgenden Links:
 [lnk-google-messaging]: https://developers.google.com/cloud-messaging/
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

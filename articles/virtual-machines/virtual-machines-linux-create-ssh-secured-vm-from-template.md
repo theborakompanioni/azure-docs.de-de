@@ -13,7 +13,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="hero-article"
 	ms.date="03/08/2016"
 	ms.author="vlivech"/>
 
@@ -72,4 +72,4 @@ Sie können eine neue Ressourcengruppe erstellen und eine VM bereitstellen, inde
 
 Nachdem Sie Linux-VMs mit Vorlagen erstellt haben, können Sie sich darüber informieren, welche anderen App-Frameworks für die Verwendung mit Vorlagen verfügbar sind. Im [Katalog mit den Vorlagen](https://azure.microsoft.com/documentation/templates/) können Sie weitere App-Frameworks für die Bereitstellung auswählen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ACS-Containerverwaltung mit der REST-API | Microsoft Azure"
+   pageTitle="Azure Container Service-Containerverwaltung per REST-API | Microsoft Azure"
    description="Stellen Sie mithilfe der Marathon-REST-API Container für einen Azure Container Service-Mesos-Cluster bereit."
    services="container-service"
    documentationCenter=""
@@ -8,7 +8,7 @@
    editor=""
    tags="acs, azure-container-service"
    keywords="Docker, Container, Microservices, Mesos, Azure"/>
-   
+
 <tags
    ms.service="container-service"
    ms.devlang="na"
@@ -17,22 +17,21 @@
    ms.workload="na"
    ms.date="02/16/2016"
    ms.author="nepeters"/>
-   
-# Containerverwaltung mit der REST-API
 
-Mesos stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Neben Mesos verwalten auch Frameworks die Planung und Ausführung von Computeworkload. Frameworks sind zwar für viele gängige Workloads verfügbar, in diesem Dokument wird jedoch das Erstellen und Skalieren von Containerbereitstellungen mit Marathon erläutert.
+# Containerverwaltung über die REST-API
 
-Bevor Sie diese Beispiele durchgehen, benötigen Sie einen in ACS konfigurierten Mesos-Cluster und eine Remoteverbindung mit diesem Cluster. Weitere Informationen zu diesen Elementen finden Sie in den folgenden Artikeln:
+Mesos stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Zusätzlich zu Mesos ist auch ein Framework vorhanden, mit dem die Planung und Ausführung von Computeworkloads verwaltet wird.
 
-- [Bereitstellen eines Azure Container Service-Clusters](./container-service-deployment.md) 
-- [Herstellen der Verbindung mit einem ACS-Cluster](./container-service-connect.md)
+Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem Dokument wird beschrieben, wie Sie Containerbereitstellungen mit Marathon erstellen und skalieren. Bevor Sie diese Beispiele durcharbeiten, benötigen Sie einen Mesos-Cluster, der im Azure Container Service konfiguriert ist. Sie müssen auch über Remoteverbindungen mit diesem Cluster verfügen. Weitere Informationen zu diesen Elementen finden Sie in den folgenden Artikeln:
 
+- [Bereitstellen eines Azure Container Service-Clusters](./container-service-deployment.md)
+- [Verbinden mit einem Azure Container Service-Cluster](./container-service-connect.md)
 
-Sobald eine Verbindung mit dem ACS-Cluster hergestellt wurde, kann über http://localhost:local-port auf Mesos und die zugehörigen REST-APIs zugegriffen werden. Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass das Tunneling über Port 80 erfolgt. Der Marathon-Endpunkt kann beispielsweise unter `http://localhost/marathon/v2/` erreicht werden. Weitere Informationen zu den verschiedenen APIs finden Sie in der Mesosphere-Dokumentation für die [Marathon-API](https://mesosphere.github.io/marathon/docs/rest-api.html) und die [Chronos-API](https://mesos.github.io/chronos/docs/api.html) sowie in der Apache-Dokumentation für die [Mesos Scheduler-API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
+Nachdem die Verbindung mit dem Azure Container Service-Cluster hergestellt wurde, können Sie auf Mesos und die verwandten REST-APIs über http://localhost:local-port zugreifen. Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass das Tunneling über Port 80 erfolgt. Der Marathon-Endpunkt kann beispielsweise unter `http://localhost/marathon/v2/` erreicht werden. Weitere Informationen zu den verschiedenen APIs finden Sie in der Mesosphere-Dokumentation für die [Marathon-API](https://mesosphere.github.io/marathon/docs/rest-api.html) und die [Chronos-API](https://mesos.github.io/chronos/docs/api.html) sowie in der Apache-Dokumentation für die [Mesos Scheduler-API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## Erfassen von Informationen von Mesos und Marathon
 
-Erfassen Sie vor dem Bereitstellen von Containern im Mesos-Cluster einige Informationen zum Mesos-Cluster, z. B. die Namen und den aktuellen Status der Mesos-Agents. Fragen Sie dazu den `master/slaves`-Endpunkt der Mesos-REST-API ab. Wenn alles gut geht, wird eine Liste der Mesos-Agents mit jeweils einigen Eigenschaften angezeigt.
+Erfassen Sie vor dem Bereitstellen von Containern im Mesos-Cluster einige Informationen zum Mesos-Cluster, z.B. die Namen und den aktuellen Status der Mesos-Agents. Fragen Sie dazu den `master/slaves`-Endpunkt der Mesos-REST-API ab. Wenn alles gut geht, wird eine Liste der Mesos-Agents mit jeweils einigen Eigenschaften angezeigt.
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -48,7 +47,7 @@ curl localhost/marathon/v2/apps
 
 ## Bereitstellen eines Containers im Docker-Format
 
-Container im Docker-Format werden über Marathon mithilfe einer JSON-Datei bereitgestellt, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der nginx-Container bereitgestellt; dabei wird Port 80 des Mesos-Agents an Port 80 des Containers gebunden.
+Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der Nginx-Container bereitgestellt. Dabei wird Port 80 des Mesos-Agents an Port 80 des Containers gebunden.
 
 ```json
 {
@@ -69,7 +68,7 @@ Container im Docker-Format werden über Marathon mithilfe einer JSON-Datei berei
 }
 ```
 
-Zum Bereitstellen eines Containers im Docker-Format erstellen Sie eine eigene JSON-Datei, oder verwenden Sie das hier bereitgestellte Beispiel ([Azure ACS Demo](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)), und speichern Sie es an einem zugänglichen Speicherort. Führen Sie anschließend den folgenden Befehl aus, und geben Sie den Namen der JSON-Datei an, um den Container bereitzustellen.
+Erstellen Sie zum Bereitstellen eines Containers im Docker-Format Ihre eigene JSON-Datei, oder verwenden Sie das Beispiel auf der [Seite mit der Azure Container Service-Demonstration](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json). Speichern Sie die Datei an einem zugänglichen Speicherort. Führen Sie als Nächstes den folgenden Befehl aus, um den Container bereitzustellen. Geben Sie den Namen der JSON-Datei an.
 
 ```
 curl -X POST http://localhost/marathon/v2/groups -d @marathon.json -H "Content-type: application/json"
@@ -89,37 +88,37 @@ curl localhost/marathon/v2/apps
 
 ## Skalieren der Container
 
-Die Marathon-API kann auch zum horizontalen Hoch- oder Herunterskalieren von Anwendungsbereitstellungen verwendet werden. Im vorherigen Beispiel wurde eine Instanz einer Anwendung bereitgestellt; diese skalieren wir jetzt horizontal auf drei Instanzen hoch. Dazu erstellen Sie eine JSON-Datei mit dem folgenden JSON-Text und speichern sie an einem zugänglichen Speicherort.
+Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal hoch- oder herunterzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
 
 ```json
 { "instances": 3 }
 ```
 
-Führen Sie den folgenden Befehl aus, um die Anwendung zu horizontal hochzuskalieren.
+Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
 
-> Hinweis: Der URI ist http://localhost/marathon/v2/apps/ und anschließend die ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte nginx-Beispiel verwenden, lautet der URI http://localhost/v2/nginx.
+>[AZURE.NOTE] Der URI ist http://localhost/marathon/v2/apps/ gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI http://localhost/marathon/v2/apps/nginx.
 
 ```json
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-Fragen Sie schließlich den Marathon-Endpunkt für Anwendungen ab. Sie werden feststellen, dass nun drei nginx-Container vorhanden sind.
+Fragen Sie den Marathon-Endpunkt zum Schluss auf Anwendungen ab. Sie sehen, dass jetzt drei Nginx-Container vorhanden sind.
 
 ```
 curl localhost/marathon/v2/apps
 ```
 
-## Marathon-REST-API-Interaktion mit PowerShell
+## Verwenden Sie PowerShell für diese Übung: Marathon-REST-API-Interaktion mit PowerShell
 
-Dieselbe Aktion kann mithilfe von PowerShell auf einem Windows-System ausgeführt werden. Mit dieser schnellen Übung werden ähnliche Aufgaben wie bei der letzten Übung ausgeführt, dieses Mal werden jedoch PowerShell-Befehle verwendet.
+Sie können diese Aktionen auch durchführen, indem Sie PowerShell-Befehle in einem Windows-System verwenden.
 
-Führen Sie den folgenden Befehl aus, um Informationen zum Mesos-Cluster zu erfassen, z. B. Agent-Namen und -Status.
+Führen Sie den folgenden Befehl aus, um Informationen zum Mesos-Cluster zu erfassen, z.B. Agent-Namen und -Status.
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Container im Docker-Format werden über Marathon mithilfe einer JSON-Datei bereitgestellt, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der nginx-Container bereitgestellt; dabei wird Port 80 des Mesos-Agents an Port 80 des Containers gebunden.
+Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der Nginx-Container bereitgestellt. Dabei wird Port 80 des Mesos-Agents an Port 80 des Containers gebunden.
 
 ```json
 {
@@ -140,24 +139,24 @@ Container im Docker-Format werden über Marathon mithilfe einer JSON-Datei berei
 }
 ```
 
-Erstellen Sie eine eigene JSON-Datei, oder verwenden Sie das hier bereitgestellte Beispiel – [Azure ACS Demo](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json) –, und speichern Sie es an einem zugänglichen Speicherort. Führen Sie anschließend den folgenden Befehl aus, und geben Sie den Namen der JSON-Datei an, um den Container bereitzustellen.
+Erstellen Sie Ihre eigene JSON-Datei, oder verwenden Sie das Beispiel auf der [Seite mit dem Azure Container Service-Demo](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json). Speichern Sie die Datei an einem zugänglichen Speicherort. Führen Sie als Nächstes den folgenden Befehl aus, um den Container bereitzustellen. Geben Sie den Namen der JSON-Datei an.
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-Die Marathon-API kann auch zum horizontalen Hoch- oder Herunterskalieren von Anwendungsbereitstellungen verwendet werden. Im vorherigen Beispiel wurde eine Instanz einer Anwendung bereitgestellt; diese skalieren wir jetzt horizontal auf drei Instanzen hoch. Dazu erstellen Sie eine JSON-Datei mit dem folgenden JSON-Text und speichern sie an einem zugänglichen Speicherort.
+Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal hoch- oder herunterzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
 
 ```json
 { "instances": 3 }
 ```
 
-Führen Sie den folgenden Befehl aus, um die Anwendung zu horizontal hochzuskalieren.
+Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
 
-> Hinweis: Der URI ist http://loclahost/marathon/v2/apps/ und anschließend die ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte nginx-Beispiel verwenden, lautet der URI http://localhost/v2/nginx.
+> [AZURE.NOTE] Der URI ist http://localhost/marathon/v2/apps/ gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI http://localhost/marathon/v2/apps/nginx.
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

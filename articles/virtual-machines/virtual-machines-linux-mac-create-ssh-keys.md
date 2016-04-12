@@ -14,76 +14,61 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/13/2016"
+	ms.date="04/04/2016"
 	ms.author="v-livech"/>
 
 # Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure
 
-In diesem Thema:
-
-1. Erstellen eines kennwortgeschützten öffentlichen und privaten Schlüsselpaars per `ssh-keygen`
-2. Erstellen der Datei `~/.ssh/config` zum Beschleunigen der Anmeldung und Aktivieren wichtiger Standardeinstellungen für Sicherheit und Konfiguration
-3. Anmelden an einer Linux- oder BSD-VM in Azure per SSH
-
-## Voraussetzungen
-
-Ein Azure-Konto([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und ein Linux- oder Macintosh-Terminal mit installierten SSH-Toolkits. Versetzen Sie die Befehlszeilenschnittstelle in den Ressourcenmodus, indem Sie `azure config mode arm` eingeben.
-
-## Einführung
-
-Die Verwendung öffentlicher und privater SSH-Schlüssel ist der sicherste **und** einfachste Weg zum Anmelden an Ihren Linux-Servern. [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) (Public-Key-Kryptosystem) ist ein Weg mit deutlich mehr Sicherheit für die Anmeldung an Ihrer Linux- oder BSD-VM in Azure als Kennwörter, die viel leichter einem Brute-Force-Angriff unterzogen werden können. Sie können Ihren öffentlichen Schlüssel an beliebige Personen weitergeben, während Ihr privater Schlüssel ausschließlich für Ihren Besitz bestimmt ist (bzw. Ihre lokale Sicherheitsinfrastruktur).
-
-In diesem Artikel werden Dateien mit Schlüsseln im *ssh-rsa*-Format erstellt, da diese für Bereitstellungen im Resource Manager empfohlen werden und im [Portal](https://portal.azure.com) sowohl für klassische Bereitstellungen als auch für Resource Manager-Bereitstellungen benötigt werden.
-
-> [AZURE.NOTE] Wenn Sie sich an Ihren VMs über einen Windows-Computer anmelden, helfen Ihnen die Informationen unter [Verwenden von SSH-Schlüsseln unter Windows](virtual-machines-linux-ssh-from-windows.md) weiter.
+Zum Erstellen eines kennwortgeschützten öffentlichen und privaten SSH-Schlüssels benötigen Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
 
 ## Kurze Befehlsliste
 
 Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
 
 ```bash
-[username@fedora22 ~]$ ssh-keygen -t rsa -b 4096 -C "<your_user@yourdomain.com>"
+[chrisL@fedora ~]$ ssh-keygen -t rsa -b 2048 -C "<your_user@yourdomain.com>"
 
 #Enter the name of the file that will be saved in the `~/.ssh/` directory.
-
 azure_fedora_id_rsa
 
 #Enter (twice) a [secure](https://www.xkcd.com/936/) password for the SSH key.
 
 #Enter passphrase for github_id_rsa:
-
 correct horse battery staple
 
 #Add the newly created key to `ssh-agent` on Linux and Mac (also added to OSX Keychain).
-
-[username@fedora22 ~]$ eval "$(ssh-agent -s)"
-
-[username@fedora22 ~]$ ssh-add ~/.ssh/azure_fedora_id_rsa
+[chrisL@fedora ~]$ eval "$(ssh-agent -s)"
+[chrisL@fedora ~]$ ssh-add ~/.ssh/azure_fedora_id_rsa
 
 #Copy the SSH public key to your Linux Server.
-
-[username@fedora22 ~]$ ssh-copy-id -i ~/.ssh/azure_fedora_id_rsa.pub <youruser@yourserver.com>
+[chrisL@fedora ~]$ ssh-copy-id -i ~/.ssh/azure_fedora_id_rsa.pub <youruser@yourserver.com>
 
 #Test the login using keys instead of a password.
-
-[username@fedora22 ~]$ ssh -i ~/.ssh/azure_fedora_id_rsa <youruser@yourserver.com>
+[chrisL@fedora ~]$ ssh -i ~/.ssh/azure_fedora_id_rsa <youruser@yourserver.com>
 
 Last login: Tue Dec 29 07:07:09 2015 from 66.215.21.201
-[username@fedora22 ~]$
+[chrisL@fedora ~]$
 
 ```
+
+## Einführung
+
+Die Verwendung von öffentlichen und privaten SSH-Schlüsseln ist die sicherste **und** einfachste Möglichkeit, sich an Ihren Linux-Servern anzumelden. Aber [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) (Public-Key-Kryptosystem) ist ein Weg mit deutlich mehr Sicherheit für die Anmeldung an Ihrer Linux- oder BSD-VM in Azure als Kennwörter, die viel leichter einem Brute-Force-Angriff unterzogen werden können. Sie können Ihren öffentlichen Schlüssel an beliebige Personen weitergeben, während Ihr privater Schlüssel ausschließlich für Ihren Besitz bestimmt ist (bzw. Ihre lokale Sicherheitsinfrastruktur).
+
+In diesem Artikel werden Dateien mit Schlüsseln im *ssh-rsa*-Format erstellt, da diese für Bereitstellungen im Resource Manager empfohlen werden und im [Portal](https://portal.azure.com) sowohl für klassische Bereitstellungen als auch für Resource Manager-Bereitstellungen benötigt werden.
+
 
 ## Erstellen der SSH-Schlüssel
 
 Für Azure sind öffentliche und private Schlüssel mit mindestens 2048 Bit im Format „ssh-rsa“ erforderlich. Verwenden Sie zum Erstellen des Schlüsselpaars `ssh-keygen`. Hiermit wird eine Reihe von Fragen gestellt, und anschließend werden ein privater Schlüssel und ein passender öffentlicher Schlüssel geschrieben. Beim Erstellen Ihrer Azure-VM übergeben Sie den Inhalt des öffentlichen Schlüssels, der dann auf die Linux-VM kopiert und mit Ihrem lokalen und sicher gespeicherten privaten Schlüssel verwendet wird, um Sie beim Anmelden zu authentifizieren.
 
-
-
 ### Verwenden von `ssh-keygen`
 
 Mit diesem Befehl wird ein SSH-Schlüsselpaar per RSA mit 2048 Bit erstellt und kommentiert, um die einfache Identifizierung zu ermöglichen.
 
-    username@macbook$ ssh-keygen -t rsa -b 4096 -C "username@fedoraVMAzure"
+```
+chrisL@fedora$ ssh-keygen -t rsa -b 2048 -C "username@fedoraVMAzure"
+```
 
 ##### Befehlsbeschreibung
 
@@ -98,7 +83,7 @@ Mit diesem Befehl wird ein SSH-Schlüsselpaar per RSA mit 2048 Bit erstellt und 
 #### Exemplarische Vorgehensweise für `ssh-keygen`
 
 ```bash
-username@macbook$ ssh-keygen -t rsa -b 4096 -C "username@fedoraVMAzure"
+chrisL@fedora$ ssh-keygen -t rsa -b 2048 -C "username@fedoraVMAzure"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/steve/.ssh/id_rsa): azure_fedora_id_rsa
 Enter passphrase (empty for no passphrase):
@@ -120,7 +105,7 @@ The key's randomart image is:
 |        .        |
 +-----------------+
 
-username@macbook$ ls -al ~/.ssh
+chrisL@fedora$ ls -al ~/.ssh
 -rw------- 1 username staff  1675 Aug 25 18:04 azure_fedora_id_rsa
 -rw-r--r-- 1 username staff   410 Aug 25 18:04 azure_fedora_id_rsa.pub
 ```
@@ -129,7 +114,7 @@ username@macbook$ ls -al ~/.ssh
 
 `Enter passphrase (empty for no passphrase):` Es wird dringend empfohlen, Ihre Schlüsselpaare mit einem Kennwort zu versehen (unter `ssh-keygen` wird dies als „Passphrase“ bezeichnet). Wenn das Schlüsselpaar nicht mit einem Kennwort geschützt ist, kann es von Personen, die über eine Kopie der Datei mit dem privaten Schlüssel verfügen, zum Anmelden an allen Servern verwendet werden. Dies gilt für Server, die über den entsprechenden öffentlichen Schlüssel verfügen. Das Hinzufügen eines Kennworts sorgt also für deutlich mehr Schutz. Wenn sich eine Person Zugang zu Ihrer Datei mit dem privaten Schlüssel verschafft, haben Sie so mehr Zeit, die Schlüssel für die Authentifizierung zu ändern.
 
-`username@macbook$ ls -al ~/.ssh` Hier werden Ihre neuen Schlüsselpaare und die dazugehörigen Berechtigungen angezeigt. `ssh-keygen` erstellt das Verzeichnis `~/.ssh`, falls es nicht vorhanden ist, und legt auch die richtige Eigentümerschaft und die Dateimodi fest.
+`chrisL@fedora$ ls -al ~/.ssh` Hier werden Ihre neuen Schlüsselpaare und die dazugehörigen Berechtigungen angezeigt. `ssh-keygen` erstellt das Verzeichnis `~/.ssh`, falls es nicht vorhanden ist, und legt auch die richtige Eigentümerschaft und die Dateimodi fest.
 
 ## Erstellen und Konfigurieren einer SSH-Konfigurationsdatei
 
@@ -140,13 +125,13 @@ Im folgenden Beispiel wird eine Standardkonfiguration veranschaulicht.
 ### Erstellen der Datei
 
 ```bash
-username@macbook$ touch ~/.ssh/config
+chrisL@fedora$ touch ~/.ssh/config
 ```
 
 ### Bearbeiten der Datei zum Hinzufügen der neuen SSH-Konfiguration
 
 ```bash
-username@macbook$ vim ~/.ssh/config
+chrisL@fedora$ vim ~/.ssh/config
 
 #Azure Keys
 Host fedora22
@@ -201,14 +186,14 @@ Bei dieser SSH-Konfiguration werden Abschnitte für jeden Dienst bereitgestellt,
 
 Da Sie jetzt über ein SSH-Schlüsselpaar und eine konfigurierte SSH-Konfigurationsdatei verfügen, können Sie sich schnell und sicher an Ihrer Linux-VM anmelden. Beim ersten Anmelden an einem Server mit einem SSH-Schlüssel werden Sie vom Befehl zur Eingabe der Passphrase für die Schlüsseldatei aufgefordert.
 
-`username@macbook$ ssh fedora22`
+`chrisL@fedora$ ssh fedora22`
 
 ##### Befehlsbeschreibung
 
-Wenn `username@macbook$ ssh fedora22` ausgeführt wird, ermittelt und lädt SSH zuerst die Einstellungen aus dem Block `Host fedora22` und lädt dann alle restlichen Einstellungen aus dem letzten Block `Host *`.
+Wenn `chrisL@fedora$ ssh fedora22` ausgeführt wird, ermittelt und lädt SSH zuerst die Einstellungen aus dem Block `Host fedora22` und lädt dann alle restlichen Einstellungen aus dem letzten Block `Host *`.
 
 ## Nächste Schritte
 
 Jetzt können Sie Ihre Schlüsseldateien verwenden, um [eine geschützte Linux-VM in Azure mit einer Vorlage zu erstellen](virtual-machines-linux-create-ssh-secured-vm-from-template.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->
