@@ -56,9 +56,9 @@ Klicken Sie auf die Registerkarte **Studio**. Sie werden aufgefordert, sich mit 
 
 ### Katalog
 
-Klicken Sie auf die Registerkarte **Gallery**. Sie gelangen zum Cortana Analytics-Katalog. In diesem Katalog kann eine Community von Datenwissenschaftlern und Entwicklern Lösungen freigeben, die mithilfe von Komponenten der Cortana Analytics Suite erstellt wurden.
+Klicken Sie auf die Registerkarte **Katalog**, und Sie gelangen zum Cortana Intelligence-Katalog. In diesem Katalog kann eine Community von Datenwissenschaftlern und Entwicklern Lösungen freigeben, die mithilfe von Komponenten der Cortana Intelligence Suite erstellt wurden.
 
-Weitere Informationen über den Katalog finden Sie unter [Teilen und Entdecken von Lösungen im Cortana Analytics-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Lösungen im Cortana Analytics-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
 
 ## Komponenten eines Experiments
 
@@ -115,4 +115,4 @@ Wenn Ihr Predictive Analytics-Modell bereit ist, können Sie es als Webdienst di
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

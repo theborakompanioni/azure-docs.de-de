@@ -69,25 +69,21 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 
 2. Wählen Sie im Menü „Hub“ die Option **Neu** -> **Daten und Speicher** -> **Speicherkonto** aus.
 
-3. Wählen Sie ein Bereitstellungsmodell aus: **Ressourcen-Manager** oder **Klassisch**. **Ressourcen-Manager** ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
-
-4. Geben Sie einen Namen für Ihr Speicherkonto ein.
+3. Geben Sie einen Namen für Ihr Speicherkonto ein.
 
 	> [AZURE.NOTE] Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 	>  
-	> Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Im Azure-Portal wird angezeigt, ob der von Ihnen ausgewählte Speicherkontoname bereits vergeben ist.
+	> Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Im Azure-Portal wird angezeigt, ob der von Ihnen ausgewählte Speicherkontoname bereits verwendet wird.
 
 	Unter [Speicherkontoendpunkte](#storage-account-endpoints) (siehe unten) finden Sie Details dazu, wie der Name des Speicherkontos zum Adressieren Ihrer Objekte in Azure Storage verwendet wird.
 
-5. Geben Sie den Typ des zu erstellenden Speicherkontos an. Der Speicherkontotyp bestimmt, wie das Speicherkonto repliziert wird, und gibt an, ob es sich um ein Standardspeicherkonto oder ein Premium-Speicherkonto handelt.
+4. Geben Sie das Bereitstellungsmodell an, das verwendet werden soll: **Resource Manager** oder **Klassisch**. **Ressourcen-Manager** ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
 
-	Der Standardtyp für ein Speicherkonto ist **Standard-RAGRS**. Dies ist ein Standardspeicherkonto mit schreibgeschützter georedundanter Replikation. Dieser Speicherkontotyp wird in eine sekundäre Region repliziert, die weit von der primären Region entfernt ist, und bietet Lesezugriff auf den sekundären Standort.
+5. Geben Sie als Leistungsstufe für das Speicherkonto **Standard** oder **Premium** an. Die Standardeinstellung ist **Standard**. Weitere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](storage-introduction.md) und [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computer](storage-premium-storage.md).
 
-	Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md). Weitere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](storage-introduction.md) und [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](storage-premium-storage.md)
+6. Wählen Sie die Replikationsoption für das Speicherkonto aus: **LRS**, **GRS**, **RA-GRS** oder **ZRS**. Die Standardeinstellung ist **RA-GRS**. Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
-6. Geben Sie an, ob Sie für die Diagnose Ihr Speicherkonto aktivieren möchten. Zur Diagnose gehören Protokollierung und Metriken der Speicheranalyse.
-
-7. Wenn Sie mehr als ein Azure-Abonnement besitzen, wird das Feld **Abonnement** angezeigt. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
+7. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 
 8. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
 
@@ -95,17 +91,25 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 
 10. Klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen.
 
-## Verwalten von Speicherzugriffsschlüsseln
+## Verwalten von Speicherkonten
+
+### Ändern der Kontokonfiguration
+
+Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern, beispielsweise die für das Konto verwendete Replikationsoption. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und klicken Sie auf **Alle Einstellungen** und anschließend auf **Konfiguration**, um die Kontokonfiguration anzuzeigen und/oder zu ändern. Durch Änderung der Replikationsoption ändert sich auch der Preis.
+
+> [AZURE.NOTE] Abhängig von der beim Erstellen des Speicherkontos ausgewählten Leistungsstufe sind einige Replikationsoptionen unter Umständen nicht verfügbar.
+
+### Verwalten von Speicherzugriffsschlüsseln
 
 Wenn Sie ein Speicherkonto erstellen, generiert Azure zwei 512-Bit-Speicherzugriffsschlüssel, die für die Authentifizierung verwendet werden, wenn der Zugriff auf das Speicherkonto erfolgt. Durch Bereitstellen von zwei Speicherzugriffsschlüsseln ermöglicht Azure Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Speicherdiensts oder Zugriff auf diesen Dienst.
 
 > [AZURE.NOTE] Sie sollten das Weitergeben von Speicherzugriffsschlüsseln an andere vermeiden. Um den Zugriff auf Speicherressourcen zu gewähren, ohne den Zugriffsschlüssel weiterzugeben, verwenden Sie eine *Shared Access Signature*. Eine Shared Access Signature (SAS) bietet Zugriff auf eine Ressource in Ihrem Konto für ein von Ihnen definiertes Zeitintervall und mit den von Ihnen festgelegten Berechtigungen. Weitere Informationen finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
 
-### Anzeigen und Kopieren von Speicherzugriffsschlüssel
+#### Anzeigen und Kopieren von Speicherzugriffsschlüssel
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um Kontozugriffsschlüssel anzuzeigen, zu kopieren und erneut zu generieren. Das Blatt **Zugriffsschlüssel** enthält auch vorkonfigurierte Verbindungszeichenfolgen, in denen Ihre primären und sekundären Schlüssel verwendet werden, die Sie zur Nutzung in der Anwendung kopieren können.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf **Alle Einstellungen** und anschließend auf **Zugriffsschlüssel**, um Ihre Kontozugriffsschlüssel anzuzeigen, zu kopieren und erneut zu generieren. Das Blatt **Zugriffsschlüssel** enthält auch vorkonfigurierte Verbindungszeichenfolgen, in denen Ihre primären und sekundären Schlüssel verwendet werden, die Sie zur Nutzung in der Anwendung kopieren können.
 
-### Erneutes Generieren von Speicherzugriffsschlüsseln
+#### Erneutes Generieren von Speicherzugriffsschlüsseln
 
 Sie sollten die Zugriffsschlüssel für Ihr Speicherkonto regelmäßig ändern, um dafür zu sorgen, dass Ihre Speicherverbindungen sicher sind. Zwei Zugriffsschlüssel werden zugewiesen, um es Ihnen zu ermöglichen, Verbindungen zum Speicherkonto mit einem Zugriffsschlüssel aufrecht zu erhalten, während Sie den anderen Zugriffsschlüssel neu generieren.
 
@@ -137,15 +141,15 @@ Um ein Speicherkonto löschen zu können, das einer virtuellen Azure-Maschine zu
 
     Failed to delete storage account <vm-storage-account-name>. Unable to delete storage account <vm-storage-account-name>: 'Storage account <vm-storage-account-name> has some active image(s) and/or disk(s). Ensure these image(s) and/or disk(s) are removed before deleting this storage account.'.
 
-Wenn das Speicherkonto das klassische Bereitstellungsmodell verwendet, können Sie den Datenträger der virtuellen Maschine entfernen, indem Sie folgende Schritte im [klassischen Azure-Portal](https://manage.windowsazure.com) ausführen:
+Wenn das Speicherkonto das klassische Bereitstellungsmodell verwendet, können Sie den Datenträger des virtuellen Computers entfernen, indem Sie folgende Schritte im [Azure-Portal](https://manage.windowsazure.com) ausführen:
 
-1. Navigieren Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com).
+1. Navigieren Sie zum [klassischen Portal](https://manage.windowsazure.com).
 2. Navigieren Sie zur Registerkarte „Virtuelle Computer“.
 3. Klicken Sie auf die Registerkarte „Datenträger“.
 4. Wählen Sie Ihren Datenträger aus, und klicken Sie dann auf „Datenträger löschen“.
 5. Um Datenträgerimages zu löschen, navigieren Sie zur Registerkarte „Images“. Löschen Sie alle unter dem Konto gespeicherten Images.
 
-Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Maschinen](http://azure.microsoft.com/documentation/services/virtual-machines/).
+Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/).
 
 ## Nächste Schritte
 
@@ -154,4 +158,4 @@ Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Maschinen](h
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

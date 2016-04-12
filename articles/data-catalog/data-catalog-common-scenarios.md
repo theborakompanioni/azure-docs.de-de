@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Häufige Szenarios mit Azure Data Catalog"
+   pageTitle="Häufige Szenarios mit Azure Data Catalog | Microsoft Azure"
    description="Eine Übersicht über allgemeine Szenarios für Azure Data Catalog, einschließlich der Registrierung und Ermittlung von Datenquellen mit vielen Werten, der Aktivierung von Self-Service-Business Intelligence und der Erfassung von ";Stammeswissen"; über Datenquellen und Prozesse."
    services="data-catalog"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 
@@ -66,4 +66,4 @@ Es kommt vor, dass diese Datenexperten ihr Wissen dokumentieren und per E-Mail o
 
 Azure Data Catalog ist ein Speicherort zum Bereitstellen dieses Stammeswissens, an dem es leicht auffindbar ist. Datenexperten können die Datenassets direkt mit Anmerkungen versehen und Links zur vorhandenen Dokumentation einfügen. Hierdurch wird nicht nur das Wissen selbst erfasst, sondern es wird auch in derselben Umgebung angeordnet, die für die Ermittlung von Datenquellen verwendet wird. Wenn der Katalog zum Ermitteln einer Datenquelle verwendet wird, finden Benutzer nicht nur die eigentliche Quelle, sondern auch das Expertenwissen, dass sich vorher nur im Kopf des Experten befunden hat.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

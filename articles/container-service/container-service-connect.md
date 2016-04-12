@@ -104,10 +104,39 @@ Wenn Sie den Tunnel für Mesos konfiguriert haben, können Sie wie folgt auf den
 
 Wenn Sie den Tunnel für Docker Swarm konfiguriert haben, können Sie über die Docker-Befehlszeilenschnittstelle auf den Swarm-Cluster zugreifen. Sie müssen zunächst eine Windows-Umgebungsvariable mit dem Namen `DOCKER_HOST` und dem Wert ` :2375` konfigurieren.
 
+## Problembehandlung
+
+### Wenn ich den Tunnel erstellt habe und zur Mesos- oder Marathon-URL navigiere, wird der Fehler „502 Ungültiges Gateway“ angezeigt.
+Die einfachste Möglichkeit zur Lösung besteht darin, den Cluster zu löschen und erneut bereitzustellen. Alternativ können Sie Folgendes tun, um Zookeeper zur selbständigen Reparatur zu zwingen:
+
+Melden Sie sich bei jedem Master an, und führen Sie Folgendes aus:
+
+```
+sudo service nginx stop
+sudo service marathon stop
+sudo service chronos stop
+sudo service mesos-dns stop
+sudo service mesos-master stop 
+sudo service zookeeper stop
+```
+
+Sobald alle Dienste für alle Master-Instanzen beendet wurden:
+```
+sudo mkdir /var/lib/zookeeperbackup
+sudo mv /var/lib/zookeeper/* /var/lib/zookeeperbackup
+sudo service zookeeper start
+sudo service mesos-master start
+sudo service mesos-dns start
+sudo service chronos start
+sudo service marathon start
+sudo service nginx start
+```
+Kurz nachdem alle Dienste neu gestartet wurden, sollten Sie Ihren Cluster wie in der Dokumentation beschrieben verwenden können.
+
 ## Nächste Schritte
 
 Bereitstellen und Verwalten von Containern mit Mesos oder Swarm
 
 - [Verwenden von Azure Container Service und Mesos](./container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

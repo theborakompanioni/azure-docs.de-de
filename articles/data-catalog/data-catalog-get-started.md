@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erste Schritte mit Azure Data Catalog"
-   description="Umfassendes Lernprogramm zu den Szenarios und Funktionen von Azure Data Catalog"
+   pageTitle="Erste Schritte mit Azure Data Catalog | Microsoft Azure"
+   description="Umfassendes Tutorial zu den Szenarios und Funktionen von Azure Data Catalog"
    documentationCenter=""
    services="data-catalog"
    authors="dvana"
@@ -258,4 +258,4 @@ In dieser Übung haben Sie die Verwaltungsfunktionen von **Azure Data Catalog** 
 
 In diesem Tutorial haben Sie wichtige Funktionen von **Azure Data Catalog** kennengelernt, z.B. das Registrieren, Ermitteln und Verwalten von Unternehmensdatenquellen sowie das Versehen mit Anmerkungen. Nachdem Sie das Lernprogramm abgeschlossen haben, ist es an der Zeit, mit der Verwendung zu beginnen. Sie können noch heute starten, indem Sie die Datenquellen registrieren, die Sie und Ihr Team verwenden, und indem Sie Kollegen zur Nutzung des Katalogs einladen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->
