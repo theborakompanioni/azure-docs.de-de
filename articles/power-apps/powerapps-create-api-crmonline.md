@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="03/29/2016"
    ms.author="sameerch"/>
 
 # Erstellen einer neuen Dynamics CRM Online-API in PowerApps Enterprise
 
 > [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/create-api-crmonline.md)
+- [Logik-Apps](../articles/connectors/connectors-create-api-crmonline.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-crmonline.md)
 
 Fügen Sie die Dynamics CRM Online-API in der App Service-Umgebung Ihrer Organisation (Mandant) hinzu.
@@ -38,7 +38,7 @@ Fügen Sie die Dynamics CRM Online-API in der App Service-Umgebung Ihrer Organis
 4. Wählen Sie in **PowerApps** die Option **Manage APIs** aus:  
 ![Zu registrierten APIs navigieren][3]
 
-5. Wählen Sie in **Manage APIs** die Option **Add** aus, um die neue API hinzuzufügen:  
+5. Wählen Sie in **Manage APIs** die Option **Add** aus, um die neue API hinzufügen: 
 ![API hinzufügen][4]
 
 6. Geben Sie einen beschreibenden **Namen** für Ihre API ein.
@@ -81,7 +81,7 @@ Ihrer App Service-Umgebung wird dann eine neue Dynamics CRM Online-API hinzugef�
 
 6. Unter **App-Eigenschaften**:
 
-	1. Geben Sie unter **ANMELDE-URL** die Anmelde-URL Ihrer Anwendung ein. Da Sie die Authentifizierung mit AAD für PowerApps durchführen, legen Sie die Anmelde-URL auf _https://login.windows.net_ fest.
+	1. Geben Sie unter **ANMELDE-URL** die Anmelde-URL Ihrer Anwendung ein. Da Sie die Authentifizierung mit AAD für PowerApps durchführen, legen Sie die Anmelde-URL auf \__https://login.windows.net_ fest.
 	2. Geben Sie einen gültigen **APP-ID-URI** für Ihre App ein.  
 	3. Klicken Sie auf **OK**.  
 
@@ -99,7 +99,7 @@ Eine neue Azure Active Directory-App wird erstellt. Diese App können Sie in der
 
 ## Informationen zu REST-APIs
 
-[Dynamics CRM Online REST-API](../connectors/create-api-crmonline.md).
+Referenz zur [online REST-API für Dynamics CRM](../connectors/connectors-create-api-crmonline.md)
 
 
 ## Zusammenfassung und nächste Schritte
@@ -122,4 +122,4 @@ In diesem Thema haben Sie die Dynamics CRM Online-API zu PowerApps Enterprise hi
 [11]: ./media/powerapps-create-api-crmonline/contoso-aad-app.PNG
 [12]: ./media/powerapps-create-api-crmonline/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

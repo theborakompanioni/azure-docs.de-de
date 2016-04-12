@@ -12,15 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/21/2016" 
+	ms.date="03/24/2016" 
 	ms.author="awills"/>
 
 
  
 # Einführung in Analytics in Application Insights
 
-
-[Analytics](app-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-analytics.md) ermöglicht leistungsstarke Abfragen der von [Application Insights](app-insights-overview.md) gesammelten Telemetriedaten. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -70,14 +69,16 @@ Wählen Sie Spalten aus, und passen Sie ihre Positionen an:
 
 ![Klicken Sie in der oberen rechten Ecke der Ergebnisse auf die Spaltenauswahl.](./media/app-analytics-tour/030.png)
 
+
 Erweitern Sie ein Element, um die Details anzuzeigen:
  
 ![Wählen Sie „Tabelle“ aus, und verwenden Sie „Spalten konfigurieren“.](./media/app-analytics-tour/040.png)
 
+> [AZURE.NOTE] Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse neu zu ordnen. Beachten Sie jedoch, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Daher sollten Sie im Hinterkopf behalten, dass diese Sortierung Ihnen nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente anzeigt. Dazu sollten Sie die `top`- oder `sort`-Operatoren verwenden.
 
-## [Top](app-analytics-aggregations.md#top) und [sort](app-analytics-aggregations.md#sort)
+## [Top](app-analytics-aggregations.md#top) und [Sort](app-analytics-aggregations.md#sort)
 
-`take` ist hilfreich, um schnell eine Stichprobe abzurufen. Es werden jedoch Zeilen aus der Tabelle in unbestimmter Reihenfolge angezeigt. Verwenden Sie für eine sortierte Ansicht `top` (für eine Stichprobe) oder `sort` (für die gesamte Tabelle).
+`take` ist hilfreich, um schnell eine Stichprobe abzurufen. Die Zeilen aus der Tabelle werden jedoch in unbestimmter Reihenfolge angezeigt. Verwenden Sie für eine sortierte Ansicht `top` (für eine Stichprobe) oder `sort` (für die gesamte Tabelle).
 
 Zeigen Sie die ersten n Zeilen, sortiert nach einer bestimmten Spalte an:
 
@@ -136,7 +137,7 @@ Im skalaren Ausdruck:
 * `1d` (die Ziffer Eins, gefolgt von einem „d“) ist ein Zeitraumliteral für einen Tag. Dies sind einige weitere Zeitraumliterale: `12h`, `30m`, `10s`, `0.01s`.
 * `floor` (Alias `bin`) rundet einen Wert auf das nächste Vielfache des von Ihnen angegebenen Basiswerts ab. `floor(aTime, 1s)` rundet demnach eine Zeit auf die nächstniedrigere Sekunde ab.
 
-[Ausdrücke](app-analytics-scalars.md) können alle üblichen Operatoren (`+`, `-`, ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
+[Ausdrücke](app-analytics-scalars.md) können alle üblichen Operatoren (`+`, `-` usw.) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
 
 ## [Extend](app-analytics-aggregations.md#extend): Berechnen von Spalten
 
@@ -151,7 +152,7 @@ Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie
 
 [`extend`](app-analytics-aggregations.md#extend) ist weniger ausführlich als die Nutzung von [`project`](app-analytics-aggregations.md#project), wenn Sie alle vorhandenen Spalten beibehalten möchten.
 
-## [Summarize](app-analytics-aggregations.md#summarize): Aggregieren von Zeilengruppen
+## [Summarize](app-analytics-aggregations.md#summarize): Zusammenfassen von Zeilengruppen
 
 In einem Beispiel für eine Tabelle können Sie die Felder sehen, in denen die verschiedenen Telemetriedaten gemeldet werden. `exception | take 20` zeigt beispielsweise schnell, dass Ausnahmemeldungen in einem Feld namens `outerExceptionType` gemeldet werden.
 
@@ -168,9 +169,9 @@ Aber statt die einzelnen Instanzen durchzuarbeiten, fragen Sie sich vielmehr, wi
 `Summarize` gruppiert Zeilen mit den gleichen Werten in den Feldern, die in der `by`-Klausel genannt wurden, was eine einzelne Ergebniszeile für jede Gruppe ergibt. In diesem Fall also gibt es eine Zeile für jeden Ausnahmetyp. Die Aggregationsfunktion `count()` zählt die Zeilen in jeder Gruppe, wodurch eine Spalte im Ergebnis bereitgestellt wird.
 
 
-Es gibt verschiedene [Aggregationsfunktionen](app-analytics-aggregations.md), und Sie können mehrere gleichzeitig in einem summarize-Operator verwenden, um mehrere berechnete Spalten zu erstellen.
+Es gibt verschiedene [Aggregationsfunktionen](app-analytics-aggregations.md). Sie können mehrere gleichzeitig in einem summarize-Operator verwenden, um mehrere berechnete Spalten zu erstellen.
 
-Listen Sie z. B. die HTTP-Anforderungen auf, für die diese Ausnahmen auftreten. Beim Betrachten einer Ausnahmebeispieltabelle werden Sie feststellen, dass die Pfade der HTTP-Anforderung in einer Spalte namens `operation_Name` gemeldet werden.
+Listen Sie z. B. die HTTP-Anforderungen auf, für die diese Ausnahmen auftreten. Beim näheren Betrachten einer Stichprobe aus der Ausnahmetabelle werden Sie feststellen, dass die Pfade der HTTP-Anforderung in einer Spalte namens `operation_Name` gemeldet werden.
 
 ```AIQL
 
@@ -205,7 +206,7 @@ Sie können Skalarwerte (Numerisch, Zeit oder Intervall) in der by-Klausel verwe
 
 ![](./media/app-analytics-tour/225.png)
 
-`bin` reduziert alle Zeitstempel auf Intervalle von 1 Tag. Es handelt sich um ein Alias von `floor`, eine Funktion, die in den meisten Sprachen bekannt ist. Jeder Wert wird auf das nächste Vielfache des angegebenen Rundungswerts reduziert, damit `summarize` die Zeilen den Gruppen von geeigneter Größe zuweisen kann. (Ohne dies gäbe es eine Ergebniszeile für jeden eigenständigen Bruchteil einer Sekunde, in der die Daten keinesfalls zusammengefasst werden würden.)
+`bin` reduziert alle Zeitstempel auf Intervalle von einem Tag. Es handelt sich um ein Alias von `floor`, eine Funktion, die in den meisten Sprachen bekannt ist. Die Funktion reduziert jeden Wert auf das nächste Vielfache des angegebenen Rundungswerts, damit `summarize` die Zeilen den Gruppen von geeigneter Größe zuweisen kann. (Ohne dies gäbe es eine Ergebniszeile für jeden eigenständigen Bruchteil einer Sekunde, in der die Daten keinesfalls zusammengefasst werden würden.)
 
 Es gibt jedoch noch eine bessere Ansicht als die hier gezeigte Tabelle. Betrachten Sie die Ergebnisse in der Diagrammansicht mit vertikalem Balken:
 
@@ -234,7 +235,7 @@ Der `where`-Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige 
 
  * `and`, `or`: Boolesche Operatoren
  * `==`, `<>`: gleich und ungleich
- * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich. Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
+ * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
 Erfahren Sie mehr über [skalare Ausdrücke](app-analytics-scalars.md).
 
@@ -248,7 +249,7 @@ Suchen Sie nach nicht erfolgreichen Anforderungen:
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
 
-`responseCode` ist vom Typ „String“, daher müssen wir es für einen numerischen Vergleich [umwandeln](app-analytics-scalars.md#casts).
+`responseCode` ist vom Typ „String“. Daher müssen wir es für einen numerischen Vergleich [umwandeln](app-analytics-scalars.md#casts).
 
 Fassen Sie die unterschiedlichen Antworten zusammen:
 
@@ -290,7 +291,7 @@ Verwenden Sie mehrere Werte in einer `summarize by`-Klausel, um eine separate Ze
 
 ![](./media/app-analytics-tour/090.png)
 
-Um mehrere Linien in einem Diagramm anzuzeigen, klicken Sie auf **Teilen nach**, und wählen Sie eine Spalte aus.
+Um mehrere Linien in einem Diagramm anzuzeigen, klicken Sie auf **Aufteilen nach**, und wählen Sie eine Spalte aus.
 
 ![](./media/app-analytics-tour/100.png)
 
@@ -441,4 +442,4 @@ Verwenden Sie [let](./app-analytics-syntax.md#let-statements), um die einzelnen 
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

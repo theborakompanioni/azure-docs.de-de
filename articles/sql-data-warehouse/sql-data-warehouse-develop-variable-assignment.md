@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Zuweisen von Variablen in SQL Data Warehouse
@@ -25,14 +25,14 @@ Im Folgenden sind Möglichkeiten zum Festlegen eines Variablenwerts aufgeführt:
 
 Das Initialisieren von Variablen mit DECLARE ist eine der flexibelsten Möglichkeiten zum Festlegen eines Variablenwerts in SQL Data Warehouse.
 
-```
+```sql
 DECLARE @v  int = 0
 ;
 ```
 
 Sie können mit DECLARE auch mehrere Variablen gleichzeitig festlegen. Sie können `SELECT` und `UPDATE` nicht für Folgendes verwenden:
 
-```
+```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
 ,       @v1 INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Jones')
 ;
@@ -40,7 +40,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 
 Eine Variable kann nicht in der gleichen DECLARE-Anweisung initialisiert und verwendet werden. Im folgenden Beispiel, das **nicht** zulässig ist, wird @p1 in der gleichen DECLARE-Anweisung sowohl initialisiert als auch verwendet. Dies führt zu einem Fehler.
 
-```
+```sql
 DECLARE @p1 int = 0
 ,       @p2 int = (SELECT COUNT (*) FROM sys.types where is_user_defined = @p1 )
 ;
@@ -51,7 +51,7 @@ SET ist eine sehr allgemeine Methode zum Festlegen einer einzelnen Variable.
 
 Alle folgenden Beispiele sind gültige Möglichkeiten zum Festlegen einer Variable mit SET:
 
-```
+```sql
 SET     @v = (Select max(database_id) from sys.databases);
 SET     @v = 1;
 SET     @v = @v+1;
@@ -76,4 +76,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

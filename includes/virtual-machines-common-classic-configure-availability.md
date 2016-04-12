@@ -38,7 +38,7 @@ Verwenden des klassischen Azure-Portals:
 
 	![Erstellen einer Verfügbarkeitsgruppe für einen neuen virtuellen Computer](./media/virtual-machines-common-classic-configure-availability/VMavailabilityset.png)
 
-6. Klicken Sie im vierten Bildschirm auf die zu installierenden Erweiterungen. Erweiterungen bieten Features, die die Verwaltung des virtuellen Computers vereinfachen, beispielsweise das Ausführen von Antischadsoftware oder das Zurücksetzen von Kennwörtern. Details finden Sie im Thema zum [Azure VM-Agent und VM-Erweiterungen](virtual-machines-windows-classic-agents-and-extensions.md).
+6. Klicken Sie im vierten Bildschirm auf die zu installierenden Erweiterungen. Erweiterungen bieten Features, die die Verwaltung des virtuellen Computers vereinfachen, beispielsweise das Ausführen von Antischadsoftware oder das Zurücksetzen von Kennwörtern. Details finden Sie im Thema zum [Azure VM-Agent und VM-Erweiterungen](../articles/virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md).
 
 7.	Klicken Sie auf den Pfeil, um den virtuellen Computer und den Verfügbarkeitssatz zu erstellen.
 
@@ -47,8 +47,8 @@ Verwenden des klassischen Azure-Portals:
 Beachten Sie Folgendes, wenn Sie einen virtuellen Azure-Computer mithilfe von Azure PowerShell-Befehlen erstellen und einer neuen oder vorhandenen Verfügbarkeitsgruppe hinzufügen:
 
 
-- [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren von Linux-basierten virtuellen Computern](virtual-machines-linux-classic-createpowershell.md)
-- [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](virtual-machines-windows-classic-create-powershell.md)
+- [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren von Linux-basierten virtuellen Computern](../articles/virtual-machines/virtual-machines-linux-classic-createpowershell.md)
+- [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)
 
 ## <a id="addmachine"> </a>Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu##
 
@@ -86,11 +86,11 @@ Um Azure PowerShell-Befehle zu verwenden, öffnen Sie eine Azure PowerShell-Sitz
 [Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe]: #createset
 [Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu]: #addmachine
 
-[Lastenausgleich für Azure-Infrastrukturdienste]: virtual-machines-linux-load-balance.md
-[Verwalten der Verfügbarkeit virtueller Computer]: virtual-machines-linux-manage-availability.md
+[Lastenausgleich für Azure-Infrastrukturdienste]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
+[Verwalten der Verfügbarkeit virtueller Computer]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
 
-[Erstellen eines virtuellen Windows-Computers]: virtual-machines-windows-hero-tutorial.md
-[Virtuelle Netzwerke im Überblick]: virtual-networks-overview.md
+[Erstellen eines virtuellen Windows-Computers]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Virtuelle Netzwerke im Überblick]: ../articles/virtual-network/virtual-networks-overview.md
 [Artikel zu virtuellen Computern in der Dienstverwaltung]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

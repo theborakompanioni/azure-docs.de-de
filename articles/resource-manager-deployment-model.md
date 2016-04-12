@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Grundlegendes zu den Unterschieden zwischen dem Modell der Ressourcen-Manager-Bereitstellung und dem Modell der klassischen Bereitstellung"
+   pageTitle="Resource Manager- und klassische Bereitstellung | Microsoft Azure"
    description="Beschreibt die Unterschiede zwischen dem Ressourcen-Manager-Bereitstellungsmodell und dem klassischen Bereitstellungsmodell (auch als ";Dienstverwaltungsmodell"; bekannt)."
    services="azure-resource-manager"
    documentationCenter="na"
@@ -13,26 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/22/2016"
+   ms.date="03/23/2016"
    ms.author="tomfitz"/>
 
-# Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung
+# Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
-Das Ressourcen-Manager-Bereitstellungsmodell bietet eine neue Möglichkeit, die Dienste, aus denen Ihre App besteht, bereitzustellen und zu verwalten. Dieses neue Modell weist einige signifikante Unterschiede zum klassischen Bereitstellungsmodell auf, und die beiden Modelle sind nicht vollständig miteinander kompatibel. Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung des Ressourcen-Managers für neue Ressourcen und, sofern möglich, die erneute Bereitstellung vorhandener Ressourcen über den Ressourcen-Manager.
+In diesem Thema erhalten Sie Informationen über das Azure Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sowie zum Status Ihrer Ressourcen. Zudem erfahren Sie, warum Ihre Ressourcen jeweils mit einem der beiden Modelle bereitgestellt wurden. Das Resource Manager-Bereitstellungsmodell weist einige wichtige Unterschiede zum klassischen Bereitstellungsmodell auf, und die beiden Modelle sind nicht vollständig miteinander kompatibel. Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung des Ressourcen-Managers für neue Ressourcen und, sofern möglich, die erneute Bereitstellung vorhandener Ressourcen über den Ressourcen-Manager.
 
-Das klassische Bereitstellungsmodell ist Ihnen möglicherweise unter den Bezeichnungen "Service-Management-Modell" oder "Dienstverwaltungsmodell" bekannt.
+Bei den meisten Ressourcen können Sie problemlos zum Resource Manager-Modell wechseln. Aufgrund der Architekturunterschiede zwischen den Modellen stellen einige Ressourcenanbieter jedoch zwei Versionen ihrer Ressource bereit: eine für das klassische, eine für das Ressourcen-Manager-Modell. Für folgende Ressourcenanbieter bestehen Unterschiede zwischen den beiden Modellen:
 
-Dieses Thema beschreibt die Unterschiede zwischen den beiden Modellen sowie einige Probleme, die beim Wechsel vom klassischen zum Ressourcen-Manager-Modell auftreten können. Das Thema bietet einen Überblick über die Modelle, geht jedoch nicht detailliert auf die Unterschiede zwischen einzelnen Diensten ein.
+- **Computeressourcen** – unterstützen Instanzen von virtuellen Computern und optionale Verfügbarkeitsgruppen.
+- **Speicherressourcen** – unterstützen erforderliche Speicherkonten, die VHDs für virtuelle Computer speichern, einschließlich der Datenträger für Betriebssysteme und zusätzlicher Datenträger.
+- **Netzwerkressourcen** – unterstützen erforderliche NICs, IP-Adressen virtueller Computer und Subnetze innerhalb von virtuellen Netzwerken sowie optionale Load Balancer, deren IP-Adressen und Netzwerksicherheitsgruppen.
 
-Viele Ressourcen funktionieren problemlos sowohl im klassischen als auch im Ressourcen-Manager-Modell. Diese Ressourcen unterstützen den Ressourcen-Manager vollständig, selbst wenn sie im klassischen Modell erstellt wurden. Sie können diese Ressourcen ohne Bedenken oder zusätzlichen Aufwand zum Ressourcen-Manager verschieben.
-
-Aufgrund der Architekturunterschiede zwischen den Modellen stellen einige Ressourcenanbieter jedoch zwei Versionen ihrer Ressource bereit: eine für das klassische, eine für das Ressourcen-Manager-Modell. Für folgende Ressourcenanbieter bestehen Unterschiede zwischen den beiden Modellen:
-
-- **Compute** – Unterstützt Instanzen von virtuellen Maschinen und optionale Verfügbarkeitsgruppen.
-- **Storage** – Unterstützt erforderliche Speicherkonten, die VHDs für virtuelle Maschinen speichern, einschließlich der Datenträger für Betriebssysteme und zusätzlicher Datenträger.
-- **Netzwerk** – Unterstützt erforderliche NICs, IP-Adressen virtueller Maschinen und Subnetze innerhalb von virtuellen Netzwerken sowie optionale Load Balancer, deren IP-Adressen und Netzwerksicherheitsgruppen.
-
-Für diese Ressourcentypen müssen Sie darauf achten, welche Version Sie verwenden, da sich die unterstützten Vorgänge unterscheiden. Detaillierte Informationen zum Verschieben von Compute-, Speicher- und Netzwerkressourcen finden Sie unter [Azure-Compute-, Netzwerk- und Speicheranbieter unter dem Azure-Ressourcen-Manager](./virtual-machines/virtual-machines-windows-compare-deployment-models.md).
+Für diese Ressourcentypen müssen Sie darauf achten, welche Version Sie verwenden, da sich die unterstützten Vorgänge unterscheiden. Damit Sie besser nachvollziehen können, welches Modell für die Bereitstellung Ihrer Ressourcen verwendet wurde, werden die beiden Modelle im Folgenden genauer erläutert.
 
 ## Merkmale des Ressourcen-Managers
 
@@ -42,19 +36,15 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
   - Das [Azure-Portal](https://portal.azure.com/)
 
-        ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
+   ![Azure-Portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Für Compute-, Storage- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Ressourcen-Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager** .
+   Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
 
-        ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
+   ![Resource Manager-Bereitstellung](./media/resource-manager-deployment-model/select-resource-manager.png)
 
-  - In Azure PowerShell-Versionen vor 1.0 werden Befehle im Modus **AzureResourceManager** ausgeführt.
+  - Verwenden Sie in Azure PowerShell die Befehle des Resource Manager-Modells. Diese Befehle haben das Format *Verb-AzureRmNomen*, wie unten dargestellt.
 
-            PS C:\> Switch-AzureMode -Name AzureResourceManager
-
-  - Verwenden Sie in Azure PowerShell 1.0 für Befehle die Version mit dem Ressourcen-Manager. Diese Befehle haben das Format *Verb-AzureRmNoun*, wie unten dargestellt.
-
-            PS C:\> Get-AzureRmResourceGroupDeployment
+            Get-AzureRmResourceGroupDeployment
 
   - [Azure-Ressourcen-Manager-REST-API](https://msdn.microsoft.com/library/azure/dn790568.aspx) für REST-Vorgänge.
   - Befehle der Azure-Befehlszeilenschnittstelle, die im Modus **arm** ausgeführt werden.
@@ -63,7 +53,7 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
 - Der Name des Ressourcentyps enthält nicht das Wort **(klassisch)**. Die folgende Abbildung zeigt den Typ **Speicherkonto**.
 
-    ![Web-App](./media/resource-manager-deployment-model/resource-manager-type.png)
+   ![Web-App](./media/resource-manager-deployment-model/resource-manager-type.png)
 
 Die in der folgenden Abbildung dargestellte Anwendung zeigt über den Ressourcen-Manager bereitgestellte Ressourcen in einer einfachen Ressourcengruppe.
 
@@ -79,6 +69,8 @@ Außerdem gibt es Beziehungen zwischen den Ressourcen innerhalb der Ressourcenan
 
 ## Merkmale der klassischen Bereitstellung
 
+Das klassische Bereitstellungsmodell ist Ihnen möglicherweise unter den Bezeichnungen "Service-Management-Modell" oder "Dienstverwaltungsmodell" bekannt.
+
 In der Azure-Dienstverwaltung werden die Compute-, Speicher- oder Netzwerkressourcen für das Hosten von virtuellen Computern wie folgt bereitgestellt:
 
 - Ein erforderlicher Clouddienst, der als Container für das Hosten virtueller Computer (Compute) fungiert. Virtuelle Computer werden automatisch mit einer Netzwerkschnittstellenkarte (Network Interface Card, NIC) bereitgestellt, und ihnen wird von Azure eine IP-Adresse zugewiesen. Darüber hinaus enthält der Clouddienst eine externe Lastenausgleichsinstanz, eine öffentliche IP-Adresse und Standardendpunkte, um Remotedesktop- und Remote-PowerShell-Datenverkehr für die Windows-basierten virtuellen Computer und Secure Shell-Datenverkehr (SSH) für Linux-basierte virtuelle Computer zu ermöglichen.
@@ -91,25 +83,21 @@ Ressourcen, die im klassischen Bereitstellungsmodell erstellt wurden, weisen fol
 
   - [Klassisches Portal](https://manage.windowsazure.com)
 
-        ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
+   ![Klassisches Portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        Alternativ können Sie das Vorschauportal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
+   Alternativ können Sie das Azure-Portal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
 
-        ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
+   ![Klassische Bereitstellung](./media/resource-manager-deployment-model/select-classic.png)
 
-  - In Azure PowerShell-Versionen vor 1.0 werden Befehle im Modus **AzureServiceManagement** ausgeführt (dies ist der Standardmodus, wenn Sie also nicht speziell zu „AzureResourceManager“ wechseln, befinden Sie sich bereits im AzureServiceManagement-Modus).
+  - Verwenden Sie in Azure PowerShell die Dienstverwaltungsversion der Befehle. Diese Befehlsnamen haben das Format *Verb-AzureNomen*, wie unten dargestellt.
 
-            PS C:\> Switch-AzureMode -Name AzureServiceManagement
-
-  - Verwenden Sie in Azure PowerShell 1.0 die Dienstverwaltungsversion der Befehle. Diese Befehlsnamen haben das Format *Verb-AzureNoun*, wie unten dargestellt.
-
-            PS C:\> Get-AzureDeployment
+            Get-AzureDeployment
 
   - [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx) für REST-Vorgänge.
   - Befehle der Azure-Befehlszeilenschnittstelle, die im Modus **asm** oder im Standardmodus ausgeführt werden.
 - Der Name des Ressourcentyps enthält das Wort **(klassisch)**. Die folgende Abbildung zeigt den Typ **Speicherkonto (klassisch)**.
 
-    ![Klassischer Typ](./media/resource-manager-deployment-model/classic-type.png)
+   ![Klassischer Typ](./media/resource-manager-deployment-model/classic-type.png)
 
 Sie können weiterhin das Azure-Portal zur Verwaltung von Ressourcen verwenden, die über die klassische Bereitstellung erstellt wurden.
 
@@ -143,10 +131,12 @@ Weitere Informationen zur Verwendung von Tags im Ressourcen-Manager finden Sie u
 
 ## Unterstützte Vorgänge für die Bereitstellungsmodelle
 
-Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstützen keine Ressourcen-Manager-Vorgänge. In einigen Fällen können Sie mithilfe eines Ressourcen-Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder administrative Aufgaben ausführen, z. B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Ressourcen-Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die sowohl mit dem Ressourcen-Manager als auch mit dem klassischen Modell erstellte virtuelle Computer enthält. Wenn Sie folgenden PowerShell-Befehl ausführen, werden alle virtuellen Computer angezeigt:
+Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstützen keine Ressourcen-Manager-Vorgänge. In einigen Fällen können Sie mithilfe eines Ressourcen-Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder administrative Aufgaben ausführen, z. B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Ressourcen-Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die sowohl mit dem Ressourcen-Manager als auch mit dem klassischen Modell erstellte virtuelle Computer enthält. Wenn Sie folgenden PowerShell-Befehl ausführen:
 
-    PS C:\> Get-AzureRmResourceGroup -Name ExampleGroup
-    ...
+    Get-AzureRmResourceGroup -Name ExampleGroup
+
+werden alle virtuellen Computer angezeigt:
+
     Resources :
      Name                 Type                                          Location
      ================     ============================================  ========
@@ -155,10 +145,12 @@ Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstütze
      ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
     ...
 
-Wenn Sie jedoch den Befehl „Get-AzureRmVM“ ausführen, werden nur die virtuellen Computer abgerufen, die mit Resource Manager erstellt wurden.
+Wenn Sie jedoch den Befehl **Get-AzureRmVM** ausführen,
 
-    PS C:\> Get-AzureRmVM -ResourceGroupName ExampleGroup
-    ...
+    Get-AzureRmVM -ResourceGroupName ExampleGroup
+
+werden nur die virtuellen Computer abgerufen, die mit Resource Manager erstellt wurden.
+
     Id       : /subscriptions/xxxx/resourceGroups/ExampleGroup/providers/Microsoft.Compute/virtualMachines/ExampleResourceVM
     Name     : ExampleResourceVM
     ...
@@ -185,7 +177,8 @@ Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellun
 
 ## Nächste Schritte
 
-- Informationen zum Erstellen deklarativer Bereitstellungsvorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
+- Eine exemplarische Vorgehensweise zum Erstellen einer Vorlage, mit der ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk definiert werden, finden Sie unter [Resource Manager-Vorlage – exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
+- Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

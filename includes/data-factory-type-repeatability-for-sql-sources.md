@@ -2,7 +2,7 @@
 
 Beim Kopieren von Daten in Azure SQL/SQL Server aus anderen Datenspeichern muss die Wiederholbarkeit berücksichtigt werden, um unbeabsichtigte Ergebnisse zu vermeiden.
 
-Beim Kopieren von Daten in eine Azure SQL/SQL Server-Datenbank fügt die Kopieraktivität das Dataset standardmäßig mit APPEND an die Senkentabelle an. Wenn Sie z. B. Daten aus einer CSV-Datei mit zwei Datensätzen in eine Azure SQL-/SQL Server-Datenbank kopieren, sieht die Tabelle wie folgt aus:
+Beim Kopieren von Daten in eine Azure SQL/SQL Server-Datenbank fügt die Kopieraktivität das Dataset standardmäßig mit APPEND an die Senkentabelle an. Wenn Sie z. B. Daten aus einer CSV-Datei mit zwei Datensätzen in eine Azure SQL-/SQL Server-Datenbank kopieren, sieht die Tabelle wie folgt aus:
 	
 	ID	Product		Quantity	ModifiedDate
 	...	...			...			...
@@ -20,7 +20,7 @@ Angenommen, Sie haben Fehler in der Quelldatei gefunden und die Menge von "Down 
 
 Um dies zu vermeiden, müssen Sie UPSERT-Semantik (zum Aktualisieren und Einfügen) angeben, indem Sie eines der beiden folgenden Verfahren nutzen.
 
-> [AZURE.NOTE]Ein Slice kann in Azure Data Factory automatisch gemäß der angegebenen Wiederholungsrichtlinie wiederholt werden.
+> [AZURE.NOTE] Ein Slice kann in Azure Data Factory automatisch gemäß der angegebenen Wiederholungsrichtlinie wiederholt werden.
 
 ### Verfahren 1
 
@@ -50,6 +50,7 @@ Angenommen, der Datensatz "Flat Washer" wurde aus der ursprünglichen CSV-Datei 
 Weitere Schritte müssen nicht erfolgen. Die Kopieraktivität hat das Bereinigungsskript ausgeführt, um die dem Slice entsprechenden Daten zu löschen. Dann wurde die Eingabe aus der CSV-Datei (die jetzt nur noch 1 Datensatz enthielt) gelesen und in die Tabelle eingefügt.
 
 ### Verfahren 2
+> [AZURE.IMPORTANT] sliceIdentifierColumnName wird für Azure SQL Data Warehouse derzeit nicht unterstützt.
 
 Ein anderes Verfahren zum Erreichen von Wiederholbarkeit sieht eine dedizierte Spalte (**SliceIdentifierColumnName**) in der Zieltabelle vor. Diese Spalte wird von Azure Data Factory verwendet, um sicherzustellen, dass Quell- und Zielserver synchron bleiben. Dieser Ansatz funktioniert, wenn das Schema der SQL-Zieltabelle flexibel geändert oder definiert werden kann.
 
@@ -68,4 +69,4 @@ Azure Data Factory füllt diese Spalte den Anforderungen entsprechend auf, um si
 
 Ähnlich wie bei Verfahren 1 bereinigt die Kopieraktivität zunächst automatisch die Daten eines bestimmten Slices in der SQL-Zieltabelle. Anschließend wird die Kopieraktivität normal ausgeführt, um für diesen Slice Daten aus der Quelle im Ziel einzufügen.
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0330_2016-->

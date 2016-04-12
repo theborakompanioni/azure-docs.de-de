@@ -20,10 +20,11 @@
 # Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit PowerShell und Azure Resource Manager
 
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
+- [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Azure-Portal – klassisch](vpn-gateway-site-to-site-create.md)
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Bereitstellungsmodells aus dem **Azure Resource Manager** geführt. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
+In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Bereitstellungsmodells aus dem **Azure Resource Manager** geführt. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -145,7 +146,7 @@ In diesem Schritt erstellen Sie das Gateway des virtuellen Netzwerks. Beachten S
 
 Verwenden Sie die folgenden Werte:
 
-- Der **-GatewayType** für eine Site-to-Site-Konfiguration lautet **Vpn**. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Beispielsweise kann für andere Gatewaykonfigurationen für -GatewayType die Einstellung „ExpressRoute“ erforderlich sein. 
+- **-GatewayType** für eine Standort-zu-Standort-Konfiguration lautet **Vpn**. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Beispielsweise kann für andere Gatewaykonfigurationen für -GatewayType die Einstellung „ExpressRoute“ erforderlich sein. 
 
 - **-VpnType** kann **routingbasiert** (in einigen Dokumentationen als dynamisches Gateway bezeichnet) oder **richtlinienbasiert** sein (in einigen Dokumentationen als statisches Gateway bezeichnet). Weitere Informationen zu VPN-Gatewaytypen finden Sie unter [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md#vpntype).
 - **-GatewaySku** kann auf **Basic**, **Standard** oder **HighPerformance** festgelegt werden. 	
@@ -188,4 +189,4 @@ Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gat
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

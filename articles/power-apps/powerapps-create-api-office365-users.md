@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # Erstellen einer neuen Office 365-Benutzer-API in PowerApps Enterprise
 
 > [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/create-api-office365-users.md)
+- [Logik-Apps](../articles/connectors/connectors-create-api-office365-users.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-users.md)
 
 Fügen Sie die Office 365-Benutzer-API in der App Service-Umgebung Ihrer Organisation (Mandant) hinzu.
@@ -107,7 +107,7 @@ Einige hilfreiche Informationen zu AAD-Anwendungen finden Sie unter [Wie und war
 
 ## Informationen zu REST-APIs
 
-Referenz zur [Office 365-Benutzer-REST-API](../connectors/create-api-office365-users.md).
+Referenz zur [Benutzer-REST-API für Office 365](../connectors/connectors-create-api-office365-users.md)
 
 ## Zusammenfassung und nächste Schritte
 In diesem Thema haben Sie PowerApps Enterprise die Office 365-Benutzer-API hinzugefügt. Als Nächstes können Sie den Zugriff für Benutzer auf die API einrichten, damit sie den Apps der Benutzer hinzugefügt werden kann:
@@ -128,4 +128,4 @@ In diesem Thema haben Sie PowerApps Enterprise die Office 365-Benutzer-API hinzu
 [10]: ./media/powerapps-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/powerapps-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

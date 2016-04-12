@@ -27,43 +27,27 @@
 Dieses Thema zeigt ein Python-Codebeispiel, das auf einem Ubuntu Linux-Clientcomputer ausgeführt wird, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen.
 
 
-## Voraussetzungen
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
+[Voraussetzungen für die Verwendung des pymssql Python-Treibers für SQL Server](https://msdn.microsoft.com/library/mt694094.aspx#Ubuntu-Linux)
 
-- [Python 2.7.6](https://www.python.org/download/releases/2.7.6/).
-
-
-### Installieren der erforderlichen Module
-
-
-Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Python-Skript erstellen möchten. Geben Sie die folgenden Befehle zum Installieren von **FreeTDS** und **pymssql** ein. In pymssql wird FreeTDS für die Verbindung mit SQL-Datenbanken verwendet.
-
-	sudo apt-get --assume-yes update
-	sudo apt-get --assume-yes install freetds-dev freetds-bin
-	sudo apt-get --assume-yes install python-dev python-pip
-	sudo pip install pymssql
-
-
-### Eine SQL-Datenbank
+## Schritt 2: Erstellen einer SQL-Datenbank
 
 Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank. Sie sollten unbedingt die Anleitung zum Erstellen einer **AdventureWorks-Datenbankvorlage** befolgen. Die unten gezeigten Beispiele funktionieren nur mit dem **AdventureWorks-Schema**.
 
-## Schritt 1: Abrufen der Verbindungsdetails
+## Schritt 3: Abrufen der Verbindungsdetails
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-## Schritt 2: Verbinden
-
-!!!!!sql-database-include-connection-string-details-20-portalshots.md
+## Schritt 4: Verbinden
 
 Die [pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html)-Funktion dient zum Herstellen einer Verbindung mit der SQL-Datenbank.
 
 	import pymssql
 	conn = pymssql.connect(server='yourserver.database.windows.net', user='yourusername@yourserver', password='yourpassword', database='AdventureWorks')
 
-
-## Schritt 3: Ausführen einer Abfrage
+## Schritt 5: Ausführen einer Abfrage
 
 Mit der [cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute)-Funktion können Sie ein Resultset aus einer Abfrage einer SQL-Datenbank abrufen. Diese Funktion akzeptiert praktisch jede Abfrage und gibt ein Resultset zurück, das mithilfe von [cursor.fetchone()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone) durchlaufen werden kann.
 
@@ -78,7 +62,7 @@ Mit der [cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.C
 	    row = cursor.fetchone()
 
 
-## Schritt 4: Einfügen einer Zeile
+## Schritt 6: Einfügen einer Zeile
 
 In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Anweisung sicher ausführen, Parameter zum Schutz Ihrer Anwendung vor einer [Einschleusung von SQL-Befehlen](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) übergeben und den automatisch generierten [Primärschlüsselwert](https://msdn.microsoft.com/library/ms179610.aspx) abrufen.
 
@@ -93,7 +77,7 @@ In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.co
 	    row = cursor.fetchone()
 
 
-## Schritt 5: Durchführen eines Rollbacks für eine Transaktion
+## Schritt 7: Durchführen eines Rollbacks für eine Transaktion
 
 
 Dieses Codebeispiel veranschaulicht die Verwendung von Transaktionen für folgende Aufgaben:
@@ -117,4 +101,4 @@ Dieses Codebeispiel veranschaulicht die Verwendung von Transaktionen für folgen
 
 Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

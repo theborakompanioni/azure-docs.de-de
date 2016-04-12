@@ -252,7 +252,7 @@ Im folgenden Beispiel werden alle unterstützten Orte für jeden Ressourcentyp z
 
     azure location list
 
-Sie können die Ergebnisse auch mit einem Tool wie **jq** filtern. Informationen zu Tools wie „jq“ finden Sie unter [Nützliche Tools für die Interaktion mit Azure](/virtual-machines/resource-group-deploy-debug/#useful-tools-to-interact-with-azure).
+Sie können das Ortsergebnis auch mit einem JSON-Hilfsprogramm wie [jq](https://stedolan.github.io/jq/) filtern.
 
     azure location list --json | jq '.[] | select(.name == "Microsoft.Web/sites")'
 
@@ -304,4 +304,4 @@ Sie können die Datei öffnen und nach dem Element **apiVersions** suchen.
 - Weitere Informationen zum Erstellen von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 - Informationen zum Bereitstellen von Vorlagen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!------HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

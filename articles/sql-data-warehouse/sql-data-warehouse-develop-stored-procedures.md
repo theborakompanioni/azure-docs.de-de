@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Gespeicherte Prozeduren in SQL Data Warehouse
@@ -38,11 +38,11 @@ SQL Data Warehouse unterstützt maximal acht Schachtelungsebenen. Dies ist ein U
 
 Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
 
-```
+```sql
 EXEC prc_nesting
 ```
 Wenn die gespeicherte Prozedur auch einen weiteren EXEC-Aufruf durchführt, wird dadurch die Schachtelungsebene auf 2 erhöht.
-```
+```sql
 CREATE PROCEDURE prc_nesting
 AS
 EXEC prc_nesting_2  -- This call is nest level 2
@@ -50,7 +50,7 @@ GO
 EXEC prc_nesting
 ```
 Wenn die zweite Prozedur dann dynamischen SQL-Code ausführt, wird dadurch die Schachtelungsebene auf 3 erhöht.
-```
+```sql
 CREATE PROCEDURE prc_nesting_2
 AS
 EXEC sp_executesql 'SELECT 'another nest level'  -- This call is nest level 2
@@ -97,4 +97,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

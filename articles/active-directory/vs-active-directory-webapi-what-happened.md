@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Was ist mit dem WebApi-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)? | Microsoft Azure"
-	description="Beschreibt, was mit der MVC-Projekt-WebApi geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen"
+	description="Beschreibt, was mit der MVC-Projekt-WebApi geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen"
   services="active-directory"
 	documentationCenter=""
 	authors="TomArcher"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="03/28/2016"
 	ms.author="tarcher"/>
 
 # Was ist mit dem WebApi-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-webapi-getting-started.md)
-> - [What Happened](vs-active-directory-webapi-what-happened.md)
+> - [Erste Schritte](vs-active-directory-webapi-getting-started.md)
+> - [Was ist passiert?](vs-active-directory-webapi-what-happened.md)
 
 ##Verweise wurden hinzugefügt
 
@@ -59,7 +59,8 @@ Wenn Sie bereits eine Startklasse in Ihrem Projekt verwendet haben, wurde die **
 
 ###Die Datei "app.config" oder "web.config" weist neue Konfigurationswerte auf.
 
-Die folgenden Konfigurationseinträge wurden hinzugefügt. ```
+Die folgenden Konfigurationseinträge wurden hinzugefügt.
+```
 	`<appSettings>
     		<add key="ida:ClientId" value="ClientId from the new Azure AD App" />
     		<add key="ida:Tenant" value="Your selected Azure AD Tenant" />
@@ -116,4 +117,4 @@ Ihre Azure Active Directory-App wurde aktualisiert und enthält nun die Berechti
 
 [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0128_2016--->
+<!---HONumber=AcomDC_0330_2016-->

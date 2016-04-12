@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/18/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verwalten von ungleichmäßigen Tabellenverteilungen
@@ -27,7 +27,7 @@ Dieser Artikel soll Ihnen helfen, Datenungleichmäßigkeiten in Ihren Hash-verte
 
 Eine Abfrage wie unten hilft Ihnen, ungleichmäßige Tabellen zu identifizieren.
 
-```
+```sql
 CREATE VIEW dbo.vDistributionSkew
 AS
 WITH base
@@ -113,7 +113,7 @@ FROM	size
 
 Nach dem Erstellen der Ansicht können wir mithilfe einer Abfrage wie der unten dargestellten die Ungleichmäßigkeit in unseren Tabellen überprüfen.
 
-```
+```sql
 SELECT	[two_part_name]
 ,		[distribution_id]
 ,		[row_count]
@@ -151,4 +151,4 @@ Weitere Details zum Thema „Tabellenverteilung“ finden Sie in den folgenden A
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

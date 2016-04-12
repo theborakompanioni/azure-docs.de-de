@@ -1,11 +1,11 @@
 
 In diesem Abschnitt erfahren Sie, wie Sie Neuigkeiten als Vorlage mit Tags von einer .NET-Konsolen-App senden.
 
-Bei Verwendung von Mobile Services finden Sie weitere Informationen im Lernprogramm [Erste Schritte mit Push](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md).
+Wenn Sie Mobile Apps verwenden, lesen Sie bitte das Tutorial [Hinzufügen von Pushbenachrichtigungen zu Mobile Apps](../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md), und wählen Sie oben Ihre Plattform aus.
 
 Wenn Sie Java oder PHP verwenden möchten, lesen Sie die Informationen unter [Verwenden von Notification Hubs von Java/PHP](../articles/notification-hubs/notification-hubs-java-backend-how-to.md). Sie können Benachrichtigungen von beliebigen Back-Ends mithilfe der [Notification Hubs-REST-Schnittstelle](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) senden.
 
-Überspringen Sie die Schritte 1 bis 3, wenn Sie eine Konsolen-App für das Senden von Benachrichtigungen erstellt haben, als Sie das Tutorial [Erste Schritte mit Notification Hubs][get-started] abgeschlossen haben.
+Überspringen Sie die Schritte 1 bis 3, wenn Sie eine Konsolen-App für das Senden von Benachrichtigungen erstellt haben, als Sie das Tutorial [Erste Schritte mit Notification Hubs][get-started] abgeschlossen haben.
 
 1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolenanwendung 
 
@@ -78,4 +78,4 @@ Wenn Sie Java oder PHP verwenden möchten, lesen Sie die Informationen unter [Ve
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

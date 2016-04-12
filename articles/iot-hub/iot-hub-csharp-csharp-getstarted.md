@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Azure IoT Hub für C# | Microsoft Azure"
-	description="In diesem Lernprogramm werden die ersten Schritte für die Verwendung von Azure IoT Hub mit C# beschrieben."
+	description="Tutorial für den Einstieg in Azure IoT Hub mit C#. Verwenden Sie Azure IoT Hub und C# mit den Microsoft Azure IoT SDKs, um eine IoT-Lösung zu implementieren."
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="dominicbetts"
@@ -125,4 +125,4 @@ In diesem Tutorial haben Sie im Portal einen neuen IoT Hub konfiguriert und ansc
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

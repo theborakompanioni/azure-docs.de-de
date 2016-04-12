@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Übersicht über Microsoft Azure IoT Suite | Microsoft Azure"
-	description="Hier finden Sie eine Übersicht über Azure IoT Suite, u. a. Informationen zum Packen und vorkonfigurierten Lösungen."
+	description="Hier erhalten Sie einen Überblick über die von Azure IoT Suite bereitgestellten vorkonfigurierten IoT-Lösungen zum Erfassen, Analysieren und Speichern von Daten, zum Bereitstellen von Visualisierungen und Integrieren in andere Systeme."
 	services=""
     suite="iot-suite"
 	documentationCenter=""
@@ -19,7 +19,7 @@
 
 # Übersicht über Azure IoT Suite
 
-Die Azure IoT-Dienste bieten zahlreiche Funktionen. Diese Dienste auf Unternehmensniveau ermöglichen Folgendes:
+Die Azure IoT-Dienste (Internet of Things, Internet der Dinge) bieten zahlreiche Funktionen. Diese Dienste auf Unternehmensniveau ermöglichen Folgendes:
 
 - Sammeln von Daten von Geräten
 - Analysieren von Datenströmen während des Betriebs
@@ -74,4 +74,4 @@ Sie haben nun einen Überblick über die Möglichkeiten der IoT-Suite erlangt un
 [lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -117,4 +117,4 @@ Sie können jetzt mit dem virtuellen Computer wie mit jedem anderen Server arbei
 * Automatisieren Sie die Bereitstellung und Verwaltung von virtuellen Computern und Workloads mithilfe von [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/documentation/templates/).
 * Sie können auch schnell einen [virtuellen Linux-Computer erstellen](virtual-machines-linux-quick-create-cli.md), indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

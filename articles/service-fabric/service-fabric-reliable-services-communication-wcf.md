@@ -22,25 +22,38 @@ Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationssta
 ## WCF-Kommunikationslistener
 Die WCF-spezifische Implementierung von **ICommunicationListener** erfolgt über die **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener**-Klasse.
 
+Angenommen, wir haben einen Dienstvertrag vom Typ `ICalculator`.
+
+```csharp
+[ServiceContract]
+public interface ICalculator
+{
+    [OperationContract]
+    Task<int> Add(int value1, int value2);
+}
+```
+
+Wir können auf folgende Weise einen WCF-Kommunikationslistener im Dienst erstellen.
+
 ```csharp
 
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
 {
-    // TODO: If your service needs to handle user requests, return a list of ServiceReplicaListeners here.
-    return new[] { new ServiceReplicaListener(parameters =>
-        new WcfCommunicationListener(ServiceInitializationParameters,typeof(ICalculator), this)
-        {
+    return new[] { new ServiceReplicaListener((context) =>
+        new WcfCommunicationListener<ICalculator>(
+            wcfServiceObject:this,
+            serviceContext:context,
             //
             // The name of the endpoint configured in the ServiceManifest under the Endpoints section
             // that identifies the endpoint that the WCF ServiceHost should listen on.
             //
-            EndpointResourceName = "ServiceEndpoint",
+            endpointResourceName: "WcfServiceEndpoint",
 
             //
             // Populate the binding information that you want the service to use.
             //
-            Binding = this.CreateListenBinding()
-        }
+            listenerBinding: WcfUtility.CreateTcpListenerBinding()
+        )
     )};
 }
 
@@ -52,66 +65,61 @@ Für das Schreiben von Clients, die über WCF mit Diensten kommunizieren, bietet
 ```csharp
 
 public WcfCommunicationClientFactory(
-    ServicePartitionResolver servicePartitionResolver = null,
-    Binding binding = null,
-    object callback = null,
-    IList<IExceptionHandler> exceptionHandlers = null,
-    IEnumerable<Type> doNotRetryExceptionTypes = null)
-
+    Binding clientBinding = null,
+    IEnumerable<IExceptionHandler> exceptionHandlers = null,
+    IServicePartitionResolver servicePartitionResolver = null,
+    string traceId = null,
+    object callback = null);
 ```
 
 Der WCF-Kommunikationskanal ist vom **WcfCommunicationClient** aus zugänglich, der mit **WcfCommunicationClientFactory** erstellt wurde.
 
 ```csharp
 
-public class WcfCommunicationClient<TChannel> : ICommunicationClient where TChannel : class
-{
-    public TChannel Channel { get; }
-    public ResolvedServicePartition ResolvedServicePartition { get; set; }
-}
+public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationClient<ICalculator>>
+   {
+       public WcfCommunicationClient(ICommunicationClientFactory<WcfCommunicationClient<ICalculator>> communicationClientFactory, Uri serviceUri, ServicePartitionKey partitionKey = null, TargetReplicaSelector targetReplicaSelector = TargetReplicaSelector.Default, string listenerName = null, OperationRetrySettings retrySettings = null)
+           : base(communicationClientFactory, serviceUri, partitionKey, targetReplicaSelector, listenerName, retrySettings)
+       {
+       }
+   }
 
 ```
 
-Clientcode kann **WcfCommunicationClientFactory** zusammen mit dem **ServicePartitionClient** verwenden, um den Dienstendpunkt festzulegen und mit dem Dienst zu kommunizieren.
+Clientcode kann **WcfCommunicationClientFactory** zusammen mit dem **WcfCommunicationClient** verwenden, welcher den **ServicePartitionClient** implementiert. Damit kann der Code den Dienstendpunkt festlegen und mit dem Dienst kommunizieren.
 
 ```csharp
+// Create binding
+Binding binding = WcfUtility.CreateTcpClientBinding();
+// Create a partition resolver
+IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();
+// create a  WcfCommunicationClientFactory object.
+var wcfClientFactory = new WcfCommunicationClientFactory<ICalculator>
+    (clientBinding: binding, servicePartitionResolver: partitionResolver);
 
 //
-// Create a service resolver for resolving the endpoints of the calculator service.
-//
-ServicePartitionResolver serviceResolver = new ServicePartitionResolver(() => new FabricClient());
-
-//
-// Create the binding.
-//
-NetTcpBinding binding = CreateClientConnectionBinding();
-
-var clientFactory = new WcfCommunicationClientFactory<ICalculator>(
-    serviceResolver,// ServicePartitionResolver
-    binding,        // Client binding
-    null,           // Callback object
-    null);          // do not retry Exception types
-
-
-//
-// Create a client for communicating with the calc service that has been created with the
+// Create a client for communicating with the ICalculator service that has been created with the
 // Singleton partition scheme.
 //
-var calculatorServicePartitionClient = new ServicePartitionClient<WcfCommunicationClient<ICalculator>>(
-    clientFactory,
-    ServiceName);
+var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
+                wcfClientFactory,
+                ServiceUri,
+                ServicePartitionKey.Singleton);
 
 //
 // Call the service to perform the operation.
 //
-var result = calculatorServicePartitionClient.InvokeWithRetryAsync(
-    client => client.Channel.AddAsync(2, 3)).Result;
+var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
+                client => client.Channel.Add(2, 3)).Result;
 
 ```
+>[AZURE.NOTE] Der Standard-ServicePartitionResolver geht davon aus, dass der Client im selben Cluster wie der Dienst ausgeführt wird. Wenn das nicht der Fall ist, erstellen Sie ein ServicePartitionResolver-Objekt, und übergeben Sie die Cluster-Verbindungsendpunkte.
 
 ## Nächste Schritte
 * [Remoteprozeduraufruf mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
 
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+* [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
+
+<!---HONumber=AcomDC_0330_2016-->

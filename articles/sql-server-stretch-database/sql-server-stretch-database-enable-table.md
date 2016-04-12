@@ -61,7 +61,7 @@ Verwenden Sie die folgenden Optionen beim Ausführen von CREATE TABLE oder ALTER
 
 -   Verwenden Sie optional die `FILTER_PREDICATE = <predicate>`-Klausel, um ein Prädikat anzugeben, mit dem Sie die zu migrierenden Zeilen auswählen können, wenn die Tabelle historische und aktuelle Daten enthält. Das Prädikat muss eine Inline-Tabellenwertfunktion aufrufen. Weitere Informationen finden Sie unter [Write an Inline Table-Valued Function to Select Rows (Stretch Database)](sql-server-stretch-database-predicate-function.md) (Schreiben einer Inline-Tabellenwertfunktion zum Auswählen von Zeilen (Stretch-Datenbank)). Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
 
-        > If you provide a filter predicate that performs poorly, data migration also performs poorly. Stretch Database applies the filter predicate to the table by using the CROSS APPLY operator.
+    >   [AZURE.NOTE] Falls Sie ein Filterprädikat mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet das Filterprädikat mithilfe des CROSS APPLY-Operators auf die Tabelle an.
 
     Bis einschließlich RC1 in CTP 3.1 steht diese Option im Assistenten zum Aktivieren einer Datenbank für Stretch nicht zur Verfügung. Sie müssen eine CREATE TABLE- oder ALTER TABLE-Anweisung verwenden, um eine Tabelle für Stretch-Datenbank mit dieser Option zu konfigurieren. Weitere Informationen finden Sie unter [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
 
@@ -114,4 +114,4 @@ Weitere Informationen finden Sie unter [CREATE TABLE (Transact-SQL)](https://msd
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

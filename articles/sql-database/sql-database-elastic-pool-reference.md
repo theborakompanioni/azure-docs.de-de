@@ -1,17 +1,17 @@
 <properties
-	pageTitle="Referenz zu Pools für elastische Datenbanken für SQL-Datenbank | Microsoft Azure" 
+	pageTitle="Referenz zu Pools für elastische Datenbanken für SQL-Datenbank | Microsoft Azure"
 	description="Diese Referenz enthält Details und Links zu Artikeln über Pools für elastische Datenbanken sowie Informationen zur Programmierbarkeit."
 	keywords="eDTU"
 	services="sql-database"
 	documentationCenter=""
 	authors="sidneyh"
-	manager="jhubbard"
+	manager="jeffreyg"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="03/09/2016"
+	ms.date="03/24/2016"
 	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -25,7 +25,7 @@ Für SaaS-Entwickler, die Dutzende, Hunderte oder sogar Tausende von Datenbanken
 ## Voraussetzungen für das Erstellen und Verwalten von Pools für elastische Datenbanken
 
 - Pools für elastische Datenbanken sind nur auf Servern in Azure SQL-Datenbank V12 verfügbar. Informationen zum Upgraden auf V12 und zum Migrieren Ihrer Datenbanken direkt in einen Pool finden Sie unter [Upgrade auf Azure SQL-Datenbank V12](sql-database-upgrade-server-powershell.md).
-- Das Erstellen und Verwalten von Pools für elastische Datenbanken wird nur vom [Azure-Portal](https://portal.azure.com), von [PowerShell](sql-database-elastic-pool-powershell.md) und von einer .NET-Clientbibliothek (nur Azure-Ressourcen-Manager) unterstützt. Das [klassische Portal](https://manage.windowsazure.com/) und Dienstverwaltungsbefehle werden nicht unterstützt.
+- Das Erstellen und Verwalten von Pools für elastische Datenbanken wird nur vom [Azure-Portal](https://portal.azure.com), von [PowerShell](sql-database-elastic-pool-create-powershell.md) und von einer .NET-Clientbibliothek (nur Azure Resource Manager) unterstützt. Das [klassische Portal](https://manage.windowsazure.com/) und Dienstverwaltungsbefehle werden nicht unterstützt.
 - Darüber hinaus wird das Erstellen neuer elastischer Datenbanken und das Verschieben vorhandener Datenbanken in und aus Pools für elastische Datenbanken mit [Transact-SQL](#transact-sql) unterstützt.
 
 
@@ -37,7 +37,7 @@ Die folgenden Artikel helfen Ihnen beim Einstieg in elastische Datenbanken und e
 | :-- | :-- |
 | [Pools für elastische Datenbanken in Azure SQL-Datenbanken](sql-database-elastic-pool.md) | Übersicht zu Pools für elastische Datenbanken |
 | [Überlegungen zum Preis und zur Leistung](sql-database-elastic-pool-guidance.md) | Informationen zum Bewerten, ob der Einsatz eines Pools für elastische Datenbanken wirtschaftlich ist |
-| [Erstellen und Verwalten von Pools für elastische Datenbanken mit dem Azure-Portal](sql-database-elastic-pool-portal.md) | Informationen zum Erstellen und Verwalten eines Pools für elastische Datenbanken im Azure-Portal |
+| [Erstellen eines skalierbaren Pools für elastische SQL-Datenbanken im Azure-Portal](sql-database-elastic-pool-create-portal.md) | Informationen zum Erstellen und Verwalten eines Pools für elastische Datenbanken im Azure-Portal |
 | [Erstellen und Verwalten eines Pools für elastische SQL-Datenbanken mit PowerShell](sql-database-elastic-pool-powershell.md) | Erstellen und Verwalten eines Pools für elastische Datenbanken mit PowerShell-Cmdlets |
 | [Erstellen und Verwalten einer SQL-Datenbank mit der Azure SQL-Datenbankbibliothek für .NET](sql-database-elastic-pool-csharp.md) | Informationen zum Erstellen und Verwalten eines Pools für elastische Datenbanken mit C# |
 | [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md) | Eine Übersicht über den Dienst für elastische Aufträge, der die Ausführung von T-SQL-Skripts in allen elastischen Datenbanken in einem Pool ermöglicht |
@@ -77,15 +77,6 @@ Ein Pools für elastische Datenbanken ist eine Azure-Ressourcen-Manager-Ressourc
 [AZURE.INCLUDE [Tabelle der SQL-Datenbank-Dienstebenen für elastische Datenbanken](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
 
-
-## Einschränkungen für Azure-Ressourcen-Manager:
-
-Azure SQL-Datenbank V12-Server befinden sich in Ressourcengruppen.
-
-- Jede Ressourcengruppe kann maximal 800 Server enthalten.
-- Jeder Server kann über maximal 800 elastische Pools verfügen.
-
-
 ## Latenzzeit der elastischen Poolvorgänge
 
 - Änderungen der garantierten eDTUs pro Datenbank ("databaseDtuMin") oder der maximalen eDTUs pro Datenbank ("databaseDtuMax") werden i. d. R. innerhalb von fünf Minuten oder weniger abgeschlossen.
@@ -95,8 +86,14 @@ Azure SQL-Datenbank V12-Server befinden sich in Ressourcengruppen.
 
 ## PowerShell, REST-API und die Clientbibliothek für .NET
 
-Zum Erstellen und Verwalten elastischer Pools stehen verschiedene PowerShell-Cmdlets und REST-API-Befehle zur Verfügung: Ausführliche Informationen und Codebeispiele finden Sie unter [Erstellen und Verwalten eines Pool für elastische SQL-Datenbanken mit PowerShell](sql-database-elastic-pool-powershell.md) und [Erstellen und Verwalten von SQL-Datenbanken mit C#](sql-database-client-library.md).
+Weitere Details und Codebeispiele, die die Arbeit mit Pools unter Verwendung von PowerShell und C# zeigen, finden Sie hier:
 
+- [Erstellen eines elastischen Pools mit PowerShell](sql-database-elastic-pool-create-powershell.md)
+- [Erstellen eines elastischen Pools mit C#](sql-database-elastic-pool-create-csharp.md)
+- [Verwalten eines elastischen Pools mit PowerShell](sql-database-elastic-pool-manage-powershell.md)
+- [Verwalten eines elastischen Pools mit C#](sql-database-elastic-pool-manage-csharp.md)
+
+Hier ist eine kurze Übersicht über Cmdlets und äquivalente REST-API-Operationen, die mit elastischen Pools in Verbindung stehen:
 
 | [PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) | [REST-API-Befehle](https://msdn.microsoft.com/library/mt163571.aspx) |
 | :-- | :-- |
@@ -158,4 +155,4 @@ Der eDTU-Einzelpreis für einen elastischen Anwendungspool ist höher als der DT
 | 40891 | EX\_USER | Die Mindestanzahl von DTUs pro Datenbank (%d) darf die Höchstanzahl von DTUs pro Datenbank (%d) nicht überschreiten. | DTU-Mindestanzahl pro Datenbank; DTU-Höchstanzahl pro Datenbank. | Es wurde versucht, die DTU-Mindestanzahl pro Datenbank höher festzulegen, als die maximale DTU-Anzahl pro Datenbank. | Stellen Sie sicher, dass die Mindestanzahl von DTUs pro Datenbank nicht die Höchstanzahl von DTUs pro Datenbank überschreitet. |
 | TBD | EX\_USER | Die Speichergröße für eine einzelne Datenbank in einem elastischen Pool darf die maximal zulässige Größe für die Dienstebene des elastischen Pools "%.*ls" nicht überschreiten. | Dienstebene des elastischen Pools | Die maximale Größe der Datenbank überschreitet die maximale Größe, die von der Dienstebene des elastische Pools zugelassen wird. | Legen Sie die maximale Größe der Datenbank höchstens auf die maximal zulässige Größe der Dienstebene des elastische Pools fest. |
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

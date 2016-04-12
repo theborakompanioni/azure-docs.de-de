@@ -41,13 +41,15 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mit der Azur
 2. Klicken Sie auf **NEU**, auf **Datenanalyse** und anschließend auf **HDInsight**.
 
     ![Erstellen eines neuen Clusters im Azure-Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.1.png "Erstellen eines neuen Clusters im Azure-Portal")
+3. Geben Sie den **Clusternamen** ein: Dieser Name muss global eindeutig sein.
+4. Klicken Sie auf **Clustertyp auswählen**, und wählen Sie dann aus:
 
-3. Geben Sie Folgendes ein:
-
-    - **Clustername**: Dieser Name muss global eindeutig sein.
-    - **Clustertyp**: Wenn Sie nicht sicher sind, welche Angabe hier richtig ist, können Sie **Hadoop** wählen.
-    - **Clusterbetriebssystem**: Wählen Sie **Linux** aus.
-    - **Version**: Verwenden Sie die Standardversion, wenn Sie nicht wissen, was Sie auswählen sollen. Weitere Informationen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).
+    - **Clustertyp:** Wenn Sie nicht sicher sind, welche Angabe hier richtig ist, können Sie **Hadoop** auswählen. Das ist der am häufigsten verwendete Clustertyp.
+    - **Betriebssystem:** Wählen Sie **Linux** aus.
+    - **Version:** Verwenden Sie die Standardversion, wenn Sie nicht wissen, was Sie auswählen sollen. Weitere Informationen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).
+    - **Clustertarif:** Azure HDInsight bietet die Cloudlösungen für Big Data in zwei Kategorien an: Standard und Premium. Weitere Informationen finden Sie unter [Clustertarife](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers).
+    
+    ![Konfiguration des HDInsight Premium-Tarifs](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-type-configuration.png)
 
 4. Klicken Sie auf **Abonnement**, um das Azure-Abonnement auszuwählen, das für den Cluster verwendet werden soll.
 
@@ -73,7 +75,7 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mit der Azur
 
 	- **Auswahlmethode**: Wählen Sie **Aus allen Abonnements** aus, damit Speicherkonten aus all Ihren Abonnements durchsucht werden können. Wählen Sie **Zugriffsschlüssel** aus, wenn Sie den **Speichernamen** und **Zugriffsschlüssel** eines vorhandenen Speicherkontos eingeben möchten.
 
-	- **Speicherkonto auswählen/Neu**: Klicken Sie auf **Speicherkonto auswählen**, um ein vorhandenes Speicherkonto auszuwählen, das Sie dem Cluster zuordnen möchten. Alternativ hierzu können Sie auf **Neu** klicken, um ein neues Speicherkonto zu erstellen. Geben Sie den Namen des Speicherkontos in das angezeigte Feld ein. Wenn der Name verfügbar ist, wird ein grünes Häkchen angezeigt.
+	- **Speicherkonto auswählen/Neu:** Klicken Sie auf **Speicherkonto auswählen**, um ein vorhandenes Speicherkonto auszuwählen, das Sie dem Cluster zuordnen möchten. Alternativ hierzu können Sie auf **Neu** klicken, um ein neues Speicherkonto zu erstellen. Geben Sie den Namen des Speicherkontos in das angezeigte Feld ein. Wenn der Name verfügbar ist, wird ein grünes Häkchen angezeigt.
 
 	- **Standardcontainer auswählen**: Geben Sie den Namen des Standardcontainers für den Cluster ein. Sie können einen beliebigen Namen eingeben, es wird jedoch empfohlen, den Namen des Clusters zu verwenden. So können Sie leichter erkennen, dass es sich um den Container für diesen spezifischen Cluster handelt.
 
@@ -81,7 +83,7 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mit der Azur
 
 		> [AZURE.IMPORTANT] Durch die Auswahl des Standorts für die Standarddatenquelle wird auch der Standort des HDInsight-Clusters festgelegt. Der Cluster und die Standarddatenquelle müssen sich in der gleichen Region befinden.
         
-    - **Azure Active Directory-Identität für den Cluster**: Durch die Konfiguration machen Sie den Cluster basierend auf der AAD-Konfiguration für die Azure Data Lake-Speicher zugänglich.
+    - **Azure Active Directory-Identität für den Cluster:** Durch die Konfiguration machen Sie den Cluster basierend auf der AAD-Konfiguration für die Azure Data Lake-Speicher zugänglich.
 
 	Klicken Sie auf **Auswählen**, um die Datenquellenkonfiguration zu speichern.
 
@@ -158,7 +160,7 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mit der Azur
 ##Anpassen von Clustern
 
 - Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
-- Weitere Informationen finden Sie unter [Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md).
+- Weitere Informationen finden Sie unter [Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 ##Löschen des Clusters
 
@@ -193,4 +195,4 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark-Streaming: Erstellen von Echtzeit-Streaminganwendungen mithilfe von Spark in HDInsight](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/04/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Parallelitäts- und Workloadverwaltung in SQL Data Warehouse
@@ -227,7 +227,7 @@ Wenn beispielsweise DW500 die aktuelle Einstellung der DWU für Ihr SQL-Data War
 
 Verwenden Sie zum detaillierten Betrachten der Unterschiede bei der Zuweisung von Speicherressourcen aus der Perspektive der Ressourcenkontrolle die folgende Abfrage:
 
-```
+```sql
 WITH rg
 AS
 (   SELECT  pn.name									AS node_name
@@ -282,7 +282,7 @@ Um einem Benutzer Zugriff auf das SQL-Data Warehouse zu gewähren, muss er sich 
 
 Öffnen Sie eine Verbindung mit der Masterdatenbank für Ihr SQL-Data Warehouse, und führen Sie die folgenden Befehle aus:
 
-```
+```sql
 CREATE LOGIN newperson WITH PASSWORD = 'mypassword'
 
 CREATE USER newperson for LOGIN newperson
@@ -294,19 +294,19 @@ Nachdem die Anmeldung abgeschlossen ist, muss nun ein Benutzerkonto hinzugefügt
 
 Öffnen Sie eine Verbindung mit der SQL Data Warehouse-Datenbank, und führen Sie den folgenden Befehl aus:
 
-```
+```sql
 CREATE USER newperson FOR LOGIN newperson
 ```
 
 Sobald dieser abgeschlossen ist, müssen dem Benutzer Berechtigungen erteilt werden. Im Beispiel unten erteilt `CONTROL` Berechtigungen in der SQL Data Warehouse-Datenbank. `CONTROL` auf Ebene der Datenbank entspricht „db\_owner“ in SQL Server.
 
-```
+```sql
 GRANT CONTROL ON DATABASE::MySQLDW to newperson
 ```
 
 Verwenden Sie die folgende Abfrage, um die Rollen in der Workloadverwaltung zu sehen:
 
-```
+```sql
 SELECT  ro.[name]           AS [db_role_name]
 FROM    sys.database_principals ro
 WHERE   ro.[type_desc]      = 'DATABASE_ROLE'
@@ -316,13 +316,13 @@ AND     ro.[is_fixed_role]  = 0
 
 Verwenden Sie die folgende Abfrage, um einen Benutzer zu einer erhöhten Workload-Verwaltungsrolle hinzuzufügen:
 
-```
+```sql
 EXEC sp_addrolemember 'largerc', 'newperson'
 ```
 
 Verwenden Sie die folgende Abfrage, um einen Benutzer aus einer Workload-Verwaltungsrolle zu entfernen:
 
-```
+```sql
 EXEC sp_droprolemember 'largerc', 'newperson'
 ```
 
@@ -330,7 +330,7 @@ EXEC sp_droprolemember 'largerc', 'newperson'
 
 Verwenden Sie die folgende Abfrage, um festzustellen, welche Benutzer Mitglieder einer bestimmten Rolle sind:
 
-```
+```sql
 SELECT	r.name AS role_principal_name
 ,		m.name AS member_principal_name
 FROM	sys.database_role_members rm
@@ -343,7 +343,7 @@ WHERE	r.name IN ('mediumrc','largerc', 'xlargerc')
 ### Erkennung von Abfragen in der Warteschlange
 Zum Identifizieren von Abfragen, die sich in einer Parallelitätswarteschlange befinden, können Sie immer die DMV `sys.dm_pdw_exec_requests` verwenden.
 
-```
+```sql
 SELECT 	 r.[request_id]									AS Request_ID
 		,r.[status]										AS Request_Status
 		,r.[submit_time]								AS Request_SubmitTime
@@ -374,7 +374,7 @@ BackupConcurrencyResourceType tritt auf, wenn eine Datenbank gesichert wird. Der
 
 Verwenden Sie die DMV `sys.dm_pdw_waits`, wenn Sie mit einer Analyse der derzeit in der Warteschlange befindlichen Abfragen ermitteln möchten, auf welche Ressourcen eine Abfrage wartet.
 
-```
+```sql
 SELECT  w.[wait_id]
 ,       w.[session_id]
 ,       w.[type]											AS Wait_type
@@ -411,7 +411,7 @@ WHERE	w.[session_id] <> SESSION_ID()
 
 Sie können die DMV `sys.dm_pdw_resource_waits` verwenden, um nur die Ressourcenwartezustände anzuzeigen, die von einer bestimmten Abfrage verbraucht werden. Mit der Ressourcenwartezeit wird nur gemessen, wie lange auf die Bereitstellung von Ressourcen gewartet wird. Bei der Signalwartezeit (Signal Wait Time) wird dagegen gemessen, wie lange die zugrunde liegende SQL Server-Komponente zum Planen der Abfrage in der CPU benötigt.
 
-```
+```sql
 SELECT  [session_id]
 ,       [type]
 ,       [object_type]
@@ -430,7 +430,7 @@ WHERE	[session_id] <> SESSION_ID()
 
 Für Verlaufsanalysen zum Trend von Wartezeiträumen wird von SQL Data Warehouse die DMV `sys.dm_pdw_wait_stats` bereitgestellt.
 
-```
+```sql
 SELECT	w.[pdw_node_id]
 ,		w.[wait_name]
 ,		w.[max_wait_time]
@@ -455,4 +455,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

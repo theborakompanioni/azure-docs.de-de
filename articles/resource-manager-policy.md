@@ -62,7 +62,12 @@ Grundsätzlich enthält eine Richtlinie Folgendes:
         "effect" : "deny | audit"
       }
     }
+    
+## Richtlinienauswertung
 
+Richtlinien werden ausgewertet, wenn die Erstellung von Ressourcen oder die Bereitstellung von Vorlagen mit HTTP PUT erfolgt. Bei der Bereitstellung von Vorlagen werden Richtlinien ausgewertet, wenn die einzelnen Ressourcen in einer Vorlage erstellt werden.
+
+Hinweis: Ressourcentypen, die „tags“, „kind“ und „location“ nicht unterstützen (z.B. Microsoft.Resources/deployments), werden von Richtlinien nicht ausgewertet. Diese Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. Um Probleme bei der Abwärtskompatibilität zu vermeiden, empfiehlt es sich, beim Erstellen von Richtlinien den Typ ausdrücklich anzugeben. Eine Richtlinie für Tags ohne zusätzliche Angabe von Typen wird beispielsweise für alle Typen angewendet. In diesem Fall können bei der Bereitstellung von Vorlagen Fehler auftreten, wenn eine geschachtelte Ressource vorhanden ist, die Tags nicht unterstützt, wenn der Ressourcentyp zu einem späteren Zeitpunkt zur Auswertung hinzugefügt wird.
 
 ## Logische Operatoren
 
@@ -176,19 +181,19 @@ Das folgende Beispiel veranschaulicht die Verwendung der Quelle. Es zeigt, dass 
         "not" : {
           "anyOf" : [
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Resources/*"
             },
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Compute/*"
             },
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Storage/*"
             },
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Network/*"
             }
           ]
@@ -207,14 +212,14 @@ Im folgenden Beispiel wird die Verwendung von „property alias“ zum Einschrä
       "if": {
         "allOf": [
           {
-            "source": "action",
-            "like": "Microsoft.Storage/storageAccounts/*"
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
           },
           {
             "not": {
               "allof": [
                 {
-                  "field": "Microsoft.Storage/storageAccounts/accountType",
+                  "field": "Microsoft.Storage/storageAccounts/sku.name",
                   "in": ["Standard_LRS", "Standard_GRS"]
                 }
               ]
@@ -302,8 +307,6 @@ Der Anforderungstext sollte dem folgenden ähneln:
           }
         }
       },
-      "id":"/subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/testdefinition",
-      "type":"Microsoft.Authorization/policyDefinitions",
       "name":"testdefinition"
     }
 
@@ -350,8 +353,6 @@ Der Anforderungstext sollte dem folgenden ähneln:
         "policyDefinitionId":"/subscriptions/########/providers/Microsoft.Authorization/policyDefinitions/testdefinition",
         "scope":"/subscriptions/########-####-####-####-############"
       },
-      "id":"/subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyAssignments/VMPolicyAssignment",
-      "type":"Microsoft.Authorization/policyAssignments",
       "name":"VMPolicyAssignment"
     }
 
@@ -386,4 +387,4 @@ Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung ste
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -2,7 +2,7 @@
 
 Azure Resource Manager-Vorlagen ermöglichen es Ihnen, deklarativ die Azure IaaS-Infrastruktur in der Json-Sprache anzugeben, indem Sie die Abhängigkeiten zwischen Ressourcen definieren. Eine ausführliche Übersicht über Azure Resource Manager-Vorlagen finden Sie in den folgenden Artikeln:
 
-[Übersicht über Ressourcengruppen](../resource-group-overview.md)
+[Übersicht über Ressourcengruppen](../articles/resource-group-overview.md)
 
 ## Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer.
 Bereitstellen der Erweiterung für virtuelle Computer als Teil der Azure Resource Manager-Vorlage erfordert das deklarative Festlegen der Konfiguration für die Erweiterung in der Vorlage. Dies ist das Format für die Angabe der Konfiguration für die Erweiterung.
@@ -33,4 +33,4 @@ Wie Sie oben sehen können, enthält die Erweiterungsvorlage zwei Hauptabschnitt
 
 Erweiterungen für virtuelle Azure-Computer werden von Microsoft und vertrauenswürdigen Drittanbietern veröffentlicht. Jede Erweiterung wird eindeutig durch Herausgeber, Typ und typeHandlerVersion-Element identifiziert. Diese können wie folgt bestimmt werden:
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

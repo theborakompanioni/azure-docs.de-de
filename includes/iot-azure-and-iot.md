@@ -10,6 +10,8 @@ Das folgende Diagramm zeigt die Architektur einer typischen IoT-Lösung. Es enth
 
 ![Architektur einer IoT-Lösung][img-solution-architecture]
 
+> [AZURE.NOTE] Eine ausführliche Diskussion der IoT-Architektur finden Sie unter [Microsoft Azure IoT services: Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Dienste: Referenzarchitektur)
+
 ### Gerätekonnektivität
 
 In dieser IoT-Lösungsarchitektur senden Geräte Telemetriedaten wie Temperaturwerte an einen Cloudendpunkt, wo sie gespeichert und verarbeitet werden. Geräte können auch Cloud-zu-Gerät-Befehle (Cloud-to-Device, C2D) empfangen und darauf reagieren, indem Nachrichten von einem Cloudendpunkt gelesen werden. Ein Gerät kann z. B. einen Befehl mit der Anweisung erhalten, die Frequenz zu ändern, mit der Daten gemessen werden.
@@ -26,7 +28,7 @@ Eines der größten Probleme im Zusammenhang mit IoT-Projekten ist die sichere u
 
 Zusätzlich zu den obigen Anforderungen muss jede IoT-Lösung auch Skalierbarkeit, Sicherheit und Zuverlässigkeit bieten. Die sich ergebenden Verbindungsanforderungen sind schwierig und zeitaufwändig zu implementieren, wenn herkömmliche Technologie verwendet wird, z. B. Webcontainer und Nachrichtenbroker. Azure IoT Hub und die IoT-Geräte-SDKs vereinfachen die Implementierung von Lösungen, die diese Anforderungen erfüllen.
 
-Ein Gerät kann direkt mit dem Endpunkt eines Cloudgateways kommunizieren. Falls das Gerät keines der vom Cloudgateway unterstützten Kommunikationsprotokolle nutzen kann, kann es eine Verbindung über ein Zwischengateway herstellen, das die Protokollübersetzung bereitstellt, z. B. das [IoT Hub-Protokollgateway][lnk-protocol-gateway]. Die
+Ein Gerät kann direkt mit dem Endpunkt eines Cloudgateways kommunizieren. Falls das Gerät keines der vom Cloudgateway unterstützten Kommunikationsprotokolle nutzen kann, kann es eine Verbindung über ein Zwischengateway herstellen, das die Protokollübersetzung bereitstellt, z.B. das [IoT Hub-Protokollgateway][lnk-protocol-gateway]. Die
 
 ### Datenverarbeitung und Analysen
 
@@ -48,5 +50,6 @@ Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern 
 [lnk-machinelearning]: http://azure.microsoft.com/services/machine-learning/
 [Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]: iot-hub-protocol-gateway.md
+[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

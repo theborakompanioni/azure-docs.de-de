@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/25/2016"
+ms.date="03/23/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit der Office 365-Video-API
@@ -33,7 +33,7 @@ Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Ers
 
 ## Trigger und Aktionen
 
-Die Office 365-Benutzer-API verfügt über die folgenden Aktionen. Es gibt keine Trigger.
+Die Office 365 Video-API verfügt über die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen|
 | --- | --- |
@@ -221,4 +221,4 @@ Ruft das Bearertoken für den Zugriff auf die Videoentschlüsselung ab. ```GET: 
 ## Nächste Schritte
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

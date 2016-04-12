@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="nicw;jrj;mausher;barbkess;sonyama"/>
 
 # Flexible Leistung und Skalierbarkeit mit SQL Data Warehouse
@@ -40,7 +40,7 @@ Um die Rechenleistung zu erhöhen, können Sie mithilfe des Schiebereglers für 
 
 Im [klassischen Azure-Portal][] können Sie oben auf der SQL Data Warehouse-Seite auf das Symbol zum Skalieren klicken und anschließend mithilfe des Schiebereglers die Anzahl der DWUs, die auf Data Warehouse angewendet werden, erhöhen oder verringern. Klicken Sie anschließend auf „Speichern“. Wenn Sie die Skalierung lieber programmgesteuert ändern, zeigt der folgende T-SQL-Code, wie Sie die DWU-Zuordnung für Ihr SQL Data Warehouse anpassen:
 
-```
+```sql
 ALTER DATABASE MySQLDW
 MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ;
@@ -49,7 +49,7 @@ Dieser T-SQL-Code sollte für den logischen Server und nicht für die SQL Data W
 
 Sie können dasselbe Ergebnis mithilfe von Powershell und dem folgenden Code erreichen:
 
-```
+```Powershell
 Set-AzureSQLDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -ServiceObjective "DW1000"
 ```
 
@@ -64,20 +64,18 @@ Das Pausieren und Fortsetzen der Rechenleistung erfolgt über das [klassische Az
 
 Der folgende Code zeigt, wie Sie eine Pause mithilfe von PowerShell ausführen:
 
-```
+```Powershell
 Suspend-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName
 "Server01" –DatabaseName "Database02"
 ```
 
 Das Fortsetzen des Diensts ist mit PowerShell ebenfalls sehr einfach:
 
-```
+```Powershell
 Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
 Weitere Informationen zur Verwendung von PowerShell finden Sie unter [Verwenden von PowerShell-Cmdlets und REST-APIs mit SQL Data Warehouse][].
-
-
 
 ## Nächste Schritte
 Die Leistungsübersicht finden Sie unter [Leistungsübersicht][].
@@ -96,4 +94,4 @@ Die Leistungsübersicht finden Sie unter [Leistungsübersicht][].
 [klassische Azure-Portal]: http://portal.azure.com/
 [klassischen Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

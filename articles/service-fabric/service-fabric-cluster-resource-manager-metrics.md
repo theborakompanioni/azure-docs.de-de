@@ -122,7 +122,7 @@ Mit Berichten zur dynamischen Auslastung können Replikate oder Instanzen ihre Z
 Code:
 
 ```csharp
-this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("Foo", 42) });
+this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("metric1", 42) });
 ```
 
 Dienstreplikate oder -instanzen können die Auslastung nur für die Metriken melden, für deren Verwendung sie konfiguriert wurden. Die Liste mit den Metriken wird jeweils festgelegt, wenn ein Dienst erstellt wird. Wenn ein Dienstreplikat oder eine Instanz versucht, die Auslastung für eine Metrik zu melden, die derzeit nicht für die Verwendung konfiguriert ist, protokolliert Service Fabric den Bericht, ignoriert ihn aber. Dies bedeutet, dass er nicht verwendet wird, wenn der Zustand des Clusters berechnet oder gemeldet wird. Dies ist praktisch, weil Sie so besser experimentieren können. Der Code kann alle Dinge messen und melden, für die die Vorgehensweise bekannt ist. Der Bediener kann die Regeln für den Lastenausgleich des Diensts kontinuierlich konfigurieren, optimieren und aktualisieren, ohne jemals den Code ändern zu müssen. Beispiele hierfür sind das Deaktivieren einer Metrik mit einem Fehlerbericht, das Neukonfigurieren der Gewichtungen von Metriken anhand des Verhaltens oder das Aktivieren einer neuen Metrik erst dann, wenn der Code bereits bereitgestellt und überprüft wurde.
@@ -196,4 +196,4 @@ Indem die Metrikgewichtungen berücksichtigt werden, wird der globale Ausgleich 
 [Image3]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -28,19 +28,13 @@ Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 - Windows Server 2012 R2
 - Windows 10
 
-### Visual Studio 2015
-
-Für die Tools für Service Fabric ist mindestens Visual Studio 2015 erforderlich. Diese Version finden Sie auf der [Visual Studio-Website][2].
-
-> [AZURE.NOTE] Wenn Sie keine der unterstützten Betriebssystemversionen verwenden oder Visual Studio nicht auf Ihrem Computer installieren möchten, können Sie einen virtuellen Azure-Computer mit Windows Server 2012 R2 und der vorinstallierten Version von Visual Studio einrichten. Dazu können Sie ein Image aus dem Azure-Katalog für virtuelle Maschinen verwenden.
-
 ## Installieren von Laufzeit, SDK und Tools
 
-Der Webplattform-Installer führt die Installation der Service Fabric-Komponenten aus. Es gibt drei Optionen für die Installation:
+Der Webplattform-Installer bietet drei Konfigurationen für die Service Fabric-Entwicklung:
 
-- [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio 2015](full-bundle-vs2015)
-- [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio „15“ Preview](full-bundle-dev15)
-- [Installieren der Service Fabric-Laufzeit und des SDKs (keine Visual Studio-Tools)](core-sdk)
+- [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio 2015][full-bundle-vs2015]
+- [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio „15“ Preview][full-bundle-dev15]
+- [Installieren der Service Fabric-Laufzeit und des SDKs (keine Visual Studio-Tools)][core-sdk]
 
 
 ## Aktivieren der PowerShell-Skriptausführung
@@ -67,4 +61,4 @@ Ihre Entwicklungsumgebung ist nun eingerichtet, und Sie können mit der Entwickl
 [full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "WebPI-Link für Dev15"
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "WebPI-Link für Core SDK"
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

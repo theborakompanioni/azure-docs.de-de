@@ -1,0 +1,183 @@
+<properties 
+	pageTitle="Anforderungseinheiten in DocumentDB | Microsoft Azure" 
+	description="Enthält Informationen zu den Grundlagen von Anforderungseinheiten in DocumentDB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten." 
+	services="documentdb" 
+	authors="stephbaron" 
+	manager="jhubbard" 
+	editor="mimig" 
+	documentationCenter=""/>
+
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="03/30/2016" 
+	ms.author="stbaro"/>
+
+#Anforderungseinheiten in DocumentDB
+
+Dieser Artikel bietet einen Überblick über Anforderungseinheiten in [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
+
+Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
+
+-	Was sind Anforderungseinheiten und Anforderungsgebühren?
+-	Wie gebe ich die Kapazität der Anforderungseinheiten für eine Sammlung an?
+-	Wie schätze ich die benötigten Anforderungseinheiten für meine Anwendung?
+-	Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für eine Sammlung überschreite?
+
+
+##Anforderungseinheiten und Anforderungsgebühren
+DocumentDB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, um dem benötigten Durchsatz für Ihre Anwendung zu entsprechen. Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit DocumentDB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
+
+Bei DocumentDB wird der reservierte Durchsatz in Anforderungseinheiten pro Sekunde angegeben. Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen, wobei Sie eine Anzahl garantierter Anforderungseinheiten auf Sekundenbasis für Ihre Anwendung *reservieren*. Jeder Vorgang in DocumentDB – das Schreiben eines Dokuments, das Durchführen einer Abfrage, das Aktualisieren eines Dokuments – beansprucht CPU, Arbeitsspeicher und IOPS. Mit anderen Worten, für jeden Vorgang fällt eine *Anforderungsgebühr* an, die in *Anforderungseinheiten* ausgedrückt wird. Wenn Sie die Faktoren, die sich auf die berechneten Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie die Kosten für Ihre Anwendung optimieren.
+
+##Angeben der Kapazität der Anforderungseinheiten
+Wenn Sie eine DocumentDB-Sammlung erstellen, geben Sie die Anzahl von Anforderungseinheiten pro Sekunde (Request Units, RUs) an, die für die Sammlung reserviert werden sollen. Sobald die Sammlung erstellt wurde, ist die vollständige Zuweisung von RUs für die Sammlung reserviert. Für jede Sammlung werden dedizierte und isolierte Durchsatzmerkmale garantiert.
+
+Beachten Sie, dass DocumentDB mit einem Reservierungsmodell arbeitet. Ihnen wird also der für die Sammlung *reservierte* Durchsatz berechnet, unabhängig davon, wie viel von diesem Durchsatz aktiv *verwendet* wird. Bedenken Sie jedoch, dass Sie die Menge reservierter RUs über DocumentDB-SDKs oder über das [Azure-Portal](https://portal.azure.com) ganz leicht zentral hoch- oder herunterskalieren können, wenn sich die Auslastung, die Daten und die Nutzungsmuster Ihrer Anwendung verändern. Weitere Informationen zum zentralen Hoch- und Herunterskalieren des Durchsatzes finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md).
+
+##Aspekte zu Anforderungseinheiten
+Beim Abschätzen der Anzahl von Anforderungseinheiten, die für Ihre DocumentDB-Sammlung reserviert werden soll, sollten Sie unbedingt die folgenden Variablen berücksichtigen:
+
+- **Dokumentgröße**. Je größer ein Dokument, desto mehr Einheiten werden für das Lesen und Schreiben der Daten genutzt.
+- **Anzahl der Dokumenteigenschaften**. Eine standardmäßige Indizierung aller Eigenschaften vorausgesetzt, werden mehr Einheiten für das Schreiben eines Dokuments genutzt, wenn die Anzahl der Eigenschaften steigt.
+- **Datenkonsistenz**. Bei Verwendung der Datenkonsistenzebenen "Strong" oder "Bounded Staleness" werden zusätzliche Einheiten zum Lesen von Dokumenten genutzt.
+- **Indizierte Eigenschaften**. Eine Indexrichtlinie für jede Sammlung gibt an, welche Eigenschaften standardmäßig indiziert werden. Sie können die Nutzung von Anforderungseinheiten reduzieren, indem Sie die Anzahl der indizierten Eigenschaften begrenzen oder die verzögerte Indizierung aktivieren.
+- **Dokumentindizierung**. Standardmäßig wird jedes Dokument automatisch indiziert. Sie nutzen weniger Anforderungseinheiten, wenn Sie einige Dokumente nicht indizieren.
+- **Abfragemuster**. Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden. Die Anzahl von Prädikaten, die Art der Prädikate, Projektionen, die Anzahl von UDFs und die Größe des Quelldatasets beeinflussen die Kosten von Abfragevorgängen.
+- **Skriptnutzung**. Wie bei Abfragen beanspruchen gespeicherte Prozeduren und Trigger Anforderungseinheiten basierend auf der Komplexität des ausgeführten Vorgangs. Untersuchen Sie während der Entwicklung Ihrer Anwendung den "x-ms-request-charge"-Header, um herauszufinden, wie viel Anforderungseinheiten die einzelnen Vorgänge verbrauchen.
+
+##Schätzen der Durchsatzanforderungen
+Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsverarbeitungskosten. Eine einzelne Anforderungseinheit stellt die Verarbeitungskapazität dar, die erforderlich ist, um ein einzelnes, aus 10 eindeutigen Eigenschaftswerten (außer Systemeigenschaften) bestehendes JSON-Dokument von 1 KB zu lesen (per „self link“ oder ID). Eine Anforderung zum Erstellen (Einfügen), Ersetzen oder Löschen des gleichen Dokuments verbraucht mehr Verarbeitungsleistung des Diensts und daher mehr Anforderungseinheiten.
+
+> [AZURE.NOTE] Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
+
+Jede Antwort des DocumentDB-Diensts enthält einen benutzerdefinierten Header (x-ms-request-charge), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die DocumentDB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts. Für Abfragen stellt der DocumentDB-Abfrage-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
+
+![Untersuchen der berechneten RUs im Abfrage-Explorer][1]
+
+Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Dokument auszuführen, dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und die Nutzung von DocumentDB-Skripts gemessen und berücksichtigt werden.
+
+>[AZURE.NOTE]Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, notieren Sie die jedem *Typ* von normalem Dokument zugeordneten berechneten Anforderungseinheiten für einen Vorgang.
+
+Beispiel:
+
+1. Notieren Sie die berechneten Anforderungseinheiten für das Erstellen (Einfügen) eines typischen Dokuments. 
+2. Notieren Sie die berechneten Anforderungseinheiten für das Lesen eines typischen Dokuments.
+3. Notieren Sie die berechneten Anforderungseinheiten für das Aktualisieren eines typischen Dokuments.
+3. Notieren Sie die berechneten Anforderungseinheiten für typische, häufig ausgeführte Dokumentabfragen.
+4. Notieren Sie die berechneten Anforderungseinheiten für benutzerdefinierte Skripts (gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen), die von der Anwendung genutzt werden.
+5. Berechnen Sie die erforderlichen Anforderungseinheiten anhand der geschätzten Anzahl von Vorgängen, die erwartungsgemäß pro Sekunde ausgeführt werden.
+
+##Beispiel für die Schätzung von Anforderungseinheiten
+Betrachten Sie das folgende Dokument von 1 KB:
+
+	{
+	 "id": "08259",
+  	"description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
+  	"tags": [
+    	{
+      	"name": "cereals ready-to-eat"
+    	},
+    	{
+      	"name": "kellogg"
+    	},
+    	{
+      	"name": "kellogg's crispix"
+    	}
+	],
+  	"version": 1,
+  	"commonName": "Includes USDA Commodity B855",
+  	"manufacturerName": "Kellogg, Co.",
+  	"isFromSurvey": false,
+  	"foodGroup": "Breakfast Cereals",
+  	"nutrients": [
+    	{
+      	"id": "262",
+      	"description": "Caffeine",
+      	"nutritionValue": 0,
+      	"units": "mg"
+    	},
+    	{
+      	"id": "307",
+      	"description": "Sodium, Na",
+      	"nutritionValue": 611,
+      	"units": "mg"
+    	},
+    	{
+      	"id": "309",
+      	"description": "Zinc, Zn",
+      	"nutritionValue": 5.2,
+      	"units": "mg"
+    	}
+  	],
+  	"servings": [
+    	{
+      	"amount": 1,
+      	"description": "cup (1 NLEA serving)",
+      	"weightInGrams": 29
+    	}
+  	]
+	}
+
+>[AZURE.NOTE]Dokumente werden in DocumentDB minimiert, daher beträgt die vom System berechnete Größe des obigen Dokuments etwas weniger als 1 KB.
+
+
+Die folgende Tabelle zeigt die ungefähre Anzahl berechneter Anforderungseinheiten für normale Vorgänge für dieses Dokument (bei der ungefähren Anzahl berechneter Anforderungseinheiten wird angenommen, dass die Kontokonsistenzebene auf „Session“ festgelegt ist und dass alle Dokumente automatisch indiziert werden):
+
+Vorgang|Berechnete Anforderungseinheiten 
+---|---
+Dokument erstellen|~15 RUs 
+Dokument lesen|~1 RU
+Dokument abfragen nach ID|~2,5 RUs
+
+Diese Tabelle zeigt darüber hinaus die ungefähre Anzahl berechneter Anforderungseinheiten für normale Abfragen, die in der Anwendung verwendet werden:
+
+Abfrage|Berechnete Anforderungseinheiten|Anzahl zurückgegebener Dokumente
+---|---|--- 
+Nahrungsmittel nach ID auswählen|~2,5 RUs|1 
+Nahrungsmittel nach Hersteller auswählen|~7 RUs|7
+Nach Nahrungsmittelgruppe auswählen und nach Gewicht bestellen|~70 RUs|100
+Die 10 beliebtesten Nahrungsmittel in einer Nahrungsmittelgruppe auswählen|~10 RUs|10
+
+>[AZURE.NOTE]RU-Gebühren richten sich nach der Anzahl zurückgegebener Dokumente.
+
+Mit diesen Informationen können wir den RU-Bedarf für diese Anwendung angesichts der Anzahl erwarteter Vorgänge und Abfragen pro Sekunde abschätzen:
+
+Vorgang/Abfrage|Geschätzte Anzahl pro Sekunde|Erforderliche RUs 
+---|---|--- 
+Dokument erstellen|10|150 
+Dokument lesen|100|100 
+Nahrungsmittel nach Hersteller auswählen|25|175 
+Nach Nahrungsmittelgruppe auswählen|10|700 
+10 beliebteste auswählen|15|150 insgesamt|155|1275
+
+In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1,275 RU/s. Wir runden auf den nächsten Hunderter auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
+
+##Überschreiten von Grenzwerten für den reservierten Durchsatz
+Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit RequestRateTooLarge (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
+
+	HTTP Status 429
+	Status Line: RequestRateTooLarge
+	x-ms-retry-after-ms :100
+
+Wenn Sie das .NET Client SDK und LINQ-Abfragen verwenden, werden Sie sich normalerweise nicht mit dieser Ausnahme beschäftigen müssen, da die aktuelle Version des .NET Client SDK diese Antwort implizit abfängt, den vom Server angegebenen Retry-After-Header beachtet und die Anforderung wiederholt. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
+
+Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht das Standard-Wiederholungsverhalten möglicherweise nicht aus, und der Client löst für die Anwendung eine DocumentClientException mit dem Statuscode 429 aus. In diesen Fällen sollten Sie in Betracht ziehen, das Wiederholungsverhalten und die zugehörige Logik in die Anwendungsroutinen zur Fehlerbehandlung aufzunehmen oder den reservierten Durchsatz für die Sammlung zu erhöhen.
+
+##Nächste Schritte
+
+Weitere Informationen zum reservierten Durchsatz mit Azure DocumentDB finden Sie in folgenden Ressourcen:
+ 
+- [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/)
+- [Verwalten der DocumentDB-Kapazität](documentdb-manage.md) 
+- [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md)
+- [Leistungsebenen in DocumentDB](documentdb-partition-data.md)
+
+Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-[Dokumentation](https://azure.microsoft.com/documentation/services/documentdb/).
+
+[1]: ./media/documentdb-request-units/queryexplorer.png
+
+<!---HONumber=AcomDC_0330_2016-->

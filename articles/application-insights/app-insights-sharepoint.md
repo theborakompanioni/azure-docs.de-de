@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.date="03/24/2016" 
 	ms.author="awills"/>
 
 # Überwachen einer SharePoint-Website mit Application Insights
@@ -87,7 +87,7 @@ Klicken Sie in der Übersicht auf **Nutzungsanalyse**, um Diagramme, Sitzungen u
 
 ![](./media/app-insights-sharepoint/06-usage.png)
 
-Klicken Sie auf ein beliebiges Diagramm, um weitere Details anzuzeigen, z. B. Seitenansichten:
+Klicken Sie auf ein beliebiges Diagramm, um weitere Details anzuzeigen, z. B. Seitenansichten:
 
 ![](./media/app-insights-sharepoint/07-pages.png)
 
@@ -95,6 +95,70 @@ Oder Benutzer:
 
 
 ![](./media/app-insights-sharepoint/08-users.png)
+
+
+## Erfassen der Benutzer-ID
+
+
+Der Codeausschnitt der Standardwebseite erfasst nicht die Benutzer-ID aus SharePoint. Mit einer kleinen Änderung ist dies allerdings möglich.
+
+
+1. Kopieren Sie den Instrumentationsschlüssel Ihrer App aus der Essentials-Dropdownliste in Application Insights. 
+
+
+    ![](./media/app-insights-sharepoint/02-props.png)
+
+2. Ersetzen Sie „XXXX“ durch den Instrumentationsschlüssel im Codeausschnitt unten.
+3. Betten Sie anstelle des Ausschnitts, den Sie aus dem Portal erhalten, das Skript in die SharePoint-App ein.
+
+
+
+```
+
+
+<SharePoint:ScriptLink ID="ScriptLink1" name="SP.js" runat="server" localizable="false" loadafterui="true" /> 
+<SharePoint:ScriptLink ID="ScriptLink2" name="SP.UserProfiles.js" runat="server" localizable="false" loadafterui="true" /> 
+  
+<script type="text/javascript"> 
+var personProperties; 
+  
+// Ensure that the SP.UserProfiles.js file is loaded before the custom code runs. 
+SP.SOD.executeOrDelayUntilScriptLoaded(getUserProperties, 'SP.UserProfiles.js'); 
+  
+function getUserProperties() { 
+    // Get the current client context and PeopleManager instance. 
+    var clientContext = new SP.ClientContext.get_current(); 
+    var peopleManager = new SP.UserProfiles.PeopleManager(clientContext); 
+     
+    // Get user properties for the target user. 
+    // To get the PersonProperties object for the current user, use the 
+    // getMyProperties method. 
+    
+    personProperties = peopleManager.getMyProperties(); 
+  
+    // Load the PersonProperties object and send the request. 
+    clientContext.load(personProperties); 
+    clientContext.executeQueryAsync(onRequestSuccess, onRequestFail); 
+} 
+     
+// This function runs if the executeQueryAsync call succeeds. 
+function onRequestSuccess() { 
+var appInsights=window.appInsights||function(config){
+function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+    }({
+        instrumentationKey:"XXXX"
+    });
+    window.appInsights=appInsights;
+    appInsights.trackPageView(document.title,window.location.href, {User: personProperties.get_displayName()});
+} 
+  
+// This function runs if the executeQueryAsync call fails. 
+function onRequestFail(sender, args) { 
+} 
+</script> 
+
+
+```
 
 
 
@@ -108,4 +172,7 @@ Oder Benutzer:
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0128_2016-->
+
+ 
+
+<!---HONumber=AcomDC_0330_2016-->

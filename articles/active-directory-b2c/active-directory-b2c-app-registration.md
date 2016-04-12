@@ -37,10 +37,10 @@ Wenn das Blatt „B2C-Funktionen“ an Ihr Startmenü angeheftet ist, sehen Sie 
 
 Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com/) im linken Navigationsbereich auf **Durchsuchen** und dann auf **Azure AD B2C** klicken.
 
-Sie können auch direkt auf das Blatt zugreifen, indem Sie zu [https://portal.azure.com/{Mandant}.onmicrosoft.com/?#blade/Microsoft\_AAD\_B2CAdmin/TenantManagementBlade/id/](https://portal.azure.com/{tenant}.onmicrosoft.com/?#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/) navigieren, wobei **{Mandant}** durch den Namen ersetzt werden muss, der zum Zeitpunkt der Erstellung des Mandanten verwendet wurde (z. B. „contosob2c“). Sie können ein Lesezeichen für diesen Link erstellen, um in Zukunft darauf zuzugreifen.
+Sie können auch direkt auf das Blatt zugreifen, indem Sie zu [https://portal.azure.com/{Mandant}.onmicrosoft.com/?#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/](https://portal.azure.com/{tenant}.onmicrosoft.com/?#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/) navigieren, wobei **{Mandant}** durch den Namen ersetzt werden muss, der zum Zeitpunkt der Erstellung des Mandanten verwendet wurde (z. B. „contosob2c“). Sie können ein Lesezeichen für diesen Link erstellen, um in Zukunft darauf zuzugreifen.
 
-    > [AZURE.IMPORTANT]
-    You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a user from any tenant cannot access it.
+> [AZURE.IMPORTANT]
+Sie müssen als globaler Administrator des B2C-Mandanten festgelegt sein, um auf das Blade mit den B2C-Features zugreifen zu können. Globale Administratoren anderer Mandanten oder Benutzer von Mandanten haben keinen Zugriff.
 
 ### 2. Zugreifen über das klassische Azure-Portal
 

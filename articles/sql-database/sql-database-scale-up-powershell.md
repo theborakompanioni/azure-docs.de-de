@@ -4,13 +4,13 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="02/23/2016"
+	ms.date="03/29/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -21,28 +21,28 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-scale-up.md)
+- [Azure-Portal](sql-database-scale-up.md)
 - [PowerShell](sql-database-scale-up-powershell.md)
 
 
-In diesem Artikel wird beschrieben, wie Sie die Dienstebene und Leistungsstufe Ihrer SQL-Datenbank mit PowerShell ändern.
+Diensttarife und Leistungsstufen beschreiben die für Ihre SQL-Datenbank verfügbaren Funktionen und Ressourcen und können aktualisiert werden, wenn sich die Anforderungen Ihrer Anwendung ändern. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md).
 
-Bestimmen Sie anhand der Informationen unter [Aktualisieren von Web-/Business-SQL-Datenbanken auf die neuen Dienstebenen und Leistungsstufen der Azure SQL-Datenbank](sql-database-upgrade-server-portal.md) und [Dienstebenen und Leistungsstufen der Azure SQL-Datenbank](sql-database-service-tiers.md) die geeignete Dienstebene und Leistungsstufe für Ihre Azure SQL-Datenbank.
+Beachten Sie, dass durch das Ändern des Diensttarifs und/oder der Leistungsstufe einer Datenbank ein Replikat der ursprünglichen Datenbank an der neuen Leistungsstufe erstellt und dann die Verbindung zu diesem Replikat umgestellt wird. Während dieses Vorgangs gehen keine Daten verloren, aber während des kurzen Moments des Wechsels zum Replikat sind die Verbindungen zur Datenbank inaktiv, daher werden möglicherweise einige Transaktionen, die gerade ausgeführt werden, zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Dieses Fenster ist sehr selten länger, insbesondere falls viele Transaktionen gerade durchgeführt werden, wenn die Verbindungen deaktiviert werden.
 
-> [AZURE.IMPORTANT] Ein Ändern der Dienstebene und Leistungsstufe einer SQL-Datenbank ist ein Onlinevorgang. Dies bedeutet, dass die Datenbank während des gesamten Vorgangs ohne Ausfallzeit online und verfügbar bleibt.
+Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte er beim Wechsel in einen Standarddiensttarif sowie beim Wechsel aus und innerhalb eines solchen bei einer 250 GB Datenbank innerhalb von sechs Stunden abgeschlossen sein. Für eine Datenbank der gleichen Größe, die ihre Leistungsstufen innerhalb des Premium-Diensttarifs ändert, sollte er innerhalb von drei Stunden abgeschlossen sein.
+
 
 - Für ein Downgrade einer Datenbank sollte die Datenbank kleiner als die in der Zieldienstebene maximal zulässige Größe sein. 
 - Beim Aktualisieren einer Datenbank, für die [Georeplikation](sql-database-geo-replication-portal) aktiviert ist, müssen Sie vor der Aktualisierung der primären Datenbank zunächst die zugehörigen sekundären Datenbanken auf die gewünschte Leistungsstufe aktualisieren.
 - Beim Downgrade von einer Premium-Dienstebene müssen Sie zuerst alle geografischen Replikationsbeziehungen beenden. Sie können die im Thema [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) beschriebenen Schritte verwenden, um den Replikationsprozess zwischen der primären und den aktiven sekundären Datenbanken zu beenden.
 - Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen der Azure SQL-Datenbank](sql-database-business-continuity.md).
-- Sie können innerhalb von 24 Stunden bis zu vier einzelne Datenbankänderungen (Dienstebene oder Leistungsstufen) vornehmen.
 - Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
 
 
 **Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:**
 
-- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenlose Testversion** klicken. Lesen Sie anschließend den Artikel weiter.
+- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenloses Konto** klicken. Lesen Sie anschließend diesen Artikel zu Ende.
 - Eine Azure SQL-Datenbank. Wenn Sie nicht über eine SQL-Datenbank verfügen, können Sie die Erstellung anhand der Schritte im folgenden Artikel durchführen: [Erstellen der ersten Azure SQL-Datenbank](sql-database-get-started.md).
 - Azure PowerShell.
 
@@ -128,4 +128,4 @@ Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-Requeste
 - [SQL-Datenbankdokumentation](http://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL-Datenbank-Cmdlets](http://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

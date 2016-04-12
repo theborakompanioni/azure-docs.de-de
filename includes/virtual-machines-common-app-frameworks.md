@@ -1,7 +1,5 @@
 
 
-In der Regel benötigen Workloads viele Ressourcen, damit die vorgesehenen Aufgaben wie geplant erfüllt werden. Mithilfe von Azure-Ressourcen-Manager-Vorlagen können Sie nicht nur definieren, wie Anwendungen konfiguriert werden. Sie können darüber hinaus auch festlegen, wie die Ressourcen bereitgestellt werden, die die konfigurierten Anwendungen unterstützen. Dieser Artikel stellt die beliebtesten Vorlagen im Katalog vor und erläutert, wie Sie sie im Azure-Portal, mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle bereitstellen.
-
 ## Anwendungen
 
 In dieser Tabelle finden Sie weitere Informationen über die Parameter, die in der Vorlage verwendet werden. Außerdem können Sie die Vorlage kennenlernen, bevor Sie sie bereitstellen, oder Sie können sie direkt vom Azure-Portal aus bereitstellen.
@@ -41,8 +39,8 @@ Anschließend wird das Blatt „Benutzerdefinierte Bereitstellung“ angezeigt:
 1.	Klicken Sie im Bereich **Vorlage** auf **Speichern**.
 2.	Klicken Sie auf **Parameter**. Geben Sie im Bereich **Parameter** neue Werte ein, wählen Sie aus den zulässigen Werten aus, oder übernehmen Sie die Standardwerte. Klicken Sie dann auf **OK**.
 3.	Klicken Sie bei Bedarf auf **Abonnement**, und wählen Sie das richtige Azure-Abonnement aus.
-4.	Klicken Sie auf **Ressourcengruppe**, und wählen Sie eine vorhandene Ressourcengruppe aus. Sie können auch auf **Oder neu erstellen** klicken, um für diese Bereitstellung eine neue zu erstellen.
-5.	Wenn nötig, klicken Sie auf **Standort**, und wählen Sie den richtigen Azure-Standort aus.
+4.	Klicken Sie auf **Ressourcengruppe**, und wählen Sie eine vorhandene Ressourcengruppe aus. Alternativ können Sie auf **Oder neu erstellen** klicken, um für diese Bereitstellung eine neue zu erstellen.
+5.	Falls nötig, klicken Sie auf **Standort**, und wählen Sie den richtigen Azure-Standort aus.
 6.	Klicken Sie ggf. auf **Rechtliche Bedingungen**, um die Nutzungsbedingungen für die Vorlage zu lesen.
 7.	Klicken Sie auf **Erstellen**.
 
@@ -59,7 +57,7 @@ Wenn Sie den Befehl **New-AzureRmResourceGroupDeployment** ausführen, werden Si
 
 ## Azure-Befehlszeilenschnittstelle
 
-[Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), melden Sie sich an, und stellen Sie sicher, dass die Resource Manager-Befehle aktiviert sind. Informationen zur Vorgehensweise finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure Resource Manager](../xplat-cli-azure-resource-manager.md).
+[Installieren Sie die Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md), melden Sie sich an, und stellen Sie sicher, dass die Resource Manager-Befehle aktiviert sind. Informationen zur Vorgehensweise finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md).
 
 Ersetzen Sie in den folgenden Befehlen den Text in den geschweiften Klammern durch den Namen der Ressourcengruppe, den Standort, den Namen der Bereitstellung und den Namen der Vorlage. Führen Sie die Befehle anschließend aus, um die Ressourcengruppe und die Bereitstellung zu erstellen:
 
@@ -72,6 +70,6 @@ Wenn Sie den Befehl **azure group deployment create** ausführen, werden Sie auf
 
 Auf [GitHub](https://github.com/Azure/azure-quickstart-templates) finden Sie alle Vorlagen, die Ihnen zur Verfügung stehen.
 
-Hier finden Sie weitere Informationen zum [Azure-Ressourcen-Manager](../resource-group-template-deploy.md).
+Hier finden Sie weitere Informationen zum [Azure-Ressourcen-Manager](../articles/resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

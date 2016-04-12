@@ -62,7 +62,7 @@ Sie möchten wahrscheinlich, dass in jeder Umgebung die *gleichen* Azure-Ressour
  - TestApp1-Parameters-Test.json
  - TestApp1-Parameters-Pre-Production.json
 
-3. Bearbeiten Sie die Entwicklungsumgebung-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind: 
+3. Bearbeiten Sie die Entwicklungsumgebung-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind: 
  - **siteName**: *TestApp1DevApp*
  - **hostingPlanName**: *TestApp1DevPlan*
  - **siteLocation**: *USA, Mitte*
@@ -72,7 +72,7 @@ Sie möchten wahrscheinlich, dass in jeder Umgebung die *gleichen* Azure-Ressour
  - **administratorLoginPassword**: *durch Ihr Kennwort ersetzen*
  - **databaseName**: *testapp1devdb*
 
-4. Bearbeiten Sie die Testumgebung-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind:
+4. Bearbeiten Sie die Testumgebung-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind:
  - **siteName**: *TestApp1TestApp*
  - **hostingPlanName**: *TestApp1TestPla*n
  - **siteLocation**: *USA, Mitte*
@@ -82,7 +82,7 @@ Sie möchten wahrscheinlich, dass in jeder Umgebung die *gleichen* Azure-Ressour
  - **administratorLoginPassword**: *durch Ihr Kennwort ersetzen*
  - **databaseName**: *testapp1testdb*
 
-5. Bearbeiten Sie die Präproduktion-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie den gesamten Inhalt der Datei durch Folgendes:
+5. Bearbeiten Sie die Präproduktion-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie den gesamten Inhalt der Datei durch Folgendes:
 
 	    {
     	  "$schema" : "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -133,13 +133,13 @@ In der folgenden Tabelle sind die in der Vorlage angegebenen Standardwerte für 
 | **requestedServiceObjectiveName** | S0 | S1 |
 
 ## Erstellen von Umgebungen
-Alle Azure-Ressourcen müssen innerhalb einer [Azure-Ressourcengruppe](azure-portal/resource-group-portal#create-resource-group-and-resources.md) erstellt werden. Mit Ressourcengruppen können Sie Azure-Ressourcen so gruppieren, dass sie gemeinsam verwaltet werden können. Ressourcengruppen können [Berechtigungen](./active-directory/role-based-access-built-in-roles.md) zugewiesen werden, sodass bestimmte Personen in Ihrer Organisation die Ressourcengruppen und die darin enthaltenen Ressourcen erstellen, ändern, löschen oder anzeigen können. Warnungen und Abrechnungsinformationen für Ressourcen in der Ressourcengruppe können im [Azure-Portal](https://portal.azure.com) angezeigt werden. Ressourcengruppen werden in einer Azure-[Region](https://azure.microsoft.com/regions/) erstellt. In diesem Artikel werden alle Ressourcen in der Region „USA, Mitte“ erstellt. Wenn Sie damit beginnen, richtige Umgebungen zu erstellen, können Sie die Region auswählen, die Ihren Anforderungen am besten entspricht.
+Alle Azure-Ressourcen müssen innerhalb einer [Azure-Ressourcengruppe](./azure-portal/resource-group-portal.md) erstellt werden. Mit Ressourcengruppen können Sie Azure-Ressourcen so gruppieren, dass sie gemeinsam verwaltet werden können. Ressourcengruppen können [Berechtigungen](./active-directory/role-based-access-built-in-roles.md) zugewiesen werden, sodass bestimmte Personen in Ihrer Organisation die Ressourcengruppen und die darin enthaltenen Ressourcen erstellen, ändern, löschen oder anzeigen können. Warnungen und Abrechnungsinformationen für Ressourcen in der Ressourcengruppe können im [Azure-Portal](https://portal.azure.com) angezeigt werden. Ressourcengruppen werden in einer Azure-[Region](https://azure.microsoft.com/regions/) erstellt. In diesem Artikel werden alle Ressourcen in der Region „USA, Mitte“ erstellt. Wenn Sie damit beginnen, richtige Umgebungen zu erstellen, können Sie die Region auswählen, die Ihren Anforderungen am besten entspricht.
 
 Erstellen Sie Ressourcengruppen für die einzelnen Umgebungen, indem Sie eines der unten angegebenen Verfahren verwenden. Mit allen Verfahren wird das gleiche Ergebnis erzielt.
 
 ###Azure-Befehlszeilenschnittstelle (CLI)
 
-Stellen Sie sicher, dass die Befehlszeilenschnittstelle auf einem Computer unter Windows, OS X oder Linux [installiert](xplat-cli-install.md) ist und dass Ihr [Azure AD-Konto](./active-directory/active-directory-how-subscriptions-associated-directory.md) (auch als Geschäfts- oder Schulkonto bezeichnet) mit Ihrem Azure-Abonnement [verbunden](xplat-cli-connect.md) ist. Geben Sie an der Befehlszeilenschnittstelle den folgenden Befehl ein, um die Ressourcengruppe für die Entwicklungsumgebung zu erstellen.
+Stellen Sie sicher, dass die Befehlszeilenschnittstelle auf einem Computer unter Windows, OS X oder Linux [installiert](xplat-cli-install.md) ist und dass Ihr [Azure AD-Konto](./active-directory/active-directory-how-subscriptions-associated-directory.md) (auch als Geschäfts- oder Schulkonto bezeichnet) mit Ihrem Azure-Abonnement [verbunden](xplat-cli-connect.md) ist. Geben Sie an der Befehlszeilenschnittstelle den folgenden Befehl ein, um die Ressourcengruppe für die Entwicklungsumgebung zu erstellen.
 
 	azure group create "TestApp1-Development" "Central US"
 
@@ -167,7 +167,7 @@ Um die Ressourcengruppe für die Präproduktionsumgebung zu erstellen, geben Sie
 
 ###PowerShell
 
-Stellen Sie sicher, dass Azure PowerShell 1.01 oder höher auf einem Windows-Computer installiert ist und dass für Ihr [Azure AD-Konto](./active-directory/active-directory-how-subscriptions-associated-directory.md) (auch als Geschäfts- oder Schulkonto bezeichnet) eine Verbindung mit Ihrem Abonnement besteht. Ausführliche Informationen hierzu finden Sie im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md). Geben Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl ein, um die Ressourcengruppe für die Entwicklungsumgebung zu erstellen.
+Stellen Sie sicher, dass Azure PowerShell 1.01 oder höher auf einem Windows-Computer installiert ist und dass für Ihr [Azure AD-Konto](./active-directory/active-directory-how-subscriptions-associated-directory.md) (auch als Geschäfts- oder Schulkonto bezeichnet) eine Verbindung mit Ihrem Abonnement besteht. Ausführliche Informationen hierzu finden Sie im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md). Geben Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl ein, um die Ressourcengruppe für die Entwicklungsumgebung zu erstellen.
 
 	New-AzureRmResourceGroup -Name TestApp1-Development -Location "Central US"
 
@@ -235,7 +235,7 @@ Nachdem einige Minuten die Meldung „Auf Abschluss der Bereitstellung wird gewa
 	data:    requestedServiceObjectiveName  String        S0
 	info:    group deployment create command OKx
 
-Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut. Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](virtual-machines/resource-group-deploy-debug.md).
+Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut. Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](./resource-manager-troubleshoot-deployments-cli.md).
 
 Geben Sie an der Befehlszeilenschnittstelle den folgenden Befehl ein, um der Ressourcengruppe, die Sie für die Testumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
 
@@ -247,7 +247,7 @@ Geben Sie an der Befehlszeilenschnittstelle den folgenden Befehl ein, um der Res
   
 ###PowerShell
 
-Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den folgenden Befehl ein, um für die Ressourcengruppe, die Sie für die Entwicklungsumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
+Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den folgenden Befehl ein, um für die Ressourcengruppe, die Sie für die Entwicklungsumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
 
 	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Development -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Development.json -Name Deployment1 
 
@@ -279,7 +279,7 @@ Nachdem einige Minuten lang ein blinkender Cursor zu sehen war, gibt der Befehl 
 	                    
 	Outputs           :
 
-  Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut. Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](virtual-machines/resource-group-deploy-debug.md).
+  Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut. Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](./resource-manager-troubleshoot-deployments-powershell.md).
 
   Geben Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl ein, um der Ressourcengruppe, die Sie für die Testumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
 
@@ -302,7 +302,7 @@ Während der Entwicklung kann die Konfiguration von Azure-Ressourcen in den unte
 4. Nachdem Sie auf „Ressourcengruppen“ geklickt haben (Abbildung oben), wird das Blatt „Ressourcengruppen“ angezeigt. Sie sehen die drei Ressourcengruppen, die Sie im vorherigen Schritt erstellt haben (Abbildung unten). Klicken Sie auf die Ressourcengruppe „TestApp1-Development“. Es wird das Blatt angezeigt, auf dem die von der Vorlage erstellten Ressourcen in der Ressourcengruppenbereitstellung (TestApp1-Development) aufgeführt werden, die Sie in einem vorherigen Schritt durchgeführt haben. Löschen Sie die Web-App-Ressource „TestApp1DevApp“, indem Sie auf dem Ressourcengruppenblatt „TestApp1-Development“ auf „TestApp1DevApp“ klicken und dann auf dem Web-App-Blatt „TestApp1DevApp“ die Option „Löschen“ wählen. ![Portal](./media/solution-dev-test-environments/portal2.png)
 5. Klicken Sie auf "Ja", wenn das Portal Sie auffordert, den Löschvorgang für die Ressource zu bestätigen. Wenn Sie das Ressourcengruppenblatt „TestApp1-Development“ schließen und wieder öffnen, wird die gelöschte Web-App nicht mehr angezeigt. Die Ressourcengruppe zeigt jetzt nicht mehr die vorgesehenen Inhalte. Sie können weiter experimentieren, indem Sie mehrere Ressourcen aus mehreren Ressourcengruppen löschen oder sogar Konfigurationseinstellungen für einige der Ressourcen ändern. Anstatt das Azure-Portal zum Löschen einer Ressource aus einer Ressourcengruppe zu verwenden, können Sie den PowerShell-Befehl [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) oder den Befehl „azure resource delete“ aus der Befehlszeilenschnittstelle einsetzen, um dieselbe Aufgabe auszuführen.
 6. Gehen Sie wie folgt vor, um alle Ressourcen und die für die Ressourcengruppen bestimmten Konfigurationen wieder in den gewünschten Zustand zu versetzen: Stellen Sie die Umgebungen erneut für die Ressourcengruppen bereit, indem Sie die gleichen Befehle wie im Abschnitt [Bereitstellen von Ressourcen in Umgebungen](#deploy-resources-to-environments) verwenden, dabei aber „Deployment1“ durch „Deployment2“ ersetzen.
-7.  Wie im Abschnitt „Zusammenfassung“ des Blatts „TestApp1-Development“ in der Abbildung in Schritt 4 dargestellt, sehen Sie Folgendes: Die Web-App, die Sie im vorherigen Schritt im Portal gelöscht haben, ist wieder vorhanden. Dies gilt auch für andere Ressourcen, die Sie ggf. gelöscht haben. Falls Sie die Konfiguration von Ressourcen geändert haben, können Sie auch überprüfen, ob diese wieder auf die Werte in den Parameterdateien festgelegt wurden. Einer der Vorteile der Bereitstellung Ihrer Umgebungen mit Azure-Ressourcen-Manager-Vorlagen besteht darin, dass Sie die Umgebungen einfach zu einem beliebigen Zeitpunkt in einem bekannten Zustand erneut bereitstellen können.
+7.  Wie im Abschnitt „Zusammenfassung“ des Blatts „TestApp1-Development“ in der Abbildung in Schritt 4 dargestellt, sehen Sie Folgendes: Die Web-App, die Sie im vorherigen Schritt im Portal gelöscht haben, ist wieder vorhanden. Dies gilt auch für andere Ressourcen, die Sie ggf. gelöscht haben. Falls Sie die Konfiguration von Ressourcen geändert haben, können Sie auch überprüfen, ob diese wieder auf die Werte in den Parameterdateien festgelegt wurden. Einer der Vorteile der Bereitstellung Ihrer Umgebungen mit Azure-Ressourcen-Manager-Vorlagen besteht darin, dass Sie die Umgebungen einfach zu einem beliebigen Zeitpunkt in einem bekannten Zustand erneut bereitstellen können.
 8. Wenn Sie in der Abbildung unten auf den Text unter „Letzte Bereitstellung“ klicken, wird ein Blatt angezeigt, auf dem der Bereitstellungsverlauf für die Ressourcengruppe zu sehen ist. Da Sie den Namen "Deployment1" für die erste Bereitstellung und "Deployment2" für die zweite Bereitstellung verwendet haben, gibt es zwei Einträge. Durch Klicken auf eine Bereitstellung wird ein Blatt mit den Ergebnissen für jede Bereitstellung angezeigt. ![Portal](./media/solution-dev-test-environments/portal3.png)
 
 
@@ -329,7 +329,7 @@ Geben Sie an der Befehlszeilenschnittstelle Folgendes ein, um die verbleibenden 
   
 ### PowerShell
 
-Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den unten angegebenen Befehl ein, um die Ressourcengruppe und ihren gesamten Inhalt zu löschen.
+Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den unten angegebenen Befehl ein, um die Ressourcengruppe und ihren gesamten Inhalt zu löschen.
 
 	Remove-AzureRmResourceGroup -Name TestApp1-Development
 
@@ -357,8 +357,8 @@ Jetzt wissen Sie, wie einfach es ist, Entwicklungs- und Testumgebungen zu erstel
 
 ## Nächste Schritte
 
-- [Delegieren von Administratorberechtigungen](role-based-access-control-configure.md) an verschiedene Ressourcen in den einzelnen Umgebungen durch Zuweisen von Microsoft Azure AD-Gruppen oder -Benutzern zu bestimmten Rollen, die eine Teilmenge der Vorgänge für Azure-Ressourcen durchführen können.
+- [Delegieren von Administratorberechtigungen](./active-directory/role-based-access-control-configure.md) an verschiedene Ressourcen in den einzelnen Umgebungen durch Zuweisen von Microsoft Azure AD-Gruppen oder -Benutzern zu bestimmten Rollen, die eine Teilmenge der Vorgänge für Azure-Ressourcen durchführen können.
 - [Zuweisen von Tags](resource-group-using-tags.md) zu den Ressourcengruppen für jede Umgebung und/oder die einzelnen Ressourcen. Sie können den Ressourcengruppen ein Tag "Environment" hinzufügen und dessen Wert auf den Umgebungsnamen festlegen. Tags können besonders hilfreich sein, wenn Sie Ressourcen zur Abrechnung oder Verwaltung organisieren müssen.
 - Überwachen von Warnungen und Abrechnungen für Ressourcen aus Ressourcengruppen im [Azure-Portal](https://portal.azure.com).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

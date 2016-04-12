@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen"
+   pageTitle="Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen | Microsoft Azure"
    description="Anleitungsartikel zu den Funktionen in Azure Data Catalog zum Speichern von Datenquellen und von Datenressourcen für die spätere Verwendung"
    services="data-catalog"
    documentationCenter=""
@@ -76,4 +76,4 @@ Die Startseite des Azure Data Catalog-Portals enthält den Bereich „Meine Ress
 ## Zusammenfassung
 Azure Data Catalog enthält Funktionen, mithilfe derer Benutzer die benötigten Datenquellen einfacher finden können, damit das Suchen nach Daten schneller geht und mehr Zeit für die Arbeit mit den Daten bleibt. Gespeicherte Suchvorgänge und angeheftete Datenressourcen funktionieren auf Grundlage dieser Funktionen, damit Benutzer häufig benötigte Datenquellen schnell identifizieren.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

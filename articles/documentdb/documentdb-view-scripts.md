@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="03/30/2016"
 	ms.author="anhoh"/>
 
 # Erstellen und Ausführen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen mit dem DocumentDB-Skript-Explorer
@@ -89,17 +89,19 @@ Mit dem Skript-Explorer können Sie problemlos CRUD-Vorgänge an serverseitigen 
 
 ## Ausführen einer gespeicherten Prozedur
 
+> [AZURE.WARNING] Das Ausführen von gespeicherten Prozeduren im Skript-Explorer wird für serverseitige partitionierte Sammlungen noch nicht unterstützt. Weitere Informationen finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
+
 Mit dem Skript-Explorer können Sie serverseitige gespeicherte Prozeduren über das Azure-Portal ausführen.
 
-- Beim Öffnen eines Blatts einer neu zu erstellenden gespeicherten Prozedur wird bereits ein Standardskript (*Präfix*) bereitgestellt. Fügen Sie zum Ausführen des *Präfixskripts* oder Ihres eigenen Skripts eine *ID* und *Eingaben* hinzu. Für gespeicherte Prozeduren, die mehrere Parameter akzeptieren, müssen alle Eingaben in einem Array liegen (z. B. *[„Foo“, „Bar“]*).
+- Beim Öffnen eines Blatts einer neu zu erstellenden gespeicherten Prozedur wird bereits ein Standardskript (*Präfix*) bereitgestellt. Fügen Sie zum Ausführen des *Präfixskripts* oder Ihres eigenen Skripts eine *ID* und *Eingaben* hinzu. Für gespeicherte Prozeduren, die mehrere Parameter akzeptieren, müssen alle Eingaben in einem Array liegen (z.B. *["foo", "bar"]*).
 
 	![Screenshot des Skript-Explorer-Blatts „Gespeicherte Prozeduren“ zum Hinzufügen der Eingabe und Ausführen einer gespeicherten Prozedur](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-input.png)
 
 - Um eine gespeicherte Prozedur auszuführen, klicken Sie im Skript-Editor-Bereich auf den Befehl **Speichern und ausführen**.
 
-	> [AZURE.NOTE] Der Befehl **Speichern und ausführen** speichert die gespeicherte Prozedur vor der Ausführung, d. h. die zuvor gespeicherte Version der gespeicherten Prozedur wird überschrieben.
+	> [AZURE.NOTE] Mit dem Befehl **Speichern und ausführen** wird die gespeicherte Prozedur vor der Ausführung gespeichert, d.h., die zuvor gespeicherte Version der gespeicherten Prozedur wird überschrieben.
 
-- Erfolgreiche Ausführungen gespeicherter Prozeduren erhalten den Status *Die gespeicherte Prozedur wurde erfolgreich gespeichert und ausgeführt*, und die zurückgegebenen Ergebnisse werden im Bereich*Ergebnisse* eingetragen.
+- Erfolgreiche Ausführungen gespeicherter Prozeduren erhalten den Status *Die gespeicherte Prozedur wurde erfolgreich gespeichert und ausgeführt*, und die zurückgegebenen Ergebnisse werden im Bereich *Ergebnisse* eingetragen.
 
 	![Screenshot des Skript-Explorer-Blatts „Gespeicherte Prozeduren“ zum Ausführen einer gespeicherten Prozedur](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure.png)
 
@@ -109,12 +111,12 @@ Mit dem Skript-Explorer können Sie serverseitige gespeicherte Prozeduren über 
 
 ## Arbeiten mit Skripts außerhalb des Portals
 
-Der Skript-Explorer im Azure-Portal ist nur eine Möglichkeit, mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in DocumentDB zu arbeiten. Sie können mit Skripts auch arbeiten, indem Sie die REST-API und die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Die REST-API-Dokumentation enthält Beispiele für die Arbeit mit [gespeicherten Prozeduren mithilfe von REST](https://msdn.microsoft.com/library/azure/mt489092.aspx), [benutzerdefinierten Funktionen mithilfe von REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) und [Triggern mithilfe von REST](https://msdn.microsoft.com/library/azure/mt489116.aspx). Beispiele sind ebenfalls verfügbar, die das [Arbeiten mit Skripts mit C#](documentdb-dotnet-samples.md#server-side-programming-examples) und [Arbeiten mit Skripts mithilfe von Node.js](documentdb-nodejs-samples.md#server-side-programming-examples) zeigen.
+Der Skript-Explorer im Azure-Portal ist nur eine Möglichkeit, mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in DocumentDB zu arbeiten. Sie können mit Skripts auch arbeiten, indem Sie die REST-API und die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Die REST-API-Dokumentation enthält Beispiele für die Arbeit mit [gespeicherten Prozeduren mithilfe von REST](https://msdn.microsoft.com/library/azure/mt489092.aspx), [benutzerdefinierten Funktionen mithilfe von REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) und [Triggern mithilfe von REST](https://msdn.microsoft.com/library/azure/mt489116.aspx). Es sind auch Beispiele verfügbar, die das [Arbeiten mit Skripts mit C#](documentdb-dotnet-samples.md#server-side-programming-examples) und das [Arbeiten mit Skripts mithilfe von Node.js](documentdb-nodejs-samples.md#server-side-programming-examples) zeigen.
 
 ## Nächste Schritte
 
-Im Artikel [DocumentDB-serverseitige Programmierung: gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
+Im Artikel [Gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
 
 Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist auch ein nützlicher Anhaltspunkt, um mehr über DocumentDB zu erfahren.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

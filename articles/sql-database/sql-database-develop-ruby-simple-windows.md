@@ -20,68 +20,25 @@
 
 # Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby unter Windows
 
-
-<!--
-Older Selector technique, with dynamic drop-down lists.
- [ A ZURE . I NCLUDE [s ql-database-develop-includes-selector-language-platform-depth](../../inclu des/sql-database-develop-includes-selector-language-platform-depth.m d)]
--->
-
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
-
-Dieses Thema enthält ein Ruby-Codebeispiel, das auf einem Windows-Computer mit Windows 8.1 für die Verbindung mit einer Datenbank in Azure SQL-Datenbank ausgeführt wird.
-
-## Voraussetzungen
-
-###Installieren der erforderlichen Module
-
-Öffnen Sie das Terminal, und installieren Sie Folgendes:
-
-**1) Ruby:** Falls Ruby auf Ihrem Computer nicht vorhanden ist, installieren Sie es. Neuen Benutzern von Ruby empfehlen wir, die Ruby 2.1.X-Installationsprogramme zu verwenden. Diese bieten eine stabile Sprache und eine umfassende Liste von Paketen (Gems), die kompatibel sind und aktualisiert werden. [Wechseln Sie zur Ruby-Downloadseite](http://rubyinstaller.org/downloads/), und laden Sie das entsprechende 2.1.x-Installationsprogramm herunter. Wenn Sie beispielsweise einen 64-Bit-Computer nutzen, laden Sie das Installationsprogrammr **Ruby 2.1.6 (x 64)** herunter. <br/><br/>Nachdem das Installationsprogramm heruntergeladen wurde, führen Sie folgende Schritte aus:
+Dieses Thema enthält ein Ruby-Codebeispiel, das auf einem Windows-Computer mit Windows 8.1 ausgeführt wird, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen.
 
 
-- Doppelklicken Sie auf die Datei, um das Installationsprogramm zu starten.
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
-- Wählen Sie Ihre Sprache aus, und akzeptieren Sie die Nutzungsbedingungen.
+[Voraussetzungen für die Verwendung des TinyTDS Ruby-Treibers für SQL Server](https://msdn.microsoft.com/library/mt711041.aspx#Windows)
 
-- Aktivieren Sie auf dem Bildschirm mit den Installationseinstellungen die Kontrollkästchen neben *Add Ruby executables to your PATH* und *Associate .rb and .rbw files with this Ruby installation*.
-
-
-**2) DevKit:** Laden Sie DevKit von der Seite [RubyInstaller](http://rubyinstaller.org/downloads/) herunter.
-
-Nachdem der Download abgeschlossen ist, führen Sie folgende Schritte aus:
-
-
-- Doppelklicken Sie auf die Datei. Sie werden gefragt, wo Sie die Dateien extrahieren möchten.
-
-- Klicken Sie auf die Schaltfläche "...", und wählen Sie "C:\\DevKit" aus. Sie müssen wahrscheinlich diesen Ordner zunächst erstellen, indem Sie auf "Neuen Ordner erstellen" klicken.
-
-- Klicken Sie auf "OK" und dann auf "Extrahieren", um die Dateien zu extrahieren.
-
-
-Öffnen Sie dann eine Eingabeaufforderung, und geben Sie die folgenden Befehle ein:
-
-	> chdir C:\DevKit
-	> ruby dk.rb init
-	> ruby dk.rb install
-
-Sie verfügen jetzt über ein voll funktionsfähiges Ruby und RubyGems!
-
-
-**3) TinyTDS:** Navigieren Sie zu "C:\\DevKit", und führen Sie den folgenden Befehl in Ihrem Terminal aus. Dadurch wird TinyTDS auf Ihrem Computer installiert.
-
-	gem inst tiny_tds --pre
-
-### Eine SQL-Datenbank
+## Schritt 2: Erstellen einer SQL-Datenbank
 
 Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank. Sie sollten unbedingt die Anleitung zum Erstellen einer **AdventureWorks-Datenbankvorlage** befolgen. Die unten gezeigten Beispiele funktionieren nur mit dem **AdventureWorks-Schema**.
 
 
-## Schritt 1: Abrufen der Verbindungsdetails
+## Schritt 3: Abrufen der Verbindungsdetails
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## Schritt 2: Verbinden
+## Schritt 4: Verbinden
 
 Die [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds)-Funktion dient zum Verbinden mit einer SQL-Datenbank.
 
@@ -90,7 +47,7 @@ Die [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds)-Funktion dien
     host: 'yourserver.database.windows.net', port: 1433,
     database: 'AdventureWorks', azure:true
 
-## Schritt 3: Ausführen einer Abfrage
+## Schritt 5: Ausführen einer Abfrage
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn in eine leere Datei ein. Nennen Sie sie "test.rb". Führen Sie sie anschließend durch Eingeben des folgenden Befehls über die Befehlszeile aus:
 
@@ -108,7 +65,7 @@ Im Codebeispiel wird die Funktion [TinyTds::Result](https://github.com/rails-sql
     puts row
     end
 
-## Schritt 4: Einfügen einer Zeile
+## Schritt 6: Einfügen einer Zeile
 
 In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Anweisung sicher ausführen, Parameter zum Schutz Ihrer Anwendung vor einer [Einschleusung von SQL-Befehlen](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) übergeben und den automatisch generierten [Primärschlüsselwert](https://msdn.microsoft.com/library/ms179610.aspx) abrufen.
 
@@ -137,4 +94,4 @@ Zum Ausrichten am [Datetime](http://msdn.microsoft.com/library/ms187819.aspx)-Fo
     puts row
     end
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

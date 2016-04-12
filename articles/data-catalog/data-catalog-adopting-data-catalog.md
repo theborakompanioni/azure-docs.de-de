@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Data Catalog-Einführung | Microsoft Azure"
-   description="In diesem Artikel erhalten Sie Hilfe bei den ersten Schritten zur Einführung von Azure Data Catalog in Ihrem Unternehmen. Sie sollten sich auf drei wichtige Punkte konzentrieren, um **Azure Data Catalog** erfolgreich einzuführen: Definieren Sie Ihre Vision, ermitteln Sie die zentralen geschäftlichen Anwendungsfälle in Ihrem Unternehmen, und wählen Sie ein Pilotprojekt."
+   description="Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen."
    services="data-catalog"
    documentationCenter=""
    authors="dvana"
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/28/2016"
+   ms.date="03/31/2016"
    ms.author="derrickv"/>
 
 # Azure Data Catalog-Einführung
@@ -172,4 +172,4 @@ In diesem Artikel ging es um die ersten Schritte bei der Nutzung von **Azure Dat
 -	[Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
 - [Crowdsourcing für Metadaten](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

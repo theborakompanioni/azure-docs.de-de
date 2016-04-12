@@ -27,7 +27,7 @@ Sie erhalten Tarifempfehlungen während der folgenden Aufgaben:
 
 - [Ändern der Dienstebene und Leistungsstufe (Tarif) einer SQL-Datenbank](sql-database-scale-up.md)
 - [Upgraden von Azure SQL-Server auf V12](sql-database-upgrade-server-portal.md)
-- Navigieren Sie zum V12-Server. Wenn Ihre Datenbanken [von einem Pool für elastische Datenbanken profitieren](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools), wird auf dem Serverblatt eine Meldung mit einem empfohlenen Pool angezeigt. Klicken Sie auf die Meldung, um den empfohlenen Pool zu erstellen:
+- Navigieren Sie zu Ihrem V12-Server. Weitere Informationen finden Sie unter [Tarifempfehlungen für SQL-Datenbank](sql-database-service-tier-advisor.md).
 - [Erstellen eines elastischen Datenbankpools](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
 
 
@@ -96,4 +96,4 @@ Abhängig von den Details Ihrer speziellen Datenbank erfolgt die Durchführung e
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

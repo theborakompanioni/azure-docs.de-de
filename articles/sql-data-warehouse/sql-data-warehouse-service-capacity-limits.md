@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
 # Kapazitätsgrenzen von SQL Data Warehouse
@@ -33,7 +33,7 @@ Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster an
 | Kategorie | Beschreibung | Maximum |
 | :---------------- | :------------------------------------------- | :----------------- |
 | Abfrage | Gleichzeitige Abfragen von Benutzertabellen. | 32<br/><br/>Dies ist die obere Grenze für die gleichzeitige Ausführung von Benutzerabfragen. Zusätzliche Abfragen gelangen in eine interne Warteschlange, in der sie auf die Verarbeitung warten. Unabhängig von der Anzahl der Abfragen, die gleichzeitig ausgeführt werden, wird jede Abfrage optimiert, um die massive Parallelverarbeitungsarchitektur vollständig zu nutzen. Hinweis: Tatsächliche Gleichzeitigkeit kann von zusätzlicher Drosselung abhängen, die auf der DWU der Datenbankinstanz und der ausgewählten Ressourcenklasse der ausgeführten Abfragen basiert.|
-| Abfragen | In Warteschlange gestellte Abfragen von Benutzertabellen. | 1000 |
+| Abfrage | In Warteschlange gestellte Abfragen von Benutzertabellen. | 1000 |
 | Abfrage | Gleichzeitige Abfragen von Systemsichten. | 100 |
 | Abfrage | In Warteschlange gestellte Abfragen von Systemsichten | 1000 |
 | Abfrage | Maximale Parameter | 2098 |
@@ -149,7 +149,7 @@ Im folgenden Beispiel erstellen wir die Tabelle T1. Die maximale Größe der Zei
 
 Da die tatsächliche definierte Größe eines „nvarchar“-Werts 26 Bytes ist, beträgt die Zeilendefinition weniger als 8060 Bytes und kann deshalb auf eine SQL Server-Seite passen. Daher ist die CREATE TABLE-Anweisung erfolgreich, obwohl ein DMS-Fehler auftritt, wenn versucht wird, diese Zeile in den DMS-Puffer zu laden.
 
-````
+```sql
 CREATE TABLE T1
   (
     c0 int NOT NULL,
@@ -162,10 +162,11 @@ CREATE TABLE T1
   )
 WITH ( DISTRIBUTION = HASH (c0) )
 ;
-````
+```
+
 Dieser nächste Schritt zeigt, dass wir INSERT erfolgreich verwenden können, um Daten in die Tabelle einzufügen. Diese Anweisung lädt die Daten direkt in SQL Server, ohne DMS zu verwenden, weshalb kein Fehler aufgrund eines DMS-Pufferüberlaufs auftritt. Integrationsdienste laden diese Zeile ebenfalls erfolgreich.</para>
 
-````
+```sql
 --The INSERT operation succeeds because the row is inserted directly into SQL Server without requiring DMS to buffer the row.
 INSERT INTO T1
 VALUES (
@@ -177,11 +178,11 @@ VALUES (
     N'Each row must fit into the DMS buffer size of 32,768 bytes.',
     N'Each row must fit into the DMS buffer size of 32,768 bytes.'
   )
-````
+```
 
 Zum Veranschaulichen der Datenverschiebung erstellt dieses Beispiel eine zweite Tabelle mit „CustomerKey“ für die Verteilungsspalte.
 
-````
+```sql
 --This second table is distributed on CustomerKey. 
 CREATE TABLE T2
   (
@@ -206,20 +207,20 @@ VALUES (
     N'Each row must fit into the DMS buffer size of 32,768 bytes.',
     N'Each row must fit into the DMS buffer size of 32,768 bytes.'
   )
-````
+```
 Da beide Tabellen nicht anhand von „CustomerKey“ verteilt werden, ist ein JOIN zwischen T1 und T2 anhand von „CustomerKey“ nicht für die Verteilung kompatibel. DMS muss mindestens eine Zeile laden und sie in eine andere Verteilung kopieren.
 
-````
+```sql
 SELECT * FROM T1 JOIN T2 ON T1.CustomerKey = T2.CustomerKey;
-````
+```
 
 Wie erwartet, kann DMS den Join nicht ausführen, da die Zeile, wenn alle „nvarchar“-Spalten aufgefüllt werden, größer als der DMS-Puffer (32.768 Bytes) ist. Die folgende Fehlermeldung wird angezeigt.
 
-````
+```sql
 Msg 110802, Level 16, State 1, Line 126
 
 An internal DMS error occurred that caused this operation to fail. Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Workers.DmsSqlNativeException, Message: SqlNativeBufferReader.ReadBuffer, error in OdbcReadBuffer: SqlState: , NativeError: 0, 'COdbcReadConnection::ReadBuffer: not enough buffer space for one row | Error calling: pReadConn-&gt;ReadBuffer(pBuffer, bufferOffset, bufferLength, pBytesRead, pRowsRead) | state: FFFF, number: 81, active connections: 8', Connection String: Driver={SQL Server Native Client 11.0};APP=DmsNativeReader:P13521-CMP02\sqldwdms (4556) - ODBC;Trusted_Connection=yes;AutoTranslate=no;Server=P13521-SQLCMP02,1500
-````
+```
 
 
 ## Nächste Schritte
@@ -232,4 +233,4 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

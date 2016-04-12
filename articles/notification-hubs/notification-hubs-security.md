@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/25/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 #Sicherheit
@@ -24,15 +24,15 @@ Dieses Thema beschreibt das Sicherheitsmodell von Azure Notification Hubs. Da No
 
 ##Shared Access Signature-Sicherheit (SAS) 
 
-Notification Hubs implementieren ein Sicherheitsschema auf Entitätsebene, das SAS (Shared Access Signature) genannt wird. Dieses Schema ermöglicht Messagingentitäten das Deklarieren von bis zu 12 Autorisierungsregeln in ihrer Beschreibung, die Zugriffsrechte für diese Entität gewähren.
+Notification Hubs implementieren ein Sicherheitsschema auf Entitätsebene, das SAS (Shared Access Signature) genannt wird. Dieses Schema ermöglicht Messagingentitäten das Deklarieren von bis zu 12 Autorisierungsregeln in ihrer Beschreibung, die Zugriffsrechte für diese Entität gewähren.
 
 Jede Regel enthält einen Namen, einen Schlüsselwert (gemeinsamer geheimer Schlüssel) und eine Reihe von Rechten, wie im Abschnitt „Sicherheitsansprüche“ erläutert. Beim Erstellen eines Notification Hubs werden automatisch zwei Regeln erstellt: eine mit Lauschberechtigung (von der Clientanwendung verwendet) und eine mit allen Berechtigungen (vom Back-End verwendet).
 
-Wenn eine Registrierungsverwaltung von Client-Apps aus durchgeführt wird und die über Benachrichtigungen gesendeten Informationen nicht vertraulich sind (z. B. aktuelle Wetterdaten), besteht eine gebräuchliche Möglichkeit zum Zugreifen auf einen Notification Hub darin, dem Schlüsselwert der Regel nur Lauschzugriff für die Client-App zu erteilen und dem Schlüsselwert der Regel Vollzugriff auf das Back-End zu gewähren.
+Wenn eine Registrierungsverwaltung von Client-Apps aus durchgeführt wird und die über Benachrichtigungen gesendeten Informationen nicht vertraulich sind (z. B. aktuelle Wetterdaten), besteht eine gebräuchliche Möglichkeit zum Zugreifen auf einen Notification Hub darin, dem Schlüsselwert der Regel nur Lauschzugriff für die Client-App zu erteilen und dem Schlüsselwert der Regel Vollzugriff auf das Back-End zu gewähren.
 
 Es wird nicht empfohlen, den Schlüsselwert in Windows Store-Client-Apps einzubetten. Eine Möglichkeit, das Einbetten des Schlüsselwerts zu vermeiden, besteht darin, ihm beim Start der Client-App durch diese aus dem App-Back-End abrufen zu lassen.
 
-Beachten Sie unbedingt, dass der Schlüssel mit Lauschzugriff einer Clientanwendung die Möglichkeit gibt, sich für jedes beliebige Tag zu registrieren. Wenn Ihre App Registrierungen auf bestimmte Tags für bestimmte Clients einschränken muss (z. B., wenn Tags für Benutzer-IDs stehen), muss das App-Back-End die Registrierungen ausführen. Weitere Informationen finden Sie unter „Registrierungsverwaltung“. Beachten Sie, dass die Clientanwendung auf diese Weise keinen direkten Zugriff auf Notification Hubs hat.
+Beachten Sie unbedingt, dass der Schlüssel mit Lauschzugriff einer Clientanwendung die Möglichkeit gibt, sich für jedes beliebige Tag zu registrieren. Wenn Ihre App Registrierungen auf bestimmte Tags für bestimmte Clients einschränken muss (z. B., wenn Tags für Benutzer-IDs stehen), muss das App-Back-End die Registrierungen ausführen. Weitere Informationen finden Sie unter „Registrierungsverwaltung“. Beachten Sie, dass die Clientanwendung auf diese Weise keinen direkten Zugriff auf Notification Hubs hat.
 
 ##Sicherheitsansprüche
 
@@ -47,4 +47,4 @@ Beachten Sie unbedingt, dass der Schlüssel mit Lauschzugriff einer Clientanwend
 
 Notification Hubs akzeptieren Ansprüche, die durch Microsoft Azure Access Control-Token und von Signaturtoken mit freigegebenen Schlüsseln, die direkt auf dem Notification Hub konfiguriert wurden, erteilt werden.
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -17,7 +17,7 @@
 
 # Application Insights: Referenzmaterial zu Analytics
 
-[Analytics](app-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-analytics.md) ermöglicht die Ausführung leistungsstarker Abfragen der von [Application Insights](app-insights-overview.md) gesammelten Telemetriedaten. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -47,7 +47,7 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 |\\P{Greek} |Negierte Unicode-Zeichenklasse 
 |Zusammensetzungen: | 
 |xy |x, gefolgt von y 
-|x&#124;y |x oder y (bevorzugt x) 
+|x|y |x oder y (bevorzugt x) 
 | 
 |Wiederholungen: | 
 | |null oder mehr x, mehr bevorzugt 
@@ -85,7 +85,7 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 |(?flags) |Flags in aktueller Gruppe festlegen; ohne Erfassung 
 |(?flags:re) |Flags während re festlegen; ohne Erfassung 
 |(?#text) |Kommentar (NICHT UNTERSTÜTZT) 
-|(?&#124;x&#124;y&#124;z) |Rücksetzung der Verzweigungsnummerierung (NICHT UNTERSTÜTZT) 
+|(?|x|y|z) |Rücksetzung der Verzweigungsnummerierung (NICHT UNTERSTÜTZT) 
 |(?>re) |possessive Übereinstimmung von re (NICHT UNTERSTÜTZT) 
 |re@> |possessive Übereinstimmung von re (NICHT UNTERSTÜTZT) VIM 
 |%(re) |Gruppe ohne Erfassung (NICHT UNTERSTÜTZT) VIM 
@@ -197,7 +197,7 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 |[[:blank:]] |Leerzeichen (== [\\t ]) 
 |[[:cntrl:]] |Steuerung (== [\\x00-\\x1F\\x7F]) 
 |[[:digit:]] |Ziffern (== [0-9]) 
-|[[:graph:]] |grafisch (== [!-~] == [A-Za-z0-9!"#$%&'()*+,-./:;<=>?@[\]^\_`{&#124;}~]) 
+|[[:graph:]] |grafisch (== [!-~] == [A-Za-z0-9!"#$%&'()*+,-./:;<=>?@[\\]^\_`{|}~]) 
 |[[:lower:]] |lower case (== [a-z]) 
 |[[:print:]] |printable (== [ -~] == [ [:graph:]]) 
 |[[:punct:]] |punctuation (== [!-/:-@[-`{-~]) 
@@ -392,7 +392,7 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 |(?&name) |rekursiver Aufruf der benannten Gruppe (NICHT UNTERSTÜTZT) 
 |(?P=name) |benannter Rückbezug (NICHT UNTERSTÜTZT) 
 |(?P>name) |rekursiver Aufruf der benannten Gruppe (NICHT UNTERSTÜTZT) 
-|(?(cond)true&#124;false) |konditionale Verzweigung (NICHT UNTERSTÜTZT) 
+|(?(cond)true|false) |konditionale Verzweigung (NICHT UNTERSTÜTZT) 
 |(?(cond)true) |konditionale Verzweigung (NICHT UNTERSTÜTZT) 
 |(*ACCEPT) |regexps mehr wie Prolog machen (NICHT UNTERSTÜTZT) 
 |(*COMMIT) |(NICHT UNTERSTÜTZT) 
@@ -415,4 +415,4 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

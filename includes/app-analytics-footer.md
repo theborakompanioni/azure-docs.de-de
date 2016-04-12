@@ -10,5 +10,7 @@
  - Verwendet zum Berechnen von Statistiken aus den Eintragsgruppen
 - [Skalare](../articles/application-insights/app-analytics-scalars.md)
  - Zahlen, Zeichenfolgen und andere Ausdrücke werden verwendet, um den Abfrageparameter zu bilden.
+- [Wenn Sie](../articles/application-insights/app-analytics-using.md)
+ - Verwenden von Analytics
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

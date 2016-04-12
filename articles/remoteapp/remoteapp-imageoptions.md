@@ -12,14 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="12/05/2015"
+    ms.date="03/28/2016"
     ms.author="elizapo" />
 
 
 
 # Erstellen von Azure RemoteApp-Images
 
-Azure RemoteApp verwendet Images, die die Anwendungen enthalten, die Sie für Benutzer freigeben. Zum Erstellen einer Azure RemoteApp-Sammlung mit Ihrer Auswahl an Anwendungen, sei es Cloud oder Hybrid, erstellen Sie zunächst ein Image, auf dem diese Anwendungen installiert sind. Erstellen Sie dann eine Sammlung mit diesem Image, weisen Sie der Sammlung Benutzer zu, und geben Sie für diese Benutzer Anwendungen frei.
+Azure RemoteApp verwendet Images, die die Anwendungen enthalten, die Sie für Benutzer freigeben. (Wir erstellen mit Ihrem Image virtuelle Computer – das ist es, worauf Benutzer zugreifen, wenn sie sich bei Azure RemoteApp anmelden.) Zum Erstellen einer Azure RemoteApp-Sammlung mit Ihrer Auswahl an Anwendungen, sei es Cloud oder Hybrid, erstellen Sie zunächst ein Image, auf dem diese Anwendungen installiert sind. Erstellen Sie dann eine Sammlung mit diesem Image, weisen Sie der Sammlung Benutzer zu, und geben Sie für diese Benutzer Anwendungen frei.
 
 Sie haben mehrere Optionen zum Erstellen oder Verwenden von Images. Die grundlegende [Anforderung](remoteapp-imagereqs.md) für ein Image ist, dass es Windows Server 2012 R2 ausführt und die Remote Desktop Session Host (RDSH)-Rolle installiert ist. Und jetzt wird es für Sie interessant.
 
@@ -31,4 +31,4 @@ Bei Images haben Sie die folgenden Möglichkeiten:
 
 Unabhängig davon, wo Sie Ihr Image erhalten oder wie Sie es erstellen, sollten Sie sicherstellen, dass Sie die [Anwendungsanforderungen](remoteapp-appreqs.md) verstehen, sodass Ihre Anwendung in RemoteApp gut funktioniert. Der nächste Schritt ist die Erstellung einer [Cloudsammlung](remoteapp-create-cloud-deployment.md) oder [Hybridsammlung](remoteapp-create-hybrid-deployment.md).
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -3,8 +3,8 @@
    description="Spezifikation für die derzeit unterstützten Datenquellen."
    services="data-catalog"
    documentationCenter=""
-   authors="trhabe"
-   manager="jstrauss"
+   authors="steelanddata"
+   manager=""
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="01/15/2016"
-   ms.author="trhabe"/>
+   ms.date="03/30/2016"
+   ms.author="maroche"/>
 
 # Von Azure Data Catalog unterstützte Datenquellen
 
@@ -40,7 +40,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -48,8 +48,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -58,7 +58,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -67,7 +67,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Power&#160;BI{Power&#160;BI1Power&#160;BI>Power&#160;BI&lt;Power&#160;BI1Power&#160;BI}Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -75,8 +75,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -84,8 +84,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -94,7 +94,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -103,7 +103,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
     </tr>
 
     <tr>
@@ -112,7 +112,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -121,7 +121,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -130,7 +130,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -139,7 +139,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -147,8 +147,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -157,7 +157,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -166,7 +166,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -175,7 +175,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -184,7 +184,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -193,7 +193,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -202,7 +202,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -211,7 +211,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>"Browser"</font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -220,7 +220,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -229,7 +229,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -238,7 +238,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
     </tr>
 
     <tr>
@@ -247,7 +247,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
     </tr>
 
     <tr>
@@ -255,8 +255,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -264,8 +264,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -273,8 +273,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -282,8 +282,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -291,8 +291,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -300,8 +300,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -309,8 +309,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -318,8 +318,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -327,8 +327,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -336,8 +336,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -345,8 +345,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -354,8 +354,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -363,8 +363,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -372,8 +372,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -381,8 +381,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -390,8 +390,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
 </table>
@@ -436,18 +436,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       </td>
     </tr>
 
-    <tr>
-      <td>Cosmos</td>
-      <td>Container</td>
-      <td>Virtueller Cluster</td>
-      <td>N/V</td>
-      <td>
-        <font size=2> protocol: cosmos
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
-      </td>
-    </tr>
+
 
     <tr>
       <td>SQL Server Reporting Services</td>
@@ -523,46 +512,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
             <br>
-            <br>*basic/anonymous nur über HTTPS verfügbar </font>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Cosmos</td>
-      <td>Tabelle</td>
-      <td>Datenstrom</td>
-      <td>Virtueller Cluster</td>
-      <td>
-        <font size=2> protocol: cosmos
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Cosmos</td>
-      <td>Tabelle</td>
-      <td>Datenstromgruppe</td>
-      <td>Virtueller Cluster</td>
-      <td>
-        <font size=2> protocol: cosmos
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Cosmos</td>
-      <td>Tabelle</td>
-      <td>Ansicht</td>
-      <td>Virtueller Cluster</td>
-      <td>
-        <font size=2> protocol: cosmos
-            <br>authentication: {basic, windows}
-            <br>address:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+            <br>*basic/anonymous nur über https* </font> verfügbar
       </td>
     </tr>
 
@@ -664,7 +614,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
             <br>
-            <br>*basic/anonymous nur über HTTPS verfügbar </font>
+            <br>*basic/anonymous nur über https* </font> verfügbar
       </td>
     </tr>
 
@@ -718,7 +668,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
             <br>address:
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
             <br>&#160;&#160;&#160;&#160;&#160; connectionProperties
             <br>&#160;&#160;&#160;&#160;&#160; serverprotocol: {hive2} </font>
       </td>
@@ -744,7 +694,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>Azure Storage</td>
       <td>Container</td>
       <td>Azure Storage</td>
-      <td>–</td>
+      <td>N/V</td>
       <td>
         <font size=2> protocol:azure-tables
             <br>authentication: {azure-access-key}
@@ -758,7 +708,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>HTTP</td>
       <td>Container</td>
       <td>Website</td>
-      <td>–</td>
+      <td>N/V</td>
       <td>
         <font size=2> protocol: http
             <br>authentication: {none, basic, windows}
@@ -842,7 +792,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>Hadoop Distributed File System</td>
       <td>Container</td>
       <td>Cluster</td>
-      <td>–</td>
+      <td>N/V</td>
       <td>
         <font size=2> protocol:webhdfs
             <br>authentication:{basic, oauth}
@@ -1173,7 +1123,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
             <br>&#160;&#160;&#160;&#160;&#160; object
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Kpi}
             <br>
-            <br>*basic/anonymous nur über HTTPS verfügbar </font>
+            <br>*basic/anonymous nur über https* </font> verfügbar
       </td>
     </tr>
 
@@ -1189,7 +1139,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
       </td>
     </tr>
@@ -1236,10 +1186,10 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Table}
             <br>
-            <br>*basic/anonymous nur über HTTPS verfügbar </font>
+            <br>*basic/anonymous nur über https* </font> verfügbar
       </td>
     </tr>
 
@@ -1247,7 +1197,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>SQL Data Warehouse</td>
       <td>Container</td>
       <td>Datenbank</td>
-      <td>–</td>
+      <td>N/V</td>
       <td>
         <font size=2> protocol: tds
             <br>authentication: {sql, windows}
@@ -1334,4 +1284,4 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
 
 </table>
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0330_2016-->

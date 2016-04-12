@@ -15,7 +15,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="03/18/2016"
+      ms.date="03/28/2016"
       ms.author="v-jibran@microsoft.com"/>
 
 # Schnellstart für die Azure AD Graph-API
@@ -26,7 +26,7 @@ Die Azure Active Directory (AD) Graph-API ermöglicht programmgesteuerten Zugrif
 
 ## Erstellen einer Graph-API-URL
 
-In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (also Ressourcen oder Entitäten), für die Sie CRUD-Vorgänge ausführen möchten, URLs verwenden, die auf dem OData-Protokoll (Open Data) basieren. Die URLs, die in der Graph-API verwendet werden, bestehen aus vier Hauptkomponenten: Dienststamm, Mandanten-ID, Ressourcenpfad und Optionen für Abfragezeichenfolgen: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Betrachten Sie beispielsweise die folgende URL: `https://graph.windows.net/contoso.com/groups?api-version=1.5`.
+In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (also Ressourcen oder Entitäten), für die Sie CRUD-Vorgänge ausführen möchten, URLs verwenden, die auf dem OData-Protokoll (Open Data) basieren. Die URLs, die in der Graph-API verwendet werden, bestehen aus vier Hauptkomponenten: Dienststamm, Mandanten-ID, Ressourcenpfad und Optionen für Abfragezeichenfolgen: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Betrachten Sie beispielsweise die folgende URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
 - **Dienststamm**: In Azure AD Graph-API ist der Dienststamm immer https://graph.windows.net.
 - **Mandanten-ID**: Dies kann ein überprüfter (registrierter) Domänenname sein, im Beispiel oben "contoso.com". Es kann aber auch eine Objekt-ID des Mandanten oder der Alias "myorganization" oder "me" sein. Weitere Informationen finden Sie unter [Adressieren von Entitäten und Vorgängen in der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)).
@@ -35,26 +35,19 @@ In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (
 
 ## Graph-API-Versionen
 
-Die folgenden Versionen wurden für die Graph-API zur Verfügung gestellt.
-
-* Betaversion
-* Version 1.5
-* Version 2013-11-08
-* Version 2013-04-05
-
-Sie geben die Version für eine Graph-API-Anforderung im Abfrageparameter "api-version" an. Für Version 1.5 verwenden Sie einen numerischen Versionswert, "api-version=1.5". Verwenden Sie für frühere Versionen eine Datumszeichenfolge, die dem Format JJJJ-MM-TT entspricht, beispielsweise "api-version=2013-11-08". Verwenden Sie für Funktionen der Vorschauversion die Zeichenfolge "beta", beispielsweise "api-version=beta". Weitere Informationen zu den Unterschieden zwischen den Graph-API-Versionen finden Sie unter [Versionsverwaltung der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
+Sie geben die Version für eine Graph-API-Anforderung im Abfrageparameter "api-version" an. Verwenden Sie ab Version 1.5 einen numerischen Versionswert; api-version=1.6 Für frühere Versionen verwenden Sie eine Datumszeichenfolge, die dem Format JJJJ-MM-TT entspricht, beispielsweise „api-version=2013-11-08“. Verwenden Sie für Funktionen der Vorschauversion die Zeichenfolge "beta", beispielsweise "api-version=beta". Weitere Informationen zu den Unterschieden zwischen den Graph-API-Versionen finden Sie unter [Versionsverwaltung der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
 ## Graph-API-Metadaten
 
-Um die Graph-API-Metadatendatei zurückzugeben, fügen Sie in der URL nach "tenant-identifier" das Segment "$metadata" hinzu. Beispielsweise gibt die folgende URL Metadaten für das Demo-Unternehmen zurück, die von Graph-Explorer verwendet werden: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.5`. Sie können diese URL in die Adressleiste eines Webbrowsers eingeben, um die Metadaten anzuzeigen. Das zurückgegebene CSDL-Metadatendokument beschreibt die Entitäten und komplexen Typen, deren Eigenschaften und die Funktionen und Aktionen, die von der angeforderten Graph-API-Version verfügbar gemacht werden. Wenn der Parameter "api-version" nicht angegeben wird, werden Metadaten für die neueste Version zurückgegeben.
+Um die Graph-API-Metadatendatei zurückzugeben, fügen Sie in der URL nach "tenant-identifier" das Segment "$metadata" hinzu. Beispielsweise gibt die folgende URL Metadaten für das Demo-Unternehmen zurück, die von Graph-Explorer verwendet werden: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Sie können diese URL in die Adressleiste eines Webbrowsers eingeben, um die Metadaten anzuzeigen. Das zurückgegebene CSDL-Metadatendokument beschreibt die Entitäten und komplexen Typen, deren Eigenschaften und die Funktionen und Aktionen, die von der angeforderten Graph-API-Version verfügbar gemacht werden. Wenn der Parameter "api-version" nicht angegeben wird, werden Metadaten für die neueste Version zurückgegeben.
 
 ## Allgemeine Abfragen
 
 Unter [Allgemeine Abfragen der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) werden allgemeine Abfragen aufgeführt, die mit Azure AD Graph verwendet werden können. Dazu gehören auch Abfragen, die für den Zugriff auf Ressourcen der obersten Ebene in Ihrem Verzeichnis verwendet werden können, und Abfragen, um Vorgänge in Ihrem Verzeichnis auszuführen.
 
-Beispielsweise gibt `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.5` Unternehmensinformationen für das Verzeichnis "contoso.com" zurück.
+Beispielsweise gibt `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` Unternehmensinformationen für das Verzeichnis "contoso.com" zurück.
 
-`https://graph.windows.net/contoso.com/users?api-version=1.5` listet alle Benutzerobjekte im Verzeichnis "contoso.com" auf.
+`https://graph.windows.net/contoso.com/users?api-version=1.6` listet alle Benutzerobjekte im Verzeichnis "contoso.com" auf.
 
 ## Verwenden von Graph-Explorer
 
@@ -62,18 +55,18 @@ Mit dem Graph-Explorer für die Azure AD Graph-API können Sie Verzeichnisdaten 
 
 > [AZURE.IMPORTANT] Der Graph-Explorer unterstützt das Schreiben oder Löschen von Daten aus einem Verzeichnis nicht. Sie können mit dem Graph-Explorer nur Lesevorgänge in Ihrem Azure AD-Verzeichnis ausführen.
 
-Im Folgenden wird die Ausgabe angezeigt, die Sie sehen würden, wenn Sie zum Graph-Explorer navigieren, "Demo-Unternehmen verwenden" auswählen und `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.5` zur Anzeige aller Benutzer im Demo-Verzeichnis eingeben:
+Im Folgenden wird die Ausgabe angezeigt, die Sie sehen würden, wenn Sie zum Graph-Explorer navigieren, "Demo-Unternehmen verwenden" auswählen und `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` zur Anzeige aller Benutzer im Demo-Verzeichnis eingeben:
 
-![Azure AD Graph-API-Explorer](./media/active-directory-graph-api-quickstart/screen_shot.jpg)
+![Azure AD Graph-API-Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Laden von Graph-Explorer**: Um das Tool zu laden, wechseln Sie zu [https://graphexplorer.cloudapp.net/](https://graphexplorer.cloudapp.net/). Klicken Sie auf **Demo-Unternehmen verwenden**, um den Graph-Explorer für Daten von einem Beispielmandanten auszuführen. Anmeldeinformationen sind zur Verwendung des Demo-Unternehmens nicht erforderlich. Sie können alternativ auf **Anmelden** klicken und sich mit den Anmeldeinformationen Ihres Azure AD-Kontos anmelden, um den Graph-Explorer für Ihren Mandanten auszuführen. Wenn Sie Graph-Explorer für Ihren eigenen Mandanten ausführen, müssen Sie oder Ihr Administrator während der Anmeldung zustimmen. Wenn Sie ein Office 365-Abonnement haben, verfügen Sie automatisch über einen Azure AD-Mandanten. Die Anmeldeinformationen, die Sie verwenden, um sich bei Office 365 anzumelden, sind tatsächlich Azure AD-Konten, und Sie können diese Anmeldeinformationen mit Graph-Explorer verwenden.
 
-**Ausführen einer Abfrage**: Um eine Abfrage auszuführen, geben Sie Ihre Abfrage in das Textfeld für die Anforderung ein, und klicken Sie auf **GET**, oder drücken Sie die **EINGABETASTE**. Die Ergebnisse werden im Antwortfeld angezeigt. Beispielsweise listet `https://graph.windows.net/graphdir1.onmicrosoft.com /groups?api-version=1.5` alle Gruppenobjekte im Demo-Verzeichnis auf.
+**Ausführen einer Abfrage**: Um eine Abfrage auszuführen, geben Sie Ihre Abfrage in das Textfeld für die Anforderung ein, und klicken Sie auf **GET**, oder drücken Sie die **EINGABETASTE**. Die Ergebnisse werden im Antwortfeld angezeigt. Beispielsweise listet `https://graph.windows.net/graphdir1.onmicrosoft.com /groups?api-version=1.6` alle Gruppenobjekte im Demo-Verzeichnis auf.
 
 Beachten Sie die folgenden Funktionen und Einschränkungen von Graph-Explorer:
 - Funktion zum automatischen Vervollständigen für Ressourcensätze. Um dies zu sehen, klicken Sie auf **Demo-Unternehmen verwenden**, und klicken Sie dann auf das Textfeld für die Anforderung (in dem die Unternehmens-URL angezeigt wird). Sie können einen Ressourcensatz aus der Dropdownliste auswählen.
 
-- Unterstützt die Adressierungsaliase "me" und "myorganization". Beispielsweise können Sie `https://graph.windows.net/me?api-version=1.5` verwenden, um das Benutzerobjekt des angemeldeten Benutzers zurückzugeben, oder `https://graph.windows.net/myorganization/users?api-version=1.5`, um alle Benutzer im aktuellen Verzeichnis zurückzugeben. Beachten Sie, dass bei Verwendung des Alias "me" für das Demo-Unternehmen ein Fehler zurückgegeben wird, da kein angemeldeter Benutzer die Anforderung ausführt.
+- Unterstützt die Adressierungsaliase "me" und "myorganization". Beispielsweise können Sie `https://graph.windows.net/me?api-version=1.6` verwenden, um das Benutzerobjekt des angemeldeten Benutzers zurückzugeben, oder `https://graph.windows.net/myorganization/users?api-version=1.6`, um alle Benutzer im aktuellen Verzeichnis zurückzugeben. Beachten Sie, dass bei Verwendung des Alias "me" für das Demo-Unternehmen ein Fehler zurückgegeben wird, da kein angemeldeter Benutzer die Anforderung ausführt.
 
 - Ein Abschnitt für den Antwortheader. Dieser kann zur Behandlung von Problemen beim Ausführen von Abfragen verwendet werden.
 
@@ -93,7 +86,7 @@ Im folgenden Beispiel verwenden Sie den Fiddler-Webdebugger, um die neue Sicherh
 
 1. Öffnen Sie den Fiddler-Webdebugger, und wechseln Sie zur Registerkarte **Composer**.
 2. Da Sie eine neue Sicherheitsgruppe erstellen möchten, wählen Sie **Post** als HTTP-Methode aus dem Dropdownmenü aus. Weitere Informationen zu Vorgängen und Berechtigungen für eine Gruppe finden Sie unter [Gruppe](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#GroupEntity) innerhalb der [Azure AD Graph-REST-API-Referenz](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-3. Geben Sie in das Feld neben **Post** Folgendes als URL der Anforderung ein: `https://graph.windows.net/mytenantdomain/groups?api-version=1.5`.
+3. Geben Sie in das Feld neben **Post** Folgendes als URL der Anforderung ein: `https://graph.windows.net/mytenantdomain/groups?api-version=1.6`.
 
     > [AZURE.NOTE] Ersetzen Sie "mytenantdomain" mit dem Domänennamen Ihres eigenen Azure AD-Verzeichnisses.
 
@@ -125,6 +118,6 @@ Weitere Informationen zu Azure AD-Entitäten und -Typen, die von Graph bereitges
 ## Nächste Schritte
 
 - Erfahren Sie mehr über die [Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
-- Erfahren Sie mehr über [Azure AD Graph-API-Berechtigungsbereiche](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
+- Erfahren Sie mehr zu [Berechtigungsbereiche der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

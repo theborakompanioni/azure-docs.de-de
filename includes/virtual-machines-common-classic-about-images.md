@@ -16,12 +16,12 @@ Sie können basierend auf einem virtuellen Computer in Azure oder einem an ander
 
 Die Azure-Befehlszeilenschnittstelle (CLI) für Mac, Linux und Windows oder das Azure PowerShell-Modul dienen zum Verwalten der Images, die in Ihrem Azure-Abonnement zur Verfügung stehen. Sie können für einige Aufgaben für Images auch das klassische Azure-Portal nutzen, doch die Befehlszeile bieten Ihnen mehr Optionen.
 
-Informationen zur Verwendung dieser Tools mit Ressourcen-Manager-Bereitstellungen finden Sie unter [Navigieren zwischen und Aussuchen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-cli-ps-findimage.md).
+Informationen zur Verwendung dieser Tools mit Ressourcen-Manager-Bereitstellungen finden Sie unter [Navigieren zwischen und Aussuchen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md).
 
 Beispiele der Verwendung der Tools in einer klassischen Bereitstellung:
 
-- Informationen zur Befehlszeilenschnittstelle finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](virtual-machines-command-line-tools.md).
-- Die folgende Liste enthält Azure PowerShell-Befehle. Ein Beispiel für das Auffinden eines Images zum Erstellen eines virtuellen Computers finden Sie unter „Schritt 3: Ermitteln der ImageFamily“ in [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](virtual-machines-windows-classic-create-powershell.md).
+- Informationen zur Befehlszeilenschnittstelle finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](../articles/virtual-machines-command-line-tools.md).
+- Die folgende Liste enthält Azure PowerShell-Befehle. Ein Beispiel für das Auffinden eines Images zum Erstellen eines virtuellen Computers finden Sie unter „Schritt 3: Ermitteln der ImageFamily“ in [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md).
 
 -	**Alle Images abrufen**: `Get-AzureVMImage` gibt eine Liste aller Images in Ihrem aktuellen Abonnement zurück, und zwar sowohl Ihre Images als auch von Azure oder Partnern bereitgestellte Images. Dies bedeutet, dass die Liste umfangreich sein kann. Die nächsten Beispiele zeigen, wie eine kürzere Liste abgerufen wird.
 -	**Image-Familien abrufen**: `Get-AzureVMImage | select ImageFamily` ruft eine Liste der Image-Familien ab, indem Zeichenfolgen mit der **ImageFamily**-Eigenschaft angezeigt werden.
@@ -35,8 +35,8 @@ Beispiele der Verwendung der Tools in einer klassischen Bereitstellung:
 
 ## Zusätzliche Ressourcen
 
-[Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-creation-choices.md)
+[Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-creation-choices.md)
 
-[Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](virtual-machines-windows-creation-choices.md)
+[Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

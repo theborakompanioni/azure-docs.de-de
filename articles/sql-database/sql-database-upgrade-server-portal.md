@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Durchführen eines Upgrades auf SQL-Datenbank V12 mithilfe des Azure-Portals | Microsoft Azure" 
-	description="Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der Datenbanken in einen Pool für elastische Datenbanken mithilfe des Azure-Portals." 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
+<properties
+	pageTitle="Durchführen eines Upgrades auf SQL-Datenbank V12 mithilfe des Azure-Portals | Microsoft Azure"
+	description="Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der Datenbanken in einen Pool für elastische Datenbanken mithilfe des Azure-Portals."
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
 	manager="jeffreyg"
 	editor=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-management" 
-	ms.date="02/23/2016" 
+<tags
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-management"
+	ms.date="02/23/2016"
 	ms.author="sstein"/>
 
 
@@ -21,7 +21,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-upgrade-server-portal.md)
+- [Azure-Portal](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
@@ -41,12 +41,11 @@ Beachten Sie, dass Ihre Datenbanken während des gesamten Upgradevorgangs online
 
 Das Upgrade auf SQL-Datenbank V12 kann nicht rückgängig gemacht werden. Nach dem Upgrade kann der Server nicht auf V11 zurückgesetzt werden.
 
-Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-service-tier-advisor.md) und [Empfehlungen zu elastischen Pools](sql-database-elastic-pool-portal.md#step-2-choose-a-pricing-tier) erst dann zur Verfügung, wenn der Dienst Zeit für die Evaluierung der Workloads auf dem neuen Server hat. Der Empfehlungsverlauf für V11-Server gilt nicht für V12-Server und wird daher nicht beibehalten.
-
+Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-service-tier-advisor.md) und [Überlegungen zur Leistung für elastische Pools](sql-database-elastic-pool-guidance.md) erst dann zur Verfügung, wenn der Dienst Zeit für die Evaluierung der Workloads auf dem neuen Server hat. Der Empfehlungsverlauf für V11-Server gilt nicht für V12-Server und wird daher nicht beibehalten.
 
 ## Vorbereiten des Upgrades
 
-- **Aktualisieren aller Web- und Business-Datenbanken**: Informationen hierzu finden Sie im Abschnitt [Durchführen eines Upgrades für alle Web- und Business-Datenbanken](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases) weiter unten, oder verwenden Sie [PowerShell zum Aktualisieren von Datenbanken und Server](sql-database-upgrade-server-powershell.md).
+- **Aktualisieren aller Web- und Business-Datenbanken:** Informationen hierzu finden Sie im Abschnitt [Durchführen eines Upgrades für alle Web- und Business-Datenbanken](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases) weiter unten oder unter [Überwachen und Verwalten eines Pools für elastische Datenbanken (PowerShell)](sql-database-elastic-pool-manage-powershell.md).
 - **Überprüfen und Beenden der Georeplikation**: Wenn Ihre Azure SQL-Datenbank für Georeplikation konfiguriert ist, sollten Sie ihre aktuelle Konfiguration dokumentieren und die [Georeplikation beenden](sql-database-geo-replication-portal.md#remove-secondary-database). Nachdem das Upgrade abgeschlossen ist, können Sie Ihre Datenbank erneut für die Georeplikation konfigurieren.
 - **Öffnen Sie folgende Ports, falls Sie Clients auf einer Azure-VM verwenden**: Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank V12 herstellt und der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie die Portbereiche 11000 – 11999 und 14000 – 14999 auf dem virtuellen Computer öffnen. Weitere Informationen finden Sie unter [Ports für SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md).
 
@@ -64,7 +63,7 @@ Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-serv
 Wenn Ihr Server Web- oder Business-Datenbanken hat, müssen Sie für diese ein Upgrade durchführen. Im Verlauf der Aktualisierung auf SQL-Datenbank V12 werden Sie alle Web- und Business-Datenbanken auf eine neue Dienstebene aktualisieren.
 
 Um Sie beim Durchführen des Upgrades zu unterstützen, empfiehlt der SQL-Datenbank-Dienst eine geeignete Dienstebene und Leistungsstufe (Tarif) für jede Datenbank. Der Dienst empfiehlt die beste Dienstebene für das Ausführen der vorhandenen Workload der Datenbank durch Analyse ihres Nutzungsverlaufs.
-    
+
 3. Wählen Sie auf dem Blatt **Upgrade für diesen Server ausführen** jede zu überprüfende Datenbank und den empfohlenen Tarif aus, auf den aktualisiert werden soll. Sie können immer die verfügbaren Tarife durchsuchen und den Tarif auswählen, der für Ihre Umgebung am besten geeignet ist.
 
 
@@ -82,7 +81,7 @@ Nachdem alle Datenbanken auf dem Server qualifiziert sind, können Sie das Upgra
 
 ## Bestätigen des Upgrades
 
-3. Wenn alle Datenbanken auf dem Server zum Upgrade qualifiziert sind, müssen Sie in **GEBEN SIE DEN SERVERNAMEN EIN** den Servernamen eingeben, um zu bestätigen, dass Sie das Upgrade durchführen möchten. Klicken Sie dann auf **OK**. 
+3. Wenn alle Datenbanken auf dem Server zum Upgrade qualifiziert sind, müssen Sie in **GEBEN SIE DEN SERVERNAMEN EIN** den Servernamen eingeben, um zu bestätigen, dass Sie das Upgrade durchführen möchten. Klicken Sie dann auf **OK**.
 
     ![Upgrade bestätigen][3]
 
@@ -103,19 +102,19 @@ Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zum V12-Server und kli
 
 Oder
 
-Wenn die Meldung **Zum Anzeigen der empfohlenen elastischen Datenbankpools für diesen Server hier klicken** angezeigt wird, klicken Sie darauf, um auf einfache Weise einen Pool zu erstellen, der für die Datenbanken Ihres Servers optimiert ist. Ausführliche Informationen finden Sie unter [Empfohlene Pools für elastische Datenbanken](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools).
+Wenn die Meldung **Zum Anzeigen der empfohlenen elastischen Datenbankpools für diesen Server hier klicken** angezeigt wird, klicken Sie darauf, um auf einfache Weise einen Pool zu erstellen, der für die Datenbanken Ihres Servers optimiert ist. Weitere Informationen finden Sie unter [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
 
 ![Hinzufügen eines Pools zu einem Server][7]
-   
+
 Befolgen Sie die Anleitung im Artikel [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool.md), um die Erstellung des Pools abzuschließen.
 
 ## Überwachen von Datenbanken nach dem Upgrade auf SQL-Datenbank V12
 
 >[AZURE.IMPORTANT] Führen Sie ein Upgrade auf die aktuelle Version von SQL Server Management Studio (SSMS) aus, um die neuen v12-Funktionen nutzen zu können. [Laden Sie SQL Server Management Studio herunter](https://msdn.microsoft.com/library/mt238290.aspx).
-	
-Nach dem Upgrade wird empfohlen, die Datenbank aktiv zu überwachen, um sicherzustellen, dass Anwendungen mit der gewünschten Leistung ausgeführt werden. Außerdem sollte die Nutzung optimiert werden.
 
-Zusätzlich zur Überwachung einzelner Datenbanken können Sie [mithilfe des Portals](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool) oder mit [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) auch Pools für elastische Datenbanken überwachen.
+Überwachen Sie die Datenbank nach dem Upgrade aktiv, um sicherzustellen, dass Anwendungen mit der gewünschten Leistung ausgeführt werden. Optimieren Sie anschließend die Einstellungen.
+
+Zusätzlich zur Überwachung einzelner Datenbanken können Sie Pools für elastische Datenbanken [mit dem Azure-Portal überwachen, verwalten und skalieren](sql-database-elastic-pool-manage-portal.md) oder mit [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) überwachen.
 
 
 **Ressourcenverbrauchsdaten:** Für Basic-, Standard- und Premium-Datenbanken sind Ressourcenverbrauchsdaten über die dynamische Verwaltungssicht (DMV) [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) in der Benutzerdatenbank verfügbar. Diese dynamische Verwaltungssicht stellt beinahe in Echtzeit Informationen zum Ressourcenverbrauch mit einer Genauigkeit von 15 Sekunden für die vorhergehende Stunde des Betriebs zur Verfügung. Der prozentuale DTU-Verbrauch für ein Intervall wird als maximaler prozentualer Verbrauch von CPU-, E/A- und Protokollressourcen berechnet. Die folgende Abfrage berechnet den durchschnittlichen prozentualen DTU-Verbrauch während der letzten Stunde:
@@ -148,8 +147,7 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festle
 
 ## Nächste Schritte
 
-- [Prüfen von Empfehlungen für Pools für elastische Datenbanken](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools).
-- [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-portal.md) und Hinzufügen einiger oder aller Datenbanken zu einem Pool.
+- [Überprüfen von Poolempfehlungen und Erstellen eines Pools](sql-database-elastic-pool-create-portal.md).
 - [Ändern der Dienstebene und Leistungsstufe Ihrer Datenbank](sql-database-scale-up.md).
 
 
@@ -169,4 +167,4 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festle
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

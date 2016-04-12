@@ -14,14 +14,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="01/03/2016"
+	ms.date="03/26/2016"
 	ms.author="rasquill"/>
 
 
 
 # Linux und Open-Source-Computing auf Azure
 
-Dieses Dokument versucht, an einem Ort alle Themen aufzulisten, die von Microsoft und seinen Partnern über die Ausführung von Linux-basierten virtuellen Maschinen und anderen Open-Source-Computing-Umgebungen und Anwendungen auf Microsoft Azure erstellt wurden. Es werden Artikel aufgeführt, die nur das klassische Bereitstellungsmodell beschreiben, ebenso wie Artikel, die das Bereitstellungsmodell mit Ressourcen-Manager verwenden. In Artikeln ohne Hinweis auf ein Bereitstellungsmodell werden beide Bereitstellungsmodelle beschrieben.
+Dieses Dokument versucht, an einem Ort alle Themen zum klassischen Bereitstellungsmodell aufzulisten, die von Microsoft und seinen Partnern zur Ausführung von Linux-basierten virtuellen Maschinen und anderen Open Source-Computing-Umgebungen und Anwendungen auf Microsoft Azure erstellt wurden.
 
 Da sowohl Azure als auch das Open-Source-Computing einer ständigen Weiterentwicklung unterliegen ist dieses Dokument vermutlich nicht mehr auf dem aktuellen Stand. *Trotz* dieser Tatsache geben wir unser Bestes, kontinuierlich neue Themen hinzuzufügen und veraltete Einträge zu entfernen. Wenn wir ein Thema vergessen haben, senden Sie uns einen Kommentar, oder übermitteln Sie eine Pull-Anforderung an das [Github-Repository](https://github.com/Azure/azure-content/).
 
@@ -34,20 +34,9 @@ Die Abschnitte werden am rechten Rand dieser Seite aufgeschlüsselt. (Links kön
 - [Azure Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/)
 - [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index)
 - [Veranstaltungen und Demonstrationen: Microsoft Openness CEE](http://www.opennessatcee.com/)
-- [Klassische Bereitstellung]: [Gewusst wie: Hochladen Ihres eigenen Distro-Images](virtual-machines-linux-classic-create-upload-vhd.md) (plus Anweisungen zum Verwenden einer [von Azure unterstützten Verteilung](virtual-machines-linux-endorsed-distros.md))
+- [Gewusst wie: Hochladen Ihres eigenen Distro-Images](virtual-machines-linux-classic-create-upload-vhd.md) (plus Anweisungen zum Verwenden einer [unterstützten Azure-Verteilung](virtual-machines-linux-endorsed-distros.md))
 - [Hinweise: Allgemeine Linux-Anforderungen für die Ausführung in Azure](virtual-machines-linux-create-upload-generic.md)
-- [Klassische Bereitstellung]: [Hinweise: Allgemeine Einführung zu Linux auf Azure](virtual-machines-linux-intro-on-azure.md)
-
-<!--
-- [Distros](#distros) &mdash; Topics to do with a specific distro.
-- [The Basics](#basics) &mdash; A lot of the basic things to do that you either know or need to know.
-- [Community Images and Repositories](#images) &mdash; Other places for very useful information, repositories, and binaries.
-- [Languages and Platforms](#langsandplats)
-- [Samples and Scripts](#samples)
-- [Auth and Encryption](#security) &mdash; Important security-related topics, not necessarily specific to Azure.
-- [Devops, Management, and Optimization](#devops) &mdash; A big category, changing rapidly.
-- [Support, Troubleshooting, and "It Just Doesn't Work"](#supportdebug) &mdash; Really.
--->
+- [Hinweise: Allgemeine Einführung zu Linux auf Azure](virtual-machines-linux-intro-on-azure.md)
 
 ## Distributionen
 
@@ -57,33 +46,20 @@ Es gibt Unmengen von Linux-Verteilungen, die in der Regel durch die Paket-Verwal
 
 Ubuntu ist eine äußerst populäre und von Azure unterstützte Linux-Verteilung, die auf der dkpg- und apt-get-Paketverwaltung basiert.
 
-1. [Gewusst wie: Hochladen Ihres eigenen Ubuntu-Images](virtual-machines-linux-create-upload-ubuntu.md)
-2. [Gewusst wie: Ubuntu-LAMP-Stack](virtual-machines-linux-install-lamp-stack.md)
-3. [Klassische Bereitstellung]: [Gewusst wie: MySQL-Cluster](virtual-machines-linux-classic-mysql-cluster.md)
-4. [Klassische Bereitstellung]: [Gewusst wie: Node.js und Cassandra](virtual-machines-linux-classic-cassandra-nodejs.md)
-5. [Resource Manager-Bereitstellung]: [Gewusst wie: IPython Notebook](virtual-machines-linux-jupyter-notebook.md)
-6. [Klassische Bereitstellung]: [Gefachsimpelt: Ausführen von ASP.NET 5 auf Linux mithilfe von Docker-Containern](http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx)
-
-
-### [Debian](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=Debian)
-
-Debian ist eine wichtige Verteilung für Linux und Open-Source basierend auf der dpgk- und apt-get-Paketverwaltung. Das MSOpenTech VM Depot bietet verschiedene Images.
+3. [Gewusst wie: MySQL-Cluster](virtual-machines-linux-classic-mysql-cluster.md)
+4. [Gewusst wie: Node.js und Cassandra](virtual-machines-linux-classic-cassandra-nodejs.md)
+6. [Ausführen von ASP.NET 5 auf Linux mithilfe von Docker-Containern](http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx)
 
 ### CentOS
 
 Die CentOS-Linux-Distribution ist eine stabile, vorhersehbare, verwaltbare und reproduzierbare Plattform, die aus den Quellen von Red Hat Enterprise Linux (RHEL) abgeleitet wurde.
 
-1. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=centos)
-2. [Image-Katalog](https://azure.microsoft.com/marketplace/partners/OpenLogic/)
-3. [Gewusst wie: Vorbereiten eines benutzerdefinierten CentOS-basierten virtuellen Computers für Azure](virtual-machines-linux-create-upload-centos.md)
-4. [Klassische Bereitstellung]: [Blog: Bereitstellen eines CentOS-VM-Images aus OpenLogic](https://azure.microsoft.com/blog/2013/01/11/deploying-openlogic-centos-images-on-windows-azure-virtual-machines/)
-6. [Klassische Bereitstellung]: [Gewusst wie: Installieren von Apache Qpid Proton-C für AMQP und Service Bus](../service-bus/service-bus-amqp-apache.md/)
+4. [Blog: Bereitstellen eines CentOS-VM-Images aus OpenLogic](https://azure.microsoft.com/blog/2013/01/11/deploying-openlogic-centos-images-on-windows-azure-virtual-machines/)
+6. [Gewusst wie: Installieren von Apache Qpid Proton-C für AMQP und Service Bus](../service-bus/service-bus-amqp-apache.md/)
 
 ### SUSE Linux Enterprise Server und openSUSE
 
-9. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=OpenSUSE)
-11. [Klassische Bereitstellung]: [Gewusst wie: Installieren und Ausführen von MySQL](virtual-machines-linux-classic-mysql-on-opensuse.md)
-12. [Gewusst wie: Vorbereiten einer benutzerdefinierten SLES- oder openSUSE-VM](virtual-machines-linux-suse-create-upload-vhd.md)  
+11. [Gewusst wie: Installieren und Ausführen von MySQL](virtual-machines-linux-classic-mysql-on-opensuse.md)
 13. [[SUSE-Forum] How to: Move to a New Patch Server (Wechseln zu einem neuen Patchserver, in englischer Sprache)](https://forums.suse.com/showthread.php?5622-New-Update-Infrastructure)
 14. [Images: SUSE Linux Enterprise Server für SAP Cloud Appliance Library](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver11sp3forsapcloudappliance/)
 
@@ -92,96 +68,42 @@ Die CentOS-Linux-Distribution ist eine stabile, vorhersehbare, verwaltbare und r
 CoreOS ist eine kleine, optimierte Distribution für die reine Computingskalierung mit einem hohen Maß an Kontrolle hinsichtlich der Anpassung.
 
 10. [Image-Katalog](https://azure.microsoft.com/marketplace/partners/coreos/)  
-11. [Klassische Bereitstellung]: [Gewusst wie: Verwenden von CoreOS in Azure](virtual-machines-linux-classic-coreos-howto.md)
-12. [Klassische Bereitstellung]: [Gewusst wie: Erste Schritte mit Fleet und Docker unter CoreOS in Azure](virtual-machines-linux-classic-coreos-fleet-get-started.md)
+11. [Gewusst wie: Verwenden von CoreOS in Azure](virtual-machines-linux-classic-coreos-howto.md)
+12. [Gewusst wie: Erste Schritte mit Fleet und Docker unter CoreOS in Azure](virtual-machines-linux-classic-coreos-fleet-get-started.md)
 
-
-#### [Oracle Linux](https://azure.microsoft.com/marketplace/?term=Oracle+Linux)
-  2. [Vorbereiten eines virtuellen Oracle Linux-Computers für Azure](virtual-machines-linux-oracle-create-upload-vhd.md)
 
 ### FreeBSD
 
 12. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index?sort=Date&search=FreeBSD)
-13. [Klassische Bereitstellung]: [Blog: Ausführen von FreeBSD in Azure](https://azure.microsoft.com/blog/2014/05/22/running-freebsd-in-azure/)
-14. [Klassische Bereitstellung]: [Blog: Einfache Bereitstellung von FreeBSD](http://msopentech.com/blog/2014/10/24/easy-deploy-freebsd-microsoft-azure-vm-depot/)
+13. [Blog: Ausführen von FreeBSD in Azure](https://azure.microsoft.com/blog/2014/05/22/running-freebsd-in-azure/)
+14. [Blog: Einfache Bereitstellung von FreeBSD](http://msopentech.com/blog/2014/10/24/easy-deploy-freebsd-microsoft-azure-vm-depot/)
 15. [Blog: Bereitstellen eines benutzerdefinierten FreeBSD-Images](http://msopentech.com/blog/2014/05/14/deploy-customize-freebsd-virtual-machine-image-microsoft-azure/)
-17. [Gewusst wie: Installieren des Azure Linux-Agents](virtual-machines-linux-agent-user-guide.md)
 18. [Marketplace: Kaspersky AV für Linux-Dateiserver](https://azure.microsoft.com/marketplace/partners/kaspersky-lab/kav-for-lfs-kav-for-lfs/)
 
 ## Grundlagen
 
 1. [Grundlagen: Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-install.md)
-<!-- 4. [The basics: Certificate Use and Management](http://msdn.microsoft.com/library/azure/gg981929.aspx)-->
 5. [Grundlagen: Auswählen von Linux-Benutzernamen](virtual-machines-linux-usernames.md)
-6. [Klassische Bereitstellung]: [Grundlagen: Anmelden bei einem virtuellen Linux-Computer über das klassische Azure-Portal](virtual-machines-linux-classic-log-on.md)
+6. [Grundlagen: Anmelden bei einem virtuellen Linux-Computer über das klassische Azure-Portal](virtual-machines-linux-classic-log-on.md)
 7. [Grundlagen: SSH](virtual-machines-linux-ssh-from-linux.md)
-8. [Klassische Bereitstellung]: [Grundlagen: Zurücksetzen von Kennwörtern oder SSH-Eigenschaften für Linux](virtual-machines-linux-classic-reset-access.md)
+8. [Grundlagen: Zurücksetzen von Kennwörtern oder SSH-Eigenschaften für Linux](virtual-machines-linux-classic-reset-access.md)
 9. [Grundlagen: Verwenden von Root](virtual-machines-linux-use-root-privileges.md)
-10. [Klassische Bereitstellung]: [Grundlagen: Anfügen eines Datenträgers an einen virtuellen Linux-Computer](virtual-machines-linux-classic-attach-disk.md)
-11. [Klassische Bereitstellung]: [Grundlagen: Trennen eines Datenträgers von einem virtuellen Linux-Computer](virtual-machines-linux-classic-detach-disk.md)
+10. [Grundlagen: Anfügen eines Datenträgers an einen virtuellen Linux-Computer](virtual-machines-linux-classic-attach-disk.md)
+11. [Grundlagen: Trennen eines Datenträgers von einem virtuellen Linux-Computer](virtual-machines-linux-classic-detach-disk.md)
 12. [Blog zu den Grundlagen: Optimieren von Speicher, Festplatten und Leistung mit Linux und Azure](http://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 13. [Grundlagen: RAID](virtual-machines-linux-configure-raid.md)
-14. [Klassische Bereitstellung]: [Grundlagen: Erfassen eines virtuellen Linux-Computers zum Erstellen einer Vorlage](virtual-machines-linux-classic-capture-image.md)
+14. [Grundlagen: Erfassen eines virtuellen Linux-Computers zum Erstellen einer Vorlage](virtual-machines-linux-classic-capture-image.md)
 15. [Grundlagen: Der Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md)
 16. [Grundlagen: Azure-VM-Erweiterungen und -Features](virtual-machines-windows-extensions-features.md)
-17. [Klassische Bereitstellung]: [Grundlagen: Einfügen benutzerdefinierter Daten in einen virtuellen Computer zur Verwendung mit „Cloud-init“](virtual-machines-windows-classic-inject-custom-data.md)
-18. [Klassische Bereitstellung]: [Blog zu den Grundlagen: Erstellen von Linux auf Azure in zwölf Schritten für hohe Verfügbarkeit](http://blogs.technet.com/b/keithmayer/archive/2014/10/03/quick-start-guide-building-highly-available-linux-servers-in-the-cloud-on-microsoft-azure.aspx)
-19. [Klassische Bereitstellung]: [Blog zu den Grundlagen: Automatisieren der Bereitstellung von Linux auf Azure mit der Azure-CLI, node.js, jhawk](http://blogs.technet.com/b/keithmayer/archive/2014/11/24/step-by-step-automated-provisioning-for-linux-in-the-cloud-with-microsoft-azure-xplat-cli-json-and-node-js-part-1.aspx)
-20. [Grundlagen: Die Docker-VM-Erweiterung von Azure](virtual-machines-linux-dockerextension.md)
-23. [Klassische Bereitstellung]: [Azure-Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx) – Referenz
-24. [Klassische Bereitstellung]: [GlusterFS auf Azure](http://dastouri.azurewebsites.net/gluster-on-azure-part-1/)
+17. [Grundlagen: Einfügen benutzerdefinierter Daten in einen virtuellen Computer zur Verwendung mit "Cloud-init"](virtual-machines-windows-classic-inject-custom-data.md)
+18. [Blog zu den Grundlagen: Erstellen von Linux auf Azure in zwölf Schritten für Hochverfügbarkeit](http://blogs.technet.com/b/keithmayer/archive/2014/10/03/quick-start-guide-building-highly-available-linux-servers-in-the-cloud-on-microsoft-azure.aspx)
+19. [Blog zu den Grundlagen: Automatisieren der Bereitstellung von Linux auf Azure mit der Azure-CLI, node.js, jhawk](http://blogs.technet.com/b/keithmayer/archive/2014/11/24/step-by-step-automated-provisioning-for-linux-in-the-cloud-with-microsoft-azure-xplat-cli-json-and-node-js-part-1.aspx)
+23. [Azure-Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx) – Referenz
+24. [GlusterFS auf Azure](http://dastouri.azurewebsites.net/gluster-on-azure-part-1/)
 
 ## Community-Images und Repositorys
-3. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index) &ndash; für von der Community bereitgestellte VM-Images.
 4. [GitHub](https://github.com/Azure/) &ndash; für die Azure-Befehlszeilenschnittstelle und viele weitere Tools und Projekte.
 5. [Docker-Hub-Registrierung](https://registry.hub.docker.com/) &ndash; die Registrierung für Docker-Container-Images.
-
-## Sprachen und Plattformen
-### [Azure Java Dev Center](https://azure.microsoft.com/develop/java/)
-
-1. [Images](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=java)
-2. [Gewusst wie: Verwenden von Service Bus aus Java mit AMQP 1.0](http://msdn.microsoft.com/library/azure/jj841073.aspx)
-3. [Gewusst wie: Einrichten von Tomcat7 auf Linux mit dem klassischen Azure-Portal](virtual-machines-linux-classic-setup-tomcat.md)
-4. [Video: Azure-Java-SDK für die Dienstverwaltung](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-157-The-Java-SDK-for-Azure-Management-with-Brady-Gaster)
-5. [Blog: Erste Schritte mit Azure-Verwaltungsbibliotheken für Java](https://azure.microsoft.com/blog/2014/09/15/getting-started-with-the-azure-java-management-libraries/)
-5. [GitHub-Repository: Azure Toolkit für Eclipse mit Java](https://github.com/MSOpenTech/WindowsAzureToolkitForEclipseWithJava)
-6. [Referenz: Azure Toolkit für Eclipse mit Java](http://msdn.microsoft.com/library/azure/hh694271.aspx)
-7. [GitHub-Repository: MS Open Tech-Tools-Plug-In für IntelliJ IDEA und Android-Studio](https://github.com/MSOpenTech/msopentech-tools-for-intellij)
-7. [Blog: MSOpenTech-Beiträge zu OpenJDK](http://msopentech.com/blog/2014/10/21/ms-open-techs-first-contribution-openjdk/)
-8. [Images: WebSphere](https://azure.microsoft.com/marketplace/partners/msopentech/was-8-5-was-8-5-5-3/)
-9. [Images: WebLogic](https://azure.microsoft.com/marketplace/?term=weblogic)
-
-
-### JVM-Sprachen
-
-1. [Scala: Ausführen von Play Framework-Anwendungen in Azure-Clouddiensten](http://msopentech.com/blog/2014/09/25/tutorial-running-play-framework-applications-microsoft-azure-cloud-services-2/)
-
-### SDK-Typen, Installationen, Upgrades
-4. [Azure-Dienstverwaltungs-SDK: Java](http://dl.windowsazure.com/javadoc/)
-5. [Azure-Dienstverwaltungs-SDK: Go](https://github.com/MSOpenTech/azure-sdk-for-go)
-5. [Azure-Dienstverwaltungs-SDK: Ruby](https://github.com/MSOpenTech/azure-sdk-for-ruby)
-    - [Gewusst wie: Installieren von Ruby on Rails](virtual-machines-linux-classic-ruby-rails-web-app.md)
-6. [Azure-Dienstverwaltungs-SDK: Python](https://github.com/Azure/azure-sdk-for-python)
-    - [Gewusst wie: Django-Webanwendung "Hello World" (Mac, Linux)](virtual-machines-linux-python-django-web-app.md)
-7. [Azure-Dienstverwaltungs-SDK: Node.js](https://github.com/MSOpenTech/azure-sdk-for-node)
-8. [Azure-Dienstverwaltungs-SDK: PHP](https://github.com/MSOpenTech/azure-sdk-for-php)
-    - [Gewusst wie: Installieren des LAMP-Stacks auf einem virtuellen Azure-Computer](virtual-machines-linux-install-lamp-stack.md)
-    - [Video: Installieren eines LAMP-Stacks auf einem virtuellen Azure-Computer](http://channel9.msdn.com/Shows/Azure-Friday/LAMP-stack-on-Azure-VMs-with-Guy-Bowerman)
-9. [Azure-Dienstverwaltungs-SDK: .NET](https://github.com/Azure/azure-sdk-for-net)
-10. [Blog: Mono, ASP.NET 5, Linux und Docker](http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx)
-
-## Beispiele und Skripts
-
-Es ist geplant, diesen Abschnitt in Kürze mit Inhalt zu füllen. Wenn Sie Vorschläge haben, senden Sie uns eine Pull-Anforderung, oder hinterlassen Sie nachstehend einen Kommentar.
-
-2. [Azure Linux-Github-Repository von Patrick Chanezon](https://github.com/chanezon/azure-linux)
-3. [Video: Verschieben von lokalen USB-Daten unter Linux auf Azure mit **usbip**](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
-4. [Video: Zugreifen auf Linux-basierten GUI auf Azure im Browser mit fernapp](http://channel9.msdn.com/Blogs/Open/Accessing-Linux-based-GUI-on-Azure-over-browser-with-fernapp)
-5. [Video: Freigegebener Speicher unter Linux mithilfe der Vorschau der Azure-Dateien – Teil 1](http://channel9.msdn.com/Blogs/Open/Shared-storage-on-Linux-via-Azure-Files-Preview-Part-1)
-6. [Video: Einbeziehen von Linux-Geräten auf Azure mithilfe von Service Bus und Websites](http://channel9.msdn.com/Blogs/Open/Embracing-Linux-devices-on-Azure-via-Service-Bus-and-Web-Sites)
-7. [Video: Verbinden einer nativen Linux-basierten zwischengespeicherten Anwendung mit Microsoft Azure](http://channel9.msdn.com/Blogs/Open/Connecting-a-Linux-based-native-memcache-application-to-Windows-Azure)
-8. [Video: Lastenausgleich für hoch verfügbare Linux-Dienste auf Azure: OpenLDAP und MySQL](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)
-
 
 ## Data
 
@@ -193,8 +115,6 @@ Dieser Abschnitt enthält Informationen zu mehreren verschiedenen Speicheransät
 2. Couchdb
     - [Slideshare (MSOpenTech): Erfahrungen mit CouchDb auf Azure](http://www.slideshare.net/brianbenz/experiences-using-couchdb-inside-microsofts-azure-team)
     - [Blog:Ausführen von CouchDB-as-a-Service mit node.js, CORS und Grunt](http://msopentech.com/blog/2013/12/19/tutorial-building-multi-tier-windows-azure-web-application-use-cloudants-couchdb-service-node-js-cors-grunt-2/)
-3. MongoDB
-    - [Gewusst wie: Erstellen einer "Node.js"-Anwendung auf Azure mit MongoDB mithilfe des MongoLab-Add-Ons](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)
 4. Cassandra
     - [Gewusst wie: Ausführen von Cassandra mit Linux auf Azure und Zugreifen aus Node.js](virtual-machines-linux-classic-cassandra-nodejs.md)
 5. Redis
@@ -213,8 +133,6 @@ Dieser Abschnitt enthält Informationen zu mehreren verschiedenen Speicheransät
     - [Gewusst wie: Installieren und Ausführen von MySQL](virtual-machines-linux-classic-mysql-on-opensuse.md)
     - [Gewusst wie: Optimieren der Leistung von MySQL in Azure](virtual-machines-linux-classic-optimize-mysql.md)
     - [Gewusst wie: MySQL-Cluster](virtual-machines-linux-classic-mysql-cluster.md)
-    - [Gewusst wie: Erstellen einer MySQL-Datenbank mit Marketplace](../store-php-create-mysql-database.md)
-    - [Gewusst wie: Django und MySQL auf Azure-Websites mit Python und Visual Studio](../app-service-web/web-sites-python-ptvs-django-mysql.md)
     - [Hoch verfügbare MySQL-Architektur in Microsoft Azure](http://download.microsoft.com/download/6/1/C/61C0E37C-F252-4B33-9557-42B90BA3E472/MySQL_HADR_solution_in_Azure.pdf)
 7. MariaDB
     - [Gewusst wie: Erstellen eines Clusters mit mehreren Mastern von MariaDbs](virtual-machines-linux-classic-mariadb-mysql-cluster.md)
@@ -246,17 +164,12 @@ Führen Sie HPC-Workloads auf Linux-VM-Clustern aus, die mit Open-Source-Tools o
 Dieser Abschnitt beginnt mit einem Blogeintrag mit einer Reihe von Videos unter [Video: Virtuelle Azure-Computer: Verwenden von Chef, Puppet und Docker für die Verwaltung virtueller Linux-Computer.](https://azure.microsoft.com/blog/2014/12/15/azure-virtual-machines-using-chef-puppet-and-docker-for-managing-linux-vms/). Der Bereich "DevOps, Verwaltung und Optimierung" ist jedoch ziemlich umfangreich und verändert sich sehr schnell. Sie sollten die Liste unten also als Ausgangspunkt betrachten.
 
 1. Docker
-	- [Docker-VM-Erweiterung für Linux auf Azure](virtual-machines-linux-dockerextension.md)
 	- [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](virtual-machines-linux-classic-cli-use-docker.md)
 	- [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](virtual-machines-linux-classic-portal-use-docker.md)
     - [Schneller Einstieg in Docker in Azure Marketplace](virtual-machines-linux-classic-docker-quickstart.md)
 	- [Verwenden von "docker-machine" auf Azure](virtual-machines-linux-classic-docker-machine.md)
-	- [Verwenden von Docker mit Swarm auf Azure](virtual-machines-linux-docker-swarm.md)
-	- [Erste Schritte mit Docker und Compose auf einem virtuellen Azure-Computer](virtual-machines-linux-docker-compose-quickstart.md)
 
 2. [Fleet mit CoreOS](virtual-machines-linux-classic-coreos-howto.md)
-3. Deis
-	- [GitHub-Repository: Installieren von Deis auf einem CoreOS-Cluster in Azure](https://github.com/chanezon/azure-linux/tree/master/coreos/deis)
 4. Kubernetes
 	- [Vollständige Anleitung für die automatisierte Kubernetes- Clusterbereitstellung mit CoreOS und Weave](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
 	- [Kubernetes Visualizer](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)
@@ -266,7 +179,6 @@ Dieser Abschnitt beginnt mit einem Blogeintrag mit einer Reihe von Videos unter 
 	- [Drittanbieter: Hudson Slave-Plug-In für Azure](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
 	- [Drittanbieter: Hudson Speicher-Plug-In für Azure](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 10. Chef
-	- [Chef und virtuelle Computer](virtual-machines-windows-chef-automation.md)
 	- [Video: Was ist Chef, und wie funktioniert es?](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
 
 12. Azure-Automatisierung
@@ -282,18 +194,4 @@ Dieser Abschnitt beginnt mit einem Blogeintrag mit einer Reihe von Videos unter 
 1. Microsoft-Support-Dokumentation
 	- [Unterstützung: Unterstützung für Linux-Images in Microsoft Azure](http://support2.microsoft.com/kb/2941892)
 
-<!--Anchors-->
-[Distros]: #distros
-[The Basics]: #basics
-[Community Images and Repositories]: #images
-[Languages and Platforms]: #langsandplats
-[Samples and Scripts]: #samples
-[Auth and Encryption]: #security
-[Devops, Management, and Optimization]: #devops
-[Support, Troubleshooting, and "It Just Doesn't Work"]: #supportdebug
-
-<!--Link references--In actual articles, you only need a single period before the slash. -->
-[How to use docker-machine on Azure]: virtual-machines-linux-classic-docker-machine.md
-[How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

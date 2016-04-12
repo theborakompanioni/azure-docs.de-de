@@ -1,13 +1,10 @@
 
-## Voraussetzungen
-
-
 Für die Ausführung des PHP-Codebeispiels in diesem Thema muss auf dem Clientcomputer folgende Software installiert sein:
 
 
 - [Microsoft-Treiber für PHP für Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=20098)
  - `SQLSRV32.EXE` enthält die aktuellsten Komponenten.
-- [Microsoft SQL Server Native Client 11.0](http://www.microsoft.com/download/details.aspx?id=36434)
+- [Microsoft SQL Server Native Client 11.0](http://www.microsoft.com/download/details.aspx?id=36434)
 - [Microsoft ODBC-Treiber](https://www.microsoft.com/de-DE/download/details.aspx?id=36434)
 - IIS Express
 - [PHP 5.6 für IIS Express](http://www.microsoft.com/web/downloads/platform.aspx)
@@ -29,4 +26,4 @@ DateOfLatestFreshnessVerification = 2015-07-10
 DateOfLatestContentUpdate = 2015-07-10
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0330_2016-->
