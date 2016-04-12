@@ -5,7 +5,7 @@
 
 Azure-VM-Erweiterungen implementieren Verhaltensweisen oder Features, mit denen andere Programme in Azure-VMs verwendet werden können (die Erweiterung **WebDeployForVSDevTest** ermöglicht Visual Studio z. B. die Webbereitstellung von Lösungen auf Ihrer Azure-VM). Sie bieten aber auch die Möglichkeit zur Interaktion mit dem virtuellen Computer, um ein anderes Verhalten zu unterstützen (Sie können die VM-Zugriffserweiterungen von PowerShell, der plattformübergreifenden Azure-Schnittstelle und der REST-Clients z. B. nutzen, um die Remotezugriffswerte auf Ihrer Azure-VM zurückzusetzen oder zu ändern).
 
->[AZURE.IMPORTANT] Eine vollständige Liste der Erweiterungen nach unterstützten Features finden Sie unter [Azure-VM-Erweiterungen](virtual-machines-windows-extensions-features.md). Da jede VM-Erweiterung ein bestimmtes Feature unterstützt, hängt es von der Erweiterung ab, was Sie mit der Erweiterung genau machen können. Bevor Sie Ihren virtuellen Computer ändern, sollten Sie daher die Dokumentation für die VM-Erweiterung lesen, die Sie verwenden möchten. Das Entfernen einiger VM-Erweiterungen wird nicht unterstützt. Andere weisen Eigenschaften auf, die festgelegt werden können und das VM-Verhalten grundlegend ändern.
+>[AZURE.IMPORTANT] Eine vollständige Liste der Erweiterungen nach unterstützten Features finden Sie unter [Azure-VM-Erweiterungen](../articles/virtual-machines/virtual-machines-windows-extensions-features.md). Da jede VM-Erweiterung ein bestimmtes Feature unterstützt, hängt es von der Erweiterung ab, was Sie mit der Erweiterung genau machen können. Bevor Sie Ihren virtuellen Computer ändern, sollten Sie daher die Dokumentation für die VM-Erweiterung lesen, die Sie verwenden möchten. Das Entfernen einiger VM-Erweiterungen wird nicht unterstützt. Andere weisen Eigenschaften auf, die festgelegt werden können und das VM-Verhalten grundlegend ändern.
 
 Die häufigsten Aufgaben sind:
 
@@ -19,7 +19,7 @@ Die häufigsten Aufgaben sind:
 
 ##Suchen nach verfügbaren Erweiterungen
 
-Azure-VM-Erweiterungen: Eine vollständige Liste der Erweiterungen nach unterstützten Features finden Sie unter [Azure-VM-Erweiterungen](virtual-machines-windows-extensions-features.md). Sie können die Erweiterung und die erweiterten Informationen wie folgt finden:
+Azure-VM-Erweiterungen: Eine vollständige Liste der Erweiterungen nach unterstützten Features finden Sie unter [Azure-VM-Erweiterungen](../articles/virtual-machines/virtual-machines-windows-extensions-features.md). Sie können die Erweiterung und die erweiterten Informationen wie folgt finden:
 
 -   PowerShell
 -   Plattformübergreifende Azure-Schnittstelle (Cross-Platform Interface, CLI)
@@ -121,4 +121,4 @@ Sie können die folgenden REST-APIs verwenden, um herauszufinden, ob für eine E
 
 >[AZURE.NOTE]Erweiterungen können auch Konfigurationen verwenden, die mit JSON definiert sind. Wenn diese Typen von Erweiterungen verwendet werden, wird nur das **SampleConfig**-Element verwendet.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

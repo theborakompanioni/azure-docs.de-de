@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End
@@ -24,7 +24,7 @@
 
 Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff auf eine einfache, plattformübergreifende und skalierbare Infrastruktur, die die Verarbeitung von Pushbenachrichtigungen sowohl auf Privat- als auch auf Unternehmensanwendungen für mobile Plattformen erheblich erleichtert, In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an einen bestimmten App-Benutzer auf einem bestimmten Gerät senden. Zum Authentifizieren von Clients und zum Generieren von Benachrichtigungen wird ein ASP.NET WebAPI-Back-End verwendet, wie im Thema [Registrieren von App-Back-End aus](notification-hubs-registration-management.md#registration-management-from-a-backend) gezeigt.
 
-> [AZURE.NOTE]In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-get-started.md) beschrieben erstellt und konfiguriert haben. Dieses Lernprogramm ist außerdem die Voraussetzung für das Lernprogramm [Sichere Pushbenachrichtigungen (iOS)](notification-hubs-aspnet-backend-ios-secure-push.md). Wenn Sie Mobile Services als Back-End-Dienst verwenden, finden Sie weitere Informationen in der [Mobile Services-Version](../mobile-services-javascript-backend-ios-push-notifications-app-users.md) dieses Lernprogramms.
+> [AZURE.NOTE] In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-get-started.md) beschrieben erstellt und konfiguriert haben. Dieses Lernprogramm ist außerdem die Voraussetzung für das Lernprogramm [Sichere Pushbenachrichtigungen (iOS)](notification-hubs-aspnet-backend-ios-secure-push.md). Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile Apps: Erste Schritte mit Push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
 
 
@@ -34,7 +34,7 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 
 1. Öffnen Sie die Einzelseitenansicht-App, die Sie im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-get-started.md) erstellt haben.
 
-	> [AZURE.NOTE]In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, müssen Sie allen Klassennamen Ihren Organisationsnamen voranstellen.
+	> [AZURE.NOTE] In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, müssen Sie allen Klassennamen Ihren Organisationsnamen voranstellen.
 
 2. Fügen Sie die im folgenden Screenshot abgebildeten Komponenten aus der Objektbibliothek dem Ordner "Main.storyboard" hinzu.
 
@@ -283,7 +283,7 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 
 		@end
 
-> [AZURE.NOTE]Der folgende Codeausschnitt ist kein sicheres Authentifizierungsschema. Sie sollten die Implementierung von **createAndSetAuthenticationHeaderWithUsername:AndPassword:** durch Ihren speziellen Authentifizierungsmechanismus ersetzen, der ein von der RegisterClient-Klasse verwendetes Authentifizierungstoken generiert, z. B. OAuth, Active Directory.
+> [AZURE.NOTE] Der folgende Codeausschnitt ist kein sicheres Authentifizierungsschema. Sie sollten die Implementierung von **createAndSetAuthenticationHeaderWithUsername:AndPassword:** durch Ihren speziellen Authentifizierungsmechanismus ersetzen, der ein von der RegisterClient-Klasse verwendetes Authentifizierungstoken generiert, z. B. OAuth, Active Directory.
 
 9. Fügen Sie dann im `@implementation`-Abschnitt von "ViewController.m" den folgenden Code ein, der die Implementierung zum Festlegen des Gerätetokens und Authentifizierungsheaders hinzugefügt.
 
@@ -465,4 +465,4 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

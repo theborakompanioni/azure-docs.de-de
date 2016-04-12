@@ -16,12 +16,10 @@
 	ms.author="awills"/>
 
 
-
-
 # Analytics in Application Insights
 
 
-[Analytics](app-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-analytics.md) ermöglicht die Ausführung leistungsstarker Abfragen der von [Application Insights](app-insights-overview.md) gesammelten Telemetriedaten. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
@@ -66,6 +64,8 @@ Die Sprache verfügt über viele attraktive Features:
 >[AZURE.NOTE] Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-analytics-tour.md) anzufangen.
 
 
+
+
 ## Verbinden mit Ihren Application Insights-Daten
 
 
@@ -74,9 +74,12 @@ Die Sprache verfügt über viele attraktive Features:
 ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-analytics/001.png)
 
 
+## Grenzen
+
+Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
 
 
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

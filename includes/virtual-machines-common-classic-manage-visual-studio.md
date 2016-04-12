@@ -156,6 +156,6 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 
 ## Nächste Schritte
 
-Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-cli-create.md) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](virtual-machines-windows-tutorial.md).
+Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-cli-create.md) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-tutorial.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

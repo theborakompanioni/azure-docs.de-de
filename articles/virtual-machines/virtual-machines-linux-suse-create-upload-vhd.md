@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/13/2015"
+	ms.date="03/25/2016"
 	ms.author="szark"/>
 
 # Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
@@ -180,4 +180,4 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein SUSE- oder openSU
 ## Nächste Schritte
 Sie können jetzt mit Ihrer SUSE-Linux-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md) aus.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

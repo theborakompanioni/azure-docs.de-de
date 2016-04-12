@@ -15,11 +15,10 @@
 	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
-
  
 # Analytics-Anweisungen in Application Insights
 
-[Analytics](app-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-analytics.md) ermöglicht die Ausführung leistungsstarker Abfragen der von [Application Insights](app-insights-overview.md) gesammelten Telemetriedaten. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
@@ -37,9 +36,9 @@ In AIQL:
 
 ## Entitätsnamen
 
-Jede Spalte, Tabelle oder Datenbank verfügt weist in ihrem Container einen eindeutigen Namen auf.
+Jede Spalte, Tabelle oder Datenbank weist in ihrem Container einen eindeutigen Namen auf.
 
-Verweisen auf eine Entität entweder anhand des Namens (wenn der Kontext eindeutig ist) oder sie wird durch den Container qualifiziert. `MyColumn` kann z. B. auch als `MyTable.MyColumn` oder `MyDatabase.MyTable.MyColumn` referenziert werden.
+Auf eine Entität kann anhand des Names verwiesen werden (wenn der Kontext eindeutig ist) oder sie wird durch den Container qualifiziert. `MyColumn` kann z. B. auch als `MyTable.MyColumn` oder `MyDatabase.MyTable.MyColumn` referenziert werden.
 
 Namen können bis zu 1024 Zeichen lang sein. Die Groß-/Kleinschreibung wird beachtet, und sie können Buchstaben, Ziffern und Unterstriche (`_`) enthalten.
 
@@ -51,7 +50,7 @@ Darüber hinaus können Namen in Anführungszeichen eingeschlossen werden, damit
 |`["d-e.=/f#\n"]` | |
 |`[@'path\file']`| Keine Escapezeichen - `` ist literal|
 |`[@"\now & then"]` | |
-|`[where]` | Verwenden eines Programmiersprachenschlüsselworts als Name|
+|`[where]` | Verwenden eines Programmiersprachen-Schlüsselworts als Name|
 
 Namen können auch mit dem Namen der Datenbank qualifiziert werden (siehe [datenbankübergreifende Abfragen](#cross-database-queries))
 
@@ -75,13 +74,13 @@ Schreibgeschützte Abfragen der in Analytics gespeicherten Daten. Beispiel:
 ## Let-Anweisungen
 
 #### Übersicht
-Es ist möglich, durch eine oder mehrere let-Anweisungen als Präfix für eine Datenabfrageanweisung festzulegen. Diese erlauben, einen Namen (ein gültiger Entitätsname) an einen Ausdruck zu binden. Durch eine let-Anweisung definierte Namen können dann einmal oder mehrmals in der folgenden Datenabfrage-Anweisung verwendet werden.
+Es ist möglich, eine oder mehrere let-Anweisungen als Präfix für eine Datenabfrageanweisung festzulegen. Diese erlauben, einen Namen (ein gültiger Entitätsname) an einen Ausdruck zu binden. Durch eine let-Anweisung definierte Namen können dann einmal oder mehrmals in der folgenden Datenabfrage-Anweisung verwendet werden.
 
 Eine let-Anweisung kann einen Namen an folgende Ausdrücke binden:
 1. Skalar
 2. Tabellarische Daten 
 
-Bei der Bindung an Tabellendaten können let-Anweisungen zu Sichten befördert werden, um die Ausführung von Union-Operationen zu ermöglichen.
+Bei der Bindung an Tabellendaten können let-Anweisungen in Sichten höhergestuft werden, um die Ausführung von Union-Operationen zu ermöglichen.
 
 #### Syntax
 
@@ -100,7 +99,7 @@ let x=1;
 range y from x to x step x
 ```
 
-Das folgende Beispiel bindet die Protokolle einer einzelnen Stunde an „Window“ und führt anschließend eine Selbstverknüpfung zu Window aus:  
+Das folgende Beispiel bindet die Protokolle einer einzelnen Stunde an den Namen „Window“ und führt anschließend eine Selbstverknüpfung zu „Window“ aus:  
 
 
 
@@ -121,7 +120,7 @@ let Test = (start:long, end:long) { range x from start to end step 1 };
 Test(1, 10) | count
 ```
 
-Verwenden Sie dass Schlüsselwort „view“, um let-Anweisungen zu einer Ansicht zu befördern, die sich an „union*“-Operationen beteiligen.
+Verwenden Sie dass Schlüsselwort „view“, um let-Anweisungen in eine Sicht höher zu stufen, die sich an „union*“-Operationen beteiligt.
 
 
 ```
@@ -135,7 +134,7 @@ union * | count
 ## Anweisung einschränken
 
 #### Übersicht
-Es ist möglich, Access-Abfragen den Zugriff innerhalb von Anweisungslisten mithilfe der folgenden Anweisung zu beschränken:
+Mit der folgenden Anweisung ist es möglich, den Zugriff von Access-Abfragen innerhalb von Anweisungslisten zu beschränken:
 
 
 ```
@@ -185,7 +184,7 @@ Logs | where Timestamp > ago(1d) | count
 ```
 
 * *Quelle* ist der Name einer Datenbanktabelle oder einer zuvor definierten Ergebnistabelle.
-* Jeder *Filter* ruft, z. B. einen Abfrageoperator wie `where` oder `count` auf, mit entsprechenden Parametern. Parameter können *skalare Ausdrücke*, geschachtelte *Datenabfragen* oder Spaltennamen sein.
+* Jeder *Filter* ruft einen Abfrageoperator wie `where` oder `count` mit den entsprechenden Parametern auf. Parameter können *skalare Ausdrücke*, geschachtelte *Datenabfragen* oder Spaltennamen sein.
 
 Beispiel:
 
@@ -269,4 +268,4 @@ Parameter für benannte Funktionen müssen Skalare sein.
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

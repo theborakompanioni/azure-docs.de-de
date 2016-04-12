@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Migrieren Ihres Schemas nach SQL Data Warehouse#
@@ -65,7 +65,7 @@ In SQL Data Warehouse werden die folgenden allgemeinen Geschäftsdatentypen unte
 
 Mit der folgenden Abfrage können Sie Spalten in Ihrem Data Warehouse ermitteln, die inkompatible Datentypen enthalten:
 
-```
+```sql
 SELECT  t.[name]
 ,       c.[name]
 ,       c.[system_type_id]
@@ -145,4 +145,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

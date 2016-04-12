@@ -24,21 +24,19 @@
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-## Voraussetzungen
-
-### .NET Framework
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
 .NET Framework ist unter Windows vorinstalliert. Für Linux und Mac OS X können Sie .NET Framework vom [Mono-Projekt](http://www.mono-project.com/) herunterladen.
 
-### Eine SQL-Datenbank
+## Schritt 2: Erstellen einer SQL-Datenbank
 
 Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank. Sie sollten unbedingt die Anleitung zum Erstellen einer **AdventureWorks-Datenbankvorlage** befolgen. Die unten gezeigten Beispiele funktionieren nur mit dem **AdventureWorks-Schema**.
 
-## Schritt 1: Abrufen der Verbindungszeichenfolge
+## Schritt 3: Abrufen der Verbindungszeichenfolge
 
 [AZURE.INCLUDE [sql-database-include-connection-string-dotnet-20-portalshots](../../includes/sql-database-include-connection-string-dotnet-20-portalshots.md)]
 
-## Schritt 2: Verbinden
+## Schritt 4: Verbinden
 
 Die [System.Data.SqlClient.SqlConnection-Klasse](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) wird zum Herstellen von Verbindungen mit SQL-Datenbanken verwendet.
 
@@ -58,7 +56,7 @@ class Sample
 }
 ```
 
-## Schritt 3: Ausführen einer Abfrage
+## Schritt 5: Ausführen einer Abfrage
 
 Mit der [System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx)-Klasse und der [SqlDataReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqldatareader.aspx)-Klasse können Sie ein Resultset aus einer Abfrage an eine SQL-Datenbank abrufen. Beachten Sie, dass "System.Data.SqlClient" auch das Abrufen von Daten in ein Offline-[System.Data.DataSet](https://msdn.microsoft.com/library/system.data.dataset.aspx) unterstützt.
 
@@ -98,7 +96,7 @@ class Sample
 
 ```  
 
-## Schritt 4: Einfügen einer Zeile
+## Schritt 6: Einfügen einer Zeile
 
 In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Anweisung sicher ausführen, Parameter zum Schutz Ihrer Anwendung vor einer [Einschleusung von SQL-Befehlen](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) übergeben und den automatisch generierten [Primärschlüsselwert](https://msdn.microsoft.com/library/ms179610.aspx) abrufen.
 
@@ -133,4 +131,11 @@ class Sample
 }
 ```
 
-<!---HONumber=AcomDC_0323_2016-->
+
+## Nächste Schritte
+
+Erfahren Sie, wie Sie Wiederholungslogik durch die Behandlung vorübergehender Fehlercodes verwenden, um Ihren Code robuster zu gestalten: [Codebeispiel: Wiederholungslogik in C# für die Verbindungsherstellung mit einer SQL-Datenbank](sql-database-develop-csharp-retry-windows.md)
+
+Weitere Informationen über mögliche Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
+
+<!---HONumber=AcomDC_0330_2016-->

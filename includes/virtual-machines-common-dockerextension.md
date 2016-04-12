@@ -1,6 +1,6 @@
 
 
-[Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, bei dem Anwendungsdaten und Computing für gemeinsam genutzte Ressourcen mithilfe von [Linux-Containern](http://en.wikipedia.org/wiki/LXC) (anstelle von virtuellen Computern) isoliert werden. Verwenden Sie die [Azure Docker-VM-Erweiterung](https://github.com/Azure/azure-docker-extension/blob/master/README.md) des [Azure Linux-Agents](virtual-machines-linux-agent-user-guide.md), um einen virtuellen Docker-Computer zu erstellen, der eine beliebige Anzahl von Containern für Ihre Anwendungen in Azure hostet.
+[Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, bei dem Anwendungsdaten und Computing für gemeinsam genutzte Ressourcen mithilfe von [Linux-Containern](http://en.wikipedia.org/wiki/LXC) (anstelle von virtuellen Computern) isoliert werden. Verwenden Sie die [Azure Docker-VM-Erweiterung](https://github.com/Azure/azure-docker-extension/blob/master/README.md) des [Azure Linux-Agents](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md), um einen virtuellen Docker-Computer zu erstellen, der eine beliebige Anzahl von Containern für Ihre Anwendungen in Azure hostet.
 
 In diesem Thema wird Folgendes beschrieben:
 
@@ -64,4 +64,4 @@ Eine vollständige Liste finden Sie unter [Azure VM-Erweiterungen](virtual-machi
 [Verwenden der Docker-VM-Erweiterung mit Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [Erweiterungen für virtuelle Linux- und Windows-Computer]: #Virtual-Machine-Extensions-For-Linux-and-Windows
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

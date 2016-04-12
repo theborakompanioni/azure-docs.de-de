@@ -6,79 +6,41 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management,hpc-pack"/>
+ tags="azure-service-management,azure-resource-manager,hpc-pack"/>
 <tags
  ms.service="virtual-machines-linux"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="11/25/2015"
+ ms.date="03/24/2016"
  ms.author="danlep"/>
 
 # Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
 
-In diesem Artikel wird veranschaulicht, wie Sie einen Microsoft HPC Pack-Cluster unter Azure bereitstellen und einen [OpenFOAM](http://openfoam.com/)-Auftrag mit Intel MPI auf mehreren Linux-Computeknoten ausführen, die über das Azure Remote Direct Memory Access (RDMA)-Netzwerk verbunden sind.
+In diesem Artikel wird eine Methode zum Ausführen von OpenFoam in Azure beschrieben. Sie stellen einen Microsoft HPC Pack-Cluster unter Azure bereit und führen einen [OpenFOAM](http://openfoam.com/)-Auftrag mit Intel MPI auf mehreren Linux-Computeknoten aus, die über das RDMA-Netzwerk (Azure Remote Direct Memory Access) verbunden sind. Andere Optionen zum Ausführen von OpenFoam in Azure beinhalten vollständig konfigurierte kommerzielle Images im Marketplace.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 OpenFOAM (Open Field Operation and Manipulation) ist ein frei verfügbares Open Source-Computational Fluid Dynamics (CFD)-Softwarepaket, das sowohl in kommerziellen als auch in akademischen Organisationen häufig in den Bereichen Maschinenbau und Wissenschaft eingesetzt wird. Es enthält Tools für das „Meshing“, insbesondere snappyHexMesh, eine parallelisierte Meshing-Anwendung für komplexe CAD-Geometrien, und für die Vor- und Nachbearbeitung. Fast alle Prozesse werden gleichzeitig ausgeführt, damit Benutzer in den Genuss aller Vorteile der verwendeten Computerhardware kommen.
 
-Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen Anwendungen, einschließlich MPI-Anwendungen, auf Clustern mit virtuellen Microsoft Azure-Computern. Ab Microsoft HPC Pack 2012 R2 Update 2 unterstützt HPC Pack auch die Ausführung von Linux-HPC-Anwendungen auf virtuellen Linux-Computeknoten, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung in die Verwendung von Linux-Computeknoten mit HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
+Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen Anwendungen, einschließlich MPI-Anwendungen, auf Clustern mit virtuellen Microsoft Azure-Computern. HPC Pack unterstützt auch die Ausführung von Linux-HPC-Anwendungen auf virtuellen Computern für Linux-Computeknoten, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung in die Verwendung von Linux-Computeknoten mit HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
 >[AZURE.NOTE] In diesem Artikel wird vorausgesetzt, dass Sie sich bereits etwas mit der Verwaltung von Linux-Systemen und der Ausführung von MPI-Workloads in Linux-HPC-Clustern auskennen.
 
 ## Voraussetzungen
 
-*   **HPC Pack-Cluster mit Linux-Computeknoten** – unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md) finden Sie die Voraussetzungen sowie die Schritte zum Bereitstellen eines HPC Pack-Clusters mit Linux Computeknoten in Azure mithilfe von Azure PowerShell-Skript und HPC Pack-Images im Azure Marketplace. Weitere Aspekte der Verwendung von rechenintensiven A8-Instanzen zum Zugreifen auf das Azure RDMA-Netzwerk finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-windows-a8-a9-a10-a11-specs.md).
-
-    Die folgende XML-Beispielkonfigurationsdatei können Sie mit dem Skript verwenden, um einen Azure-basierten HPC Pack-Cluster bereitzustellen, der aus einem Hauptknoten der Größe A8 mit Windows Server 2012 R2 und zwei Computeknoten der Größe A8 mit SUSE Linux Enterprise Server 12 besteht. Ersetzen Sie die Werte durch die entsprechenden Werte für Ihr Abonnement und Ihre Dienstnamen.
-
-    >[AZURE.NOTE]Derzeit werden Linux-RDMA-Netzwerke in Azure nur für virtuelle Computer unterstützt, die mit dem RDMA-fähigen SUSE Linux Enterprise Server 12-Image im Azure Marketplace erstellt wurden (b4590d9e3ed742e4a1d46e5424aa335e\_\_suse-sles-12-hpc-v20150708).
-
-    ```
-    <?xml version="1.0" encoding="utf-8" ?>
-    <IaaSClusterConfig>
-      <Subscription>
-        <SubscriptionName>Subscription-1</SubscriptionName>
-        <StorageAccount>allvhdsje</StorageAccount>
-      </Subscription>
-      <Location>Japan East</Location>  
-      <VNet>
-        <VNetName>suse12rdmavnet</VNetName>
-        <SubnetName>SUSE12RDMACluster</SubnetName>
-      </VNet>
-      <Domain>
-        <DCOption>HeadNodeAsDC</DCOption>
-        <DomainFQDN>hpclab.local</DomainFQDN>
-      </Domain>
-      <Database>
-        <DBOption>LocalDB</DBOption>
-      </Database>
-      <HeadNode>
-        <VMName>SUSE12RDMA-HN</VMName>
-        <ServiceName>suse12rdma-je</ServiceName>
-        <VMSize>A8</VMSize>
-        <EnableRESTAPI />
-        <EnableWebPortal />
-      </HeadNode>
-      <LinuxComputeNodes>
-        <VMNamePattern>SUSE12RDMA-LN%1%</VMNamePattern>
-        <ServiceName>suse12rdma-je</ServiceName>
-        <VMSize>A8</VMSize>
-        <NodeCount>2</NodeCount>
-        <ImageName>b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708</ImageName>
-      </LinuxComputeNodes>
-    </IaaSClusterConfig>
-```
+*   **HPC Pack-Cluster mit Linux-Computeknoten der Größe A8 oder A9:** Stellen Sie einen HPC Pack-Cluster mit Linux Compute-Knoten der Größe A8 oder A9 in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-hpcpack-cluster-powershell-script) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Wenn Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012-Hauptknoten der Größe A8 und zwei SUSE Linux Enterprise Server 12-Computeknoten der Größe A8 besteht. Ersetzen Sie die Werte durch die entsprechenden Werte für Ihr Abonnement und Ihre Dienstnamen. 
 
     **Weitere wichtige Informationen**
 
-    *   Stellen Sie alle Linux-Computeknoten unter einem Clouddienst bereit, um die RDMA-Netzwerkverbindung zwischen den Knoten zu verwenden.
+    *   Derzeit werden Linux-RDMA-Netzwerke in Azure nur für virtuelle Computer der Größe A8 oder A9 unterstützt, die mit SUSE Linux Enterprise Server 12 erstellten wurden – optimiert für Hochleistungs-Compute-Images aus dem Azure Marketplace. Weitere Überlegungen hierzu finden Sie unter [About the A8, A9, A10, and A11 compute-intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md) (Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen).
+
+    *   Bei Verwendung der Bereitstellungsoption mit PowerShell-Skript stellen Sie alle Linux-Computeknoten unter einem Clouddienst bereit, um die RDMA-Netzwerkverbindung zu verwenden.
 
     *   Falls Sie nach der Bereitstellung der Linux-Knoten eine Verbindung per SSH herstellen müssen, um zusätzliche Verwaltungsaufgaben durchzuführen, finden Sie die SSH-Verbindungsdetails für die einzelnen virtuellen Linux-Computer im Azure-Portal.
         
-*   **Intel MPI**: Zum Ausführen von OpenFOAM auf Linux-Computeknoten in Azure benötigen Sie die Intel MPI Library 5-Laufzeit von der [Intel.com-Website](https://software.intel.com/de-DE/intel-mpi-library/). In einem späteren Schritt installieren Sie Intel MPI auf Ihren Linux-Serverknoten. Folgen Sie als Vorbereitung dazu nach der Registrierung bei Intel dem Link in der Bestätigungs-E-Mail auf die entsprechende Webseite, und kopieren Sie den Downloadlink der TGZ-Datei für die entsprechende Version von Intel MPI. Dieser Artikel basiert auf Intel MPI-Version 5.0.3.048.
+*   **Intel MPI:** Zum Ausführen von OpenFOAM auf Linux-Computeknoten in Azure benötigen Sie die Intel MPI Library 5-Laufzeit von der [Intel.com-Website](https://software.intel.com/de-DE/intel-mpi-library/) (Registrierung erforderlich). In einem späteren Schritt installieren Sie Intel MPI auf Ihren Linux-Serverknoten. Folgen Sie als Vorbereitung dazu nach der Registrierung bei Intel dem Link in der Bestätigungs-E-Mail auf die entsprechende Webseite, und kopieren Sie den Downloadlink der TGZ-Datei für die entsprechende Version von Intel MPI. Dieser Artikel basiert auf Intel MPI-Version 5.0.3.048.
 
 *   **OpenFOAM Source Pack**: Laden Sie die OpenFOAM Source Pack-Software für Linux auf der [Website der OpenFOAM Foundation](http://www.openfoam.org/download/source.php) herunter. Dieser Artikel basiert auf Source Pack-Version 2.3.1, die als „OpenFOAM-2.3.1.tgz“ zum Download verfügbar ist. Befolgen Sie die Anleitung weiter unten in diesem Artikel, um OpenFOAM auf den Linux-Computeknoten zu entpacken und zu kompilieren.
 
@@ -159,7 +121,7 @@ Zum Ausführen von OpenFOAM als MPI-Auftrag im RDMA-Netzwerk müssen Sie OpenFOA
 
 Sie führen zuerst mehrere **clusrun**-Befehle aus, um Intel MPI-Bibliotheken und OpenFOAM auf allen Linux-Knoten zu installieren. Verwenden Sie die bereits konfigurierte Hauptknotenfreigabe, um die Installationsdateien auf die Linux-Knoten zu verteilen.
 
->[AZURE.IMPORTANT]Diese Installations- und Kompilierschritte sind Beispiele, und es sind gewisse Kenntnisse im Bereich der Verwaltung von Linux-Systemen erforderlich. Vor allem muss sichergestellt werden, dass die abhängigen Compiler und Bibliotheken richtig installiert werden. Unter Umständen müssen Sie bestimmte Umgebungsvariablen oder andere Einstellungen ändern, die für Ihre Versionen von Intel MPI und OpenFOAM benötigt werden. Weitere Informationen finden Sie unter [Intel MPI Library für Linux – Installationsleitfaden](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html) und [OpenFOAM Source Pack-Installation](http://www.openfoam.org/download/source.php).
+>[AZURE.IMPORTANT]Diese Installations- und Kompilierschritte sind Beispiele, und es sind gewisse Kenntnisse im Bereich der Verwaltung von Linux-Systemen erforderlich, um sicherzustellen, dass die abhängigen Compiler und Bibliotheken richtig installiert werden. Unter Umständen müssen Sie bestimmte Umgebungsvariablen oder andere Einstellungen für Ihre Versionen von Intel MPI und OpenFOAM ändern. Weitere Informationen finden Sie unter [Intel MPI Library für Linux – Installationsleitfaden](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html) und [OpenFOAM Source Pack-Installation](http://www.openfoam.org/download/source.php).
 
 
 ### Installieren von Intel MPI
@@ -274,7 +236,7 @@ Verwenden Sie die bereits konfigurierte Hauptknotenfreigabe, um Dateien für die
 
     ![Schrittvariablen ändern][step_variables]
 
-5.  Geben Sie die gewünschten Werte für die Variablen in der Datei „system/decomposeParDict“ an. In diesem Beispiel werden zwei Linux-Knoten mit jeweils acht Kernen verwendet. Legen Sie also „numberOfSubdomains“ auf 16 und „n“ von „hierarchicalCoeffs“ auf (1 1 16) fest, damit OpenFOAM parallel mit 16 Prozessen ausgeführt wird. Weitere Informationen zur parallelen Ausführung von OpenFOAM finden Sie unter [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4) (in englischer Sprache).
+5.  Geben Sie die gewünschten Werte für die Variablen in der Datei „system/decomposeParDict“ an. In diesem Beispiel werden zwei Linux-Knoten mit jeweils acht Kernen verwendet. Legen Sie also „numberOfSubdomains“ auf 16 und „n“ von „hierarchicalCoeffs“ auf (1 1 16) fest, damit OpenFOAM parallel mit 16 Prozessen ausgeführt wird. Weitere Informationen finden Sie unter [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4) (OpenFOAM-Benutzerhandbuch: 3.4 Parallele Ausführung von Anwendungen).
 
     ![Prozesse zerlegen][decompose]
 
@@ -368,7 +330,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
 
     ![Auftragsressourcen][job_resources]
 
-6.	Fügen Sie dem Auftrag vier Aufgaben hinzu, indem Sie die folgenden Befehlszeilen und Einstellungen für die Aufgaben verwenden.
+6. Klicken Sie im linken Navigationsbereich auf **Aufgaben bearbeiten**, und klicken Sie dann zum Hinzufügen einer Aufgabe zum Auftrag auf **Hinzufügen**. Fügen Sie dem Auftrag mit den folgenden Befehlszeilen und Einstellungen vier Aufgaben hinzu.
 
     >[AZURE.NOTE]Mit der Ausführung von `source /openfoam/settings.sh` werden die OpenFOAM- und MPI-Laufzeitumgebungen eingerichtet. Bei jeder folgenden Aufgabe wird also vor dem OpenFOAM-Befehl die Laufzeitumgebung aufgerufen.
 
@@ -424,7 +386,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
     hpccred delcreds
     ```
 
-8.	Die Ausführung des Auftrags kann zwischen zehn Minuten und mehreren Stunden dauern. Dies richtet sich nach den Parametern, die Sie für das Beispiel festgelegt haben. In der Heat Map sehen Sie, dass der Auftrag auf zwei Linux-Knoten ausgeführt wird.
+8.	Die Ausführung des Auftrags kann zwischen zehn Minuten und mehreren Stunden dauern. Dies richtet sich nach den Parametern, die Sie für das Beispiel festgelegt haben. In der Heat Map sehen Sie, dass der Auftrag auf den Linux-Knoten ausgeführt wird.
 
     ![Heat Map][heat_map]
 
@@ -469,6 +431,43 @@ Verwenden Sie bei Bedarf [EnSight](https://www.ceisoftware.com/), um die Ergebni
 
 ## Beispieldateien
 
+### XML-Beispielkonfigurationsdatei für die Clusterbereitstellung mit einem PowerShell-Skript
+
+ ```
+<?xml version="1.0" encoding="utf-8" ?>
+<IaaSClusterConfig>
+  <Subscription>
+    <SubscriptionName>Subscription-1</SubscriptionName>
+    <StorageAccount>allvhdsje</StorageAccount>
+  </Subscription>
+  <Location>Japan East</Location>  
+  <VNet>
+    <VNetName>suse12rdmavnet</VNetName>
+    <SubnetName>SUSE12RDMACluster</SubnetName>
+  </VNet>
+  <Domain>
+    <DCOption>HeadNodeAsDC</DCOption>
+    <DomainFQDN>hpclab.local</DomainFQDN>
+  </Domain>
+  <Database>
+    <DBOption>LocalDB</DBOption>
+  </Database>
+  <HeadNode>
+    <VMName>SUSE12RDMA-HN</VMName>
+    <ServiceName>suse12rdma-je</ServiceName>
+    <VMSize>A8</VMSize>
+    <EnableRESTAPI />
+    <EnableWebPortal />
+  </HeadNode>
+  <LinuxComputeNodes>
+    <VMNamePattern>SUSE12RDMA-LN%1%</VMNamePattern>
+    <ServiceName>suse12rdma-je</ServiceName>
+    <VMSize>A8</VMSize>
+    <NodeCount>2</NodeCount>
+      <ImageName>b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708</ImageName>
+  </LinuxComputeNodes>
+</IaaSClusterConfig>
+```
 
 ### Beispieldatei "cred.xml"
 
@@ -504,7 +503,7 @@ a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
   <PublicKey>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEkoEAGGc6wT16d4Ye+yN2hcqigdTGlMcjUlW6cAmRWYXLwkKoW3WlX3xAK0oQdMLqRDu2PVRPY3qfHURj0EEellpydeaSekp1fg27Rw2VKmEumu6Wxwo9HddXORPAQXTQ4yI0lWSerypckXVPeVjHetbkSci2foLedCbeBA9c/RyRgIUl227/pJKDNX2Rpqly0sY82nVWN/0p4NAyslexA0fGdBx+IgKnbU2JQKJeiwOomtEB/N492XRfCw2eCi7Ly3R8+U1KeBm+zH6Q8aH8ApqQohhLRw71bcWZ1g1bxd6HORxXOu0mFTzHbWFcZ9ILtXRl4Pt0x5Mve1AJXEKb username@servername;</PublicKey>
 </ExtendedData>
 ```
-### Beispieldatei „silent.cfg“
+### Beispiel für die Datei „silent.cfg“ zum Installieren von MPI
 
 ```
 # Patterns used to check silent configuration file
@@ -655,4 +654,4 @@ exit ${RTNSTS}
 [isosurface_color]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/linux_processes.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

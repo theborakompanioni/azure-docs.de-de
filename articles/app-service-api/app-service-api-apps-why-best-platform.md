@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="API-Apps-Übersicht" 
+	pageTitle="Einführung in die API-Apps | Microsoft Azure" 
 	description="Erfahren Sie, warum Azure App Service die beste Plattform zum Entwickeln, Veröffentlichen und Hosten von RESTful-APIs ist." 
 	services="app-service\api" 
 	documentationCenter=".net" 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="03/23/2016" 
 	ms.author="tdykstra"/>
 
 # API-Apps-Übersicht
 
 API-Apps ist einer der vier App-Typen, die von [Azure App Service](../app-service/app-service-value-prop-what-is.md) angeboten werden.
 
-![](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
+![App-Typen in Azure App Service](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
 
-[App Service](../app-service/app-service-value-prop-what-is.md) ist eine vollständig verwaltete Plattform, die einen umfangreichen Satz von Funktionen für mobile, Web- und Integrationsszenarien bereitstellt. API-Apps in App Service bietet Funktionen, mit denen APIs in der Cloud und lokal einfacher erstellt, gehostet und genutzt werden können. Stellen Sie Ihre API als API-App in App Service bereit, und profitieren Sie von einer für Unternehmen geeigneten Sicherheit, einfacher Zugriffssteuerung, hybrider Konnektivität, automatischer SDK-Generierung und nahtloser Integration in [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md).
+[App Service](../app-service/app-service-value-prop-what-is.md) ist eine vollständig verwaltete Plattform für mobile, Web- und Integrationsszenarios. API-Apps in App Service bietet Funktionen, mit denen APIs in der Cloud und lokal einfacher erstellt, gehostet und genutzt werden können. Stellen Sie Ihre API als API-App in App Service bereit, und profitieren Sie von einer für Unternehmen geeigneten Sicherheit, einfacher Zugriffssteuerung, hybrider Konnektivität, automatischer SDK-Generierung und nahtloser Integration in [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md).
 
 ## Warum API-Apps?
 
@@ -64,4 +64,4 @@ Arbeiten Sie zum Einstieg in API-Apps eines der Tutorials unter [Erste Schritte 
 
 Um Fragen über API-Apps zu stellen, starten Sie einen Thread im [API-Apps-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureAPIApps).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

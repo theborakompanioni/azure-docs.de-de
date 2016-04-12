@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 
@@ -45,12 +45,10 @@ Wenn Sie alle Ihre externen Tabellen zur neuen externen Datenquelle migriert hab
 ## Abfragen von Daten im Azure-Blob-Speicher
 Bei Abfragen für externe Tabellen wird einfach der Tabellenname verwendet, als handle es sich um relationale Tabellen.
 
-```
-
+```sql
 -- Query Azure storage resident data via external table.
 SELECT * FROM [ext].[CarSensor_Data]
 ;
-
 ```
 
 > [AZURE.NOTE] Eine Abfrage für eine externe Tabelle kann mit folgendem Fehler fehlschlagen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Dies weist darauf hin, dass die externen Daten *fehlerhafte* Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die tatsächlichen Datentypen/Anzahl der Spalten nicht den Spaltendefinitionen der externen Tabelle entsprechen, oder wenn die Daten nicht im angegebenen Format der externen Datei vorliegen. Um dieses Problem zu beheben, stellen Sie sicher, dass die Formatdefinitionen der externen Tabelle und Datei richtig und Ihre externen Daten diesen Definitionen entsprechen. Für den Fall, dass eine Teilmenge der Datensätze für externe Daten fehlerhaft sind, können Sie diese Datensätze für Ihre Abfragen mit den Ablehnungsoptionen in „CREATE EXTERNAL TABLE DDL“ ablehnen.
@@ -65,7 +63,7 @@ In diesem Beispiel werden die Daten mit der CREATE TABLE AS SELECT-Anweisung gel
 
 CREATE TABLE AS SELECT ist eine sehr leistungsfähige Transact-SQL-Anweisung, mit der die Daten parallel auf alle Compute-Knoten Ihres SQL Data Warehouse geladen werden. Sie wurde ursprünglich für das Massively Parallel Processing (MPP)-Modul in Analytics Platform System entwickelt und wird jetzt in SQL Data Warehouse verwendet.
 
-```
+```sql
 -- Load data from Azure blob storage to SQL Data Warehouse
 
 CREATE TABLE [dbo].[Customer_Speed]
@@ -86,7 +84,7 @@ Siehe [CREATE TABLE AS SELECT (Transact-SQL)][].
 
 Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie unter dem Thema [Statistiken][] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
-```
+```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
 create statistics [CustomerKey] on [Customer_Speed] ([CustomerKey]);
 create statistics [GeographyKey] on [Customer_Speed] ([GeographyKey]);
@@ -99,7 +97,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie Daten aus SQL Data Warehouse i
 
 Im folgenden Beispiel wird die externe Tabelle „Weblogs2014“ erstellt, indem Spaltendefinitionen und Daten aus der Tabelle „dbo.Weblogs“ verwendet werden. Die Definition der externen Tabelle wird in SQL Data Warehouse gespeichert, und die Ergebnisse der SELECT-Anweisung werden in das Verzeichnis „/archive/log2014/“ unter dem BLOB-Container exportiert, der von der Datenquelle angegeben wird. Die Daten werden im angegebenen Textdateiformat exportiert.
 
-```
+```sql
 CREATE EXTERNAL TABLE Weblogs2014 WITH
 (
     LOCATION='/archive/log2014/',
@@ -130,7 +128,7 @@ Dazu gibt es verschiedene Möglichkeiten. Nachfolgend sind zwei Methoden angegeb
 
 Nachfolgend sehen Sie ein einfaches einzeiliges Powershell-Skript, das die Datei erstellt.
 
-```
+```PowerShell
 Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
 ```
 
@@ -140,7 +138,7 @@ Obwohl dies eine einfache Methode zum erneuten Codieren der Daten darstellt, ist
 
 Das folgende Codebeispiel ist komplexer, doch da die Datenzeilen aus der Quelle in das Ziel gestreamt werden, ist es wesentlich effizienter. Verwenden Sie diese Methode für größere Dateien.
 
-```
+```PowerShell
 #Static variables
 $ascii = [System.Text.Encoding]::ASCII
 $utf16le = [System.Text.Encoding]::Unicode
@@ -210,4 +208,4 @@ Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

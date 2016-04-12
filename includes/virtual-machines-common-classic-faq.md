@@ -15,7 +15,7 @@ Für Windows-Client-Images stehen bestimmte Versionen von Windows 7 und Windows 
 
 ## Wie viel Speicher kann mit einem virtuellen Computer verwendet werden?
 
-Jeder Datenträger kann bis zu 1 TB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md).
+Jeder Datenträger kann bis zu 1 TB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
 
 Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datenträger für Daten. Bei jedem Datenträger handelt es sich um eine VHD-Datei, die als Seiten-Blob gespeichert wird. Ausführliche Informationen zu Preisen finden Sie unter [Speicherpreisübersicht](http://go.microsoft.com/fwlink/p/?LinkId=396819).
 
@@ -23,9 +23,9 @@ Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datent
 
 Azure unterstützt nur virtuelle Festplatten mit fester Größe im VHD-Format. Wenn Sie einen Datenträger im VHDX-Format in Azure verwenden möchten, konvertieren Sie ihn mit Hyper-V-Manager oder dem Cmdlet [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). Laden Sie danach mit dem Cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (im Dienstverwaltungsmodus) die virtuelle Festplatte in ein Speicherkonto in Azure hoch, damit Sie sie mit virtuellen Computern verwenden können.
 
-- Anweisungen für Linux finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md).
+- Anweisungen für Linux finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md).
 
-- Anweisungen für Windows finden Sie unter [Erstellen und Hochladen einer Windows Server-VHD nach Azure](virtual-machines-windows-classic-createupload-vhd.md).
+- Anweisungen für Windows finden Sie unter [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md).
 
 ## Sind diese virtuellen Computer mit Hyper-V-Computern identisch?
 
@@ -45,17 +45,17 @@ Sie müssen beim Erstellen des virtuellen Computers das Netzwerk angeben, zu dem
 
 Sie müssen über Remotedesktopverbindung (virtuelle Windows-Computer) oder SSH (Secure Shell, für virtuelle Linux-Computer) eine Remoteverbindung herstellen, um sich bei dem virtuellen Computer anzumelden. Anweisungen dazu finden Sie unter:
 
-- [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](virtual-machines-windows-classic-connect-logon.md) Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Host für eine Remotedesktopdienste-Sitzung konfiguriert.  
-- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](virtual-machines-linux-classic-log-on.md) SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
+- [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md) Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Host für eine Remotedesktopdienste-Sitzung konfiguriert.  
+- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md) SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
 
 
-Wenn bei Remotedesktop oder SSH Probleme auftreten, installieren und verwenden Sie die [VMAccess](virtual-machines-windows-extensions-features.md)-Erweiterung, um das Problem zu beheben.
+Wenn bei Remotedesktop oder SSH Probleme auftreten, installieren und verwenden Sie die [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md)-Erweiterung, um das Problem zu beheben.
 
 Zusätzliche Optionen für virtuelle Windows-Computer:
 
 - Suchen Sie den virtuellen Computer im klassischen Azure-Portal, und klicken Sie auf der Befehlsleiste auf **Remotezugriff zurücksetzen**.
-- Lesen Sie [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md).
-- Verwenden Sie Windows PowerShell-Remoting zum Herstellen der Verbindung mit dem virtuellen Computer, oder erstellen Sie zusätzliche Endpunkte, damit andere Ressourcen die Verbindung mit dem virtuellen Computer herstellen können. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md).
+- Lesen Sie [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md).
+- Verwenden Sie Windows PowerShell-Remoting zum Herstellen der Verbindung mit dem virtuellen Computer, oder erstellen Sie zusätzliche Endpunkte, damit andere Ressourcen die Verbindung mit dem virtuellen Computer herstellen können. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 
 Wenn Sie mit Hyper-V vertraut sind, suchen Sie möglicherweise nach einem ähnlichen Tool wie VMConnect. Azure bietet kein ähnliches Tool, da der Konsolenzugriff auf einem virtuellen Computer nicht unterstützt wird.
 
@@ -65,7 +65,7 @@ Sie sollten den temporären Datenträger (standardmäßig Laufwerk D: bei Window
 
 ## Wie kann ich den Laufwerkbuchstaben des temporären Datenträgers ändern?
 
-Sie können auf einem virtuellen Windows-Computer den Laufwerkbuchstaben ändern, indem Sie die Auslagerungsdatei verschieben und die Laufwerkbuchstaben neu zuweisen. Sie müssen dabei jedoch sicherstellen, dass Sie die Schritte in einer bestimmten Reihenfolge ausführen. Anweisungen finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md).
+Sie können auf einem virtuellen Windows-Computer den Laufwerkbuchstaben ändern, indem Sie die Auslagerungsdatei verschieben und die Laufwerkbuchstaben neu zuweisen. Sie müssen dabei jedoch sicherstellen, dass Sie die Schritte in einer bestimmten Reihenfolge ausführen. Anweisungen finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md).
 
 ## Wie kann ich ein Upgrade des Gastbetriebssystems ausführen?
 
@@ -82,7 +82,7 @@ Allgemeine Informationen zu Tools und Verfahren zum Migrieren von Windows Server
 
 Die von Azure bereitgestellten Images verfügen nicht über einen vorkonfigurierten Benutzernamen und ein Kennwort. Wenn Sie die virtuellen Computer mit einem dieser Images erstellen, müssen Sie einen Benutzernamen und ein Kennwort angeben, mit denen Sie sich beim virtuellen Computer anmelden.
 
-Wenn Sie den Benutzernamen oder das Kennwort vergessen und den VM-Agent installiert haben, können Sie die [VMAccess](virtual-machines-windows-extensions-features.md)-Erweiterung installieren und verwenden, um das Problem zu beheben.
+Wenn Sie den Benutzernamen oder das Kennwort vergessen und den VM-Agent installiert haben, können Sie die [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md)-Erweiterung installieren und verwenden, um das Problem zu beheben.
 
 Weitere Details:
 
@@ -102,7 +102,7 @@ Azure bietet verschiedene Optionen für Virenschutz-Softwarelösungen. Ihre Verw
 
 ## Welche Optionen sind für Sicherung und Wiederherstellung verfügbar?
 
-Die Azure-Sicherung ist als Vorschau in bestimmten Regionen verfügbar. Weitere Informationen finden Sie unter [Sichern eines virtuellen Azure-Computers](backup-azure-vms.md). Andere Lösungen sind von zertifizierten Partnern erhältlich. Aktuelle Angebote finden Sie auf dem Azure Marketplace.
+Die Azure-Sicherung ist als Vorschau in bestimmten Regionen verfügbar. Weitere Informationen finden Sie unter [Sichern eines virtuellen Azure-Computers](../articles/backup/backup-azure-vms.md). Andere Lösungen sind von zertifizierten Partnern erhältlich. Aktuelle Angebote finden Sie auf dem Azure Marketplace.
 
 Eine weitere Option ist die Verwendung der Momentaufnahmefunktionen von Blob-Speichern. Hierfür müssen Sie den virtuellen Computer vor jedem Vorgang herunterfahren, für den eine Blob-Momentaufnahme benötigt wird. Dadurch werden ausstehende Schreibvorgänge gespeichert und das Dateisystem in einen konsistenten Zustand versetzt.
 
@@ -138,4 +138,4 @@ Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurier
 
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

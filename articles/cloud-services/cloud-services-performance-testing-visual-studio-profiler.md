@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="12/21/2015" 
+	ms.date="03/28/2016" 
 	ms.author="tarcher"/>
 
 # Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
@@ -26,7 +26,7 @@ Dieser Artikel behandelt die CPU-Sampling-Methode der Profilerstellung, welche l
 
 
 
-## Schritt 1: Konfigurieren von Visual Studio für die Profilerstellung
+## 1: Konfigurieren von Visual Studio für die Profilerstellung
 
 Es gibt wenige Visual Studio-Konfigurationsoptionen, die für die Profilerstellung hilfreich sind. Um Profilberichte sinnvoll zu nutzen, benötigen Sie sowohl Symbole (.pdb-Dateien) für die Anwendung als auch Symbole für Systembibliotheken. Sie möchten möglicherweise überprüfen, dass Sie auf die verfügbaren Symbolserver verweisen. Wählen Sie dazu im Menü **Extras** in Visual Studio **Optionen**, und wählen Sie dann **Debugging** und anschließend **Symbole**. Überprüfen Sie, dass Microsoft Symbol Servers unter **Speicherorte für Symboldateien (.pdb)** aufgelistet ist. Sie können auch auf http://referencesource.microsoft.com/symbols verweisen, wo möglicherweise zusätzliche Symboldateien verfügbar sind.
 
@@ -70,7 +70,7 @@ Rufen Sie diesen Code von der RunAsync-Methode in der RoleEntryPoint-abgeleitete
 
 Erstellen Sie den Clouddienst und führen Sie ihn lokal ohne Debuggen (Strg+F5) aus, wobei die Lösungskonfiguration auf **Release** festgelegt ist. Dadurch wird sichergestellt, dass alle Dateien und Ordner für das lokale Ausführen der Anwendung erstellt wurden und der Emulator gestartet wurde. Starten Sie die Serveremulator-Benutzeroberfläche über die Taskleiste, um zu überprüfen, ob die Workerrolle aktiv ist.
 
-## Schritt 2: Anfügen an einen Prozess
+## 2: Anfügen an einen Prozess
 
 Anstatt die Profilerstellung der Anwendung über die Visual Studio 2010-IDE-Schnittstelle zu starten, müssen Sie den Profiler an einen laufenden Prozess anfügen.
 
@@ -104,7 +104,7 @@ Wenn Sie die Profilerstellung beenden möchten, wählen Sie den Link **Beenden S
 
 ![][10]
 
-## Schritt 3: Anzeigen von Leistungsberichten
+## 3: Anzeigen der Leistungsberichte
 
 Der Leistungsbericht für Ihre Anwendung wird angezeigt.
 
@@ -123,7 +123,7 @@ Wenn Sie den Zeichenkettenverkettungscode in diesem Artikel hinzugefügt haben, 
 
 ![][14]
 
-## Schritt 4: Durchführen von Änderungen und Vergleichen der Leistung
+## 5: Vornehmen von Änderungen und Vergleichen von Leistung
 
 Sie können auch die Leistung vor und nach einer Codeänderung vergleichen. Beenden Sie den laufenden Prozess, und bearbeiten Sie den Code, um den Zeichenkettenverkettungsvorgang durch die Verwendung von StringBuilder zu ersetzen:
 
@@ -148,7 +148,7 @@ Der Bericht zeigt die Unterschiede zwischen den beiden Ausführungen an.
 
 Glückwunsch! Sie haben die ersten Schritte mit dem Profiler geschafft.
 
-##  Problembehandlung
+## Problembehandlung
 
 - Stellen Sie sicher, dass Sie eine Releaseversion profilieren, und starten Sie ohne Debugging.
 
@@ -186,4 +186,4 @@ Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-P
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0330_2016-->

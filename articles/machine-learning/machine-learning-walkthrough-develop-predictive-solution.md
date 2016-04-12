@@ -39,6 +39,6 @@ Um eine Lösung zur Kreditrisikobewertung zu erstellen, müssen wir die folgende
 5.	[Bereitstellen des Webdiensts](machine-learning-walkthrough-5-publish-web-service.md)
 6.	[Zugreifen auf den Webdienst](machine-learning-walkthrough-6-access-web-service.md)
 
-Diese exemplarische Vorgehensweise basiert auf einer vereinfachten Version des Beispielexperiments [Binäre Klassifizierung: Kreditrisiko-Vorhersage](http://go.microsoft.com/fwlink/?LinkID=525270) im [Cortana Analytics-Katalog](http://gallery.cortanaanalytics.com/).
+Diese exemplarische Vorgehensweise basiert auf einer vereinfachten Version des Beispielexperiments [Binäre Klassifizierung: Kreditrisiko-Vorhersage](http://go.microsoft.com/fwlink/?LinkID=525270) im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

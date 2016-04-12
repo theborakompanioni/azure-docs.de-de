@@ -15,22 +15,17 @@
 	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
-
  
 # Skalare Ausdrücke in Analytics
 
 
-[Analytics](app-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-analytics.md) ermöglicht die Ausführung leistungsstarker Abfragen der von [Application Insights](app-insights-overview.md) gesammelten Telemetriedaten. Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
 ---
 
-[ago](#ago) | [arraylength](#arraylength) | [bin](#bin) [countof](#countof) | [dayofweek](#dayofweek) | [extract](#extract) | [extractjson](#extractjson) | [floor](#floor) 
-<br/>[getmonth](#getmonth) | [gettype](#gettype) [getyear](#getyear) | [hash](#hash) | [iff](#iff) | [isempty](#isempty) | [isnotempty](#isnotempty) | [isnull](#isnull) | [isnotnull](#isnotnull) 
-<br/> [now](#now) | [notempty](#notempty) | [notnull](#notnull) | [parsejson](#parsejson)| [rand](#rand) | [range](#range) | [replace](#replace) | [split](#split) | [sqrt](#sqrt) 
-<br/>[startofmonth](#startofmonth) | [startofyear](#startofyear) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) 
-| [tolower](#tolower) | [toupper](#toupper) | [treepath](#treepath)
+[ago](#ago) | [arraylength](#arraylength) | [bin](#bin) [countof](#countof) | [dayofweek](#dayofweek) | [extract](#extract) | [extractjson](#extractjson) | [floor](#floor) <br/>[getmonth](#getmonth) | [gettype](#gettype) [getyear](#getyear) | [hash](#hash) | [iff](#iff) | [isempty](#isempty) | [isnotempty](#isnotempty) | [isnull](#isnull) | [isnotnull](#isnotnull) <br/> [now](#now) | [notempty](#notempty) | [notnull](#notnull) | [parsejson](#parsejson)| [rand](#rand) | [range](#range) | [replace](#replace) | [split](#split) | [sqrt](#sqrt) <br/>[startofmonth](#startofmonth) | [startofyear](#startofyear) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper) | [treepath](#treepath)
 
 ---
 
@@ -241,17 +236,17 @@ Beachten Sie, dass es andere Möglichkeiten gibt, diesen Effekt zu erreichen:
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | 
-| * | Multiplizieren | 
-| / | Dividieren | 
-| % | Modulo | 
-|| 
-|`<` |Kleiner 
-|`<=`|Kleiner oder gleich 
-|`>` |Größer 
-|`>=`|Größer oder gleich 
-|`<>`|Ungleich 
-|`!=`|Ungleich
+| - | Subtrahieren |
+| * | Multiplizieren |
+| / | Dividieren |
+| % | Modulo |
+||
+|`<` |Kleiner
+|`<=`|Kleiner oder gleich
+|`>` |Größer
+|`>=`|Größer oder gleich
+|`<>`|Ungleich
+|`!=`|Ungleich 
 
 
 
@@ -1153,4 +1148,4 @@ Beachten Sie, dass „[0]“ auf das Vorhandensein eines Arrays hinweist, aber n
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

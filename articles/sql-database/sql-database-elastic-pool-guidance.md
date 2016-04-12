@@ -113,8 +113,11 @@ Tipps für eine flexiblere Ressourcennutzung, die Ad-hoc-Schätzungen der Server
 
 Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei helfen, einzuschätzen, ob ein Pool kostengünstiger als eine einzelne Datenbank ist:
 
-1.	Schätzen Sie wie folgt die Menge der für den Pool benötigten eDTUs: MAX(<*Gesamtanzahl Datenbanken* X *durchschnittliche DTU-Auslastung pro Datenbank*>, <*Anzahl von gleichzeitig unter Spitzenlast ausgeführten Datenbanken* X *Spitzen-DTU-Auslastung pro Datenbank*)
-2.	Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet. Informationen zu den durch die eDTU-Poolgröße bedingten Speicherbegrenzung des Pools finden Sie unter [eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
+1.	Schätzen Sie die für den Pool benötigten eDTUs nach der folgenden Methode:
+
+    MAX(<*Gesamtanzahl Datenbanken* X *durchschnittliche DTU-Auslastung pro Datenbank*>, <br> <*Anzahl von gleichzeitig unter Spitzenlast ausgeführten Datenbanken* X *Spitzen-DTU-Auslastung pro Datenbank*)
+
+2.	Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet. Informationen zu den durch die eDTU-Poolgröße bedingten Speicherbegrenzungen des Pools finden Sie unter [eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
 3.	Nehmen Sie die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2.
 4.	Auf der [SQL-Datenbank Preisseite](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie die kleinste eDTU-Poolgröße, die größer ist als die Schätzung aus Schritt 3.
 5.	Vergleichen Sie den Poolpreis aus Schritt 5 mit dem Preis der geeigneten Leistungsstufen für einzelne Datenbanken.
@@ -129,6 +132,6 @@ Nicht alle einzelnen Datenbanken sind gute Kandidaten für Pools. Datenbanken mi
 - [Einen Pool für elastische Datenbanken überwachen, verwalten und skalieren](sql-database-elastic-pool-manage-portal.md)
 - [Referenz zu Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md)
 - [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md)
-- [PowerShell script for identifying databases suitable for an elastic database pool](sql-database-elastic-pool-database-assessment-powershell.md) (PowerShell-Skript zum Ermitteln von Datenbanken mit Eignung für einen Pool für elastische Datenbanken)
+- [PowerShell script for identifying databases suitable for an elastic database pool (PowerShell-Skript zum Ermitteln von Datenbanken mit Eignung für einen Pool für elastische Datenbanken)](sql-database-elastic-pool-database-assessment-powershell.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

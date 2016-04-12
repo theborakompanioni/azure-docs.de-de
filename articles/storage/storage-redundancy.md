@@ -76,8 +76,8 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 | USA (Mitte/Süden) | USA (Mitte/Norden) |
 | USA (Ost) | USA (West) |
 | USA (West) | USA (Ost) |
-| USA (Ost 2) | USA (Mitte) |
-| USA (Mitte) | USA (Ost 2) |
+| USA (Ost 2) | USA (Mitte) |
+| USA (Mitte) | USA (Ost 2) |
 | Nordeuropa | Westeuropa |
 | Westeuropa | Nordeuropa |
 | Südostasien | Ostasien |
@@ -91,13 +91,14 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 | Australien (Südost) | Australien (Ost) |
 | Indien, Süden | Indien, Mitte |
 | Indien, Mitte | Indien, Süden |
-
+| US Government, Iowa | US Government, Virginia |
+| US Government, Virginia | US Government, Iowa |
 
 ## Georedundanter Speicher mit Lesezugriff
 
 Georedundanter Speicher mit Lesezugriff (RA-GRS) maximiert die Verfügbarkeit für das Speicherkonto, indem ein schreibgeschützter Zugriff auf Daten am sekundären Standort zusätzlich zur von GRS gebotenen Replikation in zwei Regionen bereitgestellt wird. Falls Daten in der primären Region nicht verfügbar sind, kann Ihre Anwendung Daten aus der sekundären Region lesen.
 
-Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Region aktivieren, sind Ihre Daten zusätzlich zum primären Endpunkt für Ihr Speicherkonto auf einem sekundären Endpunkt verfügbar. Der sekundäre Endpunkt ähnelt dem primären Endpunkt, wobei das Suffix `–secondary` an den Kontonamen angefügt wird. Wenn Ihr primärer Endpunkt für den Blob-Dienst z. B. `myaccount.blob.core.windows.net` ist, dann ist Ihr sekundärer Endpunkt `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
+Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Region aktivieren, sind Ihre Daten zusätzlich zum primären Endpunkt für Ihr Speicherkonto auf einem sekundären Endpunkt verfügbar. Der sekundäre Endpunkt ähnelt dem primären Endpunkt, wobei das Suffix `–secondary` an den Kontonamen angefügt wird. Wenn Ihr primärer Endpunkt für den Blob-Dienst z. B. `myaccount.blob.core.windows.net` ist, dann ist Ihr sekundärer Endpunkt `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
 
 ## Nächste Schritte
 
@@ -105,6 +106,6 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 - [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)
 - [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
 - [Microsoft Azure Storage Emulator 3.1 with RA-GRS (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
-- [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)  
+- [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

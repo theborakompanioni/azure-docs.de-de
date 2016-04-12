@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="02/03/2016"
+	ms.date="03/24/2016"
 	ms.author="jroth"/>
 
 # Übersicht zu SQL Server auf virtuellen Azure-Computern
@@ -26,13 +26,15 @@ Sie können [SQL Server auf virtuellen Azure-Computern](https://azure.microsoft.
 
 Um einen virtuellen Computer mit SQL Server in Azure zu erstellen, müssen Sie zunächst ein Abonnement für die Azure-Plattform erwerben. Sie können ein Azure-Abonnement über [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) erwerben. Wenn Sie es kostenlos testen möchten, besuchen Sie [kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
+Eine gute Übersicht bietet das Video [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Azure VM ist die beste Plattform für SQL Server 2016).
+
 ### Bereitstellen einer SQL Server-Instanz auf einem einzelnen virtuellen Computer
 
-Nachdem Sie sich für ein Abonnement angemeldet haben, besteht die einfachste Möglichkeit zum Bereitstellen eines virtuellen Computers mit SQL Server in Azure darin, [in Azure aus dem Imagekatalog ein Image eines virtuellen Computers mit SQL Server bereitzustellen](virtual-machines-windows-portal-sql-server-provision.md). Diese Images enthalten in den Preisen für den virtuellen Computer SQL Server-Lizenzen.
+Nachdem Sie sich für ein Abonnement angemeldet haben, besteht die einfachste Möglichkeit zum Bereitstellen eines virtuellen SQL Server-Computers in Azure darin, [aus dem Imagekatalog ein Image eines virtuellen SQL Server-Computers im Azure-Portal bereitzustellen](virtual-machines-windows-portal-sql-server-provision.md). Diese Images enthalten in den Preisen für den virtuellen Computer SQL Server-Lizenzen.
 
 Dabei müssen Sie beachten, dass es zwei Modelle zum Erstellen und Verwalten von virtuellen Azure-Computern gibt: klassisch und mit Ressourcen-Manager. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Ein Teil der SQL Server-Dokumentation für virtuelle Azure-Computer bezieht sich immer noch ausschließlich auf das klassische Modell. Diese Themen werden im Laufe der Zeit so aktualisiert, dass sie die Verwendung des neuen Azure-Portals und das Ressourcen-Manager-Modell behandeln. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
 
->[AZURE.NOTE] Nutzen Sie wenn möglich das neueste [Azure-Portal](https://portal.azure.com/) zum Bereitstellen und Verwalten von virtuellen Computern mit SQL Server. Es verwendet standardmäßig Storage Premium und bietet die automatisierte Anwendung von Patches, die automatisierte Sicherung und AlwaysOn-Konfigurationen.
+>[AZURE.NOTE] Nutzen Sie wenn möglich das neueste [Azure-Portal](https://portal.azure.com/) zum Bereitstellen und Verwalten von virtuellen SQL Server-Computern. Es verwendet standardmäßig Storage Premium und bietet die automatisierte Anwendung von Patches, die automatisierte Sicherung und AlwaysOn-Konfigurationen.
 
 Die folgende Tabelle enthält eine Matrix der SQL Server-Images, die im Katalog der virtuellen Computer verfügbar sind.
 
@@ -147,4 +149,4 @@ Wenn Sie einen virtuellen Computer erstellen, indem Sie ein von der Plattform be
 - [Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 - [Dokumentation zu virtuellen Computern](virtual-machines-linux-about.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

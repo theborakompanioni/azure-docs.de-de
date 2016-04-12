@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="03/28/2016"
 	ms.author="v-shysun"/>
 
 #Problembehandlung bei allgemeinen Berechtigungs- und Zugriffsproblemen mit Azure SQL-Datenbank
@@ -37,4 +37,4 @@ In diesem Thema finden Sie Kurzanleitungen zum Gewähren und Aufheben des Zugrif
 ## So erstellen Sie zusätzliche Anmeldungen für Benutzer mit hohen Berechtigungen in der virtuellen „master“-Datenbank
 Verwenden Sie die [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx)-Anweisung, und lesen Sie den Abschnitt „Verwalten von Anmeldungen“ in [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md), der weitere Details bietet.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

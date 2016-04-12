@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="03/23/2016"
    ms.author="alkohli" />
 
 # Ersetzen des Notfallakkus auf dem StorSimple-Gerät
@@ -31,7 +31,7 @@ In diesem Tutorial werden folgende Punkte erläutert:
 
 ## Entfernen des Notfallakkus
 
-Der Notfallakku für Ihr Microsoft Azure StorSimple-Gerät ist eine vor Ort austauschbare Komponente. Vor der Installation im PCM sollten Sie den Notfallakku in seiner ursprünglichen Verpackung aufbewahren.
+Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Komponente. Vor der Installation im PCM sollten Sie den Notfallakku in seiner ursprünglichen Verpackung aufbewahren. Führen Sie die folgenden Schritte aus, um den Notfallakku zu entfernen.
 
 #### So entfernen Sie den Notfallakku
 
@@ -79,21 +79,21 @@ Der Notfallakku für Ihr Microsoft Azure StorSimple-Gerät ist eine vor Ort aust
 
 ## Installieren eines neuen Notfallakkus
 
-Führen Sie die folgenden Schritte aus, um den Notfallakku im primären Gehäuse Ihres StorSimple-Geräts zu installieren.
+Führen Sie die folgenden Schritte aus, um den Notfallakku im PCM im primären Gehäuse des StorSimple-Geräts zu installieren.
 
 #### So installieren Sie den Notfallakku
 
-1. Setzen Sie den Notfallakku in der richtigen Ausrichtung ins PCM ein.
+1. Setzen Sie den Notfallakku in der richtigen Ausrichtung im PCM ein.
 
 2. Drücken Sie den Notfallakku am Griff so weit, bis er auf der Verbindung sitzt.
 
 3. Ersetzen Sie das PCM im primären Gehäuse anhand der Richtlinien unter [Ersetzen einer Stromversorgungs- und Kühleinheit im StorSimple-Gerät](storsimple-power-cooling-module-replacement.md).
 
-4. Nach Abschluss des Austauschs öffnen Sie das klassische Azure-Portal, und navigieren Sie zu **Geräte** > **Wartung** > **Hardwarestatus**. Überprüfen Sie den Status des Akkus, um sicherzustellen, dass die Installation erfolgreich war. Wenn die LED grün leuchtet ist, ist der Akku fehlerfrei.
+4. Navigieren Sie nach dem Austausch des Moduls im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**. Überprüfen Sie den Status des Akkus, um sicherzustellen, dass er richtig eingesetzt wurde. Ein grüner Status gibt an, dass der Akku fehlerfrei ist.
 
 ## Warten des Notfallakkus
 
-Der Notfallakku sorgt für die Stromzufuhr des Controllers bei einem Stromausfall. Dadurch kann das StorSimple-Gerät vor dem kontrollierten Herunterfahren wichtige Daten speichern. Mit zwei vollständig geladenen Akkus in den PCMs kann das System zwei aufeinanderfolgende Stromausfälle verkraften.
+Im StorSimple-Gerät sorgt der Notfallakku für die Stromzufuhr des Controllers bei einem Stromausfall. Dadurch kann das StorSimple-Gerät vor dem kontrollierten Herunterfahren wichtige Daten speichern. Mit zwei vollständig geladenen Akkus in den PCMs kann das System zwei aufeinanderfolgende Stromausfälle verkraften.
 
 Auf der Seite **Wartung** unter **Hardwarestatus** wird im klassischen Azure-Portal angezeigt, ob der Akku fehlerhaft ist oder ob seine Lebensdauer sich dem Ende zuneigt. Der Akkustatus wird durch +++**Akku in PCM 0** oder **Akku in PCM 1** unter **Gemeinsam genutzte Komponenten** angezeigt. Auf dieser Seite wird der Status **HERUNTERGESTUFT** angezeigt, wenn sich die Lebensdauer dem Ende zuneigt, und **FEHLGESCHLAGEN** zum Ende der Lebensdauer.
 
@@ -115,4 +115,4 @@ Wenn der Status **HERUNTERGESTUFT** angezeigt wird, empfehlen wir die folgende V
 
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,19 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Create Table As Select (CTAS) in SQL Data Warehouse
-„Create Table As Select“ (CTAS) ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen vollständig parallelisierten Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. CTAS ist die einfachste und schnellste Möglichkeit, eine Kopie einer Tabelle zu erstellen. Sie können sich dies wie eine Turboversion von SELECT..INTO vorstellen. Dieses Dokument beinhaltet Beispiele und bewährte Methoden für CTAS.
+„Create Table As Select“ (`CTAS`) ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen vollständig parallelisierten Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. `CTAS` ist die einfachste und schnellste Möglichkeit, eine Kopie einer Tabelle zu erstellen. Sie können sich dies wie eine Turboversion von `SELECT..INTO` vorstellen. Dieses Dokument beinhaltet Beispiele und bewährte Methoden für `CTAS`.
 
 ## Kopieren einer Tabelle mithilfe von CTAS
 
-Einer der häufigsten Verwendungszwecke für CTAS ist womöglich das Kopieren einer Tabelle, um den DDL-Code ändern zu können. Wenn Sie z. B. die Tabelle ursprünglich als ROUND\_ROBIN erstellt haben und sie nun in eine Tabelle ändern möchten, die über eine Spalte verteilt ist, können Sie die Verteilungsspalte mit CTAS ändern. CTAS kann auch zum Ändern der Partitionierung, Indizierung oder Spaltentypen verwendet werden.
+Einer der häufigsten Verwendungszwecke für `CTAS` ist womöglich das Kopieren einer Tabelle, um den DDL-Code ändern zu können. Wenn Sie z.B. die Tabelle ursprünglich als `ROUND_ROBIN` erstellt haben und sie nun in eine Tabelle ändern möchten, die über eine Spalte verteilt ist, können Sie die Verteilungsspalte mit `CTAS` ändern. `CTAS` kann auch zum Ändern der Partitionierung, Indizierung oder Spaltentypen verwendet werden.
 
-Nehmen wir an, dass Sie diese Tabelle mit dem Standardverteilungstyp ROUND\_ROBIN erstellt haben, da keine Verteilungsspalte in CREATE TABLE angegeben wurde.
+Nehmen wir an, dass Sie diese Tabelle mit dem Standardverteilungstyp `ROUND_ROBIN` erstellt haben, da keine Verteilungsspalte in `CREATE TABLE` angegeben wurde.
 
-```
+```sql
 CREATE TABLE FactInternetSales
 (
 	ProductKey int NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE FactInternetSales
 
 Nun möchten Sie eine neue Kopie dieser Tabelle mit einem gruppierten Columnstore-Index erstellen, sodass Sie die Leistung von gruppierten Columnstore-Tabellen nutzen können. Außerdem soll diese Tabelle nach ProductKey verteilt werden, da Sie Verknüpfungen für diese Spalte erwarten und Datenverschiebungen während der Verknüpfung nach ProductKey vermeiden möchten. Schließlich möchten Sie auch eine Partitionierung für OrderDateKey hinzufügen, sodass Sie schnell alte Daten löschen können, indem Sie alte Partitionen verwerfen. Im Folgenden finden Sie die CTAS-Anweisung, mit der sie die alte Tabelle in eine neue Tabelle kopieren.
 
-```
+```sql
 CREATE TABLE FactInternetSales_new
 WITH
 (
@@ -77,7 +77,7 @@ AS SELECT * FROM FactInternetSales;
 
 Schließlich können Sie die Tabellen umbenennen, um zur neuen Tabelle zu wechseln und die alte Tabelle zu verwerfen.
 
-```
+```sql
 RENAME OBJECT FactInternetSales TO FactInternetSales_old;
 RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 
@@ -88,30 +88,30 @@ DROP TABLE FactInternetSales_old;
 
 ## Umgehen von nicht unterstützten Funktionen mit CTAS
 
-Mit CTAS können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Dies kann häufig zu einer Win-Win-Situation führen, da Ihr Code nicht nur kompatibel ist, sondern unter SQL Data Warehouse häufig auch schneller ausgeführt wird. Der Grund hierfür ist das vollständig parallelisierte Design. Szenarien, die mit CTAS umgangen werden können, sind z. B.:
+Mit `CTAS` können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Dies kann häufig zu einer Win-Win-Situation führen, da Ihr Code nicht nur kompatibel ist, sondern unter SQL Data Warehouse häufig auch schneller ausgeführt wird. Der Grund hierfür ist das vollständig parallelisierte Design. Szenarien, die mit CTAS umgangen werden können, sind z. B.:
 
 - SELECT..INTO
 - ANSI JOINS bei UPDATEs
 - ANSI JOINs bei DELETEs
 - MERGE-Anweisung
 
-> [AZURE.NOTE] Denken Sie zuerst an „CTAS“. Wenn Sie ein Problem voraussichtlich mit CTAS lösen können, ist dies meist der beste Ansatz. Dies gilt auch, wenn Sie dabei mehr Daten schreiben.
+> [AZURE.NOTE] Denken Sie zuerst an „CTAS“. Wenn Sie ein Problem voraussichtlich mit `CTAS` lösen können, ist dies meist der beste Ansatz. Dies gilt auch, wenn Sie dabei mehr Daten schreiben.
 >
 
 ## SELECT..INTO
-Unter Umständen kommt SELECT..INTO an einigen Stellen Ihrer Lösung vor.
+Unter Umständen kommt `SELECT..INTO` an einigen Stellen Ihrer Lösung vor.
 
-Es folgt ein Beispiel für eine SELECT..INTO-Anweisung:
+Nachstehend sehen Sie ein Beispiel der Anweisung `SELECT..INTO`:
 
-```
+```sql
 SELECT *
 INTO    #tmp_fct
 FROM    [dbo].[FactInternetSales]
 ```
 
-Die Konvertierung des obigen in CTAS ist relativ einfach:
+Die Konvertierung des obigen in `CTAS` ist relativ einfach:
 
-```
+```sql
 CREATE TABLE #tmp_fct
 WITH
 (
@@ -123,7 +123,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-> [AZURE.NOTE] Für CTAS muss derzeit eine Verteilungsspalte angegeben werden. Wenn Sie die Verteilungsspalte nicht absichtlich ändern möchten, wird Ihr CTAS optimal ausgeführt, wenn Sie eine Verteilungsspalte auswählen, die mit der zugrunde liegenden Tabelle identisch ist, da Sie auf diese Weise eine Datenverschiebung vermeiden. Wenn Sie eine kleine Tabelle erstellen, bei der Leistung keine Rolle spielt, können Sie ROUND\_ROBIN angeben, um keine Verteilungsspalte auswählen zu müssen.
+> [AZURE.NOTE] Für CTAS muss derzeit eine Verteilungsspalte angegeben werden. Wenn Sie die Verteilungsspalte nicht absichtlich ändern möchten, wird Ihr `CTAS` optimal ausgeführt, wenn Sie eine Verteilungsspalte auswählen, die mit der zugrunde liegenden Tabelle identisch ist, da Sie auf diese Weise eine Datenverschiebung vermeiden. Wenn Sie eine kleine Tabelle erstellen, bei der Leistung keine Rolle spielt, können Sie `ROUND_ROBIN` angeben, um keine Verteilungsspalte auswählen zu müssen.
 
 ## ANSI-Verknüpfungsersatz für update-Anweisungen
 
@@ -131,7 +131,7 @@ Unter Umständen verfügen Sie über ein komplexes Update, mit dem zwei oder meh
 
 Stellen Sie sich vor, Sie müssen diese Tabelle aktualisieren:
 
-```
+```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
 (	[EnglishProductCategoryName]	NVARCHAR(50)	NOT NULL
 ,	[CalendarYear]					SMALLINT		NOT NULL
@@ -146,7 +146,7 @@ WITH
 
 Die ursprüngliche Abfrage könnte etwa wie folgt ausgesehen haben:
 
-```
+```sql
 UPDATE	acs
 SET		[TotalSalesAmount] = [fis].[TotalSalesAmount]
 FROM	[dbo].[AnnualCategorySales] 	AS acs
@@ -169,11 +169,11 @@ AND	[acs].[CalendarYear]				= [fis].[CalendarYear]
 ;
 ```
 
-Da SQL Data Warehouse ANSI-Verknüpfungen in der FROM-Klausel einer UPDATE-Anweisung nicht unterstützt, können Sie diesen Code nicht einfach kopieren, ohne ihn geringfügig zu ändern.
+Da SQL Data Warehouse ANSI-Verknüpfungen in der `FROM`-Klausel einer `UPDATE`-Anweisung nicht unterstützt, können Sie diesen Code nicht einfach kopieren, ohne ihn geringfügig zu ändern.
 
-Sie können eine Kombination aus CTAS und einer impliziten Verknüpfung verwenden, um diesen Code zu ersetzen:
+Sie können eine Kombination aus `CTAS` und einer impliziten Verknüpfung verwenden, um diesen Code zu ersetzen:
 
-```
+```sql
 -- Create an interim table
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -206,11 +206,11 @@ DROP TABLE CTAS_acs
 ```
 
 ## ANSI-Verknüpfungsersatz für delete-Anweisungen
-Manchmal ist CTAS der beste Ansatz zum Löschen von Daten. Anstatt die Daten zu löschen, wählen Sie einfach die Daten aus, die Sie behalten möchten. Diese gilt insbesondere für DELETE-Anweisungen, die die ANSI-Verknüpfungssyntax verwenden. Der Grund dafür ist, dass SQL Data Warehouse keine ANSI-Verknüpfungen in der FROM-Klausel einer DELETE-Anweisung unterstützt.
+Manchmal ist `CTAS` der beste Ansatz zum Löschen von Daten. Anstatt die Daten zu löschen, wählen Sie einfach die Daten aus, die Sie behalten möchten. Diese gilt insbesondere für `DELETE`-Anweisungen, die die ANSI-Verknüpfungssyntax verwenden. Der Grund dafür ist, dass SQL Data Warehouse keine ANSI-Verknüpfungen in der `FROM`-Klausel einer `DELETE`-Anweisung unterstützt.
 
 Beispiel für eine konvertierte DELETE-Anweisung:
 
-```
+```sql
 CREATE TABLE dbo.DimProduct_upsert
 WITH
 (   Distribution=HASH(ProductKey)
@@ -230,11 +230,11 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## Ersetzen von MERGE-Anweisungen
-MERGE-Anweisungen können mit CTAS zumindest teilweise ersetzt werden. Sie können `INSERT` und `UPDATE` zu einer einzelnen Anweisung zusammenfassen. Alle gelöschten Datensätze müssen in einer zweiten Anweisung abgeschlossen werden.
+MERGE-Anweisungen können mit `CTAS` zumindest teilweise ersetzt werden. Sie können `INSERT` und `UPDATE` zu einer einzelnen Anweisung zusammenfassen. Alle gelöschten Datensätze müssen in einer zweiten Anweisung abgeschlossen werden.
 
 Beispiel für `UPSERT`:
 
-```
+```sql
 CREATE TABLE dbo.[DimProduct_upsert]
 WITH
 (   DISTRIBUTION = HASH([ProductKey])
@@ -268,7 +268,7 @@ RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
 
 Beim Migrieren von Code stoßen Sie unter Umständen auf diese Art von Codiermuster:
 
-```
+```sql
 DECLARE @d decimal(7,2) = 85.455
 ,       @f float(24)    = 85.455
 
@@ -286,7 +286,7 @@ Instinktiv denken Sie vielleicht, dass Sie diesen Code zu CTAS migrieren sollten
 
 Der folgende Code führt NICHT zum gleichen Ergebnis:
 
-```
+```sql
 DECLARE @d decimal(7,2) = 85.455
 ,       @f float(24)    = 85.455
 ;
@@ -302,7 +302,7 @@ Beachten Sie, dass für die Spalte „result“ der Datentyp und die NULL-Zuläs
 
 Probieren Sie folgende Eingabe aus:
 
-```
+```sql
 SELECT result,result*@d
 from result
 ;
@@ -320,11 +320,11 @@ Dies ist besonders für Datenmigrationen wichtig. Auch wenn die zweite Abfrage n
 
 Der Grund für diese Ungleichheit zwischen den beiden Ergebnissen ist die implizite Typumwandlung. Im ersten Beispiel wird für die Tabelle die Spaltendefinition festgelegt. Beim Einfügen der Zeile tritt eine implizite Typumwandlung auf. Im zweiten Beispiel ist keine implizite Typumwandlung vorhanden, da der Ausdruck den Datentyp der Spalte definiert. Beachten Sie auch, dass die Spalte im zweiten Beispiel so konfiguriert wurde, dass NULL-Werte zulässig sind. Im ersten Beispiel ist dies nicht der Fall. Als die Tabelle im ersten Beispiel erstellt wurde, wurde die NULL-Zulässigkeit der Spalte explizit definiert. Im zweiten Beispiel wurde dies dem Ausdruck überlassen, was standardmäßig zu einer NULL-Definition führen würde.
 
-Zum Lösen dieser Probleme müssen Sie die Typumwandlung und NULL-Zulässigkeit im SELECT-Teil der CTAS-Anweisung explizit festlegen. Sie können diese Eigenschaften nicht im Create Table-Teil festlegen.
+Zum Lösen dieser Probleme müssen Sie die Typumwandlung und NULL-Zulässigkeit im `SELECT`-Teil der `CTAS`-Anweisung explizit festlegen. Sie können diese Eigenschaften nicht im Create Table-Teil festlegen.
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie dies im Code beheben:
 
-```
+```sql
 DECLARE @d decimal(7,2) = 85.455
 ,       @f float(24)    = 85.455
 
@@ -340,11 +340,11 @@ Beachten Sie Folgendes:
 - ISNULL ist die äußerste Funktion
 - Der zweite Teil von ISNULL ist eine Konstante, also 0
 
-> [AZURE.NOTE] Damit die NULL-Zulässigkeit richtig festgelegt wird, muss unbedingt ISNULL verwendet werden, und nicht COALESCE. COALESCE ist keine deterministische Funktion, sodass für das Ergebnis des Ausdrucks immer NULL-Werte zulässig wären. Dies ist bei ISNULL anders. Die Funktion ist deterministisch. Wenn der zweite Teil der ISNULL-Funktion eine Konstante oder ein Literal ist, ist der sich ergebende Wert NICHT NULL.
+> [AZURE.NOTE] Damit die NULL-Zulässigkeit richtig festgelegt wird, muss unbedingt `ISNULL` und nicht `COALESCE` verwendet werden. `COALESCE` ist keine deterministische Funktion, sodass für das Ergebnis des Ausdrucks immer NULL-Werte zulässig wären. Dies ist bei. `ISNULL` anders. Die Funktion ist deterministisch. Wenn der zweite Teil der `ISNULL`-Funktion eine Konstante oder ein Literal ist, ist der sich ergebende Wert NICHT NULL.
 
 Dieser Tipp ist nicht nur nützlich, um die Integrität der Berechnungen sicherzustellen. Er ist auch für das Wechseln der Tabellenpartition wichtig. Stellen Sie sich vor, Sie haben die folgende Tabelle als Faktentabelle definiert:
 
-```
+```sql
 CREATE TABLE [dbo].[Sales]
 (
     [date]      INT     NOT NULL
@@ -369,7 +369,7 @@ Das Wertfeld ist aber ein berechneter Ausdruck und nicht Teil der Quelldaten.
 
 Zum Erstellen des partitionierten Datasets können Sie beispielsweise wie folgt vorgehen:
 
-```
+```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH    
 (   DISTRIBUTION = HASH([product])
@@ -393,7 +393,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 
 Die Abfrage würde problemlos ausgeführt werden. Das Problem entsteht, wenn Sie versuchen, den Partitionswechsel durchzuführen. Die Tabellendefinitionen stimmen nicht überein. CTAS muss geändert werden, damit die Tabellendefinitionen übereinstimmen.
 
-```
+```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH    
 (   DISTRIBUTION = HASH([product])
@@ -433,4 +433,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

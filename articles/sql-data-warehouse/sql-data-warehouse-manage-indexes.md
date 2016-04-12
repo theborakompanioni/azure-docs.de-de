@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/18/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verwalten von Indizes
@@ -29,13 +29,13 @@ Sie können die Indexneuerstellung auf zwei Arten optimieren:
 
 Unten ist ein Beispiel für die Neuerstellung einer einzelnen Partition angegeben:
 
-```
+```sql
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
 ```
 
 ALTER INDEX..REBUILD eignet sich am besten für kleinere Datenvolumen, besonders für Columnstore-Indizes. Geöffnete, geschlossene und komprimierte Zeilengruppen werden alle in die Wiederherstellung eingeschlossen. Falls die Partition aber sehr groß ist, ist `CTAS` der effizientere Vorgang. Unten ist ein Beispiel für eine vollständige Indexneuerstellung angegeben.
 
-```
+```sql
 ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
 ```
 
@@ -45,7 +45,7 @@ Weitere Details zu dieser Syntax finden Sie im Artikel [ALTER INDEX][].
 
 Unten ist ein Beispiel für die Neuerstellung einer Partition per CTAS angegeben:
 
-```
+```sql
 -- Step 01. Select the partition of data and write it out to a new table using CTAS
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
     WITH    (   DISTRIBUTION = HASH([ProductKey])
@@ -82,7 +82,6 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 
 -- Step 04. Switch IN the rebuilt data
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
-
 ```
 
 ## Nächste Schritte
@@ -102,4 +101,4 @@ Weitere Verwaltungstipps finden Sie in der Übersicht zur [Verwaltung][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

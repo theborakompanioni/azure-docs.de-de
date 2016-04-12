@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/26/2016"
+   ms.date="03/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen von SQL Data Warehouse mithilfe von Powershell
@@ -78,7 +78,7 @@ Die Befehlsreferenz finden Sie unter [New-AzureRmSqlDatabase](https://msdn.micro
 Die Parameteroptionen finden Sie unter [CREATE DATABASE (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt204021.aspx).
 
 ## Nächste Schritte
-Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] erlernen.
+Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] lernen.
 
 Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse finden Sie in der Dokumentation zu [PowerShell][] und der [REST-API][].
 
@@ -88,7 +88,8 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 
 <!--Article references-->
 [Migrieren]: ./sql-data-warehouse-overview-migrate.md
-[Entwickeln]: ./sql-data-warehouse-overview-develop/.md
+[Entwickeln]: ./sql-data-warehouse-overview-develop.md
+[Laden]: ./sql-data-warehouse-load-with-bcp.md
 [Beispieldaten laden]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [Powershell]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [REST-API]: https://msdn.microsoft.com/library/azure/dn505719.aspx
@@ -96,4 +97,4 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
 [Installieren und Konfigurieren von Azure PowerShell]: ./powershell-install-configure.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

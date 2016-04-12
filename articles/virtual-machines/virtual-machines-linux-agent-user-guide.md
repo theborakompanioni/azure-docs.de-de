@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
-	ms.author="mingzhan"/>
+	ms.date="03/14/2016" 
+	ms.author="szark"/>
 
 
 
@@ -26,6 +26,8 @@
 ##Einführung
 
 Der Azure Linux-Agent (/usr/sbin/waagent) verwaltet die Interaktion eines virtuellen Computers mit dem Azure Fabric Controller. Er tut Folgendes:
+
+> [AZURE.NOTE] In der [Infodatei](https://github.com/Azure/WALinuxAgent/blob/2.0/README) des Azure-Linux-Agenten finden Sie die aktuellste Version dieser Anleitung.
 
 * **Image-Bereitstellung**
   - Erstellen eines Benutzerkontos
@@ -201,13 +203,13 @@ Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird diese a
 
 Typ: String Standardwert: Keiner
 
-Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Programm aufgerufen, wenn das Fabric anzeigt, dass eine Konfigurationsdatei für den virtuellen Computer verfügbar ist. Der Pfad zur XML-Konfigurationsdatei wird als Argument an die ausführbare Datei übergeben. Diese kann mehrmals aufgerufen werden, bei jeder Änderung der Konfigurationsdatei. Eine Beispieldatei steht im Anhang zur Verfügung. Der aktuelle Pfad dieser Datei lautet "/var/lib/waagent/HostingEnvironmentConfig.xml".
+Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Programm aufgerufen, wenn das Fabric anzeigt, dass eine Konfigurationsdatei für den virtuellen Computer verfügbar ist. Der Pfad zur XML-Konfigurationsdatei wird als Argument an die ausführbare Datei übergeben. Diese kann mehrmals aufgerufen werden, bei jeder Änderung der Konfigurationsdatei. Der aktuelle Pfad dieser Datei lautet "/var/lib/waagent/HostingEnvironmentConfig.xml".
 
 **Role.TopologyConsumer:**
 
 Typ: String Standardwert: Keiner
 
-Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Programm aufgerufen, wenn das Fabric anzeigt, dass ein neues Netzwerktopologie-Layout für den virtuellen Computer verfügbar ist. Der Pfad zur XML-Konfigurationsdatei wird als Argument an die ausführbare Datei übergeben. Diese kann mehrmals, bei jeder Änderung der Netzwerktopologie (z. B. aufgrund einer Dienstreparatur), aufgerufen werden. Eine Beispieldatei steht im Anhang zur Verfügung. Der aktuelle Speicherort dieser Datei lautet "/var/lib/waagent/SharedConfig.xml".
+Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Programm aufgerufen, wenn das Fabric anzeigt, dass ein neues Netzwerktopologie-Layout für den virtuellen Computer verfügbar ist. Der Pfad zur XML-Konfigurationsdatei wird als Argument an die ausführbare Datei übergeben. Diese kann mehrmals, bei jeder Änderung der Netzwerktopologie (z. B. aufgrund einer Dienstreparatur), aufgerufen werden. Der aktuelle Speicherort dieser Datei lautet "/var/lib/waagent/SharedConfig.xml".
 
 **Provisioning.Enabled:**
 
@@ -321,4 +323,4 @@ Beachten Sie, dass Cloud Ubuntu-Images für zahlreiche Konfigurationsaufgaben, d
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

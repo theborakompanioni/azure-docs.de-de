@@ -110,43 +110,52 @@ Wenn Sie eine Metrik auswählen, werden alle anderen deaktiviert, die nicht im s
 
 ## Systemleistungsindikatoren
 
-Einige der Metriken, aus denen Sie auswählen können, sind [Leistungsindikatoren](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters). Windows bietet eine Vielzahl solcher Indikatoren, und Sie können auch eigene definieren.
+
+Windows bietet eine Vielzahl von Leistungsindikatoren, und Sie können auch eigene definieren.
 
 (Für in Azure gehostete Anwendungen [senden Sie Azure-Diagnosedaten an Application Insights](app-insights-azure-diagnostics.md).)
 
-Dieses Beispiel zeigt die Leistungsindikatoren, die standardmäßig verfügbar sind. Wir haben für jeden Leistungsindikator [ein eigenes Diagramm hinzugefügt](app-insights-metrics-explorer.md#editing-charts-and-grids) und das Diagramm benannt, indem wir es [als Favorit gespeichert](app-insights-metrics-explorer.md#editing-charts-and-grids) haben:
+Um einen Satz allgemeiner [Leistungsindikatoren](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) anzuzeigen, öffnen Sie das Blatt **Server**. Sie können auch Indikatoren auswählen, indem Sie ein Diagramm bearbeiten und im Abschnitt für die Leistungsindikatoren eine Metrik auswählen:
 
 ![](./media/app-insights-web-monitor-performance/sys-perf.png)
 
+Der vollständige Satz der auf Ihrem System verfügbaren Metriken kann auf Windows-Systemen mithilfe des PowerShell-Befehls [`Get-Counter -ListSet *`](https://technet.microsoft.com/library/hh849685.aspx) ermittelt werden.
 
-Wenn sich die gewünschten Leistungsindikatoren nicht in der Eigenschaftenliste befinden, können Sie sie zum SDK-Satz hinzufügen. Öffnen Sie die Datei "ApplicationInsights.config", und bearbeiten Sie die Sammlerdirektive für Leistungsdaten:
+Wenn sich die gewünschten Indikatoren nicht in der Metrikenliste befinden, können Sie sie dem SDK-Satz hinzufügen. Öffnen Sie die Datei "ApplicationInsights.config", und bearbeiten Sie die Sammlerdirektive für Leistungsdaten:
 
-    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCollector.PerformanceCollectorModule, Microsoft.ApplicationInsights.Extensibility.PerfCollector">
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
       <Counters>
         <Add PerformanceCounter="\Objects\Processes"/>
         <Add PerformanceCounter="\Sales(electronics)# Items Sold" ReportAs="Item sales"/>
       </Counters>
     </Add>
 
-Das Format lautet `\Category(instance)\Counter"` bzw. für Kategorien, die keine Instanzen besitzen, einfach `\Category\Counter`. Weitere Informationen zum Ermitteln der in Ihrem System verfügbaren Indikatoren finden Sie in [dieser Einführung](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters).
+Sie können sowohl Standardindikatoren als auch Indikatoren erfassen, die Sie selbst implementiert haben. `\Objects\Processes` ist auf allen Windows-Systemen verfügbar; `\Sales...` ist ein Beispiel für einen benutzerdefinierten Indikator, der auf einem Webserver implementiert werden kann.
+
+Das Format lautet `\Category(instance)\Counter"` bzw. für Kategorien, die keine Instanzen besitzen, einfach `\Category\Counter`.
+
 
 `ReportAs` ist für Leistungsindikatornamen erforderlich, die andere Zeichen als die folgenden enthalten: Buchstaben, runde Klammern, Schrägstriche, Bindestriche, Unterstriche, Leerzeichen und Punkte.
 
-Wenn Sie eine Instanz angeben, wird sie als "CounterInstanceName"-Eigenschaft der gemeldeten Metrik gesammelt.
+Wenn Sie eine Instanz angeben, wird sie als CounterInstanceName-Dimension der gemeldeten Metrik erfasst.
 
-Wenn Sie möchten, können Sie den gleichen Effekt auch mit Code erzielen:
+### Erfassen von Leistungsindikatoren im Code
+
+Um Systemleistungsindikatoren zu erfassen und diese mithilfe von Push an Application Insights zu übertragen, können Sie den folgenden Codeausschnitt verwenden:
+
+    var perfCollectorModule = new PerformanceCollectorModule();
+    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
+      @"\.NET CLR Memory([replace-with-application-process-name])# GC Handles", "GC Handles")));
+    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+
+Alternativ können Sie dieselben Schritte mit von Ihnen erstellten benutzerdefinierten Metriken ausführen:
 
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(electronics)# Items Sold", "Items sold"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 
-Wenn Sie Systemleistungsindikatoren sammeln und an Application Insights übertragen möchten, können Sie außerdem den folgenden Codeausschnitt verwenden:
-
-    var perfCollectorModule = new PerformanceCollectorModule();
-    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
-      @"\.NET CLR Memory([replace-with-application-process-name])# GC Handles", "GC Handles")));
-    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+Die folgenden Schritte sind optional.
 
 ### Ausnahmeraten
 
@@ -201,4 +210,4 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

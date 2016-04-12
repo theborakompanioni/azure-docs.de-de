@@ -1,8 +1,5 @@
 
-
-Wenn Sie ein persönliches Azure-Konto erstellt oder ein persönliches MSDN-Abonnement besitzen und das Azure-Konto erstellt haben, um das MSDN Azure-Guthaben nutzen zu können, haben Sie zum Erstellen als Identität ein *Microsoft-Konto* verwendet. Viele hervorragende Funktionen von Azure – beispielsweise [Ressourcengruppenvorlagen](../resource-group-overview.md) – erfordern ein Arbeits- oder Schulkonto (eine Identität, die von Azure Active Directory verwaltet wird). Zum Erstellen eines neuen Geschäfts- oder Schulkontos können Sie die Anweisungen unten befolgen, da einer der größten Vorteile Ihres persönlichen Azure-Kontos glücklicherweise darin liegt, dass eine Azure Active Directory-Standarddomäne enthalten ist, mit der Sie ein neues Arbeits- oder Schulkonto für die Azure-Funktionen, die dies erfordern, erstellen können.
-
-Aufgrund aktueller Änderungen können Sie Ihr Abonnement jedoch mit jeder Art von Azure-Konto verwalten, wenn Sie die [hier](../xplat-cli-connect.md) beschriebene interaktive Anmeldemethode über den Befehl `azure login` anwenden. Sie können diese Methode anwenden oder die nachfolgenden Anweisungen befolgen.
+<br>
 
 > [AZURE.NOTE] Wenn Sie einen Benutzernamen und ein Kennwort von einem Administrator erhalten haben, besteht eine hohe Wahrscheinlichkeit, dass Sie bereits eine Arbeits- oder Schul-ID (auch als *Organisations-ID* bezeichnet) besitzen. In diesem Fall können Sie sofort Ihr Azure-Konto verwenden, um auf entsprechende Azure-Ressourcen zuzugreifen. Wenn Sie feststellen, dass Sie diese Ressourcen nicht verwenden können, können Sie bei Bedarf zu diesem Artikel zurückkehren. Weitere Informationen finden Sie unter [Konten, die für die Anmeldung verwendet werden können](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts) und insbesondere [Die Beziehung zwischen einem Azure-Abonnement und Azure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir).
 
@@ -91,7 +88,7 @@ Der Erfolg wird folgendermaßen angezeigt.
 
 ## Nächste Schritte
 
-Beispielsweise können Sie nun mit Ihrer neuen Azure Active Directory-Identität [Azure-Ressourcengruppenvorlagen](../xplat-cli-azure-resource-manager.md) verwenden.
+Beispielsweise können Sie nun mit Ihrer neuen Azure Active Directory-Identität [Azure-Ressourcengruppenvorlagen](../articles/xplat-cli-azure-resource-manager.md) verwenden.
 
     azure login
     info:    Executing command login
@@ -122,4 +119,4 @@ Beispielsweise können Sie nun mit Ihrer neuen Azure Active Directory-Identität
     data:
     info:    group create command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

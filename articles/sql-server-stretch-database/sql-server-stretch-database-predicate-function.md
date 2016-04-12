@@ -24,7 +24,7 @@ In CTP 3.1 bis RC1 steht die Option zum Angeben eines Prädikats nicht im Assist
 
 Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
 
-    > If you provide a filter predicate that performs poorly, data migration also performs poorly. Stretch Database applies the filter predicate to the table by using the CROSS APPLY operator.
+>   [AZURE.NOTE] Falls Sie ein Filterprädikat mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet das Filterprädikat mithilfe des CROSS APPLY-Operators auf die Tabelle an.
 
 ## Grundlegende Anforderungen für die Inline-Tabellenwertfunktion
 Die für eine Stretch-Datenbank-Filterfunktion erforderliche Inline-Tabellenwertfunktion sieht wie das folgende Beispiel aus.
@@ -70,7 +70,7 @@ Eine primitive Bedingung kann einen der folgenden Vergleiche ausführen.
 
 -   Vergleichen Sie einen Funktionsparameter mit einem konstanten Ausdruck. Beispiel: `@column1 < 1000`.
 
-    Im Folgenden sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *date*-Spalte &lt; 1/1/2016. ist.
+    Nachstehend sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *date*-Spalte &lt; „1/1/2016“. ist.
 
     ```tsql
     CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datetime)
@@ -91,7 +91,7 @@ Eine primitive Bedingung kann einen der folgenden Vergleiche ausführen.
 
 -   Verwenden Sie den IN-Operator, um einen Funktionsparameter mit einer Liste von konstanten Werten zu vergleichen.
 
-    Im Folgenden sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *shipment\_status*-Spalte `IN (N'Completed', N'Returned', N'Cancelled')` ist.
+    Nachstehend sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *shipment\_status*-Spalte `IN (N'Completed', N'Returned', N'Cancelled')` ist.
 
     ```tsql
     CREATE FUNCTION dbo.fn_stretchpredicate(@column1 nvarchar(15))
@@ -176,7 +176,7 @@ Sie können keine Unterabfragen oder nicht deterministische Funktionen wie RAND(
     GO
     ```
 
--   Im folgenden Beispiel werden die BETWEEN und NOT BETWEEN-Operatoren verwendet. Diese Nutzung ist gültig, da das resultierende Prädikat den Regeln entspricht, die hier beschrieben werden, nachdem Sie die BETWEEN- und NOT BETWEEN-Operatoren durch die entsprechenden AND- und OR-Ausdrücke ersetzen.
+-   Im folgenden Beispiel werden die BETWEEN- und NOT BETWEEN-Operatoren verwendet. Diese Nutzung ist gültig, da das resultierende Prädikat den Regeln entspricht, die hier beschrieben werden, nachdem Sie die BETWEEN- und NOT BETWEEN-Operatoren durch die entsprechenden AND- und OR-Ausdrücke ersetzen.
 
     ```tsql
     CREATE FUNCTION dbo.fn_stretchpredicate_example3(@column1 int, @column2 int)
@@ -410,4 +410,4 @@ Sie können die Inline-Tabellenwertfunktionen nicht verwerfen, solange eine Tabe
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

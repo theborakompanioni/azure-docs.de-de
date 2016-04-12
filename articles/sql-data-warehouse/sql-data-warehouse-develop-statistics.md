@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verwalten von Statistiken in SQL Data Warehouse
@@ -90,13 +90,13 @@ Zum Erstellen von Statistiken für eine Spalte geben Sie einfach einen Namen fü
 
 Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in SQL Data Warehouse beim Erstellen von Statistiken eine Stichprobe von 20 % der Tabelle verwendet.
 
-```
+```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
 Beispiel:
 
-```
+```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
@@ -106,13 +106,13 @@ Die standardmäßige Stichprobenrate von 20 % ist in den meisten Fällen ausreic
 
 Verwenden Sie die folgende Syntax, um die gesamte Tabelle zu verwenden:
 
-```
+```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
 Beispiel:
 
-```
+```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
@@ -120,7 +120,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 
 Alternativ dazu können Sie die Stichprobengröße als Prozentwert angeben:
 
-```
+```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
@@ -132,7 +132,7 @@ Sie können gefilterte Statistiken beispielsweise verwenden, wenn Sie planen, ei
 
 In diesem Beispiel werden Statistiken für einen Bereich von Werten erstellt. Die Werte können leicht so definiert werden, dass sie den Werten in einer Partition entsprechen.
 
-```
+```sql
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
@@ -142,7 +142,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 
 Sie können die Optionen natürlich kombinieren. Im folgenden Beispiel wird ein Objekt vom Typ „gefilterte Statistik“ mit einer benutzerdefinierten Stichprobengröße erstellt:
 
-```
+```sql
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
@@ -156,7 +156,7 @@ Verwenden Sie zum Erstellen einer Mehrspaltenstatistik einfach die vorherigen Be
 
 In diesem Beispiel basiert das Histogramm auf *product\_category*. Spaltenübergreifende Statistiken werden für *product\_category* und *product\_sub\_c\\ategory* berechnet:
 
-```
+```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
@@ -166,7 +166,7 @@ Da zwischen *product\_category* und *product\_sub\_category* eine Korrelation be
 
 Eine Möglichkeit zum Erstellen von Statistiken ist das Ausgeben von CREATE STATISTICS-Befehlen nach dem Erstellen der Tabelle.
 
-```
+```sql
 CREATE TABLE dbo.table1
 (
    col1 int
@@ -190,7 +190,7 @@ SQL Data Warehouse verfügt nicht über eine im System gespeicherte Prozedur, di
 
 Dies ist eine nützliche Einstiegshilfe für den Datenbankentwurf. Sie können diesen Vorgang an Ihre Anforderungen anpassen.
 
-```
+```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
 (   @create_type    tinyint -- 1 default 2 Fullscan 3 Sample
 ,   @sample_pct     tinyint
@@ -273,7 +273,7 @@ DROP TABLE #stats_ddl;
 
 Rufen Sie einfach die Prozedur auf, um damit Statistiken für alle Spalten der Tabelle zu erstellen.
 
-```
+```sql
 prc_sqldw_create_stats;
 ```
 
@@ -288,13 +288,13 @@ Sie können wie folgt vorgehen, um Statistiken zu aktualisieren:
 ### A. Aktualisieren eines bestimmten Statistikobjekts ###
 Verwenden Sie die folgende Syntax, um ein bestimmtes Statistikobjekt zu aktualisieren:
 
-```
+```sql
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
 Beispiel:
 
-```
+```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
@@ -304,13 +304,13 @@ Indem Sie bestimmte Statistikobjekte aktualisieren, können Sie den Zeit- und Re
 ### B. Aktualisieren aller Statistiken einer Tabelle ###
 Hier wird eine einfache Methode zum Aktualisieren aller Statistikobjekte einer Tabelle gezeigt.
 
-```
+```sql
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
 Beispiel:
 
-```
+```sql
 UPDATE STATISTICS dbo.table1;
 ```
 
@@ -351,7 +351,7 @@ Diese Systemfunktionen sind nützlich für die Arbeit mit Statistiken:
 
 In dieser Sicht werden Spalten, die sich auf Statistiken beziehen, und Ergebnisse aus der [STATS\_DATE()][]-Funktion zusammengefasst.
 
-```
+```sql
 CREATE VIEW dbo.vstats_columns
 AS
 SELECT
@@ -401,13 +401,13 @@ Dies sind die Headermetadaten zur Statistik. Im Histogramm wird die Verteilung d
 
 In diesem einfachen Beispiel werden alle drei Teile eines Statistikobjekts angezeigt.
 
-```
+```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
 Beispiel:
 
-```
+```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
@@ -415,13 +415,13 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 
 Wenn Sie nur bestimmte Teile anzeigen möchten, verwenden Sie die `WITH`-Klausel und geben an, welche Teile dies sein sollen:
 
-```
+```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
 Beispiel:
 
-```
+```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
@@ -461,4 +461,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [Aktualisieren von Statistiken]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

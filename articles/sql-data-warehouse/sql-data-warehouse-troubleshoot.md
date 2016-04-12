@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="mausher;sonyama;barbkess"/>
 
 # Problembehandlung
@@ -38,7 +38,7 @@ Weitere Informationen finden Sie auf der Seite [Verbinden](sql-data-warehouse-ge
 ## Abfrageleistung
 SQL Data Warehouse verwendet allgemeine SQL Server-Konstrukte zum Ausführen von Abfragen, einschließlich Statistiken. [Statistiken](sql-data-warehouse-develop-statistics.md) sind Objekte, die Informationen zum Wertebereich und zur Häufigkeit von Werten in einer Datenbankspalte enthalten. Das Abfragemodul verwendet diese Statistiken, um die Abfrageausführung zu optimieren und die Abfrageleistung zu verbessern. Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken zuletzt aktualisiert wurden.
 
-```
+```sql
 SELECT
 	sm.[name]								    AS [schema_name],
 	tb.[name]								    AS [table_name],
@@ -90,4 +90,4 @@ Anleitungen zum Erstellen Ihrer SQL Data Warehouse-Lösung finden Sie im Artikel
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

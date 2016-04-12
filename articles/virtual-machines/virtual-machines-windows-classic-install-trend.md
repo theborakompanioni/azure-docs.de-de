@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/14/2015"
-	ms.author="dkshir"/>
+	ms.date="03/28/2016"
+	ms.author="iainfou"/>
 
 
 # Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer
@@ -87,4 +87,4 @@ Es dauert einige Minuten, bis der Agent gestartet wird, wenn er installiert ist.
 [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird]: virtual-machines-windows-classic-connect-logon.md
 [Azure-VM-Erweiterungen und -Features]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

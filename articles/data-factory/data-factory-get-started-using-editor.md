@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors" 
-	description="In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors im klassischen Azure-Portal." 
+	description="In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors im Azure-Portal." 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -43,7 +43,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 
 1.	Nach der Anmeldung beim [Azure-Portal][azure-portal] klicken Sie links unten auf **NEU**, wählen **Datenanalyse** auf dem Blatt **Erstellen** aus und klicken auf dem Blatt **Datenanalyse** auf **Data Factory**. 
 
-	![Neu -> Data Factory][image-data-factory-new-datafactory-menu]
+	![Neu->DataFactory][image-data-factory-new-datafactory-menu]
 
 6. Gehen Sie auf dem Blatt **Neue Data Factory** so vor:
 	1. Geben Sie **ADFTutorialDataFactory** als **Namen** ein. 
@@ -310,9 +310,9 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer **Kopieraktivität**, di
  
 
 ## Überwachen der Pipeline
-In diesem Schritt verwenden Sie das klassische Azure-Portal zur Überwachung der Aktivitäten in einer Azure Data Factory. Sie können auch PowerShell-Cmdlets zum Überwachen von Datasets und Pipelines verwenden. Einzelheiten zur Verwendung von Cmdlets für die Überwachung finden Sie unter [Überwachen und Verwalten von Azure Data Factory mit PowerShell-Cmdlets][monitor-manage-using-powershell].
+In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivitäten in einer Azure Data Factory. Sie können auch PowerShell-Cmdlets zum Überwachen von Datasets und Pipelines verwenden. Einzelheiten zur Verwendung von Cmdlets für die Überwachung finden Sie unter [Überwachen und Verwalten von Azure Data Factory mit PowerShell-Cmdlets][monitor-manage-using-powershell].
 
-1. Navigieren Sie zum [klassischen Azure-Portal (Vorschau)][azure-portal], sofern noch nicht geöffnet. 
+1. Navigieren Sie zum [Azure-Vorschauportal][azure-portal], sofern noch nicht geöffnet. 
 2. Wenn das Blatt für **ADFTutorialDataFactory** nicht geöffnet ist, klicken Sie zum Öffnen im **Startmenü** auf **ADFTutorialDataFactory**. 
 3. In diesem Fenster sollten die Anzahl und Namen der erstellten Tabellen und der Pipeline angezeigt werden.
 
@@ -456,4 +456,4 @@ Ausführliche Informationen zur **Kopieraktivität** in Azure Data Factory finde
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

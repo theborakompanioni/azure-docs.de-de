@@ -81,7 +81,7 @@ Dann erstellen Sie einen Azure-Clouddienst. Der Clouddienst fungiert als Sicherh
 
 Wählen Sie einen eindeutigen Namen für den Clouddienst aus. *Der Name des Clouddiensts darf nur Buchstaben, Zahlen und Bindestriche enthalten. Das erste und das letzte Zeichen im Feld müssen Buchstaben oder Zahlen sein.*
 
-Sie könnten den Clouddienst beispielsweise „TestLab-*UniqueSequence*“ nennen, wobei *UniqueSequence* eine Abkürzung Ihrer Organisation ist. Wenn Ihre Organisation beispielsweise „Tailspin Toys“ heißt, könnten Sie den Clouddienst „TestLab-Tailspin“ nennen.
+Sie könnten den Clouddienst beispielsweise „TestLab- *UniqueSequence* “ nennen, wobei *UniqueSequence* eine Abkürzung Ihrer Organisation ist. Wenn Ihre Organisation beispielsweise „Tailspin Toys“ heißt, könnten Sie den Clouddienst „TestLab-Tailspin“ nennen.
 
 Die Eindeutigkeit des Namens können Sie mit dem folgenden Azure PowerShell-Befehl auf dem lokalen Computer überprüfen:
 
@@ -239,7 +239,7 @@ Als Nächstes überprüfen Sie, ob Sie mit CLIENT1 auf die Web- und Dateifreigab
 2.	Klicken Sie unter **Eigenschaften von CLIENT1** neben **Verstärkte Sicherheitskonfiguration für IE** auf **Ein** .
 3.	Klicken Sie unter **Verstärkte Sicherheitskonfiguration für IE** bei **Administratoren** und **Benutzern** auf **Aus**, und klicken Sie dann auf **OK**.
 4.	Klicken Sie auf der Startseite auf **Internet Explorer** und dann auf **OK**.
-5.	Geben Sie in die Adressleiste ****http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
+5.	Geben Sie in die Adressleiste **http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
 6.	Klicken Sie in der Desktopsymbolleiste auf das Symbol des Datei-Explorers.
 7.	Geben Sie in der Adressleiste **\\\app1\\Files** ein, und drücken Sie dann die EINGABETASTE.
 8.	Es wird ein Fenster mit dem Inhalt des freigegebenen Ordners geöffnet.
@@ -284,4 +284,4 @@ Zum Starten der virtuellen Computer in der angegebenen Reihenfolge mit Azure Pow
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

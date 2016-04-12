@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="03/04/2015"
+   ms.date="03/04/2016"
    ms.author="genli"/>
 
 # Übertragen eines Azure-Abonnements
@@ -59,7 +59,7 @@ Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für
 
     Die Übertragung hat keine Auswirkung auf den Dienst. Effektiv wird dabei das Abonnement unter dem laufenden Kontoadministrator gekündigt, und ein neues unter dem Konto des Empfängers erstellt. Dabei werden die zugrunde liegenden Azure-Dienste dem neuen Abonnement zugeordnet. Die Abonnement-ID bleibt unverändert.
 
--   **Wie verwende ich diesen Mechanismus zum Ändern des Verzeichnisses für ein Abonnement?** –
+-   **Wie verwende ich diesen Mechanismus zum Ändern des Verzeichnisses für ein Abonnement?** – 
     Ein Azure-Abonnement wird im Verzeichnis erstellt, zu dem das Administratorkonto gehört. Um das Verzeichnis zu ändern, müssen Sie also nur das Abonnements auf ein Benutzerkonto im Zielverzeichnis übertragen. Wenn der Benutzer die Schritte zum Akzeptieren der Übertragung abschließt, wird das Abonnement automatisch in das Zielverzeichnis verschoben.
    
 -   **Wenn ich die Abrechnung eines Abonnements aus einer anderen Organisation übernehme, kann diese weiterhin auf meine Ressourcen zugreifen?**
@@ -111,4 +111,4 @@ Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für
 4. Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement im [Azure Account Center](https://account.windowsazure.com/Subscriptions) ([weitere Informationen](http://go.microsoft.com/fwlink/?LinkID=533292)).
 5. 	Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID für dieses Abonnement aktualisieren. Sie können diese im [Azure Account Center](https://account.windowsazure.com/Subscriptions) durchführen.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

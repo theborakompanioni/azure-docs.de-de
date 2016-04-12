@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Austauschen eines Festplattenlaufwerks im StorSimple-Gerät | Microsoft Azure"
-   description="Erläutert, wie ein Laufwerk in einem primären StorSimple-Gerät oder EBOD-Gehäuse ausgetauscht wird."
+   description="Erläutert, wie ein Laufwerk in einem primären StorSimple- oder EBOD-Gehäuse ausgetauscht wird."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="03/28/2016"
    ms.author="alkohli" />
 
 # Austauschen eines Festplattenlaufwerks im StorSimple-Gerät
@@ -62,7 +62,7 @@ Führen Sie die Schritte in umgekehrter Reihenfolge aus, um die Zugangssperre zu
 
 ## Ausbauen des Laufwerks
 
-Ein StorSimple-Gerät unterstützt eine RAID-10-ähnliche Speicherplatzkonfiguration. Dies bedeutet, dass das Gerät mit einem einzelnen fehlerhaften SSD- (Solid State Drive) oder HDD-Laufwerk (Hard Disk Drive) normal funktionieren kann.
+Ihr StorSimple-Gerät unterstützt eine RAID-10-ähnliche Speicherplatzkonfiguration. Dies bedeutet, dass das Gerät mit einem einzelnen fehlerhaften SSD- (Solid State Drive) oder HDD-Laufwerk (Hard Disk Drive) normal funktionieren kann.
 
 >[AZURE.IMPORTANT]
 >
@@ -76,9 +76,9 @@ Laufwerke können bei laufendem Betrieb des Systems ausgebaut und ausgetauscht w
 
 #### So bauen Sie ein Laufwerk aus
 
-1. Navigieren Sie zum Ermitteln des fehlerhaften Datenträgers im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**. Weil ein Datenträger im primären Gehäuse und/oder in einem EBOD-Gehäuse ausfallen kann (wenn Sie ein Modell vom Typ 8600 verwenden), sehen Sie sich die Status der Datenträger unter **Freigegebene Komponenten** und unter **EBOD-Gehäuse – Freigegebene Komponenten** an. Ein fehlerhafter Datenträger in einem der Gehäuse wird mit rotem Status angezeigt.
+1. Gehen Sie zum Ermitteln des fehlerhaften Datenträgers im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**. Weil ein Datenträger im primären Gehäuse und/oder in einem EBOD-Gehäuse ausfallen kann (wenn Sie ein Modell vom Typ 8600 verwenden), sehen Sie sich die Status der Datenträger unter **Freigegebene Komponenten** und unter **EBOD-Gehäuse – Freigegebene Komponenten** an. Ein fehlerhafter Datenträger in einem der Gehäuse wird mit rotem Status angezeigt.
 
-2. Suchen Sie auf der Vorderseite des primären Gehäuses oder des EBOD-Gehäuses nach den Laufwerken. Für den fehlerhaften Datenträger leuchtet die gelbe LED.
+2. Suchen Sie auf der Vorderseite des primären Gehäuses oder des EBOD-Gehäuses nach den Laufwerken.
 
 3. Wenn der Datenträger nicht verriegelt ist, fahren Sie mit dem nächsten Schritt fort. Wenn der Datenträger verriegelt ist, entriegeln Sie ihn mithilfe des Verfahrens unter [Entriegeln der Zugangssperre](#disengage-the-antitamper-lock).
 
@@ -96,7 +96,7 @@ Laufwerke können bei laufendem Betrieb des Systems ausgebaut und ausgetauscht w
 
 ## Einbauen des Austauschlaufwerks
 
-Nachdem ein Laufwerk in einem Microsoft Azure StorSimple-Gerät ausgefallen ist und Sie es ausgebaut haben, gehen Sie wie folgt vor, um ein neues Laufwerk einzubauen.
+Nachdem ein Laufwerk in einem StorSimple-Gerät ausgefallen ist und Sie es entfernt haben, gehen Sie wie folgt vor, um es durch ein neues Laufwerk zu ersetzen.
 
 #### So bauen Sie ein Laufwerk ein
 
@@ -124,4 +124,4 @@ Nachdem ein Laufwerk in einem Microsoft Azure StorSimple-Gerät ausgefallen ist 
 
 Erfahren Sie mehr zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

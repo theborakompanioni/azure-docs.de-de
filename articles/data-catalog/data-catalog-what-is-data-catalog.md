@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog – Was ist der Data Catalog?"
-   description="Übersicht über Microsoft Azure Data Catalog, einschließlich seiner Funktionen und der Probleme, die er beheben soll. Azure Data Catalog enthält Funktionen, mit denen alle Benutzer – von Analysten über Datenwissenschaftler bis zu Entwicklern – Datenquellen registrieren, ermitteln, verstehen und nutzen können."
+   pageTitle="Was ist Azure Data Catalog? | Microsoft Azure"
+   description="Dieser Artikel enthält eine Übersicht über Microsoft Azure Data Catalog, einschließlich seiner Funktionen und der Probleme, die er beheben soll. Azure Data Catalog enthält Funktionen, mit denen alle Benutzer – von Analysten über Datenwissenschaftler bis zu Entwicklern – Datenquellen registrieren, ermitteln, verstehen und nutzen können."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 # Was ist Azure Data Catalog?
@@ -109,4 +109,4 @@ Das ultimative Ziel der Datenermittlung besteht darin, die erforderlichen Daten 
 1.	Für Clientanwendungen, die von **Azure Data Catalog** direkt unterstützt werden, können Benutzer im Portal auf der Datenquellenkachel auf das Menü **Öffnen in** klicken. Die Clientanwendung wird mit einer hergestellten Verbindung mit der gewählten Datenquelle gestartet.
 2.	Für alle Clientanwendungen können Benutzer die Verbindungsinformationen verwenden, die im Eigenschaftenbereich für eine ausgewählte Datenquelle angezeigt werden. Diese Informationen enthalten alle Details (z. B. Servername, Datenbankname und Objektname), die zum Herstellen der Verbindung mit den Daten erforderlich sind. Sie können in die Verbindungsumgebung des Clienttools kopiert werden. Wenn Details zur Zugriffsanforderung für eine Datenquelle bereitgestellt wurden, werden diese Information neben den Verbindungsdetails angezeigt.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -3,9 +3,9 @@
 	description="Dieses Thema bezieht sich auf Ressourcen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, und bietet einen allgemeinen Leitfaden zum Sichern von SQL Server auf einem virtuellen Computer in Azure."
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
-   editor="monicar"    
+	authors="carlrabeler"
+	manager="jhubbard"
+   editor=""    
    tags="azure-service-management"/>
 <tags
 	ms.service="virtual-machines-windows"
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/04/2015"
-	ms.author="jroth" />
+	ms.date="03/23/2016"
+	ms.author="carlrab" />
 
 # Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
 
@@ -33,10 +33,10 @@ Im Folgenden finden Sie eine Liste mit Sicherheitsempfehlungen für das Konfigur
 
 - Erstellen Sie ein eindeutiges lokales Administratorkonto, das nicht den Namen **Administrator** hat.
 
-- Verwenden Sie komplexe, sichere Kennwörter für alle Konten. Weitere Informationen zum Erstellen sicherer Kennwörter finden Sie im Artikel zum [Erstellen sicherer Kennwörter](http://go.microsoft.com/fwlink/?LinkId=293596) im Safety & Security Center.
+- Verwenden Sie komplexe, sichere Kennwörter für alle Konten. Weitere Informationen zum Erstellen eines sicheren Kennworts finden Sie im Artikel [Tipps zum Erstellen eines sicheren Kennworts](http://windows.microsoft.com/de-DE/windows-vista/Tips-for-creating-a-strong-password).
 
 - Standardmäßig wird für Azure während des Einrichtens von virtuellen Computern mit SQL Server die Windows-Authentifizierung ausgewählt. Aus diesem Grund wird beim Einrichten die **SA**-Anmeldung deaktiviert und ein Kennwort zugewiesen. Es wird empfohlen, die **SA**-Anmeldung nicht zu verwenden oder zu aktivieren. Die folgenden alternativen Strategien können für eine SQL-Anmeldung verwendet werden:
-	- Erstellen Sie ein SQL-Konto, das über die Berechtigung **CONTROL SERVER** verfügt.
+	- Erstellen Sie ein SQL-Konto, das über eine Mitgliedschaft in „sysadmin“ verfügt.
 	- Wenn Sie eine **SA**-Anmeldung verwenden müssen, aktivieren Sie die Anmeldung, benennen Sie sie um, und weisen Sie ihr ein neues Kennwort zu.
 	- Beide zuvor erwähnten Optionen erfordern eine Änderung des Authentifizierungsmodus in den **SQL Server- und Windows-Authentifizierungsmodus**. Weitere Informationen finden Sie unter [Ändern des Serverauthentifizierungsmodus](https://msdn.microsoft.com/library/ms188670.aspx).
 
@@ -44,11 +44,13 @@ Im Folgenden finden Sie eine Liste mit Sicherheitsempfehlungen für das Konfigur
 
 - Ziehen Sie die Verwendung von [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) zur Verwaltung der virtuellen Computer anstelle von öffentlichen RDP-Ports in Betracht.
 
-- Entfernen Sie alle Endpunkte auf dem virtuellen Computer, die Sie nicht verwenden.
+- Verwenden Sie eine [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) (NSG), um Netzwerkdatenverkehr an Ihren virtuellen Computer zu erlauben oder zu verweigern. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen zur Vorgehensweise finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](../virtual-network/virtual-networks-acl-powershell.md).
+
+- Falls Sie Endpunkte verwenden, entfernen Sie alle nicht verwendeten Endpunkte auf dem virtuellen Computer. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](../virtual-network/virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)
 
 - Aktivieren Sie eine verschlüsselte Verbindungsoption für eine Instanz des SQL Server-Datenbankmoduls in Azure Virtual Machines. Konfigurieren Sie die SQL Server-Instanz mit einem signierten Zertifikat. Weitere Informationen finden Sie unter [Aktivieren von verschlüsselten Verbindungen zum Datenbankmodul](https://msdn.microsoft.com/library/ms191192.aspx) und [Syntax für Verbindungszeichenfolgen](https://msdn.microsoft.com/library/ms254500.aspx).
 
-- Wenn auf die virtuellen Computer nur von einem bestimmten Netzwerk aus zugegriffen werden soll, verwenden Sie Windows-Firewall, um den Zugriff auf bestimmte IP-Adressen oder Netzwerksubnetze zu beschränken. Sie können auch eine ACL für den Endpunkt hinzufügen, um den Datenverkehr auf zugelassene Clients zu beschränken. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint).
+- Wenn auf die virtuellen Computer nur von einem bestimmten Netzwerk aus zugegriffen werden soll, verwenden Sie Windows-Firewall, um den Zugriff auf bestimmte IP-Adressen oder Netzwerksubnetze zu beschränken.
 
 ## Nächste Schritte
 
@@ -56,4 +58,4 @@ Weitere Informationen zu bewährten Methoden in Bezug auf Leistung finden Sie un
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,12 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="12/15/2015"
+   ms.date="03/23/2016"
    ms.author="yuemlu"/>
 
 # Azure-Gastbetriebssystem 
 
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## Gastbetriebssystem März 
+
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-023 | [3142015] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
+| MS16-026 | [3143148] | Sicherheitsupdate für Grafikschriftarten zum Unterbinden von Remotecodeausführung | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
+| MS16-027 | [3143146] | Sicherheitsupdate für Windows Media Player zum Unterbinden von Remotecodeausführung | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
+| MS16-028 | [3143081] | Sicherheitsupdate für die Microsoft Windows-PDF-Bibliothek zum Unterbinden von Remotecodeausführung | 4\.30, 3.37 | 8\. März 2016 |  
+| MS16-030 | [3143136] | Sicherheitsupdate für Windows OLE zum Unterbinden von Remotecodeausführung | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
+| MS16-031 | [3140410] | Sicherheitsupdate für Microsoft Windows zum Unterbinden von Rechteerweiterungen | 2\.49 | 8\. März 2016 |  
+| MS16-032 | [3143141] | Sicherheitsupdate für den sekundären Anmeldedienst zum Unterbinden von Rechteerweiterungen | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
+| MS16-033 | [3143142] | Sicherheitsupdate für Windows USB-Massenspeichergerät-Klassentreiber zum Unterbinden von Rechteerweiterungen | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
+| MS16-034 | [3143145] | Sicherheitsupdate für Windows-Kernelmodustreiber zum Unterbinden von Rechteerweiterungen | 4\.30, 3.37, 2.49 | 8\. März 2016 | | MS16-035 | [3141780] | Sicherheitsupdate für .NET Framework zum Unterbinden einer Umgehung von Sicherheitsfunktionen | 4\.30, 3.37, 2.49 | 8\. März 2016 |  
 
 
 ## Gastbetriebssystem Februar
@@ -242,6 +256,18 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | – | [2999802][2999802] | In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 | – | [2896881][2896881] | Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 
+
+[3142015]: http://support.microsoft.com/kb/3142015
+[3143148]: http://support.microsoft.com/kb/3143148
+[3143146]: http://support.microsoft.com/kb/3143146
+[3143081]: http://support.microsoft.com/kb/3143081
+[3143136]: http://support.microsoft.com/kb/3143136
+[3140410]: http://support.microsoft.com/kb/3140410
+[3143141]: http://support.microsoft.com/kb/3143141
+[3143142]: http://support.microsoft.com/kb/3143142
+[3143145]: http://support.microsoft.com/kb/3143145
+[3141780]: http://support.microsoft.com/kb/3141780
+
 [3134220]: http://support.microsoft.com/kb/3134220
 [3134811]: http://support.microsoft.com/kb/3134811
 [3134228]: http://support.microsoft.com/kb/3134228
@@ -406,4 +432,4 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

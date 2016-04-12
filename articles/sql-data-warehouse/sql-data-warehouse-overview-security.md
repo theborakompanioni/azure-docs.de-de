@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # Sichern einer Datenbank in SQL Data Warehouse
@@ -37,7 +37,7 @@ Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein 
 
 Stellen Sie zunächst als mit den Anmeldeinformationen für den Serveradministrator eine Verbindung mit der Masterdatenbank auf dem Server her, und erstellen Sie eine neue Serveranmeldung.
 
-```
+```sql
 -- Connect to master database and create a login
 CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
 
@@ -45,8 +45,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
 
 Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der SQL Data Warehouse-Datenbank her, und erstellen Sie einen Datenbankbenutzer mit der gerade erstellten Serveranmeldung.
 
-```
-
+```sql
 -- Connect to SQL DW database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
@@ -59,7 +58,7 @@ Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie u
 
 Autorisierung bezieht sich darauf, welche Aufgaben Sie in einer Azure SQL Data Warehouse-Datenbank ausführen können. Dies wird durch die Rollenmitgliedschaften und Berechtigungen Ihres Benutzerkontos gesteuert. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen. Azure SQL Data Warehouse vereinfacht die Verwaltung durch Rollen in T-SQL:
 
-```
+```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
 EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationUser to write data
 ```
@@ -74,14 +73,12 @@ Es gibt Möglichkeiten, Benutzerberechtigungen für die Azure SQL-Datenbank noch
 
 Die Verwaltung von Datenbanken und logischen Servern über das klassische Azure-Portal oder mit der Azure-Ressourcen-Manager-API wird durch die Rollenzuweisungen Ihres Portal-Benutzerkontos gesteuert. Weitere Informationen zu diesem Thema finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal][].
 
-
-
 ## Verschlüsselung
 
 Durch [Transparent Data Encryption][] kann die Azure SQL-Datenbank zum Schutz Ihrer Daten beitragen, indem ruhende oder in Datenbankdateien und Sicherungen gespeicherte Daten verschlüsselt werden. Um Ihre Datenbank zu verschlüsseln, stellen Sie auf Ihrem Server eine Verbindung mit der Masterdatenbank her und führen Folgendes aus:
 
 
-```
+```sql
 
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
@@ -89,13 +86,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 Sie können Transparent Data Encryption auch über die Datenbankeinstellungen im [klassischen Azure-Portal][] aktivieren.
 
-
-
 ## Überwachung
 
 Die Überwachung und Nachverfolgung von Datenbankereignissen kann Sie bei der Einhaltung von gesetzlichen Bestimmungen und der Erkennung von verdächtigen Aktivitäten unterstützen. Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in einem Überwachungsprotokoll in Ihrem Azure-Speicherkonto aufzeichnen. SQL Data Warehouse-Überwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichte und Analysen zu ermöglichen. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung][].
-
-
 
 ## Nächste Schritte
 Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
@@ -119,4 +112,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

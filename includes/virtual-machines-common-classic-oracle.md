@@ -1,8 +1,5 @@
 
  
-
-Richten Sie Ihre erste oder nächste Oracle-Datenbank für Entwicklung/Tests oder Produktion auf einem virtuellen Computer in Azure-Infrastrukturdiensten ein. Nutzen Sie die Vorteile der einfachen Konfiguration und die Möglichkeit, die Oracle-Datenbankworkload schnell zu erweitern, um neue Kapazitäten einzuschließen.
-
 ## Images virtueller Oracle-Computer
 
 Informationen zu den neuesten Images von Windows- und Linux-basierten virtuellen Computern finden Sie in der [Liste der Images virtueller Oracle-Computer](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md).
@@ -35,4 +32,4 @@ In [Verschiedene Überlegungen zu Images für virtuelle Oracle-Computer](../arti
 
 [Konfigurieren von Oracle GoldenGate für Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md) führt Sie schrittweise durch das Datenbank- und Replikationssetup.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

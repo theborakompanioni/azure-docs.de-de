@@ -9,7 +9,7 @@
 * [Bereitstellen einer durch einen MySQL-Replikationscluster unterstützten WordPress-App mit Master-Slave-Konfiguration](/documentation/templates/mysql-replication/)
 * [Bereitstellen einer WordPress-App, die durch eine von ProjectNami verwaltete SQL Azure-DB unterstützt wird](/marketplace/partners/projectnami/projectnami/)
   
-## Kapitel 2: Fehlerbehebung für die WordPress-Anwendung
+## Fehlerbehebung für die WordPress-Anwendung
 
 * [Gewusst wie: Problembehandlung für Ihre WordPress-App](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
 * [Sammeln von Nutzungstelemetriedaten mithilfe des Azure Application Insights-Diensts](https://azure.microsoft.com/blog/usage-analytics-for-wordpress-with-azure-app-insights/)
@@ -18,7 +18,7 @@
 * [Automatisieren der Behandlung von Echtzeitvorfällen mithilfe verschiedener Regeln für die automatische Reparatur](http://microsoftazurewebsitescheatsheet.info/#auto-heal)
 * [Gewusst wie: Sichern Ihrer Web-App](../articles/app-service-web/web-sites-backup.md) und [Gewusst wie: Wiederherstellen Ihrer Web-App](../articles/app-service-web/web-sites-restore.md)
 
-## Kapitel 3: Leistung
+## Leistung
 
 * [Gewusst wie: Beschleunigen der WordPress-Web-App](https://sunithamk.wordpress.com/2014/08/01/10-ways-to-speed-up-your-wordpress-site-on-azure-websites/)
 * [Gewusst wie: Aktivieren von Redis Cache](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) mit dem [Redis Cache-Plug-In](https://wordpress.org/plugins/wp-redis/)
@@ -28,4 +28,4 @@
 * [Gewusst wie: Servercaching mit dem IIS-Ausgabecache](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
 * [Gewusst wie: Aktivieren des Browsercachings für statische Inhalte](http://www.iis.net/configreference/system.webserver/staticcontent)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

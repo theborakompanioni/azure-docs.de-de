@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Ermitteln von Datenquellen"
+   pageTitle="Ermitteln von Datenquellen | Microsoft Azure"
    description="Anleitungsartikel zum Ermitteln von Datenressourcen, die in Azure Data Catalog registriert wurden, einschließlich der Verwendung der Funktionen für Suchen und Filtern sowie Treffermarkierung im Azure Data Catalog-Portal."
    services="data-catalog"
    documentationCenter=""
@@ -13,9 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
-
 
 # Ermitteln von Datenquellen
 
@@ -63,4 +62,4 @@ Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden struk
 ## Weitere Informationen
 - Eine schrittweise Anleitung zum Ermitteln von Datenquellen finden Sie im Tutorial [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

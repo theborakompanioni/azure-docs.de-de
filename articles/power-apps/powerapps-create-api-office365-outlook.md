@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # Erstellen einer neuen Office 365-Outlook-API in PowerApps Enterprise
 
 > [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/create-api-office365-outlook.md)
+- [Logik-Apps](../articles/connectors/connectors-create-api-office365-outlook.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-outlook.md)
 
 Fügen Sie die Office 365-Outlook-API der App Service-Umgebung Ihrer Organisation (Mandant) hinzu.
@@ -84,7 +84,7 @@ Wenn Sie über keine vorhandene AAD-App mit den Werten für den Schlüssel und d
 
 6. Unter **App-Eigenschaften**:  
 
-	1. Geben Sie unter **ANMELDE-URL** die Anmelde-URL Ihrer Anwendung ein. Da Sie die Authentifizierung mit AAD für PowerApps durchführen, legen Sie die Anmelde-URL auf _https://login.windows.net_ fest.  
+	1. Geben Sie unter **ANMELDE-URL** die Anmelde-URL Ihrer Anwendung ein. Da Sie die Authentifizierung mit AAD für PowerApps durchführen, legen Sie die Anmelde-URL auf \__https://login.windows.net_ fest.
 	2. Geben Sie einen gültigen **APP-ID-URI** für Ihre App ein.  
 	3. Klicken Sie auf **OK**.  
 
@@ -119,7 +119,7 @@ Einige hilfreiche Informationen zu AAD-Anwendungen finden Sie unter [Wie und war
 
 ## Informationen zu REST-APIs
 
-Referenz zur [Office 365-Outlook-REST-API](../connectors/create-api-office365-outlook.md).
+Referenz zur [REST-API für Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)
 
 
 ## Zusammenfassung und nächste Schritte
@@ -144,6 +144,4 @@ In diesem Thema haben Sie PowerApps Enterprise die Office 365-Outlook-API hinzug
 [14]: ./media/powerapps-create-api-office365-outlook/browseall.png
 [15]: ./media/powerapps-create-api-office365-outlook/allresources.png
 
-<!-----HONumber=AcomDC_0309_2016-->
-
-
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/14/2016"
+	ms.date="03/30/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # Einführung: Sichern von virtuellen Azure-Computern
+
+> [AZURE.SELECTOR]
+- [Sichern von ARM-VMs](backup-azure-vms-first-look-arm.md)
+- [Sichern von VMs im klassischen Modus](backup-azure-vms-first-look.md)
 
 Dieser Artikel ist ein Tutorial, in dem die Schritte zum Vorbereiten Ihrer Azure-Umgebung zum Sichern eines virtuellen Azure-Computers erläutert werden. Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben. Dies sind im Allgemeinen die Schritte, die auszuführen sind.
 
@@ -31,7 +35,7 @@ Dieser Artikel ist ein Tutorial, in dem die Schritte zum Vorbereiten Ihrer Azure
 5. Erstellen Sie die Richtlinie für den Schutz der virtuellen Computer.
 6. Führen Sie die Sicherung aus.
 
->[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../resource-manager-deployment-model.md). Der Azure Backup-Dienst unterstützt derzeit keine virtuellen Computer, die auf dem Azure Resource Manager (ARM) basieren (auch als virtuelle IaaS V2-Computer bezeichnet). Da virtuelle IaaS V2-Computer mit der neuen Version des Azure-Portals eingeführt wurden, ist dieses Tutorial für die Verwendung mit dem Typ virtueller Computer gedacht, die im klassischen Azure-Portal erstellt werden können.
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Der Azure Backup-Dienst unterstützt derzeit keine virtuellen Computer, die auf dem Azure Resource Manager (ARM) basieren (auch als virtuelle IaaS V2-Computer bezeichnet). Da virtuelle IaaS V2-Computer mit der neuen Version des Azure-Portals eingeführt wurden, ist dieses Tutorial für die Verwendung mit dem Typ virtueller Computer gedacht, die im klassischen Azure-Portal erstellt werden können.
 
 
 ## Schritt 1 – Erstellen eines Sicherungstresors für einen virtuellen Computer
@@ -136,7 +140,7 @@ Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agent | <li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. | <li>Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. |
-| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agent](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation | <li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\\WindowsAzure\\Packages*. <li>Dieser Ordner enthält die Datei „WaAppAgent.exe“.<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. | N/V |
 
 
@@ -197,13 +201,13 @@ Nun können Sie die Sicherungs- und Aufbewahrungsrichtlinie für den virtuellen 
 
 ## Schritt 5 – Erste Sicherung
 
-Wenn ein virtueller Computer mit eine Richtlinie geschützt wird, können Sie diese Beziehung auf der Registerkarte **Geschützte Elemente** anzeigen. Bis zur ersten Sicherung eines virtuellen Computers wird der **Schutzstatus** als **Geschützt (erste Sicherung ausstehend)** angezeigt. Standardmäßig ist die erste geplante Sicherung die *Anfangssicherung*.
+Wenn ein virtueller Computer mit einer Richtlinie geschützt wird, können Sie diese Beziehung auf der Registerkarte **Geschützte Elemente** anzeigen. Bis zur ersten Sicherung eines virtuellen Computers wird der **Schutzstatus** als **Geschützt (erste Sicherung ausstehend)** angezeigt. Standardmäßig ist die erste geplante Sicherung die *Anfangssicherung*.
 
 ![Sicherung ausstehend](./media/backup-azure-vms-first-look/protection-pending-border.png)
 
 So lösen Sie die erste Sicherung unmittelbar nach Konfigurieren des Schutzes aus:
 
-1. Klicken Sie am unteren Rand der Seite **Geschützte Elemente** auf die Schaltfläche **Jetzt sichern**. ![Symbol „Jetzt sichern“](./media/backup-azure-vms-first-look/backup-now-icon.png)
+1. Klicken Sie unten auf der Seite **Geschützte Elemente** auf die Schaltfläche **Jetzt sichern**. ![Symbol „Jetzt sichern“](./media/backup-azure-vms-first-look/backup-now-icon.png)
 
     Der Azure Backup-Dienst erstellt einen Sicherungsauftrag für die erste Sicherung.
 
@@ -230,4 +234,4 @@ Nachdem Sie einen virtuellen Computer erfolgreich gesichert haben, sind unter Um
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

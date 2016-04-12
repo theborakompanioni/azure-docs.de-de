@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="03/22/2016"
    ms.author="alkohli" />
 
 # Austauschen des EBOD-Controllers eines StorSimple-Geräts
@@ -28,9 +28,9 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 
 - In alle nicht verwendeten Einschubfächer müssen leere EBOD-Module eingesetzt werden. Das Gehäuse wird nicht ordnungsgemäß gekühlt, wenn ein Einschubfach leer bleibt.
 
-- Der EBOD-Controller kann bei laufendem Betrieb ausgebaut bzw. ausgetauscht werden. Bauen Sie ein fehlerhaftes Modul erst aus, wenn ein Austauschmodul verfügbar ist. Sobald Sie den Austauschvorgang eingeleitet haben, muss dieser binnen 10 Minuten abgeschlossen werden.
+- Der EBOD-Controller kann bei laufendem Betrieb ausgebaut bzw. ausgetauscht werden. Bauen Sie ein fehlerhaftes Modul erst aus, wenn ein Austauschmodul verfügbar ist. Sobald Sie den Austauschvorgang eingeleitet haben, muss dieser binnen 10 Minuten abgeschlossen werden.
 
->[AZURE.IMPORTANT]Überprüfen Sie vor dem Ausbauen und Austauschen eines EBOD-Controllers die Sicherheitsinformationen unter [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+>[AZURE.IMPORTANT] Bevor Sie versuchen, StorSimple-Komponenten auszubauen oder auszutauschen, sollten Sie sich mit den [Konventionen für Sicherheitssymbole](storsimple-safety.md#safety-icon-conventions) und anderen [Sicherheitsvorkehrungen](storsimple-safety.md) vertraut machen.
 
 ## Ausbauen eines EBOD-Controllers
 
@@ -48,7 +48,7 @@ Bevor Sie das fehlerhafte EBOD-Controllermodul in Ihrem StorSimple-Gerät austau
 
 5. Notieren Sie sich den genauen SAS-Anschluss des EBOD-Controllermoduls, das mit dem Controller verbunden war. Sie müssen das System in dieser Konfiguration wiederherstellen, nachdem Sie das EBOD-Modul ausgetauscht haben.
 
-    >[AZURE.NOTE]Normalerweise handelt es sich um Anschluss A, der in der folgenden Abbildung als **Host ein** bezeichnet wird.
+    >[AZURE.NOTE] Normalerweise handelt es sich um Anschluss A, der in der folgenden Abbildung als **Host ein** bezeichnet wird.
 
     ![Rückwand des EBOD-Controllers](./media/storsimple-ebod-controller-replacement/IC741049.png)
 
@@ -87,24 +87,24 @@ Im folgenden Verfahren sowie in der Tabelle wird erläutert, wie ein EBOD-Contro
 
 4. Schließen Sie die Kabel wieder an. Verwenden Sie die genaue Konfiguration, die vor dem Austausch vorhanden war. Der folgenden Abbildung und Tabelle können Sie die Einzelheiten entnehmen, wie die Kabel anzuschließen sind.
 
-    ![Stromverkabelung des 4 HE-Geräts](./media/storsimple-ebod-controller-replacement/IC770723.png)
+    ![Stromverkabelung des 4 HE-Geräts](./media/storsimple-ebod-controller-replacement/IC770723.png)
 
     **Abbildung 4** Erneutes Anschließen der Kabel
 
     |Bezeichnung|Beschreibung|
     |:----|:----------|
     |1|Primäres Gehäuse|
-    |2|PCM 0|
-    |3|PCM 1|
-    |4|Controller 0|
-    |5|Controller 1|
-    |6|EBOD-Controller 0|
-    |7|EBOD-Controller 1|
+    |2|PCM 0|
+    |3|PCM 1|
+    |4|Controller 0|
+    |5|Controller 1|
+    |6|EBOD-Controller 0|
+    |7|EBOD-Controller 1|
     |8|EBOD-Gehäuse|
-    |9|PDUs|
+    |9|Power Distribution Units|
 
 ## Nächste Schritte
 
 Erfahren Sie mehr zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0330_2016-->

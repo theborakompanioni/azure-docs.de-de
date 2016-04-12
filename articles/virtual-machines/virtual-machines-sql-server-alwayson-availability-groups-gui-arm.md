@@ -54,7 +54,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 - Sie besitzen bereits ein Azure-Abonnement. Falls Sie keines besitzen, können Sie sich für ein [kostenloses Testkonto registrieren](http://azure.microsoft.com/pricing/free-trial/).
 
-- Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem virtuellen Computerkatalog bereitgestellt wird. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-classic-portal-sql.md).
+- Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem virtuellen Computerkatalog bereitgestellt wird. Weitere Informationen finden Sie unter [Provisioning a SQL Server virtual machine on Azure](virtual-machines-windows-portal-sql-server-provision.md) (Bereitstellen eines virtuellen SQL Server-Computers in Azure).
 
 - Sie verfügen bereits über solide Kenntnisse über AlwaysOn-Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx).
 
@@ -260,4 +260,4 @@ Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgend
 
 Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die AlwaysOn-Verfügbarkeitsgruppe konfiguriert ist.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

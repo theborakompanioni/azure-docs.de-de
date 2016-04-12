@@ -14,18 +14,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="03/28/2016"
    ms.author="larryfr"/>
 
 # Informationen zur Verwendung von HDInsight unter Linux
 
 Auf Linux basierende Azure HDInsight-Cluster stellen Hadoop in einer vertrauten Linux-Umgebung bereit, die in der Azure-Cloud ausgeführt wird. Die Lösung sollte sich größtenteils genauso wie jede andere Installation von Hadoop unter Linux verhalten. In diesem Dokument werden bestimmte Unterschiede aufgeführt, die Sie kennen sollten.
 
+##Voraussetzungen
+
+In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwendet. Sie müssen diese also möglicherweise auf Ihrem System installieren.
+
+* [cURL](https://curl.haxx.se/) – wird für die Kommunikation mit webbasierten Diensten verwendet
+* [jq](https://stedolan.github.io/jq/) – wird verwendet, um JSON-Dokumente zu analysieren
+
 ## Domänennamen
 
 Der vollqualifizierte Domänenname (FQDN) für die Verbindung zum Cluster aus dem Internet lautet **&lt;Clustername>.azurehdinsight.net** oder (nur für SSH) **&lt;Clustername>-ssh.azurehdinsight.net**.
 
-Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Um die Clusternamen zu suchen, besuchen Sie die Seite __Hosts__ auf der Ambari-Webbenutzeroberfläche, oder verwenden Sie Folgendes, um eine Liste der Hosts über die Ambari REST-API mit [cURL](http://curl.haxx.se/) und [jq](https://stedolan.github.io/jq/) zurückzugeben:
+Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Um die Clusternamen zu suchen, können Sie die Seite __Hosts__ auf der Ambari-Webbenutzeroberfläche besuchen. Gehen Sie alternativ wie folgt vor, um eine Liste der Hosts über die Ambari REST-API zurückzugeben:
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
@@ -196,7 +203,7 @@ Folgende Clustertypen sind von der Skalierung betroffen:
 
 	* __Storm-Benutzeroberfläche__: Führen Sie die folgenden Schritte aus, um eine Topologie mithilfe der Storm-Benutzeroberfläche erneut auszugleichen.
 
-		1. Öffnen Sie \_\___https://CLUSTERNAME.azurehdinsight.net/stormui__ in einem Webbrowser, wobei CLUSTERNAME der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
+		1. Öffnen Sie \_\___https://CLUSTERNAME.azurehdinsight.net/stormui__ in Ihrem Webbrowser, wobei CLUSTERNAME der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
 
 		3. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche __Neu ausgleichen__. Geben Sie die Verzögerung ein, bevor der Neuausgleich ausgeführt wird.
 
@@ -242,8 +249,9 @@ Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Da
 
 ## Nächste Schritte
 
+* [Migrieren von Windows-basiertem HDInsight zum Linux-basierten](hdinsight-migrate-from-windows-to-linux.md)
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/26/2016"
+   ms.date="03/28/2016"
    ms.author="abhisram"/>
 
 # Diagnose und Leistungsüberwachung für Reliable Actors
@@ -39,8 +39,8 @@ Die Reliable Actors-Laufzeit definiert die folgenden Leistungsindikatorkategorie
 
 |Kategorie|Beschreibung|
 |---|---|
-|Service Fabric Actor|Spezielle Indikatoren für Azure Service Fabric Actors, wie z. B. die benötigte Zeit zum Speichern des Actor-Status.|
-|Service Fabric Actor-Methode|Spezielle Indikatoren für Methoden, die von Service Fabric Actors implementiert wurden, z. B. wie oft eine Actor-Methode aufgerufen wird.|
+|Service Fabric Actor|Spezielle Indikatoren für Azure Service Fabric Actors, wie z. B. die benötigte Zeit zum Speichern des Actor-Status.|
+|Service Fabric Actor-Methode|Spezielle Indikatoren für Methoden, die von Service Fabric Actors implementiert wurden, z. B. wie oft eine Actor-Methode aufgerufen wird.|
 
 Jede der oben genannten Kategorien verfügt über einen oder mehrere Leistungsindikatoren.
 
@@ -114,6 +114,8 @@ Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren 
 |Name der Kategorie|Name des Leistungsindikators|Beschreibung|
 |---|---|---|
 |Service Fabric Actor|Anzahl der Actor-Aufrufe, die auf die Actor-Sperre warten|Anzahl der ausstehenden Actor-Aufrufe, die darauf warten, die Pro-Actor-Sperre zu übernehmen, welche Turn-basierte Parallelität erzwingt.|
+|Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden bis zur Sperrung des Actors|Zeit (in Millisekunden), die erforderlich war, um die Sperre pro Actor zu erlangen, welche Turn-basierte Parallelität erzwingt|
+|Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden, die eine Actor-Sperre hielt|Zeit (in Millisekunden), für die die Sperre pro Actor gehalten wird|
 
 ### Actor-Statusmanagement-Ereignisse und Leistungsindikatoren
 Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit der [Actor-Statusverwaltung](service-fabric-reliable-actors-introduction.md#actor-state-management) aus.
@@ -128,24 +130,17 @@ Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren 
 |Name der Kategorie|Name des Leistungsindikators|Beschreibung|
 |---|---|---|
 |Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden pro Speicherstatusvorgang|Benötigte Zeit in Millisekunden zum Speichern des Actor-Status|
+|Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden pro Statusladevorgang|Zeit in Millisekunden, die zum Laden des Actor-Status erforderlich war|
 
-### Ereignisse im Zusammenhang mit statusfreien Actor-Instanzen
-Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit [statusfreien Actor-Instanzen](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-stateless-actors) aus.
-
-|Ereignisname|Ereignis-ID|Ebene|Schlüsselwort|Beschreibung|
-|---|---|---|---|---|
-|ServiceInstanceOpen|3|Information|0x1|Statusfreie Actor-Instanz geöffnet. Dies bedeutet, dass die Actors für diese Partition in dieser Instanz erstellt werden können (und möglicherweise andere Instanzen auch).|
-|ServiceInstanceClose|4|Information|0x1|Statusfreie Actor-Instanz geschlossen. Dies bedeutet, dass die Actors für diese Partition nicht mehr in dieser Instanz erstellt werden können. An Actors, die bereits in dieser Instanz erstellt wurden, werden keine neuen Anforderungen übermittelt. Die Actors werden zerstört, nachdem alle gerade ausgeführten Anforderungen abgeschlossen sind.|
-
-### Ereignisse im Zusammenhang mit statusbehafteten Actor-Replikaten
-Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit [statusbehafteten Actor-Replikaten](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-stateful-actors) aus.
+### Mit Actor-Replikaten verbundene Ereignisse
+Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit [Actor-Replikaten](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-stateful-actors) aus.
 
 |Ereignisname|Ereignis-ID|Ebene|Schlüsselwort|Beschreibung|
 |---|---|---|---|---|
-|ReplicaChangeRoleToPrimary|1|Information|0x1|Rolle von statusbehaftetem Actor-Replikat in "Primär" geändert. Dies bedeutet, dass die Actors für diese Partition in diesem Replikat erstellt werden.|
-|ReplicaChangeRoleFromPrimary|2|Information|0x1|Rolle von statusbehaftetem Actor-Replikat in "Nicht primär" geändert. Dies bedeutet, dass die Actors für diese Partition nicht mehr in diesem Replikat erstellt werden. An Actors, die bereits in diesem Replikat erstellt wurden, werden keine neuen Anforderungen übermittelt. Die Actors werden zerstört, nachdem alle gerade ausgeführten Anforderungen abgeschlossen sind.|
+|ReplicaChangeRoleToPrimary|1|Information|0x1|Rolle von Actor-Replikat auf „Primär“ geändert. Dies bedeutet, dass die Actors für diese Partition in diesem Replikat erstellt werden.|
+|ReplicaChangeRoleFromPrimary|2|Information|0x1|Rolle von Actor-Replikat auf „Nicht primär“ geändert. Dies bedeutet, dass die Actors für diese Partition nicht mehr in diesem Replikat erstellt werden. An Actors, die bereits in diesem Replikat erstellt wurden, werden keine neuen Anforderungen übermittelt. Die Actors werden zerstört, nachdem alle gerade ausgeführten Anforderungen abgeschlossen sind.|
 
-### Ereignisse bei der Actor-Aktivierung und -Deaktivierung
+### Actor-Aktivierungs- und -Deaktivierungsereignisse und Leistungsindikatoren
 Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit der [ Actor-Aktivierung und -Deaktivierung](service-fabric-reliable-actors-lifecycle.md) aus.
 
 |Ereignisname|Ereignis-ID|Ebene|Schlüsselwort|Beschreibung|
@@ -153,4 +148,20 @@ Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit d
 |ActorActivated|5|Information|0x1|Ein Actor wurde aktiviert.|
 |ActorDeactivated|6|Information|0x1|Ein Actor wurde deaktiviert.|
 
-<!---HONumber=AcomDC_0211_2016-->
+Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Actor-Aktivierung und -Deaktivierung.
+
+|Name der Kategorie|Name des Leistungsindikators|Beschreibung|
+|---|---|---|
+|Service Fabric Actor|Durchschnittliche OnActivateAsync Millisekunden|Zeit (in Millisekunden), die erforderlich war, um die OnActivateAsync-Methode auszuführen|
+
+### Leistungsindikatoren für die Anforderungsverarbeitung durch Actors
+Wenn ein Client eine Methode über ein Actor-Proxy-Objekt aufruft, wird eine Anforderungsnachricht über das Netzwerk an den Actor-Dienst gesendet. Der Dienst verarbeitet die Anforderungsnachricht und sendet eine Antwort an den Client zurück. Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Anforderungsverarbeitung durch Actors.
+
+|Name der Kategorie|Name des Leistungsindikators|Beschreibung|
+|---|---|---|
+|Service Fabric Actor|Anzahl von ausstehenden Anfragen|Anzahl von Anforderungen, die im Dienst verarbeitet werden|
+|Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden pro Anforderung|Zeit (in Millisekunden), die der Dienst zum Verarbeiten einer Anforderung erforderte|
+|Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden für die Anforderungsdeserialisierung|Zeit (in Millisekunden), die erforderlich war, um die Anforderungsnachricht an den Actor zum Empfangszeitpunkt am Dienst zu deserialisieren|
+|Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden für die Anwortserialisierung|Zeit (in Millisekunden), die erforderlich war, um die Antwortnachricht des Actors vor der Versendung an den Client am Dienst zu serialisieren|
+
+<!---HONumber=AcomDC_0330_2016-->

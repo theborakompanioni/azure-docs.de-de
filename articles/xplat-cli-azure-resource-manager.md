@@ -165,7 +165,7 @@ Das Erstellen einer neuen Vorlage würde jedoch den Rahmen dieses Artikels spren
 
 Sie können auch eine Vorlage direkt auf [GitHub](https://github.com/Azure/azure-quickstart-templates) verwenden, ohne sie auf Ihren Computer herunterzuladen. Übergeben Sie dazu die URL zur Datei „azuredeploy.json“ für die Vorlage in Ihrem Befehl mithilfe der Option **--template-url**. Öffnen Sie zum Abrufen der URL die Datei „azuredeploy.json“ auf GitHub im _Rohmodus_, und kopieren Sie die URL aus der Adressleiste des Browsers. Mit dieser URL können Sie direkt eine Bereitstellung erstellen, indem Sie ungefähr folgenden Befehl verwenden:
 
-	azure group deployment create "testDeploy" testResourceGroup --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
+	azure group deployment create "testRG" testDeploy --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
 Sie werden aufgefordert, die erforderlichen Vorlagenparameter einzugeben.
 
 > [AZURE.NOTE] Die JSON-Vorlage muss im _Rohmodus_ geöffnet werden. Im normalen Modus wird in der Adressleiste des Browsers eine andere URL angezeigt. Klicken Sie rechts oben auf die Schaltfläche **Raw**, während die Datei in GitHub angezeigt wird, um sie im _Rohmodus_ zu öffnen.
@@ -215,4 +215,4 @@ Verwenden Sie den Befehl `azure group log show`, um protokollierte Informationen
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

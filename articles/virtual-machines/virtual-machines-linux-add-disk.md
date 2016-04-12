@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen beständigen Datenträger hinzu."
-	keywords="virtueller Linux-Computer,Ressourcendatenträger hinzufügen" 
+	description="Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen persistenten Datenträger hinzufügen."
+	keywords="virtueller Linux-Computer,Ressourcendatenträger hinzufügen"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="rickstercdn"
@@ -20,17 +20,17 @@
 
 # Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 
-In diesem Thema wird das Hinzufügen eines beständigen Datenträgers zu einem Linux-basierten virtuellen Azure-Computer mit der Azure-Befehlszeilenschnittstelle für Mac und Linux behandelt. Wenn Sie Ihrem virtuellen Computer einen beständigen Datenträger hinzufügen, können Sie Ihre Daten sichern für den Fall, dass Ihr virtueller Computer zu Wartungszwecken oder zu Größenänderungen neu bereitgestellt wird.
+In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
 
-## Voraussetzungen
+## Schnellbefehle
 
-In diesem Thema wird vorausgesetzt, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) sowie [die Azure-Befehlszeilenschnittstelle installiert](../xplat-cli-install.md) und [einen virtuellen Computer erstellt haben](virtual-machines-linux-quick-create-cli.md). Sie benötigen zudem den Namen der Ressourcengruppe und Ihres virtuellen Computers und müssen wissen, in welcher Region sich diese befinden.
+```
+# In the following command examples, replace the values between &lt; and &gt; with the values from your own environment.
 
-## Verbinden Sie Ihr Azure-Befehlszeilenschnittstellen-Terminal mit Ihrem Azure-Abonnement.
+rick@ubuntu$ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>
+```
 
-Zunächst müssen Sie sich [mit der Azure-Befehlszeilenschnittstelle bei Azure anmelden](../xplat-cli-connect.md) und die Befehlszeilenschnittstelle durch Eingabe von `azure config mode arm` der Ressourcengruppe hinzufügen.
-
-## Anfügen und Bereitstellen eines Datenträgers
+## Anfügen eines Datenträgers
 
 Neue Datenträger lassen sich schnell anfügen. Geben Sie einfach `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Das sollte in etwa so aussehen:
 
@@ -42,12 +42,11 @@ Neue Datenträger lassen sich schnell anfügen. Geben Sie einfach `azure vm disk
 	info:    vm disk attach-new command OK
 
 
-## Stellen Sie die Verbindung mit dem virtuellen Linux-Computer her, um den neuen Datenträger bereitzustellen.
+## Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
 
+> [AZURE.NOTE] In diesem Thema wird eine Verbindung mit einem virtuellen Computer mithilfe von Benutzernamen und Kennwörtern hergestellt. Informationen zur Verwendung öffentlicher und privater Schlüsselpaare für die Kommunikation mit Ihrem virtuellen Computer finden Sie unter [Verwenden von SSH mit Linux auf Azure](virtual-machines-linux-ssh-from-linux.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
 
-> [AZURE.NOTE] In diesem Thema wird eine Verbindung mit einem virtuellen Computer mithilfe von Benutzernamen und Kennwörtern hergestellt. Informationen zur Verwendung öffentlicher und privater Schlüsselpaare für die Kommunikation mit Ihrem virtuellen Computer finden Sie unter [Verwenden von SSH mit Linux auf Azure](virtual-machines-linux-ssh-from-linux.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen. In diesem Artikel wird zur Vereinfachung ein Benutzername und ein Kennwort mit **SSH** verwendet.
-
-Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind, der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>`.
+Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind: Der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>` und sieht wie folgt aus:
 
 	ssh ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com -p 22
 	The authenticity of host 'myuni-westu-1432328437727-pip.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
@@ -72,8 +71,6 @@ Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträg
 
 	0 packages can be updated.
 	0 updates are security updates.
-
-
 
 	The programs included with the Ubuntu system are free software;
 	the exact distribution terms for each program are described in the
@@ -153,7 +150,6 @@ Schreiben Sie zudem mithilfe des Befehls **mkfs** ein Dateisystem für die Parti
 	8192 inodes per group
 	Superblock backups stored on blocks:
 		32768, 98304, 163840, 229376, 294912, 819200, 884736
-
 	Allocating group tables: done
 	Writing inode tables: done
 	Creating journal (32768 blocks): done
@@ -177,8 +173,8 @@ Der Datenträger kann nun als `/datadrive` verwendet werden.
 
 ## Nächste Schritte
 
-- Beachten Sie, dass der neue Datenträger bei einem Neustart in der Regel nicht für den virtuellen Computer zur Verfügung steht, es sei denn, Sie schreiben diese Informationen in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab). 
+- Beachten Sie, dass der neue Datenträger bei einem Neustart in der Regel nicht für den virtuellen Computer zur Verfügung steht, es sei denn, Sie schreiben diese Informationen in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab).
 - Lesen Sie die Empfehlungen unter [Optimize your Linux machine performance](virtual-machines-linux-optimization.md) (Optimieren der Leistung Ihres Linux-Computers), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
-- Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [ konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung. 
+- Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [ konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

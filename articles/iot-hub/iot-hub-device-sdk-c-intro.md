@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/23/2016"
+     ms.date="03/29/2016"
      ms.author="obloch"/>
 
 # Einführung in das Azure IoT-Geräte-SDK für C
@@ -41,7 +41,7 @@ Dieses Repository enthält die gesamte Familie der Azure IoT-Geräte-SDKs. In di
   ![](media/iot-hub-device-sdk-c-intro/02-CFolder.PNG)
 
 * Die Hauptimplementierung des SDK befindet sich im Ordner **iothub\_client**, der die Implementierung der niedrigsten API-Ebene im SDK (die **IoTHubClient**-Bibliothek) enthält. Die **IoTHubClient**-Bibliothek enthält APIs zum Implementieren des Messagings zum Senden von Nachrichten an IoT Hub sowie zum Empfangen von Nachrichten von IoT Hub. Wenn Sie diese Bibliothek verwenden, müssen Sie die Nachrichtenserialisierung implementieren (wozu das nachstehend beschriebene Serialisierungsbeispielprogramm verwendet wird). Andere Details zur Kommunikation mit IoT Hub werden jedoch für Sie übernommen.
-* Der Ordner **serializer** enthält Hilfsfunktionen und Beispiele, die zeigen, wie Daten vor dem Senden an Azure IoT Hub mithilfe der Clientbibliothek serialisiert werden. Beachten Sie, dass die Verwendung des Serialisierungsprogramms nicht obligatorisch ist und nur zur Veranschaulichung erläutert wird. Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, beginnen Sie zunächst mit der Definition eines Modells, das sowohl die Ereignisse, die Sie an IoT Hub senden möchten, als auch die Nachrichten angibt, die Sie von IoT Hub empfangen möchten. Sobald das Modell definiert ist, bietet das SDK Ihnen eine API-Oberfläche, mit der Sie problemlos mit Ereignissen und Nachrichten arbeiten können, ohne sich um Serialisierungsdetails Gedanken machen zu müssen.Die Bibliothek hängt von anderen Open-Source-Bibliotheken ab, die den Transport mithilfe mehrerer Protokolle (AMQP, MQTT) implementieren.
+* Der Ordner **serializer** enthält Hilfsfunktionen und Beispiele, die zeigen, wie Daten vor dem Senden an Azure IoT Hub mithilfe der Clientbibliothek serialisiert werden. Beachten Sie, dass die Verwendung des Serialisierungsprogramms nicht obligatorisch ist und nur zur Veranschaulichung erläutert wird. Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, beginnen Sie zunächst mit der Definition eines Modells, das sowohl die Ereignisse, die Sie an IoT Hub senden möchten, als auch die Nachrichten angibt, die Sie von IoT Hub empfangen möchten. Sobald das Modell definiert ist, bietet Ihnen das SDK eine API-Oberfläche, mit der Sie problemlos mit Ereignissen und Nachrichten arbeiten können, ohne sich um Serialisierungsdetails Gedanken machen zu müssen. Die Bibliothek ist von anderen Open Source-Bibliotheken abhängig, die den Datentransport mithilfe verschiedener Protokolle (AMQP, MQTT) implementieren.
 * Die **IoTHubClient**-Bibliothek hängt von anderen Open-Source-Bibliotheken ab:
    * Der [Azure C shared utility](https://github.com/Azure/azure-c-shared-utility)-Bibliothek, die allgemeine Funktionalität für grundlegende Aufgaben (z. B. Zeichenfolgen- und Listenbearbeitung, E/A usw.) bereitstellt, die von mehreren Azure-bezogenen SDKs für C benötigt wird.
    * Der [Azure uAMQP](https://github.com/Azure/azure-uamqp-c)-Bibliothek, einer clientseitigen Implementierung von AMQP, die für Geräte mit eingeschränkten Ressourcen optimiert ist.
@@ -156,6 +156,8 @@ Anhand dieser Beispielanwendung zeigen wir Ihnen Schritt für Schritt, was für 
 
 ### Initialisieren der Bibliothek
 
+> [AZURE.NOTE] Bevor Sie beginnen, mit den Bibliotheken zu arbeiten, müssen sie möglicherweise plattformspezifische Initialisierungen durchführen. Wenn Sie z.B. planen, AMQPS unter Linux zu verwenden, müssen Sie die OpenSSL-Bibliothek initialisieren. Die Beispiele im [GitHub-Repository](https://github.com/Azure/azure-iot-sdks) rufen die Hilfsfunktion **Platform\_init** auf, wenn der Client beginnt, und die **Platform\_deinit**-Funktion vor dem Beenden. Diese Funktionen sind in der Headerdatei „platform.h“ deklariert. Sie sollten die Definitionen dieser Funktionen für Ihre Zielplattform im [Repository](https://github.com/Azure/azure-iot-sdks) überprüfen, um zu ermitteln, ob Sie einen Plattform-Initialisierungscode in Ihren Client einschließen müssen.
+
 Um mit der Arbeit mit den Bibliotheken zu beginnen, müssen Sie zuerst ein IoT Hub-Clienthandle erstellen:
 
 ```
@@ -230,7 +232,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Beachten Sie, dass Sie die **IoTHubMessage\_GetByteArray**-Funktion zum Abrufen der Nachricht verwenden können. In diesem Beispiel ist dies eine Zeichenfolge.
+Beachten Sie, dass Sie die **IoTHubMessage\_GetByteArray**-Funktion zum Abrufen der Nachricht verwenden können. In diesem Beispiel handelt es sich dabei um eine Zeichenfolge.
 
 ### Aufheben der Initialisierung der Bibliothek
 
@@ -352,7 +354,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-Dieser Code ist dem der Anwendung **iothub\_client\_sample\_amqp** sehr ähnlich. Darin haben wir eine Nachricht aus einem Bytearray erstellt und sie dann mit **IoTHubClient\_SendEventAsync** an IoT Hub gesendet. Danach müssen wir einfach das Nachrichtenhandle und den zuvor zugeordneten serialisierten Datenpuffer freigeben.
+Dieser Code ist dem der Anwendung **iothub\_client\_sample\_amqp** sehr ähnlich. Darin haben wir eine Nachricht aus einem Bytearray erstellt und diese dann mit **IoTHubClient\_SendEventAsync** an IoT Hub gesendet. Danach müssen wir einfach das Nachrichtenhandle und den zuvor zugeordneten serialisierten Datenpuffer freigeben.
 
 Der vorletzte Parameter von **IoTHubClient\_SendEventAsync** ist ein Verweis auf eine Rückruffunktion, die aufgerufen wird, wenn die Daten erfolgreich gesendet wurden. Hier ist ein Beispiel für eine Rückruffunktion angegeben:
 
@@ -367,7 +369,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 }
 ```
 
-Der zweite Parameter ist ein Zeiger auf den Benutzerkontext, also der gleiche Zeiger, den wir an **IoTHubClient\_SendEventAsync** übergeben haben. In diesem Fall ist der Kontext ein einfacher Zähler. Es kann sich aber um jeden beliebigen Kontext handeln.
+Der zweite Parameter ist ein Zeiger auf den Benutzerkontext. Dabei handelt es sich um den gleichen Zeiger, den wir an **IoTHubClient\_SendEventAsync** übergeben haben. In diesem Fall ist der Kontext ein einfacher Zähler. Es kann sich aber um jeden beliebigen Kontext handeln.
 
 So einfach ist das Senden von Ereignissen. Jetzt muss nur noch der Empfang von Nachrichten erläutert werden.
 
@@ -456,6 +458,6 @@ Jede dieser drei Funktionen ist auf die drei zuvor beschriebenen Initialisierung
 
 ## Nächste Schritte
 
-In diesem Artikel wurden die Grundlagen der Arbeit mit Bibliotheken im **Azure IoT-Geräte-SDK für C** beschrieben. Nach dem Lesen dieses Artikels sollten Sie genügend Informationen haben, um zu wissen, was im SDK enthalten ist, und die Architektur zu verstehen. Dank der Windows-Beispiele können Sie direkt mit der Arbeit beginnen. Im nächsten Artikel wird das SDK näher vorgestellt. Sie erhalten [weitere Informationen zur IoTHubClient-Bibliothek](iot-hub-device-sdk-c-iothubclient.md).
+In diesem Artikel wurden die Grundlagen zur Arbeit mit Bibliotheken im **Azure IoT-Geräte-SDK für C** beschrieben. Nach dem Lesen dieses Artikels sollten Sie genügend Informationen haben, um zu wissen, was im SDK enthalten ist, und die Architektur zu verstehen. Dank der Windows-Beispiele können Sie direkt mit der Arbeit beginnen. Im nächsten Artikel wird das SDK näher vorgestellt. Sie erhalten [weitere Informationen zur IoTHubClient-Bibliothek](iot-hub-device-sdk-c-iothubclient.md).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

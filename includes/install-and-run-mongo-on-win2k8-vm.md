@@ -1,18 +1,18 @@
 Diese schrittweise Anleitung erläutert die Installation und Ausführung von MongoDB auf einem virtuellen Computer, der Windows Server ausführt.
 
-> [AZURE.IMPORTANT]MongoDB-Sicherheitsfunktionen wie Authentifizierung und IP-Adressen-Anbindung werden nicht standardmäßig aktiviert. Die Sicherheitsfunktionen sollten aktiviert werden, bevor MongoDB in einer Produktionsumgebung eingesetzt wird. Weitere Informationen finden Sie unter [Sicherheit und Authentifizierung](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> [AZURE.IMPORTANT] MongoDB-Sicherheitsfunktionen wie Authentifizierung und IP-Adressen-Anbindung werden nicht standardmäßig aktiviert. Die Sicherheitsfunktionen sollten aktiviert werden, bevor MongoDB in einer Produktionsumgebung eingesetzt wird. Weitere Informationen finden Sie unter [Sicherheit und Authentifizierung](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
 
 1. Wenn Sie über Remote Desktop eine Verbindung zum virtuellen Computer aufgebaut haben, öffnen Sie im Menü **Start** des virtuellen Computers den Internet Explorer.
 
-2. Klicken Sie in der oberen rechten Ecke auf **Extras**. Öffnen Sie unter **Internetoptionen** die Registerkarte **Sicherheit**, wählen Sie anschließend das Symbol **Vertrauenswürdige Sites**, und klicken Sie anschließend auf die Schaltfläche **Sites**. Fügen Sie der Liste vertrauenswürdiger Websites \__http://*.mongodb.org_ hinzu.
+2. Klicken Sie in der oberen rechten Ecke auf **Extras**. Öffnen Sie unter **Internetoptionen** die Registerkarte **Sicherheit**, wählen Sie anschließend das Symbol **Vertrauenswürdige Sites**, und klicken Sie anschließend auf die Schaltfläche **Sites**. Fügen Sie der Liste vertrauenswürdiger Websites \__https://*.mongodb.org_ hinzu.
 
 3. Gehen Sie zu [Downloads - MongoDB][MongoDownloads].
 
 4. Suchen Sie **Current Stable Release**, wählen Sie in der Spalte "Windows" die neueste **64-Bit**-Version aus, laden Sie das MSI-Installationsprogramm herunter, und installieren Sie es.
 
-5. MongoDB wird normalerweise unter "C:\\Programme\\MongoDB" installiert. Suchen Sie auf dem Desktop nach "Umgebungsvariablen", und fügen Sie der PATH-Variablen den Pfad der MongoDB-Binärdateien hinzu. Die Binärdateien befinden sich beispielsweise auf Ihrem Computer unter "C:\\Programme\\MongoDB\\Server\\3.0\\bin".
+5. MongoDB wird normalerweise unter "C:\\Programme\\MongoDB" installiert. Suchen Sie auf dem Desktop nach "Umgebungsvariablen", und fügen Sie der PATH-Variablen den Pfad der MongoDB-Binärdateien hinzu. Die Binärdateien befinden sich beispielsweise auf Ihrem Computer unter C:\\Programme\\MongoDB\\Server\\3.2\\bin.
 
-6. Erstellen Sie die Daten- und Protokollverzeichnisse für MongoDB auf dem Datenträger (z. B. Laufwerk **F:**), den Sie in den vorherigen Schritten erstellt haben. Wählen Sie unter **Start** die Option **Eingabeaufforderung**, um ein Eingabeaufforderungsfenster zu öffnen. Geben Sie Folgendes ein:
+6. Erstellen Sie die Daten- und Protokollverzeichnisse für MongoDB auf dem Datenträger (z. B. Laufwerk **F:**), den Sie in den vorherigen Schritten erstellt haben. Wählen Sie unter **Start** die Option **Eingabeaufforderung**, um ein Eingabeaufforderungsfenster zu öffnen. Geben Sie Folgendes ein:
 
 		C:\> F:
 		F:> mkdir \MongoData
@@ -23,7 +23,7 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 		F:> C:
 		C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-	Alle Protokollmeldungen werden in die Datei *F:\\MongoLogs\\mongolog.log* geleitet, sobald der Server mongod.exe startet und die Journaldateien reserviert. Es kann einige Minuten dauern, bis MongoDB die Journaldateien reserviert hat und mit dem Lauschen auf Verbindungen beginnt.
+	Alle Protokollmeldungen werden in die Datei *F:\\MongoLogs\\mongolog.log* geleitet, sobald der Server mongod.exe startet und die Journaldateien reserviert. Es kann einige Minuten dauern, bis MongoDB die Journaldateien reserviert hat und mit dem Lauschen auf Verbindungen beginnt. Die Eingabeaufforderung wird sich auf diese Aufgabe konzentrieren, während die MongoDB-Instanz ausgeführt wird.
 
 8. Starten Sie die MongoDB-Administrator-Shell, indem Sie unter **Start** ein weiteres Befehlsfenster öffnen und Folgendes eingeben:
 
@@ -44,15 +44,15 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 
 9. Alternativ können Sie "mongod.exe" als Dienst installieren:
 
-		C:\mongodb\bin>mongod --logpath F:\MongoLogs\mongolog.log --logappend --dbpath F:\MongoData\ --install
+		C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
 
 	Dadurch wird der Dienst "Mongo DB" mit der Beschreibung "Mongo DB" erstellt. Zur Festlegung einer Protokolldatei muss die Option **--logpath** verwendet werden, da der laufende Dienst kein Befehlsfenster zur Anzeige der Ausgabe hat. Die Option **--logappend** legt fest, dass ein Neustart des Diensts eine Ausgabe generiert, die an die vorhandene Protokolldatei angehängt wird. Die Option **--dbpath** gibt den Ort des Datenverzeichnisses an. Weitere dienstbezogene Befehlszeilenoptionen finden Sie unter [Service-related command line options][MongoWindowsSvcOptions] (Dienstbezogene Befehlszeilenoptionen, in englischer Sprache).
 
 	Führen Sie zum Starten des Diensts den folgenden Befehl aus:
 
-		C:\mongodb\bin>net start MongoDB
+		C:\> net start MongoDB
 
-10. Nach der Installation und Ausführung von MongoDB müssen Sie einen Port in Windows Firewall öffnen, um eine Remote-Verbindung mit MongoDB herzustellen. Wählen Sie im Menü **Start** die Option **Administratortools** und anschließend **Windows-Firewall mit erweiterter Sicherheit**.
+10. Nach der Installation und Ausführung von MongoDB müssen Sie einen Port in Windows Firewall öffnen, um eine Remote-Verbindung mit MongoDB herzustellen. Wählen Sie im **Start**-Menü **Verwaltungstools** und dann **Windows-Firewall mit erweiterter Sicherheit**.
 
 11. Klicken Sie im linken Bereich auf **Eingehende Regeln**. Wählen Sie rechts im Bereich **Aktionen** die Option **Neue Regel...**.
 
@@ -74,7 +74,7 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 
 	![Windows-Firewall][Image5]
 
-	Geben Sie einen Namen für die Regel an, z. B. "MongoPort", und klicken Sie auf **Fertig stellen**.
+	Geben Sie einen Namen für die Regel an, z. B. "MongoPort", und klicken Sie auf **Fertig stellen**.
 
 	![Windows-Firewall][Image6]
 
@@ -90,7 +90,7 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 
 	![Endpunkte][Image9]
 
-> [AZURE.NOTE]Port 27017 wird in MongoDB als Standardport verwendet. Dies können Sie beim Starten des Servers "mongod.exe" mit dem Unterbefehl _--port_ ändern. Achten Sie darauf, dass Sie in der Firewall die gleiche Portnummer sowie den "Mongo"-Endpunkt entsprechend den Anweisungen oben angeben.
+> [AZURE.NOTE] Port 27017 wird in MongoDB als Standardport verwendet. Dies können Sie beim Starten des Servers „mongod.exe“ mit dem Parameter _--port_ ändern. Achten Sie darauf, dass Sie in der Firewall die gleiche Portnummer sowie den "Mongo"-Endpunkt entsprechend den Anweisungen oben angeben.
 
 
 [MongoDownloads]: http://www.mongodb.org/downloads
@@ -108,4 +108,4 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0330_2016-->

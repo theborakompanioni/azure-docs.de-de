@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/19/2016"
+    ms.date="03/28/2016"
     ms.author="prkhad"/>
 
 
@@ -45,7 +45,7 @@ Befolgen Sie je nach Szenario die im entsprechenden Abschnitt angegebenen Schrit
 ### Voraussetzungen
 - Sie benötigen ein Azure-Abonnement. Wenn Sie kein Abonnement besitzen, können Sie für einen Monat eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) abonnieren, oder Sie besuchen die Seite mit den [Azure-Preisen](https://azure.microsoft.com/pricing/) für weitere Optionen.
 - Zum Ausführen von PowerShell-Cmdlets benötigen Sie das Microsoft Azure PowerShell-Modul. Informationen zum Herunterladen dieses Moduls finden Sie unter [Microsoft Azure-Downloads](https://azure.microsoft.com/downloads/).
-- Wenn Sie Azure-VMs unter Storage Premium nutzen möchten, müssen Sie VMs der DS-Serie oder GS-Serie verwenden. Mit VMs der DS-Serie können Sie Standard- und Premium-Speicherdatenträger verwenden. Premium-Datenträger werden zukünftig mit mehreren VM-Typen verfügbar sein. Weitere Informationen zu den verfügbaren Typen und Größen von Azure-VM-Datenträgern finden Sie unter [Größen virtueller Computer](../virtual-machines/virtual-machines-windows-sizes.md) und [Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md).
+- Wenn Sie Azure-VMs unter Storage Premium nutzen möchten, müssen Sie VMs der Serien DS, DSv2 oder GS verwenden. Mit VMs der Serien DS, DSv2 und GS können Sie Storage Standard- und Storage Premium-Datenträger verwenden. Premium-Datenträger werden zukünftig mit mehreren VM-Typen verfügbar sein. Weitere Informationen zu den verfügbaren Typen und Größen von Azure-VM-Datenträgern finden Sie unter [Größen virtueller Computer](../virtual-machines/virtual-machines-windows-sizes.md) und [Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md).
 
 ### Überlegungen
 
@@ -146,7 +146,7 @@ Nun da die virtuelle Festplatte vorbereitet ist, können Sie die Schritte unten 
 Erstellen Sie ein Speicherkonto für die Verwaltung Ihrer virtuellen Festplatten. Berücksichtigen Sie die folgenden Punkte beim Planen des Speicherorts der virtuellen Festplatten:
 
 - Der Speicherort des Zielspeicherkontos kann sich je nach Anwendungsanforderungen in einem Standard- oder Premium-Speicher befinden.
-- Der Speicherort für das Speicherkonto muss mit den Azure-VMs der DS-Serie oder GS-Serie übereinstimmen, die Sie in der letzten Phase erstellen. Sie können je nach Anforderungen in ein neues Speicherkonto kopieren oder die Verwendung desselben Speicherkontos planen.
+- Der Speicherort für das Speicherkonto muss mit dem der Azure-VMs der DS-, DSv2- oder GS-Serie übereinstimmen, die Sie in der letzten Phase erstellen. Sie können je nach Anforderungen in ein neues Speicherkonto kopieren oder die Verwendung desselben Speicherkontos planen.
 - Kopieren und speichern Sie den Speicherkontenschlüssel des Zielspeicherkontos für die nächste Phase.
 - Für Datenträger können Sie auswählen, dass einige in einem Standardspeicherkonto verbleiben (z. B. Festplatten mit Daten, auf die weniger zugegriffen wird) und andere mit hohem IOPS-Wert in einem Premium-Speicherkonto gespeichert werden.
 
@@ -243,7 +243,7 @@ Kopieren und speichern Sie den Namen des neuen Azure-Betriebssystemdatenträger.
 
 #### Neuen Azure-VM-Instanzen zuzuordnende Datenträger-VHD
 
-Nachdem die Datenträger-VHD in das Speicherkonto hochgeladen wurde, registrieren Sie sie als Azure-Datenträger, sodass sie an die neue Azure-VM-Instanz der DS-Serie oder GS-Serie angefügt werden kann.
+Nachdem die Datenträger-VHD in das Speicherkonto hochgeladen wurde, registrieren Sie sie als Azure-Datenträger, sodass sie an die neue Azure-VM-Instanz der DS-, DSv2- oder GS-Serie angefügt werden kann.
 
 Verwenden Sie die folgenden PowerShell-Cmdlets, um die virtuelle Festplatte als Azure-Datenträger zu registrieren. Geben Sie die vollständige Container-URL an, an die die virtuelle Festplatte kopiert wurde.
 
@@ -251,9 +251,9 @@ Verwenden Sie die folgenden PowerShell-Cmdlets, um die virtuelle Festplatte als 
 
 Kopieren und speichern Sie den Namen des neuen Azure-Datenträgers. In dem Beispiel oben ist dies *DataDisk*.
 
-### Erstellen Sie einen neuen virtuellen Computer der DS- oder GS-Serie.
+### Erstellen eines virtuellen Azure-Computers der DS-, DSv2- oder GS-Serie
 
-Nachdem das Betriebssystemimage oder der Betriebssystemdatenträger registriert wurde, können Sie einen neuen virtuellen Computer der DS- oder GS-Serie erstellen. Sie verwenden dazu den Namen des Betriebssystemimages oder Betriebssystemdatenträgers, den Sie registriert haben. Wählen Sie den virtuellen Computer aus der Premium-Speicherebene aus. Im folgenden Beispiel wird die VM-Größe *Standard\_DS2* verwendet.
+Nachdem das Betriebssystemimage oder der Betriebssystemdatenträger registriert wurde, können Sie einen neuen virtuellen Computer der DS-, DSv2- oder GS-Serie erstellen. Sie verwenden dazu den Namen des Betriebssystemimages oder Betriebssystemdatenträgers, den Sie registriert haben. Wählen Sie den virtuellen Computer aus der Premium-Speicherebene aus. Im folgenden Beispiel wird die VM-Größe *Standard\_DS2* verwendet.
 
 >[AZURE.NOTE] Aktualisieren Sie die Größe des Datenträgers, um sicherzustellen, dass er Ihren Anforderungen an Kapazität und Leistung sowie den Azure-Datenträgergrößen entspricht.
 
@@ -299,7 +299,7 @@ Geben Sie andere Azure-VM-Informationen an, z. B. Clouddienst, Region, Speicherk
 
 ### Datenträger anfügen
 
-Wenn Sie Datenträger-VHDs registriert haben, fügen Sie sie im letzten Schritt an die neue Azure-VM der DS-Serie oder GS-Serie an.
+Wenn Sie Datenträger-VHDs registriert haben, fügen Sie sie im letzten Schritt an den neuen virtuellen Azure-Computer der DS-, DSv2- oder GS-Serie an.
 
 Verwenden Sie das folgende PowerShell-Cmdlet, um Datenträger an den neuen virtuellen Computer anzufügen, und geben Sie die Zwischenspeicherungsrichtlinie an. Im Beispiel unten wird die Zwischenspeicherungsrichtlinie als schreibgeschützt (*ReadOnly*) festgelegt.
 
@@ -315,7 +315,7 @@ Verwenden Sie das folgende PowerShell-Cmdlet, um Datenträger an den neuen virtu
 
 Wenn Sie derzeit über einen virtuellen Azure-Computer mit Standarddatenträger verfügen, befolgen Sie das nachfolgend beschriebene Verfahren für die Migration zu Storage Premium. Im Allgemeinen umfasst die Migration zwei Phasen:
 -	Migrieren der Datenträger von einem Standardspeicherkonto zu einem Storage Premium-Konto
--	Konvertieren der Größe des virtuellen Computers von A/D/G in DS oder GS für die Verwendung von Storage Premium-Datenträgern
+-	Konvertieren der Größe des virtuellen Computers von A/D/G in DS, DSv2 oder GS für die Verwendung von Storage Premium-Datenträgern
 
 Im vorherigen Abschnitt unter "Überlegungen" finden Sie darüber hinaus Informationen über verschiedene Optimierungen, die Sie für Storage Premium durchführen können. Abhängig von der Optimierungen, die für Ihre Anwendungen verfügbar sind, kann der Migrationsvorgang einem der unten aufgeführten Migrationsszenarien zugeordnet werden.
 
@@ -324,7 +324,7 @@ In diesem einfachen Szenario versuchen Sie, Ihre Konfiguration beim Migrieren vo
 
 #### Vorbereitung
 1. Stellen Sie sicher, dass Storage Premium in der Region verfügbar ist, in die migriert werden soll.
-2. Bestimmen Sie die neue VM-Serie, die Sie verwenden möchten. Abhängig von der Verfügbarkeit in der Region und Ihren Bedürfnissen entsprechend sollte es sich dabei um die DS- oder GS-Serie handeln.
+2. Bestimmen Sie die neue VM-Serie, die Sie verwenden möchten. Abhängig von der Verfügbarkeit in der Region und Ihren Bedürfnissen sollte es sich dabei um eine der Serien DS, DSv2 oder GS handeln.
 3. Bestimmen Sie die genaue VM-Größe, die Sie verwenden möchten. Die VM-Größe muss groß genug sein, um die Anzahl der vorhandenen Datenträger zu unterstützen. Wenn Sie z. B. über 4 Datenträger verfügen, muss der virtuelle Computer 2 oder mehr Kerne haben. Berücksichtigen Sie auch die Anforderungen hinsichtlich Verarbeitungsleistung, Arbeitsspeicher und Netzwerkbandbreite.
 4. Erstellen Sie ein Storage Premium-Konto in der Zielregion. Dies ist das Konto, das Sie für den neuen virtuellen Computer verwenden werden.
 5. Halten Sie die Details zum aktuellen virtuellen Computer bereit, einschließlich der Liste der Datenträger und die zugehörigen VHD-Blobs.
@@ -341,7 +341,7 @@ In diesem einfachen Szenario versuchen Sie, Ihre Konfiguration beim Migrieren vo
 4.	Erstellen Sie einen neuen Betriebssystemdatenträger mithilfe des Betriebssystemdatenträger-VHD-Blobs, den Sie in das Storage Premium-Konto kopiert haben. Verwenden Sie dazu das PowerShell-Cmdlet "Add-AzureDisk".
 
     Beispielskript: Add-AzureDisk -DiskName "NewOSDisk1" -MediaLocation "https://newpremiumstorageaccount.blob.core.windows.net/vhds/MyOSDisk.vhd" -OS "Windows"
-5. Als Nächstes erstellen Sie den virtuellen Computer der DS-Serie (oder GS-Serie) mithilfe des oben genannten Betriebssystemdatenträgers und der Datenträger.
+5. Als Nächstes erstellen Sie den virtuellen Computer der DS-Serie (bzw. der DSv2- oder GS-Serie) mithilfe des oben genannten Betriebssystemdatenträgers und der Datenträger für die Daten.
 
     Beispielskript zum Erstellen eines neuen Clouddiensts und eines neuen virtuellen Computers in diesem Dienst: New-AzureService -ServiceName "NewServiceName" -Location "East US2"
 
@@ -680,4 +680,4 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Sstorage und A
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

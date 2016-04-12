@@ -20,7 +20,7 @@
 # C&#x23;-Datenbankentwicklung: Erstellen und Konfigurieren eines Pools für elastische Datenbanken für SQL-Datenbank
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-elastic-pool-portal.md)
+- [Azure-Portal](sql-database-elastic-pool-create-portal.md)
 - [C#](sql-database-elastic-pool-csharp.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
@@ -576,4 +576,4 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

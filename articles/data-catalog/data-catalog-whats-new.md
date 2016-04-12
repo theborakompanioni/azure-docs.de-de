@@ -1,6 +1,6 @@
 <properties
    pageTitle="Neuigkeiten in Azure Data Catalog | Microsoft Azure"
-   description="Übersicht über neue Funktionen in der Azure Data Catalog-Vorschauversion."
+   description="Übersicht über neue Funktionen, die zu Azure Data Catalog hinzugefügt wurden."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/14/2016"
+   ms.date="03/30/2016"
    ms.author="maroche"/>
 
 # Neuigkeiten in Azure Data Catalog
@@ -216,4 +216,4 @@ Ab der Woche beginnend am 21. August 2015 wurden **Azure Data Catalog** die folg
 - Nur Standard Edition: Beim Hinzufügen von Besitzern zu Datenbeständen unterstützt **Azure Data Catalog** jetzt sowohl Benutzerkonten als auch Sicherheitsgruppen als Besitzer. Um eine Sicherheitsgruppe als Besitzer für ausgewählte Datenasset hinzuzufügen, können Sie entweder den Anzeigenamen der Gruppe oder die UPN-E-Mail-Adresse der Gruppe (sofern vorhanden) eingeben.
 - Unterstützung für Datenquellen in Azure Blob Storage. Benutzer können nun Azure Storage-Blobs und -Verzeichnisse registrieren und ermitteln.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

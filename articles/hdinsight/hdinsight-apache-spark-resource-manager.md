@@ -27,11 +27,11 @@ Spark in Azure HDInsight (Linux) bietet die Ambari-Webbenutzeroberfläche zum Ve
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
-- Einen Apache Spark-Cluster unter HDInsight (Linux). Anweisungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+- Einen Apache Spark-Cluster unter HDInsight (Linux). Anweisungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## Wie wird die Ambari-Webbenutzeroberfläche gestartet?
 
-1. Klicken Sie im [Azure-Vorschauportal](https://ms.portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren. 
+1. Klicken Sie im [Azure-Portal](https://ms.portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren. 
  
 2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Dashboard**. Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein.
 
@@ -43,7 +43,7 @@ Sie benötigen Folgendes:
 
 ## Wie starte ich den Spark-Verlaufsserver?
 
-1. Klicken Sie im [Azure-Vorschauportal](https://ms.portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben).
+1. Klicken Sie im [Azure-Portal](https://ms.portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben).
 
 2. Klicken Sie auf dem Clusterblatt unter **Quicklinks** auf **Clusterdashboard**. Klicken Sie auf dem Blatt **Clusterdashboard** auf **Spark-Verlaufsserver**.
 
@@ -138,4 +138,4 @@ Hier finden Sie einige gängige Szenarien, die bei Ihrem Spark Cluster ggf. auft
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

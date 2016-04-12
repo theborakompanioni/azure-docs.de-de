@@ -6,14 +6,14 @@ Seit der Einführung der benutzerdefinierten Skripterweiterung wird diese häufi
 
 Eine Azure-Ressourcen-Manager-Vorlage ermöglicht es Ihnen, deklarativ die Azure IaaS-Infrastruktur in der Json-Sprache anzugeben, indem Sie die Abhängigkeiten zwischen Ressourcen definieren. Eine ausführliche Übersicht über Azure-Ressourcen-Manager-Vorlagen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über Ressourcengruppen](../resource-group-overview.md)
-- [Bereitstellen von Vorlagen mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-cli-manage.md)
-- [Bereitstellen von Vorlagen mit Azure PowerShell](virtual-machines-windows-ps-manage.md)
+- [Übersicht über Ressourcengruppen](../articles/resource-group-overview.md)
+- [Bereitstellen von Vorlagen mit der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-manage.md)
+- [Bereitstellen von Vorlagen mit Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-ps-manage.md)
 
 ### Voraussetzungen
 
 1. Laden Sie die Azure-Befehlszeilentools für Ihr Betriebssystem [hier](https://azure.microsoft.com/downloads/) herunter.
-2. Wenn die Skripts auf einem vorhandenen virtuellen Computer ausgeführt werden, stellen Sie sicher, dass der VM-Agent auf dem virtuellen Computer aktiviert ist. Führen Sie ansonsten die Schritte im Leitfaden [Linux](virtual-machines-linux-classic-manage extensions.md) oder [Windows](virtual-machines-windows-classic-manage extensions.md) aus, um einen zu installieren.
+2. Wenn die Skripts auf einem vorhandenen virtuellen Computer ausgeführt werden, stellen Sie sicher, dass der VM-Agent auf dem virtuellen Computer aktiviert ist. Führen Sie ansonsten die Schritte im Leitfaden für [Linux](.../articles/virtual-machines/virtual-machines-linux-classic-manage extensions.md) oder [Windows](.../articles/virtual-machines/virtual-machines-windows-classic-manage extensions.md) aus, um einen zu installieren.
 3. Laden Sie die Skripts, die Sie auf der VM ausführen möchten, nach Azure Storage hoch. Die Skripts können aus einem einzelnen oder mehreren Speichercontainern stammen.
 4. Alternativ können die Skripts in ein GitHub-Konto hochgeladen werden.
 5. Das Skript sollte so geschrieben sein, dass das Eingangsskript, das durch die Erweiterung gestartet wird, weitere Skripts startet.
@@ -22,4 +22,4 @@ Eine Azure-Ressourcen-Manager-Vorlage ermöglicht es Ihnen, deklarativ die Azure
 
 Zum Bereitstellen mit Vorlagen wird genau die Version der CustomScript-Erweiterung verwendet, die für Azure-Service-Verwaltungs-APIs verfügbar ist. Die Erweiterung unterstützt dieselben Parameter und Szenarios, etwa Hochladen von Dateien in ein Azure Storage-Konto oder in einen Github-Speicherort. Der wesentliche Unterschied bei einer Verwendung von Vorlagen besteht darin, dass die genaue Version der Erweiterung angegeben werden muss im Gegensatz zur Angabe der Version im Format Hauptversion.*.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

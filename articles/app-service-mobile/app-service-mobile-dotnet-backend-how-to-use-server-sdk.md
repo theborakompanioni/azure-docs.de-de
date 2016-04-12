@@ -283,7 +283,7 @@ Sie können den Clientcode auch vereinfachen, um die `loginAsync()`-Methode (die
 
 		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" });
 
-Ersetzen Sie die Zeichenfolge „CustomAuth“ oben durch den Namen des Controller, der Ihre Anmeldeaktion hostet.
+Ersetzen Sie die Zeichenfolge „CustomAuth“ oben durch den Namen des Controllers, der Ihre Anmeldeaktion hostet.
 
 >[AZURE.TIP] Mit dem loginAsync()-Ansatz wird sichergestellt, dass das Authentifizierungstoken jedem nachfolgenden Aufruf des Diensts angefügt wird.
 
@@ -462,4 +462,4 @@ Ihr lokal ausgeführter Server kann nun Token überprüfen, die der Client vom c
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

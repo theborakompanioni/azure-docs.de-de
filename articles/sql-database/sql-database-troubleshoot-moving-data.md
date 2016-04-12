@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="03/28/2016"
 	ms.author="v-shysun"/>
 
 # Verschieben von Datenbanken zwischen Servern und Abonnements sowie in und aus Azure
@@ -23,10 +23,10 @@
 ## So verschieben Sie eine Datenbank zwischen Abonnements
 - Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Server**, und wählen Sie in der Liste den Server aus, der die Datenbank hostet. Klicken Sie auf **Verschieben**, und wählen Sie die zu verschiebenden Ressourcen und das Abonnement aus, in das dieser Vorgang erfolgen soll.
 
-## So migrieren Sie eine SQL-­Datenbank in Azure
-- Bestimmen Sie die Datenbankkompatibilität, und wählen Sie dann basierend auf Ihren Anforderungen die geeignete Migrationsmethode. Befolgen Sie die Anleitungen und Optionen im Thema „Migrieren einer SQL Server-Datenbank“.
+## So migrieren Sie eine SQL-Datenbank in Azure
+- Bestimmen Sie die Datenbankkompatibilität, und wählen Sie dann basierend auf Ihren Anforderungen die geeignete Migrationsmethode. Befolgen Sie die Anleitungen und Optionen unter [Migrieren einer SQL Server-Datenbank](../virtual-machines/virtual-machines-windows-classic-migrate-sql.md).
 
 ## So erstellen Sie eine Kopie einer Datenbank zur Verwendung außerhalb von Azure
 - [Exportieren Sie eine BACPAC-Datei.](sql-database-export.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

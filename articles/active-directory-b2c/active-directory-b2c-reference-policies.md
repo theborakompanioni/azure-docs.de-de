@@ -72,7 +72,7 @@ Für die Registrierung bei Ihrer Anwendung müssen Sie eine Registrierungsrichtl
 2. Klicken Sie auf **Registrierungsrichtlinien**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Der **Name** bestimmt den Namen der Registrierungsrichtlinie, die von der Anwendung verwendet wird. Geben Sie beispielsweise "SiUp" ein.
-5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie "E-Mail-Adresse" aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie „E-Mail-Registrierung“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
 6. Klicken Sie auf **Registrierungsattribute**. Hier wählen Sie die Attribute aus, die der Kunde bei der Registrierung angeben soll. Wählen Sie z. B. "Land/Region", "Anzeigename" und "Postleitzahl" aus. Klicken Sie auf **OK**.
 7. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Registrierung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename", "Identitätsanbieter", "Postleitzahl", "Benutzer ist neu" und "Objekt-ID des Benutzers" aus.
 8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SiUp** (das **B2C\_1\_**-Fragment wird automatisch hinzugefügt) auf dem Blatt **Registrierungsrichtlinien** angezeigt wird.
@@ -91,12 +91,31 @@ Für die Anmeldung bei Ihrer Anwendung müssen Sie eine Anmelderichtlinie erstel
 2. Klicken Sie auf **Anmelderichtlinien**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Der **Name** bestimmt den Namen der Anmelderichtlinie, die von der Anwendung verwendet wird. Geben Sie beispielsweise "SiIn" ein.
-5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie "E-Mail-Adresse" aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie „Anmeldung für lokales Konto“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
 6. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Anmeldung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename", "Identitätsanbieter", "Postleitzahl" und "Objekt-ID des Benutzers" aus. Klicken Sie auf **OK**.
 7. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SiIn** (das **B2C\_1\_**-Fragment wird automatisch hinzugefügt) auf dem Blatt **Anmelderichtlinien** angezeigt wird.
 8. Öffnen Sie die Richtlinie, indem Sie auf **B2C\_1\_SiIn** klicken.
 9. Wählen Sie "Contoso B2C-App" in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
 10. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Anmeldung bei Ihrer Anwendung durchgehen.
+
+    > [AZURE.NOTE]
+    Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
+
+## Erstellen einer Registrierungs- oder Anmelderichtlinie
+
+Mit dieser Richtlinie werden die Registrierung und Anmeldung von Kunden in ein und derselben Konfiguration verarbeitet. Die Kunden werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet (Registrierung oder Anmeldung). Außerdem wird mit der Richtlinie der Inhalt von Token beschrieben, die die Anwendung nach erfolgreichen Registrierungen oder Abmeldungen erhält.
+
+1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**.
+3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
+4. Der **Name** bestimmt den Namen der Registrierungsrichtlinie, die von der Anwendung verwendet wird. Geben Sie z.B. „SiUpIn“ ein.
+5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie „E-Mail-Registrierung“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
+6. Klicken Sie auf **Registrierungsattribute**. Hier wählen Sie die Attribute aus, die der Kunde bei der Registrierung angeben soll. Wählen Sie z. B. "Land/Region", "Anzeigename" und "Postleitzahl" aus. Klicken Sie auf **OK**.
+7. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Registrierung oder Anmeldung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename", "Identitätsanbieter", "Postleitzahl", "Benutzer ist neu" und "Objekt-ID des Benutzers" aus.
+8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SiUpIn** (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Registrierungs- oder Anmelderichtlinien** angezeigt wird.
+9. Öffnen Sie die Richtlinie, indem Sie auf **B2C\_1\_SiUpIn** klicken.
+10. Wählen Sie "Contoso B2C-App" in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
+11. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können entsprechend der Konfiguration die Benutzeroberfläche für die Registrierung oder Anmeldung von Kunden durchgehen.
 
     > [AZURE.NOTE]
     Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
@@ -112,7 +131,7 @@ Um die Profilbearbeitung in Ihrer Anwendung zu ermöglichen, müssen Sie eine Ri
 5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie "E-Mail-Adresse" aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
 6. Klicken Sie auf **Profilattribute**. Hier wählen Sie Attribute aus, die der Kunde anzeigen und bearbeiten kann. Wählen Sie z. B. „Land/Region“, „Anzeigename“ und „Postleitzahl“ aus. Klicken Sie auf **OK**.
 7. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den zurückgegebenen Token nach einer erfolgreichen Profilbearbeitung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename" und "Postleitzahl" aus.
-8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SiPe** (das **B2C\_1\_**-Fragment wird automatisch hinzugefügt) auf dem Blatt **Richtlinien für die Profilbearbeitung** angezeigt wird.
+8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SiPe** (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Richtlinien für die Profilbearbeitung** angezeigt wird.
 9. Öffnen Sie die Richtlinie, indem Sie auf **B2C\_1\_SiPe** klicken.
 10. Wählen Sie "Contoso B2C-App" in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
 11. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Profilbearbeitung in Ihrer Anwendung durchgehen.
@@ -130,7 +149,7 @@ Um eine differenzierte Kennwortrücksetzung in Ihrer Anwendung zu aktivieren, m�
 4. Mit **Name** geben Sie den Namen der Richtlinie zur Kennwortrücksetzung ein, die von der Anwendung verwendet wird. Geben Sie z. B. „SSPR“ ein.
 5. Klicken Sie auf **Identitätsanbieter**, und wählen Sie „Kennwort mittels E-Mail-Adresse zurücksetzen“ aus. Klicken Sie auf **OK**.
 6. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den zurückgegebenen Token nach einer erfolgreichen Kennwortrücksetzung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. „Objekt-ID des Benutzers“.
-7. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SSPR** (das **B2C\_1\_**-Fragment wird automatisch hinzugefügt) auf dem Blatt **Richtlinien für die Kennwortrücksetzung** angezeigt wird.
+7. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als **B2C\_1\_SSPR** (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Richtlinien für die Kennwortrücksetzung** angezeigt wird.
 8. Öffnen Sie die Richtlinie, indem Sie auf **B2C\_1\_SSPR** klicken.
 9. Wählen Sie "Contoso B2C-App" in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
 10. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Kennwortrücksetzung in Ihrer Anwendung durchgehen.
@@ -142,4 +161,4 @@ Um eine differenzierte Kennwortrücksetzung in Ihrer Anwendung zu aktivieren, m�
 
 - [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

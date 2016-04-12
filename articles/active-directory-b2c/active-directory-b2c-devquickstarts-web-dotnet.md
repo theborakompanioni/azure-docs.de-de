@@ -33,7 +33,7 @@ Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen
 Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch werden Azure AD die Informationen bereitgestellt, die für die sichere Kommunikation mit Ihrer App erforderlich sind. Befolgen Sie zum Erstellen einer App [diese Anweisungen](active-directory-b2c-app-registration.md). Führen Sie folgende Schritte aus:
 
 - Fügen Sie der Anwendung eine **Web-App/Web-API** hinzu.
-- Geben Sie `https://localhost:44316/` als **Antwort-URL** ein. Dies ist die Standard-URL für dieses Codebeispiel.
+- Geben Sie `https://localhost:44316/` als **Umleitungs-URI** ein. Dies ist die Standard-URL für dieses Codebeispiel.
 - Notieren Sie sich die **Anwendungs-ID**, die Ihrer App zugewiesen ist. Sie benötigen sie später.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -341,4 +341,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

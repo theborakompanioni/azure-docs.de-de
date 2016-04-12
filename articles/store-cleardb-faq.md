@@ -81,6 +81,10 @@ Wählen Sie für Web-Apps mindestens den Tarif Basic. Für ClearDB empfehlen wir
 
 Nutzen Sie hierfür den [ClearDB-Upgrade-Assistenten](https://www.cleardb.com/store/azure/upgrade). Derzeit bieten wir im Azure-Portal keine Upgrademöglichkeit.
 
+## Warum ist meine ClearDB-Datenbank im Azure-Portal nicht sichtbar?
+
+Wenn die ClearDB-Datenbank mithilfe von Azure Resource Manager oder über das [neue Azure-Portal](https://portal.azure.com) erstellt wird, ist sie im [alten Azure-Portal](https://manage.windowsazure.com) nicht sichtbar. Dies können Sie umgehen, indem Sie die Datenbank manuell mit der Web-App verknüpfen. Wenn Sie die ClearDB-Datenbank im [alten Portal](https://manage.windowsazure.com) erstellen, können Sie sie im [neuen Azure-Portal](https://portal.azure.com) auch nicht sehen. Hierfür ist jedoch keine Problemumgehung möglich.
+
 ## Wen bitte ich um Unterstützung, wenn meine Datenbank ausfällt?
 
 Wenden Sie sich bei sämtlichen Datenbankproblemen an den [ClearDB-Support](https://www.cleardb.com/developers/help/support). Stellen Sie bei Aufforderung Ihre Azure-Abonnementdaten bereit.
@@ -89,13 +93,17 @@ Wenden Sie sich bei sämtlichen Datenbankproblemen an den [ClearDB-Support](http
 
 Nein. Zusätzliche Benutzer können nicht erstellt werden. Sie können jedoch zusätzliche Datenbanken in Ihrem ClearDB-Datenbankcluster erstellen.
 
+## Können Datenbanken der Basic- oder Pro-Serie direkt im ClearDB-Portal aktualisiert werden, ähnlich wie es mit Planetary-Plänen bereits möglich ist?
+
+Ja, Datenbanken der Basic-Serie können direkt aktualisiert werden (Basic 60 bis Basic 500). Datenbanken der Pro-Serie können mit Ausnahme von Pro 60 direkt aktualisiert werden (Pro 125 bis Pro 1000). Ein Upgrade von Pro 60-Datenbanken wird derzeit nicht unterstützt.
+
 ## Wird meine ClearDB MySQL-Datenbank ebenfalls migriert, wenn ich meine Ressourcen von einem Abonnement zu einem anderen migriere?  
 
-Bei der Ressourcenmigration zwischen Abonnements gelten einige [Einschränkungen](app-service-move-resources.md). Eine ClearDB MySQL-Datenbank ist ein Drittanbieterdienst und wird daher nicht migriert, wenn Sie eine Migration zwischen Azure-Abonnements durchführen. Ihre ClearDB MySQL-Datenbank wird möglicherweise deaktiviert, wenn Sie die Migration der MySQL-Datenbank nicht vor der Migration der Azure-Ressourcen planen und durchführen. Migrieren Sie zunächst manuell Ihre Datenbanken, und führen Sie dann die Azure-Abonnementmigration für Ihre Web-App durch.
+Bei der Ressourcenmigration zwischen Abonnements gelten einige [Einschränkungen](./app-service-web/app-service-move-resources.md). Eine ClearDB MySQL-Datenbank ist ein Drittanbieterdienst und wird daher nicht migriert, wenn Sie eine Migration zwischen Azure-Abonnements durchführen. Ihre ClearDB MySQL-Datenbank wird möglicherweise deaktiviert, wenn Sie die Migration der MySQL-Datenbank nicht vor der Migration der Azure-Ressourcen planen und durchführen. Migrieren Sie zunächst manuell Ihre Datenbanken, und führen Sie dann die Azure-Abonnementmigration für Ihre Web-App durch.
 
 ## Kann ich Scalable WordPress mit einem EA-Abonnement (Enterprise Agreement) erwerben?
 
-Der Prozess ist bei allen Abonnements gleich. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zum Azure Marketplace, und wählen Sie [Scalable WordPress](https://portal.azure.com/?feature.customportal=false#create/WordPress.ScalableWordPress) aus, um mit dem Erstellen der App zu beginnen. Scalable WordPress unterstützt nur die ClearDB-Tarife „Saturn“ und „Jupiter“. Ihr EA-Guthaben wird sowohl für Ihre Webanwendung, die im Web-Apps-Tarif „Standard“ ausgeführt wird, als auch für die kostenpflichtige (freigegebene) ClearDB MySQL-Datenbank in Anspruch genommen.[/marketplace/faq/](/marketplace/faq/) Ihre gesamten Einkäufe im Store werden einmal pro Quartal in einer separaten Rechnung zusammengefasst und über Ihr EA abgerechnet.
+Der Prozess ist bei allen Abonnements gleich. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zum Azure Marketplace, und wählen Sie [Scalable WordPress](https://portal.azure.com/?feature.customportal=false#create/WordPress.ScalableWordPress) aus, um mit dem Erstellen der App zu beginnen. Scalable WordPress unterstützt nur die ClearDB-Tarife „Saturn“ und „Jupiter“. Ihr EA-Guthaben wird sowohl für Ihre Webanwendung, die im Web-Apps-Tarif „Standard“ ausgeführt wird, als auch für die kostenpflichtige (freigegebene) ClearDB MySQL-Datenbank in Anspruch genommen. [/marketplace/faq/](/marketplace/faq/). Ihre gesamten Einkäufe im Store werden einmal pro Quartal in einer separaten Rechnung zusammengefasst und über Ihr EA abgerechnet.
 
 ## Kann ich eine ClearDB-Datenbank aus einem kreditkartengestützten Abonnement in ein EA-Abonnement übertragen?
 
@@ -120,8 +128,12 @@ Der Zugriff auf Azure Marketplace für Dienste von Drittanbietern kann von Ihren
 
 Wenden Sie sich an den [Support für EA-Kunden](http://aka.ms/AzureEntSupport), wenn Sie Fragen zur Abrechnung über Ihre EA-Registrierung haben. Der Supportteam des EA-Portals beantwortet Ihre Fragen und hilft beim Lösen Ihres Problems.
 
+ 
+
+
+
 ## Weitere Informationen
 
 [Azure Marketplace – häufig gestellte Fragen](/marketplace/faq/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

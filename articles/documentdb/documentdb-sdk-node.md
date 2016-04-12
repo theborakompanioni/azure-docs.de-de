@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="03/08/2016" 
+	ms.date="03/30/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -36,6 +36,10 @@
 </table></br>
 
 ##Versionshinweise
+
+###<a name="1.6.0"/>1.6.0</a>
+- Implementierte [partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) 
+
 ###<a name="1.5.6"/>1.5.6</a>
 
 - Fehler in „RangePartitionResolver.resolveForRead“ behoben, durch den aufgrund einer ungültigen Verkettung der Ergebnisse keine Links zurückgegeben wurden.
@@ -46,19 +50,19 @@
 
 ###<a name="1.5.4"/>1.5.4</a>
 
-- Problem [Nr. 100](https://github.com/Azure/azure-documentdb-node/issues/100) behoben – Dedizierter HTTPS-Agent: Vermeiden Sie das Ändern des globalen Agents zu DocumentDB-Zwecken. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
+- Behebt Problem [Nr. 100](https://github.com/Azure/azure-documentdb-node/issues/100) – Dedizierter HTTPS-Agent: Vermeiden Sie es, den globalen Agenten für DocumentDB-Zwecke zu ändern. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
 
 ###<a name="1.5.3"/>1.5.3</a>
 
-- Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81) behoben – Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.
+- Behebt Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81) – Verfahren Sie mit Bindestrichen in Medien-IDs ordnungsgemäß.
 
 ###<a name="1.5.2"/>1.5.2</a>
 
-- Problem [Nr. 95](https://github.com/Azure/azure-documentdb-node/issues/95) behoben – Warnung des EventEmitter-Listeners über Speicherverluste.
+- Behebt Problem [Nr. 95](https://github.com/Azure/azure-documentdb-node/issues/95) – Warnung des EventEmitter-Listeners über Speicherverluste
 
 ###<a name="1.5.1"/>1.5.1</a>
 
-- Problem [92](https://github.com/Azure/azure-documentdb-node/issues/90) behoben – Umbenennung des Ordners „Hash“ in „hash“ für Systeme, bei denen die Groß-/Kleinschreibung beachtet wird.
+- Behebt Problem [92](https://github.com/Azure/azure-documentdb-node/issues/90) – Umbenennung des Ordners „Hash“ in „hash“ für Systeme, bei denen die Groß-/Kleinschreibung beachtet wird
 
 ### <a name="1.5.0"/>1.5.0</a>
 
@@ -124,7 +128,8 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1.5.6](#1.5.6) | 8. März 2016 |
+| [1.6.0](#1.6.0) | 29. März 2016 |--- 
+| [1.5.6](#1.5.6) | 8. März 2016 |--- 
 | [1.5.5](#1.5.5) | 2. Februar 2016 |--- 
 | [1.5.4](#1.5.4) | 1. Februar 2016 |--- 
 | [1.5.2](#1.5.2) | 26. Januar 2016 |--- 
@@ -138,14 +143,14 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 | [1.2.0](#1.2.0) | 5. August 2015 |--- 
 | [1.1.0](#1.1.0) | 9. Juli 2015 |--- 
 | [1.0.3](#1.0.3) | 4. Juni 2015 |--- 
-| [1.0.2](#1.0.2) | 23. Mai 2015 |--- 
-| [1.0.1](#1.0.1) | 15. Mai 2015 |--- 
+| [1.0.2](#1.0.2) | 23 Mai 2015 |--- 
+| [1.0.1](#1.0.1) | 15. Mai 2015 |---
 | [1.0.0](#1.0.0) | 8. April 2015 |--- 
-| 0.9.4-prelease | 6. April 2015 | 29. Februar 2016
-| 0.9.3-prelease | 14. Januar 2015 | 29. Februar 2016 
-| 0.9.2-prelease | 18. Dezember 2014 | 29. Februar 2016
-| 0.9.1-prelease | 22. August 2014 | 29. Februar 2016 
-| 0.9.0-prelease | 21. August 2014 | 29. Februar 2016
+| 0.9.4-Vorabversion | 6. April 2015 | 29. Februar 2016 
+| 0.9.3-Vorabversion | 14. Januar 2015 | 29. Februar 2016 
+| 0.9.2-Vorabversion | 18. Dezember 2014 | 29. Februar 2016 
+| 0.9.1-Vorabversion | 22. August 2014 | 29. Februar 2016 
+| 0.9.0-Vorabversion | 21. August 2014 | 29. Februar 2016
 
 
 ## Häufig gestellte Fragen
@@ -155,4 +160,4 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

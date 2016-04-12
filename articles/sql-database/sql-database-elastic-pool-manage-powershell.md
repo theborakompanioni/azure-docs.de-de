@@ -16,7 +16,7 @@
     ms.date="03/15/2016"
     ms.author="sstein"/>
 
-# Überwachen und Verwalten eines Pools für elastische Datenbanken (PowerShell) 
+# Überwachen, Verwalten und Skalieren eines Pools für elastische Datenbanken mit PowerShell 
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-elastic-pool-manage-portal.md)
@@ -35,7 +35,7 @@ Sie müssen Azure PowerShell 1.0 oder höher installiert haben. Weitere Informat
 
 
 
-## Erstellen einer neuen elastischen Datenbank in einem Pool für elastische Datenbanken
+## Erstellen einer neuen elastischen Datenbank in einem Pool
 
 Verwenden Sie zum direkten Erstellen einer neuen Datenbank in einem Pool das Cmdlet [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx), und legen Sie den **ElasticPoolName**-Parameter fest.
 
@@ -43,34 +43,34 @@ Verwenden Sie zum direkten Erstellen einer neuen Datenbank in einem Pool das Cmd
 	New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
 
-## Verschieben einer eigenständigen Datenbank in einen Pool für elastische Datenbanken
+## Verschieben einer eigenständigen Datenbank in einen Pool
 
 Verwenden Sie zum Verschieben einer vorhandenen Datenbank in einen Pool das Cmdlet [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx), und legen Sie den **ElasticPoolName**-Parameter fest.
 
 	Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
 
-## Ändern der Leistungseinstellungen eines Pools für elastische Datenbanken
+## Ändern Sie die Leistungseinstellungen eines Pools
 
-Verwenden Sie das Cmdlet [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx), um die Leistungseinstellungen eines Pools für elastische Datenbanken zu ändern.
+Verwenden Sie das Cmdlet [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx), um die Leistungseinstellungen eines Pools zu ändern.
 
     Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
 
 
-## Abrufen des Status der Vorgänge für Pools für elastische Datenbanken
+## Abrufen des Status der Poolvorgänge
 
-Sie können den Status der Vorgänge im Pool für elastische Datenbanken, einschließlich Erstellung und Updates, mithilfe des Cmdlets [Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) nachverfolgen.
+Sie können den Status der Vorgänge im Pool, einschließlich Erstellung und Updates, mithilfe des Cmdlets [Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) nachverfolgen.
 
 	Get-AzureRmSqlElasticPoolActivity –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” 
 
 
-## Abrufen des Status beim Verschieben einer elastischen Datenbank in und aus einem Pool für elastische Datenbanken
+## Abrufen des Status beim Verschieben einer elastischen Datenbank in und aus einem Pool
 
 Sie können den Status der Vorgänge der elastischen Datenbanken, einschließlich Erstellung und Updates, mithilfe des Cmdlets [Get-AzureRmSqlDatabaseActivity](https://msdn.microsoft.com/library/azure/mt603687.aspx) nachverfolgen.
 
 	Get-AzureRmSqlDatabaseActivity -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
-## Abrufen von Auslastungsdaten für einen Pool für elastische Datenbanken
+## Abrufen der Nutzungsdaten für einen Pool
 
 Metriken, die als Prozentsatz des Ressourcenpool-Grenzwerts abgerufen werden können:
 
@@ -113,7 +113,7 @@ Exportieren in eine CSV-Datei:
 
 Diese APIs sind identisch mit den aktuellen APIs (V12), die für die Überwachung der Ressourcenverwendung einer eigenständigen Datenbank verwendet werden, mit Ausnahme der folgenden semantischen Unterschiede:
 
-* Die für diese API abgerufenen Metriken werden als Prozentsatz des "databaseDtuMax"-Werts (oder der entsprechenden Obergrenze für die zugrunde liegende Metrik wie CPU, E/A usw.) ausgedrückt, der für diesen Pool für elastische Datenbanken festgelegt wurde. Beispielsweise zeigen 50 % Auslastung bei einer dieser Metriken an, dass der spezifische Ressourcenverbrauch der Obergrenze pro Datenbank für diese Ressource im übergeordneten Pool für elastische Datenbanken bei 50 % liegt. 
+* Die für diese API abgerufenen Metriken werden als Prozentsatz des Werts „databaseDtuMax“ (oder der entsprechenden Obergrenze für die zugrunde liegende Metrik wie CPU, E/A usw.) ausgedrückt, der für diesen Pool festgelegt wurde. Beispielsweise zeigen 50 Prozent Auslastung bei einer dieser Metriken an, dass der spezifische Ressourcenverbrauch der Obergrenze pro Datenbank für diese Ressource im übergeordneten Pool bei 50 Prozent liegt. 
 
 Abrufen der Metriken:
 
@@ -132,7 +132,7 @@ Exportieren in eine CSV-Datei:
     foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
 
 
-## Überwachen und Verwalten eines Pools für elastische Datenbanken am Beispiel von PowerShell
+## Überwachen und Verwalten eines Pools am Beispiel von PowerShell
 
 
     $subscriptionId = '<Azure subscription id>'
@@ -171,11 +171,11 @@ Exportieren in eine CSV-Datei:
 
 ## Nächste Schritte
 
-- [Erstellen elastischer Aufträge:](sql-database-elastic-jobs-overview.md) Elastische Aufträge erleichtern die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
+- [Erstellen elastischer Aufträge:](sql-database-elastic-jobs-overview.md) Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
 
 
 ## Referenz für elastische Datenbanken
 
 Weitere Informationen über elastische Datenbanken und elastische Datenbankpools, einschließlich API- und Fehlerinformationen, finden Sie unter [Referenz für elastische Datenbankpools](sql-database-elastic-pool-reference.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

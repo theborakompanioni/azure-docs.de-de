@@ -42,7 +42,7 @@
 
 In diesem Artikel wird eine Bereitstellung erstellt, die einer Clouddienstbereitstellung mit einer Linux-VM in einem VNET-Subnetz ähnelt. Sie werden Befehl für Befehl durch die gesamte grundlegende Bereitstellung geführt, bis Sie über eine funktionierende, sichere Linux-VM verfügen, mit der Sie über das Internet von jedem Ort aus eine Verbindung herstellen können.
 
-Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Nachdem Sie über den Aufbau des Systems Bescheid wissen, können Sie das System viel schneller neu erstellen, indem Sie direktere Befehle der Azure-Befehlszeilenschnittstelle verwenden. ([Hier](insertlinktonewdoc) finden Sie Informationen zu einer sehr ähnlichen Bereitstellung, bei der der Befehl `azure vm quick-create` genutzt wird.) Sie können sich auch darüber informieren, wie Sie vollständige Netzwerk- und Anwendungsbereitstellungen entwerfen und automatisieren und mit [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) aktualisieren. Wenn Sie sehen, wie die Teile Ihrer Bereitstellung zusammenpassen, wird die Erstellung von Vorlagen für deren Automatisierung vereinfacht.
+Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Nachdem Sie über den Aufbau des Systems Bescheid wissen, können Sie das System viel schneller neu erstellen, indem Sie direktere Befehle der Azure-Befehlszeilenschnittstelle verwenden. ([Hier](virtual-machines-linux-quick-create-cli.md) finden Sie Informationen zu einer sehr ähnlichen Bereitstellung, bei der der Befehl `azure vm quick-create` genutzt wird.) Sie können sich auch darüber informieren, wie Sie vollständige Netzwerk- und Anwendungsbereitstellungen entwerfen, automatisieren und mit [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) aktualisieren. Wenn Sie sehen, wie die Teile Ihrer Bereitstellung zusammenpassen, wird die Erstellung von Vorlagen für deren Automatisierung vereinfacht.
 
 Wir erstellen ein einfaches Netzwerk mit einer VM, die für die Entwicklung und einfache Computevorgänge gut geeignet ist, und wir beschreiben dabei jeweils die einzelnen Schritte. Anschließend können Sie sich mit komplexeren Netzwerken und Bereitstellungen beschäftigen.
 
@@ -95,7 +95,7 @@ azure network public-ip create -d testsubdomain testrg testpip westeurope
 azure network public-ip show testrg testpip --json | jq '.'
 
 # Associate the Public IP to the NIC
-azure network nic set --public-ip-name test pip
+azure network nic set --public-ip-name testpip testrg testnic
 
 # Bind the NSG to the NIC
 azure network nic set --network-security-group-name testnsg testrg testnic
@@ -528,7 +528,7 @@ Wie immer können Sie auch auf weitere Ressourcendetails zugreifen, z.B. den vol
 
 ### Zuordnen der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zur NIC
 
-        azure network nic set --public-ip-name test pip
+        azure network nic set --public-ip-name testpip testrg testnic
 
 Binden Sie die NSG an die NIC:
 
@@ -667,4 +667,4 @@ Außerdem können Sie jetzt den Befehl `azure vm show testrg testvm` einsetzen, 
 
 Sie können jetzt mit mehreren Netzwerkkomponenten und VMs starten.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

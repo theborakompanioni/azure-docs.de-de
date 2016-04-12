@@ -176,7 +176,7 @@ Konfigurieren Sie anschließend SP1 für eine neue SharePoint-Farm und eine Stan
 3.	Wenn ein Dialogfeld mit der Meldung angezeigt wird, dass während der Konfiguration einige Dienste möglicherweise neu gestartet werden müssen, klicken Sie auf **Ja**.
 4.	Klicken Sie auf der Seite "Verbindung mit einer Serverfarm herstellen" auf **Eine neue Serverfarm erstellen**, und klicken Sie dann auf **Weiter**.
 5.	Geben Sie auf der Seite "Einstellungen für die Konfigurationsdatenbank angeben" **sql1.corp.contoso.com** unter **Datenbankserver** ein, geben Sie unter **Benutzername** den Namen **CORP\\SPFarmAdmin** ein, geben Sie unter **Kennwort** das Kennwort für das Konto "SPFarmAdmin" ein, und klicken Sie dann auf **Weiter**.
-6.	Geben Sie auf der Seite "Farmsicherheitseinstellungen angeben" sowohl unter **Passphrase** als auch unter **Passphrase bestätigen** die Buchstabenkombination ****P@ssphrase** ein, und klicken Sie dann auf **Weiter**.
+6.	Geben Sie auf der Seite "Farmsicherheitseinstellungen angeben" sowohl unter **Passphrase** als auch unter **Passphrase bestätigen** die Buchstabenkombination **P@ssphrase** ein, und klicken Sie dann auf **Weiter**.
 7.	Klicken Sie auf der Seite „Webanwendung für die SharePoint-Zentraladministration konfigurieren“ auf **Weiter**.
 8.	Klicken Sie auf der Seite "Der Konfigurations-Assistent für SharePoint-Produkte wird abgeschlossen" auf **Weiter**. Das Abschließen des Konfigurations-Assistenten für SharePoint-Produkte kann einige Minuten dauern.
 9.	Klicken Sie auf der Seite „Konfiguration erfolgreich“ auf **Fertig stellen**. Nach dem Abschluss wird Internet Explorer mit einer Registerkarte namens „Assistent für die Farmerstkonfiguration“ gestartet.
@@ -184,10 +184,10 @@ Konfigurieren Sie anschließend SP1 für eine neue SharePoint-Farm und eine Stan
 11.	Klicken Sie unter **Wie möchten Sie die SharePoint-Farm konfigurieren?** auf **Assistenten starten**.
 12.	Klicken Sie auf der Seite "SharePoint-Farm konfigurieren" unter **Dienstkonto** auf **Vorhandenes verwaltetes Konto verwenden**.
 13.	Deaktivieren Sie unter **Dienste** alle Kontrollkästchen außer demjenigen neben **Statusdienst**, und klicken Sie dann auf **Weiter**. Vor der Fertigstellung könnte für eine Weile die Seite „In Bearbeitung“ angezeigt werden.
-14.	Geben Sie auf der Seite "Websitesammlung erstellen" unter **Titel und Beschreibung** > **Titel** den Titel **Contoso Corporation** ein, geben Sie die URL ****http://sp1**/ an, und klicken Sie dann auf **OK**. Vor der Fertigstellung könnte für eine Weile die Seite „In Bearbeitung“ angezeigt werden. Mit diesem Schritt wird eine Teamwebsite mit der URL http://sp1 erstellt.
+14.	Geben Sie auf der Seite "Websitesammlung erstellen" unter **Titel und Beschreibung** > **Titel** den Titel **Contoso Corporation** ein, geben Sie die URL **http://sp1**/ an, und klicken Sie dann auf **OK**. Vor der Fertigstellung könnte für eine Weile die Seite „In Bearbeitung“ angezeigt werden. Mit diesem Schritt wird eine Teamwebsite mit der URL http://sp1 erstellt.
 15.	Klicken Sie auf der Seite "Farmkonfigurations-Assistent" auf **Fertig stellen**. Auf der Registerkarte in Internet Explorer wird die Website „SharePoint 2013-Zentraladministration“ angezeigt.
 16.	Melden Sie sich am Computer CLIENT1 mit den Anmeldeinformationen des Kontos „CORP\\User1“ an, und starten Sie Internet Explorer.
-17.	Geben Sie in die Adressleiste ****http://sp1/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die SharePoint-Teamwebsite angezeigt werden. Eventuell dauert das Rendern der Seite ein wenig.
+17.	Geben Sie in die Adressleiste **http://sp1/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die SharePoint-Teamwebsite angezeigt werden. Eventuell dauert das Rendern der Seite ein wenig.
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 
@@ -199,4 +199,4 @@ Ihre SharePoint-Intranetfarm kann jetzt in einer Hybrid Cloud-Umgebung getestet 
 
 - Richten Sie die [Produktionsworkload](../virtual-machines/virtual-machines-windows-sp-intranet-overview.md) ein.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

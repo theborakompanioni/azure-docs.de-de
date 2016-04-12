@@ -1,13 +1,13 @@
-<properties 
+<properties
 	pageTitle="SQL Server Business Intelligence | Microsoft Azure"
 	description="In diesem Thema werden die mit dem klassischen Bereitstellungsmodell erstellten Ressourcen verwendet, um die verfügbaren Business Intelligence (BI)-Funktionen für SQL Server auf Azure Virtual Machines (VMs) zu beschreiben."
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" 
+	editor="monicar"
 	tags="azure-service-management"/>
-<tags 
+<tags
 	ms.service="virtual-machines-windows"
 	ms.devlang="na"
 	ms.topic="article"
@@ -19,8 +19,8 @@
 # SQL Server-Business Intelligence in Azure Virtual Machines
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
- 
- 
+
+
 Der Microsoft Azure Virtual Machine-Katalog verfügt über Images, die SQL Server-Installationen enthalten. Die in den Katalogimages unterstützten SQL Server-Editionen sind die gleichen Installationsdateien, die Sie auf lokalen Computern und virtuellen Computern installieren können. In diesem Thema sind die SQL Server Business Intelligence (BI)-Features zusammengefasst, die in den Images installiert sind, und es enthält die Konfigurationsschritte, die nach dem Bereitstellen eines virtuellen Computers erforderlich sind. Außerdem werden in diesem Thema die unterstützten Bereitstellungstopologien für BI-Funktionen und bewährte Methoden beschrieben.
 
 ## Lizenzaspekte
@@ -42,18 +42,18 @@ Im Microsoft Azure Virtual Machine-Katalog sind verschiedene Images zu finden, d
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) Mit dem folgenden PowerShell-Skript wird die Liste mit den Azure-Images zurückgegeben, bei denen "SQL-Server" Teil des Namens ("ImageName") ist:
 
 	# assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
-	
+
 	$subscriptionID = ""    # REQUIRED: Provide your subscription ID.
 	$subscriptionName = "" # REQUIRED: Provide your subscription name.
 	$thumbPrint = "" # REQUIRED: Provide your certificate thumbprint.
 	$certificate = Get-Item cert:\currentuser\my\$thumbPrint # REQUIRED: If your certificate is in a different store, provide it here.-Ser  store is the one specified with the -ss parameter on MakeCert
-	
+
 	Set-AzureSubscription -SubscriptionName $subscriptionName -Certificate $certificate -SubscriptionID $subscriptionID
-	
+
 	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2014"
 	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2014*"} | select imagename,category, location, label, description
-	
+
 	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2012"
 	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2012*"} | select imagename,category, location, label, description
@@ -99,7 +99,7 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
 - Eine bewährte Methode für die Datenträgerverwaltung ist das Speichern von Daten-, Protokoll- und Sicherungsdateien auf anderen Laufwerken als **C:** und **D:**. Erstellen Sie beispielsweise die Datenträger **E:** und **F:** für Daten.
 
 	- Die Laufwerk-Cacherichtlinie für das Standardlaufwerk **C:** ist für die Verwendung von Daten nicht optimal.
-	
+
 	- Das Laufwerk **D:** ist ein temporäres Laufwerk, das hauptsächlich für die Auslagerungsdatei verwendet wird. Das Laufwerk **D:** wird nicht beibehalten und nicht im BLOB-Speicher gespeichert. Bei Verwaltungsaufgaben, z. B. einer Änderung der Größe des virtuellen Computers, wird das Laufwerk **D:** zurückgesetzt. Es wird empfohlen, das Laufwerk **D:** **NICHT** für Datenbankdateien zu verwenden, einschließlich "tempdb".
 
 	Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md).
@@ -165,11 +165,11 @@ Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virt
 - Stellen Sie per Windows-Remotedesktopverbindung eine Verbindung mit dem virtuellen Computer her. Auf der Benutzeroberfläche des Remotedesktops:
 
 	1. Geben Sie den **Clouddienstnamen** als Computernamen ein.
-	
+
 	1. Geben Sie einen Doppelpunkt (:) und die Nummer des öffentlichen Ports ein, der für den TCP-Remotedesktopendpunkt konfiguriert wurde.
-		
+
 		Myservice.cloudapp.net:63133
-		
+
 		Weitere Informationen finden Sie unter [Computehostingoptionen in Azure?](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/).
 
 **Starten Sie den Konfigurations-Manager für Reporting Services.**
@@ -279,11 +279,11 @@ Wenn Sie über einen Remotecomputer eine Verbindung mit dem Berichts-Manager her
 In der folgenden Tabelle sind einige der Optionen zusammengefasst, mit denen vorhandene Berichte von einem lokalen Computer auf dem Berichtsserver veröffentlicht werden können, der auf dem virtuellen Microsoft Azure-Computer gehostet wird:
 
 - **Berichts-Generator**: Der virtuelle Computer umfasst die ClickOnce-Version von Microsoft SQL Server-Berichts-Generator. So starten Sie den Berichts-Generator das erste Mal auf dem virtuellen Computer:
-											
+
 	1. Starten Sie Ihren Browser mit Administratorrechten.
-	
+
 	1. Navigieren Sie zum Berichts-Manager auf dem virtuellen Computer, und klicken Sie im Menüband auf **Berichts-Generator**.
-	
+
 	Weitere Informationen finden Sie unter [Installation, Deinstallation und Unterstützung des Berichts-Generators](https://technet.microsoft.com/library/dd207038.aspx).
 
 - **SQL Server Data Tools: Virtueller Computer**: SQL Server Data Tools ist auf dem virtuellen Computer installiert. Mit dieser Sammlung von Tools können **Berichtsserverprojekte** und Berichte auf dem virtuellen Computer erstellt werden. SQL Server Data Tools kann die Berichte im Berichtsserver auf dem virtuellen Computer veröffentlichen.
@@ -295,11 +295,11 @@ In der folgenden Tabelle sind einige der Optionen zusammengefasst, mit denen vor
 - Erstellen Sie eine VHD-Festplatte, die Berichte enthält. Laden Sie das Laufwerk dann hoch, und fügen Sie es an.
 
 	1. Erstellen Sie eine VHD-Festplatte auf dem lokalen Computer, der die Berichte enthält.
-	
+
 	1. Erstellen Sie ein Verwaltungszertifikat, und installieren Sie es.
-	
+
 	1. Laden Sie die VHD-Datei mit dem Cmdlet "Add-AzureVHD" nach Azure hoch ([Erstellen und Hochladen einer Windows Server-VHD nach Azure](virtual-machines-windows-classic-createupload-vhd.md)).
-	
+
 	1. Fügen Sie den Datenträger an den virtuellen Computer an.
 
 ## Installieren anderer SQL Server-Dienste und -Features
@@ -375,13 +375,13 @@ In diesem Abschnitt werden die zu erstellenden Microsoft Azure Virtual Machine-E
 - Wenn Sie einen einzelnen virtuellen Computer verwenden und die folgenden beiden Elemente wahr sind, müssen Sie keine VM-Endpunkte erstellen und die Ports in der Firewall auf dem virtuellen Computer nicht öffnen.
 
 	- Sie stellen keine Remoteverbindung mit den SQL Server-Features auf dem virtuellen Computer her. Das Einrichten einer Remotedesktopverbindung mit dem virtuellen Computer und das lokale Zugreifen auf die SQL Server-Features auf dem virtuellen Computer wird in Bezug auf die SQL Server-Features nicht als Remoteverbindung angesehen.
-	
+
 	- Sie führen für den virtuellen Computer keinen Beitritt zu einer lokalen Domäne durch, indem Sie Azure Virtual Networking oder eine andere VPN-Tunnellösung verwenden.
 
 - Gehen Sie wie folgt vor, wenn der virtuelle Computer keiner Domäne beigetreten ist, Sie aber eine Remoteverbindung mit den SQL Server-Features auf dem virtuellen Computer herstellen möchten:
 
 	- Öffnen Sie die Ports in der Firewall auf dem virtuellen Computer.
-	
+
 	- Erstellen Sie die Endpunkte des virtuellen Computers für die genannten Ports (*).
 
 - Wenn für den virtuellen Computer der Beitritt zu einer Domäne mit einer VPN-Tunnellösung durchgeführt wird, z. B. Azure Virtual Networking, sind die Endpunkte nicht erforderlich. Öffnen Sie aber die Ports in der Firewall auf dem virtuellen Computer.
@@ -397,7 +397,7 @@ Weitere Informationen zum Erstellen von Endpunkten finden Sie hier:
 
 - Erstellen von Endpunkten: [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md).
 
-- SQL Server: Abschnitt "Konfigurationsschritte zum Verbinden des virtuellen Computers mit SQL Server Management Studio" unter [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-classic-portal-sql.md)
+- SQL Server: Abschnitt "Konfigurationsschritte zum Verbinden des virtuellen Computers mit SQL Server Management Studio" unter [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-portal-sql-server-provision.md)
 
 Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtuellen Computers geöffnet werden müssen, um den Remotezugriff auf die Funktionen und Komponenten auf dem virtuellen Computer zu ermöglichen.
 
@@ -411,7 +411,7 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 - [Virtuelle Computer](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-- [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-classic-portal-sql.md)
+- [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-portal-sql-server-provision.md)
 
 - [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md)
 
@@ -431,4 +431,4 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 - [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

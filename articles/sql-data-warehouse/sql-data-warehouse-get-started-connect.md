@@ -3,7 +3,7 @@
    description="Erste Schritte zum Herstellen von Verbindungen mit SQL Data Warehouse für das Ausführen von Abfragen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
+   authors="sonyama"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/26/2016"
+   ms.date="03/30/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio
@@ -22,7 +22,7 @@
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL Data Warehouse-Datenbank veranschaulicht, was mit den SQL Server Data Tools in Visual Studio nur wenige Minuten dauert. Nachdem die Verbindung hergestellt wurde, führen Sie eine einfache Abfrage aus.
+In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL Data Warehouse-Datenbank veranschaulicht, das mit den SQL Server Data Tools (SSDT) in Visual Studio nur wenige Minuten dauert. Nachdem die Verbindung hergestellt wurde, führen Sie eine einfache Abfrage aus.
 
 ## Voraussetzungen
 
@@ -70,7 +70,7 @@ Verwenden Sie für optimale Ergebnisse Visual Studio 2015 mit dem [aktuellen SQL
 
 ## Schritt 3: Ausführen einer Beispielabfrage
 
-Nachdem jetzt eine Verbindung mit dem Server hergestellt wurde, fahren wir mit dem Schreiben einer Abfrage fort.
+Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, fahren wir mit dem Schreiben einer Abfrage fort.
 
 1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
 
@@ -110,4 +110,4 @@ Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versu
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

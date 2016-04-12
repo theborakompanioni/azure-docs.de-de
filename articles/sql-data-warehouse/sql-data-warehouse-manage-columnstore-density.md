@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Verwalten von schiefen Tabellenverteilungen | Microsoft Azure"
-   description="Leitfaden für Benutzer zum Ermitteln von Verteilungsschiefe in ihren verteilten Tabellen"
+   pageTitle="Verwalten von ungleichmäßigen Tabellenverteilungen | Microsoft Azure"
+   description="Leitfaden für Benutzer zum Ermitteln von Verteilungsungleichmäßigkeiten in ihren verteilten Tabellen"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/18/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verwalten von Columnstore-Indizes
@@ -24,7 +24,7 @@ In diesem Artikel wird erläutert, wie die Metadaten für den Columnstore-Index 
 ## Abfragen von Columnstore-Metadaten
 Eine Abfrage der Systemmetadaten ist erforderlich, um die Dichte des Columnstore-Index zu verstehen. Im Folgenden finden Sie ein Beispiel für die Art der Informationen, die Sie finden können.
 
-```
+```sql
 CREATE VIEW dbo.vColumnstoreDensity
 AS
 WITH CSI
@@ -73,7 +73,7 @@ FROM    CSI
 
 Nach dem Erstellen der Ansicht können die Columnstore-Metadaten leicht analysiert werden. Eine Beispielabfrage ist unten dargestellt.
 
-```
+```sql
 SELECT	[table_name]
 ,		[table_partition_count]
 ,		[row_count_total]
@@ -149,4 +149,4 @@ Weitere Verwaltungstipps finden Sie in der Übersicht über die [Verwaltung][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

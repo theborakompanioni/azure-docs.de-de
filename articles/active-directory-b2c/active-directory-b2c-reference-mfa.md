@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
+	ms.date="03/28/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
@@ -54,4 +54,8 @@ Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzere
 
 Wenn sich der Kunde (mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks) anmeldet und eine bestätigte Telefonnummer an das Kundenkonto angefügt wurde, wird der aufgefordert, diese zu bestätigen. Wenn keine Telefonnummer angefügt wurde, wird der Kunde aufgefordert, eine Telefonnummer anzugeben und zu bestätigen. Bei erfolgreicher Überprüfung wird die Telefonnummer zur späteren Verwendung an das Kundenkonto angefügt.
 
-<!---HONumber=AcomDC_0224_2016-->
+## Multi-Factor Authentication in anderen Richtlinien
+
+Wie für Registrierungs- und Anmeldungsrichtlinien oben beschrieben, ist es auch möglich, die mehrstufige Authentifizierung für Registrierungs- und Anmeldungsrichtlinien sowie für Richtlinien zur Kennwortrücksetzung zu aktivieren. Dies ist bald auch für Richtlinien zur Profilbearbeitung möglich.
+
+<!---HONumber=AcomDC_0330_2016-->
