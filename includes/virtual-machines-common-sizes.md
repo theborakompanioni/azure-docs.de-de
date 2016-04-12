@@ -42,16 +42,16 @@ Wir haben das Konzept der Azure-Berechnungseinheit ACU (Azure Compute Unit) erst
 
 |SKU-Familie |ACU/Kern |
 |---|---|
-|[Standard\_A0](#standard-tier-a-series)	|50 |
-|[Standard\_A1-4](#standard-tier-a-series)	|100 |
-|[Standard\_A5-7](#standard-tier-a-series)	|100 |
-|[A8-A11](#standard-tier-a-series)	|225 *|
-|[D1-14](#standard-tier-d-series)	|160 |
-|[D1-15v2](#standard-tier-dv2-series)	|210 - 250 *|
-|[DS1-14](#standard-tier-ds-series)	|160 |
-|[DS1-14v2](#standard-tier-dsv2-series)	|210-250* |
-|[G1-5](#standard-tier-g-series)	|180 - 240 *|
-|[GS1-5](#standard-tier-gs-series)	|180 - 240 *|
+|[Standard\_A0](#standard-tier-a-series) |50 |
+|[Standard\_A1-4](#standard-tier-a-series) |100 |
+|[Standard\_A5-7](#standard-tier-a-series) |100 |
+|[A8-A11](#standard-tier-a-series) |225 *|
+|[D1-14](#standard-tier-d-series) |160 |
+|[D1-15v2](#standard-tier-dv2-series) |210 - 250 *|
+|[DS1-14](#standard-tier-ds-series) |160 |
+|[DS1-14v2](#standard-tier-dsv2-series) |210-250* |
+|[G1-5](#standard-tier-g-series) |180 - 240 *|
+|[GS1-5](#standard-tier-gs-series) |180 - 240 *|
 
 
 Mit * gekennzeichnete ACUs verwenden die Intel® Turbo-Technologie, um die CPU-Frequenz zu erhöhen eine Leistungssteigerung zu erzielen. Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
@@ -192,4 +192,4 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
 - Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen für Workloads wie etwa High-Performance Computing (HPC)](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!----HONumber=AcomDC_0330_2016-->
