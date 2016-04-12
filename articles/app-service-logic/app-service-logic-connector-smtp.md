@@ -82,7 +82,7 @@ Sie können nun den SMTP-Connector zur Verwendung in Ihrem Workflow konfiguriere
 	Priorität | Geben Sie die Priorität der E-Mail ein. Zur Verfügung stehen die Optionen: Normal, Niedrig, Hoch.
 	Anlagen | Anlagen, die mit der E-Mail gesendet werden. Enthält die folgenden Felder: <ul><li>Inhalt (Zeichenfolge)</li><li>Codierung für die Inhaltsübertragung (Enum) ("keine" | "base64")</li><li>Inhaltstyp (Zeichenfolge)</li><li>Inhalts-ID (Zeichenfolge)</li><li>Dateiname (Zeichenfolge)</li><ul>
 
-![][5]
+![][5]  
 ![][6]
 
 ## Mehr mit Ihrem Connector machen
