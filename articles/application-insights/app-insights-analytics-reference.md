@@ -1240,7 +1240,17 @@ Beachten Sie, dass es andere Möglichkeiten gibt, diesen Effekt zu erreichen:
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || |`<` |Kleiner |`<=`|Kleiner oder gleich |`>` |Größer |`>=`|Größer oder gleich |`<>`|Ungleich |`!=`|Ungleich
+| - | Subtrahieren |
+| * | Multiplizieren |
+| / | Dividieren |
+| % | Modulo |
+||
+|`<` |Kleiner
+|`<=`|Kleiner oder gleich
+|`>` |Größer
+|`>=`|Größer oder gleich
+|`<>`|Ungleich
+|`!=`|Ungleich
 
 
 
@@ -2139,3 +2149,4 @@ Beachten Sie, dass „[0]“ auf das Vorhandensein eines Arrays hinweist, aber n
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 <!---HONumber=AcomDC_0330_2016-->
+

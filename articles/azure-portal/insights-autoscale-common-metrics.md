@@ -51,7 +51,33 @@ Sie können eine Warnung für die folgenden Metriken erstellen.
 
 |Metrikname|	Unit|
 |---|---|
-|\\Prozessor(\_Gesamt)\\Prozessorzeit (%) | Prozent| |\\Prozessor(\_Gesamt)\\Privilegierte Zeit (%) | Prozent| |\\Prozessor(\_Gesamt)\\Benutzerzeit (%) | Prozent| |\\Prozessorinformationen(\_Gesamt)\\Prozessorfrequenz | Anzahl| |\\System\\Prozesse | Anzahl| |\\Prozess(\_Gesamt)\\Threadanzahl | Anzahl| |\\Prozess(\_Gesamt)\\Handleanzahl | Anzahl| |\\Speicher\\Zugesicherte verwendete Bytes(%) | Prozent| |\\Speicher\\Verfügbare Bytes | Byte| |\\Speicher\\Zugesicherte Bytes | Byte| |\\Speicher\\Zusicherungslimit | Byte| |\\Speicher\\Auslagerungsseiten (Bytes)| Byte| |\\Speicher\\Nichtauslagerungsseiten (Bytes) | Byte| |\\Physischer Datenträger(\_Gesamt)\\Zeit (%) | Prozent| |\\Physischer Datenträger(\_Gesamt)\\Lesezeit (%)| Prozent| |\\Physischer Datenträger(\_Gesamt)\\Schreibzeit (%) | Prozent| |\\Physischer Datenträger(\_Gesamt)\\Übertragungen/s | Anzahl pro Sekunde| |\\Physischer Datenträger(\_Gesamt)\\Lesevorgänge/s | Anzahl pro Sekunde| |\\Physischer Datenträger(\_Gesamt)\\Schreibvorgänge/s | Anzahl pro Sekunde| |\\Physischer Datenträger(\_Gesamt)\\Bytes/s | Bytes pro Sekunde| |\\Physischer Datenträger(\_Gesamt)\\Bytes gelesen/s | Bytes pro Sekunde| |\\Physischer Datenträger(\_Gesamt)\\Bytes geschrieben/s | Bytes pro Sekunde| |\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge des Datenträgers| Anzahl| |\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge| Anzahl| |\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge| Anzahl| |\\Logischer Datenträger(\_Gesamt)\\Freier Speicherplatz (%)| Prozent| |\\Logischer Datenträger(\_Gesamt)\\MB frei| Anzahl|
+|\\Prozessor(\_Gesamt)\\Prozessorzeit (%) | Prozent|
+|\\Prozessor(\_Gesamt)\\Privilegierte Zeit (%) | Prozent|
+|\\Prozessor(\_Gesamt)\\Benutzerzeit (%) | Prozent|
+|\\Prozessorinformationen(\_Gesamt)\\Prozessorfrequenz | Anzahl|
+|\\System\\Prozesse | Anzahl|
+|\\Prozess(\_Gesamt)\\Threadanzahl | Anzahl|
+|\\Prozess(\_Gesamt)\\Handleanzahl | Anzahl|
+|\\Speicher\\Zugesicherte verwendete Bytes(%) | Prozent|
+|\\Speicher\\Verfügbare Bytes | Byte|
+|\\Speicher\\Zugesicherte Bytes | Byte|
+|\\Speicher\\Zusicherungslimit | Byte|
+|\\Speicher\\Auslagerungsseiten (Bytes)| Byte|
+|\\Speicher\\Nichtauslagerungsseiten (Bytes) | Byte|
+|\\Physischer Datenträger(\_Gesamt)\\Zeit (%) | Prozent|
+|\\Physischer Datenträger(\_Gesamt)\\Lesezeit (%)| Prozent|
+|\\Physischer Datenträger(\_Gesamt)\\Schreibzeit (%) | Prozent|
+|\\Physischer Datenträger(\_Gesamt)\\Übertragungen/s | Anzahl pro Sekunde|
+|\\Physischer Datenträger(\_Gesamt)\\Lesevorgänge/s | Anzahl pro Sekunde|
+|\\Physischer Datenträger(\_Gesamt)\\Schreibvorgänge/s | Anzahl pro Sekunde|
+|\\Physischer Datenträger(\_Gesamt)\\Bytes/s | Bytes pro Sekunde|
+|\\Physischer Datenträger(\_Gesamt)\\Bytes gelesen/s | Bytes pro Sekunde|
+|\\Physischer Datenträger(\_Gesamt)\\Bytes geschrieben/s | Bytes pro Sekunde|
+|\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge des Datenträgers| Anzahl|
+|\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge| Anzahl|
+|\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge| Anzahl|
+|\\Logischer Datenträger(\_Gesamt)\\Freier Speicherplatz (%)| Prozent|
+|\\Logischer Datenträger(\_Gesamt)\\MB frei| Anzahl|
 
 
 
