@@ -101,7 +101,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 | Name | Wert |
 | ---- | ---- | 
-| name | Enum<br />Erforderlich<br />**standard ** oder **premium** <br /><br />Die Dienstebene des zu verwendenden Schlüsseltresors. In der Dienstebene „Standard“ werden geheime Schlüssel und geschützte Schlüssel unterstützt. In der Dienstebene „Premium“ werden zudem HSM-geschützte Schlüssel unterstützt. |
+| name | Enum<br />Erforderlich<br />**standard** oder **premium** <br /><br />Die Dienstebene des zu verwendenden Schlüsseltresors. In der Dienstebene „Standard“ werden geheime Schlüssel und geschützte Schlüssel unterstützt. In der Dienstebene „Premium“ werden zudem HSM-geschützte Schlüssel unterstützt. |
 | family | Enum<br />Erforderlich<br />**A** <br /><br />Die zu verwendende SKU-Familie. |
  
 	
@@ -245,4 +245,4 @@ Die folgende Schnellstartvorlage stellt einen Schlüsseltresor bereit.
 - Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
 - Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

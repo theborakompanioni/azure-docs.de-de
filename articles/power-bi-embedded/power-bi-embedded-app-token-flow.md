@@ -1,6 +1,6 @@
 <properties
    pageTitle="Ablauf der Authentifizierung mithilfe eines App-Tokens in Power BI Embedded"
-   description=""
+   description="Ablauf der Authentifizierung mithilfe eines App-Tokens in Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"

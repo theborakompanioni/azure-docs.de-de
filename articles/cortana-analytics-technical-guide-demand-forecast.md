@@ -97,7 +97,8 @@ Sie finden die [Azure Stream Analytics](https://azure.microsoft.com/services/str
 
 -   Melden Sie sich beim [Azure-Verwaltungsportal](https://manage.windowsazure.com/) an.
 
--   Suchen Sie die Stream Analytics-Aufträge ![](media\cortana-analytics-technical-guide-demand-forecast\icon-stream-analytics.png), die beim Bereitstellen der Lösung generiert wurden. Einer dient zum Übertragen von Daten per Push an den Blobspeicher (z. B. mytest1streaming432822asablob), und der andere dient zum Übertragen von Daten per Push an Power BI (z. B. mytest1streaming432822asapbi).
+-   Suchen Sie die Stream Analytics-Aufträge
+![](media\cortana-analytics-technical-guide-demand-forecast\icon-stream-analytics.png), die beim Bereitstellen der Lösung generiert wurden. Einer dient zum Übertragen von Daten per Push an den Blobspeicher (z. B. mytest1streaming432822asablob), und der andere dient zum Übertragen von Daten per Push an Power BI (z. B. mytest1streaming432822asapbi).
 
 
 -   Wählen Sie Folgendes aus:
@@ -213,7 +214,8 @@ In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus 
 3. Erstellen Sie die Kachel „Bedarf nach Zeitstempel“:
 	-	Klicken Sie im linken Bereich im Abschnitt „Datasets“ auf das Dataset **EnergyStreamData**.
 
-	-	Klicken Sie auf das Symbol **Liniendiagramm** ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic8.png).
+	-	Klicken Sie auf das Symbol **Liniendiagramm**
+![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic8.png).
 
 	-	Klicken Sie im Bereich **Felder** auf „EnergyStreamData“.
 
@@ -225,7 +227,8 @@ In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus 
 
 	-	Bewegen Sie den Mauszeiger auf diese Kachel im Dashboard, klicken Sie in der oberen rechten Ecke auf das Symbol „Bearbeiten“, und ändern Sie den Titel in „Bedarf nach Zeitstempel“.
 
-4.	Erstellen Sie weitere Dashboardkacheln auf Basis der entsprechenden Datasets. Die endgültige Dashboardansicht ist unten dargestellt. ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic5.png)
+4.	Erstellen Sie weitere Dashboardkacheln auf Basis der entsprechenden Datasets. Die endgültige Dashboardansicht ist unten dargestellt.
+![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic5.png)
 
 
 ### Einrichten des Dashboards für kalte Daten
@@ -252,7 +255,8 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 
 	-	Doppelklicken Sie im heruntergeladenen Ordner **DemandForecastingDataGeneratorv1.0** auf die Datei **Power BI Template\\DemandForecastPowerBI.pbix**. Die anfänglichen Visualisierungen basieren auf unechten Daten. **Hinweis:** Wenn eine Fehlermeldung angezeigt wird, stellen Sie sicher, dass Sie die neueste Version von Power BI Desktop installiert haben.
 
-		Klicken Sie nach dem Öffnen des Programms über der Datei auf **Abfragen bearbeiten**. Doppelklicken Sie im Ausklappfenster im rechten Bereich auf **Quelle**. ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic1.png)
+		Klicken Sie nach dem Öffnen des Programms über der Datei auf **Abfragen bearbeiten**. Doppelklicken Sie im Ausklappfenster im rechten Bereich auf **Quelle**.
+![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic1.png)
 
 	-   Ersetzen Sie im Ausklappfenster **Server** und **Datenbank** durch Ihre eigenen Server- und Datenbanknamen, und klicken Sie dann auf **OK**. Geben Sie beim Servernamen unbedingt den Port 1433 an (**NameIhrerLösung.database.windows.net, 1433**). Ignorieren Sie die auf dem Bildschirm angezeigten Warnmeldungen.
 
@@ -266,12 +270,14 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 
 	-   Um ein neues Dashboard zu erstellen, klicken Sie im linken Bereich neben dem Abschnitt **Dashboards** auf das Symbol **+**. Geben Sie den Namen „Demo für Bedarfsprognose“ für das neue Dashboard ein.
 
-	-   Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic6.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report). Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename) Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind.
+	-   Wenn Sie den Bericht geöffnet haben, klicken Sie auf
+![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic6.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report). Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename) Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind.
 
 		![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic7.png)
 
 4. (Optional) Planen Sie die Aktualisierung der Datenquelle.
-	-	  Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **EnergyBPI-Final**, klicken auf ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic3.png), und wählen Sie dann **Aktualisierung planen**. **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und stellen Sie sicher, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 beschriebenen identisch sind.
+	-	  Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **EnergyBPI-Final**, klicken auf
+![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic3.png), und wählen Sie dann **Aktualisierung planen**. **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und stellen Sie sicher, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 beschriebenen identisch sind.
 
 	![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic4.png)
 
@@ -288,4 +294,4 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 
 -   [Microsoft Azure-Kostenschätzungstool (Desktopversion)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!-----HONumber=AcomDC_0406_2016-->

@@ -222,7 +222,8 @@ Wiederholen Sie den Prozess für jede Plattform, auf der Ihre App ausgeführt wi
 - Verwenden Sie die [App-ID](http://support.hockeyapp.net/kb/app-management-2/how-to-find-the-app-id) aus dem Dashboard, um Absturzdaten und Feedback aus Ihrer App zu senden. Aktualisieren Sie die IDs in MyDriving in der Datei „src/MobileApps/MyDriving/MyDriving.Utils/Logger.cs“. 
 -   [**Laden Sie Testbenutzer ein**](http://support.hockeyapp.net/kb/app-management-2/how-to-invite-beta-testers). Sie erhalten eine URL zum Rekrutieren von Testbenutzern. Diese können sich für Ihr Team registrieren, die App herunterladen und Feedback an Sie senden.
 
--   Falls Sie die Verwendung einer offeneren Betaversion vorziehen, können Sie die Verteilung auf „Öffentlich“ festlegen: Klicken Sie auf **App verwalten, Verteilung, Download = Öffentlich**. Jetzt können alle Benutzer Ihre App herunterladen und Feedback senden, und sie erhalten eine Benachrichtigung, wenn Sie eine neue Version bereitstellen. Unter Umständen erhalten Sie von diesen Benutzern auch Absturzberichte. ![](./media/iot-solution-build-system/image3.png)
+-   Falls Sie die Verwendung einer offeneren Betaversion vorziehen, können Sie die Verteilung auf „Öffentlich“ festlegen: Klicken Sie auf **App verwalten, Verteilung, Download = Öffentlich**. Jetzt können alle Benutzer Ihre App herunterladen und Feedback senden, und sie erhalten eine Benachrichtigung, wenn Sie eine neue Version bereitstellen. Unter Umständen erhalten Sie von diesen Benutzern auch Absturzberichte.
+![](./media/iot-solution-build-system/image3.png)
 
 -   [**Verknüpfen von Absturzberichten mit Visual Studio Team Services**](http://support.hockeyapp.net/kb/third-party-bug-trackers-services-and-webhooks/how-to-use-hockeyapp-with-visual-studio-team-services-vsts-or-team-foundation-server-tfs): Klicken Sie auf **App verwalten, Visual Studio Team Services**. Für HockeyApp können automatisch Arbeitsaufgaben in Team Services erstellt werden, wenn Absturzberichte vorhanden sind oder wenn Feedback eintrifft.
 
@@ -389,7 +390,8 @@ Legen Sie außerdem den Releasetrigger auf „Continuous Deployment“ fest. Jed
 
 ![](./media/iot-solution-build-system/image8.png)
 
-Für mobile Apps führen wir die Bereitstellung für HockeyApp durch: ![](./media/iot-solution-build-system/image9.png)
+Für mobile Apps führen wir die Bereitstellung für HockeyApp durch:
+![](./media/iot-solution-build-system/image9.png)
 
 ## Application Insights
 
@@ -475,4 +477,4 @@ Um Feedback zu senden, können Sie ein [Problem bei GitHub] beschreiben oder unt
 
 Wir freuen uns darauf, von Ihnen zu hören!
 
-<!---HONumber=AcomDC_0406_2016-->
+<!-----HONumber=AcomDC_0406_2016-->

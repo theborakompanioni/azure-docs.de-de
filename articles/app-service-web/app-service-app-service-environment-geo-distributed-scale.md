@@ -116,7 +116,7 @@ Dokumentation zur [Azure-Ressourcen-Manager-Unterstützung (ARM) für Azure Traf
 <!-- LINKS -->
 [AzureTrafficManagerProfile]: https://azure.microsoft.com/documentation/articles/traffic-manager-manage-profiles/
 [ARMTrafficManager]: https://azure.microsoft.com/documentation/articles/traffic-manager-powershell-arm/
-[RegisterCustomDomain]: https://azure.microsoft.com/de-DE/documentation/articles/web-sites-custom-domain-name/
+[RegisterCustomDomain]: https://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/
 
 
 <!-- IMAGES -->
@@ -125,4 +125,4 @@ Dokumentation zur [Azure-Ressourcen-Manager-Unterstützung (ARM) für Azure Traf
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0406_2016--->

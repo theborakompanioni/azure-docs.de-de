@@ -85,11 +85,14 @@ Den Wert für *&#60;DNS-Name\_virtueller Computer>* finden Sie im klassischen Az
 
 Es wird eine Warnung mit dem Text _Es besteht ein Problem mit dem Sicherheitszertifikat der Website_ (Internet Explorer) oder _Dies ist keine sichere Verbindung_ (Chrome) angezeigt, wie nachstehend gezeigt. Klicken Sie zum Fortfahren auf **Laden dieser Website fortsetzen (nicht empfohlen)** (Internet Explorer) oder auf **Erweitert** und dann auf **Weiter zu &#60;*DNS-Name*> (unsicher)** (Chrome). Geben Sie dann das Kennwort ein, das Sie zuvor für den Zugriff auf IPython Notebooks festgelegt haben.
 
-Internet Explorer: ![Arbeitsbereich erstellen][20]
+Internet Explorer:
+![Arbeitsbereich erstellen][20]
 
-Chrome: ![Arbeitsbereich erstellen][21]
+Chrome:
+![Arbeitsbereich erstellen][21]
 
-Nach Ihrer Anmeldung bei IPython Notebook wird im Browser das Verzeichnis *DataScienceSamples* angezeigt. Dieses Verzeichnis enthält Beispiele für IPython Notebook, die von Microsoft freigegeben wurden, damit Benutzer Data Science-Aufgaben durchführen können. Diese Beispiele für IPython Notebooks werden während der Einrichtung des IPython Notebook-Servers aus dem [**GitHub-Repository**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) auf die virtuellen Computer ausgecheckt. Microsoft verwaltet und aktualisiert dieses Repository häufig. Sie können das GitHub-Repository regelmäßig auf aktualisierte Beispiele für IPython Notebooks überprüfen. ![Arbeitsbereich erstellen][18]
+Nach Ihrer Anmeldung bei IPython Notebook wird im Browser das Verzeichnis *DataScienceSamples* angezeigt. Dieses Verzeichnis enthält Beispiele für IPython Notebook, die von Microsoft freigegeben wurden, damit Benutzer Data Science-Aufgaben durchführen können. Diese Beispiele für IPython Notebooks werden während der Einrichtung des IPython Notebook-Servers aus dem [**GitHub-Repository**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) auf die virtuellen Computer ausgecheckt. Microsoft verwaltet und aktualisiert dieses Repository häufig. Sie können das GitHub-Repository regelmäßig auf aktualisierte Beispiele für IPython Notebooks überprüfen.
+![Arbeitsbereich erstellen][18]
 
 ## <a name="upload"></a>Schritt 5: Hochladen eines vorhandenen IPython Notebooks von einem lokalen Computer auf den IPython Notebook-Server
 
@@ -142,4 +145,4 @@ Die nächsten Schritte im Cortana Analytics-Prozess sind unter dem [Lernpfad](ht
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

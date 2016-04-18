@@ -167,7 +167,8 @@ In vielen Fällen sind Kunden unter Umständen daran interessiert, eine Business
 
 Andererseits ist ein gutes Verständnis des geschäftlichen Nutzens einer Vorhersage des Energiebedarfs (kurz- oder langfristig) unerlässlich. Es ist sogar wichtig, sich den geschäftlichen Nutzen jedes Vorhersagevorgangs klar zu machen. Durch das genaue Vorhersagen der Stromlast für die nächsten 24 Stunden kann beispielsweise eine Überproduktion verhindert werden, oder es können Überlastungen im Netz vermieden werden. Dies kann dann in Form von täglichen Kosteneinsparungen quantifiziert werden.
 
-Eine einfache Formel zur Berechnung des finanziellen Vorteils einer Lösung für die Bedarfsvorhersage lautet wie folgt: ![Einfache Formel zur Berechnung des finanziellen Vorteils von Lösungen zur Bedarfsvorhersage](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Eine einfache Formel zur Berechnung des finanziellen Vorteils einer Lösung für die Bedarfsvorhersage lautet wie folgt:
+![Einfache Formel zur Berechnung des finanziellen Vorteils von Lösungen zur Bedarfsvorhersage](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
 Da die Cortana Intelligence Suite über ein Preismodell mit nutzungsbasierter Bezahlung verfügt, ist es nicht erforderlich, in diese Formel eine Festkostenkomponente einzufügen. Diese Formel kann für die tägliche, monatliche oder jährliche Abrechnung verwendet werden.
 
@@ -384,4 +385,4 @@ Im folgenden Diagramm ist eine typische Architektur auf Basis von Cortana Intell
 
 Weitere Informationen zu den einzelnen Komponenten und zur gesamten Architektur finden Sie unter der „Vorlage für Energielösungen“.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

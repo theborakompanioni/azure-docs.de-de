@@ -48,7 +48,7 @@ Eine gängige SQL Server-Konfiguration verfügt über einen Endpunkt, der an Por
 Es gibt zwei Ansätze zum Einschränken des Datenverkehrs zu diesem Endpunkt:
 
 
-- [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] (Netzwerk-ACLs)
+- \[Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] \(Netzwerk-ACLs)
 
 - [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
 
@@ -116,4 +116,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0406_2016--->

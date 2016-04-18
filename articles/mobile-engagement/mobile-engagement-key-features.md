@@ -28,7 +28,7 @@ Dieser Artikel bietet eine grobe Übersicht über die wichtigsten Features der M
 
 - **Verfügbarkeit von offenen REST-APIs** Zur Integration in und Automatisierung mit CMS/CRM/IT-Systemen, die Open-Platform-APIs verwenden, bieten wir offene REST-APIs und .NET SDKs, die diese APIs verwenden, mit denen eine mühelose Integration in und Automatisierung mit Mobile Engagement möglich ist. [Hier](mobile-engagement-api-authentication.md) finden Sie weitere Informationen.
 
-- **Power BI-Connector verfügbar** Sie können auch die wichtigsten Analysediagramme in einem Power BI-Dashboard anzeigen. Beachten Sie diesen [Leitfaden](https://powerbi.microsoft.com/de-DE/documentation/powerbi-content-pack-azure-mobile/).
+- **Power BI-Connector verfügbar** Sie können auch die wichtigsten Analysediagramme in einem Power BI-Dashboard anzeigen. Beachten Sie diesen [Leitfaden](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-mobile/).
 
 - **Gewährleistung von Sicherheit und Datenschutz** Als Mitglied der Azure-Produktfamilie hält Azure Mobile Engagement alle standardmäßigen bewährten Methoden für Sicherheit und Datenschutz ein, die von einem Cloud-Dienst erwartet werden.
 
@@ -164,4 +164,4 @@ Dieser Artikel bietet eine grobe Übersicht über die wichtigsten Features der M
 [27]: ./media/mobile-engagement-key-features/push_emoji.png
 [28]: ./media/mobile-engagement-key-features/push_limits.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

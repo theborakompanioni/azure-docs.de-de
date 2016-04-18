@@ -122,6 +122,6 @@ Ihre Verbindungszeichenfolge sollte der folgenden Beispiel-Verbindungszeichenfol
 ## Nächste Schritte
 
 - [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
-- [Windows Azure-Speicher-Explorer](storage-explorers.md)
+- [Azure-Speicher-Explorer](storage-explorers.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

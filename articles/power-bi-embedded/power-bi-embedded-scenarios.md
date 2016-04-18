@@ -1,6 +1,6 @@
 <properties
    pageTitle="Häufige Microsoft Power BI Embedded-Szenarios"
-   description=""
+   description="Häufige Microsoft Power BI Embedded-Szenarios"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"

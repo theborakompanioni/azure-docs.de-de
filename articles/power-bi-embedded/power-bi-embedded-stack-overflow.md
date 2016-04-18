@@ -1,6 +1,6 @@
 <properties
    pageTitle="Power BI Embedded-Stapelüberlauf"
-   description=""
+   description="Power BI Embedded-Stapelüberlauf"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"

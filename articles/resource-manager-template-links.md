@@ -46,14 +46,14 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 | ---- | ---- |
 | type | Enum<br />Erforderlich<br />**{Namespace}/{Typ}/providers/links**<br /><br />Der zu erstellende Ressourcentyp. Die Werte {Namespace} und {Typ} Werte beziehen sich auf den Anbieternamespace und Ressourcentyp der Quellressource. |
 | apiVersion | Enum<br />Erforderlich<br />**2015-01-01**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. |  
-| name | String<br />Erforderlich<br />**{Ressource}/Microsoft.Resources/{Linkname}****<br /> bis zu 64 Zeichen; darf weder <, > %, &, ? noch irgendwelche Steuerzeichen enthalten.<br /><br />Ein Wert, der sowohl den Namen der Quellressource als auch den Namen für den Link angibt. | | dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Ressourcensammlung, von der dieser Link abhängt. Wenn die Ressourcen, die Sie verknüpfen in derselben Vorlage bereitgestellt werden, fügen Sie die Ressourcennamen in diesem Element hinzu, um sicherzustellen, dass sie zuerst bereitgestellt werden. | | properties | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das die Ressource, zu der verknüpft werden soll sowie Informationen zum Link identifiziert. | 
+| name | String<br />Erforderlich<br />**{Ressource}/Microsoft.Resources/{Linkname}**<br /> bis zu 64 Zeichen; darf weder <, > %, &, ? noch irgendwelche Steuerzeichen enthalten.<br /><br />Ein Wert, der sowohl den Namen der Quellressource als auch den Namen für den Link angibt. | | dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Ressourcensammlung, von der dieser Link abhängt. Wenn die Ressourcen, die Sie verknüpfen in derselben Vorlage bereitgestellt werden, fügen Sie die Ressourcennamen in diesem Element hinzu, um sicherzustellen, dass sie zuerst bereitgestellt werden. | | properties | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das die Ressource, zu der verknüpft werden soll sowie Informationen zum Link identifiziert. | 
 
 <a id="properties" />
 ### properties-Objekt
 
 | Name | Wert |
 | ------- | ---- |
-| targetId | String<br />Erforderlich<br />**{Ressourcen-ID}****<br /><br />Der Bezeichner der Zielressource, zu der verknüpft werden soll. | | notes | String<br />Optional<br />bis zu 512 Zeichen<br /><br />Beschreibung der Sperre. |
+| targetId | String<br />Erforderlich<br />**{Ressourcen-ID}**<br /><br />Der Bezeichner der Zielressource, zu der verknüpft werden soll. | | notes | String<br />Optional<br />bis zu 512 Zeichen<br /><br />Beschreibung der Sperre. |
 
 
 ## Verwenden der Verknüpfungsressource
@@ -138,4 +138,4 @@ Die folgenden Schnellstartvorlagen stellen Ressourcen mit einem Link bereit.
 
 - Informationen zur Vorlagenstruktur finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->
