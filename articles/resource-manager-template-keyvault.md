@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/23/2016"
+   ms.date="04/04/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenschema für einen Schlüsseltresor
@@ -58,51 +58,51 @@ Fügen Sie zum Erstellen eines Schlüsseltresors das folgende Schema im Ressourc
 
 In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| Typ | enum | Ja | **Microsoft.KeyVault/vaults** | Der zu erstellende Ressourcentyp. |
-| apiVersion | enum | Ja | **2015-06-01** <br /> **2014-12-19-preview** | Die API-Version zum Erstellen der Ressource. | 
-| name | string | Ja | | Der Name des zu erstellenden Schlüsseltresors. Der Name muss in Azure in allen Fällen eindeutig sein. Verwenden Sie die Funktion [uniqueString](resource-group-template-functions.md#uniquestring) mit Ihrer Benennungskonvention wie im folgenden Beispiel. |
-| location | Zeichenfolge | Ja | Informationen zum Bestimmen gültiger Bereiche finden Sie unter [Unterstützte Regionen](resource-manager-supported-services.md#supported-regions). | Die Region zum Hosten des Schlüsseltresors. |
-| Eigenschaften | Objekt | Ja | ([siehe unten](#properties)) | Ein Objekt, das den Typ des zu erstellenden Schlüsseltresors angibt. |
-| angeben | array | Nein | [Geheime Schlüssel im Schlüsseltresor](resource-manager-template-keyvault-secret.md) | Untergeordnete Ressourcen für den Schlüsseltresor. |
+| Name | Wert |
+| ---- | ---- | 
+| type | Enum<br />Erforderlich<br />**Microsoft.KeyVault/vaults**<br /><br />Der zu erstellende Ressourcentyp. |
+| apiVersion | Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. | 
+| name | String<br />Erforderlich<br />Ein innerhalb von Azure eindeutiger Name.<br /><br />Der Name des zu erstellenden Schlüsseltresors. Verwenden Sie die Funktion [uniqueString](resource-group-template-functions.md#uniquestring) mit Ihrer Benennungskonvention wie im folgenden Beispiel zum Erstellen eines eindeutigen Namens. |
+| location | String<br />Erforderlich<br />Eine gültige Region für Schlüsseltresore. Gültige Regionen finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md#supported-regions).<br /><br />Die Region, die den Schlüsseltresor hosten soll. |
+| Eigenschaften | Object<br />Erforderlich<br />[Eigenschaftenobjekt](#properties)<br /><br />Ein Objekt, das den Typ des zu erstellenden Schlüsseltresors angibt. |
+| Ressourcen | Array<br />Optional<br />Zulässige Werte: [Geheime Schlüsseltresorressourcen](resource-manager-template-keyvault-secret.md)<br /><br />Untergeordnete Ressourcen für den Schlüsseltresor. |
 
 <a id="properties" />
 ### properties-Objekt
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| enabledForDeployment | Boolescher Wert | Nein | **true** oder **false** | Gibt an, ob der Tresor für die Bereitstellung virtueller Computer oder die Service Fabric-Bereitstellung aktiviert ist. |
-| enabledForTemplateDeployment | Boolescher Wert | Nein | **true** oder **false** | Gibt an, ob der Tresor zur Verwendung in Ressourcen-Manager-Vorlagenbereitstellungen aktiviert ist. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). |
-| enabledForVolumeEncryption | Boolescher Wert | Nein | **true** oder **false** | Gibt an, ob der Tresor für die Volumeverschlüsselung aktiviert ist. |
-| tenantId | Zeichenfolge | Ja | Globally Unique Identifier (GUID) | Die Mandanten-ID für das Abonnement. Diese ID können Sie mit dem PowerShell-Cmdlet **Get-AzureRMSubscription** abrufen. |
-| accessPolicies | array | Ja | ([siehe unten](#accesspolicies)) | Ein Array von bis zu 16 Objekten, die Berechtigungen für den Benutzer oder Dienstprinzipal angeben. |
-| sku | Objekt | Ja | ([siehe unten](#sku)) | Die SKU für den Schlüsseltresor. |
+| Name | Wert |
+| ---- | ---- | 
+| enabledForDeployment | Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Bereitstellung virtueller Computer oder die Service Fabric-Bereitstellung aktiviert ist. |
+| enabledForTemplateDeployment | Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor zur Verwendung in Ressourcen-Manager-Vorlagenbereitstellungen aktiviert ist. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). |
+| enabledForVolumeEncryption | Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Volumeverschlüsselung aktiviert ist. |
+| tenantId | String<br />Erforderlich<br />**Globally Unique Identifier**<br /><br />Eine Mandanten-ID für das Abonnement. Diese ID können Sie mit dem PowerShell-Cmdlet [Get-AzureRMSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) oder dem Azure-CLI-Befehl **azure account show** abrufen. |
+| accessPolicies | Array<br />Erforderlich<br />[accessPolicies-Objekt](#accesspolicies)<br /><br />Ein Array von bis zu 16 Objekten, die Berechtigungen für den Benutzer oder Dienstprinzipal angeben. |
+| sku | Objekt<br />Erforderlich<br />[Sku-Objekt](#sku)<br /><br />Die SKU für den Schlüsseltresor. |
 
 <a id="accesspolicies" />
 ### properties.accessPolicies-Objekt
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| tenantId | Zeichenfolge | Ja | Globally Unique Identifier (GUID) | Die Mandanten-ID des Azure Active Directory-Mandanten mit der **objectId** in dieser Zugriffsrichtlinie |
-| objectId | Zeichenfolge | Ja | Globally Unique Identifier (GUID) | Die Objekt-ID des AAD-Benutzers oder -Dienstprinzipals, der Zugriff auf den Tresor hat. Sie können den Wert über die Cmdlets **Get-AzureRMADUser** oder **Get-AzureRMADServicePrincipal** abrufen. |
-| Berechtigungen | Objekt | Ja | ([siehe unten](#permissions)) | Die Berechtigungen, die für diesen Tresor für das Active Directory-Objekt gewährt werden. |
+| Name | Wert |
+| ---- | ---- | 
+| tenantId | String<br />Erforderlich<br />**Globally Unique Identifier**<br /><br />Die Mandanten-ID des Azure Active Directory-Mandanten mit der **objectId** in dieser Zugriffsrichtlinie. |
+| objectId | String<br />Erforderlich<br />**Globally Unique Identifier**<br /><br />Die Objekt-ID des Azure Active Directory-Benutzers oder -Dienstprinzipals, die Zugriff auf den Tresor haben. Sie können den Wert entweder über [Get-AzureRMADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) oder die [Get-AzureRMADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx)-PowerShell-Cmdlets oder die Azure CLI-Befehle **azure ad user** oder **azure ad sp** abrufen. |
+| Berechtigungen | Object<br />Erforderlich<br />[Berechtigungenobjekt](#permissions)<br /><br />Die Berechtigungen, die für diesen Tresor für das Active Directory-Objekt gewährt werden. |
 
 <a id="permissions" />
 ### properties.accessPolicies.permissions-Objekt
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| Schlüssel | array | Ja | Eine durch Trennzeichen getrennte Liste der folgenden Werte:<br />**all**<br />**backup**<br />**create**<br />**decrypt**<br />**delete**<br />**encrypt**<br />**get**<br />**import**<br />**list**<br />**restore**<br />**sign**<br />**unwrapkey**<br/>**update**<br />**verify**<br />**wrapkey** | Die Berechtigungen, die für Schlüssel in diesem Tresor für das Active Directory-Objekt gewährt werden. Dieser Wert muss als Array von zulässigen Werten angegeben werden. |
-| secrets | array | Ja | Eine durch Trennzeichen getrennte Liste der folgenden Werte:<br />**all**<br />**delete**<br />**get**<br />**list**<br />**set** | Die Berechtigungen, die für geheime Schlüssel in diesem Tresor für das Active Directory-Objekt gewährt werden. Dieser Wert muss als Array von zulässigen Werten angegeben werden. |
+| Name | Wert |
+| ---- | ---- | 
+| Schlüssel | Array<br />Erforderlich<br />**all**, **backup**, **create**, **decrypt**, **delete**, **encrypt**, **get**, **import**, **list**, **restore**, **sign**, **unwrapkey**, **update**, **verify**, **wrapkey**<br /><br />Die Berechtigungen, die für Schlüssel in diesem Tresor für das Active Directory-Objekt gewährt werden. Dieser Wert muss als Array von einem oder mehreren zulässigen Werten angegeben werden. |
+| secrets | Array<br />Erforderlich<br />**all**, **delete**, **get**, **list**, **set**<br /><br />Die Berechtigungen, die für geheime Schlüssel in diesem Tresor für das Active Directory-Objekt gewährt werden. Dieser Wert muss als Array von einem oder mehreren zulässigen Werten angegeben werden. |
 
 <a id="sku" />
 ### properties.sku-Objekt
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| Name | enum | Ja | **standard**<br />**premium** | Die Dienstebene des zu verwendenden Schlüsseltresors. In der Dienstebene „Standard“ werden geheime Schlüssel und geschützte Schlüssel unterstützt. In der Dienstebene „Premium“ werden zudem HSM-geschützte Schlüssel unterstützt. |
-| family | enum | Ja | **EINE DATEI** | Die zu verwendende SKU-Familie. 
+| Name | Wert |
+| ---- | ---- | 
+| name | Enum<br />Erforderlich<br />**standard ** oder **premium** <br /><br />Die Dienstebene des zu verwendenden Schlüsseltresors. In der Dienstebene „Standard“ werden geheime Schlüssel und geschützte Schlüssel unterstützt. In der Dienstebene „Premium“ werden zudem HSM-geschützte Schlüssel unterstützt. |
+| family | Enum<br />Erforderlich<br />**A** <br /><br />Die zu verwendende SKU-Familie. |
  
 	
 ## Beispiele
@@ -237,7 +237,7 @@ Im folgenden Beispiel werden ein Schlüsseltresor und ein geheimer Schlüssel be
 
 Die folgende Schnellstartvorlage stellt einen Schlüsseltresor bereit.
 
-- [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
+- [Erstellen eines Schlüsseltresors](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)
 
 
 ## Nächste Schritte
@@ -245,4 +245,4 @@ Die folgende Schnellstartvorlage stellt einen Schlüsseltresor bereit.
 - Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
 - Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

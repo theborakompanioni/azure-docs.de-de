@@ -21,21 +21,22 @@
 
 Bei der Featureentwicklung wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen.
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ##Einführung
 
 Erläutert den Zweck der Erstellung von Features und stellt Beispiele ihrer Rolle im Datenaufbereitungsprozess für Machine Learning vor. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
-Die Entwicklung und die Auswahl der Features sind ein Teil der CAP-Vorgehensweise, die unter [Was ist der Cortana-Analyseprozess?](machine-learning-data-science-the-cortana-analytics-process.md) beschrieben ist. Die Entwicklung und die Auswahl von Features stellen einen Teil des Schritts **Entwickeln von Features** des CAP dar. * **Featureentwicklung:** Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern. * **Featureauswahl:** Dieser Prozess wählt bei dem Versuch, die Anzahl der Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
+Die Entwicklung und die Auswahl der Features sind ein Teil der CAP-Vorgehensweise, die unter [Was ist der Cortana-Analyseprozess?](machine-learning-data-science-the-cortana-analytics-process.md) beschrieben ist. Die Entwicklung und die Auswahl der Features sind Teil des Schritts **Entwickeln von Features** der CAP-Vorgehensweise.
+* **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
+* **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
 Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder stark korrelierte Features zu entfernen.
 
 Die beim Machine Learning verwendeten Trainingsdaten können häufig durch Extrahieren von Features aus den gesammelten Rohdaten verbessert werden. Ein Beispiel für ein entwickeltes Feature im Kontext des Lernvorgangs, wie Bilder von handschriftlichen Zeichen klassifiziert werden, ist eine aus den Rohdaten der Bitverteilung erstellte Bitdichtekarte. Diese Karte kann helfen, die Kanten der Zeichen effizienter als einfach mit der direkten Rohdatenverteilung zu ermitteln.
 
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 
 ## Erstellen von Features aus Ihren Daten – Featureentwicklung
@@ -46,7 +47,7 @@ Welche Art von Features sollte erstellt werden, um das Dataset beim Trainieren e
 
 Wenn Sie Azure Machine Learning zum ersten Mal verwenden, ist es am einfachsten, wenn Sie sich diesen Prozess anhand der Beispiele in Studio verdeutlichen. Zwei Beispiele sind hier dargestellt:
 
-* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](../machine-learning-sample-prediction-of-number-of-bike-rentals.md) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
+* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
 * Ein Text Mining-Klassifizierungsbeispiel mit [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ### Beispiel 1: Hinzufügen von temporären Features zu einem Regressionsmodell ###
@@ -96,4 +97,4 @@ Entwickelte und ausgewählte Features steigern die Effizienz des Trainingsprozes
 Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedingt ausgeführt werden müssen. Ob sie benötigt werden oder nicht, hängt von den vorliegenden oder gesammelten Daten ab, dem gewählten Algorithmus und dem Ziel des Experiments.
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

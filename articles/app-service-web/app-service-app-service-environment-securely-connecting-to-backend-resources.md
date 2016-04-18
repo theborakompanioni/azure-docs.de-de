@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/10/2016" 
+	ms.date="04/06/2016" 
 	ms.author="stefsch"/>
 
 # Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus #
 
 ## Übersicht ##
-Da eine App Service-Umgebung immer in einem Subnetz eines regionalen, klassischen [virtuellen „v1“-Netzwerks][virtualnetwork] erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk übertragen werden.
+Da eine App Service-Umgebung immer in einem Subnetz eines regionalen, klassischen [virtuellen „v1“-Netzwerks][virtualnetwork] erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk übertragen werden. Beachten Sie, dass nur virtuelle Netzwerke mit dem Adressraum RFC1918 (d.h. private Adressen) unterstützt werden.
 
 **Hinweis:** Eine App Service-Umgebung kann nicht in einem mit ARM verwalteten virtuellen Netzwerk des Typs „v2“ erstellt werden.
 
@@ -116,4 +116,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Cortana Analytics-Katalog | Microsoft Azure"
-	description="Teilen und entdecken Sie Analyselösungen und vieles mehr im Cortana Analytics-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community."
+	pageTitle="Cortana Intelligence-Katalog | Microsoft Azure"
+	description="Teilen und entdecken Sie Analyselösungen und vieles mehr im Cortana Intelligence-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -17,13 +17,13 @@
 	ms.author="chhavib;cgronlun;garye"/>
 
 
-# Teilen und Entdecken von Lösungen im Cortana Analytics-Katalog
+# Teilen und Entdecken von Lösungen im Cortana Intelligence-Katalog
 
-Der Cortana Analytics-Katalog ist eine Community-gesteuerte Website zum Entdecken und Teilen von Lösungen, die mit Produkten der Cortana Analytics Suite erstellt wurden. Hier können Benutzer von anderen Personen lernen, mit dem Entwickeln eigener Lösungen beginnen oder mit eigener Arbeit zur erweiterten Analytics-Community beitragen.
+Der Cortana Intelligence-Katalog ist eine Community-gesteuerte Website zum Entdecken und Teilen von Lösungen, die mit Produkten der Cortana Intelligence Suite erstellt wurden. Hier können Benutzer von anderen Personen lernen, mit dem Entwickeln eigener Lösungen beginnen oder mit eigener Arbeit zur erweiterten Analytics-Community beitragen.
 
-**[ZUM KATALOG >>](http://gallery.cortanaanalytics.com)**
+**[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 ## Vorteile
 Nutzen Sie den Katalog, und genießen Sie diese Vorteile:
@@ -44,7 +44,7 @@ Im Katalog finden Sie neu veröffentlichte und beliebte Lösungen, oder Sie kön
 Über den Kommentarbereich auf jeder Lösungsseite können Sie Kommentare hinzufügen, Feedback geben oder Fragen stellen. Außerdem können Sie eine Lösung auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können Links zu den Lösungen per E-Mail senden, um andere Benutzer zum Anzeigen der Seiten einzuladen.
 
 ## Herunterladen von Experimenten
-Im Cortana Analytics-Katalog können Sie Predictive Analytics-Experimente mit nur einem Klick leicht in Ihren Machine Learning Studio-Arbeitsbereich kopieren und sofort für Ihre Zwecke nutzen. Wenn Sie sich nicht bereits beim Browsen angemeldet haben, werden Sie aufgefordert, sich mit Ihrem Microsoft-Konto anzumelden, bevor das Experiment in Ihren Arbeitsbereich kopiert wird.
+Im Cortana Intelligence-Katalog können Sie Predictive Analytics-Experimente mit nur einem Klick leicht in Ihren Machine Learning Studio-Arbeitsbereich kopieren und sofort für Ihre Zwecke nutzen. Wenn Sie sich nicht bereits beim Browsen angemeldet haben, werden Sie aufgefordert, sich mit Ihrem Microsoft-Konto anzumelden, bevor das Experiment in Ihren Arbeitsbereich kopiert wird.
 
 ## Mitwirken
 Mit der Anmeldung werden Sie zu einem Mitglied der Katalog-Community. Sie können dann eigene Experimente und Sammlungen beitragen, damit auch andere Personen von den Lösungen profitieren können, die Sie entdeckt haben.
@@ -53,7 +53,7 @@ Mit der Anmeldung werden Sie zu einem Mitglied der Katalog-Community. Sie könne
 
 Ein *Experiment* ist eine Canvas in Machine Learning Studio, mit der Sie ein Predictive Analysis-Modell erstellen können. Hierzu verknüpfen Sie Daten mit verschiedenen Analysemodulen. Sie können unterschiedliche Ideen ausprobieren, Testläufe durchführen und Ihr Modell unter Azure schließlich als Webdienst veröffentlichen. Ein Beispiel für die Erstellung eines einfachen Experiments finden Sie unter [Lernprogramm für maschinelles Lernen: Erstellen Ihres ersten Experiments im Azure Machine Learning Studio](machine-learning-create-experiment.md). Eine vollständigere exemplarische Vorgehensweise zum Erstellen einer Predictive Analytics-Lösung finden Sie unter [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
-Führen Sie die folgenden Schritte aus, um mit einem Experiment zum Cortana Analytics-Katalog beizutragen:
+Führen Sie die folgenden Schritte aus, um mit einem Experiment zum Cortana Intelligence-Katalog beizutragen:
 
 - Melden Sie sich an Machine Learning Studio mit Ihrem Microsoft-Konto an.
 - Erstellen Sie Ihr Experiment, und führen Sie es aus.
@@ -61,11 +61,11 @@ Führen Sie die folgenden Schritte aus, um mit einem Experiment zum Cortana Anal
 
 ### Beitragen mit Sammlungen
 
-Eine *Sammlung* ist eine Liste verwandter Elemente aus dem Cortana Analytics-Katalog, die zum späteren Verweisen, Verwenden oder Teilen gruppiert sind. Die Sammlung kann Elemente enthalten, deren Besitzer Sie sind oder bei denen es sich um Beiträge aus der Community handelt.
+Eine *Sammlung* ist eine Liste verwandter Elemente aus dem Cortana Intelligence-Katalog, die zum späteren Verweisen, Verwenden oder Teilen gruppiert sind. Die Sammlung kann Elemente enthalten, deren Besitzer Sie sind oder bei denen es sich um Beiträge aus der Community handelt.
 
-Beispielsweise können Sie eine Sammlung verwenden, um Elemente zu einem bestimmten Thema zu gruppieren, oder Sie können die Gruppierung für ein Experiment mit mehreren Schritten durchführen, mit dem ein komplexes Problem gelöst wird. Die ersten Sammlungen von Microsoft bestehen aus Machine Learning-Experimentvorlagen mit mehreren Schritten zum Lösen von realen Problemen, z. B. Erkennung von Onlinebetrug, Textklassifizierung, Prognosenerstellung für den Einzelhandel und vorbeugende Wartung.
+Beispielsweise können Sie eine Sammlung verwenden, um Elemente zu einem bestimmten Thema zu gruppieren, oder Sie können die Gruppierung für ein Experiment mit mehreren Schritten durchführen, mit dem ein komplexes Problem gelöst wird. Die ersten Sammlungen von Microsoft bestehen aus Machine Learning-Experimentvorlagen mit mehreren Schritten zum Lösen von realen Problemen, z. B. Erkennung von Onlinebetrug, Textklassifizierung, Prognosenerstellung für den Einzelhandel und vorbeugende Wartung.
 
-Führen Sie die folgenden Schritte aus, um eine Sammlung zu erstellen und dem Cortana Analytics-Katalog als Beitrag hinzuzufügen:
+Führen Sie die folgenden Schritte aus, um eine Sammlung zu erstellen und dem Cortana Intelligence-Katalog als Beitrag hinzuzufügen:
 
 - Melden Sie sich mit Ihrem Microsoft-Konto am Katalog an.
 - Klicken Sie auf das Bild am oberen Rand des Fensters und dann auf Ihren Namen.
@@ -74,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um eine Sammlung zu erstellen und dem Co
 - Fügen Sie der Sammlung zur besseren Identifizierung ein Bild hinzu.
 - Klicken Sie auf **Erstellen**.
 
-Ihre Sammlung ist jetzt Teil des Cortana Analytics-Katalogs.
+Ihre Sammlung ist jetzt Teil des Cortana Intelligence-Katalogs.
 
 Sie können der Sammlung Elemente hinzufügen, indem Sie sie öffnen und dann auf **Bearbeiten** und **Element hinzufügen** klicken. Wenn Sie beim Suchen im Katalog auf ein Element stoßen, das Sie einbinden möchten, öffnen Sie es einfach, klicken auf **Zur Sammlung hinzufügen** und geben die Sammlung an, der Sie es hinzufügen möchten.
 
@@ -116,7 +116,7 @@ Wenn Sie die letzten Profiländerungen (Profilbild, Vorname oder Nachname) für 
 
 **Welche Anforderungen gelten für das Übermitteln oder Bearbeiten eines Bilds für mein Experiment?**
 
-Die Bilder, die Sie zusammen mit Ihrem Experiment übermitteln, werden verwendet, um eine Kachel für Ihren Beitrag zu erstellen. Es wird empfohlen, dass die Bilder kleiner als 500 KB sind, mit einem Seitenverhältnis von 3:2. Eine Auflösung von 960 x 640 wird empfohlen.
+Die Bilder, die Sie zusammen mit Ihrem Experiment übermitteln, werden verwendet, um eine Kachel für Ihren Beitrag zu erstellen. Es wird empfohlen, dass die Bilder kleiner als 500 KB sind, mit einem Seitenverhältnis von 3:2. Eine Auflösung von 960 x 640 wird empfohlen.
 
 **Was geschieht mit dem Dataset, das ich im Experiment verwendet habe? Wird das Dataset auch im Katalog veröffentlicht?**
 
@@ -134,6 +134,6 @@ Sie können Tags mit Tabs trennen.
 
 Beschreibungen mit Rich Text-Renderingfunktionen sind nicht für alle Katalogbenutzer verfügbar. Wir arbeiten daran, diese Funktion durch die Unterstützung von Markdownrendering verfügbar zu machen.
 
-**[ZUM KATALOG >>](http://gallery.cortanaanalytics.com)**
+**[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -22,7 +22,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
 
-Die Microsoft Azure-CustomScript-Erweiterung für Linux bietet eine Möglichkeit, Ihre virtuellen Computer anzupassen, indem Sie beliebigen, in einer vom virtuellen Computer unterstützten Skriptsprache geschriebenen Code ausführen (z. B. Python, Bash usw.) Dies bietet eine sehr flexible Möglichkeit zum Automatisieren der Anwendungsbereitstellung auf verschiedenen Computern.
+Die Microsoft Azure-CustomScript-Erweiterung für Linux bietet eine Möglichkeit, Ihre virtuellen Computer anzupassen, indem Sie beliebigen, in einer vom virtuellen Computer unterstützten Skriptsprache geschriebenen Code ausführen (z. B. Python, Bash usw.) Dies bietet eine sehr flexible Möglichkeit zum Automatisieren der Anwendungsbereitstellung auf verschiedenen Computern.
 
 Sie können die CustomScript-Erweiterung mit dem klassischen Azure-Portal, mit Windows PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) bereitstellen.
 
@@ -30,11 +30,11 @@ In diesem Artikel verwenden wir die Azure-Befehlszeilenschnittstelle zum Bereits
 
 ## Voraussetzungen
 
-Erstellen Sie für dieses Beispiel zuerst zwei virtuelle Azure-Computer, auf denen Ubuntu 14.04 oder höher ausgeführt wird. Die virtuellen Computer heißen *script-vm* und *lamp-vm*. Verwenden Sie beim Erstellen der virtuellen Computer eindeutige Namen. Einer davon dient zur Ausführung der CLI-Befehle, auf dem anderen wird die LAMP-App bereitgestellt.
+Erstellen Sie für dieses Beispiel zuerst zwei virtuelle Azure-Computer, auf denen Ubuntu 14.04 oder höher ausgeführt wird. Die virtuellen Computer heißen *script-vm* und *lamp-vm*. Verwenden Sie beim Erstellen der virtuellen Computer eindeutige Namen. Einer davon dient zur Ausführung der CLI-Befehle, auf dem anderen wird die LAMP-App bereitgestellt.
 
 Darüber hinaus benötigen Sie ein Azure-Speicherkonto und einen Schlüssel für den Zugriff (Sie erhalten diesen über das klassische Azure-Portal).
 
-Weitere Informationen zum Erstellen von Linux-VMs auf Azure finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-cli-create.md).
+Weitere Informationen zum Erstellen von Linux-VMs auf Azure finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-classic-createportal.md).
 
 Für die Installationsbefehle wird von Ubuntu ausgegangen, Sie können die Installation jedoch an alle unterstützten Linux-Distribution anpassen.
 
@@ -68,7 +68,7 @@ Das nächste Skriptbeispiel installiert einen LAMP-Stack auf Ubuntu (einschließ
 
 ### Skript hochladen
 
-Speichern Sie das Skript als Textdatei (z. B. *lamp\_install.sh*), und laden Sie es dann in Azure Storage hoch. Diese Aufgabe kann auf einfache Weise mit der Azure-CLI ausgeführt werden. Im folgenden Beispiel wird die Datei in einen Container namens "scripts" hochgeladen. Wenn der Container nicht vorhanden ist, müssen Sie ihn zunächst erstellen.
+Speichern Sie das Skript als Textdatei (z. B. *lamp\_install.sh*), und laden Sie es dann in Azure Storage hoch. Diese Aufgabe kann auf einfache Weise mit der Azure-CLI ausgeführt werden. Im folgenden Beispiel wird die Datei in einen Container namens "scripts" hochgeladen. Wenn der Container nicht vorhanden ist, müssen Sie ihn zunächst erstellen.
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
@@ -110,4 +110,4 @@ Nachfolgend finden Sie einige zusätzliche Ressourcen für die Azure-CLI, Linux 
 
 [Linux und Open-Source-Computing auf Azure](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

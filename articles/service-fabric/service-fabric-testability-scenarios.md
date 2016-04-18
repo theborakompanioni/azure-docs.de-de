@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="anmolah"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/03/2016"
+   ms.date="03/25/2016"
    ms.author="anmola"/>
 
 # Testability-Szenarien
-Große verteilte Systeme, z. B. Cloudinfrastrukturen, sind häufig unzuverlässig. Mit Azure Service Fabric können Entwickler Dienste schreiben, die für unzuverlässige Infrastrukturen ausgeführt werden. Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, diese unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können.
+Große verteilte Systeme, z. B. Cloudinfrastrukturen, sind häufig unzuverlässig. Mit Azure Service Fabric können Entwickler Dienste schreiben, die für unzuverlässige Infrastrukturen ausgeführt werden. Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, diese unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können.
 
-Service Fabric ermöglicht Entwicklern das Auslösen von Fehleraktionen, um das Verhalten von Diensten beim Auftreten von Fehlern zu testen. Mit zielgerichteten simulierten Fehlern können Sie aber nicht alle Eventualitäten abdecken. Um den Testumfang zu erweitern, können Sie die Testszenarien in Service Fabric verwenden: einen Chaostest und einen Failovertest. Mit diesen Szenarien werden im Cluster über längere Zeiträume hinweg fortlaufende überlappende Fehler simuliert (sowohl ordnungsgemäß als auch nicht ordnungsgemäß). Nachdem die Rate und die Art der Fehler für einen Test konfiguriert wurde, wird er als clientseitiges Tool ausgeführt. Hierbei werden entweder die C#-APIs oder PowerShell genutzt, um Fehler im Cluster und in Ihrem Dienst zu generieren.
+Der Fehleranalysedienst gibt Entwicklern die Möglichkeit, Fehleraktionen auszulösen, um das Verhalten von Diensten beim Auftreten von Fehlern zu testen. Mit zielgerichteten simulierten Fehlern können Sie aber nicht alle Eventualitäten abdecken. Um den Testumfang zu erweitern, können Sie die Testszenarien in Service Fabric verwenden: einen Chaostest und einen Failovertest. Mit diesen Szenarien werden im Cluster über längere Zeiträume hinweg fortlaufende überlappende Fehler simuliert (sowohl ordnungsgemäß als auch nicht ordnungsgemäß). Nachdem die Rate und die Art der Fehler für einen Test konfiguriert wurde, kann er ausgeführt werden. Hierbei werden entweder die C#-APIs oder PowerShell genutzt, um Fehler im Cluster und in Ihrem Dienst zu generieren.
 
 ## Chaostest
 Beim Chaosszenario werden Fehler im gesamten Service Fabric-Cluster generiert. Fehler, die normalerweise in Zeiträumen von mehreren Monaten oder Jahren auftreten, werden auf wenige Stunden komprimiert. Bei dieser Kombination aus überlappenden Fehlern mit der hohen Fehlerrate werden auch Spezialfälle erkannt, die sonst nicht auffallen. Dies führt zu einer erheblichen Verbesserung bei der Codequalität des Diensts.
@@ -49,8 +49,6 @@ In seiner derzeitigen Form enthält das Fehlergenerierungsmodul des Chaostests n
 C#-Beispiel
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
-
 using System;
 using System.Fabric;
 using System.Fabric.Testability.Scenario;
@@ -159,11 +157,10 @@ Beim Failovertest wird ein ausgewählter Fehler ausgelöst, und anschließend wi
  - **WaitTimeBetweenFaults**: Gibt an, wie lange zwischen den einzelnen Fehler- und Überprüfungszyklen gewartet wird.
 
 ### Ausführen des Failovertests
-C#-Beispiel
+
+**C#**
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
-
 using System;
 using System.Fabric;
 using System.Fabric.Testability.Scenario;
@@ -236,7 +233,7 @@ class Test
 ```
 
 
-PowerShell
+**PowerShell**
 
 ```powershell
 $connection = "localhost:19000"
@@ -250,4 +247,4 @@ Connect-ServiceFabricCluster $connection
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
 ```
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

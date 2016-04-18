@@ -1,6 +1,6 @@
 <properties
    pageTitle="Von Azure Data Catalog unterstützte Datenquellen | Microsoft Azure"
-   description="Spezifikation für die derzeit unterstützten Datenquellen."
+   description="Dieser Artikel listet alle für die Registrierung in Azure Data Catalog unterstützten Datenquellen und Datenassettypen auf."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,20 +13,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 # Von Azure Data Catalog unterstützte Datenquellen
 
-Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröffentlichen: Sie können eine öffentliche API nutzen, sie können ein ClickOnce-Registrierungstool verwenden, und sie können die Informationen direkt in das Data Catalog-Webportal eingeben. Die folgende Tabelle fasst alle derzeit vom Katalog unterstützten Quellen zusammen und benennt jeweils die Veröffentlichungsmöglichkeiten. Außerdem werden die externen Datentools aufgelistet, in denen die jeweiligen Quelle direkt aus dem Portal heraus geöffnet werden kann – wir nennen das die „Öffnen in“-Erfahrung im Portal. Weiter unten folgt eine zweite Tabelle mit technischen Spezifikationen für die Verbindungseigenschaften der Datenquellen.
+Benutzer von **Azure Data Catalog** können Metadaten auf verschiedenem Wege veröffentlichen: Sie können eine öffentliche API nutzen, sie können ein ClickOnce-Tool für die Datenquellenregistrierung verwenden, und sie können die Informationen direkt in das Data Catalog-Webportal eingeben.
+
+Die folgende Tabelle fasst alle derzeit von Data Catalog unterstützten Quellen zusammen und benennt jeweils die Veröffentlichungsmöglichkeiten. Außerdem werden die externen Datentools aufgelistet, die die jeweiligen Quellen direkt aus dem Data Catalog-Portal heraus öffnen können – die sogenannte „Öffnen in“-Funktion im Portal.
+
+Weiter unten finden Sie eine zweite Tabelle mit der technischen Spezifikation der Verbindungseigenschaften aller Datenquellen und der Spezifikation des Datenquellenverweises (DSR), der bei Zugriff auf die Data Catalog-API für jedes unterstützte Datenasset verwendet wird.
 
 
-## Liste der unterstützten Datenquellen
+## Liste der unterstützten Datenquellen und Assets
 
 <table>
 
     <tr>
-       <td><b>Datenquellenobjekt</b></td>
+       <td><b>Datenasset</b></td>
        <td><b>API</b></td>
        <td><b>Manuelle Eingabe</b></td>
        <td><b>Registrierungstool</b></td>
@@ -48,7 +52,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -75,7 +79,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -84,7 +88,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -147,7 +151,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -255,8 +259,8 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -264,16 +268,16 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
-      <td>DB2-Sicht</td>
+      <td>DB2-Ansicht</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -282,7 +286,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -291,7 +295,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -300,7 +304,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -309,7 +313,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -318,7 +322,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -327,7 +331,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -336,7 +340,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -345,7 +349,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -354,7 +358,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -363,7 +367,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -372,7 +376,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -381,7 +385,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -390,7 +394,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
       <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
@@ -398,6 +402,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
 
 
 <br> <br>
+
 ## Datenquellen-Referenzspezifikation
 
 <table>
@@ -1284,4 +1289,4 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
 
 </table>
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Technischer Leitfaden zur Prognose des Energiebedarfs | Microsoft Azure"
-	description="Ein technischer Leitfaden zur Microsoft Cortana Analytics-Lösungsvorlage für die Prognose des Energiebedarfs."
+	description="Ein technischer Leitfaden zur Microsoft Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs."
 	services="cortana-analytics"
 	documentationCenter=""
 	authors="yijichen"
@@ -16,15 +16,15 @@
 	ms.date="01/24/2016"
 	ms.author="inqiu;yijichen;ilanr9"/>
 
-# Technischer Leitfaden zur Cortana Analytics-Lösungsvorlage für die Prognose des Energiebedarfs
+# Technischer Leitfaden zur Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs
 
 ## **Übersicht**
 
-Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Analytics Suite. Durch das Bereitstellen einer Vorlage wird Ihrem Abonnement die erforderliche Cortana Analytics-Komponente bereitgestellt, und es wird eine Beziehung zwischen Vorlage und Komponente eingerichtet. Außerdem wird für die Datenpipeline ein Seeding mit Beispieldaten ausgeführt, die aus einer Anwendung zur Datensimulation generiert werden. Laden Sie den Datensimulator von dem bereitgestellten Link herunter, und installieren Sie ihn auf Ihrem lokalen Computer. Anweisungen zur Verwendung des Simulators finden Sie in der Datei „readme.txt“. Sobald die Datenpipeline mit den vom Simulator erzeugten Daten gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können.
+Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Intelligence Suite. Durch das Bereitstellen einer Vorlage wird Ihrem Abonnement die erforderliche Cortana Intelligence-Komponente bereitgestellt, und es wird eine Beziehung zwischen Vorlage und Komponente eingerichtet. Außerdem wird für die Datenpipeline ein Seeding mit Beispieldaten ausgeführt, die aus einer Anwendung zur Datensimulation generiert werden. Laden Sie den Datensimulator von dem bereitgestellten Link herunter, und installieren Sie ihn auf Ihrem lokalen Computer. Anweisungen zur Verwendung des Simulators finden Sie in der Datei „readme.txt“. Sobald die Datenpipeline mit den vom Simulator erzeugten Daten gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können.
 
-Im Zuge der Bereitstellung führen Sie mehrere Schritte aus, bei denen Sie die Anmeldeinformationen für die Lösung einrichten. Notieren Sie sich diese während der Bereitstellung angegebenen Anmeldeinformationen, z. B. Lösungsname, Benutzername und Kennwort, oder zeichnen Sie sie anderweitig auf.
+Im Zuge der Bereitstellung führen Sie mehrere Schritte aus, bei denen Sie die Anmeldeinformationen für die Lösung einrichten. Notieren Sie sich diese während der Bereitstellung angegebenen Anmeldeinformationen, z. B. Lösungsname, Benutzername und Kennwort, oder zeichnen Sie sie anderweitig auf.
 
-Das Ziel dieses Dokuments besteht darin, die Referenzarchitektur und die verschiedenen im Rahmen Ihres Abonnements bereitgestellten Komponenten zu beschreiben, die Teil dieser Lösungsvorlage sind. Das Dokument erklärt auch, wie Sie die Beispieldaten durch eigene echte Daten ersetzen, um Erkenntnisse und Vorhersagen aus Ihren eigenen Daten zu gewinnen. Außerdem erläutert das Dokument, welche Teile der Lösungsvorlage geändert werden müssen, wenn Sie die Lösung mit Ihren eigenen Daten anpassen möchten. Am Ende des Dokuments finden Sie Anweisungen zum Erstellen des Power BI-Dashboards für diese Lösungsvorlage.
+Das Ziel dieses Dokuments besteht darin, die Referenzarchitektur und die verschiedenen im Rahmen Ihres Abonnements bereitgestellten Komponenten zu beschreiben, die Teil dieser Lösungsvorlage sind. Das Dokument erklärt auch, wie Sie die Beispieldaten durch eigene echte Daten ersetzen, um Erkenntnisse und Vorhersagen aus Ihren eigenen Daten zu gewinnen. Außerdem erläutert das Dokument, welche Teile der Lösungsvorlage geändert werden müssen, wenn Sie die Lösung mit Ihren eigenen Daten anpassen möchten. Am Ende des Dokuments finden Sie Anweisungen zum Erstellen des Power BI-Dashboards für diese Lösungsvorlage.
 
 ## **Übersicht**
 
@@ -52,7 +52,7 @@ Der [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/)-Dienst n
 
 Mithilfe des [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Diensts wird der Eingabedatenstrom aus dem [Azure Event Hub](#azure-event-hub)-Dienst nahezu in Echtzeit analysiert. Die Analyseergebnisse werden in einem [Power BI](https://powerbi.microsoft.com)-Dashboard veröffentlicht, und alle eingehenden Rohereignisse werden in [Azure Storage](https://azure.microsoft.com/services/storage/) zur späteren Verarbeitung durch den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)-Dienst archiviert.
 
-### Benutzerdefinierte Aggregation mit HD Insights
+### Benutzerdefinierte Aggregation mit HD Insights
 
 Mit dem Azure HD Insights-Dienst werden (von Azure Data Factory orchestrierte) [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts ausgeführt, um die vom Azure Stream Analytics-Dienst archivierten Ereignisse zu aggregieren.
 
@@ -71,7 +71,7 @@ Mit dem (von Azure Data Factory orchestrierten) [Azure SQL-Datenbankdienst](http
 
 ### Power BI
 
-Mit dem [Power BI](https://powerbi.microsoft.com)-Dienst wird ein Dashboard angezeigt, das die von [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) bereitgestellten Aggregationen sowie die Ergebnisse der Bedarfsprognose enthält, die von [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) erstellt und in [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) gespeichert wurden. Anweisungen zum Erstellen des Power BI-Dashboards für diese Lösungsvorlage finden Sie im entsprechenden Abschnitt weiter unten.
+Mit dem [Power BI](https://powerbi.microsoft.com)-Dienst wird ein Dashboard angezeigt, das die von [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) bereitgestellten Aggregationen sowie die Ergebnisse der Bedarfsprognose enthält, die von [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) erstellt und in [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) gespeichert wurden. Anweisungen zum Erstellen des Power BI-Dashboards für diese Lösungsvorlage finden Sie im entsprechenden Abschnitt weiter unten.
 
 ## **Einbringen Ihrer eigenen Daten**
 
@@ -91,7 +91,7 @@ In diesem Dokument wird nicht beschrieben, wie Sie Daten erfassen. Es ist jedoch
 
 Mithilfe des [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Diensts werden Analysen nahezu in Echtzeit durchgeführt. Dazu werden Datenströme gelesen und Daten an eine beliebige Anzahl von Quellen ausgegeben.
 
-Bei der Lösungsvorlage für die Prognose des Energiebedarfs besteht die Azure Stream Analytics-Abfrage aus zwei Unterabfragen, die jeweils Ereignisse aus dem Azure Event Hub-Dienst als Eingabe nutzen und Ausgabedaten für zwei verschiedene Speicherorte erzeugen. Diese Ausgabedaten bestehen aus einem Power BI-Dataset und einem Azure Storage-Speicherort.
+Bei der Lösungsvorlage für die Prognose des Energiebedarfs besteht die Azure Stream Analytics-Abfrage aus zwei Unterabfragen, die jeweils Ereignisse aus dem Azure Event Hub-Dienst als Eingabe nutzen und Ausgabedaten für zwei verschiedene Speicherorte erzeugen. Diese Ausgabedaten bestehen aus einem Power BI-Dataset und einem Azure Storage-Speicherort.
 
 Sie finden die [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Abfrage, indem Sie folgende Schritte ausführen:
 
@@ -110,7 +110,7 @@ Sie finden die [Azure Stream Analytics](https://azure.microsoft.com/services/str
 
 Informationen zum Aufbau von Azure Stream Analytics-Abfragen finden Sie auf MSDN unter [Stream Analytics-Abfragereferenz](https://msdn.microsoft.com/library/azure/dn834998.aspx).
 
-In dieser Lösung wird der Azure Stream Analytics-Auftrag, der ein Dataset mit nahezu in Echtzeit gewonnenen Analyseinformationen über den eingehenden Datenstrom an ein Power BI-Dashboard ausgibt, als Teil dieser Lösungsvorlage zur Verfügung gestellt. Da diesen Abfragen ein implizites Wissen über das Format der eingehenden Daten zugrunde liegt, müssen sie entsprechend Ihrem eigenen Datenformat geändert werden.
+In dieser Lösung wird der Azure Stream Analytics-Auftrag, der ein Dataset mit nahezu in Echtzeit gewonnenen Analyseinformationen über den eingehenden Datenstrom an ein Power BI-Dashboard ausgibt, als Teil dieser Lösungsvorlage zur Verfügung gestellt. Da diesen Abfragen ein implizites Wissen über das Format der eingehenden Daten zugrunde liegt, müssen sie entsprechend Ihrem eigenen Datenformat geändert werden.
 
 Der andere Azure Stream Analytics-Auftrag gibt alle [Event Hub](https://azure.microsoft.com/services/event-hubs/)-Ereignisse an [Azure Storage](https://azure.microsoft.com/services/storage/) aus und muss deshalb unabhängig von Ihrem Datenformat nicht geändert werden. Die Ereignisinformationen werden in jedem Fall vollständig in den Speicher übertragen.
 
@@ -189,18 +189,18 @@ Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die 
 
 ### Übersicht
 
-In diesem Abschnitt wird beschrieben, wie Sie das Power BI-Dashboard einrichten, um Ihre Echtzeitdaten aus Azure Stream Analytics zu visualisieren („heiße Daten“) und die Prognoseergebnisse aus Azure Machine Learning anzuzeigen („kalte Daten“).
+In diesem Abschnitt wird beschrieben, wie Sie das Power BI-Dashboard einrichten, um Ihre Echtzeitdaten aus Azure Stream Analytics zu visualisieren („heiße Daten“) und die Prognoseergebnisse aus Azure Machine Learning anzuzeigen („kalte Daten“).
 
 
 ### Einrichten des Dashboards für heiße Daten
 
 In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus den beim Bereitstellen der Lösung generierten Stream Analytics-Aufträgen visualisieren. Zum Ausführen der folgenden Schritte benötigen Sie ein Konto für [Power BI Online](http://www.powerbi.com/). Wenn Sie über kein Konto verfügen, können Sie [eines erstellen](https://powerbi.microsoft.com/pricing).
 
-1.  Fügen Sie die Power BI-Ausgabe in Azure Stream Analytics hinzu.
+1.  Fügen Sie die Power BI-Ausgabe in Azure Stream Analytics hinzu.
 
     -  Sie müssen die Anweisungen unter [Azure Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse und -sichtbarkeit von Streamingdaten](stream-analytics\stream-analytics-power-bi-dashboard.md) ausführen, um die Ausgabe des Azure Stream Analytics-Auftrags an Ihr Power BI-Dashboard einzurichten.
 
-	- Suchen Sie den Stream Analytics-Auftrag im [Azure-Verwaltungsportal](https://manage.windowsazure.com). Der Name des Auftrags sollte folgendermaßen lauten: NameIhrerLösung + „streamingjob“ + Zufallszahl + „asapbi“ (d. h. demostreamingjob123456asapbi).
+	- Suchen Sie den Stream Analytics-Auftrag im [Azure-Verwaltungsportal](https://manage.windowsazure.com). Der Name des Auftrags sollte folgendermaßen lauten: NameIhrerLösung + „streamingjob“ + Zufallszahl + „asapbi“ (d. h. demostreamingjob123456asapbi).
 
 	- Richten Sie die Ausgabe der ASA-Abfrage ein, die **PBIoutput** lautet. Stellen Sie sicher, dass der **Ausgabealias** mit dem Ihrer Abfrage übereinstimmt. Sie können als **Datasetname** und **Tabellenname** den Namen **EnergyStreamData** angeben. Nachdem Sie die Ausgabe hinzugefügt haben, klicken Sie im unteren Seitenbereich auf **Starten**, um den Stream Analytics-Auftrag zu starten. Sie sollten eine Bestätigungsmeldung erhalten (*z. B.* „Stream Analytics-Auftrag myteststreamingjob12345asablob wurde erfolgreich gestartet.“).
 
@@ -229,7 +229,7 @@ In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus 
 
 
 ### Einrichten des Dashboards für kalte Daten
-In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Bedarfsprognose der einzelnen Regionen zu erhalten. Power BI stellt eine Verbindung mit einer Azure SQL-Datenbank als Datenquelle her, denn dort werden die Vorhersageergebnisse gespeichert.
+In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Bedarfsprognose der einzelnen Regionen zu erhalten. Power BI stellt eine Verbindung mit einer Azure SQL-Datenbank als Datenquelle her, denn dort werden die Vorhersageergebnisse gespeichert.
 
 > [AZURE.NOTE] 1) Es dauert einige Stunden, bis genügend Prognoseergebnisse für das Dashboard gesammelt wurden. Es wird empfohlen, diesen Vorgang 2 bis 3 Stunden nach dem Start des Datengenerators zu starten. 2) Die Voraussetzung für diesen Schritt ist das Herunterladen und Installieren der kostenlosen Software [Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
@@ -256,11 +256,11 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 
 	-   Ersetzen Sie im Ausklappfenster **Server** und **Datenbank** durch Ihre eigenen Server- und Datenbanknamen, und klicken Sie dann auf **OK**. Geben Sie beim Servernamen unbedingt den Port 1433 an (**NameIhrerLösung.database.windows.net, 1433**). Ignorieren Sie die auf dem Bildschirm angezeigten Warnmeldungen.
 
-	-   Im nächsten Ausklappfenster werden im linken Bereich zwei Optionen angezeigt (**Windows** und **Datenbank**). Klicken Sie auf **Datenbank**, und geben Sie den **Benutzernamen** und das **Kennwort** ein (hierbei handelt es sich um Benutzername und Kennwort, die Sie beim ersten Bereitstellen der Lösung und beim Erstellen der Azure SQL-Datenbank eingegeben haben). Aktivieren Sie bei ***Wählen Sie die Ebene aus, auf die diese Einstellungen anzuwenden sind*** die Option für die Datenbankebene. Klicken Sie auf **Verbinden**.
+	-   Im nächsten Ausklappfenster werden im linken Bereich zwei Optionen angezeigt (**Windows** und **Datenbank**). Klicken Sie auf **Datenbank**, und geben Sie den **Benutzernamen** und das **Kennwort** ein (hierbei handelt es sich um Benutzername und Kennwort, die Sie beim ersten Bereitstellen der Lösung und beim Erstellen der Azure SQL-Datenbank eingegeben haben). Aktivieren Sie bei ***Wählen Sie die Ebene aus, auf die diese Einstellungen anzuwenden sind*** die Option für die Datenbankebene. Klicken Sie auf **Verbinden**.
 
-	-   Wenn die vorherige Seite wieder angezeigt wird, schließen Sie das Fenster. Eine Meldung wird angezeigt. Klicken Sie darin auf **Anwenden**. Klicken Sie zum Schluss auf die Schaltfläche **Speichern**, um die Änderungen zu speichern. Für Ihre Power BI-Datei wurde nun eine Verbindung mit dem Server eingerichtet. Wenn Ihre Visualisierungen leer sind, stellen Sie sicher, dass Sie die Auswahl für die Visualisierungen aufheben, um alle Daten zu visualisieren. Klicken Sie dazu in der rechten oberen Ecke der Legenden auf das Radierersymbol. Klicken Sie auf die Schaltfläche zum Aktualisieren, damit neue Daten in den Visualisierungen widergespiegelt werden. Anfangs sehen Sie in den Visualisierungen nur die Seedingdaten, weil die Data Factory planmäßig alle drei Stunden aktualisiert wird. Wenn Sie die Daten nach drei Stunden aktualisieren, sehen Sie in den Visualisierungen neue Vorhersagen.
+	-   Wenn die vorherige Seite wieder angezeigt wird, schließen Sie das Fenster. Eine Meldung wird angezeigt. Klicken Sie darin auf **Anwenden**. Klicken Sie zum Schluss auf die Schaltfläche **Speichern**, um die Änderungen zu speichern. Für Ihre Power BI-Datei wurde nun eine Verbindung mit dem Server eingerichtet. Wenn Ihre Visualisierungen leer sind, stellen Sie sicher, dass Sie die Auswahl für die Visualisierungen aufheben, um alle Daten zu visualisieren. Klicken Sie dazu in der rechten oberen Ecke der Legenden auf das Radierersymbol. Klicken Sie auf die Schaltfläche zum Aktualisieren, damit neue Daten in den Visualisierungen widergespiegelt werden. Anfangs sehen Sie in den Visualisierungen nur die Seedingdaten, weil die Data Factory planmäßig alle drei Stunden aktualisiert wird. Wenn Sie die Daten nach drei Stunden aktualisieren, sehen Sie in den Visualisierungen neue Vorhersagen.
 
-3. (Optional) Veröffentlichen Sie das Dashboard für kalte Daten in [Power BI Online](http://www.powerbi.com/). Beachten Sie, dass Sie für diesen Schritt ein Power BI-Konto (oder ein Office 365-Konto) benötigen.
+3. (Optional) Veröffentlichen Sie das Dashboard für kalte Daten in [Power BI Online](http://www.powerbi.com/). Beachten Sie, dass Sie für diesen Schritt ein Power BI-Konto (oder ein Office 365-Konto) benötigen.
 
 	-   Klicken Sie auf **Veröffentlichen**. Nach einigen Sekunden wird durch eine Meldung mit einem grünen Häkchen bestätigt, dass die Veröffentlichung in Power BI erfolgreich war. Klicken Sie auf den Link unter „demoprediction.pbix in Power BI öffnen“. Ausführliche Anweisungen finden Sie unter [Veröffentlichen aus Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
 
@@ -271,7 +271,7 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 		![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic7.png)
 
 4. (Optional) Planen Sie die Aktualisierung der Datenquelle.
-	-	  Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **EnergyBPI-Final**, klicken auf ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic3.png), und wählen Sie dann **Aktualisierung planen**. **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und stellen Sie sicher, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 beschriebenen identisch sind.
+	-	  Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **EnergyBPI-Final**, klicken auf ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic3.png), und wählen Sie dann **Aktualisierung planen**. **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und stellen Sie sicher, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 beschriebenen identisch sind.
 
 	![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic4.png)
 
@@ -288,4 +288,4 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 
 -   [Microsoft Azure-Kostenschätzungstool (Desktopversion)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

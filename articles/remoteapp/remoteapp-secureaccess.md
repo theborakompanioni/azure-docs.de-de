@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="01/12/2016" 
+    ms.date="04/05/2016" 
     ms.author="elizapo" />
 
 # Sichern des Zugriffs auf Azure RemoteApp und darüber hinaus
@@ -44,7 +44,7 @@ Azure RemoteApp-Administratoren können die in Azure AD Premium bereitstehende F
 ### Einrichten des bedingten Zugriffs für Azure RemoteApp
 Wir durchlaufen ein Beispielszenario: Der Azure RemoteApp-Administrator möchte den Zugriff auf die Umgebung für Benutzer blockieren, die sich außerhalb des Unternehmensnetzwerks befinden.
 
->[AZURE.NOTE]Angenommen, Sie haben Azure AD auf den Premium-Tarif aktualisiert und Sie haben mindestens eine Azure RemoteApp-Sammlung erstellt.
+>[AZURE.NOTE] Angenommen, Sie haben Azure AD auf den Premium-Tarif aktualisiert und Sie haben mindestens eine Azure RemoteApp-Sammlung erstellt.
 
 1.	Klicken Sie im Azure-Portal auf die Registerkarte **Active Directory**. Klicken Sie dann auf das Verzeichnis, das Sie konfigurieren möchten.
 
@@ -110,4 +110,4 @@ Mit Azure RemoteApp müssen Sie zuerst Ihr VNet konfigurieren und es dann beim V
 ## Die vollständige Lösung
 Das folgende Diagramm zeigt die vollständige Lösung, in der wir einen sicheren Zugriffskanal vom Endbenutzer über Azure RemoteApp (ARA) bis hin zur Back-End-Ressource erstellt haben. ![Sichern von Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) In Phase 1 wurden die Benutzer ausgewählt und Zugriffsregeln erstellt, die den Zugriff auf ARA steuern. Im folgenden Beispiel gestatten wir nur den Benutzern Zugriff, die vom Unternehmensnetzwerk aus arbeiten. Benutzer, die dieser Vorgabe nicht entsprechen, können überhaupt nicht auf die ARA-Umgebung zugreifen. In Phase 2 haben wir die Back-End-Ressource nur über die Konfiguration von VNet/VPN verfügbar gemacht, die von uns gesteuert wird. Azure RemoteApp wurde im selben VNet platziert. Als Endergebnis ist die Ressource nur über die ARA-Umgebung zugänglich.
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

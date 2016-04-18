@@ -20,7 +20,7 @@
 # Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning
 
 ## Einführung
-Deshalb ist die Vorverarbeitung und Bereinigung von Daten eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Cortana-Analyseprozesses (CAP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum CAP-Prozess finden Sie in den Schritten, die unter [Cortana-Analyseprozess](cortana-analytics-process.md) beschrieben sind.
+Deshalb ist die Vorverarbeitung und Bereinigung von Daten eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Cortana-Analyseprozesses (CAP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum CAP-Prozess finden Sie in den Schritten, die unter [Cortana-Analyseprozess](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) beschrieben sind.
 
 Aufgaben der Vorverarbeitung und Bereinigung, z. B. die Datenuntersuchung, können in vielen verschiedenen Umgebungen ausgeführt werden, z. B. SQL oder Hive oder Azure Machine Learning Studio, sowie mit unterschiedlichen Tools und Sprachen, z. B. R oder Python. Dies hängt davon ab, wo die Daten gespeichert sind und wie sie formatiert sind. Da CAP iterativ ist, können diese Aufgaben im Workflow des Prozesses in verschiedenen Schritten erfolgen.
 
@@ -47,9 +47,9 @@ Sie können die allgemeine Qualität der Daten überprüfen, indem Sie Folgendes
 * Die Anzahl der **Attribute** (oder **Funktionen**).
 * Die Attribut-**Datentypen** (nominal, ordinal oder fortlaufend).
 * Die Anzahl der **fehlenden Werte**.
-* Die **Wohlgeformtheit** der Daten. 
-	* Wenn die Daten in TSV- oder CSV-Dateien gespeichert sind, sollten Sie prüfen, ob die Spalten- und Zeilentrennzeichen die Spalten und Zeilen auch immer richtig trennen. 
-	* Bei Daten im HTML- oder XML-Format überprüfen Sie, ob die Daten gemäß den jeweiligen Standards wohlgeformt sind. 
+* Die **Wohlgeformtheit** der Daten.
+	* Wenn die Daten in TSV- oder CSV-Dateien gespeichert sind, sollten Sie prüfen, ob die Spalten- und Zeilentrennzeichen die Spalten und Zeilen auch immer richtig trennen.
+	* Bei Daten im HTML- oder XML-Format überprüfen Sie, ob die Daten gemäß den jeweiligen Standards wohlgeformt sind.
 	* Es ist möglicherweise eine Analyse erforderlich, um strukturierte Informationen aus teilweise strukturierten oder unstrukturierten Daten zu extrahieren.
 * **Inkonsistente Datensätze**. Überprüfen Sie den Bereich der zulässigen Werte. Wenn die Daten z. B. die Notendurchschnitte von Schülern enthalten, sollte der Durchschnitt im festgelegten Bereich liegen, also z. B. zwischen 0 und 4.
 
@@ -92,7 +92,7 @@ Daten können durch die Konvertierung kontinuierlicher Werte in nominale Attribu
 * **Festbreitengruppierung**: Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen derselben Größe auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.
 * **Festhöhengruppierung**Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen mit derselben Anzahl von Instanzen auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.  
 
-## Wie werden Daten reduziert? 
+## Wie werden Daten reduziert?
 
 Es gibt verschiedene Methoden zum Reduzieren der Größe zur einfacheren Datenverarbeitung. Je nach Größe und Inhalt der Daten können folgende Verfahren angewendet werden:
 
@@ -109,6 +109,5 @@ Das **Durchsuchen von Daten** ermöglicht einen frühzeitigen Einblick in die Da
 ## Referenzen
 
 >Jiawei Han, Micheline Kamber und Jian Pei: *Data Mining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011
- 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

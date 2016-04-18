@@ -4,7 +4,7 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="04/05/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenschema für Ressourcenlinks
@@ -42,20 +42,18 @@ Fügen Sie zum Erstellen einer Verknüpfung das folgende Schema im Ressourcenabs
 
 In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| Typ | enum | Ja | **{Namespace}/{Typ}/providers/links** | Der zu erstellende Ressourcentyp. Die Werte {Namespace} und {Typ} Werte beziehen sich auf den Anbieternamespace und Ressourcentyp der Quellressource. |
-| apiVersion | enum | Ja | **2015-01-01** | Die API-Version zum Erstellen der Ressource. |  
-| name | string | Ja | **{Ressource}/Microsoft.Resources/{Verknüpfungname}**<br /><br />bis zu 64 Zeichen<br />Nicht zulässig sind <, > %, &, ? bzw. alle Steuerzeichen. | Ein Wert, der den Namen der Quellressource und einen Namen für die Verknüpfung angibt. |
-| dependsOn | array | Nein | Eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern. | Die Auflistung von Ressourcen, von denen diese Verknüpfung abhängt. Wenn die Ressourcen, die Sie verknüpfen, in der gleichen Vorlage bereitgestellt sind, fügen Sie diese Ressourcennamen diesem Element hinzu, um sicherzustellen, dass sie zuerst bereitgestellt werden. | 
-| Eigenschaften | Objekt | Ja | (siehe unten) | Ein Objekt, das die zu verknüpfende Ressource identifiziert, und Hinweise zur Verknüpfung. |  
+| Name | Wert |
+| ---- | ---- |
+| type | Enum<br />Erforderlich<br />**{Namespace}/{Typ}/providers/links**<br /><br />Der zu erstellende Ressourcentyp. Die Werte {Namespace} und {Typ} Werte beziehen sich auf den Anbieternamespace und Ressourcentyp der Quellressource. |
+| apiVersion | Enum<br />Erforderlich<br />**2015-01-01**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. |  
+| name | String<br />Erforderlich<br />**{Ressource}/Microsoft.Resources/{Linkname}****<br /> bis zu 64 Zeichen; darf weder <, > %, &, ? noch irgendwelche Steuerzeichen enthalten.<br /><br />Ein Wert, der sowohl den Namen der Quellressource als auch den Namen für den Link angibt. | | dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Ressourcensammlung, von der dieser Link abhängt. Wenn die Ressourcen, die Sie verknüpfen in derselben Vorlage bereitgestellt werden, fügen Sie die Ressourcennamen in diesem Element hinzu, um sicherzustellen, dass sie zuerst bereitgestellt werden. | | properties | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das die Ressource, zu der verknüpft werden soll sowie Informationen zum Link identifiziert. | 
 
+<a id="properties" />
 ### properties-Objekt
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ------- | ---- | ---------------- | -------- | ----------- |
-| targetId | string | Ja | | Der Bezeichner der zu verknüpfenden Zielressource. |
-| HDInsight | string | Nein | 512 Zeichen | Beschreibung der Sperre. |
+| Name | Wert |
+| ------- | ---- |
+| targetId | String<br />Erforderlich<br />**{Ressourcen-ID}****<br /><br />Der Bezeichner der Zielressource, zu der verknüpft werden soll. | | notes | String<br />Optional<br />bis zu 512 Zeichen<br /><br />Beschreibung der Sperre. |
 
 
 ## Verwenden der Verknüpfungsressource
@@ -68,7 +66,7 @@ Informationen zum Arbeiten mit Verknüpfungen über REST finden Sie unter [Verkn
 
 Verwenden Sie den folgenden Azure PowerShell-Befehl, um alle Verknüpfungen in Ihrem Abonnement anzuzeigen. Sie können andere Parameter angeben, um die Ergebnisse einzuschränken.
 
-    Get-AzureRmResource -ResourceType Microsoft.Resources/links -isCollection -OutputObjectFormat New
+    Get-AzureRmResource -ResourceType Microsoft.Resources/links -isCollection -ResourceGroupName <YourResourceGroupName>
 
 ## Beispiele
 
@@ -128,16 +126,16 @@ Im folgenden Beispiel wird eine Schreibschutzsperre für eine Web-App angewendet
 
 Die folgenden Schnellstartvorlagen stellen Ressourcen mit einem Link bereit.
 
-- [Warnung für Warteschlange mit Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
-- [Warnung für Pufferzeit mit Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-- [Bereitstellen einer API-App mit einem vorhandenen Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-app-gateway-existing)
-- [Bereitstellen einer API-App mit einem neuen Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-app-gateway-new)
-- [Erstellen einer Logik-App und einer API-App mithilfe einer Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-api-app-create)
-- [Logik-App, die eine Textnachricht sendet, wenn eine Warnung ausgelöst wird](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
+- [Warnung für Warteschlange mit Logik-App](https://azure.microsoft.com/documentation/templates/201-alert-to-queue-with-logic-app)
+- [Warnung für Pufferzeit mit Logik-App](https://azure.microsoft.com/documentation/templates/201-alert-to-slack-with-logic-app)
+- [Bereitstellen einer API-App mit einem vorhandenen Gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-existing)
+- [Bereitstellen einer API-App mit einem neuen Gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-new)
+- [Erstellen einer Logik-App und einer API-App mithilfe einer Vorlage](https://azure.microsoft.com/documentation/templates/201-logic-app-api-app-create)
+- [Logik-App, die eine Textnachricht sendet, wenn eine Warnung ausgelöst wird](https://azure.microsoft.com/documentation/templates/201-alert-to-text-message-with-logic-app)
 
 
 ## Nächste Schritte
 
 - Informationen zur Vorlagenstruktur finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -19,12 +19,6 @@
 
 # Erstellen und Vorabkonfigurieren eines virtuellen Linux-Computers mit Azure PowerShell
 
-> [AZURE.SELECTOR]
-- [Azure-Befehlszeilenschnittstelle](virtual-machines-linux-cli-create.md)
-- [PowerShell](virtual-machines-linux-classic-createpowershell.md)
-
-
-<br>
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
  
@@ -36,7 +30,7 @@ Das Begleitthema für Windows-basierte virtuelle Computer finden Sie unter [Erst
 
 ## Installieren von Azure PowerShell
 
-Sofern dies noch nicht erfolgt ist, [installieren und konfigurieren Sie Azure PowerShell](powershell-install-configure.md). Öffnen Sie dann eine Azure PowerShell-Befehlseingabeaufforderung.
+Sofern dies noch nicht erfolgt ist, [installieren und konfigurieren Sie Azure PowerShell](../powershell-install-configure.md). Öffnen Sie dann eine Azure PowerShell-Befehlseingabeaufforderung.
 
 ## Festlegen Ihres Abonnements und Speicherkontos
 
@@ -75,13 +69,13 @@ Hier finden Sie einige Beispiele für ImageFamily-Werte für Linux-basierte Comp
 
 Starten Sie den Befehlssatz, indem Sie einen dieser beiden Befehlssätze auswählen (erforderlich).
 
-**Option 1**: Geben Sie einen Namen für den virtuellen Computer und eine Größe an.
+**Option 1**: Geben Sie einen Namen für den virtuellen Computer und eine Größe an.
 
 	$vmname="<machine name>"
 	$vmsize="<Specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
 	$vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-**Option 2**: Geben Sie einen Namen, eine Größe und einen Verfügbarkeitsgruppennamen an.
+**Option 2**: Geben Sie einen Namen, eine Größe und einen Verfügbarkeitsgruppennamen an.
 
 	$vmname="<machine name>"
 	$vmsize="<Specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
@@ -156,13 +150,13 @@ Fügen Sie dem Befehlssatz folgenden Code hinzu, um den virtuellen Computer eine
 
 Fügen Sie dem Befehlssatz einen Block hinzu, um den Erstellungsprozess für die virtuellen Computer durch Auswahl eines der folgenden Befehlsblöcke zu starten.
 
-**Option 1**: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst.
+**Option 1**: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst.
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
 Der kurze Name des Clouddiensts ist der Name in der Liste der Azure Cloud Services im klassischen Azure-Portal oder in der Liste der Ressourcengruppen im Azure-Portal.
 
-**Option 2**: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst und virtuellen Netzwerk.
+**Option 2**: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst und virtuellen Netzwerk.
 
 	$svcname="<short name of the cloud service>"
 	$vnetname="<name of the virtual network>"
@@ -275,10 +269,10 @@ Hier finden Sie den entsprechenden Azure PowerShell-Befehlssatz zum Erstellen di
 
 [Übersicht über Azure Virtual Machines](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
-[Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md)
+[Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
 [Anmelden bei einem mit Linux betriebenen virtuellen Computer](virtual-machines-linux-classic-log-on.md)
 
 [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](virtual-machines-windows-classic-create-powershell.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

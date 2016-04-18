@@ -36,7 +36,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
  
 * Sie haben ein Azure-Speicherkonto erstellt. Eine Anleitung zu dieser Aufgabe finden Sie unter [Erstellen eines Azure-Speicherkontos](../hdinsight-get-started.md#storage). 
 * Sie haben einen Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt. Anweisungen finden Sie unter [Bereitstellen eines HDInsight-Clusters](../hdinsight-get-started.md#provision).
-* Sie haben die Daten in Hive-Tabellen in Azure HDInsight Hadoop-Clustern hochgeladen. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
+* Sie haben die Daten in Hive-Tabellen in Azure HDInsight Hadoop-Clustern hochgeladen. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
 * Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](machine-learning-data-science-customize-hadoop-cluster.md#remoteaccess). 
 
 
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die folgenden Data Wrangling-Aufgaben mit Hive in Azu
 1. [Durchsuchen von Daten](#hive-dataexploration)
 2. [Generieren von Funktionen](#hive-featureengineering)
 
-> [AZURE.NOTE] Bei den Beispiel-Hive-Abfragen wird davon ausgegangen, dass die Daten in Hive-Tabellen in Azure HDInsight Hadoop-Clustern hochgeladen wurden. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
+> [AZURE.NOTE] Bei den Beispiel-Hive-Abfragen wird davon ausgegangen, dass die Daten in Hive-Tabellen in Azure HDInsight Hadoop-Clustern hochgeladen wurden. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
 
 ###<a name="hive-dataexploration"></a>Durchsuchen von Daten
 Hier finden Sie einige Hive-Beispielskripts, die zum Durchsuchen von Daten in den Hive-Tabellen verwendet werden können.
@@ -325,4 +325,4 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

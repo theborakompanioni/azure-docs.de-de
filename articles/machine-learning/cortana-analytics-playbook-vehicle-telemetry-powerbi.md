@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Lösungsvorlage „Vehicle Telemetry Analytics“ – Anweisungen zur Einrichtung des Power BI-Dashboards | Microsoft Azure" 
-	description="Verwenden Sie die Funktionen von Cortana Analytics zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten." 
+	description="Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten." 
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
@@ -24,7 +24,7 @@ Dieses **Menü** bietet Links zu den Kapiteln dieses Playbooks.
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 
-Die Lösung „Vehicle Telemetry Analytics“ veranschaulicht, wie Autohäuser, Automobilhersteller und Versicherer die Fähigkeiten von Cortana Analytics nutzen können. Sie können sich prädiktive Einblicke zu Fahrzeugzustand und Fahrgewohnheiten in Echtzeit verschaffen, um in den Bereichen Kundenerfahrung, Forschung und Entwicklung und Marketingkampagnen für Verbesserungen zu sorgen. Dieses Dokument enthält schrittweise Anleitungen, wie Sie Power BI-Berichte und das Dashboard konfigurieren können, nachdem die Lösung in Ihrem Abonnement bereitgestellt wurde.
+Die Lösung für Vehicle Telemetry Analytics (Fahrzeugtelemetrieanalyse) zeigt, wie Automobilhändler, Automobilhersteller und Versicherungsgesellschaften die Fähigkeiten von Cortana Intelligence nutzen können, um sich in Echtzeit prädiktive Einblicke zu Fahrzeugstand und Fahrgewohnheiten zu verschaffen. So können in den Bereichen Kundenerlebnis, Forschung und Entwicklung sowie Marketing Verbesserungen vorangetrieben werden. Dieses Dokument enthält schrittweise Anleitungen, wie Sie Power BI-Berichte und das Dashboard konfigurieren können, nachdem die Lösung in Ihrem Abonnement bereitgestellt wurde.
 
 
 ## Voraussetzungen
@@ -34,8 +34,8 @@ Die Lösung „Vehicle Telemetry Analytics“ veranschaulicht, wie Autohäuser, 
 4.	Microsoft Power BI-Konto
 	
 
-## Cortana Analytics Suite-Komponenten
-Als Teil der Lösungsvorlage „Vehicle Telemetry Analytics“ werden die folgenden Cortana Analytics-Dienste in Ihrem Abonnement bereitgestellt.
+## Komponenten der Cortana Intelligence Suite
+Die nachstehenden Cortana Intelligence-Dienste werden als Teil Ihres Abonnements der Lösungsvorlage für Vehicle Telemetry Analytics (Fahrzeugtelemetrieanalyse) bereitgestellt.
 
 - **Event Hubs** für das Erfassen von Millionen von Telemetrie-Ereignissen in Azure.
 - **Stream Analytics** für das Gewinnen von Einblicken in Echtzeit zum Fahrzeugzustand und Speichern dieser Daten in beständigem Speicher zur umfangreicheren Batchanalyse.
@@ -94,7 +94,7 @@ So laden Sie die Anwendung herunter
 
 
 ### Konfigurieren von Power BI-Berichten
-Die Erstellung der Echtzeitberichte und des Dashboards dauert ca. 30 bis 45 Minuten. Navigieren Sie zu [http://powerbi.com](http://powerbi.com), und melden Sie sich an.
+Die Erstellung der Echtzeitberichte und des Dashboards dauert ca. 30 bis 45 Minuten. Navigieren Sie zu [http://powerbi.com](http://powerbi.com), und melden Sie sich an.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-1-powerbi-signin.png)
 
@@ -244,7 +244,7 @@ Wählen Sie **Treemap** in „Visualisierungen“ aus. Ziehen Sie das Feld **Mod
 
 Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
 
-Wählen Sie **Gestapeltes Balkendiagramm (100 %)** in „Visualisierungen“ aus. Ziehen Sie das Feld **city** in den Bereich **Achse** und die Felder **MaintenanceProbability** und **RecallProbability** in den Bereich **Wert**.
+Wählen Sie **Gestapeltes Balkendiagramm (100 %)** in „Visualisierungen“ aus. Ziehen Sie das Feld **city** in den Bereich **Achse** und die Felder **MaintenanceProbability** und **RecallProbability** in den Bereich **Wert**.
 
 ![Connected Cars – Neue Visualisierung hinzufügen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4dd.png)
 
@@ -296,7 +296,7 @@ Das Dashboard sieht wie unten dargestellt aus, wenn alle drei Berichte erstellt 
 
 ![Connected Cars – Dashboard](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-4.0.png)
 
-Glückwunsch! Sie haben das Echtzeit-Dashboard erfolgreich erstellt. Wenn Sie „CarEventGenerator.exe“ und „RealtimeDashboardApp.exe“ weiter ausführen, sollten im Dashboard Live-Updates zu sehen sein. Es dauert ungefähr 10 bis 15 Minuten, bis die unten angegebenen Schritte abgeschlossen sind.
+Glückwunsch! Sie haben das Echtzeit-Dashboard erfolgreich erstellt. Wenn Sie „CarEventGenerator.exe“ und „RealtimeDashboardApp.exe“ weiter ausführen, sollten im Dashboard Live-Updates zu sehen sein. Es dauert ungefähr 10 bis 15 Minuten, bis die unten angegebenen Schritte abgeschlossen sind.
  
 ##  Einrichten des Power BI-Dashboards für die Batchverarbeitung
 
@@ -306,7 +306,7 @@ Hinweis: Es dauert ca. zwei Stunden (ab dem erfolgreichen Abschluss der Bereitst
 
 • Speichern Sie die Datei lokal.
 
-**Konfigurieren von PowerBI-Berichten** • Öffnen Sie die Designer-Datei „VehicleTelemetryAnalytics – Desktop-Report.pbix“ über PowerBI Desktop. Falls noch nicht geschehen, können Sie Power BI Desktop unter [Microsoft Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331) herunterladen und installieren.
+**Konfigurieren von PowerBI-Berichten** • Öffnen Sie die Designer-Datei „VehicleTelemetryAnalytics – Desktop-Report.pbix“ über PowerBI Desktop. Falls noch nicht geschehen, können Sie Power BI Desktop unter [Microsoft Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331) herunterladen und installieren.
 
 • Klicken Sie auf **Abfragen bearbeiten**.
 
@@ -359,7 +359,7 @@ Heften Sie Diagramme an das vorhandene Dashboard **Vehicle Telemetry Analytics D
 ![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png)
 
 
-**Der Bericht hat sechs Seiten:** Seite 1: Vehicle density Seite 2: Real time vehicle health Seite 3: Aggressively Driven Vehicles Seite 4: Recalled vehicles Seite 5: Fuel Efficiently Driven Vehicles Seite 6: Contoso Logo
+**Der Bericht hat sechs Seiten:** Seite 1: Vehicle density Seite 2: Real time vehicle health Seite 3: Aggressively Driven Vehicles Seite 4: Recalled vehicles Seite 5: Fuel Efficiently Driven Vehicles Seite 6: Contoso Logo
 
 ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
  
@@ -373,13 +373,13 @@ Heften Sie Diagramme an das vorhandene Dashboard **Vehicle Telemetry Analytics D
 1.	Count of vin ![Vehicle Telemetry – Anheften von Diagramm 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
 2.	Fuel efficient vehicles by model: Gruppiertes Säulendiagramm ![Vehicle Telemetry – Anheften von Diagramm 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
 
-**Auf Seite 4** heften Sie Folgendes an:
+**Auf Seite 4** heften Sie Folgendes an:
 
 1.	Count of vin ![Vehicle Telemetry – Anheften von Diagramm 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
 
 2.	Recalled vehicles by city, model : Treemap ![Vehicle Telemetry – Anheften von Diagramm 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)
 
-**Auf Seite 6** heften Sie Folgendes an:
+**Auf Seite 6** heften Sie Folgendes an:
 
 1.	Contoso Motors-Logo ![Vehicle Telemetry – Anheften von Diagramm 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
 
@@ -393,4 +393,4 @@ Heften Sie Diagramme an das vorhandene Dashboard **Vehicle Telemetry Analytics D
 
 Glückwunsch! Sie haben die Berichte und das Dashboard erfolgreich erstellt, um in Bezug auf den Fahrzeugzustand und das Fahrverhalten Informationen in den Bereichen Echtzeit, vorbeugende Wartung und Batchprozesse zu erhalten.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

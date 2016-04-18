@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/23/2015"
-	ms.author="kenazk"/>
+	ms.date="04/01/2016"
+	ms.author="iainfou"/>
 
 # Verwalten der Verfügbarkeit virtueller Linux-Computer
 
@@ -25,4 +25,4 @@ Erfahren Sie, wie Sie mehrere virtuelle Computer einrichten und verwalten könne
 
 [AZURE.INCLUDE [virtual-machines-common-manage-availability](../../includes/virtual-machines-common-manage-availability.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

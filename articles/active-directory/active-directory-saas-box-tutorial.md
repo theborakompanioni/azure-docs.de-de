@@ -26,13 +26,13 @@ In diesem Tutorial wird die Integration von Azure und Box erläutert. Das in die
 -   Ein gültiges Azure-Abonnement
 -   Ein Testmandant bei Box
   
-Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie Box zugewiesen haben, mithilfe der einmaligen Anmeldung auf der Box-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Sie können aber auch den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie Box zugewiesen haben, mithilfe der einmaligen Anmeldung auf der Box-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Sie können aber auch den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Box
 2.  Konfigurieren der einmaligen Anmeldung
-3.  Konfigurieren der Benutzerbereitstellung
+3.  Konfigurieren der Benutzer- und Gruppenbereitstellung
 4.  Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-box-tutorial/IC769537.png "Szenario")
@@ -115,11 +115,15 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 4. Klicken Sie auf **Zugriff gewähren auf Box**, um diesen Vorgang zu autorisieren und zum Azure-Verwaltungsportal zurückzukehren. <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
 
-5. Klicken Sie zum Abschließen der Konfiguration auf die Schaltfläche "Abschließen". <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769551.png "Automatische Benutzerbereitstellung aktivieren")
+
+5. Auf der Seite **Bereitstellungsoptionen** können Sie mit den Kontrollkästchen **Bereitzustellende Objekttypen** auswählen, ob neben Benutzerobjekten auch Gruppenobjekte in Box bereitgestellt werden. Weitere Informationen finden Sie weiter unter im Abschnitt „Zuweisen von Benutzern und Gruppen“.
+
+
+6. Klicken Sie zum Abschließen der Konfiguration auf die Schaltfläche "Abschließen". <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769551.png "Automatische Benutzerbereitstellung aktivieren")
 
 
 
-##Zuweisen von Benutzern
+##Zuweisen eines Testbenutzers
   
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
@@ -131,7 +135,6 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 3.  Wählen Sie den Testbenutzer aus, und klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen. <br><br> ![Ja](./media/active-directory-saas-box-tutorial/IC767830.png "Ja")
   
-
 Nach 10 Minuten können Sie überprüfen, ob das Konto mit Box synchronisiert wurde.
 
 Als ersten Überprüfungsschritt können Sie den Bereitstellungsstatus überprüfen, indem Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für "Box" auf "Dashboard" klicken.
@@ -148,9 +151,28 @@ In Ihrem Box-Mandanten werden synchronisierte Benutzer in der **Verwaltungskonso
 <br><br> ![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769556.png "Integrationsstatus")
 
 
+##Zuweisen von Benutzern und Gruppen
+
+Auf der Registerkarte **Box > Benutzer und Gruppen** im klassischen Azure-Portal können Sie angeben, welchen Benutzern und Gruppen Zugriff auf Box gewährt werden soll. Durch die Zuweisung eines Benutzers oder einer Gruppe geschieht Folgendes:
+
+* Azure AD ermöglicht es dem zugewiesenen Benutzer (entweder durch direkte Zuweisung oder durch eine Gruppenmitgliedschaft), sich bei Box zu authentifizieren. Wenn ein Benutzer nicht zugewiesen ist, lässt Azure AD eine Anmeldung bei Box nicht zu und gibt auf der Azure AD-Anmeldeseite einen Fehler zurück.
+
+* Eine App-Kachel für Box wird dem [Anwendungsstartprogramm](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) des Benutzers hinzugefügt.
+
+* Wenn die automatische Bereitstellung aktiviert ist, werden die zugewiesenen Benutzer und/oder Gruppen der Bereitstellungswarteschlange hinzugefügt, damit sie automatisch bereitgestellt werden.
+
+    * Wenn nur Benutzerobjekte zur Bereitstellung konfiguriert wurden, werden alle direkt zugewiesenen Benutzer in der Bereitstellungswarteschlange platziert. Zudem werden alle Benutzer, die Mitglieder von zugewiesenen Gruppen sind, in die Bereitstellungswarteschlange aufgenommen. 
+    
+    * Wenn Gruppenobjekte zur Bereitstellung konfiguriert wurden, werden alle zugewiesenen Gruppenobjekte in Box bereitgestellt. Darüber hinaus werden auch alle Benutzer bereitgestellt, die Mitglieder dieser Gruppen sind. Die Gruppen- und Benutzermitgliedschaften bleiben erhalten, nachdem sie an Box übertragen wurden.
+    
+Auf der Registerkarte **Attribute > Einmaliges Anmelden** können Sie konfigurieren, welche Benutzerattribute (oder Ansprüche) in Box während der SAML-basierten Authentifizierung angezeigt werden. Auf der Registerkarte **Attribute > Bereitstellung** können Sie konfigurieren, wie Benutzer- und Gruppenattribute während der Bereitstellung von Azure AD an Box übertragen werden. Weitere Informationen finden Sie in den unten aufgeführten Ressourcen.
+
+
 ## Zusätzliche Ressourcen
 
+* [Anpassen ausgestellter Ansprüche im SAML-Token](active-directory-saml-claims-customization.md)
+* [Bereitstellung: Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

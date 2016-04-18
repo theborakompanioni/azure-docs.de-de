@@ -30,8 +30,8 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 >[AZURE.NOTE] **Für alle folgenden Szenarien müssen Sie diese Schritte ausführen:**
 
-*   [Erstellen eines Speicherkontos](storage-whatis-account.md)
-*   [Erstellen eines Azure ML-Arbeitsbereichs](machine-learning/machine-learning-create-workspace.md)
+*   [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md)
+*   [Erstellen eines Azure ML-Arbeitsbereichs](machine-learning-create-workspace.md)
 
 
 ## <a name="smalllocal"></a>Szenario 1: Kleines bis mittelgroßes tabellarisches Dataset in lokalen Dateien
@@ -168,7 +168,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
     f. Wenn Tabellenverknüpfungen erforderlich sind, erstellen Sie Indizes, um Verknüpfungen zu beschleunigen.
 
- > [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen empfiehlt es sich, die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durchzuführen. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
+ > [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen empfiehlt es sich, die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durchzuführen. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
 
 5.  Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 
@@ -208,7 +208,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 	f. Wenn Tabellenverknüpfungen erforderlich sind, erstellen Sie Indizes, um Verknüpfungen zu beschleunigen.
 
-> [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen führen Sie die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durch. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
+> [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen führen Sie die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durch. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
 
 5.  Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 
@@ -296,8 +296,8 @@ Das folgende Diagramm fasst die oben beschriebenen Szenarien sowie die Advanced 
 Umfassende exemplarische Vorgehensweisen zu Azure Machine Learning, die die Advanced Analytics Process and Technology (ADAPT) mit öffentlichen DataSets verwenden, finden Sie hier:
 
 
-* [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)
-* [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning/machine-learning-data-science-process-hive-walkthrough.md)
+* [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
+* [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md)
 
 
 [1]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-small-in-aml.png
@@ -314,4 +314,4 @@ Umfassende exemplarische Vorgehensweisen zu Azure Machine Learning, die die Adva
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

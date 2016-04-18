@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="sumukhs"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="Service-Fabric"
@@ -32,7 +32,7 @@ Die globale Konfiguration für Reliable Services wird im Clustermanifest für de
 |WriteBufferMemoryPoolMaximumInKB|Kilobytes|Keine Begrenzung|Maximale Größe, auf die der Schreibpuffer-Speicherpool des Protokollierungstools anwachsen kann.|
 |SharedLogId|GUID|""|Gibt eine eindeutige GUID an, die zum Identifizieren der standardmäßigen freigegebenen Protokolldatei verwendet wird. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht die SharedLogId angeben. Falls SharedLogId angegeben wird, muss SharedLogPath ebenfalls angegeben werden.|
 |SharedLogPath|Vollständig qualifizierter Pfadname|""|Gibt den vollständig qualifizierten Pfad zur freigegebenen Protokolldatei an. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht den SharedLogPath angeben. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden.|
-|SharedLogSizeInMB|Megabytes|8192|Gibt den MB-Wert für den Festplattenspeicher an, der für das freigegebene Protokoll statisch zugeordnet wird. Der Wert muss 2.048 oder höher sein.|
+|SharedLogSizeInMB|Megabytes|8192|Gibt den MB-Wert für den Festplattenspeicher an, der für das freigegebene Protokoll statisch zugeordnet wird. Der Wert muss größer oder gleich 2.048 sein.|
 
 ### Beispiel für einen Clustermanifestabschnitt
 ```xml
@@ -57,7 +57,7 @@ Mit SharedLogSizeInMB wird die Menge an Festplattenspeicher angegeben, die für 
 Sie können die Standardkonfigurationen für zustandsbehaftete Reliable Services mit dem Konfigurationspaket (Config) oder der Dienstimplementierung (Code) ändern.
 
 + **Config**: Die Konfiguration über das Konfigurationspaket erfolgt für jeden Dienst in der Anwendung durch Ändern der Datei „Settings.xml“, die im Stammverzeichnis des Microsoft Visual Studio-Pakets im Ordner „Config“ generiert wurde.
-+ **Code**: Die Konfiguration per Code erfolgt durch Überschreiben von StatefulService.CreateReliableStateManager und Erstellen eines ReliableStateManager mithilfe eines ReliableStateManagerConfiguration-Objekts mit den passenden Optionen.
++ **Code**: Die Konfiguration über Code erfolgt durch das Erstellen eines ReliableStateManager mithilfe eines ReliableStateManagerConfiguration-Objekts und der Festlegung der passenden Optionen.
 
 Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „Settings.xml“ nach vordefinierten Abschnittsnamen und nutzt die Konfigurationswerte beim Erstellen der zugrunde liegenden Laufzeitkomponenten.
 
@@ -90,21 +90,39 @@ ReplicatorConfig
 |MaxPrimaryReplicationQueueSize|Anzahl der Vorgänge|8192|Die maximale Anzahl der Vorgänge in der primären Warteschlange. Ein Vorgang wird freigegeben, nachdem der primäre Replicator eine Bestätigung von allen sekundären Replicators empfangen hat. Dieser Wert muss größer als 64 und eine Potenz von 2 sein.|
 |MaxSecondaryReplicationQueueSize|Anzahl der Vorgänge|16384|Die maximale Anzahl der Vorgänge in der sekundären Warteschlange. Ein Vorgang wird freigegeben, nachdem sein Zustand durch Persistenz hochverfügbar gemacht wurde. Dieser Wert muss größer als 64 und eine Potenz von 2 sein.|
 |CheckpointThresholdInMB|MB|50|Die Menge an Speicherplatz für Protokolldateien, nach dem der Status geprüft wird.|
-|MaxRecordSizeInKB|KB|1024|Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein.|
+|MaxRecordSizeInKB|KB|1024|Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein.|
 |SharedLogId|GUID|""|Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden.|
 |SharedLogPath|Vollständig qualifizierter Pfadname|""|Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden.|
 
 
 ### Beispielkonfiguration per Code
 ```csharp
-protected override IReliableStateManager CreateReliableStateManager()
+class Program
 {
-    return new ReliableStateManager(
+    /// <summary>
+    /// This is the entry point of the service host process.
+    /// </summary>
+    static void Main()
+    {
+        ServiceRuntime.RegisterServiceAsync("HelloWorldStatefulType",
+            context => new HelloWorldStateful(context, 
+                new ReliableStateManager(context, 
         new ReliableStateManagerConfiguration(
-            new ReliableStateManagerReplicatorSettings
+                        new ReliableStateManagerReplicatorSettings()
             {
                 RetryInterval = TimeSpan.FromSeconds(3)
-            }));
+                        }
+            )))).GetAwaiter().GetResult();
+    }
+}    
+```
+```csharp
+class MyStatefulService : StatefulService
+{
+    public MyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica stateManager)
+        : base(context, stateManager)
+    { }
+    ...
 }
 ```
 
@@ -136,8 +154,12 @@ protected override IReliableStateManager CreateReliableStateManager()
 
 Der Wert für "MaxStreamSizeInMB" bestimmt die Menge des Speicherplatzes, den der Replicator zum Speichern von Zustandsinformationen in der dedizierten Protokolldatei des Replikats verwenden kann. Das Festlegen dieses Werts auf einen höheren Wert als die Standardeinstellung kann zu einer kürzeren Dauer der Neukonfiguration führen, wenn dem Satz ein neues Replikat hinzugefügt wird. Dies liegt an der partiellen Statusübertragung, die aufgrund der Verfügbarkeit eines umfangreicheren Vorgangsverlaufs im Protokoll stattfindet. Die Wiederherstellung eines Replikats nach einem Absturz kann dadurch allerdings mehr Zeit in Anspruch nehmen.
 
-Die Einstellung MaxRecordSizeInKB definiert die maximale Größe eines Datensatzes, der vom Replicator in die Protokolldatei geschrieben werden kann. In den meisten Fällen ist die Standardgröße von 1024 KB für Datensätze optimal. Wenn für den Dienst aber größere Datenelemente Teil der Zustandsinformationen sind, muss dieser Wert ggf. erhöht werden. Es nützt wenig, für MaxRecordSizeInKB einen Wert unter 1024 festzulegen, da kleinere Datensätze nur den für sie erforderlichen Speicherplatz belegen. Dieser Wert muss in der Regel nur in seltenen Ausnahmefällen geändert werden.
+Die Einstellung MaxRecordSizeInKB definiert die maximale Größe eines Datensatzes, der vom Replicator in die Protokolldatei geschrieben werden kann. In den meisten Fällen ist die Standardgröße von 1024 KB für Datensätze optimal. Wenn für den Dienst aber größere Datenelemente Teil der Zustandsinformationen sind, muss dieser Wert ggf. erhöht werden. Es nützt wenig, für MaxRecordSizeInKB einen Wert unter 1024 festzulegen, da kleinere Datensätze nur den für sie erforderlichen Speicherplatz belegen. Dieser Wert muss in der Regel nur in seltenen Ausnahmefällen geändert werden.
 
 Die Einstellungen SharedLogId und SharedLogPath werden immer zusammen verwendet. Sie ermöglichen einem Dienst, ein separates freigegebenes Protokoll aus dem freigegebenen Standardprotokoll für den Knoten zu verwenden. Zur Optimierung der Effizienz sollten so viele Dienste wie möglich dasselbe freigegebene Protokoll angeben. Freigegebene Protokolldateien sollten auf Datenträgern gespeichert werden, die ausschließlich für die freigegebene Protokolldatei verwendet werden. So werden Konflikte durch die Bewegungen des Lesekopfs reduziert. Dieser Wert muss in der Regel nur in seltenen Ausnahmefällen geändert werden.
 
-<!---HONumber=AcomDC_0330_2016-->
+## Nächste Schritte
+ - [Debuggen einer Service Fabric-Anwendung in Visual Studio](service-fabric-debugging-your-application.md)
+ - [Entwicklerreferenz für zuverlässige Dienste](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+
+<!---HONumber=AcomDC_0406_2016-->

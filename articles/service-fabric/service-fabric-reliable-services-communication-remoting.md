@@ -3,9 +3,9 @@
    description="Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Diensten über einen Remoteprozeduraufruf."
    services="service-fabric"
    documentationCenter=".net"
-   authors="BharatNarasimman"
+   authors="vturecek"
    manager="timlt"
-   editor="vturecek"/>
+   editor="BharatNarasimman"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,47 +13,55 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="11/12/2015"
-   ms.author="bharatn@microsoft.com"/>
+   ms.date="03/25/2016"
+   ms.author="vturecek"/>
 
 # Dienstremoting mit Reliable Services
-Für Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, wie etwa WebAPI, WCF (Windows Communication Foundation) oder andere Dienste, stellt das Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
+Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
 
 ## Einrichten von Remoting für einen Dienst
 Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritten:
 
 1. Erstellen Sie eine Schnittstelle, die vom Dienst implementiert werden soll. Diese Schnittstelle definiert die Methoden, die für den Remoteprozeduraufruf für Ihren Dienst verfügbar sind. Bei den Methoden muss es sich um asynchrone Methoden handeln, die einen Task zurückgeben. Die Schnittstelle muss `Microsoft.ServiceFabric.Services.Remoting.IService` implementieren, um zu signalisieren, dass der Dienst über eine Remotingschnittstelle verfügt.
-2. Verwenden Sie `FabricTransportServiceRemotingListener` in Ihrem Dienst. Dies ist eine `ICommunicationListener`-Implementierung, die Remotingfunktionen bereitstellt.
+2. Verwenden Sie einen Remoting-Listener in Ihrem Dienst. Dies ist eine `ICommunicationListener`-Implementierung, die Remotingfunktionen bereitstellt. Der `Microsoft.ServiceFabric.Services.Remoting.Runtime`-Namespace enthält eine Erweiterungsmethode `CreateServiceRemotingListener` sowohl für zustandslose als auch für zustandsbehaftete Dienste, die zum Erstellen eines Remoting-Listener mit dem Standard-Remoting-Transportprotokoll verwendet werden kann.
 
-Dieser Hello World-Dienst macht beispielsweise eine einzelne Methode verfügbar, um „Hello World“ per Remoteprozeduraufruf abzurufen:
+Der folgende zustandslose Dienst macht beispielsweise eine einzelne Methode verfügbar, um „Hello World“ per Remoteprozeduraufruf abzurufen:
 
 ```csharp
-public interface IHelloWorldStateful : IService
+using Microsoft.ServiceFabric.Services.Communication.Runtime;
+using Microsoft.ServiceFabric.Services.Remoting;
+using Microsoft.ServiceFabric.Services.Remoting.Runtime;
+using Microsoft.ServiceFabric.Services.Runtime;
+
+public interface IMyService : IService
 {
     Task<string> GetHelloWorld();
 }
 
-internal class HelloWorldStateful : StatefulService, IHelloWorldStateful
+class MyService : StatelessService, IMyService
 {
-    protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
-    {
-        return new[]{
-                new ServiceReplicaListener(
-                    (context) => new FabricTransportServiceRemotingListener(context,this))};
+    public MyService(StatelessServiceContext context)
+        : base (context)
+{
     }
 
-    public Task<string> GetHelloWorld()
+    public Task HelloWorld()
     {
-        return Task.FromResult("Hello World!");
+        return Task.FromResult("Hello!");
+    }
+
+    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+    {
+        return new[] { new ServiceInstanceListener(context => 
+            this.CreateServiceRemotingListener(context)) };
     }
 }
-
 ```
-> [AZURE.NOTE] Bei den Argumenten und Rückgabetypen in der Dienstschnittstelle kann es sich um einfache, komplexe oder benutzerdefinierte Typen handeln. Sie müssen jedoch von [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) von .NET serialisiert werden können.
+> [AZURE.NOTE] Bei den Argumenten und Rückgabetypen in der Dienstschnittstelle kann es sich um einfache, komplexe oder benutzerdefinierte Typen handeln. Sie müssen jedoch durch den .NET-[DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) serialisierbar sein.
 
 
 ## Aufrufen von Remotedienstmethoden
-Methoden für einen Dienst, der den Remotingstapel nutzt, werden mithilfe eines lokalen Proxys für den Dienst über die `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy`-Klasse abgerufen. Die `ServiceProxy`-Methode erstellt einen lokalen Proxy mit der gleichen Schnittstelle, die auch der Dienst implementiert. Mit diesem Proxy können Sie Methoden für die Schnittstelle einfach remote aufrufen.
+Methoden für einen Dienst, der den Remotingstapel nutzt, werden mithilfe eines lokalen Proxys für den Dienst über die `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy`-Klasse abgerufen. Die `ServiceProxy`-Methode erstellt einen lokalen Proxy unter Verwendung der gleichen Schnittstelle, die auch der Dienst implementiert. Mit diesem Proxy können Sie Methoden für die Schnittstelle einfach remote aufrufen.
 
 
 ```csharp
@@ -74,4 +82,4 @@ Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weit
 
 * [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

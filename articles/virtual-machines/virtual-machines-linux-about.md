@@ -32,14 +32,14 @@ Anhand dieser Tabelle können Sie die von Azure angebotenen Auswahlmöglichkeite
 
 ## Nächste Schritte
 
-Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in nur wenigen Schritten einen einfachen virtuellen Computer. Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-cli-create.md).
+Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in nur wenigen Schritten einen einfachen virtuellen Computer. Anweisungen dazu finden Sie unter [Erstellen einer Linux-VM über die Azure-CLI für Entwicklung und Tests](virtual-machines-linux-quick-create-cli.md).
 
 Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-creation-choices.md).
 
 
 <!--links-->
 [App Service]: app-service-choose-me.md
-[Virtuelle Computer]: #tellmevm
-[Cloud-Dienste]: cloud-services-choose-me.md
+[Virtual Machines]: #tellmevm
+[Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

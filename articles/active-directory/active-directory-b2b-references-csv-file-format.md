@@ -14,33 +14,46 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="02/09/2016"
+   ms.date="03/31/2016"
    ms.author="viviali"/>
 
 # Vorschau der Azure AD B2B-Zusammenarbeit: CSV-Dateiformat
 
-Die Vorschauversion der Azure AD B2B-Zusammenarbeit erfordert eine CSV-Datei mit Angaben zum Partnerbenutzer, die über das Azure AD-Portal hochgeladen werden müssen. Die CSV-Datei muss die nachfolgenden erforderlichen Bezeichnungen enthalten und kann bei Bedarf optionale Felder umfassen. Ändern Sie die CSV-Beispieldatei (siehe unten), ohne die Schreibweise der Bezeichnungen in der ersten Zeile zu ändern oder die Spalten neu anzuordnen.
+Die Vorschauversion der Azure AD B2B-Zusammenarbeit erfordert eine CSV-Datei mit Angaben zum Partnerbenutzer, die über das Azure AD-Portal hochgeladen werden müssen. Die CSV-Datei muss die nachfolgenden erforderlichen Bezeichnungen enthalten und kann bei Bedarf optionale Felder umfassen. Ändern Sie die CSV-Beispieldatei (siehe unten), ohne die Schreibweise der Bezeichnungen in der ersten Zeile zu ändern.
 
->[AZURE.NOTE] Die erste Zeile mit Bezeichnungen (z. B. „Email“, „DisplayName“ usw.) ist erforderlich, damit die CSV-Datei erfolgreich analysiert werden kann. Die Schreibweise muss mit den unten angegebenen Feldern übereinstimmen. Diese Bezeichnungen geben die Inhalte darunter an. Die Bezeichnungen der nicht benötigten optionalen Felder können aus der CSV-Datei entfernt werden. Die gesamte Spalte kann leer gelassen werden.
+>[AZURE.NOTE] Die erste Zeile mit Bezeichnungen (z.B. „E-Mail“, „DisplayName“ usw.) ist erforderlich, damit die CSV-Datei erfolgreich analysiert werden kann. Die Schreibweise muss mit den unten angegebenen Feldern übereinstimmen. Diese Bezeichnungen geben die Inhalte darunter an. Die Bezeichnungen der nicht benötigten optionalen Felder können aus der CSV-Datei entfernt werden. Die gesamte Spalte kann leer gelassen werden.
 
 ## Erforderliche Felder: <br/>
-**Email**: E-Mail-Adresse des eingeladenen Benutzers <br/> **DisplayName**: Anzeigename für den eingeladenen Benutzer (i. d. R. Vor- und Nachname)<br/> **InviteContactUsUrl**: URL, die in E-Mail-Einladungen aufgenommen werden sollte, falls sich der eingeladene Benutzer an Ihr Unternehmen wenden möchte<br/>
+**Email**: E-Mail-Adresse des eingeladenen Benutzers <br/> **DisplayName**: Anzeigename für den eingeladenen Benutzer (i. d. R. Vor- und Nachname)<br/>
+
 
 ## Optionale Felder: <br/>
-**InviteAppID:** Die ID für die Anwendung, die für das Branding der E-Mail-Einladung und der Annahmeseiten verwendet wird.<br/> **InviteAppResources**: AppIDs für Unternehmensanwendungen, denen Benutzer zugewiesen werden können. AppIDs können in PowerShell durch Aufrufen von `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId` abgerufen werden.<br/> **InviteGroupResources**: ObjectIDs für Gruppen, denen Benutzer hinzugefügt werden können. ObjectIDs können in PowerShell durch Aufrufen von `Get-MsolGroup | fl DisplayName, ObjectId` abgerufen werden.<br/> **InviteReplyURL**: Die URL, an die ein eingeladener Benutzer nach der Annahme der Einladung weitergeleitet wird. Dies sollte eine unternehmensspezifische URL sein (z. B. [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/)). Wenn dieses optionale Feld nicht angegeben ist, wird der eingeladene Benutzer zum App-Zugriffsbereich weitergeleitet, in dem er zu Ihren ausgewählten Unternehmens-Apps navigieren kann. Die URL für den App-Zugriffsbereich hat das Format `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=<TenantID>`.<br/> **Language**: Die Sprache für die Einladungs-E-Mail und die Einlösung. Wenn keine Angabe erfolgt, wird standardmäßig Englisch verwendet. Die folgenden weiteren 10 Sprachcodes werden unterstützt:<br/> 1. de: Deutsch<br/> 2. es: Spanisch<br/> 3. fr: Französisch<br/> 4. it: Italienisch<br/> 5. ja: Japanisch<br/> 6. ko: Koreanisch<br/> 7. pt-BR: Portugiesisch (Brasilien)<br/> 8. ru: Russisch<br/> 9. zh-HANS: Chinesisch (vereinfacht)<br/> 10. zh-HANT: Chinesisch (traditionell)<br/>
+
+**InvitationText:** Anpassen des Texts der Einladungs-E-Mail nach dem App-Branding und vor dem Einlöselink.<br/> **InvitedToApplications:**: AppIDs für Unternehmensanwendungen, um Benutzer zuzuweisen. AppIDs können in PowerShell durch Aufrufen von `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId`<br/> abgerufen werden. **InvitedToGroups**: ObjectIDs für Gruppen, denen Benutzer hinzugefügt werden können. ObjectIDs können in PowerShell durch Aufrufen von `Get-MsolGroup | fl DisplayName, ObjectId`<br/> abgerufen werden. **InviteRedirectURL**: Die URL, an die ein eingeladener Benutzer nach der Annahme der Einladung weitergeleitet wird. Dies sollte eine unternehmensspezifische URL sein (z. B. [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/)). Wenn dieses optionale Feld nicht angegeben ist, wird der eingeladene Benutzer zum App-Zugriffsbereich weitergeleitet, in dem er zu Ihren ausgewählten Unternehmens-Apps navigieren kann. Die URL für den App-Zugriffsbereich hat das Format `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=<TenantID>`.<br/> **CcEmailAddress**: E-Mail-Adresse, um die per E-Mail zugesendete Einladung zu kopieren. Wenn das CcEmailAddress-Feld verwendet wird, kann diese Einladung nicht für E-Mail-verifizierte Benutzer oder zum Erstellen eines viralen Mandanten verwendet werden.<br/> **Language**: Die Sprache, die für die Einladungs-E-Mail und den Einlösevorgang verwendet wird. Wenn keine Angabe erfolgt, wird standardmäßig Englisch verwendet. Die anderen 10 unterstützten Sprachcodes sind:<br/>
+1. de: Deutsch<br/>
+2. es: Spanisch<br/>
+3. fr: Französisch<br/>
+4. it: Italienisch<br/>
+5. ja: Japanisch<br/>
+6. ko: Koreanisch<br/>
+7. pt-BR: Portugiesisch (Brasilien)<br/>
+8. ru: Russisch<br/>
+9. zh-HANS: Chinesisch (vereinfacht)<br/>
+10. zh-HANT: Chinesisch (traditionell)<br/>
 
 ## Beispiel-CSV-Datei
 Dies ist ein Beispiel für eine CSV-Datei, das Sie anpassen können.
 
 >[AZURE.NOTE] Kopieren Sie diese Beispieldatei, fügen Sie sie in Editor ein, und speichern Sie sie mit der Dateierweiterung „.csv“. Bearbeiten Sie sie dann in Excel. Sie wird in eine Tabelle mit Bezeichnungen in der ersten Zeile gegliedert.
 
->[AZURE.NOTE] Fügen Sie in Excel weitere optionale Felder hinzu, indem Sie die Bezeichnung angeben und die Spalte darunter füllen.
+> Fügen Sie in Excel weitere optionale Felder hinzu, indem Sie die Bezeichnung angeben und die Spalte darunter füllen.
 
 ```
-Email,DisplayName,InviteAppID,InviteReplyUrl,InviteAppResources,InviteGroupResources,InviteContactUsUrl
-wharp@contoso.com,Walter Harp,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
-jsmith@contoso.com,Jeff Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
-bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
+Email,DisplayName,InvitationText,InviteRedirectUrl,InvitedToApplications, InvitedToGroups,CcEmailAddress,Language
+wharp@contoso.com,Walter Harp,Hi Walter! I hope you’ve been doing well.,,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,,you@yourcompany.com,en
+jsmith@contoso.com,Jeff Smith,Hi Jeff! I hope you’ve been doing well.,,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,,you@yourcompany.com,en
+bsmith@contoso.com,Ben Smith,Hi Ben! I hope you’ve been doing well.,,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,,you@yourcompany.com,en
+
 ```
 
 ## Verwandte Artikel
@@ -54,4 +67,4 @@ Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit
 - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

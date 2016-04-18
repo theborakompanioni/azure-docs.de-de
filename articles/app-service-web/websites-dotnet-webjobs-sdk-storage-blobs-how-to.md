@@ -30,7 +30,7 @@ In der Anleitung wird davon ausgegangen, dass Sie wissen, [wie ein WebJobs-Proje
 
 Dieser Abschnitt beschreibt die Verwendung des `BlobTrigger`-Attributs.
 
-> [AZURE.NOTE]Das WebJobs-SDK durchsucht Protokolldateien nach neuen oder geänderten Blobs. Dieser Vorgang verläuft nicht in Echtzeit. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Darüber hinaus [werden Storage-Protokolle auf einer „best effort“](https://msdn.microsoft.com/library/azure/hh343262.aspx)-Basis erstellt; es gibt jedoch keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die Geschwindigkeit und Zuverlässigkeitseinschränkungen von Blob-Triggern für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen und für die Funktion, die das Blob verarbeitet, anstelle des `BlobTrigger`-Attributs das [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger)-Attribut zu verwenden.
+> [AZURE.NOTE] Das WebJobs-SDK durchsucht Protokolldateien nach neuen oder geänderten Blobs. Dieser Vorgang verläuft nicht in Echtzeit. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Darüber hinaus [werden Storage-Protokolle auf einer „best effort“](https://msdn.microsoft.com/library/azure/hh343262.aspx)-Basis erstellt; es gibt jedoch keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die Geschwindigkeit und Zuverlässigkeitseinschränkungen von Blob-Triggern für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen und für die Funktion, die das Blob verarbeitet, anstelle des `BlobTrigger`-Attributs das [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger)-Attribut zu verwenden.
 
 ### Einzelner Platzhalter für Blobnamen mit Erweiterung  
 
@@ -150,6 +150,21 @@ Der `WebImage`-Bindungscode wird in einer `WebImageBinder`-Klasse bereitgestellt
 		    }
 		}
 
+## Abrufen des Blobpfades für das auslösende Blob
+
+Um den Containernamen und Blobnamen des Blobs abzurufen, der die Funktion ausgelöst hat, nehmen Sie einen `blobTrigger`-Zeichenfolgenparameter mit in die Funktionssignatur auf.
+
+		public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
+		    string name,
+		    string blobTrigger,
+		    TextWriter logger)
+		{
+		     logger.WriteLine("Full blob path: {0}", blobTrigger);
+		     logger.WriteLine("Content:");
+		     logger.WriteLine(logMessage);
+		}
+
+
 ## <a id="poison"></a> Behandlung von nicht verarbeitbaren Blobs
 
 Wenn bei einer `BlobTrigger`-Funktion ein Fehler auftritt, wird sie für den Fall, dass es sich um einen vorübergehenden Fehler handelt, erneut aufgerufen. Wenn der Inhalt des Blobs den Fehler verursacht hat, misslingt die Funktion bei jedem Versuch, das Blob zu verarbeiten. Standardmäßig ruft das SDK eine Funktion bis zu 5 Mal für ein angegebenes Blob auf. Ist auch der fünfte Versuch nicht erfolgreich, fügt das SDK einer Warteschlange namens *webjobs-blobtrigger-poison* eine Nachricht hinzu.
@@ -238,4 +253,4 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 In dieser Anleitung wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Blobs behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

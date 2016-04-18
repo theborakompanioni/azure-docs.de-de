@@ -44,7 +44,7 @@ Sie geben den Bereitstellungstyp über die Eigenschaft **Mode** an, wie in den B
 
         PS C:\> Login-AzureRmAccount
 
-        Evironment : AzureCloud
+        Environment : AzureCloud
         Account    : someone@example.com
         ...
 
@@ -279,7 +279,7 @@ Bei der Verwendung einer Parameterdatei zum Übergeben von Parameterwerten an Ih
        }
     }
 
-Die Parameterdatei darf nicht größer als 64 KB sein.
+Die Parameterdatei darf nicht größer als 64 KB sein.
 
 Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](../resource-group-authoring-templates/#parameters). Ausführliche Informationen zum KeyVault-Verweis zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
@@ -292,4 +292,4 @@ Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Ers
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

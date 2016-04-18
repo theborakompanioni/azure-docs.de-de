@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
+	ms.date="04/05/2016"
 	ms.author="jgao"/>
 
 # Verwalten von Hadoop-Clustern in HDInsight mit Azure PowerShell
@@ -66,84 +66,7 @@ WebPI wird monatlich aktualisiert. Der PowerShell-Katalog wird fortlaufend aktua
 
 ##Erstellen von Clustern
 
-Ein HDInsight-Cluster erfordert eine Azure-Ressourcengruppe und einen Blob-Container in einem Azure-Speicherkonto:
-
-- Eine Azure-Ressourcengruppe ist ein logischer Container für Azure-Ressourcen. Die Azure-Ressourcengruppe und der HDInsight-Cluster müssen sich nicht am gleichen Speicherort befinden. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
-- HDInsight verwendet einen Blobcontainer eines Azure-Speicherkontos als Standarddateisystem. Sie benötigen ein Azure-Speicherkonto und einen Speichercontainer, bevor Sie ein HDInsight-Cluster erstellen können. Das Standardspeicherkonto und der HDInsight-Cluster müssen sich am gleichen Speicherort befinden.
-
-[AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
-
-**So stellen Sie eine Verbindung mit Azure her**
-
-	Login-AzureRmAccount
-	Get-AzureRmSubscription  # list your subscriptions and get your subscription ID
-	Select-AzureRmSubscription -SubscriptionId "<Your Azure Subscription ID>"
-
-**Select-AzureRMSubscription** wird aufgerufen, wenn Sie über mehrere Azure-Abonnements verfügen.
-	
-**So erstellen Sie eine neue Ressourcengruppe**
-
-	New-AzureRmResourceGroup -name <New Azure Resource Group Name> -Location "<Azure Location>"  # For example, "EAST US 2"
-
-**So erstellen Sie ein Azure-Speicherkonto**
-
-	New-AzureRmStorageAccount -ResourceGroupName <Azure Resource Group Name> -Name <Azure Storage Account Name> -Location "<Azure Location>" -Type <AccountType> # account type example: Standard_LRS for zero redundancy storage
-	
-Verwenden Sie **Standard\_ZRS** nicht, da damit Azure-Tabellen nicht unterstützt werden. HDInsight verwendet Azure-Tabellen für die Protokollierung. Eine vollständige Liste der Speicherkontotypen finden Sie unter [https://msdn.microsoft.com/library/azure/hh264518.aspx](https://msdn.microsoft.com/library/azure/hh264518.aspx).
-
-[AZURE.INCLUDE [Datencenter-Liste](../../includes/hdinsight-pricing-data-centers-clusters.md)]
-
-
-Informationen zum Erstellen eines Azure-Speicherkontos im Azure-Portal finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
-
-Falls Sie bereits ein Speicherkonto haben, jedoch den Kontonamen und den Kontoschlüssel nicht kennen, können Sie diese Informationen mit den folgenden Befehlen abrufen:
-
-	# List Storage accounts for the current subscription
-	Get-AzureRmStorageAccount
-	# List the keys for a Storage account
-	Get-AzureRmStorageAccountKey -ResourceGroupName <Azure Resource Group Name> -name $storageAccountName <Azure Storage Account Name>
-
-Ausführliche Informationen zum Abrufen dieser Informationen über das Vorschauportal finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt „Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln“.
-
-**So erstellen Sie einen Azure-Speichercontainer**
-
-Mit Azure PowerShell kann während der Erstellung des HDInsight-Clusters kein Blob-Container erstellt werden. Sie können einen Container mit dem folgenden Skript erstellen:
-
-	$resourceGroupName = "<AzureResoureGroupName>"
-	$storageAccountName = "<Azure Storage Account Name>"
-	$storageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccount |  %{ $_.Key1 }
-	$containerName="<AzureBlobContainerName>"
-
-	# Create a storage context object
-	$destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-
-	# Create a Blob storage container
-	New-AzureStorageContainer -Name $containerName -Context $destContext
-
-**So erstellen Sie einen Cluster**
-
-Sobald Sie Ihr Speicherkonto und Ihren Blobcontainer vorbereitet haben, können Sie einen Cluster erstellen.
-
-	$resourceGroupName = "<AzureResoureGroupName>"
-
-	$storageAccountName = "<Azure Storage Account Name>"
-	$containerName = "<AzureBlobContainerName>"
-
-	$clusterName = "<HDInsightClusterName>"
-	$location = "<AzureDataCenter>"
-	$clusterNodes = <ClusterSizeInNodes>
-
-	# Get the Storage account key
-	$storageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName | %{ $_.Key1 }
-
-	# Create a new HDInsight cluster
-	New-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName `
-		-ClusterName $clusterName `
-		-Location $location `
-		-DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-		-DefaultStorageAccountKey $storageAccountKey `
-		-DefaultStorageContainer $containerName  `
-		-ClusterSizeInNodes $clusterNodes
+Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
 
 ##Auflisten von Clustern
 Verwenden Sie den folgenden Befehl, um alle Cluster des aktuellen Abonnements aufzulisten:
@@ -332,4 +255,4 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

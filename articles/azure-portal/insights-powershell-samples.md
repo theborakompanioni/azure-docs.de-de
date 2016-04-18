@@ -148,13 +148,7 @@ In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Ers
 |Standort für diese Warnungsregel|	USA (Ost)|
 |ResourceGroup|	montest|
 |TargetResourceId|	/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig|
-|„MetricName“ für die Warnung, die erstellt wird|	\\PhysicalDisk(\_Total)\\Disk Writes/sec. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen.|
-|Operator| GreaterThan|
-|Schwellenwert (Anzahl/s für diese Metrik)| 1|
-| WindowSize (Format: hh:mm:ss)| 00:05:00|
-|Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet)| Average|
-|Benutzerdefinierte E-Mail-Adressen (Zeichenfolgenarray)|'foo@example.com','bar@example.com'|
-|E-Mail an Besitzer, Mitwirkende und Leser senden| -SendToServiceOwners|
+|„MetricName“ für die Warnung, die erstellt wird|	\\PhysicalDisk(\_Total)\\Disk Writes/sec. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen.| |Operator| GreaterThan| |Schwellenwert (Anzahl/s für diese Metrik)| 1| | WindowSize (Format: hh:mm:ss)| 00:05:00| |Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet)| Average| |Benutzerdefinierte E-Mail-Adressen (Zeichenfolgenarray)|'foo@example.com','bar@example.com'| |E-Mail an Besitzer, Mitwirkende und Leser senden| -SendToServiceOwners|
 
 Erstellen einer E-Mail-Aktion
 
@@ -229,7 +223,6 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 Eine vollständige Liste der verfügbaren Optionen für `Get-AzureRmMetricDefinition` finden Sie unter [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
-Eine Liste der verfügbaren Metriken und deren Einheiten für verschiedene Azure-Dienste finden Sie unter [TITEL DER WEBSEITE](http://link).
 
 ## Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
 Für eine Ressource wie eine Web-App, eine VM, ein Clouddienst oder eine VM-Skalierungsgruppe kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden. Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasierte Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale.md).
@@ -312,7 +305,7 @@ Get-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -Detai
 ```
 
 ### Entfernen einer Einstellung zur automatischen Skalierung
-Sie können das Cmdlet `Remove-Autoscalesetting` zum Löschen einer Einstellung zur automatischen Skalierung verwenden.
+Sie können das Cmdlet `Remove-Autoscalesetting` zum Löschen einer Einstellung für automatische Skalierung verwenden.
 
 ```
 Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
@@ -320,10 +313,10 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 
 ## Verwalten von Protokollprofilen für Überwachungsprotokolle
 
-Sie erstellen ein *Protokollprofil* und exportieren Daten aus Ihren Überwachungsprotokollen in ein Speicherkonto. Dafür können Sie die Datenaufbewahrung konfigurieren. Optional können Sie die Daten auch an Ihren Event Hub streamen. Beachten Sie, dass sich diese Funktion derzeit in Vorschauphase befindet und Sie nur ein Protokollprofil pro Abonnement erstellen können. Sie können die folgenden Cmdlets mit Ihrem aktuellen Abonnement verwenden, um Protokollprofile zu erstellen und zu verwalten. Sie können auch ein bestimmtes Abonnement auswählen. Obwohl in PowerShell standardmäßig das aktuelle Abonnement verwendet wird, könne Sie dies jederzeit mit `Set-AzureRmContext` ändern. Sie können Überwachungsprotokolle so konfigurieren, dass Daten an ein beliebiges Speicherkonto oder einen Event Hub im Abonnement weitergeleitet werden. Daten werden als Blobdateien im JSON-Format geschrieben.
+Sie können ein *Protokollprofil* erstellen, Daten aus Ihren Überwachungsprotokollen in ein Speicherkonto exportieren und die Aufbewahrungsdauer für diese festlegen. Optional können Sie die Daten auch an Ihren Event Hub streamen. Beachten Sie, dass sich diese Funktion derzeit in Vorschauphase befindet und Sie nur ein Protokollprofil pro Abonnement erstellen können. Sie können die folgenden Cmdlets mit Ihrem aktuellen Abonnement verwenden, um Protokollprofile zu erstellen und zu verwalten. Sie können auch ein bestimmtes Abonnement auswählen. Obwohl in PowerShell standardmäßig das aktuelle Abonnement verwendet wird, können Sie dies jederzeit mit `Set-AzureRmContext` ändern. Sie können Überwachungsprotokolle so konfigurieren, dass Daten an ein beliebiges Speicherkonto oder einen Event Hub im Abonnement weitergeleitet werden. Daten werden als Blobdateien im JSON-Format geschrieben.
 
 ### Abrufen eines Protokollprofils
-Verwenden Sie zum Abrufen von vorhandenen Protokollprofilen das Cmdlet `Get-AzureRmLogProfile`.
+Verwenden Sie zum Abrufen Ihrer vorhandenen Protokollprofile das Cmdlet `Get-AzureRmLogProfile`.
 
 ### Hinzufügen eines Protokollprofils ohne Datenaufbewahrung
 
@@ -339,7 +332,7 @@ Remove-AzureRmLogProfile -name my_log_profile_s1
 
 ### Hinzufügen eines Protokollprofils mit Datenaufbewahrung
 
-Sie können die **-RetentionInDays**-Eigenschaft mit der Anzahl der Tage (als positive ganze Zahl) für die Aufbewahrung der Daten angeben.
+Sie können die **-RetentionInDays**-Eigenschaft mit der Anzahl von Tagen (als positive ganze Zahl) für die Aufbewahrung der Daten angeben.
 
 ```
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
@@ -385,4 +378,4 @@ Aktivieren der Diagnoseeinstellung mit Aufbewahrung für eine bestimmte Protokol
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

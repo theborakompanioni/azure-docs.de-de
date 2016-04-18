@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="heeldin"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/14/2016"
+   ms.date="03/25/2016"
    ms.author="heeldin;motanv"/>
 
 # Testability-Aktionen
@@ -28,7 +28,7 @@ Testability-Aktionen sind nach zwei Hauptbereichen (Buckets) klassifiziert:
 
 * Nicht ordnungsgemäße Fehler: Mit diesen Fehlern werden Fehler wie Neustarts von Computern und Abstürze von Prozessen simuliert. Bei diesen Fehlern wird der Ausführungskontext von Prozessen abrupt beendet. Dies bedeutet, dass keine Bereinigung des Status ausgeführt werden kann, bevor die Anwendung neu gestartet wird.
 
-* Ordnungsgemäße Fehler: Mit diesen Fehlern werden ordnungsgemäße Aktionen simuliert, z. B. Verschiebungen von Replikaten und per Lastenausgleich ausgelöst Ablegevorgänge. In diesen Fällen wird der Dienst über das Schließen informiert und kann vor dem Beenden den Status bereinigen.
+* Ordnungsgemäße Fehler: Mit diesen Fehlern werden ordnungsgemäße Aktionen simuliert, z. B. Verschiebungen von Replikaten und per Lastenausgleich ausgelöst Ablegevorgänge. In diesen Fällen wird der Dienst über das Schließen informiert und kann vor dem Beenden den Status bereinigen.
 
 Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmensworkload aus, während Sie verschiedene ordnungsgemäße und nicht ordnungsgemäße Fehler auslösen. Bei nicht ordnungsgemäßen Fehlern werden Szenarien simuliert, bei denen der Dienstprozess mitten in einem Workflow abrupt beendet wird. Auf diese Weise wird der Wiederherstellungspfad getestet, nachdem das Dienstreplikat von Service Fabric wiederhergestellt wurde. Dies ist eine Hilfe beim Testen der Datenkonsistenz und der richtigen Beibehaltung des Dienstzustands nach Ausfällen. Bei den anderen (ordnungsgemäßen) Fehlern wird getestet, ob der Dienst richtig auf Replikate reagiert, die von Service Fabric verschoben werden. Hierbei wird auch die Behandlung des Abbruchs in der RunAsync-Methode getestet. Der Dienst muss überprüfen, ob das Abbruchtoken festgelegt ist, den Status korrekt speichern und die RunAsync-Methode beenden.
 
@@ -89,13 +89,13 @@ Der folgende Screenshot zeigt den Testability-Befehl **Restart-ServiceFabricNode
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-Die Ausgabe der ersten Instanz von **Get-ServiceFabricNode** (ein Cmdlet aus dem Service Fabric-PowerShell-Modul) zeigt, dass der lokale Cluster über fünf Knoten verfügt: „Node.1“ bis „Node.5“. Nach Ausführung der Testability-Aktion **Restart-ServiceFabricNode** (Cmdlet) für „Node.4“ ist zu sehen, dass die Betriebszeit des Knotens zurückgesetzt wurde.
+Die Ausgabe der ersten Instanz von **Get-ServiceFabricNode** (ein Cmdlet aus dem Service Fabric-PowerShell-Modul) zeigt, dass der lokale Cluster über fünf Knoten verfügt: „Node.1“ bis „Node.5“. Nach Ausführung der Testability-Aktion **Restart-ServiceFabricNode** (Cmdlet) für „Node.4“ ist zu sehen, dass die Betriebszeit des Knotens zurückgesetzt wurde.
 
 ### Ausführen einer Aktion für einen Azure-Cluster
 
 Eine Testability-Aktion kann für einen Azure-Cluster (mit PowerShell) auf ähnliche Weise ausgeführt werden wie für einen lokalen Cluster. Der einzige Unterschied besteht darin, dass vor dem Ausführen der Aktion keine Verbindung mit dem lokalen Cluster hergestellt werden muss, sondern mit dem Azure-Cluster.
 
-## Ausführen einer Testability-Aktion mit C##
+## Ausführen einer Testability-Aktion
 
 Zum Ausführen einer Testability-Aktion mit C# müssen Sie zuerst per FabricClient eine Verbindung mit dem Cluster herstellen. Anschließend rufen Sie die Parameter ab, die Sie zum Ausführen der Aktion benötigen. Es können verschiedene Parameter verwendet werden, um die gleiche Aktion auszuführen. Eine Möglichkeit zum Ausführen der Aktion „RestartServiceFabricNode“ besteht in der Verwendung der Knoteninformationen (Knotenname und Knoteninstanz-ID) im Cluster.
 
@@ -236,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [Simulieren von Ausfällen während der Bearbeitung von Dienstworkloads](service-fabric-testability-workload-tests.md)
    - [Ausfälle bei der Kommunikation von Dienst zu Dienst](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

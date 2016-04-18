@@ -21,7 +21,7 @@
 
 # Tutorial: Ausführen von Stimmungsanalysen mit Stream Analytics und Machine Learning #
 
-In diesem Tutorial soll Ihnen die schnelle Einrichtung eines einfachen Stream Analytics-Auftrags mit Machine Learning-Integration vermittelt werden. Wir nutzen ein Sentiment Analytics Machine Learning-Modell aus dem Cortana Analytics-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert (Sentiment Score) in Echtzeit zu ermitteln. Dieses Tutorial eignet sich gut zum Erlernen folgender Szenarien: Echtzeit-Stimmungsanalyse für Streaming-Twitter-Daten, Datensatzanalyse beim Kundenchat mit Support-Personal, Kommentare zu Foren/Blogs/Videos und viele andere Echtzeitszenarien im Bereich Predictive Scoring.
+In diesem Tutorial soll Ihnen die schnelle Einrichtung eines einfachen Stream Analytics-Auftrags mit Machine Learning-Integration vermittelt werden. Wir nutzen ein Sentiment Analytics Machine Learning-Modell aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Dieses Tutorial eignet sich gut zum Erlernen folgender Szenarien: Echtzeit-Stimmungsanalyse für Streaming-Twitter-Daten, Datensatzanalyse beim Kundenchat mit Support-Personal, Kommentare zu Foren/Blogs/Videos und viele andere Echtzeitszenarien im Bereich Predictive Scoring.
   
 In diesem Tutorial wird eine CSV-Beispieldatei mit Text (siehe Abbildung 1 unten) als Eingabe in den Azure-Blob-Speicher bereitgestellt. Mit dem Auftrag wird das Sentiment Analytics-Modell als benutzerdefinierte Funktion (UDF) auf die Beispieltextdaten aus dem Blob-Speicher angewendet. Das Endergebnis wird in den gleichen Azure-Blob-Speicher in einer anderen CSV-Datei eingefügt. (Ein Diagramm mit dieser Konfiguration ist unten in Abbildung 2 angegeben.) Wenn Sie ein realistischeres Szenario wünschen, können Sie diese Blob-Speichereingabe durch Streaming-Twitter-Daten aus einer Azure Event Hub-Eingabe ersetzen. Außerdem kann eine [Power BI](https://powerbi.microsoft.com/)-Echtzeitvisualisierung der zusammengefassten Stimmung erstellt werden. Zukünftige Versionen dieses Artikels werden Erweiterungen dieser Art enthalten.
 
@@ -43,7 +43,7 @@ Für diesen Artikel gelten folgende Voraussetzungen:
 Die ausgeführten Schritte lassen sich grob wie folgt zusammenfassen:
 
 1.	Hochladen der CSV-Eingabedatei in Blob Storage
-2.	Hinzufügen eines Sentiment Analytics-Modells aus dem Cortana Analytics-Katalog in den Machine Learning-Arbeitsbereich
+2.	Hinzufügen eines Sentiment Analytics-Modells aus dem Cortana Intelligence-Katalog in den Machine Learning-Arbeitsbereich
 3.	Bereitstellen dieses Modells als Webdienst im Azure Machine Learning-Arbeitsbereich
 4.	Erstellen eines Stream Analytics-Auftrags, mit dem dieser Webdienst als Funktion aufgerufen wird, um die Stimmung für die Texteingabe zu bestimmen
 5.	Starten des Stream Analytics-Auftrags und Verfolgen der Ausgabe 
@@ -63,9 +63,9 @@ Für diesen Schritt können Sie eine beliebige CSV-Datei verwenden, z. B. die i
 
 3.	Laden Sie die CSV-Datei hoch, indem Sie auf das Symbol **BLOB hochladen** klicken und dann **file from the local disk** auswählen.
 
-## Hinzufügen des Sentiment Analytics-Modells aus dem Cortana Analytics-Katalog
+## Hinzufügen des Sentiment Intelligence-Modells aus dem Cortana Analytics-Katalog
 
-1.	Laden Sie das [Predictive Experiment - Mini Twitter sentiment analysis](https://gallery.cortanaanalytics.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) aus dem Cortana Analytics-Katalog herunter.  
+1.	Laden Sie das [Predictive Experiment - Mini Twitter sentiment analysis](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) (Vorhersageexperiment – Mini Twitter Stimmungsanalyse) aus dem Cortana Intelligence-Katalog herunter.  
 2.	Klicken Sie in Studio auf **Öffnen**:  
 
     ![Stream Analytics Machine Learning-Tutorial – Machine Learning Studio öffnen](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)
@@ -140,7 +140,7 @@ Notieren Sie sich die Webdienst-URL und den Zugriffsschlüssel aus den herunterg
 
 ## Zusammenfassung
 
-In diesem Tutorial wurde ein Stream Analytics-Auftrag erstellt, mit dem Streamingtextdaten gelesen werden und ein Sentiment Analytics-Prozess dafür in Echtzeit durchgeführt wird. Dies alles war möglich, ohne dass Sie sich mit der komplexen Erstellung eines Sentiment Analytics-Modells beschäftigen mussten. Dies ist einer der Vorteile der Cortana Analytics Suite.
+In diesem Tutorial wurde ein Stream Analytics-Auftrag erstellt, mit dem Streamingtextdaten gelesen werden und ein Sentiment Analytics-Prozess dafür in Echtzeit durchgeführt wird. Dies alles war möglich, ohne dass Sie sich mit der komplexen Erstellung eines Sentiment Analytics-Modells beschäftigen mussten. Dies ist einer der Vorteile der Cortana Intelligence Suite.
 
 Sie können sich auch die auf die Azure Machine Learning-Funktion bezogenen Metriken ansehen. Klicken Sie auf die Registerkarte **ÜBERWACHEN**. Sie sehen drei funktionsbezogene Metriken:
   
@@ -150,4 +150,4 @@ Sie können sich auch die auf die Azure Machine Learning-Funktion bezogenen Metr
 
     ![Stream Analytics Machine Learning-Tutorial – ML-Überwachungsansicht](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/19/2016"
+   ms.date="04/05/2016"
    ms.author="seanmck"/>
 
 
 # Erstellen eines Web-Front-Ends für Ihre Anwendung
+
+>[AZURE.WARNING] Aufgrund der Änderungen, die in ASP.NET Core RC2 vorgenommen werden, ist dieser Artikel vorübergehend nicht korrekt, da die referenzierte Projektvorlage aus dem SDK entfernt wurde. Dieser Artikel wird aktualisiert, wenn ASP.NET Core RC2 veröffentlicht wird. In der Zwischenzeit können Sie die zustandslose Web-API-Vorlage verwenden, die in [Erste Schritte: Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md) beschrieben wird.
 
 Standardmäßig enthalten Azure Service Fabric-Dienste keine öffentliche Web-Schnittstelle. Um die Funktionalität Ihrer Anwendung für HTTP-Clients verfügbar zu machen, müssen Sie ein Webprojekt als Einstiegspunkt erstellen und dann darüber mit den einzelnen Diensten kommunizieren.
 
@@ -32,11 +34,11 @@ ASP.NET 5 ist ein einfaches, plattformübergreifendes Webentwicklungsframework, 
 
 	![Hinzufügen eines neuen Dienstes zu einer vorhandenen Anwendung][vs-add-new-service]
 
-2. Wählen Sie „**ASP.NET 5**“ im Dialogfeld „**Erstellen eines Diensts**“ aus, und legen Sie einen Namen fest.
+2. Wählen Sie **ASP.NET 5** auf der Seite **Erstellen eines Diensts** aus, und legen Sie einen Namen fest.
 
 	![Auswählen eines neuen ASP.NET-Webdienstes im Dialogfeld „Neuer Dienst“][vs-new-service-dialog]
 
-3. Die nächste Seite umfasst eine Reihe von ASP.NET 5-Projektvorlagen. Beachten Sie, dass dies die gleichen Vorlagen sind, wie wenn Sie ein ASP.NET 5-Projekts außerhalb einer Service Fabric-Anwendung erstellen. In diesem Tutorial wählen wir „**Web API**“. Sie können jedoch mit denselben Konzepten eine vollständige Webanwendung erstellen.
+3. Die nächste Seite umfasst eine Reihe von ASP.NET 5-Projektvorlagen. Beachten Sie, dass dies die gleichen Vorlagen sind, wie wenn Sie ein ASP.NET 5-Projekts außerhalb einer Service Fabric-Anwendung erstellen. In diesem Tutorial wählen wir **Web-API**. Sie können jedoch mit denselben Konzepten eine vollständige Webanwendung erstellen.
 
 	![Auswählen des ASP.NET-Projekttyps][vs-new-aspnet-project-dialog]
 
@@ -50,9 +52,9 @@ Um einen Eindruck unserer Arbeit zu erhalten, stellen wir die neue Anwendung ber
 
 1. Drücken Sie in Visual Studio die Taste F5, um die App zu debuggen.
 
-2. Nach Abschluss der Bereitstellung startet Visual Studio den Browser im Stamm des ASP.NET Web API-Diensts, z. B. http://localhost:33003. Die Portnummer wird nach dem Zufallsprinzip zugewiesen und kann auf Ihrem Computer anders sein. Da die ASP.NET 5 Web-API-Vorlage kein Standardverhalten für den Stamm bereitstellt, wird eine Fehlermeldung im Browser angezeigt.
+2. Nach Abschluss der Bereitstellung startet Visual Studio den Browser im Stamm des ASP.NET Web-API-Diensts, z.B. http://localhost:33003. Die Portnummer wird nach dem Zufallsprinzip zugewiesen und kann auf Ihrem Computer anders sein. Da die ASP.NET 5 Web-API-Vorlage kein Standardverhalten für den Stamm bereitstellt, wird eine Fehlermeldung im Browser angezeigt.
 
-3. Fügen Sie dem Speicherort im Browser `/api/values` hinzu. Dies ruft die `Get` Methode im ValuesController in der Web-API-Vorlage auf. Dieser gibt die standardmäßige Antwort, die von der Vorlage bereitgestellt wird – ein JSON-Array, das zwei Zeichenfolgen enthält:
+3. Fügen Sie dem Speicherort im Browser `/api/values` hinzu. Dies ruft die `Get`-Methode im ValuesController in der Web-API-Vorlage auf. Dieser gibt die standardmäßige Antwort, die von der Vorlage bereitgestellt wird – ein JSON-Array, das zwei Zeichenfolgen enthält:
 
     ![Von der ASP.NET 5 Web-API-Vorlage zurückgegebene Standardwerte][browser-aspnet-template-values]
 
@@ -61,24 +63,24 @@ Um einen Eindruck unserer Arbeit zu erhalten, stellen wir die neue Anwendung ber
 
 ## Verbinden der Dienste
 
-Service Fabric bietet absolute Flexibilität bei der Kommunikation mit Reliable Services. Innerhalb einer einzelnen Anwendung haben Sie womöglich Dienste, die über TCP zugänglich sind, andere Dienste, auf die über eine HTTP-REST-API zugegriffen werden kann und wiederum andere Dienste, auf die über WebSockets zugegriffen werden kann. Ausführliche Informationen zu den verfügbaren Optionen und deren Vor- und Nachteilen finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md). In diesem Tutorial greifen wir auf einen einfacheren Ansatz zurück und verwenden die im SDK bereitgestellten `ServiceProxy`/`ServiceRemotingListener`-Klassen.
+Service Fabric bietet absolute Flexibilität bei der Kommunikation mit Reliable Services. Innerhalb einer einzelnen Anwendung haben Sie womöglich Dienste, die über TCP zugänglich sind, andere Dienste, auf die über eine HTTP-REST-API zugegriffen werden kann und wiederum andere Dienste, auf die über WebSockets zugegriffen werden kann. Ausführliche Informationen zu den verfügbaren Optionen und deren Vor- und Nachteilen finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md). In diesem Tutorial greifen wir auf einen einfacheren Ansatz zurück und verwenden die im SDK bereitgestellten `ServiceProxy`-/`ServiceRemotingListener`-Klassen.
 
-In dem `ServiceProxy` Ansatz (modelliert basierend auf Remoteprozeduraufrufen oder RPCs), definieren Sie eine Schnittstelle, die als der öffentliche Vertrag für den Dienst fungiert. Anschließend verwenden Sie diese Schnittstelle zum Generieren einer Proxyklasse für die Interaktion mit dem Dienst.
+Im `ServiceProxy`-Ansatz (modelliert basierend auf Remoteprozeduraufrufen oder RPCs) definieren Sie eine Schnittstelle, die als der öffentliche Vertrag für den Dienst fungiert. Anschließend verwenden Sie diese Schnittstelle zum Generieren einer Proxyklasse für die Interaktion mit dem Dienst.
 
 
 ### Erstellen der Benutzeroberfläche
 
 Wir erstellen zunächst die Benutzeroberfläche, die als Vertrag zwischen dem zustandsbehafteten Dienst und dessen Clients fungiert, einschließlich des ASP.NET 5-Projekts.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe und dann auf „**Hinzufügen**“ > „**Neues Projekt**“.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe und dann auf **Hinzufügen** > **Neues Projekt**.
 
-2. Wählen Sie im linken Navigationsbereich den **Visual C#**-Eintrag und dann die **Klassenbibliothek**-Vorlage aus. Stellen Sie sicher, dass Sie die .NET-Frameworkversion **4.5.1** verwenden.
+2. Wählen Sie im linken Navigationsbereich den **Visual C#**-Eintrag und dann die **Klassenbibliothek**-Vorlage aus. Stellen Sie sicher, dass Sie die .NET-Framework-Version **4.5.1** verwenden.
 
     ![Erstellen eines Schnittstellenprojekts für Ihren zustandsbehafteten Dienst][vs-add-class-library-project]
 
-3. Damit eine Schnittstelle von `ServiceProxy` verwendet werden kann, muss diese von der IService-Schnittstelle abgeleitet werden. Diese Schnittstelle ist in einem der Service Fabric-NuGet-Pakete enthalten. Klicken Sie zum Hinzufügen des Pakets mit der rechten Maustaste auf das neue Klassenbibliotheksprojekt, und wählen Sie **NuGet-Pakete verwalten** aus.
+3. Damit `ServiceProxy` eine Schnittstelle verwenden kann, muss diese von der IService-Schnittstelle abgeleitet werden. Diese Schnittstelle ist in einem der Service Fabric-NuGet-Pakete enthalten. Klicken Sie zum Hinzufügen des Pakets mit der rechten Maustaste auf das neue Klassenbibliotheksprojekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 
-4. Stellen Sie sicher, dass das Kontrollkästchen „**Vorversion einschließen**“ aktiviert ist, suchen Sie nach dem **Microsoft.ServiceFabric.Services**-Paket, und installieren Sie es.
+4. Stellen Sie sicher, dass das Kontrollkästchen **Vorabversion einschließen** aktiviert ist, suchen Sie nach dem **Microsoft.ServiceFabric.Services**-Paket, und installieren Sie es.
 
     ![Abrufen des Services NuGet-Pakets][vs-services-nuget-package]
 
@@ -105,7 +107,7 @@ Nach dem Definieren der Schnittstelle müssen wir sie in den zustandsbehafteten 
 
     ![Hinzufügen eines Verweises auf das Klassenbibliotheksprojekt im zustandsbehafteten Dienst][vs-add-class-library-reference]
 
-2. Suchen Sie die Klasse, die mit `StatefulService` verknüpft ist, z. B. `MyStatefulService`, und erweitern Sie sie zum Implementieren der `ICounter`-Schnittstelle.
+2. Suchen Sie die Klasse, die von `StatefulService` erbt, z.B. `MyStatefulService`, und erweitern Sie sie zum Implementieren der `ICounter`-Schnittstelle.
 
     ```c#
     using MyStatefulService.Interfaces;
@@ -118,7 +120,7 @@ Nach dem Definieren der Schnittstelle müssen wir sie in den zustandsbehafteten 
     }
     ```
 
-3. Implementieren Sie jetzt die einzige Methode, die in der `ICounter`-Schnittstelle definiert ist, „`GetCountAsync`“.
+3. Implementieren Sie jetzt die einzige Methode, die in der `ICounter`-Schnittstelle definiert ist: `GetCountAsync`.
 
     ```c#
     public async Task<long> GetCountAsync()
@@ -137,11 +139,11 @@ Nach dem Definieren der Schnittstelle müssen wir sie in den zustandsbehafteten 
 
 ### Bereitstellen des zustandsbehafteten Diensts mit „ServiceRemotingListener“
 
-Nach dem Implementieren der `ICounter`-Schnittstelle besteht der letzte Schritt bei der Aktivierung des zustandsbehafteten Diensts darin, von anderen Diensten aufgerufen zu werden, um einen Kommunikationskanal zu öffnen. Für zustandsbehaftete Dienste bietet Service Fabric eine überschreibbare Methode namens „`CreateServiceReplicaListeners`“. Mit dieser Methode können Sie eine oder mehrere Kommunikationslistener angeben, basierend auf der Art der Kommunikation, die Sie in ihrem Dienst aktivieren möchten.
+Nach dem Implementieren der `ICounter`-Schnittstelle besteht der letzte Schritt bei der Aktivierung des zustandsbehafteten Diensts darin, von anderen Diensten aufgerufen zu werden, um einen Kommunikationskanal zu öffnen. Für zustandsbehaftete Dienste bietet Service Fabric eine überschreibbare Methode namens `CreateServiceReplicaListeners`. Mit dieser Methode können Sie eine oder mehrere Kommunikationslistener angeben, basierend auf der Art der Kommunikation, die Sie in ihrem Dienst aktivieren möchten.
 
 >[AZURE.NOTE] Die entsprechende Methode zum Öffnen eines Kommunikationskanals für zustandslose Dienste lautet `CreateServiceInstanceListeners`.
 
-In diesem Fall ersetzen wir die vorhandene `CreateServiceReplicaListeners`-Methode und stellen eine Instanz des `ServiceRemotingListener` bereit. Dieser erstellt einen RPC-Endpunkt, der von Clients über `ServiceProxy` aufgerufen werden kann.
+In diesem Fall ersetzen wir die vorhandene `CreateServiceReplicaListeners`-Methode und stellen eine Instanz von `ServiceRemotingListener` bereit. Diese erstellt einen RPC-Endpunkt, der von Clients über `ServiceProxy` aufgerufen werden kann.
 
 ```c#
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
@@ -164,11 +166,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten zu empfangen. Es fehlt also nur noch das Hinzufügen des Codes, um durch ASP.NET Web Service mit dem Dienst zu kommunizieren.
 
-1. Fügen Sie Ihrem ASP.NET-Projekt einen Verweis auf die Klassenbibliothek hinzu, welche `ICounter`-Schnittstelle enthält.
+1. Fügen Sie Ihrem ASP.NET-Projekt einen Verweis auf die Klassenbibliothek hinzu, welche die `ICounter`-Schnittstelle enthält.
 
 2. Fügen Sie dem ASP.NET-Projekt das Microsoft.ServiceFabric.Services-Paket auf dieselbe Weise hinzu wie zuvor beim Klassenbibliotheksprojekt. Dadurch wird die `ServiceProxy`-Klasse bereitgestellt.
 
-3. Öffnen Sie im Ordner „**Controllers**“ die `ValuesController`-Klasse. Beachten Sie, dass derzeit nur die `Get`-Methode ein hartcodiertes Zeichenfolgenarray von „Wert1“ und „Wert2“ zurückgibt, das wir im vorherigen Browserverhalten gesehen haben. Ersetzen Sie diese Implementierung durch den folgenden Code:
+3. Öffnen Sie im Ordner **Controller** die `ValuesController`-Klasse. Beachten Sie, dass die `Get`-Methode derzeit nur ein hartcodiertes Zeichenfolgenarray von „value1“ und „value2“ zurückgibt – was wir im vorherigen Browserverhalten gesehen haben. Ersetzen Sie diese Implementierung durch den folgenden Code:
 
     ```c#
     using MyStatefulService.Interfaces;
@@ -193,7 +195,7 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten z
 
     Der Dienstname ist eine URI der Formular-Fabric: /&lt;application\_name&gt;/&lt;service\_name&gt;.
 
-    Mit diesen zwei Angaben kann Service Fabric den Computer eindeutig identifizieren, an den Anforderungen gesendet werden sollen. Die „`ServiceProxy`“-Klasse greift auch dann ein, wenn der Computers ausfällt, der die Partition des zustandsbehafteten Diensts hostet, und ein anderer Computer dessen Stelle einnehmen muss. Diese Abstraktion vereinfacht das Schreiben des Clientcodes für den Umgang mit anderen Diensten beträchtlich.
+    Mit diesen zwei Angaben kann Service Fabric den Computer eindeutig identifizieren, an den Anforderungen gesendet werden sollen. Die `ServiceProxy`-Klasse greift auch dann nahtlos ein, wenn der Computer ausfällt, der die Partition des zustandsbehafteten Diensts hostet, und ein anderer Computer dessen Stelle einnehmen muss. Diese Abstraktion vereinfacht das Schreiben des Clientcodes für den Umgang mit anderen Diensten beträchtlich.
 
     Sobald wir den Proxy haben, rufen wir einfach die `GetCountAsync`-Methode auf und geben das Ergebnis zurück.
 
@@ -237,4 +239,4 @@ Informationen zum Konfigurieren verschiedener Werte für andere Umgebungen finde
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

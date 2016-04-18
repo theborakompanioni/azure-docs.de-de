@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Lösungs-Playbook zur Fahrzeugtelemetrieanalyse: Ausführliche Betrachtung der Lösung | Microsoft Azure" 
-	description="Verwenden Sie die Funktionen von Cortana Analytics zur Echtzeitgewinnung von prädiktiven Einblicken in den Fahrzeugzustand und das Fahrverhalten." 
+	description="Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten." 
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
@@ -155,9 +155,9 @@ Nachdem die Pipeline erfolgreich ausgeführt wurde und das Dataset „RawCarEven
 
 ### Referenzen
 
-[Azure Event Hub-SDK für Datenstromerfassung](event-hubs-csharp-ephcs-getstarted.md)
+[Azure Event Hub-SDK für Datenstromerfassung](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-[Azure Data Factory-Funktionen für die Datenverschiebung](data-factory-data-movement-activities.md) [Azure Data Factory DotNet-Aktivität](data-factory-use-custom-activities.md)
+[Azure Data Factory-Funktionen für die Datenverschiebung](../data-factory/data-factory-data-movement-activities.md) [Azure Data Factory DotNet-Aktivität](../data-factory/data-factory-use-custom-activities.md)
 
 [Visual Studio-Projektmappe „Azure Data Factory-DotNet-Aktivität“ zum Vorbereiten von Beispieldaten](http://go.microsoft.com/fwlink/?LinkId=717077)
 
@@ -706,4 +706,4 @@ Klicken Sie hier, um eine ausführliche Anleitung zum Einrichten der PowerBI-Ber
 
 In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Vehicle Telemetry Analytics) ausführlich beschrieben. Es wird ein Lambda-Architekturmuster für die Echtzeit- und Batchanalyse mit Vorhersagen und Aktionen veranschaulicht. Dieses Muster gilt für eine Vielzahl von Anwendungsfällen, für die „Hot Path“-Analysen (Echtzeit) und „Cold Path“-Analysen (Batch) erforderlich sind.
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

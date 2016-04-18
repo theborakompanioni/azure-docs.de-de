@@ -1,7 +1,4 @@
 
-In diesem Artikel wird gezeigt, wie mit Azure-Ressourcen-Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle (Azure-CLI) die folgenden allgemeinen Aufgaben zum Bereitstellen und Verwalten von virtuellen Azure-Computern automatisiert werden. Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
-
-
 - [Schnelles Erstellen eines virtuellen Computers in Azure](#quick-create-a-vm-in-azure)
 - [Bereitstellen eines virtuellen Computers in Azure anhand einer Vorlage](#deploy-a-vm-in-azure-from-a-template)
 - [Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](#create-a-custom-vm-image)
@@ -16,11 +13,11 @@ In diesem Artikel wird gezeigt, wie mit Azure-Ressourcen-Manager-Vorlagen und de
 
 ## Vorbereitung
 
-Vor der Verwendung der Azure-CLI mit Azure-Ressourcengruppen benötigen Sie die richtige Version der Azure-CLI und ein Azure-Konto. Wenn Sie nicht über die Azure-CLI verfügen, [installieren Sie sie](xplat-cli-install.md).
+Vor der Verwendung der Azure-CLI mit Azure-Ressourcengruppen benötigen Sie die richtige Version der Azure-CLI und ein Azure-Konto. Wenn Sie nicht über die Azure-CLI verfügen, [installieren Sie sie](../articles/xplat-cli-install.md).
 
 ### Aktualisieren Ihrer Azure-CLI auf Version 0.9.0 oder höher
 
-Geben Sie `azure --version` ein, um zu prüfen, ob Sie bereits Version 0.9.0 oder höher installiert haben.
+Geben Sie `azure --version` ein, um zu prüfen, ob Sie bereits Version 0.9.0 oder höher installiert haben.
 
 	azure --version
     0.9.0 (node: 0.10.25)
@@ -214,7 +211,7 @@ Verwenden Sie die Anweisungen in den folgenden Abschnitten, um einen neuen virtu
 
 ### Schritt 1: Untersuchen der JSON-Datei für die Vorlagenparameter
 
-Dies ist der Inhalt der JSON-Datei für die Vorlage. (Die Vorlage befindet sich auch in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json).)
+Dies ist der Inhalt der JSON-Datei für die Vorlage. (Die Vorlage befindet sich auch in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json).)
 
 Vorlagen sind flexibel. Der Entwickler hat sich möglicherweise dazu entschlossen, viele Parameter zur Verfügung zu stellen oder nur einige wenige, indem eine Vorlage erstellt wurde, die stärker festgelegt ist. Um die Informationen zu sammeln, müssen Sie die Vorlage als Parameter übergeben, die Vorlagendatei öffnen (unten in diesem Thema finden Sie ein Vorlagen-Inline), und die **Parameter**werte untersuchen.
 
@@ -435,7 +432,7 @@ Sie werden aufgefordert, Parameterwerte im Abschnitt „Parameter“ der JSON-Da
 
 Beispiel:
 
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json myResourceGroup firstDeployment
+    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json myResourceGroup firstDeployment
     info:    Executing command group deployment create
     info:    Supply values for the following parameters
     newStorageAccountName: storageaccount
@@ -477,7 +474,7 @@ Sie haben oben die grundlegende Verwendung von Vorlagen gesehen, sodass wir nun 
 
 ### Schritt 1: Untersuchen der JSON-Datei für die Vorlage
 
-Hier sind die Inhalte der JSON-Datei für die Vorlage, die in diesem Abschnitt als Beispiel verwendet werden.
+Hier sind die Inhalte der JSON-Datei für die Vorlage, die in diesem Abschnitt als Beispiel verwendet werden. (Die Vorlage befindet sich auch in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).)
 
 Auch hier müssen Sie die Werte finden, die Sie für die Parameter eingeben, die keine Standardwerte besitzen. Beim Ausführen des Befehls `azure group deployment create` fordert die Azure-CLI Sie dazu auf, diese Werte eingeben.
 
@@ -738,7 +735,7 @@ Die Ausgabe sollte wie folgt angezeigt werden:
 
 ## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Aufgabe: Bereitstellen einer Anwendung mit mehreren virtuellen Computern, die ein virtuelles Netzwerk und einen Load Balancer verwendet
 
-Mit dieser Vorlage können Sie zwei virtuelle Computer unter einem Load Balancer erstellen und eine Lastenausgleichsregel für Port 80 konfigurieren. Diese Vorlage stellt außerdem ein Speicherkonto, virtuelles Netzwerk, eine öffentliche IP-Adresse, Verfügbarkeitsgruppe und Netzwerkschnittstellen bereit.
+Mit dieser Vorlage können Sie zwei virtuelle Computer unter einem Load Balancer erstellen und eine Lastenausgleichsregel für Port 80 konfigurieren. Diese Vorlage stellt außerdem ein Speicherkonto, virtuelles Netzwerk, eine öffentliche IP-Adresse, Verfügbarkeitsgruppe und Netzwerkschnittstellen bereit.
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
 
@@ -1176,7 +1173,7 @@ Sie können sehr schnell ermitteln, welche Fehler aufgetreten sind, sie beheben 
 
 ## <a id="display-information-about-a-virtual-machine"></a>Aufgabe: Anzeigen von Informationen zu einem virtuellen Computer
 
-Informationen zu spezifischen virtuellen Computern in Ihrer Ressourcengruppe zeigen Sie mithilfe von `azure vm show <groupname> <vmname> command` an. Wenn Sie über mehr als einen virtuellen Computer in der Gruppe verfügen, müssen Sie womöglich zuerst die virtuellen Computer in einer Gruppe mithilfe von `azure vm list <groupname>` auflisten.
+Informationen zu spezifischen virtuellen Computern in Ihrer Ressourcengruppe können Sie mithilfe des Befehls `azure vm show <groupname> <vmname>` sehen. Wenn Sie über mehr als einen virtuellen Computer in der Gruppe verfügen, müssen Sie womöglich zuerst die virtuellen Computer in einer Gruppe mithilfe von `azure vm list <groupname>` auflisten.
 
     azure vm list zoo
     info:    Executing command vm list
@@ -1239,7 +1236,7 @@ Suchen Sie dann nach "myVM1":
     info:    vm show command OK
 
 
-> [AZURE.NOTE] Wenn Sie die Ausgabe der Konsolenbefehle programmgesteuert speichern und bearbeiten möchten, sollten Sie möglicherweise ein JSON-Analysetool verwenden, z. B. **[jq](https://github.com/stedolan/jq)**, **[jsawk](https://github.com/micha/jsawk)** oder für die Aufgabe geeignete Sprachbibliotheken.
+> [AZURE.NOTE] Wenn Sie die Ausgabe der Konsolenbefehle programmgesteuert speichern und bearbeiten möchten, sollten Sie möglicherweise ein JSON-Analysetool verwenden, z. B. **[jq](https://github.com/stedolan/jq)**, **[jsawk](https://github.com/micha/jsawk)** oder für die Aufgabe geeignete Sprachbibliotheken.
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>Aufgabe: Anmelden bei einem Linux-basierten virtuellen Computer
 
@@ -1271,7 +1268,7 @@ Um einen vorhandenen Datenträger anzufügen, führen Sie den folgenden Befehl a
 
     azure vm disk attach <resource-group> <vm-name> [vhd-url]
 
-Anschließend müssen Sie den Datenträger wie gewohnt in Linux (oder Windows) einbinden.
+Anschließend müssen Sie den Datenträger wie gewohnt in Linux einbinden.
 
 
 ## Nächste Schritte
@@ -1281,4 +1278,4 @@ Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

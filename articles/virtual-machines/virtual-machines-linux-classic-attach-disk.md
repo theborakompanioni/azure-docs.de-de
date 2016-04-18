@@ -3,7 +3,7 @@
 	description="Sie erfahren, wie Sie einen Datenträger an einen virtuellen Azure-Computer unter Linux anfügen und initialisieren können, damit er betriebsbereit ist."
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -14,17 +14,17 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
-	ms.author="dkshir"/>
+	ms.date="04/04/2016"
+	ms.author="iainfou"/>
 
 # Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
 
-Sie können sowohl leere Datenträger als auch Datenträger mit Daten anfügen. In beiden Fällen sind die Datenträger eigentlich VHD-Dateien, die sich in einem Azure-Speicherkonto befinden. Außerdem müssen Sie in beiden Fällen den Datenträger nach dem Anfügen initialisieren, damit er verwendet werden kann.
+Sie können sowohl leere Datenträger als auch Datenträger mit Daten anfügen. Die Datenträger sind eigentlich VHD-Dateien, die sich in einem Azure-Speicherkonto befinden. Sie müssen den Datenträger nach dem Anfügen initialisieren, damit er verwendet werden kann.
 
-> [AZURE.NOTE] Es empfiehlt sich, einen oder mehrere separate Datenträger zu verwenden, um die Daten eines virtuellen Computers zu speichern. Wenn Sie einen virtuellen Azure-Computer erstellen, verfügt dieser über einen Betriebssystem-Datenträger und über einen temporären Datenträger. **Verwenden Sie den temporären Datenträger nicht zum Speichern von Daten.** Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet. Unter Linux wird der temporäre Datenträger normalerweise vom Azure Linux Agent verwaltet und automatisch an **/mnt/resource** (oder auf Ubuntu-Images an **/mnt**) angefügt. Andererseits kann ein Datenträger vom Linux-Kernel beispielsweise den Namen `/dev/sdc` erhalten, und Sie müssen diese Ressource partitionieren, formatieren und einbinden. Weitere Informationen finden Sie im [Benutzerhandbuch für Azure Linux-Agent][Agent].
+> [AZURE.NOTE] Es empfiehlt sich, einen oder mehrere separate Datenträger zu verwenden, um die Daten eines virtuellen Computers zu speichern. Wenn Sie einen virtuellen Azure-Computer erstellen, verfügt dieser über einen Betriebssystem-Datenträger und über einen temporären Datenträger. **Verwenden Sie den temporären Datenträger nicht zum Speichern von persistenten Daten.** Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet. Unter Linux wird der temporäre Datenträger normalerweise vom Azure Linux Agent verwaltet und automatisch an **/mnt/resource** (oder auf Ubuntu-Images an **/mnt**) angefügt. Andererseits kann ein Datenträger vom Linux-Kernel beispielsweise den Namen `/dev/sdc` erhalten, und Sie müssen diese Ressource partitionieren, formatieren und einbinden. Weitere Informationen finden Sie im [Benutzerhandbuch für Azure Linux-Agent][Agent].
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
@@ -38,7 +38,7 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 2. Als Nächstes müssen Sie die Geräte-ID für den zu initialisierenden Datenträger finden. Dafür gibt zwei Möglichkeiten:
 
-	a) Geben Sie im SSH-Fenster den folgenden Befehl ein, und geben Sie anschließend das Kennwort für das Konto ein, dass Sie zur Verwaltung des virtuellen Computers erstellt haben:
+	a) Geben Sie im SSH-Fenster den folgenden Befehl ein:
 
 			$sudo grep SCSI /var/log/messages
 
@@ -76,11 +76,9 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 	Die letzte Zahl im Tupel in jeder Zeile ist die _LUN_. Weitere Informationen finden Sie unter `man lsscsi`.
 
-3. Geben Sie im SSH-Fenster den folgen Befehl ein, um ein neues Gerät zu erstellen, und geben Sie anschließend das Kennwort für das Konto ein:
+3. Geben Sie im SSH-Fenster den folgenden Befehl ein, um ein neues Gerät zu erstellen:
 
 		$sudo fdisk /dev/sdc
-
-	>[AZURE.NOTE] In diesem Beispiel müssen Sie eventuell auf manchen Distributionen `sudo -i` verwenden, wenn /sbin oder /usr/sbin sich nicht in Ihrem `$PATH` befinden.
 
 
 4. Geben Sie nach Aufforderung **n** ein, um eine neue Partition zu erstellen.
@@ -107,7 +105,7 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 	![Datenträgeränderungen schreiben](./media/virtual-machines-linux-classic-attach-disk/DiskWrite.png)
 
-8. Erstellen Sie das Dateisystem auf der neuen Partition. Fügen Sie die Partitionsnummer (1) an die Geräte-ID an. Geben Sie beispielsweise folgenden Befehl und dann das Kontokennwort ein:
+8. Erstellen Sie das Dateisystem auf der neuen Partition. Fügen Sie die Partitionsnummer (1) an die Geräte-ID an. Beispielsweise zum Erstellen einer „ext4-Partition“ auf „/dev/sdc1“:
 
 		# sudo mkfs -t ext4 /dev/sdc1
 
@@ -116,7 +114,7 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 	>[AZURE.NOTE] Beachten Sie, dass SUSE Linux Enterprise 11-Systeme nur schreibgeschützten Zugriff für ext4-Dateisysteme unterstützen. Für diese Systeme wird empfohlen, das neue Dateisystem als ext3 statt als ext4 zu formatieren.
 
 
-9. Erstellen Sie ein Verzeichnis zum Einbinden des neuen Dateisystems. Geben Sie beispielsweise folgenden Befehl und dann das Kontokennwort ein:
+9. Erstellen Sie ein Verzeichnis zum Einbinden des neuen Dateisystems. Geben Sie den folgenden Befehl als ein Beispiel ein:
 
 		# sudo mkdir /datadrive
 
@@ -130,7 +128,7 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 11. Fügen Sie das neue Laufwerk zu /etc/fstab hinzu:
 
-	Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es zur Datei /etc/fstab hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in /etc/fstab zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (d. h. auf /dev/sdc1) zu verweisen. Sie können das Hilfsprogramm **blkid** verwenden, um den UUID des neuen Laufwerks herauszufinden:
+	Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es zur Datei /etc/fstab hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in /etc/fstab zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (d. h. auf /dev/sdc1) zu verweisen. Sie können das Hilfsprogramm **blkid** verwenden, um den UUID des neuen Laufwerks herauszufinden:
 
 		# sudo -i blkid
 
@@ -143,7 +141,7 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 	>[AZURE.NOTE] Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, finden Sie in der Dokumentation der Verteilung Informationen zur korrekten Bearbeitung dieser Datei. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
 
-	Öffnen Sie als Nächstes die Datei **/etc/fstab** in einem Texteditor. Beachten Sie, dass "/etc/fstab" eine Systemdatei ist, sodass Sie zum Bearbeiten der Datei `sudo` verwenden müssen. Beispiel:
+	Öffnen Sie als Nächstes die Datei **/etc/fstab** in einem Texteditor:
 
 		# sudo vi /etc/fstab
 
@@ -173,10 +171,10 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 [Trennen eines Datenträgers von einem virtuellen Linux-Computer](virtual-machines-linux-classic-detach-disk.md)
 
-[Verwenden der Azure-Befehlszeilenschnittstelle mit der Dienstverwaltungs-API](virtual-machines-command-line-tools.md)
+[Verwenden der Azure-Befehlszeilenschnittstelle mit der Dienstverwaltungs-API](../virtual-machines-command-line-tools.md)
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

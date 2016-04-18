@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="03/28/2016" 
+    ms.date="03/30/2016" 
     ms.author="elizapo" />
 
 # Wie speichert Azure RemoteApp Benutzerdaten und -einstellungen?
@@ -31,7 +31,7 @@ Lesen Sie weiter, um mehr über die Besonderheiten von Benutzerprofildaten zu er
 
 ## Wie kann ein Administrator auf die Daten zugreifen?
 
-Wenn Sie Zugriff auf die Daten für einen Ihrer Benutzer benötigen (für die Wiederherstellung im Notfall oder wenn der Benutzer das Unternehmen verlässt), wenden Sie sich an den Support von [Azure RemoteApp](mailto:remoteappforum@microsoft.com), und stellen Sie die Abonnementinformationen für die Sammlung und die Identität des Benutzers bereit. Das Team von Azure RemoteApp stellt Ihnen eine URL für die virtuelle Festplatte zur Verfügung. Laden Sie diese VHD herunter, und rufen Sie alle Dokumente oder Dateien ab, die Sie benötigen. Die virtuelle Festplatte hat eine Größe von 50 GB, weshalb das Herunterladen ein wenig Zeit in Anspruch nimmt.
+Wenn Sie Zugriff auf die Daten für einen Ihrer Benutzer benötigen (für die Wiederherstellung im Notfall oder wenn der Benutzer das Unternehmen verlässt), wenden Sie sich an den Support von [Azure RemoteApp](mailto:remoteappforum@microsoft.com), und stellen Sie die Abonnementinformationen für die Sammlung und die Identität des Benutzers bereit. Das Team von Azure RemoteApp stellt Ihnen eine URL für die virtuelle Festplatte zur Verfügung. Laden Sie diese VHD herunter, und rufen Sie alle Dokumente oder Dateien ab, die Sie benötigen. Die virtuelle Festplatte hat eine Größe von 50 GB, weshalb das Herunterladen ein wenig Zeit in Anspruch nimmt.
 
 
 ## Werden die Daten gesichert?
@@ -82,9 +82,9 @@ Ja, Sie können das Azure RemoteApp-Team darum bitten, Benutzerprofil-Datenträg
 
 In den folgenden Situationen möchten Sie Benutzerprofil-Datenträger möglicherweise deaktivieren:
 
-- Sie benötigen Vollzugriff auf und Kontrolle über Benutzerdaten (z. B. zu Überwachungs- und Prüfzwecken bei Finanzinstituten).
+- Sie benötigen Vollzugriff auf und Kontrolle über Benutzerdaten (z. B. zu Überwachungs- und Prüfzwecken bei Finanzinstituten).
 - Sie verfügen über lokale Lösungen zur Benutzerprofilverwaltung, die Sie in Ihrer in die Domäne eingebundenen Azure RemoteApp-Bereitstellung weiter nutzen möchten. Dazu muss der Profil-Agent in das Gold-Image geladen werden. 
-- Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud (z. B. OneDrive for Business) oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
+- Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud (z. B. OneDrive for Business) oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
 
 Weitere Informationen finden Sie unter [Deaktivieren von Benutzerprofil-Datenträgern (UPDs) in Azure RemoteApp](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx).
 
@@ -159,4 +159,4 @@ Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
 
 So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->
