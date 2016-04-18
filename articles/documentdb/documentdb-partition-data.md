@@ -203,12 +203,12 @@ Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlü
         new FeedOptions { EnableCrossPartitionQuery = true })
         .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 
-Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z.B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Dokument verwalten.
+Sie können auch atomare Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z.B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Dokument verwalten.
 
     await client.ExecuteStoredProcedureAsync<DeviceReading>(
         UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        "XMS-001-FE24C",
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") });
+        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
+        "XMS-001-FE24C");
 
 Nun, da wir die Grundlagen abgeschlossen haben, sehen wir uns einige wichtige Entwurfsüberlegungen bei der Arbeit mit Partitionsschlüsseln in DocumentDB an.
 
