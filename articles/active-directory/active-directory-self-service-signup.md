@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Was ist die Self-Service-Registrierung für Azure? | Microsoft Azure"
-	description="Eine Übersicht über die Self-Service-Registrierung für Azure und die Verwaltung des Registrierungsprozesses."
+	description="Eine Übersicht über die Self-Service-Registrierung für Azure und die Verwaltung des Registrierungsprozesses sowie darüber, wie man einen DNS-Domänennamen übernimmt."
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/05/2016"
-	ms.author="stevenpo"/>
+	ms.date="04/04/2016"
+	ms.author="curtand"/>
 
 
 # Was ist die Self-Service-Registrierung für Azure?
@@ -232,4 +232,4 @@ Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie un
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

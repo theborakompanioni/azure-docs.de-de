@@ -20,7 +20,7 @@
 
 ## Übersicht
 
-Dieser Leitfaden enthält C#-Codebeispiele, die zeigen, wie Sie einen Prozess auslösen, wenn ein Azure-Blob erstellt oder aktualisiert wird. In den Codebeispielen wird Version 1.x des [WebJobs-SDK](websites-dotnet-webjobs-sdk.md) verwendet.
+Dieser Leitfaden enthält C#-Codebeispiele, die zeigen, wie Sie einen Prozess auslösen, wenn eine Azure Service Bus-Meldung eingeht. In den Codebeispielen wird Version 1.x des [WebJobs-SDK](websites-dotnet-webjobs-sdk.md) verwendet.
 
 Im Handbuch wird davon ausgegangen, dass Sie wissen, [wie ein WebJobs-Projekt in Visual Studio mit Verbindungszeichenfolgen erstellt wird, die auf Ihr Speicherkonto verweisen](websites-dotnet-webjobs-sdk-get-started.md).
 
@@ -61,7 +61,7 @@ Die Verbindungszeichenfolgen können auch in der Azure-Laufzeitumgebung festgele
 
 Zum Schreiben einer Funktion, die das WebJobs-SDK aufruft, wenn eine Warteschlangennachricht empfangen wird, verwenden Sie das `ServiceBusTrigger`-Attribut. Der Attributkonstruktor verwendet einen Parameter, der den Namen der abzufragenden Warteschlange angibt.
 
-### Funktionsweise von "ServicebusTrigger"
+### Funktionsweise von ServiceBusTrigger
 
 Das SDK empfängt eine Nachricht im `PeekLock`-Modus und ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Ist die Ausführung nicht erfolgreich, wird `Abandon` aufgerufen. Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch erneuert.
 
@@ -170,7 +170,7 @@ In Version 1.1 wurden die folgenden Features hinzugefügt:
 
 Informationen zu WebJobs-SDK-Szenarien, die nicht spezifisch für Service Bus sind, finden Sie unter [Verwenden des Azure-Warteschlangenspeichers mit dem WebJobs-SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
 
-In diesem Artikel werden u. a. die folgenden Themen behandelt:
+In diesem Artikel werden u. a. die folgenden Themen behandelt:
 
 * Asynchrone Funktionen
 * Mehrere Instanzen
@@ -186,4 +186,4 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 In dieser Anleitung wurde anhand von Codebeispielen veranschaulicht, wie häufige Szenarien für das Arbeiten mit Azure Service Bus behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

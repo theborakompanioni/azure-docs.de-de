@@ -8,14 +8,14 @@ Es gibt verschiedene Optionen zur Verteilung des Netzwerkdatenverkehrs mit Micro
 
 - 	Traffic Manager funktioniert auf DNS-Ebene. Er verwendet DNS-Antworten, um Endbenutzer-Datenverkehr an global verteilte Endpunkte zu leiten. Clients stellen dann eine direkte Verbindung mit diesen Endpunkten her. In der folgenden Tabelle werden die von den einzelnen Diensten angebotenen Features zusammengefasst:
 
-|Azure-Lastenausgleich |	Application Gateway | Traffic Manager |
-|---|---|---|
-|Technologie| Vermittlungsschicht (Schicht 4) | Anwendungsschicht (Schicht 7) |	DNS-Ebene |
+| Dienst | Azure-Lastenausgleich | Application Gateway | Traffic Manager |
+|---|---|---|---|
+|Technologie| Vermittlungsschicht (Schicht 4) | Anwendungsschicht (Schicht 7) | DNS-Ebene |
 | Unterstützte Anwendungsprotokolle |	Beliebig | HTTP und HTTPS | 	Alle (Ein HTTP/S-Endpunkt ist für die Endpunktüberwachung erforderlich.) |
 | Endpunkte | Azure-VMs und Cloud Services-Rolleninstanzen | Alle internen Azure-IP-Adressen oder öffentlichen Internet-IP-Adressen | Azure-VMs, Cloud Services, Azure-Web-Apps und externe Endpunkte |
 | VNet-Unterstützung | Kann sowohl für Anwendungen mit Internetzugriff als auch für interne (VNet-) Anwendungen verwendet werden | Kann sowohl für Anwendungen mit Internetzugriff als auch für interne (VNet-) Anwendungen verwendet werden |	Unterstützt nur Anwendungen mit Internetzugriff |
 Endpunktüberwachung | Unterstützt über Tests | Unterstützt über Tests | Unterstützt über HTTP/HTTPS-GET | 
-<BR> Azure Load Balancer und Application Gateway leiten Netzwerkdatenverkehr an Endpunkte weiter, werden jedoch im Hinblick auf den verarbeiteten Datenverkehr in verschiedenen Verwendungsszenarien eingesetzt. In der folgenden Tabelle wird der Unterschied zwischen den beiden Lastenausgleichsmodulen verdeutlicht:
+<BR> Azure Load Balancer und Application Gateway leiten Netzwerkdatenverkehr an Endpunkte weiter, werden jedoch im Hinblick auf den verarbeiteten Datenverkehr in verschiedenen Verwendungsszenarios eingesetzt. In der folgenden Tabelle wird der Unterschied zwischen den beiden Lastenausgleichsmodulen verdeutlicht:
 
 
 | Typ | Azure-Lastenausgleich | Application Gateway |
@@ -30,4 +30,4 @@ Endpunktüberwachung | Unterstützt über Tests | Unterstützt über Tests | Unt
 
   
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

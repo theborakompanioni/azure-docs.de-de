@@ -27,7 +27,7 @@ Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen
 Es können mehrere Arten von virtuellen Azure-Computern bereitgestellt und als Teil einer cloudbasierten Data Science-Umgebung konfiguriert werden. Die Entscheidung, welche Art von virtuellem Computer Sie verwenden, hängt von der Art und der Menge der Daten ab, die mit Machine Learning modelliert werden sollen, sowie vom Ziel für die Daten in der Cloud.
 
 * Hilfe bei dieser Entscheidung finden Sie unter [Planen der Azure Machine Learning Data Science-Umgebung](machine-learning-data-science-plan-your-environment.md). 
-* Einen Katalog mit einigen Szenarien für die erweiterte Analyse finden Sie unter [Szenarien für Advanced Analytics Process and Technology (ADAPT) in Azure Machine Learning](../machine-learning-data-science-plan-sample-scenarios.md).
+* Einen Katalog mit einigen Szenarien für die erweiterte Analyse finden Sie unter [Szenarien für Advanced Analytics Process and Technology (ADAPT) in Azure Machine Learning](machine-learning-data-science-plan-sample-scenarios.md).
 
 Es werden zwei Verfahren beschrieben:
 
@@ -41,4 +41,4 @@ Nach der Bereitstellung und Konfiguration können diese virtuellen Computer als 
 > [AZURE.NOTE] Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht für ungenutzte virtuelle Computer bezahlen müssen, müssen Sie diese im [klassischen Azure-Portal](http://manage.windowsazure.com/) in den Status **Angehalten (Zuordnung aufgehoben)** versetzen. Eine Schrittanleitung dazu, wie Sie die Zuordnung Ihrer virtuellen Computer aufheben, finden Sie unter [Herunterfahren und Freigeben von nicht genutzten virtuellen Computern](machine-learning-data-science-setup-virtual-machine.md#shutdown).
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -32,7 +32,7 @@ In dieser Anleitung erhalten Sie die Antwort! Sie finden Informationen zum Insta
 Xrdp ist ein Open-Source-RDP-Server, der Ihnen das Herstellen einer Verbindung zwischen Ihrem Linux-Server und Remotedesktop auf einem Windows-Computer ermöglicht. Er bietet eine viel bessere Leistung als VNC (Virtual Network Computing). VNC weist Züge von „JPEG“-Qualität und langsames Verhalten auf, während RDP schnell und klar ist.
 
 
-> [AZURE.NOTE] Sie müssen bereits über einen virtuellen Microsoft Azure-Computer verfügen, auf dem Linux ausgeführt wird. Informationen zum Erstellen und Einrichten eines virtuellen Linux-Computers finden Sie im [Lernprogramm zu virtuellen Azure-Linux-Computern](virtual-machines-linux-cli-create.md).
+> [AZURE.NOTE] Sie müssen bereits über einen virtuellen Microsoft Azure-Computer verfügen, auf dem Linux ausgeführt wird. Informationen zum Erstellen und Einrichten eines virtuellen Linux-Computers finden Sie im [Lernprogramm zu virtuellen Azure-Linux-Computern](virtual-machines-linux-classic-createportal.md).
 
 
 ##Erstellen eines Endgeräts für Remotedesktop
@@ -82,9 +82,9 @@ Für OpenSUSE verwenden Sie:
 
 Für Ubuntu wird Xrdp nach der Installation zum Startzeitpunkt automatisch gestartet und aktiviert.
 
-##Verwenden Sie Xfce , wenn Sie eine neuere Ubuntu-Version als Ubuntu 12.04LTS verwenden.
+##Verwenden Sie Xfce , wenn Sie eine neuere Ubuntu-Version als Ubuntu 12.04LTS verwenden.
 
-Da das aktuelle Xrdp nicht in der Lage war, Gnome Desktop aus einer neueren Ubuntu-Version als Ubuntu 12.04LTS zu unterstützen, verwenden wir stattdessen `xfce` Desktop.
+Da das aktuelle Xrdp nicht in der Lage war, Gnome Desktop aus einer neueren Ubuntu-Version als Ubuntu 12.04LTS zu unterstützen, verwenden wir stattdessen `xfce` Desktop.
 
 Installieren Sie `xfce`; verwenden Sie:
 
@@ -116,4 +116,4 @@ Melden Sie sich mit dem `user` und dem `password` Ihres virtuellen Linux-Compute
 ##Weiter
 Weitere Informationen zur Verwendung von Xrdp finden Sie [hier](http://www.xrdp.org/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

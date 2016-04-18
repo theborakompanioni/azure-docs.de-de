@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/23/2016"
+   ms.date="04/04/2016"
    ms.author="yuridio"/>
 
 #Erste Schritte mit Microsoft Azure-Sicherheit
@@ -35,7 +35,7 @@ Das Steuern des Zugriffs auf die IT-Infrastruktur, Daten und Anwendungen ist von
 
 [Azure Active Directory](./active-directory/active-directory-whatis.md) (Azure AD) ist ein Identitätsrepository und Modul, das Authentifizierung, Autorisierung und Zugriffssteuerung für die Benutzer, Gruppen und Objekte einer Organisation bietet. Azure AD stellt Entwicklern außerdem eine effektive Methode zur Verfügung, um die Identitätsverwaltung in ihre Anwendungen zu integrieren. Standardprotokolle wie [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0), [WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx) und [OpenID Connect](http://openid.net/connect/) ermöglichen die Anmeldung an vielerlei Plattformen wie .NET, Java, Node.js und PHP.
 
-Die REST-basierte Diagramm-API ermöglicht Entwicklern von jeder Plattform aus das Lesen und Schreiben im Verzeichnis. Durch die Unterstützung für [OAuth 2.0](http://oauth.net/2/) können Entwickler mobile und Webanwendungen, die in Web-APIs von Microsoft und Drittanbietern integriert sind, und eigene sichere Web-APIs erstellen. Open Source Client-Bibliotheken sind für .Net, Windows Store, iOS und Android verfügbar, weitere Bibliotheken werden aktuell entwickelt.
+Die REST-basierte Diagramm-API ermöglicht Entwicklern von jeder Plattform aus das Lesen und Schreiben im Verzeichnis. Durch die Unterstützung für [OAuth 2.0](http://oauth.net/2/) können Entwickler mobile und Webanwendungen, die in Web-APIs von Microsoft und Drittanbietern integriert sind, und eigene sichere Web-APIs erstellen. Open Source Client-Bibliotheken sind für .Net, Windows Store, iOS und Android verfügbar, weitere Bibliotheken werden aktuell entwickelt.
 
 ### Umsetzung der Identitäts- und Zugriffsverwaltung in Azure
 
@@ -113,7 +113,7 @@ Azure implementiert die [Netzwerkzugriffssteuerung](https://azure.microsoft.com/
 
 Die Netzwerkadressenübersetzung wird zum Trennen des internen Netzwerkdatenverkehrs vom externen Datenverkehr eingesetzt. Der interne Datenverkehr kann nicht extern geroutet werden. [Virtuelle IP-Adressen](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx), die extern geroutet werden können, werden in [interne dynamische IP-Adressen](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) übersetzt, die nur innerhalb von Azure geroutet werden können.
 
-Externer Datenverkehr an virtuelle Azure-Computer wird auf Routern, Lastenausgleichsmodulen und Schicht 3-Switches über die Zugriffssteuerungslisten (ACLs) durch eine Firewall geleitet. Nur bestimmte bekannte Protokolle sind zulässig. ACLs begrenzen den Datenverkehr von virtuellen Gastcomputern an andere VLANs, die zur Verwaltung verwendet werden. Darüber hinaus wird der Datenverkehr sowohl auf der Sicherungsschicht als auch auf der Vermittlungsschicht über IP-Filter auf dem Hostbetriebssystem weiter begrenzt.
+Externer Datenverkehr an virtuelle Azure-Computer wird auf Routern, Lastenausgleichsmodulen und Schicht 3-Switches über die Zugriffssteuerungslisten (ACLs) durch eine Firewall geleitet. Nur bestimmte bekannte Protokolle sind zulässig. ACLs begrenzen den Datenverkehr von virtuellen Gastcomputern an andere VLANs, die zur Verwaltung verwendet werden. Darüber hinaus wird der Datenverkehr sowohl auf der Sicherungsschicht als auch auf der Vermittlungsschicht über IP-Filter auf dem Hostbetriebssystem weiter begrenzt.
 
 ### Implementierung der Isolation in Azure
 
@@ -138,9 +138,9 @@ Azure bietet in jedem Azure-Cluster drei primäre Ebenen der Netzwerktrennung, u
 Netzwerkdatenverkehr an und von virtuellen Computern muss den virtuellen Switch des Hypervisors durchlaufen. Die IP-Filterkomponente im Stammbetriebssystem isoliert den virtuellen Stammcomputer von den virtuellen Gastcomputern sowie die virtuellen Gastcomputern voneinander. Sie führt die Filterung des Datenverkehrs durch, um die Kommunikation zwischen den Knoten des Mandanten und dem öffentlichen Internet (basierend auf der Dienstkonfiguration des Kunden) einzuschränken, indem sie sie von anderen Mandanten trennt.
 
 Der IP-Filter verhindert folgende Aktionen von virtuellen Gastcomputern:
- 
+
 - Generieren von gefälschtem Datenverkehr
- 
+
 - Empfangen von Datenverkehr, der nicht an sie adressiert ist
 
 - Weiterleiten des Datenverkehrs an geschützte Infrastrukturendpunkte
@@ -209,7 +209,7 @@ Azure-Administratoren greifen über ein Webportal auf Protokolle zu, um einen au
 
 Microsoft sammelt Protokolle von Netzwerkgeräten mithilfe des Syslog-Protokolls und von Hostservern mithilfe der Microsoft-Überwachungssammeldienste. Diese Protokolle werden in einer Protokolldatenbank abgelegt, von der aus Warnungen zu verdächtigen Ereignissen für einen Microsoft-Administrator generiert werden. Der Administrator kann auf diese Protokolle zugreifen und sie analysieren.
 
-Die [Azure-Diagnose](https://msdn.microsoft.com/library/azure/gg433048.aspx) ist ein Azure-Feature, das Ihnen das Sammeln von Diagnosedaten aus einer in Azure ausgeführten Anwendung ermöglicht. Hierbei handelt es sich um Diagnosedaten zum Debuggen und Behandeln von Problemen, zum Messen der Leistung, zum Überwachen der Ressourcenauslastung, zum Analysieren des Datenverkehrs, zum Planen der Kapazität und zum Durchführen der Überwachung. Nach dem Erfassen der Diagnosedaten können diese zur dauerhaften Speicherung an ein Azure-Speicherkonto übertragen werden. Datenübertragungen können entweder geplant oder bedarfsgesteuert erfolgen. Der Artikel [Microsoft Azure-Sicherheits- und Überwachungsprotokollverwaltung](azure-security-audit-log-management.md) enthält Details zum Sammeln dieser Informationen und zum Ausführen von Analysen.
+Die [Azure-Diagnose](https://msdn.microsoft.com/library/azure/gg433048.aspx) ist ein Azure-Feature, das Ihnen das Sammeln von Diagnosedaten aus einer in Azure ausgeführten Anwendung ermöglicht. Hierbei handelt es sich um Diagnosedaten zum Debuggen und Behandeln von Problemen, zum Messen der Leistung, zum Überwachen der Ressourcenauslastung, zum Analysieren des Datenverkehrs, zum Planen der Kapazität und zum Durchführen der Überwachung. Nach dem Erfassen der Diagnosedaten können diese zur dauerhaften Speicherung an ein Azure-Speicherkonto übertragen werden. Datenübertragungen können entweder geplant oder bedarfsgesteuert erfolgen.
 
 ##Bedrohungsabwehr
 
@@ -241,4 +241,4 @@ Azure verfügt über Sicherheitskontrollen, um die Bedrohungsabwehr zu implement
 
 [Active Directory-Blog](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

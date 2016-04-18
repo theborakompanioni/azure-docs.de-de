@@ -18,14 +18,14 @@
 
 # Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse
 
-In diesem Thema wird das Bereitstellen und Konfigurieren eines virtuellen SQL Server-Computers als Teil einer cloudbasierten Data Science-Umgebung beschrieben. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure-Speicher-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Blob-Speicher oder das Herunterladen aus dem Blob-Speicher auf Ihren lokalen Computer bereit.
+In diesem Thema wird das Bereitstellen und Konfigurieren eines virtuellen SQL Server-Computers als Teil einer cloudbasierten Data Science-Umgebung beschrieben. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure-Speicher-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Blob-Speicher oder das Herunterladen aus dem Blob-Speicher auf Ihren lokalen Computer bereit.
 
 In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu finden, die Microsoft SQL Server enthalten. Wählen Sie ein VM-Image mit SQL Server aus, das Ihren Datenanforderungen entspricht. Folgende Images werden empfohlen:
 
-- SQL Server 2012 SP2 Enterprise für kleine bis mittlere Datenvolumen
-- SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads für große bis sehr große Datenvolumen
+- SQL Server 2012 SP2 Enterprise für kleine bis mittlere Datenvolumen
+- SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads für große bis sehr große Datenvolumen
 
- > [AZURE.NOTE] Das SQL Server 2012 SP2 Enterprise-Image **enthält keinen Datenträger**. Sie müssen einen oder mehrere virtuelle Festplatten zum Speichern von Daten hinzufügen und/oder anfügen. Wenn Sie einen virtuellen Azure-Computer erstellen, hat dieser einen Datenträger für das Betriebssystem, der Laufwerk C zugeordnet ist, und einen temporären Datenträger, der Laufwerk D zugeordnet ist. Verwenden Sie Laufwerk D nicht zum Speichern von Daten. Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet.
+ > [AZURE.NOTE] Das SQL Server 2012 SP2 Enterprise-Image **enthält keinen Datenträger**. Sie müssen einen oder mehrere virtuelle Festplatten zum Speichern von Daten hinzufügen und/oder anfügen. Wenn Sie einen virtuellen Azure-Computer erstellen, hat dieser einen Datenträger für das Betriebssystem, der Laufwerk C zugeordnet ist, und einen temporären Datenträger, der Laufwerk D zugeordnet ist. Verwenden Sie Laufwerk D nicht zum Speichern von Daten. Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet.
 
 
 ##<a name="Provision"></a>Verbinden mit dem klassischen Azure-Portal und Bereitstellen eines virtuellen Computers mit SQL Server
@@ -104,7 +104,7 @@ Zum Konfigurieren der neuen SQL Server-VM als IPython Notebook-Server und zum In
     	@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
 - Geben Sie, wenn Sie dazu aufgefordert werden, ein Kennwort Ihrer Wahl für den IPython Notebook-Server ein.
-- Das Anpassungsskript automatisiert mehrere Nachinstallationsprozeduren, z. B.:
+- Das Anpassungsskript automatisiert mehrere Nachinstallationsprozeduren, z. B.:
 	+ Installation und Einrichtung des IPython Notebook-Servers
 	+ Öffnen der TCP-Ports in der Windows-Firewall für die zuvor erstellten Endpunkte:
 	+ Für die SQL Server-Remotekonnektivität
@@ -117,9 +117,9 @@ Zum Konfigurieren der neuen SQL Server-VM als IPython Notebook-Server und zum In
 
 ##<a name="Optional"></a>Anfügen eines Datenträgers
 
-Wenn Ihr VM-Image keine Datenträger enthält, d. h. keine anderen Datenträger als die Laufwerke C (Datenträger für das Betriebssystem) und D (temporärer Datenträger), müssen Sie mindestens einen Datenträger zum Speichern der Daten hinzufügen. Das VM-Image für SQL Server 2012 SP2 Enterprise Optimized für DataWarehousing Workloads ist bereits mit zusätzlichen Datenträgern für die Daten- und Protokolldateien von SQL Server vorkonfiguriert.
+Wenn Ihr VM-Image keine Datenträger enthält, d. h. keine anderen Datenträger als die Laufwerke C (Datenträger für das Betriebssystem) und D (temporärer Datenträger), müssen Sie mindestens einen Datenträger zum Speichern der Daten hinzufügen. Das VM-Image für SQL Server 2012 SP2 Enterprise Optimized für DataWarehousing Workloads ist bereits mit zusätzlichen Datenträgern für die Daten- und Protokolldateien von SQL Server vorkonfiguriert.
 
- > [AZURE.NOTE] Verwenden Sie Laufwerk D nicht zum Speichern von Daten. Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet.
+ > [AZURE.NOTE] Verwenden Sie Laufwerk D nicht zum Speichern von Daten. Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet.
 
 Um zusätzliche Datenträger anzufügen, führen Sie die Schritte unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](virtual-machines-windows-classic-attach-disk.md) durch:
 
@@ -225,7 +225,7 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 
 1.  Wählen Sie im klassischen Azure-Portal (oder aus dem vorherigen Schritt) **VIRTUELLE COMPUTER**.
 
-2.  Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf ****http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
+2.  Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf **http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
 
 ##<a name="cde"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
 
@@ -279,7 +279,7 @@ Der virtuelle Computer wird freigegeben, aber nicht gelöscht. Sie können den v
 
 Sie können Ihren virtuellen Computer jetzt in Ihren Data Science-Übungen verwenden. Der virtuelle Computer kann auch als IPython Notebook-Server für das Durchsuchen und Verarbeiten von Daten und für andere Aufgaben in Verbindung mit Azure Machine Learning und dem Cortana-Analyseprozess (CAP) verwendet werden.
 
-Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiterte Datenverarbeitung in Azure](machine-learning-data-science-advanced-data-processing.md) aufgeführt. Dazu gehören auch das Verschieben von Daten nach HDInsight und das Verarbeiten und Extrahieren von Stichproben für den Erhalt von Informationen anhand der Daten mit Azure Machine Learning.
+Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiterte Datenverarbeitung in Azure](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören auch das Verschieben von Daten nach HDInsight und das Verarbeiten und Extrahieren von Stichproben für den Erhalt von Informationen anhand der Daten mit Azure Machine Learning.
 
 
 [1]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/selectsqlvmimg.png
@@ -298,4 +298,4 @@ Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiter
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0406_2016-->

@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie mit Microsoft Azure Service Fabric erstellte Dienste auf einem lokalen Entwicklungscomputer überwachen und diagnostizieren."
    services="service-fabric"
    documentationCenter=".net"
-   authors="toddabel"
+   authors="ms-toddabel"
    manager="timlt"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/04/2016"
+   ms.date="03/30/2016"
    ms.author="toddabel"/>
 
 
@@ -33,9 +33,7 @@
 
 Service Fabric gibt ETW-Ereignisse aus, um die Abläufe in der Plattform für Anwendungsentwickler sichtbar zu machen. Führen Sie jetzt die Schritte unter [Erstellen Ihrer ersten Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md) aus, falls Sie dies noch nicht getan haben. Mit diesen Informationen können Sie eine Anwendung so einrichten, dass in der Anzeige von Diagnoseereignissen die Ablaufverfolgungsmeldungen erscheinen.
 
-1. Wenn das Fenster „Diagnoseereignisse“ nicht automatisch angezeigt wird, wechseln Sie in Visual Studio zur Registerkarte **Server-Explorer**, klicken Sie mit der rechten Maustaste auf den **Service Fabric-Cluster**, und wählen Sie im Kontextmenü die Option **Diagnoseereignisse anzeigen** aus.
-
-  ![Visual Studio-Anzeige von Diagnoseereignissen öffnen](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/ServerExViewDiagEvents.png)
+1. Falls das Diagnoseereignisfenster nicht automatisch angezeigt wird, gehen Sie in Visual Studio zur Registerkarte **Ansicht**, wählen Sie **Weitere Fenster** und dann **Diagnoseereignisanzeige**.
 
 2. Jedes Ereignis verfügt über Standard-Metadateninformationen, mit deren Hilfe Sie den Knoten, die Anwendung und den Dienst ablesen können, aus denen das Ereignis stammt. Sie können die Liste mit den Ereignissen auch filtern, indem Sie oben im Ereignisfenster das Feld **Ereignisse filtern** verwenden. Beispielsweise können Sie nach **Knotenname** oder **Dienstname** filtern. Und wenn Sie sich die Ereignisdetails ansehen, können Sie oben im Ereignisfenster auch die Schaltfläche **Pause** verwenden und den Vorgang später fortsetzen, ohne dass Ereignisse verloren gehen.
 
@@ -59,7 +57,7 @@ Nachdem Sie die benutzerdefinierte ETW-Ablaufverfolgung dem Dienstcode hinzugef�
 
 ## Nächste Schritte
 Der Ablaufverfolgungscode, den Sie Ihrer Anwendung für die lokale Diagnose hinzugefügt haben, funktioniert auch mit den Tools für die Anzeige dieser Ereignisse, wenn Sie Ihre Anwendung in einem Azure-Cluster ausführen. Sehen Sie sich diese Artikel an, in denen die verschiedenen Optionen für die Tools erläutert werden und beschrieben wird, wie Sie sie einrichten können.
-* [Sammeln von Protokollen aus einem Service Fabric-Cluster in Azure-Diagnose und Operational Insights](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md)
-* [Verwenden von ElasticSearch als Service Fabric-Anwendungsüberwachungsspeicher](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+* [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Verwenden von ElasticSearch als Service Fabric-Anwendungsüberwachungsspeicher](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

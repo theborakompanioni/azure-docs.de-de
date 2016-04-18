@@ -66,9 +66,9 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure
 
         # sudo update-grub
 
-6. Fügen Sie „/etc/apt/sources.list“ die Debian-Azure-Repositorys für Debian 6 oder 7 hinzu:
+6. Fügen Sie „/etc/apt/sources.list“ die Debian-Azure-Repositorys für Debian 7 oder 8 hinzu:
 
-	**Debian 6.x „Wheezy“**
+	**Debian 7.x „Wheezy“**
 
 		deb http://debian-archive.trafficmanager.net/debian wheezy-backports main
 		deb-src http://debian-archive.trafficmanager.net/debian wheezy-backports main
@@ -76,7 +76,7 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure
 		deb-src http://debian-archive.trafficmanager.net/debian-azure wheezy main
 
 
-	**Debian 7.x „Jessie“**
+	**Debian 8.x „Jessie“**
 
 		deb http://debian-archive.trafficmanager.net/debian jessie-backports main
 		deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
@@ -110,4 +110,4 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure
 
 Sie können jetzt mit Ihrer Debian-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 unter [Creating and uploading a virtual hard disk that contains the Linux operating system](virtual-machines-linux-classic-create-upload-vhd.md) (Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält) aus.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

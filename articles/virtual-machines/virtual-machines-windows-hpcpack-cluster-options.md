@@ -18,11 +18,13 @@ ms.service="virtual-machines-windows"
 
 # Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
 [AZURE.INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
-## Ausführen eines HPC Pack-Clusters in virtuellen Azure-Computern
+Falls Sie Linux-HPC-Workloads mit HPC Pack ausführen wollen, finden Sie weitere Informationen unter [Optionen zum Erstellen und Verwalten eines Linux-HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](virtual-machines-linux-hpcpack-cluster-options.md).
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
+## Ausführen eines HPC Pack-Clusters in virtuellen Azure-Computern
 
 ### Azure-Vorlagen
 
@@ -50,7 +52,7 @@ ms.service="virtual-machines-windows"
 
 ### Lernprogramme
 
-* [Tutorial: Erste Schritte mit einem HPC Pack-Cluster in Azure zum Ausführen von Excel- und SOA-Workloads](virtual-machines-windows-excel-cluster-hpcpack.md)
+* [Tutorial: Erste Schritte mit einem HPC Pack-Cluster in Azure zum Ausführen von Excel- und SOA-Workloads](virtual-machines-windows-excel-cluster-hpcpack.md)
 
 
 
@@ -87,4 +89,4 @@ ms.service="virtual-machines-windows"
 
 * [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

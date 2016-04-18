@@ -3,7 +3,7 @@
 	description="Hier erfahren Sie, wie Sie die Sicherheitserweiterung Symantec Endpoint Protection auf einem neuen oder vorhandenen virtuellen Azure-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde, installieren und konfigurieren."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -62,7 +62,7 @@ Stellen Sie zunächst sicher, dass der VM-Agent bereits auf dem virtuellen Compu
 	$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 	write-host $vm.VM.ProvisionGuestAgent
 
-Der Befehl **write-host** zeigt **True** an, wenn der VM-Agent installiert ist. Wenn **False** zurückgegeben wird, nutzen Sie die Anweisungen und den Link zum Download im Azure-Blogbeitrag [VM Agent and Extensions - Part 2][Agent] (VM-Agent und Erweiterungen, Teil 2, in englischer Sprache).
+Der Befehl **write-host** zeigt **True** an, wenn der VM-Agent installiert ist. Wenn **False** zurückgegeben wird, nutzen Sie die Anweisungen und den Link zum Download im Azure-Blogbeitrag [VM Agent and Extensions - Part 2][Agent] (VM-Agent und Erweiterungen, Teil 2, in englischer Sprache).
 
 Wenn der VM-Agent installiert ist, führen Sie diese Befehle aus, um den Symantec Endpoint Protection Agent zu installieren.
 
@@ -73,7 +73,7 @@ Wenn der VM-Agent installiert ist, führen Sie diese Befehle aus, um den Symante
 So überprüfen Sie, ob die Symantec-Sicherheitserweiterung installiert wurde und auf dem neuesten Stand ist:
 
 1.	Melden Sie sich beim virtuellen Computer an. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird][Logon].
-2.	Klicken Sie für Windows Server 2008 R2 auf **Start > Symantec Endpoint Protection**. Geben Sie für Windows Server 2012 oder Windows Server 2012 R2 im Startbildschirm **Symantec** ein, und klicken Sie dann auf **Symantec Endpoint Protection**.
+2.	Klicken Sie für Windows Server 2008 R2 auf **Start > Symantec Endpoint Protection**. Geben Sie für Windows Server 2012 oder Windows Server 2012 R2 im Startbildschirm **Symantec** ein, und klicken Sie dann auf **Symantec Endpoint Protection**.
 3.	Wenden Sie im Fenster **Status-Symantec Endpoint Protection** auf der Registerkarte **Status** Updates an, oder führen Sie bei Bedarf einen Neustart aus.
 
 ## Zusätzliche Ressourcen
@@ -98,4 +98,4 @@ So überprüfen Sie, ob die Symantec-Sicherheitserweiterung installiert wurde un
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

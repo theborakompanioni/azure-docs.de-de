@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="seanmck"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/08/2016"
+   ms.date="03/25/2016"
    ms.author="seanmck"/>
 
 # Polymorphie im Reliable Actors-Framework
 
-Das Reliable Actors-Framework vereinfacht die Programmierung verteilter Systeme. Dazu ermöglicht es Ihnen, Ihren Dienst unter Verwendung zahlreicher Techniken zu erstellen, die Sie auch beim objektorientierten Design verwenden würden. Eine dieser Techniken ist Polymorphie, bei der Typen und Schnittstellen von allgemeineren übergeordneten Elementen erben. Die Vererbung im Reliable Actors-Framework folgt normalerweise dem .NET-Modell mit einigen zusätzlichen Einschränkungen.
+Das Reliable Actors-Framework ermöglicht es Ihnen, Actors mit vielen der Vorgehensweisen zu erstellen, die Sie auch beim objektorientierten Entwerfen verwenden würden. Eine dieser Techniken ist Polymorphie, bei der Typen und Schnittstellen von allgemeineren übergeordneten Elementen erben. Die Vererbung im Reliable Actors-Framework folgt normalerweise dem .NET-Modell mit einigen zusätzlichen Einschränkungen.
 
 ## Schnittstellen
 
@@ -29,53 +29,58 @@ Das Reliable Actors-Framework erfordert die Definition mindestens einer Schnitts
 
 ## Typen
 
-Sie können auch eine Hierarchie von Akteurtypen erstellen, die von der durch die Plattform bereitgestellten Akteurbasisklasse abgeleitet werden. Für die statusbehafteten Akteure können Sie ebenso eine Hierarchie von Statustypen erstellen. Im Fall von Formen haben Sie möglicherweise einen Basistyp `Shape` mit einem Statustyp `ShapeState`.
+Sie können auch eine Hierarchie von Akteurtypen erstellen, die von der durch die Plattform bereitgestellten Akteurbasisklasse abgeleitet werden. Im Fall von Formen haben Sie möglicherweise einen Basistyp `Shape`:
 
-    public abstract class Shape : Actor<ShapeState>, IShape
+```csharp
+public abstract class Shape : Actor, IShape
+{
+    public abstract Task<int> GetVerticeCount();
+    
+    public abstract Task<double> GetAreaAsync();
+}
+```
+
+Untertypen von `Shape` können Methoden von der Basis außer Kraft setzen.
+
+```csharp
+[ActorService(Name = "Circle")]
+[StatePersistence(StatePersistence.Persisted)]
+public class Circle : Shape, ICircle
+{
+    public override Task<int> GetVerticeCount()
     {
-        ...
+        return Task.FromResult(0);
     }
 
-Untertypen von `Shape` können Untertypen von `ShapeType` zum Speichern weiterer spezifischer Eigenschaften verwenden.
-
-    [ActorService(Name = "Circle")]
-    public class Circle : Shape, ICircle
+    public override async Task<double> GetAreaAsync()
     {
-        private CircleState CircleState => this.State as CircleState;
+        CircleState state = await this.StateManager.GetStateAsync<CircleState>("circle");
 
-        public override ShapeState InitializeState()
-        {
-            return new CircleState();
-        }
-
-        [Readonly]
-        public override Task<int> GetVerticeCount()
-        {
-            return Task.FromResult(0);
-        }
-
-       [Readonly]
-       public override Task<double> GetArea()
-       {
-           return Task.FromResult(
-               Math.PI*
-               this.CircleState.Radius*
-               this.CircleState.Radius);
-       }
-
-       ...
+        return Math.PI *
+            state.Radius *
+            state.Radius;
     }
+}
+```
 
-Beachten Sie das `ActorService`-Attribut des Akteurtyps. Dieses Attribut teilt dem Azure Service Fabric-SDK mit, dass es automatisch einen Dienst zum Hosten von Akteuren dieses Typs erstellen soll. In einigen Fällen sollten Sie möglicherweise einen Basistyp erstellen, der ausschließlich für die Freigabe von Funktionen für Untertypen vorgesehen ist und nicht verwendet wird, um tatsächliche Akteure zu instanziieren. In diesen Fällen sollten Sie das Schlüsselwort `abstract` verwenden, um anzugeben, dass Sie nie einen Akteur basierend auf diesem Typ erstellen werden.
+Beachten Sie das `ActorService`-Attribut des Akteurtyps. Dieses Attribut teilt dem Reliable Actor-Framework mit, dass es automatisch einen Dienst zum Hosten von Actors dieses Typs erstellen soll. In einigen Fällen sollten Sie möglicherweise einen Basistyp erstellen, der ausschließlich für die Freigabe von Funktionen für Untertypen vorgesehen ist und nicht verwendet wird, um tatsächliche Akteure zu instanziieren. In diesen Fällen sollten Sie das Schlüsselwort `abstract` verwenden, um anzugeben, dass Sie nie einen Akteur basierend auf diesem Typ erstellen werden.
 
 
 ## Nächste Schritte
 
-- Weitere Informationen darüber [wie das Reliable Actors-Framework die Service Fabric-Plattform nutzt](service-fabric-reliable-actors-platform.md), um Zuverlässigkeit, Skalierbarkeit und konsistente Status zu gewährleisten.
-- Erfahren Sie mehr über den [Akteurlebenszyklus](service-fabric-reliable-actors-lifecycle.md)
+- Hier finden Sie weitere Informationen darüber, [wie das Reliable Actors-Framework die Service Fabric-Plattform nutzt](service-fabric-reliable-actors-platform.md), um Zuverlässigkeit, Skalierbarkeit und einen konsistenten Zustand zu gewährleisten.
+- Erfahren Sie mehr über den [Actor-Lebenszyklus](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-<!---HONumber=AcomDC_0309_2016-->
+## Nächste Schritte
+ - [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
+ - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actor-Timer und -Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
+ - [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
+ - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
+
+<!---HONumber=AcomDC_0406_2016-->

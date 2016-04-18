@@ -19,9 +19,12 @@
 # Verwalten von DNS-Einträgen mithilfe der PowerShell
 
 
+
 > [AZURE.SELECTOR]
+- [Azure-Portal](dns-operations-recordsets-portal.md)
 - [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
 - [PowerShell](dns-operations-recordsets.md)
+
 
 
 In diesem Leitfaden wird gezeigt, wie Sie Datensatzgruppen und Einträge für die DNS-Zone mit Azure PowerShell verwalten.
@@ -49,13 +52,13 @@ Im obigen Beispiel wird die Zone durch den Zonennamen und den Namen der Ressourc
 
 Mit „New-AzureRmDnsRecordSet“ wird ein lokales Objekt zurückgegeben, das die in Azure DNS erstellte Datensatzgruppe darstellt.
 
->[AZURE.IMPORTANT] CNAME-Datensatzgruppen können nicht gleichzeitig neben anderen Datensatzgruppen mit dem gleichen Namen vorhanden sein. Sie können z. B. nicht CNAME mit dem relativen Namen "www" und einen A-Eintrag mit dem relativen Namen "www" gleichzeitig erstellen. Da die Zonenspitze (Name = " @") immer die NS- und SOA-Datensatzgruppen enthält, die beim Erstellen der Zone erstellt wurden, bedeutet dies, dass Sie keine CNAME-Datensatzgruppe an der Zonenspitze erstellen können. Diese Einschränkungen ergeben sich aus den DNS-Standards; sie sind keine Einschränkungen von Azure DNS.
+>[AZURE.IMPORTANT] CNAME-Datensatzgruppen können nicht gleichzeitig neben anderen Datensatzgruppen mit dem gleichen Namen vorhanden sein. Sie können z. B. nicht CNAME mit dem relativen Namen "www" und einen A-Eintrag mit dem relativen Namen "www" gleichzeitig erstellen. Da die Zonenspitze (Name = " @") immer die NS- und SOA-Datensatzgruppen enthält, die beim Erstellen der Zone erstellt wurden, bedeutet dies, dass Sie keine CNAME-Datensatzgruppe an der Zonenspitze erstellen können. Diese Einschränkungen ergeben sich aus den DNS-Standards; sie sind keine Einschränkungen von Azure DNS.
 
 ### Platzhalterdatensätze
 
 Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einer Datensatzgruppe ohne Platzhalter).
 
-Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „*“ oder einen Namen, dessen Bezeichnung mit „*“ beginnt, z. B. „*.foo“.
+Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „*“ oder einen Namen, dessen Bezeichnung mit „*“ beginnt, z. B. „*.foo“.
 
 Datensatzgruppen mit Platzhaltern werden für alle Datensatztypen mit Ausnahme von NS und SOA unterstützt.
 
@@ -75,13 +78,13 @@ Mit „Get-AzureRmDnsRecordSet“ wird ein lokales Objekt zurückgegeben, das di
 ## Auflisten von Datensatzgruppen
 Durch Auslassen der Parameter „–Name“ und/oder „–RecordType“ kann „Get-AzureRmDnsRecordSet“ auch zum Auflisten von Datensatzgruppen verwendet werden:
 
-### Option 1: 
+### Option 1: 
 
 Listen Sie alle Datensatzgruppen auf. Dadurch werden alle Datensatzgruppe zurückgegeben, unabhängig vom Namen oder Eintragstyp:
 
 	PS C:\> $list = Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
-### Option 2 
+### Option 2 
 
 Listen Sie Datensatzgruppen eines bestimmten Eintragstyps auf. Dadurch werden alle Datensatzgruppen zurückgegeben, die dem angegebenen Eintragstyp (in diesem Fall A-Einträge) entsprechen:
 
@@ -98,7 +101,7 @@ Einträge werden mithilfe des Cmdlets „Add-AzureRmDnsRecordConfig“ den Daten
 
 Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise eine Datensatzgruppe vom Typ "A" verwenden, können Sie nur Einträge mit dem Parameter "IPv4Address" angeben.
 
-Weitere Einträge können jeder Datensatzgruppe hinzugefügt werden, indem „Add-AzureRmDnsRecordConfig“ erneut aufgerufen wird. Sie können einer Datensatzgruppe bis zu 20 Einträge hinzufügen. Datensatzgruppen vom Typ "CNAME" können allerdings höchstens 1 Eintrag enthalten, und eine Datensatzgruppe darf nicht zwei identische Einträge enthalten. Leere Datensatzgruppen (ohne Einträge) können erstellt werden, sie werden jedoch nicht im Azure DNS-Namenserver angezeigt.
+Weitere Einträge können jeder Datensatzgruppe hinzugefügt werden, indem „Add-AzureRmDnsRecordConfig“ erneut aufgerufen wird. Sie können einer Datensatzgruppe bis zu 20 Einträge hinzufügen. Datensatzgruppen vom Typ "CNAME" können allerdings höchstens 1 Eintrag enthalten, und eine Datensatzgruppe darf nicht zwei identische Einträge enthalten. Leere Datensatzgruppen (ohne Einträge) können erstellt werden, sie werden jedoch nicht im Azure DNS-Namenserver angezeigt.
 
 Sobald die Datensatzgruppe die gewünschte Auflistung von Einträgen enthält, muss ein Commit mithilfe des Cmdlets „Set-AzureRmDnsRecordSet“ ausgeführt werden, wodurch die vorhandene Datensatzgruppe in Azure DNS durch die bereitgestellte Datensatzgruppe ersetzt wird. Die folgenden Beispiele zeigen, wie Sie eine Datensatzgruppe jedes Eintragstyps mit einem einzelnen Eintrag erstellen.
 
@@ -126,7 +129,7 @@ Die Reihenfolge der Vorgänge zum Erstellen einer Datensatzgruppe kann auch "wei
 
 ### Erstellen einer MX-Datensatzgruppe mit einem einzelnen Eintrag
 
-In diesem Beispiel verwenden wir den Namen des Datensatzes "@" zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (z. B. "contoso.com"). Dies ist bei MX-Einträgen üblich.
+In diesem Beispiel verwenden wir den Namen des Datensatzes "@" zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (z. B. "contoso.com"). Dies ist bei MX-Einträgen üblich.
 
 	PS C:\> $rs = New-AzureRmDnsRecordSet -Name "@" -RecordType MX -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
@@ -261,7 +264,7 @@ Datensatzgruppen können mit dem Cmdlet „Remove-AzureRmDnsZone“ gelöscht we
 
 Verwenden Sie eine der folgenden drei Möglichkeiten, um eine Datensatzgruppe zu löschen:
 
-### Option 1
+### Option 1
 
 Geben Sie alle Parameter namentlich an:
 
@@ -269,14 +272,14 @@ Geben Sie alle Parameter namentlich an:
 
 Mit dem optionalen Switch "-Force" kann diese Bestätigungsaufforderung unterdrückt werden.
 
-### Option 2
+### Option 2
 
 Geben Sie die Datensatzgruppe mit Namen und Typ und die Zone mittels Objekt an:
 
 	PS C:\> $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 	PS C:\> Remove-AzureRmDnsRecordSet -Name "test-a" -RecordType A -Zone $zone [-Force]
 
-### Option 3
+### Option 3
 
 Geben Sie den Datensatz mittels Objekt an:
 
@@ -294,4 +297,4 @@ Das Datensatzgruppenobjekt kann auch weitergeleitet werden, anstatt als Paramete
 [Erste Schritte beim Erstellen von Datensatzgruppen und Einträgen](dns-getstarted-create-recordset.md)<BR> [Verwalten von DNS-Zonen](dns-operations-dnszones.md)<BR> [Automatisieren von Vorgängen mit dem .NET SDK](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

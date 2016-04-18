@@ -1,20 +1,20 @@
-Virtual Machine Scale Sets allow you to manage multiple VMs as a set. At a high level, scale sets have the following pros and cons:
+Skalierungsgruppen virtueller Computer ermöglichen es Ihnen, mehrere VMs als Satz zu verwalten. Auf hoher Ebene haben Skalierungsgruppen die folgenden Vor- und Nachteile:
 
-Pros:
+Vorteile:
 
-1. High availability. Each scale set puts its VMs into an Availability Set with 5 Fault Domains (FDs) and 5 Update Domains (UDs) to ensure availability (for more information on FDs and UDs, see [VM availability](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)).
-2. Easy integration with Azure Load Balancer and App Gateway.
-3. Easy integration with Azure Autoscale.
-4. Simplified deployment, management, and clean up of VMs.
-5. Support common Windows and Linux flavors, as well as custom images.
+1. Hohe Verfügbarkeit. Jede Skalierungsgruppe platziert ihre VMs in eine Verfügbarkeitsgruppe mit fünf Fehlerdomänen (FD) und fünf Updatedomänen (UD), um die Verfügbarkeit sicherzustellen (weitere Informationen zu FDs und UDs finden Sie unter [VM-Verfügbarkeit](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)).
+2. Einfache Integration mit dem Azure Load Balancer und App Gateway
+3. Leichtere Integration mit Azure Autoscale
+4. Vereinfachte Bereitstellung, Verwaltung und Bereinigung von virtuellen Computern
+5. Unterstützung häufiger Windows- und Linux-Varianten sowie benutzerdefinierter Images
 
-Cons:
+Nachteile:
 
-1. Cannot attach data disks to VM instances in a scale set. Instead, must use Blob Storage, Azure Files, Azure Tables, or other storage solution.
+1. Kann in einer Skalierungsgruppe keine Datenträger an VM-Instanzen anfügen. Muss stattdessen Azure Blob Storage, Azure Files Storage, Azure Table Storage oder andere Speicherlösungen verwenden.
 
-## Quick-Create Using Azure CLI
+## Schnellerfassung mithilfe der Azure-Befehlszeilenschnittstelle
 
-If you haven't already, you can get an [Azure subscription free trial](https://azure.microsoft.com/pricing/free-trial/) and the [Azure CLI](../articles/xplat-cli-install.md) [connected to your Azure account](../articles/xplat-cli-connect.md). Once you do, you can run the following commands to quick-create a VM scale set:
+Falls Sie dies nicht bereits getan haben, können Sie ein [Azure-Abonnement als kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) und die [Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) erhalten, die [mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Sobald Sie dies getan haben, können Sie die folgenden Befehle ausführen, um eine Schnellerfassung für eine VM-Skalierungsgruppe durchzuführen:
 
 ```bash
 # make sure we are in resource manager mode 
@@ -29,9 +29,9 @@ azure config mode arm
 azure vmss quick-create -n negatvmss -g negatvmssrg -l westus -u negat -p P4$$w0rd -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
 ```
 
-If you want to customize the location or image-urn, please look into the commands `azure location list` and `azure vm image {list-publishers|list-offers|list-skus|list|show}`.
+Falls Sie den Standort oder den URN (uniform resource name) des Images anpassen möchten, sehen Sie sich bitte die Befehle `azure location list` und `azure vm image {list-publishers|list-offers|list-skus|list|show}` an.
 
-Once this command has returned, the scale set will have been created. This scale set will have a load balancer with NAT rules mapping port 50,000+i on the load balancer to port 22 on VM i. Thus, once we figure out the FQDN of the load balancer, we will be able to SSH into our VMs:
+Wenn der Befehl zurückgegeben wurde, wurde die Skalierungsgruppe erstellt. Zu dieser Skalierungsgruppe gehört ein Lastenausgleich mit NAT-Regeln, das den Port 50.000+i des Lastenausgleichs dem Port 22 der VM i zuordnet. Daher werden wir, sobald wir den FQDN des Lastenausgleichs herausgefunden haben, in der Lage sein, mithilfe des SSH-Protokolls eine sichere Verbindung zu unseren VMs herzustellen:
 
 ```bash
 # list load balancers in the resource group we created
@@ -70,10 +70,12 @@ FQDN=${split_line[3]}
 ssh -p 50000 $FQDN
 ```
 
-## Next Steps
+## Nächste Schritte
 
-For general information, check out the [main landing page for VM scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+Weitere allgemeine Informationen finden Sie unter der [Hauptseite für VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 
-For documentation, check out the [main documentation page for VM scale sets](https://azure.microsoft.com/documentation/services/virtual-machines-scale-sets/).
+Weitere Dokumenten finden Sie unter der [Hauptseite für VM-Skalierungsgruppen](https://azure.microsoft.com/documentation/services/virtual-machines-scale-sets/).
 
-For example Azure resource manager templates using VM scale sets, search for "vmss" in the [Azure Quickstart Templates github repo](https://github.com/Azure/azure-quickstart-templates).
+Um Beispiele für Azure Resource Manager-Vorlagen, die VM-Skalierungsgruppen verwenden, zu finden, suchen Sie nach „vmss“ im [Github-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates).
+
+<!---HONumber=AcomDC_0406_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/31/2016"
    ms.author="kasing"/>
 
 # Verwalten Ihrer virtuellen Computer mithilfe von Azure PowerShell
@@ -105,4 +105,4 @@ Zum Erstellen eines auf Linux basierenden virtuellen Computers in Azure folgen S
 - Als Mitglied in einer vorhandenen Lastenausgleichsgruppe.
 - Mit einer statischen IP-Adresse.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

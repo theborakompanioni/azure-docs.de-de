@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog-Terminologie"
-   description="Eine Einführung in die Konzepte und Begriffe, die in der Azure Data Catalog-Dokumentation verwendet werden."
+   pageTitle="Azure Data Catalog Terminologie | Microsoft Azure"
+   description="Dieser Artikel bietet eine Einführung in die Konzepte und Begriffe, die in der Azure Data Catalog-Dokumentation verwendet werden."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog-Terminologie
@@ -53,7 +53,7 @@ Zu den beschreibenden Metadaten eines Datenassets zählen Informationen zur Zugr
 
 ## Vorschau
 
-Eine Vorschau in Azure Data Catalog ist eine Momentaufnahme von bis zu 20 Datensätzen, die während der Registrierung aus der Datenquelle extrahiert und mit den Metadaten des Datenassets im Katalog gespeichert werden können. Mit der Vorschau können Benutzer, die ein Datenasset ermitteln, die Funktion und den Zweck besser verstehen. Anders ausgedrückt: Angezeigte Beispieldaten können wertvoller als nur Spaltennamen und Datentypen sein. Eine Vorschau wird nur für Tabellen und Sichten unterstützt. Sie muss vom Benutzer während der Registrierung explizit ausgewählt werden.
+Eine Vorschau in Azure Data Catalog ist eine Momentaufnahme von bis zu 20 Datensätzen, die während der Registrierung aus der Datenquelle extrahiert und mit den Metadaten des Datenassets im Katalog gespeichert werden können. Mit der Vorschau können Benutzer, die ein Datenasset ermitteln, die Funktion und den Zweck besser verstehen. Anders ausgedrückt: Angezeigte Beispieldaten können wertvoller als nur Spaltennamen und Datentypen sein. Eine Vorschau wird nur für Tabellen und Sichten unterstützt. Sie muss vom Benutzer während der Registrierung explizit ausgewählt werden.
 
 ## Datenprofil
 
@@ -86,4 +86,4 @@ Die Registrierung umfasst das Extrahieren der Metadaten eines Datenassets aus ei
 
 - [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) Dieser Artikel enthält ein umfassendes Lernprogramm zur Verwendung von Azure Data Catalog für die Ermittlung von Datenquellen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

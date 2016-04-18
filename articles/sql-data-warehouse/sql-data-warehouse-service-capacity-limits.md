@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL Data Warehouse – Kapazitätsgrenzen | Microsoft Azure"
+   pageTitle="SQL Data Warehouse – Kapazitätsgrenzen | Microsoft Azure"
    description="Maximalwerte für Verbindungen, Abfragen, Transact-SQL-DDL und -DML und Systemsichten für SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -16,7 +16,7 @@
    ms.date="03/23/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
-# Kapazitätsgrenzen von SQL Data Warehouse
+# Kapazitätsgrenzen von SQL Data Warehouse
 
 Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster analytischer Workloads. Gleichzeitig ist sichergestellt, dass einzelnen Abfragen die für eine optimale Performance benötigten Ressourcen zur Verfügung stehen.
 
@@ -24,7 +24,7 @@ Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster an
 
 | Kategorie | Beschreibung | Maximum |
 | :---------------- | :------------------------------------------- | :----------------- |
-| Datenbank | Gleichzeitig geöffnete Sitzungen | 1\.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, die gleichzeitig Anforderungen an jede SQL Data Warehouse-Datenbank übermitteln können. Beachten Sie, dass die Anzahl der Abfragen, die gleichzeitig ausgeführt werden können, begrenzt ist. Wenn ein Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet.|
+| Datenbank | Gleichzeitig geöffnete Sitzungen | 1\.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, die gleichzeitig Anforderungen an jede SQL Data Warehouse-Datenbank übermitteln können. Beachten Sie, dass die Anzahl der Abfragen, die gleichzeitig ausgeführt werden können, begrenzt ist. Wenn ein Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet.|
 | Datenbankverbindung | Maximaler Arbeitsspeicher für vorbereitete Anweisungen | 20 MB |
 
 
@@ -32,7 +32,7 @@ Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster an
 
 | Kategorie | Beschreibung | Maximum |
 | :---------------- | :------------------------------------------- | :----------------- |
-| Abfrage | Gleichzeitige Abfragen von Benutzertabellen. | 32<br/><br/>Dies ist die obere Grenze für die gleichzeitige Ausführung von Benutzerabfragen. Zusätzliche Abfragen gelangen in eine interne Warteschlange, in der sie auf die Verarbeitung warten. Unabhängig von der Anzahl der Abfragen, die gleichzeitig ausgeführt werden, wird jede Abfrage optimiert, um die massive Parallelverarbeitungsarchitektur vollständig zu nutzen. Hinweis: Tatsächliche Gleichzeitigkeit kann von zusätzlicher Drosselung abhängen, die auf der DWU der Datenbankinstanz und der ausgewählten Ressourcenklasse der ausgeführten Abfragen basiert.|
+| Abfrage | Gleichzeitige Abfragen von Benutzertabellen. | 32<br/><br/>Das ist die maximale Anzahl von Abfragen, die gleichzeitig durchgeführt werden können. Die tatsächliche Anzahl hängt im jeweiligen Moment vom Servicelevelziel (Service Level Ojective; SLO) der Datenbank und der Ressourcenklasse der Abfrage ab. Wenn Ressourcen nicht verfügbar sind, warten Abfragen in einer internen Warteschlange. Weitere Informationen finden Sie unter [Parallelitäts- und Workloadverwaltung in SQL Data Warehouse][].|
 | Abfrage | In Warteschlange gestellte Abfragen von Benutzertabellen. | 1000 |
 | Abfrage | Gleichzeitige Abfragen von Systemsichten. | 100 |
 | Abfrage | In Warteschlange gestellte Abfragen von Systemsichten | 1000 |
@@ -47,16 +47,16 @@ Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster an
 | Tabelle | Tabellen pro Datenbank | 2 Milliarden |
 | Tabelle | Spalten pro Tabelle | 1024 Spalten |
 | Tabelle | Bytes pro Spalte | 8000 Bytes |
-| Tabelle | Bytes pro Zeile, definierte Größe | 8\.060 Bytes<br/><br/>Die Anzahl der Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server auch, unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass Spalten variabler Länge aus der Zeile verschoben werden können. Im Hauptdatensatz für Spalten variabler Länge, die aus einer Zeile verschoben wurden, wird nur ein 24-Byte-Stamm gespeichert. Weitere Informationen finden Sie unter [Zeilenüberlauf bei Daten über 8 KB](https://msdn.microsoft.com/library/ms186981.aspx) in der SQL Server-Onlinedokumentation.<br/><br/>Eine Liste der SQL Data Warehouse-Datentypgrößen finden Sie unter [CREATE TABLE (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt203953.aspx). |
-| Tabelle | Bytes pro Zeile, die Größe des internen Puffers zum Verschieben von Daten | 32\.768<br/><br/>HINWEIS: Diese Einschränkung besteht zurzeit, wird aber bald behoben.<br/><br/>SQL Data Warehouse verwendet einen internen Puffer, um Zeilen innerhalb des verteilten SQL Data Warehouse-Systems zu verschieben. Der Dienst, der Zeilen verschiebt, heißt Data Movement Service (DMS) und speichert Zeilen in einem Format, das von SQL Server abweicht.<br/><br/>Wenn eine Zeile nicht in den internen Puffer passt, erhalten Sie einen Abfragekompilierungsfehler oder einen internen Datenverschiebungsfehler. Um dieses Problem zu vermeiden, lesen Sie [Details about the DMS buffer size](#details-about-the-dms-buffer-size) (Details zur DMS-Puffergröße).|
-| Tabelle | Partitionen pro Tabelle | 15\.000<br/><br/>Um eine hohe Leistung zu erzielen, empfehlen wir, die Anzahl der Partitionen zu minimieren, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt.|
+| Tabelle | Bytes pro Zeile, definierte Größe | 8\.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server auch, unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass Spalten variabler Länge aus der Zeile verschoben werden können. Im Hauptdatensatz für Spalten variabler Länge, die aus einer Zeile verschoben wurden, wird nur ein 24-Byte-Stamm gespeichert. Weitere Informationen finden Sie unter [Zeilenüberlauf bei Daten über 8 KB](https://msdn.microsoft.com/library/ms186981.aspx) in der SQL Server-Onlinedokumentation.<br/><br/>Eine Liste der SQL Data Warehouse-Datentypgrößen finden Sie unter [CREATE TABLE (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt203953.aspx). |
+| Tabelle | Bytes pro Zeile, die Größe des internen Puffers zum Verschieben von Daten | 32\.768<br/><br/>HINWEIS: Diese Einschränkung besteht zurzeit, wird aber bald behoben.<br/><br/>SQL Data Warehouse verwendet einen internen Puffer, um Zeilen innerhalb des verteilten SQL Data Warehouse-Systems zu verschieben. Der Dienst, der Zeilen verschiebt, heißt Data Movement Service (DMS) und speichert Zeilen in einem Format, das von SQL Server abweicht.<br/><br/>Wenn eine Zeile nicht in den internen Puffer passt, erhalten Sie einen Abfragekompilierungsfehler oder einen internen Datenverschiebungsfehler. Um dieses Problem zu vermeiden, siehe die [Details zur DMS-Puffergröße](#details-about-the-dms-buffer-size).|
+| Tabelle | Partitionen pro Tabelle | 15\.000<br/><br/>Für eine hohe Leistung empfehlen wir das Minimieren der Anzahl der Partitionen, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt.|
 | Tabelle | Zeichen pro Partitionsbegrenzungswert.| 4000 |
-| Index | Nicht gruppierte Indizes pro Tabelle. | 999<br/><br/>Gilt nur für Rowstore-Tabellen|
-| Index | Gruppierte Indizes pro Tabelle. | 1<br><br/>Gilt sowohl für Rowstore- als auch für Columnstore-Tabellen|
-| Index | Zeilen in einer Rowgroup eines Columnstore-Indexes | 1\.024<br/><br/>Jeder Columnstore-Index wird als mehrfacher Columnstore-Index implementiert. Beachten Sie, dass beim Einfügen von 1.024 Zeilen in einen SQL Data Warehouse-Columnstore-Index die Zeilen nicht alle in dieselbe Rowgroup übertragen werden.|
-| Index | Parallele Erstellung gruppierter Columnstore-Indizes. | 32<br/><br/>Gilt, wenn die gruppierten Columnstore-Indizes alle aus verschiedenen Tabellen erstellt werden Pro Tabelle ist nur das Erstellen eines gruppierten Columnstore-Index zulässig. Zusätzliche Anforderungen werden in eine Warteschlange gestellt.|
-| Index | Größe des Indexschlüssels. | 900 Bytes<br/><br/>Gilt nur für Rowstore-Indizes.<br/><br/>Indizes für „varchar“-Spalten mit einer maximalen Größe von mehr als 900 Bytes können erstellt werden, wenn die vorhandenen Daten in den Spalten bei der Indexerstellung nicht größer als 900 Bytes sind. Anschließende auf die Spalten angewendete INSERT- oder UPDATE-Anweisungen, die bewirken, dass die Gesamtgröße 900 Bytes überschreitet, haben allerdings keinen Erfolg.|
-| Index | Schlüsselspalten pro Index. | 16<br/><br/>Gilt nur für Rowstore-Indizes Gruppierte Columnstore-Indizes enthalten alle Spalten.|
+| Index | Nicht gruppierte Indizes pro Tabelle. | 999<br/><br/>Gilt nur für Rowstore-Tabellen.|
+| Index | Gruppierte Indizes pro Tabelle. | 1<br><br/>Gilt für Rowstore- und Columnstore-Tabellen.|
+| Index | Zeilen in einer Rowgroup eines Columnstore-Indexes | 1\.024<br/><br/>Jeder Columnstore-Index wird als mehrere Columnstore-Indexe implementiert. Beachten Sie, dass beim Einfügen von 1.024 Zeilen in einen SQL Data Warehouse-Columnstore-Index die Zeilen nicht alle in dieselbe Rowgroup übertragen werden.|
+| Index | Parallele Erstellung gruppierter Columnstore-Indizes. | 32<br/><br/>Gilt, wenn die gruppierten Columnstore-Indizes alle für verschiedene Tabellen erstellt werden. Pro Tabelle ist nur das Erstellen eines gruppierten Columnstore-Index zulässig. Zusätzliche Anforderungen werden in eine Warteschlange gestellt.|
+| Index | Größe des Indexschlüssels. | 900 Bytes<br/><br/>Gilt nur für Rowstore-Indexe.<br/><br/>Indexe für „varchar“-Spalten mit einer maximalen Größe von mehr als 900 Bytes können erstellt werden, wenn die vorhandenen Daten in den Spalten bei der Indexerstellung nicht größer als 900 Bytes sind. Anschließende auf die Spalten angewendete INSERT- oder UPDATE-Anweisungen, die bewirken, dass die Gesamtgröße 900 Bytes überschreitet, haben allerdings keinen Erfolg.|
+| Index | Schlüsselspalten pro Index. | 16<br/><br/>Gilt nur für Rowstore-Indizes. Gruppierte Columnstore-Indizes enthalten alle Spalten.|
 | Statistiken | Größe der kombinierten Spaltenwerte. | 900 Bytes. |
 | Statistiken | Spalten pro Statistikobjekt. | 32 |
 | Statistiken | Für Spalten pro Tabelle erstellte Statistiken. | 30\.000 |
@@ -68,12 +68,12 @@ Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster an
 
 | Kategorie | Beschreibung | Maximum |
 | :---------------- | :------------------------------------------- | :----------------- |
-| SELECT-Ergebnisse | Spalten pro Zeile | 4\.096<br/><br/>Das Ergebnis einer SELECT-Anweisung kann nie mehr als 4.096 Spalten pro Zeile enthalten. Es gibt keine Garantie, dass Sie stets über 4096 verfügen. Wenn der Abfrageplan eine temporäre Tabelle erfordert, gilt möglicherweise der Maximalwert von 1024 Spalten pro Tabelle.|
+| SELECT-Ergebnisse | Spalten pro Zeile | 4096<br/><br/>Das Ergebnis einer SELECT-Anweisung kann nie mehr als 4096 Spalten pro Zeile enthalten. Es gibt keine Garantie, dass Sie stets über 4096 verfügen. Wenn der Abfrageplan eine temporäre Tabelle erfordert, gilt möglicherweise der Maximalwert von 1024 Spalten pro Tabelle.|
 | SELECT | Geschachtelte Unterabfragen | 32<br/><br/>In einer SELECT-Anweisung sind maximal 32 geschachtelte Unterabfragen zulässig. Es gibt keine Garantie, dass Sie stets über 32 verfügen. Ein JOIN-Befehl kann z. B. eine Unterabfrage in den Abfrageplan einführen. Die Anzahl der Unterabfragen kann auch durch den verfügbaren Speicher eingeschränkt werden.|
 | SELECT | Spalten pro JOIN | 1\.024 Spalten<br/><br/>Für einen JOIN sind maximal 1.024 Spalten zulässig. Es gibt keine Garantie, dass Sie stets über 1024 verfügen. Wenn der JOIN-Plan eine temporäre Tabelle mit mehr Spalten als das JOIN-Ergebnis erfordert, gilt die Grenze von 1024 für die temporäre Tabelle. |
 | SELECT | Bytes pro GROUP BY-Spalten. | 8\.060<br/><br/>Die Maximalgröße von Spalten in der GROUP BY-Klausel beträgt 8.060 Bytes.|
 | SELECT | Bytes pro ORDER BY-Spalten | 8\.060<br/><br/>Die Maximalgröße von Spalten in der ORDER BY-Klausel beträgt 8.060 Bytes.|
-| Bezeichner und Konstanten pro Anweisung | Anzahl der Bezeichner und Konstanten, auf die verwiesen wird. | 65\.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern und Konstanten, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Dieser Grenzwert ist 65.535. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.](http://support.microsoft.com/kb/913050/).|
+| Bezeichner und Konstanten pro Anweisung | Anzahl der Bezeichner und Konstanten, auf die verwiesen wird. | 65\.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern und Konstanten, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Dieser Grenzwert ist 65.535. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Fehlermeldung beim Ausführen einer Abfrage in SQL Server 2005: "Interner Fehler: ein Ausdruck Services wurde erreicht"](http://support.microsoft.com/kb/913050/).|
 
 ## Systemsichten
 
@@ -94,7 +94,7 @@ Die folgenden Maximalwerte gewährleisten die Durchführung anspruchsvollster an
 
 SQL Data Warehouse verwendet einen internen Puffer, um Zeilen unter den Back-End-Computeknoten zu verschieben. Die Daten werden mit einem Dienst zur Datenverschiebung (Data Movement Service, DMS) verschoben und in einem Format gespeichert, das sich von SQL Server unterscheidet.
 
-Zum Verbessern der Leistung paralleler Abfragen füllt DMS alle Daten mit variabler Länge auf die maximale für die SQL-Datenbank definierte Größe auf. Der Wert „Hallo“ für ein `nvarchar(2000) NOT NULL` belegt z. B. tatsächlich 4.002 Bytes im DMS-Puffer. Er verwendet 2 Byte für jedes der 2000 Zeichen plus 2 Bytes für den NULL-Terminator.
+Zum Verbessern der Leistung paralleler Abfragen füllt DMS alle Daten mit variabler Länge auf die maximale für die SQL-Datenbank definierte Größe auf. Der Wert „Hallo“ für ein `nvarchar(2000) NOT NULL` belegt z.B. tatsächlich 4.002 Bytes im DMS-Puffer. Er verwendet 2 Byte für jedes der 2000 Zeichen plus 2 Bytes für den NULL-Terminator.
 
 > [AZURE.NOTE] Ein interner Fehler tritt auf, wenn DMS versucht, eine Zeile zu verschieben, die die DMS-Puffergröße von 32.768 Bytes überschreitet. Wenn die Zeilengröße die DMS-Puffergröße überschreitet, müssen Sie die Tabellendefinition überarbeiten, damit die Zeile in den DMS-Puffer passt.
 
@@ -230,7 +230,8 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 
 <!--Article references-->
 [SQL Data Warehouse-Referenz – Übersicht]: sql-data-warehouse-overview-reference.md
+[Parallelitäts- und Workloadverwaltung in SQL Data Warehouse]: sql-data-warehouse-develop-concurrency.md
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

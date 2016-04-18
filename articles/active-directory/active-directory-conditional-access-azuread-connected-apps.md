@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="03/30/2016"
 	ms.author="femila"/>
 
 # Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps
@@ -49,6 +49,7 @@ Dieser Abschnitt beschreibt die Konfiguration anwendungsspezifischer Zugriffsreg
 ##Grundlegendes zu Zugriffsregeln
 
 Dieser Abschnitt enthält eine ausführliche Beschreibung der Zugriffsregeln, die in der Vorschau der Azure-Funktion für bedingten Anwendungszugriff unterstützt werden.
+
 ### Angeben der Benutzer, für die die Zugriffsregeln gelten
 
 Standardmäßig gilt die Richtlinie für alle Benutzer, die auf die Anwendung zugreifen können. Allerdings kann die Richtlinie auch auf Benutzer beschränkt werden, die den angegebenen Sicherheitsgruppen angehören. Über die Schaltfläche **Gruppe hinzufügen** können Sie eine oder mehrere Gruppen im Dialogfeld zur Gruppenauswahl auswählen, auf die dann die Zugriffsregel angewendet wird. Dieses Dialogfeld kann auch zum Entfernen ausgewählter Gruppen verwendet werden. Wenn die Regeln auf Gruppen angewendet werden sollen, werden die Zugriffsregeln nur für Benutzer erzwungen, die einer der angegebenen Sicherheitsgruppen angehören.
@@ -78,7 +79,7 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 
 Für Verbundmandanten kann die mehrstufige Authentifizierung von Azure Active Directory oder den lokalen AD FS-Server durchgeführt werden.
 
-Standardmäßig erfolgt die MFA auf einer Seite, die von Azure Active Directory gehostet wird. Um MFA lokal zu konfigurieren, muss die Eigenschaft "–SupportsMFA" in Azure Active Directory mithilfe des Azure AD-Moduls für Windows PowerShell auf "true" festgelegt werden.
+Standardmäßig erfolgt die MFA auf einer Seite, die von Azure Active Directory gehostet wird. Um MFA lokal zu konfigurieren, muss die Eigenschaft „–SupportsMFA“ in Azure Active Directory mithilfe des Azure AD-Moduls für Windows PowerShell auf **TRUE** festgelegt werden.
 
 Im folgenden Beispiel wird veranschaulicht, wie lokale MFA mithilfe des [Set-MsolDomainFederationSettings-Cmdlets](https://msdn.microsoft.com/library/azure/dn194088.aspx) auf dem Mandanten "contoso.com" aktiviert wird:
 
@@ -88,6 +89,7 @@ Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbund
 
 ##Verwandte Artikel
 
+- [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

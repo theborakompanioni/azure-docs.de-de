@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/04/2016" 
+	ms.date="04/06/2016" 
 	ms.author="ccompy"/>
 
 
@@ -31,6 +31,7 @@ Allgemein besteht eine App Service-Umgebung aus mehreren Hauptkomponenten:
 - Speicher
 - Datenbank
 - Ein klassisches „v1“-Virtual Network mit mindestens einem Subnetz
+- Derzeit werden nur virtuelle Netzwerke mit dem Adressraum RFC1918 (d.h. private Adressen) unterstützt.
 - Subnetz mit darin ausgeführtem gehosteten Dienst der Azure App-Umgebung
 
 Die Computeressourcen werden für Ihre vier Ressourcenpools verwendet. Jede App Service-Umgebung verfügt über eine Gruppe von Front-Ends und drei Workerpools. Sie müssen nicht alle drei Workerpools verwenden und können auch nur einen einzigen nutzen. Die Front-Ends sind die HTTP-Endpunkte für die in der App Service-Umgebung gehosteten Apps. In den Workern werden die Apps tatsächlich ausgeführt. Die Frage, wann Sie mehr Front-Ends oder Worker hinzufügen müssen, ist mit der Leistung der in der App Service-Umgebung platzierten Apps verbunden. Nehmen Sie beispielsweise an, in Ihrer App Service-Umgebung befindet sich nur eine einzige App. Dies ist eine Hello-World-App, bei der eine sehr hohe Anzahl von Anforderungen eingeht. In diesem Fall müssten Sie die Anzahl der Front-Ends erhöhen, um die HTTP-Last zu bewältigen. Die Anzahl der Worker muss dagegen nicht erhöht werden. Dies alles von Hand zu steuern wäre eine sehr mühselige Aufgabe, insbesondere, wenn Sie berücksichtigen, dass in jeder App Service-Umgebung verschiedene Apps mit sehr unterschiedlichen Leistungskriterien ausgeführt werden. Deshalb wurde den App Service-Umgebungen eine Funktion zum automatischen Skalieren hinzugefügt, die hier für Erleichterungen sorgt. Einzelheiten zum Skalieren und automatischen Skalieren von App Service-Umgebungen erfahren Sie unter [Konfigurieren der automatischen Skalierung in einer App Service-Umgebung][ASEAutoscale].
@@ -94,7 +95,10 @@ Einen guten Überblick über das Skalieren von Apps in einer App Service-Umgebun
 
 Die Ressourcenpools, Front-Ends und Worker sind für die Mandanten nicht direkt zugänglich. Das heißt, Sie können nicht per RDP darauf zugreifen, ihre Bereitstellung ändern oder als Administrator für sie tätig werden. Sie werden von Azure betrieben und verwaltet. Allerdings können die Menge und die Größe der Computeressourcen vom Benutzer festgelegt werden.
 
-Es gibt drei Möglichkeiten, mit denen Sie beeinflussen können, wie viele Server in den Ressourcenpools verwendet werden: mit dem Skalierungsvorgang oben auf dem Hauptblatt für die App Service-Umgebung, mit manuellen Skalierungsvorgängen auf dem Blatt „Skalieren“ für den jeweiligen Ressourcenpool (zu finden unter „Einstellungen“) sowie mit der automatischen Skalierung, die Sie auf dem Blatt „Skalieren“ für den jeweiligen Ressourcenpool einrichten.
+Es gibt drei Möglichkeiten, mit denen Sie steuern können, wie viele Server in Ihren Ressourcenpools sind
+- Mit dem Skalierungsvorgang oben auf dem Hauptblatt für die App Service-Umgebung
+- Mit manuellem Skalierungsvorgang unter „Einstellungen“ auf dem Blatt „Skalieren“ für den jeweiligen Resourcenpool
+- Mit der automatischen Skalierung, die Sie vom Blatt „Skalieren“ für den jeweiligen Ressourcenpool einrichten
 
 Um den Skalierungsvorgang auf dem Blatt „App Service-Umgebung“ zu verwenden, klicken Sie auf „Skalieren“, ziehen den betreffenden Schieberegler auf die gewünschte Menge und speichern die neue Einstellung. Mit dieser Benutzeroberfläche können Sie auch die Größe ändern.
 
@@ -145,7 +149,7 @@ Das Hinzufügen weiterer Instanzen zu einem Workerpool ist unkritisch und führt
  
 Dies führt bei ausgeführten Apps zu sehr viel weniger Unterbrechungen als das Ändern der Größe von Compute-Ressourcen während der Ausführung von Workloads. Details zum Skalieren von Apps in einer App Service-Umgebung finden Sie unter [Skalieren von Apps in einer App Service-Umgebung](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
-## Virtuelles Netzwerk ##
+## Virtual Network ##
 
 Anders als beim gehosteten Dienst, der die App Service-Umgebung umfasst, werden das [virtuelle Netzwerk][virtualnetwork] und das Subnetz vom Benutzer gesteuert. App Service-Umgebungen weisen einige Netzwerkanforderungen auf, aber der Rest unterliegt der Steuerung durch den Benutzer. Die App Service-Umgebung stellt folgende Anforderungen:
 
@@ -200,4 +204,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -31,13 +31,11 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des Azure-Ressourcen-Man
 
 - [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
 
-Beispielsweise können Sie eine Ressourcengruppe mit dem Namen *MyResourceGroup* in der Region USA Mitte erstellen. Verwenden Sie dann einen **azure vm quick-create**-Befehl ähnlich dem Folgenden zur Bereitstellung eines virtuellen Computers mit Ubuntu 14.04 LTS in der Ressourcengruppe.
+Beispielsweise können Sie eine Ressourcengruppe mit dem Namen *MyResourceGroup* in der Region USA Mitte erstellen. Verwenden Sie dann einen **azure vm quick-create**-Befehl ähnlich dem Folgenden zur Bereitstellung eines virtuellen Computers mit Ubuntu 14.04 LTS in der Ressourcengruppe.
 
  	azure vm quick-create -g MyResourceGroup -n <your-virtual-machine-name> "centralus" -y Linux -Q canonical:ubuntuserver:14.04.2-LTS:latest -u <your-user-name> -p <your-password>
 
-Nachdem der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie einen Datenträger anbringen. Wie das geht, erfahren Sie [hier](virtual-machines-linux-cli-create.md#attach-and-mount-a-disk).
-
-Um weitere Anpassungen vorzunehmen, müssen Sie den virtuellen Computer mit einem SSH-Client Ihrer Wahl verbinden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Azure-Linux-Computer über SSH](virtual-machines-linux-portal-create.md#connect-to-your-azure-linux-vm-using-strongsshstrong)
+Nachdem der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie einen Datenträger anbringen. Wie das geht, erfahren Sie [hier](virtual-machines-linux-add-disk).
 
 
 ## Erfassen des virtuellen Computers
@@ -200,4 +198,4 @@ Führen Sie für zusätzliche Befehlsoptionen `azure help vm create` aus.
 
 Informationen zur Verwaltung Ihrer virtuellen Computer mit der CLI finden Sie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

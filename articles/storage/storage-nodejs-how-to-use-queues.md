@@ -39,7 +39,7 @@ Um Azure-Speicher verwenden zu können, müssen Sie das Azure Storage-SDK für N
 
 ### Verwenden von Node Package Manager (NPM) zum Beziehen des Pakets
 
-1.  Verwenden Sie eine Befehlszeilenschnittstelle, z. B. **PowerShell** (Windows,) **Terminal** (Mac) oder **Bash** (Unix), und navigieren Sie zu dem Ordner, in dem Sie die Beispielanwendung erstellt haben.
+1.  Verwenden Sie eine Befehlszeilenschnittstelle, z. B. **PowerShell** (Windows,) **Terminal** (Mac) oder **Bash** (Unix), und navigieren Sie zu dem Ordner, in dem Sie die Beispielanwendung erstellt haben.
 
 2.  Geben Sie **npm install azure-storage** in das Befehlsfenster ein. Die Ausgabe des Befehls ähnelt dem folgenden Beispiel.
 
@@ -60,7 +60,7 @@ Um Azure-Speicher verwenden zu können, müssen Sie das Azure Storage-SDK für N
 
 Verwenden Sie Editor oder einen anderen Texteditor, um die folgende Zeile am Anfang der Datei **server.js** der Anwendung einzufügen, in der Sie den Speicher nutzen möchten:
 
-    var azure = require('azure-storage');
+	var azure = require('azure-storage');
 
 ## Einrichten einer Azure-Speicherverbindung
 
@@ -72,27 +72,27 @@ Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Website im [Az
 
 Durch folgenden Code wird ein **QueueService**-Objekt erstellt, das Ihnen das Arbeiten mit Warteschlangen ermöglicht.
 
-    var queueSvc = azure.createQueueService();
+	var queueSvc = azure.createQueueService();
 
 Verwenden Sie die **createQueueIfNotExists**-Methode, die die angegebene Warteschlange zurückgibt, wenn sie bereits vorhanden ist, oder eine neue Warteschlange mit dem angegebenen Namen erstellt, sollte sie noch nicht vorhanden sein.
 
 	queueSvc.createQueueIfNotExists('myqueue', function(error, result, response){
-      if(!error){
-        // Queue created or exists
+	  if(!error){
+	    // Queue created or exists
 	  }
 	});
 
-Wenn die Warteschlange erstellt wird, ist `result` "true". Wenn die Warteschlange bereits vorhanden ist, ist `result` "false".
+Wenn die Warteschlange erstellt wird, ist `result.created` "true". Wenn die Warteschlange bereits vorhanden ist, ist `result.created` "false".
 
 ### Filter
 
 Mit **QueueService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
 
-		function handle (requestOptions, next)
+	function handle (requestOptions, next)
 
 Nachdem die Vorverarbeitung der Anforderungsoptionen angeschlossen ist, muss die Methode "next" aufrufen und hierbei eine Rückruffunktion mit der folgenden Signatur übergeben:
 
-		function (returnObject, finalCallback, next)
+	function (returnObject, finalCallback, next)
 
 Nachdem das returnObject-Objekt (die Antwort auf die an den Server gesendete Anforderung) verarbeitet wurde, muss in dieser Rückruffunktion entweder "next" aufgerufen werden, wenn die Tabelle vorhanden ist, um weitere Filter zu verarbeiten, oder andernfalls einfach "finallCallback" aufrufen, um den Dienstaufruf zu beenden.
 
@@ -117,7 +117,7 @@ Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, 
 
 	queueSvc.peekMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Message text is in messages[0].messagetext
+	    // Message text is in messages[0].messageText
 	  }
 	});
 
@@ -136,14 +136,14 @@ Das Verarbeiten einer Nachricht besteht aus zwei Stufen:
 Verwenden Sie **getMessages**, um eine Nachricht aus der Warteschlange zu entfernen. Durch diesen Vorgang werden die Nachrichten in der Warteschlange unsichtbar, sodass sie nicht durch andere Clients verarbeitet werden können. Sobald Ihre Anwendung eine Nachricht verarbeitet hat, rufen Sie **deleteMessage** auf, um sie aus der Warteschlange zu löschen. Im folgenden Beispiel wird eine Nachricht abgerufen und anschließend gelöscht:
 
 	queueSvc.getMessages('myqueue', function(error, result, response){
-      if(!error){
-	    // Message text is in messages[0].messagetext
-        var message = result[0];
-        queueSvc.deleteMessage('myqueue', message.messageid, message.popreceipt, function(error, response){
+	  if(!error){
+	    // Message text is in messages[0].messageText
+	    var message = result[0];
+	    queueSvc.deleteMessage('myqueue', message.messageId, message.popReceipt, function(error, response){
 	      if(!error){
-		    //message deleted
-		  }
-		});
+	        //message deleted
+	      }
+	    });
 	  }
 	});
 
@@ -156,15 +156,15 @@ Wenn Sie **getMessages** verwenden und keine Nachrichten in der Warteschlange vo
 
 Sie können die Inhalte einer Nachricht direkt in der Warteschlange mithilfe von **updateMessage** ändern. Im folgenden Beispiel wird der Text einer Nachricht aktualisiert:
 
-    queueSvc.getMessages('myqueue', function(error, result, response){
+	queueSvc.getMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Got the message
-		var message = result[0];
-		queueSvc.updateMessage('myqueue', message.messageid, message.popreceipt, 10, {messageText: 'new text'}, function(error, result, response){
-		  if(!error){
-			// Message updated successfully
-		  }
-		});
+	    // Got the message
+	    var message = result[0];
+	    queueSvc.updateMessage('myqueue', message.messageId, message.popReceipt, 10, {messageText: 'new text'}, function(error, result, response){
+	      if(!error){
+	        // Message updated successfully
+	      }
+	    });
 	  }
 	});
 
@@ -175,20 +175,20 @@ Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Wartesc
 * `options.numOfMessages`: Abrufen eines Stapels an Nachrichten (bis zu 32).
 * `options.visibilityTimeout`: Festlegen eines längeren oder kürzeren Unsichtbarkeits-Zeitlimits.
 
-Im folgenden Beispiel wird die Methode **getMessages** verwendet, um mit einem Aufruf 15 Nachrichten abzurufen. Anschließend wird jede Nachricht mithilfe einer for Schleife verarbeitet. Zudem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten für alle Nachrichten festgelegt, die durch diese Methode zurückgegeben werden.
+Im folgenden Beispiel wird die Methode **getMessages** verwendet, um mit einem Aufruf 15 Nachrichten abzurufen. Anschließend wird jede Nachricht mithilfe einer for Schleife verarbeitet. Zudem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten für alle Nachrichten festgelegt, die durch diese Methode zurückgegeben werden.
 
-    queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
+	queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
 	  if(!error){
-		// Messages retreived
-		for(var index in result){
-		  // text is available in result[index].messageText
-		  var message = result[index];
-		  queueSvc.deleteMessage(queueName, message.messageid, message.popreceipt, function(error, response){
-			if(!error){
-			  // Message deleted
-			}
-		  });
-		}
+	    // Messages retreived
+	    for(var index in result){
+	      // text is available in result[index].messageText
+	      var message = result[index];
+	      queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, response){
+	        if(!error){
+	          // Message deleted
+	        }
+	      });
+	    }
 	  }
 	});
 
@@ -196,9 +196,9 @@ Im folgenden Beispiel wird die Methode **getMessages** verwendet, um mit einem A
 
 **getQueueMetadata** gibt Metadaten über die Warteschlange zurück, einschließlich der geschätzten Anzahl der in der Warteschlange wartenden Nachrichten.
 
-    queueSvc.getQueueMetadata('myqueue', function(error, result, response){
+	queueSvc.getQueueMetadata('myqueue', function(error, result, response){
 	  if(!error){
-		// Queue length is available in result.approximatemessagecount
+	    // Queue length is available in result.approximateMessageCount
 	  }
 	});
 
@@ -218,10 +218,10 @@ Wenn nicht alle Warteschlangen zurückgegeben werden können, kann `result.conti
 
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **deleteQueue** für das Warteschlangenobjekt auf.
 
-    queueSvc.deleteQueue(queueName, function(error, response){
-		if(!error){
-			// Queue has been deleted
-		}
+	queueSvc.deleteQueue(queueName, function(error, response){
+	  if(!error){
+	    // Queue has been deleted
+	  }
 	});
 
 Verwenden Sie **clearMessages**, um alle Nachrichten aus einer Warteschlange zu entfernen, ohne sie zu löschen.
@@ -269,36 +269,30 @@ Sie können auch eine Zugriffssteuerungsliste (Access Control List, ACL) verwend
 
 Eine ACL wird in einem Array von Zugriffsrichtlinien implementiert, wobei jeder Richtlinie eine ID zugeordnet wird. Im folgenden Beispiel werden zwei Richtlinien definiert, eine für 'user1' und eine für 'user2':
 
-	var sharedAccessPolicy = [
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user1'
+	var sharedAccessPolicy = {
+	  user1: {
+	    Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  },
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user2'
+	  user2: {
+	    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  }
-	];
+	};
 
 Im folgenden Beispiel wird die aktuelle Zugriffssteuerungsliste für **myqueue** abgerufen. Anschließend werden die neuen Richtlinien mithilfe von **setQueueAcl** hinzugefügt. Dieser Ansatz ermöglicht Folgendes:
 
+	var extend = require('extend');
 	queueSvc.getQueueAcl('myqueue', function(error, result, response) {
-      if(!error){
-		//push the new policy into signedIdentifiers
-		result.signedIdentifiers = result.signedIdentifiers.concat(sharedAccessPolicy);
-		queueSvc.setQueueAcl('myqueue', result.signedIdentifiers, function(error, result, response){
-	  	  if(!error){
-	    	// ACL set
-	  	  }
-		});
+	  if(!error){
+	    var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
+	    queueSvc.setQueueAcl('myqueue', newSignedIdentifiers, function(error, result, response){
+	      if(!error){
+	        // ACL set
+	      }
+	    });
 	  }
 	});
 
@@ -331,4 +325,4 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
   [Blog des Azure-Speicherteams]: http://blogs.msdn.com/b/windowsazurestorage/
   [Erstellen und Bereitstellen einer Node.js-Anwendung in Azure mit WebMatrix]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

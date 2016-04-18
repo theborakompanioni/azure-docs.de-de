@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/23/2016" 
+	ms.date="03/31/2016" 
 	ms.author="tdykstra"/>
 
 # API-Apps-Übersicht
@@ -22,11 +22,11 @@ API-Apps ist einer der vier App-Typen, die von [Azure App Service](../app-servic
 
 ![App-Typen in Azure App Service](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
 
-[App Service](../app-service/app-service-value-prop-what-is.md) ist eine vollständig verwaltete Plattform für mobile, Web- und Integrationsszenarios. API-Apps in App Service bietet Funktionen, mit denen APIs in der Cloud und lokal einfacher erstellt, gehostet und genutzt werden können. Stellen Sie Ihre API als API-App in App Service bereit, und profitieren Sie von einer für Unternehmen geeigneten Sicherheit, einfacher Zugriffssteuerung, hybrider Konnektivität, automatischer SDK-Generierung und nahtloser Integration in [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md).
+[App Service](../app-service/app-service-value-prop-what-is.md) ist eine vollständig verwaltete Plattform für mobile, Web- und Integrationsszenarios. API-Apps in App Service bietet Funktionen, mit denen APIs in der Cloud und lokal einfacher erstellt, gehostet und genutzt werden können. Durch API-Apps profitieren Sie von einer geeigneten Sicherheitsstufe für Unternehmen, einfacher Zugriffssteuerung, hybrider Konnektivität, automatischer SDK-Generierung und nahtloser Integration in [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md).
 
 ## Warum API-Apps?
 
-API-Apps stellt die folgenden Funktionen bereit:
+Hier sind einige wichtige Funktionen von API-Apps:
 
 - **Einfache Nutzung** – Die integrierte Unterstützung für [Swagger-API-Metadaten](#concepts) ermöglicht es, dass Ihre APIs auf einfache Weise von zahlreichen Clients genutzt werden können. Clientcode für Ihre APIs kann in zahlreichen verschiedenen Programmiersprachen generiert werden, darunter C#, Java und Javascript. Sie können ganz einfach [CORS](#concepts) konfigurieren, ohne den Code zu ändern. Weitere Informationen finden Sie unter [Metadaten in App Service-API-Apps für die API-Ermittlung und Codegenerierung](app-service-api-metadata.md) und [Nutzen einer API-App aus JavaScript mit CORS](app-service-api-cors-consume-javascript.md). 
 
@@ -40,16 +40,16 @@ API-Apps stellt die folgenden Funktionen bereit:
 
 Darüber hinaus kann eine API-App von Features profitieren, die von [Web-Apps](../app-service-web/app-service-web-overview.md) und [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bereitgestellt werden. Dies gilt auch umgekehrt: Wenn Sie eine API mithilfe einer Web-App oder einer mobilen App hosten, kann diese von API-App-Funktionen wie Swagger-Metadaten zur Generierung des Clientcodes und CORS für den domänenübergreifenden Browserzugriff profitieren. Der einzige Unterschied zwischen den drei App-Typen (API, Web, mobil) ist der Name und das Symbol im Azure-Portal. Da alle dieselben Funktionen haben, muss der Typ einer App zu keinem Zeitpunkt geändert werden, um die von Ihnen gewünschten Funktionen zu erhalten. Wenn Sie jedoch den Typ einer vorhandenen App ändern möchten, ist dies ein einfacher Vorgang. Weitere Informationen finden Sie im Abschnitt **Ändern eines App-Typs** unter [Erste Schritte mit API-Apps und ASP.NET in Azure App Service](app-service-api-dotnet-get-started.md#optional-changing-an-app-type).
 
-## Erweitern von API-Apps mithilfe von Azure API Management 
+## Erweitern von API-Apps mithilfe von Azure API Management 
 
 API-Apps und [Azure API Management](../api-management/api-management-key-concepts.md) sind sich ergänzende Dienste:
 
-* API Management dient zur Verwaltung von APIs. Sie können mit einem API Management-Front-End auf einer API unter anderem die Nutzung überwachen und drosseln, die Ein- und Ausgabe bearbeiten und mehrere APIs zusammenführen konsolidieren. Die verwalteten APIs können an einem beliebigen Ort gehostet werden.
-* API-Apps wird für das Hosting von APIs verwendet. Der Dienst umfasst Funktionen zur einfachen Entwicklung und Nutzung von APIs, führt aber nicht die Art von Überwachung, Drosselung, Bearbeitung oder Konsolidierung durch, für die API Management zuständig ist. 
+* API Management dient zur Verwaltung von APIs. Sie können mit einem API Management-Front-End auf einer API unter anderem die Nutzung überwachen und drosseln, die Ein- und Ausgabe bearbeiten und mehrere APIs zusammenführen konsolidieren. Die verwalteten APIs können an einem beliebigen Ort gehostet werden.
+* API-Apps wird für das Hosting von APIs verwendet. Der Dienst umfasst Funktionen zur einfachen Entwicklung und Nutzung von APIs, führt aber nicht die Art von Überwachung, Drosselung, Bearbeitung oder Konsolidierung durch, für die API Management zuständig ist. 
 
-Mit API Management können Sie von API-Apps gehostete APIs verwalten oder API-Apps ohne API Management verwenden.
+Mit API Management können Sie von API-Apps gehostete APIs verwalten oder API-Apps ohne API Management verwenden.
 
-API Management und API-Apps verfügen über ein paar ähnliche Funktionen. Beispielsweise können beide die CORS-Unterstützung automatisieren. Wenn Sie die beiden Dienste zusammen verwenden, würden Sie API Management für CORS verwenden, da der Dienst als Front-End für API-Apps dient.
+API Management und API-Apps verfügen über ein paar ähnliche Funktionen. Beispielsweise können beide die CORS-Unterstützung automatisieren. Wenn Sie die beiden Dienste zusammen verwenden, würden Sie API Management für CORS verwenden, da der Dienst als Front-End für API-Apps dient.
 
 ## <a id="concepts"></a> API-Apps – Konzepte
 
@@ -64,4 +64,4 @@ Arbeiten Sie zum Einstieg in API-Apps eines der Tutorials unter [Erste Schritte 
 
 Um Fragen über API-Apps zu stellen, starten Sie einen Thread im [API-Apps-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureAPIApps).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -17,11 +17,15 @@
 	ms.date="02/03/2016"
 	ms.author="cephalin"/>
 
-
 #Aktivieren von HTTPS für eine App in Azure App Service
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
+> [AZURE.SELECTOR]
+- [Aktivieren von SSL für Ihre benutzerdefinierte Domäne](web-sites-configure-ssl-certificate.md)
+- [Kaufen eines SSL-Zertifikats für Web-Apps](web-sites-purchase-ssl-web-site.md)
+
+
 
 [AZURE.INCLUDE [configure-ssl-web-site](../../includes/configure-ssl-web-site.md)]
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

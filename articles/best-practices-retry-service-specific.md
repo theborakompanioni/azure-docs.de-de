@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/28/2015"
+   ms.date="04/01/2016"
    ms.author="masashin"/>
 
 # Wiederholen der spezifischen Anleitung
@@ -1107,4 +1107,4 @@ Der Anwendungsblock zur Handhabung von vorübergehenden Fehlern verfügt über d
 | **Linear (festgelegtes Intervall)** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 Sekunde<br />true | Die Anzahl der Wiederholungsversuche.<br />Die Verzögerung zwischen Wiederholungen.<br />Gibt an, ob der erste Wiederholungsversuch sofort erfolgt. |
 Beispiele für die Verwendung des Anwendungsblocks zur Handhabung von vorübergehenden Fehlern finden Sie in den Abschnitten „Beispiele“ weiter vorne in diesem Handbuch für die Azure SQL-Datenbank mit ADO.NET und Azure Active Directory.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

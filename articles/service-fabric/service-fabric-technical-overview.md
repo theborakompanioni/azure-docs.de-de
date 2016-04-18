@@ -13,22 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/24/2016"
+   ms.date="04/05/2016"
    ms.author="msfussell"/>
 
 # Übersicht über Service Fabric-Terminologie
 
 Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. In diesem Thema wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die an anderer Stelle in der Dokumentation verwendeten Begriffe verstehen.
 
-## Terminologiekonzepte
-
-### Infrastrukturkonzepte
+## Infrastrukturkonzepte
 **Cluster:** Per Netzwerk verbundene virtuelle oder physische Computer, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden.
 
 **Knoten:** Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer oder virtueller Computer verfügt über einen Windows-Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird. Dieser Dienst wiederum startet zwei ausführbare Dateien: `Fabric.exe` und `FabricGateway.exe`. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem PC oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
 
-### Anwendungskonzepte
-**Anwendungstyp:** Name und Version, die einer Sammlung von Diensttypen zugewiesen sind. Diese Informationen sind in einer `ApplicationManifest.xml`-Datei definiert und in ein Anwendungspaketverzeichnis eingebettet, das dann in den Imagespeicher des Service Fabric-Clusters kopiert wird. Anschließend können Sie aus diesem Anwendungstyp im Cluster eine benannte Anwendung erstellen.
+## Anwendungskonzepte
+**Anwendungstyp:** Name und Version, die einer Sammlung von Diensttypen zugewiesen sind. Diese Informationen sind in der Datei `ApplicationManifest.xml` definiert und in ein Anwendungspaketverzeichnis eingebettet, das dann in den Imagespeicher des Service Fabric-Clusters kopiert wird. Anschließend können Sie aus diesem Anwendungstyp im Cluster eine benannte Anwendung erstellen.
 
 Weitere Informationen finden Sie im Artikel [Anwendungsmodell](service-fabric-application-model.md).
 
@@ -36,7 +34,7 @@ Weitere Informationen finden Sie im Artikel [Anwendungsmodell](service-fabric-ap
 
 **Benannte Anwendung:** Nach dem Kopieren eines Anwendungspakets in den Imagespeicher können Sie eine Instanz der Anwendung im Cluster erstellen, indem Sie den Anwendungstyp des Anwendungspakets (unter Verwendung seines Namens/seiner Version) angeben. Jeder Anwendungstypinstanz wird ein URI-Name zugewiesen, der wie folgt aussieht: `"fabric:/MyNamedApp"`. Innerhalb eines Clusters können Sie mehrere benannte Anwendungen aus einem einzelnen Anwendungstyp erstellen. Sie können auch benannte Applikationen aus verschiedenen Anwendungstypen erstellen. Jede benannte Anwendung wird unabhängig verwaltet und versioniert.
 
-**Diensttyp:** Name und Version, die den Code-, Daten- und Konfigurationspaketen eines Diensts zugewiesen werden. Diese Informationen werden in einer `ServiceManifest.xml`-Datei definiert, die in einem Dienstpaketverzeichnis eingebettet ist. Auf das Dienstpaketverzeichnis wird dann in der Datei `ApplicationManifest.xml` eines Anwendungspakets verwiesen. Innerhalb des Clusters kann nach der Erstellung einer benannten Anwendung ein benannter Dienst aus einem der Diensttypen des Anwendungstyps erstellt werden. Die Datei `ServiceManifest.xml` des Diensttyps beschreibt den Dienst.
+**Diensttyp:** Name und Version, die den Code-, Daten- und Konfigurationspaketen eines Diensts zugewiesen werden. Diese Informationen werden in der Datei `ServiceManifest.xml` definiert, die in einem Dienstpaketverzeichnis eingebettet ist. Auf das Dienstpaketverzeichnis wird dann in der Datei `ApplicationManifest.xml` eines Anwendungspakets verwiesen. Innerhalb des Clusters kann nach der Erstellung einer benannten Anwendung ein benannter Dienst aus einem der Diensttypen des Anwendungstyps erstellt werden. Die Datei `ServiceManifest.xml` des Diensttyps beschreibt den Dienst.
 
 Weitere Informationen finden Sie im Artikel [Anwendungsmodell](service-fabric-application-model.md).
 
@@ -52,9 +50,9 @@ Es gibt zwei Arten von Diensten:
 
 **Codepaket**: Ein Datenträgerverzeichnis mit den ausführbaren Dateien des Diensttyps (in der Regel EXE-/DLL-Dateien). Auf die Dateien im Codepaketverzeichnis wird in der Datei `ServiceManifest.xml` des Diensttyps verwiesen. Beim Erstellen eines benannten Diensts werden die Dateien im Codepaket auf die Knoten kopiert, die Service Fabric zum Ausführen des benannten Diensts auswählt. Anschließend wird mit der Ausführung des Codes begonnen. Es gibt zwei Arten von ausführbaren Dateien für Codepakete:
 
-- **Ausführbare Gastanwendungsdateien:** Ausführbare Dateien, die ohne Änderungen auf dem Hostbetriebssystem (Windows oder Linux) ausgeführt werden. Das bedeutet, dass diese ausführbaren Dateien nicht mit Service Fabric-Laufzeitdateien verknüpft sind oder auf solche Dateien verweisen und daher keine Service Fabric-Programmiermodelle verwenden. Diese ausführbaren Dateien können einige Service Fabric-Funktionen wie den Naming-Dienst für die Endpunktermittlung nicht nutzen und für einzelne Dienstinstanzen spezifische Lastmetriken nicht melden.
+- **Ausführbare Gastanwendungsdateien:** Ausführbare Dateien, die ohne Änderungen auf dem Hostbetriebssystem (Windows oder Linux) ausgeführt werden. Das bedeutet, dass diese ausführbaren Dateien nicht mit Service Fabric-Laufzeitdateien verknüpft sind oder auf solche Dateien verweisen und daher keine Service Fabric-Programmiermodelle verwenden. Diese ausführbaren Dateien können einige Service Fabric-Funktionen wie den Naming-Dienst für die Endpunktermittlung nicht nutzen und für einzelne Dienstinstanzen spezifische Lastmetriken nicht melden.
 
-- **Ausführbare Dateien des Diensthosts:** Hierbei handelt es sich um ausführbare Dateien, die Service Fabric-Programmiermodelle nutzen, indem eine Verknüpfung mit Service Fabric-Laufzeitdateien hergestellt wird. Dadurch werden Teile des Codes der ausführbaren Datei mit Service Fabric verknüpft und zusätzliche Funktionen aktiviert. Eine Instanz eines benannten Diensts kann beispielsweise Endpunkte im Service FabricNaming-Dienst registrieren und Lastmetriken melden.
+- **Ausführbare Dateien des Diensthosts:** Hierbei handelt es sich um ausführbare Dateien, die Service Fabric-Programmiermodelle nutzen, indem eine Verknüpfung mit Service Fabric-Laufzeitdateien hergestellt wird. Dadurch werden Teile des Codes der ausführbaren Datei mit Service Fabric verknüpft und zusätzliche Funktionen aktiviert. Eine Instanz eines benannten Diensts kann beispielsweise Endpunkte im Service FabricNaming-Dienst registrieren und Lastmetriken melden.
 
 **Datenpaket:** Ein Datenträgerverzeichnis mit den statischen, schreibgeschützten Datendateien eines Diensttyps (in der Regel Foto-, Audio- und Videodateien). Auf die Dateien im Datenpaketverzeichnis wird in der Datei `ServiceManifest.xml` des Diensttyps verwiesen. Bei der Erstellung eines benannten Diensts werden die Dateien im Datenpaket auf die Knoten kopiert, die Service Fabric zum Ausführen des benannten Diensts auswählt. Anschließend wird mit der Ausführung des Codes begonnen, und der Code kann nun auf die Datendateien zugreifen.
 
@@ -64,25 +62,25 @@ Es gibt zwei Arten von Diensten:
 
 Weitere Informationen finden Sie unter [Partitionieren von Service Fabric Reliable Services](service-fabric-concepts-partitioning.md).
 
-### Systemdienste
+## Systemdienste
 In jedem Cluster werden Systemdienste erstellt, die die Plattformfunktionen von Service Fabric bereitstellen.
 
-**Naming-Dienst**: Jeder Service Fabric-Cluster verfügt über einen Naming-Dienst, der Dienstnamen in einen Speicherort im Cluster auflöst und Ihnen die Verwaltung der Dienstnamen und -eigenschaften ermöglicht. Dies entspricht einem Internetdomänen-Namendienst (DNS) für den Cluster. Mithilfe des Naming-Diensts können Clients sicher mit allen Knoten im Cluster kommunizieren , um einen Dienstnamen und den entsprechenden Speicherort aufzulösen (d. h. die tatsächliche IP-Adresse und den Port des Computers zu beziehen, auf dem er derzeit ausgeführt wird). Mithilfe der Kommunikations-Client-APIs können Sie Dienste und Clients entwickeln, die in der Lage sind, den aktuellen Netzwerkstandort aufzulösen, auch wenn Anwendungen innerhalb des Clusters (aufgrund von Fehlern oder Ressourcenausgleich) verschoben werden oder die Größe des Clusters geändert wird.
+**Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst und Ihnen die Verwaltung der Dienstnamen und -eigenschaften ermöglicht. Dies entspricht einem Internetdomänen-Namendienst (DNS) für den Cluster. Mithilfe des Naming Service können Clients sicher mit allen Knoten im Cluster kommunizieren, um einen Dienstnamen und den entsprechenden Speicherort aufzulösen (d.h. die tatsächliche IP-Adresse und den Port des Computers zu beziehen, auf dem er derzeit ausgeführt wird). Mithilfe der Kommunikations-Client-APIs können Sie Dienste und Clients entwickeln, die in der Lage sind, den aktuellen Netzwerkstandort aufzulösen, auch wenn Anwendungen innerhalb des Clusters (z.B. aufgrund von Fehlern, des Ressourcenausgleichs oder der Größenanpassung des Clusters) verschoben werden.
 
-Im Artikel [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md) finden Sie weitere Informationen zur Verwendung der API für die Kommunikation zwischen Client und Dienst, die in Verbindung mit dem Naming-Dienst genutzt wird.
+Im Artikel [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md) finden Sie weitere Informationen zur Verwendung der API für die Kommunikation zwischen Client und Dienst, die in Verbindung mit dem Naming Service genutzt wird.
 
-**Imagespeicherdienst**: Jeder Service Fabric-Cluster verfügt über einen Imagespeicherdienst, in dem bereitgestellte Anwendungspakete mit Versionsangabe aufbewahrt werden. Sie müssen den Inhalt eines Anwendungspakets in den Imagespeicher kopieren und anschließend den Anwendungstyp in diesem Anwendungspaket registrieren. Nach der Bereitstellung des Anwendungstyps können Sie benannte Anwendungen daraus erstellen. Sie können die Registrierung eines Anwendungstyps im Imagespeicher erst aufheben, wenn alle benannten Anwendungen gelöscht wurden.
+**Imagespeicherdienst**: Jeder Service Fabric-Cluster verfügt über einen Imagespeicherdienst, in dem bereitgestellte Anwendungspakete mit Versionsangabe aufbewahrt werden. Sie müssen den Inhalt eines Anwendungspakets in den Imagespeicherdienst kopieren und anschließend den in diesem Anwendungspaket enthaltene Anwendungstyp in diesem Anwendungspaket registrieren. Nach der Bereitstellung des Anwendungstyps können Sie benannte Anwendungen daraus erstellen. Sie können die Registrierung eines Anwendungstyps im Imagespeicherdienst aufheben, wenn alle seine benannten Anwendungen gelöscht wurden.
 
-Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicher finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md).
+Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdienst finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md).
 
-### Integrierte Programmiermodelle
-Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:
+## Integrierte Programmiermodelle
+Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:
 
-**Reliable Services**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Dienste. Zustandsbehaftete Dienste speichern ihren Zustand in Reliable Collections (z. b. in einem Wörter oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z. B. Web-API und Windows Communication Foundation (WCF).
+**Reliable Services**: Eine API zum Erstellen von Diensten die auf zustandslosen und zustandsbehafteter Diensten basieren. Zustandsbehaftete Dienste speichern ihren Zustand in Reliable Collections (z. b. in einem Wörter oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z. B. Web-API und Windows Communication Foundation (WCF).
 
 **Reliable Actors**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Objekte über das Programmiermodell mit virtuellen Actors. Dieses Modell kann bei zahlreichen unabhängigen Berechnungs-/Zustandseinheiten nützlich sein. Da dieses Modell ein rundenbasiertes Threadingmodell verwendet, sollten Sie Code vermeiden, der andere Actors oder Dienste aufruft, weil ein einzelner Actor andere eingehende Anforderungen erst verarbeiten kann, wenn alle ausgehenden Anforderungen abgeschlossen sind.
 
-Weitere Informationen finden Sie im Artikel [Auswählen eines Programmiermodells für den Dienst](service-fabric-choose-framework.md).
+Weitere Informationen finden Sie im Artikel [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md).
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
@@ -92,4 +90,4 @@ Weitere Informationen zu Service Fabric
 - [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
 - [Anwendungsszenarien](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

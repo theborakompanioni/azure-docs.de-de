@@ -48,7 +48,7 @@ Im Folgenden finden Sie eine Beschreibung der Endpunkte:
     - *Senden von D2C-Nachrichten*. Verwenden Sie diesen Endpunkt, um D2C-Nachrichten zu senden. Weitere Informationen finden Sie unter [Messaging zwischen Gerät und Cloud](#d2c).
     - *Empfangen von C2D-Nachrichten*. Ein Gerät verwendet diesen Endpunkt, um gezielte C2D-Nachrichten zu empfangen. Weitere Informationen finden Sie unter [Messaging zwischen Cloud und Gerät](#c2d).
 
-    Diese Endpunkte werden über die Protokolle HTTP, [MQTT][lnk-mqtt] und [AMQP][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
+    Diese Endpunkte werden über die Protokolle HTTP, [MQTT][lnk-mqtt] und [AMQP][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
 * **Dienstendpunkte**: Jeder IoT Hub legt eine Reihe von Endpunkten offen, die von Ihrem Anwendungs-Back-End zur Kommunikation mit Ihren Geräten verwendet werden können. Diese Endpunkte werden aktuell nur bei Verwendung des [AMQP][lnk-amqp]-Protokolls verfügbar gemacht.
     - *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist mit [Azure Event Hubs][lnk-event-hubs] kompatibel und kann von einem Back-End-Dienst dazu verwendet werden, alle D2C-Nachrichten zu lesen, die von Ihren Geräten gesendet werden. Weitere Informationen finden Sie unter [Messaging zwischen Gerät und Cloud](#d2c).
     - *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Anwendungs-Back-End das Senden von zuverlässigen C2D-Nachrichten sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen. Weitere Informationen finden Sie unter [Messaging zwischen Cloud und Gerät](#c2d).
@@ -98,15 +98,15 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 
 | Eigenschaft | Optionen | Beschreibung |
 | -------- | ------- | ----------- |
-| deviceId | erforderlich, bei Aktualisierungen schreibgeschützt | Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
-| generationId | erforderlich, schreibgeschützt | Eine vom Hub generierte Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung, die bis zu 128 Zeichen lang ist. Diese Zeichenfolge dient zur Unterscheidung von Geräten mit derselben **deviceId**, wenn diese gelöscht und neu erstellt wurden. |
+| deviceId | erforderlich, bei Aktualisierungen schreibgeschützt | Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
+| generationId | erforderlich, schreibgeschützt | Eine vom Hub generierte Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung, die bis zu 128 Zeichen lang ist. Diese Zeichenfolge dient zur Unterscheidung von Geräten mit derselben **deviceId**, wenn diese gelöscht und neu erstellt wurden. |
 | etag | erforderlich, schreibgeschützt | Eine Zeichenfolge, die ein schwaches Etag für die Geräteidentität gemäß [RFC7232][lnk-rfc7232] darstellt.|
 | auth | optional | Ein zusammengesetztes Objekt, das Authentifizierungsinformationen und Sicherheitsdaten enthält. |
 | auth.symkey | optional | Ein zusammengesetztes Objekt, das einen primären und einen sekundären Schlüssel enthält, die im Base64-Format gespeichert sind. |
 | status | erforderlich | Kann **Aktiviert** oder **Deaktiviert** lauten. Sofern der Status **Aktiviert** lautet, kann das Gerät eine Verbindung herstellen. Lautet die Einstellung **Deaktiviert**, kann dieses Gerät auf keinen geräteseitigen Endpunkt zugreifen. |
-| statusReason | optional | Eine 128 Zeichen lange Zeichenfolge, die die Ursache des Geräteidentitätsstatus speichert. Alle UTF-8-Zeichen sind zulässig. |
+| statusReason | optional | Eine 128 Zeichen lange Zeichenfolge, die die Ursache des Geräteidentitätsstatus speichert. Alle UTF-8-Zeichen sind zulässig. |
 | statusUpdateTime | schreibgeschützt | Datum und Uhrzeit der letzten Statusaktualisierung. |
-| connectionState | schreibgeschützt | **Verbunden** oder **Getrennt**; repräsentiert den Geräteverbindungsstatus aus IoT Hub-Sicht. **Wichtig**: Dieses Feld darf nur für Entwicklungs-/Debuggingzwecke verwendet werden. Der Verbindungszustand wird nur für Geräte aktualisiert, die AMQP oder MQTT verwenden. Er basiert außerdem auf Pings auf Protokollebene (MQTT- oder AMQP-Pings) und kann eine Verzögerung von maximal 5 Minuten haben. Aus diesen Gründen sind falsch positive Rückmeldungen möglich, z. B. als verbunden gemeldete Geräte, die tatsächlich aber getrennt sind. |
+| connectionState | schreibgeschützt | **Verbunden** oder **Getrennt**; repräsentiert den Geräteverbindungsstatus aus IoT Hub-Sicht. **Wichtig**: Dieses Feld darf nur für Entwicklungs-/Debuggingzwecke verwendet werden. Der Verbindungszustand wird nur für Geräte aktualisiert, die AMQP oder MQTT verwenden. Er basiert außerdem auf Pings auf Protokollebene (MQTT- oder AMQP-Pings) und kann eine Verzögerung von maximal 5 Minuten haben. Aus diesen Gründen sind falsch positive Rückmeldungen möglich, z. B. als verbunden gemeldete Geräte, die tatsächlich aber getrennt sind. |
 | connectionStateUpdatedTime | schreibgeschützt | Datum und Uhrzeit der letzten Aktualisierung des Verbindungsstatus. |
 | lastActivityTime | schreibgeschützt | Datum und Uhrzeit der letzten Geräteverbindung oder der Zeitpunkt, zu dem das letzte Mal eine Nachricht empfangen oder gesendet wurde. |
 
@@ -120,7 +120,7 @@ Die IoT Hub-Geräteidentitätsregistrierung macht die folgenden Vorgänge verfü
 * Aktualisieren einer Geräteidentität
 * Abrufen von Geräteidentitäten nach ID
 * Löschen einer Geräteidentität
-* Auflisten von bis zu 1.000 Identitäten
+* Auflisten von bis zu 1.000 Identitäten
 * Exportieren aller Identitäten in Blobspeicher
 * Importieren von Identitäten aus Blobspeicher
 
@@ -276,7 +276,7 @@ Sie können Berechtigungen auf folgende Weise festlegen:
 - Die Geräteverwaltungskomponente verwendet die Richtlinie *registryReadWrite*.
 - Die Ereignisprozessorkomponente verwendet die Richtlinie *service*.
 - Die Laufzeit-Geschäftslogikkomponente verwendet die Richtlinie *service*.
-- Einzelne Geräte stellen unter Verwendung von Anmeldeinformationen eine Verbindung her, die in der IoT Hub-Identitätsregistrierung gespeichert sind.
+- Einzelne Geräte stellen unter Verwendung von Anmeldeinformationen eine Verbindung her, die in der IoT Hub-Identitätsregistrierung gespeichert sind.
 
 Einen Leitfaden zu IoT Hub-Sicherheitsthemen finden Sie im Abschnitt zur Sicherheit unter [Entwerfen der Lösung][lnk-guidance-security].
 
@@ -292,7 +292,7 @@ Weitere Informationen zur Erstellung und Verwendung von Sicherheitstoken finden 
 
 #### Protokolldetails
 
-Jedes unterstützte Protokoll, z. B. AMQP, MQTT und HTTP, transportiert Token auf unterschiedliche Weise.
+Jedes unterstützte Protokoll, z. B. AMQP, MQTT und HTTP, transportiert Token auf unterschiedliche Weise.
 
 HTTP implementiert die Authentifizierung, indem ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen wird. Das Token kann auch über den Abfrageparameter **Authorization** transportiert werden.
 
@@ -338,7 +338,7 @@ IoT Hub bietet ein einfaches Messaging für die Kommunikation:
 
 Die wichtigsten Eigenschaften beim IoT Hub-Messaging sind eine zuverlässige und stabile Übermittlung von Nachrichten. Dies bietet Ausfallsicherheit bei zeitweiligen Verbindungsproblemen auf Geräteseite und Lastspitzen bei der Ereignisverarbeitung auf Cloudseite. IoT Hub implementiert *mindestens einmalig* Übermittlungsgarantien für das D2C- und C2D-Messaging.
 
-IoT Hub unterstützt mehrere geräteseitige Protokolle (z. B. AMQP und HTTP/1). Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein gemeinsames Nachrichtenformat, das von allen geräteseitigen Protokollen unterstützt wird.
+IoT Hub unterstützt mehrere geräteseitige Protokolle (z. B. AMQP und HTTP/1). Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein gemeinsames Nachrichtenformat, das von allen geräteseitigen Protokollen unterstützt wird.
 
 ### Nachrichtenformat <a id="messageformat"></a>
 
@@ -354,9 +354,9 @@ Die folgende Tabelle zeigt den Satz an Systemeigenschaften in IoT Hub-Nachrichte
 
 | Eigenschaft | Beschreibung |
 | -------- | ----------- |
-| MessageId | Eine vom Benutzer festgelegte Kennung für die Nachricht, wird üblicherweise für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
+| MessageId | Eine vom Benutzer festgelegte Kennung für die Nachricht, wird üblicherweise für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
 | Sequenznummer | Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |
-| To | Gibt in [C2D](#c2d)-Nachrichten das Ziel an. |
+| To  | Gibt in [C2D](#c2d)-Nachrichten das Ziel an. |
 | ExpiryTimeUtc | Datum und Uhrzeit des Nachrichtenablaufs. |
 | EnqueuedTime | Datum und Uhrzeit des Empfangs der Nachricht durch IoT Hub. |
 | CorrelationId | Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |
@@ -370,49 +370,50 @@ Die folgende Tabelle zeigt den Satz an Systemeigenschaften in IoT Hub-Nachrichte
 
 IoT Hub unterstützt für die geräteseitige Kommunikation die Protokolle [AMQP][lnk-amqp], AMQP über WebSockets, MQTT und HTTP/1. Bei der Verwendung dieser Protokolle müssen Sie Folgendes berücksichtigen:
 
-* **C2D-Muster**. HTTP/1 verfügt über keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTP/1 IoT Hub für C2D-Nachrichten ab. Dies ist sowohl für das Gerät als auch für IoT Hub ineffizient. Die aktuellen Leitlinien bei Verwenden von HTTP/1 sehen eine Geräteabfrage mindestens alle 25 Minuten vor. AMQP und MQTT unterstützen dagegen Serverpushvorgänge beim Empfang von C2D-Nachrichten und ermöglichen es, Nachrichten von IoT Hub sofort per Push an das Gerät zu übertragen. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, ist entweder AMQP oder MQTT das zu bevorzugende Protokoll. Für Geräte, die nur selten verbunden werden, kann durchaus HTTP/1 verwendet werden.
+* **C2D-Muster**. HTTP/1 verfügt über keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTP/1 IoT Hub für C2D-Nachrichten ab. Dies ist sowohl für das Gerät als auch für IoT Hub ineffizient. Die aktuellen Leitlinien bei Verwenden von HTTP/1 sehen eine Geräteabfrage mindestens alle 25 Minuten vor. AMQP und MQTT unterstützen dagegen Serverpushvorgänge beim Empfang von C2D-Nachrichten und ermöglichen es, Nachrichten von IoT Hub sofort per Push an das Gerät zu übertragen. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, ist entweder AMQP oder MQTT das zu bevorzugende Protokoll. Für Geräte, die nur selten verbunden werden, kann durchaus HTTP/1 verwendet werden.
 * **Bereichsgateways**. Bei Verwendung von HTTP/1 und MQTT ist es nicht möglich, mehrere Geräte (jedes mit eigenen Anmeldeinformationen pro Gerät) mithilfe der gleichen TLS-Verbindung zu verbinden. Daraus folgt, dass diese Protokolle für die Implementierung von [Bereichsgatewayszenarios][lnk-azure-gateway-guidance] nicht optimal sind, da sie eine TLS-Verbindung zwischen dem Bereichsgateway und IoT Hub für jedes Gerät benötigen, das mit dem Bereichsgateway verbunden ist.
-* **Geräte mit eingeschränkten Ressourcen**. MQTT- und HTTP/1-Bibliotheken haben weniger Speicherbedarf als die AMQP-Bibliotheken. Wenn daher das Gerät über limitierte Ressourcen verfügt (beispielsweise weniger als 1 MB RAM), stehen möglicherweise nur diese Protokolle als Protokollimplementierung zur Verfügung.
-* **Netzwerkausnahme**. MQTT lauscht standardmäßig an Port 8883. Dies kann Probleme in Netzwerken verursachen, die für Nicht-HTTP-Protokolle geschlossen sind. HTTP und AMQP (über WebSockets) können in diesem Szenario verwendet werden.
+* **Geräte mit eingeschränkten Ressourcen**. MQTT- und HTTP/1-Bibliotheken haben weniger Speicherbedarf als die AMQP-Bibliotheken. Wenn daher das Gerät über limitierte Ressourcen verfügt (beispielsweise weniger als 1 MB RAM), stehen möglicherweise nur diese Protokolle als Protokollimplementierung zur Verfügung.
+* **Netzwerkausnahme**. MQTT lauscht standardmäßig an Port 8883. Dies kann Probleme in Netzwerken verursachen, die für Nicht-HTTP-Protokolle geschlossen sind. HTTP und AMQP (über WebSockets) können in diesem Szenario verwendet werden.
 * **Größe der Nutzlast**. AMQP und MQTT sind binäre Protokolle, die erheblich kompakter als HTTP/1 sind.
 
-Im Allgemeinen sollten Sie AMQP (oder AMQP über WebSockets) möglichst immer verwenden und MQTT nur dann nutzen, wenn Ressourceneinschränkungen den Einsatz von AMQP verhindern. HTTP/1 sollte nur verwendet werden, wenn Netzwerkausnahmen und die Netzwerkkonfiguration die Verwendung von MQTT und AMQP verhindern. Darüber hinaus muss bei Verwendung von HTTP/1 jedes Gerät mindestens alle 25 Minuten eine Abfrage auf C2D-Nachrichten durchführen.
+Im Allgemeinen sollten Sie AMQP (oder AMQP über WebSockets) möglichst immer verwenden und MQTT nur dann nutzen, wenn Ressourceneinschränkungen den Einsatz von AMQP verhindern. HTTP/1 sollte nur verwendet werden, wenn Netzwerkausnahmen und die Netzwerkkonfiguration die Verwendung von MQTT und AMQP verhindern. Darüber hinaus muss bei Verwendung von HTTP/1 jedes Gerät mindestens alle 25 Minuten eine Abfrage auf C2D-Nachrichten durchführen.
 
-> [AZURE.NOTE] In der Entwicklungsphase darf freilich häufiger als alle 25 Minuten eine Abfrage erfolgen.
+> [AZURE.NOTE] In der Entwicklungsphase darf freilich häufiger als alle 25 Minuten eine Abfrage erfolgen.
 
+<a id="mqtt-support">
 #### Hinweise zur MQTT-Unterstützung
 IoT Hub implementiert die MQTT-Protokollversion 3.1.1 mit den folgenden Einschränkungen und einem bestimmten Verhalten:
 
   * **QoS 2 wird nicht unterstützt:** Wenn ein Geräteclient eine Nachricht mit **QoS 2** veröffentlicht, schließt IoT Hub die Netzwerkverbindung. Wenn ein Geräteclient ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1.
-  * **Beibehaltung:** Wenn ein Geräteclient eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. Dies bedeutet, dass IoT Hub die Beibehaltungsnachricht nicht beständig speichert, sondern an die Back-End-Anwendung übergibt.
+  * **Retain:** Wenn ein Geräteclient eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. Dies bedeutet, dass IoT Hub die Beibehaltungsnachricht nicht beständig speichert, sondern an die Back-End-Anwendung übergibt.
 
 Schließlich sollte noch der Einsatz eines [Azure IoT-Protokollgateways][lnk-azure-protocol-gateway] erwogen werden, das die Bereitstellung eines hochleistungsfähigen benutzerdefinierten Protokollgateways mit einer direkten Schnittstelle zu IoT Hub ermöglicht. Das Azure IoT-Protokollgateway dient zum Anpassen des Geräteprotokolls zum Unterstützen von Brownfield MQTT-Bereitstellungen oder anderer benutzerdefinierter Protokolle. Der Nachteil bei diesem Ansatz ist die Anforderung, selbst ein Protokollgateway zu hosten und zu verwalten.
 
 ### Gerät an Cloud <a id="d2c"></a>
 
-Wie im Abschnitt [Endpunkte](#endpoints) erläutert, werden D2C-Nachrichten über einen geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/events**) gesendet und über einen dienstseitigen Endpunkt (**/messages/events**) empfangen, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige Event Hubs-Integration und SDKs zum Empfangen von D2C-Nachrichten verwenden.
+Wie im Abschnitt [Endpunkte](#endpoints) erläutert, werden D2C-Nachrichten über einen geräteseitigen Endpunkt (**/devices/{deviceId}/messages/events**) gesendet und über einen dienstseitigen Endpunkt (**/messages/events**) empfangen, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige Event Hubs-Integration und SDKs zum Empfangen von D2C-Nachrichten verwenden.
 
 IoT Hub implementiert das D2C-Messaging ähnlich wie [Event Hubs][lnk-event-hubs], wobei das D2C-Messaging von IoT Hub eher mit *Ereignissen* in Event Hubs als mit [Service Bus][lnk-servicebus]-*Nachrichten* vergleichbar ist.
 
 Diese Implementierung hat folgende Auswirkungen:
 
-* Ähnlich wie *Ereignisse* in Event Hubs sind D2C-Nachrichten dauerhaft und werden in einem IoT Hub bis zu 7 Tage aufbewahrt (siehe [Optionen für die D2C-Konfiguration](#d2cconfiguration)).
+* Ähnlich wie *Ereignisse* in Event Hubs sind D2C-Nachrichten dauerhaft und werden in einem IoT Hub bis zu 7 Tage aufbewahrt (siehe [Optionen für die D2C-Konfiguration](#d2cconfiguration)).
 * D2C-Nachrichten werden für einen festen Satz an Partitionen partitioniert, der zum Zeitpunkt der Erstellung festgelegt wird (siehe [Optionen für die D2C-Konfiguration](#d2cconfiguration)).
 * Analog zu Event Hubs müssen Clients, die D2C-Nachrichten lesen, Partitionen und Prüfpunkte verarbeiten können. Siehe [Event Hubs: Ereignisconsumer][lnk-event-hubs-consuming-events].
-* Wie Event Hubs-Ereignisse können D2C-Nachrichten maximal 256 KB umfassen und in Batches gruppiert werden, um Sendevorgänge zu optimieren. Batches können maximal 256 KB groß sein und maximal 500 Nachrichten enthalten.
+* Wie Event Hubs-Ereignisse können D2C-Nachrichten maximal 256 KB umfassen und in Batches gruppiert werden, um Sendevorgänge zu optimieren. Batches können maximal 256 KB groß sein und maximal 500 Nachrichten enthalten.
 
 Es gibt jedoch einige wichtige Unterschiede zwischen dem D2C-Messaging von IoT Hub und Event Hubs:
 
 * Wie im Abschnitt [Sicherheit](#security) erläutert, ermöglicht IoT Hub eine Authentifizierung und Zugriffsteuerung auf Gerätebasis.
-* IoT Hub unterstützt Millionen von gleichzeitig verbundenen Geräten (siehe [Kontingente und Drosselung](#throttling)), während Event Hubs auf 5.000 AMQP-Verbindungen pro Namespace beschränkt ist.
-* IoT Hub ermöglicht keine zufällige Partitionierung mit **PartitionKey**. D2C-Nachrichten werden basierend auf ihrer ursprünglichen **Geräte-ID** partitioniert.
+* IoT Hub unterstützt Millionen von gleichzeitig verbundenen Geräten (siehe [Kontingente und Drosselung](#throttling)), während Event Hubs auf 5.000 AMQP-Verbindungen pro Namespace beschränkt ist.
+* IoT Hub ermöglicht keine zufällige Partitionierung mit einem **Partitionsschlüssel**. D2C-Nachrichten werden basierend auf ihrer ursprünglichen Eigenschaft **deviceId** (Geräte-ID) partitioniert.
 * Die Skalierung funktioniert in IoT Hub etwas anders als in Event Hubs. Weitere Informationen finden Sie unter [Skalieren von IoT Hub][lnk-guidance-scale].
 
 Hinweis: Dies bedeutet nicht, dass Sie in allen Szenarien IoT Hub durch Event Hubs ersetzen können. In einigen Szenarien mit Ereignisverarbeitung kann es beispielsweise erforderlich sein, Ereignisse in Bezug auf eine andere Eigenschaft oder ein anderes Feld neu zu partitionieren, bevor die Datenströme analysiert werden können. In diesem Szenario können Sie mit einem Event Hub zwei Bestandteile der Pipeline zur Datenstromverarbeitung entkoppeln. Weitere Informationen finden Sie unter *Partitionen* in [Übersicht über Azure Event Hubs][lnk-eventhub-partitions].
 
 Ausführliche Informationen zum Verwenden des D2C-Messaging finden Sie unter [IoT Hub-APIs und -SDKs][lnk-apis-sdks].
 
-> [AZURE.NOTE] Bei der Verwendung von HTTP zum Senden von D2C-Nachrichten dürfen Eigenschaftennamen und Werte nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten.
+> [AZURE.NOTE] Bei der Verwendung von HTTP zum Senden von D2C-Nachrichten dürfen Eigenschaftennamen und Eigenschaftswerte nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten.
 
 #### Datenverkehr ohne Telemetrie
 
@@ -453,13 +454,13 @@ Die Eigenschaft **ConnectionAuthMethod** enthält ein serialisiertes JSON-Objekt
 
 ### C2D-Nachrichten <a id="c2d"></a>
 
-Wie im Abschnitt [Endpunkte](#endpoints) beschrieben, können Sie C2D-Nachrichten über einen dienstseitigen Endpunkt (**/messages/devicebound**) senden, und ein Gerät kann diese Nachrichten über einen geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/devicebound**) empfangen.
+Wie im Abschnitt [Endpunkte](#endpoints) beschrieben, können Sie C2D-Nachrichten über einen dienstseitigen Endpunkt (**/messages/devicebound**) senden. Ein Gerät kann diese Nachrichten über einen geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/devicebound**) empfangen.
 
 Jede C2D-Nachricht wird einem bestimmten Gerät zugeordnet, indem die **to**-Eigenschaft auf **/devices/{Geräte-ID}/messages/devicebound** festgelegt wird.
 
-**Wichtig**: Jede Gerätewarteschlange kann maximal 50 C2D-Nachrichten enthalten. Der Versuch, eine größere Anzahl von Nachrichten an dasselbe Gerät zu senden, führt zu einem Fehler.
+**Wichtig**: Jede Gerätewarteschlange kann maximal 50 C2D-Nachrichten enthalten. Der Versuch, eine größere Anzahl von Nachrichten an dasselbe Gerät zu senden, führt zu einem Fehler.
 
-> [AZURE.NOTE] Beim Senden von C2D-Nachrichten dürfen Eigenschaftennamen und Werte nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten.
+> [AZURE.NOTE] Beim Senden von C2D-Nachrichten dürfen Eigenschaftennamen und Eigenschaftswerte nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten.
 
 #### Nachrichtenlebenszyklus <a id="message lifecycle"></a>
 
@@ -546,16 +547,16 @@ Jeder IoT Hub legt die folgenden Konfigurationsoptionen für das C2D-Messaging o
 
 | Eigenschaft | Beschreibung | Bereich und Standardwert |
 | -------- | ----------- | ----------------- |
-| defaultTtlAsIso8601 | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten. | ISO\_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
-| maxDeliveryCount | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät. | 1 bis 100. Standardwert: 10 |
-| feedback.ttlAsIso8601 | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten. | ISO\_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
-| feedback.maxDeliveryCount | Maximale Zustellungsanzahl für Feedbackwarteschlangen. | 1 bis 100. Standardwert: 100. |
+| defaultTtlAsIso8601 | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten. | ISO\_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| maxDeliveryCount | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät. | 1 bis 100. Standardwert: 10 |
+| feedback.ttlAsIso8601 | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten. | ISO\_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| feedback.maxDeliveryCount | Maximale Zustellungsanzahl für Feedbackwarteschlangen. | 1 bis 100. Standardwert: 100. |
 
 Weitere Informationen finden Sie unter [Verwalten von IoT Hubs][lnk-manage].
 
 ## Kontingente und Drosselung <a id="throttling"></a>
 
-Jedes Azure-Abonnement kann maximal 10 IoT Hubs enthalten.
+Jedes Azure-Abonnement kann maximal 10 IoT Hubs enthalten.
 
 Jeder IoT Hub wird mit einer bestimmten Anzahl von Einheiten in einer spezifischen SKU bereitgestellt (weitere Informationen finden Sie unter [Azure IoT Hub – Preise][lnk-pricing]). Die SKU und Anzahl der Einheiten bestimmen das maximale tägliche Kontingent von Nachrichten, die Sie senden können.
 
@@ -575,20 +576,20 @@ Die nachfolgende Liste zeigt alle erzwungenen Werte für die Drosselung. Die Wer
 | C2D-Sendevorgänge | 100/Minute/Einheit |
 | C2D-Empfangsvorgänge | 1000/Minuten/Einheit |
 
-Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die maximale Anzahl gleichzeitig verbundener Geräte, sondern die Rate bestimmt, mit der neue Geräteverbindungen mit einem IoT Hub eingerichtet werden können. Die Drosselung ist abhängig von der Anzahl der Einheiten, die für den Hub bereitgestellt werden.
+Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die maximale Anzahl gleichzeitig verbundener Geräte bestimmt, sondern die Rate, mit der neue Geräteverbindungen mit einem IoT Hub eingerichtet werden können. Die Drosselung ist abhängig von der Anzahl der Einheiten, die für den Hub bereitgestellt werden.
 
 Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Das bedeutet, dass das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten) dauert. Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Geräteidentitätsregistrierung registriert sind.
 
 
 **Hinweis**: Die Kontingente oder Drosselungsgrenzwerte können jederzeit angehoben werden, indem die Anzahl von bereitgestellten Einheiten in einem IoT Hub erhöht wird.
 
-**Wichtig:** Identitätsregistrierungsvorgänge sind für die Verwendung zur Laufzeit in Szenarios für die Geräteverwaltung und -bereitstellung vorgesehen. Das Lesen oder Aktualisieren einer großen Anzahl von Geräteidentitäten wird durch [Import-/Exportaufträge](#importexport) unterstützt.
+**Wichtig:** Identitätsregistrierungsvorgänge sind für die Verwendung von Laufzeit in Szenarios für die Geräteverwaltung und -bereitstellung vorgesehen. Das Lesen oder Aktualisieren einer großen Anzahl von Geräteidentitäten wird durch [Import-/Exportaufträge](#importexport) unterstützt.
 
 ## Nächste Schritte
 
 Nachdem Sie in diesem Dokument einen Überblick über die Entwicklung für IoT Hub erhalten haben, können Sie die folgenden Links nutzen, um mehr über diese Themen zu erfahren:
 
-- [Erste Schritte mit IoT Hubs (Tutorial)][lnk-get-started]
+- [Erste Schritte mit IoT Hubs (Tutorial)][lnk-get-started]
 - [Betriebssystemplattformen und Hardwarekompatibilität][lnk-compatibility]
 - [Azure IoT Developer Center][lnk-iotdev]
 - [Entwerfen der Lösung][lnk-guidance]
@@ -639,4 +640,4 @@ Nachdem Sie in diesem Dokument einen Überblick über die Entwicklung für IoT H
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-manage]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!----HONumber=AcomDC_0406_2016-->

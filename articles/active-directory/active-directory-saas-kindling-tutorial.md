@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="04/05/2016"
 	ms.author="jeedes"/>
 
 
@@ -33,7 +33,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Kindling konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Kindling-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Kindling-Abonnement
 
 
 > [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -84,7 +84,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Kindling m
 
 Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Kindling-Anwendung zu konfigurieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
 
-Zum Konfigurieren des einmaligen Anmeldens für Kindling benötigen Sie eine registrierte Domäne. Wenn Sie noch keine registrierte Domäne besitzen, wenden Sie sich unter [support@flatterfiles.com](mailto:support@flatterfiles.com) an das Supportteam von Kindling.
+Zum Konfigurieren des einmaligen Anmeldens für Kindling benötigen Sie eine registrierte Domäne. Wenn Sie noch keine registrierte Domäne besitzen, wenden Sie sich unter [support@kindlingapp.com](mailto:support@kindlingapp.com) an das Supportteam von Kindling.
 
 
 
@@ -97,11 +97,15 @@ Zum Konfigurieren des einmaligen Anmeldens für Kindling benötigen Sie eine reg
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_04.png) <br>
 
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der Kindling-Anwendung verwenden (z. B. **https://fabrikam.Kindling.com/*).
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der Kindling-Anwendung verwenden (z.B. *https://\<Firmenname>.kindlingapp.com/*).
 
-    b. Wenden Sie sich an Ihr Kindling-Supportteam, um die Werte für **Aussteller** und **Antwort-URL** zu erhalten.
+    b. Wenden Sie sich unter **support@kindlingapp.com** an Ihr Kindling-Supportteam, um die Werte für [Aussteller](mailto:support@kindlingapp.com) und **Antwort-URL** zu erhalten.
+
+    c. Geben Sie im Textfeld **Aussteller** Ihre Aussteller-URL ein.
+
+    d. Geben Sie im Textfeld **Antwort-URL** Ihre Antwort-URL ein.
  
-    c. Klicken Sie auf **Weiter**.
+    e. Klicken Sie auf **Weiter**.
  
  
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Kindling** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_05.png) <br>
@@ -134,7 +138,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kindling-tutorial/create_aaduser_05.png) <br>
 
-    a. Wählen Sie als "Benutzertyp" die Option "Neuer Benutzer in Ihrer Organisation" aus.
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
     b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
 
@@ -216,4 +220,4 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

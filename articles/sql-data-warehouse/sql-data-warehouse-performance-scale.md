@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="03/29/2016"
    ms.author="nicw;jrj;mausher;barbkess;sonyama"/>
 
 # Flexible Leistung und Skalierbarkeit mit SQL Data Warehouse
@@ -31,12 +31,12 @@ Anstatt feste DWU-Ausgangspunkte bereitzustellen, die möglicherweise gut für e
 4. Erhöhen oder verringern Sie die Anzahl der ausgewählten DWUs. Der Dienst reagiert schnell und passt die Computeressourcen gemäß den DWU-Anforderungen an.
 5. Nehmen Sie weitere Anpassungen vor, bis Sie die optimale Leistungsstufe für Ihre geschäftlichen Anforderungen erreichen.
 
-Wenn Sie eine Anwendung mit wechselnder Workload haben, verschieben Sie die Leistungsstufen nach oben oder unten, um Spitzen und Tiefpunkte zu berücksichtigen. Wenn z. B. eine Workload in der Regel am Ende des Monats einen Spitzenwert aufweist, fügen Sie während dieser Spitzenzeiten weitere DWUs hinzu, und entfernen Sie sie wieder, wenn diese Spitzenzeiten vorbei sind.
+Wenn Sie eine Anwendung mit wechselnder Workload haben, verschieben Sie die Leistungsstufen nach oben oder unten, um Spitzen und Tiefpunkte zu berücksichtigen. Wenn z. B. eine Workload in der Regel am Ende des Monats einen Spitzenwert aufweist, fügen Sie während dieser Spitzenzeiten weitere DWUs hinzu, und entfernen Sie sie wieder, wenn diese Spitzenzeiten vorbei sind.
 
 ## Aufwärts- und Abwärtsskalieren von Compute-Ressourcen
 Unabhängig vom Cloudspeicher ermöglicht Ihnen die Flexibilität von SQL Data Warehouse das Vergrößern, Verkleinern oder Anhalten der Rechenleistung mithilfe eines Schiebereglers für Data Warehouse-Einheiten (DWUs). Dies bietet Ihnen die Flexibilität, die Rechenleistung auf einen Idealwert für Ihr Unternehmen zu optimieren.
 
-Um die Rechenleistung zu erhöhen, können Sie mithilfe des Schiebereglers für die Skalierung im klassischen Azure-Portal weitere DWUs hinzufügen. Sie können auch mithilfe von T-SQL, REST-APIs oder Powershell-Cmdlets DWUs hinzufügen. Durch Aufwärts- und Abwärtsskalieren werden alle laufenden oder sich in einer Warteschlange befindenden Aktivitäten abgebrochen, aber in wenigen Sekunden abgeschlossen, sodass Sie mit mehr oder weniger Rechenleistung fortfahren können.
+Um die Rechenleistung zu erhöhen, können Sie mithilfe des Schiebereglers für die Skalierung im klassischen Azure-Portal weitere DWUs hinzufügen. Sie können DWUs auch mithilfe von T-SQL, REST-APIs oder Azure PowerShell-Cmdlets hinzufügen. Durch Aufwärts- und Abwärtsskalieren werden alle laufenden oder sich in einer Warteschlange befindenden Aktivitäten abgebrochen, aber in wenigen Sekunden abgeschlossen, sodass Sie mit mehr oder weniger Rechenleistung fortfahren können.
 
 Im [klassischen Azure-Portal][] können Sie oben auf der SQL Data Warehouse-Seite auf das Symbol zum Skalieren klicken und anschließend mithilfe des Schiebereglers die Anzahl der DWUs, die auf Data Warehouse angewendet werden, erhöhen oder verringern. Klicken Sie anschließend auf „Speichern“. Wenn Sie die Skalierung lieber programmgesteuert ändern, zeigt der folgende T-SQL-Code, wie Sie die DWU-Zuordnung für Ihr SQL Data Warehouse anpassen:
 
@@ -47,10 +47,10 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ```
 Dieser T-SQL-Code sollte für den logischen Server und nicht für die SQL Data Warehouse-Instanz selbst ausgeführt werden.
 
-Sie können dasselbe Ergebnis mithilfe von Powershell und dem folgenden Code erreichen:
+Dasselbe Ergebnis erreichen Sie auch mit Azure PowerShell, indem Sie das „AzureRM.Sql“-Modul importieren und den nachstehenden Code verwenden:
 
 ```Powershell
-Set-AzureSQLDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -ServiceObjective "DW1000"
+Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -RequestedServiceObjectiveName "DW1000"
 ```
 
 ## Pausieren von Compute-Ressourcen
@@ -60,22 +60,27 @@ Durch das Pausieren werden die Serverressourcen zurück an den Pool der verfügb
 
 > [AZURE.NOTE] Da der Speicher vom Server getrennt ist, wird der Speicher von der Pause nicht beeinträchtigt.
 
-Das Pausieren und Fortsetzen der Rechenleistung erfolgt über das [klassische Azure-Portal][], über REST-APIs oder über Powershell. Durch das Pausieren werden alle ausgeführten oder sich in einer Warteschlange befindenden Aktivitäten abgebrochen. Wenn Sie zurückkehren, können Sie die Compute-Ressourcen innerhalb weniger Sekunden wieder in Betrieb nehmen.
+Das Anhalten und Fortsetzen der Rechenleistung erfolgt über das [klassische Azure-Portal][], über REST-APIs oder über Azure PowerShell. Durch das Pausieren werden alle ausgeführten oder sich in einer Warteschlange befindenden Aktivitäten abgebrochen. Wenn Sie zurückkehren, können Sie die Compute-Ressourcen innerhalb weniger Sekunden wieder in Betrieb nehmen.
 
-Der folgende Code zeigt, wie Sie eine Pause mithilfe von PowerShell ausführen:
-
-```Powershell
-Suspend-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName
-"Server01" –DatabaseName "Database02"
-```
-
-Das Fortsetzen des Diensts ist mit PowerShell ebenfalls sehr einfach:
+Zum Anhalten und Fortsetzen des Diensts mit Azure PowerShell müssen Sie zunächst das „AzureRM.Sql“-Modul wie folgt importieren:
 
 ```Powershell
-Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+Import-Module AzureRM.Sql
 ```
 
-Weitere Informationen zur Verwendung von PowerShell finden Sie unter [Verwenden von PowerShell-Cmdlets und REST-APIs mit SQL Data Warehouse][].
+Der folgende Code zeigt, wie Sie den Dienst mithilfe von Azure PowerShell anhalten:
+
+```Powershell
+Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
+
+Das Fortsetzen des Diensts ist mit Azure PowerShell ebenfalls sehr einfach:
+
+```Powershell
+Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
+
+Weitere Informationen zur Verwendung von Azure PowerShell finden Sie unter [Verwenden von PowerShell-Cmdlets und REST-APIs mit SQL Data Warehouse][].
 
 ## Nächste Schritte
 Die Leistungsübersicht finden Sie unter [Leistungsübersicht][].
@@ -94,4 +99,4 @@ Die Leistungsübersicht finden Sie unter [Leistungsübersicht][].
 [klassische Azure-Portal]: http://portal.azure.com/
 [klassischen Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

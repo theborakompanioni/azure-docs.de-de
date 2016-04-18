@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016" 
+	ms.date="02/08/2016"
 	ms.author="mohabib;fashah;bradsev"/>
 
 
@@ -24,7 +24,7 @@ In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Mode
 
 ## <a name="dataset"></a>Beschreibung des NYC Taxi Trips-DataSets
 
-Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit mehr als 173 Millionen einzelnen Fahrten mit den zugehörigen Preisen. Jedes Fahrten-DataSets enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden DataSets bereitgestellt:
+Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit mehr als 173 Millionen einzelnen Fahrten mit den zugehörigen Preisen. Jedes Fahrten-DataSets enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die CSV-Datei "trip\_data" enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
 
@@ -74,13 +74,15 @@ In diesem Tutorial wird der parallele Massenimport von Daten in SQL Server gezei
 
 So richten Sie Ihre Azure Data Science-Umgebung ein:
 
-1. [Erstellen eines Speicherkontos](../storage-create-storage-account.md)
+1. [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md)
 
 2. [Erstellen eines Azure ML-Arbeitsbereichs](machine-learning-create-workspace.md)
 
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und IPython Notebook fungiert.
 
-	> [AZURE.NOTE] Die Beispielskripts und IPython Notebooks werden während der Einrichtung auf den virtuellen Computer für Data Science heruntergeladen. Nach Abschluss der VM-Nachinstallationsskripts finden Sie die Beispiele in der Dokumentbibliothek auf Ihrem virtuellen Computer: – Sample Scripts: `C:\Users<user_name>\Documents\Data Science Scripts` – Sample IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples`, wobei `<user_name>` der Windows-Anmeldenamen des virtuellen Computers ist. Wir bezeichnen die Beispielordner mit **Sample Scripts** und **Sample IPython Notebooks**.
+	> [AZURE.NOTE] Die Beispielskripts und IPython Notebooks werden während der Einrichtung auf den virtuellen Computer für Data Science heruntergeladen. Nach Abschluss der VM-Nachinstallationsskripts finden Sie die Beispiele in der Dokumentbibliothek auf Ihrem virtuellen Computer:
+	> - Beispielskripts: `C:\Users<user_name>\Documents\Data Science Scripts`  
+	> - Beispiele für IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples`, wobei `<user_name>` Ihr Windows-Anmeldename für Ihren virtuellen Computers ist. Wir bezeichnen die Beispielordner mit **Sample Scripts** und **Sample IPython Notebooks**.
 
 
 Basierend auf der Größe des DataSets, dem Speicherort der Datenquelle und der ausgewählten Azure-Zielumgebung ähnelt dieses Szenario dem [Szenario 5: Große Datasets in einem Ziel-SQL-Server mit lokalen Dateien in Azure VM](../machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb).
@@ -186,7 +188,7 @@ Für eine schnelle Überprüfung der Anzahl von Zeilen und Spalten in den Tabell
 	-- Report number of columns in table nyctaxi_trip
 	SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
-#### Durchsuchen: Verteilung der Fahrten nach "medallion"
+#### Untersuchung: Verteilung der Fahrten nach "medallion"
 
 In diesem Beispiel wird die Taxinummer ("medallion") mit mehr als 100 Fahrten innerhalb eines bestimmten Zeitraums ermittelt. Die Abfrage profitiert vom Zugriff auf die partitionierte Tabelle, da sie vom Partitionsschema **pickup\_datetime** abhängig ist. Abfragen an das vollständige DataSet nutzen ebenfalls die partitionierte Tabelle und/oder den Indexscan.
 
@@ -196,7 +198,7 @@ In diesem Beispiel wird die Taxinummer ("medallion") mit mehr als 100 Fahrten i
 	GROUP BY medallion
 	HAVING COUNT(*) > 100
 
-#### Durchsuchen: Verteilung der Fahrten nach "medallion" und "hack\_license"
+#### Untersuchung: Verteilung der Fahrten nach "medallion" und "hack\_license"
 
 	SELECT medallion, hack_license, COUNT(*)
 	FROM nyctaxi_fare
@@ -714,4 +716,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

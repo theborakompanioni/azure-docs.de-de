@@ -46,7 +46,7 @@ Ein Beispielskript zum Installieren von Solr in einem HDInsight-Cluster ist an f
 
 Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts während der Erstellung eines neuen Clusters mithilfe des Azure-Portals.
 
-> [AZURE.NOTE] Zum Anwenden von Skriptaktionen können auch Azure PowerShell, das HDInsight .NET SDK oder Azure Resource Manager-Vorlagen verwendet werden. Sie können auch Skriptaktionen auf bereits ausgeführte Cluster anwenden. Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+> [AZURE.NOTE] Zum Anwenden von Skriptaktionen können auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle, das HDInsight .NET SDK oder Azure Resource Manager-Vorlagen verwendet werden. Sie können auch Skriptaktionen auf bereits ausgeführte Cluster anwenden. Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 1. Beginnen Sie die Bereitstellung eines Clusters anhand der Schritte in [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-provision-linux-clusters.md#portal), schließen Sie sie jedoch nicht ab.
 
@@ -307,4 +307,4 @@ Weitere Informationen zum Arbeiten mit Solr-Backups und -Wiederherstellungen fin
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

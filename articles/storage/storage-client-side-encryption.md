@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/24/2016"
+	ms.date="03/31/2016"
 	ms.author="lakasa"/>
 
 
@@ -24,6 +24,8 @@
 ## Übersicht
 
 Das [NuGet-Paket für die Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage) unterstützt die Verschlüsselung von Daten innerhalb von Clientanwendungen, bevor die Daten nach Azure Storage hochgeladen werden. Gleichermaßen wird die Entschlüsselung von Daten während des Herunterladens auf den Client unterstützt. Um eine Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt die Bibliothek zudem die Integration in [Azure-Schlüsseltresor](https://azure.microsoft.com/services/key-vault/).
+
+Ein ausführliches Tutorial, das Sie Schritt für Schritt durch die Verschlüsselung von Blobs mittels clientseitiger Verschlüsselung und Azure Key Vault führt, finden Sie unter [Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure-Schlüsseltresor](storage-encrypt-decrypt-blobs-key-vault.md).
 
 Informationen zur clientseitigen Verschlüsselung mit Java finden Sie unter [Clientseitige Verschlüsselung mit Java für Microsoft Azure Storage](storage-client-side-encryption-java.md).
 
@@ -133,7 +135,7 @@ Verschlüsselungsunterstützung ist nur in der Speicherclientbibliothek für .NE
 
 >[AZURE.IMPORTANT] Beachten Sie bei Verwendung einer clientseitigen Verschlüsselung die folgenden wichtigen Punkte:
 >
->- Verwenden Sie beim Lesen aus einem verschlüsselten Blob oder beim Schreiben in diesen Befehle zum Hochladen des vollständigen Blobs und zum Herunterladen des bereichsbasierten oder vollständigen Blobs. Vermeiden Sie beim Schreiben in einen verschlüsselten Blob Protokollvorgänge wie z. B. "Put Block", "Put Block List", "Write Pages", "Clear Pages" oder "Append Block". Andernfalls wird der verschlüsselte Blob möglicherweise beschädigt und kann nicht mehr gelesen werden.
+>- Verwenden Sie beim Lesen aus einem verschlüsselten Blob oder beim Schreiben in diesen Befehle zum Hochladen des vollständigen Blobs und zum Herunterladen des bereichsbasierten oder vollständigen Blobs. Vermeiden Sie beim Schreiben in einen verschlüsselten Blob Protokollvorgänge wie z. B. "Put Block", "Put Block List", "Write Pages", "Clear Pages" oder "Append Block". Andernfalls wird der verschlüsselte Blob möglicherweise beschädigt und kann nicht mehr gelesen werden.
 >- Für Tabellen gilt eine ähnliche Einschränkung. Achten Sie darauf, dass Sie beim Aktualisieren verschlüsselter Eigenschaften auch die Verschlüsselungsmetadaten aktualisieren.
 >- Wenn Sie Metadaten für den verschlüsselten Blob festlegen, werden die für die Entschlüsselung erforderlichen verschlüsselungsbezogenen Metadaten möglicherweise überschrieben, da das Festlegen von Metadaten kein additiver Vorgang ist. Dies gilt auch für Momentaufnahmen: Geben Sie während der Erstellung einer Momentaufnahme eines verschlüsselten Blobs keine Metadaten an. Müssen Metadaten festgelegt werden, müssen Sie zunächst die **FetchAttributes**-Methode aufrufen, um die aktuellen Verschlüsselungsmetadaten abzurufen. Außerdem sollten Sie gleichzeitige Schreibvorgänge vermeiden, während Metadaten festgelegt werden.
 >- Aktivieren Sie die **RequireEncryption**-Eigenschaft in Standardanforderungsoptionen für Benutzer, die nur mit verschlüsselten Daten arbeiten sollen. Weitere Details finden Sie nachstehend.
@@ -244,9 +246,9 @@ Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Le
 
 ## Nächste Schritte
 
-- Herunterladen der [Azure Storage-Clientbibliothek für das .NET NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Storage)
-- Herunterladen der [Azure Storage-Clientbibliothek für .NET-Quellcode](https://github.com/Azure/azure-storage-net) aus GitHub
-- Herunterladen der Azure Key Vault-NuGet-Pakete [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) und [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)  
-- Anzeigen der [Azure Key Vault-Dokumentation](../key-vault/key-vault-whatis.md)
+- [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure-Schlüsseltresor](storage-encrypt-decrypt-blobs-key-vault.md)
+- Laden Sie die [Azure Storage-Clientbibliothek für das .NET NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Storage) herunter.
+- Laden sie die Azure Key Vault-NuGet-Pakete [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) und [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) herunter.  
+- Werfen Sie einen Blick in die [Dokumentation zu Azure Key Vault](../key-vault/key-vault-whatis.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

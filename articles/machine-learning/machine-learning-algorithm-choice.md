@@ -35,7 +35,7 @@ Diese Empfehlungen sind eine Zusammenstellung aus Feedback und Tipps von zahlrei
 
 Die Pfad- und Algorithmusbezeichnungen in den Diagrammen sind wie folgt zu lesen: "Für *&lt;Pfadbezeichnung&gt;* verwenden Sie *&lt;Algorithmus&gt;*". Beispiel: "Für *Geschwindigkeit* verwenden Sie *Logistische Regression mit zwei Klassen*". Manchmal ist mehr als eine Verzweigung gültig. Manchmal ist keine davon eine optimale Lösung. Sie dienen als Faustregelempfehlungen. Machen Sie sich also keine Sorgen über ihre Exaktheit. Einige Datenanalysten, mit denen ich gesprochen habe, haben mir gesagt, dass die einzige sichere Methode zum Herausfinden des idealen Algorithmus darin besteht, alle auszuprobieren.
 
-Es folgt ein Beispiel aus dem [Cortana Analytics-Katalog](http://gallery.azureml.net/). Dabei handelt es sich um ein Experiment, mit dem mehrere Algorithmen auf dieselben Daten angewendet und die Ergebnisse verglichen werden: [Vergleichen von Multiklassen-Klassifizierungen: Buchstabenerkennung](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92).
+Es folgt ein Beispiel aus dem [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/). Dabei handelt es sich um ein Experiment, mit dem mehrere Algorithmen auf dieselben Daten angewendet und die Ergebnisse verglichen werden: [Vergleichen von Multiklassen-Klassifizierungen: Buchstabenerkennung](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 >[AZURE.TIP] Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich eine Übersicht über die Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](machine-learning-studio-overview-diagram.md).
 
@@ -237,4 +237,4 @@ Azure Machine Learning umfasst außerdem Zugriff auf ein leistungsfähiges Machi
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->
