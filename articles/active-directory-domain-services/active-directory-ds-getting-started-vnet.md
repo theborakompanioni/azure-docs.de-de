@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="04/11/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)* – Erste Schritte
@@ -22,7 +22,7 @@
 Beachten Sie bei der Auswahl eines virtuellen Netzwerks zur Verwendung mit Azure Active Directory-Domänendiensten die folgenden Richtlinien:
 
 - Stellen Sie sicher, dass Sie ein virtuelles Netzwerk in einer Region auswählen, die von den Azure Active Directory-Domänendiensten unterstützt wird. Informationen zu den Azure-Regionen, in denen Azure AD-Domänendienste verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
-- Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, stellen Sie sicher, dass es sich um ein regionales virtuelles Netzwerk handelt. Virtuelle Netzwerke, die den Vorgängermechanismus der Affinitätsgruppen verwenden, können nicht mit Azure Active Directory-Domänendiensten eingesetzt werden. Sie müssen [ältere virtuelle Netzwerke zu regionalen virtuellen Netzwerken migrieren](../virtual-networks-migrate-to-regional-vnet.md).
+- Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, stellen Sie sicher, dass es sich um ein regionales virtuelles Netzwerk handelt. Virtuelle Netzwerke, die den Vorgängermechanismus der Affinitätsgruppen verwenden, können nicht mit Azure Active Directory-Domänendiensten eingesetzt werden. Sie müssen [ältere virtuelle Netzwerke zu regionalen virtuellen Netzwerken migrieren](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 - Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, vergewissern Sie sich, dass keine benutzerdefinierten DNS-Server für das virtuelle Netzwerk konfiguriert sind. Die Azure AD-Domänendienste unterstützen keine benutzerdefinierten/eigenen DNS-Server.
 - Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, vergewissern Sie sich, dass in diesem virtuellen Netzwerk keine Domäne mit dem gleichen Domänennamen vorhanden ist. Angenommen, im ausgewählten virtuellen Netzwerk befindet sich eine Domäne namens „contoso.com“. Sie versuchen nun, in diesem virtuellen Netzwerk eine verwaltete Domäne der Azure AD-Domänendienste mit dem gleichen Domänennamen („contoso.com“) zu aktivieren. Beim Aktivieren der Azure AD-Domänendienste tritt daraufhin ein Fehler auf. Der Grund dafür ist ein Namenskonflikt in Bezug auf den Domänennamen in diesem virtuellen Netzwerk. In dem Fall müssen Sie einen anderen Namen verwenden, um die verwaltete Domäne der Azure AD-Domänendienste einzurichten. Alternativ können Sie auch die Bereitstellung der bestehenden Domäne aufheben und mit der Aktivierung der Azure AD-Domänendienste fortfahren.
 - Wählen Sie das virtuelle Netzwerk aus, das virtuelle Computer hostet oder hosten wird, die Zugriff auf die Azure Active Directory-Domänendienste benötigen. Nach dem Aktivieren des Diensts können Sie keine Domänendienste in ein anderes virtuelles Netzwerk verschieben.
@@ -58,4 +58,4 @@ Führen Sie die folgenden Konfigurationsschritte durch, um ein virtuelles Azure-
 ---
 [**Nächster Schritt: Aktivieren der Azure AD-Domänendienste**](active-directory-ds-getting-started-enableaadds.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="03/28/2016"
    ms.author="sahajs;barbkess"/>
 
 # Wiederherstellen einer Datenbank nach einem Ausfall in SQL Data Warehouse
 
-Die Geowiederherstellung bietet die Möglichkeit der Wiederherstellung einer Datenbank aus einer georedundanten Sicherung, um eine neue Datenbank zu erstellen. Die Datenbank kann auf einem beliebigen Server in jeder Azure-Region erstellt werden. Da die Quelle eine georedundante Sicherung ist, kann mit ihr eine Datenbank selbst dann wiederhergestellt werden, wenn sie aufgrund eines Ausfalls nicht mehr verfügbar ist. Neben der Wiederherstellung nach einem Ausfall kann die Geowiederherstellung auch für andere Szenarien verwendet werden, beispielsweise zum Migrieren oder Kopieren der Datenbank auf einen anderen Server oder in eine andere Region.
+Die Geowiederherstellung bietet die Möglichkeit der Wiederherstellung einer Datenbank aus einer georedundanten Sicherung, um eine neue Datenbank zu erstellen. Die Datenbank kann auf einem beliebigen Server in jeder Azure-Region erstellt werden. Da die Geowiederherstellung eine georedundante Sicherung als Quelle verwendet, kann mit ihr eine Datenbank selbst dann wiederhergestellt werden, wenn sie aufgrund eines Ausfalls nicht mehr verfügbar ist. Neben der Wiederherstellung nach einem Ausfall kann die Geowiederherstellung auch für andere Szenarien verwendet werden, beispielsweise zum Migrieren oder Kopieren der Datenbank auf einen anderen Server oder in eine andere Region.
 
 
 ## Startzeitpunkt für die Wiederherstellung
@@ -41,16 +41,16 @@ Durch das Wiederherstellen einer Datenbank wird eine neue Datenbank aus der neue
 
 
 ### PowerShell
-Verwenden Sie Azure PowerShell, um eine Datenbankwiederherstellung programmgesteuert auszuführen. Führen Sie zum Herunterladen des Azure PowerShell-Moduls den [Microsoft-Webplattform-Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) aus. Sie können die Version überprüfen, indem Sie „Get-Module -ListAvailable -Name Azure“ ausführen. Dieser Artikel basiert auf Microsoft Azure PowerShell Version 1.0.4.
+Verwenden Sie Azure PowerShell, um eine Datenbankwiederherstellung programmgesteuert auszuführen. Führen Sie zum Herunterladen des Azure PowerShell-Moduls den [Microsoft-Webplattform-Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) aus. Sie können die Version überprüfen, indem Sie „Get-Module -ListAvailable -Name Azure“ ausführen. Dieser Artikel basiert auf Microsoft Azure PowerShell Version 1.0.4.
 
-Um eine Datenbank wiederherzustellen, verwenden Sie das Cmdlets [Start-AzureSqlDatabaseRecovery][].
+Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank wiederherzustellen.
 
 1. Öffnen Sie Windows PowerShell.
 2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und listen Sie alle Abonnements auf, die Ihrem Konto zugeordnet sind.
 3. Wählen Sie das Abonnement aus, in dem die wiederherzustellende Datenbank enthalten ist.
 4. Rufen Sie die Datenbank ab, die Sie wiederherstellen möchten.
 5. Erstellen Sie die Wiederherstellungsanforderung für die Datenbank.
-6. Überwachen Sie den Fortschritt der Wiederherstellung.
+6. Überprüfen Sie den Status der mittels Geowiederherstellung wiederhergestellten Datenbank.
 
 ```Powershell
 
@@ -59,17 +59,17 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 
 # Get the database you want to recover
-$Database = Get-AzureRmSqlRecoverableDatabase -ServerName "<YourServerName>" –DatabaseName "<YourDatabaseName>"
+$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
-$RecoveryRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourSourceServerName>" -SourceDatabase $Database -TargetDatabaseName "<NewDatabaseName>" -TargetServerName "<YourTargetServerName>"
+$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID
 
-# Monitor progress of recovery operation
-Get-AzureSqlDatabaseOperation -ServerName "<YourTargetServerName>" –OperationGuid $RecoveryRequest.RequestID
+# Verify that the geo-restored database is online
+$GeoRestoredDatabase.status
 
 ```
 
-Hinweis: Wenn Ihr Server „foo.database.windows.net“ heißt, verwenden Sie in den obigen PowerShell-Cmdlets für „-ServerName“ den Namen „foo“.
+>[AZURE.NOTE] Verwenden Sie in den oben aufgeführten PowerShell-Cmdlets „foo“ als „-ServerName“ für den Server „foo.database.windows.net“.
 
 ### REST-API
 Verwenden Sie REST für eine programmgesteuerte Durchführung der Datenbankwiederherstellung.
@@ -87,13 +87,13 @@ Dies ist eine Prüfliste, mit der Sie die wiederhergestellte Datenbank für die 
 1. **Aktualisieren von Verbindungszeichenfolgen**: Überprüfen Sie, ob die Verbindungszeichenfolgen Ihrer Clienttools auf die neu wiederhergestellte Datenbank verweisen.
 2. **Ändern von Firewallregeln**: Überprüfen Sie die Firewallregeln auf dem Zielserver, und stellen Sie sicher, dass Verbindungen von Ihren Clientcomputern oder Azure mit dem Server und der neu wiederhergestellten Datenbank aktiviert sind.
 3. **Überprüfen von Serveranmeldungen und Datenbankbenutzern**: Überprüfen Sie, ob alle von der Anwendung verwendeten Anmeldungen auf dem Server vorhanden sind, der die wiederhergestellte Datenbank hostet. Erstellen Sie die fehlenden Anmeldungen erneut, und gewähren Sie ihnen entsprechende Berechtigungen auf der wiederhergestellten Datenbank. 
-4. **Aktivieren der Überwachung**: Wenn der Zugriff auf die Datenbank überwacht werden muss, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren.
+4. **Aktivieren der Überwachung**: Wenn die Überwachung für den Zugriff auf die Datenbank benötigt wird, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren.
 
 Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldatenbank TDE aktiviert ist.
 
 
 ## Nächste Schritte
-Informationen zu den Geschäftskontinuitätsfeatures anderer Azure SQL-Datenbank-Editionen finden Sie in der [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität][].
+Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-Editionen finden Sie in der [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität][].
 
 
 <!--Image references-->
@@ -103,7 +103,7 @@ Informationen zu den Geschäftskontinuitätsfeatures anderer Azure SQL-Datenbank
 [Finalize a recovered database]: sql-database/sql-database-recovered-finalize.md
 
 <!--MSDN references-->
-[Start-AzureSqlDatabaseRecovery]: https://msdn.microsoft.com/library/azure/dn720224.aspx
+[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 [List Recoverable Databases]: http://msdn.microsoft.com/library/azure/dn800984.aspx
 [Get Recoverable Database]: http://msdn.microsoft.com/library/azure/dn800985.aspx
 [Create Database Recovery Request]: http://msdn.microsoft.com/library/azure/dn800986.aspx
@@ -113,4 +113,4 @@ Informationen zu den Geschäftskontinuitätsfeatures anderer Azure SQL-Datenbank
 [Azure-Portal]: https://portal.azure.com/
 [Wenden Sie sich an den Support]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

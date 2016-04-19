@@ -1,8 +1,8 @@
 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie im unteren Teil des Bildschirms auf **+NEU**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie oben links auf dem Bildschirm auf **+NEU**.
 
-2. Klicken Sie auf **Neu**, **Web- und mobile Anwendungen**, **Notification Hub** und dann auf **Schnellerfassung**.
+2. Klicken Sie auf **Neu** und anschließend auf **Web und mobil**. Führen Sie ggf. einen Bildlauf nach unten aus, und klicken Sie auf **Notification Hub**.
 
    	![Azure-Portal – Erstellen von Notification Hubs](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
 
@@ -22,4 +22,4 @@
 
    	![Azure-Portal – Verbindungszeichenfolgen für den Notification Hub](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

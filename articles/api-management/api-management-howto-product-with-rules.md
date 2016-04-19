@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="erikre"
+	manager="douge"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/27/2016"
+	ms.date="04/13/2016"
 	ms.author="sdanie"/>
 
 # Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
@@ -34,7 +34,7 @@ Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dien
 
 ![Herausgeberportal][api-management-management-console]
 
->Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][] im Lernprogramm [Erste Schritte mit Azure API Management][].
+>Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][] des Tutorials [Verwalten Ihrer ersten API in Azure API Management][].
 
 Klicken Sie auf **Produkte** im Menü **API Management** auf der linken Seite, um Seite **Produkte** anzuzeigen.
 
@@ -70,7 +70,7 @@ Wählen Sie das Kontrollkästchen **Entwickler**, und klicken Sie dann auf **Spe
 
 In diesem Schritt des Lernprogramms werden Sie die Echo API zu dem neu erstellten Produkt "Kostenloser Test" hinzufügen.
 
->Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Erste Schritte mit Azure API Management][].
+>Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Verwalten Ihrer ersten API in Azure API Management][].
 
 Klicken Sie auf **Produkte** im Menü **API Management** auf der linken Seite, und klicken Sie dann auf **Kostenlose Testversion**, um das Produkt zu konfigurieren.
 
@@ -98,11 +98,11 @@ Um Richtlinien hinzuzufügen, platzieren Sie den Cursor entweder im **Eingehend*
 
 ![Richtlinieneditor][api-management-policy-editor-inbound]
 
-In diesem Lernprogramm werden wir die Richtlinien [Aufruflimit][] und [Nutzungskontingent][] erstellen.
+In diesem Tutorial erstellen wir die Richtlinien [Aufruflimit pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota).
 
 ![Richtlinienanweisungen][api-management-limit-policies]
 
-Nachdem Sie den Cursor in das **Eingehend**-Richtlinienelement platziert haben, klicken Sie auf den Pfeil neben **Aufruflimit**, um die Richtlinienvorlage einzufügen.
+Nachdem Sie den Cursor im Richtlinienelement **Eingehend** platziert haben, klicken Sie auf den Pfeil neben **Aufruflimit pro Abonnement**, um die Richtlinienvorlage einzufügen.
 
 	<rate-limit calls="number" renewal-period="seconds">
 	<api name="name" calls="number">
@@ -110,7 +110,7 @@ Nachdem Sie den Cursor in das **Eingehend**-Richtlinienelement platziert haben, 
 	</api>
 	</rate-limit>
 
-**Aufruflimit** kann auf der Produktebene sowie auf der API- und auf der Namensebene für einzelne Operationen verwendet werden. Dieses Lernprogramm verwendet Richtlinien auf Produktebene. Löschen Sie also die Elemente **api** und **operation** aus dem Element **rate-limit**, sodass nur das äußere **rate-limit**-Element verbleibt, wie im folgenden Beispiel gezeigt.
+**Aufruflimit pro Abonnement** kann auf der Produktebene sowie auf der API- und auf der Namensebene für einzelne Vorgänge verwendet werden. Dieses Lernprogramm verwendet Richtlinien auf Produktebene. Löschen Sie also die Elemente **api** und **operation** aus dem Element **rate-limit**, sodass nur das äußere **rate-limit**-Element verbleibt, wie im folgenden Beispiel gezeigt.
 
 	<rate-limit calls="number" renewal-period="seconds">
 	</rate-limit>
@@ -120,7 +120,7 @@ Die Produkt "Kostenloser Test" soll bis zu 10 Aufrufe pro Minute erlauben. Geben
 	<rate-limit calls="10" renewal-period="60">
 	</rate-limit>
 
-Um die **Nutzungskontingent**-Richtlinie zu konfigurieren, platzieren Sie Ihren Cursor direkt unterhalb des neu erstellten **rate-limit**-Elements innerhalb des **inbound**-Elements, und klicken Sie dann auf den Pfeil links neben **Nutzungskontingent einstellen**.
+Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie Ihren Cursor direkt unterhalb des neu erstellten **rate-limit**-Elements innerhalb des **inbound**-Elements, und klicken Sie dann auf den Pfeil links neben **Nutzungskontingent pro Abonnement einstellen**.
 
 	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 	<api name="name" calls="number" bandwidth="kilobytes">
@@ -233,7 +233,7 @@ Klicken Sie häufiger als das konfigurierte Limit von zehnmal pro Minute auf **S
 
 Der **Antwortinhalt** gibt das verbleibende Intervall an, bis neue Aufrufe möglich sind.
 
-Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende Aufrufe fehlschlagen, bis 60 Sekunden nach dem ersten der 10 erfolgreichen Aufrufe an das Produkt vergangen sind, bevor das Aufruflimit überschritten wurde. In diesem Beispiel beträgt das verbleibende Intervall 54 Sekunden.
+Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende Aufrufe fehlschlagen, bis 60 Sekunden nach dem ersten der 10 erfolgreichen Aufrufe an das Produkt vergangen sind, bevor das Aufruflimit überschritten wurde. In diesem Beispiel beträgt das verbleibende Intervall 54 Sekunden.
 
 ## <a name="next-steps"> </a>Nächste Schritte
 
@@ -275,10 +275,10 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 [Monitoring and analytics]: ../api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
-[Get started with Azure API Management]: api-management-get-started.md
+[Verwalten Ihrer ersten API in Azure API Management]: api-management-get-started.md
 [Erstellen und Verwenden von Gruppen in Azure API Management]: api-management-howto-create-groups.md
 [View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
-[Erste Schritte mit Azure API Management]: api-management-get-started.md
+[Get started with Azure API Management]: api-management-get-started.md
 [Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 [Next steps]: #next-steps
 
@@ -290,7 +290,7 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 [Call an operation and test the rate limit]: #test-rate-limit
 [Erste Schritte bei der erweiterten API-Konfiguration]: api-management-get-started-advanced.md
 
-[Aufruflimit]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[Nutzungskontingent]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

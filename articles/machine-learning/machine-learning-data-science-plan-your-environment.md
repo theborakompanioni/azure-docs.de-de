@@ -76,7 +76,7 @@ Nehmen wir beispielsweise die Azure Machine Learning Studio-Umgebung:
 - Eine Liste der Datenformate und -typen, die von Azure Machine Learning Studio unterstützt werden, finden Sie im Abschnitt [Unterstützte Datenformate und Datentypen](machine-learning-data-science-import-data.md#data-formats-and-data-types-supported).
 - Informationen zu Datenbeschränkungen für Azure Machine Learning Studio finden Sie unter [Importieren und Exportieren von Daten für Machine Learning](machine-learning-faq.md#machine-learning-studio-questions) im Abschnitt **Wie groß können Datasets für meine Module sein?** sein.
 
-Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseprozess verwendet werden, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](azure-subscription-service-limits.md).
+Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseprozess verwendet werden, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
 ## Fragen zur Datenqualität: Untersuchung und Vorverarbeitung
 
@@ -104,7 +104,7 @@ Je nachdem, welche Sprachen und Entwicklungsumgebungen bzw. Tools Sie brauchen o
 
 
 ## Bestimmen des Szenarios für die erweiterte Analyse
-Nachdem Sie die Fragen im vorherigen Abschnitt beantwortet haben, können Sie bestimmen, welches Szenario für Ihren Fall am besten geeignet ist. Die Beispielszenarien werden unter [Szenarien für die erweiterte Analyse in Azure Machine Learning](../machine-learning-data-science-plan-sample-scenarios.md) erläutert.
+Nachdem Sie die Fragen im vorherigen Abschnitt beantwortet haben, können Sie bestimmen, welches Szenario für Ihren Fall am besten geeignet ist. Die Beispielszenarien werden unter [Szenarien für die erweiterte Analyse in Azure Machine Learning](machine-learning-data-science-plan-sample-scenarios.md) erläutert.
 
 
 
@@ -114,4 +114,4 @@ Nachdem Sie die Fragen im vorherigen Abschnitt beantwortet haben, können Sie be
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

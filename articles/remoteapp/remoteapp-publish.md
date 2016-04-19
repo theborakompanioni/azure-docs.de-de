@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/07/2016"
+    ms.date="04/05/2016"
     ms.author="elizapo" />
 
 
@@ -20,11 +20,11 @@
 
 Nach dem Erstellen der RemoteApp-Sammlung müssen Sie die Apps oder Ressourcen, die Sie für Ihre Benutzer zur Verfügung stellen möchten, veröffentlichen. Die Vorlagenimages, die mit Ihrem Abonnement bereitgestellt wurden, enthalten nur wenige Apps, die standardmäßig veröffentlicht werden. Um die anderen Apps freizugeben, müssen Sie diese zuerst veröffentlichen.
 
-> [AZURE.NOTE]Müssen Sie eine App aktualisieren? Sie müssen zunächst [das Image aktualisieren](remoteapp-update.md).
+> [AZURE.NOTE] Müssen Sie eine App aktualisieren? Sie müssen zunächst [das Image aktualisieren](remoteapp-update.md).
 
 Klicken Sie im Portal auf der Registerkarte **Veröffentlichung** auf **Veröffentlichen**. Sie können entweder eine App aus dem **Startmenü** des Vorlagenimages hinzufügen oder den Pfad angeben, in dem die App auf dem Vorlagenimage installiert ist. Wenn Sie die App aus dem **Startmenü** hinzufügen möchten, wählen Sie die zu veröffentlichende App in der Liste aus. Wenn Sie den Pfad zur App bereitstellen möchten, geben Sie einen Namen für die App und den Pfad zur App an. Verwenden Sie Variablen im Pfad, z. B. "%systemdrive%" anstelle von "c:".
 
-> [AZURE.NOTE]Wenn Sie die App aus dem **Startmenü** hinzufügen möchten, müssen Sie diese *App im Vorlagenimage dem **Startmenü** hinzugefügt haben*. Andernfalls wird in RemoteApp nur angezeigt, was sich *im* **Startmenü** befindet, was zu Verwechslungen führen kann.
+> [AZURE.NOTE] Wenn Sie die App aus dem **Startmenü** hinzufügen möchten, müssen Sie diese *App im Vorlagenimage dem **Startmenü** hinzugefügt haben*. Andernfalls wird in RemoteApp nur angezeigt, was sich *im* **Startmenü** befindet, was zu Verwechslungen führen kann.
 
 >Um sicherzustellen, dass sich die App im **Startmenü** befindet, platzieren Sie eine Verknüpfungsdatei (**.lnk**) im Ordner „%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start“.
 
@@ -33,4 +33,4 @@ Klicken Sie im Portal auf der Registerkarte **Veröffentlichung** auf **Veröffe
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0406_2016-->

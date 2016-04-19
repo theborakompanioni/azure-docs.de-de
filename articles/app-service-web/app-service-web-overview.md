@@ -25,6 +25,8 @@ Nutzen Sie die Leistungsstärke von [App Service-Web-Apps](http://go.microsoft.c
 
 ![Web-Marketplace:](./media/app-service-web-overview/marketplace.png)
 
+[AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
+
 ## Mehr als nur Websites##
 
 Moderne Unternehmen interagieren mit ihren Kunden auf immer komplexere Art und Weise. Unternehmen aller Art betrachten ihre Internetpräsenz als kritischen Bestandteil ihres Geschäfts und wichtige Komponente in ihrem Geschäftsplan. Um dieser Bedeutung gerecht zu werden, suchen Unternehmen eine Plattform, die ihnen Flexibilität, Sicherheit und Skalierbarkeit bietet. Darüber hinaus benötigen sie auch die Möglichkeit, Verknüpfungen mit ihrem vorhandenen Unternehmenssystem einzurichten, neuen Code schnell bereitzustellen und Instanzen auf der ganzen Welt in Betrieb zu nehmen. Mit Azure App Service-Web-Apps können Organisationen ihre Kunden schnell und kostengünstig begeistern.
@@ -64,4 +66,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 
  
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

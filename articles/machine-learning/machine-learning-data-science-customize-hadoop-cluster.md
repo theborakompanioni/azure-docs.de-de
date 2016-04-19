@@ -53,11 +53,11 @@ Geben Sie auf der 4. Konfigurationsseite den Speicherkontonamen und den Standar
 
 ![Arbeitsbereich erstellen][5]
 
-Klicken Sie auf der letzten Konfigurationsseite zu **Script Actions** auf die Schaltfläche **add script action** und füllen Sie die Felder mit den folgenden Werten aus.
+Klicken Sie auf der letzten Konfigurationsseite zu **Script Actions** auf die Schaltfläche** add script action** und füllen Sie die Felder mit den folgenden Werten aus.
  
 * **NAME** - eine beliebige Zeichenfolge als Name für diese Skriptaktion. 
 * **NODE TYPE** - wählen Sie **All nodes** aus. 
-* **SCRIPT URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
+* **SCRIPT URI** - **http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
 	* *publicscripts* ist ein öffentlicher Container im Speicherkonto. 
 	* *getgoing* wird für die Freigabe der PowerShell-Skriptdateien verwendet, um den Benutzern die Arbeit in Azure zu vereinfachen. 
 * **PARAMETERS** - (leer lassen)
@@ -88,7 +88,7 @@ Sie müssen den Remotezugriff auf den Hadoop-Cluster in Azure aktivieren, damit 
 
 	 ![Arbeitsbereich erstellen][9]
 
-Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiterte Datenverarbeitung in Azure](machine-learning-data-science-advanced-data-processing.md) aufgeführt. Dazu gehören u.a. auch das Verschieben von Daten nach HDInsight und das dortige Verarbeiten und Extrahieren dieser Daten für den Erhalt von Informationen anhand der Daten mit Azure Machine Learning.
+Die nächsten Schritte des Datenanalyseprozesses sind unter [Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) (Cortana Analytics-Prozess) aufgeführt. Dazu gehören u.a. auch das Verschieben von Daten nach HDInsight und das dortige Verarbeiten und Extrahieren dieser Daten für den Erhalt von Informationen anhand der Daten mit Azure Machine Learning.
 
 Unter [Übermitteln von Hive-Abfragen an HDInsight Hadoop-Cluster](machine-learning-data-science-process-hive-tables.md)finden Sie Anweisungen zum Zugreifen auf die Python-Module in Anaconda vom Hauptknoten des Clusters aus. Dazu werden UDFs (User Defined Function, benutzerdefinierte Funktion) verwendet, um Hive-Datensätze, die im Cluster gespeichert sind, zu verarbeiten.
 
@@ -104,4 +104,4 @@ Unter [Übermitteln von Hive-Abfragen an HDInsight Hadoop-Cluster](machine-learn
 
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

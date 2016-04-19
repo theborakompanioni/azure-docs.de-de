@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/18/2015"
+   ms.date="04/01/2016"
    ms.author="masashin"/>
 
 
@@ -151,8 +151,7 @@ Erwägen Sie, zusätzlich zum freigegebenen Cache, auf den alle Anwendungsinstan
 
 Bei dieser Strategie ist eine sorgfältige Konfiguration erforderlich, um zu verhindern, dass der lokale Cache gegenüber dem freigegebenen Cache zu sehr veraltet. Der lokale Cache fungiert jedoch als Puffer, wenn der freigegebene Cache nicht erreichbar ist. Eine solche Struktur sehen Sie in Abbildung 3.
 
-![Verwenden eines lokalen privaten Caches mit einem freigegebenen Cache](media/best-practices-caching/Caching3.png) 
-_Abbildung 3: Verwenden eines lokalen privaten Cache mit einem gemeinsam genutzten Cache_
+![Verwenden eines lokalen privaten Caches mit einem freigegebenen Cache](media/best-practices-caching/Caching3.png) _Abbildung 3: Verwenden eines lokalen privaten Cache mit einem gemeinsam genutzten Cache_
 
 Zur Unterstützung großer Caches, die relativ langlebige Daten enthalten, bieten einige Cachedienste eine Option für hohe Verfügbarkeit, die für den Fall, dass der Cache nicht verfügbar ist, automatisches Failover implementiert. Diese Strategie schließt in der Regel die Replikation der auf einem primären Cacheserver zwischengespeicherten Daten auf einem sekundären Cacheserver ein, sodass bei einem Ausfall des primären Cacheservers bzw. einem Verlust der Konnektivität sofort zum sekundären Server gewechselt werden kann.
 
@@ -935,4 +934,4 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 - Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 - Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

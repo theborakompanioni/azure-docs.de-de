@@ -25,7 +25,7 @@
 
 In diesem Lernprogramm wird gezeigt, wie Sie eine Ruby on Rails-Website auf Azure mit einem virtuellen Linux-Computer hosten.
 
-Dieses Lernprogramm wurde mit Ubuntu Server 14.04 LTS getestet. Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte zur Rails-Installation möglicherweise anpassen.
+Dieses Lernprogramm wurde mit Ubuntu Server 14.04 LTS getestet. Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte zur Rails-Installation möglicherweise anpassen.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
@@ -119,7 +119,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
 
 	* **PRIVATER PORT**: 3000
 
-	Damit wird der öffentliche Port 80 erstellt, der den Datenverkehr an den privaten Port 3000 weiterleitet, den der Rails-Server überwacht.
+	Damit wird der öffentliche Port 80 erstellt, der den Datenverkehr an den privaten Port 3000 weiterleitet, den der Rails-Server überwacht.
 
 	![Dialogfeld für neuen Endpunkt][new-endpoint]
 
@@ -155,7 +155,7 @@ Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie 
 
 [tables]: /develop/ruby/how-to-guides/table-service/
 
-[vm-instructions]: virtual-machines-linux-cli-create.md
+[vm-instructions]: virtual-machines-linux-classic-createportal.md
 
 
 <!-- External Links -->
@@ -175,4 +175,4 @@ Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie 
 
 [new-endpoint1]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

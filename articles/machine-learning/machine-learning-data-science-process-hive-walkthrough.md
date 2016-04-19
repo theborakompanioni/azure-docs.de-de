@@ -79,7 +79,7 @@ Bei der Arbeit mit Daten ist es zunächst wichtig, die Art der Vorhersagen zu be
 
 Sie können in drei Schritten eine Azure-Umgebung für die erweiterte Analyse einrichten, in der ein HDInsight-Cluster verwendet wird:
 
-1. [Erstellen eines Speicherkontos:](../storage-whatis-account.md) Mit diesem Speicherkonto werden Daten im Azure-Blobspeicher gespeichert. Die in HDInsight-Clustern verwendeten Daten werden ebenfalls hier gespeichert.
+1. [Erstellen eines Speicherkontos:](../storage/storage-create-storage-account.md) Mit diesem Speicherkonto werden Daten im Azure-Blobspeicher gespeichert. Die in HDInsight-Clustern verwendeten Daten werden ebenfalls hier gespeichert.
 
 2. [Anpassen von Azure HDInsight Hadoop-Clustern für erweiterte Analyseprozesse und -technologien](machine-learning-data-science-customize-hadoop-cluster.md) In diesem Schritt erstellen Sie einen Azure HDInsight Hadoop-Cluster, bei dem auf allen Knoten 64-Bit-Anaconda Python 2.7 installiert ist. Bei der Anpassung Ihres HDInsight-Clusters müssen Sie an zwei wichtige Schritte denken.
 
@@ -95,7 +95,7 @@ Sie können in drei Schritten eine Azure-Umgebung für die erweiterte Analyse ei
 
 Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) von seinem öffentlichen Speicherort eine der in [Verschieben von Daten in und aus Azure-Blobspeichern](machine-learning-data-science-move-azure-blob.md) beschriebenen Methoden verwenden, um die Daten auf Ihren Computer zu kopieren.
 
-Nachfolgend wird beschrieben, wie Sie AzCopy zum Übertragen der Dateien verwenden, die Daten enthalten. Folgen Sie den Anweisungen unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy](../storage-use-azcopy.md), um AzCopy herunterzuladen und zu installieren.
+Nachfolgend wird beschrieben, wie Sie AzCopy zum Übertragen der Dateien verwenden, die Daten enthalten. Folgen Sie den Anweisungen unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy](../storage/storage-use-azcopy.md), um AzCopy herunterzuladen und zu installieren.
 
 1. Führen Sie in einem Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *<path_to_data_folder>* durch den gewünschten Speicherort:
 
@@ -786,7 +786,7 @@ b. Für Regressionsprobleme messen wir die Genauigkeit unserer Vorhersage, indem
 
 Wir sehen, dass der Bestimmungskoeffizient 0,709 lautet, was impliziert, dass etwa 71 % der Varianz durch die Modellkoeffizienten erklärt werden.
 
-**Wichtiger Hinweis:** Weitere Informationen zu Azure Machine Learning und dazu, wie Sie darauf zugreifen und es verwenden, finden Sie unter [Was ist maschinelles Lernen?](machine-learning-what-is-machine-learning.md). Sehr nützlich zum Ausprobieren verschiedenster Experimente aus dem Bereich des maschinellen Lernens in Azure Machine Learning ist der [Cortana Analytics-Katalog](https://gallery.azureml.net/). Der Katalog umfasst eine große Palette an Experimenten und bietet eine umfassende Einführung in die Möglichkeiten von Azure Machine Learning.
+**Wichtiger Hinweis:** Weitere Informationen zu Azure Machine Learning und dazu, wie Sie darauf zugreifen und es verwenden, finden Sie unter [Was ist maschinelles Lernen?](machine-learning-what-is-machine-learning.md). Eine sehr nützliche Quelle für verschiedenste Machine Learning-Experimente in Azure Machine Learning ist der [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/). Der Katalog umfasst eine große Palette an Experimenten und bietet eine umfassende Einführung in die Möglichkeiten von Azure Machine Learning.
 
 ## Lizenzinformationen
 
@@ -810,4 +810,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

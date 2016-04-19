@@ -1,4 +1,4 @@
-### VPN-Typ für das Resource Manager-Bereitstellungsmodell
+#### VPN-Typ – Resource Manager-Bereitstellungsmodell
 
 | | **Routenbasiert** | **Richtlinienbasiert** |
 |-----------------------------------|--------------------|------------------|
@@ -10,7 +10,7 @@
 | **Von klassisch zum Ressourcen-Manager** | Ja | no |
 
 
-### VPN-Typ für das klassische Bereitstellungsmodell
+#### VPN-Typ – klassisches Bereitstellungsmodell
 
 
 | | **Dynamisch** | **Statisch** |
@@ -22,4 +22,4 @@
 | **Punkt-zu-Standort** | Ja | no |
 | **Von klassisch zum Ressourcen-Manager** | Ja | no |
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

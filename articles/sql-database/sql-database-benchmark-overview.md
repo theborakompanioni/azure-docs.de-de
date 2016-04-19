@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter="na"
 	authors="rothja"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="monicar" />
 
 
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="10/15/2015"
+	ms.date="04/04/2016"
 	ms.author="jroth" />
 
 # Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank
@@ -130,4 +130,4 @@ Der Azure SQL-Datenbankvergleichstest misst die relative Leistung von Azure SQL-
 
 [Leitfaden zur Leistung für Einzeldatenbanken](sql-database-performance-guidance.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0406_2016-->

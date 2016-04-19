@@ -35,7 +35,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 + [XCode 6.0][Install Xcode]
 + Ein Gerät, das mit iOS 7.0 (oder einer neueren Version) kompatibel ist
 + iOS-Entwicklerprogramm-Mitgliedschaft
-+ [Xamarin.iOS]
++ [Xamarin Studio]
 
    > [AZURE.NOTE] Die Beispielanwendung muss aufgrund von Konfigurationsanforderungen für iOS-Pushbenachrichtigungen auf einem physischem iOS-Gerät (iPhone oder iPad) bereitgestellt und getestet werden, anstatt im Simulator.
 
@@ -324,8 +324,8 @@ In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre iOS-G
 
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
-[Xamarin.iOS]: http://xamarin.com/download
+[Xamarin Studio]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 [Azure-Portal]: https://portal.azure.com
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

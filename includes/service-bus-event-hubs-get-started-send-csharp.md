@@ -6,11 +6,9 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 
    ![][7]
 
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete verwalten...** 
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**. 
 
-	Daraufhin wird das Dialogfeld "NuGet-Pakete verwalten" angezeigt.
-
-3. Suchen Sie nach `Microsoft Azure Service Bus`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+3. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Stellen Sie sicher, dass der Projektname (**Absender**) im Feld **Version(en)** angegeben ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
 	![][8]
 
@@ -23,10 +21,10 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und eine Verbindungszeichenfolge mit **Send**-Rechten.
+5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und eine Verbindungszeichenfolge mit **Send**-Rechten (die Verbindungszeichenfolge **SendRule**). Entfernen Sie das Suffix `EntityPath` aus der Verbindungszeichenfolge:
 
 	```
-	static string eventHubName = "{event hub name}";
+	static string eventHubName = "{Event Hub name}";
 	static string connectionString = "{send connection string}";
 	```
 
@@ -56,7 +54,7 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 	}
 	```
 
-	Diese Methode sendet kontinuierlich Ereignisse mit einer Verzögerung von 200 ms an den Ereignis-Hub.
+	Diese Methode sendet kontinuierlich Ereignisse mit einer Verzögerung von 200 ms an den Ereignis-Hub.
 
 7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
 
@@ -72,4 +70,4 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

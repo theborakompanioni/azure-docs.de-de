@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="masnider"
    manager="timlt"
-   editor="jessebenson; mani-ramaswamy"/>
+   editor="vturecek; mani-ramaswamy"/>
 
 <tags
    ms.service="Service-Fabric"
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/13/2016"
-   ms.author="masnider;jesseb"/>
+   ms.date="03/25/2016"
+   ms.author="masnider;vturecek"/>
 
 # Übersicht über Reliable Services
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zustandsloser und zustandsbehafteter Dienste (Reliable Services). In diesem Dokument wird Folgendes behandelt:
@@ -131,7 +131,7 @@ Wenn einer der folgenden Punkte auf Ihre Anwendungsdienstanforderungen zutrifft,
 
 - Sie möchten benutzerdefinierte Zustandsanbieter selbst entwickeln oder von Drittanbietern nutzen.*
 
-> [AZURE.NOTE]* Diese Funktionen stehen mit der allgemeinen Verfügbarkeit des SDK zur Verfügung.
+> [AZURE.NOTE] * Diese Funktionen stehen mit der allgemeinen Verfügbarkeit des SDK zur Verfügung.
 
 
 ## Nächste Schritte
@@ -139,4 +139,4 @@ Wenn einer der folgenden Punkte auf Ihre Anwendungsdienstanforderungen zutrifft,
 + [Erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md)
 + [Das Reliable Actors-Programmiermodell](service-fabric-reliable-actors-introduction.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/29/2016"
+	ms.date="04/05/2016"
 	ms.author="anhoh"/>
 
 # Importieren von Daten in DocumentDB mit dem Datenbank-Migrationstool
@@ -32,13 +32,13 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 -	Wie kann ich Daten von HBase in DocumentDB importieren?
 -	Wie kann ich Daten zwischen DocumentDB-Sammlungen migrieren?
 
-##<a id="Prerequisites"></a>Voraussetzungen ##
+##<a id="Prerequisites"></a>Voraussetzungen
 
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes installiert ist:
 
 - [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) oder höher.
 
-##<a id="Overviewl"></a>Übersicht über das DocumentDB-Datenmigrationstool ##
+##<a id="Overviewl"></a>Übersicht über das DocumentDB-Datenmigrationstool
 
 Das DocumentDB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedensten Quellen in DocumentDB importiert werden können:
 
@@ -61,7 +61,7 @@ Der Quellcode des Migrationstools ist in GitHub in [diesem Repository](https://g
 - **Dtui.exe**: GUI-Version des Tools
 - **Dt.exe**: Befehlszeilenversion des Tools
 
-##<a id="JSON"></a>Importieren von JSON-Dateien ##
+##<a id="JSON"></a>Importieren von JSON-Dateien
 
 Mit der Importprogrammoption für JSON-Dateiquellen können Sie ein oder mehrere JSON-Dateien mit einem einzelnen Dokument oder JSON-Dateien mit jeweils einem Array aus JSON-Dokumenten importieren. Wenn Sie Ordner hinzufügen, die zu importierende JSON-Dateien enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
 
@@ -84,7 +84,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren von JSON-Dat
 	#Import a single JSON file and partition the data across 4 collections
 	dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionTier:S3
 
-##<a id="MongoDB"></a>Importieren aus MongoDB ##
+##<a id="MongoDB"></a>Importieren aus MongoDB
 
 Mit der Importprogrammoption für MongoDB-Dateiquellen können Sie Dateien aus einer einzelnen MongoDB-Sammlung importieren und optional Dokumente mithilfe einer Abfrage filtern und/oder die Dokumentstruktur mithilfe einer Projektion ändern.
 
@@ -106,7 +106,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus MongoDB:
 	#Import documents from a MongoDB collection which match the query and exclude the loc field
 	dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionTier:S3
 
-##<a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien ##
+##<a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien
 
 Mit der Importprogrammoption für JSON-Dateiquellen und MongoDB-Exportdateien können Sie eine oder mehrere JSON-Dateien importieren, die mit dem mongoexport-Dienstprogramm erzeugt wurden.
 
@@ -118,7 +118,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von JSON-Dat
 
 	dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionTier:S3
 
-##<a id="SQL"></a>Importieren von SQL Server ##
+##<a id="SQL"></a>Importieren von SQL Server
 
 Mit der Importprogrammoption für SQL-Quellen können Sie Datensätze aus einer einzelnen SQL Server-Datenbank importieren und mithilfe einer Abfrage filtern. Darüber hinaus können Sie die Dokumentstruktur ändern, indem Sie ein Schachtelungstrennzeichen angeben (mehr dazu weiter unten).
 
@@ -148,7 +148,7 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus SQL Serv
 	#Import records from sql which match a query and create hierarchical relationships
 	dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionTier:S3
 
-##<a id="CSV"></a>Importieren von CSV-Dateien – Konvertieren von CSV zu JSON ##
+##<a id="CSV"></a>Importieren von CSV-Dateien – Konvertieren von CSV zu JSON
 
 Mit der Importprogrammoption für CSV-Dateiquellen können Sie eine oder mehrere CSV-Dateien importieren. Wenn Sie Ordner hinzufügen, die zu importierende CSV-Dateien enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
 
@@ -175,7 +175,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von CSV-Date
 
 	dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionTier:S3
 
-##<a id="AzureTableSource"></a>Importieren aus dem Azure-Tabellenspeicher ##
+##<a id="AzureTableSource"></a>Importieren aus dem Azure-Tabellenspeicher
 
 Mit der Importprogrammoption für Azure-Tabellenspeicherquellen können Sie Daten aus einer einzelnen Azure-Tabellenspeichertabelle importieren und optional die zu importierenden Tabellenentitäten filtern.
 
@@ -230,7 +230,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von JSON-Dat
 
 	dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:doctest
 
-##<a id="DocumentDBSource"></a>Importieren aus DocumentDB ##
+##<a id="DocumentDBSource"></a>Importieren aus DocumentDB
 
 Mit der Importprogrammoption für DocumentDB-Quellen können Sie Daten aus einer oder mehreren DocumentDB-Sammlungen importieren und optional Dokumente mithilfe einer Abfrage filtern.
 
@@ -239,6 +239,10 @@ Mit der Importprogrammoption für DocumentDB-Quellen können Sie Daten aus einer
 Die DocumentDB-Verbindungszeichenfolge weist folgendes Format auf:
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
+
+Die Verbindungszeichenfolge für das DocumentDB-Konto kann im Azure-Portal im Blatt „Schlüssel“ abgerufen werden. Eine Beschreibung hierzu finden Sie unter [Verwalten eines DocumentDB-Kontos](documentdb-manage-account.md). Der Name der Datenbank muss jedoch im folgenden Format an das Ende der Verbindungszeichenfolge angehängt werden:
+
+    Database=<DocumentDB Database>;
 
 > [AZURE.NOTE] Verwenden Sie den Befehl "Überprüfen", um sicherzustellen, dass auf die im Feld "Verbindungszeichenfolge" angegebene DocumentDB-Instanz zugegriffen werden kann.
 
@@ -289,13 +293,17 @@ Hier finden Sie ein Beispiel für die Befehlszeile zum Importieren von HBase:
 
 ##<a id="DocumentDBBulkTarget"></a>Importieren in DocumentDB (Massenimport)
 
-Mit dem DocumentDB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte DocumentDB-Prozedur verwenden. Das Tool unterstützt den Import in eine einzelne DocumentDB-Sammlung sowie den Shardimport, bei dem die Daten über mehrere DocumentDB-Sammlungen hinweg partitioniert werden. Weitere Informationen zum Partitionieren von Daten in DocumentDB [finden Sie hier](documentdb-partition-data.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und dann aus der Zielsammlung bzw. den Zielsammlungen gelöscht.
+Mit dem DocumentDB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte DocumentDB-Prozedur verwenden. Das Tool unterstützt den Import in eine einzelne DocumentDB-Sammlung sowie den Shardimport, bei dem die Daten über mehrere DocumentDB-Sammlungen hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und dann aus der Zielsammlung bzw. den Zielsammlungen gelöscht.
 
 ![Screenshot der Optionen für DocumentDB-Massenvorgänge](./media/documentdb-import-data/documentdbbulk.png)
 
 Die DocumentDB-Verbindungszeichenfolge weist folgendes Format auf:
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
+
+Die Verbindungszeichenfolge für das DocumentDB-Konto kann im Azure-Portal im Blatt „Schlüssel“ abgerufen werden. Eine Beschreibung hierzu finden Sie unter [Verwalten eines DocumentDB-Kontos](documentdb-manage-account.md). Der Name der Datenbank muss jedoch im folgenden Format an das Ende der Verbindungszeichenfolge angehängt werden:
+
+    Database=<DocumentDB Database>;
 
 > [AZURE.NOTE] Verwenden Sie den Befehl "Überprüfen", um sicherzustellen, dass auf die im Feld "Verbindungszeichenfolge" angegebene DocumentDB-Instanz zugegriffen werden kann.
 
@@ -305,7 +313,7 @@ Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Samm
 2. Sie können eine abgekürzte Syntax verwenden: Durch Eingabe von "Sammlung[3]" wird derselbe Satz von Sammlungen ausgegeben wie in Schritt 1.
 3. Mehrere Ersetzungen können bereitgestellt werden. "Sammlung[0-1] [0-9]" generiert z. B. 20 Sammlungsnamen mit führenden Nullen (Sammlung01, ...02, ...03).
 
-Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Tarif für die Sammlung(en) aus (S1, S2 oder S3). Um die beste Importleistung zu erreichen, wählen Sie S3. Weitere Informationen zu DocumentDB-Leistungsstufen [finden Sie hier](documentdb-performance-levels.md).
+Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Tarif für die Sammlung(en) aus (S1, S2 oder S3). Um die beste Importleistung zu erreichen, wählen Sie S3. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md).
 
 > [AZURE.NOTE] Die Einstellung der Leistungsstufe gilt nur für die Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Tarif nicht geändert.
 
@@ -342,13 +350,17 @@ Das DocumentDB-Massenimportprogramm weist die folgenden erweiterten Optionen auf
 
 ##<a id="DocumentDBSeqTarget"></a>Importieren in DocumentDB (sequenzieller Datensatzimport)
 
-Mit dem Programm für den Import von sequenziellen DocumentDB-Datensätzen können Sie Datensätze einzeln aus den verfügbaren Quelloptionen importieren. Sie können diese Option auswählen, wenn Sie Datensätze in eine vorhandene Sammlung importieren, die das Kontingent an gespeicherten Prozeduren erreicht hat. Das Tool unterstützt den Import in eine einzelne DocumentDB-Sammlung sowie den Shardimport, bei dem die Daten über mehrere DocumentDB-Sammlungen hinweg partitioniert werden. Weitere Informationen zum Partitionieren von Daten in DocumentDB [finden Sie hier](documentdb-partition-data.md).
+Mit dem Programm für den Import von sequenziellen DocumentDB-Datensätzen können Sie Datensätze einzeln aus den verfügbaren Quelloptionen importieren. Sie können diese Option auswählen, wenn Sie Datensätze in eine vorhandene Sammlung importieren, die das Kontingent an gespeicherten Prozeduren erreicht hat. Das Tool unterstützt den Import in eine einzelne DocumentDB-Sammlung sowie den Shardimport, bei dem die Daten über mehrere DocumentDB-Sammlungen hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
 
 ![Screenshot der Optionen für den sequenziellen DocumentDB-Datensatzimport](./media/documentdb-import-data/documentdbsequential.png)
 
 Die DocumentDB-Verbindungszeichenfolge weist folgendes Format auf:
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
+
+Die Verbindungszeichenfolge für das DocumentDB-Konto kann im Azure-Portal im Blatt „Schlüssel“ abgerufen werden. Eine Beschreibung hierzu finden Sie unter [Verwalten eines DocumentDB-Kontos](documentdb-manage-account.md). Der Name der Datenbank muss jedoch im folgenden Format an das Ende der Verbindungszeichenfolge angehängt werden:
+
+    Database=<DocumentDB Database>;
 
 > [AZURE.NOTE] Verwenden Sie den Befehl "Überprüfen", um sicherzustellen, dass auf die im Feld "Verbindungszeichenfolge" angegebene DocumentDB-Instanz zugegriffen werden kann.
 
@@ -358,7 +370,7 @@ Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Samm
 2. Sie können eine abgekürzte Syntax verwenden: Durch Eingabe von "Sammlung[3]" wird derselbe Satz von Sammlungen ausgegeben wie in Schritt 1.
 3. Mehrere Ersetzungen können bereitgestellt werden. "Sammlung[0-1] [0-9]" generiert z. B. 20 Sammlungsnamen mit führenden Nullen (Sammlung01, ...02, ...03).
 
-Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Tarif für die Sammlung(en) aus (S1, S2 oder S3). Um die beste Importleistung zu erreichen, wählen Sie S3. Weitere Informationen zu DocumentDB-Leistungsstufen [finden Sie hier](documentdb-performance-levels.md).
+Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Tarif für die Sammlung(en) aus (S1, S2 oder S3). Um die beste Importleistung zu erreichen, wählen Sie S3. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md).
 
 > [AZURE.NOTE] Die Einstellung der Leistungsstufe gilt nur für die Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Tarif nicht geändert.
 
@@ -387,7 +399,7 @@ Das Programm für den Import von sequenziellen DocumentDB-Datensätzen weist die
 
 > [AZURE.TIP] Standardmäßig verwendet das Importtool den Verbindungsmodus DirectTcp. Wenn Firewallprobleme auftreten, wechseln Sie zum Gatewaymodus, da dieser nur Port 443 erfordert.
 
-##<a id="IndexingPolicy"></a>Festlegen einer Indizierungsrichtlinie zum Erstellen von DocumentDB-Sammlungen ##
+##<a id="IndexingPolicy"></a>Festlegen einer Indizierungsrichtlinie zum Erstellen von DocumentDB-Sammlungen
 
 Wenn Sie zulassen, dass das Migrationstool während des Imports Sammlungen erstellt, können Sie die Indizierungsrichtlinie der Sammlungen festlegen. Navigieren Sie in den erweiterten Optionen für den DocumentDB-Massenimport und den sequenziellen DocumentDB-Datensatzimport zum Abschnitt zur Indizierungsrichtlinie.
 
@@ -403,7 +415,7 @@ Das Tool bietet folgende Richtlinienvorlagen:
 
 ![Screenshot der erweiterten Optionen für die DocumentDB-Indizierungsrichtlinie](./media/documentdb-import-data/indexingpolicy2.png)
 
-> [AZURE.NOTE] Wenn Sie keine Indizierungsrichtlinien angeben, wird die Standardrichtlinie verwendet. Weitere Informationen über DocumentDB-Indizierungsrichtlinien finden Sie [hier](documentdb-indexing-policies.md).
+> [AZURE.NOTE] Wenn Sie keine Indizierungsrichtlinien angeben, wird die Standardrichtlinie verwendet. Weitere Informationen zu den Indizierungsrichtlinien finden Sie unter [Indizierungsrichtlinien für DocumentDB](documentdb-indexing-policies.md).
 
 
 ## Exportieren in JSON-Datei
@@ -476,6 +488,6 @@ Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen pro
 
 ## Nächste Schritte
 
-- Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
+- Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

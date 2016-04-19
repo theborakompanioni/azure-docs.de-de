@@ -58,7 +58,7 @@ Sie können CORS im Azure-Portal oder über [Azure Resource Manager](../resource
 
 	Nachdem Sie auf **Speichern** geklickt haben, akzeptiert die API-App JavaScript-Aufrufe von den angegebenen URLs.
 
-### Konfigurieren von CORS mit Azure-Ressourcen-Manager-Tools
+#### Konfigurieren von CORS mit Azure-Ressourcen-Manager-Tools
 
 Sie können CORS für eine API-App auch konfigurieren, indem Sie [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) in Befehlszeilentools verwenden, z.B. [Azure PowerShell](../powershell-install-configure.md) und die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
@@ -224,9 +224,9 @@ In diesem Abschnitt konfigurieren Sie die API-App ToDoListAPI, um JavaScript-Auf
 
 In einem Web-API-Projekt können Sie das NuGet-Paket [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) installieren, um im Code anzugeben, aus welchen Domänen Ihre API JavaScript-Aufrufe akzeptiert.
  
-Web-API-CORS-Unterstützung ist flexibler als App Service-CORS-Unterstützung. Im Code können Sie beispielsweise verschiedene zulässige Ursprünge für unterschiedliche Aktionsmethoden angeben, während Sie für App Service-CORS einen Satz von zulässigen Ursprüngen für alle Methoden einer API-App festlegen.
+Web-API-CORS-Unterstützung ist flexibler als App Service-CORS-Unterstützung. Im Code können Sie beispielsweise verschiedene zulässige Ursprünge für unterschiedliche Aktionsmethoden angeben, während Sie für App Service-CORS einen Satz von zulässigen Ursprüngen für alle Methoden einer API-App festlegen.
 
-> [AZURE.NOTE] Versuchen Sie nicht, Web-API-CORS und App Service-CORS in einer API-App zu verwenden. App Service-CORS hat Vorrang, und Web-API-CORS hat keine Auswirkung. Beispiel: Wenn Sie eine Ursprungsdomäne in App Service und alle Ursprungsdomänen in Ihrem Web-API-Code aktivieren, akzeptiert Ihre Azure-API-App nur Aufrufe von der in Azure angegebenen Domäne.
+> [AZURE.NOTE] Versuchen Sie nicht, Web-API-CORS und App Service-CORS in einer API-App zu verwenden. App Service-CORS hat Vorrang, und Web-API-CORS hat keine Auswirkung. Beispiel: Wenn Sie eine Ursprungsdomäne in App Service und alle Ursprungsdomänen in Ihrem Web-API-Code aktivieren, akzeptiert Ihre Azure-API-App nur Aufrufe von der in Azure angegebenen Domäne.
 
 ### Gewusst wie: Aktivieren von CORS im Web-API-Code
 
@@ -261,11 +261,9 @@ In den folgenden Schritten ist der Prozess zum Aktivieren der Web-API-Unterstüt
 		namespace ToDoListAPI.Controllers 
 		{
 		    [HttpOperationExceptionFilterAttribute]
-		    [EnableCors(origins:"*", headers:"*", methods: "*")]
+		    [EnableCors(origins:"https://todolistangular0121.azurewebsites.net", headers:"accept,content-type,origin,x-my-header", methods: "get,post")]
 		    public class ToDoListController : ApiController
  
-	> **Hinweis**: Lassen Sie bei Verwendung dieses Attributs Vorsicht walten. Wenn Sie Platzhalter für alle Parameter angeben, ist Ihre API für alle Ursprünge und HTTP-Anforderungen geöffnet. Die hier gezeigten Einstellungen dienen nur Demonstrationszwecken.
-
 ## Problembehandlung
 
 Wenn Sie beim Durcharbeiten dieses Tutorials auf ein Problem stoßen, sollten Sie sich vergewissern, dass Sie die aktuelle Version des Azure SDK für .NET verwenden. Die einfachste Möglichkeit ist hierbei das [Herunterladen des Azure SDK für Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). Wenn Sie die aktuelle Version installiert haben, werden Sie vom Webplattform-Installer darüber informiert, dass keine Installation erforderlich ist.
@@ -283,4 +281,4 @@ Weitere Informationen zu Visual Studio-Features, mit denen die Problembehandlung
 
 In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Im nächsten Artikel der Serie zu ersten Schritten mit API-Apps lernen Sie die [Authentifizierung für App Service-API-Apps](app-service-api-authentication.md) kennen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

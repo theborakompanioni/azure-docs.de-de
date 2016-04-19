@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/30/2015"   
+   ms.date="04/05/2016"   
    ms.author="seanmck"/>
 
 # Modellieren von Anwendungen in Service Fabric
@@ -93,7 +93,7 @@ Das Dienstmanifest definiert deklarativ der Diensttyp und die Version. Es legt D
 </Settings>
 ~~~
 
-> [AZURE.NOTE]Ein Dienstmanifest kann mehrere Code-, Konfigurations- und Datenpakete enthalten. Diese können unabhängig voneinander mit Versionsangaben versehen werden.
+> [AZURE.NOTE] Ein Dienstmanifest kann mehrere Code-, Konfigurations- und Datenpakete enthalten. Diese können unabhängig voneinander mit Versionsangaben versehen werden.
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -139,7 +139,7 @@ Wie bei Dienstmanifesten sind **Version**-Attribute unstrukturierte Zeichenfolge
 
 **DefaultServices** deklariert Dienstinstanzen, die automatisch erstellt werden, wenn eine Anwendung mit diesem Anwendungstyp instanziiert wird. Standarddienste dienen lediglich der Benutzerfreundlichkeit und verhalten sich nach der Erstellung in jeder Hinsicht wie normale Dienste. Sie werden zusammen mit allen anderen Diensten in der Anwendungsinstanz aktualisiert und können auch entfernt werden.
 
-> [AZURE.NOTE]Ein Anwendungsmanifest kann mehrere Dienstmanifestimporte und Standarddienste enthalten. Jedes Dienstmanifest kann unabhängig mit Versionsangaben versehen werden.
+> [AZURE.NOTE] Ein Anwendungsmanifest kann mehrere Dienstmanifestimporte und Standarddienste enthalten. Jedes Dienstmanifest kann unabhängig mit Versionsangaben versehen werden.
 
 Weitere Informationen zum Verwalten verschiedener Anwendungs- und Dienstparameter für einzelne Umgebungen finden Sie unter [Verwalten von Anwendungsparametern für mehrere Umgebungen](service-fabric-manage-multiple-environment-app-configuration.md).
 
@@ -254,4 +254,4 @@ Nachdem die Anwendung ordnungsgemäß gepackt und die Überprüfung erfolgreich 
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

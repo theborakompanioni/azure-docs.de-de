@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/14/2015"
+   ms.date="03/31/2016"
    ms.author="v-sharos" />
 
 # Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz (Update 2)
@@ -115,4 +115,4 @@ Um den Wiederherstellungsvorgang erfolgreich abzuschließen, schalten Sie das Vo
 
 - Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -21,7 +21,7 @@
 
 ## WICHTIG: DIESER DIENST WURDE ALS VERALTET MARKIERT
 
-**Die Funktionalität „Häufig zusammen gekauft“, die dieser Dienst bietet, wurde jetzt in unsere umfassendere [Empfehlungen-API integriert](http://gallery.azureml.net/MachineLearningAPI/3574432384684cac9cc766e57729ea4c). Wir empfehlen Ihnen, statt dieses Diensts diese Empfehlungen zu verwenden.**
+**Die Funktionalität „Häufig zusammen gekauft“, die dieser Dienst bietet, wurde jetzt in unsere umfassendere [Empfehlungen-API integriert](http://gallery.cortanaintelligence.com/MachineLearningAPI/3574432384684cac9cc766e57729ea4c). Wir empfehlen Ihnen, statt dieses Diensts diese Empfehlungen zu verwenden.**
 
 ##Übersicht
 
@@ -39,4 +39,4 @@ Dieser Dienst enthält APIs zum Erstellen von Modellen für "Häufig zusammen ge
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

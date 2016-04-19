@@ -75,7 +75,7 @@ Geben Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Grundlagen** d
 >![SQL-ARM Grundlagen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png) <br/>
 
 ## 2\. VM-Größe auswählen
-Wählen Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Größe** eine Größe für den virtuellen Computer aus. Im Azure-Portal werden die empfohlenen Größen angezeigt. Weitere Informationen zu den Größen virtueller Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md). Die Größen basieren auf der Vorlage, die Sie ausgewählt haben. Für eine Größe werden die monatlichen Kosten für die Ausführung der VM geschätzt. Wählen Sie eine VM-Größe für den Server aus. Informationen zu SQL Server-VM-Größen finden Sie unter [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-perf.md) (Optimieren der Leistungsfähigkeit von SQL Server in Azure Virtual Machines).
+Wählen Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Größe** eine Größe für den virtuellen Computer aus. Im Azure-Portal werden die empfohlenen Größen angezeigt. Weitere Informationen zu den Größen virtueller Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md). Die Größen basieren auf der Vorlage, die Sie ausgewählt haben. Für eine Größe werden die monatlichen Kosten für die Ausführung der VM geschätzt. Wählen Sie eine VM-Größe für den Server aus. Informationen zu SQL Server-VM-Größen finden Sie unter [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md) (Optimieren der Leistungsfähigkeit von SQL Server in Azure Virtual Machines).
 
 ## 3\. VM-Einstellungen konfigurieren
 Konfigurieren Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Einstellungen** den Azure-Speicher, die Netzwerkverbindung und die Überwachung für den virtuellen Computer.
@@ -131,7 +131,7 @@ Geben Sie beim Aktivieren der SQL Server-Authentifizierung **Anmeldename** und *
 ### Speicheroptimierung
 Klicken Sie auf **Speicherkonfiguration**, um die Speicheranforderungen anzugeben. Sie können die Anforderungen als Eingabe-/Ausgabevorgänge pro Sekunde (IOPS), Durchsatz in MB/s und Gesamtspeichergröße angeben. Konfigurieren Sie diese mit den Schiebereglern. Das Portal berechnet basierend auf diesen Anforderungen automatisch die Anzahl der Datenträger.
 
-Standardmäßig optimiert Azure den Speicher für 5.000 IOPS, 200 MB und 1 TB Speicherplatz. Sie können diese Speichereinstellungen basierend auf der Workload ändern. Wählen Sie unter **Speicher optimiert für** eine der folgenden Optionen:
+Standardmäßig optimiert Azure den Speicher für 5.000 IOPS, 200 MB und 1 TB Speicherplatz. Sie können diese Speichereinstellungen basierend auf der Workload ändern. Wählen Sie unter **Speicher optimiert für** eine der folgenden Optionen:
 
 - **Allgemein** ist die Standardeinstellung und bietet Unterstützung für die meisten Workloads.
 - Beim Verarbeitungstyp **Transaktional** wird der Speicher für herkömmliche OLTP-Datenbankworkloads optimiert.
@@ -146,7 +146,7 @@ Die folgende Abbildung zeigt das Blatt für die Speicherkonfiguration. <br/>![SQ
 
 <br/>![SQL-ARM Patchen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png) <br/>
 
-Weitere Informationen finden Sie unter [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-ps-sql-patch.md) (Automatisches Patchen für SQL Server in Azure Virtual Machines).
+Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md).
 
 ### Backups
 Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte SQL-Sicherung**. Wenn Sie die automatisierte SQL-Sicherung aktivieren, können Sie Folgendes konfigurieren:
@@ -157,7 +157,7 @@ Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **A
 
 <br/>![SQL-ARM Sicherung](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png) <br/>
 
- Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-ps-sql-backup.md).
+ Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-backup.md).
 
 ### Schlüsseltresor-Integration
 Klicken Sie zum Speichern von geheimen Sicherheitsschlüsseln für die Verschlüsselung in Azure auf **Azure-Schlüsseltresorintegration** und dann auf **Aktivieren**.
@@ -190,7 +190,7 @@ Nachdem Sie eine Verbindung mit der virtuellen SQL Server-Maschine hergestellt h
 
 ##<a id="Connect"> Verbinden mit SQL Server über das Internet
 
-Wenn Sie über das Internet eine Verbindung mit Ihrem SQL Server-Datenbankmodul herstellen möchten, sind mehrere Schritte erforderlich: Konfigurieren der Firewall, Aktivieren der SQL Server-Authentifizierung und Konfigurieren der Netzwerksicherheitsgruppe. Sie benötigen eine Regel für die Netzwerksicherheitsgruppe, die TCP-Datenverkehr an Port 1433 zulässt.
+Wenn Sie über das Internet eine Verbindung mit Ihrem SQL Server-Datenbankmodul herstellen möchten, sind mehrere Schritte erforderlich: Konfigurieren der Firewall, Aktivieren der SQL Server-Authentifizierung und Konfigurieren der Netzwerksicherheitsgruppe. Sie benötigen eine Regel für die Netzwerksicherheitsgruppe, die TCP-Datenverkehr an Port 1433 zulässt.
 
 Falls Sie das Portal verwenden, um mit dem Resource Manager ein SQL Server-VM-Image bereitzustellen, wurden diese Schritte für Sie ausgeführt, wenn Sie für die SQL-Konnektivitätsoption **Öffentlich** auswählen und die SQL Server-Authentifizierung aktivieren. Sie müssen aber noch einige verbleibende Schritte ausführen, um über das Internet auf die SQL Server-Instanz zugreifen zu können.
 
@@ -201,6 +201,6 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie auf Ihre virtuelle Masc
 > [AZURE.INCLUDE [Herstellen einer Verbindung mit SQL Server im VM-Ressourcen-Manager](../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
 ##<a id="Next">Nächste Schritte
-Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md).
+Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

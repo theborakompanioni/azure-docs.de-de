@@ -24,7 +24,7 @@
 - [PowerShell](virtual-machines-windows-create-powershell.md)
 - [PowerShell – Vorlage](virtual-machines-windows-ps-template.md)
 - [Portal – Linux](virtual-machines-linux-portal-create.md)
-- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-machines-linux-cli-create.md)
+- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-machines-linux-quick-create-cli.md)
 
 <br>
 
@@ -289,4 +289,4 @@ Nun ist ein neuer virtueller Windows-Computer mit dem Namen „MyWindowsVM“ in
 
 Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

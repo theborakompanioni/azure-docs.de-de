@@ -29,8 +29,8 @@ Dieser Leitfaden beschreibt die ersten Schritte mit **Azure Redis Cache**. Micro
 Microsoft Azure Redis Cache ist in den folgenden Ebenen verfügbar:
 
 -	**Basic** – Einzelner Knoten. Mehrere Größen bis zu 53 GB.
--	**Standard** – Zwei Knoten: Primär/Replikat. Mehrere Größen bis zu 53 GB. 99,9 % SLA
--	**Premium** – Zwei Knoten (Primär/Replikat) mit bis zu 10 Shards. Mehrere Größen von 6 GB bis zu 530 GB (für mehr wenden Sie sich an uns). Alle Funktionen der Standard-Ebene und weitere umfassen die Unterstützung für [Redis-Cluster](cache-how-to-premium-clustering.md), [Redis-Persistenz](cache-how-to-premium-persistence.md), und [Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9 % SLA
+-	**Standard** – Zwei Knoten: Primär/Replikat. Mehrere Größen bis zu 53 GB. 99,9 % SLA
+-	**Premium** – Zwei Knoten (Primär/Replikat) mit bis zu 10 Shards. Mehrere Größen von 6 GB bis zu 530 GB (für mehr wenden Sie sich an uns). Alle Funktionen der Standard-Ebene und weitere umfassen die Unterstützung für [Redis-Cluster](cache-how-to-premium-clustering.md), [Redis-Persistenz](cache-how-to-premium-persistence.md), und [Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9 % SLA
 
 Diese Ausführungen unterscheiden sich hinsichtlich der Features und des Preises. Weitere Informationen zu Preisen finden Sie unter [Cache – Preisübersicht][].
 
@@ -63,14 +63,14 @@ Geben Sie auf dem Blatt **Neuer Redis Cache** die gewünschte Konfiguration für
 
 ![Cache erstellen][CacheCreate]
 
--	Geben Sie unter **DNS-Name** einen Cachenamen für den Cacheendpunkt ein. Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und das Zeichen `-` enthalten. Der Cachename darf nicht mit dem Zeichen `-` beginnen oder enden und nicht mehrere aufeinanderfolgende Zeichen vom Typ `-` enthalten.
+-	Geben Sie unter **DNS-Name** einen Cachenamen für den Cacheendpunkt ein. Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und das Zeichen `-` enthalten. Der Cachename darf nicht mit dem Zeichen `-` beginnen oder enden und nicht mehrere aufeinanderfolgende Zeichen vom Typ `-` enthalten.
 -	Wählen Sie unter **Abonnement** das Azure-Abonnement für den Cache aus. Wenn das Konto nur über ein Abonnement verfügt, wird dieses automatisch ausgewählt, und die Dropdownliste **Abonnement** wird nicht angezeigt.
 -	Unter **Ressourcengruppe** können Sie eine Ressourcengruppe für Ihren Cache auswählen oder erstellen. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen][]. 
 -	Unter **Standort** können Sie einen geografischen Standort für Ihren Cache auswählen. Um optimale Leistungen zu erzielen, empfiehlt Microsoft, den Cache in der Region zu erstellen, in der sich auch die Cacheclientanwendung befindet.
 -	Wählen Sie unter **Tarif** die gewünschte Größe und Merkmale für den Cache aus.
--	**Redis-Cluster** ermöglichen Ihnen das Erstellen von Caches größer als 53 GB und das Sharding von Daten auf mehrere Redis-Knoten. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
+-	**Redis-Cluster** ermöglichen Ihnen das Erstellen von Caches größer als 53 GB und das Sharding von Daten auf mehrere Redis-Knoten. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
 -	Die **Redis-Persistenz** ermöglicht das dauerhafte Speichern Ihres Caches in einem Azure Storage-Konto. Informationen zum Konfigurieren von Persistenz finden Sie unter [Konfigurieren von Persistenz für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-persistence.md).
--	**Virtual Network** bietet erhöhte Sicherheit und Isolierung durch Einschränken des Zugriffs auf Ihren Cache auf ausschließlich Clients im angegebenen Azure Virtual Network. Sie können alle Features von VNet, z. B. Subnetze, Richtlinien für die Zugriffssteuerung und andere Features, verwenden, um den Zugriff auf Redis weiter einzuschränken. Weitere Informationen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-vnet.md).
+-	**Virtual Network** bietet erhöhte Sicherheit und Isolierung durch Einschränken des Zugriffs auf Ihren Cache auf ausschließlich Clients im angegebenen Azure Virtual Network. Sie können alle Features von VNet, z. B. Subnetze, Richtlinien für die Zugriffssteuerung und andere Features, verwenden, um den Zugriff auf Redis weiter einzuschränken. Weitere Informationen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-vnet.md).
 -	Verwenden Sie die **Diagnose**, um ein Speicherkonto für Cachemetriken anzugeben. Weitere Informationen zum Konfigurieren und Anzeigen von Cachemetriken finden Sie unter [Überwachen von Azure Redis Cache](cache-how-to-monitor.md).
 
 Klicken Sie nach der Konfiguration der Optionen für den neuen Cache auf **Erstellen**. Die Erstellung des Caches kann einige Minuten dauern. Sie können den Fortschritt im Startmenü überwachen, um den Status zu überprüfen. Nach der Erstellung des Caches hat der neue Cache den Status **Wird ausgeführt** und kann mit den Standardeinstellungen verwendet werden.
@@ -235,8 +235,8 @@ Eine einfache Möglichkeit zum Serialisieren von Objekten stellen das Verwenden 
 Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, lesen Sie die folgenden Artikel zu Azure Redis Cache.
 
 -	Überprüfen Sie die ASP.NET-Anbieter für Azure Redis Cache.
-	-	[Azure Redis-Sitzungszustandsanbieter](cache-asp.net-session-state-provider.md)
-	-	[Azure Redis Cache ASP.NET-Ausgabecacheanbieter](cache-asp.net-output-cache-provider.md)
+	-	[Azure Redis-Sitzungszustandsanbieter](cache-aspnet-session-state-provider.md)
+	-	[Azure Redis Cache ASP.NET-Ausgabecacheanbieter](cache-aspnet-output-cache-provider.md)
 -	[Aktivieren Sie die Cachediagnose](cache-how-to-monitor.md#enable-cache-diagnostics), damit Sie die Integrität Ihres Caches [überwachen](cache-how-to-monitor.md) können. Sie können die Metriken im Azure-Portal anzeigen und sie anschließend mit einem Tool Ihrer Wahl [herunterladen und prüfen](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring).
 -	Lesen Sie die [Dokumentation für den StackExchange.Redis-Cacheclient][].
 	-	Auf Azure Redis Cache können viele Redis-Clients und Entwicklungssprachen zugreifen. Weitere Informationen finden Sie unter [http://redis.io/clients][] und [Entwickeln in anderen Sprachen für Azure Redis Cache][].
@@ -335,4 +335,4 @@ Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, lesen Sie die fo
 
 [Kostenlose Azure-Testversion]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

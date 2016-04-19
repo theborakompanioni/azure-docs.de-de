@@ -33,11 +33,9 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-* [Visual Studio Community 2013](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) oder höher. Wenn Sie Visual Studio Community 2013 installieren, dann installieren Sie [Xamarin] separat. Sie können die Xamarin-Tools bei der Installation von Visual Studio 2015 installieren.
+* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 
-* Ein Mac, auf dem [Xcode] Version 7.0 oder höher und [Xamarin Studio] installiert ist.
-
-* Wenn Sie beabsichtigen, Ihre App mit Visual Studio auf einem Windows-basierten Computer mit ausgeführtem Visual Studio zu erstellen, benötigen Sie weiterhin Zugriff auf einen an das Netzwerk angeschlossenen Mac mit ausgeführtem Xamarin.iOS Build Host, um den Build zu erstellen und die Bereitstellung auszuführen. Weitere Informationen finden Sie unter [Installieren von Xamarin.iOS unter Windows](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/).
+* Ein Mac, auf dem Xcode Version 7.0 oder höher und Xamarin Studio Community installiert ist. Informationen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) und [Setup, Installation und Überprüfungen für Mac-Benutzer](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](https://tryappservice.azure.com/?appServiceName=mobile). Dort können Sie direkt eine kurzzeitige mobile Start-App in App Service erstellen – keine Kreditkarte erforderlich, keine weiteren Verpflichtungen.
 
@@ -66,9 +64,7 @@ Wenn Sie zuvor eine .NET-Back-End-Konfiguration gewählt haben, können Sie das 
 
 ## Herunterladen und Ausführen der Xamarin.iOS-App
 
-1. Öffnen Sie auf Ihrem Mac das [Azure-Portal] in einem Browserfenster.
-
-	>[AZURE.NOTE] Es ist einfacher, Ihre Xamarin.iOS-App auf einem Mac auszuführen. Sie können die Xamarin.iOS-App auf Wunsch mithilfe von Visual Studio auf Ihrem Windows-basierten Computer ausführen. Allerdings ist dies etwas kompliziert, da Sie eine Verbindung zu einem vernetzten Mac benötigen. Wenn Sie daran interessiert sind, finden Sie Informationen dazu unter [Installation von Xamarin.iOS auf Windows].
+1. Öffnen Sie das [Azure-Portal] in einem Browserfenster.
 
 2. Klicken Sie auf dem Blatt „Einstellungen“ für Ihre mobile App auf **Erste Schritte** > **Xamarin.iOS**. Klicken Sie unter Schritt 3 auf **Neue App erstellen**, falls noch nicht ausgewählt. Klicken Sie dann auf die Schaltfläche **Herunterladen**.
 
@@ -112,11 +108,4 @@ Wenn Sie zuvor eine .NET-Back-End-Konfiguration gewählt haben, können Sie das 
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com/
 
-
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin]: http://xamarin.com/download
-[Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
-[Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
-[Installation von Xamarin.iOS auf Windows]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
-
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

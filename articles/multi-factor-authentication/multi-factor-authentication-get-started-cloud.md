@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/31/2016" 
+	ms.date="04/06/2016" 
 	ms.author="billmath"/>
 
 # Erste Schritte mit Azure Multi-Factor Authentication in der Cloud
@@ -22,7 +22,7 @@
 
 <center>![MFA in der Cloud](./media/multi-factor-authentication-get-started-cloud/cloud2.png)</center>
 
-Nachdem Sie sich nun für die Multi-Factor Authentication in der Cloud entschieden haben, können Sie mit der Einrichtung fortfahren. Für die ersten Schritte mit der Azure Multi-Factor Authentication sind nur wenige Klicks erforderlich. Wenn Sie Multi-Factor Authentication für Office 365 oder Multi-Factor Authentication für Azure-Administratoren verwenden, können Sie mit Schritt 3 fortfahren.
+Nachdem Sie sich nun für die Multi-Factor Authentication in der Cloud entschieden haben, können Sie mit der Einrichtung fortfahren. Für die ersten Schritte mit der Azure Multi-Factor Authentication sind nur wenige Klicks erforderlich. Wenn Sie Multi-Factor Authentication für Office 365 oder Multi-Factor Authentication für Azure-Administratoren verwenden, können Sie mit Schritt 3 fortfahren.
 
 
 1. [Anmelden für ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
@@ -30,7 +30,7 @@ Nachdem Sie sich nun für die Multi-Factor Authentication in der Cloud entschied
 2. [Erstellen eines Multi-Factor Authentication-Anbieters](#creating-an-azure-multi-factor-auth-provider) oder [Zuweisen von Lizenzen zu Benutzern](#assigning-an-azure-ad-premium-or-enterprise-mobility-license-to-users)
 	- Als Nächstes müssen Sie einen der folgenden Schritte ausführen. Erstellen Sie einen Azure Multi-Factor Authentication-Anbieter, und weisen Sie ihn Ihrem Verzeichnis zu, oder weisen Sie Ihren Benutzern Lizenzen zu. Lizenzen sind für Benutzer verfügbar, die über Azure MFA, Azure AD Premium oder EMS verfügen. Azure Multi-Factor Authentication ist im Lieferumfang von Azure Active Directory Premium enthalten. Die Anwendung ist auch in der Enterprise Mobility Suite enthalten. Wenn Sie über genügend Lizenzen verfügen, müssen Sie keinen Authentifizierungsanbieter erstellen. 
 3. [Aktivieren von Multi-Factor Authentication für die Benutzer](#turn-on-multi-factor-authentication-for-users)
-	- Aktivieren Sie MFA für die Benutzer über das Office 365- oder das Azure-Portal. 
+	- Aktivieren Sie MFA für die Benutzer über das Office 365- oder das Azure-Portal. 
 4. [Senden einer E-Mail an Endbenutzer mit einer Benachrichtigung über MFA](#send-email-to-end-users)
 	- Sobald Multi-Factor Authentication für das Konto eines Benutzers aktiviert wurde, sollte Sie ihn mit einer entsprechenden Benachrichtigung per E-Mail darüber informieren. Der Benutzer wird beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen, und mit der E-Mail erhält er diese Info. 
 
@@ -92,7 +92,7 @@ Zustand | Beschreibung |Nicht-Browser-Apps betroffen| Hinweise
 :-------------: | :-------------: |:-------------: |:-------------: |
 Deaktiviert | Der Standardzustand für einen neuen Benutzer, der nicht für Multi-Factor Authentication registriert ist.|Nein|Der Benutzer verwendet keine Multi-Factor Authentication.
 Aktiviert |Der Benutzer wurde für Multi-Factor Authentication registriert.|Nein. Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist.|Der Benutzer ist aktiviert, seine Registrierung ist jedoch nicht abgeschlossen. Er wird beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen.
-Erzwungen|Der Benutzer wurde registriert und hat die Registrierung für die Verwendung von Multi-Factor Authentication abgeschlossen.|Ja. Die Apps funktionieren erst, wenn App-Kennwörter erstellt und verwendet werden. | Der Benutzer hat die Registrierung abgeschlossen oder nicht abgeschlossen. Wenn er die Registrierung abgeschlossen hat, verwendet er anschließend Multi-Factor Authentication. Andernfalls wird der Benutzer beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen.
+Erzwungen|Der Benutzer wurde registriert und hat die Registrierung für die Verwendung von Multi-Factor Authentication abgeschlossen.|Ja. Für Apps sind App-Kennwörter erforderlich. | Der Benutzer hat die Registrierung abgeschlossen oder nicht abgeschlossen. Wenn er die Registrierung abgeschlossen hat, verwendet er anschließend Multi-Factor Authentication. Andernfalls wird der Benutzer beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen.
 
 Gehen Sie wie unten angegeben vor, um MFA für die Benutzer zu aktivieren.
 
@@ -105,7 +105,7 @@ Gehen Sie wie unten angegeben vor, um MFA für die Benutzer zu aktivieren.
 5.  Klicken Sie unten auf der Seite auf "Verwalten der Multi-Factor Authentication".
 6.  Suchen Sie den Benutzer, für den Sie Multi-Factor Authentication aktivieren möchten. Sie müssen möglicherweise oben die Ansicht ändern. Stellen Sie sicher, dass der Status „Deaktiviert“ lautet, und aktivieren Sie das Kontrollkästchen neben seinem Namen.
 7.  Klicken Sie auf der rechten Seite auf „Aktivieren“. Klicken Sie auf "Multi-Factor Authentication aktivieren".
-8.  Es wird empfohlen, dass Sie den Benutzer benachrichtigen, nachdem Sie ihn aktiviert haben. Die Benachrichtigung kann per E-Mail erfolgen. Diese sollte auch eine Information dazu enthalten, wie Benutzer ihre Nicht-Browser-Apps verwenden können, um eine Sperrung zu vermeiden.
+8.  Es wird empfohlen, dass Sie den Benutzer per E-Mail benachrichtigen, nachdem Sie ihn aktiviert haben. Diese sollte auch eine Information dazu enthalten, wie Benutzer ihre Nicht-Browser-Apps verwenden können, um eine Sperrung zu vermeiden.
 
 <center>![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/user.png)</center>
 
@@ -157,4 +157,4 @@ Nachdem Sie die Benutzer aktiviert haben, senden Sie ihnen eine E-Mail, um sie z
 ## Nächste Schritte
 Nachdem Sie die Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

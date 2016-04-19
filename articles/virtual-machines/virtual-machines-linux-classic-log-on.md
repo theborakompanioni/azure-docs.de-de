@@ -42,7 +42,7 @@ Bei diesem Verfahren wird aufgezeigt, wie Sie mithilfe des PuTTY-Programms auf d
 
 	![PuTTY öffnen](./media/virtual-machines-linux-classic-log-on/putty.png)
 
-4. Melden Sie sich mit dem Konto an, das Sie beim Erstellen des virtuellen Computers angegeben haben. Nähere Informationen zum Erstellen eines virtuellen Computers mit Benutzername und Kennwort finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-cli-create.md).
+4. Melden Sie sich mit dem Konto an, das Sie beim Erstellen des virtuellen Computers angegeben haben. Nähere Informationen zum Erstellen eines virtuellen Computers mit Benutzername und Kennwort finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-classic-createportal.md).
 
 	![Melden Sie sich beim virtuellen Computer an.](./media/virtual-machines-linux-classic-log-on/sshlogin.png)
 
@@ -53,4 +53,4 @@ Sie können jetzt mit dem virtuellen Computer wie mit jedem anderen Server arbei
 <!-- LINKS -->
 [Zurücksetzen eines Kennworts oder einer SSH für virtuelle Linux-Computer]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

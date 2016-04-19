@@ -18,16 +18,16 @@
 
 # Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)
 
-Wenn Sie Verlaufsdaten in einer separaten Tabelle speichern, können Sie Stretch-Datenbank so konfigurieren, dass die gesamte Tabelle migriert wird. Wenn die Tabelle alte und aktuelle Daten enthält, können Sie anderenfalls ein Filterprädikat zum Auswählen der zu migrierenden Zeilen angeben. Das Filterprädikat muss eine Inline-Tabellenwertfunktion aufrufen. In diesem Thema wird beschrieben, wie Sie eine Inline-Tabellenwertfunktion zum Auswählen von zu migrierenden Zeilen schreiben.
-
-In CTP 3.1 bis RC1 steht die Option zum Angeben eines Prädikats nicht im Assistent zum Aktivieren einer Datenbank für Stretch zur Verfügung. Sie müssen eine ALTER TABLE-Anweisung verwenden, um Stretch-Datenbank mit dieser Option zu konfigurieren. Weitere Informationen finden Sie unter [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
-
-Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
+Wenn Sie Verlaufsdaten in einer separaten Tabelle speichern, können Sie Stretch-Datenbank so konfigurieren, dass die gesamte Tabelle migriert wird. Wenn die Tabelle aktuelle und Verlaufsdaten enthält, können Sie anderenfalls ein Filterprädikat zum Auswählen der zu migrierenden Zeilen angeben. Das Filterprädikat ist eine Inline-Tabellenwertfunktion. In diesem Thema wird beschrieben, wie Sie eine Inline-Tabellenwertfunktion zum Auswählen von zu migrierenden Zeilen schreiben.
 
 >   [AZURE.NOTE] Falls Sie ein Filterprädikat mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet das Filterprädikat mithilfe des CROSS APPLY-Operators auf die Tabelle an.
 
+Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
+
+In CTP 3.1 bis RC2 steht die Option zum Angeben eines Prädikats nicht im Assistenten zum Aktivieren einer Datenbank für Stretch zur Verfügung. Sie müssen eine ALTER TABLE-Anweisung verwenden, um Stretch-Datenbank mit dieser Option zu konfigurieren. Weitere Informationen finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) und [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
+
 ## Grundlegende Anforderungen für die Inline-Tabellenwertfunktion
-Die für eine Stretch-Datenbank-Filterfunktion erforderliche Inline-Tabellenwertfunktion sieht wie das folgende Beispiel aus.
+Die für ein Stretch-Datenbank-Filterprädikat erforderliche Inline-Tabellenwertfunktion sieht wie das folgende Beispiel aus.
 
 ```tsql
 CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datatype1, @column2 datatype2 [, ...n])
@@ -42,7 +42,7 @@ Die Parameter für die Funktion müssen Bezeichner für Spalten der Tabelle sein
 Die Bindung des Schemas ist erforderlich, um zu verhindern, dass Spalten, die vom Filterprädikat verwendet werden, verworfen oder geändert werden.
 
 ### Rückgabewert
-Wenn die Funktion ein nicht leeres Ergebnis zurückgibt, ist die Zeile für eine Migration berechtigt. Wenn die Funktion keine Zeilen zurückgibt, ist die Zeile andernfalls nicht berechtigt migriert zu werden.
+Wenn die Funktion ein nicht leeres Ergebnis zurückgibt, ist die Zeile zur Migration berechtigt. Andernfalls – wenn die Funktion kein Ergebnis zurückgibt – ist die Zeile nicht zur Migration berechtigt.
 
 ### Bedingungen
 Das &lt;*Prädikat*&gt; kann aus einer Bedingung oder mehreren Bedingungen bestehen, die mit dem logischen AND-Operator verknüpft sind.
@@ -70,7 +70,7 @@ Eine primitive Bedingung kann einen der folgenden Vergleiche ausführen.
 
 -   Vergleichen Sie einen Funktionsparameter mit einem konstanten Ausdruck. Beispiel: `@column1 < 1000`.
 
-    Nachstehend sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *date*-Spalte &lt; „1/1/2016“. ist.
+    Nachstehend sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *date*-Spalte &lt; „1/1/2016“ ist.
 
     ```tsql
     CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datetime)
@@ -133,7 +133,117 @@ Sie können die BETWEEN- und NOT BETWEEN-Operatoren verwenden, wenn das resultie
 
 Sie können keine Unterabfragen oder nicht deterministische Funktionen wie RAND() oder GETDATE() verwenden.
 
-## Beispiele für gültige Funktionen
+## Hinzufügen eines Filterprädikats zu einer Tabelle
+Fügen Sie einer Tabelle ein Filterprädikat hinzu, indem Sie die ALTER TABLE-Anweisung ausführen und eine vorhandene Inline-Tabellenwertfunktion als Wert des FILTER\_PREDICATE-Parameters angeben. Zum Beispiel:
+
+```tsql
+ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
+	FILTER_PREDICATE = dbo.fn_stretchpredicate(column1, column2),
+	MIGRATION_STATE = <desired_migration_state>
+) )
+```
+Nachdem Sie die Funktion als Prädikat an die Tabelle gebunden haben, gelten die folgenden Punkte als erfüllt.
+
+-   Bei der nächsten Datenmigration werden nur die Zeilen migriert, für die die Funktion einen nicht leeren Wert zurückgibt.
+
+-   Die von der Funktion verwendeten Spalten sind schemagebunden. Sie können diese Spalten nicht ändern, solange eine Tabelle die Funktion als Filterprädikat verwendet.
+
+Sie können die Inline-Tabellenwertfunktionen nicht verwerfen, solange eine Tabelle die Funktion als Filterprädikat verwendet.
+
+## Filtern von Zeilen nach Datum
+Im folgenden Beispiel werden Zeilen migriert, in denen die Spalte **date** einen Wert enthält, der vor dem 1. Januar 2016 liegt.
+
+```tsql
+-- Filter by date
+--
+CREATE FUNCTION dbo.fn_stretch_by_date(@date datetime2)
+RETURNS TABLE
+WITH SCHEMABINDING
+AS
+       RETURN SELECT 1 AS is_eligible WHERE @date < CONVERT(datetime2, '1/1/2016', 101)
+GO
+```
+
+## Filtern von Zeilen nach dem Wert in einer Statusspalte
+Im folgenden Beispiel werden Zeilen migriert, in denen die Spalte **status** einen der angegebenen Werte enthält.
+
+```tsql
+-- Filter by status column
+--
+CREATE FUNCTION dbo.fn_stretch_by_status(@status nvarchar(128))
+RETURNS TABLE
+WITH SCHEMABINDING
+AS
+       RETURN SELECT 1 AS is_eligible WHERE @status IN (N'Completed', N'Returned', N'Cancelled')
+GO
+```
+
+## Filtern von Zeilen mithilfe eines gleitenden Fensters
+Um Zeilen mithilfe eines gleitenden Fensters zu filtern, beachten Sie die folgenden Anforderungen für die Filterfunktion.
+
+-   Die Funktion muss deterministisch sein. Sie können daher keine Funktion erstellen, die das gleitende Fenster im Laufe der Zeit automatisch neu berechnet.
+
+-   Die Funktion verwendet die Schemabindung. Darum können Sie die Funktion nicht einfach jeden Tag „direkt“ durch Aufrufen von ALTER FUNCTION zum Verschieben des gleitenden Fensters aktualisieren.
+
+Beginnen Sie mit einem Filterprädikat wie im folgenden Beispiel, das Zeilen migriert, in denen die Spalte **systemEndTime** einen Wert enthält,der vor dem 1. Januar 2016 liegt.
+
+```tsql
+CREATE FUNCTION dbo.fn_StretchBySystemEndTime20160101(@systemEndTime datetime2)
+RETURNS TABLE
+WITH SCHEMABINDING  
+AS  
+RETURN SELECT 1 AS is_eligible
+  WHERE @systemEndTime < CONVERT(datetime2, '2016-01-01T00:00:00', 101) ;
+```
+
+Wenden Sie das Filterprädikat auf die Tabelle an.
+
+```tsql
+ALTER TABLE <table name>
+SET (
+        REMOTE_DATA_ARCHIVE = ON
+                (
+                        FILTER_PREDICATE = dbo.fn_StretchBySystemEndTime20160101 (SysEndTime)
+                                , MIGRATION_STATE = OUTBOUND
+                )
+        )
+;
+```
+
+Wenn Sie das gleitende Fenster aktualisieren möchten, gehen Sie folgendermaßen vor.
+
+1.  Erstellen Sie eine neue Funktion, die das neue gleitende Fenster angibt. Das folgende Beispiel wählt die Datumsangaben, die vor dem 2. Januar 2016 statt dem 1. Januar 2016 liegen.
+
+2.  Ersetzen Sie das vorherige Filterprädikat durch Aufrufen von ALTER TABLE durch das neue, wie im folgenden Beispiel gezeigt.
+
+3. Löschen Sie optional die vorherige Filterfunktion, die Sie nicht mehr verwenden, durch Aufrufen von DROP FUNCTION. (Dieser Schritt ist nicht im Beispiel dargestellt.)
+
+```tsql
+BEGIN TRAN
+GO
+        /*(1) Create new predicate function definition */
+        CREATE FUNCTION dbo.fn_StretchBySystemEndTime20160102(@systemEndTime datetime2)
+        RETURNS TABLE
+        WITH SCHEMABINDING
+        AS
+        RETURN SELECT 1 AS is_eligible
+               WHERE @systemEndTime < CONVERT(datetime2,'2016-01-02T00:00:00', 101)
+        GO
+
+        /*(2) Set the new function as filter predicate */
+        ALTER TABLE <table name>
+        SET
+        (
+               REMOTE_DATA_ARCHIVE = ON
+               (
+                       FILTER_PREDICATE = dbo.fn_StretchBySystemEndTime20160102(SysEndTime),
+                       MIGRATION_STATE = OUTBOUND
+               )
+        )
+COMMIT ;
+```
+
+## Weitere Beispiele für gültige Filterprädikate
 
 -   Das folgende Beispiel kombiniert die beiden primitiven Bedingungen mithilfe des logischen AND-Operators.
 
@@ -200,7 +310,7 @@ Sie können keine Unterabfragen oder nicht deterministische Funktionen wie RAND(
     GO
     ```
 
-## Beispiele für Funktionen, die nicht gültig sind
+## Beispiele für Filterprädikate, die nicht gültig sind
 
 -   Die folgende Funktion ist ungültig, da sie eine nicht deterministische Konvertierung enthält.
 
@@ -289,32 +399,6 @@ SELECT * FROM stretch_table_name CROSS APPLY fn_stretchpredicate(column1, column
 ```
 Wenn die Funktion ein nicht leeres Ergebnis für die Zeile zurückgibt, ist die Zeile für eine Migration berechtigt.
 
-## Hinzufügen eines Filterprädikats zu einer Tabelle
-Fügen Sie einer Tabelle ein Filterprädikat hinzu, indem Sie die ALTER TABLE-Anweisung ausführen und eine vorhandene Inline-Tabellenwertfunktion als Wert des FILTER\_PREDICATE-Parameters angeben. Zum Beispiel:
-
-```tsql
-ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
-	FILTER_PREDICATE = dbo.fn_stretchpredicate(column1, column2),
-	MIGRATION_STATE = <desired_migration_state>
-) )
-```
-Nachdem Sie die Funktion als Prädikat an die Tabelle gebunden haben, gelten die folgenden Punkte als erfüllt.
-
--   Bei der nächsten Datenmigration werden nur die Zeilen migriert, für die die Funktion einen nicht leeren Wert zurückgibt.
-
--   Die von der Funktion verwendeten Spalten sind schemagebunden. Sie können diese Spalten nicht ändern, solange eine Tabelle die Funktion als Filterprädikat verwendet.
-
-## Entfernen eines Filterprädikats aus einer Tabelle
-Um die gesamte Tabelle anstelle der ausgewählten Zeilen zu migrieren, entfernen Sie das vorhandene FILTER\_PREDICATE, indem Sie es auf null festlegen. Beispiel:
-
-```tsql
-ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
-	FILTER_PREDICATE = NULL,
-	MIGRATION_STATE = <desired_migration_state>
-) )
-```
-Nachdem Sie das Filterprädikat entfernt haben, sind alle Zeilen in der Tabelle für die Migration berechtigt.
-
 ## Ersetzen eines vorhandenen Filterprädikats
 Sie können ein zuvor angegebenes Filterprädikat ersetzen, indem Sie die ALTER TABLE-Anweisung erneut ausführen und einen neuen Wert für den FILTER\_PREDICATE-Parameter angeben. Beispiel:
 
@@ -400,8 +484,16 @@ RETURN	SELECT 1 AS is_eligible
 GO
 ```
 
-## Verwerfen eines Filterprädikats
-Sie können die Inline-Tabellenwertfunktionen nicht verwerfen, solange eine Tabelle die Funktion als Filterprädikat verwendet.
+## Entfernen eines Filterprädikats aus einer Tabelle
+Um die gesamte Tabelle anstelle der ausgewählten Zeilen zu migrieren, entfernen Sie das vorhandene FILTER\_PREDICATE, indem Sie es auf null festlegen. Beispiel:
+
+```tsql
+ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
+	FILTER_PREDICATE = NULL,
+	MIGRATION_STATE = <desired_migration_state>
+) )
+```
+Nachdem Sie das Filterprädikat entfernt haben, sind alle Zeilen in der Tabelle für die Migration berechtigt. Sie können daher nicht später ein Filterprädikat für die gleiche Tabelle angeben, es sei denn, Sie holen zunächst alle Remotedaten für die Tabelle aus Azure zurück. Diese Einschränkung soll die Situation vermeiden, dass Zeilen, die nicht zur Migration berechtigt sind, wenn Sie ein neues Filterprädikat bereitstellen, bereits in Azure migriert wurden.
 
 ## Überprüfen des auf eine Tabelle angewendeten Filterprädikats
 Öffnen Sie die Katalogsicht **sys.remote\_data\_archive\_tables**, und überprüfen Sie den Wert der Spalte **filter\_predicate**, um das auf eine Tabelle angewendete Filterprädikat zu prüfen. Wenn der Wert null ist, ist die gesamte Tabelle für die Archivierung berechtigt. Weitere Informationen finden Sie unter [sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
@@ -410,4 +502,4 @@ Sie können die Inline-Tabellenwertfunktionen nicht verwerfen, solange eine Tabe
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="03/15/2016"
+    ms.date="04/01/2016"
     ms.author="sstein"/>
 
 # Verwalten und Skalieren eines Pools für elastische Datenbanken mit C&#x23;
@@ -22,9 +22,10 @@
 - [Azure-Portal](sql-database-elastic-pool-manage-portal.md)
 - [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 - [C#](sql-database-elastic-pool-manage-csharp.md)
+- [T-SQL](sql-database-elastic-pool-manage-tsql.md)
 
 
-Informationen zum Verwalten eines [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mithilfe von C#
+Informationen zum Verwalten eines [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mithilfe von C&#x23;
 
 Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 
@@ -128,13 +129,13 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 
 ## Beispiel: Verwalten eines Pool mit C&#x23;
 
-Die folgenden Bibliotheken sind erforderlich, um dieses Beispiel auszuführen. Verwenden Sie den folgenden Befehl zur Installation über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
+Die folgenden Bibliotheken sind erforderlich, um dieses Beispiel auszuführen. Verwenden Sie die folgenden Befehle zur Installation über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs durch den folgenden Code. Die erforderliche Client-ID und die verknüpften Werte finden Sie unter [Register your app and get the required client values for connecting your app to SQL Database](sql-database-client-id-keys.md) (Registrieren Ihrer App und Erhalt der erforderlichen Clientwerte für die Verbindung Ihrer App mit der SQL-Datenbank).
+Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs durch den folgenden Code. Die erforderliche Client-ID und die verknüpften Werte finden Sie unter [Abrufen der Client-ID und des Schlüssels für die Verbindung mit der SQL-Datenbank aus dem Code](sql-database-client-id-keys.md).
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -457,4 +458,4 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
 - [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 - [Referenz zu Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

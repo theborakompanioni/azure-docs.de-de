@@ -32,10 +32,11 @@ Eine Skriptaktion kann mithilfe der folgenden Methoden angewendet werden:
 | ----- |:-----:|:-----:|
 | Azure-Portal | ✓ | ✓ |
 | Microsoft Azure PowerShell | ✓ | ✓ |
+| Azure-Befehlszeilenschnittstelle | &nbsp; | ✓ |
 | HDInsight .NET-SDK | ✓ | ✓ |
 | Azure Resource Manager-Vorlage | ✓ | &nbsp; |
 
-Weitere Informationen zur Verwendung dieser Methoden zum Anwenden von Skriptaktionen finden Sie unter [Customize HDInsight clusters using script actions](hdinsight-hadoop-customize-cluster-linux.md) (Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen).
+Weitere Informationen zur Verwendung dieser Methoden zum Anwenden von Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="bestPracticeScripting"></a>Bewährte Methoden für die Entwicklung von Skripts
 
@@ -94,7 +95,7 @@ Mit dem folgenden Code wird beispielsweise die Datei "giraph-examples.jar" aus d
 
 Die während der Skriptausführung in STDOUT und STDERR geschriebenen Informationen werden protokolliert und können über die Ambari-Webbenutzeroberfläche angezeigt werden.
 
-> [AZURE.NOTE] Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden und ein Fehler bei der Erstellung auftritt, finden Sie andere Wege zum Zugriff auf protokollierte Informationen im Problembehandlungsabschnitt in [Customize HDInsight clusters using script actions](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) (Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen).
+> [AZURE.NOTE] Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden und ein Fehler bei der Erstellung auftritt, finden Sie im Problembehandlungsabschnitt in [Customize HDInsight clusters using script actions](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) (Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
 
 Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel:
 
@@ -142,7 +143,7 @@ In einigen Fällen müssen Sie Parameter für das Skript angeben. Beispielsweise
 
 Parameter, die an das Skript übergeben werden, werden als _Positionsparameter_ bezeichnet und werden für den ersten Parameter `$1` zugewiesen, für den zweiten Parameter `$2` usw. `$0` enthält den Namen des Skripts.
 
-Werte, die als Parameter an das Skript übergeben werden, sollten in einfache Anführungszeichen (') eingeschlossen werden, sodass der übergebene Wert als Literal behandelt wird und darin enthaltene Zeichen wie z. B. "!" nicht besonders behandelt werden.
+Werte, die als Parameter an das Skript übergeben werden, sollten in einfache Anführungszeichen (') eingeschlossen werden, sodass der übergebene Wert als Literal behandelt wird und darin enthaltene Zeichen wie z. B. "!" nicht besonders behandelt werden.
 
 ### Festlegen von Umgebungsvariablen
 
@@ -156,7 +157,7 @@ Dabei ist VARIABLENNAME der Name der Variable. Verwenden Sie `$VARIABLENAME`, um
 
 Für den anschließenden Zugriff auf die Informationen kann dann `$PASSWORD` verwendet werden.
 
-Umgebungsvariablen, die im Skript festgelegt werden, gelten nur innerhalb des Gültigkeitsbereichs des Skripts. In einigen Fällen müssen Sie möglicherweise systemweite Umgebungsvariablen hinzufügen, die nach Abschluss des Skripts beibehalten werden. Dies erfolgt in der Regel, damit Benutzer, die über SSH eine Verbindung mit dem Cluster herstellen, die mit Ihrem Skript installierten Komponenten verwenden können. Fügen Sie dazu `/etc/environment` die Umgebungsvariable hinzu. Mit dem folgenden Beispiel wird z. B. __HADOOP\_CONF\_DIR__ hinzugefügt:
+Umgebungsvariablen, die im Skript festgelegt werden, gelten nur innerhalb des Gültigkeitsbereichs des Skripts. In einigen Fällen müssen Sie möglicherweise systemweite Umgebungsvariablen hinzufügen, die nach Abschluss des Skripts beibehalten werden. Dies erfolgt in der Regel, damit Benutzer, die über SSH eine Verbindung mit dem Cluster herstellen, die mit Ihrem Skript installierten Komponenten verwenden können. Fügen Sie dazu `/etc/environment` die Umgebungsvariable hinzu. Mit dem folgenden Beispiel wird z. B. __HADOOP\_CONF\_DIR__ hinzugefügt:
 
     echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
@@ -164,7 +165,7 @@ Umgebungsvariablen, die im Skript festgelegt werden, gelten nur innerhalb des G�
 
 Skripts zur Anpassung eines Clusters müssen entweder im Standardspeicherkonto des Clusters oder im Fall eines anderen Speicherkontos in einem öffentlichen schreibgeschützten Container gespeichert sein. Wenn Ihr Skript auf externe Ressourcen zugreift, müssen auch diese öffentlich zugänglich sein (oder mindestens einen öffentlichen Lesezugriff aufweisen). Beispielsweise können Sie eine Datei mithilfe von `download_file` in den Cluster herunterladen.
 
-Durch Speichern der Datei in einem Azure-Speicherkonto, auf das der Cluster zugreifen kann (z. B. das Standardspeicherkonto), wird ein schneller Zugriff ermöglicht, da sich dieser Speicher im Azure-Netzwerk befindet.
+Durch Speichern der Datei in einem Azure-Speicherkonto, auf das der Cluster zugreifen kann (z. B. das Standardspeicherkonto), wird ein schneller Zugriff ermöglicht, da sich dieser Speicher im Azure-Netzwerk befindet.
 
 ## <a name="deployScript"></a>Prüfliste für die Bereitstellung einer Skriptaktion
 
@@ -174,13 +175,13 @@ Es folgen unsere Schritte bei der Vorbereitung der Bereitstellung dieser Skripts
 
 - Fügen Sie Skripts Überprüfungen hinzu, um sicherzustellen, dass sie idempotent ausgeführt werden, damit das Skript mehrmals auf demselben Knoten ausgeführt werden kann.
 
-- Legen Sie die heruntergeladenen von den Skripts verwendeten Dateien in einem temporären Dateiverzeichnis ab (z. B. "/tmp"), und löschen Sie sie nach der Ausführung der Skripts.
+- Legen Sie die heruntergeladenen von den Skripts verwendeten Dateien in einem temporären Dateiverzeichnis ab (z. B. "/tmp"), und löschen Sie sie nach der Ausführung der Skripts.
 
-- Wenn sich Einstellungen auf Betriebssystemebene oder Hadoop-Dienstkonfigurationsdateien geändert haben, können Sie bei Bedarf die HDInsight-Dienste neu starten. Diese können dann Einstellungen auf Betriebssystemebene übernehmen, z. B. die in den Skripts festgelegten Umgebungsvariablen.
+- Wenn sich Einstellungen auf Betriebssystemebene oder Hadoop-Dienstkonfigurationsdateien geändert haben, können Sie bei Bedarf die HDInsight-Dienste neu starten. Diese können dann Einstellungen auf Betriebssystemebene übernehmen, z. B. die in den Skripts festgelegten Umgebungsvariablen.
 
 ## <a name="runScriptAction"></a>Ausführen einer Skriptaktion
 
-Sie können Skriptaktionen zum Anpassen von HDInsight-Clustern mithilfe des Azure-Portals, von Azure PowerShell, Azure Resource Manager (ARM)-Vorlagen oder des HDInsight .NET SDK ausführen. Anweisungen hierzu finden Sie unter [Verwenden einer Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md).
+Sie können Skriptaktionen zum Anpassen von HDInsight-Clustern über das Azure-Portal, Azure PowerShell, Azure Resource Manager (ARM)-Vorlagen oder über das HDInsight .NET SDK ausführen. Anweisungen hierzu finden Sie unter [Verwenden einer Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="sampleScripts"></a>Beispiele benutzerdefinierter Skripts
 
@@ -232,4 +233,4 @@ Ersetzen Sie den oben aufgeführten Befehl __INFILE__ durch die Datei mit Bytere
 
 * Verwenden Sie die [HDInsight-REST-API](https://msdn.microsoft.com/library/azure/mt622197.aspx), um zu erfahren, wie Sie REST verwenden, um Verwaltungsaktionen auf HDInsight-Clustern auszuführen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="03/30/2016"
 	ms.author="larryfr"/>
 
-# Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
+#Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
 [AZURE.INCLUDE [Auswahl](../../includes/hdinsight-portal-management-selector.md)]
 
@@ -43,96 +43,13 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-## Bereitstellen von HDInsight-Clustern
+## Erstellen von Hadoop-Clustern
 
-HDInsight-Cluster können wie folgt im Azure-Portal bereitgestellt werden:
-
-1. Melden Sie sich beim [Azure-Portal][preview-portal] an.
-
-2. Wählen Sie **NEU**, __Datenanalyse__ und anschließend __HDInsight__ aus.
-
-	![Erstellen eines neuen Clusters im Azure-Portal](./media/hdinsight-administer-use-portal-linux/new-cluster.png)
-
-3. Geben Sie einen __Clusternamen__ ein, und wählen Sie dann den gewünschten __Clustertyp__ aus. Wenn der __Clustername__ verfügbar ist, wird neben dem Namen ein grünes Häkchen angezeigt.
-
-	![Clustername, Clustertyp und Betriebssystemtyp](./media/hdinsight-administer-use-portal-linux/clustername.png)
-
-4. Falls Sie mehrere Abonnements besitzen, wählen Sie den Eintrag __Abonnement__ aus, um das Azure-Abonnement für den Cluster auszuwählen.
-
-5. Wählen Sie den Eintrag __Ressourcengruppe__ aus, um eine Liste der vorhandenen Ressourcengruppen anzuzeigen, und wählen Sie dann die Gruppe aus, in der der Cluster erstellt werden soll. Alternativ können Sie eine neue Ressourcengruppe erstellen, indem Sie auf __Neu erstellen__ klicken und den Namen der neuen Gruppe eingeben. Wenn der neue Gruppenname verfügbar ist, wird neben dem Namen ein grünes Häkchen angezeigt.
-
-	> [AZURE.NOTE] Dieser Eintrag ist standardmäßig auf eine Ihrer vorhandenen Ressourcengruppen festgelegt (sofern verfügbar).
-
-6. Wählen Sie __Anmeldeinformationen__ aus, und geben Sie dann ein __Clusteranmeldekennwort__ für den __Clusterbenutzernamen__ ein. Außerdem müssen Sie einen __SSH-Benutzernamen__ und entweder ein __Kennwort__ oder einen __öffentlichen Schlüssel__ zum Authentifizieren des SSH-Benutzers eingeben. Klicken Sie abschließend auf die Schaltfläche __Auswählen__, um die Anmeldeinformationen festzulegen. Remotedesktop wird in diesem Dokument nicht verwendet und muss daher nicht aktiviert werden.
-
-	![Blatt „Clusteranmeldeinformationen“](./media/hdinsight-administer-use-portal-linux/clustercredentials.png)
-    
-    > [AZURE.NOTE] SSH wird verwendet, um remote über eine Befehlszeile auf den HDInsight-Cluster zuzugreifen. Der hier verwendete Benutzername und das Kennwort oder der öffentliche Schlüssel werden zur Herstellung einer Verbindung mit dem Cluster über SSH verwendet.
-
-    Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
-
-	* [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-	* [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-
-7. Wählen Sie den Eintrag __Datenquelle__ aus, um eine vorhandene Datenquelle auszuwählen, oder erstellen Sie eine neue Datenquelle.
-
-	![Blatt „Datenquelle“](./media/hdinsight-administer-use-portal-linux/datasource.png)
-
-	Zurzeit kann ein Azure-Speicherkonto als Datenquelle für einen HDInsight-Cluster ausgewählt werden. Die Einträge auf dem Blatt __Datenquelle__ werden im Folgenden erläutert.
-
-	- __Auswahlmethode__: Wählen Sie __Aus allen Abonnements__ aus, damit die Speicherkonten in Ihren Abonnements durchsucht werden können. Wählen Sie __Zugriffsschlüssel__ aus, wenn Sie den __Speichernamen__ und __Zugriffsschlüssel__ eines vorhandenen Speicherkontos eingeben möchten.
-
-	- __Neu erstellen__: Hiermit können Sie ein neues Speicherkonto erstellen. Geben Sie den Namen des Speicherkontos in das angezeigte Feld ein. Wenn der Name verfügbar ist, wird ein grünes Häkchen angezeigt.
-
-	- __Standardcontainer auswählen__: Geben Sie den Namen des Standardcontainers für den Cluster ein. Sie können einen beliebigen Namen eingeben, es wird jedoch empfohlen, den Namen des Clusters zu verwenden. So können Sie leichter erkennen, dass es sich um den Container für diesen spezifischen Cluster handelt.
-
-	- __Standort__: Die geografische Region, in der sich das Speicherkonto befindet bzw. in der es erstellt wird.
-
-		> [AZURE.IMPORTANT] Durch die Auswahl des Standorts für die Standarddatenquelle wird auch der Standort des HDInsight-Clusters festgelegt. Der Cluster und die Standarddatenquelle müssen sich in der gleichen Region befinden.
-
-	- __Auswählen__: Hiermit speichern Sie die Datenquellenkonfiguration.
-
-	
-8. Wählen Sie __Knotenpreistarife__ aus, um Informationen zu den Knoten anzuzeigen, die für diesen Cluster erstellt werden. Die Anzahl von Workerknoten ist standardmäßig auf __4__ festgelegt.
-
-	Die vorkalkulierten Kosten für den Cluster werden unten auf dem Blatt angezeigt.
-
-	![Blatt „Knotenpreistarife“](./media/hdinsight-administer-use-portal-linux/nodepricingtiers.png)
-
-	Klicken Sie auf die Schaltfläche __Auswählen__, um die Informationen zu den __Knotenpreistarifen__ zu speichern.
-    
-    > [AZURE.NOTE] Die von Ihrem Cluster verwendeten Knoten zählen nicht als virtuelle Computer, da die VM-Images, die für die Knoten verwendet werden, ein Implementierungsdetail des HDInsight-Diensts sind. Die von den Knoten verwendeten Computekerne zählen jedoch zur Gesamtanzahl von Computekernen, die für Ihr Abonnement verfügbar sind. Sie können die Anzahl der Kerne, die vom Cluster verwendet werden sollen, sowie die Anzahl der verfügbaren Kerne beim Erstellen eines HDInsight-Clusters auf dem Blatt „Knotenpreisstufen“ im Abschnitt „Zusammenfassung“ anzeigen.
-
-9. Wählen Sie __Optionale Konfiguration__ aus. Auf diesem Blatt können Sie die folgenden Elemente konfigurieren:
-
-	* __HDInsight-Version__: Die für den Cluster verwendete HDInsight-Version. Weitere Informationen zu den HDInsight-Versionen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
-
-	* __Externe Metastores__: Hier können Sie eine SQL-Datenbank auswählen, die zum Speichern der Konfigurationsinformationen für Oozie und Hive verwendet wird. Dadurch können Sie die Konfiguration beim Löschen und Neuerstellen eines Clusters wiederverwenden, anstatt die Hive- und Oozie-Konfiguration jedes Mal neu erstellen zu müssen.
-
-	* __Virtuelles Netzwerk__: Hiermit können Sie den HDInsight-Cluster im gleichen Netzwerk platzieren wie die anderen Ressourcen, z. B. eine SQL-Datenbank oder ein virtueller Azure-Computer. Wenn Ressourcen in einem virtuellen Netzwerk platziert werden, können sie direkt miteinander kommunizieren und umgehen so die öffentlichen Gateways, die eingehenden Datenverkehr aus dem Internet verarbeiten.
-    
-        Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
-
-	* __Skriptaktionen__: Hiermit können Sie Bash-Skripts angeben, die den HDInsight-Cluster während der Bereitstellung anpassen. Beispielsweise gibt es ein [Skript zur Installation von Hue](hdinsight-hadoop-hue-linux.md) (einem grafischen Client für den Einsatz mit Hadoop). Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
-
-	* __Azure-Speicherschlüssel__: Hiermit können Sie dem HDInsight-Server weitere Speicherkonten zuordnen.
-
-		> [AZURE.NOTE] HDInsight kann nur auf Azure-Speicherkonten zugreifen, die als Standarddatenspeicher verwendet werden, in diesem Konfigurationsabschnitt hinzugefügt wurden oder öffentlich zugänglich sind.
-
-	![Blatt „Optionale Konfiguration“](./media/hdinsight-administer-use-portal-linux/optionalconfiguration.png)
-
-10. Stellen Sie sicher, dass __An Startmenü anheften__ ausgewählt ist, und klicken Sie dann auf __Erstellen__. Der Cluster wird erstellt, und dem Startmenü Ihres Azure-Portals wird eine Kachel für den Cluster hinzugefügt. Das Symbol zeigt an, dass der Cluster bereitgestellt wird. Sobald die Bereitstellung abgeschlossen ist, ändert es sich in das HDInsight-Symbol.
-
-	| Während der Bereitstellung | Nach Abschluss der Bereitstellung |
-	| ------------------ | --------------------- |
-	| ![Bereitstellungsanzeige im Startmenü](./media/hdinsight-administer-use-portal-linux/provisioning.png) | ![Kachel für einen bereitgestellten Cluster](./media/hdinsight-administer-use-portal-linux/provisioned.png) |
-
-	> [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Bereitstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter __Benachrichtigungen__ überprüfen.
+Sie können HDInsight-Cluster aus dem Azure-Portal erstellen. Dieser Vorgang wird im Dokument [Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal](hdinsight-hadoop-create-linux-clusters-portal.md) ausführlich erläutert.
 
 ## Verwalten eines Clusters
 
-Wenn Sie einen Cluster im Azure-Portal auswählen, werden grundlegende Informationen zum Cluster angezeigt, z. B. der Name, die Ressourcengruppe, das Betriebssystem und die URL für das Cluster-Dashboard (wird für den Zugriff auf Ambari Web für Linux-Cluster verwendet.)
+Wenn Sie einen Cluster im Azure-Portal auswählen, werden grundlegende Informationen zum Cluster angezeigt, z. B. der Name, die Ressourcengruppe, das Betriebssystem und die URL für den Cluster (wird für den Zugriff auf Ambari-Web für Linux-basierte Cluster verwendet.)
 
 ![Clusterdetails](./media/hdinsight-administer-use-portal-linux/clusterdetails.png)
 
@@ -140,9 +57,9 @@ Im Folgenden werden die Symbole oben auf diesem Blatt und in den Abschnitten __Z
 
 * __Einstellungen__ und __Alle Einstellungen__: Zeigt das Blatt __Einstellungen__ für den Cluster an, über das Sie auf detaillierte Konfigurationsinformationen für den Cluster zugreifen können.
 
-* __Dashboard__, __Cluster-Dashboard__ und __URL__: Über diese Optionen können Sie auf das Cluster-Dashboard zugreifen (Ambari Web für Linux-basierte Cluster).
+* __Dashboard__, __Cluster-Dashboard__ und __URL__: Über diese Optionen können Sie auf das Cluster-Dashboard zugreifen. Abhängig vom Clustertyp wird möglicherweise eine Liste der Dashboards im Cluster angezeigt. Beispielsweise wird für den Spark-Clustertyp eine Liste mit Dashboards angezeigt, wenn Sie das __Dashboard__-Symbol auswählen, während bei einem Hadoop-Cluster die Ambari Web-Benutzeroberfläche geöffnet wird.
 
-* __Secure Shell__: Für den Zugriff auf den Cluster über SSH erforderliche Informationen.
+* __Secure Shell__: Informationen, die für den Zugriff auf den Clusterhauptknoten über SSH erforderlich sind.
 
 * __Cluster skalieren__: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
 
@@ -159,6 +76,24 @@ Im Folgenden werden die Symbole oben auf diesem Blatt und in den Abschnitten __Z
 * __Dokumentation__: Links zur Dokumentation für Azure HDInsight.
 
 > [AZURE.IMPORTANT] Um die vom HDInsight-Cluster bereitgestellten Dienste zu verwalten, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Ambari](hdinsight-hadoop-manage-ambari.md).
+
+### Einstellungen
+
+Durch Auswahl des Symbols __Einstellungen__ oder des Links __Alle Einstellungen__ wird das Blatt „Einstellungen“ angezeigt. Verschiedene der im Bereich __Grundlagen__ verfügbaren Funktionen, die zuvor besprochen wurden, sind auch hier verfügbar, beispielsweise die Skalierung oder Informationen zu Secure Shell. Sie können über die Einstellungen außerdem auf Folgendes zugreifen:
+
+* __Überwachungsprotokolle__: Protokollierte Informationen, die zur Diagnose von Problemen mit der Clusterintegrität nützlich sind.
+
+* __Clusteranmeldung__: Zeigt den __Clusteranmeldenamen__ und die __Remoteadresse__ an, der/die für den Zugriff auf den Cluster über HTTPS verwendet werden kann.
+
+* __Externe Mestores__: Zeigt Informationen zu externen Metastores an, die ggf. von Ihrem Cluster verwendet werden. Wenn Sie während der Clusterkonfiguration keinen benutzerdefinierten Metastore konfiguriert haben, werden keine Informationen angezeigt.
+
+* __Skriptaktionen__: Zeigt Informationen zu Skriptaktionen an, die auf diesem Cluster ausgeführt wurden. Sie können auch neue Skriptaktionen ausführen und zuvor ausgeführte Skriptaktionen speichern oder löschen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+
+* __Apps__: Zeigt Informationen zu Apps an, die im Cluster installiert wurden, und ermöglicht es Ihnen, dem Cluster über den Azure Marketplace neue Anwendungen hinzuzufügen.
+
+* __Azure-Speicherschlüssel__: Zeigt Informationen zu den vom Cluster verwendeten Azure-Speicherkonten an. Wenn Sie ein Speicherkonto auswählen, wird das Speicherkontoblatt für das ausgewählte Konto geladen.
+
+* __Azure Active Directory-Identität für den Cluster__: Zeigt Informationen zum Dienstprinzipal für diesen HDInsight-Cluster an. Der Dienstprinzipal wird verwendet, um auf Azure Data Lake-Speicher zuzugreifen. Wenn Sie Ihren Cluster während der Erstellung nicht dem Azure Data Lake-Speicher zugeordnet haben, wird auf diesem Blatt die Information __Nicht konfiguriert__ angezeigt. Weitere Informationen zum Verwenden des Azure Data Lake-Speichers mit HDInsight finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 ### <a name="scaling"></a>Skalieren
 
@@ -188,4 +123,4 @@ In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem Azure-Po
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

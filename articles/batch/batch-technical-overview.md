@@ -44,11 +44,9 @@ Batch kann auch parallele Berechnungen mit einem abschließenden Reduzierungssch
 
 Ein Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [Batch und HPC-Lösungen](batch-hpc-solutions.md).
 
->[AZURE.NOTE] Derzeit unterstützt Batch nur Workloads, die auf Windows Server-basierten virtuellen Maschinen ausgeführt werden.
-
 ## Entwickeln mit Batch
 
-Beim Erstellen von Lösungen, bei denen Azure Batch für die Verarbeitung paralleler Workloads verwendet wird, gehen Sie unter Einsatz der Batch-APIs programmgesteuert vor. Mit den Batch-APIs erstellen und verwalten Sie Pools mit Computeknoten (virtuellen Maschinen) und planen Aufträge und Aufgaben, die auf diesen Knoten ausgeführt werden. Für eine Clientanwendung oder einen Dienst, die bzw. den Sie erstellen, werden die Batch-APIs zum Kommunizieren mit dem Batch-Dienst verwendet. Sie können größere Workloads für Ihr Unternehmen auf effiziente Weise verarbeiten oder ein Dienst-Front-End für Ihre Kunden bereitstellen, damit sie Aufträge und Aufgaben ausführen können – bedarfsgesteuert oder nach Zeitplan auf einem, Hunderten oder Tausenden von Knoten. Sie können Batch auch als Teil eines größeren Workflows nutzen, der mit Tools verwaltet wird, z. B. [Azure Data Factory][data_factory].
+Beim Erstellen von Lösungen, bei denen Azure Batch für die Verarbeitung paralleler Workloads verwendet wird, gehen Sie unter Einsatz der Batch-APIs programmgesteuert vor. Mit den Batch-APIs erstellen und verwalten Sie Pools mit Computeknoten (virtuellen Maschinen) und planen Aufträge und Aufgaben, die auf diesen Knoten ausgeführt werden. Für eine Clientanwendung oder einen Dienst, die bzw. den Sie erstellen, werden die Batch-APIs zum Kommunizieren mit dem Batch-Dienst verwendet. Sie können größere Workloads für Ihr Unternehmen auf effiziente Weise verarbeiten oder ein Dienst-Front-End für Ihre Kunden bereitstellen, damit sie Aufträge und Aufgaben ausführen können – bedarfsgesteuert oder nach Zeitplan auf einem, Hunderten oder Tausenden von Knoten. Sie können Batch auch als Teil eines größeren Workflows nutzen, der mit Tools verwaltet wird, z.B. [Azure Data Factory][data_factory].
 
 > [AZURE.TIP] Wenn Sie ein besseres Verständnis der Funktionen der Batch-API entwickeln möchten, können Sie sich die [Übersicht über Azure Batch-Features](batch-api-basics.md) ansehen.
 
@@ -90,7 +88,7 @@ Bei diesem häufigen Szenario verarbeitet Ihre Anwendung bzw. Ihr Dienst eine Wo
 
 1. Hochladen der **Eingabedateien** und der **Anwendung**, mit der diese Dateien verarbeitet werden, in Ihr Azure Storage-Konto. Die Eingabedateien können alle Daten sein, die von Ihrer Anwendung verarbeitet werden, z. B. Daten für Finanzmodelle oder zu transcodierende Videodateien. Bei den Anwendungsdateien kann es sich um alle Anwendungen handeln, die zum Verarbeiten der Daten verwendet werden, z. B. eine 3D-Renderanwendung oder einen Medien-Transcoder.
 
-2. Erstellen Sie einen Batch-**Pool** mit Computeknoten in Ihrem Batch-Konto. Dies sind die virtuellen Maschinen, mit denen Ihre Aufgaben ausgeführt werden. Sie geben Eigenschaften, z. B. die [Knotengröße](./../cloud-services/cloud-services-sizes-specs.md), das Betriebssystem und den Speicherort in Azure Storage für die Anwendung an, die installiert werden soll, wenn die Knoten dem Pool beitreten (die in Schritt 1 hochgeladene Anwendung). Sie können für den Pool auch die [automatische Skalierung](batch-automatic-scaling.md) konfigurieren – indem Sie die Anzahl von Computeknoten im Pool dynamisch anpassen –, um auf die Workload zu reagieren, die von Ihren Aufgaben generiert wird.
+2. Erstellen Sie einen Batch-**Pool** mit Computeknoten in Ihrem Batch-Konto. Dies sind die virtuellen Computer, mit denen Ihre Aufgaben ausgeführt werden. Sie geben Eigenschaften, z.B. die [Knotengröße](./../cloud-services/cloud-services-sizes-specs.md), das Betriebssystem und den Speicherort in Azure Storage für die Anwendung an, die installiert werden soll, wenn die Knoten dem Pool beitreten (die in Schritt 1 hochgeladene Anwendung). Sie können für den Pool auch die [automatische Skalierung](batch-automatic-scaling.md) konfigurieren – indem Sie die Anzahl von Computeknoten im Pool dynamisch anpassen –, um auf die Workload zu reagieren, die von Ihren Aufgaben generiert wird.
 
 3. Erstellen Sie einen Batch-**Auftrag**, um die Workload im Pool mit den Computeknoten auszuführen. Wenn Sie einen Auftrag erstellen, ordnen Sie ihn einem Batch-Pool zu.
 
@@ -112,7 +110,7 @@ Nachdem Sie nun ein Beispiel für ein Batch-Szenario gesehen haben, sollten Sie 
 
 - Lesen Sie [Erste Schritte mit der Azure Batch-Bibliothek für .NET](batch-dotnet-get-started.md), um zu erfahren, wie Sie C# und die Batch .NET-Bibliothek verwenden, um die oben beschriebenen Verfahren durchzuführen. Dies sollte beim Erlernen des Batch-Diensts einer Ihrer ersten Anlaufpunkte sein.
 
-- Sehen Sie sich die [Übersicht über Azure Batch-Features](batch-api-basics.md) an, um ausführlichere Informationen zu den API-Features zu erhalten, die von Batch für die Verarbeitung Ihrer rechenintensiven Workloads bereitgestellt werden.
+- Sehen Sie sich die [Übersicht über Azure Batch-Features](batch-api-basics.md) an, um ausführlichere Informationen zu den API-Features zu erhalten, die von Batch für die Verarbeitung rechenintensiver Workloads bereitgestellt werden.
 
 - Zusätzlich zum Batch-Explorer verdeutlichen die anderen [Codebeispiele bei GitHub][github_samples] die Nutzung vieler Batch-Features mithilfe der Batch .NET-Bibliothek.
 
@@ -136,4 +134,4 @@ Nachdem Sie nun ein Beispiel für ein Batch-Szenario gesehen haben, sollten Sie 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

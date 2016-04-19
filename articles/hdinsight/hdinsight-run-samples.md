@@ -49,7 +49,7 @@ Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für M
 
 ## <a name="hdinsight-sample-wordcount"></a>Wortzählung – Java 
 
-Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d. h. „**wasb:///example/jars/hadoop-mapreduce-examples.jar**“, den Klassennamen und die Argumente an. Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
+Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d. h. „**wasb:///example/jars/hadoop-mapreduce-examples.jar**“, den Klassennamen und die Argumente an. Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
 
 Den Quellcode finden Sie in [Anhang A](#apendix-a---the-word-count-MapReduce-program-in-java).
 
@@ -136,11 +136,11 @@ Weitere Informationen zur Hadoop-Streamingschnittstelle finden Sie unter [Hadoop
 - Befolgen Sie das Verfahren unter [Wortzählung – Java](#word-count-java), und ersetzen Sie die Auftragsdefinition durch Folgendes:
 
 		$mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
-									-File "/example/apps/" `
-									-Mapper "cat.exe" `
-									-Reducer "wc.exe" `
-									-InputPath "/example/data/gutenberg/davinci.txt" `
-									-OutputPath "/example/data/StreamingOutput/wc.txt"
+    							-Files "/example/apps/cat.exe","/example/apps/wc.exe" `
+    							-Mapper "cat.exe" `
+    							-Reducer "wc.exe" `
+    							-InputPath "/example/data/gutenberg/davinci.txt" `
+    							-OutputPath "/example/data/StreamingOutput/wc.txt"  
 
 
 	Die Ausgabedatei muss wie folgt lauten:
@@ -997,4 +997,4 @@ Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu 
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

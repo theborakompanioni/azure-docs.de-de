@@ -13,29 +13,25 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/14/2016" 
+	ms.date="04/04/2016" 
 	ms.author="ccompy"/>
 
 # Skalieren von Apps in einer App Service-Umgebung #
 
-Allgemein betrachtet sind App Service-Umgebungen im Wesentlichen persönliche Bereitstellungen von Azure App Service im VNET und nur über Ihr Abonnement verwaltbar. Sie bieten neue Netzwerkfunktionen, da sie in das VNET integriert sind und in höherem Maß skalierbar sind, als dies normalerweise in Azure App Service-Umgebungen möglich ist. Weitere Informationen rund um das Thema App Service-Umgebung finden Sie unter [Was ist eine App Service-Umgebung?][WhatisASE]. Weitere Informationen zum Erstellen einer App Service-Umgebung oder zum Erstellen einer Web-App in einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung][HowtoCreateASE] und [Erstellen einer Web-App in einer App Service-Umgebung][CreateWebappinASE].
-
-Denken Sie daran: Wenn Sie normalerweise ein Skalierungsattribut für eine Web-App, eine mobile App oder eine API-App in Azure App Service ändern, wird diese Änderung auf Ebene des App Service-Plans (ASP) durchgeführt. Nähere Informationen zum Skalieren von App Service-Plänen oder zu App Service-Plänen außerhalb von App Service-Umgebungen finden Sie unter [Skalieren eine Web-App in Azure App Service][ScaleWebapp] und [App Service-Pläne: ausführliche Übersicht][Appserviceplans].
-
-Die Skalierung einer App in einer App Service-Umgebung ähnelt sehr stark dem normalen Skalieren von Apps. In Azure App Service können üblicherweise drei Faktoren skaliert werden:
+In Azure App Service können üblicherweise drei Faktoren skaliert werden:
 
 - Tarif
-- Workergröße (für dedizierte Instanzen)
+- Workergröße 
 - Anzahl von Instanzen
 
-In einer App Service-Umgebung ist es nicht erforderlich, den Tarif auszuwählen oder zu ändern. Diese wird im Hinblick auf die Funktionalität bereits im Premium-Plan ausgeführt. In einer App Service-Umgebung gibt es keine freigegebenen Worker. Alle Worker sind dedizierte Worker.
+In einer App Service-Umgebung ist es nicht erforderlich, den Tarif auszuwählen oder zu ändern. Diese wird im Hinblick auf die Funktionalität bereits im Premium-Plan ausgeführt.
 
 Im Hinblick auf Workergrößen kann der Administrator der App Service-Umgebung die Größe der Computeressource zuweisen, die für jeden Workerpool verwendet wird. Dies bedeutet, dass Sie P4-Compute-Ressourcen für Workerpool 1 und P1-Compute-Ressourcen für Workerpool 2 zuweisen können, wenn dies gewünscht ist. Es ist keine Reihenfolge nach Größe erforderlich. Ausführliche Informationen zu Größen und Preisen finden Sie im Dokument [Azure App Service-Preise][AppServicePricing]. Damit stehen für die Skalierung von Web-Apps und App Service-Plänen in einer App Service-Umgebung die folgenden Optionen zur Verfügung:
 
 - Auswahl der Workerpools
 - Anzahl von Instanzen
 
-Das Ändern dieser Elemente erfolgt über die entsprechende Benutzeroberfläche in Ihrem in der App Service-Umgebung gehosteten App Service-Plan. Beachten Sie, dass der ASP nicht über die Anzahl der verfügbaren Computeressourcen hinaus zentral hochskaliert werden kann, die im Workerpool für Ihren ASP enthalten sind. Wenn Sie mehr Kapazität benötigen, müssen Sie den Administrator Ihrer App Service-Umgebung bitten, weitere Compute-Ressourcen zum betreffenden Workerpool hinzuzufügen. Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie unter [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE]. Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen. Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Automatische Skalierung und App Service-Umgebungen][ASEAutoscale].
+Das Ändern dieser Elemente erfolgt über die entsprechende Benutzeroberfläche in Ihrem in der App Service-Umgebung gehosteten App Service-Plan. Beachten Sie, dass Ihr ASP nicht über die Anzahl der verfügbaren Computeressourcen, die im Workerpool Ihres ASP enthalten sind, hinaus zentral hochskaliert werden kann. Wenn Sie in diesem Workerpool Compute-Ressourcen benötigen, bitten Sie den Administrator Ihrer App Service-Umgebung, diese hinzuzufügen. Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie unter [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE]. Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen. Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Automatische Skalierung und App Service-Umgebungen][ASEAutoscale].
 
 ![][1]
 
@@ -83,4 +79,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [AppScale]: http://azure.microsoft.com/documentation/articles/web-sites-scale/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

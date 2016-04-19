@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Cortana-Analyseprozess in Aktion – Verwenden von HDInsight Hadoop-Clustern in einem 1-TB-DataSet | Microsoft Azure" 
-	description="Verwenden der erweiterten Analyseprozesse und -technologien (Advanced Analytics Process and Technology, ADAPT) für ein End-to-End-Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines großen (1 TB) öffentlich zugänglichen DataSets" 
-	services="machine-learning,hdinsight" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="paulettm" 
+<properties
+	pageTitle="Cortana-Analyseprozess in Aktion – Verwenden von HDInsight Hadoop-Clustern in einem 1-TB-DataSet | Microsoft Azure"
+	description="Verwenden der erweiterten Analyseprozesse und -technologien (Advanced Analytics Process and Technology, ADAPT) für ein End-to-End-Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines großen (1 TB) öffentlich zugänglichen DataSets"
+	services="machine-learning,hdinsight"
+	documentationCenter=""
+	authors="bradsev"
+	manager="paulettm"
 	editor="cgronlun" />
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/08/2016" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/08/2016"
 	ms.author="ginathan;bradsev" />
 
 # Cortana-Analyseprozess in Aktion – Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-DataSet
@@ -29,15 +29,15 @@ Bei den Criteo-Daten handelt es sich um ein Klickvorhersage-DataSet mit etwa 370
 
 Alle Datensätze im DataSet enthalten je 40 Spalten:
 
-- Die erste Spalte ist eine Bezeichnungsspalte, die angibt, ob ein Benutzer auf eine Anzeige klickt (Wert "1") oder nicht (Wert "0"). 
-- Die nächsten 13 Spalten sind numerische und 
-- die letzten 26 nach Kategorien sortierte Spalten. 
+- Die erste Spalte ist eine Bezeichnungsspalte, die angibt, ob ein Benutzer auf eine Anzeige klickt (Wert "1") oder nicht (Wert "0").
+- Die nächsten 13 Spalten sind numerische und
+- die letzten 26 nach Kategorien sortierte Spalten.
 
 Die Spalten werden anonymisiert und mit Aufzählungsnamen versehen: "Col1" (für die Bezeichnungsspalte) bis "Col40" (für die letzte Kategoriespalte).
 
 Hier finden Sie einen Auszug der ersten 20 Spalten der zwei Beobachtungen (Zeilen) aus diesem DataSet:
 
-	Col1	Col2	Col3	Col4	Col5	Col6	Col7	Col8	Col9	Col10	Col11	Col12	Col13	Col14	Col15			Col16			Col17			Col18			Col19		Col20	
+	Col1	Col2	Col3	Col4	Col5	Col6	Col7	Col8	Col9	Col10	Col11	Col12	Col13	Col14	Col15			Col16			Col17			Col18			Col19		Col20
 
 	0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
 	0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
@@ -62,7 +62,7 @@ In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprob
 
 Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen für Vorhersageanalysen mit HDInsight-Clustern zu erstellen:
 
-1. [Erstellen eines Speicherkontos:](storage-whatis-account.md) Mit diesem Speicherkonto werden Daten im Azure-Blob-Speicher gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
+1. [Erstellen eines Speicherkontos:](../storage/storage-create-storage-account.md) Mit diesem Speicherkonto werden Daten im Azure-Blob-Speicher gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
 
 2. [Anpassen von Azure HDInsight Hadoop-Clustern für Data Science:](machine-learning-data-science-customize-hadoop-cluster.md) Mit diesem Schritt wird ein Azure HDInsight Hadoop-Cluster mit 64-Bit-Anaconda Python 2.7 auf allen Knoten erstellt. Beim Anpassen des HDInsight-Clusters müssen zwei (in diesem Thema beschriebene) wichtige Schritte durchgeführt werden.
 
@@ -80,15 +80,15 @@ Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-log
 
 Klicken Sie auf **Download fortsetzen**, um weitere Informationen über das DataSet und seine Verfügbarkeit zu erhalten.
 
-Die Daten befinden sich an einem öffentlichen Speicherort für [Azure-Blob-Speicher](storage-dotnet-how-to-use-blobs.md): wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" bezieht sich auf den Azure-Blob-Speicherort.
+Die Daten befinden sich an einem öffentlichen Speicherort für [Azure-Blob-Speicher](../storage/storage-dotnet-how-to-use-blobs.md): wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" bezieht sich auf den Azure-Blob-Speicherort.
 
 1. Die Daten in diesem öffentlichen Blob-Speicher bestehen aus drei untergeordneten Ordnern mit extrahierten Daten.
-		
+
 	1. Der Unterordner *raw/count/* enthält die Daten der ersten 21 Tage – von "day\_00" bis "day\_20".
 	2. Der Unterordner *raw/train/* enthält nur die Daten des Tages "day\_21".
 	3. Der Unterordner *raw/test/* enthält die Daten der beiden Tage "day\_22" und "day\_23".
 
-2. Wenn Sie mit den gzip-Rohdaten beginnen möchten, finden Sie diese im Hauptordner *raw/* als "day\_NN.gz", wobei "NN" von 00 bis 23 reicht. 
+2. Wenn Sie mit den gzip-Rohdaten beginnen möchten, finden Sie diese im Hauptordner */raw * als "day\_NN.gz", wobei "NN" von 00 bis 23 reicht.
 
 Ein alternativer Ansatz für das Zugreifen, Untersuchen und Modellieren, der keine lokalen Downloads erfordert, wird später in dieser exemplarischen Vorgehensweise erläutert, wenn wir die Hive-Tabellen erstellen.
 
@@ -120,9 +120,9 @@ Wenn Hive REPL mit dem Symbol "hive >" angezeigt wird, können Sie die Abfrage e
 Mit folgendem Code werden die Datenbank "criteo" und anschließend vier Tabellen erstellt:
 
 
-* eine *Zahlentabelle* anhand der Tage „day\_00“ bis „day\_20“, 
-* eine auf „day\_21“ beruhende *Trainingstabelle* und 
-* zwei *Testtabellen* für „day\_22“ und „day\_23“. 
+* eine *Zahlentabelle* anhand der Tage „day\_00“ bis „day\_20“,
+* eine auf „day\_21“ beruhende *Trainingstabelle* und
+* zwei *Testtabellen* für „day\_22“ und „day\_23“.
 
 Wir teilen die Test-DataSets in zwei verschiedene Tabellen auf, da ein Tag ein Feiertag ist und wir anhand der Klickrate feststellen möchten, ob das Modell Unterschiede zwischen einem Feier- und einem Arbeitstag erkennen kann.
 
@@ -225,7 +225,7 @@ Nun zählen wir die Anzahl der Beispiele in den beiden Test-DataSets. Im Folgend
 		SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
 Dies ergibt:
-	
+
 		189747893
 		Time taken: 267.968 seconds, Fetched: 1 row(s)
 
@@ -240,7 +240,7 @@ Der hierfür verwendete Befehl ähnelt dem oben angeführten (siehe [sample&#95;
 		SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
 Dies ergibt:
-	
+
 		178274637
 		Time taken: 253.089 seconds, Fetched: 1 row(s)
 
@@ -257,12 +257,12 @@ Dies ergibt die Bezeichnungsverteilung:
 		Time taken: 459.435 seconds, Fetched: 2 row(s)
 
 Beachten Sie, dass der Prozentsatz der positiven Bezeichnungen etwa 3,3 % beträgt (in Übereinstimmung mit dem ursprünglichen DataSet).
-		
+
 ### Histogrammverteilungen für einige numerische Variablen des Trainings-DataSets
 
 Mit der systemeigenen Funktion "histogram\_numeric" von Hive können wir herausfinden, wie die Verteilung numerischer Variablen aussieht. Im Folgenden finden Sie die Inhalte von [sample&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
-		SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM 
+		SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
 			(SELECT
             histogram_numeric(col2, 20) as col2_hist
             FROM
@@ -324,7 +324,7 @@ Beachten Sie, dass "Col15" über 19 Mio. eindeutige Werte verfügt! Mit systeme
 
 Zum Abschluss dieses Unterabschnitts betrachten wir die Anzahl an eindeutigen Werten für einige weitere Kategoriespalten. Die Inhalte von [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) lauten:
 
-		SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)), 
+		SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
 		COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
 		FROM criteo.criteo_train;
 
@@ -458,7 +458,7 @@ Für das **Reader**-Modul sind die Werte der in der Grafik enthaltenen Parameter
 6. **Speicherort der Ausgabedaten**: Wählen Sie „Azure“ aus.
 7. **Azure-Speicherkontoname**: Das dem Cluster zugeordnete Speicherkonto
 8. **Azure-Speicherkontoschlüssel**: Der dem Cluster zugeordnete Speicherschlüssel
-9. **Azure-Containername**: Wenn der Clustername „abc“ ist, gilt in der Regel einfach „abc“. 
+9. **Azure-Containername**: Wenn der Clustername „abc“ ist, gilt in der Regel einfach „abc“.
 
 
 Sobald der **Reader** das Abrufen von Daten beendet (das grüne Häkchen für das Modul wird angezeigt), speichern Sie diese Daten als DataSet (mit einem Namen Ihrer Wahl). Dies sieht folgendermaßen aus:
@@ -472,7 +472,7 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 ![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
 
 ***WICHTIGER HINWEIS:*** **Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.**
- 
+
 ### <a name="step2"></a> Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
 
 Unser Azure ML-Experiment sieht wie folgt aus:
@@ -600,7 +600,7 @@ Zu diesem Zweck speichern wir unser trainiertes Modell zunächst als "Trained Mo
 
 Als Nächstes müssen wir Eingabe und Ausgabeports für unseren Webdienst erstellen:
 
-* ein Eingabeport nimmt Daten im gleichen Format auf wie die Daten, für die wir Vorhersagen benötigen. 
+* ein Eingabeport nimmt Daten im gleichen Format auf wie die Daten, für die wir Vorhersagen benötigen.
 * ein Ausgabeport gibt die bezeichneten Beschriftungen und zugehörigen Wahrscheinlichkeiten aus.
 
 #### Auswählen einiger Datenzeilen für den Eingangsanschluss
@@ -643,7 +643,7 @@ Sobald der Webdienst veröffentlicht wurde, werden wir auf eine Seite umgeleitet
 
 Auf der linken Seite befinden sich zwei Links zu Webdiensten:
 
-* Der **REQUEST/RESPONSE**-Dienst (RRS) für einzelne Vorhersagen, den wir in diesem Workshop verwenden. 
+* Der **REQUEST/RESPONSE**-Dienst (RRS) für einzelne Vorhersagen, den wir in diesem Workshop verwenden.
 * Der **BATCH EXECUTION**-Dienst (BES) wird für Stapelvorhersagen verwendet und setzt voraus, dass sich die Eingabedaten für Vorhersagen in einem Azure-BLOB-Speicher befinden.
 
 Wenn Sie auf den Link **REQUEST/RESPONSE** klicken, gelangen Sie zu einer Seite mit vorprogrammiertem Code in C#, Python und R. Dieser Code kann problemlos für Aufrufe an den Webdienst verwendet werden. Beachten Sie, dass der API-Schlüssel auf dieser Seite für die Authentifizierung verwendet werden muss.
@@ -663,4 +663,4 @@ Wir sehen, dass wir für die beiden angefragten Testbeispiele (im JSON-Framework
 
 Damit sind wir am Ende unser ausführlichen exemplarischen Vorgehensweise zum Behandeln umfangreicher DataSets mithilfe von Azure Machine Learning angekommen. Wir haben mit einem Terabyte an Daten begonnen, ein Vorhersagemodell erstellt und dieses als Webdienst in der Cloud bereitgestellt.
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -30,9 +30,9 @@ In diesem Artikel erfahren Sie, wie Sie PostgreSQL auf einem virtuellen Azure-Co
 
 ## Installieren von PostgreSQL
 
-> [AZURE.NOTE] Sie benötigen einen virtuellen Azure-Computer mit Linux, um dieses Tutorial auszuführen. Bevor Sie fortfahren, sollten Sie die Informationen zum Erstellen und Einrichten eines virtuellen Linux-Computers im [Tutorial zu virtuellen Linux-Computern](virtual-machines-linux-cli-create.md) lesen.
+> [AZURE.NOTE] Sie benötigen einen virtuellen Azure-Computer mit Linux, um dieses Tutorial auszuführen. Bevor Sie fortfahren, sollten Sie die Informationen zum Erstellen und Einrichten eines virtuellen Linux-Computers im [Tutorial zu virtuellen Linux-Computern](virtual-machines-linux-quick-create-cli.md) lesen.
 
-Verwenden Sie in diesem Fall Port 1999 als PostgreSQL-Port.
+Verwenden Sie in diesem Fall Port 1999 als PostgreSQL-Port.
 
 Stellen Sie über PuTTY eine Verbindung mit dem virtuellen Linux-Computer her. Falls Sie zum ersten Mal einen virtuellen Linux-Computer in Azure verwenden, lesen Sie die Informationen zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer mithilfe von PuTTY. Diese Informationen finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-ssh-from-linux.md).
 
@@ -194,8 +194,8 @@ Erstellen Sie mit dem folgenden Befehl beispielsweise eine neue Postgres-Beispie
 
 Sie haben nun eine Tabelle mit vier Spalten mit den folgenden Spaltennamen und Einschränkungen eingerichtet:
 
-1. Die Spalte "Name" wurde mit dem VARCHAR-Befehl auf unter 20 Zeichen beschränkt.
-2. Die Spalte "Food" gibt die Speisen an, die die einzelnen Personen mitbringen. VARCHAR beschränkt diesen Text auf unter 30 Zeichen.
+1. Die Spalte "Name" wurde mit dem VARCHAR-Befehl auf unter 20 Zeichen beschränkt.
+2. Die Spalte "Food" gibt die Speisen an, die die einzelnen Personen mitbringen. VARCHAR beschränkt diesen Text auf unter 30 Zeichen.
 3. Die Spalte "confirmed" zeichnet auf, ob die Person zugestimmt hat, einen Beitrag zum Buffet zu leisten. Die zulässigen Werte lauten "Y" und "N".
 4. Die Spalte „date“ wird angezeigt, wenn sich eine Person für das Ereignis angemeldet hat. Postgres erfordert, dass Datumsangaben im Format jjjj-mm-tt geschrieben werden
 
@@ -255,4 +255,4 @@ Mit dem folgenden Befehl können Sie Daten in einer Tabelle aktualisieren: In di
 ##Abrufen weiterer Informationen zu PostgreSQL
 Sie haben die Installation von PostgreSQL auf einem virtuellen Linux-Computer in Azure abgeschlossen und können die Datenbank nun in Azure nutzen. Weitere Informationen zu PostgreSQL finden Sie auf der [PostgreSQL-Website](http://www.postgresql.org/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

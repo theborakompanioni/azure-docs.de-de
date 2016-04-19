@@ -4,21 +4,21 @@
 	keywords="Skalierbare Datenbank, Datenbankkonfiguration"
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
+	authors="sidneyh"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
 	ms.date="03/24/2016"
-	ms.author="jeffreyg"
+	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# Erstellen eines skalierbaren Pools für elastische SQL-Datenbanken mit dem Azure-Portal
+# Erstellen eines Pools für elastische Datenbanken mit dem Azure-Portal
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-elastic-pool-create-portal.md)
@@ -70,7 +70,7 @@ Sie können einem Server mehrere Pools hinzufügen, aber es ist nicht möglich, 
     | **eDTU minimal** (pro Datenbankeinstellung)| Die minimale Anzahl von eDTUs aus dem Pool, die für alle Datenbanken im Pool jederzeit garantiert ist. **eDTU minimal** ist normalerweise auf einen Wert zwischen 0 und der durchschnittlichen bisherigen eDTU-Nutzung pro Datenbank festgelegt. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. |
     | **eDTU maximal** (pro Datenbankeinstellung) | Die maximale Anzahl von eDTUs, die von einer Einzeldatenbank im Pool verwendet werden können. Sie können diese Obergrenze bis auf den Wert von **POOL-eDTU** festlegen. Legen Sie **eDTU maximal** pro Datenbank auf einen Wert fest, der hoch genug ist, sodass maximale Bursts oder Spitzen bis zur Spitzenauslastung der Datenbank verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast für die Gruppe einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind. **Beispiel:** Angenommen, die Spitzenauslastung pro Datenbank beträgt 50 DTUs, und nur 20 % der 100 Datenbanken in der Gruppe springen gleichzeitig auf die Spitzenauslastung. Wenn die eDTU-Obergrenze pro Datenbank auf 50 eDTUs festgelegt ist, ist es sinnvoll, die fünffache Mehrlast für den Pool einzuplanen und den Wert für **POOL-eDTU** auf 1.000 festzulegen. **eDTU maximal** ist keine Ressourcengewährleistung für eine Datenbank, sondern ein eDTU-Grenzwert, der ggf. erreicht werden kann. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. |
 
-    Weitere Details zu den Grenzwerten für die einzelnen Dienstebenen finden Sie unter [Referenz für Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases), und eine ausführliche Anleitung zur richtigen Dimensionierung eines Pools finden Sie unter [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
+    Weitere Details zu den Grenzwerten für die einzelnen Dienstebenen finden Sie unter [Referenz für Pools für elastische Datenbanken](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases), und eine ausführliche Anleitung zur richtigen Dimensionierung eines Pools finden Sie unter [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
 
 7. Klicken Sie auf **Auswählen**, wenn Sie fertig sind, und klicken Sie dann auf **OK**, um den Pool zu erstellen.
 
@@ -90,7 +90,6 @@ Der Dienst bewertet den Ressourcenbedarf und die Kosteneffizienz beim Verschiebe
 
 - [Verwalten eines elastischen SQL-Datenbankpools mit dem Portal](sql-database-elastic-pool-manage-portal.md)
 - [Verwalten eines elastischen SQL-Datenbankpools mit PowerShell](sql-database-elastic-pool-manage-powershell.md)
-- [Verwalten eines elastischen SQL-Datenbankpools mit C#](sql-database-client-library.md)
-- [Referenz für elastische Datenbanken](sql-database-elastic-pool-reference.md)
+- [Verwalten eines elastischen SQL-Datenbankpools mit C#](sql-database-elastic-pool-manage-csharp.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

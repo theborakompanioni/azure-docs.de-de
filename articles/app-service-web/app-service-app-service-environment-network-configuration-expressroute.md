@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="04/06/2016" 
 	ms.author="stefsch"/>
 
 # Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute 
@@ -21,7 +21,7 @@
 ## Übersicht ##
 Kunden können eine [Azure ExpressRoute][ExpressRoute]-Verbindung mit ihrer virtuellen Netzwerkinfrastruktur verbinden und so ihr lokales Netzwerks auf Azure ausdehnen. Eine App Service-Umgebung kann in einem Subnetz dieser [virtuellen Netzwerkinfrastruktur][virtualnetwork] erstellt werden. In der App Service-Umgebung ausgeführte Apps können dann sichere Verbindungen mit Back-End-Ressourcen herstellen, auf die nur über die ExpressRoute-Verbindung ein Zugriff besteht.
 
-**Hinweis:** Eine App Service-Umgebung kann nicht in einem „v2“ virtuellen Netzwerk erstellt werden. App Service-Umgebungen werden derzeit nur in klassischen „v1“ virtuellen Netzwerken unterstützt.
+**Hinweis:** Eine App Service-Umgebung kann nicht in einem „v2“ virtuellen Netzwerk erstellt werden. App Service-Umgebungen werden derzeit nur in klassischen „v1“ virtuellen Netzwerken unterstützt, die einen RFC1918 Adressraum (d.h. private Adressen) verwenden.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -29,11 +29,11 @@ Kunden können eine [Azure ExpressRoute][ExpressRoute]-Verbindung mit ihrer virt
 Es gibt Netzwerkverbindungsanforderungen für App Service-Umgebungen, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten, das mit einer ExpressRoute verbunden war. App Service-Umgebungen erfordern für einen ordnungsgemäßen Betrieb Folgendes:
 
 
--  Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies beinhaltet sowohl Endpunkte, die sich in der gleichen Region wie die App Service-Umgebung befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.  
+-  Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies beinhaltet sowohl Endpunkte, die sich in der gleichen Region wie die App Service-Umgebung befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.  
 -  Ausgehende Netzwerkverbindungen mit SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbankendpunkte werden unter der folgenden Domäne aufgelöst: *database.windows.net*.
 -  Ausgehende Netzwerkverbindungen mit den Endpunkten auf der Azure-Verwaltungsebene (ASM- und ARM-Endpunkte). Dies beinhaltet ausgehende Verbindungen mit *management.core.windows.net* und *management.azure.com*. 
 -  Ausgehende Netzwerkverbindung mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
--  Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Können diese Endpunkte nicht aufgelöst werden, schlägt die Erstellung von App Service-Umgebungen fehl, und vorhandene App Service-Umgebungen werden als fehlerhaft gekennzeichnet.
+-  Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Können diese Endpunkte nicht aufgelöst werden, schlägt die Erstellung von App Service-Umgebungen fehl, und vorhandene App Service-Umgebungen werden als fehlerhaft gekennzeichnet.
 -  Falls ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz mit der App Service-Umgebung erreichbar sein. 
 -  Der ausgehende Netzwerkpfad kann weder durch interne Unternehmensproxys laufen noch zwangsweise zur lokalen Infrastruktur getunnelt werden. Andernfalls wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs der App Service-Umgebung geändert. Das Ändern der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer App Service-Umgebung verursacht bei vielen der oben genannten Endpunkte Verbindungsfehler. Dies führt zu Fehlern bei der Erstellung von App Service-Umgebungen und dazu, dass zuvor fehlerfreie App Service-Umgebungen als fehlerhaft gekennzeichnet werden.  
 -  Eingehender Netzwerkzugriff auf die erforderlichen Ports für App Service-Umgebungen muss entsprechend diesem [Artikel][requiredports] zugelassen werden.
@@ -91,7 +91,7 @@ Denken Sie daran, dass der Adressbereich 0.0.0.0/0 durch spezifischere Adressber
 
 Alternativ können Sie eine umfassende und aktualisierte Liste der von Azure verwendeten CIDR-Adressbereiche herunterladen. Die XML-Datei mit sämtlichen Azure-IP-Adressbereichen steht im [Microsoft Download Center][DownloadCenterAddressRanges] zur Verfügung.
 
-Beachten Sie, dass sich diese Bereiche im Laufe der Zeit ändern und eine UDR daher regelmäßig manuell aktualisiert werden muss, um sie auf dem neuesten Stand zu halten. Da eine einzelne UDR zudem maximal 100 Routen enthalten kann, müssen Sie die Azure-IP-Adressbereiche zudem entsprechend „zusammenfassen“. Denken Sie dabei daran, dass die in einer UDR definierten Routen spezifischer sein müssen als die von Ihrer ExpressRoute-Konfiguration angekündigten Routen.
+Beachten Sie, dass sich diese Bereiche im Laufe der Zeit ändern und eine UDR daher regelmäßig manuell aktualisiert werden muss, um sie auf dem neuesten Stand zu halten. Da eine einzelne UDR zudem maximal 100 Routen enthalten kann, müssen Sie die Azure-IP-Adressbereiche zudem entsprechend „zusammenfassen“. Denken Sie dabei daran, dass die in einer UDR definierten Routen spezifischer sein müssen als die von Ihrer ExpressRoute-Konfiguration angekündigten Routen.
 
 
 **Schritt 3: Zuordnen der Routentabelle zum Subnetz mit der App Service-Umgebung**
@@ -137,4 +137,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

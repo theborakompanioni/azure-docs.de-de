@@ -3,8 +3,8 @@
    description="Erläutert, wie Sie die Seite ";Sicherungskatalog"; des StorSimple Manager-Diensts zum Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz verwenden."
    services="storsimple"
    documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
+   authors="alkohli"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/14/2015"
-   ms.author="v-sharos" />
+   ms.date="03/23/2016"
+   ms.author="alkohli" />
 
 # Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz
 
@@ -25,7 +25,7 @@ Auf der Seite **Sicherungskatalog** werden alle Sicherungssätze angezeigt, die 
 
  ![Seite "Sicherungskatalog"](./media/storsimple-restore-from-backup-set/HCS_BackupCatalog.png)
 
-In diesem Tutorial erfahren Sie, wie Sie Ihr Gerät mithilfe der Seite **Sicherungskatalog** aus einem Sicherungssatz wiederherstellen.
+In diesem Tutorial erfahren Sie, wie Sie ein Volume auf Ihrem Gerät mithilfe der Seite **Sicherungskatalog** aus einem Sicherungssatz wiederherstellen.
 
 ## So verwenden Sie den Sicherungskatalog 
 
@@ -45,10 +45,11 @@ Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attribu
 
 ## So stellen Sie Ihr StorSimple-Volume aus einer Sicherung wieder her
 
-Sie können Ihr StorSimple-Volume auf der Seite **Sicherungskatalog** aus einer bestimmten Sicherung wiederherstellen. Beachten Sie dabei, dass das Volume durch die Wiederherstellung auf den Zustand zum Zeitpunkt der Sicherung zurückgesetzt wird. Alle Daten, die nach dem Sicherungsvorgang hinzugefügt wurden, gehen verloren.
+Sie können Ihr StorSimple-Volume auf der Seite **Sicherungskatalog** aus einer bestimmten Sicherung wiederherstellen.
 
 > [AZURE.WARNING] Beim Wiederherstellen aus einer Sicherung werden die vorhandenen Volumes durch die Sicherung ersetzt. Dadurch können Daten verloren gehen, die nach dem Erstellen der Sicherung geschrieben wurden.
 
+Bevor Sie eine Wiederherstellung auf einem Volume initiieren, stellen Sie sicher, dass das Volume offline ist. Sie müssen das Volume erst auf dem Host, dann auf dem Gerät offline schalten. Führen Sie die unter [Offlineschalten von Volumes](storsimple-manage-volumes.md#take-a-volume-offline) genannten Schritte aus. Führen Sie die folgenden Schritte aus, um ein Volume aus einem Sicherungssatz wiederherzustellen.
 
 ### So führen Sie eine Wiederherstellung aus einem Sicherungssatz durch
 
@@ -64,13 +65,11 @@ Sie können Ihr StorSimple-Volume auf der Seite **Sicherungskatalog** aus einer 
  
     Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
 
-3. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Diese Volumes müssen auf dem Host und dem Gerät offline geschaltet werden, bevor sie wiederhergestellt werden können. Greifen Sie auf der Seite **Volumecontainer** auf die Volumes zu, und führen Sie dann die Schritte in [Offlineschalten eines Volumes](storsimple-manage-volumes.md#take-a-volume-offline) durch, um diese offline zu schalten.
+3. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Diese Volumes müssen auf dem Host und dem Gerät offline geschaltet werden, bevor sie wiederhergestellt werden können. Führen Sie die unter [Offlineschalten von Volumes](storsimple-manage-volumes.md#take-a-volume-offline) genannten Schritte aus.
 
     >  [AZURE.IMPORTANT] Vergewissern Sie sich, dass die Volumes auf dem Host offline sind, bevor Sie diese auf dem Gerät offline schalten. Wenn Sie die Volumes auf dem Host nicht offline schalten, kann es zur Beschädigung von Daten kommen.
 
-4. Navigieren Sie zurück zur Registerkarte **Sicherungskatalog**, und wählen Sie einen Sicherungssatz aus.
-
-5. Klicken Sie unten auf der Seite auf **Wiederherstellen**.
+4. Wählen Sie einen Sicherungssatz aus. Klicken Sie unten auf der Seite auf **Wiederherstellen**.
 
 6. Sie werden aufgefordert, diesen Schritt zu bestätigen.
 
@@ -90,4 +89,4 @@ Um ein Video zu schauen, in dem gezeigt wird, wie Sie mithilfe des Klons und Wie
 
 - Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

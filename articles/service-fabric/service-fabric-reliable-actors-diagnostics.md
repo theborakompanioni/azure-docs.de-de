@@ -3,9 +3,9 @@
    description="Dieser Artikel beschreibt die Features für die Diagnose und Leistungsüberwachung der Reliable Actors-Laufzeit in Service Fabric, einschließlich der davon ausgegebenen Ereignisse und Leistungsindikatoren."
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="abhishekram"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -31,7 +31,7 @@ Allen Ereignissen, die zu Reliable Actors EventSource gehören, werden ein oder 
 |---|---|
 |0x1|Gruppe von wichtigen Ereignissen, die den Vorgang der Fabric Actors-Laufzeit zusammenfassen.|
 |0x2|Gruppe von Ereignissen, die Actor-Methodenaufrufe beschreiben. Weitere Informationen finden Sie im [Einführungsthema zu Actors](service-fabric-reliable-actors-introduction.md#actors).|
-|0x4|Gruppe von Ereignissen im Zusammenhang mit dem Actor-Status. Weitere Informationen finden Sie im Thema zu [statusbehafteten Actors](service-fabric-reliable-actors-introduction.md#stateful-actors).|
+|0x4|Gruppe von Ereignissen im Zusammenhang mit dem Actor-Status. Weitere Informationen finden Sie im Thema unter [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md).|
 |0x8|Gruppe von Ereignissen im Zusammenhang mit Turn-basierter Parallelität im Actor. Weitere Informationen finden Sie im Thema zu [Parallelität](service-fabric-reliable-actors-introduction.md#concurrency).|
 
 ## Leistungsindikatoren
@@ -39,8 +39,8 @@ Die Reliable Actors-Laufzeit definiert die folgenden Leistungsindikatorkategorie
 
 |Kategorie|Beschreibung|
 |---|---|
-|Service Fabric Actor|Spezielle Indikatoren für Azure Service Fabric Actors, wie z. B. die benötigte Zeit zum Speichern des Actor-Status.|
-|Service Fabric Actor-Methode|Spezielle Indikatoren für Methoden, die von Service Fabric Actors implementiert wurden, z. B. wie oft eine Actor-Methode aufgerufen wird.|
+|Service Fabric Actor|Spezielle Indikatoren für Azure Service Fabric Actors, wie z. B. die benötigte Zeit zum Speichern des Actor-Status.|
+|Service Fabric Actor-Methode|Spezielle Indikatoren für Methoden, die von Service Fabric Actors implementiert wurden, z. B. wie oft eine Actor-Methode aufgerufen wird.|
 
 Jede der oben genannten Kategorien verfügt über einen oder mehrere Leistungsindikatoren.
 
@@ -118,7 +118,7 @@ Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren 
 |Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden, die eine Actor-Sperre hielt|Zeit (in Millisekunden), für die die Sperre pro Actor gehalten wird|
 
 ### Actor-Statusmanagement-Ereignisse und Leistungsindikatoren
-Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit der [Actor-Statusverwaltung](service-fabric-reliable-actors-introduction.md#actor-state-management) aus.
+Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit der [Actor-Statusverwaltung](service-fabric-reliable-actors-state-management) aus.
 
 |Ereignisname|Ereignis-ID|Ebene|Schlüsselwort|Beschreibung|
 |---|---|---|---|---|
@@ -164,4 +164,9 @@ Wenn ein Client eine Methode über ein Actor-Proxy-Objekt aufruft, wird eine Anf
 |Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden für die Anforderungsdeserialisierung|Zeit (in Millisekunden), die erforderlich war, um die Anforderungsnachricht an den Actor zum Empfangszeitpunkt am Dienst zu deserialisieren|
 |Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden für die Anwortserialisierung|Zeit (in Millisekunden), die erforderlich war, um die Antwortnachricht des Actors vor der Versendung an den Client am Dienst zu serialisieren|
 
-<!---HONumber=AcomDC_0330_2016-->
+## Nächste Schritte
+ - [Verwendung der Service Fabric-Plattform durch Reliable Actors](service-fabric-reliable-actors-platform.md)
+ - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Beispielcode](https://github.com/Azure/servicefabric-samples)
+
+<!---HONumber=AcomDC_0406_2016-->

@@ -23,6 +23,8 @@
 
 ## Übersicht
 Die automatische Skalierung ist der Prozess der dynamischen Zuweisung von Ressourcen, die von einer Anwendung benötigt werden, um Leistungsanforderungen und Vereinbarungen zum Servicelevel (SLAs) zu erfüllen und gleichzeitig die Laufzeitkosten zu senken. Wächst der Umfang der Arbeit, kann eine Anwendung zusätzliche Ressourcen benötigen, um ihre Aufgaben rechtzeitig zu erledigen. Wenn der Bedarf abnimmt, können Ressourcen wieder abgezogen werden, um Kosten zu minimieren, während gleichzeitig eine angemessene Leistung beibehalten und SLAs erfüllt werden. Die automatische Skalierung nutzt die Elastizität von Umgebungen, die in der Cloud gehostet werden, und reduziert gleichzeitig den Verwaltungsaufwand. Der reduzierte Verwaltungsaufwand ist möglich, da die Leistung des Systems nicht ständig von einem Mitarbeiter überwacht werden muss, der Entscheidungen über das Hinzufügen oder Entfernen von Ressourcen trifft.
+<br\>
+
 >[AZURE.NOTE] Die automatische Skalierung gilt für alle Ressourcen, die von einer Anwendung verwendet werden, nicht nur für die Compute-Ressourcen. Wenn Ihr System zum Beispiel Nachrichtenwarteschlangen zum Senden und Empfangen von Informationen verwendet, kann es beim Skalieren zusätzliche Warteschlangen erstellen.
 
 ## Skalierungstypen
@@ -111,4 +113,4 @@ Die folgenden Muster und Anleitungen können auch für Ihr Szenario relevant sei
 - [Vorgänge bei der automatischen Skalierung](http://msdn.microsoft.com/library/azure/dn510374.aspx)
 - [Microsoft.WindowsAzure.Management.Monitoring.Autoscale-Namespace](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!----HONumber=AcomDC_0330_2016-->

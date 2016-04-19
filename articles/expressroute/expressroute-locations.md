@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/31/2016"
+   ms.date="04/06/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
@@ -145,7 +145,8 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 
 |**Systemintegrator**|**Kontinent**|
 |---|---|
-|**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**|Europa|
+|**[Avanade Inc.](http://www.avanade.com/)**| Asien, Europa, USA |
+|**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| Europa |
 |**[Nimbo](http://www.nimbo.com/)**|US||
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | Asien |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | US |
@@ -156,4 +157,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 - Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 - Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

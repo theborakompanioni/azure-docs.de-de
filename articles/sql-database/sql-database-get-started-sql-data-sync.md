@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="04/04/2016"
 	ms.author="jhubbard"/>
 
 
@@ -22,7 +22,7 @@ In diesem Tutorial lernen Sie die Grundlagen der Azure SQL-Datensynchronisierung
 
 Für dieses Lernprogramm wird minimale vorherige Erfahrung mit SQL Server und Azure SQL Database vorausgesetzt. In diesem Lernprogramm erstellen Sie eine hybride (aus SQL Server- und SQL Database-Instanzen bestehende) Synchronisierungsgruppe, die vollständig gemäß einem von Ihnen festgelegten Zeitplan konfiguriert und synchronisiert wird.
 
-> [AZURE.NOTE]Die gesamte technische Dokumentation zur SQL-Datensynchronisierung von Azure, die früher im MSDN zu finden war, ist als PDF-Datei verfügbar. Sie können sie [hier](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf) herunterladen.
+> [AZURE.NOTE] Die gesamte technische Dokumentation zur SQL-Datensynchronisierung von Azure, die früher im MSDN zu finden war, ist als PDF-Datei verfügbar. Sie können sie [hier](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf) herunterladen.
 
 ## Schritt 1: Herstellen einer Verbindung zur Azure SQL-Datenbank
 
@@ -56,7 +56,7 @@ Stellen Sie sicher, dass die folgende Software auf dem Computer installiert ist,
 
 - **Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86)**
 
- Sie können die Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) [hier](http://www.microsoft.com/download/en/details.aspx?id=26728) installieren.
+ Sie können die freigegebenen Verwaltungsobjekte für Microsoft SQL Server 2008 R2 SP1 (x86) [hier](http://www.microsoft.com/download/en/details.aspx?id=26728) installieren.
 
 
 
@@ -114,10 +114,10 @@ Registrieren Sie nach der Installation des Client-Agents jede lokale SQL Server-
 
 1. Wählen Sie in der Dropdown-Liste die SQL Database-Instanz, die als Hub für die Synchronisierungsgruppe dienen soll.
 2. Geben Sie die Anmeldeinformationen für diese SQL Database-Instanz ein - **HUB-BENUTZERNAME** und **HUB-KENNWORT**.
-3. Warten Sie, bis SQL Data Sync den BENUTZERNAMEN und das KENNWORT bestätigt. Wenn die Anmeldeinformationen bestätigt sind, wird recht neben dem KENNWORT ein grünes Häkchen angezeigt.
+3. Warten Sie, bis SQL Data Sync den BENUTZERNAMEN und das KENNWORT bestätigt. Wenn die Anmeldeinformationen bestätigt sind, wird rechts neben dem KENNWORT ein grünes Häkchen angezeigt.
 4. Wählen Sie in der Dropdown-Liste die Richtlinie **KONFLIKTLÖSUNG**.
 
- **Hub gewinnt** - jede in die Hub-Datenbank geschriebene Änderung wird auch in die Referenzdatenbanken geschrieben. Änderungen im selben Referenzdatensatz werden überschrieben. Konkret bedeutet dies, dass die erste in den Hub geschriebene Änderung an die anderen Datenbanken weitergeleitet wird.
+ **Hub gewinnt** – jede in die Hub-Datenbank geschriebene Änderung wird auch in die Referenzdatenbanken geschrieben. Änderungen im selben Referenzdatensatz werden überschrieben. Konkret bedeutet dies, dass die erste in den Hub geschriebene Änderung an die anderen Datenbanken weitergeleitet wird.
 
 
  **Client gewinnt** - in den Hub geschriebene Änderungen werden durch Änderungen in den Referenzdatenbanken überschrieben. Konkret bedeutet dies, dass die letzte in den Hub geschriebene Änderung beibehalten und an die anderen Datenbanken weitergeleitet wird.
@@ -153,7 +153,7 @@ Wiederholen Sie diesen Schritt für jede zusätzliche Datenbank, die Sie zur Syn
 
 ## Schritt 5: Definieren der zu synchronisierenden Daten
 
-In Azure SQL Data Sync können Sie Tabellen und Spalten zur Synchronisierung auswählen. Wenn Sie eine Spalte so filtern möchten, dass nur Zeilen mit bestimmten Werten (z B. Alter>=65) synchronisiert werden, verwenden Sie das Portal SQL Data Sync in Azure und die Dokumentation zum Auswählen der zu synchronisierenden Tabellen, Spalten und Zeilen, um festzulegen, welche Daten synchronisiert werden sollen.
+In Azure SQL Data Sync können Sie Tabellen und Spalten zur Synchronisierung auswählen. Wenn Sie eine Spalte so filtern möchten, dass nur Zeilen mit bestimmten Werten (z.B. Alter>=65) synchronisiert werden, verwenden Sie das Portal für die SQL-Datensynchronisierung in Azure und die Dokumentation zum Auswählen der zu synchronisierenden Tabellen, Spalten und Zeilen, um festzulegen, welche Daten synchronisiert werden sollen.
 
 1.	Kehren Sie zum [klassischen Portal](http://manage.windowsazure.com) zurück.
 2.	Klicken Sie auf **SQL DATABASES**.
@@ -174,7 +174,7 @@ In Azure SQL Data Sync können Sie Tabellen und Spalten zur Synchronisierung aus
 
 ## Schritt 6: Konfigurieren der Synchronisierungsgruppe
 
-Sie können eine Synchronisierungsgruppe immer synchronisieren, indem Sie unten auf der Data Sync-Angebotsseite auf SYNC klicken. Wenn Sie möchten, dass eine Synchronisierungsgruppe gemäß einem Zeitplan synchronisiert wird, konfigurieren Sie diese Synchronisierungsgruppe.
+Sie können eine Synchronisierungsgruppe immer synchronisieren, indem Sie unten auf der Data Sync-Angebotsseite auf SYNC klicken. Um eine Synchronisierungsgruppe gemäß einem Zeitplan zu synchronisieren, konfigurieren Sie diese Synchronisierungsgruppe.
 
 1.	Kehren Sie zum [klassischen Portal](http://manage.windowsazure.com) zurück.
 2.	Klicken Sie auf **SQL DATABASES**.
@@ -202,4 +202,4 @@ Zusätzliche Informationen über SQL Database und SQL Data Sync finden Sie hier:
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

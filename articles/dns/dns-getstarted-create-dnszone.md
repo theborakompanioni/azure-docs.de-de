@@ -18,12 +18,12 @@
 
 # Erste Schritte mit Azure DNS mithilfe der PowerShell
 
-
 > [AZURE.SELECTOR]
-- [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md)
+- [Azure-Portal](dns-getstarted-create-dnszone-portal.md)
 - [PowerShell](dns-getstarted-create-dnszone.md)
+- [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md)
 
-Die Domäne "contoso.com" kann mehrere DNS-Einträge, wie z. B. "mail.contoso.com" (für einen E-Mail-Server) und "www.contoso.com" (für eine Website), enthalten. Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet.
+Die Domäne "contoso.com" kann mehrere DNS-Einträge, wie z. B. "mail.contoso.com" (für einen E-Mail-Server) und "www.contoso.com" (für eine Website), enthalten. Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet.
 
 Um mit dem Hosten der Domäne zu beginnen, müssen wir zunächst eine DNS-Zone erstellen. Alle DNS-Einträge, die für eine bestimmte Domäne erstellt wurden, befinden sich in einer DNS-Zone für die Domäne.
 
@@ -31,28 +31,28 @@ Für diese Anweisungen wird Microsoft Azure PowerShell verwendet. Achten Sie dar
 
 Die folgenden Schritte müssen ausgeführt werden, bevor Sie Azure DNS mit Azure PowerShell verwalten können.
 
-Azure DNS verwendet den Azure-Ressourcen-Manager (ARM). Führen Sie diese Schritte für Azure PowerShell ab Version 1.0.0 aus. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure Resource Manager](../powershell-azure-resource-manager.md).
+Azure DNS verwendet den Azure-Ressourcen-Manager (ARM). Führen Sie diese Schritte für Azure PowerShell ab Version 1.0.0 aus. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
-### Schritt 1
+### Schritt 1
 Melden Sie sich bei Ihrem Azure-Konto an (Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert).
 
 	PS C:\> Login-AzureRmAccount
 
-### Schritt 2
+### Schritt 2
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
 	PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 Sie können die verfügbaren Abonnements mit „Get-AzureRmSubscription“ auflisten.
 
-### Schritt 3
+### Schritt 3
 Erstellen Sie eine neue Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
 
 	PS C:\> New-AzureRmResourceGroup -Name MyAzureResourceGroup -location "West US"
 
 Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
 
-### Schritt 4
+### Schritt 4
 Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss für jedes Abonnement einmal ausgeführt werden.
 
 	PS c:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
@@ -147,4 +147,4 @@ Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS 
 [Erste Schritte beim Erstellen von Datensatzgruppen und Einträgen](dns-getstarted-create-recordset.md)<BR> [Verwalten von DNS-Zonen](dns-operations-dnszones.md)<BR> [Verwalten von DNS-Einträgen](dns-operations-recordsets.md)<BR> [Automatisieren von Azure-Vorgängen mit dem .NET SDK](dns-sdk.md)<BR> [Referenz zur Azure DNS-REST-API](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

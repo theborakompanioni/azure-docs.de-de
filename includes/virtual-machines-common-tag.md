@@ -3,9 +3,9 @@
 
 ## Markieren eines virtuellen Computers mittels Vorlagen
 
-Zunächst sehen wir uns das Verwenden von Tags mithilfe von Vorlagen an. [Diese Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm) platziert Tags auf den folgenden Ressourcen: Compute (virtueller Computer), Speicher (Storage-Konto) und Netzwerk (öffentliche IP-Adresse, Virtual Network und Netzwerkschnittstelle). (Diese Beispielvorlage gilt für eine Windows-VM, kann aber für eine Linux-VM angepasst werden.)
+Zunächst sehen wir uns das Verwenden von Tags mithilfe von Vorlagen an. [Diese Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) platziert Tags auf den folgenden Ressourcen: Compute (virtueller Computer), Speicher (Storage-Konto) und Netzwerk (öffentliche IP-Adresse, Virtual Network und Netzwerkschnittstelle). (Diese Beispielvorlage gilt für eine Windows-VM, kann aber für eine Linux-VM angepasst werden.)
 
-Klicken Sie unter dem [Vorlagenlink](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm) auf die Schaltfläche **Bereitstellen in Azure**. Dadurch werden Sie zum [Azure-Portal](https://portal.azure.com/) weitergeleitet, in dem Sie diese Vorlage bereitstellen können.
+Klicken Sie unter dem [Vorlagenlink](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) auf die Schaltfläche **Bereitstellen in Azure**. Dadurch werden Sie zum [Azure-Portal](https://portal.azure.com/) weitergeleitet, in dem Sie diese Vorlage bereitstellen können.
 
 ![Einfache Bereitstellung mit Tags](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
@@ -56,7 +56,7 @@ Klicken Sie auf **Nutzungsdetails herunterladen**, um die Nutzungsdetails in Ihr
 
 Wählen Sie die Abrechnungsanweisung und die **Version 2** der Nutzungsdetails aus:
 
-![Version 2 der Vorschau der Nutzungsdetails im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-version2-usage-details.png)
+![Version 2 der Vorschau der Nutzungsdetails im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-version2-usage-details.png)
 
 Den Verwendungsdetails können Sie alle Tags in der Spalte **Tags** entnehmen:
 
@@ -64,4 +64,4 @@ Den Verwendungsdetails können Sie alle Tags in der Spalte **Tags** entnehmen:
 
 Durch Analysieren dieser Tags zusammen mit der Nutzung erhalten Organisationen neue Einblicke in die Nutzung Ihrer Daten.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->
