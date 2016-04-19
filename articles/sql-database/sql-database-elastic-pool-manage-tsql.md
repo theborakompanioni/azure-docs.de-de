@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="04/01/2016"
+    ms.date="04/11/2016"
     ms.author="sidneyh"/>
 
 # Überwachen und Verwalten eines Pools für elastische Datenbanken per Transact-SQL  
@@ -81,8 +81,13 @@ Verwenden Sie die Sicht [sys.elastic\_pool\_resource\_stats](https://msdn.micros
 ## Überwachen der Ressourcenauslastung einer Datenbank in einem elastischen Pool
 Verwenden Sie die Sicht [sys.dm\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) oder [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx), um die Statistik zur Ressourcenauslastung einer Datenbank in einem elastischen Pool zu untersuchen. Dieser Prozess ähnelt dem Abfragen der Ressourcenauslastung für eine beliebige Einzeldatenbank.
 
+## Latenzzeit der elastischen Poolvorgänge
+
+- Änderungen der garantierten eDTUs pro Datenbank oder der maximalen eDTUs pro Datenbank werden in der Regel innerhalb von fünf Minuten oder weniger abgeschlossen.
+- Änderungen der Poolspeicherbegrenzungen hängen von der Gesamtmenge des Speicherplatzes aller Datenbanken im Pool ab. Änderungen dauern durchschnittlich 90 Minuten oder weniger pro 100 GB. Wenn beispielsweise der gesamte, von allen Datenbanken im Pool verwendete Speicherplatz 200 GB beträgt, ist für die Änderung der Pool-eDTU/Speicherbegrenzung eine Latenzzeit von drei Stunden oder weniger zu erwarten.
+
 ## Nächste Schritte
 
 Nach dem Erstellen eines Pools für elastische Datenbanken können Sie elastische Datenbanken im Pool mit elastischen Aufträgen verwalten. Elastische Aufträge erleichtern die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool. Weitere Informationen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

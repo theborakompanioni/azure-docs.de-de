@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Azure Blob Storage mit .NET | Microsoft Azure"
-	description="Speichern Sie Dateidaten in der Cloud mit Azure Blob Storage (Objektspeicher). Informieren Sie sich über einfache Blob Storage-Vorgänge, z. B. das Erstellen eines Containers und das Hochladen, Auflisten und Löschen von Blob-Inhalten."
+	description="Speichern Sie Dateidaten in der Cloud mit Azure Blob Storage (Objektspeicher). Informieren Sie sich über einfache Blob Storage-Vorgänge, z. B. das Erstellen eines Containers und das Hochladen, Auflisten und Löschen von Blob-Inhalten."
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/01/2016"
+	ms.date="04/07/2016"
 	ms.author="tamram"/>
 
 
@@ -23,7 +23,7 @@
 
 ## Übersicht
 
-Azure Blob Storage ist ein Dienst, bei dem Dateidaten in der Cloud gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Azure Blob Storage ist ein Dienst, bei dem Dateidaten in der Cloud gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 ### Informationen zu diesem Lernprogramm
 
@@ -36,7 +36,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 - [Microsoft Visual Studio](https://www.visualstudio.com/de-DE/visual-studio-homepage-vs.aspx)
 - [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- Ein [Azure-Speicherkonto](storage-create-storage-account.md#create-a-storage-account).
+- Ein [Azure-Speicherkonto](storage-create-storage-account.md#create-a-storage-account)
 
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -53,14 +53,13 @@ Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein
 
 	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
-    using Microsoft.WindowsAzure.Storage.Auth; // Namespace for authentication types
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### Erstellen des Blob-Dienstclients
 
-Die Klasse **CloudBlobClient** ermöglicht den Abruf von Objekten, die im Blobspeicher gespeicherte Container und Blobs darstellen. Fügen Sie der Main()-Methode den folgenden Code hinzu:
+Die Klasse **CloudBlobClient** ermöglicht den Abruf von Containern und Blobs, die im Blobspeicher gespeichert sind. Fügen Sie der **Main()**-Methode den folgenden Code hinzu:
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -85,12 +84,12 @@ Dieses Beispiel zeigt, wie Sie einen Container erstellen, falls er nicht bereits
     // Create the container if it doesn't already exist.
     container.CreateIfNotExists();
 
-Standardmäßig ist der neue Container privat, und Sie müssen Ihren Speicherzugriffsschlüssel angeben, um Blobs aus diesem Container herunterzuladen. Wenn die Dateien im Container für alle verfügbar sein sollen, können Sie den Container mithilfe des folgenden Codes öffentlich machen:
+Standardmäßig ist der neue Container privat. Das bedeutet, Sie müssen Ihren Speicherzugriffsschlüssel angeben, um Blobs aus diesem Container herunterzuladen. Wenn die Dateien im Container für alle verfügbar sein sollen, können Sie den Container mithilfe des folgenden Codes öffentlich machen:
 
     container.SetPermissions(
         new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-Jede Person im Internet kann Blobs in einem öffentlichen Container anzeigen, Sie können sie jedoch nur bearbeiten oder löschen, wenn Sie über den entsprechenden Zugriffsschlüssel verfügen.
+Jede Person im Internet kann Blobs in einem öffentlichen Container anzeigen, Sie können sie jedoch nur bearbeiten oder löschen, wenn Sie über den entsprechenden Kontozugriffsschlüssel oder eine SAS (Shared Access Signature) verfügen.
 
 ## Hochladen eines Blobs in einen Container
 
@@ -377,4 +376,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

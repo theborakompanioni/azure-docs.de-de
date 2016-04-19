@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/03/2016" 
+	ms.date="04/07/2016" 
 	ms.author="billmath"/>
 
 #Auswählen der richtigen mehrstufigen Sicherheitslösung
@@ -27,7 +27,7 @@ In den folgenden Abschnitten erhalten Sie Informationen, die Ihnen helfen, die A
 
 ## Was möchte ich sichern?
 
-Um die richtige Multi-Factor Authentication-Lösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten. Handelt es sich um eine Anwendung in Azure? Oder ist Sie es z. B. ein RAS-System? Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.
+Um die richtige Multi-Factor Authentication-Lösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten. Handelt es sich um eine Anwendung in Azure? Oder ist Sie es z. B. ein RAS-System? Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.
 
 
 Was möchte ich sichern?| Multi-Factor Authentication in der Cloud|Multi-Factor Authentication-Server 
@@ -36,7 +36,7 @@ Erstanbieter-Microsoft-Apps|* |* |
 SaaS-Apps im Anwendungskatalog|* |* |
 Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen|* |* |
 Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen | |* |
-Remotezugriff, z. B. VPN, RDG| |* |
+Remotezugriff, z. B. VPN, RDG| |* |
 
 
 
@@ -65,7 +65,7 @@ Unidirektionale SMS als zweite Stufe | ● | ●
 Bidirektionale SMS als zweite Stufe | | ● 
 Hardwaretoken als zweite Stufe | | ● 
 App-Kennwörter für Clients, die MFA nicht unterstützen | ● |  
-Administrative Kontrolle über Authentifizierungsmethoden | (Öffentliche Vorschau) | ● 
+Administrative Kontrolle über Authentifizierungsmethoden | ● | ● 
 PIN-Modus | | ●
 Betrugswarnung | ● | ●
 MFA-Berichte | ● | ● 
@@ -81,4 +81,4 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

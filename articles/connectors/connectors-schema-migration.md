@@ -28,7 +28,6 @@ Um Ihre vorhandenen Logik-Apps in das neue Schema zu verschieben, führen Sie fo
 >[AZURE.NOTE] Wenn Sie die Option **Schema aktualisieren** auswählen, führen wir automatisch die Migrationsschritte aus und stellen die Codeausgabe für Sie bereit. Hiermit können Sie Ihre Definition aktualisieren. Halten Sie sich bei der Codeerstellung jedoch an bewährte Verfahren, wie sie beispielsweise weiter unten im Abschnitt **Bewährte Methoden** beschrieben werden.
 
 ##Bewährte Methoden beim Migrieren von Logik-Apps zur neuesten Schemaversion:  
-Nicht überschreiben, beginnen Sie mit der Migration zu den neuen APIs.
 
 - Kopieren Sie das migrierte Skript in eine neue Logik-App – Überschreiben Sie nicht die alte App, bis Sie Ihre Tests abgeschlossen und bestätigt haben, dass die migrierte App wie erwartet funktioniert.
 - Testen Sie Ihre Logik-App, **bevor** sie in Produktion geht.
@@ -43,4 +42,4 @@ Nicht überschreiben, beginnen Sie mit der Migration zu den neuen APIs.
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

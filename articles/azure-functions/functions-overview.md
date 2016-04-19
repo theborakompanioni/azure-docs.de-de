@@ -23,7 +23,7 @@
 
 ## Eine schnellere Möglichkeit zur Verwendung von Funktionen
 
-Schreiben Sie jede Funktion in weniger als einer Minute. Entweder für einen einfachen Auftrag zur Bereinigung einer Datenbank, oder für die Erstellung von Funktionalität, mit der Millionen von Nachrichten von verbundenen Geräten verarbeitet werden. Verwenden Sie Ihre bevorzugte Programmiersprache (C#, Node.JS, Python usw.). Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure.
+Schreiben Sie jede Funktion in weniger als einer Minute – entweder für einen einfachen Auftrag zur Bereinigung einer Datenbank oder für die Erstellung von Funktionalität, mit der Millionen von Nachrichten von verbundenen Geräten verarbeitet werden. Verwenden Sie Ihre bevorzugte Programmiersprache (C#, Node.JS, Python usw.). Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure.
 
 Azure Functions ist eine Lösung für das einfache Ausführen kleiner Codeelemente oder „Funktionen“ in der Cloud. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Dadurch kann die Entwicklung noch produktiver werden, und Sie können in wenigen Minuten [mit Ihrer ersten Funktion beginnen](functions-create-first-azure-function.md).
 
@@ -68,4 +68,8 @@ Bei einem **dynamischen App Service-Plan** müssen Sie sich keine Gedanken über
 
 Bei einem **klassischen App Service-Plan** können Sie Funktionen genauso wie Ihre Web-, mobilen und API-Apps ausführen. Dies ist eine hervorragende Lösung, wenn Sie App Service bereits für andere Anwendungen verwenden. Ihre Funktionen können ohne zusätzliche Kosten unter demselben Plan ausgeführt werden. Ausführliche Informationen finden Sie auf der Seite mit der [App Service-Preisübersicht](/pricing/details/app-service/).
 
-<!---HONumber=AcomDC_0406_2016-->
+## Melden von Problemen
+
+[AZURE.INCLUDE [Melden von Problemen](../../includes/functions-reporting-issues.md)]
+
+<!---HONumber=AcomDC_0413_2016-->

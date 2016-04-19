@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article" 
-	ms.date="03/01/2016"
+	ms.date="04/07/2016"
 	ms.author="klam"/>
 
 #Was sind Logik-Apps?
@@ -32,7 +32,7 @@ Außerdem können Logik-Apps mit integrierten [verwalteten APIs][managedapis] ko
 
 Wie erwähnt können Sie mit Logik-Apps Geschäftsprozesse automatisieren. Hier sind einige Beispiele:
  
-* Sie können z. B. neue Datensätze in Ihrer SQL-Datenbank automatisch replizieren und per E-Mail an die Mitarbeiter mit Kundenkontakt senden.   
+* Sie können z. B. neue Datensätze in Ihrer SQL-Datenbank automatisch replizieren und per E-Mail an die Mitarbeiter mit Kundenkontakt senden.   
 * Sie können automatisch negative Tweets suchen und an einen Pufferkanal senden.
 
 Ähnliche Szenarios können über den visuellen Designer konfiguriert werden, ohne eine einzige Codezeile schreiben zu müssen. Erste Schritte zum sofortigen [Erstellen Ihrer Logik-App][create].
@@ -63,13 +63,14 @@ Es folgt eine Beschreibung einiger der wichtigsten Elemente von Logik-Apps.
 - **Verwaltete APIs:** Ihre Logik-Apps benötigen Zugriff auf Daten und Dienste. Ihr Zweck ist, Ihnen beim Herstellen von Verbindungen und Arbeiten mit Ihren Daten zu helfen. Die Liste der derzeit verfügbaren APIs finden Sie unter [Verwaltete APIs][managedapis].
 - **Trigger:** Einige verwaltete APIs können auch als Trigger fungieren. Ein Trigger startet eine neue Instanz eines Workflows basierend auf einem bestimmten Ereignis, z. B. Eingang einer E-Mail oder einer Änderung in Ihrem Azure Storage-Konto.
 -  **Aktionen** – Jeder Schritt nach dem Trigger in einem Workflow wird als Aktion bezeichnet. Jede Aktion wird in der Regel einem Vorgang in Ihren verwalteten oder benutzerdefinierten API-Apps zugeordnet.
-- **BizTalk:** Für anspruchsvollere Integrationsszenarios bieten Logik-Apps Funktionen von BizTalk. BizTalk ist die branchenführende Integrationsplattform von Microsoft. Mit BizTalk-API-Apps können Sie z. B. Validierungen, Transformationen und Regeln auf einfache Weise in Ihre Logik-App-Workflows einbinden. Unter [Was sind BizTalk-API-Apps?][biztalk] finden Sie weitere Informationen.
+- **BizTalk:** Für anspruchsvollere Integrationsszenarios bieten Logik-Apps Funktionen von BizTalk. BizTalk ist die branchenführende Integrationsplattform von Microsoft. Mit BizTalk-API-Apps können Sie z. B. Validierungen, Transformationen und Regeln auf einfache Weise in Ihre Logik-App-Workflows einbinden. Unter [Was sind BizTalk-API-Apps?][biztalk] finden Sie weitere Informationen.
 
-## Erste Schritte
+## Erste Schritte  
 
-Befolgen Sie zum Einstieg in Logik-Apps das Lernprogramm [Erstellen einer Logik-App][create].
-
-Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][appservice].
+ - Befolgen Sie zum Einstieg in Logik-Apps das Lernprogramm [Erstellen einer Logik-App][create].  
+ - [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694) 
+ - [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
+- Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][appservice].
 
 [biztalk]: app-service-logic-what-are-biztalk-api-apps.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
@@ -79,4 +80,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [rules]: app-service-logic-use-biztalk-rules.md
 [templates]: app-service-logic-use-logic-app-templates.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

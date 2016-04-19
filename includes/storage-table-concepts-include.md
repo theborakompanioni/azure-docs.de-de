@@ -27,9 +27,9 @@ Der Tabellenspeicherdienst umfasst die folgenden Komponenten:
 
 -   **Eigenschaften**: Eine Eigenschaft ist ein Name-Wert-Paar. Jede Entität kann bis zu 252 Eigenschaften zur Datenspeicherung enthalten. Jede Entität weist außerdem 3 Systemeigenschaften auf, die einen Partitionsschlüssel, einen Zeilenschlüssel und einen Zeitstempel definieren. Entitäten mit demselben Partitionsschlüssel können schneller abgefragt und in atomaren Operationen eingesetzt/aktualisiert werden. Der Zeilenschlüssel einer Entität ist ihr eindeutiger Bezeichner innerhalb einer Partition.
 
-
+Ausführliche Informationen zum Benennen von Tabellen und zu Eigenschaften finden Sie unter [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx) (Grundlegendes zum Tabellenspeicherdienst-Datenmodell).
   
   [Table1]: ./media/storage-table-concepts-include/table1.png
   [OData.org]: http://www.odata.org/
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

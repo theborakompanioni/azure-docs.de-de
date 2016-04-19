@@ -24,7 +24,7 @@ In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die N
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-+ [Xamarin Studio](http://xamarin.com/studio) 
++ [Xamarin Studio](http://xamarin.com/studio). Sie können auch Visual Studio mit Xamarin verwenden, in den Anweisungen in diesem Tutorial wird jedoch Xamarin Studio eingesetzt. Installationsanweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). 
 + [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [AZURE.NOTE] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started).
@@ -41,11 +41,11 @@ Wir erstellen eine einfache App mit Xamarin, um die Integration zu veranschaulic
 
 ###Erstellen eines neuen Xamarin.iOS-Projekts
 
-1. Starten Sie Xamarin Studio. Klicken Sie auf **Datei** -> **Neu** -> **Projektmappe** 
+1. Starten Sie Xamarin Studio. Klicken Sie auf **Datei** -> **Neu** -> **Projektmappe**. 
 
     ![][1]
 
-2. Wählen Sie **App mit Einzelansicht**, stellen Sie sicher, dass als Sprache **C#** ausgewählt ist, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie **Single View Application**, stellen Sie sicher, dass als Sprache **C#** ausgewählt ist, und klicken Sie dann auf **Weiter**.
 
     ![][2]
 
@@ -168,4 +168,4 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 [7]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-confirm-bundle.png
 [8]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-configure-push.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->
