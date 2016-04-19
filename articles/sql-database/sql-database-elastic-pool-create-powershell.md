@@ -86,9 +86,4 @@ Dieses Skript erstellt einen neuen Server. Wenn Sie also zur Eingabe eines Benut
 - [Verwalten Ihres Pools](sql-database-elastic-pool-manage-powershell.md)
 - [Erstellen elastischer Aufträge:](sql-database-elastic-jobs-overview.md) Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
 
-
-## Referenz für elastische Datenbanken
-
-Weitere Informationen zu elastischen Datenbanken und Pools für elastische Datenbanken finden Sie unter [SQL-Datenbank – Pool für elastische Datenbanken](sql-database-elastic-pool-reference.md).
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -24,7 +24,7 @@ In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die N
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-+ [Xamarin Studio](http://xamarin.com/studio) [Sie können auch Visual Studio mit Xamarin-Erweiterung verwenden, in den Anweisungen in diesem Tutorial wird jedoch Xamarin Studio-eingesetzt.]
++ [Xamarin Studio](http://xamarin.com/studio). Sie können auch Visual Studio mit Xamarin verwenden, in den Anweisungen in diesem Tutorial wird jedoch Xamarin Studio eingesetzt. Installationsanweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 + [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [AZURE.NOTE] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-android-get-started).
@@ -101,7 +101,7 @@ Xamarin Studio erstellt die App, in die wir Mobile Engagement integrieren.
  			android:label="<Your application name>"
  			android:process=":Engagement"/>
 
-4. Ersetzen Sie in dem Code, den Sie gerade eingefügt haben, `"<Your application name>"` in der Beschriftung (in "label"). Dies wird im Menü **Einstellungen** angezeigt. Hier können Benutzer die auf dem Gerät ausgeführten Dienste sehen. Sie können z. B. das Wort "Dienst" in der Beschriftung hinzufügen.
+4. Ersetzen Sie in dem Code, den Sie gerade eingefügt haben, `"<Your application name>"` in der Beschriftung (in "label"). Dies wird im Menü **Einstellungen** angezeigt. Hier können Benutzer die auf dem Gerät ausgeführten Dienste sehen. Sie können z. B. das Wort "Dienst" in der Beschriftung hinzufügen.
 
 ###Senden eines Bildschirms an Mobile Engagement
 
@@ -131,4 +131,4 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern interagieren und diese mit
 [5]: ./media/mobile-engagement-xamarin-android-get-started/5.png
 [6]: ./media/mobile-engagement-xamarin-android-get-started/6.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

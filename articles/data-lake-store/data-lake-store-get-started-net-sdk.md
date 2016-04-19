@@ -13,38 +13,40 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/07/2016"
+   ms.date="04/07/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK
 
 > [AZURE.SELECTOR]
-- [Verwenden des Portals](data-lake-store-get-started-portal.md)
-- [Mithilfe von PowerShell](data-lake-store-get-started-powershell.md)
-- [Verwenden des .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Verwenden der Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
-- [Verwenden von Node.js](data-lake-store-manage-use-nodejs.md)
+- [Portal](data-lake-store-get-started-portal.md)
+- [PowerShell](data-lake-store-get-started-powershell.md)
+- [.NET SDK](data-lake-store-get-started-net-sdk.md)
+- [Java SDK](data-lake-store-get-started-java-sdk.md)
+- [REST-API](data-lake-store-get-started-rest-api.md)
+- [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
+- [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Azure Data Lake-Konto erstellen und grundlegende Vorgänge ausführen, z. B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw. Weitere Informationen über Data Lake finden Sie unter [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md).
+Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Azure Data Lake-Konto erstellen und grundlegende Vorgänge ausführen, z. B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw. Weitere Informationen über Data Lake finden Sie unter [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md).
 
 ## Voraussetzungen
 
 * Visual Studio 2013 oder 2015 Die folgenden Anweisungen verwenden Visual Studio 2015.
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
-* Erstellen Sie eine AAD-Anwendung (Azure Active Directory), und rufen Sie deren **Client-ID** und den **Antwort-URI** ab. Weitere Informationen über AAD-Anwendungen und Anweisungen zum Abrufen einer Client-ID finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md). Der Antwort-URI steht auch über das Portal zur Verfügung, sobald Sie die Anwendung erstellt haben.
+* **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+* Erstellen Sie eine AAD-Anwendung (Azure Active Directory), und rufen Sie deren **Client-ID** und den **Antwort-URI** ab. Weitere Informationen zu AAD-Anwendungen und Anweisungen zum Abrufen einer Client-ID finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md). Der Antwort-URI steht auch über das Portal zur Verfügung, sobald Sie die Anwendung erstellt haben.
 
 ## Wie authentifiziere ich mich mithilfe von Azure Active Directory?
 
 Der folgende Codeausschnitt stellt zwei Methoden für die Authentifizierung bereit:
 
-* **Interaktiv**: Ein Benutzer meldet sich über die Anwendung an. Diese Option wird in der Methode `AuthenticateUser` im folgenden Codeausschnitt implementiert.
+* **Interaktiv:** Ein Benutzer meldet sich über die Anwendung an. Diese Option wird in der Methode `AuthenticateUser` im folgenden Codeausschnitt implementiert.
 
-* **Nicht interaktiv**: Die Anwendung stellt eigene Anmeldeinformationen bereit. Diese Option wird in der Methode `AuthenticateAppliaction` im folgenden Codeausschnitt implementiert.
+* **Nicht interaktiv:** Die Anwendung stellt eigene Anmeldeinformationen bereit. Diese Option wird in der Methode `AuthenticateAppliaction` im folgenden Codeausschnitt implementiert.
 
 Auch wenn der folgende Codeausschnitt Methoden für beide Ansätze zur Verfügung stellt, wird in diesem Artikel die Methode `AuthenticateUser` verwendet. Für diese Methode müssen Sie die Client-ID und den Antwort-URI der AAD-Anwendung angeben. Im Link unter „Voraussetzungen“ finden Sie Anweisungen, wie Sie diese Informationen erhalten können.
 
->[AZURE.NOTE] Wenn Sie den Codeausschnitt ändern und stattdessen die Methode `AuthenticateApplication` verwenden möchten, müssen Sie zusätzlich zu Client-ID und Antwort-URI auch den Clientauthentifizierungsschlüssel als Eingabe für die Methode angeben. Im Artikel [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md) finden Sie auch Informationen zum Generieren und Abrufen des Clientauthentifizierungsschlüssels.
+>[AZURE.NOTE] Wenn Sie den Codeausschnitt ändern und stattdessen die Methode `AuthenticateApplication` verwenden möchten, müssen Sie zusätzlich zu Client-ID und Clientantwort-URI auch den Clientauthentifizierungsschlüssel als Eingabe für die Methode angeben. Im Artikel [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md) finden Sie auch Informationen zum Generieren und Abrufen des Clientauthentifizierungsschlüssels.
 
 
 
@@ -82,7 +84,7 @@ Auch wenn der folgende Codeausschnitt Methoden für beide Ansätze zur Verfügun
 
 	5. Schließen Sie den **NuGet-Paket-Manager**.
 
-7. Öffnen Sie die Datei **Program.cs**, und ersetzen Sie den vorhandenen Codeblock durch folgenden Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z. B. **\_adlsAccountName** und **\_resourceGroupName**, und ersetzen Sie die Platzhalter für **APPLICATION-CLIENT-ID**, **APPLICATION-REPLY-URI** und **SUBSCRIPTION-ID**.
+7. Öffnen Sie die Datei **Program.cs**, und ersetzen Sie den vorhandenen Codeblock durch folgenden Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z.B. **\_adlsAccountName** und **\_resourceGroupName**, und ersetzen Sie die Platzhalter für **APPLICATION-CLIENT-ID**, **APPLICATION-REPLY-URI** und **SUBSCRIPTION-ID**.
 
 	Dieser Code erstellt zunächst ein Konto im Data Lake-Speicher, erstellt dort Ordner, lädt Dateien hoch und dann wieder herunter und löscht schließlich das Konto. Wenn Sie Beispieldaten zum Hochladen verwenden möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) herunterladen.
 
@@ -307,12 +309,6 @@ Auch wenn der folgende Codeausschnitt Methoden für beide Ansätze zur Verfügun
 
 8. Erstellen Sie die Anwendung, und führen Sie sie aus. Befolgen Sie die Anweisungen zum Ausführen und Fertigstellen der Anwendung.
 
-## Weitere Methoden zum Erstellen eines Data Lake-Speicherkontos
-
-- [Erste Schritte mit Data Lake-Speicher mithilfe des Portals](data-lake-store-get-started-portal.md)
-- [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)
-- [Erste Schritte mit Data Lake-Speicher mithilfe von Azure CLI](data-lake-store-get-started-cli.md)
-
 
 ## Nächste Schritte
 
@@ -320,4 +316,4 @@ Auch wenn der folgende Codeausschnitt Methoden für beide Ansätze zur Verfügun
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

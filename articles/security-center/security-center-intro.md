@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="04/11/2016"
    ms.author="terrylan"/>
 
 # Einführung in Azure Security Center
@@ -54,7 +54,7 @@ Sie können Richtlinien für Ihre Azure-Abonnements und Ressourcengruppen gemä�
 
 > [AZURE.NOTE] Um eine Sicherheitsrichtlinie auf Abonnementebene oder Ressourcengruppenebene zu ändern, müssen Sie der Besitzer des Abonnements oder ein Mitwirkender sein.
 
-Klicken Sie auf dem Blatt **Security Center** auf die Kachel **Sicherheitsrichtlinie**, um eine Liste Ihrer Abonnements und Ressourcengruppen anzuzeigen.
+Klicken Sie auf dem Blatt **Security Center** auf die Kachel **Richtlinie**, um eine Liste mit Ihren Abonnements und Ressourcengruppen anzuzeigen.
 
 ![Blatt „Security Center“][2]
 
@@ -100,9 +100,9 @@ Klicken Sie auf die Kachel **Empfehlungen**, um eine Liste mit Empfehlungen zu e
 
 ### Ressourcenintegrität
 
-Auf der Kachel **Ressourcenintegrität** wird der Gesamtsicherheitsstatus der Umgebung nach Ressourcentyp angezeigt, z. B. virtuelle Computer, Webanwendungen und weitere Ressourcen.
+Auf der Kachel **Sicherheitsintegrität von Ressourcen** wird der Gesamtsicherheitsstatus der Umgebung nach Ressourcentyp (virtuelle Computer, Webanwendungen und andere Ressourcen) angezeigt.
 
-Wählen Sie auf der Kachel **Ressourcenintegrität** einen Ressourcentyp aus, um weitere Informationen anzuzeigen, einschließlich einer Liste aller potenziellen Sicherheitsrisiken, die erkannt wurden. (Unten im Beispiel ist **Virtuelle Computer** ausgewählt.)
+Wählen Sie auf der Kachel **Sicherheitsintegrität von Ressourcen** einen Ressourcentyp aus, um weitere Informationen anzuzeigen, einschließlich einer Liste aller potenziellen Sicherheitsrisiken, die erkannt wurden. (Im folgenden Beispiel ist **Virtuelle Computer** ausgewählt.)
 
 ![Kachel „Ressourcenintegrität“][6]
 
@@ -123,6 +123,14 @@ Wenn Sie eine Warnung auswählen, werden weitere Informationen zum Angriff sowie
 
 ![Details der Sicherheitswarnung][8]
 
+### Partnerlösungen
+
+Mit der Kachel **Partnerlösungen** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind. Von den Lösungen ausgegebene Warnungen werden in Security Center angezeigt.
+
+Wählen Sie die Kachel **Partnerlösungen** aus. Ein Blatt mit einer Liste aller verbundenen Partnerlösungen wird geöffnet.
+
+![Partnerlösungen][9]
+
 ## Erste Schritte
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Security Center wird mit Ihrem Azure-Abonnement aktiviert. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
@@ -133,12 +141,12 @@ Unter [Erste Schritte mit Azure Security Center](security-center-get-started.md)
 ## Nächste Schritte
 In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie die ersten Schritte zu seiner Nutzung vorgestellt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Azure Security Center – häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog:](http://blogs.msdn.com/b/azuresecurity/) enthält Neuigkeiten und Informationen zur Azure-Sicherheit.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
+- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie sicherheitsbezogene Neuigkeiten und Informationen zu Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-intro/security-tile.PNG
@@ -149,5 +157,6 @@ In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie di
 [6]: ./media/security-center-intro/resources-health.png
 [7]: ./media/security-center-intro/security-alert.png
 [8]: ./media/security-center-intro/security-alert-detail.png
+[9]: ./media/security-center-intro/partner-solutions.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

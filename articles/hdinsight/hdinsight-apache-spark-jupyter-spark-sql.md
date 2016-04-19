@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/21/2016"
+	ms.date="04/08/2016"
 	ms.author="nitinme"/>
 
 
@@ -30,7 +30,7 @@ Hier erfahren Sie, wie Sie einen Apache Spark-Cluster in HDInsight erstellen und
 
 - **Ein Azure-Abonnement**. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie über ein Azure-Abonnement verfügen. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-- **Ein Secure Shell-Client (SSH)**: Linux-, Unix und OS X-Systeme stellen einen SSH-Client über den Befehl `ssh` bereit. Für Windows-Systeme wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
+- **Ein Secure Shell-Client (SSH)**: Linux-, Unix und OS X-Systeme stellen einen SSH-Client über den Befehl `ssh` bereit. Für Windows-Systeme wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
     
 - **Secure Shell-Schlüssel (SSH) (optional)**: Sie können das SSH-Konto, mit dem die Verbindung zum Cluster hergestellt wird, mit einem Kennwort oder einem öffentlichen Schlüssel sichern. Die Verwendung eines Kennworts ermöglicht Ihnen einen schnellen Einstieg. Verwenden Sie diese Option, wenn Sie ein Cluster schnell erstellen und einige Testaufträge ausführen möchten. Die Verwendung eines Schlüssels bietet höhere Sicherheit. Allerdings sind hierfür zusätzliche Schritte zur Einrichtung erforderlich. Sie sollten diesen Ansatz verwenden, wenn Sie einen Produktionscluster erstellen. In diesem Artikel verwenden wir ein Kennwort. Anweisungen zum Erstellen und Verwenden von SSH-Schlüsseln mit HDInsight finden Sie in den folgenden Artikeln:
 
@@ -73,22 +73,22 @@ In diesem Abschnitt erstellen Sie mithilfe einer Azure ARM-Vorlage einen HDInsig
 
 5\. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
 
-6\. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung "Bereitstellung für Vorlagenbereitstellung wird gesendet" angezeigt. Das Erstellen des Clusters und der SQL-Datenbank dauert ca. 20 Minuten.
+6\. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung "Bereitstellung für Vorlagenbereitstellung wird gesendet" angezeigt. Das Erstellen des Clusters und der SQL-Datenbank dauert ca. 20 Minuten.
 
 
 
 ## Ausführen von Spark-SQL-Abfragen mit einem Jupyter Notebook
 
-In diesem Abschnitt verwenden Sie Jupyter Notebook, um Spark-SQL-Abfragen für einen Spark-Cluster auszuführen. Standardmäßig verfügt ein Jupyter Notebook über einen Kernel vom Typ **Python2**. HDInsight Spark-Cluster bieten zwei zusätzliche Kernel, die Sie für das Jupyter Notebook verwenden können. Dies sind:
+In diesem Abschnitt verwenden Sie Jupyter Notebook, um Spark-SQL-Abfragen für einen Spark-Cluster auszuführen. Standardmäßig verfügt ein Jupyter Notebook über einen Kernel vom Typ **Python2**. HDInsight Spark-Cluster bieten zwei zusätzliche Kernel, die Sie für das Jupyter Notebook verwenden können. Dies sind:
 
 * **PySpark** (für in Python geschriebene Anwendungen)
 * **Spark** (für in Scala geschriebene Anwendungen)
 
 In diesem Artikel verwenden Sie den PySpark-Kernel. Im Artikel [In Jupyter-Notebooks verfügbare Kernel mit Spark-HDInsight-Clustern](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels) finden Sie ausführliche Informationen über die Vorteile der Verwendung des PySpark-Kernels. Zwei der wichtigsten Vorteile des PySpark-Kernels sind jedoch:
 
-* Sie müssen keine Kontexte für Spark, SQL und Hive festlegen. Diese werden automatisch für Sie festgelegt.
-* Sie können verschiedene Zellen-Magics (z. B. %%sql oder %%hive) verwenden, um die SQL- oder Hive-Abfragen ohne vorherige Codeausschnitte direkt auszuführen.
-* Die Ausgabe für SQL- oder Hive-Abfragen wird automatisch angezeigt.
+* Sie müssen keine Kontexte für Spark und Hive festlegen. Diese werden automatisch für Sie festgelegt.
+* Sie können Zellen-Magics wie etwa `%%sql` verwenden, um die SQL- oder Hive-Abfragen ohne vorherige Codeausschnitte direkt auszuführen.
+* Die Ausgabe für die SQL- oder Hive-Abfragen wird automatisch angezeigt.
 
 ### Erstellen von Jupyter Notebook mit PySpark-Kernel 
 
@@ -108,7 +108,7 @@ In diesem Artikel verwenden Sie den PySpark-Kernel. Im Artikel [In Jupyter-Noteb
 
 	![Angeben eines neuen Namens für das Notebook](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Angeben eines neuen Namens für das Notebook")
 
-4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark-, SQL- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
+4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
 		from pyspark.sql.types import *
 		
@@ -135,7 +135,7 @@ In diesem Artikel verwenden Sie den PySpark-Kernel. Im Artikel [In Jupyter-Noteb
 		# Register the data fram as a table to run queries against
 		hvacdf.registerTempTable("hvac")
 
-5. Da Sie einen PySpark-Kernel verwenden, können Sie jetzt direkt eine SQL-Abfrage für die temporäre Tabelle **hvac**, die Sie gerade mit der `%%sql`-Magic erstellt haben, ausführen. Weitere Informationen zur `%%sql`-Magic sowie anderen Magics in Verbindung mit dem PySpark-Kernel finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Spark-Clustern unter HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels).
+5. Da Sie einen PySpark-Kernel verwenden, können Sie jetzt direkt eine SQL-Abfrage für die temporäre Tabelle **hvac** ausführen, die Sie gerade mit der `%%sql`-Magic erstellt haben. Weitere Informationen zur `%%sql`-Magic sowie zu anderen mit dem PySpark-Kernel verfügbaren Magics finden Sie unter [In Jupyter-Notebooks verfügbare Kernel mit Spark-HDInsight-Clustern](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels).
 		
 		%%sql
 		SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = "6/1/13"
@@ -206,4 +206,4 @@ In diesem Artikel verwenden Sie den PySpark-Kernel. Im Artikel [In Jupyter-Noteb
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

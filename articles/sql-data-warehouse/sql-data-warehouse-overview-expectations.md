@@ -3,7 +3,7 @@
    description="Übersicht über die Funktionen der öffentlichen Preview-Version und Ziele in Hinblick auf die allgemeine Verfügbarkeit von SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
+   authors="happynicolle"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="04/12/2016"
+   ms.author="mausher;barbkess;sonyama;nicw"/>
 
 # Erwartungen an SQL Data Warehouse Preview
 
@@ -72,4 +72,4 @@ SQL Data Warehouse speichert die Daten auf einem oder mehreren Serverknoten, auf
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -11,18 +11,18 @@
 	ms.service="na"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
-	ms.devlang="na" 
+	ms.devlang="na"
 	ms.topic="hero-article"
 	ms.date="12/16/2015"
 	ms.author="dwrede"/>
 
 # Übersicht über das Microsoft Azure-Portal
 
-Das Microsoft Azure-Portal ist eine zentrale Anlaufstelle zum Bereitstellen und Verwalten von Azure-Ressourcen. Dieses Lernprogramm macht Sie mit dem Portal vertraut und zeigt Ihnen, wie die folgenden wichtigen Funktionen verwendet werden: 
-- Der **Marketplace**, auf dem Sie Tausende Artikel von Microsoft oder Drittanbietern durchsuchen können, die gekauft und/oder bereitgestellt werden können. 
-- **Einheitliche und skalierbare Suchfunktion**, mit der Sie die Ressourcen, die Sie interessieren, leichter finden und verschiedene Verwaltungsvorgänge ausführen können. 
-- **Konsistente Verwaltungsbereiche** („Blades“), mit denen Sie die große Vielfalt der Azure-Dienste verwalten können und die Ihnen Einstellungen, Aktionen, Abrechnungsinformationen, Zustandsdaten, Nutzungsdaten und vieles mehr auf einheitliche Art und Weise zur Verfügung stellen. 
-- Ein **individuelles Benutzererlebnis**, das es Ihnen ermöglicht, eine persönliche Startseite zu erstellen, die Ihnen bei jedem Anmelden die gewünschten Informationen anzeigt. Sie können auch die Verwaltungsbereiche anpassen, die Kacheln enthalten.
+Das Microsoft Azure-Portal ist eine zentrale Anlaufstelle zum Bereitstellen und Verwalten von Azure-Ressourcen. In diesem Tutorial lernen Sie das Portal kennen und erfahren, wie Sie die folgenden wichtigen Funktionen verwenden:
+- Einen **umfassenden Marketplace**, auf dem für Sie Tausende von Angeboten von Microsoft und anderen Anbietern verfügbar sind, die erworben bzw. bereitgestellt werden können.
+- Eine **einheitliche und skalierbare Suchumgebung**, in der Sie die gewünschten Ressourcen leicht finden und verschiedene Verwaltungsvorgänge durchführen können.
+- **Konsistente Verwaltungsseiten** (oder -blätter), mit denen Sie die vielen unterschiedlichen Dienste von Azure verwalten können, indem Sie Einstellungen, Aktionen, Rechnungsinformationen, Integritätsüberwachungs- und Nutzungsdaten und vieles mehr auf einheitliche Weise verfügbar machen.
+- Eine **persönliche Benutzeroberfläche**, auf der Sie einen angepassten Startbildschirm mit den Informationen erstellen können, die beim Anmelden immer angezeigt werden sollen. Sie können auch die Verwaltungsbereiche anpassen, die Kacheln enthalten.
 
  ![Azure-Portal-UI-Ausrichtung][UIOrientation]
 
@@ -51,7 +51,7 @@ Häufig verwendete Ressourcen können Sie an Ihr Startmenü anheften. Möglicher
 
 ## Verwalten und Delegieren des Zugriffs auf eine Ressource
 
-Von diesem Bereich aus können Sie sich mithilfe des Remotedesktop mit dem virtuellen Computer verbinden, wichtige Leistungsmetriken überwachen, den Zugriff auf den virtuellen Computer über rollenbasierten Zugriff (RBAC) steuern, den virtuellen Computer konfigurieren und andere wichtige Verwaltungsaufgaben ausführen. Das Delegieren des Zugriffs auf der Grundlage von Rollen ist entscheidend für skalierbares Verwalten. Klicken Sie [hier](role-based-access-control-configure.md), um mehr darüber zu erfahren. Um den Zugriff auf eine Ressource zu delegieren, führen Sie die folgenden Aktionen aus:
+Von diesem Bereich aus können Sie sich mithilfe des Remotedesktop mit dem virtuellen Computer verbinden, wichtige Leistungsmetriken überwachen, den Zugriff auf den virtuellen Computer über rollenbasierten Zugriff (RBAC) steuern, den virtuellen Computer konfigurieren und andere wichtige Verwaltungsaufgaben ausführen. Das Delegieren des Zugriffs auf der Grundlage von Rollen ist entscheidend für skalierbares Verwalten. Klicken Sie [hier](./active-directory/role-based-access-control-configure.md), um mehr darüber zu erfahren. Um den Zugriff auf eine Ressource zu delegieren, führen Sie die folgenden Aktionen aus:
 
 1.	Navigieren Sie zu der Ressource.
 2.	Klicken Sie im Abschnitt „Essentials“ auf „Alle Einstellungen“.
@@ -80,13 +80,14 @@ Sollten Sie auf ein Problem stoßen, sind wir für Sie da. Das Portal verfügt �
 
 ## Zusammenfassung
 
-Überprüfen wir, was Sie in diesem Lernprogramm gelernt haben: 
-- Sie haben gelernt, sich zu registrieren, ein Abonnement zu erhalten und zu dem Portal zu navigieren 
-- Sie haben die Benutzeroberfläche des Portals kennengelernt und erfahren, wie man Ressourcen erstellt und danach sucht 
-- Sie haben die Struktur des Portals bzw. die Verwaltungsbereiche (Blades) kennengelernt und erfahren, wie verschiedene Arten von Ressourcen einheitlich verwaltet werden können 
-- Sie wissen nun, wie Sie das Portal anpassen können, um die gewünschten Informationen griffbereit zu haben 
-- Sie wissen nun, wie der Zugriff auf Ressourcen mithilfe des rollenbasierten Zugriffs (RBAC) gesteuert werden kann 
-- Sie haben erfahren, wie Sie auf Hilfe und Support zugreifen können.
+Wir fassen noch einmal zusammen, was Sie in diesem Tutorial gelernt haben:
+- Sie haben gelernt, wie Sie sich anmelden, sich für ein Abonnement registrieren und auf das Portal zugreifen.
+- Sie haben gelernt, wie Sie sich auf der Benutzeroberfläche des Portals orientieren und Ressourcen erstellen und suchen.
+- Sie haben gelernt, wie Sie eine Ressource erstellen und nach Ressourcen suchen.
+- Sie haben die Blätter für die Struktur und die Verwaltung kennengelernt und erfahren, wie Sie unterschiedliche Arten von Ressourcen einheitlich verwalten können.
+- Sie haben gelernt, wie Sie das Portal so anpassen können, dass die wichtigen Informationen im Vordergrund stehen.
+- Sie haben gelernt, wie Sie den Zugriff auf Ressourcen mit der rollenbasierten Zugriffssteuerung (RBAC) kontrollieren.
+- Sie haben erfahren, wie Sie Hilfe und Support erhalten.
 
 Das Microsoft Azure-Portal vereinfacht die Erstellung und Verwaltung Ihrer Anwendungen in der Cloud radikal. Um auf dem Laufenden zu bleiben, besuchen Sie unseren [Verwaltungsblog](https://azure.microsoft.com/blog/topics/management/). Wir sind stets offen für [Feedback](https://feedback.azure.com/forums/223579-azure-preview-portal/) und nehmen ständig Verbesserungen vor. Der Blog von [ScottGu](http://weblogs.asp.net/scottgu) ist eine weitere umfangreiche Quelle für alle Azure-Aktualisierungen.
 
@@ -97,4 +98,4 @@ Das Microsoft Azure-Portal vereinfacht die Erstellung und Verwaltung Ihrer Anwen
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

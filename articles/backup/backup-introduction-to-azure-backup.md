@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/28/2016"
+	ms.date="04/06/2016"
 	ms.author="jimpark; trinadhk"/>
 
 # Was ist Azure Backup?
@@ -56,7 +56,7 @@ Als eine hybride Sicherungslösung besteht Azure Backup aus mehreren Komponenten
 | Azure Backup-Agent (MARS) | <li>Ermöglicht die Sicherung von Dateien und Ordnern auf einem Computer mit Windows-Betriebssystem – physisch oder virtuell (VMs können sich an einem beliebigen Ort lokal oder unter Azure befinden)<li>Kein separater Sicherungsserver erforderlich<li>Verwendung des Azure-Sicherungstresors | <li>Dreimal pro Tag Sicherung bzw. Wiederherstellung auf Dateiebene<li>Nur Wiederherstellung auf Datei-/Ordner-/Volumeebene, nicht anwendungsorientiert<li>Keine Unterstützung von Linux | Dateien/Ordner/Volumes |
 | System Center Data Protection Manager | <li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure-Sicherungstresors möglich<li>Linux-Unterstützung (bei Hosting unter Hyper-V) | <li>Fehlende heterogene Unterstützung (VMware-VM-Sicherung, Oracle-Workloadsicherung) | Dateien/Ordner/Volumes<br>/VMs/Anwendungen |
 | Microsoft Azure Backup Server | <li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure-Sicherungstresors möglich<li>Linux-Unterstützung (bei Hosting unter Hyper-V)<li>Keine System Center-Lizenz erforderlich | <li>Fehlende heterogene Unterstützung (VMware-VM-Sicherung, Oracle-Workloadsicherung)<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung | Dateien/Ordner/Volumes<br>/VMs/Anwendungen |
-| Azure IaaS-VM-Sicherung | <li>Native Sicherungen für Windows/Linux<li>Keine spezielle Agentinstallation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur<li>Verwendung des Azure-Sicherungstresors möglich | <li>Einmal pro Tag Sicherung/Wiederherstellung auf Datenträgerebene<li>Lokale Sicherung nicht möglich | VMs<br>Einzelne Datenträger |
+| Azure IaaS-VM-Sicherung | <li>Native Sicherungen für Windows/Linux<li>Keine spezielle Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur | <li>Sicherung/Wiederherstellung auf Datenträgerebene (einmal pro Tag)<li>Keine lokale Sicherung möglich | VMs<br>Alle Datenträger (mithilfe von PowerShell) |
 
 ## Welche Anwendungen und Workloads kann ich sichern?
 
@@ -69,8 +69,7 @@ Als eine hybride Sicherungslösung besteht Azure Backup aus mehreren Komponenten
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
-| Azure IaaS-VMs (Windows) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
-| Azure IaaS-VMs (Linux) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
+| Azure IaaS-VMs (Windows) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) | | Azure IaaS-VMs (Linux) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
 
 ## ARM- und Linux-Unterstützung
 
@@ -79,7 +78,7 @@ Als eine hybride Sicherungslösung besteht Azure Backup aus mehreren Komponenten
 | Azure Backup-Agent (MARS) | Ja | Keine (nur Windows-basierter Agent) |
 | System Center Data Protection Manager | Ja (Agent in Gastbetriebssystem) | Nur Hyper-V (nicht Azure VM) Nur dateikonsistente Sicherung möglich |
 | Azure Backup Server (MABS) | Ja (Agent in Gastbetriebssystem) | Nur Hyper-V (nicht Azure VM) Nur dateikonsistente Sicherung möglich (wie bei DPM) |
-| Azure IaaS-VM-Sicherung | In Kürze verfügbar | In Kürze verfügbar – V2 Linux-VMs <br><br>(Konsistenz auf Dateisystemebene) |
+| Azure IaaS-VM-Sicherung | Öffentliche Vorschau | Öffentliche Vorschau – virtuelle Linux-Computer im Resource Manager-Bereitstellungsmodell <br>(Konsistenz auf Dateisystemebene)<br><br>Ja für virtuelle Linux-Computer im klassischen Bereitstellungsmodell |
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
@@ -188,7 +187,7 @@ Die folgenden Konzepte dienen Ihnen als Unterstützung beim Treffen wichtiger En
 
 | Konzept | Details | Sicherung | Notfallwiederherstellung |
 | ------- | ------- | ------ | ----------------- |
-| Recovery Point Objective (RPO) | Dies ist der Umfang des zulässigen Datenverlusts, falls eine Wiederherstellung durchgeführt werden muss. | Sicherungslösungen weisen eine große Varianz beim akzeptablen RPO auf. Sicherungen virtueller Computer haben zumeist ein RPO von einem Tag, während Datenbanksicherungskopien RPOs von bis zu 15 Minuten aufweisen. | Lösungen für die Notfallwiederherstellung haben niedrige RPO-Werte. Die Kopie für die Notfallwiederherstellung kann einige Sekunden bzw. einige Minuten hinterherhinken. |
+| Recovery Point Objective (RPO) | Dies ist der Umfang des zulässigen Datenverlusts, falls eine Wiederherstellung durchgeführt werden muss. | Sicherungslösungen weisen eine große Varianz beim akzeptablen RPO auf. Sicherungen virtueller Computer haben zumeist ein RPO von einem Tag, während Datenbanksicherungskopien RPOs von bis zu 15 Minuten aufweisen. | Lösungen für die Notfallwiederherstellung haben niedrige RPO-Werte. Die Kopie für die Notfallwiederherstellung kann einige Sekunden bzw. einige Minuten hinterherhinken. |
 | Recovery Time Objective (RTO) | Der Zeitraum, der für eine Wiederherstellung erforderlich ist. | Aufgrund des höheren RPO-Werts ist die Datenmenge, die eine Sicherungslösung verarbeiten muss, meist wesentlich größer, was zu längeren RTOs führt. Beispielsweise kann das Wiederherstellen von Daten von Bändern Tage dauern, was davon abhängt, wie lange der Transport des Bands von einem standortexternen Aufbewahrungsort dauert. | Lösungen für die Notfallwiederherstellung weisen kleinere RTOs auf, da sie synchroner mit der Quelle sind. Weniger Änderungen müssen verarbeitet werden. |
 | Aufbewahrung | Die Dauer der Datenspeicherung. | Für Szenarien, für die eine operative Wiederherstellung (Beschädigung von Daten, versehentliches Löschen von Dateien, Ausfall des Betriebssystems) erforderlich ist, werden die Sicherungsdaten normalerweise maximal 30 Tage aufbewahrt.<br>Aus Gründen der Compliance kann es sein, dass Daten mehrere Monate oder sogar Jahre gespeichert werden müssen. In solchen Fällen sind Sicherungsdaten ideal für die Archivierung geeignet. | Für die Notfallwiederherstellung werden nur betriebliche Wiederherstellungsdaten benötigt. Dies dauert normalerweise einige Stunden oder bis zu einem Tag. Aufgrund der differenzierten Datensammlung in Lösungen für die Notfallwiederherstellung empfehlen sich Notfallwiederherstellungsdaten nicht für eine langfristige Aufbewahrung. |
 
@@ -211,4 +210,4 @@ Da diese Tutorials als schnelle Hilfe beim Sichern dienen sollen, wird nur der d
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

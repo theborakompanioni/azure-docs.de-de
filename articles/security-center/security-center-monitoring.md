@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="04/11/2016"
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
@@ -28,13 +28,13 @@ Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedroh
 Überwachung wird häufig als Beobachten und Warten auf ein Eintreten eines Ereignisses aufgefasst, damit auf diese Situation reagiert werden kann. Sicherheitsüberwachung bezieht sich auf eine proaktive Strategie, bei der Ihre Ressourcen überwacht werden, um Systeme zu erkennen, die nicht den Unternehmensstandards oder bewährten Methoden entsprechen.
 
 ##Überwachung der Sicherheitsintegrität
-Nachdem Sie die [Sicherheitsrichtlinien](security-center-policies.md) für die Ressourcen des Abonnements aktiviert haben, analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Informationen zur Konfiguration Ihres Netzwerks sind sofort verfügbar, aber kann es eine Stunde oder länger dauern, bevor Informationen zur Konfiguration einer virtuellen Maschine – z. B. zu Sicherheitsupdatestatus und Betriebssystemkonfiguration – verfügbar sind. Sie können den Sicherheitsstatus Ihrer Ressourcen zusammen mit allen Problemen auf dem Blatt **Sicherheitsintegrität von Ressourcen** anzeigen. Eine Liste dieser Probleme können Sie auch auf dem Blatt **Empfehlungen** anzeigen.
+Nachdem Sie die [Sicherheitsrichtlinien](security-center-policies.md) für die Ressourcen des Abonnements aktiviert haben, analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Informationen zur Konfiguration Ihres Netzwerks sind sofort verfügbar, aber kann es eine Stunde oder länger dauern, bevor Informationen zur Konfiguration einer virtuellen Maschine – z. B. zu Sicherheitsupdatestatus und Betriebssystemkonfiguration – verfügbar sind. Sie können den Sicherheitsstatus Ihrer Ressourcen zusammen mit allen Problemen auf dem Blatt **Sicherheitsintegrität von Ressourcen** anzeigen. Eine Liste dieser Probleme können Sie auch auf dem Blatt **Empfehlungen** anzeigen.
 
 Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
 Auf der Kachel **Ressourcensicherheitsintegrität** können Sie den Sicherheitsstatus Ihrer Ressourcen überwachen. Im Beispiel unten sehen Sie eine Reihe von Problemen mit hohem und mittlerem Schweregrad, die Aufmerksamkeit erfordern. Die Sicherheitsrichtlinien, die aktiviert sind, wirken sich auf die Arten von Sicherheitsmechanismen aus, die überwacht werden.
 
-![Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig1-new.png)
+![Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig1-new2.png)
 
 Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss – etwa ein virtueller Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) –, wird dies hier angegeben.
 
@@ -188,4 +188,4 @@ In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Az
 - [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

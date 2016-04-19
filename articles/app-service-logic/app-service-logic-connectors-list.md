@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/11/2016"
+	ms.date="04/11/2016"
 	ms.author="mandia"/>
 
 
 # Liste der Connectors und API-Apps in Logik-Apps
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemavorschauversion (Stand: 01.12.2014) für Logik-Apps. Um die Schemavorschauversion (Stand: 01.08.2015) aufzurufen, klicken Sie auf [API-Liste](../connectors/apis-list.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Um die Schemaversion 2015-08-01-preview aufzurufen, klicken Sie auf [Neue Connectorliste](../connectors/apis-list.md).
 
 Hier werden alle verfügbaren Connectors und API-Apps aufgelistet, die von Microsoft für die Verwendung in Logik-Apps erstellt wurden.
 
@@ -33,23 +33,13 @@ Name | Beschreibung
 --- | ---
 [Azure HDInsight](app-service-logic-connector-hdinsight.md) | Mit diesem Connector können Sie einen Hadoop-Cluster in Azure erstellen, verschiedene Hadoop-Aufträge übermitteln und vieles mehr.
 [Azure Service Bus](app-service-logic-connector-azureservicebus.md) | Kann Nachrichten aus Service Bus-Warteschlangen und -Themen senden sowie Nachrichten aus Service Bus-Warteschlangen und -Abonnements empfangen.
-[Azure Storage-Blob](app-service-logic-connector-azurestorageblob.md) | Stellt eine Verbindung mit dem Blob-Speicher her und kann zum Abrufen, Löschen, Auflisten usw. verwendet werden. 
 [Bing-Übersetzer](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Für Übersetzungen von Text in eine andere Sprache in Bing.
-[Box](app-service-logic-connector-box.md) | Stellt eine Verbindung mit Box her und kann zum Hochladen, Abrufen, Löschen, Auflisten und weitere Dateiaufgaben verwendet werden.
 [Chatter](app-service-logic-connector-chatter.md) | Stellt eine Verbindung mit Chatter her und kann Nachrichten posten und suchen und sogar neue Nachrichten abrufen.
-[Dropbox](app-service-logic-connector-dropbox.md) | Stellt eine Verbindung mit Dropbox her und kann zum Abrufen, Löschen, Auflisten und weitere Dateiaufgaben verwendet werden.
-[Facebook](app-service-logic-connector-facebook.md) | Stellt eine Verbindung mit Facebook her und kann Nachrichten, Bilder und mehr veröffentlichen. Sie können auch Nachrichten und Kommentare sowie Benutzerinformationen zu verschiedenen Bewertungen abrufen, einschließlich Bücher und Filme.
 [HTTP](app-service-logic-connector-http.md) | Der HTTP-Listener öffnet einen Endpunkt, der als HTTP-Server fungiert und auf eingehende HTTP- oder HTTPS-Anforderungen lauscht. Die HTTP-Aktion erfordert keine API-App und wird nativ innerhalb der Logik-Apps unterstützt.
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten.
-[Microsoft OneDrive](app-service-logic-connector-onedrive.md) | Stellt eine Verbindung mit Ihrem persönlichen Microsoft OneDrive-Ordner her und ermöglicht u. a. das Hochladen, Löschen und Auflisten von Dateien.
-[Microsoft SharePoint](app-service-logic-connector-sharepoint.md) | Stellt eine Verbindung mit dem lokalen Microsoft SharePoint-Server oder SharePoint Online her und verwaltet Dokumente sowie Listenelemente. Verschiedene Authentifizierungsmethoden wie Standardanmeldeinformationen, OAuth 2.0, Windows-Authentifizierung und formularbasierte Authentifizierung werden unterstützt.
-[Microsoft Yammer](app-service-logic-connector-yammer.md) | Stellt eine Verbindung mit Yammer her, um Nachrichten zu posten und neue Nachrichten abzurufen.
 [QuickBooks](app-service-logic-connector-quickbooks.md) | Mit diesem Connector können Sie verschiedene Aufgaben ausführen, u. a. unterschiedliche Entitäten aus Intuit QuickBooks erstellen, aktualisieren und abfragen, beispielsweise Kunden, Artikel, Rechnungen und so weiter.
 [Puffer](app-service-logic-connector-slack.md) | Herstellen einer Verbindung mit Slack und Veröffentlichen von Nachrichten auf Slack-Kanälen.
-[Salesforce](app-service-logic-connector-salesforce.md) | Stellt eine Verbindung mit Ihrem Salesforce-Konto her und dient zum Verwalten von Konten, Leads, Verkaufschancen und mehr.
 [SugarCRM](app-service-logic-connector-sugarcrm.md) | Stellt eine Verbindung mit SugarCRM Online her und dient u. a. zum Erstellen, Aktualisieren und Lesen verschiedener Modultypen, beispielsweise Konten, Kontakte usw.
-[Twilio](app-service-logic-connector-twilio.md) | Stellt eine Verbindung mit Twilio her und kann Nachrichten und verfügbare Nummern abrufen, eingehende Telefonnummern verwalten usw.
-[Twitter](app-service-logic-connector-twitter.md) | Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets.
 [Warten](app-service-logic-connector-wait.md) | Verwenden Sie diesen Connector, um die Ausführung der App zu verzögern. Die App kann für einen bestimmten Zeitraum oder bis zu einem Ereignis an einem bestimmten Zeitpunkt verzögert werden.
 
 
@@ -77,8 +67,6 @@ MQ | Stellt lokal und auf einem virtuellen Azure-Computer unter einem Windows-Be
 [Oracle-Datenbank](app-service-logic-connector-oracle.md) | Stellt eine Verbindung mit der lokalen Oracle-Datenbank her und kann Einträge in einer Datenbanktabelle erstellen, aktualisieren, abrufen und löschen.
 [POP3](app-service-logic-connector-pop3.md) (Post Office Protocol)| Stellt eine Verbindung mit einem POP3-Server her, um E-Mails mit Anlagen abzurufen.
 [SAP](app-service-logic-connector-sap.md) | Stellt eine Verbindung mit einem lokalen SAP-Server her, ruft RFCs, BAPIs und tRFCs auf und sendet IDOCs.
-[SFTP](app-service-logic-connector-sftp.md) (SSH File Transfer Protocol)| Stellt eine Verbindung mit SFTP her und kann zum Hochladen, Abrufen und Löschen von Dateien verwendet werden.
-[SMTP](app-service-logic-connector-smtp.md) (Simple Mail Transfer Protocol) | Stellt eine Verbindung mit einem SMTP-Server her und kann E-Mails mit Anlagen senden.
 
 ## Connectors als Trigger
 Mehrere Connectors bieten Trigger für Logik-Apps. Diese Trigger haben zwei Typen:
@@ -95,4 +83,4 @@ Connectors können innerhalb Ihrer Logik-App auch als Aktionen verwendet werden.
 ## Weitere Informationen zu Connectors und API-Apps
 [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md) [Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md) [Verwalten und Überwachen integrierter API-Apps und Connectors](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

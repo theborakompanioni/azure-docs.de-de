@@ -5,7 +5,7 @@
 	documentationCenter="" 
 	authors="tfitzmac" 
 	manager="timlt" 
-	editor=""/>
+	editor="tysonn"/>
 
 <tags 
 	ms.service="azure-resource-manager" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/29/2016" 
+	ms.date="04/08/2016" 
 	ms.author="tomfitz"/>
 
 
@@ -27,17 +27,19 @@ Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten un
 
 Sie können Ressourcen auch über Azure PowerShell und die Azure-Befehlszeilenschnittstelle verwalten. Weitere Informationen zur Verwendung dieser Schnittstellen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md) und [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](../xplat-cli-azure-resource-manager.md). Weitere Informationen zum Bereitstellen von Lösungen mit Visual Studio finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
-## Erstellen und Verwalten von Ressourcengruppen
+## Ressourcengruppe erstellen
 
 Wählen Sie zum Erstellen einer leeren Ressourcengruppe **Neu**, **Verwaltung** und **Ressourcengruppe**.
 
 ![Leere Ressourcengruppe erstellen](./media/resource-group-portal/create-empty-group.png)
 
-Sie vergeben einen Namen und Speicherort und wählen, falls erforderlich, ein Abonnement aus.
+Geben Sie einen Namen und Speicherort an, und wählen Sie ein Abonnement aus, falls dies erforderlich ist.
 
 ![Gruppenwerte festlegen](./media/resource-group-portal/set-group-properties.png)
 
-Nachdem die Ressourcengruppe erstellt wurde, können Sie darin Ressourcen bereitstellen. Wählen Sie zum Starten der Bereitstellung einfach **Neu**, und geben Sie den Typ von Ressource an, den Sie bereitstellen möchten.
+## Bereitstellen von Ressourcen
+
+Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie dafür Ressourcen bereitstellen. Wählen Sie zum Starten einer Bereitstellung einfach **Neu**, und geben Sie den Typ von Ressource an, den Sie bereitstellen möchten.
 
 ![Ressource bereitstellen](./media/resource-group-portal/deploy-resource.png)
 
@@ -57,15 +59,81 @@ Die Bereitstellung wird gestartet. Dies kann einige Minuten in Anspruch nehmen. 
 
 ![Benachrichtigung anzeigen](./media/resource-group-portal/view-notification.png)
 
-### Hinzufügen von Ressourcen zu einer vorhandenen Ressourcengruppe
-
-Mit dem Befehl **Hinzufügen** auf dem Blatt "Ressourcengruppen" können Sie einer Ressourcengruppe Ressourcen hinzufügen.
+Nach der Bereitstellung von Ressourcen kann es sein, dass Sie der Gruppe weitere Ressourcen hinzufügen müssen. Mit dem Befehl **Hinzufügen** im Blatt „Ressourcengruppe“ können Sie einer Ressourcengruppe Ressourcen hinzufügen.
 
 ![Ressource hinzufügen](./media/resource-group-portal/add-resource.png)
 
-Sie können die gewünschte Ressource aus der verfügbaren Liste auswählen.
+## Exportieren der Vorlage
 
-### Durchsuchen von Ressourcengruppen
+Nach dem Einrichten der Ressourcengruppe kann es sein, dass Sie die Resource Manager-Vorlage für die Ressourcengruppe anzeigen möchten. Das Exportieren der Vorlage hat zwei Vorteile:
+
+1. Sie können zukünftige Bereitstellungen der Lösung leicht automatisieren, da die gesamte Infrastruktur in der Vorlage definiert ist.
+
+2. Sie können sich mit der Vorlagensyntax vertraut machen, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
+
+Über das Portal können Sie entweder eine Vorlage generieren, die den aktuellen Status Ihrer Ressourcengruppe darstellt, oder die Vorlage abrufen, die für eine bestimmte Bereitstellung verwendet wurde. Beide Optionen werden in diesem Thema veranschaulicht.
+
+Das Exportieren der Vorlage für eine Ressourcengruppe ist hilfreich, wenn Sie Änderungen an einer Ressourcengruppe vorgenommen haben und die JSON-Darstellung ihres aktuellen Zustands abrufen müssen. Die generierte Vorlage enthält aber nur eine minimale Anzahl von Parametern und keine Variablen. Die meisten Werte in der Vorlage sind hartcodiert. Vor dem Bereitstellen der generierten Vorlage kann es ratsam sein, weitere Werte in Parameter zu konvertieren, damit Sie die Bereitstellung für unterschiedliche Umgebungen anpassen können.
+
+Das Exportieren der Vorlage für eine bestimmte Bereitstellung ist hilfreich, wenn Sie die eigentliche Vorlage anzeigen möchten, die zum Bereitstellen von Ressourcen verwendet wurde. Die Vorlage enthält alle Parameter und Variablen, die für die ursprüngliche Bereitstellung definiert wurden. Wenn eine Person in Ihrer Organisation aber Änderungen an der Ressourcengruppe vorgenommen hat, die über die Definition in der Vorlage hinausgehen, stellt diese Vorlage nicht den aktuellen Zustand der Ressourcengruppe dar.
+
+> [AZURE.NOTE] Die Funktion zum Exportieren von Vorlagen befindet sich in der Vorschau, und das Exportieren einer Vorlage wird derzeit nicht für alle Ressourcentypen unterstützt. Wenn Sie versuchen, eine Vorlage zu exportieren, wird ggf. ein Fehler mit dem Hinweis angezeigt, dass einige Ressourcen nicht exportiert wurden. Bei Bedarf können Sie diese Ressourcen nach dem Herunterladen manuell in der Vorlage definieren.
+
+### Exportieren einer Vorlage für die Ressourcengruppe
+
+Im Blatt „Ressourcengruppe“ können Sie die Vorlage exportieren, die den aktuellen Zustand der Ressource darstellt.
+
+Wählen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe die Option **Vorlage exportieren**.
+
+![Ressourcengruppe exportieren](./media/resource-group-portal/export-resource-group.png)
+
+Der Resource Manager generiert vier Dateien für Sie:
+
+1. Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird
+
+2. Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können
+
+3. Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage ausführen können
+
+4. Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage ausführen können
+
+Sehen Sie sich zuerst die Vorlage an, die die aktuelle Ressourcengruppe darstellt.
+
+![Vorlage anzeigen](./media/resource-group-portal/show-rg-template.png)
+
+Im Abschnitt **Ressourcen** werden die Definitionen für die bereitzustellenden Ressourcen angezeigt.
+
+In der Parameterdatei können Sie Parameterwerte speichern, die während der Bereitstellung übergeben werden sollen.
+
+![Parameter anzeigen](./media/resource-group-portal/show-parameters.png)
+
+Es ist eine Skriptdatei zum Bereitstellen der Vorlage über die Azure PowerShell vorhanden.
+
+![Azure PowerShell anzeigen](./media/resource-group-portal/show-powershell.png)
+
+Außerdem ist eine Skriptdatei zum Bereitstellen der Vorlage über die Azure-Befehlszeilenschnittstelle vorhanden.
+
+![Azure-Befehlszeilenschnittstelle anzeigen](./media/resource-group-portal/show-cli.png)
+
+Das Portal enthält drei Optionen zum Verwenden dieser Vorlage. Wählen Sie **Bereitstellen**, um die Vorlage jetzt erneut bereitzustellen. Wählen Sie die Option **Herunterladen**, um alle Dateien lokal herunterzuladen. Wählen Sie **Vorlage speichern**, um die Dateien zur späteren Verwendung über das Portal in Ihrem Azure-Konto zu speichern.
+
+### Herunterladen der Vorlage aus einer Bereitstellung
+
+Im Ressourcengruppen-Blatt können Sie das Datum und den Status der letzten Bereitstellung für diese Ressourcengruppe sehen. Wenn Sie den Link auswählen, wird ein Verlauf der Bereitstellungen für die Gruppe angezeigt.
+
+![Letzte Bereitstellung](./media/resource-group-portal/last-deployment.png)
+
+Wenn Sie eine Bereitstellung aus dem Verlauf auswählen, werden Details zu dieser Bereitstellung angezeigt. Bei jeder Bereitstellung von Ressourcen wird die verwendete Vorlage vom Resource Manager beibehalten. Sie können die tatsächliche Vorlage abrufen, die für die Bereitstellung verwendet wurde, indem Sie die Option **Vorlage anzeigen** wählen.
+
+![Vorlage exportieren](./media/resource-group-portal/export-template.png)
+
+Es wird die Vorlage angezeigt, die für die Bereitstellung verwendet wurde. Sie enthält alle von Ihnen definierten Parameter und Variablen.
+
+![Vorlage anzeigen](./media/resource-group-portal/show-template.png)
+
+Wie bereits erwähnt, muss dies nicht unbedingt eine vollständige Darstellung der Ressourcengruppe sein. Wenn Sie Ressourcen außerhalb dieser Bereitstellung hinzugefügt oder gelöscht haben, werden diese Aktionen nicht in der Vorlage widergespiegelt. Sie können die Vorlage, Parameterdatei und Skriptdateien wie im vorherigen Abschnitt dargestellt anzeigen. Außerdem können Sie die Vorlage wie im vorherigen Abschnitt gezeigt auch neu bereitstellen, herunterladen oder speichern.
+
+## Verwalten einer Ressourcengruppe
 
 Sie können alle Ressourcengruppen durchsuchen, indem Sie auf **Ressourcengruppen** klicken.
 
@@ -105,56 +173,24 @@ Nach dem Anheften des Abschnitts im Dashboard wird die Zusammenfassung im Dashbo
 
 Wenn Sie diese auswählen, werden sofort weitere Details zu den Daten eingeblendet.
 
-### Ressourcengruppe löschen
-
-Da Sie mit Ressourcengruppen den Lebenszyklus aller darin enthaltenen Ressourcen verwalten können, werden beim Löschen einer Ressourcengruppe alle darin enthaltenen Ressourcen gelöscht. Sie können auch einzelne Ressourcen in einer Ressourcengruppe löschen. Seien Sie vorsichtig beim Löschen einer Ressourcengruppe, da mit dieser eventuell andere Ressourcen verknüpft sind. In der Ressourcenzuordnung können Sie die verknüpften Ressourcen sehen und die notwendigen Schritte ergreifen, um nicht beabsichtigte Folgen zu vermeiden, wenn Sie Ressourcengruppen löschen. Die verknüpften Ressourcen werden nicht gelöscht, aber sie funktionieren unter Umständen nicht wie erwartet.
+Da Sie mit Ressourcengruppen den Lebenszyklus aller darin enthaltenen Ressourcen verwalten können, werden beim Löschen einer Ressourcengruppe alle darin enthaltenen Ressourcen gelöscht. Sie können auch einzelne Ressourcen in einer Ressourcengruppe löschen. Gehen Sie beim Löschen einer Ressourcengruppe mit Bedacht vor, da Ressourcen in anderen Ressourcengruppen damit verknüpft sein können. Die verknüpften Ressourcen werden nicht gelöscht, aber sie funktionieren unter Umständen nicht wie erwartet.
 
 ![Gruppe löschen](./media/resource-group-portal/delete-group.png)
-
-
-## Anzeigen vorheriger Bereitstellungen
-
-Im Ressourcengruppen-Blatt können Sie das Datum und den Status der letzten Bereitstellung für diese Ressourcengruppe sehen. Wenn Sie den Link auswählen, wird ein Verlauf der Bereitstellungen für die Gruppe angezeigt.
-
-![Letzte Bereitstellung](./media/resource-group-portal/last-deployment.png)
-
-Wenn Sie eine Bereitstellung aus dem Verlauf auswählen, werden Details zu dieser Bereitstellung angezeigt.
-
-![Zusammenfassung der Bereitstellungen](./media/resource-group-portal/deployment-summary.png)
-
-Sie sehen die einzelnen Vorgänge, die im Verlauf der Bereitstellung ausgeführt wurden. In der folgenden Abbildung sind ein erfolgreicher und ein nicht erfolgreicher Vorgang zu sehen.
-
-![Vorgangsdetails](./media/resource-group-portal/operation-details.png)
-
-Weitere Informationen zur Problembehandlung für eine Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
-
-Sie können die Vorlage abrufen, die für die Bereitstellung verwendet wurde, indem Sie die Option **Vorlage exportieren** wählen.
-
-![Vorlage exportieren](./media/resource-group-portal/export-template.png)
-
-Es wird genau die Vorlage angezeigt, die für die Bereitstellung verwendet wurde.
-
-![Vorlage anzeigen](./media/resource-group-portal/show-template.png)
-
-Es ist keine vollständige Darstellung der Ressourcengruppe. Wenn Sie Ressourcen außerhalb dieser Bereitstellung hinzugefügt oder gelöscht haben, werden diese Aktionen nicht in der Vorlage widergespiegelt. Das Blatt enthält die Vorlage , eine Parameterdatei für die Verwendung mit der Vorlage und ein PowerShell-Skript zum Bereitstellen der Vorlage. Sie können diese drei Dateien herunterladen, indem Sie die Option **In Datei speichern** wählen.
-
-## Anzeigen von Überwachungsprotokollen
-
-Das Überwachungsprotokoll enthält nicht nur Bereitstellungsvorgänge, sondern alle Verwaltungsvorgänge für Ressourcen in Ihrem Abonnement. Sie können in den Überwachungsprotokollen beispielsweise sehen, wenn eine Person in Ihrer Organisation eine App beendet hat. Wählen Sie zum Anzeigen der Überwachungsprotokolle **Alle durchsuchen** und **Überwachungsprotokolle**.
-
-![Überwachungsprotokolle durchsuchen](./media/resource-group-portal/browse-audit-logs.png)
-
-Im Abschnitt „Vorgänge“ werden die einzelnen Vorgänge angezeigt, die für Ihr Abonnement durchgeführt wurden.
-
-![Überwachungsprotokoll anzeigen](./media/resource-group-portal/view-audit-log.png)
-
-Wenn Sie einen Vorgang auswählen, werden mehr Details angezeigt, z. B. welcher Benutzer den Vorgang ausgeführt hat.
-
-Weitere Informationen zum Anzeigen der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md).
 
 ## Markieren von Ressourcen
 
 Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu organisieren. Informationen zur Verwendung von Tags über das Portal finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md).
+
+## Bereitstellen der gespeicherten Vorlage
+
+Wenn Sie eine Vorlage unter Ihrem Konto gespeichert haben, können Sie diese später anzeigen, indem Sie **Durchsuchen** und **Vorlagen** auswählen.
+
+![Vorlagen durchsuchen](./media/resource-group-portal/browse-templates.png)
+
+Ihre eigene Sammlung mit den Vorlagen wird angezeigt.
+
+![Vorlagensammlung anzeigen](./media/resource-group-portal/show-template-collection.png)
+
 
 ## Bereitstellen einer benutzerdefinierten Vorlage
 
@@ -171,6 +207,12 @@ Wählen Sie **Vorlagenbereitstellung** aus den verfügbaren Ressourcen aus.
 Nach dem Starten der Vorlagenbereitstellung können Sie die benutzerdefinierte Vorlage erstellen und Werte für die Bereitstellung festlegen.
 
 ![Vorlage erstellen](./media/resource-group-portal/show-custom-template.png)
+
+Sie können auch eine bereits vorhandene Vorlage aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) auswählen. Diese Vorlagen sind ein Beitrag der Community. Sie decken viele häufig vorkommende Szenarien ab, und unter Umständen wurde bereits eine Vorlage für einen Fall hinzugefügt, der Ihrer Bereitstellung ähnelt. Sie können die Vorlagen nach Übereinstimmungen mit Ihrem Szenario durchsuchen.
+
+![Schnellstartvorlage auswählen](./media/resource-group-portal/select-quickstart-template.png)
+
+Nachdem Sie eine Vorlage ausgewählt haben, wird sie in den Editor geladen.
 
 ## Anzeigen Ihres Abonnements und der Kosten
 
@@ -196,8 +238,7 @@ Beachten Sie, dass die einzelnen Kacheln im Dashboard jeweils eigene Anforderung
 
 ## Nächste Schritte
 
-- Eine Einführung in die Konzepte des Ressourcen-Managers finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
-- Eine Einführung zur Verwendung von Azure PowerShell für das Bereitstellen von Ressourcen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
-- Eine Einführung zur Verwendung der Azure-Befehlszeilenschnittstelle für das Bereitstellen von Ressourcen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../xplat-cli-azure-resource-manager.md).
+- Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit dem Resource Manager](../resource-group-audit.md).
+- Informationen zur Problembehandlung von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

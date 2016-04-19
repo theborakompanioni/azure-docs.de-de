@@ -14,17 +14,15 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
 
     ![][12]
 
-    Kopieren Sie den Zugriffsschlüssel für die spätere Verwendung in diesem Tutorial.
+    Kopieren Sie den primären Zugriffsschlüssel für die spätere Verwendung in diesem Tutorial.
 
 4. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Receiver**.
 
     ![][14]
 
-5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe und anschließend auf **NuGet-Pakete verwalten**.
+5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**
 
-	Das Dialogfeld **NuGet-Pakete verwalten** wird geöffnet.
-
-6. Suchen Sie nach `Microsoft Azure Service Bus Event Hub - EventProcessorHost`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+6. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Stellen Sie sicher, dass der Projektname (**Empfänger**) im Feld **Version(en)** angegeben ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
     ![][13]
 
@@ -37,7 +35,6 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
 	```
 	using Microsoft.ServiceBus.Messaging;
 	using System.Diagnostics;
-	using System.Threading.Tasks;
 	```
 
 	Ersetzen Sie anschließend den Text der Klasse durch folgenden Code:
@@ -82,25 +79,23 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
             }
 	    }
 	}
-    ````
+    ```
 
 	Diese Klasse wird von **EventProcessorHost** zur Verarbeitung der vom Event Hub empfangenen Ereignisse aufgerufen. Beachten Sie, dass die `SimpleEventProcessor`-Klasse eine Stoppuhr verwendet, um in regelmäßigen Abständen die "checkpoint"-Methode für den **EventProcessorHost**-Kontext aufzurufen. Dadurch wird sichergestellt, dass der Empfänger bei einem Neustart maximal nur die Daten verlieren kann, die in den letzten fünf Minuten verarbeitet wurden.
 
-9. Fügen Sie in der **Program**-Klasse die folgenden `using`-Anweisungen am Anfang der Datei hinzu:
+9. Fügen Sie in der **Program**-Klasse die folgende `using`-Anweisungen am Anfang der Datei hinzu:
 
 	```
 	using Microsoft.ServiceBus.Messaging;
-	using Microsoft.Threading;
-	using System.Threading.Tasks;
 	```
 
-	Ändern Sie dann wie folgt die `Main`-Methode in der `Program`-Klasse, und ersetzen Sie dabei den Namen und die Verbindungszeichenfolge des Event Hubs sowie das Speicherkonto und den Speicherschlüssel, die Sie in den vorherigen Abschnitten kopiert haben.
+	Ändern Sie dann wie folgt die `Main`-Methode in der `Program`-Klasse, und ersetzen Sie dabei den Event Hub-Namen und die Verbindungszeichenfolge **ReceiveRule** sowie das Speicherkonto und den Speicherschlüssel, die Sie in den vorherigen Abschnitten kopiert haben. Entfernen Sie das Suffix `EntityPath` aus der Verbindungszeichenfolge:
 
     ```
 	static void Main(string[] args)
     {
-      string eventHubConnectionString = "{event hub connection string}";
-      string eventHubName = "{event hub name}";
+      string eventHubConnectionString = "{Event Hub connection string}";
+      string eventHubName = "{Event Hub name}";
       string storageAccountName = "{storage account name}";
       string storageAccountKey = "{storage account key}";
       string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
@@ -116,7 +111,7 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
       Console.ReadLine();
       eventProcessorHost.UnregisterEventProcessorAsync().Wait();
     }
-	````
+	```
 
 > [AZURE.NOTE] In diesem Tutorial wird eine einzelne Instanz von [EventProcessorHost][] verwendet. Um den Durchsatz zu erhöhen, sollten Sie mehrere Instanzen von [EventProcessorHost][] ausführen, wie im Beispiel [Skalieren der Ereignisverarbeitung][] beschrieben. In diesen Fällen koordinieren sich die verschiedenen automatisch untereinander, um die Last der eingegangenen Ereignisse ausgeglichen zu verteilen. Wenn mehrere Empfänger für jeden Prozess *alle* Ereignisse verarbeiten sollen, müssen Sie das **ConsumerGroup**-Konzept verwenden. Wenn Ereignisse von anderen Computern empfangen werden, kann es hilfreich sein, die [EventProcessorHost][]-Instanzen nach den Computern (oder Rollen) zu benennen, auf denen sie bereitgestellt werden. Weitere Informationen zu diesen Themen finden Sie unter [Event Hubs – Übersicht][] und im [Event Hubs-Programmierhandbuch][].
 
@@ -135,4 +130,4 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

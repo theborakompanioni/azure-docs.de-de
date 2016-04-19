@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="03/05/2016"
+	ms.date="04/08/2016"
 	ms.author="ricksal"/>
 
 # Erste Schritte mit Mobile Services für Android (JavaScript-Back-End)
@@ -35,7 +35,7 @@ Unten sehen Sie einen Screenshot aus der fertigen App:
 
 ## Voraussetzungen
 
-Sie benötigen für dieses Lernprogramm die [Android Developer Tools](https://developer.android.com/sdk/index.html), die die integrierte Entwicklungsumgebung Android Studio enthalten, sowie die neueste Android-Plattform. Android 4.2 oder eine höhere Version ist erforderlich.
+Sie benötigen die [Android Developer Tools](https://developer.android.com/sdk/index.html), die die integrierte Entwicklungsumgebung Android Studio enthalten, sowie die neueste Android-Plattform. Android 4.2 oder eine höhere Version ist erforderlich.
 
 Das heruntergeladene Schnellstartprojekt enthält das Azure Mobile Services SDK für Android.
 
@@ -94,4 +94,4 @@ Da Sie den Schnellstart jetzt abgeschlossen haben, erfahren Sie, wie zusätzlich
 [Erste Schritte mit Pushbenachrichtigungen]: mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

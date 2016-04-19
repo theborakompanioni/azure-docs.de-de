@@ -49,10 +49,10 @@ Hier sind einige grundlegende Richtlinien zur Auswahl einer VM-Größe aus einer
 * VMs der A-Serie sind unsere kostengünstigen Einsteiger-VMs für kleine Workloads und Entwicklungs- und Testszenarien. Sie sind in allen Regionen verfügbar und ermöglichen die Verbindung mit und Nutzung aller Standardressourcen für virtuelle Computer.
 * Bei den Größen der A-Serie (A8 - A11) handelt es sich um spezielle rechenintensive Konfigurationen, die für Computing-Clusteranwendungen mit hoher Leistung geeignet sind.
 * VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger. 
-* Die Dv2-Serie ist die neuste Version unserer D-Serie und verfügt über eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon ® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz gebracht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+* Die Dv2-Serie ist die neuste Version unserer D-Serie und verfügt über eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon ® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz gebracht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 * Virtuelle Computer der G-Serie bieten den meisten Arbeitsspeicher und werden auf Hosts mit Prozessoren der Intel Xeon E5 V3-Familie ausgeführt.
 
-Hinweis: Für VMs der DS-Serie und GS-Serie besteht Zugriff auf Storage Premium, unsere Speicherlösung mit SSD-Unterstützung, hoher Leistung und geringer Latenz für Workloads mit hoher E/A-Intensität. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter **[Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](../storage/storage-premium-storage-preview-portal.md)**.
+Hinweis: Für VMs der DS-Serie und GS-Serie besteht Zugriff auf Storage Premium, unsere Speicherlösung mit SSD-Unterstützung, hoher Leistung und geringer Latenz für Workloads mit hoher E/A-Intensität. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter **[Storage Premium: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../storage/storage-premium-storage.md)**.
 
 Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch die die Bereitstellung einer großen Anzahl von VMs für Ihr Projekt beeinträchtigt werden kann. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Sie können diese Kontingentgrenzen erhöhen lassen, indem Sie ein Supportticket erstellen und die Erhöhung anfordern. Weitere Informationen zu Kontingentgrenzen finden Sie unter **[Diensteinschränkungen des Azure-Abonnements](../azure-subscription-service-limits.md)**.
 
@@ -60,4 +60,4 @@ Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch 
 
 Ein kostenloses Testkonto. **[Hier erhalten Sie ein Konto.](https://azure.microsoft.com/pricing/free-trial/)** Falls Sie bereits über ein Konto verfügen, können Sie es ausprobieren, indem Sie die **[Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md)**. Anschließend können Sie dann die [Linux-VM erstellen](virtual-machines-linux-quick-create-cli.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

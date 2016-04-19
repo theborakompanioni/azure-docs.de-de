@@ -45,9 +45,11 @@ Sobald Sie den mobilen Dienst erstellt haben, können Sie einer einfachen Schnel
 
 In diesem Abschnitt laden Sie eine neue Xamarin Android-App und ein Dienstprojekt für Ihren mobilen Dienst herunter.
 
-1. Klicken Sie im [klassischen Portal] auf **Mobile Services** und anschließend auf den mobilen Dienst, den Sie gerade erstellt haben.
+1. Wenn Sie dies noch nicht getan haben, installieren Sie Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). Sie können Xamarin Studio auch auf einem Mac OS X-Computer verwenden. Informationen hierzu finden Sie unter [Setup, Installation und Überprüfungen für Mac-Benutzer](https://msdn.microsoft.com/library/mt488770.aspx).  
 
-2. Klicken Sie auf der Registerkarte "Schnellstart" auf **Xamarin** unter **Plattform auswählen** und erweitern Sie **Erstellen einer neuen Xamarin iOS-App**.
+2. Klicken Sie im [klassischen Portal] auf **Mobile Services** und anschließend auf den mobilen Dienst, den Sie gerade erstellt haben.
+
+3. Klicken Sie auf der Registerkarte "Schnellstart" auf **Xamarin** unter **Plattform auswählen** und erweitern Sie **Erstellen einer neuen Xamarin iOS-App**.
 
    	![][6]
 
@@ -55,15 +57,11 @@ In diesem Abschnitt laden Sie eine neue Xamarin Android-App und ein Dienstprojek
 
   	![][7]
 
-3. Falls noch nicht geschehen, sollten Sie [Visual Studio Professional 2013](https://go.microsoft.com/fwLink/p/?LinkID=257546) auf den lokalen Computer oder virtuellen Computer herunterladen und installieren.
-
-4. Wenn Sie dies noch nicht durchgeführt haben, laden Sie [Xamarin Studio] oder Xamarin für Visual Studio Professional 2013 herunter, und installieren Sie diese.
-
-5. Wählen Sie unter **Service in der Cloud herunterladen und veröffentlichen** die Option **Android** und klicken Sie auf **Herunterladen**.
+4. Wählen Sie unter **Service in der Cloud herunterladen und veröffentlichen** die Option **Android** und klicken Sie auf **Herunterladen**.
 
   	Daraufhin wird eine Lösung heruntergeladen, die Projekte für den mobilen Dienst und für die Beispielanwendung _To-Do-Liste_ enthält, die mit dem mobilen Dienst verbunden ist. Speichern Sie die komprimierte Projektdatei auf dem lokalen Computer und merken Sie sich, wo Sie sie gespeichert haben.
 
-6. Laden Sie das Veröffentlichungsprofil herunter, speichern Sie die heruntergeladene Datei auf dem lokalen Computer, und notieren Sie sich den Speicherort.
+5. Laden Sie das Veröffentlichungsprofil herunter, speichern Sie die heruntergeladene Datei auf dem lokalen Computer, und notieren Sie sich den Speicherort.
 
 ## Testen des mobilen Diensts
 
@@ -83,7 +81,7 @@ Der letzte Schritt dieses Lernprogramms besteht im Erstellen und Ausführen der 
 
 	> [AZURE.NOTE] Sie müssen mindestens ein Android Virtual Device (AVD) definieren, um das Projekt im Android-Emulator auszuführen. Verwenden Sie den AVD Manager, um diese Geräte zu erstellen und zu verwalten.
 
-3. Geben Sie in der App einen sinnvollen Text, wie z. B. _Tutorial fertigstellen_ ein, und klicken Sie dann auf das Plus-Symbol (**+**).
+3. Geben Sie in der App einen sinnvollen Text, wie z. B. _Tutorial fertigstellen_ ein, und klicken Sie dann auf das Plus-Symbol (**+**).
 
 	![][10]
 
@@ -132,9 +130,4 @@ Da Sie den Schnellstart jetzt abgeschlossen haben, erfahren Sie, wie zusätzlich
 [JavaScript-Back-End-Version]: mobile-services-android-get-started.md
 [Beheben von Problemen bei einem Mobile Services .NET-Back-End]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
-
-[Xamarin Studio]: http://xamarin.com/download
-[Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
-[Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

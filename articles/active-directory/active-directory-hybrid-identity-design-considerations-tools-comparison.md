@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/23/2016"
+	ms.date="04/13/2016"
 	ms.author="billmath"/>
 
 # Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
 
 Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher geworden und wurden weiterentwickelt. Das vorliegende Dokument bietet eine Übersicht über diese Tools und einen Vergleich der Features, die jedes der Tools bietet.
 
+<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
+
 >[AZURE.NOTE] Azure AD Connect umfasst die Komponenten und Funktionen, die zuvor als DirSync und AAD Sync veröffentlicht wurden. Diese Tools werden nicht mehr einzeln veröffentlicht, und alle künftigen Verbesserungen werden in den Updates von Azure AD Connect enthalten sein, sodass Sie immer wissen, wo Sie die aktuellsten Funktionen bekommen.
 >
->DirSync wird zurzeit noch unterstützt, soll jedoch in naher Zukunft als veraltet eingestuft werden. Sobald dies geschieht, wird DirSync nur noch für einen begrenzten Zeitraum unterstützt. Nach Ablauf dieses Zeitraums endet die Unterstützung für DirSync .
+>DirSync and Azure AD Sync sind veraltet. Weitere Informationen finden Sie unter [Upgrade Windows Azure Active Directory Sync („DirSync“) and Azure Active Directory Sync („Azure AD Sync“)](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM) (Aktualisieren von Windows Azure Active Directory-Synchronisierung (DirSync) und von Azure Active Directory Sync (Azure AD Sync)).
 
 
 Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
@@ -82,14 +84,14 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
 Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM)| Microsoft Identity Manager 2016 (MIM)
 :-------- |:--------:|:--------:|:--------:|:--------:|:--------:|
-Filterung nach für Domänen und Organisationseinheiten | ● | ● | ● | ● | ● 
-Filterung nach den Attributwerten eines Objekts | ● | ● | ● | ●| ● 
+Filterung nach für Domänen und Organisationseinheiten | ● | ● | ● | ● | ●
+Filterung nach den Attributwerten eines Objekts | ● | ● | ● | ●| ●
 Zulassen eines minimalen Attributsatzes für die Synchronisierung (MinSync) | ● | ● | ||
 Zulassen der Anwendung verschiedener Dienstvorlagen auf Attributflüsse |● | ● | ||
 Zulassen der Entfernung von Attributen aus dem Attributfluss von AD nach Azure AD | ● | ● | | |
-Zulassen einer erweiterten Anpassung des Attributflusses | ● | ● | | ● | ● 
+Zulassen einer erweiterten Anpassung des Attributflusses | ● | ● | | ● | ●
 
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

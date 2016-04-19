@@ -14,7 +14,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="03/30/2016"
+	 ms.date="04/04/2016"
 	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
 # Azure Backup-Dienst – FAQ
@@ -45,15 +45,15 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F2. Wo kann ich den neuesten Azure Backup-Agent herunterladen?** <br/> A2. Sie können den aktuellen Agent zum Sichern von Windows Server, System Center DPM oder des Windows-Clients [hier](http://aka.ms/azurebackup_agent) herunterladen. Verwenden Sie zum Sichern eines virtuellen Computers den VM-Agent (installiert automatisch die richtige Erweiterung). Der VM-Agent ist auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden.
 
-**F3. Welche SCDPM-Serverversion wird unterstützt?** <br/> A3. Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR6; Stand: Juli 2015) zu installieren.
+**F3. Welche SCDPM-Serverversion wird unterstützt?** <br/> A3. Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR6; Stand: Juli 2015) zu installieren.
 
 ****F4. Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die **Tresoranmeldedaten** einzugeben. Laufen die Tresoranmeldeinformationen ab? A4. Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Azure Backup-Tresor herunter.
 
-**F5. Gibt es eine Beschränkung hinsichtlich der Anzahl von Sicherungstresoren, die in einem Azure-Abonnement erstellt werden können?** <br/> A5. Ja. Sie können pro Abonnement 25 Tresore erstellen (Stand: Juli 2015). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
+**F5. Gibt es eine Beschränkung hinsichtlich der Anzahl von Sicherungstresoren, die in einem Azure-Abonnement erstellt werden können?** <br/> A5. Ja. Sie können pro Abonnement 25 Tresore erstellen (Stand: Juli 2015). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
 
 **F6. Kann ich einen Tresor als Abrechnungseinheit betrachten?** <br/> A6. Zwar besteht die Möglichkeit, eine detaillierte Rechnung für jeden Tresor zu erhalten, es empfiehlt sich aber unbedingt, ein Azure-Abonnement als Abrechnungseinheit zu verwenden. Es ist für alle Dienste konsistent und einfacher zu verwalten.
 
-**F7. Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?** <br/> A7. Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen neuen Tresor.
+**F7. Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?** <br/> A7. Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen neuen Tresor.
 
 **F8. Gibt es Beschränkungen für die Datenmenge, die von einem Windows-Server/-Client oder einem SCDPM-Server gesichert werden kann?** <br/> A8. Nein.
 
@@ -92,7 +92,7 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F16. Kann ich meinen Sicherungstresor zwischen Abonnements "migrieren"?** <br/> A16: Nein. Der Tresor wird auf einer Abonnementstufe erstellt und kann nach seiner Erstellung keinem anderen Abonnement zugewiesen werden.
 
-**F17. Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet?** <br/> A17: Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Onlinesicherungsdienst.
+**F17. Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet?** <br/> A17: Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Onlinesicherungsdienst.
 
 **F18. Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?** <br/> A18: Nein. Der Sicherungstresor speichert die gesicherten Daten, die bis zum Zeitpunkt des Abbruchs übertragen wurden. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Die nächste ausgelöste Sicherung ist eine inkrementelle Sicherung, die auf dem vorherigen Sicherungsvorgang aufbaut. Eine inkrementelle Sicherung sorgt für eine bessere Nutzung der Bandbreite, da nicht mehrfach die gleichen Daten übertragen werden müssen.
 
@@ -114,16 +114,21 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F24. Welche Zeichen sind im Dateipfad der Azure Backup-Richtlinie mit dem Azure Backup-Agent zulässig?** <br/> A24. Der Azure Backup-Agent basiert auf NTFS. Für die Angabe der Datei können [von NTFS unterstützte Zeichen](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) verwendet werden.
 
+**F25. Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen?** <br/> A25. Ja.
+
+**F26. Kann ich den Backup-Dienst so konfigurieren, dass eine E-Mail gesendet wird, wenn bei einem Sicherungsauftrag ein Fehler auftritt?** <br/> A26. Ja. Der Backup-Dienst verfügt über mehrere ereignisbasierte Warnungen, die mit einem PowerShell-Skript verwendet werden können. Eine vollständige Beschreibung finden Sie unter [Warnungsbenachrichtigungen](backup-azure-manage-vms.md#alert-notifications).
+
+
 
 ## Sicherung und Aufbewahrung
 **F1. Gibt es eine Größenbeschränkung für die einzelnen Datenquellen, die gesichert werden?** <br/> A1. Ab August 2015 beträgt die maximale Größe der Datenquelle für die unterstützten Betriebssysteme:
 
 |Nr. |	Betriebssystem |	Maximale Größe der Datenquelle |
 | :-------------: |:-------------| :-----|
-|1| Windows Server 2012 oder höher| 54\.400 GB|
-|2| Windows 8 oder höher| 54\.400 GB|
-|3| Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB|
-|4| Windows 7 | 1\.700 GB|
+|1| Windows Server 2012 oder höher| 54\.400 GB|
+|2| Windows 8 oder höher| 54\.400 GB|
+|3| Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB|
+|4| Windows 7 | 1\.700 GB|
 
 In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.
 
@@ -159,6 +164,8 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 **F11. Warum entspricht die Menge der in der Sicherung übertragenen Daten nicht der Menge der gesicherten Daten?**<br/> A11. Alle Daten, die gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Sicherungstresor 30 bis 40% kleiner.
 
 **F12. Gibt es eine Möglichkeit, die vom Backup-Dienst verwendete Bandbreitenmenge anzupassen?**<br/> A12. Ja. Verwenden Sie die Option **Eigenschaften ändern** im Backup-Agent, um die Bandbreite anzupassen. Passen Sie die Bandbreitenmenge und die Zeiten an, zu denen Sie die Bandbreite nutzen. Weitere Informationen finden Sie unter [Netzwerkdrosselung](../backup-configure-vault.md#enable-network-throttling).
+
+**F13. Meine Internetbandbreite ist im Hinblick auf die zu sichernden Daten begrenzt. Gibt es eine Möglichkeit, die Daten an einen bestimmten Speicherort mit einer großen Netzwerk-Pipe zu verschieben und diese Daten dann an Azure zu übertragen?** <br/> F13. Sie können Daten in Azure mit dem standardmäßigen Prozess für die Onlinesicherung sichern, oder Sie können den Azure-Import/Export-Dienst verwenden, um Daten an den Blobspeicher in Azure zu übertragen. Es gibt keine weiteren Möglichkeiten, um Sicherungsdaten in den Azure-Speicher zu verschieben. Informationen zur Verwendung des Azure-Import/Export-Diensts mit Azure Backup finden Sie im Artikel [Workflow zur Offlinesicherung](backup-azure-backup-import-export).
 
 
 ## Wiederherstellen
@@ -197,4 +204,4 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 
   Nachdem die Erstellung der Sicherung am neuen Cachespeicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->
