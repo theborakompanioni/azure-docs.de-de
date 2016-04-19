@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erste Schritte mit Microsoft Power BI Embedded Preview"
-   description=""
+   description="Erste Schritte mit Microsoft Power BI Embedded Preview"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -74,7 +74,7 @@ Nachdem Sie nun über eine Instanz von Power BI für Ihre Anwendung und **Zugrif
 
 ## Erstellen von Power BI-Datasets und -Berichten zum Einbetten in eine App
 
-Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel** verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) herunterladen. Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/de-DE/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
+Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel** verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) herunterladen. Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
 
 Mit **Power BI Desktop** stellen Sie eine Verbindung mit der Datenquelle her, indem Sie eine Kopie der Daten in **Power BI Desktop** importieren oder per **DirectQuery** eine direkte Verbindung mit der Datenquelle herstellen.
 

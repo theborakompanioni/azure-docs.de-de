@@ -139,12 +139,12 @@ Generieren Sie einen Registrierungsschlüssel im Tresor. Nachdem Sie den Azure S
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden möchten, sollten Sie diesen vor der Installation des Anbieters einrichten. Wenn Sie benutzerdefinierte Proxyeinstellungen konfigurieren, wird ein Test ausgeführt, um die Proxyverbindung zu überprüfen.
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden oder Ihr Standardproxy eine Authentifizierung verlangt, müssen Sie die Proxydetails einschließlich der Proxyadresse und des Ports eingeben.
 	- Der VMM-Server und die Hyper-V-Hosts sollten auf die folgenden URLs Zugriff haben:
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
-- Lassen Sie die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie auch die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- Lassen Sie die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie auch die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
 
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden, wird ein ausführendes VMM-Konto (DRAProxyAccount) automatisch mit den angegebenen Proxyanmeldeinformationen erstellt. Konfigurieren Sie den Proxyserver so, dass dieses Konto erfolgreich authentifiziert werden kann. In der VMM-Konsole können die Einstellungen des ausführenden VMM-Kontos geändert werden. Zu diesem Zweck öffnen Sie den Arbeitsbereich "Einstellungen", erweitern Sie "Sicherheit", klicken Sie auf "Ausführende Konten", und ändern Sie das Kennwort für DRAProxyAccount. Sie müssen den VMM-Dienst neu starten, damit diese Einstellung wirksam wird.
 
@@ -364,7 +364,7 @@ Gehen Sie folgendermaßen vor, um ein Testfailover durchzuführen:
 6. Nach dem Failover können Sie das Testreplikat des virtuellen Computers im Azure-Portal sehen. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen. Gehen Sie wie folgt vor:
 
     1. Prüfen Sie, ob die virtuellen Computer erfolgreich starten.
-    2. Wenn Sie nach dem Failover eine Verbindung mit dem virtuellen Computer in Azure über Remote Desktop herstellen möchten, aktivieren Sie die Remote Desktop-Verbindung auf dem virtuellen Computer, bevor Sie das Test-Failover ausführen. Außerdem müssen Sie der virtuellen Maschine einen RDP-Endpunkt hinzufügen. Hierzu können Sie ein Azure Automation-Runbook[](site-recovery-runbook-automation.md) verwenden.
+    2. Wenn Sie nach dem Failover eine Verbindung mit dem virtuellen Computer in Azure über Remote Desktop herstellen möchten, aktivieren Sie die Remote Desktop-Verbindung auf dem virtuellen Computer, bevor Sie das Test-Failover ausführen. Außerdem müssen Sie der virtuellen Maschine einen RDP-Endpunkt hinzufügen. Hierzu können Sie ein [Azure Automation-Runbook](site-recovery-runbook-automation.md) verwenden.
     3. Falls Sie nach dem Failover über eine öffentliche IP-Adresse eine Remotedesktopverbindung mit dem virtuellen Computer in Azure herstellen, achten Sie darauf, dass keine Domänenrichtlinien vorhanden sind, die dies verhindern.
 
 7.  Gehen Sie nach dem Test wie folgt vor:

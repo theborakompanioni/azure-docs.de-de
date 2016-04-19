@@ -183,7 +183,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die D2C-Nachrichten (D
     public static void main( String[] args ) throws IOException
     ```
 
-12. Fügen Sie der **main**-Methode in der **App**-Klasse den folgenden Code hinzu. Mit diesem Code wird eine **EventHubClient**-Instanz zum Verbinden des Event Hub-kompatiblen Endpunkts mit IoT Hub erstellt. Anschließend werden zwei Threads zum Lesen aus den beiden Partitionen erstellt. Ersetzen Sie **{youriothubkey}**, **{youreventhubcompatiblenamespace}** und **{youreventhubcompatiblename}** durch die Werte, die Sie zuvor notiert haben. Der Wert des Platzhalters **{youreventhubcompatiblenamespace}** stammt vom **Event Hub-kompatiblen Endpunkt** und hat das folgende Format: **xxxxnamespace.servicebus.windows.net**. (Sie sollten also das Präfix ****sb://** und das Suffix **.servicebus.windows.net** vom Event Hub-kompatiblen Endpunktwert im Portal entfernen.)
+12. Fügen Sie der **main**-Methode in der **App**-Klasse den folgenden Code hinzu. Mit diesem Code wird eine **EventHubClient**-Instanz zum Verbinden des Event Hub-kompatiblen Endpunkts mit IoT Hub erstellt. Anschließend werden zwei Threads zum Lesen aus den beiden Partitionen erstellt. Ersetzen Sie **{youriothubkey}**, **{youreventhubcompatiblenamespace}** und **{youreventhubcompatiblename}** durch die Werte, die Sie zuvor notiert haben. Der Wert des Platzhalters **{youreventhubcompatiblenamespace}** stammt vom **Event Hub-kompatiblen Endpunkt** und hat das folgende Format: **xxxxnamespace.servicebus.windows.net**. (Sie sollten also das Präfix **sb://** und das Suffix **.servicebus.windows.net** vom Event Hub-kompatiblen Endpunktwert im Portal entfernen.)
 
     ```
     String policyName = "iothubowner";

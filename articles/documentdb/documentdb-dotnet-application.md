@@ -39,7 +39,7 @@ In dieser exemplarischen Vorgehensweise wird veranschaulicht, wie Sie mit dem vo
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes vorhanden ist:
 
 - Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/).
-- [Visual Studio 2013](http://www.visualstudio.com/), Update 4 oder höher
+- [Visual Studio 2013](http://www.visualstudio.com/), Update 4 oder höher
 - Azure SDK für .NET Version 2.5.1 oder höher, verfügbar über [Microsoft-Webplattform-Installer][].
 
 Alle Screenshots in diesem Artikel wurden unter Verwendung von Visual Studio 2013 mit Update 4 und Azure SDK für .NET Version 2.5.1 aufgenommen. Wenn Ihr System mit anderen Versionen konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise ab. Wenn Sie jedoch die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung funktionieren.
