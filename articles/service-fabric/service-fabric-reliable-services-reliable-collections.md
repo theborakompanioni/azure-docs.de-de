@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="mcoskun"
    manager="timlt"
-   editor="masnider,jessebenson"/>
+   editor="masnider,vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="11/11/2015"
+   ms.date="03/25/2016"
    ms.author="mcoskun"/>
 
 # Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
@@ -39,13 +39,13 @@ Zuverlässige Auflistungen zeichnen sich durch von Beginn an starke Konsistenzga
 Die Reliable Collections-APIs sind eine Weiterentwicklung der APIs für gleichzeitige Auflistungen (im Namespace **System.Collections.Concurrent**):
 
 - Asynchron: Gibt eine Aufgabe zurück, da die Vorgänge im Gegensatz zu gleichzeitigen Auflistungen repliziert und persistent gespeichert werden.
-- Keine out-Parameter: Gibt mithilfe von **ConditionalResult<T>** anstelle von out-Parametern „Bool“ und einen Wert zurück. **ConditionalResult<T>** entspricht **Nullable<T>**, erfordert aber für „struct“ nicht „T“.
+- Keine out-Parameter: Gibt mithilfe von `ConditionalValue<T>` anstelle von out-Parametern "Bool" und einen Wert zurück. `ConditionalValue<T>` entspricht `Nullable<T>`, erfordert aber für "struct" nicht "T".
 - Transaktionen: Verwendet ein Transaktionsobjekt, um dem Benutzer Gruppenaktionen für mehrere zuverlässige Auflistungen in einer Transaktion zu ermöglichen.
 
 Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** zwei Auflistungen:
 
-- [Zuverlässiges Wörterbuch](https://msdn.microsoft.com/library/azure/dn971511.aspx): stellt eine replizierte, transaktionale und asynchrone Auflistung von Schlüsselwertpaaren dar. Ähnlich wie bei **ConcurrentDictionary** können der Schlüssel und der Wert ein beliebiger Typ sein.
-- [Zuverlässige Warteschlange](https://msdn.microsoft.com/library/azure/dn971527.aspx): Stellt eine replizierte, transaktionale und asynchrone strenge FIFO (First In, First Out)-Warteschlange dar. Ähnlich wie bei **ConcurrentQueue** kann der Wert ein beliebiger Typ sein.
+- [Zuverlässiges Wörterbuch](https://msdn.microsoft.com/library/azure/dn971511.aspx): stellt eine replizierte, transaktionale und asynchrone Auflistung von Schlüsselwertpaaren dar. Ähnlich wie bei **ConcurrentDictionary** können der Schlüssel und der Wert von beliebigem Typ sein.
+- [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): Stellt eine replizierte, transaktionale und asynchrone strenge FIFO (First In, First Out)-Warteschlange dar. Ähnlich wie bei **ConcurrentQueue** kann der Wert von beliebigem Typ sein.
 
 ## Isolationsgrade
 Der Isolationsgrad ist ein Maß für den erzielten Grad an Isolation. Isolation bedeutet, dass sich eine Transaktion wie in einem System verhält, das jeweils nur eine Transaktion erlaubt.
@@ -87,9 +87,9 @@ Zuverlässige Auflistungen verwenden immer exklusive Sperren. Für Lesevorgänge
 
 Die Kompatibilitätsmatrix für Sperren finden Sie unten:
 
-| Anforderung \ Gewährt | Keine | Shared | Aktualisieren | Exklusiv |
+| Anforderung\\Gewährt | Keine | Shared  | Aktualisieren | Exklusiv |
 | ----------------- | :----------- | :----------- | :---------- | :----------- |
-| Freigegeben | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
+| Shared  | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Aktualisieren | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Exklusiv | Kein Konflikt | Konflikt: | Konflikt: | Konflikt: |
 
@@ -99,16 +99,16 @@ Das vorangegangene Deadlockszenario ist ein hervorragendes Beispiel, wie Aktuali
 
 ## Recommendations
 
-- Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen zurückgegeben wurde (z. B. **TryPeekAsync** oder **TryGetAsync**). Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
+- Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen zurückgegeben wurde (z.B. `TryPeekAsync` oder `TryGetAsync`). Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
 - Tiefenkopieren Sie zurückgegebene benutzerdefinierte Objekte, bevor Sie diese ändern. Da bei Strukturen und integrierten Typen eine Wertübergabe erfolgt, ist hier keine Tiefenkopie erforderlich.
-- Verwenden Sie für Timeouts nicht **TimeSpan.MaxValue**. Timeouts sollten verwendet werden, um Deadlocks zu erkennen.
+- Verwenden Sie `TimeSpan.MaxValue` nicht für Timeouts. Timeouts sollten verwendet werden, um Deadlocks zu erkennen.
 - Erstellen Sie keine Transaktion innerhalb der `using`-Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
 
 hier folgen einige Punkte, die es zu beachten gilt:
 
 - Das Standardtimeout beträgt 4 Sekunden für alle Reliable Collections-APIs. Die meisten Benutzer sollten diesen Wert nicht überschreiben.
-- Das Standardabbruchtoken in allen Reliable Collections-APIs ist **CancellationToken.None**.
-- Der Key-Typ-Parameter (*TKey*) für ein zuverlässiges Wörterbuch muss **GetHashCode()** und **Equals()** richtig implementieren. Schlüssel müssen unveränderlich sein.
+- Das Standardabbruchtoken ist `CancellationToken.None` in allen APIs für zuverlässige Auflistungen.
+- Der Schlüsseltyp-Parameter (*TKey*) für ein Reliable Dictionary muss `GetHashCode()` und `Equals()` richtig implementieren. Schlüssel müssen unveränderlich sein.
 - Aufzählungen haben innerhalb einer Auflistung konsistente Momentaufnahmen. Aufzählungen mehrerer Auflistungen sind jedoch nicht über Auflistungen hinweg konsistent.
 - Zum Erreichen einer hohen Verfügbarkeit der zuverlässigen Auflistungen sollte jeder Dienst mindestens ein Ziel und eine Mindestgröße von 3 bei der Replikatgruppe haben.
 
@@ -119,4 +119,4 @@ hier folgen einige Punkte, die es zu beachten gilt:
 - [Erweiterte Verwendung des Reliable Services-Programmiermodells](service-fabric-reliable-services-advanced-usage.md)
 - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/31/2016"
+   ms.date="04/07/2016"
    ms.author="derrickv"/>
 
 # Datenprofil-Datenquellen
@@ -91,4 +91,4 @@ Bei der Datenprofilerstellung werden Statistiken und Informationen zu registrier
 -	[Registrieren von Datenquellen](data-catalog-how-to-register.md)
 -	[Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -264,7 +264,7 @@ Die Nachricht **保存成功！** (**Erfolgreich gespeichert!**) wird angezeigt.
 				public static String NotificationHubConnectionString = "...";
 			}
 
-	Legen Sie für den Wert von **API_KEY** den Wert fest, den Sie zuvor aus dem Baidu-Cloud-Projekt abgerufen haben, für **NotificationHubName** Ihren Notification Hub-Namen aus dem klassischen Azure-Portal und für **NotificationHubConnectionString** die „DefaultListenSharedAccessSignature“ aus dem klassischen Azure-Portal.
+	Legen Sie für den Wert von **API\_KEY** den Wert fest, den Sie zuvor aus dem Baidu-Cloud-Projekt abgerufen haben, für **NotificationHubName** Ihren Notification Hub-Namen aus dem klassischen Azure-Portal und für **NotificationHubConnectionString** die „DefaultListenSharedAccessSignature“ aus dem klassischen Azure-Portal.
 
 11. Fügen Sie eine neue Klasse namens **DemoApplication.java** mit dem folgenden Code hinzu:
 
@@ -373,15 +373,15 @@ Die Nachricht **保存成功！** (**Erfolgreich gespeichert!**) wird angezeigt.
 		    @Override
 		    public void onNotificationClicked(Context context, String title,
 		            String description, String customContentString) {
-		        String notifyString = "title=\"" + title + "\" description=\""
-		                + description + "\" customContent=" + customContentString;
+		        String notifyString = "title="" + title + "" description=""
+		                + description + "" customContent=" + customContentString;
 		        Log.d(TAG, notifyString);
 		    }
 
 		    @Override
 		    public void onMessage(Context context, String message,
 		            String customContentString) {
-		        String messageString = "message=\"" + message + "\" customContentString=" + customContentString;
+		        String messageString = "message="" + message + "" customContentString=" + customContentString;
 		        Log.d(TAG, messageString);
 		    }
 		}
@@ -413,7 +413,7 @@ In diesem Lernprogramm gehen wir einfach vor und veranschaulichen nur das Testen
 
 * **Node.js** : [Verwenden von Notification Hubs mit Node.js](notification-hubs-nodejs-how-to-use-notification-hubs.md).
 
-* **Azure Mobile Services**: Ein Beispiel zum Senden von Benachrichtigungen von einem mit Notification Hubs integrierten Azure Mobile Services-Back-End aus finden Sie unter „Erste Schritte mit Pushbenachrichtigungen in Mobile Services“ ([.NET-Back-End](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript-Back-End](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)).
+* **Azure Mobile Services:** Ein Beispiel für das Senden von Benachrichtigungen von einem in Notification Hubs integrierten Azure Mobile Services-Back-End finden Sie unter [Hinzufügen von Pushbenachrichtigungen zur Mobile Services-App](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md).
 
 * **Java/PHP**: Ein Beispiel zum Senden von Benachrichtigungen über die REST-APIs finden Sie unter „Verwenden von Notification Hubs von Java/PHP“ ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)).
 
@@ -442,7 +442,7 @@ In diesem Abschnitt zeigen wir das Senden einer Benachrichtigung über eine .NET
 		private static async void SendNotificationAsync()
 		{
 			NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
-			string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
+			string message = "{"title":"((Notification title))","description":"Hello from Azure"}";
 			var result = await hub.SendBaiduNativeNotificationAsync(message);
 		}
 
@@ -503,4 +503,4 @@ Zum Senden einer Testbenachrichtigung können Sie die Registerkarte „Debuggen�
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 [Baidu-Portal]: http://www.baidu.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -112,9 +112,9 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 	
 [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-windows-cli-deploy-templates.md)
 		
-[Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-backup.md)
+[Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-backup.md)
 
-[Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-patch.md)
+[Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md)
 
 [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machines-windows-ps-vmss-create.md)
 
@@ -161,7 +161,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [HPC Pack](virtual-machines-windows-hpcpack-cluster-options.md)
 
-[SQL Server](virtual-machines-windows-classic-sql-overview.md)
+[SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)
 
 [Azure-Infrastrukturdienste-Workload: Branchenanwendung mit hoher Verfügbarkeit](virtual-machines-windows-lob.md)
 
@@ -281,9 +281,9 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Custom Script extension for classic Windows virtual machines](virtual-machines-windows-classic-extensions-customscript.md) (Benutzerdefinierte Skripterweiterung für klassische virtuelle Windows-Computer)
 
-[Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-backup.md)
+[Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-backup.md)
 
-[Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-patch.md)
+[Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md)
 
 
 
@@ -351,7 +351,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Oracle](virtual-machines-windows-classic-oracle.md)
 
-[SQL Server](virtual-machines-windows-classic-sql-overview.md)
+[SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)
 
 [SharePoint](virtual-machines-windows-sharepoint-farm.md)
 
@@ -375,4 +375,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größen von virtuellen Computern in Azure](virtual-machines-windows-allocation-failure.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

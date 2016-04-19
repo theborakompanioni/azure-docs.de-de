@@ -1,11 +1,11 @@
 <properties
    pageTitle="Reliable Actors in Service Fabric | Microsoft Azure"
-   description="Beschreibt, wie das Reliable Actors-Modell die Features der Service Fabric-Plattform nutzt, wobei Konzepte aus Sicht von Entwicklern von Actors behandelt werden."
+   description="Erfahren Sie, wie Reliable Actors auf den Ebenen der Reliable Services angeordnet sind und die Features der Service Fabric-Plattform verwenden."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
    manager="timlt"
-   editor="vturecek"/>
+   editor="amanbha"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,233 +13,239 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/15/2016"
-   ms.author="amanbha"/>
+   ms.date="03/25/2016"
+   ms.author="vturecek"/>
 
 # Verwendung der Service Fabric-Plattform durch Reliable Actors
 
-Actors verwenden das Azure Service Fabric-Anwendungsmodell zum Verwalten des Lebenszyklus der Anwendung. Jeder Actor-Typ ist einem Service Fabric-[Diensttyp](service-fabric-application-model.md#describe-a-service) zugeordnet. Der Actor-Code wird als Service Fabric-Anwendung [gepackt](service-fabric-application-model.md#package-an-application) und für das Cluster [bereitgestellt](service-fabric-deploy-remove-applications.md#deploy-an-application).
+In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Service Fabric-Plattform beschrieben. Reliable Actors arbeiten in einem Framework, das in einer Implementierung des zustandsbehafteten zuverlässigen Diensts gehostet wird, der als *Actordienst* bezeichnet wird. Der Actordienst enthält alle Komponenten, die zum Verwalten des Lebenszyklus und zum Übermitteln von Nachrichten für Ihre Akteure erforderlich sind:
 
-## Beispiel eines Anwendungsmodellkonzepts für Akteure
+ - Die Actor Runtime verwaltet den Lebenszyklus und die Garbage Collection und erzwingt den Singlethread-Zugriff.
+ - Ein Actordienst-Remotelistener akzeptiert Remotezugriffsaufrufe für Akteure und sendet diese an einen Verteiler, damit sie an die entsprechende Akteurinstanz weitergeleitet werden.
+ - Der Akteurzustandsanbieter umschließt Zustandsanbieter (z.B. den Reliable Collections-Zustandsanbieter) und stellt einen Adapter für die Akteurzustandsverwaltung bereit.
 
-Nehmen wir das Beispiel eines [mit Visual Studio erstellten](service-fabric-reliable-actors-get-started.md) Actor-Projekts, um einige der oben aufgeführten Konzepte zu veranschaulichen.
+Diese Komponenten bilden zusammen das Reliable Actors-Framework.
 
-Das Anwendungsmanifest, das Dienstmanifest und die Konfigurationsdatei „Settings.xml“ werden dem Projekt für den Actor-Dienst hinzugefügt, wenn die Lösung in Visual Studio erstellt wird. Dies zeigt der nachfolgende Screenshot.
+## Dienstebenen
 
-![Mithilfe von Visual Studio erstelltes Projekt][1]
+Da der Actordienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-application-model.md#package-an-application), [Bereitstellung](service-fabric-deploy-remove-applications.md#deploy-an-application), Upgrade und Skalierung auch für Actordienste.
 
-Den Anwendungstyp und die Version der Anwendung, in die der Actor gepackt wird, finden Sie in dem Anwendungsmanifest, das im Projekt für den Actor-Dienst enthalten ist. Der folgende Ausschnitt aus einem Anwendungsmanifest ist ein Beispiel dafür.
+![Actordienstebenen][1]
 
-~~~
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                     ApplicationTypeName="VoiceMailBoxApplication"
-                     ApplicationTypeVersion="1.0.0.0"
-                     xmlns="http://schemas.microsoft.com/2011/01/fabric">
-~~~
+Das Diagramm oben zeigt die Beziehung zwischen dem Service Fabric-Anwendungsframework und dem Benutzercode. Blaue Elemente stellen das Reliable Services-Anwendungsframework dar, Orange stellt das Reliable Actors-Framework dar, und Grün steht für den Benutzercode.
 
-Den Diensttyp, dem der Actor-Typ zugeordnet ist, finden Sie in dem Dienstmanifest, das im Projekt für den Actor-Dienst enthalten ist. Der folgende Ausschnitt aus einem Dienstmanifest ist ein Beispiel dafür.
 
-~~~
-<StatefulServiceType ServiceTypeName="VoiceMailBoxActorServiceType" HasPersistedState="true">
-~~~
+In Reliable Services erbt der Dienst die `StatefulService`-Klasse, die selbst von `StatefulServiceBase` abgeleitet ist (oder von `StatelessService` bei zustandslosen Diensten). Sie können in Reliable Actors den Actordienst verwenden, der eine andere Implementierung der `StatefulServiceBase`-Klasse darstellt, die das Akteurmuster dort implementiert, wo Ihre Akteure ausgeführt werden. Da der Actordienst selbst nur eine Implementierung von `StatefulServiceBase` ist, können Sie einen eigenen Dienst schreiben, der von `ActorService` abgeleitet ist, und Funktionen auf Dienstebene auf die gleiche Weise implementieren wie bei der Vererbung von `StatefulService`. Zum Beispiel:
 
-Wenn das Anwendungspaket mit Visual Studio erstellt wird, geben die Protokolle im Buildausgabe-Fenster den Speicherort des Anwendungspakets an. Beispiel:
+ - Sicherung und Wiederherstellung des Diensts
+ - Gemeinsame Verwendung von Funktionen für alle Akteure, z.B. ein Schaltkreisunterbrecher
+ - Remoteprozeduraufrufe für den Actordienst selbst sowie für einzelne Akteure 
 
-    -------- Package started: Project: VoiceMailBoxApplication, Configuration: Debug x64 ------
-    VoiceMailBoxApplication -> C:\samples\Samples\Actors\VS2015\VoiceMailBox\VoiceMailBoxApplication\pkg\Debug
+### Verwenden des Actordiensts
 
-Nachfolgend sehen Sie eine teilweise Auflistung des oben genannten Speicherorts (auf die vollständige Auflistung wurde der Kürze halber verzichtet):
+Akteurinstanzen haben Zugriff auf den Actordienst, in dem sie ausgeführt werden. Über den Actordienst können Akteurinstanzen programmgesteuert den Dienstkontext mit der Partitions-ID, den Dienstnamen, den Anwendungsnamen und andere spezifische Informationen für die Service Fabric-Plattform abrufen:
 
-    C:\samples\Samples\Actors\VS2015\VoiceMailBox\VoiceMailBoxApplication\pkg\Debug>tree /f
-    Folder PATH listing
-    Volume serial number is 303F-6F91
-    C:.
-    │   ApplicationManifest.xml
-    │
-    ├───VoiceMailBoxActorServicePkg
-    │   │   ServiceManifest.xml
-    │   │
-    │   ├───Code
-    │   │   │   Microsoft.ServiceFabric.Actors.dll
-    │   │   │       :
-    │   │   │   Microsoft.ServiceFabric.Services.dll
-    │   │   │   ServiceFabricServiceModel.dll
-    │   │   │   System.Fabric.Common.Internal.dll
-    │   │   │   System.Fabric.Common.Internal.Strings.dll
-    │   │   │   VoiceMailBox.exe
-    │   │   │   VoiceMailBox.exe.config
-    │   │   │   VoiceMailBox.Interfaces.dll
-    │   │   │
-    │   │   └───de-DE
-    │   │           System.Fabric.Common.Internal.Strings.resources.dll
-    │   │
-    │   └───Config
-    │           Settings.xml
-    │
-    └───VoicemailBoxWebServicePkg
-        │   ServiceManifest.xml
-        │
-        └───Code
-            │   Microsoft.Owin.dll
-            │       :
-            │   Microsoft.ServiceFabric.Services.dll
-            │       :
-            │   System.Fabric.Common.Internal.dll
-            │   System.Fabric.Common.Internal.Strings.dll
-            │       :
-            │   VoiceMailBox.Interfaces.dll
-            │   VoicemailBoxWebService.exe
-            │   VoicemailBoxWebService.exe.config
-            │
-            └───de-DE
-                    System.Fabric.Common.Internal.Strings.resources.dll
+```csharp
+Task MyActorMethod()
+{
+    Guid partitionId = this.ActorService.Context.PartitionId;
+    string serviceTypeName = this.ActorService.Context.ServiceTypeName;
+    Uri serviceInstanceName = this.ActorService.Context.ServiceName;
+    string applicationInstanceName = this.ActorService.Context.CodePackageActivationContext.ApplicationName;
+}
+```
 
-Die obige Auflistung zeigt die Assemblys, die den VoicemailBox-Actor implementieren, der im Codepaket innerhalb des Dienstpakets, das sich im Anwendungspaket befindet, enthalten ist.
+Wie alle Reliable Services muss der Actordienst mit einem Diensttyp in der Service Fabric-Laufzeit registriert werden. Damit der Actordienst Ihre Akteurinstanzen ausführen kann, muss auch Ihr Akteurtyp beim Actordienst registriert werden. Die `ActorRuntime`-Registrierungsmethode führt dies für Akteure aus. Im einfachsten Fall müssen Sie nur den Akteurtyp registrieren, der Actordienst wird dann implizit mit den Standardeinstellungen verwendet:
 
-Nachfolgende Verwaltung (d. h. Upgrades und endgültiges Löschen) der Anwendung erfolgt ebenfalls mit Mechanismen der Anwendungsverwaltung in Service Fabric. Weitere Informationen finden Sie unter den Themen zu [Anwendungsmodell](service-fabric-application-model.md), [Anwendungsbereitstellung und -entfernung](service-fabric-deploy-remove-applications.md) und [Anwendungsupgrade](service-fabric-application-upgrade.md).
+```csharp
+static class Program
+{
+    private static void Main()
+    {
+        ActorRuntime.RegisterActorAsync<MyActor>().GetAwaiter().GetResult();
 
-## Skalierbarkeit für Actor-Dienste
-Clusteradministratoren können einen oder mehrere Actor-Dienste der einzelnen Dienst-Typen im Cluster erstellen. Jeder dieser Actor-Dienste kann eine oder mehrere Partitionen besitzen (ähnlich wie jeder andere Service Fabric-Dienst). Die Fähigkeit, mehrere Dienste eines Diensttyps zu erstellen (der einem Actor-Typ zugeordnet wird), sowie die Möglichkeit zum Erstellen mehrerer Partitionen für einen Dienst ermöglichen es, dass die Actor-Anwendung skaliert werden kann. Weitere Informationen finden Sie im Artikel über [Skalierbarkeit](service-fabric-concepts-scalability.md).
+        Thread.Sleep(Timeout.Infinite);
+    }
+}
+```  
 
-> [AZURE.NOTE] Zustandslose Actor-Dienste sind für eine [Instanz](service-fabric-availability-services.md#availability-of-service-fabric-stateless-services)anzahl von 1 erforderlich. Mehr als eine Instanz eines zustandslosen Actor-Diensts in einer Partition wird nicht unterstützt. Aus diesem Grund haben zustandslose Actor-Dienste nicht die Möglichkeit, die Anzahl der Instanzen zum Erreichen der Skalierbarkeit zu erhöhen. Sie müssen die Skalierbarkeitsoptionen verwenden, die im [Skalierbarkeitsartikel](service-fabric-concepts-scalability.md) beschrieben werden.
+Sie können auch ein Lambda verwenden, das von der Registrierungsmethode bereitgestellt wird, um selbst den Actordienst zu erstellen. So können Sie den Actordienst konfigurieren und explizit Akteurinstanzen erstellen, in die Sie Abhängigkeiten zu Ihrem Akteur über den Konstruktor einführen können:
+
+```csharp
+static class Program
+{
+    private static void Main()
+    {
+        ActorRuntime.RegisterActorAsync<MyActor>(
+            (context, actorType) => new ActorService(context, actorType, () => new MyActor()))
+            .GetAwaiter().GetResult();
+
+        Thread.Sleep(Timeout.Infinite);
+    }
+}
+```
+
+### Actordienstmethoden
+
+Der Actordienst implementiert `IActorService`, womit wiederum `IService` implementiert wird. Dies ist die Schnittstelle, die für das Reliable Services-Remoting verwendet wird, das Remoteprozeduraufrufe von Dienstmethoden erlaubt. Sie enthält Methoden auf Dienstebene, die mit dem Dienstremoting aufgerufen werden können.
+
+
+#### Aufzählen von Akteuren
+
+Der Actordienst ermöglicht Clients das Aufzählen von Metadaten über die Akteure, die vom Dienst gehostet werden. Da der Actordienst ein partitionierter zustandsbehafteter Dienst ist, erfolgt die Enumeration für die einzelnen Partitionen. Da jede Partition eine große Anzahl von Akteuren enthalten kann, wird die Enumeration als Satz von Ergebnisseiten zurückgegeben. Die Seiten werden in einer Schleife durchlaufen, bis alle Seiten gelesen wurden. Im folgenden Beispiel wird veranschaulicht, wie eine Liste aller aktiven Akteure in einer Partition eines Actordiensts erstellt wird:
+
+```csharp
+IActorService actorServiceProxy = ActorServiceProxy.Create(
+    new Uri("fabric:/MyApp/MyService"), partitionKey);
+
+ContinuationToken continuationToken = null;
+List<ActorInformation> activeActors = new List<ActorInformation>();
+
+do
+{
+    PagedResult<ActorInformation> page = await actorServiceProxy.GetActorsAsync(continuationToken, cancellationToken);
+                
+    activeActors.AddRange(page.Items.Where(x => x.IsActive));
+
+    continuationToken = page.ContinuationToken;
+}
+while (continuationToken != null);
+```
+
+#### Löschen von Akteuren
+
+Der Actordienst bietet auch eine Funktion zum Löschen von Akteuren:
+
+```csharp
+ActorId actorToDelete = new ActorId(id);
+
+IActorService myActorServiceProxy = ActorServiceProxy.Create(
+    new Uri("fabric:/MyApp/MyService"), actorToDelete);
+            
+await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
+```
+
+Weitere Informationen zum Löschen von Akteuren und ihren Zustand finden Sie in der [Dokumentation zum Akteurlebenszyklus](service-fabric-reliable-actors-lifecycle.md).
+
+### Benutzerdefinierter Actordienst
+
+Mithilfe des Registrierungslambdas für den Akteur können Sie auch einen eigenen benutzerdefinierten Actordienst registrieren, der von `ActorService` abgeleitet ist und in dem Sie eigene Funktionen auf Dienstebene implementieren können. Dies erfolgt durch das Schreiben einer Dienstklasse, die von `ActorService` erbt. Ein benutzerdefinierter Actordienst erbt die gesamte Laufzeitfunktionalität des Akteurs von `ActorService`. Er kann zum Implementieren eigener Dienstmethoden verwendet werden.
+
+```csharp
+class MyActorService : ActorService
+{
+    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<ActorBase> newActor)
+        : base(context, typeInfo, newActor)
+    { }
+}
+```
+
+```csharp
+static class Program
+{
+    private static void Main()
+    {
+        ActorRuntime.RegisterActorAsync<MyActor>(
+            (context, actorType) => new MyActorService(context, actorType, () => new MyActor()))
+            .GetAwaiter().GetResult();
+
+        Thread.Sleep(Timeout.Infinite);
+    }
+}
+```
+
+
+#### Implementieren der Sicherung und Wiederherstellung von Akteuren
+
+ Im folgenden Beispiel stellt der benutzerdefinierte Actordienst eine Methode zum Sichern von Akteurdaten bereit. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist:
+
+```csharp
+public interface IMyActorService : IService
+{
+    Task BackupActorsAsync();
+}
+
+class MyActorService : ActorService, IMyActorService
+{
+    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<ActorBase> newActor)
+        : base(context, typeInfo, newActor)
+    { }
+
+    public Task BackupActorsAsync()
+    {
+        return this.BackupAsync(new BackupDescription(...));
+    }
+}
+```
+
+In diesem Beispiel ist `IMyActorService` ein Remotingvertrag, der `IService` implementiert und dann durch `MyActorService` implementiert wird. Durch das Hinzufügen dieses Remotingvertrags stehen die Methoden in `IMyActorService` jetzt auch auf einem Client bereit, da ein Remotingproxy mit `ActorServiceProxy` erstellt wird:
+
+```csharp
+IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
+    new Uri("fabric:/MyApp/MyService"), ActorId.CreateRandom());
+
+await myActorServiceProxy.BackupActorsAsync();
+```
+
+
+## Anwendungsmodell
+
+Actordienste sind Reliable Services, deshalb ist auch das Anwendungsmodell dasselbe. Die Buildtools im Akteurframework erstellen jedoch viele der Anwendungsmodelldateien für Sie.
+
+### Dienstmanifest
+ 
+Der Inhalt der Datei „ServiceManifest.xml“ zu Ihrem Actordienst wird automatisch von den Buildtools des Akteurframeworks generiert. Dies umfasst:
+
+ - Den Typ des Actordiensts Der Typname wird basierend auf den Projektnamen für Ihren Akteur generiert. Basierend auf dem Persistenzattribut des Akteurs wird das Flag HasPersistedState ebenfalls entsprechend festgelegt.
+ - Codepaket
+ - Konfigurationspaket
+ - Ressourcen und Endpunkte
+
+### Anwendungsmanifest
+
+Die Buildtools des Akteurframeworks erstellen automatisch eine Standarddienstdefinition für den Actordienst. Die Standarddiensteigenschaften werden von den Buildtools aufgefüllt:
+
+ - Die Anzahl von Replikatgruppen wird durch das Persistenzattribut für den Akteur bestimmt. Jedes Mal, wenn das Persistenzattribut für den Akteur geändert wird, wird die Anzahl der Replikatgruppen in der Standarddienstdefinition entsprechend zurückgesetzt.
+ - Partitionsschema und Bereich werden auf Uniform Int64 mit dem kompletten Int64-Schlüsselbereich festgelegt.
 
 ## Service Fabric-Partitionskonzepte für Actors
-Die ID eines Actors ist einer Partition eines Actor-Diensts zugeordnet. Der Actor wird innerhalb der Partition erstellt, der die Actor-ID zugeordnet ist. Beim Erstellen eines Actors schreibt die Laufzeit ein [EventSource-Ereignis](service-fabric-reliable-actors-diagnostics.md#eventsource-events), das angibt, in welcher Partition der Actor erstellt wird. Im Folgenden finden Sie ein Beispiel für dieses Ereignis, das angibt, dass ein Actor mit der ID `-5349766044453424161` innerhalb von Partition `b6afef61-be9a-4492-8358-8f473e5d2487` des Dienstes `fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService`, Anwendung `fabric:/VoicemailBoxAdvancedApplication` erstellt wurde.
 
-    {
-      "Timestamp": "2015-04-26T10:12:20.2485941-07:00",
-      "ProviderName": "Microsoft-ServiceFabric-Actors",
-      "Id": 5,
-      "Message": "Actor activated. Actor type: Microsoft.Azure.Service.Fabric.Samples.VoicemailBox.VoiceMailBoxActor, actor ID: -5349766044453424161, stateful: True, replica/instance ID: 130,745,418,574,851,853, partition ID: 0583c745-1bed-43b2-9545-29d7e3448156.",
-      "EventName": "ActorActivated",
-      "Payload": {
-        "actorType": "Microsoft.Azure.Service.Fabric.Samples.VoicemailBox.VoiceMailBoxActor",
-        "actorId": "-5349766044453424161",
-        "isStateful": "True",
-        "replicaOrInstanceId": "130906628008120392",
-        "partitionId": "b6afef61-be9a-4492-8358-8f473e5d2487",
-        "serviceName": "fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService",
-        "applicationName": "fabric:/VoicemailBoxAdvancedApplication",
-      }
-    }
+Actordienste sind partitionierte zustandsbehaftete Dienste. Jede Partition eines Actordiensts enthält einen Satz von Akteuren. Die Dienstpartitionen werden automatisch über mehrere Knoten in Service Fabric verteilt. Folglich werden daher auch die Akteurinstanzen verteilt.
 
-Ein weiterer Actor mit der ID `-4952641569324299627` wurde innerhalb einer anderen Partition (`5405d449-2da6-4d9a-ad75-0ec7d65d1a2a`) desselben Diensts erstellt, wie von dem Ereignis unten angegeben.
+![Akteurpartitionierung und -verteilung][5]
 
-    {
-      "Timestamp": "2015-04-26T15:06:56.93882-07:00",
-      "ProviderName": "Microsoft-ServiceFabric-Actors",
-      "Id": 5,
-      "Message": "Actor activated. Actor type: Microsoft.Azure.Service.Fabric.Samples.VoicemailBox.VoiceMailBoxActor, actor ID: -4952641569324299627, stateful: True, replica/instance ID: 130,745,418,574,851,853, partition ID: c146fe53-16d7-4d96-bac6-ef54613808ff.",
-      "EventName": "ActorActivated",
-      "Payload": {
-        "actorType": "Microsoft.Azure.Service.Fabric.Samples.VoicemailBox.VoiceMailBoxActor",
-        "actorId": "-4952641569324299627",
-        "isStateful": "True",
-        "replicaOrInstanceId": "130745418574851853",
-        "partitionId": "5405d449-2da6-4d9a-ad75-0ec7d65d1a2a",
-        "serviceName": "fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService",
-        "applicationName": "fabric:/VoicemailBoxAdvancedApplication",
-      }
-    }
+Reliable Services können mit anderen Partitionsschemas und Partitionsschlüsselbereichen erstellt werden. Der Actordienst verwendet das Int64-Partitionierungsschema mit dem vollständigen Int64-Schlüsselbereich für das Zuordnen von Akteuren zu Partitionen.
 
-> [AZURE.NOTE] Einige Felder der oben aufgeführten Ereignisse wurden der Kürze halber weggelassen.
+### Akteur-ID
 
-Die Partitions-ID kann verwendet werden, um weitere Informationen über die Partition abzurufen. Zum Beispiel kann das [Service Fabric-Explorer](service-fabric-visualizing-your-cluster.md)-Tool zum Anzeigen von Informationen über die Partition sowie den Dienst und die Anwendung, zu der er gehört, verwendet werden. Der folgende Screenshot zeigt Informationen über Partition `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a`, die im obigen Beispiel den Actor mit ID `-4952641569324299627` enthalten hat.
-
-![Informationen zu einer Partition in Service Fabric-Explorer][3]
-
-Actors können die Partitions-ID, den Dienstnamen, den Anwendungsnamen sowie andere für die Service Fabric-Plattform spezifische Informationen über die Member `Host.ActivationContext` und `Host.StatelessServiceInitialization` oder `Host.StatefulServiceInitializationParameters` der Basisklasse, von der der Actor-Typ abgeleitet ist, auf programmgesteuerte Weise abrufen. Der folgende Codeausschnitt zeigt ein Beispiel.
+Jedem im Dienst erstellten Akteur wird eine eindeutige ID zugeordnet, die durch die `ActorId`-Klasse dargestellt wird. Die `ActorId` ist ein nicht transparenter ID-Wert, der für die gleichmäßige Verteilung von Akteuren über die Dienstpartitionen verwendet werden kann, indem zufällige IDs generiert werden:
 
 ```csharp
-public void ActorMessage(StatefulActorBase actor, string message, params object[] args)
-{
-    if (this.IsEnabled())
-    {
-        string finalMessage = string.Format(message, args);
-        ActorMessage(
-            actor.GetType().ToString(),
-            actor.Id.ToString(),
-            actor.ActorService.ServiceInitializationParameters.CodePackageActivationContext.ApplicationTypeName,
-            actor.ActorService.ServiceInitializationParameters.CodePackageActivationContext.ApplicationName,
-            actor.ActorService.ServiceInitializationParameters.ServiceTypeName,
-            actor.ActorService.ServiceInitializationParameters.ServiceName.ToString(),
-            actor.ActorService.ServiceInitializationParameters.PartitionId,
-            actor.ActorService.ServiceInitializationParameters.ReplicaId,
-            FabricRuntime.GetNodeContext().NodeName,
-            finalMessage);
-    }
-}
+ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
 ```
 
-### Service Fabric-Partitionskonzepte für statusfreie Actors
-Statusfreie Actors werden innerhalb einer Partition eines statusfreien Service Fabric-Dienstes erstellt. Die Actor-ID bestimmt, unter welcher Partitionierung der Actor erstellt wird. Die [Instanz](service-fabric-availability-services.md#availability-of-service-fabric-stateless-services)anzahl für einen statusfreien Actor-Dienst muss 1 sein. Das Ändern die Anzahl der Instanzen auf einen anderen Wert wird nicht unterstützt. Daher wird der Actor innerhalb der einzelnen Dienstinstanz in der Partition erstellt.
-
-> [AZURE.TIP] Die Fabric Actors-Laufzeit gibt einige [Ereignisse im Zusammenhang mit statusfreien Actor-Instanzen](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateless-actor-instances) aus. Sie sind hilfreich bei der Diagnose und Leistungsüberwachung.
-
-Beim Erstellen eines statusfreien Actors schreibt die Laufzeit ein [EventSource-Ereignis](service-fabric-reliable-actors-diagnostics.md#eventsource-events), das angibt, in welcher Partition und Instanz der Actor erstellt wird. Nachstehend sehen Sie ein Beispiel dieses Ereignisses. Es gibt an, dass ein Actor mit der ID `abc` innerhalb von Instanz `130745709600495974` von Partition `8c828833-ccf1-4e21-b99d-03b14d4face3`, von Dienst `fabric:/HelloWorldApplication/HelloWorldActorService`, Anwendung `fabric:/HelloWorldApplication` erstellt wurde.
-
-    {
-      "Timestamp": "2015-04-26T18:17:46.1453113-07:00",
-      "ProviderName": "Microsoft-ServiceFabric-Actors",
-      "Id": 5,
-      "Message": "Actor activated. Actor type: HelloWorld.HelloWorld, actor ID: abc, stateful: False, replica/instance ID: 130,745,709,600,495,974, partition ID: 8c828833-ccf1-4e21-b99d-03b14d4face3.",
-      "EventName": "ActorActivated",
-      "Payload": {
-        "actorType": "HelloWorld.HelloWorld",
-        "actorId": "abc",
-        "isStateful": "False",
-        "replicaOrInstanceId": "130745709600495974",
-        "partitionId": "8c828833-ccf1-4e21-b99d-03b14d4face3",
-        "serviceName": "fabric:/HelloWorldApplication/HelloWorldActorService",
-        "applicationName": "fabric:/HelloWorldApplication",
-      }
-    }
-
-> [AZURE.NOTE] Einige Felder des oben aufgeführten Ereignisses wurden der Kürze halber weggelassen.
-
-### Service Fabric-Partitionskonzepte für statusbehaftete Actors
-Statusbehaftete Actors werden innerhalb einer Partition des statusbehafteten Service Fabric-Dienstes erstellt. Die Actor-ID bestimmt, unter welcher Partitionierung der Actor erstellt wird. Jede Partition des Dienstes kann über ein oder mehrere [Replikate](service-fabric-availability-services.md#availability-of-service-fabric-stateful-services) verfügen, die sich auf verschiedenen Knoten im Cluster befinden. Über mehrere Replikate zu verfügen, bietet Zuverlässigkeit für den Actor-Status. Der Azure-Ressourcen-Manager optimiert die Platzierung basierend auf den verfügbaren Fehler- und Upgradedomänen im Cluster. Es werden nie zwei Replikate einer Partition auf demselben Knoten platziert. Die Actors werden immer im primären Replikat der Partition erstellt, der ihre Actor-ID zugeordnet ist.
-
-> [AZURE.TIP] Die Fabric Actors-Laufzeit gibt einige [Ereignisse im Zusammenhang mit statusbehafteten Actor-Replikaten](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateful-actor-replicas) aus. Sie sind hilfreich bei der Diagnose und Leistungsüberwachung.
-
-Denken Sie daran, dass in dem [VoiceMailBoxActor-Beispiel weiter oben](#service-fabric-partition-concepts-for-actors) der Actor mit der ID `-4952641569324299627` innerhalb von Partition `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` erstellt wurde. Das EventSource-Ereignis aus diesem Beispiel gab außerdem an, dass der Actor in Replikat `130745418574851853` dieser Partition erstellt wurde. Dies war das primäre Replikat der Partition zum Zeitpunkt der Erstellung des Actors. Der folgende Service Fabric-Explorer-Screenshot bestätigt dies.
-
-![Ein primäres Replikat in Service Fabric-Explorer][4]
-
-## Actor-Statusanbieter-Optionen
-Es gibt einige standardmäßige Actor-Zustandsanbieter, die in der Actors-Laufzeit enthalten sind. Um einen entsprechenden Statusanbieter für einen Actor-Dienst auszuwählen, ist es erforderlich zu verstehen, wie die Status-Anbieter die zugrunde liegenden Features der Service Fabric-Plattform nutzen, um den Actor-Status hochverfügbar zu machen.
-
-Standardmäßig verwendet ein statusbehafteter Actor einen Actor-Zustandsanbieter aus dem Schlüsselwertspeicher. Dieser Statutsanbieter basiert auf dem verteilten Schlüsselwertspeicher, der von der Service Fabric-Plattform bereitgestellt wird. Der Status wird dauerhaft auf dem lokalen Datenträger des Knotens gespeichert, der das primäre [Replikat](service-fabric-availability-services.md#availability-of-service-fabric-stateful-services) hostet. Der Status wird auch repliziert und dauerhaft auf den lokalen Datenträgern der Knoten gespeichert, die die sekundären Replikate hosten. Die Statussicherung ist erst abgeschlossen, nachdem ein Quorum von Replikaten den Status auf seinen lokalen Datenträgern gespeichert hat. Der Schlüsselwertspeicher verfügt über erweiterte Funktionen zum Erkennen von Inkonsistenzen, wie z. B. falscher Fortschritt, und für ihre automatische Korrektur.
-
-Die Actors-Laufzeit enthält auch `VolatileActorStateProvider`. Dieser Zustandsanbieter repliziert den Status in Replikate (Kopien des Status), der Status bleibt jedoch bei jedem Replikat im Arbeitsspeicher. Wenn ein Replikat ausfällt und wieder hoch kommt, wird sein Status anhand des anderen Replikats erneut erstellt. Wenn jedoch alle Replikate gleichzeitig ausfallen, gehen die Statusdaten verloren. Daher eignet sich dieser Zustandsanbieter für Anwendungen, bei denen die Daten das Ausfallen einiger Replikate sowie geplante Failover, wie z. B. Upgrades, überleben können. Wenn alle Replikate verloren gegangen sind, müssen die Daten mithilfe von Mechanismen außerhalb von Service Fabric neu erstellt werden. Sie können den statusbehafteten Actor für die Verwendung eines flüchtigen Actor-Status-Anbieters konfigurieren, indem Sie das Attribut `VolatileActorStateProvider` der Actor-Klasse oder einem Attribut auf Assemblyebene hinzufügen.
-
-Der folgende Codeausschnitt zeigt, wie alle Actors in der Assembly geändert werden, die über kein explizites Zustandsanbieterattribut für die Verwendung von `VolatileActorStateProvider` verfügt.
+Für jede `ActorId` wird ein Int64-Hashwert erstellt. Aus diesem Grund muss der Actordienst ein Int64-Partitionierungsschema mit dem vollständigen Int64-Schlüsselbereich verwenden. Es können aber benutzerdefinierte ID-Werte für eine `ActorID` verwendet werden (einschließlich GUIDs, Zeichenfolgen und Int64-Werten).
 
 ```csharp
-[assembly:Microsoft.ServiceFabric.Actors.VolatileActorStateProvider]
+ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
+ActorProxy.Create<IMyActor>(new ActorId("myActorId"));
+ActorProxy.Create<IMyActor>(new ActorId(1234));
 ```
 
-Der folgende Codeausschnitt zeigt, wie der Zustandsanbieter für einen bestimmten Actor-Typ, in diesem Fall `VoicemailBox`, in `VolatileActorStateProvider` geändert wird.
+Bei Verwendung von GUIDs und Zeichenfolgen werden für die Werte Int64-Hashwerte erstellt. Allerdings wird bei der expliziten Bereitstellung eines Int64-Werts für eine `ActorId` der Int64-Wert direkt einer Partition zugeordnet, ohne dass ein weiteres Hashing erfolgt. Damit kann festgelegt werden, welcher Partition die Akteure zugeordnet werden.
 
-```csharp
-[VolatileActorStateProvider]
-public class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
-{
-    public Task<List<Voicemail>> GetMessagesAsync()
-    {
-        return Task.FromResult(State.MessageList);
-    }
-    ...
-}
-```
+## Nächste Schritte
+ - [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
+ - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx) (Actor-API-Referenzdokumentation)
+ - [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
-Beachten Sie, dass bei Änderungen des Zustandsanbieters der Actor-Dienst neu erstellt werden muss. Status-Anbieter können nicht als Teil des Anwendungsupgrades geändert werden.
-
+ 
 <!--Image references-->
-[1]: ./media/service-fabric-reliable-actors-platform/manifests-in-vs-solution.png
+[1]: ./media/service-fabric-reliable-actors-platform/actor-service.png
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
+[5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -24,7 +24,7 @@
 - [PowerShell](virtual-machines-windows-create-powershell.md)
 - [PowerShell – Vorlage](virtual-machines-windows-ps-template.md)
 - [Portal – Linux](virtual-machines-linux-portal-create.md)
-- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-machines-linux-cli-create.md)
+- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-machines-linux-quick-create-cli.md)
 
 <br>
 
@@ -36,13 +36,13 @@ Diese Schritte zeigen, wie eine Reihe von Azure PowerShell-Befehlen zum Erstelle
 
 Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure PowerShell-Befehlssätzen. Dieser Ansatz kann hilfreich sein, wenn Sie noch nicht mit PowerShell gearbeitet haben oder einfach wissen möchten, welche Werte Sie für die erfolgreiche Konfiguration angeben müssen. Wenn Sie ein fortgeschrittener PowerShell-Benutzer sind, können Sie die Befehle verwenden und die Variablen (mit "$" beginnende Zeilen) durch eigene Werte ersetzen.
 
-## Schritt 1: Installieren von Azure PowerShell
+## Schritt 1: Installieren von Azure PowerShell
 
 Es gibt zwei Hauptoptionen für die Installation: [PowerShell-Katalog](https://www.powershellgallery.com/profiles/azure-sdk/) und [WebPI](http://aka.ms/webpi-azps). WebPI wird monatlich aktualisiert. Der PowerShell-Katalog wird fortlaufend aktualisiert.
 
-Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/).
+Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com//blog/azps-1-0/) (in englischer Sprache).
 
-## Schritt 2: Festlegen des Abonnements
+## Schritt 2: Festlegen des Abonnements
 
 Starten Sie zunächst eine PowerShell-Eingabeaufforderung.
 
@@ -60,7 +60,7 @@ Legen Sie Ihr Azure-Abonnement fest. Ersetzen Sie alles in den Anführungszeiche
 	Select-AzureSubscription -SubscriptionName $subscr –Current
 
 
-## Schritt 3: Erstellen von Ressourcen
+## Schritt 3: Erstellen von Ressourcen
 
 In diesem Abschnitt wird gezeigt, wie jede Ressource für den neuen virtuellen Computer erstellt wird.
 
@@ -144,7 +144,7 @@ Mit diesen Befehlen können Sie die vorhandenen virtuellen Netzwerke auflisten.
 	$rgName="<resource group name>"
 	Get-AzureRmVirtualNetwork -ResourceGroupName $rgName | Sort Name | Select Name
 
-## Schritt 4: Erstellen des Befehlssatzes
+## Schritt 4: Erstellen des Befehlssatzes
 
 Öffnen Sie eine neue Instanz eines Texteditors Ihrer Wahl oder die PowerShell Integrated Scripting Environment (ISE), und kopieren Sie die folgenden Zeilen, um den Befehlssatz zu starten. Geben Sie den Namen der Ressourcengruppe, den Azure-Standort und das Speicherkonto für den neuen virtuellen Computer an. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
 
@@ -186,7 +186,7 @@ Kopieren Sie die folgenden Zeilen in den Befehlssatz, und geben Sie den Namen f�
 	$pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 	$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
 
-### Option 2: Geben Sie einen NIC-Namen und die DNS-Domänennamensbezeichnung an.
+### Option 2: Geben Sie einen NIC-Namen und die DNS-Domänennamensbezeichnung an.
 
 Kopieren Sie die folgenden Zeilen in den Befehlssatz, und geben Sie den Namen für die Netzwerkkarte sowie die global eindeutige Domänennamensbezeichnung an.
 
@@ -244,18 +244,18 @@ Kopieren Sie diese Zeilen in den Befehlssatz, und geben Sie die erforderlichen N
 
 Als Nächstes erstellen Sie ein lokales Objekt für den virtuellen Computer und fügen es optional einer Verfügbarkeitsgruppe hinzu. Kopieren Sie eine der beiden folgenden Optionen in den Befehlssatz, und geben Sie den Namen, die Größe und den Verfügbarkeitsgruppennamen ein.
 
-Option 1: Geben Sie einen Namen für den virtuellen Computer und die Größe an.
+Option 1: Geben Sie einen Namen für den virtuellen Computer und die Größe an.
 
 	$vmName="<VM name>"
 	$vmSize="<VM size string>"
 	$vm=New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 
-Verwenden Sie diese Befehle, um die möglichen Werte für die Größenzeichenfolge des virtuellen Computers für Option 1 zu bestimmen.
+Verwenden Sie diese Befehle, um die möglichen Werte für die Größenzeichenfolge des virtuellen Computers für Option 1 zu bestimmen.
 
 	$locName="<Azure location of your resource group>"
 	Get-AzureRmVMSize -Location $locName | Select Name
 
-Option 2: Geben Sie einen Namen für den virtuellen Computer sowie die Größe an, und fügen Sie diesen einer Verfügbarkeitsgruppe hinzu.
+Option 2: Geben Sie einen Namen für den virtuellen Computer sowie die Größe an, und fügen Sie diesen einer Verfügbarkeitsgruppe hinzu.
 
 	$vmName="<VM name>"
 	$vmSize="<VM size string>"
@@ -263,7 +263,7 @@ Option 2: Geben Sie einen Namen für den virtuellen Computer sowie die Größe a
 	$avSet=Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName
 	$vm=New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
 
-Verwenden Sie diese Befehle, um die möglichen Werte für die Größenzeichenfolge des virtuellen Computers für Option 2 zu bestimmen.
+Verwenden Sie diese Befehle, um die möglichen Werte für die Größenzeichenfolge des virtuellen Computers für Option 2 zu bestimmen.
 
 	$rgName="<resource group name>"
 	$avName="<availability set name>"
@@ -314,7 +314,7 @@ Schließlich kopieren Sie diese Befehle in den Befehlssatz, und geben den Namens
 	$vm=Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-## Schritt 5: Ausführen des Befehlssatzes
+## Schritt 5: Ausführen des Befehlssatzes
 
 Überprüfen Sie den in Schritt 4 erstellten Azure PowerShell-Befehlssatz in einem Texteditor oder der PowerShell ISE. Stellen Sie sicher, dass Sie alle Variablen angegeben haben und diese die richtigen Werte aufweisen. Stellen Sie außerdem sicher, dass Sie alle < and > entfernt haben.
 
@@ -329,7 +329,7 @@ Ich brauche einen PowerShell-Befehlssatz, um einen zusätzlichen virtuellen Comp
 - sich in der vorhandenen LOBServers-Ressourcengruppe befindet
 - das Windows Server 2012 R2 Datacenter-Image verwendet
 - den Namen LOB07 hat und sich in der vorhandenen WEB\_AS-Verfügbarkeitsgruppe befindet
-- über eine Netzwerkkarte mit einer öffentlichen IP-Adresse im FrontEnd-Subnetz (Subnetzindex 0) des vorhandenen virtuellen AZDatacenter-Netzwerks verfügt
+- über eine Netzwerkkarte mit einer öffentlichen IP-Adresse im FrontEnd-Subnetz (Subnetzindex 0) des vorhandenen virtuellen AZDatacenter-Netzwerks verfügt
 - einen zusätzlichen Datenträger mit 200 GB aufweist
 
 Hier finden Sie den Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen Computers.
@@ -393,4 +393,4 @@ Hier finden Sie den Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen
 
 [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

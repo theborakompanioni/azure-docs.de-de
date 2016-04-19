@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="03/28/2016" 
-	ms.author="ealsur@hotmail.com"/>
+	ms.author="mimig"/>
 
 # Soziale Netzwerke mit DocumentDB
 
@@ -182,7 +182,7 @@ Doch, was können wir von ihm lernen? Einige einfache Beispiele sind die [Sentim
 
 Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie eine Promotion in Mathematik benötigen, um einfachen Datenbanken und Dateien diese Muster und Informationen zu entlocken. Aber da liegen Sie falsch.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Analytics Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R] (https://en.wikipedia.org/wiki/R_(programming_language)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z.B. [Textanalyse](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) (Content-Moderator) oder [Empfehlungen](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R] (https://en.wikipedia.org/wiki/R_(programming_language)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z.B. [Textanalyse](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) (Content-Moderator) oder [Empfehlungen](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)).
 
 ## Zusammenfassung
 
@@ -198,4 +198,4 @@ Weitere Informationen über die Datenmodellierung finden Sie in dem Artikel [Mod
 
 Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

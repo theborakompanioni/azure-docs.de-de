@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure SQL-Datenbanken – Allgemeine Einschränkungen und Leitlinien"
    description="Auf dieser Seite werden einige allgemeine Einschränkungen von Azure SQL-Datenbank sowie Aspekte der Interoperabilität und Unterstützung beschrieben."
    services="sql-database"
@@ -6,7 +6,7 @@
    authors="rothja"
    manager="jeffreyg"
    editor="monicar" />
-<tags 
+<tags
    ms.service="sql-database"
    ms.devlang="na"
    ms.topic="article"
@@ -19,15 +19,15 @@
 
 In diesem Thema werden allgemeine Einschränkungen und Leitlinien für Azure SQL-Datenbank behandelt. Um Kontingente, Ressourcenverwaltung und Unterstützung besser zu verstehen, lesen Sie den Abschnitt [Zusätzliche Ressourcen](#additional-guidelines) am Ende dieses Themas.
 
-## Konnektivität
+## Konnektivität und Authentifizierung
 
- - Windows-Authentifizierung wird nicht unterstützt. Weitere Informationen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md). 
+  - Windows-Authentifizierung wird nicht unterstützt. Weitere Informationen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md). Die Azure Active Directory-Authentifizierung wird jedoch mit bestimmten Einschränkungen unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
 
- - Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3.
+  - Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3.
 
- - Nur TCP/IP-Verbindungen sind zulässig.
+  - Nur TCP/IP-Verbindungen sind zulässig.
 
- - Der SQL Server 2008-Browser wird nicht unterstützt, da Microsoft Azure SQL-Datenbank keine dynamische Ports, sondern lediglich den Port 1433 hat.
+  - Der SQL Server 2008-Browser wird nicht unterstützt, da Microsoft Azure SQL-Datenbank keine dynamische Ports, sondern lediglich den Port 1433 hat.
 
 ## SQL Server-Agent/-Aufträge
 
@@ -41,11 +41,11 @@ Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist *
 
 Aus Sicherheitsgründen sind bestimmte Benutzernamen nicht zulässig. Dabei handelt es sich um folgende Namen:
 
- - **admin** 
- - **administrator** 
- - **guest** 
- - **root** 
- - **sa** 
+ - **admin**
+ - **administrator**
+ - **guest**
+ - **root**
+ - **sa**
 
 Namen für alle neuen Objekte müssen den SQL Server-Regeln für Bezeichner entsprechen. Weitere Informationen finden Sie unter [Bezeichner](https://msdn.microsoft.com/library/ms175874.aspx).
 
@@ -63,4 +63,4 @@ Darüber hinaus dürfen Anmelde- und Benutzernamen nicht das Zeichen „\\“ en
 
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -14,35 +14,31 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/08/2016"
-	ms.author="vlivech"/>
+	ms.date="04/04/2016"
+	ms.author="v-livech"/>
 
 # Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage
+
+Zum Erstellen eines virtuellen Linux-Computers aus einer Vorlage benötigen Sie [die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
+
+## Kurze Zusammenfassung der Befehle
+
+```bash
+chrisl@fedora$ azure group create -n <exampleRGname> -l <exampleAzureRegion> [--template-uri <URL> | --template-file <path> | <template-file> -e <parameters.json file>]
+```
+
+## Ausführliche exemplarische Vorgehensweise
 
 Mit Vorlagen können Sie VMs unter Azure mit Einstellungen erstellen, die Sie während des Startprozesses anpassen möchten, z.B. Benutzer- und Hostnamen. In diesem Artikel geht es um das Starten einer Ubuntu-VM mit einer Azure-Vorlage, bei der eine Netzwerksicherheitsgruppe (NSG) mit nur einem geöffneten Port (22 für SSH) erstellt wird und für die zur Anmeldung SSH-Schlüssel benötigt werden.
 
 Bei Azure Resource Manager-Vorlagen handelt es sich um JSON-Dateien, die für einfache einmalige Aufgaben verwendet werden können, z.B. das Starten einer Ubuntu-VM wie in diesem Artikel. Sie können auch zum Erstellen komplexer Azure-Konfigurationen für ganze Umgebungen verwendet werden, z.B. eine Test-, Entwicklungs- oder Produktionsbereitstellung vom Netzwerk über das Betriebssystem bis zur Bereitstellung des Anwendungsstapels.
 
-## Zielsetzung
-
-- Erstellen einer per SSH geschützten Linux-VM in Azure mit einer Azure-Vorlage
-
-## Voraussetzungen
-
-- Sie benötigen ein Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)), eine [Datei mit einem öffentlichen SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md) und die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). Versetzen Sie die Befehlszeilenschnittstelle dann in den Ressourcenmodus, indem Sie `azure config mode arm` eingeben. Melden Sie sich anschließend mit der Befehlszeilenschnittstelle an Azure an, indem Sie `azure login` eingeben.
-
-## Kurze Zusammenfassung der Befehle
-
-Für diese Bereitstellung wird nur ein Befehl benötigt. Außerdem müssen Sie eine Option auswählen, um anzugeben, wo sich die Azure Resource Manager-Vorlage befindet. In diesem Thema wird eine Vorlage direkt aus der Azure-Schnellstartvorlage aus dem GitHub-Repository als Beispiel verwendet. Mit den verschiedenen Optionen unten wird lediglich angegeben, wo sich die Vorlage und die Parameterdateien befinden.
-
-1. `azure group create -n <exampleRGname> -l <exampleAzureRegion> [--template-uri <URL> | --template-file <path> | <template-file> -e <parameters.json file>]`
-
 ## Erstellen der Linux-VM
 
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie `azure group create` aufrufen, um eine Ressourcengruppe zu erstellen, und gleichzeitig eine per SSH geschützte Linux-VM bereitstellen, indem Sie [diese Azure Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) verwenden. Beachten Sie, dass Sie in Ihrem Beispiel Namen verwenden müssen, die für Ihre Umgebung eindeutig sind. In diesem Beispiel werden `quicksecuretemplate` als Ressourcengruppenname, `securelinux` als VM-Name und `quicksecurelinux` als Name einer Unterdomäne verwendet.
+Im folgenden Codebeispiel wird veranschaulicht, wie Sie `azure group create` aufrufen, um eine Ressourcengruppe zu erstellen, und gleichzeitig einen per SSH geschützten virtuellen Linux-Computer bereitstellen, indem Sie [diese Azure Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) verwenden. Beachten Sie, dass Sie in Ihrem Beispiel Namen verwenden müssen, die für Ihre Umgebung eindeutig sind. In diesem Beispiel wird `quicksecuretemplate` als Ressourcengruppenname, `securelinux` als VM-Name und `quicksecurelinux` als Name einer Unterdomäne verwendet.
 
 ```bash
-azure group create -n quicksecuretemplate -l eastus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
+chrisl@fedora$ azure group create -n quicksecuretemplate -l eastus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 info:    Executing command group create
 + Getting resource group quicksecuretemplate
 + Creating resource group quicksecuretemplate
@@ -64,12 +60,10 @@ data:
 info:    group create command OK
 ```
 
-## Ausführliche exemplarische Vorgehensweise
-
-Sie können eine neue Ressourcengruppe erstellen und eine VM bereitstellen, indem Sie den Parameter `--template-uri` verwenden. Außerdem können Sie eine Vorlage herunterladen oder lokal erstellen und die Vorlage mit dem Parameter `--template-file` und einem Pfad zur Vorlagendatei als Argument übergeben. Sie werden von der Azure-Befehlszeilenschnittstelle aufgefordert, die für die Vorlage erforderlichen Parameter anzugeben.
+Sie können mithilfe des Parameters `--template-uri` eine neue Ressourcengruppe erstellen und einen virtuellen Computer bereitstellen. Außerdem können Sie eine Vorlage herunterladen oder lokal erstellen und die Vorlage mit dem Parameter `--template-file` und einem Pfad zur Vorlagendatei als Argument übergeben. Sie werden von der Azure-Befehlszeilenschnittstelle aufgefordert, die für die Vorlage erforderlichen Parameter anzugeben.
 
 ## Nächste Schritte
 
 Nachdem Sie Linux-VMs mit Vorlagen erstellt haben, können Sie sich darüber informieren, welche anderen App-Frameworks für die Verwendung mit Vorlagen verfügbar sind. Im [Katalog mit den Vorlagen](https://azure.microsoft.com/documentation/templates/) können Sie weitere App-Frameworks für die Bereitstellung auswählen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

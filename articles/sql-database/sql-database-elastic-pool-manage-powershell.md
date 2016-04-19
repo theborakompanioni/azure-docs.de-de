@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="03/15/2016"
+    ms.date="04/01/2016"
     ms.author="sstein"/>
 
 # Überwachen, Verwalten und Skalieren eines Pools für elastische Datenbanken mit PowerShell 
@@ -22,7 +22,7 @@
 - [Azure-Portal](sql-database-elastic-pool-manage-portal.md)
 - [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 - [C#](sql-database-elastic-pool-manage-csharp.md)
-
+- [T-SQL](sql-database-elastic-pool-manage-tsql.md)
 
 Erstellen und Verwalten eines [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mit PowerShell-Cmdlets
 
@@ -87,10 +87,10 @@ Metriken, die als Prozentsatz des Ressourcenpool-Grenzwerts abgerufen werden kö
 Granularität/Beibehaltungsdauern für die Metriken:
 
 * Daten werden mit 5-Minuten-Granularität zurückgegeben.  
-* Die Datenaufbewahrung beträgt 14 Tage.  
+* Die Datenaufbewahrung beträgt 14 Tage.  
 
 
-Dieses Cmdlet und die API beschränken die Anzahl der Zeilen, die in einem Aufruf abgerufen werden können, auf 1000 Zeilen (ca. drei Tage Daten bei 5-Minuten-Granularität). Dieser Befehl kann jedoch mehrmals mit verschiedenen Anfangs- und Endzeitintervallen aufgerufen werden, um mehr Daten abzurufen.
+Dieses Cmdlet und die API beschränken die Anzahl der Zeilen, die in einem Aufruf abgerufen werden können, auf 1000 Zeilen (ca. drei Tage Daten bei 5-Minuten-Granularität). Dieser Befehl kann jedoch mehrmals mit verschiedenen Anfangs- und Endzeitintervallen aufgerufen werden, um mehr Daten abzurufen.
 
 
 Abrufen der Metriken:
@@ -113,7 +113,7 @@ Exportieren in eine CSV-Datei:
 
 Diese APIs sind identisch mit den aktuellen APIs (V12), die für die Überwachung der Ressourcenverwendung einer eigenständigen Datenbank verwendet werden, mit Ausnahme der folgenden semantischen Unterschiede:
 
-* Die für diese API abgerufenen Metriken werden als Prozentsatz des Werts „databaseDtuMax“ (oder der entsprechenden Obergrenze für die zugrunde liegende Metrik wie CPU, E/A usw.) ausgedrückt, der für diesen Pool festgelegt wurde. Beispielsweise zeigen 50 Prozent Auslastung bei einer dieser Metriken an, dass der spezifische Ressourcenverbrauch der Obergrenze pro Datenbank für diese Ressource im übergeordneten Pool bei 50 Prozent liegt. 
+* Die für diese API abgerufenen Metriken werden als Prozentsatz des Werts „databaseDtuMax“ (oder der entsprechenden Obergrenze für die zugrunde liegende Metrik wie CPU, E/A usw.) ausgedrückt, der für diesen Pool festgelegt wurde. Beispielsweise zeigen 50 Prozent Auslastung bei einer dieser Metriken an, dass der spezifische Ressourcenverbrauch der Obergrenze pro Datenbank für diese Ressource im übergeordneten Pool bei 50 Prozent liegt. 
 
 Abrufen der Metriken:
 
@@ -178,4 +178,4 @@ Exportieren in eine CSV-Datei:
 
 Weitere Informationen über elastische Datenbanken und elastische Datenbankpools, einschließlich API- und Fehlerinformationen, finden Sie unter [Referenz für elastische Datenbankpools](sql-database-elastic-pool-reference.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

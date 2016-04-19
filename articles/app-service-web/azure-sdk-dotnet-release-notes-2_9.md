@@ -60,4 +60,4 @@ Diese Version umfasst nun die [KeyVault](../resource-manager-keyvault-parameter.
 
 [Ankündigungsbeitrag zu Azure SDK 2.9 (in englischer Sprache)](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!-----HONumber=AcomDC_0330_2016-->

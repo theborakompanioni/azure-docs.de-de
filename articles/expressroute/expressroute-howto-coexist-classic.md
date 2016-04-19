@@ -3,7 +3,7 @@
    description="Dieser Artikel führt Sie durch die Konfiguration von ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen, die im klassischen Bereitstellungsmodell gleichzeitig bestehen können."
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
+   authors="charwen"
    manager="carmonm"
    editor=""
    tags="azure-service-management"/>
@@ -13,27 +13,30 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/18/2016"
-   ms.author="cherylmc"/>
+   ms.date="04/06/2016"
+   ms.author="charwen"/>
 
-# Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen
+# Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen für das klassische Bereitstellungsmodell
 
-Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute bietet mehrere Vorteile. Sie können Standort-zu-Standort-VPNs als sicheren Failoverpfad für ExressRoute konfigurieren oder für die Verbindung mit Websites nutzen, die nicht Teil Ihres Netzwerks sind, aber über ExpressRoute verbunden sind. Wir werden die Schritte zum Konfigurieren von beiden Szenarien in diesem Artikel behandeln. **Derzeit können Sie diese Konfiguration für VNETs nur mit dem klassischen Bereitstellungsmodell erstellen.** Sobald Dokumentation für das Ressourcen-Manager-Bereitstellungsmodell verfügbar ist, stellen wir hier einen Link bereit.
 
+> [AZURE.SELECTOR]
+- [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
+- [PowerShell – klassisch](expressroute-howto-coexist-classic.md)
+
+Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute bietet mehrere Vorteile. Sie können Standort-zu-Standort-VPNs als sicheren Failoverpfad für ExpressRoute konfigurieren oder für die Verbindung mit Websites nutzen, die nicht über ExpressRoute verbunden sind. Wir werden die Schritte zum Konfigurieren von beiden Szenarien in diesem Artikel behandeln. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Diese Konfiguration ist nicht im Portal verfügbar.
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-ExpressRoute-Verbindungen müssen bereits konfiguriert sein, bevor Sie die folgenden Schritte ausführen. Stellen Sie sicher, dass Sie die Handbücher zu [ExpressRoute-Verbindung erstellen](expressroute-howto-circuit-classic.md) und [Konfigurieren des Routings](expressroute-howto-routing-classic.md) gelesen haben, bevor Sie die folgenden Schritte unternehmen.
+>[AZURE.IMPORTANT] ExpressRoute-Verbindungen müssen bereits konfiguriert sein, bevor Sie die folgenden Schritte ausführen. Stellen Sie sicher, dass Sie die Handbücher zu [ExpressRoute-Verbindung erstellen](expressroute-howto-circuit-classic.md) und [Konfigurieren des Routings](expressroute-howto-routing-classic.md) gelesen haben, bevor Sie die folgenden Schritte unternehmen.
 
 ## Grenzwerte und Einschränkungen
 
 - **Transitrouting wird nicht unterstützt:** Ein Routing (über Azure) zwischen Ihrem lokalen Netzwerk mit Standort-zu-Standort-VPN-Verbindung und Ihrem lokalen Netzwerk mit ExpressRoute-Verbindung ist nicht möglich.
 - **Punkt-zu-Standort-Verbindungen werden nicht unterstützt:** Sie können keine Punkt-zu-Standort-VPN-Verbindungen mit einem VNET herstellen, für das eine Verbindung mit ExpressRoute besteht. Punkt-zu-Standort-VPN- und ExpressRoute-Verbindungen können für ein VNET nicht gleichzeitig vorhanden sein.
-- **Erzwungenes Tunneln kann nicht auf dem Standort-zu-Standort-VPN-Gateway aktiviert werden:** Sie können nur „erzwingen“, dass sämtlicher Internetdatenverkehr über ExpressRoute an Ihr lokales Netzwerk zurückgeleitet wird. 
-- **Nur Standard- oder Hochleistungsgateways:** Sie müssen ein Standard- oder Hochleistungsgateway sowohl für das ExpressRoute-Gateway als auch das Standort-zu-Standort-VPN-Gateway verwenden. Informationen zu Gateway-SKUs finden Sie unter [Gateway-SKUs](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+- **Erzwungenes Tunneln kann nicht auf dem Standort-zu-Standort-VPN Gateway aktiviert werden:** Sie können nur „erzwingen“, dass sämtlicher Internetdatenverkehr über ExpressRoute an Ihr lokales Netzwerk zurückgeleitet wird. 
+- **Nur Standard- oder Hochleistungsgateways:** Sie müssen ein Standard- oder Hochleistungsgateway sowohl für das ExpressRoute-Gateway als auch das Standort-zu-Standort-VPN Gateway verwenden. Informationen zu Gateway-SKUs finden Sie unter [Gateway-SKUs](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 - **Nur routenbasiertes VPN Gateway:** Sie müssen ein routenbasiertes VPN Gateway verwenden. Informationen zum routenbasierten VPN Gateway finden Sie unter [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 - **Voraussetzungen für eine statische Route:** Wenn Ihr lokales Netzwerk mit ExpressRoute und einem Standort-zu-Standort-VPN verbunden ist, müssen Sie eine statische Route in Ihrem lokalen Netzwerk konfiguriert haben, um die Standort-zu-Standort-VPN-Verbindung an das öffentliche Internet weiterzuleiten.
 - **ExpressRoute-Gateway muss zuerst konfiguriert werden:** Sie müssen zuerst das ExpressRoute-Gateway erstellen, bevor Sie das Standort-zu-Standort-VPN Gateway hinzufügen.
@@ -66,16 +69,16 @@ Es stehen zwei unterschiedliche Verfahren für die Konfiguration von Verbindunge
 
 - Ich verfüge bereits über ein VNET nach klassischem Bereitstellungsmodell.
 
-	Möglicherweise haben Sie bereits ein virtuelles Netzwerk mit einer vorhandenen Standort-zu-Standort-VPN-Verbindung oder einer ExpressRoute-Verbindung. Im Abschnitt [So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET](#add) werden Sie durch die Schritte zum Löschen des Gateways und anschließenden Erstellen neuer ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen geleitet. Beachten Sie, dass die Schritte beim Erstellen von neuen Verbindungen in einer ganz bestimmten Reihenfolge ausgeführt werden müssen. Verwenden Sie die Anweisungen nicht in anderen Artikeln, um Ihre Gateways und Verbindungen zu erstellen.
+	Möglicherweise haben Sie bereits ein virtuelles Netzwerk mit einer vorhandenen Standort-zu-Standort-VPN-Verbindung oder einer ExpressRoute-Verbindung. Der Artikelabschnitt [So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET](#add) enthält die Schritte zum Löschen des Gateways und anschließenden Erstellen neuer ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen. Beachten Sie, dass die Schritte beim Erstellen von neuen Verbindungen in einer ganz bestimmten Reihenfolge ausgeführt werden müssen. Verwenden Sie die Anweisungen nicht in anderen Artikeln, um Ihre Gateways und Verbindungen zu erstellen.
 
 	In diesem Verfahren erfordert das Erstellen von gleichzeitig bestehenden Verbindungen das Löschen Ihres Gateway löschen und das anschließende Konfigurieren neuer Gateways. Das bedeutet, dass Sie für Ihre standortübergreifenden Verbindungen Ausfallzeiten haben werden, während Sie Ihr Gateway und Ihre Verbindungen löschen und neu erstellen, aber Sie müssen keine Ihrer VMs oder Dienste auf ein neues virtuelles Netzwerk migrieren. Die VMs und Dienste werden immer noch in der Lage sein, über den Load Balancer zu kommunizieren, während Sie Ihr Gateway konfigurieren, wenn sie zu diesem Zweck konfiguriert sind.
 
 
-## <a name ="new"/> So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
+## <a name="new"></a>So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
 
 Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen von gleichzeitig bestehenden Standort-zu-Standort- und ExpressRoute-Verbindungen.
 
-1. Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
+1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zum Installieren der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
 
 2. Geben Sie Ihrem Virtual Network einen Namen. Weitere Informationen zum Konfigurationsschema finden Sie unter [Konfigurationsschema für Azure Virtual Network](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
@@ -111,7 +114,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 
 		Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
 
-4. <a name ="gw"/>Erstellen eines ExpressRoute-Gateways Achten Sie darauf, dass Sie die GatewaySKU als *Standard* oder *HighPerformance* angeben, und den GatewayType als *DynamicRouting*.
+4. <a name="gw"></a>Erstellen eines ExpressRoute-Gateways Achten Sie darauf, dass Sie die GatewaySKU als *Standard* oder *HighPerformance* angeben, und den GatewayType als *DynamicRouting*.
 
 	Verwenden Sie das folgende Beispiel, um die Werte durch Ihre eigenen zu ersetzen.
 
@@ -150,7 +153,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 
 7. Erstellen Sie eine VPN-Gateway-Entität für einen lokalen Standort. Mit diesem Befehl wird das lokale VPN-Gateway nicht konfiguriert. Stattdessen können Sie mit ihm die Einstellungen des lokalen Gateway bereitstellen, wie z. B. die öffentliche IP-Adresse und der lokale Adressraum, sodass eine Verbindung mit dem Azure-VPN-Gateway hergestellt werden kann.
 
-	> [AZURE.IMPORTANT] Der lokale Standort für das Standort-zu-Standort-VPN ist nicht in der netcfg-Datei definiert. Stattdessen müssen Sie dieses Cmdlet verwenden, um die lokalen Standort-Parameter anzugeben. Sie können sie nicht über das Verwaltungsportal oder die netcfg-Datei definieren.
+	>[AZURE.IMPORTANT] Der lokale Standort für das Standort-zu-Standort-VPN ist nicht in der netcfg-Datei definiert. Stattdessen müssen Sie dieses Cmdlet verwenden, um die lokalen Standort-Parameter anzugeben. Sie können sie nicht über das Verwaltungsportal oder die netcfg-Datei definieren.
 
 	Ersetzen Sie anhand des folgenden Beispiels die Werte mit Ihren eigenen.
 
@@ -181,13 +184,13 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 
 	`New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>`
 
-## <a name ="add"/> So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
+## <a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
 
 Wenn Sie ein vorhandenes virtuelles Netzwerk über eine ExpressRoute- oder Standort-zu-Standort-VPN-Verbindung verbunden haben, um eine Verbindung beider Verbindungen mit dem vorhandenen Virtual Network zu ermöglichen, müssen Sie das vorhandene Gateway zunächst löschen. Dies bedeutet, dass lokal Ihre Verbindung mit Ihrem Virtual Network über das Gateway verloren geht, während Sie an dieser Konfiguration arbeiten.
 
 **Bevor Sie mit der Konfiguration beginnen:** Überprüfen Sie, dass Sie in Ihrem Virtual Network noch ausreichend IP-Adressen vorhanden sind, sodass Sie die Größe des Gateway-Subnetzes erhöhen können. Beachten Sie, dass Sie das Gateway auch dann löschen und neu erstellen müssen, wenn Sie über genügend IP-Adressen verfügen. Dies liegt daran, dass das Gateway erneut erstellt werden muss, damit es die gleichzeitig bestehenden Verbindungen berücksichtigt.
 
-1. Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
+1. Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zum Installieren der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
 
 2. Löschen Sie das vorhandene ExpressRoute- oder Standort-zu-Standort-VPN Gateway. Nutzen Sie das folgende Cmdlet, um die Werte mit Ihren eigenen auszutauschen.
 
@@ -219,4 +222,4 @@ Wenn Sie ein vorhandenes virtuelles Netzwerk über eine ExpressRoute- oder Stand
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

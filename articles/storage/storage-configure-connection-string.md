@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Konfigurieren einer Verbindungszeichenfolge für Azure Storage | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine Verbindungszeichenfolge für ein Azure-Speicherkonto erstellen. Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Authentifizieren des programmgesteuerten Zugriffs auf Ressourcen in einem Speicherkonto. Die Verbindungszeichenfolge kann Ihre Zugriffsschlüssel für ein Konto kapseln, das Sie besitzen, oder sie kann eine SAS für den Zugriff auf Ressourcen in einem Konto ohne den Zugriffsschlüssel enthalten."
+	description="Erstellen einer Verbindungszeichenfolge für ein Azure-Speicherkonto Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Authentifizieren des Zugriffs auf Ressourcen in einem Speicherkonto aus Ihrer Anwendung."
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="04/01/2016"
 	ms.author="tamram"/>
 
 # Konfigurieren von Azure Storage-Verbindungszeichenfolgen
@@ -96,13 +96,13 @@ Eine Verbindungszeichenfolge für einen Blob-Endpunkt für eine benutzerdefinier
 
 ### Angeben eines Blob-Endpunkts mit einer SAS (Shared Access Signature)
 
-Sie können eine Verbindungszeichenfolge mit expliziten Endpunkten für den Zugriff auf Speicherressourcen über eine SAS erstellen. In diesem Fall können Sie die SAS anstelle des Kontonamens und der Schlüsselanmeldeinformationen als Teil der Verbindungszeichenfolge angeben. Das SAS-Token enthält Informationen über die Ressource, auf die zugegriffen werden soll, den Zeitraum, für den sie verfügbar ist, sowie die erteilten Berechtigungen. Weitere Informationen zu SAS finden Sie unter [Delegieren des Zugriffs mit einer SAS (Shared Access Signature)](https://msdn.microsoft.com/library/ee395415.aspx).
+Sie können eine Verbindungszeichenfolge mit expliziten Endpunkten für den Zugriff auf Speicherressourcen über eine SAS erstellen. In diesem Fall können Sie die SAS anstelle des Kontonamens und der Schlüsselanmeldeinformationen als Teil der Verbindungszeichenfolge angeben. Das SAS-Token enthält Informationen über die Ressource, auf die zugegriffen werden soll, den Zeitraum, für den sie verfügbar ist, sowie die erteilten Berechtigungen. Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
 
 Um eine Verbindungszeichenfolge zu erstellen, die eine SAS enthält, geben Sie die Zeichenfolge im folgenden Format ein:
 
-    BlobEndpoint=myBlobEndpoint; QueueEndpoint=myQueueEndpoint;TableEndpoint=myTableEndpoint;SharedAccessSignature=base64Signature
+    BlobEndpoint=myBlobEndpoint; QueueEndpoint=myQueueEndpoint;TableEndpoint=myTableEndpoint;SharedAccessSignature=sasToken
 
-Der Endpunkt kann entweder dem Standarddienstendpunkt oder einem benutzerdefinierten Endpunkt entsprechen. Die `base64Signature` entspricht dem Signaturteil einer SAS. Die Signatur ist ein HMAC, der mithilfe des SHA256-Algorithmus über StringToSign-Zeichenfolge und Schlüssel erstellt und anschließend mit Base64 codiert wird.
+Der Endpunkt kann entweder dem Standarddienstendpunkt oder einem benutzerdefinierten Endpunkt entsprechen. Die `sasToken` ist die Abfragezeichenfolge, die auf das Fragezeichen (?) in der SAS-URL folgt.
 
 ### Erstellen einer Verbindungszeichenfolge mit einem Endpunktsuffix
 
@@ -119,4 +119,9 @@ Ihre Verbindungszeichenfolge sollte der folgenden Beispiel-Verbindungszeichenfol
 	AccountKey=<account-key>;
 	EndpointSuffix=core.chinacloudapi.cn;
 
-<!---HONumber=AcomDC_0218_2016-->
+## Nächste Schritte
+
+- [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
+- [Azure-Speicher-Explorer](storage-explorers.md)
+
+<!----HONumber=AcomDC_0406_2016-->

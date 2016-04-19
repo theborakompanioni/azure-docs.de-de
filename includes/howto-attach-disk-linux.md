@@ -1,21 +1,18 @@
 
-Weitere Detailinformationen zu Datenträgern finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](virtual-machines-linux-about-disks-vhds.md).
+Weitere Detailinformationen zu Datenträgern finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md).
 
 <a id="attachempty"></a>
 ## Gewusst wie: Anfügen eines leeren Datenträgers
 Eine einfachere Methode zum Hinzufügen eines Datenträgers besteht im Anfügen eines leeren Datenträgers, weil Azure die VHD-Datei automatisch erstellt und sie im Speicherkonto ablegt.
 
-1.  Öffnen Sie die Azure-Befehlszeilenschnittstelle (CLI) für Mac, Linux und Windows, und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure über die Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
+1.  Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 
-2.  Stellen Sie sicher, dass Sie sich im standardmäßigen Azure-Dienstverwaltungsmodus befinden, indem Sie `azure config
- 	mode asm` eingeben.
-
-3.  Geben Sie, wie nachstehend gezeigt, den Befehl `azure vm disk attach-new` ein, um einen neuen Datenträger zu erstellen und anzufügen. Beachten Sie, dass _UbuntuVMasm_ durch den Namen des virtuellen Linux-Computers ersetzt wird, den Sie in Ihrem Abonnement erstellt haben. Die Zahl 30 ist die Größe des Datenträgers in GB in diesem Beispiel.
+2.  Geben Sie, wie nachstehend gezeigt, den Befehl `azure vm disk attach-new` ein, um einen neuen Datenträger zu erstellen und anzufügen. Ersetzen Sie _ubuntuVMasm_ mit dem Namen Ihres virtuellen Linux-Computers. Geben Sie dann die Größe des Datenträgers in GB ein, in diesem Beispiel 30 GB.
 
         azure vm disk attach-new ubuntuVMasm 30
 
-4.	Nachdem der Datenträger erstellt und angefügt wurde, wird er in der Ausgabe von `azure vm disk list
-    <virtual-machine-name>` wie folgt aufgeführt:
+3.	Nachdem der Datenträger erstellt und angefügt wurde, wird er in der Ausgabe von `azure vm disk list
+    <virtual-machine-name>` aufgeführt:
 
         $ azure vm disk list ubuntuVMasm
         info:    Executing command vm disk list
@@ -33,11 +30,9 @@ Eine einfachere Methode zum Hinzufügen eines Datenträgers besteht im Anfügen 
 
 Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkonto benötigt.
 
-1. 	Öffnen Sie die Azure-Befehlszeilenschnittstelle (CLI) für Mac, Linux und Windows, und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure über die Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
+1. 	Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 
-2.  Stellen Sie sicher, dass Sie sich im standardmäßigen Azure-Dienstverwaltungsmodus befinden. Wenn Sie zuvor in den Ressourcenverwaltungsmodus gewechselt waren, stellen Sie den Standardmodus durch Eingeben von `azure config mode asm` wieder her.
-
-3.	Um herauszufinden, ob die VHD, die Sie anfügen möchten, bereits in Ihr Azure-Abonnement hochgeladen wurde, geben Sie Folgendes ein:
+2.	Überprüfen Sie, ob die VHD, die Sie anfügen möchten, bereits in Ihr Azure-Abonnement hochgeladen wurde:
 
         $azure vm disk list
     	info:    Executing command vm disk list
@@ -49,7 +44,7 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
     	data:    ubuntuVMasm-ubuntuVMasm-0-201508060040530369
     	info:    vm disk list command OK
 
-4.  Wenn Sie den Datenträger nicht finden, den Sie verwenden möchten, können Sie mit `azure vm disk create` oder `azure vm disk upload` eine lokale virtuelle Festplatte in Ihr Abonnement hochladen. Hier ein Beispiel:
+3.  Wenn Sie den Datenträger nicht finden, den Sie verwenden möchten, können Sie mit `azure vm disk create` oder `azure vm disk upload` eine lokale virtuelle Festplatte in Ihr Abonnement hochladen. Ein Beispiel von `disk create` würde wie folgt aussehen:
 
         $azure vm disk create myTestVhd2 .\TempDisk\test.VHD -l "East US" -o Linux
 		info:    Executing command vm disk create
@@ -62,9 +57,9 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
 		uploaded successfully
 		info:    vm disk create command OK
 
-	Sie können auch den Befehl `azure vm disk upload` zum Hochladen einer VHD in ein bestimmtes Speicherkonto angeben. Weitere Informationen zu den Befehlen zum Verwalten der Datenträger Ihrer virtuellen Azure-Computer finden Sie [hier](virtual-machines-command-line-tools.md#commands-to-manage-your-azure-virtual-machine-data-disks).
+	Sie können auch den Befehl `azure vm disk upload` zum Hochladen einer VHD in ein bestimmtes Speicherkonto verwenden. Weitere Informationen zu den Befehlen zum Verwalten der Datenträger Ihrer virtuellen Azure-Computer finden Sie [hier](virtual-machines-command-line-tools.md#commands-to-manage-your-azure-virtual-machine-data-disks).
 
-5.  Geben Sie den folgenden Befehl ein, um die gewünschten hochgeladene VHD an Ihren virtuellen Computer anzufügen:
+4.  Jetzt wollen wir die gewünschte VHD an Ihren virtuellen Computer anfügen:
 
 		$azure vm disk attach ubuntuVMasm myTestVhd
 		info:    Executing command vm disk attach
@@ -74,7 +69,7 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
 
 	Denken Sie daran, _UbuntuVMasm_ durch den Namen Ihres virtuellen Computers und _MyTestVhd_ durch die gewünschte VHD zu ersetzen.
 
-6.	Sie können mit dem Befehl `azure vm disk list
+5.	Sie können mit dem Befehl `azure vm disk list
  	<virtual-machine-name>` überprüfen, ob der Datenträger an den virtuellen Computer angefügt ist:
 
 		$azure vm disk list ubuntuVMasm
@@ -93,4 +88,4 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
 > [AZURE.NOTE]
 Wenn Sie einen Datenträger angefügt haben, müssen Sie sich auf dem virtuellen Computer anmelden und den Datenträger initialisieren, damit der virtuelle Computer ihn zur Speicherung verwenden kann.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

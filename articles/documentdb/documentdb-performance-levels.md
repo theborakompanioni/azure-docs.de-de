@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/01/2016" 
 	ms.author="johnmac"/>
 
 # Leistungsebenen in DocumentDB
@@ -67,7 +67,7 @@ DocumentDB ermöglicht eine Vielzahl von Datenbankvorgängen, wie z. B. Abfragen
 
 Sammlungen können über das [Microsoft Azure-Portal](https://portal.azure.com), die [REST-API](https://msdn.microsoft.com/library/azure/mt489078.aspx) oder jedes der [DocumentDB SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) erstellt werden. Mithilfe der DocumentDB-APIs können Sie die Leistungsebene einer Sammlung festlegen.
 
-> [AZURE.NOTE] Die Leistungsebene einer Sammlung kann über die APIs oder das [Microsoft Azure-Portal ](https://portal.azure.com/) angepasst werden. Änderungen der Leistungsstufe sollten innerhalb von drei Minuten abgeschlossen sein.
+> [AZURE.NOTE] Die Leistungsebene einer Sammlung kann über die APIs oder das [Microsoft Azure-Portal ](https://portal.azure.com/) angepasst werden. Änderungen der Leistungsstufe sollten innerhalb von drei Minuten abgeschlossen sein.
 
 ## Festlegen von Leistungsebenen für Sammlungen
 Sobald eine Sammlung erstellt wurde, wird die vollständige Zuweisung von RUs basierend auf der angegebenen Leistungsebene für die Sammlung reserviert.
@@ -105,12 +105,25 @@ Das Azure-Portal ist eine Option, die Ihnen beim Verwalten der Leistungsstufen I
 4. Klicken Sie auf dem Blatt **DocumentDB-Konten** auf das DocumentDB-Konto, das die gewünschte Sammlung enthält.
 5. Führen Sie auf dem Blatt **DocumentDB-Konto** einen Bildlauf nach unten zum Fokus **Datenbanken** aus, und klicken Sie auf die Datenbank, die die gewünschte Sammlung enthält. 
 6. Führen Sie auf dem neu geöffneten Blatt **Datenbank** einen Bildlauf nach unten zum Fokus **Sammlungen** durch, und wählen Sie die gewünschte Sammlung.
-7. Klicken Sie dann auf dem Blatt **Sammlung** auf die Kachel **Tarif** im Fokus **Nutzung**.
-8. Klicken Sie auf dem Blatt **Wählen Sie Ihren Tarif** auf die gewünschte Leistungsstufe, und klicken Sie dann am unteren Seitenrand auf **Auswählen**. 
+7. Wählen Sie im Blatt **Sammlung verwalten** die Option **Tarif** aus.
 
->[AZURE.NOTE] Das Ändern von Leistungsstufen einer Sammlung kann bis zu 2 Minuten dauern.
+    ![Screenshots der Blätter „Sammlung verwalten“ und „Tarif wählen“ für Azure DocumentDB zeigen Ihnen, wo Sie den Tarif für die Sammlung ändern können.][1]
 
-![Ändern des Tarifs][1]
+8. Wählen Sie auf dem Blatt **Tarif wählen** die Option **Standard** aus.
+
+9. Wählen Sie auf dem Blatt **Tarif wählen** die Option **Auswählen** aus.
+
+10. Auf dem Blatt **Sammlung verwalten** wurde der **Tarif** auf **Standard** geändert, und der **Durchsatz (RU/s)** wird angezeigt.
+
+    Ändern Sie den Wert im Feld **Durchsatz** auf einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](documentdb-request-units.md)/Sekunde (RU/s). Die **Preiszusammenfassung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten bereitzustellen.
+
+    ![Screenshots des Blatts „Sammlung verwalten“ zeigen Ihnen, wo Sie den Durchsatzwert für die Sammlung ändern können.][2]
+
+9. Klicken Sie auf dem Blatt **Sammlung verwalten** auf **OK**, um Ihre Sammlung auf die benutzerdefinierte Leistung zu aktualisieren.
+
+Wenn Sie feststellen, dass Sie einen höheren Durchsatz (größer als 10.000 RU/s) oder mehr Speicher (größer als 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Weitere Informationen zum Erstellen einer partitionierten Sammlung finden Sie unter [So erstellen Sie eine DocumentDB-Sammlung über das Azure-Portal](documentdb-create-collection.md).
+
+>[AZURE.NOTE] Das Ändern von Leistungsstufen einer Sammlung kann bis zu 2 Minuten dauern.
 
 ## Ändern von Leistungsstufen mit dem .NET SDK
 
@@ -160,6 +173,7 @@ Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB fi
 
 Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-[Dokumentation](https://azure.microsoft.com/documentation/services/documentdb/).
 
-[1]: ./media/documentdb-performance-levels/img1.png
+[1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
+[2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

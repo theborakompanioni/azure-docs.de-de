@@ -13,14 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/29/2016"
+   ms.date="04/01/2016"
    ms.author="SilviaDoomra"/>
 
 # Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools für elastische Datenbanken
 
-Wenn Sie über eine vorhandene horizontal hochskalierte Shardinglösung verfügen, können Sie die Tools für elastische Datenbanken nutzen, indem Sie die in diesem Artikel beschriebenen Schritte ausführen. Nach der Umwandlung können Sie die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) und das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md) verwenden.
+Wenn Sie über eine vorhandene horizontal hochskalierte Shardlösung verfügen, können Sie die Tools für elastische Datenbanken wie die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) und das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md) nutzen, indem Sie die in diesem Artikel beschriebene Methode anwenden.
 
 Diese Schritte können entweder unter Verwendung der [.NET Framework-Clientbibliothek](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) oder der PowerShell-Skripts ausgeführt werden, die unter [Azure SQL DB - Elastic Database tools scripts (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) verfügbar sind. Für die hier beschriebenen Beispiele werden die PowerShell-Skripts verwendet.
+
+Beachten Sie, dass Sie die Datenbanken erstellen müssen, bevor Sie die Cmdlets „Add-Shard“ und „New-ShardMapManager“ ausführen. Die Cmdlets erstellen keine Datenbanken für Sie.
 
 Es sind vier Schritte notwendig:
 
@@ -29,10 +31,10 @@ Es sind vier Schritte notwendig:
 3. Bereiten Sie die einzelnen Shards vor.  
 2. Fügen Sie die Zuordnungen zur Shardzuordnung hinzu.
 
-Weitere Informationen zu ShardMapManager finden Sie unter [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md). Eine Übersicht der Tools für elastische Datenbanken finden Sie unter [Übersicht über die Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-introduction.md).
+Weitere Informationen zu ShardMapManager finden Sie unter [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md). Eine Übersicht der Tools für elastische Datenbanken finden Sie unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md).
 
 ## Vorbereiten der Shardzuordnungs-Manager-Datenbank
-Sie können eine neue oder eine vorhandene Datenbank als Shardzuordnungs-Manager verwenden. Dies ist eine einmalige Aufgabe.
+Sie können eine neue oder eine vorhandene Datenbank als Shardzuordnungs-Manager verwenden.
 
 ## Schritt 1: Erstellen eines Shardzuordnungs-Managers
 Beachten Sie, dass es sich bei einer als Shardzuordnungs-Manager eingesetzten Datenbank nicht gleichzeitig um eine Datenbank handeln sollte, die als Shard definiert ist.
@@ -160,7 +162,7 @@ Informationen zu vorhandenen Shards und den zugehörigen Zuordnungen können üb
 
 ## Zusammenfassung
 
-Nach der Einrichtung können Sie die Clientbibliothek für elastische Datenbanken verwenden. Außerdem können Sie das [datenabhängige Routing](sql-database-elastic-scale-data-dependent-routing.md) und [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) nutzen.
+Nach der Einrichtung können Sie die Clientbibliothek für elastische Datenbanken verwenden. Außerdem können Sie das [datenabhängige Routing](sql-database-elastic-scale-data-dependent-routing.md) und das [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) nutzen.
 
 ## Nächste Schritte
 
@@ -169,7 +171,7 @@ Laden Sie die PowerShell-Skripts auf der Seite [Azure SQL DB - Elastic Database 
 
 Sie finden diese Tools auch auf GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
 
-Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren Mandanten bzw. aus diesem Modell in ein Modell mit einem einzelnen Mandanten. Weitere Informationen zum [Split-Merge-Tool](sql-database-elastic-scale-get-started.md).
+Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren Mandanten bzw. aus diesem Modell in ein Modell mit einem einzelnen Mandanten. Siehe [Split-Merge-Tool](sql-database-elastic-scale-get-started.md).
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -179,4 +181,4 @@ Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren 
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

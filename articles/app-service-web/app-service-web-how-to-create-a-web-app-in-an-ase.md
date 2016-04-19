@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="01/14/2016"
+	ms.date="04/04/2016"
 	ms.author="ccompy"/>
 
 # Erstellen einer Web-App in einer App Service-Umgebung
@@ -118,4 +118,4 @@ Nach dem Erstellen der Web-App und des App Service-Plans sollten Sie eine zentra
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

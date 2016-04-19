@@ -1,11 +1,11 @@
 <properties
    pageTitle="Reliable Actors-Lebenszyklus | Microsoft Azure"
-   description="Erläutert Lebenszyklus und Garbage Collection für Service Fabric Reliable Actors"
+   description="Erläutert den Service Fabric Reliable Actor-Lebenszyklus, Garbage Collection und das manuelle Löschen von Actors und ihren Zuständen"
    services="service-fabric"
    documentationCenter=".net"
-   authors="vturecek"
+   authors="amanbha"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,70 +13,76 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/15/2016"
+   ms.date="03/25/2016"
    ms.author="amanbha"/>
 
 
-# Actor-Lebenszyklus und Garbage Collection
-Ein Actor wird aktiviert, wenn sein erster Aufruf erfolgt. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er einige Zeit lang nicht verwendet wird. Informationen zum Konfigurieren dieses Zeitraums finden Sie im Abschnitt „Actor-Garbage Collection“ weiter unten.
+# Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen
+Ein Actor wird aktiviert, wenn zum ersten Mal eine seiner Methoden aufgerufen wird. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er innerhalb eines konfigurierbaren Zeitraums nicht verwendet wird. Ein Actor und sein Zustand können jederzeit auch manuell gelöscht werden.
 
-Was geschieht bei der Actor-Aktivierung?
+## Actor-Aktivierung
+
+Wenn ein Actor aktiviert wird, geschieht Folgendes:
 
 - Wenn ein Aufruf für einen Actor eingeht und er nicht bereits aktiv ist, wird ein neuer Actor erstellt.
-- Der Status des Actors wird geladen (bei einem statusbehafteten Actor).
+- Der Zustand des Actors wird geladen, wenn zuvor ein Zustand gespeichert wurde.
 - Die Methode `OnActivateAsync` (die bei der Actor-Implementierung überschrieben werden kann) wird aufgerufen.
-- Der Actor wird einer Tabelle von aktiven Actors hinzugefügt.
+- Der Actor gilt jetzt als aktiv.
 
-Was geschieht bei der Actor-Deaktivierung?
+## Actor-Deaktivierung
+
+Wenn ein Actor deaktiviert wird, geschieht Folgendes:
 
 - Wenn ein Actor einige Zeit lang nicht verwendet wird, wird er aus der Tabelle der aktiven Actors entfernt.
 - Die Methode `OnDeactivateAsync` (die bei der Actor-Implementierung überschrieben werden kann) wird aufgerufen. Dadurch werden alle Timer für den Actor gelöscht.
 
 > [AZURE.TIP] Die Fabric Actors-Laufzeit gibt einige [Ereignisse im Zusammenhang mit der Actor-Aktivierung und -Deaktivierung](service-fabric-reliable-actors-diagnostics.md#actor-activation-and-deactivation-events) aus. Sie sind hilfreich bei der Diagnose und Leistungsüberwachung.
 
-## Actor-Garbage Collection
-Die Actors-Laufzeit sucht in regelmäßigen Abständen nach Actors, die eine Zeitlang nicht verwendet wurden, und deaktiviert sie. Sobald die Actors deaktiviert sind, können sie durch die Common Language Runtime (CLR) mit einer Garbage Collection entfernt werden.
+### Actor-Garbage Collection
+Wenn ein Actor deaktiviert wird, werden Referenzen zum Actor-Objekt veröffentlicht und es kann eine normale Garbage Collection durch den CLR-Garbage Collector (Common Language Runtime) durchgeführt werden. Garbage Collection bereinigt nur das Actor-Objekt. Es entfernt **nicht** den Zustand im Zustands-Manager des Actors. Wenn der Actor das nächste Mal aktiviert ist, wird ein neues Actor-Objekt erstellt und sein Zustand wiederhergestellt.
 
-Was zählt für Zwecke der Garbage Collection als "wird verwendet"?
+Was zählt im Sinne der Deaktivierung und Garbage Collection als „wird verwendet“?
 
 - Empfangen eines Aufrufs
 - Aufrufen von Methode `IRemindable.ReceiveReminderAsync` (gilt nur, wenn der Actor Erinnerungen verwendet).
 
-Es ist erwähnenswert, dass wenn der Actor Timer verwendet und der Timer-Rückruf aufgerufen wird, er **nicht** als "wird verwendet" zählt.
+> [AZURE.NOTE] Falls der Actor Timer verwendet und der Timer-Rückruf aufgerufen wird, zählt er **nicht** als "wird verwendet".
 
-Bevor das Thema Garbage Collection ausführlicher behandelt wird, ist es wichtig, die folgenden Begriffe zu definieren:
+Bevor das Thema „Deaktivierung“ ausführlicher behandelt wird, ist es wichtig, die folgenden Begriffe zu definieren:
 
-- *Scanintervall*. Das Intervall, in dem die Actors-Laufzeit ihre Tabelle der aktiven Actors nach Actors durchsucht, für die eine Garbage Collection ausgeführt werden kann. Der Standardwert dafür ist 1 Minute.
-- *Leerlauftimeout*. Die Zeitspanne, während der ein Actor inaktiv (im Leerlauf) sein muss, ehe eine Garbage Collection ausgeführt werden kann. Der Standardwert hierfür sind 60 Minuten.
+- *Scanintervall*. Das Intervall, in dem die Actors-Laufzeit ihre Tabelle der aktiven Actors nach Actors durchsucht, die deaktiviert werden können und für die eine Garbage Collection durchgeführt werden kann. Der Standardwert dafür ist 1 Minute.
+- *Leerlauftimeout*. Die Zeitspanne, in der ein Actor inaktiv (im Leerlauf) sein muss, ehe er deaktiviert und eine Garbage Collection ausgeführt werden kann. Der Standardwert hierfür sind 60 Minuten.
 
-In der Regel müssen Sie diese Standardeinstellungen nicht ändern. Falls jedoch erforderlich, können diese Intervalle auf Assemblyebene für alle Actor-Typen in der Assembly oder auf Actor-Typ-Ebene mithilfe von Attribut `ActorGarbageCollection` geändert werden. Das folgende Beispiel zeigt die Änderung an den Garbage Collection-Intervallen für HelloActor.
+In der Regel müssen Sie diese Standardeinstellungen nicht ändern. Falls erforderlich, können diese Intervalle jedoch durch `ActorServiceSettings` geändert werden, wenn Sie Ihren [Actordienst](service-fabric-reliable-actors-platform.md) registrieren.
 
 ```csharp
-[ActorGarbageCollection(IdleTimeoutInSeconds = 10, ScanIntervalInSeconds = 2)]
-class HelloActor : Actor, IHello
+public class Program
 {
-    public Task<string> SayHello(string greeting)
+    public static void Main(string[] args)
     {
-        return Task.FromResult("You said: '" + greeting + "', I say: Hello Actors!");
+        ActorRuntime.RegisterActorAsync<MyActor>((context, actorType) =>
+                new ActorService(context, actorType,
+                    settings:
+                        new ActorServiceSettings()
+                        {
+                            ActorGarbageCollectionSettings =
+                                new ActorGarbageCollectionSettings(10, 2)
+                        }))
+            .GetAwaiter()
+            .GetResult();
     }
 }
 ```
 
-Um den Standardwert des Attributs `ActorGarbageCollection` auf Assemblyebene zu ändern, fügen Sie `AssemblyInfo.cs` den folgenden Codeausschnitt hinzu.
-
-```csharp
-[assembly: ActorGarbageCollection(IdleTimeoutInSeconds = 10, ScanIntervalInSeconds = 2)]
-```
-
-Für jeden Actor in der Tabelle der aktiven Actors verfolgt die Actors-Laufzeit die Zeitspanne, während der er im Leerlauf war (d. h. nicht verwendet wurde). Die Actors-Laufzeit überprüft jeden Actor alle `ScanIntervalInSeconds`, um festzustellen, ob eine Garbage Collection für ihn ausgeführt werden kann, und erfasst ihn, wenn er sich seit `IdleTimeoutInSeconds` im Leerlauf befindet.
+Für jeden aktiven Actor verfolgt die Actors-Laufzeit die Zeitspanne, während der er sich im Leerlauf befand (d.h. nicht verwendet wurde). Die Actors-Laufzeit überprüft jeden Actor in einem festgelegten Abstand (`ScanIntervalInSeconds`), um festzustellen, ob eine Garbage Collection für ihn durchgeführt werden kann, und sammelt ihn auf, wenn er sich seit einem gewissen Zeitraum (`IdleTimeoutInSeconds`) im Leerlauf befindet.
 
 Bei jeder Verwendung eines Actors wird seine Leerlaufzeit auf 0 zurückgesetzt. Danach kann für den Actor nur dann eine Garbage Collection ausgeführt werden, wenn er erneut `IdleTimeoutInSeconds` lang im Leerlauf bleibt. Denken Sie daran, dass ein Actor als verwendet gilt, wenn entweder eine Actor-Schnittstellenmethode oder ein Erinnerungs-Rückruf ausgeführt wird. Ein Actor gilt **nicht** als verwendet, wenn der Timer-Rückruf ausgeführt wird.
 
-Das folgende Diagramm enthält ein Beispiel zur Veranschaulichung dieser Konzepte.
+Das folgende Diagramm zeigt den Lebenszyklus eines einzelnen Actors, um diese Konzepte zu verdeutlichen.
 
 ![Beispiel für Leerlaufzeit][1]
 
-Das Beispiel setzt voraus, dass nur ein aktiver Actor in der Tabelle der aktiven Actors vorhanden ist. Das Beispiel zeigt die Auswirkung von Actor-Methodenaufrufen, Erinnerungen und Timern auf die Lebensdauer dieses Actors. Die folgenden Punkte im Hinblick auf das Beispiel sind besonders erwähnenswert:
+Das Beispiel zeigt die Auswirkung von Actor-Methodenaufrufen, Erinnerungen und Timern auf die Lebensdauer dieses Actors. Die folgenden Punkte im Hinblick auf das Beispiel sind besonders erwähnenswert:
 
 - „ScanInterval“ und „IdleTimeout“ werden auf 5 und 10 festgelegt. (Einheiten sind hier nicht wichtig, da nur das Konzept veranschaulicht werden soll.)
 - Der Scanvorgang für Actors, für die eine Garbage Collection ausgeführt werden soll, erfolgt in den Intervallen T = 0, 5, 10, 15, 20, 25, wie durch den Scanintervallwert 5 definiert.
@@ -85,9 +91,42 @@ Das Beispiel setzt voraus, dass nur ein aktiver Actor in der Tabelle der aktiven
 - Ein Actor-Erinnerungs-Rückruf wird bei T = 14 ausgeführt und verzögert die Garbage Collection des Actors noch weiter.
 - Während des Garbage Collection-Scanvorgangs bei T = 25 überschreitet die Leerlaufzeit des Actors schließlich den Leerlauftimeout-Wert von 10, und die Garbage Collection wird für den Actor ausgeführt.
 
-Beachten Sie, dass für einen Actor nie eine Garbage Collection durchgeführt wird, während er eine seiner Methoden ausführt, unabhängig davon, wie viel Zeit die Ausführung dieser Methode beansprucht. Wie bereits erwähnt, verhindert die Ausführung von Actor-Schnittstellenmethoden und Erinnerungs-Rückrufen die Durchführung der Garbage Collection, indem die Leerlaufzeit des Actors auf 0 zurückgesetzt wird. Durch die Ausführung von Timer-Rückrufen wird die Leerlaufzeit nicht auf 0 zurückgesetzt. Allerdings wird die Garbage Collection des Actors verzögert, bis der Timer-Rückruf abgeschlossen ist.
+Für einen Actor wird nie eine Garbage Collection durchgeführt, während er eine seiner Methoden ausführt, unabhängig davon, wie viel Zeit die Ausführung dieser Methode beansprucht. Wie bereits erwähnt, verhindert die Ausführung von Actor-Schnittstellenmethoden und Erinnerungs-Rückrufen die Durchführung der Garbage Collection, indem die Leerlaufzeit des Actors auf 0 zurückgesetzt wird. Durch die Ausführung von Timer-Rückrufen wird die Leerlaufzeit nicht auf 0 zurückgesetzt. Allerdings wird die Garbage Collection des Actors verzögert, bis der Timer-Rückruf abgeschlossen ist.
 
+## Löschen von Actors und deren Zustände
+
+Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor wieder aktiviert wird, werden ihm seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. In Fällen, in denen Actors Daten im Zustands-Manager speichern, dann deaktiviert aber nie wieder aktiviert werden, kann die Bereinigung Ihrer Daten nötig sein.
+
+Der [Actordienst](service-fabric-reliable-actors-platform.md) bietet auch eine Funktion zum Löschen von Actors über einen Remoteanrufer:
+
+```csharp
+ActorId actorToDelete = new ActorId(id);
+
+IActorService myActorServiceProxy = ActorServiceProxy.Create(
+    new Uri("fabric:/MyApp/MyService"), actorToDelete);
+            
+await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
+```
+
+Das Löschen eines Actors hat die folgenden Auswirkungen, abhängig davon, ob der Actor derzeit aktiv ist oder nicht:
+- **Aktiver Actor**
+ - Der Actor wird aus der Liste der aktiven Actors entfernt und deaktiviert.
+ - Sein Zustand wird dauerhaft gelöscht.
+- **Inaktiver Actor**
+ - Sein Zustand wird dauerhaft gelöscht.
+
+Beachten Sie, dass ein Actor für sich selbst durch eine seiner Methoden „delete“ aufrufen kann. Der Actor kann nämlich während einer Ausführung innerhalb eines Actor-Aufrufkontexts, in dem die Laufzeit eine Sperre um den Actor-Aufruf erhalten hat, um den Singlethread-Zugang zu erzwingen, nicht gelöscht werden.
+
+## Nächste Schritte
+ - [Actor-Timer und -Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
+ - [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
+ - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
+ - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Beispielcode](https://github.com/Azure/servicefabric-samples)
+
+ 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

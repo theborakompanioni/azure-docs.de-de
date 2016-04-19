@@ -4,7 +4,7 @@
    services="azure-resource-manager,storage"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="04/05/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenschema für Speicherkonten
@@ -39,19 +39,20 @@ Fügen Sie zum Erstellen eines Speicherkontos das folgende Schema im Ressourcena
 
 In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| Typ | enum | Ja | **Microsoft.Storage/storageAccounts** | Der zu erstellende Ressourcentyp. |
-| apiVersion | enum | Ja | **2015-06-15** <br /> **2015-05-01-preview** | Die API-Version zum Erstellen der Ressource. | 
-| name | string | Ja | Zwischen 3 und 24 Zeichen, nur Ziffern und Kleinbuchstaben. | Der Name des zu erstellenden Speicherkontos. Der Name muss in Azure in allen Fällen eindeutig sein. Verwenden Sie die Funktion [uniqueString](resource-group-template-functions.md#uniquestring) mit Ihrer Benennungskonvention wie im folgenden Beispiel. |
-| location | Zeichenfolge | Ja | Informationen zum Bestimmen gültiger Bereiche finden Sie unter [Unterstützte Regionen](resource-manager-supported-services.md#supported-regions). | Der Bereich zum Hosten des Speicherkontos. |
-| Eigenschaften | Objekt | Ja | (siehe unten) | Ein Objekt, das den Typ des zu erstellenden Speicherkontos angibt.
+| Name | Wert |
+| ---- | ---- |
+| type | Enum<br />Erforderlich<br />**Microsoft.Storage/storageAccounts**<br /><br />Der zu erstellende Ressourcentyp. |
+| apiVersion | Enum<br />Erforderlich<br />**2015-06-15** oder **2015-05-01-preview**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. | 
+| name | String<br />Erforderlich<br />Zwischen 3 und 24 Zeichen, nur Zahlen und Kleinbuchstaben.<br /><br />Der Name des zu erstellenden Speicherkontos. Der Name muss in Azure in allen Fällen eindeutig sein. Verwenden Sie die Funktion [uniqueString](resource-group-template-functions.md#uniquestring) mit Ihrer Benennungskonvention wie im folgenden Beispiel. |
+| location | String<br />Erforderlich<br />Eine Region, die Speicherkonten unterstützt. Gültige Regionen finden Sie unter [Unterstützte Regionen](resource-manager-supported-services.md#supported-regions).<br /><br />Die Region, die das Speicherkonto hosten soll. |
+| Eigenschaften | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das den Typ des zu erstellenden Speicherkontos angibt. |
 
+<a id="properties" />
 ### properties-Objekt
 
-| Name | Typ | Erforderlich | Zulässige Werte | Beschreibung |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| accountType | string | Ja | **Standard\_LRS**<br />** Standard\_ZRS **<br />** Standard\_GRS **<br />** Standard\_RAGRS **<br />** Premium\_LRS ** | Typ des Speicherkontos Die zulässigen Werte sind: lokal redundanter Standardspeicher, zonenredundanter Standardspeicher, georedundanter Standardspeicher, georedundanter Standardspeicher mit Lesezugriff und lokal redundanter Premiumspeicher. Informationen zu diesen Kontotypen finden Sie unter [Azure Storage-Replikation](./storage/storage-redundancy.md). |
+| Name | Wert |
+| ---- | ---- | 
+| accountType | String<br />Erforderlich<br />**Standard\_LRS**, **Standard\_ZRS**, **Standard\_GRS**, **Standard\_RAGRS** oder **Premium\_LRS**<br /><br />Der Speicherkontotyp. Die zulässigen Werte sind: lokal redundanter Standardspeicher, zonenredundanter Standardspeicher, georedundanter Standardspeicher, georedundanter Standardspeicher mit Lesezugriff und lokal redundanter Premiumspeicher. Informationen zu diesen Kontotypen finden Sie unter [Azure Storage-Replikation](./storage/storage-redundancy.md). |
 
 	
 ## Beispiele
@@ -68,27 +69,27 @@ Im folgenden Beispiel wird ein lokal redundantes Standardspeicherkonto mit einem
                 "type": "Microsoft.Storage/storageAccounts",
                 "apiVersion": "2015-06-15",
                 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-		         "location": "[resourceGroup().location]",
-        	     "properties": 
-        	     {
-        		      "accountType": "Standard_LRS"
-        	     }
-	        }
-	    ],
-	    "outputs": {}
+                "location": "[resourceGroup().location]",
+                "properties": 
+        	{
+                    "accountType": "Standard_LRS"
+        	}
+            }
+        ],
+        "outputs": {}
     }
 
 ## Schnellstartvorlagen
 
 Es gibt viele Schnellstartvorlagen, die ein Speicherkonto enthalten. In den folgenden Vorlagen werden einige häufige Szenarien veranschaulicht:
 
-- [Erstellen eines Standardspeicherkontos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create)
-- [Einfache Bereitstellung einer Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-- [Einfache Bereitstellung einer Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-- [Erstellen eines CDN-Profils, eines CDN-Endpunkts mit einem Speicherkonto als Ursprung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-cdn-with-storage-account)
-- [Erstellen einer hoch verfügbaren SharePoint-Farm mit neun virtuellen Computern mithilfe der Powershell DSC-Erweiterung](https://github.com/Azure/azure-quickstart-templates/tree/master/sharepoint-server-farm-ha)
-- [Einfache Bereitstellung eines sicheren Service Fabric-Clusters mit fünf Knoten und aktivierter WAD](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)
-- [Erstellen eines virtuellen Computers aus einem Windows-Image mit vier leeren Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)
+- [Erstellen eines Standardspeicherkontos](https://azure.microsoft.com/documentation/templates/101-storage-account-create)
+- [Einfache Bereitstellung einer Windows-VM](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows)
+- [Einfache Bereitstellung einer Linux-VM](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux)
+- [Erstellen eines CDN-Profils, eines CDN-Endpunkts mit einem Speicherkonto als Ursprung](https://azure.microsoft.com/documentation/templates/201-cdn-with-storage-account)
+- [Erstellen einer hoch verfügbaren SharePoint-Farm mit neun virtuellen Computern mithilfe der Powershell DSC-Erweiterung](https://azure.microsoft.com/documentation/templates/sharepoint-server-farm-ha)
+- [Einfache Bereitstellung eines sicheren Service Fabric-Clusters mit fünf Knoten und aktivierter WAD](https://azure.microsoft.com/documentation/templates/service-fabric-secure-cluster-5-node-1-nodetype-wad)
+- [Erstellen eines virtuellen Computers aus einem Windows-Image mit vier leeren Datenträgern](https://azure.microsoft.com/documentation/templates/101-vm-multiple-data-disk)
 
 
 ## Nächste Schritte
@@ -96,4 +97,4 @@ Es gibt viele Schnellstartvorlagen, die ein Speicherkonto enthalten. In den folg
 - Allgemeine Informationen zu Speichern finden Sie unter [Einführung in Microsoft Azure Storage](./storage/storage-introduction.md).
 - Vorlagen, die ein neues Speicherkonto mit einem virtuellen Computer verwenden, finden Sie z. B. unter [Bereitstellen eines einfachen virtuellen Linux-Computers](https://azure.microsoft.com/documentation/templates/101-simple-linux-vm/) oder [Bereitstellen eines einfachen virtuellen Windows-Computers](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

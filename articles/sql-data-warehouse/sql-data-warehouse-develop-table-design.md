@@ -181,7 +181,7 @@ Dieser Tabellentyp wird häufig verwendet, wenn keine offensichtliche Schlüssel
 
 Das Laden von Daten in eine verteilte Roundrobin-Tabelle ist meist schneller als das Laden in eine verteilte Hashtabelle. Bei einer verteilten Roundrobin-Tabelle ist es nicht erforderlich, die Daten genau zu verstehen oder das Hashing vor dem Laden durchzuführen. Daher sind Roundrobin-Tabellen häufig gute Ladeziele.
 
-> [AZURE.NOTE] Wenn Daten per Roundrobin verteilt werden, werden die Daten der Verteilung auf *Puffer*ebene zugeordnet.
+> [AZURE.NOTE] Wenn Daten per Roundrobin verteilt werden, werden die Daten der Verteilung auf *Puffer* ebene zugeordnet.
 
 ### Empfehlungen
 
@@ -306,4 +306,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!----HONumber=AcomDC_0330_2016-->

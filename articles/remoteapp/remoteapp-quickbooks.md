@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="01/07/2016" 
+    ms.date="04/05/2016" 
     ms.author="elizapo" />
 
 
@@ -24,7 +24,7 @@ Verwenden Sie die folgenden Informationen, um QuickBooks als App in Azure Remote
 
 Sie können QuickBooks 2015 Enterprise mit Azure RemoteApp in einer Hybrid- oder Cloud-Sammlung freigeben. Die Unternehmensdatei muss sich auf einem virtuellen Computer befinden, auf dem der QuickBooks-Datenbankserver ausgeführt wird, der von den Azure RemoteApp-Servern getrennt ist. Speichern Sie die Unternehmensdatei niemals auf Ihrem Azure RemoteApp-Image, da es in diesem Fall zu Datenverlusten kommen kann. Nur QuickBooks Enterprise unterstützt das Hosten der QuickBooks-Datei auf einer externen Freigabe, wobei der QuickBooks-Datenbankserver über eine standardmäßige Windows-Netzwerkumgebung zugänglich ist.
 
-> [AZURE.IMPORTANT]Der QuickBooks-Datenbankserver, auf dem die Unternehmensdatei gehostet wird, muss sich auf einem separaten virtuellen Computer in demselben VNET wie die Azure RemoteApp-Sammlung befinden.
+> [AZURE.IMPORTANT] Der QuickBooks-Datenbankserver, auf dem die Unternehmensdatei gehostet wird, muss sich auf einem separaten virtuellen Computer in demselben VNET wie die Azure RemoteApp-Sammlung befinden.
 
 ## Schritte zum Bereitstellen von QuickBooks
 
@@ -44,4 +44,4 @@ Sie können sich auch meine Ignite-Präsentation mit dem Titel [Fundamentals of 
 
 ![QuickBooks- und Azure RemoteApp-Bereitstellung](./media/remoteapp-quickbooks/ra-quickbooks.png)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
+	ms.date="04/05/2016"
 	ms.author="jgao"/>
 
 # Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle
@@ -47,7 +47,7 @@ Um Hilfe zu erhalten, verwenden Sie die Option **-h**. Beispiel:
 	
 ##Erstellen von Clustern
 
-Informationen hierzu finden Sie unter [Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-windows-clusters-cli.md).
+Weitere Informationen finden Sie unter[Erstellen von Linux-basierten Clustern in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
 
 ##Auflisten und Anzeigen von Clusterdetails
 Mit den folgenden Befehlen können Sie Clusterdetails auflisten und anzeigen:
@@ -106,4 +106,4 @@ Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluste
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "Auflisten und Anzeigen von Clustern"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

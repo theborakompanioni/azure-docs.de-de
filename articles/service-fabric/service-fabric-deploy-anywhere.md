@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/27/2016"
+   ms.date="04/05/2016"
    ms.author="chackdan"/>
 
 # Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux
@@ -25,11 +25,12 @@ Service Fabric verfügt über ein Installationspaket, mit dem Sie diese eigenst�
 
 ## Unterstützte Betriebssysteme
 Sie können Cluster auf VMs oder Computer mit diesen Betriebssystemen erstellen:
+
 * Windows Server 2012 R2
 * Windows Server 2016
 * Linux
 
-Weitere Informationen zu Windows Server finden Sie unter [Erstellen von Service Fabric-Clusters für Windows Server](service-fabric-creation-for-windows-server).
+Weitere Informationen zu Windows Server finden Sie unter [Create an Azure Service Fabric cluster on-premises or in the cloud](service-fabric-cluster-creation-for-windows-server.md) (Erstellen eines Azure Service Fabric-Clusters – lokal oder in der Cloud)
 
 ## Erstellung und Konfiguration von Clustern
 Service Fabric verfügt über ein Installationspaket, das Sie herunterladen können. Nach dem Herunterladen dieses Pakets müssen Sie eine JSON-Konfigurationsdatei bearbeiten, um die Einstellungen für Ihren Cluster anzugeben. Nach der Bearbeitung der Clustereinstellungen führen Sie ein Setupskript aus, mit dem der Cluster mit den Computern erstellt wird, die Sie in Ihren Clustereinstellungen angegeben haben. Sie können auch ein Skript ausführen, um einen Cluster für eine Gruppe von Computern zu entfernen.
@@ -39,7 +40,7 @@ Der Prozess zum lokalen Erstellen eines Service Fabric-Clusters ist vergleichbar
 
 ## Vorteile der Erstellung eigenständiger Service Fabric-Cluster
 * Aufgrund fehlender Anbieterabhängigkeit können Sie frei wählen, wo Sie Ihren Cluster erstellen.
-* Einmal entwickelte Service Fabric-Anwendungen können mit minimalen oder sogar ganz ohne Änderungen in mehreren Hostingumgebungen ausgeführt werden.
+* Einmal entwickelte Service Fabric-Anwendungen können mit minimalen oder sogar ganz ohne Änderungen in mehreren Hostingumgebungen ausgeführt werden.
 * Kenntnisse der Erstellung von Service Fabric-Anwendungen lassen sich in andere Hostingumgebungen übertragen.
 * Erfahrungen mit dem Betrieb und der Verwaltung von Service Fabric-Clustern lassen sich von einer Umgebung in eine andere Umgebung übertragen.
 * Die Kundenreichweite wird nicht durch Einschränkungen bei der Hostingumgebung begrenzt.
@@ -52,8 +53,13 @@ Die Verwendung von Service Fabric-Clustern unter Azure bietet Vorteile gegenübe
 
 * **Azure-Ressourcen-Manager:** Vereinfacht die Verwaltung aller vom Cluster genutzten Ressourcen als Einheit sowie die Abrechnung und sorgt für Kostentransparenz.
 * **Service Fabric-Cluster als Azure-Ressource** Ein Service Fabric-Cluster ist eine ARM-Ressource, sodass Sie ihn genau wie andere ARM-Ressourcen in Azure modellieren können.
-* **Integration in Azure-Infrastruktur** Service Fabric wird mit der zugrunde liegenden Infrastruktur für Betriebssystem, Netzwerk und andere Upgrades koordiniert, um die Verfügbarkeit und Zuverlässigkeit Ihrer Anwendungen zu verbessern.  
+* **Integration in Azure-Infrastruktur** Service Fabric wird mit der zugrunde liegenden Azure-Infrastruktur für Betriebssystem, Netzwerk und andere Upgrades koordiniert, um die Verfügbarkeit und Zuverlässigkeit Ihrer Anwendungen zu verbessern.  
 * **Diagnose:** Integration von Azure Diagnostics und Operational Insights.
 * **Automatische Skalierung:** Integrierte automatische Skalierungsfunktion für in Azure gehostete Cluster aufgrund von Virtual Machines-Skalierungsgruppen. In lokalen und anderen Cloudumgebungen müssen Sie eine eigene automatische Skalierungsfunktion entwickeln oder eine manuelle Skalierung mithilfe der APIs vornehmen, die Service Fabric für die Skalierung von Clustern verfügbar macht.
 
-<!---HONumber=AcomDC_0330_2016-->
+## Nächste Schritte
+Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+
+Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Service Fabric on Linux](service-fabric-linux-overview.md) (Service Fabric unter Linux)
+
+<!---HONumber=AcomDC_0406_2016-->

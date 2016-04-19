@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/13/2016"
+   ms.date="04/05/2016"
    ms.author="seanmck"/>
 
 # Visualisieren Ihres Clusters mit Service Fabric Explorer
@@ -24,7 +24,7 @@ Service Fabric-Explorer ist ein webbasiertes Tool zum Untersuchen und Verwalten 
 
 Wenn Sie die Anweisungen zum [Vorbereiten Ihrer Entwicklungsumgebung](service-fabric-get-started.md) befolgt haben, können Sie Service Fabric-Explorer auf dem lokalen Cluster starten, indem Sie zu http://localhost:19080/Explorer navigieren.
 
->[AZURE.NOTE]Wenn Sie Internet Explorer mit Service Fabric-Explorer zum Verwalten eines Remoteclusters verwenden, müssen Sie einige Internet Explorer-Einstellungen konfigurieren. Wechseln Sie zu **Extras** > **Einstellungen der Kompatibilitätsansicht**, und deaktivieren Sie **Intranetsites in Kompatibilitätsansicht anzeigen**, um sicherzustellen, dass alle Informationen richtig geladen werden.
+>[AZURE.NOTE] Wenn Sie Internet Explorer mit Service Fabric-Explorer zum Verwalten eines Remoteclusters verwenden, müssen Sie einige Internet Explorer-Einstellungen konfigurieren. Wechseln Sie zu **Extras** > **Einstellungen der Kompatibilitätsansicht**, und deaktivieren Sie **Intranetsites in Kompatibilitätsansicht anzeigen**, um sicherzustellen, dass alle Informationen richtig geladen werden.
 
 ## Grundlegendes zum Layout von Service Fabric-Explorer
 
@@ -64,6 +64,8 @@ Um beispielsweise eine Anwendungsinstanz zu löschen, wählen Sie einfach die An
 
 ![Löschen einer Anwendung in Service Fabric-Explorer][sfx-delete-application]
 
+>[AZURE.TIP] Die gleichen Aktionen können aus der Strukturansicht ausgeführt werden, indem auf die Auslassungspunkte neben jedem Element geklickt wird.
+
 In der folgenden Tabelle sind die für jede Entität verfügbaren Aktionen aufgeführt:
 
 | **Entität** | **Aktion** | **Beschreibung** |
@@ -79,7 +81,7 @@ In der folgenden Tabelle sind die für jede Entität verfügbaren Aktionen aufge
 
 Da viele Aktionen destruktiv sind, werden Sie aufgefordert, den Vorgang zu bestätigen, bevor die Aktion abgeschlossen wird.
 
->[AZURE.TIP]Jede Aktion, die mit Service Fabric-Explorer ausgeführt werden kann, kann auch mithilfe von PowerShell oder einer REST-API ausgeführt werden, um die Automation zu ermöglichen.
+>[AZURE.TIP] Jede Aktion, die mit Service Fabric-Explorer ausgeführt werden kann, kann auch mithilfe von PowerShell oder einer REST-API ausgeführt werden, um die Automation zu ermöglichen.
 
 
 
@@ -114,4 +116,4 @@ Wenn Sie versuchen, eine Verbindung mit Service Fabric-Explorer auf einem siche
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

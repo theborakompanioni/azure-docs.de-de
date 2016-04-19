@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="03/30/2016"
 	ms.author="larryfr"/>
 
 #Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Linux-basiertem Hadoop in HDInsight
@@ -51,48 +51,26 @@ Im Folgenden sehen Sie ein extrem einfaches Beispiel mit Spielfilmen:
 
 * __Vergleichbare Empfehlung__: Da Joe die ersten drei Filme gefallen haben, sucht Mahout nach Filmen, die anderen Personen mit ähnlichen Vorlieben gefallen haben, die Joe aber noch nicht gesehen (mit "Gefällt mir" markiert oder bewertet) hat. In diesem Fall empfiehlt Mahout _Die dunkle Bedrohung_, _Angriff der Klonkrieger_ und _Die Rache der Sith_.
 
-##Laden der Daten
+###Grundlegendes zu den Daten
 
-Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Gehen Sie zum Herunterladen der Daten und Speichern im Standardspeicher des Clusters folgendermaßen vor:
+Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/HdiSamples/MahoutMovieData` verfügbar.
 
-1. Stellen Sie über SSH eine Verbindung mit dem Linux-basierten HDInsight-Cluster her. Verwenden Sie für die Verbindung die Adresse `CLUSTERNAME-ssh.azurehdinsight.net` und den Port `22`.
+Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei „user-ratings.txt“ der Benutzerbewertung wird während der Analyse verwendet, während „moviedb.txt“ beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Textinformationen angibt.
 
-	Weitere Informationen zur Verwendung von SSH zum Verbindungsaufbau mit HDInsight finden Sie in den folgenden Dokumenten:
-
-    * **Linux-, Unix- und OS X-Clients**: [Verbinden mit einem Linux-basierten HDInsight-Cluster unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
-
-    * **Windows-Clients**: [Verbinden mit einem Linux-basierten HDInsight-Cluster unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
-
-2. Laden Sie das Archiv "MovieLens 100k" herunter, das 100.000 Bewertungen von 1000 Benutzern zu 1700 Filmen enthält.
-
-        curl -O http://files.grouplens.org/datasets/movielens/ml-100k.zip
-
-3. Extrahieren Sie das Archiv mit dem folgenden Befehl:
-
-        unzip ml-100k.zip
-
-    Dadurch wird der Inhalt in einen neuen Ordner namens **ml-100k** extrahiert.
-
-4. Kopieren Sie die Daten mit den folgenden Befehlen in den HDInsight-Speicher:
-
-        cd ml-100k
-        hdfs dfs -put u.data /example/data
+Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben die Struktur von `userID`, `movieID`, `userRating` und `timestamp`, anhand der die Bewertung eines Films durch die einzelnen Benutzer ersichtlich wird. Hier sehen Sie ein Beispiel für die Daten:
 
 
-    Die Daten in dieser Datei umfassen die Struktur `userID`, `movieID`, `userRating` und `timestamp`, anhand der die Bewertung eines Films durch die einzelnen Benutzern ersichtlich wird. Hier sehen Sie ein Beispiel für die Daten:
+    196	242	3	881250949
+    186	302	3	891717742
+    22	377	1	878887116
+    244	51	2	880606923
+    166	346	1	886397596
 
-
-		196	242	3	881250949
-		186	302	3	891717742
-		22	377	1	878887116
-		244	51	2	880606923
-		166	346	1	886397596
-
-##Ausführen des Auftrags
+##Ausführen der Analyse
 
 Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen auszuführen:
 
-	mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /example/data/u.data -o /example/data/mahoutout --tempDir /temp/mahouttemp
+    mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
 
 > [AZURE.NOTE] Der Auftrag kann mehrere Minuten dauern und mehrere MapReduce-Jobs einschließen.
 
@@ -111,11 +89,12 @@ Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen a
 
 	Die erste Spalte ist die `userID`. Die in '[' und ']' eingeschlossenen Werte sind `movieId`:`recommendationScore`.
 
-2. Mit einigen der anderen Daten im Verzeichnis **ml-100k** können die Daten benutzerfreundlicher gemacht werden. Laden Sie die Daten zunächst mit dem folgenden Befehl herunter:
+2. Die Ausgabedaten können zusammen mit „moviedb.txt“ verwendet werden, um benutzerfreundlichere Informationen anzuzeigen. Zunächst müssen wir die Dateien lokal mithilfe folgender Befehle kopieren:
 
 		hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
+        hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
 
-	Dadurch werden die Ausgabedaten in eine Datei namens **recommendations.txt** im aktuellen Verzeichnis kopiert.
+	Dadurch werden die Ausgabedaten zusammen mit den Filmdatendateien in eine Datei namens **recommendations.txt** im aktuellen Verzeichnis kopiert.
 
 3. Verwenden Sie den folgenden Befehl, um ein neues Python-Skript zu erstellen, das Filmnamen für die Daten in der Empfehlungsausgabe sucht:
 
@@ -124,15 +103,15 @@ Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen a
 	Verwenden Sie, sobald der Editor geöffnet wird, Folgendes als Inhalt für die Datei:
 
         #!/usr/bin/env python
-        
+
         import sys
-        
+
         if len(sys.argv) != 5:
                 print "Arguments: userId userDataFilename movieFilename recommendationFilename"
                 sys.exit(1)
-        
+
         userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
-        
+
         print "Reading Movies Descriptions"
         movieFile = open(movieFilename)
         movieById = {}
@@ -140,7 +119,7 @@ Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen a
                 tokens = line.split("|")
                 movieById[tokens[0]] = tokens[1:]
         movieFile.close()
-        
+
         print "Reading Rated Movies"
         userDataFile = open(userDataFilename)
         ratedMovieIds = []
@@ -149,7 +128,7 @@ Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen a
                 if tokens[0] == userId:
                         ratedMovieIds.append((tokens[1],tokens[2]))
         userDataFile.close()
-        
+
         print "Reading Recommendations"
         recommendationFile = open(recommendationFilename)
         recommendations = []
@@ -160,13 +139,13 @@ Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen a
                         recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
                         break
         recommendationFile.close()
-        
+
         print "Rated Movies"
         print "------------------------"
         for movieId, rating in ratedMovieIds:
                 print "%s, rating=%s" % (movieById[movieId][0], rating)
         print "------------------------"
-        
+
         print "Recommended Movies"
         print "------------------------"
         for movieId, score in recommendations:
@@ -179,14 +158,14 @@ Führen Sie den folgenden Befehl aus, um den Auftrag für die Filmempfehlungen a
 
 		chmod +x show_recommendations.py
 
-4. Führen Sie das Python-Skript aus. Nachfolgend wird davon ausgegangen, dass Sie sich im Verzeichnis „ml-100k“ befinden, in dem die Dateien `u.data` und `u.item` gespeichert sind:
+4. Führen Sie das Python-Skript aus. Im Folgenden wird davon ausgegangen, dass Sie sich im Verzeichnis befinden, in das alle Dateien heruntergeladen wurden:
 
-		./show_recommendations.py 4 u.data u.item recommendations.txt
+		./show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
 
 	Dieses sucht nach den für die Benutzer-ID 4 generierten Empfehlungen.
 
-	* Mit der Datei **u.data** werden Filme abgerufen, die vom Benutzer bewertet wurden.
-	* Mit der Datei **u.item** werden die Namen der Filme abgerufen.
+	* Mit der Datei **user-ratings.txt** werden Filme abgerufen, die vom Benutzer bewertet wurden.
+	* Mit der Datei **moviedb.txt** werden die Namen der Filme abgerufen.
 	* Mit der Datei **recommendations.txt** werden die Filmempfehlungen dieses Benutzers abgerufen.
 
 	Die Ausgabe dieses Befehls sollte ungefähr wie folgt aussehen:
@@ -245,7 +224,7 @@ Mahout-Aufträge entfernen keine temporären Daten, die bei der Verarbeitung des
 >
 > ```hdfs dfs -rm -f -r /example/data/mahoutout```
 
-##Nächste Schritte
+## Nächste Schritte
 
 Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Methoden der Datenverarbeitung in HDInsight zuwenden:
 
@@ -267,4 +246,4 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

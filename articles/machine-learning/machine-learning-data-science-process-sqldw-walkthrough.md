@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016" 
+	ms.date="02/05/2016"
 	ms.author="bradsev;hangzh;weig"/>
 
 
@@ -48,11 +48,11 @@ Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~4
 
 Der **eindeutige Schlüssel** für die Zusammenführung von „trip\_data“ und „trip\_fare“ besteht aus den folgenden drei Feldern:
 
-- „medallion“, 
-- „hack\_license“ und 
+- „medallion“,
+- „hack\_license“ und
 - „pickup\_datetime“.
 
-## <a name="mltasks"></a>Drei Typen von Vorhersageaufgaben 
+## <a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
 
 Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Arten von Modellierungsaufgaben zu veranschaulichen:
 
@@ -75,23 +75,23 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 
 **Erstellen Ihres eigenen Azure-Blobspeicherkontos**
 
-- Wenn Sie Ihren eigenen Azure-Blobspeicher bereitstellen, wählen Sie einen geografischen Standort für Ihren Azure-Blobspeicher aus, der so nah wie möglich bei **USA, Süden-Mitte** liegt, wo die NYC Taxi-Daten gespeichert sind. Die Daten werden mit AzCopy aus dem öffentlichen Blobspeichercontainer in einen Container in Ihrem eigenen Speicherkonto kopiert. Je näher Ihr Azure-Blobspeicher bei „USA, Süden-Mitte“ liegt, desto schneller wird diese Aufgabe (Schritt 4) abgeschlossen. 
-- Um Ihr eigenes Azure-Speicherkonto zu erstellen, befolgen Sie die in [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md) beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden. 
+- Wenn Sie Ihren eigenen Azure-Blobspeicher bereitstellen, wählen Sie einen geografischen Standort für Ihren Azure-Blobspeicher aus, der so nah wie möglich bei **USA, Süden-Mitte** liegt, wo die NYC Taxi-Daten gespeichert sind. Die Daten werden mit AzCopy aus dem öffentlichen Blobspeichercontainer in einen Container in Ihrem eigenen Speicherkonto kopiert. Je näher Ihr Azure-Blobspeicher bei „USA, Süden-Mitte“ liegt, desto schneller wird diese Aufgabe (Schritt 4) abgeschlossen.
+- Um Ihr eigenes Azure-Speicherkonto zu erstellen, befolgen Sie die in [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden.
 
   - **Speicherkontoname**
   - **Speicherkontoschlüssel**
   - **Containername** (in dem die Daten im Azure-Blobspeicher gespeichert werden sollen)
 
-**Stellen Sie Ihre Azure SQL Data Warehouse-Instanz bereit.** Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](sql-data-warehouse-get-started-provision.md), um eine SQL Data Warehouse-Instanz bereitzustellen. Notieren Sie sich unbedingt die folgenden Anmeldeinformationen für SQL Data Warehouse, die in späteren Schritten verwendet werden.
- 
+**Stellen Sie Ihre Azure SQL Data Warehouse-Instanz bereit.** Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md), um eine SQL Data Warehouse-Instanz bereitzustellen. Notieren Sie sich unbedingt die folgenden Anmeldeinformationen für SQL Data Warehouse, die in späteren Schritten verwendet werden.
+
   - **Servername**: <server Name>.database.windows.net
-  - **SQLDW-Name (Datenbank)** 
+  - **SQLDW-Name (Datenbank)**
   - **Benutzername**
   - **Kennwort**
 
-**Installieren Sie Visual Studio 2015 und SQL Server Data Tools.** Eine Anleitung hierzu finden Sie unter [Installieren von Visual Studio 2015 und/oder SSDT (SQL Server Data Tools) für SQL Data Warehouse](sql-data-warehouse-install-visual-studio.md).
+**Installieren Sie Visual Studio 2015 und SQL Server Data Tools.** Eine Anleitung hierzu finden Sie unter [Installieren von Visual Studio 2015 und/oder SSDT (SQL Server Data Tools) für SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
-**Stellen Sie mit Visual Studio eine Verbindung mit Ihrem Azure SQL Data Warehouse her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio](sql-data-warehouse-get-started-connect.md) in den Schritten 1 und 2.
+**Stellen Sie mit Visual Studio eine Verbindung mit Ihrem Azure SQL Data Warehouse her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio](../sql-data-warehouse/sql-data-warehouse-get-started-connect.md) in den Schritten 1 und 2.
 
 >[AZURE.NOTE] Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in SQL Data Warehouse erstellt haben (anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
 
@@ -114,10 +114,10 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 	$source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
 	$ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
 	$wc = New-Object System.Net.WebClient
-	$wc.DownloadFile($source, $ps1_dest) 
+	$wc.DownloadFile($source, $ps1_dest)
 	.\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 
-Nach erfolgreicher Ausführung ändert sich Ihr aktuelles Arbeitsverzeichnis in *-DestDir*. Ihnen sollte in etwa der folgenden Bildschirm angezeigt werden:
+Nach erfolgreicher Ausführung ändert sich Ihr aktuelles Arbeitsverzeichnis in *-DestDir*. Ihnen sollte in etwa der folgende Bildschirm angezeigt werden:
 
 ![][19]
 
@@ -149,13 +149,13 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 				if ($env_path -notlike '*' +$AzCopy_path_i+'*'){
 					Write-Host $AzCopy_path_i 'not in system path, add it...'
 					[Environment]::SetEnvironmentVariable("Path", "$AzCopy_path_i;$env_path", "Machine")
-					$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") 
+					$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 					$env_path = $env:Path
-				}	
+				}
 
 - **Kopieren von Daten in Ihr privates Blobspeicherkonto** aus dem öffentlichen Blob mit AzCopy.
 
-		Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"	
+		Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
 		$start_time = Get-Date
 		AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
 		$end_time = Get-Date
@@ -166,20 +166,20 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 
 
 - **Laden von Daten mithilfe von Polybase (durch Ausführen von LoadDataToSQLDW.sql) in Ihr Azure SQL Data Warehouse** aus Ihrem privaten Blobspeicherkonto mit den folgenden Befehlen.
-	
+
 	- Erstellen eines Schemas
 
 			EXEC (''CREATE SCHEMA {schemaname};'');
 
 	- Erstellen der datenbankbezogenen Anmeldeinformationen
-			
-			CREATE DATABASE SCOPED CREDENTIAL {KeyAlias} 
-			WITH IDENTITY = ''asbkey'' , 
+
+			CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
+			WITH IDENTITY = ''asbkey'' ,
 			Secret = ''{StorageAccountKey}''
 
 	- Erstellen einer externen Datenquelle für einen Azure-Speicherblob
 
-			CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage} 
+			CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
 			WITH
 			(
     			TYPE = HADOOP,
@@ -188,7 +188,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 			)
 			;
 
-			CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage} 
+			CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
 			WITH
 			(
     			TYPE = HADOOP,
@@ -199,10 +199,10 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 
 	- Erstellen eines externen Dateiformats für eine CSV-Datei. Die Daten werden nicht komprimiert, und die Felder werden durch den senkrechten Strich getrennt.
 
-			CREATE EXTERNAL FILE FORMAT {csv_file_format} 
-			WITH 
+			CREATE EXTERNAL FILE FORMAT {csv_file_format}
+			WITH
 			(   
-    			FORMAT_TYPE = DELIMITEDTEXT, 
+    			FORMAT_TYPE = DELIMITEDTEXT,
     			FORMAT_OPTIONS  
     			(
         			FIELD_TERMINATOR ='','',
@@ -210,7 +210,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
     			)
 			)
 			;
-		
+
 	- Erstellen externer Fahrpreis- und Trinkgeldtabellen für das „NYC Taxi“-Dataset im Azure-Blobspeicher
 
 			CREATE EXTERNAL TABLE {external_nyctaxi_fare}
@@ -244,7 +244,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
        			rate_code char(3),
        			store_and_fwd_flag char(3),
        			pickup_datetime datetime  not null,
-       			dropoff_datetime datetime, 
+       			dropoff_datetime datetime,
        			passenger_count int,
        			trip_time_in_secs bigint,
        			trip_distance float,
@@ -264,40 +264,40 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 	- Laden von Daten aus externen Tabellen im Azure-Blobspeicher in SQL Data Warehouse
 
 			CREATE TABLE {schemaname}.{nyctaxi_fare}
-			WITH 
+			WITH
 			(   
     			CLUSTERED COLUMNSTORE INDEX,
 				DISTRIBUTION = HASH(medallion)
 			)
-			AS 
-			SELECT * 
+			AS
+			SELECT *
 			FROM   {external_nyctaxi_fare}
 			;
 
 			CREATE TABLE {schemaname}.{nyctaxi_trip}
-			WITH 
+			WITH
 			(   
     			CLUSTERED COLUMNSTORE INDEX,
 				DISTRIBUTION = HASH(medallion)
 			)
-			AS 
-			SELECT * 
+			AS
+			SELECT *
 			FROM   {external_nyctaxi_trip}
 			;
 
 	- Erstellen einer Beispieldatentabelle (NYCTaxi\_Sample) und Einfügen von Daten durch Auswahl von SQL-Abfragen für die Tabellen „trip“ und „fare“. (Einige Schritte in dieser exemplarischen Vorgehensweise müssen diese Beispieltabelle verwenden.)
 
 			CREATE TABLE {schemaname}.{nyctaxi_sample}
-			WITH 
+			WITH
 			(   
     			CLUSTERED COLUMNSTORE INDEX,
 				DISTRIBUTION = HASH(medallion)
 			)
-			AS 
+			AS
 			(
 	    		SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount,
 				tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
-				tip_class = CASE 
+				tip_class = CASE
 						WHEN (tip_amount = 0) THEN 0
                         WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
                         WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
@@ -321,7 +321,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 ![Grafik 21][21]
 
 >[AZURE.TIP] **Verwenden eigener Daten:** Wenn Ihre Daten auf Ihrem lokalen Computer in einer realen Anwendung gespeichert sind, können Sie AzCopy dennoch zum Hochladen lokaler Daten in Ihren privaten Azure-Blobspeicher verwenden. Sie müssen im AzCopy-Befehl der PowerShell-Skriptdatei nur den **Quellspeicherort**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, in das lokale Verzeichnis ändern, das Ihre Daten enthält.
-	
+
 >[AZURE.TIP] Wenn Ihre Daten sich bereits in Ihrem privaten Azure-Blobspeicher in einer realen Anwendung befinden, können Sie den AzCopy-Schritt im PowerShell-Skript überspringen und die Daten direkt in Azure SQL Data Warehouse hochladen. Dies erfordert zusätzliche Bearbeitung des Skripts, um es dem Format Ihrer Daten anzupassen.
 
 
@@ -453,7 +453,7 @@ In diesem Beispiel werden die Werte von "longitude" und "latitude" für Start- u
 
 	-- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
 	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
-	
+
 	RETURNS float
 	AS
 	BEGIN
@@ -474,7 +474,7 @@ In diesem Beispiel werden die Werte von "longitude" und "latitude" für Start- u
 	END
 	GO
 
-	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude, 
+	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
 	dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
 	FROM <schemaname>.<nyctaxi_trip>
 	WHERE datepart("mi",pickup_datetime)=1
@@ -500,7 +500,7 @@ Hier sehen Sie das SQL-Skript, in dem die Funktion „distance“ definiert wird
 
 	-- User-defined function calculate the direct distance between two geographical coordinates.
 	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
-	
+
 	RETURNS float
 	AS
 	BEGIN
@@ -519,12 +519,12 @@ Hier sehen Sie das SQL-Skript, in dem die Funktion „distance“ definiert wird
   		END
   		RETURN @distance
 	END
-	GO 
+	GO
 
 Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abfrage zu generieren:
 
 	-- Sample query to call the function to create features
-	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude, 
+	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
 	dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
 	FROM <schemaname>.<nyctaxi_trip>
 	WHERE datepart("mi",pickup_datetime)=1
@@ -534,7 +534,7 @@ Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abf
 
 **Ausgabe:** Diese Abfrage generiert eine Tabelle (mit 2.803.538 Zeilen) mit Start- und Zielkoordinaten (in geografischen Breiten- und Längengraden) und entsprechenden direkten Entfernungen in Meilen. Dies sind die Ergebnisse für die ersten 3 Zeilen:
 
-|pickup\_latitude | pickup\_longitude | dropoff\_latitude |dropoff\_longitude | DirectDistance |
+||pickup\_latitude | pickup\_longitude | dropoff\_latitude |dropoff\_longitude | DirectDistance |
 |---| --------- | -------|-------| --------- | -------|
 |1 | 40,731804 | -74,001083 | 40,736622 | -73,988953 | 0,7169601222 |
 |2 | 40,715794 | -74.010635 | 40,725338 | -74,00399 | 0,7448343721 |
@@ -564,7 +564,7 @@ Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare**
 Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:
 
 1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Reader][reader]-Modul in Azure Machine Learning einfügen;
-2. Speichern Sie die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen SQL Data Warehouse-Tabelle, und verwenden Sie dann die neue Tabelle im [Reader][reader]-Modul in Azure Machine Learning. Das PowerShell-Skript hat dies in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das Reader-Modul einlesen. 
+2. Speichern Sie die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen SQL Data Warehouse-Tabelle, und verwenden Sie dann die neue Tabelle im [Reader][reader]-Modul in Azure Machine Learning. Das PowerShell-Skript hat dies in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das Reader-Modul einlesen.
 
 
 ## <a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
@@ -575,7 +575,7 @@ Die erforderlichen Azure SQL Data Warehouse-Informationen im IPython Notebook-Be
 
 Wenn Sie bereits einen AzureML-Arbeitsbereich eingerichtet haben, können Sie das IPython Notebook-Beispiel direkt in den AzureML IPython Notebook-Dienst hochladen und dessen Ausführung starten. Im Folgenden werden die Schritte zum Hochladen in den AzureML IPython Notebook-Dienst aufgeführt:
 
-1. Melden Sie sich bei Ihrem AzureML-Arbeitsbereich an, klicken Sie oben auf „Studio“, und klicken Sie auf der linken Seite der Webseite auf „NOTEBOOKS“. 
+1. Melden Sie sich bei Ihrem AzureML-Arbeitsbereich an, klicken Sie oben auf „Studio“, und klicken Sie auf der linken Seite der Webseite auf „NOTEBOOKS“.
 
 	![Grafik 22][22]
 
@@ -604,7 +604,7 @@ Die empfohlene Reihenfolge beim Erstellen fortgeschrittener Analyselösungen mit
 - Einlesen eines kleinen Teils der Daten in ein DataFrame im Speicher
 - Durchführen von Visualisierungen und Suchvorgängen mit den Beispieldaten
 - Experimentieren mit der Featureentwicklung anhand der Beispieldaten
-- Bei umfangreicherer Datendurchsuchung, Datenbearbeitung und Featureentwicklung direktes Ausführen von SQL-Abfragen für das SQL Data Warehouse mithilfe von Python
+- Verwenden von Python für das direkte Ausführen von SQL-Abfragen für das SQL Data Warehouse bei umfangreicherer Datendurchsuchung, Datenbearbeitung und Featureentwicklung
 - Treffen von Entscheidungen zum Umfang von Stichproben für die Modellerstellung in Azure Machine Learning
 
 Es folgen einige Beispiele für das Durchsuchen von Daten, die Datenvisualisierung und die Featureentwicklung. Weitere Datensuchvorgänge finden Sie im IPython Notebook-Beispiel und in der Python-Beispielskriptdatei.
@@ -964,4 +964,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

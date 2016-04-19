@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="03/30/2016"
    ms.author="alkohli" />
 
 # Konfigurieren des Webproxys für Ihr StorSimple-Gerät
@@ -27,7 +27,7 @@ Bei dem Webproxy handelt es sich um eine optionale Konfiguration für Ihr StorSi
 
 2. Anschließend werden die konfigurierten Webproxyeinstellungen über Cmdlets von Windows PowerShell für StorSimple aktiviert.
 
-Nach Abschluss der Webproxykonfiguration können Sie die konfigurierten Webproxyeinstellungen im StorSimple Manager-Dienst von Microsoft Azure sowie in Windows PowerShell für StorSimple anzeigen.
+Nach Abschluss der Webproxykonfiguration können Sie die konfigurierten Webproxyeinstellungen im StorSimple Manager-Dienst von Microsoft Azure sowie in Windows PowerShell für StorSimple anzeigen.
 
 In diesem Tutorial erfahren Sie Folgendes:
 
@@ -63,15 +63,15 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
 
 	`http://<IP address or FQDN of the web proxy server>:<TCP port number>`
 
-	Standardmäßig wird die TCP-Portnummer 8080 angegeben.
+	Standardmäßig wird die TCP-Portnummer 8080 angegeben.
 
 4. Legen Sie den Authentifizierungstyp auf **NTLM**, **Standard** oder **Keine** fest. „Standard“ bietet bei der Authentifizierung für die Proxyserverkonfiguration die geringste Sicherheit. „NTLM“ (NT-LAN-Manager) ist ein äußerst sicheres und komplexes Authentifizierungsprotokoll mit einem Drei-Wege-Messaging-System für die Benutzerauthentifizierung (ggf. auch ein Vier-Wege-System, wenn zusätzliche Integrität erforderlich ist). Standardmäßig wird die NTLM-Authentifizierung verwendet. Weitere Informationen finden Sie unter [Standard](http://hc.apache.org/httpclient-3.x/authentication.html) bzw. unter [NTLM-Authentifizierung](http://hc.apache.org/httpclient-3.x/authentication.html).
 
-	> [AZURE.IMPORTANT] **Wenn in der Proxyserverkonfiguration für das Gerät die Standard- oder NTLM-Authentifizierung aktiviert ist, funktionieren die Geräteüberwachungsdiagramme im StorSimple Manager-Dienst nicht. Zur Verwendung der Überwachungsdiagramme muss die Authentifizierung auf „Keine“ festgelegt sein.**
+	> [AZURE.IMPORTANT] **Wenn in der Proxyserverkonfiguration für das Gerät die Standard- oder NTLM-Authentifizierung aktiviert ist, funktionieren die Geräteüberwachungsdiagramme im StorSimple Manager-Dienst nicht. Zur Verwendung der Überwachungsdiagramme muss die Authentifizierung auf „Keine“ festgelegt sein.**
 
 5. Geben Sie bei Verwendung einer Authentifizierung einen Benutzernamen und ein Kennwort für den Webproxy an. Das Kennwort muss außerdem bestätigt werden.
 
-	![Konfigurieren des Webproxys auf StorSimple-Gerät 1](./media/storsimple-configure-web-proxy/IC751830.png)
+	![Konfigurieren des Webproxys auf StorSimple-Gerät 1](./media/storsimple-configure-web-proxy/IC751830.png)
 
 Wenn Sie Ihr Gerät zum ersten Mal registrieren, fahren Sie mit der Registrierung fort. Wenn das Gerät bereits registriert wurde, wird der Assistent beendet. Die konfigurierten Einstellungen werden gespeichert.
 
@@ -84,7 +84,7 @@ Alternativ können die Webproxyeinstellungen auch über die Cmdlets von Windows 
 
 #### So konfigurieren Sie den Webproxy mithilfe von Cmdlets
 
-1. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**. Geben Sie bei entsprechender Aufforderung das **Geräteadministratorkennwort** ein. Das Standardkennwort lautet `Password1`.
+1. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**. Geben Sie bei entsprechender Aufforderung das **Geräteadministratorkennwort** ein. Das Standardkennwort lautet `Password1`.
 
 2. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -92,7 +92,7 @@ Alternativ können die Webproxyeinstellungen auch über die Cmdlets von Windows 
 
 	Geben Sie das Kennwort an, wenn Sie dazu aufgefordert werden, und bestätigen Sie es:
 
-	![Konfigurieren des Webproxys auf StorSimple-Gerät 3](./media/storsimple-configure-web-proxy/IC751831.png)
+	![Konfigurieren des Webproxys auf StorSimple-Gerät 3](./media/storsimple-configure-web-proxy/IC751831.png)
 
 Der Webproxy ist nun konfiguriert und muss aktiviert werden.
 
@@ -106,7 +106,7 @@ Führen Sie in Windows PowerShell für StorSimple die folgenden Schritte aus, um
 
 #### So aktivieren Sie den Webproxy
 
-1. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**. Geben Sie bei entsprechender Aufforderung das **Geräteadministratorkennwort** ein. Das Standardkennwort lautet `Password1`.
+1. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**. Geben Sie bei entsprechender Aufforderung das **Geräteadministratorkennwort** ein. Das Standardkennwort lautet `Password1`.
 
 2. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -114,11 +114,11 @@ Führen Sie in Windows PowerShell für StorSimple die folgenden Schritte aus, um
 
 	Die Webproxykonfiguration ist nun auf dem StorSimple-Gerät aktiviert.
 
-	![Konfigurieren des Webproxys auf StorSimple-Gerät 4](./media/storsimple-configure-web-proxy/IC751832.png)
+	![Konfigurieren des Webproxys auf StorSimple-Gerät 4](./media/storsimple-configure-web-proxy/IC751832.png)
 
 ## Anzeigen der Webproxyeinstellungen im klassischen Azure-Portal
 
-Die Webproxyeinstellungen werden über die Windows PowerShell-Schnittstelle konfiguriert und können nicht im klassischen Portal geändert werden. Sie können die konfigurierten Einstellungen allerdings im klassischen Portal anzeigen. Führen Sie die folgenden Schritte aus, um den Webproxy anzuzeigen:
+Die Webproxyeinstellungen werden über die Windows PowerShell-Schnittstelle konfiguriert und können nicht im klassischen Portal geändert werden. Sie können die konfigurierten Einstellungen allerdings im klassischen Portal anzeigen. Führen Sie die folgenden Schritte aus, um den Webproxy anzuzeigen:
 
 #### So zeigen Sie die Webproxyeinstellungen an
 1. Navigieren Sie zu **StorSimple Manager-Dienst > Geräte**. Klicken Sie auf ein Gerät, und navigieren Sie anschließend zu **Konfigurieren**.
@@ -143,12 +143,12 @@ Sind die Webproxyeinstellungen nicht korrekt konfiguriert, werden in Windows Pow
 > [AZURE.NOTE] 
 > 
 > -  Die obige Liste mit Fehlermeldungen ist nicht vollständig. 
-> - Im klassischen Azure-Portal Ihres StorSimple Manager-Diensts werden keine Fehler für Webproxyeinstellungen angezeigt. Liegt nach Abschluss der Konfiguration ein Problem mit dem Webproxy vor, wechselt der Gerätestatus im klassischen Portal zu **Offline**.|
+> - Im klassischen Azure-Portal Ihres StorSimple Manager-Diensts werden keine Fehler für Webproxyeinstellungen angezeigt. Liegt nach Abschluss der Konfiguration ein Problem mit dem Webproxy vor, wechselt der Gerätestatus im klassischen Portal zu **Offline**.|
 
 ## Nächste Schritte
 
 - Informationen zum Behandeln von Problemen beim Bereitstellen Ihres Geräts oder beim Konfigurieren der Webproxyeinstellungen finden Sie unter [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](storsimple-troubleshoot-deployment.md).
 
-- Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+- Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

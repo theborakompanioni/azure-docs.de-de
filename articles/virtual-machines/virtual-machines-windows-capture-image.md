@@ -25,6 +25,7 @@
 In diesem Artikel wird erläutert, wie Sie einen virtuellen Azure-Computer, auf dem Windows ausgeführt wird, mithilfe von Azure PowerShell erfassen, um ihn als Image zum Erstellen anderer virtueller Computer zu verwenden. Dieses Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Nicht enthalten sind die Ressourcen des virtuellen Netzwerks, die Sie zum Erstellen eines virtuellen Windows-Computers benötigen. Sie müssen diese Ressourcen separat einrichten, bevor Sie einen weiteren virtuellen Computer auf Basis des Images erstellen. Dieses Image wird außerdem als [generalisiertes Windows-Image](https://technet.microsoft.com/library/hh824938.aspx) vorbereitet.
 
 
+
 ## Voraussetzungen
 
 Diese Schritte setzen voraus, dass Sie bereits einen virtuellen Azure-Computer im Resource Manager-Bereitstellungsmodell erstellt, das Betriebssystem konfiguriert, beliebige Datenträger angefügt und weitere Anpassungen wie die Installation von Anwendungen vorgenommen haben. Wenn Sie diese Schritte noch nicht ausgeführt haben, lesen Sie [How to create a Windows VM with Resource Manager and PowerShell](virtual-machines-windows-ps-create.md) (Gewusst wie: Erstellen eines virtuellen Windows-Computers mit Resource Manager und PowerShell). Sie können einen virtuellen Windows-Computer (Windows Virtual Machine, Windows-VM) aber auch genauso einfach im [Azure-Portal](https://portal.azure.com) erstellen. Lesen Sie dazu [How to create a Windows virtual machine in the Azure portal](virtual-machines-windows-hero-tutorial.md) (Gewusst wie: Erstellen eines virtuellen Windows-Computers im Azure-Portal).
@@ -34,7 +35,9 @@ Diese Schritte setzen voraus, dass Sie bereits einen virtuellen Azure-Computer i
 
 In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer generalisieren. Dadurch werden unter anderem alle persönlichen Kontoinformationen entfernt. Sie sollten diesen Schritt üblicherweise ausführen, wenn Sie ein VM-Image zum schnellen Bereitstellen ähnlicher virtueller Computer verwenden möchten.
 
-1. Melden Sie sich bei Ihrem virtuellen Windows-Computer an. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Windows-Computer* > **Verbinden**.
+> [AZURE.WARNING] Bitte beachten Sie, dass der virtuelle Computer nach dem Generalisieren nicht über RDP angemeldet werden kann, da der Prozess alle Benutzerkonten entfernt. Diese Änderung kann nicht rückgängig gemacht werden.
+
+1. Melden Sie sich bei Ihrem virtuellen Windows-Computer an. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Durchsuchen** > **Virtuelle Computer** > Ihr virtueller Windows-Computer > **Verbinden**.
 
 2. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
 
@@ -130,7 +133,7 @@ Sie können den Resource Manager auch zum Erfassen des virtuellen Computers verw
 
 5. Heben Sie die Zuordnung für den virtuellen Computer auf, indem Sie auf die Aktionsschaltfläche für **deallocate** klicken. Der Status des virtuellen Computers wird von **Beendet** in **Beendet (Zuordnung aufgehoben)** geändert.
 
-6. Markieren Sie den virtuellen Computer als generalisiert, indem Sie auf die Aktionsschaltfläche für **generalize** klicken. Sie können die Statusänderung überprüfen, indem Sie auf der linken Seite unter dem Namen Ihres virtuellen Computers auf **InstanceView** klicken und auf der rechten Seite zum Abschnitt **statuses** navigieren.
+6. Markieren Sie den virtuellen Computer als generalisiert, indem Sie auf die Aktionsschaltfläche für **generalize** klicken. Sie können die Statusänderungen überprüfen, indem Sie auf der linken Seite unter dem Namen Ihres virtuellen Computers auf **InstanceView** klicken und auf der rechten Seite zum Abschnitt **statuses** navigieren.
 
 7. Unter der Aktionsschaltfläche **capture** können Sie die Werte für das Erfassen Ihres Images festlegen. Die ausgefüllten Werte sollten wie folgt aussehen:
 
@@ -209,4 +212,4 @@ Sie sollten nun den neu erstellten virtuellen Computer im [Azure-Portal](https:/
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

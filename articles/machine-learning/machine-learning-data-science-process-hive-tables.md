@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="hangzh-msft"
-	manager="paulettm" 
+	manager="paulettm"
 	editor="cgronlun"  />
 
 <tags
@@ -16,7 +16,7 @@
 	ms.date="02/08/2016"
 	ms.author="hangzh;bradsev" />
 
-#<a name="heading"></a> Übermitteln von Hive-Abfragen an HDInsight Hadoop-Cluster im erweiterten Analyseprozess 
+#<a name="heading"></a> Übermitteln von Hive-Abfragen an HDInsight Hadoop-Cluster im erweiterten Analyseprozess
 
 In diesem Dokument werden die verschiedenen Möglichkeiten zum Übermitteln von Hive-Abfragen an Hadoop-Cluster beschrieben, die durch einen HDInsight-Dienst in Azure verwaltet werden. Diese Aufgabe ist ein Teil des Cortana-Analyseprozesses (CAP). Es werden mehrere Aufgaben zum Analysieren von Daten erläutert: das Durchsuchen von Daten und das Generieren von Funktionen. Es werden generische Hive-Abfragen, die zeigen, wie Sie mit Hive in Azure HDInsight Hadoop-Clustern Daten durchsuchen oder Funktionen generieren, vorgeführt. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), die bereitgestellt werden.
 
@@ -106,7 +106,7 @@ Sie können die Hive-Abfrageergebnisse auch in ein Azure-Blob im Standardcontain
 
 	insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-Im folgenden Beispiel wird die Ausgabe der Hive-Abfrage in das Blob-Verzeichnis `queryoutputdir` innerhalb des Standardcontainer des Hadoop-Cluster geschrieben. Hier müssen Sie nur den Namen des Verzeichnisses ohne den Namen des Blobs angeben. Es wird ein Fehler ausgelöst, wenn Sie sowohl den Verzeichnis- als auch den Blobnamen angeben, z. B. *wasb:///queryoutputdir/queryoutput.txt*.
+Im folgenden Beispiel wird die Ausgabe der Hive-Abfrage in das Blob-Verzeichnis `queryoutputdir` innerhalb des Standardcontainer des Hadoop-Cluster geschrieben. Hier müssen Sie nur den Namen des Verzeichnisses ohne den Namen des Blobs angeben. Es wird ein Fehler ausgelöst, wenn Sie sowohl den Verzeichnis- als auch den Blobnamen angeben, z. B. **wasb:///queryoutputdir/queryoutput.txt*.
 
 ![Arbeitsbereich erstellen](./media/machine-learning-data-science-process-hive-tables/output-hive-results-2.png)
 
@@ -167,7 +167,7 @@ Hier finden Sie einige Hive-Beispielskripts, die zum Durchsuchen von Daten in de
 
 In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von Hive-Abfragen beschrieben.
 
-> [AZURE.NOTE] Bei den Beispiel-Hive-Abfragen in diesem Abschnitt wird davon ausgegangen, dass die Daten in Hive-Tabellen in Azure HDInsight Hadoop-Clustern hochgeladen wurden. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
+> [AZURE.NOTE] Bei den Beispiel-Hive-Abfragen in diesem Abschnitt wird davon ausgegangen, dass die Daten in Hive-Tabellen in Azure HDInsight Hadoop-Clustern hochgeladen wurden. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
 
 Wenn Sie zusätzliche Funktionen generiert haben, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann.
 
@@ -310,8 +310,4 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
 		set mapred.reduce.tasks=128;
 		set mapred.tasktracker.reduce.tasks.maximum=128;
 
-
-
- 
-
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

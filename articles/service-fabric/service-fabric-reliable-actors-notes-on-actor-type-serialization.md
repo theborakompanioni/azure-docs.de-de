@@ -13,27 +13,46 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/13/2015"
+   ms.date="03/25/2015"
    ms.author="vturecek"/>
 
 # Hinweise zur Typserialisierung von Service Fabric Reliable Actors
 
-Beim Definieren der Schnittstelle(n) und des Status eines Actors sollten Sie einige wichtige Aspekte im Hinterkopf behalten. Typen müssen Datenvertrag-serialisierbar sein. Weitere Informationen zu Datenverträgen finden Sie unter [MSDN](https://msdn.microsoft.com/library/ms731923.aspx).
 
-## Actor-Schnittstellentypen
+Die Argumente aller Methoden, die Ergebnistypen der von jeder Methode zurückgegebenen Aufgaben in einer Actor-Schnittstelle sowie Objekte, die im Zustands-Manager des Actors gespeichert sind, müssen [mit DataContract serialisiert werden können](https://msdn.microsoft.com/library/ms731923.aspx). Dies gilt auch für die Argumente der Methoden, die in [Actor-Ereignisschnittstellen](service-fabric-reliable-actors-events.md#actor-events) definiert werden. (In Actor-Ereignisschnittstellen definierte Methoden geben immer „void“ zurück).
 
-Die Argumente aller Methoden und die Ergebnistypen der Tasks, die von den einzelnen in der [Actor-Schnittstelle](service-fabric-reliable-actors-introduction.md#actors) definierten Methoden zurückgegeben werden, müssen Datenvertrag-serialisierbar sein. Dies gilt auch für die Argumente der Methoden, die in [Actor- Ereignisschnittstellen](service-fabric-reliable-actors-events.md#actor-events) definiert werden. (In Actor-Ereignisschnittstellen definierte Methoden geben immer „void“ zurück). Wenn z. B. die `IVoiceMail`-Schnittstelle eine Methode definiert als:
+## Benutzerdefinierte Datentypen
+
+In diesem Beispiel definiert die folgende Actor-Schnittstelle eine Methode, die einen benutzerdefinierten Datentyp namens `VoicemailBox` zurückgibt.
 
 ```csharp
+public interface IVoiceMailBoxActor : IActor
+{
+    Task<VoicemailBox> GetMailBoxAsync();
+}
+```
 
-Task<List<Voicemail>> GetMessagesAsync();
+Die Schnittstelle wird durch einen Actor implementiert, der den Zustands-Manager zum Speichern eines `VoicemailBox`-Objekts verwendet:
+
+```csharp
+[StatePersistence(StatePersistence.Persisted)]
+public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
+{
+    public Task<VoicemailBox> GetMailboxAsync()
+    {
+        return this.StateManager.GetStateAsync<VoicemailBox>("Mailbox");
+    }
+}
 
 ```
 
-`List<T>` ist ein .NET-Standardtyp, der bereits Datenvertrag-serialisierbar ist. Auch der `Voicemail`-Typ muss Datenvertrag-serialisierbar sein.
+In diesem Beispiel wird das `VoicemailBox`-Objekt serialisiert, wenn:
+ - Das Objekt zwischen einer Actor-Instanz und einem Anrufer übertragen wird.
+ - Das Objekt im Zustands-Manager gespeichert wird, von wo aus es dauerhaft auf einem Datenträger gespeichert und auf die anderen Knoten repliziert wird.
+ 
+Das Reliable Actor-Framework verwendet DataContract-Serialisierung. Aus diesem Grund müssen die benutzerdefinierten Objekte und deren Member mit den Anmerkungen **DataContract** beziehungsweise **DataMember** versehen sein.
 
 ```csharp
-
 [DataContract]
 public class Voicemail
 {
@@ -46,25 +65,9 @@ public class Voicemail
     [DataMember]
     public DateTime ReceivedAt { get; set; }
 }
-
 ```
 
-## Actor-Statusklasse
-
-Der Actor-Status muss Datenvertrag-serialisierbar sein. Beispielsweise kann eine Actor-Klassendefinition wie folgt aussehen:
-
 ```csharp
-
-public class VoiceMailActor : StatefulActor<VoicemailBox>, IVoiceMail
-{
-...
-
-```
-
-Die Statusklasse wird mit der Klasse definiert, und ihre Member werden jeweils mit den Attributen **DataContract** und **DataMember** versehen.
-
-```csharp
-
 [DataContract]
 public class VoicemailBox
 {
@@ -79,7 +82,14 @@ public class VoicemailBox
     [DataMember]
     public string Greeting { get; set; }
 }
-
 ```
 
-<!---HONumber=AcomDC_0121_2016-->
+## Nächste Schritte
+ - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actor-Timer und -Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
+ - [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
+ - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor-Polymorphie und objektorientierte Entwurfsmuster](service-fabric-reliable-actors-polymorphism.md)
+ - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
+
+<!---HONumber=AcomDC_0406_2016-->

@@ -42,7 +42,7 @@ Wir richten eine ADF-Pipeline ein, die aus zwei Datenmigrationsaktivitäten best
 * Kopieren von Daten aus einer lokalen SQL Server-Datenbank in ein Azure Blob-Speicherkonto
 * Kopieren von Daten aus dem Azure Blob-Speicherkonto in eine Azure SQL-Datenbank
 
-**Referenz**: Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Aktivieren von Pipelines zum Arbeiten mit lokalen Daten](data-factory-use-onpremises-datasources.md) entnommen und angepasst, das vom ADF-Team bereitgestellt wird. Verweise auf die entsprechenden Abschnitte dieses Themas werden an geeigneten Stellen bereitgestellt .
+**Referenz**: Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Move data between on-premises sources and cloud with Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway) entnommen und angepasst, das vom ADF-Team bereitgestellt wurde. Verweise auf die entsprechenden Abschnitte dieses Tutorials werden an geeigneten Stellen angegeben.
 
 
 ## <a name="prereqs"></a>Voraussetzungen
@@ -50,8 +50,8 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 * Ein **Azure-Abonnement**. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 * Ein **Azure-Speicherkonto**. Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account). Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
-* Zugriff auf eine **Azure SQL-Datenbank**. Wenn Sie eine Azure SQL-Datenbank einrichten müssen, finden Sie in [Erste Schritte mit Microsoft Azure SQL-Datenbank](sql-database-get-started.md) Informationen dazu, wie Sie eine neue Instanz einer Azure SQL-Datenbank bereitstellen.
-* Lokal installierte und konfigurierte **Azure PowerShell**. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
+* Zugriff auf eine **Azure SQL-Datenbank**. Wenn Sie eine Azure SQL-Datenbank einrichten müssen, finden Sie in [Erste Schritte mit Microsoft Azure SQL-Datenbank](../sql-database/sql-database-get-started.md) Informationen dazu, wie Sie eine neue Instanz einer Azure SQL-Datenbank bereitstellen.
+* Lokal installierte und konfigurierte **Azure PowerShell**. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 > [AZURE.NOTE] In diesem Verfahren wird das [Azure-Portal](https://ms.portal.azure.com/) verwendet.
 
@@ -64,18 +64,18 @@ Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigene
 
 ##<a name="create-adf"></a> Erstellen einer Azure Data Factory
 
-Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://ms.portal.azure.com/) finden Sie unter [Create an Azure Data Factory](data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp*, und nennen Sie die erstellte Ressourcengruppe *adfdsprg*.
+Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://ms.portal.azure.com/) finden Sie unter [Create an Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp*, und nennen Sie die erstellte Ressourcengruppe *adfdsprg*.
 
 ## Installieren und Konfigurieren das Datenverwaltungsgateways
 
 Damit Ihre Pipelines in einer Azure Data Factory mit einem lokalen SQL Server zusammenarbeiten können, müssen Sie diesen der Data Factory als verknüpften Dienst hinzufügen. Um einen verknüpften Dienst für den lokalen SQL Server zu erstellen, müssen Sie zunächst das Microsoft-Datenverwaltungsgateway auf den lokalen Computer herunterladen und dort installieren und den verknüpften Dienst für die lokale Datenquelle zur Verwendung des Gateways konfigurieren. Das Datenverwaltungsgateway serialisiert und deserialisiert die Quell- und Senkendaten auf dem Computer, auf dem sie gehostet werden.
 
-Anleitungen zur Einrichtung und Details zum Datenverwaltungsgateway finden Sie unter [Aktivieren von Pipelines zum Arbeiten mit lokalen Daten](data-factory-use-onpremises-datasources.md).
+Setupanweisungen und Informationen zum Datenverwaltungsgateway finden Sie unter [Move data between on-premises sources and cloud with Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway)
 
 
 ## <a name="adflinkedservices"></a>Erstellen von verknüpften Diensten zum Herstellen einer Verbindung mit den Datenressourcen
 
-Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für das Herstellen einer Verbindung mit einer Datenquelle benötigt. Die schrittweise Anleitung zum Erstellen von verknüpften Diensten finden Sie unter [Erstellen von verknüpften Diensten](data-factory-use-onpremises-datasources.md#step-2-create-linked-services).
+Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für das Herstellen einer Verbindung mit einer Datenquelle benötigt. Die schrittweise Anleitung zum Erstellen von verknüpften Diensten finden Sie unter [Erstellen von verknüpften Diensten](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-2-create-linked-services).
 
 Wir haben drei Ressourcen in diesem Szenario, für die verknüpfte Dienste erforderlich sind.
 
@@ -91,12 +91,12 @@ Um den verknüpften Dienst für den lokalen SQL Server zu erstellen, klicken Sie
 Um den verknüpften Dienst für das Azure Blob-Speicherkonto zu erstellen, klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf **Datenspeicher**, wählen Sie *Azure-Speicherkonto* aus, und geben Sie den Azure Blob-Speicherkontoschlüssel und den Containernamen ein. Nennen Sie den Dienst Link *adfds*.
 
 ###<a name="adf-linked-service-azure-sql"></a>Verknüpfter Dienst für Azure SQL-Datenbank
-Um den verknüpften Dienst für die Azure SQL-Datenbank zu erstellen, klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf **Datenspeicher**, wählen Sie *Azure SQL* aus, und geben Sie die Anmeldeinformationen für *Benutzername* und *Kennwort* für die Azure SQL-Datenbank ein. Der *Benutzername* muss im Format "*user@servername*" angegeben werden.
+Um den verknüpften Dienst für die Azure SQL-Datenbank zu erstellen, klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf **Datenspeicher**, wählen Sie *Azure SQL* aus, und geben Sie die Anmeldeinformationen für *Benutzername* und *Kennwort* für die Azure SQL-Datenbank ein. Der *Benutzername* muss im Format "**user@servername*" angegeben werden.
 
 
 ##<a name="adf-tables"></a>Definieren und Erstellen von Tabellen, um die Art des Zugriffs auf Datasets anzugeben
 
-Erstellen Sie Tabellen, in denen die Struktur, der Speicherort und die Verfügbarkeit der Datasets angegeben werden, mit den folgenden skriptbasierten Verfahren. Zum Definieren der Tabellen werden JSON-Dateien verwendet. Weitere Informationen zur Struktur dieser Dateien finden Sie unter [Datasets](data-factory-create-datasets.md).
+Erstellen Sie Tabellen, in denen die Struktur, der Speicherort und die Verfügbarkeit der Datasets angegeben werden, mit den folgenden skriptbasierten Verfahren. Zum Definieren der Tabellen werden JSON-Dateien verwendet. Weitere Informationen zur Struktur dieser Dateien finden Sie unter [Datasets](../data-factory/data-factory-create-datasets.md).
 
 > [AZURE.NOTE]  Sie sollten das `Add-AzureAccount`-Cmdlet ausführen, bevor Sie das [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx)-Cmdlet ausführen, um sicherzustellen, dass das richtige Azure-Abonnement für die Ausführung der Befehle ausgewählt ist. Die Dokumentation zu diesem Cmdlet finden Sie unter [Add-AzureAccount](https://msdn.microsoft.com/library/azure/dn790372.aspx).
 
@@ -111,7 +111,7 @@ Für diese ADF-Pipeline sind drei Tabellendefinitionen erforderlich:
 2. [Blob-Tabelle](#adf-table-blob-store)
 3. [SQL Azure-Tabelle](#adf-table-azure-sql)
 
-> [AZURE.NOTE]  Die folgenden Verfahren verwenden Azure PowerShell, um die ADF-Aktivitäten zu definieren und zu erstellen. Diese Aufgaben können Sie allerdings auch über das Azure-Portal ausführen. Detaillierte Informationen hierzu finden Sie unter [Erstellen von Datasets für Eingabe und Ausgabe](data-factory-use-onpremises-datasources.md#step-3-create-input-and-output-datasets).
+> [AZURE.NOTE]  Die folgenden Verfahren verwenden Azure PowerShell, um die ADF-Aktivitäten zu definieren und zu erstellen. Diese Aufgaben können Sie allerdings auch über das Azure-Portal ausführen. Detaillierte Informationen hierzu finden Sie unter [Erstellen von Datasets für Eingabe und Ausgabe](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-3-create-input-and-output-datasets).
 
 ###<a name="adf-table-onprem-sql"></a>Lokale SQL-Tabelle
 
@@ -141,7 +141,7 @@ Die Tabellendefinition für den lokalen SQL Server wird in der folgenden JSON-Da
 		    	}
 	    	}
     	}
-Beachten Sie, dass die Spaltennamen hier nicht enthalten sind. Sie können eine Unterauswahl in den Spalten treffen, indem Sie sie hier aufnehmen (Details finden Sie in der [ADF-Dokumentation](data-factory-data-movement-activities.md)).
+Beachten Sie, dass die Spaltennamen hier nicht enthalten sind. Sie können eine Unterauswahl in den Spalten treffen, indem Sie sie hier aufnehmen (Details finden Sie in der [ADF-Dokumentation](../data-factory/data-factory-data-movement-activities.md)).
 
 Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *onpremtabledef.json*, und speichern Sie sie an einem bekannten Speicherort (hier wird *C:\\temp\\onpremtabledef.json* vorausgesetzt). Erstellen Sie die Tabelle in ADF mit dem folgenden Azure PowerShell-Cmdlet.
 
@@ -215,7 +215,7 @@ Geben Sie die Aktivitäten an, die zu der Pipeline gehören, und erstellen Sie d
 * Das Skript setzt voraus, dass der **Pipelinename** *AMLDSProcessPipeline* lautet.
 * Beachten Sie außerdem, dass wir die Häufigkeit auf eine tägliche Ausführung festgelegt haben und die Standardausführungszeit des Auftrags verwenden (12 Uhr UTC).
 
-> [AZURE.NOTE]  Die folgenden Verfahren verwenden Azure PowerShell zum Definieren und Erstellen der ADF-Pipeline. Diese Aufgabe können Sie allerdings auch über das Azure-Portal ausführen. Details finden Sie unter [Erstellen und Ausführen einer Pipeline](../data-factory/data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline).
+> [AZURE.NOTE]  Die folgenden Verfahren verwenden Azure PowerShell zum Definieren und Erstellen der ADF-Pipeline. Diese Aufgabe können Sie allerdings auch über das Azure-Portal ausführen. Details finden Sie unter [Erstellen und Ausführen einer Pipeline](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-4-create-and-run-a-pipeline).
 
 Unter Verwendung der oben angegebenen Tabellendefinitionen wird die Pipeline-Definition für die ADF wie folgt angegeben:
 
@@ -305,4 +305,4 @@ Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die i
 
 Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Detailinformationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->
