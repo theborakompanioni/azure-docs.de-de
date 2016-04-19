@@ -47,7 +47,7 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 |\\P{Greek} |Negierte Unicode-Zeichenklasse 
 |Zusammensetzungen: | 
 |xy |x, gefolgt von y 
-|x\|y |x oder y (bevorzugt x) 
+|x&#124;y |x oder y (bevorzugt x) 
 | 
 |Wiederholungen: | 
 | |null oder mehr x, mehr bevorzugt 
@@ -415,4 +415,4 @@ Außerdem wird die von PCRE, PERL und VIM akzeptierte Syntax aufgeführt.
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!----HONumber=AcomDC_0330_2016-->
+<!-----HONumber=AcomDC_0330_2016-->
