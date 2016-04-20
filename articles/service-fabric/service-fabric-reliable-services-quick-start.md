@@ -34,7 +34,7 @@ Erstellen Sie anschließend ein Projekt für einen zustandslosen Dienst mit dem 
 
 Die Projektmappe enthält jetzt zwei Projekte:
 
- - *HelloWorld*: Dies ist das *Anwendung*sprojekt, das Ihre *Dienste* enthält. Darüber hinaus enthält es das Anwendungsmanifest zum Beschreiben der Anwendung sowie eine Reihe von PowerShell-Skripts, mit deren Hilfe Sie die Anwendung bereitstellen.
+ - *HelloWorld*: Dies ist das *Anwendung* sprojekt, das Ihre *Dienste* enthält. Darüber hinaus enthält es das Anwendungsmanifest zum Beschreiben der Anwendung sowie eine Reihe von PowerShell-Skripts, mit deren Hilfe Sie die Anwendung bereitstellen.
  - *HelloWorldStateless*: Dies ist das Dienstprojekt. Es enthält die Implementierung des zustandslosen Diensts.
 
 
