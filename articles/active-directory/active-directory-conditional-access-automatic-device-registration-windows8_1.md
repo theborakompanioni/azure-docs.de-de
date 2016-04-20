@@ -61,4 +61,4 @@ Die Gruppenrichtlinie aktiviert einen geplanten Task auf dem System, der im Kont
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-conditional-access-automatic-device-registration.md)
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->
