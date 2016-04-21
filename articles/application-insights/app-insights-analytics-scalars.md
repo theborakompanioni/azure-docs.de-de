@@ -231,7 +231,17 @@ Beachten Sie, dass es andere Möglichkeiten gibt, diesen Effekt zu erreichen:
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || |`<` |Kleiner |`<=`|Kleiner oder gleich |`>` |Größer |`>=`|Größer oder gleich |`<>`|Ungleich |`!=`|Ungleich
+| - | Subtrahieren | 
+| * | Multiplizieren | 
+| / | Dividieren | 
+| % | Modulo | 
+|| 
+|`<` |Kleiner 
+|`<=`|Kleiner oder gleich 
+|`>` |Größer 
+|`>=`|Größer oder gleich 
+|`<>`|Ungleich 
+|`!=`|Ungleich
 
 
 

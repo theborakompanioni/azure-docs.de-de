@@ -43,4 +43,4 @@ Hierfür verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal zum Start
 
 Wenn die Tipps zum Anmelden nicht hilfreich oder nicht das Gesuchte sind, finden Sie entsprechende Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md). Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!------HONumber=AcomDC_0323_2016-->

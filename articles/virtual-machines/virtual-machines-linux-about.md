@@ -42,4 +42,4 @@ Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen
 [Virtuelle Computer]: #tellmevm
 [Cloud-Dienste]: cloud-services-choose-me.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!-----HONumber=AcomDC_0406_2016-->
