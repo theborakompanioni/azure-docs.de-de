@@ -43,7 +43,7 @@ Ihnen steht eine Visual Studio-Vorlage für einen zustandslosen Dienst, der Web-
 
 ![Erstellen eines einzelnen zustandslosen Diensts](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
 
-Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält die erforderlichen Web-API-Pakete und die *Host*pakete. Dies ist für einen späteren Teil wichtig.
+Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält die erforderlichen Web-API-Pakete und die *Host* pakete. Dies ist für einen späteren Teil wichtig.
 
 ![Erstellen der Web-API mit dem NuGet-Paket-Manager](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 

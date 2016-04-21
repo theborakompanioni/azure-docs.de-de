@@ -50,7 +50,7 @@ Azure DNS unterstützt die folgenden Eintragstypen: A, AAAA, CNAME, MX, NS, SOA,
 
 ### Platzhalterdatensätze
 
-Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einer Datensatzgruppe ohne Platzhalter). Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „*“ oder einen Namen, dessen Bezeichnung mit „*“ beginnt, z. B. „*.foo“.
+Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einer Datensatzgruppe ohne Platzhalter). Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „\*“ oder einen Namen, dessen Bezeichnung mit „\*“ beginnt, z. B. „\*.foo“.
 
 Datensatzgruppen mit Platzhaltern werden für alle Datensatztypen mit Ausnahme von NS und SOA unterstützt.
 
@@ -245,4 +245,4 @@ Nach dem Erstellen der DNS-Zone und der Einträge können Sie Ihre [Domänen an 
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!------HONumber=AcomDC_0406_2016-->
