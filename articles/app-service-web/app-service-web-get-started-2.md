@@ -127,4 +127,4 @@ Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der
 - [Zugreifen auf lokale Ressourcen](web-sites-hybrid-connection-get-started.md)
 - [Informationen zur Funktionsweise von App Service](../app-service/app-service-how-works-readme.md) 
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0323_2016--->
