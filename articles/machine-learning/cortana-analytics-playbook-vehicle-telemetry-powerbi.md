@@ -24,7 +24,8 @@ Dieses **Menü** bietet Links zu den Kapiteln dieses Playbooks.
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 
-Die Lösung für Vehicle Telemetry Analytics (Fahrzeugtelemetrieanalyse) zeigt, wie Automobilhändler, Automobilhersteller und Versicherungsgesellschaften die Fähigkeiten von Cortana Intelligence nutzen können, um sich in Echtzeit prädiktive Einblicke zu Fahrzeugstand und Fahrgewohnheiten zu verschaffen. So können in den Bereichen Kundenerlebnis, Forschung und Entwicklung sowie Marketing Verbesserungen vorangetrieben werden. Dieses Dokument enthält schrittweise Anleitungen, wie Sie Power BI-Berichte und das Dashboard konfigurieren können, nachdem die Lösung in Ihrem Abonnement bereitgestellt wurde.
+Die Lösung für Vehicle Telemetry Analytics (Fahrzeugtelemetrieanalyse) zeigt, wie Automobilhändler, Automobilhersteller und Versicherungsgesellschaften die Fähigkeiten von Cortana Intelligence nutzen können, um sich in Echtzeit prädiktive Einblicke zu Fahrzeugstand und Fahrgewohnheiten zu verschaffen. 
+So können in den Bereichen Kundenerlebnis, Forschung und Entwicklung sowie Marketing Verbesserungen vorangetrieben werden. Dieses Dokument enthält schrittweise Anleitungen, wie Sie Power BI-Berichte und das Dashboard konfigurieren können, nachdem die Lösung in Ihrem Abonnement bereitgestellt wurde.
 
 
 ## Voraussetzungen
@@ -389,27 +390,33 @@ Heften Sie Diagramme an das vorhandene Dashboard **Vehicle Telemetry Analytics D
 ![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png)
 
 
-**Der Bericht hat sechs Seiten:** Seite 1: Vehicle density Seite 2: Real time vehicle health Seite 3: Aggressively Driven Vehicles Seite 4: Recalled vehicles Seite 5: Fuel Efficiently Driven Vehicles Seite 6: Contoso Logo
+**Der Bericht hat sechs Seiten:** 
+Seite 1: Verkehrsaufkommen 
+Seite 2: Echtzeitangaben zum Fahrzeugzustand 
+Seite 3: Aggressiv gefahrene Fahrzeuge 
+Seite 4: Zurückgerufene Fahrzeuge 
+Seite 5: Spritsparend gefahrene Fahrzeuge 
+Seite 6: Contoso Logo
 
 ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
  
 
 **Auf Seite 3** heften Sie Folgendes an:
-1.	Count of VIN
-![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png) 
+1.	Count of VIN  
+	![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png) 
 
-2.	Aggressively driven vehicles by model: Wasserfalldiagramm
+2.	Aggressively driven vehicles by model: Wasserfalldiagramm 
 ![Vehicle Telemetry – Anheften von Diagramm 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
 
 **Auf Seite 5** heften Sie Folgendes an:
-1.	Count of vin
+1.	Count of vin 
 ![Vehicle Telemetry – Anheften von Diagramm 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
-2.	Fuel efficient vehicles by model: Gruppiertes Säulendiagramm
+2.	Fuel efficient vehicles by model: Gruppiertes Säulendiagramm 
 ![Vehicle Telemetry – Anheften von Diagramm 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
 
 **Auf Seite 4** heften Sie Folgendes an:
 
-1.	Count of vin
+1.	Count of vin 
 ![Vehicle Telemetry – Anheften von Diagramm 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
 
 2.	Recalled vehicles by city, model : Treemap
@@ -417,14 +424,14 @@ Heften Sie Diagramme an das vorhandene Dashboard **Vehicle Telemetry Analytics D
 
 **Auf Seite 6** heften Sie Folgendes an:
 
-1.	Contoso Motors-Logo
+1.	Contoso Motors-Logo 
 ![Vehicle Telemetry – Anheften von Diagramm 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
 
 **Organisieren des Dashboards**
 
 1.	Navigieren Sie zum Dashboard.
-2.	Zeigen Sie auf jedes Diagramm, und benennen Sie es basierend auf der Benennung in der nachstehenden Abbildung des vollständigen Dashboards. Ordnen Sie außerdem die Diagramme so an, dass sie wie im nachstehenden Dashboard aussehen.
-![Vehicle Telemetry – Organisieren von Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png)
+2.	Zeigen Sie auf jedes Diagramm, und benennen Sie es basierend auf der Benennung in der nachstehenden Abbildung des vollständigen Dashboards. Ordnen Sie außerdem die Diagramme so an, dass sie wie im nachstehenden Dashboard aussehen. 
+![Vehicle Telemetry – Organisieren von Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png) 
 ![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard.png)
 3. Das endgültige abgeschlossene Dashboard sollte wie unten dargestellt aussehen, wenn Sie alle Berichte wie in diesem Dokument beschrieben erstellt haben. 
 
