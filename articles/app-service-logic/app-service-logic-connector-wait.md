@@ -28,13 +28,16 @@ Zur Verwendung des Warten-Connectors müssen Sie zunächst eine Instanz der Wart
 Der Warten-Connector kann als eine Aktion verwendet werden. Er besitzt keine Trigger.
 
 ### Aktion
-- Klicken Sie im rechten Bereich auf den Warten-Connector: ![Liste der Aktionen][1]
+- Klicken Sie im rechten Bereich auf den Warten-Connector:
+![Liste der Aktionen][1]
 - Der Warten-Connector unterstützt zwei Aktionen: 
 	- Verzögern
 	- Verzögern bis
 	 
-- Wählen Sie *Verzögern* aus: ![Eingabe verzögern][2]
-- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie: ![Konfigurierte Aktion][3]
+- Wählen Sie *Verzögern* aus:
+![Eingabe verzögern][2]
+- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie:
+![Konfigurierte Aktion][3]
 
 Parameter|Typ|Beschreibung des Parameters
 ---|---|---
@@ -48,11 +51,11 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem G
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 
-Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connector steuern. Informationen finden Sie unter [API-Apps und Connector verwalten und überwachen](../app-service-api/app-service-api-manage-in-portal.md).
+ 
 
 <!--References -->
 [1]: ./media/app-service-logic-wait/ListOfActions.PNG
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

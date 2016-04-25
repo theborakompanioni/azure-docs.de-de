@@ -19,7 +19,7 @@
 
 # Geplante Wartung für virtuelle Linux-Computer in Azure
 
-Grundlagen zur geplanten Wartung in Azure – was sie ist und wie sie sich auf die Verfügbarkeit Ihrer virtuellen Linux-Computer auswirken kann. Informationen zur geplanten Wartung für virtuelle Windows-Computer finden Sie unter [planned maintenance for Windows virtual machines](virtual-machines-windows-planned-maintenance.md) (Geplante Wartung für virtuelle Windows-Computer).
+Grundlagen zur geplanten Wartung in Azure – was sie ist und wie sie sich auf die Verfügbarkeit Ihrer virtuellen Linux-Computer auswirken kann. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-planned-maintenance.md) verfügbar.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -33,4 +33,4 @@ Beachten Sie, dass es zwei Wartungsarten gibt, die die Verfügbarkeit Ihrer virt
 
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

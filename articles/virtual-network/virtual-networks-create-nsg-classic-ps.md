@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Erstellen von NSGs im klassischen Modus mithilfe von PowerShell | Microsoft Azure"
    description="Hier erfahren Sie, wie Sie NSGs im klassischen Modus mithilfe von PowerShell erstellen und bereitstellen."
    services="virtual-network"
@@ -8,7 +8,7 @@
    editor="tysonn"
    tags="azure-service-management"
 />
-<tags 
+<tags
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -32,7 +32,7 @@ Die folgenden Beispielbefehle für PowerShell setzen voraus, dass bereits eine e
 ## Erstellen der NSG für das Front-End-Subnetz
 Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf dem oben beschriebenen Szenario die folgenden Schritte aus:
 
-1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md), und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md), und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
 3. Erstellen Sie eine Netzwerksicherheitsgruppe mit dem Namen **NSG-FrontEnd**.
 
@@ -52,17 +52,17 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		| Set-AzureNetworkSecurityRule -Name rdp-rule `
 		    -Action Allow -Protocol TCP -Type Inbound -Priority 100 `
 		    -SourceAddressPrefix Internet  -SourcePortRange '*' `
-		    -DestinationAddressPrefix '*' -DestinationPortRange '3389' 
+		    -DestinationAddressPrefix '*' -DestinationPortRange '3389'
 
 	Erwartete Ausgabe:
 
 		Name     : NSG-FrontEnd
 		Location : Central US
 		Label    : Front end subnet NSG
-		Rules    : 
-		           
+		Rules    :
+
 		              Type: Inbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -71,10 +71,10 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		           ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
 		           BALANCER INBOUND                        CER                                                                   
 		           DENY ALL INBOUND     65500     Deny     *               *             *                *              *       
-		           
-		           
+
+
 		              Type: Outbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -89,18 +89,18 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		| Set-AzureNetworkSecurityRule -Name web-rule `
 		    -Action Allow -Protocol TCP -Type Inbound -Priority 200 `
 		    -SourceAddressPrefix Internet  -SourcePortRange '*' `
-		    -DestinationAddressPrefix '*' -DestinationPortRange '80' 
+		    -DestinationAddressPrefix '*' -DestinationPortRange '80'
 
 	Erwartete Ausgabe:
-		
+
 
 		Name     : NSG-FrontEnd
 		Location : Central US
 		Label    : Front end subnet NSG
-		Rules    : 
-		           
+		Rules    :
+
 		              Type: Inbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -110,10 +110,10 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		           ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
 		           BALANCER INBOUND                        CER                                                                   
 		           DENY ALL INBOUND     65500     Deny     *               *             *                *              *       
-		           
-		           
+
+
 		              Type: Outbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -141,17 +141,17 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		| Set-AzureNetworkSecurityRule -Name rdp-rule `
 		    -Action Allow -Protocol TCP -Type Inbound -Priority 100 `
 		    -SourceAddressPrefix 192.168.1.0/24  -SourcePortRange '*' `
-		    -DestinationAddressPrefix '*' -DestinationPortRange '1433' 
+		    -DestinationAddressPrefix '*' -DestinationPortRange '1433'
 
 	Erwartete Ausgabe:
 
 		Name     : NSG-BackEnd
 		Location : Central US
 		Label    : Back end subnet NSG
-		Rules    : 
-		           
+		Rules    :
+
 		              Type: Inbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -160,10 +160,10 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		           ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
 		           BALANCER INBOUND                        CER                                                                   
 		           DENY ALL INBOUND     65500     Deny     *               *             *                *              *       
-		           
-		           
+
+
 		              Type: Outbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -178,17 +178,17 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		| Set-AzureNetworkSecurityRule -Name block-internet `
 		    -Action Deny -Protocol '*' -Type Outbound -Priority 200 `
 		    -SourceAddressPrefix '*'  -SourcePortRange '*' `
-		    -DestinationAddressPrefix Internet -DestinationPortRange '*' 
+		    -DestinationAddressPrefix Internet -DestinationPortRange '*'
 
 	Erwartete Ausgabe:
 
 		Name     : NSG-BackEnd
 		Location : Central US
 		Label    : Back end subnet NSG
-		Rules    : 
-		           
+		Rules    :
+
 		              Type: Inbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -197,10 +197,10 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		           ALLOW AZURE LOAD     65001     Allow    AZURE_LOADBALAN *             *                *              *       
 		           BALANCER INBOUND                        CER                                                                   
 		           DENY ALL INBOUND     65500     Deny     *               *             *                *              *       
-		           
-		           
+
+
 		              Type: Outbound
-		           
+
 		           Name                 Priority  Action   Source Address  Source Port   Destination      Destination    Protocol
 		                                                   Prefix          Range         Address Prefix   Port Range             
 		           ----                 --------  ------   --------------- ------------- ---------------- -------------- --------
@@ -210,4 +210,4 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 		           OUTBOUND                                                                                                      
 		           DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

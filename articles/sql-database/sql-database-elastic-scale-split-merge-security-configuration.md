@@ -2,7 +2,8 @@
     pageTitle="Elastische Skalierung – Sicherheitskonfigurationen | Microsoft Azure" 
     description="Einrichten von x409-Zertifikaten für die Verschlüsselung" 
     metaKeywords="Elastic Database certificates security" 
-    services="sql-database" documentationCenter="" 
+    services="sql-database" 
+    documentationCenter="" 
     manager="jhubbard" 
     authors="torsteng"/>
 
@@ -46,7 +47,7 @@ Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifi
 
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 
-* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## So konfigurieren Sie das SSL-Zertifikat
 Ein SSL-Zertifikat ist zum Verschlüsseln der Kommunikation und Authentifizieren des Servers erforderlich. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:
@@ -134,7 +135,7 @@ Die Gruppe der auf den Endpunkt angewendeten Zugriffssteuerungsregeln wird im Ab
 
 Die Regeln einer Zugriffssteuerungsgruppe werden im Abschnitt <AccessControl name=""> der Dienstkonfigurationsdatei konfiguriert.
 
-Das Format wird in der Dokumentation über Netzwerk-Zugriffsteuerungslisten erläutert. Damit nur IP-Adressen im Bereich von 100.100.0.0 bis 100.100.255.255 auf den HTTPS-Endpunkt zugreifen können, würden die Regeln z. B. wie folgt aussehen:
+Das Format wird in der Dokumentation über Netzwerk-Zugriffsteuerungslisten erläutert. Damit nur IP-Adressen im Bereich von 100.100.0.0 bis 100.100.255.255 auf den HTTPS-Endpunkt zugreifen können, würden die Regeln z. B. wie folgt aussehen:
 
     <AccessControl name="Retricted">
       <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
@@ -206,7 +207,9 @@ Führen Sie folgende Befehle aus:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 
-Geben Sie das Kennwort ein, und exportieren Sie dann das Zertifikat mit den folgenden Optionen: * Ja, privaten Schlüssel exportieren * Alle erweiterten Eigenschaften exportieren
+Geben Sie das Kennwort ein, und exportieren Sie dann das Zertifikat mit den folgenden Optionen:
+* Ja, privaten Schlüssel exportieren
+* Alle erweiterten Eigenschaften exportieren
 
 ## Exportieren des SSL-Zertifikats aus dem Zertifikatspeicher
 
@@ -347,7 +350,14 @@ Jede Person, für die ein Clientzertifikat ausgestellt wurde, sollte das Schlüs
     * "Alle erweiterten Eigenschaften mit einbeziehen" aktiviert
 
 ## Kopieren der Clientzertifikatfingerabdrücke
-Jede Person, für die ein Clientzertifikat ausgegeben wurde, muss folgende Schritte zum Abrufen des Fingerabdrucks ihres Zertifikats ausführen, das der Dienstkonfigurationsdatei hinzugefügt wird: * Ausführen von "certmgr.exe" * Auswählen der Registerkarte "Persönlich" * Doppelklicken auf das Clientzertifikat für die Authentifizierung * Klicken auf die Registerkarte "Details" im angezeigten Dialogfeld "Zertifikat" * Überprüfen, ob unter "Anzeigen" die Option "Alle" ausgewählt ist * Auswählen des Felds "Fingerabdruck" aus der Liste * Kopieren des Werts des Fingerabdrucks ** Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer ** Löschen aller Leerzeichen
+Jede Person, für die ein Clientzertifikat ausgegeben wurde, muss folgende Schritte zum Abrufen des Fingerabdrucks ihres Zertifikats ausführen, das der Dienstkonfigurationsdatei hinzugefügt wird:
+* Führen Sie "certmgr.exe" aus.
+* Wählen Sie die Registerkarte "Persönlich".
+* Doppelklicken Sie auf das Clientzertifikat, das für die Authentifizierung verwendet werden soll.
+* Wählen Sie im daraufhin geöffneten Dialogfeld "Zertifikat" die Registerkarte "Details".
+* Stellen Sie sicher, dass unter "Anzeigen" die Option "Alle" angezeigt wird.
+* Wählen Sie das Feld mit dem Namen "Fingerabdruck" in der Liste aus.
+* Kopieren des Werts des Fingerabdrucks **Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer** Löschen aller Leerzeichen
 
 ## Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei
 
@@ -371,7 +381,10 @@ Anpassen:
 
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
-Geben Sie das Kennwort ein, und exportieren Sie dann das Zertifikat mit den folgenden Optionen: * Ja, privaten Schlüssel exportieren * Alle erweiterten Eigenschaften exportieren * Sie benötigen das Kennwort zum Hochladen des Zertifikats in den Clouddienst.
+Geben Sie das Kennwort ein, und exportieren Sie dann das Zertifikat mit den folgenden Optionen:
+*    Ja, privaten Schlüssel exportieren
+*    Alle erweiterten Eigenschaften exportieren
+*    Sie benötigen das Kennwort zum Hochladen des Zertifikats in den Cloud-Dienst.
 
 ## Exportieren des Verschlüsselungszertifikats aus dem Zertifikatspeicher
 
@@ -474,4 +487,4 @@ In dieser Datenbank gespeicherte Anmeldeinformationen werden verschlüsselt. Ste
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

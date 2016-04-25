@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Testumgebung für die Basiskonfiguration mit Azure-Ressourcen-Manager"
-	description="Sie erfahren, wie Sie mit dem Ressourcen-Manager eine einfache Entwicklungs-/Testumgebung erstellen können, mit der ein vereinfachtes Intranet in Microsoft Azure simuliert wird."
+	description="Erfahren Sie, wie Sie eine einfache Entwicklungs-/Testumgebung erstellen können, von der ein vereinfachtes Intranet in Microsoft Azure simuliert wird."
 	documentationCenter=""
 	services="virtual-machines-windows"
 	authors="JoeDavies-MSFT"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
-# Testumgebung für die Basiskonfiguration mit Azure-Ressourcen-Manager
+# Testumgebung für die Basiskonfiguration
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-test-config-env.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
 
 Dieser Artikel enthält Schritt-für-Schritt-Anleitungen zum Erstellen der Testumgebung „Basiskonfiguration“ in einem Microsoft Azure Virtual Network mit virtuellen Computern, die im Ressourcen-Manager erstellt wurden.
 
@@ -30,17 +30,17 @@ Sie können die Testumgebung zu folgenden Zwecken verwenden:
 
 Die Testumgebung für die Basiskonfiguration besteht aus dem Corpnet-Subnetz in einem reinen cloudbasierten Virtual Network namens TestLab, von dem ein vereinfachtes privates Intranet simuliert wird, das mit dem Internet verbunden ist.
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG04.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph4.png)
 
 Sie enthält folgende Elemente:
 
 - Einen virtuellen Azure-Computer mit Windows Server 2012 R2 mit dem Namen „DC1“, der als Intranetdomänencontroller und DNS-Server (Domain Name System) konfiguriert ist
-- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „APP1“, der als allgemeine Anwendung und Webserver konfiguriert ist
-- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „CLIENT1“, der als Intranetclient verwendet wird
+- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „APP1“, der als allgemeine Anwendung und Webserver konfiguriert ist
+- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „CLIENT1“, der als Intranetclient verwendet wird
 
 Diese Konfiguration ermöglicht „DC1“, „APP1“, „CLIENT1“ sowie zusätzlichen Corpnet-Subnetzcomputern Folgendes:
 
-- Internetzugang zwecks Installation von Updates, Zugriff auf Ressourcen im Internet in Echtzeit, Teilnahme an öffentlichen Cloudtechnologien wie Microsoft Office 365 und weiteren Azure-Diensten
+- Internetzugang zwecks Installation von Updates, Zugriff auf Ressourcen im Internet in Echtzeit, Teilnahme an öffentlichen Cloudtechnologien wie Microsoft Office 365 und weiteren Azure-Diensten
 - Remoteverwaltung mithilfe von Remotedesktopverbindungen von Ihrem Computer aus, der mit dem Internet oder Ihrem Organisationsnetzwerk verbunden ist
 
 Die Einrichtung des Corpnet-Subnetzes der Testumgebung für die Basiskonfiguration von Windows Server 2012 R2 in Azure besteht aus den folgenden vier Phasen:
@@ -50,15 +50,15 @@ Die Einrichtung des Corpnet-Subnetzes der Testumgebung für die Basiskonfigurati
 3.	Konfigurieren von APP1
 4.	Konfigurieren von CLIENT1
 
-Wenn Sie noch nicht über ein Azure-Konto verfügen, erhalten Sie unter [Try Azure](https://azure.microsoft.com/pricing/free-trial/) (Azure testen) eine kostenlose Testversion. Wenn Sie über ein MSDN-Abonnement verfügen, lesen Sie [Azure-Vorteil für MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+Wenn Sie noch nicht über ein Azure-Konto verfügen, erhalten Sie unter [Try Azure](https://azure.microsoft.com/pricing/free-trial/) (Azure testen) eine kostenlose Testversion. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
 > [AZURE.NOTE] Durch virtuelle Computer, die in Azure ausgeführt werden, entstehen fortlaufend Kosten. Diese Kosten werden im Rahmen der kostenlosen Testversion, des MSDN-Abonnements oder des kostenpflichtigen Abonnements abgerechnet. Weitere Informationen zu den Kosten der in Azure ausgeführten virtuellen Computer finden Sie unter [Virtuelle Computer – Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-machines/) und [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/). Informationen dazu, wie Sie die Kosten möglichst gering halten können, finden Sie unter [Minimizing the costs of test environment virtual machines in Azure](#costs) (Minimieren der Kosten von Testumgebungen für virtuelle Computer in Azure).
 
-## Phase 1: Erstellen des virtuellen Netzwerks
+## Phase 1: Erstellen des virtuellen Netzwerks
 
 Starten Sie zunächst eine Azure PowerShell-Eingabeaufforderung.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Melden Sie sich in Ihrem Konto an.
 
@@ -94,16 +94,22 @@ Erstellen Sie mit diesen Befehlen ein neues Speicherkonto für die neue Testumge
 	$saName="<storage account name>"
 	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
 
-Erstellen Sie als Nächstes das Azure Virtual Network „TestLab“, in dem das Corpnet-Subnetz der Basiskonfiguration gehostet wird.
+Erstellen Sie als Nächstes das Azure Virtual Network „TestLab“, in dem das Corpnet-Subnetz der Basiskonfiguration gehostet wird, und schützen Sie es mit einer Netzwerksicherheitsgruppe.
 
 	$rgName="<name of your new resource group>"
 	$locName="<Azure location name, such as West US>"
+	$locShortName="<the location of your new resource group in lowercase with spaces removed, example: westus>"
 	$corpnetSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name Corpnet -AddressPrefix 10.0.0.0/24
 	New-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/8 -Subnet $corpnetSubnet –DNSServer 10.0.0.4
+	$rule1=New-AzureRMNetworkSecurityRuleConfig -Name "RDPTraffic" -Description "Allow RDP to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+	New-AzureRMNetworkSecurityGroup -Name Corpnet -ResourceGroupName $rgName -Location $locShortName -SecurityRules $rule1
+	$vnet=Get-AzureRMVirtualNetwork -ResourceGroupName $rgName -Name TestLab
+	$nsg=Get-AzureRMNetworkSecurityGroup -Name Corpnet -ResourceGroupName $rgName
+	Set-AzureRMVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name Corpnet -AddressPrefix "10.0.0.0/24" -NetworkSecurityGroup $nsg
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG01.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph1.png)
 
 ## Phase 2: Konfigurieren von DC1
 
@@ -189,7 +195,7 @@ Führen Sie anschließend mithilfe einer Windows PowerShell-Eingabeaufforderung 
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG02.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph2.png)
 
 ## Phase 3: Konfigurieren von APP1
 
@@ -238,9 +244,9 @@ Als Nächstes erstellen Sie mit den folgenden Befehlen auf APP1 einen freigegebe
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG03.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph3.png)
 
-## Phase 4: Konfigurieren von CLIENT1
+## Phase 4: Konfigurieren von CLIENT1
 
 CLIENT1 fungiert als typischer Laptop-, Tablet- oder Desktopcomputer im Contoso-Intranet.
 
@@ -283,7 +289,7 @@ Als Nächstes überprüfen Sie, ob Sie mit CLIENT1 auf die Web- und Dateifreigab
 2.	Klicken Sie unter **Eigenschaften von CLIENT1** neben **Verstärkte Sicherheitskonfiguration für IE** auf **Ein** .
 3.	Klicken Sie unter **Verstärkte Sicherheitskonfiguration für IE** bei **Administratoren** und **Benutzern** auf **Aus**, und klicken Sie dann auf **OK**.
 4.	Klicken Sie auf der Startseite auf **Internet Explorer** und dann auf **OK**.
-5.	Geben Sie in die Adressleiste ****http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
+5.	Geben Sie in die Adressleiste **http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
 6.	Klicken Sie in der Desktopsymbolleiste auf das Symbol des Datei-Explorers.
 7.	Geben Sie in der Adressleiste **\\\app1\\Files** ein, und drücken Sie dann die EINGABETASTE.
 8.	Es wird ein Fenster mit dem Inhalt des freigegebenen Ordners geöffnet.
@@ -292,13 +298,13 @@ Als Nächstes überprüfen Sie, ob Sie mit CLIENT1 auf die Web- und Dateifreigab
 
 Dies ist die endgültige Konfiguration.
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG04.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph4.png)
 
 Die Basiskonfiguration in Azure kann nun zur Anwendungsentwicklung, zu Testzwecken oder für zusätzliche Testumgebungen verwendet werden.
 
 ## Nächster Schritt
 
-- Sie können dem Corpnet-Subnetz [einen neuen virtuellen Computer hinzufügen](virtual-machines-windows-create-powershell.md), beispielsweise einen Computer unter Microsoft SQL Server.
+- Fügen Sie mit dem [Azure-Portal](virtual-machines-windows-hero-tutorial.md) einen neuen virtuellen Computer hinzu, oder erstellen Sie die [simulierte Testumgebung für Hybridclouds](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md).
 
 
 ## <a id="costs"></a>Minimizing the costs of test environment virtual machines in Azure (Minimieren der Kosten von Testumgebungen für virtuelle Computer in Azure)
@@ -328,4 +334,4 @@ Zum Starten der virtuellen Computer mit Azure PowerShell in der richtigen Reihen
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

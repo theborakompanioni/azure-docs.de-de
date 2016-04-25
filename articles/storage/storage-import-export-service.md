@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="04/06/2016"
 	ms.author="renash"/>
 
 
@@ -58,7 +58,7 @@ Für die Erstellung eines Import- oder Exportauftrags benötigen Sie außerdem d
 4.	**Blobspeicherziele**: Daten können auf Blockblobs und Seitenblobs hochgeladen bzw. von dort heruntergeladen werden.
 5.	**Anzahl der Aufträge:** Jeder Kunde kann bis zu 20 aktive Aufträge pro Speicherkonto haben.
 6.	**Maximale Größe eines Auftrags:** Die Größe eines Auftrags wird durch die Kapazität der verwendeten Festplatten und der maximalen Menge an Daten bestimmt, die in einem Speicherkonto gespeichert werden kann. Jeder Auftrag kann maximal zehn Festplatten umfassen.
-7.  **Unterstütztes Betriebssystem:** Kunden können eines der folgenden 64-Bit-Betriebssysteme verwenden, um die Festplatte mithilfe des Import-/Exporttools von Azure vor dem Versand an Azure vorzubereiten – Windows 7, Windows 8, Windows 8.1, Windows 10*, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2.  
+7.  **Unterstütztes Betriebssystem:** Kunden können eines der folgenden 64-Bit-Betriebssysteme verwenden, um die Festplatte mithilfe des Import-/Exporttools von Azure vor dem Versand an Azure vorzubereiten – Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10*, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Alle diese Betriebssysteme unterstützen die BitLocker-Laufwerkverschlüsselung.  
 
   > [AZURE.IMPORTANT]
   >  
@@ -288,4 +288,4 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -35,7 +35,7 @@ IoT Hub überwacht vier Ereigniskategorien:
 
     ![][1]
 
-3. Wählen Sie die Vorgangskategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse sind verfügbar für das Lesen aus dem Event Hub-kompatiblen Endpunkt, der in **Überwachungseinstellungen** aufgelistet ist.
+3. Wählen Sie die Vorgangskategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse sind verfügbar für das Lesen aus dem Event Hub-kompatiblen Endpunkt, der in **Überwachungseinstellungen** aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
 
     ![][2]
 
@@ -84,7 +84,7 @@ Die Kategorie für Gerätetelemetrie dient zum Nachverfolgen von Fehlern, die au
 
 ### C2D-Befehle
 
-Die Kategorie der C2D-Befehle dient zum Nachverfolgen von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Gerätebefehls-Pipeline stehen. Dazu zählen Fehler, die beim Senden von Befehlen (z. B. nicht autorisierter Absender), Empfangen von Befehlen (Zustellungsanzahl überschritten) und Empfangen von Feedback zu Befehlen (z. B. Feedback abgelaufen) auftreten. Diese Kategorie fängt keine Fehler eines Geräts ab, das einen Befehl nicht ordnungsgemäß verarbeitet, wenn der Befehl erfolgreich übermittelt wurde.
+Die Kategorie der C2D-Befehle dient zum Nachverfolgen von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Gerätebefehls-Pipeline stehen. Dazu zählen Fehler, die beim Senden von Befehlen (z. B. nicht autorisierter Absender), Empfangen von Befehlen (Zustellungsanzahl überschritten) und Empfangen von Feedback zu Befehlen (z. B. Feedback abgelaufen) auftreten. Diese Kategorie fängt keine Fehler eines Geräts ab, das einen Befehl nicht ordnungsgemäß verarbeitet, wenn der Befehl erfolgreich übermittelt wurde.
 
     {
          "messageSizeInBytes": 1234,
@@ -139,4 +139,4 @@ Nach diesem Überblick über die Vorgangsüberwachung können Sie die folgenden 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

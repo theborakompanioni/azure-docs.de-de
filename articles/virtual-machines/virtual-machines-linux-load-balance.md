@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Lastenausgleich für Infrastrukturdienste | Microsoft Azure"
-	description="Beschreibt zwei unterschiedliche Typen des durch Azure unterstützten Lastenausgleichs: Lastenausgleich für Clouddienste und Azure Traffic Manager für Clientdatenverkehr."
+	description="Beschreibt zwei Typen des durch Azure unterstützten Lastenausgleichs: Load Balancer für Clouddienste und Azure Traffic Manager für Clientdatenverkehr."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="joaoma"
@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-load-balance](../../includes/virtual-machines-common-load-balance.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

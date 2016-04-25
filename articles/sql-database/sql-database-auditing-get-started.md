@@ -3,8 +3,8 @@
 	description="Erste Schritte bei der Überwachung von SQL-Datenbank"
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
+	authors="ronitr"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
-	ms.author="jeffreyg; ronitr"/>
+	ms.date="04/11/2016"
+	ms.author="carlrabeler; ronitr"/>
  
 # Erste Schritte bei der Überwachung von SQL-Datenbank
 Die Azure SQL-Datenbanküberwachung verfolgt Datenbankereignisse und schreibt überwachte Ereignisse in ein Überwachungsprotokoll in Ihr Azure-Speicherkonto. Die Überwachung ist in den Tarifen Basic, Standard und Premium allgemein verfügbar.
@@ -178,4 +178,4 @@ Es gibt mehrere PowerShell-Cmdlets, die Sie zum Konfigurieren der Überwachung i
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

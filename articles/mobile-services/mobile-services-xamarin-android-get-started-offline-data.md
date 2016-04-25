@@ -46,9 +46,9 @@ In diesem Lernprogramm werden die grundlegenden Schritte erläutert:
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-* Visual Studio mit der [Xamarin-Erweiterung] **oder** [Xamarin Studio]
+* Visual Studio mit Xamarin unter Windows oder Xamarin Studio unter Mac OS X. Vollständige Installationsanweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * Abschluss des Lernprogramms [Erste Schritte mit Mobile Services]
-
+ 
 ## <a name="review-offline"></a>Überprüfen des Mobile Services-Synchronisierungscodes
 
 Mit der Offlinesynchronisierung von Azure Mobile Services können Endbenutzer mit einer lokalen Datenbank interagieren, wenn das Netzwerk nicht verfügbar ist. Initialisieren Sie `MobileServiceClient.SyncContext` in einem lokalen Speicher, um diese Funktionen in der App zu verwenden. Erstellen Sie dann über die `IMobileServiceSyncTable`-Schnittstelle einen Verweis für die Tabelle. In diesem Abschnitt wird der in `ToDoActivity.cs` enthaltene Code für die Offlinesynchronisierung Schritt für Schritt besprochen.
@@ -171,9 +171,6 @@ In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen Dienst. Dies si
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin-Erweiterung]: http://xamarin.com/visual-studio
-[NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

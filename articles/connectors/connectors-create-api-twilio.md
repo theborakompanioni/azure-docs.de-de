@@ -21,12 +21,12 @@ ms.author="mandia"/>
 
 Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichten zu senden und zu empfangen.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Twilio](../app-service-logic/app-service-logic-connector-twilio.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Mit Twilio können Sie folgende Aktionen ausführen:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden. 
-- Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht z. B. annehmen und als Service Bus-Workflow verwenden. 
+- Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht z. B. annehmen und als Service Bus-Workflow verwenden. 
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -54,7 +54,7 @@ Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Twilio-Eigenschafte
 >[AZURE.TIP] Sie können dieselbe Twilio-Verbindung in anderen Logik-Apps verwenden.
 
 ## Swagger-REST-API – Referenz
-#### Diese Dokumentation gilt für Version 1.0.
+#### Diese Dokumentation gilt für Version 1.0.
 
 ### Get Message
 Gibt eine einzelne Nachricht zurück, die in der bereitgestellten Nachrichten-ID angegeben ist. ```GET: /Messages/{MessageId}.json```
@@ -78,9 +78,10 @@ Gibt eine Liste von Nachrichten zurück, die Ihrem Konto zugeordnet sind. ```GET
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|To|string|no|query|(Keine)|Angerufene Telefonnummer|
+|To  
+|string|no|query|(Keine)|Angerufene Telefonnummer|
 |Aus|string|no|query|(Keine)|Anrufertelefonnummer|
-|DateSent|string|no|query|(Keine)|Nur an diesem Datum (GMT) gesendete Nachrichten anzeigen, Datum im Format JJJJ-MM-TT. Beispiel: DateSent=2009-07-06. Sie können auch Ungleichheit angeben, d. h. DateSent<=JJJJ-MM-TT für Nachrichten, die an oder vor Mitternacht an einem bestimmten Datum gesendet wurden, sowie DateSent>=JJJJ-MM-TT für Nachrichten, die an oder nach Mitternacht an einem bestimmten Datum gesendet wurden.|
+|DateSent|string|no|query|(Keine)|Nur an diesem Datum (GMT) gesendete Nachrichten anzeigen, Datum im Format JJJJ-MM-TT. Beispiel: DateSent=2009-07-06. Sie können auch Ungleichheit angeben, d. h. DateSent<=JJJJ-MM-TT für Nachrichten, die an oder vor Mitternacht an einem bestimmten Datum gesendet wurden, sowie DateSent>=JJJJ-MM-TT für Nachrichten, die an oder nach Mitternacht an einem bestimmten Datum gesendet wurden.|
 |PageSize|integer|no|query|50|Die Anzahl der Ressourcen, die auf jeder Listenseite zurückgegeben werden. Standard ist 50.|
 |Seite|integer|no|query|0|Seitenzahl. Der Standardwert ist 0.|
 
@@ -247,4 +248,4 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

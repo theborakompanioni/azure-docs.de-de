@@ -17,7 +17,7 @@
 	ms.date="04/01/2016"
 	ms.author="iainfou"/>
 
-# Verwalten der Verfügbarkeit virtueller Linux-Computer
+# Verwalten der Verfügbarkeit virtueller Computer
 
 Erfahren Sie, wie Sie mehrere virtuelle Computer einrichten und verwalten können, um eine hohe Verfügbarkeit für Ihre Linux-Anwendung in Azure sicherzustellen. Sie können auch die [Verfügbarkeit der virtuellen Windows-Computer verwalten](virtual-machines-windows-manage-availability.md).
 
@@ -25,4 +25,4 @@ Erfahren Sie, wie Sie mehrere virtuelle Computer einrichten und verwalten könne
 
 [AZURE.INCLUDE [virtual-machines-common-manage-availability](../../includes/virtual-machines-common-manage-availability.md)]
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

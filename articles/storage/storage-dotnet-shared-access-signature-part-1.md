@@ -102,8 +102,8 @@ Name|SAS-Teil|Beschreibung
 ---|---|---
 Blob-URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt |Die Blob-Adresse. Sie sollten unbedingt HTTPS verwenden.
 Version des Speicherdienstes|sv=2015-04-05|Für Speicherdienste der Version 2012-02-12 und später gibt dieser Parameter die zu verwendende Version an.
-Startzeit|st=2015-04-29T22%3A18%3A26Z|Angegeben im ISO 8601-Format. Lassen Sie diesen Parameter aus, wenn die SAS sofort gültig sein soll.
-Ablaufzeit|se=2015-04-30T02%3A23%3A26Z|Angegeben im ISO 8601-Format.
+Startzeit|st=2015-04-29T22%3A18%3A26Z|Angegeben im UTC-Zeitformat. Lassen Sie diesen Parameter aus, wenn die SAS sofort gültig sein soll.
+Ablaufzeit|se=2015-04-30T02%3A23%3A26Z|Angegeben im UTC-Zeitformat.
 Ressource|sr=b|Die Ressource ist ein Blob.
 Berechtigungen|sp=rw|Die SAS verleiht die Berechtigungen zum Lesen (r) und Schreiben (w).
 IP-Bereich|sip=168.1.5.60-168.1.5.70|Der Bereich der IP-Adressen, von denen eine Anforderung akzeptiert wird.
@@ -314,8 +314,8 @@ Shared Access Signatures sind nützlich für die Vergabe eingeschränkter Berech
 - [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 - [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md)
 - [Delegieren des Zugriffs mit einer Shared Access Signature](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-- [Einführung in Tabellen- und Warteschlangen-SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+- [Introducing Table and Queue SAS (Einführung in Tabellen- und Warteschlangen-SAS; in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

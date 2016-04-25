@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/08/2016"
 	ms.author="larryfr"/>
 
 #Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Hadoop in HDInsight
@@ -60,55 +60,24 @@ Im Folgenden sehen Sie ein extrem einfaches Beispiel mit Spielfilmen:
 
 * __Vergleichbare Empfehlung__: Da Joe die ersten drei Filme gefallen haben, sucht Mahout nach Filmen, die anderen Personen mit ähnlichen Vorlieben gefallen haben, die Joe aber noch nicht gesehen (mit "Gefällt mir" markiert oder bewertet) hat. In diesem Fall empfiehlt Mahout _Die dunkle Bedrohung_, _Angriff der Klonkrieger_ und _Die Rache der Sith_.
 
-###Laden der Daten
+###Grundlegendes zu den Daten
 
-Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung.
+Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/MahoutMovieData` verfügbar.
 
-1. Laden Sie das Archiv [MovieLens 100k][100k] herunter, das 100.000 Bewertungen von 1.000 Benutzern zu 1.700 Filmen enthält.
+Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei „user-ratings.txt“ der Benutzerbewertung wird während der Analyse verwendet, während „moviedb.txt“ beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Textinformationen angibt.
 
-2. Extrahieren Sie das Archiv. Es sollte ein Verzeichnis namens __ml-100k__ enthalten, das viele Dateien mit dem Präfix __u.__ enthält. Die Datei, die von Mahout analysiert wird, ist __u.data__. Die Datenstruktur dieser Datei ist `userID`, `movieID`, `userRating` und `timestamp`. Hier sehen Sie ein Beispiel für die Daten:
-
-
-		196	242	3	881250949
-		186	302	3	891717742
-		22	377	1	878887116
-		244	51	2	880606923
-		166	346	1	886397596
+Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben folgende Struktur: `userID`, `movieID`, `userRating` und `timestamp`. Dies gibt Aufschluss darüber, wie die einzelnen Benutzer einen Film bewertet haben. Hier sehen Sie ein Beispiel für die Daten:
 
 
-3. Laden Sie die Datei __u.data__ in __example/data/u.data__ in Ihrem HDInsight-Cluster hoch. Der folgende Befehl verwendet PowerShell zum Hochladen der Datei. Andere Möglichkeiten zum Hochladen von Dateien finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight][upload].
-
-        # Put your cluster name below
-        $clusterName="Your HDInsight cluster name"
-        # Put the path to the u.data file below
-        $fileToUpload="The path to the u.data file"
-        
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-            -ResourceGroupName $resourceGroup `
-            | %{ $_.Key1 }
-        
-        #Create a storage content and upload the file
-        $context = New-AzureStorageContext `
-            -StorageAccountName $storageAccountName `
-            -StorageAccountKey $storageAccountKey
-            
-        Set-AzureStorageBlobContent `
-            -File $fileToUpload `
-            -Blob "example/data/u.data" `
-            -Container $container `
-            -Context $context
-    
-    Dabei wird die Datei __u.data__ in __example/data/u.data__ im Standardspeicher Ihres Clusters hochgeladen. Sie können dann über den __wasb:///example/data/u.data__ URI von HDInsight-Aufträgen auf diese Daten zugreifen.
+    196	242	3	881250949
+    186	302	3	891717742
+    22	377	1	878887116
+    244	51	2	880606923
+    166	346	1	886397596
 
 ###Ausführen des Auftrags
 
-Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftrags mithilfe des Mahout-Empfehlungsmoduls mit der zuvor hochgeladenen Datei __u.data__.
+Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftrags, der das Mahout-Empfehlungsmodul mit den Filmdaten verwendet.
 
 	# The HDInsight cluster name.
 	$clusterName = "the cluster name"
@@ -130,9 +99,9 @@ Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftra
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
             
-	# NOTE: The version number portion of the file path
+	# NOTE: The version number in the file path
 	# may change in future versions of HDInsight.
-	$jarFile =  "file:///C:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar"
+	$jarFile =  "file:///C:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar"
     #
 	# If you are using an earlier version of HDInsight,
 	# set $jarFile to the jar file you
@@ -146,7 +115,7 @@ Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftra
 	# * tempDir - the directory for temp files
 	$jobArguments = "--similarityClassname", "recommenditembased", `
                     "-s", "SIMILARITY_COOCCURRENCE", `
-	                "--input", "wasb:///example/data/u.data",
+	                "--input", "wasb:///HdiSamples/MahoutMovieData/user-ratings.txt",
 	                "--output", "wasb:///example/out",
 	                "--tempDir", "wasb:///example/temp"
 
@@ -201,7 +170,35 @@ Die erste Spalte ist die `userID`. Die in "[" und "]" enthaltenen Werte sind `mo
 
 ###Anzeigen der Ausgabe
 
-Obwohl die generierte Ausgabe in einer Anwendung verwendet werden kann, ist sie für Benutzer nicht gut lesbar. Einige der anderen Dateien, die im Vorfeld in den Ordner __ml-100k__ extrahiert wurden, können für die Auflösung von `movieId` in den Namen eines Films verwendet werden. Dies wird mit dem folgenden Skript erreicht:
+Obwohl die generierte Ausgabe in einer Anwendung verwendet werden kann, ist sie für Benutzer nicht gut lesbar. Mit der Datei `moviedb.txt` vom Server kann `movieId` in den Namen eines Films aufgelöst werden. Sie müssen jedoch zuerst die Datei und die Bewertungsdatei mithilfe des folgenden Skripts vom Server herunterladen :
+
+    # The HDInsight cluster name.
+	$clusterName = "the cluster name"
+    
+    #Get the cluster info so we can get the resource group, storage, etc.
+    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $resourceGroup = $clusterInfo.ResourceGroup
+    $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+    $container=$clusterInfo.DefaultStorageContainer
+    $storageAccountKey=Get-AzureRmStorageAccountKey `
+        -Name $storageAccountName `
+        -ResourceGroupName $resourceGroup `
+        | %{ $_.Key1 }
+    #Create a storage content and upload the file
+    $context = New-AzureStorageContext `
+        -StorageAccountName $storageAccountName `
+        -StorageAccountKey $storageAccountKey
+    #Download the files
+    Get-AzureStorageBlobContent -blob "HdiSamples/MahoutMovieData/moviedb.txt" `
+    -Container $container `
+    -Destination moviedb.txt `
+    -Context $context
+    Get-AzureStorageBlobContent -blob "HdiSamples/MahoutMovieData/user-ratings.txt" `
+    -Container $container `
+    -Destination user-ratings.txt `
+    -Context $context
+
+Nachdem Sie die Dateien heruntergeladen haben, verwenden Sie das folgende PowerShell-Skript, um Empfehlungen mit Filmnamen anzuzeigen:
 
 	<#
 	.SYNOPSIS
@@ -211,8 +208,8 @@ Obwohl die generierte Ausgabe in einer Anwendung verwendet werden kann, ist sie 
 	    with HDInsight example in a human readable format.
 	.EXAMPLE
 	    .\Show-Recommendation -userId 4
-	        -userDataFile "u.data"
-	        -movieFile "u.item"
+	        -userDataFile "user-ratings.txt"
+	        -movieFile "moviedb.txt"
 	        -recommendationFile "output.txt"
 	#>
 
@@ -285,9 +282,9 @@ Obwohl die generierte Ausgabe in einer Anwendung verwendet werden kann, ist sie 
 	                        @{Expression={$_.Value};Label="Score"}
 	$recommendations | format-table $recommendationFormat
 
-Um dieses Skript verwenden zu können, müssen Sie zuvor den Ordner __ml-100k__ extrahiert haben. Nachfolgend sehen Sie ein Beispiel für das Ausführen des Skripts:
+Nachfolgend sehen Sie ein Beispiel für das Ausführen des Skripts:
 
-	PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\ml-100k\u.data -movieFile .\ml-100k\u.item -recommendationFile .\output.txt
+	PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
 
 Die Ausgabe sollte in etwa folgendermaßen aussehen:
 
@@ -370,19 +367,19 @@ Eine der in Mahout verfügbaren Klassifizierungsmethoden besteht darin, einen [R
 
 3. Verwenden Sie den folgenden Befehl zum Erstellen des Dateideskriptors (__KDDTrain+.info__) mithilfe von Mahout.
 
-		hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
+		hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
 
 	`N 3 C 2 N C 4 N C 8 N 2 C 19 N L` beschreibt die Attribute der Daten in der Datei. "L" gibt z. B. eine Bezeichnung an.
 
 4. Erstellen Sie mit dem folgenden Befehl einen Entscheidungswald aus Entscheidungsstrukturen:
 
-		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
+		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
-    Die Ausgabe dieses Vorgangs wird im Verzeichnis __nsl-forest__ gespeichert, das sich im Speicher Ihres HDInsight-Clusters unter __wasb://user/&lt;username>/nsl-forest/nsl-forest.seq befindet. &lt;username> ist der für die Remotedesktopsitzung verwendete Benutzername. Die Datei ist für Benutzer nicht lesbar.
+    Die Ausgabe dieses Vorgangs wird im Verzeichnis __nsl-forest__ gespeichert, das sich im Speicher Ihres HDInsight-Clusters unter \_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq befindet. &lt;username> ist der für die Remotedesktopsitzung verwendete Benutzername. Die Datei ist für Benutzer nicht lesbar.
 
 5. Testen Sie den Entscheidungswald durch Klassifizieren des __KDDTest+.arff__-Datasets. Verwenden Sie den folgenden Befehl:
 
-    	hadoop jar c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasb:///example/data/KDDTest+.arff -ds wasb:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasb:///example/data/predictions
+    	hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasb:///example/data/KDDTest+.arff -ds wasb:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasb:///example/data/predictions
 
     Die Ausgabe dieses Befehls besteht aus zusammenfassenden Informationen zum Klassifizierungsprozess und sieht etwa so aus:
 
@@ -410,7 +407,7 @@ Eine der in Mahout verfügbaren Klassifizierungsmethoden besteht darin, einen [R
 	    Reliability                                53.4921%
 	    Reliability (standard deviation)            0.4933
 
-  Dieser Auftrag generiert auch eine Datei im Verzeichnis __wasb:///example/data/predictions/KDDTest+.arff.out__. Diese Datei ist jedoch für Benutzer nicht lesbar.
+  Dieser Auftrag generiert auch eine Datei im Verzeichnis\_\___wasb:///example/data/predictions/KDDTest+.arff.out__. Diese Datei ist jedoch für Benutzer nicht lesbar.
 
 > [AZURE.NOTE] Mahout-Aufträge überschreiben keine Dateien. Wenn Sie diese Aufträge noch einmal ausführen möchten, müssen Sie die von vorherigen Aufträgen erstellten Dateien löschen.
 
@@ -430,7 +427,7 @@ Mahout ist in HDInsight 3.1-Clustern bereits installiert. Die Installation kann 
 
     	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	> [AZURE.NOTE] Wenn Mahout 1.0 veröffentlicht wird, sollten Sie die vorgefertigten Pakete mit HDInsight 3.0 verwenden können.
+    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
 2. Laden Sie die jar-Datei hoch in __example/jars__ in den Standardspeicher Ihres Clusters. Ersetzen Sie „CLUSTERNAME“ im folgenden Skript durch den Namen des HDInsight-Clusters, und ersetzen Sie „FILENAME“ durch den Pfad zur __mahout-coure-0.9-job.jar__-Datei.
 
@@ -530,4 +527,4 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

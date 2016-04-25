@@ -48,7 +48,7 @@ Im Folgenden finden Sie eine Beschreibung der Endpunkte:
     - *Senden von D2C-Nachrichten*. Verwenden Sie diesen Endpunkt, um D2C-Nachrichten zu senden. Weitere Informationen finden Sie unter [Messaging zwischen Gerät und Cloud](#d2c).
     - *Empfangen von C2D-Nachrichten*. Ein Gerät verwendet diesen Endpunkt, um gezielte C2D-Nachrichten zu empfangen. Weitere Informationen finden Sie unter [Messaging zwischen Cloud und Gerät](#c2d).
 
-    Diese Endpunkte werden über die Protokolle HTTP, [MQTT][lnk-mqtt] und [AMQP][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
+    Diese Endpunkte werden über die Protokolle HTTP 1.1, [MQTT v3.1.1][lnk-mqtt] und [AMQP 1.0][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
 * **Dienstendpunkte**: Jeder IoT Hub legt eine Reihe von Endpunkten offen, die von Ihrem Anwendungs-Back-End zur Kommunikation mit Ihren Geräten verwendet werden können. Diese Endpunkte werden aktuell nur bei Verwendung des [AMQP][lnk-amqp]-Protokolls verfügbar gemacht.
     - *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist mit [Azure Event Hubs][lnk-event-hubs] kompatibel und kann von einem Back-End-Dienst dazu verwendet werden, alle D2C-Nachrichten zu lesen, die von Ihren Geräten gesendet werden. Weitere Informationen finden Sie unter [Messaging zwischen Gerät und Cloud](#d2c).
     - *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Anwendungs-Back-End das Senden von zuverlässigen C2D-Nachrichten sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen. Weitere Informationen finden Sie unter [Messaging zwischen Cloud und Gerät](#c2d).
@@ -68,7 +68,7 @@ Bei der Verwendung von SDKs (oder Produktintegrationen), die nicht IoT Hub-fähi
 
     ![][img-eventhubcompatible]
 
-> [AZURE.NOTE] Manchmal erfordert das SDK einen Wert für **Hostname** oder **Namespace**. Entfernen Sie in diesem Fall das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net** und der **Namespace** **iothub-ns-myiothub-1234**.
+> [AZURE.NOTE] Wenn für das SDK ein Wert für **Hostname** oder **Namespace** erforderlich ist, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net** und der **Namespace** **iothub-ns-myiothub-1234**.
 
 Sie können in diesem Fall eine beliebige gemeinsam genutzte Sicherheitsrichtlinie mit den **ServiceConnect**-Berechtigungen zur Verbindungsherstellung mit dem angegebenen Event Hub verwenden.
 
@@ -338,7 +338,7 @@ IoT Hub bietet ein einfaches Messaging für die Kommunikation:
 
 Die wichtigsten Eigenschaften beim IoT Hub-Messaging sind eine zuverlässige und stabile Übermittlung von Nachrichten. Dies bietet Ausfallsicherheit bei zeitweiligen Verbindungsproblemen auf Geräteseite und Lastspitzen bei der Ereignisverarbeitung auf Cloudseite. IoT Hub implementiert *mindestens einmalig* Übermittlungsgarantien für das D2C- und C2D-Messaging.
 
-IoT Hub unterstützt mehrere geräteseitige Protokolle (z. B. AMQP und HTTP/1). Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein gemeinsames Nachrichtenformat, das von allen geräteseitigen Protokollen unterstützt wird.
+IoT Hub unterstützt mehrere geräteseitige Protokolle (z.B. MQTT, AMQP und HTTP). Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein gemeinsames Nachrichtenformat, das von allen geräteseitigen Protokollen unterstützt wird.
 
 ### Nachrichtenformat <a id="messageformat"></a>
 
@@ -356,7 +356,8 @@ Die folgende Tabelle zeigt den Satz an Systemeigenschaften in IoT Hub-Nachrichte
 | -------- | ----------- |
 | MessageId | Eine vom Benutzer festgelegte Kennung für die Nachricht, wird üblicherweise für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
 | Sequenznummer | Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |
-| To  | Gibt in [C2D](#c2d)-Nachrichten das Ziel an. |
+| To  
+ | Gibt in [C2D](#c2d)-Nachrichten das Ziel an. |
 | ExpiryTimeUtc | Datum und Uhrzeit des Nachrichtenablaufs. |
 | EnqueuedTime | Datum und Uhrzeit des Empfangs der Nachricht durch IoT Hub. |
 | CorrelationId | Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |
@@ -640,4 +641,4 @@ Nachdem Sie in diesem Dokument einen Überblick über die Entwicklung für IoT H
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-manage]: iot-hub-manage-through-portal.md
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

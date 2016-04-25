@@ -1,5 +1,3 @@
-## Konfigurationsübersicht
-
 Für die Durchführung der Schritte für diese Aufgabe benötigen Sie ein VNet mit den folgenden Eigenschaften. Zusätzliche Einstellungen und Namen werden ebenfalls in dieser Liste beschrieben. Wir verwenden diese Liste nicht direkt in einem der Schritte, obwohl wir Variablen basierend auf den Werten in dieser Liste hinzufügen. Sie können diese Liste als Referenz verwenden und die Werte durch Ihre eigenen Werte ersetzen.
 
 Konfiguration der Referenzliste:
@@ -15,7 +13,7 @@ Konfiguration der Referenzliste:
 - Name des Gateways = GW
 - Name der Gateway-IP = GWIP
 - Name der Gateway-IP-Konfiguration = gwipconf
-- VPN-Typ = ExpressRoute. Dieser VPN-Typ ist für eine ExpressRoute-Konfiguration erforderlich.
+-  Typ = ExpressRoute. Dieser Typ ist für eine ExpressRoute-Konfiguration erforderlich.
 - Name der öffentlichen Gateway-IP = gwpip
 
 
@@ -61,8 +59,27 @@ Konfiguration der Referenzliste:
 
 		$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -SubnetId $subnet.Id -PublicIpAddressId $pip.Id 
 
-9. Erstellen Sie das Gateway. In diesem Schritt ist der **GatewayType** besonders wichtig. Sie müssen den Wert **ExpressRoute** verwenden. Beachten Sie, dass das Erstellen des Gateways nach der Ausführung dieser Cmdlets 20 Minuten oder länger dauern kann.
+9. Erstellen Sie das Gateway. In diesem Schritt ist **-GatewayType** besonders wichtig. Sie müssen den Wert **ExpressRoute** verwenden. Beachten Sie, dass das Erstellen des Gateways nach der Ausführung dieser Cmdlets 20 Minuten oder länger dauern kann.
 
-		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute
+		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
 
-<!---HONumber=AcomDC_0309_2016-->
+## Erstellung des Gateways überprüfen
+
+Verwenden Sie den folgenden Befehl, um zu überprüfen, ob das Gateway erstellt wurde.
+
+	Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
+
+## Ändern der Größe eines Gateways
+
+Es gibt drei [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
+
+	$gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+
+## Entfernen eines Gateways
+
+Verwenden Sie den folgenden Befehl, um ein Gateway zu entfernen.
+
+	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
+
+<!---HONumber=AcomDC_0413_2016-->

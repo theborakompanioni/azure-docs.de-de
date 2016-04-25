@@ -57,7 +57,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
     using Microsoft.Rest;
     ```
     
-7. Fügen Sie in „Program.cs“ die folgenden statischen Variablen ein, mit denen die Platzhalterwerte ersetzt werden. Weiter oben in diesem Tutorial haben Sie sich die Werte für **ApplicationId**, **SubscriptionId**, **TenantId** und **Password** notiert. **Der Name Ihres Speicherkontos** ist der Name des Azure-Speicherkontos, in dem Sie die Vorlagendateien speichern. **Ressourcengruppenname** ist der Name der Ressourcengruppe, die beim Erstellen des IoT-Hubs verwendet wird – diese Gruppe kann neu oder bereits vorhanden sein. **Bereitstellungsname** ist ein Name für die Bereitstellung, wie z. B. **Deployment\_01**.
+7. Fügen Sie in „Program.cs“ die folgenden statischen Variablen ein, mit denen die Platzhalterwerte ersetzt werden. Weiter oben in diesem Tutorial haben Sie sich die Werte für **ApplicationId**, **SubscriptionId**, **TenantId** und **Password** notiert. **Der Name Ihres Speicherkontos** ist der Name des Azure-Speicherkontos, in dem Sie die Vorlagendateien speichern. **Ressourcengruppenname** ist der Name der Ressourcengruppe, die beim Erstellen des IoT-Hubs verwendet wird – diese Gruppe kann neu oder bereits vorhanden sein. **Bereitstellungsname** ist ein Name für die Bereitstellung, wie z. B. **Deployment\_01**.
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -115,7 +115,7 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen neuen IoT-Hub 
 
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine neue JSON-Datei namens **parameters.json** hinzu.
 
-4. Ersetzen Sie den Inhalt von **parameters.json** mit den folgenden Parameterinformationen, die **mynewiothub** als Namen des neuen IoT-Hubs festlegen:
+4. Ersetzen Sie den Inhalt von **parameters.json** durch die folgenden Parameterinformationen, die **mynewiothub** als Namen des neuen IoT Hubs festlegen (beachten Sie, dass dieser Name global eindeutig sein muss):
 
     ```
     {
@@ -215,4 +215,4 @@ Nachdem Sie nun einen IoT-Hub mithilfe einer ARM-Vorlage mit einem C#-Programm b
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

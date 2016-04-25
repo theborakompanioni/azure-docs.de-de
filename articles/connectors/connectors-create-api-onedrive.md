@@ -19,7 +19,7 @@ ms.author="mandia"/>
 
 # Erste Schritte mit der OneDrive-API
 
-Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. Die OneDrive-API kann in Folgendem verwendet werden:
+Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. Die OneDrive-API kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 - PowerApps
@@ -30,13 +30,13 @@ Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h
 
 &nbsp;
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [OneDrive-API](../app-service-logic/app-service-logic-connector-onedrive.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 OneDrive ermöglicht Folgendes:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus OneDrive abgerufen werden. 
 - Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
-- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in OneDrive erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
+- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in OneDrive erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
 - Hinzufügen der OneDrive-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
 
 Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
@@ -82,7 +82,7 @@ Ruft Metadaten einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/defau
 
 
 ### Datei aktualisieren
-Aktualisiert eine Datei in OneDrive. ```PUT: /datasets/default/files/{id}```
+Aktualisiert eine Datei auf OneDrive. ```PUT: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -112,7 +112,7 @@ Löscht eine Datei aus OneDrive. ```DELETE: /datasets/default/files/{id}```
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Metadaten einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Metadaten einer Datei auf OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -129,7 +129,7 @@ Ruft Metadaten einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/de
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft den Inhalt einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft den Inhalt einer Datei auf OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -147,7 +147,7 @@ Ruft den Inhalt einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/d
 
 
 ### Dateiinhalt anhand der ID abrufen
-Ruft den Inhalt einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/default/files/{id}/content```
+Ruft den Inhalt einer Datei auf OneDrive anhand der ID ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -165,7 +165,7 @@ Ruft den Inhalt einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/defa
 
 
 ### Datei erstellen
-Lädt eine Datei in OneDrive hoch. ```POST: /datasets/default/files```
+Lädt eine Datei auf OneDrive hoch. ```POST: /datasets/default/files```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -184,7 +184,7 @@ Lädt eine Datei in OneDrive hoch. ```POST: /datasets/default/files```
 
 
 ### Datei kopieren
-Kopiert eine Datei in OneDrive. ```POST: /datasets/default/copyFile```
+Kopiert eine Datei auf OneDrive. ```POST: /datasets/default/copyFile```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -237,7 +237,7 @@ Löst einen Datenfluss aus, wenn in einem OneDrive-Ordner eine Datei geändert w
 
 
 ### Ordner extrahieren
-Extrahiert einen Ordner in OneDrive. ```POST: /datasets/default/extractFolderV2```
+Extrahiert einen Ordner auf OneDrive. ```POST: /datasets/default/extractFolderV2```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -312,4 +312,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
 [7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

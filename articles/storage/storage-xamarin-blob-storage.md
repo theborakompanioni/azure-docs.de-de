@@ -47,7 +47,7 @@ Der SAS-URI für den neuen Container sollte dem folgenden ähneln:
 
 	https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 
-Die für den Container erstellte SAS ist für den nächsten Tag gültig. Die Signatur gewährt uneingeschränkte Berechtigungen (*z. B.* Lese-, Schreib-, Lösch- und Listenberechtigung) für Blobs im Container.
+Die für den Container erstellte SAS ist für den nächsten Tag gültig. Die Signatur gewährt uneingeschränkte Berechtigungen (*z. B.* Lese-, Schreib-, Lösch- und Listenberechtigung) für Blobs im Container.
 
 Weitere Informationen zum Erstellen einer Shared Access Signature finden Sie unter [Shared Access Signatures: Erstellen und Verwenden einer SAS mit Blob Storage](storage-dotnet-shared-access-signature-part-2.md).
 
@@ -55,8 +55,7 @@ Weitere Informationen zum Erstellen einer Shared Access Signature finden Sie unt
 
 In diesem Lernprogramm erstellen wir die Xamarin-Anwendung in Visual Studio. Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen:
 
-1. Laden Sie [Visual Studio](https://www.visualstudio.com/) herunter, und installieren Sie diese Software.
-2. Laden Sie [Xamarin](http://xamarin.com/platform) herunter, und installieren Sie diese Software.
+1. Führen Sie das [Installationsprogramm für Visual Studio 2015](https://www.visualstudio.com/) aus. Wählen Sie dabei die **benutzerdefinierte** Installation aus, und aktivieren Sie das Kontrollkästchen unter **Plattformübergreifende, mobile Entwicklung > C#/.NET (Xamarin)**. Falls Sie Visual Studio bereits installiert haben, laden Sie [Xamarin](http://xamarin.com/platform) direkt herunter, und installieren Sie die Anwendung. Vollständige Anweisungen für Visual Studio und Xamarin finden Sie unter [Setup und Installation](https://msdn.microsoft.com/library/mt613162.aspx) auf MSDN.
 3. Öffnen Sie Visual Studio, und wählen Sie **Datei > Neu > Projekt > Android > Leere App (Android)** aus.
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie dann nach **Azure Storage**, und installieren Sie **Azure Storage 4.4.0-preview**.
 
@@ -180,4 +179,4 @@ Weitere Informationen zu Blobs, Tabellen und Warteschlangen finden Sie über die
 - [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

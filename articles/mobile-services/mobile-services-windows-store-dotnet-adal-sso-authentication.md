@@ -27,7 +27,7 @@
 
 ##Übersicht
 
-In diesem Lernprogramm fügen Sie dem Schnellstartprojekt mithilfe der Active Directory-Authentifizierungsbibliothek Authentifizierung hinzu, um vom [Client angewiesene Anmeldevorgänge](http://msdn.microsoft.com/library/azure/jj710106.aspx) mit Azure Active Directory zu unterstützen. Zur Unterstützung von [dienstangewiesenen Anmeldevorgängen](http://msdn.microsoft.com/library/azure/dn283952.aspx) mit Azure Active Directory, beginnen Sie mit dem Lernprogramm zum [Hinzufügen von Authentifizierung zu Mobile Services-Apps](../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md).
+In diesem Lernprogramm fügen Sie dem Schnellstartprojekt mithilfe der Active Directory-Authentifizierungsbibliothek Authentifizierung hinzu, um vom [Client angewiesene Anmeldevorgänge](http://msdn.microsoft.com/library/azure/jj710106.aspx) mit Azure Active Directory zu unterstützen. Zur Unterstützung von [dienstangewiesenen Anmeldevorgängen](http://msdn.microsoft.com/library/azure/dn283952.aspx) mit Azure Active Directory, beginnen Sie mit dem Lernprogramm zum [Hinzufügen von Authentifizierung zu Mobile Services-Apps](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md).
 
 Um Benutzer authentifizieren zu können, müssen Sie Ihre Anwendung in Azure Active Directory (AAD) registrieren. Dazu sind zwei Schritte erforderlich. Zunächst müssen Sie Ihren mobilen Dienst registrieren und entsprechende Berechtigungen vergeben. Anschließend müssen Sie Ihre Windows Store-App registrieren und der App Zugriff auf diese Berechtigungen gewähren
 
@@ -214,4 +214,4 @@ Der mobile Dienst ist jetzt in AAD so konfiguriert, dass er SSO-Anmeldungen von 
 [Erste Schritte mit Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows Dev Center-Dashboard]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

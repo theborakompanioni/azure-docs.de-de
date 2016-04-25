@@ -40,7 +40,7 @@ Stellen Sie über den folgenden Befehl eine Verbindung mit Azure her:
 	azure login
 
 Weitere Informationen zur Authentifizierung mit einem Geschäfts- oder Schulkonto finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
-	
+
 Wechseln Sie mit dem folgenden Befehl in den ARM-Modus:
 
 	azure config mode arm
@@ -48,19 +48,19 @@ Wechseln Sie mit dem folgenden Befehl in den ARM-Modus:
 Um Hilfe zu erhalten, verwenden Sie die Option **-h**. Beispiel:
 
 	azure hdinsight cluster create -h
-	
+
 ##Erstellen von Clustern
 
 Sie benötigen zum Erstellen eines HDInsight-Clusters ein ARM- (Azure-Ressourcen-Manager) und ein Azure-Blobspeicherkonto. Zum Erstellen eines HDInsight-Clusters müssen Sie Folgendes angeben:
 
-- **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss in einer Azure-Ressourcengruppe erstellt werden. Mit dem Azure-Ressourcen-Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen. 
+- **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss in einer Azure-Ressourcengruppe erstellt werden. Mit dem Azure-Ressourcen-Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
 	So führen Sie die Ressourcengruppen in Ihrem Abonnement auf:
-	
-		azure group list 
-	
+
+		azure group list
+
 	So erstellen Sie eine neue Ressourcengruppe:
-	
+
 		azure group create -n "<Resource Group Name>" -l "<Azure Location>"
 
 - **HDInsight-Clustername**
@@ -70,15 +70,15 @@ Sie benötigen zum Erstellen eines HDInsight-Clusters ein ARM- (Azure-Ressourcen
 - **Standardspeicherkonto**: HDInsight verwendet als Standarddateisystem einen Azure-Blobspeichercontainer. Sie benötigen ein Azure-Speicherkonto, um einen HDInsight-Cluster erstellen zu können.
 
 	So erstellen Sie ein neues Azure-Speicherkonto:
-	
+
 		azure storage account create "<Azure Storage Account Name>" -g "<Resource Group Name>" -l "<Azure Location>" --type LRS
 
 	> [AZURE.NOTE] Das Speicherkonto muss sich im selben Datencenter wie HDInsight befinden. Der Speicherkontotyp darf nicht ZRS sein, da ZRS keine Tabellen unterstützt.
 
 	Informationen zum Erstellen von Azure-Speicherkonten im Azure-Portal finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos][azure-create-storageaccount].
-	
+
 	Falls Sie bereits ein Speicherkonto haben, aber dessen Kontonamen und Kontoschlüssel nicht kennen, können Sie diese Daten mit den folgenden Befehlen abrufen:
-	
+
 		-- Lists Storage accounts
 		azure storage account list
 		-- Shows a Storage account
@@ -86,7 +86,7 @@ Sie benötigen zum Erstellen eines HDInsight-Clusters ein ARM- (Azure-Ressourcen
 		-- Lists the keys for a Storage account
 		azure storage account keys list "<Storage Account Name>" -g "<Resource Group Name>"
 
-	Ausführliche Informationen zum Abrufen dieser Informationen über das Azure-Portal finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos][azure-create-storageaccount] im Abschnitt „Anzeigen, Kopieren und Neuerstellen von Speicherzugriffsschlüsseln“.
+	Ausführliche Informationen zum Abrufen dieser Informationen über das Azure-Portal finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account#manage-your-storage-account) im Abschnitt „Verwalten von Speicherkonten“.
 
 - **(Optional) Standardblobcontainer**: Der Befehl **azure hdinsight cluster create** erstellt den Container, sofern dieser noch nicht vorhanden ist. Falls Sie den Container zuvor erstellen möchten, können Sie den folgenden Befehl verwenden:
 
@@ -94,7 +94,7 @@ Sie benötigen zum Erstellen eines HDInsight-Clusters ein ARM- (Azure-Ressourcen
 
 Sobald Sie Ihr Speicherkonto vorbereitet haben, können Sie einen Cluster erstellen.
 
-    
+
     azure hdinsight cluster create -g <Resource Group Name> -c <HDInsight Cluster Name> -l <Location> --osType <Windows | Linux> --version <Cluster Version> --clusterType <Hadoop | HBase | Spark | Storm> --workerNodeCount 2 --headNodeSize Large --workerNodeSize Large --defaultStorageAccountName <Azure Storage Account Name>.blob.core.windows.net --defaultStorageAccountKey "<Default Storage Account Key>" --defaultStorageContainer <Default Blob Storage Container> --userName admin --password "<HTTP User Password>" --rdpUserName <RDP Username> --rdpPassword "<RDP User Password" --rdpAccessExpiry "03/01/2016"
 
 
@@ -121,8 +121,8 @@ Erstellen einer Konfigurationsdatei mit einer Skriptaktion, die beim Erstellen e
 Erstellen eines Clusters mit einer Skriptaktion
 
 	azure hdinsight cluster create -g myarmgroup01 -l westus -y Windows --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
-	
-	
+
+
 Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen (Linux)](hdinsight-hadoop-customize-cluster.md).
 
 
@@ -135,6 +135,6 @@ Sie können die Befehlszeilenschnittstelle zum Erstellen von Clustern verwenden,
 - [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) – Erfahren Sie, wie Sie die Arbeit mit Ihrem HDInsight-Cluster aufnehmen können.
 - [Programmgesteuerte Übermittlung von Hadoop-Jobs](hdinsight-submit-hadoop-jobs-programmatically.md) – Erfahren Sie, wie Sie Aufträge programmgesteuert an HDInsight übermitteln können.
 - [Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)
-- [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](../virtual-machines/virtual-machines-command-line-tools.md)
+- [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

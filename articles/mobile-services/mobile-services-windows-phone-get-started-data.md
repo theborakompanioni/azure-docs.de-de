@@ -172,7 +172,7 @@ In diesem Lernprogramm wurden die Grundlagen der Aktivierung einer Windows Phone
 
 * [Hinzufügen von Pushbenachrichtigungen zur App](mobile-services-javascript-backend-windows-phone-get-started-push.md) <br/>Erfahren Sie, wie Sie mit Mobile Services eine einfache Pushbenachrichtigung an Ihre App senden können.
 
-* [Mobile Services #C-Anleitungen: Konzeptionelle Referenz](mobile-services-windows-dotnet-how-to-use-client-library.md) <br/>Lernen Sie mehr über die Verwendung von Mobile Services mit .NET.
+* [Mobile Services #C-Anleitungen: Konzeptionelle Referenz](mobile-services-dotnet-how-to-use-client-library.md) <br/>Lernen Sie mehr über die Verwendung von Mobile Services mit .NET.
 
 <!-- Anchors. -->
 [Download the Windows Phone 8 app project]: #download-app
@@ -196,4 +196,4 @@ In diesem Lernprogramm wurden die Grundlagen der Aktivierung einer Windows Phone
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [Codebeispielen für Entwickler]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

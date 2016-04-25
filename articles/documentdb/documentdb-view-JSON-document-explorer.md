@@ -31,7 +31,7 @@ Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](h
 
  	>[AZURE.NOTE] Der Abfrage-Explorer wird auch auf den Blättern für Datenbanken und Sammlungen angezeigt.
 
-    Auf dem Blatt **Dokument-Explorer** werden die Dropdownlisten **Datenbanken** und **Sammlungen** basierend auf dem Kontext, in dem Sie den Abfrage-Explorer starten, automatisch ausgefüllt.
+    Auf dem Blatt **Dokument-Explorer** werden die Dropdownlisten **Datenbanken** und **Sammlungen** basierend auf dem Kontext, in dem Sie den Dokument-Explorer starten, automatisch ausgefüllt.
 
 	![Screenshot des Dokument-Explorers – Blatt](./media/documentdb-view-JSON-document-explorer/documentexplorerinitial.png)
 
@@ -158,4 +158,4 @@ Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Dokument-Explorer unt
 
 Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist auch ein nützlicher Anhaltspunkt, um mehr über DocumentDB zu erfahren.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

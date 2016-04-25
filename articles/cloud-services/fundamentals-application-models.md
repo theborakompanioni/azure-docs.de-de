@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="Computehostingoptionen in Azure" 
-	description="Erfahren Sie mehr über Computehostingoptionen in Azure und ihre Funktionsweise: Virtual Machines, Websites, Cloud Services und weitere Optionen." 
-	headerExpose="" 
-	footerExpose="" 
-	services="cloud-services,virtual-machines"
-	authors="Thraka" 
+<properties
+	pageTitle="Computehostingoptionen in Azure"
+	description="Erfahren Sie mehr über Computehostingoptionen in Azure und ihre Funktionsweise: Virtual Machines, Websites, Cloud Services und weitere Optionen."
+	headerExpose=""
+	footerExpose=""
+	services="cloud-services"
+	authors="Thraka"
 	documentationCenter=""
 	manager="timlt"/>
 
@@ -14,68 +14,50 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
-	ms.author="adegeo;cephalin;kathydav"/>
+	ms.date="03/28/2016" 
+	ms.author="adegeo"/>
 
 
+# Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
 
+Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostingmodelle für die Ausführung von Anwendungen. Jedes bietet einen anderen Satz von Diensten. Sie können also die auswählen, die genau zu Ihrem Vorhaben passen.
 
-# Computehostingoptionen in Azure
+[AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
-Azure bietet verschiedene Hostingmodelle für die Ausführung von Anwendungen. Jedes Modell umfasst andere Dienste. Sie können also genau das Modell auswählen, das sich für Ihr Vorhaben eignet. Dieser Artikel geht auf die jeweiligen Optionen ein, beschreibt die einzelnen Technologien und führt Beispiele für ihre Verwendung auf.
+<a name="tellmecs"></a>
+## Informationen zu Cloud Services
 
-| Computeoptionen | Zielgruppe |
-| ------------------ | --------   |
-| [App Service] | Skalierbare Web-Apps, mobile Apps, API-Apps und Logik-Apps für beliebige Geräte |
-| [Cloud Services] | Hoch verfügbare, skalierbare, n-schichtige Cloud-Apps mit mehr Kontrolle des Betriebssystems |
-| [Virtual Machines] | Angepasste Windows- und Linux-VMs mit vollständiger Kontrolle des Betriebssystems |
+Cloud Services ist ein Beispiel für Platform-as-a-Service (PaaS). Diese Technologie unterstützt wie [App Service](../app-service-web/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit niedrigen Betriebskosten. Cloud Services werden ebenso wie ein App Service auf VMs gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf Clouddienst-VMs installieren und per Remotezugriff auf diese zugreifen.
 
-[AZURE.INCLUDE [Inhalt](../../includes/app-service-choose-me-content.md)]
+![cs\_diagramcs\_diagram](./media/cloud-services-choose-me/diagram.png)
 
-[AZURE.INCLUDE [Inhalt](../../includes/cloud-services-choose-me-content.md)]
+Mehr Kontrolle bedeutet auch weniger Anwenderfreundlichkeit; wenn Sie die zusätzlichen Verwaltungsoptionen nicht benötigen, ist es i. d. R. im Vergleich zu Cloud Services schneller und einfacher Webanwendungen in Web-Apps in App Service zum Laufen zu bringen.
 
-[AZURE.INCLUDE [Inhalt](../../includes/virtual-machines-choose-me-content.md)]
+Diese Technologie bietet zwei leicht abweichende Optionen für VM: Auf Instanzen von *Webrollen* läuft eine Variante von Windows Server mit IIS, während auf Instanzen von *Workerrollen* dieselbe Windows Server-Variante ohne IIS läuft. Cloud Services-Anwendungen verwenden dieselbe Kombination dieser zwei Optionen.
 
-## Weitere Optionen
+Eine beliebige Kombination dieser zwei leicht unterschiedlichen VM Hostingoptionen sind in einem Clouddienst verfügbar:
 
-Azure bietet auch andere Computehostingmodelle für spezielle Zwecke, beispielsweise:
+* **Webrolle** Führt Windows Server mit Ihrer Web-App aus, die automatisch auf IIS bereitgestellt wird.
+  
+* **Workerrolle** Führt Windows-Server ohne IIS aus.
 
-* [Mobile Services](/services/mobile-services/) – Für die Bereitstellung eines Cloud-Back-Ends für Apps optimiert, die auf mobilen Geräten ausgeführt werden.
-* [Batch](/services/batch/) – Für die Verarbeitung einer großen Anzahl von ähnlichen Aufgaben optimiert, idealerweise Workloads, die sich für die parallele Ausführung auf mehreren Computern eignen.
-* [HDInsight (Hadoop)](/services/hdinsight/) – Für die Ausführung von [MapReduce](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options/#hadoop)-Aufträgen in Hadoop-Clustern optimiert. 
+Einfache Anwendungen verwenden z. B. nur eine Webrolle, während komplexere Anwendungen eine Webrolle für die Verarbeitung eingehender Benutzeranforderungen verwenden und die aus diesen Anforderungen entstandene Arbeit an Workerrollen abgeben. (Diese Kommunikation erfolgt über einen [Service Bus](../service-bus/service-bus-fundamentals-hybrid-solutions.md) oder über [Azure-Warteschlangen](../storage/storage-introduction.md).)
 
-## Welches Modell sollte ich verwenden? Treffen einer Auswahl
+Die obige Abbildung zeigt, dass alle VMs in einer einzigen Anwendung im gleichen Clouddienst laufen. Aus diesem Grund greifen die Benutzer über eine einzige öffentliche IP-Adresse auf die Anwendung zu, und die Anforderungen werden automatisch auf die einzelnen VMs verteilt. Die Plattform [skaliert und stellt](cloud-services-how-to-scale.md) die VMs in einer Cloud Services-Anwendung so bereit, dass einzelne Fehlerquellen vermieden werden.
 
-Alle dieser drei allgemeinen Computehostingmodelle von Azure eignen sich für die Erstellung skalierbarer und zuverlässiger Anwendungen in der Cloud. Welches Modell sollten Sie angesichts dieser scheinbaren Ähnlichkeit verwenden?
+Obwohl die Anwendungen in Virtual Machines laufen, ist es wichtig, zu betonen, dass Cloud Services PaaS und nicht IaaS bieten. Sie können sich dies auf folgende Weise vorstellen: Mit IaaS, z. B. mit Azure Virtual Machines, erstellen und konfigurieren Sie zunächst die Umgebung für Ihre Anwendung und stellen die Anwendung anschließend in Ihrer Umgebung bereit. Sie sind für die Verwaltung dieser Umgebung verantwortlich und müssen z. B. neue gepatchte Versionen des Betriebssystems in den einzelnen VM installieren. Mit PaaS dagegen existiert diese Umgebung bereits. Sie müssen nur noch Ihre Anwendung bereitstellen. Sie brauchen sich nicht um die Verwaltung der Plattform kümmern, inklusive neuer Versionen des Betriebssystems.
 
-App Service stellt für die meisten Web-Apps die beste Wahl dar. Die Bereitstellungs- und die Verwaltungsfunktionen sind in die Plattform integriert. Sites können rasch skaliert werden, um umfangreiche Datenaufkommen zu bewältigen. Außerdem bieten der integrierte Lastenausgleich und der Traffic Manager eine hohe Verfügbarkeit. Sie können vorhandene Websites mit einem [Onlinemigrationstool](https://www.migratetoazure.net/) ohne Weiteres in App Service verschieben, eine Open-Source-App aus dem Web-App-Katalog verwenden oder eine neue Website mithilfe des Frameworks und der Tools Ihrer Wahl erstellen. Mit der [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226)-Funktion können Sie problemlos die Auftragsverarbeitung im Hintergrund zu Ihrer App hinzufügen oder sogar Computeworkloads ausführen, die keine Web-Apps sind.
+## Skalierung und Verwaltung
+Mit Cloud Services erstellen Sie keine Virtual Machines. Stattdessen teilen Sie Azure über eine Konfigurationsdatei mit, wie viele Instanzen Sie benötigen, z. B. **drei Webrolleninstanzen** und zwei **Workerrolleninstanzen**, und die Plattform erstellt diese Instanzen für Sie. Sie können die [Größe](cloud-services-sizes-specs.md) diese Sicherungs-VMs wählen aber Sie erstellen diese Computer nicht selbst. Wenn Ihre Anwendung eine größere Last verarbeiten muss, können Sie von Azure weitere virtuelle Computer anfordern. Wenn die Last abnimmt, können Sie diese Instanzen abschalten und müssen diese nicht länger bezahlen.
 
-Wenn Sie mehr Kontrolle über die Webserverumgebung benötigen, wie etwa die Fähigkeit eines Fernzugriffs auf den Server oder der Konfiguration von Serverstartaufgaben, sind Azure Cloud Services üblicherweise die beste Option.
+Cloud Services-Anwendungen werden den Benutzern normalerweise in zwei Schritten bereitgestellt. Zunächst lädt ein Entwickler die [Anwendung in den Stagingbereich der Plattform hoch](cloud-services-how-to-create-deploy.md). Wenn die Entwickler die Anwendung live schalten möchten, können sie diese über das Azure-Verwaltungsportal in den Produktionsmodus umschalten. Der [Wechsel zwischen Staging und Produktion](cloud-services-nodejs-stage-application.md) erfolgt ohne Ausfallzeit. Daher können laufende Anwendungen ohne Beeinträchtigung der Benutzer auf neue Versionen aktualisiert werden.
 
-Wenn Sie über eine vorhandene Anwendung verfügen, die für die Ausführung unter Azure-Websites oder Azure Cloud Services erhebliche Änderungen erforderlich macht, können Sie Azure Virtual Machines wählen, um die Migration in die Cloud zu vereinfachen. Eine korrekte Konfiguration, Sicherung und Wartung von VMs erfordert im Vergleich zu Azure Websites oder Cloud Services jedoch weitaus mehr Zeit und IT-Kenntnisse. Wenn Sie die Nutzung von Azure Virtual Machines in Erwägung ziehen, müssen Sie den fortlaufenden Wartungsaufwand berücksichtigen, der für das Patchen, Aktualisieren oder Verwalten der VM-Umgebung erforderlich ist.
+## Überwachung
+Cloud Services bietet außerdem Überwachungsfunktionen. Wie auch bei Azure Virtual Machines werden Ausfälle von physischen Servern erkannt und die entsprechenden virtuellen Computer auf einem anderen Server neu gestartet. Cloud Services erkennt jedoch neben Hardwarefehlern auch Ausfälle von virtuellen Computern und Anwendungen. Im Gegensatz zu Virtual Machines läuft in jeder Web- und Workerrolle ein Agent. Daher können im Fehlerfall neue virtuelle Computer und Anwendungsinstanzen gestartet werden.
 
-Unter Umständen reicht eine Option jedoch nicht aus. In diesen Fällen können Sie eine Kombination der unterschiedlichen Optionen verwenden. Dies bietet sich beispielsweise an, wenn Sie eine Anwendung erstellen und dabei die Vorteile der Verwaltungsoptionen von Cloud Services-Webrollen nutzen möchten, aber aus Kompatibilitäts- oder Leistungsgründen eine auf einer VM gehostete Standardversion von SQL Server verwenden müssen.
-
-<!-- In this case, the best option is to combine compute hosting options, as the figure below shows.--
-
-<a name="fig4"></a>
-![07_CombineTechnologies][07_CombineTechnologies] 
- 
-**Figure: A single application can use multiple hosting options.**
-
-As the figure illustrates, the Cloud Services VMs run in a separate cloud service from the Virtual Machines VMs. Still, the two can communicate quite efficiently, so building an app this way is sometimes the best choice.
-[07_CombineTechnologies]: ./media/fundamentals-application-models/ExecModels_07_CombineTechnologies.png
-!-->
-
-[App Service]: #tellmeas
-[Virtual Machines]: #tellmevm
-[Cloud Services]: #tellmecs
+Die PaaS-Funktionsweise von Cloud Services hat auch noch andere Auswirkungen. Zum Beispiel sollten Anwendungen für diese Technologie so entwickelt werden, dass sie auch dann korrekt funktionieren, wenn eine beliebige Web- oder Workerrolle ausfällt. Aus diesem Grund sollten Cloud Services-Anwendungen keinen Status im Dateisystem der eigenen virtuellen Computer speichern. Im Gegensatz zu virtuellen Computern mit Azure Virtual Machines sind Schreibvorgänge in virtuellen Cloud Services-Computern nicht persistent. Diese virtuellen Computer haben keine eigenen Datenträger. Cloud Services-Anwendungen sollten daher ihren Status in SQL-Datenbanken, Blobs, Tabellen oder andere externe Speichermedien schreiben. Die auf diese Weise erstellten Anwendungen sind skalierbarer und fehlerresistenter; zwei wichtige Ziele von Cloud Services.
 
 ## Nächste Schritte
+[Erstellen einer Clouddienst-App in .NET](cloud-services-dotnet-get-started.md) [Erstellen einer Clouddienst-App in Node.js](cloud-services-nodejs-develop-deploy-app.md) [Erstellen einer Clouddienst-App in PHP](../cloud-services-php-create-web-role.md) [Erstellen einer Clouddienst-App in Python](../cloud-services-python-ptvs.md)
 
-* App Service, Cloud Services und Virtual Machines [im Vergleich](../choose-web-site-cloud-service-vm/)
-* Weitere Informationen zu [App Service](../app-service-web-overview.md)
-* Weitere Informationen zu [Cloud Services](services/cloud-services/)
-* Weitere Informationen zu [Virtual Machines](https://msdn.microsoft.com/library/azure/jj156143.aspx) 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

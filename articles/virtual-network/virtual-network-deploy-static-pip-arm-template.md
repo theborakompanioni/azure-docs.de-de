@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mit einer Vorlage im Ressourcen-Manager | Microsoft Azure"
    description="Erfahren Sie, wie Sie VMs mit einer statischen öffentlichen IP-Adresse mit einer Vorlage im Ressourcen-Manager bereitstellen."
    services="virtual-network"
@@ -101,7 +101,7 @@ In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parame
 
 Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorlage die unten beschriebenen Schritte aus.
 
-1. Falls Sie Azure PowerShell noch nicht verwendet haben, helfen Ihnen die Informationen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md) weiter. Führen Sie die Schritte 1 bis 3 aus.
+1. Falls Sie Azure PowerShell noch nicht verwendet haben, helfen Ihnen die Informationen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) weiter. Führen Sie die Schritte 1 bis 3 aus.
 
 2. Führen Sie in einer PowerShell-Konsole das **New-AzureRmResourceGroup**-Cmdlet aus, um bei Bedarf eine neue Ressourcengruppe zu erstellen. Fahren Sie mit Schritt 3 fort, falls Sie bereits eine Ressourcengruppe erstellt haben.
 
@@ -112,7 +112,7 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 		ResourceGroupName : StaticPublicIP
 		Location          : westus
 		ProvisioningState : Succeeded
-		Tags              : 
+		Tags              :
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
 
 3. Führen Sie in einer PowerShell-Konsole das **New-AzureRmResourceGroupDeployment**-Cmdlet aus, um die Vorlage bereitzustellen.
@@ -128,31 +128,31 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 		ProvisioningState : Succeeded
 		Timestamp         : 1/8/2016 7:04:44 PM
 		Mode              : Incremental
-		TemplateLink      : 
+		TemplateLink      :
 		                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
 		                    ter/IaaS-Story/03-Static-public-IP/azuredeploy.json
 		                    ContentVersion : 1.0.0.0
-		                    
-		Parameters        : 
+
+		Parameters        :
 		                    Name                      Type                       Value     
 		                    ========================  =========================  ==========
-		                    vnetName                  String                     WTestVNet 
+		                    vnetName                  String                     WTestVNet
 		                    vnetPrefix                String                     192.168.0.0/16
 		                    frontEndSubnetName        String                     FrontEnd  
 		                    frontEndSubnetPrefix      String                     192.168.1.0/24
 		                    storageAccountNamePrefix  String                     iaasestd  
 		                    stdStorageType            String                     Standard_LRS
 		                    osType                    String                     Windows   
-		                    adminUsername             String                     adminUser 
+		                    adminUsername             String                     adminUser
 		                    adminPassword             SecureString                         
-		                    
-		Outputs           : 
+
+		Outputs           :
 
 ## Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle
 
 Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die unten beschriebenen Schritte aus.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](xplat-cli.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
 
 		azure config mode arm
@@ -184,4 +184,4 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

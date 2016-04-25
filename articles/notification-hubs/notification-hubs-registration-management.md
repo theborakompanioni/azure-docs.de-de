@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="04/11/2016"
 	ms.author="wesmc"/>
 
 # Registrierungsverwaltung
@@ -77,9 +77,9 @@ Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige List
 
  
 
-Sie sollten unbedingt beachten, dass Registrierungen und Installationen sowie die darin enthaltenen PNS-Handles ablaufen. Sie können die Gültigkeitsdauer im Notification Hub auf bis zu 90 Tage festlegen. Dieser Grenzwert bedeutet, dass die Objekte in regelmäßigen Abständen aktualisiert werden müssen und darüber hinaus nicht den einzigen Speicher für wichtige Informationen darstellen sollten. Dieser automatische Ablauf vereinfacht außerdem die Bereinigung, wenn die mobile Anwendung deinstalliert wird.
+Ein wichtiger Aspekt ist, dass Registrierungen und Installationen standardmäßig nicht mehr ablaufen.
 
-Registrierungen und Installationen müssen das aktuelle PNS-Handle für jedes Gerät bzw. jeden Kanal enthalten. Da PNS-Handles nur in einer Client-App auf dem Gerät abgerufen werden können, besteht ein Muster darin, sich direkt auf dem Gerät mit der Client-App zu registrieren. Andererseits können tagbezogene Sicherheitsaspekte und Geschäftslogik die Verwaltung der Geräteregistrierung im App-Back-End erforderlich machen.
+Registrierungen und Installationen müssen ein gültiges PNS-Handle für jedes Gerät bzw. jeden Kanal enthalten. Da PNS-Handles nur in einer Client-App auf dem Gerät abgerufen werden können, besteht ein Muster darin, sich direkt auf dem Gerät mit der Client-App zu registrieren. Andererseits können tagbezogene Sicherheitsaspekte und Geschäftslogik die Verwaltung der Geräteregistrierung im App-Back-End erforderlich machen.
 
 #### Vorlagen
 
@@ -241,7 +241,6 @@ Durch diese Methoden wird eine Registrierung für das Gerät erstellt oder aktua
 	}
 	catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 	{
-		// regId likely expired, delete from local storage and try again
 		settings.Remove("__NHRegistrationId");
 	}
 
@@ -330,4 +329,4 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
 
 Die Nebenläufigkeit zwischen Registrierungsupdates muss vom Back-End behandelt werden. Service Bus unterstützt die Steuerung für optimistische Nebenläufigkeit für die Registrierungsverwaltung. Auf der HTTP-Ebene wird dies durch die Verwendung von ETag für Registrierungsverwaltungsvorgänge implementiert. Dieses Feature wird von Microsoft-SDKs, die eine Ausnahme auslösen, wenn ein Update aus Gründen der Nebenläufigkeit abgelehnt wird, transparent verwendet. Das Back-End ist dafür verantwortlich, diese Ausnahmen zu behandeln und das Update ggf. zu wiederholen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Mit Xamarin können Sie Anwendungen in C# schreiben, die auf verschiedenen Plattformen, mobilen Geräten und PCs gleichermaßen, ausgeführt werden können. Bei der Entwicklung einer Anwendung mit Xamarin können Sie Ihre Benutzer mit Azure AD einfach und problemlos über deren Active Directory-Konten authentifizieren. Außerdem ermöglicht es in Ihren Anwendungen die sichere Nutzung jeder durch Azure AD geschützten Web-API wie der Azure-API oder Office 365-APIs.
+Mithilfe von Xamarin können Sie mobile Apps in C# schreiben, die unter iOS, Android und Windows (sowohl mobile Geräte als auch PCs) ausgeführt werden können. Bei der Entwicklung einer Anwendung mit Xamarin können Sie Ihre Benutzer mit Azure AD einfach und problemlos über deren Active Directory-Konten authentifizieren. Außerdem ermöglicht es in Ihren Anwendungen die sichere Nutzung jeder durch Azure AD geschützten Web-API wie der Azure-API oder Office 365-APIs.
 
 Für Xamarin-Apps, die auf geschützte Ressourcen zugreifen müssen, bietet Azure AD die Active Directory-Authentifizierungsbibliothek (ADAL). Die einzige Aufgabe von ADAL besteht darin, Ihrer Anwendung das Abrufen von Zugriffstoken zu erleichtern. Wir wollen Ihnen nun zeigen, wie einfach das geht. Dazu erstellen wir die Anwendung „DirectorySearcher“ mit folgenden Funktionen:
 
@@ -41,12 +41,9 @@ Zur Entwicklung der vollständigen Arbeitsanwendung müssen Sie folgende Schritt
 Beginnen Sie, indem Sie [ein Projektgerüst](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip). Bei beidem handelt es sich um eine Visual Studio 2013-Lösung. Außerdem benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstellen und Ihre Anwendung registrieren können. Wenn Sie über noch keinen Mandanten verfügen, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
 ## *0. Einrichten der Xamarin-Entwicklungsumgebung*
-Xamarin kann je nach Zielplattform unterschiedlich eingerichtet werden. Da dieses Lernprogramm Projekte für iOS, Android und Windows enthält, haben wir uns als Entwicklungstools für Visual Studio 2013 und den [Xamarin.iOS Build Host](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/) entschieden. Diese setzen Folgendes voraus: - einen Windows-Computer für die Ausführung von Visual Studio und der Windows-Anwendungen – einen OS X-Computer (zur Ausführung der iOS-Anwendungen) – ein Xamarin Business-Abonnement (die [kostenlose Testversion](http://developer.xamarin.com/guides/cross-platform/getting_started/beginning_a_xamarin_trial/) ist ausreichend) – [Xamarin für Windows](https://xamarin.com/download), einschließlich Xamarin.iOS, Xamarin.Android und Visual Studio-Integration (für dieses Beispiel empfehlenswert) – [Xamarin für OS X](https://xamarin.com/download), einschließlich Xamarin.iOS (und den Xamarin.iOS Build Host), Xamarin.Android, Xamarin.Mac und Xamarin Studio.
-
-Wir empfehlen, mit der [Xamarin-Downloadseite](https://xamarin.com/download) zu beginnen und Xamarin sowohl auf Ihrem Mac als auch auf Ihrem PC zu installieren. Auch wenn Ihnen nicht beide Computer zur Verfügung stehen, können Sie das Beispiel ausführen, müssen dabei aber bestimmte Projekte auslassen. Befolgen Sie die [detaillierten Installationsanleitungen](http://developer.xamarin.com/guides/cross-platform/getting_started/installation/) für iOS und Android. Wenn Sie darüber hinaus mehr über die verfügbaren Entwicklungsoptionen wissen möchten, empfehlen wir Ihnen zusätzlich das Handbuch [Building Cross Platform Applications](http://developer.xamarin.com/guides/cross-platform/application_fundamentals/building_cross_platform_applications/part_1_-_understanding_the_xamarin_mobile_platform/) (in englischer Sprache). Im Augenblick brauchen Sie noch kein Gerät für die Entwicklung einzurichten, ebenso benötigen Sie noch kein Abonnement für das Apple Developer Program (es sei denn, Sie möchten die iOS-App auf einem Gerät ausführen).
+Da in diesem Tutorial Projekte für iOS, Android und Windows erstellt werden, benötigen Sie sowohl Visual Studio als auch Xamarin. Befolgen Sie zum Erstellen der erforderlichen Umgebung alle Schritte in der Anleitung [Setup und Installation von Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) auf MSDN. In dieser Anleitung finden Sie auch Materialien mit weiteren Informationen zu Xamarin, die Sie während der Installation lesen können.
 
 Nach Abschluss der erforderlichen Konfigurationsschritte öffnen Sie die Lösung in Visual Studio, um zu beginnen. Sie finden dort sechs Projekte: fünf plattformspezifische Projekte und die portable Klassenbibliothek `DirectorySearcher.cs`, die auf allen Plattformen verwendet werden kann.
-
 
 ## *1. Registrieren der Anwendung DirectorySearcher*
 Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen:
@@ -62,7 +59,8 @@ Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure A
 - Suchen Sie ebenso auf der Registerkarte **Konfigurieren** den Abschnitt „Berechtigungen für andere Anwendungen“. Fügen Sie für die Anwendung „Azure Active Directory“ unter **Delegierte Berechtigungen** die Berechtigung **Zugriff auf das Verzeichnis Ihrer Organisation** hinzu. Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
 
 ## *2. Installieren und Konfigurieren von ADAL*
-Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL installieren und Ihren identitätsbezogenen Code schreiben. Damit ADAL mit Azure AD kommunizieren kann, müssen Sie ihm einige Informationen über die Registrierung Ihrer Anwendung bereitstellen. Fügen Sie ADAL dazu zunächst über die Paket-Manager-Konsole zu jedem Projekt der Lösung hinzu.
+Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL installieren und Ihren identitätsbezogenen Code schreiben. Damit ADAL mit dem Azure AD kommunizieren kann, müssen Sie einige Informationen zur App-Registrierung bereitstellen.
+-	Fügen Sie zunächst über die Paket-Manager-Konsole ADAL zu jedem Projekt in der Projektmappe hinzu.
 
 `
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirectorySearcherLib -IncludePrerelease
@@ -193,7 +191,7 @@ await UnivDirectoryHelper.Search(
 
 Glückwunsch! Damit haben Sie eine funktionsfähige Xamarin-Anwendung entwickelt, die Benutzer auf fünf verschiedenen Plattformen authentifizieren und Web-APIs über OAuth 2.0 sicher aufrufen kann. Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen. Führen Sie danach Ihre DirectorySearcher-Anwendung aus, und melden Sie sich unter einem dieser Benutzer an. Suchen Sie anhand des UPN nach anderen Benutzern.
 
-ADAL erleichtert Ihnen die Integration allgemeiner Identitätsfunktionen in Ihrer Anwendung. Es übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Tokens und vieles mehr. Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `authContext.AcquireToken*(…)`.
+ADAL erleichtert Ihnen die Integration allgemeiner Identitätsfunktionen in Ihre App. Es übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Tokens und vieles mehr. Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `authContext.AcquireToken*(…)`.
 
 Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit. Sie können sich nun weiteren Identitätsszenarien zuwenden. Wie wäre es zum Beispiel mit Folgendem:
 
@@ -201,4 +199,4 @@ Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClie
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

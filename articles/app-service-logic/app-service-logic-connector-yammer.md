@@ -3,7 +3,7 @@
    description="Erstellen und Konfigurieren des Yammer-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
+   authors="msftman"
    manager="erikre"
    editor=""/>
 
@@ -13,85 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="03/16/2016"
-   ms.author="sameerch"/>
+   ms.date="04/11/2016"
+   ms.author="deonhe"/>
 
 
-# Verwenden des Yammer-Connectors in Logik-Apps #
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Um die Schemaversion 2015-08-01-preview aufzurufen, klicken Sie auf [Yammer-API](../connectors/connectors-create-api-yammer.md).
+# Der Yammer-Connector wurde verbessert. 
 
-Stellen Sie eine Verbindung mit Yammer her, um Nachrichten zu veröffentlichen und mit einem Trigger neue Nachrichten abzurufen.
+Dieser Connector wird nun nur unter der neuen [Logik-Apps-Schemaversion 2015-08-01-preview](./app-service-logic-schema-2015-08-01.md) und höher unterstützt.
 
-Logik-Apps können basierend auf einer Vielzahl von Datenquellen ausgelöst werden und Connectors anbieten, um Daten als Teil des Datenflusses abzurufen und zu verarbeiten.
 
-## Erstellen eines Yammer-Connectors für Ihre Logik-App ##
-Zur Verwendung des Yammer-Connectors müssen Sie zunächst eine Instanz der Yammer-Connector-API-App erstellen. Gehen Sie dazu folgendermaßen vor:
+## Nächste Schritte    
 
-1. Wählen Sie im Azure-Startmenü **Marketplace** aus.
-2. Suchen Sie nach "Yammer-Connector", wählen Sie ihn aus, und klicken Sie dann auf **Erstellen**.
-3. Konfigurieren Sie den Yammer-Connector wie folgt: ![][1]
+- [Weitere Informationen zu diesem neuen Connector](../connectors/connectors-create-api-yammer.md)
+- [Migrieren älterer Connectors](../connectors/connectors-schema-migration.md) zur neuen Logik-Apps-Schemaversion 2015-08-01-preview
+- [Vollständige Liste](../connectors/apis-list.md) aller Connectors, die unter der neuen Logik-Apps-Schemaversion 2015-08-01-preview ausgeführt werden  
 
-	- **Standort** – Wählen Sie den geografischen Standort, an dem Sie den Connector bereitstellen möchten.
-	- **Abonnement** – Wählen Sie ein Abonnement, in dem dieser Connector erstellt werden soll.
-	- **Ressourcengruppe** – Wählen oder erstellen Sie eine Ressourcengruppe, in der sich der Connector befinden soll.
-	- **App Service-Plan** – Wählen oder erstellen Sie einen Webhostingplan.
-	- **Tarif** – Wählen Sie einen Tarif für den Connector.
-	- **Name** – Geben Sie einen Namen für den Yammer-Connector ein.
-
-4. Klicken Sie auf "Erstellen". Es wird ein neuer Yammer-Connector erstellt.
-5. Sobald die API-App-Instanz erstellt wurde, können Sie eine Logik-App zur Verwendung des Yammer-Connectors erstellen.
-
-## Verwenden des Yammer-Connectors in Logik-Apps ##
-Sobald Ihre API-App erstellt wurde, können Sie den Yammer-Connector als Trigger oder Aktion für Ihre Logik-App verwenden. Gehen Sie hierzu wie folgt vor:
-
-1.	Erstellen Sie eine neue Logik-App: ![][2]
-
-2.	Öffnen Sie "Trigger und Aktionen", um den Logik-Apps-Designer zu öffnen und den Datenfluss zu konfigurieren: ![][3]
-
-3.	Der Yammer-Connector wird im Abschnitt "API-Apps in dieser Ressourcengruppe" im Katalog auf der rechten Seite angezeigt: ![][4]
-
-4. Sie können die Yammer-Connector-API-App im Editor bearbeiten, indem Sie auf den "Yammer-Connector" klicken. Klicken Sie auf die Schaltfläche "Autorisieren". Geben Sie Ihre Yammer-Anmeldeinformationen an. Klicken Sie auf "Zulassen": ![][5] ![][6] ![][7]
-
-Sie können nun den Yammer-Connector im Datenfluss verwenden.
-
-## Verwenden des Yammer-Connectors als Trigger
-
-Sie können die aus dem Yammer-Trigger ("Neue Nachricht") abgerufene neue Nachricht für andere Aktionen im Datenfluss verwenden. Konfigurieren Sie die Eingabeeigenschaften des Yammer-Triggers wie folgt:
-
-- **Gruppen-ID** - die ID der Gruppe, aus der die neue Nachricht abgerufen werden soll. Wenn die Gruppen-ID nicht angegeben wird, wird die Nachricht aus dem folgenden Feed abgerufen. Die Gruppen-ID kann aus der Gruppen-URL in Yammer abgerufen werden.
-		
-	Beispiel: Die Gruppen-ID in der folgenden URL lautet "5453203": https://www.yammer.com/microsoft.com/#/threads/inGroup?type=in_group&feedId=5453203 ![][8] ![][9]
-
-## Verwenden Sie den Yammer-Connector zum Bereitstellen einer Nachricht
-
-Sie können den Yammer-Connector auch als Aktion in Ihren Logik-Apps verwenden. Zunächst geben Sie einen Trigger für Ihre Logik-App an oder Sie aktivieren "Diese Logik manuell ausführen" (siehe unten). Fügen Sie den Yammer-Connector hinzu, autorisieren Sie ihn nach Bedarf, und wählen Sie die Aktion "Nachricht bereitstellen". Konfigurieren Sie die Eingabeeigenschaften für die Aktion "Nachricht bereitstellen" wie folgt:
-
-- **Nachrichtentext** - Textinhalt der bereitzustellenden Nachricht.
-- **Gruppen-ID** - Gibt die ID der Gruppe an, in der die neue Nachricht bereitgestellt werden soll. Wenn die Gruppen-ID nicht angegeben wird, wird die Nachricht im Feed für das gesamte Unternehmen bereitgestellt. Die Gruppen-ID kann aus der Gruppen-URL in Yammer abgerufen werden.  
-
-	Beispiel: Die Gruppen-ID in der folgenden URL lautet "5453203": https://www.yammer.com/microsoft.com/#/threads/inGroup?type=in_group&feedId=5453203
-- 	**Tag Users** – Ein Bereich von Netzwerkbenutzernamen, die in der Nachricht markiert werden müssen: ![][10] ![][11]
-
-## Mehr mit Ihrem Connector machen
-Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
-
->[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) sofort kostenlos eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-
-Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
-
-Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connector steuern. Informationen finden Sie unter [Verwalten und Überwachen integrierter API-Apps und Connectors](app-service-logic-monitor-your-connectors.md).
-
-<!--Image references-->
-[1]: ./media/app-service-logic-connector-yammer/img1.PNG
-[2]: ./media/app-service-logic-connector-yammer/img2.PNG
-[3]: ./media/app-service-logic-connector-yammer/img3.png
-[4]: ./media/app-service-logic-connector-yammer/img4.png
-[5]: ./media/app-service-logic-connector-yammer/img5.PNG
-[6]: ./media/app-service-logic-connector-yammer/img6.PNG
-[7]: ./media/app-service-logic-connector-yammer/img7.png
-[8]: ./media/app-service-logic-connector-yammer/img8.PNG
-[9]: ./media/app-service-logic-connector-yammer/img9.PNG
-[10]: ./media/app-service-logic-connector-yammer/img10.PNG
-[11]: ./media/app-service-logic-connector-yammer/img11.PNG
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erstellen eines virtuellen Computers mit SQL Server in PowerShell | Microsoft Azure"
-	description="Enthält Schritte und PowerShell-Skripts zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server."
+	pageTitle="Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch) | Microsoft Azure"
+	description="Enthält Schritte und PowerShell-Skripts zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server. In diesem Thema wird der klassische Bereitstellungsmodus verwendet."
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="01/22/2016"
+	ms.date="04/08/2016"
 	ms.author="jroth" />
 
-# Erstellen eines virtuellen Computers mit SQL Server in Azure (PowerShell)
+# Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch)
 
 ## Übersicht
 
@@ -24,14 +24,17 @@ Dieser Artikel enthält Schritte zum Erstellen eines virtuellen Computers mit SQ
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
-
 ## Installieren und Konfigurieren von PowerShell
 
 1. Wenn Sie kein Azure-Konto haben, sollten Sie die Seite [Kostenlose einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/) besuchen.
 
-2. [Installieren Sie die neuesten Azure PowerShell-Cmdlets](../powershell-install-configure.md/#how-to-install-azure-powershell).
+2. [Installieren Sie die neuesten Azure PowerShell-Cmdlets](../powershell-install-configure.md).
 
-3. [Verbinden Sie PowerShell mit Ihrem Azure-Abonnement](../powershell-install-configure.md/#how-to-connect-to-your-subscription).
+3. Starten Sie nach der Installation Windows PowerShell.
+
+4. Verknüpfen Sie dann mithilfe des Befehls „Add-AzureAccount“ PowerShell mit Ihrem Azure-Abonnement.
+
+		Add-AzureAccount
 
 ## Bestimmen Sie Ihre Azure-Zielregion
 
@@ -74,7 +77,7 @@ Ihr virtueller Computer mit SQL Server wird in einem Clouddienst gehostet, der s
 
 		Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
 
-1. Wenn Sie die Imagefamilie für virtuelle Computer gefunden haben, gibt es möglicherweise mehrere veröffentlichte Images in dieser Familie. Verwenden Sie das folgende Skript, um den Namen des Image zu ermitteln, das für die von Ihnen ausgewählte Imagefamilie das zuletzt veröffentlichte Image für virtuelle Computer ist (z. B. **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**):
+1. Wenn Sie die Imagefamilie für virtuelle Computer gefunden haben, gibt es möglicherweise mehrere veröffentlichte Images in dieser Familie. Verwenden Sie das folgende Skript, um den Namen des Image zu ermitteln, das für die von Ihnen ausgewählte Imagefamilie das zuletzt veröffentlichte Image für virtuelle Computer ist (z. B. **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**):
 
 		$family="<ImageFamily value>"
 		$image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
@@ -151,7 +154,7 @@ Das folgende Skript ist ein Beispiel für ein vollständiges Skript, das einen v
 		$documentspath = [environment]::getfolderpath("mydocuments")
 		Get-AzureRemoteDesktopFile -ServiceName $svcname -Name $vmname -LocalPath "$documentspath\vm1.rdp"
 
-1. Starten Sie die RDP-Datei im Verzeichnis „Dokumente“. Stellen Sie über die früher bereitgestellten Administrator-Anmeldeinformationen (Benutzername und Kennwort) eine Verbindung her (ist Ihr Benutzername z. B. „VMAdmin“, geben Sie „\\VMAdmin“ als Benutzer ein, und stellen Sie das Kennwort bereit).
+1. Starten Sie die RDP-Datei im Verzeichnis „Dokumente“. Stellen Sie über die früher bereitgestellten Administrator-Anmeldeinformationen (Benutzername und Kennwort) eine Verbindung her (ist Ihr Benutzername z. B. „VMAdmin“, geben Sie „\\VMAdmin“ als Benutzer ein, und stellen Sie das Kennwort bereit).
 
 		.\vm1.rdp
 
@@ -161,12 +164,12 @@ Nachdem Sie sich über Remotedesktop bei dem Computer angemeldet haben, konfigur
 
 ## Nächste Schritte
 
-Weitere Anleitungen zur Bereitstellung von virtuellen Computern mit PowerShell finden Sie in der [Dokumentation über virtuelle Computer](virtual-machines-windows-classic-create-powershell.md). Weitere Skripts im Zusammenhang mit SQL Server und Storage Premium finden Sie unter [Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern](virtual-machines-windows-classic-sql-server-premium-storage.md).
+Weitere Anleitungen zur Bereitstellung von virtuellen Computern mit PowerShell finden Sie in der [Dokumentation über virtuelle Computer](virtual-machines-windows-classic-create-powershell.md). Weitere Skripts im Zusammenhang mit SQL Server und Storage Premium finden Sie unter [Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern](virtual-machines-windows-classic-sql-server-premium-storage.md).
 
-In vielen Fällen ist der nächste Schritt, die Datenbanken auf diese neue SQL Server-VM zu migrieren. Anleitungen zur Datenbankmigration finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](virtual-machines-windows-classic-migrate-sql.md).
+In vielen Fällen ist der nächste Schritt, die Datenbanken auf diese neue SQL Server-VM zu migrieren. Anleitungen zur Datenbankmigration finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](virtual-machines-windows-migrate-sql.md).
 
-Wenn Sie auch wissen möchten, wie Sie das Azure-Portal zum Erstellen von virtuellen SQL-Computern verwenden können, lesen Sie [Provisioning a SQL Server Virtual Machine on Azure](virtual-machines-windows-portal-sql-server-provision.md) (Bereitstellen eines virtuellen SQL Server-Computers in Azure). Beachten Sie, dass das Tutorial, das Sie durch das Portal führt, die VMs mithilfe des empfohlenen Resource Manager-Modells anstelle des klassischen, in diesem PowerShell-Thema verwendeten Modells erstellt.
+Wenn Sie auch wissen möchten, wie Sie das Azure-Portal zum Erstellen von virtuellen SQL-Computern verwenden können, lesen Sie [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Beachten Sie, dass das Tutorial, das Sie durch das Portal führt, die VMs mithilfe des empfohlenen Resource Manager-Modells anstelle des klassischen, in diesem PowerShell-Thema verwendeten Modells erstellt.
 
-Zusätzlich zu diesen Ressourcen wird empfohlen, dass Sie sich die [anderen Themen im Zusammenhang mit Ausführen von SQL Server auf virtuellen Azure Computern](virtual-machines-windows-classic-sql-overview.md) ansehen.
+Zusätzlich zu diesen Ressourcen wird empfohlen, dass Sie sich die [anderen Themen im Zusammenhang mit Ausführen von SQL Server auf virtuellen Azure Computern](virtual-machines-windows-sql-server-iaas-overview.md) ansehen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

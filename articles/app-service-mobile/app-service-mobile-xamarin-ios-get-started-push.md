@@ -26,18 +26,9 @@ Dieses Tutorial baut auf dem [Xamarin iOS-Schnellstart-Tutorial](app-service-mob
 
 ##Voraussetzungen
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
-
-* Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile App-Back-Ends. Diese können Sie auch nach Ablauf der Testversion weiter nutzen. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-
-* Einen Mac, auf dem [Xamarin Studio] und [Xcode] ab Version 4.4 installiert sind. Sie können die Xamarin iOS-App auf Wunsch mithilfe von Visual Studio auf Ihrem Windows-Computer ausführen. Allerdings ist dies etwas kompliziert, da Sie eine Verbindung zu einem vernetzten Mac benötigen, auf dem der Xamarin.iOS Build Host ausgeführt wird. Wenn Sie daran interessiert sind, finden Sie Informationen dazu unter [Installation von Xamarin.iOS auf Windows].
+* Durchlaufen Sie das [Xamarin.iOS-Schnellstart-Tutorial](app-service-mobile-xamarin-ios-get-started.md).
 
 * Ein physisches iOS-Gerät. Pushbenachrichtigungen werden vom iOS-Simulator nicht unterstützt.
-
-* Eine [Apple-Entwicklerprogramm-Mitgliedschaft](https://developer.apple.com/programs/ios/), die für eine Registrierung beim Apple Push Notification Service (APNS) erforderlicher ist.
-
-* Durchlaufen Sie das [Xamarin.iOS-Schnellstart-Lernprogramm](app-service-mobile-xamarin-ios-get-started.md).
-
 
 ##Registrieren der App für Pushbenachrichtigungen im Apple-Entwicklerportal
 
@@ -164,9 +155,5 @@ Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 <!-- Images. -->
 
 <!-- URLs. -->
-[Xamarin Studio]: http://xamarin.com/platform
-[Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
-[Installation von Xamarin.iOS auf Windows]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

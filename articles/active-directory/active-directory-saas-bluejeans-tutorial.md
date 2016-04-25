@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Lernprogramm: Azure AD-Integration mit BlueJeans | Microsoft Azure" 
+    pageTitle="Tutorial: Azure Active Directory-Integration mit BlueJeans| Microsoft Azure" 
     description="Erfahren Sie, wie Sie BlueJeans mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
     authors="jeevansd"  
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="04/06/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure AD-Integration mit BlueJeans
@@ -111,8 +111,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Änderungen speichern](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "Änderungen speichern")
 
     1.  Geben Sie in das Textfeld **Benutzer-ID** den Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
-    2.  Geben Sie in das Textfeld **E-Mail** den Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
-    3.  Klicken Sie auf **Änderungen speichern**.
+2.  Geben Sie in das Textfeld **E-Mail** den Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
+3.  Klicken Sie auf **Änderungen speichern**.
 
 10. Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
@@ -129,7 +129,7 @@ Damit sich Azure AD-Benutzer bei BlueJeans anmelden können, müssen sie in Blu
 
     ![Admin](./media/active-directory-saas-bluejeans-tutorial/IC785877.png "Admin")
 
-    >[AZURE.IMPORTANT]Die Registerkarte **Add User** ist nur verfügbar, wenn auf der Registerkarte **Security** die Option **Enable automatic provisioning** deaktiviert ist.
+    >[AZURE.IMPORTANT] Die Registerkarte **Add User** ist nur verfügbar, wenn auf der Registerkarte **Security** die Option **Enable automatic provisioning** deaktiviert ist.
 
 3.  Führen Sie im Abschnitt **Add User** die folgenden Schritte aus:
 
@@ -138,7 +138,7 @@ Damit sich Azure AD-Benutzer bei BlueJeans anmelden können, müssen sie in Blu
     1.  Geben Sie Werte für **BlueJeans Username**, **Email address**, **BlueJeans Meeting ID**, **Moderator Passcode**, **Full Name** und **Company** eines gültigen AAD-Kontos für die Bereitstellung in die entsprechenden Textfelder ein.
     2.  Klicken Sie auf **Add User**.
 
->[AZURE.NOTE]Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von BlueJeans-Benutzerkonten oder mithilfe von APIs erstellen, die von BlueJeans zum Bereitstellen von AAD-Benutzerkonten bereitgestellt werden.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von BlueJeans-Benutzerkonten oder mithilfe von APIs erstellen, die von BlueJeans zum Bereitstellen von AAD-Benutzerkonten bereitgestellt werden.
 
 ##Zuweisen von Benutzern
 
@@ -158,4 +158,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

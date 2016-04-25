@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Erstellen von NSGs im klassischen Modus über die Azure-Befehlszeilenschnittstelle | Microsoft Azure"
    description="Hier erfahren Sie, wie Sie NSGs im klassischen Modus mithilfe der Azure-Befehlszeilenschnittstelle erstellen und bereitstellen."
    services="virtual-network"
@@ -8,7 +8,7 @@
    editor="tysonn"
    tags="azure-service-management"
 />
-<tags 
+<tags
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -32,7 +32,7 @@ Die folgenden Beispielbefehle für die Azure-Befehlszeilenschnittstelle setzen v
 ## Erstellen der NSG für das Front-End-Subnetz
 Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf dem oben beschriebenen Szenario die folgenden Schritte aus:
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 
 2. Führen Sie den Befehl **`azure config mode`** aus, um in den klassischen Modus zu wechseln, wie unten dargestellt.
 
@@ -104,12 +104,12 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 	- **-n (oder --name)**. Name der neuen Regel. In diesem Szenario *rdp-rule*.
 	- **-c (oder --action)**. Zugriffsebene für die Regel (Deny oder Allow).
 	- **-p (oder --protocol)**. Protokoll (Tcp, Udp oder *) für die Regel.
-	- **-r (oder --type)**. Richtung der Verbindung (Inbound oder Outbound).
+- **-r (oder --type)**. Richtung der Verbindung (Inbound oder Outbound).
 	- **-y (oder --priority)**. Priorität für die Regel.
 	- **-f (oder --source-address-prefix)**. Quelladresspräfix in CIDR oder Verwendung von Standardtags.
 	- **-o (oder --source-port-range)**. Quellport oder Portbereich.
 	- **-e (oder --destination-address-prefix)**. Zieladresspräfix in CIDR oder Verwendung von Standardtags.
-	- **-u (oder --destination-port-range)**. Zielport oder Portbereich.	
+	- **-u (oder --destination-port-range)**. Zielport oder Portbereich.
 
 5. Führen Sie den Befehl **`azure network nsg rule create`** aus, um eine Regel zu erstellen, die den Zugriff auf Port 80 (HTTP) über das Internet zulässt.
 
@@ -134,7 +134,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen **NSG-FrontEnd** basierend auf
 
 6. Führen Sie den Befehl **`azure network nsg subnet add`** aus, um die NSG mit dem Front-End-Subnetz zu verbinden.
 
-		azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd 
+		azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd
 
 	Erwartete Ausgabe:
 
@@ -228,7 +228,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-BackEnd* basierend auf de
 
 6. Führen Sie den Befehl **`azure network nsg subnet add`** aus, um die NSG mit dem Back-End-Subnetz zu verbinden.
 
-		azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd 
+		azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd
 
 	Erwartete Ausgabe:
 
@@ -239,4 +239,4 @@ Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-BackEnd* basierend auf de
 		info:    Creating a network security group "NSG-BackEndX"
 		info:    network nsg subnet add command OK
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

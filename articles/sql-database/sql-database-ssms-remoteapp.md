@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Herstellen einer Verbindung mit SQL-Datenbank mit SQL Server Management Studio in Azure RemoteApp | Microsoft Azure" 
+<properties
+	pageTitle="Herstellen einer Verbindung mit SQL-Datenbank mit SQL Server Management Studio in Azure RemoteApp | Microsoft Azure"
 	description="Sie erfahren in diesem Tutorial, wie Sie SQL Server Management Studio in Azure RemoteApp für Sicherheit und Leistung beim Verbinden mit SQL-Datenbank verwenden."
-	services="sql-database" 
+	services="sql-database"
 	documentationCenter=""
-	authors="adhurwit" 
+	authors="adhurwit"
 	manager=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="01/20/2016" 
+	ms.topic="article"
+	ms.date="04/12/2016"
 	ms.author="adhurwit"/>
 
 # Verwenden von SQL Server Management Studio in Azure RemoteApp zum Herstellen einer Verbindung mit SQL-Datenbank
@@ -20,11 +20,11 @@
 ## Einführung  
 In diesem Lernprogramm erfahren Sie, wie Sie SQL Server Management Studio (SSMS) in Azure RemoteApp zum Herstellen einer Verbindung mit SQL-Datenbank verwenden. Sie werden durch die Einrichtung von SQL Server Management Studio in Azure RemoteApp geführt. Außerdem werden die Vorteile beschrieben und Sicherheitsfeatures vorgestellt, die Sie in Azure Active Directory nutzen können.
 
-**Geschätzter Zeitaufwand:** 45 Minuten
+**Geschätzter Zeitaufwand:** 45 Minuten
 
 ## SSMS in Azure RemoteApp
 
-Azure RemoteApp ist ein RDS-Dienst in Azure, mit dem Anwendungen bereitgestellt werden. Weitere Informationen finden Sie unter [Was ist RemoteApp?](../remoteapp-whatis.md)
+Azure RemoteApp ist ein RDS-Dienst in Azure, mit dem Anwendungen bereitgestellt werden. Weitere Informationen finden Sie unter [Was ist RemoteApp?](../remoteapp/remoteapp-whatis.md).
 
 Die Ausführung von SSMS in Azure RemoteApp entspricht in Bezug auf die Oberfläche der lokalen Ausführung von SSMS.
 
@@ -34,16 +34,16 @@ Die Ausführung von SSMS in Azure RemoteApp entspricht in Bezug auf die Oberflä
 
 ## Vorteile
 
-Die Verwendung von SSMS in Azure RemoteApp hat viele Vorteile, z. B.:
+Die Verwendung von SSMS in Azure RemoteApp hat viele Vorteile, z. B.:
 
-- Port 1433 von Azure SQL Server muss nicht extern (außerhalb von Azure) verfügbar gemacht werden.
-- Es ist nicht erforderlich, in der Azure SQL Server-Firewall IP-Adressen hinzuzufügen und zu entfernen. 
-- Alle Azure RemoteApp-Verbindungen werden per HTTPS über Port 443 mit einem verschlüsselten Remotedesktopprotokoll hergestellt.
+- Port 1433 von Azure SQL Server muss nicht extern (außerhalb von Azure) verfügbar gemacht werden.
+- Es ist nicht erforderlich, in der Azure SQL Server-Firewall IP-Adressen hinzuzufügen und zu entfernen.
+- Alle Azure RemoteApp-Verbindungen werden per HTTPS über Port 443 mit einem verschlüsselten Remotedesktopprotokoll hergestellt.
 - Es besteht Mehrbenutzerfähigkeit und die Möglichkeit zur Skalierung.
 - Die Nutzung von SSMS in derselben Region wie die SQL-Datenbank führt zu Leistungssteigerungen.
 - Sie können die Nutzung von Azure RemoteApp mit der Premium Edition von Azure Active Directory überwachen und deren Aktivitätsberichte verwenden.
 - Sie können die Multi-Factor Authentication (MFA) aktivieren.
-- Zugriff auf SSMS ist von jedem Ort aus möglich, wenn Sie einen der unterstützten Azure RemoteApp-Clients verwenden, z. B. iOS, Android, Macintosh, Windows Phone und Windows-PCs.
+- Zugriff auf SSMS ist von jedem Ort aus möglich, wenn Sie einen der unterstützten Azure RemoteApp-Clients verwenden, z. B. iOS, Android, Macintosh, Windows Phone und Windows-PCs.
 
 
 ## Erstellen der Azure RemoteApp-Sammlung
@@ -52,18 +52,18 @@ Hier sind die Schritte zum Erstellen der Azure RemoteApp-Sammlung mit SSMS angeg
 
 
 ### 1\. Erstellen einer neuen Windows-VM aus einem Image
-Verwenden Sie das Image „Windows Server Remote Desktop Session Host Windows Server 2012 R2“ aus dem Katalog, um die neue VM zu erstellen.
+Verwenden Sie das Image „Windows Server Remote Desktop Session Host Windows Server 2012 R2“ aus dem Katalog, um die neue VM zu erstellen.
 
 
 ### 2\. Installieren von SSMS aus SQL Express
 
-Wechseln Sie auf den neuen virtuellen Computer, und navigieren Sie zu dieser Downloadseite: [Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/de-DE/download/details.aspx?id=42299).
+Wechseln Sie auf den neuen virtuellen Computer, und navigieren Sie zu dieser Downloadseite: [Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/de-DE/download/details.aspx?id=42299).
 
 Es ist eine Option zum Herunterladen von SSMS vorhanden. Navigieren Sie nach dem Download in das Installationsverzeichnis, und führen Sie das Setup zum Installieren von SSMS aus.
 
-Installieren Sie auch das SQL Server 2014 Service Pack 1. Sie können es hier herunterladen: [Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/de-DE/download/details.aspx?id=46694).
+Installieren Sie auch das SQL Server 2014 Service Pack 1. Sie können es hier herunterladen: [Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/de-DE/download/details.aspx?id=46694).
 
-SQL Server 2014 Service Pack 1 enthält wichtige Funktionen für die Verwendung von Azure SQL-Datenbank.
+SQL Server 2014 Service Pack 1 enthält wichtige Funktionen für die Verwendung von Azure SQL-Datenbank.
 
 
 ### 3\. Ausführen von „Skript überprüfen“ und Sysprep
@@ -158,4 +158,4 @@ Das ist erst einmal alles. Viel Spaß!
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

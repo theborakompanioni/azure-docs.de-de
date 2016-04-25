@@ -77,7 +77,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
 	
 	- **Neues Kennwort** und **Bestätigen**. Dieses Kennwort wird für das neue Administratorkonto verwendet, und es wird empfohlen, dass Sie ein sicheres Kennwort verwenden.
 	
-	- Klicken Sie auf **Weiter**. ![Weiter](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+	- Klicken Sie auf **Weiter**.![Weiter](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 
 1. Bearbeiten Sie auf der nächsten Seite die folgenden Felder:
 
@@ -163,7 +163,7 @@ Bei der Bereitstellung des virtuellen Computer wurde auf ihm ein selbstsignierte
 	
 	1. Zur Überprüfung doppelklicken Sie auf den Zertifikatnamen unter **Vertrauenswürdige Stammzertifizierungsstellen**, und vergewissern Sie sich, dass keine Fehler vorliegen und Sie Ihr Zertifikat sehen können. Wenn Sie das in diesem Thema enthaltene HTTPS-Skript verwenden möchten, um den Berichtsserver zu konfigurieren, ist der Wert, der für das Zertifikat als **Fingerabdruck** angegeben ist, als Parameter des Skripts erforderlich. **Um den Fingerabdruckwert abzurufen**, führen Sie die folgenden Schritte aus. Außerdem gibt es im Abschnitt [Verwenden eines Skripts, um den Berichtsserver und HTTPS zu konfigurieren](#use-script-to-configure-the-report-server-and-HTTPS) ein PowerShell-Beispiel, mit dem der Fingerabdruck abgerufen werden kann.
 		
-		1. Doppelklicken Sie auf den Namen des Zertifikats, z. B. „ssrsnativecloud.cloudapp.net“.
+		1. Doppelklicken Sie auf den Namen des Zertifikats, z. B. „ssrsnativecloud.cloudapp.net“.
 		
 		1. Klicken Sie auf die Registerkarte **Details**.
 		
@@ -525,7 +525,7 @@ Wenn Sie ein Windows PowerShell-Skript verwenden möchten, um den Berichtsserver
 	
 	- Klicken Sie auf die Registerkarte **Details**.
 	
-	- Klicken Sie auf **Fingerabdruck**. Der Wert des Fingerabdrucks wird im Feld „Details“ angezeigt, z. B. „af 11 60 b6 4 b 28 8 d 89 0a 82 12 ff 6 b a9 c3 66 4f 31 90 48“.
+	- Klicken Sie auf **Fingerabdruck**. Der Wert des Fingerabdrucks wird im Feld „Details“ angezeigt, z. B. „af 11 60 b6 4 b 28 8 d 89 0a 82 12 ff 6 b a9 c3 66 4f 31 90 48“.
 	
 	- **Bevor Sie das Skript ausführen**, müssen Sie die Leerzeichen zwischen den Wertepaaren entfernen. Zum Beispiel „af1160b64b288d890a8212ff6ba9c3664f319048“.
 
@@ -571,7 +571,7 @@ Wenn Sie nicht das PowerShell-Skript ausführen möchten, um den Berichtsserver 
 
 1. Standardmäßig ist Reporting Services für den HTTP-Port 80 mit der IP-Einstellung „Alle zugewiesenen“ konfiguriert. So fügen Sie HTTPS hinzu:
 
-	1. Wählen Sie in **SSL-Zertifikat** das Zertifikat aus, das Sie verwenden möchten, z. B. [VM-Name].cloudapp.net. Wenn keine Zertifikate aufgelistet werden, lesen Sie den Abschnitt **Schritt2: Erstellen eines Serverzertifikats**. Dort finden Sie Informationen dazu, wie das Zertifikat auf dem virtuellen Computer installiert und als vertrauenswürdig eingestuft wird.
+	1. Wählen Sie in **SSL-Zertifikat** das Zertifikat aus, das Sie verwenden möchten, z. B. [VM-Name].cloudapp.net. Wenn keine Zertifikate aufgelistet werden, lesen Sie den Abschnitt **Schritt2: Erstellen eines Serverzertifikats**. Dort finden Sie Informationen dazu, wie das Zertifikat auf dem virtuellen Computer installiert und als vertrauenswürdig eingestuft wird.
 	
 	1. Wählen Sie unter **SSL-Port** die Portnummer „443“ aus. Wenn Sie den privaten HTTPS-Endpunkt auf dem virtuellen Computer mit einem anderen Port konfiguriert haben, verwenden Sie diesen Wert hier.
 	
@@ -633,7 +633,7 @@ Damit Sie sich vergewissern können, dass die grundlegenden Berichtsserverfunkti
 
 		http://localhost/Reports
 
-- Navigieren Sie auf Ihrem lokalen Computer zu dem **Remote**-Berichts-Manager auf dem virtuellen Computer. Aktualisieren Sie den DNS-Namen im folgenden Beispiel entsprechend Ihren Anforderungen. Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie die Administratoranmeldeinformationen, die Sie beim Bereitstellen des virtuellen Computers angegeben haben. Der Benutzername hat das Format [Domäne]\[Benutzername], wobei die Domäne dem Namen des virtuellen Computers entspricht, z. B. „ssrsnativecloud\\testuser“. Wenn Sie nicht HTTPS verwenden, entfernen Sie das **S** aus der URL. Informationen, wie Sie weitere Benutzer auf dem virtuellen Computer erstellen, finden Sie im nächsten Abschnitt.
+- Navigieren Sie auf Ihrem lokalen Computer zu dem **Remote**-Berichts-Manager auf dem virtuellen Computer. Aktualisieren Sie den DNS-Namen im folgenden Beispiel entsprechend Ihren Anforderungen. Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie die Administratoranmeldeinformationen, die Sie beim Bereitstellen des virtuellen Computers angegeben haben. Der Benutzername hat das Format [Domäne](Benutzername), wobei die Domäne dem Namen des virtuellen Computers entspricht, z. B. „ssrsnativecloud\\testuser“. Wenn Sie nicht HTTPS verwenden, entfernen Sie das **S** aus der URL. Informationen, wie Sie weitere Benutzer auf dem virtuellen Computer erstellen, finden Sie im nächsten Abschnitt.
 
 		https://ssrsnativecloud.cloudapp.net/Reports
 
@@ -703,6 +703,6 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 
 ### Links zu anderen Ressourcen für SQL Server auf virtuellen Azure Computern:
 
-[Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md)
+[Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md)
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Informationen zu Datenträgern und VHDs | Microsoft Azure"
-	description="Machen Sie sich mit den Grundlagen von Datenträgern und VHDs für virtuelle Azure-Computern vertraut."
+	pageTitle="Informationen zu Datenträgern und VHDs für virtuelle Linux-Computer | Microsoft Azure"
+	description="Machen Sie sich mit den Grundlagen von Datenträgern und VHDs für virtuelle Linux-Computer vertraut."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="cynthn"
@@ -19,6 +19,8 @@
 
 # Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer
 
+Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Datenträger, auf dem das Betriebssystem, Anwendungen und Daten gespeichert sind. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Linux-Betriebssystem (im Fall eines virtuellen Linux-Computers) und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die im Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-about-disks-vhds.md) verfügbar.
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-about-disks-vhds](../../includes/virtual-machines-common-about-disks-vhds.md)]
@@ -29,4 +31,4 @@
 -  [Konfigurieren von Software-RAID](virtual-machines-linux-configure-raid.md) für Redundanz
 -  [Erfassen eines virtuellen Linux-Computers](virtual-machines-linux-classic-capture-image.md) für die schnelle Bereitstellung zusätzlicher virtueller Computer
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

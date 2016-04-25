@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="04/07/2016"
    ms.author="hascipio"/>
 
 # Erstellen eines Microsoft-Entwicklerkontos
@@ -147,7 +147,11 @@ Das Azure-Veröffentlichungsportal dient zum Veröffentlichen und Verwalten Ihre
 
   > [AZURE.TIP] Die Teilnahmerichtlinien werden auf der [Azure-Website](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) beschrieben.
 
-  > Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, öffnen Sie wie nachfolgend beschrieben ein Supportticket: 1. Wenden Sie sich an den [Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=de-DE&pesid=15635&ccsid=635847950577064286). 2. Wählen Sie **Developer Center** aus. 3. Wählen Sie **Profil**. 4. Wählen Sie die Methode für die Kontaktaufnahme aus.
+  > Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, öffnen Sie wie nachfolgend beschrieben ein Supportticket:
+  1. Wenden Sie sich an den [Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=de-DE&pesid=15635&ccsid=635847950577064286).
+  2. Wählen Sie **Developer Center** aus.
+  3. Wählen Sie **Profil**.
+  4. Wählen Sie die Methode für die Kontaktaufnahme aus.
 
 
 
@@ -159,10 +163,10 @@ Nachdem Ihr Konto erstellt und registriert wurde, klicken Sie auf den Artefaktty
 
 || VM-Image | Entwicklerdienst | Datendienst | Lösungsvorlage |
 |----|-----|-----|-----|-----|
-|**Schritt 2: Erstellen Ihres Angebots** |[Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)|
-|| [Technische Voraussetzungen für VM-Images][link-single-vm-prereq] | Technische Voraussetzungen für Entwicklerdienste | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
-|| [Anleitung zum Veröffentlichen von VM-Images][link-single-vm] | Anleitung zum Veröffentlichen von Entwicklerdiensten | [Anleitung zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md) | [Anleitung zum Veröffentlichen von Lösungsvorlagen](marketplace-publishing-solution-template-creation.md) |
-|| [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] |
+|**Schritt 2: Erstellen Ihres Angebots** |[Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| Private Vorschau | [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)|
+|| [Technische Voraussetzungen für VM-Images][link-single-vm-prereq] | Private Vorschau | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
+|| [Anleitung zum Veröffentlichen von VM-Images][link-single-vm] | Private Vorschau | [Anleitung zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md) | [Anleitung zum Veröffentlichen von Lösungsvorlagen](marketplace-publishing-solution-template-creation.md) |
+|| [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | Private Vorschau | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] |
 
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
@@ -194,4 +198,4 @@ Nachdem Ihr Konto erstellt und registriert wurde, klicken Sie auf den Artefaktty
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

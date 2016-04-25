@@ -3,9 +3,9 @@
 	description="Vergleicht die Tools und Optionen zum Verwalten von Azure SQL-Datenbank"
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
-	editor="jeffreyg"/>
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
 	ms.service="sql-database"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
-	ms.author="jeffreyg"/>
+	ms.date="04/04/2016"
+	ms.author="sstein"/>
 
 # Übersicht: Verwaltungstools für SQL-Datenbank
 
@@ -36,4 +36,12 @@ Sie können Befehlszeilentools wie z. B. PowerShell zur Verwaltung von Datenban
 
 Weitere Informationen zum Verwalten von Azure SQL-Datenbanken mit Befehlszeilentools finden Sie unter [Verwalten von SQL-Datenbanken mit PowerShell](sql-database-command-line-tools.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+## Tools für elastische Datenbanken
+Verwenden Sie Tools für elastische Datenbanken, um folgende Aktionen auszuführen:
+
+* Ausführen eines T-SQL-Skripts für einen Satz von Datenbanken mithilfe eines [elastischen Auftrags](sql-database-elastic-jobs-overview.md)
+* Verschieben von Datenbanken aus einem Modell mit mehreren Mandanten in ein Model mit einem Mandanten mithilfe des [Split-Merge-Tools](sql-database-elastic-scale-overview-split-and-merge.md)
+* Verwalten von Datenbanken in einem Modell mit einem Mandanten oder mehreren Mandanten mithilfe der [Clientbibliothek für die elastische Skalierung](sql-database-elastic-database-client-library.md)
+ 
+
+<!---HONumber=AcomDC_0413_2016-->

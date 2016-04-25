@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
+	ms.date="04/07/2016" 
 	ms.author="billmath"/>
 
 # Konfigurieren von Azure Multi-Factor Authentication
@@ -36,7 +36,7 @@ Funktion| Beschreibung| Inhalt
 [Vertrauenswürdige IPs](#trusted-ips)|Vertrauenswürdige IP-Adressen ist ein Feature der mehrstufigen Authentifizierung, mit der Administratoren eines verwalteten oder verbundenen Mandanten die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom lokalen Intranet des Unternehmens aus anmelden.|Konfigurieren und Einrichten von IP-Adressen, die von der mehrstufigen Authentifizierung ausgenommen sind	
 [App-Kennwörter](#app-passwords)|Mit App-Kennwörtern kann eine Anwendung, die die mehrstufige Authentifizierung nicht erkennt, diese umgehen und weiter ausgeführt werden.|Informationen zu App-Kennwörter.
 [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-users-trust)|Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde.|Informationen zum Aktivieren dieser Funktion und zum Einrichten der Anzahl von Tagen.
-[Auswählbare Verifizierungsmethoden (öffentliche Vorschau)](#selectable-verification-methods-public-preview)|Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten.|Informationen zum Aktivieren oder Deaktivieren bestimmter Authentifizierungsmethoden, beispielweise per Anruf oder SMS.
+[Auswählbare Verifizierungsmethoden](#selectable-verification-methods)|Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten.|Informationen zum Aktivieren oder Deaktivieren bestimmter Authentifizierungsmethoden, beispielweise per Anruf oder SMS.
 
 
 
@@ -98,9 +98,11 @@ Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifiziere
 1.	Melden Sie sich bei http://azure.microsoft.com an.
 2.	Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 3.	Wenn im Azure Multi-Factor Authentication-Verwaltungsportal links neben dem Namen Ihres Mandanten oder Azure MFA-Anbieters ein Pluszeichen („+“) angezeigt wird, klicken Sie darauf, um die verschiedenen Replikationsgruppen des MFA-Servers und die Azure Standardgruppe anzuzeigen. Klicken Sie auf die passende Gruppe.
-4.	Klicken Sie unter „Benutzerverwaltung“ auf **Einmalumgehung**. ![Cloud](./media/multi-factor-authentication-whats-next/create1.png)
+4.	Klicken Sie unter „Benutzerverwaltung“ auf **Einmalumgehung**.
+![Cloud](./media/multi-factor-authentication-whats-next/create1.png)
 5.	Klicken Sie auf der Seite „Einmalumgehung“ auf **Neue Einmalumgehung**.
-6.	Geben Sie den Benutzernamen, die Anzahl von Sekunden, für die die Umgehung vorhanden sein soll, und den Grund für die Umgehung ein, und klicken Sie dann auf **Umgehen**. ![Cloud](./media/multi-factor-authentication-whats-next/create2.png)
+6.	Geben Sie den Benutzernamen, die Anzahl von Sekunden, für die die Umgehung vorhanden sein soll, und den Grund für die Umgehung ein, und klicken Sie dann auf **Umgehen**.
+![Cloud](./media/multi-factor-authentication-whats-next/create2.png)
 7.	An diesem Punkt muss sich der Benutzer anmelden, bevor die Einmalumgehung abläuft.
 
 
@@ -134,10 +136,14 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 2.	Melden Sie sich bei http://azure.microsoft.com an.
 3.	Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 4.	Klicken Sie im Abschnitt „Konfigurieren“ des Azure Multi-Factor Authentication-Verwaltungsportals auf „Sprachnachrichten“.
-5.	Klicken Sie im Abschnitt „Sprachnachrichten“ auf **Neue Sprachnachricht**. ![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)
-6.	Klicken Sie auf der Seite „Konfigurieren: Neue Sprachnachrichten“ auf **Audiodateien verwalten**. ![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)
-7.	Klicken Sie auf der Seite „Konfigurieren: Audiodateien“ auf **Audiodatei hochladen**. ![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)
-8.	Klicken Sie auf der Seite „Konfigurieren: Audiodatei hochladen“ auf **Durchsuchen**, navigieren Sie zu Ihrer Sprachnachricht, und klicken Sie dann auf **Öffnen**. ![Cloud](./media/multi-factor-authentication-whats-next/custom4.png)
+5.	Klicken Sie im Abschnitt „Sprachnachrichten“ auf **Neue Sprachnachricht**.
+![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)
+6.	Klicken Sie auf der Seite „Konfigurieren: Neue Sprachnachrichten“ auf **Audiodateien verwalten**.
+![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)
+7.	Klicken Sie auf der Seite „Konfigurieren: Audiodateien“ auf **Audiodatei hochladen**.
+![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)
+8.	Klicken Sie auf der Seite „Konfigurieren: Audiodatei hochladen“ auf **Durchsuchen**, navigieren Sie zu Ihrer Sprachnachricht, und klicken Sie dann auf **Öffnen**.
+![Cloud](./media/multi-factor-authentication-whats-next/custom4.png)
 9.	Fügen Sie eine Beschreibung hinzu, und klicken Sie auf "Hochladen".
 10.	Sobald dies abgeschlossen ist, sehen Sie eine Meldung, dass Sie die Datei erfolgreich hochgeladen haben.
 11.	Klicken Sie auf der linken Seite auf "Sprachnachrichten".
@@ -146,13 +152,14 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 14.	Wenn diese Nachricht für eine bestimmte Anwendung gedacht ist, geben Sie dies im Feld "Anwendung" ein.
 15.	Wählen Sie in "Nachrichtentyp" den Nachrichtentyp aus, der von der neuen benutzerdefinierten Nachricht überschrieben wird.
 16.	Wählen Sie aus der Dropdownliste "Audiodatei" Ihre Audiodatei aus.
-17.	Klicken Sie auf **Erstellen**. Es wird eine Meldung angezeigt, die besagt, dass Sie erfolgreich eine Sprachnachricht erstellt haben. ![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
+17.	Klicken Sie auf **Erstellen**. Es wird eine Meldung angezeigt, die besagt, dass Sie erfolgreich eine Sprachnachricht erstellt haben.
+![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 
 
 ## Zwischenspeichern in Azure Multi-Factor Authentication
 
-Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. Dies wird hauptsächlich verwendet, wenn lokale Systeme, wie z. B. VPNs, mehrere Verifizierungsanfragen senden, während die erste Anfrage noch bearbeitet wird. Dadurch werden die nachfolgenden Anforderungen automatisch erfolgreich ausgeführt, nachdem die laufende Verifizierungsanfrage für den Benutzer erfolgreich ausgeführt wurde. Beachten Sie, dass das Zwischenspeichern nicht für Anmeldungen bei Azure AD gedacht ist.
+Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. Dies wird hauptsächlich verwendet, wenn lokale Systeme, wie z. B. VPNs, mehrere Verifizierungsanfragen senden, während die erste Anfrage noch bearbeitet wird. Dadurch werden die nachfolgenden Anforderungen automatisch erfolgreich ausgeführt, nachdem die laufende Verifizierungsanfrage für den Benutzer erfolgreich ausgeführt wurde. Beachten Sie, dass das Zwischenspeichern nicht für Anmeldungen bei Azure AD gedacht ist.
 
 
 ### Einrichten der Zwischenspeicherung in Azure Multi-Factor Authentication
@@ -195,7 +202,7 @@ Außerhalb des Unternehmensnetzwerks|Für Browserflüsse, für die eine mehrstuf
 6. Wählen Sie auf der Seite „Diensteinstellungen“ unter „Vertrauenswürdige IPs“ entweder:
 
 	- Für Anforderungen von verbundene Benutzern, die aus meinem Intranet stammen – Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die mehrstufige Authentifizierung mithilfe eines von AD FS ausgestellten Anspruchs. 
-	- Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs – Geben Sie mithilfe der CIDR-Notation die IP-Adressen in die Textfelder ein. Beispiel: xxx.xxx.xxx.0/24 für IP-Adressen im Bereich xxx.xxx.xxx. 1 – xxx.xxx.xxx. 254 oder xxx.xxx.xxx.xxx/32 für eine einzelne IP-Adresse. Sie können bis zu 50 IP-Adressbereiche eingeben.
+	- Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs – Geben Sie mithilfe der CIDR-Notation die IP-Adressen in die Textfelder ein. Beispiel: xxx.xxx.xxx.0/24 für IP-Adressen im Bereich xxx.xxx.xxx. 1 – xxx.xxx.xxx. 254 oder xxx.xxx.xxx.xxx/32 für eine einzelne IP-Adresse. Sie können bis zu 50 IP-Adressbereiche eingeben.
 
 7. Klicken Sie auf "Speichern".
 8. Sobald die Updates angewendet wurden, klicken Sie auf "Schließen".
@@ -213,7 +220,7 @@ In einigen Anwendungen wie Office 2010 oder älter und Apple Mail können Sie ke
 
 >[AZURE.NOTE] Moderne Authentifizierung für Office 2013-Clients
 >
-> Office 2013-Clients (einschließlich Outlook) unterstützen jetzt neue Authentifizierungsprotokolle und bieten die Möglichkeit zum Aktivieren von Multi-Factor Authentication. Damit sind nach der Aktivierung keine App-Kennwörter mehr für Office 2013-Clients erforderlich. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/) ("Öffentliche Preview für moderne Authentifizierung in Office 2013", in englischer Sprache).
+> Office 2013-Clients (einschließlich Outlook) unterstützen jetzt neue Authentifizierungsprotokolle und bieten die Möglichkeit zum Aktivieren von Multi-Factor Authentication. Damit sind nach der Aktivierung keine App-Kennwörter mehr für Office 2013-Clients erforderlich. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/) ("Öffentliche Preview für moderne Authentifizierung in Office 2013", in englischer Sprache).
 
 
 
@@ -295,7 +302,7 @@ Darüber hinaus können Benutzer App-Kennwörter auch später erstellen, durch �
 --------------------------------------------------------------------------------
 
 
-1. Melden Sie sich beim Office 365-Portal an.
+1. Melden Sie sich beim Office 365-Portal an.
 2. Wählen Sie in der oberen rechten Ecke das Einstellungs-Widget aus.
 3. Wählen Sie links "Zusätzliche Sicherheitsüberprüfung".
 4. Wählen Sie auf der rechten Seite **Aktualisieren meiner Telefonnummern für die Kontosicherheit**.
@@ -349,13 +356,14 @@ Da Benutzer jedoch MFA für vertrauenswürdige Geräte speichern können, wird d
 3. Klicken Sie unter „Active Directory“ auf das Verzeichnis, in dem Sie das Speichern der Multi-Factor Authentication für Geräte einrichten möchten.
 4. Klicken Sie im ausgewählten Verzeichnis auf "Konfigurieren".
 5. Klicken Sie im Abschnitt "Multi-Factor Authentication" auf "Diensteinstellungen verwalten".
-6. Aktivieren oder deaktivieren Sie auf der Seite „Diensteinstellungen“ unter „Geräteeinstellungen von Benutzern verwalten“ die Option **Benutzern erlauben, Multi-Factor Authentication auf Geräten zu speichern, denen sie vertrauen**. ![Speichern von Geräten](./media/multi-factor-authentication-whats-next/remember.png)
-8. Legen Sie die Anzahl von Tagen fest, an denen Sie die Aussetzung zulassen möchten. Der Standardwert ist 14 Tage.
+6. Aktivieren oder deaktivieren Sie auf der Seite „Diensteinstellungen“ unter „Geräteeinstellungen von Benutzern verwalten“ die Option **Benutzern erlauben, Multi-Factor Authentication auf Geräten zu speichern, denen sie vertrauen**.
+![Speichern von Geräten](./media/multi-factor-authentication-whats-next/remember.png)
+8. Legen Sie die Anzahl von Tagen fest, an denen Sie die Aussetzung zulassen möchten. Der Standardwert ist 14 Tage.
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
 
-## Auswählbare Verifizierungsmethoden (öffentliche Vorschau)
+## Auswählbare Verifizierungsmethoden
 Es ist jetzt möglich, die Authentifizierungsmethoden auszuwählen, die Ihren Benutzern bei der Azure Multi-Factor Authentication zur Verfügung stehen. Dieses Feature war zuvor nur in der lokalen Serverversion verfügbar. Die Tabelle unten bietet einen kurzen Überblick über die verschiedenen Authentifizierungsmethoden, die Sie für Ihre Benutzer aktivieren oder deaktivieren können.
 
 Methode|Beschreibung
@@ -376,4 +384,4 @@ Methode|Beschreibung
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

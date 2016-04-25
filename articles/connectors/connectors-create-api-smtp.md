@@ -22,12 +22,12 @@ Stellen Sie eine Verbindung mit einem SMTP-Server zum Senden von E-Mail her. Die
 
 - Logik-Apps
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [SMTP-Connector](../app-service-logic/app-service-logic-connector-smtp.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Mit SMTP können Sie folgende Aktionen ausführen:
 
 - Erstellen Ihres Geschäftsworkflows einschließlich Senden von E-Mail per SMTP 
-- Verwenden einer Aktion zum Senden von E-Mail Diese Aktion erhält eine Antwort und stellt anschließend die Ausgabe anderen Aktionen zur Verfügung. Befindet sich eine neue Datei auf dem FTP-Server, können Sie diese Datei z. B. als E-Mail-Anlage mithilfe von SMTP senden. 
+- Verwenden einer Aktion zum Senden von E-Mail Diese Aktion erhält eine Antwort und stellt anschließend die Ausgabe anderen Aktionen zur Verfügung. Befindet sich eine neue Datei auf dem FTP-Server, können Sie diese Datei z. B. als E-Mail-Anlage mithilfe von SMTP senden. 
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -49,7 +49,7 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte e
 | Benutzername |Ja |Geben Sie den Benutzernamen für die Verbindung mit dem SMTP-Server ein. |
 | Kennwort | Ja|Geben Sie das Kennwort für den Benutzernamen ein. |
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die SMTP-Eigenschaften, z. B. die Werte für Empfänger und CC, ein. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie eine Verbindung hergestellt haben, geben Sie die SMTP-Eigenschaften, z. B. die Werte für Empfänger und CC, ein. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können dieselbe SMTP-Verbindung in anderen Logik-Apps verwenden.
 
@@ -69,7 +69,8 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 
 | Name | Datentyp | Erforderlich|
 |---|---|---|
-|To|string|no|
+|To  
+|string|no|
 |CC|string|no|
 |Betreff|string|no|
 |Body|string|no|
@@ -92,6 +93,6 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

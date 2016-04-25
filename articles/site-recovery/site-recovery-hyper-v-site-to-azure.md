@@ -41,7 +41,7 @@ Site Recovery kann in verschiedenen Szenarien verwendet werden und für den Schu
 
 ## Voraussetzungen für Azure
 
-- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](pricing/free-trial/) zur Verfügung.
+- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](pricing/free-trial/) zur Verfügung.
 - Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Tresor befinden und dem gleichen Abonnement zugeordnet sein. [Weitere Informationen zu Azure Storage](../storage/storage-introduction.md) Beachten Sie, dass das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellt wurden, über Ressourcengruppen hinweg nicht unterstützt wird.
 - Sie benötigen ein virtuelles Azure-Netzwerk, damit für virtuelle Azure-Maschinen eine Netzwerkverbindung besteht, wenn Sie ein Failover von Ihrem primären Standort durchführen.
 
@@ -58,7 +58,7 @@ Die zu schützenden virtuellen Computer müssen die [Anforderungen für virtuell
 
 ## Voraussetzungen für Anbieter und Agent
 
-Im Rahmen der Azure Site Recovery-Bereitstellung werden auf jedem Hyper-V-Server der Azure Site Recovery-Anbieter und der Azure Recovery Services-Agent installiert. Beachten Sie Folgendes:
+Im Rahmen der Azure Site Recovery-Bereitstellung werden auf jedem Hyper-V-Server der Azure Site Recovery-Anbieter und der Azure Recovery Services-Agent installiert. Beachten Sie Folgendes:
 
 - Es wird empfohlen, immer die aktuellen Versionen des Anbieters und des Agents auszuführen Diese sind im Site Recovery-Portal verfügbar.
 - Alle Hyper-V-Server in einem Tresor sollten über die gleichen Versionen des Anbieters und Agents verfügen.
@@ -69,7 +69,7 @@ Im Rahmen der Azure Site Recovery-Bereitstellung werden auf jedem Hyper-V-Server
 	- *.blob.core.windows.net
 	- *.store.core.windows.net
 	
-- Lassen Sie außerdem die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
+- Lassen Sie außerdem die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
 
 
 Diese Grafik zeigt die verschiedenen Kommunikationskanäle und Ports, die Site Recovery für die Orchestrierung und Replikation verwendet.
@@ -77,7 +77,7 @@ Diese Grafik zeigt die verschiedenen Kommunikationskanäle und Ports, die Site R
 ![B2A-Topology](./media/site-recovery-hyper-v-site-to-azure/b2a-topology.png)
 
 
-## Schritt 1: Erstellen eines Tresors
+## Schritt 1: Erstellen eines Tresors
 
 1. Melden Sie sich im [Verwaltungsportal](https://portal.azure.com) an.
 
@@ -98,7 +98,7 @@ Diese Grafik zeigt die verschiedenen Kommunikationskanäle und Ports, die Site R
 Überprüfen Sie auf der Statusleiste, ob der Tresor erfolgreich erstellt wurde. Der Tresor wird auf der Hauptseite von Recovery Services als **aktiv** aufgelistet.
 
 
-## Schritt 2: Erstellen eines Hyper-V-Standorts
+## Schritt 2: Erstellen eines Hyper-V-Standorts
 
 1. Klicken Sie auf der Seite Recovery Services auf den Tresor, um die Seite "Schnellstart" zu öffnen. Schnellstart kann auch jederzeit über das Symbol geöffnet werden.
 
@@ -113,19 +113,19 @@ Diese Grafik zeigt die verschiedenen Kommunikationskanäle und Ports, die Site R
 	![Hyper-V-Standort](./media/site-recovery-hyper-v-site-to-azure/create-site.png)
 
 
-## Schritt 3: Installieren des Anbieters und des Agents
+## Schritt 3: Installieren des Anbieters und des Agents
 Installieren Sie den Anbieter und den Agent auf allen Hyper-V-Servern, die zu schützende VMs enthalten.
 
-Wenn Sie die Installation für einen Hyper-V-Cluster vornehmen, führen Sie die Schritte 5 bis 11 auf jedem Knoten des Failoverclusters durch. Wenn alle Knoten registriert sind und der Schutz aktiviert wurde, sind die virtuellen Computer sogar bei der knotenübergreifenden Migration innerhalb des Clusters geschützt.
+Wenn Sie die Installation für einen Hyper-V-Cluster vornehmen, führen Sie die Schritte 5 bis 11 auf jedem Knoten des Failoverclusters durch. Wenn alle Knoten registriert sind und der Schutz aktiviert wurde, sind die virtuellen Computer sogar bei der knotenübergreifenden Migration innerhalb des Clusters geschützt.
 
 1. Klicken Sie unter **Hyper-V-Server vorbereiten** auf **Registrierungsschlüssel herunterladen**.
-2. Klicken Sie auf der Seite **Registrierungsschlüssel herunterladen** neben dem Standort auf **Herunterladen**. Laden Sie den Schlüssel an einen sicheren Speicherort herunter, auf den der Hyper-V-Server einfach zugreifen kann. Der Schlüssel ist nach der Erstellung 5 Tage lang gültig.
+2. Klicken Sie auf der Seite **Registrierungsschlüssel herunterladen** neben dem Standort auf **Herunterladen**. Laden Sie den Schlüssel an einen sicheren Speicherort herunter, auf den der Hyper-V-Server einfach zugreifen kann. Der Schlüssel ist nach der Erstellung 5 Tage lang gültig.
 
 	![Registrierungsschlüssel](./media/site-recovery-hyper-v-site-to-azure/download-key.png)
 
 4. Klicken Sie auf **Anbieter herunterladen**, um die neueste Version herunterzuladen.
 5. Führen Sie die Datei auf allen Hyper-V-Servern aus, die Sie im Tresor registrieren möchten. Die Datei installiert zwei Komponenten:
-	- **Azure Site Recovery-Anbieter**: Diese Komponente ist zuständig für die Kommunikation und Orchestrierung zwischen Hyper-V-Server und Azure Site Recovery-Portal.
+	- **Azure Site Recovery-Anbieter**: Diese Komponente ist zuständig für die Kommunikation und Orchestrierung zwischen Hyper-V-Server und Azure Site Recovery-Portal.
 	- **Azure Recovery Services-Agent**: Diese Komponente ist zuständig für den Datentransport zwischen virtuellen Computern auf dem Hyper-V-Quellserver und Azure-Speicher.
 6. Unter **Microsoft Update** können Sie Updates abonnieren. Mit dieser Einstellung werden Anbieter- und Agent-Updates gemäß Ihrer Microsoft Update-Richtlinie installiert.
 
@@ -160,7 +160,7 @@ Wenn Sie die Installation für einen Hyper-V-Cluster vornehmen, führen Sie die 
 
 ### Installieren des Anbieters über die Befehlszeile
 
-Alternativ können Sie den Azure Site Recovery-Anbieter auch über die Befehlszeile installieren. Verwenden Sie dieses Verfahren, wenn Sie den Anbieter auf einem Computer mit Windows Server Core 2012 R2 installieren möchten. Führen Sie über die Befehlszeile Folgendes aus:
+Alternativ können Sie den Azure Site Recovery-Anbieter auch über die Befehlszeile installieren. Verwenden Sie dieses Verfahren, wenn Sie den Anbieter auf einem Computer mit Windows Server Core 2012 R2 installieren möchten. Führen Sie über die Befehlszeile Folgendes aus:
 
 1. Laden Sie die Installationsdatei und den Registrierungsschlüssel des Anbieters in einen Ordner herunter. Beispiel: C:\\ASR.
 2. Führen Sie eine Eingabeaufforderung als Administrator aus, und geben Sie Folgendes ein:
@@ -187,25 +187,25 @@ Parameter:
 
 ## Schritt 4: Erstellen eines Azure-Speicherkontos 
 
-1. Wählen Sie unter **Ressourcen vorbereiten** die Option **Speicherkonto erstellen** aus, um ein Azure-Speicherkonto zu erstellen, sofern noch nicht vorhanden. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region befinden wie der Azure Site Recovery-Tresor und dem gleichen Abonnement zugeordnet sein.
+1. Wählen Sie unter **Ressourcen vorbereiten** die Option **Speicherkonto erstellen** aus, um ein Azure-Speicherkonto zu erstellen, sofern noch nicht vorhanden. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region befinden wie der Azure Site Recovery-Tresor und dem gleichen Abonnement zugeordnet sein.
 
 	![Speicherkonto erstellen](./media/site-recovery-hyper-v-site-to-azure/create-resources.png)
 
 >[AZURE.NOTE] Das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellt wurden, über Ressourcengruppen hinweg wird nicht unterstützt.
 
 
-## Schritt 5: Erstellen und Konfigurieren von Schutzgruppen
+## Schritt 5: Erstellen und Konfigurieren von Schutzgruppen
 
 Schutzgruppen sind logische Gruppen virtueller Computer, für die die gleichen Schutzeinstellungen gelten sollen. Sie weisen einer Schutzgruppe Schutzeinstellungen zu, die für alle virtuellen Computer gelten, die Sie der Gruppe hinzufügen.
 
 1. Klicken Sie in **Schutzgruppen erstellen und konfigurieren** auf **Schutzgruppe erstellen**. Falls nicht alle Voraussetzungen erfüllt sind, erscheint eine entsprechende Meldung. Klicken Sie auf **Details anzeigen**, um weitere Informationen zu erhalten.
 
-2. Fügen Sie auf der Registerkarte **Schutzgruppen** eine neue Schutzgruppe hinzu. Geben Sie einen Namen, den Hyper-V-Quellstandort, das Ziel in **Azure**, den Namen Ihres Azure Site Recovery-Abonnements und das Azure-Speicherkonto an.
+2. Fügen Sie auf der Registerkarte **Schutzgruppen** eine neue Schutzgruppe hinzu. Geben Sie einen Namen, den Hyper-V-Quellstandort, das Ziel in **Azure**, den Namen Ihres Azure Site Recovery-Abonnements und das Azure-Speicherkonto an.
 
 	![Schutzgruppe](./media/site-recovery-hyper-v-site-to-azure/protection-group.png)
 
 
-2. Legen Sie unter **Replikationseinstellungen** die Kopierhäufigkeit fest, um anzugeben, wie oft geänderte Daten zwischen Quelle und Ziel synchronisiert werden sollen. Verfügbare Optionen sind 30 Sekunden, fünf Minuten und 15 Minuten.
+2. Legen Sie unter **Replikationseinstellungen** die Kopierhäufigkeit fest, um anzugeben, wie oft geänderte Daten zwischen Quelle und Ziel synchronisiert werden sollen. Verfügbare Optionen sind 30 Sekunden, fünf Minuten und 15 Minuten.
 3. Geben Sie unter **Wiederherstellungspunkte beibehalten für** an, für wie viele Stunden der Wiederherstellungsverlauf gespeichert werden soll.
 4. Unter **Häufigkeit von anwendungskonsistenten Momentaufnahmen** können Sie angeben, ob Momentaufnahmen erstellt werden sollen, bei denen mithilfe des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) sichergestellt wird, dass sich die Anwendungen bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Standardmäßig werden solche Momentaufnahmen nicht erstellt. Stellen Sie sicher, dass der Wert geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte. Dies wird nur für virtuelle Computer mit einem Windows-Betriebssystem unterstützt.
 5. Geben Sie im Feld für die Startzeit der ersten Replikation an, wann die erste Replikation der virtuellen Computer in der Schutzgruppe an Azure gesendet werden soll.
@@ -213,7 +213,7 @@ Schutzgruppen sind logische Gruppen virtueller Computer, für die die gleichen S
 	![Schutzgruppe](./media/site-recovery-hyper-v-site-to-azure/protection-group2.png)
 
 
-## Schritt 6: Aktivieren des Schutzes für virtuelle Computer
+## Schritt 6: Aktivieren des Schutzes für virtuelle Computer
 
 
 Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
@@ -254,11 +254,11 @@ Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
 
 
 
-## Schritt 7: Erstellen eines Wiederherstellungsplans
+## Schritt 7: Erstellen eines Wiederherstellungsplans
 
 Zum Testen der Bereitstellung können Sie ein Test-Failover für einen einzelnen virtuellen Computer durchführen. Alternativ können Sie einen Wiederherstellungsplan erstellen, der mehrere virtuelle Computer enthält. Lesen Sie die [weiteren Informationen](site-recovery-create-recovery-plans.md) zur Erstellung eines Wiederherstellungsplans.
 
-## Schritt 8: Testen der Bereitstellung
+## Schritt 8: Testen der Bereitstellung
 
 Es gibt zwei Möglichkeiten, ein Testfailover in Azure auszuführen.
 
@@ -273,6 +273,8 @@ Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-N
 Um Ihre Replikation und Netzwerkbereitstellung vollständig zu testen, müssen Sie die Infrastruktur einrichten, damit die replizierte virtuelle Maschine wie erwartet funktioniert. Eine Möglichkeit ist: Richten Sie eine virtuelle Maschine als Domänencontroller mit DNS ein, und replizieren Sie sie in Azure. Verwenden Sie Site Recovery für die Erstellung im Testnetzwerk, indem Sie ein Testfailover ausführen. Weitere Informationen zu den Testfailover-Aspekten für Active Directory finden Sie [hier](site-recovery-active-directory.md#considerations-for-test-failover).
 
 Führen Sie das Testfailover wie folgt aus:
+
+>[AZURE.NOTE] Um beim Durchführen eines Failovers in Azure die bestmögliche Leistung zu erzielen, sollten Sie sicherstellen, dass Sie den Azure-Agent auf dem geschützten Computer installiert haben. Dies fördert das schnellere Starten und ist hilfreich für die Diagnose bei Problemen. Sie finden den Linux-Agent [hier](https://github.com/Azure/WALinuxAgent) und den Windows-Agent [hier](http://go.microsoft.com/fwlink/?LinkID=394789).
 
 1. Wählen Sie auf der Registerkarte **Wiederherstellungspläne** den gewünschten Wiederherstellungsplan aus, und klicken Sie auf **Testfailover**.
 2. Wählen Sie auf der Seite **Testfailover bestätigen** den Eintrag **Kein** oder ein bestimmtes Azure-Netzwerk aus. Beachten Sie, dass ein Testfailover bei Auswahl von **Kein** zwar prüft, ob der virtuelle Computer ordnungsgemäß zu Azure repliziert wurde, die Konfiguration des Replikationsnetzwerks wird jedoch nicht geprüft.
@@ -302,4 +304,4 @@ Führen Sie das Testfailover wie folgt aus:
 
 Wenn die Bereitstellung eingerichtet ist und ausgeführt wird, informieren Sie sich über [Failover](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

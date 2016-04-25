@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2016" 
+	ms.date="04/08/2016" 
 	ms.author="nitinme"/>
 
 # Bekannte Probleme von Apache Spark in Azure HDInsight (Linux)
@@ -25,7 +25,7 @@ In diesem Dokument werden sämtliche bekannte Probleme für die öffentliche Vor
  
 **Symptom:**
 
-Wenn Livy neu gestartet wird, während noch eine interaktive Sitzung (von Ambari oder aufgrund eines VM-Neustarts mit Stammknoten 0) aktiv ist, geht eine interaktive Auftragssitzung verloren. Dadurch bleiben neue Aufträge unter Umständen im Zustand „Akzeptiert“ hängen und können nicht gestartet werden.
+Wenn Livy neu gestartet wird, während noch eine interaktive Sitzung (von Ambari oder aufgrund eines VM-Neustarts mit Stammknoten 0) aktiv ist, geht eine interaktive Auftragssitzung verloren. Dadurch bleiben neue Aufträge unter Umständen im Zustand „Akzeptiert“ hängen und können nicht gestartet werden.
 
 **Lösung:**
 
@@ -54,7 +54,28 @@ Der Spark-Verlaufsserver wird nach der Clustererstellung nicht automatisch gesta
 
 Starten Sie den Verlaufsserver in Ambari manuell.
 
-##Fehler beim Laden eines größeren Notebooks
+## Berechtigungsproblem im Spark-Protokollverzeichnis 
+
+**Symptom:**
+ 
+Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der Fehler „java.io.FileNotFoundException: /var/log/spark/sparkdriver\_hdiuser.log“ (Zugriff verweigert) auf, und das Treiberprotokoll wird nicht geschrieben.
+
+**Lösung:**
+ 
+1. Fügen Sie „hdiuser“ der Hadoop-Gruppe hinzu. 
+2. Erteilen Sie nach der Clustererstellung 777-Berechtigungen für „/var/log/spark“. 
+3. Aktualisieren Sie den Spark-Protokollspeicherort mit Ambari auf ein Verzeichnis mit 777-Berechtigungen.  
+4. Führen Sie „spark-submit“ als sudo aus.  
+
+## Probleme im Zusammenhang mit Jupyter Notebooks
+
+Im Folgenden sind einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
+
+### Notebooks mit Nicht-ASCII-Zeichen in Dateinamen
+
+Jupyter Notebooks, die in Spark HDInsight-Clustern verwendet werden können, sollten keine Nicht-ASCII-Zeichen in den Dateinamen haben. Wenn Sie versuchen, eine Datei, die einen Nicht-ASCII-Dateinamen besitzt, über die Jupyter-Benutzeroberfläche hochzuladen, tritt ein „stiller“ Fehler auf (d.h. Jupyter lässt Sie die Datei nicht hochladen, löst aber auch keinen sichtbaren Fehler aus).
+
+### Fehler beim Laden von größeren Notebooks
 
 **Symptom:**
 
@@ -62,16 +83,14 @@ Möglicherweise wird beim Laden von größeren Notebooks der Fehler **`Error loa
 
 **Lösung:**
 
-Wenn Sie diesen Fehler erhalten, bedeutet dies nicht, dass Ihre Daten beschädigt oder verloren sind. Ihre Notebooks befinden sich weiter in `/var/lib/jupyter`, und Sie können sich über SSH mit dem Cluster verbinden, um darauf zuzugreifen. Sie können Ihre Notebooks zur Sicherung aus Ihrem Cluster auf den lokalen Computer kopieren (mit SCP oder WinSCP), um den Verlust wichtiger Daten im Notebook zu vermeiden. Anschließend können Sie über einen SSH-Tunnel an Port 8001 eine Verbindung mit Ihrem Hauptknoten herstellen, um ohne Umweg über das Gateway auf Jupyter zuzugreifen. Dort können die Ausgabe Ihres Notebooks löschen und es erneut speichern, um die Größe des Notebooks zu minimieren.
+Wenn Sie diesen Fehler erhalten, bedeutet dies nicht, dass Ihre Daten beschädigt oder verloren sind. Ihre Notebooks befinden sich weiter auf der Festplatte in `/var/lib/jupyter`, und Sie können sich über SSH mit dem Cluster verbinden, um darauf zuzugreifen. Sie können Ihre Notebooks zur Sicherung aus Ihrem Cluster auf den lokalen Computer kopieren (mit SCP oder WinSCP), um den Verlust wichtiger Daten im Notebook zu vermeiden. Anschließend können Sie über einen SSH-Tunnel an Port 8001 eine Verbindung mit Ihrem Hauptknoten herstellen, um ohne Umweg über das Gateway auf Jupyter zuzugreifen. Dort können die Ausgabe Ihres Notebooks löschen und es erneut speichern, um die Größe des Notebooks zu minimieren.
 
 Um zu verhindern, dass dieser Fehler in Zukunft auftritt, müssen Sie einige bewährten Methoden befolgen:
 
-* Es ist wichtig, die Größe von Notebooks niedrig zu halten. Alle Ausgaben Ihrer Spark-Aufträge, die an Jupyter zurückgesendet werden, werden beständig im Notebook gespeichert. Für Jupyter wird allgemein empfohlen, das Anwenden von `.collect()` auf große RDDs (Resilient Distributed Datasets) oder Datenframes zu vermeiden. Wenn Sie einen Blick auf den Inhalt eines RDD werfen möchten, erwägen Sie das Ausführen von `.take()` oder `.sample()`, damit Ihre Ausgabe nicht zu groß wird.
+* Es ist wichtig, die Größe von Notebooks niedrig zu halten. Alle Ausgaben Ihrer Spark-Aufträge, die an Jupyter zurückgesendet werden, werden beständig im Notebook gespeichert. Für Jupyter wird allgemein empfohlen, das Anwenden von `.collect()` auf große RDDs (Resilient Distributed Datasets) oder Datenframes zu vermeiden. Wenn Sie einen Blick auf den Inhalt eines RDD werfen möchten, erwägen Sie stattdessen das Ausführen von `.take()` oder `.sample()`, damit Ihre Ausgabe nicht zu groß wird.
 * Löschen Sie außerdem beim Speichern eines Notebooks alle Ausgabezellen, um die Größe zu verringern.
 
-
-
-##Erster Notebook-Start dauert länger als erwartet 
+### Erster Notebook-Start dauert länger als erwartet 
 
 **Symptom:**
 
@@ -81,7 +100,7 @@ Die Verarbeitung der ersten Anweisung in Jupyter Notebook mit Spark Magic kann �
  
 Dies geschieht, wenn die erste Codezelle ausgeführt wird. Im Hintergrund werden dadurch die Sitzungskonfiguration initiiert und Spark-, SQL- sowie Hive-Kontexte festgelegt. Nachdem diese Kontexte festgelegt wurden, wird die erste Anweisung ausgeführt, die den Eindruck entstehen lässt, dass sie lange Zeit in Anspruch nimmt.
 
-##Jupyter Notebook-Timeout bei der Sitzungserstellung
+### Jupyter Notebook-Timeout bei der Sitzungserstellung
 
 **Symptom:**
 
@@ -96,22 +115,13 @@ Wenn dem Spark-Cluster nicht genügend Ressourcen zur Verfügung stehen, tritt b
 
 2. Starten Sie das Notebook, das Sie starten wollten, neu. Nun sollten genügend Ressourcen für die Sitzungserstellung verfügbar sein.
 
-## Berechtigungsproblem im Spark-Protokollverzeichnis 
+### Möglicher Fehler beim Zurücksetzen auf einen Wiederherstellungspunkt
 
-**Symptom:**
- 
-Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der Fehler „java.io.FileNotFoundException: /var/log/spark/sparkdriver\_hdiuser.log“ (Zugriff verweigert) auf, und das Treiberprotokoll wird nicht geschrieben.
-
-**Lösung:**
- 
-1. Fügen Sie „hdiuser“ der Hadoop-Gruppe hinzu. 
-2. Erteilen Sie nach der Clustererstellung 777-Berechtigungen für „/var/log/spark“. 
-3. Aktualisieren Sie den Spark-Protokollspeicherort mit Ambari auf ein Verzeichnis mit 777-Berechtigungen.  
-4. Führen Sie „spark-submit“ als sudo aus. 
+Sie können Prüfpunkte in Jupyter Notebooks für den Fall erstellen, dass Sie auf eine frühere Version des Notebooks wiederherstellen müssen. Falls die aktuelle Version des Notebooks jedoch eine SQL-Abfrage mit automatischer Visualisierung enthält, kann das Wiederherstellen auf einen zuvor gespeicherten Prüfpunkt zu einem Fehler führen.
 
 ##Weitere Informationen
 
 - [Übersicht: Apache Spark für Azure HDInsight (Linux)](hdinsight-apache-spark-overview.md)
 - [Erste Schritte: Bereitstellen von Apache Spark für Azure HDInsight (Linux) und Ausführen von interaktiven Abfragen per Spark-SQL](hdinsight-apache-spark-jupyter-spark-sql.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

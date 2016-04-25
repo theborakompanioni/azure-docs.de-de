@@ -20,7 +20,7 @@
 
 ## Einführung
 
-Die [rollenbasierte Zugriffssteuerung](../role-based-access-control-configure.md) ist eine leistungsstarke Funktion, mit der Sie Zugriffsberechtigungen für Azure-Ressourcen differenziert steuern können. Gewähren Sie einem bestimmten Benutzer einfach und sicher Zugriff auf genau die Ressourcen, die er benötigt. In einigen Fällen kann das Ressourcen-Modell für Azure-Ressourcen jedoch kompliziert sein, und es ist nicht immer leicht ersichtlich, wofür Sie Berechtigungen vergeben.
+Die [rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md) ist eine leistungsstarke Funktion, mit der Sie Zugriffsberechtigungen für Azure-Ressourcen differenziert steuern können. Gewähren Sie einem bestimmten Benutzer einfach und sicher Zugriff auf genau die Ressourcen, die er benötigt. In einigen Fällen kann das Ressourcen-Modell für Azure-Ressourcen jedoch kompliziert sein, und es ist nicht immer leicht ersichtlich, wofür Sie Berechtigungen vergeben.
 
 In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung einiger der Rollen im Azure-Portal. Es sind drei allgemeine Rollen enthalten, die alle Ressourcentypen abdecken:
 
@@ -28,7 +28,7 @@ In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung ei
 - Mitwirkender  
 - Leser  
 
-Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Ausführliche Informationen zum Gewähren von Zugriff finden Sie im Artikel zu den ersten Schritten mit der [rollenbasierten Zugriffssteuerung](../role-based-access-control-configure.md).
+Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Ausführliche Informationen zum Gewähren von Zugriff finden Sie im Artikel zu den ersten Schritten mit der [rollenbasierten Zugriffssteuerung](role-based-access-control-configure.md).
 
 ## App Service-Workloads
 
@@ -92,4 +92,4 @@ Virtuelle Computer verfügen über folgende zugehörige Ressourcen:
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

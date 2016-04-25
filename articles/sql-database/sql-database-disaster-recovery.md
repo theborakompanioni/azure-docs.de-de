@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="elfisher" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -137,11 +137,11 @@ Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter 
   + Die wiederhergestellte Datenbank verwendet einen anderen Namen als den Namen der Quelldatenbank
   + Die wiederhergestellte Datenbank befindet sich auf einem anderen Server als dem Quellserver
 
-Weitere Informationen zu Datenbankwarnungsregeln finden Sie unter [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](insights-service-health.md).
+Weitere Informationen zu Datenbankwarnungsregeln finden Sie unter [Empfangen von Warnbenachrichtigungen](../azure-portal/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](../azure-portal/insights-service-health.md).
 
 
 ### Aktivieren der Überwachung
 
 Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren. Es ist ein guter Indikator für die Notwendigkeit von Überwachung, wenn Clientanwendungen sichere Verbindungszeichenfolgen in einem Muster von *.database.secure.windows.net verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung](sql-database-auditing-get-started.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

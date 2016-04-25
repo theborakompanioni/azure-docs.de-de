@@ -17,10 +17,10 @@ ms.service="virtual-machines-windows"
  ms.date="04/04/2016"
  ms.author="cynthn"/>
 
-# Größen für virtuelle Windows-Computer in Azure
+# Größen für virtuelle Computer in Azure
 
-Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Windows-Computer, die Sie verwenden können, um Ihre Apps und Workloads auszuführen. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/). Informationen zu Linux-VMs finden Sie unter [Sizes for Linux virtual machines in Azure](virtual-machines-linux-sizes.md) (Größen für virtuelle Linux-Computer in Azure).
+Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Windows-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-sizes.md) verfügbar.
 
 [AZURE.INCLUDE [virtual-machines-common-sizes](../../includes/virtual-machines-common-sizes.md)]
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,8 +13,8 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="02/03/2016"
+	ms.topic="article"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
 # Erstellen von SharePoint-Serverfarmen
@@ -51,6 +51,8 @@ So erstellen Sie die hoch verfügbare SharePoint-Farm (neun Server):
 3. Klicken Sie im Bereich **SharePoint 2013 hoch verfügbare Farm** auf **Erstellen**.
 4. Geben Sie die Einstellungen für die sieben Schritte des Bereichs **SharePoint 2013 hoch verfügbare Farm erstellen** ein, und klicken Sie dann auf **Erstellen**.
 
+> [AZURE.NOTE] Die **SharePoint 2013 nicht hoch verfügbare Farm** bzw. die **SharePoint 2013 hoch verfügbare Farm** kann nicht mit einer kostenlosen Azure-Testversion erstellt werden.
+
 ## Verwalten der SharePoint-Farmen
 
 Sie können die Server dieser Farmen über Remotedesktopverbindungen verwalten. Weitere Informationen finden Sie unter [Anmelden beim virtuellen Computer](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine).
@@ -59,8 +61,9 @@ Auf der SharePoint-Website für die Zentraladministration können Sie eigene Web
 
 > [AZURE.NOTE] Das Azure-Portal erstellt beide Farmen in einem virtuellen Cloudnetzwerk mit einer über das Internet zugänglichen Webpräsenz. Es gibt keine Standort-zu-Standort-VPN- oder ExpressRoute-Verbindung mit Ihrem Unternehmensnetzwerk.
 
-## Nächster Schritt
+## Nächste Schritte
 
+- Stellen Sie eine [SharePoint 2013-Intranetfarm](virtual-machines-windows-sp-intranet-overview.md) als Produktionsworkload in Azure-Infrastrukturdiensten bereit.
 - Lernen Sie weitere Konfigurationen von [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) in Azure-Infrastrukturdiensten kennen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

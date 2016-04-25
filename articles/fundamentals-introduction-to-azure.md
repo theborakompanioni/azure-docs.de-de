@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Einführung in Azure | Microsoft Azure" 
-	description="Neu bei Microsoft Azure? Verschaffen Sie sich eine grundlegende Übersicht über die angebotenen Dienste sowie Beispiele für deren Nutzen." 
-	services=" " 
-	documentationCenter=".net" 
-	authors="Rboucher" 
+<properties
+	pageTitle="Einführung in Azure | Microsoft Azure"
+	description="Neu bei Microsoft Azure? Verschaffen Sie sich eine grundlegende Übersicht über die angebotenen Dienste sowie Beispiele für deren Nutzen."
+	services=" "
+	documentationCenter=".net"
+	authors="Rboucher"
 	manager="jwhit"
 	editor=""/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
+<tags
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
 	ms.date="06/30/2015"  
 	ms.author="robb"/>
 
@@ -27,7 +27,7 @@ Azure wird ständig erweitert, sodass Sie leicht den Überblick verlieren könne
 **Geben Sie uns Feedback**
 
 Ihr Feedback ist uns sehr wichtig. Dieser Artikel soll Ihnen einen optimalen Überblick über Azure verschaffen. Falls dies Ihrer Meinung nach nicht der Fall ist, teilen Sie uns dies im Kommentarabschnitt unten auf der Seite mit. Erläutern Sie, was Sie erwartet haben, und wie wir den Artikel verbessern können.
-   
+
 
 ## Die Komponenten von Azure
 
@@ -36,7 +36,7 @@ Azure gruppiert Dienste im Verwaltungsportal unter verschiedenen Kategorien und 
 Dieser Artikel **geht anders vor**, denn die Dienste werden nach Funktionsverwandtschaft dargestellt, und es werden wichtige Teildienste hervorgehoben, die zu größeren Diensten gehören.
 
 ![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)
- *Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden. *
+ *Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden.*
 
 ## Verwaltungsportal
 Azure verfügt über eine Webschnittstelle, das so genannte [Verwaltungsportal](http://manage.windowsazure.com), über das Administratoren auf die meisten Azure-Features zugreifen und die meisten Azure-Features verwalten können. Microsoft gibt das Portal mit der neueren Benutzeroberfläche in der Regel als Beta-Version heraus, bevor eine ältere Version zurückgezogen wird. Die neuere Version heißt [Azure-Vorschauportal](https://portal.azure.com/).
@@ -61,17 +61,17 @@ Die Möglichkeit, bei Bedarf einen virtuellen Computer zu erstellen, sei es anha
 Zum Erstellen eines virtuellen Computers legen Sie die VHD, die verwendet werden soll, sowie die Größe des virtuellen Computers fest. Dann zahlen Sie für die Zeit, die der virtuelle Computer ausgeführt wird. Sie zahlen pro Minute und nur, wenn der virtuelle Computer aktiv ist. Allerdings fällt dafür, dass die VHD verfügbar bleibt, eine minimale Speichergebühr an. Azure bietet einen Katalog mit Bestands-VHDs (sogenannte "Images"), die ein bootfähiges Betriebssystem enthalten. Hierzu gehören Microsoft- und Partneroptionen wie Windows Server und Linux, SQL Server, Oracle und vieles mehr. Sie haben die Möglichkeit, VHDs und Images zu erstellen und selbst hochzuladen. Sie können sogar VHDs hochladen, die nur Daten enthalten, und über Ihre aktiven virtuellen Computer darauf zugreifen.
 
 Unabhängig vom Ursprung der VHD können Sie alle Änderungen, die beim Ausführen eines virtuellen Computers vorgenommen wurden, dauerhaft speichern. Wenn Sie das nächste Mal einen virtuellen Computer von dieser VHD erstellen, werden die zuletzt verwendeten Einstellungen übernommen. Die VHDs, welche die virtuellen Computer unterstützen, werden in Azure Storage-Blobs gespeichert, über die wir später sprechen werden. Dank dieser Redundanz ist sichergestellt, dass Ihre VMs nicht aufgrund von Hardware- und Datenträgerausfällen verloren gehen. Sie können auch die geänderte VHD aus Azure kopieren und sie dann lokal ausführen.
- 
+
 Ihre Anwendung wird auf einem oder mehreren virtuellen Computern ausgeführt, je nachdem, wie Sie sie erstellt haben bzw. wie Sie sie jetzt neu erstellen möchten.
 
 Dieser eher allgemeine Cloud Computing-Ansatz kann zur Lösung verschiedener Probleme herangezogen werden.
 
 **Virtual Machine-Szenarien**
 
-1.	**Dev/Test** – Damit können Sie eine günstige Entwicklungs- und Testplattform erstellen, die Sie nach Abschluss Ihrer Arbeiten wieder außer Betrieb nehmen. Sie können auch Anwendungen erstellen und ausführen, die genau die Sprachen und Bibliotheken nutzen, die Sie benötigen. Diese Anwendungen können jede Datenverwaltungsoption nutzen, die in Azure zur Verfügung steht. Sie können auch SQL Server oder ein anderes DBMS verwenden, das auf einem oder mehreren virtuellen Computern ausgeführt wird. 
+1.	**Dev/Test** – Damit können Sie eine günstige Entwicklungs- und Testplattform erstellen, die Sie nach Abschluss Ihrer Arbeiten wieder außer Betrieb nehmen. Sie können auch Anwendungen erstellen und ausführen, die genau die Sprachen und Bibliotheken nutzen, die Sie benötigen. Diese Anwendungen können jede Datenverwaltungsoption nutzen, die in Azure zur Verfügung steht. Sie können auch SQL Server oder ein anderes DBMS verwenden, das auf einem oder mehreren virtuellen Computern ausgeführt wird.
 2.	**Anwendungen nach Azure verschieben (anheben und verschieben)** - Bei "anheben und verschieben" geht es um das Verschieben Ihrer Anwendung. Vergleichen Sie dies mit dem Anheben eines großen Objekts mithilfe eines Gabelstaplers. Sie "heben" die VHD aus dem lokalen Datencenter, "verschieben" sie nach Azure und führen sie dort aus. In der Regel müssen Sie anschließend noch Abhängigkeiten von anderen Systemen entfernen. Wenn zu viele vorhanden sind, können Sie stattdessen die Option 3 auswählen.  
 3.	**Datencenter erweitern** – Verwenden Sie Azure-VMs, auf denen SharePoint oder andere Anwendungen ausgeführt werden, als Erweiterung Ihres lokalen Datencenters. Zur Unterstützung dieser Option können Sie Windows-Domänen in der Cloud erstellen, indem Sie Active Directory auf Azure-VMs ausführen. Sie können Azure Virtual Network (Erläuterungen weiter unten) verwenden, um Ihr lokales Netzwerk und Ihr Netzwerk in Azure zu verbinden.
- 
+
 
 
 ### Web-Apps
@@ -107,7 +107,7 @@ Beim Erstellen einer Instanz können Sie zwischen zwei Rollen wählen, die beide
 Cloud Services eignen sich ideal für Skalierungen enormen Umfangs, wenn Sie mehr Kontrolle über die Plattform benötigen, als mit Azure Web Apps möglich ist, aber keine Kontrolle des zugrunde liegenden Betriebssystems erforderlich ist.
 
 #### Wählen eines Computemodells
-Die Seite [Azure Web Apps, Cloud Services und Virtual Machines im Vergleich](choose-web-site-cloud-service-vm.md) enthält ausführlichere Informationen zur Auswahl eines Computemodells.
+Die Seite [Azure Web Apps, Cloud Services und Virtual Machines im Vergleich](./app-service-web/choose-web-site-cloud-service-vm.md) enthält ausführlichere Informationen zur Auswahl eines Computemodells.
 
 
 
@@ -141,7 +141,7 @@ Wenn Sie eine Azure-Anwendung (mit einem der Computemodelle) erstellen, die eine
 
 ### Tabellen
 ![Azure-Speichertabellen](./media/fundamentals-introduction-to-azure/StorageTablesIntroNew.png)
-  
+
 *Abbildung: Azure Tables bietet eine flache NoSQL-Methode zum Speichern von Daten.*
 
 Diese Funktion wird gelegentlich anders bezeichnet, da sie Teil einer umfangreicheren Funktion namens "Azure Storage" ist. Wenn Sie "Tabellen", "Azure-Tabellen" oder "Speichertabellen" lesen, handelt es sich jeweils um die gleiche Sache.
@@ -166,7 +166,7 @@ Eine Anwendung, in der z. B. Videos, sehr große Dateien oder andere Binärinfo
 
 ### Import/Export
 ![Azure Import Export Service](./media/fundamentals-introduction-to-azure/ImportExportIntroNew.png)
- 
+
 *Abbildung: Azure Import/Export bietet die Möglichkeit, eine physische Festplatte an oder von Azure zu schicken, um große Datenmengen schneller und günstiger zu importieren oder zu exportieren.*
 
 Gelegentlich möchten Sie große Datenmengen nach Azure verschieben. Dies kann viel Zeit, eventuell Tage, in Anspruch nehmen und sehr viel Bandbreite belegen. In diesen Fällen können Sie Azure Import/Export verwenden. Damit können Sie Bitlocker-verschlüsselte 3,5"-SATA-Festplattenlaufwerke direkt in Azure-Datencenter verschieben, wo Microsoft die Daten für Sie in einen Blobspeicher überträgt. Nach dem Upload schickt Microsoft die Laufwerke an Sie zurück. Sie können auch veranlassen, dass große Datenmengen aus dem Blobspeicher auf Festplattenlaufwerke exportiert und Ihnen per Post zugesandt werden.
@@ -174,7 +174,7 @@ Gelegentlich möchten Sie große Datenmengen nach Azure verschieben. Dies kann v
 **Szenarien für den Import / Export**
 
 - **Migration großer Datenmengen**: Wenn Sie große Datenmengen (Terabyte) nach Azure hochladen möchten, ist der Import-/Export-Dienst häufig schneller und günstiger als eine Übertragung über das Internet. Wenn sich die Daten Blobs befinden, können Sie sie in andere Formate wie Tabellenspeicher oder eine SQL-Datenbank konvertieren.
- 
+
 - **Wiederherstellung archivierter Daten**: Mit Import/Export können Sie große Datenmengen, die im Azure-Blobspeicher gespeichert sind, von Microsoft auf ein Speichergerät übertragen lassen, das Sie schicken, und dieses Gerät wieder an den gewünschten Ort zurückschicken lassen. Da dies eine gewisse Zeit dauert, ist dies keine gute Option für die Notfallwiederherstellung. Am sinnvollsten eignet es sich für archivierte Daten, auf die Sie nicht schnell zugreifen müssen.
 
 
@@ -207,12 +207,12 @@ Azure wird heute in vielen Datencentern überall auf der Welt ausgeführt. Wenn 
 
 
 Ein nützlicher Einsatzbereich für eine öffentliche Cloud ist die Erweiterung Ihres eigenen Rechenzentrums.
- 
+
 Da Sie virtuelle Computer bei und nach Bedarf erstellen können, die Sie dann auch wieder entfernen können (womit auch keine weiteren Kosten mehr anfallen), wenn sie nicht mehr benötigt werden, steht Ihnen genau die Rechenleistung zur Verfügung, die Sie benötigen. Und da Sie mit Azure Virtual Machines virtuelle Computer erstellen können, auf denen SharePoint, Active Directory oder andere bekannte lokale Softwareanwendungen ausgeführt werden, ist dieser Ansatz auch für bereits vorhandene Anwendungen geeignet.
 
 Um den größtmöglichen Nutzen zu erreichen, sollten Ihre Benutzer jedoch in der Lage sein, diese Anwendungen so zu verwenden, als würden sie in Ihrem eigenen Datencenter ausgeführt werden. Genau das ermöglicht Azure Virtual Network. Mithilfe eines VPN-Gateways kann ein Administrator ein virtuelles privates Netzwerk (VPN) zwischen Ihrem lokalen Netzwerk und Ihren virtuellen Computern einrichten, die in Azure in einem virtuellen Netzwerk bereitgestellt werden. Da Sie den Cloud-VMs Ihre eigenen IPv4-Adressen zuweisen, scheinen sie sich in Ihrem Netzwerk zu befinden. Benutzer in Ihrer Organisation können auf die Anwendungen auf diesen virtuellen Computern zugreifen, ganz so als würden sie lokal ausgeführt.
 
-Weitere Informationen über das Planen und Erstellen eines auf Ihren Bedarf zugeschnittenen virtuellen Netzwerks finden Sie unter [Virtuelles Netzwerk](../virtual-network/virtual-networks-overview.md).
+Weitere Informationen über das Planen und Erstellen eines auf Ihren Bedarf zugeschnittenen virtuellen Netzwerks finden Sie unter [Virtuelles Netzwerk](./virtual-network/virtual-networks-overview.md).
 
 ### ExpressRoute
 
@@ -224,14 +224,14 @@ Wenn Sie mehr Bandbreite oder Sicherheit benötigen, als eine Azure Virtual Netw
 
 Das Einrichten einer ExpressRoute-Verbindung erfordert mehr Zeit und Planung, daher sollten Sie mit einem VPN zwischen verschiedenen Standorten beginnen und danach zu einer ExpressRoute-Verbindung übergehen.
 
-Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
+Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](./expressroute/expressroute-introduction.md).
 
 ### Traffic Manager
 
 ![Traffic Manager](./media/fundamentals-introduction-to-azure/TrafficManagerIntroNew.png)
 
 *Abbildung: Mit Azure Traffic Manager können Sie globalen Datenverkehr mithilfe intelligenter Regeln zu Ihrem Dienst lenken.*
- 
+
 Wenn Ihre Azure-Anwendung in mehreren Rechenzentren ausgeführt wird, können Sie den Azure Traffic Manager verwenden, um Anfragen von Benutzern intelligent zwischen Instanzen der Anwendung zu leiten. Sie können Datenverkehr auch zu Diensten lenken, die nicht in Azure ausgeführt werden, sofern sie über das Internet zugänglich sind.
 
 Eine Azure-Anwendung mit Benutzern an nur einem geografischen Standort wird womöglich nur in einem Azure-Datencenter ausgeführt. Eine Anwendung mit auf der ganzen Welt verteilten Benutzern wird jedoch sehr wahrscheinlich in verschiedenen Rechenzentren ausgeführt, womöglich sogar in allen. Bei der zweiten Situation ergibt sich ein Problem: Wie können Sie Benutzer intelligent den einzelnen Anwendungsinstanzen zuweisen? Das folgende Szenario ist wohl das bekannteste: Jeder Benutzer soll Zugriff auf das Rechenzentrum in seiner Nähe haben, da somit die beste Reaktionszeit sichergestellt wird. Was ist jedoch, wenn diese Anwendungsinstanz ausgelastet oder nicht verfügbar ist? In diesem Fall wäre es gut, wenn die Anfrage automatisch an ein anderes Datencenter geleitet wird. Und genau diese Aufgabe übernimmt Azure Traffic Manager.
@@ -288,7 +288,7 @@ Wenn Sie spezielle Analysen durchführen möchten, exportieren Sie den Telemetri
 Sie entwickeln eine App. Dabei kann es sich um eine Web-App, eine Geräte-App oder eine Geräte-App mit einem Web-Back-End handeln.
 
 * Optimieren Sie die Leistung Ihrer App nach der Veröffentlichung während des Auslastungstests. Application Insights aggregiert die Telemetrie aller installierten Instanzen und stellt Ihnen Diagramme zu Antwortzeiten, der Anzahl von Anforderungen und Ausnahmen, Abhängigkeitsantwortzeiten und anderen Leistungsindikatoren bereit. Mit diesen können Sie die Leistung Ihrer App optimieren. Sie können Code einfügen, um bei Bedarf Berichte mit genaueren Daten zu erstellen.
-* Erkennen und Diagnostizieren von Problemen in Ihrer Live-App. Sie können E-Mail-Warnungen erhalten, wenn Leistungsindikatoren zulässige Schwellenwerte überschreiten. Sie können bestimmte Benutzersitzungen untersuchen, z. B. um die Anforderung zu ermitteln, die eine Ausnahme verursacht hat. 
+* Erkennen und Diagnostizieren von Problemen in Ihrer Live-App. Sie können E-Mail-Warnungen erhalten, wenn Leistungsindikatoren zulässige Schwellenwerte überschreiten. Sie können bestimmte Benutzersitzungen untersuchen, z. B. um die Anforderung zu ermitteln, die eine Ausnahme verursacht hat.
 * Nachverfolgen der Nutzung zur Bewertung der einzelnen neuen Funktionen. Beim Entwerfen einer neuen User Story planen Sie eine Messung der Verwendung und ob Benutzer die erwarteten Ziele erreichen. Mit Application Insights erhalten Sie grundlegende Verwendungsdaten wie z. B. Webseitenaufrufe, und Sie können Code einfügen, um die Benutzerfunktionalität noch genauer nachzuverfolgen.
 
 ### Automation
@@ -312,17 +312,17 @@ Azure API Management erleichtert es Organisationen, APIs für Partner, Mitarbeit
 Angenommen, Ihr Unternehmen verfügt über verschiedene Geräte, die sämtliche Daten von einem zentralen Dienst abrufen müssen – beispielsweise eine Spedition mit Geräten in jedem LKW, der unterwegs ist. Das Unternehmen möchte mit Sicherheit ein System einrichten, um seine eigenen LKW zu verfolgen, damit Lieferzeiten zuverlässig prognostiziert und aktualisiert werden können. Es weiß, wie viele LKW vorhanden sind, und kann entsprechend planen. Jeder LKW benötigt ein Gerät, das seine Positions- und Geschwindigkeitsdaten und eventuell weitere Daten an eine zentrale Stelle übermittelt.
 
 Für einen Kunden der Spedition wäre es wahrscheinlich ebenfalls nützlich, diese Positionsdaten abrufen zu können. Der Kunde wüsste dann, wie lang der Transportweg der Produkte ist, wo sie aufgehalten werden, welche Kosten auf bestimmten Strecken anfallen (bei Kombination der Daten mit den Transportkosten). Wenn die Spedition diese Daten bereits aggregiert, würden viele Kunden vielleicht dafür bezahlen. Dann benötigt die Spedition aber auch eine Möglichkeit, den Kunden die Daten zu übermitteln. Wenn sie den Kunden Datenzugriff gewährt, kann sie möglicherweise nicht steuern, wie oft die Daten abgefragt werden. Die Spedition muss dann Regeln dafür aufstellen, wer auf welche Daten zugreifen kann. Alle diese Regeln müssten in die externe API integriert werden. In diesem Fall kann API Management helfen.
- 
+
 
 ## Identität und Zugriff
- 
+
 Bei den meisten Anwendungen findet eine Identitätsbestimmung statt. Eine Anwendung kann anhand der Identität eines Benutzers bestimmen, auf welche Weise mit diesem Benutzer interagiert werden soll. Azure bietet Dienste zur Erfassung der Identität sowie zu deren Integration in Identitätsspeicher, die Sie eventuell bereits verwenden.
 
 
 ### Active Directory
 
 Wie die meisten Verzeichnisdienste speichert Azure Active Directory Informationen über Benutzer und Organisationen, denen sie angehören. Active Directory ermöglicht es Benutzern sich anzumelden und weist ihnen Tokens zu, mit denen ihre Identität in Anwendungen bestätigt wird. Auch die Synchronisierung der Benutzerinformationen mit Windows Server Active Directory, das in Ihrem lokalen Netzwerk ausgeführt wird, ist möglich. Auch wenn die Mechanismen und Datenformate, die von Azure Active Directory verwendet werden, nicht mit denen in Windows Server Active Directory identisch sind, sind die durchgeführten Funktionen sich doch sehr ähnlich.
- 
+
 Es ist wichtig, dass Sie verstehen, dass Azure Active Directory primär für Cloudanwendungen konzipiert wurde. Es kann beispielsweise von Anwendungen unter Azure oder auf einer anderen Cloudplattform verwendet werden. Es wird auch von Microsoft-eigenen Cloudanwendungen wie zum Beispiel Office 365 verwendet. Wenn Sie Ihr Rechenzentrum jedoch mit Azure Virtual Machines und Azure Virtual Network auf die Cloud erweitern möchten, ist Azure Active Directory nicht die richtige Wahl. Stattdessen möchten Sie möglicherweise Windows Server Active Directory auf Virtual Machines ausführen.
 
 Damit Anwendungen auf die enthaltenen Informationen zugreifen können, bietet Azure Active Directory eine RESTful-API mit dem Namen Azure Active Directory Graph. Mit dieser API können die auf einer beliebigen Plattform ausgeführten Anwendungen auf Verzeichnisobjekte und auf die Beziehungen zwischen ihnen zugreifen. Eine autorisierte Anwendung kann diese API beispielsweise verwenden, um Informationen über einen Benutzer, über Gruppen, denen er angehört, oder um andere Informationen zu erhalten. Anwendungen können auch die Beziehungen zwischen Benutzern (den sogenannten "Social Graph") anzeigen, sodass sie intelligenter mit den Beziehungen zwischen Menschen arbeiten können.
@@ -335,7 +335,7 @@ Verzeichnisdienste sind eine wichtige Grundlage der lokalen Rechenleistung. Dahe
 ![Azure Multi-Factor Authentication](./media/fundamentals-introduction-to-azure/MFAIntroNew.png)
 
 *Abbildung: Multi-Factor Authentication bietet Ihrer Anwendung die Funktionalität, mehr als eine Form der Identifikation zu überprüfen.*
- 
+
 Sicherheit ist immer wichtig. Multi-Factor Authentication (MFA) stellt sicher, dass nur die Benutzer selbst auf ihre Konten zugreifen können. Bei der MFA (auch Two-Factor Authentication oder "2FA" genannt) müssen die Benutzer für Anmeldungen und Transaktionen zwei der drei folgenden Methoden der Identitätsverifizierung verwenden.
 
 - Etwas, das Sie wissen (normalerweise ein Kennwort)
@@ -363,7 +363,7 @@ Auch wenn Sie mit Virtual Machines, Cloud Services oder Web Apps das Back-End f�
 ### Mobile Apps
 
 ![Mobile Apps](./media/fundamentals-introduction-to-azure/MobileServicesIntroNew.png)
-  
+
 *Abbildung: Mobile Apps stellt Funktionen bereit, die häufig von Anwendungen mit einer Schnittstelle für mobile Geräte benötigt werden.*
 
 Azure Mobile Apps enthält zahlreiche nützliche Funktionen, mit deren Hilfe Sie Zeit sparen, wenn Sie ein Back-End für eine mobile Anwendung erstellen. Es vereinfacht die Bereitstellung und Verwaltung von Daten, die in einer SQL-Datenbank gespeichert sind. Mit serverseitigem Code können Sie ohne weiteres zusätzliche Datenspeicheroptionen wie Blobspeicher oder MongoDB verwenden. Mobile Apps unterstützt Benachrichtigungen, dennoch können Sie in bestimmten Fällen stattdessen Notification Hubs verwenden, wie im Anschluss beschrieben wird. Der Dienst verfügt auch über eine REST-API, die Ihre mobile Anwendung aufrufen kann, um die Arbeit auszuführen. Mobile Apps bietet auch die Möglichkeit, Benutzer über Microsoft und Active Directory sowie über weitere bekannte Identitätsanbieter wie Facebook, Twitter und Google zu authentifizieren.
@@ -390,7 +390,7 @@ Notification Hubs ist auf die Kombination mit jedem beliebigen Backend ausgelegt
 **Notification Hub-Szenarien** – Wenn Sie ein mobiles Spiel schreiben, in dem sich die Spieler abwechseln, müssen Sie Spieler 2 eventuell darüber benachrichtigen, dass Spieler 1 seine Runde beendet hat. Wenn dies schon alles ist, können Sie auch einfach Mobile Apps verwenden. Wenn ihr Spiel jedoch von 100.000 Benutzern gespielt wird und Sie jedem ein zeitkritisches kostenloses Angebot senden möchten, ist Notification Hubs die bessere Wahl.
 
 Sie können Millionen Benutzern aktuelle Nachrichten, Sportereignisse und Produktankündigungen mit niedriger Latenz senden. Unternehmen können ihren Mitarbeitern neue zeitkritische Informationen übermitteln, beispielsweise Verkaufstipps, damit die Mitarbeiter nicht ständig ihre E-Mails oder andere Anwendungen überprüfen müssen, um informiert zu bleiben. Darüber hinaus können Sie einmal zu verwendende Kennwörter senden, die für die Multi-Factor Authentication benötigt werden.
-   
+
 
 
 
@@ -398,7 +398,7 @@ Sie können Millionen Benutzern aktuelle Nachrichten, Sportereignisse und Produk
 Jedes Unternehmen muss Daten sichern und wiederherstellen. Mit Azure können Sie Ihre Anwendung in der Cloud oder lokal sichern und wiederherstellen. Azure bietet je nach Art der Sicherung verschiedene Optionen.
 
 ### Site Recovery
- 
+
 Mit Azure Site Recovery (ehemals Hyper-V-Wiederherstellungs-Manager) können Sie wichtige Anwendungen schützen, indem Sie die Replikation und Wiederherstellung standortübergreifend koordinieren. Site Recovery bietet Funktionen zum Schutz von Anwendungen auf der Grundlage von Hyper-V, VMWare oder SAN an Ihrem eigenen sekundären Standort, am Standort eines Hosters oder in Azure. Gleichzeitig können Sie die mit der Erstellung und Verwaltung eines sekundären Standorts einhergehenden Kosten und Probleme vermeiden. Azure verschlüsselt die Daten und die Kommunikation, und Sie haben die Option, die Verschlüsselung auch für gespeicherte Daten zu aktivieren.
 
 Es überwacht ständig den Zustand Ihrer Dienste und automatisiert die geordnete Wiederherstellung von Diensten bei Ausfall eines Standorts im primären Datencenter. Virtuelle Computer können systematisch hochgefahren werden, um den Dienst selbst bei komplexen mehrschichtigen Arbeitsauslastungen schnell wiederherzustellen.
@@ -470,13 +470,13 @@ Service Bus verfügt über einen Veröffentlichen-und-Abonnieren-Mechanismus nam
 **Service Bus-Themen und Abonnement-Szenarien**
 
 In allen Situationen, in denen viele Nachrichten vorkommen, die zwar sämtlich wichtig sind, von den verschiedenen nachgelagerten Systemen jedoch nur teilweise überwacht werden müssen, sind Service Bus-Themen und -Abonnements eine gute Option.
-  
+
 
 ### BizTalk Services
 ![BizTalk Services](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png) *Abbildung: BizTalk Services ermöglicht die Umwandlung von XML-Nachrichtenformaten in der Cloud.*
 
 Gelegentlich müssen Sie Verbindungen mit Systemen herstellen, die mit anderen Messagingformaten kommunizieren. Auch wenn ein gemeinsamer Standard verfügbar ist, ist in der Geschäftswelt das Arbeiten mit verschiedenen Datenbankschemata und XML-Messagingformaten der Normalfall. Anstatt viel benutzerdefinierten Code zu schreiben, können Sie mit BizTalk Server verschiedene Systeme lokal integrieren. Azure BizTalk Services bietet den gleichen Dienst, allerdings in der Cloud. Sie bezahlen nur, was Sie nutzen, und müssen sich nicht wie bei der lokalen Umsetzung um die Skalierung kümmern.
- 
+
 
 **BizTalk Services-Szenarien**
 
@@ -498,7 +498,7 @@ Wenn ein geplanter Alarm ausgelöst wird, sendet Scheduler HTTP- oder HTTPS-Nach
 
 - Wiederkehrende Anwendungsaktionen: Ein Dienst ruft z. B. regelmäßig Daten von Twitter ab und fasst die Daten in einem normalen Feed zusammen.
 - Tägliche Wartung: Protokollverarbeitung oder -bereinigung, Durchführen von Sicherungen oder anderen periodisch geplanten Aufgaben.
-- Aufgaben, die nachts ausgeführt werden. 
+- Aufgaben, die nachts ausgeführt werden.
 - Webanwendungsaufgaben wie die tägliche Bereinigung von Protokollen, das Durchführen von Sicherungen und anderen Wartungsaufgaben. Ein Administrator möchte eine Datenbank z. B. für die nächsten neun Monate täglich um 1:00 Uhr sichern.
 
 Mit der Scheduler-API können Sie "Auftragssammlungen" und geplante "Aufträge" programmgesteuert erstellen, aktualisieren, löschen, anzeigen und verwalten.
@@ -551,7 +551,7 @@ Viele Jahre lang wurde der Großteil der Datenanalyse anhand von relationalen Da
 Die heute vorherrschende Technologie zur Analyse von großen Datenmengen ist Hadoop. Diese Technologie ist ein Open-Source-Projekt von Apache. Die Daten werden mit dem Hadoop Distributed File System (HDFS) gespeichert, sodass Entwickler dann MapReduce-Aufträge erstellen können, um diese Daten zu analysieren. HDFS verteilt die Daten über mehrere Server und führt auf jedem Server Blöcke des MapReduce-Auftrags aus, sodass die große Datenmenge parallel verarbeitet werden kann.
 
 HDInsight ist der Name des Apache Hadoop-basierten Dienstes unter Azure. HDInsight ermöglicht es dem HDFS, Daten im Cluster zu speichern und auf mehreren virtuellen Computern zu verteilen. Auch die Logik eines MapReduce-Auftrags wird über diese virtuellen Computer verteilt. Wie bei lokalem Hadoop werden die Daten für eine bessere Leistung lokal (d. h., die Logik und die verarbeiteten Daten befinden sich auf demselben virtuellen Computer) und parallel verarbeitet. HDInsight kann Daten auch in Azure Storage Vault (ASV) speichern, wobei Blobs verwendet werden. Mithilfe von ASV können Sie Geld sparen, da Sie Ihr HDInsight-Cluster löschen können, wenn es nicht mehr verwendet wird. Zugleich bleiben die Daten in der Cloud jedoch erhalten.
- 
+
 HDInsight unterstützt auch andere Komponenten der Hadoop-Umgebung, darunter Hive and Pig. Microsoft hat auch Komponenten erstellt, die die Arbeit mit aus HDInsight generierten Daten dank herkömmlicher Business Intelligence-Tools wie dem HiveODBC-Adapter und Data Explorer, der mit Excel arbeitet, erleichtern.
 
 ### High Performance Computing (Big Compute)
@@ -586,14 +586,9 @@ Zum Verteilen der produzierten Medien kann eine Anwendung das Azure CDN oder ein
 
 Für eine visuelle Darstellung der Funktionsweise von Media Services können Sie das [Azure Media Services-Poster][Azure Media Services Poster] herunterladen.
 
-
-
-
-
-
 ## Commerce
 
-Die wachsende Akzeptanz von Software-as-a-Service transformiert den Erstellungsprozess von Anwendungen. Auch die Art und Weise, wie wir Anwendungen verkaufen, wird dabei transformiert. Da eine SaaS-Anwendung in der Cloud lebt, bietet es sich an, dass potenzielle Kunden online nach Lösungen suchen. Diese Änderung gilt für Daten aber auch für Anwendungen. Warum sollte die Cloud nicht für käuflich verfügbare Datasets genutzt werden? Mit [Azure Marketplace](http://datamarket.azure.com/) und [Azure Store](../articles/overview.md) hat Microsoft eine Antwort auf beide Fragen gefunden.
+Die wachsende Akzeptanz von Software-as-a-Service transformiert den Erstellungsprozess von Anwendungen. Auch die Art und Weise, wie wir Anwendungen verkaufen, wird dabei transformiert. Da eine SaaS-Anwendung in der Cloud lebt, bietet es sich an, dass potenzielle Kunden online nach Lösungen suchen. Diese Änderung gilt für Daten aber auch für Anwendungen. Warum sollte die Cloud nicht für käuflich verfügbare Datasets genutzt werden? Mit [Azure Marketplace](https://azure.microsoft.com/marketplace/) hat Microsoft eine Antwort auf beide Fragen gefunden.
 
 ![Azure Commerce](./media/fundamentals-introduction-to-azure/CommerceIntroNew.png) **Abbildung: Mit Azure Marketplace und Azure Store können Sie Azure-Anwendungen sowie kommerziell erhältliche Datasets suchen und kaufen und sie in Ihren Azure-Anwendungen verwenden.**
 
@@ -612,4 +607,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

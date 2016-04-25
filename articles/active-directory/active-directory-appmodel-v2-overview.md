@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="04/02/2016"
 	ms.author="dastrock"/>
 
-# Anmelden von Benutzern mit Microsoft-Konto und aus Azure AD bei einer einzelnen Anwendung
+# Anmelden von Benutzern mit Microsoft-Konto und aus Azure AD bei einer einzelnen Anwendung
 
-In der Vergangenheit musste ein App-Entwickler, der sowohl Unterstützung für Microsoft-Konten als auch für Azure Active Directory benötigte, die Integration für zwei separate Systeme bereitstellen. Wir haben jetzt eine neue Version der Authentifizierungs-API eingeführt, über die Sie Benutzer mit beiden Arten von Konten im Azure AD-System anmelden können. Dieses zusammengeführte Authentifizierungssystem wird als **v2.0-Endpunkt** bezeichnet. Mit dem v2.0-Endpunkt können Sie mit einer einzelnen Implementierung eine Zielgruppe erreichen, die Millionen von Benutzern sowohl mit privaten als auch Geschäfts-, Schul- oder Unikonten umfasst.
+In der Vergangenheit musste ein App-Entwickler, der sowohl Unterstützung für Microsoft-Konten als auch für Azure Active Directory benötigte, die Integration für zwei separate Systeme bereitstellen. Wir haben jetzt eine neue Version der Authentifizierungs-API eingeführt, über die Sie Benutzer mit beiden Arten von Konten im Azure AD-System anmelden können. Dieses zusammengeführte Authentifizierungssystem wird als **v2.0-Endpunkt** bezeichnet. Mit dem v2.0-Endpunkt können Sie mit einer einzelnen Implementierung eine Zielgruppe erreichen, die Millionen von Benutzern sowohl mit privaten als auch Geschäfts-, Schul- oder Unikonten umfasst.
 
 Apps, die den v2.0-Endpunkt verwenden, können auch REST-APIs aus [Microsoft Graph](https://graph.microsoft.io) und [Office 365](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) mit beiden Kontotypen nutzen.
 
@@ -39,12 +39,13 @@ Anhand der folgenden konzeptuellen Informationen lässt sich besser verstehen, w
 ## Referenz
 Die folgenden Links bieten ausführliche Informationen zur Plattform:
 
+- Build 2016: [Getting Started with Microsoft Identities: Enterprise Grade Sign In For Your Apps](https://azure.microsoft.com/documentation/videos/build-2016-getting-started-with-microsoft-identities-enterprise-grade-sign-in-for-your-apps/) (Erste Schritte mit Microsoft-Identitäten: Unternehmensanmeldung für Ihre Apps)
 - Hilfe zu Stack Overflow mit [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory)- oder [adal](http://stackoverflow.com/questions/tagged/adal)-Tags.
 - [v2.0-Protokollreferenz](active-directory-v2-protocols.md)
 - [v2.0-Tokenreferenz](active-directory-v2-tokens.md)
 - [Bereiche, Berechtigungen und Zustimmung im v2.0-Endpunkt](active-directory-v2-scopes.md)
 - [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com)
-- [Office 365-REST-API-Referenz](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
+- [Office 365-REST-API-Referenz](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
 - [Microsoft Graph](https://graph.microsoft.io)
 - Im Folgenden sind die Open Source-Clientbibliotheken und -Beispiele aufgeführt, die mit dem v2.0-Endpunkt getestet wurden.
 
@@ -56,10 +57,4 @@ Die folgenden Links bieten ausführliche Informationen zur Plattform:
   - [Android-OAuth2-Client](https://github.com/wuman/android-oauth-client)
   - [Android-OpenID Connect-Client](https://github.com/kalemontes/OIDCAndroidLib)
 
-<!-- TODO: These articles
-- [ADAL Library Reference]()
-- [v2 Endpoint FAQs](active-directory-v2-faq.md)
-- Give us your thoughts on the preview using [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) - we want to hear them!  Use the phrase "AppModelv2:" in the title of your post so we can find it.
--->
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD v2.0-Protokolle | Microsoft Azure"
-	description="Anleitung für Protokolle, die vom Azure AD v2.0-Endpunkt unterstützt werden."
+	pageTitle="Azure AD v2.0-Protokolle | Microsoft Azure"
+	description="Anleitung für Protokolle, die vom Azure AD v2.0-Endpunkt unterstützt werden."
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -16,9 +16,9 @@
 	ms.date="02/20/2016"
 	ms.author="dastrock"/>
 
-# v2.0-Protokolle – OAuth 2.0 und OpenID Connect
+# v2.0-Protokolle – OAuth 2.0 und OpenID Connect
 
-Mit den Protokollen nach Industriestandard OpenID Connect und OAuth 2.0 kann der v2.0-Endpunkt Azure AD als Identity-as-a-Service verwenden. Während der Dienst standardkonform ist, kann es feine Unterschiede zwischen den beiden Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer Open Source-Bibliotheken zu nutzen.
+Mit den Protokollen nach Industriestandard OpenID Connect und OAuth 2.0 kann der v2.0-Endpunkt Azure AD als Identity-as-a-Service verwenden. Während der Dienst standardkonform ist, kann es feine Unterschiede zwischen den beiden Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer Open Source-Bibliotheken zu nutzen.
 <!-- TODO: Need link to libraries above -->
 
 > [AZURE.NOTE]
@@ -59,12 +59,12 @@ Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 | `common` | Ermöglicht Benutzern mit persönlichen Microsoft-Konten und Geschäfts-, Schul- oder Unikonten aus Azure Active Directory die Anmeldung bei der Anwendung. |
 | `organizations` | Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten aus Azure Active Directory die Anmeldung bei der Anwendung. |
 | `consumers` | Ermöglicht nur Benutzern mit persönlichen Microsoft-Konten (MSA) die Anmeldung bei der Anwendung. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` | Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten eines bestimmten Azure Active Directory-Mandanten die Anmeldung bei der Anwendung. Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` | Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten eines bestimmten Azure Active Directory-Mandanten die Anmeldung bei der Anwendung. Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. |
 
 Um weitere Informationen zur Interaktion mit diesen Endpunkten zu erhalten, wählen Sie unten einen bestimmten App-Typ aus.
 
 ## Token
-Die v2.0-Implementierung von OAuth 2.0 und OpenID Connect macht ausgiebig Gebrauch von Bearertoken (auch in Form von JWTs). Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Trägertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Trägertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
+Die v2.0-Implementierung von OAuth 2.0 und OpenID Connect macht ausgiebig Gebrauch von Bearertoken (auch in Form von JWTs). Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Trägertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Trägertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
 Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der [Tokenreferenz zum v2.0-Endpunkt](active-directory-v2-tokens.md).
 
@@ -79,6 +79,5 @@ Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der
 - Abrufen von Token in einer Web-API mit dem OAuth 2.0-Fluss "Im-Auftrag-von" (in Kürze verfügbar)
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
-<!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

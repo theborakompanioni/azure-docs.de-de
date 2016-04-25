@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
 # SharePoint-Intranetfarm-Workload Phase 4: Konfigurieren der SharePoint-Server
@@ -31,17 +31,17 @@ Sie benötigen für die SharePoint-Server vier virtuelle Computer. Zwei virtuell
 
 Zunächst konfigurieren Sie den internen Lastenausgleich, sodass Azure den Clientdatenverkehr gleichmäßig auf die zwei Front-End-Webserver verteilt. Dazu müssen Sie eine interne Lastenausgleichsinstanz konfigurieren, die aus einem Namen und einer eigenen IP-Adresse, die aus dem Adressraum des Subnetzes abgerufen wurde, das Sie Ihrem virtuellen Azure-Netzwerk zugewiesen haben.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Geben Sie die Werte für die Variablen ein, lassen Sie dabei aber die < and >-Zeichen weg. Die Werte für die folgenden Azure PowerShell-Befehlssätze entnehmen Sie den folgenden Tabellen:
 
 - Tabelle M für Ihre virtuellen Computer
 - Tabelle V für die Einstellungen Ihres virtuellen Netzwerks
 - Tabelle S für Ihr Subnetz
-- Tabelle ST für Ihre Speicherkonten
+- Tabelle ST für Ihre Speicherkonten
 - Tabelle A für Ihre Verfügbarkeitsgruppen
 
-Tabelle M haben Sie in [Phase 2: Konfigurieren der Domänencontroller](virtual-machines-windows-ps-sp-intranet-ph2.md) ausgefüllt und die Tabellen V, S, ST und A in [Phase 1: Konfigurieren von Azure](virtual-machines-windows-ps-sp-intranet-ph1.md).
+Tabelle M haben Sie in [Phase 2: Konfigurieren der Domänencontroller](virtual-machines-windows-ps-sp-intranet-ph2.md) ausgefüllt und die Tabellen V, S, ST und A in [Phase 1: Konfigurieren von Azure](virtual-machines-windows-ps-sp-intranet-ph1.md).
 
 Führen Sie nach der Bereitstellung der richtigen Werte den daraus resultierenden Befehlsblock an der Azure-PowerShell-Eingabeaufforderung aus.
 
@@ -60,7 +60,7 @@ Führen Sie nach der Bereitstellung der richtigen Werte den daraus resultierende
 	$lbrule=New-AzureRMLoadBalancerRuleConfig -Name "WebTraffic" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "TCP" -FrontendPort 80 -BackendPort 80
 	New-AzureRMLoadBalancer -ResourceGroupName $rgName -Name "SharePointWebServersInAzure" -Location $locName -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe -FrontendIpConfiguration $frontendIP
 
-Fügen Sie danach der internen DNS-Infrastruktur Ihres Unternehmens einen DNS-Adresseintrag hinzu, der den vollständig qualifizierten Domänennamen der SharePoint-Farm (z. B. „spfarm.corp.contoso.com“) in die dem internen Load Balancer zugewiesene IP-Adresse auflöst (der Wert von $privIP im vorangegangenen Azure PowerShell-Befehlsblock).
+Fügen Sie danach der internen DNS-Infrastruktur Ihres Unternehmens einen DNS-Adresseintrag hinzu, der den vollständig qualifizierten Domänennamen der SharePoint-Farm (z. B. „spfarm.corp.contoso.com“) in die dem internen Load Balancer zugewiesene IP-Adresse auflöst (der Wert von $privIP im vorangegangenen Azure PowerShell-Befehlsblock).
 
 Mit dem folgenden Azure PowerShell-Befehlsblock erstellen Sie die virtuellen Computer für diese vier SharePoint-Server. Führen Sie nach der Bereitstellung der richtigen Werte den daraus resultierenden Befehlsblock an der Azure-PowerShell-Eingabeaufforderung aus.
 
@@ -203,6 +203,6 @@ Hier sehen Sie die nach erfolgreichem Abschluss dieser Phase erstellte Konfigura
 
 ## Nächster Schritt
 
-- Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 5](virtual-machines-windows-ps-sp-intranet-ph5.md).
+- Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 5](virtual-machines-windows-ps-sp-intranet-ph5.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

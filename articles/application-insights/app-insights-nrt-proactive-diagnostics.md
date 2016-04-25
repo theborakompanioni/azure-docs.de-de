@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Proaktive NRT-Diagnose in Application Insights" 
-	description="Die proaktive NRT-Diagnose benachrichtigt Sie automatisch, wenn die Serverantwortzeit ein ungewöhnliches Verhalten zeigt. Es ist keine Konfiguration erforderlich." 
+	description="Weist Sie auf ungewöhnliche Fehlermuster in Ihrer App hin und bietet Diagnoseanalysen. Es ist keine Konfiguration erforderlich." 
 	services="application-insights" 
     documentationCenter=""
 	authors="yorac" 
@@ -19,7 +19,7 @@
 
 [Visual Studio Application Insights](app-insights-overview.md) benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn ein ungewöhnlicher Anstieg der Rate der fehlerhaften Anforderungen erkannt wird. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in der Benachrichtigung eine Analyse der Merkmale der Anforderungsfehler und der verknüpften Telemetriedaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
 
-Dieses Feature funktioniert mit Java- und ASP.NET-Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden. Es funktioniert auch mit allen Apps, die Daten zur Anforderungstelemetrie generieren, z. B. mit einer Workerrolle, mit der [TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) aufgerufen wird.
+Dieses Feature funktioniert mit Java- und ASP.NET-Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden. Es funktioniert auch mit allen Apps, die Daten zur Anforderungstelemetrie generieren, z. B. mit einer Workerrolle, mit der [TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) aufgerufen wird.
 
 Nach dem Einrichten von [Application Insights für Ihr Projekt](app-insights-get-started.md), und sofern Ihre App eine bestimmte Mindestmenge von Telemetriedaten generiert, benötigt die proaktive NRT-Diagnose 24 Stunden, um das normale Verhalten Ihrer App zu verstehen, bevor sie eingeschaltet wird und Warnungen senden kann.
 
@@ -61,7 +61,7 @@ Anhand des Prozentsatzes der Anforderungen und der Anzahl der betroffenen Benutz
 
 In vielen Fällen können Sie das Problem über den Anforderungsnamen, die Ausnahme, den Abhängigkeitsfehler und die Ablaufverfolgungsdaten schnell diagnostizieren.
 
-Es gibt einige andere Anhaltspunkte. Beispielsweise entspricht die Abhängigkeitsfehlerrate in diesem Beispiel der Ausnahmerate (89,3 %). Dies legt nahe, dass die Ausnahme sich direkt aus dem Abhängigkeitsfehler ergibt, sodass Sie genau wissen, wo im Code Sie suchen müssen.
+Es gibt einige andere Anhaltspunkte. Beispielsweise entspricht die Abhängigkeitsfehlerrate in diesem Beispiel der Ausnahmerate (89,3 %). Dies legt nahe, dass die Ausnahme sich direkt aus dem Abhängigkeitsfehler ergibt, sodass Sie genau wissen, wo im Code Sie suchen müssen.
 
 Über die Links in den einzelnen Abschnitten gelangen Sie direkt zu einer [Suchseite](app-insights-diagnostic-search.md), die auf die entsprechenden Anforderungen bzw. die Ausnahme, Abhängigkeit oder Ablaufverfolgung gefiltert ist. Dort können Sie weitere Nachforschungen anstellen. Alternativ können Sie das [Azure-Portal](https://portal.azure.com) öffnen, zur Application Insights-Ressource für Ihre App wechseln und das Blatt „Fehler“ öffnen.
 
@@ -96,7 +96,7 @@ Beachten Sie, dass Sie die proaktive Diagnose deaktivieren, aber nicht löschen 
 
 Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Features von Application Insights.
 
-* [Metrikwarnungen](app-insights-alerts.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z. B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt die proaktive NRT-Diagnose einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von Anforderungsfehlern), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der Anforderungsfehler für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App drastisch ansteigt.
+* [Metrikwarnungen](app-insights-alerts.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z. B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt die proaktive NRT-Diagnose einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von Anforderungsfehlern), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der Anforderungsfehler für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App drastisch ansteigt.
 
     Bei der proaktiven NRT-Diagnose wird der Schwellenwert automatisch an die aktuellen Bedingungen angepasst.
 
@@ -138,4 +138,4 @@ Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Fea
 
 *Wir sind sehr an Ihrer Meinung interessiert. Bitte senden Sie Ihr Feedback an:* [ainrtpd@microsoft.com](mailto:ainrtpd@microsoft.com).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

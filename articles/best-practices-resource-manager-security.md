@@ -32,8 +32,8 @@ Azure Virtual Machines, Azure-Ressourcen-Manager und Azure Key Vault sind vollst
 - Die Vorlagen enthalten nur URI-Verweise auf die geheimen Schlüssel, was bedeutet, dass die tatsächlichen geheimen Schlüssel nicht in Code-, Konfigurations- oder Quellcoderepositorys enthalten sind. Dies verhindert umfassende Phishing-Angriffe auf interne oder externe Repositorys, z. B. "harvest-bots" auf GitHub.
 - Im Schlüsseltresor gespeicherte geheime Schlüssel unterliegen vollständig der rollenbasierten Zugriffssteuerung durch einen vertrauenswürdigen Mitarbeiter. Wenn der vertrauenswürdige Mitarbeiter das Unternehmen verlässt oder innerhalb des Unternehmens in eine neue Abteilung versetzt wird, hat er keinen Zugriff mehr auf die Schlüssel, die er im Tresor erstellt hat.
 - Vollständige Trennung aller Ressourcen:
-      - die Vorlagen zum Bereitstellen der Schlüssel 
-      - die Vorlagen zum Bereitstellen eines virtuellen Computers mit Verweisen auf die Schlüssel 
+      - die Vorlagen zum Bereitstellen der Schlüssel
+      - die Vorlagen zum Bereitstellen eines virtuellen Computers mit Verweisen auf die Schlüssel
       - die tatsächlichen Schlüsseldaten im Tresor Jede Vorlage (und Aktion) kann für eine vollständige Trennung von Aufgaben verschiedenen Rollen für die rollenbasierte Zugriffssteuerung unterliegen.
 - Das Laden der geheimen Schlüssel in einen virtuellen Computer zum Zeitpunkt der Bereitstellung erfolgt über einen direkten Kanal zwischen Azure Fabric und dem Schlüsseltresor innerhalb der Grenzen des Microsoft-Datencenters. Sobald sich die Schlüssel im Schlüsseltresor befinden, sehen sie nie wieder das "Tageslicht" über einen nicht vertrauenswürdigen Kanal außerhalb des Datencenters.  
 - Da Schlüsseltresore stets regional sind, sind die geheimen Schlüssel in den VMs stets ortsbezogen. Es sind keine globalen Schlüsseltresore.
@@ -172,11 +172,11 @@ Eine Kombination aus einem Dienstprinzipal und rollenbasierter Zugriffssteuerung
 
 Viele Szenarien haben Anforderungen, die vorgeben, wie der Datenverkehr zu einer oder mehreren VM-Instanzen in Ihrem virtuellen Netzwerk gesteuert wird. Im Rahmen der Bereitstellung einer ARM- Vorlage können Sie dazu eine Netzwerksicherheitsgruppe (NSG) verwenden.
 
-Bei einer NSG handelt es sich um ein Objekt oberster Ebene, das Ihrem Abonnement zugeordnet ist. Eine NSG enthält Zugriffssteuerungsregeln, die Datenverkehr zu VM-Instanzen zulassen oder verweigern. Die Regeln für eine NSG können jederzeit geändert werden, und die Änderungen werden auf alle zugeordneten Instanzen angewendet. Für die Verwendung einer NSG benötigen Sie ein virtuelles Netzwerk mit Regionszuordnung (Standort). NSGs sind nicht mit virtuellen Netzwerken kompatibel, die einer Affinitätsgruppe zugeordnet sind. Wenn Sie über kein regionales virtuelles Netzwerk verfügen und trotzdem den an Ihren Endpunkten eingehenden Datenverkehr steuern möchten, lesen Sie [Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](../virtual-network/virtual-networks-acl.md).
+Bei einer NSG handelt es sich um ein Objekt oberster Ebene, das Ihrem Abonnement zugeordnet ist. Eine NSG enthält Zugriffssteuerungsregeln, die Datenverkehr zu VM-Instanzen zulassen oder verweigern. Die Regeln für eine NSG können jederzeit geändert werden, und die Änderungen werden auf alle zugeordneten Instanzen angewendet. Für die Verwendung einer NSG benötigen Sie ein virtuelles Netzwerk mit Regionszuordnung (Standort). NSGs sind nicht mit virtuellen Netzwerken kompatibel, die einer Affinitätsgruppe zugeordnet sind. Wenn Sie über kein regionales virtuelles Netzwerk verfügen und trotzdem den an Ihren Endpunkten eingehenden Datenverkehr steuern möchten, lesen Sie [Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](./virtual-network/virtual-networks-acl.md).
 
 Sie können eine NSG einem virtuellen Computer oder einem Subnetz innerhalb eines virtuellen Netzwerks zuordnen. Bei der Zuordnung zu einem virtuellen Computer gilt die NSG für den gesamten ein- und ausgehenden Datenverkehr der VM-Instanz. Bei der Zuordnung zu einem Subnetz in Ihrem virtuellen Netzwerk gilt sie für den gesamten ein- und ausgehenden Datenverkehr aller VM-Instanzen im Subnetz. Ein virtueller Computer bzw. ein Subnetz kann jeweils nur einer einzelnen NSG zugeordnet werden, wobei jede NSG bis zu 200 Regeln enthalten kann. Pro Abonnement können 100 NSGs verwendet werden.
 
->[AZURE.NOTE]  Endpunktbasierte ACLs und Netzwerksicherheitsgruppen können nicht für die gleiche VM-Instanz verwendet werden. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen zur Vorgehensweise finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](../virtual-network/virtual-networks-acl-powershell.md).
+>[AZURE.NOTE]  Endpunktbasierte ACLs und Netzwerksicherheitsgruppen können nicht für die gleiche VM-Instanz verwendet werden. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen zur Vorgehensweise finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](./virtual-network/virtual-networks-acl-powershell.md).
 
 ### Funktionsweise von Netzwerksicherheitsgruppen
 
@@ -292,7 +292,7 @@ Pakete werden über ein TCP/IP-Netzwerk weitergeleitet, das auf einer Routentabe
   - Internet. Entspricht dem Standard-Internet-Gateway der Azure-Infrastruktur.
   - Virtuelles Gerät. Entspricht einem virtuellen Gerät, das Sie Ihrem virtuellen Azure-Netzwerk hinzugefügt haben.
   - NULL. Entspricht einem schwarzen Loch. Pakete, die an ein schwarzes Loch weitergeleitet werden, werden überhaupt nicht weitergeleitet.
--	Wert für den nächsten Hop. Der Wert für den nächsten Hop enthält die IP-Adresse, an die die Pakete weitergeleitet werden sollen. Die Werte für den nächsten Hop dürfen nur für Routen verwendet werden, für die als Typ des nächsten Hops *Virtuelles Gerät* ausgewählt wurde. Der nächste Hop muss im Subnetz sein (die lokale Schnittstelle des virtuellen Geräts entsprechend der Netzwerk-ID), nicht in einem Remotesubnetz. 
+-	Wert für den nächsten Hop. Der Wert für den nächsten Hop enthält die IP-Adresse, an die die Pakete weitergeleitet werden sollen. Die Werte für den nächsten Hop dürfen nur für Routen verwendet werden, für die als Typ des nächsten Hops *Virtuelles Gerät* ausgewählt wurde. Der nächste Hop muss im Subnetz sein (die lokale Schnittstelle des virtuellen Geräts entsprechend der Netzwerk-ID), nicht in einem Remotesubnetz.
 
 ![Routing](./media/best-practices-resource-manager-security/routing.png)
 
@@ -306,7 +306,7 @@ Jedes in einem virtuellen Netzwerk erstellte Subnetz wird automatisch einer Rout
 
 ### BGP-Routen
 
-Zum Zeitpunkt der Erstellung dieses Artikels wird [ExpressRoute](expressroute/expressroute-introduction.md) noch nicht vom [Netzwerkressourcenanbieter](virtual-network/resource-groups-networking.md) für den Azure-Ressourcen-Manager unterstützt. Wenn Sie über eine ExpressRoute-Verbindung zwischen dem lokalen Netzwerk und Azure verfügen, können Sie BGP für das Weitergeben der Routen aus Ihrem lokalen Netzwerk an Azure aktivieren, sobald ExpressRoute vom Netzwerkressourcenanbieter unterstützt wird. Diese BGP-Routen werden auf die gleiche Weise wie Standard- und benutzerdefinierte Routen in den einzelnen Azure-Subnetzen verwendet. Weitere Informationen finden Sie unter [Einführung zu ExpressRoute](expressroute/expressroute-introduction.md).
+Zum Zeitpunkt der Erstellung dieses Artikels wird [ExpressRoute](./expressroute/expressroute-introduction.md) noch nicht vom [Netzwerkressourcenanbieter](virtual-network/resource-groups-networking.md) für den Azure-Ressourcen-Manager unterstützt. Wenn Sie über eine ExpressRoute-Verbindung zwischen dem lokalen Netzwerk und Azure verfügen, können Sie BGP für das Weitergeben der Routen aus Ihrem lokalen Netzwerk an Azure aktivieren, sobald ExpressRoute vom Netzwerkressourcenanbieter unterstützt wird. Diese BGP-Routen werden auf die gleiche Weise wie Standard- und benutzerdefinierte Routen in den einzelnen Azure-Subnetzen verwendet. Weitere Informationen finden Sie unter [Einführung zu ExpressRoute](./expressroute/expressroute-introduction.md).
 
 >[AZURE.NOTE] Sobald ExpressRoute vom Netzwerkressourcenanbieter unterstützt wird, können Sie die Azure-Umgebung für die Verwendung der Tunnelerzwingung über das lokale Netzwerk konfigurieren, indem Sie für das Subnetz 0.0.0.0/0 eine benutzerdefinierte Route erstellen, die als nächsten Hop das VPN-Gateway verwendet. Dies funktioniert nur mit einem VPN-Gateway, nicht jedoch mit ExpressRoute. In ExpressRoute wird die Tunnelerzwingung über BGP konfiguriert.
 
@@ -336,7 +336,7 @@ Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der n
 ## Nächste Schritte
 - Um zu verstehen, wie Sicherheitsprinzipale mit dem richtigen Zugriff für das Arbeiten mit Ressourcen in Ihrer Organisation eingerichtet werden, lesen Sie [Authentifizieren eines Dienstprinzipals mit Azure-Ressourcen-Manager](resource-group-authenticate-service-principal.md).
 - Wenn Sie den Zugriff auf eine Ressource sperren müssen, können Sie Verwaltungssperren verwenden. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](resource-group-lock-resources.md).
-- Informationen zum Konfigurieren von Routing und der IP-Weiterleitung finden Sie unter [Erstellen von Routen und Aktivieren der IP-Weiterleitung in Azure](virtual-network/virtual-networks-udr-how-to.md). 
-- Eine Übersicht über die rollenbasierte Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](role-based-access-control-configure.md).
+- Informationen zum Konfigurieren des Routings und der IP-Weiterleitung finden Sie unter [Erstellen von benutzerdefinierten Routen (UDR) in Resource Manager mit einer Vorlage](./virtual-network/virtual-network-create-udr-arm-template.md).
+- Eine Übersicht über die rollenbasierte Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](./active-directory/role-based-access-control-configure.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

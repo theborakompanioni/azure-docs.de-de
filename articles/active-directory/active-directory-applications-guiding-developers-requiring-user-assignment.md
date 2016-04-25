@@ -28,9 +28,9 @@
 7. Legen Sie **Benutzerzuweisung für den Zugriff auf die App erforderlich** auf "Ja" fest.
 8. Klicken Sie unten auf der Seite auf die Schaltfläche **Speichern**.
 
-Sie müssen jetzt der Anwendung Benutzer und/oder Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern zu einer Anwendung](active-directory-guiding-developers-assigning-users.md) und [Zuweisen von Gruppen zu einer Anwendung](active-directory-guiding-developers-assigning-groups.md).
+Sie müssen jetzt der Anwendung Benutzer und/oder Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern zu einer Anwendung](active-directory-applications-guiding-developers-assigning-users.md) und [Zuweisen von Gruppen zu einer Anwendung](active-directory-applications-guiding-developers-assigning-groups.md).
 
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

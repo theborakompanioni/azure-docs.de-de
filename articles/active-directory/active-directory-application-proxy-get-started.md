@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="02/10/2016"
+	ms.topic="article"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen
@@ -63,4 +63,4 @@ Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
 - [Als Organisation für Azure registrieren](sign-up-organization.md)
 - [Azure-Identität](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

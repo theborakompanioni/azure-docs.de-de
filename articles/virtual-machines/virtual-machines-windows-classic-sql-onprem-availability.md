@@ -3,9 +3,9 @@
 	description="In diesem Lernprogramm werden mit dem klassischen Bereitstellungsmodell erstellte Ressourcen verwendet. Es beschreibt die Verwendung des Assistenten zum Hinzufügen von Replikaten in SQL Server Management Studio (SSMS) zum Hinzufügen eines Replikats einer AlwaysOn-Verfügbarkeitsgruppe in Azure."
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
-	editor="monicar"
+	authors="MikeRayMSFT"
+	manager="jhubbard"
+	editor=""
 	tags="azure-service-management"/>
 
 <tags
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="02/03/2016"
-	ms.author="jroth" />
+	ms.date="04/05/2016"
+	ms.author="mikeray" />
 
 # Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
 
@@ -101,6 +101,6 @@ Nach dem Erstellen der Verfügbarkeitsgruppe sollten Sie einen Listener für Cli
 
 Über die Verwendung des **Assistenten zum Hinzufügen von Azure-Replikaten** zum Erweitern Ihrer AlwaysOn-Verfügbarkeitsgruppe in Azure hinaus können Sie auch einen Teil Ihrer SQL Server-Workloads vollständig nach Azure auslagern. Informationen zum Einstieg finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
-Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md).
+Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

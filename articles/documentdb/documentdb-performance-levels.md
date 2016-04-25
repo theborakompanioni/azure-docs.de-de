@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="04/08/2016" 
 	ms.author="johnmac"/>
 
 # Leistungsebenen in DocumentDB
@@ -97,9 +97,9 @@ Es wird empfohlen, dass die Anwendung eine kleine Anzahl von Sammlungen verwende
 
 ## Ändern von Leistungsstufen mit dem Azure-Portal
 
-Das Azure-Portal ist eine Option, die Ihnen beim Verwalten der Leistungsstufen Ihrer Sammlungen zur Verfügung steht. Führen Sie die folgenden Schritte aus, um die Leistungsstufe einer Sammlung im klassischen Azure-Portal zu ändern.
+Das Azure-Portal ist eine Option, die Ihnen beim Verwalten der Leistungsstufen Ihrer Sammlungen zur Verfügung steht. Führen Sie diese Schritte aus, um die Umstellung von vordefinierten Leistungsstufen auf benutzerdefinierte Leistungsstufen im Azure-Portal durchzuführen, oder sehen sich Sie das 75 Sekunden lange [Channel 9-Video](https://channel9.msdn.com/Blogs/AzureDocumentDB/ChangeDocumentDBCollectionPerformance) an. Weitere Informationen zur Änderung der Preisoptionen finden Sie im Blogbeitrag [DocumentDB: Everything you need to know about using the new pricing options](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/) (DocumentDB: Alles Wissenswerte zur Verwendung der neuen Preisoptionen).
 
-1. Navigieren Sie in Ihrem Browser zum [**Microsoft Azure-Portal**](https://portal.azure.com).
+1. Navigieren Sie in Ihrem Browser zum [**Azure-Portal**](https://portal.azure.com).
 2. Klicken Sie auf der Navigationsleiste auf der linken Seite auf **Durchsuchen**.
 3. Klicken Sie im Hub **Durchsuchen** unter **Filtern nach** auf **DocumentDB-Konten**.
 4. Klicken Sie auf dem Blatt **DocumentDB-Konten** auf das DocumentDB-Konto, das die gewünschte Sammlung enthält.
@@ -113,9 +113,9 @@ Das Azure-Portal ist eine Option, die Ihnen beim Verwalten der Leistungsstufen I
 
 9. Wählen Sie auf dem Blatt **Tarif wählen** die Option **Auswählen** aus.
 
-10. Auf dem Blatt **Sammlung verwalten** wurde der **Tarif** auf **Standard** geändert, und der **Durchsatz (RU/s)** wird angezeigt.
+10. Auf dem Blatt **Sammlung verwalten** wurde der **Tarif** in **Standard** geändert, und der **Durchsatz (RU/s)** wird angezeigt.
 
-    Ändern Sie den Wert im Feld **Durchsatz** auf einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](documentdb-request-units.md)/Sekunde (RU/s). Die **Preiszusammenfassung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten bereitzustellen.
+    Ändern Sie den Wert im Feld **Durchsatz** in einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](documentdb-request-units.md)/Sekunde (RU/s). Die **Preiszusammenfassung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten anzugeben.
 
     ![Screenshots des Blatts „Sammlung verwalten“ zeigen Ihnen, wo Sie den Durchsatzwert für die Sammlung ändern können.][2]
 
@@ -176,4 +176,4 @@ Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-[Dokument
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

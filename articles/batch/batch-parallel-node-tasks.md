@@ -6,7 +6,7 @@
 	authors="mmacy"
 	manager="timlt"
 	editor="" />
-	
+
 <tags
 	ms.service="batch"
 	ms.devlang="multiple"
@@ -15,7 +15,7 @@
 	ms.workload="big-compute"
 	ms.date="01/22/2016"
 	ms.author="marsma" />
-	
+
 # Maximieren der Azure Batch Compute-Ressourcenauslastung mit parallelen Knotenaufgaben
 
 In diesem Artikel erfahren Sie, wie Sie in Ihrem Azure Batch-Pool mehrere Aufgaben gleichzeitig auf jedem Computeknoten ausführen. Durch Aktivieren der zeitgleichen Ausführung auf den Computeknoten eines Pools wird die Maximierung der Ressourcenauslastung auf einer kleineren Anzahl von Knoten innerhalb des Pools möglich. Für einige Workloads lässt sich so Zeit und Geld sparen.
@@ -38,7 +38,7 @@ Statt Standard\_D1-Knoten mit 1 CPU-Kern zu verwenden, können Sie Standard\_D1
 
 ## Aktivieren der parallelen Aufgabenausführung
 
-Sie konfigurieren die Computeknoten in Ihrer Batch-Lösung für die parallele Aufgabenausführung auf der Pool-Ebene. Beim Arbeiten mit der Batch .NET-Bibliothek legen Sie die [CloudPool.MaxTasksPerComputeNode][maxtasks_net]-Eigenschaft fest, wenn Sie einen Pool erstellen. Bei Verwenden der Batch REST-API legen Sie das [maxTasksPerNode][maxtasks_rest]-Element bei der Erstellung des Pools im Anforderungstext fest.
+Sie konfigurieren die Computeknoten in Ihrer Batch-Lösung für die parallele Aufgabenausführung auf der Pool-Ebene. Beim Arbeiten mit der Batch .NET-Bibliothek legen Sie die [CloudPool.MaxTasksPerComputeNode][maxtasks_net]-Eigenschaft fest, wenn Sie einen Pool erstellen. Bei Verwenden der Batch REST-API legen Sie das [maxTasksPerNode][rest_addpool]-Element bei der Erstellung des Pools im Anforderungstext fest.
 
 Die maximale Anzahl an Aufgaben pro Knoten in Azure Batch beträgt bis zu viermal (4x) die Anzahl der Knotenkerne. Ist der Pool beispielsweise mit Knoten der Größe „Groß“ (vier Kerne) konfiguriert, kann für „`maxTasksPerNode`” „16“ festgelegt werden. Ausführliche Informationen zur Anzahl der Kerne für jede Knotengröße finden Sie unter [Größen für Clouddienste](./../cloud-services/cloud-services-sizes-specs.md). Weitere Informationen zu den Grenzen des Dienstes finden Sie in [Kontingente und Einschränkungen für den Azure Batch-Dienst](batch-quota-limit.md).
 
@@ -56,27 +56,37 @@ Als Beispiel für den Wert dieser Eigenschaft betrachten Sie den Pool aus Standa
 
 Dieser [Batch .NET][api_net]-API-Codeausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus vier großen Knoten mit maximal vier Aufgaben pro Knoten. Er gibt eine Richtlinie für die Aufgabenplanung vor, die besagt, dass jeder Knoten mit Aufgaben gefüllt werden soll, bevor diese den anderen Knoten im Pool zugewiesen werden. Weitere Informationen zum Hinzufügen von Pools mit der Batch .NET-API finden Sie unter [BatchClient.PoolOperations.CreatePool][poolcreate_net].
 
-        CloudPool pool = batchClient.PoolOperations.CreatePool(poolId: "mypool",
-        													osFamily: "2",
-        													virtualMachineSize: "large",
-        													targetDedicated: 4);
-        pool.MaxTasksPerComputeNode = 4;
-        pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
-        pool.Commit();
+```
+CloudPool pool =
+    batchClient.PoolOperations.CreatePool(
+        poolId: "mypool",
+		targetDedicated: 4
+		virtualMachineSize: "large",
+		cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+
+pool.MaxTasksPerComputeNode = 4;
+pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
+pool.Commit();
+```
 
 ## Beispiel für Batch REST
 
-Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus zwei großen Knoten mit maximal vier Aufgaben pro Knoten. Weitere Informationen zum Hinzufügen von Pools mit der REST-API finden Sie unter [Hinzufügen eines Pools zu einem Konto][maxtasks_rest].
+Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus zwei großen Knoten mit maximal vier Aufgaben pro Knoten. Weitere Informationen zum Hinzufügen von Pools mit der REST-API finden Sie unter [Hinzufügen eines Pools zu einem Konto][rest_addpool].
 
-        {
-          "id": "mypool",
-          "vmSize": "Large",
-          "osFamily": "2",
-          "targetOSVersion": "*",
-          "targetDedicated": 2,
-          "enableInterNodeCommunication": false,
-          "maxTasksPerNode": 4
-        }
+```
+{
+  "odata.metadata":"https://myaccount.myregion.batch.azure.com/$metadata#pools/@Element",
+  "id":"mypool",
+  "vmSize":"large",
+  "cloudServiceConfiguration": {
+    "osFamily":"4",
+    "targetOSVersion":"*",
+  }
+  "targetDedicated":2,
+  "maxTasksPerNode":4,
+  "enableInterNodeCommunication":true,
+}
+```
 
 > [AZURE.NOTE] Sie können das `maxTasksPerNode`-Element und die „[MaxTasksPerComputeNode][maxtasks_net]”-Eigenschaft nur zum Zeitpunkt der Pool-Erstellung festlegen. Nach der Erstellung eines Pools können sie nicht mehr geändert werden.
 
@@ -124,11 +134,11 @@ Der [Azure Batch-Explorer][batch_explorer], eine der [Beispielanwendungen][githu
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [maxtasks_net]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
-[maxtasks_rest]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
 [poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

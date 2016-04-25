@@ -29,7 +29,7 @@ Die Linux-Diagnoseerweiterung unterstützt Benutzer mit den folgenden Funktionen
 - Anpassen der zu sammelnden und hochzuladenden Datenmetriken durch den Benutzer
 - Hochladen angegebener Protokolldateien in eine festgelegte Speichertabelle durch den Benutzer
 
-In Version 2.0 werden folgende Daten verarbeitet:
+In Version 2.0 werden folgende Daten verarbeitet:
 
 - Alle Rsyslog-Protokolle von Linux, einschließlich System-, Sicherheits- und Anwendungsprotokolle.
 - Alle in [diesem Dokument](https://scx.codeplex.com/wikipage?title=xplatproviders") angegebenen Systemdaten.
@@ -48,18 +48,18 @@ Dieser Artikel befasst sich mit dem Aktivieren und Konfigurieren der Erweiterung
 
 
 ## Voraussetzungen
-- Microsoft Azure Linux Agent in Version 2.0.6 oder höher. Beachten Sie, dass die meisten Images des Linux-Katalogs für virtuelle Azure-Computer die Version 2.0.6 oder höher besitzen. Durch Ausführen von **WAAgent -version** können Sie ermitteln, welche Version auf dem virtuellen Computer installiert ist. Wenn auf dem virtuellen Computer eine ältere Version als 2.0.6 ausgeführt wird, können Sie sie unter Verwendung dieser [Anweisungen](https://github.com/Azure/WALinuxAgent "Anweisungen") aktualisieren.
-- [Azure-Befehlszeilenschnittstelle](./xplat-cli-install.md). Folgen Sie [dieser Anleitung](./xplat-cli-install.md), um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Mit **azure vm extension set --help** erhalten Sie beispielsweise ausführliche Syntaxinformationen. Mit **azure login** können Sie sich bei Azure anmelden, und **azure vm list** führt alle Ihre virtuellen Computer in Azure auf.
+- Microsoft Azure Linux Agent in Version 2.0.6 oder höher. Beachten Sie, dass die meisten Images des Linux-Katalogs für virtuelle Azure-Computer die Version 2.0.6 oder höher besitzen. Durch Ausführen von **WAAgent -version** können Sie ermitteln, welche Version auf dem virtuellen Computer installiert ist. Wenn auf dem virtuellen Computer eine ältere Version als 2.0.6 ausgeführt wird, können Sie sie unter Verwendung dieser [Anweisungen](https://github.com/Azure/WALinuxAgent "Anweisungen") aktualisieren.
+- [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). Folgen Sie [dieser Anleitung](../xplat-cli-install.md), um die Azure-Befehlszeilenschnittstelle auf Ihrem Computer einzurichten. Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie über Ihre Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) mithilfe des Befehls **azure** auf die Befehle der Azure-Befehlszeilenschnittstelle zugreifen. Mit **azure vm extension set --help** erhalten Sie beispielsweise ausführliche Syntaxinformationen. Mit **azure login** können Sie sich bei Azure anmelden, und **azure vm list** führt alle Ihre virtuellen Computer in Azure auf.
 - Ein Speicherkonto zum Speichern der Daten. Sie benötigen einen zuvor erstellten Speicherkontonamen und den Zugriffsschlüssel zum Hochladen von Daten an Ihren Speicher.
 
 
 ## Verwenden des Azure-CLI-Befehls zum Aktivieren der Linux-Diagnoseerweiterung
 
-###  Szenario 1: Aktivieren der Erweiterung mit dem Standard-Dataset
-Ab Version 2.0 werden standardmäßig folgende Daten gesammelt:
+###  Szenario 1: Aktivieren der Erweiterung mit dem Standard-Dataset
+Ab Version 2.0 werden standardmäßig folgende Daten gesammelt:
 
 - Alle Rsyslog-Informationen (einschließlich System-, Sicherheits- und Anwendungsprotokolle).  
-- Ein Kernsatz von Basissystemdaten, der vollständige Satz von Daten ist in diesem [Dokument](https://scx.codeplex.com/wikipage?title=xplatproviders) beschrieben. Wenn Sie zusätzliche Daten aktivieren möchten, fahren Sie mit den Schritten in Szenario 2 und 3 fort.
+- Ein Kernsatz von Basissystemdaten, der vollständige Satz von Daten ist in diesem [Dokument](https://scx.codeplex.com/wikipage?title=xplatproviders) beschrieben. Wenn Sie zusätzliche Daten aktivieren möchten, fahren Sie mit den Schritten in Szenario 2 und 3 fort.
 
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem Inhalt:
 
@@ -68,10 +68,10 @@ Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem 
      	"storageAccountKey":"the key of the account"
 	}
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
 
 
-###   Szenario 2: Anpassen der Leistungsüberwachungsmetrik  
+###   Szenario 2: Anpassen der Leistungsüberwachungsmetrik  
 Dieser Abschnitt beschreibt, wie Sie die Tabelle mit den Leistungs- und Diagnosedaten anpassen.
 
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt aus dem nächsten Beispiel. Geben Sie die Daten an, die Sie sammeln möchten.
@@ -90,10 +90,10 @@ Rsyslog-Daten werden standardmäßig gesammelt.
 	}
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
 
 
-###   Szenario 3: Hochladen eigener Protokolldateien
+###   Szenario 3: Hochladen eigener Protokolldateien
 In diesem Abschnitt erfahren Sie, wie Sie bestimmte Protokolldateien sammeln und an Ihr Speicherkonto hochladen. Zum Speichern des Protokolls müssen Sie den Pfad zur Protokolldatei und den Namen der Tabelle angeben. Sie können mehrere Protokolldateien nutzen, indem Sie mehrere Datei-/Tabelleneinträge an das Skript anfügen.
 
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem Inhalt:
@@ -109,10 +109,10 @@ Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem 
 	}
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
 
 
-###   Szenario 4: Deaktivieren der Linux-Überwachungserweiterung
+###   Szenario 4: Deaktivieren der Linux-Überwachungserweiterung
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem Inhalt:
 
 	{
@@ -123,11 +123,11 @@ Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem 
 	}
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
 
 
 ## Überprüfen der Daten
-Die Leistungs- und Diagnosedaten werden in einer Azure Storage-Tabelle gespeichert. In [diesem Artikel](storage-ruby-how-to-use-table-storage.md) erfahren Sie, wie Sie mithilfe von Azure-CLI-Skripts auf die Daten in der Speichertabelle zugreifen.
+Die Leistungs- und Diagnosedaten werden in einer Azure Storage-Tabelle gespeichert. In [diesem Artikel](../storage/storage-ruby-how-to-use-table-storage.md) erfahren Sie, wie Sie mithilfe von Azure-CLI-Skripts auf die Daten in der Speichertabelle zugreifen.
 
 Darüber hinaus können Sie folgende Tools mit grafischer Benutzeroberfläche für den Datenzugriff verwenden:
 
@@ -136,11 +136,11 @@ Darüber hinaus können Sie folgende Tools mit grafischer Benutzeroberfläche f�
 
 ![image](./media/virtual-machines-linux-classic-diagnostic-extension/no1.png)
 
-Wenn Sie in Szenario 2 und 3 „fileCfg“ oder „perfCfg“ aktiviert haben, können Sie mithilfe der weiter oben genannten Tools auch andere Daten anzeigen.
+Wenn Sie in Szenario 2 und 3 „fileCfg“ oder „perfCfg“ aktiviert haben, können Sie mithilfe der weiter oben genannten Tools auch andere Daten anzeigen.
 
 
 
 ## Bekannte Probleme
-- In Version 2.0 kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur über Skripts zugegriffen werden.
+- In Version 2.0 kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur über Skripts zugegriffen werden.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -5,7 +5,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -38,9 +38,11 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 
 	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS01.png)
 
-4. Konfigurieren Sie im Export-Assistenten den Export für das Speichern der BACPAC-Datei entweder an einem lokalen Speicherort auf dem Datenträger oder in einem Azure-Blob. Die exportierte BACPAC-Datei enthält immer das vollständige Datenbankschema und standardmäßig die Daten aus allen Tabellen. Verwenden Sie die Registerkarte "Erweitert", wenn Sie Daten aus einigen oder allen Tabellen ausschließen möchten. Sie können z. B. nur die Daten für Verweistabellen exportieren, anstatt die Daten aller Tabellen.
+4. Konfigurieren Sie im Export-Assistenten den Export für das Speichern der BACPAC-Datei entweder an einem lokalen Speicherort auf dem Datenträger oder in einem Azure-Blob. Die exportierte BACPAC-Datei enthält immer das vollständige Datenbankschema und standardmäßig die Daten aus allen Tabellen. Verwenden Sie die Registerkarte "Erweitert", wenn Sie Daten aus einigen oder allen Tabellen ausschließen möchten. Sie können z. B. nur die Daten für Verweistabellen exportieren, anstatt die Daten aller Tabellen.
 
-	![Exporteinstellungen](./media/sql-database-cloud-migrate/MigrateUsingBACPAC02.png)
+***Wichtig*** Verwenden Sie beim Exportieren einer BACPAC-Datei in Azure-Blobspeicher den Standardspeicher. Das Importieren einer BACPAC-Datei aus dem Premiumspeicher wird nicht unterstützt.
+
+	![Export settings](./media/sql-database-cloud-migrate/MigrateUsingBACPAC02.png)
 
 ## Nächster Schritt: Importieren aus einer BACPAC-Datei in SQL-Datenbank
 
@@ -49,4 +51,4 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 - [Azure-Portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Bewährte Methoden für die Verarbeitung von Status in Azure-Ressourcen-Manager-Vorlagen"
+	pageTitle="Verarbeiten des Status in Resource Manager-Vorlagen | Microsoft Azure"
 	description="Zeigt empfohlene Vorgehensweisen zum Verwenden komplexer Objekte, um Statusdaten für Azure-Ressourcen-Manager-Vorlagen und verknüpfte Vorlagen freizugeben."
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -13,26 +13,52 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="04/06/2016"
 	ms.author="tomfitz"/>
 
 # Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen
 
-In diesem Thema werden die bewährten Methoden zum Verwalten und Freigeben des Status innerhalb einer Azure-Ressourcen-Manager-Vorlage und über verknüpfte Vorlagen hinweg aufgeführt. Die in diesem Thema erläuterten Parameter und Variablen sind Beispiele für die Art von Objekten, die Sie definieren können, um Ihre Bereitstellungsanforderungen bequem zu organisieren. Anhand dieser Beispiele können Sie Ihre eigenen Objekte mit Eigenschaftswerten implementieren, die für Ihre Umgebung sinnvoll sind.
+Dieses Thema beschreibt bewährte Methoden für die Verwaltung und Freigabe des Status in Vorlagen. Die in diesem Thema erläuterten Parameter und Variablen sind Beispiele für die Art von Objekten, die Sie definieren können, um Ihre Bereitstellungsanforderungen bequem zu organisieren. Anhand dieser Beispiele können Sie Ihre eigenen Objekte mit Eigenschaftswerten implementieren, die für Ihre Umgebung sinnvoll sind.
 
 Dieses Thema ist Teil eines umfangreicheren Whitepapers. Um den vollständigen Artikel zu lesen, laden Sie [World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) herunter.
 
 
-## Verwenden komplexer Objekte zum Freigeben des Status
+## Bereitstellen von Standardkonfigurationseinstellungen
 
 Statt eine Vorlage zu bieten, die eine umfassende Flexibilität und unzählige Variationen zulässt, ist es empfehlenswert, bekannte Konfigurationen, die an T-Shirt-Größen wie S, M und L angelehnt sind, sowie eine Experimentierumgebung (auch Sandkasten genannt) zur Auswahl zu stellen. Weitere Beispiele für T-Shirt-Größen sind Produktangebote, wie z. B. Community Edition oder Enterprise Edition. In anderen Fällen gibt es möglicherweise workloadspezifische Konfigurationen einer Technologie wie z. B. MapReduce oder NoSQL.
 
-Mit komplexen Objekten können Sie Variablen erstellen, die Datensammlungen – bisweilen auch als „Eigenschaftenbehälter“ bezeichnet – enthalten und diese Daten zum Ausführen der Ressourcendeklaration in Ihrer Vorlage verwenden. Dieser Ansatz bietet geeignete, bekannte Konfigurationen mit unterschiedlichen Größen, die für Kunden vorkonfiguriert sind. Ohne bekannte Konfigurationen müssen Endkunden Clustergrößen selbst bestimmen, Ressourcenbeschränkungen der Plattform berücksichtigen und Berechnungen ausführen, um die resultierende Partitionierung von Speicherkonten und anderen Ressourcen (aufgrund von Clustergrößen- und Ressourcenbeschränkungen) zu bestimmen. Bekannte Konfigurationen ermöglichen Kunden das einfache Auswählen der richtigen Größe für eine bestimmte Bereitstellung. Zusätzlich zum Verbessern der Erfahrung für den Kunden ist eine kleine Anzahl bekannter Konfigurationen einfacher zu unterstützen und ermöglicht Ihnen das Erreichen einer höheren Dichte.
-
+Mit komplexen Objekten können Sie Variablen erstellen, die Datensammlungen – bisweilen auch als „Eigenschaftenbehälter“ bezeichnet – enthalten und diese Daten zum Ausführen der Ressourcendeklaration in Ihrer Vorlage verwenden. Dieser Ansatz bietet geeignete, bekannte Konfigurationen mit unterschiedlichen Größen, die für Kunden vorkonfiguriert sind. Ohne bekannte Konfigurationen müssen Endkunden Clustergrößen selbst bestimmen, Ressourcenbeschränkungen der Plattform berücksichtigen und Berechnungen ausführen, um die resultierende Partitionierung von Speicherkonten und anderen Ressourcen (aufgrund von Clustergrößen- und Ressourcenbeschränkungen) zu bestimmen. Zusätzlich zum Verbessern der Erfahrung für den Kunden ist eine kleine Anzahl bekannter Konfigurationen einfacher zu unterstützen und ermöglicht Ihnen das Erreichen einer höheren Dichte.
 
 Das folgende Beispiel zeigt, wie Sie Variablen definieren, die komplexe Objekte für die Darstellung von Datensammlungen enthalten. Die Sammlungen definieren Werte, die für die Größe des virtuellen Computers sowie Netzwerkeinstellungen, Betriebssystemeinstellungen und Verfügbarkeitseinstellungen verwendet werden.
 
     "variables": {
+      "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
+      "tshirtSizeSmall": {
+        "vmSize": "Standard_A1",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+        "vmCount": 2,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 1,
+          "pool": "db",
+          "map": [0,0],
+          "jumpbox": 0
+        }
+      },
+      "tshirtSizeMedium": {
+        "vmSize": "Standard_A3",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
+        "vmCount": 2,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 2,
+          "pool": "db",
+          "map": [0,1],
+          "jumpbox": 0
+        }
+      },
       "tshirtSizeLarge": {
         "vmSize": "Standard_A4",
         "diskSize": 1023,
@@ -53,7 +79,7 @@ Das folgende Beispiel zeigt, wie Sie Variablen definieren, die komplexe Objekte 
           "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh"
         ],
         "imageReference": {
-	  "publisher": "Canonical",
+          "publisher": "Canonical",
           "offer": "UbuntuServer",
           "sku": "14.04.2-LTS",
           "version": "latest"
@@ -82,6 +108,8 @@ Das folgende Beispiel zeigt, wie Sie Variablen definieren, die komplexe Objekte 
       }
     }
 
+Beachten Sie, dass die **tshirtSize**-Variable die T-Shirt-Größe, die Sie über einen Parameter angegeben haben (**Small**, **Medium**, **Large**), mit dem Text **tshirtSize** verkettet. Sie verwenden diese Variable, um die zugeordnete komplexe Objektvariable für diese T-Shirt-Größe abzurufen.
+
 Sie können später in der Vorlage auf diese Variablen verweisen. Die Möglichkeit zum Verweisen auf benannte Variablen und deren Eigenschaften vereinfacht die Vorlagensyntax und erleichtert es den Benutzern, den Kontext zu verstehen. Das folgende Beispiel definiert eine Ressource, die unter Verwendung der oben gezeigten Objekte zum Festlegen von Werten bereitgestellt werden soll. Beachten Sie beispielsweise, dass die Größe des virtuellen Computers durch Abrufen des Werts für `variables('tshirtSize').vmSize` festgelegt wird. Der Wert für die Festplattengröße wird aus `variables('tshirtSize').diskSize` abgerufen. Darüber hinaus wird der URI für eine verknüpfte Vorlage mit dem Wert für `variables('tshirtSize').vmTemplate` festgelegt.
 
     "name": "master-node",
@@ -104,7 +132,7 @@ Sie können später in der Vorlage auf diese Variablen verweisen. Die Möglichke
             "value": "[parameters('replicatorPassword')]"
           },
           "osSettings": {
-	    "value": "[variables('osSettings')]"
+            "value": "[variables('osSettings')]"
           },
           "subnet": {
             "value": "[variables('networkSettings').subnets.data]"
@@ -137,18 +165,11 @@ Sie können später in der Vorlage auf diese Variablen verweisen. Die Möglichke
       }
     }
 
-## Übergeben des Status an eine Vorlage und deren verknüpfte Vorlagen
+## Übergeben des Status an eine Vorlage
 
-Sie können Statusinformationen mithilfe folgender Parameter in einer Vorlage und deren verknüpften Vorlagen freigeben:
-
-- Parameter, die Sie während der Bereitstellung direkt an die Hauptvorlage übergeben
-- Parameter, statische Variablen und generierte Variablen, welche die Hauptvorlage gemeinsam mit ihren verknüpften Vorlagen nutzt
-
-### Allgemeine Parameter, die in der Hauptvorlage bereitgestellt werden
+Sie geben den Status in einer Vorlage mithilfe von Parametern frei, die Sie während der Bereitstellung direkt angeben.
 
 Die folgende Tabelle führt häufig verwendete Parameter in Vorlagen auf.
-
-**Häufig verwendete Parameter, die an die Hauptvorlage übergeben werden**
 
 Name | Wert | Beschreibung
 ---- | ----- | -----------
@@ -161,111 +182,64 @@ tshirtSize | Zeichenfolge aus einer eingeschränkten Liste von angebotenen T-Shi
 virtualNetworkName | String | Der Name des virtuellen Netzwerks, das der Nutzer verwenden möchte.
 enableJumpbox | Zeichenfolge aus einer eingeschränkten Liste (aktiviert/deaktiviert) | Parameter, der angibt, ob eine Jumpbox für die Umgebung aktiviert werden soll. Werte: "aktiviert", "deaktiviert".
 
-### An verknüpfte Vorlagen gesendete Parameter.
+Der **tshirtSize**-Parameter, der im vorherigen Abschnitt verwendet wurde, ist wie folgt definiert:
+
+    "parameters": {
+      "tshirtSize": {
+        "type": "string",
+        "defaultValue": "Small",
+        "allowedValues": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "metadata": {
+          "Description": "T-shirt size of the MongoDB deployment"
+        }
+      }
+    }
+
+
+## Übergeben des Status an verknüpfte Vorlagen
 
 Bei der Verbindung mit verknüpften Vorlagen wird häufig eine Mischung aus statischen und generierten Variablen verwendet.
 
-#### Statische Variablen
+### Statische Variablen
 
-Mithilfe statischer Variablen werden häufig Basiswerte wie z. B. URLs bereitgestellt, die in einer Vorlage oder als Werte verwendet werden, um Werte für dynamische Variablen zu erstellen.
+Mithilfe statischer Variablen werden häufig Basiswerte wie z. B. URLs bereitgestellt, die in einer Vorlage verwendet werden.
 
-Im unten stehenden Vorlagenauszug gibt *templateBaseUrl* den Stammspeicherort für die Vorlage in GitHub zurück. Die nächste Zeile erstellt eine neue Variable *sharedTemplateUrl* , die den Wert von *TemplateBaseUrl* mit dem bekannten Namen der freigegebenen Ressourcenvorlage verkettet. Darunter wird eine komplexe Objektvariable verwendet, um eine T-Shirt-Größe zu speichern. Hierbei wird *templateBaseUrl* verkettet, um den Speicherort der Vorlage für die bekannte Konfiguration anzugeben, der in der Eigenschaft *vmTemplate* gespeichert ist.
+Im unten stehenden Vorlagenauszug gibt `templateBaseUrl` das Stammverzeichnis für die Vorlage in GitHub zurück. Die nächste Zeile erstellt eine neue `sharedTemplateUrl`-Variable, die die Basis-URL mit dem bekannten Namen der freigegebenen Ressourcenvorlage verkettet. Darunter wird eine komplexe Objektvariable verwendet, um eine T-Shirt-Größe zu speichern. Hierbei wird die Basis-URL mit dem bekannten Speicherort der Konfigurationsvorlage verkettet und in der Eigenschaft `vmTemplate` gespeichert.
 
-Der Vorteil dieses Ansatzes ist, dass Sie die Vorlage problemlos verschieben, verzweigen oder als Grundlage für eine neue Vorlage verwenden können. Wenn sich der Speicherort für die Vorlage ändert, müssen Sie nur die statische Variable an einer Stelle ändern: der Hauptvorlage. Diese übergibt die Änderung an alle anderen Vorlagen.
+Der Vorteil dieses Ansatzes ist, dass Sie bei einer Änderung des Speicherorts für die Vorlage die statische Variable nur an einer Stelle ändern müssen. Die Änderung wird dann an alle verknüpften Vorlagen übergeben.
 
-    "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-    "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-    "tshirtSizeSmall": {
-      "vmSize": "Standard_A1",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-      "vmCount": 2,
-      "slaveCount": 1,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 1,
-        "pool": "db",
-        "map": [0,0],
-        "jumpbox": 0
+    "variables": {
+      "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+      "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
+      "tshirtSizeSmall": {
+        "vmSize": "Standard_A1",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+        "vmCount": 2,
+        "slaveCount": 1,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 1,
+          "pool": "db",
+          "map": [0,0],
+          "jumpbox": 0
+        }
       }
     }
 
-#### Generierte Variablen
+### Generierte Variablen
 
 Neben den statischen Variablen werden einige Variablen dynamisch generiert. In diesem Abschnitt werden einige häufig verwendete Arten von generierten Variablen beschrieben.
 
-##### tshirtSize
+#### tshirtSize
 
-Beim Aufrufen der Hauptvorlage können Sie aus einer bestimmten Anzahl von Optionen eine T-Shirt-Größe auswählen – in der Regel Werte wie *Small*, *Medium* und *Large*.
+Sie kennen diese generierte Variable aus den obigen Beispielen.
 
-In der Hauptvorlage wird diese Option als Parameter wie z. B *tshirtSize* angezeigt:
-
-    "tshirtSize": {
-      "type": "string",
-      "defaultValue": "Small",
-      "allowedValues": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "metadata": {
-        "Description": "T-shirt size of the MongoDB deployment"
-      }
-    }
-
-Innerhalb der Hauptvorlage sind für jede Größe entsprechende Variablen vorhanden. Wenn „Small“, „Medium“ und „Large“ als Größen verfügbar sind, enthält der Variablenabschnitt Variablen namens *tshirtSizeSmall*, *tshirtSizeMedium* und *tshirtSizeLarge*.
-
-Wie das folgende Beispiel zeigt, definieren diese Variablen die Eigenschaften einer bestimmten T-Shirt-Größe. Jede Variable identifiziert den VM-Typ, die Datenträgergröße, die zu verknüpfende zugeordnete Ressourcenvorlage für die Skalierungseinheit, die Anzahl von Instanzen, die Speicherkontodetails und den Jumpboxstatus.
-
-Das Namenspräfix des Speicherkontos wird aus einem von einem Benutzer bereitgestellten Parameter abgerufen, und die verknüpfte Vorlage ist die Verkettung der Basis-URL für die Vorlage mit dem Dateinamen einer bestimmten Skalierungseinheit-Ressourcenvorlage.
-
-    "tshirtSizeSmall": {
-      "vmSize": "Standard_A1",
-			"diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-      "vmCount": 2,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 1,
-        "pool": "db",
-        "map": [0,0],
-        "jumpbox": 0
-      }
-    },
-    "tshirtSizeMedium": {
-      "vmSize": "Standard_A3",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
-      "vmCount": 2,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 2,
-        "pool": "db",
-        "map": [0,1],
-        "jumpbox": 0
-      }
-    },
-    "tshirtSizeLarge": {
-      "vmSize": "Standard_A4",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-16disk-resources.json')]",
-      "vmCount": 3,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 2,
-        "pool": "db",
-        "map": [0,1,1],
-        "jumpbox": 0
-      }
-    }
-
-Die Variable *tshirtSize* wird weiter unten im Variablenabschnitt verwendet. Das Ende der von Ihnen angegebenen T-Shirt-Größe (*Small*, *Medium*, *Large*) wird mit dem Text *tshirtSize* verkettet, um die zugeordnete komplexe Objektvariable für diese T-Shirt-Größe abzurufen:
-
-    "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
-
-Diese Variable wird an die verknüpfte Ressourcenvorlage für die Skalierungseinheit übergeben.
-
-##### networkSettings
+#### networkSettings
 
 In Vorlagen für Kapazitäten, Funktionen oder End-to-End-Lösungen erstellen verknüpfte Vorlagen in der Regel Ressourcen, die in einem Netzwerk vorhanden sind. Eine einfache Lösung ist es, ein komplexes Objekt zum Speichern von Netzwerkeinstellungen zu verwenden und diese an verknüpfte Vorlagen zu übergeben.
 
@@ -288,7 +262,7 @@ Hier finden Sie ein Beispiel für die Kommunikation der Netzwerkeinstellungen.
       }
     }
 
-##### availabilitySettings
+#### availabilitySettings
 
 In verknüpften Vorlagen erstellte Ressourcen werden häufig in einer Verfügbarkeitsgruppe platziert. Im folgenden Beispiel ist der Name der Verfügbarkeitsgruppe ebenso angegeben wie die Anzahl der zu verwendenden Fehler- und Updatedomänen.
 
@@ -300,7 +274,7 @@ In verknüpften Vorlagen erstellte Ressourcen werden häufig in einer Verfügbar
 
 Wenn Sie mehrere Verfügbarkeitsgruppen benötigen (z. B. eine für Masterknoten, eine weitere für Datenknoten), können Sie einen Namen als Präfix verwenden, mehrere Verfügbarkeitsgruppen angeben oder gemäß dem oben gezeigten Modell eine Variable für eine bestimmte T-Shirt-Größe erstellen.
 
-##### storageSettings
+#### storageSettings
 
 Speicherdetails werden häufig mit verknüpften Vorlagen freigegeben. Im folgenden Beispiel stellt ein*storageSettings*-Objekt Details zu den Speicherkonto- und Containernamen bereit.
 
@@ -310,7 +284,7 @@ Speicherdetails werden häufig mit verknüpften Vorlagen freigegeben. Im folgend
         "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
     }
 
-##### osSettings
+#### osSettings
 
 Bei verknüpften Vorlagen müssen Sie möglicherweise Betriebssystemeinstellungen an verschiedene Arten von Knoten über verschiedene Arten von bekannten Konfigurationen hinweg übergeben. Ein komplexes Objekt ist eine einfache Möglichkeit zum Speichern und Freigeben von Betriebssysteminformationen und erleichtert zudem die Unterstützung mehrerer Betriebssystemoptionen für die Bereitstellung.
 
@@ -325,7 +299,7 @@ Das folgende Beispiel zeigt ein Objekt für *osSettings*:
       }
     }
 
-##### machineSettings
+#### machineSettings
 
 Die generierte Variable *machineSettings* ist ein komplexes Objekt, das verschiedene Hauptvariablen zum Erstellen eines neuen virtuellen Computers enthält: Administratorbenutzername und -kennwort, ein Präfix für die Namen der virtuellen Computer und einen Verweis auf ein Betriebssystemimage, wie unten gezeigt:
 
@@ -343,7 +317,7 @@ Die generierte Variable *machineSettings* ist ein komplexes Objekt, das verschie
 
 Beachten Sie, dass *osImageReference* die Werte aus der in der Hauptvorlage definierten Variable *osSettings* abruft. Dies bedeutet, dass Sie das Betriebssystem eines virtuellen Computers problemlos ändern können – vollständig oder basierend auf den Einstellungen eines Vorlagenutzers.
 
-##### vmScripts
+#### vmScripts
 
 Das *vmScripts*-Objekt enthält Details zu den Skripts zum Herunterladen und Ausführen auf einer virtuellen Computerinstanz, einschließlich der externen und internen Verweise. Externe Verweise schließen die Infrastruktur ein. Interne Verweise umfassen die installierte Software und die Konfiguration.
 
@@ -381,12 +355,75 @@ Das folgende Beispiel zeigt, wie die private IP-Adresse übergeben wird, die in 
 
 Innerhalb der Hauptvorlage können Sie diese Daten mit folgender Syntax verwenden:
 
-    "masterIpAddress": {
-        "value": "[reference('master-node').outputs.masterip.value]"
+    "[reference('master-node').outputs.masterip.value]"
+
+Sie können diesen Ausdruck im Abschnitt „outputs“ oder im Abschnitt „resources“ der Hauptvorlage verwenden. Sie können den Ausdruck nicht im Abschnitt „variables“ verwenden, da er vom Laufzeitstatus abhängt. Verwenden Sie Folgendes, um diesen Wert aus der Hauptvorlage zurückzugeben:
+
+    "outputs": { 
+      "masterIpAddress": {
+        "value": "[reference('master-node').outputs.masterip.value]",
+        "type": "string"
+      }
+     
+Ein Beispiel für die Verwendung des Abschnitts „outputs“ einer verknüpften Vorlage, um Datenträger für einen virtuellen Computer zurückzugeben, finden Sie unter [Erstellen mehrerer Datenträger für einen virtuellen Computer](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine).
+
+## Definieren von Authentifizierungseinstellungen für den virtuellen Computer
+
+Sie können das gleiche Muster, das oben für Konfigurationseinstellungen aufgeführt ist, für die Angabe der Authentifizierungseinstellungen für einen virtuellen Computer verwenden. Sie erstellen einen Parameter für die Übergabe des Authentifizierungstyps.
+
+    "parameters": {
+      "authenticationType": {
+        "allowedValues": [
+          "password",
+          "sshPublicKey"
+        ],
+        "defaultValue": "password",
+        "metadata": {
+          "description": "Authentication type"
+        },
+        "type": "string"
+      }
     }
 
-## Nächste Schritte
-- [Authoring Azure Resource Manager Templates (in englischer Sprache)](resource-group-authoring-templates.md)
-- [Funktionen von Azure-Ressourcen- Manager-Vorlagen](resource-group-template-functions.md)
+Sie fügen Variablen für den verschiedenen Authentifizierungstypen hinzu. Außerdem fügen Sie eine Variable hinzu, um zu speichern, welcher Typ basierend auf dem Wert des Parameters für diese Bereitstellung verwendet wird.
 
-<!---HONumber=AcomDC_0406_2016-->
+    "variables": {
+      "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
+      "osProfilepassword": {
+        "adminPassword": "[parameters('adminPassword')]",
+        "adminUsername": "notused",
+        "computerName": "[parameters('vmName')]",
+        "customData": "[base64(variables('customData'))]"
+      },
+      "osProfilesshPublicKey": {
+        "adminUsername": "notused",
+        "computerName": "[parameters('vmName')]",
+        "customData": "[base64(variables('customData'))]",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": "true",
+          "ssh": {
+            "publicKeys": [
+              {
+                "keyData": "[parameters('sshPublicKey')]",
+                "path": "/home/notused/.ssh/authorized_keys"
+              }
+            ]
+          }
+        }
+      }
+    }
+
+Wenn Sie den virtuellen Computer definieren, legen Sie **osProfile** auf die erstellte Variable fest.
+
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      ...
+      "osProfile": "[variables('osProfile')]"
+    }
+
+
+## Nächste Schritte
+- Informationen zu den Abschnitten der Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
+- Unter [Vorlagenfunktionen in Azure Resource Manager](resource-group-template-functions.md) finden Sie alle Funktionen, die in einer Vorlage verfügbar sind.
+
+<!---HONumber=AcomDC_0413_2016-->

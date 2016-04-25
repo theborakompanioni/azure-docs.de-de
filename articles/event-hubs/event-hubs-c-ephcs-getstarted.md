@@ -26,13 +26,13 @@ Event Hubs sind ein hochgradig skalierbares Aufnahmesystem, das Millionen von Er
 
 Weitere Informationen finden Sie unter [Übersicht über Event Hubs][].
 
-In diesem Lernprogramm erfahren Sie, wie Nachrichten an einen Event Hub mithilfe einer Konsolenanwendung in C aufgenommen werden können und wie Sie diese parallel mit der C#-[Ereignisprozessorhost-Bibliothek][] abrufen.
+In diesem Lernprogramm erfahren Sie, wie Nachrichten an einen Event Hub mithilfe einer Konsolenanwendung in C aufgenommen werden können und wie Sie diese parallel mit der C#-[Ereignisprozessorhost-Bibliothek][] abrufen.
 
 Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
-+ Eine C-Entwicklungsumgebung. In diesem Lernprogramm wird vom GCC-Stack auf einem [virtuellen Linux-Computer mit Azure](../virtual-machines/virtual-machines-linux-cli-create.md) mit Ubuntu 14.04 ausgegangen. Anweisungen für andere Umgebungen werden in externen Links bereitgestellt.
++ Eine C-Entwicklungsumgebung. In diesem Lernprogramm wird vom GCC-Stack auf einem [virtuellen Linux-Computer mit Azure](../virtual-machines/virtual-machines-linux-quick-create-cli.md) mit Ubuntu 14.04 ausgegangen. Anweisungen für andere Umgebungen werden in externen Links bereitgestellt.
 
-+ Microsoft Visual Studio Express 2013 für Windows
++ Microsoft Visual Studio Express für Windows
 
 + Ein aktives Azure-Konto. <br/>Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Kostenlose Azure-Testversion</a>.
 
@@ -44,7 +44,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 	![][1]
 
-3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
+3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
 
 	![][2]
 
@@ -92,9 +92,9 @@ Sie können jetzt die Anwendung ausführen.
 Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hub erstellt und Daten sendet und empfängt, können Sie mit den folgenden Szenarios fortfahren:
 
 - Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs][].
-- Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][]
+- Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][]
 - Eine [Messaginglösung mit Warteschlange][] unter Verwendung von Service Bus-Warteschlangen.
-- [Übersicht über Event Hubs][]
+- [Übersicht über Event Hubs][]
 
 <!-- Images. -->
 [1]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub1.png
@@ -113,9 +113,9 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 [Ereignisprozessorhost-Bibliothek]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Übersicht über Event Hubs]: event-hubs-overview.md
-[Übersicht über Event Hubs]: event-hubs-overview.md
+[Übersicht über Event Hubs]: event-hubs-overview.md
 [Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

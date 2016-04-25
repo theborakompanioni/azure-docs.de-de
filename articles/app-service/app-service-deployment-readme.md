@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Bereitstellen von Anwendungen auf Azure App Service." 
-	description="Erfahren Sie, wie Sie Anwendungen in App Service bereitstellen" 
+<properties
+	pageTitle="Bereitstellen von Anwendungen auf Azure App Service."
+	description="Erfahren Sie, wie Sie Anwendungen in App Service bereitstellen"
 	keywords="App Service, Azure App Service, bereitstellen, Bereitstellung"
-	services="app-service" 
-	documentationCenter="" 
-	authors="dariagrigoriu" 
-	manager="wpickett" 
+	services="app-service"
+	documentationCenter=""
+	authors="dariagrigoriu"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/09/2016" 
+<tags
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/09/2016"
 	ms.author="dariagrigoriu"/>
 
 # Übersicht zur Azure App-Service Bereitstellung
@@ -23,4 +23,4 @@ Azure App Service bietet umfassende integrierte Funktionen zum Erstellen von lei
 
 [AZURE.INCLUDE [app-service-blueprint-deployment](../../includes/app-service-blueprint-deployment.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

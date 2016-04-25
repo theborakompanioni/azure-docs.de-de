@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="04/06/2016"
 	ms.author="jahogg"/>
 
 # Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
@@ -25,6 +25,8 @@
 Diagnose und Problembehandlung können in einer verteilten Anwendung, die in einer Cloudumgebung gehostet wird, komplexer sein als in herkömmlichen Umgebungen. Anwendungen können in einer PaaS- oder IaaS-Infrastruktur bereitgestellt werden, lokal, auf einem Mobilgerät oder in einer Kombination hiervon. In der Regel kann der Netzwerkverkehr der Anwendung öffentliche und private Netzwerke durchlaufen, und Ihre Anwendung kann mehrere Speichertechnologien wie Microsoft Azure-Speichertabellen, Blobs, Warteschlangen oder Dateien neben anderen Datenspeichern wie relationalen und Dokumentendatenbanken verwenden.
 
 Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwachen und verstehen, wie die Diagnose und Problembehandlung aller Anwendungsaspekte und ihrer abhängigen Technologien durchzuführen sind. Als Nutzer des Azure-Speicherdiensts sollten Sie ständig die von Ihrer Anwendung verwendeten Speicherdienste überwachen, um unerwartete Verhaltensveränderungen zu erkennen (beispielsweise langsamere Antwortzeiten als üblich), und Protokollierung verwenden, um detailliertere Daten zu sammeln und ein Problem in der Tiefe zu analysieren. Die Diagnoseinformationen, die Sie sowohl aus der Überwachung als auch der Protokollierung erhalten, werden Ihnen helfen, die Ursache des Problems, das bei Ihrer Anwendung auftritt, zu bestimmen. Dann können Sie das Problem behandeln und die entsprechenden Schritte, die Sie für seine Beseitigung ergreifen können, festlegen. Azure-Speicher ist ein Kerndienst von Azure und ein wichtiger Bestandteil der meisten Lösungen, die Kunden auf der Azure-Infrastruktur bereitstellen. Azure-Speicher beinhaltet Funktionen zur vereinfachten Überwachung, Diagnose und Problembehandlung von Speicherproblemen in Ihren cloudbasierten Anwendungen.
+
+> [AZURE.NOTE] Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert.
 
 Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](../storage-e2e-troubleshooting/).
 
@@ -102,7 +104,7 @@ Die "[Anhänge]" enthalten Informationen zur Verwendung anderer Tools wie Wiresh
 
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen, oder Prozentsatz der erfolgreichen Dienstanfragen (für eine vollständige Liste der verfügbaren Metriken siehe <a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank">Tabellenschema der Speicher-Analytikmetriken</a> in MSDN). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter <a href="http://go.microsoft.com/fwlink/?LinkId=510865" target="_blank">Aktivierung von Speichermetriken</a> in MSDN.
 
-Sie können wählen, welche Stundenmetriken Sie im [Azure-Portal](portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet (weitere Informationen finden Sie auf der Seite <a href="http://msdn.microsoft.com/library/azure/dn306638.aspx" target="_blank">Gewusst wie: Empfangen von Warnbenachrichtigungen und Verwalten von Warnungsregeln in Azure</a>). Der Speicherdienst sammelt Metriken nach dem Best-Effort-Prinzip, kann aber nicht jeden Speichervorgang aufzeichnen.
+Sie können wählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet (weitere Informationen finden Sie auf der Seite </a>Gewusst wie: Empfangen von Warnbenachrichtigungen und Verwalten von Warnungsregeln in Azure<a href="http://msdn.microsoft.com/library/azure/dn306638.aspx" target="_blank">). Der Speicherdienst sammelt Metriken nach dem Best-Effort-Prinzip, kann aber nicht jeden Speichervorgang aufzeichnen.
 
 Im Azure-Portal können Sie Metriken wie Verfügbarkeit, Gesamtanfragen und durchschnittliche Latenzzahlen für ein Speicherkonto anzeigen. Zudem wurde eine Benachrichtigungsregel eingerichtet, um einen Administrator zu benachrichtigen, wenn die Verfügbarkeit unter ein bestimmtes Niveau sinkt. Aus der Anzeige dieser Daten ergibt sich als möglicher Untersuchungsbereich der unter 100 % liegende Erfolgsprozentsatz des Tabellendiensts. (Weitere Informationen finden Sie im Abschnitt "[Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus 'ClientOtherErrors']".)
 
@@ -668,7 +670,10 @@ Beim Erstellen neuer Container sollte die Clientanwendung eindeutige Containerna
 
 Die **PercentSuccess**-Metrik erfasst den Prozentsatz der erfolgreichen Vorgänge, basierend auf ihrem HTTP-Statuscode. Vorgänge mit Statuscodes im Bereich 2XX gelten als erfolgreich, während Vorgänge mit Statuscodes in den Bereichen 3XX, 4XX und 5XX als nicht erfolgreich gelten und den Metrikwert **PercentSucess** senken. In den serverseitigen Speicher-Protokollierungsdateien sind diese Vorgänge mit dem Transaktionsstatus **ClientOtherErrors** erfasst.
 
-Es ist wichtig zu beachten, dass diese Vorgänge erfolgreich abgeschlossen wurden und somit keinen Einfluss auf andere Metriken wie die Verfügbarkeit haben. Hier sind einige Beispiele für Vorgänge, die erfolgreich ausgeführt werden, aber zu erfolglosen HTTP-Statuscodes führen: - **ResourceNotFound** (Nicht Gefunden, 404), z. B. von einer GET-Anforderung für ein Blob, das nicht vorhanden ist. - **ResouceAlreadyExists** (Konflikt, 409), z. B. von einem **CreateIfNotExist**-Vorgang, bei dem die Ressource bereits vorhanden ist. - **ConditionNotMet** (Nicht Geändert, 304), z. B. aus einer bedingten Operation, wenn ein Client beispielsweise einen **ETag**-Wert und einen **If-None-Match**-HTTP-Header sendet, um ein Image nur dann anzufordern, wenn es seit dem letzten Vorgang aktualisiert wurde.
+Es ist wichtig zu beachten, dass diese Vorgänge erfolgreich abgeschlossen wurden und somit keinen Einfluss auf andere Metriken wie die Verfügbarkeit haben. Hier sind einige Beispiele für Vorgänge, die erfolgreich ausgeführt werden, aber zu erfolglosen HTTP-Statuscodes führen:
+- **ResourceNotFound** (Nicht Gefunden, 404), beispielsweise von einer GET-Anfrage an ein nicht existierendes Blob
+- **ResouceAlreadyExists** (Konflikt, 409), beispielsweise von einer **CreateIfNotExist**-Operation, wenn die Ressource bereits vorhanden ist.
+- **ConditionNotMet** (Nicht Verändert, 304), zum Beispiel von einem bedingten Vorgang, bei der ein Client einen **ETag**-Wert und einen HTTP **If-None-Match**-Header sendet, um ein Bild nur dann anzufordern, wenn es seit dem letzten Vorgang aktualisiert wurde.
 
 Eine Liste bekannter REST API-Fehlercodes, die von den Speicherdiensten zurückgegeben werden, finden Sie auf der Seite <a href="http://msdn.microsoft.com/library/azure/dd179357.aspx" target="_blank">Bekannte REST API-Fehlercodes</a>.
 
@@ -922,4 +927,4 @@ Zum Redaktionszeitpunkt befindet sich Application Insights in der Vorschau. Weit
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

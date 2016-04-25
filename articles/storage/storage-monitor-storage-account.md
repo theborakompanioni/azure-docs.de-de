@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="04/06/2016"
 	ms.author="robinsh"/>
 
 # Überwachen eines Speicherkontos im Azure-Portal
@@ -25,6 +25,8 @@ Sie können Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com) überw
 > [AZURE.NOTE] Für die Untersuchung von Überwachungsdaten im [Azure-Portal](https://portal.azure.com) fallen zusätzliche Kosten an. Weitere Informationen finden Sie unter <a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">Speicheranalyse und Speicheranalysekosten</a>.<br />
 
 > Der Azure-Dateispeicher unterstützt derzeit Metriken der Speicheranalyse, allerdings noch keine Protokollierung. Sie können die Metriken für den Azure-Dateispeicher über das [Azure-Portal](https://portal.azure.com) aktivieren.
+
+> Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert.
 
 > Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
 
@@ -157,4 +159,4 @@ Für jeden der für Ihr Speicherkonto verfügbaren Speicherdienste (Blob, Wartes
 
 Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Informationen zum Zugreifen auf den Container $logs finden Sie unter [Informationen zur Protokollierung durch die Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343262.aspx).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

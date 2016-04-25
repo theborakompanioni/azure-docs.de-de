@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="04/10/2016"
 	ms.author="robmcm"/>
 
 
@@ -31,7 +31,8 @@ In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tab
 
 ## Erstellen einer Ruby-Anwendung
 
-Anweisungen zum Erstellen einer Ruby-Anwendung finden Sie unter [Ruby on Rails Web application on an Azure VM](../virtual-machines/virtual-machines-ruby-rails-linux-classic-web-app.md) (Ruby on Rails-Webanwendung auf virtuellen Azure-Computern).
+Anweisungen zum Erstellen einer Ruby-Anwendung finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md).
+
 
 ## Konfigurieren der Anwendung für den Zugriff auf Storage
 
@@ -61,7 +62,7 @@ So rufen Sie diese Werte aus einem klassischen oder ARM-Speicherkonto im Azure-P
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Speicherkonto, das Sie verwenden möchten.
 3. Klicken Sie auf dem Blatt „Einstellungen“ auf der rechten Seite auf **Zugriffsschlüssel**.
-4. Auf dem angezeigten Blatt „Zugriffsschlüssel“ sehen Sie Zugriffsschlüssel 1 und Zugriffsschlüssel 2. Sie können beide verwenden. 
+4. Auf dem angezeigten Blatt „Zugriffsschlüssel“ sehen Sie Zugriffsschlüssel 1 und Zugriffsschlüssel 2. Sie können beide verwenden. 
 5. Klicken Sie auf das Symbol „Kopieren“, um den Schlüssel in die Zwischenablage zu kopieren. 
 
 So rufen Sie diese Werte aus einem klassischen Speicherkonto im klassischen Portal ab
@@ -163,4 +164,4 @@ Unter den folgenden Links erhalten Sie weitere Informationen zu komplexeren Spei
 - [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby)-Repository auf GitHub
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

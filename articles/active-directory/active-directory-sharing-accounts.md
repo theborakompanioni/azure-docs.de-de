@@ -65,7 +65,7 @@ Um Azure AD zur gemeinsamen Verwendung eines Kontos zu verwenden, sind folgende
 - Verwenden einer [gruppenbasierten Zuweisung](active-directory-accessmanagement-group-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“.
 - Optional: In einigen Anwendungen wie Facebook, Twitter oder LinkedIn lässt sich die Option zur automatisierten Kennwortaktualisierung aktivieren: [Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview!](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx) (in englischer Sprache).
 
-Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](multi-factor-authentication-get-started.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](active-directory-accessmanagement-self-service-group-management.md)-Gruppenverwaltung delegieren.
+Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](../multi-factor-authentication/multi-factor-authentication-get-started.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](active-directory-accessmanagement-self-service-group-management.md)-Gruppenverwaltung delegieren.
 
 ## Verwandte Artikel
 
@@ -73,4 +73,4 @@ Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor 
 - [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access.md)
 - [Self-Service-Gruppenverwaltung/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

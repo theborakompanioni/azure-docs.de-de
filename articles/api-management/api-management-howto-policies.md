@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Richtlinien in Azure API Management" 
+	pageTitle="Richtlinien in Azure API Management | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren." 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="04/12/2016" 
 	ms.author="sdanie"/>
 
 
@@ -51,6 +51,8 @@ Die Richtlinie wird zunächst schreibgeschützt angezeigt. Klicken Sie auf die A
 Die Richtliniendefinition ist ein einfaches XML-Dokument, das eine Sequenz eingehender und ausgehender Anweisungen beschreibt. Das XML-Dokument kann direkt im Definitionsfenster bearbeitet werden. Auf der rechten Seite sehen Sie eine Liste mit Anweisungen, und die für den aktuellen Geltungsbereich anwendbaren Anweisungen sind aktiviert und hervorgehoben, wie Sie am Beispiel der Anweisung **Limit Call Rate** im obigen Screenshot sehen können.
 
 Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Ausschnitt an der Cursorposition in der Definitionsansicht eingefügt.
+
+>[AZURE.NOTE] Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie in der [Richtlinienreferenz][] im Abschnitt **Verwendung** für die jeweilige Richtlinie.
 
 In der [Richtlinienreferenz][] finden Sie eine komplette Liste der Richtlinienanweisungen und deren Einstellungen.
 
@@ -108,7 +110,7 @@ Richtlinienbereiche werden in der folgenden Reihenfolge ausgewertet.
 
 Die Anweisungen in diesen Bereichen werden entsprechend der Platzierung des `base`-Elements ausgewertet, sofern es vorhanden ist.
 
-Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement.
+Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement.
 
 	<policies>
     	<inbound>
@@ -148,4 +150,4 @@ Sehen Sie sich das folgende Video zu Richtlinienausdrücken an.
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

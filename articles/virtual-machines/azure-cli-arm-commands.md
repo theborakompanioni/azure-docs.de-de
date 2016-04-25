@@ -23,7 +23,7 @@
 
 Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und für Ihre CLI-Version gelten unter Umständen etwas andere Befehle oder Parameter.
 
-Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](xplat-cli-install.md) und [eine Verbindung mit Ihrem Azure-Abonnement herstellen](xplat-cli-connect.md) (entweder mit einem Geschäfts- oder Schulkonto oder mit einer Microsoft-Kontoidentität).
+Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und [eine Verbindung mit Ihrem Azure-Abonnement herstellen](../xplat-cli-connect.md) (entweder mit einem Geschäfts- oder Schulkonto oder mit einer Microsoft-Kontoidentität).
 
 Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Ressourcen-Manager-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
@@ -208,11 +208,11 @@ Beispiel: Erstellen einer Konfigurationsdatei mit einer Skriptaktion, die beim E
 **Befehl zum Erstellen eines Clusters in einer Ressourcengruppe**
 
 	hdinsight cluster create [options] <clusterName>
-	 
+
 Beispiel: Erstellen eines Storm-auf-Linux-Clusters
 
 	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
-	
+
 	info:    Executing command hdinsight cluster create
 	+ Submitting the request to create cluster...
 	info:    hdinsight cluster create command OK
@@ -220,11 +220,11 @@ Beispiel: Erstellen eines Storm-auf-Linux-Clusters
 Beispiel: Erstellen eines Clusters mit einer Skriptaktion
 
 	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
-	
+
 	info:    Executing command hdinsight cluster create
 	+ Submitting the request to create cluster...
 	info:    hdinsight cluster create command OK
-	
+
 Parameteroptionen:
 
 	-h, --help                                                 output usage information
@@ -255,7 +255,7 @@ Parameteroptionen:
 	--rdpPassword <rdpPassword>                                RDP password (only for Windows clusters)
 	--rdpAccessExpiry <rdpAccessExpiry>                        RDP access expiry.
 	For example 12/12/2015 (only for Windows clusters)
-	--virtualNetworkId <virtualNetworkId>                      (Optional) Virtual network ID for the cluster. 
+	--virtualNetworkId <virtualNetworkId>                      (Optional) Virtual network ID for the cluster.
 	Value is a GUID for Windows cluster and ARM resource ID for Linux cluster)
 	--subnetName <subnetName>                                  (Optional) Subnet for the cluster
 	--additionalStorageAccounts <additionalStorageAccounts>    (Optional) Additional storage accounts.
@@ -1088,7 +1088,7 @@ Erstellen Sie Lastenausgleichsregeln.
 
 Sie können eine Lastenausgleichsregel erstellen, indem Sie den Front-End-Endpunkt für den Lastenausgleich konfigurieren, sowie den Back-End-Adresspoolbereich, der den eingehenden Netzwerkverkehr empfängt. Einstellungen umfassen auch die Ports für den Front-End-IP-Endpunkt und Ports für den Back-End-Adresspoolbereich.
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie eine Lastenausgleichsregel erstellen, in der ein Front-End-Endpunkt zur Überwachung von Port 80 TCP festgelegt wird und die den Netzwerkverkehr zum Lastenausgleich an Port 8080 für den Back-End-Adresspoolbereich sendet.
+Im folgenden Beispiel wird veranschaulicht, wie Sie eine Lastenausgleichsregel erstellen, in der ein Front-End-Endpunkt zur Überwachung von Port 80 TCP festgelegt wird und die den Netzwerkverkehr zum Lastenausgleich an Port 8080 für den Back-End-Adresspoolbereich sendet.
 
 	azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
 
@@ -1872,4 +1872,4 @@ Parameteroptionen:
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

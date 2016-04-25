@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="CDN-Cachingrichtlinie in der Media Services-Erweiterung" 
-	description="Dieses Thema bietet einen Überblick über CDN-Cachingrichtlinien in der Media Services-Erweiterung." 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="juliako" 
-	manager="dwrede" 
+<properties
+	pageTitle="CDN-Cachingrichtlinie in der Media Services-Erweiterung"
+	description="Dieses Thema bietet einen Überblick über CDN-Cachingrichtlinien in der Media Services-Erweiterung."
+	services="cdn"
+	documentationCenter=".NET"
+	authors="juliako"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/01/2016" 
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/01/2016"
 	ms.author="juliako"/>
 
 #CDN-Cachingrichtlinie in der Media Services-Erweiterung
@@ -32,7 +32,7 @@ Azure Media Services bietet ein [integriertes CDN](https://azure.microsoft.com/u
 
 Sie können das Azure Verwaltungsportal oder Azure Media Services-APIs verwenden, um Cacheheaderwerte zu konfigurieren.
 
-1. Informationen zum Konfigurieren von Cacheheadern über das Verwaltungsportal finden Sie unter [Verwalten von Streamingendpunkten](../media-services-manage-origins.md) im Abschnitt "Konfigurieren des Streamingendpunkts".
+1. Informationen zum Konfigurieren von Cacheheadern über das Verwaltungsportal finden Sie unter [Verwalten von Streamingendpunkten](../media-services/media-services-manage-origins.md) im Abschnitt "Konfigurieren des Streamingendpunkts".
 2. Azure Media Services-REST-API, [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl).
 3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl-Eigenschaften](http://go.microsoft.com/fwlink/?LinkId=615302).
 
@@ -41,6 +41,5 @@ Sie können das Azure Verwaltungsportal oder Azure Media Services-APIs verwenden
 1. In Azure Media Services konfigurierte Cachewerte überschreiben Standardwerte.
 2. Wenn keine manuelle Konfiguration vorhanden ist, werden die Standardwerte angewendet.
 3. Cacheheader zum Zwischenspeichern für 2 Sekunden werden unabhängig von der Azure Media- oder Azure Storage-Konfiguration auf Livestreamingmanifeste (Wiedergabelisten) angewendet. Dieser Wert kann nicht überschrieben werden.
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

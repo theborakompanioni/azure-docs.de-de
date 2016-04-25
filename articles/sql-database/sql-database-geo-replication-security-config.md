@@ -3,8 +3,8 @@
 	description="In diesem Thema werden Sicherheitsaspekte für die Verwaltung standardmäßiger oder aktiver Georeplikationsszenarien für SQL-Datenbank erläutert."
 	services="sql-database"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
+	authors="carlrabeler"
+	manager="jhubbard"
 	editor="monicar" />
 
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="10/22/2015"
-	ms.author="jroth" />
+	ms.date="02/01/2016"
+	ms.author="carlrab" />
 
 # Sicherheitskonfiguration für die Standard- oder aktive Georeplikation
 
@@ -27,7 +27,7 @@ Mit der [V12-Version von Azure SQL-Datenbank](sql-database-v12-whats-new.md) unt
 
 Wenn Sie bei eigenständigen Benutzern mehrere Datenbanken haben, die dieselbe Anmeldung verwenden, müssen Sie diese Benutzer für jede Datenbank separat verwalten (z. B. für eine Kennwortänderung), anstatt die Anmeldung auf Serverebene zu verwalten.
 
->[AZURE.NOTE]Wenn Sie den Lesezugriff auf die primäre und sekundäre Datenbank unabhängig voneinander ändern möchten, müssen Sie herkömmliche Anmeldungen und Benutzer verwenden. Eigenständige Benutzer können in der sekundären Datenbank nicht unabhängig von der primären Datenbank verwaltet werden.
+>[AZURE.NOTE] Wenn Sie den Lesezugriff auf die primäre und sekundäre Datenbank unabhängig voneinander ändern möchten, müssen Sie herkömmliche Anmeldungen und Benutzer verwenden. Eigenständige Benutzer können in der sekundären Datenbank nicht unabhängig von der primären Datenbank verwaltet werden.
 
 ## Verwenden herkömmlicher Anmeldungen und Benutzer
 Wenn Sie mit herkömmlichen Anmeldungen und Benutzern (keinen eigenständigen Benutzer) arbeiten, müssen zusätzliche Schritt zum Sicherstellen erfolgen, dass dieselben Anmeldungen auf dem sekundären Datenbankserver vorhanden sind. In den folgenden Abschnitten werden die entsprechenden Schritte und zusätzliche Aspekte behandelt.
@@ -67,7 +67,7 @@ Die folgende Abfrage kann verwendet werden, um alle Benutzerprinzipale mit ihre 
 	FROM [sys].[database_principals]
 	WHERE [type_desc] = 'SQL_USER'
 
->[AZURE.NOTE]Die Benutzer **INFORMATION\_SCHEMA** und **sys** haben die SID *NULL*, und die SID von **guest** ist **0x00**. Die SID von **dbo** kann mit *0x01060000000001648000000000048454* beginnen, wenn der Datenbankersteller der Serveradministrator und kein Mitglied von **DbManager** war.
+>[AZURE.NOTE] Die Benutzer **INFORMATION\_SCHEMA** und **sys** haben die SID *NULL*, und die SID von **guest** ist **0x00**. Die SID von **dbo** kann mit *0x01060000000001648000000000048454* beginnen, wenn der Datenbankersteller der Serveradministrator und kein Mitglied von **DbManager** war.
 
 #### 3\. Generieren der Anmeldungen auf dem Zielserver:
 Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen mit den entsprechenden SIDs zu erstellen. Die grundlegende Syntax ist wie folgt.
@@ -76,7 +76,7 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 	WITH PASSWORD = <login password>,
 	SID = <desired login SID>
 
->[AZURE.NOTE]Wenn Sie Benutzerzugriff auf die sekundäre Datenbank, aber nicht auf die primäre gewähren möchten, ändern Sie dazu die Benutzeranmeldung auf dem primären Server mithilfe der folgenden Syntax.
+>[AZURE.NOTE] Wenn Sie Benutzerzugriff auf die sekundäre Datenbank, aber nicht auf die primäre gewähren möchten, ändern Sie dazu die Benutzeranmeldung auf dem primären Server mithilfe der folgenden Syntax.
 >
 >ALTER LOGIN <login name> DISABLE
 >
@@ -98,4 +98,4 @@ Weitere Informationen zu den Schritten, die nach einem Failover erforderlich sin
 ## Nächste Schritte
 Weitere Informationen zur Georeplikation und zu zusätzlichen Geschäftskontinuitätsfeatures von Azure SQL-Datenbank finden Sie unter [Geschäftskontinuität – Übersicht](sql-database-business-continuity.md).
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0413_2016-->

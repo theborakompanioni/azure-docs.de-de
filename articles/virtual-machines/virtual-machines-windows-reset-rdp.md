@@ -17,48 +17,48 @@
 	ms.date="03/17/2016"
 	ms.author="dkshir"/>
 
-# Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-basierten Azure-VM
+# Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)].
 
 
-Wenn Sie ein Kennwort vergessen haben, oder ein Problem mit der Konfiguration des Remotedesktopdiensts vorliegt, und Sie daher keine Verbindung mit einem virtuellen Windows-Computer herstellen können, erfahren Sie in diesem Artikel, wie Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen können.
+Wenn Sie ein Kennwort vergessen haben oder ein Problem mit der Konfiguration des Remotedesktopdiensts vorliegt, und Sie daher keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen.
 
-Abhängig vom Bereitstellungsmodell des virtuellen Computers können Sie entweder das Portal oder die Erweiterung „VMAccess“ in Azure PowerShell verwenden. Wenn Sie Azure PowerShell verwenden, stellen Sie sicher, dass das neueste Azure PowerShell-Modul auf Ihrem Arbeitscomputer installiert ist, und Sie bei Ihrem Azure-Abonnement angemeldet sind. Ausführliche Schrittbeschreibungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
-
-
-> [AZURE.TIP] Sie können die von Ihnen installierte Azure PowerShell-Version mit dem Befehl `Get-Module azure | format-table version` prüfen.
+Abhängig vom Bereitstellungsmodell Ihres virtuellen Computers können Sie entweder das Azure-Portal oder die VMAccess-Erweiterung in Azure PowerShell verwenden. Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das neueste PowerShell-Modul auf Ihrem Arbeitscomputer installiert ist, und Sie bei Ihrem Azure-Abonnement angemeldet sind. Ausführliche Schrittbeschreibungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 
-## Windows-VMs im klassischen Bereitstellungsmodell
+> [AZURE.TIP] Sie können die von Ihnen installierte PowerShell-Version mithilfe des `Get-Module azure | format-table version`-Befehls prüfen.
+
+
+## Virtuelle Windows-Computer im klassischen Bereitstellungsmodell
 
 ### Azure-Portal
 
-Für die mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computer können Sie das [Azure-Portal](https://portal.azure.com) zum Zurücksetzen des Remotedesktopdiensts verwenden. Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > *Ihr virtueller Windows-Computer* > **Remotezugriff zurücksetzen...**. Die folgende Seite wird angezeigt.
+Für mit dem klassischen Bereitstellungsmodell erstellte virtuelle Computer können Sie das [Azure-Portal](https://portal.azure.com) zum Zurücksetzen des Remotedesktopdiensts verwenden. Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > *Ihr virtueller Windows-Computer* > **Remotezugriff zurücksetzen...**. Die folgende Seite wird angezeigt.
 
 
-![](./media/virtual-machines-windows-reset-rdp/Portal-RDP-Reset-Windows.png)
+![Seite „Zurücksetzen der RDP-Konfiguration“](./media/virtual-machines-windows-reset-rdp/Portal-RDP-Reset-Windows.png)
 
 Sie können auch versuchen, den Namen und das Kennwort des lokalen Administratorkontos zurückzusetzen. Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > *Ihr virtueller Windows-Computer* > **Alle Einstellungen** > **Kennwort zurücksetzen**. Die folgende Seite wird angezeigt.
 
-![](./media/virtual-machines-windows-reset-rdp/Portal-PW-Reset-Windows.png)
+![Seite „Zurücksetzen des Kennworts“](./media/virtual-machines-windows-reset-rdp/Portal-PW-Reset-Windows.png)
 
-Klicken Sie nach Eingabe des neuen Benutzernamens und Kennworts auf **Speichern**.
+Nachdem Sie den neuen Benutzernamen und das neue Kennwort eingegeben haben, klicken Sie auf **Speichern**.
 
 ### VMAccess-Erweiterung und PowerShell
 
-Stellen Sie sicher, dass der VM-Agent auf dem virtuellen Computer installiert ist. Die Erweiterung „VMAccess“ muss nicht installiert sein, bevor Sie ihn benutzen können, solange der VM-Agent verfügbar ist. Stellen Sie mit folgendem Befehl sicher, dass der VM-Agent bereits installiert ist. Ersetzen Sie „myCloudService“ und „myVM“ durch den Namen Ihres Clouddiensts bzw. Ihrer VM. Sie finden diese durch Ausführen von `Get-AzureVM` ohne Parameter.
+Stellen Sie sicher, dass der VM-Agent auf dem virtuellen Computer installiert ist. Die Erweiterung „VMAccess“ muss nicht installiert sein, bevor Sie ihn benutzen können, solange der VM-Agent verfügbar ist. Stellen Sie mit folgendem Befehl sicher, dass der VM-Agent bereits installiert ist. (Ersetzen Sie myCloudService und myVM durch den Namen Ihres Clouddiensts bzw. Ihrer VM. Sie erfahren diese durch Ausführen von `Get-AzureVM` ohne Parameter.)
 
 	$vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 	write-host $vm.VM.ProvisionGuestAgent
 
 Der Befehl **write-host** zeigt **True** an, wenn der VM-Agent installiert ist. Wenn **False** angezeigt wird, nutzen Sie die Anweisungen und den Link zum Download im Azure-Blogbeitrag VM [Agent and Extensions – Part 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) (in englischer Sprache).
 
-Wenn Sie den virtuellen Computer mit dem Portal erstellt haben, überprüfen Sie, ob `$vm.GetInstance().ProvisionGuestAgent` **True** zurückgibt. Legen Sie den Wert andernfalls mit folgendem Befehl fest:
+Wenn Sie den virtuellen Computer mit dem Portal erstellt haben, überprüfen Sie, ob `$vm.GetInstance().ProvisionGuestAgent` **TRUE** zurückgibt. Wenn dies nicht der Fall ist, können Sie es mit diesem Befehl festlegen:
 
 	$vm.GetInstance().ProvisionGuestAgent = $true
 
-Dieser Befehl verhindert den Fehler "Provision Guest Agent muss für das VM-Objekt aktiviert sein, bevor Sie die IaaS VM Access-Erweiterung festlegen" bei der Ausführung des Befehls **Set-AzureVMExtension** in den folgenden Abschnitten.
+Dieser Befehl verhindert beim Ausführen des **Set-AzureVMExtension**-Befehls in den nächsten Schritten den folgenden Fehler: „Provision Guest Agent muss für das VM-Objekt aktiviert sein, bevor Sie die IaaS VMAccess-Erweiterung festlegen.“
 
 #### **Zurücksetzen des Kennworts eines lokalen Administratorkontos**
 
@@ -67,17 +67,17 @@ Erstellen Sie Anmeldeinformationen mit dem Namen des aktuellen lokalen Administr
 	$cred=Get-Credential
 	Set-AzureVMAccessExtension –vm $vm -UserName $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password  | Update-AzureVM
 
-Wenn Sie einen anderen Namen als das aktuelle Konto eingeben, benennt die VMAccess-Erweiterung das lokale Administratorkonto um, weist das Kennwort diesem Konto zu und gibt einen Befehl zum Abmelden des Remotedesktops aus. Wenn das lokale Administratorkonto deaktiviert ist, wird es durch die VMAccess-Erweiterung aktiviert.
+Wenn Sie einen anderen Namen als das aktuelle Konto eingeben, benennt die VMAccess-Erweiterung das lokale Administratorkonto um, weist das Kennwort diesem Konto zu und gibt einen Befehl zum Abmelden von Remotedesktop aus. Wenn das lokale Administratorkonto deaktiviert ist, wird es durch die VMAccess-Erweiterung aktiviert.
 
 Diese Befehle setzen auch die Konfiguration des Remotedesktopdiensts zurück.
 
 #### **Zurücksetzen der Konfiguration des Remotedesktopdiensts**
 
-Führen Sie den folgenden Befehl zum Zurücksetzen der Konfiguration des Remotedesktopdiensts aus.
+Führen Sie den folgenden Befehl zum Zurücksetzen der Konfiguration des Remotedesktopdiensts aus:
 
 	Set-AzureVMAccessExtension –vm $vm | Update-AzureVM
 
-Die VMAccess-Erweiterung führt diese beiden Befehle auf dem virtuellen Computer aus:
+Die VMAccess-Erweiterung führt zwei Befehle auf dem virtuellen Computer aus:
 
 a. `netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes`
 
@@ -90,7 +90,7 @@ Dieser Befehl legt den Registrierungswert "fDenyTSConnections" auf 0 fest und ak
 
 ## Windows-VMs im Resource Manager-Bereitstellungsmodell
 
-Das Azure-Portal unterstützt derzeit nicht das Zurücksetzen der Remotezugriffs- oder Anmeldeinformationen für virtuelle Computer, die mit dem Resource Manager erstellt wurden.
+Das Azure-Portal unterstützt derzeit nicht das Zurücksetzen der Remotezugriffs- oder der Anmeldeinformationen für virtuelle Computer, die mit Azure Resource Manager erstellt wurden.
 
 
 ### VMAccess-Erweiterung und PowerShell
@@ -99,14 +99,14 @@ Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher installiert ist, und S
 
 #### **Zurücksetzen des Kennworts eines lokalen Administratorkontos**
 
-Sie können das Administratorkennwort und/oder den Benutzernamen mithilfe des PowerShell-Befehls [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) zurücksetzen.
+Sie können das Administratorkennwort oder den Benutzernamen mithilfe des PowerShell-Befehls [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) zurücksetzen.
 
 Erstellen Sie Ihre lokalen Administratorkonto-Anmeldeinformationen mithilfe des folgenden Befehls:
 
 	$cred=Get-Credential
 
-Wenn Sie einen anderen Namen als den des aktuellen Kontos eingeben, benennt der Befehl der VMAccess-Erweiterung unten das lokale Administratorkonto um, weist das Kennwort diesem Konto zu und gibt einen Befehl zum Abmelden des Remotedesktops aus. Wenn das lokale Administratorkonto deaktiviert ist, wird es durch die VMAccess-Erweiterung aktiviert.
-	
+Wenn Sie einen anderen Namen als das aktuelle Konto eingeben, benennt der folgende VMAccess-Erweiterungsbefehl das lokale Administratorkonto um, weist das Kennwort diesem Konto zu und gibt einen Befehl zum Abmelden von Remotedesktop aus. Wenn das lokale Administratorkonto deaktiviert ist, wird es durch die VMAccess-Erweiterung aktiviert.
+
 Verwenden Sie die VMAccess-Erweiterung, um die neuen Anmeldeinformationen wie folgt festlegen:
 
 	Set-AzureRmVMAccessExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccess" -Location Westus -UserName $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
@@ -117,22 +117,22 @@ Ersetzen Sie `myRG`, `myVM`, `myVMAccess` und den Speicherort durch für Ihr Set
 
 #### **Zurücksetzen der Konfiguration des Remotedesktopdiensts**
 
-Sie können den Remotezugriff auf Ihre VM zurücksetzen, indem Sie entweder [Set-AzureRmVMExtension](https://msdn.microsoft.com/library/mt603745.aspx) oder „Set-AzureRmVMAccessExtension“ wie folgt verwenden. Ersetzen Sie `myRG`, `myVM`, `myVMAccess` und den Speicherort durch Ihre eigenen Werte.
+Sie können den Remotezugriff auf Ihre VM zurücksetzen, indem Sie entweder [Set-AzureRmVMExtension](https://msdn.microsoft.com/library/mt603745.aspx) oder „Set-AzureRmVMAccessExtension“ wie folgt verwenden (Ersetzen Sie `myRG`, `myVM`, `myVMAccess` und den Speicherort durch Ihre eigenen Werte):
 
 	Set-AzureRmVMExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccess" -ExtensionType "VMAccessAgent" -Publisher "Microsoft.Compute" -typeHandlerVersion "2.0" -Location Westus
 
-ODER<br>
+Oder:<br>
 
 	Set-AzureRmVMAccessExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccess" -Location Westus
 
-	
-> [AZURE.TIP] Sowohl `Set-AzureRmVMAccessExtension` als auch `Set-AzureRmVMExtension` fügt einen neu benannten VM-Zugriffs-Agent auf dem virtuellen Computer hinzu. Zu jedem Zeitpunkt kann eine VM nur einen einzelnen VM-Zugriffs-Agent haben. Um die Eigenschaften des VM-Zugriffs-Agents nacheinander einzustellen, entfernen Sie den zuvor festgelegten Zugriffs-Agent entweder mit `Remove-AzureRmVMAccessExtension` oder `Remove-AzureRmVMExtension`. Ab Azure PowerShell Version 1.2.2 können Sie diesen Schritt vermeiden, wenn Sie `Set-AzureRmVMExtension` mit einer `-ForceRerun`-Option verwenden. Verwenden Sie unbedingt den gleichen Namen für den VM-Zugriffs-Agent, den Sie mit dem vorherigen Befehl mit der `-ForceRerun`-Option festgelegt haben.
+
+> [AZURE.TIP] Beide Befehle fügen einen neu benannten VM-Zugriffs-Agent auf dem virtuellen Computer hinzu. Zu jedem Zeitpunkt kann eine VM nur einen einzelnen VM-Zugriffs-Agent haben. Um die Eigenschaften des VM-Zugriffs-Agents erfolgreich festzulegen, entfernen Sie den zuvor festgelegten Zugriffs-Agent entweder mit `Remove-AzureRmVMAccessExtension` oder `Remove-AzureRmVMExtension`. Ab Azure PowerShell Version 1.2.2 können Sie diesen Schritt vermeiden, wenn Sie `Set-AzureRmVMExtension` mit einer Option `-ForceRerun` verwenden. Wenn Sie `-ForceRerun` verwenden, verwenden Sie unbedingt den gleichen Namen für den VM-Zugriffs-Agent, den Sie mit dem vorherigen Befehl festgelegt haben.
 
 
-Wenn Sie weiterhin keinen Remotezugriff auf den virtuellen Computer ausführen können, finden Sie weitere Schritte unter [Troubleshoot Remote Desktop connections to a Windows-based Azure virtual machine](virtual-machines-windows-troubleshoot-rdp-connection.md) (Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Computer in Azure).
+Wenn Sie weiterhin keinen Remotezugriff auf den virtuellen Computer ausführen können, finden Sie weitere Schritte unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md).
 
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 [Azure-VM-Erweiterungen und Features](virtual-machines-windows-extensions-features.md)
 
@@ -140,4 +140,4 @@ Wenn Sie weiterhin keinen Remotezugriff auf den virtuellen Computer ausführen k
 
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -4,8 +4,8 @@
    services="sql-database"
    documentationCenter=""
    authors="BYHAM"
-   manager="jeffreyg"
-   editor="jeffreyg"
+   manager="jhubbard"
+   editor=""
    tags=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="04/04/2016"
+   ms.date="04/06/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung
@@ -251,6 +251,8 @@ Um zu bestätigen, dass der Azure AD-Administrator ordnungsgemäß eingerichtet 
 Verwenden Sie diese Methode, wenn Sie von einer Verbunddomäne aus mit Ihren Azure Active Directory-Anmeldeinformationen bei Windows angemeldet sind.
 
 1. Starten Sie Management Studio, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Integrierte Active Directory-Authentifizierung** aus. Es ist kein Kennwort erforderlich bzw. es kann kein Kennwort eingegeben werden, weil Ihre vorhandenen Anmeldeinformationen zur Verbindungsherstellung verwendet werden.
+![Integrierte AD-Authentifizierung auswählen][11]
+
 2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der Sie sich verbinden möchten.
 
 #### Herstellen einer Verbindung mithilfe der Active Directory-Kennwortauthentifizierung
@@ -262,6 +264,8 @@ Verwenden Sie diese Methode, wenn Sie mit Ihren Windows-Anmeldeinformationen von
 1. Starten Sie Management Studio, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory-Kennwortauthentifizierung** aus.
 2. Geben Sie im Feld **Benutzername** Ihren Azure Active Directory-Benutzernamen im Format **username@domain.com** ein. Es muss sich um ein Konto aus Azure Active Directory oder um ein Konto aus einer Domäne handeln, die im Verbund mit Azure Active Directory konfiguriert ist.
 3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein.
+![AD-Kennwortauthentifizierung auswählen][12]
+
 4. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der Sie sich verbinden möchten.
 
 
@@ -327,6 +331,7 @@ Spezifische Codebeispiele für die Azure AD-Authentifizierung finden Sie im [SQL
 
 ### 7\.3 Herstellen einer Verbindung mit einem Azure AD-Token
 Diese Authentifizierungsmethode ermöglicht Diensten der mittleren Ebene, die Verbindung mit der Azure SQL-Datenbank oder Azure SQL Data Warehouse durch Abrufen eines Tokens von Azure Active Directory (AAD) herzustellen. So sind komplexe Szenarien einschließlich der zertifikatbasierten Authentifizierung möglich. Sie müssen vier grundlegende Schritte zum Verwenden der Azure AD-Token-Authentifizierung ausführen:
+
 1. Registrieren Sie Ihre Anwendung in Azure Active Directory, und rufen Sie die Client-ID für den Code ab. 
 2. Erstellen Sie einen Datenbankbenutzer, der die Anwendung darstellt. (Bereits in Schritt 6 abgeschlossen.)
 3. Erstellen Sie ein Zertifikat auf dem Clientcomputer, auf dem die Anwendung ausgeführt wird.
@@ -354,5 +359,7 @@ Diese Authentifizierungsmethode ermöglicht Diensten der mittleren Ebene, die Ve
 [8]: ./media/sql-database-aad-authentication/8choose-ad.png
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
+[11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
+[12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

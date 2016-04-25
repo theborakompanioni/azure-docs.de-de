@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen | Microsoft Azure" 
-   description="In diesem Artikel erfahren Sie, wie Sie mit Azure Site Recovery und Azure Automation Wiederherstellungspläne erweitern und komplexe Aufgaben bei der Wiederherstellung zu Azure durchführen können." 
-   services="site-recovery" 
-   documentationCenter="" 
-   authors="ruturaj" 
-   manager="mkjain" 
+<properties
+   pageTitle="Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen | Microsoft Azure"
+   description="In diesem Artikel erfahren Sie, wie Sie mit Azure Site Recovery und Azure Automation Wiederherstellungspläne erweitern und komplexe Aufgaben bei der Wiederherstellung zu Azure durchführen können."
+   services="site-recovery"
+   documentationCenter=""
+   authors="ruturaj"
+   manager="mkjain"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="powershell"
    ms.tgt_pltfrm="na"
    ms.topic="article"
-   ms.workload="required" 
+   ms.workload="required"
    ms.date="12/14/2015"
    ms.author="ruturajd@microsoft.com"/>
 
@@ -103,7 +103,7 @@ Damit stehen die beiden Einstellungen in Ihren Ressourcen zur Verfügung.
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-Weitere Informationen zum Herstellen einer Verbindung mit Ihrem Abonnement über PowerShell finden Sie [hier](../install-configure-powershell.md).
+Weitere Informationen zum Herstellen einer Verbindung mit Ihrem Abonnement über PowerShell finden Sie [hier](../powershell-install-configure.md).
 
 Im nächsten Schritt wird in Azure Automation ein Runbook erstellt, das nach dem Failover einen Endpunkt für den virtuellen Front-End-Computer hinzufügen kann.
 
@@ -137,11 +137,11 @@ Die folgende Tabelle enthält jeweils den Namen und die Beschreibung der einzeln
 **Variablenname** | **Beschreibung**
 ---|---
 RecoveryPlanName | Name des ausgeführten Plans. Ermöglicht die Durchführung von Aktionen auf der Grundlage des Namens mithilfe des gleichen Skripts.
-FailoverType | Gibt an, ob es sich um ein Testfailover, um ein geplantes Failover oder um ein nicht geplantes Failover handelt. 
+FailoverType | Gibt an, ob es sich um ein Testfailover, um ein geplantes Failover oder um ein nicht geplantes Failover handelt.
 FailoverDirection | Gibt an, ob die Wiederherstellung auf den primären oder sekundären Standort erfolgt.
 GroupID | Identifiziert die Gruppennummer innerhalb des Wiederherstellungsplans, wenn der Plan ausgeführt wird
 VmMap | Array mit allen virtuellen Computern in der Gruppe.
-VMMap-Schlüssel | Eindeutiger Schlüssel (GUID) für jeden virtuellen Computer. Die GUID entspricht der VMM-ID des virtuellen Computers, sofern zutreffend. 
+VMMap-Schlüssel | Eindeutiger Schlüssel (GUID) für jeden virtuellen Computer. Die GUID entspricht der VMM-ID des virtuellen Computers, sofern zutreffend.
 RoleName | Name der Azure-VM, die wiederhergestellt wird.
 CloudServiceName | Name des Azure Cloud-Diensts, unter dem der virtuelle Computer erstellt wird.
 
@@ -161,7 +161,7 @@ Erstellen Sie nun das Runbook, um auf dem virtuellen Front-End-Computer den Port
 2.  Navigieren Sie zur Erstelleransicht des Runbooks, und starten Sie den Entwurfsmodus.
 
 3.  Geben Sie zunächst die Variable für den Wiederherstellungsplankontext an.
-  
+
 	```
 		param (
 			[Object]$RecoveryPlanContext
@@ -173,7 +173,7 @@ Erstellen Sie nun das Runbook, um auf dem virtuellen Front-End-Computer den Port
 
 	```
 		$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-	
+
 		# Connect to Azure
 		$AzureAccount = Add-AzureAccount -Credential $Cred
 		$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
@@ -229,7 +229,7 @@ Hier sehen Sie noch einmal das gesamte Skript:
 	)
 
 	$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-	
+
 	# Connect to Azure
 	$AzureAccount = Add-AzureAccount -Credential $Cred
 	$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
@@ -241,7 +241,7 @@ Hier sehen Sie noch einmal das gesamte Skript:
 	$AEPublicPort = 80
 	$AEName = "Port 80 for HTTP"
 	$VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
-	
+
 	#Read the VM GUID from the context
 	$VM = $RecoveryPlanContext.VmMap.$VMGUID
 
@@ -308,6 +308,4 @@ In diesem Lernprogramm haben Sie gesehen, wie Sie eine häufig verwendete Aufgab
 
 [Beispielskripts für Azure Automation](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "Beispielskripts für Azure Automation")
 
- 
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -18,17 +18,17 @@
    ms.author="mandia"/>
 
 # Erste Schritte mit der FTP-API
-Stellen Sie eine Verbindung mit einem FTP-Server her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, zu löschen usw. Die FTP-API kann in Folgendem verwendet werden:
+Stellen Sie eine Verbindung mit einem FTP-Server her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, zu löschen usw. Die FTP-API kann in Folgendem verwendet werden:
 
 - Logik-Apps
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [FTP-Connector](../app-service-logic/app-service-logic-connector-ftp.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Mit FTP können Sie folgende Aktionen ausführen:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die über FTP abgerufen werden. 
 - Implementieren eines Triggers, wenn eine Datei aktualisiert wird.
-- Ausführen von Aktionen, mit denen Sie u. a. eine Datei erstellen und Dateiinhalte abrufen können. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. den Inhalt einer Datei abrufen und dann eine SQL-Datenbank aktualisieren. 
+- Ausführen von Aktionen, mit denen Sie u. a. eine Datei erstellen und Dateiinhalte abrufen können. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. den Inhalt einer Datei abrufen und dann eine SQL-Datenbank aktualisieren. 
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -38,7 +38,7 @@ FTP verfügt über folgende Trigger und Aktionen:
 
 Trigger | Actions
 --- | ---
-<ul><li>Ruft eine aktualisierte Datei ab. </li></ul> | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Aktualisierte Datei abrufen</li><li>Datei aktualisieren</li></ul>
+<ul><li>Ruft eine aktualisierte Datei ab</li></ul> | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Aktualisierte Datei abrufen</li><li>Datei aktualisieren</li></ul>
 
 Alle APIs unterstützen Daten im JSON- und XML-Format.
 
@@ -51,7 +51,7 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte e
 |Benutzername| Ja | Geben Sie den Benutzernamen für die Verbindung mit dem FTP-Server ein.|
 |Kennwort | Ja | Geben Sie das Kennwort für den Benutzernamen ein.|
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die FTP-Eigenschaften ein, z. B. Quelldatei oder Zielordner. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie eine Verbindung hergestellt haben, geben Sie die FTP-Eigenschaften ein, z. B. Quelldatei oder Zielordner. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können dieselbe FTP-Verbindung in anderen Logik-Apps verwenden.
 
@@ -245,6 +245,6 @@ Aktualisiert eine Datei auf dem FTP-Server. ```PUT: /datasets/default/files/{id}
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

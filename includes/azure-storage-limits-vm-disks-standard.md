@@ -4,6 +4,6 @@
 ---|---|---
 Datenträgergröße | 1023 GB | 1023 GB
 Maximal 8 KB IOPS pro persistentem Laufwerk | 300 | 500
-Max. Anzahl von Datenträgern mit hoher Auslastung | 66 | 40
+Maximale Anzahl von Festplatten mit maximaler IOPS-Anzahl | 66 | 40
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0413_2016-->

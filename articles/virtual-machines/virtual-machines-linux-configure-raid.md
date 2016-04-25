@@ -1,12 +1,11 @@
 <properties 
-	pageTitle="Konfigurieren von Software-RAID auf einem virtuellen Computer unter Linux | Microsoft Azure" 
+	pageTitle="Konfigurieren von Software-RAID auf einem virtuellen Linux-Computer | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie mdadm zum Konfigurieren von RAID unter Linux in Azure verwenden." 
 	services="virtual-machines-linux" 
-	documentationCenter="" 
-	authors="szarkos" 
-	writer="szark" 
+	documentationCenter="na" 
+	authors="rickstercdn"  
 	manager="timlt" 
-	editor=""
+	editor="tysonn"
 	tag="azure-service-management,azure-resource-manager" />
 
 <tags 
@@ -16,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="03/25/2016" 
-	ms.author="szark"/>
+	ms.author="rclaus"/>
 
 
 
@@ -25,9 +24,7 @@ Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux
 
 
 ## Anfügen von Datenträgern
-In der Regel sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Gerät zu konfigurieren. In diesem Artikel wird nicht erläutert, wie Sie Datenträger an einen virtuellen Linux-Computer anfügen. Eine ausführliche Anleitung, wie Sie einen leeren Datenträger an einen virtuellen Linux-Computer in Azure anfügen, finden Sie im Microsoft Azure-Artikel [Anfügen eines Datenträgers](virtual-machines-windows-classic-attach-disk.md#attachempty).
-
->[AZURE.NOTE] Die Größe "ExtraSmall" für virtuelle Computer unterstützt maximal einen angefügten Datenträger pro virtuellem Computer. Ausführliche Informationen zu den Größen virtueller Computer und zur Anzahl der unterstützten Datenträger finden Sie unter [Größen virtueller Computer und Clouddienste für Microsoft Azure](https://msdn.microsoft.com/library/azure/dn197896.aspx).
+In der Regel sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Gerät zu konfigurieren. Der Hauptgrund für die Erstellung eines RAID-Geräts ist die Leistungsverbesserung Ihrer Datenträger-E/A. Basierend auf Ihren E/A-Anforderungen können Sie wählen, in unserem Standardspeicher gespeicherte Datenträger mit bis zu 500 IOPS und Datenträger anzufügen oder in unserem Premiumspeicher gespeicherte Datenträger mit bis zu 5000 IOPS und Datenträger anzufügen. In diesem Artikel wird nicht erläutert, wie Sie Datenträger an einen virtuellen Linux-Computer bereitstellen und anfügen. Eine ausführliche Anleitung, wie Sie einen leeren Datenträger an einen virtuellen Linux-Computer in Azure anfügen, finden Sie im Microsoft Azure-Artikel [Anfügen eines Datenträgers](virtual-machines-linux-add-disk.md).
 
 
 ## Installieren des mdadm-Dienstprogramms
@@ -49,7 +46,7 @@ In der Regel sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Ge
 ## Erstellen der Datenträgerpartitionen
 In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev/sdc". Die neue Datenträgerpartition wird "/dev/sdc1" genannt.
 
-- Starten Sie "fdisk", um mit dem Erstellen der Partitionen zu beginnen.
+1. Starten Sie "fdisk", um mit dem Erstellen der Partitionen zu beginnen.
 
 		# sudo fdisk /dev/sdc
 		Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -61,38 +58,37 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 				 switch off the mode (command 'c') and change display units to
 				 sectors (command 'u').
 
-- Drücken Sie an der Eingabeaufforderung 'n', um eine **n**eue Partition zu erstellen:
+2. Drücken Sie an der Eingabeaufforderung 'n', um eine **n**eue Partition zu erstellen:
 
 		Command (m for help): n
 
-- Drücken Sie anschließend 'p', um ein **p**rimäre Partition zu erstellen:
+3. Drücken Sie anschließend 'p', um ein **p**rimäre Partition zu erstellen:
 
 		Command action
 			e   extended
 			p   primary partition (1-4)
-		p
 
-- Drücken Sie '1', um Partitionsnummer 1 auszuwählen:
+4. Drücken Sie '1', um Partitionsnummer 1 auszuwählen:
 
 		Partition number (1-4): 1
 
-- Wählen Sie den Ausgangspunkt der neuen Partition, oder drücken Sie einfach die Eingabetaste, um die Standardeinstellung zu akzeptieren und die Partition am Anfang des freien Speicherplatzes auf dem Laufwerk zu platzieren:
+5. Wählen Sie den Ausgangspunkt der neuen Partition, oder drücken Sie einfach die Eingabetaste, um die Standardeinstellung zu akzeptieren und die Partition am Anfang des freien Speicherplatzes auf dem Laufwerk zu platzieren:
 
 		First cylinder (1-1305, default 1):
 		Using default value 1
 
-- Legen Sie die Größe der Partition fest, z. B. '+10G', um eine 10-Gigabyte-Partition zu erstellen. Oder drücken Sie einfach die Eingabetaste, um eine einzelne Partition zu erstellen, die das gesamte Laufwerk umfasst:
+6. Legen Sie die Größe der Partition fest, z. B. '+10G', um eine 10-Gigabyte-Partition zu erstellen. Oder drücken Sie einfach die Eingabetaste, um eine einzelne Partition zu erstellen, die das gesamte Laufwerk umfasst:
 
 		Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
 		Using default value 1305
 
-- Ändern Sie anschließend die ID und den Partitions**t**yp von der Standard-ID '83' (Linux) in ID 'fd' (Linux-RAID automatisch):
+7. Ändern Sie anschließend die ID und den Partitions**t**yp von der Standard-ID '83' (Linux) in ID 'fd' (Linux-RAID automatisch):
 
 		Command (m for help): t
 		Selected partition 1
 		Hex code (type L to list codes): fd
 
-- Zum Abschluss schreiben Sie die Partitionstabelle in das Laufwerk und beenden "fdisk":
+8. Zum Abschluss schreiben Sie die Partitionstabelle in das Laufwerk und beenden "fdisk":
 
 		Command (m for help): w
 		The partition table has been altered!
@@ -100,13 +96,10 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 
 ## Erstellen des RAID-Arrays
 
-1. Im folgenden Beispiel werden drei Partitionen (RAID-Level 0) in "Stripes" auf drei separaten Datenträgern unterteilt (sdc1, sdd1, sde1):
+1. Im folgenden Beispiel werden drei Partitionen auf drei separaten Datenträgern (sdc1, sdd1, sde1) zu einem RAID (Level 0) verbunden. Nach Ausführung dieses Befehls wird ein neues RAID namens **/dev/md127** erstellt. Beachten Sie außerdem Folgendes: Falls diese Datenträger zuvor Teil eines anderen, nicht mehr bestehenden RAID-Arrays waren, muss der Befehl `mdadm` unter Umständen mit dem Parameter `--force` versehen werden:
 
 		# sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
 		  /dev/sdc1 /dev/sdd1 /dev/sde1
-
-In diesem Beispiel wird nach dem Ausführen dieses Befehls ein neues RAID-Gerät namens **/dev/md127** erstellt. Beachten Sie außerdem Folgendes: Falls diese Datenträger zuvor Teil eines anderen, nicht mehr bestehenden RAID-Arrays waren, muss der Befehl `mdadm` unter Umständen mit dem Parameter `--force` versehen werden.
-
 
 2. Erstellen des Dateisystems auf dem neuen RAID-Gerät
 
@@ -118,7 +111,7 @@ In diesem Beispiel wird nach dem Ausführen dieses Befehls ein neues RAID-Gerät
 
 		# sudo mkfs -t ext3 /dev/md127
 
-3. **SLES 11 und openSUSE** – "boot.md" aktivieren und "mdadm.conf" erstellen
+	**SLES 11 und openSUSE** – "boot.md" aktivieren und "mdadm.conf" erstellen
 
 		# sudo -i chkconfig --add boot.md
 		# sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
@@ -178,6 +171,4 @@ In diesem Beispiel wird nach dem Ausführen dieses Befehls ein neues RAID-Gerät
 
 	Informationen zum Bearbeiten der Kernel-Parameter erhalten Sie in der Dokumentation der Verteilung. Beispielsweise können diese Parameter der Datei „`/boot/grub/menu.lst`“ in vielen Distributionen (CentOS, Oracle Linux, SLES 11) manuell hinzugefügt werden. In Ubuntu kann dieser Parameter der Variablen `GRUB_CMDLINE_LINUX_DEFAULT` unter „/etc/default/grub“ hinzugefügt werden.
 
- 
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

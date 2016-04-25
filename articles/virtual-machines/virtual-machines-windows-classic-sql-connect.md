@@ -94,18 +94,18 @@ Der Verbindungspfad wird von folgendem Diagramm zusammengefasst:
 
 ![Verbinden mit einem virtuellen SQL Server-Computer](../../includes/media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
 
-[AZURE.INCLUDE [Herstellen einer Verbindung mit SQL Server auf einem klassischen VM-TCP-Endpunkt](../../includes/virtual-machines-sql-server-connection-steps-classic-tcp-endpoint.md)]
+[AZURE.INCLUDE [Herstellen einer Verbindung mit SQL Server auf einem klassischen VM-TCP-Endpunkt](../../includes/virtual-machines-sql-server-connection-steps-classic-tcp-endpoint.md)]
 
 [AZURE.INCLUDE [Herstellen einer Verbindung mit SQL Server auf einem virtuellen Computer](../../includes/virtual-machines-sql-server-connection-steps.md)]
 
-[AZURE.INCLUDE [Herstellen einer Verbindung mit SQL Server auf einem klassischen virtuellen Computer – Schritte](../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
+[AZURE.INCLUDE [Herstellen einer Verbindung mit SQL Server auf einem klassischen virtuellen Computer – Schritte](../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## Nächste Schritte
 
 Wenn Sie außerdem AlwaysOn-Verfügbarkeitsgruppen zum Erzielen von hoher Verfügbarkeit und Notfallwiederherstellung einsetzen möchten, sollten Sie die Implementierung eines Listeners in Erwägung ziehen. Datenbankclients stellen dann Verbindungen mit dem Listener anstelle direkter Verbindungen mit den SQL Server-Instanzen her. Der Listener leitet Clients auf das primäre Replikat in der Verfügbarkeitsgruppe um. Weitere Informationen finden Sie unter [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
 
-Es ist wichtig, alle bewährten Sicherheitsmethoden für SQL Server bei der Ausführung auf virtuellen Azure-Computern durchzuarbeiten. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-security.md).
+Es ist wichtig, alle bewährten Sicherheitsmethoden für SQL Server bei der Ausführung auf virtuellen Azure-Computern durchzuarbeiten. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-security.md).
 
-Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-overview.md).
+Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

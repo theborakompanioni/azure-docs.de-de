@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Bereitstellen von Multi-NIC-VMs mithilfe von PowerShell im klassischen Bereitstellungsmodell | Microsoft Azure"
    description="Erfahren Sie, wie Sie Multi-NIC-VMs mithilfe von PowerShell im klassischen Bereitstellungsmodell bereitstellen."
    services="virtual-network"
@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Da virtuelle Computer mit nur einer Netzwerkschnittstellenkarte (NIC) zurzeit nicht mit virtuellen Computern mit mehreren Netzwerkschnittstellenkarten im selben Clouddienst vorhanden sein können, werden die Back-End-Server in einem anderen Clouddienst implementiert als die anderen Komponenten im Szenario. In den folgenden Schritten wird der Clouddienst *IaaSStory* für die Hauptressourcen und *IaaSStory-BackEnd* für die Back-End-Server verwendet.
+Derzeit können virtuelle Computer mit einer einzelnen NIC und virtuelle Computer mit mehreren NICs nicht im selben Clouddienst vorhanden sein. Aus diesem Grund müssen Sie die Back-End-Server in einem anderen Clouddienst als alle anderen Komponenten implementieren. In den folgenden Schritten wird der Clouddienst *IaaSStory* für die Hauptressourcen und *IaaSStory-BackEnd* für die Back-End-Server verwendet.
 
 ## Voraussetzungen
 
@@ -41,7 +41,7 @@ Die Back-End-VMs sind auf die Erstellung der im Folgenden aufgelisteten Ressourc
 
 - **Back-End-Subnetz**. Die Datenbankserver gehören zum Aufteilen des Datenverkehrs einem separaten Subnetz an. Das folgende Skript erwartet dieses Subnetz in einem Vnet namens *WTestVnet*.
 - **Speicherkonto für Datenträger**. Für eine bessere Leistung verwenden die Datenträger auf den Datenbankservern Solid State Drive (SSD)-Technik. Dafür ist ein Storage Premium-Konto erforderlich. Achten Sie darauf, dass der Azure-Speicherort für die Bereitstellung Storage Premium unterstützt.
-- **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird. 
+- **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
 ### Schritt 1: Starten des Skripts
 
@@ -129,7 +129,7 @@ Sie müssen die gewünschte Anzahl an virtuellen Computern mithilfe einer Schlei
 		    Add-AzureNetworkInterfaceConfig -Name ("RemoteAccessNIC"+$suffixNumber) `
 		        -SubnetName $backendSubnetName `
 		        -StaticVNetIPAddress ($ipAddressPrefix+(53+$suffixNumber)) `
-		        -VM $vmConfig 
+		        -VM $vmConfig
 
 6. Erstellen Sie für jeden virtuellen Computer zwei Datenträger.
 
@@ -138,7 +138,7 @@ Sie müssen die gewünschte Anzahl an virtuellen Computern mithilfe einer Schlei
 		        -DiskSizeInGB $diskSize `
 		        -DiskLabel $dataDisk1Name `
 		        -LUN 0       
-		
+
 		    $dataDisk2Name = $vmName + "-" + $dataDiskSuffix + "-2"   
 		    Add-AzureDataDisk -CreateNew -VM $vmConfig `
 		        -DiskSizeInGB $diskSize `
@@ -163,12 +163,12 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 		--------------------    -----------                          ---------------
 		New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
 		New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-		                                                                            
+
 		WARNING: No deployment found in service: 'IaaSStory-Backend'.
 
 2. Tragen Sie bei der Aufforderung die Anmeldeinformationen ein, und klicken Sie auf **OK**. Die nachfolgende Ausgabe wird angezeigt.
 
 		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded 
+		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

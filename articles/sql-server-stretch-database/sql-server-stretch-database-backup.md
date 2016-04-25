@@ -29,34 +29,26 @@ Stretch-Datenbank bietet vollständige Unterstützung für die Point-in-Time-Wie
 
 1.  Stellen Sie die Datenbank aus einem Backup wieder her.
 
-2.  Erstellen Sie einen Datenbankhauptschlüssel für die Stretch-fähige Datenbank. Weitere Informationen finden Sie unter [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx).
+2.  Führen Sie die gespeicherte Prozedur [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx) aus, um die Verbindung der lokalen Stretch-fähigen Datenbank mit Azure erneut herzustellen.
 
-3.  Erstellen Sie datenbankbezogene Anmeldeinformationen für die Stretch-fähige Datenbank. Weitere Informationen finden Sie unter [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
+    -   Geben Sie die vorhandenen datenbankbezogenen Anmeldeinformationen als einen Wert vom Datentyp „sysname“ oder „varchar(128)“ ein. (Verwenden Sie nicht „varchar(max)“.) Sie können den Anmeldenamen in der Ansicht **sys.database\_scoped\_credentials** nachschlagen.
 
-4.  Führen Sie die gespeicherte Prozedur [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx) aus, um die Verbindung der lokalen Stretch-fähigen Datenbank mit Azure erneut herzustellen. Geben Sie die datenbankbezogenen Anmeldeinformationen, die Sie in einem vorherigen Schritt erstellt haben, als einen Wert vom Datentyp „sysname“ oder „varchar(128)“ ein. (Verwenden Sie nicht „varchar(max)“.)
+	-   Geben Sie an, ob eine Kopie der Remotedaten erstellt und eine Verbindung mit der Kopie hergestellt werden soll.
 
     ```tsql
     Declare @credentialName nvarchar(128);
-    SET @credentialName = N’<database_scoped_credential_name_created_previously>’;
-    EXEC sp_rda_reauthorize_db @credentialName;
+    SET @credentialName = N'<database_scoped_credential_name_created_previously>';
+    EXEC sp_rda_reauthorize_db @credential = @credentialName, @with_copy = 0;
     ```
 
-## <a name="MoreInfo"></a>Weitere Informationen zum Backup und zur Wiederherstellung
+## <a name="MoreInfo"></a>Weitere Informationen zu Sicherung und Wiederherstellung
 Backups für eine Datenbank mit aktiviertem Stretch-Datenbank enthalten nur die lokalen Daten und die berechtigen Daten zu dem Zeitpunkt, an dem das Backup ausgeführt wird. Diese Backups enthalten auch Informationen über den Remoteendpunkt, an dem sich die Remotedaten der Datenbank befinden. Dies wird als „flaches Backup“ bezeichnet. Tiefe Backups, die alle Daten (lokal und remote) der Datenbank enthalten, werden nicht unterstützt.
-
-![Stretch-Datenbank-Backupdiagramm][StretchBackupImage1]
 
 Beim Wiederherstellen des Backups einer Datenbank mit aktiviertem Stretch-Datenbank werden die lokalen Daten und berechtigten Daten wie erwartet in der Datenbank wiederhergestellt. (Bei berechtigten Daten handelt es sich um Daten, die noch nicht verschoben wurden, für die jedoch eine Verschiebung nach Azure basierend auf der Stretch-Datenbankkonfiguration in den Tabellen geplant ist.) Nachdem der Wiederherstellungsvorgang ausgeführt wurde, enthält die Datenbank lokale und berechtigte Daten von dem Zeitpunkt, an dem das Backup ausgeführt wurde, sie enthält jedoch nicht die erforderlichen Anmeldeinformationen und Artefakte für die Verbindung mit dem Remoteendpunkt.
 
-![Stretch-Datenbank nach dem Backup][StretchBackupImage2]
-
-Sie müssen die gespeicherte Prozedur **sys.sp\_rda\_reauthorize\_db** ausführen, um die Verbindung zwischen der lokalen Datenbank und dem Remoteendpunkt erneut herzustellen. Nur ein db\_owner kann diesen Vorgang ausführen. Für diese gespeicherte Prozedur ist auch der Administratorbenutzernamen und das Kennwort des Remoteendpunkts erforderlich. Dies bedeutet, dass Sie den Administratorbenutzernamen und das Kennwort für den Azure-Zielserver bereitstellen müssen.
-
-![Stretch-Datenbank nach dem Backup][StretchBackupImage3]
+Sie müssen die gespeicherte Prozedur **sys.sp\_rda\_reauthorize\_db** ausführen, um die Verbindung zwischen der lokalen Datenbank und dem Remoteendpunkt erneut herzustellen. Nur ein db\_owner kann diesen Vorgang ausführen. Für diese gespeicherte Prozedur sind darüber hinaus der Administratorbenutzername und das Kennwort für den Azure-Zielserver erforderlich.
 
 Nachdem Sie die Verbindung erneut hergestellt haben, versucht Stretch-Datenbank, berechtigte Daten in der lokalen Datenbank mit Remotedaten abzustimmen, indem eine Kopie der Remotedaten auf dem Remoteendpunkt erstellt und mit der lokalen Datenbank verknüpft wird. Dieser Prozess erfolgt automatisch und erfordert kein Eingreifen des Benutzers. Nachdem diese Abstimmung ausgeführt wurde, haben die lokale Datenbank und der Remoteendpunkt einen konsistenten Zustand.
-
-![Stretch-Datenbank nach dem Backup][StretchBackupImage4]
 
 ## Weitere Informationen
 
@@ -66,10 +58,4 @@ Nachdem Sie die Verbindung erneut hergestellt haben, versucht Stretch-Datenbank,
 
 [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!--Image references-->
-[StretchBackupImage1]: ./media/sql-server-stretch-database-backup/StretchDBBackup1.png
-[StretchBackupImage2]: ./media/sql-server-stretch-database-backup/StretchDBBackup2.png
-[StretchBackupImage3]: ./media/sql-server-stretch-database-backup/StretchDBBackup3.png
-[StretchBackupImage4]: ./media/sql-server-stretch-database-backup/StretchDBBackup4.png
-
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

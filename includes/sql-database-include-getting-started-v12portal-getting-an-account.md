@@ -10,17 +10,17 @@ articles/sql-database/sql-database-get-started-tutorial.md
 ## Connecting to the Azure Portal with a subscription
 
 -->
-## Connecting to the Azure Portal with a subscription
+## Herstellen einer Verbindung mit dem Azure-Portal mit einem Abonnement
 
-If you have an existing subscription to Microsoft Azure, follow the steps below to connect to the Azure portal. If you do not have an existing Microsoft Azure account, follow one of the links below to obtain an account and then follow the steps below to connect to the Azure portal.
+Wenn Sie bereits ein Microsoft Azure-Abonnement besitzen, führen Sie die folgenden Schritte aus, um eine Verbindung mit dem Azure-Portal herzustellen. Falls Sie noch nicht über ein Microsoft Azure-Konto verfügen, verwenden Sie einen der folgenden Links, um ein Konto zu erhalten. Führen Sie anschließend folgende Schritte aus, um eine Verbindung mit dem Azure-Portal herzustellen:
 
-1. Open your browser of choice and connect to the [Azure portal](https://portal.azure.com/) at http://portal.azure.com/.
+1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie unter http://portal.azure.com/ eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/) her.
 
-1. Log in to the [Azure portal](https://portal.azure.com/) at http://portal.azure.com/.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) unter http://portal.azure.com/ an.
 
-2. When the sign in page appear, provide the credentials for your subscription
+2. Geben Sie auf der Anmeldeseite die Anmeldeinformationen für Ihr Abonnement ein.
 
-   ![login][1]
+   ![Anmeldung][1]
 
 <!-- Image references. -->
 
@@ -32,3 +32,5 @@ If you have an existing subscription to Microsoft Azure, follow the steps below 
 <!--
 
 -->
+
+<!---HONumber=AcomDC_0413_2016-->

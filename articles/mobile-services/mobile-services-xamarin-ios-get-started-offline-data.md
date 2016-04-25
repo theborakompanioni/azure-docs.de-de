@@ -46,9 +46,10 @@ In diesem Lernprogramm werden die grundlegenden Schritte erläutert:
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-* Visual Studio mit der [Xamarin-Erweiterung] **oder** [Xamarin Studio] auf OS X
-* XCode 4.5 und iOS 6.0 (oder neuere Versionen)
+* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). 
+* Ein Mac, auf dem Xcode Version 7.0 oder höher und Xamarin Studio Community installiert ist. Informationen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) und [Setup, Installation und Überprüfungen für Mac-Benutzer](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 * Abschluss des Lernprogramms [Erste Schritte mit Mobile Services]
+
 
 ## <a name="review-offline"></a>Überprüfen des Mobile Services-Synchronisierungscodes
 
@@ -180,9 +181,6 @@ In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen Dienst. Dies si
 [Erste Schritte mit Mobile Services]: mobile-services-ios-get-started.md
 [Verwenden des Clients der Xamarin-Komponente für Azure Mobile Services]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [Vorläufiges Löschen]: mobile-services-using-soft-delete.md
-
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin-Erweiterung]: http://xamarin.com/visual-studio
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

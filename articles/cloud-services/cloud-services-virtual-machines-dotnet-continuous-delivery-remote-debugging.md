@@ -39,10 +39,10 @@ Sie können mithilfe folgender Schritte das Remotedebuggen in Azure, für Cloudd
 1. Erstellen Sie einen virtuellen Azure-Computer. Informationen finden Sie unter [Erstellen eines virtuellen Computer mit Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md) oder [Erstellen virtueller Azure-Computer in Visual Studio](../virtual-machines/virtual-machines-windows-classic-manage-visual-studio.md).
 2. Sehen Sie sich auf der [klassischen Azure-Portalseite](http://go.microsoft.com/fwlink/p/?LinkID=269851) das Dashboard des virtuellen Computers an, um den **RDP-ZERTIFIKATFINGERABDRUCK** des virtuellen Computers anzuzeigen. Dieser Wert wird für den `ServerThumbprint`-Wert in der Erweiterungskonfiguration verwendet.
 3. Erstellen Sie ein Clientzertifikat, wie in [Übersicht über Zertifikate für Azure Cloud Services](cloud-services-certs-create.md) gezeigt (behalten Sie die .pfx-Datei und den RDP-Zertifikatfingerabdruck bei).
-4. Installieren Sie Azure PowerShell (ab Version 0.7.4) wie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell-install-configure.md) beschrieben.
+4. Installieren Sie Azure PowerShell (ab Version 0.7.4) wie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) beschrieben.
 5. Führen Sie folgendes Skript aus, um die RemoteDebug-Erweiterung zu aktivieren. Ersetzen Sie die Pfade und persönlichen Daten mit Ihren eigenen Daten, zum Beispiel Abonnementname, Dienstname und Fingerabdruck.
 
-	>[AZURE.NOTE] Dieses Skript wird für Visual Studio 2015 konfiguriert. Wenn Sie Visual Studio 2013 verwenden, ändern Sie die Zuweisungen von `$referenceName` und `$extensionName` unten so, dass `RemoteDebugVS2013` (anstelle von `RemoteDebugVS2015`) verwendet wird.
+	>[AZURE.NOTE] Dieses Skript wird für Visual Studio 2015 konfiguriert. Wenn Sie Visual Studio 2013 verwenden, ändern Sie die Zuweisungen von `$referenceName` und `$extensionName` unten so, dass `RemoteDebugVS2013` (anstelle von `RemoteDebugVS2015`) verwendet wird.
 
 	<pre>
 	Add-AzureAccount
@@ -91,4 +91,4 @@ Sie können mithilfe folgender Schritte das Remotedebuggen in Azure, für Cloudd
 
 6. Importieren Sie das Zertifikat (PFX-Datei) auf den Computer, auf dem Visual Studio mit dem Azure-SDK für .NET installiert ist.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

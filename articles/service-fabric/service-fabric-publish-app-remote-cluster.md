@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="multiple"
-    ms.date="12/06/2015"
+    ms.date="04/07/2016"
     ms.author="cawa" />
 
 # Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio
@@ -40,7 +40,7 @@ Standardmäßig enthält Ihre Anwendung zwei Veröffentlichungsprofile: „Local
 
 Der Ordner **ApplicationParameters** im Service Fabric-Anwendungsprojekt enthält XML-Dateien für benutzerdefinierte Werte für die Anwendungsmanifestparameter. Anwendungsmanifestdateien können parametrisiert werden, sodass Sie verschiedene Werte für Bereitstellungseinstellungen verwenden können. Weitere Informationen zur Parametrisierung Ihrer Anwendung finden Sie unter [Verwalten mehrerer Umgebungen in Service Fabric](service-fabric-manage-multiple-environment-app-configuration.md).
 
->[AZURE.NOTE]Für Actor-Dienste sollten Sie das Projekt zuerst erstellen, bevor Sie versuchen, die Datei in einem Editor oder über das Dialogfeld „Veröffentlichen“ zu bearbeiten. Der Grund ist, dass eine Teil der Manifestdateien während der Erstellung generiert wird.
+>[AZURE.NOTE] Für Actor-Dienste sollten Sie das Projekt zuerst erstellen, bevor Sie versuchen, die Datei in einem Editor oder über das Dialogfeld „Veröffentlichen“ zu bearbeiten. Der Grund ist, dass eine Teil der Manifestdateien während der Erstellung generiert wird.
 
 ## So veröffentlichen Sie eine Anwendung mit dem Dialogfeld „Service Fabric-Anwendung veröffentlichen“
 
@@ -52,17 +52,17 @@ Folgende Schritte zeigen die Veröffentlichung einer Anwendung über das Dialogf
 
     In der im Dropdownlistenfeld **Zielprofil** ausgewählten Datei sind alle Einstellungen gespeichert, mit Ausnahme der **Manifestversionen**. Sie können ein vorhandenes Profil verwenden oder ein neues Profil erstellen, indem Sie im Dropdownlistenfeld **Zielprofil** die Option **<Profile verwalten…>** auswählen. Wenn Sie ein Veröffentlichungsprofil auswählen, werden die Inhalte des Profils in den entsprechenden Feldern des Dialogfelds angezeigt. Sie können Ihre Änderungen jederzeit speichern, indem Sie den Link **Profil speichern** auswählen.
 
-2. Im Abschnitt **Verbindungsendpunkt** können Sie den Veröffentlichungsendpunkt für einen lokalen Service Fabric-Cluster oder einen Service Fabric-Remotecluster festlegen. Zum Hinzufügen oder Ändern des Verbindungsendpunkts klicken Sie auf die Schaltfläche **Auswählen...**. Im Dialogfeld **Service Fabric-Cluster auswählen** werden die verfügbaren Verbindungsendpunkte des Service Fabric-Clusters angezeigt, in denen Sie die Veröffentlichung basierend auf Ihren Azure-Abonnements durchführen können. Beachten Sie Folgendes: Wenn Sie nicht bereits an Visual Studio angemeldet sind, werden Sie dazu aufgefordert.
+2. Im Abschnitt **Verbindungsendpunkt** können Sie den Veröffentlichungsendpunkt für einen lokalen Service Fabric-Cluster oder einen Service Fabric-Remotecluster festlegen. Klicken Sie auf die Dropdownliste **Verbindungsendpunkt**, um den Verbindungsendpunkt hinzuzufügen oder zu ändern. In der Liste werden die verfügbaren Verbindungsendpunkte des Service Fabric-Clusters angezeigt, in denen Sie die Veröffentlichung basierend auf Ihren Azure-Abonnements durchführen können. Beachten Sie Folgendes: Wenn Sie nicht bereits an Visual Studio angemeldet sind, werden Sie dazu aufgefordert.
 
     Verwenden Sie das Dialogfeld zum Auswählen der Cluster, um eine Auswahl aus den verfügbaren Abonnements und Clustern zu treffen.
 
     ![Dialogfeld **Service Fabric-Cluster auswählen**][1]
 
-    >[AZURE.NOTE]Wenn Sie die Veröffentlichung auf einem beliebigen Endpunkt durchführen möchten (z. B. einem Party Cluster), helfen Ihnen die Informationen unter **Veröffentlichen auf einem beliebigen Clusterendpunkt** weiter.
+    >[AZURE.NOTE] Wenn Sie die Veröffentlichung auf einem beliebigen Endpunkt durchführen möchten (z. B. einem Party Cluster), helfen Ihnen die Informationen unter **Veröffentlichen auf einem beliebigen Clusterendpunkt** weiter.
 
     Nachdem Sie einen Endpunkt ausgewählt haben, überprüft Visual Studio die Verbindung zum ausgewählten Service Fabric-Cluster. Wenn der Cluster nicht sicher ist, kann Visual Studio sofort eine Verbindung herstellen. Wenn der Cluster jedoch sicher ist, müssen Sie ein Zertifikat auf Ihrem lokalen Computer installieren, bevor Sie fortfahren können. Weitere Informationen finden Sie unter [Konfigurieren von sicheren Verbindungen](service-fabric-visualstudio-configure-secure-connections.md). Wenn Sie fertig sind, klicken Sie auf die Schaltfläche **OK**. Der ausgewählte Cluster wird im Dialogfeld **Service Fabric-Anwendung veröffentlichen** angezeigt.
 
-3. Navigieren Sie im Dropdownlistenfeld **Anwendungsparameterdatei** zu einer Datei mit Anwendungsparametern. Eine Anwendungsparameterdatei enthält benutzerdefinierte Werte für Parameter in der Anwendungsmanifestdatei. Klicken Sie auf die Schaltfläche **Bearbeiten**, um einen Parameter zu ändern oder hinzuzufügen. Im Raster **Parameter** geben Sie den Wert für einen Parameter ein oder ändern einen Wert. Klicken Sie dann auf die Schaltfläche **Speichern**.
+3. Navigieren Sie im Dropdown-Listenfeld **Anwendungsparameterdatei** zu einer Datei mit Anwendungsparametern. Eine Anwendungsparameterdatei enthält benutzerdefinierte Werte für Parameter in der Anwendungsmanifestdatei. Klicken Sie auf die Schaltfläche **Bearbeiten**, um einen Parameter zu ändern oder hinzuzufügen. Im Raster **Parameter** geben Sie den Wert für einen Parameter ein oder ändern einen Wert. Klicken Sie dann auf die Schaltfläche **Speichern**.
 
     ![Dialogfeld **Parameter bearbeiten**][2]
 
@@ -74,7 +74,7 @@ Folgende Schritte zeigen die Veröffentlichung einer Anwendung über das Dialogf
 
     Wenn bei den Anwendungs- und Dienstversionen semantische Versionsbezeichnungen wie 1.0.0 oder numerische Werte im Format 1.0.0.0 verwendet werden, aktivieren Sie die Option **Anwendungs- und Dienstversionen automatisch aktualisieren**. Bei Auswahl dieser Option werden die Versionsnummern für Dienst und Anwendung automatisch aktualisiert, sobald eine Code-, Konfigurationsdatei- oder Datenpaketversion aktualisiert wird. Wenn Sie die Versionen lieber manuell bearbeiten möchten, deaktivieren Sie das Kontrollkästchen, um diese Funktion auszuschalten.
 
-    >[AZURE.NOTE]Damit alle Paketeinträge für ein Actor-Projekt angezeigt werden, erstellen Sie das Projekt zuerst, um die Einträge in den Dienstmanifestdateien zu generieren.
+    >[AZURE.NOTE] Damit alle Paketeinträge für ein Actor-Projekt angezeigt werden, erstellen Sie das Projekt zuerst, um die Einträge in den Dienstmanifestdateien zu generieren.
 
 6. Wenn Sie alle erforderlichen Einstellungen festgelegt haben, klicken Sie auf die Schaltfläche **Veröffentlichen**, um die Anwendung im ausgewählten Service Fabric-Cluster zu veröffentlichen. Die von Ihnen festgelegten Einstellungen werden auf den Veröffentlichungsprozess angewendet.
 
@@ -107,4 +107,4 @@ Informationen zur Automatisierung des Veröffentlichungsprozesses in einer Conti
 [3]: ./media/service-fabric-publish-app-remote-cluster/EditVersions.png
 [4]: ./media/service-fabric-publish-app-remote-cluster/publish-to-party-cluster.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0413_2016-->

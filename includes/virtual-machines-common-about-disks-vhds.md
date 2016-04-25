@@ -1,7 +1,5 @@
 
 
-Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Datenträger, auf dem das Betriebssystem, Anwendungen und Daten gespeichert sind. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die im Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden.
-
 ## Betriebssystem-Datenträger
 
 Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Der Datenträger ist als SATA-Laufwerk registriert und als Laufwerk C: gekennzeichnet. Dieser Datenträger hat eine maximale Kapazität von 1023 Gigabytes (GB). Wenn Azure einen Betriebssystem-Datenträger erstellt wird, werden drei Kopien des Datenträgers für hohe Stabilität erstellt. Wenn Sie den virtuellen Computer für Georeplikation konfigurieren, wird die VHD außerdem auf verschiedenen weit entfernten Websites repliziert.
@@ -10,13 +8,13 @@ Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Der Da
 
 Der temporäre Datenträger wird automatisch für Sie erstellt. Auf virtuellen Windows-Computern ist dieser Datenträger als Laufwerk „D:“ gekennzeichnet. Er wird zum Speichern von „pagefile.sys“ verwendet. Auf virtuellen Linux-Computern lautet der Datenträger in der Regel "/dev/sdb". Er wird vom Azure Linux Agent formatiert und an /mnt/resource angefügt.
 
->[AZURE.WARNING] Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem virtuellen Windows-Computer finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md).
+>[AZURE.WARNING] Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem virtuellen Windows-Computer finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md).
 
 Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk in Microsoft Azure Virtual Machines).
 
 ## Datenträger
 
-Ein Datenträger ist eine VHD, die zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet. Jeder Datenträger hat eine maximale Kapazität von 1023 GB. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
+Ein Datenträger ist eine VHD, die zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet. Jeder Datenträger hat eine maximale Kapazität von 1023 GB. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
 
 >[AZURE.NOTE] Weitere Informationen zu Kapazitäten virtueller Computer finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
 
@@ -38,4 +36,4 @@ Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, ind
 
 >[AZURE.WARNING] Wenn Sie eine VHD-Quelldatei aus dem Speicher löschen oder das Speicherkonto löschen, kann Microsoft diese Daten nicht wiederherstellen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->
