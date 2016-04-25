@@ -77,7 +77,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
 	
 	- **Neues Kennwort** und **Bestätigen**. Dieses Kennwort wird für das neue Administratorkonto verwendet, und es wird empfohlen, dass Sie ein sicheres Kennwort verwenden.
 	
-	- Klicken Sie auf **Weiter**. ![Weiter](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+	- Klicken Sie auf **Weiter**.![Weiter](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 
 1. Bearbeiten Sie auf der nächsten Seite die folgenden Felder:
 

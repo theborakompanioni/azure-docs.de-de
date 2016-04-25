@@ -76,11 +76,15 @@ Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Iden
 
 Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** zu erstellen, die Sie in Ihrer Logik-App verwenden können:
 
-1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt: ![SharePoint konfigurieren][1]  
+1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt:
+![SharePoint konfigurieren][1]  
 2. Wählen Sie **SharePoint Online – Wenn eine Datei erstellt wird** aus.   
-3. Wählen Sie **Bei SharePoint Online anmelden**: ![SharePoint konfigurieren][2]    
-4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren. ![SharePoint konfigurieren][3]     
-5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **Wenn eine Datei erstellt wird**. ![SharePoint konfigurieren][4]  
+3. Wählen Sie **Bei SharePoint Online anmelden**:
+![SharePoint konfigurieren][2]    
+4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren.
+![SharePoint konfigurieren][3]     
+5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **Wenn eine Datei erstellt wird**.
+![SharePoint konfigurieren][4]  
 6. Sie können dann weitere Trigger und Aktionen hinzufügen, die Sie benötigen, um Ihre Logik-App abzuschließen.   
 7. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.  
 

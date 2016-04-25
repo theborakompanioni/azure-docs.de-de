@@ -32,7 +32,7 @@ Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-
 
 1.  Melden Sie sich beim [Azure-Vorschauportal](https://portal.azure.com) an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md), bevor Sie fortfahren.
 
-2.  Klicken Sie im Vorschauportal auf **Durchsuchen** > **Netzwerksicherheitsgruppen**.
+2.  Klicken Sie im Vorschauportal auf **Durchsuchen** > **Netzwerksicherheitsgruppen**.
 
 	![Vorschauportal – Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable1.png)
 

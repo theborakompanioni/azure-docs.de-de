@@ -51,13 +51,18 @@ Führen Sie folgende Schritte aus, um sich bei Yammer anzumelden und die Konfigu
 
 1. Wählen Sie **Wiederholung**.
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
-3. Wählen Sie **Aktion hinzufügen**. ![Yammer konfigurieren][1]
+3. Wählen Sie **Aktion hinzufügen**.
+![Yammer konfigurieren][1]
 4. Geben Sie in das Suchfeld „Yammer“ ein, und warten Sie, bis die Suche alle Einträge mit „Yammer“ im Namen zurückgibt.
 5. Wählen Sie **Yammer – Alle Nachrichten abrufen** aus.
-6. Wählen Sie **Bei Yammer anmelden**: ![Yammer konfigurieren][2]
-7. Geben Sie Ihre Yammer-Anmeldeinformationen ein, um die Anwendung zu autorisieren. ![Yammer konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Yammer für die Interaktion mit Ihrer Logik-App: ![Yammer konfigurieren][4] 
-9. Kehren Sie nach der Anmeldung zur Logik-App zurück, um diese zu vervollständigen. Dazu konfigurieren Sie den Abschnitt **Yammer – Alle Nachrichten abrufen** und fügen bei Bedarf weitere Trigger und Aktionen hinzu. ![Yammer konfigurieren][5]  
+6. Wählen Sie **Bei Yammer anmelden**:
+![Yammer konfigurieren][2]
+7. Geben Sie Ihre Yammer-Anmeldeinformationen ein, um die Anwendung zu autorisieren.
+![Yammer konfigurieren][3]  
+8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Yammer für die Interaktion mit Ihrer Logik-App:
+![Yammer konfigurieren][4] 
+9. Kehren Sie nach der Anmeldung zur Logik-App zurück, um diese zu vervollständigen. Dazu konfigurieren Sie den Abschnitt **Yammer – Alle Nachrichten abrufen** und fügen bei Bedarf weitere Trigger und Aktionen hinzu.
+![Yammer konfigurieren][5]  
 10. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
 
 

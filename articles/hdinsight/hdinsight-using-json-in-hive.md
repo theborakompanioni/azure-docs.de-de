@@ -81,7 +81,7 @@ Die im nächsten Abschnitt aufgeführten Methoden erfordern das JSON-Dokument in
 
 	SELECT * FROM StudentsOneLine
 
-Die unformatierte JSON-Datei befindet sich unter ****wasb://processjson@hditutorialdata.blob.core.windows.net/**. Die Hive-Tabelle *StudentsRaw* verweist auf das unformatierte, nicht vereinfachte JSON-Dokument.
+Die unformatierte JSON-Datei befindet sich unter **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Die Hive-Tabelle *StudentsRaw* verweist auf das unformatierte, nicht vereinfachte JSON-Dokument.
 
 Die Hive-Tabelle *StudentsOneLine* speichert die Daten im HDInsight-Standarddateisystem im Pfad */json/students/*.
 

@@ -198,7 +198,8 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
     e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-assetbank-tutorial/create_aaduser_07.png)
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-assetbank-tutorial/create_aaduser_07.png)
 
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:

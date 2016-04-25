@@ -65,7 +65,7 @@ Die Beispieldaten werden in einem Azure Blobspeicher gespeichert, den HDInsight 
 
 Da WASB der Standardspeicher für HDInsight ist, können Sie auch mithilfe von **/example/data/sample.log** von Pig Latin auf die Datei zugreifen.
 
-> [AZURE.NOTE] Die Syntax ****wasb:///** wird für den Zugriff auf Dateien verwendet, die im Standardspeichercontainer für Ihren HDInsight-Cluster gespeichert werden. Wenn Sie beim Bereitstellen Ihres Clusters weitere Speicherkonten angegeben haben und auf die unter diesen Konten gespeicherten Dateien zugreifen möchten, können Sie den Containernamen und die Speicherkontoadresse angeben, um auf diese Daten zuzugreifen, beispielsweise: ****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log**.
+> [AZURE.NOTE] Die Syntax **wasb:///** wird für den Zugriff auf Dateien verwendet, die im Standardspeichercontainer für Ihren HDInsight-Cluster gespeichert werden. Wenn Sie beim Bereitstellen Ihres Clusters weitere Speicherkonten angegeben haben und auf die unter diesen Konten gespeicherten Dateien zugreifen möchten, können Sie den Containernamen und die Speicherkontoadresse angeben, um auf diese Daten zuzugreifen, beispielsweise: **wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log**.
 
 
 ##<a id="job"></a>Infos zum Beispielauftrag

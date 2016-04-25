@@ -27,15 +27,19 @@ Sie müssen das Azure SDK 2.7 oder höher installiert haben, um die folgenden Sc
 
 ## Erstellen eines Projekts
 
-1. Klicken Sie auf das Menü **Datei**, und wählen Sie **Neu** > **Projekt** (oder wählen Sie **Hinzufügen** und dann **Neues Projekt**, um es einer vorhandenen Projektmappe hinzuzufügen): ![Menü "Datei"](./media/app-service-logic-deploy-from-vs/filemenu.png)
+1. Klicken Sie auf das Menü **Datei**, und wählen Sie **Neu** > **Projekt** (oder wählen Sie **Hinzufügen** und dann **Neues Projekt**, um es einer vorhandenen Projektmappe hinzuzufügen):
+![Menü "Datei"](./media/app-service-logic-deploy-from-vs/filemenu.png)
 
-2. Suchen Sie im Dialogfeld den Eintrag **Cloud**, und wählen Sie dann **Azure-Ressourcengruppe**. Geben Sie einen **Namen** ein, und klicken Sie dann auf **OK**. ![Neues Projekt hinzufügen](./media/app-service-logic-deploy-from-vs/addnewproject.png)
+2. Suchen Sie im Dialogfeld den Eintrag **Cloud**, und wählen Sie dann **Azure-Ressourcengruppe**. Geben Sie einen **Namen** ein, und klicken Sie dann auf **OK**.
+![Neues Projekt hinzufügen](./media/app-service-logic-deploy-from-vs/addnewproject.png)
 
-3. Wählen Sie nun aus, ob Sie eine **Logik-App** oder eine **Logik-App und eine API-App** erstellen möchten. Bei Auswahl von **Logik-App** müssen Sie auf vorhandene APIs verweisen. Wenn Sie die Option **Logik-App und API-App** auswählen, können Sie gleichzeitig auch eine neue, leere API-App erstellen. In diesem Dokument habe ich die Logik-App ausgewählt. ![Azure-Vorlage auswählen](./media/app-service-logic-deploy-from-vs/selectazuretemplate.png)
+3. Wählen Sie nun aus, ob Sie eine **Logik-App** oder eine **Logik-App und eine API-App** erstellen möchten. Bei Auswahl von **Logik-App** müssen Sie auf vorhandene APIs verweisen. Wenn Sie die Option **Logik-App und API-App** auswählen, können Sie gleichzeitig auch eine neue, leere API-App erstellen. In diesem Dokument habe ich die Logik-App ausgewählt.
+![Azure-Vorlage auswählen](./media/app-service-logic-deploy-from-vs/selectazuretemplate.png)
 
 4. Nachdem Sie die **Vorlage** ausgewählt haben, klicken Sie auf **OK**.
 
-Ihr Logik-App-Projekt wird der Projektmappe hinzugefügt. Die Bereitstellung sollte im Projektmappen-Explorer angezeigt werden: ![Bereitstellung](./media/app-service-logic-deploy-from-vs/deployment.png)
+Ihr Logik-App-Projekt wird der Projektmappe hinzugefügt. Die Bereitstellung sollte im Projektmappen-Explorer angezeigt werden:
+![Bereitstellung](./media/app-service-logic-deploy-from-vs/deployment.png)
 
 ## Konfigurieren Ihrer Logik-App
 
@@ -59,12 +63,14 @@ Nach der Konfiguration Ihrer App können Sie diese in nur wenigen Schritten dire
 
 2. Sie werden dazu aufgefordert, sich bei Ihrem Azure-Abonnement anzumelden.
 
-3. Nun müssen Sie die Details der Ressourcengruppe auswählen, der Sie die Logik-App bereitstellen möchten. ![Für Ressourcengruppe bereitstellen](./media/app-service-logic-deploy-from-vs/deploytoresourcegroup.png)
+3. Nun müssen Sie die Details der Ressourcengruppe auswählen, der Sie die Logik-App bereitstellen möchten.
+![Für Ressourcengruppe bereitstellen](./media/app-service-logic-deploy-from-vs/deploytoresourcegroup.png)
 
      > [AZURE.NOTE]    Achten Sie darauf, die richtigen Vorlagen- und Parameterdateien für die Ressourcengruppe auszuwählen. (Wenn Sie die App zum Beispiel in einer Produktionsumgebung bereitstellen möchten, sollten Sie die Parameterdatei der Produktion auswählen). 
 4.  Klicken Sie auf die Schaltfläche „Bereitstellen“.
     
-5. Der Status der Bereitstellung wird im Fenster **Ausgabe** angezeigt (Möglicherweise müssen Sie die Option **Azure-Bereitstellung** wählen). ![Ausgabe](./media/app-service-logic-deploy-from-vs/output.png)
+5. Der Status der Bereitstellung wird im Fenster **Ausgabe** angezeigt (Möglicherweise müssen Sie die Option **Azure-Bereitstellung** wählen).
+![Ausgabe](./media/app-service-logic-deploy-from-vs/output.png)
 
 In Zukunft können Sie Ihre Logik-App in der Quellcodeverwaltung überarbeiten und Visual Studio zum Bereitstellen neuer Versionen verwenden.
 

@@ -17,8 +17,8 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
 3. Erstellen Sie mit dem folgenden Befehl eine neue Azure Active Directory-Anwendung, und ersetzen Sie die Platzhalter:
 
     - **{Display name}:** Ein Anzeigename für Ihre Anwendung, z. B. **MySampleApp**.
-    - **{Home page URL}:** Die URL der Startseite der App, z. B. ****http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-- **{Application identifier}:** Ein eindeutiger Bezeichner, z. B. ****http://mysampleapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+    - **{Home page URL}:** Die URL der Startseite der App, z. B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+- **{Application identifier}:** Ein eindeutiger Bezeichner, z. B. **http://mysampleapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
 - **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer Anwendung verwenden werden.
 
     ```

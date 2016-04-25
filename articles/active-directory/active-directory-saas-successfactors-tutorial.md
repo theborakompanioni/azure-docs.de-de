@@ -85,9 +85,12 @@ Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das Succe
     ![App-URL konfigurieren](./media/active-directory-saas-successfactors-tutorial/IC791140.png "App-URL konfigurieren")
 
     1.  Geben Sie im Textfeld **SuccessFactors-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der SuccessFactors-Anwendung verwenden (z. B. **https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")).
-2.  Geben Sie in das Textfeld **SuccessFactors-Antwort-URL** ****https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName** ein.
+2.  Geben Sie in das Textfeld **SuccessFactors-Antwort-URL** **https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName** ein.
 
-        >[AZURE.NOTE] Dieser Wert ist nur ein temporärer Platzhalter. Sie erhalten den tatsächlichen Wert von Ihrem SuccessFactors Supportteam. Später in diesem Lernprogramm werden Sie Anweisungen für die Kontaktaufnahme mit Ihrem SuccessFactors-Supportteam erhalten. Im Rahmen dieser Konversation erhalten Sie Ihre tatsächliche SuccessFactors-Antwort-URL.
+        >[AZURE.NOTE] Dieser Wert ist nur ein temporärer Platzhalter. 
+	>Sie erhalten den tatsächlichen Wert von Ihrem SuccessFactors Supportteam. 
+	>Später in diesem Lernprogramm werden Sie Anweisungen für die Kontaktaufnahme mit Ihrem SuccessFactors-Supportteam erhalten. 
+	>Im Rahmen dieser Konversation erhalten Sie Ihre tatsächliche SuccessFactors-Antwort-URL.
 
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für SuccessFactors** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
@@ -109,7 +112,8 @@ Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das Succe
 
 ##Konfigurieren der Benutzerbereitstellung
   
-Damit sich Azure AD-Benutzer bei SuccessFactors anmelden können, müssen sie in SuccessFactors bereitgestellt werden. Im Fall von SuccessFactors ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei SuccessFactors anmelden können, müssen sie in SuccessFactors bereitgestellt werden. 
+Im Fall von SuccessFactors ist die Bereitstellung eine manuelle Aufgabe.
   
 Um in SuccessFactors erstellte Benutzer abzurufen, müssen Sie sich an das SuccessFactors-Supportteam wenden.
 

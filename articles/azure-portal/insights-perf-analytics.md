@@ -56,7 +56,8 @@ Das SDK stellt eine API bereit, sodass Sie eine [benutzerdefinierte Telemetrie s
 Verwenden Sie die Anwendung für eine gewisse Zeit, um einige Telemetriedaten zu generieren.
 
 1. In der Web-App oder auf dem virtuellen Computer können Sie sehen, dass die Erweiterung installiert ist.
-2. Klicken Sie auf die Zeile für Ihre Anwendung, um zu diesem Anbieter zu navigieren: ![Klicken Sie auf "Aktualisieren".](./media/insights-perf-analytics/06-overview.png)
+2. Klicken Sie auf die Zeile für Ihre Anwendung, um zu diesem Anbieter zu navigieren:
+![Klicken Sie auf "Aktualisieren".](./media/insights-perf-analytics/06-overview.png)
 
 Sie können auch **Durchsuchen** verwenden, um direkt zu Ihrer Application Insights-Komponente oder zum verwendeten New Relic-Konto zu wechseln.
 

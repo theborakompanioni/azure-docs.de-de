@@ -121,7 +121,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
 	c. Geben Sie im Textfeld **Bezeichner** die Mandanten-URL ein.
 
-    d. Geben Sie im Textfeld **Antwort-URL** die unter Verwendung des folgenden Musters die URL ein: ****https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**"
+    d. Geben Sie im Textfeld **Antwort-URL** die unter Verwendung des folgenden Musters die URL ein: **https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**"
 
 	e. Klicken Sie auf **Weiter**.
 

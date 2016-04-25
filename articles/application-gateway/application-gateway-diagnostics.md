@@ -30,9 +30,11 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Application Gatew
 ##Aktivieren der Protokollierung
 Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Zugriffs- und Leistungsprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus.
 
-1. Notieren Sie sich die Ressourcen-ID Ihres Speicherkontos, unter dem die Protokolldaten gespeichert werden. Hierfür wird das folgende Format verwendet: /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>. Sie können jedes Speicherkonto Ihres Abonnements verwenden. Sie können das Vorschauportal verwenden, um nach diesen Informationen zu suchen. ![Vorschauportal – Application Gateway-Diagnose](./media/application-gateway-diagnostics/diagnostics1.png)
+1. Notieren Sie sich die Ressourcen-ID Ihres Speicherkontos, unter dem die Protokolldaten gespeichert werden. Hierfür wird das folgende Format verwendet: /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>. Sie können jedes Speicherkonto Ihres Abonnements verwenden. Sie können das Vorschauportal verwenden, um nach diesen Informationen zu suchen.
+![Vorschauportal – Application Gateway-Diagnose](./media/application-gateway-diagnostics/diagnostics1.png)
  
-2. Notieren Sie sich die Ressourcen-ID Ihres Application Gateway, für das die Protokollierung aktiviert werden soll. Hierfür wird das folgende Format verwendet: /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>. Sie können das Vorschauportal verwenden, um nach diesen Informationen zu suchen. ![Vorschauportal – Application Gateway-Diagnose](./media/application-gateway-diagnostics/diagnostics2.png)
+2. Notieren Sie sich die Ressourcen-ID Ihres Application Gateway, für das die Protokollierung aktiviert werden soll. Hierfür wird das folgende Format verwendet: /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>. Sie können das Vorschauportal verwenden, um nach diesen Informationen zu suchen.
+![Vorschauportal – Application Gateway-Diagnose](./media/application-gateway-diagnostics/diagnostics2.png)
 
 3. Aktivieren Sie die Diagnoseprotokollierung mit dem folgenden PowerShell-Cmdlet.
 

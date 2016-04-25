@@ -137,15 +137,19 @@ Die reguläre Azure App Service-Umgebung verfügt über andere Features. Nähere
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) mit Ihrem Geschäftskonto an. Melden Sie sich beispielsweise mit *IhrBenutzername*@*IhrUnternehmen*.com an. Sie werden dann automatisch mit Ihrem Unternehmensabonnement angemeldet.
 
-2. Wählen Sie in der Taskleiste **Durchsuchen**: ![Durchsuchen nach PowerApps][1]
+2. Wählen Sie in der Taskleiste **Durchsuchen**:
+![Durchsuchen nach PowerApps][1]
 
-3. In der Liste können Sie scrollen, um PowerApps zu finden, oder in *powerapps* Folgendes eingeben: ![Suchen nach PowerApps][2]
+3. In der Liste können Sie scrollen, um PowerApps zu finden, oder in *powerapps* Folgendes eingeben:
+![Suchen nach PowerApps][2]
 
-4. Wählen Sie im **PowerApps**-Blatt **App Service-Umgebung für den Einstieg erstellen**, oder wählen Sie **App Service-Umgebung** unter *Einstellungen*: ![][5]
+4. Wählen Sie im **PowerApps**-Blatt **App Service-Umgebung für den Einstieg erstellen**, oder wählen Sie **App Service-Umgebung** unter *Einstellungen*:
+![][5]
 
 	> [AZURE.NOTE] Wenn Sie auf **App Service-Umgebung für den Einstieg erstellen** klicken, sehen Sie ein zusätzliches Blatt mit Details zur App Service-Umgebung. Klicken Sie zum Aufruf des Erstellungsblatts einfach auf diesem Blatt auf den "Erstellen"-Link.
 
-5. Als Nächstes geben Sie den Namen ein, wählen Sie das Abonnement, das Sie verwenden möchten, wählen Sie eine neue Ressourcengruppe aus, bzw. erstellen Sie eine, und wählen Sie ein virtuelles Netzwerk aus. **Beachten Sie**, dass Sie die Auswahl eines virtuellen Netzwerks nicht mehr rückgängig machen können: ![][6] Informationen zur Zusammenarbeit virtueller Netzwerke mit einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md).
+5. Als Nächstes geben Sie den Namen ein, wählen Sie das Abonnement, das Sie verwenden möchten, wählen Sie eine neue Ressourcengruppe aus, bzw. erstellen Sie eine, und wählen Sie ein virtuelles Netzwerk aus. **Beachten Sie**, dass Sie die Auswahl eines virtuellen Netzwerks nicht mehr rückgängig machen können:
+![][6] Informationen zur Zusammenarbeit virtueller Netzwerke mit einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md).
 
 6. Wählen Sie **Hinzufügen**, um die Erstellung der App Service-Umgebung abzuschließen.
 
@@ -158,8 +162,10 @@ Denken Sie daran, dass Sie dieser App Service-Umgebung auch Web-Apps, mobile App
 Um auf die App Service-Umgebung zuzugreifen, APIs, Verbindungen und andere Ressourcen zu erstellen, müssen Benutzer mit der Rolle "Besitzer" hinzugefügt werden.
 
 1. Wählen Sie die App Service-Umgebung aus, die Sie gerade erstellt haben.
-2. Wählen Sie in "Essentials" die Eigenschaft **Ressourcengruppe** aus. Daraufhin wird die Ressourcengruppe geöffnet, die die App Service-Umgebung enthält: ![][7]
-3. Wählen Sie das Symbol "RBAC" zum Verwalten von Berechtigungen: ![][8] Das Hinzufügen von Benutzern und Zuweisen von Rollen erfolgt wie die [rollenbasierte Zugriffssteuerung](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/) innerhalb von Azure.
+2. Wählen Sie in "Essentials" die Eigenschaft **Ressourcengruppe** aus. Daraufhin wird die Ressourcengruppe geöffnet, die die App Service-Umgebung enthält:
+![][7]
+3. Wählen Sie das Symbol "RBAC" zum Verwalten von Berechtigungen:
+![][8] Das Hinzufügen von Benutzern und Zuweisen von Rollen erfolgt wie die [rollenbasierte Zugriffssteuerung](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/) innerhalb von Azure.
 
 > [AZURE.NOTE] Sie können derzeit keine RBAC-Berechtigungen für die App Service-Umgebung zuweisen. Sie können RBAC-Berechtigungen auf der übergeordneten Ressourcengruppenebene zuweisen.
 

@@ -204,7 +204,8 @@ Nur für Linux-VM – stellen Sie sicher, dass Sie die Einstellung „disk.enabl
 3. Klicken Sie auf **Neu erstellen** > **Schnellerfassung**.
 4. Geben Sie unter **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird.
 5. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Sie finden eine Liste der unterstützten Regionen unter Geografische Verfügbarkeit auf der Seite [Azure Site Recovery – Preisübersicht](https://azure.microsoft.com/pricing/details/site-recovery/)
-6. Klicken Sie auf **Tresor erstellen**. ![Neuer Tresor](./media/site-recovery-vmware-to-azure-classic/quick-start-create-vault.png)
+6. Klicken Sie auf **Tresor erstellen**.
+![Neuer Tresor](./media/site-recovery-vmware-to-azure-classic/quick-start-create-vault.png)
 
 Überprüfen Sie auf der Statusleiste, ob der Tresor erfolgreich erstellt wurde. Der Tresor wird auf der Hauptseite von **Recovery Services** als **Aktiv** angegeben.
 
@@ -237,11 +238,11 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 ## Schritt 5: Installieren des Verwaltungsservers
 > [AZURE.TIP] Stellen Sie sicher, dass die folgenden URLs vom Verwaltungsserver aus zugänglich sind:
 >
-- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+- *.hypervrecoverymanager.windowsazure.com
+- *.accesscontrol.windows.net
+- *.backup.windowsazure.com
+- *.blob.core.windows.net
+- *.store.core.windows.net
 - https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi
 - https://www.msftncsi.com/ncsi.txt
 
@@ -304,8 +305,11 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 	![Zusammenfassung](./media/site-recovery-vmware-to-azure-classic/combined-wiz10.png)
 >[AZURE.WARNING] Der Proxy des Agents der Microsoft Azure Recovery Services muss eingerichtet werden. Starten Sie nach Abschluss der Installation über das Windows-Startmenü die Anwendung „Microsoft Azure Recovery Services Shell“. Führen Sie im daraufhin geöffneten Befehlsfenster den folgenden Befehlssatz aus, um die Proxyservereinstellungen einzurichten.
 >
-	$pwd = ConvertTo-SecureString -String ProxyUserPassword Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd net stop obengine net start obengine
-
+	$pwd = ConvertTo-SecureString -String ProxyUserPassword
+	Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd
+	net stop obengine
+	net start obengine
+	 
 
 
 ### Ausführen des Setupprogramms über die Befehlszeile

@@ -36,7 +36,8 @@ Führen Sie zunächst den Ermittlungsprozess durch, um sicherzustellen, dass all
 
 1. Melden Sie sich beim [klassischen Portal](http://manage.windowsazure.com/) an.
 
-2. Klicken Sie in der Liste mit den Azure-Diensten auf **Recovery Services**, um die Liste mit den Backup- und Site Recovery-Tresoren zu öffnen. ![Tresorliste öffnen](./media/backup-azure-vms/choose-vault-list.png)
+2. Klicken Sie in der Liste mit den Azure-Diensten auf **Recovery Services**, um die Liste mit den Backup- und Site Recovery-Tresoren zu öffnen.
+![Tresorliste öffnen](./media/backup-azure-vms/choose-vault-list.png)
 
 3. Wählen Sie in der Liste mit den Backup-Tresoren den Tresor zum Sichern einer VM aus.
 
@@ -54,7 +55,8 @@ Führen Sie zunächst den Ermittlungsprozess durch, um sicherzustellen, dass all
 
     ![Workload auswählen](./media/backup-azure-vms/discovery-select-workload.png)
 
-6. Klicken Sie unten auf der Seite auf **ERMITTELN**. ![Schaltfläche „Ermitteln“](./media/backup-azure-vms/discover-button-only.png)
+6. Klicken Sie unten auf der Seite auf **ERMITTELN**.
+![Schaltfläche „Ermitteln“](./media/backup-azure-vms/discover-button-only.png)
 
     Der Ermittlungsvorgang kann einige Minuten dauern, während die virtuellen Computer in einer Tabelle aufgeführt werden. Am unteren Rand des Bildschirms wird eine Benachrichtigung angezeigt, die Ihnen mitteilt, dass der Vorgang ausgeführt wird.
 
@@ -75,7 +77,8 @@ Sie registrieren einen virtuellen Azure-Computer, um ihn dem Azure Backup-Dienst
 
     ![Workload auswählen](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. Klicken Sie unten auf der Seite auf **REGISTRIEREN**. ![Schaltfläche „Registrieren“](./media/backup-azure-vms/register-button-only.png)
+3. Klicken Sie unten auf der Seite auf **REGISTRIEREN**.
+![Schaltfläche „Registrieren“](./media/backup-azure-vms/register-button-only.png)
 
 4. Wählen Sie im Kontextmenü **Elemente registrieren** die virtuellen Computer aus, die Sie registrieren möchten. Wenn zwei oder mehr virtuelle Computer denselben Namen aufweisen, verwenden Sie den Clouddienst, um sie unterscheiden.
 

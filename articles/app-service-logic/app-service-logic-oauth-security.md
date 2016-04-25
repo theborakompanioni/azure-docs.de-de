@@ -28,15 +28,20 @@ Diese vereinfachte Bedienung ist möglich, da wir unsere Anwendung zuvor in dies
 
 Auch im Kontext von Logik-Apps können Sie Ihre eigene Anwendung anstelle der Standardanwendung einsetzen, die wir bereitstellen. Wenn über die Schaltfläche "Autorisieren" keine Verbindung hergestellt werden kann, können Sie versuchen, eine eigene App zu erstellen. Im folgenden sind diese Schritte für den Twitter-Connector aufgeführt:
 
-1. Öffnen Sie Ihren Twitter-Connector im Azure-Vorschauportal. Wechseln Sie zu **Durchsuchen** > **API-Apps**. Wählen Sie Ihren Twitter-Connector aus: ![][1]
+1. Öffnen Sie Ihren Twitter-Connector im Azure-Vorschauportal. Wechseln Sie zu **Durchsuchen** > **API-Apps**. Wählen Sie Ihren Twitter-Connector aus:
+![][1]
 
-2. Wählen Sie **Einstellungen** > **Authentifizierung**: ![][2]
+2. Wählen Sie **Einstellungen** > **Authentifizierung**:
+![][2]
 
-3. Kopieren Sie den Wert von **Umleitungs-URI**: ![][3]
+3. Kopieren Sie den Wert von **Umleitungs-URI**:
+![][3]
 
-4. Wechseln Sie zu [Twitter](http://apps.twitter.com) und **Neue App erstellen**. Fügen Sie in die Eigenschaft **Rückruf-URL** den Wert von **Umleitungs-URI** ein, den Sie aus dem Twitter-Connector kopiert haben: ![][4]
+4. Wechseln Sie zu [Twitter](http://apps.twitter.com) und **Neue App erstellen**. Fügen Sie in die Eigenschaft **Rückruf-URL** den Wert von **Umleitungs-URI** ein, den Sie aus dem Twitter-Connector kopiert haben:
+![][4]
 5. Wählen Sie nach Erstellen der Twitter-App **Schlüssel und Zugriffstoken** aus. Kopieren Sie diese Werte.
-6. Fügen Sie in diese Werte in den Authentifizierungseinstellungen Ihres Twitter-Connectors in die Eigenschaften **Client-ID** und **Geheimer Clientschlüssel** ein: ![][5]  
+6. Fügen Sie in diese Werte in den Authentifizierungseinstellungen Ihres Twitter-Connectors in die Eigenschaften **Client-ID** und **Geheimer Clientschlüssel** ein:
+![][5]  
 7. Speichern Sie Ihre Connectoreinstellungen.  
 
 Jetzt sollten Sie den Connector in Logik-Apps verwenden können. Wenn Sie diesen Connector in Logik-Apps verwenden, wird Ihre Anwendung anstelle der Standardanwendung verwendet.

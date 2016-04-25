@@ -28,9 +28,11 @@ Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/li
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, und navigieren Sie zu der Ressource, die Sie skalieren möchten, z. B. zu einem **App Service-Plan**.
 
-2. Die Kachel **Skalierung** in **Vorgänge** zeigt den Status der Skalierung: **Aus**, wenn Sie eine manuelle Skalierung durchführen, **Ein**, wenn Sie nach einer oder mehreren Leistungsmetriken skalieren. ![Kachel "Skalieren"](./media/insights-how-to-scale/Insights_UsageLens.png)
+2. Die Kachel **Skalierung** in **Vorgänge** zeigt den Status der Skalierung: **Aus**, wenn Sie eine manuelle Skalierung durchführen, **Ein**, wenn Sie nach einer oder mehreren Leistungsmetriken skalieren.
+![Kachel "Skalieren"](./media/insights-how-to-scale/Insights_UsageLens.png)
 
-3. Durch Klicken auf die Kachel gelangen Sie zum Blatt **Skalierung**. Oben auf dem Blatt "Skalierung" wird der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt. ![Blatt "Skalieren"](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
+3. Durch Klicken auf die Kachel gelangen Sie zum Blatt **Skalierung**. Oben auf dem Blatt "Skalierung" wird der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt.
+![Blatt "Skalieren"](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
 
 >[AZURE.NOTE] In diesem Diagramm werden nur Aktionen angezeigt, die im Rahmen der automatischen Skalierung ausgeführt werden. Wenn Sie die Instanzenzahl manuell anpassen, wird diese Änderung im Diagramm nicht angezeigt.
 
@@ -57,11 +59,13 @@ Sie können auch nach anderen Metriken skalieren als denjenigen, die in der Drop
 
 ### Hinzufügen oder Ändern einer Regel
 
-1. Wählen Sie in der Dropdownliste **Skalieren nach** die Einstellung **Zeitplan- und Leistungsregeln**: ![Leistungsregeln](./media/insights-how-to-scale/Insights_PerformanceRules.png)
+1. Wählen Sie in der Dropdownliste **Skalieren nach** die Einstellung **Zeitplan- und Leistungsregeln**:
+![Leistungsregeln](./media/insights-how-to-scale/Insights_PerformanceRules.png)
 
 2. Wenn Sie die automatische Skalierung bereits verwenden, werden die Regeln für diese Skalierung angezeigt.
 
-3. Um basierend auf einer anderen Metrik zu skalieren, klicken Sie auf die Zeile **Regel hinzufügen**. Sie können auch auf eine der vorhandenen Zeilen klicken, um die bisher verwendete Metrik für die Skalierung zu ändern. ![Hinzufügen einer Regel](./media/insights-how-to-scale/Insights_AddRule.png)
+3. Um basierend auf einer anderen Metrik zu skalieren, klicken Sie auf die Zeile **Regel hinzufügen**. Sie können auch auf eine der vorhandenen Zeilen klicken, um die bisher verwendete Metrik für die Skalierung zu ändern.
+![Hinzufügen einer Regel](./media/insights-how-to-scale/Insights_AddRule.png)
 
 4. Jetzt müssen Sie auswählen, nach welcher Metrik die Skalierung erfolgen soll. Beim Auswählen einer Metrik müssen verschiedene Dinge berücksichtigt werden:
     * Die *Ressource*, aus der die Metrik bezogen wird. Typischerweise ist dies gleichzeitig die Ressource, die Sie skalieren. Wenn Sie jedoch nach der Tiefe einer Speicherwarteschlange skalieren, ist die Ressource die Warteschlange, nach der Sie skalieren möchten.
@@ -105,11 +109,13 @@ Möglicherweise möchten Sie jedoch tagsüber oder unter der Woche eine aggressi
 
 2. Um beispielsweise ein Profil unter der Woche anzuwenden, deaktivieren Sie in der Dropdownliste **Tage** die Tage **Samstag** und **Sonntag**.
 
-3. Wenn Sie ein Profil erstellen möchten, das tagsüber angewendet wird, legen Sie die **Startzeit** auf die Uhrzeit fest, an der Sie beginnen möchten. ![Standardwiederholung](./media/insights-how-to-scale/Insights_ProfileRecurrence.png)
+3. Wenn Sie ein Profil erstellen möchten, das tagsüber angewendet wird, legen Sie die **Startzeit** auf die Uhrzeit fest, an der Sie beginnen möchten.
+![Standardwiederholung](./media/insights-how-to-scale/Insights_ProfileRecurrence.png)
 
 4. Klicken Sie auf **OK**.
 
-5. Als Nächstes müssen Sie das Profil hinzufügen, das zu den anderen Zeiten angewendet werden soll. Klicken Sie auf die Zeile **Profil hinzufügen**. ![Nach Geschäftsschluss](./media/insights-how-to-scale/Insights_ProfileOffWork.png)
+5. Als Nächstes müssen Sie das Profil hinzufügen, das zu den anderen Zeiten angewendet werden soll. Klicken Sie auf die Zeile **Profil hinzufügen**.
+![Nach Geschäftsschluss](./media/insights-how-to-scale/Insights_ProfileOffWork.png)
 
 6. Benennen Sie das neue, zweite Profil. Sie könnten beispielsweise den Namen **Nach Geschäftsschluss** verwenden.
 
@@ -121,7 +127,8 @@ Möglicherweise möchten Sie jedoch tagsüber oder unter der Woche eine aggressi
 
 9. Klicken Sie auf **OK**.
 
-10. Jetzt müssen Sie die Regeln hinzufügen, die Sie für das zweite Profil anwenden möchten. Klicken Sie auf **Regel hinzufügen**, und definieren Sie eine Regel wie beim Standardprofil. ![Regel für Zeiten nach Geschäftsschluss hinzufügen](./media/insights-how-to-scale/Insights_RuleOffWork.png)
+10. Jetzt müssen Sie die Regeln hinzufügen, die Sie für das zweite Profil anwenden möchten. Klicken Sie auf **Regel hinzufügen**, und definieren Sie eine Regel wie beim Standardprofil.
+![Regel für Zeiten nach Geschäftsschluss hinzufügen](./media/insights-how-to-scale/Insights_RuleOffWork.png)
 
 11. Stellen Sie sicher, dass Sie sowohl eine Regel für das horizontale Hochskalieren als auch eine Regel für das horizontale Herunterskalieren definieren, da die Instanzenzahl für das Profil ansonsten nur erhöht (oder verringert) wird.
 

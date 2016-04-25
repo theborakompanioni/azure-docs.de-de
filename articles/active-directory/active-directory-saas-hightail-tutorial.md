@@ -165,7 +165,7 @@ Die Hightail-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_06.png)
 
-	a. Geben Sie im Textfeld „Anmelde-URL“ die URL ein, die von Ihren Benutzern zur Anmeldung bei der Hightail-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: ****https://www.hightail.com/loginSSO** Dies ist die allgemeine Anmeldeseite für alle Kunden, die das einmalige Anmelden verwenden möchten.
+	a. Geben Sie im Textfeld „Anmelde-URL“ die URL ein, die von Ihren Benutzern zur Anmeldung bei der Hightail-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: **https://www.hightail.com/loginSSO** Dies ist die allgemeine Anmeldeseite für alle Kunden, die das einmalige Anmelden verwenden möchten.
 
 	b. Klicken Sie auf **Weiter**.
 

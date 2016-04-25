@@ -61,11 +61,15 @@ Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung*
 
 1. Wählen Sie **Wiederholung** aus.
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.![Service Bus konfigurieren][1] 
-3. Wählen Sie **Aktion hinzufügen**. ![Service Bus konfigurieren][2]   
+3. Wählen Sie **Aktion hinzufügen**.
+![Service Bus konfigurieren][2]   
 4. Geben Sie in das Suchfeld **Service Bus** ein, und warten Sie, bis die Suche alle Einträge mit „Service Bus“ im Namen zurückgibt.
-5. Wählen Sie **Service Bus – Nachricht senden**. ![Service Bus konfigurieren][3]
-7. Geben Sie einen **Verbindungsnamen** und eine **Verbindungszeichenfolge** ein, und wählen Sie dann **Verbindung erstellen**: ![Service Bus konfigurieren][4]
-7. Nachdem die Verbindung erstellt wurde, wird das Dialogfeld **Nachricht senden** angezeigt. Geben Sie die erforderlichen Informationen zum Senden einer Nachricht ein. ![Service Bus konfigurieren][5]
+5. Wählen Sie **Service Bus – Nachricht senden**.
+![Service Bus konfigurieren][3]
+7. Geben Sie einen **Verbindungsnamen** und eine **Verbindungszeichenfolge** ein, und wählen Sie dann **Verbindung erstellen**:
+![Service Bus konfigurieren][4]
+7. Nachdem die Verbindung erstellt wurde, wird das Dialogfeld **Nachricht senden** angezeigt. Geben Sie die erforderlichen Informationen zum Senden einer Nachricht ein.
+![Service Bus konfigurieren][5]
 8. Klicken Sie oben im Menü auf die Schaltfläche **Speichern**, um Ihre Arbeit zu speichern.    
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.

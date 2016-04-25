@@ -98,9 +98,11 @@ Nachdem die Swagger-Datei (JSON-Datei) für die benutzerdefinierte API generiert
 
 	> [AZURE.NOTE] Derzeit können benutzerdefinierte APIs nur im PowerApps-Webportal verwendet werden. Die Verwendung im PowerApps-Client ist nicht möglich.
 
-2. Wählen Sie **Verbindungen** und dann **Verbindung hinzufügen**: ![](./media/powerapps-register-custom-api/createnewconnection.png "Benutzerdefinierte API erstellen")
+2. Wählen Sie **Verbindungen** und dann **Verbindung hinzufügen**:
+![](./media/powerapps-register-custom-api/createnewconnection.png "Benutzerdefinierte API erstellen")
 
-3. Wählen Sie **Benutzerdefinierte API hinzufügen**: ![](./media/powerapps-register-custom-api/connecttocustomapi.png "Benutzerdefinierte API erstellen") Fügen Sie die Eigenschaften Ihrer API hinzu, einschließlich der JSON-Datei und Symboldatei. Wählen Sie anschließend **Weiter**:
+3. Wählen Sie **Benutzerdefinierte API hinzufügen**:
+![](./media/powerapps-register-custom-api/connecttocustomapi.png "Benutzerdefinierte API erstellen") Fügen Sie die Eigenschaften Ihrer API hinzu, einschließlich der JSON-Datei und Symboldatei. Wählen Sie anschließend **Weiter**:
 
 	|Eigenschaft|Beschreibung|
 |---|---|
@@ -138,11 +140,14 @@ In diesem Schritt erstellen wir einen sehr einfachen logischen Ablauf, mit dem v
 2. Wählen Sie unter **Logischen Ablauf erstellen** die Option **Erste Schritte**. 
 3. In diesem Fenster sind bereits einige erstellte Vorlagen für den logischen Ablauf vorhanden, für die häufige Szenarien verwendet werden. Sie können sie verwenden und Ihre benutzerdefinierte API hinzufügen. Oder Sie können **Neu erstellen** wählen, um einen logischen Ablauf von Grund auf neu zu erstellen.  
 
-	Die schnellste Möglichkeit zum Hinzufügen Ihrer benutzerdefinierten API ist die Auswahl von **Neu erstellen**. Daraufhin wird der folgende logische Ablauf geöffnet: ![](./media/powerapps-register-custom-api/createfromblank.png "Beginn des logischen Ablaufs")
+	Die schnellste Möglichkeit zum Hinzufügen Ihrer benutzerdefinierten API ist die Auswahl von **Neu erstellen**. Daraufhin wird der folgende logische Ablauf geöffnet:
+![](./media/powerapps-register-custom-api/createfromblank.png "Beginn des logischen Ablaufs")
 
-4. Wählen Sie **Wiederholung**, und legen Sie die Häufigkeit auf eine Minute fest: ![](./media/powerapps-register-custom-api/logicrecurrence.png "„Wiederholung“ auswählen")
+4. Wählen Sie **Wiederholung**, und legen Sie die Häufigkeit auf eine Minute fest:
+![](./media/powerapps-register-custom-api/logicrecurrence.png "„Wiederholung“ auswählen")
 
-5. Wählen Sie das Pluszeichen (![](./media/powerapps-register-custom-api/flowplussign.png)) und dann **Aktion hinzufügen**. Ihre benutzerdefinierte API wird in der Liste aufgeführt: ![](./media/powerapps-register-custom-api/logicflow.png "Ihre benutzerdefinierte API")
+5. Wählen Sie das Pluszeichen (![](./media/powerapps-register-custom-api/flowplussign.png)) und dann **Aktion hinzufügen**. Ihre benutzerdefinierte API wird in der Liste aufgeführt:
+![](./media/powerapps-register-custom-api/logicflow.png "Ihre benutzerdefinierte API")
 
 Die nächsten Schritte richten sich danach, was mit Ihrer API möglich ist. Im Rahmen eines Wetterbeispiels ruft Ihre API ggf. die aktuelle Temperatur ab und sendet dann per Office 365 eine E-Mail:
 
@@ -155,10 +160,14 @@ In diesem Schritt erstellen wir eine sehr einfache PowerApp, die verdeutlicht, w
 
 > [AZURE.NOTE] Derzeit können benutzerdefinierte APIs nur im PowerApps-Webportal verwendet werden. Die Verwendung im PowerApps-Client ist nicht möglich.
 
-1. Wählen Sie im PowerApps-[Webportal][9] die Option **Neue PowerApp**: ![](./media/powerapps-register-custom-api/newpowerapp.png "Neue PowerApp auswählen")  
-2. Im Browser wird eine neue Registerkarte geöffnet. Auf dieser neuen Registerkarte wird automatisch eine leere PowerApp erstellt. Wählen Sie **Mit Daten verbinden**: ![](./media/powerapps-register-custom-api/blankpowerapp.png "„Mit Daten verbinden“ auswählen")  
-3. Wählen Sie auf der Registerkarte **Inhalt** die Option **Datenquellen**: ![](./media/powerapps-register-custom-api/datasources.png "„Mit Daten verbinden“ auswählen")  
-4. Wählen Sie auf dem neuen Bildschirm unter **Meine Verbindungen** Ihre benutzerdefinierte API aus: ![](./media/powerapps-register-custom-api/screencustomapi.png "Benutzerdefinierte API auswählen")  
+1. Wählen Sie im PowerApps-[Webportal][9] die Option **Neue PowerApp**:
+![](./media/powerapps-register-custom-api/newpowerapp.png "Neue PowerApp auswählen")  
+2. Im Browser wird eine neue Registerkarte geöffnet. Auf dieser neuen Registerkarte wird automatisch eine leere PowerApp erstellt. Wählen Sie **Mit Daten verbinden**:
+![](./media/powerapps-register-custom-api/blankpowerapp.png "„Mit Daten verbinden“ auswählen")  
+3. Wählen Sie auf der Registerkarte **Inhalt** die Option **Datenquellen**:
+![](./media/powerapps-register-custom-api/datasources.png "„Mit Daten verbinden“ auswählen")  
+4. Wählen Sie auf dem neuen Bildschirm unter **Meine Verbindungen** Ihre benutzerdefinierte API aus:
+![](./media/powerapps-register-custom-api/screencustomapi.png "Benutzerdefinierte API auswählen")  
 5. Wählen Sie die Option **Datenquelle hinzufügen**.
 
 Nach dem Hinzufügen können Sie Ihre benutzerdefinierte API in der Funktionsleiste, einem Textfeld und an anderen Orten verwenden. In der Funktionsleiste können Sie beispielsweise mit der Eingabe von **MySampleWebAPI** beginnen, um die verfügbaren Funktionen anzuzeigen. [Show data from Office 365][12] (Anzeigen von Daten aus Office 365) ist ein Beispiel für die Verwendung der Office 365-API.

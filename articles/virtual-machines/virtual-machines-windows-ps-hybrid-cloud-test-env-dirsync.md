@@ -60,12 +60,12 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 Um Ihre Testversion von Office 365 Fast Track zu starten, benötigen Sie einen fiktiven Firmennamen und ein Microsoft-Konto. Wir empfehlen Ihnen, dass Sie eine Variante des Unternehmensnamens Contoso für den Namen Ihres Unternehmens verwenden. Das ist ein fiktives Unternehmen, das in Microsoft-Beispielinhalten verwendet wird, wobei dies aber nicht unbedingt erforderlich ist.
 
-Melden Sie sich als Nächstes ein neues Microsoft-Konto an. Wechseln Sie zu ****http://outlook.com**, und erstellen Sie ein Konto mit einer E-Mail-Adresse wie user123@outlook.com. Sie können für eine Testversion von Office 365 Fast Track mit diesem Konto anmelden.
+Melden Sie sich als Nächstes ein neues Microsoft-Konto an. Wechseln Sie zu **http://outlook.com**, und erstellen Sie ein Konto mit einer E-Mail-Adresse wie user123@outlook.com. Sie können für eine Testversion von Office 365 Fast Track mit diesem Konto anmelden.
 
 Melden Sie sich als Nächstes für eine neue Office 365 Enterprise E3-Testversion an.
 
 1.	Melden Sie sich mit den Anmeldeinformationen des CORP\\User1 CLIENT1 an.
-2.	Öffnen Sie Internet Explorer, und wechseln Sie zu ****https://go.microsoft.com/fwlink/p/?LinkID=403802**.
+2.	Öffnen Sie Internet Explorer, und wechseln Sie zu **https://go.microsoft.com/fwlink/p/?LinkID=403802**.
 3.	Melden Sie sich für die Testversion von Office 365 Enterprise E3 an.
 
 Wenn Sie zur Eingabe Ihrer **geschäftlichen E-Mail-Adresse** aufgefordert werden, geben Sie Ihr neues Microsoft-Konto an.
@@ -142,9 +142,9 @@ Wenn Sie jeden Windows PowerShell-Befehl **New-ADUser** ausführen, werden Sie z
 
 Installieren und konfigurieren Sie als Nächstes das Azure AD Connect-Tool auf DS1.
 
-1.	Führen Sie Internet Explorer aus, geben Sie ****https://www.microsoft.com/download/details.aspx?id=47594** in der **Adressleiste** ein, und betätigen Sie dann die EINGABETASTE.
+1.	Führen Sie Internet Explorer aus, geben Sie **https://www.microsoft.com/download/details.aspx?id=47594** in der **Adressleiste** ein, und betätigen Sie dann die EINGABETASTE.
 2.	Führen Sie das Microsoft Azure AD Connect-Setupprogramm aus.
-3.	Doppelklicken Sie auf dem Desktop auf ** Azure AD Connect**.
+3.	Doppelklicken Sie auf dem Desktop auf **Azure AD Connect**.
 4.	Wählen Sie auf der Seite **Willkommen** die Option **Ich stimme den Lizenzbedingungen und dem Datenschutzhinweis zu**, und klicken Sie dann auf **Weiter**.
 5.	Klicken Sie auf der Seite **Expresseinstellungen** auf **Expresseinstellungen verwenden**.
 6.	Geben Sie auf der Seite **Herstellen einer Verbindung mit Azure AD** die E-Mail-Adresse und das Kennwort des anfänglichen Kontos ein, das Sie beim Einrichten der Testversion von Office 365 Fast Track in Phase 2 erstellt haben. Klicken Sie auf **Weiter**.
@@ -167,7 +167,7 @@ Führen Sie dann die Office 365-Kennwortsynchronisierung mit dem Active Director
 3.	Wählen Sie auf der Registerkarte **Lizenz zuweisen** einen Standort unter **Benutzerstandort einstellen** aus (z. B. Vereinigte Staaten).
 4.	Wählen Sie **Microsoft Office 365 (Plan E3)** aus, und klicken Sie dann auf **Speichern**.
 5.	Schließen Sie Internet Explorer.
-6.	Führen Sie Internet Explorer aus, und wechseln Sie zu ****http://portal.microsoftonline.com**.
+6.	Führen Sie Internet Explorer aus, und wechseln Sie zu **http://portal.microsoftonline.com**.
 7.	Melden Sie sich mit den Office 365-Anmeldeinformationen von Lynda Meyer an. Der Benutzername lautet dann "lyndam@<*Ihr fiktiver Name*>.onmicrosoft.com". Das Kennwort ist das Kennwort für das Lynda Dressler Active Directory-Benutzerkonto.
 8.	Nach der erfolgreichen Anmeldung sehen Sie die Hauptseite des Office 365-Portals mit **Heute machen wir einen Unterschied**.
 

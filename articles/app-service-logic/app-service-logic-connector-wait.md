@@ -28,13 +28,16 @@ Zur Verwendung des Warten-Connectors müssen Sie zunächst eine Instanz der Wart
 Der Warten-Connector kann als eine Aktion verwendet werden. Er besitzt keine Trigger.
 
 ### Aktion
-- Klicken Sie im rechten Bereich auf den Warten-Connector: ![Liste der Aktionen][1]
+- Klicken Sie im rechten Bereich auf den Warten-Connector:
+![Liste der Aktionen][1]
 - Der Warten-Connector unterstützt zwei Aktionen: 
 	- Verzögern
 	- Verzögern bis
 	 
-- Wählen Sie *Verzögern* aus: ![Eingabe verzögern][2]
-- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie: ![Konfigurierte Aktion][3]
+- Wählen Sie *Verzögern* aus:
+![Eingabe verzögern][2]
+- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie:
+![Konfigurierte Aktion][3]
 
 Parameter|Typ|Beschreibung des Parameters
 ---|---|---

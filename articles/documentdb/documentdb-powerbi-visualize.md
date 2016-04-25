@@ -111,7 +111,8 @@ Sind Sie bereit, es zu versuchen? Lassen Sie uns anfangen.
 11. Klicken Sie auf **Bearbeiten**, um den Abfrage-Editor zu starten, damit wir die Daten transformieren können.
 
 ## Vereinfachen und Transformieren von JSON-Dokumenten
-1. Im Abfrage-Editor von Power BI wird im mittleren Bereich die Spalte **Dokument** angezeigt. ![Power BI Desktop – Abfrage-Editor](./media/documentdb-powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
+1. Im Abfrage-Editor von Power BI wird im mittleren Bereich die Spalte **Dokument** angezeigt.
+![Power BI Desktop – Abfrage-Editor](./media/documentdb-powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
 
 2. Klicken Sie auf das Erweiterungssteuerelement rechts in der Spaltenüberschrift **Dokument**. Das Kontextmenü mit einer Liste von Feldern wird angezeigt. Wählen Sie die Felder aus, die Sie für Ihren Bericht benötigen, z. B. „Volcano Name“, „Country“, „Region“, „Location“, „Elevation“, „Type“, „Status“ und „Last Know Eruption“. Klicken Sie dann auf **OK**.
 

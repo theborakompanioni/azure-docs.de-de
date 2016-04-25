@@ -44,7 +44,8 @@ Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, m
 
 1. Öffnen Sie die [Seite mit der kostenlosen Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/), und wählen Sie dann **Jetzt testen**.
 2. Melden Sie sich mit Ihrem Microsoft-Konto oder Schul-/Geschäftskonto an.
-3. Geben Sie im Abschnitt **Persönliche Informationen** Ihre persönlichen Informationen ein. ![Screenshot der persönlichen Informationen](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
+3. Geben Sie im Abschnitt **Persönliche Informationen** Ihre persönlichen Informationen ein.
+![Screenshot der persönlichen Informationen](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
 
  **Hinweis:** Die E-Mail-Adresse und das Land, die bzw. das Sie bei der Registrierung für ein Azure-Abonnement angeben, sind dem Abonnement immer zugeordnet und können später nicht mehr geändert werden.</br>
 4. Im Abschnitt **Überprüfung per Telefon** müssen Sie eine Telefonnummer angeben, um einen Überprüfungscode zu erhalten, den Sie beim Durchführen des Überprüfungsvorgangs eingeben können.

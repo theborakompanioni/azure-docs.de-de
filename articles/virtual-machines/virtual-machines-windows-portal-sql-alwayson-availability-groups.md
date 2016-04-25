@@ -76,8 +76,10 @@ Azure bietet ein Katalogimage für die gesamte Lösung. Um die Vorlage zu suchen
 
 1. 	Melden Sie sich mit Ihrem Konto beim Azure-Portal an.
 1.	Klicken Sie im Azure-Portal auf **+Neu**. Im Portal wird das Blatt „Neu“ geöffnet.
-1.	Suchen Sie auf dem Blatt „Neu“ die Option **AlwaysOn**. ![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-1.	Suchen Sie in den Suchergebnissen **SQL Server AlwaysOn-Cluster**. ![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+1.	Suchen Sie auf dem Blatt „Neu“ die Option **AlwaysOn**.
+![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
+1.	Suchen Sie in den Suchergebnissen **SQL Server AlwaysOn-Cluster**.
+![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 1.	Wählen Sie in **Bereitstellungsmodell auswählen** die Option **Ressourcen-Manager** aus.
 
 ### Grundlagen
@@ -243,7 +245,8 @@ Um eine RDP-Verbindung mit dem primären Domänencontroller herzustellen, gehen 
 
 1.	Klicken Sie auf dem Blatt **Ressourcen** auf **ad-primary-dc**, den Computernamen des virtuellen Computers für den primären Domänencontroller.
 
-1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**. ![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
+1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**.
+![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
 1.	Die **Remotedesktopverbindung** warnt Sie möglicherweise, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**.
 
 1.	Die Windows-Sicherheit fordert Sie auf, zur Verbindung mit der IP-Adresse des primären Domänencontrollers Ihre Anmeldeinformationen einzugeben. Klicken Sie auf **Anderes Konto verwenden**. Geben Sie für **Benutzername** **contoso\\DomainAdmin** ein. Dieses Konto haben Sie für den Administratorbenutzernamen ausgewählt. Verwenden Sie das komplexe Kennwort, das Sie beim Konfigurieren der Vorlage ausgewählt haben.

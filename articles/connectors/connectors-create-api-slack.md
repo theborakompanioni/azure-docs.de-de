@@ -52,13 +52,18 @@ Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfigur
 
 1. Wählen Sie **Wiederholung** aus.
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
-3. Wählen Sie **Aktion hinzufügen**. ![Slack konfigurieren][1]  
+3. Wählen Sie **Aktion hinzufügen**.
+![Slack konfigurieren][1]  
 4. Geben Sie in das Suchfeld „Slack“ ein, und warten Sie, bis die Suche alle Einträge mit Slack im Namen zurückgibt.
 5. Wählen Sie **Slack – Nachricht veröffentlichen** aus.
-6. Wählen Sie **Bei Slack anmelden**: ![Slack konfigurieren][2]
-7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren. ![Slack konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App: ![Slack konfigurieren][5] 
-9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu. ![Slack konfigurieren][6]
+6. Wählen Sie **Bei Slack anmelden**:
+![Slack konfigurieren][2]
+7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren.
+![Slack konfigurieren][3]  
+8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App:
+![Slack konfigurieren][5] 
+9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu.
+![Slack konfigurieren][6]
 10. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
 
 
