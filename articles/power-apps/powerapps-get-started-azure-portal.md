@@ -165,7 +165,8 @@ Um auf die App Service-Umgebung zuzugreifen, APIs, Verbindungen und andere Resso
 2. Wählen Sie in "Essentials" die Eigenschaft **Ressourcengruppe** aus. Daraufhin wird die Ressourcengruppe geöffnet, die die App Service-Umgebung enthält:
 ![][7]
 3. Wählen Sie das Symbol "RBAC" zum Verwalten von Berechtigungen:
-![][8] Das Hinzufügen von Benutzern und Zuweisen von Rollen erfolgt wie die [rollenbasierte Zugriffssteuerung](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/) innerhalb von Azure.
+![][8]
+Das Hinzufügen von Benutzern und Zuweisen von Rollen erfolgt wie die [rollenbasierte Zugriffssteuerung](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/) innerhalb von Azure.
 
 > [AZURE.NOTE] Sie können derzeit keine RBAC-Berechtigungen für die App Service-Umgebung zuweisen. Sie können RBAC-Berechtigungen auf der übergeordneten Ressourcengruppenebene zuweisen.
 
@@ -187,4 +188,4 @@ Ihr Unternehmen ist nun für PowerApps registriert und verfügt über eine App S
 [7]: ./media/powerapps-get-started-azure-portal/aseessentials.png
 [8]: ./media/powerapps-get-started-azure-portal/resourcegrouprbac.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->
