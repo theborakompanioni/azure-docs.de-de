@@ -1,12 +1,11 @@
 <properties
 	pageTitle="Azure App Service und seine Auswirkungen auf vorhandene Azure-Dienste"
 	description="Erläutert, wie sich der neue Azure App Service und seine Funktionen auf vorhandene Dienste in Azure auswirken."
-	authors="yochayk"
-	writer="yochayk"
-	editor="yochayk"
-	manager="nirma"
 	services="app-service"
-	documentationCenter=""/>
+    documentationCenter=""
+	authors="yochay"
+	manager="nirma"
+	editor=""/>
 
 <tags
 	ms.service="app-service"
@@ -92,4 +91,4 @@ In der folgenden Tabelle wird erläutert, wie vorhandene Azure-Dienste App Servi
 
 Weitere Informationen finden Sie in der[ App Service-Dokumentation](https://azure.microsoft.com/documentation/services/app-service/).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

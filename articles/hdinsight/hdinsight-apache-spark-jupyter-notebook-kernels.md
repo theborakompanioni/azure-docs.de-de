@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Verfügbare Kernel für Jupyter Notebooks in HDInsight Spark-Clustern unter Linux | Microsoft Azure" 
-	description="Hier erhalten Sie Informationen zu zusätzlichen Jupyter Notebook-Kerneln, die in Spark-Clustern unter HDInsight (Linux) zur Verfügung stehen." 
+	pageTitle="Verfügbare Kernel für Jupyter Notebooks in HDInsight Spark-Clustern unter Linux | Microsoft Azure" 
+	description="Hier erhalten Sie Informationen zu zusätzlichen Jupyter Notebook-Kerneln, die in Spark-Clustern unter HDInsight (Linux) zur Verfügung stehen." 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2016" 
+	ms.date="04/08/2016" 
 	ms.author="nitinme"/>
 
 
 # Verfügbare Kernels für Jupyter Notebooks mit Spark-Clustern unter HDInsight (Linux)
 
-Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Standardmäßig verfügt ein Jupyter Notebook über einen Kernel vom Typ **Python2**. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei zusätzliche Kernel, die Sie für das Jupyter Notebook verwenden können. Dies sind:
+Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Standardmäßig verfügt ein Jupyter Notebook über einen Kernel vom Typ **Python2**. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei zusätzliche Kernel, die Sie für das Jupyter Notebook verwenden können. Dies sind:
 
 1. **PySpark** (für in Python geschriebene Anwendungen)
 2. **Spark** (für in Scala geschriebene Anwendungen)
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie diese Kernel verwenden und welche Vortei
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
-- Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+- Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## Vorgehensweise zum Verwenden der Kernel 
 
@@ -54,11 +54,10 @@ Sie benötigen Folgendes:
 
 Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 
-1. **Voreingestellte Kontexte**. Bei Verwendung des standardmäßigen Kernels vom Typ **Python2**, der mit Jupyter-Notebooks verfügbar ist, müssen Sie die Spark-, SQL-, oder Hive-Kontexte festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Bei Verwendung der neuen Kernel (**PySpark** oder **Spark**) stehen Ihnen diese Kontexte dagegen standardmäßig zur Verfügung. Diese Kontexte sind:
+1. **Voreingestellte Kontexte**. Bei Verwendung des standardmäßigen Kernels vom Typ **Python2**, der mit Jupyter Notebooks verfügbar ist, müssen Sie die Spark- oder Hive-Kontexte festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Bei Verwendung der neuen Kernel (**PySpark** oder **Spark**) stehen Ihnen diese Kontexte dagegen standardmäßig zur Verfügung. Diese Kontexte sind:
 
 	* **sc** (Spark-Kontext)
-	* **sqlContext** (SQL-Kontext)
-	* **hiveContext** (Hive-Kontext)
+	* **sqlContext** – für Hive-Kontext
 
 
 	Sie müssen also keine Anweisungen wie die folgenden ausführen, um die Kontexte festzulegen:
@@ -67,12 +66,11 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 		# YOU DO NOT NEED TO RUN THIS WITH THE NEW KERNELS
 		###################################################
 		sc = SparkContext('yarn-client')
-		sqlContext = SQLContext(sc)
-		hiveContext = HiveContext(sc)
+		sqlContext = HiveContext(sc)
 
 	Stattdessen können Sie in Ihrer Anwendung direkt die vordefinierten Kontexte verwenden.
 	
-2. **Zellen-Magics**. Der PySpark-Kernel bietet einige vordefinierte „Magics“, spezielle Befehle, die Sie mit `%%` (z. B. `%%MAGIC` <args>) aufrufen können. Der Magic-Befehl muss das erste Wort in einer Codezelle sein und ermöglicht mehrere Inhaltszeilen. Das Magic-Wort sollte das erste Wort in der Zelle sein. Beliebige Hinzufügungen vor dem Magic, auch Kommentare, verursachen einen Fehler. Weitere Informationen zu Magics finden Sie [hier](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
+2. **Zellen-Magics**. Der PySpark-Kernel bietet einige vordefinierte „Magics“, spezielle Befehle, die Sie mit `%%` (z. B. `%%MAGIC` <args>) aufrufen können. Der Magic-Befehl muss das erste Wort in einer Codezelle sein und ermöglicht mehrere Inhaltszeilen. Das Magic-Wort sollte das erste Wort in der Zelle sein. Beliebige Hinzufügungen vor dem Magic, auch Kommentare, verursachen einen Fehler. Weitere Informationen zu Magics finden Sie [hier](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
 
 	In der folgenden Tabelle sind die verschiedenen über den Kernel verfügbaren Magics aufgeführt.
 
@@ -80,16 +78,39 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 	|-----------|---------------------------------|--------------|
 	| help | `%%help` | Generiert eine Tabelle mit allen verfügbaren Magics mit Beispiel und Beschreibung. |
 	| info | `%%info` | Gibt Sitzungsinformationen für den aktuellen Livy-Endpunkt heraus. |
-	| Konfigurieren | `%%configure -f {"executorMemory": "1000M", "executorCores": 4`} | Konfiguriert die Parameter für das Erstellen einer neuen Sitzung. Das Force-Flag (-f) ist obligatorisch, wenn bereits eine Sitzung erstellt wurde, und die Sitzung gelöscht und neu erstellt wird. Unter [„Request Body“ in „POST /sessions“ für Livy](https://github.com/cloudera/livy#request-body) finden Sie eine Liste der gültigen Parameter. Parameter müssen als JSON-Zeichenfolge übergeben werden. |
-	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | Führt eine SQL-Abfrage für sqlContext aus. Wenn der Parameter `-o` übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Datenrahmen beibehalten. |
-	| hive | `%%hive -o <variable name>`<br> `SHOW TABLES` | Führt eine Hive-Abfrage für hivelContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Datenrahmen beibehalten. |
+	| Konfigurieren | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | Konfiguriert die Parameter für das Erstellen einer neuen Sitzung. Das Force-Flag (-f) ist obligatorisch, wenn bereits eine Sitzung erstellt wurde, und die Sitzung gelöscht und neu erstellt wird. Unter [„Request Body“ in „POST /sessions“ für Livy](https://github.com/cloudera/livy#request-body) finden Sie eine Liste der gültigen Parameter. Parameter müssen als JSON-Zeichenfolge übergeben werden und in der nächsten Zeile nach dem Magic-Befehl stehen, wie in der Beispielspalte gezeigt. |
+	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter `-o` übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Datenrahmen beibehalten. |
 	| local | `%%local`<br>`a=1` | Der gesamte Code in den folgenden Zeilen wird lokal ausgeführt. Der Code muss gültiger Python-Code sein. |
 	| Protokolle | `%%logs` | Gibt die Protokolle für die aktuelle Livy-Sitzung aus. |
 	| delete | `%%delete -f -s <session number>` | Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Beachten Sie, dass Sie die Sitzung, die für den Kernel selbst initiiert wird, nicht löschen können. |
 	| cleanup | `%%cleanup -f` | Löscht alle Sitzungen für den aktuellen Livy-Endpunkt, einschließlich dieser Notebook-Sitzung. Das Force-Flag „-f“ ist obligatorisch |
 
-3. **Automatische Visualisierung**. Der **PySpark**-Kernel visualisiert automatisch die Ausgabe der Hive- und SQL-Abfragen. Sie können zwischen verschiedenen Arten von Visualisierungen wählen, inklusive Tabelle, Kreis-, Linie-, Flächen- und Balkendiagramm.
+3. **Automatische Visualisierung**. Der **Pyspark**-Kernel visualisiert automatisch die Ausgabe der Hive- und SQL-Abfragen. Sie können zwischen verschiedenen Arten von Visualisierungen wählen, inklusive Tabelle, Kreis-, Linie-, Flächen- und Balkendiagramm.
 
+## Mit %%sql-Magic unterstützte Parameter
+
+%% Sql-Magic unterstützt verschiedene Parameter, mit denen Sie steuern können, welche Art der Ausgabe Sie erhalten, wenn Sie Abfragen ausführen. In der folgenden Tabelle werden die Ausgaben aufgeführt.
+
+| Parameter | Beispiel | Beschreibung |
+|-----------|---------------------------------|--------------|
+| -o | `-o <VARIABLE NAME>` | Verwenden Sie diesen Parameter, um das Ergebnis der Abfrage, im %%local-Python-Kontext, als [Pandas](http://pandas.pydata.org/)-Datenrahmen, beizubehalten. Der Name der Datenrahmenvariablen ist der Variablenname, den Sie angeben. |
+| -q | `-q` | Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren möchten, sondern einfach als Datenrahmen erfassen, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen ausschalten möchten, ohne die Ergebnisse zu erfassen (z. B. für das Ausführen einer SQL-Abfrage mit Nebeneffekten, wie z. B. einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
+| -m | `-m <METHOD>` | Dabei ist **METHOD** entweder **take** oder **sample** (der Standardwert ist **take**). Wenn die Methode **take** ist, wählt der Kernel Elemente von der obersten Position des Resultdatasets gemäß MAXROWS (weiter unten in dieser Tabelle beschrieben). Wenn die Methode **sample** ist, wählt der Kernel nach dem Zufallsprinzip Elemente des Datasets gemäß des `-r`-Parameters, der in dieser Tabelle beschrieben wird. |
+| -r | `-r <FRACTION>` | Hier ist **FRACTION** eine Gleitkommazahl zwischen 0,0 und 1,0. Wenn die Beispielmethode für die SQL-Abfrage `sample` ist, dann wählt der Kernel nach dem Zufallsprinzip den angegebenen Bruchteil der Elemente des Resultsets für Sie aus. Wenn Sie z. B. eine SQL-Abfrage mit den Argumenten `-m sample -r 0.01` ausführen, wird 1 % der Ergebniszeilen nach dem Zufallsprinzip entnommen. |
+| -n | `-n <MAXROWS>` | **MAXROWS** ist ein Ganzzahlwert. Der Kernel schränkt die Anzahl der Ausgabezeilen auf **MAXROWS** ein. Wenn **MAXROWS** eine negative Zahl ist, z. B. **-1**, dann ist die Anzahl der Zeilen im Resultset nicht begrenzt. |
+
+**Beispiel:**
+
+	%%sql -q -m sample -r 0.1 -n 500 -o query2 
+	SELECT * FROM hivesampletable
+
+Die obige Anweisung führt Folgendes aus:
+
+* Wählt alle Datensätze aus **hivesampletable**.
+* Da wir -q verwenden, wird die automatische Visualisierung deaktiviert.
+* Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10 % der Zeilen in „hivesampletable“ ausgewählt und die Größe des Resultsets auf 500 Zeilen beschränkt.
+* Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Datenrahmen namens **query2** gespeichert.
+	
 
 ## Überlegungen bei der Verwendung der neuen Kernel
 
@@ -106,6 +127,22 @@ Wenn Sie ein Jupyter Notebook öffnen, sind auf der Stammebene zwei Ordner verf�
 * Der Ordner **Scala** enthält Beispiele für Notebooks, die den neuen Kernel vom Typ **Spark** verwenden.
 
 Sie können das Notebook **00 - [READ ME FIRST] Spark Magic Kernel Features** im Ordner **PySpark** oder **Spark** öffnen, um Informationen zu den verschiedenen verfügbaren Magics zu erhalten. Sie können auch anhand der anderen in den beiden Ordnern verfügbaren Beispiel-Notebooks erfahren, wie Sie verschiedene Szenarien der Verwendung von Jupyter-Notebooks mit HDInsight Spark-Clustern realisieren können.
+
+## Wo werden die Notebooks gespeichert?
+
+Jupyter Notebooks werden in dem Speicherkonto gespeichert, das mit dem Cluster unter dem Ordner **/HdiNotebooks** verknüpft ist. Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt von WASB aus. Wenn Sie z. B. Jupyter verwenden, um einen Ordner **myfolder** und ein Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie auf dieses Notebook unter `wasb:///HdiNotebooks/myfolder/mynotebook.ipynb` zugreifen. Das gilt auch umgekehrt, d. h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar. Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+
+Die Art, in der Notebooks im Speicherkonto gespeichert werden, ist mit HDFS kompatibel. Wenn Sie also eine SSH-Verbindung mit dem Cluster herstellen, können Sie Dateiverwaltungsbefehle wie die folgenden verwenden:
+
+	hdfs dfs -ls /HdiNotebooks             				  # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
+	hdfs dfs –copyToLocal /HdiNotebooks    				# Download the contents of the HdiNotebooks folder
+	hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
+
+
+Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster vorliegen, werden die Notebooks ebenfalls auf dem Hauptknoten gespeichert `/var/lib/jupyter`.
+
+## Unterstützte Browser
+Für HDInsight Spark-Cluster ausgeführte Jupyter Notebooks werden nur von Google Chrome unterstützt.
 
 ## Feedback
 
@@ -145,4 +182,4 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

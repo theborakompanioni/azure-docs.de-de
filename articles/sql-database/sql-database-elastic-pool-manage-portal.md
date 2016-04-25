@@ -4,15 +4,15 @@
 	keywords=""
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
+	authors="sidneyh"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
 	ms.date="04/01/2016"
-	ms.author="jeffreyg"
+	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -125,11 +125,10 @@ Elastische Aufträge ermöglichen die Ausführung von Transact-SQL-Skripts für 
 
 ## Zusätzliche Ressourcen
 
-- [Referenz für elastische Datenbanken](sql-database-elastic-pool-reference.md)
 - [Elastische SQL-Datenbankpools](sql-database-elastic-pool.md)
 - [Erstellen eines Pools für elastische Datenbanken mit dem Portal](sql-database-elastic-pool-create-csharp.md)
 - [Erstellen eines Pools für elastische Datenbanken mit PowerShell](sql-database-elastic-pool-create-powershell.md)
 - [Erstellen eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-create-csharp.md)
 - [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

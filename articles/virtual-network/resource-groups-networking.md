@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Übersicht über Anbieter von Netzwerkressourcen| Microsoft Azure"
    description="Erfahren Sie mehr über neue Anbieter von Netzwerkressourcen im Azure-Ressourcen-Manager."
    services="virtual-network"
@@ -6,7 +6,7 @@
    authors="telmosampaio"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -23,9 +23,9 @@ Azure Resource Manager stützt sich auf verschiedene Ressourcenanbieter, um den 
 - **Metadaten** – Sie können mithilfe von Tags Informationen hinzufügen. Diese Tags können verwendet werden, um die Ressourcenverwendung über Ressourcengruppen und Abonnements hinweg nachzuverfolgen.
 - **Bessere Kontrolle Ihres Netzwerks** - Netzwerkressourcen sind lose gekoppelt und Sie können sie granularer kontrollieren. Das bedeutet, dass Sie beim Verwalten der Netzwerkressourcen mehr Flexibilität haben.
 - **Schnellere Konfiguration** - Da die Netzwerkressourcen lose gekoppelt sind, können Sie Netzwerkressourcen parallel erstellen und orchestrieren. Das führt zu einer drastisch reduzierten Konfigurationszeit.
-- **Rollenbasierte Zugriffssteuerung** - Die rollenbasierte Zugriffssteuerung bietet neben der Möglichkeit, benutzerdefinierte Rollen für eine sichere Verwaltung zu erstellen, auch Standardrollen mit spezifischen Sicherheitsbereichen. 
+- **Rollenbasierte Zugriffssteuerung** - Die rollenbasierte Zugriffssteuerung bietet neben der Möglichkeit, benutzerdefinierte Rollen für eine sichere Verwaltung zu erstellen, auch Standardrollen mit spezifischen Sicherheitsbereichen.
 - **Leichteres Verwalten und Bereitstellen** - Anwendungen können leichter bereitgestellt und verwaltet werden, da Sie einen ganzen Anwendungsstapel als eine einzelne Ressourcensammlung in einer Ressourcengruppe erstellen können. Das Bereitstellen erfolgt schneller, da Sie hierfür lediglich eine Vorlage einer JSON-Nutzlast zur Verfügung stellen müssen.
-- **Schnelle Anpassung** - Sie können Vorlagen im deklarativen Stil verwenden, um eine wiederholbare und schnelle Anpassung von Bereitstellungen zu aktivieren. 
+- **Schnelle Anpassung** - Sie können Vorlagen im deklarativen Stil verwenden, um eine wiederholbare und schnelle Anpassung von Bereitstellungen zu aktivieren.
 - **Wiederholbare Anpassung** - Sie können Vorlagen im deklarativen Stil verwenden, um eine wiederholbare und schnelle Anpassung von Bereitstellungen zu aktivieren.
 - **Verwaltungsoberflächen** - Zum Verwalten der Ressourcen können Sie zwischen den folgenden Schnittstellen wählen:
 	- REST basierte API
@@ -37,7 +37,7 @@ Azure Resource Manager stützt sich auf verschiedene Ressourcenanbieter, um den 
 	- Vorschauportal
 	- ARM-Vorlagensprache
 
-## Netzwerkressourcen 
+## Netzwerkressourcen
 Die Verwaltung von Netzwerkressourcen kann nun unabhängig voneinander erfolgen, anstatt sie alle durch eine einzelne Computerressource (virtueller Computer) zu verwalten. Das stellt ein höheres Maß an Flexibilität und Agilität beim Verfassen einer komplexen und großmaßstäblichen Infrastruktur in einer Ressourcengruppe sicher.
 
 Eine konzeptionelle Ansicht einer Beispielbereitstellung mit einer Multi-Tier-Anwendung ist nachstehend dargestellt. Alle angezeigten Ressourcen wie Netzwerkkarten, öffentliche IP-Adressen und virtuelle Computer können unabhängig voneinander verwaltet werden.
@@ -77,7 +77,7 @@ Die spezifischen Eigenschaften der Ressourcen finden Sie in den folgenden Abschn
 ## Verwaltungsschnittstellen
 Azure-Netzwerkressourcen können über verschiedene Schnittstellen verwaltet werden. In diesem Dokument liegt der Schwerpunkt auf zwei dieser Schnittstellen: der REST-API und Vorlagen.
 
-### REST-API 
+### REST-API
 Wie zuvor erwähnt können Netzwerkressourcen über eine Vielzahl an Schnittstellen verwaltet werden, einschließlich REST API, .NET SDK, Node.JS SDK, Java SDK, PowerShell, CLI, Azure Portal und Vorlagen.
 
 Die Rest APIs entsprechen der HTTP 1.1 Protokollspezifikation. Die allgemeine URI-Struktur der API ist nachstehend dargestellt:
@@ -92,7 +92,7 @@ Die Parameter in Klammern stellen die folgenden Elemente dar:
 
 Die folgenden HTTP-Methoden werden bei Aufrufen der REST API unterstützt:
 
-- **PUT** - wird verwendet, um eine Ressource eines bestimmten Typs zu erstellen, eine Ressourceneigenschaft zu ändern oder eine Zuordnung zwischen Ressourcen zu ändern. 
+- **PUT** - wird verwendet, um eine Ressource eines bestimmten Typs zu erstellen, eine Ressourceneigenschaft zu ändern oder eine Zuordnung zwischen Ressourcen zu ändern.
 - **GET** - Wird verwendet, um Informationen für eine bereitgestellte Ressource zu ermitteln.
 - **DELETE** - Wird verwendet, um eine bestehende Ressource zu löschen.
 
@@ -138,7 +138,7 @@ Die Vorlage ist überwiegend eine JSON-Beschreibung der Ressourcen und die Insta
 	        "metadata" : {
 	          "Description" : "Address prefix"
 	        }
-	
+
 	      },
 	      "subnet1Name": {
 	        "type" : "string",
@@ -229,9 +229,9 @@ Bei Verwendung einer Vorlage besteht die Option, die Parameterwerte manuell bere
 
 Die Hauptvorteile des Verwenden von Vorlagen sind:
 
-- Sie können in einem deklarativen Stil eine komplexe Infrastruktur in einer Ressourcengruppe erstellen. Die Orchestrierung der Ressourcenerstellung, einschließlich der Verwaltung von Abhängigkeiten, wird von ARM bearbeitet. 
-- Die Infrastruktur kann auf wiederholbare Weise regionsübergreifend oder innerhalb einer Region erstellt werden, indem einfach die Parameter geändert werden. 
-- Der deklarative Stil führt zu einer kürzeren Durchlaufzeit beim Erstellen der Vorlagen und Einführen der Infrastruktur. 
+- Sie können in einem deklarativen Stil eine komplexe Infrastruktur in einer Ressourcengruppe erstellen. Die Orchestrierung der Ressourcenerstellung, einschließlich der Verwaltung von Abhängigkeiten, wird von ARM bearbeitet.
+- Die Infrastruktur kann auf wiederholbare Weise regionsübergreifend oder innerhalb einer Region erstellt werden, indem einfach die Parameter geändert werden.
+- Der deklarative Stil führt zu einer kürzeren Durchlaufzeit beim Erstellen der Vorlagen und Einführen der Infrastruktur.
 
 Beispielvorlagen finden Sie unter [Azure Schnellstart-Vorlagen](https://github.com/Azure/azure-quickstart-templates).
 
@@ -260,8 +260,8 @@ Sie können Dienste in Azure über eine Vorlage bereitstellen, indem Sie PowerSh
 
 [Azure-Netzwerk – Häufig verwendete Vorlagen](https://github.com/Azure/azure-quickstart-templates)
 
-[Anbieter von Computerressourcen](../virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
+[Anbieter von Computerressourcen](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)
 
 [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

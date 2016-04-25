@@ -24,7 +24,7 @@
 Viele der SaaS-Connectors (Software as a Service) wie Facebook, Twitter, DropBox usw. erfordern von den Benutzern eine Authentifizierung über das OAUTH-Protokoll. Wenn Sie diese SaaS-Connectors in Logik-Apps verwenden, bieten wir eine vereinfachte Benutzerfunktionalität, bei der Sie im Logik-Apps-Designer auf "Autorisieren" klicken. Beim **Autorisieren** werden Sie aufgefordert, sich anzumelden (sofern nicht bereits erfolgt) und Ihre Zustimmung zum Herstellen einer Verbindung mit dem SaaS-Dienst in Ihrem Namen zu geben. Nachdem Sie die Zustimmung und Autorisierung erteilen, können Ihre Logik-Apps anschließend auf diese SaaS-Dienste zugreifen.
 
 ## Erstellen Ihrer eigenen SaaS-App
-Diese vereinfachte Bedienung ist möglich, da wir unsere Anwendung zuvor in diesen Saas-Diensten erstellt und registriert haben. In bestimmten Fällen empfiehlt es sich, Ihre eigene Anwendung zu registrieren und zu verwenden. Dies ist z. B. erforderlich, wenn Sie diese SaaS-Connectors in Ihrer benutzerdefinierten Anwendung verwenden möchten, wie beispielsweise unter [Bereitstellen einer SaaS-Connector-API-App](../app-service-api/app-service-api-connnect-your-app-to-saas-connector.md). Bei diesem Beispiel wird der DropBox-Connector verwendet, doch der Prozess ist für alle Connectors identisch, die OAUTH nutzen.
+Diese vereinfachte Bedienung ist möglich, da wir unsere Anwendung zuvor in diesen Saas-Diensten erstellt und registriert haben. In bestimmten Fällen empfiehlt es sich, Ihre eigene Anwendung zu registrieren und zu verwenden. Dies ist z.B. erforderlich, wenn Sie diese SaaS-Connectors in Ihrer benutzerdefinierten Anwendung verwenden möchten. Bei diesem Beispiel wird der DropBox-Connector verwendet, doch der Prozess ist für alle Connectors identisch, die OAUTH nutzen.
 
 Auch im Kontext von Logik-Apps können Sie Ihre eigene Anwendung anstelle der Standardanwendung einsetzen, die wir bereitstellen. Wenn über die Schaltfläche "Autorisieren" keine Verbindung hergestellt werden kann, können Sie versuchen, eine eigene App zu erstellen. Im folgenden sind diese Schritte für den Twitter-Connector aufgeführt:
 
@@ -51,4 +51,4 @@ Jetzt sollten Sie den Connector in Logik-Apps verwenden können. Wenn Sie diesen
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

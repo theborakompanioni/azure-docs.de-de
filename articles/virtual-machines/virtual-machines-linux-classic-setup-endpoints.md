@@ -17,9 +17,9 @@
 	ms.date="01/06/2016"
 	ms.author="cynthn"/>
 
-# Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Linux-Computer in Azure
+# Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Computer in Azure
 
-Alle virtuellen Linux-Computer, die Sie mit dem klassischen Bereitstellungsmodell in Azure erstellen, können automatisch über einen privaten Netzwerkkanal mit anderen virtuellen Computern im gleichen Clouddienst oder virtuellen Netzwerk kommunizieren. Computer im Internet oder anderen virtuellen Netzwerken erfordern jedoch von den Endpunkten, dass sie den eingehenden Netzwerkdatenverkehr auf einen virtuellen Computer leiten. Informationen zu Endpunkten auf Windows-VMs finden Sie unter [Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Windows-Computer in Azure](virtual-machines-windows-classic-setup-endpoints.md).
+Alle virtuellen Linux-Computer, die Sie mit dem klassischen Bereitstellungsmodell in Azure erstellen, können automatisch über einen privaten Netzwerkkanal mit anderen virtuellen Computern im gleichen Clouddienst oder virtuellen Netzwerk kommunizieren. Computer im Internet oder anderen virtuellen Netzwerken erfordern jedoch von den Endpunkten, dass sie den eingehenden Netzwerkdatenverkehr auf einen virtuellen Computer leiten. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-classic-setup-endpoints.md) verfügbar.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
@@ -32,4 +32,4 @@ Wenn Sie einen virtuellen Linux-Computer im klassischen Azure-Portal erstellen, 
 
 * Sie können auch einen VM-Endpunkt erstellen, indem Sie die Azure-Befehlszeilenschnittstelle im [Dienstverwaltungsmodus](../virtual-machines-command-line-tools.md) verwenden. Führen Sie den Befehl **azure vm endpoint create** aus.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

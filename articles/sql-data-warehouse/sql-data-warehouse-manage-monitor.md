@@ -3,7 +3,7 @@
    description="Informationen zum Überwachen Ihres Workloads mit dynamischen Verwaltungssichten."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyama"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/29/2016"
+   ms.date="04/12/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # Überwachen Ihres Workloads mit dynamischen Verwaltungssichten
@@ -90,8 +90,8 @@ Speichern Sie den Schrittindex des lang dauernden Schritts.
 
 Überprüfen Sie die Spalte *operation\_type* des Schritts für die Abfrage mit langer Laufzeit:
 
-- Fahren Sie mit Schritt 4a für **SQL-Vorgänge** fort: OnOperation, RemoteOperation, ReturnOperation.
-- Fahren Sie mit Schritt 4b für **Datenverschiebungsvorgänge** fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+- Fahren Sie mit Schritt 4a für **SQL-Vorgänge** fort: OnOperation, RemoteOperation, ReturnOperation.
+- Fahren Sie mit Schritt 4b für **Datenverschiebungsvorgänge** fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### SCHRITT 4a: Bestimmen des Ausführungsstatus eines SQL-Schritts
 
@@ -132,6 +132,17 @@ WHERE request_id = 'QID33209' AND step_index = 2;
 - Überprüfen Sie die Spalte *total\_elapsed\_time*, um festzustellen, ob eine bestimmte Verteilung für das Verschieben von Daten erheblich länger als andere dauert.
 - Überprüfen Sie für die Verteilung mit langer Laufzeit die Spalte *rows\_processed*, um festzustellen, ob die Anzahl der Zeilen, die von dieser Verteilung verschoben werden, beträchtlich größer als bei den anderen ist. Falls ja, kann dies auf eine Ungleichmäßigkeit der zugrunde liegenden Daten hinweisen.
 
+Wird die Abfrage gerade ausgeführt, können Sie mit [DBCC PDW\_SHOWEXECUTIONPLAN][] den SQL Server-Ausführungsplan für den derzeit ausgeführten DMS-Schritt für eine bestimmte Verteilung abrufen.
+
+```sql
+-- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Replace distribution_id and spid with values from previous query.
+
+DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
+
+```
+
+
 ## Untersuchen der Datenschiefe
 
 Suchen Sie mithilfe von [DBCC PDW\_SHOWSPACEUSED][] den von einer Tabelle verwendeten Speicherplatz.
@@ -141,9 +152,9 @@ Suchen Sie mithilfe von [DBCC PDW\_SHOWSPACEUSED][] den von einer Tabelle verwen
 DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 ```
 
-Das Ergebnis dieser Abfrage zeigt Ihnen die Anzahl der Tabellenzeilen, die in jeder der 60 Verteilungen Ihrer Datenbank gespeichert sind. Für eine optimale Leistung sollten die Zeilen in der verteilten Tabelle gleichmäßig auf alle Verteilungen verteilt sein.
+Das Ergebnis dieser Abfrage zeigt Ihnen die Anzahl der Tabellenzeilen, die in jeder der 60 Verteilungen Ihrer Datenbank gespeichert sind. Für eine optimale Leistung sollten die Zeilen in der verteilten Tabelle gleichmäßig auf alle Verteilungen verteilt sein.
 
-Weitere Informationen finden Sie unter [Tabellenentwurf][].
+Weitere Informationen finden Sie unter [Manage data skew for distributed tables][] (Verwalten von Datenschiefe für verteilte Tabellen) oder [Tabellenentwurf][].
 
 ## Nächste Schritte
 Weitere Informationen zu Transact-SQL- und dynamischen Verwaltungssichten (DMVs) finden Sie unter [Referenzübersicht][]. Weitere Tipps zur Verwaltung von SQL Data Warehouse finden Sie unter [Verwaltungstools für SQL Data Warehouse][].
@@ -154,6 +165,9 @@ Weitere Informationen zu Transact-SQL- und dynamischen Verwaltungssichten (DMVs)
 [Verwaltungstools für SQL Data Warehouse]: sql-data-warehouse-overview-manage.md
 [Tabellenentwurf]: sql-data-warehouse-develop-table-design.md
 [Referenzübersicht]: sql-data-warehouse-overview-reference.md
+[manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
+
+<!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/library/mt203878.aspx
 [sys.dm\_pdw\_exec\_requests]: http://msdn.microsoft.com/library/mt203887.aspx
 [sys.dm\_pdw\_exec\_sessions]: http://msdn.microsoft.com/library/mt203883.aspx
@@ -162,6 +176,4 @@ Weitere Informationen zu Transact-SQL- und dynamischen Verwaltungssichten (DMVs)
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW\_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!--MSDN references-->
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

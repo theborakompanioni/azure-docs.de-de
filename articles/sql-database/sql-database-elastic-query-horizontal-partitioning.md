@@ -3,7 +3,7 @@
     description="Informationen zum Einrichten elastischer Abfragen horizontal partitionierter Datenbanken"    
     services="sql-database"
     documentationCenter=""  
-    manager="jeffreyg"
+    manager="jhubbard"
     authors="torsteng"/>
 
 <tags
@@ -192,31 +192,20 @@ Nachdem Sie die externe Datenquelle und die externen Tabellen definiert haben, k
 	where w_id > 100 and w_id < 200 
 	group by w_id, o_c_id 
  
-### 2\.2 Gespeicherte Prozedur SP\_EXECUTE\_FANOUT 
+### 2\.2 Gespeicherte Prozedur für T-SQL-Remoteausführung
 
-Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur heißt „sp\_execute\_fanout“ und verwendet die folgenden Parameter:
+Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur hat den Namen „sp\_execute\_remote“ und kann verwendet werden, um remote gespeicherte Prozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
+* Datenquellenname (nvarchar): Der Name der externen Datenquelle vom Typ RDBMS. 
+* Abfrage (nvarchar): Die T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird. 
+* Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im „Query“-Parameter verwendet werden (z. B. sp\_executesql). 
+* Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (z.B. sp\_executesql).
 
-* Servername (nvarchar): Vollqualifizierter Name des logischen Servers, auf dem die Shardzuordnung gehostet wird. 
-* Datenbankname der Shardzuordnung (nvarchar): Der Name der Shardzuordnungsdatenbank. 
-* Benutzername (nvarchar): Der Benutzername für die Anmeldung bei der Shardzuordnungsdatenbank. 
-* Kennwort (nvarchar): Das Kennwort des Benutzers. 
-* Shardzuordnungsname (nvarchar): Der Name der Shardzuordnung für die Abfrage. Der Name befindet sich in der Tabelle „\_ShardManagement.ShardMapsGlobal“ – dies ist der Standardname, der verwendet wird, wenn Datenbanken mit der Beispiel-App in [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) erstellt werden. Der in der App gefundene Standardname ist „CustomerIDShardMap“.
-*  Abfrage: Die T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird. 
-*  Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im „Query“-Parameter verwendet werden (z. B. sp\_executesql). 
-*  Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (z. B. sp\_executesql).  
-
-„sp\_execute\_fanout“ verwendet die in den Aufrufparametern angegebenen Shardzuordnungsinformationen, um die gegebene T-SQL-Anweisung für alle in der Shardzuordnung registrierten Shards auszuführen. Alle Ergebnisse werden mithilfe von UNION ALL-Semantik zusammengeführt. Das Ergebnis enthält auch die zusätzliche Spalte „virtual“ mit dem Shardnamen.
-
-Beachten Sie, dass die gleichen Anmeldeinformationen für die Verbindung mit der Shard-Zuordnungsdatenbank und den Shards verwendet werden.
+Für „sp\_execute\_remote“ wird die externe Datenquelle verwendet, die in den Aufrufparametern angegeben ist, um die jeweilige T-SQL-Anweisung in den Remotedatenbanken auszuführen. Die Anmeldeinformationen der externen Datenquelle werden verwendet, um die Verbindung mit der ShardMapManager-Datenbank und den Remotedatenbanken herzustellen.
 
 Beispiel:
 
-	sp_execute_fanout 
-		N'myserver.database.windows.net', 
-		N'ShardMapDb', 
-		N'myuser', 
-		N'MyPwd', 
-		N'ShardMap', 
+	EXEC sp_execute_remote
+		N'MyExtSrc',
 		N'select count(w_id) as foo from warehouse' 
 
 ## Konnektivität für Tools  
@@ -241,4 +230,4 @@ Verwenden Sie herkömmliche SQL Server-Verbindungszeichenfolgen, um Ihre Anwendu
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

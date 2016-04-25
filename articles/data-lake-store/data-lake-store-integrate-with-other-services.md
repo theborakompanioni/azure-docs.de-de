@@ -2,7 +2,7 @@
    pageTitle="Integrieren von Data Lake-Speicher in andere Azure-Dienste | Azure"
    description="Erfahren Sie, wie Sie Data Lake-Speicher in andere Azure-Dienste integrieren."
    documentationCenter=""
-   services="data-lake-store" 
+   services="data-lake-store"
    authors="nitinme"
    manager="paulettm"
    editor="cgronlun"/>
@@ -32,16 +32,16 @@ Anleitungen zum Bereitstellen eines HDInsight-Clusters mit Data Lake-Speicher fi
 
 ## Verwenden von Data Lake-Speicher mit Azure Data Lake Analytics
 
-[Azure Data Lake Analytics](data-lake-analytics/data-lake-analytics-overview.md) ermöglicht das Arbeiten mit Big Data in der Cloud. Es stellt Ressourcen dynamisch bereit und ermöglicht Ihnen die Durchführung von Analysen von Terabytes oder sogar Exabytes an Daten, die in einer Reihe von unterstützten Datenquellen gespeichert sein können, auch in Data Lake-Speicher. Data Lake-Analytics ist speziell für die Arbeit mit Azure Data Lake-Speicher optimiert – so erzielen Sie Höchstwerte bei Leistung, Durchsatz und Parallelisierung bei Big Data-Workloads.
+[Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) ermöglicht das Arbeiten mit Big Data in der Cloud. Es stellt Ressourcen dynamisch bereit und ermöglicht Ihnen die Durchführung von Analysen von Terabytes oder sogar Exabytes an Daten, die in einer Reihe von unterstützten Datenquellen gespeichert sein können, auch in Data Lake-Speicher. Data Lake-Analytics ist speziell für die Arbeit mit Azure Data Lake-Speicher optimiert – so erzielen Sie Höchstwerte bei Leistung, Durchsatz und Parallelisierung bei Big Data-Workloads.
 
-Anleitung zum Verwenden von Data Lake Analytics mit Data Lake-Speicher finden Sie unter [Erste Schritte mit Data Lake Analytics unter Verwendung von Data Lake-Speicher](data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Anleitung zum Verwenden von Data Lake Analytics mit Data Lake-Speicher finden Sie unter [Erste Schritte mit Data Lake Analytics unter Verwendung von Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
 
 ## Verwenden von Data Lake-Speicher mit Azure Data Factory
 
 Sie können [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) zum Erfassen von Daten aus Azure-Tabellen, Azure SQL-Datenbank, Azure SQL Data Warehouse, Azure Storage-Blobs und lokalen Datenbanken verwenden. Als wichtige Komponente im Azure-Ökosystem kann Azure Data Factory auch zum Orchestrieren der Erfassung von Daten aus diesen Quelle in Azure Data Lake-Speicher verwendet werden.
 
-Anleitungen zum Verwenden von Azure Data Factory mit Data Lake-Speicher finden Sie unter [Verschieben von Daten in und aus Data Lake-Speicher mit Data Factory](data-factory/data-factory-azure-datalake-connector.md).
+Anleitungen zum Verwenden von Azure Data Factory mit Data Lake-Speicher finden Sie unter [Verschieben von Daten in und aus Data Lake-Speicher mit Data Factory](../data-factory/data-factory-azure-datalake-connector.md).
 
 ## Kopieren von Daten aus Azure Storage-Blobs in den Data Lake-Speicher
 
@@ -54,4 +54,4 @@ Azure Data Lake-Speicher bietet ein Befehlszeilentool namens AdlCopy, mit dem Si
 - [Erste Schritte mit Data Lake-Speicher mithilfe des Portals](data-lake-store-get-started-portal.md)
 - [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0413_2016-->

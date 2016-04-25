@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -35,9 +35,7 @@ Die folgenden Tabellen zeigen, welche Dienste Bereitstellung und Verwaltung übe
 | Dynamics Lifecycle Services | Ja | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (Vorschau) | Ja | [Service Fabric REST](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
 | Virtual Machines | Ja | [VM REST](https://msdn.microsoft.com/library/azure/mt163647.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) | [Microsoft.Compute](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Compute%22&type=Code) |
-| Virtual Machines (klassisch) | Eingeschränkt | - | - |
-| Remote App | Nein | - | - |
-| Cloud Services (klassisch) | Eingeschränkt (siehe unten) | - | - | - |
+| Virtual Machines (klassisch) | Eingeschränkt | - | - | | Remote App | Nein | - | - | | Cloud Services (klassisch) | Eingeschränkt (siehe unten) | - | - | - |
 
 "Virtuelle Computer (klassisch)" bezieht sich auf Ressourcen, die über das klassische Bereitstellungsmodell statt über das Ressourcen-Manager-Bereitstellungsmodell bereitgestellt wurden. Im Allgemeinen unterstützen diese Ressourcen keine Ressourcen-Manager-Vorgänge, es wurden jedoch einige Vorgänge aktiviert. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](resource-manager-deployment-model.md).
 
@@ -90,8 +88,7 @@ Cloud Services (klassisch) kann mit anderen klassischen Ressourcen verwendet wer
 | Data Lake-Speicher | Ja | | | |
 | HDInsights | Ja | [HDInsights REST](https://msdn.microsoft.com/library/azure/mt622197.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
 | Stream Analytics | Ja | [Stream Analytics REST](https://msdn.microsoft.com/library/azure/dn835031.aspx) | | [Microsoft.StreamAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.StreamAnalytics%22&type=Code) |
-| Machine Learning | Nein | - | - |
-| Data Catalog | Nein | - | - |
+| Machine Learning | Nein | - | - | | Data Catalog | Nein | - | - |
 
 ## Internet der Dinge
 
@@ -115,8 +112,7 @@ Cloud Services (klassisch) kann mit anderen klassischen Ressourcen verwendet wer
 | ------- | ------- | -------- | ------ | ------ |
 | BizTalk Services | Ja | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) | [Microsoft.BizTalkServices](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.BizTalkServices%22&type=Code) |
 | Service Bus | Ja | | | [Microsoft.ServiceBus](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceBus%22&type=Code) |
-| Backup | Nein | - | - |
-| Site Recovery | Nein | - | - |
+| Backup | Nein | - | - | | Site Recovery | Nein | - | - |
 
 ## Identitäts- und Zugriffsverwaltung 
 
@@ -163,7 +159,7 @@ Verwenden Sie zum Abrufen aller verfügbaren Ressourcenanbieter, einschließlich
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie alle verfügbaren Ressourcenanbieter abrufen.
 
-    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+    Get-AzureRmResourceProvider -ListAvailable
     
 Die Ausgabe ähnelt der folgenden:
 
@@ -175,7 +171,7 @@ Die Ausgabe ähnelt der folgenden:
 
 Im nächsten Beispiel wird gezeigt, wie die Ressourcentypen für einen bestimmten Ressourcenanbieter abgerufen werden.
 
-    PS C:\> (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
+    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
     
 Die Ausgabe ähnelt der folgenden:
 
@@ -187,7 +183,7 @@ Die Ausgabe ähnelt der folgenden:
     
 Geben Sie zum Registrieren eines Ressourcenanbieters den Namespace an:
 
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
 
 ### Azure-Befehlszeilenschnittstelle
 
@@ -228,7 +224,7 @@ Verwenden Sie für die Ermittlung der verfügbaren Regionen für einen bestimmte
 
 Das folgende Beispiel zeigt, wie Sie die unterstützten Regionen für Websites abrufen.
 
-    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
     
 Die Ausgabe ähnelt der folgenden:
 
@@ -304,4 +300,4 @@ Sie können die Datei öffnen und nach dem Element **apiVersions** suchen.
 - Weitere Informationen zum Erstellen von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 - Informationen zum Bereitstellen von Vorlagen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

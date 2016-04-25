@@ -21,13 +21,13 @@ ms.author="deonhe"/>
 
 Verbinden Sie sich mit Yammer, um auf Konversationen in Ihrem Unternehmensnetzwerk zuzugreifen.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“. Um die Schemaversion „2014-12-01-preview“ aufzurufen, klicken Sie auf [Yammer](../app-service-logic/app-service-logic-connector-yammer.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Yammer ermöglicht Folgendes:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Yammer abgerufen werden. 
 - Verwenden von Triggern, wenn es eine neue Nachricht in einer Gruppe oder in einem Feed gibt, dem Sie folgen.
-- Verwenden Sie Aktionen, um z. : eine Nachricht senden oder alle Nachrichten abzurufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn z. B. eine neue Nachricht vorhanden ist, können Sie über Office 365 eine E-Mail senden.
+- Verwenden Sie Aktionen, um z. : eine Nachricht senden oder alle Nachrichten abzurufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn z. B. eine neue Nachricht vorhanden ist, können Sie über Office 365 eine E-Mail senden.
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -49,7 +49,7 @@ Um die Yammer-API zu verwenden, stellen Sie zunächst eine **Verbindung** her un
 
 Führen Sie folgende Schritte aus, um sich bei Yammer anzumelden und die Konfiguration der Yammer-**Verbindung** in Ihrer Logik-App abzuschließen:
 
-1. Wählen Sie **Wiederholung** aus.
+1. Wählen Sie **Wiederholung**.
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
 3. Wählen Sie **Aktion hinzufügen**. ![Yammer konfigurieren][1]
 4. Geben Sie in das Suchfeld „Yammer“ ein, und warten Sie, bis die Suche alle Einträge mit „Yammer“ im Namen zurückgibt.
@@ -72,7 +72,7 @@ Entspricht „allen“ Konversationen auf der Yammer-Weboberfläche. ```GET: /me
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|older\_than|integer|no|query|(Keine)|Gibt Nachrichten, die älter als die Nachrichten-ID sind, als numerische Zeichenfolge zurück. Dies ist nützlich zum Aufteilen von Nachrichten auf Seiten. Wenn Sie beispielsweise gerade 20 Nachrichten anzeigen und die älteste die Nummer 2912 hat, können Sie „?older\_than=2912“ an Ihre Anforderung anfügen, um die 20 Nachrichten abzurufen, die vor den aktuell angezeigten liegen.|
+|older\_than|integer|no|query|(Keine)|Gibt Nachrichten, die älter als die Nachrichten-ID sind, als numerische Zeichenfolge zurück. Dies ist nützlich zum Aufteilen von Nachrichten auf Seiten. Wenn Sie beispielsweise gerade 20 Nachrichten anzeigen und die älteste die Nummer 2912 hat, können Sie „?older\_than=2912“ an Ihre Anforderung anfügen, um die 20 Nachrichten abzurufen, die vor den aktuell angezeigten liegen.|
 |newer\_than|integer|no|query|(Keine)|Gibt Nachrichten, die neuer als die Nachrichten-ID sind, als numerische Zeichenfolge zurück. Dies ist für Abfragen auf neue Nachrichten nützlich. Wenn Sie Nachrichten suchen und die neueste zurückgegebene Nachricht die Nummer 3516 hat, können Sie eine Anforderung mit dem Parameter „newer\_than=3516“ stellen. Dadurch stellen Sie sicher, dass Sie keine Duplikate von Nachrichten erhalten, die sich bereits auf der Seite befinden.|
 |limit|integer|no|query|(Keine)|Gibt nur die angegebene Anzahl von Nachrichten zurück.|
 |page|integer|no|query|(Keine)|Ruft die angegebene Seite ab. Wenn die zurückgegeben Daten größer als dieser Grenzwert sind, können Sie dieses Feld für den Zugriff auf nachfolgende Seiten nutzen.|
@@ -93,7 +93,7 @@ Entspricht „allen“ Konversationen auf der Yammer-Weboberfläche. ```GET: /me
 
 
 ### Eine Nachricht an eine Gruppe oder den Unternehmensfeed „Alle“ senden
-Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe, andernfalls an den Unternehmensfeed „Alle“ gesendet. ```POST: /messages.json```
+Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe, andernfalls an den Feed für das gesamte Unternehmen gesendet. ```POST: /messages.json```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -198,7 +198,7 @@ Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe,
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 [1]: ./media/connectors-create-api-yammer/connectionconfig1.png
 [2]: ./media/connectors-create-api-yammer/connectionconfig2.png
@@ -206,4 +206,4 @@ Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe,
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

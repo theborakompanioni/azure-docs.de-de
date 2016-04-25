@@ -14,39 +14,31 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/29/2015"
+	ms.date="04/08/2015"
 	ms.author="danlep"/>
 
 # Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure Befehlszeilenschnittstelle (Azure-CLI)
 
-Die Azure-Befehlszeilenschnittstelle beinhaltet eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure Platform. Dieser Artikel beschreibt, wie Sie mit der Azure-Befehlszeilenschnittstelle eine Verbindung mit Ihrem Azure-Abonnement herstellen, damit Sie alle Befehle der Befehlszeilenschnittstelle nutzen können. Wenn Sie die Befehlszeilenschnittstelle noch nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md).
-
-
+Die Azure-Befehlszeilenschnittstelle beinhaltet eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure Platform. Dieser Artikel beschreibt Möglichkeiten, die Anmeldeinformationen für Ihr Azure-Konto anzugeben, um eine Verbindung der Azure-Befehlszeilenschnittstelle mit Ihrem Azure-Abonnement herzustellen. Wenn Sie die Befehlszeilenschnittstelle noch nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md). Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/free/) erstellen.
 
 Es gibt zwei Möglichkeiten, über die Azure-Befehlszeilenschnittstelle eine Verbindung mit Ihrem Abonnement herzustellen:
 
-* **Anmelden bei Azure mit einem Geschäfts- oder Schulkonto oder mit einer Microsoft-Kontoidentität**: Hierbei werden beide Kontoidentitätstypen zur Authentifizierung verwendet. Die aktuelle Befehlszeilenschnittstelle unterstützt auch die interaktive Authentifizierung für Konten, für die die mehrstufige Authentifizierung aktiviert ist. Nach der interaktiven Anmeldung können Sie entweder Ressourcen-Manager-Befehle oder klassische Befehle (über die Dienstverwaltung) verwenden.
+* **Anmelden bei Azure mit einem Geschäfts- oder Schulkonto oder mit einer Microsoft-Kontoidentität**: Verwenden Sie den Befehl `azure login` der Befehlszeilenschnittstelle, Version 0.9.10 und höher, mit diesen Kontoidentitäten, um sich über Azure Active Directory zu authentifizieren. Die Befehlszeilenschnittstelle (Version 0.9.9 und höher) unterstützt die interaktive Authentifizierung über ein Webportal für Konten, für die Multi-Factor Authentication aktiviert ist. Verwenden Sie den Befehl `azure login` auch, um einen Dienstprinzipal für eine Azure Active Directory-Anwendung zu authentifizieren. Dies ist zum Ausführen automatisierter Dienste nützlich. Nachdem Sie sich mit einer unterstützten Kontoidentität angemeldet haben, können Sie Befehle des Azure Resource Manager-Modus oder des Azure Service Management-Modus verwenden.
 
-* **Herunterladen und Verwenden einer Datei mit Veröffentlichungseinstellungen**: Hiermit wird ein Zertifikat auf dem lokalen Computer installiert, mit dem Sie Verwaltungsaufgaben ausführen können, solange das Abonnement und das Zertifikat gültig sind. Bei dieser Methode können Sie nur klassische Befehle (über die Dienstverwaltung) verwenden.
+* **Herunterladen und Verwenden einer Datei mit Veröffentlichungseinstellungen**: Hiermit wird ein Zertifikat auf dem lokalen Computer installiert, mit dem Sie Verwaltungsaufgaben ausführen können, solange das Abonnement und das Zertifikat gültig sind. Bei dieser Methode können Sie nur Befehle des Azure Service Management-Modus verwenden.
 
-Weitere Informationen zur Authentifizierung und Abonnementverwaltung finden Sie unter [Was ist der Unterschied zwischen kontobasierter Authentifizierung und zertifikatbasierter Authentifizierung][authandsub].
+>[AZURE.NOTE] Bei Verwendung einer älteren Version der Azure-Befehlszeilenschnittstelle als 0.9.10 können Sie den Befehl `azure login` nur mit Geschäfts- oder Schulkonten verwenden, Microsoft-Kontoidentitäten werden dagegen nicht unterstützt. Wenn Sie möchten, können Sie jedoch [eine Geschäfts- oder Schul-ID über Ihre Microsoft-Konto-ID erstellen](virtual-machines/virtual-machines-windows-create-aad-work-id.md).
 
-Wenn Sie noch kein Azure-Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][free-trial].
+Hintergrundinformationen zu anderen Kontoidentitäten und zu Azure-Abonnements finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
 
->[AZURE.NOTE] Bei Verwendung einer älteren Version der Azure-Befehlszeilenschnittstelle als 0.9.10 können Sie den Befehl `azure login` nur mit Geschäfts- oder Schulkontoidentitäten verwenden, Microsoft-Kontoidentitäten werden dagegen nicht unterstützt. Mit der Azure-Befehlszeilenschnittstelle ab Version 0.9.10 können Sie sich jedoch mit dem interaktiven Befehl `azure login` mit jeder Identität bei Ihrem Konto anmelden.
->
-Befehlszeilenschnittstellen ab Version 0.9.9 unterstützen die mehrstufige Authentifizierung.
-
-
-
-## Verwenden der interaktiven Anmeldemethode
+## Verwenden von „azure login“ für die interaktive Authentifizierung über ein Webportal
 
 Verwenden Sie den Befehl `azure login` – ohne Argumente – für die interaktive Authentifizierung mit:
 
-- einer Geschäfts- oder Schulkontoidentität, für die die Multi-Factor Authentication erforderlich ist, oder
-- einer Microsoft-Kontoidentität, wenn Sie auf die Funktionen des Ressourcen-Manager-Bereitstellungsmodus zugreifen möchten
+- einer Geschäfts- oder Schulkontoidentität (wird auch als *Organisationskonto* bezeichnet), für die Multi-Factor Authentication erforderlich ist, oder
+- einer Microsoft-Kontoidentität, wenn Sie auf Befehle des Resource Manager-Modus zugreifen möchten
 
-> [AZURE.NOTE]  In beiden Fällen werden Authentifizierung und Autorisierung mit Azure Active Directory durchgeführt. Wenn Sie eine Microsoft-Kontoidentität verwenden, greift der Anmeldeprozess auf Ihre Azure Active Directory-Standarddomäne zu. (Wenn Sie sich für eine kostenlose Testversion registriert haben, ist Ihnen möglicherweise nicht bewusst, dass Azure Active Directory eine Standarddomäne für Ihr Konto erstellt hat.)
+> [AZURE.NOTE]  In beiden Fällen werden Authentifizierung und Autorisierung mit Azure Active Directory durchgeführt. Wenn Sie eine Microsoft-Kontoidentität verwenden, greift der Anmeldeprozess auf Ihre Azure Active Directory-Standarddomäne zu. (Wenn Sie sich für ein kostenloses Azure-Konto registriert haben, ist Ihnen möglicherweise nicht bewusst, dass Azure Active Directory eine Standarddomäne für Ihr Konto erstellt hat.)
 
 Geben Sie `azure login` ein, und befolgen Sie die unten gezeigten Anweisungen:
 
@@ -62,10 +54,10 @@ Kopieren Sie den oben angegebenen Code, und öffnen Sie einen Browser für http:
 	+
 	info:    login command OK
 
-## Verwenden der nicht interaktiven Anmeldemethode mit einem Geschäfts- oder Schulkonto
+## Verwenden von „azure login“ mit dem Benutzernamen und dem Kennwort eines Organisationskontos
 
 
-Die nicht interaktive Anmeldemethode funktioniert nur mit einem Geschäfts- oder Schulkonto (auch *Organisationskonto* genannt). Dieses Konto wird von der Organisation verwaltet und ist im Azure Active Directory der Organisation definiert. Sie können [ein Organisationskonto erstellen](#create-an-organizational-account), wenn Sie noch nicht über eines verfügen, oder Sie können [eine Arbeits- oder Schulidentität über Ihre Microsoft-Kontoidentität erstellen](./virtual-machines/virtual-machines-windows-create-aad-work-id.md). Hierzu müssen Sie entweder einen Benutzernamen oder einen Benutzernamen und ein Kennwort für den Befehl `azure login` angeben, beispielsweise:
+Verwenden Sie den Befehl `azure login` mit einem Parameter für den Benutzernamen oder mit einem Benutzernamen und einem Kennwort für die Authentifizierung, wenn Sie ein Geschäfts-oder Schulkonto verwenden möchten, für das Multi-Factor Authentication nicht erforderlich ist. Im folgenden Beispiel wird der Benutzername eines Organisationskontos übergeben:
 
 	azure login -u ahmet@contoso.onmicrosoft.com
 	info:    Executing command login
@@ -76,34 +68,33 @@ Die nicht interaktive Anmeldemethode funktioniert nur mit einem Geschäfts- oder
 
 Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
 
-	If this is your first time logging in with these credentials, you are asked to verify that you wish to cache an authentication token. This prompt also occurs if you have previously used the `azure logout` command (described below). To bypass this prompt for automation scenarios, run `azure login` with the `-q` parameter.
+Wenn Sie sich das erste Mal mit diesen Anmeldeinformationen anmelden, werden Sie dazu aufgefordert zu bestätigen, dass ein Authentifizierungstoken im Cache gespeichert werden soll. Diese Eingabeaufforderung wird auch angezeigt, wenn Sie zuvor den Befehl `azure logout` verwendet haben (der weiter unten in diesem Artikel beschrieben wird). Um diese Eingabeaufforderung in Automatisierungsszenarien zu umgehen, führen Sie `azure login` mit dem `-q`-Parameter aus.
 
-* Verwenden Sie den folgenden Befehl, um sich **abzumelden**:
+   
 
-		azure logout -u <username>
+## Verwenden von „azure login“ mit einem Dienstprinzipal
 
-	Wenn die mit dem Konto verknüpften Abonnements nur über Active Directory authentifiziert wurden, werden bei der Abmeldung die Abonnementinformationen aus dem lokalen Profil gelöscht. Wenn jedoch auch eine Datei mit Veröffentlichungseinstellungen für die Abonnements importiert wurde, dann werden durch die Abmeldung nur die auf Active Directory bezogenen Informationen aus dem lokalen Profil gelöscht.
+Wenn Sie einen Dienstprinzipal für eine Active Directory-Anwendung erstellt haben und der Dienstprinzipal über Berechtigungen für Ihr Abonnement verfügt, können Sie den Befehl `azure login` verwenden, um den Dienstprinzipal zu authentifizieren. Je nach Szenario könnten Sie die Anmeldeinformationen des Dienstprinzipals als explizite Parameter des Befehls `azure login` oder über ein Skript der Befehlszeilenschnittstelle bzw. über Anwendungscode angeben. Sie können auch ein Zertifikat verwenden, um den Dienstprinzipal in Automatisierungsszenarien nicht interaktiv zu authentifizieren. Details und Beispiele finden Sie unter [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](resource-group-authenticate-service-principal.md).
 
 ## Verwenden der Methode mit der Veröffentlichungseinstellungendatei
 
-Wenn Sie nur die klassischen Befehle der Befehlszeilenschnittstelle (über die Dienstverwaltung) benötigen, können Sie die Verbindung mithilfe einer Datei mit Veröffentlichungseinstellungen herstellen.
+Wenn Sie nur die Befehle der Befehlszeilenschnittstelle im Azure Service Management-Modus benötigen, können Sie die Verbindung mithilfe einer Datei mit Veröffentlichungseinstellungen herstellen.
 
-* Mit dem folgenden Befehl können Sie die **Veröffentlichungseinstellungen für Ihr Konto herunterladen**:
+* Mit dem folgenden Befehl können Sie die **Datei mit Veröffentlichungseinstellungen für Ihr Konto herunterladen** (nur im Service Management-Modus verfügbar):
 
 		azure account download
 
-Ihr Standardbrowser wird geöffnet, und Sie werden aufgefordert, sich beim [klassischen Azure-Portal][portal] anzumelden. Nach der Anmeldung wird eine `.publishsettings`-Datei heruntergeladen. Notieren Sie sich den Speicherort der Datei.
+    Ihr Standardbrowser wird geöffnet, und Sie werden aufgefordert, sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) anzumelden. Nach der Anmeldung wird eine `.publishsettings`-Datei heruntergeladen. Notieren Sie sich den Speicherort der Datei.
 
-> [AZURE.NOTE] Wenn Ihr Konto mit mehreren Azure Active Directory-Mandanten verknüpft ist, werden Sie möglicherweise aufgefordert, das Active Directory auszuwählen, für das eine Datei mit Veröffentlichungseinstellungen heruntergeladen werden soll.
->
-> Die Active Directory-Instanz, die Sie auf der Downloadseite oder im klassischen Azure-Portal ausgewählt haben, wird zur Standardinstanz, die vom klassischen Portal und der Downloadseite verwendet wird. Nachdem eine Standardeinstellung festgelegt wurde, wird am oberen Rand der Downloadseite der Text '__click here to return to the selection page__' (Klicken Sie hier, um zur Auswahlseite zurückzukehren) angezeigt. Klicken Sie auf den bereitgestellten Link, um zur Auswahlseite zurückzukehren.
+    > [AZURE.NOTE] Wenn Ihr Konto mit mehreren Azure Active Directory-Mandanten verknüpft ist, werden Sie möglicherweise aufgefordert, das Active Directory auszuwählen, für das eine Datei mit Veröffentlichungseinstellungen heruntergeladen werden soll.
+
+    Die Active Directory-Instanz, die Sie auf der Downloadseite oder im klassischen Azure-Portal ausgewählt haben, wird zur Standardinstanz, die vom klassischen Portal und der Downloadseite verwendet wird. Nachdem eine Standardeinstellung festgelegt wurde, wird am oberen Rand der Downloadseite der Text '__click here to return to the selection page__' (Klicken Sie hier, um zur Auswahlseite zurückzukehren) angezeigt. Klicken Sie auf den bereitgestellten Link, um zur Auswahlseite zurückzukehren.
 
 * Führen Sie den folgenden Befehl aus, um die **Datei mit den Veröffentlichungseinstellungen zu importieren**:
 
 		azure account import <path to your .publishsettings file>
 
-	Nach dem Importieren der Veröffentlichungseinstellungen, sollten Sie die Datei `.publishsettings` löschen, denn diese wird nicht mehr für die Azure-CLI benötigt und stellt ein Sicherheitsrisiko dar, da sie für den Zugriff auf Ihr Abonnement verwendet werden kann.
-
+	>[AZURE.IMPORTANT]Nachdem Sie Ihre Veröffentlichungseinstellungen importiert haben, sollten Sie die `.publishsettings`-Datei löschen. Sie wird nicht mehr für die Azure-Befehlszeilenschnittstelle benötigt und stellt ein Sicherheitsrisiko dar, da sie für den Zugriff auf Ihr Abonnement verwendet werden kann.
 
 ## Mehrere Abonnements
 
@@ -125,35 +116,41 @@ Damit wird das Standardabonnement in "Azure-sub-2" geändert.
 
 Wenn Sie in der Azure-Befehlszeilenschnittstelle ein anderes Abonnement als das Standardabonnement verwenden, aber das aktuelle Standardabonnement nicht ändern möchten, können Sie die Option `--subscription` und den Namen des Abonnements angeben, das Sie für den Vorgang verwenden möchten.
 
-Nachdem Sie mit Ihrem Azure-Abonnement verbunden sind, können Sie beginnen, die Befehle der Azure-Befehlszeilenschnittstelle zu verwenden.
+Sobald Sie mit Ihrem Azure-Abonnement verbunden sind, können Sie beginnen, die Befehle der Azure-Befehlszeilenschnittstelle zu verwenden, um mit Azure-Ressourcen zu arbeiten.
+
+## Befehlsmodi der Befehlszeilenschnittstelle
+
+Die Azure-Befehlszeilenschnittstelle bietet zwei Befehlsmodi für die Arbeit mit Azure-Ressourcen, die jeweils unterschiedliche Befehle aufweisen:
+
+* **Azure Resource Manager-Modus**: Für die Arbeit mit Azure-Ressourcen im Resource Manager-Bereitstellungsmodell. Führen Sie zum Festlegen dieses Modus `azure config mode arm` aus.
+
+* **Azure Service Management-Modus**: Für die Arbeit mit Azure-Ressourcen im klassischen Bereitstellungsmodell. Führen Sie zum Festlegen dieses Modus `azure config mode asm` aus.
+
+Nach der Installation wird die Befehlszeilenschnittstelle im Service Management-Modus ausgeführt.
+
+>[AZURE.NOTE]Der Azure-Ressourcen-Manager-Modus und der Azure-Dienstverwaltungsmodus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
 
 ## Speichern der Einstellungen für die Befehlszeilenschnittstelle
 
-Unabhängig davon, ob Sie sich mit einem Geschäfts- oder Schulkonto anmelden oder Veröffentlichungseinstellungen importieren, werden Ihr Profil und die Protokolle für die Befehlszeilenschnittstelle in einem `.azure`-Verzeichnis gespeichert, das sich in Ihrem `user`-Verzeichnis befindet. Ihr `user`-Verzeichnis wird durch das Betriebssystem geschützt; es wird jedoch empfohlen, zusätzliche Schritte zum Verschlüsseln Ihres `user`-Verzeichnisses auszuführen. Sie haben dazu folgende Möglichkeiten:
+Unabhängig davon, ob Sie sich mit dem Befehl `azure login` anmelden oder Veröffentlichungseinstellungen importieren, werden Ihr Profil und die Protokolle für die Befehlszeilenschnittstelle in einem `.azure`-Verzeichnis gespeichert, das sich in Ihrem `user`-Verzeichnis befindet. Ihr `user`-Verzeichnis wird durch das Betriebssystem geschützt; es wird jedoch empfohlen, zusätzliche Schritte zum Verschlüsseln Ihres `user`-Verzeichnisses auszuführen. Sie haben dazu folgende Möglichkeiten:
 
 * Windows: Ändern Sie die Verzeichniseigenschaften, oder verwenden Sie BitLocker.
 * Mac: Aktivieren Sie FileVault für das Verzeichnis.
 * Ubuntu: Verwenden Sie die Homeverzeichnis-Verschlüsselung. Andere Linux-Distributionen bieten ähnliche Funktionen.
 
-## Zusätzliche Ressourcen
+## Abmelden
 
-* [Verwenden der Azure-Befehlszeilenschnittstelle mit (klassischen) Dienstverwaltungsbefehlen][cliasm]
+Verwenden Sie den folgenden Befehl, um sich abzumelden:
 
-* [Verwenden der Azure-Befehlszeilenschnittstelle mit Ressourcen-Manager-Befehlen][cliarm]
+	azure logout -u <username>
+
+Wenn die mit dem Konto verknüpften Abonnements nur über Active Directory authentifiziert wurden, werden bei der Abmeldung die Abonnementinformationen aus dem lokalen Profil gelöscht. Wenn jedoch auch eine Datei mit Veröffentlichungseinstellungen für die Abonnements importiert wurde, dann werden durch die Abmeldung nur die auf Active Directory bezogenen Informationen aus dem lokalen Profil gelöscht.
+## Nächste Schritte
+
+* Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Azure Resource Manager-Modus](./virtual-machines/azure-cli-arm-commands.md) und [Befehle der Azure-Befehlszeilenschnittstelle im Azure Service Management-Modus](virtual-machines-command-line-tools.md).
 
 * Wenn Sie weitere Informationen zur Azure-Befehlszeilenschnittstelle erhalten, den Quellcode herunterladen, Probleme melden oder etwas zum Projekt beitragen möchten, besuchen Sie die Webseite [GitHub repository for the Azure CLI](https://github.com/azure/azure-xplat-cli).
 
 * Wenn Sie Probleme bei der Verwendung der Azure-Befehlszeilenschnittstelle oder Azure haben, besuchen Sie die [Azure-Foren](http://social.msdn.microsoft.com/Forums/windowsazure/home).
 
-
-
-
-
-[authandsub]: http://msdn.microsoft.com/library/windowsazure/hh531793.aspx#BKMK_AccountVCert
-[free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[portal]: https://manage.windowsazure.com
-[signuporg]: http://azure.microsoft.com/documentation/articles/sign-up-organization/
-[cliasm]: virtual-machines/virtual-machines-command-line-tools.md
-[cliarm]: xplat-cli-azure-resource-manager.md
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

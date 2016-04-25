@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Bereitstellen von Multi-NIC-VMs mithilfe der Azure-CLI in Ressourcen-Manager | Microsoft Azure"
    description="Erfahren Sie, wie Sie Multi-NIC-VMs mithilfe der Azure-CLI in Ressourcen-Manager bereitstellen"
    services="virtual-network"
@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Da zurzeit VMs mit nur einer Netzwerkschnittstellenkarte (NIC) nicht mit VMs mit mehreren Netzwerkschnittstellenkarten in derselben Ressourcengruppe vorhanden sein können, werden die Back-End-Server in einer anderen Ressourcengruppe implementiert als die anderen Komponenten. In den folgenden Schritten verwendet die Ressourcengruppe *IaaSStory* als Hauptressourcengruppe und *IaaSStory-BackEnd* für die Back-End-Server.
+Derzeit können virtuelle Computer mit einer einzelnen NIC und virtuelle Computer mit mehreren NICs nicht in derselben Ressourcengruppe enthalten sein. Aus diesem Grund müssen Sie die Back-End-Server in einer anderen Ressourcengruppe als alle anderen Komponenten implementieren. In den folgenden Schritten verwendet die Ressourcengruppe *IaaSStory* als Hauptressourcengruppe und *IaaSStory-BackEnd* für die Back-End-Server.
 
 ## Voraussetzungen
 
@@ -47,7 +47,7 @@ Die Back-End-VMs sind auf die Erstellung der im Folgenden aufgelisteten Ressourc
 
 - **Speicherkonto für Datenträger**. Für eine bessere Leistung verwenden die Datenträger auf den Datenbankservern Solid State Drive (SSD)-Technik. Dafür ist ein Storage Premium-Konto erforderlich. Achten Sie darauf, dass der Azure-Speicherort für die Bereitstellung Storage Premium unterstützt.
 - **NICs**. Jeder virtuelle Computer hat zwei Netzwerkkarten, eine für den Datenbankzugriff und eine für die Verwaltung.
-- **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird. 
+- **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
 ### Schritt 1: Starten des Skripts
 
@@ -60,7 +60,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		vnetName="WTestVNet"
 		backendSubnetName="BackEnd"
 		remoteAccessNSGName="NSG-RemoteAccess"
-		
+
 2. Ändern Sie die Werte der nachstehenden Variablen basierend auf den Werten, die Sie für die Back-End-Bereitstellung verwenden möchten.
 
 		backendRGName="IaaSStory-Backend"
@@ -107,7 +107,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		azure storage account create $prmStorageAccountName \
 		    --resource-group $backendRGName \
 		    --location $location \
-			--type PLRS 
+			--type PLRS
 
 3. Erstellen Sie eine Verfügbarkeitsgruppe für die VM.
 
@@ -171,7 +171,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		        --vhd-name $dataDiskName$suffixNumber-1.vhd \
 		        --size-in-gb $diskSize \
 		        --lun 0
-		
+
 		    azure vm disk attach-new --resource-group $backendRGName \
 		        --vm-name $vmNamePrefix$suffixNumber \        
 		        --storage-account-name $prmStorageAccountName \
@@ -330,4 +330,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 		info:    Updating VM "DB2"
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

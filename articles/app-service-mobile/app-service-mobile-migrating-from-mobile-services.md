@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="04/11/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
@@ -344,6 +344,14 @@ So zeigen Sie die Protokolle an:
 
 Protokolle werden in das Fenster gestreamt, sobald sie generiert werden. Sie können die Protokolle auch zur späteren Analyse mithilfe Ihrer Anmeldeinformationen für die Bereitstellung herunterladen. Weitere Informationen finden Sie in der Dokumentation zur [Protokollierung].
 
+## <a name="known-issues"></a>Bekannte Probleme
+
+### Durch die Löschung des Klons einer migrierten mobilen App wird ein Websiteausfall verursacht.
+
+Wenn Sie Ihren migrierten mobilen Dienst mithilfe von Azure PowerShell klonen und anschließend den Klon löschen, wird der DNS-Eintrag für Ihren Produktionsdienst entfernt. Infolgedessen kann vom Internet nicht mehr auf die Website zugegriffen werden.
+
+Lösung: Wir arbeiten an diesem Problem. Wenn Sie Ihre Website klonen möchten, verwenden Sie dazu das Portal.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch mehr Features nutzen:
@@ -394,4 +402,4 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

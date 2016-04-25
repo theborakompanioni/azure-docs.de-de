@@ -13,18 +13,18 @@
 	ms.devlang="na"
 	ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.workload="identity" 
+    ms.workload="identity"
 	ms.date="12/07/2015"
 	ms.author="femila"/>
 
 
-# Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus 
-In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md) definiert haben.
+# Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
+In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) definiert haben.
 
 
 Zum Definieren der Aufgaben der Hybrididentitätsverwaltung anhand des weiter oben in diesem Schritt vorgestellten End-to-End-Identitätslebenszyklus müssen Sie die für jede Lebenszyklusphase verfügbaren Optionen berücksichtigen.
 
-## Zugriffsverwaltung und Bereitstellung 
+## Zugriffsverwaltung und Bereitstellung
 Mit einer guten Lösung für die Kontozugriffsverwaltung kann Ihre Organisation genau nachverfolgen, wer in der gesamten Organisation Zugriff auf welche Informationen hat.
 
 Zugriffssteuerung ist eine entscheidende Funktion eines zentralisierten, Einzelpunktbereitstellungssystems. Zugriffssteuerungen schützen nicht nur sensible Informationen, sondern decken auch vorhandene Konten auf, die nicht genehmigte Autorisierungen besitzen oder nicht mehr notwendig sind. Um veraltete Konten zu steuern, verknüpft das Bereitstellungssystem Kontoinformationen mit Autorisierungsinformationen über die Benutzer, die die Konten besitzen. Die Autorisierung betreffende Benutzeridentitätsinformationen werden in der Regel in den Datenbanken und Verzeichnissen der Personalabteilung verwaltet.
@@ -40,7 +40,7 @@ Konten in anspruchsvollen IT-Unternehmen umfassen Hunderte von Parametern, die d
 Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) setzt Rollen- und Bereitstellungsrichtlinien zum Auswerten, Testen und Erzwingen Ihrer Geschäftsprozesse und Regeln für das Gewähren von Zugriffsrechten für Benutzer ein. Hauptadministratoren erstellen Bereitstellungsrichtlinien, weisen Benutzern Rollen zu und definieren für diese Rollen Sätze von Berechtigungen für Ressourcen. RBAC erweitert die Identitätsverwaltungslösung auf die Verwendung softwarebasierter Prozesse und Reduzierung der manuellen Benutzerinteraktion im Bereitstellungsprozess. Azure AD RBAC ermöglicht dem Unternehmen, die Menge der Vorgänge zu beschränken, die eine einzelne Person ausführen kann, wenn sie auf das Azure-Verwaltungsportal zugreift. Durch Einsatz von RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren mithilfe folgender Ansätze zur Zugriffsverwaltung den Zugriff delegieren:
 
 - **Gruppenbasierte Rollenzuweisung**: Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation in Tools und Prozesse zum Verwalten von Gruppen vorgenommen hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
-- **Nutzen Sie integrierte Rollen in Azure**: Sie können diese drei Rollen verwenden – Besitzer, Mitwirkender und Leser, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen. 
+- **Nutzen Sie integrierte Rollen in Azure**: Sie können diese drei Rollen verwenden – Besitzer, Mitwirkender und Leser, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
 - **Präziser Zugriff auf Ressourcen**: Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder eine einzelne Azure-Ressource, z. B. eine Website oder eine Datenbank, zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
 
 ## Bereitstellung und andere Optionen für die Anpassung
@@ -60,7 +60,8 @@ Sie können Gruppen verwenden, die Sie aus lokalem AD synchronisieren oder in Az
 ## Selbstregulierende Benutzerverwaltung
 Wenn Ihre Organisation beginnt, Ressourcen für alle internen Organisationen bereitzustellen, implementieren Sie die selbstregulierende Benutzerverwaltung. Sie können die Vorteile der Benutzerbereitstellung über Organisationsgrenzen hinweg realisieren. In dieser Umgebung spiegelt sich eine Änderung im Status eines Benutzers automatisch über die Grenzen der Organisation und geografische Regionen hinweg in Zugriffsrechten wider. Sie können Bereitstellungskosten reduzieren und die Zugriffs- und Genehmigungsprozesse optimieren. Die Implementierung erkennt das volle Potenzial des Implementierens rollenbasierter Zugriffssteuerung für die End-to-End-Zugriffsverwaltung in Ihrer Organisation. Sie können die Verwaltungskosten durch automatisierte Verfahren für die Verwaltung der Benutzerbereitstellung reduzieren. Sie können die Sicherheit durch Automatisierung des Erzwingens von Sicherheitsrichtlinien verbessern und die Verwaltung des Benutzerlebenszyklus und die Bereitstellung von Ressourcen für große Benutzerzahlen optimieren und zentralisieren.
 
->[AZURE.NOTE]Weitere Informationen finden Sie unter „Einrichten von Azure AD zur Self-Service-Verwaltung des Anwendungszugriffs“
+>[AZURE.NOTE]
+Weitere Informationen finden Sie unter „Einrichten von Azure AD zur Self-Service-Verwaltung des Anwendungszugriffs“
 
 Lizenzbasierte (berechtigungsbasierte) Azure AD-Dienste funktionieren durch die Aktivierung eines Abonnements im Azure AD-Verzeichnis/-Dienstmandanten. Sobald das Abonnement aktiv ist, können Dienstfunktionen von Verzeichnis-/Dienstadministratoren verwaltet und von lizenzierten Benutzern verwendet werden. Weitere Informationen finden Sie unter „Wie funktioniert die Lizenzierung von Azure AD?“. Integration mit anderen Drittanbietern
 
@@ -69,7 +70,7 @@ Azure Active Directory bietet einmaliges Anmelden und erweiterte Anwendungszugri
 ## Definieren der Synchronisierungsverwaltung
 Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird. Mit dieser Integration können Benutzer und Organisationen die folgenden Vorteile nutzen:
 
-- Organisationen können für Benutzer eine Hybrididentität zum Zugriff auf lokale und cloudbasierte Dienste bereitstellen, die mithilfe von Windows Server Active Directory die Verbindung zu Azure Active Directory ermöglicht. 
+- Organisationen können für Benutzer eine Hybrididentität zum Zugriff auf lokale und cloudbasierte Dienste bereitstellen, die mithilfe von Windows Server Active Directory die Verbindung zu Azure Active Directory ermöglicht.
 - Administratoren können basierend auf Anwendungsressourcen, Geräte- und Benutzeridentität, Netzwerkadressen und Multi-Factor Authentication Richtlinien für den bedingten Zugriff erstellen.
 - Benutzer können diese allgemeine Identität für Konten von Azure AD bis Office 365, Intune, SaaS-Anwendungen und Anwendungen von Drittanbietern nutzen.
 - Entwickler können Anwendungen erstellen, die das allgemeine Identitätsmodell nutzen, und Anwendungen in das lokale Active Directory oder Azure für cloudbasierte Anwendungen integrieren.
@@ -87,10 +88,11 @@ Vergleichen Sie die Synchronisierungsoptionen anhand folgender Tabelle:
 | Synchronisierungsbasiert (über DirSync oder AADConnect) | Benutzer und Gruppen, die lokal und in der Cloud synchronisiert werden <br> **Richtliniensteuerung**: Kontorichtlinien können über Active Directory festgelegt werden, was dem Administrator ermöglicht, Richtlinien für Kennwörter, Workstations, Einschränkungen, Sperrsteuerungen und mehr zu verwalten, ohne zusätzliche Aufgaben in der Cloud ausführen zu müssen. <br> **Zugriffssteuerung**: Kann den Zugriff auf den Clouddienst einschränken, sodass der Zugriff auf die Dienste über die Unternehmensumgebung, über Onlineserver oder beides erfolgen kann. <br> Weniger Supportanrufe: Wenn Benutzer sich weniger Kennwörter merken müssen, ist die Wahrscheinlichkeit geringer, dass sie sie vergessen. <br> Sicherheit: Benutzeridentitäten und -informationen sind geschützt, da alle Server und Dienste mit einmaligem Anmelden verwendet und lokal verwaltet und gesteuert werden. <br> Unterstützung für strenge Authentifizierung: Sie können strenge Authentifizierung (auch als zweistufige Authentifizierung bezeichnet) mit dem Clouddienst nutzen. Wenn Sie jedoch strenge Authentifizierung verwenden, müssen Sie einmaliges Anmelden verwenden. | |
 | Verbundbasiert (über AD FS) | Aktiviert durch Sicherheitstokendienst (Security Token Service, STS). Wenn Sie einen STS konfigurieren, um Zugriff mit einmaligem Anmelden mit einem Microsoft-Clouddienst zu bieten, erstellen Sie eine Verbundvertrauensstellung zwischen Ihrem lokalen STS und der Verbunddomäne, die Sie in Ihrem Azure AD-Mandanten angegeben haben. <br> Ermöglicht Endbenutzern, den gleichen Satz von Anmeldeinformationen zu verwenden, um Zugriff auf mehrere Ressourcen zu erhalten <br>Endbenutzer müssen nicht mehrere Sätze von Anmeldeinformationen verwalten. Dennoch müssen die Benutzer ihre Anmeldeinformationen jeder der beteiligten Ressourcen bereitstellen. B2B- und B2C-Szenarien werden unterstützt. | Setzt spezialisierte Mitarbeiter für die Bereitstellung und Wartung von dedizierten lokalen AD FS-Servern voraus. Es gibt Einschränkungen für die Verwendung der starken Authentifizierung, wenn Sie AD FS für Ihren STS verwenden möchten. Weitere Informationen finden Sie unter [Konfigurieren erweiterter Optionen für AD FS 2.0](http://go.microsoft.com/fwlink/?linkid=235649). |
 
->[AZURE.NOTE]Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+>[AZURE.NOTE]
+Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
 
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0413_2016-->

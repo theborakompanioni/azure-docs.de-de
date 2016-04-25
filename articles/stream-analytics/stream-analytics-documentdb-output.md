@@ -30,11 +30,11 @@ Nachstehen sind einige der DocumentDB-Sammlungsoptionen beschrieben.
 
 ## Optimieren von Konsistenz, Verfügbarkeit und Latenz
 
-Entsprechend Ihren Anwendungsanforderungen lässt DocumentDB das Optimieren der Datenbank und Sammlungen zu und wählt Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz. Abhängig von den Lesekonsistenzebenen, die Ihr Szenario hinsichtlich Lese- und Schreiblatenz benötigt, können Sie in Ihrem Datenbankkonto eine Konsistenzebene wählen. Außerdem aktiviert DocumentDB für jeden CRUD-Vorgang in Ihrer Sammlung die synchrone Indizierung. Dies ist eine andere nützliche Option zum Steuern der Schreib-/Leseleistung in DocumentDB. Weitere Informationen zu diesem Thema finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../articles/documentdb-consistency-levels.md).
+Entsprechend Ihren Anwendungsanforderungen lässt DocumentDB das Optimieren der Datenbank und Sammlungen zu und wählt Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz. Abhängig von den Lesekonsistenzebenen, die Ihr Szenario hinsichtlich Lese- und Schreiblatenz benötigt, können Sie in Ihrem Datenbankkonto eine Konsistenzebene wählen. Außerdem aktiviert DocumentDB für jeden CRUD-Vorgang in Ihrer Sammlung die synchrone Indizierung. Dies ist eine andere nützliche Option zum Steuern der Schreib-/Leseleistung in DocumentDB. Weitere Informationen zu diesem Thema finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../documentdb/documentdb-consistency-levels.md).
 
 ## Auswählen einer Leistungsebene
 
-DocumentDB-Sammlungen können auf drei Leistungsstufen (S1, S2 oder S3) erstellt werden, die den verfügbaren Durchsatz für CRUD-Vorgänge für diese Sammlung bestimmen. Darüber hinaus wird die Leistung von den Indizierungs-/Konsistenzebenen Ihrer Sammlung beeinflusst. [In diesem Artikel](../articles/documentdb-performance-levels.md) finden Sie grundlegende Informationen zu diesen Leistungsebenen.
+DocumentDB-Sammlungen können auf drei Leistungsstufen (S1, S2 oder S3) erstellt werden, die den verfügbaren Durchsatz für CRUD-Vorgänge für diese Sammlung bestimmen. Darüber hinaus wird die Leistung von den Indizierungs-/Konsistenzebenen Ihrer Sammlung beeinflusst. [In diesem Artikel](../documentdb/documentdb-performance-levels.md) finden Sie grundlegende Informationen zu diesen Leistungsebenen.
 
 ## Einfügen/Aktualisieren über Stream Analytics
 
@@ -62,4 +62,4 @@ Beim Erstellen einer DocumentDB-Datenbank als Ausgabe in Stream Analytics wird e
 -   **Partitionsschlüssel**: Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die sammlungsübergreifende Partitionierung der Ausgabe verwendet wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.  
 -   **Dokument-ID**: Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

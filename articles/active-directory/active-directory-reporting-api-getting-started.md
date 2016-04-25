@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Erste Schritte mit der Azure AD Reporting-API"
+   pageTitle="Erste Schritte mit der Azure AD Reporting-API | Microsoft Azure"
    description="Vorgehensweise zum Einstieg in die Azure Active Directory Reporting-API"
    services="active-directory"
    documentationCenter=""
@@ -13,33 +13,33 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="04/07/2016"
    ms.author="dhanyahk"/>
 
 
-# Erste Schritte mit der Azure AD Reporting-API
+# Erste Schritte mit der Reporting-API von Azure Active Directory
 
 *Diese Dokumentation ist Teil des [Handbuchs für Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
-Azure Active Directory bietet eine Vielzahl von Aktivitäts-, Sicherheits- und Überwachungsberichten. Diese Daten können über das Azure-Portal genutzt werden, sind aber auch in vielen anderen Anwendungen sehr nützlich, z. B. in SIEM-Systemen, Überwachungs- und Business Intelligence-Tools.
+Azure Active Directory (AD) bietet eine Vielzahl von Aktivitäts-, Sicherheits- und Überwachungsberichten. Diese Daten können über das klassische Azure-Portal genutzt werden, sind aber auch in vielen anderen Anwendungen sehr nützlich, z.B. in SIEM-Systemen, Überwachungs- und Business Intelligence-Tools.
 
-Die Azure AD Reporting-APIs ermöglichen den programmgesteuerten Zugriff auf diese Daten über verschiedene REST-basierte APIs, die in einer Vielzahl von Programmiersprachen und Tools aufgerufen werden können.
+Die [Azure AD Reporting-APIs](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) ermöglichen den programmgesteuerten Zugriff auf diese Daten über verschiedene REST-basierte APIs, die in einer Vielzahl von Programmiersprachen und Tools aufgerufen werden können.
 
 Dieser Artikel begleitet Sie durch das Aufrufen der Azure AD Reporting-APIs über PowerShell. Sie können das PowerShell-Beispielskript ändern, um Ihrem Szenario entsprechend auf Daten in einem beliebigen der verfügbaren Berichte im JSON-, XML- oder Textformat zuzugreifen.
 
-Um dieses Beispiel verwenden zu können, benötigen Sie ein [Azure Active Directory](active-directory-whatis.md).
+Zur Verwendung dieses Beispiels benötigen Sie einen [Azure Active Directory](active-directory-whatis.md)-Mandanten.
 
 ## Erstellen einer Azure AD-Anwendung für den Zugriff auf die API
 
-Die Reporting-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Autorisieren des Zugriffs auf die Web-APIs. Für den Zugriff auf Informationen in Ihrem Verzeichnis müssen Sie eine Anwendung in Ihrem Active Directory erstellen und ihr entsprechende Berechtigungen für den Zugriff auf die AAD-Daten erteilen.
+Die Reporting-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Autorisieren des Zugriffs auf die Web-APIs. Für den Zugriff auf Informationen in Ihrem Verzeichnis müssen Sie eine Anwendung in Ihrem Azure AD-Mandanten erstellen und ihr entsprechende Berechtigungen für den Zugriff auf die Azure AD-Daten erteilen.
 
 
 ### Erstellen einer Anwendung
 - Navigieren Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com/).
-- Navigieren Sie zu Ihrem Verzeichnis.
-- Navigieren Sie zu Anwendungen.
-- Klicken Sie auf der unteren Leiste auf "Hinzufügen".
-	- Klicken Sie auf "Eine von meinem Unternehmen entwickelte Anwendung hinzufügen".
+- Navigieren Sie zu Ihrem Azure AD-Mandanten.
+- Navigieren Sie zur Registerkarte **Anwendungen**.
+- Klicken Sie auf der unteren Leiste auf **Hinzufügen**.
+	- Klicken Sie auf „Eine von meinem Unternehmen entwickelte Anwendung hinzufügen“.
 	- **Name**: Hier haben Sie die freie Wahl Ein Eintrag wie "Reporting-API-Anwendung" wird empfohlen.
 	- **Typ**: Wählen Sie "Webanwendung und/oder Web-API".
 	- Klicken Sie auf den Pfeil, um zur nächsten Seite zu gelangen.
@@ -48,11 +48,11 @@ Die Reporting-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn6
 	- Klicken Sie auf das Häkchen, um das Hinzufügen der Anwendung abzuschließen.
 
 ### Gewähren Ihrer Anwendung die Berechtigung zum Verwenden der API
-- Navigieren Sie zur Registerkarte "Anwendungen".
+- Navigieren Sie zur Registerkarte **Anwendungen**.
 - Navigieren Sie zu Ihrer neu erstellten Anwendung.
 - Klicken Sie auf die Registerkarte **Konfigurieren**.
 - Im Abschnitt "Berechtigungen für andere Anwendungen":
-	- Wählen Sie in „Azure Active Directory > Anwendungsberechtigungen“ die Option **Verzeichnisdaten lesen** aus.
+	- Wählen Sie in „Azure Active Directory“ > „Anwendungsberechtigungen“ die Option **Verzeichnisdaten lesen** aus.
 - Klicken Sie auf der unteren Leiste auf **Speichern**.
 
 
@@ -61,7 +61,7 @@ Die Reporting-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn6
 Die folgenden Schritte begleiten Sie durch das Abrufen der Client-ID Ihrer Anwendung und des geheimen Clientschlüssels. Sie müssen auch den Namen Ihres Mandanten kennen. Dieser kann entweder "*.onmicrosoft.com" oder ein benutzerdefinierter Domänenname sein. Kopieren Sie diesen an einen separaten Ort, da Sie ihn benötigen, um das Skript zu ändern.
 
 #### Client-ID der Anwendung
-- Navigieren Sie zur Registerkarte "Anwendungen".
+- Navigieren Sie zur Registerkarte **Anwendungen**.
 - Navigieren Sie zu Ihrer neu erstellten Anwendung.
 - Navigieren Sie zur Registerkarte **Konfigurieren**.
 - Die Client-ID Ihrer Anwendung ist im Feld **Client-ID** aufgeführt.
@@ -182,17 +182,17 @@ Bearbeiten Sie eines des folgenden Skripts, um mit Ihrem Verzeichnis zu arbeiten
 ## Ausführen des Skripts
 Wenn Sie die Bearbeitung des Skripts abgeschlossen haben, führen Sie es aus, und prüfen Sie, ob die erwarteten Daten aus dem Bericht "AuditEvents" zurückgegeben werden.
 
-Das Skript gibt Listen aller verfügbaren Berichte und die Ausgabe des Berichts "AccountProvisioningEvents" im PowerShell-Fenster im JSON-Format zurück. Außerdem erstellt es Dateien mit der gleichen Ausgabe im JSON-, Text- und XML-Format. Sie können mit dem Ändern des Skripts experimentieren, um Daten aus anderen Berichten zurückzugeben, und nicht benötigte Ausgabeformate auskommentieren.
+Das Skript listet alle verfügbaren Berichte auf und gibt die Ausgabe des Berichts „AccountProvisioningEvents“ im PowerShell-Fenster im JSON-Format zurück. Außerdem erstellt es Dateien mit der gleichen Ausgabe im JSON-, Text- und XML-Format. Sie können damit experimentieren, indem Sie das Skript so verändern, dass es Daten aus anderen Berichten zurückgibt, und nicht benötigte Ausgabeformate auskommentieren.
 
 ## Hinweise
 
 - Es gibt keine Beschränkung für die Anzahl der von der Azure AD Reporting-API (mithilfe von OData-Paginierung) zurückgegebenen Ereignisse.
-	- Informationen zu den Beschränkungen für die Aufbewahrung von Berichtsdaten finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
+- Informationen zu den Beschränkungen für die Aufbewahrung von Berichtsdaten finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
 
 
 ## Nächste Schritte
 - Möchten Sie wissen, welche Sicherheits-, Überwachungs- und Aktivitätsberichte zur Verfügung stehen? Lesen Sie [Sicherheits-, Überwachungs- und Aktivitätsberichte](active-directory-view-access-usage-reports.md).
 - Unter [Azure AD-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md) finden Sie weitere Informationen zum Überwachungsbericht.
-- Unter [Azure AD-Berichte und -Ereignisse (Vorschau)](https://msdn.microsoft.com/library/azure/mt126081.aspx) finden Sie weitere Informationen zum Graph-API-REST-Dienst.
+- Unter [Azure AD-Berichte und -Ereignisse (Preview)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) finden Sie weitere Informationen zum REST-Dienst der Azure AD Graph-API.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

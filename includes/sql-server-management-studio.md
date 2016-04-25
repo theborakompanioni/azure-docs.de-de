@@ -1,14 +1,16 @@
 
-   * Sign in to the Azure account by entering your credentials.
+   * Melden Sie sich bei Ihrem Azure-Konto an, indem Sie Ihre Anmeldeinformationen eingeben.
 
-     This method is quicker and easier, but if you use this method you won't be able to see Azure SQL Database or Mobile Services in the **Server Explorer** window.
+     Diese Methode ist schneller und einfacher, dabei werden Azure SQL-Datenbank oder Azure Mobile Services jedoch nicht im Fenster **Server-Explorer** angezeigt.
 
-     In **Server Explorer**, click the **Connect to Azure** button. An alternative is to right-click the **Azure** node, and then click **Connect to Azure** in the context menu.
+     Klicken Sie in **Server-Explorer** auf die Schaltfläche **Mit Azure verbinden**. Alternativ können Sie auch mit der rechten Maustaste auf den Knoten **Azure** klicken und im Kontextmenü **Mit Azure verbinden** auswählen.
 
-   * Install a management certificate that enables access to your account.
+   * Installieren Sie ein Verwaltungszertifikat, dass den Zugriff auf Ihr Konto ermöglicht.
 
-     In **Server Explorer**, right-click the **Azure** node, and then click **Manage Subscriptions** in the context menu. In the **Manage Azure Subscriptions** dialog box, click the **Certificates** tab, and then click **Import**. Follow the directions to download and then import a subscription file (also called a *.publishsettings* file) for your Azure account.
+     Klicken Sie in **Server-Explorer** mit der rechten Maustaste auf den Knoten **Azure**, und wählen Sie im Kontextmenü **Abonnements verwalten** aus. Klicken Sie im Dialogfeld **Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf **Importieren**. Befolgen Sie die Anweisungen zum Herunterladen und Importieren einer Abonnementdatei (auch *.publishsettings*-Datei genannt) für Ihr Azure-Konto.
 
-     > [AZURE.NOTE] Download the subscription file to a folder outside your source code directories (for example, in the Downloads folder), and then delete it once the import has completed. A malicious user who gains access to the subscription file can edit, create, and delete your Azure services.
+     > [AZURE.NOTE] Laden Sie die Abonnementdatei in einen Ordner außerhalb Ihrer Quellcodeverzeichnisse herunter (beispielsweise in den Ordner "Downloads"), und löschen Sie sie nach Abschluss des Importvorgangs. Böswillige Benutzer, die Zugriff auf die Abonnementdatei erlangen, können Ihre Azure-Services bearbeiten, erstellen und löschen.
 
-	For more information, see [How to Connect to Azure from Visual Studio](http://go.microsoft.com/fwlink/?LinkId=324796).
+	Weitere Informationen finden Sie unter [Verbinden mit Azure in Visual Studio](http://go.microsoft.com/fwlink/?LinkId=324796).
+
+<!---HONumber=AcomDC_0413_2016-->

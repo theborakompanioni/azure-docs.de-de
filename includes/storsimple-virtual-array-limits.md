@@ -13,7 +13,6 @@
 | Maximale Anzahl von Sicherungen, die vom virtuellen Gerät im Ordner *.backups* für den Dateiserver gespeichert werden | 5 | Dazu zählen die zuletzt geplanten (von der Standardsicherungsrichtlinie generierten) und manuelle Sicherungen. |
 | Maximale Anzahl von geplanten Sicherungen, die vom Gerät gespeichert werden | 55 | 30 tägliche Sicherungen<br>12 monatliche Sicherungen<br>13 jährliche Sicherungen |
 | Maximale Anzahl von manuellen Sicherungen, die vom Gerät gespeichert werden | 45 | |
-| Maximale Anzahl von Volumes, die für Sicherung oder Wiederherstellung parallel verarbeitet werden können | 3 | Wenn mehr als drei Volumes vorhanden sind, werden sie nacheinander verarbeitet, sobald Verarbeitungsslots verfügbar werden. |
 | Wiederherstellungszeit für Wiederherstellen | Schnelle Wiederherstellung | Die Wiederherstellung basiert auf dem Wärmebild und ist abhängig von der Volumegröße.<br>Sicherungsvorgänge können stattfinden, während ein Wiederherstellungsvorgang ausgeführt wird. |
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

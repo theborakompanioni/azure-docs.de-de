@@ -105,7 +105,14 @@ In der folgenden Tabelle werden die derzeit verfügbaren Versionen von HDInsight
 * Hochverfügbare Cluster mit zwei Hauptknoten werden standardmäßig für HDInsight 2.1 und höher bereitgestellt. Für HDInsight 1.6-Cluster sind sie nicht verfügbar.
 * Nachdem der Support für eine bestimmte Version abgelaufen ist, steht sie möglicherweise nicht mehr im klassischen Azure-Portal zur Verfügung. Die folgende Tabelle zeigt, welche Versionen im klassischen Azure-Portal verfügbar sind. Clusterversionen stehen bis zum Zeitpunkt ihrer „Veraltung“ weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) und das .NET SDK zur Verfügung.
 
-<table border="1"> <tr><th>HDInsight-Version</th><th>HDP-Version</a><th>Hohe Verfügbarkeit</th></th><th>Releasedatum</th><th>Verfügbar im klassischen Azure-Portal</th><th>Ablaufdatum für Support</th><th>Veraltet</th></tr> <tr><td>HDI 3.2</td><td>HDP 2.2</td><td>Ja</td><td>18.02.2015</td><td>Ja</td><td></td><td></td></tr> <tr><td>HDI 3.1</td><td>HDP 2.1</td><td>Ja</td><td>24.06.2014</td><td>Ja</td><td></td><td></td></tr> <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>Ja</td><td>11.02.2014</td><td>Ja</td><td>17.09.2014</td><td>30.06.2015</td></tr> <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>Ja</td><td>28.10.2013</td><td>Nein</td><td>12.05.2014</td><td>31.05.2015</td></tr> <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>Nein</td><td>28.10.2013</td><td>Nein</td><td>26.04.2014</td><td>31.05.2015</td></tr> </table><br>
+<table border="1">
+<tr><th>HDInsight-Version</th><th>HDP-Version</a><th>Hohe Verfügbarkeit</th></th><th>Herausgabedatum</th><th>Im klassischen Azure-Portal verfügbar</th><th>Supportablaufdatum</th><th>Veraltet ab</th></tr>
+<tr><td>HDI 3.2</td><td>HDP 2.2</td><td>Ja</td><td>18.02.2015</td><td>Ja</td><td></td><td></td></tr>
+<tr><td>HDI 3,1</td><td>HDP 2,1</td><td>Ja</td><td>24.06.2014</td><td>Ja</td><td></td><td></td></tr>
+<tr><td>HDI 3,0</td><td>HDP 2,0</td><td>Ja</td><td>11.02.2014</td><td>Ja</td><td>17.09.2014</td><td>30.06.2015</td></tr>
+<tr><td>HDI 2,1</td><td>HDP 1,3</td><td>Ja</td><td>28.10.2013</td><td>Nein</td><td>12.05.2014</td><td>31.05.2015</td></tr>
+<tr><td>HDI 1.6</td><td>HDP 1.1</td><td>Nein</td><td>28.10.2013</td><td>Nein</td><td>26.04.2014</td><td>31.05.2015</td></tr>
+</table><br>
 
 **Bereitstellung von Nicht-Standardclustern**
 
@@ -120,7 +127,7 @@ Die SLA ist in Form eines "Supportfensters" definiert. Ein Supportfenster bezieh
 
 Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr in HDInsight erstellt werden kann.
 
-> [AZURE.NOTE] Die HDInsight 2.1- und 3.0-Cluster werden unter dem Azure-Gastbetriebssystem [Family 4](../cloud-services-guestos-update-matrix.md) ausgeführt, das die 64-Bit-Version von Windows Server 2012 R2 verwendet und .NET Framework 4.0, 4.5. und 4.5.1 unterstützt.
+> [AZURE.NOTE] Die HDInsight 2.1- und 3.0-Cluster werden unter dem Azure-Gastbetriebssystem [Family 4](../cloud-services/cloud-services-guestos-update-matrix.md) ausgeführt, das die 64-Bit-Version von Windows Server 2012 R2 verwendet und .NET Framework 4.0, 4.5. und 4.5.1 unterstützt.
 
 ## Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen##
 
@@ -160,4 +167,4 @@ Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Überwachen der Leistung der Azure-Web-App" 
-	description="Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung." 
+<properties
+	pageTitle="Überwachen der Leistung der Azure-Web-App"
+	description="Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung."
 	services="azure-portal"
     documentationCenter="na"
-	authors="alancameronwills" 
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/23/2015" 
+<tags
+	ms.service="azure-portal"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/23/2015"
 	ms.author="awills"/>
 
 # Überwachen der Leistung der Azure-Web-App
@@ -49,7 +49,7 @@ Wenn Sie zur Anmeldung aufgefordert werden, verwenden Sie die Anmeldeinformation
 
 Sie können die Telemetrie testen, indem Sie die App auf dem Entwicklungscomputer ausführen, oder Sie können einfach fortfahren und die App veröffentlichen.
 
-Das SDK stellt eine API bereit, sodass Sie eine [benutzerdefinierte Telemetrie schreiben](../app-insights-api-custom-events-metrics.md) können, um die Verwendung nachzuverfolgen.
+Das SDK stellt eine API bereit, sodass Sie eine [benutzerdefinierte Telemetrie schreiben](../application-insights/app-insights-api-custom-events-metrics.md) können, um die Verwendung nachzuverfolgen.
 
 ## Untersuchen der Daten
 
@@ -69,7 +69,7 @@ Nachdem Sie das Blatt geöffnet haben, beispielsweise für Application Insights,
 
 ![Klicken Sie im Raster auf eine Abhängigkeit, um die zugehörigen Anforderungen anzuzeigen.](./media/insights-perf-analytics/08-requests.png)
 
-- Das folgende Beispiel zeigt die in einer SQL-Abhängigkeit aufgewendete Zeit, einschließlich der Anzahl von SQL-Aufrufen sowie zugehörige Statistiken, z. B. die durchschnittliche Dauer und die Standardabweichung. 
+- Das folgende Beispiel zeigt die in einer SQL-Abhängigkeit aufgewendete Zeit, einschließlich der Anzahl von SQL-Aufrufen sowie zugehörige Statistiken, z. B. die durchschnittliche Dauer und die Standardabweichung.
 
 ![](./media/insights-perf-analytics/01-example.png)
 
@@ -80,8 +80,7 @@ Nachdem Sie das Blatt geöffnet haben, beispielsweise für Application Insights,
 * [Überwachen von Dienstintegritätsmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md), um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln.
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn ein operatives Ereignis auftritt oder Metriken einen Schwellenwert überschreiten.
-* Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../app-insights-web-track-usage.md), um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
-* [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
- 
+* Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
+* [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

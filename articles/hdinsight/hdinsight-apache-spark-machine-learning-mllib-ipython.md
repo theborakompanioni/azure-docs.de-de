@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2016" 
+	ms.date="04/08/2016" 
 	ms.author="nitinme"/>
 
 
@@ -49,7 +49,7 @@ Zusammenfassend gesagt, erzeugt der Prozess der logistischen Regression eine *lo
 
 ## Worin besteht der Zweck dieses Artikels?
 
-Sie verwenden Spark, um einige Vorhersageanalysen für Lebensmittelkontrolldaten (**Food\_Inspections1.csv**) auszuführen, die über das [Datenportal von Chicago](https://data.cityofchicago.org/) erfasst wurden. Dieses Dataset enthält Informationen zu Lebensmittelkontrollen, die in Chicago durchgeführt wurden, darunter Informationen zu jedem Lebensmittelbetrieb, der überprüft wurde, (ggf.) gefundene Verstöße und die Ergebnisse der Überprüfung.
+Sie verwenden Spark, um einige Vorhersageanalysen für Lebensmittelkontrolldaten (**Food\_Inspections1.csv**) auszuführen, die über das [Datenportal von Chicago](https://data.cityofchicago.org/) erfasst wurden. Dieses Dataset enthält Informationen zu Lebensmittelkontrollen, die in Chicago durchgeführt wurden, darunter Informationen zu jedem Lebensmittelbetrieb, der überprüft wurde, (ggf.) gefundene Verstöße und die Ergebnisse der Überprüfung. Die CSV-Datendatei ist bereits im Speicherkonto verfügbar, das dem Cluster bei **/HdiSamples/HdiSamples/FoodInspectionData/Food\_Inspections1.csv** zugeordnet ist.
 
 In den folgenden Schritten entwickeln Sie ein Modell, um zu ermitteln, wie Sie eine Lebensmittelkontrolle erfolgreich bestehen können bzw. wann Sie nicht bestehen.
 
@@ -71,7 +71,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um zu ermitteln, wie Sie e
 
 	![Angeben eines neuen Namens für das Notebook](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.notebook.name.png "Angeben eines neuen Namens für das Notebook")
 
-3. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark-, SQL- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können mit der Erstellung Ihrer Machine Learning-Anwendung beginnen, indem Sie die Typen importieren, die für dieses Szenario erforderlich sind. Setzen Sie dazu den Cursor in die Zelle, und drücken Sie **UMSCHALT- + EINGABETASTE**.
+3. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark-, und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können mit der Erstellung Ihrer Machine Learning-Anwendung beginnen, indem Sie die Typen importieren, die für dieses Szenario erforderlich sind. Setzen Sie dazu den Cursor in die Zelle, und drücken Sie **UMSCHALT- + EINGABETASTE**.
 
 
 		from pyspark.ml import Pipeline
@@ -83,7 +83,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um zu ermitteln, wie Sie e
 
 ## Erstellen eines Eingabedataframes
 
-Wir haben bereits einen SQLContext, mit dem wir Transformationen für strukturierte Daten ausführen können. Die erste Aufgabe besteht darin, die Beispieldaten ((**Food\_Inspections1.csv**)) in einen Spark SQL-*Dataframe* zu laden. Bei dem unten stehenden Codeausschnitt wird davon ausgegangen, dass die Daten bereits in den Standardspeichercontainer hochgeladen wurden, der dem Spark-Cluster zugewiesen ist.
+Wir können `sqlContext` verwenden, um Transformationen strukturierter Daten auszuführen. Die erste Aufgabe besteht darin, die Beispieldaten ((**Food\_Inspections1.csv**)) in einen Spark SQL-*Dataframe* zu laden.
 
 1. Da die Rohdaten im CSV-Format vorliegen, müssen wir den Spark-Kontext verwenden, um jede Zeile der Datei als unstrukturierten Text in den Arbeitsspeicher zu verschieben. Verwenden Sie dann die Python CSV-Bibliothek, um jede Zeile einzeln zu analysieren. 
 
@@ -131,7 +131,7 @@ Wir haben bereits einen SQLContext, mit dem wir Transformationen für strukturie
 	      '(41.97583445690982, -87.7107455232781)']]
 
 
-3. Die oben gezeigte Ausgabe bietet uns eine Vorstellung des Schemas der Eingabedatei. Die Datei enthält u. a. den Namen aller Betriebe, die Art des Betriebs, die Adresse, die Daten der Kontrollen und den Standort. Wählen Sie einige Spalten aus, die für unsere Vorhersageanalyse nützlich sind, und gruppieren Sie die Ergebnisse als ein Dataframe, das anschließend zum Erstellen einer temporären Tabelle verwendet wird.
+3. Die oben gezeigte Ausgabe bietet uns eine Vorstellung des Schemas der Eingabedatei. Die Datei enthält u. a. den Namen aller Betriebe, die Art des Betriebs, die Adresse, die Daten der Kontrollen und den Standort. Wählen Sie einige Spalten aus, die für unsere Vorhersageanalyse nützlich sind, und gruppieren Sie die Ergebnisse als ein Dataframe, das anschließend zum Erstellen einer temporären Tabelle verwendet wird.
 
 
 		schema = StructType([
@@ -143,7 +143,7 @@ Wir haben bereits einen SQLContext, mit dem wir Transformationen für strukturie
 		df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
 		df.registerTempTable('CountResults')
 
-4. Wir haben jetzt einen *Dataframe* (`df`), für den wir unsere Analyse ausführen können. Wir verfügen außerdem über eine temporäre Tabelle namens **CountResults**. Wir haben 4 für uns interessante Spalten in den Dataframe aufgenommen: **id**, **name**, **results** und **violations**.
+4. Wir haben jetzt einen *Dataframe* (`df`), für den wir unsere Analyse ausführen können. Wir verfügen außerdem über eine temporäre Tabelle namens **CountResults**. Wir haben 4 für uns interessante Spalten in den Dataframe aufgenommen: **id**, **name**, **results** und **violations**.
 	
 	Rufen Sie eine kleine Teilmenge der Daten ab:
 
@@ -189,12 +189,12 @@ Wir haben bereits einen SQLContext, mit dem wir Transformationen für strukturie
 	    |     Out of Business|
 	    +--------------------+
     
-2. Eine kurze Visualisierung hilft uns dabei, die Verteilung der Ergebnisse zu begründen. Wir haben bereits die Daten in der temporären Tabelle **CountResults**. Sie können die folgende SQL-Abfrage in der Tabelle ausführen, um besser zu verstehen, wie die Ergebnisse verteilt werden.
+2. Eine kurze Visualisierung hilft uns dabei, die Verteilung der Ergebnisse zu begründen. Die Daten befinden sich bereits in der temporären Tabelle **CountResults**. Sie können die folgende SQL-Abfrage in der Tabelle ausführen, um besser zu verstehen, wie die Ergebnisse verteilt werden.
 
 		%%sql -o countResultsdf
 		SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
 
-	Durch die `%%sql`-Magic gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](http://pandas.pydata.org/)-Dataframe mit dem angegebenen Namen **countResultsdf** beibehalten.
+	Durch den Befehl `%%sql` gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](http://pandas.pydata.org/)-Dataframe mit dem angegebenen Namen **countResultsdf** beibehalten.
 	
 	Folgendes sollte angezeigt werden:
 	
@@ -339,39 +339,32 @@ Wir können das zuvor erstellte Modell verwenden, um basierend auf den beobachte
 
 ## Erstellen einer visuellen Darstellung der Vorhersage
 
-Wir können eine endgültige Visualisierung erstellen, um die Ergebnisse dieses Tests zu begründen.
+Wir können nun eine endgültige Visualisierung erstellen, um uns mit den Ergebnissen dieses Tests auseinanderzusetzen.
 
-1. Wir beginnen mit dem Extrahieren der unterschiedlichen Vorhersagen und Ergebnisse aus der temporären Tabelle **Predictions**, die zuvor erstellt wurde.
+1. Wir beginnen mit dem Extrahieren der unterschiedlichen Vorhersagen und Ergebnisse aus der zuvor erstellten temporären Tabelle **Predictions**. Die folgenden Abfragen teilt die Ausgabe auf *true\_positive*, *false\_positive*, *true\_negative*, und *false\_negative* auf. In den folgenden Abfragen deaktivieren wir die Visualisierung mithilfe von `-q` und speichern auch die Ausgabe (mithilfe von `-o`) als Dataframes, die dann mit der `%%local`-Magic verwendet werden können. 
 
-		%%sql -o predictionstable
-		SELECT prediction, results FROM Predictions
+		%%sql -q -o true_positive
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
 
-2. Im oben gezeigten Codeausschnitt stellt **predictionstable** das lokale Dataframe auf dem Jupyter-Server dar, das die Ausgabe der SQL-Abfrage beibehält. Sie können nun die `%%local`-Magic verwenden, um die nachfolgenden Codeausschnitte für die lokal gespeicherten Dataframes auszuführen.
+		%%sql -q -o false_positive
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
 
-		%%local
-		failSuccess = predictionstable[(predictionstable.prediction == 0) & (predictionstable.results == 'Fail')]['prediction'].count()
-		failFailure = predictionstable[(predictionstable.prediction == 0) & (predictionstable.results <> 'Fail')]['prediction'].count()
-		passSuccess = predictionstable[(predictionstable.prediction == 1) & (predictionstable.results <> 'Fail')]['prediction'].count()
-		passFailure = predictionstable[(predictionstable.prediction == 1) & (predictionstable.results == 'Fail')]['prediction'].count()
-		failSuccess,failFailure,passSuccess,passFailure
+		%%sql -q -o true_negative
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND results = 'Fail'
 
-	Die Ausgabe sieht wie folgt aus:
-	
-		# -----------------
-		# THIS IS AN OUTPUT
-		# -----------------
-	
-		(276, 46, 1917, 261)
+		%%sql -q -o false_negative
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions') 
 
-3. Abschließend verwenden Sie den folgenden Codeausschnitt, um die Grafik zu generieren.
+2. Abschließend verwenden Sie den folgenden Ausschnitt, um die Grafik mithilfe von **Matplotlib** zu generieren.
 
 		%%local
 		%matplotlib inline
 		import matplotlib.pyplot as plt
 		
 		labels = ['True positive', 'False positive', 'True negative', 'False negative']
-		sizes = [failSuccess, failFailure, passSuccess, passFailure]
-		plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+		sizes = [true_positive['cnt'], false_positive['cnt'], false_negative['cnt'], true_negative['cnt']]
+		colors = ['turquoise', 'seagreen', 'mediumslateblue', 'palegreen', 'coral']
+		plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
 		plt.axis('equal')
 	
 	Die folgende Ausgabe wird angezeigt.
@@ -419,4 +412,4 @@ Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, 
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

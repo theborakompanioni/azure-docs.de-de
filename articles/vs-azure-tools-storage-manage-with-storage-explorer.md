@@ -158,7 +158,7 @@ Mithilfe der Befehle **Zugriffssteuerungsliste verwalten** und **Öffentliche Zu
 	![][20]
 
 ## Nächste Schritte
-Informieren Sie sich in den Artikeln unter [Einführung in Microsoft Azure Storage](/storage/storage-introduction.md) über die Features von Azure Storage Services.
+Informieren Sie sich in den Artikeln unter [Einführung in Microsoft Azure Storage](./storage/storage-introduction.md) über die Features von Azure Storage Services.
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount1c.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount2c.png
@@ -182,4 +182,4 @@ Informieren Sie sich in den Artikeln unter [Einführung in Microsoft Azure Stora
 [19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
 [20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

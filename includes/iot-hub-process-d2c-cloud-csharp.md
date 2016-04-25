@@ -4,7 +4,7 @@ In diesem Abschnitt erstellen Sie eine Windows-Konsolen-App, die D2C-Nachrichten
 
 Die größte Herausforderung beim Implementieren der zuverlässigen Speicherung von Datenpunktnachrichten oder Weiterleiten von interaktiven Nachrichten besteht darin, dass für die Event Hubs-Ereignisverarbeitung der Nachrichtenconsumer seinen Status überprüfen muss. Darüber hinaus sollten Sie beim Lesen von Event Hubs Prüfpunkte für große Batches festlegen, um einen hohen Durchsatz zu erzielen. Hieraus ergibt sich die Möglichkeit einer doppelten Verarbeitung für eine große Zahl von Nachrichten, wenn ein Fehler vorliegt und Sie zum vorherigen Prüfpunkt zurückkehren. In diesem Lernprogramm wird veranschaulicht, wie Azure-Speicherschreibvorgänge und Service Bus-Deduplizierungsfenster mit **EventProcessorHost**-Prüfpunkten synchronisiert werden.
 
-Um Nachrichten zuverlässig in den Azure-Speicher zu schreiben, wird im Beispiel das Feature „Individueller Block-Commit“ von [Blockblobs][Azure Block Blobs] verwendet. Der Ereignisprozessor akkumuliert Nachrichten im Arbeitsspeicher, bis es an der Zeit ist, einen Prüfpunktvorgang auszuführen (z. B. nachdem der akkumulierte Nachrichtenpuffer die maximale Blockgröße von 4 Mb erreicht hat oder nachdem das Service Bus-Deduplizierungszeitfenster abgelaufen ist). Vor dem Setzen von Prüfpunkten führt der Code für den Blob dann einen Commit für einen neuen Block durch.
+Um Nachrichten zuverlässig in den Azure-Speicher zu schreiben, wird im Beispiel das Feature „Individueller Block-Commit“ von [Blockblobs][Azure Block Blobs] verwendet. Der Ereignisprozessor akkumuliert Nachrichten im Arbeitsspeicher, bis es an der Zeit ist, einen Prüfpunktvorgang auszuführen (z. B. nachdem der akkumulierte Nachrichtenpuffer die maximale Blockgröße von 4 Mb erreicht hat oder nachdem das Service Bus-Deduplizierungszeitfenster abgelaufen ist). Vor dem Setzen von Prüfpunkten führt der Code für den Blob dann einen Commit für einen neuen Block durch.
 
 Der Ereignisprozessor nutzt Event Hubs-Nachrichten-Offsets als Block-IDs. Dies ermöglicht eine Überprüfung der Deduplizierung vor dem Ausführen eines Commits für den neuen Block an den Speicher, und ein etwaiger Konflikt zwischen dem Commit eines Blocks und dem Prüfpunkt wird verhindert.
 
@@ -37,7 +37,7 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
 ### Erstellen des Ereignisprozessors
 
-1. Klicken Sie in der aktuellen Visual Studio-Projektmappe auf **Datei** und dann auf **Hinzufügen** und **Neues Projekt**, um mit der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt zu erstellen. Geben Sie dem Projekt den Namen **ProcessDeviceToCloudMessages**.
+1. Klicken Sie in der aktuellen Visual Studio-Projektmappe auf **Datei** und dann auf **Hinzufügen** und **Neues Projekt**, um mit der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt zu erstellen. Vergewissern Sie sich, dass mindestens die .NET Framework-Version 4.5.1 verwendet wird. Geben Sie dem Projekt den Namen **ProcessDeviceToCloudMessages**.
 
     ![][10]
 
@@ -198,11 +198,11 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
     Die **EventProcessorHost**-Klasse ruft diese Klasse auf, um von IoT Hub empfangene D2C-Nachrichten zu verarbeiten. Mit dem Code in dieser Klasse wird die Logik zum zuverlässigen Speichern von Nachrichten in einem Blobcontainer implementiert, und interaktive Nachrichten werden an die Service Bus-Warteschlange weitergeleitet. Die **OpenAsync**-Methode initialisiert die **currentBlockInitOffset**-Variable, mit der der aktuelle Offset der ersten Nachricht nachverfolgt wird, die von diesem Ereignisprozessor gelesen wird. Denken Sie daran, dass jeder Prozessor für eine bestimmte Partition verantwortlich ist.
     
-    Mit der **ProcessEventsAsync**-Methode wird ein Nachrichtenbatch von IoT Hub empfangen und wie folgt verarbeitet: Interaktive Nachrichten werden an die Service Bus-Warteschlange gesendet, und Datenpunktnachrichten werden an den Arbeitsspeicherpuffer mit dem Namen **toAppend** angefügt. Falls der Arbeitsspeicherpuffer das Blocklimit von 4 Mb erreicht oder die Service Bus-Deduplizierungszeitfenster seit dem letzten Prüfpunkt abgelaufen sind (in diesem Lernprogramm eine Stunde), wird ein Prüfpunkt ausgelöst.
+    Mit der **ProcessEventsAsync**-Methode wird ein Nachrichtenbatch von IoT Hub empfangen und wie folgt verarbeitet: Interaktive Nachrichten werden an die Service Bus-Warteschlange gesendet, und Datenpunktnachrichten werden an den Arbeitsspeicherpuffer mit dem Namen **toAppend** angefügt. Falls der Arbeitsspeicherpuffer das Blocklimit von 4 Mb erreicht oder die Service Bus-Deduplizierungszeitfenster seit dem letzten Prüfpunkt abgelaufen sind (in diesem Lernprogramm eine Stunde), wird ein Prüfpunkt ausgelöst.
 
     Mit der **AppendAndCheckpoint**-Methode wird zuerst eine „blockId“ für den anzufügenden Block generiert. Für Azure Storage ist es erforderlich, dass alle Block-IDs dieselbe Länge haben. Die Methode füllt den Offset daher mit führenden Nullen auf: `currentBlockInitOffset.ToString("0000000000000000000000000")`. Wenn ein Block mit dieser ID im Blob bereits vorhanden ist, überschreibt die Methode ihn mit dem aktuellen Inhalt des Puffers.
 
-    > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Lernprogramm eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn sie eine bestimmte Größe erreichen (ein Azure-Blockblob kann maximal 195 Gb groß sein) oder wenn ein bestimmter Zeitraum verstrichen ist.
+    > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Lernprogramm eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn sie eine bestimmte Größe erreichen (ein Azure-Blockblob kann maximal 195 Gb groß sein) oder wenn ein bestimmter Zeitraum verstrichen ist.
 
 8. Fügen Sie am Anfang der **Program**-Klasse die folgenden **using**-Anweisungen hinzu:
 
@@ -285,21 +285,21 @@ In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die interaktive Nac
     ```
 
 <!-- Links -->
-[Informationen zu Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Informationen zu Azure Storage]: ../articles/storage/storage-create-storage-account.md#create-a-storage-account
 [Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[Erste Schritte mit Event Hubs]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[IoT Hub Developer Guide - Identity Registry]: iot-hub-devguide.md#identityregistry
-[Richtlinien zur Azure-Speicherskalierbarkeit]: ../storage/storage-scalability-targets.md
+[Erste Schritte mit Event Hubs]: ../articles/event-hubs/event-hubs-csharp-ephcs-getstarted.md
+[IoT Hub Developer Guide - Identity Registry]: ../articles/iot-hub/iot-hub-devguide.md#identityregistry
+[Richtlinien zur Azure-Speicherskalierbarkeit]: ../articles/storage/storage-scalability-targets.md
 [Azure Block Blobs]: https://msdn.microsoft.com/library/azure/ee691964.aspx
-[Event Hubs]: ../event-hubs/event-hubs-overview.md
+[Event Hubs]: ../articles/event-hubs/event-hubs-overview.md
 [Scaled out event processing]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Programmierleitfaden für Event Hubs]: ../event-hubs/event-hubs-programming-guide.md
+[Programmierleitfaden für Event Hubs]: ../articles/event-hubs/event-hubs-programming-guide.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://manage.windowsazure.com/
-[Service Bus Queue]: ../service-bus/service-bus-dotnet-how-to-use-queues.md
-[Erstellen von Anwendungen mit mehreren Ebenen mit Service Bus]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-[Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
+[Service Bus Queue]: ../articles/service-bus/service-bus-dotnet-how-to-use-queues.md
+[Erstellen von Anwendungen mit mehreren Ebenen mit Service Bus]: ../articles/service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Erste Schritte mit IoT Hub]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
 [Service Bus-Dokumentation]: https://azure.microsoft.com/documentation/services/service-bus/
 
 <!-- Images -->
@@ -314,4 +314,4 @@ In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die interaktive Nac
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

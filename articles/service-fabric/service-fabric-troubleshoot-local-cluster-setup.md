@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/08/2016"
+   ms.date="04/06/2016"
    ms.author="seanmck"/>
 
 # Problembehandlung beim Einrichten des Clusters für die lokale Entwicklung
@@ -50,6 +50,8 @@ Wenn Sie versuchen, die Service Fabric-PowerShell-Cmdlets auszuführen, z. B. a
 #### Lösung
 
 Führen Sie Service Fabric-Cmdlets immer direkt über Windows PowerShell aus.
+
+>[AZURE.NOTE] Die neueste Version von Azure PowerShell erstellt keine spezielle Tastenkombination, daher sollte dieses Problem nicht mehr auftreten.
 
 ### Ausnahme bei der Typinitialisierung
 
@@ -96,4 +98,4 @@ Stellen Sie sicher, dass in Ihrer Projektmappe keine Dienstprojekte als Startpro
 - [Grundlagen und Problembehandlung für Cluster mit Systemintegritätsberichten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,8 +3,8 @@
    description="Auf dieser Seite werden einige allgemeine Einschränkungen von Azure SQL-Datenbank sowie Aspekte der Interoperabilität und Unterstützung beschrieben."
    services="sql-database"
    documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
+   authors="carlrabeler"
+   manager="jhubbard"
    editor="monicar" />
 <tags
    ms.service="sql-database"
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="01/15/2016"
-   ms.author="jroth" />
+   ms.date="04/11/2016"
+   ms.author="carlrab" />
 
 # Azure SQL-Datenbanken – Allgemeine Einschränkungen und Leitlinien
 
@@ -59,8 +59,8 @@ Darüber hinaus dürfen Anmelde- und Benutzernamen nicht das Zeichen „\\“ en
 
 - Sicherheitsbezogene Leitlinien finden Sie unter [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md).
 
-- Ein weiterer Aspekt ist die Kompatibilität von Azure SQL-Datenbank mit lokalen Versionen von SQL Server, wie z. B. SQL Server 2014. Die neueste Version von Azure SQL-Datenbank (V12 ) weist bei diesem Aspekt viele Verbesserungen auf. Weitere Informationen finden Sie unter [Neuerungen in SQL-Datenbank V12](sql-database-v12-whats-new.md).
+- Ein weiterer Aspekt ist die Kompatibilität von Azure SQL-Datenbank mit lokalen Versionen von SQL Server, wie z.B. SQL Server 2014 und SQL Server 2016. Die neueste Version von Azure SQL-Datenbank (V12 ) weist bei diesem Aspekt viele Verbesserungen auf. Weitere Informationen finden Sie unter [Neuerungen in SQL-Datenbank V12](sql-database-v12-whats-new.md).
 
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

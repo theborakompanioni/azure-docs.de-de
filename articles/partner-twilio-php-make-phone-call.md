@@ -1,22 +1,22 @@
-<properties 
-	pageTitle="Tätigen eines Telefonanrufs über Twilio (PHP) | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Beispiele sind für eine PHP-Anwendung vorgesehen." 
-	documentationCenter="php" 
-	services="" 
-	authors="devinrader" 
-	manager="twilio" 
+<properties
+	pageTitle="Tätigen eines Telefonanrufs über Twilio (PHP) | Microsoft Azure"
+	description="Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Beispiele sind für eine PHP-Anwendung vorgesehen."
+	documentationCenter="php"
+	services=""
+	authors="devinrader"
+	manager="twilio"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
+<tags
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="article"
+	ms.date="11/25/2014"
 	ms.author="microsofthelp@twilio.com"/>
 
-# Tätigen eines Telefonanrufs mithilfe von Twilio in einer PHP-Anwendung auf Azure 
+# Tätigen eines Telefonanrufs mithilfe von Twilio in einer PHP-Anwendung auf Azure
 
 Das folgende Beispiel zeigt, wie Sie von einer in Azure gehosteten PHP-Webseite einen Anruf über Twilio tätigen können. Die Anwendung fragt den Benutzer nach Werten für den Telefonanruf, wie im folgenden Screenshot gezeigt.
 
@@ -25,7 +25,7 @@ Das folgende Beispiel zeigt, wie Sie von einer in Azure gehosteten PHP-Webseite 
 Sie benötigen Folgendes, um den Code in diesem Artikel ausführen zu können:
 
 1. Ein Twilio-Konto und ein Authentifizierungs-Token. Sie können Sie die Preise von Twilio unter [http://www.twilio.com/pricing][twilio_pricing] ansehen. Sie können unter [https://www.twilio.com/try-twilio][try_twilio] ein Probekonto registrieren. Weitere Informationen über die von Twilio bereitgestellte API finden Sie unter [http://www.twilio.com/api][twilio_api].
-2. Laden Sie die Twilio-Bibliothek für PHP herunter. Sie können die Bibliothek von GitHub ([https://github.com/twilio/twilio-php][twilio_php_github]) herunterladen oder als PEAR-Paket installieren. Weitere Informationen finden Sie unter [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
+2. Rufen Sie die [Twilio-Bibliothek für PHP](https://github.com/twilio/twilio-php) ab, oder installieren Sie sie als PEAR-Paket. Weitere Informationen finden Sie in der [Infodatei](https://github.com/twilio/twilio-php/blob/master/README.md).
 3. Installieren Sie das Azure SDK für PHP. Eine Übersicht über das SDK und Hinweise für die Installation finden Sie unter [Einrichten des Azure SDK für PHP][setup_php_sdk].
 
 ## Erstellen eines Webformulars für den Anruf
@@ -83,7 +83,7 @@ Der folgende Code erstellt eine Webseite (**makecall.php**), die aufgerufen wird
 	$client = new Services_Twilio($sid, $token, "2010-04-01");
 
 	$call = $client->account->calls->create(
-		$from_number, 
+		$from_number,
 		$to_number,
   		'http://twimlets.com/message?Message='.urlencode($message)
 	);
@@ -103,7 +103,6 @@ Im nächsten Schritt stellen Sie die Anwendung auf Azure-Websites bereit. Die fo
 
 * [Erstellen einer PHP-MySQL-Azure-Website und Bereitstellen über Git][website-git]
 * [Erstellen einer PHP-MySQL-Azure-Website und Bereitstellen über FTP][website-ftp]
-* [Erstellen und Bereitstellen einer PHP-MySQL-Azure-Website mithilfe von WebMatrix][website-webmatrix]
 
 ## Nächste Schritte
 Dieser Code demonstriert die allgemeinen Funktionen für die Verwendung von Twilio mit PHP in Azure. Bevor Sie dieses Beispiel in einer Produktionsumgebung bereitstellen, sollten Sie einige Funktionen zur Fehlerbehandlung oder andere Features hinzufügen. Beispiel:
@@ -121,8 +120,6 @@ Weitere Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][t
 [try_twilio]: http://www.twilio.com/try-twilio
 [twilio_api]: http://www.twilio.com/api
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_php]: https://github.com/twilio/twilio-php
-[twilio_github_readme]: https://github.com/twilio/twilio-php/blob/master/README.md
 [setup_php_sdk]: http://azurephp.interoperabilitybridges.com/articles/setup-the-windows-azure-sdk-for-php
 [twimlet_message_url]: http://twimlets.com/message
 [twiml]: http://www.twilio.com/docs/api/twiml
@@ -138,9 +135,8 @@ Weitere Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][t
 [ssl_validation]: http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html
 [twilio_php]: ./media/partner-twilio-php-make-phone-call/WA_TwilioPHPCallForm.jpg
 [twilio_php_response]: ./media/partner-twilio-php-make-phone-call/WA_TwilioPHPMakeCall.jpg
-[website-git]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-git/
-[website-ftp]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-ftp/
-[website-webmatrix]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-webmatrix/
+[website-git]: ./web-sites/web-sites-php-mysql-deploy-use-git.md
+[website-ftp]: ./web-sites/web-sites-php-mysql-deploy-use-ftp.md
 [twilio_php_github]: https://github.com/twilio/twilio-php
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

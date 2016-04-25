@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="02/29/2016"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle
@@ -23,9 +23,14 @@
 - [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
 - [REST-API](role-based-access-control-manage-access-rest.md)
 
-## Auflisten der Rollen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und der Azure Resource Manager-API können Sie den Zugriff auf Ihr Abonnement und Ihre Ressourcen differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
->[AZURE.IMPORTANT] Bevor Sie die Cmdlets in diesem Artikel verwenden können, müssen Sie [die Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md).
+Bevor Sie RBAC mithilfe der Azure-Befehlszeilenschnittstelle verwalten können, benötigen Sie Folgendes:
+
+- Azure-Befehlszeilenschnittstelle, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+- Azure Resource Manager unter der Azure-Befehlszeilenschnittstelle. Weitere Informationen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit dem Resource Manager](../xplat-cli-azure-resource-manager.md).
+
+## Auflisten der Rollen
 
 ###	Auflisten aller verfügbaren Rollen
 Um alle verfügbaren Rollen aufzulisten, verwenden Sie Folgendes:
@@ -47,17 +52,17 @@ Das folgende Beispiel zeigt die Aktionen der Rollen *Contributor* und *Virtual M
 
 ##	Auflisten des Zugriffs
 ###	Auflisten der effektiven Rollenzuweisungen für eine Ressourcengruppe
-Um die effektiven Rollenzuweisungen für eine Ressourcengruppe aufzulisten, verwenden Sie Folgendes:
+Verwenden Sie Folgendes, um die in einer Ressourcengruppe enthaltenen Rollenzuweisungen aufzulisten:
 
     azure role assignment list --resource-group <resource group name>
 
-Das folgende Beispiel zeigt die Rollenzuweisungen für die Gruppe *pharma-sales-projecforcast*.
+Das folgende Beispiel zeigt die Rollenzuweisungen für die Gruppe *pharma-sales-projectforecast*.
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungsliste nach Gruppe – Screenshot](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
 ###	Auflisten von Rollenzuweisungen für einen Benutzer, einschließlich derer, die den Gruppen des Benutzers zugewiesen sind
 
-Das folgende Beispiel zeigt die Rollenzuweisungen für den Benutzer **sameert@aaddemo.com*.
+Das folgende Beispiel zeigt die Rollenzuweisungen, die dem Benutzer **sameert@aaddemo.com* gewährt wurden. Darin sind Rollen enthalten, die dem Benutzer direkt zugewiesen werden, aber auch Rollen, die von Gruppen geerbt werden.
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungsliste nach Benutzer – Screenshot](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
@@ -80,7 +85,7 @@ Um einer Anwendung im Abonnementkontext eine Rolle zuzuweisen, verwenden Sie Fol
 
     azure role assignment create --objId  <applications's object id> --role <name of role> --scope <subscription/subscription id>
 
-Das folgende Beispiel gewährt einer *Azure AD*-Anwendung für das ausgewählte Abonnement die Rolle *Contributor*.
+Das folgende Beispiel gewährt einer *Azure AD*-Anwendung für das ausgewählte Abonnement die Rolle *Contributor*.
 
  ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungserstellung nach Anwendung](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-2.png)
 
@@ -98,7 +103,7 @@ Um einer Gruppe im Ressourcenkontext eine Rolle zuzuweisen, verwenden Sie Folgen
 
     azure role assignment create --objId  <group id> --roleName <name of role in quotes> --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
 
-Das folgende Beispiel gewährt einer *Azure AD*-Gruppe in einem *Subnetz* die Rolle *Virtual Machine Contributor*.
+Das folgende Beispiel gewährt einer *Azure AD*-Gruppe in einem *Subnetz* die Rolle *Virtual Machine Contributor*.
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungserstellung nach Gruppe – Screenshot](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-4.png)
 
@@ -157,4 +162,4 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 ## RBAC-Themen
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

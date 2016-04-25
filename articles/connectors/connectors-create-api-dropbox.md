@@ -19,7 +19,7 @@
    ms.author="mandia"/>
 
 # Erste Schritte mit der Dropbox-API 
-Verbinden Sie sich mit Dropbox, um Dateien zu verwalten, d. h. erstellen, abrufen usw. Die Dropbox-API kann in Folgendem verwendet werden:
+Verbinden Sie sich mit Dropbox, um Dateien zu verwalten, d. h. erstellen, abrufen usw. Die Dropbox-API kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 - PowerApps
@@ -30,14 +30,14 @@ Verbinden Sie sich mit Dropbox, um Dateien zu verwalten, d. h. erstellen, abrufe
 
 &nbsp;
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Dropbox-Connector](../app-service-logic/app-service-logic-connector-dropbox.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 
 Dropbox ermöglicht Folgendes:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Dropbox abgerufen werden. 
 - Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
-- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in Dropbox erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
+- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in Dropbox erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
 - Hinzufügen der Dropbox-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
 
 Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
@@ -172,7 +172,7 @@ Ruft den Dateiinhalt anhand des Pfads aus Dropbox ab. ```GET: /datasets/default/
 
 
 ### Dateimetadaten anhand der ID abrufen    
-Ruft Dateimetadaten aus Dropbox anhand der Datei-ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten anhand der Datei-ID aus Dropbox ab. ```GET: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -272,7 +272,7 @@ Löst einen Datenfluss aus, wenn in einem Dropbox-Ordner eine Datei geändert wi
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 
@@ -286,4 +286,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [10]: ./media/connectors-create-api-dropbox/dropbox-create-app-page1.png
 [11]: ./media/connectors-create-api-dropbox/dropbox-create-app-page2.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

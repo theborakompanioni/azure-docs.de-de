@@ -3,9 +3,9 @@
 	description="Dieses Thema enthält eine Anleitung, mit deren Hilfe Sie ermitteln können, welche Dienstebene für Ihre Anwendung geeignet ist. Außerdem enthält es Empfehlungen zur Optimierung der Anwendung, damit Sie alle Vorteile von Azure SQL-Datenbank ausnutzen können."
 	services="sql-database"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
-	editor="monicar" />
+	authors="carlrabeler"
+	manager="jhubbard"
+	editor="" />
 
 
 <tags
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="11/03/2015"
-	ms.author="jroth" />
+	ms.date="04/11/2016"
+	ms.author="carlrab" />
 
 # Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken
 
@@ -23,7 +23,7 @@
 
 Microsoft Azure SQL-Datenbank verfügt über drei [Dienstebenen](sql-database-service-tiers.md): Basic, Standard und Premium. Auf allen Ebenen wird die Ressource, die für Ihre Azure SQL-Datenbank bereitgestellt wird, streng isoliert, und es wird für eine vorhersagbare Leistung gesorgt. Der für die Datenbank garantierte Durchsatz steigt von der Ebene „Basic“ über „Standard“ bis hin zu „Premium“ an.
 
->[AZURE.NOTE] Die Dienstebenen „Business“ und „Web“ werden im September 2015 eingestellt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition](https://msdn.microsoft.com/library/azure/dn741330.aspx). Ausführliche Informationen zum Aktualisieren vorhandener Web- und Business-Datenbanken auf die neuen Dienstebenen finden Sie unter [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-new-service-tiers.md).
+>[AZURE.NOTE] Die Dienstebenen „Business“ und „Web“ werden im September 2015 eingestellt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition](https://msdn.microsoft.com/library/azure/dn741330.aspx). Ausführliche Informationen zum Aktualisieren vorhandener Web- und Business-Datenbanken auf die neuen Dienstebenen finden Sie unter [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-server-portal.md).
 
 Dieses Dokument enthält eine Anleitung, mit deren Hilfe Sie ermitteln können, welche Dienstebene für Ihre Anwendung geeignet ist. Außerdem enthält es Empfehlungen zur Optimierung der Anwendung, damit Sie alle Vorteile von Azure SQL-Datenbank ausnutzen können.
 
@@ -324,7 +324,7 @@ Im folgenden Beispiel wird ein Fall erstellt, in dem der ausgewählte Abfragepla
 
 Azure SQL-Datenbank enthält Funktionen, mit denen Datenbankadministratoren Hinweise dazu erhalten können, wie sie allgemeine fehlende Indexbedingungen finden und dies beheben können. Mit in Azure SQL-Datenbank integrierten dynamischen Verwaltungssichten (DMVs) wird die Abfragenkompilierung daraufhin untersucht, ob ein Index die geschätzten Kosten zum Ausführen einer Abfrage erheblich reduzieren würde. Während der Abfragenausführung wird nachverfolgt, wie häufig jeder Abfrageplan ausgeführt wird. Außerdem wird die geschätzte Differenz zwischen dem ausgeführten Abfrageplan und dem imaginären Abfrageplan mit dem Index ermittelt. So kann ein Datenbankadministrator schnell abschätzen, welche Änderungen am physischen Datenbankdesign zu einer Verbesserung der Workload-Gesamtkosten für eine bestimmte Datenbank und der tatsächlichen Workload führen können.
 
->[AZURE.NOTE] Lesen Sie sich zuerst den Abschnitt [Query Performance Insight und Index Advisor](query-performance-insight-and-index-advisor.md) durch, bevor Sie dynamische Verwaltungssichten zum Suchen nach fehlenden Indizes verwenden.
+>[AZURE.NOTE] Lesen Sie sich zuerst den Abschnitt [Query Performance Insight und Index Advisor](#query-performance-insight-and-index-advisor) durch, bevor Sie dynamische Verwaltungssichten zum Suchen nach fehlenden Indizes verwenden.
 
 Die folgende Abfrage kann verwendet werden, um potenzielle fehlende Indizes zu ermitteln.
 
@@ -491,4 +491,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,7 +3,7 @@
     description="Hier wird erläutert, wie Sie Shards manipulieren und Daten über einen selbst gehosteten Dienst mithilfe von APIs für elastische Datenbanken verschieben." 
     services="sql-database" 
     documentationCenter="" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     authors="ddove"/>
 
 <tags 
@@ -27,7 +27,13 @@ Grundlegende Informationen finden Sie im [Tutorial zum Split-Merge-Tool für ela
 
 Version 1.1.0 des Split-Merge-Tools bietet die Möglichkeit, Metadaten in der abgeschlossenen Anforderung automatisch zu bereinigen. Eine Konfigurationsoption steuert, wie lange diese Metadaten beibehalten werden, bevor sie entfernt werden.
 
-Version 1.0.0 des Split-Merge-Tools bietet die folgenden Verbesserungen: * .NET-APIs sind als Schnittstellen mit Split-Merge enthalten – die Webrolle ist jetzt optional. * Datums- und Uhrzeittypen werden jetzt für Sharding-Schlüssel unterstützt. * Listen-Shardzuordnungen werden jetzt unterstützt. * Bereichsgrenzen in Anforderungen können einfacher mit Bereichen verglichen werden, die in der Shard-Zuordnung gespeichert werden. * Mehrere Workerrolleninstanzen werden jetzt unterstützt, um die Verfügbarkeit zu verbessern. * Im Rahmen Ihres Split-Merge-Vorgangs gespeicherte Anmeldeinformationen werden jetzt im Ruhezustand verschlüsselt.
+Version 1.0.0 des Split-Merge-Tools bietet die folgenden Verbesserungen:
+* .NET-APIs sind als Schnittstellen mit Split-Merge enthalten – die Webrolle ist jetzt optional 
+* Datums- und Uhrzeittypen werden jetzt für Sharding-Schlüssel unterstützt. 
+* Es werden jetzt Listen-Shardzuordnungen unterstützt. 
+* Bereichsgrenzen in Anforderungen können einfacher mit Bereichen verglichen werden, die in der Shard-Zuordnung gespeichert werden.
+* Es werden jetzt mehrere Workerrolleninstanzen unterstützt, um die Verfügbarkeit zu verbessern. 
+* Im Rahmen Ihres Split-Merge-Vorgangs gespeicherte Anmeldeinformationen werden jetzt im Ruhezustand verschlüsselt.
 
 ## Aktualisieren
 
@@ -169,7 +175,7 @@ Der Split-Merge-Dienst stellt die **RequestStatus**-Tabelle in der Metadatenspei
 
 ### Azure-Diagnose
 
-Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie steuern die Diagnosekonfiguration, wie es unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../service-fabric/cloud-services-dotnet-diagnostics.md) beschrieben ist. Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Diese Diagnosekonfigurationen für den Dienst entsprechen den Anleitungen unter [Clouddienstgrundlagen in Microsoft Azure](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649). Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
+Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie steuern die Diagnosekonfiguration, wie es unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md) beschrieben ist. Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Diese Diagnosekonfigurationen für den Dienst entsprechen den Anleitungen unter [Clouddienstgrundlagen in Microsoft Azure](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649). Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
 
 ## Bereitstellen der Diagnose 
 
@@ -195,7 +201,7 @@ Führen Sie die folgenden Befehle mit Azure PowerShell aus, um die Überwachung 
     
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker" 
 
-Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services-dotnet-diagnostics.md).
+Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## Abrufen der Diagnose 
 
@@ -239,4 +245,4 @@ Darüber hinaus ermöglicht die Eindeutigkeit des Shardingschlüssels als führe
 [3]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

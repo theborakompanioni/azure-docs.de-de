@@ -21,7 +21,7 @@ ms.author="deonhe"/>
 
 Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange, Empfangen aus Abonnements usw.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Azure Service Bus](../app-service-logic/app-service-logic-connector-azureservicebus.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Mit Azure Service Bus können Sie folgende Aktionen ausführen:
 
@@ -51,7 +51,7 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Erstellen einer Verbindung mit Azure Service Bus
-Um die Azure Service Bus-API zu verwenden, stellen Sie zunächst eine **Verbindung** her und geben dann die Details für diese Eigenschaften an:
+Zur Verwendung der Azure Service Bus-API stellen Sie zunächst eine **Verbindung** her und geben dann die Details für diese Eigenschaften an:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -60,7 +60,7 @@ Um die Azure Service Bus-API zu verwenden, stellen Sie zunächst eine **Verbindu
 Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung** aus, die Sie dann in Ihrer Logik-App verwenden können:
 
 1. Wählen Sie **Wiederholung** aus.
-2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an. ![Service Bus konfigurieren][1] 
+2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.![Service Bus konfigurieren][1] 
 3. Wählen Sie **Aktion hinzufügen**. ![Service Bus konfigurieren][2]   
 4. Geben Sie in das Suchfeld **Service Bus** ein, und warten Sie, bis die Suche alle Einträge mit „Service Bus“ im Namen zurückgibt.
 5. Wählen Sie **Service Bus – Nachricht senden**. ![Service Bus konfigurieren][3]
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung*
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
 ## Azure Service Bus-REST-API-Referenz
-#### Diese Dokumentation gilt für Version 1.0.
+#### Diese Dokumentation gilt für Version 1.0.
 
 
 ### Sendet eine Nachricht an ein Azure Service Bus-Warteschlange oder -Thema.
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung*
 
 ## Objektdefinitionen: 
 
- **ServiceBusMessage:** Nachricht besteht aus Inhalt und Eigenschaften
+ **ServiceBusMessage:** Nachricht besteht aus Inhalt und Eigenschaften.
 
 Erforderliche Eigenschaften für ServiceBusMessage:
 
@@ -156,7 +156,7 @@ ContentTransferEncoding
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 [1]: ./media/connectors-create-api-servicebus/connectionconfig1.png
 [2]: ./media/connectors-create-api-servicebus/connectionconfig2.png
@@ -165,4 +165,4 @@ ContentTransferEncoding
 [5]: ./media/connectors-create-api-servicebus/connectionconfig5.png
 [6]: ./media/connectors-create-api-servicebus/connectionconfig6.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

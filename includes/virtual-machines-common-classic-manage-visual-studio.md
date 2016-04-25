@@ -2,7 +2,7 @@ Sie können mithilfe des Server-Explorers in Visual Studio virtuelle Computer in
 
 ## Erstellen eines virtuellen Azure-Computers im Server-Explorer
 
-Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=253103) erstellen. Alternativ dazu können Sie einen virtuellen Computer in Azure auch mithilfe von Befehlen im Server-Explorer erstellen. Virtuelle Computer können z. B. verwendet werden, um ein Front-End hinter einem allgemeinen öffentlichen Endpunkt mit Lastenausgleich bereitzustellen.
+Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=253103) erstellen. Alternativ dazu können Sie einen virtuellen Computer in Azure auch mithilfe von Befehlen im Server-Explorer erstellen. Virtuelle Computer können z. B. verwendet werden, um ein Front-End hinter einem allgemeinen öffentlichen Endpunkt mit Lastenausgleich bereitzustellen.
 
 ### So erstellen Sie einen neuen virtuellen Computer
 
@@ -24,9 +24,9 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
     Sie können die folgenden Imagetypen auswählen.
 
-    - **Öffentliche Images** führt die Images virtueller Computer für Betriebssysteme und Serversoftware wie etwa Windows Server und SQL Server auf.
+    - **Öffentliche Images** führt die Images virtueller Computer für Betriebssysteme und Serversoftware wie etwa Windows Server und SQL Server auf.
 
-    - **MSDN-Images** führt die Images virtueller Computer für Software auf, die für MSDN-Abonnenten verfügbar ist, z. B. Visual Studio und Microsoft Dynamics.
+    - **MSDN-Images** führt die Images virtueller Computer für Software auf, die für MSDN-Abonnenten verfügbar ist, z. B. Visual Studio und Microsoft Dynamics.
 
     - **Private Images** führt spezialisierte und generalisierte Images virtueller Computer auf, die Sie erstellt haben.
 
@@ -38,7 +38,7 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
     Wenn Sie über ein MSDN-Abonnement auf Visual Studio-Ebene verfügen, können Sie einen vordefinierten virtuellen Azure-Computer erstellen, der Visual Studio enthält, sowie verschiedene weitere Images. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers in Visual Studio mithilfe von Images – Visual Studio 2013-Katalogimage für MSDN-Abonnenten](http://visualstudio2013msdngalleryimage.azurewebsites.net) und [MSDN-Abonnements](https://www.visualstudio.com/products/msdn-subscriptions-vs).
 
-1. Geben Sie auf der Seite **Grundeinstellungen des virtuellen Computers** einen Computernamen ein, und fügen Sie dann die Spezifikationen für den virtuellen Computer (z. B. die Größe) sowie einen Benutzernamen und ein Kennwort hinzu. Wenn Sie fertig sind, klicken Sie auf **Weiter**.
+1. Geben Sie auf der Seite **Grundeinstellungen des virtuellen Computers** einen Computernamen ein, und fügen Sie dann die Spezifikationen für den virtuellen Computer (z. B. die Größe) sowie einen Benutzernamen und ein Kennwort hinzu. Wenn Sie fertig sind, klicken Sie auf **Weiter**.
 
     Sie verwenden den neuen Namen und das Kennwort, um sich mithilfe von Remotedesktop am Computer anzumelden. Daher ist es sinnvoll, sich diese Angaben zu notieren. Nachdem Sie einen virtuellen Azure-Computer in Visual Studio erstellt haben, können Sie seine Größe und andere Einstellungen im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=253103) ändern.
 
@@ -54,13 +54,13 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
     Indem Sie Ihren virtuellen Computer einer Verfügbarkeitsgruppe hinzufügen, können Sie sicherstellen, dass die Anwendung bei Netzwerkfehlern, Hardwarefehlern des lokalen Datenträgers und während geplanter Ausfallzeiten verfügbar bleibt. Zum Erstellen von virtuellen Netzwerken, Subnetzen und Verfügbarkeitsgruppen müssen Sie das [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=253103) verwenden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](https://azure.microsoft.com/documentation/articles/manage-availability-virtual-machines/).
 
-1. Geben Sie auf der Seite **Endpunkte** die öffentlichen Endpunkte an, die für Benutzer Ihres virtuellen Computers verfügbar sein sollen. Sie können z. B. zusätzlich zu den Remotedesktop- und PowerShell-Endpunkten, die standardmäßig aktiviert sind, HTTP (Port 80) aktivieren. Um einen Endpunkt hinzuzufügen, wählen Sie im Dropdownlistenfeld **Portname** einen Endpunkt aus, und klicken Sie auf die Schaltfläche **Hinzufügen**. Wenn Sie einen Endpunkt entfernen möchten, wählen Sie in der Liste der Endpunkte das rote **X** neben dem Namen aus.
+1. Geben Sie auf der Seite **Endpunkte** die öffentlichen Endpunkte an, die für Benutzer Ihres virtuellen Computers verfügbar sein sollen. Sie können z. B. zusätzlich zu den Remotedesktop- und PowerShell-Endpunkten, die standardmäßig aktiviert sind, HTTP (Port 80) aktivieren. Um einen Endpunkt hinzuzufügen, wählen Sie im Dropdownlistenfeld **Portname** einen Endpunkt aus, und klicken Sie auf die Schaltfläche **Hinzufügen**. Wenn Sie einen Endpunkt entfernen möchten, wählen Sie in der Liste der Endpunkte das rote **X** neben dem Namen aus.
 
     ![Die Seite "Endpunkte" im Assistenten für virtuelle Computer](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718351.png)
 
     Welche Endpunkte verfügbar sind, richtet sich nach dem Clouddienst, den Sie für Ihren virtuellen Computer ausgewählt haben. Weitere Informationen finden Sie unter [Azure-Dienstendpunkte](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/).
 
-    >[AZURE.NOTE] Durch Aktivieren öffentlicher Endpunkte werden Dienste auf Ihrem virtuellen Computer im Internet verfügbar. Stellen Sie sicher, dass die Endpunkte und Dienste auf Ihrem virtuellen Computer installiert und ordnungsgemäß konfiguriert werden, z. B. durch Festlegen von Zugriffssteuerungslisten (Access Control Lists, ACLs) für die Endpunkte. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/).
+    >[AZURE.NOTE] Durch Aktivieren öffentlicher Endpunkte werden Dienste auf Ihrem virtuellen Computer im Internet verfügbar. Stellen Sie sicher, dass die Endpunkte und Dienste auf Ihrem virtuellen Computer installiert und ordnungsgemäß konfiguriert werden, z. B. durch Festlegen von Zugriffssteuerungslisten (Access Control Lists, ACLs) für die Endpunkte. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/).
 
 1. Nachdem Sie die Einstellungen des virtuellen Computers konfiguriert haben, klicken Sie auf die Schaltfläche **Erstellen**, um den virtuellen Computer zu erstellen.
 
@@ -122,7 +122,7 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 
 1. Wenn Sie Sysprep bereits auf diesem virtuellen Computer ausgeführt haben, aktivieren Sie das Kontrollkästchen **Ich habe Sysprep auf dem virtuellen Computer ausgeführt**.
 
-    Sysprep ist ein Tool, das u. a. systemspezifische Daten aus der Windows-Version des virtuellen Computers entfernt und auf diese Weise eine Vorlage erstellt, die andere Computer verwenden können. Weitere Informationen hierzu finden Sie unter [Erfassen eines virtuellen Windows-Computers, um ihn als Vorlage zu verwenden](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/).
+    Sysprep ist ein Tool, das u. a. systemspezifische Daten aus der Windows-Version des virtuellen Computers entfernt und auf diese Weise eine Vorlage erstellt, die andere Computer verwenden können. Weitere Informationen hierzu finden Sie unter [Erfassen eines virtuellen Windows-Computers, um ihn als Vorlage zu verwenden](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/).
 
 1. Nachdem Sie die Aufzeichnungseinstellungen konfiguriert haben, klicken Sie auf die Schaltfläche **Aufzeichnen**, um den Prüfpunkt zu erstellen.
 
@@ -138,7 +138,7 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 
 ### So stellen Sie einen zuvor gespeicherten Zustand eines virtuellen Computers wieder her
 
-- Befolgen Sie die Schritte unter [Schritt für Schritt: Ausführen von Cloudwiederherstellungen virtueller Microsoft Azure-Computer mithilfe von PowerShell – Teil 2](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx).
+- Befolgen Sie die Schritte unter [Schritt für Schritt: Ausführen von Cloudwiederherstellungen virtueller Microsoft Azure-Computer mithilfe von PowerShell – Teil 2](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx).
 
 ### So löschen Sie einen Prüfpunkt
 
@@ -156,6 +156,6 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 
 ## Nächste Schritte
 
-Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-cli-create.md) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-tutorial.md).
+Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

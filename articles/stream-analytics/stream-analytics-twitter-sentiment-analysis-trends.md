@@ -62,7 +62,7 @@ Gehen Sie folgendermaßen vor, um die Anwendung einzurichten:
 	[Schritte zum Generieren eines OAuth-Zugriffstokens](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 
 	Beachten Sie, dass Sie zum Generieren eines Tokens eine leere Anwendung erstellen müssen.  
-3.	Ersetzen Sie die Werte EventHubConnectionString und EventHubName in „TwitterClient.exe.config“ durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs.
+3.	Ersetzen Sie die Werte EventHubConnectionString und EventHubName in „TwitterClient.exe.config“ durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs. Die zuvor kopierte Verbindungszeichenfolge enthält sowohl die Event Hub-Verbindungszeichenfolge als auch den Namen. Trennen Sie die beiden Angaben also, und geben Sie sie in die richtigen Felder ein.
 4.	*Optional:* Passen Sie die Schlüsselwörter für die Suche an. Standardmäßig sucht diese Anwendung nach „Azure,Skype,XBox,Microsoft,Seattle“. Falls gewünscht, können Sie die Werte für twitter\_keywords in „TwitterClient.exe.config“ anpassen.
 5.	Führen Sie **TwitterClient.exe** aus, um Ihre Anwendung zu starten. Sie sehen nun, wie Ereignisse mit den Werten CreatedAt, Topic und SentimentScore an Ihren Event Hub gesendet werden:
 
@@ -81,8 +81,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen haben, können wir einen Stre
 	* **REGION**: Wählen Sie die Region aus, in der der Auftrag ausgeführt werden soll. Ziehen Sie es in Betracht, den Auftrag und das Event Hub in derselben Region zu platzieren, um für eine bessere Leistung zu sorgen und sicherzustellen, dass Sie nicht für die Übertragung von Daten zwischen Regionen bezahlen.
 	* **SPEICHERKONTO** – Wählen Sie das Speicherkonto, das Sie zum Speichern von Überwachungsdaten für alle Stream Analytics-Aufträge verwenden möchten, die innerhalb dieser Region ausgeführt werden. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto auszuwählen oder ein neues zu erstellen.
 
-3.	Klicken Sie im linken Bereich auf **STREAM ANALYTICS**, um die Stream Analytics-Aufträge aufzulisten.  
-	![Symbol des Stream Analytics-Diensts](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+3.	Klicken Sie im linken Bereich auf **STREAM ANALYTICS**, um die Stream Analytics-Aufträge aufzulisten.![Symbol des Stream Analytics-Diensts](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
 
 4.	Der neue Auftrag wird mit dem Status **ERSTELLT** aufgeführt. Beachten Sie, dass die Schaltfläche **START** am unteren Seitenrand deaktiviert ist. Sie müssen die Auftragseingabe, -ausgabe und -abfrage konfigurieren, bevor Sie den Auftrag starten können.
 
@@ -93,7 +92,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen haben, können wir einen Stre
 3.	Wählen Sie **EVENT HUB**, und klicken Sie dann auf die rechte Taste.
 4.	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
 
-	* **INPUT ALIAS**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, wie z. B. TwitterStream. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden. **EVENT HUB**: Wenn der Event Hub, den Sie erstellt haben, sich in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
+	* **INPUT ALIAS**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, wie z. B. TwitterStream. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden. **EVENT HUB**: Wenn der Event Hub, den Sie erstellt haben, sich in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
 
 		Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus einem anderen Abonnement verwenden** aus, und geben Sie manuell folgende Informationen ein: **SERVICE BUS-NAMESPACE**, **EVENT HUB-NAME**, **NAME DER EVENT HUB-RICHTLINIE**, **SCHLÜSSEL DER EVENT HUB-RICHTLINIE** und **EVENT HUB-PARTITIONSANZAHL**.
 
@@ -154,7 +153,7 @@ Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, nutzen wir e
 
 #### Identifizieren von Trendthemen: Schiebefenster
 
-Zum Identifizieren von Trendthemen suchen wir nach Themen, die einen Schwellenwert für Erwähnungen in einem bestimmten Zeitraum überschreiten. Für die Zwecke dieses Lernprogramms suchen wir mithilfe eines [SlidingWindow](https://msdn.microsoft.com/library/azure/dn835051.aspx) nach Themen, die in den letzten 5 Sekunden mehr als 20-mal erwähnt werden.
+Zum Identifizieren von Trendthemen suchen wir nach Themen, die einen Schwellenwert für Erwähnungen in einem bestimmten Zeitraum überschreiten. Für die Zwecke dieses Lernprogramms suchen wir mithilfe eines [SlidingWindow](https://msdn.microsoft.com/library/azure/dn835051.aspx) nach Themen, die in den letzten 5 Sekunden mehr als 20-mal erwähnt werden.
 
 1.	Ändern Sie die Abfrage im Code-Editor in:
 
@@ -237,4 +236,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

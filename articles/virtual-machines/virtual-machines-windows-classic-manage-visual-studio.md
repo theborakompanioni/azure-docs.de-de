@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen und Verwalten virtueller Windows-Computer in Visual Studio | Microsoft Azure"
-   description="Erstellen und Verwalten virtueller Azure-Computer unter Windows in Visual Studio"
+   description="Erfahren Sie, wie Sie mithilfe von Visual Studio virtuelle Azure-Computer unter Windows erstellen und verwalten."
    services="visual-studio-online,virtual-machines-windows"
    documentationCenter="na"
    authors="TomArcher"
@@ -21,4 +21,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/14/2016"
+    ms.date="04/07/2016"
     ms.author="markusvi"/>
 
 
@@ -84,13 +84,13 @@ Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wis
 
 - [Aktivieren Sie Ihr Verzeichnis für das Hybrid-Management mit Azure AD Connect](active-directory-aadconnect.md)
 
-- [Mehr Sicherheit für eine allzeit vernetzte Welt](multi-factor-authentication.md)
+- [Mehr Sicherheit für eine allzeit vernetzte Welt](../multi-factor-authentication/multi-factor-authentication.md)
 
 - [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md)
 
 - [Erste Schritte mit Azure AD Reporting](active-directory-reporting-getting-started.md)
 
-- [Verwalten von Kennwörtern von einem beliebigen Ort aus](articles/active-directory-passwords.md)
+- [Verwalten von Kennwörtern von einem beliebigen Ort aus](active-directory-passwords.md)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
@@ -104,4 +104,4 @@ Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wis
 
 - [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

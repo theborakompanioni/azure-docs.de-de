@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/16/2016"
+   ms.date="04/12/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: Verzeichniserweiterungen
@@ -24,8 +24,8 @@ Derzeit können diese Attribute nicht von Office 365-Workloads genutzt werden.
 Sie konfigurieren im Installations-Assistenten im Pfad der benutzerdefinierten Einstellungen, welche zusätzlichen Attribute synchronisiert werden sollen. ![Schemaerweiterungs-Assistent](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png) Bei der Installation werden als zulässige Kandidaten die folgenden Attribute angezeigt:
 
 - Benutzer- und Gruppenobjekttypen
-- Einwertige Attribute
-- Zeichenfolgen, ganze Zahlen, Binärdaten
+- Einwertige Attribute: Zeichenfolge, Boolescher Wert, ganze Zahl, Binärwert
+- Mehrwertige Attribute: Zeichenfolge, Binärwert
 
 Ein Objekt kann bis zu 100 Attribute für Verzeichniserweiterungen aufweisen. Die maximale Länge beträgt 250 Zeichen. Wenn ein Attributwert länger ist, wird er durch das Synchronisierungsmodul gekürzt.
 
@@ -40,4 +40,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

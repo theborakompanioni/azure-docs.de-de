@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erste Schritte mit dem Beispiel"
-   description="Erste Schritte mit dem Beispiel"
+   description=""
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -21,7 +21,7 @@
 Mit der **Vorschau von Microsoft Power BI Embedded** können Sie Power BI-Berichte in Ihre Web- oder mobilen Anwendungen integrieren, sodass Sie keine benutzerdefinierten Lösungen zum Visualisieren von Daten für Ihre Benutzer erstellen müssen. Die folgenden Ressourcen helfen Ihnen bei den ersten Schritten zur Integration von Power BI-Berichten in Ihre App.
 
  -	[Beispiel für eine Dashboard-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
- -	[Power BI Embedded-API-Referenz](https://msdn.microsoft.com/library/mt711493.aspx)
+ -	[Power BI Embedded-API-Referenz](https://msdn.microsoft.com/library/mt712303.aspx)
  -	[Power BI Embedded .NET SDK (verfügbar über NuGet)](http://go.microsoft.com/fwlink/?LinkId=746472)
 
 In diesem Artikel erhalten Sie eine Einführung in das Beispiel für den Einstieg in **Power BI Embedded**. Beginnen wir zunächst mit der Konfiguration der Beispiel-App, damit Sie die Beispiel-Web-App ausführen können.
@@ -52,7 +52,7 @@ Im Folgenden werden Sie durch die Einrichtung ihrer Visual Studio-Entwicklungsum
 
     ![](media\powerbi-embedded-get-started-sample\workspace-id.png)
 
-8. Zum Importieren einer PBIX-Datei in Ihren **Arbeitsbereich** wählen Sie die Option **6. Importieren Sie die PBIX-Desktopdatei in einen vorhandenen Arbeitsbereich**. Wenn Sie keine PBIX-Datei zur Hand haben, können Sie das [PBIX-Beispiel für das Analysieren von Vertriebsdaten](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix) herunterladen.
+8. Zum Importieren einer PBIX-Datei in Ihren **Arbeitsbereich** wählen Sie die Option **6. Importieren Sie die PBIX-Desktopdatei in einen vorhandenen Arbeitsbereich**. Falls Sie keine PBIX-Datei parat haben, können Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) herunterladen.
 
 9. Wenn Sie dazu aufgefordert werden, geben Sie einen Anzeigenamen für Ihr **Dataset** ein.
 
@@ -86,7 +86,7 @@ So konfigurieren Sie das Web-App-Beispiel
     ```
 3. Führen Sie die Webanwendung **EmbedSample** aus.
 
-Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü **Berichte**. Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Berichte**, und klicken Sie auf einen Bericht. Wenn Sie das [Beispiel „Analyzing Sales Data PBIX“](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
+Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü **Berichte**. Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Berichte**, und klicken Sie auf einen Bericht. Wenn Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-sample-left-nav.png)
 
@@ -221,6 +221,20 @@ Sobald Sie über einen **Bericht** verfügen, verwenden Sie einen **IFrame**, um
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-iframe-code.png)
 
+
+### Filtern von in die Anwendung eingebetteten Berichten
+
+Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL einen Abfragezeichenfolgenparameter mit angegebenem Filter hinzu. Dies ist die Syntax der Filterabfrage:
+
+```
+https://app.powerbi.com/reportEmbed
+?reportId=d2a0ea38-0694-4c70-9673-ee9655d54a4a&
+$filter={tableName/fieldName} eq '{fieldValue}'
+```
+
+> [AZURE.NOTE] {tableName/fieldName} darf keine Leerzeichen oder Sonderzeichen enthalten. Für {fieldValue} wird ein einzelner Kategoriewert akzeptiert.
+
+
 ## Weitere Informationen
 
 - [Was ist Microsoft Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
@@ -228,4 +242,4 @@ Sobald Sie über einen **Bericht** verfügen, verwenden Sie einen **IFrame**, um
 - [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 - [Informationen zum App-Tokenfluss in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

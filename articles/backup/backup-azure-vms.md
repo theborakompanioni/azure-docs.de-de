@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="04/08/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
@@ -34,21 +34,37 @@ Zur Sicherung virtueller Azure-Computer gehören drei Hauptschritte:
 ## Schritt 1: Ermitteln virtueller Azure-Computer
 Führen Sie zunächst den Ermittlungsprozess durch, um sicherzustellen, dass alle neuen virtuellen Computer (VMs), die dem Abonnement hinzugefügt werden, vor der Registrierung identifiziert werden. Bei diesem Vorgang wird Azure nach der Liste virtueller Computer im Abonnement abgefragt. Außerdem werden zusätzliche Informationen wie der Clouddienstname und die Region erfasst.
 
-1. Navigieren Sie zum Sicherungstresor, der sich im Azure-Portal unter **Recovery Services** befindet, und klicken Sie auf die Registerkarte **Registrierte Elemente**.
+1. Melden Sie sich beim [klassischen Portal](http://manage.windowsazure.com/) an.
 
-2. Wählen Sie im Dropdownmenü **Virtueller Azure-Computer** aus.
+2. Klicken Sie in der Liste mit den Azure-Diensten auf **Recovery Services**, um die Liste mit den Backup- und Site Recovery-Tresoren zu öffnen. ![Tresorliste öffnen](./media/backup-azure-vms/choose-vault-list.png)
+
+3. Wählen Sie in der Liste mit den Backup-Tresoren den Tresor zum Sichern einer VM aus.
+
+    Wenn es sich um einen neuen Tresor handelt, wird das Portal mit der Seite **Schnellstart** geöffnet.
+
+    ![Menü „Registrierte Elemente“ öffnen](./media/backup-azure-vms/vault-quick-start.png)
+
+    Wenn der Tresor bereits konfiguriert wurde, wird das Portal mit dem zuletzt verwendeten Menü geöffnet.
+
+4. Klicken Sie im Tresormenü (oben auf der Seite) auf **Registrierte Elemente**.
+
+    ![Menü „Registrierte Elemente“ öffnen](./media/backup-azure-vms/vault-menu.png)
+
+5. Wählen Sie im Menü **Typ** die Option **Virtueller Azure-Computer** aus.
 
     ![Workload auswählen](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. Klicken Sie unten auf der Seite auf **ERMITTELN**. ![Schaltfläche „Ermitteln“](./media/backup-azure-vms/discover-button-only.png)
+6. Klicken Sie unten auf der Seite auf **ERMITTELN**. ![Schaltfläche „Ermitteln“](./media/backup-azure-vms/discover-button-only.png)
 
     Der Ermittlungsvorgang kann einige Minuten dauern, während die virtuellen Computer in einer Tabelle aufgeführt werden. Am unteren Rand des Bildschirms wird eine Benachrichtigung angezeigt, die Ihnen mitteilt, dass der Vorgang ausgeführt wird.
 
     ![VMs ermitteln](./media/backup-azure-vms/discovering-vms.png)
 
-    Die Benachrichtigung ändert sich, sobald der Vorgang abgeschlossen ist.
+    Die Benachrichtigung ändert sich, sobald der Vorgang abgeschlossen ist. Falls die virtuellen Computer im Rahmen des Ermittlungsprozesses nicht gefunden werden konnten, sollten Sie zuerst sicherstellen, dass die VMs vorhanden sind. Wenn die VMs vorhanden sind, sollten Sie sicherstellen, dass sich die VMs in derselben Region wie der Sicherungstresor befinden. Falls die VMs vorhanden sind und sich in derselben Region befinden, sollten Sie sicherstellen, dass die VMs nicht bereits bei einem Sicherungstresor registriert sind. Wenn eine VM einem Sicherungstresor zugewiesen ist, ist sie nicht für die Zuweisung zu anderen Sicherungstresoren verfügbar.
 
     ![Ermittlung abgeschlossen](./media/backup-azure-vms/discovery-complete.png)
+
+    Nachdem Sie die neuen Elemente ermittelt haben, können Sie mit Schritt 2 fortfahren und Ihre VMs registrieren.
 
 ##  Schritt 2: Registrieren virtueller Azure-Computer
 Sie registrieren einen virtuellen Azure-Computer, um ihn dem Azure Backup-Dienst zuzuordnen. Die Registrierung ist in der Regel eine einmalige Angelegenheit.
@@ -75,14 +91,14 @@ Sie registrieren einen virtuellen Azure-Computer, um ihn dem Azure Backup-Dienst
 
     ![Registrierungsstatus 1](./media/backup-azure-vms/register-status01.png)
 
-    Wenn der Vorgang abgeschlossen ist, ändert sich der Status dem *registrierten* Status entsprechend.
+    Wenn der Vorgang abgeschlossen ist, ändert sich der Status gemäß dem *registrierten* Status.
 
     ![Registrierungsstatus 2](./media/backup-azure-vms/register-status02.png)
 
-## Schritt 3: Schützen virtueller Azure-Computer
+## Schritt 3: Schützen virtueller Azure-Computer
 Nun können Sie die Sicherungs- und Aufbewahrungsrichtlinie für den virtuellen Computer definieren. Mehrere virtuelle Computer können in einem einzigen Schritt geschützt werden.
 
-Azure-Sicherungstresore, die nach Mai 2015 erstellt wurden, enthalten eine im Tresor integrierte Standardrichtlinie. Diese Standardrichtlinie sieht eine Standardaufbewahrungsdauer von 30 Tagen und eine einmalige tägliche Sicherung vor.
+Azure-Sicherungstresore, die nach Mai 2015 erstellt wurden, enthalten eine im Tresor integrierte Standardrichtlinie. Diese Standardrichtlinie sieht eine Standardaufbewahrungsdauer von 30 Tagen und eine einmalige tägliche Sicherung vor.
 
 1. Navigieren Sie zum Sicherungstresor, der sich im Azure-Portal unter **Recovery Services** befindet, und klicken Sie anschließend auf **Registrierte Elemente**.
 2. Wählen Sie im Dropdownmenü **Virtueller Azure-Computer** aus.
@@ -124,7 +140,7 @@ Azure-Sicherungstresore, die nach Mai 2015 erstellt wurden, enthalten eine im Tr
 
     Ein Auftrag wird erstellt, um die Schutzrichtlinie zu konfigurieren und die virtuellen Computer, die Sie ausgewählt haben, dieser Richtlinie zuzuordnen.
 
-6. Um die Liste der **Schutz konfigurieren**-Aufträge anzuzeigen, klicken Sie im Menü der Tresore auf **Aufträge**, und wählen Sie unter **Vorgänge** den Filter **Schutz konfigurieren** aus.
+6. Um die Liste der **Schutz konfigurieren**-Aufträge anzuzeigen, klicken Sie im Menü der Tresore auf **Aufträge** und wählen unter **Vorgänge** den Filter **Schutz konfigurieren** aus.
 
     ![Schutzauftrag konfigurieren](./media/backup-azure-vms/protect-configureprotection.png)
 
@@ -162,4 +178,4 @@ Wenn beim Sichern des virtuellen Computers Probleme auftreten, finden Sie Hilfe 
 - [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 - [Wiederherstellen virtueller Computer](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

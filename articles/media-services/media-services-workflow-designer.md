@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/08/2016"  
 	ms.author="juliako"/>
 
 
@@ -48,7 +48,7 @@ In den folgenden Videos wird die Verwendung des Designers veranschaulicht.
 Im Video von Tag 1 werden folgende Themen behandelt:
 
 - Übersicht über Designer
-- Grundlegende Workflows – "Hello World"
+- Grundlegende Workflows – „Hello World“
 - Erstellen mehrerer MP4-Ausgabedateien für die Verwendung mit Azure Media Services-Streaming
 
 > [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-1]
@@ -90,4 +90,4 @@ Falls Sie Support benötigen oder Fragen zur Erstellung von benutzerdefinierten 
 
 [Azure Premium Encoder Workflow-Designer – Schulungsvideos](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

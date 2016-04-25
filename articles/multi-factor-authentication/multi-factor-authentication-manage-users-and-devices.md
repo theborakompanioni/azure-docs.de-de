@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/24/2016" 
+	ms.date="04/11/2016" 
 	ms.author="billmath"/>
 
 # Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
@@ -22,7 +22,7 @@ Als Administrator können Sie die folgenden Einstellungen für Benutzer und Ger�
 
 - [Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen.](#require-selected-users-to-provide-contact-methods-again)
 - [Löschen vorhandener App-Kennwörter eines Benutzers](#delete-users-existing-app-passwords)
-- [Wiederherstellen der MFA auf allen ausgesetzten Geräten für einen Benutzer (öffentliche Vorschau)](#restore-mfa-on-all-suspended-devices-for-a-user)
+- [Wiederherstellen der MFA auf allen ausgesetzten Geräten eines Benutzers](#restore-mfa-on-all-suspended-devices-for-a-user)
 
 
 
@@ -86,4 +86,4 @@ Administratoren haben die Möglichkeit, die Multi-Factor Authentication auf Ger�
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

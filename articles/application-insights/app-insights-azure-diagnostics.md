@@ -9,7 +9,7 @@
 <tags
     ms.service="application-insights"
     ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza" 
+	ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
 	ms.date="11/17/2015"
@@ -17,7 +17,7 @@
 
 # Konfigurieren der Azure-Diagnose zum Protokollieren in Application Insights
 
-Wenn Sie ein Cloud Services-Projekt oder einen virtuellen Computer in Microsoft Azure einrichten, [kann Azure ein Diagnoseprotokoll generieren](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md). Sie können veranlassen, dass dieses Protokoll an Application Insights gesendet wird. Danach können Sie es gemeinsam mit der Diagnose- und Nutzungstelemetrie auswerten, die das Application Insights SDK aus der App heraus sendet. Das Azure-Protokoll enthält Ereignisse beim Verwalten der App, z. B. Starten, Beenden, Abstürze sowie Leistungsindikatoren. Das Protokoll enthält außerdem Aufrufe von „System.Diagnostics.Trace“ in der App.
+Wenn Sie ein Cloud Services-Projekt oder einen virtuellen Computer in Microsoft Azure einrichten, [kann Azure ein Diagnoseprotokoll generieren](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md/). Sie können veranlassen, dass dieses Protokoll an Application Insights gesendet wird. Danach können Sie es gemeinsam mit der Diagnose- und Nutzungstelemetrie auswerten, die das Application Insights SDK aus der App heraus sendet. Das Azure-Protokoll enthält Ereignisse beim Verwalten der App, z. B. Starten, Beenden, Abstürze sowie Leistungsindikatoren. Das Protokoll enthält außerdem Aufrufe von „System.Diagnostics.Trace“ in der App.
 
 Dieser Artikel beschreibt im Detail, wie Sie das Erfassen der Diagnose konfigurieren.
 
@@ -62,7 +62,7 @@ Wenn Sie die Rolleneigenschaften verwenden, um „Diagnosedaten an Application I
         <Channel logLevel="Verbose" name="MyLogData"  />
       </Channels>
      </Sink>
-    </SinksConfig> 
+    </SinksConfig>
 
 ```
 
@@ -116,7 +116,7 @@ Hier ist ein vollständiges Beispiel für die öffentliche Konfigurationsdatei, 
         <DataSource name="Application!*" />
       </WindowsEventLog>
       <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose"
-            sinks="ApplicationInsights.MyLogData"/> 
+            sinks="ApplicationInsights.MyLogData"/>
        <!-- This specific info sent to this channel -->
      </DiagnosticMonitorConfiguration>
 
@@ -136,9 +136,9 @@ Hier ist ein vollständiges Beispiel für die öffentliche Konfigurationsdatei, 
 
 Bei diesen Funktionen sind einige Einschränkungen zu beachten:
 
-* Kanäle sind nur für die Arbeit mit Protokolltyp und nicht mit Leistungsindikatoren vorgesehen. Wenn Sie einen Kanal mit einem Leistungsindikatorelement angeben, wird es ignoriert. 
-* Der Protokolliergrad für einen Kanal darf den Protokolliergrad für die von der Azure-Diagnose erfassten Daten nicht überschreiten. Beispiel: Sie können keine Anwendungsprotokollfehler im Logs-Element sammeln und können nicht versuchen, ausführliche Protokolle an die Application Insight-Synchronisierung zu senden. Das scheduledTransferLogLevelFilter-Attribut muss immer mindestens genauso viele Protokolle sammeln wie die Protokolle, die Sie an eine Senke senden möchten. 
-* Sie können keine von der Azure-Diagnose-Erweiterung gesammelten Blobdaten an Application Insights senden. Dazu gehören z. B. alle Daten unter dem Directories-Knoten. Bei Absturzabbildern wird das tatsächliche Absturzabbild weiterhin an den Blobspeicher gesendet, und es wird nur eine Benachrichtigung, dass das Absturzabbild generiert wurde, an Application Insights gesendet. 
+* Kanäle sind nur für die Arbeit mit Protokolltyp und nicht mit Leistungsindikatoren vorgesehen. Wenn Sie einen Kanal mit einem Leistungsindikatorelement angeben, wird es ignoriert.
+* Der Protokolliergrad für einen Kanal darf den Protokolliergrad für die von der Azure-Diagnose erfassten Daten nicht überschreiten. Beispiel: Sie können keine Anwendungsprotokollfehler im Logs-Element sammeln und können nicht versuchen, ausführliche Protokolle an die Application Insight-Synchronisierung zu senden. Das scheduledTransferLogLevelFilter-Attribut muss immer mindestens genauso viele Protokolle sammeln wie die Protokolle, die Sie an eine Senke senden möchten.
+* Sie können keine von der Azure-Diagnose-Erweiterung gesammelten Blobdaten an Application Insights senden. Dazu gehören z. B. alle Daten unter dem Directories-Knoten. Bei Absturzabbildern wird das tatsächliche Absturzabbild weiterhin an den Blobspeicher gesendet, und es wird nur eine Benachrichtigung, dass das Absturzabbild generiert wurde, an Application Insights gesendet.
 
 ## Verwandte Themen
 
@@ -146,4 +146,4 @@ Bei diesen Funktionen sind einige Einschränkungen zu beachten:
 * [Senden von Azure-Diagnosedaten an Application Insights mit PowerShell](app-insights-powershell-azure-diagnostics.md)
 * [Azure-Diagnosekonfigurationsdatei](https://msdn.microsoft.com/library/azure/dn782207.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0413_2016-->

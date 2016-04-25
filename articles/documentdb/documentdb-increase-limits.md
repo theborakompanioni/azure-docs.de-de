@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="04/07/2016"
 	ms.author="anhoh"/>
 
 # Anfordern von erhöhten DocumentDB-Kontolimits
@@ -25,9 +25,9 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 -	Welche DocumentDB-Kontokontingente können durch Kontaktaufnahme mit dem Azure-Support angepasst werden?
 -	Wie kann ich die Anpassung eines DocumentDB-Kontokontingents anfordern?
 
-##<a id="AdjustableQuotas"></a> Anpassbare DocumentDB-Kontokontingente
+##<a id="Quotas"></a> DocumentDB-Kontokontingente
 
-Die folgende Tabelle beschreibt die DocumentDB-Kontingente, die durch Kontaktaufnahme mit dem Azure-Support angepasst werden können:
+In der folgenden Tabelle sind die DocumentDB-Kontingente beschrieben: Kontingente mit einem Sternchen (*) können angepasst werden. Wenden Sie sich dafür an den Azure-Support.
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
@@ -63,4 +63,4 @@ Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanfo
 ##<a name="NextSteps"></a> Nächste Schritte
 - Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -24,13 +24,13 @@ Dieser Artikel veranschaulicht, wie Sie mit PowerShell Benutzerberechtigungen f�
 
 ## Richtlinien als Ressourcen
 
-Wie im Artikel [Rollenbasierte Access Control in Azure](/role-based-access-control-configure.md) verdeutlicht, ermöglicht RBAC eine fein abgestufte Steuerung des Zugriffs auf Azure-Ressourcen. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+Wie im Artikel [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md) verdeutlicht, ermöglicht RBAC eine differenzierte Zugriffsverwaltung für Azure-Ressourcen. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
 In DevTest Lab ist eine Richtlinie ein Ressourcentyp, der die RBAC-Aktion **Microsoft.DevTestLab/labs/policySets/policies/** ermöglicht. Jede DevTest Lab-Richtlinie ist eine Ressource im Richtlinienressourcentyp und kann als Bereich einer RBAC-Rolle zugewiesen werden.
 
 Um Benutzern beispielsweise Lese-/Schreibberechtigungen für die Richtlinie **Zulässige VM-Größen** zu erteilen, erstellen Sie eine benutzerdefinierte Rolle, die mit der Aktion **Microsoft.DevTestLab/labs/policySets/policies/*** arbeitet, und weisen dieser benutzerdefinierten Rolle anschließend im Bereich von **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** entsprechend Benutzer zu.
 
-Weitere Informationen zu benutzerdefinierten Rollen in RBAC finden Sie im Abschnitt [Benutzerdefinierte Rollen in Azure RBAC](/role-based-access-control-configure.md#custom-roles-in-azure-rbac) im Artikel [Rollenbasierte Access Control in Azure](/role-based-access-control-configure.md).
+Weitere Informationen zu benutzerdefinierten Rollen in RBAC finden Sie im Abschnitt [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac) im Artikel [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md).
 
 ##Erstellen einer benutzerdefinierten DevTest Lab-Rolle mithilfe von PowerShell
 Zu Beginn lesen Sie den folgenden Artikel, der erklärt, wie Sie die Azure PowerShell-Cmdlets installieren und konfigurieren: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
@@ -95,4 +95,4 @@ Nachdem Sie Berechtigungen für bestimmte DevTest Lab-Richtlinien gewährt haben
 
 - [Hinzufügen einer VM mit Artefakten zu einem Azure DevTest Lab](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

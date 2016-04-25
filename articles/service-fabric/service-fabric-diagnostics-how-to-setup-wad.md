@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/30/2016"
+   ms.date="04/08/2016"
    ms.author="toddabel"/>
 
 
@@ -37,15 +37,16 @@ Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzufüh
 2. **Anwendungsereignisse:** Ereignisse, die von Ihrem Dienstcode ausgegeben werden und mit der EventSource-Hilfsklasse der Visual Studio-Vorlagen ausgegeben werden. Weitere Informationen zum Schreiben von Protokollen aus Ihrer Anwendung finden Sie in [diesem Artikel zur Überwachung und Diagnose von Diensten in einer lokalen Installation](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 
 
-## Bereitstellen der Diagnoseerweiterung
+## Bereitstellen der Diagnoseerweiterungen
 Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf allen VMs des Service Fabric-Clusters bereitgestellt werden. Die Diagnoseerweiterung sammelt Protokolle auf allen VMs und lädt sie an das angegebene Speicherkonto hoch. Je nachdem, ob Sie das Azure-Portal oder den Azure-Ressourcen-Manager verwenden und ob die Bereitstellung im Rahmen der Clustererstellung oder für einen bereits vorhandenen Cluster erfolgt, variieren die Schritte etwas. Wir sehen uns nun die Schritte für die einzelnen Szenarien an.
 
 ### Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung über das Portal
-Um die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster enthaltenen VMs bereitzustellen, wird das in der folgenden Abbildung gezeigte Fenster „Diagnoseeinstellung“ verwendet. Die *Supportprotokolle* sind standardmäßig **Aktiviert** und die *Anwendungsdiagnose* ist standardmäßig **Deaktiviert**. Nach der Erstellung des Clusters kann diese Einstellung nicht über das Portal geändert werden.
+Um die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster enthaltenen VMs bereitzustellen, wird das in der folgenden Abbildung gezeigte Fenster „Diagnoseeinstellungen“ verwendet. Stellen Sie sicher, dass für die Diagnose **Ein** (Standardeinstellung) festgelegt ist, um die Actor- oder Reliable Service-Ereignissammlung zu aktivieren. Nach der Erstellung des Clusters kann diese Einstellung nicht über das Portal geändert werden.
 
-![Azure-Diagnose-Einstellung im Portal für die Clustererstellung](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/portal-cluster-creation-diagnostics-setting.png)
+![Azure-Diagnose-Einstellung im Portal für die Clustererstellung](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-Für das Azure-Supportteam sind die Supportprotokolle **erforderlich**, um jegliche Supportanforderungen abzuwickeln, die Sie erstellen. Diese Protokolle werden in Echtzeit erfasst und in dem Speicherkonto gespeichert, das in der aktuellen Ressourcengruppe erstellt wird. Die Anwendungsdiagnose konfiguriert Ereignisse auf Anwendungsebene, einschließlich [Actor](service-fabric-reliable-actors-diagnostics.md)- und [Zuverlässiger Dienst](service-fabric-reliable-services-diagnostics.md)-Ereignissen sowie einiger Service Fabric-Ereignisse auf Systemebene, die im Azure-Speicher gespeichert werden. Produkte wie z.B. [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder Ihr eigener Prozess können die Ereignisse aus dem Speicherkonto aufnehmen. Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn kein Prozess zum Entfernen von Ereignissen aus der Tabelle implementiert ist, wächst die Tabelle weiter an. Beim Erstellen eines Clusters mithilfe des Portals sollten Sie die Vorlage exportieren, nachdem die Bereitstellung abgeschlossen ist. Vorlagen können aus dem Portal exportiert werden durch
+Für das Azure-Supportteam sind die Supportprotokolle **erforderlich**, um jegliche Supportanforderungen abzuwickeln, die Sie erstellen. Diese Protokolle werden in Echtzeit erfasst und in einem der Speicherkonten gespeichert, die in der aktuellen Ressourcengruppe erstellt werden. Mit der Diagnoseeinstellung werden Ereignisse auf Anwendungsebene konfiguriert, z.B. [Actor](service-fabric-reliable-actors-diagnostics.md)- und [Reliable Service](service-fabric-reliable-services-diagnostics.md)-Ereignisse sowie einige Service Fabric-Ereignisse auf Systemebene, die im Azure-Speicher gespeichert werden. Produkte wie z.B. [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder Ihr eigener Prozess können die Ereignisse aus dem Speicherkonto übernehmen. Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn kein Prozess zum Entfernen von Ereignissen aus der Tabelle implementiert ist, wächst die Tabelle weiter an. Beim Erstellen eines Clusters mithilfe des Portals sollten Sie die Vorlage exportieren, nachdem die Bereitstellung abgeschlossen ist. Vorlagen können aus dem Portal exportiert werden durch
+
 1. Öffnen Ihrer Ressourcengruppe
 2. Wählen von „Einstellungen“ zum Anzeigen des Fensters „Einstellungen“
 3. Wählen von „Bereitstellungen“ zum Anzeigen des Fensters mit dem Bereitstellungsverlaufs
@@ -56,9 +57,9 @@ Für das Azure-Supportteam sind die Supportprotokolle **erforderlich**, um jegli
 Nach dem Exportieren der Dateien ist eine Änderung erforderlich. Bearbeiten Sie die Datei **parameters.json**, und entfernen Sie das Element **adminPassword**. Dann wird beim Ausführen des Bereitstellungsskripts eine Aufforderung zur Kennworteingabe angezeigt.
 
 ### Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung mithilfe des Azure Resource Managers
-Wenn Sie einen Cluster mithilfe des Ressourcen-Managers erstellen möchten, müssen Sie der Ressourcen-Manager-Vorlage vom Typ „Vollständiger Cluster“ vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad). Um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen, öffnen Sie die Datei **azuredeploy.json**, und suchen Sie nach **IaaSDiagnostics**. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
+Wenn Sie einen Cluster mithilfe des Ressourcen-Managers erstellen möchten, müssen Sie der Ressourcen-Manager-Vorlage vom Typ „Vollständiger Cluster“ vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad). Um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen, öffnen Sie die Datei **azuredeploy.json** und suchen nach **IaaSDiagnostics**. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
 
-Alternativ können Sie das Ressourcen-Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Informationen zu den Parametern, die an den Befehl übergeben werden müssen, finden Sie weiter unten. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mithilfe von PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md).
+Alternativ können Sie das Ressourcen-Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Informationen zu den Parametern, die an den Befehl übergeben werden müssen, finden Sie weiter unten. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mit PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md).
 
 ```powershell
 
@@ -110,7 +111,7 @@ Fügen Sie der Vorlage eine neue Speicherressource hinzu, indem Sie sie dem Ress
       }
     },
 ```
-Aktualisieren Sie dann den Abschnitt *VirtualMachineProfile* von **template.json** durch Hinzufügen des Folgenden innerhalb des Arrays „extensions“. Achten Sie darauf, ein Komma am Anfang oder Ende hinzuzufügen – je nach Einfügeposition.
+Aktualisieren Sie dann den Abschnitt *VirtualMachineProfile* von **template.json** durch Hinzufügen des folgenden Codes innerhalb des Arrays „extensions“. Achten Sie darauf, ein Komma am Anfang oder Ende hinzuzufügen – je nach Einfügeposition.
 
 ##### Hinzufügen zum Array „extensions“ von „VirtualMachineProfile“
 ```json
@@ -178,4 +179,4 @@ Wenn Sie die Diagnose für das Sammeln von Protokollen aus neuen EventSource-Kan
 ## Nächste Schritte
 Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) und [Reliable Services](service-fabric-reliable-services-diagnostics.md) ausgegeben werden, um besser zu verstehen, welche Ereignisse Sie beim Behandeln von Problemen untersuchen sollten.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

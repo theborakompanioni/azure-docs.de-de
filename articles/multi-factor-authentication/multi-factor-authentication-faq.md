@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="04/07/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication – Häufig gestellte Fragen
@@ -153,13 +153,18 @@ Bei Verwendung des Azure MFA-Servers können OATH TOTP-Token von Drittanbietern 
 
 Wenn also die „ActiveIdentity“-Token OATH TOTP-Token sind und Sie die Datei mit dem geheimen Schlüssel einer CSV-Datei hinzufügen können, die in den Azure MFA-Server importiert werden kann, können Sie diese anschließend nutzen. OATH-Token können mit AD FS, RADIUS, wenn das Clientsystem Access-Challenge-Antworten verarbeiten kann, und der IIS-Formularauthentifizierung verwendet werden.
 
-**Q: Kann ich den Azure MFA-Server verwenden, um Terminaldienste zu sichern?**
+**F: Kann ich den Azure-MFA-Server zum Sichern von Terminaldiensten verwenden?**
 
 Ja! Ab Windows Server 2012 R2 ist hierfür jedoch ein RD-Gateway erforderlich.
 
 Unter Windows Server 2012 R2 kann der Azure MFA-Server dank Sicherheitsänderungen nicht mehr so in das LSA-Sicherheitspaket einhaken, wie es noch unter Windows Server 2012 und früheren Versionen möglich war. Folgen Sie bei der Verwendung von Terminaldiensten unter Windows 2012 oder einer älteren Version einfach den Anweisungen im Abschnitt [Sichern einer Anwendung mit der Windows-Authentifizierung](multi-factor-authentication-get-started-server-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure).
 
 Wenn Sie Windows Server 2012 R2 verwenden, benötigen Sie jedoch ein RD-Gateway.
+
+**F: Warum erhalte ich nach dem Einrichten einer Anrufer-ID einen MFA-Anruf von einem anonymen Anrufer?**
+
+Bei MFA-Anrufen über das öffentliche Telefonnetz werden diese manchmal über einen Betreiber geleitet, der Anrufer-IDs nicht unterstützt. Die Anzeige einer Anrufer-ID ist daher nicht unbedingt gewährleistet, obwohl die ID vom MFA-System immer gesendet wird.
+
 
 ## Fehler
 
@@ -178,6 +183,6 @@ Wenn Sie Windows Server 2012 R2 verwenden, benötigen Sie jedoch ein RD-Gateway.
 
 Derzeit kann die zusätzliche Sicherheitsüberprüfung nur für Anwendungen und Dienste verwendet werden, auf die Sie über Ihren Browser zugreifen können. Nicht-Browser-Anwendungen (auch bezeichnet als Rich Client-Anwendungen), die auf dem lokalen Computer installiert sind, z. B. Windows Powershell, können nicht zusammen mit Konten verwendet werden, bei denen eine zusätzliche Sicherheitsüberprüfung erforderlich ist. In diesem Fall wird von der Anwendung der Fehler "0x800434D4L" ausgegeben.
 
-Als Problemumgehung können Sie zusätzlich zu Ihrem normalen Konto ein separates Benutzerkonto für Administratoraufgaben erstellen. Anschließend können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie für die Anmeldung bei Outlook lediglich ihr normales Konto benötigen. Weitere Informationen hierzu finden Sie unter [Einem Administrator das Öffnen und Anzeigen des Inhalts des Postfachs eines Benutzers ermöglichen](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1).
+Als Problemumgehung können Sie zusätzlich zu Ihrem normalen Konto ein separates Benutzerkonto für Administratoraufgaben erstellen. Anschließend können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie für die Anmeldung bei Outlook lediglich ihr normales Konto benötigen. Weitere Informationen hierzu finden Sie unter [Einem Administrator das Öffnen und Anzeigen des Inhalts des Postfachs eines Benutzers ermöglichen]http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

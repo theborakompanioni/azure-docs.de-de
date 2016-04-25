@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="04/06/2016" 
 	ms.author="robinsh"/>
 
 # End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollen sowie AzCopy und Message Analyzer 
@@ -36,9 +36,11 @@ Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, könne
 
 	- **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343259.aspx).
 
-- **Klassisches Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [klassischen Azure-Portal](https://manage.windowsazure.com) konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht.
+> [AZURE.NOTE] Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert.
+
+- **Klassisches Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [klassischen Azure-Portal](https://manage.windowsazure.com) konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht. 
 	
-	Informationen zum Konfigurieren der Überwachung im Azure-Portal finden Sie unter [Überwachen eines Speicherkontos im klassischen Azure-Portal](storage-monitor-storage-account.md).
+	Informationen zum Konfigurieren der Überwachung im klassischen Azure-Portal finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md).
 
 - **AzCopy**. Serverprotokolle für den Azure-Speicher werden als Blobs gespeichert, damit Sie AzCopy verwenden können, um die Protokoll-Blobs für die Analyse mithilfe von Microsoft Message Analyzer in ein lokales Verzeichnis zu kopieren. Weitere Informationen zu AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
@@ -88,7 +90,7 @@ In diesem Lernprogramm verwenden wir Message Analyzer, um mit drei verschiedenen
 
 ### Konfigurieren der serverseitigen Protokollierung und Metriken
 
-Zunächst müssen wir die Azure-Speicherprotokollierung und -metriken konfigurieren, damit uns Daten von der Clientanwendung zur Analyse vorliegen. Sie können die Protokollierung und die Metriken auf verschiedene Arten konfigurieren: über das [klassische Azure-Portal](https://manage.windowsazure.com), mithilfe von PowerShell oder programmgesteuert. Weitere Informationen zum Konfigurieren der Protokollierung und der Metriken finden Sie unter [Aktivieren von Speichermetriken und das Anzeigen von Codemetrikdaten](http://msdn.microsoft.com/library/azure/dn782843.aspx) und [Aktivieren von Speicher, Protokollierung und Zugreifen auf Protokolldaten](http://msdn.microsoft.com/library/azure/dn782840.aspx).
+Zunächst müssen wir die Azure-Speicherprotokollierung und -metriken konfigurieren, damit uns Daten von der Clientanwendung zur Analyse vorliegen. Sie können die Protokollierung und die Metriken auf verschiedene Arten konfigurieren: über das [klassische Azure-Portal](https://manage.windowsazure.com), mithilfe von PowerShell oder programmgesteuert. Weitere Informationen zum Konfigurieren der Protokollierung und der Metriken finden Sie unter [Enabling Storage Metrics and Viewing Metrics Data](http://msdn.microsoft.com/library/azure/dn782843.aspx) (Aktivieren von Speichermetriken und Anzeigen von Metrikdaten) und [Enabling Storage Logging and Accessing Log Data](http://msdn.microsoft.com/library/azure/dn782840.aspx) (Aktivieren von Speicherprotokollierung und Zugreifen auf Protokolldaten).
 
 **Über das klassische Azure-Portal**
 
@@ -130,7 +132,7 @@ Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installier
 
 ### Konfigurieren der clientseitigen .NET-Protokollierung
 
-Aktivieren Sie zum Konfigurieren der clientseitigen Protokollierung für eine .NET-Anwendung die .NET-Diagnose in der Konfigurationsdatei der Anwendung (web.config oder app.config). Weitere Informationen finden Sie unter [Clientseitige Protokollierung mit der .NET-Speicherclientbibliothek](http://msdn.microsoft.com/library/azure/dn782839.aspx) und [Clientseitige Protokollierung mit dem Microsoft Azure Storage SDK für Java](http://msdn.microsoft.com/library/azure/dn782844.aspx).
+Aktivieren Sie zum Konfigurieren der clientseitigen Protokollierung für eine .NET-Anwendung die .NET-Diagnose in der Konfigurationsdatei der Anwendung (web.config oder app.config). Weitere Informationen finden Sie unter [Client-side Logging with the .NET Storage Client Library](http://msdn.microsoft.com/library/azure/dn782839.aspx) (Clientseitige Protokollierung mit der .NET-Speicherclientbibliothek) und [Client-side Logging with the Microsoft Azure Storage SDK for Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) (Clientseitige Protokollierung mit dem Microsoft Azure Storage SDK für Java).
 
 Das clientseitige Protokoll enthält detaillierte Informationen darüber, wie der Client die Anfrage vorbereitet und die Antwort empfängt und verarbeitet.
 
@@ -188,13 +190,13 @@ Weitere Informationen zum Hinzufügen von Metriken auf der Seite "Überwachen" f
 
 Azure Storage schreibt Serverprotokolldaten in Blobs, während Metriken in Tabellen geschrieben werden. Protokoll-Blobs finden Sie im wohlbekannten Container `$logs` für Ihr Speicherkonto. Protokoll-Blobs werden hierarchisch nach Jahr, Monat, Tag und Stunde benannt, damit Sie problemlos auf den Zeitbereich zugreifen können, den Sie untersuchen möchten. Der Container für die Protokoll-Blobs im Konto `storagesample` für den 02.01.2015 von 8:00 bis 9:00 Uhr lautet beispielsweise `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Die einzelnen Blobs in diesem Container werden sequenziell benannt, beginnend mit `000000.log`.
 
-Sie können das AzCopy-Befehlszeilentool verwenden, um diese serverseitigen Protokolldateien an einen beliebigen Speicherort auf dem lokalen Computer herunterzuladen. Sie können z. B. den folgenden Befehl zum Herunterladen von Protokolldateien für Blobvorgänge verwenden, die am 2. Januar 2015 in den Ordner `C:\Temp\Logs\Server` stattgefunden haben. Ersetzen Sie hierbei `<storageaccountname>` durch den Namen Ihres Speicherkontos und `<storageaccountkey>` durch Ihren Zugriffsschlüssel:
+Sie können das AzCopy-Befehlszeilentool verwenden, um diese serverseitigen Protokolldateien an einen beliebigen Speicherort auf dem lokalen Computer herunterzuladen. Sie können z. B. den folgenden Befehl zum Herunterladen von Protokolldateien für Blobvorgänge verwenden, die am 2. Januar 2015 in den Ordner `C:\Temp\Logs\Server` stattgefunden haben. Ersetzen Sie hierbei `<storageaccountname>` durch den Namen Ihres Speicherkontos und `<storageaccountkey>` durch Ihren Zugriffsschlüssel:
 
 	AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 
 AzCopy steht zum Download auf der Seite [Azure-Downloads](https://azure.microsoft.com/downloads/) zur Verfügung. Details zur Verwendung von AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
-Weitere Informationen zum Herunterladen serverseitiger Protokolle finden Sie unter [Herunterladen von Protokolldaten der Speicherprotokollierung](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
+Weitere Informationen zum Herunterladen serverseitiger Protokolle finden Sie unter [Downloading Storage Logging log data](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata) (Herunterladen von Protokolldaten der Speicherprotokollierung).
 
 ## Analysieren von Protokolldaten mithilfe von Microsoft Message Analyzer
 
@@ -347,18 +349,7 @@ Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Da
 | Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange | AzureStorageClientDotNetV4.Description contains "Retrying failed operation." | Client |
 | HTTP-Zunahme von PercentThrottlingError | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | Netzwerk |
 | Zunahme von PercentTimeoutError | HTTP.Response.StatusCode == 500 | Netzwerk |
-| Zunahme von PercentTimeoutError (alle) |    *StatusCode == 500 | All |
-| Zunahme von PercentNetworkError | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client |
-| HTTP 403 (Verboten)-Meldungen | HTTP.Response.StatusCode == 403 | Network |
-| HTTP 404 (Nicht gefunden)-Meldungen | HTTP.Response.StatusCode == 404 | Network |
-| 404 (Alle) | *StatusCode == 404 | All |
-| Autorisierungsproblem für Shared Access Signature (SAS) | AzureStorageLog.RequestStatus == "SASAuthorizationError" | Network |
-| HTTP 409 (Konflikt)-Meldungen | HTTP.Response.StatusCode == 409 | Network |
-| 409 (Alle) | *StatusCode == 409 | All |
-| „Low PercentSuccess“ oder Analyseprotokolleinträge verfügen über Vorgänge mit Transaktionsstatus „ClientOtherErrors“ | AzureStorageLog.RequestStatus == "ClientOtherError" | Server |
-| Nagle-Warnung | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | Server |
-| Zeitraum in Server- und Netzwerkprotokollen | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | Server, Network |
-| Zeitraum in Serverprotokollen | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | Server |
+| Zunahme von PercentTimeoutError (alle) |    **StatusCode == 500 | All | | Zunahme von PercentNetworkError | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client | | HTTP 403 (Verboten)-Meldungen | HTTP.Response.StatusCode == 403 | Network | | HTTP 404 (Nicht gefunden)-Meldungen | HTTP.Response.StatusCode == 404 | Network | | 404 (Alle) | *StatusCode == 404 | All | | Autorisierungsproblem für Shared Access Signature (SAS) | AzureStorageLog.RequestStatus == "SASAuthorizationError" | Network | | HTTP 409 (Konflikt)-Meldungen | HTTP.Response.StatusCode == 409 | Network | | 409 (Alle) | *StatusCode == 409 | All | | „Low PercentSuccess“ oder Analyseprotokolleinträge verfügen über Vorgänge mit Transaktionsstatus „ClientOtherErrors“ | AzureStorageLog.RequestStatus == "ClientOtherError" | Server | | Nagle-Warnung | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | Server | | Zeitraum in Server- und Netzwerkprotokollen | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | Server, Network | | Zeitraum in Serverprotokollen | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | Server |
 
 
 ## Nächste Schritte
@@ -373,4 +364,4 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
  
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

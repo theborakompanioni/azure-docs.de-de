@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="01/07/2016"
+  ms.date="04/07/2016"
   ms.author="hascipio; v-divte"/>
 
 # Allgemeine Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace
@@ -31,7 +31,11 @@ Ausführliche Anweisungen zum Registrieren eines Verkäuferkontos bei Microsoft 
 
 > Um beginnen zu können, muss die Unternehmensregistrierung abgeschlossen werden. Während das Unternehmen die Steuer- und Bankdaten im Developer Center-Konto bearbeitet, können die Entwickler bereits damit beginnen, das VM-Image im [Veröffentlichungsportal](https://publish.windowsazure.com) zu erstellen, es zu zertifizieren und in der Azure-Stagingumgebung zu testen. Die endgültige Genehmigung Ihres Verkäuferkontos wird erst beim letzten Schritt für die Veröffentlichung Ihres Angebot im Azure Marketplace benötigt.
 
-> Falls Sie Probleme beim Abschließen der Verkäuferregistrierung haben, erstellen Sie wie nachfolgend beschrieben ein Supportticket: 1. Wenden Sie sich an den [Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=de-DE&pesid=15635&ccsid=635847950577064286). 2. Wählen Sie **Developer Center** aus. 3. Wählen Sie **Publisher Profile** aus. 4. Wählen Sie die Kontaktmethode aus.
+> Falls Sie Probleme beim Abschließen der Verkäuferregistrierung haben, erstellen Sie wie nachfolgend beschrieben ein Supportticket:
+> 1. Wenden Sie sich an den [Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=de-DE&pesid=15635&ccsid=635847950577064286).
+> 2. Wählen Sie **Developer Center** aus.
+> 3. Wählen Sie **Publisher Profile** aus.
+> 4. Wählen Sie die Kontaktmethode aus.
 
 
 ## Erwerben eines Azure-Abonnements mit nutzungsbasierter Bezahlung
@@ -46,9 +50,9 @@ Im nächsten Schritt werden die technischen Voraussetzungen für die einzelnen A
 
 | VM-Image | Entwicklerdienst | Datendienst | Lösungsvorlage |
 |-----|-----|-----|-----|
-| [Technische Voraussetzungen für VMs](marketplace-publishing-vm-image-creation-prerequisites.md) | Technische Voraussetzungen für Entwicklerdienste | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
+| [Technische Voraussetzungen für VMs](marketplace-publishing-vm-image-creation-prerequisites.md) | Private Vorschau | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
 
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

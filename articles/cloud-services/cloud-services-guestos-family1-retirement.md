@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Deaktivierungsinformationen für die Gastbetriebssystemfamilie 1 | Microsoft Azure" 
-   description="Bietet Informationen zum Zeitpunkt der Deaktivierung der Azure-Gastbetriebssystemfamilie 1 und dazu, wie Sie ermitteln, ob Sie betroffen sind" 
-   services="cloud-services" 
-   documentationCenter="na" 
-   authors="yuemlu" 
-   manager="timlt" 
+<properties
+   pageTitle="Deaktivierungsinformationen für die Gastbetriebssystemfamilie 1 | Microsoft Azure"
+   description="Bietet Informationen zum Zeitpunkt der Deaktivierung der Azure-Gastbetriebssystemfamilie 1 und dazu, wie Sie ermitteln, ob Sie betroffen sind"
+   services="cloud-services"
+   documentationCenter="na"
+   authors="yuemlu"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="tbd" 
+   ms.workload="tbd"
    ms.date="12/07/2015"
    ms.author="yuemlu"/>
 
@@ -35,17 +35,17 @@ Wenn Sie weitere Fragen haben, besuchen Sie die [Cloud Services-Foren](http://so
 
 Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:
 
-1. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist explizit der Wert "osFamily = "1" angegeben. 
+1. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist explizit der Wert "osFamily = "1" angegeben.
 2. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist kein expliziter Wert für "osFamily" angegeben. In diesem Fall verwendet das System aktuell den Standardwert "1".
 3. Im klassischen Azure-Portal ist der Wert Ihrer Gastbetriebssystemfamilie als „Windows Server 2008“ angegeben.
 
-Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das unten stehende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](../install-configure-powershell.md). Weitere Details zum Skript finden Sie unter [Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das unten stehende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](../powershell-install-configure.md). Weitere Details zum Skript finden Sie unter [Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
-    Select-AzureSubscription -SubscriptionName $subscription.SubscriptionName 
-    
-    $deployments=get-azureService | get-azureDeployment -ErrorAction Ignore | where {$_.SdkVersion -NE ""} 
+    Select-AzureSubscription -SubscriptionName $subscription.SubscriptionName
+
+    $deployments=get-azureService | get-azureDeployment -ErrorAction Ignore | where {$_.SdkVersion -NE ""}
 
     $deployments | ft @{Name="SubscriptionName";Expression={$subscription.SubscriptionName}}, ServiceName, SdkVersion, Slot, @{Name="osFamily";Expression={(select-xml -content $_.configuration -xpath "/ns:ServiceConfiguration/@osFamily" -namespace $namespace).node.value }}, osVersion, Status, URL
 }
@@ -65,13 +65,13 @@ Wir empfehlen Ihnen, Ihre Clouddienstrollen zu einer der unterstützten Gastbetr
 
 **Gastbetriebssystemfamilie 3.x** - Windows Server 2012
 
-1. Stellen Sie sicher, dass Ihre Anwendung SDK 1.8 oder höher mit .NET-Framework 4.0 oder 4.5 verwendet. 
+1. Stellen Sie sicher, dass Ihre Anwendung SDK 1.8 oder höher mit .NET-Framework 4.0 oder 4.5 verwendet.
 2. Legen Sie in der Datei "ServiceConfiguration.cscfg" das osFamily-Attribut auf den Wert "3" fest, und stellen Sie Ihren Clouddienst erneut bereit.
 
 
 **Gastbetriebssystemfamilie 2.x** - Windows Server 2008 R2
 
-1. Stellen Sie sicher, dass Ihre Anwendung SDK 1.3 oder höher mit .NET-Framework 3.5 oder 4.0 verwendet. 
+1. Stellen Sie sicher, dass Ihre Anwendung SDK 1.3 oder höher mit .NET-Framework 3.5 oder 4.0 verwendet.
 2. Legen Sie in der Datei "ServiceConfiguration.cscfg" das osFamily-Attribut auf den Wert "2" fest, und stellen Sie Ihren Clouddienst erneut bereit.
 
 
@@ -81,4 +81,4 @@ Clouddienste unter Gastbetriebssystemfamilie 1 werden nicht mehr unterstützt. 
 ## Nächste Schritte
 Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -21,7 +21,7 @@ ms.author="deonhe"/>
 
 Slack ist ein Tool für die Kommunikation in Teams, das alle Kommunikationen in Ihrem Team zentral zusammenführt und unmittelbar durchsuchbar und überall verfügbar macht.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“. Um die Schemaversion „2014-12-01-preview“ aufzurufen, klicken Sie auf [Slack](../app-service-logic/app-service-logic-connector-Slack.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Der Slack-Connector ermöglicht Folgendes:
 
@@ -142,7 +142,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **PostOperationRequest:** stellt eine Sendeanforderung für den Yammer-Connector dar, die an Yammer gesendet werden soll.
+ **PostOperationRequest:** Stellt eine Sendeanforderung für den Yammer-Connector dar, die an Yammer gesendet werden soll.
 
 Erforderliche Eigenschaften für PostOperationRequest:
 
@@ -481,4 +481,4 @@ Keine der Eigenschaften ist erforderlich.
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

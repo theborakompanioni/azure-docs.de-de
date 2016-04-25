@@ -19,7 +19,7 @@
 
 Um die Vorteile der Hostingdienste und der Skalierbarkeit von Azure zu nutzen, kann es ratsam sein, Ihre Webanwendung zu einem Azure-Clouddienst zu migrieren und dort zu veröffentlichen. Sie können eine Webanwendung in Azure mit minimalen Änderungen an der vorhandenen Anwendung ausführen.
 
->[AZURE.NOTE] In diesem Thema wird die Bereitstellung in Clouddiensten und nicht auf Websites behandelt. Weitere Informationen zum Bereitstellen auf Websites finden Sie unter [Bereitstellen von Web-Apps in Azure App Service](/app-service-web/web-sites-deploy.md).
+>[AZURE.NOTE] In diesem Thema wird die Bereitstellung in Clouddiensten und nicht auf Websites behandelt. Weitere Informationen zum Bereitstellen auf Websites finden Sie unter [Bereitstellen von Web-Apps in Azure App Service](./app-service-web/web-sites-deploy.md).
 
 Eine Liste der spezifischen Vorlagen, die sowohl für Visual C# als auch für Visual Basic unterstützt werden, finden Sie weiter unten in diesem Thema im Abschnitt **Unterstützte Projektvorlagen**.
 
@@ -208,4 +208,4 @@ Zum Veröffentlichen einer Webanwendung unter Azure muss für die Anwendung eine
 ## Nächste Schritte
 Weitere Informationen zur Veröffentlichung finden Sie unter [Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md). Sehen Sie sich auch [Einrichten benannter Authentifizierungsanmeldeinformationen](vs-azure-tools-setting-up-named-authentication-credentials.md) an.
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

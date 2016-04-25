@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Azure Mobile Engagement - Benutzeroberfläche – Überwachen" 
-   description="Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
+<properties
+   pageTitle="Azure Mobile Engagement - Benutzeroberfläche – Überwachen"
+   description="Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement"
+   services="mobile-engagement"
+   documentationCenter=""
+   authors="piyushjo"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,23 +12,23 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
+   ms.workload="mobile"
    ms.date="11/29/2015"
    ms.author="piyushjo"/>
 
 # Überwachen von Echtzeitdaten zu Ihrer Anwendung
 
-In diesem Artikel wird die Registerkarte **ÜBERWACHEN** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das Portal **Mobile Engagement**, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement**-Konto erstellen müssen. Weitere Informationen finden Sie unter [Erstellen eines Azure Mobile Engagement-Kontos](mobile-engagement-create-account.md).
+In diesem Artikel wird die Registerkarte **ÜBERWACHEN** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das Portal **Mobile Engagement**, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement**-Konto erstellen müssen.
 
 
 Der Abschnitt „Überwachen“ der Benutzeroberfläche enthält Informationen für Echtzeitanalysen und ermöglicht das Festlegen von Warnungen, wenn Schwellenwerte für die meisten der Informationen erreicht werden, die auch im Abschnitt [ANALYSE](mobile-engagement-user-interface-analytics.md) der Benutzeroberfläche verfügbar sind. Der Abschnitt **Glossar** im Thema [Konzepte](http://go.microsoft.com/fwlink/?LinkId=525555) enthält die Definitionen der Begriffe und Abkürzungen in Analysen und Überwachung, wie z. B. die folgenden: Aktiver Benutzer, Neuer Benutzer, Benutzer beibehalten, Sitzung, Benutzerpfadgraph, Benutzer zuordnen, Nachverfolgen von URLs, Trends, Aktivität, Ereignis, Auftrag, Fehler, Zusätzliche Informationen, Absturz und App-Info.
 
->[AZURE.NOTE]Viele Abschnitte der Benutzeroberfläche des **Mobile Engagement**-Portals enthalten die Schaltfläche **HILFE ANZEIGEN**. Drücken Sie diese Schaltfläche, um weitere Kontextinformationen zu einem bestimmten Bereich zu erhalten.
+>[AZURE.NOTE] Viele Abschnitte der Benutzeroberfläche des **Mobile Engagement**-Portals enthalten die Schaltfläche **HILFE ANZEIGEN**. Drücken Sie diese Schaltfläche, um weitere Kontextinformationen zu einem bestimmten Bereich zu erhalten.
 
 ## Überwachen - Sitzungen, Aufträge, Ereignisse, Fehler und Abstürze
 
 Sie können erkennen, wie viele Benutzer sich derzeit in einer Sitzung und auf bestimmten Bildschirmen befinden oder bestimmte Aktionen ausführen. Sie können die Benutzeraktivität unterteilt in Sitzungen, Aufträge, Ereignisse, Fehler und Abstürze anzeigen. Sie können die aktuellen Informationen und die Informationen der letzten Stunde, des letzten Tags oder der letzten Woche anzeigen. Sie können alle Informationen in jeder Kategorie anzeigen oder eine Sortierung nach Sitzung, Auftrag, Ereignis, Fehler und Absturz vornehmen. Die Live-Überwachung ist z. B. während eines Ereignisses wie einer Pushkampagne hilfreich, um zu prüfen, ob nach dem Senden Ihrer Pushbenachrichtigung ein Aktivitätsanstieg zu verzeichnen ist.
- 
+
 ![Monitor1][14]
 
 ## Problembehandlung mit "Überwachen - Ereignisse – Details"
@@ -49,7 +49,7 @@ Weitere Informationen finden Sie unter [SDK-Dokumentation – Versionshinweise ]
 
 ## Überwachen - Warnungen
 Sie können auch Bedingungen für Warnungen angeben, die automatisch per E-Mail oder SMS an Sie gesendet werden. (XMPP-kompatible Dienste wie Google GTalk oder Apple iChat werden unterstützt). Warnungen basieren auf einem vordefinierten Schwellenwert für die Erkennung größer als (>) oder kleiner als (<) einer bestimmten Anzahl von Sitzungen, Aufträgen, Ereignissen, Fehlern oder Abstürzen pro Sekunde, Minute oder Stunde. Warnungen können alle Aktivitäten eines bestimmten Typs oder nur einen bestimmten Auftrag, ein bestimmtes Ereignis oder eine bestimmte Fehleraktivität überwachen. Sie können auch eine Mindesterkennungsrate angeben, wobei es sich um den Mindestzeitraum handelt, der zwei Benachrichtigungen für dieselbe Warnung voneinander trennt, um sicherzustellen, dass Sie beim Auslösen einer Warnung alle x Minuten nicht mehr als eine Benachrichtigung erhalten.
- 
+
 ![Monitor4][17]
 
 
@@ -152,6 +152,5 @@ Sie können auch Bedingungen für Warnungen angeben, die automatisch per E-Mail 
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0413_2016-->

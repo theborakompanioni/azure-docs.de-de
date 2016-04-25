@@ -96,7 +96,7 @@ chrisL@fedora$ azure vm show testrg testvm
 
 ### Einführung
 
-In diesem Artikel wird eine Bereitstellung erstellt, die einer Clouddienstbereitstellung mit einer Linux-VM in einem VNET-Subnetz ähnelt. Sie werden Befehl für Befehl durch die gesamte grundlegende Bereitstellung geführt, bis Sie über eine funktionierende, sichere Linux-VM verfügen, mit der Sie über das Internet von jedem Ort aus eine Verbindung herstellen können.
+In diesem Artikel wird eine Bereitstellung mit einem virtuellen Linux-Computer in einem VNET-Subnetz erstellt. Sie werden Befehl für Befehl durch die gesamte grundlegende Bereitstellung geführt, bis Sie über eine funktionierende, sichere Linux-VM verfügen, mit der Sie über das Internet von jedem Ort aus eine Verbindung herstellen können.
 
 Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Nachdem Sie über den Aufbau des Systems Bescheid wissen, können Sie das System viel schneller neu erstellen, indem Sie direktere Befehle der Azure-Befehlszeilenschnittstelle verwenden. ([Hier](virtual-machines-linux-quick-create-cli.md) finden Sie Informationen zu einer sehr ähnlichen Bereitstellung, bei der der Befehl `azure vm quick-create` genutzt wird.) Sie können sich auch darüber informieren, wie Sie vollständige Netzwerk- und Anwendungsbereitstellungen entwerfen, automatisieren und mit [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) aktualisieren. Wenn Sie sehen, wie die Teile Ihrer Bereitstellung zusammenpassen, wird die Erstellung von Vorlagen für deren Automatisierung vereinfacht.
 
@@ -270,7 +270,7 @@ chrisL@fedora$ azure group show testrg --json | jq '.'
 }
 ```
 
-Jetzt erstellen wir ein Subnetz im virtuellen Netzwerk `TestVnet`, in dem die VM bereitgestellt wird. Wir verwenden den Befehl `azure network vnet subnet create` zusammen mit den Ressourcen, die wir bereits erstellt haben: der Ressourcengruppe `TestRG` und des virtuellen Netzwerks `TestVNet`. Außerdem fügen wir den Subnetznamen `FrontEnd` und das Subnetzadressen-Präfix `192.168.1.0/24` wie folgt hinzu:
+Jetzt erstellen wir ein Subnetz im virtuellen Netzwerk `TestVnet`, in dem die VM bereitgestellt wird. Wir verwenden den Befehl `azure network vnet subnet create` zusammen mit den Ressourcen, die wir bereits erstellt haben: mit der Ressourcengruppe `TestRG` und dem virtuellen Netzwerk `TestVNet`. Außerdem fügen wir den Subnetznamen `FrontEnd` und das Subnetzadressen-Präfix `192.168.1.0/24` wie folgt hinzu:
 
 ```
 chrisL@fedora$ azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
@@ -586,7 +586,7 @@ info:    This NIC IP configuration has a public ip already configured "/subscrip
 info:    vm create command OK
 ```
 
-Anschließend können Sie mit Ihren standardmäßigen SSH-Schlüsseln eine Verbindung mit der VM herstellen.
+Anschließend können Sie mit Ihren standardmäßigen SSH-Schlüsseln eine Verbindung mit dem virtuellen Computer herstellen.
 
 ```
 chrisL@fedora$ ssh ops@testsubdomain.westeurope.cloudapp.azure.com           
@@ -690,4 +690,4 @@ info:    vm show command OK
 
 Sie können jetzt mit mehreren Netzwerkkomponenten und VMs starten.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

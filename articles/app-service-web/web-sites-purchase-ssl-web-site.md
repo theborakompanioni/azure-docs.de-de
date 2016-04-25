@@ -103,29 +103,29 @@ In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes f
 
     * **App Service-Überprüfung** 
     
-        1. Dies ist der zweckmäßigste Prozess, falls Sie bereits **Ihre benutzerdefinierte Domäne den App Service-Apps zugewiesen haben**. Diese Methode listet alle App Service-Apps auf, die diese Kriterien erfüllen. In diesem Fall ist z. B. **contosocertdemo.com** eine benutzerdefinierte Domäne, die der App Service-App **„ContosoCertDemo“** zugewiesen ist und daher als einzige App Service-App hier aufgeführt wird. Bei einer Bereitstellung in mehreren Regionen würde sie in allen Regionen aufgelistet.
-            > [AZURE.NOTE]
-            Die Überprüfungsmethode ist NUR für Käufe von Standardzertifikaten (Basic) verfügbar. Für Platzhalterzertifikate überspringen Sie diesen Schritt bitte und fahren Sie mit Option B, C oder D unten fort. 
-        2. Klicken Sie auf die Schaltfläche **„Überprüfen“**, um diesen Schritt abzuschließen.
-        3. Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+        * Dies ist der zweckmäßigste Prozess, falls Sie bereits **Ihre benutzerdefinierte Domäne den App Service-Apps zugewiesen haben**. Diese Methode listet alle App Service-Apps auf, die diese Kriterien erfüllen. In diesem Fall ist z. B. **contosocertdemo.com** eine benutzerdefinierte Domäne, die der App Service-App **„ContosoCertDemo“** zugewiesen ist und daher als einzige App Service-App hier aufgeführt wird. Bei einer Bereitstellung in mehreren Regionen würde sie in allen Regionen aufgelistet.
         
-            ![Bild von App Service-Überprüfung einfügen](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)
+           Die Überprüfungsmethode ist NUR für Käufe von Standardzertifikaten (Basic) verfügbar. Für Platzhalterzertifikate überspringen Sie diesen Schritt bitte und fahren Sie mit Option B, C oder D unten fort.
+        * Klicken Sie auf die Schaltfläche **„Überprüfen“**, um diesen Schritt abzuschließen.
+        * Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+        
+        ![Bild von App Service-Überprüfung einfügen](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)
 
     * **Domänenüberprüfung**
 
-        1. Dies ist **NUR DANN** der zweckmäßigste Prozess, wenn Sie **[Ihre benutzerdefinierte Domäne von Azure App Service](custom-dns-web-site-buydomains-web-app.md)** erworben haben.
+        * Dies ist **NUR DANN** der zweckmäßigste Prozess, wenn Sie **[Ihre benutzerdefinierte Domäne von Azure App Service erworben](custom-dns-web-site-buydomains-web-app.md)** haben.
         
-        2. Klicken Sie auf die Schaltfläche **„Überprüfen“**, um diesen Schritt abzuschließen.
+        * Klicken Sie auf die Schaltfläche **„Überprüfen“**, um diesen Schritt abzuschließen.
         
-        3. Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+        * Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
 
     * **Überprüfungs-E-Mail**
         
-        1. Die Überprüfungs-E-Mail wurde bereits an die E-Mail-Adresse(n) gesendet, die dieser benutzerdefinierten Domäne zugeordnet ist/sind.
+        * Die Überprüfungs-E-Mail wurde bereits an die E-Mail-Adresse(n) gesendet, die dieser benutzerdefinierten Domäne zugeordnet ist/sind.
          
-        2. Öffnen Sie die E-Mail, und klicken Sie auf den Link für die Überprüfung, um den Schritt der E-Mail-Bestätigung abzuschließen.
+        * Öffnen Sie die E-Mail, und klicken Sie auf den Link für die Überprüfung, um den Schritt der E-Mail-Bestätigung abzuschließen.
         
-        3. Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **„E-Mail erneut senden“**.
+        * Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **„E-Mail erneut senden“**.
          
     * **Manuelle Überprüfung**
                  
@@ -139,14 +139,14 @@ In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes f
             
             * Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
             
-            Wenn Sie beispielsweise ein Standardzertifikat für „contosocertdemo.com“ mit dem Domänenüberprüfungstoken **'cAGgQrKc'** und einer Webanforderung an **'http://contosocertdemo.com/cAGgQrKc.html'** kaufen, sollte **cAGgQrKc** zurückgeben werden.
+            Wenn Sie beispielsweise ein Standardzertifikat für „contosocertdemo.com“ mit dem Domänenüberprüfungstoken **‘cAGgQrKc’** kaufen, sollte eine Webanforderung an **‘http://contosocertdemo.com/cAGgQrKc.html’** **cAGgQrKc** zurückgeben.
         2. **Überprüfung des DNS-TXT-Eintrags**
 
             * Erstellen Sie mithilfe des DNS-Managers einen TXT-Eintrag in der Unterdomäne **‘DZC’** mit einem Wert, der dem **Domänenüberprüfungstoken** entspricht.
             
             * Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
                               
-            Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen ***. contosocertdemo.com** oder ***. subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf „dzc.contosocertdemo.com“ mit dem Wert **cAGgQrKc** erstellen.
+            Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen ***.contosocertdemo.com** oder ***.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf „dzc.contosocertdemo.com“ mit dem Wert **cAGgQrKc** erstellen.
 
 
 ##<a name="bkmk_AssignCertificate"></a>Schritt 3: Zuweisen des Zertifikats zur App Service-App
@@ -160,11 +160,11 @@ Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutze
 2.	Klicken Sie auf der Seite links auf die Option **App Service**.
 3.	Klicken Sie auf den Namen Ihrer App, der Sie dieses Zertifikat zuweisen möchten. 
 4.	Klicken Sie in **Einstellungen** auf **Benutzerdefinierte Domänen und SSL**.
-5.	Klicken Sie im **Zertifikateabschnitt** auf **Zertifikat importieren**, und wählen Sie das Zertifikat aus, das Sie gerade erworben haben.
+5.	Klicken Sie im **Zertifikate-Bereich** auf **Zertifikat importieren**, und wählen Sie das Zertifikat aus, das Sie gerade erworben haben.
 
     ![Bild von Zertifikatimport einfügen](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.jpg)
 
-6. Wählen Sie auf der Registerkarte **SSL-Einstellungen** im Abschnitt **SSL-Bindungen** mithilfe der Dropdownlisten den Domänennamen, der mit SSL geschützt werden soll, sowie das zu verwendende Zertifikat aus. Sie können auch auswählen, ob das SSL auf Basis der **[Servernamensanzeige](http://en.wikipedia.org/wiki/Server_Name_Indication)** (Server Name Indication, SNI) oder ein IP-basiertes SSL verwendet werden soll.
+6. Wählen Sie auf der Registerkarte **SSL-Einstellungen** im Abschnitt **SSL-Bindungen** mithilfe der Dropdownlisten den Domänennamen, der mit SSL geschützt werden soll, sowie das zu verwendende Zertifikat aus. Sie können auch auswählen, ob ein SSL auf Basis einer **[Servernamensanzeige](http://en.wikipedia.org/wiki/Server_Name_Indication)** (Server Name Indication, SNI) oder ein IP-basiertes SSL verwendet werden soll.
 
     ![Bild von SSL-Bindungen einfügen](./media/app-service-web-purchase-ssl-web-site/SSLBindings.jpg)
 
@@ -208,4 +208,4 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

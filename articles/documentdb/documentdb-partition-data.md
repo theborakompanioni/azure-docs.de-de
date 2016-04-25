@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/05/2016" 
+	ms.date="04/10/2016" 
 	ms.author="arramac"/>
 
 # Partitionieren und Skalieren von Daten in DocumentDB
@@ -210,7 +210,7 @@ Nun rufen wir das Dokument mithilfe seines Partitionsschlüssels und seiner id a
     // Read document. Needs the partition key and the ID to be specified
     Document result = await client.ReadDocumentAsync(
       UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new object[] { "XMS-0001" }});
+      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
     DeviceReading reading = (DeviceReading)(dynamic)result;
 
@@ -225,7 +225,7 @@ Nun rufen wir das Dokument mithilfe seines Partitionsschlüssels und seiner id a
     // Delete document. Needs partition key
     await client.DeleteDocumentAsync(
       UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new object[] { "XMS-0001" } });
+      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
 
 
@@ -248,20 +248,18 @@ Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlü
 
 ### Ausführen von gespeicherten Prozeduren
 
-Sie können auch atomare Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z.B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Dokument verwalten.
+Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z.B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Dokument verwalten.
 
     await client.ExecuteStoredProcedureAsync<DeviceReading>(
         UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
-        "XMS-001-FE24C");
+        "XMS-001-FE24C",
+        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") });
 
 Im nächsten Abschnitt untersuchen wir, wie partitionierte Sammlungen aus Sammlungen mit nur einer Partition verschoben werden können.
 
 <a name="migrating-from-single-partition"></a>
 ### Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen
 Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (>10.000 RU/s) oder mehr Speicher (>10 GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition in eine partitionierte Sammlung migrieren.
-
-Da Partitionsschlüssel außerdem nur bei der Erstellung der Sammlung angegeben werden können, müssen Sie Ihre Daten darüber hinaus mithilfe des [DocumentDB-Datenmigrationstools](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) exportieren und wieder importieren, um eine partitionierte Sammlung zu erstellen.
 
 So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine partitionierte Sammlung durch
 
@@ -278,7 +276,7 @@ Nun, da wir die Grundlagen abgeschlossen haben, sehen wir uns einige wichtige En
 Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Dieser Abschnitt beschreibt einige der Vor-und Nachteile bei der Auswahl der Partitionsschlüssel für Ihre Sammlung.
 
 ### Partitionsschlüssel als Transaktionsgrenze
-Sie sollten Ihren Partitionsschlüssel so wählen, dass Transaktionen vorgenommen werden können und zugleich die Skalierbarkeit der Lösung gegeben ist (durch Verteilung Ihrer Entitäten auf mehrere Partitionen). Ein Extremfall ist, dass Sie all Ihre Entitäten in einer einzelnen Partition speichern könnten. Dies würde aber möglicherweise die Skalierbarkeit Ihrer Lösung begrenzen. Im anderen Extremfall könnten Sie ein Dokument pro Partitionsschlüssel speichern, was zwar höchst skalierbar wäre, aber Sie daran hindern würde, dokumentübergreifende Transaktionen über gespeicherte Prozeduren und Trigger zu verwenden. Ein idealer Partitionsschlüssel ermöglicht die Verwendung von effizienten Abfragen und verfügt über ausreichende Partitionen, um sicherzustellen, dass Ihre Lösung skalierbar ist.
+Sie sollten Ihren Partitionsschlüssel so wählen, dass Transaktionen vorgenommen werden können und zugleich die Skalierbarkeit der Lösung gegeben ist (durch Verteilung Ihrer Entitäten auf mehrere Partitionsschlüssel). In einem Extremfall können Sie denselben Partitionsschlüssel für alle Dokumente festlegen, aber dies kann die Skalierbarkeit Ihrer Lösung beeinträchtigen. Im anderen Extremfall können Sie jedem Dokument einen eindeutigen Partitionsschlüssel zuweisen. Dies ermöglicht zwar eine hohe Skalierbarkeit, aber es wird auch verhindert, dass Sie dokumentübergreifende Transaktionen über gespeicherte Prozeduren und Trigger verwenden. Ein idealer Partitionsschlüssel ermöglicht die Verwendung von effizienten Abfragen und verfügt über eine ausreichende Kardinalität, um sicherzustellen, dass Ihre Lösung skalierbar ist.
 
 ### Vermeiden von Speicher- und Leistungsengpässen 
 Es ist auch wichtig, eine Eigenschaft auszuwählen, mit der Schreibvorgänge über eine Anzahl von unterschiedlichen Werten verteilt werden können. Anforderungen an den gleichen Partitionsschlüssel können den Durchsatz einer einzelnen Partition nicht überschreiten und werden gedrosselt. Daher ist es wichtig, einen Partitionsschlüssel auszuwählen, der nicht zu **„Hotspots“** innerhalb Ihrer Anwendung führt. Die gesamte Speichergröße für Dokumente mit demselben Partitionsschlüssel kann ebenso 10 GB an Speicherplatz nicht überschreiten.
@@ -321,4 +319,4 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,7 +13,7 @@
 	ms.devlang="na"
 	ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.workload="identity" 
+    ms.workload="identity"
 	ms.date="12/07/2015"
 	ms.author="yuridio"/>
 
@@ -25,9 +25,10 @@ Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie diese G
 - Autorisierung
 - Überwachung
 
-Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Die Verwaltung und die Überwachung sind Teil des Hybrid-Identitätslebenszyklus. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrid-Identitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md).
+Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Die Verwaltung und die Überwachung sind Teil des Hybrid-Identitätslebenszyklus. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrid-Identitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
 
->[AZURE.NOTE]Weitere Informationen zu den einzelnen Säulen finden Sie unter [Die vier Säulen der Identität – Identitätsverwaltung im Zeitalter von Hybrid-IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) (in englischer Sprache).
+>[AZURE.NOTE]
+Weitere Informationen zu den einzelnen Säulen finden Sie unter [Die vier Säulen der Identität – Identitätsverwaltung im Zeitalter von Hybrid-IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) (in englischer Sprache).
 
 ## Authentifizierung und Autorisierung
 Es gibt verschiedene Szenarien für die Authentifizierung und Autorisierung. Diese Szenarien haben spezielle Anforderungen, die mit der Hybrid-Identitätslösung erfüllt werden müssen, für deren Einsatz sich das Unternehmen entscheidet. Szenarien mit Business to Business (B2B)-Kommunikation können für IT-Administratoren eine zusätzliche Herausforderung darstellen. Es muss sichergestellt werden, dass für die vom Unternehmen verwendete Authentifizierungs- und Autorisierungsmethode die Kommunikation mit den Geschäftspartnern möglich ist. Stellen Sie während des Entwurfsprozesses für die Authentifizierungs- und Autorisierungsanforderungen sicher, dass die folgenden Fragen beantwortet werden:
@@ -37,7 +38,9 @@ Es gibt verschiedene Szenarien für die Authentifizierung und Autorisierung. Die
  - Wenn ja: Ist bereits bekannt, welche Protokolle (SAML, OAuth, Kerberos, Token oder Zertifikate) verwendet werden, um beide Unternehmen zu verbinden?
 - Werden diese Protokolle von der Hybrid-Identitätslösung unterstützt, die Sie einsetzen möchten?
 
-Als weiterer wichtiger Punkt ist zu beachten, wo sich das Authentifizierungsrepository, das von Benutzern und Partnern verwendet wird, und das Verwaltungsmodell befinden. Erwägen Sie die beiden folgenden Hauptoptionen: - Zentralisiert: Bei diesem Modell können die Anmeldeinformationen, Richtlinien und die Verwaltung des Benutzers lokal oder in der Cloud zentralisiert werden. - Hybrid: Bei diesem Modell werden die Anmeldeinformationen, Richtlinien und die Verwaltung des Benutzers lokal zentralisiert und in die Cloud repliziert.
+Als weiterer wichtiger Punkt ist zu beachten, wo sich das Authentifizierungsrepository, das von Benutzern und Partnern verwendet wird, und das Verwaltungsmodell befinden. Erwägen Sie die beiden folgenden Hauptoptionen:
+- Zentralisiert: Bei diesem Modell können die Anmeldeinformationen, Richtlinien und die Verwaltung des Benutzers lokal oder in der Cloud zentralisiert werden.
+- Hybrid: Bei diesem Modell werden die Anmeldeinformationen, Richtlinien und die Verwaltung des Benutzers lokal zentralisiert und in der Cloud repliziert.
 
 Das Modell, das von Ihrem Unternehmen gewählt wird, richtet sich jeweils nach den geschäftlichen Anforderungen. Sie sollten die folgenden Fragen beantworten, um zu identifizieren, wo sich das System für die Identitätsverwaltung befindet und welcher Verwaltungsmodus verwendet wird:
 
@@ -53,14 +56,15 @@ Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Üb
 - Verfügt Ihr Unternehmen über mehr als einen Benutzer mit erhöhten Rechten für die Verwaltung Ihres Identitätssystems?
  - Wenn ja: Ist für jeden Benutzer die gleiche Zugriffsebene erforderlich?
 - Muss Ihr Unternehmen den Zugriff für Benutzer zum Verwalten bestimmter Ressourcen delegieren?
- - Wenn ja: Wie häufig geschieht dies? 
+ - Wenn ja: Wie häufig geschieht dies?
 - Muss Ihr Unternehmen Zugriffssteuerungsfunktionen zwischen lokalen Ressourcen und Cloudressourcen integrieren?
 - Muss Ihr Unternehmen den Zugriff auf Ressourcen unter bestimmten Bedingungen einschränken?
 - Verfügt Ihr Unternehmen über eine Anwendung, die benutzerdefinierten Steuerungszugriff auf einige Ressourcen benötigt?
  - Wenn ja: Wo befinden sich diese Apps (lokal oder in der Cloud)?
  - Wenn ja: Wo befinden sich diese Zielressourcen (lokal oder in der Cloud)?
- 
->[AZURE.NOTE]Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
+
+>[AZURE.NOTE]
+Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
 
 ## Nächste Schritte
 
@@ -69,4 +73,4 @@ Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Üb
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0413_2016-->

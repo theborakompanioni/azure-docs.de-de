@@ -21,7 +21,7 @@ ms.author="deonhe"/>
 
 Der SharePoint-Verbindungsanbieter stellt eine API zum Arbeiten mit Listen in SharePoint zur Verfügung.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“. Um die Schemaversion „2014-12-01-preview“ aufzurufen, klicken Sie auf [SharePoint](../app-service-logic/app-service-logic-connector-SharePoint.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 SharePoint ermöglicht Folgendes:
 
@@ -66,7 +66,7 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit SharePoint
-Um die SharePoint-API zu verwenden, stellen Sie zunächst eine **Verbindung** her und geben dann die Details für diese Eigenschaften an:
+Stellen Sie zum Verwenden der SharePoint-API zunächst eine **Verbindung** her, und geben Sie dann die Details für diese Eigenschaften an:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -74,7 +74,7 @@ Um die SharePoint-API zu verwenden, stellen Sie zunächst eine **Verbindung** he
 
 Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Identität (Benutzername und Kennwort, Smartcard-Anmeldeinformationen usw.) für SharePoint Online bereitstellen. Nachdem Sie authentifiziert wurden, können Sie die SharePoint Online-API in Ihrer Logik-App verwenden.
 
-Führen Sie im Designer der Logik-App die folgenden Schritte durch, um sich bei SharePoint anzumelden und die **Verbindung** zu erstellen, die Sie in Ihrer Logik-App verwenden können:
+Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** zu erstellen, die Sie in Ihrer Logik-App verwenden können:
 
 1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt: ![SharePoint konfigurieren][1]  
 2. Wählen Sie **SharePoint Online – Wenn eine Datei erstellt wird** aus.   
@@ -469,7 +469,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte durch, um sich bei 
 
 ## Objektdefinitionen: 
 
- **DataSetsMetadata**:
+ **DataSetsMetadata:**
 
 Erforderliche Eigenschaften für DataSetsMetadata:
 
@@ -477,7 +477,7 @@ Erforderliche Eigenschaften für DataSetsMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -487,7 +487,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **TabularDataSetsMetadata**:
+ **TabularDataSetsMetadata:**
 
 Erforderliche Eigenschaften für TabularDataSetsMetadata:
 
@@ -495,7 +495,7 @@ Erforderliche Eigenschaften für TabularDataSetsMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -508,7 +508,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **BlobDataSetsMetadata**:
+ **BlobDataSetsMetadata:**
 
 Erforderliche Eigenschaften für BlobDataSetsMetadata:
 
@@ -516,7 +516,7 @@ Erforderliche Eigenschaften für BlobDataSetsMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -535,7 +535,7 @@ Erforderliche Eigenschaften für BlobMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -553,7 +553,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **Object**:
+ **Object:**
 
 Erforderliche Eigenschaften für „Object“:
 
@@ -561,7 +561,7 @@ Erforderliche Eigenschaften für „Object“:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -569,7 +569,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **TableMetadata**:
+ **TableMetadata:**
 
 Erforderliche Eigenschaften für TableMetadata:
 
@@ -577,7 +577,7 @@ Erforderliche Eigenschaften für TableMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -589,7 +589,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **DataSetsList**:
+ **DataSetsList:**
 
 Erforderliche Eigenschaften für DataSetsList:
 
@@ -606,7 +606,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **DataSet**:
+ **DataSet:**
 
 Erforderliche Eigenschaften für DataSet:
 
@@ -614,7 +614,7 @@ Erforderliche Eigenschaften für DataSet:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -642,7 +642,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **Item**:
+ **Item:**
 
 Erforderliche Eigenschaften für „Item“:
 
@@ -650,7 +650,7 @@ Erforderliche Eigenschaften für „Item“:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -659,7 +659,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **ItemsList**:
+ **ItemsList:**
 
 Erforderliche Eigenschaften für ItemsList:
 
@@ -667,7 +667,7 @@ Erforderliche Eigenschaften für ItemsList:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -676,7 +676,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **TablesList**:
+ **TablesList:**
 
 Erforderliche Eigenschaften für TablesList:
 
@@ -684,7 +684,7 @@ Erforderliche Eigenschaften für TablesList:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften**:
+**Alle Eigenschaften:**
 
 
 | Name | Datentyp |
@@ -693,7 +693,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erstellen einer PowerApp](../power-apps/powerapps-get-started-azure-portal.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erstellen einer Power-App](../power-apps/powerapps-get-started-azure-portal.md)
 
 [1]: ./media/connectors-create-api-sharepointonline/connectionconfig1.png
 [2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png
@@ -701,4 +701,4 @@ Keine der Eigenschaften ist erforderlich.
 [4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

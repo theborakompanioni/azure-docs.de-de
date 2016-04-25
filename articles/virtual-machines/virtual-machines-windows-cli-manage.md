@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Befehlsentsprechungen der Azure-Befehlszeilenschnittstelle für Aufgaben für virtuelle Computer | Microsoft Azure"
-	description="Befehlsentsprechungen der Azure-Befehlszeilenschnittstelle zum Erstellen und Verwalten von virtuellen Azure-Computern im Azure-Ressourcen-Manager- und Azure-Dienstverwaltungsmodus"
+	description="Enthält Informationen für die Befehlsentsprechungen der Azure-Befehlszeilenschnittstelle für das Erstellen und Verwalten von virtuellen Azure-Computern im Resource Manager- und im Dienstverwaltungsmodus."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="dlepow"
@@ -24,4 +24,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-cli-manage](../../includes/virtual-machines-common-cli-manage.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

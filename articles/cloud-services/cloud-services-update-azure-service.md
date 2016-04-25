@@ -28,7 +28,7 @@ Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von
 
 Wenn Sie eine direkte Aktualisierung einer oder mehrerer Rollen in Ihrem Dienst durchführen, aktualisiert Azur Sätze von Rolleninstanz je nach der Upgradedomäne, der sie angehören. Azure aktualisiert alle Instanzen in einer bestimmten Upgradedomäne (beendet sie, aktualisiert sie und schaltet sie wieder online) und fährt dann mit der nächsten Domäne fort. Dadurch, dass nur die Instanzen beendet werden, die in der aktuellen Upgradedomäne ausgeführt werden, stellt Azure sicher, dass sich die Aktualisierung so wenig wie möglich auf den ausgeführten Dienst auswirkt. Weitere Informationen finden Sie unter [Vorgehensweise bei der Aktualisierung](https://msdn.microsoft.com/library/azure/Hh472157.aspx#proceed) weiter unten in diesem Artikel.
 
-> [AZURE.NOTE]Die Begriffe **Aktualisierung** und **Update** haben für Azure eine etwas unterschiedliche Bedeutung. In Bezug auf die Prozesse und Beschreibungen der Features in diesem Dokument können Sie jedoch synonym verwendet werden.
+> [AZURE.NOTE] Die Begriffe **Aktualisierung** und **Update** haben für Azure eine etwas unterschiedliche Bedeutung. In Bezug auf die Prozesse und Beschreibungen der Features in diesem Dokument können Sie jedoch synonym verwendet werden.
 
 Ihr Dienst muss mindestens zwei Instanzen einer Rolle definieren, damit diese Rolle direkt und ohne Ausfallzeiten aktualisiert wird. Wenn der Dienst aus nur einer Instanz einer Rolle besteht, ist der Dienst nicht verfügbar, bis die direkte Aktualisierung abgeschlossen ist.
 
@@ -57,9 +57,9 @@ Die folgende Tabelle zeigt die zulässigen Änderungen an einen Dienst während 
 |Neue Zertifikate hinzufügen|Ja|Ja|Ja|
 |Vorhandene Zertifikate ändern|Ja|Ja|Ja|
 |Neuen Code bereitstellen|Ja|Ja|Ja|
-\*Erfordert Azure SDK 1.5 oder höher.
+* Erfordert Azure SDK 1.5 oder höher.
 
-> [AZURE.WARNING]Wenn die Größe des virtuellen Computers geändert wird, werden dadurch lokale Daten zerstört.
+> [AZURE.WARNING] Wenn die Größe des virtuellen Computers geändert wird, werden dadurch lokale Daten zerstört.
 
 
 Die folgenden Elemente werden während einer Aktualisierung nicht unterstützt:
@@ -81,7 +81,7 @@ Das nächste Diagramm zeigt, wie die Aktualisierung durchgeführt wird, wenn Sie
 
 ![Rolle aktualisieren](media/cloud-services-update-azure-service/IC345880.png "Rolle aktualisieren")
 
-> [AZURE.NOTE]Beim Aktualisieren eines Diensts aus einer einzelnen Instanz auf mehrere Instanzen wird der Dienst während des Upgrades beendet. Dies liegt an der Art und Weise, wie Upgrades von Diensten in Azure durchgeführt werden. Die Vereinbarung zum Servicelevel mit gewährleisteter Dienstverfügbarkeit gilt nur für Dienste, die mit mehr als eine Instanz bereitgestellt werden. Die folgende Liste beschreibt, wie sich jedes Upgradeszenario eines Azure-Diensts auf die Daten auf jedem Laufwerk auswirkt:
+> [AZURE.NOTE] Beim Aktualisieren eines Diensts aus einer einzelnen Instanz auf mehrere Instanzen wird der Dienst während des Upgrades beendet. Dies liegt an der Art und Weise, wie Upgrades von Diensten in Azure durchgeführt werden. Die Vereinbarung zum Servicelevel mit gewährleisteter Dienstverfügbarkeit gilt nur für Dienste, die mit mehr als eine Instanz bereitgestellt werden. Die folgende Liste beschreibt, wie sich jedes Upgradeszenario eines Azure-Diensts auf die Daten auf jedem Laufwerk auswirkt:
 >
 >Neustart des virtuellen Computers:
 >
@@ -119,22 +119,22 @@ Das nächste Diagramm zeigt, wie die Aktualisierung durchgeführt wird, wenn Sie
 
 Während einer automatischen Aktualisierung wertet der Azure Fabric Controller in regelmäßigen Abständen die Integrität des Clouddiensts aus, um zu bestimmen, wann die nächste UD durchlaufen werden kann. Diese Bewertung der Integrität erfolgt pro Rolle und berücksichtigt nur die Instanzen in der neuesten Version (d. h. Instanzen von UDs, die bereits durchlaufen wurden). Sie überprüft, ob eine Mindestanzahl von Rolleninstanzen für jede Rolle einen zufriedenstellende Endzustand erreicht hat.
 
-### Starttimeout für Rolleninstanz 
+### Starttimeout für Rolleninstanz
 Der Fabric Controller wartet bei jeder Rolleninstanz 30 Minuten darauf, dass der Zustand „Gestartet“ erreicht wird. Nach Ablauf des Zeitlimits fährt der Fabric Controller mit der nächsten Rolleninstanz fort.
 
 ## Zurücksetzen einer Aktualisierung
 Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel, da Sie weitere Vorgänge für einen Dienst initiieren können, nachdem die ursprüngliche Aktualisierungsanforderung vom Azure Fabric Controller akzeptiert wurde. Eine Zurücksetzung ist nur möglich, wenn eine Aktualisierung (Konfigurationsänderung) oder ein Upgrade in der Bereitstellung den Status **In Bearbeitung** hat. Eine Aktualisierung oder ein Upgrade gilt als in Bearbeitung, wenn mindestens eine Instanz des Diensts noch nicht auf die neue Version aktualisiert wurde. Um zu testen, ob eine Zurücksetzung zulässig ist, prüfen Sie, ob der Wert des Flags „RollbackAllowed“, der von den Vorgängen [Bereitstellung abrufen](https://msdn.microsoft.com/library/azure/ee460804.aspx) und [Clouddiensteigenschaften abrufen](https://msdn.microsoft.com/library/azure/ee460806.aspx) zurückgegeben wird, auf „true“ festgelegt ist.
 
-> [AZURE.NOTE]Eine Zurücksetzung ist nur für eine **direkte** Aktualisierung (bzw. ein direktes Upgrade) sinnvoll, da ein VIP-Austausch das Ersetzen einer gesamten ausgeführten Instanz Ihres Diensts durch eine andere beinhaltet.
+> [AZURE.NOTE] Eine Zurücksetzung ist nur für eine **direkte** Aktualisierung (bzw. ein direktes Upgrade) sinnvoll, da ein VIP-Austausch das Ersetzen einer gesamten ausgeführten Instanz Ihres Diensts durch eine andere beinhaltet.
 
 Das Zurücksetzen einer Aktualisierung in Bearbeitung wirkt sich folgendermaßen auf die Bereitstellung aus:
 
 -   Alle Rolleninstanzen, für die noch keine Aktualisierung/kein Upgrade auf die neue Version durchgeführt wurde, werden nicht aktualisiert/upgegradet, da diese Instanzen bereits die Zielversion des Diensts ausführen.
--   Rolleninstanzen, die bereits aktualisiert oder auf die neue Version der Dienstpaketdatei (\*.CSPKG) oder der Dienstkonfigurationsdatei (\*.CSCFG) (oder beide Dateien) upgegradet wurden, werden auf die Version dieser Dateien vor dem Upgrade zurückgesetzt.
+-   Rolleninstanzen, die bereits aktualisiert oder auf die neue Version der Dienstpaketdatei (*.CSPKG) oder der Dienstkonfigurationsdatei (*.CSCFG) (oder beide Dateien) upgegradet wurden, werden auf die Version dieser Dateien vor dem Upgrade zurückgesetzt.
 
 Diese Funktion wird durch die folgenden Features bereitgestellt:
 
--   Der Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx) kann bei einer Konfigurationsaktualisierung (ausgelöst durch Aufrufen von [Bereitstellungskonfiguration ändern](https://msdn.microsoft.com/library/azure/ee460809.aspx)) oder bei einem Upgrade (ausgelöst durch Aufrufen von [Upgrade für Bereitstellung durchführen](https://msdn.microsoft.com/library/azure/ee460793.aspx)) aufgerufen werden, solange zumindest eine Instanz im Dienst noch nicht auf die neue Version aktualisiert wurde.
+-   Der Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx) kann bei einer Konfigurationsaktualisierung (ausgelöst durch Aufrufen von [Bereitstellungskonfiguration ändern](https://msdn.microsoft.com/library/azure/ee460809.aspx)) oder bei einem Upgrade (ausgelöst durch Aufrufen von [Upgrade für Bereitstellung durchführen](https://msdn.microsoft.com/library/azure/ee460793.aspx)) aufgerufen werden, solange zumindest eine Instand im Dienst noch nicht auf die neue Version aktualisiert wurde.
 -   Als Teil des Antworttexts der Vorgänge [Bereitstellung abrufen](https://msdn.microsoft.com/library/azure/ee460804.aspx) und [Clouddiensteigenschaften abrufen](https://msdn.microsoft.com/library/azure/ee460806.aspx) werden die Elemente „Locked“ und „RollbackAllowed“ zurückgegeben:
     1.  Das Element „Locked“ gibt an, wann für eine bestimmte Bereitstellung ein Änderungsvorgang aufgerufen werden kann.
     2.  Das Element „RollbackAllowed“ gib an, wann der Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx) für eine bestimmte Bereitstellung aufgerufen werden kann.
@@ -175,9 +175,9 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 
 ![Verteilung von Upgradedomänen](media/cloud-services-update-azure-service/IC345533.png "Verteilung von Upgradedomänen")
 
-> [AZURE.NOTE]Beachten Sie, dass Azure steuert, wie Instanzen Upgradedomänen zugeordnet werden. Es kann nicht festgelegt werden, welche Instanzen welcher Domäne zugeordnet werden.
+> [AZURE.NOTE] Beachten Sie, dass Azure steuert, wie Instanzen Upgradedomänen zugeordnet werden. Es kann nicht festgelegt werden, welche Instanzen welcher Domäne zugeordnet werden.
 
 ## Nächste Schritte
-[Verwalten von Clouddiensten](cloud-services-how-to-manage.md)<br> [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)<br> [Konfigurieren von Clouddiensten](cloud-services-how-to-cofigure.md)<br>
+[Verwalten von Clouddiensten](cloud-services-how-to-manage.md)<br> [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)<br> [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)<br>
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0413_2016-->

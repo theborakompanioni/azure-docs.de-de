@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/31/2016" 
-	ms.author="ryancraw"/>
+	ms.date="04/08/2016" 
+	ms.author="rnagpal"/>
 
 # DocumentDB SDK
 
@@ -36,7 +36,10 @@
 
 ## Versionsinformationen
 
-### <a name="1.6.2"/>[1\.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.1)
+### <a name="1.6.3"/>[1\.6.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.3)
+  - Ein Fehler in der Nuget-Paketerstellung von .NET SDK wurde behoben (dient zum Verpacken von .NET SDK als Teil einer Azure Cloud Service-Lösung).
+  
+### <a name="1.6.2"/>[1\.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.2)
   - Implementierte [partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) 
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
@@ -124,21 +127,7 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
  
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.6.2](#1.6.2) | 29. März 2016 |---
-| [1\.5.3](#1.5.3) | 19. Februar 2016 |---
-| [1\.5.2](#1.5.2) | 14. Dezember 2015 |---
-| [1\.5.1](#1.5.1) | 23. November 2015 |---
-| [1\.5.0](#1.5.0) | 5. Oktober 2015 |---
-| [1\.4.1](#1.4.1) | 25. August 2015 |---
-| [1\.4.0](#1.4.0) | 13. August 2015 |---
-| [1\.3.0](#1.3.0) | 5. August 2015 |---
-| [1\.2.0](#1.2.0) | 6. Juli 2015 |---
-| [1\.1.0](#1.1.0) | 30. April 2015 |---
-| [1\.0.0](#1.0.0) | 8. April 2015
-| [0\.9.3-Vorabversion](#0.9.x-preview) |12. März 2015 | 29. Februar 2016
-| [0\.9.2-Vorabversion](#0.9.x-preview) | Januar 2015 | 29. Februar 2016
-| [.9.1-Vorabversion](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016
-| [0\.9.0-Vorabversion](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
+| [1\.6.3](#1.6.3) | 8. April 2016 |--- | [1\.6.2](#1.6.2) | 29. März 2016 |--- | [1\.5.3](#1.5.3) | 19. Februar 2016 |--- | [1\.5.2](#1.5.2) | 14. Dezember 2015 |--- | [1\.5.1](#1.5.1) | 23. November 2015 |--- | [1\.5.0](#1.5.0) | 5. Oktober 2015 |--- | [1\.4.1](#1.4.1) | 25. August 2015 |--- | [1\.4.0](#1.4.0) | 13. August 2015 |--- | [1\.3.0](#1.3.0) | 5. August 2015 |--- | [1\.2.0](#1.2.0) | 6. Juli 2015 |--- | [1\.1.0](#1.1.0) | 30. April 2015 |--- | [1\.0.0](#1.0.0) | 8. April 2015 |--- | [0\.9.3-Vorabversion](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 | [0\.9.2-Vorabversion](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 | [.9.1-Vorabversion](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016 | [0\.9.0-Vorabversion](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -147,4 +136,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Manuelles oder automatisches Skalieren der Instanzenzahl" 
-	description="Erfahren Sie, wie Sie Ihre Dienste in Azure skalieren können." 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
-	services="azure-portal" 
+<properties
+	pageTitle="Manuelles oder automatisches Skalieren der Instanzenzahl"
+	description="Erfahren Sie, wie Sie Ihre Dienste in Azure skalieren können."
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
+	services="azure-portal"
 	documentationCenter="na"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="azure-portal"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # Manuelles oder automatisches Skalieren der Instanzenzahl
@@ -31,11 +31,11 @@ Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/li
 2. Die Kachel **Skalierung** in **Vorgänge** zeigt den Status der Skalierung: **Aus**, wenn Sie eine manuelle Skalierung durchführen, **Ein**, wenn Sie nach einer oder mehreren Leistungsmetriken skalieren. ![Kachel "Skalieren"](./media/insights-how-to-scale/Insights_UsageLens.png)
 
 3. Durch Klicken auf die Kachel gelangen Sie zum Blatt **Skalierung**. Oben auf dem Blatt "Skalierung" wird der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt. ![Blatt "Skalieren"](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
-    
->[AZURE.NOTE]In diesem Diagramm werden nur Aktionen angezeigt, die im Rahmen der automatischen Skalierung ausgeführt werden. Wenn Sie die Instanzenzahl manuell anpassen, wird diese Änderung im Diagramm nicht angezeigt.
+
+>[AZURE.NOTE] In diesem Diagramm werden nur Aktionen angezeigt, die im Rahmen der automatischen Skalierung ausgeführt werden. Wenn Sie die Instanzenzahl manuell anpassen, wird diese Änderung im Diagramm nicht angezeigt.
 
 4. Sie können die Anzahl von **Instanzen** über den Schieberegler manuell anpassen.
-5. Nach dem Klicken auf **Speichern** wird die Instanzenzahl praktisch sofort auf die gewünschte Anzahl skaliert. 
+5. Nach dem Klicken auf **Speichern** wird die Instanzenzahl praktisch sofort auf die gewünschte Anzahl skaliert.
 
 ## Skalierung basierend auf einer voreingestellten Metrik
 
@@ -44,7 +44,7 @@ Wenn Sie die Instanzenzahl basierend auf einer Metrik automatisch anpassen möch
 1. Wenn Sie eine Metrik auswählen, werden ein Schieberegler und/oder Textfelder zur Eingabe der Instanzenzahl angezeigt, zwischen denen skaliert werden soll:
 
     ![Blatt "Skalieren" mit CPU-Prozentsatz](./media/insights-how-to-scale/Insights_ScaleBladeCPU.png)
-    
+
     Die automatische Skalierung des Diensts wird niemals über die festgelegten Grenzwerte hinaus oder darunter durchgeführt – unabhängig von der Datenlast.
 
 2. Im zweiten Schritt wählen Sie den Zielbereich für die Metrik aus. Im Abschnitt **CPU-Prozentsatz** können Sie beispielsweise einen Zielwert für den durchschnittlichen CPU-Prozentsatz aller Instanzen in Ihrem Dienst festlegen. Der Dienst wird horizontal hochskaliert, wenn der durchschnittliche CPU-Prozentsatz den definierten Maximalwert übersteigt. Ebenso wird der Dienst horizontal herunterskaliert, wenn der durchschnittliche CPU-Prozentsatz unter den Mindestwert sinkt.
@@ -65,9 +65,9 @@ Sie können auch nach anderen Metriken skalieren als denjenigen, die in der Drop
 
 4. Jetzt müssen Sie auswählen, nach welcher Metrik die Skalierung erfolgen soll. Beim Auswählen einer Metrik müssen verschiedene Dinge berücksichtigt werden:
     * Die *Ressource*, aus der die Metrik bezogen wird. Typischerweise ist dies gleichzeitig die Ressource, die Sie skalieren. Wenn Sie jedoch nach der Tiefe einer Speicherwarteschlange skalieren, ist die Ressource die Warteschlange, nach der Sie skalieren möchten.
-    * Der *Metrikname* selbst. 
+    * Der *Metrikname* selbst.
     * Die *Zeitaggregation* der Metrik. Diese Einstellung gibt an, wie die Daten im Rahmen der *Dauer* kombiniert werden.
-    
+
 5. Nachdem Sie die Metrik ausgewählt haben, geben Sie den Schwellenwert und den Operator für die Metrik an. Beispielsweise können Sie **Größer als** **80 %** festlegen.
 
 6. Anschließend wählen Sie die Aktion, die ausgeführt werden soll. Es gibt verschiedene Arten von Aktionen:
@@ -76,7 +76,7 @@ Sie können auch nach anderen Metriken skalieren als denjenigen, die in der Drop
     * Erhöhen oder Verringern bis – Legt die Instanzenzahl auf die in **Wert** definierte Anzahl fest.
 
 7. "Cool down" – Legt fest, wie lange diese Regel nach der vorherigen Skalierungsaktion bis zur nächsten Skalierung warten soll.
-    
+
 8. Klicken Sie nach dem Konfigurieren Ihrer Regel auf **OK**.
 
 9. Nachdem Sie alle gewünschten Regeln konfiguriert haben, klicken Sie auf **Speichern**.
@@ -117,7 +117,7 @@ Möglicherweise möchten Sie jedoch tagsüber oder unter der Woche eine aggressi
 
 8. Wählen Sie wie beim Standardprofil die **Tage**, für die dieses Profil gelten soll, und geben Sie die **Startzeit** tagsüber an.
 
->[AZURE.NOTE]Die automatische Skalierung verwendet die Sommerzeitregeln für die gewählte **Zeitzone**. Während der Sommerzeit wird als UTC-Zeitunterschied jedoch der Unterschied zur Basiszeitzone angezeigt, nicht der Unterschied zur Sommerzeit.
+>[AZURE.NOTE] Die automatische Skalierung verwendet die Sommerzeitregeln für die gewählte **Zeitzone**. Während der Sommerzeit wird als UTC-Zeitunterschied jedoch der Unterschied zur Basiszeitzone angezeigt, nicht der Unterschied zur Sommerzeit.
 
 9. Klicken Sie auf **OK**.
 
@@ -134,7 +134,6 @@ Möglicherweise möchten Sie jedoch tagsüber oder unter der Woche eine aggressi
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
-* [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
- 
+* [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->
