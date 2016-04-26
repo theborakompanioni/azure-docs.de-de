@@ -193,7 +193,8 @@ In diesem Abschnitt stellen Sie das Webprojekt in der API-App bereit (siehe Schr
 
 	![Meldung zur erfolgreichen Bereitstellung im Visual Studio-Ausgabefenster](./media/app-service-api-dotnet-get-started-template/successfullycreated.png)
 
-> [AZURE.TIP] Um eine schnelle Bereitstellung zu ermöglichen, können Sie die Symbolleiste **Webveröffentlichung mit einem Klick** aktivieren. Klicken Sie auf **Ansicht > Symbolleisten**, und wählen Sie dann **Webveröffentlichung mit einem Klick** aus. Auf der Symbolleiste können Sie ein Profil auswählen, auf eine Schaltfläche zum Veröffentlichen klicken oder auf eine Schaltfläche klicken, um den Assistenten **Web veröffentlichen** zu öffnen. ![Symbolleiste "Webveröffentlichung mit einem Klick"](./media/app-service-api-dotnet-get-started-template/weboneclickpublish.png)
+> [AZURE.TIP] Um eine schnelle Bereitstellung zu ermöglichen, können Sie die Symbolleiste **Webveröffentlichung mit einem Klick** aktivieren. Klicken Sie auf **Ansicht > Symbolleisten**, und wählen Sie dann **Webveröffentlichung mit einem Klick** aus. Auf der Symbolleiste können Sie ein Profil auswählen, auf eine Schaltfläche zum Veröffentlichen klicken oder auf eine Schaltfläche klicken, um den Assistenten **Web veröffentlichen** zu öffnen.
+![Symbolleiste "Webveröffentlichung mit einem Klick"](./media/app-service-api-dotnet-get-started-template/weboneclickpublish.png)
 
 ## Testen der bereitgestellten Web-API
 

@@ -130,11 +130,11 @@ Die folgenden Befehle sollten über die Node.js-Befehlszeile ausgeführt werden.
 
     Wenn Sie diesen Befehl ausführen, wird der Node.js-HTTP-Server gestartet, und die Bereitstellung Ihrer API beginnt.
 
-1. Wenn Sie zu ****http://localhost:8000/contacts** navigieren, wird die JSON-Ausgabe der Kontaktliste angezeigt (oder Sie werden je nach Browser zum Herunterladen aufgefordert).
+1. Wenn Sie zu **http://localhost:8000/contacts** navigieren, wird die JSON-Ausgabe der Kontaktliste angezeigt (oder Sie werden je nach Browser zum Herunterladen aufgefordert).
 
     ![API-Aufruf alle Kontakte](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
-1. Wenn Sie zu ****http://localhost:8000/contacts/2** navigieren, wird der Kontakt angezeigt, der von diesem ID-Wert dargestellt wird.
+1. Wenn Sie zu **http://localhost:8000/contacts/2** navigieren, wird der Kontakt angezeigt, der von diesem ID-Wert dargestellt wird.
 
     ![API-Aufruf bestimmter Kontakt](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 
