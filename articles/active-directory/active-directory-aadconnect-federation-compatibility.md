@@ -215,7 +215,9 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 | Client- |Support |Ausnahmen|
 | --------- | --------- |--------- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |**Kerberos-Verträge werden unterstützt| | Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt| | E-Mail-Clients wie Outlook und ActiveSync | Unterstützt |Keine|
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |*Kerberos-Verträge werden unterstützt|
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt|
+| E-Mail-Clients wie Outlook und ActiveSync | Unterstützt |Keine|
 
 **NetIQ unterstützt die Kerberos-Authentifizierung über die Konfiguration eines Kerberos-Vertrags. Wenn Sie Unterstützung bei dieser Konfiguration benötigen, wenden Sie sich an NetIQ, oder lesen Sie den Einrichtungsleitfaden. Weitere Informationen zu NetIQ Access Manager finden Sie unter [NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html).
 

@@ -111,9 +111,9 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
 
     ![App-URL konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "App-URL konfigurieren")
 
-    1.  Geben Sie in das Textfeld **TOPdesk - Public-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der „TOPdesk - Public“-Anwendung verwenden (z. B. „**https://qssolutions.topdesk.net*").
-2.  Fügen Sie in das Textfeld **TOPdesk – öffentliche Antwort-URL** die **TOPdesk - Public-AssertionConsumerService-URL** ein (z. B.: "**https://qssolutions.topdesk.net/tas/public/login/saml*")
-3.  Klicken Sie auf **Weiter**.
+    1.  Geben Sie in das Textfeld **TOPdesk - Public-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der „TOPdesk - Public“-Anwendung verwenden \(z. B. „*https://qssolutions.topdesk.net*").
+	2.  Fügen Sie in das Textfeld **TOPdesk – öffentliche Antwort-URL** die **TOPdesk - Public-AssertionConsumerService-URL** ein (z. B.: "*https://qssolutions.topdesk.net/tas/public/login/saml*")
+	3.  Klicken Sie auf **Weiter**.
 
 10. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TOPdesk - Public** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
 
@@ -152,7 +152,7 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
     2.  Klicken Sie zum Hochladen Ihrer Zertifikatdatei unter **Zertifkat (RSA)** auf **Durchsuchen**.
     3.  Klicken Sie z um Hochladen der Logodatei, die Sie vom TOPdesk-Supportteam erhalten haben, unter **Logosymbol** auf **Durchsuchen**.
     4.  Geben Sie in das Textfeld **Benutzernamen-Attribut** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
-5.  Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
+	5.  Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
     6.  Klicken Sie auf **Speichern**.
 
 17. Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
