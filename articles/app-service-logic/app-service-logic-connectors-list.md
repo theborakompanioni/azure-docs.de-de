@@ -31,15 +31,12 @@ Die folgende Tabelle listet alle verfügbaren von Microsoft erstellten Connector
 
 Name | Beschreibung
 --- | ---
-[Azure HDInsight](app-service-logic-connector-hdinsight.md) | Mit diesem Connector können Sie einen Hadoop-Cluster in Azure erstellen, verschiedene Hadoop-Aufträge übermitteln und vieles mehr.
 [Azure Service Bus](app-service-logic-connector-azureservicebus.md) | Kann Nachrichten aus Service Bus-Warteschlangen und -Themen senden sowie Nachrichten aus Service Bus-Warteschlangen und -Abonnements empfangen.
 [Bing-Übersetzer](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Für Übersetzungen von Text in eine andere Sprache in Bing.
-[Chatter](app-service-logic-connector-chatter.md) | Stellt eine Verbindung mit Chatter her und kann Nachrichten posten und suchen und sogar neue Nachrichten abrufen.
 [HTTP](app-service-logic-connector-http.md) | Der HTTP-Listener öffnet einen Endpunkt, der als HTTP-Server fungiert und auf eingehende HTTP- oder HTTPS-Anforderungen lauscht. Die HTTP-Aktion erfordert keine API-App und wird nativ innerhalb der Logik-Apps unterstützt.
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten.
 [QuickBooks](app-service-logic-connector-quickbooks.md) | Mit diesem Connector können Sie verschiedene Aufgaben ausführen, u. a. unterschiedliche Entitäten aus Intuit QuickBooks erstellen, aktualisieren und abfragen, beispielsweise Kunden, Artikel, Rechnungen und so weiter.
 [Puffer](app-service-logic-connector-slack.md) | Herstellen einer Verbindung mit Slack und Veröffentlichen von Nachrichten auf Slack-Kanälen.
-[SugarCRM](app-service-logic-connector-sugarcrm.md) | Stellt eine Verbindung mit SugarCRM Online her und dient u. a. zum Erstellen, Aktualisieren und Lesen verschiedener Modultypen, beispielsweise Konten, Kontakte usw.
 [Warten](app-service-logic-connector-wait.md) | Verwenden Sie diesen Connector, um die Ausführung der App zu verzögern. Die App kann für einen bestimmten Zeitraum oder bis zu einem Ereignis an einem bestimmten Zeitpunkt verzögert werden.
 
 
@@ -83,4 +80,4 @@ Connectors können innerhalb Ihrer Logik-App auch als Aktionen verwendet werden.
 ## Weitere Informationen zu Connectors und API-Apps
 [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md) [Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md) [Verwalten und Überwachen integrierter API-Apps und Connectors](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

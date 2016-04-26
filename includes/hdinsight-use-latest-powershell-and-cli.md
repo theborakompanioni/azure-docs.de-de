@@ -1,0 +1,3 @@
+> [AZURE.IMPORTANT] Die Schritte in diesem Dokument wurden mit der neuesten Version von Azure PowerShell und der Azure-CLI getestet. Wenn Sie eine ältere Version verwenden, funktionieren die Schritte möglicherweise nicht, oder es werden Fehler zurückgegeben. Um die neueste Version zu installieren, führen Sie die Schritte in den Dokumenten [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) oder [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md) aus.
+
+<!---HONumber=AcomDC_0420_2016-->

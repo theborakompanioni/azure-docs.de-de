@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/12/2016"
-   ms.author="mausher;barbkess;sonyama;nicw"/>
+   ms.date="04/19/2016"
+   ms.author="nicw;barbkess;sonyama"/>
+
 
 # Erwartungen an SQL Data Warehouse Preview
 
@@ -23,7 +24,8 @@ Dieser Artikel beschreibt die Funktionen von SQL Data Warehouse Preview und erl�
 Unsere Ziele für SQL Data Warehouse:
 
 - Vorhersagbare Leistung und lineare Skalierbarkeit für Daten bis zum Petabytebereich
-- Hohe Zuverlässigkeit für alle Data Warehouse-Vorgänge, unterstützt durch SLA (Service Level Agreement)
+- Hohe Zuverlässigkeit für alle Data Warehouse-Vorgänge
+- Kurze Zeit vom Laden der Daten bis zu den Einblicken in relationale und nicht relationale Daten
 
 Wir arbeiten unablässig an der Umsetzung dieser Ziele, bevor wir SQL Data Warehouse allgemein verfügbar machen.
 
@@ -36,11 +38,10 @@ Für jedes Data Warehouse gibt es zwei grundlegende Messwerte für die Leistung:
 - Auslastungsrate. Die Anzahl der Datensätze, die pro Sekunde in das Data Warehouse geladen werden können. Wir messen speziell die Anzahl der Datensätze, die über PolyBase aus dem Azure-Blob-Speicher in eine Tabelle mit einem gruppierten Spaltenspeicherindex importiert werden können.
 - Scanrate. Die Anzahl der Datensätze, die pro Sekunde sequenziell aus dem Data Warehouse abgerufen werden können. Wir messen speziell die Anzahl der Datensätze, die durch die Abfrage eines gruppierten Spaltenspeicherindexes zurückgegeben werden.
 
-
 Wir haben einige wichtige Leistungsverbesserungen gemessen und werden die voraussichtlichen Raten in Kürze mitteilen. Während der Preview nehmen wir fortlaufend Verbesserungen (z. B. an Komprimierung und Caching) vor, um diese Raten zu erhöhen und eine vorhersagbare Skalierung sicherzustellen.
 
 
-## Hohe Zuverlässigkeit, unterstützt durch SLA
+## Hohe Zuverlässigkeit
 
 ### Datenschutz
 
@@ -59,6 +60,11 @@ Momentaufnahmen werden asynchron in eine Azure-Remoteregion kopiert, um im Falle
 SQL Data Warehouse speichert die Daten auf einem oder mehreren Serverknoten, auf denen jeweils einige Benutzerdaten gespeichert sind, über die die Abfrageausführung für diese Daten gesteuert wird. Im Rahmen der massiven parallelen Verarbeitungsarchitektur (MPP-Architektur) werden die Abfragen parallel über die Serverknoten hinweg ausgeführt. SQL Data Warehouse erkennt und minimiert automatisch Ausfälle von Serverknoten. Während der Preview besteht jedoch die Möglichkeit, dass ein Vorgang (z. B. Laden von Daten oder Abfrage) aufgrund des Ausfalls einzelner Knoten fehlschlägt. Während der Preview nehmen wir fortlaufend Verbesserungen vor, damit Vorgänge trotz Knotenausfällen erfolgreich abgeschlossen werden können.
 
 
+### Upgrades und Downtime
+
+Während der Vorschau wird SQL Data Warehouse in regelmäßigen Abständen aktualisiert werden, um neue Funktionen und wichtige Updates zu installieren. Diese Upgrades können störend sein, und derzeit werden Upgrades nicht in einem vorhersehbaren Zeitplan durchgeführt. Wenn Sie feststellen, dass dieser Prozess zu störend ist, empfehlen wir Ihnen, [ein Supportticket zu erstellen][], damit wir Ihnen helfen können, diesen Prozess zu umgehen.
+
+
 ## Nächste Schritte
 
 [Erste Schritte][] mit der öffentlichen Preview-Version.
@@ -72,4 +78,4 @@ SQL Data Warehouse speichert die Daten auf einem oder mehreren Serverknoten, auf
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

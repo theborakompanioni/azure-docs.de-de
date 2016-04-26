@@ -20,7 +20,7 @@
 
 # Erste Schritte mit Azure App Service – Teil 2
 
-Unter [Erste Schritte mit Azure App Service](app-service-web-get-started.md) haben Sie eine Web-App für Azure App Service bereitgestellt und können nun schnell und einfach Updates durchführen. In diesem Artikel fügen Sie der bereitgestellten App schnell einige wichtige Funktionen hinzu, die dem reibungslosen Betrieb dienen. So finden Sie selbst heraus, dass es sich bei App Service um viel mehr als einen Website-Hoster handelt. Ihre hervorragende App wird auf diese Weise mit Funktionen auf Unternehmensniveau ausgestattet. Sie können sich auf Ihre kreative Energie konzentrieren und die Benutzer mit Ihrer App erfreuen, anstatt sich um so grundlegende Dinge wie Sicherheit, Skalierbarkeit, Leistung, Verwaltung usw. zu kümmern.
+Unter [Erste Schritte mit Azure App Service](app-service-web-get-started.md) haben Sie eine Web-App für Azure App Service bereitgestellt. In diesem Artikel fügen Sie der bereitgestellten App schnell einige wichtige Funktionen hinzu. App Service stattet Ihre hervorragende App mit Funktionen auf Unternehmensniveau aus, sodass sie grundlegende Anforderungen hinsichtlich Sicherheit, Skalierbarkeit, Leistung, Verwaltung usw. erfüllt.
 
 Mit wenigen Klicks lernen Sie Folgendes:
 
@@ -46,7 +46,7 @@ Wir zeigen Ihnen nun, wie einfach es ist, der App eine Authentifizierung hinzuzu
 
     Nach einer erfolgreichen Änderung sehen Sie, dass die Benachrichtigungsglocke grün und zusätzlich eine benutzerfreundliche Nachricht angezeigt wird.
 
-7. Klicken Sie im Portalblatt Ihrer App auf den Link **URL** (oder in der Menüleiste auf **Durchsuchen**). Der Link ist eine HTTP-Adresse. ![Authentifizieren – Zu URL navigieren](./media/app-service-web-get-started/aad-login-browse-click.png) Aber nachdem die App in einer neuen Registerkarte geöffnet wird, werden über das Feld „URL“ mehrere Umleitungen durchgeführt, und schließlich wird Ihre App mit einer HTTPS-Adresse angegeben. Sie sehen, dass Sie mit Ihrem Azure-Abonnement bereits am Microsoft-Konto angemeldet sind, und Sie werden mit diesem Konto automatisch an der App angemeldet. ![Authentifizieren – Angemeldet](./media/app-service-web-get-started/aad-login-browse-http-postclick.png) Wenn Sie jetzt also eine nicht authentifizierte Sitzung in einem anderen Browser öffnen, wird ein Anmeldebildschirm angezeigt, sobald Sie zu derselben URL navigieren: ![Authentifizieren – Anmeldeseite](./media/app-service-web-get-started/aad-login-browse.png) Falls Sie mit Azure Active Directory noch nicht gearbeitet haben, enthält Ihr Standardverzeichnis ggf. keine Azure AD-Benutzer. In diesem Fall ist das einzige darin enthaltene Konto wahrscheinlich das Microsoft-Konto mit Ihrem Azure-Abonnement. Dies ist der Grund dafür, warum Sie in demselben Browser zuvor automatisch an der App angemeldet wurden. Sie können dasselbe Microsoft-Konto verwenden, um sich auf dieser Anmeldeseite anzumelden.
+7. Klicken Sie im Portalblatt Ihrer App auf den Link **URL** (oder in der Menüleiste auf **Durchsuchen**). Der Link ist eine HTTP-Adresse. ![Authentifizieren – Zu URL navigieren](./media/app-service-web-get-started/aad-login-browse-click.png) Aber nachdem die App in einer neuen Registerkarte geöffnet wird, werden über das Feld „URL“ mehrere Umleitungen durchgeführt, und schließlich wird Ihre App mit einer HTTPS-Adresse angegeben. Sie sehen, dass Sie bereits beim Azure-Abonnement angemeldet sind, und Sie werden automatisch in der App authentifiziert. ![Authentifizieren – Angemeldet](./media/app-service-web-get-started/aad-login-browse-http-postclick.png) Wenn Sie jetzt also eine nicht authentifizierte Sitzung in einem anderen Browser öffnen, wird ein Anmeldebildschirm angezeigt, sobald Sie zu derselben URL navigieren: ![Authentifizieren – Anmeldeseite](./media/app-service-web-get-started/aad-login-browse.png) Falls Sie mit Azure Active Directory noch nicht gearbeitet haben, enthält Ihr Standardverzeichnis ggf. keine Azure AD-Benutzer. In diesem Fall ist das einzige darin enthaltene Konto wahrscheinlich das Microsoft-Konto mit Ihrem Azure-Abonnement. Dies ist der Grund dafür, warum Sie in demselben Browser zuvor automatisch an der App angemeldet wurden. Sie können dasselbe Microsoft-Konto verwenden, um sich auf dieser Anmeldeseite anzumelden.
 
 Herzlichen Glückwunsch! Der gesamte eingehende Datenverkehr wird für Ihre Website jetzt authentifiziert.
 
@@ -54,7 +54,7 @@ Vielleicht ist Ihnen aufgefallen, dass Sie auf dem Blatt **Authentifizierung/Aut
 
 - Aktivieren der Anmeldung für soziale Netzwerke
 - Aktivieren mehrerer Anmeldeoptionen
-- Ändern des Standardverhaltens, wenn Benutzer zum ersten Mal zu Ihrer App navigieren
+- Ändern des Standardverhaltens, wenn Personen zum ersten Mal zu Ihrer App navigieren
 
 App Service umfasst eine fertige Lösung für einige häufige Authentifizierungsanforderungen, sodass Sie die Authentifizierungslogik nicht selbst bereitstellen müssen. Weitere Informationen finden Sie unter [App Service-Authentifizierung/Autorisierung](/blog/announcing-app-service-authentication-authorization/).
 
@@ -62,7 +62,7 @@ App Service umfasst eine fertige Lösung für einige häufige Authentifizierungs
 
 Als Nächstes führen wir die Skalierung für die App durch. Sie haben zwei Möglichkeiten, wie Sie Ihre App Service-App skalieren können:
 
-- [Zentrales Hochskalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Wenn Sie eine App Service-App zentral hochskalieren, ändern Sie den Tarif des App Service-Plans, zum dem die App gehört. Durch das zentrale Hochskalieren erhalten Sie mehr CPU, Arbeitsspeicher, Datenträgerplatz sowie weitere Features wie dedizierte VM-Instanzen, automatische Skalierung, SLA mit 99,95%, benutzerdefinierte Domänen, benutzerdefinierte SSL-Zertifikate, Bereitstellungsslots, Sicherung, Wiederherstellung usw. Höhere Tarife sind gleichbedeutend mit mehr Features für die App Service-App.  
+- [Zentrales Hochskalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Wenn Sie eine App Service-App zentral hochskalieren, ändern Sie den Tarif des App Service-Plans, zum dem die App gehört. Durch das zentrale Hochskalieren gewinnen Sie mehr CPU, Arbeitsspeicher und Speicherplatz. Darüber hinaus erhalten Sie zusätzliche Features wie dedizierte virtuelle Computer, automatische Skalierung, eine Verfügbarkeit von 99,95 Prozent, benutzerdefinierte Domänen und Zertifikate, Bereitstellungsslots, Sicherungsmöglichkeiten und vieles mehr. Höhere Tarife sind gleichbedeutend mit mehr Features für die App Service-App.  
 - [Horizontales Skalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Wenn Sie eine App Service-App horizontal hochskalieren, ändern Sie die Anzahl von VM-Instanzen, auf denen die App (bzw. Apps in demselben App Service-Plan) ausgeführt wird. Beim Standard-Tarif oder höher können Sie die automatische Skalierung von VM-Instanzen basierend auf Leistungsmetriken ermöglichen. 
 
 Wir beginnen jetzt direkt mit dem Einrichten der automatischen Skalierung für die App.
@@ -77,9 +77,9 @@ Wir beginnen jetzt direkt mit dem Einrichten der automatischen Skalierung für d
     
 3. Als Nächstes konfigurieren wir die automatische Skalierung. Klicken Sie im Portalblatt Ihrer App auf **Einstellungen** > **Horizontal hochskalieren (App Service-Plan)**. ![Horizontal hochskalieren – Blatt „Einstellungen“](./media/app-service-web-get-started/scale-out-settings.png)
 
-4. Ändern Sie **Skalieren nach** in **CPU-Prozentsatz**. Die Schieberegler unterhalb der Dropdownliste ändert sich entsprechend. Legen Sie für den Bereich **Instanzen** anschließend einen Wert zwischen **1** und **2** und für den **Zielbereich** einen Wert zwischen **40** und **80** fest. Geben Sie hierfür Werte in die Felder ein, oder verwenden Sie die Schieberegler. ![Horizontal hochskalieren – Automatische Skalierung konfigurieren](./media/app-service-web-get-started/scale-out-configure.png)
+4. Ändern Sie **Skalieren nach** in **CPU-Prozentsatz**. Die Schieberegler unterhalb der Dropdownliste werden entsprechend aktualisiert. Legen Sie für den Bereich **Instanzen** anschließend einen Wert zwischen **1** und **2** und für den **Zielbereich** einen Wert zwischen **40** und **80** fest. Geben Sie hierfür Werte in die Felder ein, oder verwenden Sie die Schieberegler. ![Horizontal hochskalieren – Automatische Skalierung konfigurieren](./media/app-service-web-get-started/scale-out-configure.png)
     
-    Basierend auf dieser Konfiguration wird Ihre App automatisch horizontal hochskaliert, wenn die CPU-Auslastung über 80% liegt, und horizontal herunterskaliert, wenn die CPU-Auslastung unter 40% liegt.
+    Basierend auf dieser Konfiguration wird Ihre App automatisch horizontal hochskaliert, wenn die CPU-Auslastung über 80 Prozent liegt, und horizontal herunterskaliert, wenn die CPU-Auslastung unter 40 Prozent liegt.
     
 5. Klicken Sie in der Menüleiste auf **Speichern**.
 
@@ -127,4 +127,4 @@ Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der
 - [Zugreifen auf lokale Ressourcen](web-sites-hybrid-connection-get-started.md)
 - [Informationen zur Funktionsweise von App Service](../app-service/app-service-how-works-readme.md) 
 
-<!---HONumber=AcomDC_0323_2016--->
+<!---HONumber=AcomDC_0420_2016-->

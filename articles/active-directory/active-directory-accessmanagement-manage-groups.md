@@ -69,9 +69,12 @@ Diese Aufgabe kann unter Verwendung des Office 365-Kontoportals, des Windows Int
 
 In Azure AD können Sie leicht eine einfache Regel einrichten (bei der nur ein einzelner Vergleich durchgeführt wird), um zu ermitteln, welche Benutzer Mitglieder der Gruppe sein sollen. Wenn eine Gruppe beispielsweise einer SaaS-Anwendung zugewiesen wird und Sie eine Regel einrichten, mit der Benutzer mit der Position „Vertriebsmitarbeiter“ hinzugefügt werden, haben alle Benutzer im Azure AD-Verzeichnis, die über diese Position verfügen, Zugriff auf die SaaS-Anwendung.
 
-> [AZURE.NOTE] Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt. Für dynamische Gruppenmitgliedschaften ist es erforderlich, dass eine Azure AD Premium-Lizenz wie folgt zugewiesen ist:
->- Dem Administrator, der die Regel für eine Gruppe verwaltet
->- Allen Benutzern, die mit der Regel als Mitglied der Gruppe ausgewählt werden
+> [AZURE.NOTE] Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt.
+>
+> Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
+> 
+> - Dem Administrator, der die Regel für eine Gruppe verwaltet
+> - Allen Benutzern, die mit der Regel als Mitglied der Gruppe ausgewählt werden
 
 **So aktivieren Sie die dynamische Mitgliedschaft für eine Gruppe**
 
@@ -81,7 +84,7 @@ In Azure AD können Sie leicht eine einfache Regel einrichten (bei der nur ein e
 
 3. Wählen Sie die Registerkarte **Konfigurieren**, und legen Sie dann **Dynamische Mitgliedschaften aktivieren** auf **Ja** fest.
 
-4. Richten Sie eine einfache Regel für die Gruppe ein, um die Funktionsweise dynamischer Mitgliedschaften für diese Gruppe zu steuern. Stellen Sie sicher, dass die Option **Benutzer hinzufügen, wobei** ausgewählt ist, und wählen Sie dann aus der Liste eine Benutzereigenschaft (z. B. Abteilung, Position usw.) aus.
+4. Richten Sie eine einfache Regel für die Gruppe ein, um die Funktionsweise dynamischer Mitgliedschaften für diese Gruppe zu steuern. Stellen Sie sicher, dass die Option **Benutzer hinzufügen, wobei** ausgewählt ist, und wählen Sie dann aus der Liste eine Benutzereigenschaft (z. B. Abteilung, Position usw.) aus.
 
 5. Anschließend wählen Sie eine Bedingung (Not Equals, Equals, Not Starts With, Starts With, Not Contains, Contains, Not Match, Match) und geben zum Schluss den Wert für die ausgewählte Benutzereigenschaft an.
 
@@ -99,4 +102,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erste Schritte mit Microsoft Power BI Embedded Preview"
-   description="Erste Schritte mit Microsoft Power BI Embedded Preview"
+   description="Power BI Embedded, Hinzufügen interaktiver Power BI-Berichte zu Ihrer Business Intelligence-Anwendung"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="04/18/2016"
    ms.author="derrickv"/>
 
 # Erste Schritte mit Microsoft Power BI Embedded Preview
@@ -58,7 +58,7 @@ Im nächsten Abschnitt wird beschrieben, wie **Zugriffsschlüssel** zum Generier
 <a name="view-access-keys"/>
 ## Anzeigen von Power BI-API-Zugriffsschlüsseln
 
-Eine der wichtigsten Informationen, die zum Aufrufen der Power BI-REST-APIs benötigt werden, sind die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token**, die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel** Weitere Informationen zu **App-Token** finden Sie unter [Funktionsweise des App-Token-Ablaufs](power-bi-embedded-get-started-sample.md#key-flow).
+Eine der wichtigsten Informationen, die zum Aufrufen der Power BI-REST-APIs benötigt werden, sind die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token**, die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel** Weitere Informationen zu **App-Token** finden Sie unter [Funktionsweise des App-Tokenflusses](power-bi-embedded-app-token-flow.md).
 
    ![](media\power-bi-embedded-get-started\access-keys.png)
 
@@ -74,7 +74,7 @@ Nachdem Sie nun über eine Instanz von Power BI für Ihre Anwendung und **Zugrif
 
 ## Erstellen von Power BI-Datasets und -Berichten zum Einbetten in eine App
 
-Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel** verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) herunterladen. Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
+Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel** verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) herunterladen. Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/de-DE/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
 
 Mit **Power BI Desktop** stellen Sie eine Verbindung mit der Datenquelle her, indem Sie eine Kopie der Daten in **Power BI Desktop** importieren oder per **DirectQuery** eine direkte Verbindung mit der Datenquelle herstellen.
 
@@ -107,4 +107,4 @@ In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten 
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

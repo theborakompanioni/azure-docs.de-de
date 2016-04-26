@@ -48,7 +48,7 @@ Hier finden Sie eine exemplarische Vorgehensweise für dieses Lernprogramm.
 
 2. Klicken Sie im Menü „Hub“ auf **Neu** > **Compute** > **Windows Server 2012 R2 Datacenter**.
 
-	![Screenshot, der die Azure-VM-Images zeigt, die im Vorschauportal verfügbar sind](./media/virtual-machines-windows-hero-tutorial/marketplace_new.png)
+	![Screenshot, der die Azure-VM-Images zeigt, die im Portal verfügbar sind](./media/virtual-machines-windows-hero-tutorial/marketplace_new.png)
 
 	>[AZURE.TIP] Um weitere Images zu suchen, klicken Sie auf **Marketplace**, und durchsuchen oder filtern Sie dann die verfügbaren Elemente.
 
@@ -117,4 +117,4 @@ Sie können jetzt mit dem virtuellen Computer wie mit jedem anderen Server arbei
 * Automatisieren Sie die Bereitstellung und Verwaltung von virtuellen Computern und Workloads mithilfe von [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/documentation/templates/).
 * Sie können auch schnell einen [virtuellen Linux-Computer erstellen](virtual-machines-linux-quick-create-cli.md), indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

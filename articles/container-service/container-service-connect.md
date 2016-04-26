@@ -15,13 +15,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="04/12/2016"
    ms.author="rogardle"/>
 
 
 # Verbinden mit einem Azure Container Service-Cluster
 
-Für die Mesos- und Swarm-Cluster, die vom Azure Container Service bereitgestellt werden, werden REST-Endpunkte verfügbar gemacht. Diese Endpunkte sind aber nicht öffentlich zugänglich. Zum Verwalten dieser Endpunkte müssen Sie einen SSH-Tunnel (Secure Shell) erstellen. Sobald ein SSH-Tunnel eingerichtet wurde, können Sie Befehle auf die Cluster-Endpunkte anwenden und die Cluster-Benutzeroberfläche über einen Browser auf Ihrem System anzeigen. In diesem Dokument wird die Erstellung eines SSH-Tunnels in Linux, OS X und Windows schrittweise erläutert.
+Für die DC/OS- und Swarm-Cluster, die vom Azure Container Service bereitgestellt werden, werden REST-Endpunkte verfügbar gemacht. Diese Endpunkte sind aber nicht öffentlich zugänglich. Zum Verwalten dieser Endpunkte müssen Sie einen SSH-Tunnel (Secure Shell) erstellen. Sobald ein SSH-Tunnel eingerichtet wurde, können Sie Befehle auf die Cluster-Endpunkte anwenden und die Cluster-Benutzeroberfläche über einen Browser auf Ihrem System anzeigen. In diesem Dokument wird die Erstellung eines SSH-Tunnels in Linux, OS X und Windows schrittweise erläutert.
 
 >[AZURE.NOTE] Sie können eine SSH-Sitzung mit einem Clusterverwaltungssystem erstellen. Dies ist aber nicht zu empfehlen. Wenn Sie direkt auf einem Verwaltungssystem arbeiten, besteht das Risiko unbeabsichtigter Konfigurationsänderungen.
 
@@ -29,42 +29,52 @@ Für die Mesos- und Swarm-Cluster, die vom Azure Container Service bereitgestell
 
 Als Erstes ermitteln Sie beim Erstellen eines SSH-Tunnels unter Linux oder OS X den öffentlichen DNS-Namen von Masterelementen mit Lastenausgleich. Erweitern Sie hierzu die Ressourcengruppe, damit jede Ressource angezeigt wird. Suchen Sie die öffentliche IP-Adresse des Masters, und wählen Sie sie aus. Es wird ein Blatt mit Informationen zur öffentlichen IP-Adresse geöffnet, das den DNS-Namen enthält. Speichern Sie diesen Namen für die spätere Verwendung. <br />
 
+
 ![Öffentlicher DNS-Name](media/pubdns.png)
 
 Öffnen Sie nun eine Shell, und führen Sie den folgenden Befehl aus, wobei Folgendes gilt:
 
-**PORT** ist der Port des Endpunkts, den Sie verfügbar machen möchten. Für Swarm ist dies 2375. Verwenden Sie für Mesos Port 80. **BENUTZERNAME** ist der Benutzername, der bei der Bereitstellung des Clusters angegeben wurde. **DNSPREFIX** ist das DNS-Präfix, das bei der Bereitstellung des Clusters angegeben wurde. **REGION** ist die Region, in der sich die Ressourcengruppe befindet.
+**PORT** ist der Port des Endpunkts, den Sie verfügbar machen möchten. Für Swarm ist dies 2375. Verwenden Sie für DC/OS Port 80. **BENUTZERNAME** ist der Benutzername, der bei der Bereitstellung des Clusters angegeben wurde. **DNSPREFIX** ist das DNS-Präfix, das bei der Bereitstellung des Clusters angegeben wurde. **REGION** ist die Region, in der sich die Ressourcengruppe befindet.
 
-```
+> Für die SSH-Verbindung wird Port 2200 und nicht der Standardport 22 verwendet.
+
+```bash
+# ssh sample
+
 ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]man.[REGION].cloudapp.azure.com -p 2200
 ```
-### Mesos-Tunnel
 
-Öffnen Sie einen Tunnel zu den zu Mesos gehörigen Endpunkten, indem Sie einen Befehl wie den folgenden ausführen:
+### DC/OS-Tunnel
 
-```
+Öffnen Sie einen Tunnel zu den zu DC/OS gehörigen Endpunkten, indem Sie einen Befehl wie den folgenden ausführen:
+
+```bash
+# ssh sample
+
 ssh -L 80:localhost:80 -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
-Nun können Sie wie folgt auf die zu Mesos gehörigen Endpunkte zugreifen:
+Nun können Sie wie folgt auf die zu DC/OS gehörigen Endpunkte zugreifen:
 
-- Mesos: `http://localhost/mesos`
+- DC/OS: `http://localhost/`
 - Marathon: `http://localhost/marathon`
-- Chronos: `http://localhost/chronos`
+- Mesos: `http://localhost/mesos`
 
-Sie erreichen die REST-APIs für jede Anwendung über diesen Tunnel auf ähnliche Weise: Marathon – `http://localhost/marathon/v2`. Weitere Informationen zu den verschiedenen APIs, die verfügbar sind, finden Sie in der Mesosphere-Dokumentation zur [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html). Lesen Sie sich die Informationen zur [Chronos API](https://mesos.github.io/chronos/docs/api.html) und in der Apache-Dokumentation zur [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) durch.
+Sie erreichen die REST-APIs für jede Anwendung über diesen Tunnel auf ähnliche Weise:
 
 ### Swarm-Tunnel
 
 Führen Sie zum Öffnen eines Tunnels zum Swarm-Endpunkt einen Befehl wie diesen aus:
 
-```
+```bash
+# ssh sample
+
 ssh -L 2375:localhost:2375 -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
 Nun können Sie die DOCKER\_HOST-Umgebungsvariable wie folgt festlegen und Ihre Docker-Befehlszeilenschnittstelle normal verwenden.
 
-```
+```bash
 export DOCKER_HOST=:2375
 ```
 
@@ -83,10 +93,10 @@ Wählen Sie `SSH` und `Authentication`. Fügen Sie Ihre private Schlüsseldatei 
 ![PuTTY-Konfiguration 2](media/putty2.png)
 
 Wählen Sie `Tunnels`, und konfigurieren Sie die folgenden weitergeleiteten Ports:
-- **Quellport:** Ihr Wert – 80 für Mesos oder 2375 für Swarm verwenden.
-- **Ziel:** localhost:80 für Mesos oder localhost:2375 für Swarm verwenden.
+- **Quellport:** Ihr Wert – 80 für DC/OS bzw. 2375 für Swarm verwenden.
+- **Ziel:** „localhost:80“ für DC/OS bzw. „localhost:2375“ für Swarm verwenden.
 
-Das folgende Beispiel ist für Mesos konfiguriert, sieht für Docker Swarm aber ähnlich aus.
+Das folgende Beispiel ist für DC/OS konfiguriert, sieht für Docker Swarm aber ähnlich aus.
 
 >[AZURE.NOTE] Port 80 darf beim Erstellen dieses Tunnels nicht verwendet werden.
 
@@ -96,47 +106,18 @@ Speichern Sie nach Abschluss des Vorgangs die Verbindungskonfiguration, und stel
 
 ![PuTTY-Ereignisprotokoll](media/putty4.png)
 
-Wenn Sie den Tunnel für Mesos konfiguriert haben, können Sie wie folgt auf den dazugehörigen Endpunkt zugreifen:
+Wenn Sie den Tunnel für DC/OS konfiguriert haben, können Sie wie folgt auf den zugehörigen Endpunkt zugreifen:
 
-- Mesos: `http://localhost/mesos`
+- DC/OS: `http://localhost/`
 - Marathon: `http://localhost/marathon`
-- Chronos: `http://localhost/chronos`
+- Mesos: `http://localhost/mesos`
 
 Wenn Sie den Tunnel für Docker Swarm konfiguriert haben, können Sie über die Docker-Befehlszeilenschnittstelle auf den Swarm-Cluster zugreifen. Sie müssen zunächst eine Windows-Umgebungsvariable mit dem Namen `DOCKER_HOST` und dem Wert ` :2375` konfigurieren.
 
-## Problembehandlung
-
-### Wenn ich den Tunnel erstellt habe und zur Mesos- oder Marathon-URL navigiere, wird der Fehler „502 Ungültiges Gateway“ angezeigt.
-Die einfachste Möglichkeit zur Lösung besteht darin, den Cluster zu löschen und erneut bereitzustellen. Alternativ können Sie Folgendes tun, um Zookeeper zur selbständigen Reparatur zu zwingen:
-
-Melden Sie sich bei jedem Master an, und führen Sie Folgendes aus:
-
-```
-sudo service nginx stop
-sudo service marathon stop
-sudo service chronos stop
-sudo service mesos-dns stop
-sudo service mesos-master stop 
-sudo service zookeeper stop
-```
-
-Sobald alle Dienste für alle Master-Instanzen beendet wurden:
-```
-sudo mkdir /var/lib/zookeeperbackup
-sudo mv /var/lib/zookeeper/* /var/lib/zookeeperbackup
-sudo service zookeeper start
-sudo service mesos-master start
-sudo service mesos-dns start
-sudo service chronos start
-sudo service marathon start
-sudo service nginx start
-```
-Kurz nachdem alle Dienste neu gestartet wurden, sollten Sie Ihren Cluster wie in der Dokumentation beschrieben verwenden können.
-
 ## Nächste Schritte
 
-Bereitstellen und Verwalten von Containern mit Mesos oder Swarm
+Bereitstellen und Verwalten von Containern mit DC/OS oder Swarm
 
-- [Verwenden von Azure Container Service und Mesos](./container-service-mesos-marathon-rest.md)
+[Arbeiten mit Azure Container Service und DC/OS](./container-service-mesos-marathon-rest.md) [Arbeiten mit Azure Container Service und Docker Swarm](./container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

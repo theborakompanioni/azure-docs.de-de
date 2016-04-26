@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="04/09/2016"
+   ms.date="04/14/2016"
    ms.author="jimpark;"/>
 
 # Einführung: Sichern von Dateien und Ordnern von einem Windows-Server oder -Client in Azure
@@ -99,7 +99,7 @@ Nachdem der Tresor nun erstellt wurde und Sie alles heruntergeladen haben, könn
 ## Schritt 3: Installieren und Registrieren des Backup-Agents
 
 1. Doppelklicken Sie am Speicherort auf die Datei **MARSagentinstaller.exe**.
-2. Führen Sie die Schritte im Setup-Assistenten für den Microsoft Azure Recovery Services Agent aus. Gehen Sie hierbei wie folgt vor:
+2. Führen Sie die Schritte im Setup-Assistenten für den Microsoft Azure Recovery Services Agent aus. Zum Abschließen des Assistenten sind folgende Schritte erforderlich:
     - Wählen Sie einen Speicherort für den Installations- und Cacheordner aus.
     - Geben Sie Ihre Proxyserverinformationen an, wenn Sie einen Proxyserver verwenden, um eine Internetverbindung herzustellen.
     - Geben Sie die Informationen zum Benutzernamen und zum Kennwort ein, wenn Sie einen authentifizierten Proxy verwenden.
@@ -142,4 +142,4 @@ Glückwunsch! Sie haben Ihre Dateien und Ordner erfolgreich mit Azure Backup ges
 - Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 - Falls Sie eine Sicherung wiederherstellen müssen, können Sie diesen Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md) verwenden.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

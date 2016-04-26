@@ -13,10 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/23/2016" 
+	ms.date="04/16/2016" 
 	ms.author="MarkVi"/>
 
 # Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
+
 
 Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist mit Azure Active Directory möglich, da Sie die Anpassung der Darstellung folgender Websites mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas durchführen können:
 
@@ -35,7 +36,9 @@ In diesem Thema wird beschrieben, wie Sie die Anmeldeseite und die Zugriffsberei
 
 ## Anpassen der Anmeldeseite
 
-Normalerweise verwenden Sie die Anmeldeseite, wenn Sie browserbasierten Zugriff auf Ihre Cloud-Apps und -dienste benötigen, die von Ihrer Organisation abonniert wurden. <br> Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu einer Stunde dauern, bis die Änderungen angezeigt werden.
+Normalerweise verwenden Sie die Anmeldeseite, wenn Sie browserbasierten Zugriff auf Ihre Cloud-Apps und -dienste benötigen, die von Ihrer Organisation abonniert wurden.
+
+Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu einer Stunde dauern, bis die Änderungen angezeigt werden.
 
 Eine Anmeldeseite mit Branding wird nur angezeigt, wenn Sie einen Dienst mit einer mandantenspezifischen URL besuchen, z.B. https://outlook.com/**contoso**.com oder https://mail.**contoso**.com.
 
@@ -43,32 +46,35 @@ Wenn Sie einen Dienst mit mandantenspezifischen URLs besuchen (z.B. https://mail
 
 > [AZURE.NOTE]
 >
+
 - Ihr Domänenname muss im Abschnitt **Active Directory** > **Verzeichnis** > **Domänen** im klassischen Azure-Portal, in dem Sie das Branding konfiguriert haben, als „Aktiv“ angezeigt werden.
-- Die Anmeldeseite mit dem Branding wird nicht auf die Verbraucheranmeldeseite von Microsoft übertragen. Wenn Sie sich mit einem persönlichen Microsoft-Konto (früher Windows Live ID) anmelden, wird eine Liste mit von Azure AD gerenderten Benutzerkacheln mit Branding angezeigt, aber das Branding Ihrer Organisation wird nicht auf die Microsoft-Kontoanmeldeseite übertragen.
+
+- Die Anmeldeseite mit dem Branding wird nicht auf die Verbraucheranmeldeseite von Microsoft übertragen. Wenn Sie sich mit einem persönlichen Microsoft-Konto anmelden, wird eine Liste mit von Azure AD gerenderten Benutzerkacheln mit Branding angezeigt, aber das Branding Ihrer Organisation wird nicht auf die Anmeldeseite des Microsoft-Kontos übertragen.
 
 
 Wenn Sie Ihre Unternehmensmarke, -farben und andere anpassbare Elemente auf dieser Seite anzeigen möchten, schauen Sie sich die folgenden Bilder an, um den Unterschied zwischen den beiden Eindrücken zu verstehen.
 
-Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem Desktopcomputer *vor* einer Anpassung:
+Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem Desktopcomputer **vor** einer Anpassung:
 
 ![Office 365-Anmeldeseite vor der Anpassung][1]
 
-Nach einer Anpassung würde diese Seite wie folgt aussehen:
+Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem Desktopcomputer **nach** einer Anpassung:
 
 ![Office 365-Anmeldeseite nach der Anpassung][2]
 
-Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem mobilen Gerät vor einer Anpassung:
+Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem mobilen Gerät **vor** einer Anpassung:
 
 ![Office 365-Anmeldeseite vor der Anpassung][3]
 
-Nach einer Anpassung würde diese Seite wie folgt aussehen:
+
+Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem mobilen Gerät **nach** einer Anpassung:
 
 ![Office 365-Anmeldeseite nach der Anpassung][4]
 
 
-Während der Größenänderung eines Browserfensters wird die große Abbildung (wie die zuvor gezeigte) fast immer so zugeschnitten, dass verschiedene Bildschirm-Seitenverhältnisse möglich sind. Vor diesem Hintergrund sollten Sie die wichtigsten visuellen Elemente in der Abbildung beibehalten, sodass sie immer in der oberen linken Ecke erscheinen (oben rechts für Rechts-nach-links-Sprachen). Dies ist wichtig, da die Größenänderung normalerweise von der rechten unteren Ecke nach oben links oder von unten nach oben erfolgt.
+Während der Größenänderung eines Browserfensters wird die große Abbildung (wie die zuvor gezeigte) häufig so zugeschnitten, dass verschiedene Bildschirm-Seitenverhältnisse möglich sind. Vor diesem Hintergrund sollten Sie die wichtigsten visuellen Elemente in der Abbildung beibehalten, sodass sie immer in der oberen linken Ecke erscheinen (oben rechts für Rechts-nach-links-Sprachen). Dies ist wichtig, da die Größenänderung normalerweise von der rechten unteren Ecke nach oben links oder von unten nach oben erfolgt.
 
-Die folgende Abbildung zeigt, wie die Abbildung zugeschnitten wird, wenn die Größe des Browsers nach links verschoben wird:
+Die folgende Darstellung zeigt, wie die Abbildung zugeschnitten wird, wenn die Größe des Browsers nach links verschoben wird:
 
 ![][6]
 
@@ -84,16 +90,17 @@ Sie können die folgenden Elemente auf der Anmeldeseite anpassen:
 
  Seitenelement | Position auf der Seite
 	------------- | -------------
-Bannerlogo | Rechts oben auf der Seite angezeigt. Ersetzt das Logo, das normalerweise von der Zielwebsite angezeigt wird, bei der Sie sich anmelden (z.B. Office 365 oder Azure).
-Große Abbildung / Hintergrundfarbe | Am linken Rand der Seite angezeigt. Ersetzt das Bild, das normalerweise von der Zielwebsite angezeigt wird, bei der Sie sich anmelden. Die Hintergrundfarbe wird möglicherweise bei Verbindungen mit geringer Bandbreite oder auf sehr kleinen Bildschirmen anstelle der großen Abbildung angezeigt.
+Bannerlogo | Rechts oben auf der Seite angezeigt. Ersetzt das Logo der Zielwebsite, an der Sie sich anmelden (z.B. Office 365 oder Azure).
+Große Abbildung / Hintergrundfarbe | Am linken Rand der Seite angezeigt. Ersetzt das Bild der Zielwebsite, an der Sie sich anmelden. Unter Umständen wird bei Verbindungen mit geringer Bandbreite oder auf kleinen Bildschirmen anstelle der großen Abbildung die Hintergrundfarbe angezeigt.
 Text der Anmeldeseite | Wird über der Fußzeile angezeigt, wenn Sie hilfreiche Informationen vermitteln möchten, bevor eine Anmeldung mit einem Geschäfts- oder Schulkonto durchgeführt wird. Ein Beispiel: Sie möchten die Telefonnummer zu Ihrem Helpdesk oder einen rechtlichen Hinweis einfügen.
 
 > [AZURE.NOTE]
 Alle Elemente sind optional. Wenn Sie z.B. ein Bannerlogo angeben, aber keine große Abbildung, werden auf der Anmeldeseite Ihr Logo und die Abbildung für den Zielstandort (d.h. das Office 365-Bild mit dem kalifornischen Highway) angezeigt.
 
-Sie können auch alle Elemente auf dieser Seite lokalisieren. Sobald Sie einen "Standard"-Satz an Anpassungselementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Dazu zählen z. B.:
+Sie können auch alle Elemente auf dieser Seite lokalisieren. Sobald Sie einen „Standardsatz“ mit Anpassungselementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Dazu zählen z. B.:
 
 - Erstellen Sie eine große "Standard"-Abbildung, die für alle Kulturen funktioniert, und erstellen Sie dann spezifische Versionen für Englisch und Französisch. Wenn Sie Ihre Browser auf eine dieser Sprachen festlegen, wird das jeweilige Bild angezeigt, während das Standardbild für alle anderen Sprachen angezeigt wird.
+
 - Konfigurieren Sie verschiedene Logos für Ihre Organisation (z. B. japanische oder hebräische Versionen).
 
 
@@ -109,9 +116,9 @@ Der folgende Screenshot zeigt ein Beispiel für eine Zugriffsbereichsseite nach 
 
 ## Konfigurieren Sie Ihr Verzeichnis mit Unternehmensbranding
 
-Sie können einen Standardsatz mit anpassbaren Elementen pro Verzeichnis im klassischen Azure-Portal konfigurieren. Nachdem die Standardeinstellungen gespeichert wurden, hat ein Administrator auch die Möglichkeit, lokalisierte Versionen jedes Elements für verschiedene Sprachen bzw. Gebietsschemas hinzuzufügen. Alle anpassbaren Elemente sind optional.
+Sie können einen Standardsatz mit anpassbaren Elementen pro Verzeichnis im klassischen Azure-Portal konfigurieren. Nachdem die Standardeinstellungen gespeichert wurden, kann ein Administrator lokalisierte Versionen jedes Elements für verschiedene Sprachen bzw. Gebietsschemas hinzufügen. Alle anpassbaren Elemente sind optional.
 
-Wenn Sie z.B. ein Standardbannerlogo konfigurieren, aber keine große Abbildung, wird Ihr Logo auf der Anmeldeseite in der oberen rechten Ecke und ansonsten die Standardabbildung angezeigt.
+Wenn Sie beispielsweise ein standardmäßiges Bannerlogo konfigurieren, aber keine große Abbildung, wird Ihr Logo auf der Anmeldeseite oben rechts angezeigt. Außerdem wird die Standardabbildung der Website angezeigt.
 
 Stellen Sie sich die folgende Konfiguration vor:
 
@@ -128,7 +135,7 @@ Während Sie technisch gesehen einen anderen Satz für jede von Azure AD unterst
 2. Wählen Sie das Verzeichnis, das Sie anpassen möchten.
 3. Klicken Sie in der Symbolleiste oben auf **Konfigurieren**.
 4. Klicken Sie auf **Branding anpassen**.
-4. Ändern Sie die Elemente, die Sie anpassen möchten. Beachten Sie, dass alle Felder optional sind.
+4. Ändern Sie die Elemente, die Sie anpassen möchten. Alle Felder sind optional.
 5. Klicken Sie auf **Speichern**.
 
 Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
@@ -141,7 +148,7 @@ Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am 
 4. Klicken Sie auf **Branding anpassen**.
 2. Klicken Sie auf **Brandingeinstellungen für eine bestimmte Sprache hinzufügen**.
 3. Wählen Sie die Sprache, für die Sie das Logo anpassen möchten, und klicken Sie dann auf **Weiter**.
-3. Bearbeiten Sie nur die Elemente, für die Sie sprachspezifische Überschreibungen konfigurieren möchten. Beachten Sie, dass alle Felder optional sind. Wenn ein Feld leer bleibt, wird stattdessen der benutzerdefinierte Standardwert angezeigt (oder die Microsoft-Standardeinstellung, wenn kein benutzerdefinierter Standardwert konfiguriert ist).
+3. Bearbeiten Sie nur die Elemente, für die Sie sprachspezifische Überschreibungen konfigurieren möchten. Alle Felder sind optional. Wenn ein Feld leer bleibt, wird stattdessen der benutzerdefinierte Standardwert angezeigt (oder die Microsoft-Standardeinstellung, wenn kein benutzerdefinierter Standardwert konfiguriert ist).
 4. Klicken Sie auf **Speichern**.
 
 **Führen Sie die folgenden Schritte aus, um das Unternehmensbranding für Ihr Verzeichnis zu entfernen:**
@@ -168,10 +175,12 @@ Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am 
 
 ## Testen und Beispiele
 
-Es wird empfohlen, dass Sie mit einem Testmandanten experimentieren, bevor Sie Änderungen in der Produktionsumgebung vornehmen.<br> **Überprüfen Sie wie folgt, ob Ihr Branding angewendet wurde:**
+Es wird empfohlen, dass Sie mit einem Testmandanten experimentieren, bevor Sie Änderungen in der Produktionsumgebung vornehmen.
+
+**Überprüfen Sie wie folgt, ob Ihr Branding angewendet wurde:**
 
 1. Öffnen Sie eine InPrivate- oder Inkognito-Browsersitzung. 
-2. Greifen Sie auf https://outlook.com/contoso.com zu, indem Sie „contoso.com“ durch die von Ihnen angepasste Domäne ersetzen. 
+2. Greifen Sie auf https://outlook.com/contoso.com zu, und ersetzen Sie dabei „contoso.com“ durch die von Ihnen angepasste Domäne. 
 
 Dies funktioniert auch für Domänen, die ein Format wie „contoso.onmicrosoft.com“ haben.
 
@@ -191,10 +200,10 @@ Name | Beschreibung | Einschränkungen | Empfehlungen
 Bannerlogo | Das Bannerlogo wird auf der Anmeldeseite und im Zugriffsbereich angezeigt. | <p>JPG oder PNG-</p><p>60 x 280 Pixel</p><p>10 KB</p> | <p>Verwenden Sie das vollständige Logo Ihrer Organisation (einschließlich Piktogramm und Firmenschriftzug)</p><p>Halten Sie es unter 30 Pixel, um Bildlaufleisten auf mobilen Geräten zu vermeiden</p><p>Halten Sie es kleiner als 4 KB</p><p>Verwenden Sie eine transparente PNG-Datei (gehen Sie nicht davon aus, dass die Anmeldeseite immer einen weißen Hintergrund hat)</p>
 Kachellogo | (zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um das generische „Geschäfts- oder Schulkonto“-Piktogramm an unterschiedlichen Stellen zu platzieren. | <p>JPG oder PNG-</p><p>120 x 120 Pixel</p><p>10 KB</p> | <p>Halten Sie es einfach (kein kleiner Text), da dieses Abbild um 50 % verkleinert werden kann
 </p> |
-Benutzernamenbezeichnung auf der Anmeldeseite | (zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um die generische „Geschäfts- oder Schulkonto“-Zeichenfolge an unterschiedlichen Stellen zu platzieren. Sie können ihn beispielsweise auf "Contoso-Konto" oder "Contoso-ID" festlegen. | <p>Unicode-Text, bis zu 50 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> | <p>Halten Sie es kurz und einfach</p><p>Fragen Sie die Benutzer, wie Sie sich in der Regel auf das Geschäfts- oder Schulkonto beziehen, das Sie zur Verfügung stellen.</p>
+Benutzernamenbezeichnung auf der Anmeldeseite | (zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um die generische „Geschäfts- oder Schulkonto“-Zeichenfolge an unterschiedlichen Stellen zu platzieren. Sie können ihn beispielsweise auf „Contoso-Konto“ oder „Contoso-ID“ festlegen. | <p>Unicode-Text, bis zu 50 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> | <p>Halten Sie es kurz und einfach</p><p>Fragen Sie die Benutzer, wie Sie sich in der Regel auf das Geschäfts- oder Schulkonto beziehen, das Sie zur Verfügung stellen.</p>
 Text der Anmeldeseite | Dieser „Textbaustein“ wird unter dem Anmeldeseitenformular angezeigt und kann verwendet werden, um zusätzliche Anweisungen zu kommunizieren oder mitzuteilen, wo es Hilfe und Support gibt. | <p>Unicode-Text, bis zu 256 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> | Verwenden Sie maximal 250 Zeichen (ungefähr drei Zeilen Text)
-Abbildung auf der Anmeldeseite | Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. | <p>JPG oder PNG-</p><p>1420 x 1200</p><p>500 KB</p> | <p>1420 x 1200 Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird fast immer abgeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Halten die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p>
-Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseite wird im Bereich links neben dem Anmeldeseitenformular verwendet. Dies wird sichtbar, wenn keine Abbildung auf der Anmeldeseite vorhanden ist. | Muss eine RGB-Farbe im hexadezimalen Format sein (Beispiel: #FFFFFF) | <p>Die Hintergrundfarbe wird bei Verbindungen mit geringer Bandbreite unter Umständen anstelle der großen Abbildung angezeigt</p><p>Wir empfehlen, die Grundfarbe des Bannerlogos auszuwählen</p>
+Abbildung auf der Anmeldeseite | Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. | <p>JPG oder PNG-</p><p>1420 x 1200</p><p>500 KB</p> | <p>1420 x 1200 Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird häufig zugeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Belassen Sie die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p>
+Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseite wird im Bereich links neben dem Anmeldeseitenformular verwendet. | Muss eine RGB-Farbe im hexadezimalen Format sein (Beispiel: #FFFFFF) | <p>Die Hintergrundfarbe wird bei Verbindungen mit geringer Bandbreite unter Umständen anstelle der großen Abbildung angezeigt</p><p>Wir empfehlen, die Grundfarbe des Bannerlogos auszuwählen</p>
 
 
 ## Nächste Schritte
@@ -212,4 +221,4 @@ Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseit
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

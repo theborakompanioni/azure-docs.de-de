@@ -72,4 +72,4 @@ Bei einem **klassischen App Service-Plan** können Sie Funktionen genauso wie Ih
 
 [AZURE.INCLUDE [Melden von Problemen](../../includes/functions-reporting-issues.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

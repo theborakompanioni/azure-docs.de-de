@@ -65,13 +65,13 @@ Wir stellen jetzt eine Web-App unter Azure App Service bereit.
     
     Befolgen Sie die Aufforderung, um die Anmeldung in einem Browser mit einem Microsoft-Konto fortzusetzen, das über Ihr Azure-Abonnement verfügt.
 
-4. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen mit dem nächsten Befehl. Die URL der Web-App lautet http://&lt;app_name>.azurewebsites.net.
+4. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen mit dem nächsten Befehl.
 
         azure site create --git <app_name>
       
     >[AZURE.NOTE] Wenn Sie für Ihr Azure-Abonnement noch nie zuvor Anmeldeinformationen für die Bereitstellung eingerichtet haben, werden Sie aufgefordert, diese zu erstellen. Diese Anmeldeinformationen und nicht Ihre Anmeldeinformationen für das Azure-Konto werden von App Service ausschließlich für Git-Bereitstellungen und FTP-Anmeldungen verwendet.
     
-    Jetzt wird die App nicht nur in Azure erstellt, sondern es wird auch Ihr aktuelles Verzeichnis für Git initialisiert und mit der neuen App Service-App als Git-Remoteelement verbunden. Sie können zur URL der App navigieren, um die schöne HTML-Standardseite anzuzeigen, aber wir möchten nun erreichen, dass dort Ihr eigener Code verwendet wird.
+    Ihre App wird jetzt in Azure erstellt. Ihr aktuelles Verzeichnis wird außerdem für Git initialisiert und mit der neuen App Service-App als Git-Remoteelement verbunden. Sie können zur URL der App (http://&lt;app_name>.azurewebsites.net) navigieren, um die schöne HTML-Standardseite anzuzeigen, aber wir möchten nun erreichen, dass dort Ihr eigener Code verwendet wird.
 
 4. Stellen Sie Ihren Beispielcode jetzt für die neue App Service-App bereit, wie Sie dies auch für anderen Code per Pushübertragung mit Git durchführen würden:
 
@@ -79,7 +79,7 @@ Wir stellen jetzt eine Web-App unter Azure App Service bereit.
     
     >[AZURE.NOTE] Sie werden zum Eingeben Ihres Bereitstellungskennworts aufgefordert. Wenn App Service neu für Sie ist, können Sie das eben erstellte Bereitstellungskennwort eingeben, um zu beginnen.
     
-    Mit `git push` wird nicht nur Code in Azure eingefügt, sondern es werden auch Bereitstellungsaufgaben im Bereitstellungsmodul ausgelöst. Falls Ihr Projektstamm (bzw. Repositorystamm) das Element „package.json“ (Node.js) oder „requirements.txt“ (Python) enthält oder falls Ihr ASP.NET-Projekt das Element „packages.config“ enthält, stellen die Bereitstellungsskripts die erforderlichen Pakete für Sie wieder her. Sie können auch die [Composer-Erweiterung aktivieren](web-sites-php-mysql-deploy-use-git.md#composer), um Dateien vom Typ „composer.json“ in Ihrer PHP-App automatisch zu verarbeiten.
+    Mit `git push` wird nicht nur Code in Azure eingefügt, sondern es werden auch Bereitstellungsaufgaben im Bereitstellungsmodul ausgelöst. Falls Ihr Projektstamm (bzw. Repositorystamm) das Element „package.json“ (Node.js) oder „requirements.txt“ (Python) enthält oder falls Ihr ASP.NET-Projekt das Element „packages.config“ enthält, stellen die Bereitstellungsskripts die erforderlichen Pakete wieder für Sie her. Sie können auch die [Composer-Erweiterung aktivieren](web-sites-php-mysql-deploy-use-git.md#composer), um Dateien vom Typ „composer.json“ in Ihrer PHP-App automatisch zu verarbeiten.
 
 Herzlichen Glückwunsch! Sie haben Ihre App in Azure App Service bereitgestellt.
 
@@ -109,7 +109,7 @@ Wir wechseln jetzt zum Azure-Portal, um anzuzeigen, was Sie erstellt haben:
 
 2. Klicken Sie in der Leiste auf der linken Seite auf **App Services**.
 
-3. Klicken Sie auf die App Service-App, die Sie gerade erstellt haben, um das dazugehörige Blatt im Portal zu öffnen. Sie sehen, dass standardmäßig auch das Blatt **Einstellungen** geöffnet wird, um die Benutzerfreundlichkeit zu erhöhen.
+3. Klicken Sie auf die App, die Sie gerade erstellt haben, um die dazugehörige Seite im Portal (als [Blatt](../azure-portal-overview.md) bezeichnet) zu öffnen. Das Blatt **Einstellungen** wird ebenfalls standardmäßig geöffnet, um die Benutzerfreundlichkeit zu erhöhen.
 
     ![Anzeige der ersten App im Portal unter Azure App Service](./media/app-service-web-get-started/portal-view.png)
 
@@ -139,4 +139,4 @@ Es sind auch weitere Inhalte dazu verfügbar, welche unterschiedlichen Apps Sie 
 - [Erstellen von mobilen Apps](/documentation/learning-paths/appservice-mobileapps/)
 - [Erstellen von API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

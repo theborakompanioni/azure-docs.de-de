@@ -20,60 +20,79 @@
 
 # Bereitstellen eines Azure Container Service-Clusters
 
-Azure Container Service ermöglicht eine schnelle Bereitstellung beliebter Open-Source-Lösungen für Container-Clustering und die Orchestrierung. Mithilfe von Azure Container Service können Sie Marathon Mesos- und Docker Swarm-Cluster mit Azure Resource Manager-Vorlagen oder im Azure-Portal bereitstellen. Sie stellen diese Cluster bereit, indem Sie Azure Virtual Machine-Skalierungsgruppen verwenden. Für die Cluster werden Azure-Netzwerk- und Speicherangebote genutzt. Für den Zugriff auf Azure Container Service benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren.
+Azure Container Service ermöglicht eine schnelle Bereitstellung beliebter Open-Source-Lösungen für Container-Clustering und die Orchestrierung. Mithilfe von Azure Container Service können Sie DC/OS- und Docker Swarm-Cluster mit Azure Resource Manager-Vorlagen oder im Azure-Portal bereitstellen. Sie stellen diese Cluster bereit, indem Sie Azure Virtual Machine-Skalierungsgruppen verwenden. Für die Cluster werden Azure-Netzwerk- und Speicherangebote genutzt. Für den Zugriff auf Azure Container Service benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren.
 
 In diesem Dokument werden Sie durch die Bereitstellung eines Azure Container Service-Clusters mit dem [Azure-Portal](#creating-a-service-using-the-azure-portal), der [Azure-Befehlszeilenschnittstelle (CLI)](#creating-a-service-using-the-azure-cli) und dem [Azure PowerShell-Modul](#creating-a-service-using-powershell) geführt.
 
 ## Erstellen eines Diensts mit dem Azure-Portal
 
-Wählen Sie zum Bereitstellen eines Mesos- oder Docker Swarm-Clusters in GitHub eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
+Melden Sie sich am Azure-Portal an, wählen Sie die Option „Neu“, und suchen Sie auf dem Azure Marketplace nach **Azure Container Service**.
 
-* [Mesos-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
-* [Swarm-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+![Bereitstellung erstellen](media/acs-portal1.png) <br />
 
-Wenn Sie auf einer Vorlagenseite jeweils die Schaltfläche **In Azure bereitstellen** wählen, wird das Azure-Portal mit einem Formular geöffnet, das in etwa wie folgt aussieht: <br />
+Wählen Sie **Azure Container Service**, und klicken Sie auf **Erstellen**.
 
-![Bereitstellung mit Formular erstellen](media/create-mesos-params.png) <br />
+![Bereitstellung erstellen](media/acs-portal2.png) <br />
 
-Füllen Sie das Formular mithilfe dieser Anleitung aus, und wählen Sie **OK**, wenn Sie damit fertig sind. <br />
+Geben Sie Folgendes ein:
 
-Feld | Beschreibung
-----------------|-----------
-DNSNAMEPREFIX | Dies muss ein eindeutiger Wert sein. Dieser wird zum Erstellen von DNS-Namen für jeden wichtigen Teil des Diensts verwendet. Weitere Informationen finden Sie weiter unten in diesem Artikel.
-AGENTCOUNT | Dies ist die Anzahl der virtuellen Computer, die in der Skalierungsgruppe des Azure Container Service-Agents erstellt werden.
-AGENTVMSIZE | Dies ist die Größe der virtuellen Agent-Computer. Wählen Sie eine Größe, die genügend Ressourcen bietet, um die größten Container zu hosten.
-ADMINUSERNAME | Dies ist der Benutzername, der für ein Konto auf jedem virtuellen Computer und in jeder Skalierungsgruppe für virtuelle Computer im Azure Container Service-Cluster verwendet wird.
-ORCHESTRATORTYPE| Dies ist der Orchestratortyp, der im Azure Container Service-Cluster verwendet wird.
-MASTERCOUNT | Dies ist die Anzahl der virtuellen Computer, die als Master für den Cluster konfiguriert werden. Sie können 1 auswählen, aber dies bietet in Ihrem Cluster keinerlei Resilienz und wird daher nur für Testzwecke empfohlen. Für einen Produktionscluster ist der Wert 3 oder 5 zu empfehlen.
-SSHRSAPUBLICKEY | Sie müssen die Secure Shell (SSH) für die Authentifizierung gegenüber den virtuellen Computern verwenden. Hier fügen Sie Ihren öffentlichen Schlüssel hinzu. Es ist wichtig, dass Sie den Schlüsselwert sorgfältig in dieses Feld einfügen. Manchmal enthält der Inhalt einen Zeilenumbruch, wodurch der Schlüssel geteilt wird. Stellen Sie sicher, dass Ihr Schlüssel keine Zeilenumbrüche enthält und das Präfix „ssh-rsa“ sowie das Postfix „username@domain“ enthält. Er sollte etwa wie folgt aussehen: „ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm'“. Wenn Sie einen SSH-Schlüssel erstellen müssen, finden Sie auf der Website mit der Azure-Dokumentation Informationen zu [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) und [Linux](../virtual-machines/virtual-machines-linux-ssh-from-linux.md).
+- Benutzername: Dies ist der Benutzername, der für ein Konto auf jedem virtuellen Computer und in jeder Skalierungsgruppe für virtuelle Computer im Azure Container Service-Cluster verwendet wird.
+- Abonnement: Wählen Sie ein Azure-Abonnement aus.
+- Ressourcengruppe: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
+- Standort: Wählen Sie eine Azure-Region für die Azure-Container Service-Bereitstellung aus.
+- Öffentlicher SSH-Schlüssel: Fügen Sie den öffentlichen Schlüssel hinzu, der für die Authentifizierung gegenüber Azure Container Dienst Virtual Machines verwendet werden soll. Es ist sehr wichtig, dass dieser Schlüssel keine Zeilenumbrüche enthält und das Präfix „ssh-rsa“ sowie das Postfix „username@domain“ aufweist. Er sollte in etwa wie folgt aussehen: „**ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm**“. Eine Anleitung zum Erstellen von SSH-Schlüsseln finden Sie in den [Linux](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/)- und [Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)-Artikeln.
 
-Wählen Sie **OK**, nachdem Sie die richtigen Werte für Ihre Parameter festgelegt haben. Vergeben Sie als Nächstes einen Namen für die Ressourcengruppe, wählen Sie eine Region aus, lesen Sie die rechtlichen Bedingungen, und stimmen Sie diesen zu.
+Klicken Sie auf **OK**, wenn Sie bereit sind, den Vorgang fortzusetzen.
 
-> [AZURE.NOTE] Während der Vorschauphase werden für Azure Container Service keine Gebühren berechnet. Es fallen nur die standardmäßigen Computegebühren an, z.B. Gebühren für virtuelle Computer, Speicher und Netzwerk.
+![Bereitstellung erstellen](media/acs-portal3.png) <br />
 
-![Ressourcengruppe auswählen](media/resourcegroup.png)
+Wählen Sie einen Orchestrierungstyp. Die Optionen sind:
 
-Wählen Sie abschließend **Erstellen**. Wechseln Sie zurück zum Dashboard. Wenn Sie das Kontrollkästchen **An Dashboard anheften** auf dem Bereitstellungsblatt nicht deaktiviert haben, wird eine animierte Kachel angezeigt, die in etwa wie folgt aussieht:
+- DC/OS: Ein DC/OS-Cluster wird bereitgestellt.
+- Swarm: Ein Docker Swarm-Cluster wird bereitgestellt.
 
-![Vorlagenkachel bereitstellen](media/deploy.png)
+Klicken Sie auf **OK**, wenn Sie bereit sind, den Vorgang fortzusetzen.
 
-Jetzt lehnen Sie sich zurück und entspannen Sie sich, während der Cluster erstellt wird. Nach der Erstellung des Clusters werden einige Blätter mit den Ressourcen angezeigt, aus denen der Azure Container Service-Cluster besteht.
+![Bereitstellung erstellen](media/acs-portal4.png) <br />
 
-![Abgeschlossen](media/final.png)
+Geben Sie Folgendes ein:
+
+- Masteranzahl: Die Anzahl von Mastern im Cluster.
+- Agent-Anzahl: Für Docker Swarm ist dies die anfängliche Anzahl von Agents in der Agent-Skalierungsgruppe. Für DC/OS ist dies die anfängliche Anzahl von Agents in einer privaten Skalierungsgruppe. Darüber hinaus wird eine öffentliche Skalierungsgruppe mit einer vorbestimmten Anzahl von Agents erstellt. Die Anzahl der Agents in dieser öffentlichen Skalierung wird in Abhängigkeit davon ermittelt, wie viele Master im Cluster erstellt wurden: ein öffentlicher Agent für einen Master und zwei öffentliche Agents für drei oder fünf Master.
+- Größe der virtuellen Agent-Computer: Dies ist die Größe der virtuellen Agent-Computer.
+- DNS-Präfix: Ein weltweit eindeutiger Name, der als Präfix für wichtige Teile des vollqualifizierten Domänennamens für den Dienst verwendet wird. 
+
+Klicken Sie auf **OK**, wenn Sie bereit sind, den Vorgang fortzusetzen.
+
+![Bereitstellung erstellen](media/acs-portal5.png) <br />
+
+Klicken Sie auf **OK**, nachdem die Dienstüberprüfung abgeschlossen wurde.
+
+![Bereitstellung erstellen](media/acs-portal6.png) <br />
+
+Klicken Sie auf **Erstellen**, um den Bereitstellungsprozess zu starten.
+
+![Bereitstellung erstellen](media/acs-portal7.png) <br />
+
+Falls Sie die Bereitstellung im Azure-Portal angeheftet haben, wird der Bereitstellungsstatus angezeigt.
+
+![Bereitstellung erstellen](media/acs-portal8.png) <br />
+
+Nachdem die Bereitstellung abgeschlossen ist, ist der Azure Container Service-Cluster bereit für die Verwendung.
 
 ## Erstellen eines Diensts mit der Azure-Befehlszeilenschnittstelle
 
 Um eine Instanz von Azure Container Service über die Befehlszeile zu erstellen, benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren. Außerdem muss die Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein.
 
-Wählen Sie zum Bereitstellen eines Mesos- oder Docker Swarm-Clusters in GitHub eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
+Wählen Sie zum Bereitstellen eines DC/OS- oder Docker Swarm-Clusters in GitHub eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
 
-* [Mesos-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [DC/OS-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
 * [Swarm-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 Als Nächstes stellen Sie sicher, dass die Azure-Befehlszeilenschnittstelle mit einem Azure-Abonnement verbunden ist. Hierfür können Sie den folgenden Befehl verwenden:
 
 ```bash
-Azure account show
+azure account show
 ```
 Wenn ein Azure-Konto nicht zurückgegeben wird, können Sie den folgenden Befehl verwenden, um die Befehlszeilenschnittstelle bei Azure anzumelden.
 
@@ -87,22 +106,18 @@ Konfigurieren Sie anschließend die Azure-Befehlszeilenschnittstellen-Tools für
 azure config mode arm
 ```
 
-Wenn Sie Ihren Cluster in einer neuen Ressourcengruppe erstellen möchten, müssen Sie zunächst die Ressourcengruppe erstellen. Verwenden Sie den folgenden Befehl, bei dem `GROUP_NAME` der Name der zu erstellenden Ressourcengruppe ist und `REGION` für die Region steht, in der Sie die Ressourcengruppe erstellen möchten:
-
-```bash
-azure group create GROUP_NAME REGION
-```
-
-Nach dem Erstellen der Ressourcengruppe können Sie den Cluster mit diesem Befehl erstellen, wobei Folgendes gilt:
+Erstellen Sie mit dem folgenden Befehl eine Azure-Ressourcengruppe und einen Container Service-Cluster. Hierbei gilt Folgendes:
 
 - **RESOURCE\_GROUP** ist der Name der Ressourcengruppe, die für diesen Dienst verwendet werden soll.
-- **DEPLOYMENT\_NAME** ist der Name dieser Bereitstellung.
-- **TEMPLATE\_URI** ist der Speicherort der Bereitstellungsdatei. Beachten Sie, dass dies die RAW-Datei sein muss, *kein* Zeiger auf die GitHub-UI. Wählen Sie zum Suchen nach dieser URL die Datei „azuredeploy.json“ in GitHub, und klicken Sie auf die Schaltfläche **RAW**.
+- **LOCATION** ist die Azure-Region, in der die Ressourcengruppe und die Azure Container Service-Bereitstellung erstellt werden.
+- **TEMPLATE\_URI** ist der Speicherort der Bereitstellungsdatei. **Hinweis**: Dies muss eine Rohdatendatei sein. Es darf kein Zeiger auf die GitHub-UI sein. Wählen Sie zum Suchen dieser URL die Datei „azuredeploy.json“ in GitHub, und klicken Sie auf die Schaltfläche „RAW“:
 
-> [AZURE.NOTE] Beim Ausführen dieses Befehls werden Sie von der Shell aufgefordert, Parameterwerte für die Bereitstellung einzugeben.
-
+> Hinweis – Beim Ausführen dieses Befehls werden Sie von der Shell aufgefordert, Parameterwerte für die Bereitstellung einzugeben.
+ 
 ```bash
-azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI
+# sample deployment
+
+azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri TEMPLATE_URI
 ```
 
 ### Eingeben von Vorlagenparametern
@@ -110,12 +125,16 @@ azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMP
 Bei dieser Version des Befehls müssen Sie Parameter interaktiv definieren. Wenn Sie Parameter angeben möchten, z.B. eine Zeichenfolge mit JSON-Formatierung, ist dies mit dem Switch `-p` möglich. Beispiel:
 
  ```bash
+ # sample deployment
+
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
  ```
 
 Alternativ können Sie eine JSON-formatierte Parameterdatei mit dem Switch `-e` angeben:
 
  ```bash
+ # sample deployment
+
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -e PATH/FILE.JSON
  ```
 
@@ -125,12 +144,12 @@ Um eine Parameterdatei als Beispiel anzuzeigen, die den Namen `azuredeploy.param
 
 Sie können einen Azure Container Service-Cluster auch mit PowerShell bereitstellen. Dieses Dokument basiert auf Version 1.0 des [Azure PowerShell-Moduls](https://azure.microsoft.com/blog/azps-1-0/).
 
-Wählen Sie zum Bereitstellen eines Mesos- oder Docker Swarm-Clusters eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
+Wählen Sie zum Bereitstellen eines DC/OS- oder Docker Swarm-Clusters eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
 
-* [Mesos-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [DC/OS-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
 * [Swarm-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
-Prüfen Sie vor dem Erstellen eines Clusters in Ihrem Azure-Abonnement, dass Ihre PowerShell-Sitzung bei Azure angemeldet ist. Hierzu können Sie den Befehl `Get-AzureRMSubscription` verwenden:
+Prüfen Sie vor dem Erstellen eines Clusters in Ihrem Azure-Abonnement, dass Ihre PowerShell-Sitzung bei Azure angemeldet ist. Hierfür können Sie den Befehl `Get-AzureRMSubscription` verwenden:
 
 ```powershell
 Get-AzureRmSubscription
@@ -151,6 +170,8 @@ New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
 Nach dem Erstellen einer Ressourcengruppe können Sie Ihren Cluster mit dem folgenden Befehl erstellen. Der URI der gewünschten Vorlage wird für den Parameter `-TemplateUri` festgelegt. Beim Ausführen dieses Befehls werden Sie von PowerShell aufgefordert, Parameterwerte für die Bereitstellung einzugeben.
 
 ```powershell
+# sample deployment
+
 New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
  ```
 
@@ -160,15 +181,16 @@ Wenn Sie mit PowerShell vertraut sind, wissen Sie, dass Sie die für ein Cmdlet 
 
 Unten ist der vollständige Befehl mit Parametern angegeben. Sie können Ihre eigenen Werte für die Namen der Ressourcen angeben.
 
-```
+```powershell
+# sample deployment
+
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
 ```
 
 ## Nächste Schritte
+ 
+Da Sie nun einen funktionierenden Cluster haben, lesen Sie die folgenden Dokumente, um Informationen zur Verbindung und Verwaltung zu erhalten.
+ 
+[Herstellen der Verbindung mit einem Azure Container Service-Cluster](./container-service-connect.md) [Arbeiten mit Azure Container Service und DC/OS](./container-service-mesos-marathon-rest.md) [Arbeiten mit Azure Container Service und Docker Swarm](./container-service-docker-swarm.md)
 
-Da Sie nun einen funktionierenden Cluster haben, können Sie sich die Artikel mit den Informationen zur Verbindung und Verwaltung ansehen.
-
-- [Verbinden mit einem Azure Container Service-Cluster](./container-service-connect.md)
-- [Verwenden von Azure Container Service und Mesos](./container-service-mesos-marathon-rest.md)
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

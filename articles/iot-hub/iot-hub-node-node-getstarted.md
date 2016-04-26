@@ -52,7 +52,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Klicken Sie im letzten Schritt auf dem IoT Hub-Blatt auf **Einstellungen** und auf dem Blatt **Einstellungen** auf **Messaging**. Notieren Sie sich auf dem Blatt **Messaging** die Angaben für **Event Hub-kompatibler Name** und **Event Hub-kompatibler Endpunkt**. Sie benötigen diese Werte beim Erstellen der Anwendung **read-d2c-messages**.
 
-    ![][6]
+![][6]
 
 Sie haben nun Ihren IoT Hub erstellt und verfügen über den IoT Hub-Hostnamen, die IoT Hub-Verbindungszeichenfolge, den Event Hub-kompatiblen Namen und Event Hub-kompatible Endpunktwerte. Diese Angaben benötigen Sie, um den Rest dieses Tutorials durcharbeiten zu können.
 
@@ -65,7 +65,7 @@ Sie haben nun Ihren IoT Hub erstellt und verfügen über den IoT Hub-Hostnamen, 
 
 Sie können nun die Anwendungen ausführen.
 
-1. Führen Sie an der Eingabeaufforderung im Ordner **readdevicetocloudmessages** den folgenden Befehl aus, um mit der Überwachung Ihres IoT Hubs zu beginnen:
+1. Führen Sie an der Eingabeaufforderung im Ordner **readdevicetocloudmessages** den folgenden Befehl aus, um mit der Überwachung von IoT Hub zu beginnen:
 
     ```
     node ReadDeviceToCloudMessages.js 
@@ -73,7 +73,7 @@ Sie können nun die Anwendungen ausführen.
 
     ![][7]
 
-2. Führen Sie an einer Befehlszeile im Ordner **simulateddevice** den folgenden Befehl aus, um mit dem Senden von Telemetriedaten an Ihren IoT Hub zu beginnen:
+2. Führen Sie an einer Befehlszeile im Ordner **simulateddevice** den folgenden Befehl aus, um mit dem Senden von Telemetriedaten an IoT Hub zu beginnen:
 
     ```
     node SimulatedDevice.js
@@ -109,4 +109,4 @@ In diesem Tutorial haben Sie im Portal einen neuen IoT Hub konfiguriert und ans
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->
