@@ -89,7 +89,7 @@ Beachten Sie, dass **name** auf den Wert einer Variablen festgelegt ist. Für di
 
 Der Wert, den Sie für **type** angeben, enthält sowohl den Ressourcenanbieter als auch den Ressourcentyp. Für Verfügbarkeitsgruppen lautet der Ressourcenanbieter **Microsoft.Compute** und der Ressourcentyp **availabilitySets**. Sie können die Liste mit den verfügbaren Ressourcenanbietern abrufen, indem Sie den folgenden PowerShell-Befehl ausführen:
 
-    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+    Get-AzureRmResourceProvider -ListAvailable
 
 Falls Sie die Azure-Befehlszeilenschnittstelle verwenden, können Sie den folgenden Befehl ausführen:
 
@@ -103,7 +103,7 @@ Da Sie die Erstellung in diesem Thema mit Speicherkonten, virtuellen Computern u
 
 Führen Sie den folgenden PowerShell-Befehl aus, um die Ressourcentypen für einen bestimmten Anbieter anzuzeigen:
 
-    PS C:\> (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 
 Für die Azure-Befehlszeilenschnittstelle gibt der folgende Befehl die verfügbaren Typen im JSON-Format zurück und speichert sie in einer Datei.
 
@@ -133,7 +133,7 @@ Die Zuordnungsmethode ist auf **Dynamic** festgelegt, aber Sie können sie auch 
 
 Als Nächstes sehen wir uns an, wie Sie die **apiVersion** bestimmen. Es ist einfach so, dass der von Ihnen angegebene Wert mit der Version der REST-API übereinstimmt, die Sie beim Erstellen der Ressource verwenden möchten. Sie können diesen Ressourcentyp also in der Dokumentation zur REST-API nachschlagen. Sie können aber auch den folgenden PowerShell-Befehl für einen bestimmten Typ ausführen.
 
-    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
 
 Hiermit werden folgende Werte zurückgegeben:
 
@@ -503,4 +503,4 @@ Sie haben die Erstellung Ihrer Vorlage abgeschlossen, und sie ist fertig für di
 - Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Informationen zur Bereitstellung einer Vorlage finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

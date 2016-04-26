@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
 	ms.topic="get-started-article"
-    ms.date="02/12/2016"
+    ms.date="04/14/2016"
     ms.author="andkjell"/>
 
 # Topologien für Azure AD Connect
@@ -110,6 +110,8 @@ In einer Kontoressourcengesamtstruktur-Topologie befinden sich eine oder mehrere
 
 Dieses Szenario besteht aus einer Gesamtstruktur, die allen Kontogesamtstrukturen vertraut. Diese Gesamtstruktur verfügt in der Regel über ein erweitertes AD-Schema mit Exchange und Lync. Alle Dienste von Exchange und Lync sowie andere freigegebene Dienste befinden sich in dieser Gesamtstruktur. Benutzer haben ein deaktiviertes Benutzerkonto in dieser Gesamtstruktur, und das Postfach ist mit der Kontengesamtstruktur verknüpft.
 
+Die Verwendung mehrerer Ressourcengesamtstrukturen wird ebenfalls unterstützt. Dies kann beispielsweise im Anschluss an einen Unternehmenszusammenschluss hilfreich sein. Es wird davon ausgegangen, dass ein Benutzer nur ein deaktiviertes Konto in einer Ressourcengesamtstruktur besitzt.
+
 ## Office 365 und Überlegungen zur Netzwerktopologie
 Für einige Office 365-Workloads gelten bestimmte Einschränkungen für unterstützte Topologien. Wenn Sie diese verwenden möchten, informieren Sie sich bitte auf den Seiten zu unterstützten Topologien für die jeweilige Workload.
 
@@ -147,7 +149,10 @@ In dieser Topologie ist ein AAD Connect-Synchronisierungsserver mit jedem Azure 
 
 In dieser Topologie gibt es keine "GALsync" zwischen den Azure AD-Verzeichnisinstanzen, sodass das Adressbuch in Exchange Online und Skype for Business nur Benutzer im gleichen Verzeichnis anzeigt.
 
-Mit dieser Topologie kann nur eines der Azure AD-Verzeichnisse den Exchange-Hybrid mit dem lokalen Active Directory aktivieren.
+Bei dieser Topologie liegen die folgenden Einschränkungen bei ansonsten unterstützten Szenarien vor:
+
+- Nur eines der Azure AD-Verzeichnisse kann den Exchange-Hybrid mit der lokalen Active Directory-Instanz aktivieren.
+- Windows 10-Geräte können nur mit einem Azure AD-Verzeichnis verknüpft werden.
 
 Die Anforderung für wechselseitig exklusive Gruppen von Objekten gilt auch für das Zurückschreiben. Damit werden einige Zurückschreibfeatures mit dieser Topologie nicht unterstützt, da sie eine lokale Einzelkonfiguration voraussetzen. Dies umfasst:
 
@@ -177,4 +182,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -54,11 +54,13 @@ Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
+### Analysieren der Verbindungszeichenfolge
+
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### Erstellen des Warteschlangendienstclients
 
-Mit der **CloudQueueClient**-Klasse können Sie im Warteschlangenspeicher gespeicherte Warteschlangen abrufen. Fügen Sie der **Main()**-Methode den folgenden Code hinzu:
+Mit der **CloudQueueClient**-Klasse können Sie im Warteschlangenspeicher gespeicherte Warteschlangen abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
@@ -273,4 +275,4 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

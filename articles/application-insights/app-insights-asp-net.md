@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/06/2016" 
+	ms.date="04/14/2016" 
 	ms.author="awills"/>
 
 
@@ -32,11 +32,11 @@ Ebenso werden Sie bestimmte Anforderungen, Ausnahmen und Protokollereignisse unt
 Erforderlich:
 
 * Ein Abonnement für [Microsoft Azure](http://azure.com) Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com) hinzufügen.
-* Visual Studio 2013, Update 3 oder höher.
+* Visual Studio 2013, Update 3 oder höher.
 
 ## <a name="ide"></a> Hinzufügen von Application Insights zu Ihrem Projekt in Visual Studio
 
-#### Falls es sich um ein neues Projekt handelt …
+#### Falls es sich um ein neues Projekt handelt …
 
 Wenn Sie in Visual Studio ein neues Projekt erstellen, achten Sie darauf, dass Application Insights ausgewählt ist.
 
@@ -46,7 +46,7 @@ Wenn Sie in Visual Studio ein neues Projekt erstellen, achten Sie darauf, dass A
 Wählen Sie ein Konto mit einer Azure-Anmeldung aus. Sie werden möglicherweise aufgefordert, Ihre Anmeldeinformationen erneut einzugeben. (Oder, wenn Sie sich nicht anmelden, wird der Code des SDK hinzugefügt, den Sie später konfigurieren können.)
 
 
-#### … oder falls es sich um ein vorhandenes Projekt handelt
+#### … oder falls es sich um ein vorhandenes Projekt handelt
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Application Insights hinzufügen** oder **Application Insights konfigurieren**.
 
@@ -179,7 +179,19 @@ Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzu
 
 Stellen Sie jetzt Ihre Anwendung bereit, und sehen Sie zu, wie Daten gesammelt werden.
 
-Beim Betrieb im Debugmodus wird Telemetrie über die Pipeline geliefert, sodass Ihnen innerhalb von wenigen Sekunden Daten angezeigt werden. Sobald Sie Ihre Anwendung bereitstellen, sammeln sich die Daten langsamer an.
+### Livestream
+
+Die ersten Minuten einer Bereitstellung zeigen, ob die App ordnungsgemäß funktioniert. Vor allem beim Ersetzen einer älteren Version möchten Sie wissen, ob sich die Leistung verbessert hat. Falls ein Problem auftritt, möchten Sie möglicherweise die alte Version wiederherstellen.
+
+„Livestream“ stellt eine sofortige Ansicht einer Reihe wichtiger Leistungsmetriken bereit. Sie können die Ansicht während einer erneuten Bereitstellung oder einer Neukonfiguration anzeigen.
+
+![Klicken Sie auf dem Blatt „Übersicht“ auf „Livestream“.](./media/app-insights-asp-net/45.png)
+
+Im Gegensatz zu den anderen Metrikendiagrammen werden unter „Livestream“ lediglich Daten der letzten paar Minuten angezeigt und keine Daten beibehalten. Es wird eine minimale Aggregationspipeline verwendet, und die Anzeige wird sekündlich aktualisiert.
+
+Für „Livestream“ ist mindestens Version 2.1.0-beta1 des SDK erforderlich.
+
+*„Livestream“ ist auf der Konfigurationsseite hängengeblieben? – Aktualisieren Sie den Browser (F5).*
 
 #### Probleme auf dem Buildserver?
 
@@ -234,4 +246,4 @@ Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

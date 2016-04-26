@@ -1,4 +1,11 @@
-<properties pageTitle="Vorschau von Azure Active Directory-Domänendiensten: Erste Schritte | Microsoft Azure" description="Erste Schritte mit Azure Active Directory-Domänendiensten" services="active-directory-ds" documentationCenter="" authors="mahesh-unnikrishnan" manager="stevenpo editor="curtand"/>
+<properties
+	pageTitle="Vorschau von Active Directory-Domänendiensten: erste Schritte | Microsoft Azure"
+	description="Erste Schritte mit Azure Active Directory-Domänendiensten"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory-ds"
@@ -6,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="04/11/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)* – Erste Schritte
@@ -21,7 +28,7 @@ Führen Sie die folgenden Konfigurationsschritte aus, um die DNS-Servereinstellu
 1. Navigieren Sie zum **Azure-Verwaltungsportal** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
 2. Wählen Sie den Knoten **Netzwerke** auf der linken Seite aus.
 
-    ![Knoten “Virtuelle Netzwerke“](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
+    ![Knoten „Virtuelle Netzwerke“](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
 
 3. Wählen Sie in der Registerkarte **Virtuelle Netzwerke** das virtuelle Netzwerk aus, in dem Sie Azure AD-Domänendienste aktiviert haben, um dessen Eigenschaften anzuzeigen.
 4. Klicken Sie auf die Registerkarte **Konfigurieren**.
@@ -39,4 +46,4 @@ Führen Sie die folgenden Konfigurationsschritte aus, um die DNS-Servereinstellu
 ---
 [**Nächster Schritt: Aktivieren der Synchronisierung von Kennwörtern für Azure AD-Domänendienste.**](active-directory-ds-getting-started-password-sync.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

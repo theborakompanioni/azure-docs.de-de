@@ -56,11 +56,13 @@ Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
+### Analysieren der Verbindungszeichenfolge
+
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### Erstellen des Tabellenspeicherdienst-Clients
 
-Mit der **CloudTableClient**-Klasse können Sie im Tabellenspeicher gespeicherte Tabellen und Entitäten abrufen. Fügen Sie der **Main()**-Methode den folgenden Code hinzu:
+Mit der **CloudTableClient**-Klasse können Sie im Tabellenspeicher gespeicherte Tabellen und Entitäten abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
 	// Create the table client.
 	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -461,4 +463,4 @@ Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht h
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

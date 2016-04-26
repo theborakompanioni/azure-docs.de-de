@@ -33,9 +33,11 @@
 
 * Ein zeitgemäßer Webbrowser, der HTML5 unterstützt.
 
-OR
+ODER
 
-* [Azure-CLI für Mac, Linux und Windows](../xplat-cli-install.md).
+* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ##Was ist SSH?
 
@@ -137,7 +139,7 @@ Weitere Informationen zur Verwendung dieses Befehls finden Sie unter [Benutzerde
 
 6. Geben Sie nach der entsprechenden Aufforderung den Benutzer ein, den Sie beim Erstellen des Clusters eingegeben haben. Wenn Sie für den Benutzer ein Kennwort angegeben haben, werden Sie auch zur Eingabe dieses Kennworts aufgefordert.
 
-> [AZURE.NOTE] In den oben genannten Schritten wird davon ausgegangen, dass Sie Port 22 verwenden. Über diesen Port wird eine Verbindung mit „Hauptknoten 0“ im HDInsight-Cluster hergestellt. Wenn Sie Port 23 verwenden, wird eine Verbindung mit „head node 1“ hergestellt. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
+> [AZURE.NOTE] In den oben genannten Schritten wird davon ausgegangen, dass Sie Port 22 verwenden. Über diesen Port wird eine Verbindung mit „Hauptknoten 0“ im HDInsight-Cluster hergestellt. Wenn Sie Port 23 verwenden, wird eine Verbindung mit „head node 1“ hergestellt. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
 
 ###Herstellen einer Verbindung mit den Workerknoten
 
@@ -233,4 +235,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

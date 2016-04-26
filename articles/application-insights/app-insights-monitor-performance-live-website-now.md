@@ -35,7 +35,7 @@ Bei der Anwendung von Application Insights auf die IIS-Webanwendungen können Si
 * **Laufzeit:** Verwenden Sie den Statusmonitor zum Instrumentieren Ihrer Web-App auf dem Server.
  * Überwachen von Web-Apps, die bereits ausgeführt werden. Es ist nicht erforderlich, sie neu zu erstellen oder erneut zu veröffentlichen.
  * Eine Reihe von Standardtelemetriedaten zur Diagnose und Nutzung.
- * Abhängigkeitsdiagnose – Ermitteln Sie Fehler oder eine schlechte Leistung, wenn Ihre Anwendung andere Komponenten wie z. B. Datenbanken, REST-APIs oder andere Dienste verwendet.
+ * Abhängigkeitsdiagnose – Ermitteln Sie Fehler oder eine schlechte Leistung, wenn Ihre Anwendung andere Komponenten wie z. B. Datenbanken, REST-APIs oder andere Dienste verwendet.
  * Beheben von Problemen mit der Telemetrie.
 * **Beides:** Kompilieren Sie das SDK in Ihrem Web-App-Code, und führen Sie den Statusmonitor auf Ihrem Webserver aus. Die Vorteile beider Ansätze:
  * Standardtelemetriedaten zur Diagnose und Nutzung.
@@ -46,7 +46,7 @@ Bei der Anwendung von Application Insights auf die IIS-Webanwendungen können Si
 
 ## Installieren des Application Insights-Statusmonitors
 
-Sie benötigen ein [Microsoft Azure](http://azure.com)-Abonnement.
+Sie benötigen ein [Microsoft Azure](http://azure.com)-Abonnement.
 
 ### Wenn Ihre App auf Ihrem IIS-Server ausgeführt wird
 
@@ -87,7 +87,7 @@ Nach Abschluss des Assistenten können Sie die Konfiguration des Agenten später
 
 ### Wenn Ihre App als Azure-Web-App ausgeführt wird
 
-Fügen Sie in der Systemsteuerung Ihrer Azure-Web-App die Application Insights-Erweiterung hinzu.
+Fügen Sie in der Systemsteuerung Ihrer Azure-Web-App die Application Insights-Erweiterung hinzu.
 
 ![In der Web-App: "Einstellungen" > "Erweiterungen" > "Hinzufügen" > "Application Insights"](./media/app-insights-monitor-performance-live-website-now/05-extend.png)
 
@@ -159,7 +159,6 @@ Sie müssen einige ausgehende Ports in der Firewall des Servers öffnen, damit d
  -	`login.live.com:443`
 + Installation:
  +	`packages.nuget.org:443`
- +	`appinsightsstatusmonitor.blob.core.windows.net:80`
 
 Diese Liste kann sich von Zeit zu Zeit ändern.
 
@@ -208,7 +207,7 @@ Sie können die Überwachung mit PowerShell starten und beenden.
  * `SdkState==Disabled`: Die App ist für Application Insights nicht instrumentiert. Entweder wurde sie nie instrumentiert, oder die Laufzeitüberwachung wurde mit dem Statusmonitor-Tool oder mit `Stop-ApplicationInsightsMonitoring` deaktiviert.
  * `SdkState==EnabledByCodeInstrumentation`: Die App wurde instrumentiert, indem das SDK dem Quellcode hinzugefügt wurde. Das SDK kann nicht aktualisiert oder beendet werden.
  * Mit `SdkVersion` wird die Version angezeigt, die für die Überwachung dieser App verwendet wird.
- * Mit `LatestAvailableSdkVersion` wird die Version angezeigt, die im NuGet-Katalog derzeit verfügbar ist. Verwenden Sie zum Aktualisieren dieser Version `Update-ApplicationInsightsMonitoring`.
+ * Mit `LatestAvailableSdkVersion` wird die Version angezeigt, die im NuGet-Katalog derzeit verfügbar ist. Verwenden Sie zum Aktualisieren der App auf diese Version `Update-ApplicationInsightsMonitoring`.
 
 `Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000`
 
@@ -302,4 +301,4 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

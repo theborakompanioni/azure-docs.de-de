@@ -28,7 +28,7 @@ U-SQL ist eine hyperskalierbare, hochgradig erweiterbare Sprache zum Vorbereiten
 
 ###Voraussetzungen
 
-- **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012. Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt; Express Edition wird nicht unterstützt. Visual Studio „15“ wird derzeit nicht unterstützt, wir arbeiten jedoch daran.** 
+- **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012. Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt; Express Edition wird nicht unterstützt. Visual Studio „15“ wird derzeit nicht unterstützt, wir arbeiten jedoch daran.**
 - **Microsoft Azure SDK für .NET ab Version 2.7.1**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
 - **[Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs)**
 
@@ -132,7 +132,8 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
     - **Erweitern von Spalten mit ***
 
-        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. ![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten.
+![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.
 
@@ -361,4 +362,4 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

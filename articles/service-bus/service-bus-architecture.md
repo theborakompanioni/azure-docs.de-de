@@ -1,41 +1,37 @@
 <properties 
-   pageTitle="Services Bus-Architektur | Microsoft Azure"
-   description="Beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Service Bus."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Services Bus-Architektur | Microsoft Azure"
+    description="Beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Service Bus."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="04/19/2016"
+    ms.author="sethm" />
 
-# Service Bus-Architektur
+# Service Bus-Architektur
 
 Dieser Artikel beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Service Bus.
 
-## Service Bus-Skalierungseinheiten
+## Service Bus-Skalierungseinheiten
 
-Service Bus ist nach *Skalierungseinheiten* strukturiert. Eine Skalierungseinheit ist eine Bereitstellungseinheit und umfasst alle Komponenten, die zum Ausführen des Diensts erforderlich sind. Jede Region stellt mindestens eine Service Bus-Skalierungseinheit bereit.
+Service Bus ist nach *Skalierungseinheiten* strukturiert. Eine Skalierungseinheit ist eine Bereitstellungseinheit und umfasst alle Komponenten, die zum Ausführen des Diensts erforderlich sind. Jede Region stellt mindestens eine Service Bus-Skalierungseinheit bereit.
 
-Ein Service Bus-Namespace wird einer Skalierungseinheit zugeordnet. Die Skalierungseinheit verarbeitet alle Arten von Service Bus-Entitäten: Relays und Brokermessagingentitäten (Warteschlangen, Themen, Abonnements). Eine Service Bus-Skalierungseinheit besteht aus folgenden Komponenten:
+Ein Service Bus-Namespace wird einer Skalierungseinheit zugeordnet. Die Skalierungseinheit verarbeitet alle Arten von Service Bus-Entitäten: Relays und Brokermessagingentitäten (Warteschlangen, Themen, Abonnements). Eine Service Bus-Skalierungseinheit besteht aus folgenden Komponenten:
 
 - **Eine Gruppe von Gatewayknoten.** Gatewayknoten authentifizieren eingehende Anforderungen und verarbeiten Relayanforderungen. Jeder Gatewayknoten besitzt eine öffentliche IP-Adresse.
 
 - **Eine Sammlung von Messagingbrokerknoten.** Messagingbrokerknoten verarbeiten Anforderungen, die Messagingentitäten betreffen.
 
-- **Eine Sammlung von Benachrichtigungsknoten.** Benachrichtigungsknoten senden Pushbenachrichtigungen an alle registrierten Geräte.
+- **Ein Gatewayspeicher.** Der Gatewayspeicher enthält die Daten für jede Entität, die in dieser Skalierungseinheit definiert ist. Der Implementierung des Gatewayspeichers liegt eine SQL Azure-Datenbank zugrunde.
 
-- **Ein Gatewayspeicher.** Der Gatewayspeicher enthält die Daten für jede Entität, die in dieser Skalierungseinheit definiert ist. Der Implementierung des Gatewayspeichers liegt eine SQL Azure-Datenbank zugrunde.
-
-- **Mehrere Messagingspeicher.** Die Messagingspeicher enthalten die Nachrichten aller Warteschlangen, Themen und Abonnements, die in dieser Skalierungseinheit definiert sind. Auch sämtliche Abonnementdaten sind darin enthalten. Eine Warteschlange oder ein Thema ist immer einem einzelnen Messagingspeicher zugeordnet, es sei denn, das [Partitionieren von Messagingentitäten](service-bus-partitioning.md) ist aktiviert. Abonnements werden im gleichen Messagingspeicher gespeichert wie ihr übergeordnetes Thema. Mit Ausnahme des Service Bus [Premium-Messagings](service-bus-premium-messaging.md) liegen der Implementierung von Messagingspeichern SQL Azure-Datenbanken zugrunde.
-
-- **Mehrere Registrierungsspeicher.** Die Registrierungsspeicher enthalten Geräteregistrierungen für alle Benachrichtigungs-Hubs, die in dieser Skalierungseinheit definiert sind. Der Implementierung von Registrierungsspeichern liegen SQL Azure-Datenbanken zugrunde.
+- **Mehrere Messagingspeicher.** Die Messagingspeicher enthalten die Nachrichten aller Warteschlangen, Topics und Abonnements, die in dieser Skalierungseinheit definiert sind. Auch sämtliche Abonnementdaten sind darin enthalten. Eine Warteschlange oder ein Topic ist immer einem einzelnen Messagingspeicher zugeordnet, es sei denn, das [Partitionieren von Messagingentitäten](service-bus-partitioning.md) ist aktiviert. Abonnements werden im gleichen Messagingspeicher gespeichert wie ihr übergeordnetes Thema. Mit Ausnahme des [Premium-Messagings](service-bus-premium-messaging.md) von Service Bus liegen der Implementierung von Messagingspeichern SQL Azure-Datenbanken zugrunde.
 
 ## Container
 
@@ -55,18 +51,12 @@ Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Ga
 
 ![Verarbeiten eingehender Relayanforderungen](./media/service-bus-architecture/IC690645.png)
 
-## Verarbeiten eingehender Benachrichtigungs-Hub-Anforderungen
-
-Wenn ein Client eine Anforderung an Service Bus sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Handelt es sich bei der Anforderung um eine Geräteregistrierung für einen vorhandenen Benachrichtigungs-Hub, schreibt der Gatewayknoten die Registrierung in den Registrierungsspeicher und sendet eine Antwort an das aufrufende Gerät. Handelt es sich bei der Anforderung um eine Benachrichtigung, wird sie einer Benachrichtigungswarteschlange hinzugefügt. Einer der Benachrichtigungsknoten entfernt die Nachricht aus der Benachrichtigungswarteschlange und sendet sie an alle Geräte, die im Registrierungsspeicher registriert sind. Wenn eine Nachricht an eine Vielzahl von Geräten gesendet werden soll, werden die Nachrichten von mehreren Benachrichtigungsknoten an die Geräte gesendet.
-
-![Verarbeiten eingehender Benachrichtigungs-Hub-Anforderungen](./media/service-bus-architecture/IC690646.png)
-
 ## Nächste Schritte
 
 Nach dieser Übersicht über die Funktionsweise von Service Bus können Sie sich nun mit folgenden Themen beschäftigen:
 
-- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 - [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
-- [Eine Messaginglösung mit Warteschlange unter Verwendung von Service Bus-Warteschlangen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
+- [Eine Messaginglösung mit Warteschlange unter Verwendung von Service Bus-Warteschlangen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

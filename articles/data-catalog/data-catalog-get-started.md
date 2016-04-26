@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/03/2016"
+   ms.date="04/15/2016"
    ms.author="derrickv"/>
 
 # Erste Schritte mit Azure Data Catalog
@@ -28,15 +28,17 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 - **Azure Active Directory:** In Azure Data Catalog wird [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Identitäts- und Zugriffsverwaltung verwendet.
 - **Datenquellen:** Azure Data Catalog verfügt über Funktionen zum Ermitteln von Datenquellen. Für das Tutorial wird die Adventure Works-Beispieldatenbank verwendet. Sie können aber auch beliebige andere unterstützte Datenquellen verwenden, wenn Sie lieber mit Daten arbeiten möchten, die Ihnen vertraut und die für Ihre Rolle relevant sind. Eine Liste mit den unterstützten Datenquellen finden Sie unter [Unterstützte Datenquellen](data-catalog-dsr.md).
 
+> [AZURE.NOTE] Weitere Informationen zu Azure-Abonnements und Azure Active Directory finden Sie unter [Azure Data Catalog-Voraussetzungen](data-catalog-prerequisites.md).
+
 Wir beginnen, indem wir die Adventure Works-Beispieldatenbank installieren.
 
-## Übung 1: Installieren der Adventure Works-Beispieldatenbank
+## Übung 1: Installieren der Adventure Works-Beispieldatenbank
 
 In dieser Übung installieren Sie die Adventure Works-Beispieldatenbank für das SQL Server-Datenbankmodul, das in den folgenden Übungen verwendet wird.
 
-### Installieren der Adventure Works 2014 OLTP-Datenbank
+### Installieren der Adventure Works 2014 OLTP-Datenbank
 
-Die Adventure Works-Datenbank unterstützt standardmäßige Onlinetransaktionsverarbeitung-Szenarien für einen fiktiven Fahrradhersteller (Adventure Works Cycles), z. B. für die Bereiche Produkte, Vertrieb und Einkauf. In diesem Tutorial registrieren Sie Informationen zu Produkten in **Azure Data Catalog**.
+Die Adventure Works-Datenbank unterstützt standardmäßige Onlinetransaktionsverarbeitung-Szenarien für einen fiktiven Fahrradhersteller (Adventure Works Cycles), z. B. für die Bereiche Produkte, Vertrieb und Einkauf. In diesem Tutorial registrieren Sie Informationen zu Produkten in **Azure Data Catalog**.
 
 Hier wird nun beschrieben, wie Sie die Adventure Works-Beispieldatenbank installieren.
 
@@ -45,12 +47,12 @@ Zum Installieren der Adventure Works-Beispieldatenbank können Sie eine Adventur
 **Installieren der Adventure Works-Beispieldatenbank mit einem T-SQL-Skript**
 
 1.	Erstellen Sie einen Ordner mit dem Namen „C:\\DataCatalog\_GetStarted“. Wenn Sie einen anderen Ordnernamen verwenden, sollten Sie sicherstellen, dass Sie unten im T-SQL-Skript den Pfad ändern.
-2.	Laden Sie [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) herunter.
-3.	Extrahieren Sie die Datei „Adventure Works 2014 Full Database Backup.zip“ in den Ordner „C:\\DataCatalog\_GetStarted“. Im Skript unten wird vorausgesetzt, dass sich die Sicherungsdatei unter „C:\\DataCatalog\_GetStarted\\Adventure Works 2014 Full Database Backup\\AdventureWorks2014.bak“ befindet.
+2.	Laden Sie [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) herunter.
+3.	Extrahieren Sie die Datei „Adventure Works 2014 Full Database Backup.zip“ in den Ordner „C:\\DataCatalog\_GetStarted“. Im Skript unten wird vorausgesetzt, dass sich die Sicherungsdatei unter „C:\\DataCatalog\_GetStarted\\Adventure Works 2014 Full Database Backup\\AdventureWorks2014.bak“ befindet.
 4.	Klicken Sie in **SQL Server Management Studio** in der Symbolleiste **Standard** auf **Neue Abfrage**.
 5.	Führen Sie den folgenden T-SQL-Code im Abfragefenster aus.
 
-**Führen Sie dieses Skript zum Installieren der Adventure Works 2014-Datenbank aus.**
+**Führen Sie dieses Skript zum Installieren der Adventure Works 2014-Datenbank aus.**
 
     USE [master]
     GO
@@ -74,14 +76,14 @@ Als Alternative zum Ausführen eines T-SQL-Skripts können Sie die Datenbank auc
 
 In dieser Übung haben Sie die Adventure Works-Beispieldatenbank installiert, die in den restlichen Übungen verwendet wird. In der nächsten Übung erfahren Sie, wie Sie **Azure Data Catalog**-Datenquellen aus Tabellen in der Adventure Works-Beispieldatenbank registrieren.
 
-## Übung 2: Registrieren von Datenquellen
+## Übung 2: Registrieren von Datenquellen
 
-In dieser Übung verwenden Sie das **Azure Data Catalog**-Registrierungstool, um Adventure Works-Datenquellen für den Katalog zu registrieren. Die Registrierung ist der Prozess zum Extrahieren wichtiger struktureller Metadaten – z. B. Namen, Typen und Orte – aus der Datenquelle und des darin enthaltenen Assets sowie zum Kopieren dieser Metadaten in den Katalog. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
+In dieser Übung verwenden Sie das **Azure Data Catalog**-Registrierungstool, um Adventure Works-Datenquellen für den Katalog zu registrieren. Die Registrierung ist der Prozess zum Extrahieren wichtiger struktureller Metadaten – z. B. Namen, Typen und Orte – aus der Datenquelle und des darin enthaltenen Assets sowie zum Kopieren dieser Metadaten in den Katalog. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
 
 ### So registrieren Sie eine Datenquelle
 
 1.	Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, und klicken Sie auf **Erste Schritte**.
-2.	Melden Sie sich am **Azure Data Catalog**-Portal an, und klicken Sie auf **Daten veröffentlichen**.
+2.	Melden Sie sich beim **Azure Data Catalog**-Portal an, und klicken Sie auf **Daten veröffentlichen**.
 
     ![](media/data-catalog-get-started/data-catalog-publish-data.png)
 
@@ -124,9 +126,9 @@ In dieser Übung verwenden Sie das **Azure Data Catalog**-Registrierungstool, um
 
 In dieser Übung haben Sie Objekte aus der Adventure Works-Beispieldatenbank registriert, damit sie von Benutzern in Ihrem Unternehmen leicht ermittelt werden können. In der nächsten Übung erfahren Sie, wie Sie registrierte Datenassets ermitteln.
 
-## Übung 3: Ermitteln von registrierten Datenassets
+## Übung 3: Ermitteln von registrierten Datenassets
 
-In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um registrierte Datenassets zu ermitteln und die dazugehörigen Metadaten anzuzeigen. **Azure Data Catalog** enthält mehrere Tools zum Ermitteln von Datenassets, z. B. eine einfache Schlüsselwortsuche, interaktive Filter und eine erweiterte Suchsyntax für Poweruser.
+In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um registrierte Datenassets zu ermitteln und die dazugehörigen Metadaten anzuzeigen. **Azure Data Catalog** enthält mehrere Tools zum Ermitteln von Datenassets, wie eine einfache Schlüsselwortsuche, interaktive Filter und eine erweiterte Suchsyntax für Poweruser.
 
 ### So ermitteln Sie registrierte Datenassets
 
@@ -157,7 +159,7 @@ In diesem Beispiel verwenden Sie eine Schlüsselwortsuche. Die **Azure Data Cata
 
 In diesem Beispiel führen Sie eine Suche vom Typ **Gruppierung** für Datenassets durch, bei denen der Name mit dem Produkt übereinstimmt und Tags mit der Abbildung oder dem Foto übereinstimmen.
 
-1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich am **Azure Data Catalog**-Portal an.
+1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich beim **Azure Data Catalog**-Portal an.
 2. Geben Sie im Feld **Data Catalog durchsuchen** eine **Gruppierung** wie folgt ein: query: (tags:description OR tags:photo).
 3. Klicken Sie auf das Suchsymbol, oder drücken Sie die EINGABETASTE. In **Azure Data Catalog** werden Datenassets für diese Suchabfrage angezeigt.
 
@@ -166,13 +168,13 @@ In diesem Beispiel führen Sie eine Suche vom Typ **Gruppierung** für Datenasse
 In dieser Übung haben Sie das **Azure Data Catalog**-Portal verwendet, um Adventure Works-Datenassets, die für den Katalog registriert wurden, zu ermitteln und anzuzeigen.
 
 <a name="annotating"/>
-## Übung 4: Versehen von registrierten Datenquellen mit Anmerkungen
+## Übung 4: Versehen von registrierten Datenquellen mit Anmerkungen
 
 In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um Datenassets mit Anmerkungen zu versehen, die im Katalog bereits registriert wurden. Die von Ihnen angegebenen Anmerkungen dienen als Ergänzung und Erweiterung der strukturellen Metadaten, die während der Registrierung aus der Datenquelle extrahiert wurden, und führen dazu, dass die Datenassets viel besser ermittelbar und verständlich sind. Da jeder **Data Catalog**-Benutzer eigene Anmerkungen angeben kann, ist es für alle beteiligten Benutzer leicht, die Daten zu teilen.
 
 ### So versehen Sie Datenassets mit Anmerkungen
 
-1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich am **Azure Data Catalog**-Portal an.
+1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich beim **Azure Data Catalog**-Portal an.
 2. Klicken Sie auf **Ermitteln**.
 3. Wählen Sie mindestens ein **Datenasset** aus. Wählen Sie in diesem Beispiel **ProductPhoto** aus, und geben Sie „Produktfotos für Marketingmaterial“ ein.
 4. Geben Sie eine **Beschreibung** ein, damit andere Benutzer die Daten besser ermitteln können und verstehen, warum und wie das ausgewählte Datenasset verwendet werden kann. Geben Sie beispielsweise „Produktbilder“ ein. Sie können auch mehrere Tags hinzufügen und Spalten anzeigen.
@@ -182,15 +184,15 @@ In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um Datenassets
 
 In dieser Übung haben Sie registrierten Datenassets beschreibende Informationen hinzugefügt, damit Katalogbenutzer Datenquellen anhand von verständlichen Begriffen ermitteln können.
 
-## Übung 5: Crowdsourcing für Metadaten
+## Übung 5: Crowdsourcing für Metadaten
 
-In dieser Übung arbeiten Sie mit einem anderen Benutzer zusammen, um den Datenassets im Katalog Metadaten hinzuzufügen. Beim Crowdsourcing-Ansatz von **Azure Data Catalog** für Anmerkungen können Benutzer Tags, Beschreibungen und andere Metadaten hinzufügen, damit alle an einem Datenasset und seiner Nutzung beteiligten Benutzer ihre Sichtweise erfassen und für andere Personen zur Verfügung stellen können.
+In dieser Übung arbeiten Sie mit einem anderen Benutzer zusammen, um den Datenassets im Katalog Metadaten hinzuzufügen. Beim Crowdsourcing-Ansatz von **Azure Data Catalog** für Anmerkungen können Benutzer Tags, Beschreibungen und andere Metadaten hinzufügen, damit alle an einem Datenasset und seiner Nutzung beteiligten Benutzer ihre Sichtweise erfassen und anderen Personen zur Verfügung stellen können.
 
 > [AZURE.NOTE] Es ist kein Problem, wenn bei Ihnen gerade kein anderer Benutzer verfügbar ist, der mit Ihnen in diesem Lernprogramm zusammenarbeiten kann. Jeder Benutzer, der auf den Datenkatalog zugreift, kann eigene Angaben hinzufügen, wenn er dies möchte. Mit diesem Crowdsourcing-Ansatz für Metadaten können der Inhalt des Katalogs und der Umfang der Katalogmetadaten im Laufe der Zeit ausgebaut werden.
 
 ### So können Sie Metadaten für Datenassets per Crowdsourcing beschaffen
 
-Bitten Sie einen Kollegen, die obige Übung [Versehen von registrierten Datenquellen mit Anmerkungen](#annotating) durchzuführen. Nachdem Ihre Kollegen einem Datenasset Beschreibungen hinzugefügt haben, z. B. ProductPhoto, werden mehrere Anmerkungen angezeigt.
+Bitten Sie einen Kollegen, die obige Übung [Versehen von registrierten Datenquellen mit Anmerkungen](#annotating) durchzuführen. Nachdem Ihre Kollegen einem Datenasset Beschreibungen hinzugefügt haben, z. B. ProductPhoto, werden mehrere Anmerkungen angezeigt.
 
 ![](media/data-catalog-get-started/data-catalog-crowdsource.png)
 
@@ -204,7 +206,7 @@ In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um über Micro
 
 ### So stellen Sie über Excel eine Verbindung mit einer Datenquelle her
 
-1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich am **Azure Data Catalog**-Portal an.
+1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich beim **Azure Data Catalog**-Portal an.
 2. Klicken Sie auf **Ermitteln**.
 3. Wählen Sie ein Datenasset aus. Wählen Sie in diesem Beispiel „ProductCategory“ aus.
 4. Wählen Sie **Öffnen in** > **Excel** aus.
@@ -219,7 +221,7 @@ In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um über Micro
 
 In dieser Übung haben Sie Verbindungen mit Datenquellen hergestellt, die per **Azure Data Catalog** ermittelt wurden. Mit dem **Azure Data Catalog**-Portal können Benutzer Verbindungen direkt mit Clientanwendungen herstellen, die in das Menü **Öffnen in…** integriert sind. Außerdem können Benutzer eine Verbindung mit einer beliebigen Anwendung herstellen, indem sie die Speicherortinformationen der Verbindung in den Assetmetadaten verwenden.
 
-## Übung 7: Entfernen von Datenquellenmetadaten
+## Übung 7: Entfernen von Datenquellenmetadaten
 
 In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um Vorschaudaten aus registrierten Datenassets zu entfernen und Datenassets aus dem Katalog zu löschen.
 
@@ -229,14 +231,14 @@ In **Azure Data Catalog** können Sie ein einzelnes Asset oder mehrere Assets l�
 
 ### So löschen Sie mehrere Datenassets
 
-1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich am **Azure Data Catalog**-Portal an.
+1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich beim **Azure Data Catalog**-Portal an.
 2. Klicken Sie auf **Ermitteln**.
 3. Wählen Sie mindestens ein Datenasset aus.
 4. Klicken Sie auf **Löschen**.
 
 In dieser Übung haben Sie die registrierten Datenassets aus dem Katalog entfernt.
 
-## Übung 8: Verwalten von registrierten Datenquellen
+## Übung 8: Verwalten von registrierten Datenquellen
 
 In dieser Übung verwenden Sie die Verwaltungsfunktionen von **Azure Data Catalog**, um Datenassets in Besitz zu nehmen und zu steuern, was Benutzer ermitteln und wie sie diese Ressourcen verwalten können.
 
@@ -244,7 +246,7 @@ In dieser Übung verwenden Sie die Verwaltungsfunktionen von **Azure Data Catalo
 
 ### So nehmen Sie Datenassets in Besitz und schränken die Sichtbarkeit ein
 
-1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich am **Azure Data Catalog**-Portal an.
+1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich beim **Azure Data Catalog**-Portal an.
 2. Klicken Sie auf **Ermitteln**.
 3. Wählen Sie mindestens ein Datenasset aus.
 4. Klicken Sie im Bereich **Eigenschaften** unter **Verwaltung** auf **Besitz übernehmen**.
@@ -256,6 +258,6 @@ In dieser Übung haben Sie die Verwaltungsfunktionen von **Azure Data Catalog** 
 
 ## Zusammenfassung
 
-In diesem Tutorial haben Sie wichtige Funktionen von **Azure Data Catalog** kennengelernt, z.B. das Registrieren, Ermitteln und Verwalten von Unternehmensdatenquellen sowie das Versehen mit Anmerkungen. Nachdem Sie das Lernprogramm abgeschlossen haben, ist es an der Zeit, mit der Verwendung zu beginnen. Sie können noch heute starten, indem Sie die Datenquellen registrieren, die Sie und Ihr Team verwenden, und indem Sie Kollegen zur Nutzung des Katalogs einladen.
+In diesem Tutorial haben Sie wichtige Funktionen von **Azure Data Catalog** kennengelernt, wie etwa das Registrieren, Ermitteln und Verwalten von Unternehmensdatenquellen sowie das Versehen mit Anmerkungen. Nachdem Sie das Lernprogramm abgeschlossen haben, ist es an der Zeit, mit der Verwendung zu beginnen. Sie können noch heute starten, indem Sie die Datenquellen registrieren, die Sie und Ihr Team verwenden, und indem Sie Kollegen zur Nutzung des Katalogs einladen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

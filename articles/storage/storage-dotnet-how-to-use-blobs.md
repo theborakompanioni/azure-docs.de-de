@@ -55,11 +55,13 @@ Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
+### Analysieren der Verbindungszeichenfolge
+
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### Erstellen des Blob-Dienstclients
 
-Die Klasse **CloudBlobClient** ermöglicht den Abruf von Containern und Blobs, die im Blobspeicher gespeichert sind. Fügen Sie der **Main()**-Methode den folgenden Code hinzu:
+Die Klasse **CloudBlobClient** ermöglicht den Abruf von im Blobspeicher gespeicherten Containern und Blobs. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -363,7 +365,6 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 - [Erste Schritte mit Dateispeicher für .NET](storage-dotnet-how-to-use-files.md)
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy)
 - [Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-- [Verwenden von SQL-Datenbanken mit .NET (C#)](../sql-database/sql-database-dotnet-how-to-use.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -376,4 +377,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

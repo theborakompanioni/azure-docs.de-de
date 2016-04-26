@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erstellen eines virtuellen Windows-Computers | Microsoft Azure"
-	description="Verwenden Sie Azure PowerShell und Ressourcen-Manager-Vorlagen, um ganz einfach einen neuen virtuellen Windows-Computer zu erstellen."
+	pageTitle="Erstellen einer Azure-VM mit PowerShell | Microsoft Azure"
+	description="Verwenden Sie Azure PowerShell und Azure Resource Manager, um ohne großen Aufwand eine neue VM mit Windows Server zu erstellen."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="davidmu1"
@@ -10,121 +10,137 @@
 
 <tags
 	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/05/2016"
+	ms.date="04/12/2016"
 	ms.author="davidmu"/>
 
-# Erstellen einer Windows-VM mit dem Ressourcen-Manager und PowerShell
+# Erstellen einer Windows-VM mit dem Resource Manager und PowerShell
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]klassisches Bereitstellungsmodell.
+In diesem Artikel wird beschrieben, wie Sie schnell einen virtuellen Azure-Computer mit Windows Server und den dazugehörigen Ressourcen erstellen, indem Sie den Resource Manager und PowerShell verwenden.
 
-Dieses Thema beschreibt das schnelle Erstellen und Verwalten eines virtuellen Microsoft Azure-Computers mithilfe von Azure-Ressourcen-Manager und PowerShell.
+Die Ausführung der Schritte im Artikel dauert ungefähr 30 Minuten.
 
-## Erstellen des virtuellen Windows-Computers
+## Schritt 1: Installieren von Azure PowerShell
 
-Wenn Sie bereits Azure PowerShell installiert haben, benötigen Sie Version 1.0.0 oder höher. Sie können die von Ihnen installierte Azure Power Shell-Version mit diesem Befehl über die Azure PowerShell-Eingabeaufforderung prüfen.
+Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich am Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+        
+## Schritt 2: Erstellen einer Ressourcengruppe
 
-	Get-Module azure | format-table version
+Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
-[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
+1. Rufen Sie eine Liste mit den verfügbaren Standorten ab, an denen Ressourcen erstellt werden können.
 
-Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden.
+	    Get-AzureLocation | sort Name | Select Name
 
-	Login-AzureRmAccount
+2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z.B. **USA, Mitte**. Erstellen Sie die Variable.
 
-Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
+        $locName = "location name"
+        
+3. Ersetzen Sie den Wert von **$rgName** durch den Namen der neuen Ressourcengruppe. Erstellen Sie die Variable und die Ressourcengruppe.
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie als Nächstes Ihr Azure-Abonnement festlegen. Führen Sie den folgenden Befehl aus, um eine Liste Ihrer aktuellen Abonnements anzuzeigen.
+        $rgName = "resource group name"
+        New-AzureRmResourceGroup -Name $rgName -Location $locName
+    
+## Schritt 3: Erstellen eines Speicherkontos
 
-	Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
+Ein Speicherkonto wird zum Speichern der virtuellen Festplatte benötigt, die dem erstellten virtuellen Computer zugeordnet ist.
 
-Ersetzen Sie nun alles innerhalb der Anführungszeichen einschließlich der Zeichen < and > durch den korrekten Abonnementnamen und führen Sie die Befehle aus.
+1. Ersetzen Sie den Wert von **$stName** (nur Kleinbuchstaben und Zahlen) durch den Namen des Speicherkontos. Testen Sie den Namen auf Eindeutigkeit.
 
-	$subscrName="<subscription name>"
-	Select-AzureRmSubscription -SubscriptionName $subscrName –Current
+        $stName = "storage account name"
+        Test-AzureName -Storage $stName
 
-Als Nächstes müssen Sie ein Speicherkonto erstellen. Sie müssen einen eindeutigen Namen auswählen, der nur Kleinbuchstaben und Zahlen enthält. Mit diesem Befehl können Sie den Speicherkontonamen auf Eindeutigkeit testen.
+    Wenn dieser Befehl **False** zurückgibt, ist der vorgeschlagene Name eindeutig.
+    
+2. Führen Sie nun den Befehl zum Erstellen des Speicherkontos aus.
+    
+        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_LRS" -Location $locName
+        
+## Schritt 4: Erstellen eines virtuellen Netzwerks
 
-	Test-AzureName -Storage <Proposed storage account name>
+Alle virtuellen Computer müssen einem virtuellen Netzwerk zugeordnet sein.
 
-Wenn dieser Befehl „False“ zurückgibt, ist der vorgeschlagene Name eindeutig.
+1. Ersetzen Sie den Wert von **$subnetName** durch den Namen des Subnetzes. Erstellen Sie die Variable und das Subnetz.
+    	
+        $subnetName = "subnet name"
+        $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        
+2. Ersetzen Sie den Wert von **$vnetName** durch den Namen des virtuellen Netzwerks. Erstellen Sie die Variable und das virtuelle Netzwerk mit dem Subnetz.
 
-Sie müssen das Azure-Rechenzentrum angeben. Führen Sie diesen Befehl aus, um eine Liste der Azure-Rechenzentren zu erhalten.
+        $vnetName = "virtual network name"
+        $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+        
+## Schritt 5: Erstellen einer öffentlichen IP-Adresse und Netzwerkschnittstelle
 
-	Get-AzureLocation | sort Name | Select Name
+Sie benötigen eine öffentliche IP-Adresse und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
 
-Kopieren Sie nun den folgenden PowerShell-Befehlssatz in einen Texteditor wie Notepad. Geben Sie Ihr gewähltes Speicherkonto und den Ort ein, und ersetzen Sie alles innerhalb der Anführungszeichen, einschließlich der Zeichen < and >.
+1. Ersetzen Sie den Wert von **$ipName** durch den Namen der öffentlichen IP-Adresse. Erstellen Sie die Variable und die öffentliche IP-Adresse.
 
-	$stName = "<chosen storage account name>"
-	$locName = "<chosen Azure location name>"
-	$rgName = "TestRG"
-	New-AzureRmResourceGroup -Name $rgName -Location $locName
-	$storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_GRS" -Location $locName
-	$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name singleSubnet -AddressPrefix 10.0.0.0/24
-	$vnet = New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-	$pip = New-AzureRmPublicIpAddress -Name TestPIP -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	$nic = New-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-	$cred = Get-Credential -Message "Type the name and password of the local administrator account."
-	$vm = New-AzureRmVMConfig -VMName WindowsVM -VMSize "Standard_A1"
-	$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName MyWindowsVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-	$vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-	$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-	$osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/WindowsVMosDisk.vhd"
-	$vm = Set-AzureRmVMOSDisk -VM $vm -Name "windowsvmosdisk" -VhdUri $osDiskUri -CreateOption fromImage
-	New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
+        $ipName = "public IP address name"
+        $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+        
+2. Ersetzen Sie den Wert von **$nicName** durch den Namen der Netzwerkschnittstelle. Erstellen Sie die Variable und die Netzwerkschnittstelle.
 
-Kopieren Sie obigen Befehlssatz in die Zwischenablage, und klicken Sie dann mit der rechten Maustaste auf Ihre offene Azure PowerShell-Eingabeaufforderung. Dadurch wird der Befehlssatz als Reihe an PowerShell-Befehlen ausgegeben. Geben Sie den Namen und das Kennwort für das lokale Administratorkonto ein und erstellen Ihren virtuellen Azure-Computer.
+        $nicName = "network interface name"
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
+        
+## Schritt 6: Erstellen eines virtuellen Computers
 
-Es erscheint beispielsweise Folgendes:
+Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen Computer erstellen.
 
-	PS C:\> $stName="contosost"
-	PS C:\> $locName="West US"
-	PS C:\> $rgName="TestRG"
-	PS C:\> New-AzureRmResourceGroup -Name $rgName -Location $locName
-	VERBOSE: 12:45:15 PM - Created resource group 'TestRG' in location 'westus'
+1. Führen Sie den Befehl zum Festlegen des Administratorkontonamens und des dazugehörigen Kennworts für den virtuellen Computer aus.
 
+        $cred = Get-Credential -Message "Type the name and password of the local administrator account."
+        
+2. Ersetzen Sie den Wert von **$vmName** durch den Namen des virtuellen Computers. Erstellen Sie die Variable und die Konfiguration des virtuellen Computers.
 
-	ResourceGroupName : TestRG
-	Location          : westus
-	ProvisioningState : Succeeded
-	Tags              :
-	Permissions       :
-	                    Actions  NotActions
-	                    =======  ==========
-	                    *
+        $vmName = "virtual machine name"
+        $vm = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A1"
+        
+    Eine Liste mit den verfügbaren Größen für einen virtuellen Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md).
+    
+3. Ersetzen Sie den Wert von **$compName** durch den Computernamen des virtuellen Computers. Erstellen Sie die Variable, und fügen Sie der Konfiguration die Betriebssysteminformationen hinzu.
 
-	ResourceId        : /subscriptions/fd92919d-eeca-4f5b-840a-e45c6770d92e/resourceGroups/TestRG
+        $compName = "computer name"
+        $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $compName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+        
+4. Definieren Sie das Image, das für die Bereitstellung des virtuellen Computers verwendet werden soll.
 
+        $vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+        
+    Weitere Informationen zur Auswahl von Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle](virtual-machines-windows-cli-ps-findimage.md).
+        
+5. Fügen Sie die erstellte Netzwerkschnittstelle der Konfiguration hinzu.
 
-	PS C:\> $storageAcc=New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_GRS" -Location $locName
-	PS C:\> $singleSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name singleSubnet -AddressPrefix 10.0.0.0/24
-	PS C:\> $vnet=New-AzureRmVirtualNetwork -Name TestNet3 -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-	PS C:\> $pip = New-AzureRmPublicIpAddress -Name TestNIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	PS C:\> $nic = New-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-	PS C:\> $cred = Get-Credential -Message "Type the name and password of the local administrator account."
-	PS C:\> $vm = New-AzureRmVMConfig -VMName WindowsVM -VMSize "Standard_A1"
-	PS C:\> $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName MyWindowsVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-	PS C:\> $vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-	PS C:\> $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-	PS C:\> $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/MyWindowsVMosDisk.vhd"
-	PS C:\> $vm = Set-AzureRmVMOSDisk -VM $vm -Name "windowsvmosdisk" -VhdUri $osDiskUri -CreateOption fromImage
-	PS C:\> New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
+        $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
+        
+6. Ersetzen Sie den Wert von **$blobPath** durch den gespeicherten Pfad und Dateinamen der virtuellen Festplatte. Die VHD-Datei wird normalerweise in einem Container gespeichert, z.B. „vhds/WindowsVMosDisk.vhd“. Erstellen Sie die Variablen.
 
+        $blobPath = "vhd path and file name"
+        $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
+        
+7. Ersetzen Sie den Wert von **$diskName** durch den Namen des Betriebssystem-Datenträgers. Erstellen Sie die Variable, und fügen Sie der Konfiguration die Festplatteninformationen hinzu.
 
-	EndTime             : 4/28/2015 1:00:05 PM -07:00
-	Error               :
-	Output              :
-	StartTime           : 4/28/2015 12:52:52 PM -07:00
-	Status              : Succeeded
-	TrackingOperationId : 45035a90-ea12-4e1e-87e7-2a5e9ed12c93
-	RequestId           : 98c7b4fb-b26e-4a58-b17a-b0983d896aae
-	StatusCode          : OK
+        $diskName = "windowsvmosdisk"
+        $vm = Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
+        
+8. Erstellen Sie als Letztes den virtuellen Computer.
 
+        New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
+
+    Im Azure-Portal sollte nun die Ressourcengruppe mit den dazugehörigen Ressourcen angezeigt werden, und im PowerShell-Fenster sollte der Status „Erfolgreich“ angegeben werden:
+
+        RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
+        ---------  -------------------  ----------  ------------
+                                  True          OK  OK
+                                  
 ## Nächste Schritte
 
-Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
+- Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
+- Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
+- Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md) durchlesen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

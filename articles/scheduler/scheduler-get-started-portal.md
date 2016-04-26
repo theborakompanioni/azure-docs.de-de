@@ -1,6 +1,6 @@
 <properties
  pageTitle="Erste Schritte mit Azure Scheduler im Azure-Portal | Microsoft Azure"
- description=""
+ description="Erste Schritte mit Azure Scheduler im Azure-Portal"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -182,4 +182,4 @@ Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugr
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->
