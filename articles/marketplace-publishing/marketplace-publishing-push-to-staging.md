@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="01/07/2016"
+   ms.date="04/08/2016"
    ms.author="hascipio"/>
 
 # Abschließen der Angebotserstellung mit Marketinginhalten
@@ -25,6 +25,8 @@ In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketin
   1. Wechseln Sie zum Veröffentlichungsportal: [https://publish.windowsazure.com](https://publish.windowsazure.com).
   2. Klicken Sie im linken Menü auf die Registerkarte **Marketing**.
   3. Klicken Sie im Hauptbereich auf die Schaltfläche **English (US)**.
+
+  > [AZURE.IMPORTANT] Alle Felder müssen ausgefüllt sein, einschließlich der Abbildungen, um das Angebot in die Stagingumgebung zu überführen.
 
 ### Details
 1. Geben Sie die Angebotsübersicht, die ausführliche Übersicht und eine Beschreibung Ihres Angebots ein.
@@ -52,8 +54,7 @@ Laden Sie auf der Registerkarte **Beispielbilder** im Menü auf der linken Seite
 ### Rechtliche Hinweise
 Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Richtlinien/Nutzungsbedingungen an. Geben Sie die Bedingungen im großen Feld **Nutzungsbedingungen** ein, oder kopieren Sie sie in das Feld.
 
-> [AZURE.IMPORTANT] Alle Felder müssen ausgefüllt sein, einschließlich der Abbildungen, um das Angebot in die Stagingumgebung zu überführen.
-
+> [AZURE.NOTE] Bei virtuellen Computern können folgende Angaben nach dem Staging oder der Liveschaltung einer SKU nicht mehr geändert werden: **Angebots-ID**, **Herausgeber-ID** und **SKU-ID**.
 
 ## Schritt 2: Festlegen der Preise
 ### Preismodelle
@@ -83,10 +84,12 @@ Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Rich
 3.	Wenn Ihre SKU BYOL unterstützt, aktivieren Sie das Kontrollkästchen für die Verfügbarkeit extern per BYOL lizenzierter SKUs.
 4.	Wenn Ihre SKU auf Stundenbasis abgerechnet wird, geben Sie die Preise für Ihre Software ein. SKUs ohne Preis stehen nicht zum Kauf oder zur Verwendung zur Verfügung.
 
-  >[AZURE.NOTE] Wenn Sie sowohl über BYOL-SKUs als auch über auf Stundenbasis abgerechnete SKUs verfügen, stellen Sie sicher, dass beide Optionen angegeben sind.
+  > [AZURE.NOTE] Wenn Sie sowohl über BYOL-SKUs als auch über auf Stundenbasis abgerechnete SKUs verfügen, stellen Sie sicher, dass beide Optionen angegeben sind.
 
 5.	Es wird ein Assistent zur Preisgestaltung geöffnet, mit dem Sie Ihre Preise festlegen können. Hier können Sie auch Preise für andere Länder angeben, falls Sie Käufe in anderen Märkten als dem von Ihnen angegebenen Markt zulassen möchten.
 6.	Einige Länder sind ISV-Abführungsländer. Um in einem ISV-Abführungsland Produkte verkaufen zu können, müssen Sie sowohl Steuern für Ihre SKUs berechnen und einziehen als auch Steuern abrechnen und an die Behörden in diesem Land zahlen können. Microsoft kann keine rechtliche oder steuerliche Beratung anbieten. Weitere Informationen finden Sie im Abschnitt zu Käuferländern des Angebots in der Einführung zu diesem Dokument.
+
+  > [AZURE.NOTE] Bei virtuellen Computern können folgende Änderungen nach der Liveschaltung nicht mehr vorgenommen werden, da sich dies auf die Abrechnung für vorhandene Kunden auswirkt: **Tarifänderungen**, **Abrechnungsänderungen** und **Entfernen von Abrechnungsregionen**.
 
 ### 2\.2. Festlegen der Preise für Entwicklerdienste
 Pläne können aus einer beliebigen Kombination aus Basis- und Verbrauchskonzepten bestehen. „Basis“ ist eine Monatspauschale, „Überschreitung“ ein nutzungsbasierter Preis. (Weitere Informationen siehe unten.)
@@ -144,9 +147,9 @@ Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketin
 ## Nächste Schritte
 Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Testen des Angebots in der Stagingumgebung. Da die Schritte jedoch je nach Angebotstyp unterschiedlich sind, müssen Sie den entsprechenden Angebotstyp in der Liste unten auswählen.
 
-|VM-Image |Entwicklerdienst | Datendienst | Lösungsvorlage |
+||VM-Image |Entwicklerdienst | Datendienst | Lösungsvorlage |
 |----|----|----|----|----|
-| **Schritt 3: Freigeben des Angebot in der Stagingphase** | [Testen des VM-Angebots in der Stagingphase](marketplace-publishing-vm-image-test-in-staging.md) | Testen des Entwicklerdienstangebots in der Stagingphase | [Testen des Datendienstangebots in der Stagingphase](marketplace-publishing-data-service-test-in-staging.md) | [Testen des Angebots einer Lösungsvorlage in der Stagingphase](marketplace-publishing-solution-template-test-in-staging.md) |
+| **Schritt 3. Freigeben des Angebot in der Stagingphase** | [Testen des VM-Angebots in der Stagingphase](marketplace-publishing-vm-image-test-in-staging.md) | Private Vorschau | [Testen des Datendienstangebots in der Stagingphase](marketplace-publishing-data-service-test-in-staging.md) | [Testen des Angebots einer Lösungsvorlage in der Stagingphase](marketplace-publishing-solution-template-test-in-staging.md) |
 
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
@@ -160,4 +163,4 @@ Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Test
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -30,7 +30,7 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 
 1. Der Batch-Dienst teilt den Task automatisch in einen **Primärtask** und mehrere **Subtasks** auf. Batch plant dann die Ausführung des Primärtasks und der Subtasks auf den Computeknoten des Pools.
 2. Sowohl der Primärtask als auch die Subtasks laden alle **gemeinsamen Ressourcendateien** herunter, die Sie in den Einstellungen für mehreren Instanzen angeben.
-3. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der **Koordinationsbefehl**, den Sie in den Einstellungen für mehreren Instanzen angeben, vom Primärtask und den Subtasks ausgeführt. Dieser Koordinationsbefehl wird in der Regel zum Starten einen Hintergrunddiensts (z. B. `smpd.exe` von [Microsoft MPI][msmpi_msdn]) verwendet und kann auch sicherstellen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
+3. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der **Koordinationsbefehl**, den Sie in den Einstellungen für mehreren Instanzen angeben, vom Primärtask und den Subtasks ausgeführt. Dieser Koordinationsbefehl wird in der Regel zum Starten einen Hintergrunddiensts (z. B. `smpd.exe` von [Microsoft MPI][msmpi_msdn]) verwendet und kann auch sicherstellen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
 4. Wenn der Koordinationsbefehl vom Primärtask und allen Subtasks erfolgreich abgeschlossen wurde, wird die **Befehlszeile** des Tasks mit mehreren Instanzen (der „Anwendungsbefehl“) *nur* vom **Primärtask ausgeführt**. In einer [MS MPI][msmpi_msdn]-basierten Lösung führen Sie hier Ihre MPI-fähige Anwendung mit `mpiexec.exe` aus.
 
 > [AZURE.NOTE] Obwohl er sich funktional unterscheidet, ist der „Task mit mehreren Instanzen“ kein eindeutiger Tasktyp wie [StartTask][net_starttask] oder [JobPreparationTask][net_jobprep]. Der Task mit mehreren Instanzen ist einfach eine standardmäßiger Batch-Task ([CloudTask][net_task] in Batch .NET), dessen Einstellungen für mehrere Instanzen konfiguriert wurden. In diesem Artikel bezeichnen wir sie als **Task mit mehreren Instanzen**.
@@ -43,9 +43,9 @@ Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zw
 CloudPool myCloudPool =
 	myBatchClient.PoolOperations.CreatePool(
 		poolId: "MultiInstanceSamplePool",
-		osFamily: "4",
+		targetDedicated: 3
 		virtualMachineSize: "small",
-		targetDedicated: 3);
+		cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
@@ -53,7 +53,7 @@ myCloudPool.InterComputeNodeCommunicationEnabled = true;
 myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
-Darüber hinaus werden Tasks mit mehreren Instanzen *nur* auf Knoten in **Pools, die nach dem 14. Dezember 2015 erstellt wurden**, ausgeführt.
+Darüber hinaus werden Tasks mit mehreren Instanzen *nur* auf Knoten in **Pools, die nach dem 14. Dezember 2015 erstellt wurden**, ausgeführt.
 
 > [AZURE.TIP] Wenn Sie in Ihrem Batch-Pool [Computeknoten der Größe A8 oder A9](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) verwenden, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen. Die vollständige Liste der für Batch-Pools verfügbaren Computeknotengrößen finden Sie unter [Größen für Clouddienste](./../cloud-services/cloud-services-sizes-specs.md).
 
@@ -111,7 +111,7 @@ await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask
 
 Beim Erstellen der Einstellungen für mehrere Instanzen für einen Task geben Sie die Anzahl von Computeknoten an, auf denen der Task ausgeführt werden soll. Wenn Sie den Task an einen Auftrag übermitteln, erstellt der Batch-Dienst einen **Primärtask** und eine ausreichende Anzahl von **Subtasks**, die zusammen der festgelegten Anzahl von Knoten entsprechen.
 
-Diesen Tasks wird eine ganzzahlige ID im Bereich von 0 bis *numberOfInstances - 1* zugewiesen. Der Task mit der ID 0 ist der primäre Task, und alle anderen IDs sind Subtasks. Wenn Sie z. B. für einen Task die folgenden -Einstellungen für mehrere Instanzen erstellen, erhält der Primärtask die ID 0, und die Subtasks erhalten die IDs 1 bis 9.
+Diesen Tasks wird eine ganzzahlige ID im Bereich von 0 bis *numberOfInstances - 1* zugewiesen. Der Task mit der ID 0 ist der primäre Task, und alle anderen IDs sind Subtasks. Wenn Sie z. B. für einen Task die folgenden -Einstellungen für mehrere Instanzen erstellen, erhält der Primärtask die ID 0, und die Subtasks erhalten die IDs 1 bis 9.
 
 ```
 int numberOfNodes = 10;
@@ -122,7 +122,7 @@ myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNo
 
 Der **Koordinationsbefehl** wird vom Primärtask und den Subtasks ausgeführt. Nachdem der Primärtask und die Subtasks die Ausführung des Koordinationsbefehls abgeschlossen haben, wird die Befehlszeile des Tasks mit mehreren Instanzen *nur* vom Primärtask ausgeführt. Wir bezeichnen diese Befehlszeile zur Unterscheidung vom Koordinationsbefehl als **Anwendungsbefehl**.
 
-Der Aufruf des Koordinationsbefehls führt zu einer Blockierung – Batch führt den Anwendungsbefehl erst dann aus, wenn der Koordinationsbefehl für alle Subtasks erfolgreich zurückgegeben wurde. Der Koordinationsbefehl sollte daher alle erforderlichen Hintergrunddienste starten, sicherstellen, dass sie einsatzbereit sind, und dann beendet werden. Dieser Koordinationsbefehl für eine Lösung mit MS-MPI Version 7 startet z. B. den SMPD-Dienst auf dem Knoten und wird dann beendet:
+Der Aufruf des Koordinationsbefehls führt zu einer Blockierung – Batch führt den Anwendungsbefehl erst dann aus, wenn der Koordinationsbefehl für alle Subtasks erfolgreich zurückgegeben wurde. Der Koordinationsbefehl sollte daher alle erforderlichen Hintergrunddienste starten, sicherstellen, dass sie einsatzbereit sind, und dann beendet werden. Dieser Koordinationsbefehl für eine Lösung mit MS-MPI Version 7 startet z. B. den SMPD-Dienst auf dem Knoten und wird dann beendet:
 
 ```
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
@@ -130,7 +130,7 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 
 Beachten Sie die Verwendung von `start` in diesem Koordinationsbefehl. Dies ist erforderlich, da die `smpd.exe`-Anwendung nicht sofort nach der Ausführung zurückgegeben wird. Ohne die Verwendung des [start][cmd_start]-Befehls würde der Koordinationsbefehl nicht zurückgegeben und würde daher die Ausführung des Anwendungsbefehls blockieren.
 
-Der **Anwendungsbefehl**, die für den Task mit mehreren Instanzen angegebene Befehlszeile, wird *nur* vom Primärtask ausgeführt. In MS-MPI-Anwendungen ist dies die Ausführung Ihrer MPI-fähigen Anwendung mit `mpiexec.exe`. Hier sehen Sie ist z. B. einen Anwendungsbefehl für eine Lösung mit MS-MPI Version 7:
+Der **Anwendungsbefehl**, die für den Task mit mehreren Instanzen angegebene Befehlszeile, wird *nur* vom Primärtask ausgeführt. In MS-MPI-Anwendungen ist dies die Ausführung Ihrer MPI-fähigen Anwendung mit `mpiexec.exe`. Hier sehen Sie ist z. B. einen Anwendungsbefehl für eine Lösung mit MS-MPI Version 7:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
@@ -158,15 +158,15 @@ Wenn beispielsweise einer der Subtasks fehlschlägt und mit einem Rückgabecode 
 
 Wenn Sie einen Task mit mehreren Instanzen löschen, werden der Primärtask und alle Subtasks ebenfalls vom Batch-Dienst gelöscht. Alle Subtaskverzeichnisse und die Dateien darin werden genau wie bei einem Standardtask von den Computeknoten gelöscht.
 
-[TaskConstraints][net_taskconstraints] für einen Task mit mehreren Instanzen, z. B. die [MaxTaskRetryCount][net_taskconstraint_maxretry]- [MaxWallClockTime][net_taskconstraint_maxwallclock]- und [RetentionTime][net_taskconstraint_retention]-Eigenschaften werden berücksichtigt, da sie für einen Standardtask angegeben sind und für den Primärtask sowie alle Subtasks gelten. Wenn Sie die [RetentionTime][net_taskconstraint_retention]-Eigenschaft jedoch nach dem Hinzufügen des Tasks mit mehreren Instanzen zum Auftrag ändern, wird diese Änderung nur für den Primärtask übernommen. Alle Subtasks verwenden weiterhin die ursprüngliche [RetentionTime][net_taskconstraint_retention]-Eigenschaft.
+[TaskConstraints][net_taskconstraints] für einen Task mit mehreren Instanzen, z. B. die [MaxTaskRetryCount][net_taskconstraint_maxretry]- [MaxWallClockTime][net_taskconstraint_maxwallclock]- und [RetentionTime][net_taskconstraint_retention]-Eigenschaften werden berücksichtigt, da sie für einen Standardtask angegeben sind und für den Primärtask sowie alle Subtasks gelten. Wenn Sie die [RetentionTime][net_taskconstraint_retention]-Eigenschaft jedoch nach dem Hinzufügen des Tasks mit mehreren Instanzen zum Auftrag ändern, wird diese Änderung nur für den Primärtask übernommen. Alle Subtasks verwenden weiterhin die ursprüngliche [RetentionTime][net_taskconstraint_retention]-Eigenschaft.
 
 In der Liste der aktuellen Tasks eines Computeknotens wird die ID eines Subtasks angezeigt, wenn der aktuelle Task Teil eines Tasks mit mehreren Instanzen war.
 
 ## Abrufen von Informationen zu Subtasks
 
-Zum Abrufen von Informationen zu Subtasks mithilfe der Batch-Bibliothek für .NET rufen Sie die [CloudTask.ListSubtasks][net_task_listsubtasks]-Methode auf. Diese Methode gibt Informationen zu allen Subtasks sowie zum Computeknoten zurück, auf dem die Tasks ausgeführt wurden. Anhand dieser Informationen können Sie u. a. das Stammverzeichnis, die Pool-ID, den aktuellen Zustand und den Exitcode der einzelnen Subtasks bestimmen. Diese Informationen können Sie in Kombination mit der [PoolOperations.GetNodeFile][poolops_getnodefile]-Methode zum Abrufen der Dateien des Subtasks verwenden. Beachten Sie, dass diese Methode keine Informationen für den Primärtask (ID 0) zurückgibt.
+Zum Abrufen von Informationen zu Subtasks mithilfe der Batch-Bibliothek für .NET rufen Sie die [CloudTask.ListSubtasks][net_task_listsubtasks]-Methode auf. Diese Methode gibt Informationen zu allen Subtasks sowie zum Computeknoten zurück, auf dem die Tasks ausgeführt wurden. Anhand dieser Informationen können Sie u. a. das Stammverzeichnis, die Pool-ID, den aktuellen Zustand und den Exitcode der einzelnen Subtasks bestimmen. Diese Informationen können Sie in Kombination mit der [PoolOperations.GetNodeFile][poolops_getnodefile]-Methode zum Abrufen der Dateien des Subtasks verwenden. Beachten Sie, dass diese Methode keine Informationen für den Primärtask (ID 0) zurückgibt.
 
-> [AZURE.NOTE] Sofern nicht anders angegeben, gelten Batch .NET-Methoden, die für den [CloudTask][net_task] mit mehreren Instanzen selbst angewendet werden, *nur* für den Primärtask. Wenn Sie z. B. die [CloudTask.ListNodeFiles][net_task_listnodefiles]-Methode für einen Task mit mehreren Instanzen aufrufen, werden nur die Dateien des Primärtasks zurückgegeben.
+> [AZURE.NOTE] Sofern nicht anders angegeben, gelten Batch .NET-Methoden, die für den [CloudTask][net_task] mit mehreren Instanzen selbst angewendet werden, *nur* für den Primärtask. Wenn Sie z. B. die [CloudTask.ListNodeFiles][net_task_listnodefiles]-Methode für einen Task mit mehreren Instanzen aufrufen, werden nur die Dateien des Primärtasks zurückgegeben.
 
 Der folgende Codeausschnitt zeigt das Abrufen von Informationen zu Subtasks sowie das Anfordern von Dateiinhalten von den Knoten, auf denen sie ausgeführt werden.
 
@@ -247,4 +247,4 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "Mehrere Instanzen – Übersicht"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

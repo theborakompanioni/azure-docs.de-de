@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Virtueller Computer mit Oracle WebLogic Server und Datenbank | Microsoft Azure"
-	description="Erstellen Sie ein Azure-Image mit Oracle WebLogic Server 12c und Oracle Database 12c unter Windows Server 2012 mit dem Ressourcen-Manager-Bereitstellungsmodell."
+	description="Erstellen Sie ein Azure-Image mit Oracle WebLogic Server 12c und Oracle Database 12c unter Windows Server 2012 mit dem Ressourcen-Manager-Bereitstellungsmodell."
 	services="virtual-machines-windows"
 	authors="bbenz"
 	documentationCenter=""
@@ -28,7 +28,7 @@ In diesem Artikel wird gezeigt, wie Sie einen virtuellen Computer in Azure erste
 
 2.	Klicken Sie auf **Marketplace**, dann auf **Compute**, und geben Sie **Oracle** in das Suchfeld ein.
 
-3.	Wählten Sie das Image **Oracle Database 12c and WebLogic Server 12c Standard Edition on Windows Server 2012** oder **Oracle Database 12c and WebLogic Server 12c Enterprise Edition on Windows Server 2012** aus. Überprüfen Sie die Informationen zum Image, das Sie auswählen möchten (z. B. empfohlene Mindestgröße), und klicken Sie dann auf **Weiter**.
+3.	Wählten Sie das Image **Oracle Database 12c and WebLogic Server 12c Standard Edition on Windows Server 2012** oder **Oracle Database 12c and WebLogic Server 12c Enterprise Edition on Windows Server 2012** aus. Überprüfen Sie die Informationen zum Image, das Sie auswählen möchten (z. B. empfohlene Mindestgröße), und klicken Sie dann auf **Weiter**.
 
 4.	Geben Sie einen **Hostnamen** für den virtuellen Computer an.
 
@@ -46,7 +46,7 @@ In diesem Artikel wird gezeigt, wie Sie einen virtuellen Computer in Azure erste
 
 	c. Fügen Sie zu diesem Zeitpunkt keine Endpunkte hinzu.
 
-9.	Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine Ressourcengruppe Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](../resource-group-portal.md).
+9.	Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine Ressourcengruppe Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
 
 10. Wählen Sie ein **Abonnement** aus.
 
@@ -71,4 +71,4 @@ Folgen Sie den Anweisungen in [Erstellen eines virtuellen Oracle WebLogic Server
 
 [Oracle Database 2 Day DBA 12c Release 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="04/01/2016" 
 	ms.author="awills"/>
  
 # Untersuchen von Metriken in Application Insights
@@ -97,13 +97,14 @@ Die Standardmethode für die einzelnen Metriken wird bei der Erstellung eines ne
 ![Heben Sie die Auswahl aller Metriken auf, um die Standardwerte anzuzeigen](./media/app-insights-metrics-explorer/06-total.png)
 
 
+
 ## Bearbeiten von Diagrammen und Rastern
 
 So fügen Sie dem Blatt ein neues Diagramm hinzu:
 
 ![Wählen Sie im Metrik-Explorer "Diagramm hinzufügen"](./media/app-insights-metrics-explorer/04-add.png)
 
-Wählen Sie ein vorhandenes oder neues Diagramm aus, um dessen Anzeige zu bearbeiten:
+Wählen Sie in einem vorhandenen oder neuen Diagramm die Option **Bearbeiten**, um dessen Anzeige zu bearbeiten:
 
 ![Wählen Sie eine oder mehrere Metriken aus](./media/app-insights-metrics-explorer/08-select.png)
 
@@ -135,21 +136,25 @@ Wenn Sie für eine bestimmte Eigenschaft keine Werte auswählen, entspricht dies
 
 Beachten Sie die Anzahlen von Ereignissen neben jedem Eigenschaftswert. Wenn Sie Werte einer Eigenschaft auswählen, werden neben anderen Eigenschaftswerten die Anzahlen angepasst.
 
+Filter gelten für alle Diagramme eines Blatts. Falls unterschiedliche Filter auf unterschiedliche Diagramme angewendet werden sollen, müssen Sie unterschiedliche Blätter mit Metriken erstellen und speichern. Sie können bei Bedarf auch Diagramme von unterschiedlichen Blättern auf dem Dashboard anheften, damit sie nebeneinander angezeigt werden.
+
+
+### Entfernen von Robot- und Webtest-Datenverkehr
+
+Verwenden Sie den Filter **Realer oder synthetischer Datenverkehr**, und aktivieren Sie **Real**.
+
+Sie können auch nach **Quelle von synthetischem Datenverkehr** filtern.
+
 ### So fügen Sie der Filterliste Eigenschaften hinzu
 
 Möchten Sie Telemetrie nach einer Kategorie Ihrer Wahl filtern? Möglicherweise unterteilen Sie Ihre Benutzer in verschiedene Kategorien und möchten Ihre Daten nach diesen Kategorien segmentieren.
 
 [Erstellen Sie eine eigene Eigenschaft](app-insights-api-custom-events-metrics.md#properties). Legen Sie sie in einem [Telemetrieinitialisierer](app-insights-api-custom-events-metrics.md#telemetry-initializers) fest, damit sie in allen Telemetrieformen angezeigt wird, einschließlich der von unterschiedlichen SDK-Modulen gesendeten Standardtelemetrie.
 
-## Entfernen von Robot- und Webtest-Datenverkehr
-
-Verwenden Sie den Filter **Realer oder synthetischer Datenverkehr**, und aktivieren Sie **Real**.
-
-Sie können auch nach **Quelle von synthetischem Datenverkehr** filtern.
 
 ## Bearbeiten des Diagrammtyps
 
-Beachten Sie insbesondere, dass Sie zwischen Rastern und Diagrammen wechseln können:
+Beachten Sie, dass Sie zwischen Rastern und Diagrammen wechseln können:
 
 ![Wählen Sie ein Raster oder Diagramm und anschließend einen Diagrammtyp](./media/app-insights-metrics-explorer/16-chart-grid.png)
 
@@ -200,6 +205,23 @@ Wenn Sie Daten zur externen Verarbeitung fortlaufend exportieren möchten, sollt
 
 Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Power BI exportieren](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
+## Analyse
+
+Die [Analyse](app-insights-analytics.md) (Analytics) ist eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erzielten Leistung Ihrer App durchführen möchten. Verwenden Sie dagegen den Metrik-Explorer, wenn Sie eine automatische Aktualisierung, Diagramme im Dashboard und Warnungen verwenden möchten.
+
+## Problembehandlung
+
+*In meinem Diagramm werden keine Daten angezeigt.*
+
+* Filter gelten für alle Diagramme im Blatt. Stellen Sie sicher, dass Sie bei der Arbeit mit einem Diagramm keinen Filter festgelegt haben, mit dem alle Daten eines anderen Diagramms ausgeschlossen werden. 
+
+    Wenn Sie verschiedene Filter für verschiedene Diagramme festlegen möchten, sollten Sie diese in unterschiedlichen Blättern erstellen und als separate Favoriten speichern. Sie können sie auch im Dashboard anheften, damit sie nebeneinander angezeigt werden.
+
+* Wenn Sie ein Diagramm nach einer Eigenschaft gruppieren, die nicht in der Metrik definiert ist, sind im Diagramm keine Daten enthalten. Versuchen Sie, die Einstellungen für „Gruppieren nach“ zu löschen, oder wählen Sie eine andere Gruppierungseigenschaft aus.
+* Leistungsdaten (CPU, E/A-Rate usw.) sind für Java-Webdienste, Windows-Desktop-Apps, [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](app-insights-monitor-performance-live-website-now.md) und [Azure Cloud Services](app-insights-azure.md) verfügbar. Für Azure-Websites sind sie dagegen nicht verfügbar.
+
+
+
 ## Nächste Schritte
 
 * [Überwachen der Verwendung mit Application Insights](app-insights-overview-usage.md)
@@ -214,4 +236,4 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

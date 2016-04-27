@@ -21,12 +21,9 @@
 
 Azure Media Hyperlapse ist ein Medienprozessor, der ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten erzeugt. Als cloudbasiertes Pendant zu [Desktop Hyperlapse Pro von Microsoft Research und dem smartphonebasierten Hyperlapse Mobile](http://aka.ms/hyperlapse) nutzt Microsoft Hyperlapse für Azure Media Services die umfassende Skalierbarkeit der Medienverarbeitungsplattform von Azure Media Services zum horizontalen Skalieren und Parallelisieren der Hyperlapse-Massenverarbeitung.
 
->[AZURE.IMPORTANT] Microsoft Hyperlapse für Azure Media Services wird in einer kostenlosen, öffentlichen Vorschauversion angeboten. Aufträge sind auf die ersten 10.000 Frames des Eingabemedienobjekts begrenzt.
+>[AZURE.IMPORTANT]Microsoft Hyperlapse ist auf das Arbeiten mit Inhalten aus der Ich-Perspektive mit einer sich bewegenden Kamera ausgelegt. Obwohl Fotokameras ggf. auch geeignet sind, können die Leistung und Qualität des Azure Media Hyperlapse-Medienprozessors für andere Arten von Inhalten nicht garantiert werden. Weitere Informationen zu Microsoft Hyperlapse für Azure Media Services und einige Beispielvideos finden Sie im zur öffentlichen Vorschauversion gehörenden [einführenden Blogbeitrag](http://aka.ms/azurehyperlapseblog).
 
-
-> Microsoft Hyperlapse ist auf das Arbeiten mit Inhalten aus der Ich-Perspektive mit einer sich bewegenden Kamera ausgelegt. Obwohl Fotokameras ggf. auch geeignet sind, können die Leistung und Qualität des Azure Media Hyperlapse-Medienprozessors für andere Arten von Inhalten nicht garantiert werden. Weitere Informationen zu Microsoft Hyperlapse für Azure Media Services und einige Beispielvideos finden Sie im zur öffentlichen Vorschauversion gehörenden [einführenden Blogbeitrag](http://aka.ms/azurehyperlapseblog).
-
-Ein Azure Media Hyperlapse-Auftrag verwendet als Eingabe eine MP4-, MOV- oder WMV-Mediendatei zusammen mit einer Konfigurationsdatei, die die Videoframes für den Zeitraffer und die Geschwindigkeit (z. B. 10.000 Frames bei doppelter Geschwindigkeit) angibt. Die Ausgabe ist eine stabilisierte Zeitrafferwiedergabe der Videoeingabe.
+Ein Azure Media Hyperlapse-Auftrag verwendet als Eingabe eine MP4-, MOV- oder WMV-Mediendatei zusammen mit einer Konfigurationsdatei, die die Videoframes für den Zeitraffer und die Geschwindigkeit (z. B. 10.000 Frames bei doppelter Geschwindigkeit) angibt. Die Ausgabe ist eine stabilisierte Zeitrafferwiedergabe der Videoeingabe.
 
 Die neuesten Informationen zu Azure Media Hyperlapse finden Sie in den [Media Services-Blogs](https://azure.microsoft.com/blog/topics/media-services/).
 
@@ -212,13 +209,8 @@ Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
+##Verwandte Links
 
+[Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
-
-<!-- Anchors. -->
-
-<!-- Images. -->
-
-<!-- URLs. -->
-
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,7 +3,7 @@
    description="Erste Schritte zum Herstellen von Verbindungen mit SQL Data Warehouse für das Ausführen von Abfragen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyama"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/28/2016"
+   ms.date="04/20/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Verbinden und Abfragen mit SQLCMD
@@ -34,7 +34,7 @@ In dieser exemplarischen Vorgehensweise wird das Verbinden mit und Abfragen eine
 
 ## Abrufen des vollqualifizierten Namens des SQL Azure-Servers
 
-Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers (****Servername**.database.windows.net*), auf dem sich die Datenbank befindet.
+Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers (**Servername**.database.windows.net*), auf dem sich die Datenbank befindet.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zu der Datenbank, mit der Sie eine Verbindung herstellen möchten.
@@ -75,12 +75,12 @@ Weitere Informationen zu SQLCMD finden Sie in der [SQLCMD-Dokumentation](https:/
 
 ## Nächste Schritte
 
-Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [eine Verbindung mit Power BI herzustellen][].
+Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [eine Verbindung mit Power BI herzustellen][].
 
-[eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
+[eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
 
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

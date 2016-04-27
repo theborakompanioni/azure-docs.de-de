@@ -16,7 +16,7 @@
    ms.date="02/10/2016"
    ms.author="stepsic"/>
 
-# Erste Schritte mit dem Azure-Ressourcen-Connector und das Hinzufügen zur Logik-App 
+# Erste Schritte mit dem Azure-Ressourcen-Connector und das Hinzufügen zur Logik-App
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
 Der Azure-Ressourcen-Connector bietet eine einfache Möglichkeit zum Verwalten von Azure-Ressourcen in Ihrer Logik-App.
@@ -32,18 +32,18 @@ David Ebbo hat [einen hervorragenden Blogbeitrag](http://blog.davidebbo.com/2014
 ### Trigger
 Es gibt zwei Trigger, die im Connector unterstützt werden:
 
-Name | Beschreibung 
----- | ----------- 
-Ereignis tritt auf | Trigger, wenn ein Ereignis für eine Ressource in Ihrem Abonnement auftritt. 
+Name | Beschreibung
+---- | -----------
+Ereignis tritt auf | Trigger, wenn ein Ereignis für eine Ressource in Ihrem Abonnement auftritt.
 Metrik überschreitet Schwellenwert | Trigger, wenn eine Metrik einen bestimmten Schwellenwert erreicht.
 
 ### Aktion
 
 Ebenso können Sie eine große Anzahl von Aktionen innerhalb Ihres Azure-Abonnements bereitstellen:
- 
+
 Aktionen für **Ressourcengruppen**:
 
-Name | Beschreibung 
+Name | Beschreibung
 ---- | -----------
 Ressourcengruppen auflisten | Listen Sie alle Ressourcengruppen im Abonnement auf.
 Ressourcengruppe abrufen | Rufen Sie eine Ressourcengruppe mit der ID ab.
@@ -52,7 +52,7 @@ Ressourcengruppe löschen | Löschen Sie eine Ressourcengruppe.
 
 Aktionen für **Ressourcen**:
 
-Name | Beschreibung 
+Name | Beschreibung
 ---- | -----------
 Ressourcen auflisten | Listen Sie Ressourcen in Ihrem Abonnement mit verschiedenen Arten von Filtern auf.
 Ressource abrufen | Rufen Sie eine einzelne Ressource mit der Ressourcen-ID ab.
@@ -62,13 +62,13 @@ Ressource löschen | Löschen Sie eine Ressource.
 
 Aktionen für **Ressourcenanbieter**:
 
-Name | Beschreibung 
+Name | Beschreibung
 ---- | -----------
 Ressourcenanbieter auflisten | Listen Sie alle verfügbaren Ressourcenanbieter im Abonnement auf.
 
 Aktionen für **Ressourcengruppenbereitstellungen**:
 
-Name | Beschreibung 
+Name | Beschreibung
 ---- | -----------
 Bereitstellungen auflisten | Listen Sie alle Bereitstellungen in einer Ressourcengruppe auf.
 Bereitstellung abrufen | Rufen Sie eine Vorlagenbereitstellung mit der ID ab.
@@ -93,11 +93,9 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem G
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 
-Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connector steuern. Informationen finden Sie unter [API-Apps und Connector verwalten und überwachen](../app-service-api/app-service-api-manage-in-portal.md).
-
 <!--References -->
 
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

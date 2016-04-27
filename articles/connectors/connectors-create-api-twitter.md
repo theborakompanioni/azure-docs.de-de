@@ -30,13 +30,13 @@ Verbinden Sie sich mit Twitter, um einen Tweet zu posten, die Timeline eines Ben
 
 &nbsp;
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Twitter-Connector](../app-service-logic/app-service-logic-connector-twitter.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Twitter ermöglicht Folgendes:
 
 - Einen Geschäftsworkflow basierend auf den Daten erstellen, die aus Twitter abgerufen werden. 
 - Verwenden von Triggern, wenn ein neuer Tweet vorhanden ist.
-- Verwenden von Aktionen, um z. B. einen Tweet zu posten oder Tweets zu suchen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein neuer Tweet angezeigt wird, können Sie z. B. diesen Tweet auf Facebook posten.
+- Verwenden von Aktionen, um z. B. einen Tweet zu posten oder Tweets zu suchen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein neuer Tweet angezeigt wird, können Sie z. B. diesen Tweet auf Facebook posten.
 - Hinzufügen der Twitter-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
 
 Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
@@ -59,9 +59,9 @@ Alle APIs unterstützen Daten im JSON- und XML-Format.
 Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Ihrem Twitter-Konto erlauben.
 
 1. Melden Sie sich bei Ihrem Twitter-Konto an.
-2. Wählen Sie **Autorisieren** aus, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrem Twitter-Konto verbinden und es nutzen. 
+2. Wählen Sie **Autorisieren**, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrem Twitter-Konto verbinden und es nutzen. 
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Twitter-Eigenschaften ein, z. B. Tweettext. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Twitter-Eigenschaften ein, z. B. Tweettext. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können dieselbe Twitter-Verbindung in anderen Logik-Apps verwenden.
 
@@ -188,7 +188,7 @@ Ruft eine Auflistung relevanter Tweets ab, die mit einer angegebenen Abfrage üb
 
 
 ### Follower abrufen 
-Ruft die Benutzer, die dem angegebenen Benutzer folgen. ```GET: /followers```
+Ruft die Benutzer ab, die dem angegebenen Benutzer folgen. ```GET: /followers```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -306,7 +306,7 @@ Ruft Benutzer ab, denen ich folge. ```GET: /myfriends```
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 
@@ -315,4 +315,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [6]: ./media/connectors-create-api-twitter/twitter-apps-page.png
 [7]: ./media/connectors-create-api-twitter/twitter-app-create.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

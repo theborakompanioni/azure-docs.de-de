@@ -1,6 +1,6 @@
 <properties
    pageTitle="Computing-, Netzwerk- und Speicheranbieter | Microsoft Azure"
-   description="Konzeptuelle Übersicht über die Compute-, Netzwerk- und Speicherressourcenanbieter (CRP, NRP und SRP) für Windows-Anwendungen im Azure Resource Manager"
+   description="Konzeptuelle Übersicht über die Compute-, Netzwerk- und Speicherressourcenanbieter (CRP, NRP und SRP) für Windows-Anwendungen im Azure Resource Manager-Bereitstellungsmodell"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="mahthi"
@@ -17,10 +17,10 @@
    ms.date="04/29/2015"
    ms.author="mahthi"/>
 
-# Azure Compute-, Netzwerk- und Speicheranbieter für Windows-Anwendungen unter Azure Resource Manager
+# Azure Compute-, Netzwerk- und Speicheranbieter für Windows-Anwendungen unter dem Azure Resource Manager-Bereitstellungsmodell
 
-[AZURE.INCLUDE [learn-about-deployment-models-both-include](../../includes/learn-about-deployment-models-both-include.md)]
+Wenn das Azure Resource Manager-Bereitstellungsmodell um Compute-, Netzwerk- und Speicherfunktionen erweitert wird, stellt dies eine erhebliche Vereinfachung der Bereitstellung und Verwaltung komplexer Anwendungen dar, die in IaaS ausgeführt werden. Für viele Anwendungen ist eine Kombination von Ressourcen wie virtuellen Netzwerken, Speicherkonten, virtuellen Computern und Netzwerkschnittstellen erforderlich. Mit dem Azur Resource Manager-Bereitstellungsmodell können Sie eine JSON-Vorlage erstellen, um alle Ressourcen gemeinsam als eine einzige Anwendung bereitzustellen und zu verwalten.
 
 [AZURE.INCLUDE [virtual-machines-common-compare-deployment-models](../../includes/virtual-machines-common-compare-deployment-models.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

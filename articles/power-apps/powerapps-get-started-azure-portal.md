@@ -3,7 +3,7 @@
 	description="Erste Schritte mit PowerApps Enterprise und Erstellen der App Service-Umgebung"
 	services=""
     suite="powerapps"
-	documentationCenter="" 
+	documentationCenter=""
 	authors="linhtranms"
 	manager="dwrede"
 	editor=""/>
@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
+   ms.workload="na"
    ms.date="11/29/2015"
    ms.author="litran"/>
 
@@ -33,8 +33,8 @@ In einer Benutzeroberfläche im Office-Stil – mit Multifunktionsleisten und Ex
 IT-Administratoren können Apps verwalten, die Geschäftsbenutzer in ihrem Unternehmen erstellt haben, inklusive:
 
 - Verwalten dieser Apps und Verwalten des Benutzerzugriffs auf diese Apps.
-- Erstellen von APIs und Verbindungen mit verschiedenen Datenquellen. 
-- Verwalten des Benutzerzugriffs für APIs und Verbindungen mit diesen Datenquellen. 
+- Erstellen von APIs und Verbindungen mit verschiedenen Datenquellen.
+- Verwalten des Benutzerzugriffs für APIs und Verbindungen mit diesen Datenquellen.
 
 ## Wie fange ich an?
 
@@ -53,20 +53,20 @@ Wenn Ihre Organisation oder Ihr Unternehmen sich für einen Microsoft Azure-Clou
 Gehen Sie folgendermaßen vor, um festzustellen, ob Sie bereits einen Mandanten besitzen, oder wie Sie einen neuen erstellen können.
 
 #### bereits für ein Office 365-Abonnement verfügen
-Wenn Sie ein Office 365-Abonnement (oder Microsoft Dynamic CRM Online, Enterprise Mobility Suite oder einen anderen Microsoft-Dienst) haben, besitzen Sie ein kostenloses Abonnement für Azure Active Directory. Mit Azure AD können Sie Benutzer- und Gruppenkonten erstellen und verwalten. Wenn Sie sich nicht beim Azure-Portal anmelden können, müssen Sie wahrscheinlich das Abonnement aktivieren. Suchen Sie hierzu das [klassische Azure-Portal](https://manage.windowsazure.com/) auf, und führen Sie die einmalige Registrierung aus. Greifen Sie mit diesen [Schritten](https://technet.microsoft.com/library/dn832618.aspx) auf Ihren Azure AD-Mandanten zu.
+Wenn Sie ein Office 365-Abonnement (oder Microsoft Dynamic CRM Online, Enterprise Mobility Suite oder einen anderen Microsoft-Dienst) haben, besitzen Sie ein kostenloses Abonnement für Azure Active Directory. Mit Azure AD können Sie Benutzer- und Gruppenkonten erstellen und verwalten. Wenn Sie sich nicht beim Azure-Portal anmelden können, müssen Sie wahrscheinlich das Abonnement aktivieren. Suchen Sie hierzu das [klassische Azure-Portal]( https://manage.windowsazure.com/) auf, und führen Sie die einmalige Registrierung aus. Greifen Sie mit diesen [Schritten]( https://technet.microsoft.com/library/dn832618.aspx) auf Ihren Azure AD-Mandanten zu.
 
 #### Sie verfügen bereits über ein Azure-Abonnement in Verbindung mit einem Microsoft-Konto
-Wenn Sie sich zuvor mit Ihrem persönlichen Microsoft-Konto für ein Azure-Abonnement registriert haben (per Hotmail oder live), verfügen Sie bereits über einen Mandanten! Im [klassischen Azure-Portal](https://manage.windowsazure.com/) wird der **Standardmandant** unter **Alle Elemente** und **Active Directory** aufgeführt. Sie können diesen Mandanten wie gewünscht nutzen, sollten aber das Erstellen eines Organisationsadministratorkontos erwägen.
+Wenn Sie sich zuvor mit Ihrem persönlichen Microsoft-Konto für ein Azure-Abonnement registriert haben (per Hotmail oder live), verfügen Sie bereits über einen Mandanten! Im [klassischen Azure-Portal]( https://manage.windowsazure.com/) wird der **Standardmandant** unter **Alle Elemente** und **Active Directory** aufgeführt. Sie können diesen Mandanten wie gewünscht nutzen, sollten aber das Erstellen eines Organisationsadministratorkontos erwägen.
 
 Führen Sie dazu die folgenden Schritte aus. Alternativ können Sie einen neuen Mandanten und in diesem Mandanten einen Administrator erstellen, indem Sie einen ähnlichen Prozess befolgen.
 
-1.	Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit Ihrem persönlichen Konto an.
-2.	Wählen Sie in der linken Menüleiste **Active Directory** aus. 
+1.	Melden Sie sich beim [klassischen Azure-Portal]( https://manage.windowsazure.com/) mit Ihrem persönlichen Konto an.
+2.	Wählen Sie in der linken Menüleiste **Active Directory** aus.
 3.	Wählen Sie in der Liste der verfügbaren Verzeichnisse den Eintrag **Standardverzeichnis** aus.
 4.	Wählen Sie oben die Registerkarte **Benutzer**. Ein einzelner Benutzer mit "Microsoft-Konto" ist in der Spalte "Erstellt aus" aufgeführt.
-5.	Wählen Sie unten **Benutzer hinzufügen**. 
+5.	Wählen Sie unten **Benutzer hinzufügen**.
 6.	Geben Sie in **Formular zum Hinzufügen eines Benutzers** folgende Details ein:  
-	
+
 	Eigenschaft | Beschreibung
 --- | ---
 Benutzertyp | Neuer Benutzer in Ihrer Organisation
@@ -75,17 +75,17 @@ Vorname/Nachname/Anzeigename | Geben Sie Ihre Werte ein
 Rolle | Globaler Administrator
 Alternative E-Mail-Adresse | Geben Sie Ihren Wert ein
 Optional | Multi-Factor Authentication aktivieren  
-	
+
 	Wählen Sie die Schaltfläche **ERSTELLEN**, um den Vorgang abzuschließen und das temporäre Kennwort anzeigen.
 
-Notieren Sie nach Abschluss dieses temporäre Kennwort für den neuen Administrator. Um das temporäre Kennwort zu ändern, melden Sie sich bei [https://login.microsoftonline.com](https://login.microsoftonline.com) mit diesem neuen Benutzerkonto an, und ändern Sie das Kennwort. Sie können das Kennwort auch mithilfe einer alternativen E-Mail-Adresse direkt an den Benutzer senden.
+Notieren Sie nach Abschluss dieses temporäre Kennwort für den neuen Administrator. Um das temporäre Kennwort zu ändern, melden Sie sich bei [https://login.microsoftonline.com]( https://login.microsoftonline.com) mit diesem neuen Benutzerkonto an, und ändern Sie das Kennwort. Sie können das Kennwort auch mithilfe einer alternativen E-Mail-Adresse direkt an den Benutzer senden.
 
 
 #### Sie verfügen bereits über ein Azure-Abonnement, das einem Organisationskonto zugeordnet ist
-Wenn Sie sich zuvor mit Ihrem Organisationskonto für ein Azure-Abonnement registriert haben, verfügen Sie bereits über einen Mandanten. Im [klassischen Azure-Portal](https://manage.windowsazure.com/) wird der Mandant unter **Alle Elemente** und auch **Active Directory** aufgeführt. Sie können diesen Mandanten gemäß Ihren Anforderungen nutzen. Sie können auch im Menü **Neu** in der Taskleiste am unteren Rand einen neuen Mandanten erstellen.
+Wenn Sie sich zuvor mit Ihrem Organisationskonto für ein Azure-Abonnement registriert haben, verfügen Sie bereits über einen Mandanten. Im [klassischen Azure-Portal]( https://manage.windowsazure.com/) wird der Mandant unter **Alle Elemente** und auch **Active Directory** aufgeführt. Sie können diesen Mandanten gemäß Ihren Anforderungen nutzen. Sie können auch im Menü **Neu** in der Taskleiste am unteren Rand einen neuen Mandanten erstellen.
 
 #### Sie verfügen über nichts des Obengenannten und möchten ganz von vorn beginnen
-Wenn nichts des Obengenannten auf Sie zutrifft, registrieren Sie sich unter [https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) mit einer neuen Organisation bei Azure. Sobald Sie registriert sind, verfügen Sie über einen eigenen Azure AD-Mandanten mit dem von Ihnen ausgewählten Domänennamen. Im [klassischen Azure-Portal](https://manage.windowsazure.com/) sehen Sie den Mandanten im linken Menü in **Active Directory**.
+Wenn nichts des Obengenannten auf Sie zutrifft, registrieren Sie sich unter [https://account.windowsazure.com/organization]( https://account.windowsazure.com/organization) mit einer neuen Organisation bei Azure. Sobald Sie registriert sind, verfügen Sie über einen eigenen Azure AD-Mandanten mit dem von Ihnen ausgewählten Domänennamen. Im [klassischen Azure-Portal]( https://manage.windowsazure.com/) sehen Sie den Mandanten im linken Menü in **Active Directory**.
 
 ## Schritt 2: Erstellen eines neuen oder Verwenden eines vorhandenen Azure-Abonnements
 Da Sie nun einen AD-Mandanten besitzen, können Sie ein neues Azure-Abonnement erstellen oder ein vorhandenes verwenden. Das Azure AD-Abonnement umfasst verschiedene Editionen. Für PowerApps Enterprise können Sie die Free-Edition verwenden. Wenn Sie jedoch den AAD-Proxy verwenden, um Hybridkonnektivität mit lokalen Daten zu erstellen, benötigen Sie die Basic- oder Premium-Edition.
@@ -98,13 +98,13 @@ In den [Azure Active Directory-Editionen](../active-directory/active-directory-e
 
 Da Sie nun über einen AD-Mandanten und ein Azure-Abonnement verfügen, können Ihre Geschäftsabonnementadministratoren sich für PowerApps Enterprise registrieren. Der Administrator kann auch Benutzer innerhalb Ihres Unternehmens zum 'Verwalten' von PowerApps – inklusive der Vergabe von Benutzerberechtigungen – hinzufügen und die im Rahmen Ihres Azure-Abonnements veröffentlichten PowerApps verwalten.
 
-Ohne Registrierung für PowerApps Enterprise sehen Sie kein Zugriffsblatt, wenn Sie im [Azure-Portal](https://portal.azure.com/) nach PowerApps suchen. Um Ihr Unternehmen zu registrieren, kann der **Abonnementadministrator** unter [PowerApps](http://go.microsoft.com/fwlink/p/?LinkId=716848) mit uns Kontakt aufnehmen, um weitere Informationen zu Preisen und zum Registrierungsprozess zu erhalten.
+Ohne Registrierung für PowerApps Enterprise sehen Sie kein Zugriffsblatt, wenn Sie im [Azure-Portal]( https://portal.azure.com/) nach PowerApps suchen. Um Ihr Unternehmen zu registrieren, kann der **Abonnementadministrator** unter [PowerApps]( http://go.microsoft.com/fwlink/p/?LinkId=716848) mit uns Kontakt aufnehmen, um weitere Informationen zu Preisen und zum Registrierungsprozess zu erhalten.
 
 ![][4]
 
 Sobald Sie den Registrierungsprozess abgeschlossen haben und bereit sind, PowerApps Enterprise verwenden, können Sie:
 
-- Benutzer in Ihrem Unternehmen hinzufügen und mithilfe [rollenbasierter Zugriffssteuerung](../role-based-access-control-configure.md) diesen Benutzern PowerApps-Administratorrollen für den Zugriff auf das PowerApps Enterprise-Portal zuweisen.
+- Benutzer in Ihrem Unternehmen hinzufügen und mithilfe [rollenbasierter Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) diesen Benutzern PowerApps-Administratorrollen für den Zugriff auf das PowerApps Enterprise-Portal zuweisen.
 - Eine dedizierte App Service-Umgebung zum Hosten Ihrer PowerApps erstellen.
 - APIs und Verbindungen für die Ausführung innerhalb Ihrer dedizierten App Service-Umgebung erstellen.
 - Neben den in PowerApps erstellten Apps können Sie Ihrer App Service-Umgebung weitere Apps hinzufügen, einschließlich Web-Apps, mobiler Apps, API-Apps und Logik-Apps.
@@ -120,11 +120,11 @@ Erstellen Sie eine App Service-Umgebung zum Hosten Ihrer PowerApps-APIs und Verb
 Eine App Service-Umgebung ist eine isolierte und dedizierte Umgebung, die Ihre sämtlichen Apps sicher ausführt. Computeressourcen werden jeweils einer App Service-Umgebung zur Verfügung gestellt und ausschließlich zur Ausführung Ihrer Apps eingesetzt. Wenn Sie sich für PowerApps Enterprise registrieren, wird eine dedizierte App Service-Umgebung zum Hosten der APIs und der von Ihren Apps verwendeten Verbindungen eingesetzt. Diese App Service-Umgebung ist ein "spezieller" Typ von App Service-Umgebung. Dies gilt insbesondere in folgenden Fällen:
 
 - Sie können diese App Service-Umgebung für beliebige Zwecke verwenden. Sie ist an Ihr Unternehmen, nicht das Abonnement gebunden.
-- Sie konfigurieren die APIs und Verbindungen, die von Ihren in PowerApps erstellten Apps verwendet werden sollen. Allerdings können Sie der gleichen App Service-Umgebung auch Web-Apps, mobile Apps, Logik-Apps und API-Apps hinzufügen. 
+- Sie konfigurieren die APIs und Verbindungen, die von Ihren in PowerApps erstellten Apps verwendet werden sollen. Allerdings können Sie der gleichen App Service-Umgebung auch Web-Apps, mobile Apps, Logik-Apps und API-Apps hinzufügen.
 - Die Abrechnung ist festgelegt und in PowerApps Enterprise enthalten.  
 - Die Skalierung wird automatisch für Sie verwaltet. Sie müssen nicht die Umgebung überwachen, um festzustellen, ob zusätzliche Computeressourcen erforderlich sind.
 
-Die reguläre Azure App Service-Umgebung verfügt über andere Features. Nähere Informationen finden Sie in der [Einführung in die App Service-Umgebung](../app-service-app-service-environment-intro.md).
+Die reguläre Azure App Service-Umgebung verfügt über andere Features. Nähere Informationen finden Sie in der [Einführung in die App Service-Umgebung](../app-service-web/app-service-app-service-environment-intro.md).
 
 #### Anforderungen für den Einstieg
 
@@ -135,17 +135,22 @@ Die reguläre Azure App Service-Umgebung verfügt über andere Features. Nähere
 ### Erstellen einer App Service-Umgebung
 > [AZURE.NOTE] Wenn die Option zum Erstellen der App Service-Umgebung nicht angezeigt wird, ist sie bereits für Ihren Mandanten erstellt. Wählen Sie zum Anzeigen der Details **Einstellungen**, um die App Service-Umgebung zu öffnen.
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) mit Ihrem Geschäftskonto an. Melden Sie sich beispielsweise mit *IhrBenutzername*@*IhrUnternehmen*.com an. Sie werden dann automatisch mit Ihrem Unternehmensabonnement angemeldet.
- 
-2. Wählen Sie in der Taskleiste **Durchsuchen**: ![Durchsuchen nach PowerApps][1]
-  
-3. In der Liste können Sie scrollen, um PowerApps zu finden, oder in *powerapps* Folgendes eingeben: ![Suchen nach PowerApps][2]
+1. Melden Sie sich im [Azure-Portal]( https://portal.azure.com/) mit Ihrem Geschäftskonto an. Melden Sie sich beispielsweise mit *IhrBenutzername*@*IhrUnternehmen*.com an. Sie werden dann automatisch mit Ihrem Unternehmensabonnement angemeldet.
 
-4. Wählen Sie im **PowerApps**-Blatt **App Service-Umgebung für den Einstieg erstellen**, oder wählen Sie **App Service-Umgebung** unter *Einstellungen*: ![][5]
+2. Wählen Sie in der Taskleiste **Durchsuchen**:  
+![Durchsuchen nach PowerApps][1]
+
+3. In der Liste können Sie scrollen, um PowerApps zu finden, oder in *powerapps* Folgendes eingeben:  
+![Suchen nach PowerApps][2]
+
+4. Wählen Sie im **PowerApps**-Blatt **App Service-Umgebung für den Einstieg erstellen**, oder wählen Sie **App Service-Umgebung** unter *Einstellungen*:
+![][5]
 
 	> [AZURE.NOTE] Wenn Sie auf **App Service-Umgebung für den Einstieg erstellen** klicken, sehen Sie ein zusätzliches Blatt mit Details zur App Service-Umgebung. Klicken Sie zum Aufruf des Erstellungsblatts einfach auf diesem Blatt auf den "Erstellen"-Link.
 
-5. Als Nächstes geben Sie den Namen ein, wählen Sie das Abonnement, das Sie verwenden möchten, wählen Sie eine neue Ressourcengruppe aus, bzw. erstellen Sie eine, und wählen Sie ein virtuelles Netzwerk aus. **Beachten Sie**, dass Sie die Auswahl eines virtuellen Netzwerks nicht mehr rückgängig machen können: ![][6] Informationen zur Zusammenarbeit virtueller Netzwerke mit einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung](../app-service-web-how-to-create-an-app-service-environment.md).
+5. Als Nächstes geben Sie den Namen ein, wählen Sie das Abonnement, das Sie verwenden möchten, wählen Sie eine neue Ressourcengruppe aus, bzw. erstellen Sie eine, und wählen Sie ein virtuelles Netzwerk aus. **Beachten Sie**, dass Sie die Auswahl eines virtuellen Netzwerks nicht mehr rückgängig machen können:
+![][6]
+Informationen zur Zusammenarbeit virtueller Netzwerke mit einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md).
 
 6. Wählen Sie **Hinzufügen**, um die Erstellung der App Service-Umgebung abzuschließen.
 
@@ -158,8 +163,11 @@ Denken Sie daran, dass Sie dieser App Service-Umgebung auch Web-Apps, mobile App
 Um auf die App Service-Umgebung zuzugreifen, APIs, Verbindungen und andere Ressourcen zu erstellen, müssen Benutzer mit der Rolle "Besitzer" hinzugefügt werden.
 
 1. Wählen Sie die App Service-Umgebung aus, die Sie gerade erstellt haben.
-2. Wählen Sie in "Essentials" die Eigenschaft **Ressourcengruppe** aus. Daraufhin wird die Ressourcengruppe geöffnet, die die App Service-Umgebung enthält: ![][7]
-3. Wählen Sie das Symbol "RBAC" zum Verwalten von Berechtigungen: ![][8] Das Hinzufügen von Benutzern und Zuweisen von Rollen erfolgt wie die [rollenbasierte Zugriffssteuerung]( https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/) innerhalb von Azure.
+2. Wählen Sie in "Essentials" die Eigenschaft **Ressourcengruppe** aus. Daraufhin wird die Ressourcengruppe geöffnet, die die App Service-Umgebung enthält:  
+![][7]
+3. Wählen Sie das Symbol "RBAC" zum Verwalten von Berechtigungen:  
+![][8]
+Das Hinzufügen von Benutzern und Zuweisen von Rollen erfolgt wie die [rollenbasierte Zugriffssteuerung]( https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/) innerhalb von Azure.
 
 > [AZURE.NOTE] Sie können derzeit keine RBAC-Berechtigungen für die App Service-Umgebung zuweisen. Sie können RBAC-Berechtigungen auf der übergeordneten Ressourcengruppenebene zuweisen.
 
@@ -181,4 +189,4 @@ Ihr Unternehmen ist nun für PowerApps registriert und verfügt über eine App S
 [7]: ./media/powerapps-get-started-azure-portal/aseessentials.png
 [8]: ./media/powerapps-get-started-azure-portal/resourcegrouprbac.png
 
-<!----HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0413_2016-->

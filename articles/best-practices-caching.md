@@ -290,11 +290,11 @@ Die Verwendung des Sitzungsstatusanbieters mit dem Azure Redis-Cache bietet vers
 - Ein kontrollierter gleichzeitiger Zugriff auf die gleichen Sitzungsstatusdaten für mehrere Reader und einen einzigen Writer wird unterstützt.
 - Zur Einsparung von Arbeitsspeicher und Verbesserung der Netzwerkleistung kann Komprimierung verwendet werden.
 
-Weitere Informationen finden Sie auf der Seite [ASP.NET-Sitzungsstatusbieter für den Azure Redis-Cache](redis-cache/cache-asp.net-session-state-provider.md) auf der Microsoft-Website.
+Weitere Informationen finden Sie auf der Seite [ASP.NET-Sitzungsstatusbieter für den Azure Redis-Cache](redis-cache/cache-aspnet-session-state-provider.md) auf der Microsoft-Website.
 
 > [AZURE.NOTE] Für ASP.NET-Anwendungen, die außerhalb der Azure-Umgebung ausgeführt werden, sollte der Sitzungsstatusanbieter für den Azure Redis-Cache nicht verwendet werden. Die Latenzzeiten für den Zugriff auf den Cache außerhalb von Azure können die Leistungsvorteile des Caching zunichte machen.
 
-Auf ähnliche Weise ermöglicht Ihnen der Ausgabecacheanbieter für den Azure Redis-Cache das Speichern der von einer ASP.NET-Webanwendung generierten HTTP-Antworten. Der Ausgabecacheanbieter kann in Verbindung mit dem Azure Redis-Cache die Antwortzeiten von Anwendungen mit komplexen HTML-Ausgaben verbessern. Anwendungsinstanzen, die ähnliche Antworten generieren, können auf freigegebene Ausgabefragmente im Cache zurückgreifen, anstatt die HTML-Ausgabe völlig neu generieren zu müssen. Weitere Informationen finden Sie auf der Seite [ASP.NET-Ausgabecacheanbieter für den Azure Redis-Cache](redis-cache/cache-asp.net-output-cache-provider.md) auf der Microsoft-Website.
+Auf ähnliche Weise ermöglicht Ihnen der Ausgabecacheanbieter für den Azure Redis-Cache das Speichern der von einer ASP.NET-Webanwendung generierten HTTP-Antworten. Der Ausgabecacheanbieter kann in Verbindung mit dem Azure Redis-Cache die Antwortzeiten von Anwendungen mit komplexen HTML-Ausgaben verbessern. Anwendungsinstanzen, die ähnliche Antworten generieren, können auf freigegebene Ausgabefragmente im Cache zurückgreifen, anstatt die HTML-Ausgabe völlig neu generieren zu müssen. Weitere Informationen finden Sie auf der Seite [ASP.NET-Ausgabecacheanbieter für den Azure Redis-Cache](redis-cache/cache-aspnet-output-cache-provider.md) auf der Microsoft-Website.
 
 ### Azure Redis Cache
 
@@ -325,11 +325,11 @@ Die Verwendung des Sitzungszustandsanbieters mit Azure Redis Cache bietet versch
 - Ein kontrollierter gleichzeitiger Zugriff auf die gleichen Sitzungsstatusdaten für mehrere Reader und einen einzigen Writer wird unterstützt.
 - Zur Einsparung von Arbeitsspeicher und Verbesserung der Netzwerkleistung wird Komprimierung verwendet.
 
-Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite [ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache](redis-cache/cache-asp.net-session-state-provider.md).
+Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite [ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache](redis-cache/cache-aspnet-session-state-provider.md).
 
 > [AZURE.NOTE] Für ASP.NET-Anwendungen, die außerhalb der Azure-Umgebung ausgeführt werden, sollte der Sitzungszustandsanbieter für Azure Redis Cache nicht verwendet werden. Die Latenzzeiten für den Zugriff auf den Cache außerhalb von Azure können die Leistungsvorteile des Caching zunichte machen.
 
-Auf ähnliche Weise ermöglicht Ihnen der Ausgabecacheanbieter für Azure Redis Cache das Speichern der von einer ASP.NET-Webanwendung generierten HTTP-Antworten. Azure Redis Cache mit dem Ausgabecacheanbieter kann die Reaktionszeiten von Anwendungen verbessern, die komplexe HTML-Ausgaben rendern. Anwendungsinstanzen, die ähnliche Antworten generieren, können die freigegebenen Ausgabefragmente im Cache nutzen, anstatt HTML-Ausgabe neu zu generieren. Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite [ASP.NET-Ausgabecacheanbieter für Azure Redis Cache](redis-cache/cache-asp.net-output-cache-provider.md).
+Auf ähnliche Weise ermöglicht Ihnen der Ausgabecacheanbieter für Azure Redis Cache das Speichern der von einer ASP.NET-Webanwendung generierten HTTP-Antworten. Azure Redis Cache mit dem Ausgabecacheanbieter kann die Reaktionszeiten von Anwendungen verbessern, die komplexe HTML-Ausgaben rendern. Anwendungsinstanzen, die ähnliche Antworten generieren, können die freigegebenen Ausgabefragmente im Cache nutzen, anstatt HTML-Ausgabe neu zu generieren. Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite [ASP.NET-Ausgabecacheanbieter für Azure Redis Cache](redis-cache/cache-aspnet-output-cache-provider.md).
 
 ## Erstellen eines benutzerdefinierten Redis-Cache
 
@@ -927,11 +927,11 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 - Seite [Redis Security](http://redis.io/topics/security) (Sicherheit in Redis) auf der Redis-Website
 - Seite [Lap around Azure Redis Cache](https://azure.microsoft.com/blog/2014/06/04/lap-around-azure-redis-cache-preview/) (Übersicht zu Azure Redis Cache) im Azure-Blog
 - Seite [Running Redis on a CentOS Linux VM in Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) (Ausführen von Redis auf einer CentOS Linux-VM in Azure) auf der Microsoft-Website
-- Seite [ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache](redis-cache/cache-asp.net-session-state-provider.md) auf der Microsoft-Website
-- Seite [ASP.NET-Ausgabecacheanbieter für Azure Redis Cache](redis-cache/cache-asp.net-output-cache-provider.md) auf der Microsoft-Website
+- Seite [ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache](redis-cache/cache-aspnet-session-state-provider.md) auf der Microsoft-Website
+- Seite [ASP.NET-Ausgabecacheanbieter für Azure Redis Cache](redis-cache/cache-aspnet-output-cache-provider.md) auf der Microsoft-Website
 - Seite [An Introduction to Redis data types and abstractions](http://redis.io/topics/data-types-intro) (Eine Einführung zu Redis-Datentypen und Abstraktionen) auf der Redis-Website
 - Seite [Basic Usage](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md) (Grundlegende Nutzung) auf der StackExchange.Redis-Website
 - Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 - Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

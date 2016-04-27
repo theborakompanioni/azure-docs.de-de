@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/12/2016"
+     ms.date="04/07/2016"
      ms.author="dobett"/>
 
 # Erstellen eines IoT Hubs mit PowerShell
@@ -58,7 +58,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 Verwenden Sie eine JSON-Vorlage, um einen neuen IoT-Hub in der Ressourcengruppe zu erstellen. Sie können auch eine Vorlage verwenden, um Änderungen an einem vorhandenen IoT-Hub vorzunehmen.
 
-1. Verwenden Sie einen Texteditor zum Erstellen einer ARM-Vorlage namens **template.json** mit der folgenden Ressourcendefinition, um einen neuen Standard-IoT-Hub zu erstellen. In diesem Beispiel wird der IoT-Hub in der Region **USA, Osten** hinzugefügt und die API-Version **2016-02-03** verwendet. Diese Vorlage erwartet auch, dass Sie den IoT-Hub-Namen als Parameter **hubName** übergeben.
+1. Verwenden Sie einen Texteditor zum Erstellen einer ARM-Vorlage namens **template.json** mit der folgenden Ressourcendefinition, um einen neuen Standard-IoT-Hub zu erstellen. In diesem Beispiel wird IoT Hub in der Region **USA, Osten** hinzugefügt, es werden zwei Consumergruppen (**cg1** und **cg2**) auf dem Event Hub-kompatiblen Endpunkt erstellt, und es wird die API-Version **2016-02-03** verwendet. Diese Vorlage erwartet auch, dass Sie den IoT Hub-Namen als Parameter **hubName** übergeben.
 
     ```
     {
@@ -83,6 +83,22 @@ Verwenden Sie eine JSON-Vorlage, um einen neuen IoT-Hub in der Ressourcengruppe 
         "properties": {
           "location": "East US"
         }
+      },
+      {
+        "apiVersion": "2016-02-03",
+        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+        "name": "[concat(parameters('hubName'), '/events/cg1')]",
+        "dependsOn": [
+          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
+        ]
+      },
+      {
+        "apiVersion": "2016-02-03",
+        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+        "name": "[concat(parameters('hubName'), '/events/cg2')]",
+        "dependsOn": [
+          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
+        ]
       }
       ],
       "outputs": {
@@ -96,7 +112,7 @@ Verwenden Sie eine JSON-Vorlage, um einen neuen IoT-Hub in der Ressourcengruppe 
 
 2. Speichern Sie die Vorlagendatei auf Ihrem lokalen Computer. In diesem Beispiel wird davon ausgegangen, dass Sie sie in dem Ordner **c:\\templates** speichern.
 
-3. Führen Sie den folgenden Befehl zum Bereitstellen Ihres neuen IoT-Hubs aus, der den Namen des IoT-Hubs als Parameter übergibt. In diesem Beispiel ist der Name des IoT-Hubs **myiothub**:
+3. Führen Sie den folgenden Befehl zum Bereitstellen Ihres neuen IoT-Hubs aus, der den Namen des IoT-Hubs als Parameter übergibt. In diesem Beispiel lautet der Name des IoT-Hubs **myiothub** (beachten Sie, dass dieser Name global eindeutig sein muss):
 
     ```
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName myiothub
@@ -123,4 +139,4 @@ Nachdem Sie nun einen IoT-Hub mithilfe einer ARM-Vorlage mit PowerShell bereitge
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-powershell-arm]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

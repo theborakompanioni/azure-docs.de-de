@@ -5,7 +5,7 @@
     keywords="c#-Datenbank,SQL-Entwicklung"
     documentationCenter=""
     authors="stevestein"
-    manager="jeffreyg"
+    manager="jhubbard"
     editor=""/>
 
 <tags
@@ -161,7 +161,7 @@ Beim Ressourcen-Manager müssen alle Ressourcen in einer Ressourcengruppe erstel
 
 ## Erstellen eines Servers
 
-Pools für elastische Datenbanken sind in Azure SQL-Datenbankservern enthalten, daher muss im nächsten Schritt ein Server erstellt werden. Der Servername muss global für alle Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann. Damit eine Anwendung eine Verbindung mit dem Server herstellen kann, müssen Sie auch eine Firewallregel auf dem Server für den Zugriff von der Client-IP-Adresse erstellen.
+Pools für elastische Datenbanken sind in Azure SQL-Datenbankservern enthalten, daher muss im nächsten Schritt ein Server erstellt werden. Der Servername muss global für alle Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann. Damit eine Anwendung eine Verbindung mit dem Server herstellen kann, müssen Sie auch eine Firewallregel auf dem Server für den Zugriff von der Client-IP-Adresse erstellen.
 
 
     // Create a SQL Database management client
@@ -285,7 +285,7 @@ Das folgende Beispiel aktualisiert die Leistungsmerkmale eines vorhandenen Pools
 
 ## Verschieben einer vorhandenen Datenbank in einen Pool für elastische Datenbanken
 
-*Nach dem Erstellen eines Pools können Sie Transact-SQL auch zum Verschieben vorhandener Datenbanken in und aus Pools verwenden. Weitere Informationen finden Sie unter [Referenz für Pools für elastische Datenbanken – Transact-SQL](sql-database-elastic-pool-reference.md#Transact-SQL).*
+Nach dem Erstellen eines Pools können Sie Transact-SQL auch zum Verschieben vorhandener Datenbanken in und aus Pools verwenden. Ausführliche Informationen finden Sie unter [Überwachen und Verwalten eines Pools für elastische Datenbanken per Transact-SQL](sql-database-elastic-pool-manage-tsql.md).*
 
 Im folgenden Beispiel wird eine vorhandene Azure SQL-Datenbank in einen Pool verschoben:
 
@@ -576,4 +576,4 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

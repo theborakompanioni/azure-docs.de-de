@@ -1,32 +1,32 @@
-<properties 
-	pageTitle="Ressourcen, Rollen und Zugriffssteuerung in Application Insights" 
-	description="";Besitzer";, ";Mitwirkende"; und ";Leser"; für die gewonnenen Unternehmensinformationen." 
-	services="application-insights" 
+<properties
+	pageTitle="Ressourcen, Rollen und Zugriffssteuerung in Application Insights"
+	description="Besitzer Mitwirkende und Leser für die gewonnenen Unternehmensinformationen."
+	services="application-insights"
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/05/2016" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/05/2016"
 	ms.author="awills"/>
- 
+
 # Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
-Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../role-based-access-control-configure.md) können Sie steuern, wer in Visual Studio [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
+Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../active-directory/role-based-access-control-configure.md) können Sie steuern, wer in Visual Studio [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
 
-> [AZURE.IMPORTANT]Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access).
+> [AZURE.IMPORTANT] Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access).
 
 
 ## Ressourcen, Gruppen und Abonnements
 
 Zunächst einige Definitionen:
 
-* **Ressource** – Eine Instanz eines Microsoft Azure-Diensts. Die Application Insights-Ressource erfasst, analysiert und zeigt die Telemetriedaten an, die von der Anwendung gesendet werden. Andere Arten von Azure-Ressourcen sind Web-Apps, Datenbanken und virtuelle Computer. 
+* **Ressource** – Eine Instanz eines Microsoft Azure-Diensts. Die Application Insights-Ressource erfasst, analysiert und zeigt die Telemetriedaten an, die von der Anwendung gesendet werden. Andere Arten von Azure-Ressourcen sind Web-Apps, Datenbanken und virtuelle Computer.
 
     Um alle Ressourcen anzuzeigen, wechseln Sie zum [Azure-Portal][portal], melden Sie sich an, und klicken Sie auf "Durchsuchen".
 
@@ -36,7 +36,7 @@ Zunächst einige Definitionen:
 
 * [**Ressourcengruppe**][group] – Jede Ressource gehört zu einer Gruppe. Eine Gruppe ist eine bequeme Möglichkeit, verwandte Ressourcen insbesondere für die Zugriffssteuerung zu verwalten. Beispielsweise könnten Sie eine Web-App, eine Application Insights-Ressource zur Überwachung der App sowie eine Storage-Ressource zur Aufbewahrung exportierter Daten in eine Ressourcengruppe aufnehmen.
 
-    
+
     ![Wählen Sie "Durchsuchen", "Ressourcengruppen" und dann eine Gruppe aus.](./media/app-insights-resources-roles-access-control/11-group.png)
 
 * [**Abonnement**](https://manage.windowsazure.com) – Zum Verwenden von Application Insights oder anderen Azure-Ressourcen melden Sie sich bei einem Azure-Abonnement an. Jede Ressourcengruppe gehört zu einem Azure-Abonnement, in dem Sie Ihr Preispaket und, wenn es sich um ein Abonnement für die Organisation handelt, die Mitglieder und deren Zugriffsberechtigungen auswählen.
@@ -52,7 +52,7 @@ Es ist wichtig zu wissen, dass es zusätzlich zu den Ressource, die Sie für Ihr
 Zum Steuern des Zugriffs auf diese Ressourcen empfiehlt es sich daher, folgendermaßen vorzugehen:
 
 * Steuern Sie den Zugriff auf **Ressourcengruppen- oder Abonnementebene**.
-* Weisen Sie Benutzern die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch können sie Webtests, Warnungen und Application Insights-Ressourcen bearbeiten, ohne dass Zugriff auf alle anderen Dienste in der Gruppe erteilt wird. 
+* Weisen Sie Benutzern die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch können sie Webtests, Warnungen und Application Insights-Ressourcen bearbeiten, ohne dass Zugriff auf alle anderen Dienste in der Gruppe erteilt wird.
 
 ## So erteilen Sie einem anderen Benutzer Zugriffsberechtigungen
 
@@ -97,7 +97,7 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 
 ## Benutzer und Rollen
 
-* [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control-configure.md)
+* [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
 
 
 
@@ -108,6 +108,4 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 [portal]: http://portal.azure.com/
 [start]: app-insights-overview.md
 
- 
-
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0413_2016-->

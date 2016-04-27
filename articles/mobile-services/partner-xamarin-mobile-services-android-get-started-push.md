@@ -33,7 +33,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 + Ein aktives Google-Konto
 + [Google Cloud Messaging Client-Komponente] Sie fügen diese Komponente während des Lernprogramms hinzu.
 
-Sie haben die Komponenten [Xamarin.Android] und [Azure Mobile Services] bereits in Ihrem Projekt installiert, als Sie [Erste Schritte mit Mobile Services] bearbeitet haben.
+Sie haben die Komponenten Xamarin und [Azure Mobile Services] bereits in Ihrem Projekt installiert, als Sie [Erste Schritte mit Mobile Services] bearbeitet haben.
 
 ##<a id="register"></a>Aktivieren von Google Cloud Messaging
 
@@ -84,7 +84,6 @@ Weitere Informationen zu Mobile Services und Benachrichtigungshubs finden Sie in
 [Erste Schritte mit Mobile Services]: mobile-services-ios-get-started.md
 
 [Google Cloud Messaging Client-Komponente]: http://components.xamarin.com/view/GCMClient/
-[Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

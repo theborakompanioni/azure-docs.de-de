@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="Hochladen von Bildern in Azure-Blobspeicher über eine universelle Windows-App | Microsoft Azure" 
-	description="Erfahren Sie, wie mithilfe eines mobilen JavaScript-Back-End-Dienstes Bilder in Azure-BLOB-Speicher hochladen und dann über Ihre universelle Windows-App darauf zugreifen." 
-	services="mobile-services,storage" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Hochladen von Bildern in Azure-Blobspeicher über eine universelle Windows-App | Microsoft Azure"
+	description="Erfahren Sie, wie mithilfe eines mobilen JavaScript-Back-End-Dienstes Bilder in Azure-BLOB-Speicher hochladen und dann über Ihre universelle Windows-App darauf zugreifen."
+	services="mobile-services,storage"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/16/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/16/2015"
 	ms.author="glenga"/>
 
 # Hochladen von Bildern in Azure-BLOB-Speicher mithilfe von Mobile Services
 
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
-##Übersicht 
+##Übersicht
 
 In diesem Thema wird erläutert, wie Sie Azure Mobile Services dazu verwenden können, Ihre App für das Hochladen und Speichern von durch Benutzer erzeugten Bildern in Azure Storage zu aktivieren. Mobile Services verwendet zur Datenspeicherung eine SQL-Datenbank. BLOB (Binary Large Object)-Daten lassen sich allerdings effizienter im Azure-Blob-Speicherdienst speichern.
 
@@ -33,7 +33,7 @@ In diesem Lernprogramm fügen Sie der Mobile Services-Schnellstartapp Funktionen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 + Microsoft Visual Studio 2013 Update 3 oder eine höhere Version.
-+ [Azure-Speicherkonto](../storage-create-storage-account.md)
++ [Azure-Speicherkonto](../storage/storage-create-storage-account.md)
 + Eine Kamera oder ein anderes an Ihren Computer angeschlossenes Bildaufnahmegerät
 
 Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie zunächst [Erste Schritte mit Mobile Services] abschließen.
@@ -55,12 +55,12 @@ Nachdem Sie nun gelernt haben, Ihre Bilder durch die Integration Ihres mobilen D
 + [Mobile Services: Serverskriptreferenz]
 
     Referenzthemen zur Verwendung von Serverskripts zur Ausführung serverseitiger Tasks sowie zur Integration in andere Azure-Komponenten und externe Ressourcen.
- 
+
 + [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz]
 
     Lernen Sie mehr über die Verwendung von Mobile Services mit .NET
-  
- 
+
+
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client
 [Update the client app to capture images]: #add-select-images
@@ -83,6 +83,5 @@ Nachdem Sie nun gelernt haben, Ihre Bilder durch die Integration Ihres mobilen D
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0413_2016-->

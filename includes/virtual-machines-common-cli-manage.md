@@ -26,7 +26,7 @@ Löschen eines virtuellen Computers | `azure vm delete [options] <name>` | `azur
 Erfassen eines virtuellen Computers | `azure vm capture [options] <name>` | `azure vm capture [options] <resource_group> <name>`
 Erstellen eines virtuellen Computers aus einem Benutzer-Image | `azure  vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>`
 Erstellen eines virtuellen Computers von einem speziellen Datenträger | `azure  vm create [options]-d <custom-data-file> <dns-name> [userName] [password]` | `azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>`
-Hinzufügen eines Datenträgers zu einem virtuellen Computer | `azure  vm disk attach [options] <vm-name> <disk-image-name>` – oder – <br/> `vm disk attach-new [options] <vm-name> <size-in-gb> [blob-url]` | `azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]`
+Hinzufügen eines Datenträgers zu einem virtuellen Computer | `azure  vm disk attach [options] <vm-name> <disk-image-name>` – oder – <br/> `vm disk attach-new [options] <vm-name> <size-in-gb> [blob-url]` | `azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]`
 Entfernen eines Datenträgers aus einem virtuellen Computer | `azure  vm disk detach [options] <vm-name> <lun>` | `azure  vm disk detach [options] <resource-group> <vm-name> <lun>`
 Hinzufügen einer generischen Erweiterung zu einem virtuellen Computer | `azure  vm extension set [options] <vm-name> <extension-name> <publisher-name> <version>` | `azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>`
 Hinzufügen einer VMAccess-Erweiterung zu einem virtuellen Computer | Nicht verfügbar | `azure vm reset-access [options] <resource-group> <name>`
@@ -42,6 +42,6 @@ Abrufen Sie aller verfügbaren Größen von virtuellen Computern | Nicht verfüg
 
 ## Nächste Schritte
 
-* Weitere Beispiele für die Befehle der Befehlszeilenschnittstelle finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit der Azure-Dienstverwaltung](../articles/virtual-machines-command-line-tools.md) und [Verwenden der Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](../articles/azure-cli-arm-commands.md).
+* Weitere Beispiele für die Befehle der Befehlszeilenschnittstelle finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit der Azure-Dienstverwaltung](../articles/virtual-machines-command-line-tools.md) und [Verwenden der Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](../articles/virtual-machines/azure-cli-arm-commands.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

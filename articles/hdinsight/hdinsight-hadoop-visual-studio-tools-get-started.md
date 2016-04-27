@@ -45,10 +45,10 @@ Um dieses Tutorial durchzuführen und die Hadoop-Tools in Visual Studio zu verwe
 
 HDInsight-Tools für Visual Studio und Microsoft Hive ODBC Driver gehören zum Microsoft Azure SDK für .NET, Version 2.5.1 oder höher. Sie können dies mit dem [Web Platform-Installer](http://go.microsoft.com/fwlink/?LinkId=255386) installieren. Sie müssen die Auswahl entsprechend Ihrer Version von Visual Studio vornehmen. Wenn Sie Visual Studio nicht installiert haben, können Sie das aktuelle Visual Studio Community und Azure SDK über den [Webplattform-Installer](http://go.microsoft.com/fwlink/?LinkId=255386) oder die folgenden Links installieren:
 
-- [Visual Studio Community 2015 mit Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids) 
-- [Visual Studio Community 2013 mit Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids) 
-- [Microsoft Azure SDK für .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids) 
-- [Microsoft Azure SDK für .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids) 
+- [Visual Studio Community 2015 mit Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids)
+- [Visual Studio Community 2013 mit Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids)
+- [Microsoft Azure SDK für .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids)
+- [Microsoft Azure SDK für .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids)
 
 ![Hadoop-Tools: HDInsight-Tools für Visual Studio – Webplattform-Installer][1]
 
@@ -182,14 +182,14 @@ Die neueste Version des Tools ermöglicht es Ihnen zu sehen, was sich innerhalb 
 
 >[AZURE.NOTE] Dieses Feature funktioniert nur mit HDInsight-Clustern ab Version 3.2.
 
-Die HDInsight-Tools haben bisher Hive-Aufträge via WebHCat (auch bekannt als Templeton) übermittelt. Es dauerte sehr lange, bis Auftragsdetails und Fehlerinformationen zurückgegeben wurden. Um dieses Leistungsproblem zu beheben, führen die HDInsight-Tools Hive-Aufträge jetzt über HiveServer2 direkt im Cluster aus, sodass RDP/SSH umgangen wird. Als weiterer Vorteil neben der Leistungsverbesserung können die Benutzer Hive nun in Tez-Diagrammen anzeigen, und sie können die Aufgabendetails anzeigen.
+Die HDInsight-Tools haben bisher Hive-Aufträge via [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (auch bekannt als Templeton) übermittelt. Es dauerte sehr lange, bis Auftragsdetails und Fehlerinformationen zurückgegeben wurden. Um dieses Leistungsproblem zu beheben, führen die HDInsight-Tools Hive-Aufträge jetzt über HiveServer2 direkt im Cluster aus, sodass RDP/SSH umgangen wird. Als weiterer Vorteil neben der Leistungsverbesserung können die Benutzer Hive nun in Tez-Diagrammen anzeigen, und sie können die Aufgabendetails anzeigen.
 
 Für HDInsight-Cluster ab Version 3.2 wird eine Schaltfläche **Über HiveServer2 ausführen** angezeigt:
 
 ![hdinsight visual studio tools execute via hiveserver2](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png)
 
 Wenn die Hive-Abfrage in Tez ausgeführt wurde, können Sie die zurückgestreamten Protokolle in Echtzeit sehen, und Sie sehen auch die Auftragsdiagramme.
- 
+
 ![hdinsight visual studio tools fast path hive execution](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png)
 
 **Unterschied zwischen dem Ausführen von Abfragen über HiveServer2 und Senden von Abfragen über WebHCat**
@@ -208,7 +208,7 @@ Das Ausführen von Abfragen über HiveServer2 hat zwar viele Leistungsvorteile, 
 
 In den HDInsight-Tools für Visual Studio wird das Anzeigen von Leistungsdiagrammen für die Hive-Aufträge unterstützt, die vom Tez-Ausführungsmodul ausgeführt werden. Informationen zum Aktivieren von Tez finden Sie unter [Verwenden von Hive in HDInsight][hdinsight.hive]. Nachdem Sie in Visual Studio einen Hive-Job gesendet haben, wird das Diagramm in Visual Studio angezeigt, wenn der Auftrag abgeschlossen ist. Sie müssen unter Umständen auf die Schaltfläche **Aktualisieren** klicken, um den aktuellen Auftragsstatus zu erhalten.
 
-> [AZURE.NOTE] Dieses Feature ist nur für höhere HDInsight-Clusterversionen als 3.2.4.593 verfügbar und funktioniert nur für abgeschlossene Aufträge. Dies funktioniert sowohl für Windows-basierte als auch für Linux-basierte Cluster.
+> [AZURE.NOTE] Dieses Feature ist nur für höhere HDInsight-Clusterversionen als 3.2.4.593 verfügbar und funktioniert nur für abgeschlossene Aufträge (wenn Sie Ihren Auftrag über WebHCat übermittelt haben. Dieses Diagramm wird angezeigt, wenn Sie Ihre Abfrage über HiveServer2 ausführen.). Dies funktioniert sowohl für Windows-basierte als auch für Linux-basierte Cluster.
 
 ![Leistungsdiagramm für Hadoop Hive Tez](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
 
@@ -223,6 +223,14 @@ Mit der Aufgabenausführungsansicht für Hive bei Tez-Aufträgen können Sie str
 ## Ausführen von Pig-Skripts
 
 HDInsight-Tools für Visual Studio unterstützen die Erstellung und das Senden von Pig-Skripts an HDInsight-Cluster. Benutzer können ein Pig-Projekt über eine Vorlage erstellen und das Skript dann an HDInsight-Cluster senden.
+
+## Feedbacks und bekannte Probleme
+
+- Derzeit werden HiveServer2-Ergebnisse als Nur-Text angezeigt, was nicht gerade ideal ist. Wir arbeiten an der Behebung dieses Problems.
+
+- Wenn die Ergebnisse mit NULL-Werten beginnen, werden die Ergebnisse derzeit nicht angezeigt. Dieses Problem wurde inzwischen behoben. Sollte es bei Ihnen auftreten, senden Sie uns eine E-Mail, oder wenden Sie sich an das Supportteam.
+
+Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probleme auftreten, senden Sie eine E-Mail an „hdivstool@microsoft.com“.
 
 ## Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Hadoop-Toolpakets eine Verbindung mit HDInsight-Clustern herstellen und Hive-Abfragen ausführen. Weitere Informationen finden Sie unter:
@@ -267,4 +275,4 @@ In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Hado
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

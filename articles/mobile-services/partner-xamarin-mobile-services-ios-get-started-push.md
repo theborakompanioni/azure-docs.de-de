@@ -33,7 +33,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 + Ein iOS 8-Gerät (Sie können keine Pushbenachrichtigungen in iOS-Simulator testen)
 + iOS-Entwicklerprogramm-Mitgliedschaft
-+ [Xamarin.iOS Studio]
++ [Xamarin Studio]
 + [Azure Mobile Services-Komponente]
 
 >[AZURE.IMPORTANT] Pushbenachrichtigungen müssen aufgrund von APNS-Anforderungen auf einem iOS-fähigen Gerät (iPhone oder iPad) anstatt im Emulator bereitgestellt und getestet werden.
@@ -387,7 +387,6 @@ Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 [121]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-21.png
 [122]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-22.png
 
-[Xamarin.iOS Studio]: http://xamarin.com/platform
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
@@ -401,6 +400,6 @@ Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 [apns-Objekt]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 [Azure Mobile Services-Komponente]: http://components.xamarin.com/view/azure-mobile-services/
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
-[Xamarin.iOS]: http://xamarin.com/download
+[Xamarin Studio]: http://xamarin.com/download
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

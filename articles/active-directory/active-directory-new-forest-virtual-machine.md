@@ -14,7 +14,7 @@
 	ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-	ms.date="01/25/2016" 
+	ms.date="04/07/2016" 
 	ms.author="markusvi"/>
 
 
@@ -25,7 +25,7 @@ In diesem Thema wird das Erstellen einer neuen Windows Server Active Directory-U
 Folgende Themen könnten für Sie ebenfalls von Interesse sein:
 
 - Ein Video, das diese Schritte veranschaulicht, finden Sie unter [Installieren einer neuen Active Directory-Gesamtstruktur in einem virtuellen Azure-Netzwerk](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network).
-- Optional können Sie ein [Standort-zu-Standort-VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) konfigurieren und dann entweder eine neue Gesamtstruktur installieren oder eine lokale Gesamtstruktur in einem virtuellen Azure-Netzwerk erweitern. Erläuterungen hierzu finden Sie unter [Installieren eines Active Directory-Replikatdomänencontrollers unter virtuellen Netzwerken in Microsoft Azure](../virtual-networks-install-replica-active-directory-domain-controller.md).
+- Optional können Sie ein [Standort-zu-Standort-VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) konfigurieren und dann entweder eine neue Gesamtstruktur installieren oder eine lokale Gesamtstruktur in einem virtuellen Azure-Netzwerk erweitern. Erläuterungen hierzu finden Sie unter [Installieren eines Active Directory-Replikatdomänencontrollers unter virtuellen Netzwerken in Microsoft Azure](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md).
 -  Weitere Anleitungen zu den Konzepten für die Installation von Active Directory-Domänendiensten (AD DS) auf einem virtuellen Azure-Netzwerk finden Sie unter [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Computern in Microsoft Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
 ## Szenario (Diagramm)
@@ -82,7 +82,7 @@ Weitere Informationen zum Festlegen einer statischen IP-Adresse finden Sie unter
 
 ## Installieren von Windows Server Active Directory
 
-Verwenden Sie dieselbe Routine zum [Installieren von AD DS](https://technet.microsoft.com/library/jj574166.aspx), die Sie lokal verwenden (d. h. Sie können die Benutzeroberfläche, eine Antwortdatei oder Windows PowerShell verwenden). Für die Installation einer neuen Gesamtstruktur brauchen Sie Administratoranmeldeinformationen. Damit die Active Directory-Datenbank, Protokolle und SYSVOL auf dem zusätzlich an den virtuellen Computer angeschlossenen Datenträger gespeichert werden können, müssen Sie den Standardspeicherort vom Betriebssystemlaufwerk auf den zusätzlichen Datenträger verlagern.
+Verwenden Sie dieselbe Routine zum [Installieren von AD DS](https://technet.microsoft.com/library/jj574166.aspx), die Sie lokal verwenden (d. h. Sie können die Benutzeroberfläche, eine Antwortdatei oder Windows PowerShell verwenden). Für die Installation einer neuen Gesamtstruktur brauchen Sie Administratoranmeldeinformationen. Damit die Active Directory-Datenbank, Protokolle und SYSVOL auf dem zusätzlich an den virtuellen Computer angeschlossenen Datenträger gespeichert werden können, müssen Sie den Standardspeicherort vom Betriebssystemlaufwerk auf den zusätzlichen Datenträger verlagern.
 
 Wenn die DC-Installation beendet ist, schließen Sie den virtuellen Computer wieder an und melden sich beim DC an. Denken Sie daran, die Domänenanmeldeinformationen anzugeben.
 
@@ -119,9 +119,9 @@ Weitere Informationen zum Verwenden von Windows PowerShell finden Sie unter [Ers
 
 -  [Installieren einer neuen Active Directory-Gesamtstruktur in einem virtuellen Azure-Netzwerk](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 -  [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
--  [Erstellen eines virtuellen Netzwerks komplett in der Cloud](../virtual-network/virtual-networks-create-vnet.md)
+
 -  [Konfigurieren eines Standort-zu-Standort-VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)
--  [Installieren eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk](../virtual-networks-install-replica-active-directory-domain-controller.md)
+-  [Installieren eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)
 -  [Microsoft Azure IT Pro IaaS: (01) Grundlagen zu virtuellen Computern](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 -  [Microsoft Azure IT Pro IaaS: (05) Erstellen virtueller Netzwerke und Herstellen standortübergreifender Verbindungen](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 -  [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md)
@@ -138,4 +138,4 @@ Weitere Informationen zum Verwenden von Windows PowerShell finden Sie unter [Ers
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

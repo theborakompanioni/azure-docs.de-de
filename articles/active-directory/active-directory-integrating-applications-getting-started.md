@@ -62,15 +62,13 @@ Wie oben erwähnt sind möglicherweise Anwendungen im Einsatz, die bis jetzt von
 Für jede Ihrer Anwendungen gelten möglicherweise unterschiedliche Authentifizierungsanforderungen. Bei Azure AD können Signaturzertifikate mit Anwendungen verwendet werden, die die Protokolle SAML 2.0, WS-Verbund oder OpenID Connect sowie das einmalige Anmelden per Kennwort verwenden. Weitere Informationen zu Anwendungsauthentifizierungstypen, die mit Azure AD verwendet werden können, finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](active-directory-sso-certs.md) und unter [Kennwortbasierte einmalige Anmeldung](active-directory-appssoaccess-whatis.md).
 
 ### Aktivieren von SSO mit Azure AD-App-Proxy
-Mit dem Microsoft Azure AD-Anwendungsproxy können Sie sicheren Zugriff von jedem Ort und mit jedem Gerät auf Anwendungen bereitstellen, die sich in Ihrem privaten Netzwerk befinden. Nachdem Sie einen Anwendungsproxy-Connector in Ihrer Umgebung installiert haben, können Sie ihn mit Azure AD leicht konfigurieren. Weitere Informationen hierzu finden Sie unter [Aktivieren von SSO mit Azure AD-App-Proxy](active-directory-appssoaccess-enable-hybrid-access.md) und unter [Veröffentlichen neuer Anwendungen mit Azure AD-App-Proxy](active-directory-application-proxy-configure.md).
+Mit dem Microsoft Azure AD-Anwendungsproxy können Sie sicheren Zugriff von jedem Ort und mit jedem Gerät auf Anwendungen bereitstellen, die sich in Ihrem privaten Netzwerk befinden. Nachdem Sie einen Anwendungsproxy-Connector in Ihrer Umgebung installiert haben, können Sie ihn mit Azure AD leicht konfigurieren.
 
 ### Integrieren von Anwendungen in Azure Active Directory
 In den folgenden Artikeln werden die verschiedenen Methoden zur Integration von Anwendungen in Azure AD erläutert und Anleitungen bereitgestellt.
 
 - [Bestimmen des zu verwendenden Active Directory-Verzeichnisses](active-directory-administer.md)
-- [Integration in vorhandene Anwendungen](active-directory-sso-integrate-existing-apps.md)
-- [Veröffentlichen neuer Anwendungen mit Azure AD-App-Proxy](active-directory-application-proxy-configure.md)
-- [Verwenden von Anwendungen im Azure-Anwendungskatalog](active-directory-appssoaccess-whatis.md/#get-started-with-the-azure-ad-application-gallery.md)
+- [Verwenden von Anwendungen im Azure-Anwendungskatalog](active-directory-appssoaccess-whatis.md)
 - [Liste der Tutorials zur Integration von SaaS-Anwendungen](active-directory-saas-tutorial-list.md)
 
 ## Verwalten des Zugriffs auf Anwendungen
@@ -85,10 +83,10 @@ In den folgenden Artikeln werden Möglichkeiten zur Verwaltung des Zugriffs auf 
 ## Integrieren benutzerdefinierter Anwendungen
 Wenn Sie eine neue Anwendung schreiben und Entwickler beim Nutzen von Azure AD unterstützen möchten, finden Sie unter [Leitfaden für Entwickler](active-directory-applications-guiding-developers-for-lob-applications.md) weitere Informationen.
 
-Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufügen möchten, finden Sie weitere Informationen unter [„Bring your own app“ mit Azure AD-Konfiguration für Self-Service SAML](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx).
+Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufügen möchten, finden Sie weitere Informationen unter [“Bring your own app” with Azure AD Self-Service SAML configuration](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx) („Bring your own app“ mit Azure AD-Konfiguration für Self-Service SAML).
 
 ## Weitere Informationen
 
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

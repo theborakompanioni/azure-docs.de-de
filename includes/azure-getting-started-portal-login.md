@@ -23,13 +23,13 @@ Falls Sie noch nicht über ein Microsoft Azure-Konto verfügen, verwenden Sie ei
 
 Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorhandenen Abonnements](https://account.windowsazure.com/Home/Index) eine Verbindung mit dem Azure-Portal herzustellen.
 
-1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie unter http://portal.azure.com/ eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/) her.
+1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/) her.
 
-1. Melden Sie sich unter http://portal.azure.com/ beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Geben Sie auf der Anmeldeseite die Anmeldeinformationen für Ihr Abonnement ein.
 
    ![Anmelden](./media/azure-getting-started-portal-login/login.png)
    
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

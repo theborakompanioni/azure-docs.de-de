@@ -21,7 +21,7 @@ ms.author="deonhe"/>
 
 Slack ist ein Tool für die Kommunikation in Teams, das alle Kommunikationen in Ihrem Team zentral zusammenführt und unmittelbar durchsuchbar und überall verfügbar macht.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“. Um die Schemaversion „2014-12-01-preview“ aufzurufen, klicken Sie auf [Slack](../app-service-logic/app-service-logic-connector-Slack.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Der Slack-Connector ermöglicht Folgendes:
 
@@ -52,13 +52,18 @@ Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfigur
 
 1. Wählen Sie **Wiederholung** aus.
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
-3. Wählen Sie **Aktion hinzufügen**. ![Slack konfigurieren][1]  
+3. Wählen Sie **Aktion hinzufügen**.
+![Slack konfigurieren][1]  
 4. Geben Sie in das Suchfeld „Slack“ ein, und warten Sie, bis die Suche alle Einträge mit Slack im Namen zurückgibt.
 5. Wählen Sie **Slack – Nachricht veröffentlichen** aus.
-6. Wählen Sie **Bei Slack anmelden**: ![Slack konfigurieren][2]
-7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren. ![Slack konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App: ![Slack konfigurieren][5] 
-9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu. ![Slack konfigurieren][6]
+6. Wählen Sie **Bei Slack anmelden**:
+![Slack konfigurieren][2]
+7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren.
+![Slack konfigurieren][3]  
+8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App:
+![Slack konfigurieren][5] 
+9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu.
+![Slack konfigurieren][6]
 10. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
 
 
@@ -142,7 +147,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **PostOperationRequest:** stellt eine Sendeanforderung für den Yammer-Connector dar, die an Yammer gesendet werden soll.
+ **PostOperationRequest:** Stellt eine Sendeanforderung für den Yammer-Connector dar, die an Yammer gesendet werden soll.
 
 Erforderliche Eigenschaften für PostOperationRequest:
 
@@ -481,4 +486,4 @@ Keine der Eigenschaften ist erforderlich.
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

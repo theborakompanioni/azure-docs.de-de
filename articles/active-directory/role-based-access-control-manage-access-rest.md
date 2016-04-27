@@ -13,21 +13,24 @@
 	ms.tgt_pltfrm="rest-api"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 
 > [AZURE.SELECTOR]
 - [PowerShell](role-based-access-control-manage-access-powershell.md)
-- [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-- [REST API](role-based-access-control-manage-access-rest.md)
+- [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
+- [REST-API](role-based-access-control-manage-access-rest.md)
+
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und der Azure Resource Manager-API können Sie den Zugriff auf Ihr Abonnement und Ihre Ressourcen differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
+
 
 ## Auflisten aller Rollenzuweisungen
 
 Listet alle Rollenzuweisungen mit dem angegebenen Bereich und den zugehörigen Unterbereichen auf.
 
-Zum Auflisten von Rollenzuweisungen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Zum Auflisten von Rollenzuweisungen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -53,8 +56,8 @@ Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit d
 | Bedingung | *{Filter}* | Replace |
 |-----------|------------|---------|
 | Auflisten der Rollenzuweisungen nur für den angegebenen Bereich, ohne die Rollenzuweisungen der Unterbereiche | `atScope()` | |
-| Auflisten der Rollenzuweisungen nur für spezielle Benutzer, Gruppen oder Anwendungen | `principalId%20eq%20'{objectId}'` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzer-, Gruppen- oder Dienstprinzipals. Beispiel: `&filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
-| Auflisten von Rollenzuweisungen nur für bestimmte Benutzer (einschließlich der Zuweisungen von Gruppen, deren Mitglied der Benutzer ist) | `assignedTo('{objectId}')` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzers. Beispiel: `&filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
+| Auflisten der Rollenzuweisungen nur für spezielle Benutzer, Gruppen oder Anwendungen | `principalId%20eq%20'{objectId}'` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzer-, Gruppen- oder Dienstprinzipals. Zum Beispiel `&filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
+| Auflisten von Rollenzuweisungen nur für bestimmte Benutzer (einschließlich der Zuweisungen von Gruppen, deren Mitglied der Benutzer ist) | `assignedTo('{objectId}')` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzers. Zum Beispiel `&filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
 
 
 
@@ -89,7 +92,7 @@ Statuscode: 200
 
 Dient zum Abrufen von Informationen zu einer einzelnen Rollenzuweisung, die über den Bezeichner der Rollenzuweisung angegeben wird.
 
-Um Informationen zu einer Rollenzuweisung zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Um Informationen zu einer Rollenzuweisung zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -137,7 +140,7 @@ Statuscode: 200
 
 Dient zum Erstellen einer Rollenzuweisung im angegebenen Bereich für den angegebenen Prinzipal mit Gewährung der angegebenen Rolle.
 
-Zum Erstellen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Zum Erstellen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -173,7 +176,7 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 | Elementname | Erforderlich | Typ | Beschreibung |
 |------------------|----------|--------|-------------|
-| roleDefinitionId | Ja | String | Der Bezeichner der Rolle, die zugewiesen werden soll. Das Format des Bezeichners lautet: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| roleDefinitionId | Ja | String | Der Bezeichner der Rolle, die zugewiesen werden soll. Das Format des Bezeichners ist: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId | Ja | String | objectId des Azure AD-Prinzipals (Benutzer-, Gruppen- oder Dienstprinzipal), dem die Rolle zugewiesen werden soll. |
 
 ### Antwort
@@ -202,7 +205,7 @@ Statuscode: 201
 
 Dient zum Löschen einer Rollenzuweisung im angegebenen Bereich.
 
-Zum Löschen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/delete`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Zum Löschen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/delete`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -250,7 +253,7 @@ Statuscode: 200
 
 Dient zum Auflisten aller Rollen, die für die Zuweisung im angegebenen Bereich verfügbar sind.
 
-Zum Auflisten von Rollen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Zum Auflisten von Rollen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -275,7 +278,7 @@ Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit d
 | Bedingung | *{Filter}* | Replace |
 |-----------|------------|---------|
 | Dient zum Auflisten der Rollen, die im angegebenen Bereich und in allen untergeordneten Bereichen verfügbar sind. | `atScopeAndBelow()` | |
-| Suchen nach einer Rolle mit dem genauen Anzeigenamen | `roleName%20eq%20'{role-display-name}'` | Ersetzen Sie *{role-display-name}* durch die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+| Suchen nach einer Rolle mit dem genauen Anzeigenamen | `roleName%20eq%20'{role-display-name}'` | Ersetzen Sie *{role-display-name}* durch die URL-codierte Form des genauen Anzeigenamens der Rolle. Zum Beispiel `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
 
 
@@ -344,7 +347,7 @@ Statuscode: 200
 
 Dient zum Abrufen von Informationen zu einer bestimmten Rolle, die mit dem Bezeichner der Rollendefinition angegeben wird. Informationen zum Abrufen von Informationen zu einer einzelnen Rolle über den Anzeigenamen finden Sie unter „Auflisten aller Rollen“ und „roleName-Filter“.
 
-Um Informationen zu einer Rolle zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Um Informationen zu einer Rolle zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -428,7 +431,7 @@ Statuscode: 200
 ## Erstellen einer benutzerdefinierten Rolle
 Dient zum Erstellen einer benutzerdefinierten Rolle.
 
-Um eine benutzerdefinierte Rolle zu erstellen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Um eine benutzerdefinierte Rolle zu erstellen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -538,7 +541,7 @@ Statuscode: 201
 
 Dient zum Ändern einer benutzerdefinierten Rolle.
 
-Um eine benutzerdefinierte Rolle zu ändern, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Um eine benutzerdefinierte Rolle zu ändern, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -648,7 +651,7 @@ Statuscode: 201
 
 Dient zum Löschen einer benutzerdefinierten Rolle.
 
-Um eine benutzerdefinierte Rolle zu löschen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/delete` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs für Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+Um eine benutzerdefinierte Rolle zu löschen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/delete` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
 ### Anforderung
 
@@ -711,4 +714,4 @@ Statuscode: 200
 
 ```
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

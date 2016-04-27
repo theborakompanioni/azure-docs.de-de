@@ -19,7 +19,7 @@ ms.author="mandia"/>
 
 # Erste Schritte mit der Office 365 Outlook-API 
 
-Stellen Sie eine Verbindung mit Office 365 Outlook her, um E-Mail zu erhalten, auf eine E-Mail zu antworten, Ihren Kalender und Kontakte zu aktualisieren und vieles mehr. Die Office 365 Outlook-APIs kann verwendet werden von:
+Stellen Sie eine Verbindung mit Office 365 Outlook her, um E-Mail zu erhalten, auf eine E-Mail zu antworten, Ihren Kalender und Kontakte zu aktualisieren und vieles mehr. Die Office 365 Outlook-APIs kann verwendet werden von:
 
 - Logik-Apps 
 - PowerApps
@@ -30,11 +30,11 @@ Stellen Sie eine Verbindung mit Office 365 Outlook her, um E-Mail zu erhalten, a
 
 &nbsp;
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Office 365-API](../app-service-logic/app-service-logic-connector-office365.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Mit Office 365 Outlook können Sie folgende Aktionen ausführen:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Office 365 Outlook abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Office 365 Outlook abgerufen werden. 
 - Verwenden eines Triggers, wenn neue E-Mails eingegangen sind, wenn Sie einen neuen Kontakt erstellen usw.
 - Verwenden von Aktionen, die auf eine E-Mail antworten, ein neues Kalenderereignis erstellen usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn beispielsweise ein neues Objekt in Salesforce vorhanden ist, können Sie dieses Objekt abrufen und Ihre Office 365 Outlook-Kontakte aktualisieren. 
 - Hinzufügen der Office 365-Outlook-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
@@ -70,7 +70,7 @@ Gilt für Version: 1.0.
 
 
 ### Bei Start eines anstehenden Ereignisses 
-Löst einen Fluss aus, wenn ein anstehendes Kalenderereignis beginnt. ```GET: /Events/OnUpcomingEvents```
+Löst einen Datenfluss aus, wenn ein anstehendes Kalenderereignis beginnt. ```GET: /Events/OnUpcomingEvents```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -214,7 +214,7 @@ Ruft die Nachrichtenanlage anhand der ID ab. ```GET: /Mail/{messageId}/Attachmen
 
 
 ### Bei neuer E-Mail 
-Löst einen Fluss aus, wenn eine neue E-Mail eingeht. ```GET: /Mail/OnNewEmail```
+Löst einen Datenfluss aus, wenn eine neue E-Mail eingeht. ```GET: /Mail/OnNewEmail```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -537,7 +537,8 @@ Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table
 |Body|string|Ja|
 |Priorität|string|no|
 |IsHtml|Boolescher Wert|no|
-|To|string|Ja|
+|To  
+|string|Ja|
 
 #### SendAttachment: Anlage
 
@@ -564,7 +565,8 @@ Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table
 |Body|string|Ja|
 |Priorität|string|no|
 |IsHtml|Boolescher Wert|no|
-|To|string|Ja|
+|To  
+|string|Ja|
 
 
 #### ReceiveAttachment: Anlage empfangen
@@ -587,7 +589,8 @@ Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table
 |Priorität|string|no|
 |Digest|array|Ja|
 |Anlagen|array|no|
-|To |string|Ja|
+|To  
+|string|Ja|
 
 #### TriggerBatchResponse[ReceiveMessage]
 
@@ -650,7 +653,8 @@ Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table
 |Body|string|no|
 |Priorität|string|no|
 |Anlagen|array|no|
-|To|string|Ja|
+|To  
+|string|Ja|
 
 #### SubscriptionResponse: Modell für das Genehmigungs-E-Mail-Abonnement
 
@@ -679,7 +683,8 @@ Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table
 |Body|string|no|
 |Priorität|string|no|
 |Anlagen|array|no|
-|To|string|Ja|
+|To  
+|string|Ja|
 
 #### ApprovalEmailResponse: Genehmigungs-E-Mail-Antwort
 
@@ -754,7 +759,7 @@ Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 
@@ -768,4 +773,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [12]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook.png
 [13]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook-permissions.png
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

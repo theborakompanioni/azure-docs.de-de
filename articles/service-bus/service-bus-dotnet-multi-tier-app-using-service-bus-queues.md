@@ -37,7 +37,7 @@ Der folgende Screenshot zeigt die fertige Anwendung.
 
 ![][0]
 
-> [AZURE.NOTE]Azure bietet ebenfalls Funktionen für Speicher-Warteschlangen. Weitere Informationen zu Speicher- und Service Bus-Warteschlangen in Azure finden Sie unter [Microsoft Azure-Warteschlangen und Microsoft Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung][sbqueuecomparison].
+> [AZURE.NOTE] Azure bietet ebenfalls Funktionen für Speicher-Warteschlangen. Weitere Informationen zu Speicher- und Service Bus-Warteschlangen in Azure finden Sie unter [Microsoft Azure-Warteschlangen und Microsoft Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung][sbqueuecomparison].
 
 ## Szenario-Übersicht: Kommunikation zwischen Rollen
 
@@ -103,7 +103,7 @@ Der nächste Schritt ist die Einrichtung des Dienstnamespace und das Abrufen ein
 
 5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der sie Ihre Rechnerressourcen einsetzen.) Stellen Sie außerdem sicher, dass Sie **Messaging** im Namespace **Typ**-Feld und **Standard** im **Messaging-Ebene**-Feld auswählen.
 
-    > [AZURE.IMPORTANT]Wählen Sie **dieselbe Region**, in der Sie auch Ihre Anwendung bereitstellen möchten. Dies sorgt für die beste Leistung.
+    > [AZURE.IMPORTANT] Wählen Sie **dieselbe Region**, in der Sie auch Ihre Anwendung bereitstellen möchten. Dies sorgt für die beste Leistung.
 
 6.  Klicken Sie auf das Häkchen „OK“. Ihr Dienstnamespace wird nun erstellt und aktiviert. Eventuell müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto bereitgestellt werden.
 
@@ -479,7 +479,7 @@ Weitere Informationen über Szenarien mit mehreren Ebenen und die Bereitstellung
 
 * [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]  
 
-Sie können das Front-End einer Anwendung mit mehreren Ebenen anstelle eines Azure-Cloud-Diensts auch als Azure-Website implementieren. Weitere Informationen zum Unterschied zwischen Websites und Cloud-Diensten finden Sie unter [Azure-Ausführungsmodelle][executionmodels].
+Sie können das Front-End einer Anwendung mit mehreren Ebenen anstelle eines Azure-Cloud-Diensts auch als Azure-Website implementieren.
 
 Um die Anwendung aus diesem Lernprogramm als Standard-Webprojekt anstelle einer Cloud-Dienst-Webrolle zu erstellen, führen Sie die Schritte in diesem Lernprogramm mit den folgenden Unterschieden aus:
 
@@ -543,6 +543,6 @@ Informationen zum Bereitstellen des Front-Ends auf einer Azure-Website finden Si
   [sbwacom]: /documentation/services/service-bus/
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
-  [executionmodels]: ../cloud-services/fundamentals-application-models.md
+  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0420_2016-->

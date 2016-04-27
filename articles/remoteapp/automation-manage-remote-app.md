@@ -40,6 +40,6 @@ RemoteApp kann in Azure Automation über die PowerShell-Cmdlets verwaltet werden
 
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendung zum Verwalten von Azure RemoteApp vertraut gemacht haben, folgen Sie diesen Links, um weitere Informationen zu Azure Automation zu erhalten.
 
-* Lernprogramm [Erste Schritte](../automation-create-runbook-from-samples.md) zu Azure Automation
+* Lernprogramm [Erste Schritte](../automation/automation-first-runbook-graphical.md) zu Azure Automation
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

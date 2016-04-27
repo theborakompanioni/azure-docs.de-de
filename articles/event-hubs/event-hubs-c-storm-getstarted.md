@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="c"
 	ms.devlang="java"
-	ms.topic="article" 
+	ms.topic="article"
 	ms.date="03/08/2016"
 	ms.author="sethm"/>
 
@@ -30,7 +30,7 @@ In diesem Lernprogramm erfahren Sie, wie Nachrichten an einen Ereignis-Hub mithi
 
 Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
-+ Eine C-Entwicklungsumgebung. In diesem Lernprogramm wird vom GCC-Stack auf einem [virtuellen Linux-Computer mit Azure](../virtual-machines/virtual-machines-linux-cli-create.md) mit Ubuntu 14.04 ausgegangen. Anweisungen für andere Umgebungen werden in externen Links bereitgestellt.
++ Eine C-Entwicklungsumgebung. In diesem Lernprogramm wird vom GCC-Stack auf einem [virtuellen Linux-Computer mit Azure](../virtual-machines/virtual-machines-linux-quick-create-cli.md) mit Ubuntu 14.04 ausgegangen. Anweisungen für andere Umgebungen werden in externen Links bereitgestellt.
 
 + Eine Java-Entwicklungsumgebung, die zum Ausführen von [Maven](http://maven.apache.org/) konfiguriert ist. In diesem Lernprogramm wird von [Eclipse](https://www.eclipse.org/) ausgegangen.
 
@@ -44,7 +44,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 	![][1]
 
-3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
+3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
 
 	![][2]
 
@@ -109,6 +109,5 @@ Die folgenden Ressourcen sind für die Entwicklung von Anwendungen verfügbar, d
 [Übersicht zu HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md/
 [Analysieren von Sensordaten mit Storm und HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 [Entwickeln von Anwendungen zur Verarbeitung von Streamingdaten mit SCP.NET und C# mit Storm und HDInsight]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
- 
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

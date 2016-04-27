@@ -3,7 +3,7 @@
 
 Wenn Sie auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird, nicht zugreifen können, finden Sie in diesem Artikel einen methodischen Ansatz zum Ermitteln der Ursache des Problems und zu seiner Behebung.
 
-> [AZURE.NOTE]  Hilfeinformationen zum Herstellen einer Verbindung mit einem virtuellen Azure-Computer finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md) oder [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md).
+> [AZURE.NOTE]  Hilfeinformationen zum Herstellen einer Verbindung mit einem virtuellen Azure-Computer finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) oder [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
@@ -65,10 +65,10 @@ Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuc
 
 Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 
-- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, muss die Endpunktkonfiguration für die VM eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md).
-- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, dürfen Zugriffssteuerungslisten (ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md).
+- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, muss die Endpunktkonfiguration für die VM eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
+- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, dürfen Zugriffssteuerungslisten (ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 - Bei VMs, die mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurden, muss die eingehende NAT-Regelkonfiguration für die VM den eingehenden Verkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
-- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md).
+- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../articles/virtual-network/virtual-networks-nsg.md).
 
 Wenn der virtuelle Computer oder der Endpunkt Mitglied einer Gruppe mit Lastenausgleich ist:
 
@@ -84,7 +84,7 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 
 ## Problembehandlung bei Endpunktverbindungen
 
-Wenn Probleme beim Verbinden mit einem Endpunkt, z. B. Remotedesktop-Endpunkt, auftreten, können Sie die folgenden allgemeinen Schritte zur Fehlerbehebung ausprobieren:
+Wenn Probleme beim Verbinden mit einem Endpunkt, z. B. Remotedesktop-Endpunkt, auftreten, können Sie die folgenden allgemeinen Schritte zur Fehlerbehebung ausprobieren:
 
 - Neustarten des virtuellen Computers
 - Neuerstellen des Endpunkts
@@ -98,8 +98,8 @@ Weitere Informationen finden Sie unter [Problembehandlung bei Endpunktverbindung
 
 ## Zusätzliche Ressourcen
 
-[Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md)
+[Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-[Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md)
+[Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016"  
+	ms.date="03/11/2016"  
 	ms.author="xpouyat"/>
 
 #Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit
@@ -59,7 +59,7 @@ Mit dieser Lizenz bietet Microsoft ein Smooth Streaming Client Porting Kit und d
 
 ####Gebührenstruktur
 
-Eine einmalige Lizenzgebühr von 50.000 US-Dollar ermöglicht den Zugriff auf Smooth Streaming Client Porting Kit.
+Eine einmalige Lizenzgebühr von 50.000 US-Dollar ermöglicht den Zugriff auf Smooth Streaming Client Porting Kit.
 
 ###Finale Produktlizenz für das Microsoft Smooth Streaming Client Porting Kit
 
@@ -69,8 +69,8 @@ Mit dieser Lizenz bietet Microsoft alle erforderlichen Schutz- und Urheberrechte
 
 Finale Smooth Streaming Client-Produkte werden mit dem folgenden Lizenzmodell angeboten:
 
-- 0,10 US-Dollar pro gelieferte Geräteimplementierung
-- Die Lizenz ist pro Jahr auf 50.000 US-Dollar begrenzt.
+- 0,10 US-Dollar pro gelieferte Geräteimplementierung
+- Die Lizenz ist pro Jahr auf 50.000 US-Dollar begrenzt.
 - Für die ersten 10.000 Geräteimplementierungen im Jahr fällt keine Lizenzgebühr an. 
 
 ##Lizenzierungsverfahren und SSPK-Zugriff
@@ -93,6 +93,7 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 - AVC Multimedia Software Co., Ltd.
 - EchoStar Purchasing Corporation
 - Enseo, Inc.
+- Fluendo S.A.
 - Guangdong OPPO Mobile Telecommunications Corp., Ltd.
 - HANDAN BroadInfoCom Co., Ltd.
 - Infomir GMBH
@@ -106,6 +107,7 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 - Research In Motion Limited
 - Saffron Digital Limited
 - Sichuan Changhong Electric Co., Ltd
+- SoftAtHome
 - Tatung Technology Inc.
 - Vestel Elektronik Sanayi ve Ticaret A.S.
 - VisualOn, Inc.
@@ -127,6 +129,8 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 - EchoStar Purchasing Corporation
 - Enseo, Inc.
 - Filmflex Movies Limited
+- Fluendo S.A.
+- Gibson Innovations Limited
 - Guangdong OPPO Mobile Telecommunications Corp., Ltd.
 - HANDAN BroadInfoCom Co., Ltd.
 - Hisense International Co., Ltd
@@ -154,7 +158,6 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 - Virgin Media Limited
 - VIZIO, Inc.
 - Wistron Corporation
-- WOOX Innovations Limited
 - ZTE Corporation
 
 ##Media Services-Lernpfade
@@ -165,4 +168,4 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

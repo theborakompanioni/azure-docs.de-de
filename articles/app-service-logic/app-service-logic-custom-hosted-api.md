@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Aufrufen einer benutzerdefinierten API in Logik-Apps" 
-	description="Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps" 
-	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
-	editor="" 
-	services="app-service\logic" 
+<properties
+	pageTitle="Aufrufen einer benutzerdefinierten API in Logik-Apps"
+	description="Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps"
+	authors="stepsic-microsoft-com"
+	manager="dwrede"
+	editor=""
+	services="app-service\logic"
 	documentationCenter=""/>
 
 <tags
 	ms.service="app-service-logic"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
-	ms.devlang="na"	
+	ms.devlang="na"
 	ms.topic="article"
 	ms.date="02/23/2016"
 	ms.author="stepsic"/>
-	
+
 # Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps
 
 Zwar weisen Logik-Apps einen umfangreichen Satz von mehr als 40 Connectors für eine Vielzahl von Diensten auf. Trotzdem möchten Sie unter Umständen Ihre eigene benutzerdefinierte API aufrufen, die Ihren eigenen Code ausführen kann. Die einfachste und am besten skalierbare Methode zum Hosten Ihrer eigenen benutzerdefinierten Web-APIs ist die Verwendung von App Service. In diesem Artikel wird beschrieben, wie Sie eine Web-API aufrufen, die in einer App Service-API-App, einer Web-App oder einer mobilen App gehostet wird.
@@ -37,13 +37,13 @@ Wenn Sie Ihre API schützen möchten, gibt es verschiedene Möglichkeiten:
 1. Keine Codeänderung erforderlich: Azure Active Directory kann verwendet werden, um ohne Änderung des Codes oder ohne eine erneute Bereitstellung Ihre API zu schützen.
 1. Erzwingen Sie die Standardauthentifizierung, die AAD-Authentifizierung oder die Zertifikatauthentifizierung im Code der API.
 
-## Sichern der Aufrufe Ihrer API ohne eine Änderung des Codes 
+## Sichern der Aufrufe Ihrer API ohne eine Änderung des Codes
 
 In diesem Abschnitt erstellen Sie zwei Azure Active Directory-Anwendungen – eine für Ihre Logik-App und eine für Ihre Web-App. Sie authentifizieren Aufrufe Ihrer Web-App mit dem Dienstprinzipal (Client-ID und geheimer Schlüssel), der der AAD-Anwendung für die Logik-App zugeordnet ist. Schließlich nehmen Sie die Anwendungs-IDs in die Definition der Logik-App auf.
 
 ### Teil 1: Einrichten einer Anwendungsidentität für Ihre Logik-App
 
-Auf diese Weise wird die Logik-App bei Active Directory authentifiziert. Sie *müssen* dies nur einmal für Ihr Verzeichnis ausführen. Sie können z. B. die gleiche Identität für alle Logik-Apps verwenden, Sie könnten bei Bedarf aber auch pro Logik-App eindeutige Identitäten erstellen. Sie können dies in der Benutzeroberfläche oder mithilfe von PowerShell durchführen.
+Auf diese Weise wird die Logik-App bei Active Directory authentifiziert. Sie *müssen* dies nur einmal für Ihr Verzeichnis ausführen. Sie können z. B. die gleiche Identität für alle Logik-Apps verwenden, Sie könnten bei Bedarf aber auch pro Logik-App eindeutige Identitäten erstellen. Sie können dies in der Benutzeroberfläche oder mithilfe von PowerShell durchführen.
 
 #### Erstellen der Anwendungsidentität mithilfe des klassischen Azure-Portals
 
@@ -71,12 +71,12 @@ Wenn Ihre Web-App bereits bereitgestellt wurde, können Sie sie einfach im Porta
 #### Aktivieren der Autorisierung im Azure-Portal
 
 1. Navigieren Sie zur Web-App, und klicken Sie in der Befehlsleiste auf **Einstellungen**.
-2. Klicken Sie auf **Autorisierung/Authentifizierung**. 
+2. Klicken Sie auf **Autorisierung/Authentifizierung**.
 3. **Aktivieren** Sie sie.
 
-An diesem Punkt wird eine Anwendung automatisch für Sie erstellt. Sie benötigen die Client-ID dieser Anwendung für Teil 3, daher müssen Sie folgende Schritte ausführen:
+An diesem Punkt wird eine Anwendung automatisch für Sie erstellt. Sie benötigen die Client-ID dieser Anwendung für Teil 3, daher müssen Sie folgende Schritte ausführen:
 
-1. Wechseln Sie zu [Active Directory im klassischen Azure-Portal](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory), und wählen Sie Ihr Verzeichnis aus. 
+1. Wechseln Sie zu [Active Directory im klassischen Azure-Portal](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory), und wählen Sie Ihr Verzeichnis aus.
 2. Suchen Sie mit dem Suchfeld nach der App.
 3. Klicken Sie in der Liste darauf.
 4. Klicken Sie auf die Registerkarte **Konfigurieren**.
@@ -84,7 +84,7 @@ An diesem Punkt wird eine Anwendung automatisch für Sie erstellt. Sie benötige
 
 #### Bereitstellen Ihrer Web-App mit einer ARM-Vorlage
 
-Zunächst müssen Sie eine Anwendung für Ihre Web-App erstellen. Dies sollte eine andere Anwendung sein als die, die für Ihre Logik-App verwendet wird. Folgen Sie den Schritten in Teil 1 oben, verwenden Sie aber nun für **HomePage** und **IdentifierUris** den tatsächlichen Wert für https://**URL** der Web-App.
+Zunächst müssen Sie eine Anwendung für Ihre Web-App erstellen. Dies sollte eine andere Anwendung sein als die, die für Ihre Logik-App verwendet wird. Folgen Sie den Schritten in Teil 1 oben, verwenden Sie aber nun für **HomePage** und **IdentifierUris** den tatsächlichen Wert für https://**URL** der Web-App.
 
 >[AZURE.NOTE]Wenn Sie die Anwendung für Ihre Web-App erstellen, müssen Sie das [klassische Azure-Portal](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) verwenden, da mit dem PowerShell-Cmdlet die erforderlichen Berechtigungen zum Anmelden von Benutzern bei einer Website nicht eingerichtet werden.
 
@@ -110,7 +110,9 @@ Sobald Sie über die Client-ID und die Mandanten-ID verfügen, nehmen Sie Folgen
 ]
 ```
 
-Um eine Bereitstellung automatisch auszuführen, mit der gleichzeitig eine leere Web-App und eine Logik-App bereitgestellt werden, die AAD verwenden, klicken Sie auf die folgende Schaltfläche: [![Bereitstellen in Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+Um eine Bereitstellung automatisch auszuführen, mit der gleichzeitig eine leere Web-App und eine Logik-App bereitgestellt werden, die AAD verwenden, klicken Sie auf die folgende Schaltfläche:
+
+[![Bereitstellen in Azure](./media/app-service-logic-custom-hosted-api/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 Die vollständige Vorlage finden Sie unter [Logik-App ruft eine benutzerdefinierte API auf, die in App Service gehostet und von AAD geschützt wird](https://github.com/Azure/azure-quickstart-templates/blob/master/201-logic-app-custom-api/azuredeploy.json).
 
@@ -124,8 +126,8 @@ Der Abschnitt für die **Autorisierung** der **HTTP**-Aktion: `{"tenant":"<<tena
 | type | Die Art der Authentifizierung. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert "ActiveDirectoryOAuth". |
 | tenant | Die Mandanten-ID zum Identifizieren des AD-Mandanten. |
 | audience | Erforderlich. Die Ressource, mit der Sie eine Verbindung herstellen. |
-| clientID | Die Client-ID für die Azure AD-Anwendung. |
-| secret | Erforderlich. Der geheime Schlüssel des Clients, der das Token anfordert. | 
+| clientID | Die Client-ID für die Azure AD-Anwendung. |
+| secret | Erforderlich. Der geheime Schlüssel des Clients, der das Token anfordert. |
 
 In der obigen Vorlage ist dies bereits eingerichtet, aber wenn Sie die Logik-App direkt erstellen, müssen Sie den gesamten Abschnitt für die Autorisierung aufnehmen.
 
@@ -145,7 +147,7 @@ Im Abschnitt für die *Autorisierung* sollten Sie Folgendes angeben: `{"type": "
 
 ### Standardauthentifizierung
 
-Mit der Standardauthentifizierung (z. B. Benutzername und Kennwort) können Sie die eingehenden Anforderungen überprüfen. Die Standardauthentifizierung ist ein gängiges Muster, und Sie können sie in jeder beliebigen Sprache verwenden, in der Sie Ihre App erstellen.
+Mit der Standardauthentifizierung (z. B. Benutzername und Kennwort) können Sie die eingehenden Anforderungen überprüfen. Die Standardauthentifizierung ist ein gängiges Muster, und Sie können sie in jeder beliebigen Sprache verwenden, in der Sie Ihre App erstellen.
 
 Im Abschnitt für die *Autorisierung* sollten Sie Folgendes angeben: `{"type": "basic","username": "test","password": "test"}`.
 
@@ -154,15 +156,15 @@ Im Abschnitt für die *Autorisierung* sollten Sie Folgendes angeben: `{"type": "
 | type | Erforderlich. Die Art der Authentifizierung. Für die Standardauthentifizierung muss der Wert "basic" lauten. |
 | username | Erforderlich. Der zu authentifizierende Benutzername. |
 | password | Erforderlich. Das zu authentifizierende Kennwort. |
- 
+
 ### Verarbeiten der AAD-Authentifizierung im Code
 
-Standardmäßig führt die Azure Active Directory-Authentifizierung, die Sie im Portal aktivieren, keine fein abgestufte Autorisierung durch. Die API wird z. B. nicht auf einen bestimmten Benutzer oder eine App festgelegt, sondern nur auf einen bestimmten Mandanten.
+Standardmäßig führt die Azure Active Directory-Authentifizierung, die Sie im Portal aktivieren, keine fein abgestufte Autorisierung durch. Die API wird z. B. nicht auf einen bestimmten Benutzer oder eine App festgelegt, sondern nur auf einen bestimmten Mandanten.
 
-Wenn Sie die API z. B. im Code nur auf die Logik-App einschränken möchten, können Sie den Header extrahieren, der das JWT enthält, und überprüfen, wer der Aufrufer ist, und dabei die nicht übereinstimmenden Anforderungen zurückweisen.
+Wenn Sie die API z. B. im Code nur auf die Logik-App einschränken möchten, können Sie den Header extrahieren, der das JWT enthält, und überprüfen, wer der Aufrufer ist, und dabei die nicht übereinstimmenden Anforderungen zurückweisen.
 
 Wenn Sie dies darüber hinaus vollständig in Ihrem eigenen Code implementieren möchten, ohne die Portal-Funktion zu nutzen, können Sie den folgenden Artikel lesen: [Verwenden von Active Directory für die Authentifizierung in Azure App Service](../app-service-web/web-sites-authentication-authorization.md).
 
 Sie müssen dennoch die obigen Schritte ausführen, um die Anwendungsidentität für Ihre Logik-App zu erstellen und diese zum Aufrufen der API zu verwenden.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

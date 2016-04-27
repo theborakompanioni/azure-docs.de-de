@@ -2,8 +2,9 @@
 	pageTitle="Übersicht über Aufträge für die elastische Datenbank | Microsoft Azure" 
 	description="Veranschaulicht den Dienst für elastische Datenbankaufträge" 
 	metaKeywords="azure sql database elastic databases" 
-	services="sql-database" documentationCenter=""  
-	manager="jeffreyg" 
+	services="sql-database" 
+    documentationCenter=""  
+	manager="jhubbard" 
 	authors="ddove"/>
 
 <tags 
@@ -17,7 +18,7 @@
 
 # Übersicht über Aufträge für die elastische Datenbank
 
-Das Feature **Aufträge für die elastische Datenbank** (Vorschau) ermöglicht das zuverlässige Ausführen eines Transact-SQL (T-SQL)-Skripts oder das Anwenden eines DACPAC ([Datenschichtanwendung](https://msdn.microsoft.com/library/ee210546.aspx)) auf eine Gruppe von Datenbanken. Dies schließt Folgendes mit ein:
+Das Feature **Aufträge für die elastische Datenbank** (Vorschau) ermöglicht das zuverlässige Ausführen eines Transact-SQL (T-SQL)-Skripts oder das Anwenden eines DACPAC ([Datenschichtanwendung](https://msdn.microsoft.com/library/ee210546.aspx)) auf eine Gruppe von Datenbanken. Dies schließt Folgendes mit ein:
 
 * Eine benutzerdefinierte Sammlung von Datenbanken (siehe Erläuterung weiter unten)
 * Alle Datenbanken in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md)
@@ -25,7 +26,7 @@ Das Feature **Aufträge für die elastische Datenbank** (Vorschau) ermöglicht d
  
 Anweisungen zum Installieren finden Sie unter [Installieren der Komponente für elastische Datenbankaufträge](sql-database-elastic-jobs-service-installation.md). Siehe auch [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md).
 
-**Aufträge für die elastische Datenbank** stellen derzeit einen vom Kunden gehosteten Azure-Clouddienst dar, der die Ad-hoc-Ausführung und die geplante Ausführung von Verwaltungsaufgaben (**Aufträgen**) ermöglicht. Mithilfe von Aufträgen lassen sich große Gruppen von Azure SQL-Datenbanken durch Ausführen von Transact-SQL-Skripts für administrative Vorgänge problemlos und zuverlässig verwalten.
+**Aufträge für die elastische Datenbank** stellen derzeit einen vom Kunden gehosteten Azure-Clouddienst dar, der die Ad-hoc-Ausführung und die geplante Ausführung von Verwaltungsaufgaben (**Aufträgen**) ermöglicht. Mithilfe von Aufträgen lassen sich große Gruppen von Azure SQL-Datenbanken durch Ausführen von Transact-SQL-Skripts für administrative Vorgänge problemlos und zuverlässig verwalten.
 
 ![Dienst für elastische Datenbankaufträge][1]
 
@@ -38,14 +39,14 @@ Anweisungen zum Installieren finden Sie unter [Installieren der Komponente für 
 * Bereitstellen einer Anwendung auf Datenebene (DACPAC)
 * Automatische Wiederholungsversuche beim Ausführen von Skripts
 * Definieren von Ausführungszeitplänen
-* Aggregieren von Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzelnen Zieltabelle
+* Aggregieren von Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzelnen Zieltabelle
 
-> [AZURE.NOTE] Im Azure-Portal steht nur eine eingeschränkte Anzahl von Funktionen für elastische SQL Azure-Pools zur Verfügung. Verwenden Sie die PowerShell-APIs, um auf den gesamten aktuell verfügbaren Funktionsumfang zuzugreifen.
+> [AZURE.NOTE] Im Azure-Portal steht nur eine eingeschränkte Anzahl von Funktionen für elastische SQL Azure-Pools zur Verfügung. Verwenden Sie die PowerShell-APIs, um auf den gesamten aktuell verfügbaren Funktionsumfang zuzugreifen.
 
 ## Szenarien
 
-* Aufgaben mit hohem Leistungsaufwand, wie z. B. die Bereitstellung eines neuen Schemas
-* Aktualisieren von Verweisdaten, z. B. gemeinsamer Produktinformationen für alle Datenbanken, auch unter Verwendung von Zeitplänen, um die Aktualisierungen wochentäglich nach Büroschluss zu automatisieren.
+* Aufgaben mit hohem Leistungsaufwand, wie z. B. die Bereitstellung eines neuen Schemas
+* Aktualisieren von Verweisdaten, z. B. gemeinsamer Produktinformationen für alle Datenbanken, auch unter Verwendung von Zeitplänen, um die Aktualisierungen wochentäglich nach Büroschluss zu automatisieren.
 * Neuerstellung von Indizes zum Verbessern der Abfrageleistung. Für die Neuerstellung kann die Ausführung für eine gesamte Sammlung von Datenbanken auf wiederkehrender Basis konfiguriert werden, etwa in Zeiten mit geringer Auslastung.
 * Sammlung von Abfrageergebnissen aus einer Menge von Datenbanken in einer zentralen Tabelle auf fortlaufender Grundlage. Leistungsabfragen können fortlaufend ausgeführt werden und für die Auslösung der Ausführung weiterer Aufgaben konfiguriert werden.
 * Ausführung von Abfragen zur Datenverarbeitung mit längerer Laufzeit für eine große Anzahl von Datenbanken, z. B. bei der Sammlung von Kundentelemetrie. Die Ergebnisse werden zur weiteren Analyse in einer einzelnen Zieltabelle gesammelt.
@@ -124,4 +125,6 @@ Es gibt mehrere Typen von Auftragsaufgaben, die die Ausführung von Aufträgen a
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0224_2016-->
+ 
+
+<!---HONumber=AcomDC_0413_2016-->

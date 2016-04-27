@@ -1,6 +1,6 @@
 <properties
-	 pageTitle="Aktivieren des CDN (Content Delivery Network) für Azure"
-	 description="Dieses Thema zeigt, wie Sie das Content Delivery Network (CDN) für Azure aktivieren."
+	 pageTitle="Gewusst wie: Verwenden von Azure CDN"
+	 description="Dieses Thema zeigt, wie Sie das Content Delivery Network (CDN) für Azure aktivieren. Das Tutorial enthält ausführliche Informationen zur Erstellung eines neuen CDN-Profils und -Endpunkts."
 	 services="cdn"
 	 documentationCenter=""
 	 authors="camsoper"
@@ -12,14 +12,14 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="02/25/2016" 
+	 ms.date="04/15/2016" 
 	 ms.author="casoper"/>
 
+# Gewusst wie: Verwenden von Azure CDN  
 
+CDN kann im [Azure-Portal](https://portal.azure.com) aktiviert werden. Es werden verschiedene integrierte Azure-Ursprünge unterstützt, darunter Web-Apps, Blob Storage und Cloud Storage. Sie können das CDN auch für Ihre Azure Media Services-Streamingendpunkte aktivieren. Wenn der Ursprung keiner dieser Azure-Dienste ist oder an anderer Stelle außerhalb von Azure gehostet wird, können Sie einen benutzerdefinierten Ursprung erstellen. Sobald Sie einen CDN-Endpunkt für Ihren Ursprung aktivieren, kommen alle öffentlich verfügbaren Objekte für das CDN-Edgecaching in Frage.
 
-#Aktivieren des Content Delivery Network (CDN, Netzwerk für die Inhaltsübermittlung) für Azure  
-
-Das CDN kann für Ihren Ursprung über das Azure-Verwaltungsportal aktiviert werden. Es werden verschiedene integrierte Azure-Ursprünge unterstützt, darunter Web-Apps, Blob Storage und Cloud Storage. Sie können das CDN auch für Ihre Azure Media Services-Streamingendpunkte aktivieren. Wenn der Ursprung keiner dieser Azure-Dienste ist oder an anderer Stelle außerhalb von Azure gehostet wird, können Sie auch einen benutzerdefinierten Ursprung erstellen. Sobald Sie einen CDN-Endpunkt für Ihren Ursprung aktivieren, kommen alle öffentlich verfügbaren Objekte für das CDN-Edgecaching in Frage.
+>[AZURE.NOTE] Eine Einführung in die Funktionsweise von CDN sowie eine Liste der Features finden Sie in der [Übersicht über CDN](./cdn-overview.md).
 
 ## Erstellen eines neuen CDN-Profils
 
@@ -32,7 +32,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 **So erstellen Sie ein neues CDN-Profil**
 
-1. Klicken Sie im [Azure-Verwaltungsportal](https://portal.azure.com) oben links auf **Neu**. Wählen Sie auf dem Blatt **Neu** erst **Medien + CDN** und dann **CDN** aus.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) oben links auf **Neu**. Wählen Sie auf dem Blatt **Neu** erst **Medien + CDN** und dann **CDN** aus.
 
     Das Blatt für das neue CDN-Profil wird angezeigt.
 
@@ -54,7 +54,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 **So erstellen Sie einen neuen CDN-Endpunkt für das Speicherkonto**
 
-1. Navigieren Sie im [Azure-Verwaltungsportal](https://portal.azure.com) zu Ihrem CDN-Profil. Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet. Andernfalls können Sie es ermitteln, indem Sie auf **Durchsuchen**, auf **CDN-Profile** und dann auf das Profil klicken, dem Sie den Endpunkt hinzufügen möchten.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil. Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet. Andernfalls können Sie es ermitteln, indem Sie auf **Durchsuchen**, auf **CDN-Profile** und dann auf das Profil klicken, dem Sie den Endpunkt hinzufügen möchten.
 
     Das Blatt für das CDN-Profil wird angezeigt.
 
@@ -68,19 +68,24 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
     ![Blatt „Endpunkt hinzufügen“][cdn-add-endpoint]
 
-3. Geben Sie einen **Namen** für diesen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf die zwischengespeicherten Ressourcen in der Domäne `<EndpointName>.azureedge.net` verwendet.
+3. Geben Sie einen **Namen** für diesen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf die zwischengespeicherten Ressourcen in der Domäne `<endpointname>.azureedge.net` verwendet.
 
 4. Wählen Sie in der Dropdownliste **Ursprungstyp** Ihren Ursprungstyp aus.
 
 	![CDN-Ursprung](./media/cdn-create-new-endpoint/cdn-origin-type.png)
 
-5. Wählen Sie in der Dropdownliste **Ursprungshostname** Ihre Ursprungsdomäne aus, bzw. geben Sie sie ein. In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben. Bei Auswahl von *Benutzerdefinierter Ursprung* als **Ursprungstyp** geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein.
+5. Wählen Sie in der Dropdownliste **Ursprungshostname** Ihre Ursprungsdomäne aus, bzw. geben Sie sie ein. In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben. Bei Auswahl von *Benutzerdefinierter Ursprung* als **Ursprungstyp** geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein.
 
-6. Geben Sie im Textfeld **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern aller Ressourcen in der Domäne zuzulassen, die Sie in Schritt 5 angegeben haben.
+6. Geben Sie im Textfeld **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern aller Ressourcen in der Domäne zuzulassen, die Sie in Schritt 5 angegeben haben.
 
 7. Geben Sie unter **Header des Ursprungshosts** den Hostheader ein, den das CDN bei jeder Anforderung senden soll, oder übernehmen Sie den Standardwert.
 
 8. Geben Sie unter **Protokoll** und **Ursprungsport** die Protokolle und Ports an, über die auf die Ressourcen am Ursprung zugegriffen werden soll. Die Clients nutzen weiterhin dieselben Protokolle und Ports für den Zugriff auf Ressourcen im CDN. Sie müssen mindestens ein Protokoll (HTTP oder HTTPS) auswählen.
+	
+	> [AZURE.TIP] Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
+	> 
+	> - Sie müssen das vom CDN bereitgestellte Zertifikat verwenden. Zertifikate von Drittanbietern werden nicht unterstützt.
+	> - Sie müssen die vom CDN bereitgestellte Domäne (`<identifier>.azureedge.net`) verwenden, um auf HTTPS-Inhalte zuzugreifen. HTTPS-Unterstützung ist für benutzerdefinierte Domänennamen (CNAMEs) nicht verfügbar, da das CDN derzeit keine benutzerdefinierten Zertifikate unterstützt.
 
 9. Klicken Sie auf die Schaltfläche **Hinzufügen**, um den neuen Endpunkt zu erstellen.
 
@@ -88,10 +93,12 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
     ![CDN-Endpunkt][cdn-endpoint-success]
 
-    > [AZURE.NOTE] Der Endpunkt kann nicht sofort verwendet werden. Es dauert bis zu 90 Minuten, bis die Registrierung über das CDN-Netzwerk weitergegeben wurde. Benutzer, die den CDN-Domänennamen sofort zu verwenden versuchen, sehen u. U. den Statuscode 404, bis die Inhalte über das CDN verfügbar sind.
+    > [AZURE.NOTE] Der Endpunkt kann nicht sofort verwendet werden. Es dauert bis zu 90 Minuten, bis die Registrierung über das CDN-Netzwerk weitergegeben wurde. Benutzer, die den CDN-Domänennamen sofort zu verwenden versuchen, sehen u. U. den Statuscode 404, bis die Inhalte über das CDN verfügbar sind.
 
 ##Weitere Informationen
-- [Zuordnen von CDN-Inhalten (Content Delivery Network) zu einer benutzerdefinierten Domäne](cdn-map-content-to-custom-domain.md)
+- [Steuern des Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen](cdn-query-string.md)
+- [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](cdn-map-content-to-custom-domain.md)
+- [Vorabladen von Assets auf einen Azure CDN-Endpunkt](cdn-preload-endpoint.md)
 - [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
 
 [new-cdn-profile]: ./media/cdn-create-new-endpoint/cdn-new-profile.png
@@ -100,4 +107,4 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

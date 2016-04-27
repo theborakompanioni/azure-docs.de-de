@@ -1,9 +1,9 @@
 <properties
 	pageTitle="Python-Web- und Workerrollen mit Python Tools 2.2 für Visual Studio | Microsoft Azure"
 	description="Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen."
-	services=""
+	services="cloud-services"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="thraka"
 	manager="wpickett"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="python"
 	ms.topic="hero-article"
 	ms.date="08/30/2015"
-	ms.author="huvalo"/>
+	ms.author="adegeo"/>
 
 
 
@@ -38,7 +38,7 @@ Azure bietet drei Computemodelle für das Ausführen von Anwendungen: [Web-Apps-
 
 Weitere Informationen finden Sie unter [Was ist ein Cloud-Dienst?].
 
-> [AZURE.NOTE]*Möchten Sie eine einfache Website erstellen?* Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die Verwendung des einfachen Web-Apps-Features von Azure App Service in Betracht ziehen. Sie können einen Cloud-Dienst leicht upgraden, wenn die Website größer wird und sich Ihre Anforderungen ändern. Im <a href="/develop/python/">Python Developer Center</a> finden Sie Artikel zur Entwicklung des Web-Apps-Features von Azure App Service. <br />
+> [AZURE.NOTE] *Möchten Sie eine einfache Website erstellen?* Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die Verwendung des einfachen Web-Apps-Features von Azure App Service in Betracht ziehen. Sie können einen Cloud-Dienst leicht upgraden, wenn die Website größer wird und sich Ihre Anforderungen ändern. Im <a href="/develop/python/">Python Developer Center</a> finden Sie Artikel zur Entwicklung des Web-Apps-Features von Azure App Service. <br />
 
 
 ## Projekterstellung
@@ -114,17 +114,17 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 
 <!--Link references-->
 
-[Was ist ein Cloud-Dienst?]: /manage/services/cloud-services/what-is-a-cloud-service/
-[execution model-web sites]: fundamentals-application-models.md#WebSites
-[execution model-vms]: fundamentals-application-models.md#VMachine
-[execution model-cloud services]: fundamentals-application-models.md#CloudServices
+[Was ist ein Cloud-Dienst?]: ./cloud-services/cloud-services-choose-me.md
+[execution model-web sites]: ./app-service-web/app-service-web-overview.md
+[execution model-vms]: ./virtual-machines/virtual-machines-windows-about.md
+[execution model-cloud services]: ./cloud-services/cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blobdienst]: storage-python-how-to-use-blob-storage.md
-[Warteschlangendienst]: storage-python-how-to-use-queue-storage.md
-[Tabellendienst]: storage-python-how-to-use-table-storage.md
-[Service Bus-Warteschlangen]: service-bus-python-how-to-use-queues.md
-[Service Bus-Themen]: service-bus-python-how-to-use-topics-subscriptions.md
+[Blobdienst]: ./storage/storage-python-how-to-use-blob-storage.md
+[Warteschlangendienst]: ./storage/storage-python-how-to-use-queue-storage.md
+[Tabellendienst]: ./storage/storage-python-how-to-use-table-storage.md
+[Service Bus-Warteschlangen]: ./service-bus/service-bus-python-how-to-use-queues.md
+[Service Bus-Themen]: ./service-bus/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
@@ -138,4 +138,4 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 [Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0420_2016-->

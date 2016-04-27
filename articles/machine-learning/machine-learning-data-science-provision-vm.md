@@ -92,7 +92,7 @@ Nach der VM-Erstellung können Sie sich mithilfe von Remotedesktop mit den Anmel
 
 Sobald Ihre VM erstellt und bereitgestellt wurde, können Sie beginnen, die installierten und konfigurierten Tools zu verwenden. Für viele der Tools gibt es Desktopsymbole und Kacheln im Startmenü.
 
-## Erstellen eines sicheren Kennworts für den Jupyter Notebook-Server 
+##Erstellen eines sicheren Kennworts für den Jupyter Notebook-Server 
 
 Führen Sie den folgenden Befehl über die Befehlszeile der Data Science Virtual Machine aus, um Ihr eigenes sicheres Kennwort für den darauf installierten Jupyter Notebook-Server zu erstellen.
 
@@ -150,4 +150,4 @@ Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 * Erfahren Sie, wie Sie mithilfe des [Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) systematisch vollständige Analyselösungen erstellen.
 * Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com), um Anwendungsbeispiele der Cortana Intelligence Suite für die Bereiche Machine Learning und Data Analytics zu erhalten. Für den einfachen Zugriff haben wir auch ein Symbol auf dem Desktop und im Startmenü der virtuellen Maschine bereitgestellt. 
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

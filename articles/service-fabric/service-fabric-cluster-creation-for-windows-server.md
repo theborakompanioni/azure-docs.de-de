@@ -19,7 +19,7 @@
 
 # Erstellen eines Azure Service Fabric-Clusters – lokal oder in der Cloud
 
-Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf beliebigen VMs oder Computern, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer befinden, auf denen Windows Server ausgeführt wird. Service Fabric bietet ein Setuppaket zum Erstellen solcher Service Fabric-Cluster.
+Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf beliebigen VMs oder Computern, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer befinden, auf denen Windows Server ausgeführt wird. Service Fabric bietet ein Setuppaket zum Erstellen solcher Service Fabric-Cluster.
 
 Dieser Artikel führt Sie durch die Schritte zum lokalen Erstellen eines Clusters mithilfe des eigenständigen Pakets für Service Fabric, doch es kann mühelos für jede andere Umgebung angepasst werden, z. B. andere Clouds.
 
@@ -50,9 +50,8 @@ Voraussetzungen für jeden Computer, den Sie dem Cluster hinzufügen möchten:
 - Mindestens 2 GB RAM empfohlen
 - Netzwerkkonnektivität – Stellen Sie sicher, dass die Computer sich in einem sicheren Netzwerk/in sicheren Netzwerken befinden.
 - Windows Server 2012 R2 oder Windows Server 2012 (hierfür müssen Sie KB2858668 installiert haben).
-- .NET Framework 4.5.1 oder höher, vollständig installiert
+- .NET Framework 4.5.1 oder höher, vollständig installiert
 - Windows PowerShell 3.0
-- Visual C++ 2012 (VC++ 11.0) Redistributable Package
 - Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer Administratorrechte besitzen.
 
 ### Schritt 3: Bestimmen der anfänglichen Clustergröße
@@ -91,7 +90,7 @@ Nachdem Sie die oben im Planungs- und Vorbereitungsabschnitt beschriebenen Schri
 
 |**Konfigurationseinstellung**|**Beschreibung**|
 |-----------------------|--------------------------|
-|NodeTypes|Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale. <br> *Name* – Dies ist der Name des Knotentyps. <br>*EndPoints* – Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Größen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem Computer/der VM verwendet wird. <br> *PlacementProperties* – Eigenschaften für diesen Knotentyp, die Sie dann als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften: Vorhandensein einer Festplatte oder Grafikkarte am Knoten, Spindelanzahl des Festplattenlaufwerks, Kerne und andere physische Eigenschaften. <br> *Capacities* – Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen platziert werden.|
+|NodeTypes|Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale. <br> *Name* – Dies ist der Name des Knotentyps. <br>*EndPoints* – Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Größen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem Computer/der VM verwendet wird. <br> *PlacementProperties* – Eigenschaften für diesen Knotentyp, die Sie dann als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften: Vorhandensein einer Festplatte oder Grafikkarte am Knoten, Spindelanzahl des Festplattenlaufwerks, Kerne und andere physische Eigenschaften. <br> *Capacities* – Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen platziert werden.|
 |Nodes|Die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br> Wenn Sie die gleichen IP-Adressen für alle Knoten verwenden, wird ein One-Box-Cluster erstellt, den Sie für Testzwecke verwenden können. One-Box-Cluster sollten nicht zur Bereitstellung von Produktions-Workloads verwendet werden.|
 
 ### Schritt 2: Ausführen des Clustererstellungsskripts
@@ -100,7 +99,7 @@ Sobald Sie die Clusterkonfiguration im JSON-Dokument geändert und alle Knotenin
 Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, kann, muss jedoch nicht Teil des Clusters sein.
 
 ```
-C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590> .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\ClusterConfig.JSON -MicrosoftServiceFabricCabFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\MicrosoftAzureServiceFabric.cab
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\ClusterConfig.JSON -MicrosoftServiceFabricCabFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\MicrosoftAzureServiceFabric.cab
 ```
 
 ## Nächste Schritte
@@ -115,4 +114,4 @@ Lesen Sie die folgenden Dokumente zur Vorbereitung auf die ersten Schritte der E
 Weitere Informationen über Azure-Cluster und eigenständige Cluster finden Sie unter:
 - [Umgebungsunabhängige Bereitstellung (Deploy Anywhere) unter Windows Server und Linux mit Service Fabric](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

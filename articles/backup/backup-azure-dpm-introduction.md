@@ -23,7 +23,7 @@
 - [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 - [System Center DPM](backup-azure-dpm-introduction.md)
 
-Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Backup zum Schutz von DPM-Servern und -Workloads (System Center Data Protection Manager). In diesem Artikel erfahren Sie Folgendes:
+Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Backup zum Schutz von DPM-Servern und -Workloads (System Center Data Protection Manager). In diesem Artikel lernen Sie Folgendes:
 
 - Funktionsweise der Azure DPM-Serversicherung
 - Voraussetzungen für eine reibungslose Sicherung
@@ -93,4 +93,4 @@ Diese werden nicht unterstützt:
 
 >[AZURE.NOTE] Ab System Center 2012 DPM mit SP1 können Sie Workloads, die von DPM geschützt werden, in Azure mithilfe von Microsoft Azure Backup sichern.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

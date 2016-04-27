@@ -1,4 +1,12 @@
-<properties pageTitle="Überwachen der Datenbankleistung in Azure SQL-Datenbank" | Microsoft Azure" description="Hier erfahren Sie mehr über die Optionen zur Überwachung Ihrer Datenbank mit Azure-Tools und dynamischen Verwaltungssichten." keywords="Datenbanküberwachung, Clouddatenbankleistung" services="sql-database" documentationCenter="" authors="carlrabeler" manager="jhubbard" editor=""/>
+<properties
+	pageTitle="Überwachen der Datenbankleistung in Azure SQL-Datenbank | Microsoft Azure"
+	description="Lernen Sie die Optionen zum Überwachen Ihrer Datenbank mithilfe von Azure-Tools und dynamischen Verwaltungssichten kennen."
+	keywords="Datenbanküberwachung, Clouddatenbankleistung"
+	services="sql-database"
+	documentationCenter=""
+	authors="carlrabeler"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
 	ms.service="sql-database"
@@ -35,8 +43,8 @@ Anhand der Leistungsmetriken können Sie auch ermitteln, ob Sie möglicherweise 
 
 Dieselben Metriken, die im Portal bereitgestellt werden, sind auch über Systemsichten verfügbar: [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der logischen **master-Datenbank** Ihres Servers und [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) in der Benutzerdatenbank. Verwenden Sie **sys.resource\_stats**, wenn Sie weniger differenzierte Daten über einen längeren Zeitraum überwachen möchten. Verwenden Sie **sys.dm\_db\_resource\_stats**, wenn Sie differenzierte Daten in einem kürzeren Zeitraum überwachen möchten. Weitere Informationen finden Sie unter [Leitfaden zur Leistung für Azure SQL-Datenbanken](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats).
 
->[AZURE.NOTE] **dm\_db\_resource\_stats** gibt bei Verwendung der eingestellten Web- und Business Edition-Datenbanken ein leeres Resultset zurück.
+>[AZURE.NOTE] **sys.dm\_db\_resource\_stats** gibt bei Verwendung der eingestellten Web- und Business Edition-Datenbanken ein leeres Resultset zurück.
 
 In Pools für elastische Datenbanken können Sie Einzeldatenbanken im Pool mit den in diesem Abschnitt beschriebenen Methoden überwachen. Sie können den Pool jedoch auch als Ganzes überwachen. Informationen dazu finden Sie unter [Erstellen und Verwalten eines elastischen Azure SQL-Datenbankpools](sql-database-elastic-pool-manage-portal.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

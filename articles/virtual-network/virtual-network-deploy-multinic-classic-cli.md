@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Bereitstellen von Multi-NIC-VMs mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell | Microsoft Azure"
    description="Erfahren Sie, wie Sie Multi-NIC-VMs mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell bereitstellen."
    services="virtual-network"
@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Da virtuelle Computer mit nur einer Netzwerkschnittstellenkarte (NIC) zurzeit nicht mit virtuellen Computern mit mehreren Netzwerkschnittstellenkarten im selben Clouddienst vorhanden sein können, werden die Back-End-Server in einem anderen Clouddienst implementiert als die anderen Komponenten im Szenario. In den folgenden Schritten wird der Clouddienst *IaaSStory* für die Hauptressourcen und *IaaSStory-BackEnd* für die Back-End-Server verwendet.
+Derzeit können virtuelle Computer mit einer einzelnen NIC und virtuelle Computer mit mehreren NICs nicht im selben Clouddienst vorhanden sein. Aus diesem Grund müssen Sie die Back-End-Server in einem anderen Clouddienst als alle anderen Komponenten implementieren. In den folgenden Schritten wird der Clouddienst *IaaSStory* für die Hauptressourcen und *IaaSStory-BackEnd* für die Back-End-Server verwendet.
 
 ## Voraussetzungen
 
@@ -41,7 +41,7 @@ Die Back-End-VMs sind auf die Erstellung der im Folgenden aufgelisteten Ressourc
 
 - **Speicherkonto für Datenträger**. Für eine bessere Leistung verwenden die Datenträger auf den Datenbankservern Solid State Drive (SSD)-Technik. Dafür ist ein Storage Premium-Konto erforderlich. Achten Sie darauf, dass der Azure-Speicherort für die Bereitstellung Storage Premium unterstützt.
 - **NICs**. Jeder virtuelle Computer hat zwei Netzwerkkarten, eine für den Datenbankzugriff und eine für die Verwaltung.
-- **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird. 
+- **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
 ### Schritt 1: Starten des Skripts
 
@@ -81,7 +81,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 
 		azure storage account create $prmStorageAccountName \
 		    --location $location \
-		    --type PLRS 
+		    --type PLRS
 
 ### Schritt 3: Erstellen von virtuellen Computern mit mehreren Netzwerkschnittstellenkarten
 
@@ -95,7 +95,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		    nic1Name=$vmNamePrefix$suffixNumber-DA
 		    x=$((suffixNumber+3))
 		    ipAddress1=$ipAddressPrefix$x
-		
+
 		    nic2Name=$vmNamePrefix$suffixNumber-RA
 		    x=$((suffixNumber+53))
 		    ipAddress2=$ipAddressPrefix$x
@@ -117,7 +117,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		    azure vm disk attach-new $vmNamePrefix$suffixNumber \
 		        $diskSize \
 		        vhds/$dataDiskPrefix$suffixNumber$dataDiskName-1.vhd
-		
+
 		    azure vm disk attach-new $vmNamePrefix$suffixNumber \
 		        $diskSize \
 		        vhds/$dataDiskPrefix$suffixNumber$dataDiskName-2.vhd
@@ -174,4 +174,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 		info:    Adding Data-Disk
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

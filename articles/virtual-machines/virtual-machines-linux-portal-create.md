@@ -25,8 +25,6 @@
 Das Erstellen eines virtuellen Azure-Computers (VM), auf dem Linux ausdeführt wird, ist ganz einfach. In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Portal einen solchen virtuellen Computer schnell erstellen können, und es wird anhand der Datei `~/.ssh/id_rsa.pub`, die den öffentlichen Schlüssel enthält, die Konfiguration einer **SSH**-Verbindung zum Schutz Ihres virtuellen Computers gezeigt. Sie können auch mithilfe [eigener Images als Vorlagen](virtual-machines-linux-classic-create-upload-vhd.md) entsprechende virtuelle Linux-Computer erstellen.
 
 
-[AZURE.NOTE] In diesem Lernprogramm wird ein virtueller Azure-Computer erstellt, der über die Azure-Ressourcengruppen-API verwaltet wird. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
-
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
 ## Auswählen des Images
@@ -57,7 +55,7 @@ Nachdem Sie das Image ausgewählt haben, können Sie für den Großteil der Konf
 
 	> [AZURE.NOTE] Außerdem können Sie hier die Authentifizierung mit Benutzername und Kennwort auswählen und die betreffenden Daten eingeben, falls Sie Ihre **SSH**-Sitzung nicht mit dem Austausch eines öffentlichen und privaten Schlüssels schützen möchten.
 
-2. Klicken Sie auf **Größe**, und wählen Sie eine für Ihre Anforderungen geeignete Größe für den virtuellen Computer aus. Für jede Größe sind die Anzahl von Prozessorkernen, der Arbeitsspeicher und andere Features angegeben, wie z. B. Unterstützung für Storage Premium, die sich auf den Preis auswirken. Azure empfiehlt anhand des gewählten Abbilds automatisch bestimmte Größen. Klicken Sie anschließend auf ![Schaltfläche auswählen](media/virtual-machines-linux-portal-create/selectbutton-size.png).
+2. Klicken Sie auf **Größe**, und wählen Sie eine für Ihre Anforderungen geeignete Größe für den virtuellen Computer aus. Für jede Größe sind die Anzahl von Prozessorkernen, der Arbeitsspeicher und andere Features angegeben, wie z. B. Unterstützung für Storage Premium, die sich auf den Preis auswirken. Azure empfiehlt anhand des gewählten Abbilds automatisch bestimmte Größen. Klicken Sie anschließend auf ![Schaltfläche auswählen](media/virtual-machines-linux-portal-create/selectbutton-size.png).
 
 	>[AZURE.NOTE] Storage Premium steht für virtuelle Computer der DS-Reihe in bestimmten Regionen zur Verfügung. Storage Premium ist die beste Speicheroption für datenintensive Workloads wie Datenbanken. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
 
@@ -128,4 +126,4 @@ Weitere Informationen zu Linux auf Azure erhalten Sie unter:
 
 - [Die Docker-Erweiterung für virtuelle Linux-Computer auf Azure](virtual-machines-linux-dockerextension.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

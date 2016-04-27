@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Hinzufügen der Office 365 Users-API zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Office 365-Benutzer-API und REST-API-Parameter"
+	description="Übersicht über die Office 365-Benutzer-API und REST-API-Parameter"
 	services=""	
 	documentationCenter="" 	
 	authors="msftman"	
@@ -17,7 +17,7 @@ ms.workload="integration"
 ms.date="03/16/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Office 365-Benutzer-API
+# Erste Schritte mit der Office 365-Benutzer-API
 
 Stellen Sie eine Verbindung mit der Office 365-Benutzer-API her, um Profile abzurufen, Benutzer zu suchen und vieles mehr. Die Office 365-Benutzer-API kann verwendet werden von:
 
@@ -30,12 +30,12 @@ Stellen Sie eine Verbindung mit der Office 365-Benutzer-API her, um Profile abzu
 
 &nbsp;
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Office 365-API](../app-service-logic/app-service-logic-connector-office365.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 
-Mit der Office 365-Benutzer-API können Sie folgende Aktionen ausführen:
+Mit der Office 365-Benutzer-API können Sie folgende Aktionen ausführen:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus der Office 365-Benutzer-API abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus der Office 365-Benutzer-API abgerufen werden. 
 - Verwenden von Aktionen zum Abrufen von direkt unterstellten Mitarbeitern oder Benutzerprofilen von Vorgesetzten und vieles mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Rufen Sie beispielsweise die direkt unterstellten Mitarbeiter einer Person ab, und aktualisieren Sie mit diesen Informationen eine Azure SQL-Datenbank. 
 - Fügen Sie die Office 365-Benutzer-API in PowerApps Enterprise hinzu. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
 
@@ -45,7 +45,7 @@ Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Ers
 
 ## Trigger und Aktionen
 
-Die Office 365-Benutzer-API verfügt über die folgenden Aktionen. Es gibt keine Trigger.
+Die Office 365-Benutzer-API verfügt über die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen|
 | --- | --- |
@@ -54,19 +54,19 @@ Die Office 365-Benutzer-API verfügt über die folgenden Aktionen. Es gibt keine
 Alle APIs unterstützen Daten im JSON- und XML-Format.
 
 
-## Herstellen einer Verbindung mit Office 365-Benutzern
+## Herstellen einer Verbindung mit Office 365-Benutzern
 
 Wenn Sie Ihren Logik-Apps diese API hinzufügen, müssen Sie sich bei Ihrem Konto für die Office 365-Benutzer-API anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto gestatten.
 
 1. Melden Sie sich bei Ihrem Konto für die Office 365-Benutzer-API an.
 2. Erlauben Sie Ihren Logik-Apps, sich mit Ihrem Office 365-Konto zu verbinden und es zu nutzen. 
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Eigenschaften für die Office 365-Benutzer-API ein, z. B. die Benutzer-ID. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Eigenschaften für die Office 365-Benutzer-API ein, z. B. die Benutzer-ID. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können dieselbe Verbindung der Office 365-Benutzer-API in anderen Logik-Apps verwenden.
 
 
-## Office 365-Benutzer-REST-API – Referenz
+## Office 365-Benutzer-REST-API – Referenz
 Gilt für Version: 1.0.
 
 ### Mein Profil abrufen 
@@ -129,7 +129,7 @@ Ruft das Benutzerprofil des Vorgesetzten des angegebenen Benutzers ab. ```GET: /
 
 
 ### Direkt unterstellte Mitarbeiter abrufen 
-Ruft direkt unterstellte Mitarbeiter ab. ```GET: /users/{userId}/directReports```
+Direkt unterstellte Mitarbeiter abrufen. ```GET: /users/{userId}/directReports```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -192,7 +192,7 @@ Ruft die Suchergebnisse für Benutzerprofile ab. ```GET: /users```
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 
@@ -204,4 +204,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [10]: ./media/connectors-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/connectors-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

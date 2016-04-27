@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="04/07/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 
@@ -25,9 +25,9 @@ Dieser Artikel erläutert die Grundlagen der Planung von Geschäftskontinuität 
 
 Geschäftskontinuität- und Notfallwiederherstellungspläne müssen für folgende Parameter optimiert sein:
 
-**Recovery Time Objective (RTO)**: die maximal akzeptable Zeitspanne, bevor die Datenbank nach einem Ausfall vollständig wiederhergestellt ist, d. h. der maximale Verlust von Verfügbarkeit bei Ausfällen.
+**Recovery Time Objective (RTO)**: die maximal akzeptable Zeitspanne, bevor die Datenbank nach einem Ausfall vollständig wiederhergestellt ist, d. h. der maximale Verlust von Verfügbarkeit bei Ausfällen.
 
-**Recovery Point Objective (RPO)**: das maximal akzeptable Zeitfenster verlorener Updates, während die Datenbank nach einem Ausfall wiederhergestellt wird, d. h. der maximale Verlust von Daten bei Ausfällen.
+**Recovery Point Objective (RPO)**: das maximal akzeptable Zeitfenster verlorener Updates, während die Datenbank nach einem Ausfall wiederhergestellt wird, d. h. der maximale Verlust von Daten bei Ausfällen.
 
 **Estimated Recovery Time (ERT)**: die geschätzte Dauer bis zur vollständigen Funktion der Datenbank nach einer Wiederherstellungsanforderung.
 
@@ -51,7 +51,7 @@ Da SQL Data Warehouse Computer und Speicher trennt, werden alle Ihre Daten direk
 
 ### Datenbankwiederherstellung
 
-Mit der Datenbankwiederherstellung können Sie die Datenbank in den Zustand zu einem früheren Zeitpunkt wiederherstellen. Der Azure SQL Data Warehouse-Dienst schützt alle Datenbanken durch automatische Speichermomentaufnahmen mindestens alle acht Stunden, die sieben Tage lang aufbewahrt werden und einen diskreten Satz von Wiederherstellungspunkten für Sie bereitstellen. Diese Sicherungen werden in Azure Storage in RA-GRS gespeichert und sind daher standardmäßig georedundant. Die automatischen Funktionen zur Sicherung und Wiederherstellung sind nicht mit zusätzlichen Kosten verbunden und bieten eine kosten- und verwaltungsfreie Möglichkeit, Datenbanken vor versehentlicher Beschädigung oder Löschung zu schützen. Weitere Informationen zur Datenbankwiederherstellung finden Sie unter [Wiederherstellung nach Benutzerfehlern][].
+Mit der Datenbankwiederherstellung können Sie die Datenbank in den Zustand zu einem früheren Zeitpunkt wiederherstellen. Der Azure SQL Data Warehouse-Dienst schützt alle Datenbanken durch automatische Speichermomentaufnahmen mindestens alle acht Stunden, die sieben Tage lang aufbewahrt werden und einen diskreten Satz von Wiederherstellungspunkten für Sie bereitstellen. Diese Sicherungen werden in Azure Storage in RA-GRS gespeichert und sind daher standardmäßig georedundant. Die automatischen Funktionen zur Sicherung und Wiederherstellung sind nicht mit zusätzlichen Kosten verbunden und bieten eine kosten- und verwaltungsfreie Möglichkeit, Datenbanken vor versehentlicher Beschädigung oder Löschung zu schützen. Weitere Informationen zur Datenbankwiederherstellung finden Sie unter [Restore from snapshot][] (Wiederherstellung aus einer Momentaufnahme).
 
 ### Geografische Wiederherstellung
 
@@ -68,7 +68,7 @@ Informationen zu den Geschäftskontinuitätsfeatures anderer SQL-Datenbank-Editi
 [Finalize a recovered database]: ../sql-database/sql-database-recovered-finalize.md
 [Redundanzoptionen für Azure-Speicher]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [SQL-Datenbank-Übersicht zu Geschäftskontinuität]: ../sql-database/sql-database-business-continuity.md
-[Wiederherstellung nach Benutzerfehlern]: sql-data-warehouse-business-continuity-recover-from-user-error.md
+[Restore from snapshot]: sql-data-warehouse-backup-and-restore-from-snapshot.md
 
 <!--MSDN references-->
 [Create database restore request]: http://msdn.microsoft.com/library/azure/dn509571.aspx
@@ -78,4 +78,4 @@ Informationen zu den Geschäftskontinuitätsfeatures anderer SQL-Datenbank-Editi
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -17,11 +17,13 @@
 	ms.date="01/05/2016"
 	ms.author="drewm"/>
 
-# Geplante Wartung für virtuelle Windows-Computer in Azure
+# Geplante Wartung für virtuelle Computer in Azure
+
+
+Grundlagen zur geplanten Wartung in Azure – was sie ist und wie sie sich auf die Verfügbarkeit Ihrer virtuellen Windows-Computer auswirken kann. Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-planned-maintenance.md) verfügbar.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Grundlagen zur geplanten Wartung in Azure – was sie ist und wie sie sich auf die Verfügbarkeit Ihrer virtuellen Windows-Computer auswirken kann. Informationen zur geplanten Wartung für virtuelle Linux-Computer finden Sie unter [planned maintenance for Linux virtual machines](virtual-machines-linux-planned-maintenance.md) (Geplante Wartung für virtuelle Linux-Computer).
 
 ## Gründe für das Ausführen einer geplanten Wartung durch Azure
 
@@ -33,4 +35,4 @@ Beachten Sie, dass es zwei Wartungsarten gibt, die die Verfügbarkeit Ihrer virt
 
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

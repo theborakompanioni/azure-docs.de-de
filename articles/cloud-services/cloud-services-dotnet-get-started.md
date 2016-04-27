@@ -24,7 +24,7 @@
 
 ## Übersicht
 
-Dieses Tutorial behandelt die Erstellung einer .NET-Anwendung mit mehreren Ebenen und einem ASP.NET MVC-Front-End sowie die Bereitstellung dieser Anwendung in einem [Azure-Clouddienst](fundamentals-application-models.md#CloudServices). Die Anwendung verwendet eine [Azure SQL-Datenbank](http://msdn.microsoft.com/library/azure/ee336279), den [Azure-Blobdienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) und den [Azure-Warteschlangendienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Sie können das [Visual Studio-Projekt](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) aus dem MSDN-Codekatalog herunterladen.
+Dieses Tutorial behandelt die Erstellung einer .NET-Anwendung mit mehreren Ebenen und einem ASP.NET MVC-Front-End sowie die Bereitstellung dieser Anwendung in einem [Azure-Clouddienst](cloud-services-choose-me.md). Die Anwendung verwendet eine [Azure SQL-Datenbank](http://msdn.microsoft.com/library/azure/ee336279), den [Azure-Blobdienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) und den [Azure-Warteschlangendienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Sie können das [Visual Studio-Projekt](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) aus dem MSDN-Codekatalog herunterladen.
 
 In diesem Tutorial erfahren Sie, wie Sie die Anwendung erstellen und lokal ausführen, in Azure bereitstellen und in der Cloud ausführen und zuletzt auch von Grund auf erstellen können. Sie können auch mit der Erstellung von Grund auf beginnen und die Test- und Bereitstellungsschritte anschließend ausführen.
 
@@ -51,7 +51,7 @@ In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-C
 
 ## Voraussetzungen
 
-Dieses Tutorial setzt voraus, dass Sie mit den [Grundkonzepten von Azure-Clouddiensten](fundamentals-application-models.md#CloudServices) wie z. B. den Begriffen *Webrollen* und *Workerrollen* vertraut sind. Außerdem wird vorausgesetzt, dass Sie mit der Arbeit mit [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)- oder [Web Forms](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)-Projekten in Visual Studio vertraut sind. Die Beispielanwendung verwendet MVC, aber ein Großteil des Tutorial gilt auch für Web Forms.
+Dieses Tutorial setzt voraus, dass Sie mit den [Grundkonzepten von Azure-Clouddiensten](cloud-services-choose-me.md) wie z. B. den Begriffen *Webrollen* und *Workerrollen* vertraut sind. Außerdem wird vorausgesetzt, dass Sie mit der Arbeit mit [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)- oder [Web Forms](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)-Projekten in Visual Studio vertraut sind. Die Beispielanwendung verwendet MVC, aber ein Großteil des Tutorial gilt auch für Web Forms.
 
 Sie können die Anwendung ohne Azure-Abonnement lokal ausführen, aber für die Bereitstellung der Anwendung in der Cloud benötigen Sie ein Abonnement. Wenn Sie kein Konto haben, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) oder [sich für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A55E3C668).
 
@@ -60,7 +60,7 @@ Die Anweisungen im Tutorial funktionieren mit den folgenden beiden Produkten:
 * Visual Studio 2013
 * Visual Studio 2015
 
-Falls Sie keines dieser Produkte besitzen, wird Visual Studio 2015 automatisch zusammen mit dem Azure SDK installiert.
+Falls Sie keines dieser Produkte besitzen, wird Visual Studio 2015 automatisch zusammen mit dem Azure SDK installiert.
 
 ## Anwendungsarchitektur
 
@@ -205,7 +205,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
 6. Wählen Sie in der Dropdownliste **Replikation** den Wert **Lokal redundant** aus.
 
-	Wenn Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte an ein zweites Datencenter repliziert, um im Katastrophenfall eine Failover-Instanz an diesem zweiten Standort zur Verfügung zu haben. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage-create-storage-account/#replication-options).
+	Wenn Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte an ein zweites Datencenter repliziert, um im Katastrophenfall eine Failover-Instanz an diesem zweiten Standort zur Verfügung zu haben. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/storage-create-storage-account.md#replication-options).
 
 5. Klicken Sie auf **Speicherkonto erstellen**.
 
@@ -443,7 +443,7 @@ In diesem Abschnitt konfigurieren Sie die Verbindungszeichenfolgen für den Azur
     </connectionStrings>
     ```
     
-	Wenn Sie Visual Studio 2015 verwenden, ersetzen Sie „v11.0“ durch „MSSQLLocalDB“.
+	Wenn Sie Visual Studio 2015 verwenden, ersetzen Sie „v11.0“ durch „MSSQLLocalDB“.
 
 2. Speichern Sie die Änderungen.
 
@@ -467,7 +467,7 @@ In diesem Abschnitt konfigurieren Sie die Verbindungszeichenfolgen für den Azur
 
 	* Name: ContosoAdsDbConnectionString
 	* Typ: Zeichenfolge
-	* Wert: Fügen Sie dieselbe Verbindungszeichenfolge ein, die Sie auch für das Webrollenprojekt verwendet haben. (Das folgende Beispiel bezieht sich auf Visual Studio 2013. Wenn Sie Visual Studio 2015 verwenden und dieses Beispiel kopieren, dürfen sich nicht vergessen, den Wert für „Data Source“ zu ändern.)
+	* Wert: Fügen Sie dieselbe Verbindungszeichenfolge ein, die Sie auch für das Webrollenprojekt verwendet haben. (Das folgende Beispiel bezieht sich auf Visual Studio 2013. Wenn Sie Visual Studio 2015 verwenden und dieses Beispiel kopieren, dürfen sich nicht vergessen, den Wert für „Data Source“ zu ändern.)
 
 	    ```
         Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
@@ -856,7 +856,7 @@ Die Contoso Ads-Anwendung wurde für dieses Tutorial bewusst einfach gehalten. S
 Hier finden Sie einige Beispielanwendungen für Clouddienste mit realitätsnäheren Programmierpraktiken, geordnet vom einfachsten hin zum komplexesten Projekt:
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Ähnlich der Contoso Ads-Anwendung, jedoch mit mehr Funktionen und realitätsnäheren Programmierpraktiken.
-* [Azure-Clouddienst-Anwendung mit mehreren Ebenen mit Tabellen, Warteschlangen und Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Bietet eine Einführung in Azure-Speichertabellen sowie in Blobs und Warteschlangen. Dieser Artikel basiert auf einer älteren Version des Azure SDK für .NET. Es müssen einige Änderungen vorgenommen werden, damit die Anweisungen für die aktuelle Version funktionieren.
+* [Azure-Clouddienst-Anwendung mit mehreren Ebenen mit Tabellen, Warteschlangen und Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Bietet eine Einführung in Azure-Speichertabellen sowie in Blobs und Warteschlangen. Dieser Artikel basiert auf einer älteren Version des Azure SDK für .NET. Es müssen einige Änderungen vorgenommen werden, damit die Anweisungen für die aktuelle Version funktionieren.
 * [Clouddienstgrundlagen in Microsoft Azure](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ein umfassendes Beispiel mit einer breiten Palette bewährter Methoden, erarbeitet von der Microsoft Patterns and Practices-Gruppe.
 
 Weitere Informationen zur Entwicklung für die Cloud finden Sie unter [Erstellen von Cloud-Apps mit Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
@@ -869,4 +869,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Verwalten von Cloud Services](cloud-services-how-to-manage.md)
 * [Azure Storage (in englischer Sprache)](/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="04/06/2016"
    ms.author="carlrab"/>
 
 # Importieren aus BACPAC zur SQL-Datenbank mithilfe von SSMS
@@ -32,26 +32,24 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 
 	 > [AZURE.IMPORTANT] Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
-2. Öffnen Sie Management Studio, und stellen Sie eine Verbindung mit Ihrer Quelldatenbank im Objekt-Explorer her.
-
-	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/MigrateUsingBACPAC01.png)
-
-3. Sobald die BACPAC-Datei erstellt wurde, stellen Sie eine Verbindung mit dem Azure SQL-Datenbank-Server her. Klicken Sie mit der rechten Maustaste auf den Ordner **Datenbanken**, und klicken Sie auf **Datenebenenanwendung importieren...**.
+2. Stellen Sie eine Verbindung mit dem Azure SQL-Datenbank-Server her. Klicken Sie mit der rechten Maustaste auf den Ordner **Datenbanken**, und klicken Sie auf **Datenebenenanwendung importieren...**.
 
     ![Menüelement für das Importieren von Datenebenenanwendungen](./media/sql-database-cloud-migrate/MigrateUsingBACPAC03.png)
 
-4.	Wählen Sie im Import-Assistenten die BACPAC-Datei aus, die Sie gerade exportiert haben, um die neue Datenbank in Azure SQL-Datenbank zu erstellen.
+3.	Importieren Sie mit dem Import-Assistenten die BACPAC-Datei von Ihrem lokalen Datenträger, oder wählen Sie das Azure-Speicherkonto und den Container aus, in das bzw. den Sie die BACPAC-Datei hochgeladen haben, um die neue Datenbank in Azure SQL-Datenbank zu erstellen.
 
     ![Importieren von Einstellungen](./media/sql-database-cloud-migrate/MigrateUsingBACPAC04.png)
 
-5.	Geben Sie den **neuen Datenbanknamen** für die Datenbank in Azure SQL-Datenbank an, und legen Sie **Edition von Microsoft Azure SQL-Datenbank** (Dienstebene), **Maximale Datenbankgröße** und **Serviceziel** (Leistungsebene) fest.
+    ***Wichtig:*** Verwenden Sie beim Importieren einer BACPAC-Datei aus Azure-Blobspeicher den Standardspeicher. Das Importieren einer BACPAC-Datei aus dem Premiumspeicher wird nicht unterstützt.
+
+4.	Geben Sie den **neuen Datenbanknamen** für die Datenbank in Azure SQL-Datenbank an, und legen Sie **Edition von Microsoft Azure SQL-Datenbank** (Dienstebene), **Maximale Datenbankgröße** und **Serviceziel** (Leistungsebene) fest.
 
     ![Datenbankeinstellungen](./media/sql-database-cloud-migrate/MigrateUsingBACPAC05.png)
 
-6.	Klicken Sie auf **Weiter** und dann auf **Fertig stellen**, um die BACPAC-Datei in eine neue Datenbank auf dem Azure SQL-Datenbank-Server zu importieren.
+5.	Klicken Sie auf **Weiter** und dann auf **Fertig stellen**, um die BACPAC-Datei in eine neue Datenbank auf dem Azure SQL-Datenbank-Server zu importieren.
 
-7. Stellen Sie mit dem Objekt-Explorer eine Verbindung mit der migrierten Datenbank auf Ihrem Azure SQL-Datenbank-Server her.
+6. Stellen Sie mit dem Objekt-Explorer eine Verbindung mit der migrierten Datenbank auf Ihrem Azure SQL-Datenbank-Server her.
 
-8.	Zeigen Sie über das Azure-Portal Ihre Datenbank und deren Eigenschaften an.
+6.	Zeigen Sie über das Azure-Portal Ihre Datenbank und deren Eigenschaften an.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

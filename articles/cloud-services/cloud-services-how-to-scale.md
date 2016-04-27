@@ -1,234 +1,150 @@
-<properties 
-	pageTitle="Konfigurieren der automatischen Skalierung für einen Clouddienst | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mit dem Portal die automatische Skalierung für einen Clouddienst und für verknüpfte Ressourcen in Azure konfigurieren." 
-	services="cloud-services" 
-	documentationCenter="" 
-	authors="Thraka" 
-	manager="timlt" 
+<properties
+	pageTitle="Automatisches Skalieren eines Clouddiensts im Portal | Microsoft Azure"
+	description="Erfahren Sie, wie Sie mit dem Portal Regeln für die automatische Skalierung für eine Clouddienst-Webrolle oder -Workerrolle in Azure konfigurieren."
+	services="cloud-services"
+	documentationCenter=""
+	authors="Thraka"
+	manager="timlt"
 	editor=""/>
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/07/2015"
+<tags
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/06/2016"
 	ms.author="adegeo"/>
 
 
+# Automatisches Skalieren eines Clouddiensts
 
+Auf der Seite „Skalieren“ des klassischen Azure-Portals können Sie manuell Ihre Webrolle oder Workerrolle skalieren, oder Sie können die automatische Skalierung basierend auf CPU-Auslastung oder einer Nachrichtenwarteschlange aktivieren.
 
-
-# Automatisches Skalieren einer Anwendung
-
-Auf der Seite „Skalieren“ des klassischen Azure-Portals können Sie Ihre Anwendung manuell skalieren oder Parameter für die automatische Skalierung festlegen. Skaliert werden können Anwendungen, die Webrollen, Workerrollen oder virtuelle Computer ausführen. Sie skalieren eine Anwendung, die Instanzen von Webrollen und Workerrollen ausführt, indem Sie Rolleninstanzen hinzufügen oder entfernen, um die Arbeitslast zu bewältigen.
-
-Bei der Skalierung einer Anwendung, die virtuelle Computer ausführt, werden keine neuen Computer erstellt oder gelöscht, sondern lediglich in einer Verfügbarkeitsgruppe vorhandene Computer aktiviert oder deaktiviert. Sie können festlegen, dass eine Skalierung abhängig von der durchschnittlichen prozentualen CPU-Nutzung oder abhängig von der Anzahl Nachrichten in einer Warteschlange durchgeführt wird.
+>[AZURE.NOTE] Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer direkt erstellen, wird er in einem Clouddienst gehostet. Einige dieser Informationen gelten für diese Typen virtueller Computer. Das Skalieren einer Verfügbarkeitsgruppe virtueller Computer besteht eigentlich nur darin, dass Sie sie entsprechend der Skalierungsregeln, die Sie konfigurieren, ein- und ausschalten beendet. Weitere Information zu virtuellen Computern und Verfügbarkeitsgruppen finden Sie unter [Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell](../virtual-machines/virtual-machines-windows-classic-configure-availability.md).
 
 Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfiguriert wird:
 
-- Virtuelle Computer müssen nach der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden, um sie für die Skalierung einer Anwendung verwenden zu können. Die derart in eine Gruppe eingefügten virtuellen Computer können zunächst beliebig aktiviert oder deaktiviert sein. Beim Hochskalieren werden sie allerdings definitiv aktiviert und beim Herunterskalieren deaktiviert. Weitere Information zu virtuellen Computern und Verfügbarkeitsgruppen finden Sie unter [Verwaltung der Verfügbarkeit virtueller Computer](../virtual/machines/virtual-machines-windows-manage-availability.md).
+- Die Skalierung ist abhängig von der Kernspeichernutzung. Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Wenn als Grenzwert für Ihr Abonnement beispielsweise zwanzig Kerne festgelegt sind, und Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
-- Die Skalierung ist abhängig von der Kernspeichernutzung. Größere Rolleninstanzen oder virtuelle Computer erfordern mehr Kernspeicher. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kernspeichergrenzwerte skalieren. Wenn als Grenzwert für Ihr Abonnement beispielsweise zwanzig Kernspeicher festgelegt sind und Sie eine Anwendung mit zwei mittelgroßen virtuellen Computern ausführen (insgesamt vier Kernspeicher), stehen für das zentrale Hochskalieren anderer bereitgestellter Clouddienste in Ihrem Abonnement nur noch sechzehn Kernspeicher zur Verfügung. Für die Skalierung einer Anwendung können nur gleich große virtuelle Computer einer Verfügbarkeitsgruppe verwendet werden. Weitere Informationen über Kernspeichernutzung und Größen von virtuellen Computern finden Sie unter [Größen virtueller Computer und Clouddienste für Microsoft Azure](http://msdn.microsoft.com/library/dn197896.aspx).
-
-- Sie müssen eine Warteschlange anlegen und diese einer Rolle oder einer Verfügbarkeitsgruppe zuweisen, bevor Sie eine Anwendung auf Basis eines Nachrichtenschwellwerts skalieren können. Weitere Informationen finden Sie unter [Verwenden des Warteschlangenspeicherdiensts](../storage-dotnet-how-to-use-queues.md).
+- Sie müssen eine Warteschlange anlegen und dieser einer Rolle zuweisen, bevor Sie eine Anwendung auf Basis eines Nachrichtenschwellwerts skalieren können. Weitere Informationen finden Sie unter [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md).
 
 - Sie können Ressourcen skalieren, die mit Ihrem Clouddienst verknüpft sind. Weitere Informationen zum Verknüpfen von Ressourcen finden Sie unter [Verknüpfen einer Ressource mit einem Clouddienst](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service).
 
-- Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bzw. virtuellen Computern bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
+- Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
 
-## Manuelles Skalieren einer für die Ausführung von Webrollen und Workerrollen konzipierten Anwendung
 
-Auf der Skalierungsseite können Sie die Anzahl der in einem Clouddienst laufenden Instanzen manuell erhöhen oder verringern.
+## Zeitplan (Skalierung)
 
-1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Cloud Services** und dann auf den Namen des Clouddiensts, um das Dashboard zu öffnen.
+In der Standardeinstellung folgen alle Rollen keinem bestimmten Zeitplan. Daher gelten alle geänderten Einstellungen für alle Uhrzeiten und alle Tage im Laufe des Jahres. Wenn Sie möchten, können Sie manuelle oder automatische Skalierung einrichten:
 
-2. Klicken Sie auf **Skalieren**. Die automatische Skalierung ist standardmäßig für alle Rollen deaktiviert, sodass Sie die Anzahl der von Ihrer Anwendung verwendeten Instanzen manuell ändern können.
+- Wochentage
+- Wochenenden
+- Woche nachts
+- Woche morgens
+- Bestimmte Datumsangaben
+- Bestimmte Datumsbereiche
 
-    ![Seite "Skalieren"][manual_scale]
+Dies wird im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf der Seite **Clouddienste** > **[Ihr Clouddienst]** > **Skalieren** > **[Produktion oder Staging]** konfiguriert.
 
-3. Jede Rolle in einem Clouddienst hat einen Regler, über den die Anzahl der verwendbaren Instanzen geändert werden kann. Um eine Rolleninstanz hinzuzufügen, ziehen Sie den Regler nach rechts. Um eine Rolleninstanz zu entfernen, ziehen Sie den Regler nach links.
-    
-    ![Skalierung (Rolle)][slider_role]
-    
-    Sie können die Anzahl der verwendeten Instanzen nur dann erhöhen, wenn ausreichend Kernspeicher für die Unterstützung dieser Instanzen zur Verfügung stehen. Die Farben des Reglers lassen erkennen, wie viele Kernspeicher Ihres Abonnements belegt bzw. noch verfügbar sind:
-    
-    - Blau steht für die Kernspeicher, die von der ausgewählten Rolle genutzt werden.
-    
-    - Dunkelgrau steht für die Gesamtzahl der Kernspeicher, die von allen Rollen und virtuellen Computern in dem Abonnement genutzt werden.
-    
-    - Hellgrau steht für die Kernspeicher, die für die Skalierung zur Verfügung stehen.
-    
-    - Pink steht für eine Änderung, die noch nicht gespeichert worden ist.
+Klicken Sie für jede Rolle, die Sie ändern möchten, auf die Schaltfläche **Zeiten für Zeitplan einrichten**.
 
-4. Klicken Sie auf **Speichern**. Je nach Reglerstellung werden Rolleninstanzen hinzugefügt oder entfernt.
+![Automatisches Skalieren von Clouddiensten auf Basis eines Zeitplans][scale_schedules]
 
-## Automatisches Skalieren einer für die Ausführung von Webrollen, Workerrollen oder virtuellen Computern konzipierten Anwendung
 
-Auf der Skalierungsseite können Sie Ihren Clouddienst so konfigurieren, dass die Anzahl der von Ihrer Anwendung verwendeten Instanzen oder virtuellen Computer automatisch erhöht oder verringert wird. Für diese Konfiguration der Skalierung stehen folgende Parameter zur Verfügung:
 
-- [Durchschnittliche CPU-Nutzung](#averagecpu) - Wenn die durchschnittliche prozentuale CPU-Nutzung bestimmte Schwellwerte über- oder unterschreitet, werden Rolleninstanzen erstellt oder gelöscht oder virtuelle Computer in einer Verfügbarkeitsgruppe aktiviert oder deaktiviert.
-- [Warteschlangennachrichten](#queuemessages) - Wenn die Anzahl der Nachrichten in einer Warteschlange bestimmte Schwellwerte über- oder unterschreitet, werden Rolleninstanzen erstellt oder gelöscht oder virtuelle Computer in einer Verfügbarkeitsgruppe aktiviert oder deaktiviert.
+## Manuelles Skalieren
 
-## Durchschnittliche CPU-Nutzung
+Auf der Seite **Skalieren** können Sie die Anzahl der in einem Clouddienst ausgeführten Instanzen manuell erhöhen oder verringern. Dies wird für jeden Zeitplan konfiguriert, den Sie erstellt haben, oder für alle Zeiten, wenn Sie keinen Zeitplan erstellt haben.
 
 1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Cloud Services** und dann auf den Namen des Clouddiensts, um das Dashboard zu öffnen.
+
+    > [AZURE.TIP] Wenn Sie Ihren Clouddienst nicht sehen können, müssen Sie möglicherweise von **Produktion** zu **Staging** wechseln oder umgekehrt.
 
 2. Klicken Sie auf **Skalieren**.
 
-3. Führen Sie einen Bildlauf zu dem Abschnitt für die Rolle bzw. Verfügbarkeitsgruppe aus, und klicken Sie dann auf **CPU**. Dann kann Ihre Anwendung basierend auf der durchschnittlichen prozentualen Nutzung von CPU-Ressourcen automatisch skaliert werden.
+3. Wählen Sie den Zeitplan, für den Sie die Skalierungsoptionen ändern möchten. Der Standard ist *Keine geplanten Zeiten*, wenn Sie keine Zeitpläne definiert haben.
 
-    ![AutoSkalieren aktiviert][autoscale_on]
+4. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **KEINE**. Dies ist die Standardeinstellung für alle Rollen.
 
-4. Jede Rolle bzw. Verfügbarkeitsgruppe hat einen Regler, über den die Anzahl der verwendbaren Instanzen geändert werden kann. Um die maximale Anzahl verwendbarer Instanzen einzustellen, ziehen Sie den rechten Regler nach rechts. Um die Mindestanzahl verwendbarer Instanzen einzustellen, ziehen Sie den linken Regler nach links.
-    
-    **Hinweis:** Auf der Skalierungsseite steht **Instanz** entweder für eine Rolleninstanz oder für eine Instanz eines virtuellen Computers.
-    
-    ![Instanzenbereich][instance_range]
-    
-    Die maximale Anzahl Instanzen ist durch die Anzahl der im Abonnement verfügbaren Kernspeicher beschränkt. Die Farben des Reglers lassen erkennen, wie viele Kernspeicher Ihres Abonnements belegt bzw. noch verfügbar sind:
-    
-    - Blau steht für die maximale Anzahl der Kernspeicher, die die Rolle nutzen kann.
-    
-    - Dunkelgrau steht für die Gesamtzahl der Kernspeicher, die von allen Rollen und virtuellen Computern in dem Abonnement genutzt werden. Wenn dieser Wert die von der Rolle verwendeten Kernspeicher überlappt, ändert sich die Farbe in Dunkelblau.
-    
-    - Hellgrau steht für die Kernspeicher, die für die Skalierung zur Verfügung stehen.
-    
-    - Pink steht für eine Änderung, die noch nicht gespeichert worden ist.
+5. Jede Rolle in einem Clouddienst hat einen Regler, über den die Anzahl der verwendbaren Instanzen geändert werden kann.
 
-5. Durch Verschieben eines Reglers wird der Bereich der durchschnittlichen prozentualen CPU-Nutzung eingestellt. Wenn die durchschnittliche prozentuale CPU-Nutzung den Höchstwert überschreitet, werden zusätzliche Rolleninstanzen erstellt bzw. virtuelle Computer aktiviert. Wenn die durchschnittliche prozentuale CPU-Nutzung den Mindestwert unterschreitet, werden Rolleninstanzen gelöscht bzw. virtuelle Computer deaktiviert. Um den Höchstwert der durchschnittlichen prozentualen CPU-Nutzung einzustellen, ziehen Sie den rechten Regler nach rechts. Um den Mindestwert der durchschnittlichen prozentualen CPU-Nutzung einzustellen, ziehen Sie den linken Regler nach links.
+    ![Manuelles Skalieren einer Clouddienstrolle][manual_scale]
 
-    ![Ziel-CPU][target_cpu]
+    Wenn Sie mehr Instanzen benötigen, müssen Sie möglicherweise die [Größe des Clouddiensts für den virtuellen Computer](cloud-services-sizes-specs.md) ändern.
 
-6. Sie können die Anzahl der Instanzen festlegen, die beim Hochskalieren Ihrer Anwendung jeweils hinzugefügt bzw. aktiviert werden sollen. Um diese Anzahl zu erhöhen, ziehen Sie den Regler nach rechts. Um sie zu verringern, ziehen Sie den Regler nach links.
+6. Klicken Sie auf **Speichern**. Je nach Reglerstellung werden Rolleninstanzen hinzugefügt oder entfernt.
 
-    ![Hochskalieren (CPU)][scale_cpuup]
+>[AZURE.TIP] Wenn Sie ![][tip_icon] sehen, bewegen Sie die Maus dorthin, und Sie können Hilfe zu den Aktionen einer bestimmten Einstellung erhalten.
 
-7. Geben Sie die Wartezeit zwischen der letzten Skalierungsaktion und dem nächsten Hochskalieren in Minuten ein. Bei der letzten Skalierungsaktion kann es sich entweder um ein Hoch- oder Herunterskalieren handeln.
 
-    ![Wartezeit (Hochskalieren)][scale_uptime]
+## Automatisches Skalieren – CPU
 
-    Bei der Berechnung der durchschnittlichen prozentualen CPU-Nutzung werden alle Instanzen erfasst. Der Durchschnittswert basiert auf der Nutzung in der jeweils vorhergehenden Stunde. Je nachdem, wie viele Instanzen Ihre Anwendung verwendet, und wenn die festgelegte Wartezeit sehr kurz ist, kann es länger dauern, bis die nächste Skalierungsaktion stattfindet. Das Mindestintervall zwischen Skalierungsaktionen ist fünf Minuten. Skalierungsaktionen können nicht stattfinden, wenn sich eine oder mehrere Instanzen in einem Übergangszustand befinden.
-
-8. Sie können auch die Anzahl der Instanzen festlegen, die beim Herunterskalieren Ihrer Anwendung jeweils gelöscht bzw. deaktiviert werden sollen. Um diese Anzahl zu erhöhen, ziehen Sie den Regler nach rechts. Um sie zu verringern, ziehen Sie den Regler nach links.
-
-    ![Herunterskalieren (CPU)][scale_cpudown]
-    
-    Wenn bei Ihrer Anwendung ein plötzlicher Anstieg der CPU-Nutzung auftreten kann, müssen Sie sicherstellen, dass eine ausreichende Mindestanzahl von Instanzen verfügbar ist, um diese Nutzungsspitzen abzufangen.
-
-9. Geben Sie die Wartezeit zwischen der letzten Skalierungsaktion und dem nächsten Herunterskalieren in Minuten ein. Bei der letzten Skalierungsaktion kann es sich entweder um ein Hoch- oder Herunterskalieren handeln.
-
-    ![Wartezeit (Herunterskalieren)][scale_downtime]
-
-10. Klicken Sie auf **Speichern**. Die Skalierungsaktion kann bis zu fünf Minuten dauern.
-
-## Warteschlangennachrichten
+Hiermit skalieren Sie, ob die durchschnittliche prozentuale CPU-Nutzung bestimmte Schwellenwerte über- oder unterschreitet; Rolleninstanzen werden erstellt oder gelöscht.
 
 1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Cloud Services** und dann auf den Namen des Clouddiensts, um das Dashboard zu öffnen.
+
+    > [AZURE.TIP] Wenn Sie Ihren Clouddienst nicht sehen können, müssen Sie möglicherweise von **Produktion** zu **Staging** wechseln oder umgekehrt.
+
 2. Klicken Sie auf **Skalieren**.
-3. Führen Sie einen Bildlauf zu dem Abschnitt für die Rolle bzw. Verfügbarkeitsgruppe aus, und klicken Sie dann auf **Warteschlange**. Dann kann Ihre Anwendung basierend auf einer vorgegebenen Anzahl Warteschlangennachrichten automatisch skaliert werden.
 
-    ![Skalieren (Warteschlange)][scale_queue]
+3. Wählen Sie den Zeitplan, für den Sie die Skalierungsoptionen ändern möchten. Der Standard ist *Keine geplanten Zeiten*, wenn Sie keine Zeitpläne definiert haben.
 
-4. Jede im Clouddienst definierte Rolle bzw. Verfügbarkeitsgruppe hat einen Regler, über den die Anzahl der verwendbaren Instanzen geändert werden kann. Um die maximale Anzahl verwendbarer Instanzen einzustellen, ziehen Sie den rechten Regler nach rechts. Um die Mindestanzahl verwendbarer Instanzen einzustellen, ziehen Sie den linken Regler nach links.
+4. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **CPU**.
 
-    ![Warteschlangen (Bereich)][queue_range]
-    
-    **Hinweis:** Auf der Skalierungsseite steht **Instanz** entweder für eine Rolleninstanz oder für eine Instanz eines virtuellen Computers.
-    
-    Die maximale Anzahl Instanzen ist durch die Anzahl der im Abonnement verfügbaren Kernspeicher beschränkt. Die Farben des Reglers lassen erkennen, wie viele Kernspeicher Ihres Abonnements belegt bzw. noch verfügbar sind:
-    - Blau steht für die maximale Anzahl der Kernspeicher, die die Rolle nutzen kann.
-    - Dunkelgrau steht für die Gesamtzahl der Kernspeicher, die von allen Rollen und virtuellen Computern in dem Abonnement genutzt werden. Wenn dieser Wert die von der Rolle verwendeten Kernspeicher überlappt, ändert sich die Farbe in Dunkelblau.
-    - Hellgrau steht für die Kernspeicher, die für die Skalierung zur Verfügung stehen.
-    - Pink steht für eine Änderung, die noch nicht gespeichert worden ist.
+5. Jetzt können Sie einen minimalen und maximalen Bereich von Rolleninstanzen, die Ziel-CPU-Auslastung (um zentrales Hochskalieren auszulösen) und die Anzahl der Instanzen, um die zentral hoch- und herunterskaliert werden soll, konfigurieren.
 
-5. Wählen Sie das Speicherkonto der Warteschlange aus, die Sie verwenden wollen.
+![Skalieren einer Clouddienstrolle nach CPU-Auslastung][cpu_scale]
 
-    ![Speicherkontoname][storage_name]
+>[AZURE.TIP] Wenn Sie ![][tip_icon] sehen, bewegen Sie die Maus dorthin, und Sie können Hilfe zu den Aktionen einer bestimmten Einstellung erhalten.
 
-6. Wählen Sie die Warteschlange aus.
 
-    ![Warteschlangenname][queue_name]
 
-7. Geben Sie die Anzahl der Nachrichten ein, die jede Instanz voraussichtlich unterstützen muss. Die Skalierung der Instanzen erfolgt auf Basis der Gesamtzahl Nachrichten, dividiert durch die vorgegebene Anzahl Nachrichten pro Computer.
 
-    ![Nachrichtenanzahl][message_number]
 
-8. Sie können die Anzahl der Instanzen festlegen, die beim Hochskalieren Ihrer Anwendung jeweils hinzugefügt bzw. aktiviert werden sollen. Um diese Anzahl zu erhöhen, ziehen Sie den Regler nach rechts. Um sie zu verringern, ziehen Sie den Regler nach links.
+## Automatisches Skalieren – Warteschlange
 
-    ![Hochskalieren (CPU)][scale_cpuup]
+Dabei wird automatisch skaliert, ob die Anzahl der Nachrichten in einer Warteschlange einen angegebenen Schwellenwert über- oder unterschreitet; Rolleninstanzen werden erstellt oder gelöscht.
 
-9. Geben Sie die Wartezeit zwischen der letzten Skalierungsaktion und dem nächsten Hochskalieren in Minuten ein. Bei der letzten Skalierungsaktion kann es sich entweder um ein Hoch- oder Herunterskalieren handeln.
+1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Cloud Services** und dann auf den Namen des Clouddiensts, um das Dashboard zu öffnen.
 
-    ![Wartezeit (Hochskalieren)][scale_uptime]
-    
-    Das Mindestintervall zwischen Skalierungsaktionen ist fünf Minuten. Skalierungsaktionen können nicht stattfinden, wenn sich eine oder mehrere Instanzen in einem Übergangszustand befinden.
+    > [AZURE.TIP] Wenn Sie Ihren Clouddienst nicht sehen können, müssen Sie möglicherweise von **Produktion** zu **Staging** wechseln oder umgekehrt.
 
-10. Sie können auch die Anzahl der Instanzen festlegen, die beim Herunterskalieren Ihrer Anwendung jeweils gelöscht bzw. nicht mehr verwendet werden sollen. Das Skalierungsinkrement kann über einen Regler eingestellt werden. Um die Anzahl der beim Herunterskalieren der Anwendung gelöschten bzw. nicht mehr verwendeten Instanzen zu erhöhen, ziehen Sie den Regler nach rechts. Um sie zu verringern, ziehen Sie den Regler nach links.
+2. Klicken Sie auf **Skalieren**.
 
-    ![Herunterskalieren (CPU)][scale_cpudown]
+3. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **CPU**.
 
-11.	Geben Sie die Wartezeit zwischen der letzten Skalierungsaktion und dem nächsten Herunterskalieren in Minuten ein. Bei der letzten Skalierungsaktion kann es sich entweder um ein Hoch- oder Herunterskalieren handeln.
+4. Jetzt können Sie einen minimalen und maximalen Bereich von Rolleninstanzen, die Warteschlange und die Anzahl der Warteschlangennachrichten, die für jede Instanz verarbeitet werden sollen, und die Anzahl der Instanzen, um die zentral hoch- und herunterskaliert werden soll, konfigurieren.
 
-    ![Wartezeit (Herunterskalieren)][scale_downtime]
+![Skalieren einer Clouddienstrolle nach Nachrichtenwarteschlange][queue_scale]
 
-12. Klicken Sie auf **Speichern**. Die Skalierungsaktion kann bis zu fünf Minuten dauern.
+>[AZURE.TIP] Wenn Sie ![][tip_icon] sehen, bewegen Sie die Maus dorthin, und Sie können Hilfe zu den Aktionen einer bestimmten Einstellung erhalten.
+
 
 ## Skalieren verknüpfter Ressourcen
 
-Häufig empfiehlt es sich, beim Skalieren einer Rolle auch die von der Anwendung verwendete Datenbank zu skalieren. Wenn Sie die Datenbank mit dem Clouddienst verknüpfen, ändern Sie die Edition der SQL-Datenbank und die Größe der Datenbank auf der Skalierungsseite.
+Häufig empfiehlt es sich, beim Skalieren einer Rolle auch die von der Anwendung verwendete Datenbank zu skalieren. Wenn Sie die Datenbank mit dem Clouddienst verknüpfen, können Sie auf die Skalierungseinstellungen für diese Ressource zugreifen, indem Sie auf den entsprechenden Link klicken.
 
 1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Cloud Services** und dann auf den Namen des Clouddiensts, um das Dashboard zu öffnen.
+
+    > [AZURE.TIP] Wenn Sie Ihren Clouddienst nicht sehen können, müssen Sie möglicherweise von **Produktion** zu **Staging** wechseln oder umgekehrt.
+
 2. Klicken Sie auf **Skalieren**.
-3. Wählen Sie im Abschnitt "Linkes Resources" die für die Datenbank zu verwendende Edition aus.
 
-    ![Verknüpfte Ressourcen][linked_resources]
+3. Suchen Sie die **verknüpften Ressourcen** aus, und klicken Sie auf **Skalierung für diese Datenbank verwalten**.
 
-4. Wählen Sie die Größe der Datenbank aus.
-5. Klicken Sie auf **Speichern**, um die verknüpften Ressourcen zu aktualisieren.
+    > [AZURE.NOTE] Wenn Sie keine **verknüpften Ressourcen** sehen, besitzen Sie wahrscheinlich keine verknüpften Ressourcen.
 
-## Planen der Anwendungsskalierung
+![][linked_resource]
 
-Sie können die automatische Skalierung Ihrer Anwendung planen, indem Sie Zeitpläne mit bestimmten Skalierungszeiten konfigurieren. Für die automatische Skalierung sind die folgenden Optionen verfügbar:
 
-- **No schedule** - Dies ist die Standardoption, d. h. Ihre Anwendung wird immer auf dieselbe Weise skaliert.
+[manual_scale]: ./media/cloud-services-how-to-scale/manual-scale.png
+[queue_scale]: ./media/cloud-services-how-to-scale/queue-scale.png
+[cpu_scale]: ./media/cloud-services-how-to-scale/cpu-scale.png
+[tip_icon]: ./media/cloud-services-how-to-scale/tip.png
+[scale_schedules]: ./media/cloud-services-how-to-scale/schedules.png
+[scale_popup]: ./media/cloud-services-how-to-scale/schedules-dialog.png
+[linked_resource]: ./media/cloud-services-how-to-scale/linked-resources.png
 
-- **Day and night** - Diese Option erlaubt die Festlegung der Skalierung zu bestimmten Zeiten während des Tages und der Nacht.
-
-**Hinweis:** Für Anwendungen, die Virtual Machines verwenden, werden derzeit noch keine Zeitpläne unterstützt.
-
-1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Cloud Services** und dann auf den Namen des Clouddiensts, um das Dashboard zu öffnen.
-2. Klicken Sie auf **Skalieren**.
-3. Klicken Sie in der Skalierungsseite auf **set up schedule times**.
-
-    ![Zeitplan (Skalierung)][scale_schedule]
-
-4. Wählen Sie den Skalierungszeitplantyp aus, den Sie einrichten möchten.
-
-5. Geben die Zeiten für den Tagesanfang und das Tagesende ein, und legen Sie die Zeitzone fest. Für die Planung von Tages- und Nachtzeiten gilt, dass diese Zeiten den Anfang und das Ende des betreffenden Tages markieren und die verbleibenden Zeiten die Nacht darstellen.
-
-6. Klicken Sie auf das Häkchen unten auf der Seite, um die Zeitpläne zu speichern.
-
-7. Nachdem Sie die Zeitpläne gespeichert haben, werden diese in der Liste angezeigt. Sie können einen Zeitplan auswählen, den Sie verwenden möchten, und dann die Skalierungseinstellungen ändern. Die Skalierungseinstellungen kommen nur während des ausgewählten Zeitplans zur Anwendung. Zum Bearbeiten von Zeitplänen klicken Sie auf **set up schedule times**.
-
-[manual_scale]: ./media/cloud-services-how-to-scale/CloudServices_ManualScaleRoles.png
-[slider_role]: ./media/cloud-services-how-to-scale/CloudServices_SliderRole.png
-[autoscale_on]: ./media/cloud-services-how-to-scale/CloudServices_AutoscaleOn.png
-[instance_range]: ./media/cloud-services-how-to-scale/CloudServices_InstanceRange.png
-[target_cpu]: ./media/cloud-services-how-to-scale/CloudServices_TargetCPURange.png
-[scale_cpuup]: ./media/cloud-services-how-to-scale/CloudServices_ScaleUpBy.png
-[scale_uptime]: ./media/cloud-services-how-to-scale/CloudServices_ScaleUpWaitTime.png
-[scale_cpudown]: ./media/cloud-services-how-to-scale/CloudServices_ScaleDownBy.png
-[scale_downtime]: ./media/cloud-services-how-to-scale/CloudServices_ScaleDownWaitTime.png
-[scale_queue]: ./media/cloud-services-how-to-scale/CloudServices_QueueScale.png
-[queue_range]: ./media/cloud-services-how-to-scale/CloudServices_QueueRange.png
-[storage_name]: ./media/cloud-services-how-to-scale/CloudServices_StorageAccountName.png
-[queue_name]: ./media/cloud-services-how-to-scale/CloudServices_QueueName.png
-[message_number]: ./media/cloud-services-how-to-scale/CloudServices_TargetMessageNumber.png
-[linked_resources]: ./media/cloud-services-how-to-scale/CloudServices_ScaleLinkedResources.png
-[scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
- 
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

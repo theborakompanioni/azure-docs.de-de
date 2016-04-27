@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/17/2015" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
 # Azure-Infrastrukturdienste-Workload: Branchenanwendung mit hoher Verfügbarkeit
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 
 Richten Sie Ihre webbasierte, nur im Intranet verfügbare Branchenanwendung in Microsoft Azure ein – so profitieren Sie von der einfachen Konfiguration sowie der Möglichkeit, die Anwendung schnell um neue Kapazitäten zu erweitern.
  
@@ -36,11 +35,11 @@ Der nächste Schritt besteht darin, eine in Azure gehostete Branchenanwendung zu
 
 ## Erstellen einer in Azure gehosteten Branchenanwendung zu Entwicklungs- und Testzwecken
 
-Ein standortübergreifendes virtuelles Netzwerk ist mit einem lokalen Netzwerk per Standort-zu-Standort-VPN oder ExpressRoute-Verbindung verbunden. Wenn Sie eine Entwicklungs- und Testumgebung erstellen möchten, die die endgültige Konfiguration imitiert, und mit dem Anwendungszugriff und der Remoteverwaltung über eine VPN-Verbindung experimentieren möchten, helfen Ihnen die Informationen unter [Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md) weiter.
+Ein standortübergreifendes virtuelles Netzwerk ist mit einem lokalen Netzwerk per Standort-zu-Standort-VPN oder ExpressRoute-Verbindung verbunden. Wenn Sie eine Entwicklungs- und Testumgebung erstellen möchten, die die endgültige Konfiguration imitiert, und mit dem Anwendungszugriff und der Remoteverwaltung über eine VPN-Verbindung experimentieren möchten, helfen Ihnen die Informationen unter [Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) weiter.
 
 ![](./media/virtual-machines-windows-lob/CreateLOBAppHybridCloud_3.png)
  
-Sie können diese Entwicklungs- und Testumgebung im Rahmen Ihres [MSDN-Abonnements](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) oder eines [Azure-Testabonnements](https://azure.microsoft.com/pricing/free-trial/) kostenlos erstellen.
+Sie können diese Entwicklungs- und Testumgebung im Rahmen Ihres [MSDN-Abonnements](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) oder eines Azure-Abonnements kostenlos erstellen.
 
 Der nächste Schritt besteht darin, eine Branchenanwendung mit hoher Verfügbarkeit in Azure zu erstellen.
 
@@ -53,37 +52,37 @@ Die grundlegende, repräsentative Konfiguration für eine Branchenanwendung mit 
 Sie besteht aus folgenden Elementen:
 
 - Eine nur im Intranet verfügbare Branchenanwendung mit zwei Servern auf Web- und Datenbankebene.
-- Eine SQL Server AlwaysOn-Konfiguration mit zwei virtuellen Computern, auf denen SQL Server ausgeführt wird, sowie einem Hauptknotencomputer in einem Cluster.
+- Eine SQL Server AlwaysOn-Konfiguration mit zwei virtuellen Computern, auf denen SQL Server ausgeführt wird, sowie einem Hauptknotencomputer in einem Cluster.
 - Active Directory-Domänendienste im virtuellen Netzwerk mit zwei Replikatdomänencontrollern.
 
 Eine Übersicht über die Branchenanwendungen finden Sie unter [Architekturblaupause für Branchenanwendungen](http://msdn.microsoft.com/dn630664).
 
 Verwenden Sie zum Bereitstellen dieser Konfiguration das folgende Verfahren:
 
-- Phase 1: Konfigurieren von Azure 
+- Phase 1: Konfigurieren von Azure 
 
-	Verwenden Sie Azure PowerShell, um die Speicherkonten, Verfügbarkeitsgruppen und ein standortübergreifendes virtuelles Netzwerk zu erstellen. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 1](virtual-machines-windows-ps-lob-ph1.md).
+	Verwenden Sie Azure PowerShell, um die Speicherkonten, Verfügbarkeitsgruppen und ein standortübergreifendes virtuelles Netzwerk zu erstellen. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 1](virtual-machines-windows-ps-lob-ph1.md).
 
-- Phase 2: Konfigurieren der Domänencontroller
+- Phase 2: Konfigurieren der Domänencontroller
 
-	Konfigurieren Sie zwei Active Directory-Replikatdomänencontroller und DNS-Einstellungen für das virtuelle Netzwerk. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 2](virtual-machines-windows-ps-lob-ph2.md).
+	Konfigurieren Sie zwei Active Directory-Replikatdomänencontroller und DNS-Einstellungen für das virtuelle Netzwerk. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 2](virtual-machines-windows-ps-lob-ph2.md).
 
-- Phase 3: Konfigurieren der SQL Server-Infrastruktur
+- Phase 3: Konfigurieren der SQL Server-Infrastruktur
 
-	Erstellen Sie die virtuellen Computer, auf denen SQL Server ausgeführt werden soll, sowie den Cluster. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 3](virtual-machines-windows-ps-lob-ph3.md).
+	Erstellen Sie die virtuellen Computer, auf denen SQL Server ausgeführt werden soll, sowie den Cluster. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 3](virtual-machines-windows-ps-lob-ph3.md).
 
-- Phase 4: Konfigurieren der Webserver
+- Phase 4: Konfigurieren der Webserver
 
-	Erstellen Sie die virtuellen Webservercomputer, und fügen Sie Ihre Branchenanwendung hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 4](virtual-machines-windows-ps-lob-ph4.md).
+	Erstellen Sie die virtuellen Webservercomputer, und fügen Sie Ihre Branchenanwendung hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 4](virtual-machines-windows-ps-lob-ph4.md).
 
-- Phase 5: Konfigurieren einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe
+- Phase 5: Konfigurieren einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe
 
-	Bereiten Sie die Anwendungsdatenbanken vor, erstellen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, und fügen Sie dann die Anwendungsdatenbanken hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
+	Bereiten Sie die Anwendungsdatenbanken vor, erstellen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, und fügen Sie dann die Anwendungsdatenbanken hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
 
-Nach der Konfiguration können Sie diese Branchenanwendung problemlos erweitern, indem Sie dem Cluster weitere Webserver oder virtuelle Computer hinzufügen, auf denen SQL Server ausgeführt wird.
+Nach der Konfiguration können Sie diese Branchenanwendung problemlos erweitern, indem Sie dem Cluster weitere Webserver oder virtuelle Computer hinzufügen, auf denen SQL Server ausgeführt wird.
 
 ## Nächster Schritt
 
 - Verschaffen Sie sich einen [Überblick](virtual-machines-windows-lob-overview.md) über den Produktions-Workload, bevor Sie sich die Konfiguration näher anschauen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

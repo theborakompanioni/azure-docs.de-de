@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Bereitstellen von Multi-NIC-VMs mithilfe einer Vorlage in Ressourcen-Manager | Microsoft Azure"
    description="Erfahren Sie, wie Sie Multi-NIC-VMs mithilfe einer Vorlage in Ressourcen-Manager bereitstellen"
    services="virtual-network"
@@ -229,20 +229,20 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 
 		New-AzureRmResourceGroup -Name IaaSStory-Backend -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json' `
-		    -TemplateParameterFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json'	
+		    -TemplateParameterFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json'
 
 	Erwartete Ausgabe:
 
 		ResourceGroupName : IaaSStory-Backend
 		Location          : westus
 		ProvisioningState : Succeeded
-		Tags              : 
-		Permissions       : 
+		Tags              :
+		Permissions       :
 		                    Actions  NotActions
 		                    =======  ==========
 		                    *                  
-		                    
-		Resources         : 
+
+		Resources         :
 		                    Name                 Type                                 Location
 		                    ===================  ===================================  ========
 		                    ASDB                 Microsoft.Compute/availabilitySets   westus  
@@ -253,14 +253,14 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 		                    NICDB-RA-1           Microsoft.Network/networkInterfaces  westus  
 		                    NICDB-RA-2           Microsoft.Network/networkInterfaces  westus  
 		                    wtestvnetstorageprm  Microsoft.Storage/storageAccounts    westus  
-		                    
+
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend
 
 ## Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle
 
 Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die unten beschriebenen Schritte aus.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](xplat-cli.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **`azure config mode`** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
 
 		azure config mode arm
@@ -292,4 +292,4 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

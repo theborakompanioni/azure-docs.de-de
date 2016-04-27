@@ -3,7 +3,7 @@
    description="Erste Schritte zum Herstellen von Verbindungen mit SQL Data Warehouse für das Ausführen von Abfragen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
+   authors="sonyama"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/23/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.author="sonyama;barbkess"/>
 
 # Verbinden und Abfragen mit Visual Studio
 
@@ -34,7 +34,7 @@ In dieser exemplarischen Vorgehensweise wird das Verbinden mit und Abfragen eine
 
 ## Abrufen des vollqualifizierten Namens des SQL Azure-Servers
 
-Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers ( ***Servername**.database.windows.net* ), auf dem sich die Datenbank befindet.
+Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers (***Servername**.database.windows.net*), auf dem sich die Datenbank befindet.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zu der Datenbank, mit der Sie eine Verbindung herstellen möchten.
@@ -79,9 +79,9 @@ Da wir jetzt unseren Server registriert haben, fahren wir mit dem Schreiben eine
 
 ## Nächste Schritte
 
-Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [eine Verbindung mit Power BI herzustellen][].
+Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [eine Verbindung mit Power BI herzustellen][].
 
-[eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
+[eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
 
 
 <!--Image references-->
@@ -91,4 +91,4 @@ Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versu
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

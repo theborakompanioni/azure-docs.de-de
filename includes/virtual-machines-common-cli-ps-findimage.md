@@ -96,7 +96,7 @@ Jetzt können Sie genau das Datenträgerabbild auswählen, das Sie verwenden mö
 
 Geben Sie bei Verwendung von PowerShell `Switch-AzureMode AzureResourceManager` ein. Ausführlichere Informationen zum Aktualisieren und Konfigurieren finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit dem Ressourcen-Manager](../articles/xplat-cli-azure-resource-manager.md) und [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../articles/powershell-azure-resource-manager.md).
 
-> [AZURE.NOTE] In den Azure PowerShell-Modulen nach Version 1.0 wurde das Cmdlet `Switch-AzureMode` entfernt. Ersetzen Sie ab dieser Version in den nachfolgenden Befehlen den `Azure`-Teil durch `AzureRm`. Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager` ausführen.
+> [AZURE.NOTE] In den Azure PowerShell-Modulen nach Version 1.0 wurde das Cmdlet `Switch-AzureMode` entfernt. Ersetzen Sie ab dieser Version in den nachfolgenden Befehlen den `Azure`-Teil durch `AzureRm`. Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager` ausführen.
 
 
 Wenn Sie mit dem Azure-Ressourcen-Manager einen neuen virtuellen Computer erstellen, kann es sein, dass Sie in einigen Fällen ein Datenträgerabbild mit den folgenden Datenträgerabbild-Eigenschaften angeben müssen:
@@ -176,11 +176,6 @@ Für das Angebot „WindowsServer“:
 
 Wenn Sie den gewählten SKU-Namen aus dieser Liste kopieren, erhalten Sie alle Informationen für das PowerShell-Cmdlet **Set-AzureVMSourceImage** oder für eine Vorlagendatei einer Ressourcengruppe, für die Sie den Herausgeber, das Angebot und die SKU für ein Images angeben müssen.
 
-### Exemplarische Vorgehensweise per Video
-
-Dieses Video zeigt die oben genannten Schritte mithilfe von PowerShell.
-
-[AZURE.VIDEO virtual-machines-linux-cli-ps-findimage-posh]
 
 
 <!--Image references-->
@@ -194,4 +189,4 @@ Dieses Video zeigt die oben genannten Schritte mithilfe von PowerShell.
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

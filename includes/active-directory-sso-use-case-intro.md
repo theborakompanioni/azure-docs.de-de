@@ -17,8 +17,8 @@ Mit Azure AD können Sie Ihre Apps und die bereitgestellten Konten integrieren. 
 
 - Wenn die App nicht im Katalog enthalten ist, können Sie die meisten Apps weiterhin in Azure AD als benutzerdefinierte App einrichten. Dies erfordert etwas mehr technisches Fachwissen bei der Konfiguration. Sie können jede Anwendung hinzufügen, die SAML 2.0 als Verbund-App unterstützt, oder jede Anwendung für die kennwortbasierte einmalige Anmeldung, die über eine HTML-basierte Anmeldeseite verfügt.
 
-Für den Fall, dass Benutzer ihre eigenen Konten für SaaS-Apps erstellt haben, die von der IT nicht verwaltetet werden, bietet das Tool [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md) eine Lösung. Dieses Tool überwacht den Internetdatenverkehr, um festzustellen, welche Apps in der gesamten Organisation von wie vielen Personen verwendet werden. Anhand dieser Informationen kann die IT feststellen, welche Apps von den Benutzern bevorzugt werden, und entscheiden, welche für SSO in Azure AD integriert werden sollen.
+Für den Fall, dass Benutzer ihre eigenen Konten für SaaS-Apps erstellt haben, die von der IT nicht verwaltetet werden, bietet das Tool [Cloud App Discovery](../articles/active-directory/active-directory-cloudappdiscovery-whatis.md) eine Lösung. Dieses Tool überwacht den Internetdatenverkehr, um festzustellen, welche Apps in der gesamten Organisation von wie vielen Personen verwendet werden. Anhand dieser Informationen kann die IT feststellen, welche Apps von den Benutzern bevorzugt werden, und entscheiden, welche für SSO in Azure AD integriert werden sollen.
 
 Wenn Sie eine Anwendung in Azure AD integrieren, können Sie die eingerichteten Anwendungsidentitäten der Benutzer den jeweiligen Azure AD-Identitäten zuordnen.
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/24/2016"
+	ms.date="04/07/2016"
 	ms.author="genli"/>
 
 #  Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen
@@ -44,6 +44,8 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Wie funktionieren Azure-SLAs mit aktuellen lokalen Microsoft-Lizenzvereinbarungen?](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
 **Abonnements**
+
+- [Ich kann mich nicht beim Azure-Portal anmelden](#i-am-unable-to-log-in-to-the-azure-portal)
 
 - [Wie erwerbe ich Azure-Support?](#how-do-i-purchase-azure-support)
 
@@ -123,21 +125,21 @@ Anweisungen zum Verwenden einer anderen Kreditkarte als Zahlungsmethode oder zum
 
 ### Wie werden wir vorab über den Ausfall des Diensts aufgrund einer geplanten Wartung informiert?
 
-Unsere SLA für Verfügbarkeit gilt für Kundenanwendungen, für die mindestens zwei Rolleninstanzen verwendet werden. Es ist keine SLA für Einzelinstanzen. Ausführliche Informationen finden Sie auf der [SLA-Seite](https://azure.microsoft.com/support/legal/sla/).
+Unsere SLA für Verfügbarkeit gilt für Kundenanwendungen, für die mindestens zwei Rolleninstanzen verwendet werden. Es ist keine SLA für Einzelinstanzen. Ausführliche Informationen finden Sie auf Ihrer [SLA-Seite](https://azure.microsoft.com/support/legal/sla/).
 
-**Geplante Wartung (klassisches Portal)**: Bei Konfigurationen mit einzelnen und mehreren Instanzen informiert Azure im Voraus per E-Mail über geplante Wartungsarbeiten (bei Einzelinstanzen erfolgt die Benachrichtigung eine Woche im Voraus, bei mehreren Instanzen 48 Stunden im Voraus). Diese E-Mail wird an die E-Mail-Konten des Kontoadministrators, Dienstadministrators und Co-Administrators gesendet, die im Abonnement angegeben sind.
+**Geplante Wartung (klassisches Portal)**: Bei Konfigurationen mit einzelnen und mehreren Instanzen informiert Sie Azure im Voraus per E-Mail über geplante Wartungsarbeiten (bei Einzelinstanzen erfolgt die Benachrichtigung eine Woche im Voraus, bei mehreren Instanzen 48 Stunden im Voraus). Diese E-Mail wird an die E-Mail-Konten des Kontoadministrators, Dienstadministrators und Co-Administrators gesendet, die im Abonnement angegeben sind.
 
-**HINWEIS:** Weitere Informationen zu virtuellen Computern finden Sie im Artikel [Geplante Wartung für virtuelle Azure-Computer](virtual-machines/virtual-machines-linux-planned-maintenance.md).
+**HINWEIS:** Weitere Informationen speziell zu virtuellen Computern finden Sie im Artikel [Geplante Wartung für virtuelle Azure-Computer](virtual-machines/virtual-machines-linux-planned-maintenance.md).
 
-**Nicht geplante Wartung:** Im Falle einer nicht geplanten Dienstunterbrechung auf der Azure Platform werden Statusinformationen auf unserem [Dienstdashboard](http://status.azure.com/) bereitgestellt, darüber hinaus werden Kunden im [klassischen Azure-Portal](https://manage.windowsazure.com/) benachrichtigt.
+**Nicht geplante Wartung:** Im Falle einer nicht geplanten Dienstunterbrechung auf der Azure Platform werden Statusinformationen auf unserem [Servicedashboard](http://status.azure.com/) bereitgestellt, darüber hinaus werden Kunden im [klassischen Azure-Portal](https://manage.windowsazure.com/) benachrichtigt.
 
 ### Was lautet die Azure-SLA für Verfügbarkeit und Konnektivität?
 
-Azure hat separate SLAs für alle Dienste, die allgemein verfügbar sind und sich nicht in der Vorschauphase befinden. In der Vereinbarung zum Servicelevel (SLA) ist die garantierte Verfügbarkeit und Konnektivität beschrieben, die Microsoft zusichert. Aktuelle Informationen finden Sie auf der [SLA-Seite](https://azure.microsoft.com/support/legal/sla/).
+Azure hat separate SLAs für alle Dienste, die allgemein verfügbar sind und sich nicht in der Vorschauphase befinden. In der Vereinbarung zum Servicelevel (SLA) ist die garantierte Verfügbarkeit und Konnektivität beschrieben, die Microsoft zusichert. Aktuelle Informationen finden Sie auf Ihrer [SLA-Seite](https://azure.microsoft.com/support/legal/sla/).
 
 ### Was sind Azure-SLA-Guthaben?
 
-Azure-SLA-Guthaben werden pro Abonnement als Prozentsatz der Rechnung für diesen Dienst im Abrechnungsmonat der nicht erfüllten SLA berechnet. Die Dienstguthaben werden auf die Rechnung des nachfolgenden Monats angerechnet. Allgemein stellen wir 10 % Guthaben bereit, wenn wir unter den ersten Schwellenwert (je nach Dienst 99,95 % oder 99,9 %) fallen, und 25 %, wenn wir unter den nachfolgenden Schwellenwert (99 %) fallen. Ausführliche Informationen finden Sie auf der [SLA-Seite](https://azure.microsoft.com/support/legal/sla/).
+Azure-SLA-Guthaben werden pro Abonnement als Prozentsatz der Rechnung für diesen Dienst im Abrechnungsmonat der nicht erfüllten SLA berechnet. Die Dienstguthaben werden auf die Rechnung des nachfolgenden Monats angerechnet. Allgemein stellen wir 10 % Guthaben bereit, wenn wir unter den ersten Schwellenwert (je nach Dienst 99,95 % oder 99,9 %) fallen, und 25 %, wenn wir unter den nachfolgenden Schwellenwert (99 %) fallen. Ausführliche Informationen finden Sie auf Ihrer [SLA-Seite](https://azure.microsoft.com/support/legal/sla/).
 
 ### Wie funktionieren Azure-SLAs mit aktuellen lokalen Microsoft-Lizenzvereinbarungen?
 
@@ -145,8 +147,16 @@ Azure-SLAs sind von unseren lokalen Microsoft-Lizenzvereinbarungen unabhängig. 
 
 ## Abonnements
 
+### Ich kann mich nicht beim Azure-Portal anmelden
+
+Der folgende Artikel hilft Ihnen bei der Problembehandlung einiger häufiger Ursachen bei Anmeldeproblemen:
+
+[Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten](billing-cannot-login-subscription.md)
+
+**Hinweis** Stellen Sie sicher, dass Sie sich als der jeweils passende Administrator anmelden: Ein Kontoadministrator kann nur auf das [Kontocenter](https://account.windowsazure.com/) zugreifen, während Dienstadministratoren und Co-Administratoren nur Zugriff auf das [Azure-Portal](https://portal.azure.com/) oder das [klassische Azure-Portal](https://manage.windowsazure.com/) haben.
+
 ### Wie erwerbe ich Azure-Support?
-Azure-Supportpläne können entweder online oder über ein Enterprise Agreement erworben werden. Die Pläne „Developer“, „Standard“ oder „Professional Direct Support“ stehen online über die Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/) zur Verfügung. Sie müssen über ein Microsoft Azure-Konto verfügen, um einen Supportplan zu erwerben.
+Azure-Supportpläne können entweder online oder über ein Enterprise Agreement erworben werden. Die Pläne „Developer“, „Standard“ oder „Professional Direct Support“ stehen online über die Seite [Azure-Support für Kunden](https://azure.microsoft.com/support/plans/) zur Verfügung. Sie müssen über ein Microsoft Azure-Konto verfügen, um einen Supportplan zu erwerben.
 
 Wenn Sie Microsoft Azure über ein Enterprise Agreement (EA) erwerben, können Sie entweder einen Standard- oder Professional Direct-Supportplan zu Ihrem Enterprise Agreement hinzufügen. Wenden Sie sich hierzu an Ihren Large Account Reseller (LAR). Developer Support steht über ein Enterprise Agreement nicht zur Verfügung.
 
@@ -160,7 +170,7 @@ Auf ein Microsoft Azure-Konto kann über das [Azure-Kontocenter](https://account
 
 ### Wie führe ich ein Upgrade auf einen höheren Azure-Supportplan durch?
 
-Sie können durch [Senden einer Supportanfrage](billing-how-to-create-billing-support-ticket.md) und Auswählen von „Abonnementverwaltung“ ein Upgrade auf einen höheren Supportplan durchführen. Microsoft verzichtet auf die verbleibenden Zahlungen für Ihren ursprünglichen Azure-Supportplan und rechnet für die verbleibenden Monate der ursprünglichen Vereinbarung nach dem höheren Tarif ab.
+Sie können durch [Senden einer Supportanfrage](billing-how-to-create-billing-support-ticket.md) und Auswählen einer „Abonnementverwaltung“ ein Upgrade auf einen höheren Supportplan durchführen. Microsoft verzichtet auf die verbleibenden Zahlungen für Ihren ursprünglichen Azure-Supportplan und rechnet für die verbleibenden Monate der ursprünglichen Vereinbarung nach dem höheren Tarif ab.
 
 ### Wann wird der Azure-Support abgerechnet?
 
@@ -200,14 +210,14 @@ Informationen zu den Vorteilen von Azure-Diensten finden Sie unter [Microsoft Az
 
 ### Wie ändere ich meinen Tarif?
 
-Sie können Ihr Abonnement mit nutzungsbasierter Bezahlung auf das [12-Monatsangebot mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/) umstellen. Bei diesem Angebot leisten Sie eine Vorauszahlung für Azure-Dienste mit einer Abonnementlaufzeit von 12 Monaten und erhalten einen Rabatt in Höhe von 5 % auf genutzte Azure-Dienste. Wechseln Sie im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) zu Ihrem Abonnement, und klicken Sie auf „Angebot wechseln“. Dies ist derzeit das einzige Angebot, das im Konto Center gewechselt werden kann. Alternativ können Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, um zu einem anderen Angebot zu wechseln.
+Sie können Ihr Abonnement mit nutzungsbasierter Bezahlung auf das [12-Monatsangebot mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/) umstellen. Bei diesem Angebot leisten Sie eine Vorauszahlung für Azure-Dienste mit einer Abonnementlaufzeit von 12 Monaten und erhalten einen Rabatt in Höhe von 5 % auf genutzte Azure-Dienste. Wechseln Sie im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) zu Ihrem Abonnement, und klicken Sie auf „Angebot wechseln“. Dies ist derzeit das einzige Angebot, das im Konto Center gewechselt werden kann. Alternativ können Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, um zu einem anderen Angebot zu wechseln.
 
 ### Können Benachrichtigungen an eine andere E-Mail-Adresse als die E-Mail-Adresse des Kontoinhabers, die meinem Konto zugeordnet ist, gesendet werden?
 
 Ja. Wenn Sie eine andere E-Mail-Adresse für den Erhalt von Benachrichtigungen angeben möchten, folgen Sie diesen Anweisungen:
 
 1.	Wechseln Sie im Azure-Kontoportal zur Registerkarte [Profil](https://account.windowsazure.com/Profile).
-2.	Klicken Sie auf **Details bearbeiten**, um Ihre E-Mail-Adresse zum Erhalt von Benachrichtigungen zu ändern.
+2.	Klicken Sie auf **Details bearbeiten**, um Ihre E-Mail-Adresse zum Empfangen von Benachrichtigungen zu ändern.
 
 ### Wie kann ich die Zahlungsinformationen für meine Azure-Abonnements bearbeiten?
 
@@ -236,7 +246,7 @@ Azure richtet sich an Unternehmen, die Anwendungen und Dienste in der Cloud erst
 
 ### Kann ich Azure kostenlos testen, ohne dass mir Gebühren in Rechnung gestellt werden?
 
-Ja. Mit dem Feature [Ausgabenlimit](https://azure.microsoft.com/pricing/spending-limits/) können Kunden, die sich für eine kostenlose Testversion oder ein MSDN-, MPN- oder BizSpark-Angebot registrieren, Azure nutzen, ohne dass ihnen Gebühren für eine Nutzung entstehen, solange das Feature „Ausgabenlimit“ aktiviert ist. Informationen zur Registrierung für Azure finden Sie im Artikel [Registrieren für ein Azure-Abonnement oder Erwerben, Upgraden und Aktivieren eines Azure-Abonnements](billing-buy-sign-up-azure-subscription.md).
+Ja. Mit dem Feature [Ausgabenlimit](https://azure.microsoft.com/pricing/spending-limits/) können Kunden, die sich für eine kostenlose Testversion oder ein MSDN-, MPN- oder BizSpark-Angebot registrieren, Azure nutzen, ohne dass ihnen Gebühren für eine Nutzung entstehen, solange das Feature „Ausgabenlimit“ aktiviert ist. Informationen zur Registrierung für Azure finden Sie im Artikel [Azure-Angebote – Vorteile und Einschränkungen, Registrierung, Erwerb, Upgrade oder Aktivierung](billing-buy-sign-up-azure-subscription.md).
 
 ### Kann ich das Ausgabenlimit wieder aktivieren, nachdem ich es deaktiviert habe?
 
@@ -244,11 +254,11 @@ Kunden mit unserem Sonderangebot für Mitglieder (z. B. MSDN) haben die Möglich
 
 ### Kann der Betrag des Ausgabenlimits angepasst werden?
 
-Für die erste Version dieses Features gilt, dass das Ausgabenlimit auf $ 0 festgelegt ist und nicht angepasst werden kann. Das Feature wurde entwickelt, um Kunden, die sich für eine kostenlose Testversion oder ein MSDN-, MPN- oder BizSpark-Angebot registrieren, die Nutzung von Azure zu ermöglichen, ohne dass diese Nutzung in Rechnung gestellt wird. Weitere Informationen finden Sie unter „Ändern des Azure-Ausgabenlimits“(https://azure.microsoft.com/pricing/spending-limits/)).
+Für die erste Version dieses Features gilt, dass das Ausgabenlimit auf $ 0 festgelegt ist und nicht angepasst werden kann. Das Feature wurde entwickelt, um Kunden, die sich für eine kostenlose Testversion oder ein MSDN-, MPN- oder BizSpark-Angebot registrieren, die Nutzung von Azure zu ermöglichen, ohne dass diese Nutzung in Rechnung gestellt wird. Weitere Informationen finden Sie unter „Ändern des Azure-Ausgabenlimits“(https://azure.microsoft.com/pricing/spending-limits/)).
 
 ### In welchen Ländern und Regionen ist Microsoft Azure im Handel erhältlich, und in welchen Währungen kann Azure erworben werden?
 
-Azure ist in 140 Ländern weltweit erhältlich. Die Abrechnung ist in zahlreichen Währungen möglich. Klicken Sie [hier](billing-countries-and-currencies.md), um eine Liste der Länder und Währungen anzuzeigen.
+Azure ist in 140 Ländern weltweit erhältlich. Die Abrechnung ist in zahlreichen Währungen möglich. Klicken Sie [hier](billing-countries-and-currencies.md), um eine Liste der Länder und Währungen anzuzeigen.
 
 ### Wird der Weiterverkauf eines Azure-basierten Diensts an Embargoländer unterbunden?
 
@@ -258,4 +268,4 @@ Ja.
 
 Derzeit ist nicht geplant, Azure oder SQL-Datenbank über einen Lizenzvertrag für Microsoft-Dienstanbieter anzubieten.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

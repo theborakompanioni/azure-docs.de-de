@@ -4,7 +4,7 @@
 	services="app-service\api"
 	documentationCenter="java"
 	authors="bradygaster"
-	manager="mohisri" 
+	manager="mohisri"
 	editor="tdykstra"/>
 
 <tags
@@ -295,4 +295,4 @@ Aufbauend auf diesem Beispiel können Sie mehr über das [Storage SDK für Java]
 
 Weitere Informationen zum Verwenden von Java in Azure finden Sie im [Java Developer Center](/develop/java/).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

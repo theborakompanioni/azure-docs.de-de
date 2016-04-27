@@ -29,8 +29,8 @@ Siehe [Problembehandlung für den Statusmonitor](app-insights-monitor-performanc
 
 *Wenn ich in Visual Studio ein neues Projekt erstelle oder im Projektmappen-Explorer mit der rechten Maustaste auf ein vorhandenes Projekt klicke, werden keine Application Insights-Optionen angezeigt.*
 
-+ Nicht alle Typen von .NET-Projekten werden von den Tools unterstützt. Web- und WCF-Projekte werden unterstützt. Für andere Projekttypen, z. B. Desktop- oder Dienstanwendungen, können Sie [Ihrem Projekt trotzdem manuell ein Application Insights-SDK hinzufügen](app-insights-windows-desktop.md).
-+ Stellen Sie sicher, dass Sie über [Visual Studio 2013 Update 3 oder höher](http://go.microsoft.com/fwlink/?LinkId=397827) verfügen. Dies ist bei den Application Insights-Tools vorinstalliert.
++ Nicht alle Typen von .NET-Projekten werden von den Tools unterstützt. Web- und WCF-Projekte werden unterstützt. Für andere Projekttypen, z. B. Desktop- oder Dienstanwendungen, können Sie [Ihrem Projekt trotzdem manuell ein Application Insights-SDK hinzufügen](app-insights-windows-desktop.md).
++ Stellen Sie sicher, dass Sie über [Visual Studio 2013 Update 3 oder höher](http://go.microsoft.com/fwlink/?LinkId=397827) verfügen. Dies ist bei den Application Insights-Tools vorinstalliert.
 + Wählen Sie **Extras** > **Erweiterungen und Updates**, und stellen Sie sicher, dass die **Application Insights-Tools** installiert und aktiviert sind. Wenn dies der Fall ist, klicken Sie auf **Updates**, um zu prüfen, ob ein Update verfügbar ist.
 + Öffnen Sie das Dialogfeld „Neues Projekt“, und wählen Sie die ASP.NET-Webanwendung aus. Wenn die Application Insights-Option hier angezeigt wird, sind die Tools installiert. Wenn nicht, können Sie versuchen, die Application Insights-Tools zu deinstallieren und dann neu zu installieren.
 
@@ -73,11 +73,11 @@ Wahrscheinliche Ursachen:
 
 * Sie haben die Application Insights-Ressource manuell erstellt, oder das Projekt hat einen Typ, der von den Application Insights-Tools nicht unterstützt wird.
 * Die Application Insights-Tools sind in Ihrer Visual Studio-Anwendung deaktiviert.
-* Ihre Visual Studio-Version ist älter als 2013 Update 3.
+* Ihre Visual Studio-Version ist älter als 2013 Update 3.
 
 Behebung:
 
-* Stellen Sie sicher, dass Sie die Visual Studio-Version 2013 Update 3 oder höher verwenden.
+* Stellen Sie sicher, dass Sie die Visual Studio-Version 2013 Update 3 oder höher verwenden.
 * Wählen Sie **Extras** > **Erweiterungen und Updates**, und stellen Sie sicher, dass die **Application Insights-Tools** installiert und aktiviert sind. Wenn dies der Fall ist, klicken Sie auf **Updates**, um zu prüfen, ob ein Update verfügbar ist.
 * Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt. Wenn Sie den Befehl **Application Insights konfigurieren** sehen, können Sie ihn verwenden, um Ihr Projekt mit der Ressource im Application Insights-Dienst zu verbinden.
 
@@ -92,7 +92,7 @@ Andernfalls wird Ihr Projekttyp von den Application Insights-Tools nicht direkt 
 
 Für die Microsoft-Anmeldung, die Sie zuletzt in Ihrem Standardbrowser verwendet haben, besteht kein Zugriff auf [die Ressource, die beim Hinzufügen von Application Insights zu dieser App erstellt wurde](app-insights-asp-net.md). Es gibt zwei wahrscheinliche Ursachen:
 
-* Sie besitzen mehr als ein Microsoft-Konto, z. B. ein Geschäftskonto und ein persönliches Microsoft-Konto. Die Anmeldung, die Sie zuletzt in Ihrem Standardbrowser verwendet haben, gilt für ein anderes Konto als das Konto, für das Zugriff zum [Hinzufügen von Application Insights zum Projekt](app-insights-asp-net.md) besteht. 
+* Sie besitzen mehr als ein Microsoft-Konto, z. B. ein Geschäftskonto und ein persönliches Microsoft-Konto. Die Anmeldung, die Sie zuletzt in Ihrem Standardbrowser verwendet haben, gilt für ein anderes Konto als das Konto, für das Zugriff zum [Hinzufügen von Application Insights zum Projekt](app-insights-asp-net.md) besteht. 
 
  * Behebung: Klicken Sie oben rechts im Browserfenster auf Ihren Namen, und melden Sie sich ab. Melden Sie sich mit dem Konto an, für das Zugriff besteht. Klicken Sie dann in der linken Navigationsleiste auf „Application Insights“, und wählen Sie Ihre App aus.
 
@@ -167,6 +167,12 @@ Die Daten kommen aus Skripts auf den Webseiten.
 
 Weitere Informationen finden Sie unter [Telemetriedaten zu Abhängigkeiten](app-insights-asp-net-dependencies.md) und [Telemetriedaten für Ausnahmen](app-insights-asp-net-exceptions.md).
 
+## Keine Leistungsdaten
+
+Leistungsdaten (CPU, E/A-Rate usw.) sind für [Java-Webdienste](app-insights-java-collectd.md), [Windows-Desktop-Apps](app-insights-windows-desktop.md), [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](app-insights-monitor-performance-live-website-now.md) und [Azure Cloud Services](app-insights-azure.md) verfügbar. Sie finden die Leistungsdaten unter „Einstellungen“ > „Server“.
+
+Für Azure-Websites sind sie dagegen nicht verfügbar.
+
 ## Keine Daten (Serverdaten), seitdem ich die App auf meinem Server veröffentlicht habe
 
 + Überprüfen Sie, ob Sie tatsächlich alle Daten von Microsoft kopiert haben. ApplicationInsights-DLLs auf dem Server, zusammen mit „Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll“
@@ -183,7 +189,7 @@ Weitere Informationen finden Sie unter [Telemetriedaten zu Abhängigkeiten](app-
 
 ## Nicht alle Daten werden erwartungsgemäß angezeigt.
 
-Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, können Sie die [adaptive Stichprobenerstellung](app-insights-sampling.md) nutzen, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird.
+Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die [adaptive Stichprobenerstellung](app-insights-sampling.md) verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird.
 
 Sie können diese Funktion deaktivieren, aber dies ist nicht zu empfehlen. Die Stichprobenerstellung ist so konzipiert, dass die zugehörigen Telemetriedaten zu Diagnosezwecken richtig übertragen werden.
 
@@ -193,10 +199,10 @@ Die Dimensionen für Ort, Region und Land werden von IP-Adressen abgeleitet und 
 
 ## Ausnahme „Methode nicht gefunden“ bei der Ausführung in Azure Cloud Services
 
-Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Services-Rollen unterstützt. [Installieren Sie 4.6 für jede Rolle](../cloud-services/cloud-services-dotnet-install-dotnet.md), bevor Sie Ihre App ausführen.
+Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Services-Rollen unterstützt. [Installieren Sie 4.6 für jede Rolle](../cloud-services/cloud-services-dotnet-install-dotnet.md), bevor Sie Ihre App ausführen.
 
-## Noch nicht funktionsfähig ...
+## Noch nicht funktionsfähig ...
 
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/de-DE/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Schützen von ARM-VMs per Azure Backup | Microsoft Azure"
-	description="Schützen Sie ARM-VMs mit dem Azure Backup-Dienst. Verwenden Sie Sicherungen von ARM-VMs, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure."
+	description="Schützen Sie ARM-VMs mit dem Azure Backup-Dienst. Verwenden Sie Sicherungen virtueller ARM- und Storage Premium-Computer, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
@@ -24,9 +24,16 @@
 - [Sichern von ARM-VMs](backup-azure-vms-first-look-arm.md)
 - [Sichern von VMs im klassischen Modus](backup-azure-vms-first-look.md)
 
-In diesem Tutorial werden Sie durch die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) geführt. Dieses Tutorial ist für die Verwendung mit Recovery Services-Tresoren geeignet, die zum Schützen von VMs auf Basis von IaaS v.2 oder Azure Resource Manager (ARM) genutzt werden können.
+In diesem Tutorial werden Sie durch die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) geführt. Recovery Services-Tresore schützen Folgendes:
 
->[AZURE.NOTE] Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben. Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit Resource Manager und ARM-basierten VMs bestimmt.
+- Support für virtuelle Azure Resource Manager (ARM)-Computer
+- Klassische virtuelle Computer
+- Virtuelle Standardspeichercomputer
+- Virtuelle Storage Premium-Computer
+
+Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie unter [Back up and Restore Premium Storage VMs](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms) (Sichern und Wiederherstellen virtueller Storage Premium-Computer).
+
+>[AZURE.NOTE] Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben. Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Modell](../resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit Resource Manager und ARM-basierten VMs bestimmt.
 
 Dies sind im Allgemeinen die Schritte, die auszuführen sind.
 
@@ -61,7 +68,7 @@ So erstellen Sie einen Recovery Services-Tresor
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 
 5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
@@ -111,7 +118,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-first-look-arm/select-backup-scenario-one.png)
 
-4. Wählen Sie im Blatt „Szenario“ im Menü **Sicherungstyp** die Option **Azure Virtual Machines Backup**, und klicken Sie auf **OK**.
+4. Wählen Sie im Blatt „Szenario“ im Menü **Sicherungstyp** die Option **Azure Virtual Machines Backup** aus, und klicken Sie auf **OK**.
 
     ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-first-look-arm/select-rs-backup-scenario-two.png)
 
@@ -127,7 +134,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![Workload auswählen](./media/backup-azure-vms-first-look-arm/select-vms-to-backup.png)
 
-    Klicken Sie auf **Aktualisieren**, wenn die gewünschte VM nicht in der Liste enthalten ist. Falls die gewünschte VM immer noch nicht angezeigt wird, sollten Sie überprüfen, ob sie an demselben Azure-Standort wie der Recovery Services-Tresor vorhanden ist.
+    Klicken Sie auf **Aktualisieren**, wenn der gewünschte virtuelle Computer nicht in der Liste enthalten ist. Falls die gewünschte VM immer noch nicht angezeigt wird, sollten Sie überprüfen, ob sie an demselben Azure-Standort wie der Recovery Services-Tresor vorhanden ist.
 
 7. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie im Blatt „Sicherung“ unten auf der Seite auf **Sicherung aktivieren**. Die Richtlinie wird im Tresor und auf den VMs bereitgestellt.
 
@@ -140,9 +147,9 @@ Nachdem eine Sicherungsrichtlinie auf dem virtuellen Computer bereitgestellt wur
 
 ![Sicherung ausstehend](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-Falls die erste Sicherung nicht in Kürze durchgeführt wird, ist es ratsam, die Option **Jetzt sichern** auszuführen.
+Falls die erste Sicherung nicht in Kürze durchgeführt wird, empfiehlt es sich, die Option **Jetzt sichern** auszuführen.
 
-So führen Sie **Jetzt sichern** aus
+So führen Sie **Jetzt sichern** aus:
 
 1. Klicken Sie im Tresor-Dashboard auf der Kachel **Sicherung** auf **Azure Virtual Machines**. <br/> ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
 
@@ -172,7 +179,7 @@ So führen Sie **Jetzt sichern** aus
 
 ## Definieren einer Sicherungsrichtlinie
 
-Mit einer Sicherungsrichtlinie wird eine Matrix dafür definiert, wann Datenmomentaufnahmen erstellt werden und wie lange diese Momentaufnahmen aufbewahrt werden. Wenn Sie eine Richtlinie zum Sichern einer VM definieren, können Sie einen Sicherungsauftrag *einmal pro Tag* auslösen. Wenn Sie eine neue Richtlinie erstellen, wird sie auf den Tresor angewendet. Die Oberfläche für die Sicherungsrichtlinie sieht wie folgt aus:
+Mit einer Sicherungsrichtlinie wird eine Matrix dafür definiert, wann Datenmomentaufnahmen erstellt werden und wie lange diese Momentaufnahmen aufbewahrt werden. Wenn Sie eine Richtlinie zum Sichern eines virtuellen Computers definieren, können Sie einen Sicherungsauftrag *einmal pro Tag* auslösen. Wenn Sie eine neue Richtlinie erstellen, wird sie auf den Tresor angewendet. Die Oberfläche für die Sicherungsrichtlinie sieht wie folgt aus:
 
 ![Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/backup-policy-daily-raw.png)
 
@@ -221,8 +228,6 @@ Sobald der VM-Agent auf dem virtuellen Computer installiert wurde, installiert d
 
 Die Sicherungserweiterung wird vom Sicherungsdienst installiert, unabhängig davon, ob der virtuelle Computer ausgeführt wird oder nicht. Bei einem ausgeführten virtuellen Computer besteht zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt. Der Azure Backup-Dienst setzt die Sicherung des virtuellen Computers jedoch auch dann fort, wenn dieser ausgeschaltet wurde und die Erweiterung nicht installiert werden konnte. Dies wird als Offline-VM bezeichnet. In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*.
 
-
-
 ## Informationen zur Problembehandlung
 Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftreten, helfen Ihnen die [Anleitungen zur Problembehandlung](backup-azure-vms-troubleshoot.md) weiter.
 
@@ -230,4 +235,4 @@ Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftrete
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

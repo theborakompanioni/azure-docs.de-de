@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/24/2016" 
+	ms.date="04/11/2016" 
 	ms.author="billmath"/>
 
 # Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
@@ -22,7 +22,7 @@ Als Administrator können Sie die folgenden Einstellungen für Benutzer und Ger�
 
 - [Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen.](#require-selected-users-to-provide-contact-methods-again)
 - [Löschen vorhandener App-Kennwörter eines Benutzers](#delete-users-existing-app-passwords)
-- [Wiederherstellen der MFA auf allen ausgesetzten Geräten für einen Benutzer (öffentliche Vorschau)](#restore-mfa-on-all-suspended-devices-for-a-user)
+- [Wiederherstellen der MFA auf allen ausgesetzten Geräten eines Benutzers](#restore-mfa-on-all-suspended-devices-for-a-user)
 
 
 
@@ -48,7 +48,8 @@ Durch diese Einstellung wird der Benutzer gezwungen, die Registrierung bei der A
 5. Klicken Sie unten auf der Seite auf "Verwalten der Multi-Factor Authentication". Die Seite für die mehrstufige Authentifizierung wird geöffnet.
 6. Suchen Sie den Benutzer, den Sie verwalten möchten, und aktivieren Sie das Kontrollkästchen neben seinem Namen. Sie müssen möglicherweise oben die Ansicht ändern.
 7. Hierdurch wird rechts der Link **Benutzereinstellungen verwalten** angezeigt. Klicken Sie auf diese Schaltfläche.
-8. Aktivieren Sie das Kontrollkästchen ** Bereitstellen der Kontaktmethoden bei ausgewählten Benutzern erneut anfordern**. ![Kontaktmethoden bereitstellen](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
+8. Aktivieren Sie das Kontrollkästchen **Bereitstellen der Kontaktmethoden bei ausgewählten Benutzern erneut anfordern**.
+![Kontaktmethoden bereitstellen](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
 10. Klicken Sie auf "Speichern".
 11. Klicken Sie auf "Schließen".
 
@@ -65,7 +66,8 @@ Dies löscht alle App-Kennwörter, die ein Benutzer erstellt hat. Nicht-Browser-
 5. Klicken Sie unten auf der Seite auf "Verwalten der Multi-Factor Authentication". Die Seite für die mehrstufige Authentifizierung wird geöffnet.
 6. Suchen Sie den Benutzer, den Sie verwalten möchten, und aktivieren Sie das Kontrollkästchen neben seinem Namen. Sie müssen möglicherweise oben die Ansicht ändern.
 7. Hierdurch wird rechts der Link **Benutzereinstellungen verwalten** angezeigt. Klicken Sie auf diese Schaltfläche. 
-8. Aktivieren Sie das Kontrollkästchen **Alle vorhandenen App-Kennwörter löschen, die von den ausgewählten Benutzern erstellt wurden**. ![App-Kennwörter löschen](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
+8. Aktivieren Sie das Kontrollkästchen **Alle vorhandenen App-Kennwörter löschen, die von den ausgewählten Benutzern erstellt wurden**.
+![App-Kennwörter löschen](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
 10. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
@@ -82,8 +84,9 @@ Administratoren haben die Möglichkeit, die Multi-Factor Authentication auf Ger�
 5. Klicken Sie unten auf der Seite auf "Verwalten der Multi-Factor Authentication". Die Seite für die mehrstufige Authentifizierung wird geöffnet.
 6. Suchen Sie den Benutzer, den Sie verwalten möchten, und aktivieren Sie das Kontrollkästchen neben seinem Namen. Sie müssen möglicherweise oben die Ansicht ändern.
 7. Hierdurch wird rechts der Link **Benutzereinstellungen verwalten** angezeigt. Klicken Sie auf diese Schaltfläche.
-8. Aktivieren Sie das Kontrollkästchen **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen**. ![App-Kennwörter löschen](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
+8. Aktivieren Sie das Kontrollkästchen **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen**.
+![App-Kennwörter löschen](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Hinzufügen der SQL Azure-API zu Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die SQL Azure-API und REST-API-Parameter"
+	pageTitle="Hinzufügen der SQL Azure-API zu Ihren Logik-Apps | Microsoft Azure"
+	description="Übersicht über die SQL Azure-API und REST-API-Parameter"
 	services=""
 	documentationCenter="" 
 	authors="MandiOhlinger"
@@ -19,18 +19,18 @@
 
 
 # Erste Schritte mit der SQL Azure-API
-Stellen Sie eine Verbindung mit SQL Azure her, um Tabellen und Zeilen zu verwalten, z. B. Einfügen von Zeilen, Abrufen von Tabellen usw.
+Stellen Sie eine Verbindung mit SQL Azure her, um Tabellen und Zeilen zu verwalten, z. B. Einfügen von Zeilen, Abrufen von Tabellen usw.
 
-Die SQL Azure-API kann in Folgendem verwendet werden:
+Die SQL Azure-API kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [SQL-Connector](../app-service-logic/app-service-logic-connector-sql.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Mit SQL Azure können Sie folgende Aktionen ausführen:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die über SQL Azure abgerufen werden. 
-- Verwenden Sie Aktionen zum Abrufen einer Zeile, Einfügen einer Zeile usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. eine Datenzeile aus SQL Azure abrufen und dann die Daten in Excel hinzufügen. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die über SQL Azure abgerufen werden. 
+- Verwenden Sie Aktionen zum Abrufen einer Zeile, Einfügen einer Zeile usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. eine Datenzeile aus SQL Azure abrufen und dann die Daten in Excel hinzufügen. 
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -51,7 +51,7 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte e
 | ---|---|---|
 |SQL-Verbindungszeichenfolge|Ja|Geben Sie Ihre SQL Azure-Verbindungszeichenfolge ein.|
 
-Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ein, z. B. den Tabellennamen. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ein, z. B. den Tabellennamen. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -225,6 +225,6 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

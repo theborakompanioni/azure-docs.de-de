@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/14/2016"
+	ms.date="04/06/2016"
 	ms.author="robinsh"/>
 
 # End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollen sowie AzCopy und Message Analyzer
@@ -35,6 +35,8 @@ Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, könne
 	- **Speichermetriken** zeichnet Transaktions- und Kapazitätsmetriken für das Speicherkonto auf. Mithilfe von Metriken können Sie die Leistung Ihrer Anwendung anhand einer Vielzahl verschiedener Messwerte bestimmen. Weitere Informationen zu den Arten der von der Speicheranalyse erfassten Metriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](http://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 	- **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343259.aspx).
+
+> [AZURE.NOTE] Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert.
 
 - **Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [Azure-Portal](https://portal.azure.com) konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht.
 
@@ -339,17 +341,17 @@ Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Da
 | Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange | AzureStorageClientDotNetV4.Description contains "Retrying failed operation." | Client |
 | HTTP-Zunahme von PercentThrottlingError | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | Netzwerk |
 | Zunahme von PercentTimeoutError | HTTP.Response.StatusCode == 500 | Netzwerk |
-| Zunahme von PercentTimeoutError (alle) |    *StatusCode == 500 | All |
-| Zunahme von PercentNetworkError | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client |
-| HTTP 403 (Verboten)-Meldungen | HTTP.Response.StatusCode == 403 | Network |
-| HTTP 404 (Nicht gefunden)-Meldungen | HTTP.Response.StatusCode == 404 | Network |
-| 404 (Alle) | *StatusCode == 404 | All |
-| Autorisierungsproblem für Shared Access Signature (SAS) | AzureStorageLog.RequestStatus == "SASAuthorizationError" | Network |
-| HTTP 409 (Konflikt)-Meldungen | HTTP.Response.StatusCode == 409 | Network |
-| 409 (Alle) | *StatusCode == 409 | All |
-| „Low PercentSuccess“ oder Analyseprotokolleinträge verfügen über Vorgänge mit Transaktionsstatus „ClientOtherErrors“ | AzureStorageLog.RequestStatus == "ClientOtherError" | Server |
-| Nagle-Warnung | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | Server |
-| Zeitraum in Server- und Netzwerkprotokollen | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | Server, Network |
+| Zunahme von PercentTimeoutError (alle) |    *StatusCode == 500 | All | 
+| Zunahme von PercentNetworkError | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client | 
+| HTTP 403 (Verboten)-Meldungen | HTTP.Response.StatusCode == 403 | Network | 
+| HTTP 404 (Nicht gefunden)-Meldungen | HTTP.Response.StatusCode == 404 | Network | 
+| 404 (Alle) | *StatusCode == 404 | All | 
+| Autorisierungsproblem für Shared Access Signature (SAS) | AzureStorageLog.RequestStatus == "SASAuthorizationError" | Network | 
+| HTTP 409 (Konflikt)-Meldungen | HTTP.Response.StatusCode == 409 | Network | 
+| 409 (Alle) | *StatusCode == 409 | All | 
+| „Low PercentSuccess“ oder Analyseprotokolleinträge verfügen über Vorgänge mit Transaktionsstatus „ClientOtherErrors“ | AzureStorageLog.RequestStatus == "ClientOtherError" | Server | 
+| Nagle-Warnung | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | Server | 
+| Zeitraum in Server- und Netzwerkprotokollen | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | Server, Network | 
 | Zeitraum in Serverprotokollen | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | Server |
 
 
@@ -363,4 +365,4 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

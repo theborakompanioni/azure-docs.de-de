@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Verwalten von Benutzerkonten in Azure API Management" 
+	pageTitle="Verwalten von Benutzerkonten in Azure API Management | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Benutzer in Azure API Management erstellen und einladen." 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="04/12/2016" 
 	ms.author="sdanie"/>
 
 # Verwalten von Benutzerkonten in Azure API Management
 
-In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben.
+In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://msdn.microsoft.com/library/azure/dn776330.aspx) in der Referenz zu [REST-API-Management](https://msdn.microsoft.com/library/azure/dn776326.aspx).
 
 ## <a name="create-developer"> </a>Erstellen eines neuen Entwicklers
 
@@ -60,9 +60,25 @@ Nachdem die Einladung angenommen wurde, ist das Konto aktiv.
 
 ## <a name="block-developer"> </a>Deaktivieren oder erneutes Aktivieren eines Entwicklerkontos
 
-Neu erstellte oder eingeladene Entwicklerkonten sind standardmäßig **Aktiv**. Klicken Sie auf **Blockieren**, um ein Entwicklerkonto zu deaktivieren. Klicken Sie auf **Aktivieren**, um ein blockiertes Entwicklerkonto erneut zu aktivieren. Blockierte Entwicklerkonten haben keinen Zugriff auf das Entwicklerportal und können keine APIs aufrufen.
+Neu erstellte oder eingeladene Entwicklerkonten sind standardmäßig **Aktiv**. Klicken Sie auf **Blockieren**, um ein Entwicklerkonto zu deaktivieren. Klicken Sie auf **Aktivieren**, um ein blockiertes Entwicklerkonto erneut zu aktivieren. Blockierte Entwicklerkonten haben keinen Zugriff auf das Entwicklerportal und können keine APIs aufrufen. Klicken Sie zum Löschen eines Benutzerkontos auf **Löschen**.
 
 ![Entwickler blockieren][api-management-new-developer]
+
+## Zurücksetzen des Benutzerkennworts
+
+Klicken Sie zum Zurücksetzen des Kennworts für ein Benutzerkonto auf den Namen des Kontos.
+
+![Kennwort zurücksetzen][api-management-view-developer]
+
+Klicken Sie auf **Kennwort zurücksetzen**, um einen Link an den Benutzer zu senden, mit dem das Kennwort zurückgesetzt werden kann.
+
+![Kennwort zurücksetzen][api-management-reset-password]
+
+Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://msdn.microsoft.com/library/azure/dn776330.aspx) in der Referenz zu [REST-API-Management](https://msdn.microsoft.com/library/azure/dn776326.aspx). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://msdn.microsoft.com/library/azure/dn776330.aspx#UpdateUser) verwenden und das gewünschte Kennwort angeben.
+
+## Ausstehende Bestätigung
+
+![Ausstehende Bestätigung][api-management-pending-verification]
 
 ## <a name="next-steps"> </a>Nächste Schritte
 
@@ -76,7 +92,10 @@ Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen 
 [api-management-new-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-new-developer.png
 [api-management-invite-developer-window]: ./media/api-management-howto-create-or-invite-developers/api-management-invite-developer-window.png
 [api-management-invite-developer-confirmation]: ./media/api-management-howto-create-or-invite-developers/api-management-invite-developer-confirmation.png
-[api-management-]: ./media/api-management-howto-create-or-invite-developers/api-management-.png
+[api-management-pending-verification]: ./media/api-management-howto-create-or-invite-developers/api-management-pending-verification.png
+[api-management-view-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-view-developer.png
+[api-management-reset-password]: ./media/api-management-howto-create-or-invite-developers/api-management-reset-password.png
+: ./media/api-management-howto-create-or-invite-developers/.png
 
 
 
@@ -91,4 +110,4 @@ Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen 
 [Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 [E-Mail-Vorlagen konfigurieren]: api-management-howto-configure-notifications.md#email-templates
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

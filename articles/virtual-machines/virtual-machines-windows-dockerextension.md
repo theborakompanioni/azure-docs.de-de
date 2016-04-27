@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Die Docker-Erweiterung für virtuelle Linux-Computer auf Azure"
-	description="Beschreibt Docker und Container sowie die Azure Virtual Machines-Erweiterungen und verweist auf weitere Ressourcen zum Erstellen von Docker-Containern über die Azure-Befehlszeilenschnittstelle und über das Portal."
+	description="Beschreibt Docker und Container sowie die Azure Virtual Machines-Erweiterungen und verweist auf weitere Ressourcen zum Erstellen von Docker-Containern über die Azure-Befehlszeilenschnittstelle und das Azure-Portal."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="squillace"
@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-dockerextension](../../includes/virtual-machines-common-dockerextension.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

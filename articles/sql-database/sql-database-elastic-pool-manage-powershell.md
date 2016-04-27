@@ -32,9 +32,6 @@ Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Client
 
 Sie müssen Azure PowerShell 1.0 oder höher installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-
-
-
 ## Erstellen einer neuen elastischen Datenbank in einem Pool
 
 Verwenden Sie zum direkten Erstellen einer neuen Datenbank in einem Pool das Cmdlet [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx), und legen Sie den **ElasticPoolName**-Parameter fest.
@@ -132,6 +129,12 @@ Exportieren in eine CSV-Datei:
     foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
 
 
+## Latenzzeit der elastischen Poolvorgänge
+
+- Änderungen der garantierten eDTUs pro Datenbank (DatabaseDtuMin) oder der maximalen eDTUs pro Datenbank (DatabaseDtuMax) werden normalerweise innerhalb von maximal fünf Minuten abgeschlossen.
+- Änderungen der eDTU/Speicherbegrenzungen (Dtu) des Pools hängen von der Gesamtmenge des Speicherplatzes aller Datenbanken im Pool ab. Änderungen dauern durchschnittlich 90 Minuten oder weniger pro 100 GB. Wenn beispielsweise der gesamte, von allen Datenbanken im Pool verwendete Speicherplatz 200 GB beträgt, ist für die Änderung der Pool-eDTU/Speicherbegrenzung eine Latenzzeit von drei Stunden oder weniger zu erwarten.
+
+
 ## Überwachen und Verwalten eines Pools am Beispiel von PowerShell
 
 
@@ -173,9 +176,4 @@ Exportieren in eine CSV-Datei:
 
 - [Erstellen elastischer Aufträge:](sql-database-elastic-jobs-overview.md) Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
 
-
-## Referenz für elastische Datenbanken
-
-Weitere Informationen über elastische Datenbanken und elastische Datenbankpools, einschließlich API- und Fehlerinformationen, finden Sie unter [Referenz für elastische Datenbankpools](sql-database-elastic-pool-reference.md).
-
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

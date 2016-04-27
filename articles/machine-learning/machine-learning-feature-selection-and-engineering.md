@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Entwicklung und Auswahl von Features in Azure Machine Learning | Microsoft Azure" 
+	pageTitle="Entwicklung und Auswahl von Features in Azure Machine Learning | Microsoft Azure"
 	description="Erläutert den Zweck der Auswahl und Entwicklung von Features und stellt Beispiele ihrer Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vor."
 	services="machine-learning"
 	documentationCenter=""
@@ -51,7 +51,7 @@ Welche Art von Features sollte erstellt werden, um das Dataset beim Trainieren e
 
 Wenn Sie Azure Machine Learning zum ersten Mal verwenden, ist es am einfachsten, wenn Sie sich diesen Prozess anhand der Beispiele in Studio verdeutlichen. Zwei Beispiele sind hier dargestellt:
 
-* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](../machine-learning-sample-prediction-of-number-of-bike-rentals.md) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
+* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
 * Ein Text Mining-Klassifizierungsbeispiel mit [Feature Hashing][feature-hashing]
 
 ### Beispiel 1: Hinzufügen von temporären Features zu einem Regressionsmodell ###
@@ -133,6 +133,5 @@ Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedin
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
- 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

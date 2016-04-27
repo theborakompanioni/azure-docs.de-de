@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage"
-   ms.date="03/07/2016"
+   ms.date="04/11/2016"
    ms.author="robinsh" />
 
 # Skalierbarkeits- und Leistungsziele für Azure Storage
@@ -57,27 +57,27 @@ Weitere Informationen finden Sie unter [Größen virtueller Computer](../virtual
 
 ## Partitionen in Azure Storage
 
-Jedes Objekt, das Daten enthält, die in Azure Storage (Blobs, Nachrichten, Entitäten und Dateien) gespeichert werden, gehört zu einer Partition und wird durch einen Partitionsschlüssel identifiziert. Die Partition bestimmt, wie in Azure Storage der Lastenausgleich für Blobs, Nachrichten, Entitäten und Dateien auf Servern erfolgt, sodass die Datenverkehrsanforderungen dieser Objekte erfüllt werden. Der Partitionsschlüssel ist innerhalb des Speicherkontos eindeutig und wird verwendet, um einen Blob, eine Nachricht oder eine Entität zu suchen.
+Jedes Objekt, das Daten enthält, die in Azure Storage (Blobs, Nachrichten, Entitäten und Dateien) gespeichert werden, gehört zu einer Partition und wird durch einen Partitionsschlüssel identifiziert. Die Partition bestimmt, wie in Azure Storage der Lastenausgleich für Blobs, Nachrichten, Entitäten und Dateien auf Servern erfolgt, sodass die Datenverkehrsanforderungen dieser Objekte erfüllt werden. Der Partitionsschlüssel ist einmalig und wird verwendet, um ein Blob, eine Nachricht oder Entität zu finden.
 
 In der Tabelle oben unter [Skalierbarkeitsziele für Standardspeicherkonten](#standard-storage-accounts) sind die Leistungsziele für eine einzelne Partition für jeden Dienst aufgeführt.
 
 Partitionen wirken sich wie folgt auf den Lastenausgleich und die Skalierbarkeit der einzelnen Speicherdienste aus:
 
-- **Blobs**: Der Partitionsschlüssel für ein Blob setzt sich aus dem Containernamen und dem Blob-Namen zusammen. Dies bedeutet, dass jedes Blob eine eigene Partition besitzt. Blobs können daher über mehrere Server verteilt werden, um den Zugriff darauf zu skalieren. Blobs können zwar logisch in Blob-Containern zusammengefasst werden, allerdings wirkt sich dies nicht auf die Partitionierung einer solchen Gruppierung aus.
+- **Blobs**: Der Partitionsschlüssel für ein Blob setzt sich aus dem Kontonamen, Containernamen und dem Blobnamen zusammen. Dies bedeutet, dass jedes Blob seine eigene Partition aufweisen kann, wenn die Last auf den Blob danach verlangt. Blobs können über mehrere Server verteilt werden, um den Zugriff darauf horizontal hochzuskalieren, aber ein einzelnes Blob kann nur von einem einzelnen Server bedient werden. Blobs können zwar logisch in Blob-Containern zusammengefasst werden, allerdings wirkt sich dies nicht auf die Partitionierung einer solchen Gruppierung aus.
 
 - **Dateien**: Der Partitionsschlüssel für eine Datei ist der Kontoname plus der Name der Dateifreigabe. Dies bedeutet, dass alle Dateien in einer Dateifreigabe sich auch in einer einzelnen Partition befinden.
 
-- **Nachrichten**: Der Partitionsschlüssel für eine Nachricht entspricht dem Namen der Warteschlange, damit alle Nachrichten in einer Warteschlange in einer einzelnen Partition gruppiert und von einem einzelnen Server bedient werden. Verschiedene Warteschlangen können von verschiedenen Servern verarbeitet werden, um einen Lastenausgleich für die gegebene Anzahl von Warteschlangen eines Speicherkonto durchzuführen .
+- **Nachrichten**: Der Partitionsschlüssel für eine Nachricht setzt sich aus dem Kontonamen und dem Warteschlangennamen zusammen. Damit werden alle Nachrichten in einer Warteschlange in eine einzelnen Partition gruppiert und von einem einzelnen Server bedient. Verschiedene Warteschlangen können von verschiedenen Servern verarbeitet werden, um einen Lastenausgleich für die gegebene Anzahl von Warteschlangen eines Speicherkonto durchzuführen .
 
-- **Entitäten**: Der Partitionsschlüssel für eine Entität besteht aus dem Tabellennamen und dem Partitionsschlüssel, wobei der Partitionsschlüssel der Wert der erforderlichen benutzerdefinierten **PartitionKey**-Eigenschaft der Entität ist.
+- **Entitäten**: Der Partitionsschlüssel für eine Entität setzt sich aus dem Kontonamen, dem Tabellennamen und dem Partitionsschlüssel zusammen, wobei der Partitionsschlüssel der Wert der erforderlichen benutzerdefinierten **PartitionKey**-Eigenschaft der Entität ist. Alle Entitäten mit dem gleichen Partitionsschlüsselwert werden in derselben Partition gruppiert und von demselben Partitionsserver bedient. Dies ist ein wichtiger Punkt, der beim Entwurf von Anwendungen zu berücksichtigt werden muss. In der Anwendung sollten die Vorteile bezüglich der Skalierbarkeit, den die Verteilung von Entitäten auf mehrere Partitionen bietet, und die Vorteile bezüglich des Datenzugriffs, den die Gruppierung von Entitäten in einer einzelnen Partition bietet, gegeneinander abgewogen werden.
 
-	Alle Entitäten mit dem gleichen Partitionsschlüsselwert werden in derselben Partition gruppiert und auf demselben Partitionsserver gespeichert. Dies ist ein wichtiger Punkt, der beim Entwurf von Anwendungen zu berücksichtigt werden muss. In der Anwendung sollten die Vorteile bezüglich der Skalierbarkeit, den die Verteilung von Entitäten auf mehrere Partitionen bietet, und die Vorteile bezüglich des Datenzugriffs, den die Gruppierung von Entitäten in einer einzelnen Partition bietet, gegeneinander abgewogen werden.
+Ein wichtiger Vorteil der Gruppierung mehrerer Entitäten einer Tabelle in einer einzelnen Partition besteht darin, dass es möglich ist, kleine Batchvorgänge in verschiedenen Entitäten in der gleichen Partition auszuführen, da sich eine Partition auf einem einzelnen Server befindet. Falls Sie daher Batchvorgänge für eine Gruppe von Entitäten ausführen möchten, empfiehlt es sich daher, sie mit dem gleichen Partitionsschlüssel zu gruppieren.
 
-	Ein wichtiger Vorteil der Gruppierung mehrerer Entitäten einer Tabelle in einer einzelnen Partition besteht darin, dass es möglich ist, kleine Batchvorgänge in verschiedenen Entitäten in der gleichen Partition auszuführen, da sich eine Partition auf einem einzelnen Server befindet. Wenn Sie Batchvorgänge ausführen möchten, empfiehlt es sich daher, Entitäten mit dem gleichen Partitionsschlüssel zu gruppieren.
+Andererseits kann für Entitäten, die in derselben Tabelle enthalten sind, jedoch verschiedenen Partitionierungsschlüssel haben, ein Lastausgleich auf verschiedenen Servern vorgenommen werden, sodass sich eine höherer Skalierbarkeit ergibt.
 
-	Andererseits kann für Entitäten, die in derselben Tabelle enthalten sind, jedoch zu verschiedenen Partitionen gehören, ein Lastausgleich auf verschiedenen Servern vorgenommen werden, sodass sich eine große Tabelle mit höherer Skalierbarkeit ergibt.
+Detailierte Empfehlungen für das Entwerfen einer Partitionierungsstrategie für Tabellen finden Sie [hier](https://msdn.microsoft.com/library/azure/hh508997.aspx).
 
-## Siehe auch
+## Weitere Informationen
 
 - [Speicher – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
 - [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)
@@ -86,4 +86,4 @@ Partitionen wirken sich wie folgt auf den Lastenausgleich und die Skalierbarkeit
 - [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](storage-performance-checklist.md)
 - [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

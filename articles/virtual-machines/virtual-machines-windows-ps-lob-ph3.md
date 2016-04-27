@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
-# Branchenanwendungs-Workload, Phase 3: Konfigurieren der SQL Server-Infrastruktur
+# Branchenanwendungs-Workload, Phase 3: Konfigurieren der SQL Server-Infrastruktur
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
 
@@ -36,12 +36,12 @@ Mit dem folgenden PowerShell-Befehlsblock erstellen Sie die virtuellen Computer 
 - Tabelle M für Ihre virtuellen Computer
 - Tabelle V für die Einstellungen Ihres virtuellen Netzwerks
 - Tabelle S für Ihr Subnetz
-- Tabelle ST für Ihre Speicherkonten
+- Tabelle ST für Ihre Speicherkonten
 - Tabelle A für Ihre Verfügbarkeitsgruppen
 
-Die Tabelle M haben Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md), die Tabellen V, S, ST und A haben Sie in [Phase 1](virtual-machines-windows-ps-lob-ph1.md) ausgefüllt.
+Die Tabelle M haben Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md), die Tabellen V, S, ST und A haben Sie in [Phase 1](virtual-machines-windows-ps-lob-ph1.md) ausgefüllt.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Führen Sie nach der Bereitstellung der richtigen Werte den daraus resultierenden Befehlsblock an der Azure PowerShell-Eingabeaufforderung aus.
 
@@ -119,7 +119,7 @@ Führen Sie nach der Bereitstellung der richtigen Werte den daraus resultierende
 
 Verwenden Sie für jeden virtuellen Computer, auf dem SQL Server ausgeführt wird, einen Remotedesktopclient Ihrer Wahl, und erstellen Sie eine Remotedesktopverbindung. Verwenden Sie den zugehörigen Intranet-DNS- oder Computernamen und die Anmeldeinformationen des lokalen Administratorkontos.
 
-Treten Sie für jeden virtuellen Computer mit SQL Server der geeigneten AD DS-Domäne bei, indem Sie an der Windows PowerShell-Eingabeaufforderung diese Befehle ausführen.
+Treten Sie für jeden virtuellen Computer mit SQL Server der geeigneten AD DS-Domäne bei, indem Sie an der Windows PowerShell-Eingabeaufforderung diese Befehle ausführen.
 
 	$domName="<AD DS domain name to join, such as corp.contoso.com>"
 	Add-Computer -DomainName $domName
@@ -163,30 +163,30 @@ Gehen Sie jeweils für beide virtuellen SQL Server-Computer nach den Anweisungen
 6.	Klicken Sie auf **OK**, um das Fenster zu schließen.
 7.	Erweitern Sie im linken Bereich den **Ordner Sicherheit**.
 8.	Klicken Sie mit der rechten Maustaste auf **Anmeldungen**, und klicken Sie dann auf **Neue Anmeldung**.
-9.	Geben Sie unter **Anmeldename** die Zeichenfolge „*Domäne*\\sqladmin“ ein (wobei *Domäne* der Name der Domäne ist, in der in [Phase 2](virtual-machines-windows-ps-lob-ph2.md) das Konto „\\sqladmin“ erstellt wurde). 
+9.	Geben Sie unter **Anmeldename** die Zeichenfolge „*Domäne*\\sqladmin“ ein (wobei *Domäne* der Name der Domäne ist, in der in [Phase 2](virtual-machines-windows-ps-lob-ph2.md) das Konto „\\sqladmin“ erstellt wurde). 
 10.	Klicken Sie unter **Seite auswählen** auf **Serverrollen**, klicken Sie auf **sysadmin**, und klicken Sie dann auf **OK**.
 11.	Schließen Sie SQL Server 2014 Management Studio.
 
-Gehen Sie jeweils für beide virtuellen SQL Server-Computer nach den Anweisungen der folgenden Prozedur vor, damit Remotedesktopverbindungen das Konto "sqladmin" verwenden können.
+Gehen Sie jeweils für beide virtuellen SQL Server-Computer nach den Anweisungen der folgenden Prozedur vor, damit Remotedesktopverbindungen das Konto "sqladmin" verwenden können.
 
 1.	Klicken Sie auf dem Startbildschirm mit der rechten Maustaste auf **Dieser PC**, und klicken Sie dann auf **Eigenschaften**.
 2.	Klicken Sie im Fenster **System** auf **Remoteeinstellungen**.
 3.	Klicken Sie im Abschnitt **Remotedesktop** auf **Benutzer auswählen**, und klicken Sie dann auf **Hinzufügen**.
 4.	Geben Sie unter **Geben Sie die Namen der auszuwählenden Objekte ein** die Zeichenfolge „[Domäne]**\\sqladmin**“ ein, und klicken Sie dann dreimal auf **OK**.
 
-Für den SQL Server-Dienst ist ein Port erforderlich, über den die Clients auf den Datenbankserver zugreifen. Zwei weitere Ports sind erforderlich für die Verbindung mit SQL Server Management Studio und die Verwaltung der Hochverfügbarkeitsgruppe. Führen Sie als Nächstes jeweils für beide virtuellen SQL Server.-Computer den folgenden Befehl an einer Windows PowerShell-Eingabeaufforderung auf Administratorebene aus, um eine Firewallregel hinzuzufügen, die diese Art von eingehendem Datenverkehr zulässt.
+Für den SQL Server-Dienst ist ein Port erforderlich, über den die Clients auf den Datenbankserver zugreifen. Zwei weitere Ports sind erforderlich für die Verbindung mit SQL Server Management Studio und die Verwaltung der Hochverfügbarkeitsgruppe. Führen Sie als Nächstes jeweils für beide virtuellen SQL Server.-Computer den folgenden Befehl an einer Windows PowerShell-Eingabeaufforderung auf Administratorebene aus, um eine Firewallregel hinzuzufügen, die diese Art von eingehendem Datenverkehr zulässt.
 
 	New-NetFirewallRule -DisplayName "SQL Server ports 1433, 1434, and 5022" -Direction Inbound –Protocol TCP –LocalPort 1433,1434,5022 -Action Allow
 
 Melden Sie sich bei beiden virtuellen SQL Server-Computern als lokaler Administrator ab.
 
-Informationen zum Optimieren der SQL Server-Leistung in Azure finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-classic-sql-perf.md). Zur Optimierung der IOPs können Sie auch den georedundanten Speicher (GRS) für das Speicherkonto der Branchenanwendung deaktivieren und stattdessen Speicherplatz verwenden.
+Informationen zum Optimieren der SQL Server-Leistung in Azure finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md). Zur Optimierung der IOPs können Sie auch den georedundanten Speicher (GRS) für das Speicherkonto der Branchenanwendung deaktivieren und stattdessen Speicherplatz verwenden.
 
 ## Konfigurieren des Hauptknotenservers des Clusters
 
 Verwenden Sie einen Remotedesktopclient Ihrer Wahl, und erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer, der als Hauptknotenserver für den Cluster fungiert. Verwenden Sie den zugehörigen Intranet-DNS- oder Computernamen und die Anmeldeinformationen des lokalen Administratorkontos.
 
-Fügen Sie den Hauptknotenserver des Clusters der geeigneten AD DS-Domäne hinzu, indem Sie an der Windows PowerShell-Eingabeaufforderung diese Befehle ausführen.
+Fügen Sie den Hauptknotenserver des Clusters der geeigneten AD DS-Domäne hinzu, indem Sie an der Windows PowerShell-Eingabeaufforderung diese Befehle ausführen.
 
 	$domName="<AD DS domain name to join, such as corp.contoso.com>"
 	Add-Computer -DomainName $domName
@@ -212,7 +212,7 @@ Führen Sie für beide virtuellen SQL Server-Computer und für den Hauptknoten d
 
 Aufgrund des noch nicht RFC-konformen Verhaltens von DHCP in Azure kann die Erstellung eines Clusters mit Windows Server-Failoverclustering (WSFC) fehlschlagen. Nähere Informationen hierzu finden Sie im Artikel „Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern“ unter „WSFC-Clusterverhalten in Azure-Netzwerken“. Dieses Problem kann jedoch umgangen werden. Führen Sie zum Erstellen des Clusters die folgenden Schritte aus:
 
-1.	Melden Sie sich beim primären virtuellen SQL Server-Computer mit dem Konto „sqladmin“ an, das Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md) erstellt haben.
+1.	Melden Sie sich beim primären virtuellen SQL Server-Computer mit dem Konto „sqladmin“ an, das Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md) erstellt haben.
 2.	Geben Sie auf dem Startbildschirm **Failover** ein, und klicken Sie dann auf **Failovercluster-Manager**.
 3.	Klicken Sie im linken Bereich mit der rechten Maustaste auf **Failovercluster-Manager**, und klicken Sie dann auf **Cluster erstellen**.
 4.	Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
@@ -242,14 +242,14 @@ Als Nächstes aktivieren Sie AlwaysOn-Verfügbarkeitsgruppen mit dem SQL Server-
 
 Führen Sie zur Aktivierung von Verfügbarkeitsgruppen in SQL Server folgende Schritte aus.
 
-1.	Melden Sie sich beim primären virtuellen SQL Server-Computer mit dem Konto „sqladmin“ an, das Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md) erstellt haben.
+1.	Melden Sie sich beim primären virtuellen SQL Server-Computer mit dem Konto „sqladmin“ an, das Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md) erstellt haben.
 2.	Geben Sie auf dem Startbildschirm **SQL Server-Konfiguration** ein, und klicken Sie dann auf **SQL Server-Konfigurations-Manager**.
 3.	Klicken Sie im linken Bereich auf **SQL Server-Dienste**.
 4.	Doppelklicken Sie im Inhaltsbereich auf **SQL Server (MSSQLSERVER)**.
 5.	Klicken Sie im Fenster **Eigenschaften von SQL Server (MSSQLSERVER)** auf die Registerkarte **Hohe Verfügbarkeit mit AlwaysOn**, wählen Sie **AlwaysOn-Verfügbarkeitsgruppen aktivieren** aus, klicken Sie auf **Übernehmen**, und klicken Sie dann, wenn Sie dazu aufgefordert werden, auf **OK**. Lassen Sie das Eigenschaftenfenster noch offen. 
 6.	Klicken Sie auf die Registerkarte "virtual-machines-manage-availability", und geben Sie unter **Kontoname** [Domäne]**\\sqlservice** ein. Geben Sie unter **Kennwort** das Kennwort für das Konto "sqlservice" ein, **bestätigen Sie das Kennwort**, und klicken Sie dann auf **OK**.
 7.	Klicken Sie im Meldungsfenster auf **Ja**, um den SQL Server-Dienst neu zu starten.
-8.	Melden Sie sich beim sekundären virtuellen SQL Server-Computer mit dem Konto "sqladmin" an, und wiederholen Sie die Schritte 2 bis 7. 
+8.	Melden Sie sich beim sekundären virtuellen SQL Server-Computer mit dem Konto "sqladmin" an, und wiederholen Sie die Schritte 2 bis 7. 
 
 Im folgenden Diagramm ist die aus dem erfolgreichen Abschluss dieser Phase resultierende Konfiguration mit Platzhaltern anstelle der Computernamen dargestellt.
 
@@ -257,6 +257,6 @@ Im folgenden Diagramm ist die aus dem erfolgreichen Abschluss dieser Phase resul
 
 ## Nächster Schritt
 
-- Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 4](virtual-machines-windows-ps-lob-ph4.md).
+- Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 4](virtual-machines-windows-ps-lob-ph4.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

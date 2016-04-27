@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="03/31/2016" 
 	ms.author="awills"/>
  
 # Was ist Application Insights?
@@ -22,6 +22,8 @@ Application Insights ist ein erweiterbarer Analysedienst, der Live-Anwendungen �
 ![Erstellen Sie ein Diagramm mit der Statistik zur Benutzeraktivität, oder führen Sie eine Detailsuche bei bestimmten Ereignissen aus.](./media/app-insights-overview/00-sample.png)
 
 Er funktioniert mit Web-Apps und eigenständigen Apps auf einer Vielzahl von Plattformen: .NET oder J2EE, lokal gehostet oder in der Cloud.
+
+[Sehen Sie sich die Introanimation an](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
 Application Insights ist für das Entwicklungsteam konzipiert. Damit können Sie folgende Aktionen ausführen:
 
@@ -119,7 +121,7 @@ Wählen Sie für weitere Details Ihren App-Typ unter "Erste Schritte" in der Nav
 * Fehler:
  * [Kontakt](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * Vorschläge:
- * [Aussagen von Benutzern](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+ * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 
 
 ## Videos
@@ -130,6 +132,8 @@ Wählen Sie für weitere Details Ihren App-Typ unter "Erste Schritte" in der Nav
 > [AZURE.VIDEO usage-monitoring-application-insights]
 
 > [AZURE.VIDEO performance-monitoring-application-insights]
+
+> [Einführungsanimation](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
 
 <!--Link references-->
@@ -151,4 +155,4 @@ Wählen Sie für weitere Details Ihren App-Typ unter "Erste Schritte" in der Nav
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

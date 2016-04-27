@@ -8,13 +8,13 @@
 	editor=""/>
 
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="12/01/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/01/2015"
 	ms.author="glenga"/>
 
 # Verwenden von Mobile Services zum Hochladen von Bildern in Azure Storage
@@ -38,7 +38,7 @@ In diesem Lernprogramm fügen Sie der Mobile Services-Schnellstartapp Funktionen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 + Microsoft Visual Studio 2013 Update 3 oder eine höhere Version.
-+ [Azure-Speicherkonto](../storage-create-storage-account.md)
++ [Azure-Speicherkonto](../storage/storage-create-storage-account.md)
 + Eine Kamera oder ein anderes an Ihren Computer angeschlossenes Bildaufnahmegerät
 
 Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie zunächst [Erste Schritte mit Mobile Services] abschließen.
@@ -51,11 +51,11 @@ Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit
 
 Nachdem Sie nun gelernt haben, Ihre Bilder durch die Integration Ihres mobilen Dienstes in den Blob-Dienst sicher hochzuladen, können Sie sich einigen anderen Themen aus dem Bereich Backend-Dienste und Integration zuwenden:
 
-+ [Planen von Back-End-Aufträgen in Mobile Services](../mobile-services-dotnet-backend-schedule-recurring-tasks.md)
++ [Planen von Back-End-Aufträgen in Mobile Services](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
 
      Lernen Sie, wie Sie die Auftragsplanerfunktion in Mobile Services zur Definition von Skriptcode verwenden können, der gemäß einem von Ihnen definierten Zeitplan ausgeführt wird.
 
-+ [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz](../mobile-services-windows-dotnet-how-to-use-client-library.md)
++ [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz](mobile-services-dotnet-how-to-use-client-library.md)
 
      Lernen Sie mehr über die Verwendung von Mobile Services mit .NET
 
@@ -71,8 +71,8 @@ Nachdem Sie nun gelernt haben, Ihre Bilder durch die Integration Ihres mobilen D
 <!-- Images. -->
 
 <!-- URLs. -->
-[Erste Schritte mit Mobile Services]: ../mobile-services-windows-store-dotnet-get-started.md
-[How To Create a Storage Account]: ../storage-create-storage-account.md
+[Erste Schritte mit Mobile Services]: mobile-services-windows-store-dotnet-get-started.md
+[How To Create a Storage Account]: ../storage/storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0413_2016-->

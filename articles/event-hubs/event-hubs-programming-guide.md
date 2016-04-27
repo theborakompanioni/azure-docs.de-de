@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Programmierhandbuch für Azure Event Hubs | Microsoft Azure"
-   description="Beschreibt die Programmierung mit Azure Event Hubs unter Verwendung des Azure .NET SDK."
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Programmierhandbuch für Azure Event Hubs | Microsoft Azure"
+    description="Beschreibt die Programmierung mit Azure Event Hubs unter Verwendung des Azure .NET SDK."
+    services="event-hubs"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="event-hubs"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="event-hubs"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="tbd"
+    ms.date="04/15/2016"
+    ms.author="sethm" />
 
 # Programmierleitfaden für Event Hubs
 
@@ -21,9 +21,9 @@ In diesem Thema wird die Programmierung mit Azure Event Hubs unter Verwendung de
 
 ## Ereignisherausgeber
 
-Das Senden von Ereignissen an einen Event Hub wird entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung erreicht. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Nachrichtenkanal verfügen.
+Das Senden von Ereignissen an einen Event Hub wird entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung erreicht. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
 
-Event Hubs werden mit der [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) und [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx). Die [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx)-Klasse stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an den Event Hub gesendet werden. Die [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx)-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx)-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
+Event Hubs werden mit der [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) und [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx). Die [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx)-Klasse stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx)-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx)-Objekt werden weitere Eigenschaften hinzugefügt, wenn es Event Hub durchläuft.
 
 ## Erste Schritte
 
@@ -50,7 +50,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 
 Alle Event Hubs-Erstellungsvorgänge, z. B. [CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx), erfordern für den jeweiligen Namespace Berechtigungen zum **Verwalten**. Falls Sie die Berechtigungen für Ihre Veröffentlichungs- oder Consumeranwendungen beschränken möchten, können Sie diese Aufrufe von Erstellungsvorgängen im Produktionscode vermeiden, wenn Sie Anmeldeinformationen mit begrenzten Berechtigungen verwenden.
 
-Die [EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx)-Klasse enthält Details zu einem Event Hub, z. B. Autorisierungsregeln, Zeitraum der Nachrichtenaufbewahrung, Partitions-IDs, Status und Pfad. Sie können diese Klasse verwenden, um die Metadaten für einen Event Hub zu aktualisieren.
+Die [EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx)-Klasse enthält Details zu einem Event Hub, z. B. Autorisierungsregeln, Intervall der Nachrichtenaufbewahrung, Partitions-IDs, Status und Pfad. Sie können diese Klasse verwenden, um die Metadaten für einen Event Hub zu aktualisieren.
 
 ## Erstellen eines Event Hubs-Clients
 
@@ -111,13 +111,13 @@ Sie können Ereignisse auch asynchron an einen Event Hub senden. Beim asynchrone
 
 ## Erstellen eines Elements für das Senden an Partitionen
 
-Am häufigsten werden Ereignisse zwar mit einem Partitionsschlüssel an einen Event Hub gesendet, es kann aber auch vorkommen, dass Sie Ereignisse direkt an eine bestimmte Partition senden möchten. Beispiel:
+Am häufigsten werden Ereignisse zwar mit einem Partitionsschlüssel an einen Event Hub gesendet, aber es kann auch vorkommen, dass Sie Ereignisse direkt an eine bestimmte Partition senden möchten. Beispiel:
 
 ```
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
-[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) gibt ein [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx)-Objekt zurück, das Sie verwenden können, um Ereignisse in einer bestimmten Event Hub-Partition zu veröffentlichen.
+[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) gibt ein [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx)-Objekt zurück, das Sie verwenden können, um Ereignisse auf einer bestimmten Event Hub-Partition zu veröffentlichen.
 
 ## Ereignisconsumer
 
@@ -162,7 +162,7 @@ Sie können [IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft
 
 - [ProcessEventsAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.processeventsasync.aspx)
 
-Instanziieren Sie zum Starten der Ereignisverarbeitung die [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)-Klasse, und geben Sie die entsprechenden Parameter für Ihren Event Hub an. Rufen Sie anschließend [RegisterEventProcessorAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.registereventprocessorasync.aspx) auf, um Ihre [IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx)-Implementierung bei der Laufzeit zu registrieren. An diesem Punkt versucht der Host, eine Lease für jede Partition im Event Hub zu erhalten, indem er einen „gierigen“ Algorithmus verwendet. Diese Leases gelten für einen bestimmten Zeitraum und müssen anschließend erneuert werden. Wenn neue Knoten (hier: Workerinstanzen) in den Onlinezustand versetzt werden, geben sie Leasereservierungen heraus. Im Laufe der Zeit wird die Arbeitsauslastung dann auf die Knoten verteilt, da jeder Knoten versucht, mehr Leases zu erlangen.
+Instanziieren Sie zum Starten der Ereignisverarbeitung die [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)-Klasse, und geben Sie die entsprechenden Parameter für Ihren Event Hub an. Rufen Sie anschließend [RegisterEventProcessorAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.registereventprocessorasync.aspx) auf, um Ihre [IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx)-Implementierung bei der Laufzeit zu registrieren. An diesem Punkt versucht der Host, einen Lease für jede Partition im Event Hub zu erhalten, indem er einen „gierigen“ Algorithmus verwendet. Diese Leases gelten für einen bestimmten Zeitraum und müssen anschließend erneuert werden. Wenn neue Knoten (hier: Workerinstanzen) in den Onlinezustand versetzt werden, geben sie Leasereservierungen heraus. Im Laufe der Zeit wird die Arbeitsauslastung dann auf die Knoten verteilt, da jeder Knoten versucht, mehr Leases zu erlangen.
 
 ![Ereignisprozessorhost](./media/event-hubs-programming-guide/IC759863.png)
 
@@ -185,4 +185,4 @@ Weitere Informationen zu Event Hubs-Szenarien finden Sie unter diesen Links:
 - [Codebeispiele für Event Hubs](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

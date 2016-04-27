@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="04/07/2016"
 	ms.author="cabailey"/>
 #Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
 
@@ -99,17 +99,65 @@ Lassen Sie das Azure PowerShell-Fenster geöffnet.
 
 ###Schritt 1.3: Herunterladen des BYOK-Toolsets für den Azure-Schlüsseltresor
 
-Wechseln Sie zum Microsoft Download Center, und [laden Sie das Azure Key Vault BYOK-Toolset für Ihre Region oder Instanz von Azure herunter](http://www.microsoft.com/download/details.aspx?id=45345):
+Wechseln Sie zum Microsoft Download Center, und [laden Sie das Azure-Schlüsseltresor-BYOK-Toolset für Ihre geografische Region oder Instanz von Azure herunter](http://www.microsoft.com/download/details.aspx?id=45345). Ermitteln Sie anhand der folgenden Informationen den Namen des herunterzuladenden Pakets und seinen entsprechenden SHA-256-Pakethash:
 
-|Geografische Region oder Instanz von Azure|Paketname|SHA-256-Pakethash|
-|---|---|---|
-|Nordamerika|KeyVault-BYOK-Tools-UnitedStates.zip|D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36|
-|Europa|KeyVault-BYOK-Tools-Europe.zip|881DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3|
-|Asien|KeyVault-BYOK-Tools-AsiaPacific.zip|0C76967B3AC76687E4EA47EB96174EE6B25AB24E3114E28A90D9B93A2E6ABF6E|
-|Lateinamerika|KeyVault-BYOK-Tools-LatinAmerica.zip|B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48|
-|Japan|KeyVault-BYOK-Tools-Japan.zip|DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113|
-|Australien|KeyVault-BYOK-Tools-Australia.zip|8EBC69E58E809A67C036B50BB4F1130411AD87A7464E0D61A9E993C797915967|
-|[Azure Government](../../../../features/gov/)|KeyVault-BYOK-Tools-USGovCloud.zip|4DE9B33990099E4197ED67D786316F628E5218FC1EB0C24DCAD8A1851FD345B8|
+---
+
+**Nordamerika:**
+
+KeyVault-BYOK-Tools-UnitedStates.zip
+
+D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36
+
+---
+
+**Europa:**
+
+KeyVault-BYOK-Tools-Europe.zip
+
+81DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3
+
+---
+
+**Asien:**
+
+KeyVault-BYOK-Tools-AsiaPacific.zip
+
+0C76967B3AC76687E4EA47EB96174EE6B25AB24E3114E28A90D9B93A2E6ABF6E
+
+---
+
+**Lateinamerika:**
+
+KeyVault-BYOK-Tools-LatinAmerica.zip
+	
+B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48
+
+---
+
+**Japan:**
+
+KeyVault-BYOK-Tools-Japan.zip
+
+DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113
+
+---
+
+**Australien:**
+
+KeyVault-BYOK-Tools-Australia.zip
+
+8EBC69E58E809A67C036B50BB4F1130411AD87A7464E0D61A9E993C797915967
+
+---
+
+[**Azure Government:**](../../../../features/gov/)
+
+KeyVault-BYOK-Tools-USGovCloud.zip
+
+4DE9B33990099E4197ED67D786316F628E5218FC1EB0C24DCAD8A1851FD345B8
+
+---
 
 Verwenden Sie in der Azure PowerShell-Sitzung das [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx)-Cmdlet, um die Integrität des heruntergeladenen BYOK-Toolsets zu überprüfen.
 
@@ -217,7 +265,7 @@ Führen Sie den folgenden Befehl aus, um den Schlüssel zu generieren:
 
 Gehen Sie wie folgt vor, wenn Sie diesen Befehl ausführen:
 
-- Der Parameter *protect* muss, wie gezeigt, auf den Wert **module** gesetzt werden. So wird ein modulgeschützter Schlüssel erstellt. Das BYOK-Toolset unterstützt OCS-geschützte Schlüssel nicht.
+- Der Parameter *protect* muss wie gezeigt auf den Wert **module** gesetzt werden. So wird ein modulgeschützter Schlüssel erstellt. Das BYOK-Toolset unterstützt OCS-geschützte Schlüssel nicht.
 
 - Ersetzen Sie den Wert von *contosokey* für **ident** und **plainname** durch einen beliebigen Zeichenfolgenwert. Um den Verwaltungsaufwand zu minimieren und das Fehlerrisiko zu senken, empfehlen wir, jeweils den gleichen Wert zu verwenden. Der Wert **Ident** darf nur Zahlen, Bindestriche und Kleinbuchstaben enthalten.
 
@@ -332,4 +380,4 @@ Wenn der Upload erfolgreich ist, werden die Eigenschaften des gerade hinzugefüg
 
 Sie können diesen HSM-geschützten Schlüssel jetzt in Ihrem Schlüsseltresor verwenden. Weitere Informationen finden Sie im Abschnitt **Verwenden eines Hardwaresicherheitsmoduls (HSM)** im Lernprogramm [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

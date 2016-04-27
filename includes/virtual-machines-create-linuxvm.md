@@ -1,3 +1,4 @@
+
 1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../articles/xplat-cli-connect.md) ausführen.
 
 2. Stellen Sie folgendermaßen sicher, dass der Dienstverwaltungsmodus aktiviert ist:
@@ -8,7 +9,7 @@
 
         azure vm image list | grep "Linux"
 
-   In einem Windows-Eingabeaufforderungsfenster verwenden Sie „find“ anstelle von „grep“.
+   In einem Windows-Eingabeaufforderungsfenster verwenden Sie **find** anstelle von „grep“.
 
 4. Erstellen Sie mithilfe von `azure vm create` einen neuen virtuellen Computer mit dem Linux-Image aus der obigen Liste. Dadurch werden ein neuer Clouddienst und ein neues Speicherkonto erstellt. Sie können auch mithilfe der Option `-c` eine Verbindung zwischen diesem virtuellen Computer und einem vorhandenen Clouddienst herstellen. Zudem wird ein SSH-Endpunkt zum Anmelden beim virtuellen Linux-Computer mit der Option `-e` erstellt.
 
@@ -41,4 +42,4 @@
 
 Ausführliche Informationen zu diesen Azure-CLI-Befehlen für virtuelle Computer finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit der Dienstverwaltungs-API](../articles/virtual-machines-command-line-tools.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe" />
+	editor="" />
 
 <tags
 	ms.service="storage"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/22/2016"
+	ms.date="04/08/2016"
 	ms.author="robmcm"/>
 
 # Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration
@@ -204,4 +204,4 @@ In diesem Abschnitt erstellen Sie eine Hudson-Aufgabe, die auf einen untergeordn
 
 Hudson erstellt dann einen untergeordneten Knoten mithilfe der im vorherigen Abschnitt erstellten Vorlage und führt das Skript aus, das Sie im Buildschritt für diese Aufgabe angegeben haben.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

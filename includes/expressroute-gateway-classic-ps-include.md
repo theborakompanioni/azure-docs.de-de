@@ -1,25 +1,27 @@
-You must create a VNet and a gateway subnet first, before working on the following tasks. See the article [Configure a Virtual Network using the classic portal](../articles/expressroute/expressroute-howto-vnet-portal-classic.md) for more information.   
+Sie müssen zuerst ein VNet und ein Gatewaysubnetz erstellen, bevor Sie an den folgenden Aufgaben arbeiten. Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit dem klassischen Portal](../articles/expressroute/expressroute-howto-vnet-portal-classic.md).
 
-## Add a gateway
+## Hinzufügen eines Gateways
 
-Use the command below to create a gateway. Be sure to substitute any values for your own.
+Verwenden Sie den folgenden Befehl, um ein Gateway zu erstellen. Achten Sie darauf, dass Sie die vorhandenen Werte durch Ihre eigenen Werte ersetzen.
 
 	New-AzureVirtualNetworkGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType DynamicRouting -GatewaySKU  Standard
 
-## Verify the gateway was created
+## Erstellung des Gateways überprüfen
 
-Use the command below to verify that the gateway has been created. This command also retrieves the gateway ID, which you need for other operations.
+Verwenden Sie den folgenden Befehl, um zu überprüfen, ob das Gateway erstellt wurde. Mit diesem Befehl wird auch die Gateway-ID abgerufen, die Sie für andere Vorgänge benötigen.
 
 	Get-AzureVirtualNetworkGateway
 
-## Resize a gateway
+## Ändern der Größe eines Gateways
 
-There are three [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md). You can use the following command to change the Gateway SKU at any time.
+Es gibt drei [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
 
 	Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
-## Remove a gateway
+## Entfernen eines Gateways
 
-Use the command below to remove a gateway
+Verwenden Sie den folgenden Befehl, um ein Gateway zu entfernen.
 
 	Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
+
+<!---HONumber=AcomDC_0413_2016-->

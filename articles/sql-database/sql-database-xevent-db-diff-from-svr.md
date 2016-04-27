@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft Azure" 
-	description="Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden." 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jhubbard" 
-	editor="" 
+<properties
+	pageTitle="Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft Azure"
+	description="Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden."
+	services="sql-database"
+	documentationCenter=""
+	authors="MightyPen"
+	manager="jhubbard"
+	editor=""
 	tags=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/05/2016" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="genemi"/>
 
 
@@ -27,14 +27,14 @@ In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereign
 
 - SQL-Datenbank V12 wurde das Feature der erweiterte Ereignisse in der zweiten Hälfte des Jahres 2015 hinzugefügt.
 - SQL Server bietet erweiterte Ereignisse seit 2008.
-- Der Funktionsumfang erweiterter Ereignisse für SQL-Datenbank ist eine stabile Teilmenge der Funktionen in SQL Server. 
+- Der Funktionsumfang erweiterter Ereignisse für SQL-Datenbank ist eine stabile Teilmenge der Funktionen in SQL Server.
 
 
 *XEvents* ist ein informeller Spitzname, der in Blogs und anderen informellen Quellen mitunter für "erweiterte Ereignisse" verwendet wird.
 
 
 > [AZURE.NOTE] Ab Oktober 2015 ist das Sitzungsfeature "Erweiterte Ereignisse" in Azure SQL-Datenbank auf Preview-Ebene aktiviert. Das Datum der allgemeinen Verfügbarkeit steht noch nicht fest.
-> 
+>
 > Auf der Azure-Seite [Dienstupdates](https://azure.microsoft.com/updates/?service=sql-database) finden Sie Beiträge mit Ankündigungen zur allgemeinen Verfügbarkeit.
 
 
@@ -58,7 +58,7 @@ Vorherige Kenntnisse in Bezug auf die folgenden Elemente ist hilfreich bei der A
 
 
 - PowerShell
- - [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
+ - [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
 
 
 ## Codebeispiele
@@ -244,12 +244,12 @@ Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, währ
 ## Verwandte Links
 
 
-- [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)
+- [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md)
 - [Azure Storage-Cmdlets](http://msdn.microsoft.com/library/dn806401.aspx)
 
 
-- [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
-- [Verwenden des Blob-Speichers mit .NET](storage-dotnet-how-to-use-blobs.md)
+- [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
+- [Verwenden des Blob-Speichers mit .NET](../storage/storage-dotnet-how-to-use-blobs.md)
 
 
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
@@ -269,4 +269,4 @@ Anderen Codebeispielthemen für erweiterte Ereignisse finden Sie unter den folge
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

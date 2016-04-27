@@ -13,19 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/25/2016" 
+	ms.date="04/15/2016" 
 	ms.author="casoper"/>
 
 
-#POP-Standorte von Azure Content Delivery Network (CDN)
+# POP-Standorte von Azure Content Delivery Network (CDN)
 
 In diesem Thema werden die aktuellen POP-Standorte (Point of Presence) von Microsoft Azure CDN aufgeführt.
 
-
 ![CDN-POP-Standorte](./media/cdn-pop-locations/CDN_POP_locations_update.png)
 
-
-##Nordamerika
+## Nordamerika
 
 - Atlanta
 - Chicago
@@ -39,12 +37,15 @@ In diesem Thema werden die aktuellen POP-Standorte (Point of Presence) von Micro
 - Washington DC
 - Boston
 
-##Südamerika
+## Südamerika
 
 - São Paulo
 - Quito
+- Medellin
+- Buenos Aires
 
-##Europa
+
+## Europa
 
 - Amsterdam
 - Kopenhagen
@@ -58,7 +59,7 @@ In diesem Thema werden die aktuellen POP-Standorte (Point of Presence) von Micro
 - Wien
 - Warschau
 
-##Asien
+## Asien
 
 - Batam
 - Hongkong
@@ -72,10 +73,15 @@ In diesem Thema werden die aktuellen POP-Standorte (Point of Presence) von Micro
 - Chennai
 - Delhi
 - Mumbai
+- Maskat
 
-##Australien
+## Australien
 
 - Melbourne
 - Sydney
 
-<!---HONumber=AcomDC_0316_2016-->
+## In Kürze verfügbar
+
+Sie haben vielleicht gehört, dass Microsoft [eine Partnerschaft mit Akamai eingegangen ist](https://azure.microsoft.com/blog/microsoft-and-akamai-bring-cdn-to-azure-customers/). In den kommenden Monaten werden wir im Rahmen dieser Partnerschaft die Reichweite von Azure CDN auf der ganzen Welt erheblich steigern.
+
+<!---HONumber=AcomDC_0420_2016-->

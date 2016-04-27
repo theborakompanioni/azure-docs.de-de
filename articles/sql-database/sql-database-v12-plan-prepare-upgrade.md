@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="data-management" 
+	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
@@ -60,7 +60,7 @@ Ab V12 unterstützt die Azure SQL-Datenbank nur die Dienstebenen Basic, Standard
 Ausführliche Informationen zu den Dienstebenen Basic, Standard und Premium finden Sie hier:
 
 - [SQL-Datenbank – Dienstebenen](sql-database-service-tiers.md)
-- [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-new-service-tiers.md)
+- [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-server-portal.md)
 
 
 
@@ -225,7 +225,7 @@ Im folgenden Szenario wird erläutert, dass eine gelöschte V11 Azure SQL-Datenb
 
 PowerShell-Cmdlets sind verfügbar, um ein Upgrade auf Azure SQL-Datenbank V12 von V11 oder einer anderen niedrigeren Version als V12 zu starten, zu beenden oder zu überwachen.
 
-- [Upgrade auf SQL-Datenbank V12 mithilfe von PowerShell](sql-database-upgrade-server.md)
+- [Upgrade auf SQL-Datenbank V12 mithilfe von PowerShell](sql-database-upgrade-server-powershell.md)
 
 Referenzdokumentation zu diesen PowerShell-Cmdlets finden Sie unter:
 
@@ -252,6 +252,5 @@ Wenn aus einem bestimmten Grund ein Upgradefehler auftritt, bleibt Ihre V11-Date
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
- 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

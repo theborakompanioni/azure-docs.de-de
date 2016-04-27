@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="03/18/2016"
+ms.date="04/12/2016"
 ms.author="larryfr"/>
 
 #Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen
@@ -22,7 +22,7 @@ Linux-basierte HDInsight-Cluster bieten Zugriff auf die Ambari-Webbenutzeroberfl
 
 ##Wofür ist ein SSH-Tunnel erforderlich?
 
-Einige der Menüs in Ambari werden ohne einen SSH-Tunnel SSH nicht vollständig aufgefüllt, da sie Websites und Dienste benötigen, die von anderen im Cluster ausgeführten Hadoop-Diensten verfügbar gemacht werden. Diese Websites sind oft nicht gesichert, sodass es nicht sicher wäre, sie direkt im Internet verfügbar zu machen. In einigen Fällen führt der Dienst die Website auf einem anderen Clusterknoten aus, z. B. auf einem Zookeeper-Knoten.
+Einige der Menüs in Ambari werden ohne einen SSH-Tunnel SSH nicht vollständig aufgefüllt, da sie Websites und Dienste benötigen, die von anderen im Cluster ausgeführten Hadoop-Diensten verfügbar gemacht werden. Diese Websites sind oft nicht gesichert, sodass es nicht sicher wäre, sie direkt im Internet verfügbar zu machen. In einigen Fällen führt der Dienst die Website auf einem anderen Clusterknoten aus, z. B. auf einem Zookeeper-Knoten.
 
 Im Folgenden finden Sie die Dienste, die von der Ambari-Webbenutzeroberfläche verwendet werden und auf die nur über einen SSH-Tunnel zugegriffen werden kann:
 
@@ -33,7 +33,7 @@ Im Folgenden finden Sie die Dienste, die von der Ambari-Webbenutzeroberfläche v
 * Oozie-Webbenutzeroberfläche
 * Benutzeroberfläche für HBase-Master und -Protokolle
 
-Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für alle Dienste und Dienstprogramme, die Sie installieren und die eine Webbenutzeroberfläche verfügbar machen, einen SSH-Tunnel. Bei der Installation von Hue mit einer Skriptaktion müssen Sie z. B. einen SSH-Tunnel verwenden, um auf die Hue-Webbenutzeroberfläche zuzugreifen.
+Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für alle Dienste und Dienstprogramme, die Sie installieren und die eine Webbenutzeroberfläche verfügbar machen, einen SSH-Tunnel. Bei der Installation von Hue mit einer Skriptaktion müssen Sie z. B. einen SSH-Tunnel verwenden, um auf die Hue-Webbenutzeroberfläche zuzugreifen.
 
 ##Was ist ein SSH-Tunnel?
 
@@ -43,7 +43,7 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 
 Sie benötigen für die Verwendung eines SSH-Tunnels für Webdatenverkehr Folgendes:
 
-* Einen SSH-Client Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
+* Einen SSH-Client Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
 
 	> [AZURE.NOTE] Wenn Sie einen anderen SSH-Client als `ssh` oder PuTTY verwenden möchten, finden Sie Informationen zum Herstellen eines SSH-Tunnels in der Dokumentation zu Ihrem Client.
 
@@ -61,7 +61,7 @@ Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des 
 
 Dadurch wird eine Verbindung erstellt, über die der Datenverkehr über SSH an den lokalen Port 9876 des Clusters weitergeleitet wird. Die Optionen sind:
 
-* **D 9876**: der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.
+* **D 9876**: der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.
 
 * **C**: Alle Daten werden komprimiert, da der Webdatenverkehr hauptsächlich aus Text besteht.
 
@@ -105,9 +105,9 @@ Führen Sie die folgenden Schritte aus, um einen SSH-Tunnel mithilfe von PuTTY z
 
 ##Verwenden des Tunnels im Browser
 
-> [AZURE.NOTE] Für die Schritte in diesem Abschnitt wird der Firefox-Browser verwendet, der für Linux, Unix, Macintosh OS X und Windows-Systeme frei verfügbar ist. Andere moderne Browser wie Google Chrome, Microsoft Edge oder Apple Safari sollten ebenfalls funktionieren. Allerdings ist möglicherweise das in einigen Schritten verwendete FoxyProxy-Plug-In nicht für alle Browser verfügbar.
+> [AZURE.NOTE] Für die Schritte in diesem Abschnitt wird der Firefox-Browser verwendet, der für Linux, Unix, Macintosh OS X und Windows-Systeme frei verfügbar ist. Andere moderne Browser wie Google Chrome, Microsoft Edge oder Apple Safari sollten ebenfalls funktionieren. Allerdings ist möglicherweise das in einigen Schritten verwendete FoxyProxy-Plug-In nicht für alle Browser verfügbar.
 
-1. Konfigurieren Sie den Browser für die Verwendung von **localhost:9876** als **SOCKS v5**-Proxy. Die Firefox-Einstellungen sollten wie folgt aussehen. Wenn Sie einen anderen Port als 9876 verwenden, ändern Sie den Port entsprechend:
+1. Konfigurieren Sie den Browser für die Verwendung von **localhost:9876** als **SOCKS v5**-Proxy. Die Firefox-Einstellungen sollten wie folgt aussehen. Wenn Sie einen anderen Port als 9876 verwenden, ändern Sie den Port entsprechend:
 
 	![Abbildung von Firefox-Einstellungen](./media/hdinsight-linux-ambari-ssh-tunnel/socks.png)
 
@@ -161,9 +161,9 @@ Nachdem Sie diese Schritte ausgeführt haben, werden ausschließlich Anforderung
 
 Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu überprüfen, ob Sie von der Ambari-Webbenutzeroberfläche auf Dienst-Webbenutzeroberflächen zugreifen können:
 
-1. Navigieren Sie im Webbrowser zu https://CLUSTERNAME.azurehdinsight.net, wobei "CLUSTERNAME" der Name des HDInsight-Clusters ist.
-
-	Geben Sie bei der entsprechenden Aufforderung den Benutzernamen ("admin") und das Kennwort des Administrators für den Cluster ein. Sie werden eventuell von der Ambari-Webbenutzeroberfläche ein zweites Mal zur Eingabe aufgefordert. Geben Sie in diesem Fall die Informationen erneut ein.
+1. Öffnen Sie http://headnodehost:8080 in Ihrem Browser. Die `headnodehost`-Adresse wird durch den Tunnel an den Cluster gesendet und in den Hauptknoten aufgelöst, auf dem Ambari ausgeführt wird. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen ("admin") und das Kennwort des Administrators für den Cluster ein. Sie werden eventuell von der Ambari-Webbenutzeroberfläche ein zweites Mal zur Eingabe aufgefordert. Geben Sie in diesem Fall die Informationen erneut ein.
+    
+    > [AZURE.NOTE] Bei Verwendung der Adresse http://headnodehost:8080 zum Herstellen der Verbindung mit dem Cluster wird die Verbindung direkt über den Tunnel mit dem Hauptknoten hergestellt, auf dem Ambari ausgeführt wird. Hierfür wird HTTP genutzt, und die Kommunikation ist mit dem SSH-Tunnel geschützt. Bei einer Verbindung über das Internet ohne Tunnel wird die Kommunikation per HTTPS geschützt. Verwenden Sie zum Herstellen einer Verbindung über das Internet per HTTPS die Adresse https://CLUSTERNAME.azurehdinsight.net, wobei __CLUSTERNAME__ der Name des Clusters ist.
 
 2. Wählen Sie auf der Ambari-Webbenutzeroberfläche aus der Liste links auf der Seite YARN aus.
 
@@ -174,15 +174,14 @@ Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu üb
 	![Bild mit erweitertem Menü "QuickLinks"](./media/hdinsight-linux-ambari-ssh-tunnel/yarnquicklinks.png)
 
 	> [AZURE.NOTE] Wenn Sie über eine langsame Internetverbindung verfügen oder der Hauptknoten stark ausgelastet ist, wird möglicherweise anstelle eines Menüs eine Benachrichtigung zum Warten angezeigt, wenn Sie __QuickLinks__ auswählen. Warten Sie in diesem Fall eine oder zwei Minuten auf den Empfang der Daten vom Server, und wiederholen Sie dann das Auflisten.
-
-
-	> [AZURE.TIP] Wenn Sie einen Monitor mit niedriger Auflösung verwenden oder das Browserfenster nicht maximiert ist, werden einige Einträge im Menü __QuickLinks__ möglicherweise auf der rechten Seite des Bildschirms abgeschnitten. Erweitern Sie in diesem Fall das Menü mit der Maus, und verwenden Sie die Nach-Rechts-Taste, um nach rechts zu scrollen und das restliche Menü anzuzeigen.
+    >
+	> Wenn Sie einen Monitor mit niedriger Auflösung verwenden oder das Browserfenster nicht maximiert ist, werden einige Einträge im Menü __QuickLinks__ möglicherweise auf der rechten Seite des Bildschirms abgeschnitten. Erweitern Sie in diesem Fall das Menü mit der Maus, und verwenden Sie die Nach-Rechts-Taste, um nach rechts zu scrollen und das restliche Menü anzuzeigen.
 
 4. Eine Seite ähnlich der folgenden wird angezeigt:
 
 	![Bild der YARN-ResourceManager-Benutzeroberfläche](./media/hdinsight-linux-ambari-ssh-tunnel/yarnresourcemanager.png)
 
-	> [AZURE.TIP] Beachten Sie die URL für diese Seite. Sie sollte in etwa \_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ lauten. Dabei wird der interne vollständig qualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nicht ohne Verwendung eines SSH-Tunnels zugegriffen werden kann.
+	> [AZURE.NOTE] Beachten Sie die URL für diese Seite. Sie sollte in etwa \_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ lauten. Dabei wird der interne vollständig qualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nicht ohne Verwendung eines SSH-Tunnels zugegriffen werden kann.
 
 ##Nächste Schritte
 
@@ -196,4 +195,4 @@ Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den fol
 
 * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

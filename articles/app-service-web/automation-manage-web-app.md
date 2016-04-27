@@ -40,7 +40,6 @@ Web-Apps können in Azure Automation durch die Verwendung von PowerShell-Cmdlets
 
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation vertraut gemacht haben, folgen Sie diesen Links, um weitere Informationen zu Azure Automation zu erhalten.
 
-* Lernprogramm [Erste Schritte](../automation-intro.md) zu Azure Automation
- 
+* Lernprogramm [Erste Schritte](../automation/automation-intro.md) zu Azure Automation
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

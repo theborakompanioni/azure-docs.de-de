@@ -26,4 +26,8 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+## Nächste Schritte
+
+Sie können mit dem klassischen Portal auch [einen benutzerdefinierten virtuellen Computer unter Linux erstellen](virtual-machines-linux-classic-createportal.md).
+
+<!---HONumber=AcomDC_0413_2016-->

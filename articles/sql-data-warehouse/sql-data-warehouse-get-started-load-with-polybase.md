@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/18/2016"
    ms.author="sahajs;barbkess;jrj;sonyama"/>
 
 
@@ -43,7 +43,7 @@ Für dieses Tutorial ist Folgendes erforderlich:
     ![Azure-Speichertools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
 
-## Schritt 1: Hinzufügen von Beispieldaten zum Azure-Blobspeicher
+## Schritt 1: Hinzufügen von Beispieldaten zum Azure-Blobspeicher
 
 Um Daten laden zu können, müssen wir einige Beispieldaten in einen Azure-Blobspeicher einfügen. In diesem Schritt füllen wir einen Azure-Blobspeicher mit Beispieldaten. Wir werden diese Beispieldaten später mit PolyBase in die SQL Data Warehouse-Datenbank laden.
 
@@ -72,7 +72,7 @@ So bereiten Sie eine Beispieltextdatei vor
 
 So suchen Sie den Endpunkt Ihres Blobdiensts
 
-1. Wählen Sie im klassischen Azure-Portal **Durchsuchen** > **Speicherkonten** aus.
+1. Wählen Sie im Azure-Portal **Durchsuchen** > **Speicherkonten**.
 2. Klicken Sie auf das Speicherkonto, das Sie verwenden möchten.
 3. Klicken Sie auf dem Blatt des Speicherkontos auf „Blobs“.
 
@@ -86,7 +86,7 @@ So suchen Sie den Endpunkt Ihres Blobdiensts
 
 So suchen Sie den Azure-Speicherschlüssel
 
-1. Wählen Sie auf der Startseite **Durchsuchen** > **Speicherkonten** aus.
+1. Wählen Sie im Azure-Portal **Durchsuchen** > **Speicherkonten**.
 2. Klicken Sie auf das Speicherkonto, das Sie verwenden möchten.
 3. Wählen Sie **Alle Einstellungen** > **Zugriffsschlüssel** aus.
 4. Klicken Sie auf das Kopierfeld, um einen der Zugriffsschlüssel in die Zwischenablage zu kopieren.
@@ -128,7 +128,7 @@ So zeigen Sie die Datei an, die Sie in den Blobspeicher hochgeladen haben
 
 In diesem Abschnitt erstellen wir eine externe Tabelle, die die Beispieldaten definiert.
 
-PolyBase verwendet externe Tabellen, um auf Daten in einem Azure-Blobspeicher oder in Hadoop zuzugreifen. Da die Daten nicht in SQL Data Warehouse gespeichert sind, verarbeitet PolyBase die Authentifizierung für die externen Daten anhand von datenbankbezogenen Anmeldeinformationen.
+PolyBase verwendet externe Tabellen, um auf Daten in einem Azure-Blobspeicher zuzugreifen. Da die Daten nicht in SQL Data Warehouse gespeichert sind, verarbeitet PolyBase die Authentifizierung für die externen Daten anhand von datenbankbezogenen Anmeldeinformationen.
 
 Für das Beispiel in diesem Schritt werden die folgenden Transact-SQL-Anweisungen verwendet, um eine externe Tabelle zu erstellen.
 
@@ -162,6 +162,7 @@ WITH
 
 
 -- C: Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
 -- CREDENTIAL: Provide the credential created in the previous step.
 
@@ -286,4 +287,4 @@ Im [PolyBase-Handbuch][] finden Sie weitere Informationen, die Sie beim Entwicke
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/13/2016"
+   ms.date="04/07/2016"
    ms.author="alkohli" />
 
-# Anwenden von Updates und Hotfixes auf StorSimple Virtual Array (Vorschau)
+# Anwenden von Updates und Hotfixes auf das StorSimple Virtual Array
 
 ## Übersicht
 
@@ -39,4 +39,4 @@ Stellen Sie vor der Update- oder Hotfixinstallation sicher, dass das Update oder
 
 Erfahren Sie, wie Sie [StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

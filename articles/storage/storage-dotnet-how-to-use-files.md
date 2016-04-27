@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-	  ms.date="04/07/2016"
+	  ms.date="04/11/2016"
       ms.author="minet" />
 
 # Erste Schritte mit Azure File Storage unter Windows
@@ -214,7 +214,7 @@ Um zu veranschaulichen, wie eine Azure-Dateifreigabe eingebunden wird, erstellen
 
 
 1. Erstellen Sie zunächst einen neuen virtuellen Azure-Computer, indem Sie die Anweisungen unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) befolgen.
-2. Erstellen Sie als Nächstes einen neuen virtuellen Computer, indem Sie die Anweisungen unter [Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-log-on.md) befolgen.
+2. Stellen Sie als Nächstes eine Remoteverbindung mit dem virtuellen Computer her, indem Sie die Anweisungen unter [Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-connect-logon.md) befolgen.
 3. Öffnen Sie ein PowerShell-Fenster auf dem virtuellen Computer.
 
 ### Fortbestehen der Anmeldeinformationen Ihres Speicherkontos für den virtuellen Computer
@@ -642,4 +642,4 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 - [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

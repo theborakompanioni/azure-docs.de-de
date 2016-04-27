@@ -1,9 +1,9 @@
-Wenn der Azure Resource Manager um Compute-, Netzwerk- und Speicherfunktionen erweitert wird, stellt dies eine erhebliche Vereinfachung der Bereitstellung und Verwaltung komplexer Anwendungen dar, die in IaaS ausgeführt werden. Für viele Anwendungen ist eine Kombination von Ressourcen wie virtuellen Netzwerken, Speicherkonten, virtuellen Computern und Netzwerkschnittstellen erforderlich. Mit dem Azure-Ressourcen-Manager können Sie eine JSON-Vorlage erstellen, um alle Ressourcen gemeinsam als eine einzige Anwendung bereitzustellen und zu verwalten.
 
 
-## Vorteile der Integration von Computing-, Netzwerk- und Speicherkapazitäten unter dem Azure-Ressourcen-Manager
 
-Mit dem Azure-Ressourcen-Manager können Sie vordefinierte Anwendungsvorlagen unkompliziert nutzen oder selbst Anwendungsvorlagen erstellen, um Rechen-, Netzwerk- und Speicherressourcen in Azure bereitzustellen und zu verwalten. In diesem Abschnitt werden die Vorteile einer Bereitstellung von Ressourcen mithilfe der Azure-Ressourcen-Manager erläutert.
+## Vorteile der Integration von Compute-, Netzwerk- und Speicherkapazitäten unter dem Azure Resource Manager-Bereitstellungsmodell
+
+Mit dem Azure Resource Manager-Bereitstellungsmodell können Sie vordefinierte Anwendungsvorlagen unkompliziert nutzen oder selbst Anwendungsvorlagen erstellen, um Compute-, Netzwerk- und Speicherressourcen in Azure bereitzustellen und zu verwalten. In diesem Abschnitt werden die Vorteile einer Bereitstellung von Ressourcen mithilfe des Azure Resource Manager-Bereitstellungsmodells erläutert.
 
 -	Komplexität ganz einfach – Entwicklung, Integration und Zusammenarbeit rund um komplexe Anwendungen mit der gesamten Skala von Azure-Ressourcen (z. B. Websites, SQL-Datenbanken, virtuelle Computer, virtuelle Netzwerke) aus einer Vorlagendatei, die freigegeben werden kann
 -	Flexibilität durch reproduzierbare Bereitstellungen für Entwicklung, DevOps und Systemadministratoren durch Verwendung der gleichen Vorlagendatei
@@ -15,14 +15,14 @@ Mit dem Azure-Ressourcen-Manager können Sie vordefinierte Anwendungsvorlagen un
 
 ## Verbesserungen der Computing-, Netzwerk- und Speicher-APIs unter dem Azure-Ressourcen-Manager
 
-Zusätzlich zu den oben genannten Vorteilen sind einige bedeutende Leistungsverbesserungen in den veröffentlichten APIs verfügbar.
+Zusätzlich zu den oben genannten Vorteilen sind einige bedeutende Leistungsverbesserungen in den veröffentlichten APIs verfügbar:
 
 -	Möglichkeit zu umfassender paralleler Bereitstellung von virtuellen Computern
 -	Unterstützung für 3 Fehlerdomänen in Verfügbarkeitsgruppen
 -	Verbesserte Erweiterung benutzerdefinierter Skripts: Alle Skripts aus jeder öffentlich zugänglichen benutzerdefinierten URL können angegeben werden
 - Integration von virtuellen Computern mit dem Azure-Schlüsseltresor ermöglicht hoch sicheres Speichern und privates Bereitstellen geheimer Informationen von [FIPS-überprüften](http://wikipedia.org/wiki/FIPS_140-2) [Hardwaresicherheitsmodulen](http://wikipedia.org/wiki/Hardware_security_module)
 -	Bietet die Grundbausteine für Netzwerke über APIs, sodass Kunden komplexe Anwendungen mit Netzwerkschnittstellen, Lastenausgleichsmodulen und virtuellen Netzwerken erstellen können.
--	Netzwerkschnittstellen als neue Objekte ermöglichen das Aufrechterhalten und Weiterverwenden komplexer Netzwerkkonfigurationen für virtuelle Computer
+-	Netzwerkschnittstellen als neue Objekte ermöglichen das Aufrechterhalten und Weiterverwenden komplexer Netzwerkkonfigurationen für virtuelle Computer
 -	Lastenausgleichsmodule als erstklassige Ressourcen ermöglichen IP-Adresszuweisungen
 -	Präzise Virtual Network-APIs ermöglichen die eine einfache Verwaltung einzelner virtueller Netzwerke
 
@@ -33,7 +33,7 @@ In diesem Abschnitt werden einige der wichtigsten konzeptuellen Unterschiede zwi
  Element | Azure-Dienstverwaltung (XML-basiert) | Rechen-, Netzwerk- und Speicheranbieter (JSON-basiert)
  ---|---|---
 | Clouddienst für virtuelle Computer |	Beim Clouddienst handelte es sich um einen Container für die virtuellen Computer, für den Plattformverfügbarkeit sowie Lastenausgleich erforderlich waren. | Der Clouddienst ist kein erforderliches Objekt zum Erstellen eines virtuellen Computers mithilfe des neuen Modells mehr. |
-| Verfügbarkeitsgruppen | Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. | Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die eine hohe Verfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
+| Verfügbarkeitsgruppen | Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. | Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die eine hohe Verfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
 | Affinitätsgruppen |	Zum Erstellen von virtuellen Netzwerken waren Affinitätsgruppen erforderlich. Dies ist jedoch seit der Einführung regionaler virtueller Netzwerke nicht mehr erforderlich. |Zur Vereinfachung ist das Affinitätsgruppenkonzept in über den Azure-Ressourcen-Manager verfügbaren APIs nicht vorhanden. |
 | Lastenausgleich | Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. | Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. [Weitere Informationen](../articles/resource-groups-networking.md) |
 |Virtuelle IP-Adresse | Clouddienste erhalten eine Standard-VIP (virtuelle IP-Adresse), wenn ihnen ein virtueller Computer hinzugefügt wird. Die virtuelle IP-Adresse ist dem impliziten Lastenausgleich zugeordnet. | Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Dynamische öffentliche IP-Adressen können einem Lastenausgleich zugewiesen werden. Öffentliche IP-Adressen können mithilfe von Sicherheitsgruppen gesichert werden. |
@@ -83,7 +83,7 @@ Die Kontingente für virtuelle Computer, virtuelle Netzwerke und Speicherkonten,
 
 **Kann ich meine automatisierten Skripts zur Bereitstellung virtueller Computer, virtueller Netzwerke, Speicherkonten usw. durch die neuen Azure-Ressourcen-Manager-APIs weiterhin verwenden?**
 
-Die Automatisierungen und Skripts, die Sie erstellt haben, bleiben für die vorhandenen virtuellen Computer und virtuellen Netzwerke funktionsfähig, die im Azure-Dienstverwaltungsmodus erstellt wurden. Die Skripts müssen jedoch aktualisiert werden, damit das neue Schema zum Erstellen der gleichen Ressourcen über den neuen Azure-Ressourcen-Manager-Modus verwendet werden kann. Informieren Sie sich näher über das Ändern Ihrer [Azure-CLI-Skripts](../articles/virtual-machines/virtual-machines-linux-cli-manage.md).
+Die Automatisierungen und Skripts, die Sie erstellt haben, bleiben für die vorhandenen virtuellen Computer und virtuellen Netzwerke funktionsfähig, die im Azure-Dienstverwaltungsmodus erstellt wurden. Die Skripts müssen jedoch aktualisiert werden, damit das neue Schema zum Erstellen der gleichen Ressourcen über den neuen Azure-Ressourcen-Manager-Modus verwendet werden kann.
 
 **Können die mit den neuen Azure-Ressourcen-Manager-APIs erstellten virtuellen Netzwerke mit meinem Express Route-Schaltkreis verbunden werden?**
 
@@ -93,4 +93,4 @@ Dies wird zurzeit nicht unterstützt. Die mit den neuen Azure-Ressourcen-Manager
 
 Einen umfassenden Satz von Startervorlagen finden Sie unter [Schnellstartvorlagen für den Azure-Ressourcen-Manager](https://azure.microsoft.com/documentation/templates/).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

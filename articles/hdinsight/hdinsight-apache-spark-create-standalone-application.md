@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Erstellen eigenständiger Scala-Anwendungen zur Ausführung in HDInsight Spark-Clustern | Microsoft Azure" 
-	description="Hier erfahren Sie, wie Sie eine eigenständige Spark-Anwendung zur Ausführung in HDInsight Spark-Clustern erstellen." 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="nitinme" 
-	manager="paulettm" 
+<properties
+	pageTitle="Erstellen eigenständiger Scala-Anwendungen zur Ausführung in HDInsight Spark-Clustern | Microsoft Azure"
+	description="Hier erfahren Sie, wie Sie eine eigenständige Spark-Anwendung zur Ausführung in HDInsight Spark-Clustern erstellen."
+	services="hdinsight"
+	documentationCenter=""
+	authors="nitinme"
+	manager="paulettm"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/05/2016" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="nitinme"/>
 
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält eine schrittweise Anleitung zum Entwickeln eigenständig
 * Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
 * Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-* Eine Java-IDE. In diesem Artikel wird IntelliJ IDEA 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/). 
+* Eine Java-IDE. In diesem Artikel wird IntelliJ IDEA 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
 
 
 ## Installieren des Scala-Plug-Ins für IntelliJ IDEA
@@ -81,7 +81,7 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
 	1. Klicken Sie im Menü **Datei** auf **Einstellungen**.
 	2. Navigieren Sie im Dialogfeld **Einstellungen** zu **Erstellung, Ausführung, Bereitstellung** > **Buildtools** > **Maven** > **Importieren**.
 	3. Aktivieren Sie das Kontrollkästchen **Maven-Projekte automatisch importieren**.
-	4. Klicken Sie auf **Übernehmen** und anschließend auf **OK**. 
+	4. Klicken Sie auf **Übernehmen** und anschließend auf **OK**.
 
 
 8. Aktualisieren Sie die Scala-Quelldatei mit Ihrem Anwendungscode. Öffnen Sie den vorhandenen Beispielcode, ersetzen Sie ihn durch den folgenden Code, und speichern Sie die Änderungen. Dieser Code liest die Daten aus der Datei „HVAC.csv“ (für alle HDInsight Spark-Cluster verfügbar), ruft die Zeilen ab, die nur eine Ziffer in der sechsten Spalte enthalten, und schreibt die Ausgabe in **/HVACOut** unter dem Standardspeichercontainer für den Cluster.
@@ -90,7 +90,7 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
 
 		import org.apache.spark.SparkConf
 		import org.apache.spark.SparkContext
-		
+
 		/**
 		  * Test IO to wasb
 		  */
@@ -98,12 +98,12 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
 		  def main (arg: Array[String]): Unit = {
 		    val conf = new SparkConf().setAppName("WASBIOTest")
 		    val sc = new SparkContext(conf)
-		
+
 		    val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-		
+
 		    //find the rows which have only one digit in the 7th column in the CSV
 		    val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
-		
+
 		    rdd1.saveAsTextFile("wasb:///HVACout")
 		  }
 		}
@@ -158,7 +158,7 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
 
 Gehen Sie wie folgt vor, um die Anwendung im Cluster auszuführen:
 
-* **Kopieren Sie die JAR-Anwendungsdatei in das dem Cluster zugeordnete Azure-Speicher-BLOB.** Dafür können Sie etwa das Befehlszeilenprogramm [**AzCopy**](storage/storage-use-azcopy.md) verwenden. Daneben gibt es aber auch noch zahlreiche andere Clients, die Sie zum Hochladen von Daten verwenden können. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
+* **Kopieren Sie die JAR-Anwendungsdatei in das dem Cluster zugeordnete Azure-Speicher-BLOB.** Dafür können Sie etwa das Befehlszeilenprogramm [**AzCopy**](../storage/storage-use-azcopy.md) verwenden. Daneben gibt es aber auch noch zahlreiche andere Clients, die Sie zum Hochladen von Daten verwenden können. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
 
 * **Verwenden Sie Livy, um einen Anwendungsauftrag remote an den Spark-Cluster zu übermitteln.** Spark-Cluster in HDInsight enthalten Livy, um REST-Endpunkte für die Remoteübermittlung von Spark-Aufträgen verfügbar zu machen. Weitere Informationen finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy mit Spark-Clustern in HDInsight](hdinsight-apache-spark-livy-rest-interface.md).
 
@@ -196,4 +196,4 @@ Gehen Sie wie folgt vor, um die Anwendung im Cluster auszuführen:
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

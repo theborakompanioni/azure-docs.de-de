@@ -1,24 +1,24 @@
-<properties 
-   pageTitle="Mit Data Lake-Speicher kompatible Big Data-Anwendungen | Azure" 
-   description="Liste von Open Source-Anwendungen, die mit Azure Data Lake-Speicher funktionieren" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+<properties
+   pageTitle="Mit Data Lake-Speicher kompatible Big Data-Anwendungen | Azure"
+   description="Liste von Open Source-Anwendungen, die mit Azure Data Lake-Speicher funktionieren"
+   services="data-lake-store"
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
+   ms.workload="big-data"
    ms.date="02/03/2016"
    ms.author="nitinme"/>
 
 # Open Source-Big Data-Anwendungen, die mit Azure Data Lake Store funktionieren
 
-In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit Azure Data Lake-Speicher funktionieren. Für die Anwendungen in der Tabelle unten werden nur die Versionen unterstützt, die mit der aufgelisteten Verteilung verfügbar sind. Weitere Informationen dazu, welche Versionen dieser Anwendungen mit HDInsight zur Verfügung stehen, finden Sie unter [HDInsight-Komponentenversionen](/hdinsight/hdinsight-component-versioning.md).
+In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit Azure Data Lake-Speicher funktionieren. Für die Anwendungen in der Tabelle unten werden nur die Versionen unterstützt, die mit der aufgelisteten Verteilung verfügbar sind. Weitere Informationen dazu, welche Versionen dieser Anwendungen mit HDInsight zur Verfügung stehen, finden Sie unter [HDInsight-Komponentenversionen](../hdinsight/hdinsight-component-versioning.md).
 
 
 | Open Source-Software | Verteilung |
@@ -39,6 +39,5 @@ In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit A
 ## Weitere Informationen
 
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

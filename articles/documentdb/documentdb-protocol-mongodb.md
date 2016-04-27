@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB-Protokollunterstützung für MongoDB | Microsoft Azure" 
 	description="Enthält Informationen zur DocumentDB-Protokollunterstützung für MongoDB, die jetzt als Vorschauversion verfügbar ist." 
-	keywords="MongoDB-Protokoll, MongoDB"
+	keywords="MongoDB-Protokoll, MongoDB, Mongo Datenbank"
 	services="documentdb" 
 	authors="stephbaron" 
 	manager="jhubbard" 
@@ -13,7 +13,7 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="03/31/2016" 
 	ms.author="stbaro"/>
 
@@ -36,11 +36,11 @@ Führen Sie die folgenden Schritte aus, um den Zugriff auf die Vorschauversion a
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie nacheinander auf **NEU**, **Daten und Speicher**, **Alle anzeigen**, **Mehr** und **DocumentDB – Protokollunterstützung für MongoDB**.
 
-	![Screenshot der Blätter „Marketplace“ und „Daten und Speicher“ mit hervorgehobener Option „DocumentDB – Protokollunterstützung für MongoDB“](./media/documentdb-protocol-mongodb/marketplacegallery1.png)
+	![Screenshot der Blätter „Marketplace“ und „Daten und Speicher“ mit hervorgehobener Option „DocumentDB – Protokollunterstützung für MongoDB“ (Mongo-Datenbank)](./media/documentdb-protocol-mongodb/marketplacegallery1.png)
 
 3. Alternativ hierzu können Sie unter der Kategorie **Daten und Speicher** nach „DocumentDB-Protokoll“ suchen.
 
-	![Screenshot der Suchblätter „Marketplace“ und „Daten und Speicher“ mit hervorgehobener Option „DocumentDB – Protokollunterstützung für MongoDB“](./media/documentdb-protocol-mongodb/marketplacegallery2.png)
+	![Screenshot der Blätter „Marketplace“ und „Daten und Speicher“ für die Suche mit hervorgehobener Option „DocumentDB – Protokollunterstützung für MongoDB“ (Mongo-Datenbank)](./media/documentdb-protocol-mongodb/marketplacegallery2.png)
 
 4. Klicken Sie auf **Erstellen**, um den Anmeldevorgang für die Vorschau zu starten.
 
@@ -56,4 +56,4 @@ Führen Sie die folgenden Schritte aus, um den Zugriff auf die Vorschauversion a
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

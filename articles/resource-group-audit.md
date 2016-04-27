@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="tfitzmac"
 	manager="timlt"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -64,19 +64,21 @@ Beachten Sie, dass das Überwachungsprotokoll automatisch über die vergangene W
 
 1. Um Protokolleinträge abzurufen, führen Sie den Befehl **Get-AzureRmLog** aus. Wenn Sie die Liste der Einträge filtern möchten, können Sie dem Befehl Parameter hinzufügen. Wenn Sie keine Start- und Endzeit angeben, werden die Einträge der letzten Stunde zurückgegeben. Führen Sie beispielsweise folgenden Befehl aus, um die Vorgänge für eine Ressourcengruppe während der letzten Stunde abzurufen:
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup
+        Get-AzureRmLog -ResourceGroup ExampleGroup
 
     Das folgende Beispiel zeigt, wie Sie mithilfe des Überwachungsprotokolls nach Vorgängen suchen können, die während eines bestimmten Zeitraums durchgeführt wurden. Die Start- und Enddaten werden in einem Datumsformat angegeben.
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
 
-    Alternativ können Sie mithilfe von Datumsfunktionen den Datumsbereich angeben, beispielsweise die letzten 14 Tage.
+    Alternativ können Sie mithilfe von Datumsfunktionen den Datumsbereich angeben, beispielsweise die letzten 14 Tage.
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 
-2. Je nachdem, welche Startzeit Sie angeben, können die oben stehenden Befehle eine sehr lange Liste mit Vorgängen für diese Ressourcengruppe zurückgeben. Sie können die Ergebnisse filtern, indem Sie Suchkriterien eingeben. Wenn Sie beispielsweise herausfinden möchten, wie eine Web-App angehalten wurde, können Sie folgenden Befehl ausführen. Sie werden feststellen, dass die Aktion durch someone@contoso.com durchgeführt wurde.
+2. Je nachdem, welche Startzeit Sie angeben, können die oben stehenden Befehle eine sehr lange Liste mit Vorgängen für diese Ressourcengruppe zurückgeben. Sie können die Ergebnisse filtern, indem Sie Suchkriterien eingeben. Wenn Sie beispielsweise herausfinden möchten, wie eine Web-App angehalten wurde, können Sie folgenden Befehl ausführen.
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+        
+    In diesem Beispiel wird damit gezeigt, dass die Aktion durch someone@contoso.com durchgeführt wurde.
         
         Authorization     :
         Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
@@ -96,7 +98,7 @@ Beachten Sie, dass das Überwachungsprotokoll automatisch über die vergangene W
 
 3. Sie können die Aktionen anzeigen, die von einem bestimmten Benutzer durchgeführt wurden, selbst für eine Ressourcengruppe, die nicht mehr vorhanden ist.
 
-        PS C:\> Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
+        Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 
 ## Azure-Befehlszeilenschnittstelle zum Anzeigen von Überwachungsprotokollen
 
@@ -104,7 +106,7 @@ Beachten Sie, dass das Überwachungsprotokoll automatisch über die vergangene W
 
         azure group log show ExampleGroup
 
-2. Sie können die Ergebnisse mit einem JSON-Hilfsprogramm wie z. B. [jq](http://stedolan.github.io/jq/download/) filtern. Das folgende Beispiel zeigt, wie Sie nach Vorgängen zur Aktualisierung einer Webkonfigurationsdatei suchen.
+2. Sie können die Ergebnisse mit einem JSON-Hilfsprogramm wie z. B. [jq](http://stedolan.github.io/jq/download/) filtern. Das folgende Beispiel zeigt, wie Sie nach Vorgängen zur Aktualisierung einer Webkonfigurationsdatei suchen.
 
         azure group log show ExampleGroup --json | jq ".[] | select(.operationName.localizedValue == "Update web sites config")"
 
@@ -123,4 +125,4 @@ Die REST-Vorgänge für die Arbeit mit Überwachungsprotokollen gehören zur [In
 - Weitere Informationen zu den Befehlen zur Problembehandlung bei Bereitstellungen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-portal.md).
 - Informationen zum Verhindern von Löschvorgängen für eine Ressource für alle Benutzer finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](resource-group-lock-resources.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

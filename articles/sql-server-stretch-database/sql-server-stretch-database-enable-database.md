@@ -69,7 +69,7 @@ Für das Aktivieren von Stretch-Datenbank für eine Datenbank oder eine Tabelle 
     USE <database>
     GO
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD='<password>'
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD ='<password>'
     ```
 
 4.  Wenn Sie eine Datenbank für Stretch-Datenbank konfigurieren, müssen Sie die Anmeldeinformationen für Stretch-Datenbank angeben, um die Kommunikation zwischen dem lokalen SQL Server und dem Azure-Remoteserver zu ermöglichen. Sie haben zwei Möglichkeiten.
@@ -100,15 +100,15 @@ Für das Aktivieren von Stretch-Datenbank für eine Datenbank oder eine Tabelle 
 
 5.  Um eine Datenbank für Stretch-Datenbank zu konfigurieren, führen Sie den Befehl ALTER DATABASE aus.
 
-    1.  Geben Sie für das SERVER-Argument den Namen eines vorhandenen Azure-Servers ein, einschließlich des `.database.windows.net`-Teils des Namens, z. B. `MyStretchDatabaseServer.database.windows.net`.
+    1.  Geben Sie für das SERVER-Argument den Namen eines vorhandenen Azure-Servers ein, einschließlich des `.database.windows.net`-Teils des Namens, z. B. `MyStretchDatabaseServer.database.windows.net`.
 
-    2.  Stellen Sie vorhandene Administratoranmeldeinformationen mit dem CREDENTIAL-Argument bereit, oder geben Sie FEDERATED\_SERVICE\_ACCOUNT \\= ON an. Das folgenden Beispiel enthält vorhandene Anmeldeinformationen:
+    2.  Stellen Sie vorhandene Administratoranmeldeinformationen mit dem CREDENTIAL-Argument bereit, oder geben Sie FEDERATED\_SERVICE\_ACCOUNT = ON an. Das folgenden Beispiel enthält vorhandene Anmeldeinformationen:
 
     ```tsql
     ALTER DATABASE <database name>
         SET REMOTE_DATA_ARCHIVE = ON
             (
-                SERVER = <server_name> ,
+                SERVER = '<server_name>',
                 CREDENTIAL = <db_scoped_credential_name>
             ) ;
     GO;
@@ -133,4 +133,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 
 [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

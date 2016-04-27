@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="04/04/2016" 
 	ms.author="tomfitz"/>
 
 # Erstellen einer Logik-App mithilfe einer Vorlage
 
 Erstellen Sie mit einer Azure-Ressourcen-Manager-Vorlage eine leere Logik-App, die zum Definieren von Workflows verwendet werden kann. Sie können definieren, welche Ressourcen bereitgestellt werden, und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zu den Eigenschaften der Logik-App finden Sie unter [API für die Workflowverwaltung einer Logik-App](https://msdn.microsoft.com/library/azure/dn948513.aspx).
+Weitere Informationen zu den Eigenschaften der Logik-App finden Sie unter [API für die Workflowverwaltung einer Logik-App](https://msdn.microsoft.com/library/azure/mt643788.aspx).
 
 Beispiele für die Definition selbst finden Sie unter [Schreiben von Logik-App-Definitionen](app-service-logic-author-definitions.md).
 
@@ -34,7 +34,7 @@ Mit dieser Vorlage stellen Sie eine Logik-App bereit.
 
 Wählen Sie die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
-[![Bereitstellen in Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Bereitstellen in Azure](media/app-service-logic-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 ## Parameter
 
@@ -142,4 +142,4 @@ Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0413_2016-->
