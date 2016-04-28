@@ -69,8 +69,7 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 
 | Name | Datentyp | Erforderlich|
 |---|---|---|
-|To  
-|string|no|
+|To|string|no|
 |CC|string|no|
 |Betreff|string|no|
 |Body|string|no|
