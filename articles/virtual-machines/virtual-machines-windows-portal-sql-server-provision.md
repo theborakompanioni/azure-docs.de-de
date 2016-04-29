@@ -203,4 +203,4 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie auf Ihre virtuelle Masc
 ##<a id="Next">Nächste Schritte
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->
