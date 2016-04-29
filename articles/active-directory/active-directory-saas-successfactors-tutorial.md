@@ -16,7 +16,8 @@
 
 #Tutorial: Azure Active Directory-Integration mit SuccessFactors
   
-Das Ziel dieses Lernprogramms ist, die Integration von Azure und SuccessFactors im **SP-initiierten SSO-Modus** zu verdeutlichen. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das Ziel dieses Lernprogramms ist, die Integration von Azure und SuccessFactors im **SP-initiierten SSO-Modus** zu verdeutlichen.  
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein für SuccessFactor SSO (einmaliges Anmelden) aktiviertes Abonnement im SP-initiierten Modus
@@ -84,8 +85,8 @@ Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das Succe
 
     ![App-URL konfigurieren](./media/active-directory-saas-successfactors-tutorial/IC791140.png "App-URL konfigurieren")
 
-    1.  Geben Sie im Textfeld **SuccessFactors-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der SuccessFactors-Anwendung verwenden (z. B. **https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")).
-2.  Geben Sie in das Textfeld **SuccessFactors-Antwort-URL** **https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName** ein.
+    1.  Geben Sie im Textfeld **SuccessFactors-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der SuccessFactors-Anwendung verwenden (z. B. *https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*").
+	2.  Geben Sie in das Textfeld **SuccessFactors-Antwort-URL** **https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName** ein.
 
         >[AZURE.NOTE] Dieser Wert ist nur ein temporärer Platzhalter. 
 	>Sie erhalten den tatsächlichen Wert von Ihrem SuccessFactors Supportteam. 
@@ -102,7 +103,7 @@ Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das Succe
     2.  Die Remoteanmelde-URL
     3.  Die Remoteabmelde-URL
 
-    >[AZURE.IMPORTANT] Wenden Sie sich an das SuccessFactors-Supportteam, um den Parameter NameId-Format auf „*Nicht festgelegt*“ festzulegen.
+    >[AZURE.IMPORTANT] Wenden Sie sich an das SuccessFactors-Supportteam, um den Parameter NameId-Format auf „ *Nicht festgelegt* “ festzulegen.
 
     Das Successfactors-Supportteam sendet Ihnen die richtige **Successfactors-Antwort-URL**, die Sie für das Dialogfeld **App-URL konfigurieren** benötigen.
 
