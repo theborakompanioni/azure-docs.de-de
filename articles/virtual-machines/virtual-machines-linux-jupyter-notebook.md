@@ -6,7 +6,7 @@
 	authors="crwilcox"
 	manager="wpickett"
 	editor=""
-	tags=“azure-service-management,azure-resource-manager"/>
+	tags="azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines-linux"
@@ -39,7 +39,7 @@ Zunächst müssen Sie einen virtuellen Computer (VM) in Azure erstellen. Dieser 
 
 ### Erstellen eines virtuellen Linux-Computers und Öffnen eines Ports für Jupyter
 
-Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen, um einen virtuellen Computer der *Ubuntu*-Distribution zu erstellen. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser* aus.
+Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen, um einen virtuellen Computer der *Ubuntu*-Distribution zu erstellen. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser* aus.
 
 Nachdem der virtuelle Computer bereitgestellt wurde, muss eine Sicherheitsregel für die Netzwerksicherheitsgruppe geöffnet werden. Wechseln Sie im Azure-Portal zu **Netzwerksicherheitsgruppen**, und öffnen Sie die Registerkarte für die Sicherheitsgruppe, die Ihrem virtuellen Computer entspricht. Sie müssen eine Regel für die Sicherheit eingehender Verbindungen mit den folgenden Einstellungen hinzufügen: **TCP** für das Protokoll, ***** für den (öffentlichen) Quellport und **9999** für den (privaten) Zielport.
 
@@ -77,7 +77,7 @@ Installieren Sie Anaconda, eine beliebte Python-Distribution für Data Science, 
 </table>
 
 
-#### Installieren von Anaconda3 2.3.0 64 Bit unter Ubuntu
+#### Installieren von Anaconda3 2.3.0 64 Bit unter Ubuntu
 Es folgt ein Beispiel, wie Sie Anaconda unter Ubuntu installieren können.
 
 	# install anaconda
@@ -148,7 +148,7 @@ Nun können wir Jupyter Notebook starten. Navigieren Sie dazu in das Verzeichnis
 
 Jetzt sollten Sie in der Lage sein, unter der Adresse `https://[PUBLIC-IP-ADDRESS]:9999` auf Jupyter Notebook zuzugreifen.
 
-Beim ersten Zugriff auf IPython Notebook müssen Sie auf der Anmeldungsseite Ihr Kennwort eingeben. Nach der Anmeldung sehen Sie das Jupyter Notebook-Dashboard, d. h. die Steuerzentrale für sämtliche Notebook-Vorgänge. Auf dieser Seite können Sie neue Notebooks erstellen und bestehende Notebooks öffnen.
+Beim ersten Zugriff auf IPython Notebook müssen Sie auf der Anmeldungsseite Ihr Kennwort eingeben. Nach der Anmeldung sehen Sie das Jupyter Notebook-Dashboard, d. h. die Steuerzentrale für sämtliche Notebook-Vorgänge. Auf dieser Seite können Sie neue Notebooks erstellen und bestehende Notebooks öffnen.
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/jupyter-tree-view.png)
 
@@ -199,4 +199,4 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [repository]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

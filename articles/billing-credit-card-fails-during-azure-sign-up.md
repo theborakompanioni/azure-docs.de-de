@@ -14,11 +14,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/25/2015"
+	ms.date="04/14/2016"
 	ms.author="cjiang"/>
 
 # Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren
 In diesem Artikel werden häufige Gründe von Problemen bei Verwenden einer Kredit- oder Lastschriftkarte erörtert.
+
+[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
 ## Gibt es andere Zahlungsmöglichkeiten als Kredit- oder Lastschriftkarten?
 Es gibt die folgenden Zahlungsoptionen für Azure:
@@ -31,6 +33,7 @@ Es gibt die folgenden Zahlungsoptionen für Azure:
 - Akzeptierte Anbieter von Kredit- und Lastschriftkarten variieren je nach Land.
 
 Vorschläge:
+
 - Verwenden Sie keine virtuelle oder vorausbezahlte Kredit-/Lastschriftkarte.
 - Verwenden Sie eine andere gültige und unterstützte Kreditkarte, wenn bei der Zahlung oder Aktivierung ein Fehler auftritt.
 - Vergewissern Sie sich, dass die Zahlungsmethode aktiv ist und Ihre Bank nicht aus Sicherheitsgründen Onlinetransaktionen blockiert.
@@ -43,25 +46,32 @@ Vorschläge:
 - Sprechen Sie sich mit Ihrer Bank ab, um Schreibungs- oder andere Probleme mit Informationen auf Ihrer Karte zu korrigieren.
 
 Vorschläge:
+
 - Geben Sie bei der Registrierung stets fehlerfreie Informationen an, da Profildetails auch zum Generieren von Kontoauszügen genutzt werden.
 
 ## Sind Ihre Kontoprofilinformationen richtig und vollständig?
+
 - Der Kontoinhaber muss alle relevanten Informationen eingeben, die während der Registrierung angefordert werden. Diese dienen zum Identifizieren der Person, die das Konto besitzt, und bei Bedarf zum Generieren ordnungsgemäßer Kontoauszüge.
-- Beispiele für falsche oder unvollständige Felder sind u. a.: fehlender Vor- oder Nachname, falsche Telefonnummer, nicht standardmäßige (Sonder-)Zeichen.
+- Beispiele für falsche oder unvollständige Felder sind u. a.: fehlender Vor- oder Nachname, falsche Telefonnummer, nicht standardmäßige (Sonder-)Zeichen.
 
 Vorschläge:
-- Überprüfen Sie alle Felder Ihres Profils, entweder bei der Registrierung oder bei der [Festlegung Ihres Profils](https://account.windowsazure.com/Profile/), wenn Sie bereits ein Azure-Konto erstellt haben.
+
+- Überprüfen Sie alle Felder Ihres Profils entweder bei der Registrierung oder bei der [Festlegung Ihres Profils](https://account.windowsazure.com/Profile/), wenn Sie bereits ein Azure-Konto erstellt haben.
 - Geben Sie fehlerfreie Informationen an, da Profildetails auch zum Generieren von Kontoauszügen genutzt werden.
 
 ## Versuchen Sie, ein Azure-Vorteilsprogramm wie MSDN, BizSpark oder MPN zu aktivieren?  
 Vergewissern Sie sich über Ihren Vorteilsprogrammkanal, ob Sie für den gewählten Plan berechtigt sind:
+
 - MSDN:
-  - Überprüfen Sie auf der [MSDN-Kontoseite](https://msdn.microsoft.com/subscriptions/manage/default.aspx) Ihren Berechtigungsstatus.
+
+  - Überprüfen Sie auf der [MSDN-Kontoseite](https://msdn.microsoft.com/subscriptions/manage/deult.aspx) Ihren Berechtigungsstatus.
   - Wenn Sie Ihren Status nicht überprüfen können, wenden Sie sich an das [Kundendienstcenter für MSDN-Abonnements](https://msdn.microsoft.com/subscriptions/contactus.aspx).
 - MPN
+
   - Melden Sie sich beim [MPN-Portal](https://mspartner.microsoft.com/en/us/Pages/Locale.aspx) an, und überprüfen Sie Ihren Berechtigungsstatus. Sie sind ggf. für weitere Leistungen berechtigt, wenn Sie über die entsprechenden [Kompetenzen für Cloudplattformen](https://mspartner.microsoft.com/en/us/pages/membership/cloud-platform-competency.aspx) verfügen.
   - Wenn Sie Ihren Status nicht überprüfen können, wenden Sie sich an den [MPN-Support](https://mspartner.microsoft.com/en/us/Pages/Support/Premium/contact-support.aspx).
-- Bizpark:
+- BizSpark:
+
   - Melden Sie sich beim [BizSpark-Portal](https://www.microsoft.com/bizspark/default.aspx#start-two) an, und überprüfen Sie Ihren Berechtigungsstatus für BizSpark und BizSpark Plus. Wenn Sie Ihren Status nicht überprüfen können, wenden Sie sich an den BizSpark-Support, indem Sie eine [E-Mail an das BizSpark-Team senden](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team).
 
 Vorschläge:
@@ -75,7 +85,7 @@ Vorschläge:
 
 Wenn die Aktivierung einer kostenlosen Testversion nicht erfolgt, weil Sie in der Vergangenheit bereits ein Azure-Abonnement aktiviert haben, verwenden Sie anstelle des Plans „Kostenlose Azure-Testversion“ einen anderen in den [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) verfügbaren Azure-Plan.
 
-## Kontaktieren des Azure-Supports
-Wenn nach Befolgen dieser Schritte zur Problembehandlung immer noch ein Registrierungsproblem vorliegt, wenden Sie sich an den [Azure-Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409).
+## Nächste Schritte
+Haben Sie Fragen zur Abrechnung oder zum Abonnement auf Microsoft Azure? Informationen finden Sie unter [Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen](billing-subscription-faq.md#what-payment-options-do-i-have-in-purchasing-azure).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="02/16/2016"
+   ms.date="04/20/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Designkonzepte
@@ -36,6 +36,7 @@ In diesem Thema wird nur sourceAnchor behandelt, da es sich auf Benutzer bezieht
 Der Attributwert muss den folgenden Regeln entsprechen:
 
 - Weniger als 60 Zeichen lang
+    - Zeichen, bei denen es sich nicht um a-z, A-Z oder 0-9 handelt, werden als 3 Zeichen codiert und gezählt
 - Keine Sonderzeichen enthalten: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ \_
 - Global eindeutig
 - Zeichenfolge, Ganzzahl oder Binärzahl
@@ -67,4 +68,4 @@ Aus diesem Grund gelten die folgenden Einschränkungen für Azure AD Connect:
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

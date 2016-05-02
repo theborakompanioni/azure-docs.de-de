@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/10/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # Erste Schritte mit der BizTalk X12-API-App und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 Sie können mit dem BizTalk X12-Dienst bei der Business-to-Business-Kommunikation Nachrichten über das X12-Protokoll empfangen und senden. X12 wird häufig auch als ASC X12 (Accredited Standards Committee X12) bezeichnet und ist branchenweit verbreitet.
 
@@ -42,25 +44,17 @@ Der X12-Connector kann als Trigger oder als Aktion verwendet werden.
 
 ### Trigger
 - Starten Sie den Azure-Datenfluss-Designer für Logik-Apps.
-- Klicken Sie im rechten Bereich auf den X12-Connector:
-![Triggereinstellungen][3]
-- Klicken Sie auf ->:
-![Triggeroptionen][4]
-- Der BizTalk X12-Connector stellt einen einzelnen Trigger bereit. Wählen Sie *Batch veröffentlichen* aus:
-![Eingabe für Release Batch][5]
-- Dieser Trigger weist keine Eingaben auf. Klicken Sie auf ->:
-![Release Batch konfiguriert][6]
+- Klicken Sie im rechten Bereich auf den X12-Connector: ![Triggereinstellungen][3]
+- Klicken Sie auf ->: ![Triggeroptionen][4]
+- Der BizTalk X12-Connector stellt einen einzelnen Trigger bereit. Wählen Sie *Batch veröffentlichen* aus: ![Eingabe für Release Batch][5]
+- Dieser Trigger weist keine Eingaben auf. Klicken Sie auf ->: ![Release Batch konfiguriert][6]
 - Im Rahmen der Ausgabe gibt der Connector die X12-Nutzlast, die Vereinbarungs-ID sowie Informationen dazu zurück, ob die Nachricht als Batch ausgeführt wird.
 
 ### Aktion
-- Klicken Sie im rechten Bereich auf den X12-Connector:
-![Aktionseinstellungen][7]
-- Klicken Sie auf ->:
-![Liste der Aktionen][8]
-- Der X12-Connector unterstützt zahlreiche Aktionen. Wählen Sie *Codieren* aus:
-![Eingabe codieren][9]
-- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie:
-![Konfigurierte Elemente codieren][10]
+- Klicken Sie im rechten Bereich auf den X12-Connector: ![Aktionseinstellungen][7]
+- Klicken Sie auf ->: ![Liste der Aktionen][8]
+- Der X12-Connector unterstützt zahlreiche Aktionen. Wählen Sie *Codieren* aus: ![Eingabe codieren][9]
+- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie: ![Konfigurierte Elemente codieren][10]
 
 Parameter|Typ|Beschreibung des Parameters
 ---|---|---
@@ -93,4 +87,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 [10]: ./media/app-service-logic-connector-x12/EncodeConfigured.PNG
 [11]: ./media/app-service-logic-connector-x12/TriggerSettings.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

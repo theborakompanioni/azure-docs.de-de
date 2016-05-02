@@ -49,7 +49,7 @@ Wenn Sie schließlich eine neue App in einer anderen Region erstellen möchten u
 
 ## Wie erstelle ich einen Plan?
 
-Sie können einen leeren **App Service-Plan** erstellen, indem Sie die Browseroberfläche **App Service-Plan** verwenden oder den Schritt während der App-Erstellung ausführen.
+Sie können einen leeren **App Service-Plan** über die Browseroberfläche **App Service-Plan** oder im Rahmen der App-Erstellung erstellen.
 
 Klicken Sie hierzu im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) auf **NEU**, anschließend auf **Web + mobil** und dann auf **Web-Apps**, **Mobile Apps**, **Logik-Apps** oder **API-Apps**. ![][createWebApp]
 
@@ -57,7 +57,7 @@ Sie können dann den App Service-Plan für die neue Anwendung auswählen oder er
   
  ![][createASP]
 
-Um einen neuen App Service-Plan zu erstellen, klicken Sie auf **+ Neu erstellen**, geben Sie den Namen für den **App Services-Plan** ein, und wählen Sie einen geeigneten **Speicherort** aus. Klicken Sie auf **Tarif**, und wählen Sie einen dem Dienst angemessenen Tarif aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
+Um einen neuen App Service-Plan zu erstellen, klicken Sie auf **+ Neu erstellen**, geben Sie den Namen für den **App Services-Plan** ein, und wählen Sie einen geeigneten **Speicherort** aus. Klicken Sie auf **Tarif**, und wählen Sie einen dem Dienst angemessenen Tarif aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
  
 ## Wie kann ich eine App in einen anderen App Service-Plan verschieben?
 
@@ -107,4 +107,4 @@ App Service-Pläne stellen einen Satz an Funktionen und Kapazitäten dar, die Si
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 [appclone]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/app-clone.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

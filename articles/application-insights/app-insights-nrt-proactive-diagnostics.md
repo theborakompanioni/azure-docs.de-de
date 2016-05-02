@@ -81,6 +81,8 @@ Klicken Sie auf eine Warnung, um vollständige Details anzuzeigen.
 
 ## Konfigurieren von Warnungen 
 
+Sie können die proaktive Diagnose deaktivieren, die E-Mail-Empfänger ändern, einen Webhook erstellen oder ausführlichere Warnmeldungen festlegen.
+
 Öffnen Sie die Seite „Warnungen“. Die proaktive Diagnose wird zusammen mit allen Warnungen aufgeführt, die Sie manuell festgelegt haben, und Sie können sehen, ob sie sich derzeit im Status „Warnung“ befindet.
 
 ![Klicken Sie auf der Seite „Übersicht“ auf die Kachel „Warnungen“. Klicken Sie alternativ dazu auf einer beliebigen Seite „Metriken“ auf die Schaltfläche „Warnungen“.](./media/app-insights-nrt-proactive-diagnostics/021.png)
@@ -92,16 +94,26 @@ Klicken Sie auf die Warnung, um sie zu konfigurieren.
 Beachten Sie, dass Sie die proaktive Diagnose deaktivieren, aber nicht löschen (oder eine neue erstellen) können.
 
 
+#### Detaillierte Warnungen
+
+Bei Auswahl von "Detaillierte Analysen erhalten" enthält die E-Mail weitere Diagnoseinformationen. Manchmal werden Sie das Problem allein anhand der Daten in der E-Mail diagnostizieren können.
+
+Es gibt ein geringes Risiko, dass die ausführlichere Warnung vertrauliche Informationen enthält, weil sie Ausnahme- und Ablaufverfolgungsmeldungen umfasst. Dies geschieht jedoch nur, wenn Ihr Code vertrauliche Informationen in diesen Nachrichten zulassen könnte.
+
+Hier sehen Sie ein Beispiel für eine detaillierte Warnung:
+
+![Konfiguration](./media/app-insights-nrt-proactive-diagnostics/060.png)
+
 ## Wo liegt der Unterschied?
 
 Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Features von Application Insights.
 
-* [Metrikwarnungen](app-insights-alerts.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z. B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt die proaktive NRT-Diagnose einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von Anforderungsfehlern), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der Anforderungsfehler für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App drastisch ansteigt.
+* [Metrikwarnungen](app-insights-alerts.md) werden von Ihnen festgelegt und dienen zur Überwachung einer Vielzahl von Metriken, z. B. der CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt die proaktive NRT-Diagnose einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von Anforderungsfehlern), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der Anforderungsfehler für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App drastisch ansteigt.
 
     Bei der proaktiven NRT-Diagnose wird der Schwellenwert automatisch an die aktuellen Bedingungen angepasst.
 
     Mit der proaktiven NRT-Diagnose wird die Diagnose für Sie gestartet. 
-* Die [proaktive Erkennung](app-insights-proactive-detection.md) verwendet zudem Maschinenintelligenz, um ungewöhnliche Muster in Ihren Metriken zu ermitteln, und muss nicht von Ihnen konfiguriert werden. Im Gegensatz zur proaktiven NRT-Diagnose besteht der Zweck der proaktiven Erkennung jedoch darin, Segmente in Ihrem Nutzungsangebot zu ermitteln, die (beispielsweise durch bestimmte Seiten in einem bestimmten Browsertyp) nicht zufriedenstellend verarbeitet werden. Die Analyse wird täglich ausgeführt, und falls ein Ergebnis gefunden wird, ist dies wahrscheinlich wesentlich weniger dringend als eine Warnung. Im Gegensatz dazu wird die Analyse für die proaktive NRT-Diagnose an eingehenden Telemetriedaten kontinuierlich ausgeführt, und Sie werden innerhalb von Minuten benachrichtigt, wenn die Serverfehlerraten höher als erwartet ausfallen.
+* Die [proaktive Erkennung](app-insights-proactive-detection.md) verwendet zudem Maschinenintelligenz, um ungewöhnliche Muster in Ihren Metriken zu ermitteln. Sie muss nicht von Ihnen konfiguriert werden. Im Gegensatz zur proaktiven NRT-Diagnose besteht der Zweck der proaktiven Erkennung jedoch darin, Segmente in Ihrem Nutzungsangebot zu ermitteln, die (beispielsweise durch bestimmte Seiten in einem bestimmten Browsertyp) nicht zufriedenstellend verarbeitet werden. Die Analyse wird täglich ausgeführt, und falls ein Ergebnis gefunden wird, ist dies wahrscheinlich wesentlich weniger dringend als eine Warnung. Im Gegensatz dazu wird die Analyse für die proaktive NRT-Diagnose an eingehenden Telemetriedaten kontinuierlich ausgeführt, und Sie werden innerhalb von Minuten benachrichtigt, wenn die Serverfehlerraten höher als erwartet ausfallen.
 
 ## Bei Erhalt einer Warnung durch die proaktive NRT-Diagnose
 
@@ -138,4 +150,4 @@ Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Fea
 
 *Wir sind sehr an Ihrer Meinung interessiert. Bitte senden Sie Ihr Feedback an:* [ainrtpd@microsoft.com](mailto:ainrtpd@microsoft.com).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

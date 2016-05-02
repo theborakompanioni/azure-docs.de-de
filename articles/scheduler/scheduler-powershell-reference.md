@@ -1,6 +1,6 @@
 <properties
  pageTitle="Scheduler – PowerShell-Cmdlets-Referenz"
- description=""
+ description="Scheduler – PowerShell-Cmdlets-Referenz"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -54,4 +54,4 @@ In der folgenden Tabelle sind die wichtigsten Cmdlets in Azure Scheduler beschri
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="ravbhatnagar"
 	manager="ryjones"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="02/26/2016"
+	ms.date="04/18/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 # Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung
@@ -23,8 +23,6 @@ Sie können nun den Azure-Ressourcen-Manager zum Steuern des Zugriffs über benu
 Sie erstellen Richtliniendefinitionen, die die Aktionen oder Ressourcen beschreiben, die spezifisch verweigert werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z. B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource.
 
 In diesem Artikel wird die grundlegende Struktur der Richtliniendefinitionssprache erläutert, mit der Sie Richtlinien erstellen. Anschließend wird beschrieben, wie Sie diese Richtlinien auf verschiedene Ziele anwenden. Zum Schluss finden Sie einige Beispiele dafür, wie Sie dies auch über die REST-API erreichen können.
-
-Die Richtlinie ist zurzeit als Vorschau verfügbar.
 
 ## Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
 
@@ -46,20 +44,20 @@ Mithilfe von Richtlinien können diese Szenarios so einfach wie unten beschriebe
 
 ## Struktur von Richtliniendefinitionen
 
-Richtliniendefinitionen werden mit JSON erstellt. Sie enthalten eine oder mehrere Bedingungen/logische Operatoren, die Aktionen und deren Auswirkungen definieren und damit festlegen, was geschieht, wenn die Bedingungen erfüllt sind. Das Schema ist unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) veröffentlicht.
+Richtliniendefinitionen werden mit JSON erstellt. Sie enthalten eine oder mehrere Bedingungen/logische Operatoren, die Aktionen und deren Auswirkungen definieren und damit festlegen, was geschieht, wenn die Bedingungen erfüllt sind. Das Schema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) veröffentlicht.
 
 Grundsätzlich enthält eine Richtlinie Folgendes:
 
 **Bedingung/logische Operatoren**: eine Reihe von Bedingungen, die über einen Satz von logischen Operatoren beeinflusst werden.
 
-**Effekt**: beschreibt die Auswirkungen, wenn die Bedingung erfüllt ist – verweigern oder überwachen. Ein Überwachungseffekt gibt ein Warnereignis im Dienstprotokoll aus. Administratoren können z. B. eine Richtlinie erstellen, die eine Überwachung verursacht, wenn jemand einen großen virtuellen Computer erstellt, und dann später die Protokolle überprüfen.
+**Effekt**: beschreibt die Auswirkungen, wenn die Bedingung erfüllt ist – verweigern oder überwachen. Ein Überwachungseffekt gibt ein Warnereignis im Dienstprotokoll aus. Administratoren können z. B. eine Richtlinie erstellen, die eine Überwachung verursacht, wenn jemand einen großen virtuellen Computer erstellt, und dann später die Protokolle überprüfen.
 
     {
       "if" : {
-        <condition> | <logical operator>
+          <condition> | <logical operator>
       },
       "then" : {
-        "effect" : "deny | audit"
+          "effect" : "deny | audit | append"
       }
     }
     
@@ -67,7 +65,7 @@ Grundsätzlich enthält eine Richtlinie Folgendes:
 
 Richtlinien werden ausgewertet, wenn die Erstellung von Ressourcen oder die Bereitstellung von Vorlagen mit HTTP PUT erfolgt. Bei der Bereitstellung von Vorlagen werden Richtlinien ausgewertet, wenn die einzelnen Ressourcen in einer Vorlage erstellt werden.
 
-Hinweis: Ressourcentypen, die „tags“, „kind“ und „location“ nicht unterstützen (z.B. Microsoft.Resources/deployments), werden von Richtlinien nicht ausgewertet. Diese Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. Um Probleme bei der Abwärtskompatibilität zu vermeiden, empfiehlt es sich, beim Erstellen von Richtlinien den Typ ausdrücklich anzugeben. Eine Richtlinie für Tags ohne zusätzliche Angabe von Typen wird beispielsweise für alle Typen angewendet. In diesem Fall können bei der Bereitstellung von Vorlagen Fehler auftreten, wenn eine geschachtelte Ressource vorhanden ist, die Tags nicht unterstützt, wenn der Ressourcentyp zu einem späteren Zeitpunkt zur Auswertung hinzugefügt wird.
+> [AZURE.NOTE] Die Richtlinie wertet derzeit keine Ressourcentypen aus, die „tags“, „kind“ und „location“ nicht unterstützen, wie etwa der Ressourcentyp „Microsoft.Resources/deployments“. Diese Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. Um Probleme mit der Abwärtskompatibilität zu vermeiden, sollten Sie beim Erstellen von Richtlinien den Typ explizit angeben. Beispiel: Eine Richtlinie für Tags, in der keine Typen angegeben sind, wird auf alle Typen angewendet. In diesem Fall kann eine Vorlagenbereitstellung in der Zukunft fehlschlagen, wenn eine geschachtelte Ressource vorhanden ist, die „Tag“ nicht unterstützt, und der Ressourcentyp der Bereitstellung der Richtlinienauswertung hinzugefügt wurde.
 
 ## Logische Operatoren
 
@@ -93,7 +91,7 @@ Eine Bedingung prüft, ob ein **Feld** oder eine **Quelle** bestimmte Kriterien 
 | Geben Sie in | "in" : [ "&lt;Wert1&gt;","&lt;Wert2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;Schlüsselname&gt;" |
 
-## Felder und Quellen
+### Felder und Quellen
 
 Bedingungen werden mithilfe von Feldern und Quellen gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird. Eine Quelle stellt Merkmale der Anforderung selbst dar.
 
@@ -103,37 +101,70 @@ Felder: **name**, **kind**, **type**, **location**, **tags**, **tags.*** und **p
 
 Quellen: **action**
 
-„property alias“ ist ein Name, der in der Richtliniendefinition für den Zugriff auf die für einen Ressourcentyp spezifischen Eigenschaften (z. B. Einstellungen oder SKUs) verwendet werden kann. Er kann in allen API-Versionen verwendet werden, in denen die Eigenschaft vorhanden ist. Aliase können mithilfe der folgenden REST-API abgerufen werden (die PowerShell-Unterstützung wird in Zukunft hinzugefügt):
+### Eigenschaftenaliase 
+„property alias“ ist ein Name, der in einer Richtliniendefinition für den Zugriff auf die für einen Ressourcentyp spezifischen Eigenschaften (z. B. Einstellungen und SKUs) verwendet werden kann. Er kann in allen API-Versionen verwendet werden, in denen die Eigenschaft vorhanden ist. Aliase können mithilfe der folgenden REST-API abgerufen werden (die PowerShell-Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt):
 
     GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
 	
-Die Definition eines Alias sieht wie folgt aus. Wie Sie sehen können, definiert ein Alias Pfade in verschiedenen API-Versionen, auch wenn sich der Name einer Eigenschaft ändert.
+Die Definition eines Alias ist im Folgenden dargestellt. Wie Sie sehen können, definiert ein Alias Pfade in verschiedenen API-Versionen, auch wenn sich der Name einer Eigenschaft ändert.
 
-    "aliases": [
-      {
-        "name": "Microsoft.Storage/storageAccounts/sku.name",
-        "paths": [
-          {
-            "path": "Properties.AccountType",
-            "apiVersions": [ "2015-06-15", "2015-05-01-preview" ]
-          }
-        ]
-      }
-    ]
+	"aliases": [
+	    {
+	      "name": "Microsoft.Storage/storageAccounts/sku.name",
+	      "paths": [
+	        {
+	          "path": "properties.accountType",
+	          "apiVersions": [
+	            "2015-06-15",
+	            "2015-05-01-preview"
+	          ]
+	        },
+	        {
+	          "path": "sku.name",
+	          "apiVersions": [
+	            "2016-01-01"
+	          ]
+	        }
+	      ]
+	    }
+	]
 
 Derzeit werden die folgenden Aliase unterstützt:
 
 | Aliasname | Beschreibung |
 | ---------- | ----------- |
-| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Storage/storageAccounts,<br />Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft.CDN/profiles |
+| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft..CDN/profiles |
 | {resourceType}/sku.family | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
 | {resourceType}/sku.capacity | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
+| Microsoft.Compute/virtualMachines/imagePublisher | |
+| Microsoft.Compute/virtualMachines/imageOffer | |
+| Microsoft.Compute/virtualMachines/imageSku | |
+| Microsoft.Compute/virtualMachines/imageVersion | |
 | Microsoft.Cache/Redis/enableNonSslPort | |
 | Microsoft.Cache/Redis/shardCount | |
 
 
 Weitere Informationen zu Aktionen finden Sie unter [RBAC – Integrierte Rollen](active-directory/role-based-access-built-in-roles.md). Derzeit gilt die Richtlinie nur bei PUT-Anforderungen.
 
+## Effekt
+Die Richtlinie unterstützt drei Arten von Effekten: **deny**, **audit** und **append**.
+
+- Mit „deny“ wird ein Ereignis im Überwachungsprotokoll generiert, und die Anforderung schlägt fehl.
+- Mit „audit“ wird ein Ereignis im Überwachungsprotokoll generiert, aber die Anforderung schlägt nicht fehl.
+- Mit „append“ wird der Anforderung der definierte Satz von Feldern hinzugefügt. 
+
+Für **append** müssen Sie die unten dargestellten Details angeben:
+
+    ....
+    "effect": "append",
+    "details": [
+      {
+        "field": "field name",
+        "value": "value of the field"
+      }
+    ]
+
+Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
 ## Beispiele für Richtliniendefinitionen
 
@@ -154,6 +185,51 @@ Die Richtlinie unten verweigert alle Anforderungen, die kein Tag mit dem Schlüs
         "effect" : "deny"
       }
     }
+
+Die Richtlinie unten fügt ein costCenter-Tag mit einem vordefinierten Wert an, wenn keine Tags vorhanden sind.
+
+	{
+	  "if": {
+	    "field": "tags",
+	    "exists": "false"
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags",
+	        "value": {"costCenter":"myDepartment" }
+	      }
+	    ]
+	  }
+	}
+	
+Die Richtlinie unten fügt ein costCenter-Tag mit einem vordefinierten Wert an, wenn andere Tags vorhanden sind.
+
+	{
+	  "if": {
+	    "allOf": [
+	      {
+	        "field": "tags",
+	        "exists": "true"
+	      },
+	      {
+	        "field": "tags.costCenter",
+	        "exists": "false"
+	      }
+	    ]
+	
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags.costCenter",
+	        "value": "myDepartment"
+	      }
+	    ]
+	  }
+	}
 
 
 ### Geografische Compliance: Erzwingen von Ressourcenpfaden
@@ -311,24 +387,25 @@ Der Anforderungstext sollte dem folgenden ähneln:
     }
 
 
-Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie die API-Version *2015-10-01-preview*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
+Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
 
 ### Erstellen der Richtliniendefinition mit der PowerShell
 
 Sie können eine neue Richtliniendefinition mithilfe des Cmdlets "New-AzureRmPolicyDefinition" erstellen, wie unten gezeigt. Das unten angeführte Beispiel erstellt eine Richtlinie, um Ressourcen nur in Nordeuropa und Westeuropa zuzulassen.
 
-    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation onlyin certain regions" -Policy '{	"if" : {
-    	    			    "not" : {
-    	      			    	"field" : "location",
-    	      			    		"in" : ["northeurope" , "westeurope"]
-    	    			    	}
-    	    		          },
-    	      		    		"then" : {
-    	    			    		"effect" : "deny"
-    	      			    		}
-    	    		    	}'    		
+    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{	
+      "if" : {
+        "not" : {
+          "field" : "location",
+          "in" : ["northeurope" , "westeurope"]
+    	}
+      },
+      "then" : {
+        "effect" : "deny"
+      }
+    }'    		
 
-Die Ausgabe der Ausführung wird im "$policy"-Objekt gespeichert, weil dieses später während der Richtlinienzuweisung verwendet werden kann. Als Richtlinienparameter kann auch der Pfad zu einer JSON-Datei, die die Richtlinie enthält, angegeben werden, anstatt die Richtlinie inline anzugeben, wie unten gezeigt.
+Die Ausgabe der Ausführung wird im $policy-Objekt gespeichert und kann später während der Richtlinienzuweisung verwendet werden. Als Richtlinienparameter kann auch der Pfad zu einer JSON-Datei, die die Richtlinie enthält, angegeben werden, anstatt die Richtlinie inline anzugeben, wie unten gezeigt.
 
     New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
 
@@ -343,7 +420,7 @@ Führen Sie zum Erstellen einer neuen Richtlinienzuweisung Folgendes aus:
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie die API-Version *2015-10-01-preview*.
+"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*.
 
 Der Anforderungstext sollte dem folgenden ähneln:
 
@@ -380,11 +457,11 @@ Nachdem Sie die Richtlinie angewendet haben, werden Sie richtlinienbezogene Erei
 
 Zum Anzeigen aller Ereignisse, die mit dem Verweigerungseffekt in Verbindung stehen, können Sie den folgenden Befehl verwenden.
 
-    Get-AzureRmLog | where {$_.subStatus -eq "Forbidden"}     
+    Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
 
 Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung stehen, können Sie den folgenden Befehl verwenden.
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

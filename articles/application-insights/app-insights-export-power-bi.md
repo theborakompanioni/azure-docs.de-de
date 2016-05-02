@@ -133,7 +133,7 @@ Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, d
 ![](./media/app-insights-export-power-bi/140.png)
 
 
-Achten Sie darauf, dass das Datum das Format „JJJJ-MM-TT“ (mit Bindestrichen) aufweist.
+**Achten Sie darauf, dass das Datum das Format „JJJJ-MM-TT“ (mit Bindestrichen) aufweist.**
 
 Das Präfixmuster des Pfads gibt an, wo Stream Analytics die Eingabedateien im Speicher findet. Sie müssen es so einstellen, dass es der Speicherung der Daten durch den fortlaufenden Export entspricht. Legen Sie ihn wie folgt fest:
 
@@ -260,6 +260,12 @@ Jetzt können Sie dieses Dataset in Berichten und Dashboards in [Power BI](https
 
 ![Wählen Sie in Power BI Ihr Dataset und Felder aus.](./media/app-insights-export-power-bi/210.png)
 
+
+### Sie sehen keine Daten?
+
+* Überprüfen Sie, ob das [Datumsformat](#set-path-prefix-pattern) ordnungsgemäß auf JJJJ-MM-TT (mit Bindestrichen) festgelegt ist.
+
+
 ### Video
 
 Noam Ben Zeev zeigt, wie nach Power BI exportiert wird.
@@ -274,4 +280,4 @@ Noam Ben Zeev zeigt, wie nach Power BI exportiert wird.
 * [Weitere Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

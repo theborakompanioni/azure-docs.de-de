@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="04/14/2016"   
 	ms.author="adsolank;juliako;"/>
 
 
 # Indizieren von Mediendateien mit Azure Media Indexer 2 Preview
-
 
 ##Übersicht
 
@@ -91,7 +90,7 @@ Azure Media Indexer 2 Preview unterstützt Sprache in Text für die folgenden Sp
 
 ## Beispielcode
 
-Das folgende Programm zeigt wie:
+Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 1. Sie einen Auftrag mit einer Indizierungsaufgabe anhand einer Konfigurationsdatei erstellen, die die folgende JSON-Voreinstellung enthält.
@@ -288,4 +287,6 @@ Das folgende Programm zeigt wie:
 
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+[Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=AcomDC_0420_2016-->

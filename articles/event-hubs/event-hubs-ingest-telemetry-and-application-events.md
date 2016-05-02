@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/15/2016" 
 	ms.author="sethm"/>
 
 # Erfassen von Telemetrie- und Anwendungsereignissen in großem Maßstab
  
-Moderne Anwendungen erzeugen während ihrer Ausführung eine enorme Menge an Informationen. Ob Benutzeraktionen in einer mobilen App oder Clickstreams einer Website – diese Telemetriedaten sind sowohl für die langfristige Analyse als auch für die Echtzeit-Statusüberwachung oder Entscheidungsunterstützung sehr wertvoll. Service Bus stellt die Tools bereit, die Sie zum Erfassen und Verarbeiten dieser Informationen benötigen.
+Moderne Anwendungen erzeugen während ihrer Ausführung eine enorme Menge an Informationen. Ob Benutzeraktionen in einer mobilen App oder Clickstreams einer Website – diese Telemetriedaten sind sowohl für die langfristige Analyse als auch für die Echtzeit-Statusüberwachung oder Entscheidungsunterstützung sehr wertvoll. Microsoft Azure Event Hubs stellt die Tools bereit, die Sie zum Erfassen und Verarbeiten dieser Informationen benötigen.
 
 
 ## Erkunden
@@ -37,4 +37,4 @@ Moderne Anwendungen erzeugen während ihrer Ausführung eine enorme Menge an Inf
 - [HDInsight](https://azure.microsoft.com/services/hdinsight/)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

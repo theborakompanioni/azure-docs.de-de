@@ -3,7 +3,7 @@
 	description="Wichtige Informationen zum Java SDK einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB Java SDK." 
 	services="documentdb" 
 	documentationCenter="java" 
-	authors="ryancrawcour" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
-	ms.author="ryancraw"/>
+	ms.date="04/18/2016" 
+	ms.author="andrl"/>
 
 # DocumentDB SDK
 
@@ -64,34 +64,20 @@
 - Allgemeine Verfügbarkeit (GA) des SDK
 
 ## Veröffentlichungs- und Deaktivierungstermine
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
 Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
 > [AZURE.WARNING]
-Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden am **29. Februar 2016** deaktiviert.
+Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden am **29. Februar 2016** deaktiviert.
 
 <br/>
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.6.0](#1.6.0) | 29. März 2016 |--- 
-| [1\.5.1](#1.5.1) | 31. Dezember 2015 |--- 
-| [1\.5.0](#1.5.0) | 4. Dezember 2015 |--- 
-| [1\.4.0](#1.4.0) | 5. Oktober 2015 |--- 
-| [1\.3.0](#1.3.0) | 5. Oktober 2015 |--- 
-| [1\.2.0](#1.2.0) | 5. August 2015 |--- 
-| [1\.1.0](#1.1.0) | 9. Juli 2015 |--- 
-| [1\.0.1](#1.0.1) | 12. Mai 2015 |--- 
-| [1\.0.0](#1.0.0) | 7. April 2015 |--- 
-| 0.9.5-Vorabversion | 9. März 2015 | 29. Februar 2016 
-| 0.9.4-Vorabversion | 17. Februar 2015 | 29. Februar 2016 
-| 0.9.3-Vorabversion | 13. Januar 2015 | 29. Februar 2016 
-| 0.9.2-Vorabversion | 19. Dezember 2014 | 29. Februar 2016 
-| 0.9.1-Vorabversion | 19. Dezember 2014 | 29. Februar 2016 
-| 0.9.0-Vorabversion | 10. Dezember 2014 | 29. Februar 2016
+| [1\.6.0](#1.6.0) | 29. März 2016 |--- | [1\.5.1](#1.5.1) | 31. Dezember 2015 |--- | [1\.5.0](#1.5.0) | 4. Dezember 2015 |--- | [1\.4.0](#1.4.0) | 5. Oktober 2015 |--- | [1\.3.0](#1.3.0) | 5. Oktober 2015 |--- | [1\.2.0](#1.2.0) | 5. August 2015 |--- | [1\.1.0](#1.1.0) | 9. Juli 2015 |--- | [1\.0.1](#1.0.1) | 12. Mai 2015 |--- | [1\.0.0](#1.0.0) | 7. April 2015 |--- | 0.9.5-Vorabversion | 9. März 2015 | 29. Februar 2016 | 0.9.4-Vorabversion | 17. Februar 2015 | 29. Februar 2016 | 0.9.3-Vorabversion | 13. Januar 2015 | 29. Februar 2016 | 0.9.2-Vorabversion | 19. Dezember 2014 | 29. Februar 2016 | 0.9.1-Vorabversion | 19. Dezember 2014 | 29. Februar 2016 | 0.9.0-Vorabversion | 10. Dezember 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -100,4 +86,4 @@ Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

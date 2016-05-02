@@ -1,4 +1,11 @@
-<properties pageTitle="Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell | Microsoft Azure" services="virtual-machines-windows" documentationCenter="" description="Hier erfahren Sie, wie Sie mithilfe von PowerShell die Azure-Diagnose auf einem virtuellen Computer unter Windows aktivieren." authors="sbtron" manager="" editor="""/>
+<properties
+	pageTitle="Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell | Microsoft Azure"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	description="Erfahren Sie, wie Sie die Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell aktivieren"
+	authors="sbtron"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="virtual-machines-windows"
@@ -18,9 +25,9 @@ Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine b
 
 ## Aktivieren der Diagnoseerweiterung bei Verwendung des Ressourcen-Manager-Bereitstellungsmodells
 
-Die Diagnoseerweiterung kann im Zuge der Erstellung einer Windows-VM mit dem Azure-Ressourcen-Manager-Bereitstellungsmodell durch Hinzufügen der Erweiterungskonfiguration zur Ressourcen-Manager-Vorlage aktiviert werden. Weitere Informationen finden Sie unter [Create a Windows virtual machine with monitoring and diagnostics by using the Azure Resource Manager template](virtual-machines-windows-extensions-diagnostics-template.md) (Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe der Azure Resource Manager-Vorlage).
+Die Diagnoseerweiterung kann im Zuge der Erstellung einer Windows-VM mit dem Azure-Ressourcen-Manager-Bereitstellungsmodell durch Hinzufügen der Erweiterungskonfiguration zur Ressourcen-Manager-Vorlage aktiviert werden. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](virtual-machines-windows-extensions-diagnostics-template.md).
 
-Wenn Sie die Diagnoseerweiterung auf einer bereits vorhandenen VM aktivieren möchten, die mithilfe des Ressourcen-Manager-Bereitstellungsmodells erstellt wurde, können Sie wie weiter unten gezeigt das PowerShell-Cmdlet [Set-AzureRMVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt603499.aspx) verwenden.
+Wenn Sie die Diagnoseerweiterung auf einem bereits vorhandenen virtuellen Computer aktivieren möchten, der mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurde, können Sie wie weiter unten gezeigt das PowerShell-Cmdlet [Set-AzureRMVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt603499.aspx) verwenden.
 
 
 	$vm_resourcegroup = "myvmresourcegroup"
@@ -30,21 +37,21 @@ Wenn Sie die Diagnoseerweiterung auf einer bereits vorhandenen VM aktivieren mö
 	Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
-*$diagnosticsconfig\_path* ist der Pfad zu der Datei mit der XML-Diagnosekonfiguration, wie im [Beispiel](#sample-diagnostics-configuration) weiter unten beschrieben.
+*$diagnosticsconfig\_path* ist der Pfad zu der Datei, die die XML-Diagnosekonfiguration enthält, wie im [Beispiel](#sample-diagnostics-configuration) weiter unten beschrieben.
 
-Falls in der Diagnosekonfigurationsdatei ein Element vom Typ **StorageAccount** mit einem Speicherkontonamen angegeben ist, konfiguriert das Skript *Set-AzureRMVMDiagnosticsExtension* die Diagnoseerweiterung automatisch so, dass die Diagnosedaten an dieses Speicherkonto gesendet werden. Dazu muss das Speicherkonto allerdings dem gleichen Abonnement angehören wie die VM.
+Falls in der Diagnosekonfigurationsdatei ein Element vom Typ **StorageAccount** mit einem Speicherkontennamen angegeben ist, konfiguriert das Skript *Set-AzureRMVMDiagnosticsExtension* die Diagnoseerweiterung automatisch so, dass die Diagnosedaten an dieses Speicherkonto gesendet werden. Dazu muss das Speicherkonto allerdings dem gleichen Abonnement angehören wie die VM.
 
-Wurde in der Diagnosekonfiguration kein Element vom Typ **StorageAccount** angegeben, müssen Sie den Parameter *StorageAccountName* an das Cmdlet übergeben. Bei Angabe des Parameters *StorageAccountName* verwendet das Cmdlet immer das im Parameter angegebene Speicherkonto und nicht die Angabe aus der Diagnosekonfigurationsdatei.
+Wenn in der Diagnosekonfiguration kein **StorageAccount** angegeben wurde, müssen Sie den *StorageAccountName*-Parameter an das Cmdlet übergeben. Bei Angabe des Parameters *StorageAccountName* verwendet das Cmdlet immer das im Parameter angegebene Speicherkonto und nicht das in der Diagnosekonfigurationsdatei angegebene.
 
-Wenn das Diagnosespeicherkonto einem anderen Abonnement angehört als die VM, müssen explizit die Parameter *StorageAccountName* und *StorageAccountKey* an das Cmdlet übergeben werden. Der Parameter *StorageAccountKey* ist nicht erforderlich, wenn das Diagnosespeicherkonto dem gleichen Abonnement angehört, da das Cmdlet beim Aktivieren der Diagnoseerweiterung den Schlüsselwert automatisch abfragen und festlegen kann. Gehört das Diagnosespeicherkonto dagegen einem anderen Abonnement an, kann das Cmdlet den Schlüssel unter Umständen nicht automatisch abrufen, weshalb er in diesem Fall explizit über den Parameter *StorageAccountKey* angegeben werden muss.
+Wenn das Diagnosespeicherkonto einem anderen Abonnement angehört als der virtuelle Computer, müssen Sie die Parameter *StorageAccountName* und *StorageAccountKey* explizit an das Cmdlet übergeben. Der Parameter *StorageAccountKey* ist nicht erforderlich, wenn das Diagnosespeicherkonto dem gleichen Abonnement angehört, da das Cmdlet beim Aktivieren der Diagnoseerweiterung den Schlüsselwert automatisch abfragen und festlegen kann. Gehört das Diagnosespeicherkonto dagegen einem anderen Abonnement an, kann das Cmdlet den Schlüssel unter Umständen nicht automatisch abrufen, weshalb er in diesem Fall explizit über den Parameter *StorageAccountKey* angegeben werden muss.
 
 	Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-Nachdem die Diagnoseerweiterung auf einer VM aktiviert wurde, können die aktuellen Einstellungen mithilfe des Cmdlets [Get-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com/library/mt603678.aspx) abgerufen werden.
+Nachdem die Diagnoseerweiterung auf einem virtuellen Computer aktiviert wurde, können Sie die aktuellen Einstellungen mithilfe des [Get-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com/library/mt603678.aspx)-Cmdlets abrufen.
 
 	Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-Das Cmdlet gibt das Element *PublicSettings*, das die XML-Konfiguration in einem Base64-codierten Format enthält. Zum Lesen des XML-Codes muss dieser zunächst decodiert werden.
+Das Cmdlet gibt *PublicSettings* zurück, das die XML-Konfiguration in einem Base64-codierten Format enthält. Zum Lesen des XML-Codes muss dieser zunächst decodiert werden.
 
 	$publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
 	$encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
@@ -55,14 +62,14 @@ Mit dem Cmdlet [Remove-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com
 
 ## Aktivieren der Diagnoseerweiterung bei Verwendung des klassischen Bereitstellungsmodells
 
-Mit dem Cmdlet [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx) können Sie eine Diagnoseerweiterung auf einer VM aktivieren, die mit dem klassischen Bereitstellungsmodell erstellt wurde. Das folgende Beispiel zeigt, wie Sie mit dem klassischen Bereitstellungsmodell eine neue VM mit aktivierter Diagnoseerweiterung erstellen.
+Mit dem [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx)-Cmdlet können Sie eine Diagnoseerweiterung auf einem virtuellen Computer aktivieren, den Sie mit dem klassischen Bereitstellungsmodell erstellt haben. Das folgende Beispiel zeigt, wie Sie mit dem klassischen Bereitstellungsmodell eine neue VM mit aktivierter Diagnoseerweiterung erstellen.
 
 	$VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
 	$VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
 	$VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
 	New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-Wenn Sie die Diagnoseerweiterung auf einer bereits vorhandenen VM aktivieren möchten, die mit dem klassischen Bereitstellungsmodell erstellt wurde, rufen Sie zunächst die VM-Konfiguration mit dem Cmdlet [Get-AzureVM](https://msdn.microsoft.com/library/mt589152.aspx) ab. Aktualisieren Sie anschließend mithilfe des Cmdlets [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx) die VM-Konfiguration, sodass diese die Diagnoseerweiterung beinhaltet. Wenden Sie abschließend mithilfe von [Update-AzureVM](https://msdn.microsoft.com/library/mt589121.aspx) die aktualisierte Konfiguration auf die VM an.
+Wenn Sie die Diagnoseerweiterung auf einem bereits vorhandenen virtuellen Computer aktivieren möchten, der mit dem klassischen Bereitstellungsmodell erstellt wurde, rufen Sie zunächst die VM-Konfiguration mit dem [Get-AzureVM](https://msdn.microsoft.com/library/mt589152.aspx)-Cmdlet ab. Aktualisieren Sie anschließend mithilfe des [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx)-Cmdlets die VM-Konfiguration, sodass diese die Diagnoseerweiterung beinhaltet. Wenden Sie abschließend mithilfe von [Update-AzureVM](https://msdn.microsoft.com/library/mt589121.aspx) die aktualisierte Konfiguration auf die VM an.
 
 	$VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
 	$VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
@@ -75,14 +82,14 @@ Der folgende XML-Code kann für die öffentliche Konfiguration der Diagnose mit 
 Die Konfiguration muss mit Folgendem aktualisiert werden:
 
 - Das Attribut *resourceID* des Elements **Metrics** muss mit der Ressourcen-ID für die VM aktualisiert werden.
-	- Die Ressourcen-ID kann nach folgendem Muster erstellt werden: /subscriptions/{*Abonnement-ID für das Abonnement mit der VM*}/resourceGroups/{*Ressourcengruppenname für die VM*}/providers/Microsoft.Compute/virtualMachines/{*VM-Name*}.
-	- Wenn die Abonnement-ID für das Abonnement mit der VM also beispielsweise **11111111-1111-1111-1111-111111111111**, der Ressourcengruppenname **MyResourceGroup** und der VM-Name **MyWindowsVM** lautet, sieht der Wert für *resourceID* wie folgt aus:
+	- Die Ressourcen-ID kann nach folgendem Muster erstellt werden: „/subscriptions/{*Abonnement-ID für das Abonnement mit dem virtuellen Computer*}/resourceGroups/{*Ressourcengruppenname für den virtuellen Computer*}/providers/Microsoft.Compute/virtualMachines/{*VM-Name*}“.
+	- Wenn die Abonnement-ID für das Abonnement mit dem virtuellen Computer also beispielsweise **11111111-1111-1111-1111-111111111111**, der Ressourcengruppenname **MyResourceGroup** und der VM-Name **MyWindowsVM** lautet, sieht der Wert für *resourceID* wie folgt aus:
 
 		```
 		<Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
 		```
 
-	- Weitere Informationen zur Generierung von Metriken auf der Grundlage von Leistungsindikatoren und Metriken finden Sie in der [Metriktabelle für Azure-Diagnose im Speicher](virtual-machines-windows-extensions-diagnostics-template.md#wadmetrics-tables-in-storage).
+	- Weitere Informationen zur Generierung von Metriken auf der Grundlage der Konfiguration von Leistungsindikatoren und Metriken finden Sie in der [Metriktabelle für Azure-Diagnose im Speicher](virtual-machines-windows-extensions-diagnostics-template.md#wadmetrics-tables-in-storage).
 
 - Das Element **StorageAccount** muss mit dem Namen des Diagnosespeicherkontos aktualisiert werden.
 
@@ -191,7 +198,7 @@ Die Konfiguration muss mit Folgendem aktualisiert werden:
 	```
 
 ## Nächste Schritte
-- Weitere Anleitungen zur Verwendung von Azure-Diagnosefunktionen und zu anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+- Weitere Anleitungen zur Verwendung von Azure-Diagnosefunktionen und zu anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Azure-Diagnose in Azure Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics.md).
 - Im [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/mt634524.aspx) werden die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung erläutert.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2016"
+	ms.date="04/20/2016"
 	ms.author="andkjell"/>
 
 
@@ -53,12 +53,16 @@ Informationen zu einem direkten Upgrade von DirSync zu Azure AD Connect finden S
 [Azure Active Directory Connect: direktes Upgrade von Legacytools](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools) ![direktes Upgrade](./media/active-directory-aadconnect-dirsync-deprecated/inplaceupgrade.png)
 
 ## Häufig gestellte Fragen
+**F: Ich habe eine E-Mail-Benachrichtigung vom Azure-Team bzw. eine Nachricht vom Office 365-Nachrichtencenter erhalten, ich verwende aber Connect.** Die Benachrichtigung wurde auch an Kunden gesendet, die Azure AD Connect mit Buildnummer 1.0.*.0 (also eine Version vor Version 1.1) verwenden. Microsoft empfiehlt Kunden, immer die neueste Azure AD Connect-Versionen zu verwenden. Mit der [automatischen Upgradefunktion](active-directory-aadconnect-feature-automatic-upgrade.md) von 1.1 lässt sich einfach sicherstellen, dass eine aktuelle Version von Azure AD Connect installiert ist.
+
 **F: Funktioniert DirSync/Azure AD Sync ab dem 13. April 2017 nicht mehr?** Nein. Das Datum, ab dem diese Tools nicht mehr mit Azure AD kommunizieren können, wird zu einem späteren Zeitpunkt bekanntgegeben. Sie finden diese Information in diesem Thema, sobald die verfügbar ist.
 
-**F: Und was ist mit dem Azure AD-Connector für FIM/MIM?** Der Azure AD-Connector für FIM/MIM wurde **nicht** als veraltet bekanntgegeben. Dabei handelt es sich lediglich um ein **Feature-Freeze**, d. h., es wird keine neue Funktionalität hinzugefügt, und es werden keine Programmfehlerbehebungen bereitgestellt. Kunden, die den Connector verwenden, sollten eine Migration zu Azure AD Connect planen. Es wird dringend empfohlen, keine neuen Bereitstellungen mit diesem Connector durchzuführen. Dieser Connector wird in der Zukunft als veraltet bekanntgegeben.
+**F: Von welchen DirSync-Versionen kann ich ein Upgrade durchführen?** Ein Upgrade kann von allen aktuell verwendeten DirSync-Versionen durchgeführt werden.
+
+**F: Und was ist mit dem Azure AD-Connector für FIM/MIM?** Der Azure AD-Connector für FIM/MIM wurde **nicht** als veraltet bekanntgegeben. Dabei handelt es sich lediglich um ein **Feature Freeze**, d. h., es wird keine neue Funktionalität hinzugefügt, und es werden keine Programmfehlerbehebungen bereitgestellt. Kunden, die den Connector verwenden, sollten eine Migration zu Azure AD Connect planen. Es wird dringend empfohlen, keine neuen Bereitstellungen mit diesem Connector durchzuführen. Dieser Connector wird in der Zukunft als veraltet bekanntgegeben.
 
 ## Zusätzliche Ressourcen
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

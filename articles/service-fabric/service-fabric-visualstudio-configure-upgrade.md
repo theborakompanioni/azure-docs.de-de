@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/12/2016"
+   ms.date="04/14/2016"
    ms.author="cawaMS" />
 
 # Konfigurieren von Upgrades für eine Service Fabric-Anwendung in Visual Studio
@@ -94,4 +94,4 @@ Das folgende Beispiel zeigt, wie eine eindeutige Integritätsprüfungsrichtlinie
 ## Nächste Schritte
 Weitere Informationen zum Bereitstellen einer Anwendung finden Sie unter [Bereitstellen einer vorhandenen Anwendung in Azure Service Fabric](service-fabric-deploy-existing-app.md).
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0420_2016-->

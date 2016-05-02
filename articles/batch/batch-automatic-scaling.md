@@ -13,20 +13,20 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="multiple"
-	ms.date="01/08/2016"
+	ms.date="04/18/2016"
 	ms.author="marsma"/>
 
 # Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
 
-Mithilfe der automatischen Skalierung in Azure Batch können Sie während der Ausführung eines Auftrags dynamisch Computeknoten zu einem Batch-Pool hinzufügen und aus diesem entfernen, um automatisch die von Ihrer Anwendung benötigte Verarbeitungskapazität anzupassen. Dank dieser automatischen Anpassung sparen Sie Zeit und Geld.
+Durch automatische Skalierung kann der Azure Batch-Dienst Computeknoten in einem Pool basierend auf von Ihnen definierten Parametern dynamisch hinzufügen oder entfernen. Dadurch können Sie die Menge der Computeressourcen, die von der Anwendung genutzt werden, automatisch anpassen und so möglicherweise Zeit und Geld sparen.
 
-Sie können die automatische Skalierung für einen Pool von Computeknoten aktivieren, indem Sie dem Pool eine *Formel für automatische Skalierung* zuordnen, z. B. mithilfe der [PoolOperations.EnableAutoScale][net_enableautoscale]-Methode in der [Batch .NET](batch-dotnet-get-started.md)-Bibliothek. Der Batch-Dienst verwendet dann diese Formel, um die Anzahl von Computeknoten zu bestimmen, die zum Ausführen des Workloads erforderlich sind. Die Anzahl der Computeknoten im Pool wird mithilfe der zugeordneten Formel in einem konfigurierbaren Intervall angepasst, basierend auf periodisch gesammelten Stichprobenwerten von Dienstmetriken.
+Sie aktivieren die automatische Skalierung für einen Pool von Computeknoten, indem Sie dem Pool eine *Formel für die automatische Skalierung* zuordnen, die Sie z. B. mithilfe der [PoolOperations.EnableAutoScale][net_enableautoscale]-Methode in der [Batch-Bibliothek für .NET](batch-dotnet-get-started.md) definieren. Der Batch-Dienst verwendet dann diese Formel, um die Anzahl von Computeknoten zu bestimmen, die zum Ausführen des Workloads erforderlich sind. Der Batch-Dienst reagiert auf periodisch gesammelte Stichprobenwerten von Dienstmetriken und passt die Anzahl der Computeknoten im Pool mithilfe der zugeordneten Formel in einem konfigurierbaren Intervall an.
 
 Sie können die automatische Skalierung beim Erstellen eines Pools oder später für einen bereits vorhandenen Pool aktivieren. Sie können auch eine vorhandene Formel in einem Pool ändern, für den die „automatische Skalierung“ aktiviert ist. Der Batch-Dienst bietet die Möglichkeit, die Formeln auszuwerten, bevor sie Pools zugewiesen werden, und den Status automatischer Skalierungen zu überwachen.
 
 ## Formeln für die automatische Skalierung
 
-Bei einer Formel für die automatische Skalierung handelt es sich um einen Zeichenfolgenwert, der dem [autoScaleFormula][rest_autoscaleformula]-Element eines Pools (REST-API von Batch) oder der [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula]-Eigenschaft (.NET-API von Batch) eines Pools zugewiesen ist. Diese Formeln werden von Ihnen festgelegt. Wenn Sie einem Pool zugewiesen werden, bestimmen sie für das nächste Verarbeitungsintervall die Anzahl der in einem Pool verfügbaren Computeknoten (mehr zu Intervallen weiter unten). Die Formelzeichenfolge darf eine Größe von 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
+Bei einer Formel für die automatische Skalierung handelt es sich um einen von Ihnen definierten Zeichenfolgenwert mit mindestens einer Anweisung, der dem [autoScaleFormula][rest_autoscaleformula]-Element (Batch für REST) eines Pools oder der [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula]-Eigenschaft (Batch für .NET) eines Pools zugewiesen ist. Bei der Zuweisung zu einem Pool verwendet der Batch-Dienst Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten in einem Pool zu bestimmen (mehr zu Intervallen weiter unten). Die Formelzeichenfolge darf eine Größe von 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
 
 Sie können sich Formeln für die automatische Skalierung als eine Batch-„Sprache“ für die automatische Skalierung vorstellen. Formel-Anweisungen sind frei gebildete Ausdrücke, die vom System definierte und benutzerdefinierte Variablen sowie Konstanten enthalten können. Mithilfe von mitgelieferten Typen, Operatoren und Funktionen können sie für diese Werte eine Vielzahl von Operationen ausführen. Eine Anweisung kann beispielsweise wie folgt aussehen:
 
@@ -39,7 +39,7 @@ VAR₀ = Expression₀(system-defined variables);
 VAR₁ = Expression₁(system-defined variables, VAR₀);
 ```
 
-Unter Verwendung der Anweisungen in Ihrer Formel bestimmen Sie die Anzahl von Computeknoten, auf die der Pool skaliert werden soll, d. h. die **Zielanzahl** **dedizierter Knoten**. Diese Zahl kann höher, niedriger oder identisch mit der aktuellen Anzahl von Knoten im Pool sein. Batch wertet die Formel für die automatische Skalierung des Pools in einem bestimmten Intervall aus. ([Automatische Skalierungsintervalle](#interval) werden weiter unten erläutert). Anschließend wird die vorgegebene Anzahl von Knoten im Pool auf die Anzahl angepasst, die die Formel für die automatische Skalierung zum Zeitpunkt der Auswertung angibt.
+Mit diesen Anweisungen in Ihrer Formel bestimmen Sie die Anzahl von Computeknoten, auf die der Pool skaliert werden soll, d. h. die **Zielanzahl** an **dedizierten Knoten**. Diese Zahl kann höher, niedriger oder identisch mit der aktuellen Anzahl von Knoten im Pool sein. Batch wertet die Formel für die automatische Skalierung des Pools in einem bestimmten Intervall aus. ([Intervalle für die automatische Skalierung](#automatic-scaling-interval) werden weiter unten erläutert). Anschließend wird die vorgegebene Anzahl von Knoten im Pool auf die Anzahl angepasst, die die Formel für die automatische Skalierung zum Zeitpunkt der Auswertung angibt.
 
 Kurzbeispiel: Diese zweizeilige Formel für die automatische Skalierung gibt an, dass die Anzahl von Knoten gemäß der Anzahl von aktiven Aufgaben bis zu einem Höchstwert von 10 Computeknoten angepasst werden soll.
 
@@ -50,7 +50,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 In den nächsten Abschnitten dieses Artikels werden die verschiedenen Elemente erläutert, mit denen Ihre Formeln für die automatische Skalierung gebildet werden. Dazu zählen Variablen, Operatoren, Operationen und Funktionen. Sie lernen, wie Sie verschiedene Metriken zu Compute-Ressourcen und Aufgaben in Batch abrufen. Sie können diese Metriken verwenden, um die Knotenanzahl des Pools basierend auf Ressourcenverbrauch und Aufgabenstatus automatisch anzupassen. Anschließend erfahren Sie, wie Sie mit der REST-API und der .NET-API von Batch eine Formel erstellen und die automatische Skalierung für einen Pool aktivieren. Zum Abschluss werden nun verschiedene Beispielformeln gezeigt.
 
-> [AZURE.NOTE] Jedes Azure Batch-Konto ist auf eine bestimmte Anzahl von Computeknoten beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst wird Knoten nur bis zu dieser Anzahl erstellen. Daher wird die durch die Formel angegebene Zielanzahl möglicherweise nicht erreicht. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
+> [AZURE.IMPORTANT] Jedes Azure Batch-Konto ist auf eine bestimmte Anzahl von Computeknoten beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst wird Knoten nur bis zu dieser Anzahl erstellen. Daher wird die durch die Formel angegebene Zielanzahl möglicherweise nicht erreicht. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
 
 ## <a name="variables"></a>Variablen
 
@@ -186,172 +186,43 @@ Folgende **Typen** werden in Formeln unterstützt.
 
 Folgende **Vorgänge** sind für die oben aufgeführten Typen zulässig.
 
-<table>
-  <tr>
-    <th>Vorgang</th>
-    <th>Zulässige Operatoren</th>
-  </tr>
-  <tr>
-    <td>double &lt;Operator> double => double</td>
-    <td>+, -, *, /</td>
-  </tr>
-  <tr>
-    <td>double &lt;Operator> timeinterval => timeinterval</td>
-    <td>*</td>
-  </tr>
-  <tr>
-    <td>doubleVec &lt;Operator> double => doubleVec</td>
-    <td>+, -, *, /</td>
-  </tr>
-  <tr>
-    <td>doubleVec &lt;Operator> doubleVec => doubleVec</td>
-    <td>+, -, *, /</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;Operator> double => timeinterval</td>
-    <td>*, /</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;Operator> timeinterval => timeinterval</td>
-    <td>+, -</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;Operator> timestamp => timestamp</td>
-    <td>+</td>
-  </tr>
-  <tr>
-    <td>timestamp &lt;Operator> timeinterval => timestamp</td>
-    <td>+</td>
-  </tr>
-  <tr>
-    <td>timestamp &lt;Operator> timestamp => timeinterval</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>&lt;Operator>double => double</td>
-    <td>-, !</td>
-  </tr>
-  <tr>
-    <td>&lt;Operator>timeinterval => timeinterval</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>double &lt;Operator> double => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>string &lt;Operator> string => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>timestamp &lt;Operator> timestamp => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;Operator> timeinterval => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>double &lt;Operator> double => double</td>
-    <td>&amp;&amp;, ||</td>
-  </tr>
-  <tr>
-    <td>Testen nur double (nicht null ist True, null ist False)</td>
-    <td>? :</td>
-  </tr>
-</table>
+| Vorgang | Unterstützte Operatoren | Ergebnistyp |
+| ------------------------------------- | --------------------- | ------------- |
+| double *Operator* double | +, -, *, / | double | | double *Operator* timeinterval | * | timeinterval | | doubleVec *Operator* double | +, -, *, / | doubleVec | | doubleVec *Operator* doubleVec | +, -, *, / | doubleVec | | timeinterval *Operator* double | *, / | timeinterval | | timeinterval *Operator* timeinterval | +, - | timeinterval | | timeinterval *Operator* timestamp | + | timestamp | | timestamp *Operator* timeinterval | + | timestamp | | timestamp *Operator* timestamp | - | timeinterval | | *Operator*double | -, ! | double | | *Operator*timeinterval | - | timeinterval | | double *Operator* double | <, <=, ==, >=, >, != | double | | string *Operator* string | <, <=, ==, >=, >, != | double | | timestamp *Operator* timestamp | <, <=, ==, >=, >, != | double | | timeinterval *Operator* timeinterval | <, <=, ==, >=, >, != | double | | double *Operator* double | &&, || | double |
+
+Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 : statement2`) sind Werte ungleich null **true**, und null ist **false**.
 
 ## Funktionen
 
 Folgende vordefinierte **Funktionen** stehen Ihnen zum Definieren einer Formel für die automatische Skalierung zur Verfügung.
 
-<table>
-  <tr>
-    <th>Funktion</th>
-    <th>Beschreibung</th>
-  </tr>
-  <tr>
-    <td>double <b>avg</b>(doubleVecList)</td>
-    <td>Der Durchschnittswert aller Werte in der doubleVecList wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>double <b>len</b>(doubleVecList)</td>
-    <td>Die Länge des Vektors, der aus der doubleVecList erstellt wurde, wird zurückgegeben.</td>
-  <tr>
-    <td>double <b>lg</b>(double)</td>
-    <td>Gibt für den double-Wert den Logarithmus zur Basis 2 zurück.</td>
-  </tr>
-  <tr>
-    <td>doubleVec <b>lg</b>(doubleVecList)</td>
-    <td>Gibt für die doubleVecList den komponentenweisen Logarithmus zur Basis 2 zurück. Ein vec(double) muss explizit für einzelne double-Parameter übergeben werden. Andernfalls wird von der double lg(double)-Version ausgegangen.</td>
-  </tr>
-  <tr>
-    <td>double <b>ln</b>(double)</td>
-    <td>Gibt für den double-Wert den natürlichen Logarithmus zurück.</td>
-  </tr>
-  <tr>
-    <td>doubleVec <b>ln</b>(doubleVecList)</td>
-    <td>Gibt für die doubleVecList den komponentenweisen Logarithmus zur Basis 2 zurück. Ein vec(double) muss explizit für einzelne double-Parameter übergeben werden. Andernfalls wird von der double lg(double)-Version ausgegangen.</td>
-  </tr>
-  <tr>
-    <td>double <b>log</b>(double)</td>
-    <td>Gibt für den double-Wert den Logarithmus zur Basis 10 zurück.</td>
-  </tr>
-  <tr>
-    <td>doubleVec <b>log</b>(doubleVecList)</td>
-    <td>Gibt für die doubleVecList den komponentenweisen Logarithmus zur Basis 10 zurück. Ein vec(double) muss explizit für einzelne double-Parameter übergeben werden. Andernfalls wird von der double log (double)-Version ausgegangen.</td>
-  </tr>
-  <tr>
-    <td>double <b>max</b>(doubleVecList)</td>
-    <td>Der maximale Wert in der doubleVecList wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>double <b>min</b>(doubleVecList)</td>
-    <td>Der minimale Wert in der doubleVecList wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>double <b>norm</b>(doubleVecList)</td>
-    <td>Die Zweiernorm des Vektors, der aus der doubleVecList erstellt wurde, wird zurückgegeben.
-  </tr>
-  <tr>
-    <td>double <b>percentile</b>(doubleVec v, double p)</td>
-    <td>Das Perzentil-Element des Vektors v wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>double <b>rand</b>()</td>
-    <td>Ein Zufallswert zwischen 0,0 und 1,0 wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>double <b>range</b>(doubleVecList)</td>
-    <td>Der Unterschied zwischen dem Minimal- und Maximalwert in doubleVecList wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>double <b>std</b>(doubleVecList)</td>
-    <td>Die Stichproben-Standardabweichung der Werte in der doubleVecList wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td><b>stop</b>()</td>
-    <td>Beendet die Auswertung des Ausdrucks für die automatische Skalierung.</td>
-  </tr>
-  <tr>
-    <td>double <b>sum</b>(doubleVecList)</td>
-    <td>Die Summe aller Komponenten von doubleVecList wird zurückgegeben.</td>
-  </tr>
-  <tr>
-    <td>timestamp <b>time</b>(string dateTime="")</td>
-    <td>Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123.</td>
-  </tr>
-  <tr>
-    <td>double <b>val</b>(doubleVec v, double i)</td>
-    <td>Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben.</td>
-  </tr>
-</table>
+| Funktion | Rückgabetyp | Beschreibung
+| --------------------------------- | ------------- | --------- |
+| avg(doubleVecList) | double | Der Durchschnittswert aller Werte in der doubleVecList wird zurückgegeben.
+| len(doubleVecList) | double | Die Länge des Vektors, der aus der doubleVecList erstellt wurde, wird zurückgegeben.
+| lg(double) | double | Gibt für den double-Wert den Logarithmus zur Basis 2 zurück.
+| lg(doubleVecList) | doubleVec | Gibt für die doubleVecList den komponentenweisen Logarithmus zur Basis 2 zurück. „vec(double)“ muss explizit für den Parameter übergeben werden. Andernfalls wird von der double lg(double)-Version ausgegangen.
+| ln(double) | double | Gibt für den double-Wert den natürlichen Logarithmus zurück.
+| ln(doubleVecList) | doubleVec | Gibt für die doubleVecList den komponentenweisen Logarithmus zur Basis 2 zurück. „vec(double)“ muss explizit für den Parameter übergeben werden. Andernfalls wird von der double lg(double)-Version ausgegangen.
+| log(double) | double | Gibt für den double-Wert den Logarithmus zur Basis 10 zurück.
+| log(doubleVecList) | doubleVec | Gibt für die doubleVecList den komponentenweisen Logarithmus zur Basis 10 zurück. Ein vec(double) muss explizit für einzelne double-Parameter übergeben werden. Andernfalls wird von der double log (double)-Version ausgegangen.
+| max(doubleVecList) | double | Der maximale Wert in der doubleVecList wird zurückgegeben.
+| min(doubleVecList) | double | Der minimale Wert in der doubleVecList wird zurückgegeben.
+| norm(doubleVecList) | double | Die Zweiernorm des Vektors, der aus der doubleVecList erstellt wurde, wird zurückgegeben.
+| percentile(doubleVec v, double p) | double | Das Perzentil-Element des Vektors v wird zurückgegeben.
+| rand() | double | Ein Zufallswert zwischen 0,0 und 1,0 wird zurückgegeben.
+| range(doubleVecList) | double | Der Unterschied zwischen dem Minimal- und Maximalwert in doubleVecList wird zurückgegeben.
+| std(doubleVecList) | double | Die Stichproben-Standardabweichung der Werte in der doubleVecList wird zurückgegeben.
+| stop() | | Beendet die Auswertung des Ausdrucks für die automatische Skalierung.
+| sum(doubleVecList) | double | Die Summe aller Komponenten von doubleVecList wird zurückgegeben.
+| time(string dateTime="") | timestamp | Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123.
+| val(doubleVec v, double i) | double | Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben.
 
-Einige der in der obigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Die durch Komma getrennte Liste ist eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
+Einige der in der obigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Die durch Kommas getrennte Liste ist eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-Der *doubleVecList*-Wert wird vor der Auswertung in einen einzelnen *doubleVec* konvertiert. Zum Beispiel hat bei `v = [1,2,3]` das Aufrufen von `avg(v)` denselben Effekt wie das Aufrufen von `avg(1,2,3)`. Das Aufrufen von `avg(v, 7)` entspricht dem Aufruf von `avg(1,2,3,7)`.
+Der *doubleVecList*-Wert wird vor der Auswertung in einen einzelnen *doubleVec* konvertiert. Zum Beispiel hat bei `v = [1,2,3]` das Aufrufen von `avg(v)` denselben Effekt wie das Aufrufen von `avg(1,2,3)`. Das Aufrufen von `avg(v, 7)` entspricht dem Aufrufen von `avg(1,2,3,7)`.
 
 ## <a name="getsampledata"></a>Erfassen von Stichprobendaten
 
@@ -408,13 +279,13 @@ Der Batch-Dienst nimmt regelmäßig *Stichproben* von Aufgaben- und Ressourcenme
 
 **Prozentsatz für die Stichprobe**
 
-Beim Übergeben eines `samplePercent`-Werts an die `GetSample()`-Methode oder Aufrufen der `GetSamplePercent()`-Methode bezieht sich „percent“ auf einen Vergleich zwischen der gesamten *möglichen* Anzahl der vom Batch-Dienst erfassten Stichproben und der Anzahl von Stichproben, die tatsächlich für Ihre Formel für die automatische Skalierung *verfügbar* sind.
+Beim Übergeben eines `samplePercent`-Werts an die `GetSample()`-Methode oder Aufrufen der `GetSamplePercent()`-Methode bezieht sich „percent“ auf einen Vergleich zwischen der *möglichen* Gesamtanzahl der vom Batch-Dienst erfassten Stichproben und der Anzahl von Stichproben, die tatsächlich für Ihre Formel für die automatische Skalierung *verfügbar* sind.
 
-Lassen Sie uns als Beispiel eine Zeitspanne von 10 Minuten betrachten. Da Stichproben in einer Zeitspanne von 10 Minuten alle 30 Sekunden erfasst werden, werden maximal 20 Stichproben von Batch erfasst (zwei pro Minute). Doch aufgrund der erwähnten Latenz des Berichterstellungsmechanismus oder anderer Probleme in der Azure-Infrastruktur stehen Ihrer Formel für die automatische Skalierung möglicherweise nur 15 Stichproben zur Verfügung. Dies bedeutet, dass in diesem zehnminütigen Zeitraum nur **75 %** der möglichen Gesamtanzahl erfasster Stichproben tatsächlich für Ihre Formel verfügbar sind.
+Lassen Sie uns als Beispiel eine Zeitspanne von 10 Minuten betrachten. Da Stichproben in einer Zeitspanne von 10 Minuten alle 30 Sekunden erfasst werden, werden maximal 20 Stichproben von Batch erfasst (zwei pro Minute). Doch aufgrund der erwähnten Latenz des Berichterstellungsmechanismus oder anderer Probleme in der Azure-Infrastruktur stehen Ihrer Formel für die automatische Skalierung möglicherweise nur 15 Stichproben zur Verfügung. Dies bedeutet, dass in diesem zehnminütigen Zeitraum nur **75 %** der Gesamtanzahl erfasster Stichproben tatsächlich für Ihre Formel verfügbar sind.
 
 **GetSample() und Stichprobenbereiche**
 
-Die Formeln für die automatische Skalierung werden Ihre Pools vergrößern und verkleinern und Knoten hinzufügen oder entfernen. Da Knoten Geld Kosten, möchten Sie sicherstellen, dass Ihre Formeln eine sinnvolle Analysemethode verwenden, die auf ausreichend Daten basiert. Aus diesem Grund wird empfohlen, dass Sie eine Analyse des Typs Trend in Ihren Formeln verwenden. Dieser Typ wird Ihre Pools basierend auf einem *Bereich* gesammelter Stichproben vergrößern oder verkleinern.
+Die Formeln für die automatische Skalierung werden Ihre Pools vergrößern und verkleinern und Knoten hinzufügen oder entfernen. Da Knoten Geld Kosten, möchten Sie sicherstellen, dass Ihre Formeln eine sinnvolle Analysemethode verwenden, die auf ausreichend Daten basiert. Aus diesem Grund wird empfohlen, dass Sie eine Analyse des Typs Trend in Ihren Formeln verwenden. Dieser Typ vergrößert oder verkleinert Ihre Pools basierend auf einem *Bereich* gesammelter Stichproben.
 
 Verwenden Sie hierzu `GetSample(interval look-back start, interval look-back end)`, um einen **Vektor** von Stichproben zurückzugeben:
 
@@ -424,15 +295,15 @@ Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stic
 
 `runningTasksSample=[1,1,1,1,1,1,1,1,1,1];`
 
-Nachdem Sie den Vektor der Stichproben erfasst haben, können Sie Funktionen wie `min()`, `max()` und `avg()` verwenden, um aussagekräftige Werte aus dem erfassten Bereich abzuleiten.
+Nachdem Sie den Vektor von Stichproben erfasst haben, können Sie Funktionen wie `min()`, `max()` und `avg()` verwenden, um aussagekräftige Werte aus dem erfassten Bereich abzuleiten.
 
-Für mehr Sicherheit können Sie ein *Fehlschlagen* einer Formelauswertung erzwingen, wenn für einen bestimmten Zeitraum weniger als ein bestimmter Prozentsatz von Stichproben verfügbar ist. Mit dem Erzwingen des Fehlschlags einer Formelauswertung weisen Sie Batch an, die weitere Auswertung der Formel zu beenden, sofern der angegebene Prozentsatz von Stichproben nicht zur Verfügung steht. An der Größe des Pools erfolgt dann keinerlei Änderung. Wenn Sie einen erforderlichen Prozentsatz von Stichproben anfordern wollen, damit die Auswertung Erfolg hat, geben Sie diesen in `GetSample()` als dritten Parameter an. Hier wird ein Mindestprozentsatz von 75 % angegeben:
+Für mehr Sicherheit können Sie ein *Fehlschlagen* einer Formelauswertung erzwingen, wenn für einen bestimmten Zeitraum weniger als ein bestimmter Prozentsatz von Stichproben verfügbar ist. Mit dem Erzwingen des Fehlschlags einer Formelauswertung weisen Sie Batch an, die weitere Auswertung der Formel zu beenden, sofern der angegebene Prozentsatz von Stichproben nicht zur Verfügung steht. An der Größe des Pools erfolgt dann keinerlei Änderung. Wenn Sie einen erforderlichen Prozentsatz von Stichproben angeben möchten, damit die Auswertung Erfolg hat, geben Sie diesen in `GetSample()` als dritten Parameter an. Hier wird ein Mindestprozentsatz von 75 % angegeben:
 
 `runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);`
 
 Aufgrund der zuvor erwähnten Verzögerung bei der Verfügbarkeit von Stichproben müssen Sie stets einen Zeitraum mit einer Startzeit wählen, die mehr als eine Minute zurückliegt. Der Grund ist, dass es ca. eine Minute dauert, bis Stichproben das System durchlaufen haben, weshalb Stichproben im Bereich `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` häufig nicht verfügbar sind. In diesem Fall können Sie den Prozentsatzparameter von `GetSample()` angeben, um einen bestimmten Prozentsatz von Stichproben zu erzwingen.
 
-> [AZURE.IMPORTANT] Es wird **ausdrücklich empfohlen**, sich **nicht *nur* auf `GetSample(1)` in Ihren Formeln für die automatische Skalierung zu verlassen**. Der Grund ist, dass `GetSample(1)` im Wesentlichen den Batch-Dienst anweist, die letzte vorhandene Stichprobe unabhängig vom Zeitpunkt ihrer Erfassung bereitzustellen. Da es sich nur um ein Stichprobe handelt, die ggf. schon älter ist, ist diese möglicherweise nicht für den aktuellen Aufgaben- oder Ressourcenstatus repräsentativ. Wenn Sie `GetSample(1)` verwenden, stellen Sie sicher, dass dieser Wert zu einer längeren Anweisung gehört und nicht der einzige Datenpunkt ist, auf dem Ihre Formel basiert.
+> [AZURE.IMPORTANT] Es wird **dringend empfohlen**, sich **nicht *nur* auf `GetSample(1)` in Ihren Formeln für die automatische Skalierung zu verlassen**. Der Grund ist, dass `GetSample(1)` im Wesentlichen den Batch-Dienst anweist, die letzte vorhandene Stichprobe unabhängig vom Zeitpunkt ihrer Erfassung bereitzustellen. Da es sich nur um ein Stichprobe handelt, die ggf. schon älter ist, ist diese möglicherweise nicht für den aktuellen Aufgaben- oder Ressourcenstatus repräsentativ. Wenn Sie `GetSample(1)` verwenden, stellen Sie sicher, dass dieser Wert zu einer längeren Anweisung gehört und nicht der einzige Datenpunkt ist, auf dem Ihre Formel basiert.
 
 ## Metriken
 
@@ -485,11 +356,11 @@ Sie können eine Formel für die automatische Skalierung erstellen, indem Sie mi
 2. Die vorgegebene Anzahl von Computeknoten in einem Pool soll reduziert werden, wenn die CPU-Auslastung gering ist.
 3. Die maximale Anzahl von Knoten muss immer auf 400 beschränkt sein.
 
-Für die *Erhöhung* der Anzahl von Knoten bei hoher CPU-Auslastung definieren wir eine Anweisung, die eine benutzerdefinierte Variable ($TotalNodes) mit einem Wert auffüllt, der 110 % der aktuellen Knotenanzahl darstellt, wenn die minimale durchschnittliche CPU-Auslastung in den vergangenen 10 Minuten über 70 % lag:
+Für die *Erhöhung* der Anzahl von Knoten bei hoher CPU-Auslastung definieren wir eine Anweisung, die eine benutzerdefinierte Variable ($TotalNodes) mit einem Wert auffüllt, der 110 % der aktuellen Zielanzahl von Knoten darstellt, wenn die minimale durchschnittliche CPU-Auslastung in den vergangenen 10 Minuten über 70 % lag:
 
 `$TotalNodes = (min($CPUPercent.GetSample(TimeInterval_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;`
 
-Die nächste Anweisung legt dieselbe Variable auf 90 % der aktuellen Knotenanzahl fest, wenn die durchschnittliche CPU-Nutzung in den vergangenen 60 Minuten *unter* 20 % lag. Damit wird die vorgegebene Anzahl von Knoten bei geringer CPU-Auslastung gesenkt. Beachten Sie, dass diese Anweisung ebenfalls auf die benutzerdefinierte Variable *$TotalNodes* aus der obigen Anweisung verweist.
+Die nächste Anweisung legt dieselbe Variable auf 90 % der aktuellen Zielanzahl von Knoten fest, wenn die durchschnittliche CPU-Auslastung in den vergangenen 60 Minuten *unter* 20 % lag. Damit wird die vorgegebene Anzahl von Knoten bei geringer CPU-Auslastung gesenkt. Beachten Sie, dass diese Anweisung ebenfalls auf die benutzerdefinierte Variable *$TotalNodes* aus der obigen Anweisung verweist.
 
 `$TotalNodes = (avg($CPUPercent.GetSample(TimeInterval_Minute * 60)) < 0.2) ? ($CurrentDedicated * 0.9) : $TotalNodes;`
 
@@ -505,7 +376,7 @@ $TotalNodes = (avg($CPUPercent.GetSample(TimeInterval_Minute*60)) < 0.2) ? ($Cur
 $TargetDedicated = min(400, $TotalNodes)
 ```
 
-> [AZURE.NOTE] Eine Formel für das automatische Skalieren besteht aus [Batch-REST][rest_api]-API-Variablen, -Typen, -Vorgängen und -Funktionen. Sie können diese auch dann in Formelzeichenfolgen verwenden, wenn Sie mit der [Batch .NET][net_api]-Bibliothek arbeiten.
+> [AZURE.NOTE] Eine Formel für das automatische Skalieren besteht aus [Batch-REST][rest_api]-API-Variablen, -Typen, -Vorgängen und -Funktionen. Sie können diese auch dann in Formelzeichenfolgen verwenden, wenn Sie mit der [Batch-Bibliothek für .NET][net_api] arbeiten.
 
 ## Erstellen eines Pools mit aktiviertem automatischen Skalieren
 
@@ -513,11 +384,11 @@ Zum Aktivieren der automatischen Skalierung beim Erstellen eines Pools verwenden
 
 - [New-AzureBatchPool](https://msdn.microsoft.com/library/azure/mt125936.aspx): Dieses Azure PowerShell-Cmdlet legt die Formel für die automatische Skalierung mit dem AutoScaleFormula-Parameter fest.
 - [BatchClient.PoolOperations.CreatePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx): Nachdem diese .NET-Methode zum Erstellen eines Pools aufgerufen wurde, legen Sie die [CloudPool.AutoScaleEnabled](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleenabled.aspx)-Eigenschaft und die [CloudPool.AutoScaleFormula](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleformula.aspx)-Eigenschaft für den Pool fest, um die automatische Skalierung zu aktivieren.
-- [Hinzufügen eines Pools zu einem Konto](https://msdn.microsoft.com/library/azure/dn820174.aspx): Das enableAutoScale-Element und das autoScaleFormula-Element werden in dieser REST-API-Anforderung verwendet, um beim Erstellen des Pools die automatische Skalierung für diesen einzurichten.
+- [Hinzufügen eines Pools zu einem Konto](https://msdn.microsoft.com/library/azure/dn820174.aspx): Das enableAutoScale-Element und das autoScaleFormula-Element werden in dieser REST-API-Anforderung verwendet, um beim Erstellen des Pools die automatische Skalierung für den Pool einzurichten.
 
-> [AZURE.IMPORTANT] Wenn Sie mithilfe einer der genannten Methoden einen für die automatische Skalierung aktivierten Pool erstellen, darf der *targetDedicated*-Parameter **nicht** für den Pool angegeben werden. Beachten Sie auch, dass Sie für eine manuelle Anpassung der Größe eines für die automatische Skalierung aktivierten Pools (z. B. mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool]) zunächst die automatische Skalierung **deaktivieren** müssen, bevor Sie die Größe des Pools ändern können.
+> [AZURE.IMPORTANT] Wenn Sie mithilfe einer der genannten Methoden einen für die automatische Skalierung aktivierten Pool erstellen, darf der *targetDedicated*-Parameter für den Pool **nicht** angegeben werden. Beachten Sie auch, dass Sie für eine manuelle Anpassung der Größe eines für die automatische Skalierung aktivierten Pools (z. B. mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool]) zunächst die automatische Skalierung **deaktivieren** müssen, bevor Sie die Größe des Pools ändern können.
 
-Der folgende Codeausschnitt zeigt die Erstellung eines Pools mit aktivierter automatischer Skalierung ([CloudPool][net_cloudpool]) mithilfe der [Batch .NET][net_api]-Bibliothek. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl von Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Darüber hinaus wird das Intervall für die automatische Skalierung auf 30 Minuten festgelegt (siehe [Intervall für die automatische Skalierung](#interval) weiter unten). In diesem und anderen C#-Ausschnitten in diesem Artikel ist „myBatchClient“ eine ordnungsgemäß initialisierte Instanz von [BatchClient][net_batchclient].
+Der folgende Codeausschnitt zeigt die Erstellung eines Pools mit aktivierter automatischer Skalierung ([CloudPool][net_cloudpool]) mithilfe der [Batch-Bibliothek für .NET][net_api]. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl von Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Darüber hinaus wird das Intervall für die automatische Skalierung auf 30 Minuten festgelegt (siehe [Intervall für die automatische Skalierung](#automatic-scaling-interval) weiter unten). In diesem und anderen C#-Ausschnitten in diesem Artikel ist „myBatchClient“ eine ordnungsgemäß initialisierte Instanz von [BatchClient][net_batchclient].
 
 ```
 CloudPool pool = myBatchClient.PoolOperations.CreatePool("mypool", "3", "small");
@@ -527,7 +398,7 @@ pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);
 pool.Commit();
 ```
 
-### <a name="interval"></a>Intervall für die automatische Skalierung
+### Intervall für die automatische Skalierung
 
 Standardmäßig passt der Batch-Dienst die Poolgröße gemäß seiner Formel für die automatische Skalierung alle **15 Minuten** an. Dieses Intervall kann jedoch mithilfe der folgenden Pooleigenschaften konfiguriert werden:
 
@@ -547,7 +418,7 @@ Wenn Sie bereits anhand des *targetDedicated*-Parameters einen Pool mit einer fe
 
 > [AZURE.NOTE] Wenn beim Erstellen des Pools für den *targetDedicated*-Parameter ein Wert angegeben wurde, wird dieser beim Auswerten der Formel für das automatische Skalieren ignoriert.
 
-Dieser Codeausschnitt zeigt, wie die automatische Skalierung mithilfe der [Batch .NET][net_api]-Bibliothek für einen vorhandenen Pool aktiviert wird. Beachten Sie, dass sowohl für das Aktivieren als auch für das Aktualisieren der Formel für einen vorhandenen Pool dasselbe Verfahren verwendet wird. Wenn das automatische Skalieren bereits aktiviert wurde, wird mithilfe des Verfahrens die Formel für den angegebenen Pool *aktualisiert*. Im Codeausschnitt wird angenommen, dass „mypool“ die ID eines vorhandenen [CloudPool][net_cloudpool] ist.
+Dieser Codeausschnitt zeigt, wie die automatische Skalierung mithilfe der [Batch-Bibliothek für .NET][net_api] für einen vorhandenen Pool aktiviert wird. Beachten Sie, dass sowohl für das Aktivieren als auch für das Aktualisieren der Formel für einen vorhandenen Pool dasselbe Verfahren verwendet wird. Wenn das automatische Skalieren bereits aktiviert wurde, wird mithilfe des Verfahrens die Formel für den angegebenen Pool *aktualisiert*. Im Codeausschnitt wird angenommen, dass „mypool“ die ID eines vorhandenen Pools ([CloudPool][net_cloudpool]) ist.
 
 		 // Define the autoscaling formula. In this snippet, the  formula sets the target number of nodes to 5 on
 		 // Mondays, and 1 on every other day of the week
@@ -562,11 +433,11 @@ Dieser Codeausschnitt zeigt, wie die automatische Skalierung mithilfe der [Batch
 Es ist stets empfehlenswert, eine Formel auszuwerten, bevor Sie sie in Ihrer Anwendung verwenden. Die Formel wird ausgewertet, indem Sie einen Testlauf der Formel für einen vorhandenen Pool durchführen. Verwenden Sie hierzu Folgendes:
 
 - [BatchClient.PoolOperations.EvaluateAutoScale](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscale.aspx) oder [BatchClient.PoolOperations.EvaluateAutoScaleAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscaleasync.aspx): Diese .NET-Methoden erfordern die ID eines vorhandenen Pools sowie die Zeichenfolge mit der Formel für die automatische Skalierung. Die Ergebnisse des Aufrufs befinden sich in einer Instanz der [AutoScaleEvaluation](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx)-Klasse.
-- [Eine Formel für die automatische Skalierung auswerten](https://msdn.microsoft.com/library/azure/dn820183.aspx) – In dieser REST-API-Anforderung ist die Pool-ID im URI angegeben. Die Formel für die automatische Skalierung wird im Element *AutoScaleFormula* des Anforderungstexts angeben. Die bei der Anfrage generierte Antwort enthält Fehlerinformationen, die in Zusammenhang mit der Formel stehen können.
+- [Auswerten einer Formel für die automatische Skalierung](https://msdn.microsoft.com/library/azure/dn820183.aspx): In dieser REST-API-Anforderung ist die Pool-ID im URI angegeben. Die Formel für die automatische Skalierung wird im *autoScaleFormula*-Element des Anforderungstexts angeben. Die bei der Anfrage generierte Antwort enthält Fehlerinformationen, die in Zusammenhang mit der Formel stehen können.
 
 > [AZURE.NOTE] Damit Sie eine Formel für die automatische Skalierung auswerten können, müssen Sie zuerst die automatische Skalierung für den Pool mithilfe einer gültigen Formel aktivieren.
 
-In diesem Codeausschnitt, der die [Batch-Bibliothek für .NET][net_api] verwendet, werten wir eine Formel aus, bevor diese auf den Pool( [CloudPool][net_cloudpool]) angewandt wird.
+In diesem Codeausschnitt, der die [Batch-Bibliothek für .NET][net_api] verwendet, werten wir eine Formel aus, bevor diese auf den Pool ([CloudPool][net_cloudpool]) angewendet wird.
 
 ```
 // First obtain a reference to the existing pool
@@ -613,7 +484,7 @@ Eine erfolgreiche Auswertung der Formel in diesem Codeausschnitt sollte eine Aus
 
 Überprüfen Sie regelmäßig die Ergebnisse der automatischen Skalierungsläufe, um sicherzustellen, dass die Formel wie erwartet funktioniert.
 
-- [CloudPool.AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscalerun.aspx)– Wenn Sie die .NET-Bibliothek verwenden, stellt diese Eigenschaft eines Pools eine Instanz der [AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.aspx)-Klasse bereit. Diese Klasse stellt die folgenden Eigenschaften für die aktuellste automatische Skalierung bereit:
+- [CloudPool.AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscalerun.aspx): Wenn Sie die .NET-Bibliothek verwenden, stellt diese Eigenschaft eines Pools eine Instanz der [AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.aspx)-Klasse bereit. Diese Klasse stellt die folgenden Eigenschaften für die aktuellste automatische Skalierung bereit:
   - [AutoScaleRun.Error](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.error.aspx)
   - [AutoScaleRun.Results](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.results.aspx)
   - [AutoScaleRun.Timestamp](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.timestamp.aspx)
@@ -658,7 +529,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### Beispiel 3: Berücksichtigung paralleler Aufgaben
 
-Auch in diesem Beispiel wird die Poolgröße an die Anzahl der Aufgaben angepasst. Diese Formel berücksichtigt auch den Wert [MaxTasksPerComputeNode][net_maxtasks], der für den Pool festgelegt wurde. Dies ist besonders nützlich in Situationen, in denen eine [parallele Ausführung von Aufgaben](batch-parallel-node-tasks.md) In Ihrem Pool aktiviert wurde.
+Auch in diesem Beispiel wird die Poolgröße an die Anzahl der Aufgaben angepasst. Diese Formel berücksichtigt auch den Wert [MaxTasksPerComputeNode][net_maxtasks], der für den Pool festgelegt wurde. Dies ist besonders nützlich in Situationen, in denen eine [parallele Ausführung von Aufgaben](batch-parallel-node-tasks.md) in Ihrem Pool aktiviert wurde.
 
 ```
 // Determine whether 70 percent of the samples have been recorded in the past 15 minutes; if not, use last sample
@@ -703,16 +574,9 @@ Die Formel im oben stehenden Codeausschnitt bewirkt Folgendes:
 
 ## Nächste Schritte
 
-1. Möglicherweise müssen Sie auf einen Computeknoten zugreifen, um die Effizienz der Anwendung vollständig bewerten zu können. Um den Remotezugriff nutzen zu können, muss dem Knoten, auf den zugegriffen werden soll, ein Benutzerkonto hinzugefügt werden, und es muss eine RDP-Datei (Remote Desktop Protocol) für den Knoten abgerufen werden.
-    - Fügen Sie das Benutzerkonto auf eine der folgenden Arten hinzu:
-        * [New-AzureBatchVMUser](https://msdn.microsoft.com/library/mt149846.aspx): Dieses PowerShell-Cmdlet verwendet den Poolnamen, den Namen des Computeknotens, den Kontonamen und das Kennwort als Parameter.
-        * [BatchClient.PoolOperations.CreateComputeNodeUser](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createcomputenodeuser.aspx): Diese .NET-Methode erstellt eine Instanz der [ComputeNodeUser](https://msdn.microsoft.com/library/microsoft.azure.batch.computenodeuser.aspx)-Klasse, in der Kontoname und Kennwort für den Computeknoten festgelegt werden können. Anschließend wird auf der Instanz [ComputeNodeUser.Commit](https://msdn.microsoft.com/library/microsoft.azure.batch.computenodeuser.commit.aspx) aufgerufen, um den Benutzer auf dem Knoten zu erstellen.
-        * [Hinzufügen eines Benutzerkontos zu einem Knoten](https://msdn.microsoft.com/library/dn820137.aspx)– Der Name des Pools und des Computeknotens werden im URI angegeben. Der Kontoname und das Passwort werden im Anforderungstext dieser REST-API-Anforderung an den Knoten gesendet.
-    - Abrufen der RDP-Datei:
-        * [BatchClient.PoolOperations.GetRDPFile](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getrdpfile.aspx): Diese .NET-Methode erfordert die ID des Pools, die Knoten-ID und den Namen der zu erstellenden RDP-Datei.
-        * [Abrufen einer RDP-Datei von einem Knoten](https://msdn.microsoft.com/library/dn820120.aspx): Diese REST-API-Anforderung erfordert den Namen des Pools und den Namen des Computeknotens. Die Antwort enthält den Inhalt der RDP-Datei.
-        * [Get-AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx): Dieses PowerShell-Cmdlet ruft die RDP-Datei aus dem angegebenen Computeknoten ab und speichert sie am festgelegten Speicherort oder in einen Stream.
-2.	Einige Anwendungen erzeugen große Datenmengen, die nur schwer zu verarbeiten sind. Eine Möglichkeit zur Lösung dieses Problems ist die Verwendung [effizienter Listenabfragen](batch-efficient-list-queries.md).
+* [Maximieren der Azure Batch-Computeressourcenauslastung mit parallelen Knotenaufgaben](batch-parallel-node-tasks.md) enthält Informationen dazu, wie Sie mehrere Aufgaben gleichzeitig auf den Computeknoten im Pool ausführen können. Zusätzlich zur automatischen Skalierung können Sie mit diesem Feature die Auftragsdauer für einige Workloads verringern und so Geld sparen.
+
+* Um die Effizienz weiter zu steigern, stellen Sie sicher, dass die Batch-Anwendung den Batch-Dienst in optimaler Weise abfragt. In [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) erfahren Sie, wie Sie die Datenmenge beschränken, die übertragen wird, wenn Sie den Status von Tausenden von Computeknoten oder -aufgaben abfragen.
 
 [net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_batchclient]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
@@ -728,4 +592,4 @@ Die Formel im oben stehenden Codeausschnitt bewirkt Folgendes:
 [rest_autoscaleinterval]: https://msdn.microsoft.com/de-DE/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -3,8 +3,8 @@
 	description="In diesem Thema wird veranschaulicht, wie mit .NET Live Encoding mit lokalen Encodern durchgeführt wird." 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako,cenkdin" 
-	manager="dwrede" 
+	authors="Juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016"  
+	ms.author="cenkdin;juliako"/>
 
 #Durchführen von Live Encoding mit lokalen Encodern
 
@@ -385,4 +385,4 @@ Informationen zum Konfigurieren eines Liveencoders finden Sie unter [Azure Media
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,5 +1,13 @@
-<properties pageTitle="Konfigurieren der Tunnelerzwingung für VPN-Gateways mit PowerShell | Microsoft Azure" description="Sie können in einem virtuellen Netzwerk im klassischen Bereitstellungsmodell mit einem standortübergreifenden VPN-Gateway die Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort „erzwingen“." services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carmonm" editor="" tags="azure-service-management"/>
-<tags  
+<properties 
+   pageTitle="Konfigurieren der Tunnelerzwingung für VPN Gateways mit PowerShell | Microsoft Azure"
+   description="Wenn Sie über ein klassisches Bereitstellungsmodell für virtuelle Netzwerke mit einem standortübergreifenden VPN Gateway verfügen, können Sie den gesamten Internetdatenverkehr an Ihren lokalen Standort zurückleiten oder dorthin erzwingen."
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carmonm"
+   editor=""
+   tags="azure-service-management"/>
+<tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
@@ -63,7 +71,7 @@ Bei allen ausgehenden Verbindungen mit dem Internet aus diesen zwei Subnetzen wi
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
-- Ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+- Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
 - Ein konfiguriertes virtuelles Netzwerk.
 
@@ -120,7 +128,7 @@ In diesem Beispiel verfügt das virtuelle Netzwerk „MultiTier-VNet“ über dr
 
 1. Fügen Sie der Routingtabelle eine Standardroute hinzu.
 
-	Das folgende Beispiel-Cmdlet fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von "0.0.0.0/0" zum nächsten Hop "VPNGateway" ist.
+	Das folgende Beispiel-Cmdlet fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von "0.0.0.0/0" zum nächsten Hop "VPNGateway" ist.
  
 		Set-AzureRoute –RouteTableName "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
 
@@ -167,4 +175,4 @@ Im folgenden finden Sie einige weitere PowerShell-Cmdlets, die bei der Verwendun
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

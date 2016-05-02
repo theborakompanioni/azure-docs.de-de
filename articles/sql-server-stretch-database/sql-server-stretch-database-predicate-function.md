@@ -24,7 +24,13 @@ Wenn Sie Verlaufsdaten in einer separaten Tabelle speichern, können Sie Stretch
 
 Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
 
-In CTP 3.1 bis RC2 steht die Option zum Angeben eines Prädikats nicht im Assistenten zum Aktivieren einer Datenbank für Stretch zur Verfügung. Sie müssen eine ALTER TABLE-Anweisung verwenden, um Stretch-Datenbank mit dieser Option zu konfigurieren. Weitere Informationen finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) und [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
+Wenn Sie den Assistenten zum Aktivieren einer Datenbank für Stretch ausführen, können Sie in RC3 eine ganze Tabelle migrieren oder ein einfaches datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat zur Auswahl der zu migrierenden Zeilen verwenden, führen Sie einen der folgenden Schritte aus.
+
+-   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und ein Prädikat anzugeben.
+
+-   Führen Sie die ALTER TABLE-Anweisung aus, um ein Prädikat anzugeben, nachdem Sie den Assistenten beendet haben.
+
+Die ALTER TABLE-Syntax für das Hinzufügen eines Prädikats wird weiter unten in diesem Thema beschrieben.
 
 ## Grundlegende Anforderungen für die Inline-Tabellenwertfunktion
 Die für ein Stretch-Datenbank-Filterprädikat erforderliche Inline-Tabellenwertfunktion sieht wie das folgende Beispiel aus.
@@ -185,7 +191,7 @@ Um Zeilen mithilfe eines gleitenden Fensters zu filtern, beachten Sie die folgen
 
 -   Die Funktion verwendet die Schemabindung. Darum können Sie die Funktion nicht einfach jeden Tag „direkt“ durch Aufrufen von ALTER FUNCTION zum Verschieben des gleitenden Fensters aktualisieren.
 
-Beginnen Sie mit einem Filterprädikat wie im folgenden Beispiel, das Zeilen migriert, in denen die Spalte **systemEndTime** einen Wert enthält,der vor dem 1. Januar 2016 liegt.
+Beginnen Sie mit einem Filterprädikat wie im folgenden Beispiel, in dem Zeilen migriert werden, in denen die Spalte **systemEndTime** einen Wert enthält, der vor dem 1. Januar 2016 liegt.
 
 ```tsql
 CREATE FUNCTION dbo.fn_StretchBySystemEndTime20160101(@systemEndTime datetime2)
@@ -502,4 +508,4 @@ Nachdem Sie das Filterprädikat entfernt haben, sind alle Zeilen in der Tabelle 
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

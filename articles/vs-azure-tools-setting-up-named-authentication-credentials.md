@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="12/18/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Einrichten benannter Authentifizierungsanmeldeinformationen
@@ -27,7 +27,7 @@ Die folgenden Elemente sind für die Authentifizierung bei Azure erforderlich.
 
 - Ein gültiges X.509 v3-Zertifikat
 
->[AZURE.NOTE]Der Schlüssel für das X.509 v3-Zertifikat muss mindestens 2048 Bit lang sein. Von Azure werden alle Zertifikate abgelehnt, die diese Anforderung nicht erfüllen oder ungültig sind.
+>[AZURE.NOTE] Der Schlüssel für das X.509 v3-Zertifikat muss mindestens 2048 Bit lang sein. Von Azure werden alle Zertifikate abgelehnt, die diese Anforderung nicht erfüllen oder ungültig sind.
 
 Visual Studio verwendet die Abonnement-ID zusammen mit den Zertifikatdaten als Anmeldeinformationen. Die entsprechenden Anmeldeinformationen werden in der Abonnementdatei (.publishsettings) verwiesen wird, enthält einen öffentlichen Schlüssel für das Zertifikat. Die Abonnementdatei kann Anmeldeinformationen für mehrere Abonnements enthalten.
 
@@ -35,7 +35,7 @@ Im Dialogfeld **Neues Abonnement/Abonnement bearbeiten** können Sie die Abonnem
 
 Wenn Sie ein Zertifikat selbst erstellen möchten, finden Sie Anweisungen dazu unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx). Laden Sie anschließend das Zertifikat manuell in das Verwaltungsportal hoch.
 
->[AZURE.NOTE]Diese Anmeldeinformationen, die Visual Studio zum Verwalten Ihrer Clouddienste benötigt, müssen nicht den Anmeldeinformationen entsprechen, die zum Authentifizieren einer Anforderung für die Azure-Speicherdienste erforderlich sind.
+>[AZURE.NOTE] Diese Anmeldeinformationen, die Visual Studio zum Verwalten Ihrer Clouddienste benötigt, müssen nicht den Anmeldeinformationen entsprechen, die zum Authentifizieren einer Anforderung für die Azure-Speicherdienste erforderlich sind.
 
 ## Ändern oder Exportieren von Authentifizierungsinformationen in Visual Studio
 
@@ -53,7 +53,7 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
 
 1. Wählen Sie die Schaltfläche **Vollständigen Pfad kopieren**. Der Pfad des Zertifikats (CER-Datei) wird in die Zwischenablage kopiert.
 
-    >[AZURE.IMPORTANT]Laden Sie dieses Zertifikat ins Verwaltungsportal hoch, um die Azure-Anwendung aus Visual Studio zu veröffentlichen.
+    >[AZURE.IMPORTANT] Laden Sie dieses Zertifikat ins Verwaltungsportal hoch, um die Azure-Anwendung aus Visual Studio zu veröffentlichen.
 
 1. So laden Sie das Zertifikat in das Azure-Verwaltungsportal hoch
 
@@ -71,4 +71,4 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
 
     1. Fügen Sie den vollständigen Pfad der erstellten CER-Datei ein, und geben Sie dann das festgelegte Kennwort ein.
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

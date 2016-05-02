@@ -13,58 +13,30 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/17/2016"
+   ms.date="04/15/2016"
    ms.author="kgremban"/>
 
 # Der Sicherheits-Assistent von Azure AD Privileged Identity Management
 
-Beim ersten Ausführen von Azure Privileged Identity Management (PIM) wird ein Assistent angezeigt. Der Assistent bietet Ihnen Einblick in die Sicherheitsrisiken privilegierter Identitäten und hilft Ihnen, diese Risiken mithilfe von Privileged Identity Management zu reduzieren.
+Wenn Sie die erste Person sind, die Azure Privileged Identity Management (PIM) ausführt, wird Ihnen ein Assistent angezeigt. Der Assistent bietet Einblick in die Sicherheitsrisiken privilegierter Identitäten und informiert darüber, wie Sie diese Risiken mithilfe von PIM reduzieren. Sie müssen die vorhandenen Rollenzuweisungen im Assistenten nicht ändern, wenn Sie dies lieber später machen möchten.
 
-Er enthält drei zu lesende Abschnitte: **IHRE ADMINISTRATOREN SETZEN SIE MÖGLICHERWEISE RISIKEN AUS, VERRINGERN SIE DIE ANGRIFFSFLÄCHE IHRER ADMINISTRATOREN** und **DEFINIEREN SIE TEMPORÄRE ADMINISTRATOREINSTELLUNGEN**. Jeder Abschnitt bietet einen Überblick über die Konzepte und eine Erläuterung von durchzuführenden Maßnahmen.
+## Ausblick
 
-Alle globalen Administratoren sind zunächst permanente Administratoren. Wenn Sie auf **IHRE ADMINISTRATOREN SETZEN SIE MÖGLICHERWEISE RISIKEN AUS** klicken, wird eine Liste der globalen Administratorrollen und deren aktuelle Anzahl angezeigt.
+Bevor Ihre Organisation mit der Verwendung von PIM beginnt, sind alle Rollenzuweisungen permanent, d. h. die Benutzer besitzen diese Rollen ständig, auch wenn sie die zugehörigen Berechtigungen derzeit nicht benötigen. Der erste Schritt des Assistenten bietet eine Liste der Rollen mit hohen Berechtigungen und zeigt an, wie viele Benutzer derzeit in diesen Rollen vorhanden sind. Sie können Details zu einer bestimmten Rolle anzeigen, um weitere Informationen zu den Benutzern zu erhalten und zu ermitteln, ob ein oder mehrere Benutzer unbekannt sind.
 
-Durch Klicken auf **VERRINGERN SIE DIE ANGRIFFSFLÄCHE IHRER ADMINISTRATOREN** können Sie wählen, ob die Administratoren in temporäre Administratoren geändert, als permanente Administratoren beibehalten oder aus der Rolle entfernt werden.
+Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisungen des Administrators zu ändern.
 
-Mit **DEFINIEREN SIE TEMPORÄRE ADMINISTRATOREINSTELLUNGEN** können Sie Multi-Factor Authentication als erforderlich festlegen, Benachrichtigungen aktivieren und bestimmen, wie lange ein temporärer Administrator über Berechtigungen verfügt.
+> [AZURE.WARNING] Es muss unbedingt mindestens ein globaler Administrator sowie mehrere Sicherheitsadministratoren mit einem Organisationskonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Sicherheitsadministrator vorhanden ist, kann die Organisation PIM nicht mehr verwalten, sollte dieses Konto gelöscht werden. Ändern Sie eine Rollenzuweisung außerdem nicht zu „temporär“, wenn ein Benutzer über ein Microsoft-Konto verfügt. Wenn Sie planen, zur Aktivierung dieser Rolle MFA als erforderlich festzulegen, wird diese Rolle für den Benutzer gesperrt.
 
-## Ändern globaler Administratorrollen in temporäre oder permanente Rollen
 
-Ihnen stehen drei Optionen zum Ändern des Zeitfensters eines globalen Administrators zur Verfügung:
+Nachdem Sie Änderungen vorgenommen haben, wird der Assistent nicht mehr angezeigt. Wenn Sie oder ein anderer Sicherheitsadministrator sich PIM das nächste Mal verwenden, wird das PIM-Dashboard angezeigt.
 
-1.  Klicken Sie auf die Schaltfläche **Alle als temporär festlegen**, um alle globalen Administratoren als temporäre Administratoren festzulegen. Wählen Sie diese Option nur, wenn alle Administratoren Organisationskonten besitzen und sich für Azure MFA registriert haben.
+- Wenn Sie Benutzer zu Rollen hinzufügen oder aus Rollen entfernen oder permanente in temporäre Zuweisungen ändern möchten, erhalten Sie weitere Informationen unter [Hinzufügen oder Entfernen einer Benutzerrolle](active-directory-privileged-identity-management-how-to-add-role-to-user).
+- Wenn Sie weiteren Benutzern Verwaltungszugriff auf PIM gewähren möchten, erhalten Sie weitere Informationen unter [Gewähren des Zugriffs zur Verwaltung von PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim)
 
-2.  Klicken Sie auf die Schaltfläche **Alle als permanent festlegen**, um alle globalen Administratoren als permanente Administratoren festzulegen.
 
-3.  Wählen Sie für jeden globalen Administrator **Als permanent belassen**, **Als temporär festlegen** oder **Aus Rolle entfernen** aus.
-
-## Ändern des Aktivierungszeitraums für eine globale Administratorrolle
-
-Es gibt zwei Möglichkeiten zum Festlegen des Aktivierungszeitraums für einen globalen Administrator:
-
-1.  Ziehen Sie den Schieberegler **Aktivierungszeitraum** nach links oder rechts, um den Aktivierungszeitraum zu verlängern oder zu verringern. Der Aktivierungszeitraum kann bis zu 72 Stunden betragen.
-
-2.  Geben Sie rechts vom Schieberegler im Feld **Stunden** die Anzahl der Stunden ein.
-
-## Aktivieren von Benachrichtigungen
-
-Damit Administratoren eine E-Mail empfangen können, wenn Rollen aktiviert werden, klicken Sie zum Aktivieren von Benachrichtigungen auf die Schaltfläche **Aktivieren**. Sie können diese Funktion später deaktivieren.
-
-## Erfordern von Multi-Factor Authentication
-
-Wenn Sie möchten, dass Administratoren zum Anmelden bei ihren Konten und zum Anfordern einer Erweiterung ihrer Rolle Multi-Factor Authentication (MFA) verwenden müssen, klicken Sie zum Aktivieren von MFA auf die Schaltfläche **Aktivieren**.
-
-<!--For more information about MFA and PIM, click here. PLACEHOLDER: NEED LINK TO MFA DOC.-->
-
-Wählen Sie die Rollen aus, auf die diese Einstellungen angewendet werden. Klicken Sie auf **OK**.
-
-> [AZURE.WARNING] Zu diesem Zeitpunkt müssen mehrere Sicherheitsadministratoren mit einem Organisationskonto (nicht einem Microsoft-Konto) vorhanden sein. Wenn nur ein Sicherheitsadministrator vorhanden ist, der nicht als permanenter Administrator festgelegt und für den nicht MFA eingerichtet ist, kann der Benutzer bei Löschung des Kontos PIM nicht verwalten.
-
-Klicken Sie anschließend auf die Schaltfläche **OK**.
-
-Nachdem Sie Änderungen vorgenommen haben, wird der Assistent nicht mehr angezeigt. Sie können ihn jedoch erneut aufrufen, indem Sie unter **Identitäten verwalten** auf die Schaltfläche **Assistent** klicken.
 
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="Ausgehende Authentifizierung von Scheduler"
- description=""
+ description="Ausgehende Authentifizierung von Scheduler"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -25,7 +25,7 @@ Ein Scheduler-Auftrag lässt sich ganz einfach mit einer Authentifizierung verse
 
 Wenn Sie die Authentifizierung entfernen möchten, führen Sie eine explizite PUT- oder PATCH-Anforderung für den Auftrag aus, und legen Sie dabei das Objekt `authentication` auf NULL fest. In der Antwort sind keinerlei Authentifizierungseigenschaften enthalten.
 
-Derzeit werden als Authentifizierungstypen nur das Modell `ClientCertificate` (für die Verwendung von SSL-/TLS-Clientzertifikaten), das Modell `Basic` (für die Standardauthentifizierung) und das Modell `ActiveDirectoryOAuth` (für die Active Directory-OAuth-Authentifizierung) unterstützt.
+Derzeit werden als Authentifizierungstypen nur das Modell `ClientCertificate` (für die Verwendung von SSL-/TLS-Clientzertifikaten), das Modell `Basic` (für die Standardauthentifizierung) und das Modell `ActiveDirectoryOAuth` (für die Active Directory-OAuth-Authentifizierung) unterstützt.
 
 ## Anforderungstext für die ClientCertificate-Authentifizierung
 
@@ -82,7 +82,7 @@ Wenn Sie die Authentifizierung mithilfe des Modells `ActiveDirectoryOAuth` hinzu
 |_type_ |Erforderlich. Die Art der Authentifizierung. Für die ActiveDirectoryOAuth-Authentifizierung muss der Wert `ActiveDirectoryOAuth` lauten.|
 |_tenant_ |Erforderlich. Die Mandanten-ID für den Azure AD-Mandanten.|
 |_audience_ |Erforderlich. Dieser Wert wird auf https://management.core.windows.net/.| festgelegt.
-|_clientId_ |Erforderlich. Geben Sie die Client-ID für die Azure AD-Anwendung an.|
+|_clientId_ |Erforderlich. Geben Sie die Client-ID für die Azure AD-Anwendung an.|
 |_secret_ |Erforderlich. Der geheime Schlüssel des Clients, der das Token anfordert.|
 
 ### Ermitteln der Mandanten-ID
@@ -99,7 +99,7 @@ Wenn eine Anforderung mit Authentifizierungsinformationen gesendet wird, enthäl
 |_type_ |Die Art der Authentifizierung. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`.|
 |_tenant_ |Die Mandanten-ID für den Azure AD-Mandanten. |
 |_audience_ |Dieser Wert wird auf https://management.core.windows.net/.| festgelegt.
-|_clientId_ |Die Client-ID für die Azure AD-Anwendung.|
+|_clientId_ |Die Client-ID für die Azure AD-Anwendung.|
 
 ## Siehe auch
 
@@ -120,4 +120,4 @@ Wenn eine Anforderung mit Authentifizierungsinformationen gesendet wird, enthäl
 
  [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

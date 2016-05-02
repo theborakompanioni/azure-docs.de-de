@@ -3,7 +3,7 @@
    description="Tipps für die Migration von Daten in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="barbkess"
+   authors="lodipalm"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/03/2016"
-   ms.author="barbkess;sonyama"/>
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # Migrieren von Daten
 Das Hauptziel bei der Migration von Daten besteht im Auffüllen der SQLDW-Datenbank. Dies kann auf verschiedene Weise erfolgen. Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
@@ -57,7 +57,7 @@ bcp bietet folgende Vorteile:
 
 bcp weist folgende Einschränkungen auf:
 
-- bcp funktioniert nur mit tabellarischen Flatfiles. Für Dateien im XML- oder JSON-Format kann es z. B. nicht verwendet werden.
+- bcp funktioniert nur mit tabellarischen Flatfiles. Für Dateien im XML- oder JSON-Format kann es z. B. nicht verwendet werden.
 - bcp unterstützt den Export in das Format UTF-8 nicht. Dies verhindert möglicherweise die Verwendung von PolyBase für mithilfe von bcp exportierte Daten.
 - Die Funktionen für die Datentransformation beschränken sich auf den Export und sind relativ einfach.
 - bcp bietet keine Stabilität beim Laden von Daten über das Internet. Jede Instabilität im Netzwerk kann daher zu Fehlern beim Laden führen.
@@ -82,7 +82,7 @@ Betrachten wir diese Schritte zunächst in der umgekehrten Reihenfolge: Daten k�
 3. Speicherort der Datendateien
 
 ### Codieren
-Für PolyBase müssen Datendateien mit UTF-8 codiert sein. Dies bedeutet, dass Ihre Daten beim Export dieser Anforderung entsprechen müssen. Wenn die Daten nur einfache ASCII-Zeichen (keine erweiterten ASCII-Zeichen) enthalten, werden diese direkt dem UTF-8-Standard zugeordnet, und Sie müssen sich keine größeren Gedanken über die Codierung machen. Wenn die Daten jedoch Sonderzeichen wie z. B. Umlaute, Akzente oder Symbole enthalten oder nicht lateinische Sprachen unterstützen, müssen Sie sicherstellen, dass die Exportdateien ordnungsgemäß UTF-8-codiert sind.
+Für PolyBase müssen Datendateien mit UTF-8 codiert sein. Dies bedeutet, dass Ihre Daten beim Export dieser Anforderung entsprechen müssen. Wenn die Daten nur einfache ASCII-Zeichen (keine erweiterten ASCII-Zeichen) enthalten, werden diese direkt dem UTF-8-Standard zugeordnet, und Sie müssen sich keine größeren Gedanken über die Codierung machen. Wenn die Daten jedoch Sonderzeichen wie z. B. Umlaute, Akzente oder Symbole enthalten oder nicht lateinische Sprachen unterstützen, müssen Sie sicherstellen, dass die Exportdateien ordnungsgemäß UTF-8-codiert sind.
 
 > [AZURE.NOTE] bcp unterstützt den Export von Daten in das Format UTF-8 nicht. Daher ist es am besten, die Daten mithilfe von Integration Services oder der ADF-Kopieraktivität zu exportieren. Es soll auch darauf hingewiesen werden, dass die UTF-8 Bytereihenfolge-Marke (Byte Order Mark, BOM) in der Datendatei nicht erforderlich ist.
 
@@ -104,7 +104,7 @@ Einer der langsamsten Schritte bei der Datenmigration ist die Übertragung der D
 Glücklicherweise stehen mehrere Optionen zur Verbesserung der Geschwindigkeit und Stabilität dieses Vorgangs zur Verfügung:
 
 ### [ExpressRoute][]
-Beispielsweise können Sie [ExpressRoute][] verwenden, um die Übertragung von Daten zu beschleunigen. [ExpressRoute][] ermöglicht Ihnen die Erstellung einer privaten Verbindung mit Azure, d. h., die Verbindung erfolgt nicht über das öffentliche Internet. Dieser Schritt ist keineswegs unbedingt erforderlich. Dadurch verbessert sich jedoch der Durchsatz bei der Übertragung von Daten in Azure von einem Standort vor Ort oder in der Nähe.
+Beispielsweise können Sie [ExpressRoute][] verwenden, um die Übertragung von Daten zu beschleunigen. [ExpressRoute][] ermöglicht Ihnen die Erstellung einer privaten Verbindung mit Azure, d. h., die Verbindung erfolgt nicht über das öffentliche Internet. Dieser Schritt ist keineswegs unbedingt erforderlich. Dadurch verbessert sich jedoch der Durchsatz bei der Übertragung von Daten in Azure von einem Standort vor Ort oder in der Nähe.
 
 Die Verwendung von [ExpressRoute][] bietet folgende Vorteile:
 
@@ -124,7 +124,7 @@ Allgemeine Übersicht über den Import- und Exportprozess:
 
 1. Konfigurieren eines Azure-Blob-Speichercontainers zum Empfangen der Daten
 2. Exportieren der Daten in den lokalen Speicher
-2. Kopieren der Daten auf SATA II/III-Festplatten (3,5 Zoll) mit dem +++[Azure Import/Export-Tool]
+2. Kopieren der Daten auf SATA II/III-Festplatten (3,5 Zoll) mit dem +++[Azure Import/Export-Tool]
 3. Erstellen eines Importauftrags mithilfe des Azure Import/Export-Diensts mit den vom [Azure Import/Export-Tool] generierten Journaldateien
 4. Versenden der Datenträger an das von Ihnen benannte Azure-Rechenzentrum
 5. Übertragen der Daten in Ihren Azure-Blob-Speichercontainer
@@ -194,4 +194,4 @@ Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung na
 [ADO.NET-Zieladapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS-Dokumentation]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

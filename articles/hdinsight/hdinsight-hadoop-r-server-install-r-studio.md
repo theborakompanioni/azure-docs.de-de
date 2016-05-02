@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Installieren von RStudio auf einem HDInsight-Cluster mit R Server | Microsoft Azure"
-	description="Erfahren Sie, wie Sie RStudio auf einem HDInsight-Cluster mit R Server installieren."
+	pageTitle="Installieren von RStudio mit R Server in HDInsight (Vorschau) | Microsoft Azure"
+	description="So installieren von RStudio mit R Server in HDInsight (Vorschau)."
 	services="hdinsight"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -17,16 +17,18 @@
    ms.author="jeffstok"/>
 
 
-# Installieren von RStudio auf einem HDInsight-Cluster mit R Server
+# Installieren von RStudio mit R Server in HDInsight (Vorschau)
 
 Es stehen derzeit verschiedene integrierte Entwicklungsumgebungen (IDE) für R zur Verfügung, darunter die kürzlich angekündigten [R-Tools für Visual Studio](https://www.visualstudio.com/de-DE/features/rtvs-vs.aspx) (RTVS) von Microsoft, eine Familie aus Desktop- und Servertools aus [RStudio](https://www.rstudio.com/products/rstudio-server/), oder das auf Eclipse basierende [StatET](http://www.walware.de/goto/statet) von Walware. Auf Linux ist insbesondere [RStudio Server](https://www.rstudio.com/products/rstudio-server/) sehr populär, das eine browserbasierte Entwicklungsumgebung zur Verwendung durch Remoteclients bereitstellt. Das Installieren von RStudio Server auf dem Edgeknoten eines HDInsight Premium-Clusters bietet eine umfassende IDE-Umgebung für die Entwicklung und Ausführung von R-Skripts mit R Server im Cluster und kann die Produktivität im Vergleich zur Standardverwendung der R-Konsole deutlich steigern.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skripts die (kostenlose) Communityversion von RStudio Server auf dem Edgeknoten eines Clusters installieren. Wenn Sie die kommerziell lizenzierte Pro-Version von RStudio Server vorziehen, müssen Sie den Installationsanweisungen von [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) folgen.
 
+> [AZURE.NOTE] Die Schritte in diesem Dokument erfordern einen Cluster mit R Server in HDInsight und funktionieren nicht ordnungsgemäß, wenn Sie einen HDInsight-Cluster verwenden, in dem R mithilfe der [Skriptaktion zum Installieren von R](hdinsight-hadoop-r-scripts-linux.md) installiert wurde.
+
 ## Voraussetzungen
 
 * Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server auf HDInsight-Clustern](hdinsight-hadoop-r-server-get-started.mdulet).
-* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen. 
+* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen. 
 
 
 ## Installieren von RStudio auf dem Cluster mit einem benutzerdefinierten Skript
@@ -117,9 +119,9 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
 - [Rechenkontextoptionen für R Server auf HDInsight-Clustern](hdinsight-hadoop-r-server-compute-contexts.md)
 
-- [Azure Storage-Optionen für R Server in HDInsight Premium](hdinsight-hadoop-r-server-storage.md)
+- [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

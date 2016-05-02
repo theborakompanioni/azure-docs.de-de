@@ -20,9 +20,9 @@
 
 Informationen zur Planung der Bereitstellung von HDInsight-Clustern.
 
-[AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
-
-* [Bereitstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md) 
+> [AZURE.WARNING] Für die Schritte in diesem Dokument werden das klassische Azure-Portal sowie ältere Versionen von Azure PowerShell und der Azure-Befehlszeilenschnittstelle verwendet. Microsoft empfiehlt die Verwendung dieser Schritte nicht. Sie sollten stattdessen das Azure-Portal sowie die neuesten Versionen von Azure PowerShell und der Azure-Befehlszeilenschnittstelle verwenden. Eine Version dieses Dokuments, in der das Azure-Portal und die neuesten Versionen von Azure PowerShell und der Azure-Befehlszeilenschnittstelle verwendet werden, finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md).
+>
+> Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
 
 **Voraussetzungen:**
 
@@ -49,7 +49,7 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 	Sie können HDInsight-Cluster unter einem der beiden folgenden Betriebssysteme bereitstellen:
 	- **HDInsight unter Windows (Windows Server 2012 R2 Datacenter)**:
-	- **HDInsight unter Linux (Ubuntu 12.04 LTS für Linux):** HDInsight bietet die Möglichkeit, Linux-Cluster unter Azure zu konfigurieren. Konfigurieren Sie einen Linux-Cluster, wenn Sie mit Linux oder Unix und der Migration von einer vorhandenen Linux-basierten Hadoop-Lösung vertraut sind, oder Sie eine einfache Integration mit Komponenten des Hadoop-Systems wünschen, die für Linux konzipiert sind. Weitere Informationen finden Sie unter [Erste Schritte mit Hadoop unter Linux in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md). 
+	- **HDInsight unter Linux (Ubuntu 12.04 LTS for Linux)**: HDInsight bietet die Möglichkeit, Linux-Cluster in Azure zu konfigurieren. Konfigurieren Sie einen Linux-Cluster, wenn Sie mit Linux oder Unix und der Migration von einer vorhandenen Linux-basierten Hadoop-Lösung vertraut sind, oder Sie eine einfache Integration mit Komponenten des Hadoop-Systems wünschen, die für Linux konzipiert sind. Weitere Informationen finden Sie unter [Erste Schritte mit Hadoop unter Linux in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md). 
 
 
 - **HDInsight-Version**
@@ -75,30 +75,30 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 	Hadoop-Cluster für HDInsight werden mit zwei Rollen bereitgestellt:
 
-	- Hauptknoten (2 Knoten)
-	- Datenknoten (mindestens 1 Knoten)
+	- Hauptknoten (2 Knoten)
+	- Datenknoten (mindestens 1 Knoten)
 
 	![HDInsight Hadoop-Clusterrollen](./media/hdinsight-provision-clusters-v1/HDInsight.HBase.roles.png)
 
 	HBase-Cluster für HDInsight werden mit drei Rollen bereitgestellt:
-	- Hauptserver (2 Knoten)
-	- Regionsserver (mindestens 1 Knoten)
-	- Master/Zookeeper-Knoten (3 Knoten)
+	- Hauptserver (2 Knoten)
+	- Regionsserver (mindestens 1 Knoten)
+	- Master/Zookeeper-Knoten (3 Knoten)
 	
 	![HDInsight Hadoop-Clusterrollen](./media/hdinsight-provision-clusters-v1/HDInsight.Storm.roles.png)
 
 	Storm-Cluster für HDInsight werden mit drei Rollen bereitgestellt:
-	- Nimbus-Knoten (2 Knoten)
-	- Supervisor-Server (mindestens 1 Knoten)
-	- Zookeeper-Knoten (3 Knoten)
+	- Nimbus-Knoten (2 Knoten)
+	- Supervisor-Server (mindestens 1 Knoten)
+	- Zookeeper-Knoten (3 Knoten)
 	
 
 	![HDInsight Hadoop-Clusterrollen](./media/hdinsight-provision-clusters-v1/HDInsight.Spark.roles.png)
 
 	Spark-Cluster für HDInsight werden mit drei Rollen bereitgestellt:
-	- Hauptknoten (2 Knoten)
+	- Hauptknoten (2 Knoten)
 	- Worker-Knoten (mindestens ein Knoten)
-	- Zookeeper-Knoten (3 Knoten) (für A1-Zookeeper kostenlos)
+	- Zookeeper-Knoten (3 Knoten) (für A1-Zookeeper kostenlos)
 
 	Kunden wird die Nutzung dieser Knoten für die Laufzeit des Clusters in Rechnung gestellt. Die Abrechnung beginnt, sobald ein Cluster erstellt wurde, und endet, wenn der Cluster gelöscht wird (bei Clustern ist kein Aufheben der Zuweisung oder Anhalten möglich). Die Clustergröße wirkt sich auf die Clusterkosten aus. Zu Lernzwecken wird empfohlen, einen Datenknoten zu verwenden. Weitere Informationen zu den Preisen von HDInsight finden Sie unter [HDInsight – Preise](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
@@ -125,7 +125,7 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 	Die HDInsight-Cluster ermöglichen Ihnen, während der Bereitstellung zwei Benutzerkonten zu konfigurieren:
 
 	- HTTP-Benutzer. Der Standardbenutzername bei der Basiskonfiguration im klassischen Azure-Portal ist „admin“.
-	- RDP-Benutzer (Windows-Cluster): Dient zum Herstellen einer Verbindung mit dem Cluster über RDP. Wenn Sie das Konto erstellen, müssen Sie ein Ablaufdatum festlegen, das maximal 90 Tage hinter dem aktuellen Datum liegt. 
+	- RDP-Benutzer (Windows-Cluster): Dient zum Herstellen einer Verbindung mit dem Cluster über RDP. Wenn Sie das Konto erstellen, müssen Sie ein Ablaufdatum festlegen, das maximal 90 Tage hinter dem aktuellen Datum liegt. 
 	- SSH-Benutzer (Linux-Cluster): Dient zum Herstellen einer Verbindung mit dem Cluster über SSH. Sie können zusätzliche SSH-Benutzerkonten erstellen, nachdem der Cluster erstellt wurde, indem Sie die Schritte unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md) ausführen.
   
  
@@ -442,12 +442,9 @@ Bei der Bereitstellung eines Clusters können Sie andere Konfigurationsoptionen 
 
 > [AZURE.NOTE] Zum Zeitpunkt der Erstellung dieses Dokuments am 29.8.2014 war der aktuelle Stand, dass die Azure-Befehlszeilenschnittstelle nicht verwendet werden kann, um Microsoft Azure einen Cluster zuzuordnen.
 
-Eine weitere Möglichkeit zur Bereitstellung von HDInsight-Clustern ist die Azure-Befehlszeilenschnittstelle (Azure-CLI). Die Azure-Befehlszeilenschnittstelle ist in Node.js implementiert. Das Tool kann auf allen Plattformen verwendet werden, die Node.js unterstützen, einschließlich Windows, Mac und Linux. Sie können die Befehlszeilenschnittstelle an den folgenden Speicherorten installieren:
+Eine weitere Möglichkeit zur Bereitstellung von HDInsight-Clustern ist die Azure-Befehlszeilenschnittstelle (Azure-CLI). Die Azure-Befehlszeilenschnittstelle ist in Node.js implementiert. Das Tool kann auf allen Plattformen verwendet werden, die Node.js unterstützen, einschließlich Windows, Mac und Linux.
 
-- **Node.js SDK** – <a href="https://www.npmjs.com/package/azure-mgmt-hdinsight" target="_blank">https://www.npmjs.com/package/azure-mgmt-hdinsight</a>
-- **Azure CLI** – <a href="https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz" target="_blank">https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz</a>  
-
-Eine allgemeine Anleitung für die Befehlszeilenschnittstelle finden Sie unter [Azure-CLI für Mac, Linux und Windows](../xplat-cli-install.md).
+Eine allgemeine Anleitung zur Verwendung der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
 Im Folgenden finden Sie Anweisungen zum Installieren der plattformübergreifenden Befehlszeilenschnittstelle unter Linux und Windows und zum Verwenden der Befehlszeilenschnittstelle zum Bereitstellen eines Clusters.
 
@@ -520,7 +517,7 @@ Sie können die Azure-Befehlszeilenschnittstelle entweder über NPM oder Windows
 
 		npm install -g https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
-	> [AZURE.NOTE] Wenn die Fehlermeldung angezeigt wird, dass der NPM-Befehl nicht gefunden wurde, vergewissern Sie sich, dass sich die folgenden Pfade in der Umgebungsvariablen PATH befinden: <i>C:\\Program Files (x86)\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i> oder <i>C:\\Program Files\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i>.
+	> [AZURE.NOTE] Wenn eine Fehlermeldung angezeigt wird, dass der NPM-Befehl nicht gefunden wurde, überprüfen Sie, ob sich die folgenden Pfade in der Umgebungsvariablen PATH befinden: <i>C:\\Program Files (x86)\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i> or <i>C:\\Program Files\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i>
 
 5.	Führen Sie den folgenden Befehl aus, um die Installation zu überprüfen:
 
@@ -817,4 +814,4 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zu Bereitstellung von HDInsig
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,11 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/10/2016"
+   ms.date="04/19/2016"
    ms.author="rajram"/>
 
 # Erste Schritte mit dem Warten-Connector und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+
+>[AZURE.NOTE] Die Unterstützung für diesen Connector läuft aus, weil seine Funktionalität jetzt standardmäßig als **Verzögerungsaktion** beim Erstellen neuer Logik-Apps enthalten ist. Es wird empfohlen, dass Sie alle Logik-Apps aktualisieren, die diesen Connector verwenden. Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
 Der Warten-Connector ermöglicht einer Anwendung, die Ausführung für einen bestimmten Zeitraum oder bis zum Eintreten einer angegebenen Uhrzeit zu verzögern. Sie können den Warten-Connector dem geschäftlichen Workflow hinzufügen und Daten im Rahmen dieses Workflows in einer Logik-App verarbeiten. Bei Verwendung in einer Logik-App kann dieser Connector zum Verzögern der Ausführung verwendet werden.
 
@@ -28,16 +29,13 @@ Zur Verwendung des Warten-Connectors müssen Sie zunächst eine Instanz der Wart
 Der Warten-Connector kann als eine Aktion verwendet werden. Er besitzt keine Trigger.
 
 ### Aktion
-- Klicken Sie im rechten Bereich auf den Warten-Connector:
-![Liste der Aktionen][1]
+- Klicken Sie im rechten Bereich auf den Warten-Connector: ![Liste der Aktionen][1]
 - Der Warten-Connector unterstützt zwei Aktionen: 
 	- Verzögern
 	- Verzögern bis
 	 
-- Wählen Sie *Verzögern* aus:
-![Eingabe verzögern][2]
-- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie:
-![Konfigurierte Aktion][3]
+- Wählen Sie *Verzögern* aus: ![Eingabe verzögern][2]
+- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie: ![Konfigurierte Aktion][3]
 
 Parameter|Typ|Beschreibung des Parameters
 ---|---|---
@@ -58,4 +56,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

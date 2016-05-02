@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Konfigurieren von Firewalleinstellungen | Microsoft Azure"
+	pageTitle="Konfigurieren einer SQL-Datenbankfirewall | Microsoft Azure"
 	description="Sie erfahren, wie Sie die Firewall für IP-Adressen mit Zugriff auf Azure SQL-Datenbanken konfigurieren."
 	services="sql-database"
 	documentationCenter=""
@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="04/12/2016"
+	ms.date="04/14/2016"
 	ms.author="rickbyh;carlrab"/>
 
 
-# Konfigurieren der Firewalleinstellungen für SQL-Datenbank mit dem Azure-Portal
+# Konfigurieren einer Firewall für die Azure SQL-Datenbank mit dem Azure-Portal
 
 
 > [AZURE.SELECTOR]
@@ -57,4 +57,4 @@ Ein Lernprogramm zum Erstellen einer Datenbank finden Sie unter [Erstellen einer
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

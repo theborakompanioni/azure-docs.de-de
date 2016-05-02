@@ -39,19 +39,21 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
 1. Um Protokolleinträge abzurufen, führen Sie den Befehl **Get-AzureRmLog** aus. Sie können die Parameter **ResourceGroup** und **Status** verwenden, um nur Ereignisse zurückzugeben, die für eine einzelne Ressourcengruppe nicht erfolgreich waren. Wenn Sie keine Start- und Endzeit angeben, werden die Einträge der letzten Stunde zurückgegeben. Führen Sie beispielsweise Folgendes aus, um die nicht erfolgreichen Vorgänge für die letzte Stunde der Ausführung zurückzugeben:
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
 
     Sie können hierbei eine bestimmte Zeitspanne angeben. Im nächsten Beispiel suchen wir nach nicht erfolgreichen Aktionen innerhalb der letzten 14 Tage.
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Status Failed
       
     Sie können für fehlerhafte Aktionen auch eine genaue Start- und Endzeit festlegen:
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00 -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00 -Status Failed
 
 2. Wenn dieser Befehl zu viele Einträge und Eigenschaften zurückgibt, können Sie die Überwachung genauer fokussieren, indem Sie die **Properties**-Eigenschaft abrufen. Hier wird auch der Parameter **DetailedOutput** einbezogen, damit die Fehlermeldungen angezeigt werden.
 
-        PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+        
+    Eigenschaften der Protokolleinträge werden in folgendem Format zurückgegeben:
         
         Content
         -------
@@ -61,7 +63,9 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
 3. Sie können die Suchergebnisse weiter eingrenzen, indem Sie die Statusmeldung für einen bestimmten Eintrag anzeigen.
 
-        PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+        
+    Die Statusmeldung wird in folgendem Format zurückgegeben:
         
         Code       : Conflict
         Message    : Website with given name mysite already exists.
@@ -74,7 +78,9 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
 1. Verwenden Sie den Befehl **Get-AzureRmResourceGroupDeployment**, um den allgemeinen Status einer Bereitstellung abzurufen. Sie können die Ergebnisse nach den Bereitstellungen filtern, die nicht erfolgreich waren.
 
-        PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+        Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+        
+    Die fehlgeschlagenen Bereitstellungen werden in folgendem Format zurückgegeben:
         
         DeploymentName    : ExampleDeployment
         ResourceGroupName : ExampleGroup
@@ -95,7 +101,9 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
 2. Jede Bereitstellung besteht in der Regel aus mehreren Vorgängen. Dabei stellt jeder Vorgang einen Schritt im Bereitstellungsprozess dar. Um einen Bereitstellungsfehler zu ermitteln, benötigen Sie in der Regel Einzelheiten zu den Bereitstellungsvorgängen. Den Status der Vorgänge können Sie mit **Get-AzureRmResourceGroupDeploymentOperation** abrufen.
 
-        PS C:\> Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment | Format-List
+        Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment | Format-List
+        
+    Die Vorgänge werden in folgendem Format zurückgegeben:
         
         Id          : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/ExampleDeployment/operations/8518B32868A437C8
         OperationId : 8518B32868A437C8
@@ -105,7 +113,9 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
 3. Rufen Sie das Objekt **Properties** ab, um weitere Details zum Vorgang zu erhalten.
 
-        PS C:\> (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties
+        (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties
+        
+    Die Vorgangseigenschaften werden in folgendem Format zurückgegeben:
         
         ProvisioningOperation : Create
         ProvisioningState     : Failed
@@ -120,7 +130,9 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
 4. Verwenden Sie den folgenden Befehl, um den Fokus auf die Statusmeldung für nicht erfolgreiche Vorgänge zu legen:
 
-        PS C:\> ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage
+        ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage
+        
+    Die Statusmeldung wird in folgendem Format zurückgegeben:
         
         Code       : Conflict
         Message    : Website with given name mysite already exists.
@@ -131,6 +143,6 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 ## Nächste Schritte
 
 - Informationen zur Überwachung anderer Arten von Aktionen anhand der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+- Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

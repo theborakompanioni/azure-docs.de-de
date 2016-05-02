@@ -26,17 +26,13 @@ Bei diesem Lernprogramm wird davon ausgegangen, dass auf Ihrem Rechner Visual St
 
 Gehen Sie wie folgt vor, um mithilfe von Visual Studio Team Services einen Clouddienst für die automatische Erstellung und Bereitstellung für Azure zu konfigurieren.
 
-## Schritt 1: Erstellen eines Teamprojekts
+## 1: Erstellen eines Teamprojekts
 
 Befolgen Sie die Anweisungen [hier](http://go.microsoft.com/fwlink/?LinkId=512980), um ein Teamprojekt zu erstellen und es mit Visual Studio zu verbinden. Bei dieser Anleitung wird angenommen, dass Sie Team Foundation Version Control (TFVC) als Lösung für die Quellcodeverwaltung verwenden. Wenn Sie Git für die Versionskontrolle verwenden möchten, finden Sie hier die [Git-Version dieser Anleitung](http://go.microsoft.com/fwlink/p/?LinkId=397358).
 
-## Schritt 2: Einchecken eines Projekts in der Quellcodeverwaltung
+## 2: Einchecken eines Projekts in der Quellcodeverwaltung
 
-1. Öffnen Sie in Visual Studio die Anwendung, die Sie bereitstellen möchten, oder erstellen Sie eine neue Anwendung. 
-Sie können eine Web-App oder einen Clouddienst (Azure-Anwendung) bereitstellen, indem Sie die Schritte in dieser Anleitung ausführen. 
-Wenn Sie eine neue Anwendung erstellen möchten, erstellen Sie ein neues Azure-Clouddienstprojekt oder ein neues ASP.NET MVC-Projekt. 
-Stellen Sie sicher, dass das Projekt auf .NET Framework 4 oder 4.5 abzielt. Wenn Sie ein Clouddienstprojekt erstellen, fügen Sie eine ASP.NET MVC-Webrolle hinzu, und wählen Sie für die Webrolle "Internetanwendung" aus. Wenn Sie dazu aufgefordert werden, wählen Sie **Internetanwendung** aus. 
-Wenn Sie eine Web-App erstellen möchten, wählen Sie die Projektvorlage "ASP.NET Web Application" und anschließend "MVC" aus. Siehe [Erstellen einer ASP.NET-Web-App in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md).
+1. Öffnen Sie in Visual Studio die Anwendung, die Sie bereitstellen möchten, oder erstellen Sie eine neue Anwendung. Sie können eine Web-App oder einen Clouddienst (Azure-Anwendung) bereitstellen, indem Sie die Schritte in dieser Anleitung ausführen. Wenn Sie eine neue Anwendung erstellen möchten, erstellen Sie ein neues Azure-Clouddienstprojekt oder ein neues ASP.NET MVC-Projekt. Stellen Sie sicher, dass das Projekt auf .NET Framework 4 oder 4.5 abzielt. Wenn Sie ein Clouddienstprojekt erstellen, fügen Sie eine ASP.NET MVC-Webrolle hinzu, und wählen Sie für die Webrolle "Internetanwendung" aus. Wenn Sie dazu aufgefordert werden, wählen Sie **Internetanwendung** aus. Wenn Sie eine Web-App erstellen möchten, wählen Sie die Projektvorlage "ASP.NET Web Application" und anschließend "MVC" aus. Siehe [Erstellen einer ASP.NET-Web-App in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md).
 
 	> [AZURE.NOTE] Visual Studio Team Services unterstützt derzeit nur CI-Bereitstellungen von Visual Studio-Webanwendungen. Websiteprojekte werden nicht unterstützt.
 
@@ -60,7 +56,7 @@ Wenn Sie eine Web-App erstellen möchten, wählen Sie die Projektvorlage "ASP.NE
 
 	![][9]
 
-## Schritt 3: Verbinden des Projekts mit Azure
+## 3: Verbinden des Projekts mit Azure
 
 1. Nachdem Sie nun über ein VS Team Services-Teamprojekt mit Quellcode verfügen, können Sie Ihr Teamprojekt mit Azure verbinden. Wählen Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) Ihren Clouddienst oder Ihre Web-App aus, oder erstellen Sie einen neuen Clouddienst oder eine neue Web-App, indem Sie auf das **+**-Symbol links unten sowie auf **Cloud Service** oder **Web-App** und anschließend auf **Schnellerstellung** klicken. Wählen Sie den Link **Veröffentlichung einrichten mit Visual Studio Team Services** aus.
 
@@ -82,7 +78,7 @@ Wenn Sie eine Web-App erstellen möchten, wählen Sie die Projektvorlage "ASP.NE
 
 	![][14]
 
-## Schritt 4: Auslösen einer erneuten Erstellung und Bereitstellung Ihres Projekts
+## 4: Auslösen einer erneuten Erstellung und Bereitstellung Ihres Projekts
 
 1. Klicken Sie in **Team Explorer** von Visual Studio auf den Link **Quellcodeverwaltungs-Explorer**.
 
@@ -177,19 +173,19 @@ Wenn Sie eine Web-App erstellen möchten, wählen Sie die Projektvorlage "ASP.NE
 
 	![][33]
 
-## Schritt 5: Erneutes Bereitstellen eines früheren Builds
+## 5: Erneute Bereitstellung eines früheren Builds
 
 Dieser Schritt gilt nur für Clouddienste und ist optional. Wählen Sie im klassischen Azure-Portal eine frühere Bereitstellung aus, und klicken Sie dann auf die Schaltfläche **Erneut bereitstellen**, um Ihre Website auf einen früheren Eincheckvorgang zurückzusetzen. Beachten Sie, dass dadurch ein neuer Buildvorgang in TFS ausgelöst und in Ihrem Bereitstellungsverlauf ein neuer Eintrag erstellt wird.
 
 ![][34]
 
-## Schritt 6: Ändern der Produktionsbereitstellung
+## 6: Ändern der Produktionsbereitstellung
 
 Dieser Schritt gilt nur für Clouddienste, nicht für Web-Apps. Wenn Sie bereit sind, können Sie die Stagingumgebung in die Produktionsumgebung überführen, indem Sie im klassischen Azure-Portal auf die Schaltfläche **Tauschen** klicken. Die neu bereitgestellte Stagingumgebung wird in eine Produktionsumgebung geändert, und die vorherige Produktionsumgebung (falls vorhanden) wird zu einer Stagingumgebung. Die aktive Bereitstellung für die Produktions- und die Stagingumgebung kann unterschiedlich sein, aber der Bereitstellungsverlauf der bisherigen Builds ist unabhängig von der Umgebung gleich.
 
 ![][35]
 
-## Schritt 7: Ausführen von Komponententests
+## 7: Ausführen von Komponententests
 
 Dieser Schritt gilt nur für Web-Apps, nicht für Clouddienste. Für eine zusätzliche Qualitätsstufe Ihrer Bereitstellungen können Sie Komponententests ausführen und im Falle eines Fehlers die Bereitstellung anhalten.
 
@@ -321,4 +317,4 @@ Weitere Informationen zu Komponententests in Visual Studio Team Services finden 
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

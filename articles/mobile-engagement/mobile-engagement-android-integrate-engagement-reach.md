@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Integration des Azure Mobile Engagement Android SDKs" 
+<properties
+	pageTitle="Integration des Azure Mobile Engagement Android SDKs"
 	description="Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="02/29/2016" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="04/18/2016"
 	ms.author="piyushjo" />
 
 #Integrieren von Engagement Reach unter Android
@@ -145,7 +145,7 @@ Dann können Sie die Rückruffunktionen `onDataPushStringReceived` und `onDataPu
 			    Log.d("tmp", "String data push message received: " + body);
 			    return true;
 			  }
-			
+
 			  @Override
 			  protected Boolean onDataPushBase64Received(Context context, String category, byte[] decodedBody, String encodedBody)
 			  {
@@ -165,7 +165,7 @@ Hier folgen einige Richtlinien zur ordnungsgemäßen Behandlung von Rückgabepar
 
 -   Ein Übertragungsempfänger sollte in der Rückruffunktion `null` zurückgeben, wenn ihm nicht bekannt ist, wie ein Datenpush behandelt wird. Sie können die Kategorie zur Ermittlung verwenden, ob der Übertragungsempfänger den Datenpush bearbeiten soll.
 -   Einer der Übertragungsempfänger sollte in der Rückruffunktion `true` zurückgeben, wenn der Datenpush akzeptiert wird.
--   Einer der Übertragungsempfänger sollte in der Rückruffunktion `false` zurückgeben, wenn er den Datenpush erkennt, ihn aber aus einem beliebigen Grund verwirft. Geben Sie z. B. `false` zurück, wenn die empfangenen Daten ungültig sind.
+-   Einer der Übertragungsempfänger sollte in der Rückruffunktion `false` zurückgeben, wenn er den Datenpush erkennt, ihn aber aus einem beliebigen Grund verwirft. Geben Sie z. B. `false` zurück, wenn die empfangenen Daten ungültig sind.
 -   Wenn ein Übertragungsempfänger `true` zurückgibt, während ein anderer für denselben Datenpush `false` zurückgibt, dann ist das Verhalten undefiniert. Daher sollten Sie niemals entsprechend vorgehen.
 
 Der Rückgabetyp wird nur für Reach-Statistiken verwendet:
@@ -193,7 +193,7 @@ Eine In-App-Benachrichtigung ist standardmäßig eine Ansicht, die dank der Andr
 
 Sie können einfach die Datei `engagement_notification_area.xml` nach Belieben ändern, um das Aussehen der Benachrichtigungsüberlagerungen zu modifizieren.
 
-> [AZURE.NOTE] Die Datei `engagement_notification_overlay.xml` ist die Datei, die zum Erstellen einer Benachrichtigungsüberlagerung verwendet wird. Sie enthält die Datei `engagement_notification_area.xml`. Sie können die Datei auch anpassen, um sie gemäß Ihren Anforderungen zu ändern (z. B. zur Positionierung des Benachrichtigungsbereichs innerhalb der Überlagerung).
+> [AZURE.NOTE] Die Datei `engagement_notification_overlay.xml` ist die Datei, die zum Erstellen einer Benachrichtigungsüberlagerung verwendet wird. Sie enthält die Datei `engagement_notification_area.xml`. Sie können die Datei auch anpassen, um sie gemäß Ihren Anforderungen zu ändern (z. B. zur Positionierung des Benachrichtigungsbereichs innerhalb der Überlagerung).
 
 ##### Einbeziehen des Benachrichtigungslayouts im Rahmen einer Aktivitätsüberlagerung
 
@@ -218,15 +218,15 @@ Sie können unser Benachrichtigungslayout dank der Android-Anweisung **include**
 			  android:orientation="vertical"
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent">
-			
+
 			  <ListView
 			    android:id="@android:id/list"
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1" />
-			
+
 			  <include layout="@layout/engagement_notification_area" />
-			
+
 			</LinearLayout>
 
 In diesem Beispiel wurde ein übergeordneter Container hinzugefügt, da das ursprüngliche Layout eine Listenansicht als Element der obersten Ebene verwendet hat. Zudem wurde `android:layout_weight="1"` hinzugefügt, damit unter einer mit `android:layout_height="fill_parent"` konfigurierten Listenansicht eine Ansicht hinzugefügt werden kann.
@@ -292,27 +292,27 @@ Sie können den größten Teil des Erstellungsprozesses für die Benachrichtigun
 ##### In-App-Benachrichtigungen
 
 Wenn Sie für eine bestimmte Kategorie alternative Layouts verwenden möchten, können Sie diese wie im folgenden Beispiel implementieren:
-			
+
 			public class MyNotifier extends EngagementDefaultNotifier
 			{
 			  public MyNotifier(Context context)
 			  {
 			    super(context);
 			  }
-			
+
 			  @Override
 			  protected int getOverlayLayoutId(String category)
 			  {
 			    return R.layout.my_notification_overlay;
 			  }
-			
-			
+
+
 			  @Override
 			  public Integer getOverlayViewId(String category)
 			  {
 			    return R.id.my_notification_overlay;
 			  }
-			
+
 			  @Override
 			  public Integer getInAppAreaId(String category)
 			  {
@@ -320,7 +320,7 @@ Wenn Sie für eine bestimmte Kategorie alternative Layouts verwenden möchten, k
 			  }
 			}
 
-**Beispiel für `my_notification_overlay.xml`:**
+**Beispiel für `my_notification_overlay.xml`: **
 
 			<?xml version="1.0" encoding="utf-8"?>
 			<RelativeLayout
@@ -328,39 +328,39 @@ Wenn Sie für eine bestimmte Kategorie alternative Layouts verwenden möchten, k
 			  android:id="@+id/my_notification_overlay"
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent">
-			
+
 			  <include layout="@layout/my_notification_area" />
-			
+
 			</RelativeLayout>
 
 Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungsansicht vom Standardbezeichner. Es ist wichtig, dass jedes Layout einen eindeutigen Bezeichner für Überlagerungen verwendet.
 
-**Beispiel für `my_notification_area.xml`:**
+**Beispiel für `my_notification_area.xml`: **
 
 			<?xml version="1.0" encoding="utf-8"?>
 			<merge
 			  xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent">
-			
+
 			  <RelativeLayout
 			    android:id="@+id/my_notification_area"
 			    android:layout_width="fill_parent"
 			    android:layout_height="64dp"
 			    android:layout_alignParentTop="true"
 			    android:background="#B000">
-			
+
 			    <LinearLayout
 			      android:orientation="horizontal"
 			      android:layout_width="fill_parent"
 			      android:layout_height="fill_parent"
 			      android:gravity="center_vertical">
-			
+
 			      <ImageView
 			        android:id="@+id/engagement_notification_icon"
 			        android:layout_width="48dp"
 			        android:layout_height="48dp" />
-			
+
 			      <LinearLayout
 			        android:id="@+id/engagement_notification_text"
 			        android:orientation="vertical"
@@ -368,7 +368,7 @@ Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungs
 			        android:layout_height="fill_parent"
 			        android:layout_weight="1"
 			        android:gravity="center_vertical">
-			
+
 			        <TextView
 			          android:id="@+id/engagement_notification_title"
 			          android:layout_width="fill_parent"
@@ -376,7 +376,7 @@ Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungs
 			          android:singleLine="true"
 			          android:ellipsize="end"
 			          android:textAppearance="@android:style/TextAppearance.Medium" />
-			
+
 			        <TextView
 			          android:id="@+id/engagement_notification_message"
 			          android:layout_width="fill_parent"
@@ -384,15 +384,15 @@ Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungs
 			          android:maxLines="2"
 			          android:ellipsize="end"
 			          android:textAppearance="@android:style/TextAppearance.Small" />
-			
+
 			      </LinearLayout>
-			
+
 			      <ImageView
 			        android:id="@+id/engagement_notification_image"
 			        android:layout_width="wrap_content"
 			        android:layout_height="fill_parent"
 			        android:adjustViewBounds="true" />
-			
+
 			      <ImageButton
 			        android:id="@+id/engagement_notification_close_area"
 			        android:visibility="invisible"
@@ -400,9 +400,9 @@ Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungs
 			        android:layout_height="fill_parent"
 			        android:src="@android:drawable/btn_dialog"
 			        android:background="#0F00" />
-			
+
 			    </LinearLayout>
-			
+
 			    <ImageButton
 			      android:id="@+id/engagement_notification_close"
 			      android:layout_width="wrap_content"
@@ -410,9 +410,9 @@ Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungs
 			      android:layout_alignParentRight="true"
 			      android:src="@android:drawable/btn_dialog"
 			      android:background="#0F00" />
-			
+
 			  </RelativeLayout>
-			
+
 			</merge>
 
 Wie Sie sehen können, unterscheidet sich der Bezeichner der Benachrichtigungsbereichsansicht vom Standardbezeichner. Es ist wichtig, dass jedes Layout einen eindeutigen Bezeichner für Benachrichtigungsbereiche verwendet.
@@ -450,19 +450,19 @@ Hier folgt ein entsprechendes Beispiel für eine derartige Implementierung:
 			    .setSmallIcon(notification.icon)              // icon is mandatory
 			    .setContentIntent(notification.contentIntent) // keep content intent
 			    .setDeleteIntent(notification.deleteIntent);  // keep delete intent
-			
+
 			  /* Your customization */
 			  // builder.set...
-			
+
 			  /* Dismiss option can be managed only after build */
 			  Notification myNotification = builder.build();
 			  if (!content.isNotificationCloseable())
 			    myNotification.flags |= Notification.FLAG_NO_CLEAR;
-			
+
 			  /* Notify here instead of super class */
 			  NotificationManager manager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 			  manager.notify(getNotificationId(content), myNotification); // notice the call to get the right identifier
-			
+
 			  /* Return false, we notify ourselves */
 			  return false;
 			}
@@ -471,8 +471,8 @@ Hier folgt ein entsprechendes Beispiel für eine derartige Implementierung:
 
 Die Verwaltung der Ankündigung zum Klicken auf eine Benachrichtigung kann durch Außerkraftsetzung von `EngagementDefaultNotifier.onNotifAnnouncementIntentPrepared` angepasst werden, indem das vorbereitete `Intent` geändert wird. Durch die Verwendung dieser Methode können Sie die Flags ganz einfach anpassen.
 
-Gehen Sie wie folgt vor, um z. B. das Flag `SINGLE_TOP` hinzuzufügen:
-			
+Gehen Sie wie folgt vor, um z. B. das Flag `SINGLE_TOP` hinzuzufügen:
+
 			@Override
 			protected Intent onNotifAnnouncementIntentPrepared(EngagementNotifAnnouncement notifAnnouncement,
 			  Intent intent)
@@ -495,7 +495,7 @@ Bei Verwendung der Standardkategorie werden für das `EngagementReachInteractive
 
 Wenn Ihre Implementierung von `EngagementNotifier` das Standardverhalten umgeht, müssen Sie diese Lebenszyklusmethoden selbst aufrufen. Das folgende Beispiel zeigt einige Fälle, in denen das Standardverhalten umgangen wird:
 
--   Es erfolgt keine Erweiterung von `EngagementDefaultNotifier`, d. h. Sie haben die Kategorieverarbeitung von Grund auf implementiert.
+-   Es erfolgt keine Erweiterung von `EngagementDefaultNotifier`, d. h. Sie haben die Kategorieverarbeitung von Grund auf implementiert.
 -   Für die Systembenachrichtigungen haben Sie `onNotificationPrepared` außer Kraft gesetzt und `contentIntent` oder `deleteIntent` im `Notification`-Objekt geändert.
 -   Für In-App-Benachrichtigungen haben Sie `prepareInAppArea` außer Kraft gesetzt. Stellen Sie sicher, dass Sie mindestens `actionNotification` zu einem Ihrer Steuerelemente der Benutzeroberfläche zuordnen.
 
@@ -517,11 +517,11 @@ In einer Umfrage werden das Fragenlayout und ihre Optionen dynamisch durch mehrf
 
 Wie Benachrichtigungen können die Kampagnenkategorien dazu verwendet werden, alternative Layouts für Ankündigungen und Umfragen bereitzustellen.
 
-Zum Erstellen einer Kategorie für eine Textankündigung können Sie z. B. `EngagementTextAnnouncementActivity` erweitern und darauf in der Datei `AndroidManifest.xml` verweisen:
+Zum Erstellen einer Kategorie für eine Textankündigung können Sie z. B. `EngagementTextAnnouncementActivity` erweitern und darauf in der Datei `AndroidManifest.xml` verweisen:
 
 			<activity android:name="com.your_company.MyCustomTextAnnouncementActivity">
 			  <intent-filter>
-			    <action android:name="com.microsoft.azure.engagement.intent.action.ANNOUNCEMENT"/>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 			    <category android:name="my_category" />
 			    <data android:mimeType="text/plain" />
 			  </intent-filter>
@@ -550,7 +550,7 @@ Für Webankündigungen können Sie `EngagementWebAnnouncementActivity` erweitern
 
 			<activity android:name="com.your_company.MyCustomWebAnnouncementActivity">
 			  <intent-filter>
-			    <action android:name="com.microsoft.azure.engagement.intent.action.ANNOUNCEMENT"/>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 			    <category android:name="my_category" />
 			    <data android:mimeType="text/html" />    <!-- only difference with text announcements in the intent is the data mime type -->
 			  </intent-filter>
@@ -560,11 +560,11 @@ Für Umfragen können Sie `EngagementPollActivity` erweitern und die Datei `Andr
 
 			<activity android:name="com.your_company.MyCustomPollActivity">
 			  <intent-filter>
-			    <action android:name="com.microsoft.azure.engagement.intent.action.POLL"/>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.POLL"/>
 			    <category android:name="my_category" />
 			  </intent-filter>
 			</activity>
-			
+
 ##### Implementierung von Grund auf
 
 Sie können Kategorien für Ihre Ankündigungsaktivitäten (und Umfrageaktivitäten) implementieren, ohne eine der `Engagement*Activity`-Klassen zu erweitern, die vom Reach-SDK bereitgestellt werden. Dies ist zum Beispiel hilfreich, wenn Sie ein Layout definieren möchten, dass nicht dieselben Ansichten wie die Standardlayouts verwendet.
@@ -578,12 +578,12 @@ Sie können wie folgt vorgehen, um das Inhaltsobjekt abzurufen, dass die Felder 
 			public class MyCustomTextAnnouncement extends EngagementActivity
 			{
 			  private EngagementAnnouncement mContent;
-			
+
 			  @Override
 			  protected void onCreate(Bundle savedInstanceState)
 			  {
 			    super.onCreate(savedInstanceState);
-			
+
 			    /* Get content */
 			    mContent = EngagementReachAgent.getInstance(this).getContent(getIntent());
 			    if (mContent == null)
@@ -592,16 +592,16 @@ Sie können wie folgt vorgehen, um das Inhaltsobjekt abzurufen, dass die Felder 
 			      finish();
 			      return;
 			    }
-			
+
 			    setContentView(R.layout.my_text_announcement);
-			
+
 			    /* Configure views by querying fields on mContent */
 			    // ...
 			  }
 			}
 
 Für die Statistiken sollten Sie melden, dass der Inhalt im `onResume`-Ereignis angezeigt wird:
-			
+
 			@Override
 			protected void onResume()
 			{
@@ -612,7 +612,7 @@ Für die Statistiken sollten Sie melden, dass der Inhalt im `onResume`-Ereignis 
 
 Vergessen Sie anschließend nicht, entweder `actionContent(this)` oder `exitContent(this)` für das Inhaltsobjekt aufzurufen, bevor die Aktivität in den Hintergrund wechselt.
 
-Wenn Sie weder `actionContent` noch m`exitContent` Aufrufen, werden keine Statistiken gesendet (d. h. keine Analysen zur Kampagne) und noch wichtiger ist, dass die nächsten Kampagnen nicht benachrichtigt werden, bis der Anwendungsprozess neu gestartet wurde.
+Wenn Sie weder `actionContent` noch m`exitContent` Aufrufen, werden keine Statistiken gesendet (d. h. keine Analysen zur Kampagne) und noch wichtiger ist, dass die nächsten Kampagnen nicht benachrichtigt werden, bis der Anwendungsprozess neu gestartet wurde.
 
 Die Ausrichtung oder andere Konfigurationsänderungen können die Ermittlung erschweren, ob die Aktivität in den Hintergrund wechselt. Die Standardimplementierung stellt sicher, dass der Inhalt beim Beenden gemeldet wird, wenn der Benutzer die Aktivität verlässt (durch Drücken von `HOME` oder `BACK`), jedoch nicht, wenn sich die Ausrichtung ändert.
 
@@ -623,7 +623,7 @@ Hier folgt der interessante Teil der Implementierung:
 			{
 			  finish();
 			}
-			
+
 			@Override
 			protected void onPause()
 			{
@@ -643,6 +643,5 @@ Wenn Sie aufgerufen `actionContent(this)` und dann die Aktivität beendet haben,
 [hier]: http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
- 
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

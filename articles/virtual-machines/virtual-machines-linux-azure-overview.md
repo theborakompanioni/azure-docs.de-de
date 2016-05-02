@@ -10,7 +10,7 @@
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
    ms.date="02/01/2016"
@@ -60,4 +60,4 @@ Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch 
 
 Ein kostenloses Testkonto. **[Hier erhalten Sie ein Konto.](https://azure.microsoft.com/pricing/free-trial/)** Falls Sie bereits über ein Konto verfügen, können Sie es ausprobieren, indem Sie die **[Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md)**. Anschließend können Sie dann die [Linux-VM erstellen](virtual-machines-linux-quick-create-cli.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="02/25/2016"
+	ms.date="03/13/2016"
 	ms.author="awills"/>
 
 # Dashboards und Navigation im Application Insights-Portal
@@ -21,15 +21,16 @@ Nachdem Sie [Application Insights für Ihr Projekt eingerichtet haben](app-insig
 
 ## Das Dashboard
 
-Wenn Sie sich beim [Azure-Portal](https://portal.azure.com) anmelden, wird zuerst das Dashboard angezeigt. Sie können es anpassen oder im Vollbildmodus anzeigen. Dieses Beispiel wurde angepasst, um die für die Besitzer wichtigsten Diagramme anzuzeigen.
+Wenn Sie sich beim [Azure-Portal](https://portal.azure.com) anmelden, wird zuerst das Dashboard angezeigt. Sie können es anpassen oder im Vollbildmodus anzeigen.
 
+Das Dashboard ist besonders nützlich für die Überwachung einer Lösung, die aus mehreren Anwendungen besteht, unabhängig davon, wo sie gehostet werden. Wenn Sie Azure-Komponenten wie Stream Analytics als Teil des Systems verwenden, können Sie deren Überwachungsdiagramme dem Dashboard hinzufügen.
 
 ![Ein angepasstes Dashboard.](./media/app-insights-dashboards/30.png)
 
 1. Sie können jederzeit oben auf die Ecke klicken, um wieder zum Dashboard zu gelangen.
-2. Mit **+ NEU** erstellen Sie eine neue Ressource. Eine [Application Insights-Ressource](app-insights-create-new-resource.md) ist ein Ort zum Speichern und Analysieren von Telemetriedaten aus Ihrer App.
+2. Mit **+ Neu** erstellen Sie eine neue Ressource. Eine [Application Insights-Ressource](app-insights-create-new-resource.md) ist ein Ort zum Speichern und Analysieren von Telemetriedaten aus Ihrer App.
 3. Über die Navigationsleiste öffnen Sie die vorhandenen Ressourcen.
-4. Sie bearbeiten und erstellen Dashboards über die Dashboardsymbolleiste.
+4. Sie bearbeiten und erstellen Dashboards über die Dashboardsymbolleiste. Sie können für verschiedene Anwendungen [unterschiedliche Dashboards erstellen](#dashboards).
 
 ## Finden der Telemetriedaten
 
@@ -41,38 +42,6 @@ Auf der Übersichtsseite finden Sie grundlegende Telemetriedaten sowie Links zu 
 
 
 
-## Zeitbereich
-
-Sie können den Zeitbereich der Diagramme oder Raster auf jedem Blatt ändern.
-
-![Öffnen Sie das Blatt "Übersicht" Ihrer Anwendung im Azure-Portal](./media/app-insights-dashboards/03-range.png)
-
-
-Klicken Sie auf "Aktualisieren", wenn Sie einige Daten erwarten, die noch nicht angezeigt wurden. Diagramme aktualisieren sich regelmäßig selbst, wobei die Intervalle für größere Zeiträume länger sind. Im Freigabemodus kann es eine Weile dauern, bis Daten durch die Analysepipeline in ein Diagramm gelangen.
-
-Um einen Teil des Diagramms zu vergrößern, ziehen Sie die Maus über den gewünschten Bereich, und klicken Sie auf das Lupensymbol:
-
-![Ziehen Sie die Maus über einen Teil eines Diagramms.](./media/app-insights-dashboards/12-drag.png)
-
-
-
-## Granularität und Punktwerte
-
-Bewegen Sie die Maus über dem Diagramm, um die Werte der Metriken zu diesem Zeitpunkt anzuzeigen.
-
-![Bewegen Sie den Mauszeiger über einem Diagramm](./media/app-insights-dashboards/02-focus.png)
-
-Der Wert der Eigenschaft zu einem bestimmten Zeitpunkt wird über das vorherige Abtastintervall aggregiert.
-
-Das Abtastintervall, auch als „Granularität“ bezeichnet, wird oben auf dem Blatt angezeigt.
-
-![Die Kopfzeile eines Blatts.](./media/app-insights-dashboards/11-grain.png)
-
-Sie können die Granularität auf dem Blatt „Zeitbereich“ anpassen:
-
-![Die Kopfzeile eines Blatts.](./media/app-insights-dashboards/grain.png)
-
-Die verfügbaren Granularitäten hängen vom ausgewählten Zeitbereich ab. Die expliziten Granularitäten sind Alternativen für die „automatische“ Granularität für den Zeitbereich.
 
 ## Das Blatt für die App-Übersicht
 
@@ -81,9 +50,9 @@ Das Übersichtsblatt (bzw. die Seite) für Ihre App zeigt eine Zusammenfassung d
 Klicken Sie auf:
 
 * **ein beliebiges Diagramm oder eine beliebige Kachel**, um weitere Details anzuzeigen.
-* **Einstellungen**, um zu den vordefinierten Seiten von anderen Metriken zu gelangen.
+* **Einstellungen**, um zu vordefinierten Seiten von anderen Metriken zu gelangen.
 * **Metrik-Explorer**, um Metrikseiten Ihrer Wahl zu erstellen.
-* **Suche**, um spezifische Instanzen von Ereignissen zu untersuchen, z. B. Anforderungen, Ausnahmen oder Protokollablaufverfolgungen.
+* **Suche**, um spezifische Instanzen von Ereignissen zu untersuchen, z. B. Anforderungen, Ausnahmen oder Protokollablaufverfolgungen.
 
 
 ![Hauptwege zum Anzeigen von Telemetriedaten](./media/app-insights-dashboards/010-oview.png)
@@ -97,7 +66,11 @@ Legen Sie fest, was in der Übersicht angezeigt werden soll. Unter „Anpassen�
 
 ## Dashboards
 
-Das Dashboard des Azure-Portals ist die Startseite, die Sie gleich nach der Anmeldung beim [Portal](https://portal.azure.com) sehen. Dort können Sie Diagramme und Kacheln (Gruppen von Diagrammen) aus mehreren Ressourcen platzieren.
+Das Dashboard des Azure-Portals ist die Startseite, die Ihnen gleich nach der Anmeldung beim [Portal](https://portal.azure.com) angezeigt wird. Dort können Sie Diagramme und Kacheln (Gruppen von Diagrammen) aus mehreren Ressourcen platzieren.
+
+Wenn Ihr System aus mehreren Komponenten besteht, beispielsweise einer Web-App, einem Back-End-Server und möglicherweise einigen Azure-Diensten, können Sie die Leistungskennzahlen aller Komponenten auf einem Bildschirm anzeigen.
+
+Wenn Sie mehrere Anwendungen verwenden, können Sie mehreren Dashboards erstellen und zwischen ihnen wechseln.
 
 ![Klicken Sie auf "Bearbeiten". Ziehen Sie Kacheln und Diagramme. Fügen Sie Kacheln aus dem Katalog hinzu. Klicken Sie anschließend auf „Fertig“.](./media/app-insights-dashboards/30.png)
 
@@ -181,9 +154,43 @@ Wenn Sie ein Blatt bearbeiten, aber dann lieber wieder mit den ursprünglich ges
 
 ![In den Schaltflächen am oberen Rand des Metrik-Explorers](./media/app-insights-dashboards/17-reset.png)
 
-## Suche
 
-Die Suche zeigt einzelne Ereignisse an, z. B. Seitenaufrufe, Anforderungen, Ausnahmen, Protokollablaufverfolgungen und benutzerdefinierte Ereignisse. Aggregierte Metriken oder Instanzen des TrackMetric()-Aufrufs werden nicht angezeigt.
+## Zeitbereich
+
+Sie können den Zeitbereich der Diagramme oder Raster auf jedem Blatt ändern.
+
+![Öffnen Sie das Blatt "Übersicht" Ihrer Anwendung im Azure-Portal](./media/app-insights-dashboards/03-range.png)
+
+
+Klicken Sie auf "Aktualisieren", wenn Sie einige Daten erwarten, die noch nicht angezeigt wurden. Diagramme aktualisieren sich regelmäßig selbst, wobei die Intervalle für größere Zeiträume länger sind. Im Freigabemodus kann es eine Weile dauern, bis Daten durch die Analysepipeline in ein Diagramm gelangen.
+
+Um einen Teil des Diagramms zu vergrößern, ziehen Sie die Maus über den gewünschten Bereich, und klicken Sie auf das Lupensymbol:
+
+![Ziehen Sie die Maus über einen Teil eines Diagramms.](./media/app-insights-dashboards/12-drag.png)
+
+
+
+## Granularität und Punktwerte
+
+Bewegen Sie die Maus über dem Diagramm, um die Werte der Metriken zu diesem Zeitpunkt anzuzeigen.
+
+![Bewegen Sie den Mauszeiger über einem Diagramm](./media/app-insights-dashboards/02-focus.png)
+
+Der Wert der Eigenschaft zu einem bestimmten Zeitpunkt wird über das vorherige Abtastintervall aggregiert.
+
+Das Abtastintervall, auch als „Granularität“ bezeichnet, wird oben auf dem Blatt angezeigt.
+
+![Die Kopfzeile eines Blatts.](./media/app-insights-dashboards/11-grain.png)
+
+Sie können die Granularität auf dem Blatt „Zeitbereich“ anpassen:
+
+![Die Kopfzeile eines Blatts.](./media/app-insights-dashboards/grain.png)
+
+Die verfügbaren Granularitäten hängen vom ausgewählten Zeitbereich ab. Die expliziten Granularitäten sind Alternativen für die „automatische“ Granularität für den Zeitbereich.
+
+## Suchen
+
+Die Suche zeigt einzelne Ereignisse an, z. B. Seitenaufrufe, Anforderungen, Ausnahmen, Protokollablaufverfolgungen und benutzerdefinierte Ereignisse. Aggregierte Metriken oder Instanzen des TrackMetric()-Aufrufs werden nicht angezeigt.
 
 > [AZURE.NOTE] Wenn die Anwendung viele Telemetriedaten generiert (und Sie Version 2.0.0-beta3 oder höher des ASP.NET-SDK verwenden), reduziert das adaptive Stichprobenmodul automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
 
@@ -231,4 +238,12 @@ Um die Suche erneut zu verwenden, **wechseln Sie zum Blatt "Übersicht"** und ö
 
 Wenn Sie mit dem Zeitraum "Relativ" gespeichert haben, enthält das neu geöffnete Blatt die neuesten Daten. Wenn Sie mit dem Zeitraum "Absolut" gespeichert haben, werden jedes Mal dieselben Daten gezeigt.
 
-<!---HONumber=AcomDC_0309_2016-->
+## Analyse
+
+[Analytics](app-insights-analytics.md) ist die erweiterte Suchfunktion, mit der Sie Leistungsfragen zu Ihrer App diagnostizieren und nachvollziehen können.
+
+![Beispiel für Analytics](./media/app-insights-dashboards/025.png)
+
+Klicken Sie auf die Kachel „Analytics“, um die Funktion anzuzeigen.
+
+<!---HONumber=AcomDC_0420_2016-->

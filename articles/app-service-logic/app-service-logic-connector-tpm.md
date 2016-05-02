@@ -13,13 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/10/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # Erste Schritte mit der BizTalk-Handelspartnerverwaltung und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
-Mit dem BizTalk-Dienst für die Handelspartnerverwaltung (Trading Partner Management, TPM) können Sie Business-to-Business-Beziehungen, z. B. Partner und Vereinbarungen, zusammen mit zugeordneten Artefakten, z. B. Schemas und Zertifikaten, definieren und dauerhaft einrichten. Diese Beziehungen können dann von verwandten API-Diensten, z. B. AS2, EDIFACT und X12, durchgesetzt werden.
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+
+
+Mit dem BizTalk-Dienst für die Handelspartnerverwaltung (Trading Partner Management, TPM) können Sie Business-to-Business-Beziehungen, z. B. Partner und Vereinbarungen, zusammen mit zugeordneten Artefakten, z. B. Schemas und Zertifikaten, definieren und dauerhaft einrichten. Diese Beziehungen können dann von verwandten API-Diensten, z. B. AS2, EDIFACT und X12, durchgesetzt werden.
 
 Die TPM-API-App ist die Basisanforderung des AS2-Connectors und der X12- oder EDIFACT-API-Apps. Sie können die BizTalk-Handelspartnerverwaltung dem geschäftlichen Workflow hinzufügen und Daten im Rahmen dieses Business-to-Business-Workflows in einer Logik-App verarbeiten.
 
@@ -41,4 +43,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

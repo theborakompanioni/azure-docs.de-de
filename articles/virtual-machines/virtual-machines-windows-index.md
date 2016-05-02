@@ -11,7 +11,7 @@
 <tags
    ms.service="virtual-machines-windows"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
    ms.date="02/24/2016"
@@ -37,9 +37,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Übersicht über den Azure-Resource Manager](../resource-group-overview.md)
 
 [Virtuelle Computer und Container in Azure](virtual-machines-windows-containers.md)
-
-[Übersicht über VM-Skalierungsgruppen](virtual-machines-windows-scale-sets-overview.md)
-
 
 
 ### Einrichten der Umgebung
@@ -71,7 +68,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
-[Planned maintenance for Azure virtual machines](virtual-machines-windows-planned-maintenance.md) (Geplante Wartung für virtuelle Azure Computer) [Azure infrastructure services implementation guidelines](virtual-machines-windows-infrastructure-service-guidelines.md) (Implementierungsrichtlinien für Azure-Infrastrukturdienste)
+[Geplante Wartung für virtuelle Windows-Computer in Azure](virtual-machines-windows-planned-maintenance.md) [Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-windows-infrastructure-service-guidelines.md)
 
 [Verwalten der Verfügbarkeit virtueller Computer](virtual-machines-windows-manage-availability.md)
 
@@ -85,7 +82,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Erfassen eines virtuellen Windows-Computers im Ressourcen-Manager-Bereitstellungsmodell](virtual-machines-windows-capture-image.md)
 
-[Upload a VM image](virtual-machines-windows-upload-image.md) (Hochladen eines VM-Images)
+[Upload a VM image (Hochladen eines VM-Images)](virtual-machines-windows-upload-image.md)
 
 [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](virtual-machines-windows-chef-automation.md)
 
@@ -93,7 +90,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md)
 
-[Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager template](virtual-machines-windows-extensions-diagnostics-template.md) (Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen)
+[Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager template (Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen)](virtual-machines-windows-extensions-diagnostics-template.md)
 
 [Bereitstellen beliebter Anwendungsframeworks mithilfe von Azure-Ressourcen-Manager-Vorlagen](virtual-machines-windows-app-frameworks.md)
 
@@ -115,8 +112,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-backup.md)
 
 [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md)
-
-[Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machines-windows-ps-vmss-create.md)
 
 
 
@@ -150,7 +145,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Bereitstellen von Azure-Ressourcen mithilfe der Computing-, Netzwerk- und Speicherbibliotheken von .NET](virtual-machines-windows-csharp.md)
 
 
-[Authoring Azure Resource Manager Templates with VM Extensions](virtual-machines-windows-extensions-authoring-templates.md) (Erstellen von Azure Resource Manager-Vorlagen mit VM-Erweiterungen)
+[Authoring Azure Resource Manager Templates with VM Extensions (Erstellen von Azure Resource Manager-Vorlagen mit VM-Erweiterungen)](virtual-machines-windows-extensions-authoring-templates.md)
 
 [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 		
@@ -171,21 +166,21 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 ### Referenz
 [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](azure-cli-arm-commands.md)
 
-[Compute REST API](https://msdn.microsoft.com/library/azure/mt163647.aspx) (Compute-REST-API)
+[Compute REST API (Compute-REST-API)](https://msdn.microsoft.com/library/azure/mt163647.aspx)
 
-[Network REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx) (Netzwerk-REST-API)
+[Network REST API (Netzwerk-REST-API)](https://msdn.microsoft.com/library/azure/mt163658.aspx)
 
 [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
-[Compute .NET API](https://msdn.microsoft.com/library/azure/mt131911.aspx) (Compute-.NET-API)
+[Compute .NET API (Compute-.NET-API)](https://msdn.microsoft.com/library/azure/mt131911.aspx)
 
-[Network .NET API](https://msdn.microsoft.com/library/azure/dn973320.aspx) (Netzwerk-.NET-API)
+[Network .NET API (Netzwerk-.NET-API)](https://msdn.microsoft.com/library/azure/dn973320.aspx)
 
-[Storage .NET API](https://msdn.microsoft.com/library/azure/mt131037.aspx) (Storage-.NET-API)
+[Storage .NET API (Storage-.NET-API)](https://msdn.microsoft.com/library/azure/mt131037.aspx)
 
-[PowerShell cmdlet reference documentation](https://msdn.microsoft.com/library/azure/dn708514.aspx) (Referenzdokumentation zu PowerShell-Cmdlets)
+[PowerShell cmdlet reference documentation (Referenzdokumentation zu PowerShell-Cmdlets)](https://msdn.microsoft.com/library/azure/dn708514.aspx)
 
-[Azure template community reference page](https://azure.microsoft.com/documentation/templates/) (Referenzseite mit Azure-Vorlagen der Community)
+[Azure template community reference page (Referenzseite mit Azure-Vorlagen der Community)](https://azure.microsoft.com/documentation/templates/)
 
 
 
@@ -193,7 +188,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-[Troubleshooting Azure VM Extension failures](virtual-machines-windows-extensions-troubleshoot.md) (Problembehandlung für Fehler bei der Azure-VM-Erweiterung)
+[Troubleshooting Azure VM Extension failures (Problembehandlung für Fehler bei der Azure-VM-Erweiterung)](virtual-machines-windows-extensions-troubleshoot.md)
 
 [Troubleshoot resource group deployments (Problembehandlung beim Bereitstellen von Ressourcengruppen)](../resource-manager-troubleshoot-deployments-portal.md)
 
@@ -208,7 +203,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 ### Übersicht
 
-[About virtual machines](virtual-machines-windows-about.md) (Informationen zu virtuellen Computern)
+[About virtual machines (Informationen zu virtuellen Computern)](virtual-machines-windows-about.md)
 
 [Häufig gestellte Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden](virtual-machines-windows-classic-faq.md)
 
@@ -230,7 +225,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 ### Erste Schritte
 [Lernpfad für virtuelle Windows-Computer](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
 
-[Create a Windows virtual machine in the Azure classic portal](virtual-machines-windows-classic-tutorial.md) (Erstellen eines virtuellen Windows-Computers im klassischen Azure-Portal)
+[Create a Windows virtual machine in the Azure classic portal (Erstellen eines virtuellen Windows-Computers im klassischen Azure-Portal)](virtual-machines-windows-classic-tutorial.md)
 
 [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](virtual-machines-windows-classic-connect-logon.md)
 
@@ -239,7 +234,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 ### Plan
 
-[About images for classic virtual machines](virtual-machines-windows-classic-about-images.md) (Informationen zu Images für virtuelle Computer)
+[About images for classic virtual machines (Informationen zu Images für virtuelle Computer)](virtual-machines-windows-classic-about-images.md)
 
 [Größen für virtuelle Computer](virtual-machines-windows-sizes.md)
 
@@ -249,20 +244,20 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-windows-infrastructure-service-guidelines.md)
 
-[Create an availability set for virtual machines](virtual-machines-windows-classic-configure-availability.md) (Erstellen einer Verfügbarkeitsgruppe für virtuelle Computer)
+[Create an availability set for virtual machines (Erstellen einer Verfügbarkeitsgruppe für virtuelle Computer)](virtual-machines-windows-classic-configure-availability.md)
 
 
 ### Bereitstellen
 
 [Erstellen eines benutzerdefinierten virtuellen Computers mit Windows](virtual-machines-windows-classic-createportal.md)
 
-[Capture a Windows virtual machine created in the classic deployment model](virtual-machines-windows-classic-capture-image.md) (Erfassen eines virtuellen Windows-Computers, der im klassischen Bereitstellungsmodell erstellt wurde)
+[Capture a Windows virtual machine created in the classic deployment model (Erfassen eines virtuellen Windows-Computers, der im klassischen Bereitstellungsmodell erstellt wurde)](virtual-machines-windows-classic-capture-image.md)
 
-[Create and upload a classic Windows Server VHD using Powershell](virtual-machines-windows-classic-createupload-vhd.md) (Erstellen und Hochladen einer klassischen Windows Server-VHD mithilfe von PowerShell)
+[Create and upload a classic Windows Server VHD using Powershell (Erstellen und Hochladen einer klassischen Windows Server-VHD mithilfe von PowerShell)](virtual-machines-windows-classic-createupload-vhd.md)
 
 [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](virtual-machines-windows-chef-automation.md)
 
-[Create and configure a classic Windows Virtual Machine in Azure PowerShell](virtual-machines-windows-classic-create-powershell.md) (Erstellen und Konfigurieren eines klassischen virtuellen Windows-Computers in Azure PowerShell)
+[Create and configure a classic Windows Virtual Machine in Azure PowerShell (Erstellen und Konfigurieren eines klassischen virtuellen Windows-Computers in Azure PowerShell)](virtual-machines-windows-classic-create-powershell.md)
 
 [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](virtual-machines-windows-classic-inject-custom-data.md)
 
@@ -279,7 +274,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Verwalten von Erweiterungen für virtuelle Computer](virtual-machines-windows-classic-manage-extensions.md)
 
-[Custom Script extension for classic Windows virtual machines](virtual-machines-windows-classic-extensions-customscript.md) (Benutzerdefinierte Skripterweiterung für klassische virtuelle Windows-Computer)
+[Custom Script extension for classic Windows virtual machines (Benutzerdefinierte Skripterweiterung für klassische virtuelle Windows-Computer)](virtual-machines-windows-classic-extensions-customscript.md)
 
 [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-backup.md)
 
@@ -305,9 +300,9 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer](virtual-machines-windows-about-disks-vhds.md)
 	
-[How to attach a data disk to a classic Windows virtual machine](virtual-machines-windows-classic-attach-disk.md) (Anfügen eines Datenträgers an einen klassischen virtuellen Windows-Computer)
+[How to attach a data disk to a classic Windows virtual machine (Anfügen eines Datenträgers an einen klassischen virtuellen Windows-Computer)](virtual-machines-windows-classic-attach-disk.md)
 
-[How to dettach a data disk to a classic Windows virtual machine](virtual-machines-windows-classic-detach-disk.md) (Trennen eines Datenträgers von einem klassischen virtuellen Windows-Computer)
+[How to dettach a data disk to a classic Windows virtual machine (Trennen eines Datenträgers von einem klassischen virtuellen Windows-Computer)](virtual-machines-windows-classic-detach-disk.md)
 
 [Verwenden des Laufwerks D als Datenlaufwerk auf einer Windows-VM](virtual-machines-windows-classic-change-drive-letter.md)
 
@@ -329,8 +324,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Erstellen eines virtuellen Computers für eine Webanwendung mit Visual Studio](virtual-machines-windows-classic-web-app-visual-studio.md)
 
-[Ausführen einer rechenintensiven Aufgabe in .NET auf einem virtuellen Azure-Computer](virtual-machines-windows-classic-run-compute-intensive-task.md)
-
 [Gewusst wie: Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer](virtual-machines-windows-classic-java-run-compute-intensive-task.md)
 
 [Django-Webanwendung "Hello World" auf einem virtuellen Windows Server-Computer](virtual-machines-windows-classic-python-django-web-app.md)
@@ -339,11 +332,11 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 ### Workloads
 
-[High-availability line of business application](virtual-machines-windows-lob.md) (Hochverfügbare Branchenanwendung)
+[High-availability line of business application (Hochverfügbare Branchenanwendung)](virtual-machines-windows-lob.md)
 
 [HPC Pack](virtual-machines-windows-hpcpack-cluster-options.md)
 
-[Hybrid cloud test environment](virtual-machines-windows-classic-hybrid-test-env.md) (Testumgebung für Hybridclouds)
+[Hybrid cloud test environment (Testumgebung für Hybridclouds)](virtual-machines-windows-classic-hybrid-test-env.md)
 
 [MongoDB](virtual-machines-windows-classic-install-mongodb.md)
 
@@ -362,9 +355,9 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
-[Service Management .NET API](https://msdn.microsoft.com/library/azure/mt420161.aspx) (Dienstverwaltungs-.NET-API)
+[Service Management .NET API (Dienstverwaltungs-.NET-API)](https://msdn.microsoft.com/library/azure/mt420161.aspx)
 
-[Azure Service Management PowerShell cmdlet reference documentation](https://msdn.microsoft.com/library/azure/dn708504.aspx) (Referenz zu PowerShell-Cmdlets für die Azure-Dienstverwaltung)
+[Azure Service Management PowerShell cmdlet reference documentation (Referenz zu PowerShell-Cmdlets für die Azure-Dienstverwaltung)](https://msdn.microsoft.com/library/azure/dn708504.aspx)
 
 
 ### Problembehandlung
@@ -375,4 +368,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größen von virtuellen Computern in Azure](virtual-machines-windows-allocation-failure.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

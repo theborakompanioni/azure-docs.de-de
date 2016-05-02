@@ -13,10 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/04/2016"
+   ms.date="04/14/2016"
    ms.author="subramar"/>
 
 # Service Fabric-Anwendungsupgrade: Weiterführende Themen
+
+## Hinzufügen oder Entfernen von Diensten während eines Anwendungsupgrades
+
+Wenn ein neuer Dienst einer Anwendung hinzugefügt wird, die bereits bereitgestellt und als Upgrade veröffentlicht ist, wird der neue Dienst der bereitgestellten Anwendung hinzugefügt (ohne dass das Upgrade Auswirkungen auf die Dienste hat, die bereits Teil der Anwendung waren). Eine Instanz des Diensts, der hinzugefügt wurde, muss jedoch (mithilfe des `New-ServiceFabricService`-Cmdlets)gestartet werden, damit der neue Dienst aktiv ist.
+
+Dienste können auch im Rahmen eines Upgrades von einer Anwendung entfernt werden, jedoch muss sichergestellt werden, dass alle aktuelle Instanzen des Diensts (die im Rahmen des Upgrades entfernt werden sollen) gestoppt werden, bevor das Upgrade fortgesetzt wird (mithilfe des `Remove-ServiceFabricService`-Cmdlets).
 
 ## Manueller Upgrademodus
 
@@ -31,7 +37,7 @@ Das überwachte parallele Anwendungsupgrade ist das typische in Produktionsumgeb
 Schließlich eignet sich der automatisierte parallele Upgrademodus in Entwicklungs- oder Testumgebungen zur Bereitstellung schneller Iterationszyklen während der Entwicklung von Diensten.
 
 ## Wechseln in den manuellen Upgrademodus
-**Manual**: Das Anwendungsupgrade wird bei der aktuellen Upgradedomäne beendet und der Upgrademodus in den nicht überwachten manuellen Modus geändert. Der Administrator muss **MoveNextApplicationUpgradeDomainAsync** manuell aufrufen, um das Upgrade fortzusetzen, oder durch Initiieren eines neuen Upgrades einen Rollback auslösen. Wenn das Upgrade in den manuellen Modus wechselt, wird dieser Modus beibehalten, bis ein neues Upgrade initiiert wird. Der **GetApplicationUpgradeProgressAsync**-Befehl gibt „FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING“ zurück.
+**Manuell**: Das Anwendungsupgrade wird bei der aktuellen Upgradedomäne gestoppt, und es erfolgt ein Wechsel in den nicht überwachten manuellen Upgrademodus. Der Administrator muss **MoveNextApplicationUpgradeDomainAsync** manuell aufrufen, um das Upgrade fortzusetzen, oder durch Initiieren eines neuen Upgrades einen Rollback auslösen. Wenn das Upgrade in den manuellen Modus wechselt, wird dieser Modus beibehalten, bis ein neues Upgrade initiiert wird. Der **GetApplicationUpgradeProgressAsync**-Befehl gibt „FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING“ zurück.
 
 ## Upgrade mit einem Diff-Paket
 
@@ -47,6 +53,40 @@ Situationen, in denen sich ein Diff-Paket anbietet:
 
 * Ein Diff-Paket wird in einem Bereitstellungssystem bevorzugt, das das Buildlayout direkt aus dem Anwendungsbuildprozess generiert. In diesem Fall weisen neu erstellte Assemblys eine andere Prüfsumme auf, auch wenn sich der Code nicht geändert hat. Bei Verwendung eines vollständigen Anwendungspakets müssten Sie die Version in allen Codepaketen ändern. Bei Verwendung eines Diff-Pakets stellen Sie dagegen nur die geänderten Dateien und die Manifestdateien bereit, in denen sich die Version geändert hat.
 
+Wenn eine Anwendung mit Visual Studio aktualisiert wird, wird das Diff-Paket automatisch veröffentlicht. Wenn Sie beabsichtigten, ein Diff-Paket (z. B. für ein Upgrade mithilfe von PowerShell) manuell zu erstellen, sollten Sie die Anwendung und Dienstmanifeste aktualisieren, aber nur die Pakete einbeziehen, die im endgültigen Anwendungspaket geändert wurden.
+
+Beispielsweise beginnen wir mit der folgenden Anwendung (Versionsnummern werden zum einfacheren Verständnis angegeben):
+
+```text
+app1       	1.0.0
+  service1 	1.0.0
+    code   	1.0.0
+    config 	1.0.0
+  service2 	1.0.0
+    code   	1.0.0
+    config 	1.0.0
+```
+
+Nun nehmen wir an, dass Sie nur das Codepaket von Service1 mithilfe eines Diff-Pakets mit PowerShell aktualisieren möchten. Die aktualisierte Anwendung sieht nun wie folgt aus:
+
+```text
+app1       	2.0.0      <-- new version
+  service1 	2.0.0      <-- new version
+    code   	2.0.0      <-- new version
+    config 	1.0.0
+  service2 	1.0.0
+    code   	1.0.0
+    config 	1.0.0
+```
+
+In diesem Fall aktualisieren Sie das Anwendungsmanifest auf 2.0.0 und das Dienstmanifest für Service1, um die Codepaketaktualisierung widerzuspiegeln. Die Ordnerstruktur für das Anwendungspaket würde wie folgt aussehen:
+
+```text
+app1/
+  service1/
+    code/
+```
+
 ## Nächste Schritte
 
 Unter [Upgrade Ihrer Anwendung mit Visual Studio](service-fabric-application-upgrade-tutorial.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von Visual Studio geführt.
@@ -60,4 +100,4 @@ Machen Sie Ihre Anwendungsupgrades kompatibel, indem Sie sich mit der [Datenseri
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

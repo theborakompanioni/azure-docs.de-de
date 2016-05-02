@@ -19,9 +19,32 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-*Verwenden Sie die Suchfunktion Ihres Browsers, um Sprachelemente auf dieser Seite zu finden. Dabei wird der Inhalt der Seiten für Abfragen, Aggregationen und Skalare kombiniert.*
 
 [AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
+
+
+| | | | | 
+|---|---|---|---|---
+|[ago](#ago)|[dayofweek](#dayofweek)|[let-Klausel](#let-clause)|[range](#range)|[summarize-Operator](#summarize-operator)
+|[beliebig](#any)|[dcount](#dcount)|[limit-Operator](#limit-operator)|[range-Operator](#range-operator)|[take-Operator](#take-operator)
+|[argmax](#argmax)|[Dynamische Objekte in Let-Klauseln](#dynamic-objects-in-let-clauses)|[makelist](#makelist)|[reduce-Operator](#reduce-operator)|[todatetime](#todatetime)
+|[argmin](#argmin)|[extend-Operator](#extend-operator)|[makeset](#makeset)|[render-Anweisung](#render-directive)|[todouble](#todouble)
+|[Arithmetische Operatoren](#arithmetic-operators)|[extract](#extract)|[max](#max)|[replace](#replace)|[todynamic](#todynamic)
+|[Array- und Objektliterale](#array-and-object-literals)|[extractjson](#extractjson)|[min](#min)|[Skalare Vergleiche](#scalar-comparisons)|[toint](#toint)
+|[arraylength](#arraylength)|[floor](#floor)|[mvexpand-Operator](#mvexpand-operator)|[sort-Operator](#sort-operator)|[tolong](#tolong)
+|[avg](#avg)|[getmonth](#getmonth)|[notempty](#notempty)|[split](#split)|[tolower](#tolower)
+|[bin](#bin)|[gettype](#gettype)|[notnull](#notnull)|[sqrt](#sqrt)|[top-Operator](#top-operator)
+|[Boolesche Literale](#boolean-literals)|[getyear](#getyear)|[now](#now)|[startofmonth](#startofmonth)|[totimespan](#totimespan)
+|[Boolesche Operatoren](#boolean-operators)|[hash](#hash)|[Numerische Literale](#numeric-literals)|[startofyear](#startofyear)|[toupper](#toupper)
+|[buildschema](#buildschema)|[iff](#iff)|[Verborgene Zeichenfolgenliterale](#obfuscated-string-literals)|[stdev](#stdev)|[treepath](#treepath)
+|[Typumwandlungen](#casts)|[isempty](#isempty)|[parse-Operator](#parse-operator)|[strcat](#strcat)|[union-Operator](#union-operator)
+|[count](#count)|[isnotempty](#isnotempty)|[parsejson](#parsejson)|[Zeichenfolgenvergleiche](#string-comparisons)|[variance](#variance)
+|[count-Operator](#count-operator)|[isnotnull](#isnotnull)|[percentile](#percentile)|[Zeichenfolgenliterale](#string-literals)|[where-Operator](#where-operator)
+|[countof](#countof)|[isnull](#isnull)|[percentiles](#percentiles)|[strlen](#strlen)
+|[Datum und Uhrzeit – Ausdrücke](#date-and-time-expressions)|[join-Operator](#join-operator)|[project-Operator](#project-operator)|[substring](#substring)
+|[Datum und Uhrzeit – Literale](#date-and-time-literals)|[JSON Path-Ausdrücke](#json-path-expressions)|[rand](#rand)|[sum](#sum)
+
+
 
 
 
@@ -63,11 +86,11 @@ Der `count`-Operator gibt die Anzahl von Datensätzen (Zeilen) in der Eingabe-Da
 
 **Argumente**
 
-* *T*: Die tabellarischen Daten, deren Datensätze gezählt werden sollen.
+* *T*: Die tabellarischen Daten, deren Datensätze gezählt werden.
 
 **Rückgabe**
 
-Diese Funktion gibt eine Tabelle mit einem einzelnen Datensatz und einer Spalte vom Typ `long` zurück. Der Wert der einzigen Zelle ist die Anzahl von Datensätzen in *T*.
+Diese Funktion gibt eine Tabelle mit einem einzelnen Datensatz und einer Spalte vom Typ `long` zurück. Der Wert der einzigen Zelle ist die Anzahl der Datensätze in *T*.
 
 **Beispiel**
 
@@ -103,7 +126,7 @@ Eine Kopie der Eingabetabelle mit den angegebenen zusätzlichen Spalten.
 * Verwenden Sie stattdessen [`project`](#project-operator), wenn Sie auch einige Spalten löschen oder umbenennen möchten.
 * Verwenden Sie nicht einfach `extend`, um einen kürzeren Namen zur Verwendung in einem langen Ausdruck zu erhalten. `...| extend x = anonymous_user_id_from_client | ... func(x) ...` 
 
-    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
+    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
 
 **Beispiel**
 
@@ -130,7 +153,7 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 * *Table1*: die „linke Seite“ der Verknüpfung.
 * *Table2*: die „rechte Seite“ der Verknüpfung. Kann ein geschachtelter Abfrageausdruck sein, der eine Tabelle ausgibt.
 * *CommonColumn*: eine Spalte mit dem gleichen Namen in den beiden Tabellen.
-* *Kind*: gibt an, wie Zeilen aus den beiden Tabellen abgeglichen werden.
+* *Kind*: Gibt an, wie Zeilen aus den beiden Tabellen abgeglichen werden.
 
 **Rückgabe**
 
@@ -210,7 +233,7 @@ Eine let-Klausel bindet einen Namen an ein tabellarisches Ergebnis, einen Skalar
 
     let name = (parameterName : type [, ...]) { plain_query }; query
 
-* *Typ:* `bool`, `int`, `long`, `double`, `string`, `timespan`, `datetime`, `guid`, [`dynamic`](#dynamic-type)
+* *type:* `bool`, `int`, `long`, `double`, `string`, `timespan`, `datetime`, `guid`, [`dynamic`](#dynamic-type)
 * *plain\_query:* Eine Abfrage ohne vorangestellte let-Klausel.
 
 **Beispiele**
@@ -250,7 +273,7 @@ Gibt höchstens die angegebene Anzahl von Zeilen aus der Eingabetabelle zurück.
 
 `Take` ist eine einfache und effiziente Möglichkeit, ein Beispiel für die Ergebnisse anzuzeigen, wenn Sie interaktiv arbeiten. Denken Sie daran, dass es keine Garantie dafür gibt, dass bestimmte Zeilen erzeugt bzw. in einer bestimmten Reihenfolge erzeugt werden.
 
-Für die Anzahl von Zeilen, die an den Client zurückgegeben werden, besteht eine implizite Begrenzung, auch wenn Sie nicht `take` verwenden. Um diese Begrenzung aufzuheben, verwenden Sie die Client-Anforderungsoption `notruncation`.
+Für die Anzahl von Zeilen, die an den Client zurückgegeben werden, besteht eine implizite Begrenzung, auch wenn Sie nicht `take` verwenden. Um diese Begrenzung aufzuheben, verwenden Sie die Clientanforderungsoption `notruncation`.
 
 
 
@@ -260,7 +283,7 @@ Für die Anzahl von Zeilen, die an den Client zurückgegeben werden, besteht ein
 
 Erweitert eine Liste aus einer Zelle mit dynamischer Typisierung (JSON) erweitert, sodass jeder Eintrag eine separate Zeile enthält. Alle anderen Zellen in einer erweiterten Zeile sind dupliziert.
 
-(Siehe auch [`summarize makelist`](#summarize-operator), der die gegenteilige Funktion durchführt.)
+(Siehe auch [`summarize makelist`](#summarize-operator), wodurch die gegenteilige Funktion durchgeführt wird.)
 
 **Beispiel**
 
@@ -307,7 +330,7 @@ Die erweiterte Spalte ist immer dynamisch typisiert. Verwenden Sie eine Umwandlu
 Zwei Erweiterungsmodi für Eigenschaftenbehälter werden unterstützt:
 
 * `bagexpansion=bag`: Eigenschaftenbehälter werden zu Eigenschaftenbehältern mit einem einzelnen Eintrag erweitert. Dies ist die Standarderweiterung.
-* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit zwei Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z. B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen). 
+* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit zwei Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z. B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen). 
 
 **Beispiele**
 
@@ -345,7 +368,7 @@ Die Elemente in der `with`-Klausel werden wiederum mit der Quellzeichenfolge ver
 * *SimpleMatch:* Eine Zeichenfolge, die mit dem nächsten Teil des Texts übereinstimmt.
 * *Column:* Gibt die neue Spalte an, der eine Übereinstimmung zugewiesen wird.
 * *Type:* Gibt an, wie der nächste Teil der Quellzeichenfolge zu analysieren ist.
-* *RegEx:* Ein regulärer Ausdruck für den Abgleich des nächsten Teils der Zeichenfolge. 
+* *Regex:* Ein regulärer Ausdruck für den Abgleich des nächsten Teils der Zeichenfolge. 
 
 **Rückgabe**
 
@@ -354,17 +377,17 @@ Die Eingabetabelle, erweitert gemäß der Liste der Spalten.
 
 **Beispiele**
 
-Der `parse`-Operator bietet eine optimierte Methode zum Erweitern einer `extend`-Tabelle mit mehreren `extract`-Anwendungen auf den gleichen `string`-Ausdruck. Dies ist besonders hilfreich, wenn die Tabelle eine `string`-Spalte mit mehreren Werten enthält, die Sie in einzelne Spalten aufteilen möchten, z. B. eine Spalte, die von einer Entwickler-Ablaufverfolgungsanweisung („`printf`“/„`Console.WriteLine`“) erzeugt wurde.
+Der `parse`-Operator bietet eine optimierte Methode zum Erweitern einer Tabelle mit `extend` durch Verwendung mehrerer `extract`-Anwendungen in demselben `string`-Ausdruck. Dies ist besonders hilfreich, wenn die Tabelle eine `string`-Spalte mit mehreren Werten enthält, die Sie in einzelne Spalten aufteilen möchten, z. B. eine Spalte, die von einer Entwickler-Ablaufverfolgungsanweisung („`printf`“/„`Console.WriteLine`“) erzeugt wurde.
 
-Im folgenden Beispiel wird angenommen, dass die Spalte `EventNarrative` der Tabelle `StormEvents` Zeichenfolgen im Format `{0} at {1} crested at {2} feet around {3} on {4} {5}` enthält. Der folgende Vorgang erweitert die Tabelle durch zwei Spalten: `SwathSize` und `FellLocation`.
+Im folgenden Beispiel wird angenommen, dass die Spalte `EventNarrative` der Tabelle `StormEvents` Zeichenfolgen im Format `{0} at {1} crested at {2} feet around {3} on {4} {5}` enthält. Der folgende Vorgang erweitert die Tabelle mit zwei Spalten: `SwathSize` und `FellLocation`.
 
 
 |EventNarrative|
 |---|
-|Der Green River erreichte bei Brownsville am 12. Dezember um 09.30 Uhr EST den Höchststand von 5,7 m. Die Hochwassergrenze bei Brownsville beträgt 5,5 m. Bei diesem Pegel tritt eine geringfügige Überflutung auf. Der Fluss tritt über Schleusenwände und flutet einige der tiefer gelegenen Uferlandschaften und landwirtschaftlichen Nutzflächen.|
-|Der Fluss Rolling Fork erreichte bei Boston am 12. Dezember um 17.00 Uhr EST den Höchststand von 12 m. Die Hochwassergrenze bei Boston beträgt 10,7 m. Bei diesem Pegel tritt eine geringfügige Überflutung auf, bei der einige landwirtschaftliche Nutzflächen in der Flussniederung unter Wasser stehen.|
-|Der Green River erreichte bei Woodbury am 16. Dezember um 06.00 Uhr EST den Höchststand von 11,2 m. Die Hochwassergrenze bei Woodbury beträgt 10 m. Bei diesem Pegel tritt eine geringfügige Überflutung auf, bei der einige Tiefebenen um die Stadt unter Wasser stehen.|
-|Der Ohio erreichte bei Tell Stadt am 18. Dezember um 07.00 Uhr EST den Höchststand von 11,9 m. Die Hochwassergrenze bei Tell Stadt beträgt 11,6 m. Bei diesem Pegel beginnt der Fluss, die darüber gelegenen Uferlandschaften zu überfluten. Der Indiana Highway 66 wird zwischen Rome und Derby überflutet.|
+|Der Green River erreichte bei Brownsville am 12. Dezember um 09.30 Uhr EST den Höchststand von 5,7 m (The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12). Die Hochwassergrenze bei Brownsville beträgt 5,5 m (Flood stage at Brownsville is 18 feet). Bei diesem Pegel tritt eine geringfügige Überflutung auf (Minor flooding occurs at this level). Der Fluss tritt über Schleusenwände und flutet einige der tiefer gelegenen Uferlandschaften und landwirtschaftlichen Nutzflächen (The river overflows lock walls and some of the lower banks, along with some agricultural bottom land).|
+|Der Fluss Rolling Fork erreichte bei Boston am 12. Dezember um 17.00 Uhr EST den Höchststand von 12 m (The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12). Die Hochwassergrenze bei Boston beträgt 10,7 m (Flood stage at Boston is 35 feet). Bei diesem Pegel tritt eine geringfügige Überflutung auf, bei der einige landwirtschaftliche Nutzflächen in der Flussniederung unter Wasser stehen (Minor flooding occurs at this level, with some agricultural bottom land covered).|
+|Der Green River erreichte bei Woodbury am 16. Dezember um 06.00 Uhr EST den Höchststand von 11,2 m (The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16). Die Hochwassergrenze bei Woodbury beträgt 10 m (Flood stage at Woodbury is 33 feet). Bei diesem Pegel tritt eine geringfügige Überflutung auf, bei der einige Tiefebenen um die Stadt unter Wasser stehen (Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water).|
+|Der Ohio erreichte bei Tell Stadt am 18. Dezember um 07.00 Uhr EST den Höchststand von 11,9 m (The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18). Die Hochwassergrenze bei Tell Stadt beträgt 11,6 m (Flood stage at Tell City is 38 feet). Bei diesem Pegel beginnt der Fluss, die darüber gelegenen Uferlandschaften zu überfluten (At this level, the river begins to overflow its banks above the gage). Der Indiana Highway 66 wird zwischen Rome und Derby überflutet (Indiana Highway 66 floods between Rome and Derby).|
 
 ```AIQL
 
@@ -389,9 +412,9 @@ StormEvents
 
 |RiverName|Ort|Höhe|Time|Monat|Tag|
 |---|---|---|---|---|---|
-|Green River | Woodbury |11,2| 06\.00 Uhr EST | Dezember|16|
-|Fluss Rolling Fork | Boston |12| 17\.00 Uhr EST | Dezember|12|
-|Green River | Brownsville |5,7| 09\.30 Uhr EST | Dezember|12|
+|Green River | Woodbury |11,2| 06\.00 Uhr EST | Dezember|16|
+|Fluss Rolling Fork | Boston |12| 17\.00 Uhr EST | Dezember|12|
+|Green River | Brownsville |5,7| 09\.30 Uhr EST | Dezember|12|
 |Ohio River | Tell Stadt |11,9| 7\.00 Uhr EST | Dezember|18|
 
 Die Verwendung von regulären Ausdrücken für den Abgleich ist ebenfalls möglich. Dies führt zum gleichen Ergebnis, alle Ergebnisspalten sind jedoch vom Typ „Zeichenfolge“:
@@ -436,7 +459,7 @@ Eine Tabelle, deren Spalten als Argumente benannt sind, und die ebenso viele Zei
 
 **Beispiel**
 
-Das folgende Beispiel zeigt mehrere Arten von Manipulationen, die mithilfe des `project`-Operators durchgeführt werden können. Die Eingabetabelle `T` verfügt über drei Spalten vom Typ `int`: `A`, `B` und `C`.
+Das folgende Beispiel zeigt mehrere Arten von Manipulationen, die mithilfe des `project`-Operators durchgeführt werden können. Die Eingabetabelle `T` umfasst drei Spalten vom Typ `int`: `A`, `B` und `C`.
 
 ```AIQL
 T
@@ -479,7 +502,7 @@ Die Argumente müssen numerische Werte, Datums- oder TimeSpan-Werte sein. Sie k�
 
 **Rückgabe**
 
-Eine Tabelle mit einer einzelnen Spalte namens *ColumnName*, deren Werte *Start*, *Start* + *Step*, ... bis zu und einschließlich *Stop* sind.
+Eine Tabelle mit einer einzelnen Spalte namens *ColumnName*, deren Werte *Start*, *Start* + *Step*, ... bis einschließlich *Stop* lauten.
 
 **Beispiel**
 
@@ -514,7 +537,7 @@ Zeigt, wie mit dem `range`-Operator eine kleine Ad-hoc-Dimensionstabelle erstell
 
     exceptions | reduce by outerMessage
 
-Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Gruppe das `Pattern` aus, das die Gruppe wahrscheinlich am besten beschreibt, sowie die `Count` der Datensätze in dieser Gruppe.
+Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Gruppe das `Pattern` aus, das die Gruppe wahrscheinlich am besten beschreibt, sowie die Anzahl (`Count`) der Datensätze in dieser Gruppe.
 
 
 ![](./media/app-insights-analytics-queries/reduce.png)
@@ -532,7 +555,7 @@ Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Grupp
 
 Zwei Spalten, `Pattern` und `Count`. In vielen Fällen ist das Muster ein vollständiger Wert aus der Spalte. In einigen Fällen kann es allgemeine Begriffe identifizieren und die Variablenteile durch „*“ ersetzen.
 
-Das Ergebnis von `reduce by city` kann z. B. Folgendes enthalten:
+Das Ergebnis von `reduce by city` kann z. B. Folgendes enthalten:
 
 |Muster | Count |
 |---|---|
@@ -575,7 +598,7 @@ Traces
 | where ActivityId == "479671d99b7b"
 | sort by Timestamp asc
 ```
-Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten `ActivityId`, nach Zeitstempel sortiert.
+Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten `ActivityId`, sortiert nach ihrem Zeitstempel.
 
 ### summarize-Operator
 
@@ -590,7 +613,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 
 **Syntax**
@@ -603,10 +626,10 @@ Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0,
 **Argumente**
 
 * *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. 
-* *Aggregation:* Ein Aufruf einer Aggregationsfunktion wie z. B. `count()` oder `avg()` mit Spaltennamen als Argumente. Informationen hierzu finden Sie unter [Aggregationen](#aggregations).
+* *Aggregation*: Ein Aufruf einer Aggregationsfunktion wie z. B. `count()` oder `avg()` mit Spaltennamen als Argumente. Informationen hierzu finden Sie unter [Aggregationen](#aggregations).
 * *GroupExpression:* Ein Ausdruck für die Spalten, der einen Satz von unterschiedlichen Werten bereitstellt. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument. 
 
-Wenn Sie einen numerischen Ausdruck oder Zeitausdruck ohne `bin()` bereitstellen, wendet Analytics ihn automatisch mit einem Intervall von `1h` für Uhrzeiten bzw. von `1.0` für Zahlen an.
+Wenn Sie einen numerischen Ausdruck oder Zeitausdruck ohne `bin()` bereitstellen, wendet Analytics ihn automatisch mit einem Intervall von `1h` für Uhrzeiten oder von `1.0` für Zahlen an.
 
 Wenn Sie keine *GroupExpression* angeben, wird die gesamte Tabelle in einer einzelnen Ausgabezeile zusammengefasst.
 
@@ -751,7 +774,7 @@ Traces
     and ActivityId == SubActivityIt 
 ```
 
-Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
+Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
@@ -765,7 +788,7 @@ Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, 
 
 Wählt eine Zeile der Gruppe nach dem Zufallsprinzip aus, und gibt den Wert des angegebenen Ausdrucks zurück.
 
-Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
+Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
 
 **Beispiel**
 
@@ -821,7 +844,7 @@ Berechnet den Durchschnitt von *Expression* in der Gruppe.
 
 Gibt das minimale Schema zurück, das alle Werte von *DynamicExpression* zulässt.
 
-Der Parameterspaltentyp sollte `dynamic` sein, d. h. ein Array oder ein Eigenschaftenbehälter.
+Der Parameterspaltentyp sollte `dynamic` sein, d. h. ein Array oder ein Eigenschaftenbehälter.
 
 **Beispiel**
 
@@ -907,11 +930,11 @@ Sie entsprechen einer Teilmenge der TypeScript-Typanmerkungen, die als dynamisch
 
     count([ Predicate ])
 
-Gibt die Anzahl der Zeilen zurück, für die *Predicate* als `true` ausgewertet wird. Wenn kein *Predicate* (Prädikat) angegeben ist, wird die Gesamtzahl der Datensätze in der Gruppe zurückgegeben.
+Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet wird. Wenn *Predicate* nicht angegeben ist, wird die Gesamtzahl von Datensätzen in der Gruppe zurückgegeben.
 
 **Leistungstipp**: Verwenden Sie `summarize count(filter)` anstelle von `where filter | summarize count()`.
 
-> [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Sampling](app-insights-sampling.md) durchgeführt wird, ist die Anzahl der Datenpunkte geringer als die Anzahl der tatsächlichen Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die itemCount-Eigenschaft gibt die Anzahl der ursprünglichen Ereignisse wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
+> [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Sampling](app-insights-sampling.md) durchgeführt wird, wird die Anzahl von Datenpunkten geringer sein als die Anzahl von tatsächlichen Ereignissen. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
    
 
 ### dcount
@@ -940,15 +963,15 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 
 Gibt ein `dynamic`-Array (JSON) aller Werte von *Expr* in der Gruppe zurück.
 
-* *MaxListSize* ist eine optionale Integerbeschränkung für die maximale Anzahl von zurückgegebenen Elementen (Standardwert: *128*).
+* *MaxListSize* ist eine optionale Integer-Beschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
 
 ### makeset
 
     makeset(Expression [ , MaxSetSize ] )
 
-Gibt ein `dynamic`-Array (JSON) des Satzes von unterschiedlichen Werten zurück, die *Expr* in der Gruppe annimmt. (Tipp: Verwenden Sie zum Zählen der unterschiedlichen Werte [`dcount`](#dcount).)
+Gibt ein `dynamic`-Array (JSON) des Satzes von unterschiedlichen Werten zurück, die *Expr* in der Gruppe annimmt. (Tipp: Verwenden Sie [`dcount`](#dcount), um die unterschiedlichen Werte lediglich zu zählen.)
   
-*  *MaxSetSize* ist eine optionale Integerbeschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
+*  *MaxSetSize* ist eine optionale Integer-Beschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
 
 **Beispiel**
 
@@ -971,7 +994,7 @@ Berechnet das Maximum von *Expr*.
 
 Berechnet das Minimum von *Expr*.
 
-**Tipp**: Damit erhalten Sie ausschließlich die Mindest- oder Maximalwerte, z.B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z. B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
+**Tipp**: Damit erhalten Sie ausschließlich die Mindest- oder Maximalwerte, z. B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z. B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
 
 
 <a name="percentile"></a> <a name="percentiles"></a>
@@ -1006,7 +1029,7 @@ Berechnen Sie gleichzeitig mehrere Quantile für andere Anforderungsnamen:
 
 ![](./media/app-insights-analytics-aggregations/percentiles.png)
 
-Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
+Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
 
 
 Berechnen Sie mehrere Statistiken:
@@ -1024,8 +1047,8 @@ Das Quantilaggregat bietet einen ungefähren Wert mithilfe von [T-Digest](https:
 
 Einige wichtige Punkte:
 
-* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Quantils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Quantile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt. 
-* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Quantil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
+* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Quantils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Quantile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt. 
+* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Quantil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
 
 ### stdev
 
@@ -1127,7 +1150,7 @@ Eine Zeichenfolge, die den zugrunde liegenden Speichertyp des einzigen Arguments
 
 **Argumente**
 
-* *source*: Der Quellskalar, anhand dessen der Hash berechnet wird.
+* *source*: Der Quellskalar, mit dem der Hash berechnet wird.
 * *mod*: Der Modulowert, der auf das Hashergebnis angewendet werden soll.
 
 **Rückgabe**
@@ -1143,7 +1166,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 ### iff
 
-Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder den Wert der zweiten oder dritten Argumente zurück, abhängig davon, ob das Prädikat `true` oder `false` ist. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
+Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder jeweils den Wert des zweiten oder dritten Arguments zurück. Dies hängt davon ab, ob das Prädikat `true` oder `false` ist. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
 
 **Syntax**
 
@@ -1240,17 +1263,7 @@ Beachten Sie, dass es andere Möglichkeiten gibt, diesen Effekt zu erreichen:
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren |
-| * | Multiplizieren |
-| / | Dividieren |
-| % | Modulo |
-||
-|`<` |Kleiner
-|`<=`|Kleiner oder gleich
-|`>` |Größer
-|`>=`|Größer oder gleich
-|`<>`|Ungleich
-|`!=`|Ungleich
+| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || |`<` |Kleiner |`<=`|Kleiner oder gleich |`>` |Größer |`>=`|Größer oder gleich |`<>`|Ungleich |`!=`|Ungleich
 
 
 
@@ -1259,7 +1272,7 @@ Beachten Sie, dass es andere Möglichkeiten gibt, diesen Effekt zu erreichen:
 
 Rundet Werte auf eine ganze Zahl ab, die ein Vielfaches der angegebenen bin-Größe ist. Wird häufig in der [`summarize by`](#summarize-operator)-Abfrage verwendet. Wenn Sie über einen verstreuten Satz von Werten verfügen, werden sie zu einem kleineren Satz bestimmter Werte gruppiert.
 
-Alias `floor`
+Alias `floor`.
 
 **Syntax**
 
@@ -1294,14 +1307,14 @@ Der folgende Ausdruck berechnet ein Histogramm der Dauer mit einer Bucketgröße
 
 ### floor
 
-Ein Alias für [`bin()`](#bin)
+Ein Alias für [`bin()`](#bin).
 
 
 ### rand
 
 Ein Zufallszahlengenerator.
 
-* `rand()`: eine reelle Zahl zwischen 0,0 und 1,0
+* `rand()`: eine reelle Zahl zwischen 0,0 und 1,0
 * `rand(n)`: eine ganze Zahl zwischen 0 und n-1
 
 
@@ -1359,7 +1372,7 @@ Die Quadratwurzelfunktion.
 
 [ago](#ago) | [dayofweek](#dayofweek) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofmonth](#startofmonth) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan)
 
-### Datum und Uhrzeit – Literale
+### Datum und Uhrzeit – Literale
 
 |||
 ---|---
@@ -1369,19 +1382,19 @@ Die Quadratwurzelfunktion.
 `now(`-*timespan*`)`|`now()-`*timespan*
 `ago(`*timespan*`)`|`now()-`*timespan*
 **timespan**|
-`2d`|2 Tage
+`2d`|2 Tage
 `1.5h`|1,5 Stunden 
 `30m`|30 Minuten
-`10s`|10 Sekunden
-`0.1s`|0,1 Sekunde
-`100ms`| 100 Millisekunden
+`10s`|10 Sekunden
+`0.1s`|0,1 Sekunde
+`100ms`| 100 Millisekunden
 `10microsecond`|
-`1tick`|100 ns
+`1tick`|100 ns
 `time("15 seconds")`|
-`time("2")`| 2 Tage
+`time("2")`| 2 Tage
 `time("0.12:34:56.7")`|`0d+12h+34m+56.7s`
 
-### Datum und Uhrzeit – Ausdrücke
+### Datum und Uhrzeit – Ausdrücke
 
 Ausdruck |Ergebnis
 ---|---
@@ -1434,7 +1447,7 @@ Alle Zeilen mit einem Zeitstempel der letzten Stunde:
 
     dayofweek(datetime("2015-12-14")) == 1d  // Monday
 
-Die Anzahl von Tagen (als ganze Zahl) seit dem vorherigen Sonntag, als `timespan`.
+Die Anzahl von Tagen (als ganze Zahl) seit dem vorherigen Sonntag als `timespan`-Element.
 
 **Syntax**
 
@@ -1446,7 +1459,7 @@ Die Anzahl von Tagen (als ganze Zahl) seit dem vorherigen Sonntag, als `timespan
 
 **Rückgabe**
 
-`timespan` seit Mitternacht zu Beginn des vorhergehenden Sonntags, abgerundet auf die Anzahl von Tagen als ganze Zahl.
+`timespan` seit Mitternacht zu Beginn des vorangehenden Sonntags, abgerundet auf die Anzahl von Tagen als ganze Zahl.
 
 **Beispiele**
 
@@ -1519,7 +1532,7 @@ Der Beginn des Jahres, das das Datum enthält.
 
 ### todatetime
 
-Alias `datetime()`
+Alias `datetime()`.
 
      todatetime("2016-03-28")
      todatetime("03/28/2016")
@@ -1531,7 +1544,7 @@ Alias `datetime()`
 
 ### totimespan
 
-Alias `timespan()`
+Alias `timespan()`.
 
     totimespan("21d")
     totimespan("21h")
@@ -1549,7 +1562,7 @@ Die Regeln sind mit JavaScript identisch.
 
 Zeichenfolgen können entweder in einfachen oder doppelten Anführungszeichen eingeschlossen sein.
 
-Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z. B. `\t` (Tabstopp), `\n` (Zeilenvorschub) und Instanzen der einschließenden Anführungszeichen mit einem Escapezeichen zu versehen.
+Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z. B. `\t` (Tabstopp), `\n` (Zeilenvorschub) und Instanzen der einschließenden Anführungszeichen mit einem Escapezeichen zu versehen.
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`
@@ -1585,7 +1598,7 @@ Operator|Beschreibung|Groß-/Kleinschreibung|Beispiel für „True“
 `matches regex`|LS enthält eine Übereinstimmung für RS|Ja| `"Fabrikam" matches regex "b.*k"`
 
 
-Verwenden Sie `has` oder `in`, wenn Sie auf das Vorkommnis eines gesamten lexikalischen Begriffs hin testen, also eines Symbol oder eines alphanumerischen Worts, begrenzt durch nicht-alphanumerische Zeichen oder den Anfang oder das Ende des Felds. `has` wird schneller ausgeführt als `contains` oder `startswith`. Die erste dieser Abfragen wird schneller ausgeführt:
+Verwenden Sie `has` oder `in`, wenn Sie auf das Vorkommnis eines gesamten lexikalischen Begriffs hin testen, also eines Symbols oder eines alphanumerischen Worts, begrenzt durch nicht-alphanumerische Zeichen oder den Anfang oder das Ende des Felds. `has` wird schneller ausgeführt als `contains` oder `startswith`. Die erste dieser Abfragen wird schneller ausgeführt:
 
     EventLog | where continent has "North" | count;
 	EventLog | where continent contains "nor" | count
@@ -1633,7 +1646,7 @@ Angabe, wie oft die Suchzeichenfolge im Container abgeglichen werden kann. Einfa
 
     extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
 
-Rufen Sie eine Übereinstimmung für einen [regulären Ausdruck](#regular-expressions) aus einer Textzeichenfolge ab. Optional konvertiert es dann die extrahierte Teilzeichenfolge in den angegebenen Typ.
+Ruft eine Übereinstimmung für einen [regulären Ausdruck](#regular-expressions) aus einer Textzeichenfolge ab. Optional konvertiert es dann die extrahierte Teilzeichenfolge in den angegebenen Typ.
 
 **Syntax**
 
@@ -1644,7 +1657,7 @@ Rufen Sie eine Übereinstimmung für einen [regulären Ausdruck](#regular-expres
 * *regex:* Ein [regulärer Ausdruck](#regular-expressions).
 * *captureGroup:* Eine positive `int`-Konstante, die die zu extrahierende Erfassungsgruppe angibt. 0 steht für die vollständige Übereinstimmung, 1 für den mit der ersten „("Klammer")“ übereinstimmenden Wert im regulären Ausdruck, 2 oder höher für nachfolgende Klammern.
 * *text:* Ein zu suchender `string`.
-* *typeLiteral:* Ein optionaler Typliteral (z. B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert. 
+* *typeLiteral:* Ein optionales Typliteral (z. B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert. 
 
 **Rückgabe**
 
@@ -1654,7 +1667,7 @@ Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehl
 
 **Beispiele**
 
-Die Beispielzeichenfolge `Trace` wird auf eine Definition für `Duration` hin durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Datentyp `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
+Die Beispielzeichenfolge `Trace` wird auf eine Definition für `Duration` hin durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Datentyp `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
 
 ```AIQL
 ...
@@ -1723,7 +1736,7 @@ Ersetzen Sie alle regex-Übereinstimmungen mit einer anderen Zeichenfolge.
 
 **Rückgabe**
 
-*text*, nachdem alle Übereinstimmungen von *regex* durch Auswertungen von *rewrite* ersetzt wurden. Übereinstimmungen überlappen sich nicht.
+*text* nach dem Ersetzen aller Übereinstimmungen von *regex* durch Auswertungen von *rewrite*. Übereinstimmungen überlappen sich nicht.
 
 **Beispiel**
 
@@ -1785,7 +1798,7 @@ split("aabbcc", "bb")         // ["aa","cc"]
 
     strcat("hello", " ", "world")
 
-Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
+Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
 
 ### strlen
 
@@ -1856,7 +1869,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
-* Verwenden Sie jedoch `arraylength` und andere Analytics-Funktionen (nicht „.length“!).
+* Verwenden Sie aber `arraylength` und andere Analytics-Funktionen (nicht „.length“!).
 
 **Umwandlung:** In einigen Fällen ist es erforderlich, ein Element umzuwandeln, das Sie aus einem Objekt extrahieren, da der Typ variieren kann. `summarize...to` benötigt beispielsweise einen bestimmten Typ:
 
@@ -1928,8 +1941,8 @@ Verwenden Sie zum Erstellen eines dynamischen Literals `parsejson` (Alias `todyn
 
 * `parsejson('[43, 21, 65]')`: ein Array von Zahlen
 * `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
-* `parsejson('21')`: ein einzelner Wert vom dynamischen Typ mit einer Zahl
-* `parsejson('"21"')`: ein einzelner Wert vom dynamischen Typ mit einer Zeichenfolge
+* `parsejson('21')`: ein einzelner Wert vom Typ „dynamisch“ mit einer Zahl
+* `parsejson('"21"')`: ein einzelner Wert vom Typ „dynamisch“ mit einer Zeichenfolge
 
 Beachten Sie, dass bei JSON, im Gegensatz zu JavaScript, die Verwendung doppelter Anführungszeichen (`"`) um Zeichenfolgen unbedingt erforderlich ist. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
 
@@ -1943,12 +1956,12 @@ T
 ```
 
 
-### Operatoren und Funktionen auf dynamischen Typen
+## Dynamische Objektfunktionen
 
 |||
 |---|---|
-| *value* `in` *array*| „True“, wenn ein Element von *array* mit dem Wert *value*<br/>`where City in ('London', 'Paris', 'Rome')` vorhanden ist.
-| *value* `!in` *array*| „True“, wenn kein Element von *array* mit dem Wert *value* vorhanden ist.
+| *Wert* `in` *Array*| „True“, wenn ein Element von *Array* mit dem Wert *Wert* vorhanden ist.<br/>`where City in ('London', 'Paris', 'Rome')`
+| *Wert* `!in` *Array*| „True“, wenn kein Element von *Array* mit dem Wert *Wert* vorhanden ist.
 |[`arraylength(`array`)`](#arraylength)| Null, wenn es sich nicht um ein Array handelt.
 |[`extractjson(`path,object`)`](#extractjson)|Verwendet den Pfad zum Navigieren in das Objekt.
 |[`parsejson(`source`)`](#parsejson)| Wandelt eine JSON-Zeichenfolge in ein dynamisches Objekt um.
@@ -1985,7 +1998,7 @@ Die Anzahl der Elemente in einem dynamischen Array.
 
 **Rückgabe**
 
-Die Anzahl der Elemente in *array* bzw. `null`, wenn *Array* kein Array ist.
+Die Anzahl von Elementen in *array* oder `null`, wenn *Array* kein Array ist.
 
 **Beispiele**
 
@@ -2055,7 +2068,7 @@ Die [Klammer]-Notation und die Punktnotation sind gleichwertig:
 
 ### parsejson
 
-Interpretiert einen `string` als [JSON-Wert](http://json.org/) und gibt den Wert als `dynamic` zurück. Dies ist der Nutzung von `extractjson()` vorzuziehen, wenn Sie mehr als ein Element eines zusammengesetzten JSON-Objekts extrahieren müssen.
+Interpretiert `string` als [JSON-Wert](http://json.org/) und gibt den Wert als `dynamic` zurück. Dies ist der Nutzung von `extractjson()` vorzuziehen, wenn Sie mehrere Elemente eines zusammengesetzten JSON-Objekts extrahieren müssen.
 
 **Syntax**
 
@@ -2088,7 +2101,7 @@ T
 
 
 
-#### range
+### range
 
 Die `range()`-Funktion (nicht zu verwechseln mit dem `range`-Operator) erzeugt ein dynamisches Array mit einer Reihe gleichmäßig verteilter Werte.
 
@@ -2099,7 +2112,7 @@ Die `range()`-Funktion (nicht zu verwechseln mit dem `range`-Operator) erzeugt e
 **Argumente**
 
 * *start:* Der Wert des ersten Elements im resultierenden Array. 
-* *stop:* Der Wert des letzten Elements im resultierenden Array oder der kleinste Wert, der größer ist als das letzte Element in dem resultierenden Array und in einem Vielfachen (ganze Zahl) von *step* ab *start*.
+* *stop:* Der Wert des letzten Elements im resultierenden Array oder der kleinste Wert, der größer ist als das letzte Element im resultierenden Array und in einem Vielfachen (ganze Zahl) von *step* von *start*.
 * *step:* Die Differenz zwischen zwei aufeinanderfolgenden Elementen des Arrays.
 
 **Beispiele**
@@ -2148,5 +2161,4 @@ Beachten Sie, dass „[0]“ auf das Vorhandensein eines Arrays hinweist, aber n
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
-
+<!---HONumber=AcomDC_0420_2016-->

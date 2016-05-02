@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/12/2016"
+   ms.date="04/14/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # Überwachen Ihres Workloads mit dynamischen Verwaltungssichten
@@ -142,20 +142,6 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 ```
 
-
-## Untersuchen der Datenschiefe
-
-Suchen Sie mithilfe von [DBCC PDW\_SHOWSPACEUSED][] den von einer Tabelle verwendeten Speicherplatz.
-
-```sql
--- Find data skew for a distributed table
-DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
-```
-
-Das Ergebnis dieser Abfrage zeigt Ihnen die Anzahl der Tabellenzeilen, die in jeder der 60 Verteilungen Ihrer Datenbank gespeichert sind. Für eine optimale Leistung sollten die Zeilen in der verteilten Tabelle gleichmäßig auf alle Verteilungen verteilt sein.
-
-Weitere Informationen finden Sie unter [Manage data skew for distributed tables][] (Verwalten von Datenschiefe für verteilte Tabellen) oder [Tabellenentwurf][].
-
 ## Nächste Schritte
 Weitere Informationen zu Transact-SQL- und dynamischen Verwaltungssichten (DMVs) finden Sie unter [Referenzübersicht][]. Weitere Tipps zur Verwaltung von SQL Data Warehouse finden Sie unter [Verwaltungstools für SQL Data Warehouse][].
 
@@ -163,7 +149,7 @@ Weitere Informationen zu Transact-SQL- und dynamischen Verwaltungssichten (DMVs)
 
 <!--Article references-->
 [Verwaltungstools für SQL Data Warehouse]: sql-data-warehouse-overview-manage.md
-[Tabellenentwurf]: sql-data-warehouse-develop-table-design.md
+[table design]: sql-data-warehouse-develop-table-design.md
 [Referenzübersicht]: sql-data-warehouse-overview-reference.md
 [manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
 
@@ -174,6 +160,6 @@ Weitere Informationen zu Transact-SQL- und dynamischen Verwaltungssichten (DMVs)
 [sys.dm\_pdw\_request\_steps]: http://msdn.microsoft.com/library/mt203913.aspx
 [sys.dm\_pdw\_sql\_requests]: http://msdn.microsoft.com/library/mt203889.aspx
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW\_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
+[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

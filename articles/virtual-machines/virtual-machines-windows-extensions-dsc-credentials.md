@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="04/18/2016"
    ms.author="zachal"/>
 
 # Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungs-Handler #
@@ -89,4 +89,4 @@ Weitere Informationen zu PowerShell DSC finden Sie unter [Windows PowerShell Des
 
 Durchsuchen Sie die Webseite [PowerShell Gallery](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0), um herauszufinden, welche zusätzlichen Funktionen Sie mit PowerShell DSC verwalten können.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -19,7 +19,7 @@
 
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen.
 
-Azure Virtual Machines und Azure Cloud Services sind zwei von mehreren unterschiedlichen Typen von Compute-Ressourcen, die über Azure zur Verfügung stehen. Erläuterungen hierzu finden Sie unter [Compute Hosting Options Provided by Azure](fundamentals-application-models.md) (Compute-Hostingoptionen in Azure).
+Cloud Services ist eine der verschiedenen Arten von Computeressourcen, die von Azure angeboten werden. Klicken Sie [hier](cloud-services-choose-me.md), um weitere Informationen zu Cloud Services zu erhalten.
 
 > [AZURE.NOTE]Zugehörige Einschränkungen von Azure finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
@@ -41,7 +41,7 @@ Die folgenden Überlegungen können Ihnen bei der Entscheidung über die Größe
 
 * Die VM-Größen A8/A10 und A9/A11 haben die gleiche Kapazität. Die VM-Instanzen A8 und A9 umfassen einen zusätzlichen Netzwerkadapter, der mit einem RDMA (Remote Direct Memory Access)-Netzwerk für die schnelle Kommunikation zwischen virtuellen Computern verbunden ist. Die A8- und A9-Instanzen wurden für High Performance Computing-Anwendungen entwickelt, die während der Ausführung eine konstante Kommunikation mit niedriger Latenz zwischen den Knoten erfordern, z. B. MPI (Message Passing Interface)-Anwendungen. Die VM-Instanzen A10 und A11 enthalten keinen zusätzlichen Netzwerkadapter. Die A10- und A11-Instanzen sind für High Performance Computing-Anwendungen vorgesehen, die keine konstante Kommunikation mit niedriger Latenz zwischen den Knoten erfordern, auch bekannt als parametrische oder hochgradig parallele Anwendungen.
 
-    >[AZURE.NOTE] Wenn Sie die Größen A8 bis A11 in Betracht ziehen, lesen Sie bitte [diese](..\virtual-machines\virtual-machines-windows-a8-a9-a10-a11-specs.md) Informationen.
+    >[AZURE.NOTE] Wenn Sie die Größen A8 bis A11 in Betracht ziehen, lesen Sie bitte [diese](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) Informationen.
 
 >[AZURE.NOTE] Alle Computergrößen stellen einen **Anwendungsdatenträger** zur Verfügung, der alle Dateien aus Ihrem Clouddienstpaket speichert. Die ungefähre Größe des Datenträgers beträgt 1,5 GB.
 
@@ -156,4 +156,4 @@ Dies ist ein Beispiel, in der die Rollengröße [Standard\_D2](#general-purpose-
 </WebRole>
 ```
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

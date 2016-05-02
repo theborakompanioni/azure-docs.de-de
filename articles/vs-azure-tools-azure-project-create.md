@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/22/2016"
+   ms.date="04/19/2016"
    ms.author="tarcher" />
 
 # Erstellen eines Azure-Projekts mit Visual Studio
@@ -62,4 +62,4 @@ Eine Azure-Clouddienstlösung enthält die folgenden Projekttypen:
 
 1. Um eine Rolle umzubenennen, die dem Projekt hinzugefügt wurde, zeigen Sie im Dialogfeld **Neues Azure-Projekt** mit dem Mauszeiger auf die Rolle und klicken rechts neben der Rolle auf das Symbol **Umbenennen**. Sie können auch eine Rolle innerhalb der Projektmappe umbenennen, nachdem sie hinzugefügt wurde.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

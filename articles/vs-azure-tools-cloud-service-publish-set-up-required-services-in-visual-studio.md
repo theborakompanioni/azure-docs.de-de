@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/05/2016"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio
@@ -104,7 +104,7 @@ Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendien
 
 Nachdem Sie Ihr Speicherkonto erstellt haben, sehen Sie die URLs, über die Sie auf Ressourcen in jedem der Azure-Speicherdienste zugreifen können, und auch den primären und sekundären Zugriffsschlüssel für Ihr Konto. Sie verwenden diese Schlüssel, um an die Speicherdienste gerichtete Anforderungen zu authentifizieren.
 
->[AZURE.NOTE]Der sekundäre Zugriffsschlüssel bietet denselben Zugriff auf Ihr Speicherkonto wie der primäre Zugriffschlüssel und wird als Reserveschlüssel generiert, sollte die Sicherheit Ihres primären Zugriffsschlüssels gefährdet sein. Darüber hinaus wird empfohlen, dass Sie Ihre Zugriffsschlüssel regelmäßig neu generieren. Sie können die Einstellung einer Verbindungszeichenfolge so ändern, dass der sekundäre Schlüssel verwendet werden soll, während Sie den primären Schlüssel neu generieren. Anschließend können Sie die Einstellung so ändern, dass der neu erstellte primäre Schlüssel genutzt werden soll, während Sie den sekundären Schlüssel neu generieren.
+>[AZURE.NOTE] Der sekundäre Zugriffsschlüssel bietet denselben Zugriff auf Ihr Speicherkonto wie der primäre Zugriffschlüssel und wird als Reserveschlüssel generiert, sollte die Sicherheit Ihres primären Zugriffsschlüssels gefährdet sein. Darüber hinaus wird empfohlen, dass Sie Ihre Zugriffsschlüssel regelmäßig neu generieren. Sie können die Einstellung einer Verbindungszeichenfolge so ändern, dass der sekundäre Schlüssel verwendet werden soll, während Sie den primären Schlüssel neu generieren. Anschließend können Sie die Einstellung so ändern, dass der neu erstellte primäre Schlüssel genutzt werden soll, während Sie den sekundären Schlüssel neu generieren.
 
 ## Konfigurieren Ihrer App für das Verwenden der vom Speicherkonto bereitgestellten Dienste
 
@@ -130,7 +130,7 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
 
 1. Geben Sie in das Feld **Kontoname** den Namen Ihres Azure-Speicherkontos ein.
 
-    >[AZURE.NOTE]Melden Sie sich am Verwaltungsportal an, und klicken Sie dann auf die Schaltfläche **Speicher**. Im Portal wird eine Liste der Speicherkonten angezeigt. Wenn Sie ein Konto auswählen, wird eine entsprechende Seite geöffnet. Sie können den Namen des Speicherkontos von dieser Seite kopieren. Wenn Sie eine frühere Version des Verwaltungsportals verwenden, wird der Name Ihres Speicherkontos in der Ansicht **Speicherkonten** des Verwaltungsportals angezeigt. Um diesen Namen zu kopieren, markieren Sie ihn im Fenster **Eigenschaften** dieser Ansicht und drücken dann STRG+C. Um den Namen in Visual Studio einzufügen, wählen Sie das Textfeld **Kontoname** aus und drücken dann STRG+V.
+    >[AZURE.NOTE] Melden Sie sich am Verwaltungsportal an, und klicken Sie dann auf die Schaltfläche **Speicher**. Im Portal wird eine Liste der Speicherkonten angezeigt. Wenn Sie ein Konto auswählen, wird eine entsprechende Seite geöffnet. Sie können den Namen des Speicherkontos von dieser Seite kopieren. Wenn Sie eine frühere Version des Verwaltungsportals verwenden, wird der Name Ihres Speicherkontos in der Ansicht **Speicherkonten** des Verwaltungsportals angezeigt. Um diesen Namen zu kopieren, markieren Sie ihn im Fenster **Eigenschaften** dieser Ansicht und drücken dann STRG+C. Um den Namen in Visual Studio einzufügen, wählen Sie das Textfeld **Kontoname** aus und drücken dann STRG+V.
 
 1. Geben Sie in das Feld **Kontoschlüssel** den Primärschlüssel ein, oder kopieren Sie ihn aus dem [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885), und fügen Sie ihn dann ein. So kopieren Sie diesen Schlüssel aus dem Verwaltungsportal
 
@@ -145,7 +145,7 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
         - **HTTPS verwenden** (für eine sichere Verbindung). Beispiel: `https://<accountname>.blob.core.windows.net`.
         - **Benutzerdefinierte Endpunkte angeben** (für jeden der drei Dienste). Sie können dann diese Endpunkte für den jeweiligen Dienst in das Feld eingeben.
 
-        >[AZURE.NOTE]Wenn Sie benutzerdefinierte Endpunkte erstellen, können Sie eine komplexere Verbindungszeichenfolge erstellen. Wenn Sie dieses Zeichenfolgenformat verwenden, können Sie Speicherdienstendpunkte angeben, die einen benutzerdefinierten Domänennamen enthalten, den Sie für Ihr Speicherkonto mit dem Blobdienst registriert haben. Außerdem können Sie über eine SAS (Shared Access Signature) Zugriff auf ausschließlich Blobressourcen in einem einzelnen Container gewähren. Weitere Informationen zum Erstellen benutzerdefinierter Endpunkte finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+        >[AZURE.NOTE] Wenn Sie benutzerdefinierte Endpunkte erstellen, können Sie eine komplexere Verbindungszeichenfolge erstellen. Wenn Sie dieses Zeichenfolgenformat verwenden, können Sie Speicherdienstendpunkte angeben, die einen benutzerdefinierten Domänennamen enthalten, den Sie für Ihr Speicherkonto mit dem Blobdienst registriert haben. Außerdem können Sie über eine SAS (Shared Access Signature) Zugriff auf ausschließlich Blobressourcen in einem einzelnen Container gewähren. Weitere Informationen zum Erstellen benutzerdefinierter Endpunkte finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
 
 1. Um diese Änderungen an der Verbindungszeichenfolge zu speichern, klicken Sie auf die Speichern **OK** und dann auf der Symbolleiste auf die Schaltfläche **Speichern**. Nachdem Sie diese Änderungen gespeichert haben, erhalten Sie den Wert dieser Verbindungszeichenfolge in Ihrem Code mithilfe von [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx). Wenn Sie Ihre Anwendung in Azure veröffentlichen, wählen Sie die Dienstkonfiguration, die das Azure-Speicherkonto für die Verbindungszeichenfolge enthält. Nachdem die Anwendung veröffentlicht wurde, stellen Sie sicher, dass die Anwendung mit den Azure-Speicherdiensten wie erwartet funktioniert.
 
@@ -153,4 +153,4 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
 
 Weitere Informationen zum Veröffentlichen von Anwendungen in Azure aus Visual Studio finden Sie unter [Veröffentlichen eines Clouddiensts mit den Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0420_2016-->

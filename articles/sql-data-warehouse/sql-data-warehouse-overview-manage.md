@@ -3,7 +3,7 @@
    description="Einführung in Verwaltungstools für SQL Data Warehouse"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="HappyNicolle"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/03/2016"
-   ms.author="mausher;nicw;barbkess;jrj;sonyama;"/>
+   ms.author="barbkess;sonyama;"/>
 
 # Verwaltungstools für SQL Data Warehouse
 In diesem Thema werden Tools und Optionen für die Verwaltung von SQL Data Warehouse untersucht und verglichen, damit Sie das richtige Tool für Ihre Anforderungen auswählen können. Die Auswahl des richtigen Tools hängt von der Anzahl der Datenbanken, den Aufgaben und der Ausführungshäufigkeit einer Aufgabe ab.
@@ -48,4 +48,4 @@ Um mit der Verwendung dieser Tools zu beginnen, lesen Sie das Thema [Verbindunge
 <!--Other web references-->
 [klassische Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

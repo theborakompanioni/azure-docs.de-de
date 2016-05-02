@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 
@@ -80,7 +80,7 @@ Wenn Sie Ihren Clouddienst aus Visual Studio veröffentlichen, können Sie ein P
 
 Weitere Informationen zur Leistungsprofilerstellung in Visual Studio finden Sie unter [Einführung in die Leistungsprofilerstellung](https://msdn.microsoft.com/library/azure/ms182372.aspx) und [Analysieren der Anwendungsleistung durch Verwenden von Profilerstellungstools](https://msdn.microsoft.com/library/azure/z9z62c29.aspx).
 
->[AZURE.NOTE]Sie können entweder IntelliTrace oder die Profilerstellung aktivieren, wenn Sie den Clouddienst veröffentlichen. Sie können nicht beide Verfahren aktivieren.
+>[AZURE.NOTE] Sie können entweder IntelliTrace oder die Profilerstellung aktivieren, wenn Sie den Clouddienst veröffentlichen. Sie können nicht beide Verfahren aktivieren.
 
 ###Erfassungsmethoden des Profilers
 
@@ -102,7 +102,7 @@ Die folgende Abbildung zeigt, wie Sie die Profilerstellungseinstellungen im Dial
 
 ![Konfigurieren von Profilerstellungseinstellungen](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
->[AZURE.NOTE]Um das Kontrollkästchen **Profilerstellung aktivieren** zu aktivieren, muss der Profiler auf dem lokalen Computer installiert sein, mit dem Sie den Clouddienst veröffentlichen. Der Profiler wird standardmäßig installiert, wenn Sie Visual Studio Ultimate oder Visual Studio Premium installieren.
+>[AZURE.NOTE] Um das Kontrollkästchen **Profilerstellung aktivieren** zu aktivieren, muss der Profiler auf dem lokalen Computer installiert sein, mit dem Sie den Clouddienst veröffentlichen. Der Profiler wird standardmäßig installiert, wenn Sie Visual Studio Ultimate oder Visual Studio Premium installieren.
 
 ### So konfigurieren Sie Profilerstellungseinstellungen
 
@@ -146,4 +146,4 @@ Für jede Instanz einer Rolle in Ihrem Clouddienst wird eine Profilerstellungssi
 
 [Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

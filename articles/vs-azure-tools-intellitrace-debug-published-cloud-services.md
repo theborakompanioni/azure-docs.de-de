@@ -12,10 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
-
-
 
 # Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace und Visual Studio
 
@@ -23,9 +21,9 @@
 
 Mit IntelliTrace können Sie umfangreiche Debuginformationen für eine Rolleninstanz protokollieren, wenn sie in Azure ausgeführt wird. Wenn Sie die Ursache eines Problems finden möchten, können Sie mithilfe der IntelliTrace-Protokolle den Code aus Visual Studio schrittweise so durchlaufen, als ob er in Azure ausgeführt würde. Tatsächlich zeichnet IntelliTrace während der Ausführung der Azure-Anwendung als Clouddienst in Azure wichtige Codeausführungs- und Umgebungsdaten auf und ermöglicht die Wiedergabe der aufgezeichneten Daten von Visual Studio aus. Alternativ dazu können Sie das Remotedebugging verwenden, das direkt an einen in Azure ausgeführten Clouddienst angefügt wird. Siehe [Debuggen von Clouddiensten](http://go.microsoft.com/fwlink/p/?LinkId=623041).
 
->[AZURE.IMPORTANT]IntelliTrace ist nur für Debugszenarien bestimmt und sollte nicht für eine Produktionsbereitstellung verwendet werden.
+>[AZURE.IMPORTANT] IntelliTrace ist nur für Debugszenarien bestimmt und sollte nicht für eine Produktionsbereitstellung verwendet werden.
 
->[AZURE.NOTE]Sie können IntelliTrace verwenden, wenn Visual Studio Enterprise installiert ist und die Azure-Anwendung .NET Framework 4 oder höher als Zielversion verwendet. IntelliTrace sammelt Informationen für Ihre Azure-Rollen. Die virtuellen Computer für diese Rollen führen immer 64-Bit-Betriebssysteme aus.
+>[AZURE.NOTE] Sie können IntelliTrace verwenden, wenn Visual Studio Enterprise installiert ist und die Azure-Anwendung .NET Framework 4 oder höher als Zielversion verwendet. IntelliTrace sammelt Informationen für Ihre Azure-Rollen. Die virtuellen Computer für diese Rollen führen immer 64-Bit-Betriebssysteme aus.
 
 ## So konfigurieren Sie eine Azure-Anwendung für IntelliTrace
 
@@ -39,7 +37,7 @@ Wenn Sie IntelliTrace für eine Azure-Anwendung aktivieren möchten, müssen Sie
 
 1. Aktivieren Sie zum Erfassen von IntelliTrace-Protokollen für Ihre Anwendung bei der Veröffentlichung in der Cloud das Kontrollkästchen **IntelliTrace aktivieren**.
 
-    >[AZURE.NOTE]Sie können entweder IntelliTrace oder Profilerstellung aktivieren, wenn Sie Ihre Azure-Anwendung veröffentlichen. Sie können nicht beide Verfahren aktivieren.
+    >[AZURE.NOTE] Sie können entweder IntelliTrace oder Profilerstellung aktivieren, wenn Sie Ihre Azure-Anwendung veröffentlichen. Sie können nicht beide Verfahren aktivieren.
 
 1. Wenn Sie die IntelliTrace-Basiskonfiguration anpassen möchten, klicken Sie auf den Hyperlink **Einstellungen**.
 
@@ -63,10 +61,10 @@ Wenn die Protokolle heruntergeladen werden, zeigt Visual Studio den Status des V
 
 Sie können weiterhin in Visual Studio arbeiten, während die IntelliTrace-Protokolle heruntergeladen werden. Wenn das Protokoll vollständig heruntergeladen wurde, wird es automatisch in Visual Studio geöffnet.
 
->[AZURE.NOTE]Die IntelliTrace-Protokolle enthalten möglicherweise vom Framework generierte und anschließend verarbeitete Ausnahmen. Der interne Frameworkcode generiert diese Ausnahmen ganz normal im Rahmen des Starts einer Rolle, sodass sie gefahrlos ignoriert werden können.
+>[AZURE.NOTE] Die IntelliTrace-Protokolle enthalten möglicherweise vom Framework generierte und anschließend verarbeitete Ausnahmen. Der interne Frameworkcode generiert diese Ausnahmen ganz normal im Rahmen des Starts einer Rolle, sodass sie gefahrlos ignoriert werden können.
 
 ## Siehe auch
 
 [Debuggen von Cloud-Diensten.](https://msdn.microsoft.com/library/ee405479.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

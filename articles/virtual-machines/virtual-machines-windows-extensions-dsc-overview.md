@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="04/18/2016"
    ms.author="zachal"/>
 
 # Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands #
@@ -144,4 +144,4 @@ Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, finden Sie, in
 
 Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Sicheres Verwalten von Anmeldeinformationen mit dem DSC-Erweiterungshandler](virtual-machines-windows-extensions-dsc-credentials.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

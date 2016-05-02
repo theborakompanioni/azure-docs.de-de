@@ -44,7 +44,7 @@ Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres HDInsight-Clusters.
 
 ##Azure-Befehlszeilenschnittstelle
 
-> [AZURE.NOTE] Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert und konfiguriert haben, folgen Sie den Anweisungen im Artikel [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 Verwenden Sie an einer Eingabeaufforderung den folgenden Befehl zum Löschen des Clusters:
 
@@ -52,4 +52,4 @@ Verwenden Sie an einer Eingabeaufforderung den folgenden Befehl zum Löschen des
     
 Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres HDInsight-Clusters.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

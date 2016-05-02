@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/13/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory
@@ -327,4 +327,34 @@ Beim Verschieben von Daten aus ODBC-Datenspeichern werden die ODBC-Datentypen de
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+## GE Historian-Speicher
+Sie können einen über ODBC verknüpften Dienst erstellen, um einen [GE Historian](http://www.geautomation.com/products/proficy-historian)-Datenspeicher (früher GE Proficy Historian) mit einer Azure Data Factory zu verknüpfen, wie in folgendem Beispiel gezeigt:
+
+	{
+	    "name": "HistorianLinkedService",
+	    "properties":
+	    {
+	        "type": "OnPremisesOdbc",
+	        "typeProperties":
+	        {
+			    "connectionString": "DSN=<name of the GE Historian store>",
+			    "gatewayName": "<gateway name>",
+			    "authenticationType": "Basic",
+			    "userName": "<user name>",
+			    "password": "<password>"
+	        }
+	    }
+	}
+
+Sie müssen das Datenverwaltungsgateway auf einem lokalen Computer installieren und im Portal registrieren. Das auf dem lokalen Computer installierte Gateway verwendet den ODBC-Treiber für GE Historian, um eine Verbindung mit dem GE Historian-Datenspeicher herzustellen. Installieren Sie also den Treiber, falls dieser noch nicht auf dem Gatewaycomputer installiert ist. Weitere Informationen finden Sie im Abschnitt [Herstellen der Verbindung](#enabling-connectivity).
+
+Bevor Sie den GE Historian-Speicher in einer Data Factory-Lösung verwenden können, überprüfen Sie anhand der Anweisungen im nächsten Abschnitt, ob das Gateway eine Verbindung mit dem Datenspeicher herstellen kann.
+
+Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Verwendung von ODBC-Datenspeichern als Quelldatenspeicher in einem Kopiervorgang zu erhalten.
+
+[AZURE.INCLUDE [data-factory-troubleshoot-connectivity](../../includes/data-factory-troubleshoot-connectivity.md)]
+
+## Leistung und Optimierung  
+Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+<!---HONumber=AcomDC_0420_2016-->

@@ -3,7 +3,7 @@
 	description="Setzen Sie das Administratorkennwort oder die Remotedesktopdienste auf einem mit dem Ressourcen-Manager-Bereitstellungsmodell erstellten virtuellen Windows-Computer zurück."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
-	ms.author="dkshir"/>
+	ms.date="04/12/2016"
+	ms.author="iainfou"/>
 
 # Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM
 
@@ -27,7 +27,7 @@ Wenn Sie ein Kennwort vergessen haben oder ein Problem mit der Konfiguration des
 Abhängig vom Bereitstellungsmodell Ihres virtuellen Computers können Sie entweder das Azure-Portal oder die VMAccess-Erweiterung in Azure PowerShell verwenden. Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das neueste PowerShell-Modul auf Ihrem Arbeitscomputer installiert ist, und Sie bei Ihrem Azure-Abonnement angemeldet sind. Ausführliche Schrittbeschreibungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 
-> [AZURE.TIP] Sie können die von Ihnen installierte PowerShell-Version mithilfe des `Get-Module azure | format-table version`-Befehls prüfen.
+> [AZURE.TIP] Sie können die von Ihnen installierte PowerShell-Version mithilfe von `Import-Module Azure; Get-Module Azure | Format-Table Version` prüfen.
 
 
 ## Virtuelle Windows-Computer im klassischen Bereitstellungsmodell
@@ -140,4 +140,4 @@ Wenn Sie weiterhin keinen Remotezugriff auf den virtuellen Computer ausführen k
 
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

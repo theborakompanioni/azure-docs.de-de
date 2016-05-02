@@ -44,32 +44,32 @@ Die Kopieraktivität kopiert die Daten aus einem **Quelldatenspeicher** in einen
 
 | Quellen| Senken |
 |:------- | :---- |
-| <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure Table](data-factory-azure-table-connector.md)</li><li>[Azure SQL-Datenbank](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (siehe Hinweis unten)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake-Speicher](data-factory-azure-datalake-connector.md)</li><li>[SQL Server – lokal/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[Dateisystem – lokal/Azure IaaS](data-factory-onprem-file-system-connector.md)</li><li>[Oracle-Datenbank – lokal/Azure IaaS](data-factory-onprem-oracle-connector.md)</li><li>[MySQL-Datenbank – lokal/Azure IaaS ](data-factory-onprem-mysql-connector.md)</li><li>[DB2-Datenbank – lokal/Azure IaaS](data-factory-onprem-db2-connector.md)</li><li>[Teradata-Datenbank – lokal/Azure IaaS ](data-factory-onprem-teradata-connector.md)</li><li>[Sybase-Datenbank – lokal/Azure IaaS](data-factory-onprem-sybase-connector.md)</li><li>[PostgreSQL-Datenbank – lokal/Azure IaaS](data-factory-onprem-postgresql-connector.md)</li><li>[ODBC-Datenquellen – lokal/Azure IaaS](data-factory-odbc-connector.md)</li><li>[Hadoop Distributed File System (HDFS) – lokal/Azure IaaS](data-factory-hdfs-connector.md)</li><li>[OData-Quellen](data-factory-odata-connector.md)</li><li>[Webtabelle](data-factory-web-table-connector.md)</li></ul> | <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure Table](data-factory-azure-table-connector.md)</li><li>[Azure SQL-Datenbank](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (siehe Hinweis unten)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake-Speicher](data-factory-azure-datalake-connector.md)</li><li>[SQL Server – lokal/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[Dateisystem – lokal/Azure IaaS](data-factory-onprem-file-system-connector.md)</li></ul> |
+| <ul><li>[Azure-Blob](data-factory-azure-blob-connector.md)</li><li>[Azure-Tabelle](data-factory-azure-table-connector.md)</li><li>[Azure SQL-Datenbank](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (siehe Hinweis unten)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake-Speicher](data-factory-azure-datalake-connector.md)</li><li>[SQL Server lokal/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[Dateisystem lokal/Azure IaaS](data-factory-onprem-file-system-connector.md)</li><li>[Oracle-Datenbank lokal/Azure IaaS](data-factory-onprem-oracle-connector.md)</li><li>[MySQL-Datenbank lokal/Azure IaaS ](data-factory-onprem-mysql-connector.md)</li><li>[DB2-Datenbank lokal/Azure IaaS](data-factory-onprem-db2-connector.md)</li><li>[Teradata-Datenbank lokal/Azure IaaS ](data-factory-onprem-teradata-connector.md)</li><li>[Sybase-Datenbank lokal/Azure IaaS](data-factory-onprem-sybase-connector.md)</li><li>[PostgreSQL-Datenbank lokal/Azure IaaS](data-factory-onprem-postgresql-connector.md)</li><li>[ODBC-Datenquellen lokal/Azure IaaS](data-factory-odbc-connector.md)</li><li>[Hadoop Distributed File System (HDFS) lokal/Azure IaaS](data-factory-hdfs-connector.md)</li><li>[OData-Quellen](data-factory-odata-connector.md)</li><li>[Webtabelle](data-factory-web-table-connector.md)</li><li>[GE Historian lokal/Azure IaaS](data-factory-odbc-connector.md#ge-historian-store)</li></ul> | <ul><li>[Azure-Blob](data-factory-azure-blob-connector.md)</li><li>[Azure-Tabelle](data-factory-azure-table-connector.md)</li><li>[Azure SQL-Datenbank](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (siehe Hinweis unten)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake-Speicher](data-factory-azure-datalake-connector.md)</li><li>[SQL Server lokal/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[Dateisystem lokal/Azure IaaS](data-factory-onprem-file-system-connector.md)</li></ul> |
 
 
 > [AZURE.NOTE] Daten können nur zwischen Azure DocumentDB und anderen Azure-Diensten wie Azure-Blob, Azure-Tabelle, Azure SQL-Datenbank, Azure SQL Data Warehouse, Azure DocumentDB und Azure Data Lake-Speicher verschoben werden. Die vollständige Matrix für Azure DocumentDB wird ebenfalls bald unterstützt.
 
-Wenn Sie Daten zu/von einem Datenspeicher verschieben müssen, der nicht von der **Kopieraktivität** unterstützt wird, können Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben der Daten verwenden. Weitere Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie im Artikel [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
+Wenn Sie Daten zu/von einem Datenspeicher verschieben müssen, der von der **Kopieraktivität** nicht unterstützt wird, können Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben der Daten verwenden. Weitere Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie im Artikel [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
 ## Lernprogramm:
 Ein kurzes Lernprogramm zur Verwendung der Kopieraktivität finden Sie unter [Lernprogramm: Verwenden der Kopieraktivität in einer Azure Data Factory-Pipeline](data-factory-get-started.md). In diesem Lernprogramm kopieren Sie mit der Kopieraktivität Daten aus einem Azure-Blob-Speicher in eine Azure SQL-Datenbank.
 
 ## <a name="copyactivity"></a>Kopieraktivität
-Die Kopieraktivität kopiert Daten aus einem Eingabedataset (**Quelle**) zu einem Ausgabedataset (**Senke**). Das Kopieren der Daten erfolgt als Batch entsprechend dem für die Aktivität angegebenen Zeitplan. Informationen zur allgemeinen Definition von Aktivitäten finden Sie im Artikel [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md).
+Die Kopieraktivität kopiert Daten aus einem Eingabedataset (**Quelle**) in ein Ausgabedataset (**Senke**). Das Kopieren der Daten erfolgt als Batch entsprechend dem für die Aktivität angegebenen Zeitplan. Informationen zur allgemeinen Definition von Aktivitäten finden Sie im Artikel [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md).
 
 Die Kopieraktivität bietet die folgenden Funktionen:
 
 ### <a name="global"></a>Global verfügbare Datenverschiebung
 Obwohl Azure Data Factory selbst nur in den Regionen „USA, Westen“ und „Nordeuropa“ verfügbar ist, steht der Dienst, der die Kopieraktivität unterstützt, global in den folgenden Regionen und Gebieten zur Verfügung. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen und vermeidet in den meisten Fällen regionsübergreifende Hops.
 
-Das **Datenverwaltungsgateway** oder **Azure Data Factory** führt die Datenverschiebung basierend auf dem Speicherort der Quell- und Zieldatenspeicher als Kopiervorgang durch. Die folgende Tabelle enthält die Details hierzu:
+Das **Datenverwaltungsgateway** oder die **Azure Data Factory** führt die Datenverschiebung basierend auf dem Speicherort der Quell- und Zieldatenspeicher als Kopiervorgang durch. Die folgende Tabelle enthält die Details hierzu:
 
 Speicherort der Quelldaten | Speicherort der Zieldaten | Datenverschiebung erfolgt per  
 -------------------------- | ------------------------------- | ----------------------------- 
 lokal/Azure-VM (IaaS) | Cloud | **Datenverwaltungsgateway** auf lokalem Computer/lokaler Azure-VM. Die Daten fließen nicht über den Dienst in der Cloud. <br/><br/>Hinweis: Das Datenverwaltungsgateway kann sich auf demselben lokalen Computer bzw. derselben lokalen Azure-VM wie der Datenspeicher oder auf einem anderen lokalen Computer bzw. einer anderen lokalen Azure-VM befinden, solange eine Verbindung mit beiden Datenspeichern hergestellt werden kann.
 Cloud | lokal/Azure-VM (IaaS) | Wie oben. 
 lokal/Azure-VM (IaaS) | lokal/Azure-VM | **Datenverwaltungsgateway, das der Quelle zugeordnet ist**. Die Daten fließen nicht über den Dienst in der Cloud. Siehe Hinweis oben.   
-Cloud | Cloud | **Der Clouddienst, auf dem die Kopieraktivität basiert**. Azure Data Factory verwendet die Bereitstellung dieses Diensts in der Region, die der Senkenposition in der gleichen Region am nächsten liegt. Die Zuordnung können Sie der folgenden Tabelle entnehmen: <br/><br/><table><tr><th>Region des Zieldatenspeichers</th> <th>Region für Datenverschiebung</th></tr><tr><td>USA, Osten</td><td>USA, Osten</td></tr><tr><td>USA, Osten 2</td><td>USA, Osten 2</td><tr/><tr><td>USA, Mitte</td><td>USA, Mitte</td><tr/><tr><td>USA, Westen</td><td>USA, Westen</td></tr><tr><td>USA, Norden-Mitte</td><td>USA, Norden-Mitte</td></tr><tr><td>USA, Süden-Mitte</td><td>USA, Süden-Mitte</td></tr><tr><td>Europa, Norden</td><td>Europa, Norden</td></tr><tr><td>Europa, Westen</td><td>Europa, Westen</td></tr><tr><td>Asien, Südosten</td><td>Asien, Südosten</td></tr><tr><td>Asien, Osten</td><td>Asien, Südosten</td></tr><tr><td>Japan, Osten</td><td>Japan, Osten</td></tr><tr><td>Japan, Westen</td><td>Japan, Osten</td></tr><tr><td>Brasilien, Süden</td><td>Brasilien, Süden</td></tr><tr><td>Australien, Osten</td><td>Australien, Osten</td></tr><tr><td>Australien, Südosten</td><td>Australien, Südosten</td></tr></table>
+Cloud | Cloud | **Der Clouddienst, auf dem die Kopieraktivität basiert**. Azure Data Factory verwendet die Bereitstellung dieses Diensts in der Region, die der Senkenposition in der gleichen Region am nächsten liegt. Die Zuordnung können Sie der folgenden Tabelle entnehmen: <br/><br/><table><tr><th>Region des Zieldatenspeichers</th> <th>Region für die Datenverschiebung</th></tr><tr><td>USA, Osten</td><td>USA, Osten</td></tr><tr><td>USA, Osten 2</td><td>USA, Osten 2</td><tr/><tr><td>USA, Mitte</td><td>USA, Mitte</td><tr/><tr><td>USA, Westen</td><td>USA, Westen</td></tr><tr><td>USA, Norden-Mitte</td><td>USA, Norden-Mitte</td></tr><tr><td>USA, Süden-Mitte</td><td>USA, Süden-Mitte</td></tr><tr><td>Europa, Norden</td><td>Europa, Norden</td></tr><tr><td>Europa, Westen</td><td>Europa, Westen</td></tr><tr><td>Asien, Südosten</td><td>Asien, Südosten</td></tr><tr><td>Asien, Osten</td><td>Asien, Südosten</td></tr><tr><td>Japan, Osten</td><td>Japan, Osten</td></tr><tr><td>Japan, Westen</td><td>Japan, Osten</td></tr><tr><td>Brasilien, Süden</td><td>Brasilien, Süden</td></tr><tr><td>Australien, Osten</td><td>Australien, Osten</td></tr><tr><td>Australien, Südosten</td><td>Australien, Südosten</td></tr></table>
 
 
 > [AZURE.NOTE] Wenn die Region des Zieldatenspeichers in der obigen Liste nicht enthalten ist, schlägt die Kopieraktivität fehl, anstatt eine Alternativregion zu wählen.
@@ -107,7 +107,9 @@ Bei der Kopieraktivität werden verschiedene Dateiformate unterstützt, einschli
 ### Eigenschaften der Kopieraktivität
 Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar. Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren.
 
-Bei der Kopieraktivität hängt der **typeProperties**-Abschnitt von den Typen der Quellen und Senken ab. Auf jeder der oben genannten Seiten für Datenspeicher sind diese Eigenschaften für den jeweiligen Datenspeichertyp dokumentiert.
+Bei der Kopieraktivität variiert der **typeProperties**-Abschnitt je nach Typ der Quellen und Senken. Klicken Sie im Abschnitt [Unterstützte Quellen/Senken](#supported-data-stores) auf eine Quelle/Senke, um Informationen zu den Typeigenschaften zu erhalten, die von der Kopieraktivität für diesen Datenspeicher unterstützt werden.
+
+Auf jeder der oben genannten Seiten für Datenspeicher sind diese Eigenschaften für den jeweiligen Datenspeichertyp dokumentiert.
 
 ### Sortierte Kopie
 Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Angenommen, Sie haben zwei Kopieraktivitäten in einer Pipeline: CopyActivity1 und CopyActivity2 mit den folgenden Eingabe-/Ausgabedatasets.
@@ -120,7 +122,7 @@ CopyActivity2 wird nur ausgeführt, wenn CopyActivity1 erfolgreich ausgeführt w
 
 Im obigen Beispiel kann CopyActivity2 eine andere Eingabe haben, z. B. Dataset3. Sie müssen jedoch auch Dataset2 als Eingabe für CopyActivity2 angeben, damit die Aktivität nicht so lange ausgeführt wird, bis CopyActivity1 abgeschlossen ist. Beispiel:
 
-CopyActivity1: Eingabe: Dataset1 Ausgabe: Dataset2
+Kopieraktivität1: Eingabe: Dataset1 Ausgabe: Dataset2
 
 CopyActivity2: Eingabe: Dataset3, Dataset2 Ausgabe: Dataset4
 
@@ -135,7 +137,7 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
 
 ## Assistent zum Kopieren in Data Factory
-Der **Assistent zum Kopieren in Data Factory** ermöglicht es Ihnen, eine Pipeline zu erstellen, mit der Sie Daten von unterstützten Quellen zu Zielen kopieren können, ohne JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines zu schreiben. Zum Starten des Assistenten zum Kopieren klicken Sie auf die Kachel **Daten kopieren** auf der Startseite Ihrer Data Factory.
+Der **Assistent zum Kopieren in Data Factory** ermöglicht es Ihnen, eine Pipeline zu erstellen, mit der Sie Daten aus unterstützten Quellen in Ziele kopieren können, ohne JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines zu schreiben. Zum Starten des Assistenten zum Kopieren klicken Sie auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren**.
 
 ![Assistent zum Kopieren von Daten](./media/data-factory-data-movement-activities/copy-data-wizard.png)
 
@@ -172,7 +174,7 @@ Sie können den Kopiervorgang nur einmal oder nach einem Zeitplan (stündlich, t
 
 
 ### Ausprobieren 
-Eine kurze exemplarische Vorgehensweise zur Verwendung des **Assistenten zum Kopieren in Data Factory** zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie unter [Tutorial: Create a pipeline with Copy Activity using Data Factory Copy Wizard](data-factory-copy-data-wizard-tutorial.md) (Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Assistenten zum Kopieren in Data Factory).
+Eine kurze exemplarische Vorgehensweise zur Verwendung des **Assistenten zum Kopieren in Data Factory** zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie unter [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
 
 ### Variablen im Azure Blob-Ordnerpfad
@@ -185,12 +187,12 @@ Angenommen, Sie haben Eingabeordner im folgenden Format:
 	2016/03/01/03
 	...
 
-Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem dieser Ordner, z. B. 2016->03->01->02, und klicken Sie auf **Auswählen**. Im Textfeld sollte nun **2016/03/01/02** stehen. Ersetzen Sie nun **2016** durch **{year}**, **03** durch **{month}**, **01** durch **{day}**, **02** durch **{hour}**, und drücken Sie **TAB**. Sie sollten Dropdownlisten zum Auswählen des **Formats** für diese vier Variablen wie nachfolgend dargestellt sehen:
+Klicken Sie auf die Schaltfläche **Durchsuchen** für **die Datei oder den Ordner**, navigieren Sie zu einem dieser Ordner, z. B. 2016->03->01->02, und klicken Sie auf **Auswählen**. Im Textfeld sollte nun **2016/03/01/02** stehen. Ersetzen Sie nun **2016** durch **{year}**, **03** durch **{month}**, **01** durch **{day}**, **02** durch **{hour}**, und drücken Sie die **TABULATORTASTE**. Nun sollten Dropdownlisten zum Auswählen des **Formats** für diese vier Variablen wie nachfolgend dargestellt angezeigt werden:
 
 ![Verwenden von Systemvariablen](./media/data-factory-data-movement-activities/blob-standard-variables-in-folder-path.png)
 
-Sie können auch, wie nachfolgend dargestellt, eine **benutzerdefinierte** Variable und jegliche [unterstützte Formatzeichenfolgen](https://msdn.microsoft.com/library/8kb3ddd4.aspx) verwenden. Stellen Sie sicher, dass Sie einen Ordner mit dieser Struktur auswählen, indem Sie zunächst die Schaltfläche „Durchsuchen“ verwenden, einen Wert durch **{custom}** ersetzen und **TAB** drücken, um das Textfeld anzuzeigen, in das Sie die Formatzeichenfolge eingeben können.
+Sie können auch, wie nachfolgend dargestellt, eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](https://msdn.microsoft.com/library/8kb3ddd4.aspx) verwenden. Stellen Sie sicher, dass Sie einen Ordner mit dieser Struktur auswählen, indem Sie zunächst die Schaltfläche „Durchsuchen“ verwenden, einen Wert durch **{custom}** ersetzen und die **TABULATORTASTE** drücken, um das Textfeld anzuzeigen, in das Sie die Formatzeichenfolge eingeben können.
 
 ![Verwenden von benutzerdefinierten Variablen](./media/data-factory-data-movement-activities/blob-custom-variables-in-folder-path.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

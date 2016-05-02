@@ -18,11 +18,11 @@
 	ms.author="nitinme"/>
 
 
-# Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight (Windows)
+# Verwalten von Ressourcen für den Apache Spark-Cluster in HDInsight unter Windows (Vorschau)
 
 > [AZURE.NOTE] HDInsight bietet jetzt Spark-Cluster unter Linux. Informationen zum Verwalten von Ressourcen für einen Spark-Cluster in HDInsight unter Linux finden Sie unter [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight (Linux)](hdinsight-apache-spark-resource-manager.md).
 
-Der Ressourcen-Manager ist eine Komponente des Spark-Clusterdashboards, das zum Verwalten von Ressourcen wie z. B. Kernen und Arbeitsspeicher dient, die von den einzelnen Anwendungen im Cluster genutzt werden.
+Der Ressourcen-Manager ist eine Komponente des Spark-Clusterdashboards, das zum Verwalten von Ressourcen wie z. B. Kernen und Arbeitsspeicher dient, die von den einzelnen Anwendungen im Cluster genutzt werden.
 
 ## <a name="launchrm"></a>So starten Sie den Ressourcen-Manager
 
@@ -47,7 +47,7 @@ Apache Spark-Cluster in HDInsight ist mehrinstanzenfähig, sodass Ressourcen üb
 
 	![Ressourcenzuteilung](./media/hdinsight-apache-spark-resource-manager-v1/hdispark.ui.resource.png "Suchen nach Ressourcen, die einem Spark-Cluster zugeteilt sind")
 
-	Laut der Bildschirmaufnahme oben können Sie höchstens 7 Kerne (insgesamt 8 Kerne, wovon einer in Gebrauch ist) und höchstens 9 GB Arbeitsspeicher (insgesamt 12 GB, wovon 2 GB vom System und 1 GB von anderen Anwendungen genutzt werden) zuteilen.
+	Laut der Bildschirmaufnahme oben können Sie höchstens 7 Kerne (insgesamt 8 Kerne, wovon einer in Gebrauch ist) und höchstens 9 GB Arbeitsspeicher (insgesamt 12 GB, wovon 2 GB vom System und 1 GB von anderen Anwendungen genutzt werden) zuteilen.
 
 	Sie sollten auch alle ausgeführten Anwendungen berücksichtigen. Die ausgeführten Anwendungen können Sie auf der Registerkarte **Spark-Benutzeroberfläche** anzeigen.
 
@@ -69,7 +69,7 @@ Geben Sie als Anzahl von Thrift-Serverkernen und Thrift-Executor-Serverspeicher 
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview-v1.md)
 * [Erstellen eines Spark-Clusters in HDInsight](hdinsight-apache-spark-provision-clusters.md)
 * [Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools-v1.md)
-* [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md)
+* [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md)
 * [Verwenden von Spark in HDInsight zum Erstellen von Echtzeit-Streaminganwendungen](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 
 
@@ -84,4 +84,4 @@ Geben Sie als Anzahl von Thrift-Serverkernen und Thrift-Executor-Serverspeicher 
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

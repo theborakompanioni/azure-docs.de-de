@@ -2,7 +2,7 @@
 	pageTitle="Stellen Sie DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers bereit | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie ein DocumentDB-Konto, eine Azure App-Service-Web-App und eine Beispielwebanwendung mithilfe einer Vorlage des Azure-Ressourcen-Managers bereitstellen." 
 	services="documentdb, app-service\web" 
-	authors="ryancrawcour" 
+	authors="stephbaron" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -14,9 +14,9 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="02/01/2016" 
-	ms.author="ryancraw"/>
+	ms.author="stbaro"/>
 
-# Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers #
+# Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers
 
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Vorlage des Azure-Ressourcen-Managers [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/), eine [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Web-App und eine Beispielwebanwendung bereitstellen und integrieren.
 
@@ -26,7 +26,7 @@ Nach Abschluss dieses Lernprogramms können Sie die folgenden Fragen beantworten
 -	Wie kann ich mithilfe einer Vorlage des Azure-Ressourcen-Managers ein DocumentDB-Konto, eine Web-App in App Service-Web-Apps und eine WebDeploy-Anwendung bereitstellen und integrieren?
 
 <a id="Prerequisites"></a>
-## Voraussetzungen ##
+## Voraussetzungen
 > [AZURE.TIP] Zwar wird für dieses Lernprogramm keine Erfahrung im Umgang mit Vorlagen des Azure-Ressourcen-Managers, JSON oder Azure PowerShell vorausgesetzt, wenn Sie jedoch die hierin verwendeten Vorlagen oder Bereitstellungsoptionen ändern möchten, sind Kenntnisse in jedem dieser Bereiche erforderlich.
 
 Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherstellen, dass Sie über Folgendes verfügen:
@@ -47,7 +47,7 @@ Als Erstes laden wir die Beispieldateien herunter, die in diesem Lernprogramm ve
 ![Screenshot des Fensters „Eigenschaften“ mit der hervorgehobenen Schaltfläche „Blockierung aufheben“](./media/documentdb-create-documentdb-website/image1.png)
 
 <a id="Build"></a>
-##Schritt 2: Bereitstellen des Dokument-Kontos, der App Service-Web-App und der Demoanwendung ##
+##Schritt 2: Bereitstellen des Dokument-Kontos, der App Service-Web-App und der Demoanwendung
 
 Jetzt stellen wir unsere erste Vorlage bereit.
 
@@ -147,7 +147,7 @@ Jetzt stellen wir unsere erste Vorlage bereit.
 12. Erkunden Sie die Oberfläche des DocumentDB-Portals, oder ändern Sie die Todo-Beispielanwendung. Wenn Sie fertig sind, stellen wir eine andere Vorlage bereit.
 	
 <a id="Build"></a>
-## Schritt 3: Bereitstellen des Dokument-Kontos und Web-App-Beispiels ##
+## Schritt 3: Bereitstellen des Dokument-Kontos und Web-App-Beispiels
 
 Jetzt stellen wir unsere zweite Vorlage bereit.
 
@@ -210,4 +210,4 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

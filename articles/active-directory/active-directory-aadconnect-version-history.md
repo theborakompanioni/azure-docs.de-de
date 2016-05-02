@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/12/2016"
+   ms.date="04/20/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Versionsveröffentlichungsverlauf
@@ -22,19 +22,22 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect regelmäßig mit n
 
 Dieser Artikel soll Ihnen helfen, die Versionen zu verfolgen, die veröffentlicht wurden, und zu wissen, ob Sie auf die neueste Version aktualisieren müssen oder nicht.
 
-Verwandte Links:
+Liste der verwandten Themen:
 
-- Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
-- Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt.
-- [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771)
+| Thema | |
+| --------- | --------- |
+| Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect. |
+| Erforderliche Berechtigungen | Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt. |
+| Herunterladen| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771) |
 
 ## 1\.1.130.0
 Veröffentlicht im April 2016
 
 **Neue Features:**
 
-- Zusätzliche Unterstützung für mehrwertige Attribute in [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md)
-- Unterstützung für weitere Konfigurationsvarianten für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) wurde hinzugefügt, damit es als Upgrade in Frage kommt.
+- Unterstützung für mehrwertige Attribute in [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) wurde hinzugefügt.
+- Unterstützung für weitere Konfigurationsvarianten für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) wurde hinzugefügt, damit diese für ein Upgrade in Frage kommen.
+- Einige Cmdlets für den [benutzerdefinierten Scheduler](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler) wurden hinzugefügt.
 
 ## 1\.1.119.0
 Veröffentlicht März 2016
@@ -60,18 +63,18 @@ Veröffentlicht im Februar 2016
 
 **Neue Features:**
 
-- Feature für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Express-Einstellungen
+- Feature für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Expresseinstellungen.
 - Unterstützung für den globalen Administrator mit MFA und PIM im Installations-Assistenten.
     - Sie müssen für Ihren Proxy festlegen, dass auch Datenverkehr für https://secure.aadcdn.microsoftonline-p.com zulässig ist, wenn Sie MFA verwenden.
-    - Sie müssen der Liste vertrauenswürdiger Websites https://secure.aadcdn.microsoftonline-p.com hinzufügen, damit MFA ordnungsgemäß funktioniert.
+    - Sie müssen https://secure.aadcdn.microsoftonline-p.com zur Liste vertrauenswürdiger Websites hinzufügen, damit MFA ordnungsgemäß funktioniert.
 - Das Ändern der Anmeldemethode des Benutzers nach der Erstinstallation ist zulässig.
 - Die [Filterung von Domänen und Organisationseinheiten](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) im Installations-Assistenten ist möglich. Dadurch wird außerdem das Herstellen einer Verbindung mit Gesamtstrukturen ermöglicht, in denen nicht alle Domänen verfügbar sind.
 - Der [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) ist in das Synchronisierungsmodul integriert.
 
 **Features, die von der Vorschau auf die allgemeine Verfügbarkeit hochgestuft wurden:**
 
-- [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md)
-- [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md)
+- [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md).
+- [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md).
 
 **Neue Vorschaufeatures:**
 
@@ -265,4 +268,4 @@ Veröffentlicht im September 2014
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

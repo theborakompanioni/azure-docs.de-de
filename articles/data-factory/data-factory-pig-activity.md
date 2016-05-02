@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Pig-Aktivität
@@ -186,4 +186,12 @@ Gehen Sie folgendermaßen vor, um das Pig-Skript zu parametrisieren
 		PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);		
 		Store PigSampleOut into '$Output' USING PigStorage (','); 
 
-<!---HONumber=AcomDC_0302_2016-->
+
+## Weitere Informationen
+- [Hive-Aktivität](data-factory-hive-activity.md)
+- [MapReduce-Aktivität](data-factory-map-reduce.md)
+- [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
+- [Invoke Spark programs](data-factory-spark.md) (Aufrufen von Spark-Programmen)
+- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (Aufrufen von R-Skripts)
+
+<!---HONumber=AcomDC_0420_2016-->

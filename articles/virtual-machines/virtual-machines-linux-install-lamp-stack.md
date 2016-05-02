@@ -6,7 +6,7 @@
 	authors="szarkos"
 	manager="timlt"
 	editor=""
-	tags=“azure-service-management,azure-resource-manager"/>
+	tags="azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines-linux"
@@ -105,7 +105,7 @@ Einrichten
 
 		- CentOS und Oracle: `sudo service httpd restart`
 
-	- Apache lauscht standardmäßig an Port 80. Für den Remotezugriff auf den Apache-Server müssen Sie u. U. einen Endpunkt öffnen. Ausführlichere Anweisungen finden Sie in der Dokumentation zur [Konfiguration von Endpunkten](virtual-machines-windows-classic-setup-endpoints.md).
+	- Apache lauscht standardmäßig an Port 80. Für den Remotezugriff auf den Apache-Server müssen Sie u. U. einen Endpunkt öffnen. Ausführlichere Anweisungen finden Sie in der Dokumentation zur [Konfiguration von Endpunkten](virtual-machines-windows-classic-setup-endpoints.md).
 
 	- Jetzt können Sie überprüfen, ob Apache ausgeführt wird und Inhalte bereitstellt. Wechseln Sie im Browser zu `http://[MYSERVICE].cloudapp.net`, wobei **[MYSERVICE]** dem Namen des Clouddiensts entspricht, in dem sich der virtuelle Computer befindet. Bei einigen Verteilungen kann eine Standardwebseite mit dem Hinweis angezeigt werden, dass der Server ordnungsgemäß arbeitet. Bei anderen kann eine ausführlichere Webseite mit Links zu zusätzlicher Dokumentation und Inhalten zur Konfiguration des Apache-Servers eingeblendet werden.
 
@@ -129,4 +129,4 @@ Es gibt zahlreiche weitere Ressourcen für die Einrichtung eines LAMP-Stacks in 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->
