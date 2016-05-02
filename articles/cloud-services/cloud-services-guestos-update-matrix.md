@@ -176,7 +176,7 @@ Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, lesen Sie bitte die [Deak
 ## Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme
 Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird [hier][retirepolicy] erläutert.
 
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/de-DE/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Updateeinstellungen für Azure-Gast-BS]: cloud-services-how-to-configure.md
 [rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/

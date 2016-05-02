@@ -63,7 +63,7 @@ bcp weist folgende Einschränkungen auf:
 - bcp bietet keine Stabilität beim Laden von Daten über das Internet. Jede Instabilität im Netzwerk kann daher zu Fehlern beim Laden führen.
 - bcp stützt sich auf das in der Zieldatenbank vor dem Laden vorhandene Schema.
 
-Weitere Informationen finden Sie unter [Load data with bcp][] (in englischer Sprache).
+Weitere Informationen finden Sie unter [Load data with bcp][] \(in englischer Sprache).
 
 ## Optimieren der Datenmigration
 Ein SQLDW-Datenmigrationsprozess kann wirksam in drei separate Schritte unterteilt werden:
@@ -163,7 +163,7 @@ Die Unterteilung großer Tabellen in mehrere Dateien verbessert nicht nur die Ex
 
 PolyBase unterstützt auch eine Funktion zum "rekursiven Ordnerdurchlauf". Mit dieser Funktion können Sie die Organisation der exportierten Daten weiter verbessern und so die Datenverwaltung optimieren.
 
-Weitere Informationen zum Laden von Daten mit PolyBase finden Sie unter [Load data with bcp][] (in englischer Sprache).
+Weitere Informationen zum Laden von Daten mit PolyBase finden Sie unter [Load data with bcp][] \(in englischer Sprache).
 
 
 ## Nächste Schritte

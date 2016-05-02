@@ -532,7 +532,7 @@ Sie können die Azure-Befehlszeilenschnittstelle entweder über NPM oder Windows
 
 **So installieren Sie die Azure-Befehlszeilenschnittstelle mit Windows Installer**
 
-1.	Navigieren Sie zu ****http://azure.microsoft.com/downloads/**.
+1.	Navigieren Sie zu **http://azure.microsoft.com/downloads/**.
 2.	Führen Sie einen Bildlauf nach unten zum Abschnitt **Befehlszeilentools** durch, und klicken Sie dann auf **Azure-Befehlszeilenschnittstelle**, und führen Sie den Assistenten für den Webplattform-Installer aus.
 
 **Herunterladen und Importieren der Veröffentlichungseinstellungen**

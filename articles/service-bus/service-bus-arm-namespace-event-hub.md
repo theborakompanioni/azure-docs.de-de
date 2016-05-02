@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Vorlage von Azure Resource Mana
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus Event Hub and consumer group template][] (Service Bus-Event Hub- und Consumergruppenvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus Event Hub and consumer group template][] \(Service Bus-Event Hub- und Consumergruppenvorlage) auf GitHub.
 
 >[AZURE.NOTE] Die folgenden ARM-Vorlagen stehen zum Herunterladen und Bereitstellen zur Verfügung.
 >

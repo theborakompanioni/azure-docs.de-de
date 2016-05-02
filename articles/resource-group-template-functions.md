@@ -439,7 +439,7 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 | baseUri | Ja | Die Zeichenfolge mit dem Basis-URI.
 | relativeUri | Ja | Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll.
 
-Der Wert für den **baseUri**-Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von ****http://contoso.com/resources/azuredeploy.json** als BaseUri-Parameter zu einem Basis-URI von ****http://contoso.com/resources/**.
+Der Wert für den **baseUri**-Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von **http://contoso.com/resources/azuredeploy.json** als BaseUri-Parameter zu einem Basis-URI von **http://contoso.com/resources/**.
 
 Im folgenden Beispiel wird veranschaulicht, wie basierend auf dem Wert der übergeordneten Vorlage eine Verknüpfung zu einer geschachtelten Vorlage erstellt wird.
 

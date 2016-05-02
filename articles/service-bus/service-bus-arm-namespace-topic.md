@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Vorlage von Azure Resource Mana
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace with topic and subscription][] (Service Bus-Namespace mit Thema und Abonnement).
+Die vollständige Vorlage finden Sie unter [Service Bus namespace with topic and subscription][] \(Service Bus-Namespace mit Thema und Abonnement).
 
 >[AZURE.NOTE] Die folgenden ARM-Vorlagen stehen zum Herunterladen und Bereitstellen zur Verfügung.
 >

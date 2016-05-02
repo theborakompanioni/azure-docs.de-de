@@ -61,7 +61,7 @@ Zuerst muss das Microsoft HPC Pack auf Ihrem lokalen Computer mit Windows Server
 
 	![HPC Pack 2012 Setup][install_hpc1]
 
-4. Klicken Sie auf der **Seite mit dem Vertrag für Benutzer von Microsoft-Software ** auf **Next**.
+4. Klicken Sie auf der **Seite mit dem Vertrag für Benutzer von Microsoft-Software** auf **Next**.
 
 5. Klicken Sie auf der Seite **Select Installation Type** auf **Create a new HPC cluster by creating a head node** und dann auf **Next**.
 

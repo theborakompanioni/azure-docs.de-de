@@ -1232,7 +1232,7 @@ GROUP BY p.[BrandName]
 Genießen Sie die Datenabfrage mit SQL Data Warehouse.
 
 ## Nächste Schritte
-Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][]. Weitere Informationen zum Suchen nach Columnstore-Indizes finden Sie unter [Manage Columnstore Indexes][] (Verwalten von Columnstore-Indizes).
+Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][]. Weitere Informationen zum Suchen nach Columnstore-Indizes finden Sie unter [Manage Columnstore Indexes][] \(Verwalten von Columnstore-Indizes).
 
 Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][].
 

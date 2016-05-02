@@ -225,7 +225,7 @@ Die Ereignisse werden von den Ereignisquellen und Ereignismanifesten erfasst, di
 
 ### Absturzabbilder
 
-Wenn Sie Informationen zum Absturz einer Rolleninstanz erfassen möchten, wählen Sie das Kontrollkästchen **Übertragung von Absturzabbildern aktivieren** aus. (Da die meisten Ausnahmen von ASP.NET verarbeitet werden, ist dies im Allgemeinen nur für Workerrollen von nutzen.) Sie können den Prozentsatz des Speicherplatzes erhöhen oder verringern, der für die Absturzabbilder reserviert ist, indem Sie den Wert ** Verzeichniskontingent (%)** ändern. Sie können den Speichercontainer ändern, in dem die Absturzabbilder gespeichert werden, und Sie können angeben, ob Sie ein **vollständiges Abbild** oder ein **Miniabbild** erfassen möchten.
+Wenn Sie Informationen zum Absturz einer Rolleninstanz erfassen möchten, wählen Sie das Kontrollkästchen **Übertragung von Absturzabbildern aktivieren** aus. (Da die meisten Ausnahmen von ASP.NET verarbeitet werden, ist dies im Allgemeinen nur für Workerrollen von nutzen.) Sie können den Prozentsatz des Speicherplatzes erhöhen oder verringern, der für die Absturzabbilder reserviert ist, indem Sie den Wert **Verzeichniskontingent (%)** ändern. Sie können den Speichercontainer ändern, in dem die Absturzabbilder gespeichert werden, und Sie können angeben, ob Sie ein **vollständiges Abbild** oder ein **Miniabbild** erfassen möchten.
 
 Die derzeit nachverfolgten Prozesse werden aufgelistet. Wählen Sie die Kontrollkästchen für die Prozesse aus, die Sie erfassen möchten. Um der Liste einen anderen Prozess hinzuzufügen, geben Sie den Namen des Prozesses ein, und wählen Sie dann die Schaltfläche **Prozess hinzufügen** aus.
 

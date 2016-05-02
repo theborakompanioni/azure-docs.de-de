@@ -292,7 +292,7 @@ XML | String
 
 ## Tipps zur Problembehandlung
 
-**** Problem: ** Folgende **Fehlermeldung** wird angezeigt: Bei der Kopieraktivität wurden ungültige Parameter gefunden: UnknownParameterName. Detaillierte Meldung: Der angeforderte .Net Framework-Datenprovider kann nicht gefunden werden. Er ist ggf. nicht installiert.
+**Problem:** Folgende **Fehlermeldung** wird angezeigt: Bei der Kopieraktivität wurden ungültige Parameter gefunden: UnknownParameterName. Detaillierte Meldung: Der angeforderte .Net Framework-Datenprovider kann nicht gefunden werden. Er ist ggf. nicht installiert.
 
 **Mögliche Ursachen**
 

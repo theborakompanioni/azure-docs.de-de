@@ -67,7 +67,7 @@ Zunächst registrieren Sie die Web-App bei Azure Active Directory (AD). Durch di
 Das Thema [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](resource-group-create-service-principal-portal.md) zeigt alle Schritte, die zur Einrichtung der Anwendung erforderlich sind. Ziehen Sie dieses Thema heran, während Sie eine Anwendung mit den folgenden Eigenschaften erstellen:
 
 - Webanwendung mit dem Namen **CloudSense**
-- Anmelde-URL und App-ID-URI im Format ****http://{domain_name_of_your_directory}/{name_of_the_app}**.
+- Anmelde-URL und App-ID-URI im Format **http://{domain_name_of_your_directory}/{name_of_the_app}**.
 - Authentifizierungsschlüssel für die Anmeldung der Anwendung
 - Delegierte Berechtigung **Auf Azure-Dienstverwaltung zugreifen** für die **Azure-Dienstverwaltungs-API** Übernehmen Sie den Standardwert **Einmaliges Anmelden und Lesen des Benutzerprofils aktivieren** für **Azure Active Directory**.
 - Mehrinstanzenfähige Anwendung

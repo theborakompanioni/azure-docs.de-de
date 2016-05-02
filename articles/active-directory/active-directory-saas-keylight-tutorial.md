@@ -173,11 +173,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     j. Legen Sie für **Auto-provision security config** die Einstellung **Standard User Configuration** fest.
    
-    k. Geben Sie im Textfeld „Email attribute“ Folgendes ein: ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    k. Geben Sie im Textfeld „Email attribute“ Folgendes ein: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
-    l. Geben Sie im Textfeld **First name attribute** Folgendes ein: ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    l. Geben Sie im Textfeld **First name attribute** Folgendes ein: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
 
-    m. Geben Sie im Textfeld **Last name attribute** Folgendes ein: ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
+    m. Geben Sie im Textfeld **Last name attribute** Folgendes ein: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
 
     n. Klicken Sie auf **Speichern**.
    

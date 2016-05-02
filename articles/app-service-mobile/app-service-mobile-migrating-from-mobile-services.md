@@ -354,7 +354,7 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service – Preise]: https://azure.microsoft.com/de-DE/pricing/details/app-service/
+[App Service – Preise]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatische Skalierung]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
@@ -362,10 +362,10 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [klassische Azure-Portal]: https://manage.windowsazure.com
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 [Azure-Portal]: https://portal.azure.com
-[Azure-Region]: https://azure.microsoft.com/de-DE/regions/
+[Azure-Region]: https://azure.microsoft.com/regions/
 [Azure Scheduler-Pläne]: ../scheduler/scheduler-plans-billing.md
 [fortlaufend bereitstellen]: ../app-service-web/web-sites-publish-source-control.md
-[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/de-DE/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [benutzerdefinierten Domänennamen]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler

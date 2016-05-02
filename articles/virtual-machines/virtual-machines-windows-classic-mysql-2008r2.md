@@ -52,7 +52,7 @@ Befolgen Sie diese Schritte, um die Community-Version von MySQL Server zu instal
 6.	Stimmen Sie auf der Seite **Lizenzvereinbarung** der Lizenzvereinbarung zu, und klicken Sie auf **Weiter**.
 7.	Klicken Sie auf der Seite **Einrichtungstyp wählen** auf den gewünschten Einrichtungstyp, und klicken Sie dann auf **Weiter**. Bei den folgenden Schritten wird davon ausgegangen, dass der Einrichtungstyp **Nur Server** ausgewählt ist.
 8.	Klicken Sie auf der Seite **Installation** auf **Ausführen**. Klicken Sie nach Abschluss der Installation auf **Weiter**.
-9.	Klicken Sie auf der Seite **Produktkonfiguration ** auf **Weiter**.
+9.	Klicken Sie auf der Seite **Produktkonfiguration** auf **Weiter**.
 10.	Geben Sie auf der Seite **Typ und Netzwerke** Ihren gewünschten Konfigurationstyp und die Konnektivitätsoptionen an, einschließlich des TCP-Ports (falls erforderlich). Wählen Sie **Erweiterte Optionen anzeigen** aus, und klicken Sie dann auf **Weiter**.
 
 	![](./media/virtual-machines-windows-classic-mysql-2008r2/MySQL_TypeNetworking.png)
@@ -69,8 +69,8 @@ Befolgen Sie diese Schritte, um die Community-Version von MySQL Server zu instal
 
 	![](./media/virtual-machines-windows-classic-mysql-2008r2/MySQL_AdvOptions.png)
 
-14.	Klicken Sie auf der Seite **Serverkonfiguration anwenden ** auf **Ausführen**. Wenn die Konfigurationsschritte abgeschlossen sind, klicken Sie auf **Fertig stellen**.
-15.	Klicken Sie auf der Seite **Produktkonfiguration ** auf **Weiter**.
+14.	Klicken Sie auf der Seite **Serverkonfiguration anwenden** auf **Ausführen**. Wenn die Konfigurationsschritte abgeschlossen sind, klicken Sie auf **Fertig stellen**.
+15.	Klicken Sie auf der Seite **Produktkonfiguration** auf **Weiter**.
 16.	Klicken Sie auf der Seite **Installation abgeschlossen** auf **Protokoll in Zwischenablage kopieren**, wenn Sie es später prüfen möchten, und klicken Sie dann auf **Fertig stellen**.
 17.	Geben Sie im Startbildschirm **mysql** ein, und klicken Sie dann auf **MySQL 5.6-Befehlszeilenclient**.
 18.	Geben Sie das root-Kennwort ein, das Sie in Schritt 11 angegeben haben, und es wird eine Eingabeaufforderung angezeigt, in der Sie Befehle zum Konfigurieren von MySQL ausgeben können. Details zu Befehlen und Syntax finden Sie unter [MySQL-Referenzhandbücher](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html).
