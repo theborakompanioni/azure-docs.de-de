@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Spark-Streaming: Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Spark für HDInsight (Windows)
+# Spark-Streaming: Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Spark in HDInsight unter Windows (Vorschau)
 
 > [AZURE.NOTE] HDInsight bietet jetzt Spark-Cluster unter Linux. Informationen zum Ausführen einer Streaminganwendung auf HDInsight Spark-Clustern unter Linux finden Sie unter [Spark-Streaming: Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Spark für HDInsight (Linux)](hdinsight-apache-spark-eventhub-streaming.md).
 
@@ -33,9 +33,9 @@ In diesem Lernprogramm erfahren Sie, wie Sie einen Azure Event Hub erstellen, Na
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- Einen Apache Spark-Cluster. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-provision-clusters.md).
+- Einen Apache Spark-Cluster. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-provision-clusters.md).
 - Einen [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-- Eine Arbeitsstation mit Microsoft Visual Studio 2013. Anweisungen finden Sie unter [Installieren von Visual Studio](https://msdn.microsoft.com/library/e2h7fzkw.aspx).
+- Eine Arbeitsstation mit Microsoft Visual Studio 2013. Anweisungen finden Sie unter [Installieren von Visual Studio](https://msdn.microsoft.com/library/e2h7fzkw.aspx).
 
 ##<a name="createeventhub"></a>Erstellen eines Azure Event Hubs
 
@@ -114,7 +114,7 @@ Informationen zum Zuordnen von Ressourcen in einem Spark-Cluster finden Sie unte
 
 4. Fügen Sie in den leeren Absatz, der im neuen Notebook standardmäßig erstellt wird, den folgenden Codeausschnitt ein, und ersetzen Sie die Platzhalter, um Ihre Event Hub-Konfiguration zu verwenden. In diesem Codeausschnitt empfangen Sie den Datenstrom vom Event Hub und registrieren ihn in einer temporären Tabelle mit dem Namen **mytemptable**. Im nächsten Abschnitt starten wir die Absenderanwendung. Anschließend können Sie die Daten direkt aus der Tabelle auslesen.
 
-	> [AZURE.NOTE] Der folgende Codeausschnitt (**eventhubs.checkpoint.dir**) muss auf ein Verzeichnis in Ihrem Standardspeichercontainer festgelegt werden. Wenn das Verzeichnis nicht vorhanden ist, wird es von der Streaminganwendung erstellt. Sie können entweder den vollständigen Pfad zum Verzeichnis angeben, z. B. "**wasb://container@storageaccount.blob.core.windows.net/mycheckpointdir/**", oder nur den relativen Verzeichnispfad, z. B. "**/mycheckpointdir**".
+	> [AZURE.NOTE] Der folgende Codeausschnitt (**eventhubs.checkpoint.dir**) muss auf ein Verzeichnis in Ihrem Standardspeichercontainer festgelegt werden. Wenn das Verzeichnis nicht vorhanden ist, wird es von der Streaminganwendung erstellt. Sie können entweder den vollständigen Pfad zum Verzeichnis angeben, z. B. "**wasb://container@storageaccount.blob.core.windows.net/mycheckpointdir/**", oder nur den relativen Verzeichnispfad, z. B. "**/mycheckpointdir**".
 
 		import org.apache.spark.streaming.{Seconds, StreamingContext}
 		import org.apache.spark.streaming.eventhubs.EventHubsUtils
@@ -181,7 +181,7 @@ Eine Anleitung zum Ausführen dieser Schritte und eine Streaming-Beispielanwendu
 
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview-v1.md)
 * [Schnellstart: Erstellen von Apache Spark für HDInsight und Ausführen von interaktiven Abfragen per Spark-SQL](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)
-* [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md)
+* [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md)
 * [Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools-v1.md)
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager-v1.md)
 
@@ -196,4 +196,4 @@ Eine Anleitung zum Ausführen dieser Schritte und eine Streaming-Beispielanwendu
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

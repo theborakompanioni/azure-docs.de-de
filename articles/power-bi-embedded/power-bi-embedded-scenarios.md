@@ -33,4 +33,4 @@ Nachstehend finden Sie einige Szenarien für die Verwendung von **Power BI Embed
 - [Beispiel zu den ersten Schritten](power-bi-embedded-get-started.md)
 - [Erweitern Sie Power BI um benutzerdefinierte Visualisierungen](https://powerbi.microsoft.com/custom-visuals/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

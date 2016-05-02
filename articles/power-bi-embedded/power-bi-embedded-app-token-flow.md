@@ -1,6 +1,6 @@
 <properties
    pageTitle="Ablauf der Authentifizierung mithilfe eines App-Tokens in Power BI Embedded"
-   description="Ablauf der Authentifizierung mithilfe eines App-Tokens in Power BI Embedded"
+   description="Power BI Embedded über App-Token zur Authentifizierung und Autorisierung"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -56,4 +56,4 @@ Nachdem **Power BI Embedded** einen Bericht an den Benutzer geschickt hat, kann 
 - [Häufige Microsoft Power BI Embedded Preview-Szenarios](power-bi-embedded-scenarios.md)
 - [Get started with Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md) (Erste Schritte mit Microsoft Power BI Embedded Preview)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

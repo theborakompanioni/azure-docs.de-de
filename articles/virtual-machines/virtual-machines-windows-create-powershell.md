@@ -50,15 +50,14 @@ Melden Sie sich in Ihrem Konto an.
 
 	Login-AzureRmAccount
 
-Rufen Sie Ihren Abonnementnamen mit dem folgenden Befehl ab.
+Rufen Sie die verfügbaren Abonnements mit dem folgenden Befehl ab.
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
 
 	$subscr="<subscription name>"
-	Select-AzureSubscription -SubscriptionName $subscr –Current
-
+	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
 ## Schritt 3: Erstellen von Ressourcen
 
@@ -393,4 +392,4 @@ Hier finden Sie den Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen
 
 [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

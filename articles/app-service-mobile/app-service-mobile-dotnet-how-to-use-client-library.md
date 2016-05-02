@@ -113,7 +113,7 @@ Der folgende Code zeigt, wie Sie Daten mithilfe einer `Where`-Klausel in einer A
 	   .Where(todoItem => todoItem.Complete == false)
 	   .ToListAsync();
 
-Sie können den URI der an das Back-End gesendeten Anforderung anzeigen, indem Sie Software zur Überprüfung von Nachrichten verwenden, z. B. Browserentwicklertools oder [Fiddler]. Beachten Sie im folgenden Anforderungs-URI, dass die Abfragezeichenfolge verändert ist:
+Sie können den URI der an das Back-End gesendeten Anforderung anzeigen, indem Sie Software zur Überprüfung von Nachrichten verwenden, z. B. Browserentwicklertools oder [Fiddler]. Beachten Sie im folgenden Anforderungs-URI, dass die Abfragezeichenfolge verändert ist:
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -166,7 +166,7 @@ Der folgende Code zeigt, wie Sie Daten mithilfe einer [OrderBy]- oder einer [Ord
 
 ###<a name="paging"></a>Seitenweises Zurückgeben von Daten
 
-Standardmäßig gibt das Back-End nur die ersten 50 Zeilen zurück. Sie können die [Take]-Methode aufrufen, um die Anzahl der zurückgegebenen Zeilen zu erhöhen. Verwenden Sie `Take` zusammen mit der [Skip]-Methode, um eine bestimmte "Seite" des gesamten Datasets anzufordern, das von der Abfrage zurückgegeben wird. Die folgende Abfrage liefert die ersten drei Elemente aus der Tabelle zurück.
+Standardmäßig gibt das Back-End nur die ersten 50 Zeilen zurück. Sie können die [Take]-Methode aufrufen, um die Anzahl der zurückgegebenen Zeilen zu erhöhen. Verwenden Sie `Take` zusammen mit der [Skip]-Methode, um eine bestimmte "Seite" des gesamten Datasets anzufordern, das von der Abfrage zurückgegeben wird. Die folgende Abfrage liefert die ersten drei Elemente aus der Tabelle zurück.
 
 	// Define a filtered query that returns the top 3 items.
 	MobileServiceTableQuery<TodoItem> query = todoTable
@@ -187,7 +187,7 @@ Mit der [IncludeTotalCount]-Methode können Sie sicherstellen, dass die Abfrage 
 
 In diesem vereinfachten Szenario werden hartcodierte Pagingwerte an die `Take`-Methode und die `Skip`-Methode übergeben. Tatsächliche Anwendungen können ähnliche Abfragen mit einem Pagersteuerelement oder einer ähnlichen Benutzersteuerung ausführen, um zur vorherigen bzw. nächsten Seite zu navigieren.
 
->[AZURE.NOTE]Um die Begrenzung auf 50 Zeilen in einem Mobile App-Back-End zu überschreiben, müssen Sie [EnableQueryAttribute] auf die öffentliche GET-Methode anwenden und das Pagingverhalten festlegen. Bei Anwendung des Attributs auf die Methode wird durch Folgendes die maximale Anzahl zurückgegebener Zeilen auf 1000 beschränkt:
+>[AZURE.NOTE]Um die Begrenzung auf 50 Zeilen in einem Mobile App-Back-End zu überschreiben, müssen Sie [EnableQueryAttribute] auf die öffentliche GET-Methode anwenden und das Pagingverhalten festlegen. Bei Anwendung des Attributs auf die Methode wird durch Folgendes die maximale Anzahl zurückgegebener Zeilen auf 1000 beschränkt:
 >
 >    [EnableQuery(MaxTop=1000)]
 
@@ -411,7 +411,7 @@ Einige Steuerelemente in der verwalteten Laufzeit unterstützen eine Schnittstel
     ListBox lb = new ListBox();
     lb.ItemsSource = items;
 
-Um die neue Sammlung in Windows Phone 8- und Silverlight-Apps zu nutzen, verwenden Sie die `ToCollection`-Erweiterungsmethoden für `IMobileServiceTableQuery<T>` und `IMobileServiceTable<T>`. Rufen Sie `LoadMoreItemsAsync()` auf, um tatsächlich Daten zu laden.
+Um die neue Sammlung in Windows Phone 8- und Silverlight-Apps zu nutzen, verwenden Sie die `ToCollection`-Erweiterungsmethoden für `IMobileServiceTableQuery<T>` und `IMobileServiceTable<T>`. Rufen Sie `LoadMoreItemsAsync()` auf, um tatsächlich Daten zu laden.
 
 	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 	await items.LoadMoreItemsAsync();
@@ -440,7 +440,7 @@ Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein _Serverfluss_ 
 In jedem Fall müssen Sie die App bei Ihrem Identitätsanbieter registrieren. Der Identitätsanbieter stellt eine Client-ID und einen geheimen Clientschlüssel bereit. Anschließend müssen Sie die Azure App Service-Authentifizierung/-Autorisierung mit der Client-ID und dem geheimen Clientschlüssel von Ihrem Identitätsanbieter konfigurieren. Weitere Informationen finden Sie in den detaillierten Anleitung im Tutorial [Hinzufügen der Authentifizierung zu Ihrer Windows-App].
 
 ###<a name="serverflow"></a>Serverfluss
-Rufen Sie nach der Registrierung bei Ihrem Identitätsanbieter den „MobileServiceClient“ auf. [LoginAsync-Methode] mit dem [MobileServiceAuthenticationProvider]-Wert Ihres Anbieters. Der folgende Beispielcode startet eine Serverfluss-Anmeldung über Facebook.
+Rufen Sie nach der Registrierung bei Ihrem Identitätsanbieter „MobileServiceClient.[LoginAsync-Methode]“ mit dem [MobileServiceAuthenticationProvider]-Wert Ihres Anbieters auf. Der folgende Beispielcode startet eine Serverfluss-Anmeldung über Facebook.
 
 	private MobileServiceUser user;
 	private async System.Threading.Tasks.Task Authenticate()
@@ -509,7 +509,7 @@ Der folgende Codeausschnitt zeigt die einfachste Form des Clientflusses für Fac
 
 ####Einmaliges Anmelden mit einem Microsoft-Konto mit dem Live SDK
 
-Damit Sie Benutzer authentifizieren können, müssen Sie Ihre App beim Microsoft-Konto für das Developer Center registrieren. Sie müssen dann diese Registrierung mit Ihrem Mobile App-Back-End verbinden. Führen Sie die Schritte unter [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung] aus, um eine Microsoft-Kontoregistrierung zu erstellen und diese mit Ihrem Mobile App-Back-End zu verbinden. Wenn Sie sowohl eine Windows Store- als auch eine Windows Phone 8-/Silverlight-Version Ihrer App haben, registrieren Sie zuerst die Windows Store-Version.
+Damit Sie Benutzer authentifizieren können, müssen Sie Ihre App beim Microsoft-Konto für das Developer Center registrieren. Sie müssen dann diese Registrierung mit Ihrem Mobile App-Back-End verbinden. Führen Sie die Schritte unter [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung] aus, um eine Microsoft-Kontoregistrierung zu erstellen und diese mit Ihrem Mobile App-Back-End zu verbinden. Wenn Sie sowohl eine Windows Store- als auch eine Windows Phone 8-/Silverlight-Version Ihrer App haben, registrieren Sie zuerst die Windows Store-Version.
 
 Im folgenden Code erfolgt eine Authentifizierung mit Live SDK und wird das zurückgegebene Token verwendet, um eine Anmeldung bei Ihrem Mobile App-Back-End vorzunehmen.
 
@@ -611,7 +611,7 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 
 * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 
-* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website, und verwenden Sie dabei das HTTPS-Schema. Dieser Wert sollte etwa so aussehen: __https://contoso.azurewebsites.net/.auth/login/done_.
+* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website, und verwenden Sie dabei das HTTPS-Schema. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
 
 Der für jede Plattform erforderliche Code:
 
@@ -721,7 +721,7 @@ Mit dem Mobile Apps-Client können Sie die App für Pushbenachrichtigungen mit A
         await MobileService.GetPush().RegisterNativeAsync(channel.Uri, null);
     }
 
-Zu einer Pushbenachrichtigung an den WNS BENÖTIGEN Sie eine Windows Store-Paket-SID (siehe unten). Beachten Sie, dass in diesem Beispiel zwei Tags in der Registrierung enthalten sind. Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
+Zu einer Pushbenachrichtigung an den WNS BENÖTIGEN Sie eine Windows Store-Paket-SID (siehe unten). Beachten Sie, dass in diesem Beispiel zwei Tags in der Registrierung enthalten sind. Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
 
 Beachten Sie, dass die Anforderung von Tags vom Client nicht unterstützt wird. Tag-Anforderungen werden automatisch aus der Registrierung gelöscht. Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen. Rufen Sie anstelle der Methode `RegisterNativeAsync()` die [benutzerdefinierte API](#customapi) auf.
 
@@ -868,7 +868,6 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [MobileServiceCollection]: https://msdn.microsoft.com/de-DE/library/azure/dn250636(v=azure.10).aspx
 [MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/de-DE/library/azure/dn268408(v=azure.10).aspx
 [MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
-[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
 [GetTable]: https://msdn.microsoft.com/de-DE/library/azure/jj554275(v=azure.10).aspx
@@ -911,4 +910,4 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource-Anweisungen]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

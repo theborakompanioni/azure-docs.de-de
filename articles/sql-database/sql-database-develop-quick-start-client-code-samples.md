@@ -3,8 +3,8 @@
 	description="Bietet Codebeispiele und Treiber für Node.js unter Linux, Python, unter Mac OS, Java und Windows, Enterprise Library u. v. m. für Azure SQL-Datenbank-Clients."
 	services="sql-database" 
 	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jeffreyg" 
+	authors="annemill" 
+	manager="jhubbard" 
 	editor=""/>
 
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="01/10/2016" 
-	ms.author="genemi"/>
+	ms.author="annemill"/>
 
 
 # Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank
@@ -94,4 +94,4 @@ Dieser Abschnitt enthält Links zu Themen mit Codebeispielen für Clientprogramm
 - [Create your first Azure SQL Database (Erstellen einer ersten Azure SQL-Datenbank, in englischer Sprache)](sql-database-get-started.md)
 - [Entity Framework 6 hier, EF 7 auf GitHub](http://entityframework.codeplex.com/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

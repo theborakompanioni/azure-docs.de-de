@@ -45,7 +45,9 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 -	Visual Studio 2013 mit [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) für die Blobverwaltungsoberfläche
 -	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (verwendet von [Automatisieren des Hochladens von Inhalten von einer ASP.NET-Anwendung zu einem CDN-Endpunkt](#upload))
 
-> [AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm abzuschließen. + Sie können [kostenlos ein Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F): – Sie erhalten ein Guthaben, das Sie zum Ausprobieren der kostenpflichtigen Azure-Dienste nutzen können. Sie können das Konto behalten und weiterhin kostenlose Azure-Dienste wie z. B. Websites nutzen, wenn das Guthaben aufgebraucht ist. + Sie können von [Vorteilen für MSDN-Abonnenten profitieren](/pricing/member-offers/msdn-benefits-details/): – Über Ihr MSDN-Abonnement erhalten Sie jeden Monat Gutschriften, die Sie für kostenpflichtige Azure-Dienste einsetzen können.
+> [AZURE.NOTE] Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial durchführen zu können:
+> + Sie können [ein Azure-Konto kostenlos erstellen](/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlose Azure-Dienste nutzen, wenn das Guthaben aufgebraucht ist.
+> + Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/) - Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
 
 <a name="static"></a>
 ## Bereitstellen statischer Inhalte über einen Azure CDN-Endpunkt ##
@@ -151,7 +153,7 @@ In diesem Abschnitt haben Sie erfahren, wie Sie einen CDN-Endpunkt erstellen, In
 
 Wenn Sie all Ihre statischen Inhalte Ihrer ASP.NET-Webanwendung zu einem CDN-Endpunkt hochladen möchten, oder wenn Sie die Webanwendung mit kontinuierlicher Zustellung bereitstellen (ein Beispiel finden Sie unter [Kontinuierliche Zustellung für Cloud Services in Azure](../cloud-services/cloud-services-dotnet-continuous-delivery.md)), können Sie Azure PowerShell verwenden, um die Synchronisierung der neuesten Inhaltsdateien zu Azure-Blobs bei jeder Bereitstellung der Webanwendung zu automatisieren. Sie können zum Beispiel das Skript unter [Upload Content Files from ASP.NET Application to Azure Blobs](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a) ausführen, um alle Inhaltsdateien in einer ASP.NET-Anwendung hochzuladen. So verwenden Sie dieses Skript:
 
-4. Führen Sie **Windows PowerShell** im Startmenü aus.
+4. Führen Sie **Windows PowerShell** über das Menü **Start** aus.
 5. Führen Sie im PowerShell-Fenster `Get-AzurePublishSettingsFile` aus, um eine Einstellungsveröffentlichungsdatei für Ihr Azure-Konto herunterzuladen.
 6. Führen Sie nach dem Herunterladen der Einstellungsveröffentlichungsdatei Folgendes aus: 
 
@@ -256,7 +258,9 @@ Die Integration von Azure App Service oder Azure Cloud Services in Azure CDN bie
 - Einfaches Upgrade Ihrer vom CDN verarbeiteten NuGet-Pakete wie jQuery- oder Bootstrap-Versionen 
 - Verwalten der Webanwendung und des vom CDN verarbeiteten Inhalts über dieselbe Visual Studio-Oberfläche
 
-Zugehörige Lernprogramme finden Sie unter [Verwenden von Azure CDN in Azure App Service](../app-service-web/cdn-websites-with-cdn.md) und [Integrieren eines Clouddiensts in Azure CDN](cdn-cloud-service-with-cdn.md).
+Zugehörige Lernprogramme finden Sie unter:
+- [Verwenden von Azure CDN in Azure App Service](../app-service-web/cdn-websites-with-cdn.md)
+- [Integrieren eines Clouddiensts in Azure CDN](cdn-cloud-service-with-cdn.md)
 
 Ohne Integration in Azure App Service-Web-Apps oder Azure Cloud Services können Sie Azure CDN für Ihre Skriptbundles verwenden, allerdings mit den folgenden Nachteilen:
 
@@ -270,7 +274,7 @@ Ohne Integration in Azure App Service-Web-Apps oder Azure Cloud Services können
 - [Verwenden von Azure CDN in Azure App Service](../app-service-web/cdn-websites-with-cdn.md)
 - [Integrieren eines Clouddiensts in Azure CDN](cdn-cloud-service-with-cdn.md)
 - [Zuordnen von CDN-Inhalten (Content Delivery Network) zu einer benutzerdefinierten Domäne](http://msdn.microsoft.com/library/azure/gg680307.aspx)
-- [Verwenden von CDN für Azure](cdn-how-to-use-cdn.md)
+- [Verwenden von Azure CDN](cdn-create-new-endpoint.md)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

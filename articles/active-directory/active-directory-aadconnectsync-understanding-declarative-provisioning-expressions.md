@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="04/14/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -118,7 +118,7 @@ Die Funktion ImportedValue unterscheidet sich von allen anderen Funktionen, da d
 
 Ein Beispiel dafür befindet sich in der einsatzbereiten Synchronisierungsregel "In from AD – User Common from Exchange", wobei in Hybrid-Exchange der durch Exchange online hinzugefügte Wert nur synchronisiert werden sollte, wenn bestätigt wurde, dass der Wert erfolgreich exportiert wurde:
 
-`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
+`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 Eine vollständige Liste der Funktionen finden Sie unter [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md).
 
@@ -130,4 +130,4 @@ Eine vollständige Liste der Funktionen finden Sie unter [Azure AD Connect-Synch
 
 <!--Image references-->
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

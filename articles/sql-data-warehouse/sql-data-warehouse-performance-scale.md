@@ -3,7 +3,7 @@
    description="Grundlegende Informationen zur SQL Data Warehouse-Flexibilität mithilfe von Data Warehouse-Einheiten für die Aufwärts- und Abwärtsskalierung von Compute-Ressourcen. Codebeispiele werden bereitgestellt."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/29/2016"
-   ms.author="nicw;jrj;mausher;barbkess;sonyama"/>
+   ms.author="barbkess;sonyama"/>
 
 # Flexible Leistung und Skalierbarkeit mit SQL Data Warehouse
 Um die Rechenleistung flexibel zu erhöhen oder zu verringern, müssen Sie nur die Anzahl der Data Warehouse-Einheiten (Data Warehouse Unit, DWU) anpassen, die Ihrem SQL Data Warehouse zugeordnet sind. Data Warehouse-Einheiten sind ein neues Konzept des SQL Data Warehouse, damit Sie einfach und effektiv verwalten können. Dieses Thema dient als Einführung in Data Warehouse-Einheiten. Es erläutert, wie Sie damit Ihre Rechenleistung flexibel skalieren können. Der Artikel enthält auch eine erste Anleitung zum Festlegen eines sinnvollen DWU-Werts für Ihre Umgebung.
@@ -99,4 +99,4 @@ Die Leistungsübersicht finden Sie unter [Leistungsübersicht][].
 [klassische Azure-Portal]: http://portal.azure.com/
 [klassischen Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

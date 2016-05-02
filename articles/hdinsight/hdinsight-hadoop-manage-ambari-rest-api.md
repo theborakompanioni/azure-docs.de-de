@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="04/19/2016"
    ms.author="larryfr"/>
 
 #Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API
@@ -29,10 +29,13 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern du
 
 * [cURL](http://curl.haxx.se/): cURL ist ein plattformübergreifendes Hilfsprogramm, das zum Arbeiten mit REST-APIs über die Befehlszeile verwendet werden kann. In diesem Dokument wird es für die Kommunikation mit der Ambari-REST-API verwendet.
 * [jq](https://stedolan.github.io/jq/): jq ist ein plattformübergreifendes Befehlszeilenprogramm zum Arbeiten mit JSON-Dokumenten. In diesem Dokument wird es zum Analysieren der von der Ambari REST-API zurückgegebenen JSON-Dokumente verwendet.
+* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md): ein plattformübergreifendes Befehlszeilenprogramm zum Arbeiten mit Azure-Diensten.
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ##<a id="whatis"></a>Was ist Ambari?
 
-[Apache Ambari](http://ambari.apache.org) vereinfacht die Hadoop-Verwaltung durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche, die zum Bereitstellen, Verwalten und Überwachen von Hadoop-Clustern verwendet werden kann. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) in ihre Anwendungen integrieren.
+[Apache Ambari](http://ambari.apache.org) vereinfacht die Hadoop-Verwaltung durch eine benutzerfreundliche Webbenutzeroberfläche, die zum Bereitstellen, Verwalten und Überwachen von Hadoop-Clustern verwendet werden kann. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) in ihre Anwendungen integrieren.
 
 Ambari wird standardmäßig mit Linux-basierten Clustern bereitgestellt.
 
@@ -73,7 +76,7 @@ Wenn Sie diesen Befehl ausführen und __PASSWORD__ durch das Administratorkennwo
         "Host/host_status/UNKNOWN" : 0,
         "Host/host_status/ALERT" : 0
 
-Da es sich um JSON handelt, ist es in der Regel einfacher, zum Abrufen der Daten einen JSON-Parser zu verwenden. Wenn Sie z. B. die Anzahl der Warnungen (im Element __"Host/host\_status/ALERT"__) abrufen möchten, können Sie mit der folgenden Anweisung direkt auf den Wert zugreifen:
+Da es sich um JSON handelt, ist es in der Regel einfacher, zum Abrufen der Daten einen JSON-Parser zu verwenden. Wenn Sie z. B. die Anzahl der Warnungen (im Element __"Host/host\_status/ALERT"__) abrufen möchten, können Sie mit der folgenden Anweisung direkt auf den Wert zugreifen:
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME" | jq '.Clusters.health_report."Host/host_status/ALERT"'
     
@@ -91,7 +94,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 
 Beachten Sie, dass jede dieser Anweisungen nach dem gleichen Muster erfolgt: Abrufen einer Komponente, von der bekannt ist, dass sie auf diesen Knoten ausgeführt wird, und dann Abrufen der `host_name`-Elemente, die den FQDN für diese Knoten enthalten.
 
-Das `host_components`-Element des Rückgabedokuments enthält mehrere Elemente. Durch Verwendung von `.host_components[]` und Angabe eines Pfads im Element werden die einzelnen Elemente durchlaufen und der Wert aus dem jeweiligen Pfad abgerufen. Wenn Sie nur einen Wert, z. B. den ersten FQDN-Eintrag, erhalten möchten, können Sie die Elemente als Auflistung zurückgeben und dann einen bestimmten Eintrag auswählen:
+Das `host_components`-Element des Rückgabedokuments enthält mehrere Elemente. Durch Verwendung von `.host_components[]` und Angabe eines Pfads im Element werden die einzelnen Elemente durchlaufen und der Wert aus dem jeweiligen Pfad abgerufen. Wenn Sie nur einen Wert, z. B. den ersten FQDN-Eintrag, erhalten möchten, können Sie die Elemente als Auflistung zurückgeben und dann einen bestimmten Eintrag auswählen:
 
     jq '[.host_components[].HostRoles.host_name][0]'
 
@@ -111,7 +114,7 @@ Dadurch wird ein ähnlicher Wert wie der folgende zurückgegeben, wobei __CONTAI
 
     wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
-Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) verwenden, um Daten in den Container hochzuladen oder aus diesem herunterzuladen. Beispiel:
+Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) verwenden, um Daten in den Container hochzuladen oder aus diesem herunterzuladen.
 
 1. Rufen Sie die Ressourcengruppe für das Speicherkonto ab. Ersetzen Sie __ACCOUNTNAME__ durch den aus Ambari abgerufenen Namen des Speicherkontos:
 
@@ -161,7 +164,7 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
             "version" : 1
         }
 
-    Aus dieser Liste müssen Sie den Namen der Komponente (z.B. __spark\_thrift\_sparkconf__) und den Wert für __tag__ kopieren.
+    Aus dieser Liste müssen Sie den Namen der Komponente (z. B. __spark\_thrift\_sparkconf__) und den Wert für __tag__ kopieren.
     
 2. Rufen Sie die Konfiguration für die Komponente ab, und kennzeichnen Sie sie mit dem unten angegebenen Befehl. Ersetzen Sie __spark-thrift-sparkconf__ und __INITIAL__ durch die Komponente und das Tag, für die bzw. das Sie die Konfiguration abrufen möchten.
 
@@ -171,7 +174,7 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
     
     * Erstellt einen eindeutigen Wert, der die Zeichenfolge „version“ und das Datum enthält und in __newtag__ gespeichert wird.
     * Erstellt ein Stammdokument für die neue gewünschte Konfiguration.
-    * Ruft den Inhalt des Arrays „.items“ ab und fügt ihn unter dem __desired\_config__-Element hinzu.
+    * Ruft den Inhalt des .items-Arrays ab und fügt ihn unter dem __desired\_config__-Element hinzu.
     * Löscht die Elemente __href__, __version__ und __Config__, da diese zum Übermitteln einer neuen Konfiguration nicht benötigt werden.
     * Fügt ein neues __tag__-Element hinzu und legt seinen Wert auf __version#################__ fest, wobei der numerische Teil auf dem aktuellen Datum basiert. Jede Konfiguration muss über ein eindeutiges Tag verfügen.
     
@@ -191,7 +194,7 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
             }
         }
 
-3. Öffnen Sie das Dokument __newconfig.json__, und ändern Sie die Werte im Objekt __properties__ bzw. fügen Sie diese hinzu. Ändern Sie beispielsweise den Wert von __„spark.yarn.am.memory“__ von __„1g“__ in __„3g“__, und fügen Sie ein neues Element für __„spark.kryoserializer.buffer.max“__ mit dem Wert __„256m“__ hinzu.
+3. Öffnen Sie das Dokument __newconfig.json__, und ändern Sie die Werte im Objekt __properties__ bzw. fügen Sie Werte hinzu. Ändern Sie beispielsweise den Wert von __„spark.yarn.am.memory“__ von __„1g“__ in __„3g“__, und fügen Sie ein neues Element für __„spark.kryoserializer.buffer.max“__ mit dem Wert __„256m“__ hinzu.
 
         "spark.yarn.am.memory": "3g",
         "spark.kyroserializer.buffer.max": "256m",
@@ -202,11 +205,11 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
 
         cat newconfig.json | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME"
         
-    Mit diesem Befehl wird der Inhalt der Datei __newconfig.json__ an die Curl-Anforderung weitergeleitet, die ihn als neue gewünschte Konfiguration an den Cluster übermittelt. Hierbei wird ein JSON-Dokument zurückgegeben. Das __versionTag__-Element in diesem Dokument sollte mit der von Ihnen übermittelten Version übereinstimmen, und das Objekt __configs__ enthält die Konfigurationsänderungen, die Sie angefordert haben.
+    Mit diesem Befehl wird der Inhalt der Datei __newconfig.json__ an die curl-Anforderung weitergeleitet, die diesen als neue gewünschte Konfiguration an den Cluster übermittelt. Hierbei wird ein JSON-Dokument zurückgegeben. Das __versionTag__-Element in diesem Dokument sollte mit der von Ihnen übermittelten Version übereinstimmen, und das Objekt __configs__ enthält die Konfigurationsänderungen, die Sie angefordert haben.
 
 ###Beispiel: Neustarten einer Dienstkomponente
 
-Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der Spark-Dienst an, dass er neu gestartet werden muss, bevor die neue Konfiguration wirksam werden kann. Führen Sie die unten angegebenen Schritte aus, um den Dienst neu zu starten. Dies wird bei näherer Betrachtung klarer.
+Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der Spark-Dienst an, dass er neu gestartet werden muss, bevor die neue Konfiguration wirksam werden kann. Führen Sie die unten angegebenen Schritte aus, um den Dienst neu zu starten.
 
 1. Verwenden Sie Folgendes, um den Wartungsmodus für den Spark-Dienst zu aktivieren.
 
@@ -252,6 +255,6 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
 
 Eine vollständige Referenz der REST-API finden Sie unter [Referenz zur Ambari-API V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-> [AZURE.NOTE] Einige Ambari-Funktionen sind deaktiviert, da sie vom HDInsight-Clouddienst verwaltet werden, z. B. Hinzufügen oder Entfernen von Hosts im Cluster oder Hinzufügen neuer Dienste.
+> [AZURE.NOTE] Einige Ambari-Funktionen sind deaktiviert, da sie vom HDInsight-Clouddienst verwaltet werden, z. B. Hinzufügen oder Entfernen von Hosts im Cluster oder Hinzufügen neuer Dienste.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

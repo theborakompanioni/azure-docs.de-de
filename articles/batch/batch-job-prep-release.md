@@ -6,7 +6,7 @@
 	authors="mmacy"
 	manager="timlt"
 	editor="" />
-	
+
 <tags
 	ms.service="batch"
 	ms.devlang="multiple"
@@ -15,7 +15,7 @@
 	ms.workload="big-compute"
 	ms.date="01/22/2016"
 	ms.author="marsma" />
-	
+
 # Ausführen von Auftragsvorbereitungs- und Auftragsabschlussaufgaben auf Azure Batch-Computeknoten
 
 Azure Batch-Aufträge erfordern vor ihrer Ausführung häufig eine Einrichtung und eine Art Wartung nach Abschluss der Aufgaben des Auftrags. Batch stellt die Mechanismen für diese Vorbereitung und Wartung in Form von optionalen Aufgaben zur *Auftragsvorbereitung* und *Auftragsfreigabe* bereit.
@@ -78,7 +78,7 @@ In diesem Codeausschnitt ist `myBatchClient` eine vollständig initialisierte In
 
 		await myJob.CommitAsync();
 
-Wie oben erwähnt, wird die Freigabeaufgabe ausgeführt, wenn ein Auftrag beendet oder gelöscht wird. Ein Auftrag mit der Batch .NET-API wird beendet, indem [PoolOperations.TerminateJobAsync][net_job_terminate] aufgerufen wird. Ein Auftrag wird mit [PoolOperations.DeleteJobAsync][net_job_delete] gelöscht. Diese beiden Aktionen werden typischerweise durchgeführt, wenn die Aufgaben eines Auftrag abgeschlossen sind oder ein von Ihnen definiertes Zeitlimit erreicht wurde.
+Wie oben erwähnt, wird die Freigabeaufgabe ausgeführt, wenn ein Auftrag beendet oder gelöscht wird. Ein Auftrag mit der Batch .NET-API wird beendet, indem [JobOperations.TerminateJobAsync][net_job_terminate] aufgerufen wird. Ein Auftrag wird mit [JobOperations.DeleteJobAsync][net_job_delete] gelöscht. Diese beiden Aktionen werden typischerweise durchgeführt, wenn die Aufgaben eines Auftrag abgeschlossen sind oder ein von Ihnen definiertes Zeitlimit erreicht wurde.
 
 		// Terminate the job to mark it as Completed; this will initiate the Job Release Task on any node
 		// that executed job tasks. Note that the Job Release Task is also executed when a job is deleted,
@@ -187,4 +187,4 @@ Der folgende Screenshot hebt die im Bereich **Auftragsdetails** angezeigten Eige
 [1]: ./media/batch-job-prep-release/batchexplorer-01.png
 [2]: ./media/batch-job-prep-release/batchexplorer-02.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

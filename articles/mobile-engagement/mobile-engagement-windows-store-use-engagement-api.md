@@ -358,6 +358,14 @@ Anwendungsinformationen sind beschränkt auf **1024** Zeichen pro Aufruf.
 Im vorherigen Beispiel enthält das an den Server gesendete JSON 44 Zeichen:
 
 			{"birthdate":"1983-12-07","gender":"female"}
+
+##Protokollierung
+###Aktivieren der Protokollierung
+
+Das SDK kann zum Erzeugen von Testprotokollen in der IDE-Konsole konfiguriert werden. Diese Protokolle sind nicht standardmäßig aktiviert. Um diese anzupassen, aktualisieren Sie die Eigenschaft `EngagementAgent.Instance.TestLogEnabled` auf einen der aus der `EngagementTestLogLevel`-Enumeration verfügbaren Werte, beispielsweise:
+
+			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+			EngagementAgent.Instance.Init();
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

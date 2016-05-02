@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/18/2016"
+   ms.date="04/20/2016"
    ms.author="andalmia"/>
 
 #BizTalk-Regeln
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 Geschäftsregeln umfassen die Richtlinien und Entscheidungen, welche die Geschäftsprozesse steuern. Diese Richtlinien können formal in Verfahrenshandbüchern, Verträgen oder Vereinbarungen festgelegt werden oder als Wissen oder Erfahrung der Mitarbeiter vorliegen. Diese Richtlinien sind dynamisch und verändern sich eventuell im Laufe der Zeit aufgrund von Änderungen an Geschäftsplänen, Vorschriften oder aus anderen Gründen.
 
@@ -94,7 +94,7 @@ Verwenden wir jetzt Geschäftsregeln zum Implementieren dieser Geschäftslogik.
 1. Melden Sie sich beim Azure-Portal an.
 2. Wählen Sie „Neu“ -> „Marketplace“ aus, und suchen Sie dann nach *BizTalk Rules*.
 3. Wählen Sie „BizTalk Rules“ in der Ergebnisliste aus. Das Blatt „BizTalk Rules“ wird geöffnet.
-4. Klicken Sie auf die Schaltfläche *Erstellen* ![Alt text][3].
+4. Wählen Sie die Schaltfläche *Erstellen* ![Alt text][3].
 1. Geben Sie auf dem neuen Blatt, das geöffnet wird, Folgendes ein:  
 	1. Name – Geben Sie einen Namen für die Regel-API-App ein.
 	1. App Service-Plan – Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen neuen.
@@ -129,7 +129,6 @@ Nach dem Erstellen einer BizTalk-Regel-API-App besteht der nächste Schritt im E
   6. Klicken Sie auf *OK*.
 
 ![Alt text][5]
-
 ##XML-Definition
 Wenn als Vokabulartyp XML ausgewählt wird, muss folgende Eingabe bereitgestellt werden:  
   a. 	Schema – Durch Klicken auf diese Option wird ein neues Blatt geöffnet, in dem der Benutzer entweder aus einer Liste bereits hochgeladener Schemas auswählen oder ein neues Schema hochladen kann.  
@@ -156,16 +155,16 @@ Nachdem der Entwickler die erforderlichen Vokabulare erstellt hat, ist der Busin
 
 ##Regelerstellung
 Eine Regel ist eine Auflistung von Bedingungs- und Aktionsanweisungen. Die Aktionen werden ausgeführt, wenn die Bedingung als wahr („true“) ausgewertet wird. Geben Sie auf dem Blatt zur Regelerstellung einen eindeutigen Regelnamen (für diese Richtlinie) und eine Beschreibung (optional) ein. 
-Das Bedingungsfeld („IF“) kann zum Erstellen komplexer Bedingungsanweisungen verwendet werden. Folgende Schlüsselwörter werden unterstützt:  
-1. Und – bedingter Operator  
-2. Oder – bedingter Operator  
-3. does\_not\_exist  
-4. exists  
-5. false  
-6. is\_equal\_to  
-7. is\_greater\_than  
-8. is\_greater\_than\_equal\_to  
-9. is\_in  
+Das Bedingungsfeld („IF“) kann zum Erstellen komplexer Bedingungsanweisungen verwendet werden. Folgende Schlüsselwörter werden unterstützt:
+1. 	Und – bedingter Operator  
+2. 	Oder – bedingter Operator  
+3. 	does\_not\_exist  
+4. 	exists  
+5. 	false  
+6. 	is\_equal\_to  
+7. 	is\_greater\_than  
+8. 	is\_greater\_than\_equal\_to  
+9. 	is\_in  
 10. is\_less\_than  
 11. is\_less\_than\_equal\_to  
 12. is\_not\_in  
@@ -173,22 +172,22 @@ Das Bedingungsfeld („IF“) kann zum Erstellen komplexer Bedingungsanweisungen
 14. mod  
 15. true  
 
-Das Aktionsfeld („THEN“) kann mehrere Anweisungen enthalten, eine pro Zeile, um Aktionen zu erstellen, die ausgeführt werden sollen. Folgende Schlüsselwörter werden unterstützt: 
-1. 	equals  
-2. 	false  
-3. 	true  
-4. 	halt  
-5. 	mod  
-6. 	null  
-7. 	update
+Das Aktionsfeld („THEN“) kann mehrere Anweisungen enthalten, eine pro Zeile, um Aktionen zu erstellen, die ausgeführt werden sollen. Folgende Schlüsselwörter werden unterstützt:
+1.	equals  
+2.	false  
+3.	true  
+4.	halt  
+5.	mod  
+6.	null  
+7.	aktualisieren  
 
 Das Bedingungs- und das Aktionsfeld bieten Intellisense, damit Sie schnell eine Regel erstellen können. Dies kann durch Drücken von STRG+LEERTASTE oder einfach durch den Beginn der Eingabe ausgelöst werden. Schlüsselwörter, die den eingegebenen Zeichen entsprechen, werden automatisch gefiltert und dargestellt. Das Intellisense-Fenster zeigt alle Schlüsselwörter und Vokabulardefinitionen an.  
 ![Alt text][9]
 
 ##Explizite Vorwärtsverkettung
-BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:  
-	1. update <vocabulary definition> – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.  
-	2. Halt – Dieses Schlüsselwort beendet alle Regelausführungen.
+BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:
+   1.	update <vocabulary definition> – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.  
+   2.	Halt – Dieses Schlüsselwort beendet alle Regelausführungen.
 
 ##Aktivieren/Deaktivieren von Regeln
 Jede Regel in der Richtlinie kann aktiviert oder deaktiviert werden. Standardmäßig sind alle Regeln aktiviert. Deaktivierte Regeln werden während der Richtlinienausführung nicht ausgeführt. Das Aktivieren/Deaktivieren von Regeln kann entweder direkt vom Regelblatt – die Befehle stehen in der Befehlsleiste im oberen Blattbereich zur Verfügung - oder über das Kontextmenü der Richtlinie erfolgen (klicken Sie mit der rechten Maustaste auf eine Regel).
@@ -254,4 +253,4 @@ Einer der Hauptvorteile der Verwendung von Geschäftsregeln ist, dass Änderunge
 [10]: ./media/app-service-logic-use-biztalk-rules/APIDef.PNG
 [11]: ./media/app-service-logic-use-biztalk-rules/PublicAnon.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

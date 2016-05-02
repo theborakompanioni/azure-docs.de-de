@@ -13,12 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/11/2016"
+   ms.date="04/19/2016"
    ms.author="prkumar"/>
 
 
 # Erste Schritte mit HTTP-Listenern und HTTP-Aktionen und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+
+> [AZURE.NOTE] Die Unterstützung für diesen Connector läuft aus, weil seine Funktionalität jetzt standardmäßig als **manueller Trigger** beim Erstellen neuer Logik-Apps enthalten ist. Es wird empfohlen, dass Sie alle Logik-Apps aktualisieren, die diesen Connector verwenden. Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
 Stellen Sie eine direkte Verbindung mit HTTP-Ressourcen her, um HTTP-Anforderungen zu überwachen und HTTP-Webanfragen zu konfigurieren. Es gibt einige Szenarios, in denen Sie möglicherweise mit direkten HTTP-Verbindungen arbeiten müssen, einschließlich:
 
@@ -74,7 +75,7 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 
 Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connector steuern. Informationen finden Sie unter [Verwalten und Überwachen integrierter API-Apps und Connectors](app-service-logic-monitor-your-connectors.md).
 
-> [AZURE.NOTE] Wenn Sie sich zunächst mit Azure-Logik-Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie [Logik-Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> [AZURE.NOTE] Wenn Sie Azure Logic Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-http/1.png
@@ -88,4 +89,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

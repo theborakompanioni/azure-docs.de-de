@@ -17,7 +17,7 @@
 	ms.date="12/22/2015" 
 	ms.author="nitinme"/>
 
-# Übersicht: Apache Spark für Azure HDInsight (Windows)
+# Übersicht: Apache Spark für HDInsight unter Windows (Vorschau)
  
 > [AZURE.NOTE] HDInsight bietet jetzt Spark-Cluster unter Linux. Informationen zu den Features, die mit HDInsight Spark unter Linux verfügbar sind, finden Sie unter [Übersicht: Apache Spark für Azure HDInsight (Linux)](hdinsight-apache-spark-overview.md).
 
@@ -98,4 +98,4 @@ Spark in HDInsight verfügt auch über einen [ODBC-Treiber](http://go.microsoft.
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

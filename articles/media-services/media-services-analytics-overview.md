@@ -13,9 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/18/2016"   
+	ms.date="04/14/2016"   
 	ms.author="milanga;juliako;johndeu"/>
-
 
 # Azure Media Services Analytics – Übersicht
 
@@ -49,7 +48,9 @@ Die folgenden Szenarien zeigen, wie Azure Media Analytics Organisationen und Unt
 
 - **Überwachung** – Mit der Zunahme der IP-Kameras ist die Zahl der Überwachungsvideos explosionsartig angestiegen. Die manuelle Auswertung von Überwachungsvideos ist zeitintensiv und anfällig für menschliches Versagen. Azure Media Analytics bietet verschiedene Komponenten wie Bewegungserkennung, Gesichtserkennung und Hyperlapse, um das Auswerten, Verwalten und Erstellen von Derivaten zu vereinfachen.
 
+##Demos
 
+[Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 ##Media Services-Lernpfade
 
@@ -67,4 +68,4 @@ Die folgenden Szenarien zeigen, wie Azure Media Analytics Organisationen und Unt
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

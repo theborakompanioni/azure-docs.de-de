@@ -2,7 +2,7 @@
 	pageTitle="Verwendung der BizTalk-Transformation in Logik-Apps in Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie, wie XML-Dokumente von einem Schema in ein anderes transformiert werden." 
 	authors="anuragdalmia" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="04/20/2016"
 	ms.author="anuragdalmia"/>
 
 # BizTalk-Transformation
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 ## Übersicht
 Die BizTalk-Transformations-API-App konvertiert Daten von einem Format in ein anderes Format. Sie können z. B. Versand- und Rechnungsanschrift einer Bestellung entnehmen und in ein Rechnungsdokument einfügen. Oder Sie haben eine eingehende Nachricht, die das aktuelle Datum im *YearMonthDay*-Format enthält. Sie möchten das Datum im *MonthDayYear*-Format neu formatieren.
@@ -40,7 +40,7 @@ Zusätzliche Features:
 
 
 ## Herunterladen von Schemas aus Connector-API-Apps
-Sie können die XML-Schemas für Connectors, z. B. SQL, SAP und SharePoint, von der API-App-Seite "Zusammenfassung" herunterladen. Wenn Sie z. B. XML-Schemas für eine bestimmte SAP-Connector-API-App herunterladen möchten, wechseln Sie zur API-App, und öffnen Sie die Seite "Zusammenfassung". Klicken Sie auf **Schemas herunterladen**. Eine ZIP-Datei mit den Schemas, die den SAP-Aktionen entsprechend, wird auf Ihren Computer heruntergeladen. Anhand der Schemas können Sie in Visual Studio eine Zuordnung (.trfm) erstellen.
+Sie können die XML-Schemas für Connectors, z. B. SQL, SAP und SharePoint, von der API-App-Seite "Zusammenfassung" herunterladen. Wenn Sie z. B. XML-Schemas für eine bestimmte SAP-Connector-API-App herunterladen möchten, wechseln Sie zur API-App, und öffnen Sie die Seite "Zusammenfassung". Klicken Sie auf **Schemas herunterladen**. Eine ZIP-Datei mit den Schemas, die den SAP-Aktionen entsprechend, wird auf Ihren Computer heruntergeladen. Anhand der Schemas können Sie in Visual Studio eine Zuordnung (.trfm) erstellen.
 
 
 ## Erstellen und Hinzufügen der Zuordnung
@@ -117,4 +117,4 @@ Nachdem die Zuordnung erstellt und getestet wurde, steht sie jetzt zur Nutzung b
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

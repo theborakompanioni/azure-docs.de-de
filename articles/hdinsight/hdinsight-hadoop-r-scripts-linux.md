@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="04/15/2016"
 	ms.author="larryfr"/>
 
 # Installieren und Verwenden von R in HDInsight Hadoop-Clustern
 
 Sie können R in einem beliebigen Clustertyp in Hadoop in der HDInsight-Umgebung mithilfe der Clusteranpassung über **Skriptaktion** installieren. Dies ermöglicht Big Data-Experten und -Analysten die Nutzung von R zum Bereitstellen des leistungsstarken MapReduce/YARN-Programmierungsframeworks für die Verarbeitung großer Datenmengen in Hadoop-Clustern, die in HDInsight bereitgestellt sind.
 
-Beim Angebot zum [Premium-Tarif](https://azure.microsoft.com/pricing/details/hdinsight/) für HDInsight ist R Server Teil des HDInsight-Clusters. Dadurch können R-Skripts MapReduce und Spark verwenden, um verteilte Berechnungen auszuführen. Weitere Informationen finden Sie unter [Get started using R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md) (Erste Schritte mit R Server in HDInsight).
+> [AZURE.IMPORTANT] Beim [Premium](https://azure.microsoft.com/pricing/details/hdinsight/)-Angebot für HDInsight ist R Server Teil des HDInsight-Clusters. Dadurch können R-Skripts MapReduce und Spark verwenden, um verteilte Berechnungen auszuführen. Weitere Informationen finden Sie unter [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md).
 
 
 ## Was ist R?
@@ -146,4 +146,4 @@ Nach Abschluss der Clusterbereitstellung führen Sie anhand der folgenden Schrit
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

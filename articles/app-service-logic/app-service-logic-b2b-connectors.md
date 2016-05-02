@@ -13,11 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/11/2016" 
+	ms.date="04/20/2016" 
 	ms.author="mandia"/>
 
 # Business-to-Business-Connectors und API-Apps in Microsoft Azure App Service
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 Microsoft Azure App Service (oder kurz App Service) bietet viele BizTalk-API-Apps, die für die Integration von Umgebungen wichtig sind. Diese API-Apps basieren auf Konzepten und Tools, die in BizTalk Server verwendet werden, aber nun als Teil von Azure App Service verfügbar sind.
 
@@ -47,7 +48,7 @@ Dazu müssen Sie keinen Code schreiben. Lassen Sie uns anfangen.
 
 
 ## Anforderungen für den Einstieg
-Bei der Erstellung von B2B-API-Apps sind einige Ressourcen erforderlich. Diese Elemente müssen von Ihnen erstellt werden, bevor sie in anderen API-Apps verwendet werden können. Diese Anforderungen umfassen u. a.:
+Bei der Erstellung von B2B-API-Apps sind einige Ressourcen erforderlich. Diese Elemente müssen von Ihnen erstellt werden, bevor sie in anderen API-Apps verwendet werden können. Diese Anforderungen umfassen u. a.:
 
 Voraussetzung | Beschreibung
 --- | ---
@@ -83,7 +84,7 @@ Die TPM-Instanz wird mithilfe der folgenden Schritte erstellt:
 
 	Eigenschaft | Beschreibung
 --- | ---
-Name | Geben Sie einen Namen für die TPM-Instanz ein. Sie können sie z. B. *AccountsPayableTPM* nennen.
+Name | Geben Sie einen Namen für die TPM-Instanz ein. Sie können sie z. B. *AccountsPayableTPM* nennen.
 Paketeinstellungen | Geben Sie die ADO.NET-**Datenbankverbindungszeichenfolge** zur Azure-SQL-Datenbank ein, die Sie erstellt haben. <br/><br/>Wenn Sie die Verbindungszeichenfolge kopieren, wird das Kennwort nicht der Verbindungszeichenfolge hinzugefügt. Achten Sie darauf, dass das Kennwort in der Verbindungszeichenfolge eingegeben wird.
 App Service-Plan | Listet Ihren Zahlungsplan auf. Sie können ihn ändern, wenn Sie mehr oder weniger Ressourcen benötigen.
 Preisstufe | Schreibgeschützte Eigenschaft, die die Preiskategorie innerhalb Ihres Azure-Abonnements auflistet. 
@@ -105,7 +106,7 @@ Nachdem die TPM-API-App (TPM-Instanz) erstellt wurde, können Sie den AS2-Connec
 
 	Eigenschaft | Beschreibung
 --- | ---
-Name | Geben Sie einen Namen für den AS2-Connector ein. Sie können ihn z. B. *AS2Connector* nennen.
+Name | Geben Sie einen Namen für den AS2-Connector ein. Sie können ihn z. B. *AS2Connector* nennen.
 Paketeinstellungen | Geben Sie die für diese API-App spezifischen Einstellungen wie den Namen der TPM-Instanz ein. <br/><br/>Unter [Hinzufügen von AS2-Paketeinstellungen](#AddAS2Conn) in diesem Thema finden Sie Informationen zu den einzelnen Eigenschaften. 
 App Service-Plan | Listet Ihren Zahlungsplan auf. Sie können ihn ändern, wenn Sie mehr oder weniger Ressourcen benötigen.
 Preisstufe | Schreibgeschützte Eigenschaft, die die Preiskategorie innerhalb Ihres Azure-Abonnements auflistet. 
@@ -134,7 +135,7 @@ TPM-Instanzname | Geben Sie den Namen der API-App **BizTalk Trading Partner Mana
 
 	Eigenschaft | Beschreibung
 --- | ---
-Name | Geben Sie einen Namen für die B2B-API-App ein. Sie können sie z. B. *EDI850APIApp* nennen.
+Name | Geben Sie einen Namen für die B2B-API-App ein. Sie können sie z. B. *EDI850APIApp* nennen.
 Paketeinstellungen | Geben Sie die für diese API-App spezifischen Einstellungen wie den Namen der TPM-Instanz ein. <br/><br/>Unter [X12- oder EDIFACT-Paketeinstellungen](#AddX12) in diesem Thema finden Sie Informationen zu den einzelnen Eigenschaften. 
 App Service-Plan | Listet Ihren Zahlungsplan auf. Sie können ihn ändern, wenn Sie mehr oder weniger Ressourcen benötigen.
 Preisstufe | Schreibgeschützte Eigenschaft, die die Preiskategorie innerhalb Ihres Azure-Abonnements auflistet. 
@@ -193,7 +194,7 @@ Wenn Sie in Ihrer App die B2B-API-Apps aus dem Katalog auswählen, werden sie au
 
 4. Klicken Sie zum Speichern der Änderungen auf **OK**.
 
->[AZURE.NOTE] Wenn Sie sich zunächst mit Azure-Logik-Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie [Logik-Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] Wenn Sie sich zunächst mit Azure Logic Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie [Logik-Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 ## Weitere B2B-Ressourcen
 
@@ -208,4 +209,4 @@ Wenn Sie in Ihrer App die B2B-API-Apps aus dem Katalog auswählen, werden sie au
 
 [Liste mit Connectors und API-Apps](app-service-logic-connectors-list.md)<br/><br/> [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

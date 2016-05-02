@@ -30,10 +30,6 @@ Die HDInsight-Galerie für erste Schritte bietet eine schnelle und einfache Mög
 	- Analysieren von Website-Protokollen
 	- Mahout-Filmempfehlung
 
-[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-* [Kennenlernen von Hadoop mithilfe der HDInsight-Galerie für erste Schritte](hdinsight-learn-hadoop-use-sample-gallery-v1.md)
-
 ![Lösungen für HDInsight Hadoop, Storm und HBase-Galerie für erste Schritte enthalten Beispieldaten.][hdinsight.sample.gallery]
 
 Das folgende Video zeigt, wie das Beispiel zur Twitter-Trendanalyse ausgeführt wird:
@@ -68,4 +64,4 @@ Andere Möglichkeiten zum Kennenlernen von HDInsight:
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

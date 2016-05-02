@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/29/2016"
+	ms.date="04/10/2016"
 	ms.author="fboylu" />
 
 # Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
@@ -221,10 +221,8 @@ In den folgenden Schritten wird erklärt, wie Sie die PBIX-Datei mit der SQL-Dat
 
     -   Um ein neues Dashboard zu erstellen, klicken Sie im linken Bereich neben dem Abschnitt **Dashboards** auf das Symbol **+**. Geben Sie für dieses neue Dashboard den Namen „Demo für vorbeugende Wartung“ ein.
 
-    -   Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-pin.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report). Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename) Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind. Abhängig davon, wie lange Sie Ihren Datengenerator ausführen, unterscheiden sich die Zahlen in Ihren Visualisierungen unter Umständen. <br/>
-	![](media\cortana-analytics-technical-guide-predictive-maintenance\final-view.png) <br/>
-    -   Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **PredictiveMaintenanceAerospace**, klicken auf ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-elipsis.png) und wählen dann **Aktualisierung planen**. <br/> **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten** und stellen sicher, dass die Anmeldeinformationen für die Datenbank identisch mit den in Schritt 1 angegebenen sind. <br/>
-	![](media\cortana-analytics-technical-guide-predictive-maintenance\schedule-refresh.png) <br/>
+    -   Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-pin.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report). Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename) Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind. Abhängig davon, wie lange Sie Ihren Datengenerator ausführen, unterscheiden sich die Zahlen in Ihren Visualisierungen unter Umständen. <br/> ![](media\cortana-analytics-technical-guide-predictive-maintenance\final-view.png) <br/>
+    -   Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **PredictiveMaintenanceAerospace**, klicken auf ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-elipsis.png) und wählen dann **Aktualisierung planen**. <br/> **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten** und stellen sicher, dass die Anmeldeinformationen für die Datenbank identisch mit den in Schritt 1 angegebenen sind. <br/> ![](media\cortana-analytics-technical-guide-predictive-maintenance\schedule-refresh.png) <br/>
     -   Erweitern Sie den Abschnitt **Aktualisierung planen**. Aktivieren Sie „Halten Sie Ihre Daten aktuell“. <br/>
     -   Legen Sie einen geeigneten Zeitplan für die Aktualisierung fest. Weitere Informationen finden Sie unter [Aktualisieren von Daten in Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi).
 
@@ -274,4 +272,4 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 
 -   [Microsoft Azure-Kostenschätzungstool (Desktopversion)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0406_2016--->
+<!---HONumber=AcomDC_0420_2016-->

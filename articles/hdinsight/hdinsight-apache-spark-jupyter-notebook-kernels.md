@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# Verfügbare Kernels für Jupyter Notebooks mit Spark-Clustern unter HDInsight (Linux)
+# Verfügbare Kernels für Jupyter Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight (Vorschau)
 
-Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Standardmäßig verfügt ein Jupyter Notebook über einen Kernel vom Typ **Python2**. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei zusätzliche Kernel, die Sie für das Jupyter Notebook verwenden können. Dies sind:
+Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei Kernel, die Sie für Jupyter Notebook verwenden können. Dies sind:
 
 1. **PySpark** (für in Python geschriebene Anwendungen)
 2. **Spark** (für in Scala geschriebene Anwendungen)
@@ -50,11 +50,11 @@ Sie benötigen Folgendes:
 
 3. Dadurch öffnet sich ein neues Notebook mit dem ausgewählten Kernel.
 
-## Argumente für die Verwendung der neuen Kernels
+## Warum sollte ich die PySpark- oder Spark-Kernel verwenden?
 
 Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 
-1. **Voreingestellte Kontexte**. Bei Verwendung des standardmäßigen Kernels vom Typ **Python2**, der mit Jupyter Notebooks verfügbar ist, müssen Sie die Spark- oder Hive-Kontexte festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Bei Verwendung der neuen Kernel (**PySpark** oder **Spark**) stehen Ihnen diese Kontexte dagegen standardmäßig zur Verfügung. Diese Kontexte sind:
+1. **Voreingestellte Kontexte**. Bei Verwendung der **PySpark**- oder **Spark**-Kernel, die mit Jupyter Notebooks verfügbar sind, müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
 
 	* **sc** (Spark-Kontext)
 	* **sqlContext** – für Hive-Kontext
@@ -79,7 +79,7 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 	| help | `%%help` | Generiert eine Tabelle mit allen verfügbaren Magics mit Beispiel und Beschreibung. |
 	| info | `%%info` | Gibt Sitzungsinformationen für den aktuellen Livy-Endpunkt heraus. |
 	| Konfigurieren | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | Konfiguriert die Parameter für das Erstellen einer neuen Sitzung. Das Force-Flag (-f) ist obligatorisch, wenn bereits eine Sitzung erstellt wurde, und die Sitzung gelöscht und neu erstellt wird. Unter [„Request Body“ in „POST /sessions“ für Livy](https://github.com/cloudera/livy#request-body) finden Sie eine Liste der gültigen Parameter. Parameter müssen als JSON-Zeichenfolge übergeben werden und in der nächsten Zeile nach dem Magic-Befehl stehen, wie in der Beispielspalte gezeigt. |
-	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter `-o` übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Datenrahmen beibehalten. |
+	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter `-o` übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Dataframe beibehalten. |
 	| local | `%%local`<br>`a=1` | Der gesamte Code in den folgenden Zeilen wird lokal ausgeführt. Der Code muss gültiger Python-Code sein. |
 	| Protokolle | `%%logs` | Gibt die Protokolle für die aktuelle Livy-Sitzung aus. |
 	| delete | `%%delete -f -s <session number>` | Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Beachten Sie, dass Sie die Sitzung, die für den Kernel selbst initiiert wird, nicht löschen können. |
@@ -93,8 +93,8 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 
 | Parameter | Beispiel | Beschreibung |
 |-----------|---------------------------------|--------------|
-| -o | `-o <VARIABLE NAME>` | Verwenden Sie diesen Parameter, um das Ergebnis der Abfrage, im %%local-Python-Kontext, als [Pandas](http://pandas.pydata.org/)-Datenrahmen, beizubehalten. Der Name der Datenrahmenvariablen ist der Variablenname, den Sie angeben. |
-| -q | `-q` | Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren möchten, sondern einfach als Datenrahmen erfassen, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen ausschalten möchten, ohne die Ergebnisse zu erfassen (z. B. für das Ausführen einer SQL-Abfrage mit Nebeneffekten, wie z. B. einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
+| -o | `-o <VARIABLE NAME>` | Verwenden Sie diesen Parameter, um das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Dataframe beizubehalten. Der Name der Datenrahmenvariablen ist der Variablenname, den Sie angeben. |
+| -q | `-q` | Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren, sondern einfach als Dataframe erfassen möchten, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen deaktivieren möchten, ohne die Ergebnisse zu erfassen (z. B. für das Ausführen einer SQL-Abfrage mit Nebeneffekten, wie z. B. einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
 | -m | `-m <METHOD>` | Dabei ist **METHOD** entweder **take** oder **sample** (der Standardwert ist **take**). Wenn die Methode **take** ist, wählt der Kernel Elemente von der obersten Position des Resultdatasets gemäß MAXROWS (weiter unten in dieser Tabelle beschrieben). Wenn die Methode **sample** ist, wählt der Kernel nach dem Zufallsprinzip Elemente des Datasets gemäß des `-r`-Parameters, der in dieser Tabelle beschrieben wird. |
 | -r | `-r <FRACTION>` | Hier ist **FRACTION** eine Gleitkommazahl zwischen 0,0 und 1,0. Wenn die Beispielmethode für die SQL-Abfrage `sample` ist, dann wählt der Kernel nach dem Zufallsprinzip den angegebenen Bruchteil der Elemente des Resultsets für Sie aus. Wenn Sie z. B. eine SQL-Abfrage mit den Argumenten `-m sample -r 0.01` ausführen, wird 1 % der Ergebniszeilen nach dem Zufallsprinzip entnommen. |
 | -n | `-n <MAXROWS>` | **MAXROWS** ist ein Ganzzahlwert. Der Kernel schränkt die Anzahl der Ausgabezeilen auf **MAXROWS** ein. Wenn **MAXROWS** eine negative Zahl ist, z. B. **-1**, dann ist die Anzahl der Zeilen im Resultset nicht begrenzt. |
@@ -109,14 +109,12 @@ Die obige Anweisung führt Folgendes aus:
 * Wählt alle Datensätze aus **hivesampletable**.
 * Da wir -q verwenden, wird die automatische Visualisierung deaktiviert.
 * Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10 % der Zeilen in „hivesampletable“ ausgewählt und die Größe des Resultsets auf 500 Zeilen beschränkt.
-* Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Datenrahmen namens **query2** gespeichert.
+* Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Dataframe namens **query2** gespeichert.
 	
 
 ## Überlegungen bei der Verwendung der neuen Kernel
 
-Unabhängig vom verwendeten Kernel (Python2, PySpark oder Spark) werden von ausgeführten Notebooks immer Clusterressourcen beansprucht. Da die Kontexte bei einem Python2-Notebook explizit erstellt werden müssen, kann beim Verlassen der Anwendung auch die Beendigung dieser Kontexte erzwungen werden.
-
-Bei PySpark- und Spark-Kernels sind die Kontexte dagegen vorkonfiguriert. Eine erzwungene Beendigung des Kontexts ist daher nicht möglich. Wenn Sie also nur das Notebook verlassen, wird der Kontext unter Umständen weiter ausgeführt und beansprucht Clusterressourcen. Bei PySpark- und Spark-Kernels empfiehlt sich daher die Verwendung der Option zum Schließen und Anhalten aus dem Menü **Datei** des Notebooks. Dadurch wird die Beendigung des Kontexts erzwungen und das Notebook beendet.
+Unabhängig vom verwendeten Kernel (PySpark oder Spark) werden von ausgeführten Notebooks immer Clusterressourcen beansprucht. Da die Kontexte für diese Kernel voreingestellt sind, werden durch ein einfaches Beenden der Notebooks die Kontexte nicht ebenfalls beendet, sondern beanspruchen weiterhin Clusterressourcen. Bei PySpark- und Spark-Kernels empfiehlt sich daher die Verwendung der Option zum Schließen und Anhalten aus dem Menü **Datei** des Notebooks. Dadurch wird die Beendigung des Kontexts erzwungen und das Notebook beendet.
 
 
 ## Beispiele
@@ -139,7 +137,7 @@ Die Art, in der Notebooks im Speicherkonto gespeichert werden, ist mit HDFS komp
 	hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
 
-Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster vorliegen, werden die Notebooks ebenfalls auf dem Hauptknoten gespeichert `/var/lib/jupyter`.
+Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster auftreten, werden die Notebooks ebenfalls im Hauptknoten gespeichert `/var/lib/jupyter`.
 
 ## Unterstützte Browser
 Für HDInsight Spark-Cluster ausgeführte Jupyter Notebooks werden nur von Google Chrome unterstützt.
@@ -182,4 +180,4 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

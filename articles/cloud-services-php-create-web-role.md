@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="04/08/2016"
 	ms.author="robmcm"/>
 
 #Erstellen von PHP-Web- und Workerrollen
@@ -26,7 +26,7 @@ In diesem Leitfaden erfahren Sie, wie Sie PHP-Web- oder Workerrollen in einer Wi
 
 Azure bietet drei Computemodelle für das Ausführen von Anwendungen: Azure App Service, Azure Virtual Machines und Azure Cloud Services. Alle drei Modell unterstützen PHP. Cloud Services enthält Web- und Workerrollen und bietet *Platform as a Service (PaaS)*. In einem Clouddienst stellt eine Webrolle einen dedizierten Internet Information Services (IIS)-Webserver zum Hosten von Front-End-Webanwendungen bereit. Eine Workerrolle kann asynchrone, langfristige oder fortwährende Aufgaben ausführen, die von einer Benutzerinteraktion oder -eingabe unabhängig sind.
 
-Weitere Informationen zu diesen Optionen finden Sie unter [Computehostingoptionen in Azure](./cloud-services/fundamentals-application-models.md).
+Weitere Informationen zu diesen Optionen finden Sie unter [Computehostingoptionen in Azure](./cloud-services/cloud-services-choose-me.md).
 
 ## Herunterladen des Azure SDK für PHP
 
@@ -60,7 +60,7 @@ Wenn Sie eine PHP-Web- oder Workerrolle zu einem Projekt hinzugefügt haben, än
 
 	PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
-Die Ausgabe dieses Befehls wird ähnlich wie die unten angezeigte Ausgabe aussehen. In diesem Beispiel ist das Kennzeichen `IsDefault` für PHP 5.3.17 auf `true` festgelegt, das heißt, dass dies die installierte PHP-Standardversion ist.
+Die Ausgabe dieses Befehls wird ähnlich wie die unten angezeigte Ausgabe aussehen. In diesem Beispiel ist das Kennzeichen `IsDefault` für PHP 5.3.17 auf `true` festgelegt, das heißt, dass dies die installierte PHP-Standardversion ist.
 
 	Runtime Version		PackageUri						IsDefault
 	------- ------- 	----------  					---------
@@ -85,7 +85,7 @@ Sie haben vollständige Kontrolle über die Konfiguration der PHP-Laufzeit, die 
 Führen Sie folgende Schritte aus, um die integrierte PHP-Laufzeit anzupassen:
 
 1. Fügen Sie dem Verzeichnis `bin` einen neuen Ordner namens `php` der Webrolle hinzu. Für eine Workerrolle fügen Sie diesen zum Stammverzeichnis der Rolle hinzu.
-2. Erstellen Sie im Ordner `php` einen weiteren Ordner namens `ext`. Legen Sie alle `.dll`-Erweiterungsdateien (z. B. `php_mongo.dll`), die Sie aktivieren möchten, in diesem Ordner ab.
+2. Erstellen Sie im Ordner `php` einen weiteren Ordner namens `ext`. Legen Sie alle `.dll`-Erweiterungsdateien (z. B. `php_mongo.dll`), die Sie aktivieren möchten, in diesem Ordner ab.
 3. Fügen Sie dem Ordner `php` die Datei `php.ini` hinzu. Aktivieren Sie alle benutzerdefinierten Erweiterungen, und legen Sie alle PHP-Direktiven in dieser Datei fest. Wenn Sie zum Beispiel `display_errors` und die Erweiterung `php_mongo.dll` aktivieren möchten, sieht der Inhalt der Datei `php.ini` folgendermaßen aus:
 
 		display_errors=On
@@ -211,4 +211,4 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64-Installer]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -18,7 +18,8 @@
 
 
 # Erste Schritte mit dem SAP-Connector und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+
+>[AZURE.NOTE] Für diesen Connector wird basierend auf Kundenfeedback ein Upgrade durchgeführt. Wir werden diese Seite aktualisieren, sobald er fertig ist. Es wird davon abgeraten, den SAP-Connector verwenden, bevor die neue Version verfügbar ist. Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
 Stellen Sie eine Verbindung mit dem lokalen SAP-System her, um RFC aufzurufen oder Metadaten abzurufen. In verschiedenen Szenarios müssen Sie möglicherweise mit einem SAP-System arbeiten, das lokal und hinter der Firewall installiert ist. Mithilfe des SAP-Connectors im Workflow können Sie eine Vielzahl von Szenarios realisieren. Einige Beispiele:
 
@@ -98,4 +99,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

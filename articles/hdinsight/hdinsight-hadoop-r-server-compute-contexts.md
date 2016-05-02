@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Rechenkontextoptionen für R Server in HDInsight Premium | Azure"
-   description="Lernen Sie die verschiedenen Rechenkontextoptionen kennen, die Benutzern mit R Server in HDInsight Premium zur Verfügung stehen."
+   pageTitle="Rechenkontextoptionen für R Server in HDInsight (Vorschau) | Azure"
+   description="Lernen Sie die verschiedenen Rechenkontextoptionen kennen, die Benutzern mit R Server in HDInsight (Vorschau) zur Verfügung stehen."
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -18,9 +18,9 @@
    ms.author="jeffstok"
 />
 
-# Rechenkontextoptionen für R Server in HDInsight Premium
+#Rechenkontextoptionen für R Server in HDInsight (Vorschau)
 
-R Server auf HDI Spark stellt die neuesten Funktionen für die R-basierte Analyse mithilfe von in HDFS gespeicherten Daten bereit, die in einem Container in Ihrem lokalen [Azure-Blobspeicherkonto](../storage/storage-introduction.md "Azure-Blobspeicher") oder auf dem lokalen Linux-Dateisystem enthalten sind. Da R Server auf der Open Source-Sprache R basiert, profitieren Ihre Anwendungen von mehr als 8.000 Open Source-Paketen für R und von den Routinen im Big Data-Analysepaket [ScaleR](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR") von Microsoft, das Bestandteil von R Server ist. Der Edgeknoten der Premium-Cluster stellt eine praktische Möglichkeit für die Verbindung mit dem Cluster und die Ausführung Ihrer R-Skripts bereit. Mit einem Edgeknoten können Sie die parallelisierten verteilten Funktionen von ScaleR entweder auf den Kernen des Edgeknotenservers oder auf den Knoten des Clusters ausführen. Hierfür müssen Sie die ScaleR-Rechenkontexte Hadoop MapReduce oder Spark verwenden.
+R Server in HDInsight (Vorschau) stellt die neuesten Funktionen für die R-basierte Analyse mithilfe von Daten bereit, die in HDFS in einem Container in Ihrem lokalen [Azure-Blobspeicherkonto](../storage/storage-introduction.md "Azure-Blobspeicher") oder auf dem lokalen Linux-Dateisystem gespeichert sind. Da R Server auf der Open Source-Sprache R basiert, profitieren Ihre Anwendungen von mehr als 8.000 Open Source-Paketen für R und von den Routinen im Big Data-Analysepaket [ScaleR](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR") von Microsoft, das Bestandteil von R Server ist. Der Edgeknoten der Premium-Cluster stellt eine praktische Möglichkeit für die Verbindung mit dem Cluster und die Ausführung Ihrer R-Skripts bereit. Mit einem Edgeknoten können Sie die parallelisierten verteilten Funktionen von ScaleR entweder auf den Kernen des Edgeknotenservers oder auf den Knoten des Clusters ausführen. Hierfür müssen Sie die ScaleR-Rechenkontexte Hadoop MapReduce oder Spark verwenden.
 
 ## Rechenkontexte für einen Edgeknoten
 
@@ -77,6 +77,6 @@ In diesem Artikel haben Sie erfahren, wie Sie einen neuen HDInsight-Cluster mit 
 - [Übersicht über R Server in Hadoop](hdinsight-hadoop-r-server-overview.md)
 - [Erste Schritte mit R Server in Hadoop](hdinsight-hadoop-r-server-get-started.md)
 - [Hinzufügen von RStudio Server zu HDInsight Premium](hdinsight-hadoop-r-server-install-r-studio.md)
-- [Azure Storage-Optionen für R Server in HDInsight Premium](hdinsight-hadoop-r-server-storage.md)
+- [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

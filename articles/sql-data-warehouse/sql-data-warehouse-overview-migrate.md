@@ -3,7 +3,7 @@
    description="Migrationshinweise zum Übertragen Ihrer Lösung auf die Plattform Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.author="barbkess;jrj;sonyama"/>
 
 # Migrieren Ihrer Lösung nach SQL Data Warehouse
 
@@ -52,4 +52,4 @@ Sehen Sie sich außerdem die [Übersicht zum Laden][] an, die verschiedene Optio
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

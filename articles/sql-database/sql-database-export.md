@@ -25,17 +25,17 @@
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com) Ihre Azure SQL-Datenbank in einer BACPAC-Datei archivieren, die im Azure-Blobspeicher gespeichert ist.
 
-Wenn Sie ein Archiv einer Azure SQL-Datenbank erstellen müssen, können Sie das Datenbankschema und die Daten in eine BACPAC-Datei exportieren. Eine BACPAC-Datei ist einfach eine ZIP-Datei mit einer Erweiterung um BACPAC. Eine BACPAC-Datei kann später im Azure-Blobspeicher oder im lokalen Speicher an einem lokalen Standort gespeichert werden und dann zurück in die Azure SQL-Datenbank oder in eine lokale SQL-Serverinstallation importiert werden.
+Wenn Sie ein Archiv einer Azure SQL-Datenbank erstellen müssen, können Sie das Datenbankschema und die Daten in eine BACPAC-Datei exportieren. Eine BACPAC-Datei ist einfach eine ZIP-Datei mit der Erweiterung BACPAC. Eine BACPAC-Datei kann später im Azure-Blobspeicher oder im lokalen Speicher an einem lokalen Standort gespeichert werden und dann zurück in die Azure SQL-Datenbank oder in eine lokale SQL-Serverinstallation importiert werden.
 
 ***Überlegungen***
 
 - Damit ein Archiv hinsichtlich der Transaktionen konsistent ist, müssen Sie entweder sicherstellen, dass keine Schreibaktivitäten während des Exports durchgeführt werden, oder den Export von einer [in Hinsicht auf Transaktionen konsistenten Kopie](sql-database-copy.md) Ihrer Azure SQL-Datenbank durchführen.
-- Die Maximalgröße für eine BACPAC-Datei, die in den Azure-Blobspeicher archiviert wird, ist 200 GB. Verwenden Sie die Eingabeaufforderung [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx), um eine große BACPAC-Datei im lokalen Speicher zu archivieren. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Sie können auch die aktuelle Version der SQL Server Data Tools [herunterladen](https://msdn.microsoft.com/library/mt204009.aspx), um dieses Hilfsprogramm zu erhalten.
+- Die Maximalgröße für eine BACPAC-Datei, die in den Azure-Blobspeicher archiviert wird, beträgt 200 GB. Verwenden Sie die Eingabeaufforderung [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx), um eine große BACPAC-Datei im lokalen Speicher zu archivieren. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Sie können auch die aktuelle Version der SQL Server Data Tools [herunterladen](https://msdn.microsoft.com/library/mt204009.aspx), um dieses Hilfsprogramm zu erhalten.
 - Das Archivieren in Azure Storage Premium mithilfe einer BACPAC-Datei wird nicht unterstützt.
-- Falls der Exportvorgang länger als 20 Stunden dauert, wird er möglicherweise abgebrochen. Um die Leistung während des Exports zu erhöhen, können Sie Folgendes tun:
- - Erhöhen Sie vorübergehend Ihr Servicelevel 
- - Unterlassen Sie jegliche Lese- und Schreibaktivitäten während des Exports
- - Verwenden Sie einen gruppierten Index für alle großen Tabellen. Ohne gruppierte Indexe schlägt ein Export, der länger als sechs bis zwölf Stunden dauert, möglicherweise fehl. Dies liegt daran, dass die Export-Dienste einen Tabellenscan abschließen müssen, um die gesamte Tabelle zu exportieren.
+- Falls der Exportvorgang länger als 20 Stunden dauert, wird er unter Umständen abgebrochen. Um die Leistung während des Exports zu erhöhen, können Sie Folgendes tun:
+ - Erhöhen Sie vorübergehend Ihr Servicelevel. 
+ - Unterlassen Sie jegliche Lese- und Schreibaktivitäten während des Exports.
+ - Verwenden Sie einen gruppierten Index für alle großen Tabellen. Ohne gruppierte Indizes schlägt ein Export, der länger als sechs bis zwölf Stunden dauert, ggf. fehl. Dies liegt daran, dass die Exportdienste einen Tabellenscan durchführen müssen, um die gesamte Tabelle zu exportieren.
 
 > [AZURE.NOTE] BACPAC-Dateien eignen sich nicht für Backup- und Wiederherstellungsvorgänge. Azure SQL-Datenbank erstellt für jede Benutzerdatenbank automatisch Sicherungen. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
@@ -87,9 +87,8 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## Nächste Schritte
 
-- [Importieren einer Azure SQL-Datenbank][5]
-
-
+- [Importieren einer BACPAC-Datei in eine Azure SQL­Datenbank](sql-database-import.md)
+- [Importieren einer BACPAC-Datei in eine SQL Server-Datenbank](https://msdn.microsoft.com/library/hh710052.aspx)
 
 ## Zusätzliche Ressourcen
 
@@ -105,4 +104,4 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

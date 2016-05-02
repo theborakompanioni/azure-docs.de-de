@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer
@@ -52,4 +52,4 @@ Eine vollständige Vorlage mit Erweiterungen für virtuelle Computer finden Sie 
 
 Die erstellte Vorlage können Sie anschließend über Azure PowerShell bereitstellen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

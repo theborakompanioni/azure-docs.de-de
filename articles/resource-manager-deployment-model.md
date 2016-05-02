@@ -36,11 +36,11 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
   - Das [Azure-Portal](https://portal.azure.com/)
 
-   ![Azure-Portal](./media/resource-manager-deployment-model/preview-portal.png)
+        ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-   Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
+        Für Compute-, Storage- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Ressourcen-Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager** .
 
-   ![Resource Manager-Bereitstellung](./media/resource-manager-deployment-model/select-resource-manager.png)
+        ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
   - Verwenden Sie in Azure PowerShell die Befehle des Resource Manager-Modells. Diese Befehle haben das Format *Verb-AzureRmNomen*, wie unten dargestellt.
 
@@ -53,7 +53,7 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
 - Der Name des Ressourcentyps enthält nicht das Wort **(klassisch)**. Die folgende Abbildung zeigt den Typ **Speicherkonto**.
 
-   ![Web-App](./media/resource-manager-deployment-model/resource-manager-type.png)
+    ![Web-App](./media/resource-manager-deployment-model/resource-manager-type.png)
 
 Die in der folgenden Abbildung dargestellte Anwendung zeigt über den Ressourcen-Manager bereitgestellte Ressourcen in einer einfachen Ressourcengruppe.
 
@@ -83,11 +83,11 @@ Ressourcen, die im klassischen Bereitstellungsmodell erstellt wurden, weisen fol
 
   - [Klassisches Portal](https://manage.windowsazure.com)
 
-   ![Klassisches Portal](./media/resource-manager-deployment-model/azure-portal.png)
+        ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-   Alternativ können Sie das Azure-Portal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
+        Alternativ können Sie das Vorschauportal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
 
-   ![Klassische Bereitstellung](./media/resource-manager-deployment-model/select-classic.png)
+        ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
   - Verwenden Sie in Azure PowerShell die Dienstverwaltungsversion der Befehle. Diese Befehlsnamen haben das Format *Verb-AzureNomen*, wie unten dargestellt.
 
@@ -97,7 +97,7 @@ Ressourcen, die im klassischen Bereitstellungsmodell erstellt wurden, weisen fol
   - Befehle der Azure-Befehlszeilenschnittstelle, die im Modus **asm** oder im Standardmodus ausgeführt werden.
 - Der Name des Ressourcentyps enthält das Wort **(klassisch)**. Die folgende Abbildung zeigt den Typ **Speicherkonto (klassisch)**.
 
-   ![Klassischer Typ](./media/resource-manager-deployment-model/classic-type.png)
+    ![Klassischer Typ](./media/resource-manager-deployment-model/classic-type.png)
 
 Sie können weiterhin das Azure-Portal zur Verwaltung von Ressourcen verwenden, die über die klassische Bereitstellung erstellt wurden.
 
@@ -131,7 +131,7 @@ Weitere Informationen zur Verwendung von Tags im Ressourcen-Manager finden Sie u
 
 ## Unterstützte Vorgänge für die Bereitstellungsmodelle
 
-Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstützen keine Ressourcen-Manager-Vorgänge. In einigen Fällen können Sie mithilfe eines Ressourcen-Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder administrative Aufgaben ausführen, z. B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Ressourcen-Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die sowohl mit dem Ressourcen-Manager als auch mit dem klassischen Modell erstellte virtuelle Computer enthält. Wenn Sie folgenden PowerShell-Befehl ausführen:
+Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstützen keine Ressourcen-Manager-Vorgänge. In einigen Fällen können Sie mithilfe eines Ressourcen-Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder administrative Aufgaben ausführen, z. B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Ressourcen-Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die sowohl mit dem Ressourcen-Manager als auch mit dem klassischen Modell erstellte virtuelle Computer enthält. Wenn Sie folgenden PowerShell-Befehl ausführen:
 
     Get-AzureRmResourceGroup -Name ExampleGroup
 
@@ -169,8 +169,6 @@ Bei der Arbeit mit virtuellen Computern sind einige wichtige Aspekte zu berücks
 
 Wenn Ausfallzeiten für Ihre virtuellen Computer eingeplant werden können, dann können Sie diese mit [ASM2ARM-PowerShell-Skripts](https://github.com/fullscale180/asm2arm) von der klassischen Bereitstellung zu Ressourcen-Manager übertragen.
 
-Eine Liste der entsprechenden Befehle der Azure-Befehlszeilenschnittstelle beim Wechsel von der klassischen zur Ressourcen-Manager-Bereitstellung finden Sie unter [Befehlsentsprechungen für Ressourcen-Manager und Dienstverwaltung für VM-Vorgänge](./virtual-machines/virtual-machines-linux-cli-manage.md).
-
 Detaillierte Informationen zum Verschieben von Compute-, Speicher- und Netzwerkressourcen finden Sie unter [Azure-Compute-, Netzwerk- und Speicheranbieter unter dem Azure-Ressourcen-Manager](./virtual-machines/virtual-machines-windows-compare-deployment-models.md).
 
 Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellungsmodellen finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](./virtual-network/virtual-networks-arm-asm-s2s.md).
@@ -181,4 +179,4 @@ Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellun
 - Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

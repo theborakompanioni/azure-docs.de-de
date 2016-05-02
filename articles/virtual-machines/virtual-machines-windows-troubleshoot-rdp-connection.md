@@ -4,7 +4,7 @@
 	keywords="Remotedesktop-Fehler,Remotedesktop-Verbindungsfehler,Verbindung mit virtuellem Computer nicht möglich,Remotedesktop-Problembehandlung"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
@@ -14,9 +14,9 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/25/2016"
-	ms.author="dkshir"/>
+	ms.topic="support-article"
+	ms.date="04/12/2016"
+	ms.author="iainfou"/>
 
 # Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer
 
@@ -48,7 +48,7 @@ Diese Schritte können dabei helfen, die meisten Remotedesktop-Verbindungsfehler
 
 - Überprüfen Sie die Ressourcenintegrität des virtuellen Computers auf etwaige Plattformprobleme.<br> Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > „Ihr virtueller Windows-Computer“ > **Einstellungen** > **Integrität prüfen**.
 
-## Virtuelle Computer, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden
+### Virtuelle Computer, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden
 
 Diese Schritte können dabei helfen, die meisten Remotedesktop-Verbindungsfehler bei virtuellen Azure-Computern zu beheben, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden. Versuchen Sie nach jedem Schritt, die Verbindung mit dem virtuellen Computer erneut herzustellen.
 
@@ -167,8 +167,8 @@ Wenn keiner dieser Fehler auftritt und Sie trotzdem keine Verbindung mit dem vir
 
 [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
-[Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md)
+[Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md)
 
 [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

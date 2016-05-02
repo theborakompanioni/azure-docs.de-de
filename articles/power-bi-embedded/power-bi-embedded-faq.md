@@ -1,6 +1,6 @@
 <properties
    pageTitle="Häufig gestellte Fragen"
-   description="Häufig gestellte Fragen"
+   description="Häufig gestellte Fragen zu Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -116,4 +116,4 @@
 - [Was ist Microsoft Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

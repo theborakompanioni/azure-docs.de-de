@@ -3,8 +3,8 @@
 	description="Diese Spezifikation beschreibt das Protokoll und Format für die Fragmented MP4-basierte Erfassung des Live-Streamings für Microsoft Azure Media Services. Microsoft Azure Media Services bietet einen Live-Streaming-Dienst, mit dem Kunden Liveereignisse und Sendungsinhalte mit Microsoft Azure als Cloud-Plattform in Echtzeit streamen können. In diesem Dokument werden auch optimale Verfahren bei der Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben." 
 	services="media-services" 
 	documentationCenter="" 
-	authors="cenkdin,juliako" 
-	manager="dwrede" 
+	authors="cenkdin" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016"    
+	ms.author="cenkdin;juliako"/>
 
 #Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
 
@@ -221,4 +221,4 @@ Es folgt eine empfohlene Implementierung für redundante Audiospuren:
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

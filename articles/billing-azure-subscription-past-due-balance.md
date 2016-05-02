@@ -15,16 +15,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/17/2016"
 	ms.author="genli"/>
 
 # Warum haben Sie eine Benachrichtigung erhalten, dass Ihr Azure-Abonnement einen überfälligen Saldo aufweist?
-Wenn Sie der Kontoadministrator für das Azure-Abonnement sind und Ihre Zahlung nicht rechtzeitig erfolgt ist, erhalten Sie eine E-Mail-Benachrichtigung über Ihren überfälligen Saldo, oder unter http://accounts.windowsazure.com oder http://portal.azure.com wird eine Warnung angezeigt.
+Wenn Sie der Kontoadministrator für das Azure-Abonnement sind und Ihre Zahlung nicht rechtzeitig erfolgt ist, erhalten Sie eine E-Mail-Benachrichtigung über Ihren überfälligen Saldo, oder unter [https://account.windowsazure.com](https://account.windowsazure.com) oder [https://portal.azure.com](https://portal.azure.com) wird eine Warnung angezeigt.
 
-### Was geschieht, wenn Sie vergessen zu bezahlen?
+## Was geschieht, wenn Sie vergessen zu bezahlen?
 Der Dienst wird beendet, und Ihre Ressourcen sind nicht mehr verfügbar. Sämtliche Daten werden 90 Tage nach dem Beenden des Diensts gelöscht.
 
-### Wie können Sie vorgehen, um das Problem zu beheben?
+## Wie können Sie vorgehen, um das Problem zu beheben?
 
 Bezahlen Sie Ihren ausstehenden Saldo vollständig.
 
@@ -35,4 +35,4 @@ Bezahlen Sie Ihren ausstehenden Saldo vollständig.
 
 **Szenario 3**: Wenn die Rechnung nicht eingegangen ist, weil der Kontoadministrator aus dem Unternehmen ausgeschieden ist oder die Rolle gewechselt hat, wenden Sie sich an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem zu beheben.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

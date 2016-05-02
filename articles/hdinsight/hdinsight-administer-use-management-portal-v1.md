@@ -31,6 +31,8 @@ Neben dem klassischen Azure-Portal stehen auch andere Tools zum Verwalten von HD
 
 - Weitere Informationen zum Verwalten von HDInsight mit der Azure-CLI finden Sie unter [Verwalten von HDInsight mit der Azure-CLI](hdinsight-administer-use-command-line.md).
 
+> [AZURE.WARNING] Die neuesten Versionen von Azure PowerShell und die Azure-Befehlszeilenschnittstelle verwenden standardmäßig Azure Resource Manager. In diesem Modus erstellte HDInsight-Cluster können über das klassische Azure-Portal nicht verwaltet werden.
+
 ##Voraussetzungen
 
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
@@ -198,4 +200,4 @@ In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem klassisc
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop-Befehlszeile"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

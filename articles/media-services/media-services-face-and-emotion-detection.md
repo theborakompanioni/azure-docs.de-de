@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="04/14/2016"   
 	ms.author="milanga;juliako;"/>
-
+ 
 #Gesichts- und Emotionenerkennung mit Azure Media Analytics
 
 ##Übersicht
@@ -30,7 +30,7 @@ Mit dem Medienprozessor (MP) **Azure Media Face Detector** können Sie Bewegunge
 
 - **Emotionenerkennung**
 	
-	Emotionenerkennung ist eine optionale Komponente des Gesichtserkennungs-Medienprozessors, die eine Analyse verschiedener emotionaler Attribute in den Gesichtern liefert, einschließlich Glück, Trauer, Angst, Wut und anderer Emotionen. Diese Daten können pro Gesicht oder als Gruppenwert zurückgegeben und in einem anpassbaren Fenster und Intervall aggregiert werden.
+	Emotionenerkennung ist eine optionale Komponente des Gesichtserkennungs-Medienprozessors, die eine Analyse verschiedener emotionaler Attribute in den Gesichtern liefert, einschließlich Glück, Trauer, Angst, Wut und anderer Emotionen.
 
 Der MP **Azure Media Face Detector** befindet sich derzeit in der Vorschauphase.
 
@@ -164,18 +164,22 @@ Wenn Sie eine Aufgabe mit **Azure Media Face Detector** erstellen, müssen Sie e
 	}
 
 
+####Beschreibungen der Attribute
+
 Attributname|Beschreibung
 ---|---
 Mode|Faces: Nur Gesichtserkennung <br/>AggregateEmotion: Rückgabe der durchschnittlichen Emotionswerte für alle Gesichter im Frame.
 AggregateEmotionWindowMs|Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt die Länge des Videos, das jeweils zum Produzieren eines Aggregierergebnisses verwendet wird, in Millisekunden an.
 AggregateEmotionIntervalMs|Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt an, mit welcher Häufigkeit Aggregierergebnisse erzeugt werden.
 
-Die folgenden Aggregierstandardwerte werden für Aggregierfenster und Intervalleinstellungen empfohlen. Das Fenster sollte länger sein als das Intervall.
+####Aggregierstandardwerte
+
+Die folgenden Werte werden für Aggregierfenster und Intervalleinstellungen empfohlen. AggregateEmotionWindowMs sollte länger als AggregateEmotionIntervalMs sein.
 
  |Standardwerte (s)|Maximum (s)|Minimum (s)
 ---|---|---|---
-Fensterlänge|2|3|1
-Intervall|0,5|1|0,25
+AggregateEmotionWindowMs|0,5|2|0,25
+AggregateEmotionIntervalMs|0,5|1|0,25
 
 ###JSON-Ausgabe
 
@@ -531,4 +535,6 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+[Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=AcomDC_0420_2016-->

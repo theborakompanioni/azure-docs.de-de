@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen
@@ -35,7 +35,7 @@ Dieser Befehl gibt den Herausgebernamen, den Erweiterungsnamen und die Version z
 
 Diese drei Eigenschaften sind im oben dargestellten Vorlagenausschnitt „publisher“, „type“ und „typeHandlerVersion“ zugeordnet.
 
->[AZURE.NOTE]Es empfiehlt sich, die neueste Erweiterungsversion zu verwenden, um die neuesten Funktionen zu erhalten.
+>[AZURE.NOTE]Es empfiehlt sich, die aktuelle Erweiterungsversion zu verwenden, um die neuesten Funktionen zu erhalten.
 
 ## Identifizieren des Schemas für die Erweiterungskonfigurationsparameter
 
@@ -49,4 +49,4 @@ Eine vollständige Vorlage mit VM-Erweiterungen finden Sie hier:
 
 Die erstellte Vorlage können Sie anschließend über die Azure-Befehlszeilenschnittstelle bereitstellen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

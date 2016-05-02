@@ -71,7 +71,7 @@ In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiz
 
 Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Search ein gemeinsames Feld mit dem Namen `Key`, wobei es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der PartitionKey einer Zeile beispielsweise `PK1` lautet und RowKey den Wert `RK1` hat, hat das Feld `Key` den Wert `PK1RK1`.
 
-> AZURE.NOTE Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die Option `base64EncodeKeys` in den Indexereigenschaften aktivieren. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z. B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
+> [AZURE.NOTE] Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z. B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die Option `base64EncodeKeys` in den Indexereigenschaften aktivieren. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z. B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
 
 ## Behandeln von unterschiedlichen Feldnamen
 
@@ -100,4 +100,4 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

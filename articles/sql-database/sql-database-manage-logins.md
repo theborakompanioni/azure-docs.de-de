@@ -5,7 +5,7 @@
    services="sql-database"
    documentationCenter=""
    authors="BYHAM"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""
    tags=""/>
 
@@ -20,7 +20,7 @@
 
 # Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit  
 
-Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und insbesondere dazu, wie der Datenbankzugriff und die Anmeldesicherheit über das Prinzipalkonto auf Serverebene verwaltet wird. Sie erhalten grundlegende Informationen zu den Unterschieden und Ähnlichkeiten in Bezug auf die Anmeldesicherheitsoptionen bei SQL-Datenbank und lokalen SQL Server-Instanzen.
+Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und insbesondere dazu, wie der Datenbankzugriff und die Anmeldesicherheit über das Prinzipalkonto auf Serverebene verwaltet wird. Sie erhalten grundlegende Informationen zu den Unterschieden und Ähnlichkeiten in Bezug auf die Anmeldesicherheitsoptionen bei SQL-Datenbank und lokalen SQL Server-Instanzen. Unter [Azure SQL Database Tutorial: Get Started with Azure SQL Database Security](sql-database-get-started-security.md) (Azure SQL-Datenbanktutorial: Erste Schritte mit SQL-Datenbanksicherheit) finden Sie ein kurzes Tutorial.
 
 ## Datenbankbereitstellung und Prinzipalanmeldung auf Serverebene
 
@@ -30,7 +30,7 @@ Das Serverebenenprinzipal-Konto von Azure SQL-Datenbank verfügt immer über die
 
 Azure-Benutzer, die über die rollenbasierte Access Control (Role-Based Access Control, RBAC) von Azure und die Azure Resource Manager-REST-API auf SQL-Datenbank zugreifen, erhalten Berechtigungen gemäß ihren Azure-Rollen. Diese Rollen ermöglichen den Zugriff auf Vorgänge der Verwaltungsebene, jedoch nicht auf Vorgänge der Datenebene. Zu den Vorgängen der Verwaltungsebene zählt u.a. die Möglichkeit, verschiedene Eigenschaften und Schemaelemente in SQL-Datenbank zu lesen. Darüber hinaus werden das Erstellen, Löschen und Konfigurieren einiger Features auf Serverebene im Zusammenhang mit SQL-Datenbank ermöglicht. Bei vielen dieser Vorgänge auf Verwaltungsebene handelt es sich um die Elemente, die Sie bei Verwendung des Azure-Portals sehen und konfigurieren können. Bei Verwendung der RBAC-Rollen werden die Aktionen der Azure-Rollenmitglieder innerhalb der Datenbank (z.B. das Auflisten von Tabellen) vom Datenbankmodul für sie ausgeführt, sodass diese nicht von den GRANT/REVOKE/DENY-Anweisungen des SQL Server-Standardberechtigungssystems betroffen sind. Die RBAC-Rollen beinhalten nicht die Möglichkeit zum Lesen oder Ändern von Daten, da es sich dabei um Vorgänge der Datenebene handelt. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 
-> [AZURE.IMPORTANT] Mit SQL-Datenbank V12 können sich Benutzer gegenüber der Datenbank authentifizieren, indem sie Benutzer für eigenständige Datenbanken verwenden. Benutzer für eigenständige Datenbanken benötigen keine Anmeldungen. Dies verbessert die Portabilität von Datenbanken, reduziert aber auch die Fähigkeit des Serverebenenprinzipals, den Zugriff auf die Datenbank zu steuern. Das Aktivieren von Benutzern für eigenständige Datenbanken ist mit wichtigen Auswirkungen auf die Sicherheit verbunden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx), [Eigenständige Datenbanken](https://technet.microsoft.com/library/ff929071.aspx) und [CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx) und [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
+> [AZURE.IMPORTANT] Mit SQL-Datenbank V12 können sich Benutzer gegenüber der Datenbank authentifizieren, indem sie Benutzer für eigenständige Datenbanken verwenden. Benutzer für eigenständige Datenbanken benötigen keine Anmeldungen. Dies verbessert die Portabilität von Datenbanken, reduziert aber auch die Fähigkeit des Serverebenenprinzipals, den Zugriff auf die Datenbank zu steuern. Das Aktivieren von Benutzern für eigenständige Datenbanken ist mit wichtigen Auswirkungen auf die Sicherheit verbunden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx), [Eigenständige Datenbanken](https://technet.microsoft.com/library/ff929071.aspx) und [CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx) und [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
 
 ## Übersicht über die Verwaltung der Sicherheit von SQL-Datenbank
 
@@ -69,7 +69,7 @@ CREATE USER user1 WITH password='<Strong_Password>';
 
 Weitere Benutzer für eigenständige Datenbanken können von jedem Benutzer mit der Berechtigung **ALTER ANY USER** erstellt werden.
 
-SQL-Datenbank, Version 12, unterstützt Azure Active Directory-Identitäten als Vorschaufeature als eigenständige Datenbankbenutzer. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
+SQL-Datenbank, Version 12, unterstützt Azure Active Directory-Identitäten als Vorschaufeature als eigenständige Datenbankbenutzer. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
 
 Microsoft empfiehlt die Verwendung von Benutzern für eigenständige Datenbanken mit SQL-Datenbank. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
@@ -157,7 +157,7 @@ CREATE USER login1User FROM LOGIN login1;
 Dieses Berechtigungsmodell auf Datenbankebene in Azure SQL-Datenbank ist mit einer lokalen Instanz von SQL Server identisch. Informationen hierzu finden Sie in den folgenden Themen der Referenz in der SQL Server-Onlinedokumentation.
 
 - [Verwalten von Anmeldungen, Benutzern und Schemas: Vorgehensweisen](https://msdn.microsoft.com/library/aa337552.aspx)
-- [Lektion 2: Konfigurieren von Berechtigungen für Datenbankobjekte](https://msdn.microsoft.com/library/ms365345.aspx)
+- [Lektion 2: Konfigurieren von Berechtigungen für Datenbankobjekte](https://msdn.microsoft.com/library/ms365345.aspx)
 
 > [AZURE.NOTE] Sicherheitsbezogene Transact-SQL-Anweisungen in Azure SQL-Datenbank können sich in Bezug auf die verfügbaren Parameter leicht unterscheiden. Weitere Informationen finden Sie in der Onlinedokumentation zur Syntax für bestimmte Anweisungen.
 
@@ -174,6 +174,6 @@ SELECT * FROM sys.databases;
 
 ## Weitere Informationen
 
-[Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md) [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
+[Azure SQL Database Tutorial: Get Started with Azure SQL Database Security](sql-database-get-started-security.md) (Azure SQL-Datenbanktutorial: Erste Schritte mit SQL-Datenbanksicherheit) [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md) [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

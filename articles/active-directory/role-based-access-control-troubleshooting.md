@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="04/18/2016"
 	ms.author="kgremban"/>
 
 # Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung
@@ -22,7 +22,7 @@
 
 Die [rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md) ist eine leistungsstarke Funktion, mit der Sie Zugriffsberechtigungen für Azure-Ressourcen differenziert steuern können. Gewähren Sie einem bestimmten Benutzer einfach und sicher Zugriff auf genau die Ressourcen, die er benötigt. In einigen Fällen kann das Ressourcen-Modell für Azure-Ressourcen jedoch kompliziert sein, und es ist nicht immer leicht ersichtlich, wofür Sie Berechtigungen vergeben.
 
-In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung einiger der Rollen im Azure-Portal. Es sind drei allgemeine Rollen enthalten, die alle Ressourcentypen abdecken:
+In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung einiger der Rollen im Azure-Portal. Diese drei enthaltenen Rollen umfassen alle Ressourcentypen:
 
 - Besitzer  
 - Mitwirkender  
@@ -36,16 +36,16 @@ Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunkt
 
 Wenn Sie einem Benutzer schreibgeschützten Zugriff für eine einzelne Web-App gewähren, sind einige Features deaktiviert, von denen Sie das unter Umständen nicht erwartet haben. Die folgenden Verwaltungsfunktionen erfordern **Schreibzugriff** auf eine Web-App (entweder als Mitwirkender oder Besitzer) und stehen nicht zur Verfügung, wenn der Benutzer nur über Lesezugriff für die Web-App verfügt.
 
-1. Befehle (z. B. starten, anhalten)
-2. Änderung von Einstellungen wie allgemeine Konfigurationen, Skalierungseinstellungen, Sicherungseinstellungen und Überwachungseinstellungen
-3. Zugriff auf Anmeldedaten für die Veröffentlichung oder andere geheime Schlüssel wie App- und Verbindungseinstellungen
-4. Streamingprotokolle
-5. Konfiguration von Diagnoseprotokollen
-6. Konsole (Eingabeaufforderung)
-7. Aktive und kürzlich vorgenommene Bereitstellungen (für fortlaufende Bereitstellungen lokaler Gits)
-8. Geschätzte Ausgaben
-9. Webtests
-10. Virtuelles Netzwerk (für Leser nur sichtbar, wenn ein virtuelles Netzwerk zuvor von einem Benutzer mit Schreibzugriff konfiguriert wurde)
+- Befehle (z. B. starten, anhalten)
+- Änderung von Einstellungen wie allgemeine Konfigurationen, Skalierungseinstellungen, Sicherungseinstellungen und Überwachungseinstellungen
+- Zugriff auf Anmeldedaten für die Veröffentlichung oder andere geheime Schlüssel wie App- und Verbindungseinstellungen
+- Streamingprotokolle
+- Konfiguration von Diagnoseprotokollen
+- Konsole (Eingabeaufforderung)
+- Aktive und kürzlich vorgenommene Bereitstellungen (für fortlaufende Bereitstellungen lokaler Gits)
+- Geschätzte Ausgaben
+- Webtests
+- Virtuelles Netzwerk (für Leser nur sichtbar, wenn ein virtuelles Netzwerk zuvor von einem Benutzer mit Schreibzugriff konfiguriert wurde)
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf die Web-App.
 
@@ -55,41 +55,47 @@ Web-Apps können aufgrund verschiedener miteinander verknüpfter Ressourcen komp
 
 ![Web-App-Ressourcengruppe](./media/role-based-access-control-troubleshooting/website-resource-model.png)
 
-Wenn Sie daher lediglich auf die Website Zugriff gewähren, sind viele Funktionen des Blatts "Website" vollständig deaktiviert.
+Wenn Sie daher lediglich auf die Web-App Zugriff gewähren, sind viele Funktionen des Blatts "Website" im Azure-Portal deaktiviert.
 
-1. Die folgenden Elemente erfordern Zugriff auf den **App Service-Plan** für Ihre Website:  
-    * Anzeigen des Tarifs für die Web-App (z. B. Free oder Standard)
-    * Skalierungskonfiguration (d. h. Anzahl der Instanzen, Größe des virtuellen Computers, Einstellungen für automatische Skalierung)
-    * Kontingente (z. B. Speicher, Bandbreite, CPU)
-2. Die folgenden Elemente erfordern Zugriff auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst.  
-    * SSL-Zertifikate und -Bindungen (Der Grund dafür ist, dass SSL-Zertifikate von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden können).
-    * Warnregeln
-    * Einstellungen für automatische Skalierung
-    * Application Insights-Komponenten
-    * Webtests
+Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan** für Ihre Website:
+
+- Anzeigen des Tarifs für die Web-App (Free oder Standard)  
+- Skalierungskonfiguration (Anzahl der Instanzen, Größe des virtuellen Computers, Einstellungen für automatische Skalierung)  
+- Kontingente (Speicher, Bandbreite, CPU)  
+
+Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst.
+
+- SSL-Zertifikate und -Bindungen (Der Grund dafür ist, dass SSL-Zertifikate von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden können).  
+- Warnregeln  
+- Einstellungen für automatische Skalierung  
+- Application Insights-Komponenten  
+- Webtests  
 
 ## Workloads virtueller Computer
 
 Ähnlich wie bei Web-Apps erfordern einige Funktionen auf dem Blatt "Virtueller Computer" Schreibzugriff auf den virtuellen Computer oder auf andere Ressourcen in der Ressourcengruppe.
 
-Virtuelle Computer verfügen über folgende zugehörige Ressourcen:
+Virtuelle Computer stehen in Verbindung mit Domänennamen, virtuellen Netzwerken, Speicherkonten und Warnungsregeln.
 
-- Domänennamen
-- Virtuelle Netzwerke
-- Speicherkonten
-- Warnregeln
+Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer**:
 
+- Endpunkte  
+- IP-Adressen  
+- Datenträger  
+- Erweiterungen  
 
-1. Die folgenden Elemente erfordern **Schreibzugriff** auf den virtuellen Computer:  
-    * Endpunkte
-    * IP-Adressen
-    * Datenträger
-    * Erweiterungen
-2. Die folgenden Elemente erfordern **Schreibzugriff** auf die virtuelle Maschine und die **Ressourcengruppe** (zusammen mit dem Domänennamen), in der sich die virtuelle Maschine befindet:  
-    * Verfügbarkeitsgruppe
-    * Satz mit Lastenausgleich
-    * Warnungsregeln
+Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer** und die **Ressourcengruppe** (zusammen mit dem Domänennamen), in der sich der virtuelle Computer befindet:
+
+- Verfügbarkeitsgruppe  
+- Satz mit Lastenausgleich  
+- Warnungsregeln  
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
 
-<!---HONumber=AcomDC_0413_2016-->
+## Mehr Informationen
+- [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
+- [Integrierte Rollen:](role-based-access-built-in-roles.md) Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
+- [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihrer Zugriffsanforderungen erstellen.
+- [Erstellen eines Verlaufsbericht über Zugriffsänderungen](role-based-access-control-access-change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
+
+<!---HONumber=AcomDC_0420_2016-->

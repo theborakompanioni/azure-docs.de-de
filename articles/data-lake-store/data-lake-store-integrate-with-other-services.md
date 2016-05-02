@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/04/2016"
+   ms.date="04/13/2016"
    ms.author="nitinme"/>
 
 # Integrieren von Data Lake-Speicher in andere Azure-Dienste
@@ -47,6 +47,10 @@ Anleitungen zum Verwenden von Azure Data Factory mit Data Lake-Speicher finden S
 
 Azure Data Lake-Speicher bietet ein Befehlszeilentool namens AdlCopy, mit dem Sie Daten aus Azure Blob Storage in ein Data Lake-Speicherkonto kopieren können. Weitere Informationen finden Sie unter [Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher](data-lake-store-copy-data-azure-storage-blob.md).
 
+## Kopieren von Daten zwischen Azure SQL-Datenbank und Data Lake-Speicher
+
+Sie können Apache Sqoop verwenden, um Daten zwischen Azure SQL-Datenbank und Data Lake-Speicher zu importieren und zu exportieren. Weitere Informationen finden Sie unter [Kopieren von Daten zwischen Data Lake-Speicher und Azure SQL-Datenbank mithilfe von Sqoop](data-lake-store-data-transfer-sql-sqoop.md).
+
 
 ## Weitere Informationen
 
@@ -54,4 +58,4 @@ Azure Data Lake-Speicher bietet ein Befehlszeilentool namens AdlCopy, mit dem Si
 - [Erste Schritte mit Data Lake-Speicher mithilfe des Portals](data-lake-store-get-started-portal.md)
 - [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

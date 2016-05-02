@@ -1,12 +1,14 @@
-## Troubleshoot connectivity issues
-Use the **Diagnostics** tab of **Data Management Gateway Configuration Manager** to troubleshoot connection issues. 
+## Behandeln von Konnektivitätsproblemen
+Verwenden Sie die Registerkarte **Diagnose** im **Datenverwaltungsgateway-Konfigurations-Manager**, um Verbindungsprobleme zu behandeln.
 
-1. Launch **Data Management Gateway Configuration Manager**. You can either run "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" directly (or) search for **Gateway** to find a link to **Microsoft Data Management Gateway** application as shown in the following image. 
+1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**. Sie können entweder „C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe“ direkt ausführen oder nach **Gateway** suchen, um einen Link zur Anwendung **Microsoft-Datenverwaltungsgateway** zu finden, wie in der folgenden Abbildung dargestellt. 
 
-	![Search gateway](./media/data-factory-troubleshoot-connectivity/search-gateway.png)
-2. Switch to the **Diagnostics** tab.
+	![Gateway suchen](./media/data-factory-troubleshoot-connectivity/search-gateway.png)
+2. Wechseln Sie zur Registerkarte **Diagnose**.
 
-	![Gateway diagnostics](./media/data-factory-troubleshoot-connectivity/data-factory-gateway-diagnostics.png) 
-3. Select the **type** of data store (linked service). 
-4. Specify **authentication** and enter **credentials** (or) enter **connection string** to connect to the data store. 
-5. Click **Test connection** to test the connection to the data store. 
+	![Gatewaydiagnose](./media/data-factory-troubleshoot-connectivity/data-factory-gateway-diagnostics.png) 
+3. Wählen Sie den **Typ** von Datenspeicher (verknüpfter Dienst) aus. 
+4. Geben Sie die **Authentifizierung** an, und geben Sie **Anmeldeinformationen** oder die **Verbindungszeichenfolge** für die Verbindung mit dem Datenspeicher ein. 
+5. Klicken Sie auf **Verbindung testen**, um die Verbindung mit dem Datenspeicher zu testen. 
+
+<!---HONumber=AcomDC_0420_2016-->

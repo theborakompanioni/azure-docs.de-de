@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/07/2016"
+   ms.date="04/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verwalten von Datenschiefe für verteilte Tabellen in Azure SQL Data Warehouse
@@ -27,6 +27,18 @@ In diesem Lernprogramm führen Sie folgende Schritte aus:
 - Kennenlernen von Tipps, um herauszufinden, wann die Datenschiefe beseitigt werden muss
 - Neuerstellen der Tabelle zur Beseitigung der Datenschiefe
 
+## DBCC PDW\_SHOWSPACEUSED
+
+Eine Methode zur Identifizierung von Datenschiefe ist die Verwendung von [DBCC PDW\_SHOWSPACEUSED()][].
+
+```sql
+-- Find data skew for a distributed table
+DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
+```
+
+Dies ist eine sehr schnelle und einfache Möglichkeit, die Anzahl der Tabellenzeilen anzuzeigen, die in jeder der 60 Verteilungen Ihrer Datenbank gespeichert sind. Denken Sie daran, dass für eine optimale Leistung die Zeilen in Ihrer verteilten Tabelle gleichmäßig auf alle Verteilungen verteilt sein sollten.
+
+Wenn Sie jedoch die dynamischen Verwaltungsansichten (Dynamic Management Views, DMV) von Azure SQL Data Warehouse abfragen, können Sie eine ausführlichere Analyse ausführen. Im übrigen Teil des Artikels erfahren Sie, wie Sie dabei vorgehen.
 
 ## Schritt 1: Erstellen einer Ansicht, mit der die Datenschiefe gefunden wird
 
@@ -218,7 +230,8 @@ Weitere Details zum Thema „Tabellenverteilung“ finden Sie in den folgenden A
 [Hashverteilung]: sql-data-warehouse-develop-hash-distribution-key.md
 
 <!--MSDN references-->
+[DBCC PDW\_SHOWSPACEUSED()]: https://msdn.microsoft.com/de-DE/library/mt204028.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/11/2016"
+	ms.date="04/19/2016"
 	ms.author="carlrab" />
 
 # Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken
 
-## Übersicht 
+## Übersicht
 
 Microsoft Azure SQL-Datenbank verfügt über drei [Dienstebenen](sql-database-service-tiers.md): Basic, Standard und Premium. Auf allen Ebenen wird die Ressource, die für Ihre Azure SQL-Datenbank bereitgestellt wird, streng isoliert, und es wird für eine vorhersagbare Leistung gesorgt. Der für die Datenbank garantierte Durchsatz steigt von der Ebene „Basic“ über „Standard“ bis hin zu „Premium“ an.
 
@@ -39,10 +39,10 @@ Um zu verstehen, wie die Dienstebenen Basic, Standard und Premium den Azure SQL-
 
 Microsoft stellt außerdem viele automatische Verwaltungsfunktionen in Azure SQL-Datenbank bereit, z. B. automatische hohe Verfügbarkeit und integrierte Verwaltung.
 
-### Automatische hohe Verfügbarkeit 
+### Automatische hohe Verfügbarkeit
  Azure SQL-Datenbank hält mindestens drei Replikate für jede Benutzerdatenbank vor und verfügt über Logik zum automatischen synchronen Anwenden der Änderungen auf ein Quorum der Replikate per Commit. Dadurch wird sichergestellt, dass der Ausfall eines einzelnen Computers nicht zu Datenverlust führt. Außerdem wird jedes Replikat in einem anderen Hardware-Rack angeordnet, damit Stromausfälle oder der Ausfall von Netzwerkswitches keine Auswirkung auf Ihre Datenbank haben. Schließlich ist auch Logik zum automatischen Neuerstellen von Replikaten vorhanden, wenn ein Computer nicht mehr zu retten ist. Das System behält die gewünschten Integritätseigenschaften auch dann automatisch bei, wenn die Integrität eines Computers nicht mehr gewährleistet ist. Mit diesen Verfahren wird der zeitaufwändige Prozess vermieden, der heutzutage für das Installieren und Konfigurieren von Lösungen mit hoher Verfügbarkeit erforderlich ist. Wenn Sie für Ihre Daten über eine vorkonfigurierte Lösung mit hoher Verfügbarkeit verfügen, ist noch ein weiteres wichtiges Problem gelöst, das sich beim Erstellen einer geschäftskritischen Datenbanklösung mit herkömmlichen Methoden ergibt.
 
-### Integrierte Verwaltung 
+### Integrierte Verwaltung
  Azure SQL-Datenbank wird als Dienst ausgeführt. Dies bedeutet, dass es definierte Betriebszeitvorgaben für jede Datenbank gibt und Ausfallzeiten mit längeren Wartungsfenstern vermieden werden. Microsoft bietet für den Dienst eine Einzelanbieterlösung an, damit Sie sich bei Problemen nur an ein Unternehmen wenden müssen. Außerdem wird der Dienst von Microsoft ständig aktualisiert. Es werden Features und Kapazität hinzugefügt, und bei jedem Update wird nach Wegen gesucht, wie wir die Nutzung für Sie verbessern können. Updates werden transparent und ohne Ausfallzeitfenster durchgeführt. Dies bedeutet, dass Updates in unser normales Failoververfahren für hohe Verfügbarkeit integriert sind. So können Sie neue Features sofort nutzen, wenn sie verfügbar sind, und müssen nicht warten, bis während des nächsten Ausfallzeitfensters ein Serverupgrade durchgeführt wird.
 
 All diese Funktionen werden für alle Dienstebenen bereitgestellt, und die Einstiegspreispunkte betragen nur einige US-Dollar pro Monat. Dies ist weitaus günstiger als das Kaufen und Ausführen eigener Server. Auch für sehr kleine Projekte können also die Vorteile von Azure genutzt werden, ohne dass hohe Kosten anfallen.
@@ -123,12 +123,12 @@ Der **maximale In-Memory-OLTP-Speicher** bezieht sich auf den maximalen Speicher
 
 Die **maximale Anzahl gleichzeitiger Anforderungen** ist die maximale Anzahl von Benutzer-/Anwendungsanforderungen, die in der Datenbank gleichzeitig ausgeführt werden. Um die Anzahl der gleichzeitigen Anforderungen anzuzeigen, führen Sie in der SQL-Datenbank die folgende Transact-SQL-Abfrage aus:
 
-	SELECT COUNT(*) AS [Concurrent_Requests] 
+	SELECT COUNT(*) AS [Concurrent_Requests]
 	FROM sys.dm_exec_requests R
 
 Wenn Sie die Workload einer lokalen SQL Server-Datenbank analysieren, sollten Sie diese Abfrage ändern, um nach der entsprechenden Datenbank zu filtern, die Sie analysieren. Wenn Sie beispielsweise über eine lokale Datenbank mit dem Namen „MyDatabase“ verfügen, wird mit der folgenden Transact-SQL-Abfrage die Anzahl der gleichzeitigen Abfragen in dieser Datenbank zurückgegeben.
 
-	SELECT COUNT(*) AS [Concurrent_Requests] 
+	SELECT COUNT(*) AS [Concurrent_Requests]
 	FROM sys.dm_exec_requests R
 	INNER JOIN sys.databases D ON D.database_id = R.database_id
 	AND D.name = 'MyDatabase'
@@ -173,17 +173,17 @@ Es gibt zwei Ansichten, mit denen Sie die Ressourcenverwendung für eine SQL-Dat
 ### Verwenden von „sys.dm\_db\_resource\_stats“
 Die Sicht [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) ist in jeder SQL-Datenbank vorhanden und liefert Daten zur letzten Ressourcenverwendung relativ zur Dienstebene. Durchschnittliche Prozentsätze für CPU, Dateneingang/-ausgang, Protokollschreibvorgänge und Arbeitsspeicher werden alle 15 Sekunden aufgezeichnet und eine Stunde lang aufbewahrt.
 
-Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
+Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats ** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
 
 	SELECT  
-	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent', 
-	    MAX(avg_cpu_percent) AS 'Maximum CPU Utilization In Percent', 
-	    AVG(avg_data_io_percent) AS 'Average Data IO In Percent', 
-	    MAX(avg_data_io_percent) AS 'Maximum Data IO In Percent', 
-	    AVG(avg_log_write_percent) AS 'Average Log Write Utilization In Percent', 
-	    MAX(avg_log_write_percent) AS 'Maximum Log Write Utilization In Percent', 
-	    AVG(avg_memory_usage_percent) AS 'Average Memory Usage In Percent', 
-	    MAX(avg_memory_usage_percent) AS 'Maximum Memory Usage In Percent' 
+	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
+	    MAX(avg_cpu_percent) AS 'Maximum CPU Utilization In Percent',
+	    AVG(avg_data_io_percent) AS 'Average Data IO In Percent',
+	    MAX(avg_data_io_percent) AS 'Maximum Data IO In Percent',
+	    AVG(avg_log_write_percent) AS 'Average Log Write Utilization In Percent',
+	    MAX(avg_log_write_percent) AS 'Maximum Log Write Utilization In Percent',
+	    AVG(avg_memory_usage_percent) AS 'Average Memory Usage In Percent',
+	    MAX(avg_memory_usage_percent) AS 'Maximum Memory Usage In Percent'
 	FROM sys.dm_db_resource_stats;  
 
 Beispiele für andere Abfragen finden Sie unter [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx).
@@ -206,9 +206,9 @@ Azure SQL-Datenbank macht die verbrauchten Ressourceninformationen für jede akt
 
 Im folgenden Beispiel wird veranschaulicht, wie die Daten in dieser Ansicht verfügbar gemacht werden:
 
-	SELECT TOP 10 * 
-	FROM sys.resource_stats 
-	WHERE database_name = 'resource1' 
+	SELECT TOP 10 *
+	FROM sys.resource_stats
+	WHERE database_name = 'resource1'
 	ORDER BY start_time DESC
 
 ![sys resource stats](./media/sql-database-performance-guidance/sys_resource_stats.png)
@@ -218,16 +218,16 @@ Im folgenden Beispiel werden unterschiedliche Wege veranschaulicht, wie Sie die 
 >[AZURE.NOTE] Einige Spalten von **sys.resource\_stats** haben sich in den aktuellen V12-Datenbanken geändert, sodass die Beispielabfragen in den folgenden Beispielen unter Umständen zu Fehlern führen können. Zukünftige Aktualisierungen dieses Themas werden neue Versionen der Abfragen enthalten, mit denen dieses Problem behoben wird.
 
 1. Wenn Sie sich beispielsweise die Ressourcenverwendung der Datenbank „userdb1“ für die letzte Woche ansehen möchten, können Sie die folgende Abfrage ausführen.
-	
-		SELECT * 
-		FROM sys.resource_stats 
-		WHERE database_name = 'userdb1' AND 
+
+		SELECT *
+		FROM sys.resource_stats
+		WHERE database_name = 'userdb1' AND
 		      start_time > DATEADD(day, -7, GETDATE())
 		ORDER BY start_time DESC;
-	
+
 2. Um auszuwerten, wie gut Ihre Workload zur Leistungsebene passt, müssen Sie die verschiedenen Aspekte der Ressourcenmetriken untersuchen: CPU, Lesevorgänge, Schreibvorgänge, Anzahl von Workern und Anzahl von Sitzungen. Hier wird von einer überarbeiteten Abfrage „sys.resource\_stats“ verwendet, um den Durchschnitt und die Höchstwerte dieser Ressourcenmetriken zu melden.
-	
-		SELECT 
+
+		SELECT
 		    avg(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
 		    max(avg_cpu_percent) AS 'Maximum CPU Utilization In Percent',
 		    avg(avg_physical_data_read_percent) AS 'Average Physical Data Read Utilization In Percent',
@@ -238,41 +238,41 @@ Im folgenden Beispiel werden unterschiedliche Wege veranschaulicht, wie Sie die 
 		    max(active_session_count) AS 'Maximum # of Sessions',
 		    avg(active_worker_count) AS 'Average # of Workers',
 		    max(active_worker_count) AS 'Maximum # of Workers'
-		FROM sys.resource_stats 
+		FROM sys.resource_stats
 		WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-	
+
 3. Mit den obigen Informationen zu den Durchschnitts- und Höchstwerten der Ressourcenmetriken können Sie bewerten, wie gut Ihre Workload zur gewählten Leistungsebene passt. In den meisten Fällen erhalten Sie mit den Durchschnittswerten aus „sys.resource\_stats“ eine gute Grundlage gegenüber der Zielgröße. Dies sollte Ihre primäre Messlatte sein. Wenn Sie beispielsweise die Dienstebene Standard mit Leistungsebene S2 verwenden, die durchschnittlichen Auslastungsprozentsätze für CPU, Lesevorgänge und Schreibvorgänge unter 40 % liegen, die durchschnittliche Anzahl von Workern unter 50 und die durchschnittliche Anzahl von Sitzungen unter 200 liegt, ist Ihre Workload unter Umständen gut für die Leistungsebene S1 geeignet. Es ist leicht zu erkennen, ob Ihre Datenbank die Grenzen für Worker und Sitzungen einhält. Um zu ermitteln, ob eine Datenbank in Bezug auf CPU, Lesevorgänge und Schreibvorgänge zu einer niedrigeren Leistungsebene passt, dividieren Sie die DTU-Anzahl der niedrigeren Leistungsebene durch die DTU-Anzahl Ihrer aktuellen Leistungsebene und multiplizieren das Ergebnis mit 100:
-	
+
 	**S1 DTU/S2 DTU*100 = 20/50*100 = 40**
-	
+
 	Das Ergebnis ist der relative Leistungsunterschied zwischen den beiden Leistungsebenen in Prozent. Wenn Ihre Auslastung diesen Prozentsatz nicht überschreitet, passt Ihre Workload ggf. in die niedrigere Leistungsebene. Sie sollten sich jedoch auch alle Bereiche der Ressourcenverwendung ansehen und in Prozent ermitteln, wie oft Ihre Datenbankworkload in die niedrigere Leistungsebene passt. Mit der folgenden Abfrage wird der Prozentsatz für die Eignung pro Ressourcendimension basierend auf dem oben berechneten Schwellenwert von 40 % ausgegeben.
-	
-		SELECT 
+
+		SELECT
 		    (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
 		    ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent'
 		    ,(COUNT(database_name) - SUM(CASE WHEN avg_physical_data_read_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data Read Fit Percent'
 		FROM sys.resource_stats
 		WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-	
+
 	In Abhängigkeit Ihres Servicelevelziels (Service Level Objective, SLO) für die Datenbank können Sie entscheiden, ob Ihre Workload in die niedrigere Leistungsebene passt. Wenn der SLO-Wert für die Datenbankworkload 99,9 % beträgt und die obige Abfrage höhere Werte als 99,9 für all drei Ressourcendimensionen zurückgibt, ist die Wahrscheinlichkeit sehr hoch, dass Ihre Workload für die niedrigere Leistungsebene geeignet ist.
-	
+
 	Wenn Sie sich den Prozentsatz für die Eignung ansehen, erhalten Sie auch Informationen dazu, ob Sie zur nächsthöheren Leistungsebene wechseln müssen, um das Servicelevelziel zu erreichen. „userdb1“ weist beispielsweise die folgende Auslastung für die letzte Woche auf.
-	
+
 	| Durchschnittlicher CPU-Prozentwert | Maximaler CPU-Prozentwert |
 	|---|---|
 	| 24,5 | 100,00 |
-	
+
 	Der durchschnittliche CPU-Wert beträgt ca. ein Viertel der Obergrenze der Leistungsebene. Dies würde also gut zur Leistungsebene der Datenbank passen. Der Höchstwert zeigt jedoch, dass die Datenbank die Obergrenze der Leistungsebene erreicht. Müssen Sie also zur nächsthöheren Leistungsebene wechseln? Hierbei sollten Sie sich wieder ansehen, wie häufig Ihre Workload 100 % erreicht, und dies mit Ihrem Servicelevelziel für die Datenbankworkload vergleichen.
-	
-		SELECT 
+
+		SELECT
 		(COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
 		,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent’
 		,(COUNT(database_name) - SUM(CASE WHEN avg_physical_data_read_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data Read Fit Percent'
 		FROM sys.resource_stats
 		WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-	
+
 	Wenn die obige Abfrage für eine der drei Ressourcendimensionen einen Wert unterhalb von 99,9 zurückgibt, sollten Sie entweder die Umstellung auf die nächsthöhere Leistungsebene erwägen oder Verfahren zur Anwendungsoptimierung nutzen, um die Last für die Azure SQL-Datenbank zu reduzieren.
-	
+
 4. Bei der obigen Vorgehensweise sollten Sie außerdem berücksichtigen, dass sich die Workload in Zukunft voraussichtlich erhöhen wird.
 
 ## Optimieren der Anwendung
@@ -316,8 +316,8 @@ Im folgenden Beispiel wird ein Fall erstellt, in dem der ausgewählte Abfragepla
 	END
 	COMMIT TRANSACTION;
 	GO
-	SELECT m1.col1 
-	FROM dbo.missingindex m1 INNER JOIN dbo.missingindex m2 ON(m1.col1=m2.col1) 
+	SELECT m1.col1
+	FROM dbo.missingindex m1 INNER JOIN dbo.missingindex m2 ON(m1.col1=m2.col1)
 	WHERE m1.col2 = 4;
 
 ![Abfrageplan mit fehlenden Indizes](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
@@ -328,25 +328,25 @@ Azure SQL-Datenbank enthält Funktionen, mit denen Datenbankadministratoren Hinw
 
 Die folgende Abfrage kann verwendet werden, um potenzielle fehlende Indizes zu ermitteln.
 
-	SELECT CONVERT (varchar, getdate(), 126) AS runtime, 
-	    mig.index_group_handle, mid.index_handle, 
-	    CONVERT (decimal (28,1), migs.avg_total_user_cost * migs.avg_user_impact * 
-	            (migs.user_seeks + migs.user_scans)) AS improvement_measure, 
-	    'CREATE INDEX missing_index_' + CONVERT (varchar, mig.index_group_handle) + '_' + 
-	              CONVERT (varchar, mid.index_handle) + ' ON ' + mid.statement + ' 
-	              (' + ISNULL (mid.equality_columns,'') 
-	              + CASE WHEN mid.equality_columns IS NOT NULL 
-	                          AND mid.inequality_columns IS NOT NULL 
+	SELECT CONVERT (varchar, getdate(), 126) AS runtime,
+	    mig.index_group_handle, mid.index_handle,
+	    CONVERT (decimal (28,1), migs.avg_total_user_cost * migs.avg_user_impact *
+	            (migs.user_seeks + migs.user_scans)) AS improvement_measure,
+	    'CREATE INDEX missing_index_' + CONVERT (varchar, mig.index_group_handle) + '_' +
+	              CONVERT (varchar, mid.index_handle) + ' ON ' + mid.statement + '
+	              (' + ISNULL (mid.equality_columns,'')
+	              + CASE WHEN mid.equality_columns IS NOT NULL
+	                          AND mid.inequality_columns IS NOT NULL
 	                     THEN ',' ELSE '' END + ISNULL (mid.inequality_columns, '')
-	              + ')' 
-	              + ISNULL (' INCLUDE (' + mid.included_columns + ')', '') AS create_index_statement, 
-	    migs.*, 
-	    mid.database_id, 
+	              + ')'
+	              + ISNULL (' INCLUDE (' + mid.included_columns + ')', '') AS create_index_statement,
+	    migs.*,
+	    mid.database_id,
 	    mid.[object_id]
 	FROM sys.dm_db_missing_index_groups AS mig
-	INNER JOIN sys.dm_db_missing_index_group_stats AS migs 
+	INNER JOIN sys.dm_db_missing_index_group_stats AS migs
 	    ON migs.group_handle = mig.index_group_handle
-	INNER JOIN sys.dm_db_missing_index_details AS mid 
+	INNER JOIN sys.dm_db_missing_index_details AS mid
 	    ON mig.index_handle = mid.index_handle
 	ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
 
@@ -371,7 +371,7 @@ Unten folgt ein Beispiel für eine Einrichtung.
 
 	DROP TABLE psptest1;
 	CREATE TABLE psptest1(col1 int primary key identity, col2 int, col3 binary(200));
-	
+
 	DECLARE @a int = 0;
 	SET NOCOUNT ON;
 	BEGIN TRANSACTION
@@ -384,16 +384,16 @@ Unten folgt ein Beispiel für eine Einrichtung.
 	COMMIT TRANSACTION
 	CREATE INDEX i1 on psptest1(col2);
 	GO
-	
+
 	CREATE PROCEDURE psp1 (@param1 int)
 	AS
 	BEGIN
-	    INSERT INTO t1 SELECT * FROM psptest1 
+	    INSERT INTO t1 SELECT * FROM psptest1
 	    WHERE col2 = @param1
 	    ORDER BY col2;
 	END
 	GO
-	
+
 	CREATE PROCEDURE psp2 (@param2 int)
 	AS
 	BEGIN
@@ -402,7 +402,7 @@ Unten folgt ein Beispiel für eine Einrichtung.
 	    OPTION (OPTIMIZE FOR (@param2 UNKNOWN))
 	END
 	GO
-	
+
 	CREATE TABLE t1 (col1 int primary key, col2 int, col3 binary(200));
 	GO
 
@@ -413,7 +413,7 @@ Mit dem Einrichtungscode wird eine Tabelle erstellt, die eine „schiefe“ Date
 	-- Prime Procedure Cache with scan plan
 	EXEC psp1 @param1=1;
 	TRUNCATE TABLE t1;
-	
+
 	-- Iterate multiple times to show the performance difference
 	DECLARE @i int = 0;
 	WHILE @i < 1000
@@ -427,7 +427,7 @@ Mit dem Einrichtungscode wird eine Tabelle erstellt, die eine „schiefe“ Date
 
 	EXEC psp2 @param2=1;
 	TRUNCATE TABLE t1;
-	
+
 	DECLARE @i int = 0;
 	WHILE @i < 1000
 	BEGIN
@@ -452,9 +452,9 @@ Im zweiten Teil des Beispiels wird ein Abfragehinweis verwendet, um den Optimier
 
 Die Auswirkungen können ermittelt werden, indem die Tabelle **sys.resource\_stats** untersucht wird. (Hinweis: Es kommt zu einer Verzögerung ab dem Zeitpunkt, an dem Sie den Test ausführen, bis zum dem Zeitpunkt, an dem die Tabelle mit den Daten gefüllt wird.) In diesem Beispiel wurde Teil 1 während des Zeitfensters 22:25:00 und Teil 2 während des Zeitfensters 22:35:00 ausgeführt. Beachten Sie, dass für das frühere Zeitfenster mehr Ressourcen als für das spätere Zeitfenster verwendet wurden (aufgrund von Verbesserungen der Planeffizienz).
 
-	SELECT TOP 1000 * 
-	FROM sys.resource_stats 
-	WHERE database_name = 'resource1' 
+	SELECT TOP 1000 *
+	FROM sys.resource_stats
+	WHERE database_name = 'resource1'
 	ORDER BY start_time DESC
 
 ![Abfragenoptimierung](./media/sql-database-performance-guidance/query_tuning_4.png)
@@ -491,4 +491,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

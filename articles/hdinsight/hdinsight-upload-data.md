@@ -37,9 +37,9 @@ Azure HDInsight-Cluster werden in der Regel bereitgestellt, um MapReduce-Aufträ
 
 In Azure-BLOB-Speichercontainern werden Daten als Schlüssel-Wert-Paare gespeichert, und es gibt keine Verzeichnishierarchie. Allerdings kann im Schlüsselnamen das Zeichen '/' verwendet werden, damit es so aussieht, als wäre eine Datei in einer Verzeichnisstruktur gespeichert. HDInsight betrachtet diese Schlüsselnamen, als wären es tatsächliche Verzeichnisse.
 
-Der Schlüssel eines Blobs kann z. B. *input/log1.txt* heißen. Das Verzeichnis 'input' existiert zwar nicht, wegen des Zeichens '/' im Schlüsselnamen sieht es jedoch so aus, als gäbe es einen Dateipfad.
+Der Schlüssel eines Blobs kann z. B. *input/log1.txt* heißen. Das Verzeichnis 'input' existiert zwar nicht, wegen des Zeichens '/' im Schlüsselnamen sieht es jedoch so aus, als gäbe es einen Dateipfad.
 
-Daher werden in den Azure Explorer-Tools möglicherweise einige Dateien mit 0 Byte angezeigt. Diese Dateien dienen zwei Zwecken:
+Daher werden in den Azure Explorer-Tools möglicherweise einige Dateien mit 0 Byte angezeigt. Diese Dateien dienen zwei Zwecken:
 
 - Bei leeren Ordnern markieren sie das Vorhandensein der Ordner. Azure-BLOB-Speicher erkennt, dass es bei Vorhandensein eines Blobs mit dem Namen "foo/bar" einen Ordner namens **foo** gibt. Soll es jedoch einen leeren Ordner namens **foo** geben, kann dieser nur mit der speziellen 0-Byte-Datei bezeichnet werden.
 
@@ -61,6 +61,8 @@ Microsoft bietet die folgenden Hilfsprogramme für die Verwendung mit dem Azure-
 ###<a id="xplatcli"></a>Azure-Befehlszeilenschnittstelle
 
 Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur Verwaltung von Azure-Diensten. Verwenden Sie die folgenden Schritte zum Hochladen von Daten in Azure-BLOB-Speicher:
+
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 1. [Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../xplat-cli-install.md).
 
@@ -104,6 +106,8 @@ Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur V
 
 Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Workloads in Azure steuern und automatisieren können. Informationen zum Konfigurieren der Arbeitsstation für die Ausführung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
+
 **So laden Sie eine lokale Datei in den Azure-Blobspeicher hoch**
 
 1. Öffnen Sie die Azure PowerShell-Konsole entsprechend den Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
@@ -126,7 +130,7 @@ Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Ver
 
 3. Fügen Sie das Skript in die Azure PowerShell-Konsole ein, um es auszuführen und die Datei zu kopieren.
 
-PowerShell-Skripts, die für die Verwendung mit HDInsight erstellt wurden, finden Sie z. B. unter [HDInsight-Tools](https://github.com/blackmist/hdinsight-tools).
+PowerShell-Skripts, die für die Verwendung mit HDInsight erstellt wurden, finden Sie z. B. unter [HDInsight-Tools](https://github.com/blackmist/hdinsight-tools).
 
 ###<a id="azcopy"></a>AzCopy
 
@@ -212,7 +216,7 @@ Informationen finden Sie unter [Bereitstellen von Azure-BLOB-Speicher als lokale
 
 Der Azure Data Factory-Dienst ist ein vollständig verwalteter Dienst für das Kombinieren von Verarbeitungs-, Speicher- und Verschiebungsdienste für Daten in optimierten, skalierbaren und zuverlässigen Datenproduktions-Pipelines.
 
-Mit Azure Data Factory können Daten in den Azure-Blob-Speicher verschoben oder Datenpipelines erstellt werden, die HDInsight-Funktionen, z. B. Hive und Pig, direkt verwenden.
+Mit Azure Data Factory können Daten in den Azure-Blob-Speicher verschoben oder Datenpipelines erstellt werden, die HDInsight-Funktionen, z. B. Hive und Pig, direkt verwenden.
 
 Weitere Informationen finden Sie in der [Dokumentation zu Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
 
@@ -278,4 +282,4 @@ Jetzt wissen Sie, wie Sie Daten in HDInsight importieren. Lesen Sie in den folge
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

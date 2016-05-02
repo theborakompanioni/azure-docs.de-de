@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus PostgreSQL mithilfe von Azure Data Factory
@@ -179,7 +179,7 @@ Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben gen
 	                "typeProperties": {
 	                    "source": {
 	                        "type": "RelationalSource",
-	                        "query": "select * from public.usstates"
+	                        "query": "select * from "public"."usstates""
 	                    },
 	                    "sink": {
 	                        "type": "BlobSink"
@@ -221,7 +221,7 @@ Eigenschaft | Beschreibung | Erforderlich
 Typ | Die "type"-Eigenschaft muss auf **OnPremisesPostgreSql** festgelegt sein. | Ja
 server | Name des PostgreSQL-Servers. | Ja 
 database | Name der PostgreSQL-Datenbank. | Ja 
-schema | Name des Schemas in der Datenbank. | Nein 
+schema | Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. | Nein 
 authenticationType | Typ der Authentifizierung für die Verbindung mit der PostgreSQL-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. | Ja 
 username | Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. | Nein 
 password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. | Nein 
@@ -237,7 +237,7 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 
 Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
-tableName | Name der Tabelle in der PostgreSQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Nein (wenn **query** von **RelationalSource** angegeben ist) 
+tableName | Name der Tabelle in der PostgreSQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. | Nein (wenn **query** von **RelationalSource** angegeben ist) 
 
 ## Eigenschaften des PostgreSQL-Kopieraktivitätstyps
 
@@ -249,7 +249,13 @@ Wenn bei der Kopieraktivität "source" den Typ **RelationalSource** hat (zu dem 
 
 Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. | Nein (wenn **tableName** von **Dataset** angegeben ist)
+query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-Abfragezeichenfolge. Beispiel: "query": "select * from "MySchema"."MyTable"". | Nein (wenn **tableName** von **Dataset** angegeben ist)
+
+> [AZURE.NOTE] Bei Schema- und Tabellennamen muss die Groß- und Kleinschreibung beachtet werden, und sie müssen in der Abfrage in doppelte Anführungszeichen eingeschlossen werden ("").
+
+**Beispiel:**
+
+ "query": "select * from "MySchema"."MyTable""
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangular-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -310,4 +316,7 @@ Text | | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+## Leistung und Optimierung  
+Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+<!---HONumber=AcomDC_0420_2016-->

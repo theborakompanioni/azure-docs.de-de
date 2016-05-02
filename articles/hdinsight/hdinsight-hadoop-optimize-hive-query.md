@@ -22,12 +22,6 @@
 
 Hadoop-Cluster sind standardmäßig nicht leistungsoptimiert. In diesem Artikel werden einige der gängigsten Optimierungsmethoden für die Leistung von Hive vorgestellt, die Sie auf unsere Abfragen anwenden können.
 
-
-[AZURE.INCLUDE [preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-
-* [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query-v1.md)
-
 ##Horizontales Skalieren der Worker-Knoten
 
 In einem Cluster, dem mehr Worker-Knoten zur Verfügung stehen, können mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die horizontale Skalierung auf zwei Weisen erhöhen:
@@ -226,4 +220,4 @@ In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

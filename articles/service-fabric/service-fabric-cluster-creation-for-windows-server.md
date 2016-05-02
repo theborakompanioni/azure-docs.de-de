@@ -23,9 +23,9 @@ Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf 
 
 Dieser Artikel führt Sie durch die Schritte zum lokalen Erstellen eines Clusters mithilfe des eigenständigen Pakets für Service Fabric, doch es kann mühelos für jede andere Umgebung angepasst werden, z. B. andere Clouds.
 
-## Eigenständiges Paket für Service Fabric
+## Herunterladen des Eigenständigen Pakets für Service Fabric
 
-Das eigenständige Paket für die Bereitstellung von Service Fabric für Windows Server 2012 R2 heißt *Microsoft.Azure.ServiceFabric.WindowsServer.&lt;version&gt;.zip* und kann [hier](http://go.microsoft.com/fwlink/?LinkId=730690) heruntergeladen werden.
+[Laden Sie das eigenständige Paket für Service Fabric für Windows Server 2012 R2 herunter](http://go.microsoft.com/fwlink/?LinkId=730690), das den Namen *Microsoft.Azure.ServiceFabric.WindowsServer.&lt;version&gt;.zip* hat.
 
 Im Downloadpaket finden Sie die folgenden Dateien:
 
@@ -114,4 +114,4 @@ Lesen Sie die folgenden Dokumente zur Vorbereitung auf die ersten Schritte der E
 Weitere Informationen über Azure-Cluster und eigenständige Cluster finden Sie unter:
 - [Umgebungsunabhängige Bereitstellung (Deploy Anywhere) unter Windows Server und Linux mit Service Fabric](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

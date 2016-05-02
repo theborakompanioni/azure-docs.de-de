@@ -56,6 +56,8 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 - [Azure-Abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 - [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater). 
 
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+
 ##Vorbereiten des Speicherkontos
 
 Sie können in diesem Szenario bis zu drei Speicherkonten verwenden:
@@ -82,6 +84,8 @@ Zur Vereinfachung des Tutorials verwenden Sie ein Speicherkonto für die drei Au
 **So bereiten Sie den Speicher vor und kopieren die Dateien mithilfe der Azure-Befehlszeilenschnittstelle**
 
     azure login
+    
+    azure config mode arm
 
     azure group create --name "<Azure Resource Group Name>" --location "East US 2"
 
@@ -185,7 +189,7 @@ Wenn Sie Hilfe mit diesem PowerShell-Skript benötigen, lesen Sie [Verwenden von
  
 ## Erstellen einer Data Factory
 
-Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind, können Sie eine Azure Data Factory erstellen. Es gibt mehrere Methoden zum Erstellen einer Data Factory. In diesem Tutorial verwenden Sie das Azure-Portal zum Aufrufen einer benutzerdefinierten ARM-Vorlage. Sie können die ARM-Vorlage auch über die [Azure-Befehlszeilenschnittstelle](../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows) und [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) aufrufen. Andere Methoden für die Erstellung einer Data Factory finden Sie unter [Tutorial: Erstellen Ihrer ersten Data Factory](../data-factory/data-factory-build-your-first-pipeline.md).
+Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind, können Sie eine Azure Data Factory erstellen. Es gibt mehrere Methoden zum Erstellen einer Data Factory. In diesem Tutorial verwenden Sie das Azure-Portal zum Aufrufen einer benutzerdefinierten ARM-Vorlage. Sie können die ARM-Vorlage auch über die [Azure-Befehlszeilenschnittstelle](../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows) und [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) aufrufen. Andere Methoden für die Erstellung einer Data Factory finden Sie unter [Tutorial: Erstellen der ersten Data Factory](../data-factory/data-factory-build-your-first-pipeline.md).
 
 Die ARM-Vorlage der obersten Ebene enthält:
 
@@ -314,11 +318,11 @@ Die Ressource *hdinsight-hive-on-demand* enthält vier Ressourcen:
     
     Die Eingaben, Ausgaben und der Skriptpfad werden definiert.
     
-So erstellen Sie eine **Data Factory**
+**So erstellen Sie eine Data Factory**
 
 1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die ARM-Vorlage im Azure-Portal zu öffnen. Die Vorlage befindet sich unter https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. 
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/de-DE/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie **DATAFACTORYNAME**, **STORAGEACCOUNTNAME** und **STORAGEACCOUNTKEY** für das Konto ein, das Sie im vorherigen Abschnitt erstellt haben, und klicken Sie dann auf **OK**. Der Data Factory-Name muss global eindeutig sein.
 3. Wählen Sie unter **Ressourcengruppe** dieselbe Ressourcengruppe aus, die Sie im vorherigen Abschnitt verwendet haben.
@@ -434,4 +438,4 @@ In diesem Artikel haben Sie gelernt, wie Sie mit Azure Data Factory einen bedarf
 - [HDInsight-Dokumentation](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [Data Factory-Dokumentation](https://azure.microsoft.com/documentation/services/data-factory/)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

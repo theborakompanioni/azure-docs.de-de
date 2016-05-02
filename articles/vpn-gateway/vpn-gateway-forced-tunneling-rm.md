@@ -1,22 +1,37 @@
-<properties pageTitle="Konfigurieren der Tunnelerzwingung für VPN-Gateways mit dem Ressourcen-Manager | Microsoft Azure" description="Sie können in einem virtuellen Netzwerk mit einem standortübergreifenden VPN-Gateway die Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort „erzwingen“. Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. " services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" tags="azure-resource-manager"/>
-<tags  
+<properties 
+   pageTitle="Konfigurieren der Tunnelerzwingung für VPN-Gateways mit Resource Manager | Microsoft Azure"
+   description="Wenn Sie über ein virtuelles Netzwerk mit einem standortübergreifenden VPN-Gateway verfügen, können Sie den gesamten Internetdatenverkehr an Ihren lokalen Standort zurückleiten oder dorthin erzwingen. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell."
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carmonm"
+   editor=""
+   tags="azure-resource-manager"/>
+<tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/17/2015"
+   ms.date="04/12/2016"
    ms.author="cherylmc" />
 
 # Konfigurieren der Tunnelerzwingung mit PowerShell und dem Azure-Ressourcen-Manager
 
 > [AZURE.SELECTOR]
-- [PowerShell - Service Management](vpn-gateway-about-forced-tunneling.md)
-- [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
+- [PowerShell – Dienstverwaltung](vpn-gateway-about-forced-tunneling.md)
+- [PowerShell – Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 
-Dieser Artikel bezieht sich auf VNets und VPN-Gateways, die mithilfe des Azure-Ressourcen-Manager-Bereitstellungsmodells erstellt wurden. Informationen zum Konfigurieren der Tunnelerzwingung für VNETs, die mithilfe der Dienstverwaltung (auch als klassisches Bereitstellungsmodell bezeichnet) erstellt wurden, finden Sie unter [Konfigurieren der Tunnelerzwingung](vpn-gateway-about-forced-tunneling.md).
+Dieser Artikel bezieht sich auf VNets und VPN-Gateways, die mithilfe des Azure-Ressourcen-Manager-Bereitstellungsmodells erstellt wurden.
 
-[AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
+**Informationen zu Azure-Bereitstellungsmodellen**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**Bereitstellungsmodelle und Tools für die Tunnelerzwingung**
+
+[AZURE.INCLUDE [vpn-gateway-table-forced-tunneling](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
+
 
 ## Informationen zur Tunnelerzwingung
 
@@ -52,16 +67,17 @@ Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen
 
 Das folgende Verfahren hilft Ihnen dabei, eine Ressourcengruppe und ein VNet zu erstellen. Sie erstellen dann ein VPN-Gateway und konfigurieren die Tunnelerzwingung.
 
-Im Beispiel verfügt das virtuelle Netzwerk "MultiTier-VNet" über drei Subnetze: *Frontend*, *Midtier* und *Backend*, die vier standortübergreifende Verbindungen aufweisen: *DefaultSiteHQ* und drei *Verzweigungen*. Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-Standortverbindung für die Tunnelerzwingung ist und dass die Subnetze *Midtier* und *Backend* die Tunnelerzwingung verwenden müssen.
+Im Beispiel verfügt das virtuelle Netzwerk „MultiTier-VNet“ über drei Subnetze: *Frontend*, *Midtier* und *Backend*, die vier standortübergreifende Verbindungen aufweisen: *DefaultSiteHQ* und drei *Verzweigungen*. Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-Standortverbindung für die Tunnelerzwingung ist und dass die Subnetze *Midtier* und *Backend* die Tunnelerzwingung verwenden müssen.
 
 	
 ### Vorbereitungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
-- Ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+- Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-- Azure PowerShell-Cmdlets (1.0 oder höher). Die für diese Konfiguration benötigten Cmdlets sind in Versionen vor 1.0 nicht vorhanden. Sie können diese Version aus dem Windows PowerShell-Abschnitt der [Downloadseite](https://azure.microsoft.com/downloads/) herunterladen und installieren. Wenn Sie mit dem Installieren und Konfigurieren von PowerShell nicht vertraut sind, lesen Sie den Artikel [Installieren und Konfigurieren von Microsoft Azure PowerShell](../powershell-install-configure.md).
+- Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager (1.0 oder höher) installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+
 
 ### Konfigurationsschritte
 
@@ -75,7 +91,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 2. Geben Sie das Abonnement an, das Sie verwenden möchten.
 
-		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+		Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 		
 3. Erstellen Sie eine Ressourcengruppe.
 
@@ -134,4 +150,4 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

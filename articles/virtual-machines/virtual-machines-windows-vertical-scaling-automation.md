@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation | Microsoft Azure "
-	description="Erfahren Sie, wie Sie einen virtuellen Computer als Reaktion auf die Überwachung von Warnungen mit Azure Automation vertikal skalieren."
-	services="virtual-machines"
+	pageTitle="Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation | Microsoft Azure"
+	description="Erfahren Sie, wie Sie einen virtuellen Windows-Computer als Reaktion auf die Überwachung von Warnungen mit Azure Automation vertikal skalieren."
+	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="singhkay"
 	manager="drewm"
@@ -9,9 +9,9 @@
 	tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines"
+	ms.service="virtual-machines-windows"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-multiple"
+	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="03/29/2016"
@@ -53,27 +53,9 @@ Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
 
 ## Einrichten von Azure Automation für den Zugriff auf Ihre virtuellen Computer
 
-In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
+Als Erstes müssen Sie lediglich ein Azure Automation-Konto erstellen, in dem die Runbooks gehostet werden, mit denen die Instanzen der VM-Skalierungsgruppen skaliert werden. Vor Kurzem wurde für den Automation-Dienst die Funktion des ausführenden Kontos eingeführt, wodurch die Einrichtung des Dienstprinzipals für die automatische Ausführung der Runbooks im Auftrag des Benutzers stark vereinfacht wird. Weitere Informationen darüber finden Sie im unten stehenden Artikel:
 
-* Erstellen eines Benutzers in Ihrem Active Directory-Verzeichnis
-* Erstellen eines AutomationPSCredential-Assets mit den Benutzeranmeldeinformationen
-* Einrichten des Benutzers für den Zugriff auf die Ressourcen in Ihrem Abonnement
-
-Bevor Sie Azure Automation-Runbooks in Ihrem Abonnement ausführen können, müssen Sie Azure Automation Zugriff auf Ihr Abonnement erteilen. Dies wird erreicht, indem Sie einen weiteren Benutzer in Ihrem Active Directory-Verzeichnis erstellen. Anschließend müssen Sie ein AutomationPSCredential-Asset erstellen, mit dem sich der Benutzer bei Azure authentifizieren und PowerShell-Befehle zum Skalieren Ihres virtuellen Computers ausführen kann.
-
-Eine exemplarische Vorgehensweise zum Erstellen eines Benutzers und eines AutomationPSCredential-Assets finden Sie im folgenden Artikel:
-
-* [Konfigurieren von Azure Automation](../automation/automation-configuring.md)
-
-Nachdem Sie einen Benutzer erstellt haben, müssen Sie diesen als Co-Administrator für Ihre klassischen Ressourcen konfigurieren und ihm die Rolle „Besitzer“ für Ihre Azure Resource Manager-Ressourcen zuweisen.
-
-Der Benutzer muss als Co-Administrator im klassischen Portal hinzugefügt werden, um auf klassische Ressourcen zugreifen zu können.
-
-![Co-Administrator im alten Portal](./media/virtual-machines-vertical-scaling-automation/old-portal-automation-user.png)
-
-Sie müssen das Azure-Portal verwenden, um dem Benutzer Zugriff auf die Azure Resource Manager-VMs zu geben.
-
-![Administrator im neuen Portal](./media/virtual-machines-vertical-scaling-automation/new-portal-automation-user.png)
+* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## Importieren der Azure Automation-Runbooks für die vertikale Skalierung in Ihr Abonnement
 
@@ -108,4 +90,4 @@ Stellen Sie sicher, dass Sie den Webhook kopieren, bevor Sie das Dialogfeld für
 
 ![Hinzufügen einer Warnung zu VM 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

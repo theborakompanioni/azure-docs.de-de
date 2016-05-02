@@ -378,5 +378,12 @@ Im vorherigen Beispiel enthält das an den Server gesendete JSON 44 Zeichen:
 
 			{"subscription":"2013-12-07","premium":"true"}
  
+##Protokollierung
+###Aktivieren der Protokollierung
 
-<!---HONumber=AcomDC_0302_2016-->
+Das SDK kann zum Erzeugen von Testprotokollen in der IDE-Konsole konfiguriert werden. Diese Protokolle sind nicht standardmäßig aktiviert. Um diese anzupassen, aktualisieren Sie die Eigenschaft `EngagementAgent.Instance.TestLogEnabled` auf einen der aus der `EngagementTestLogLevel`-Enumeration verfügbaren Werte, beispielsweise:
+
+			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+			EngagementAgent.Instance.Init();
+
+<!---HONumber=AcomDC_0420_2016-->

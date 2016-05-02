@@ -13,21 +13,21 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="01/08/2016"
+ ms.date="04/18/2016"
  ms.author="danlep"/>
 
 # Verwalten der Anzahl und Verfügbarkeit von Computeknoten in einem HPC Pack-Cluster in Azure
 
+Wenn Sie einen HPC Pack-Cluster auf virtuellen Azure-Computern erstellt haben, möchten Sie wahrscheinlich verschiedene virtuelle Computer für Computeknoten im Cluster hinzufügen, entfernen, starten (bereitstellen) oder beenden (Bereitstellung aufheben). Zum Durchführen dieser Aufgaben können Sie Azure PowerShell-Skripts ausführen, die auf dem Hauptknoten des virtuellen Computers installiert sind. Mit diesen Skripts können Sie die Anzahl und Verfügbarkeit der HPC Pack-Clusterressourcen steuern und so auch Kosten senken.
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
 
-Wenn Sie einen HPC Pack-Cluster auf virtuellen Azure-Computern erstellt haben, möchten Sie wahrscheinlich verschiedene virtuelle Computer für Computeknoten im Cluster hinzufügen, entfernen, starten (bereitstellen) oder beenden (Bereitstellung aufheben). Zum Durchführen dieser Aufgaben können Sie Azure PowerShell-Skripts ausführen, die auf dem virtuellen Computer für den Hauptknoten installiert sind (ab HPC Pack 2012 R2 Update 1). Mit diesen Skripts können Sie die Anzahl und Verfügbarkeit der HPC Pack-Clusterressourcen steuern und so auch Kosten senken.
-
->[AZURE.NOTE] Die Skripts befinden sich im Ordner "%CCP\_HOME%bin" auf dem Hauptknoten. Sie müssen alle Skripts als Administrator ausführen.
-
 ## Voraussetzungen
 
-* **HPC Pack-Cluster auf virtuellen Azure-Computern** – Erstellen Sie einen HPC Pack-Cluster im klassischen Bereitstellungsmodell (Dienstverwaltungsmodus). Verwenden Sie dazu mindestens HPC Pack 2012 R2 Update 1. Sie können beispielsweise die Bereitstellung automatisieren, indem Sie das HPC Pack-VM-Image in Azure Marketplace und ein Azure PowerShell-Skript verwenden. Informationen und Voraussetzungen finden Sie unter [Erstellen eines HPC-Clusters mit dem HPC Pack IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+* **HPC Pack-Cluster auf virtuellen Azure-Computern** – Erstellen Sie einen HPC Pack-Cluster im klassischen Bereitstellungsmodell. Verwenden Sie dazu mindestens HPC Pack 2012 R2 Update 1. Sie können beispielsweise die Bereitstellung automatisieren, indem Sie das aktuelle HPC Pack-VM-Image in Azure Marketplace und ein Azure PowerShell-Skript verwenden. Informationen und Voraussetzungen finden Sie unter [Erstellen eines HPC-Clusters mit dem HPC Pack IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+
+    Suchen Sie nach der Bereitstellung Knotenverwaltungsskripts im %CCP\_HOME%bin-Ordner auf dem Hauptknoten. Sie müssen alle Skripts als Administrator ausführen.
 
 * **Azure-Veröffentlichungseinstellungsdatei oder -Verwaltungszertifikat:** Sie müssen einen der folgenden beiden Schritte auf dem Hauptknoten ausführen:
 
@@ -74,13 +74,13 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
 * **DomainUserName**: Domänenbenutzername, der zum Verknüpfen der neuen virtuellen Computer mit der Domäne verwendet wird.
 
-* **DomainUserPassword**: Kennwort des Domänenbenutzers
+* **DomainUserPassword**: Kennwort des Domänenbenutzers.
 
-* **NodeNameSeries** (optional): Benennungsmuster für den Computeknoten. Erforderliches Format: &lt;*Root\_Name*&gt;&lt;*Start\_Number*&gt;% "MyCN%10%" gibt beispielsweise mehrere Namen für Computeknoten, beginnend ab "MyCN11" an. Wenn kein Wert angegeben ist, verwendet das Skript die im HPC-Cluster konfigurierten Benennungsreihen für Knoten.
+* **NodeNameSeries** (optional): Benennungsmuster für Computeknoten. Erforderliches Format: &lt;*Root\_Name*&gt;&lt;*Start\_Number*&gt;% "MyCN%10%" gibt beispielsweise mehrere Namen für Computeknoten, beginnend ab "MyCN11" an. Wenn kein Wert angegeben ist, verwendet das Skript die im HPC-Cluster konfigurierten Benennungsreihen für Knoten.
 
 ### Beispiel
 
-Im folgenden Beispiel werden 20 virtuelle Maschinen für Computeknoten mit der Größe „Large“ basierend auf dem VM-Image *hpccnimage1* dem Clouddienst *hpcservice1* hinzugefügt.
+Im folgenden Beispiel werden 20 virtuelle Computer für Computeknoten mit der Größe „Large“ basierend auf dem VM-Image *hpccnimage1* dem Clouddienst *hpcservice1* hinzugefügt.
 
 ```
 Add-HPCIaaSNode.ps1 –ServiceName hpcservice1 –ImageName hpccniamge1
@@ -150,7 +150,7 @@ Start-HPCIaaSNode.ps1 –Name HPCNodeCN-*
 
 ## Beenden von virtuellen Computern für Computeknoten
 
-Beenden Sie Computeknoten mit dem Script **Stop-HpcIaaSNode.ps1**.
+Beenden Sie Computeknoten mit dem Skript **Stop-HpcIaaSNode.ps1**.
 
 ### Syntax
 
@@ -177,6 +177,6 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 ## Nächste Schritte
 
-* Wenn Sie die Clusterknoten entsprechend der aktuellen Workload der Aufträge und Aufgaben im Cluster automatisch vergrößern oder verkleinern möchten, finden Sie entsprechende Informationen unter [Automatisches Hoch- und Herunterskalieren von Azure-Computeressourcen in einem HPC Pack-Cluster](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md).
+* Wenn Sie die Clusterknoten entsprechend der aktuellen Arbeitsauslastung der Aufträge und Aufgaben im Cluster automatisch vergrößern oder verkleinern möchten, finden Sie entsprechende Informationen unter [Automatisches zentrales Hoch- und Herunterskalieren von Azure-Computeressourcen in einem HPC Pack-Cluster entsprechend der Clusterworkload](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

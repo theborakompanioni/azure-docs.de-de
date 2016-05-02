@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Unterstützte Browser und Geräte" 
-	description="" 
-	services="" 
-	documentationCenter="" 
-	authors="flanakin" 
-	writer="flanakin" 
-	manager="lwelicki" 
+<properties
+	pageTitle="Unterstützte Browser und Geräte"
+	description="Beschreibt die Browser und Geräte, auf denen das Azure-Portal verwendet werden kann." 
+	services=""
+	documentationCenter=""
+	authors="flanakin"
+	writer="flanakin"
+	manager="lwelicki"
 	editor=""/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/23/2015" 
+<tags
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/23/2015"
 	ms.author="micflan"/>
 
 #Unterstützte Browser und Geräte
@@ -32,4 +32,4 @@ Die neuesten Versionen der folgenden Browser werden unterstützt:
 - Chrome (neueste Version)
 - Firefox (neueste Version)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0420_2016-->

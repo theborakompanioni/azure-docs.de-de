@@ -18,21 +18,27 @@
 
 #Windows Universal Apps SDK-Versionshinweise
 
+##3\.4.0 (19.04.2016)
+
+-   Reach-Overlayverbesserungen.
+-   „TestLogLevel“-API zum Aktivieren/Deaktivieren/Filtern von Konsolenprotokollen, die vom SDK ausgegeben wurden, wurde hinzugefügt.
+-   Behebung des Problems mit Inaktivitätsbenachrichtigungen, die sich darauf bezogen, dass die erste Aktivität beim App-Start nicht angezeigt wurde.
+
 ##3\.3.1 (18.02.2016)
 
--   Behebt Konflikte zwischen den HTML-Inhalten der Webankündigung und der HTML-Seite des SDK.
+-   Behebung von Konflikten zwischen dem Inhalt der HTML-Webankündigung und dem SDK der HTML-Seite.
 -   Verbesserungen der Stabilität.
 
 ##3\.3.0 (22.01.2016)
 
--   Absturz bei Formatierung auf UWP-Apps, die im Releasemodus ausgeführt wird, behoben.
--   1px-Rand auf Benachrichtigungen für Universal 8.1-Apps behoben.
+-   Behebung von Absturzformatierung auf UWP-Apps, die im Releasemodus ausgeführt werden.
+-   Behebung von 1px-Rand auf Benachrichtigungen für Universal 8.1-Apps.
 -   ms-appx- und ms-appdata-Schemas in Aktions-URLs verfügbar.
 -   Verbesserungen der Stabilität.
 
 ##3\.2.0 (20.11.2015)
 
--   Unterstützung für universelle Windows 10-Plattform-Anwendungen hinzugefügt.
+-   Unterstützung für universelle Windows 10-Plattform-Anwendungen hinzugefügt.
 -   Freigabefunktion für Pushkanal hinzugefügt, um Kanalkonflikte zu beheben (jetzt kompatibel mit Azure Notification Hubs).
 -   Absturz beim Anfordern der Geräte-ID direkt nach der Initialisierung behoben.
 -   Verbesserungen bei Konsolenprotokollen.
@@ -61,4 +67,4 @@
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/30/2016"
+	ms.date="04/19/2016"
 	ms.author="tarcher"/>
 
 #Was ist DevTest Lab?
@@ -66,4 +66,4 @@ Artefakte sind JSON-Dateien auf Grundlage des Azure-Ressourcen-Managers (ARM), d
 
 Befolgen Sie zum Einstieg in DevTest Lab zunächst das schrittweise Lernprogramm [Erstellen von Azure DevTest Labs](devtest-lab-create-lab.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

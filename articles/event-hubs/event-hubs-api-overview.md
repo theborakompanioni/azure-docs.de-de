@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Übersicht über die Azure Event Hubs-APIs | Microsoft Azure"
-   description="Eine Zusammenfassung einiger wichtiger .NET-Client-APIs für Event Hubs."
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Übersicht über die Azure Event Hubs-APIs | Microsoft Azure"
+    description="Eine Zusammenfassung einiger wichtiger .NET-Client-APIs für Event Hubs."
+    services="event-hubs"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="event-hubs"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="event-hubs"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="04/15/2016"
+    ms.author="sethm" />
 
 # Übersicht über die Event Hubs-API
 
@@ -189,4 +189,4 @@ Die .NET-API-Referenzen sind hier verfügbar:
 - [.NET-API-Referenzen zu Service Bus und Event Hubs](https://msdn.microsoft.com/library/azure/mt419900.aspx)
 - [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->
