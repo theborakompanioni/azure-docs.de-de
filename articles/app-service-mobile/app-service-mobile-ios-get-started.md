@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="03/09/2016"
+	ms.date="04/19/2016"
 	ms.author="krisragh"/>
 
 #Erstellen einer iOS-App
@@ -22,40 +22,25 @@
 
 ## Übersicht
 
-Dieses Tutorial zeigt, wie Sie einen cloudbasierten Back-End-Dienst ([Azure Mobile Apps](app-service-mobile-value-prop.md)) einer mobilen iOS-App hinzufügen. Sie erstellen ein neues mobiles Back-End und verwenden eine einfache _Todo list-iOS_-App, die App-Daten in Azure speichert.
+In diesem Tutorial erfahren Sie, wie Sie [Azure Mobile Apps](app-service-mobile-value-prop.md), einen Cloud-Back-End-Dienst, zu einer iOS-App hinzufügen können. Wir erstellen zunächst ein neues mobiles Back-End. Anschließend verwenden wir eine einfache _Aufgabenlisten-_-iOS-App zum Speichern von Daten in Azure.
 
 ## Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein [aktives Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
+* Einen PC mit [Visual Studio Community 2013] oder höher 
+* Einen Mac mit Xcode 7.3 oder höher
 
-* Einen PC mit [Visual Studio Community 2013] oder höher
-
-* Einen Mac mit Xcode, Version 7.0 oder höher
-
-* [Azure Mobile iOS-Framework](https://go.microsoft.com/fwLink/?LinkID=529823), das automatisch als Teil des heruntergeladenen Schnellstartprojekts enthalten ist
-
-## Erstellen eines neuen mobilen Azure-App-Back-Ends
-
-Führen Sie die folgenden Schritte aus, um ein neues mobiles App-Back-End zu erstellen.
+## Schritt I: Erstellen eines neuen Azure-Back-Ends für mobile Apps
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren mobilen Clientanwendungen verwendet werden kann. Als Nächstes laden Sie ein Serverprojekt für ein einfaches "Aufgabenlisten"-Back-End herunter und veröffentlichen es in Azure.
-
-## Herunterladen des Serverprojekts
-
-1. Besuchen Sie auf dem PC das [Azure-Portal]. Klicken Sie auf **Alle durchsuchen** > **Mobile Apps**, und klicken Sie dann auf das mobile App-Back-End, das Sie gerade erstellt haben.
-
-2. Klicken Sie auf dem Blatt "Mobile App" auf **Einstellungen**, und klicken Sie dann unter **Mobile App** auf **Schnellstart** > **iOS (Objective-C)**. Wenn Sie Swift bevorzugen, klicken Sie stattdessen auf **Schnellstart** > **iOS (Swift)**.
-
-## Konfigurieren des Serverprojekts
+## Schritt II: Konfigurieren des Back-End-Projekts
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-
-## Herunterladen und Ausführen der iOS-App
+## Schritt III: Herunterladen und Ausführen der iOS-App
 
 [AZURE.INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
@@ -63,8 +48,8 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

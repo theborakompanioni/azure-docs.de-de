@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle zum Erstellen eines Data Lake-Speicherkontos, zum Erstellen eines Data Lake Analytics-Auftrags mit U-SQL und zum Senden des Auftrags verwenden." 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -13,8 +13,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/10/2016"
-   ms.author="jgao"/>
+   ms.date="04/21/2016"
+   ms.author="edmaca"/>
 
 # Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -25,16 +25,9 @@ Enthält Informationen zum Verwenden der Azure-CLI zum Erstellen von Azure Data 
 
 In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulatorgetrennten Werten (TSV) gelesen und in eine Datei mit kommagetrennten Werten (CSV) konvertiert wird. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
 
-**Der grundlegende Data Lake Analytics-Prozess:**
+[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
 
-![Azure Data Lake Analytics-Prozessflussdiagramm](./media/data-lake-analytics-get-started-portal/data-lake-analytics-process.png)
-
-1. Erstellen Sie ein Data Lake Analytics-Konto.
-2. Vorbereiten der Quelldaten. Bei Data Lake Analytics-Aufträgen können Daten entweder aus Azure Data Lake-Speicherkonten oder Azure-BLOB-Speicherkonten gelesen werden.   
-3. Entwickeln Sie ein U-SQL-Skript.
-4. Übermitteln Sie einen Auftrag (U-SQL-Skript) an das Data Lake Analytics-Konto. Für den Auftrag werden die Quelldaten gelesen, die Daten werden gemäß Anweisung im U-SQL-Skript verarbeitet, und anschließend wird die Ausgabe entweder in einem Data Lake-Speicherkonto oder einem BLOB-Speicherkonto gespeichert.
-
-**Voraussetzungen**
+##Voraussetzungen
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
@@ -169,4 +162,4 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

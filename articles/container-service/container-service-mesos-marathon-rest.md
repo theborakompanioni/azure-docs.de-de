@@ -47,7 +47,7 @@ curl localhost/marathon/v2/apps
 
 ## Bereitstellen eines Containers im Docker-Format
 
-Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der Nginx-Container bereitgestellt. Dabei wird Port 80 des DC/OS-Agents an Port 80 des Containers gebunden.
+Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit, die die vorgesehene Bereitstellung beschreibt. Im folgenden Beispiel wird der Nginx-Container bereitgestellt. Dabei wird Port 80 des DC/OS-Agents an Port 80 des Containers gebunden. Beachten Sie außerdem, dass die Eigenschaft „acceptedResourceRoles“ auf „slave\_public“ festgelegt ist. Damit wird der Container für einen Agent in der öffentlich zugänglichen Agent-Skalierungsgruppe bereitgestellt.
 
 ```json
 {
@@ -55,6 +55,9 @@ Sie stellen Container im Docker-Format mit Marathon über eine JSON-Datei bereit
   "cpus": 0.1,
   "mem": 16.0,
   "instances": 1,
+    "acceptedResourceRoles": [
+    "slave_public"
+  ],
   "container": {
     "type": "DOCKER",
     "docker": {
@@ -171,4 +174,4 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 [Lesen Sie mehr über die Mesos-HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/). [Weitere Informationen zur Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

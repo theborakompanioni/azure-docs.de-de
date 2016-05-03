@@ -1,5 +1,5 @@
 <properties
-	 pageTitle="Gewusst wie: Verwenden von Azure CDN"
+	 pageTitle="Verwenden von Azure CDN"
 	 description="Dieses Thema zeigt, wie Sie das Content Delivery Network (CDN) für Azure aktivieren. Das Tutorial enthält ausführliche Informationen zur Erstellung eines neuen CDN-Profils und -Endpunkts."
 	 services="cdn"
 	 documentationCenter=""
@@ -12,14 +12,14 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="04/15/2016" 
+	 ms.date="04/26/2016" 
 	 ms.author="casoper"/>
 
-# Gewusst wie: Verwenden von Azure CDN  
+# Verwenden von Azure CDN  
 
-CDN kann im [Azure-Portal](https://portal.azure.com) aktiviert werden. Es werden verschiedene integrierte Azure-Ursprünge unterstützt, darunter Web-Apps, Blob Storage und Cloud Storage. Sie können das CDN auch für Ihre Azure Media Services-Streamingendpunkte aktivieren. Wenn der Ursprung keiner dieser Azure-Dienste ist oder an anderer Stelle außerhalb von Azure gehostet wird, können Sie einen benutzerdefinierten Ursprung erstellen. Sobald Sie einen CDN-Endpunkt für Ihren Ursprung aktivieren, kommen alle öffentlich verfügbaren Objekte für das CDN-Edgecaching in Frage.
+In diesem Thema werden die Schritte zum Aktivieren von Azure CDN durch Erstellung eines neuen CDN-Profils und -Endpunkts erläutert.
 
->[AZURE.NOTE] Eine Einführung in die Funktionsweise von CDN sowie eine Liste der Features finden Sie in der [Übersicht über CDN](./cdn-overview.md).
+>[AZURE.IMPORTANT] Eine Einführung in die Funktionsweise von CDN sowie eine Liste der Features finden Sie in der [Übersicht über CDN](./cdn-overview.md).
 
 ## Erstellen eines neuen CDN-Profils
 
@@ -70,10 +70,10 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 3. Geben Sie einen **Namen** für diesen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf die zwischengespeicherten Ressourcen in der Domäne `<endpointname>.azureedge.net` verwendet.
 
-4. Wählen Sie in der Dropdownliste **Ursprungstyp** Ihren Ursprungstyp aus.
+4. Wählen Sie in der Dropdownliste **Ursprungstyp** Ihren Ursprungstyp aus. Wählen Sie **Storage** für ein Azure Storage-Konto, **Clouddienst** für einen Azure-Clouddienst, **Web-App** für eine Azure-Web-App oder **Benutzerdefinierter Ursprung** für einen öffentlich zugänglichen Webserver (in Azure oder anderswo gehostet).
 
 	![CDN-Ursprung](./media/cdn-create-new-endpoint/cdn-origin-type.png)
-
+		
 5. Wählen Sie in der Dropdownliste **Ursprungshostname** Ihre Ursprungsdomäne aus, bzw. geben Sie sie ein. In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben. Bei Auswahl von *Benutzerdefinierter Ursprung* als **Ursprungstyp** geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein.
 
 6. Geben Sie im Textfeld **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern aller Ressourcen in der Domäne zuzulassen, die Sie in Schritt 5 angegeben haben.
@@ -85,7 +85,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 	> [AZURE.TIP] Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
 	> 
 	> - Sie müssen das vom CDN bereitgestellte Zertifikat verwenden. Zertifikate von Drittanbietern werden nicht unterstützt.
-	> - Sie müssen die vom CDN bereitgestellte Domäne (`<identifier>.azureedge.net`) verwenden, um auf HTTPS-Inhalte zuzugreifen. HTTPS-Unterstützung ist für benutzerdefinierte Domänennamen (CNAMEs) nicht verfügbar, da das CDN derzeit keine benutzerdefinierten Zertifikate unterstützt.
+	> - Sie müssen die vom CDN bereitgestellte Domäne (`<endpointname>.azureedge.net`) verwenden, um auf HTTPS-Inhalte zuzugreifen. HTTPS-Unterstützung ist für benutzerdefinierte Domänennamen (CNAMEs) nicht verfügbar, da das CDN derzeit keine benutzerdefinierten Zertifikate unterstützt.
 
 9. Klicken Sie auf die Schaltfläche **Hinzufügen**, um den neuen Endpunkt zu erstellen.
 
@@ -93,7 +93,10 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
     ![CDN-Endpunkt][cdn-endpoint-success]
 
-    > [AZURE.NOTE] Der Endpunkt kann nicht sofort verwendet werden. Es dauert bis zu 90 Minuten, bis die Registrierung über das CDN-Netzwerk weitergegeben wurde. Benutzer, die den CDN-Domänennamen sofort zu verwenden versuchen, sehen u. U. den Statuscode 404, bis die Inhalte über das CDN verfügbar sind.
+    > [AZURE.IMPORTANT] Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN-Netzwerk eine Weile dauern kann. In der Regel ist er innerhalb von 90 Minuten verfügbar, in einigen Fällen kann es jedoch länger dauern.
+	>	 
+	> Benutzer, die versuchen, den CDN-Domänennamen zu verwenden, bevor die Endpunktkonfiguration an die POPs verteilt wurde, erhalten den Antwortcode „HTTP 404“.
+
 
 ##Weitere Informationen
 - [Steuern des Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen](cdn-query-string.md)
@@ -107,4 +110,4 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

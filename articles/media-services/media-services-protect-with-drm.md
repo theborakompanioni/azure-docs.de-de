@@ -531,7 +531,7 @@ Das folgende Beispiel veranschaulicht die Funktionen, die im Azure Media Service
 			        // For example: https://amsaccount1.keydelivery.mediaservices.windows.net/Widevine/?KID=268a6dcb-18c8-4648-8c95-f46429e4927c.  
 			        // The WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
 			        // to append /? KID =< keyId > to the end of the url when creating the manifest.
-			        // As a result Widevine license aquisition URL will have KID appended twice, 
+			        // As a result Widevine license acquisition URL will have KID appended twice, 
 			        // so we need to remove the KID that in the URL when we call GetKeyDeliveryUrl.
 			
 		            Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
@@ -629,4 +629,4 @@ Das folgende Beispiel veranschaulicht die Funktionen, die im Azure Media Service
 
 [Ankündigung von Google Widevine-Diensten zur Lizenzbereitstellung in Azure Media Services](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

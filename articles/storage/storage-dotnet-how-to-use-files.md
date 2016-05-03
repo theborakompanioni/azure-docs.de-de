@@ -200,7 +200,7 @@ Dank der Unterstützung von SMB 3.0 unterstützt der Dateispeicher jetzt die Ve
 Wenn ein Client auf den Dateispeicher zugreift, richtet sich die verwendete SMB-Version nach der SMB-Version, die vom Betriebssystem unterstützt wird. Die folgende Tabelle enthält eine Zusammenfassung der Unterstützung für Windows-Clients. In diesem Blog finden Sie ausführlichere Informationen zu [SMB-Versionen](http://blogs.technet.com/b/josebda/archive/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-you-are-using.aspx).
 
 | Windows-Client | SMB-Version unterstützt |
-|------------------------|----------------------|
+|------------------------|-----------------------|
 | Windows 7 | SMB 2.1 |
 | Windows Server 2008 R2 | SMB 2.1 |
 | Windows 8 | SMB 3.0 |
@@ -642,4 +642,4 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 - [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

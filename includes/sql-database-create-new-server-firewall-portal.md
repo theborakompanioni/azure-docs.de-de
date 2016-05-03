@@ -9,7 +9,7 @@ articles/sql-database/sql-database-get-started-tutorial.md
 articles/sql-database/sql-database-configure-firewall-settings
 
 -->
-## Erstellen einer neuen Firewall auf Azure SQL-Datenbankserver-Ebene
+## Erstellen einer neuen Azure SQL-Firewall auf Serverebene
 
 Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Firewallregel auf Serverebene zu erstellen, die Verbindungen von einer einzelnen IP-Adresse (Ihr Clientcomputer) oder einem gesamten IP-Adressbereich mit einem logischen SQL-Datenbankserver zulässt.
 
@@ -44,4 +44,4 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Firewallregel au
 
 	>[AZURE.IMPORTANT] Die Client-IP-Adresse kann sich von Zeit zu Zeit ändern, und Sie können dann möglicherweise nicht auf den Server zugreifen, bis Sie eine neue Firewallregel erstellt haben. Überprüfen Sie die IP-Adresse mit [Bing](http://www.bing.com/search?q=my%20ip%20address), und fügen Sie dann eine einzelne IP-Adresse oder einen Bereich von IP-Adressen hinzu. Ausführlichere Informationen finden Sie unter [Verwalten von Firewalleinstellungen](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

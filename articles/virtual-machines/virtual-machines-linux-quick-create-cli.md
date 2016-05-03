@@ -13,31 +13,31 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="04/08/2016"
+   ms.date="04/27/2016"
    ms.author="v-livech"/>
 
 
 # Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle
 
-Dieser Artikel zeigt, wie Sie mit dem Befehl `azure vm quick-create` der Azure-Befehlszeilenschnittstelle schnell einen virtuellen Linux-Computer erstellen können. Der Befehl `quick-create` erstellt einen virtuellen Computer mit einer Basisinfrastruktur, mit dem Sie rasch einen Prototyp erstellen oder ein Konzept testen können. Dies ist der schnellste Weg zu einer Linux-Bash-Shell. Für die Schritte in diesem Artikel ist ein Azure-Konto ([kostenlose Testversion herunterladen](https://azure.microsoft.com/pricing/free-trial/)) und die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`) erforderlich.
+Dieser Artikel zeigt, wie Sie mit dem Befehl `azure vm quick-create` der Azure-Befehlszeilenschnittstelle schnell einen virtuellen Linux-Computer bereitstellen können. Der Befehl `quick-create` stellt einen virtuellen Computer mit einer umgebenden Basisinfrastruktur bereit, mit dem Sie rasch einen Prototyp erstellen oder ein Konzept testen können. Dies ist der schnellste Weg zu einer Linux-Bash-Shell. Für die Schritte in diesem Artikel ist ein Azure-Konto ([kostenlose Testversion herunterladen](https://azure.microsoft.com/pricing/free-trial/)) und eine Anmeldung bei der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (`azure login`) im Resource Manager-Modus (`azure config mode arm`) erforderlich. Sie können mithilfe des [Azure-Portals](virtual-machines-linux-quick-create-portal.md) auch schnell einen virtuellen Linux-Computer bereitstellen.
 
 ## Kurze Zusammenfassung der Befehle
 
 ```
-# One command to quickly the VM that prompts for arguments
+# One command to deploy the VM and attach your SSH key
 ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
 ```
 
-## Ausführliche exemplarische Vorgehensweise
+## Bereitstellen eines virtuellen Linux-Computers
 
-## Erstellen der Linux-VM
+Mit dem gleichen Befehl wie oben zeigen wir Ihnen die einzelnen Befehle zusammen mit der angezeigten Ausgabe.
 
-Im folgenden Befehl können Sie ein beliebiges Image verwenden, aber in diesem Beispiel wird `canonical:ubuntuserver:14.04.2-LTS:latest` verwendet, um auf schnelle Weise einen virtuellen Computer zu erstellen. (Um ein Image im Marketplace zu finden, können Sie [ein Image suchen](virtual-machines-linux-cli-ps-findimage.md) oder [Ihr eigenes benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).) Etwa Folgendes sollte angezeigt werden:
+Für ImageURN verwenden wir `canonical:ubuntuserver:14.04.2-LTS:latest` zum Bereitstellen eines virtuellen Ubuntu 14.04-Computers. (Um ein Image im Marketplace zu finden, können Sie [ein Image suchen](virtual-machines-linux-cli-ps-findimage.md) oder [Ihr eigenes benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).)
 
-Ersetzen Sie in der folgenden exemplarischen Vorgehensweise für einen Befehl die Aufforderungen durch die Werte aus Ihrer eigenen Umgebung. Für diesen Artikel werden Beispielwerte verwendet.
+Ersetzen Sie in der folgenden exemplarischen Vorgehensweise für einen Befehl die Aufforderungen durch die Werte aus Ihrer eigenen Umgebung. Wir verwenden hier Beispielwerte. Die Ausgabe sollte dem folgenden Ausgabeblock ähneln.
 
 ```bash
-# Create the Linux VM using prompts
+# Follow the prompts and enter your own names
 ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
 info:    Executing command vm quick-create
 Resource group name: exampleRGname
@@ -48,6 +48,10 @@ ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to 
 User name: ahmet
 Password: ************************************************
 Confirm password: ************************************************
+```
+
+```bash
+########### expected output ###########
 + Looking up the VM "exampleVMname"
 info:    Verifying the public key SSH file: /home/ahmet/.ssh/azure_id_rsa.pub
 info:    Using the VM Size "Standard_D1"
@@ -123,30 +127,22 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
-Sie können jetzt eine SSH-Verbindung mit Ihrem virtuellen Computer auf dem SSH-Standardport 22 und der öffentlichen IP-Adresse (s. Ausgabe oben) herstellen.
+Sie können jetzt eine SSH-Verbindung mit Ihrem virtuellen Computer auf dem SSH-Standardport 22 und der öffentlichen IP-Adresse oder den vollqualifizierten Domänennamen (FQDN) (s. Ausgabe oben) herstellen.
 
 ```
 ahmet@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
 ```
 
-`azure vm quick-create` ist eine Möglichkeit, schnell einen virtuellen Computer zu erstellen, damit Sie sich bei einer Bash-Shell anmelden und arbeiten können. Durch die Verwendung von `vm quick-create` erhalten Sie jedoch nicht die Vorteiler einer komplexen Umgebung. Wenn Sie Ihre Umgebung anpassen möchten, können Sie eine [Azure Resource Manager-Vorlage verwenden, um schnell eine bestimmte Bereitstellung zu erstellen](virtual-machines-linux-cli-deploy-templates.md), oder Sie können [Ihre eigene benutzerdefinierte Umgebung für einen virtuellen Linux-Computer direkt mit Befehlen der Azure-Befehlszeilenschnittstelle erstellen](virtual-machines-linux-cli-deploy-templates.md).
-
-Das obige Beispiel erstellt:
-
-- eine Azure-Ressourcengruppe, in der die VM bereitgestellt wird
-- ein Azure Storage-Konto zum Speichern der VHD-Datei, die das VM-Image ist
-- ein virtuelles Azure-Netzwerk und Subnetz für die Verbindung mit der VM
-- eine virtuelle Netzwerkschnittstellen-Karte (Network Interface Card, NIC), um die VM dem Netzwerk zuzuordnen
-- eine öffentliche IP-Adresse und ein Unterdomänenpräfix, um eine Internetadresse für die externe Verwendung bereitzustellen, und anschließend wird die Linux-VM in dieser Umgebung erstellt.
-
 ## Nächste Schritte
 
-Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke erstellt. Lesen Sie zum Erstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel.
+`azure vm quick-create` ist eine Möglichkeit, schnell einen virtuellen Computer bereitszustellen, damit Sie sich bei einer Bash-Shell anmelden und arbeiten können. Mit `vm quick-create` stehen Ihnen die zusätzlichen Vorteile einer komplexen Umgebung nicht zur Verfügung. Lesen Sie zum Bereitstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
 
+- [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
+- [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
 - [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
 - [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 - [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
 
 Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, Konfiguration und Orchestrierung.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

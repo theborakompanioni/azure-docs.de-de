@@ -50,7 +50,7 @@ Azure App Service-Web-Apps ist eine vollständig verwaltete Plattform, auf der S
 - **Hybridverbindungen** – Zugriff auf lokale Daten mit [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [VNET](../app-service-web/web-sites-integrate-with-vnet.md).
 
 ## Erste Schritte ##
-Führen Sie zum Einstieg in Web-Apps das Lernprogramm [Erstellen einer ASP.NET-Web-App][create] aus.
+Führen Sie zunächst das Tutorial [Erste Schritte mit Web-Apps in Azure App Service][create] aus.
 
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][appservice].
 
@@ -60,10 +60,10 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 * Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 [appservice]: ../app-service/app-service-value-prop-what-is.md
-[create]: web-sites-dotnet-get-started.md
+[create]: app-service-web-get-started.md
 [Webjobs]: websites-dotnet-webjobs-sdk-get-started.md
 [Slots]: web-sites-staged-publishing.md
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

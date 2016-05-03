@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="04/18/2016"
+   ms.date="04/24/2016"
    ms.author="derrickv"/>
 
 # Erste Schritte mit Microsoft Power BI Embedded Preview
@@ -107,4 +107,4 @@ In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten 
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

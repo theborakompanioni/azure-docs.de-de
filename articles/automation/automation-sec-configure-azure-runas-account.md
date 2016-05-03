@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/31/2016"
+    ms.date="04/20/2016"
     ms.author="magoedte"/>
 
 # Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“
@@ -70,7 +70,7 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 
 Mit dem PowerShell-Skript wird Folgendes konfiguriert:
 
-* Eine Azure AD-Anwendung, die mit dem selbstsignierten Zertifikat authentifiziert werden kann, und ein Dienstprinzipalkonto für diese Anwendung in Azure AD. Außerdem wird die Rolle „Mitwirkender“ (kann auch in „Besitzer“ oder eine andere Rolle geändert werden) für dieses Konto in Ihrem aktuellen Abonnement zugewiesen. Weitere Informationen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).  
+* Eine Azure AD-Anwendung, die mit dem selbstsignierten Zertifikat authentifiziert wird, und ein Dienstprinzipalkonto für diese Anwendung in Azure AD. Außerdem wird die Rolle „Mitwirkender“ (kann auch in „Besitzer“ oder eine andere Rolle geändert werden) für dieses Konto in Ihrem aktuellen Abonnement zugewiesen. Weitere Informationen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).  
 * Ein Automation-Zertifikatobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsCertificate**, in dem das im Dienstprinzipal verwendete Zertifikat enthalten ist
 * Ein Automation-Verbindungsobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsConnection**, das die Elemente „applicationId“, „tenantId“, „subscriptionId“ und den Zertifikatfingerabdruck enthält  
 
@@ -123,7 +123,7 @@ Mit dem PowerShell-Skript wird Folgendes konfiguriert:
     $KeyCredential.Value = $KeyValue
 
     # Use Key credentials
-    $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ServicePrincipalDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
+    $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
 
     New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId | Write-Verbose
     Get-AzureRmADServicePrincipal | Where {$_.ApplicationId -eq $Application.ApplicationId} | Write-Verbose
@@ -200,4 +200,4 @@ Den obigen Code zum Überprüfen, ob das neue Konto richtig eingerichtet ist, ve
 - Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

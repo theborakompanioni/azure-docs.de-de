@@ -75,4 +75,6 @@ Informationen zu den ersten Schritten mit CDN finden Sie unter [Einstieg in Azur
 
 Wenn Sie bereits CDN-Kunde sind, können Sie jetzt Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) verwalten.
 
-<!---HONumber=AcomDC_0420_2016-->
+Im [Video zu unserer Build 2016-Sitzung](../../videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
+
+<!---HONumber=AcomDC_0427_2016-->

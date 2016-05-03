@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/01/2016"
+   ms.date="04/22/2016"
    ms.author="yurid"/>
 
 # Festlegen von Sicherheitsrichtlinien in Azure Security Center
@@ -65,12 +65,12 @@ Sicherheitsrichtlinien können für jedes Abonnement oder jede Ressourcengruppe 
 
 | Richtlinie | Zustand Ein |
 |----- |-----|
-| System Updates | Ruft alle zwölf Stunden und abhängig davon, welcher Dienst für diese virtuelle Maschine konfiguriert ist, eine Liste der verfügbaren Updates von Windows Update oder WSUS ab und empfiehlt, dass die fehlenden Sicherheitsupdates und wichtigen Updates auf Ihren virtuellen Windows-Maschinen installiert werden sollen. |
+| System Updates | Ruft alle zwölf Stunden und abhängig davon, welcher Dienst für diese virtuelle Maschine konfiguriert ist, eine Liste der verfügbaren Updates von Windows Update oder WSUS ab und empfiehlt, dass die fehlenden Sicherheitsupdates und wichtigen Updates auf Ihren virtuellen Windows-Maschinen installiert werden sollen. |
 | Basisregeln | Analysiert alle unterstützten virtuellen Computer, um jegliche Betriebssystemkonfigurationen zu ermitteln, die bewirken können, dass die virtuellen Computer anfälliger für Angriffe werden, und empfiehlt Konfigurationsänderungen, um auf diese Sicherheitsrisiken zu reagieren. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (in englischer Sprache). |
 | Antimalware | Empfiehlt, dass Antimalware für alle virtuellen Windows-Computer bereitgestellt wird, um Viren, Spyware und andere Schadsoftware möglichst zu erkennen und zu entfernen. |
 | Zugriffssteuerungsliste auf Endpunkten | Empfiehlt, dass eine [Zugriffssteuerungsliste](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md) (Access Controls List, ACL) konfiguriert wird, um den Zugriff auf Endpunkte von klassischen virtuellen Computern zu beschränken. Dies wird normalerweise verwendet, um sicherzustellen, dass nur Benutzer, die mit dem Unternehmensnetzwerk verbunden sind, auf die virtuellen Computer zugreifen können. |
 | Netzwerksicherheitsgruppen | Empfiehlt, dass [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) (NSGs) konfiguriert werden sollten, um den eingehenden und ausgehenden Datenverkehr für Subnetze und Netzwerkschnittstellen für virtuelle Ressourcen-Manager-Computer zu steuern. NSGs, die für ein Subnetz konfiguriert sind, werden für alle Netzwerkschnittstellen der virtuellen Computer übernommen, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine NSG konfiguriert wurde, bewertet diese Option Sicherheitsregeln für eingehende Daten, um Regeln zu identifizieren, die jeglichen eingehenden Datenverkehr zulassen. |
-| Web Application Firewall | Empfiehlt, dass eine Web Application Firewall auf virtuellen Computern bereitgestellt wird, wenn Folgendes zutrifft: [Öffentliche IP auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) wird verwendet, und die zugehörigen NSG-Sicherheitsregeln für eingehenden Datenverkehr sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird. Es wird eine IP-Adresse mit Lastenausgleich (VIP) verwendet, und die zugehörigen Lastenausgleichs- und eingehenden NAT-Regeln sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird (weitere Informationen finden Sie unter [Unterstützung des Azure-Ressourcen-Managers für Load Balancer](../load-balancer/load-balancer-arm.md)). |
+| Web Application Firewall | Empfiehlt, dass eine Web Application Firewall auf virtuellen Computern bereitgestellt wird, wenn Folgendes zutrifft: [Öffentliche IP auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) wird verwendet, und die zugehörigen NSG-Sicherheitsregeln für eingehenden Datenverkehr sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird. Es wird eine IP-Adresse mit Lastenausgleich (VIP) verwendet, und die zugehörigen Lastenausgleichs- und eingehenden NAT-Regeln sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird (weitere Informationen finden Sie unter [Unterstützung des Azure-Ressourcen-Managers für Load Balancer](../load-balancer/load-balancer-arm.md)). |
 | SQL-Überwachung | Empfiehlt, dass Überwachung des Zugriffs auf Azure SQL-Server und -Datenbanken zu Compliance-, erweiterten Erkennungs- und Untersuchungszwecken aktiviert wird. |
 | Transparent Data Encryption für SQL | Empfiehlt, dass Verschlüsselung im Ruhezustand für Ihre Azure SQL-Datenbanken, die zugehörigen Sicherungen und die Transaktionsprotokolldateien aktiviert wird, sodass Ihre Daten selbst dann, wenn unberechtigt auf sie zugegriffen wird, nicht gelesen werden können. |
 
@@ -96,7 +96,8 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) – erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
+- [Monitoring partner solutions with Azure Security Center (Überwachen von Partnerlösungen mit Azure Security Center)](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 - [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

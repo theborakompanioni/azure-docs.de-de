@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen einer SQL Data Warehouse-Datenbank mithilfe von Transact-SQL (TSQL)
@@ -31,62 +31,49 @@ In diesem Artikel erfahren Sie, wie Sie eine SQL Data Warehouse-Datenbank mithil
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenlose Testversion** klicken. Lesen Sie anschließend den Artikel weiter.
-- Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs).
-- Einen logischen V12-Server. Sie benötigen einen V12-SQL-Server zum Erstellen des SQL Data Warehouse. Wenn Sie keinen logischen V12-SQL-Server haben, erfahren Sie [in einem Tutorial im Azure-Portal][], wie Sie einen erstellen.
+- Einen logischen V12-Server. Sie benötigen einen V12-SQL-Server zum Erstellen des SQL Data Warehouse. Wenn Sie über keinen logischen V12-SQL-Server verfügen, finden Sie unter **Configure and create a server** (Konfigurieren und Erstellen eines Servers) im Artikel [Create a SQL Data Warehouse][] (Erstellen eines SQL Data Warehouse) weitere Informationen.
+- Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads][].
+
+
+> [AZURE.NOTE] Wenn Sie ein neues SQL Data Warehouse erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.
 
 ## Erstellen einer Datenbank mit Visual Studio
 
-In diesem Artikel wird nicht behandelt, wie eine Datenbank ordnungsgemäß eingerichtet und eine Verbindung mit Visual Studio hergestellt wird. Eine vollständige Beschreibung der Vorgehensweise finden Sie in der Dokumentation zu [Verbindungsherstellung und Abfragen][]. Zum Starten öffnen Sie den SQL Server-Objekt-Explorer in Visual Studio und stellen eine Verbindung mit dem Server her, mit dessen Hilfe Sie Ihre SQL Data Warehouse-Datenbank erstellen möchten. Nachdem dies erfolgt ist, können Sie ein SQL Data Warehouse erstellen, indem Sie den folgenden Befehl auf die Datenbank "master" anwenden:
+Wenn Sie mit Visual Studio noch nicht vertraut sind, finden Sie im Artikel [Connect to SQL Data Warehouse with Visual Studio][] (Verbinden mit SQL Data Warehouse mithilfe von Visual Studio) weitere Informationen. Zum Starten öffnen Sie den SQL Server-Objekt-Explorer in Visual Studio und stellen eine Verbindung mit dem Server her, der Ihre SQL Data Warehouse-Datenbank hosten soll. Wenn die Verbindung hergestellt wurde, können Sie ein SQL Data Warehouse erstellen, indem Sie den folgenden SQL-Befehl auf die Datenbank **master** anwenden. Dieser Befehl erstellt die Datenbank „MySqlDwDb“ mit dem Dienstziel DW400, und die Datenbank kann maximal 10 TB groß sein.
 
 ```sql
-CREATE DATABASE <Name> (EDITION='datawarehouse', SERVICE_OBJECTIVE = '<Compute Size - DW####>', MAXSIZE= <Storage Size - #### GB>);
+CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB);
 ```
 
 ## Erstellen Sie eine Datenbank mit SQLCMD
 
-Sie können ein SQL Data Warehouse auch erstellen, indem Sie die Befehlszeile öffnen und Folgendes ausführen:
+Alternativ können Sie den gleichen Befehl mit „sqlcmd“ ausführen, wenn Sie bei einer Eingabeaufforderung Folgendes ausführen.
 
 ```sql
-sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE <Name> (EDITION='datawarehouse', SERVICE_OBJECTIVE = '<Compute Size - DW####>', MAXSIZE= <Storage Size - #### GB>)"
+sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB)"
 ```
 
-Beachten Sie beim Ausführen der oben genannten TSQL-Anweisungen die Parameter `MAXSIZE` und `SERVICE_OBJECTIVE`. Diese bestimmen die anfängliche Speichergröße und Datenverarbeitungskapazität, die Ihrer Data Warehouse-Instanz zugewiesen sind. `MAXSIZE` akzeptiert die folgenden Größen. Wir empfehlen eine hohe Größe, um Wachstum unterstützen zu können:
+Die Parameter **MAXSIZE** und **SERVICE\_OBJECTIVE** legen den maximalen Speicherplatz fest, den die Datenbank auf einem Datenträger einnehmen kann, sowie die Computeressourcen, die Ihrer Data Warehouse-Instanz zugewiesen ist. Das Dienstziel liegt im Wesentlichen im Zuweisen von CPU und Arbeitsspeicher mit linearer Skalierung in Bezug auf die DWU-Größe.
 
-+ 50 GB
-+ 500 GB
-+ 750 GB
-+ 1024 GB
-+ 5120 GB
-+ 10\.240 GB
-+ 20\.480 GB
-+ 30\.720 GB
-+ 40\.960 GB
-+ 51\.200 GB
-
-`SERVICE_OBJECTIVE` gibt die Anzahl der DWUs an, mit der Ihre Instanz gestartet wird, und akzeptiert die folgenden Werte:
-
-+ DW100
-+ DW200
-+ DW300
-+ DW400
-+ DW500
-+ DW600
-+ DW1000
-+ DW1200
-+ DW1500
-+ DW2000
-
-Informationen zur Auswirkung dieser Parameter auf die Abrechnung finden Sie auf unserer Seite zur [Preisgestaltung][].
+MAXSIZE kann zwischen 250 GB und 60 TB liegen. Das Dienstziel kann zwischen DW100 und DW2000 liegen. Eine vollständige Liste aller gültigen Werte für MAXSIZE und SERVICE\_OBJECTIVE finden Sie in der MSDN-Dokumentation für [CREATE DATABASE][]. Sowohl MAXSIZE als auch SERVICE\_OBJECTIVE können auch mit einem [ALTER DATABASE][]-T-SQL-Befehl geändert werden. Seien Sie beim Ändern von SERVICE-OBJECTIVE vorsichtig, da dies einen Neustart des Diensts zur Folge hat, was alle aktuellen Abfragen abbricht. MAXSIZE ist ein einfacher Metadatenvorgang und beinhaltet somit weniger Risiken.
 
 ## Nächste Schritte
-Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] erlernen.
+Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] lernen.
 
-[in einem Tutorial im Azure-Portal]: ./sql-data-warehouse-get-started-provision.md
-[Verbindungsherstellung und Abfragen]: ./sql-data-warehouse-get-started-connect.md
-[Migrieren]: ./sql-data-warehouse-overview-migrate.md
-[Entwickeln]: ./sql-data-warehouse-overview-develop.md
-[Laden]: ./sql-data-warehouse-overview-load.md
-[Beispieldaten laden]: ./sql-data-warehouse-get-started-manually-load-samples.md
-[Preisgestaltung]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+<!--Article references-->
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Connect to SQL Data Warehouse with Visual Studio]: sql-data-warehouse-get-started-connect.md
+[Migrieren]: sql-data-warehouse-overview-migrate.md
+[Entwickeln]: sql-data-warehouse-overview-develop.md
+[Laden]: sql-data-warehouse-overview-load.md
+[Beispieldaten laden]: sql-data-warehouse-get-started-manually-load-samples.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!--MSDN references--> 
+[CREATE DATABASE]: https://msdn.microsoft.com/library/mt204021.aspx
+[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
+
+<!--Other Web references-->
+[SQL Data Warehouse – Preise]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+[Visual Studio-Downloads]: https://www.visualstudio.com/downloads/download-visual-studio-vs
+
+<!---HONumber=AcomDC_0427_2016-->

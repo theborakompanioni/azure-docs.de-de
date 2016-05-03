@@ -57,6 +57,18 @@ Protokoll | TCP
 
 ![](media/dcos/dcos6.png)
 
+Verwenden Sie zum statischen Zuordnen eines Containerports zu einem Port des Agents den JSON-Modus. Wechseln Sie im Assistenten für die neue Anwendung mithilfe des Umschalters in den JSON-Modus, und geben Sie im Abschnitt „portMappings“ der Anwendungsdefinition Folgendes ein. In diesem Beispiel wird Port 80 des Containers an Port 80 des DC/OS-Agents gebunden. Sobald die Änderung vorgenommen wurde, kann der JSON-Modus im Assistenten beendet werden.
+
+```none
+“hostPort”: 80,
+```
+
+![](media/dcos/dcos13.png)
+
+Der DC/OS-Cluster wird mit einem Satz von privaten und öffentlichen Agents bereitgestellt. Damit über das Internet auf Anwendungen zugegriffen werden kann, müssen die Anwendungen auf einem öffentlichen Agent bereitgestellt werden. Wählen Sie dazu im Assistenten für die neue Anwendung die Registerkarte „Optional“, und geben Sie für die akzeptierten Ressourcenrollen „slave\_public“ ein.
+
+![](media/dcos/dcos14.png)
+
 Auf der Marathon-Hauptseite können Sie den Bereitstellungsstatus für den Container anzeigen.
 
 ![](media/dcos/dcos7.png)
@@ -85,4 +97,4 @@ Sobald der Skalierungsvorgang abgeschlossen ist, sehen Sie mehrere Instanzen der
 
 [Arbeiten mit der DC/OS- und Marathon-API](./container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

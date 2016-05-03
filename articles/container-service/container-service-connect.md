@@ -36,12 +36,9 @@ Als Erstes ermitteln Sie beim Erstellen eines SSH-Tunnels unter Linux oder OS X 
 
 **PORT** ist der Port des Endpunkts, den Sie verfügbar machen möchten. Für Swarm ist dies 2375. Verwenden Sie für DC/OS Port 80. **BENUTZERNAME** ist der Benutzername, der bei der Bereitstellung des Clusters angegeben wurde. **DNSPREFIX** ist das DNS-Präfix, das bei der Bereitstellung des Clusters angegeben wurde. **REGION** ist die Region, in der sich die Ressourcengruppe befindet.
 
-> Für die SSH-Verbindung wird Port 2200 und nicht der Standardport 22 verwendet.
-
 ```bash
 # ssh sample
-
-ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]man.[REGION].cloudapp.azure.com -p 2200
+ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 
 ### DC/OS-Tunnel
@@ -120,4 +117,4 @@ Bereitstellen und Verwalten von Containern mit DC/OS oder Swarm
 
 [Arbeiten mit Azure Container Service und DC/OS](./container-service-mesos-marathon-rest.md) [Arbeiten mit Azure Container Service und Docker Swarm](./container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

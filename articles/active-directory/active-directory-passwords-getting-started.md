@@ -50,7 +50,7 @@ Bevor Sie die Self-Service-Kennwortzurücksetzung aktivieren und verwenden könn
 - Ordnen Sie Ihren AAD-Mandanten Ihrem Azure-Abonnement zu. Weitere Informationen zu Azure-Abonnements finden Sie unter [Wie Azure-Abonnements mit Azure AD verknüpft sind](https://msdn.microsoft.com/library/azure/dn629581.aspx).
 - Führen Sie ein Upgrade auf Azure AD Premium oder Basic durch, oder verwenden Sie eine kostenpflichtige O365-Lizenz. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](https://azure.microsoft.com/pricing/details/active-directory/).
 
-  >[AZURE.NOTE] Um die Self-Service-Kennwortzurücksetzung für Cloudbenutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium, Azure AD Basic oder eine kostenpflichtige O365-Lizenz durchführen. Um die Self-Service-Kennwortzurücksetzung für Ihre lokalen Benutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium durchführen. Weitere Informationen finden Sie im Artikel zu den verschiedenen Azure Active Directory-Editionen. Hier finden Sie u. a. ausführliche Informationen dazu, wie Sie sich für Azure AD Premium oder Basic registrieren, wie Sie Ihren Lizenzplan und den Azure AD-Zugriff aktivieren, und wie Sie Administratoren und Benutzerkonten Zugriff gewähren.
+  >[AZURE.NOTE] Um die Self-Service-Kennwortzurücksetzung für Cloudbenutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium, Azure AD Basic oder eine kostenpflichtige O365-Lizenz durchführen. Um die Self-Service-Kennwortzurücksetzung für Ihre lokalen Benutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium durchführen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](https://azure.microsoft.com/pricing/details/active-directory/). Hier finden Sie u. a. ausführliche Informationen dazu, wie Sie sich für Azure AD Premium oder Basic registrieren, wie Sie Ihren Lizenzplan und den Azure AD-Zugriff aktivieren, und wie Sie Administratoren und Benutzerkonten Zugriff gewähren.
 
 - Erstellen Sie mindestens ein Administratorkonto und ein Benutzerkonto in Ihrem AAD-Verzeichnis.
 - Weisen Sie dem erstellten Administrator- und Benutzerkonto eine AAD Premium-, Basic- oder kostenpflichtige O365-Lizenz zu.
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um die Richtlinie für das Zurücksetzen
 
     ![][004]
 
-6.	Legen Sie zum Konfigurieren der Richtlinie für das Zurücksetzen von Benutzerkennwörtern die Umschalttaste **Benutzer sind für das Zurücksetzen des Kennworts aktiviert** auf **Ja** fest. Es werden verschiedene weitere Steuerelemente angezeigt, mit deren Hilfe Sie die Funktionsweise dieses Features in Ihrem Verzeichnis konfigurieren können. Passen Sie die Kennwortzurücksetzung nach Ihren Anforderungen an. Wenn Sie mehr über die verschiedenen Steuerelemente zum Anpassen der Richtlinie für die Kennwortzurücksetzung wissen möchten, lesen Sie den Artikel [Anpassen: Azure AD-Kennwortverwaltung](active-directory-passwords-customize).
+6.	Legen Sie zum Konfigurieren der Richtlinie für das Zurücksetzen von Benutzerkennwörtern die Umschalttaste **Benutzer sind für das Zurücksetzen des Kennworts aktiviert** auf **Ja** fest. Es werden verschiedene weitere Steuerelemente angezeigt, mit deren Hilfe Sie die Funktionsweise dieses Features in Ihrem Verzeichnis konfigurieren können. Passen Sie die Kennwortzurücksetzung nach Ihren Anforderungen an. Wenn Sie mehr über die verschiedenen Steuerelemente zum Anpassen der Richtlinie für die Kennwortzurücksetzung wissen möchten, lesen Sie den Artikel [Anpassen: Azure AD-Kennwortverwaltung](active-directory-passwords-customize.md).
 
     ![][005]
 
@@ -354,4 +354,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0427_2016-->
