@@ -12,14 +12,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="04/19/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
 
 In den Tabellen in diesem Artikel finden Sie Informationen zu ExpressRoute-Konnektivitätsanbietern, zum geografischen Geltungsbereich von ExpressRoute, zu Microsoft-Clouddiensten, die über ExpressRoute unterstützt werden, und zu ExpressRoute-Systemintegratoren (SIs).
 
-## ExpressRoute-Konnektivitätsanbieter
+## <a name="partners"></a>ExpressRoute-Konnektivitätsanbieter
 
 ExpressRoute wird in allen Azure-Regionen und an allen Standorten unterstützt. Die folgende Karte zeigt die Azure-Regionen und ExpressRoute-Standorte. ExpressRoute-Standorte beziehen sich auf jene Orte, an denen Microsoft eine Peeringkooperation mit mehreren Service Providern bietet.
 
@@ -118,7 +118,7 @@ Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.window
 | **e-shelter** | In Kürze verfügbar | Nicht unterstützt | Berlin+|
 | **Interxion** | Unterstützt | Nicht unterstützt | Frankfurt|
 
-## Konnektivität über nicht aufgeführte Service Provider
+## <a name="nonpartners"></a>Konnektivität über nicht aufgeführte Service Provider
 
 Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten ist, können Sie dennoch eine Verbindung erstellen.
 
@@ -150,11 +150,11 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 |**[Nimbo](http://www.nimbo.com/)**|US||
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | Asien |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | US |
-|**[Project Leadership](http://www.projectleadership.net/azure)** | US |
+|**[Projektleitung](http://www.projectleadership.net/azure)** | US |
 
 ## Nächste Schritte
 
 - Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 - Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

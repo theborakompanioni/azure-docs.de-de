@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
- 	ms.date="04/18/2016"
+ 	ms.date="04/26/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services – Übersicht und häufige Szenarios
@@ -70,7 +70,7 @@ Eine Reihe mit Vorgehensweisen (Gewusst wie), in der Sie in die wichtigsten Komp
 
 Dieser Abschnitt erläutert allgemeine Szenarien und enthält Links zu relevanten Themen. Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, die am Bereitstellen von On-Demand-Inhalten beteiligt sind.
 
-![VoD-Workflow][vod-overview]
+![VoD-Workflow](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 
 ###Schützen von Inhalte im Speicher und Übermitteln von Streamingmedien ohne Verschlüsselung
@@ -105,14 +105,19 @@ Damit Sie die dynamische Verschlüsselung verwenden können, müssen Sie zunäch
 1. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand-Locators.
 1. Streamen Sie die veröffentlichten Inhalte. 
 
-###Indizieren von Inhalten
+###Gewinnen nützlicher Erkenntnisse aus Ihren Videos mithilfe von Media Analytics 
+
+Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md).
 
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
-1. Indizieren Sie die Inhalte.
-
-	Der Indizierungsauftrag erstellt Dateien, die bei der Videowiedergabe als Untertitel (Closed Captions, CC) verwendet werden können. Er generiert außerdem die Dateien, mit denen Sie im Video suchen und an den genauen Zeitpunkt im Video springen können.
-
-1. Nutzen Sie die indizierten Inhalte.
+2. Verwenden Sie eine der folgenden Media Analytics-Dienste zum Verarbeiten Ihrer Videos:
+	
+	- **Indexer** – [Verarbeiten von Videos mit Azure Media Indexer 2](media-services-process-content-with-indexer2.md)
+	- **Hyperlapse** – [Hyperlapsing von Mediendateien mit Azure Media Hyperlapse](media-services-hyperlapse-content.md)
+	- **Bewegungserkennung** – [Bewegungserkennung für Azure Media Analytics](media-services-motion-detection.md)
+	- **Gesichtserkennung und Gesichtsausdrücke** – [Gesichts- und Emotionenerkennung mit Azure Media Analytics](media-services-face-and-emotion-detection.md)
+	- **Videozusammenfassung** – [Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung](media-services-video-summarization.md)
+3. Media Analytics-Medienprozessoren generieren MP4- oder JSON-Dateien. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus dem Azure-Blobspeicher herunterladen. 
 
 
 ###Bereitstellen eines progressiven Downloads 
@@ -133,7 +138,7 @@ Damit Sie die dynamische Verschlüsselung verwenden können, müssen Sie zunäch
 - [Abrufen eines Medienprozesses](media-services-get-media-processor.md)
 - [Codieren von Inhalten](media-services-manage-content.md#encode)
 - [Überwachen von Aufträgen](media-services-portal-check-job-progress.md)
-- [Indizieren von Inhalten](media-services-manage-content.md#index)
+- [Verwenden von Analysen](media-services-analytics-overview.md)
 - [Schützen von Inhalten](media-services-manage-content.md#encrypt)
 - [Geschütztes Veröffentlichen](media-services-manage-content.md#publish)
 - [Skalieren der Codierung](media-services-portal-encoding-units.md)
@@ -210,11 +215,6 @@ Außerdem können Sie Ihr Media Services-Konto skalieren, indem Sie Speicherkont
 
 Der [Azure-Support](https://azure.microsoft.com/support/options/) bietet Supportoptionen für Azure, Media Services eingeschlossen.
 
-##Muster & Leitfäden
-
-[Patterns and practices guidance](https://wamsg.codeplex.com/) [Online documentation](https://msdn.microsoft.com/library/dn735912.aspx) [Downloadable eBook](https://www.microsoft.com/download/details.aspx?id=42629) (alle in englischer Sprache)
-
-
 ##Feedback geben
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
@@ -236,4 +236,4 @@ Der [Azure-Support](https://azure.microsoft.com/support/options/) bietet Support
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

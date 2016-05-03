@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/11/2016"
+   ms.date="04/22/2016"
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
@@ -69,11 +69,11 @@ Auf dem Blatt **Fehlende Systemupdates** wird eine Tabelle mit folgenden Informa
 - **VIRTUELLER COMPUTER**: Der Name der virtuellen Maschine, für die Updates fehlen.
 - **SYSTEMUPDATES**: Die Anzahl der fehlenden Systemupdates.
 - **LETZTE ÜBERPRÜFUNGSZEIT**: Der Zeitpunkt, zu dem die virtuelle Maschine zuletzt von Security Center auf Updates überprüft wurde.
-- **STATUS**: Der aktuelle Status der Empfehlung: 
+- **STATUS**: Der aktuelle Status der Empfehlung:
 	- **Offen**: Die Empfehlung wurde noch nicht verarbeitet.
 	- **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
 	- **Gelöst**: Die Empfehlung wurde bereits abgeschlossen. (Wenn das Problem behoben ist, wird der Eintrag abgeblendet.)
-- **SCHWEREGRAD**: Beschreibt den Schweregrad der jeweiligen Empfehlung: 
+- **SCHWEREGRAD**: Beschreibt den Schweregrad der jeweiligen Empfehlung:
 	- **Hoch**: Ein Sicherheitsrisiko betrifft eine bedeutsame Ressource (Anwendung, VM, Netzwerksicherheitsgruppe) und erfordert Aufmerksamkeit.
 	- **Mittel**: Nicht kritische oder zusätzliche Schritte sind erforderlich, um einen Prozess abzuschließen oder eine Sicherheitslücke zu beseitigen.
 	- **Niedrig**: Ein Sicherheitsrisiko, das behandelt werden sollte, jedoch keine unmittelbare Aufmerksamkeit erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
@@ -105,7 +105,7 @@ Im Abschnitt mit dem Vorbeugungsstatus für das Netzwerk sind die virtuellen Net
 Nachdem Sie dieses Blatt geöffnet haben, sehen Sie zwei Abschnitte:
 - Netzwerkempfehlungen
 - Netzwerk
- 
+
 In jedem Abschnitt können Sie eine individuelle Option wählen, um weitere Details zur Empfehlung zu erhalten. In den folgenden Abschnitten werden diese Bereiche ausführlicher behandelt.
 
 ####Netzwerkempfehlungen
@@ -118,8 +118,8 @@ Im Abschnitt für die Statusanalyse der Netzwerke sind potenzielle Sicherheitspr
 
 - [ACLs für Endpunkte](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md) sind nicht aktiviert
 - [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) sind nicht aktiviert
-- Fehlerfreie Subnetze und „Zugriff in Netzwerksicherheitsgruppen (NSGs) nicht eingeschränkt“ werden aufgeführt. 
- 
+- Fehlerfreie Subnetze und „Zugriff in Netzwerksicherheitsgruppen (NSGs) nicht eingeschränkt“ werden aufgeführt.
+
 Wenn Sie auf eine dieser Empfehlungen klicken, wird ein neues Blatt mit weiteren Details zur Empfehlung angezeigt (siehe folgendes Beispiel).
 
 ![Endpunkt einschränken](./media/security-center-monitoring/security-center-monitoring-fig11-new.png)
@@ -185,7 +185,8 @@ In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Az
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
+- [Monitoring partner solutions with Azure Security Center (Überwachen von Partnerlösungen mit Azure Security Center)](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+- [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

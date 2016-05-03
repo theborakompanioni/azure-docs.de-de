@@ -3,8 +3,8 @@
    description="Erstellen von Hosteinträgen für Azure DNS. Einrichten von Datensatzgruppen und Einträgen mithilfe der Befehlszeilenschnittstelle (CLI)"
    services="dns"
    documentationCenter="na"
-   authors="joaoma"
-   manager="Adinah"
+   authors="cherylmc"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="01/20/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 
 # Erstellen von DNS-Einträgen mithilfe der Befehlszeilenschnittstelle (CLI)
@@ -56,7 +56,7 @@ Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag v
 Das folgende Beispiel zeigt, wie Sie eine Datensatzgruppe und Einträge erstellen. Wir verwenden den DNS-Datensatztyp "A-Datensatz". Informationen zu anderen Datensatztypen finden Sie unter [Verwalten von DNS-Einträgen](dns-operations-recordsets-cli.md).
 
 
-### Schritt 1
+### Schritt 1
 
 Erstellen Sie eine Datensatzgruppe:
 
@@ -64,13 +64,13 @@ Erstellen Sie eine Datensatzgruppe:
 
 	azure network dns record-set create myresourcegroup  contoso.com  www A  60
 
-Die Datensatzgruppe hat den relativen Namen "www" in der DNS-Zone "contoso.com", somit lautet der vollqualifizierte Name der Einträge "www.contoso.com". Der Eintragstyp ist "A", und die Gültigkeitsdauer beträgt 60 Sekunden.
+Die Datensatzgruppe hat den relativen Namen "www" in der DNS-Zone "contoso.com", somit lautet der vollqualifizierte Name der Einträge "www.contoso.com". Der Eintragstyp ist "A", und die Gültigkeitsdauer beträgt 60 Sekunden.
 
 >[AZURE.NOTE] Zum Erstellen einer Datensatzgruppe auf oberster Ebene der Zone (in diesem Fall "contoso.com") verwenden Sie den Namen des Datensatzes "@", einschließlich der Anführungszeichen. Dies ist eine allgemeine DNS-Konvention.
 
 Die Datensatzgruppe ist leer, und wir müssen Einträge hinzufügen, um die neu erstellte Datensatzgruppe "www" verwenden zu können.<BR>
 
-### Schritt 2
+### Schritt 2
 
 Fügen Sie der Datensatzgruppe "www" IPv4-A-Einträge mithilfe des folgenden Befehls hinzu:
 
@@ -121,4 +121,4 @@ Sie können auch nslookup oder andere DNS-Tools verwenden, um die neue Datensatz
 [Automatisieren von Azure-Vorgängen mit dem .NET SDK](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

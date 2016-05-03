@@ -109,7 +109,7 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
                     _location = "East US 2";
 
                     string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
-                    string localFilePath = @"C:\local_path\file.txt"; // TODO: Make sure this exists and can be overwritten.
+                    string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
                     string remoteFilePath = remoteFolderPath + "file.txt";
 				}
@@ -133,7 +133,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateUser`-Methode veranschaulicht
  	// Authenticate the user with AAD through an interactive popup.
     // You need to have an application registered with AAD in order to authenticate.
     //   For more information and instructions on how to register your application with AAD, see:
-    //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+    //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -151,7 +151,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateApplication`-Methode veransch
 	// Authenticate the application with AAD through the application's secret key.
 	// You need to have an application registered with AAD in order to authenticate.
 	//   For more information and instructions on how to register your application with AAD, see:
-	//   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+	//   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -199,7 +199,7 @@ Im folgenden Codeausschnitt wird eine `CreateDirectory`-Methode veranschaulicht,
 	// Create a directory
     public static void CreateDirectory(string path)
     {
-        _adlsFileSystemClient.FileSystem.Mkdirs(path, _adlsAccountName);
+        _adlsFileSystemClient.FileSystem.Mkdirs(_adlsAccountName, path);
     }
 
 ## Hochladen einer Datei in den Data Lake-Speicher
@@ -222,7 +222,7 @@ Im folgenden Codeausschnitt wird eine `GetItemInfo`-Methode veranschaulicht, die
 	// Get file or directory info
     public static FileStatusProperties GetItemInfo(string path)
     {
-        return _adlsFileSystemClient.FileSystem.GetFileStatus(path, _adlsAccountName).FileStatus;
+        return _adlsFileSystemClient.FileSystem.GetFileStatus(_adlsAccountName, path).FileStatus;
     }
 
 ## Auflisten von Dateien oder Verzeichnissen
@@ -232,7 +232,7 @@ Im folgenden Codeausschnitt wird eine `ListItem`-Methode veranschaulicht, die Si
 	// List files and directories
     public static List<FileStatusProperties> ListItems(string directoryPath)
     {
-        return _adlsFileSystemClient.FileSystem.ListFileStatus(directoryPath, _adlsAccountName).FileStatuses.FileStatus.ToList();
+        return _adlsFileSystemClient.FileSystem.ListFileStatus(_adlsAccountName, directoryPath).FileStatuses.FileStatus.ToList();
     }
 
 ## Verketten von Dateien
@@ -242,7 +242,7 @@ Im folgenden Codeausschnitt wird eine `ConcatenateFiles`-Methode veranschaulicht
 	// Concatenate files
     public static void ConcatenateFiles(string[] srcFilePaths, string destFilePath)
     {
-        _adlsFileSystemClient.FileSystem.Concat(destFilePath, srcFilePaths, _adlsAccountName);
+        _adlsFileSystemClient.FileSystem.Concat(_adlsAccountName, destFilePath, srcFilePaths);
     }
 
 ## Anfügen an eine Datei
@@ -254,7 +254,7 @@ Im folgenden Codeausschnitt wird eine `AppendToFile`-Methode veranschaulicht, di
     {
         var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-        _adlsFileSystemClient.FileSystem.Append(path, stream, _adlsAccountName);
+        _adlsFileSystemClient.FileSystem.Append(_adlsAccountName, path, stream);
     }
 
 ## Herunterladen einer Datei
@@ -264,7 +264,7 @@ Im folgenden Codeausschnitt wird eine `DownloadFile`-Methode veranschaulicht, di
 	// Download file
     public static void DownloadFile(string srcPath, string destPath)
     {
-        var stream = _adlsFileSystemClient.FileSystem.Open(srcPath, _adlsAccountName);
+        var stream = _adlsFileSystemClient.FileSystem.Open(_adlsAccountName, srcPath);
         var fileStream = new FileStream(destPath, FileMode.Create);
 
         stream.CopyTo(fileStream);
@@ -325,7 +325,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
                 _location = "East US 2";
 
                 string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
-                string localFilePath = @"C:\local_path\file.txt"; // TODO: Make sure this exists and can be overwritten.
+                string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                 string remoteFolderPath = "/data_lake_path/";
                 string remoteFilePath = remoteFolderPath + "file.txt";
 
@@ -394,7 +394,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the user with AAD through an interactive popup.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -409,7 +409,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the application with AAD through the application's secret key.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -428,7 +428,6 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
                 _adlsClient.SubscriptionId = subscriptionId;
 
                 _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(tokenCreds);
-                _adlsFileSystemClient.SubscriptionId = subscriptionId;
             }
 
             // Create account
@@ -472,25 +471,25 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Concatenate files
             public static void ConcatenateFiles(string[] srcFilePaths, string destFilePath)
             {
-                _adlsFileSystemClient.FileSystem.Concat(destFilePath, srcFilePaths, _adlsAccountName);
+                _adlsFileSystemClient.FileSystem.Concat(_adlsAccountName, destFilePath, srcFilePaths);
             }
 
             // Get file or directory info
             public static FileStatusProperties GetItemInfo(string path)
             {
-                return _adlsFileSystemClient.FileSystem.GetFileStatus(path, _adlsAccountName).FileStatus;
+                return _adlsFileSystemClient.FileSystem.GetFileStatus(_adlsAccountName, path).FileStatus;
             }
 
             // List files and directories
             public static List<FileStatusProperties> ListItems(string directoryPath)
             {
-                return _adlsFileSystemClient.FileSystem.ListFileStatus(directoryPath, _adlsAccountName).FileStatuses.FileStatus.ToList();
+                return _adlsFileSystemClient.FileSystem.ListFileStatus(_adlsAccountName, directoryPath).FileStatuses.FileStatus.ToList();
             }
 
             // Download file
             public static void DownloadFile(string srcPath, string destPath)
             {
-                var stream = _adlsFileSystemClient.FileSystem.Open(srcPath, _adlsAccountName);
+                var stream = _adlsFileSystemClient.FileSystem.Open(_adlsAccountName, srcPath);
                 var fileStream = new FileStream(destPath, FileMode.Create);
 
                 stream.CopyTo(fileStream);
@@ -503,13 +502,13 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-                _adlsFileSystemClient.FileSystem.Append(path, stream, _adlsAccountName);
+                _adlsFileSystemClient.FileSystem.Append(_adlsAccountName, path, stream);
             }
 
             // Create a directory
             public static void CreateDirectory(string path)
             {
-                _adlsFileSystemClient.FileSystem.Mkdirs(path, _adlsAccountName);
+                _adlsFileSystemClient.FileSystem.Mkdirs(_adlsAccountName, path);
             }
         }
     }
@@ -521,4 +520,4 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

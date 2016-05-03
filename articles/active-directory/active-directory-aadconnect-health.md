@@ -22,15 +22,15 @@ Azure AD Connect Health unterstützt Sie bei der Überwachung Ihrer lokalen Iden
 
 Die Informationen werden im [Azure AD Connect Health-Portal](https://aka.ms/aadconnecthealth) angezeigt. Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsdaten, Nutzungsanalysen und vieles mehr anzeigen. Azure AD Connect Health ermöglicht Ihnen an einem zentralen Ort einen Gesamtüberblick über die Integrität Ihrer wichtigsten Identitätskomponenten.
 
-![Was ist Azure AD Connect Health?](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
+![Was ist Azure AD Connect Health?](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
 Künftige Updates für Azure AD Connect Health werden zusätzliche Überwachungsfunktionen und Einblicke in weitere Identitätskomponenten umfassen. Entsprechend können Sie mithilfe eines zentralen Dashboards im Hinblick auf die Identität für eine stabilere, fehlerfreie und besser integrierte Umgebung sorgen, damit Ihre Benutzer ihre Aufgaben schneller erledigen können.
 
 <!-- <center>![What is Azure AD Connect Health](./media/active-directory-aadconnect-health/logo1.png)</center> -->
 
-## Gründe für die Verwendung von Azure AD Connect Health
+## Gründe für die Verwendung von Azure AD Connect Health
 
-Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird. Allerdings erfordert diese Integration, dass diese Umgebung fehlerfrei bleibt, sodass Benutzer von jedem Gerät verlässlich auf lokale ebenso wie auf Cloudressourcen zugreifen können. Azure AD Connect Health bietet einen einfachen cloudbasierten Ansatz zum Überwachen und Gewinnen von Einblicken in Ihre lokale Identitätsverwaltungsinfrastruktur, die für den Zugriff auf Office 365 oder andere Azure AD-Anwendungen genutzt wird. Dieser Ansatz ist ähnlich unkompliziert wie das Installieren eines Agents auf Ihren lokalen Identitätsservern.
+Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird. Allerdings erfordert diese Integration, dass diese Umgebung fehlerfrei bleibt, sodass Benutzer von jedem Gerät verlässlich auf lokale ebenso wie auf Cloudressourcen zugreifen können. Azure AD Connect Health bietet einen einfachen cloudbasierten Ansatz zum Überwachen und Gewinnen von Einblicken in Ihre lokale Identitätsverwaltungsinfrastruktur, die für den Zugriff auf Office 365 oder andere Azure AD-Anwendungen genutzt wird. Dieser Ansatz ist ähnlich unkompliziert wie das Installieren eines Agents auf Ihren lokalen Identitätsservern.
 
 ## [Azure AD Connect Health für AD FS](active-directory-aadconnect-health-adfs.md)
 
@@ -44,7 +44,7 @@ Azure AD Connect Health für AD FS unterstützt AD FS 2.0 unter Windows Server 2
 
 Das folgende Video bietet eine Übersicht über Azure AD Connect Health für AD FS:
 
-[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
+>[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
 Azure AD Connect Health für die Synchronisierung überwacht die Synchronisierungen zwischen Ihrem lokalen Active Directory und Azure Active Directory. Azure AD Connect Health für die Synchronisierung stellt die folgenden wichtigen Funktionen bereit:
@@ -56,7 +56,7 @@ Azure AD Connect Health für die Synchronisierung überwacht die Synchronisierun
 
 Das folgende Video bietet eine Übersicht über Azure AD Connect Health für die Synchronisierung:
 
-[Azure Active Directory Connect Health: Monitoring the sync engine](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Health-Monitoring-the-sync-engine) (Azure Active Directory Connect Health: Überwachen des Synchronisierungsmoduls)
+[Azure Active Directory Connect Health: Monitoring the sync engine (Azure Active Directory Connect Health: Überwachen des Synchronisierungsmoduls)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Health-Monitoring-the-sync-engine)
 
 
 ## Erste Schritte mit Azure AD Connect Health
@@ -86,11 +86,11 @@ Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsd
 
 - **Schnellstart** – Bei Auswahl wird das Blatt "Schnellstart" geöffnet. Hier können Sie den Azure AD Connect Health-Agent herunterladen, indem Sie auf "Tools abrufen" klicken, Sie können auf die Dokumentation zugreifen und Feedback geben.
 
-- **Active Directory-Verbunddienste** – Repräsentiert alle AD FS-Dienste, die aktuell von Azure AD Connect Health überwacht werden. Durch Auswahl einer der Instanzen wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet. darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-adfs.md).
+- **Active Directory-Verbunddienste** – Repräsentiert alle AD FS-Dienste, die aktuell von Azure AD Connect Health überwacht werden. Durch Auswahl einer der Instanzen wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet. darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-adfs.md).
 
-- **Azure Active Directory Connect (Sync)** – Repräsentiert Ihre Azure AD Connect-Server, die von Azure AD Connect Health derzeit überwacht werden. Wenn Sie den Eintrag auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-sync.md).
+- **Azure Active Directory Connect (Sync)** – repräsentiert Ihre Azure AD Connect-Server, die von Azure AD Connect Health derzeit überwacht werden. Wenn Sie den Eintrag auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-sync.md).
 
-- **Konfigurieren** – Ermöglicht das Aktivieren oder Deaktivieren der folgenden Optionen:
+- **Konfigurieren** – ermöglicht das Aktivieren oder Deaktivieren der folgenden Optionen:
 
 	1. Automatische Aktualisierung des Azure AD Connect Health-Agents auf die aktuelle Version – Dies bedeutet, dass eine automatische Aktualisierung auf die aktuelle Version des Azure AD Connect Health-Agents durchgeführt wird, sobald diese verfügbar ist. Diese Einstellung ist standardmäßig aktiviert.
 
@@ -106,4 +106,4 @@ Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsd
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

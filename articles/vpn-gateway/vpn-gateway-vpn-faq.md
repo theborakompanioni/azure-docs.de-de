@@ -3,8 +3,8 @@
    description="Häufig gestellte Fragen zum VPN-Gateway. Häufig gestellte Fragen zu standortübergreifenden Verbindungen, Verbindungen mit Hybridkonfiguration und VPN-Gateways von Microsoft Azure Virtual Network "
    services="vpn-gateway"
    documentationCenter="na"
-   authors="cherylmc"
-   manager="carmonm"
+   authors="yushwang"
+   manager="rossort"
    editor="" />
 <tags 
    ms.service="vpn-gateway"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/10/2016"
-   ms.author="cherylmc" />
+   ms.author="yushwang" />
 
 # Häufig gestellte Fragen zum VPN-Gateway
 
@@ -32,11 +32,11 @@ Verbindungen mit mehreren Standorten können mit Windows PowerShell und den REST
 
 Die folgenden standortübergreifende Verbindungen werden unterstützt:
 
-- [Standort zu Standort](vpn-gateway-site-to-site-create.md): VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Art von Verbindung wird ein VPN-Gerät oder RRAS benötigt.
+- [Standort zu Standort](vpn-gateway-site-to-site-create.md): VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Art von Verbindung wird ein VPN-Gerät oder RRAS benötigt.
 
 - [Punkt zu Standort](vpn-gateway-point-to-site-create.md): VPN-Verbindung über SSTP (Secure Socket Tunneling-Protokoll). Für diese Verbindung wird kein VPN-Gerät benötigt.
 
-- [VNet-zu-VNet](virtual-networks-configure-vnet-to-vnet-connection.md): Dieser Verbindungstyp entspricht der Standort-zu-Standort-Konfiguration. VNet zu VNet ist eine VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Verbindung wird kein VPN-Gerät benötigt.
+- [VNet-zu-VNet](virtual-networks-configure-vnet-to-vnet-connection.md): Dieser Verbindungstyp entspricht der Standort-zu-Standort-Konfiguration. VNet zu VNet ist eine VPN-Verbindung über IPsec (IKE v1 und IKE v2). Für diese Verbindung wird kein VPN-Gerät benötigt.
 
 - [Mehrere Standorte](vpn-gateway-multi-site.md): Hierbei handelt es sich um eine Variante der Standort-zu-Standort-Konfiguration, mit der Sie mehrere lokale Standorte mit einem virtuellen Netzwerk verbinden können.
 
@@ -56,11 +56,11 @@ Weitere Informationen finden Sie unter [Informationen zu sicheren, standortüber
 
 ### Was ist ExpressRoute?
 
-ExpressRoute ermöglicht es Ihnen, private Verbindungen zwischen Microsoft-Datencentern und einer Infrastruktur bei Ihnen vor Ort oder in einer Kollokationsumgebung zu erstellen. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten wie Microsoft Azure und Office 365 an einem ExpressRoute-Partnerkollokationsstandort oder direkt von Ihrem vorhandenen WAN-Netzwerk (z. B. ein MPLS VPN eines Netzwerkdienstanbieters) aus herstellen.
+ExpressRoute ermöglicht es Ihnen, private Verbindungen zwischen Microsoft-Datencentern und einer Infrastruktur bei Ihnen vor Ort oder in einer Kollokationsumgebung zu erstellen. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten wie Microsoft Azure und Office 365 an einem ExpressRoute-Partnerkollokationsstandort oder direkt von Ihrem vorhandenen WAN-Netzwerk (z. B. ein MPLS VPN eines Netzwerkdienstanbieters) aus herstellen.
 
 ExpressRoute-Verbindungen sind sicherer, zuverlässiger und bieten eine höhere Bandbreite sowie eine geringere Latenz als herkömmliche Verbindungen über das Internet. In einigen Fällen können durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen einem lokalen Netzwerk und Azure auch drastische Kosteneinsparungen erzielt werden. Wenn Sie aus Ihrem lokalen Netzwerk heraus bereits eine standortübergreifende Verbindung mit Azure hergestellt haben, können Sie eine Migration auf eine ExpressRoute-Verbindung durchführen, während das virtuelle Netzwerk intakt bleibt.
 
-Weitere Informationen finden Sie unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md).
+Weitere Informationen finden Sie unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md).
 
 ## Standort-zu-Standort-Verbindungen und VPN-Geräte
 
@@ -88,11 +88,11 @@ Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, 
 
 Folgende Betriebssysteme werden unterstützt:
 
-- Windows 7 (nur 64-Bit-Version)
+- Windows 7 (nur 64-Bit-Version)
 
 - Windows Server 2008 R2
 
-- Windows 8 (nur 64-Bit-Version)
+- Windows 8 (nur 64-Bit-Version)
 
 - Windows Server 2012
 
@@ -239,7 +239,7 @@ Datenverkehr kann über das Azure-VPN-Gateway übertragen werden, die Übertragu
 
 ### Generiert Azure für alle meine VPN-Verbindungen für das gleiche virtuelle Netzwerk den gleichen vorinstallierten IPsec-/IKE-Schlüssel?
 
-Nein. Azure generiert für unterschiedliche VPN-Verbindungen standardmäßig unterschiedliche vorinstallierte Schlüssel. Mit der REST-API oder dem PowerShell-Cmdlet „Set VPN Gateway Key“ können Sie jedoch den Schlüsselwert nach Ihren Vorstellungen festlegen. Bei dem Schlüssel muss es sich zwingend um eine alphanumerische Zeichenfolge mit einer Länge zwischen einem und 128 Zeichen handeln.
+Nein. Azure generiert für unterschiedliche VPN-Verbindungen standardmäßig unterschiedliche vorinstallierte Schlüssel. Mit der REST-API oder dem PowerShell-Cmdlet „Set VPN Gateway Key“ können Sie jedoch den Schlüsselwert nach Ihren Vorstellungen festlegen. Bei dem Schlüssel muss es sich zwingend um eine alphanumerische Zeichenfolge mit einer Länge zwischen einem und 128 Zeichen handeln.
 
 ### Fallen bei Azure Kosten für den Datenverkehr zwischen virtuellen Netzwerken an?
 
@@ -273,4 +273,4 @@ Weitere Informationen zu VPN-Gateways erhalten Sie auf der Seite [VPN Gateway-Do
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

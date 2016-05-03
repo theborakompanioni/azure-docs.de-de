@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/05/2016"
+   ms.date="04/26/2016"
    ms.author="terrylan"/>
 
 # Sicherheitsverwaltung in Azure
@@ -28,7 +28,7 @@ Das Potenzial für Angriffe ist bei dieser Art von Umgebung erhöht, da es aufw�
 
 ### Bedrohungen bei Remoteverwaltung
 
-Angreifer versuchen häufig, privilegierten Zugriff zu erhalten, indem sie Anmeldeinformationen von Konten kompromittieren (z.B. per Brute-Force-Angriff mit Kennwörtern, Phishing und Abschöpfung von Anmeldeinformationen) oder Benutzer zum Ausführen von Schadcode bewegen (z.B. mit schädlichen Websites per Drive-by-Download oder über schädliche E-Mail-Anhänge). In einer Cloudumgebung mit Remoteverwaltung können Kontoverletzungen aufgrund des Zugriffs von jedem Ort und zu jeder Zeit zu einem erhöhten Risiko führen.
+Angreifer versuchen häufig, privilegierten Zugriff zu erhalten, indem sie Anmeldeinformationen von Konten kompromittieren (z.B. per Brute-Force-Angriff auf Kennwörter, Phishing und Abschöpfung von Anmeldeinformationen) oder Benutzer zum Ausführen von Schadcode bewegen (z.B. mit schädlichen Websites per Drive-by-Download oder über schädliche E-Mail-Anhänge). In einer Cloudumgebung mit Remoteverwaltung können Kontoverletzungen aufgrund des Zugriffs von jedem Ort und zu jeder Zeit zu einem erhöhten Risiko führen.
 
 Auch bei strenger Kontrolle von primären Administratorkonten können Benutzerkonten der unteren Ebene verwendet werden, um Schwachstellen der Sicherheitsstrategie auszunutzen. Der Mangel an geeigneten Sicherheitsschulungen kann auch dazu führen, dass aufgrund von versehentlicher Offenlegung oder Verfügbarmachung von Kontoinformationen Sicherheitsverletzungen auftreten.
 
@@ -38,21 +38,28 @@ Im Allgemeinen können die meisten zielgerichteten Angriffe, die zu Sicherheitsv
 
 ### Grundlagen der betrieblichen Sicherheit
 
-Um für eine höhere Sicherheit bei der Verwaltung und beim Betrieb zu sorgen, können Sie die Angriffsfläche eines Clients verringern, indem Sie die Anzahl von möglichen Einstiegspunkten reduzieren. Hierfür können Sie die Sicherheitsprinzipien der „Aufgabenteilung“ und „Trennung von Umgebungen“ verwenden. Wenn sensible Funktionen voneinander getrennt sind, wird die Wahrscheinlichkeit verringert, dass ein Fehler auf einer Ebene zu einer Sicherheitsverletzung auf einer anderen Ebene führt. Daher sollten Verwaltungsaufgaben nicht mit Aktivitäten kombiniert werden, die zu einer Kompromittierung führen können (z.B. Schadsoftware in der E-Mail eines Administrators, die dann einen Infrastrukturserver infiziert). Ebenso sollte die Arbeitsstation, die für hochsensible Vorgänge verwendet wird, nicht als System verwendet werden, mit dem risikoreiche Vorgänge durchgeführt werden, z.B. das Surfen im Internet.
+Um für eine höhere Sicherheit bei der Verwaltung und beim Betrieb zu sorgen, können Sie die Angriffsfläche eines Clients verringern, indem Sie die Anzahl von möglichen Einstiegspunkten reduzieren. Dies ist mithilfe von Sicherheitsprinzipien möglich: „Aufgabentrennung“ und „Trennung von Umgebungen“.
 
-Mit jeder Anwendung und jedem Dienst, die bzw. der auf der Arbeitsstation eines Administrators installiert ist, erhöht sich das Sicherheitsrisiko aufgrund von potenziellen Sicherheitslücken, die ausgenutzt werden können. Daher verbessert eine Reduzierung der Angriffsfläche eines Systems, indem nicht benötigte Software aus einem Standardimage für die Installation entfernt wird, die Verwaltbarkeit und Stabilität von Clients und stärkt das Sicherheitsprofil der Clientsoftware. Beispielsweise sollte für Standardarbeitsstationen für die Verwaltung, den Support oder die Entwicklung keine Installation eines E-Mail-Clients oder anderer Produktivitätsanwendungen erforderlich sein, wenn die Hauptaufgabe des Geräts die Verwaltung von Clouddiensten ist.
+Wenn sensible Funktionen voneinander getrennt sind, wird die Wahrscheinlichkeit verringert, dass ein Fehler auf einer Ebene zu einer Sicherheitsverletzung auf einer anderen Ebene führt. Beispiele:
 
-Das Netzwerk sollte Clientsysteme, für die Administratorzugriff auf Infrastrukturkomponenten besteht, so behandeln, als ob sie so sensibel wie die Infrastrukturkomponenten selbst wären. Da eine Kompromittierung eines Administrators oder Administratorsystems zu einer Sicherheitsverletzung für einen Dienst führen kann, sollte der Client der strengstmöglichen Richtlinie unterliegen, um Sicherheitsrisiken zu verringern. Sicherheitsrichtlinien, mit denen Clientgeräte mit Administratorrechten sorgfältiger überwacht werden, können auch Gruppenrichtlinieneinstellungen, mit denen der offene Internetzugriff vom Gerät verweigert wird, sowie die Nutzung einer restriktiven Firewallkonfiguration umfassen.
+- Verwaltungsaufgaben sollten nicht mit Aktivitäten kombiniert werden, die zu einer Kompromittierung führen können (z.B. Schadsoftware in der E-Mail eines Administrators, die dann einen Infrastrukturserver infiziert).
+- Eine Arbeitsstation, die für hochsensible Vorgänge verwendet wird, sollte nicht als System genutzt werden, mit dem risikoreiche Vorgänge durchgeführt werden, z.B. Surfen im Internet.
 
-Sie können auch andere Maßnahmen implementieren, z.B.:
+Reduzieren Sie die Angriffsfläche des Systems, indem Sie nicht benötigte Software entfernen. Beispiel:
 
-- Verwenden von VPNs mit Internet Protocol Security (IPsec), falls der direkte Zugriff erforderlich ist
-- Konfigurieren separater Active Directory-Domänen für die Verwaltung und Entwicklung
-- Isolieren und Filtern des Netzwerkdatenverkehrs für Verwaltungsarbeitsstationen
-- Verwenden von Antischadsoftware
-- Implementieren von Multi-Factor Authentication, um das Risiko von gestohlenen Anmeldeinformationen zu reduzieren
+- Standardarbeitsstationen für die Verwaltung, den Support oder die Entwicklung erfordern keine Installation eines E-Mail-Clients oder anderer Produktivitätsanwendungen, wenn die Hauptaufgabe des Geräts die Verwaltung von Clouddiensten ist.
+
+Clientsysteme, für die Administratorzugriff auf Infrastrukturkomponenten besteht, sollten strengstmöglichen Richtlinien unterliegen, um Sicherheitsrisiken zu verringern. Beispiele:
+
+- Sicherheitsrichtlinien können auch Gruppenrichtlinieneinstellungen, mit denen der offene Internetzugriff vom Gerät verweigert wird, sowie die Nutzung einer restriktiven Firewallkonfiguration umfassen.
+- Verwenden Sie VPNs mit Internet Protocol Security (IPsec), falls direkter Zugriff erforderlich ist
+- Konfigurieren Sie separate Active Directory-Domänen für die Verwaltung und Entwicklung.
+- Isolieren und Filtern Sie den Netzwerkdatenverkehr für Verwaltungsarbeitsstationen.
+- Verwenden Sie Antischadsoftware.
+- Implementieren Sie Multi-Factor Authentication, um das Risiko von gestohlenen Anmeldeinformationen zu reduzieren.
 
 Mit dem Konsolidieren von Zugriffsressourcen und dem Entfernen nicht verwalteter Endpunkte werden Verwaltungsaufgaben ebenfalls vereinfacht.
+
 
 ### Bereitstellen von Sicherheit für die Azure-Remoteverwaltung
 
@@ -74,7 +81,7 @@ Das Ziel einer verstärkten Sicherheit für eine Arbeitsstation ist die Beschrä
 
 In einer lokalen Unternehmensumgebung können Sie die Angriffsfläche Ihrer physischen Infrastruktur mit dedizierten Verwaltungsnetzwerken, Serverräumen mit Zugang per Karte und Arbeitsstationen, die in geschützten Bereichen des Netzwerks ausgeführt werden, verkleinern. Bei einem Cloud- oder Hybrid-IT-Modell kann die Erhöhung der Sicherheit von Verwaltungsdiensten komplexer sein, da kein physischer Zugriff auf IT-Ressourcen besteht. Für die Implementierung von Schutzlösungen sind eine sorgfältige Softwarekonfiguration, sicherheitsorientierte Prozesse und umfassende Richtlinien erforderlich.
 
-Durch die Verwendung eines Softwareansatzes mit möglichst geringen Rechten in einer gesperrten Arbeitsstation für die Cloudverwaltung – sowie auch für die Anwendungsentwicklung – kann das Risiko von Sicherheitsvorfällen reduziert werden. Hierbei werden die Remoteverwaltung und Entwicklungsumgebungen standardisiert. Eine Arbeitsstationskonfiguration mit verstärkter Sicherheit kann der Kompromittierung von Konten vorbeugen, die zum Verwalten kritischer Cloudressourcen verwendet werden, indem viele gängige Einfallstore für Schadsoftware und Exploits geschlossen werden. Beispielsweise können Sie [Windows AppLocker](http://technet.microsoft.com/library/dd759117.aspx) und Hyper-V-Technologie verwenden, um das Verhalten von Clientsystemen zu steuern und zu isolieren und Bedrohungen zu entschärfen, z.B. E-Mails oder das Surfen im Internet.
+Durch die Verwendung eines Softwareansatzes mit möglichst geringen Rechten in einer gesperrten Arbeitsstation für die Cloudverwaltung – sowie auch für die Anwendungsentwicklung – kann das Risiko von Sicherheitsvorfällen reduziert werden. Hierbei werden die Remoteverwaltung und Entwicklungsumgebungen standardisiert. Eine Arbeitsstationskonfiguration mit verstärkter Sicherheit kann der Kompromittierung von Konten vorbeugen, die zum Verwalten kritischer Cloudressourcen verwendet werden, indem viele gängige Einfallstore für Schadsoftware und Exploits geschlossen werden. So können Sie etwa [Windows AppLocker](http://technet.microsoft.com/library/dd759117.aspx) und Hyper-V-Technologie verwenden, um das Verhalten von Clientsystemen zu steuern und zu isolieren und Bedrohungen zu entschärfen, z.B. E-Mails oder das Surfen im Internet.
 
 Auf einer Arbeitsstation mit verstärkter Sicherheit führt der Administrator ein Standardbenutzerkonto aus (mit dem die Ausführung auf Administratorebene blockiert wird), und die zugeordneten Anwendungen werden per Zulassungsliste kontrolliert. Eine Arbeitsstation mit verstärkter Sicherheit verfügt über die folgenden Elemente:
 
@@ -84,7 +91,7 @@ Auf einer Arbeitsstation mit verstärkter Sicherheit führt der Administrator ei
 - Einschränkung der Ausführung: Lassen Sie nur einen Satz vordefinierter ausführbarer Dateien zu, die für die Durchführung der Verwaltung benötigt werden (als „default-deny“ bezeichnet). Standardmäßig sollte Benutzern die Berechtigung zum Ausführen aller Programme verweigert werden, es sei denn, dies ist explizit in der Zulassungsliste angegeben.
 - Ansatz der geringsten Rechte: Benutzer von Verwaltungsarbeitsstationen sollten auf dem lokalen Computer selbst keine Verwaltungsrechte besitzen. Es ist für sie dann nicht möglich, die Systemkonfiguration oder die Systemdateien – absichtlich oder unabsichtlich – zu ändern.
 
-Sie können all dies erzwingen, indem Sie [Gruppenrichtlinienobjekte](https://www.microsoft.com/download/details.aspx?id=2612) (GPOs) in Active Directory-Domänendienste (AD DS) verwenden und über Ihre lokale Verwaltungsdomäne auf alle Verwaltungskonten anwenden.
+Sie können all dies erzwingen, indem Sie [Gruppenrichtlinienobjekte](https://www.microsoft.com/download/details.aspx?id=2612) (GPOs) in Active Directory-Domänendiensten (AD DS) verwenden und über Ihre lokale Verwaltungsdomäne auf alle Verwaltungskonten anwenden.
 
 ### Verwalten von Diensten, Anwendungen und Daten
 
@@ -96,16 +103,16 @@ Sie können den Zugriff auf die Verwaltung von Infrastruktur- und Plattformdiens
 
 ### Verwaltungsgateway
 
-Um den gesamten Verwaltungszugriff zu zentralisieren und die Überwachung und Protokollierung zu vereinfachen, können Sie einen dedizierten [Remotedesktopgateway](https://technet.microsoft.com/library/dd560672)-Server (RD Gateway) in Ihrem lokalen Netzwerk bereitstellen, der mit Ihrer Azure-Umgebung verbunden ist.
+Um den gesamten Verwaltungszugriff zu zentralisieren und die Überwachung und Protokollierung zu vereinfachen, können Sie einen dedizierten [Remotedesktopgateway](https://technet.microsoft.com/library/dd560672)-Server (RD-Gateway) in Ihrem lokalen Netzwerk bereitstellen, der mit Ihrer Azure-Umgebung verbunden ist.
 
 Ein Remotedesktopgateway ist ein richtlinienbasierter RDP-Proxydienst, mit dem Sicherheitsanforderungen durchgesetzt werden. Durch die Implementierung von RD Gateway zusammen mit Windows Server-Netzwerkzugriffsschutz kann sichergestellt werden, dass nur für die Clients eine Verbindung hergestellt werden kann, die spezielle Sicherheitsintegritätskriterien gemäß den Gruppenrichtlinienobjekten (GPOs) von Active Directory-Domänendiensten erfüllen. Außerdem haben Sie folgende Möglichkeiten:
 
-- Stellen Sie ein [Azure-Verwaltungszertifikat](http://msdn.microsoft.com/library/azure/gg551722.aspx) auf dem RD Gateway bereit, sodass dies der einzige Host ist, der auf das Azure-Verwaltungsportal zugreifen darf.
-- Verknüpfen Sie das RD Gateway mit derselben [Verwaltungsdomäne](http://technet.microsoft.com/library/bb727085.aspx) wie die Administratorarbeitsstationen. Dies ist erforderlich, wenn Sie eine Site-to-Site-IPsec-VPN- oder ExpressRoute-Verbindung in einer Domäne verwenden, die über eine unidirektionale Vertrauensstellung mit Azure AD verfügt, oder wenn Sie für Anmeldeinformationen zwischen Ihrer lokalen AD DS-Instanz und Azure AD einen Verbund erstellen.
-- Konfigurieren Sie eine [Client-Verbindungsautorisierungsrichtlinie](http://technet.microsoft.com/library/cc753324.aspx), damit das RD Gateway überprüfen kann, ob der Name des Clientcomputers gültig ist (der Domäne angehört) und über die Berechtigung zum Zugreifen auf das Azure-Verwaltungsportal verfügt.
-- Verwenden Sie IPsec für [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/), um den Verwaltungsdatenverkehr besser vor dem Mithören und Tokendiebstahl zu schützen, oder erwägen Sie die Verwendung einer isolierten Internetverknüpfung per [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
-- Aktivieren Sie Multi-Factor Authentication (siehe [Azure Multi-Factor Authentication](multi-factor-authentication/multi-factor-authentication.md)) oder die Smartcard-Authentifizierung für Administratoren, die sich über das RD Gateway anmelden.
-- Konfigurieren Sie [Einschränkungen für die IP-Quelladresse](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) oder [Netzwerksicherheitsgruppen](virtual-network/virtual-networks-nsg.md) in Azure, um die Anzahl von zulässigen Verwaltungsendpunkten zu verringern.
+- Stellen Sie ein [Azure-Verwaltungszertifikat](http://msdn.microsoft.com/library/azure/gg551722.aspx) auf dem RD-Gateway bereit, sodass dies der einzige Host ist, der auf das Azure-Verwaltungsportal zugreifen darf.
+- Verknüpfen Sie das RD-Gateway mit derselben [Verwaltungsdomäne](http://technet.microsoft.com/library/bb727085.aspx) wie die Administratorarbeitsstationen. Dies ist erforderlich, wenn Sie eine Site-to-Site-IPsec-VPN- oder ExpressRoute-Verbindung in einer Domäne verwenden, die über eine unidirektionale Vertrauensstellung mit Azure AD verfügt, oder wenn Sie für Anmeldeinformationen zwischen Ihrer lokalen AD DS-Instanz und Azure AD einen Verbund erstellen.
+- Konfigurieren Sie eine [Client-Verbindungsautorisierungsrichtlinie](http://technet.microsoft.com/library/cc753324.aspx), damit das RD-Gateway überprüfen kann, ob der Name des Clientcomputers gültig ist (der Domäne angehört) und über die Berechtigung zum Zugreifen auf das Azure-Verwaltungsportal verfügt.
+- Verwenden Sie IPsec für [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/), um den Verwaltungsdatenverkehr besser vor Mithören und Tokendiebstahl zu schützen, oder erwägen Sie die Verwendung einer isolierten Internetverknüpfung per [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
+- Aktivieren Sie Multi-Factor Authentication (siehe [Azure Multi-Factor Authentication](multi-factor-authentication/multi-factor-authentication.md)) oder die Smartcard-Authentifizierung für Administratoren, die sich über das Remotedesktopgateway anmelden.
+- Konfigurieren Sie [Einschränkungen für IP-Adressen](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) oder [Netzwerksicherheitsgruppen](virtual-network/virtual-networks-nsg.md) in Azure, um die Anzahl von zulässigen Verwaltungsendpunkten zu verringern.
 
 ## Sicherheitsrichtlinien
 
@@ -119,7 +126,7 @@ Einige Anwendungen oder Dienste, die Sie in Azure bereitstellen, verfügen unter
 
 ### Konnektivität
 
-Es sind mehrere Mechanismen verfügbar, mit denen Sie Clientverbindungen für Ihre virtuellen Azure-Netzwerke schützen können. Zwei dieser Mechanismen – [Site-to-Site-VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) und [Point-to-Site-VPN](vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S) – ermöglichen die Verwendung von branchenüblichem IPsec (S2S) oder [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) für die Verschlüsselung und das Tunneling. Wenn Azure eine Verbindung mit der öffentlich zugänglichen Azure-Dienstverwaltung herstellt, z.B. dem Azure-Verwaltungsportal, wird für Azure das Hypertext Transfer Protocol Secure (HTTPS) benötigt.
+Es sind mehrere Mechanismen verfügbar, mit denen Sie Clientverbindungen für Ihre virtuellen Azure-Netzwerke schützen können. Zwei dieser Mechanismen – [Site-to-Site-VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) und [Point-to-Site-VPN](vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S) – ermöglichen die Verwendung von branchenüblichem IPsec (S2S) oder [Secure Socket Tunneling-Protokoll](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) für die Verschlüsselung und das Tunneling. Wenn Azure eine Verbindung mit der öffentlich zugänglichen Azure-Dienstverwaltung herstellt, z.B. dem Azure-Verwaltungsportal, wird für Azure das Hypertext Transfer Protocol Secure (HTTPS) benötigt.
 
 Eine eigenständige Arbeitsstation mit verstärkter Sicherheit, für die die Verbindung mit Azure nicht über das RD Gateway hergestellt wird, sollte die SSTP-basierte Point-to-Site-VPN-Verbindung verwenden, um die erste Verbindung mit dem Azure Virtual Network einzurichten. Anschließend wird dann die RDP-Verbindung mit einzelnen virtuellen Computern über den VPN-Tunnel hergestellt.
 
@@ -178,7 +185,7 @@ In der Abbildung unten ist das portable Image ein in die Domäne eingebundenes S
 
 ![][4]
 
-Es ist wichtig zu beachten, dass USB-Laufwerke leichter als durchschnittliche Desktop-PCs verloren gehen. Die Verwendung von BitLocker zum Verschlüsseln des gesamten Volumes sowie eines sicheren Kennworts verringert die Wahrscheinlichkeit, dass ein Angreifer das Laufwerkimage für böswillige Zwecke nutzen kann. Wenn das USB-Laufwerk verloren geht, kann die Gefahr zusätzlich verringert werden, indem das Widerrufen und [Ausgeben eines neuen Verwaltungszertifikats](https://technet.microsoft.com/library/hh831574.aspx) und ein schnelles Zurücksetzen des Kennworts durchgeführt werden. Administrative Überwachungsprotokolle sind in Azure angeordnet, nicht auf dem Client, sodass die Gefahr eines potenziellen Datenverlusts weiter reduziert wird.
+Es ist wichtig zu beachten, dass USB-Laufwerke leichter als durchschnittliche Desktop-PCs verloren gehen. Die Verwendung von BitLocker zum Verschlüsseln des gesamten Volumes sowie eines sicheren Kennworts verringert die Wahrscheinlichkeit, dass ein Angreifer das Laufwerkimage für böswillige Zwecke nutzen kann. Wenn der USB-Speicherstick verloren geht, kann die Gefahr durch Widerrufen und [Ausgeben eines neuen Verwaltungszertifikats](https://technet.microsoft.com/library/hh831574.aspx) und ein schnelles Zurücksetzen des Kennworts zusätzlich verringert werden. Administrative Überwachungsprotokolle sind in Azure angeordnet, nicht auf dem Client, sodass die Gefahr eines potenziellen Datenverlusts weiter reduziert wird.
 
 ## Bewährte Methoden
 
@@ -202,7 +209,7 @@ Gehen Sie nicht davon aus, dass andere gängige Sicherheitsanforderungen nicht e
 
 ## Azure-Vorgänge
 
-Im Rahmen des Azure-Betriebs von Microsoft verwenden Betriebstechniker und Supportmitarbeiter, die auf die Produktionssysteme von Azure zugreifen, [Arbeitsstation-PCs mit verstärkter Sicherheit und VMs](#stand-alone-hardened-workstation-for-management), die darauf für den internen Zugriff auf das Unternehmensnetzwerk und Anwendungen (z.B. E-Mail, Intranet usw.) bereitgestellt werden. Alle Arbeitsstationen für die Verwaltung verfügen über TPMs, das Hoststartlaufwerk ist mit BitLocker verschlüsselt, und sie sind Teil einer speziellen Organisationseinheit in der primären Unternehmensdomäne von Microsoft.
+Im Rahmen des Azure-Betriebs von Microsoft verwenden Betriebstechniker und Supportmitarbeiter, die auf die Produktionssysteme von Azure zugreifen, [Arbeitsstation-PCs mit verstärkter Sicherheit und mit virtuellen Computern](#stand-alone-hardened-workstation-for-management), die darauf für den internen Zugriff auf das Unternehmensnetzwerk und Anwendungen (z.B. E-Mail, Intranet usw.) bereitgestellt werden. Alle Arbeitsstationen für die Verwaltung verfügen über TPMs, das Hoststartlaufwerk ist mit BitLocker verschlüsselt, und sie sind Teil einer speziellen Organisationseinheit in der primären Unternehmensdomäne von Microsoft.
 
 Die Verstärkung der Sicherheit des Systems wird per Gruppenrichtlinie mit zentralisierten Softwareupdates durchgesetzt. Für die Überwachung und Analyse werden Ereignisprotokolle (z.B. Sicherheit und AppLocker) von Verwaltungsarbeitsstationen erfasst und an einem zentralen Ort gespeichert.
 
@@ -230,7 +237,7 @@ Die Verwendung einer Arbeitsstation mit einer Konfiguration für verstärkte Sic
 Die folgenden Ressourcen enthalten allgemeinere Informationen zu Azure und verwandten Microsoft-Diensten sowie speziellen Komponenten, die in diesem Artikel erwähnt wurden:
 
 - [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx) (Schützen des privilegierten Zugriffs): Enthält die technischen Details zum Entwerfen und Erstellen einer sicheren Verwaltungsarbeitsstation für die Azure-Verwaltung.
-- [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Security/AzureSecurity): Enthält Informationen zu Funktionen der Azure-Plattform, mit denen die Azure-Fabric und die unter Azure ausgeführten Workloads geschützt werden.
+- [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Security/AzureSecurity): Enthält Informationen zu Funktionen der Azure-Plattform, mit denen das Azure-Fabric und die unter Azure ausgeführten Workloads geschützt werden.
 - [Microsoft Security Response Center](http://www.microsoft.com/security/msrc/default.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z.B. Probleme mit Azure, melden oder eine E-Mail an [secure@microsoft.com](mailto:secure@microsoft.com) schreiben.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier können Sie sich über den aktuellen Stand der Azure-Sicherheit informieren.
 
@@ -240,4 +247,4 @@ Die folgenden Ressourcen enthalten allgemeinere Informationen zu Azure und verwa
 [3]: ./media/azure-security-management/hardened-workstation-enabled-with-hyper-v.png
 [4]: ./media/azure-security-management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

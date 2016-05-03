@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/30/2016"
+   ms.date="04/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen von SQL Data Warehouse mithilfe von Powershell
@@ -23,78 +23,71 @@
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-## Abrufen und Ausführen der Azure PowerShell-Cmdlets
+### Voraussetzungen
+Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie beginnen.
 
-> [AZURE.NOTE]  Zum Verwenden von Microsoft Azure PowerShell mit SQL Data Warehouse sollten Sie die aktuelle Version von Azure PowerShell mit ARM-Cmdlets herunterladen und installieren. Sie können Ihre Version überprüfen, indem Sie `Get-Module -ListAvailable -Name Azure` ausführen. Dieser Artikel basiert auf Microsoft Azure PowerShell Version 1.0.3 oder höher.
+- V12 Azure SQL Server zum Hosten der Datenbank
+- Ressourcengruppenname für SQL Server liegt vor
 
-Wenn Sie PowerShell noch nicht eingerichtet haben, müssen Sie PowerShell herunterladen und konfigurieren.
+Weitere Informationen zu den o.g. Voraussetzungen finden Sie unter **Configure and create a server** (Konfigurieren und Erstellen eines Servers) im Artikel [Create a SQL Data Warehouse][] (Erstellen eines SQL Data Warehouse).
 
-1. Führen Sie zum Herunterladen des Azure PowerShell-Moduls den [Microsoft-Webplattform-Installer](http://aka.ms/webpi-azps) aus. Weitere Informationen zu diesem Installationsprogramm finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
-2. Geben Sie zum Ausführen des Moduls auf der Startseite **Windows PowerShell** ein.
-3. Führen Sie dieses Cmdlet aus, um sich am Azure-Ressourcen-Manager anzumelden.
+> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0.3 oder höher installieren. Sie können Ihre Version feststellen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version von [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+
+## Erstellen einer SQL Data Warehouse-Datenbank
+1. Öffnen Sie Windows PowerShell.
+2. Führen Sie dieses Cmdlet aus, um sich am Azure-Ressourcen-Manager anzumelden.
 
 	```Powershell
 	Login-AzureRmAccount
 	```
-
-4. Wählen Sie das Abonnement aus, das Sie für Ihre aktuelle Sitzung verwenden möchten.
+	
+3. Wählen Sie das Abonnement aus, das Sie für Ihre aktuelle Sitzung verwenden möchten.
 
 	```Powershell
 	Get-AzureRmSubscription	-SubscriptionName "MySubscription" | Select-AzureRmSubscription
 	```
 
-## Erstellen einer SQL Data Warehouse-Datenbank
-Verwenden Sie das New-AzureRmSQLDatabase-Cmdlet, um eine SQL Data Warehouse-Einheit bereitzustellen. Stellen Sie vor dem Ausführen des Befehls sicher, dass die unten angegebenen Voraussetzungen erfüllt sind.
+4.  Erstellen Sie eine Datenbank. In diesem Beispiel wird eine neue Datenbank mit dem Namen „mynewsqldw“ mit der Dienstzielebene „DW400“ auf dem Server „sqldwserver1“ erstellt, der sich in der Ressourcengruppe „mywesteuroperesgp1“ befindet. **HINWEIS: Wenn Sie eine neue SQL Data Warehouse-Datenbank erstellen, fallen dadurch unter Umständen weitere Gebühren an. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.**
 
-### Voraussetzungen
+	```Powershell
+	New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse"
+	```
 
-- V12 Azure SQL Server zum Hosten der Datenbank
-- Ressourcengruppenname für SQL Server liegt vor
+Die für das Cmdlet erforderlichen Parameter sind:
 
-### Bereitstellungsbefehl
+- **RequestedServiceObjectiveName**: die angeforderte DWU-Menge in der Form „DWXXX“. DWU stellt eine Zuweisung von CPU und Arbeitsspeicher dar. Jeder DWU-Wert steht für eine lineare Erhöhung in diesen Ressourcen. Folgende Werte werden unterstützt: 100, 200, 300, 400, 500, 600, 1000, 1200, 1500, 2000.
+- **DatabaseName**: der Name des SQL Data Warehouse, das Sie erstellen.
+- **ServerName**: der Name des Servers, den Sie für die Erstellung verwenden (muss V12 sein).
+- **ResourceGroupName**: die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet "Get-AzureResourceGroup":
+- **Edition**: Sie müssen die Edition auf "Data Warehouse" festlegen, um ein SQL Data Warehouse zu erstellen.
 
-Mit diesem Befehl wird eine neue Datenbank in SQL Data Warehouse bereitgestellt.
-
-```Powershell
-New-AzureRmSqlDatabase -RequestedServiceObjectiveName "<Service Objective>" -DatabaseName "<Data Warehouse Name>" -ServerName "<Server Name>" -ResourceGroupName "<ResourceGroupName>" -Edition "DataWarehouse"
-```
-
-In diesem Beispiel wird eine neue Datenbank mit dem Namen „mynewsqldw1“ mit der Dienstzielebene „DW400“ auf dem Server „sqldwserver1“ bereitgestellt, der sich in der Ressourcengruppe „mywesteuroperesgp1“ befindet.
-
-```Powershell
-New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw1" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse"
-```
-
-Die erforderlichen Parameter für dieses Cmdlet lauten wie folgt:
-
- + **RequestedServiceObjectiveName**: die angeforderte DWU-Menge in der Form "DWXXX". Zurzeit werden folgende Werte unterstützt: 100, 200, 300, 400, 500, 600, 1000, 1200, 1500, 2000.
- + **DatabaseName**: der Name des SQL Data Warehouse, das Sie erstellen.
- + **ServerName**: der Name des Servers, den Sie für die Erstellung verwenden (muss V12 sein).
- + **ResourceGroupName**: die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet "Get-AzureResourceGroup":
- + **Edition**: Sie müssen die Edition auf "Data Warehouse" festlegen, um ein SQL Data Warehouse zu erstellen.
-
-Die Befehlsreferenz finden Sie unter [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619339.aspx).
-
-Die Parameteroptionen finden Sie unter [CREATE DATABASE (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt204021.aspx).
+Weitere Informationen zu den Parameteroptionen finden Sie unter [Create Database (Azure SQL Data Warehouse)][]. Die Befehlsreferenz finden Sie unter [New-AzureRmSqlDatabase][].
 
 ## Nächste Schritte
 Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] lernen.
 
-Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse finden Sie in der Dokumentation zu [PowerShell][] und der [REST-API][].
-
-
+Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse finden Sie im Artikel zur Verwendung von [PowerShell-Cmdlets und REST-APIs][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Migrieren]: ./sql-data-warehouse-overview-migrate.md
-[Entwickeln]: ./sql-data-warehouse-overview-develop.md
-[Laden]: ./sql-data-warehouse-load-with-bcp.md
-[Beispieldaten laden]: ./sql-data-warehouse-get-started-manually-load-samples.md
-[Powershell]: ./sql-data-warehouse-reference-powershell-cmdlets.md
-[REST-API]: https://msdn.microsoft.com/library/azure/dn505719.aspx
-[MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
-[firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
-[Installieren und Konfigurieren von Azure PowerShell]: ./powershell-install-configure.md
+[Migrieren]: sql-data-warehouse-overview-migrate.md
+[Entwickeln]: sql-data-warehouse-overview-develop.md
+[Laden]: sql-data-warehouse-load-with-bcp.md
+[Beispieldaten laden]: sql-data-warehouse-get-started-manually-load-samples.md
+[PowerShell-Cmdlets und REST-APIs]: sql-data-warehouse-reference-powershell-cmdlets.md
+[firewall rules]: sql-database-configure-firewall-settings.md
+[Installieren und Konfigurieren von Azure PowerShell]: powershell-install-configure.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!--MSDN references--> 
+[MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
+[New-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619339.aspx
+[Create Database (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt204021.aspx
+
+<!--Other Web references-->
+[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
+[SQL Data Warehouse – Preise]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+ 
+
+<!---HONumber=AcomDC_0427_2016-->

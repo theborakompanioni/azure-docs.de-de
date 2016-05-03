@@ -13,11 +13,13 @@
 
 ### Hinzufügen oder Entfernen von Präfixen, wenn Sie bereits eine VPN Gateway-Verbindung erstellt haben
 
-Wenn Sie die VPN-Verbindung erstellt haben und die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten, müssen Sie die folgenden Schritte der Reihenfolge nach ausführen. Dies führt zu Ausfallzeiten für Ihre VPN-Verbindung, da Sie das Gateway entfernen und neu erstellen müssen. Da Sie aber eine IP-Adresse für die Verbindung angefordert haben, müssen Sie Ihren lokalen VPN-Router nicht neu konfigurieren. Dies ist nur erforderlich, wenn Sie sich dafür entscheiden, die zuvor verwendeten Werte zu ändern.
+Wenn Sie die VPN-Verbindung erstellt haben und die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten, müssen Sie die folgenden Schritte der Reihenfolge nach ausführen. Dies führt zu Ausfallzeiten für Ihre VPN-Verbindung.
+
+>[AZURE.IMPORTANT] Löschen Sie nicht das VPN-Gateway. Wenn Sie dies tun, müssen Sie die Schritte zum Erstellen erneut durchführen und das Gateway außerdem auf Ihrem lokalen Router mit den neuen Einstellungen erneut konfigurieren.
  
-1. Entfernen Sie die Gatewayverbindung. 
+1. Entfernen Sie die IPsec-Verbindung. 
 2. Ändern Sie die Präfixe für Ihr lokales Netzwerkgateway. 
-3. Erstellen Sie eine neue Gatewayverbindung. 
+3. Erstellen Sie eine neue IPsec-Verbindung. 
 
 Sie können das folgende Beispiel als Hilfe verwenden.
 
@@ -31,4 +33,4 @@ Sie können das folgende Beispiel als Hilfe verwenden.
 	
 	New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

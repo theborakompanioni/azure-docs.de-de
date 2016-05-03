@@ -68,7 +68,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
 
 - VNet-zu-VNet erfordert Azure-VPN Gateways mit routenbasierten VPN-Typen (früher als „dynamisches Routing“ bezeichnet).
 
-- Virtuelle Netzwerkverbindungen können gleichzeitig mit VPNs mit mehreren Standorten und maximal 10 (Standardgateways) bzw. 30 (Hochleistungsgateways) VPN-Tunneln für ein VPN Gateway des virtuellen Netzwerks verwendet werden, das Verbindungen mit anderen virtuellen Netzwerken oder lokalen Standorten herstellt.
+- Virtuelle Netzwerkverbindungen können gleichzeitig mit VPNs mit mehreren Standorten und maximal 10 (Standardgateways) bzw. 30 (Hochleistungsgateways) VPN-Tunneln für ein VPN Gateway des virtuellen Netzwerks verwendet werden, das Verbindungen mit anderen virtuellen Netzwerken oder lokalen Standorten herstellt.
 
 - Die Adressräume der virtuellen Netzwerke und der lokalen Netzwerkstandorte dürfen sich nicht überschneiden. Wenn sich Adressräume überlappen, tritt bei der Erstellung von VNet-zu-VNet-Verbindungen ein Fehler auf.
 
@@ -177,7 +177,7 @@ Verwenden Sie für diese Übung die folgenden Werte für die VNets:
 		$Connection14  = "VNet1toVNet4"
 		$Connection15  = "VNet1toVNet5"
 
-2. Verbinden mit Abonnement 1
+2. Verbinden mit Abonnement 1
 
 	Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
@@ -201,7 +201,7 @@ Verwenden Sie für diese Übung die folgenden Werte für die VNets:
 
 	Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen TestVNet1 und drei Subnetzen erstellt. Diese haben die Namen „GatewaySubnet“, „FrontEnd“ und „Backend“. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
 
-	Im folgenden Beispiel wird vom Gatewaysubnetz ein „/27“ verwendet. Sie können zwar aus technischer Sicht auch ein Gatewaysubnetz erstellen, indem Sie ein kleines Subnetz der Größe /29 verwenden, aber dies ist nicht zu empfehlen. Wir raten Ihnen vorsichtshalber zu größeren Subnetzen, z. B. /27 oder /26, falls Sie vorhandene oder zukünftige Konfigurationen nutzen möchten, für die unter Umständen ein größeres Gatewaysubnetz erforderlich ist.
+	Im folgenden Beispiel wird vom Gatewaysubnetz ein „/27“ verwendet. Sie können zwar aus technischer Sicht auch ein Gatewaysubnetz erstellen, indem Sie ein kleines Subnetz der Größe /29 verwenden, aber dies ist nicht zu empfehlen. Wir raten Ihnen vorsichtshalber zu größeren Subnetzen, z. B. /27 oder /26, falls Sie vorhandene oder zukünftige Konfigurationen nutzen möchten, für die unter Umständen ein größeres Gatewaysubnetz erforderlich ist.
 
 
 		$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -229,11 +229,11 @@ Verwenden Sie für diese Übung die folgenden Werte für die VNets:
 
 8. Erstellen des Gateways für TestVNet1
 
-	In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für TestVNet1. VNet-zu-VNet-Konfigurationen erfordern einen routenbasierten VPN-Typ. Das Erstellen eines Gateways kann einige Zeit dauern (30 Minuten oder mehr).
+	In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für TestVNet1. VNet-zu-VNet-Konfigurationen erfordern einen routenbasierten VPN-Typ. Das Erstellen eines Gateways kann einige Zeit dauern (30 Minuten oder mehr).
 
 		New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
-### Schritt 3: Erstellen und Konfigurieren von TestVNet4
+### Schritt 3: Erstellen und Konfigurieren von TestVNet4
 
 Nachdem Sie TestVNet1 konfiguriert haben, wiederholen Sie die Schritte zum Erstellen von TestVNet4. Führen Sie die unten angegebenen Schritte aus, und ersetzen Sie die Werte bei Bedarf durch Ihre eigenen Werte. Sie können diesen Schritt in derselben PowerShell-Sitzung ausführen, da hierfür dasselbe Abonnement gilt.
 
@@ -258,7 +258,7 @@ Nachdem Sie TestVNet1 konfiguriert haben, wiederholen Sie die Schritte zum Erste
 		$GWIPconfName4 = "gwipconf4"
 		$Connection41  = "VNet4toVNet1"
 
-	Stellen Sie vor dem Fortfahren sicher, dass die Verbindung mit Abonnement 1 noch besteht.
+	Stellen Sie vor dem Fortfahren sicher, dass die Verbindung mit Abonnement 1 noch besteht.
 
 2. Erstellen einer neuen Ressourcengruppe
 
@@ -288,7 +288,7 @@ Nachdem Sie TestVNet1 konfiguriert haben, wiederholen Sie die Schritte zum Erste
 
 		New-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
-### Schritt 4: Verbinden der Gateways
+### Schritt 4: Verbinden der Gateways
 
 1. Abrufen von beiden Gateways des virtuellen Netzwerks
 
@@ -361,9 +361,9 @@ Mit den unten angegebenen Konfigurationsschritten wird eine weitere VNet-zu-VNet
 
 ![VNet2VNet, unterschiedliche Abonnements](./media/vpn-gateway-vnet-vnet-rm-ps/differentsubscription.png)
 
-Die Anleitung unten ist eine Fortsetzung der vorherigen obigen Schritte. Sie müssen [Schritt 1](#Step1) und [Schritt 2](#Step2) ausführen, um TestVNet1 und das VPN Gateway für TestVNet1 zu erstellen und zu konfigurieren. Wenn Sie nur die Verbindung von VNets in unterschiedlichen Abonnements planen, müssen Sie sich mit den Schritten 3 und 4 aus der vorherigen Übung nicht befassen und können unten mit Schritt 5 fortfahren.
+Die Anleitung unten ist eine Fortsetzung der vorherigen obigen Schritte. Sie müssen [Schritt 1](#Step1) und [Schritt 2](#Step2) ausführen, um TestVNet1 und das VPN Gateway für TestVNet1 zu erstellen und zu konfigurieren. Wenn Sie nur die Verbindung von VNets in unterschiedlichen Abonnements planen, müssen Sie sich mit den Schritten 3 und 4 aus der vorherigen Übung nicht befassen und können unten mit Schritt 5 fortfahren.
 
-### Schritt 5: Überprüfen der zusätzlichen IP-Adressbereiche
+### Schritt 5: Überprüfen der zusätzlichen IP-Adressbereiche
 
 Es ist wichtig sicherzustellen, dass sich der IP-Adressbereich des neuen virtuellen Netzwerks (TestVNet5) nicht mit einem Ihrer VNet-Bereiche oder Gatewaybereiche des lokalen Netzwerks überlappt.
 
@@ -390,7 +390,7 @@ In diesem Beispiel können die virtuellen Netzwerke unterschiedlichen Organisati
 - Verbindung: VNet1toVNet5
 
 
-### Schritt 6: Erstellen und Konfigurieren von TestVNet5
+### Schritt 6: Erstellen und Konfigurieren von TestVNet5
 
 Dieser Schritt muss im Kontext des neuen Abonnements ausgeführt werden. Dieser Teil kann vom Administrator in einer anderen Organisation ausgeführt werden, in deren Besitz sich das Abonnement befindet.
 
@@ -416,7 +416,7 @@ Dieser Schritt muss im Kontext des neuen Abonnements ausgeführt werden. Dieser 
 		$GWIPconfName5 = "gwipconf5"
 		$Connection51  = "VNet5toVNet1"
 
-2. Verbinden mit Abonnement 5
+2. Verbinden mit Abonnement 5
 
 	Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
@@ -453,23 +453,23 @@ Dieser Schritt muss im Kontext des neuen Abonnements ausgeführt werden. Dieser 
 
 		$vnet5     = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
 		$subnet5   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
-		$gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig 
+		$gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
 
 8. Erstellen des TestVNet5-Gateways
 
 		New-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
-### Schritt 7: Verbinden der Gateways
+### Schritt 7: Verbinden der Gateways
 
-Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinden, haben wir diesen Schritt in zwei PowerShell-Sitzungen mit den Bezeichnungen [Abonnement 1] und [Abonnement 5] aufgeteilt.
+Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinden, haben wir diesen Schritt in zwei PowerShell-Sitzungen mit den Bezeichnungen [Abonnement 1] und [Abonnement 5] aufgeteilt.
 
 1. **[Abonnement 1]** Abrufen des Gateways für das virtuelle Netzwerk für Abonnement 1
 
-	Stellen Sie sicher, dass Sie sich an „Abonnement 1“ anmelden und die Verbindung damit herstellen.
+	Stellen Sie sicher, dass Sie sich an „Abonnement 1“ anmelden und die Verbindung damit herstellen.
 
 		$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 
-	Kopieren Sie die Ausgabe der folgenden Elemente, und senden Sie diese per E-Mail oder mit einem anderen Verfahren an den Administrator von Abonnement 5.
+	Kopieren Sie die Ausgabe der folgenden Elemente, und senden Sie diese per E-Mail oder mit einem anderen Verfahren an den Administrator von Abonnement 5.
 
 		$vnet1gw.Name
 		$vnet1gw.Id
@@ -483,11 +483,11 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 2. **[Abonnement 5]** Abrufen des Gateways für das virtuelle Netzwerk für Abonnement 5
 
-	Stellen Sie sicher, dass Sie sich an „Abonnement 5“ anmelden und die Verbindung damit herstellen.
+	Stellen Sie sicher, dass Sie sich an „Abonnement 5“ anmelden und die Verbindung damit herstellen.
 
 		$vnet5gw = Get-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
 
-	Kopieren Sie die Ausgabe der folgenden Elemente, und senden Sie diese per E-Mail oder mit einem anderen Verfahren an den Administrator von Abonnement 1.
+	Kopieren Sie die Ausgabe der folgenden Elemente, und senden Sie diese per E-Mail oder mit einem anderen Verfahren an den Administrator von Abonnement 1.
 
 		$vnet5gw.Name
 		$vnet5gw.Id
@@ -501,9 +501,9 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 3. **[Abonnement 1]** Erstellen der Verbindung von TestVNet1 mit TestVNet5
 
-	In diesem Schritt erstellen Sie die Verbindung von TestVNet1 zu TestVNet5. Der Unterschied hierbei ist, dass $vnet5gw nicht direkt abgerufen werden kann, da sich dieses Element in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die von Abonnement 1 in den obigen Schritten bereitgestellt werden. Ersetzen Sie Name, ID und freigegebenen Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
+	In diesem Schritt erstellen Sie die Verbindung von TestVNet1 zu TestVNet5. Der Unterschied hierbei ist, dass $vnet5gw nicht direkt abgerufen werden kann, da sich dieses Element in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die von Abonnement 1 in den obigen Schritten bereitgestellt werden. Ersetzen Sie Name, ID und freigegebenen Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
 
-	Stellen Sie sicher, dass Sie eine Verbindung mit Abonnement 1 herstellen.
+	Stellen Sie sicher, dass Sie eine Verbindung mit Abonnement 1 herstellen.
 	
 		$vnet5gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 		$vnet5gw.Name = "VNet5GW"
@@ -513,9 +513,9 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 4. **[Abonnement 5]** Erstellen der Verbindung von TestVNet5 mit TestVNet1
 
-	Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet5 mit TestVNet1. Auch hier gilt der gleiche Prozess zur Erstellung eines PowerShell-Objekts basierend auf den Werten, die aus Abonnement 1 abgerufen wurden. Stellen Sie in diesem Schritt sicher, dass die freigegebenen Schlüssel übereinstimmen.
+	Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet5 mit TestVNet1. Auch hier gilt der gleiche Prozess zur Erstellung eines PowerShell-Objekts basierend auf den Werten, die aus Abonnement 1 abgerufen wurden. Stellen Sie in diesem Schritt sicher, dass die freigegebenen Schlüssel übereinstimmen.
 
-	Stellen Sie sicher, dass Sie eine Verbindung mit Abonnement 5 herstellen.
+	Stellen Sie sicher, dass Sie eine Verbindung mit Abonnement 5 herstellen.
 
 		$vnet1gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 		$vnet1gw.Name = "VNet1GW"
@@ -530,4 +530,4 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

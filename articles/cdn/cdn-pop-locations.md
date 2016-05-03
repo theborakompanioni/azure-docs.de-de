@@ -40,6 +40,7 @@ In diesem Thema werden die aktuellen POP-Standorte (Point of Presence) von Micro
 ## Südamerika
 
 - São Paulo
+- Rio de Janeiro
 - Quito
 - Medellin
 - Buenos Aires
@@ -84,4 +85,4 @@ In diesem Thema werden die aktuellen POP-Standorte (Point of Presence) von Micro
 
 Sie haben vielleicht gehört, dass Microsoft [eine Partnerschaft mit Akamai eingegangen ist](https://azure.microsoft.com/blog/microsoft-and-akamai-bring-cdn-to-azure-customers/). In den kommenden Monaten werden wir im Rahmen dieser Partnerschaft die Reichweite von Azure CDN auf der ganzen Welt erheblich steigern.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -1,3 +1,7 @@
+### ASP.NET-Web-API
+
+Bei diesem Tutorial wird davon ausgegangen, dass Sie über grundlegende Kenntnisse in Bezug auf die Verwendung von ASP.NET-[Web-API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) in Visual Studio verfügen.
+
 ### Azure-Konto
 
 Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie können:
@@ -15,8 +19,4 @@ Wenn Sie Visual Studio 2013 besitzen und diese Version verwenden möchten, [lade
 
 >[AZURE.NOTE] Abhängig von der Anzahl an bereits bestehenden SDK-Abhängigkeiten auf Ihrem Computer kann der Installationsvorgang des SDK von mehreren Minuten bis hin zu einer halben Stunde oder länger dauern.
 
-### ASP.NET-Web-API
-
-Bei diesem Tutorial wird davon ausgegangen, dass Sie über grundlegende Kenntnisse in Bezug auf die Verwendung von ASP.NET-[Web-API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) in Visual Studio verfügen.
-
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0427_2016-->
