@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Storage-Optionen für R Server in HDInsight Premium | Azure"
-   description="Lernen Sie die verschiedenen Speicheroptionen kennen, die Benutzern mit R Server in HDInsight Premium zur Verfügung stehen."
+   pageTitle="Azure Storage-Optionen für R Server in HDInsight (Vorschau) | Azure"
+   description="Lernen Sie die verschiedenen Speicheroptionen kennen, die Benutzern mit R Server in HDInsight (Vorschau) zur Verfügung stehen."
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -18,9 +18,9 @@
    ms.author="jeffstok"
 />
 
-# Azure Storage-Optionen für R Server in HDInsight Premium
+# Azure Storage-Optionen für R Server in HDInsight (Vorschau)
 
-Mit R Server in einem HDI-Cluster besteht Zugriff auf Azure-Blob und bald auch auf Azure Data Lake-Speicher, um Daten, Code, Ergebnisobjekte von Analysen usw. dauerhaft zu speichern.
+R Server in HDInsight (Vorschau) hat Zugriff auf Azure-Blobspeicher und bald auch auf Azure Data Lake-Speicher, um Daten, Code, Ergebnisobjekte von Analysen usw. dauerhaft zu speichern.
 
 Bei der Erstellung eines Hadoop-Clusters in HDInsight geben Sie ein Azure-Speicherkonto an. Ein spezieller Blobspeichercontainer dieses Kontos wird angegeben, um das Dateisystem für den von Ihnen erstellten Cluster aufzunehmen, also das Hadoop Distributed File System (HDFS). Aus Leistungsgründen wird der HDInsight-Cluster in demselben Rechenzentrum wie das von Ihnen angegebene primäre Speicherkonto erstellt. Weitere Informationen finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md "Verwenden von Azure Blob-Speicher mit HDInsight").
 
@@ -110,4 +110,4 @@ Nachdem Sie jetzt wissen, wie Sie einen neuen HDInsight-Cluster mit Verwendung v
 - [Hinzufügen von RStudio Server zu HDInsight Premium](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Rechenkontextoptionen für R Server in HDInsight Premium](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

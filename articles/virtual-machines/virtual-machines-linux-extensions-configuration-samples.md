@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Konfigurationsbeispiele für Linux-VM-Erweiterungen
@@ -51,11 +51,34 @@ Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweit
       "publisher": "Publisher Namespace",
       "type": "extension Name",
       "typeHandlerVersion": "extension version",
+      "autoUpgradeMinorVersion":true,
       "settings": {
       // Extension specific configuration goes in here.
       }
       }
       }
+
+## Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
+
+          {
+           "type":"Microsoft.Compute/virtualMachineScaleSets",
+          ....
+                 "extensionProfile":{
+                 "extensions":[
+                   {
+                     "name":"extension Name",
+                     "properties":{
+                       "publisher":"Publisher Namespace",
+                       "type":"extension Name",
+                       "typeHandlerVersion":"extension version",
+                       "autoUpgradeMinorVersion":true,
+                       "settings":{
+                       // Extension specific configuration goes in here.
+                       }
+                     }
+                    }
+                  }
+                }
 
 Überprüfen Sie vor der Bereitstellung der Erweiterung die aktuelle Erweiterungsversion, und ersetzen Sie den Wert von "typeHandlerVersion" durch die aktuelle Version.
 
@@ -197,4 +220,4 @@ Dies ist eine vollständige VM-Vorlage zum Erstellen eines virtuellen Linux-Comp
 
 [Benutzerdefinierte Skriptserweiterung auf einem virtuellen Linux-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

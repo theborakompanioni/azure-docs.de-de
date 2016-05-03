@@ -123,7 +123,7 @@ Wenn Sie den Zeichenkettenverkettungscode in diesem Artikel hinzugefügt haben, 
 
 ![][14]
 
-## 5: Vornehmen von Änderungen und Vergleichen von Leistung
+## 4: Vornehmen von Änderungen und Vergleichen der Leistung
 
 Sie können auch die Leistung vor und nach einer Codeänderung vergleichen. Beenden Sie den laufenden Prozess, und bearbeiten Sie den Code, um den Zeichenkettenverkettungsvorgang durch die Verwendung von StringBuilder zu ersetzen:
 
@@ -186,4 +186,4 @@ Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-P
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

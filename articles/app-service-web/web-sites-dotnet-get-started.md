@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erste Schritte mit ASP.NET und Azure App Service | Microsoft Azure"
-	description="Erfahren Sie, wie Sie ein ASP.NET-Webprojekt in Visual Studio erstellen und in einer neuen Web-App in Azure App Service bereitstellen."
+	pageTitle="Erste Schritte mit Azure App Service und ASP.NET | Microsoft Azure"
+	description="Erfahren Sie, wie Sie ein ASP.NET-Webprojekt mit Visual Studio in einer neuen Web-App in Azure App Service bereitstellen."
 	services="app-service\web"
 	documentationCenter=".net"
 	authors="tdykstra"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="03/02/2016"
+	ms.date="04/22/2016"
 	ms.author="tdykstra"/>
 
-# Erste Schritte mit ASP.NET-Web-Apps in Azure App Service mit Visual Studio
+# Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio
 
 > [AZURE.SELECTOR]
 - [.Net](web-sites-dotnet-get-started.md)
@@ -293,4 +293,4 @@ In diesem Lernprogramm haben Sie erfahren, wie eine einfache Webanwendung erstel
 
 	In Azure können Sie Webanwendungen in App Service-Web-Apps (wie in diesem Lernprogramm gezeigt), in Cloud Services oder in Virtual Machines ausführen. Weitere Informationen finden Sie unter [Azure Web-Apps, Cloud Services und Virtual Machines im Vergleich](/manage/services/web-sites/choose-web-app-service/).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

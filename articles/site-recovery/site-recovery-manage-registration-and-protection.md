@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Entfernen von Servern und Deaktivieren des Schutzes | Microsoft Azure" 
-	description="In diesem Artikel wird erläutert, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und den Schutz für virtuelle Computer und physische Server deaktivieren." 
+	description="In diesem Artikel wird erläutert, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und den Schutz für virtuelle Computer und physische Server deaktivieren." 
 	services="site-recovery" 
 	documentationCenter="" 
 	authors="rayne-wiselman" 
@@ -22,16 +22,16 @@ Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontin
 
 ## Übersicht
 
-In diesem Artikel erfahren Sie, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und wie Sie den Site Recovery-Schutz für virtuelle Computer deaktivieren.
+In diesem Artikel erfahren Sie, wie Sie die Registrierung von Servern im Site Recovery-Tresor aufheben und wie Sie den Site Recovery-Schutz für virtuelle Computer deaktivieren.
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
 
 ## Aufheben der Registrierung eines VMM-Servers
 
-Wenn Sie die Registrierung eines VMM-Servers in einem Tresor aufheben möchten, müssen Sie den Server im Azure Site Recovery-Portal auf der Registerkarte **Server** löschen. Beachten Sie Folgendes:
+Wenn Sie die Registrierung eines VMM-Servers in einem Tresor aufheben möchten, müssen Sie den Server im Azure Site Recovery-Portal auf der Registerkarte **Server** löschen. Beachten Sie Folgendes:
 
 -  **Verbundener VMM-Server**: Es empfiehlt sich, die Registrierung des VMM-Servers aufzuheben, während dieser mit Azure verbunden ist. Dadurch wird sichergestellt, dass Einstellungen auf dem lokalen VMM-Server sowie die zugeordneten VMM-Server (VMM-Server mit Clouds, die Clouds auf dem zu löschenden Server zugeordnet sind) ordnungsgemäß bereinigt werden. Nicht verbundene Server sollten nur im Falle eines dauerhaften Konnektivitätsproblems entfernt werden.
-- **Unverbundener VMM-Server**: Wenn der VMM-Server beim Löschen nicht verbunden ist, müssen Sie manuell ein Bereinigungsskript ausführen. Dieses Skript finden Sie im [Microsoft-Katalog](https://gallery.technet.microsoft.com/scriptcenter/Cleanup-Script-for-Windows-95101439). Notieren Sie sich für die manuelle Bereinigung die VMM-ID des Servers.
+- **Unverbundener VMM-Server**: Wenn der VMM-Server beim Löschen nicht verbunden ist, müssen Sie manuell ein Bereinigungsskript ausführen. Dieses Skript finden Sie im [Microsoft-Katalog](http://aka.ms/asr-cleanup-script-vmm). Notieren Sie sich für die manuelle Bereinigung die VMM-ID des Servers.
 - **VMM-Server im Cluster**: Führen Sie folgende Schritte aus, wenn Sie die Registrierung eines in einem Cluster bereitgestellten VMM-Servers aufheben müssen:
 
 	- Ist der Server verbunden, löschen Sie den verbundenen VMM-Server auf der Registerkarte **Server**. Melden Sie sich zum Deinstallieren des Anbieters bei jedem Clusterknoten an, und deinstallieren Sie ihn über die Systemsteuerung. Führen Sie für alle passiven Knoten des Clusters das im vorherigen Abschnitt erwähnte Bereinigungsskript aus, um die Registrierungseinträge zu löschen.
@@ -48,7 +48,7 @@ Führen Sie auf dem zu entfernenden VMM-Server die folgenden Schritte aus:
 
 Gehen Sie auf VMM-Servern mit Clouds, die mit Clouds auf dem zu entfernenden Server gekoppelt sind, wie folgt vor:
 
-1. Führen Sie das Bereinigungsskript sowie die Schritte 2 bis 4 aus.
+1. Führen Sie das Bereinigungsskript sowie die Schritte 2 bis 4 aus.
 2. Geben Sie die VMM-ID für den VMM-Server an, dessen Registrierung aufgehoben wurde. 
 3. Dieses Skript entfernt die Registrierungsinformationen für den VMM-Server sowie die Informationen zur Cloud-Kopplung.
 
@@ -58,7 +58,7 @@ Gehen Sie auf VMM-Servern mit Clouds, die mit Clouds auf dem zu entfernenden Ser
 Wenn Azure Site Recovery zum Schutz virtueller Computer auf einem Hyper-V-Server an einem Hyper-V-Standort (ohne VMM-Server) bereitgestellt wurde, können Sie die Registrierung eines Hyper-V-Servers im Tresor wie folgt aufheben:
 
 1. Deaktivieren Sie den Schutz für virtuelle Computer auf dem Hyper-V-Server.
-2. Wählen Sie im Azure Site Recovery-Portal auf der Registerkarte **Server** den Server aus, und klicken Sie auf „Löschen“. Der Server muss zu diesem Zeitpunkt nicht mit Azure verbunden sein.
+2. Wählen Sie im Azure Site Recovery-Portal auf der Registerkarte **Server** den Server aus, und klicken Sie auf „Löschen“. Der Server muss zu diesem Zeitpunkt nicht mit Azure verbunden sein.
 3. Führen Sie das folgende Skript aus, um die Einstellungen auf dem Server zu bereinigen und die Registrierung im Tresor aufzuheben: 
 
 	    pushd .
@@ -220,4 +220,4 @@ Wenn Sie den Schutz für eine virtuelle VMware-Maschine oder einen physischen Se
 	
 		![Optionen entfernen](./media/site-recovery-manage-registration-and-protection/remove-vm.png)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -123,7 +123,7 @@ Nachdem Sie die Abfrage ausgeführt haben, können Sie die Daten anzeigen und di
 | [OPEN\_rowgroup\_rows\_MIN] | Offene Gruppen geben an, dass Daten langsam in die Tabelle geladen werden oder dass beim vorherigen Laden verbleibende Zeilen in diese Zeilengruppe aufgenommen wurden. Verwenden die Spalten MIN, MAX und AVG, um festzustellen, wie viele Daten sich in OPEN-Zeilengruppen befinden. Bei kleinen Tabellen können es 100 % aller Daten sein! Verwenden Sie in diesem Fall ALTER INDEX REBUILD, um die Datenaufnahme in einen Columnstore zu erzwingen. |
 | [OPEN\_rowgroup\_rows\_MAX] | Wie oben. |
 | [OPEN\_rowgroup\_rows\_AVG] | Wie oben. |
-| [CLOSED\_rowgroup\_rows] | Betrachten Sie die Zeilen in geschlossenen Zeilengruppen als Integritätsprüfung. |
+| [CLOSED\_rowgroup\_rows] | Betrachten Sie die Zeilen in geschlossenen Zeilengruppen als |
 | [CLOSED\_rowgroup\_count] | Die Anzahl der geschlossenen Zeilengruppen sollte niedrig sein, wenn überhaupt welche vorhanden werden. Geschlossene Zeilengruppen können mit dem Befehl ALTER INDEX ... REORGANISE in komprimierte Zeilengruppen konvertiert werden. Dies ist jedoch normalerweise nicht erforderlich. Geschlossene Gruppen werden automatisch durch den Tupelverschiebungsvorgang im Hintergrund in Columnstore-Zeilengruppen konvertiert. |
 | [CLOSED\_rowgroup\_rows\_MIN] | Geschlossene Zeilengruppen sollten eine sehr hohe Füllrate aufweisen. Wenn die Füllrate für eine geschlossene Zeilengruppe niedrig ist, ist eine weitere Analyse des Columnstore erforderlich. |
 | [CLOSED\_rowgroup\_rows\_MAX] | Wie oben. |
@@ -259,4 +259,4 @@ Weitere Verwaltungstipps finden Sie in der Übersicht über die [Verwaltung][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,43 +13,73 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/17/2016"
+   ms.date="04/15/2016"
    ms.author="kgremban"/>
 
-# Azure AD Privileged Identity Management: Rollen
+# Rollen in Azure AD Privileged Identity Management
 
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
-## Rollen aus Active Directory Azure, Office 365 und anderen Quellen
+Sie können Benutzern Ihrer Organisation in Azure AD verschiedene Administratorrollen zuweisen. Mit diesen Rollenzuweisungen wird gesteuert, welche Aufgaben (beispielsweise das Hinzufügen oder Entfernen von Benutzern oder das Ändern von Diensteinstellungen) Benutzer in Azure AD, Office 365 und weiteren Microsoft Online Services und zugehörigen Anwendungen ausführen können.
 
-Azure Privileged Identity Management (PIM) verwendet die folgenden Rollen als Standardadministratorrollen.
+Ein globaler Administrator kann die **permanente** Rollenzuweisung von Benutzern in Azure AD ändern. Hierzu können PowerShell-Cmdlets wie `Add-MsolRoleMember` und `Remove-MsolRoleMember` oder das klassische Portal verwendet werden, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](active-directory-assign-admin-roles.md) beschrieben.
 
-- Globaler Administrator
-- Abrechnungsadministrator
-- Dienstadministrator
-- Benutzeradministrator
-- Kennwortadministrator
+Azure AD Privileged Identity Management (PIM) verwaltet Richtlinien für den privilegierten Zugriff für Benutzer in Azure AD. PIM weist Benutzern eine oder mehrere Rollen in Azure AD zu. Diese Zuweisungen können permanent oder temporär sein. Wenn ein Benutzer einer Rolle permanent zugewiesen ist oder eine temporäre Rollenzuweisung aktiviert, kann er mit den dieser Rolle zugewiesenen Berechtigungen Verwaltungsaufgaben in Azure Active Directory, Office 365 und andere Anwendungen ausführen.
 
-Weitere Informationen zu den Rollen aus Office 365, Exchange Online, SharePoint Online und Skype for Business finden Sie unter [Zuweisen von Administratorrollen in Office 365](https://support.office.com/de-DE/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504?ui=de-DE&rs=de-DE&ad=US).
+
+## In PIM verwaltete Rollen
+
+Mit Privileged Identity Management können Sie Benutzer zu allgemeinen Administratorrollen zuweisen, einschließlich der folgenden:
+
+
+- **Globaler Administrator** (auch als Unternehmensadministrator bezeichnet): hat Zugriff auf alle administrativen Funktionen. Sie können über mehrere globale Administratoren in Ihrer Organisation verfügen. Die Person, die sich für den Erwerb von Office 365 registriert, wird automatisch zum globalen Administrator.
+- **Rechnungsadministrator**: erledigt Käufe, verwaltet Abonnements, verwaltet Supporttickets und überwacht die Dienstintegrität.
+- **Kennwortadministrator**: setzt Kennwörter zurück, verwaltet Dienstanforderungen und überwacht die Dienstintegrität. Kennwortadministratoren können nur Kennwörter für Benutzer zurücksetzen.
+- **Dienstadministrator**: verwaltet Dienstanforderungen und überwacht die Dienstintegrität.
+
+  > [AZURE.NOTE] Wenn Sie Office 365 verwenden, weisen Sie die Benutzeradministratorberechtigungen einem Dienst zu (z. B. Exchange Online), bevor Sie die Dienstadministratorrolle einem Benutzer zuweisen.
+
+- **Benutzerverwaltungsadministrator**: setzt Kennwörter zurück, überwacht die Dienstintegrität und verwaltet Benutzerkonten, Benutzergruppen und Dienstanforderungen. Der Benutzerverwaltungsadministrator kann keinen globalen Administrator löschen, keine weiteren Administratorrollen erstellen und keine Kennwörter für Rechnungs-, Dienst- und globale Administratoren zurücksetzen.
+- **Exchange-Administrator**: hat Administratorzugriff auf Exchange Online über das Exchange Admin Center (EAC) und darf nahezu jede Aufgabe in Exchange Online ausführen.
+- **SharePoint-Administrator**: hat Administratorzugriff auf SharePoint Online über das SharePoint Online Admin Center und darf nahezu jede Aufgabe in SharePoint Online ausführen.
+- **Skype for Business-Administrator**: hat Administratorzugriff auf Skype for Business über das Skype for Business Admin Center und darf nahezu jede Aufgabe in Skype for Business Online ausführen.
+
+Lesen Sie diese Artikel, um weitere Informationen zu [Zuweisen von Administratorrollen in Azure AD](active-directory-assign-admin-roles.md) und [Zuweisen von Administratorrollen in Office 365](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504) zu erhalten.
 
 <!--**PLACEHOLDER: The above article may not be the one we want since PIM gets roles from places other that Office 365**-->
 
 
+In PIM können Sie [diese Rollen einem Benutzer temporär zuweisen](active-directory-privileged-identity-management-how-to-add-role-to-user.md), sodass der Benutzer die [Rolle bei Bedarf aktivieren kann](active-directory-privileged-identity-management-how-to-activate-role.md).
+
+Wenn Sie einem anderen Benutzer Verwaltungszugriff zu PIM gewähren möchten, werden die Rollen, die ein Benutzer für PIM benötigt, unter [Gewähren von Zugriff auf PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md) beschrieben.
+
+
 <!-- ## The PIM Security Administrator Role **PLACEHOLDER: Need description of the Security Administrator role.**-->
 
+## In PIM nicht verwaltete Rollen
+
+Mit Ausnahme der oben genannten Rollen werden Rollen in Exchange Online oder SharePoint Online nicht durch Azure AD verwaltet und sind daher in PIM nicht sichtbar. Informationen zum Ändern von differenzierten Rollenzuweisungen in diesen Office 365-Diensten finden Sie unter [Berechtigungen in Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+
+Azure-Abonnements und -Ressourcengruppen werden ebenfalls nicht in Azure AD verwaltet. Informationen zum Verwalten von Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator). Weitere Informationen zu Azure RBAC finden Sie unter [Rollenbasierte Access Control in Azure](role-based-access-control-configure.md).
+
+<!--**The above links might be replaced by ones that are from within this documentation repository **-->
+
+
 ## Benutzerrollen und Durchführen der Anmeldung
-> [AZURE.NOTE]Damit sich Benutzer bei Azure PIM anmelden können, müssen sie über eine Lizenz für Azure verfügen.
+Bei einigen Microsoft-Diensten und -Anwendungen genügt es möglicherweise nicht, einen Benutzer einer Rolle zuzuweisen, um diesen Benutzer zu einem Administrator zu machen.
+
+Für den Zugriff auf das klassische Azure-Portal muss der Benutzer Dienst- oder Co-Administrator eines Azure-Abonnements sein, selbst wenn der Benutzer die Azure-Abonnements nicht verwalten muss. Um beispielsweise Konfigurationseinstellungen für Azure AD im klassischen Portal zu verwalten, muss ein Benutzer sowohl globaler Administrator in Azure AD als auch Co-Administrator eines Azure-Abonnements sein. Informationen zum Hinzufügen von Benutzern zu Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md).
+
+Für den Zugriff auf Microsoft Online Services ist es möglicherweise erforderlich, einem Benutzer eine Lizenz zuzuweisen, bevor dieser das Dienstportal öffnen oder Verwaltungsaufgaben ausführen kann.
 
 ## Zuweisen einer Lizenz an einen Benutzer in Azure AD
 
-> [AZURE.NOTE] Die Lizenzoption wird nur angezeigt, wenn tatsächlich Lizenzen tatsächlich für das Abonnement vorhanden sind.
-
-1. Melden Sie sich mit einem globalen Administratorkonto oder CO-Administratorkonto bei [http://manage.windowsazure.com](http://manage.windowsazure.com) an.
-2. Klicken Sie im Hauptmenü auf **Alle Elemente**.
+1. Melden Sie sich mit einem globalen Administratorkonto oder Co-Administratorkonto beim [klassischen Azure-Portal](http://manage.windowsazure.com) an.
+2. Wählen Sie im Hauptmenü den Eintrag **Alle Elemente** aus.
 3. Wählen Sie das Verzeichnis aus, das Sie verwenden möchten, und dem Lizenzen zugeordnet sind.
-4. Klicken Sie auf **Lizenzen**. Die Liste der verfügbaren Lizenzen wird angezeigt.
-5. Klicken Sie auf den Lizenzplan, der die zu verteilenden Lizenzen enthält.
-6. Klicken Sie auf **Benutzer zuweisen**.
+4. Wählen Sie **Lizenzen** aus. Die Liste der verfügbaren Lizenzen wird angezeigt.
+5. Wählen Sie den Lizenzplan aus, der die zu verteilenden Lizenzen enthält.
+6. Wählen Sie **Benutzer zuweisen** aus.
 7. Wählen Sie den Benutzer aus, dem Sie eine Lizenz zuweisen möchten.
 8. Klicken Sie auf die Schaltfläche **Zuweisen**. Der Benutzer kann sich jetzt bei Azure anmelden.
 
@@ -57,4 +87,4 @@ Weitere Informationen zu den Rollen aus Office 365, Exchange Online, SharePoint 
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -28,9 +28,9 @@ Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie k�
 
 ### /html-Ordner
 
-- `EngagementNotification.html` : Der HTML-Entwurf der `Notification`-Webansicht
+- `EngagementNotification.html` : Der `Notification`-Webansichts-HTML-Entwurf für In-App-Banner.
 
-- `EngagementAnnouncement.html` : Der HTML-Entwurf der `Announcement`-Webansicht
+- `EngagementAnnouncement.html` : Der `Announcement`-Webansichts-HTML-Entwurf für In-App-Interstitialansichten.
 
 ### /images-Ordner
 
@@ -44,17 +44,7 @@ Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie k�
 
 ### /overlay-Ordner
 
-- `EngagementBaseOverlay.cs`: Der Basiscode, der von den Überlagerungen `Announcement` und `Notification` verwendet wird.
-
-- `EngagementOverlayAnnouncement.xaml` : Der xaml-Entwurf für `Announcement`
-
-- `EngagementOverlayAnnouncement.xaml.cs` : Der mit `EngagementOverlayAnnouncement.xaml` verknüpfte Code
- 
-- `EngagementOverlayNotification.xaml` : Der xaml-Entwurf für `Notification`
- 
-- `EngagementOverlayNotification.xaml.cs` : Der mit `EngagementOverlayNotification.xaml` verknüpfte Code
- 
-- `EngagementPageOverlay.cs` : Der Anzeigecode der `Overlay`-Ankündigung und -Benachrichtigung.
+- `EngagementPageOverlay.cs` : Die Overlayseite, die für das Hinzufügen der Engagement-Reach-In-App-Benutzeroberfläche zu ihrem untergeordneten Element verantwortlich ist.
   
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

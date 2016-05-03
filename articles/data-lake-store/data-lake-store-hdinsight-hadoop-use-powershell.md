@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen von HDInsight-Clustern mit Azure Data Lake-Speicher mithilfe von PowerShell | Azure"
-   description="Verwenden von Azure PowerShell zum Erstellen und Verwenden von HDInsight Hadoop-Clustern mit Azure Data Lake"
+   description="Verwenden von Azure PowerShell zum Erstellen und Verwenden von HDInsight Hadoop-Clustern mit Azure Data Lake"
    services="data-lake-store,hdinsight" 
    documentationCenter=""
    authors="nitinme"
@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/21/2016"
+   ms.date="04/13/2016"
    ms.author="nitinme"/>
 
-# Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe von Azure PowerShell
+# Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe von Azure PowerShell
 
 > [AZURE.SELECTOR]
 - [Verwenden des Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Mithilfe von PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Hier erfahren Sie, wie Sie einen HDInsight-Cluster (Hadoop, HBase oder Storm) mithilfe von Azure PowerShell so konfigurieren, dass er auf Azure Data Lake-Speicher zugreifen kann. Einige wichtige Hinweise zu dieser Version:
+Hier erfahren Sie, wie Sie einen HDInsight-Cluster (Hadoop, HBase oder Storm) mithilfe von Azure PowerShell so konfigurieren, dass er auf Azure Data Lake-Speicher zugreifen kann. Einige wichtige Hinweise zu dieser Version:
 
 * **Für Hadoop- und Storm-Cluster (Windows und Linux)** kann der Data Lake-Speicher nur als zusätzliches Speicherkonto verwendet werden. Standardspeicherkonten für solche Cluster sind weiterhin Azure-Speicherblobs (WASB).
 
@@ -32,7 +32,7 @@ Hier erfahren Sie, wie Sie einen HDInsight-Cluster (Hadoop, HBase oder Storm) mi
 
 In diesem Artikel stellen wir einen Hadoop-Cluster mit Data Lake-Speicher als zusätzlichem Speicher bereit.
 
-Zum Konfigurieren von HDInsight für den Data Lake-Speicher mithilfe von PowerShell sind folgende Schritte erforderlich:
+Zum Konfigurieren von HDInsight für den Data Lake-Speicher mithilfe von PowerShell sind folgende Schritte erforderlich:
 
 * Erstellen eines Azure Data Lake-Speichers
 * Einrichten der Authentifizierung für rollenbasierten Zugriff auf den Data Lake-Speicher
@@ -44,7 +44,7 @@ Zum Konfigurieren von HDInsight für den Data Lake-Speicher mithilfe von PowerSh
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 - **Windows SDK**. Das Installationspaket finden Sie [hier](https://dev.windows.com/de-DE/downloads). Dies dient zum Erstellen eines Sicherheitszertifikats.
 
 
@@ -107,7 +107,7 @@ Führen Sie folgende Schritte aus, um einen Data Lake-Speicher zu erstellen.
 
 	![Erstellen einer Azure-Ressourcengruppe](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Erstellen einer Azure-Ressourcengruppe")
 
-2. Erstellen Sie ein Azure Data Lake-Speicherkonto. Der angegebene Kontoname darf nur Kleinbuchstaben und Zahlen enthalten.
+2. Erstellen Sie ein Azure Data Lake-Speicherkonto. Der angegebene Kontoname darf nur Kleinbuchstaben und Zahlen enthalten.
 
 		$dataLakeStoreName = "<your new Data Lake Store name>"
     	New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
@@ -129,7 +129,7 @@ Führen Sie folgende Schritte aus, um einen Data Lake-Speicher zu erstellen.
 
 ## Einrichten der Authentifizierung für rollenbasierten Zugriff auf den Data Lake-Speicher
 
-Jedes Azure-Abonnement ist mit einem Azure Active Directory verknüpft. Benutzer und Dienste, die über das klassische Azure-Portal oder die Azure-Ressourcen-Manager-API auf Abonnementressourcen zugreifen, müssen sich zunächst bei diesem Azure Active Directory authentifizieren. Azure-Abonnements und -Dienste erhalten Zugriff, indem ihnen die entsprechende Rolle für eine Azure-Ressource zugewiesen wird. Für Dienste identifiziert der Dienstprinzipal den Dienst in Azure Active Directory (AAD). In diesem Abschnitt wird veranschaulicht, wie Sie einem Anwendungsdienst, z. B. HDInsight, Zugriff auf eine Azure-Ressource gewähren (das zuvor erstellte Azure Data Lake-Speicherkonto), indem Sie einen Dienstprinzipal für die Anwendung erstellen und ihr über Azure PowerShell Rollen zuweisen.
+Jedes Azure-Abonnement ist mit einem Azure Active Directory verknüpft. Benutzer und Dienste, die über das klassische Azure-Portal oder die Azure-Ressourcen-Manager-API auf Abonnementressourcen zugreifen, müssen sich zunächst bei diesem Azure Active Directory authentifizieren. Azure-Abonnements und -Dienste erhalten Zugriff, indem ihnen die entsprechende Rolle für eine Azure-Ressource zugewiesen wird. Für Dienste identifiziert der Dienstprinzipal den Dienst in Azure Active Directory (AAD). In diesem Abschnitt wird veranschaulicht, wie Sie einem Anwendungsdienst, z. B. HDInsight, Zugriff auf eine Azure-Ressource gewähren (das zuvor erstellte Azure Data Lake-Speicherkonto), indem Sie einen Dienstprinzipal für die Anwendung erstellen und ihr über Azure PowerShell Rollen zuweisen.
 
 Sie müssen die folgenden Aufgaben ausführen, um die Active Directory-Authentifizierung für Azure Data Lake einzurichten.
 
@@ -138,7 +138,7 @@ Sie müssen die folgenden Aufgaben ausführen, um die Active Directory-Authentif
 
 ### Erstellen eines selbstsignierten Zertifikats
 
-Stellen Sie sicher, dass Sie das [Windows SDK](https://dev.windows.com/de-DE/downloads) installiert haben, bevor Sie mit den Schritten in diesem Abschnitt fortfahren. Sie müssen auch ein Verzeichnis erstellt haben, z. B. **C:\\mycertdir**, in dem das Zertifikat erstellt werden soll.
+Stellen Sie sicher, dass Sie das [Windows SDK](https://dev.windows.com/de-DE/downloads) installiert haben, bevor Sie mit den Schritten in diesem Abschnitt fortfahren. Sie müssen auch ein Verzeichnis erstellt haben, z. B. **C:\\mycertdir**, in dem das Zertifikat erstellt werden soll.
 
 1. Navigieren Sie im PowerShell-Fenster zu dem Speicherort, wo Sie das Windows SDK installiert haben (normalerweise `C:\Program Files (x86)\Windows Kits\10\bin\x86`), und verwenden Sie das [MakeCert][makecert]-Hilfsprogramm, um ein selbstsigniertes Zertifikat und einen privaten Schlüssel zu erstellen. Verwenden Sie die folgenden Befehle:
 
@@ -157,9 +157,9 @@ Stellen Sie sicher, dass Sie das [Windows SDK](https://dev.windows.com/de-DE/dow
 
 	Geben Sie bei Aufforderung das Kennwort für den privaten Schlüssel ein, das Sie bereits angegeben haben. Der Wert, den Sie für den Parameter **-po** angeben, ist das Kennwort, das der PFX-Datei zugeordnet ist. Nachdem der Befehl erfolgreich abgeschlossen wurde, sollte im von Ihnen angegebenen Zertifikatsverzeichnis auch die Datei „CertFile.pfx“ enthalten sein.
 
-###  Erstellen einer Azure Active Directory-Instanz und eines Dienstprinzipals
+###  Erstellen einer Azure Active Directory-Instanz und eines Dienstprinzipals
 
-In diesem Abschnitt führen Sie folgende Schritte aus: Erstellen eines Dienstprinzipals für eine Azure Active Directory-Anwendung, Zuweisen einer Rolle für den Dienstprinzipal und Authentifizieren als Dienstprinzipal durch Bereitstellen eines Zertifikats. Führen Sie die folgenden Befehle zum Erstellen einer Anwendung in Azure Active Directory aus.
+In diesem Abschnitt führen Sie folgende Schritte aus: Erstellen eines Dienstprinzipals für eine Azure Active Directory-Anwendung, Zuweisen einer Rolle für den Dienstprinzipal und Authentifizieren als Dienstprinzipal durch Bereitstellen eines Zertifikats. Führen Sie die folgenden Befehle zum Erstellen einer Anwendung in Azure Active Directory aus.
 
 1. Fügen Sie die folgenden Cmdlets im PowerShell-Konsolenfenster ein. Stellen Sie sicher, dass der Wert, den Sie für die **-DisplayName**-Eigenschaft angeben, eindeutig ist. Die Werte für **-HomePage** und **-IdentiferUris** sind Platzhalterwerte und werden nicht überprüft.
 
@@ -197,15 +197,15 @@ In diesem Abschnitt führen Sie folgende Schritte aus: Erstellen eines Dienstpri
 
 	Geben Sie an der Aufforderung **Y** ein, um dies zu bestätigen.
 
-## Erstellen eines HDInsight-Clusters mit Authentifizierung für den Data Lake-Speicher
+## Erstellen eines HDInsight-Clusters mit Authentifizierung für den Data Lake-Speicher
 
-In diesem Abschnitt erstellen wir einen HDInsight Hadoop-Cluster. Für diese Version müssen sich der HDInsight-Cluster und der Data Lake-Speicher an demselben Standort (USA (Osten) 2) befinden.
+In diesem Abschnitt erstellen wir einen HDInsight Hadoop-Cluster. Für diese Version müssen sich der HDInsight-Cluster und der Data Lake-Speicher an demselben Standort (USA (Osten) 2) befinden.
 
 1. Beginnen Sie, indem Sie die Mandanten-ID für das Abonnement abrufen. Diese benötigen Sie weiter unten.
 
 		$tenantID = (Get-AzureRmContext).Tenant.TenantId
 
-2. In dieser Version kann der Data Lake-Speicher für einen Hadoop-Cluster nur als zusätzlicher Speicher für den Cluster verwendet werden. Als Standardspeicher werden weiterhin Azure Storage-BLOBS (WASB) verwendet. Wir erstellen daher zuerst das Speicherkonto und die Speichercontainer, die für den Cluster erforderlich sind.
+2. In dieser Version kann der Data Lake-Speicher für einen Hadoop-Cluster nur als zusätzlicher Speicher für den Cluster verwendet werden. Als Standardspeicher werden weiterhin Azure Storage-BLOBS (WASB) verwendet. Wir erstellen daher zuerst das Speicherkonto und die Speichercontainer, die für den Cluster erforderlich sind.
 
 		# Create an Azure storage account
 		$location = "East US 2"
@@ -247,9 +247,9 @@ In diesem Abschnitt erstellen wir einen HDInsight Hadoop-Cluster. Für diese Ver
 		ResourceGroup             : hdiadlgroup
 		AdditionalStorageAccounts :
 
-## Ausführen von Testaufträgen im HDInsight-Cluster zur Verwendung des Data Lake-Speichers
+## Ausführen von Testaufträgen im HDInsight-Cluster zur Verwendung des Data Lake-Speichers
 
-Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträge für den Cluster ausführen, um zu testen, ob der HDInsight-Cluster auf Daten im Data Lake-Speicher zugreifen kann. Hierzu führen wir einen Hive-Beispielauftrag aus. Es wird eine Tabelle aus den Beispieldaten erstellt, die Sie zuvor in Ihren Data Lake-Speicher hochgeladen haben.
+Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträge für den Cluster ausführen, um zu testen, ob der HDInsight-Cluster auf Daten im Data Lake-Speicher zugreifen kann. Hierzu führen wir einen Hive-Beispielauftrag aus. Es wird eine Tabelle aus den Beispieldaten erstellt, die Sie zuvor in Ihren Data Lake-Speicher hochgeladen haben.
 
 ### Für einen Linux-Cluster
 
@@ -293,7 +293,7 @@ Verwenden Sie die folgenden Cmdlets, um die Hive-Abfrage auszuführen. In dieser
 
 	Wait-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $httpCredentials
 
-Dies führt zu folgender Ausgabe. Der **ExitValue** von 0 in der Ausgabe weist darauf hin, dass der Auftrag erfolgreich abgeschlossen wurde.
+Dies führt zu folgender Ausgabe. Der **ExitValue** von 0 in der Ausgabe weist darauf hin, dass der Auftrag erfolgreich abgeschlossen wurde.
 
 	Cluster         : hdiadlcluster.
 	HttpEndpoint    : hdiadlcluster.azurehdinsight.net
@@ -373,9 +373,9 @@ Sie können auch den Befehl `hdfs dfs -put` verwenden, um Dateien in den Data La
 
 ## Siehe auch
 
-* [Portal: Erstellen eines HDInsight-Clusters für die Verwendung des Data Lake-Speichers](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Portal: Erstellen eines HDInsight-Clusters für die Verwendung des Data Lake-Speichers](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

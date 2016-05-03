@@ -1,22 +1,21 @@
 
-<properties 
-  pageTitle="Festlegen und Abrufen von Eigenschaften und Metadaten für Objekte in Azure Storage | Microsoft Azure" 
-  description="Speichern Sie benutzerdefinierten Metadaten für Objekte in Azure Storage, legen Sie Systemeigenschaften fest, und rufen Sie diese ab." 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="carmonm" 
+<properties
+  pageTitle="Festlegen und Abrufen von Eigenschaften und Metadaten für Objekte in Azure Storage | Microsoft Azure"
+  description="Speichern Sie benutzerdefinierten Metadaten für Objekte in Azure Storage, legen Sie Systemeigenschaften fest, und rufen Sie diese ab."
+  services="storage"
+  documentationCenter=""
+  authors="tamram"
+  manager="carmonm"
   editor="tysonn"/>
 
-<tags 
-  ms.service="storage" 
-  ms.workload="storage" 
-  ms.tgt_pltfrm="na" 
-  ms.devlang="na" 
-  ms.topic="article" 
-  ms.date="02/20/2016" 
+<tags
+  ms.service="storage"
+  ms.workload="storage"
+  ms.tgt_pltfrm="na"
+  ms.devlang="na"
+  ms.topic="article"
+  ms.date="02/20/2016"
   ms.author="tamram"/>
-
 
 # Festlegen und Abrufen von Eigenschaften und Metadaten #
 
@@ -99,4 +98,4 @@ Zum Abrufen von Metadaten rufen Sie die **FetchAttributes**-Methode für das Blo
 - [Azure Storage-Clientbibliothek für .NET-Referenz](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 - [Azure Storage-Clientbibliothek für .NET-Paket](https://www.nuget.org/packages/WindowsAzure.Storage/) 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

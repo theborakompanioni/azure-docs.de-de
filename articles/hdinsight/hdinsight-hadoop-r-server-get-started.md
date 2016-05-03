@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erste Schritte mit R Server in HDInsight | Azure"
-   description="Erfahren Sie, wie Sie ein Apache Spark-System in einem HDInsight-Cluster (Hadoop) erstellen, zu dem R Server gehört, und dann ein R-Skript im Cluster übermitteln."
+   pageTitle="Erste Schritte mit R Server in HDInsight (Vorschau) | Azure"
+   description="Erfahren Sie, wie Sie einen Cluster mit Apache Spark in HDInsight (Vorschau) erstellen, zu dem R Server gehört, und dann ein R-Skript im Cluster übermitteln."
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -17,9 +17,9 @@
    ms.date="03/25/2016"
    ms.author="jeffstok"/>
 
-# Erste Schritte mit R Server in HDInsight
+#Erste Schritte mit R Server in HDInsight (Vorschau)
 
-Beim Premium-Tarifangebot für HDInsight ist R Server Teil des HDInsight-Clusters. Dadurch können R-Skripts MapReduce und Spark verwenden, um verteilte Berechnungen auszuführen. In diesem Dokument erfahren Sie, wie Sie eine R Server-Instanz in HDInsight erstellen und dann ein R-Skript ausführen, das die Verwendung von Spark für verteilte R-Berechnungen veranschaulicht.
+Das Premium-Angebot für HDInsight umfasst R Server in HDInsight (Vorschau). Dadurch können R-Skripts MapReduce und Spark verwenden, um verteilte Berechnungen auszuführen. In diesem Dokument erfahren Sie, wie Sie eine R Server-Instanz in HDInsight erstellen und dann ein R-Skript ausführen, das die Verwendung von Spark für verteilte R-Berechnungen veranschaulicht.
 
 ![Diagramm des Workflows für dieses Dokument](./media/hdinsight-getting-started-with-r/rgettingstarted.png)
 
@@ -103,7 +103,7 @@ Beim Premium-Tarifangebot für HDInsight ist R Server Teil des HDInsight-Cluster
     | ------------------ | --------------------- |
     | ![Erstellungsanzeige im Startmenü](./media/hdinsight-getting-started-with-r/provisioning.png) | ![Kachel für einen erstellten Cluster](./media/hdinsight-getting-started-with-r/provisioned.png) |
 
-    > [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
+    > [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
 
 ## Herstellen einer Verbindung mit dem R Server-Edgeknoten
 
@@ -322,4 +322,4 @@ Mit beide Vorlagen werden ein neuer HDInsight-Cluster und das zugehörige Speich
 
 Allgemeine Informationen zur Verwendung von ARM-Vorlagen finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

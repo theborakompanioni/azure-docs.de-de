@@ -47,4 +47,4 @@ Führen Sie im Azure-Portal folgende Schritte aus, um auf einem neuen oder berei
 
      ![Neue Datenbank](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

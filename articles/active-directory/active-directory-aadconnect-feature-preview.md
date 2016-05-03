@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/16/2016"
+   ms.date="04/14/2016"
    ms.author="andkjell;billmath"/>
 
 # Weitere Informationen zu den Funktionen in der Vorschau
@@ -51,4 +51,4 @@ Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](act
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

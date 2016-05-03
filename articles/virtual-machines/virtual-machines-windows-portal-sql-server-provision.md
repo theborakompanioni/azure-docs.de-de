@@ -3,22 +3,24 @@
 	description="Erstellen einer virtuellen SQL Server-Maschine im Azure-Ressourcen-Manager-Modus In diesem Tutorial werden die Benutzeroberfläche und Tools anstelle von Skripts verwendet."
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="MikeRayMSFT"
-    editor=""
-	manager="jeffreyg"
+	authors="rothja"
+	editor=""
+	manager="jhubbard"
 	tags="azure-resource-manager" />
-
-
 <tags
 	ms.service="virtual-machines-windows"
 	ms.devlang="na"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="03/24/2016"
-	ms.author="mikeray" />
+	ms.date="04/22/2016"
+	ms.author="jroth" />
 
 # Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal
+
+> [AZURE.SELECTOR]
+- [Portal](virtual-machines-windows-portal-sql-server-provision.md)
+- [PowerShell](virtual-machines-windows-ps-sql-create.md)
 
 ## Übersicht
 
@@ -75,7 +77,7 @@ Geben Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Grundlagen** d
 >![SQL-ARM Grundlagen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png) <br/>
 
 ## 2\. VM-Größe auswählen
-Wählen Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Größe** eine Größe für den virtuellen Computer aus. Im Azure-Portal werden die empfohlenen Größen angezeigt. Weitere Informationen zu den Größen virtueller Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md). Die Größen basieren auf der Vorlage, die Sie ausgewählt haben. Für eine Größe werden die monatlichen Kosten für die Ausführung der VM geschätzt. Wählen Sie eine VM-Größe für den Server aus. Informationen zu SQL Server-VM-Größen finden Sie unter [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md) (Optimieren der Leistungsfähigkeit von SQL Server in Azure Virtual Machines).
+Wählen Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Größe** eine Größe für den virtuellen Computer aus. Im Azure-Portal werden die empfohlenen Größen angezeigt. Weitere Informationen zu den Größen virtueller Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md). Die Größen basieren auf der Vorlage, die Sie ausgewählt haben. Für eine Größe werden die monatlichen Kosten für die Ausführung der VM geschätzt. Wählen Sie eine VM-Größe für den Server aus. Informationen zu SQL Server-VM-Größen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md).
 
 ## 3\. VM-Einstellungen konfigurieren
 Konfigurieren Sie auf dem Blatt **Virtuellen Computer erstellen** unter **Einstellungen** den Azure-Speicher, die Netzwerkverbindung und die Überwachung für den virtuellen Computer.
@@ -114,7 +116,7 @@ Falls Sie die Verbindungen mit dem Datenbankmodul nicht automatisch über das In
 - **Privat (innerhalb des Virtual Network)**, um Verbindungen zu SQL Server von Computern oder Diensten im gleichen virtuellen Netzwerk zuzulassen.
 
 
-Als **Port** wird standardmäßig 1433 verwendet. Sie können eine andere Portnummer angeben. Weitere Informationen finden Sie unter [Connect to a SQL Server Virtual Machine (Resource Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md) (Verbinden mit einem virtuellen SQL Server -Computer (Resource Manager) | Microsoft Azure).
+Als **Port** wird standardmäßig 1433 verwendet. Sie können eine andere Portnummer angeben. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md).
 
 
 
@@ -146,7 +148,7 @@ Die folgende Abbildung zeigt das Blatt für die Speicherkonfiguration. <br/>![SQ
 
 <br/>![SQL-ARM Patchen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png) <br/>
 
-Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md).
+Weitere Informationen finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)](virtual-machines-windows-classic-sql-automated-patching.md).
 
 ### Backups
 Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte SQL-Sicherung**. Wenn Sie die automatisierte SQL-Sicherung aktivieren, können Sie Folgendes konfigurieren:
@@ -194,7 +196,7 @@ Wenn Sie über das Internet eine Verbindung mit Ihrem SQL Server-Datenbankmodul
 
 Falls Sie das Portal verwenden, um mit dem Resource Manager ein SQL Server-VM-Image bereitzustellen, wurden diese Schritte für Sie ausgeführt, wenn Sie für die SQL-Konnektivitätsoption **Öffentlich** auswählen und die SQL Server-Authentifizierung aktivieren. Sie müssen aber noch einige verbleibende Schritte ausführen, um über das Internet auf die SQL Server-Instanz zugreifen zu können.
 
->[AZURE.NOTE] Wenn Sie bei der Bereitstellung nicht die Option „Öffentlich“ gewählt haben, müssen Sie weitere Schritte ausführen, um den Zugriff auf die SQL Server-Instanz über das Internet zu ermöglichen. Weitere Informationen finden Sie unter [Connect to a SQL Server Virtual Machine (Resource Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md) (Verbinden mit einem virtuellen SQL Server-Computer (Resource Manager) | Microsoft Azure).
+>[AZURE.NOTE] Wenn Sie bei der Bereitstellung nicht die Option „Öffentlich“ gewählt haben, müssen Sie weitere Schritte ausführen, um den Zugriff auf die SQL Server-Instanz über das Internet zu ermöglichen. Weitere Informationen finden Sie unter[ Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md).
 
 Die folgenden Schritte sind nicht erforderlich, wenn Sie auf Ihre virtuelle Maschine nur lokal oder innerhalb eines Virtual Network zugreifen müssen.
 
@@ -203,4 +205,4 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie auf Ihre virtuelle Masc
 ##<a id="Next">Nächste Schritte
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -27,16 +27,12 @@ Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-C
 
 Klicken Sie auf die Registerkartenauswahl, um Informationen zum Erstellen von Hadoop-Clustern in HDInsight mit anderen Tools zu erhalten.
 
-[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-* [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-management-portal-v1.md)
-
 **Voraussetzungen**
 
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- **Azure-Speicherkonto** – Ein HDInsight-Cluster verwendet einen Azure-Blobspeichercontainer als Standarddateisystem. Weitere Informationen über Azure-Blobspeicher und dessen nahtlose Integration in HDInsight-Cluster finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zum Erstellen eines Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md).
+- **Azure-Speicherkonto** – Ein HDInsight-Cluster verwendet einen Azure-Blobspeichercontainer als Standarddateisystem. Weitere Informationen über Azure-Blobspeicher und dessen nahtlose Integration in HDInsight-Cluster finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zum Erstellen eines Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md).
 
 ##Öffnen des Portals
 
@@ -84,7 +80,7 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
 	- Klicken Sie zum Anpassen des Menüs mit der rechten Maustaste auf eine beliebige Stelle im Menü, und klicken Sie dann auf **Anpassen**.
 	- **Einstellungen** und **Alle Einstellungen**: Zeigt das Blatt **Einstellungen** für den Cluster an, über das Sie auf detaillierte Konfigurationsinformationen für den Cluster zugreifen können.
 	- **Dashboard**, **Cluster-Dashboard** und **URL: Über diese Optionen können Sie auf das Cluster-Dashboard zugreifen (Ambari Web für Linux-basierte Cluster). 
-	– **Secure Shell**: Zeigt die Anweisungen zum Verbinden mit dem Cluster über eine SSH-Verbindung (Secure Shell) an.
+	–**Secure Shell**: Zeigt die Anweisungen zum Verbinden mit dem Cluster über eine SSH-Verbindung (Secure Shell) an.
 	- **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
 	- **Löschen**: Löscht den Cluster.
 	- **Schnellstart** (![Cloud- und Blitzsymbol = Schnellstart](./media/hdinsight-administer-use-portal-linux/quickstart.png)): Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
@@ -92,7 +88,7 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
 	
 		> [AZURE.IMPORTANT] Die hier vorgenommenen Einstellungen betreffen _nur_ den Zugriff und die Berechtigungen für diesen Cluster im Azure-Portal und haben keine Auswirkung darauf, wer eine Verbindung mit dem HDInsight-Cluster herstellen oder Aufträge übermitteln kann.
 	- **Tags** (![Tagsymbol](./media/hdinsight-administer-use-portal-linux/tags.png)): Mithilfe von Tags können Sie Schlüssel-Wert-Paare festlegen, um eine benutzerdefinierte Taxonomie für Ihre Cloud Services zu definieren. Sie können z. B. einen Schlüssel mit dem Namen __Projekt__ erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
-	- **Ambari-Ansichten**: Verknüpfung mit Ambari Web
+	- **Ambari-Ansichten**: Verknüpfung mit Ambari Web.
 	
 	> [AZURE.IMPORTANT] Um die vom HDInsight-Cluster bereitgestellten Dienste zu verwalten, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -127,8 +123,8 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
 	- **Betriebssystem**: Entweder **Windows** oder **Linux**
 	- **Typ**: Hadoop, HBase, Storm, Spark 
 	- **Version**. Siehe [HDInsight-Versionen](hdinsight-component-versioning.md)
-	- **Abonnement:** Name des Abonnements
-	- **Abonnement-ID**
+	- **Abonnement**: Name des Abonnements.
+	- **Abonnement-ID**.
 	- **Primäre Datenquelle**: Das Azure Blob-Speicherkonto, das als Standard-Hadoop-Dateisystem verwendet wird.
 	- **Workerknoten – Tarif**
 	- **Hauptknoten – Tarif**
@@ -293,7 +289,7 @@ Die HDInsight-Abfragekonsole umfasst die folgenden Features:
 
 	![HDInsight-Portal – Hadoop UI](./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-ui.png)
 	
-	Über **Hadoop UI* können Sie Dateien durchsuchen und Protokolle prüfen.
+	Über * Hadoop UI * können Sie Dateien durchsuchen und Protokolle prüfen.
 
 - **Yarn UI**.
 
@@ -317,7 +313,7 @@ Sie können auch das Hilfsprogramm **Dateisystem durchsuchen** unter **Hadoop UI
 
 ##Überwachen der Clusternutzung
 
-Der Abschnitt __Nutzung__ des Blatts für den HDInsight-Cluster enthält Informationen zur Anzahl von Kernen, die für Ihr Abonnement zur Verwendung mit HDInsight verfügbar sind, und zur Anzahl von Kernen, die diesem Cluster zugeordnet sind. Es wird auch angezeigt, wie die Kerne für die Knoten innerhalb dieses Clusters zugeordnet werden. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
+Der Abschnitt __Nutzung__ auf dem Blatt für den HDInsight-Cluster enthält Informationen zur Anzahl der Kerne, die für Ihr Abonnement zur Verwendung mit HDInsight verfügbar sind, und zur Anzahl der Kerne, die diesem Cluster zugeordnet sind. Es wird auch angezeigt, wie die Kerne für die Knoten innerhalb dieses Clusters zugeordnet werden. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
 
 > [AZURE.IMPORTANT] Um die vom HDInsight-Cluster bereitgestellten Dienste zu überwachen, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -389,4 +385,4 @@ In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem Azure-Po
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop-Befehlszeile"
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

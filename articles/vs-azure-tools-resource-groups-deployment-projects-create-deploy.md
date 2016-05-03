@@ -17,7 +17,7 @@
 
 # Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
-Mit Visual Studio und dem [Azure SDK](https://azure.microsoft.com/downloads/) können Sie ein Projekt erstellt, das Ihre Infrastruktur und Ihren Code auf Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Oder Sie können eine virtuelle Maschine, ein Virtual Network und ein Speicherkonto definieren und diese Infrastruktur zusammen mit einem Skript, das auf der virtuellen Maschine ausgeführt wird, bereitstellen. Das **Azure-Ressourcengruppe**-Bereitstellungsprojekt ermöglicht die Bereitstellung aller erforderlichen Ressourcen in einem einzigen, wiederholbaren Vorgang. Weitere Informationen zum Bereitstellen und Verwalten von Ressourcengruppen finden Sie in der [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
+Mit Visual Studio und dem [Azure SDK](https://azure.microsoft.com/downloads/) können Sie ein Projekt erstellt, das Ihre Infrastruktur und Ihren Code auf Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Oder Sie können einen virtuellen Computer, ein virtuelles Netzwerk und ein Speicherkonto definieren und diese Infrastruktur zusammen mit einem Skript, das auf dem virtuellen Computer ausgeführt wird, bereitstellen. Das **Azure-Ressourcengruppe**-Bereitstellungsprojekt ermöglicht die Bereitstellung aller erforderlichen Ressourcen in einem einzigen, wiederholbaren Vorgang. Weitere Informationen zum Bereitstellen und Verwalten von Ressourcengruppen finden Sie in der [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
 
 Azure-Ressourcengruppenprojekte enthalten JSON-Vorlagen des Azure-Ressourcen-Managers, in denen die Ressourcen definiert sind, die auf Azure bereitgestellt werden. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md). Visual Studio ermöglicht das Bearbeiten dieser Vorlagen und bietet Tools, die das Arbeiten mit Vorlagen vereinfachen.
 
@@ -196,4 +196,4 @@ Navigieren Sie nach Abschluss der Bereitstellung zu der Website. Dort sehen Sie,
 - Informationen zum Veralten von Ressourcen über das Portal finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
 - Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

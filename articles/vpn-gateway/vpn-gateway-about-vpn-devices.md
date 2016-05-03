@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
+   ms.date="04/25/2016"
    ms.author="cherylmc" />
 
 # Informationen zu VPN-Geräten für VPN-Gatewayverbindungen zwischen Standorten
@@ -49,7 +49,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Cisco | ASR | IOS 15.1 (richtlinienbasiert), IOS 15.2 (routenbasiert) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco | ISR | IOS 15.0 (richtlinienbasiert), IOS 15.1 (routenbasiert) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix | CloudBridge-MPX-Gerät oder virtuelles VPX-Gerät | N/V | [Integrationsanweisungen](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | Nicht kompatibel |
-| Dell SonicWALL | TZ-Serie, NSA-Serie, SuperMassive-Serie, E-Class-NSA-Serie | SonicOS 5.8.x, [SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850), [SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| Dell SonicWALL | TZ-Serie, NSA-Serie, SuperMassive-Serie, E-Class-NSA-Serie | SonicOS 5.8.x, [SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850), [SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP-Serie | N/V | [Konfigurationsanweisungen](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | Nicht kompatibel |
 | Fortinet | FortiGate | FortiOS 5.0.7 | [Konfigurationsanweisungen](http://docs.fortinet.com/fortigate/admin-guides) | [Konfigurationsanweisungen](http://docs.fortinet.com/fortigate/admin-guides) |
 | Internet Initiative Japan (IIJ) | SEIL-Serie | SEIL / X 4.60, SEIL/B1 4.60, SEIL/x86 3.20 | [Konfigurationsanweisungen](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) | Nicht kompatibel |
@@ -58,8 +58,9 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Juniper | ISG | ScreenOS 6.3 (richtlinienbasiert und routenbasiert) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
 | Juniper | SSG | ScreenOS 6.2 (richtlinienbasiert und routenbasiert) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft | Routing- und RAS-Dienst | Windows Server 2012 | Nicht kompatibel | [Microsoft-Beispiele](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Open Systems AG | Mission Control Security Gateway | N/V | [Installationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) | [Installationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan | Openswan | 2\.6.32 | (In Kürze verfügbar) | Nicht kompatibel |
-| Palo Alto Networks | Alle Geräte mit PAN-OS 5.0 oder höher | PAN-OS 5x oder höher | [Palo Alto Networks](https://support.paloaltonetworks.com/) | Nicht kompatibel |
+| Palo Alto Networks | Alle Geräte mit PAN-OS 5.0 oder höher | PAN-OS 5x oder höher | [Palo Alto Networks](https://support.paloaltonetworks.com/) | Nicht kompatibel |
 | Watchguard | Alle | Fireware XTM v11.x | [Konfigurationsanweisungen](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) | Nicht kompatibel |
 
 
@@ -115,10 +116,10 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 |--------------------------------------------------------------------------|------------------------------------------------|--------------------------------------------------------------------|
 | IKE-Version | IKEv1 | IKEv2 |
 | Hashalgorithmus | SHA1(SHA128) | SHA1(SHA128) |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) | 3\.600 Sekunden | 3\.600 Sekunden |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - | 
-| IPsec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (unten) | 
-| Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1, 2, 5, 14, 24) | 
+| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) | 3.600 Sekunden | - |
+| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - |
+| IPSec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (unten) |
+| Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1) |
 | Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
 
 ### IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways
@@ -151,4 +152,4 @@ Die folgende Tabelle listet die IPSec-SA-Verschlüsselungs und -Authentifizierun
 
 - Verwenden Sie für standortübergreifende Konnektivität über das Internet die Standardeinstellungen für Azure-VPN-Gateways mit Verschlüsselung und Hashalgorithmen, die in der Tabelle oben aufgelistet werden, um die Sicherheit Ihrer kritischen Kommunikation zu gewährleisten.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

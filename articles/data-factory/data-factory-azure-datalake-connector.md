@@ -75,7 +75,7 @@ Das folgende Verfahren enthält Schritte zum Erstellen eines mit Azure Data Lake
 	![Schaltfläche „Autorisieren“](./media/data-factory-azure-data-lake-connector/authorize-button.png)
 
 4. Melden Sie sich mit Ihren Anmeldeinformationen an. Der **authorization**-Eigenschaft in der JSON sollte nun ein Wert zugewiesen sein.
-5. (Optional) Geben Sie Werte für optionale Parameter wie z. B. **accountName**, **subscriptionID** und **resourceGroupName** in der JSON-Datei an, (oder) löschen Sie diese Eigenschaften aus der JSON-Datei.
+5. (Optional) Geben Sie Werte für optionale Parameter wie z. B. **accountName**, **subscriptionID** und **resourceGroupName** in der JSON-Datei an, (oder) löschen Sie diese Eigenschaften aus der JSON-Datei.
 6. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
 > [AZURE.IMPORTANT] Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Wenn das **Token abläuft**, müssen Sie mithilfe der Schaltfläche **Autorisieren** eine **erneute Autorisierung** ausführen und den verknüpften Dienst erneut bereitstellen. Weitere Informationen finden Sie im Abschnitt [Mit Azure Data Lake-Speicher verknüpfter Dienst](#azure-data-lake-store-linked-service-properties).
@@ -152,7 +152,7 @@ Im Beispiel werden Daten in einen Azure Data Lake-Speicher kopiert. Neue Daten w
 		"name": "AzureDataLakeStoreOutput",
 	  	"properties": {
 			"type": "AzureDataLakeStore",
-		    "linkedServiceName": " AzureDataLakeStoreLinkedService",
+		    "linkedServiceName": "AzureDataLakeStoreLinkedService",
 		    "typeProperties": {
 				"folderPath": "datalake/output/"
 		    },
@@ -418,7 +418,7 @@ Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisieru
 | Benutzertyp | Läuft ab nach |
 | :-------- | :----------- | 
 | Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.) | 12 Stunden |
-| Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
+| Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
 
 Um diesen Fehler zu vermeiden/beheben, müssen Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut autorisieren, wenn das **Token abläuft**, und den verknüpften Dienst anschließend erneut bereitstellen. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mithilfe von Code im folgenden Abschnitt generieren.
 
@@ -540,7 +540,7 @@ Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das 
 [AZURE.INCLUDE [data-factory-json-format](../../includes/data-factory-json-format.md)]
 
 ### Unterstützung für die Komprimierung  
-Die Verarbeitung großer Datenmengen kann zu E/A- und Netzwerkengpässen führen. Aus diesem Grund kann die Komprimierung von Daten in Speichern nicht nur die Datenübertragung im Netzwerk beschleunigen und Speicherplatz sparen, sondern auch erhebliche Leistungssteigerungen bei der Verarbeitung von Big Data bewirken. Zu diesem Zeitpunkt wird die Komprimierung für dateibasierte Datenspeicher wie etwa Azure-Blobs oder das lokale Dateisystem unterstützt.
+Die Verarbeitung großer Datenmengen kann zu E/A- und Netzwerkengpässen führen. Aus diesem Grund kann die Komprimierung von Daten in Speichern nicht nur die Datenübertragung im Netzwerk beschleunigen und Speicherplatz sparen, sondern auch erhebliche Leistungssteigerungen bei der Verarbeitung von Big Data bewirken. Zu diesem Zeitpunkt wird die Komprimierung für dateibasierte Datenspeicher wie etwa Azure-Blobs oder das lokale Dateisystem unterstützt.
 
 Um die Komprimierung für ein Dataset anzugeben, verwenden Sie im JSON-Dataset die Eigenschaft für die **Komprimierung** wie im folgenden Beispiel:
 
@@ -566,8 +566,8 @@ Um die Komprimierung für ein Dataset anzugeben, verwenden Sie im JSON-Dataset d
  
 Beachten Sie, dass der Abschnitt für die **Komprimierung** zwei Eigenschaften enthält:
   
-- **Typ:** Der Komprimierungscodec, z. B. **GZIP**, **Deflate** oder **BZIP2**.  
-- **Ebene:** Das Komprimierungsverhältnis, z. B. **Optimal** oder **Schnellstes**. 
+- **Typ:** Der Komprimierungscodec, z. B. **GZIP**, **Deflate** oder **BZIP2**.  
+- **Ebene:** Das Komprimierungsverhältnis, z. B. **Optimal** oder **Schnellstes**. 
 	- **Schnellstes:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist. 
 	- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. 
 	
@@ -577,7 +577,7 @@ Angenommen, das obige Beispieldataset wird als Ausgabe einer Kopieraktivität ve
 
 Wenn Sie die Komprimierungseigenschaft in einem JSON-Eingabedataset angeben, kann die Pipeline komprimierte Daten aus der Quelle lesen. Bei Angabe der Eigenschaft in einem JSON-Ausgabedataset kann der Kopiervorgang komprimierte Daten am Ziel schreiben. Es folgen einige Beispielszenarios:
 
-- Sie lesen GZIP-komprimierte Daten aus einem Azure Data Lake-Speicher, dekomprimieren sie und schreiben die resultierenden Daten in eine Azure SQL-Datenbank. In diesem Fall definieren Sie die Azure Data Lake-Speichereingabedatasets mit der JSON-Komprimierungseigenschaft. 
+- Sie lesen GZIP-komprimierte Daten aus einem Azure Data Lake-Speicher, dekomprimieren sie und schreiben die resultierenden Daten in eine Azure SQL-Datenbank. In diesem Fall definieren Sie die Azure Data Lake-Speichereingabedatasets mit der JSON-Komprimierungseigenschaft. 
 - Sie lesen Daten aus einer Nur-Text-Datei aus einem lokalen Dateisystem, komprimieren sie mithilfe des GZIP-Formats und schreiben die komprimierten Daten in einen Azure Data Lake-Speicher. In diesem Fall definieren Sie ein Azure Data Lake-Ausgabedataset mit der JSON-Komprimierungseigenschaft.  
 - Sie lesen mit GZIP komprimierte Daten aus einem Azure Data Lake-Speicher, dekomprimieren sie, komprimieren sie mit BZIP2 und schreiben die resultierenden Daten in einen Azure Data Lake-Speicher. In diesem Fall definieren Sie das Azure Data Lake-Speichereingabedataset mit dem Komprimierungstyp GZIP und das Ausgabedataset mit dem Komprimierungstyp BZIP2.   
 
@@ -608,4 +608,7 @@ Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+## Leistung und Optimierung  
+Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+<!---HONumber=AcomDC_0420_2016-->

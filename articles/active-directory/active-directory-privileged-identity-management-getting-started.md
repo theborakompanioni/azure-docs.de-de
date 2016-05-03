@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erste Schritte mit Azure AD Privileged Identity Management"
-   description="Erfahren Sie, wie Sie mit der Erweiterung Azure Active Directory Privileged Identity Management privilegierte Identitäten verwalten."
+   pageTitle="Erste Schritte mit Azure AD Privileged Identity Management | Microsoft Azure"
+   description="Erfahren Sie, wie Sie mit der Anwendung Azure Active Directory Privileged Identity Management privilegierte Identitäten im Azure-Portal verwalten."
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
@@ -13,28 +13,38 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/17/2016"
+   ms.date="04/15/2016"
    ms.author="kgremban"/>
 
 # Erste Schritte mit Azure AD Privileged Identity Management
 
-## Starten der Erweiterung Privileged Identity Management
 
-1. Erstellen Sie ein Verzeichnis in Azure Active Directory.
-2. Fügen Sie Ihrem neuen Verzeichnis Benutzer sowie einige globale Administratoren hinzu.
+Mithilfe von Azure Active Directory (AD) Privileged Identity Management (PIM) können Sie Ihre privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Office 365 oder Microsoft Intune verwalten, steuern und überwachen.
 
-    >[AZURE.NOTE] Legen Sie die Benutzer mit ihren Geschäfts- oder Schulkonten fest. Microsoft-Konten können derzeit nicht für Azure AD PIM registriert werden.
+Dieser Artikel beschreibt, wie Sie die Azure AD PIM-App zu Ihrem Azure-Portaldashboard hinzufügen.
 
-3. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator des Verzeichnisses an.
-4. Klicken Sie in der rechten oberen Ecke des Azure-Portals auf Ihren Benutzernamen.
-5. Wählen Sie das Verzeichnis aus, das Sie gerade erstellt haben.
-6. Klicken Sie im linken Navigationsbereich auf das Symbol **Neu**.
-7. Wählen Sie im Menü "Erstellen" **Sicherheit und Identität** aus.
-8. Wählen Sie **Azure AD Privileged Identity Management** aus.
-9. Lassen Sie das Kontrollkästchen **An Dashboard anheften** aktiviert, und klicken Sie dann auf die Schaltfläche **Erstellen**. Das Privileged Identity Management-Dashboard wird geöffnet.
+## Hinzufügen der Anwendung Privileged Identity Management
+
+Bevor Sie Azure AD Privileged Identity Management verwenden können, müssen Sie die Anwendung zum Dashboard in Ihrem Azure-Portal hinzufügen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
+2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen, und wählen Sie das Verzeichnis aus, in dem Sie PIM verwenden möchten.
+3. Wählen Sie im linken Navigationsbereich das Symbol **Neu** aus.
+4. Wählen Sie **Sicherheit und Identität** aus.
+5. Wählen Sie **Azure AD Privileged Identity Management** aus.
+6. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf die Schaltfläche **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
+
+
+Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, führt Sie der [Sicherheits-Assistent](active-directory-privileged-identity-management-security-wizard.md) durch die erste Zuweisung. Danach sind Sie automatisch der erste **Sicherheitsadministrator** des Verzeichnisses. Nur ein Sicherheitsadministrator kann auf diese Anwendung zugreifen, um den Zugriff für andere Administratoren zu verwalten.
+
+Andernfalls, wenn Ihnen durch einen anderen Sicherheitsadministrator eine oder mehrere Rollen zugewiesen wurden, können Sie auswählen, welche Rolle Sie aktivieren möchten. Wenn Sie selbst Sicherheitsadministrator sind, wird eine Option angezeigt, mit der Sie **Identitäten verwalten** können.
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
+
+Die Übersicht über [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) enthält weitere Details zur Verwaltung des administrativen Zugriffs in Ihrer Organisation.
+
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

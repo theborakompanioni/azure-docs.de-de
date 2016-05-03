@@ -631,4 +631,4 @@ Es wird empfohlen, für die primäre und Standbydatenbank "flashback database" z
 ##Zusätzliche Ressourcen
 [Oracle Virtual Machine images for Azure (Images von virtuellen Oracle-Computern für Azure; in englischer Sprache)](virtual-machines-windows-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->

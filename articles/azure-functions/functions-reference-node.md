@@ -1,0 +1,166 @@
+<properties
+	pageTitle="NodeJS-Entwicklerreferenz zu Azure Functions | Microsoft Azure"
+	description="Erfahren Sie, wie Azure Functions mithilfe von NodeJS entwickelt wird."
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur"/>
+
+<tags
+	ms.service="functions"
+	ms.devlang="nodejs"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="04/06/2016"
+	ms.author="chrande"/>
+
+# NodeJS-Entwicklerreferenz zu Azure Functions
+
+Mit der Node-/JavaScript-Benutzeroberfläche für Azure Functions können Sie ganz einfach eine Funktion exportieren, der ein `context`-Objekt für die Kommunikation mit der Laufzeit sowie für das Empfangen oder Senden von Daten über Bindungen übergeben wird.
+
+In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md) gelesen haben.
+
+## Exportieren einer Funktion
+
+Alle JavaScript-Funktionen müssen eine einzige `function` über `module.exports` exportieren, damit die Laufzeit die Funktion finden und ausführen kann. Diese Funktion muss immer ein `context`-Objekt enthalten.
+
+```javascript
+// You must include a context, but other arguments are optional
+module.exports = function(context) {
+    // Additional inputs can be accessed by the arguments property
+    if(arguments.length === 4) {
+        context.log('This function has 4 inputs');
+    }
+};
+// or you can include additional inputs in your arguments
+module.exports = function(context, myTrigger, myInput, myOtherInput) {
+    // function logic goes here :)
+};
+```
+
+Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (z. B. durch Verwendung von `arguments.length` zum Durchlaufen all Ihrer Eingaben). Diese Funktion ist sehr praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
+
+Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* auftreten. Dies gilt auch dann, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie beispielsweise `function(context, a, b)` verwenden und dies in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[3]` verweisen.
+
+Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt übergeben (siehe unten).
+
+## Kontextobjekt
+
+Die Laufzeit verwendet ein `context`-Objekt, um Daten an und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
+
+Das Kontextobjekt ist immer der erste Parameter in einer Funktion und sollte immer einbezogen werden, weil es Methoden wie `context.done` und `context.log` enthält, die die Laufzeit ordnungsgemäß verwenden müssen. Sie können das Objekt beliebig benennen (z. B. `ctx` oder `c`).
+
+```javascript
+// You must include a context, but other arguments are optional
+module.exports = function(context) {
+    // function logic goes here :)
+};
+```
+
+## context.bindings
+
+Das `context.bindings`-Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn z. B. die folgende Bindungsdefinition in *function.json* vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen.
+
+```json
+    {
+        "type":"queue",
+        "direction":"in",
+        "name":"myInput"
+        ...
+    }
+```
+
+```javascript
+// myInput contains the input data which may have properties such as "name"
+var author = context.bindings.myInput.name;
+// Similarly, you can set your output data
+context.bindings.myOutput = { 
+        some_text: 'hello world', 
+        a_number: 1 };
+```
+
+## `context.done([err],[propertyBag])`
+
+Die `context.done`-Funktion gibt der Laufzeit an, dass die Ausführung beendet ist. Sie sollte unbedingt aufgerufen werden, wenn Sie mit der Funktion fertig sind. Andernfalls ist der Laufzeit nicht bekannt, dass Ihre Funktion abgeschlossen wurde.
+
+Mit der `context.done`-Funktion können Sie der Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
+
+```javascript
+// Even though we set myOutput to have:
+//  -> text: hello world, number: 123
+context.bindings.myOutput = { text: 'hello world', number: 123 };
+// If we pass an object to the done function...
+context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
+// the done method will overwrite the myOutput binding to be: 
+//  -> text: hello there, world, noNumber: true
+```
+
+## context.log(message)
+
+Mit der `context.log`-Methode können Sie Protokollanweisungen ausgeben, die für die Protokollierung korreliert werden. Bei Verwendung von `console.log` werden Ihre Nachrichten nur für die Protokollierung auf Prozessebene angezeigt, was nicht besonders nützlich ist.
+
+```javascript
+/* You can use context.log to log output specific to this 
+function. You can access your bindings via context.bindings */
+context.log({hello: 'world'}); // logs: { 'hello': 'world' } 
+```
+
+Die `context.log`-Methode unterstützt dasselbe Parameterformat, das von der Node-Methode [util.format](https://nodejs.org/api/util.html#util_util_format_format) unterstützt wird. Beispielsweise kann folgender Code:
+
+```javascript
+context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
+context.log('Request Headers = ' + JSON.stringify(req.headers));
+```
+
+wie folgt geschrieben werden:
+
+```javascript
+context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
+context.log('Request Headers = ', JSON.stringify(req.headers));
+```
+
+## HTTP-Trigger: context.req und context.res
+
+Da es im Fall von HTTP-Triggern ein gängiges Muster ist, `req` und `res` für die HTTP-Anforderungs- und Antwortobjekte zu verwenden, haben wir uns entschieden, den Zugriff darauf im Kontextobjekt zu vereinfachen, statt Sie zur Verwendung des vollständigen `context.bindings.name`-Musters zu zwingen.
+
+```javascript
+// You can access your http request off of the context ...
+if(context.req.body.emoji === ':pizza:') context.log('Yay!');
+// and also set your http response
+context.res = { status: 202, body: 'You successfully ordered more coffee!' };   
+```
+
+## Node-Version und Paketverwaltung
+
+Die Node-Version ist derzeit auf `5.9.1` festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
+
+Sie können Pakete in Ihr Funktionsverzeichnis aufnehmen (d. h. über `npm install`) und sie auf die übliche Weise in Ihre Funktion importieren (d. h. über `require('packagename')`).
+
+```javascript
+// Import the underescore.js library
+var _ = require('underscore');
+var version = process.version; // version === 'v5.9.1'
+
+module.exports = function(context) {
+    // Using our imported underscore.js library
+    var matched_names = _
+        .where(context.bindings.myInput.names, {first: 'Carla'});
+```
+
+## Unterstützung für TypeScript/CoffeeScript
+
+Noch gibt es keine direkte Unterstützung für die automatische Kompilierung von TypeScript/CoffeeScript über die Laufzeit. All dies müsste also außerhalb der Laufzeit zum Zeitpunkt der Bereitstellung geschehen.
+
+## Nächste Schritte
+
+Weitere Informationen finden Sie in den folgenden Ressourcen:
+
+* [Entwicklerreferenz zu Azure Functions](functions-reference.md)
+* [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
+* [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
+
+<!---HONumber=AcomDC_0420_2016-->

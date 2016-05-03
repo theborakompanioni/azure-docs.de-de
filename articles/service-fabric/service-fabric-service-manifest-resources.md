@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/26/2016"
-   ms.author="sumukhs"/>
+   ms.date="04/14/2016"
+   ms.author="mani-ramaswamy"/>
 
 # Angeben von Ressourcen in einem Dienstmanifest
 
@@ -137,4 +137,4 @@ Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS fest
 </ApplicationManifest>
 ```
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

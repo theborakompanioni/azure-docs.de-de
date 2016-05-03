@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/07/2016"
+	ms.date="04/25/2016"
 	ms.author="tamram"/>
 
 
@@ -23,7 +23,7 @@
 
 ## Übersicht
 
-Azure Blob Storage ist ein Dienst, bei dem Dateidaten in der Cloud gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 ### Informationen zu diesem Lernprogramm
 
@@ -51,7 +51,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein:
 
-	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
@@ -349,21 +349,39 @@ Das folgende Beispiel erstellt ein neues Anfügeblob und fügt einige Daten hinz
 
 Weitere Informationen zu den Unterschieden zwischen den drei Arten von Blobs finden Sie unter [Grundlegendes zu Blockblobs, Seitenblobs und Anfügeblobs](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 
+## Verwalten der Sicherheit für Blobs
+
+Standardmäßig sichert Azure Storage Ihre Daten, indem der Zugriff auf den Kontobesitzer beschränkt ist, der im Besitz der Kontozugriffsschlüssel ist. Wenn Sie Blobdaten in Ihrem Speicherkonto freigeben müssen, ist es wichtig, dass die Sicherheit Ihrer Kontozugriffsschlüssel dadurch nicht beeinträchtigt wird. Darüber hinaus können Sie Blobdaten verschlüsseln, um sicherzustellen, dass sie bei der Übertragung zu Azure Storage sicher sind.
+
+[AZURE.INCLUDE [storage-account-key-note-include](../../includes/storage-account-key-note-include.md)]
+
+### Steuern des Zugriffs auf Blobdaten
+
+Standardmäßig können nur Sie als Speicherkontobesitzer auf die Blobdaten in Ihrem Speicherkonto zugreifen. Die Authentifizierung von Anforderungen an Blob Storage erfordert standardmäßig den Kontozugriffsschlüssel. Möglicherweise möchten Sie jedoch anderen Benutzern Zugriff auf bestimmte Blobdaten gewähren. Sie haben zwei Möglichkeiten:
+
+- **Anonymer Zugriff:** Sie können einen Container oder seine Blobs für den anonymen Zugriff öffentlich verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
+- **Shared Access Signature**: Sie können für die Clients eine Shared Access Signature (SAS) bereitstellen, die delegierten Zugriff auf eine Ressource in Ihrem Speicherkonto ermöglicht. Dies ist mit von Ihnen festgelegten Berechtigungen und über einen von Ihnen angegebenen Zeitraum möglich. Weitere Informationen finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+
+### Verschlüsseln von Blobdaten
+
+Azure Storage unterstützt das Verschlüsseln von Blobdaten sowohl auf dem Client als auch auf dem Server:
+
+- **Clientseitige Verschlüsselung**: Die Storage-Clientbibliothek für .NET unterstützt die Verschlüsselung von Daten innerhalb von Clientanwendungen, bevor die Daten nach Azure Storage hochgeladen werden. Gleichermaßen wird die Entschlüsselung von Daten während des Herunterladens auf den Client unterstützt. Um eine Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt die Bibliothek zudem die Integration in Azure-Schlüsseltresor. Weitere Informationen finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](storage-client-side-encryption.md). Siehe auch: [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).
+- **Serverseitigen Verschlüsselung**: Azure Storage unterstützt jetzt die serverseitige Verschlüsselung. Siehe [Azure Storage Service Encryption für ruhende Daten (Vorschau)](storage-service-encryption.md). 
+
 ## Nächste Schritte
 
 Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
 
-### Blobspeicher-Referenzdokumentation
+### Blob Storage-Referenz
 
 - [Referenz zur Storage-Clientbibliothek für .NET](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 - [REST-API-Referenz](http://msdn.microsoft.com/library/azure/dd179355)
 
-### Zusätzliche Featurehandbücher
+### Konzeptionelle Richtlinien
 
-- [Erste Schritte mit Tabellenspeicher für .NET](storage-dotnet-how-to-use-tables.md)
-- [Erste Schritte mit Warteschlangenspeicher für .NET](storage-dotnet-how-to-use-queues.md)
-- [Erste Schritte mit Dateispeicher für .NET](storage-dotnet-how-to-use-files.md)
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy)
+- [Erste Schritte mit Dateispeicher für .NET](storage-dotnet-how-to-use-files.md)
 - [Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
@@ -377,4 +395,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

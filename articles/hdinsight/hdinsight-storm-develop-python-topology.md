@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/01/2016"
+   ms.date="04/19/2016"
    ms.author="larryfr"/>
 
 #Entwickeln von Apache Storm-Topologien mit Python in HDInsight
@@ -347,4 +347,4 @@ In diesem Dokument haben Sie erfahren, wie Python-Komponenten in einer Storm-Top
 * [Verwenden von Python für Streaming-MapReduce-Aufträge ](hdinsight-hadoop-streaming-python.md)
 * [Verwenden von benutzerdefinierten Python-Funktionen (UDFs) in Pig und Hive](hdinsight-python.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

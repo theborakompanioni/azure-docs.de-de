@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Verwalten von Azure-Ressourcen mit dem Cloud-Explorer
@@ -95,4 +95,4 @@ Um in Ihren Azure-Kontoabonnements Ressourcen mit einem bestimmten Namen zu such
 
 Bei der Eingabe von Zeichen in das Feld "Suchen" werden nur die Ressourcen in der Ressourcenstruktur angezeigt, die diesen Zeichen entsprechen.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

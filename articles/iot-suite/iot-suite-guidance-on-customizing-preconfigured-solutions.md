@@ -58,15 +58,13 @@ Sie können nicht nur die vorkonfigurierten Azure Stream Analytics-Aufträge än
 
 Eine der am häufigsten Erweiterungsaktivitäten ist das Arbeiten mit speziellen Geräten für Ihr Szenario. Es gibt mehrere Methoden zum Arbeiten mit Geräten. Dazu gehören das Anpassen eines simulierten Geräts an Ihr Szenario und das Verknüpfen des physischen Geräts mit der Lösung mithilfe des [IoT-Geräte-SDK][].
 
-Unter [Verbinden von Geräten mit der IoT Suite](iot-suite-connecting-devices.md) finden Sie eine schrittweise Anleitung zum Hinzufügen von Geräten zur vorkonfigurierten Remoteüberwachungslösung.
+Eine schrittweise Anleitung zum Hinzufügen von Geräten zur vorkonfigurierten Remoteüberwachungslösung finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite](iot-suite-connecting-devices.md) und im [C-SDK-Beispiel zur Remoteüberwachung](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring), das für den Einsatz mit der vorkonfigurierten Remoteüberwachungslösung konzipiert ist.
 
 ### Erstellen eines eigenen simulierten Geräts
 
 Der Quellcode der Remoteüberwachungslösung (auf den oben verwiesen wird) enthält einen .NET-Simulator. Dieser Simulator wird als Teil der Lösung bereitgestellt und kann geändert werden, um andere Metadaten oder Telemetrie zu senden oder auf andere Befehle zu reagieren.
 
 Der vorkonfigurierte Simulator in der vorkonfigurierten Lösung zur Remoteüberwachung ist ein Kühlgerät, das Telemetriedaten zu Temperatur und Feuchtigkeit ausgibt. Sie können den Simulator im Projekt [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) ändern, wenn Sie das GitHub-Repository verzweigt haben.
-
-Darüber hinaus stellt Azure IoT ein [C-SDK-Beispiel](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring) bereit, das mit der vorkonfigurierten Remoteüberwachungslösung verwendet werden kann.
 
 ### Erstellen und Verwenden eines eigenen (physischen) Geräts
 
@@ -86,7 +84,7 @@ Mitglieder der **ReadOnly**-Rolle können das Dashboard und die Geräteliste ein
 
 4. Klicken Sie auf **Anwendungen**.
 
-5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt. Wenn Ihre Anwendung nicht in der Liste erscheint, gehen Sie in der Dropdownliste **Anzeigen** auf **Anwendungen im Besitz meines Unternehmens**, und klicken Sie auf das Häkchen.
+5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt. Wenn Ihre Anwendung nicht in der Liste angezeigt wird, wählen Sie in der Dropdownliste **Anzeigen** die Option **Anwendungen im Besitz meines Unternehmens**, und klicken Sie auf das Häkchen.
 
 6.  Klicken Sie unten auf der Seite auf **Manifest verwalten** und dann auf **Manifest herunterladen**.
 
@@ -127,13 +125,13 @@ Mitglieder der **ReadOnly**-Rolle können das Dashboard und die Geräteliste ein
 
 10.  Wählen Sie im Azure-Verwaltungsportal unten auf der Seite **Manifest verwalten**, dann **Manifest hochladen**, um die zuvor gespeicherte JSON-Datei hochzuladen.
 
-11. Sie haben nun die **Admin**- und **ReadOnly**-Rollen zu Ihrer Anwendung hinzugefügt.
+11. Sie haben nun die **Admin**- und **ReadOnly**-Rollen Ihrer Anwendung hinzugefügt.
 
 12. Um einem Benutzer eine dieser Rollen in Ihrem Verzeichnis zuzuweisen, lesen Sie [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions].
 
 ## Feedback
 
-Haben Sie Anpassungsvorschläge für dieses Dokument? Falls Sie Vorschläge für neue Funktionen haben, bringen Sie diese gerne bei [UserVoice](https://feedback.azure.com/forums/321918-azure-iot) ein, oder kommentieren Sie diesen Artikel weiter unten.
+Möchten Sie Anpassungsvorschläge zu diesem Dokument machen? Falls Sie Vorschläge für neue Funktionen haben, bringen Sie diese gerne bei [UserVoice](https://feedback.azure.com/forums/321918-azure-iot) ein, oder kommentieren Sie diesen Artikel weiter unten.
 
 ## Nächste Schritte
 
@@ -143,4 +141,4 @@ Weitere Informationen zu IoT-Geräten finden Sie auf der [Azure IoT-Entwicklerwe
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-classic-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

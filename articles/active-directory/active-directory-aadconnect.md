@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Azure AD Connect: Integrieren Ihrer lokalen Identitäten in Azure Active Directory | Microsoft Azure"
-	description="Mit Azure AD Connect können Sie Ihr lokales Identitätssystem wie Windows Server Active Directory in Azure Active Directory integrieren und eine Verbindung für Ihre Benutzer mit Office 365, Azure und Tausenden SaaS-Anwendungen herstellen. Dieses Thema erläutert die Features von Azure AD Connect und enthält Informationen zur Funktionsweise sowie zur Installation, Konfiguration und Anpassung von Azure AD Connect."
+	description="Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen."
     keywords="Einführung in Azure AD Connect, Übersicht über Azure AD Connect, was ist Azure AD Connect, Active Directory installieren"
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
 	manager="stevenpo"
-	editor="curtand"/>
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/14/2016"
+	ms.date="04/20/2016"
 	ms.author="andkjell;billmath"/>
 
 # Integrieren Ihrer lokalen Identitäten in Azure Active Directory
-Mit Azure AD Connect können Sie Ihr lokales Identitätssystem wie Windows Server Active Directory in Azure Active Directory integrieren und eine Verbindung für Ihre Benutzer mit Office 365, Azure und tausenden Saas-Anwendungen herstellen. Dieses Thema bietet eine umfassende Anleitung für das Vorbereiten und Bereitstellen der erforderlichen Komponenten für Ihre Endbenutzer, um mit der gleichen Identität auf die Clouddienste zuzugreifen, mit der sie bereits auf vorhandene Unternehmens-Apps zugreifen.
+Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Dieses Thema beschreibt die Planung, Bereitstellung und den Betrieb. Es umfasst Links zu Themen, die mit diesem Bereich zusammenhängen.
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
@@ -27,7 +27,7 @@ Mit Azure AD Connect können Sie Ihr lokales Identitätssystem wie Windows Serve
 ![Was ist Azure AD Connect?](./media/active-directory-aadconnect/arch.png)
 
 ## Gründe für die Verwendung von Azure AD Connect
-Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird. Mit dieser Integration können Benutzer und Organisationen die folgenden Vorteile nutzen:
+Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird. Benutzer und Organisationen können die folgenden Vorteile nutzen:
 
 - Benutzer können eine einzelne Identität verwenden, um auf lokale Anwendungen und Clouddienste wie z. B. Office 365 zuzugreifen.
 
@@ -37,26 +37,25 @@ Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivi
 
 
 ### Funktionsweise von Azure AD Connect
-
-Azure Active Directory Connect besteht aus drei Hauptbestandteilen. Dies sind die Synchronisierungsdienste, die optionalen Active Directory-Verbunddienste und die Überwachung mithilfe von [Azure AD Connect Health](active-directory-aadconnect-health.md).
+Azure Active Directory Connect besteht aus drei Hauptkomponenten: den Synchronisierungsdiensten, der optionalen Active Directory-Verbunddienstkomponente und eine Überwachungskomponente namens [Azure AD Connect Health](active-directory-aadconnect-health.md).
 
 <center>![Azure AD Connect Stack](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
-- Synchronisierung: Dieser Teil umfasst die Komponenten und Funktionen, die zuvor als [Dirsync und Azure AD Sync](active-directory-hybrid-identity-design-considerations-tools-comparison.md) veröffentlicht wurden. Dieser Teil ist für das Erstellen von Benutzern und Gruppen zuständig. Er stellt ebenfalls sicher, dass Benutzer- und Gruppeninformationen in Ihrer lokalen Umgebung denen in der Cloud entsprechen.
-- AD FS: Dies ist eine optionale Komponente von Azure AD Connect und kann zum Einrichten einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden. Dieser Teil kann von Organisationen verwendet werden, um sich mit komplexen Bereitstellungen zu befassen, z. B. Domänenbeitritts-SSO, Erzwingen von AD-Anmelderichtlinien und Smartcard- bzw. Drittanbieter-MFA.
+- Synchronisierung: Diese Komponente ist verantwortlich für das Erstellen von Benutzern, Gruppen und anderen Objekten. Er stellt ebenfalls sicher, dass Identitätsinformationen für Ihre lokalen Benutzer und Gruppen denen in der Cloud entsprechen.
+- AD FS: Der Verbund ist eine optionale Komponente von Azure AD Connect und kann zum Konfigurieren einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden. Dies kann von Organisationen verwendet werden, um sich mit komplexen Bereitstellungen zu befassen, z.B. Domänenbeitritts-SSO, Erzwingen von AD-Anmelderichtlinien und Smartcard- bzw. Drittanbieter-MFA.
 - Systemüberwachung: Azure AD Connect Health bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen. Weitere Informationen finden Sie unter [Azure Active Directory Connect Health](active-directory-aadconnect-health.md).
 
 ## Installieren von Azure AD Connect
 
-Den Download für Azure AD Connect finden Sie im [Microsoft Download Center]( http://go.microsoft.com/fwlink/?LinkId=615771).
+Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 
 | Lösung | Szenario |
 | ----- | ----- |
 | Vorbereitung: [Hardware und Voraussetzungen](active-directory-aadconnect-prerequisites.md) | <li>Hier erfahren Sie mehr zu den Schritten, die vor dem Installieren von Azure AD Connect ausgeführt werden müssen.</li> |
-| [Express-Einstellungen](active-directory-aadconnect-get-started-express.md) | <li>Empfohlene Standardoption bei einem einzelnen Gesamtstruktur-AD.</li> <li>Benutzer melden Sie sich mit dem gleichen Kennwort mithilfe der Kennwortsynchronisierung an.</li>
-| [Benutzerdefinierte Einstellungen](active-directory-aadconnect-get-started-custom.md) | <li>Verwendet bei mehreren Gesamtstrukturen. Unterstützt viele lokale [Topologien](active-directory-aadconnect-topologies.md).</li> <li>Passen Sie die Anmeldeoption an, z. B. ADFS für den Verbund, oder verwenden Sie einen Drittanbieter-Identitätsanbieter.</li> <li>Passen Sie Synchronisierungsfunktionen an, wie das Filtern und Rückschreiben.</li>
-| [Upgrade von DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>Bei einem vorhandenen DirSync-Server, der bereits ausgeführt wird.</li>
+| [Express-Einstellungen](active-directory-aadconnect-get-started-express.md) | <li>Wenn Sie über eine einzelne Gesamtstruktur-AD verfügen, ist dies die empfohlene Option.</li> <li>Benutzer melden Sie sich mit dem gleichen Kennwort mithilfe der Kennwortsynchronisierung an.</li>
+| [Benutzerdefinierte Einstellungen](active-directory-aadconnect-get-started-custom.md) | <li>Verwendet bei mehreren Gesamtstrukturen. Unterstützt viele lokale [Topologien](active-directory-aadconnect-topologies.md).</li> <li>Passen Sie die Anmeldeoption an, z.B. ADFS für den Verbund, oder verwenden Sie einen Drittanbieter-Identitätsanbieter.</li> <li>Passen Sie Synchronisierungsfunktionen an, wie das Filtern und Rückschreiben.</li>
+| [Upgrade von DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>Wird bei einem vorhandenen DirSync-Server verwendet, der bereits ausgeführt wird.</li>
 | [Upgrade von Azure AD Sync oder Azure AD Connect](active-directory-aadconnect-upgrade-previous-version.md)| <li>Je nach Bedarf gibt es verschiedene Methoden.</li>
 
 
@@ -66,7 +65,7 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center]( ht
 
 | Thema | |
 | --------- | --------- |
-| Azure AD Connect herunterladen | [Azure AD Connect herunterladen]( http://go.microsoft.com/fwlink/?LinkId=615771) |
+| Azure AD Connect herunterladen | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771) |
 | Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](active-directory-aadconnect-get-started-express.md) |
 | Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md) |
 | Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md) |
@@ -74,7 +73,7 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center]( ht
 
 ### Weitere Informationen über die Installation von Azure AD Connect
 
-Sie sollten sich auch auf [betriebliche](active-directory-aadconnectsync-operations.md) Probleme vorbereiten. Sie möchten möglicherweise einen Standbyserver haben, damit Sie im [Notfall](active-directory-aadconnectsync-operations.md#disaster-recovery) problemlos ein Fallover durchführen können. Wenn Sie beabsichtigen, häufig Konfigurationsänderungen vorzunehmen, sollten Sie einen [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)-Server einplanen.
+Sie sollten sich auch auf [betriebliche](active-directory-aadconnectsync-operations.md) Probleme vorbereiten. Ein Standbyserver empfiehlt sich, damit Sie im [Notfall](active-directory-aadconnectsync-operations.md#disaster-recovery) problemlos ein Fallover durchführen können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)-Server einplanen.
 
 | Thema | |
 | --------- | --------- |
@@ -85,19 +84,19 @@ Sie sollten sich auch auf [betriebliche](active-directory-aadconnectsync-operati
 | Optionen für die Benutzeranmeldung | [Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md) |
 
 ## Konfigurieren der Synchronisierungsfunktionen
-Azure AD Connect verfügt über mehrere Funktionen, die Sie optional aktivieren können oder die standardmäßig aktiviert sind. Einige Funktionen benötigen in einigen Fällen möglicherweise eine zusätzliche Konfiguration in bestimmten Szenarios und Topologien.
+Azure AD Connect verfügt über mehrere Funktionen, die Sie optional aktivieren können oder die standardmäßig aktiviert sind. Einige Funktionen benötigen möglicherweise eine zusätzliche Konfiguration in bestimmten Szenarien und Topologien.
 
-[Filtern](active-directory-aadconnectsync-configure-filtering.md) wird verwendet, wenn Sie begrenzen möchten, welche Objekte mit Azure AD synchronisiert werden. Standardmäßig werden alle Benutzer, Kontakte, Gruppen und Windows 10-Computer synchronisiert, aber Sie können dies auf Grundlage von Domänen, Organisationseinheiten oder Attributen einschränken.
+[Filtern](active-directory-aadconnectsync-configure-filtering.md) wird verwendet, wenn Sie begrenzen möchten, welche Objekte mit Azure AD synchronisiert werden. Standardmäßig werden alle Benutzer, Kontakte, Gruppen und Windows 10-Computer synchronisiert. Sie können die Filterung ausgehend von Domänen, Organisationseinheiten oder Attributen ändern.
 
-[Kennwortsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) synchronisiert das Kennworthash in Active Directory nach Azure AD. Dies ermöglicht es dem Benutzer, das gleiche Kennwort lokal und in der Cloud zu verwenden, es jedoch nur an einem Ort zu verwalten. Da es das lokale Active Directory verwendet, können Sie auch Ihre eigene Kennwortrichtlinie verwenden.
+Die [Kennwortsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) synchronisiert das Kennworthash in Active Directory nach Azure AD. So kann der Endbenutzer das gleiche Kennwort lokal und in der Cloud verwenden, es jedoch nur an einem Ort verwalten. Da es das lokale Active Directory als Autorität verwendet, können Sie auch Ihre eigene Kennwortrichtlinie verwenden.
 
 Das [Kennwortrückschreiben](active-directory-passwords-getting-started.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
 
 Das [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md) ermöglicht es Ihnen, ein in Azure AD registriertes Gerät wieder in das lokale Active Directory zurückzuschreiben, damit es für bedingten Zugriff verwendet werden kann.
 
-Die Funktion zum [Verhindern eines versehentlichen Löschvorgangs](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) ist standardmäßig aktiviert und schützt Ihr Cloudverzeichnis vor einer Vielzahl von gleichzeitigen Löschvorgängen. Standardmäßig sind 500 Löschvorgänge pro Durchlauf zulässig; dies kann abhängig von der Größe Ihres Unternehmens geändert werden.
+Die Funktion zum [Verhindern eines versehentlichen Löschvorgangs](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) ist standardmäßig aktiviert und schützt Ihr Cloudverzeichnis vor mehreren gleichzeitigen Löschvorgängen. Standardmäßig sind 500 Löschvorgänge pro Durchlauf zulässig. Diese Einstellung kann abhängig von der Größe Ihres Unternehmens geändert werden.
 
-Das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) ist für Installationen mit Express-Einstellungen standardmäßig aktiviert und stellt sicher, dass Ihre Azure AD Connect-Instanz immer mit der neuesten Version aktualisiert wird.
+Das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) ist für Installationen mit Expresseinstellungen standardmäßig aktiviert und stellt sicher, dass Ihre Azure AD Connect-Instanz immer mit der neuesten Version aktualisiert wird.
 
 ### Nächste Schritte zum Konfigurieren der Synchronisierungsfunktionen
 
@@ -117,7 +116,7 @@ Wenn Sie noch nicht mit einer Synchronisierungstopologie gearbeitet haben, sollt
 
 Bei der [Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md) wird davon ausgegangen, dass die Konfiguration möglicherweise mehrere Gesamtstrukturen umfasst. In diesen Topologien kann ein Benutzerobjekt möglicherweise in einer anderen Gesamtstruktur als Kontakt dargestellt werden. Der Benutzer kann in einer anderen Ressourcengesamtstruktur auch über ein verknüpftes Postfach verfügen. Das Verhalten der Standardkonfiguration wird unter [Benutzer und Kontakte](active-directory-aadconnectsync-understanding-users-and-contacts.md) beschrieben.
 
-Das synchronisierte Konfigurationsmodell wird als [deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) bezeichnet. Die erweiterten Attributflüsse verwenden [Funktionen](active-directory-aadconnectsync-functions-reference.md), um Attributtransformationen auszudrücken. Sie können die gesamte Konfiguration mithilfe von Tools, die im Lieferumfang von Azure AD Connect enthalten sind, anzeigen und überprüfen. Wenn Sie Änderungen an der Konfiguration vornehmen müssen, stellen Sie sicher, dass Sie die [bewährten Methoden](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) befolgen, damit neue Versionen leichter übernommen werden, sobald sie zur Verfügung gestellt werden.
+Das synchronisierte Konfigurationsmodell wird als [deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) bezeichnet. Die erweiterten Attributflüsse verwenden [Funktionen](active-directory-aadconnectsync-functions-reference.md), um Attributtransformationen auszudrücken. Sie können die gesamte Konfiguration mithilfe von Tools, die im Lieferumfang von Azure AD Connect enthalten sind, anzeigen und überprüfen. Wenn Sie Änderungen an der Konfiguration vornehmen müssen, stellen Sie sicher, dass Sie die [bewährten Methoden](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) befolgen, damit neue Versionen leichter übernommen werden.
 
 ### Nächste Schritte zur Anpassung der Azure AD Connect-Synchronisierung
 
@@ -133,13 +132,14 @@ Das synchronisierte Konfigurationsmodell wird als [deklarative Bereitstellung](a
 ## Konfigurieren von Verbundfunktionen
 AD FS kann für die Unterstützung von [mehreren Domänen](active-directory-aadconnect-multiple-domains.md) konfiguriert werden. Beispiel: Sie besitzen mehrere Domänen der obersten Ebene, die Sie für den Verbund verwenden müssen.
 
-Falls Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikaten in Azure AD konfiguriert wurde oder Sie eine Lösung ohne AD FS nutzen, werden Sie benachrichtigt, wenn Sie [Zertifikate aktualisieren](active-directory-aadconnect-o365-certs.md) müssen.
+Wenn Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikaten in Azure AD konfiguriert wurde oder wenn Sie eine Lösung ohne AD FS nutzen, werden Sie benachrichtigt, wenn Sie [Zertifikate aktualisieren](active-directory-aadconnect-o365-certs.md) müssen.
 
 ### Nächste Schritte zum Konfigurieren der Verbundfunktionen
 
 | Thema | |
 | --------- | --------- |
 | Konfigurieren von AD FS mit Unterdomänen | [Unterstützung mehrerer Domänen für den Verbund mit Azure AD](active-directory-aadconnect-multiple-domains.md) |
+| Verwalten der AD FS-Farm | [Verwaltung und Anpassung von AD FS mit Azure AD Connect](active-directory-aadconnect-federation-management.md) |
 | Manuelles Aktualisieren von Verbundzertifikaten | [Erneuern von Verbundzertifikaten für Office 365 und Azure AD](active-directory-aadconnect-o365-certs.md) |
 
 ## Weitere Informationen und Referenzen
@@ -159,6 +159,6 @@ Falls Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikat
 
 Ignite 2015-Präsentation über die Erweiterung lokaler Verzeichnisse in die Cloud.
 
-[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
+>[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0427_2016-->

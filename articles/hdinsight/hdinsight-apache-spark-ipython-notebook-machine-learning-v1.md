@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Erstellen von Machine Learning-Anwendungen mit Apache Spark für Azure HDInsight (Windows)
+# Erstellen von Machine Learning-Anwendungen mit Apache Spark in HDInsight unter Windows (Vorschau)
 
 > [AZURE.NOTE] HDInsight bietet jetzt Spark-Cluster unter Linux. Informationen zum Erstellen einer Machine Learning-Anwendung auf HDInsight Spark-Clustern unter Linux finden Sie unter [Erstellen von Machine Learning-Anwendungen mit Apache Spark für Azure HDInsight (Linux)](hdinsight-apache-spark-ipython-notebook-machine-learning.md).
 
@@ -29,7 +29,7 @@ Sie erfahren, wie Sie eine Machine Learning-Anwendung mit einem Apache Spark-Clu
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- Einen Apache Spark-Cluster. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-provision-clusters.md). 
+- Einen Apache Spark-Cluster. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-provision-clusters.md). 
 
 ##<a name="data"></a>Anzeigen der Daten
 
@@ -53,7 +53,7 @@ Wir sagen anhand dieser Daten vorher, ob es in einem Gebäude basierend auf der 
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **Python 2**.
+2. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **Python 2**.
 
 	![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-ipython-notebook-machine-learning-v1/hdispark.note.jupyter.createnotebook.png "Erstellen eines neuen Jupyter Notebooks")
 
@@ -92,7 +92,7 @@ Wir sagen anhand dieser Daten vorher, ob es in einem Gebäude basierend auf der 
 		sc = SparkContext(conf=conf)
 		sqlContext = SQLContext(sc)
 
-	Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebook-Titel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der oberen rechten Ecke einen ausgefüllten Kreis neben dem Text **Python 2**. Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
+	Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebook-Titel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der oberen rechten Ecke einen ausgefüllten Kreis neben dem Text **Python 2**. Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
 
 	 ![Status eines Jupyter Notebook-Auftrags](./media/hdinsight-apache-spark-ipython-notebook-machine-learning-v1/hdispark.jupyter.job.status.png "Status eines Jupyter Notebook-Auftrags")
  
@@ -213,7 +213,7 @@ Wir sagen anhand dieser Daten vorher, ob es in einem Gebäude basierend auf der 
 		Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
 		Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
 
-	In der ersten Zeile der Vorhersage können Sie sehen, dass das Gebäude für ein HVAC-System mit ID 20 und einem Systemalter von 25 Jahren zu warm ist (**prediction=1.0**). Der erste Wert für DenseVector (0.49999) entspricht der Vorhersage 0,0, und der zweite Wert (0.5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0** an.
+	In der ersten Zeile der Vorhersage können Sie sehen, dass das Gebäude für ein HVAC-System mit ID 20 und einem Systemalter von 25 Jahren zu warm ist (**prediction=1.0**). Der erste Wert für DenseVector (0.49999) entspricht der Vorhersage 0,0, und der zweite Wert (0.5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0** an.
 
 11. Sie können das Notebook jetzt beenden, indem Sie den Kernel neu starten. Klicken Sie in der oberen Menüleiste auf **Kernel** und **Neu starten**, und klicken Sie bei der Aufforderung noch einmal auf **Neu starten**.
 
@@ -245,4 +245,4 @@ Apache Spark-Cluster unter HDInsight enthalten Anaconda-Bibliotheken. Dazu gehö
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

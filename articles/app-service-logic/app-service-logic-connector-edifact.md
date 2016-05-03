@@ -13,11 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/10/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # Erste Schritte mit dem BizTalk Edifact-Connector und das Hinzufügen zur Logik-App  
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 Sie können mit dem Edifact-Dienst bei der Business-to-Business-Kommunikation Nachrichten über das Edifact-Protokoll empfangen und senden. Edifact wird häufig auch als ASC Edifact (Accredited Standards Committee Edifact) bezeichnet und ist branchenweit verbreitet.
 
@@ -99,4 +100,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

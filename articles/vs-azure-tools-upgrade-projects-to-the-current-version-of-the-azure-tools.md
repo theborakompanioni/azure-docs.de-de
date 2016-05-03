@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/05/2016"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Upgrade von Projekten auf die aktuelle Version von Azure Tools für Visual Studio
@@ -37,7 +37,7 @@ Wenn ein Projekt automatisch aktualisiert oder angegeben wird, dass es aktualisi
 
 - Wenn der Azure Cache-Dienst in einer oder mehreren Rollen des Projekts gehostet wird, werden einige Eigenschaften in der Dienstkonfiguration (CSCFG-Datei) und in der Dienstdefinition (CSDEF-Datei) geändert, wenn ein Projekt aktualisiert wird. Wenn vom Projekt das NuGet-Paket für den Azure Cache-Dienst verwendet wird, wird das Projekt auf die aktuelle Version des Pakets aktualisiert. Öffnen Sie die Datei "web.config", und prüfen Sie, ob die Clientkonfiguration während des Upgradevorgangs ordnungsgemäß beibehalten wurde. Wenn Sie die Verweise auf Azure Cache-Clientassemblys ohne das NuGet-Paket hinzugefügt haben, werden diese Assemblys nicht aktualisiert. Diese Verweise müssen manuell auf die neuen Versionen aktualisiert werden.
 
->[AZURE.IMPORTANT]Bei F#-Projekten müssen Sie die Verweise auf Assemblys von Azure manuell aktualisieren, sodass diese auf die Assemblys der neueren Versionen verweisen.
+>[AZURE.IMPORTANT] Bei F#-Projekten müssen Sie die Verweise auf Assemblys von Azure manuell aktualisieren, sodass diese auf die Assemblys der neueren Versionen verweisen.
 
 ### So aktualisieren Sie ein Azure-Projekt auf die aktuelle Version
 
@@ -51,4 +51,4 @@ Wenn ein Projekt automatisch aktualisiert oder angegeben wird, dass es aktualisi
 
 1. Erstellen Sie das Projekt, und beheben Sie Fehler, die sich aus Änderungen an der API ergeben können. Informationen dazu, wie Sie den Code zur Anpassung an die neue Version ändern, finden Sie in der Dokumentation zur jeweiligen API.
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0420_2016-->

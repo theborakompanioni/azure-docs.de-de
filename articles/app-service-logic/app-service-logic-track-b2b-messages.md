@@ -4,7 +4,7 @@
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
-   manager="dwrede" 
+   manager="erikre" 
    editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/18/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 
 # Nachverfolgen von B2B-Nachrichten
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 ## B2B-Nachverfolgungsinformationen
 Die B2B-Kommunikation umfasst die Nachrichtenverarbeitung zwischen Handelspartnern. Die Beziehungen werden als Vereinbarungen zwischen zwei Handelspartnern definiert. Nachdem die Kommunikation eingerichtet wurde, wird eine Möglichkeit zur Überwachung benötigt, ob die Kommunikation wie erwartet erfolgt.
@@ -47,4 +47,4 @@ Wenn Batches als Teil der X12-Vereinbarungen in der zugehörigen Trading Partner
 [1]: ./media/app-service-logic-track-b2b-messages/AS2Tracking.png
 [2]: ./media/app-service-logic-track-b2b-messages/EDIFACTTracking.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

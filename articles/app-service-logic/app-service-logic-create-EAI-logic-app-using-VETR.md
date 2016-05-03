@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="rajeshramabathiran"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/18/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 
 # Erstellen einer EAI-Logik-App mithilfe von VETR
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemavorschauversion (Stand: 01.12.2014) für Logik-Apps.
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 In den meisten Szenarien für Enterprise Application Integration (EAI, Unternehmensanwendungsintegration) werden Daten zwischen einer Quelle und einem Ziel vermittelt. Solche Szenarien weisen häufig einen gemeinsamen Satz von Anforderungen auf:
 
@@ -118,4 +118,4 @@ Einige hilfreichen Themen:
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

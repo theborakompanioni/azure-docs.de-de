@@ -13,16 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/21/2016"
+	ms.date="04/18/2016"
 	ms.author="kgremban"/>
 
 #RBAC: Integrierte Rollen
 
 ## Integrierte Rollen
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definition integrierter Rollen kann nicht geändert werden. In einer zukünftigen Version von Azure RBAC können Sie benutzerdefinierte Rollen definieren. Dazu können Sie aus einer Liste mit verfügbaren Aktionen eine Reihe an Aktionen auswählen, die an Azure-Ressourcen durchgeführt werden dürfen.
+Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
 
-Klicken Sie auf Links unten, um die **Aktions**- und **Nicht-Aktions**-Eigenschaften einer Rollendefinition anzuzeigen. Die **Aktions**-Eigenschaft gibt die zulässigen Aktionen für Azure-Ressourcen an. Für Aktionszeichenfolgen dürfen Platzhalter verwendet werden. Die **Nicht-Aktions**-Eigenschaft einer Rollendefinition gibt die Aktionen an, die von den zulässigen Aktionen ausgeschlossen werden müssen.
+Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klicken Sie auf den Rollennamen, um eine detaillierte Liste der **actions** und **not actions** für die Rolle anzuzeigen. Die **Aktions**-Eigenschaft gibt die zulässigen Aktionen für Azure-Ressourcen an. Für Aktionszeichenfolgen dürfen Platzhalter verwendet werden. Die **not actions**-Eigenschaft gibt die Aktionen an, die von den zulässigen Aktionen ausgeschlossen sind.
 
 
 | Rollenname | Beschreibung |
@@ -134,7 +134,7 @@ Kann alles außer den Zugriff verwalten
 | ------- | ------ |
 | * | Erstellen und Verwalten von Ressourcen aller Typen |
 
-| **Nicht-Aktionen** | |
+| **Nicht-Aktionen** ||
 | ------- | ------ |
 | Microsoft.Authorization/*/Write | Rollen und Rollenzuweisungen können nicht erstellt werden. |
 | Microsoft.Authorization/*/Delete | Rollen und Rollenzuweisungen können nicht gelöscht werden. |
@@ -304,7 +304,7 @@ Kann SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogen
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
-| **Nicht-Aktionen** | |
+| **Nicht-Aktionen** ||
 | ------- | ------ |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | Kann keine Überwachungsrichtlinien bearbeiten |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | Kann keine Verbindungsrichtlinien bearbeiten |
@@ -346,7 +346,7 @@ Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sic
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
-| **Nicht-Aktionen** | |
+| **Nicht-Aktionen** ||
 | ------- | ------ |
 | Microsoft.Sql/servers/auditingPolicies/* | Kann keine SQL Server-Überwachungsrichtlinien bearbeiten |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | Kann keine Überwachungsrichtlinien von SQL Server-Datenbanken bearbeiten |
@@ -486,7 +486,10 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 | Microsoft.Insights/components/* | Erstellen und Verwalten von Insights-Komponenten |
 
-## RBAC-Themen
-[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+## Weitere Informationen
+- [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
+- [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihrer Zugriffsanforderungen erstellen.
+- [Erstellen eines Verlaufsbericht über Zugriffsänderungen](role-based-access-control-access-change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
+- [Problembehandlung bei rollenbasierter Zugriffssteuerung](role-based-access-control-troubleshooting.md): Abrufen von Vorschlägen zur Behebung häufig auftretender Probleme.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

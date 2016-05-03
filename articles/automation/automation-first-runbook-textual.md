@@ -4,7 +4,7 @@
     services="automation"
     documentationCenter=""
     authors="mgoedtel"
-    manager="stevenka"
+    manager="jwhit"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/23/2016"
+    ms.date="04/21/2016"
     ms.author="magoedte;bwren"/>
 
 # Mein erstes PowerShell-Workflow-Runbook
@@ -26,12 +26,11 @@ Dieses Tutorial führt Sie durch die Erstellung eines [PowerShell-Workflow-Runbo
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
--	Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich <a href="/pricing/free-trial/" target="_blank">[für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/).
--	[Automation-Konto](automation-configuring.md) zum Speichern des Runbooks.
+-	Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich <a href="/pricing/free-account/" target="_blank">[für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/).
+-	Das [Automation-Konto](automation-security-overview.md) dient zur Aufbewahrung des Runbooks und zur Authentifizierung gegenüber Azure-Ressourcen. Dieses Konto muss über die Berechtigung zum Starten und Beenden des virtuellen Computers verfügen.
 -	Einen virtuellen Azure-Computer. Da dieser Computer gestartet und beendet wird, darf er sich nicht in der Produktionsumgebung befinden.
--	[Azure Active Directory-Benutzer und Automation-Anmeldeinformationsobjekt](automation-configuring.md) für die Authentifizierung gegenüber Azure-Ressourcen. Dieser Benutzer muss über die Berechtigung zum Starten und Beenden des virtuellen Computers verfügen.
 
-## Schritt 1: Erstellen eines neuen Runbooks
+## Schritt 1: Erstellen eines neuen Runbooks
 
 Wir erstellen zunächst ein einfaches Runbook, das den Text *Hello World* ausgibt.
 
@@ -42,7 +41,7 @@ Wir erstellen zunächst ein einfaches Runbook, das den Text *Hello World* ausgib
 5.	Da wir in diesem Fall ein [PowerShell Workflow-Runbook](automation-runbook-types.md#powerShell-workflow-runbooks) erstellen, wählen Sie als **Runbooktyp** die Option **PowerShell-Workflow** aus.<br> ![Neues Runbook](media/automation-first-runbook-textual/new-runbook.png)
 6.	Klicken Sie auf **Erstellen**, um das Runbook zu erstellen und den Text-Editor zu öffnen.
 
-## Schritt 2 – Hinzufügen von Code zum Runbook
+## Schritt 2 – Hinzufügen von Code zum Runbook
 
 Sie können entweder direkt Code in das Runbook eingeben, oder Sie wählen Cmdlets, Runbooks und Objekte aus dem Bibliotheksteuerelement aus und fügen diese mit entsprechenden Parametern zum Runbook hinzu. In dieser exemplarischen Vorgehensweise erfolgt eine direkte Eingabe in das Runbook.
 
@@ -50,7 +49,7 @@ Sie können entweder direkt Code in das Runbook eingeben, oder Sie wählen Cmdle
 2.	Geben Sie zwischen den geschweiften Klammern *Write-Output "Hello World."* ein. <br> ![Hello World](media/automation-first-runbook-textual/hello-world.png)
 3.	Klicken Sie auf **Speichern**, um das Runbook zu speichern.<br> ![Runbook speichern](media/automation-first-runbook-textual/runbook-edit-toolbar-save.png)
 
-## Schritt 3: Testen des Runbooks
+## Schritt 3: Testen des Runbooks
 
 Bevor wir das Runbook für die Verwendung in der Produktionsumgebung veröffentlichen, möchten wir uns vergewissern, dass es ordnungsgemäß funktioniert. Beim Testen eines Runbooks führen Sie die **Entwurfsversion** des Runbooks aus und sehen sich interaktiv die Ausgabe an.
 
@@ -60,7 +59,7 @@ Bevor wir das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 4.	Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In unserem Fall: *Hello World*.<br> ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 5.	Schließen Sie den Testbereich, um zum Zeichenbereich zurückzukehren.
 
-## Schritt 4: Veröffentlichen und Starten des Runbooks
+## Schritt 4: Veröffentlichen und Starten des Runbooks
 
 Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müssen das Runbook veröffentlichen, um es in der Produktionsumgebung ausführen zu können. Beim Veröffentlichen eines Runbooks wird die vorhandene veröffentlichte Version durch die Entwurfsversion überschrieben. In unserem Fall ist noch keine veröffentlichte Version vorhanden, da wir das Runbook gerade erst erstellt haben.
 
@@ -77,7 +76,7 @@ Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müs
 11.	Klicken Sie auf **Aufträge**, um den Auftragsbereich für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier wird nur ein einzelner Auftrag aufgeführt, da wir den Auftrag bislang erst einmal ausgeführt haben.<br> ![Aufträge](media/automation-first-runbook-textual/runbook-control-jobs.png)
 12.	Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den wir uns beim Starten des Runbooks angesehen haben. So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
 
-## Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
+## Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 
 Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Wir möchten damit Azure-Ressourcen verwalten. Dazu ist jedoch eine Authentifizierung mit den Anmeldeinformationen erforderlich, die in den [Voraussetzungen](#prerequisites) genannt sind. Wir verwenden zu diesem Zweck das Cmdlet **Add-AzureAccount**.
 
@@ -91,7 +90,7 @@ Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang is
 8.	Klicken Sie auf den **Testbereich**, um das Runbook zu testen.
 9.	Klicken Sie auf **Starten**, um den Test zu starten. Nach Abschluss des Tests sollten Sie eine ähnliche Ausgabe wie die folgende erhalten, mit der Informationen für den Benutzer im Anmeldeinformationsobjekt zurückgegeben werden. Auf diese Weise wird bestätigt, dass die Anmeldeinformationen gültig sind.<br> ![Authentifizieren](media/automation-first-runbook-textual/authentication-test.png)
 
-## Schritt 6: Hinzufügen von Code zum Starten eines virtuellen Computers
+## Schritt 6: Hinzufügen von Code zum Starten eines virtuellen Computers
 
 Nun, da das Runbook für das Azure-Abonnement authentifiziert ist, können wir Ressourcen verwalten. Wir fügen einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen. Wir werden den Namen vorerst innerhalb des Cmdlets hartcodieren.
 
@@ -99,7 +98,7 @@ Nun, da das Runbook für das Azure-Abonnement authentifiziert ist, können wir R
 2.	Speichern Sie das Runbook, und klicken Sie dann auf den **Testbereich**, um das Runbook zu testen.
 3.	Klicken Sie auf **Starten**, um den Test zu starten. Vergewissern Sie sich nach Abschluss des Tests, dass der virtuelle Computer gestartet wurde.
 
-## Schritt 7: Hinzufügen eines Eingabeparameters zum Runbook
+## Schritt 7: Hinzufügen eines Eingabeparameters zum Runbook
 
 Unser Runbook startet zwar nun den virtuellen Computer, den wir im Runbook hartcodiert haben, es wäre aber praktischer, wenn wir den virtuellen Computer beim Start des Runbooks angeben könnten. Zu diesem Zweck fügen wir dem Runbook nun Eingabeparameter hinzu.
 
@@ -117,4 +116,4 @@ Unser Runbook startet zwar nun den virtuellen Computer, den wir im Runbook hartc
 -	[Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 -	[Mein erstes PowerShell-Runbook](automation-first-runbook-textual-PowerShell.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

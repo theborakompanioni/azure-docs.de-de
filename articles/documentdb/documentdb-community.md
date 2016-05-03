@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="03/18/2016"
+  ms.date="04/16/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -147,7 +147,10 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Build 2016](https://build.microsoft.com/) | John Macintyre, Dharma Shukla | San Francisco, CA | 30 März bis 1. April 2016 | [#MicrosoftBuild](https://twitter.com/hashtag/MicrosoftBuild)
+| [Global Azure Bootcamp: SoCal](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | Orange, CA | 16\. April 2016 | [#GlobalAzure](https://twitter.com/hashtag/GlobalAzure)
+| [Global Azure Bootcamp: Redmond](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | Redmond, WA | 16\. April 2016 | [#GlobalAzure](https://twitter.com/hashtag/GlobalAzure)
+| [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | Webinar | 25\. April 2016 | – |
+| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | New York City, NY | 21\. April 2016 | – |
 | [SQLBits XV](https://sqlbits.com/) | Andrew Liu, Aravind Ramachandran | Liverpool, Großbritannien | 4\. bis 7. Mai 2016 | [#SQLBits](https://twitter.com/hashtag/SQLBits)
 | [Meetup: Azure-Benutzergruppe Großbritannien](http://www.meetup.com/UKAzureUserGroup/events/229673468/) | Andrew Liu | London, Großbritannien | 12\. Mai 2016 | – |
 
@@ -157,59 +160,69 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Aufzeichnung |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [SQL Saturday #481 – Israel 2016](http://www.sqlsaturday.com/481/Sessions/Details.aspx?sid=40912) | Leonard Lobel | HaMerkaz, Israel | 04\. April 2016 | – |
+| [Build 2016](https://build.microsoft.com/) | John Macintyre | San Francisco, CA | 31\. März 2016 | [Delivering Applications at Scale with DocumentDB, Azure's NoSQL Document Database](https://channel9.msdn.com/Events/Build/2016/B840) (Bereitstellen skalierter Anwendungen mit DocumentDB, der NoSQL-Dokumentdatenbank von Azure)
+| [SQL Saturday #505 – Belgien 2016](http://www.sqlsaturday.com/505/Sessions/Details.aspx?sid=44217) | Mihail Mateev | Antwerpen, Belgien | 19\. März 2016 | – |
 | [Meetup: CloudTalk](http://www.meetup.com/CloudTalk/events/227963695/) | Kirat Pandya | Bellevue, WA | 3\. März 2016 | – |
 | [Meetup: Azure Austin](http://www.meetup.com/azureaustin/events/228209275/) | Merwan Chinta | Austin, TX | 28\. Januar 2016 | – |
 | [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | Vincent-Philippe Lauzon | Montreal (Quebec, Kanada) | 1\. Dezember 2015 | – |
-| [Meetup: SeattleJS](http://www.meetup.com/seattlejs/events/220102664/) | David Makogon | Seattle, WA | 12\. November 2015 | – |
-| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/) | Jeff Renz, Andrew Hoh, Aravind Ramachandran, John Macintyre | Seattle, WA | 27\. bis 30. Oktober 2015 | [Developing Modern Applications on Azure (Moderne Anwendungsentwicklung in Azure)](https://www.youtube.com/watch?v=k5Z24HX-RyQ) |
-| [CloudDevelop 2015](http://www.clouddevelop.org/) | David Makogon, Ryan Crawcour | Columbus, OH | 23\. Oktober 2015 | – |
-| [SQL Saturday #430 – Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx) | Leonard Lobel | Sofia, Bulgarien | 10\. Oktober 2015 | – |
-| [SQL Saturday #429 – Porto 2015](http://www.sqlsaturday.com/429/eventhome.aspx) | Leonard Lobel | Porto, Portugal | 3\. Oktober 2015 | – |
-| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon, Ryan Crawcour, John Macintyre | Virtuelle Veranstaltung | 29\. September 2015 | [Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
-| [SQL Saturday #434 – Holland 2015](http://www.sqlsaturday.com/434/eventhome.aspx) | Leonard Lobel | Utrecht, Niederlande | 26\. September 2015 | [Einführung in Azure DocumentDB](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
-| [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | Andrew Liu | San Francisco, CA | 15\. September 2015 | – |
-| [Treffen der Belarus Azure User Group](https://www.facebook.com/events/786540124800276/) | Alex Zyl | Minsk, Weißrussland | 9\. September 2015 | [Einführung in das DocumentDB-Konzept, Konsistenzebenen und Sharding-Strategien](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
+| [Meetup: SeattleJS](http://www.meetup.com/seattlejs/events/220102664/) | David Makogon | Seattle, WA | 12\. November 2015 | – |
+| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/) | Jeff Renz, Andrew Hoh, Aravind Ramachandran, John Macintyre | Seattle, WA | 27\. bis 30. Oktober 2015 | [Developing Modern Applications on Azure (Moderne Anwendungsentwicklung in Azure)](https://www.youtube.com/watch?v=k5Z24HX-RyQ) |
+| [CloudDevelop 2015](http://www.clouddevelop.org/) | David Makogon, Ryan Crawcour | Columbus, OH | 23\. Oktober 2015 | – |
+| [SQL Saturday #454 – Turin 2015](http://www.sqlsaturday.com/454/Sessions/Details.aspx?sid=40130) | Marco De Nittis | Turin, Italien | 10\. Oktober 2015 | – |
+| [SQL Saturday #430 – Sofia 2015](http://www.sqlsaturday.com/430/Sessions/Details.aspx?sid=36090) | Leonard Lobel | Sofia, Bulgarien | 10\. Oktober 2015 | – |
+| [SQL Samstag #444 – Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) | Jeff Renz | Kansas City, MO | 3\. Oktober 2015 | – |
+| [SQL Saturday #429 – Porto 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) | Leonard Lobel | Porto, Portugal | 3\. Oktober 2015 | – |
+| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon, Ryan Crawcour, John Macintyre | Virtuelle Veranstaltung | 29\. September 2015 | [Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
+| [SQL Saturday #434 – Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) | Leonard Lobel | Utrecht, Niederlande | 26\. September 2015 | [Einführung in Azure DocumentDB](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
+| [SQL Saturday #441 – Denver 2015](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) | Jeff Renz | Denver, CO | 19\. September 2015 | – |
+| [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | Andrew Liu | San Francisco, CA | 15\. September 2015 | – |
+| [Treffen der Belarus Azure User Group](https://www.facebook.com/events/786540124800276/) | Alex Zyl | Minsk, Weißrussland | 9\. September 2015 | [Einführung in das DocumentDB-Konzept, Konsistenzebenen und Sharding-Strategien](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
 | [NoSQL Now!](http://nosql2015.dataversity.net/) | David Makogon, Ryan Crawcour | San Jose, Kalifornien, USA | 18\. - 20. August 2015 | – |
-| [@Scale Seattle](http://www.atscaleconference.com/) | Dharma Shukla | Seattle, WA | 17\. Juni 2015 | [Schema Agnostic Indexing with Azure DocumentDB](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
+| [@Scale Seattle](http://www.atscaleconference.com/) | Dharma Shukla | Seattle, WA | 17\. Juni 2015 | [Schema Agnostic Indexing with Azure DocumentDB](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
 | [Tech Refresh 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015) | Bruno Lopes | Lissabon, Portugal | 15\. Juni 2015 | [DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
+| [SQL Samstag #417 – Sri Lanka 2015](http://www.sqlsaturday.com/417/Sessions/Details.aspx?sid=21415) | Mihail Mateev | Colombo, Sri Lanka | 06\. Juni 2015 | – |
 | [Meetup:Seattle Scalability Meetup](http://www.meetup.com/Seattle-Scalability-Meetup/events/204010442/) | Dharma Shukla | Seattle, WA | 27\. Mai 2015 | – |
-| [Database Month](http://www.databasemonth.com/database/azure-documentdb) | Dharma Shukla | New York, NY | 19\. Mai 2015 | [Azure DocumentDB: Massively-Scalable,­ Multi-Tenant Document Database Service](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
-| [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | London, Großbritannien | 19\. Mai 2015 | – |
+| [SQL Samstag #377 – Kiew 2015](http://www.sqlsaturday.com/377/Sessions/Details.aspx?sid=20322) | Mihail Mateev | Kiew, Ukraine | 23\. Mai 2015 | – |
+| [Database Month](http://www.databasemonth.com/database/azure-documentdb) | Dharma Shukla | New York, NY | 19\. Mai 2015 | [Azure DocumentDB: Massively-Scalable,­ Multi-Tenant Document Database Service](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
+| [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | London, Großbritannien | 19\. Mai 2015 | – |
 | [DevIntersection](https://devintersection.com/) | Andrew Liu | Scottsdale, Arizona, USA | 18\. bis 21. Mai 2015 | – |
-| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh, John Macintyre | Chicago, IL | 4\. bis 8. Mai 2015 | [SELECT Latest FROM DocumentDB (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[DocumentDB and Azure HDInsight: Better Together (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
-| [Build 2015](http://www.buildwindows.com/) | Ryan Crawcour | San Francisco, CA | 29\. April bis 1. Mai 2015 | [Build the Next Big Thing with Azure’s NoSQL Service: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
-| [Global Azure Bootcamp 2015 – Spanien](http://azurebootcamp.es/) | Luis Ruiz Pavon, Roberto Gonzalez | Madrid, Spanien | 25\. April 2015 | [#DEAN DocumentDB + Express + AngularJS + NodeJS running on Azure](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
-| [Meetup: Charlotte Microsoft Cloud](http://www.meetup.com/Charlotte-Microsoft-Cloud/events/221503519/) | Jamie Rance | Charlotte, North Carolina, USA | 8\. April 2015 | – |
-| [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) | Christian Holm Diget | Kopenhagen, Dänemark | 19\. Mai 2015 | – |
 | [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) | Andrew Liu | Seattle, WA | 14\. Mai 2015 | – |
-| [Meetup: Istanbul Azure Meetup](http://www.meetup.com/istanbul-azure-meetup/events/220325538/) | Daron Yondem | Istanbul, Türkei | 7\. März 2015 | – |
-| [Meetup: Great Lakes Area .Net User Group](http://www.meetup.com/Great-Lakes-Area-NET-User-Group-MIGANG/events/220364576/) | Michael Collier | Southfield, Michigan, USA | 18\. Februar 2015 | – |
-| [TechX Azure](https://www.youtube.com/channel/UCDRlI2E4z5qmHsBXTrFOE2Q) | Magnus Mårtensson | Stockholm, Schweden | 28\. bis 29. Januar 2015 | [DocumentDB in Azure the new NoSQL option for the Cloud](https://www.youtube.com/watch?v=Hw7hDYoChNI) |
+| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh, John Macintyre | Chicago, IL | 4\. bis 8. Mai 2015 | [SELECT Latest FROM DocumentDB (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[DocumentDB and Azure HDInsight: Better Together (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
+| [Build 2015](http://www.buildwindows.com/) | Ryan Crawcour | San Francisco, CA | 29\. April bis 1. Mai 2015 | [Build the Next Big Thing with Azure’s NoSQL Service: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
+| [Global Azure Bootcamp 2015 – Spanien](http://azurebootcamp.es/) | Luis Ruiz Pavon, Roberto Gonzalez | Madrid, Spanien | 25\. April 2015 | [#DEAN DocumentDB + Express + AngularJS + NodeJS running on Azure](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
+| [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) | Christian Holm Diget | Kopenhagen, Dänemark | 16\. April 2015 | – |
+| [Meetup: Charlotte Microsoft Cloud](http://www.meetup.com/Charlotte-Microsoft-Cloud/events/221503519/) | Jamie Rance | Charlotte, North Carolina, USA | 8\. April 2015 | – |
+| [SQL Saturday #375 – Silicon Valley 2015](http://www.sqlsaturday.com/375/Sessions/Details.aspx?sid=15289) | Ike Ellis | Mountain View, CA | 28\. März 2015 | – |
+| [Meetup: Istanbul Azure Meetup](http://www.meetup.com/istanbul-azure-meetup/events/220325538/) | Daron Yondem | Istanbul, Türkei | 7\. März 2015 | – |
+| [Meetup: Great Lakes Area .Net User Group](http://www.meetup.com/Great-Lakes-Area-NET-User-Group-MIGANG/events/220364576/) | Michael Collier | Southfield, Michigan, USA | 18\. Februar 2015 | – |
+| [TechX Azure](https://www.youtube.com/channel/UCDRlI2E4z5qmHsBXTrFOE2Q) | Magnus Mårtensson | Stockholm, Schweden | 28\. bis 29. Januar 2015 | [DocumentDB in Azure the new NoSQL option for the Cloud](https://www.youtube.com/watch?v=Hw7hDYoChNI) |
 
 ### Videos und Podcasts
 
 | Sendung | Referent | Datum | Episode |
 | ------------------------------------------- | --------------------------- | ------------------ | ------- |
+| Channel 9: Microsoft + Open Source | Jose Miguel Parrella | 14\. April 2016 | [From MEAN to DEAN in Azure with Bitnami, VM Scale Sets and DocumentDB](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) (Von MEAN zu DEAN in Azure mit Bitnami, VM-Skalierungsgruppen und DocumentDB) |
 | Wired2WinWebinar | Sai Sankar Kunnathukuzhiyil | 9\. März 2016 | [Developing Solutions with Azure DocumentDB (Entwickeln von Lösungen mit Azure DocumentDB)](https://www.youtube.com/watch?v=xKttEwXv_bs)
-| Integration User Group | Han Wong | 17\. Februar 2016 | [Analyze and visualize non-relational data with DocumentDB + Power BI (Analysieren und Visualisieren von nicht relationalen Daten mit DocumentDB + Power BI)](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
+| Integration User Group | Han Wong | 17\. Februar 2016 | [Analyze and visualize non-relational data with DocumentDB + Power BI (Analysieren und Visualisieren von nicht relationalen Daten mit DocumentDB + Power BI)](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
 | The Azure Podcast | Cale Teeter | 14\. Januar 2016 | [Episode 110: Using DocumentDB & Search (Episode 110: Verwenden von DocumentDB und Suche)](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
 | Kanal 9: Moderne Anwendungen | Tara Shankar Jana | 13\. Dezember 2016 | [Take a modern approach to data in your apps (Ein moderner Ansatz für Daten in Ihren Apps)](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
 | NinjaTips | Miguel Quintero | 10\. Dezember 2015 | [DocumentDB - Un vistazo general](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
-| Integration User Group | Howard Edidin | 9\. November 2015 | [Azure DocumentDB for Healthcare Integration – Part 2](http://www.integrationusergroup.com/azure-documentdb-for-healthcare-integration-part-2/) |
-| Integration User Group | Howard Edidin | 5\. Oktober 2015 | [Azure DocumentDB for Healthcare Integration](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
+| Integration User Group | Howard Edidin | 9\. November 2015 | [Azure DocumentDB for Healthcare Integration – Part 2](http://www.integrationusergroup.com/azure-documentdb-for-healthcare-integration-part-2/) |
+| Integration User Group | Howard Edidin | 5\. Oktober 2015 | [Azure DocumentDB for Healthcare Integration](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
 | DX Italy - #TecHeroes | Alessandro Melchiori | 2\. Oktober 2015 | [#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
-| Microsoft Cloud-Show – Podcast | Andrew Liu | 30\. September 2015 | [Episode 099 – Azure DocumentDB with Andrew Liu (in englischer Sprache)](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
-| .NET Rocks! – Podcast | Ryan Crawcour | 29\. September 2015 | [Data on DocumentDB with Ryan CrawCour](https://www.dotnetrocks.com/?show=1197) |
-| Data Exposed | Ryan Crawcour | 28\. September 2015 | [What's New with Azure DocumentDB Since GA](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-with-Azure-DocumentDB-Since-GA) |
-| The Azure Podcast | Cale Teeter | 17\. September 2015 | [Episode 94: azpodcast.com re-architecture](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
-| Cloud Cover | Ryan Crawcour | 4\. September 2015 | [Episode 185: DocumentDB Updates with Ryan CrawCour](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-185-DocDB-Updates-with-Ryan-CrawCour) |
+| Microsoft Cloud-Show – Podcast | Andrew Liu | 30\. September 2015 | [Episode 099 – Azure DocumentDB with Andrew Liu (in englischer Sprache)](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
+| .NET Rocks! – Podcast | Ryan Crawcour | 29\. September 2015 | [Data on DocumentDB with Ryan CrawCour](https://www.dotnetrocks.com/?show=1197) |
+| Data Exposed | Ryan Crawcour | 28\. September 2015 | [What's New with Azure DocumentDB Since GA](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-with-Azure-DocumentDB-Since-GA) |
+| The Azure Podcast | Cale Teeter | 17\. September 2015 | [Episode 94: azpodcast.com re-architecture](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
+| Cloud Cover | Ryan Crawcour | 4\. September 2015 | [Episode 185: DocumentDB Updates with Ryan CrawCour](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-185-DocDB-Updates-with-Ryan-CrawCour) |
 | CodeChat 033 | Greg Doerr | 28\. Juli 2015 | [Greg Doerr on Azure DocumentDB](https://channel9.msdn.com/Shows/codechat/033) |
-| NoSql Central | King Wilder | 25\. Mai 2015 | [Golf Tracker – A video overview on how to build a web application on top of AngularJS, WebApi 2, and DocumentDB.](http://www.nosqlcentral.net/Story/Details/videos/kahanu/1-documentdb-golf-tracker-overview) |
-| In-Memory Technologies PASS Virtual Chapter | Stephen Baron | 25\. Mai 2015 | [Hello DocumentDB](https://www.youtube.com/watch?v=itFXQCd9-dI) |
+| NoSql Central | King Wilder | 25\. Mai 2015 | [Golf Tracker – A video overview on how to build a web application on top of AngularJS, WebApi 2, and DocumentDB.](http://www.nosqlcentral.net/Story/Details/videos/kahanu/1-documentdb-golf-tracker-overview) |
+| In-Memory Technologies PASS Virtual Chapter | Stephen Baron | 25\. Mai 2015 | [Hello DocumentDB](https://www.youtube.com/watch?v=itFXQCd9-dI) |
 | Data Exposed | Ryan Crawcour | 8\. April 2015 | [DocumentDB General Availibility and What's New!](https://channel9.msdn.com/Shows/Data-Exposed/DocumentDB-General-Availability-and-Whats-New) |
-| Data Exposed | Andrew Liu | 17\. März 2015 | [Java SDK for DocumentDB](https://channel9.msdn.com/Shows/Data-Exposed/Java-SDK-for-DocumentDB) |
-| #DevHangout | Gustavo Alzate Sandoval | 11\. März 2015 | [DocumentDB, la base de datos NoSql de Microsoft Azure](https://www.youtube.com/watch?v=8Ud3jB8KOBA) |
-| Data Architecture Virtual Chapter PASS | Ike Ellis | 25\. Februar 2015 | [Introduction to DocumentDB](https://www.youtube.com/watch?v=7BQYdFUkz6s) |
+| Data Exposed | Andrew Liu | 17\. März 2015 | [Java SDK for DocumentDB](https://channel9.msdn.com/Shows/Data-Exposed/Java-SDK-for-DocumentDB) |
+| #DevHangout | Gustavo Alzate Sandoval | 11\. März 2015 | [DocumentDB, la base de datos NoSql de Microsoft Azure](https://www.youtube.com/watch?v=8Ud3jB8KOBA) |
+| Data Architecture Virtual Chapter PASS | Ike Ellis | 25\. Februar 2015 | [Introduction to DocumentDB](https://www.youtube.com/watch?v=7BQYdFUkz6s) |
 
 
 ### Onlinekurse
@@ -292,6 +305,6 @@ DocumentDB-Genies sind wichtige Mitglieder der Community, die sich durch ein bei
 | [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) <br/> [Allan Mitchell](https://twitter.com/allansqlis) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup) <br/> [Jen Stirrup](https://twitter.com/jenstirrup) | [![Lenni Lobel](./media/documentdb-community/wizard-lenni-lobel.jpg)](https://twitter.com/lennilobel) <br/> [Lenni Lobel](https://twitter.com/lennilobel) | [![Mihail Mateev](./media/documentdb-community/wizard-mihail-mateev.jpg)](https://twitter.com/mihailmateev) <br/> [Mihail Mateev](https://twitter.com/mihailmateev)|
 | [![Larry Maccherone](./media/documentdb-community/wizard-larry-maccherone.jpg)](https://twitter.com/lmaccherone) <br/> [Larry Maccherone](https://twitter.com/lmaccherone) | [![Howard Edidin](./media/documentdb-community/wizard-howard-edidin.jpg)](https://twitter.com/hsedidin) <br/> [Howard Edidin](https://twitter.com/hsedidin)
 
-Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
+Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

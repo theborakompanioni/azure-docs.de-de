@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erste Schritte mit dem Beispiel"
-   description="Erste Schritte mit dem Beispiel"
+   pageTitle="Power BI Embedded-Beispiele"
+   description="Power BI Embedded-Beispiele"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -32,6 +32,6 @@ Als Starthilfe haben wir eine Beispiel-Web-App erstellt. Sie können sie herunte
 ## Weitere Informationen
 
 - [Was ist Microsoft Power BI Embedded](power-bi-embedded-what-is-power-bi-embedded.md)
-- [Get started with Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md) (Erste Schritte mit Microsoft Power BI Embedded Preview)
+- [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -44,4 +44,4 @@ Führen Sie im Azure-Portal folgende Schritte aus, um einen logischen Azure SQL-
 
        ![Neuer logischer Server](./media/sql-database-create-new-server-portal/sql-database-create-new-server-portal-6.png)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

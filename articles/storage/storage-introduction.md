@@ -25,7 +25,7 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
 - Was Azure Storage ist und wie Sie in Ihren Cloud-, Mobilgerät-, Server- und Desktop-Anwendungen davon profitieren können
 - Welche Arten von Daten Sie mithilfe folgender Azure Storage-Dienste speichern können: Blobdaten (Objektdaten), NoSQL-Tabellendaten, Warteschlangennachrichten und Dateifreigaben
 - Wie der Zugriff auf Ihre Daten in Azure Storage verwaltet wird
-- Wie Ihre Azure Storage-Daten durch Redundanz und Replikation gesichert werden
+- Wie Ihre Azure Storage-Daten durch Redundanz und Replikation gespeichert werden
 - Welche Schritte erforderlich ist, um Ihre erste Azure Storage-Anwendung zu erstellen
 
 Informationen zum Einrichten und Starten von Azure Storage finden Sie unter [Erste Schritte mit Azure Storage – Einstieg in fünf Minuten](storage-getting-started-guide.md).
@@ -44,47 +44,30 @@ Azure Storage verwendet ein automatisches Partitionierungssystem, das einen auto
 
 Der Azure-Speicher ist weltweit und von jeder Art von Anwendung erreichbar, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen oder Tabletgerät läuft. Sie können Azure Storage in mobilen Szenarios verwenden, in denen eine Anwendung eine Datenteilmenge auf einem Gerät speichert und sie mit der vollständigen Datenmenge in der Cloud synchronisiert.
 
-Azure Storage unterstützt Kunden mit verschiedenen Betriebssystemen (z. B. Windows und Linux) und einer Vielzahl von Programmiersprachen (darunter .NET, Java und C++) für eine problemlose Entwicklung. Azure Storage macht auch Datenressourcen über einfache REST-APIs verfügbar, die auf jedem Client ausgeführt werden können, der Daten über HTTP/HTTPS senden und empfangen kann.
+Azure Storage unterstützt Kunden mit verschiedenen Betriebssystemen (z.B. Windows und Linux) und einer Vielzahl von Programmiersprachen (darunter .NET, Java, Node.js, Python, Ruby, PHP und C++ sowie mobile Programmiersprachen) für eine problemlose Entwicklung. Azure Storage macht auch Datenressourcen über einfache REST-APIs verfügbar, die auf jedem Client ausgeführt werden können, der Daten über HTTP/HTTPS senden und empfangen kann.
 
 Azure Premium Storage bietet eine leistungsstarke Datenträgerunterstützung mit niedriger Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Mit Azure Premium Storage können Sie mehrere persistente Datenträger an einen virtuellen Computer anfügen und diese gemäß Ihren Leistungsanforderungen konfigurieren. Jeder Datenträger wird für maximale E/A-Leistung von einer SSD-Festplatte in Azure Premium Storage unterstützt. Weitere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage-premium-storage-preview-portal).
 
 ## Anwenden der Azure Storage-Dienste
 
-Ein Azure-Speicherkonto ist ein sicheres Konto, mit dem Sie Zugriff auf Dienste in Azure-Speicher erhalten. Ihr Speicherkonto stellt den eindeutigen Namespace für Ihre Speicherressourcen bereit. Zwei Typen von Speicherkonten stehen zur Verfügung:
+Azure Storage enthält die folgenden vier Dienste: Blob Storage, Table Storage, Queue Storage und File Storage.
 
-- Ein Standardspeicherkonto umfasst Blob-, Tabellen- und Warteschlangenspeicher.
-- Ein Premium-Speicherkonto unterstützt aktuell ausschließlich Festplatten virtueller Azure-Computer.
+- In Blob Storage werden unstrukturierte Objektdaten gespeichert. Ein Blob kann jede Art von Text- oder binären Daten sein, z. B. ein Dokument, eine Mediendatei oder ein Anwendungs-Installer. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+- In Table Storage werden strukturierte Datensätze gespeichert. Der Tabellenspeicher ist ein NoSQL-Schlüssel-/Attribut-Datenspeicher, der eine rasche Entwicklung und schnellen Zugriff auf große Datenmengen erlaubt.
+- Queue Storage bietet eine zuverlässige Nachrichtenfunktion zur Workflowverarbeitung und zur Kommunikation zwischen Komponenten von Clouddiensten.
+- File Storage bietet einen gemeinsam genutzten Speicher für Legacyanwendungen unter Verwendung des standardmäßigen SMB-Protokolls. Virtuelle Azure-Computer und Clouddienste können Dateidaten in verschiedenen Anwendungskomponenten über eingebundene Freigaben teilen, und lokale Anwendungen können über die REST-API des Dateidiensts auf freigegebene Dateien zugreifen.
 
-Um ein Speicherkonto erstellen zu können, müssen Sie über ein Azure-Abonnement verfügen. Dies ist ein Plan, der Ihnen Zugriff auf eine Vielzahl von Azure-Diensten verschafft. Sie können bis zu 100 eindeutig benannte Speicherkonten unter einem einzigen Abonnement erstellen. Weitere Informationen zu den Begrenzungen von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md). Informationen zu Volumenpreisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
-
-Sie können die Verwendung von Azure mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) beginnen. Wenn Sie sich entscheiden, einen Abonnementplan zu kaufen, können Sie zwischen einer Vielzahl von [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) auswählen. [MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) erhalten ein monatliches Gratis-Guthaben für Azure-Dienste, inklusive Azure-Speicher.
-
-### Standardspeicherkonten
-
-Mit einem Standardspeicherkonto erhalten Sie Zugriff auf die verschiedenen Azure Storage-Datendienste, d. h. Blob Storage, Table Storage, Queue Storage und File Storage:
-
-- Im **Blob Storage** werden Dateidaten gespeichert. Ein Blob kann jede Art von Text- oder binären Daten sein, z. B. ein Dokument, eine Mediendatei oder ein Anwendungs-Installer. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
-- Im **Tabellenspeicher** werden strukturierte Datensätze gespeichert. Der Tabellenspeicher ist ein NoSQL-Schlüssel-/Attribut-Datenspeicher, der eine rasche Entwicklung und schnellen Zugriff auf große Datenmengen erlaubt.
-- **Queue Storage** bietet eine zuverlässige Nachrichtenfunktion zur Workflowverarbeitung und zur Kommunikation zwischen Komponenten von Clouddiensten.
-- **File Storage** bietet einen gemeinsam genutzten Speicher für Legacyanwendungen unter Verwendung des standardmäßige SMB-Protokolls. Virtuelle Azure-Computer und Clouddienste können Dateidaten in verschiedenen Anwendungskomponenten über eingebundene Freigaben teilen, und lokale Anwendungen können über die REST-API des Dateidiensts auf freigegebene Dateien zugreifen.
-
-Jedes Standardspeicherkonto kann bis zu 500 TB an kombinierten Blob-, Warteschlangen-, Tabellen- und Dateidaten enthalten. Unter [Ziele für Skalierbarkeit und Leistung des Azure-Speichers](storage-scalability-targets.md) finden Sie weitere Details zur Kapazität von Standardspeicherkonten.
-
-Die folgende Abbildung zeigt die Beziehungen zwischen Azure-Speicherressourcen in einem Standardspeicherkonto:
+Ein Azure-Speicherkonto ist ein sicheres Konto, mit dem Sie Zugriff auf Dienste in Azure-Speicher erhalten. Ihr Speicherkonto stellt den eindeutigen Namespace für Ihre Speicherressourcen bereit. Die folgende Abbildung zeigt die Beziehungen zwischen Azure Storage-Ressourcen in einem Speicherkonto:
 
 ![Azure-Speicherressourcen](./media/storage-introduction/storage-concepts.png)
 
-Informationen zum Erstellen eines Standardspeicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
-
-### Premium-Speicherkonten
-
-Azure Premium Storage unterstützt derzeit nur Datenträger in virtuellen Azure-Computern. Eine ausführliche Übersicht über Azure Premium-Speicher finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](storage-premium-storage.md).
+[AZURE.INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
 [AZURE.INCLUDE [storage-versions-include](../../includes/storage-versions-include.md)]
 
 ## Blob-Speicher
 
-Für Benutzer mit großen Mengen unstrukturierter Daten, die in einer Cloud gespeichert werden sollen, bietet der Blob-Speicher eine kostengünstige und skalierbare Lösung. Der Blob-Speicher dient zur Speicherung der folgenden Inhalte:
+Für Benutzer mit großen Mengen unstrukturierter Objektdaten, die in einer Cloud gespeichert werden sollen, bietet Blob Storage eine kostengünstige und skalierbare Lösung. Der Blob-Speicher dient zur Speicherung der folgenden Inhalte:
 
 - Dokumente
 - Daten aus sozialen Netzwerken wie Fotos, Videos, Musik und Blogs
@@ -93,11 +76,13 @@ Für Benutzer mit großen Mengen unstrukturierter Daten, die in einer Cloud gesp
 - Konfigurationsdaten für Cloudanwendungen
 - Große Datenmengen wie Protokolle und andere große Datensätze
 
-Jedes Blob ist in einem Container organisiert. Container bieten auch eine praktische Methode, um Gruppen von Objekten Sicherheitsrichtlinien zuzuordnen. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten, und ein Container kann eine beliebige Anzahl von Blobs enthalten. Die Speicherkapazität eines Speicherkontos beträgt 500 TB.
+Jedes Blob ist in einem Container organisiert. Container bieten auch eine praktische Methode, um Gruppen von Objekten Sicherheitsrichtlinien zuzuordnen. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten, und ein Container kann eine beliebige Anzahl von Blobs enthalten. Die Speicherkapazität eines Speicherkontos beträgt 500 TB.
 
-Der Blob-Speicher bietet drei Arten von Blobs: Block-Blobs, Anfüge-Blobs und Seiten-Blobs (Festplatten). Block-Blobs sind für das Streaming und die Speicherung von Cloudobjekten optimiert und stellen eine gute Wahl zur Speicherung von Dokumenten, Mediendateien, Sicherungskopien usw. dar. Anfüge-Blobs sind mit Block-Blobs vergleichbar, sind allerdings für Anfügevorgänge optimiert. Ein Anfüge-Blob kann nur durch Hinzufügen eines neuen Blocks an dessen Ende aktualisiert werden. Anfüge-Blobs sind eine gute Wahl für Szenarios wie die Protokollierung, bei denen neue Daten nur ans Ende des Blobs geschrieben werden müssen.
+Der Blob-Speicher bietet drei Arten von Blobs: Block-Blobs, Anfüge-Blobs und Seiten-Blobs (Festplatten).
 
-Seiten-Blobs sind für die Darstellung von IaaS-Festplatten und für die Unterstützung von Schreibzugriffen optimiert und können bis zu 1 TB groß sein. Eine an ein Netzwerk angehängte IaaS-Festplatte auf einem virtuellen Azure-Computer ist eine als Seiten-Blob gespeicherte virtuelle Festplatte.
+- Block-Blobs sind für das Streaming und die Speicherung von Cloudobjekten optimiert und stellen eine gute Wahl zur Speicherung von Dokumenten, Mediendateien, Sicherungskopien usw. dar.
+- Anfüge-Blobs sind mit Block-Blobs vergleichbar, sind allerdings für Anfügevorgänge optimiert. Ein Anfüge-Blob kann nur durch Hinzufügen eines neuen Blocks an dessen Ende aktualisiert werden. Anfüge-Blobs sind eine gute Wahl für Szenarios wie die Protokollierung, bei denen neue Daten nur ans Ende des Blobs geschrieben werden müssen.
+- Seiten-Blobs sind für die Darstellung von IaaS-Festplatten und für die Unterstützung von Schreibzugriffen optimiert und können bis zu 1 TB groß sein. Eine an ein Netzwerk angehängte IaaS-Festplatte auf einem virtuellen Azure-Computer ist eine als Seiten-Blob gespeicherte virtuelle Festplatte.
 
 Für sehr große Datensätze, bei denen Netzwerkbeschränkungen das Hochladen oder Herunterladen von Daten in Blob Storage über eine Kabelverbindung erschweren, können Sie wie folgt vorgehen: Schicken Sie eine Festplatte an Microsoft, um Ihre Daten direkt aus dem oder in das Rechenzentrum importieren bzw. exportieren zu lassen. Siehe [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blob-Speicher](storage-import-export-service.md).
 
@@ -117,7 +102,7 @@ NoSQL-Datenbanken wie der Tabellenspeicher bieten für heutige internetbasierte 
 
 Bei der Entwicklung von Anwendungen für Skalierungszwecke werden einzelne Anwendungskomponenten oft entkoppelt, damit sie unabhängig skaliert werden können. Der Warteschlangenspeicher bietet eine zuverlässige Messaginglösung für die asynchrone Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Der Warteschlangenspeicher unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
-Ein Speicherkonto kann eine beliebige Anzahl von Warteschlangen enthalten. Eine Warteschlange kann eine beliebige Anzahl von Nachrichten enthalten, bis zur Kapazitätsgrenze des Speicherkontos. Einzelne Nachrichten können bis zu 64 KB groß sein.
+Ein Speicherkonto kann eine beliebige Anzahl von Warteschlangen enthalten. Eine Warteschlange kann eine beliebige Anzahl von Nachrichten enthalten, bis zur Kapazitätsgrenze des Speicherkontos. Einzelne Nachrichten können bis zu 64 KB groß sein.
 
 ## Dateispeicher
 
@@ -153,17 +138,13 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Acces
 
 Über das Befehlszeilenprogramm AzCopy können Sie Blob-, Datei- und Tabellendaten innerhalb Ihres Speicherkontos oder zwischen mehreren Speicherkonten kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
-AzCopy baut auf der [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) auf, die derzeit in der Vorschau verfügbar ist.
+AzCopy baut auf der [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) auf, die derzeit als Vorschau verfügbar ist.
 
-Der Azure Import/Export-Dienst bietet eine Möglichkeit zum Importieren von Blobdaten in Ihr Speicherkonto oder zum Exportieren von Blobdaten aus Ihrem Speicherkonto über eine an das Azure-Rechenzentrum gesendete Festplatte. Weitere Informationen zu diesem Dienst finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Blob Storage](storage-import-export-service.md).
+Der Azure Import/Export-Dienst bietet eine Möglichkeit zum Importieren von Blobdaten in Ihr Speicherkonto oder zum Exportieren von Blobdaten aus Ihrem Speicherkonto über eine an das Azure-Rechenzentrum gesendete Festplatte. Weitere Informationen zu diesem Dienst finden Sie unter [Verwenden des Microsoft Azure Import-/Export-Diensts zum Übertragen von Daten in den Blob-Speicher](storage-import-export-service.md).
 
 ## Preise
 
-Kunden werden Azure-Speicherdienste auf der Basis der folgenden vier Faktoren in Rechnung gestellt: verwendete Speicherkapazität, ausgewählte Replikationsoption, Anzahl der Abfragen an den Dienst und Datenausgang.
-
-Speicherkapazität bezieht sich darauf, wie viel von Ihrer Speicherkontozuweisung zum Speichern von Daten verwendet wird. Die Kosten des einfachen Speicherns von Daten wird dadurch bestimmt, wie viele Daten Sie speichern und wie diese Daten repliziert werden. Für jede Lese- und Schreiboperation auf dem Azure-Speicher wird außerdem eine Anfrage an den Dienst ausgeführt. Datenausgang bezieht sich auf die Daten, die aus einer Microsoft Azure-Region heraus übertragen werden. Wenn eine Anwendung, die nicht in der gleichen Region ausgeführt wird und entweder ein Clouddienst oder ein anderer Anwendungstyp ist, auf die Daten in Ihrem Speicherkonto zugreift, fallen Gebühren für den Datenausgang an. (Für Microsoft Azure-Dienste können Sie Maßnahmen ergreifen, um Ihre Daten und Dienste in den gleichen Datencentern zu gruppieren und auf diese Weise Prozess- und Datenausgangsgebühren zu senken oder komplett einzusparen.)
-
-Die Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) enthält detaillierte Preisinformationen zu Speicherkapazität, Replikation und Transaktionen. In der [Datenübertragungs-Preisübersicht](https://azure.microsoft.com/pricing/details/data-transfers/) finden Sie detaillierte Preisinformationen für den Datenausgang. Sie können den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) verwenden, um Ihre Kosten zu bestimmen.
+[AZURE.INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
 ## APIs, Bibliotheken und Tools in Azure Storage
 
@@ -188,7 +169,7 @@ Auf Azure Storage-Ressourcen kann über jede Sprache zugegriffen werden, die HTT
 - [Storage Resource Provider-Cmdlets für PowerShell 1.0](https://msdn.microsoft.com/library/azure/mt607151.aspx)
 - [Storage-Dienstverwaltungs-REST-API (klassisch)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
-### Azure Storage-Datenverschiebungsdienste 
+### Azure Storage-Datenverschiebungsdienste
 
 - [REST-API für Import/Export-Dienst](https://msdn.microsoft.com/library/azure/dn529096.aspx)
 - [Storage Data Movement-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
@@ -208,9 +189,10 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
 - [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
 
-### Für PowerShell-Benutzer
+### Für Administratoren
 
 - [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)
+- [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](storage-azure-cli.md)
 
 ### Für .NET-Entwickler
 
@@ -224,7 +206,7 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 - [Verwenden des Blob-Speichers mit Java](storage-java-how-to-use-blob-storage.md)
 - [Verwenden des Tabellenspeichers mit Java](storage-java-how-to-use-table-storage.md)
 - [Verwenden des Warteschlangenspeichers mit Java](storage-java-how-to-use-queue-storage.md)
-- [Gewusst wie: Verwenden von File Storage mit Java](storage-java-how-to-use-file-storage.md) 
+- [Gewusst wie: Verwenden von File Storage mit Java](storage-java-how-to-use-file-storage.md)
 
 ### Für Node.js-Entwickler
 
@@ -251,4 +233,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 - [Verwenden des Warteschlangenspeichers mit Python](storage-python-how-to-use-queue-storage.md)
 - [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

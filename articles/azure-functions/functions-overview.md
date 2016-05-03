@@ -15,17 +15,19 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="03/09/2016"
+   ms.date="04/21/2016"
    ms.author="cfowler;mahender"/>
    
    
 # Übersicht zu Azure Functions
 
+Dieses Thema bietet einen allgemeinen Überblick über Azure Functions. Wenn Sie mit Azure Functions gleich loslegen möchten, beginnen Sie mit [Create your first Azure Function](functions-create-first-azure-function.md) (Erstellen Sie Ihre erste Funktion in Azure Functions). Mehr technische Informationen zu Functions finden Sie hingegen in der [Entwicklerreferenz](functions-reference.md).
+
 ## Eine schnellere Möglichkeit zur Verwendung von Funktionen
 
 Schreiben Sie jede Funktion in weniger als einer Minute – entweder für einen einfachen Auftrag zur Bereinigung einer Datenbank oder für die Erstellung von Funktionalität, mit der Millionen von Nachrichten von verbundenen Geräten verarbeitet werden. Verwenden Sie Ihre bevorzugte Programmiersprache (C#, Node.JS, Python usw.). Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure.
 
-Azure Functions ist eine Lösung für das einfache Ausführen kleiner Codeelemente oder „Funktionen“ in der Cloud. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Dadurch kann die Entwicklung noch produktiver werden, und Sie können in wenigen Minuten [mit Ihrer ersten Funktion beginnen](functions-create-first-azure-function.md).
+Azure Functions ist eine Lösung für das einfache Ausführen kleiner Codeelemente oder „Funktionen“ in der Cloud. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Dadurch kann die Entwicklung noch produktiver werden, und Sie können in wenigen Minuten [mit Ihrer ersten Funktion loslegen](functions-create-first-azure-function.md).
 
 ## Welche Möglichkeiten bestehen mit Functions?
 
@@ -46,13 +48,13 @@ Azure Functions ist eine für Unternehmen geeignete Plattform mit vollem Funktio
 
 Die folgenden Features sind in Azure Functions enthalten:
     
-* **Freie Sprachwahl:** Schreiben Sie Funktionen mit C#, Node.js, Python, F#, PHP, Batch, Bash, Java oder beliebigen anderen ausführbaren Programmen.  
-* **Preismodell mit nutzungsbasierter Bezahlung:** Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird. Weitere Informationen finden Sie unter der Option „Dynamischer App Service-Plan“ unten im [Abschnitt zu den Preisen](#pricing).  
-* **Eigene Abhängigkeiten (Bring Your Own Dependencies):** Functions unterstützt NuGet und NPM, sodass Sie Ihre bevorzugten Bibliotheken verwenden können.  
-* **Integrierte Sicherheit:** Schützen Sie per HTTP ausgelöste Funktionen mit OAuth-Anbietern wie Azure Active Directory, Facebook, Google, Twitter und Microsoft-Konto.  
-* **Integration ohne Code:** Profitieren Sie von der einfachen Nutzung von Azure-Diensten und SaaS-Angeboten (Software-as-a-Service). Beispiele finden Sie unten im [Abschnitt zu Integrationen](#integrations).  
-* **Flexible Entwicklung:** Ändern Sie Ihre Funktionen mit einem Editor im Portal, oder richten Sie die fortlaufende Integration ein, und stellen Sie Ihren Code über GitHub, Visual Studio Team Services usw. bereit.  
-* **Open Source:** Functions ist eine Open-Source-Anwendung und [bei GitHub verfügbar](https://github.com/azure/azure-webjobs-sdk-script).  
+* **Freie Sprachwahl**: Schreiben Sie Funktionen mit C#, Node.js, Python, F#, PHP, Batch, Bash, Java oder beliebigen anderen ausführbaren Programmen.  
+* **Preismodell mit nutzungsbasierter Bezahlung**: Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird. Weitere Informationen finden Sie unter der Option „Dynamischer App Service-Plan“ unten im [Abschnitt zu den Preisen](#pricing).  
+* **Eigene Abhängigkeiten**: Functions unterstützt NuGet und NPM, sodass Sie Ihre bevorzugten Bibliotheken verwenden können.  
+* **Integrierte Sicherheit**: Schützen Sie per HTTP ausgelöste Funktionen mit OAuth-Anbietern wie Azure Active Directory, Facebook, Google, Twitter und Microsoft-Konto.  
+* **Integration ohne Code**: Profitieren Sie von der einfachen Nutzung von Azure-Diensten und SaaS-Angeboten (Software-as-a-Service). Beispiele finden Sie unten im [Abschnitt zu Integrationen](#integrations).  
+* **Flexible Entwicklung**: Ändern Sie Ihre Funktionen mit einem Editor im Portal, oder richten Sie die fortlaufende Integration ein, und stellen Sie Ihren Code über GitHub, Visual Studio Team Services usw. bereit.  
+* **Open Source**: Functions ist eine Open-Source-Anwendung und [auf GitHub verfügbar](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ### <a name="integrations"></a>Integrationen
 
@@ -64,12 +66,20 @@ Azure Functions unterstützt eine Reihe von Integrationen in Azure und Drittanbi
 
 Es gibt zwei Möglichkeiten, Azure Functions auszuführen: mit einem dynamischen App Service-Plan und mit einem klassischen App Service-Plan.
 
-Bei einem **dynamischen App Service-Plan** müssen Sie sich keine Gedanken über die Ressourcenverwaltung machen. Bei jeder Ausführung Ihrer Funktion stellt Azure alle erforderlichen Verarbeitungsressourcen bereit. Sie bezahlen nur für den Zeitraum, in dem Ihr Code ausgeführt wird. Eine Preisübersicht finden Sie auf der Seite [Azure Functions – Preise](/pricing/details/functions).
+Bei einem **dynamischen App Service-Plan** müssen Sie sich keine Gedanken über die Ressourcenverwaltung machen. Bei jeder Ausführung Ihrer Funktion stellt Azure alle erforderlichen Verarbeitungsressourcen bereit. Sie bezahlen nur für den Zeitraum, in dem Ihr Code ausgeführt wird. Eine Preisübersicht finden Sie auf der Seite [Functions – Preise](/pricing/details/functions).
 
-Bei einem **klassischen App Service-Plan** können Sie Funktionen genauso wie Ihre Web-, mobilen und API-Apps ausführen. Dies ist eine hervorragende Lösung, wenn Sie App Service bereits für andere Anwendungen verwenden. Ihre Funktionen können ohne zusätzliche Kosten unter demselben Plan ausgeführt werden. Ausführliche Informationen finden Sie auf der Seite mit der [App Service-Preisübersicht](/pricing/details/app-service/).
+Bei einem **klassischen App Service-Plan** können Sie Funktionen genauso wie Ihre mobilen Apps sowie Ihre Web- und API-Apps ausführen. Dies ist eine hervorragende Lösung, wenn Sie App Service bereits für andere Anwendungen verwenden. Ihre Funktionen können ohne zusätzliche Kosten unter demselben Plan ausgeführt werden. Ausführliche Informationen finden Sie auf der Seite mit der [App Service-Preisübersicht](/pricing/details/app-service/).
 
 ## Melden von Problemen
 
 [AZURE.INCLUDE [Melden von Problemen](../../includes/functions-reporting-issues.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+##Nächste Schritte
+
++ [Create your first Azure Function (Erstellen Sie Ihre erste Funktion in Azure Functions)](functions-create-first-azure-function.md) Legen Sie direkt los und erstellen Sie mit dem Azure Functions-Schnellstart Ihre erste Funktion. 
++ [Azure Functions developer reference (Azure Functions-Entwicklerreferenz)](functions-reference.md) Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
++ [Testing Azure Functions (Testen von Azure Functions)](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen.
++ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans und wie Sie den richtigen Plan finden. 
++ [Was ist Azure App Service?](../app-service/app-service-value-prop-what-is.md) Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
+
+<!---HONumber=AcomDC_0427_2016-->

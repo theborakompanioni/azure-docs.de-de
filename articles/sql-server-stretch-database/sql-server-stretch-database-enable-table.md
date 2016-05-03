@@ -22,7 +22,7 @@ Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch |
 
 -   Wenn Sie Ihre historischen Daten in einer separaten Tabelle speichern, können Sie die ganze Tabelle migrieren.
 
--   Wenn die Tabelle alte und aktuelle Daten enthält, können Sie ein Filterprädikat zum Auswählen der Zeilen zum Migrieren angeben. Bis einschließlich RC2 von CTP 3.1 steht die Option zum Angeben eines Filterprädikats im Assistenten zum Aktivieren einer Datenbank für Stretch nicht zur Verfügung. Sie müssen eine CREATE TABLE- oder ALTER TABLE-Anweisung verwenden, um eine Tabelle für Stretch-Datenbank mit dieser Option zu konfigurieren.
+-   Wenn die Tabelle alte und aktuelle Daten enthält, können Sie ein Filterprädikat zum Auswählen der Zeilen zum Migrieren angeben.
 
 **Voraussetzungen** Wenn Sie **Stretch | Aktivieren** für eine Tabelle auswählen, Stretch-Datenbank bisher jedoch noch nicht für die Datenbank aktiviert war, konfiguriert der Assistent zuerst die Datenbank für Stretch-Datenbank. Führen Sie anstelle der Schritte in diesem Thema die Schritte unter [Enable Database for Stretch Wizard](sql-server-stretch-database-wizard.md) (Eine Datenbank für den Stretch-Assistenten aktivieren) aus.
 
@@ -43,7 +43,13 @@ Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch |
 
 Bestätigen Sie, dass die Tabelle, die Sie aktivieren möchten, angezeigt wird und ausgewählt ist.
 
-Bis einschließlich RC2 von CTP 3.1 können Sie mithilfe des Assistenten nur eine gesamte Tabelle migrieren. Wenn Sie ein Prädikat für die Auswahl von Zeilen für die Migration aus einer Tabelle angeben möchten, die historische und aktuelle Daten enthält, führen Sie die ALTER TABLE-Anweisung aus, um ein Prädikat anzugeben, nachdem Sie den Assistenten beendet haben. Beenden Sie alternativ den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, wie nachfolgend in diesem Thema beschrieben.
+In RC3 können Sie eine ganze Tabelle migrieren oder ein einfaches datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat zur Auswahl der zu migrierenden Zeilen verwenden, führen Sie einen der folgenden Schritte aus.
+
+-   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und ein Prädikat anzugeben.
+
+-   Führen Sie die ALTER TABLE-Anweisung aus, um ein Prädikat anzugeben, nachdem Sie den Assistenten beendet haben.
+
+Die ALTER TABLE-Syntax wird weiter unten in diesem Thema beschrieben.
 
 **Zusammenfassung**
 
@@ -56,14 +62,12 @@ Bis einschließlich RC2 von CTP 3.1 können Sie mithilfe des Assistenten nur ein
 ## <a name="EnableTSQLTable"></a>Verwenden von Transact-SQL zum Aktivieren von Stretch-Datenbank für eine Tabelle
 Sie können Stretch-Datenbank mithilfe von Transact-SQL für eine vorhandene Tabelle aktivieren oder eine neue Tabelle erstellen, in der Stretch-Datenbank aktiviert ist.
 
-### Allgemeine Optionen
+### Optionen
 Verwenden Sie die folgenden Optionen beim Ausführen von CREATE TABLE oder ALTER TABLE, um Stretch-Datenbank für eine Tabelle zu aktivieren.
 
--   Verwenden Sie optional die `FILTER_PREDICATE = <predicate>`-Klausel, um ein Prädikat anzugeben, mit dem Sie die zu migrierenden Zeilen auswählen können, wenn die Tabelle historische und aktuelle Daten enthält. Das Prädikat muss eine Inline-Tabellenwertfunktion aufrufen. Mehr Informationen finden Sie unter [Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)](sql-server-stretch-database-predicate-function.md). Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
+-   Verwenden Sie optional die `FILTER_PREDICATE = <predicate>`-Klausel, um ein Prädikat anzugeben, mit dem Sie die zu migrierenden Zeilen auswählen können, wenn die Tabelle sowohl historische als auch aktuelle Daten enthält. Das Prädikat muss eine Inline-Tabellenwertfunktion aufrufen. Weitere Informationen finden Sie unter [Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)](sql-server-stretch-database-predicate-function.md). Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
 
     >   [AZURE.NOTE] Falls Sie ein Filterprädikat mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet das Filterprädikat mithilfe des CROSS APPLY-Operators auf die Tabelle an.
-
-    Bis einschließlich RC2 in CTP 3.1 steht diese Option im Assistenten zum Aktivieren einer Datenbank für Stretch nicht zur Verfügung. Sie müssen eine CREATE TABLE- oder ALTER TABLE-Anweisung verwenden, um eine Tabelle für Stretch-Datenbank mit dieser Option zu konfigurieren. Weitere Informationen finden Sie unter [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
 
 -   Geben Sie `MIGRATION_STATE = OUTBOUND` an, um die Datenmigration sofort zu starten, oder `MIGRATION_STATE = PAUSED`, um den Start der Datenmigration zu verschieben.
 
@@ -76,7 +80,7 @@ Hier ist ein Beispiel, bei dem die gesamte Tabelle migriert wird und die Datenmi
 ALTER TABLE <table name>
     SET ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;
 ```
-Es folgt ein Beispiel, in dem nur die durch die Inline-Tabellenwertfunktion `dbo.fn_stretchpredicate` markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zum Filterprädikat finden Sie unter [Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)](sql-server-stretch-database-predicate-function.md).
+Es folgt ein Beispiel, in dem nur die durch die Inline-Tabellenwertfunktion `dbo.fn_stretchpredicate` markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zum Filterprädikat finden Sie unter [Use a filter predicate to select rows to migrate (Stretch Database)](sql-server-stretch-database-predicate-function.md) (Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)).
 
 ```tsql
 ALTER TABLE <table name>
@@ -96,7 +100,7 @@ Hier ist ein Beispiel, bei dem die gesamte Tabelle migriert wird und die Datenmi
 CREATE TABLE <table name> ...
     WITH ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;
 ```
-Es folgt ein Beispiel, in dem nur die durch die Inline-Tabellenwertfunktion `dbo.fn_stretchpredicate` markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zum Filterprädikat finden Sie unter [Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)](sql-server-stretch-database-predicate-function.md).
+Es folgt ein Beispiel, in dem nur die durch die Inline-Tabellenwertfunktion `dbo.fn_stretchpredicate` markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zum Filterprädikat finden Sie unter [Use a filter predicate to select rows to migrate (Stretch Database)](sql-server-stretch-database-predicate-function.md) (Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)).
 
 ```tsql
 CREATE TABLE <table name> ...
@@ -114,4 +118,4 @@ Weitere Informationen finden Sie unter [CREATE TABLE (Transact-SQL)](https://msd
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="04/13/2016" 
 	ms.author="awills"/>
 
 
@@ -35,7 +35,7 @@ Der standardmäßig verfügbare Abhängigkeitsmonitor meldet derzeit Aufrufe an 
  * Lokale oder Remote-HTTP-Aufrufe
  * Azure DocumentDb, Tabelle, Blobspeicher und Warteschlange
 * Java
- * Aufrufe an eine Datenbank über einen [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)-Treiber, z. B. MySQL, SQL Server, PostgreSQL oder SQLite.
+ * Aufrufe an eine Datenbank über einen [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)-Treiber, z. B. MySQL, SQL Server, PostgreSQL oder SQLite.
 * JavaScript auf Webseiten: Das [Webseiten-SDK](app-insights-javascript.md) protokolliert automatisch AJAX-Aufrufe als Abhängigkeiten.
 
 Mit der [TrackDependency-API](app-insights-api-custom-events-metrics.md#track-dependency) können Sie eigene SDK-Aufrufe zum Überwachen anderer Abhängigkeiten schreiben.
@@ -43,11 +43,11 @@ Mit der [TrackDependency-API](app-insights-api-custom-events-metrics.md#track-de
 
 ## So richten Sie die Abhängigkeitsüberwachung ein
 
-Sie benötigen ein [Microsoft Azure](http://azure.com)-Abonnement.
+Sie benötigen ein [Microsoft Azure](http://azure.com)-Abonnement.
 
 ### Wenn Ihre App auf Ihrem IIS-Server ausgeführt wird
 
-Wenn Ihre Web-App unter .NET 4.6 oder höher ausgeführt wird, erhalten Sie die automatische Abhängigkeitsüberwachung, wenn Sie [das Application Insights SDK in Ihrer App installieren](app-insights-asp-net.md). Es ist sonst nichts weiter erforderlich.
+Wenn Ihre Web-App auf .NET 4.6 oder höher ausgeführt wird, können Sie entweder [das Application Insights SDK in Ihrer App installieren](app-insights-asp-net.md) oder den Application Insights-Statusmonitor installieren. Sie benötigen nicht beides.
 
 Andernfalls installieren Sie den Application Insights-Statusmonitor auf dem Server:
 
@@ -88,14 +88,14 @@ Nach Abschluss des Assistenten können Sie die Konfiguration des Agenten später
 
 ### Wenn Ihre App als Azure-Web-App ausgeführt wird
 
-Fügen Sie in der Systemsteuerung Ihrer Azure-Web-App die Application Insights-Erweiterung hinzu.
+Fügen Sie in der Systemsteuerung Ihrer Azure-Web-App die Application Insights-Erweiterung hinzu.
 
 ![In der Web-App: Einstellungen, Erweiterungen, Hinzufügen, Application Insights](./media/app-insights-asp-net-dependencies/05-extend.png)
 
 
 ### Wenn es sich um ein Azure-Clouddienstprojekt handelt
 
-[Fügen Sie Web- und Workerrollen Skripts hinzu](app-insights-cloudservices.md#dependencies). Oder installieren Sie [.NET Framework 4.6 oder höher](../cloud-services/cloud-services-dotnet-install-dotnet.md).
+[Fügen Sie Web- und Workerrollen Skripts hinzu](app-insights-cloudservices.md#dependencies). Oder installieren Sie [.NET Framework 4.6 oder höher](../cloud-services/cloud-services-dotnet-install-dotnet.md).
 
 ## <a name="diagnosis"></a> Diagnostizieren von Leistungsproblemen der Abhängigkeit
 
@@ -170,11 +170,17 @@ Beispiel: Wenn Sie Ihren Code mit einer Assembly erstellen, die Sie nicht selbst
 
 Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivieren möchten, entfernen Sie den Verweis auf "DependencyTrackingTelemetryModule" in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
 
+## Problembehandlung
+
+*Das Erfolgsflag für die Abhängigkeit zeigt immer entweder TRUE oder FALSE.*
+
+* Führen Sie ein Upgrade auf die neueste Version des SDK durch. Wenn Sie eine niedrigere .NET-Version als 4.6 verwenden, installieren Sie den [Statusmonitor](app-insights-monitor-performance-live-website-now.md).
+
 ## Nächste Schritte
 
-- [Exceptions](../article/application-insights/app-insights-asp-net-exception-mvc.md#selector1)
-- [Daten zu Seiten und Benutzern](../article/application-insights/app-insights-asp-net-client.md#selector1)
-- [Availability](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+- [Exceptions](app-insights-asp-net-exception-mvc.md#selector1)
+- [Daten zu Seiten und Benutzern](app-insights-asp-net-client.md#selector1)
+- [Availability](app-insights-monitor-web-app-availability.md#selector1)
 
 
 
@@ -196,4 +202,4 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Verwalten von Azure Media Services-Konten mit PowerShell" 
 	description="Erfahren Sie, wie Sie Azure Media Services-Konten mit PowerShell-Cmdlets verwalten." 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 
@@ -122,4 +122,4 @@ Wenn Sie das Azure Media Services-Konto löschen möchten, verwenden Sie [Remove
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

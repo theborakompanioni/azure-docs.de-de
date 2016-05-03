@@ -3,7 +3,7 @@
     description="Erläuterung von Begriffen, die für die Tools für flexible Datenbanken verwendet werden" 
     services="sql-database" 
     documentationCenter="" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     authors="ddove" 
     editor=""/>
 
@@ -34,6 +34,14 @@ Diese Elemente werden in [Hinzufügen eines Shards mithilfe der Tools für elast
 **Lokale Shard-Zuordnung:** wird für einen Shard gespeichert und enthält die Zuordnungen für die Shardlets, die sich in dem Shard befinden.
 
 **Abfrage mehrerer Shards:** die Möglichkeit, eine Abfrage für mehrere Shards durchzuführen. Die Resultsets werden über die UNION ALL-Semantik zurückgegeben (auch als "Auffächerungsabfrage" bezeichnet). Vgl. **Datenabhängiges Routing**.
+
+**Mehrinstanzenfähig** und **Einzelner Mandant**: Zeigt eine Einzelmandanten- und eine mehrinstanzenfähige Datenbank:
+
+![Einzelmandanten- und mehrinstanzenfähige Datenbanken](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
+
+Hier ist eine Darstellung von Einzelmandanten- und mehrinstanzenfähigen **Sharddatenbanken**.
+
+![Einzelmandanten- und mehrinstanzenfähige Datenbanken](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
 **Bereichs-Shard-Zuordnung:** eine Shard-Zuordnung, in der die Shard-Verteilungsstrategie auf mehreren Bereichen zusammenhängender Werte basiert.
 
@@ -82,4 +90,4 @@ Diese Elemente werden in [Hinzufügen eines Shards mithilfe der Tools für elast
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

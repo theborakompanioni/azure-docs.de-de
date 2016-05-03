@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="visual-studio-online"
-   ms.date="12/16/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio 
@@ -79,4 +79,4 @@ Stellen Sie Fragen, und holen Sie sich Hilfe.
 
  - [Blogbeitrag: Intro to Azure AD (in englischer Sprache)](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

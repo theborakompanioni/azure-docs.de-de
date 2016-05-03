@@ -66,11 +66,11 @@ Die Verbindungszeichenfolge für die Anwendung wird im Azure-Portal angezeigt.
 
 -   Ersetzen Sie `<Your application name>` durch den Namen Ihrer Anwendung.
 
-> [AZURE.TIP] Das`android:label`-Attribut möglichst es Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, für dieses Attribut den Wert `"<Your application name>Service"` festzulegen (z. B. `"AcmeFunGameService"`).
+> [AZURE.TIP] Das`android:label`-Attribut möglichst es Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, für dieses Attribut den Wert `"<Your application name>Service"` festzulegen (z. B. `"AcmeFunGameService"`).
 
 Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement in demselben Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
 
-> [AZURE.NOTE] Sämtlicher in `Application.onCreate()` hinzugefügter Code und andere Anwendungsrückruffunktionen werden für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben (z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess, doppelte Übertragungsempfänger oder -dienste).
+> [AZURE.NOTE] Sämtlicher in `Application.onCreate()` hinzugefügter Code und andere Anwendungsrückruffunktionen werden für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben (z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess, doppelte Übertragungsempfänger oder -dienste).
 
 Wenn Sie `Application.onCreate()` außer Kraft setzen, wird empfohlen, den folgenden Codeausschnitt am Anfang der `Application.onCreate()`-Funktion hinzuzufügen:
 
@@ -90,7 +90,7 @@ Sie können auch `EngagementApplication` anstelle von `Application` erweitern: D
 
 ### Empfohlene Methode: Überladen der `Activity`-Klassen
 
-Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken erforderlich sind, müssen Sie einfach dafür sorgen, dass all Ihre `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen abgeleitet werden (wenn z. B. Ihre Legacy-Aktivität `ListActivity` erweitert, sorgen Sie dafür, dass sie `EngagementListActivity` erweitert).
+Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken erforderlich sind, müssen Sie einfach dafür sorgen, dass all Ihre `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen abgeleitet werden (wenn z. B. Ihre Legacy-Aktivität `ListActivity` erweitert, sorgen Sie dafür, dass sie `EngagementListActivity` erweitert).
 
 **Ohne Engagement:**
 
@@ -189,7 +189,7 @@ Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits
 
 ### Echtzeit-Berichterstellung für Speicherorte
 
-Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
+Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
 
 Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing <Reach-Audience-geofencing >Kriteriums in Reach-Kampagnen zu ermöglichen.
 
@@ -222,7 +222,7 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
 #### Berichterstellung im Hintergrund
 
-Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Verwenden Sie das Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
+Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Verwenden Sie das Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -310,27 +310,31 @@ Die Engagement-API ermöglicht es, alle erweiterten Funktionen von Engagement zu
 
 ##Erweiterte Konfiguration (in „AndroidManifest.xml“)
 
+### Aktivieren von Sperren
+
 Wenn Sie sicherstellen möchten, dass Statistiken bei der Verwendung von WLAN-Verbindungen oder bei Deaktiviertem Bildschirm in Echtzeit gesendet werden, fügen Sie die folgende optionale Berechtigung hinzu:
 
 			<uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+### Absturzbericht
 
 Fügen Sie folgenden Code (zwischen den Tags `<application>` und `</application>`) hinzu, um Absturzberichte zu deaktivieren:
 
 			<meta-data android:name="engagement:reportCrash" android:value="false"/>
 
+### Burstschwellenwert
+
 Standardmäßig meldet der Engagement-Dienst Protokolle in Echtzeit. Wenn Ihre Anwendung Protokolle sehr häufig meldet, ist es besser, die Protokolle zu puffern und sie in regelmäßigen Abständen alle auf einmal zu melden (dies wird als „Burstmodus“ bezeichnet). Fügen Sie dazu Folgendes (zwischen den Tags `<application>` und `</application>`) hinzu:
 
-			<meta-data android:name="engagement:burstThreshold" android:value="<interval between too bursts (in milliseconds)>"/>
+			<meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
 
 Der Burst-Modus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den Engagement-Monitor aus: Die Dauer von allen Sitzungen und Aufträgen wird auf den Burst-Schwellenwert gerundet (folglich sind eventuell Sitzungen und Aufträge, die kürzer als der Burst-Schwellenwert sind, möglicherweise nicht sichtbar). Es wird empfohlen, einen Burst-Schwellenwert von höchstens 30000 (30 s) zu verwenden.
 
-Der Engagement-Dienst richtet die Verbindung zu unseren Servern standardmäßig sofort ein, sobald das Netzwerk verfügbar ist. Fügen Sie Folgendes (zwischen den Tags `<application>` und `</application>`) hinzu, um die Verbindung zu verschieben:
-
-			<meta-data android:name="engagement:connection:delay" android:value="<delay (in milliseconds)>"/>
+### Sitzungstimeout
 
 Eine Sitzung wird standardmäßig 10 Sekunden nach dem Ende ihrer letzten Aktivität beendet (was in der Regel durch Drücken der Start- oder Zurück-Taste, durch den Wechsel des Mobiltelefons in den Leerlauf oder durch den Wechsel zu einer anderen Anwendung ausgelöst wird). Dadurch wird eine Sitzungsteilung vermieden, wenn der Benutzer die Sitzung beendet und sehr schnell zur Anwendung zurückkehrt (dies kann bei einer Bildübernahme, beim Prüfen einer Benachrichtigung usw. auftreten). Sie können diesen Parameter ändern. Fügen Sie dazu Folgendes (zwischen den Tags `<application>` und `</application>`) hinzu:
 
-			<meta-data android:name="engagement:sessionTimeout" android:value="<session timeout (in milliseconds)>"/>
+			<meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
 ##Deaktivieren der Protokollberichterstellung
 
@@ -380,4 +384,4 @@ Dann können Sie `CheckBoxPreference` wie folgt im Einstellungslayout hinzufüge
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

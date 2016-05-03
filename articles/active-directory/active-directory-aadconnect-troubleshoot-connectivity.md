@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="04/14/2016"
 	ms.author="andkjell"/>
 
 # Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect
@@ -37,10 +37,10 @@ Die folgende Tabelle zeigt die Grundvoraussetzungen für eine Verbindung mit Azu
 | URL | Port | Beschreibung |
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen. |
-| **.verisign.com | HTTP/80 | Wird zum Herunterladen von CRL-Listen verwendet. |
-| *.trust.com | HTTP/80 | Wird zum Herunterladen von CRL-Listen für MFA verwendet. |
-| *.windows.net | HTTPS/443 | Wird zum Anmelden bei Azure AD verwendet. |
-| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet. |
+| *.verisign.com | HTTP/80 | Wird zum Herunterladen von CRL-Listen verwendet. | 
+| *.trust.com | HTTP/80 | Wird zum Herunterladen von CRL-Listen für MFA verwendet. | 
+| *.windows.net | HTTPS/443 | Wird zum Anmelden bei Azure AD verwendet. | 
+| *.secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet. | 
 | *.microsoftonline.com | HTTPS/443 | Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet. |
 
 ## Fehler im Assistenten
@@ -55,7 +55,7 @@ Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kan
 - Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity), um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
 
 ### Der MFA-Endpunkt ist nicht erreichbar
-Dieser Fehler wird angezeigt, wenn der Endpunkt ****https://secure.aadcdn.microsoftonline-p.com** nicht erreicht werden kann und der globale Administrator MFA aktiviert hat. ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsoftonline-p.com** nicht erreicht werden kann und der globale Administrator MFA aktiviert hat. ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - Wenn diese Meldung angezeigt wird, stellen Sie sicher, dass dem Proxy der Endpunkt „secure.aadcdn.microsoftonline-p.com“ hinzugefügt wurde.
 
@@ -140,4 +140,4 @@ Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen ka
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

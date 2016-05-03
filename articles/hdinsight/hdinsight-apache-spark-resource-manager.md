@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight (Linux)
+# Verwalten von Ressourcen für den Apache Spark-Cluster in HDInsight unter Linux (Vorschau)
 
 Spark in Azure HDInsight (Linux) bietet die Ambari-Webbenutzeroberfläche zum Verwalten der Clusterressourcen und zum Überwachen der Integrität des Clusters. Sie können auch den Spark-Verlaufsserver nutzen, um Anwendungen zu verfolgen, deren Ausführung auf dem Cluster abgeschlossen wurde. Auf der YARN-Benutzeroberfläche können Sie die derzeit auf dem Cluster ausgeführten Anwendungen überwachen. Dieser Artikel enthält Anweisungen für den Zugriff auf diese Benutzeroberflächen sowie für das Ausführen einiger grundlegender Verwaltungsaufgaben mithilfe dieser Oberflächen.
 
@@ -27,7 +27,7 @@ Spark in Azure HDInsight (Linux) bietet die Ambari-Webbenutzeroberfläche zum Ve
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
-- Einen Apache Spark-Cluster unter HDInsight (Linux). Anweisungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+- Einen Apache Spark-Cluster unter HDInsight (Linux). Anweisungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## Wie wird die Ambari-Webbenutzeroberfläche gestartet?
 
@@ -138,4 +138,4 @@ Hier finden Sie einige gängige Szenarien, die bei Ihrem Spark Cluster ggf. auft
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

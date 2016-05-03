@@ -33,6 +33,8 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 - [Azure-Abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 - [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater) und/oder [Azure CLI](../xplat-cli-install.md). 
 
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+
 ## ARM-Vorlagen
 
 ARM-Vorlagen können HDInsight-Cluster, ihre abhängigen Ressourcen (z. B. das standardmäßige Speicherkonto) und andere Ressourcen (z. B. Azure SQL-Datenbank zur Verwendung von Apache Sqoop) für die Anwendung ganz einfach in einem einzigen, koordinierten Vorgang erstellt werden. In der Vorlage müssen Sie die Ressourcen definieren, die für die Anwendung erforderlich sind, und Bereitstellungsparameter für die Eingabe von Werten für unterschiedliche Umgebungen angeben. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
@@ -51,7 +53,7 @@ Gehen Sie wie folgt vor, um den HDInsight-Cluster zu erstellen.
 
 **So stellen Sie ein Cluster mithilfe einer ARM-Vorlage bereit**
 
-1. Speichern Sie die JSON-Datei aus [Anhang A](#appx-a-arm-template) auf Ihrer Arbeitsstation.
+1. Speichern Sie die JSON-Datei aus [Anhang A](#appx-a-arm-template) auf Ihrer Arbeitsstation.
 2. Legen Sie bei Bedarf die Parameter fest.
 3. Führen Sie die Vorlage mithilfe des folgenden PowerShell-Skripts aus:
 
@@ -128,7 +130,7 @@ Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../resour
 
 Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Ressourcen-Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
-Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ##Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -292,4 +294,4 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Windows-basierten H
         }
     }
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

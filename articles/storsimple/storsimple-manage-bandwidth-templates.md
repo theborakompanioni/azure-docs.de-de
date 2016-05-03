@@ -12,22 +12,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="04/14/2015"
    ms.author="alkohli" />
 
 # Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple Manager-Diensts
 
 ## Übersicht
 
-Bandbreitenvorlagen ermöglichen Ihnen, mehrere Zeitpläne für bestimmte Tageszeiten einzurichten, um den Datenverkehr vom StorSimple-Gerät zur Cloud zu konfigurieren. Sie können diese Zeitpläne auch erstellen, ändern, löschen und als Vorlagen speichern. Diese Bandbreitenvorlagen können dann mehrere Volumecontainer übergreifend zur Steuerung der Bandbreite angewendet werden, die das StorSimple-Gerät zum Ausführen von Cloudvorgängen benötigt. Je nach Bandbreiten-Nutzungsmuster können Sie auch aus einer Liste von Standardvorlagen auswählen.
+Bandbreitenvorlagen ermöglichen es Ihnen, die Netzwerkbandbreitennutzung für mehrere Zeitpläne für bestimmte Tageszeiten einzurichten, um den Datenverkehr vom StorSimple-Gerät zur Cloud zu konfigurieren.
 
 Mit Zeitplänen zur Bandbreiteneinschränkung können Sie folgende Aktionen ausführen:
 
-- Geben Sie Zeitpläne an, die die Auslastung der Netzwerkbandbreite abhängig von der Workload anpassen.
+- Geben Sie benutzerdefinierte Bandbreitenzeitpläne je nach Workloadnetzwerknutzung an.
 
 - Zentralisieren Sie die Verwaltung und verwenden Sie die Zeitpläne wiederholt einfach und nahtlos auf mehreren Geräten.
 
-Dieses Feature steht nur für physische StorSimple-Geräte und nicht für virtuelle Geräte zur Verfügung. Alle Bandbreitenvorlagen für den Dienst werden in einem Tabellenformat angezeigt und enthalten die folgenden Informationen:
+> [AZURE.NOTE] Dieses Feature steht nur für physische StorSimple-Geräte und nicht für virtuelle Geräte zur Verfügung.
+   
+Alle Bandbreitenvorlagen für den Dienst werden in einem Tabellenformat angezeigt und enthalten die folgenden Informationen:
 
 - **Name:** der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
 
@@ -35,13 +37,7 @@ Dieses Feature steht nur für physische StorSimple-Geräte und nicht für virtue
 
 - **Used by:** die Anzahl der Datenträger, die das Speicherkonto verwenden.
 
-Verwenden Sie die Seite **Konfigurieren** des StorSimple Manager-Diensts im klassischen Azure-Portal, um die Bandbreitenvorlagen zu verwalten. Im Folgenden werden die häufigsten auf dieser Seite ausgeführten Aufgaben im Zusammenhang mit Bandbreitenvorlagen aufgeführt:
-
-- Hinzufügen einer Bandbreitenvorlage
-- Bearbeiten einer Bandbreitenvorlage
-- Löschen einer Bandbreitenvorlage
-- Verwenden einer Standardbandbreitenvorlage
-- Erstellen einer Bandbreitenvorlage für einen gesamten Tag, die zu einem bestimmten Zeitpunkt startet
+Verwenden Sie die Seite **Konfigurieren** des StorSimple Manager-Diensts im klassischen Azure-Portal, um die Bandbreitenvorlagen zu verwalten.
 
 Zusätzliche Informationen zur Konfiguration von Bandbreitenvorlagen finden Sie in den folgenden Ressourcen:
 
@@ -68,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu erstellen.
    3. Wählen Sie in der Dropdownliste eine **Startzeit** aus. Dies liegt den Beginn des Zeitplans fest.
    4. Wählen Sie in der Dropdownliste eine **Endzeit** aus. Dies liegt das Ende des Zeitplans fest.
    
-         > [AZURE.NOTE] Überlappende Zeitpläne sind nicht erlaubt. Falls durch die Start- und Endzeiten ein überlappender Zeitplan entsteht, erhalten Sie eine entsprechende Fehlermeldung.
+         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
 
    5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
    
@@ -94,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu bearbeiten
 
 3. Klicken Sie unten auf der Seite auf **Speichern**, um die Änderungen zu speichern. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
-> [AZURE.NOTE]Sie können die Änderungen nicht speichern, wenn sich der bearbeitete Zeitplan mit einem vorhandenen Zeitplan in der Bandbreitenvorlage überschneidet, die Sie ändern.
+> [AZURE.NOTE] Sie können die Änderungen nicht speichern, wenn sich der bearbeitete Zeitplan mit einem vorhandenen Zeitplan in der Bandbreitenvorlage überschneidet, die Sie ändern.
 
 ## Löschen einer Bandbreitenvorlage
 
@@ -176,4 +172,4 @@ Folgen Sie diesen Empfehlungen für Ihr StorSimple-Gerät:
 
 Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0420_2016-->

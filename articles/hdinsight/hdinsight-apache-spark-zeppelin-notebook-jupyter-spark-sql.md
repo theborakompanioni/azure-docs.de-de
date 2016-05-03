@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Erste Schritte: Erstellen von Apache Spark für Azure HDInsight und Ausführen von interaktiven Abfragen per Spark-SQL
+# Erste Schritte: Erstellen eines Apache Spark-Clusters in HDInsight unter Windows und Ausführen von interaktiven Abfragen per Spark-SQL (Vorschau)
 
 > [AZURE.NOTE] HDInsight bietet jetzt Spark-Cluster unter Linux. Informationen zum Einstieg in Spark-Cluster unter Linux für HDInsight finden Sie unter [Erste Schritte: Erstellen von Apache Spark für Azure HDInsight (Linux)](hdinsight-apache-spark-jupyter-spark-sql.md).
 
@@ -36,9 +36,9 @@ Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie über ein Azure-Abonneme
 
 ## Erstellen eines HDInsight Spark-Clusters
 
-In diesem Abschnitt erstellen Sie einen HDInsight-Cluster der Version 3.2, der auf der Spark-Version 1.3.1 basiert. Informationen zu den verschiedenen HDInsight-Versionen und ihren SLAs finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
+In diesem Abschnitt erstellen Sie einen HDInsight-Cluster der Version 3.2, der auf der Spark-Version 1.3.1 basiert. Informationen zu den verschiedenen HDInsight-Versionen und ihren SLAs finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
 
->[AZURE.NOTE] Mit den Schritten in diesem Artikel wird ein Apache Spark-Cluster in HDInsight unter Verwendung grundlegender Konfigurationseinstellungen erstellt. Informationen zu anderen Clusterkonfigurationseinstellungen (z. B. zur Verwendung von zusätzlichem Speicher, einem virtuellen Azure-Netzwerk oder einem Metastore für Hive) finden Sie unter [Erstellen von HDInsight-Clustern mit benutzerdefinierten Optionen](hdinsight-apache-spark-provision-clusters.md).
+>[AZURE.NOTE] Mit den Schritten in diesem Artikel wird ein Apache Spark-Cluster in HDInsight unter Verwendung grundlegender Konfigurationseinstellungen erstellt. Informationen zu anderen Clusterkonfigurationseinstellungen (z. B. zur Verwendung von zusätzlichem Speicher, einem virtuellen Azure-Netzwerk oder einem Metastore für Hive) finden Sie unter [Erstellen von HDInsight-Clustern mit benutzerdefinierten Optionen](hdinsight-apache-spark-provision-clusters.md).
 
 
 **Erstellen eines Spark-Clusters**
@@ -93,12 +93,12 @@ In diesem Abschnitt erstellen Sie einen HDInsight-Cluster der Version 3.2, der a
 	| ------------------ | --------------------- |
 	| ![Erstellungsanzeige im Startmenü](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/provisioning.png) | ![Kachel für einen erstellten Cluster](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/provisioned.png) |
 
-	> [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
+	> [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
 
 10. Klicken Sie nach Abschluss der Erstellung im Startmenü auf die Kachel für den Spark-Cluster, um das Clusterblatt zu öffnen.
 
 
-## <a name="zeppelin"></a>Ausführen von interaktiven Spark SQL-Abfragen mit einem Zeppelin Notebook
+## <a name="zeppelin"></a>Ausführen von interaktiven Spark SQL-Abfragen mit einem Zeppelin Notebook
 
 Nachdem Sie einen Cluster erstellt haben, können Sie ein webbasiertes Zeppelin Notebook verwenden, um interaktive Spark SQL-Abfragen für den Spark HDInsight-Cluster auszuführen. In diesem Abschnitt verwenden wir eine Beispieldatendatei (hvac.csv), die im Cluster standardmäßig verfügbar ist, um interaktive Spark-SQL-Abfragen auszuführen.
 
@@ -215,7 +215,7 @@ In diesem Abschnitt verwenden Sie ein Jupyter Notebook, um Spark-SQL-Abfragen f�
 		sc = SparkContext('spark://headnodehost:7077', 'pyspark')
 		sqlContext = SQLContext(sc)
 
-	Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der oberen rechten Ecke einen ausgefüllten Kreis neben dem Text **Python 2**. Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
+	Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der oberen rechten Ecke einen ausgefüllten Kreis neben dem Text **Python 2**. Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
 
 	 ![Status eines Jupyter Notebook-Auftrags](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/hdispark.jupyter.job.status.png "Status eines Jupyter Notebook-Auftrags")
 
@@ -281,7 +281,7 @@ In diesem Abschnitt verwenden Sie ein Jupyter Notebook, um Spark-SQL-Abfragen f�
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
 * [Erstellen eines Spark-Clusters in HDInsight](hdinsight-apache-spark-provision-clusters.md)
 * [Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools.md)
-* [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Verwenden von Spark in HDInsight zum Erstellen von Machine Learning-Anwendungen](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [Verwenden von Spark in HDInsight zum Erstellen von Echtzeit-Streaminganwendungen](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
@@ -296,4 +296,4 @@ In diesem Abschnitt verwenden Sie ein Jupyter Notebook, um Spark-SQL-Abfragen f�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

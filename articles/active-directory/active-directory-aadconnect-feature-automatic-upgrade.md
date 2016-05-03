@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/16/2016"
+   ms.date="04/15/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Automatisches Upgrade
@@ -43,7 +43,44 @@ Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastru
 
 Wenn auf dem Server die **Synchronization Service Manager**-Benutzeroberfläche geöffnet ist, wird das Upgrade angehalten, bis die Benutzeroberfläche geschlossen wird.
 
+## Problembehandlung
+Wenn das automatische Upgrade Ihrer Connect-Installation nicht wie erwartet funktioniert, befolgen Sie diese Schritte, um herauszufinden, wo der Fehler liegen könnte.
+
+Ein automatisches Upgrade wird voraussichtlich nicht direkt am Erscheinungstag einer neuen Version versucht. Upgrades unterliegen einer beabsichtigten Zufälligkeit – Sie müssen sich also keine Sorgen machen, wenn Ihre Installation nicht sofort aktualisiert wird.
+
+Wenn Sie der Meinung sind, dass ein Fehler vorliegt, führen Sie zuerst `Get-ADSyncAutoUpgrade` aus, um sicherzustellen, dass das automatische Upgrade aktiviert ist.
+
+Starten Sie das Ereignisprotokoll, und sehen Sie sich das Protokoll für die **Anwendung** an. Fügen Sie einen Ereignisprotokollfilter für die Quelle **Azure AD Connect Upgrade** und den Ereignis-ID-Bereich **300-399** hinzu. ![Ereignisprotokollfilter für das automatische Upgrade](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)
+
+Damit rufen Sie alle Ereignisprotokolle ab, die dem Status für das automatische Upgrade zugeordnet sind. ![Ereignisprotokollfilter für das automatische Upgrade](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)
+
+In ersten Teil des Ergebnisses erhalten Sie einen Überblick über den Status.
+
+| Ergebnispräfix | Beschreibung |
+| --- | --- |
+| Erfolgreich | Das Upgrade der Installation wurde erfolgreich durchgeführt. |
+| UpgradeAborted | Das Upgrade wurde durch ein temporäres Problem angehalten. Das Upgrade wird erneut versucht, und es wird erwartet, dass es erfolgreich durchgeführt werden kann. |
+| UpgradeNotSupported | Die Konfiguration des Systems blockiert das automatische Upgrade. Das Upgrade wird erneut versucht, um zu ermitteln, ob sich der Status ändert. Es ist jedoch damit zu rechnen, dass das Upgrade für das System manuell durchgeführt werden muss. |
+
+Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt werden. Es werden nicht alle Meldungen aufgeführt, aber aus den Ergebnismeldungen wird das jeweilige Problem klar.
+
+| Ergebnismeldung | Beschreibung |
+| --- | --- |
+| **UpgradeAborted** | |
+| UpgradeAbortedSyncExeInUse | Die [Synchronization Service Manager-Benutzeroberfläche](active-directory-aadconnectsync-service-manager-ui.md) ist auf dem Server geöffnet.
+| UpgradeAbortedInsufficientDiskSpace | Es ist nicht genügend Speicherplatz vorhanden, um ein Upgrade zu unterstützen. |
+| UpgradeAbortedSyncCycleDisabled | Die SyncCycle-Option im [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) wurde deaktiviert. |
+| UpgradeAbortedSyncOrConfigurationInProgress | Der Installations-Assistent wird ausgeführt, oder es wurde eine Synchronisierung außerhalb des Schedulers geplant. |
+| **UpgradeNotSupported** | |
+| UpgradeNotSupportedCustomizedSyncRules | Sie haben der Konfiguration eigene benutzerdefinierte Regeln hinzugefügt. |
+| UpgradeNotSupportedDeviceWritebackEnabled | Sie haben die Funktion [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md) aktiviert. |
+| UpgradeNotSupportedGroupWritebackEnabled | Sie haben die Funktion [Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) aktiviert. |
+| UpgradeNotSupportedMetaverseSizeExceeeded | Es sind mehr als 100.000 Objekte im Metaverse enthalten. |
+| UpgradeNotSupportedMultiForestSetup | Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |
+| UpgradeNotSupportedNonMsolAccount | Das [AD-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das MSOL\_-Standardkonto.
+| UpgradeNotSupportedStagingModeEnabled | Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) festgelegt. |
+
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

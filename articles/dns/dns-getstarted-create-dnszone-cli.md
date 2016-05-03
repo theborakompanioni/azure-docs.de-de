@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie DNS-Zonen für Azure DNS Schritt für Schritt erstellen, um mit dem Hosten der DNS-Domäne mithilfe der Befehlszeilenschnittstelle (CLI) zu beginnen."
    services="dns"
    documentationCenter="na"
-   authors="joaoma"
+   authors="cherylmc"
    manager="carmonm"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 # Erste Schritte mit Azure DNS mithilfe der Befehlszeilenschnittstelle (CLI)
 
@@ -43,7 +43,7 @@ Installieren Sie die Azure-Befehlszeilenschnittstelle. Sie können die Azure-Bef
 
 ### Schritt 2
 
-Azure DNS verwendet den Azure-Ressourcen-Manager. Stellen Sie sicher, dass Sie die Befehlszeilenschnittstelle so einstellen, dass ARM-Befehle und DNS verwendet werden.
+Azure DNS verwendet den Azure-Ressourcen-Manager. Achten Sie darauf, zum CLI-Modus zur Verwendung von ARM-Befehlen zu wechseln.
 
 	Azure config mode arm
 
@@ -78,15 +78,15 @@ Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. 
 
 ## Tags
 
-Tags unterscheiden sich von Etags. Tags sind eine Liste von Name-Wert-Paaren, die vom Azure-Ressourcen-Manager zum Beschriften von Ressourcen zu Abrechnungs- oder Gruppierungszwecken verwendet werden. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md). Die Azure DNS-Befehlszeilenschnittstelle unterstützt Tags für Zonen und Datensatzgruppen, die mithilfe des Optionsparameters "-Tag" angegeben wurden. Das folgende Beispiel zeigt, wie Sie eine DNS-Zone mit zwei Tags erstellen, "project = demo" und "env = test":
+Tags sind eine Liste von Name-Wert-Paaren, die vom Azure-Ressourcen-Manager zum Beschriften von Ressourcen zu Abrechnungs- oder Gruppierungszwecken verwendet werden. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md). Die Azure DNS-CLI unterstützt Tags von DNS-Zonen, die mithilfe des Optionsparameters „-Tag“ angegeben wurden. Das folgende Beispiel zeigt, wie Sie eine DNS-Zone mit zwei Tags erstellen, "project = demo" und "env = test":
 
-	Azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
+	Azure network dns zone create myresourcegroup contoso.com -t "project=demo";"env=test"
 
 ## Erstellen einer DNS-Zone
 
 Eine DNS-Zone wird mit dem `azure network dns zone create`-Befehl erstellt. Im folgenden Beispiel erstellen Sie eine DNS-Zone namens "contoso.com" in der Ressourcengruppe namens "MyResourceGroup":
 
-    Azure network dns zone create -n contoso.com -g myresourcegroup
+    Azure network dns zone create myresourcegroup contoso.com
 
 
 >[AZURE.NOTE] In Azure DNS sollten Zonennamen ohne einen terminierenden '.' angegeben werden, z. B. 'contoso.com' statt 'contoso.com.'.
@@ -121,7 +121,7 @@ Im folgenden Beispiel ergibt das Ausführen des Befehls mit der Ressourcengruppe
 	data:      Refresh time                  : 900
 	data:      Retry time                    : 300
 	data:                                    :
-<BR> Um die erstellten NS-Datensätze anzuzeigen, verwenden Sie den folgenden Befehl:
+<BR> Zum Anzeigen der erstellten NS-Datensätze mit Zone verwenden Sie den folgenden Befehl:
 
 	azure network dns record-set show myresourcegroup "contoso.com" "@" NS
 	info:    Executing command network dns-record-set show
@@ -141,7 +141,7 @@ Im folgenden Beispiel ergibt das Ausführen des Befehls mit der Ressourcengruppe
 
 >[AZURE.NOTE] Datensatzgruppen am Stamm (oder der "Spitze") einer DNS-Zone verwenden "@" als Datensatzgruppennamen.
 
-Nach der Erstellung Ihrer ersten DNS-Zone können Sie sie mithilfe von DNS-Tools wie "nslookup", "DIG" oder mit dem PowerShell-Cmdlet **Resolve-DnsName** testen. Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind in den NS-Einträgen enthalten, die von "azure network dns-record-set show" aufgelistet werden. Ersetzen Sie im folgenden Befehl die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
+Nach der Erstellung Ihrer ersten DNS-Zone können Sie sie mithilfe von DNS-Tools wie "nslookup", "DIG" oder mit dem PowerShell-Cmdlet **Resolve-DnsName** testen. Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind in den NS-Einträgen enthalten, die von „azure network dns-record-set show“ aufgelistet werden. Ersetzen Sie im folgenden Befehl die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
 
 Im folgenden Beispiel wird DIG zum Abfragen der Domäne "contoso.com" mithilfe der Namenserver verwendet, die der DNS-Zone zugewiesen sind. Die Abfrage muss mithilfe von DIG auf einen Namenserver, für den wir `@<name server for the zone>` verwendet haben, und den Zonennamen verweisen.
 
@@ -171,4 +171,4 @@ Im folgenden Beispiel wird DIG zum Abfragen der Domäne "contoso.com" mithilfe d
 
 Nach dem Erstellen einer DNS-Zone müssen Sie [Datensatzgruppen und Einträge](dns-getstarted-create-recordset-cli.md) zum Auflösen von Namen für Ihre Internetdomäne erstellen.<BR> Außerdem erhalten Sie Informationen zum [Verwalten von DNS-Zonen](dns-operations-dnszones-cli.md) und den zugehörigen DNS-Zonenvorgängen.<BR> Erfahren Sie mehr zum [Verwalten von DNS-Einträgen](dns-operations-recordsets-cli.md) und zum [Automatisieren von Azure-Vorgängen mit .NET SDK](dns-sdk.md)<BR> in der [REST-API-Referenz für Azure DNS](https://msdn.microsoft.com/library/azure/mt163862.aspx).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

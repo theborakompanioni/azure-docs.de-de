@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines Data Lake Analytics-Kontos, Erstellen eines Data Lake Analytics-Auftrags mit U-SQL und Senden des Auftrags verwenden." 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -13,8 +13,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/04/2016"
-   ms.author="jgao"/>
+   ms.date="04/21/2016"
+   ms.author="edmaca"/>
 
 # Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
 
@@ -24,16 +24,9 @@ Enthält Informationen zum Verwenden des Azure-Portals zum Erstellen von Azure D
 
 In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulatorgetrennten Werten (TSV) gelesen und in eine Datei mit kommagetrennten Werten (CSV) konvertiert wird. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt. Nachdem Ihr erster Auftrag erfolgreich durchgeführt wurde, können Sie damit beginnen, mit U-SQL komplexere Datentransformationen zu schreiben.
 
-**Der grundlegende Data Lake Analytics-Prozess:**
+[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
 
-![Azure Data Lake Analytics-Prozessflussdiagramm](./media/data-lake-analytics-get-started-portal/data-lake-analytics-process.png)
-
-1. Erstellen Sie ein Data Lake Analytics-Konto.
-2. Vorbereiten der Quelldaten. Bei Data Lake Analytics-Aufträgen können Daten entweder aus Azure Data Lake-Speicherkonten oder Azure-BLOB-Speicherkonten gelesen werden. In diesem Beispiel werden Daten aus dem Azure Data Lake-Speicher gelesen.  
-3. Entwickeln Sie ein U-SQL-Skript.
-4. Übermitteln Sie einen Auftrag (U-SQL-Skript) an das Data Lake Analytics-Konto. Für den Auftrag werden die Quelldaten gelesen, die Daten werden gemäß Anweisung im U-SQL-Skript verarbeitet, und anschließend wird die Ausgabe entweder in einem Data Lake-Speicherkonto oder einem BLOB-Speicherkonto gespeichert.
-
-###Voraussetzungen
+##Voraussetzungen
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
@@ -51,7 +44,7 @@ Jedes Data Lake Analytics-Konto ist von einem [Azure Data Lake-Speicher]()konto 
 2. Klicken Sie auf **Neu**, auf **Daten + Analysen** und anschließend auf **Data Lake Analytics**.
 6. Geben Sie Folgendes ein bzw. wählen Sie aus:
 
-    ![Azure Data Lake Analytics-Portalblatt](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
+    ![Portalblatt für Azure Data Lake Analytics](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
 	- **Name**: Geben Sie dem Analytics-Konto einen Namen.
 	- **Data Lake-Speicher**: Jedes Data Lake Analytics-Konto verfügt über ein abhängiges Data Lake-Speicherkonto. Das Data Lake Analytics-Konto und das abhängige Data Lake-Speicherkonto müssen sich in demselben Azure-Rechenzentrum befinden. Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake-Speicherkontos aus, oder wählen Sie ein vorhandenes Konto aus.
@@ -162,4 +155,4 @@ Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln ein
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 - Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0427_2016-->

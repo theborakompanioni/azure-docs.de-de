@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/25/2016"
+   ms.date="04/21/2016"
    ms.author="edmaca"/>
 
 # Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK
@@ -25,25 +25,15 @@ Enthält Informationen zum Verwenden des Azure .NET SDK zum Erstellen von Azure 
 
 In diesem Lernprogramm wird eine C#-Konsolenanwendung entwickelt, die ein U-SQL-Skript enthält, das eine durch Tabulatorzeichen getrennte Datei (TSV) einliest und sie in eine kommagetrennte Datei (CSV) umwandelt. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
 
-**Der grundlegende Data Lake Analytics-Prozess:**
-
-![Azure Data Lake Analytics-Prozessflussdiagramm](./media/data-lake-analytics-get-started-portal/data-lake-analytics-process.png)
-
-1. Erstellen Sie ein Data Lake Analytics-Konto.
-2. Vorbereiten der Quelldaten. Data Lake Analytics-Aufträge können Daten entweder von Azure Data Lake-Speicherkonten oder von Azure Blob-Speicherkonten lesen.   
-3. Entwickeln Sie ein U-SQL-Skript.
-4. Übermitteln Sie einen Auftrag (U-SQL-Skript) an das Data Lake Analytics-Konto. Für den Auftrag werden die Quelldaten gelesen, die Daten werden gemäß Anweisung im U-SQL-Skript verarbeitet, und anschließend wird die Ausgabe entweder in einem Data Lake-Speicherkonto oder einem BLOB-Speicherkonto gespeichert.
+[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
 
 ##Voraussetzungen
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-- **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++**.
-- **Microsoft Azure SDK für .NET-Version 2.5 oder höher**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
-- **[Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs)**. 
-- **Data Lake Analytics-Konto**. Weitere Informationen finden Sie unter [Erstellen eines Azure Data Lake Analytics-Kontos](data-lake-analytics-get-started-portal.md#create_adl_analytics_account).
-
-	Für die Data Lake-Tools für Visual Studio wird das Erstellen von Data Lake Analytics-Konten nicht unterstützt. Verwenden Sie zum Erstellen eines Kontos das Azure-Portal, Azure PowerShell, das Azure .NET SDK oder die Azure-Befehlszeilenschnittstelle.
+- **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++**.
+- **Microsoft Azure SDK für .NET-Version 2.5 oder höher**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
+- **[Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs)** 
 
 ##Erstellen einer Konsolenanwendung
 
@@ -224,16 +214,13 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
                     _adlaClient.SubscriptionId = subscriptionId;
 
                     _adlaJobClient = new DataLakeAnalyticsJobManagementClient(tokenCreds);
-                    _adlaJobClient.SubscriptionId = subscriptionId;
 
                     _adlaCatalogClient = new DataLakeAnalyticsCatalogManagementClient(tokenCreds);
-                    _adlaCatalogClient.SubscriptionId = subscriptionId;
 
                     _adlsClient = new DataLakeStoreAccountManagementClient(tokenCreds);
                     _adlsClient.SubscriptionId = subscriptionId;
 
                     _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(tokenCreds);
-                    _adlsFileSystemClient.SubscriptionId = subscriptionId;
                 }
 
                 // Create accounts
@@ -296,7 +283,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
                     var properties = new USqlJobProperties(script);
                     var parameters = new JobInformation(jobName, JobType.USql, properties);
 
-                    var jobInfo = _adlaJobClient.Job.Create(jobId, parameters, _adlaAccountName);
+                    var jobInfo = _adlaJobClient.Job.Create(_adlaAccountName, jobId, parameters);
                     
                     return jobId;
                 }
@@ -310,17 +297,17 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
                     var properties = new USqlJobProperties(script);
                     var parameters = new JobInformation(jobName, JobType.USql, properties, priority: 1000, degreeOfParallelism: 1);
 
-                    var jobInfo = _adlaJobClient.Job.Create(jobId, parameters, _adlaAccountName);
+                    var jobInfo = _adlaJobClient.Job.Create(_adlaAccountName, jobId, parameters);
 
                     return jobId;
                 }
 
                 public static JobResult WaitForJob(Guid jobId)
                 {
-                    var jobInfo = _adlaJobClient.Job.Get(jobId, _adlaAccountName);
+                    var jobInfo = _adlaJobClient.Job.Get(_adlaAccountName, jobId);
                     while (jobInfo.State != JobState.Ended)
                     {
-                        jobInfo = _adlaJobClient.Job.Get(jobId, _adlaAccountName);
+                        jobInfo = _adlaJobClient.Job.Get(_adlaAccountName, jobId);
                     }
                     return jobInfo.Result.Value;
                 }
@@ -373,4 +360,4 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

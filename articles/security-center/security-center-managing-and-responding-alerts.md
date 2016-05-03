@@ -9,13 +9,13 @@
 
 <tags
    ms.service="security-center"
-   ms.topic="hero-article" 
+   ms.topic="hero-article"
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/22/2016"
+   ms.date="04/22/2016"
    ms.author="yurid"/>
- 
+
 # Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Funktionen verwenden, um Sicherheitswarnungen zu verwalten und auf diese zu reagieren.
 
@@ -25,16 +25,16 @@ In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Funktionen verwen
  Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Sektrum an Sicherheitslösungen verwendet werden.
 
 ## Was sind Sicherheitswarnungen?
-Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, aus dem Netzwerk und von integrierter Antischadsoftware und von Firewalls, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen, z. B. Warnungen integrierter Partnerlösungen, wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen von Problemen benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
- 
-Microsoft-Sicherheitsexperten analysieren ständig neue weltweite Bedrohungen, z. B. neue Angriffsmuster und Trends, die für die unternehmenseigenen Verbraucher- und Unternehmensprodukte und Onlinedienste auftreten. Für Security Center können so die Erkennungsalgorithmen aktualisiert werden, wenn neue Sicherheitsrisiken und Exploits erkannt werden, und Kunden können über die sich verändernde Bedrohungslage informiert werden. Beispiele für Arten von Bedrohungen, die mit Security Center erkannt werden können:
+Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, aus dem Netzwerk und von integrierter Antischadsoftware und von Firewalls, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen, z. B. Warnungen integrierter Partnerlösungen, wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen von Problemen benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
+
+Microsoft-Sicherheitsexperten analysieren ständig neue weltweite Bedrohungen, z. B. neue Angriffsmuster und Trends, die für die unternehmenseigenen Verbraucher- und Unternehmensprodukte und Onlinedienste auftreten. Für Security Center können so die Erkennungsalgorithmen aktualisiert werden, wenn neue Sicherheitsrisiken und Exploits erkannt werden, und Kunden können über die sich verändernde Bedrohungslage informiert werden. Beispiele für Arten von Bedrohungen, die mit Security Center erkannt werden können:
 
 - **Brute-Force-Erkennung über Netzwerkdaten**: Hierbei werden Machine Learning-Modelle verwendet, die typische Muster von Netzwerkdatenverkehr für Ihre Anwendungen verstehen. Dies ermöglicht eine effektivere Erkennung von Zugriffsversuchen, die nicht von berechtigten Benutzern durchgeführt werden, sondern zu unlauteren Zwecken.
 - **Brute-Force-Erkennung über Endpunktdaten**: Basiert auf der Analyse von Computerprotokollen. Dies ermöglicht eine Unterscheidung zwischen fehlerhaften und erfolgreichen Versuchen.
 - **Virtuelle Maschinen, die mit schädlichen IPs kommunizieren**: Hierbei wird Netzwerkdatenverkehr mit der globalen Bedrohungsintelligenz von Microsoft verglichen. Es werden Computer erkannt, die gefährdet sind und mit Command-and-Control-Servern (C&C) kommunizieren (und umgekehrt).
 - **Gefährdete VMs**: Basiert auf der Verhaltensanalyse von Computerprotokollen und der Korrelation mit anderen Signalen. Es werden anomale Ereignisse erkannt, die mit hoher Wahrscheinlichkeit das Ergebnis einer Computermanipulation und Ausnutzung von Sicherheitslücken sind.
 
-## Verwalten von Sicherheitswarnungen 
+## Verwalten von Sicherheitswarnungen
 
 Sie können die aktuellen Warnungen prüfen, indem Sie sich die Kachel **Sicherheitswarnungen** ansehen. Gehen Sie folgendermaßen vor, wenn Sie weitere Details zu jeder Warnung anzeigen möchten:
 
@@ -58,7 +58,7 @@ Im unteren Teil dieses Blatts sind die Details für die einzelnen Warnungen zu s
 
 - **Schweregrad**: Gibt den Schweregrad an („Hoch“, „Mittel“ oder „Niedrig“).
 
-Sie können Warnungen nach Datum, Status und Schweregrad filtern. Das Filtern von Warnungen kann nützlich für Szenarien sein, in denen Sie den Bereich der angezeigten Warnungen einschränken müssen. Es könnte beispielsweise sein, dass Sie während der Untersuchung einer möglichen Sicherheitsverletzung im System die Sicherheitswarnungen überprüfen möchten, die in den letzten 24 Stunden aufgetreten sind.
+Sie können Warnungen nach Datum, Status und Schweregrad filtern. Das Filtern von Warnungen kann nützlich für Szenarien sein, in denen Sie den Bereich der angezeigten Warnungen einschränken müssen. Es könnte beispielsweise sein, dass Sie während der Untersuchung einer möglichen Sicherheitsverletzung im System die Sicherheitswarnungen überprüfen möchten, die in den letzten 24 Stunden aufgetreten sind.
 
 1. Klicken Sie auf dem Blatt **Sicherheitswarnungen** auf **Filter**. Das Blatt **Filter** wird geöffnet. Sie können Werte für Datum, Status und Schweregrad auswählen, die Sie anzeigen möchten.
 
@@ -86,7 +86,8 @@ Im Feld **Warnung** auf diesem Blatt finden Sie weitere Informationen zu diesem 
 In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Security Center konfigurieren können. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 - [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog:](http://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge über Azure-Sicherheit und -Compliance.
+- [Monitoring partner solutions with Azure Security Center (Überwachen von Partnerlösungen mit Azure Security Center)](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

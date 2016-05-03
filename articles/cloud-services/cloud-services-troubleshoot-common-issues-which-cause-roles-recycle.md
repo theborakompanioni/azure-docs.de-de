@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="01/20/2016"
+   ms.date="04/20/2016"
    ms.author="daleche" />
 
 # Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden
@@ -82,4 +82,4 @@ Informieren Sie sich in der [Blogreihe von Kevin Williamson](http://blogs.msdn.c
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

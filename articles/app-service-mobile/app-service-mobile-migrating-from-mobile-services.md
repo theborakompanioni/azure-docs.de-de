@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="04/14/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
@@ -38,44 +38,20 @@ Microsoft empfiehlt Ihnen, Ihren Azure Mobile Service zu migrieren, um die Featu
 
 Weitere Informationen zu den Vorteilen von Azure App Service finden Sie im Thema [Mobile Services im Vergleich zu App Service].
 
-## <a name="why-not-migrate"></a>Gründe gegen die Migration Ihrer Website
-
-Es gibt einige wenige Gründe, warum Sie Ihre Azure Mobile Services jetzt nicht migrieren sollten:
-
-  *  Sie sind zurzeit sehr stark ausgelastet und können sich einen Neustart der Website zu diesem Zeitpunkt nicht leisten.
-  *  Sie möchten Auswirkungen auf Ihre Produktionswebsite vor dem Testen des Migrationsprozesses vermeiden.
-  *  Sie verfügen über mehrere Websites in den Tarifen Free bzw. Basic und möchten nicht alle Websites gleichzeitig migrieren.
-
-Wenn Sie zurzeit sehr stark ausgelastet sind, sehen Sie die Migration für ein geplantes Wartungsfenster vor. Zum Migrationsprozess gehört der Neustart Ihrer Website, und Ihre Benutzer könnten diese vorübergehende Störung der Verfügbarkeit bemerken.
-
-Für die meisten Elemente in dieser Liste gibt es Problemumgehungen. Weitere Informationen finden Sie im folgenden Abschnitt [Voraussetzungen](#before-you-begin).
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Vor der Migration Ihrer Website sollten Sie die folgenden Schritte ausführen:
+Bevor Sie mit größeren Arbeiten an Ihrer Website beginnen, sollten Sie [Ihre Mobile Service-Skripts] und Ihre SQL-Datenbank sichern.
 
-  *  [Sichern Sie Ihre Skripte und Ihre SQL-Datenbank für Mobile Service]
-  *  (Optional) Stufen Sie den Mobile Service-Tarif auf Standard herauf
+Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] (zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
 
-Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion (zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
+## <a name="migrating-site"></a>Migrieren Ihrer Websites
 
-### <a name="opt-raise-service-tier"></a>(Optional) Stufen Sie den Mobile Service-Tarif auf Standard herauf
-
-Alle Mobile Services-Websites, die einen Hostingplan gemeinsam nutzen, werden gleichzeitig migriert. Mobile Services in den Tarifen Free oder Basic nutzen einen Hostingplan gemeinsam mit anderen Diensten im gleichen Tarif und der gleichen [Azure-Region]. Wenn Sie Ihren Mobile Service im Tarif Standard betreiben, hat er seinen eigenen Hostingplan. Wenn Sie Websites einzeln zu den Tarifen Free oder Basic migrieren möchten, aktualisieren Sie den Mobile Service-Tarif vorübergehend auf Standard. Dies ist im Menü „STAFFELUNG“ für Ihren Mobile Service möglich.
-
-  1.  Melden Sie sich beim [klassischen Azure-Portal] an.
-  2.  Wählen Sie Ihren Mobile Service aus.
-  3.  Wählen Sie die Registerkarte **ZENTRAL HOCHSKALIEREN** aus.
-  4.  Klicken Sie unter **Mobile Serviceebene** auf den Tarif **STANDARD**. Klicken Sie auf das Symbol **SPEICHERN** am unteren Rand der Seite.
-
-Denken Sie daran, den Tarif nach der Migration auf einen geeigneten Wert einzustellen.
-
-## <a name="migrating-site"></a>Migrieren Ihrer Website
+Bei der Migration werden alle Websites innerhalb einer einzelnen Azure-Region migriert.
 
 So migrieren Sie Ihre Website:
 
   1.  Melden Sie sich beim [klassischen Azure-Portal] an.
-  2.  Wählen Sie Ihren Mobile Service aus.
+  2.  Wählen Sie einen Mobile Service in der Region aus, die Sie migrieren möchten.
   3.  Klicken Sie auf die Schaltfläche **Migrieren zu App Service**.
 
     ![Die Schaltfläche „Migrieren“][0]
@@ -83,8 +59,6 @@ So migrieren Sie Ihre Website:
   4.  Lesen Sie den Inhalt des App Service-Dialogfelds.
   5.  Geben Sie den Namen Ihres Mobile Service in das dafür vorgesehene Feld ein. Wenn Ihr Domänenname beispielsweise „contoso.azure mobile.net“ ist, dann geben Sie _Contoso_ in das dafür vorgesehene Feld ein.
   6.  Klicken Sie auf die Schaltfläche mit dem Häkchen.
-
-Bei der Migration eines Mobile Service zu dem Tarif Free oder Basic werden gleichzeitig alle Mobile Services in diesem Tarif migriert. Sie können dies verhindern, indem Sie während der Migration [den Mobile Service, den Sie migrieren, heraufstufen](#opt-raise-service-tier) zu Standard.
 
 Sie können den Status der Migration im Aktivitätsmonitor überwachen, und Ihre Website wird im klassischen Azure-Portal als *in Migration befindlich* aufgeführt.
 
@@ -156,7 +130,7 @@ Beim der Migration zu Azure App Service wird das Veröffentlichungsprofil der We
 Die PublishSettings-Datei wird auf Ihren Computer heruntergeladen. Sie heißt normalerweise _Websitename_.PublishSettings. Anschließend können Sie die Veröffentlichungseinstellungen in Ihr vorhandenes Projekt importieren:
 
   1.  Öffnen Sie Visual Studio und Ihr Azure Mobile Service-Projekt.
-  2.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen...** aus.
+  2.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen** aus.
   3.  Klicken Sie auf **Importieren**.
   4.  Klicken Sie auf **Durchsuchen**, und wählen Sie die heruntergeladene Datei mit den Veröffentlichungseinstellungen aus. Klicken Sie auf **OK**.
   5.  Klicken Sie auf **Verbindung überprüfen**, um sicherzustellen, dass die Veröffentlichungseinstellungen funktionieren.
@@ -247,16 +221,16 @@ Auf alle Scheduler-Aufträge können Sie im Abschnitt „Scheduler-Auftragssamml
 
   1. Melden Sie sich beim [Azure-Portal] an.
   2. Wählen Sie **Durchsuchen >**, geben Sie **Zeitplan** in das Feld _Filter_ ein, und wählen Sie **Scheduler-Sammlungen**.
-  3. Wählen Sie die Auftragssammlung für Ihre Website aus. Sie hat den Namen _Websitename_-Aufträge.
+  3. Wählen Sie die Auftragssammlung für Ihre Website aus. Sie wird „_Websitename_-Jobs“ benannt.
   4. Klicken Sie auf **Einstellungen**.
-  5. Klicken Sie unter „VERWALTEN“ auf **Scheduler-Aufträge**.
+  5. Klicken Sie unter VERWALTEN auf **Scheduler-Aufträge**.
 
 Geplante Aufträge werden mit der Häufigkeit aufgelistet, die Sie vor der Migration angegeben haben. Bedarfsgesteuerte Aufträge werden deaktiviert. So führen Sie einen bedarfsgesteuerten Auftrag aus:
 
   1. Wählen Sie den auszuführenden Auftrag aus.
   2. Wenn nötig, klicken Sie auf **Aktivieren**, um den Auftrag zu aktivieren.
   3. Klicken Sie auf **Einstellungen** und dann auf **Zeitplan**.
-  4. Wählen als Wiederholung **Einmal** aus, und klicken Sie dann auf **Speichern**.
+  4. Wählen Sie als Wiederholung **Einmal** aus, und klicken Sie dann auf **Speichern**.
 
 Ihre bedarfsgesteuerten Aufträge befinden sich in `App_Data/config/scripts/scheduler post-migration`. Sie sollten alle bedarfsgesteuerten Aufträge in [WebJobs] umwandeln. Schreiben Sie neue Scheduler-Aufträge als [WebJobs].
 
@@ -282,6 +256,12 @@ Ihr Notification Hub wird über das [Azure-Portal] verwaltet. Notieren Sie den N
 Weitere Informationen finden Sie in der [Notification Hubs]-Dokumentation.
 
 > [AZURE.TIP] Im [Azure-Portal] befinden sich Notification Hubs-Verwaltungsfeatures noch in der Vorschau. Das [klassische Azure-Portal] bleibt für die Verwaltung Ihrer sämtlichen Notification Hubs verfügbar.
+
+### <a name="legacy-push"></a>Legacypush-Einstellungen
+
+Wenn Sie vor der Einführung von Notification Hubs Pushvorgänge für Ihren mobilen Dienst konfiguriert haben, verwenden Sie den _Legacypushvorgang_. Wenn Sie Push verwenden und in Ihrer Konfiguration keine Notification Hubs aufgelistet werden, verwenden Sie wahrscheinlich den _Legacypushvorgang_. Dieses Feature wird mit allen anderen Funktionen migriert und ist weiterhin verfügbar. Allerdings wird empfohlen, ein Upgrade auf Notification Hubs durchzuführen, sobald die Migration abgeschlossen ist.
+
+In der Zwischenzeit stehen die Legacypush-Einstellungen (mit Ausnahme des APNS-Zertifikats) in den App-Einstellungen zur Verfügung. Das APNS-Zertifikat kann ersetzt werden, indem Sie die entsprechende Datei auf der Website ersetzen. Hierzu können Sie eine der verfügbaren Bereitstellungsoptionen für Azure App Service verwenden.
 
 ### <a name="app-settings"></a>Andere App-Einstellungen
 
@@ -397,9 +377,9 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
 [Leistungsüberwachung]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
-[Sichern Sie Ihre Skripte und Ihre SQL-Datenbank für Mobile Service]: ../mobile-services/mobile-services-disaster-recovery.md
+[Ihre Mobile Service-Skripts]: ../mobile-services/mobile-services-disaster-recovery.md
 [Stagingslots]: ../app-service-web/web-sites-staged-publishing.md
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

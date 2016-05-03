@@ -1,6 +1,6 @@
 <properties
 	pageTitle="CDN – Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls"
-	description="Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden, z. B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern."
+	description="Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden, z. B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern."
 	services="cdn"
 	documentationCenter=".NET"
 	authors="camsoper"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="04/15/2016" 
 	ms.author="casoper"/>
 
 # Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls
 
 ## Übersicht
 
-Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden, z. B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern. In diesem Tutorial wird die Erstellung einer Regel erläutert, die das Zwischenspeicherungsverhalten von CDN-Assets ändert.
+Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden, z. B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern. In diesem Tutorial wird die Erstellung einer Regel erläutert, die das Zwischenspeicherungsverhalten von CDN-Assets ändert. Im Abschnitt „[Siehe auch](#see-also)“ sind außerdem Videoinhalte verfügbar.
 
 > [AZURE.NOTE] Das Regelmodul ist ein Feature im CDN-Tarif „Premium“. Einen Vergleich der Features der CDN-Tarife „Standard“ und „Premium“ finden Sie in der [Übersicht über das Azure CDN](cdn-overview.md).
 
@@ -52,7 +52,7 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 	![CDN-Feature](./media/cdn-rules-engine/cdn-new-feature.png)
 
-	>[AZURE.NOTE] Wie bei den Übereinstimmungsbedingungen können Sie durch Klicken auf das blaue Informationssymbol links neben dem neuen Feature Informationen zu diesem anzeigen lassen. Im Fall von **Force Internal Max-Age** überschreiben wir die Header **Cache-Control** und **Expires** des Assets, um zu steuern, wann der CDN-Edgeknoten das Asset aus dem Ursprung aktualisiert. Unser Beispiel von 300 Sekunden gibt an, dass der CDN-Edgeknoten das Asset für 5 Minuten zwischenspeichert, bevor es aus seinem Ursprung aktualisiert wird.
+	>[AZURE.NOTE] Wie bei den Übereinstimmungsbedingungen können Sie durch Klicken auf das blaue Informationssymbol links neben dem neuen Feature Informationen zu diesem anzeigen lassen. Im Fall von **Force Internal Max-Age** überschreiben wir die Header **Cache-Control** und **Expires** des Assets, um zu steuern, wann der CDN-Edgeknoten das Asset aus dem Ursprung aktualisiert. Unser Beispiel von 300 Sekunden gibt an, dass der CDN-Edgeknoten das Asset für 5 Minuten zwischenspeichert, bevor es aus seinem Ursprung aktualisiert wird.
 	>
 	>Eine vollständige Liste der Features finden Sie unter [CDN-Regelmodul – Übereinstimmungsbedingungen und Featuredetails](cdn-rules-engine-details.md#features).
 
@@ -63,10 +63,7 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 - Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
 
 ## Weitere Informationen
+* [Azure Friday: Azure CDN's powerful new Premium Features](../../videos/azure-cdns-powerful-new-premium-features/) (Video)
 * [Regelmodul – Übereinstimmungsbedingungen und Featuredetails](cdn-rules-engine-details.md)
-* [Übersicht über das Azure CDN](cdn-overview.md)
-* [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
-* [Analysieren der Edgeleistung](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

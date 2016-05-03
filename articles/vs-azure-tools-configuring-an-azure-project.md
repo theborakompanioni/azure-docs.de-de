@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/05/2016"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio
@@ -47,7 +47,7 @@ Die folgende Abbildung zeigt das Auswählen einer Konfiguration, die beim lokale
 
 1. Wählen Sie zum Auswählen der Dienstkonfiguration, die beim lokalen Ausführen oder Debuggen des Clouddiensts verwendet werden soll, in der Liste **Dienstkonfiguration** die Dienstkonfiguration aus.
 
-  >[AZURE.NOTE]Wenn Sie eine zu verwendende Dienstkonfiguration erstellen möchten, finden Sie weitere Informationen unter "Vorgehensweise: Verwalten von Dienstkonfigurationen und Profilen". Wenn Sie eine Dienstkonfiguration für eine Rolle ändern möchten, finden Sie weitere Informationen unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
+  >[AZURE.NOTE] Wenn Sie eine zu verwendende Dienstkonfiguration erstellen möchten, finden Sie weitere Informationen unter "Vorgehensweise: Verwalten von Dienstkonfigurationen und Profilen". Wenn Sie eine Dienstkonfiguration für eine Rolle ändern möchten, finden Sie weitere Informationen unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
 
 1. Wählen Sie zum Starten des Azure-Speicheremulators beim lokalen Ausführen oder Debuggen des Clouddiensts unter **Azure-Speicheremulator starten** die Option **True** aus.
 
@@ -61,4 +61,4 @@ Die folgende Abbildung zeigt das Auswählen einer Konfiguration, die beim lokale
 
 Weitere Informationen zum Konfigurieren von Azure-Clouddienstprojekten in Visual Studio finden Sie im Artikel zum [Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen](vs-azure-tools-multiple-services-project-configurations.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0420_2016-->

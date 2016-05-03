@@ -1,4 +1,10 @@
-<properties pageTitle="Analytics für Windows Store-C++-Apps" description="Analysieren der Nutzung und Leistung Ihrer C++-Windows Store-App." services="application-insights" documentationCenter="cpp" authors="alancameronwills" manager="douge""/>
+<properties 
+    pageTitle="Analytics für Windows Store-C++-Apps" 
+    description="Analysieren Sie die Nutzung und Leistung Ihrer C++-Windows Store-App." 
+    services="application-insights" 
+    documentationCenter="cpp"
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
     ms.service="application-insights" 
@@ -30,4 +36,4 @@ Sie können auch [Application Insights für Windows-Desktop-Apps](app-insights-w
 
 [Weitere Informationen zu dieser Änderung](https://azure.microsoft.com/blog/transitioning-mobile-apps-from-application-insights-to-hockeyapp/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

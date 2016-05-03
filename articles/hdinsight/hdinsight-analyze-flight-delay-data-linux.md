@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="04/19/2016" 
 	ms.author="larryfr"/>
 
 #Analysieren von Flugverspätungsdaten mit Hive in HDInsight
@@ -34,6 +34,8 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 - __Azure SQL-Datenbank__. Sie verwenden eine Azure SQL-Datenbank als Zieldatenspeicher. Wenn Sie noch nicht über eine SQL-Datenbank verfügen, lesen Sie [SQL-Datenbank-Tutorial: Erstellen einer SQL-Datenbank in Minuten](../sql-database/sql-database-get-started.md).
 
 - __Azure-Befehlszeilenschnittstelle__. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht installiert haben, finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) weitere Schritte.
+
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 
 ##Herunterladen der Flugdaten
@@ -304,4 +306,4 @@ Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine H
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

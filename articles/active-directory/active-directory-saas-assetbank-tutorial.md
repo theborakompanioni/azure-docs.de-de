@@ -85,19 +85,20 @@ Zum Konfigurieren der Integration von Asset Bank in Azure AD müssen Sie Asset 
 
 7. Wählen Sie im Ergebnisbereich **Asset Bank** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_02.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll, basierend auf einem Testbenutzer namens „Britta Simon“, veranschaulicht werden, wie das einmalige Anmelden von Azure AD mit Asset Bank konfiguriert und getestet werden kann.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Asset Bank als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Asset Bank muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in Asset Bank zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Asset Bank zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Asset Bank sind die folgenden Bausteine erforderlich:
 
 1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Creating a Asset Bank test user](#creating-a-asset-bank-test-user)** (Erstellen eines Asset Bank-Testbenutzers), um eine Entsprechung von Britta Simon in Asset Bank zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Erstellen eines Asset Bank-Testbenutzers](#creating-a-asset-bank-test-user)**, um ein Gegenstück zu Britta Simon in Asset Bank zu erhalten, das mit ihrer Repräsentation in Azure AD verknüpft ist.
 5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -114,7 +115,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
 ![Einmaliges Anmelden konfigurieren][6]
 
 
-2. Wählen Sie auf der Seite **How would you like users to sign on to Asset Bank?** (Wie sollen sich Benutzer bei Asset Bank anmelden?) die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Asset Bank anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_03.png)
 
@@ -124,11 +125,11 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_04.png)
 
 
-    a. Geben Sie im Textfeld „Anmelde-URL“ nach folgendem Muster die URL ein, die Ihre Benutzer zur Anmeldung bei der Asset Bank-Anwendung verwenden: „**https://<Firmenname>.assetbank-server.com**“.
+    a. Geben Sie im Textfeld „Anmelde-URL“ die URL, die von Ihren Benutzern zur Anmeldung bei der Asset Bank-Anwendung verwendet wird, nach folgendem Muster ein: **https://<Firmenname>.assetbank-server.com**.
 
     b. Klicken Sie auf **Weiter**.
 
-4. Führen Sie auf der Seite **Configure single sign-on at Asset Bank** (Einmaliges Anmelden bei Asset Bank konfigurieren) die folgenden Schritte aus:
+4. Führen Sie auf der Seite **Einmaliges Anmelden bei Asset Bank konfigurieren** die folgenden Schritte aus:
  
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_05.png)
 
@@ -137,7 +138,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
     b. Klicken Sie auf **Weiter**.
 
 
-5. Wenden Sie sich über [support@assetbank.co.uk](mailto:support@assetbank.co.uk) an das Supportteam für Asset Bank, um SSO für Ihre Anwendung konfigurieren zu lassen. Fügen Sie die heruntergeladene Metadatendatei an Ihre E-Mail an.
+5. Wenden Sie sich über [support@assetbank.co.uk](mailto:support@assetbank.co.uk) an das Supportteam für Asset Bank, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und fügen Sie die heruntergeladene Metadatendatei an Ihre E-Mail an.
 
 
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
@@ -166,7 +167,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-assetbank-tutorial/create_aaduser_03.png)
 
@@ -198,8 +199,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
     e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-assetbank-tutorial/create_aaduser_07.png)
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-assetbank-tutorial/create_aaduser_07.png)
 
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
@@ -229,7 +229,7 @@ In diesem Abschnitt soll Britta Simon die Verwendung des einmaligen Anmeldens be
 
 **Um Britta Simon Asset Bank zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**, um die Anwendungsansicht im klassischen Azure-Portal zu öffnen.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
 	![Benutzer zuweisen][201]
 
@@ -281,4 +281,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Asset Bank“ klicken, sollten Sie
 [204]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

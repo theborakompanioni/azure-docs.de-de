@@ -7,7 +7,6 @@ Seit der Einführung der benutzerdefinierten Skripterweiterung wird diese häufi
 Eine Azure-Ressourcen-Manager-Vorlage ermöglicht es Ihnen, deklarativ die Azure IaaS-Infrastruktur in der Json-Sprache anzugeben, indem Sie die Abhängigkeiten zwischen Ressourcen definieren. Eine ausführliche Übersicht über Azure-Ressourcen-Manager-Vorlagen finden Sie in den folgenden Artikeln:
 
 - [Übersicht über Ressourcengruppen](../articles/resource-group-overview.md)
-- [Bereitstellen von Vorlagen mit der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-manage.md)
 - [Bereitstellen von Vorlagen mit Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-ps-manage.md)
 
 ### Voraussetzungen
@@ -20,6 +19,6 @@ Eine Azure-Ressourcen-Manager-Vorlage ermöglicht es Ihnen, deklarativ die Azure
 
 ## Verwenden der benutzerdefinierten Skripterweiterung
 
-Zum Bereitstellen mit Vorlagen wird genau die Version der CustomScript-Erweiterung verwendet, die für Azure-Service-Verwaltungs-APIs verfügbar ist. Die Erweiterung unterstützt dieselben Parameter und Szenarios, etwa Hochladen von Dateien in ein Azure Storage-Konto oder in einen Github-Speicherort. Der wesentliche Unterschied bei einer Verwendung von Vorlagen besteht darin, dass die genaue Version der Erweiterung angegeben werden muss im Gegensatz zur Angabe der Version im Format Hauptversion.*.
+Zum Bereitstellen mit Vorlagen wird die gleiche Version der CustomScript-Erweiterung verwendet, die auch für Azure-Service-Verwaltungs-APIs verfügbar ist. Die Erweiterung unterstützt dieselben Parameter und Szenarios, etwa Hochladen von Dateien in ein Azure Storage-Konto oder in einen Github-Speicherort. Der wesentliche Unterschied bei einer Verwendung von Vorlagen besteht darin, dass die genaue Version der Erweiterung angegeben werden muss im Gegensatz zur Angabe der Version im Format Hauptversion.*.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

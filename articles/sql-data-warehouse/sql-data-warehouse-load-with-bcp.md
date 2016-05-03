@@ -3,7 +3,7 @@
    description="Erfahren Sie, was bcp ist und wie es in Data Warehouse-Szenarios verwendet wird."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="lodipalm"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/21/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 
@@ -27,7 +27,7 @@
 
 **[bcp][]** ist ein Befehlszeilen-Dienstprogramm zum Massenladen, das es Ihnen ermöglicht, Daten zwischen SQL Server, Datendateien und SQL Data Warehouse zu kopieren. Verwenden sie bcp zum Importieren großer Mengen an neuen Zeilen in SQL Data Warehouse-Tabellen oder zum Exportieren von Daten aus SQL Server-Tabellen in Datendateien. bcp erfordert außer bei Verwendung mit der queryout-Option keine Kenntnisse von Transact-SQL.
 
-bcp bietet eine schnelle und einfache Möglichkeit, um kleinere DataSets in und aus einer SQL Data Warehouse-Datenbank zu verschieben. Die genaue Empfehlung für die mit bcp zu ladende/extrahierte Datenmenge hängt von der Netzwerkverbindung mit dem Azure-Rechenzentrum ab. Im Allgemeinen können Dimensionstabellen geladen und extrahiert werden, relativ große Faktentabellen können jedoch viel Zeit zum Laden oder Extrahieren benötigen.
+bcp bietet eine schnelle und einfache Möglichkeit, um kleinere DataSets in und aus einer SQL Data Warehouse-Datenbank zu verschieben. Die genaue Empfehlung für die mit bcp zu ladende/extrahierte Datenmenge hängt von der Netzwerkverbindung mit dem Azure-Rechenzentrum ab. Im Allgemeinen können Dimensionstabellen geladen und mit bcp fertig extrahiert werden. bcp wird jedoch zum Laden oder Extrahieren großer Datenmengen nicht empfohlen. Polybase ist das Tool, das zum Laden und Extrahieren großer Datenvolumen empfohlen wird, da es die Massively Parallel Processing-Architektur von SQL Data Warehouse besser nutzt.
 
 Mit bcp haben Sie folgende Möglichkeiten:
 
@@ -57,32 +57,29 @@ In diesem Lernprogramm erstellen Sie eine Tabelle in Azure SQL Data Warehouse un
 
 ### Schritt 1: Erstellen einer Tabelle in Azure SQL Data Warehouse
 
-Verbinden Sie über eine Eingabeaufforderung die Instanz mit dem folgenden Befehl (ersetzen Sie die Werte nach Bedarf):
+Verwenden Sie sqlcmd von einer Befehlszeile aus zum Ausführen der folgenden Abfrage, um eine Tabelle für Ihre Instanz zu erstellen:
 
 ```sql
-sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I
+sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
+    CREATE TABLE DimDate2
+    (
+        DateId INT NOT NULL,
+        CalendarQuarter TINYINT NOT NULL,
+        FiscalQuarter TINYINT NOT NULL
+    )
+    WITH
+    (
+        CLUSTERED COLUMNSTORE INDEX,
+        DISTRIBUTION = ROUND_ROBIN
+    );
+"
 ```
-Nachdem die Verbindung hergestellt wurde, kopieren Sie das folgende Tabellenskript in die sqlcmd-Eingabeaufforderung, und drücken Sie dann die EINGABETASTE:
 
-```sql
-CREATE TABLE DimDate2
-(
-    DateId INT NOT NULL,
-    CalendarQuarter TINYINT NOT NULL,
-    FiscalQuarter TINYINT NOT NULL
-)
-WITH
-(
-    CLUSTERED COLUMNSTORE INDEX,
-    DISTRIBUTION = ROUND_ROBIN
-);
-GO
-```
->[AZURE.NOTE] Weitere Informationen zu den verfügbaren Optionen für die WITH-Klausel finden Sie unter dem Thema [Tabellenentwurf][] in der Entwicklungsgruppe der Themen.
+>[AZURE.NOTE] Unter [Tabellenentwurf in SQL Data Warehouse][] und [CREATE TABLE][] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und die in der WITH-Klausel verfügbaren Optionen.
 
 ### Schritt 2: Erstellen einer Quelldatendatei
 
-Öffnen Sie Editor, und kopieren Sie die folgenden Datenzeilen in eine neue Datei.
+Öffnen Sie Editor, kopieren Sie die folgenden Datenzeilen in eine neue Textdatei, und speichern Sie diese Datei im lokalen temporären Verzeichnis C:\\Temp\\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -99,9 +96,7 @@ GO
 20150101,1,3
 ```
 
-Speichern Sie diese im lokalen temporären Verzeichnis unter "C:\\Temp\\DimDate2.txt".
-
-> [AZURE.NOTE] Es ist wichtig, daran zu denken, dass bcp.exe die UTF-8-Codierung nicht unterstützt. Verwenden Sie ASCII-codierte Dateien oder die UTF-16-Codierung für Ihre Dateien, wenn Sie bcp.exe verwenden.
+> [AZURE.NOTE] Es ist wichtig, daran zu denken, dass bcp.exe die UTF-8-Codierung nicht unterstützt. Verwenden Sie ASCII-Dateien oder UTF-16-codierte Dateien, wenn Sie bcp.exe verwenden.
 
 ### Schritt 3: Herstellen einer Verbindung und Importieren von Daten
 Sie können mit bcp eine Verbindung herstellen und die Daten mit dem folgenden Befehl importieren (ersetzen Sie die Werte nach Bedarf):
@@ -110,11 +105,10 @@ Sie können mit bcp eine Verbindung herstellen und die Daten mit dem folgenden B
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Sie können überprüfen, ob die Daten geladen wurden, indem Sie wie zuvor eine Verbindung mit sqlcmd herstellen und den folgenden TSQL-Befehl ausführen:
+Sie können prüfen, ob die Daten geladen wurden, indem Sie mithilfe von sqlcmd die folgende Abfrage ausführen:
 
 ```sql
-SELECT * FROM DimDate2 ORDER BY 1;
-GO
+sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
 Daraufhin sollten Sie folgende Ergebnisse erhalten:
@@ -141,10 +135,11 @@ Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische 
 Führen Sie die folgenden CREATE STATISTICS-Anweisungen über eine sqlcmd-Eingabeaufforderung aus:
 
 ```sql
-create statistics [DateId] on [DimDate2] ([DateId]);
-create statistics [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
-create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
-GO
+sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
+    create statistics [DateId] on [DimDate2] ([DateId]);
+    create statistics [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
+    create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
+"
 ```
 
 ## Exportieren von Daten aus SQL Data Warehouse
@@ -174,7 +169,7 @@ Sie können überprüfen, ob die Daten ordnungsgemäß exportiert wurden, indem 
 20150101,1,3
 ```
 
->[AZURE.NOTE] Aufgrund der Struktur verteilter Systeme unterscheidet sich die Reihenfolge der Daten in den SQL Data Warehouse-Datenbanken möglicherweise. Sie können optional den queryout-Parameter verwenden, um anzugeben, welche Transact-SQL-Abfrage ausgeführt werden soll.
+>[AZURE.NOTE] Aufgrund der Struktur verteilter Systeme unterscheidet sich die Reihenfolge der Daten in den SQL Data Warehouse-Datenbanken möglicherweise. Eine andere Möglichkeit ist die Verwendung der Funktion **queryout** von bcp, um einen Auszug der Abfrage zu schreiben, und nicht die gesamte Tabelle zu exportieren.
 
 ## Nächste Schritte
 Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][]. Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse][].
@@ -183,17 +178,16 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 
 <!--Article references-->
 
-[Laden von Daten in SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[Entwicklungsübersicht für SQL Data Warehouse]: ./sql-data-warehouse-overview-develop.md
-[Tabellenentwurf]: ./sql-data-warehouse-develop-table-design.md
-[Statistiken]: ./sql-data-warehouse-develop-statistics.md
-
+[Laden von Daten in SQL Data Warehouse]: sql-data-warehouse-overview-load.md
+[Entwicklungsübersicht für SQL Data Warehouse]: sql-data-warehouse-overview-develop.md
+[Tabellenentwurf in SQL Data Warehouse]: sql-data-warehouse-develop-table-design.md
+[Statistiken]: sql-data-warehouse-develop-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-
+[CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

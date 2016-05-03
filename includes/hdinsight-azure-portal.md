@@ -1,7 +1,7 @@
 ##Azure-Portal und Azure-Vorschauportal
 
-> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das Azure-Portal verwendet. Microsoft empfiehlt das Azure-Vorschauportal für das Erstellen neuer Dienste. Eine Erläuterung der Vorteile des Vorschauportals finden Sie unter [DevOps ist jetzt noch cooler](https://azure.microsoft.com/overview/preview-portal/).
+> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das klassische Azure-Portal verwendet. Microsoft empfiehlt die Verwendung des klassischen Azure-Portals nicht für die Erstellung neuer Dienste. Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
 
-Eine Version dieses Dokuments, in dem das Azure-Vorschauportal verwendet wird, finden Sie unter folgendem Link:
+Eine Version dieses Dokuments, in dem das Azure-Portal verwendet wird, finden Sie unter folgendem Link:
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

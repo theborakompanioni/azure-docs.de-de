@@ -1,5 +1,12 @@
-<properties pageTitle="HDInsight-Anwendungspartner | Microsoft Azure" description="Kunden können Big Data-Anwendungen jetzt direkt über das Bereitstellungsportal ermitteln und zusammen mit ihren HDInsight-Clustern bereitstellen." services="hdinsight" documentationCenter="na" authors="pablissima" manager="paulettm="" tags=""/>
-<tags 
+<properties
+	pageTitle="HDInsight-Anwendungspartner | Microsoft Azure" 
+	description="Kunden können jetzt einfacher Datenermittlungen durchführen und Big Data-Anwendungen zusammen mit ihren HDInsight-Clustern bereitstellen – direkt aus dem Bereitstellungsportal."
+	services="hdinsight" 
+	documentationCenter="na" 
+	authors="pablissima" 
+	manager="paulettm" 
+	tags=""/>
+<tags
 	ms.service="hdinsight"
 	ms.devlang="na"
 	ms.topic="article"
@@ -31,7 +38,13 @@ http://bluetalon.com/
 
 Mit RedPoint können dieselben Datenanalysten und Datenbankadministratoren, die bereits mit herkömmlichen Datenbanken arbeiten, jetzt auch ganz einfach Daten nutzen, die unter Hadoop gespeichert sind. Es sind keine neuen Fähigkeiten erforderlich. Kein MapReduce, Hive oder Pig – dank der grafischen Benutzeroberfläche und reinen YARN-Architektur (zertifiziert unter Hadoop 2.0 von Hortonworks) von RedPoint.
 
-Möglichkeiten mit RedPoint: - Alle Funktionen für Datenqualität und Datenintegration können im Hadoop-Cluster durchgeführt werden – ELT, Bereinigen, Abgleichen, Deduplizieren, Zusammenführen/Löschen, „Householding“, Analysieren, Partitionieren, Anfügen, Adressenstandardisierung, Schlüsselerstellung und -wartung, Automatisierung, Überwachung, Benachrichtigung. - Keine Beteiligung von MapReduce, und es sind keine MapReduce-Fähigkeiten erforderlich. - Prozesse zur Datenqualität und -integration können mit RedPoint so effizient wie mit MapReduce-basierten Lösungen ausgeführt werden – und häufig noch effizienter. - Daten müssen für Verarbeitung, Analyse, Berichterstellung oder andere Aktionen nicht aus Hadoop verschoben werden. - Im Cluster selbst muss keine Software installiert werden, und RedPoint akzeptiert die Aufgabenpriorisierung von YARN, anstatt sich im Cluster am Kampf um Berechnungsressourcen zu beteiligen. - Benutzer können Daten in herkömmlichen Repositorys und Hadoop-Repositorys mit einem einzelnen Produkt verwalten, und auch das Zusammenführen von Daten aus getrennten Umgebungen oder die Migration von Daten ist möglich.
+Mit RedPoint:
+-  Sämtliche Funktionen bezügliche Datenqualität und Datenintegration können im Hadoop-Cluster ausgeführt werden: ELT, Bereinigen, Abgleichen, Zusammenführen/Löschen, Householding, Analysen, Partitionieren, Anfügen, Adressstandardisierung, Schlüsselerstellung und -verwaltung, Automatisieren, Überwachen, Benachrichtigungen.  
+-  MapReduce wird nicht verwendet, und es sind keine Kenntnisse zu MapReduce erforderlich.  
+-  Vorgänge bezüglich Datenqualität und-integration können ebenso effizient mit RedPoint ausgeführt werden wie mit MapReduce-basierten Lösungen – in vielen Fällen sogar effizienter.  
+-  Daten müssen zur Verarbeitung, für Analysen, zur Berichterstellung oder für andere Aktionen nicht aus Hadoop extrahiert werden.  
+-  Im Cluster selbst muss keine Software installiert werden, und RedPoint respektiert die Aufgabenpriorisierung von YARN, anstatt um Rechenressourcen im Cluster zu konkurrieren.  
+-  Benutzer können Daten mit einem einzigen Produkt sowohl in herkömmlichen als auch in Hadoop-Repositorys verwalten. Sie können sogar Daten aus getrennten Umgebungen zusammenführen oder Daten zwischen Umgebungen migrieren.
 
 Weitere Informationen finden Sie unter den Ressourcen rechts auf dieser Seite.
 
@@ -41,4 +54,4 @@ RedPoint hat bei Benutzerumfragen in Bezug auf Geschwindigkeit, Abgleichqualitä
 
 ![](media/hdinsight-application-partners/kyvos8.png) Kyvos arbeitet daran, mit seiner einzigartigen „OLAP on Hadoop“-Technologie die Leistungsstärke von Big Data Analytics zu nutzen. Benutzer können Cubes direkt unter Hadoop mit linearer Skalierbarkeit erstellen, um die Einschränkungen herkömmlicher OLAP-Lösungen zu beseitigen und interaktive mehrdimensionale Analysen im Big Data-Bereich durchzuführen. Für Benutzer ist die Visualisierung, Untersuchung und Analyse ihrer Daten unter Hadoop auf interaktive Weise möglich, ohne dass Programmieraufwand anfällt.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

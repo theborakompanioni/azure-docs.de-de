@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="03/04/2016"
+ ms.date="04/20/2016"
  ms.author="larryfr"/>
 
 #Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber
@@ -35,13 +35,13 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 Zum Erstellen und Ausführen der Beispiel-Java-Anwendung, die Sie über einen Link in diesem Artikel aufrufen können, benötigen Sie Folgendes:
 
-* [Java Developer Kit (JDK) Version 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher.
+* [Java Developer Kit (JDK) Version 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher.
 
 * [Apache Maven](https://maven.apache.org). Maven ist ein Projekterstellungssystem für Java-Projekte, das für das diesem Artikel zugeordnete Projekt verwendet wird.
 
 ##Verbindungszeichenfolge
 
-JDBC-Verbindungen mit einem HDInsight-Cluster unter Azure werden über 443 hergestellt, und der Datenverkehr wird per SSL geschützt. Das öffentliche Gateway, hinter dem sich die Cluster befinden, leitet den Datenverkehr an den Port um, auf dem von HiveServer2 gelauscht wird. Eine typische Verbindungszeichenfolge sieht wie folgt aus:
+JDBC-Verbindungen mit einem HDInsight-Cluster unter Azure werden über 443 hergestellt, und der Datenverkehr wird per SSL geschützt. Das öffentliche Gateway, hinter dem sich die Cluster befinden, leitet den Datenverkehr an den Port um, auf dem von HiveServer2 gelauscht wird. Eine typische Verbindungszeichenfolge sieht wie folgt aus:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2
 
@@ -151,6 +151,28 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
 Ein Beispiel für die Nutzung eines Java-Clients zum Abfragen von Hive in HDInsight ist unter [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) verfügbar. Befolgen Sie die Anleitung im Repository, um das Beispiel zu erstellen und auszuführen.
 
+##Problembehandlung
+
+### Beim Versuch, eine SQL-Verbindung zu öffnen, ist ein unerwarteter Fehler aufgetreten.
+
+__Symptome__: Beim Herstellen einer Verbindung mit einem HDInsight-Cluster der Version 3.3 oder 3.4 erhalten Sie möglicherweise die Meldung, dass ein unerwarteter Fehler aufgetreten ist. Die Stapelüberwachung für diesen Fehler beginnt mit folgenden Zeilen:
+
+    java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
+    at java.util.concurrent.FutureTas...(FutureTask.java:122)
+    at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+
+__Ursache__: Dieser Fehler wird durch einen Konflikt zwischen der Version der von SQuirreL verwendeten Datei „common-codec.jar“ und der Version verursacht, die von den aus dem HDInsight-Cluster heruntergeladen Hive JDBC-Komponenten benötigt wird.
+
+__Lösung__: Führen Sie folgende Schritte aus, um diesen Fehler zu beheben.
+
+1. Laden Sie die common-codec.jar-Datei aus Ihrem HDInsight-Cluster herunter.
+
+        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/common-codec*.jar ./common-codec.jar
+
+2. Beenden Sie SQuirreL, und wechseln Sie zu dem Verzeichnis, in dem SQuirreL in Ihrem System installiert ist. Ersetzen Sie im SquirreL-Verzeichnis, unterhalb des `lib`-Verzeichnisses, die vorhandene common-codec.jar-Datei durch die Datei, die Sie aus dem HDInsight-Cluster heruntergeladen haben.
+
+3. Starten Sie SQuirreL neu. Dieser Fehler sollte jetzt nicht mehr auftreten, wenn Sie eine Verbindung mit Hive in HDInsight herstellen.
+
 ##Nächste Schritte
 
 Nachdem Sie erfahren haben, wie Sie JDBC mit Hive verwenden, können Sie mithilfe der nachfolgenden Links andere Möglichkeiten für die Arbeit mit Azure HDInsight untersuchen.
@@ -160,4 +182,4 @@ Nachdem Sie erfahren haben, wie Sie JDBC mit Hive verwenden, können Sie mithilf
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

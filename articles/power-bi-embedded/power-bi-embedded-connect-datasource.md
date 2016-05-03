@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Power BI Embedded – Herstellen einer Verbindung mit einer Datenquelle"
-   description="Microsoft Power BI Embedded – Herstellen einer Verbindung mit einer Datenquelle"
+   description="Power BI Embedded, Verbinden mit Datenquellen"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -55,4 +55,4 @@ Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abf
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

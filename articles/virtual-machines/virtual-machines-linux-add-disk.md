@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="virtual-machines-linux"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
@@ -20,7 +20,7 @@
 
 # Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 
-In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
+In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), die im Resource Manager-Modus (`azure config mode arm`) konfiguriert wurde.
 
 ## Schnellbefehle
 
@@ -32,7 +32,7 @@ rick@ubuntu$ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size
 
 ## Anfügen eines Datenträgers
 
-Neue Datenträger lassen sich schnell anfügen. Geben Sie einfach `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Das sollte in etwa so aussehen:
+Neue Datenträger lassen sich schnell anfügen. Geben Sie einfach `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Das sollte in etwa so aussehen:
 
 	azure vm disk attach-new myuniquegroupname myuniquevmname 5
 	info:    Executing command vm disk attach-new
@@ -90,7 +90,7 @@ Nachdem Sie die Verbindung zu Ihrem virtuellen Computer hergestellt haben, könn
 	[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 	[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 
-Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
+Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
 
 	sudo fdisk /dev/sdc
 	Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -177,4 +177,4 @@ Der Datenträger kann nun als `/datadrive` verwendet werden.
 - Lesen Sie die Empfehlungen unter [Optimize your Linux machine performance](virtual-machines-linux-optimization.md) (Optimieren der Leistung Ihres Linux-Computers), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
 - Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [ konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/18/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Verwendung von Remotedesktop mit Azure-Rollen
 
 Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und virtuelle Computer zu, die von Azure gehostet werden. In Visual Studio können Sie Remotedesktopdienste in einem Azure-Projekt konfigurieren. Zum Aktivieren von Remotedesktopdiensten müssen Sie ein Arbeitsprojekt mit einer Rolle oder mehreren Rollen erstellen und es anschließend in Azure veröffentlichen.
 
->[AZURE.IMPORTANT]Greifen Sie auf Azure-Rollen nur zum Zweck der Problembehandlung oder Entwicklung zu. Der Zweck aller virtuellen Computer besteht in der Ausführung einer bestimmten Rolle in der Azure-Anwendung und nicht in der Ausführung anderer Clientanwendungen. Wenn Sie Azure zum Hosten eines virtuellen Computers für beliebige Zwecke verwenden möchten, finden Sie weitere Informationen unter "Zugreifen auf virtuelle Computer in Azure über den Server-Explorer".
+>[AZURE.IMPORTANT] Greifen Sie auf Azure-Rollen nur zum Zweck der Problembehandlung oder Entwicklung zu. Der Zweck aller virtuellen Computer besteht in der Ausführung einer bestimmten Rolle in der Azure-Anwendung und nicht in der Ausführung anderer Clientanwendungen. Wenn Sie Azure zum Hosten eines virtuellen Computers für beliebige Zwecke verwenden möchten, finden Sie weitere Informationen unter "Zugreifen auf virtuelle Computer in Azure über den Server-Explorer".
 
 ## So aktivieren und verwenden Sie Remotedesktop für eine Azure-Rolle
 
@@ -41,7 +41,7 @@ Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und vir
 
     Wenn Sie ein vorhandenes Zertifikat wählen, überspringen Sie die folgenden Schritte.
 
-    >[AZURE.NOTE]Die für eine Remotedesktopverbindung erforderlichen Zertifikate unterscheiden sich von den für andere Azure-Vorgänge verwendeten Zertifikaten. Das Remotezugriffszertifikat muss über einen privaten Schlüssel verfügen.
+    >[AZURE.NOTE] Die für eine Remotedesktopverbindung erforderlichen Zertifikate unterscheiden sich von den für andere Azure-Vorgänge verwendeten Zertifikaten. Das Remotezugriffszertifikat muss über einen privaten Schlüssel verfügen.
 
     Das Dialogfeld **Zertifikat erstellen** wird angezeigt.
 
@@ -51,7 +51,7 @@ Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und vir
     
         Sie können kein vorhandenes Konto verwenden. Geben Sie nicht "Administrator" als Benutzernamen für das neue Konto an.
 
-        >[AZURE.NOTE]Wenn das Kennwort nicht den Komplexitätsanforderungen entspricht, wird ein rotes Symbol neben dem Textfeld des Kennworts angezeigt. Das Kennwort muss Großbuchstaben, Kleinbuchstaben und Zahlen oder Symbole enthalten.
+        >[AZURE.NOTE] Wenn das Kennwort nicht den Komplexitätsanforderungen entspricht, wird ein rotes Symbol neben dem Textfeld des Kennworts angezeigt. Das Kennwort muss Großbuchstaben, Kleinbuchstaben und Zahlen oder Symbole enthalten.
 
     1. Wählen Sie ein Ablaufdatum für das Konto aus. Nach diesem Datum werden Remotedesktopverbindungen blockiert.
 
@@ -75,4 +75,4 @@ Nach der Veröffentlichung des Clouddiensts in Azure können Sie sich mit dem Se
 
 1. Geben Sie den Benutzernamen und das zuvor erstellte Kennwort ein. Sie sind nun bei Ihrer Remotesitzung angemeldet.
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article"
-  ms.date="02/03/2016"
+	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 #Gewusst wie: Bereitstellen eines Medienobjekts durch Herunterladen
@@ -87,4 +87,4 @@ Dieses Beispiel zeigt, wie Sie Medienobjekte von Media Services auf Ihren lokale
 
 [Bereitstellen von Streaming-Inhalten](media-services-deliver-streaming-content.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

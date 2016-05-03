@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="12/16/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Hinzufügen von Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten
@@ -94,4 +94,4 @@ Wenn Sie die Bearbeitung des Dialogfelds abschließen, fügt Visual Studio Verwe
 
      - [Speicherdokumentation auf "azure.microsoft.com"](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -35,7 +35,7 @@ Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und A
 Eine Übersicht über die Funktionsweise von Azure Multi-Factor Authentication finden Sie im folgenden Video.
 
 
-<center>[AZURE.VIDEO multi-factor-authentication-overview]</center>
+> [AZURE.VIDEO multi-factor-authentication-overview]
 
 ##Warum sollten Sie Azure Multi-Factor Authentication verwenden?
 
@@ -54,7 +54,7 @@ Azure Multi-Factor Authentication ist eine benutzerfreundliche, skalierbare und 
 
 Weitere Informationen zu den Verwendungsgründen für Azure Multi-Factor Authentication finden Sie im folgenden Video.
 
-<center>[AZURE.VIDEO windows-azure-multi-factor-authentication]</center>
+> [AZURE.VIDEO windows-azure-multi-factor-authentication]
 
 
 ## Funktionsweise von Azure Multi-Factor Authentication
@@ -75,7 +75,7 @@ Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und A
 
 Weitere Informationen zur Funktionsweise erhalten Sie im folgenden Video.
 
-[AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
+> [AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
 
 ## Verfügbare Methoden für Multi-Factor Authentication
 Wenn ein Benutzer sich anmeldet, wird eine zusätzliche Bestätigung an den Benutzer gesendet. In der folgenden Liste sind die verschiedenen Methoden zusammengefasst, die für diese zweite Überprüfung verwendet werden können.
@@ -209,4 +209,4 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

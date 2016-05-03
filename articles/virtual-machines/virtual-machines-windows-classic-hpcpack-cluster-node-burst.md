@@ -1,6 +1,6 @@
 <properties
  pageTitle="Hinzufügen von Burstknoten zu einem HPC Pack-Cluster | Microsoft Azure"
- description="Erfahren Sie, wie Sie in einem Clouddienst ausgeführte Workerrolleninstanzen einem vorhandenen HPC Pack-Hauptknoten in Azure bedarfsgesteuert als Computeressourcen hinzufügen."
+ description="Erfahren Sie, wie Sie die HPC Pack-Clusterkapazität bei Bedarf erweitern können, indem Sie Workerrolleninstanzen in einem Clouddienst hinzufügen."
  services="virtual-machines-windows"
  documentationCenter=""
  authors="dlepow"
@@ -13,15 +13,16 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="01/08/2016"
+ ms.date="04/13/2016"
  ms.author="danlep"/>
 
 # Hinzufügen von bedarfsgesteuerten Burstknoten (Workerrolleninstanzen) als Computeressourcen zu einem HPC Pack-Cluster in Azure
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
 
 In diesem Artikel wird erläutert, wie Sie Azure-Burstknoten (Workerrolleninstanzen, die in einem Clouddienst ausgeführt werden) bedarfsgesteuert als Computeressourcen zu einem vorhandenen HPC Pack-Hauptknoten in Azure hinzufügen So können Sie die Computekapazität des HPC-Clusters in Azure bedarfsgesteuert zentral hochskalieren, ohne mehrere vorkonfigurierte VMs für Computeknoten verwalten zu müssen.
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
 ![Burstknoten][burst]
 
@@ -33,31 +34,31 @@ Wenn Sie die rechenintensive A8- oder A9-Instanzengröße verwenden möchten, fi
 
 ## Voraussetzungen
 
-* **HPC Pack-Hauptknoten, auf einem virtuellen Azure-Computer bereitgestellt** –Anweisungen zum Erstellen eines Clusterhauptknotens im klassischen Bereitstellungsmodell (Dienstverwaltungsmodus) finden Sie unter [Deploy an HPC Pack Head Node in an Azure VM](virtual-machines-windows-hpcpack-cluster-headnode.md) (in englischer Sprache).
+* **HPC Pack-Hauptknoten bereitgestellt auf einem virtuellen Azure-Computer** –Anweisungen zum Erstellen eines Clusterhauptknotens im klassischen Bereitstellungsmodell finden Sie unter [Erstellen des Hauptknotens eines HPC Pack-Clusters auf einem virtuellen Azure-Computer mit einem Marketplace-Image](virtual-machines-windows-hpcpack-cluster-headnode.md).
 
 * **Azure-Abonnement**: Zum Hinzufügen von Azure-Knoten können Sie dasselbe Abonnement verwenden, das zum Bereitstellen des virtuellen Computers für den Hauptknoten verwendet wird. Sie können dazu auch andere Abonnements verwenden.
 
 * **Kernkontingent**: Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Azure-Knoten mit Multicore-Größen bereitstellen. Um ein Kontingent zu erhöhen, können Sie kostenlos eine [Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/).
 
-## Schritt 1: Erstellen eines Clouddiensts und eines Speicherkontos zum Hinzufügen von Azure-Knoten
+## Schritt 1: Erstellen eines Clouddiensts und eines Speicherkontos zum Hinzufügen von Azure-Knoten
 
 Verwenden Sie das klassische Azure-Portal oder entsprechende Tools, um die folgenden Komponenten zu konfigurieren, die für die Bereitstellung von Azure-Knoten erforderlich sind:
 
 * Einen neuen Azure-Clouddienst
 * Ein neues Azure-Speicherkonto
 
->[AZURE.NOTE] Verwenden Sie in Ihrem Abonnement keinen vorhandenen Clouddienst. Stellen Sie auch kein separates benutzerdefiniertes Clouddienstpaket für diesen Clouddienst bereit. HPC Pack stellt automatisch ein Clouddienstpaket bereit, wenn Sie die Azure-Knoten starten (bereitstellen).
+>[AZURE.NOTE] Verwenden Sie in Ihrem Abonnement keinen vorhandenen Clouddienst.
 
 **Überlegungen**
 
 * Konfigurieren Sie einen separaten Clouddienst für jede Azure-Knotenvorlage, die Sie erstellen möchten. Sie können jedoch das gleiche Speicherkonto für mehrere Knotenvorlagen verwenden.
 
-* Im Allgemeinen sollten sich der Clouddienst und das Speicherkonto für die Bereitstellung in der gleichen Region befinden.
+* Im Allgemeinen sollten sich der Clouddienst und das Speicherkonto für die Bereitstellung in der gleichen Azure-Region befinden.
 
 
 
 
-## Schritt 2: Konfigurieren eines Azure-Verwaltungszertifikats
+## Schritt 2: Konfigurieren eines Azure-Verwaltungszertifikats
 
 Um Azure-Knoten als Computeressourcen hinzuzufügen, müssen Sie ein Verwaltungszertifikat für den Hauptknoten zuweisen und ein entsprechendes Zertifikat für das für die Bereitstellung verwendete Azure-Abonnement hochladen.
 
@@ -65,11 +66,11 @@ In diesem Szenario können Sie das **Zertifikat "Default HPC Azure Management"**
 
 Zusätzliche Optionen zum Konfigurieren des Verwaltungszertifikats finden Sie unter [Options to Configure the Azure Management Certificate for Azure Burst Deployments](http://technet.microsoft.com/library/gg481759.aspx) (in englischer Sprache).
 
-## Schritt 3: Bereitstellen von Azure-Knoten auf dem Cluster
+## Schritt 3: Bereitstellen von Azure-Knoten auf dem Cluster
 
 
 
-Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario entsprechen i. Allg. der Vorgehensweise bei lokalen Hauptknoten. Weitere Informationen finden Sie in den folgenden Abschnitten unter [Steps to Deploy Azure Nodes with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481758.aspx) (in englischer Sprache):
+Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario entsprechen i. Allg. der Vorgehensweise bei lokalen Hauptknoten. Weitere Informationen finden Sie in den folgenden Abschnitten unter [Steps to Deploy Azure Nodes with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481758.aspx) (in englischer Sprache):
 
 * Erstellen einer Azure-Knotenvorlage
 
@@ -79,7 +80,7 @@ Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario ent
 
 Nachdem Sie die Knoten hinzugefügt und gestartet haben, können Sie sie zum Ausführen von Clusteraufträgen verwenden.
 
-Wenn bei der Bereitstellung von Azure-Knoten Probleme auftreten, finden Sie unter [Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack] (in englischer Sprache) (http://technet.microsoft.com/library/jj159097(v=ws.10).aspx) Anweisungen zur Problembehandlung.
+Wenn bei der Bereitstellung von Azure-Knoten Probleme auftreten, finden Sie weitere Informationen unter [Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack](http://technet.microsoft.com/library/jj159097.aspx) (Anweisungen zur Problembehandlung bei der Bereitstellung von Azure-Knoten mit Microsoft HPC Pack).
 
 ## Nächste Schritte
 
@@ -88,4 +89,4 @@ Wenn bei der Bereitstellung von Azure-Knoten Probleme auftreten, finden Sie unte
 <!--Image references-->
 [burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -2,4 +2,4 @@
 >
 > Führen Sie zur Installation der neuesten Version die Schritte unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) aus.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

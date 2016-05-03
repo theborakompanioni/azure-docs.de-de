@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Spark-Auftragsserver in Azure HDInsight-Clustern (Windows)
+# Spark-Auftragsserver für Azure HDInsight Windows-Cluster (Vorschau)
 
 > [AZURE.NOTE] HDInsight bietet nun Spark-Cluster unter Linux, die Livy zur Remoteübermittlung von Aufträgen auf Spark-Cluster verwenden. Informationen zur Verwendung von Livy mit HDInsight Spark-Clustern unter Linux finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy mit Spark-Clustern in HDInsight (Linux)](hdinsight-apache-spark-livy-rest-interface.md).
 
@@ -84,4 +84,4 @@ Beispiel:
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

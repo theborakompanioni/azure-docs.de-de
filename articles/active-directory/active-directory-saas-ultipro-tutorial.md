@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ultipro in Azure Active Directory (Azur
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
@@ -106,7 +106,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     b. Klicken Sie auf **Weiter**.
 
 
-5. Wenden Sie sich über [ultiproinfo@ultimatesoftware.com](mailto:ultiproinfo@ultimatesoftware.com) an das Supportteam von Ultipro, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
+5. Wenden Sie sich an das Supportteam von ADP GlobalView, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
 
     - Die heruntergeladene Zertifikatdatei
 
@@ -158,7 +158,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-ultipro-tutorial/create_aaduser_07.png) <br>
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-ultipro-tutorial/create_aaduser_08.png) <br>
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-ultipro-tutorial/create_aaduser_08.png) <br>
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -176,13 +176,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 ### Zuweisen des Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf Ultipro erhält. <br><br>![Benutzer zuweisen][200] <br>
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf Ultipro erhält. <br><br>![Benutzer zuweisen][200] <br>
 
 **Um Britta Simon Ultipro zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Benutzer zuweisen][201] <br>
 
-2. Wählen Sie in der Anwendungsliste **Ultipro**. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-ultipro-tutorial/tutorial_ultipro_50.png) <br>
+2. Wählen Sie in der Anwendungsliste **Ultipro** aus. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-ultipro-tutorial/tutorial_ultipro_50.png) <br>
 
 1. Klicken Sie im oberen Menü auf **Benutzer**. <br><br>![Benutzer zuweisen][203] <br>
 
@@ -221,4 +221,4 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

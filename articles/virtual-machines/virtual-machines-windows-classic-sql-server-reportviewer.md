@@ -3,8 +3,8 @@
 	description="In diesem Thema wird beschrieben, wie eine Microsoft Azure-Website mit dem Visual Studio-Steuerelement „ReportViewer“ erstellt wird, in dem ein Bericht angezeigt wird, der auf einem virtuellen Microsoft Azure-Computer gespeichert ist."
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
+	authors="guyinacube"
+	manager="jhubbard"
 	editor="monicar" 
 	tags="azure-service-management" />
 <tags 
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/11/2015"
-	ms.author="jroth" />
+	ms.date="04/14/2016"
+	ms.author="asaxton" />
 
 # Verwenden von ReportViewer auf einer in Azure gehosteten Website
 
@@ -109,4 +109,4 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 
 [ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -477,6 +477,8 @@ Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und kon
 
 Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfiguriert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+
 1. Öffnen Sie eine Shell-Sitzung, ein Terminal, eine Eingabeaufforderung oder eine andere Befehlszeile für Ihr System, und verwenden Sie den folgenden Befehl, um zum Azure Resource Manager-Modus zu wechseln.
 
         azure config mode arm
@@ -493,7 +495,7 @@ Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfig
 
     Gültige __Knotentypen__ sind __headnode__, __workernode__ und __zookeeper__. Wenn das Skript auf mehrere Knotentypen angewendet werden soll, geben Sie die Typen getrennt durch ein Semikolon (;) ein. Beispiel: `-n headnode;workernode`.
 
-    Fügen Sie zum dauerhaften Speichern des Skripts `--persistOnSuccess` ein. Sie können das Skript auch unter Verwendung von `azure hdinsight script-action persisted set` zu einem späteren Zeitpunkt dauerhaft speichern.
+    Fügen Sie zum dauerhaften Speichern des Skripts `--persistOnSuccess` ein. Sie können das Skript auch mithilfe von `azure hdinsight script-action persisted set` zu einem späteren Zeitpunkt dauerhaft speichern.
     
     Nach Abschluss des Auftrags sollten Sie eine Ausgabe ähnlich der folgenden erhalten:
     
@@ -531,7 +533,7 @@ Ein Beispiel für die Verwendung des .NET SDK zum Anwenden von Skripts auf einen
 
     ![Blatt mit Eigenschaften von Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionproperties.png)
 
-6. Sie können auf dem Blatt „Skriptaktionen“ auch die Option __...__ rechts von den Einträgen verwenden, um Aktionen wie das erneute Ausführen, Beibehalten oder (für permanente Aktionen) Löschen durchzuführen.
+6. Sie können auf dem Blatt „Skriptaktionen“ auch die Option __...__ rechts neben den Einträgen verwenden, um Aktionen wie das erneute Ausführen, Beibehalten oder (für permanente Aktionen) Löschen durchzuführen.
 
     ![Skriptaktionen – Nutzung von „...“](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
 
@@ -579,7 +581,7 @@ Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Hö
 
 ### Verwenden des HDInsight .NET SDK
 
-Ein Beispiel für die Verwendung des .NET SDK zum Abrufen des Skriptverlaufs von einem Cluster, zum Höherstufen oder Herabstufen von Skripts finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Ein Beispiel für die Verwendung des .NET SDK zum Abrufen des Skriptverlaufs aus einem Cluster sowie zum Höherstufen oder Herabstufen von Skripts finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 ## Problembehandlung
 
@@ -678,4 +680,4 @@ Informationen und Beispiele zum Erstellen und Verwenden von Skripts zum Anpassen
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Phasen während der Clustererstellung"
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="04/18/2016"
 	ms.author="spelluru"/>
 
 # Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
@@ -427,14 +427,14 @@ Dies sind die einzelnen Schritte, die Sie in diesem Abschnitt ausführen:
 	1.	Klicken Sie im linken Menü auf **NEU**.
 	2.	Klicken Sie auf dem Blatt **Neu** auf **Daten und Analysen**.
 	3.	Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
-2.	Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name "CustomActivityFactory" ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
+2.	Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name "CustomActivityFactory" ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
 3.	Klicken Sie auf **Name der Ressourcengruppe** und wählen eine vorhandene Ressourcengruppe aus oder erstellen eine neue. 
 4.	Stellen Sie sicher, dass Sie das richtige **Abonnement** und die richtige **Region** verwenden, in dem die Data Factory erstellt werden soll. 
 5.	Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
 6.	Sie sehen die erstellte Data Factory im **Dashboard** des Azure-Portals.
 7.	Nachdem die Data Factory erfolgreich erstellt wurde, sehen Sie das Data Factory-Blatt mit dem Inhalt der Data Factory.
 
-### Schritt 2: Erstellen von verknüpften Diensten
+### Schritt 2: Erstellen von verknüpften Diensten
 
 Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure Data Factory. In diesem Schritt verknüpfen Sie Ihr Azure-Speicherkonto und Azure Batch-Konto mit Ihrer Data Factory.
 
@@ -823,6 +823,15 @@ Verwenden Sie in der **JSON-Pipeline** den mit HDInsight (bedarfsgesteuerten ode
 	  }
 	}
 
+## Beispiele
+
+| Beispiel | Aktion der benutzerdefinierten Aktivität| 
+| ------ | ----------- | 
+| [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). | Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in den Azure-Blobspeicher herunter. |
+| [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) | Ruft ein Azure ML-Modell auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
+| [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). | Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. | 
+| [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | Verwendet andere Assemblyversionen als das Data Factory-Startprogramm (z. B. WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x usw.).
+ 
 
 ## Siehe auch
 
@@ -863,4 +872,4 @@ Verwenden Sie in der **JSON-Pipeline** den mit HDInsight (bedarfsgesteuerten ode
 
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -3,7 +3,7 @@
 	description="In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom Axinom-Lizenzserver bereitgestellt." 
 	services="media-services" 
 	documentationCenter="" 
-	authors="willzhan,Mingfeiy,rajputam,Juliako" 
+	authors="willzhan" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+	ms.date="04/18/2016"   
+	ms.author="willzhan;Mingfeiy;rajputam;Juliako"/>
 
 #Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom  
 
@@ -209,4 +209,4 @@ Inhaltsschlüssel-ID|Muss als Teil des Werts des Anspruchs "entitlement\_message
 
 Wir möchten folgenden Personen für ihre Beiträge zur Erstellung dieses Dokuments danken: Kristjan Jõgi von Axinom, Mingfei Yan und Amit Rajput.
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

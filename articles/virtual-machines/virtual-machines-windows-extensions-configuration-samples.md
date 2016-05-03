@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Konfigurationsbeispiele für Windows-VM-Erweiterungen in Azure
@@ -39,7 +39,7 @@ Weitere Informationen zum Erstellen von Erweiterungsvorlagen finden Sie unter [E
 
 Dieser Artikel führt die erwarteten Konfigurationswerte für einige der Windows-Erweiterungen auf.
 
-## Ausschnitt einer Beispielvorlage für VM-Erweiterungen.
+## Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit IaaS-VMs.
 Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweiterungen gezeigt:
 
       {
@@ -53,11 +53,34 @@ Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweit
       "publisher": "Publisher Namespace",
       "type": "extension Name",
       "typeHandlerVersion": "extension version",
+      "autoUpgradeMinorVersion":true,
       "settings": {
       // Extension specific configuration goes in here.
       }
       }
       }
+
+## Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
+
+    {
+     "type":"Microsoft.Compute/virtualMachineScaleSets",
+    ....
+           "extensionProfile":{
+           "extensions":[
+             {
+               "name":"extension Name",
+               "properties":{
+                 "publisher":"Publisher Namespace",
+                 "type":"extension Name",
+                 "typeHandlerVersion":"extension version",
+                 "autoUpgradeMinorVersion":true,
+                 "settings":{
+                 // Extension specific configuration goes in here.
+                 }
+               }
+              }
+            }
+          }
 
 Überprüfen Sie vor der Bereitstellung der Erweiterung die aktuelle Erweiterungsversion, und ersetzen Sie den Wert von "typeHandlerVersion" durch die aktuelle Version.
 
@@ -65,18 +88,50 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Windows-VM-Er
 
 Überprüfen Sie vor der Bereitstellung der Erweiterung die aktuelle Erweiterungsversion, und ersetzen Sie den Wert von "typeHandlerVersion" durch die aktuelle Version.
 
-### CustomScript-Erweiterung.
-    {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.4",
-        "settings": {
-            "fileUris": [
-                "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
-            ],
-            "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted-Filestart.ps1"
+### CustomScript-Erweiterung 1.4.
+      {
+          "publisher": "Microsoft.Compute",
+          "type": "CustomScriptExtension",
+          "typeHandlerVersion": "1.4",
+          "settings": {
+              "fileUris": [
+                  "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
+              ],
+              "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1"
+          },
+          "protectedSettings": {
+            "storageAccountName": "yourStorageAccountName",
+            "storageAccountKey": "yourStorageAccountKey"
+          }
+      }
+
+#### Beschreibung des Parameters:
+
+- fileUris: Durch Trennzeichen getrennte Liste von URLs der Dateien, die von der Erweiterung auf den virtuellen Computer heruntergeladen werden. Wenn nichts angegeben wird, werden keine Dateien heruntergeladen. Wenn sich die Dateien im Azure-Speicher befinden, können die FileURLs als privat gekennzeichnet werden, und der entsprechende storageAccountName und storageAccountKey können als private Parameter übergeben werden, um auf diese Dateien zuzugreifen.
+- commandToExecute: [Obligatorischer Parameter]: Dies ist der Befehl, der von der Erweiterung ausgeführt wird.
+- storageAccountName: [Optionaler Parameter]: Speicherkontennamen für den Zugriff auf die fileURLs, wenn sie als privat markiert sind.
+- storageAccountKey: [Optionaler Parameter]: Speicherkontenschlüssel für den Zugriff auf die fileURLs, wenn sie als privat markiert sind.
+
+### CustomScript-Erweiterung 1.7.
+
+Eine Beschreibung des Parameters finden Sie in der CustomScript Version 1.4. Version 1.7 bietet Unterstützung für das Senden von Skriptparametern (commandToExecute) als „protectedSettings“, wobei sie vor dem Senden verschlüsselt werden. Der „commandToExecute“-Parameter kann in den Einstellungen oder protectedSettings, aber nicht in beiden angegeben werden.
+
+        {
+            "publisher": "Microsoft.Compute",
+            "type": "CustomScriptExtension",
+            "typeHandlerVersion": "1.7",
+            "settings": {
+                "fileUris": [
+                    "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
+                ],
+                "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1"
+            },
+            "protectedSettings": {
+              "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1",
+              "storageAccountName": "yourStorageAccountName",
+              "storageAccountKey": "yourStorageAccountKey"
+            }
         }
-    }
 
 ### VMAccess-Erweiterung.
 
@@ -316,4 +371,4 @@ Dies ist ein Beispiel für eine vollständige VM-Vorlage mit einer benutzerdefin
 
 [Benutzerdefinierte Skripterweiterung auf einem virtuellen Windows-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

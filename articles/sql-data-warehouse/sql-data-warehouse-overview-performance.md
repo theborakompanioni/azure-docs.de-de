@@ -3,7 +3,7 @@
    description="Einführung in die Funktionen für Leistung und Skalierbarkeit von SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/03/2016"
-   ms.author="mausher;barbkess;jrj;nicw;sonyama"/>
+   ms.author="barbkess;sonyama"/>
 
 # Übersicht über Leistung und Skalierbarkeit
 Durch das Verlagern des Data Warehouse in die Cloud müssen Sie nicht mehr mit Low-Level-Hardwareprobleme befassen. Vorbei sind die Zeiten, in denen Sie die Art der Prozessoren, die Menge des Arbeitsspeichers oder den Speichertyp ermitteln mussten, um eine hohe Leistung des Data Warehouse zu erreichen. Stattdessen stellt SQL Data Warehouse Ihnen diese Frage: Wie schnell möchten Sie Ihre Daten analysieren?
@@ -25,7 +25,7 @@ SQL Data Warehouse ist eine cloudbasierte, verteilte Datenbankplattform, die ent
 
 Unsere Ziele für SQL Data Warehouse:
 -	Vorhersagbare Leistung und lineare Skalierbarkeit für Daten bis zum Petabytebereich
--	Hohe Zuverlässigkeit für alle Data Warehouse-Vorgänge, unterstützt durch SLA (Service Level Agreement)
+-	Hohe Zuverlässigkeit für alle Data Warehouse-Vorgänge, unterstützt durch SLA (Vereinbarung zum Servicelevel)
 -	Kurze Zeit vom Laden der Daten bis zu den Einblicken in relationale und nicht relationale Daten
 
 Während der Vorschau werden wir kontinuierlich an diesen Zielen arbeiten, um sie vor der allgemeinen Verfügbarkeit (GA) umzusetzen.
@@ -43,7 +43,7 @@ SQL Data Warehouse ist ein verteiltes System mit mehreren Komponenten, bei dem d
 
 Basierend auf gesammelten Telemetriedaten wird die Zuverlässigkeit von SQL Data Warehouse auf 98 % für typische Data Warehouse-Workloads geschätzt. Dies bedeutet, dass im Durchschnitt, 2 von 100 Abfragen aufgrund von Systemfehlern fehlschlagen können. Dies ist keine SLA für die Vorschau, sondern eher ein Indikator für die erwartete Zuverlässigkeit von ausgeführten Abfragen. Beachten Sie, dass die Wahrscheinlichkeit einer fehlerhaften Abfrage mit der Ausführungszeit steigt (eine Abfrage, die länger als 2 Stunden dauert, schlägt z. B. mit einer viel höheren Wahrscheinlichkeit fehl als eine Abfrage, die weniger als 10 Minuten dauert). Während der Vorschau nehmen wir fortlaufende Verbesserungen vor, um die gleiche Zuverlässigkeit für Vorgänge unabhängig von deren Ausführungszeit zu gewährleisten. Wenn wir diese Erweiterungen mit dem Ziel der Bereitstellung einer vollständigen SLA bei der allgemeinen Verfügbarkeit veröffentlichen, werden wir die erwartete Zuverlässigkeit aktualisieren.
 
-Während der Vorschau wird SQL Data Warehouse in regelmäßigen Abständen aktualisiert werden, um neue Funktionen und wichtige Updates zu installieren. Diese Upgrades können störend sein, und derzeit werden Upgrades nicht in einem vorhersehbaren Zeitplan durchgeführt. Wenn Sie feststellen, dass dieser Prozess zu störend ist, wir empfehlen Ihnen, [ein Supportticket zu erstellen][], damit wir Ihnen helfen können, diesen Prozess zu umgehen.
+Während der Vorschau wird SQL Data Warehouse in regelmäßigen Abständen aktualisiert werden, um neue Funktionen und wichtige Updates zu installieren. Diese Upgrades können störend sein, und derzeit werden Upgrades nicht in einem vorhersehbaren Zeitplan durchgeführt. Wenn Sie feststellen, dass dieser Prozess zu störend ist, empfehlen wir Ihnen, [ein Supportticket zu erstellen][], damit wir Ihnen helfen können, diesen Prozess zu umgehen.
 
 ## Leistung und Skalierbarkeit
 SQL Data Warehouse führt Data Warehouse-Einheiten (DWUs) als Abstraktion von Datenverarbeitungsressourcen (CPUs, Arbeitsspeicher, Speicher-E/A) ein, die auf mehreren Knoten aggregiert sind. Durch eine Erhöhung der Anzahl der DWUs werden auch die aggregierten Datenverarbeitungsressourcen einer SQL Data Warehouse-Instanz erhöht. SQL Data Warehouse verteilt Vorgänge (z. B. das Laden von Daten oder Abfragen) auf die gesamte Compute-Infrastruktur in der Instanz, um die Leistung von Ladevorgängen und Abfragen zu erhöhen oder zu verringern, wenn das System hoch- oder herunterskaliert wird.
@@ -83,4 +83,4 @@ Anleitungen zum Erstellen Ihrer SQL Data Warehouse-Lösung finden Sie im Artikel
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->
