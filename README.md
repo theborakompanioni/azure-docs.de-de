@@ -93,7 +93,7 @@ Bei allen Artikeln in diesem Repository wird ein an GitHub angepasstes Markdown 
 
 ## Metadaten zu Artikeln
 
-Metadaten zu Artikeln sind die Voraussetzung für bestimmte Funktionen auf der Website „azure.microsoft.com“, z. B. für die Zuordnung von Autoren und Mitwirkenden, für Brotkrümelnavigation und Suchmaschinenoptimierung sowie für Berichtsfunktionen, mit denen Microsoft den Inhalt bewertet. Metadaten sind also wichtig. [Hier finden Sie eine Anleitung, wie Sie Metadaten richtig verwenden](./contributor-guide/article-metadata.md).
+Metadaten zu Artikeln sind die Voraussetzung für bestimmte Funktionen auf der Website „azure.microsoft.com“, z. B. für die Zuordnung von Autoren und Mitwirkenden, für Brotkrümelnavigation und Suchmaschinenoptimierung sowie für Berichtsfunktionen, mit denen Microsoft den Inhalt bewertet. Metadaten sind also wichtig. [Hier finden Sie eine Anleitung, wie Sie Metadaten richtig verwenden](https://github.com/Azure/azure-content/blob/master/contributor-guide/article-metadata.md).
 
 ## Weitere Ressourcen
 
