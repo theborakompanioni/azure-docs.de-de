@@ -14,7 +14,7 @@ Vielen Dank für Ihr Interesse an der Azure-Dokumentation.
 * [Verwenden von GitHub und Git sowie dieses Repositorys](#use-github-git-and-this-repository)
 * [Verwenden von Markdown für die Formatierung](#how-to-use-markdown-to-format-your-topic)
 * [Weitere Ressourcen](#more-resources)
-* [Index aller Artikel im Leitfaden für Mitwirkende](./contributor-guide/contributor-guide-index.md) (öffnet eine neue Seite)
+* [Index aller Artikel im Leitfaden für Mitwirkende](https://github.com/Azure/azure-content/blob/master/contributor-guide/contributor-guide-index.md) (öffnet eine neue Seite)
 
 ## Möglichkeiten zur Mitwirkung
 
@@ -48,7 +48,7 @@ Der Ordner *\articles* enthält die Dokumentationsartikel, formatiert als Markdo
 
 Artikel im Stammverzeichnis werden auf „Azure.Microsoft.com“ unter dem Pfad *http://azure.microsoft.com/documentation/articles/{article-name-without-md}/* veröffentlicht.
 
-* **Dateinamen für Artikel:** Lesen Sie unsere [Anleitung zur Benennung von Dateien](./contributor-guide/file-names-and-locations.md).
+* **Dateinamen für Artikel:** Lesen Sie unsere [Anleitung zur Benennung von Dateien](https://github.com/Azure/azure-content/blob/master/contributor-guide/file-names-and-locations.md).
 
 Artikel in einem eigenen dienstspezifischen Ordner („Dienstordner“) werden auf „Azure.Microsoft.com“ unter dem Pfad 
 *http://azure.microsoft.com/documentation/articles/service-folder/{article-name-without-md}/* veröffentlicht.
@@ -57,7 +57,7 @@ Artikel in einem eigenen dienstspezifischen Ordner („Dienstordner“) werden a
 
 ### \includes
 
-Sie können Abschnitte mit wiederverwendbaren Inhalten erstellen, die in einen oder mehrere Artikel eingefügt werden sollen. Weitere Informationen finden Sie unter [Benutzerdefinierte Erweiterungen für unsere technischen Inhalte](./contributor-guide/custom-markdown-extensions.md).
+Sie können Abschnitte mit wiederverwendbaren Inhalten erstellen, die in einen oder mehrere Artikel eingefügt werden sollen. Weitere Informationen finden Sie unter [Benutzerdefinierte Erweiterungen für unsere technischen Inhalte](https://github.com/Azure/azure-content/blob/master/contributor-guide/custom-markdown-extensions.md).
 
 ### \markdown templates
 
@@ -69,9 +69,9 @@ Dieser Ordner enthält die Artikel unseres Leitfadens für Mitwirkende.
 
 ## Verwenden von GitHub und Git sowie dieses Repositorys
 
-Lesen Sie unter [Installieren und Einrichten der Tools zum Erstellen von Beiträgen in GitHub](./contributor-guide/tools-and-setup.md), wie Sie in der GitHub-Benutzeroberfläche kleine Änderungen vornehmen und wie Sie eine Verzweigung und einen Klon des Repositorys erstellen, um größere Beiträge zu verfassen.
+Lesen Sie unter [Installieren und Einrichten der Tools zum Erstellen von Beiträgen in GitHub](https://github.com/Azure/azure-content/blob/master/contributor-guide/tools-and-setup.md), wie Sie in der GitHub-Benutzeroberfläche kleine Änderungen vornehmen und wie Sie eine Verzweigung und einen Klon des Repositorys erstellen, um größere Beiträge zu verfassen.
 
-Sie möchten Git Bash installieren und lokal arbeiten? Dann finden Sie die Schritte zum Erstellen einer lokalen Arbeitsverzweigung, zum Vornehmen von Änderungen und zum Einreichen der Änderungen an die Hauptverzweigung unter [Git-Befehle zum Erstellen eines neuen Artikels oder zum Aktualisieren eines vorhandenen Artikels](./contributor-guide/git-commands-for-master.md).
+Sie möchten Git Bash installieren und lokal arbeiten? Dann finden Sie die Schritte zum Erstellen einer lokalen Arbeitsverzweigung, zum Vornehmen von Änderungen und zum Einreichen der Änderungen an die Hauptverzweigung unter [Git-Befehle zum Erstellen eines neuen Artikels oder zum Aktualisieren eines vorhandenen Artikels](https://github.com/Azure/azure-content/blob/master/contributor-guide/git-commands-for-master.md).
 
 ### Verzweigungen
 
@@ -87,9 +87,9 @@ Bei allen Artikeln in diesem Repository wird ein an GitHub angepasstes Markdown 
 
 - [Grundlegendes zu Markdown](https://help.github.com/articles/markdown-basics/)
 
-- [Markdown-Cheatsheet zum Ausdrucken](./contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
+- [Markdown-Cheatsheet zum Ausdrucken](https://github.com/Azure/azure-content/blob/master/contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
 
-- Eine Liste der von uns empfohlenen Markdown-Editoren finden Sie im Thema zum [Installieren und Einrichten der Tools](./contributor-guide/tools-and-setup.md#install-a-markdown-editor).
+- Eine Liste der von uns empfohlenen Markdown-Editoren finden Sie im Thema zum [Installieren und Einrichten der Tools](https://github.com/Azure/azure-content/blob/master/contributor-guide/tools-and-setup.md#install-a-markdown-editor).
 
 ## Metadaten zu Artikeln
 
@@ -97,6 +97,6 @@ Metadaten zu Artikeln sind die Voraussetzung für bestimmte Funktionen auf der W
 
 ## Weitere Ressourcen
 
-Alle Anleitungsthemen finden Sie im [Index zum Leitfaden für Mitwirkende](./contributor-guide/contributor-guide-index.md).
+Alle Anleitungsthemen finden Sie im [Index zum Leitfaden für Mitwirkende](https://github.com/Azure/azure-content/blob/master/contributor-guide/contributor-guide-index.md).
 
 <!---HONumber=AcomDC_0307_2016-->
