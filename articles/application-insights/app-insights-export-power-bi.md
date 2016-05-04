@@ -194,7 +194,7 @@ Fügen Sie diese Abfrage ein:
     GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
-* „export-input§ ist der Alias, den wir der Datenstromeingabe gegeben haben.
+* „export-input“ ist der Alias, den wir der Datenstromeingabe gegeben haben.
 * „pbi-outout“ ist der definierte Ausgabealias.
 * Wir verwenden [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx), da sich der Ereignisname in einem geschachtelten JSON-Arrray befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
 
