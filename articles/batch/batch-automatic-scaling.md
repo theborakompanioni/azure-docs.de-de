@@ -188,7 +188,22 @@ Folgende **Vorgänge** sind für die oben aufgeführten Typen zulässig.
 
 | Vorgang | Unterstützte Operatoren | Ergebnistyp |
 | ------------------------------------- | --------------------- | ------------- |
-| double *Operator* double | +, -, *, / | double | | double *Operator* timeinterval | * | timeinterval | | doubleVec *Operator* double | +, -, *, / | doubleVec | | doubleVec *Operator* doubleVec | +, -, *, / | doubleVec | | timeinterval *Operator* double | *, / | timeinterval | | timeinterval *Operator* timeinterval | +, - | timeinterval | | timeinterval *Operator* timestamp | + | timestamp | | timestamp *Operator* timeinterval | + | timestamp | | timestamp *Operator* timestamp | - | timeinterval | | *Operator*double | -, ! | double | | *Operator*timeinterval | - | timeinterval | | double *Operator* double | <, <=, ==, >=, >, != | double | | string *Operator* string | <, <=, ==, >=, >, != | double | | timestamp *Operator* timestamp | <, <=, ==, >=, >, != | double | | timeinterval *Operator* timeinterval | <, <=, ==, >=, >, != | double | | double *Operator* double | &&, || | double |
+| double *operator* double 				| +, -, *, /            | double		    |
+| double *operator* timeinterval 		| *                     | timeinterval	    |
+| doubleVec *operator* double 			| +, -, *, /            | doubleVec		    |
+| doubleVec *operator* doubleVec 		| +, -, *, /            | doubleVec		    |
+| timeinterval *operator* double 		| *, /                  | timeinterval	    |
+| timeinterval *operator* timeinterval 	| +, -                  | timeinterval	    |
+| timeinterval *operator* timestamp 	| +                     | timestamp		    |
+| timestamp *operator* timeinterval 	| +                     | timestamp		    |
+| timestamp *operator* timestamp 		| -                     | timeinterval	    |
+| *operator*double 						| -, !                  | double		    |
+| *operator*timeinterval 				| -                     | timeinterval	    |
+| double *operator* double 				| <, <=, ==, >=, >, !=  | double		    |
+| string *operator* string 				| <, <=, ==, >=, >, !=  | double		    |
+| timestamp *operator* timestamp 		| <, <=, ==, >=, >, !=  | double		    |
+| timeinterval *operator* timeinterval 	| <, <=, ==, >=, >, !=  | double		    |
+| double *operator* double 				| &&, &#124;&#124;      | double		    |
 
 Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 : statement2`) sind Werte ungleich null **true**, und null ist **false**.
 
@@ -592,4 +607,4 @@ Die Formel im oben stehenden Codeausschnitt bewirkt Folgendes:
 [rest_autoscaleinterval]: https://msdn.microsoft.com/de-DE/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0420_2016-->
