@@ -13,7 +13,7 @@ Vielen Dank für Ihr Interesse an der Azure-Dokumentation.
 * [Aufbau des Repositorys](#repository-organization)
 * [Verwenden von GitHub und Git sowie dieses Repositorys](#use-github-git-and-this-repository)
 * [Verwenden von Markdown für die Formatierung](#how-to-use-markdown-to-format-your-topic)
-* [Weitere Ressourcen](#more-resources)
+* [Weitere Ressourcen](#Weitere Ressourcen)
 * [Index aller Artikel im Leitfaden für Mitwirkende](https://github.com/Azure/azure-content/blob/master/contributor-guide/contributor-guide-index.md) (öffnet eine neue Seite)
 
 ## Möglichkeiten zur Mitwirkung
