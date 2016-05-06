@@ -79,4 +79,4 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 
 Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, -konfiguration und -orchestrierung.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0420_2016-->
