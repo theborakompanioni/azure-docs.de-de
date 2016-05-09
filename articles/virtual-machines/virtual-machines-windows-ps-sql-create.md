@@ -26,7 +26,9 @@
 
 In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Azure-Computer im Rahmen des Bereitstellungsmodells **Azure Resource Manager** mithilfe von Azure PowerShell-Cmdlets erstellen. Zu diesem Zweck erstellen wir in diesem Tutorial einen einzelnen virtuellen Computer mit einem einzelnen Laufwerk. Als Grundlage dient dabei ein Image aus dem SQL-Katalog. Außerdem erstellen wir neue Anbieter für die Speicher-, Netzwerk- und Compute-Ressourcen, die von dem virtuellen Computer verwendet werden. Falls Sie bereits über Anbieter für diese Ressourcen verfügen, können Sie stattdessen diese Anbieter verwenden.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell. Die klassische Version dieses Themas finden Sie unter [Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch)](virtual-machines-windows-classic-ps-sql-create.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+
+Klassisches Bereitstellungsmodell. Die klassische Version dieses Themas finden Sie unter [Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch)](virtual-machines-windows-classic-ps-sql-create.md).
 
 ## Voraussetzungen
 
@@ -310,4 +312,4 @@ Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tut
 ## Nächste Schritte
 Nach Erstellung des virtuellen Computers können Sie über RDP eine Verbindung mit dem virtuellen Computer herstellen und die Konnektivität einrichten. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](virtual-machines-windows-sql-connect.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!----HONumber=AcomDC_0427_2016-->
