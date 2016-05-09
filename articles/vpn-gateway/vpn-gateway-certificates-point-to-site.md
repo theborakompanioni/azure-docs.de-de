@@ -93,6 +93,6 @@ Auf jedem Client, der über eine Punkt-zu-Standort-Verbindung mit Ihrem virtuell
 Setzen Sie die Punkt-zu-Standort-Konfiguration fort.
 
 - Schritte für das Bereitstellungsmodell **Ressourcen-Manager** finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md). 
-- Schritte für das **klassische ** Bereitstellungsmodell finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet](vpn-gateway-point-to-site-create.md).
+- Schritte für das **klassische** Bereitstellungsmodell finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet](vpn-gateway-point-to-site-create.md).
 
 <!---HONumber=AcomDC_0427_2016-->

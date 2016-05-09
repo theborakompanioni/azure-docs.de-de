@@ -87,7 +87,7 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 > [AZURE.IMPORTANT] Das Konfigurieren der Sicherheit für die Docker-Registrierung wird in diesem Dokument nicht behandelt, und auf Ihre Registrierung können standardmäßig alle Benutzer ohne Authentifizierung zugreifen, wenn Sie den Registrierungsport am Endpunkt des virtuellen Computers oder des Lastenausgleichs durch die Verwendung des Bereitstellungsbefehls oben öffnen.
 >
-> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] (in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
+> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] \(in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
 
 ## Nächste Schritte
 

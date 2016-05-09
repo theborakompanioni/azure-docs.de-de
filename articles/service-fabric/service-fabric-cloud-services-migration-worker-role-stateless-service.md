@@ -38,7 +38,7 @@ In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar.
 
 Ähnlich wie bei der Workerrolle stellt auch eine Webrolle eine zustandslose Workload dar, sodass sie vom Konzept her auch einem zustandslosen Service Fabric-Dienst zugeordnet werden kann. Im Gegensatz zu Webrollen weist Service Fabric aber keine IIS-Unterstützung auf. Zum Migrieren einer Webanwendung aus einer Webrolle in einen zustandslosen Dienst ist es zuerst erforderlich, zu einem Web-Framework zu wechseln, das sich selbst hosten kann und nicht von IIS oder System.Web abhängig ist, z. B. ASP.NET Core 1.
 
-****Anwendung ** | **Unterstützt** | **Migrationspfad**
+**Anwendung** | **Unterstützt** | **Migrationspfad**
 --- | --- | ---
 ASP.NET Web Forms | Nein | In ASP.NET Core 1 MVC konvertieren
 ASP.NET MVC | Per Migration | Upgrade auf ASP.NET Core 1

@@ -251,6 +251,6 @@ Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die 
 
 [Übersicht über den Azure-Ressourcen-Manager]: ../resource-group-overview.md
 [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen]: ../resource-group-template-deploy.md
-[Katalog mit Azure-Schnellstartvorlagen]: https://azure.microsoft.com/de-DE/documentation/templates/?term=service+bus
+[Katalog mit Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
 <!---HONumber=AcomDC_0427_2016-->

@@ -173,7 +173,7 @@ Es gibt zwei Ansichten, mit denen Sie die Ressourcenverwendung für eine SQL-Dat
 ### Verwenden von „sys.dm\_db\_resource\_stats“
 Die Sicht [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) ist in jeder SQL-Datenbank vorhanden und liefert Daten zur letzten Ressourcenverwendung relativ zur Dienstebene. Durchschnittliche Prozentsätze für CPU, Dateneingang/-ausgang, Protokollschreibvorgänge und Arbeitsspeicher werden alle 15 Sekunden aufgezeichnet und eine Stunde lang aufbewahrt.
 
-Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats ** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
+Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
 
 	SELECT  
 	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
