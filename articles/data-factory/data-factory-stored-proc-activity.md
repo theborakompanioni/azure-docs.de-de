@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/05/2016" 
 	ms.author="spelluru"/>
 
 # SQL Server-Aktivität "Gespeicherte Prozedur"
@@ -74,8 +74,7 @@ storedProcedureParameters | Geben Sie Werte für Parameter der gespeicherten Pro
 		CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
 		GO
 
-	"Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird. 
-	![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
+	"Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird. ![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
 
 2. Erstellen Sie die folgende **gespeicherte Prozedur**, mit welcher Daten in **sampletable** eingefügt werden.
 
@@ -109,7 +108,7 @@ Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpft
 
 7.	Klicken Sie auf dem Blatt **DATA FACTORY** für **SProcDF** auf **Erstellen und bereitstellen**. Der Data Factory-Editor wird gestartet. 
 2.	Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure SQL**. Das JSON-Skript zum Erstellen eines mit Azure SQL verknüpften Diensts wird im Editor angezeigt. 
-4. Ersetzen Sie **servername** durch den Namen Ihres Azure SQL-Datenbankservers, **databasename** durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben, **username@servername** durch das Benutzerkonto, das Zugriff auf die Datenbank besitzt, und **password** durch das Kennwort für das Benutzerkonto.
+4. Ersetzen Sie **servername** durch den Namen Ihres Azure SQL-Datenbankservers, **databasename** durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben, ****username@servername** durch das Benutzerkonto, das Zugriff auf die Datenbank besitzt, und **password** durch das Kennwort für das Benutzerkonto.
 5. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
 ### Erstellen eines Ausgabedatasets
@@ -208,4 +207,4 @@ Um dies zu erreichen, übergeben Sie den Parameter "Scenario" und den Wert aus d
 		}
 	}
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

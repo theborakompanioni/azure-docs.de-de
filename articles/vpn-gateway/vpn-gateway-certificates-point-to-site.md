@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/15/2016"
+   ms.date="04/26/2016"
    ms.author="cherylmc" />
 
 # Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen
@@ -40,7 +40,7 @@ MakeCert ist eine Möglichkeit zum Erstellen eines selbstsignierten Stammzertifi
 
     	makecert -sky exchange -r -n "CN=RootCertificateName" -pe -a sha1 -len 2048 -ss My "RootCertificateName.cer"
 
-	>[AZURE.NOTE]Da Sie ein Stammzertifikat erstellt haben, aus dem Clientzertifikate generiert werden, ist es empfehlenswert, dass Sie dieses Zertifikat zusammen mit dessen privaten Schlüssel exportieren und an einem sicheren Ort speichern, von dem es wiederhergestellt werden kann.
+	>[AZURE.NOTE] Da Sie ein Stammzertifikat erstellt haben, aus dem Clientzertifikate generiert werden, ist es empfehlenswert, dass Sie dieses Zertifikat zusammen mit dessen privaten Schlüssel exportieren und an einem sicheren Ort speichern, von dem es wiederhergestellt werden kann.
 
 ## Erstellen, Exportieren und Installieren des Clientzertifikats
 
@@ -95,4 +95,4 @@ Setzen Sie die Punkt-zu-Standort-Konfiguration fort.
 - Schritte für das Bereitstellungsmodell **Ressourcen-Manager** finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md). 
 - Schritte für das **klassische ** Bereitstellungsmodell finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet](vpn-gateway-point-to-site-create.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0427_2016-->

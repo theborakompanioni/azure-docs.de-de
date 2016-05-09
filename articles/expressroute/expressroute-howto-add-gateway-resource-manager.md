@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Hinzufügen eines VPN-Gateways eines virtuellen Netzwerks für ExpressRoute mit dem Ressourcen-Manager und PowerShell | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie Sie einem bereits erstellten Ressourcen-Manager-VNet für ExpressRoute ein VPN-Gateway hinzufügen."
+   pageTitle="Hinzufügen eines VNet-Gateways zu einem virtuellen Netzwerk für ExpressRoute mit Resource Manager und PowerShell | Microsoft Azure"
+   description="In diesem Artikel wird beschrieben, wie Sie einem bereits erstellten Resource Manager-VNet für ExpressRoute ein VNet-Gateway hinzufügen."
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
+   authors="charwen"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
@@ -14,12 +14,22 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="02/26/2016"
-   ms.author="cherylmc"/>
+   ms.date="04/06/2016"
+   ms.author="charwen"/>
 
-# Fügen Sie einem Ressourcen-Manager-VNet ein VPN-Gateway für eine ExpressRoute-Konfiguration hinzu. 
+# Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit Resource Manager und PowerShell
 
-In diesem Artikel werden die Schritte für das Hinzufügen eines Gatewaysubnetzes, und das Erstellen eines VPN-Gateways für ein bereits bestehendes VNet beschrieben. Die Schritte für diese Konfiguration gelten speziell für VNets, die unter Verwendung des **Ressourcen-Manager-Bereitstellungsmodells** erstellt wurden, und die in einer ExpressRoute-Konfiguration verwendet werden. Weitere Informationen über die Erstellung von Gateways für VNets unter Verwendung des klassischen Bereitstellungsmodells erhalten Sie unter [Configure a virtual network for ExpressRoute using the classic portal](expressroute-howto-vnet-portal-classic.md) (Konfigurieren eines virtuellen Netzwerks für ExpressRoute unter Verwendung des klassischen Portals).
+
+> [AZURE.SELECTOR]
+- [PowerShell – Resource Manager](expressroute-howto-add-gateway-resource-manager.md)
+- [PowerShell – klassisch](expressroute-howto-add-gateway-classic.md)
+
+
+Dieser Artikel führt Sie durch die Schritte, die zum Hinzufügen, Ändern der Größe und Entfernen eines virtuellen Netzwerkgateways (VNet) für ein vorhandenes VNet erforderlich sind. Die Schritte für diese Konfiguration gelten speziell für VNets, die unter Verwendung des **Resource Manager-Bereitstellungsmodells** erstellt wurden und in einer ExpressRoute-Konfiguration verwendet werden.
+
+**Informationen zu Azure-Bereitstellungsmodellen**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## Vorbereitungen
 
@@ -28,14 +38,9 @@ Stellen Sie sicher, dass Sie die für diese Konfiguration erforderlichen Azure P
 
 [AZURE.INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
-## Erstellung des Gateways überprüfen
-
-Verwenden Sie den folgenden Befehl, um zu überprüfen, ob das Gateway erstellt wurde.
-
-	Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
 	
 ## Nächste Schritte
 
-Nachdem Sie das VPN-Gateway erstellt haben, können Sie Ihr VNet mit einer ExpressRoute-Verbindung verknüpfen. Weitere Informationen finden Sie unter [Link a Virtual Network to an ExpressRoute circuit](expressroute-howto-linkvnet-arm.md) (Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung).
+Nachdem Sie das VNet-Gateway erstellt haben, können Sie Ihr VNet mit einer ExpressRoute-Verbindung verknüpfen. Weitere Informationen finden Sie unter [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

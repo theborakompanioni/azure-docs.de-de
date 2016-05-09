@@ -57,11 +57,11 @@ Der Vorgang umfasst drei Schritte:
 
 Dies ist ein komplexer Vorgang. Wir haben daher ein PowerShell-Modul in ein Git-Repository hochgeladen, mit dem dieser Vorgang für Sie durchgeführt wird.
 
-**Schritt 2.1**: Kopieren Sie diesen Ordner aus [diesem Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers) auf Ihren Computer.
+**Schritt 2.1**: Kopieren Sie diesen Ordner aus [diesem Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers) auf Ihren Computer.
 
-**Schritt 2.2**: Stellen Sie sicher, dass mindestens Azure PowerShell 1.0 auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
+**Schritt 2.2**: Stellen Sie sicher, dass mindestens Azure PowerShell 1.0 auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
 
-**Schritt 2.3**: Öffnen Sie ein PowerShell-Fenster, und importieren Sie die Datei „ServiceFabricRPHelpers.psm“. (Dies ist das Modul, das Sie in Schritt 2.1 heruntergeladen haben.)
+**Schritt 2.3**: Öffnen Sie ein PowerShell-Fenster, und importieren Sie die Datei „ServiceFabricRPHelpers.psm“. (Dies ist das Modul, das Sie in Schritt 2.1 heruntergeladen haben.)
 
 ```
 Remove-Module ServiceFabricRPHelpers
@@ -83,7 +83,7 @@ Login-AzureRmAccount
 
 Das folgende Skript erstellt eine neue Ressourcengruppe und/oder einen Schlüsseltresor, sofern noch nicht vorhanden. **Hinweis: Bei Verwendung eines bereits vorhandenen Schlüsseltresors muss er mithilfe dieses Skripts bereitstellungsfähig gemacht werden.**
 ```
-Set-AzureRmKeyVaultAccessPolicy -VaultName <Name of the Vault> -ResourceGroupName <string> -EnabledForTemplateDeployment -EnabledForDeployment
+Set-AzureRmKeyVaultAccessPolicy -VaultName <Name of the Vault> -ResourceGroupName <string> -EnabledForDeployment
 ```
 
 ```
@@ -95,7 +95,7 @@ Hier ist ein ausgefülltes Skript als Beispiel angegeben.
 Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -ResourceGroupName chackdankeyvault4doc -Location westus -VaultName chackdankeyvault4doc  -CertificateName chackdantestcertificate2 -Password abcd123 -UseExistingCertificate -ExistingPfxFilePath C:\MyCertificates\ChackdanTestCertificate.pfx
 ```
 
-Nach erfolgreichem Abschluss des Skripts erhalten Sie eine Ausgabe wie unten angegeben, die Sie für Schritt 3 (Einrichten eines sicheren Clusters) benötigen.
+Nach erfolgreichem Abschluss des Skripts erhalten Sie eine Ausgabe wie unten angegeben, die Sie für Schritt 3 (Einrichten eines sicheren Clusters) benötigen.
 
 - **Zertifikatfingerabdruck**: 2118C3BCE6541A54A0236E14ED2CCDD77EA4567A
 
@@ -134,11 +134,11 @@ Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -R
 Da es sich um ein selbstsigniertes Zertifikat handelt, müssen Sie es in den Speicher „Vertrauenswürdige Personen“ Ihres Computers importieren, bevor Sie es zum Herstellen einer Verbindung mit einem sicheren Cluster verwenden können.
 
 ```
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople -FilePath C:C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password ")
+Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople -FilePath C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password")
 ```
 
 ```
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath C:C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password ")
+Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password")
 ```
 
 Nach dem erfolgreichen Abschluss des Skripts erhalten Sie eine Ausgabe wie unten angegeben. Diese benötigen Sie für Schritt 3.
@@ -218,8 +218,7 @@ Es folgt der Prozess zum Entfernen eines alten Zertifikats, damit der Cluster es
 >[AZURE.NOTE] Für einen sicheren Cluster muss stets mindestens ein gültiges (nicht widerrufenes oder abgelaufenes) Zertifikat (primär oder sekundär) bereitgestellt sein. Andernfalls können Sie nicht auf den Cluster zugreifen.
 
 
-## 
-Arten von Zertifikaten, die von Service Fabric verwendet werden
+## Arten von Zertifikaten, die von Service Fabric verwendet werden
 
 ### X.509-Zertifikate
 
@@ -238,9 +237,9 @@ Serverzertifikate müssen primär einen Server (Knoten) für Clients oder einen 
 
 Im folgenden Artikel erfahren Sie, wie Zertifikate mit alternativen Antragstellernamen (SAN) generiert werden: [Hinzufügen eines alternativen Antragstellernamens zu einem gesicherten LDAP-Zertifikat](http://support.microsoft.com/kb/931351).
 
->[AZURE.NOTE] Das Antragstellerfeld kann mehrere Werte enthalten. Jeder davon ist mit einer Initialisierung versehen, die den Typ des Werts als Präfix angibt. In den meisten Fällen verwendet die Initialisierung „CN“ für den allgemeinen Namen, z. B. „CN = www.contoso.com“. Das Feld für den Antragsteller kann auch leer gelassen werden. Wenn das optionale Feld für den alternativen Antragstellernamen ausgefüllt ist, muss es sowohl den allgemeinen Namen des Zertifikats als auch einen Eintrag pro alternativen Antragstellernamen enthalten. Diese werden als Werte für DNS-Namen eingegeben.
+>[AZURE.NOTE] Das Antragstellerfeld kann mehrere Werte enthalten. Jeder davon ist mit einer Initialisierung versehen, die den Typ des Werts als Präfix angibt. In den meisten Fällen verwendet die Initialisierung „CN“ für den allgemeinen Namen, z. B. „CN = www.contoso.com“. Das Feld für den Antragsteller kann auch leer gelassen werden. Wenn das optionale Feld für den alternativen Antragstellernamen ausgefüllt ist, muss es sowohl den allgemeinen Namen des Zertifikats als auch einen Eintrag pro alternativen Antragstellernamen enthalten. Diese werden als Werte für DNS-Namen eingegeben.
 
-Der Wert des Felds „Beabsichtigte Zwecke“ des Zertifikats muss einen entsprechenden Wert enthalten, z. B. „Serverauthentifizierung“ oder „Clientauthentifizierung“.
+Der Wert des Felds „Beabsichtigte Zwecke“ des Zertifikats muss einen entsprechenden Wert enthalten, z. B. „Serverauthentifizierung“ oder „Clientauthentifizierung“.
 
 #### Clientzertifikate
 
@@ -263,4 +262,4 @@ Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizieru
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

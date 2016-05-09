@@ -19,8 +19,9 @@
 # Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe auf Azure-Ressourcen-Manager-VMs (GUI).
 
 > [AZURE.SELECTOR]
-- [Portal – Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-- [Portal – klassisch](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+- [Portal – Resource Manager – Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Portal – Resource Manager – Manuell](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
+- [Portal – Klassisch – Manuell](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 - [PowerShell – klassisch](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 
 <br/>
@@ -76,10 +77,8 @@ Azure bietet ein Katalogimage für die gesamte Lösung. Um die Vorlage zu suchen
 
 1. 	Melden Sie sich mit Ihrem Konto beim Azure-Portal an.
 1.	Klicken Sie im Azure-Portal auf **+Neu**. Im Portal wird das Blatt „Neu“ geöffnet.
-1.	Suchen Sie auf dem Blatt „Neu“ die Option **AlwaysOn**.
-![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-1.	Suchen Sie in den Suchergebnissen **SQL Server AlwaysOn-Cluster**.
-![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+1.	Suchen Sie auf dem Blatt „Neu“ die Option **AlwaysOn**. ![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
+1.	Suchen Sie in den Suchergebnissen **SQL Server AlwaysOn-Cluster**. ![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 1.	Wählen Sie in **Bereitstellungsmodell auswählen** die Option **Ressourcen-Manager** aus.
 
 ### Grundlagen
@@ -132,7 +131,7 @@ Bei Bedarf können Sie diese Werte ändern. Für dieses Tutorial verwenden wir d
 
 - **Name der Verfügbarkeitsgruppe** ist der Name der Clusterressource für die Verfügbarkeitsgruppe. Verwenden Sie für dieses Tutorial **Contoso-ag**.
 
-- **Listenername der Verfügbarkeitsgruppe** wird von Cluster und internem Lastenausgleich verwendet. Clients, die sich mit SQL Server verbinden, können diesen Namen für die Verbindung mit dem entsprechenden Replikat der Datenbank verwenden. Verwenden Sie für dieses Tutorial **Contoso-listener**.
+- **Listenername der Verfügbarkeitsgruppe** wird von Cluster und internem Lastausgleich verwendet. Clients, die sich mit SQL Server verbinden, können diesen Namen für die Verbindung mit dem entsprechenden Replikat der Datenbank verwenden. Verwenden Sie für dieses Tutorial **Contoso-listener**.
 
 -  **Port des Verfügbarkeitsgruppenlisteners** gibt den TCP-Port an, den der SQL Server-Listener verwendet. Verwenden Sie für dieses Tutorial den Standardport **1433**.
 
@@ -245,8 +244,7 @@ Um eine RDP-Verbindung mit dem primären Domänencontroller herzustellen, gehen 
 
 1.	Klicken Sie auf dem Blatt **Ressourcen** auf **ad-primary-dc**, den Computernamen des virtuellen Computers für den primären Domänencontroller.
 
-1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**.
-![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
+1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**. ![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
 1.	Die **Remotedesktopverbindung** warnt Sie möglicherweise, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**.
 
 1.	Die Windows-Sicherheit fordert Sie auf, zur Verbindung mit der IP-Adresse des primären Domänencontrollers Ihre Anmeldeinformationen einzugeben. Klicken Sie auf **Anderes Konto verwenden**. Geben Sie für **Benutzername** **contoso\\DomainAdmin** ein. Dieses Konto haben Sie für den Administratorbenutzernamen ausgewählt. Verwenden Sie das komplexe Kennwort, das Sie beim Konfigurieren der Vorlage ausgewählt haben.
@@ -263,4 +261,4 @@ Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgend
 
 Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die AlwaysOn-Verfügbarkeitsgruppe konfiguriert ist.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

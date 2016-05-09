@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Azure AD-Terminologie
@@ -43,4 +43,4 @@ Geschäfts- oder Schulkonto | Ein Benutzerkonto, das von einer Organisation (Unt
 - [Verknüpfung von Azure-Abonnements mit Azure AD](active-directory-how-subscriptions-associated-directory.md)
 - [Dienst- und andere Einschränkungen für Azure Active Directory](active-directory-service-limits-restrictions.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/11/2016" 
 	ms.author="spelluru"/>
 
 # Versionshinweise für Azure Data Factory
@@ -270,10 +270,10 @@ Die Listen **Letzte aktualisierte Slices** und **Letzte fehlerhafte Slices** bef
 
 Klicken Sie auf den Titel der Listen oder auf **...** (Auslassungspunkte), um eine umfangreichere Liste mit Slices anzuzeigen. Klicken Sie auf der Symbolleiste auf **Filter**, um die Slices zu filtern.
  
-Durch Klicken auf die Kachel **Datenslices (nach Slicezeit)** können Sie Slices weiterhin sortiert nach der Slicezeit anzeigen. Die Slices in diesen Auflistungen sind nach Slicezeit sortiert. Bei einem stündlichen Zeitplan sind die Slices beispielsweise wie folgt sortiert: 
-- 04.04.2015 17:00 Uhr In Bearbeitung 
-- 04.04.2015 16:00 Uhr Erfolg 
-- 04.04.2015 15:00 Uhr Fehler
+Durch Klicken auf die Kachel **Datenslices (nach Slicezeit)** können Sie Slices weiterhin sortiert nach der Slicezeit anzeigen. Die Slices in diesen Auflistungen sind nach Slicezeit sortiert. Bei einem stundenweise ausgeführten Zeitplan gäbe es folgende Slices:
+- 4\.4.2015 17:00 Uhr In Bearbeitung 
+- 4\.4.2015 16:00 Uhr Erfolgreich
+- 4\.4.2015 15:00 Uhr Fehler
 
 Wenn jedoch ein älterer Slice erneut ausgeführt wird, wird er nicht oben in dieser Liste angezeigt, obwohl dies vermutlich für den Benutzer interessant wäre.
 
@@ -356,4 +356,4 @@ Siehe den Blogbeitrag [Azure Data Factory-Update – Neue Datenspeicher](https:/
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

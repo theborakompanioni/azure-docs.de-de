@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/15/2016"
+	ms.date="04/15/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,8 +22,8 @@
 # Erstellen und Bereitstellen eines Clouddiensts
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-create-deploy-portal.md)
-- [Azure classic portal](cloud-services-how-to-create-deploy.md)
+- [Azure-Portal](cloud-services-how-to-create-deploy-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-create-deploy.md)
 
 Das klassische Azure-Portall bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: **Schnellerfassung** und **Benutzerdefiniert erstellen**.
 
@@ -150,4 +150,4 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

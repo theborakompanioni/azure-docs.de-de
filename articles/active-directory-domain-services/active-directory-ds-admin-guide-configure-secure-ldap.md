@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="04/25/2016"
 	ms.author="maheshu"/>
 
 # Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD-Domänendienste verwaltete Domäne
@@ -32,7 +32,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
     - **Empfohlen**: Beschaffen Sie ein Zertifikat von Ihrer Unternehmenszertifizierungsstelle oder von einer öffentlichen Zertifizierungsstelle. Dies ist die wesentlich sicherere Konfigurationsoption.
 	- Alternativ kann können Sie [ein selbstsigniertes Zertifikat erstellen](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-1---obtain-a-certificate-for-secure-ldap). Das Verfahren dafür wird weiter unten in diesem Artikel beschrieben.
 
-
+<br>
 
 ### Anforderungen an ein Zertifikat für sicheres LDAP
 Beschaffen Sie ein gültiges Zertifikat, das den folgenden Richtlinien entspricht, bevor Sie sicheres LDAP aktivieren. Wenn Sie beim Aktivieren von sicherem LDAP für Ihre verwaltete Domäne ein ungültiges oder falsches Zertifikat verwenden, treten Fehler auf.
@@ -91,7 +91,7 @@ Vergewissern Sie sich vor dem Ausführen dieser Aufgabe, dass Sie das Zertifikat
 
 Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in eine PFX-Datei zu exportieren.
 
-1. Klicken Sie auf die Schaltfläche **Start**, und drücken Sie **R**, um das Dialogfeld **Ausführen** zu öffnen. Geben Sie **mmc** ein, und klicken Sie auf **OK**.
+1. Klicken Sie auf die Schaltfläche **Start**, und geben Sie **R** ein, um das Dialogfeld **Ausführen** zu öffnen. Geben Sie **mmc** ein, und klicken Sie auf **OK**.
 
     ![Starten der MMC-Konsole](./media/active-directory-domain-services-admin-guide/secure-ldap-start-run.png)
 
@@ -101,7 +101,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 
     ![Hinzufügen des Snap-Ins zur MMC-Konsole](./media/active-directory-domain-services-admin-guide/secure-ldap-add-snapin.png)
 
-4. Wählen Sie im Dialogfeld **Snap-In hinzufügen/entfernen** das Snap-In **Zertifikate** aus, und klicken Sie auf die Schaltfläche **Hinzufügen >**.
+4. Wählen Sie im Dialogfeld **Snap-Ins hinzufügen bzw. entfernen** das Snap-In **Zertifikate** aus, und klicken Sie auf die Schaltfläche **Hinzufügen >**.
 
     ![Hinzufügen des Zertifikat-Snap-Ins zur MMC-Konsole](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin.png)
 
@@ -113,7 +113,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 
     ![Hinzufügen des Zertifikat-Snap-Ins – Computer auswählen](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-local-computer.png)
 
-7. Klicken Sie im Dialogfeld **Snap-In hinzufügen/entfernen** auf **OK**, um der MMC das Zertifikat-Snap-In hinzuzufügen.
+7. Klicken Sie im Dialogfeld **Snap-Ins hinzufügen bzw. entfernen** auf **OK**, um der MMC das Zertifikat-Snap-In hinzuzufügen.
 
     ![Hinzufügen des Zertifikat-Snap-Ins zur MMC-Konsole – fertig](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin-done.png)
 
@@ -123,7 +123,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 
 9. Wie in der Abbildung oben gezeigt, sollten Sie das zuvor erstellte selbstsignierte Zertifikat sehen. Sie können die Eigenschaften des Zertifikats überprüfen und sich vergewissern, dass der Fingerabdruck demjenigen entspricht, der beim Erstellen des Zertifikats in den PowerShell-Fenstern angezeigt wurde.
 
-10. Wählen Sie das selbstsignierte Zertifikat aus, und **klicken Sie mit der rechten Maustaste darauf**. Wählen Sie im Kontextmenü **Alle Aufgaben** und wählen Sie **Exportieren**.
+10. Wählen Sie das selbstsignierte Zertifikat aus, und **klicken Sie mit der rechten Maustaste darauf**. Wählen Sie im Kontextmenü **Alle Aufgaben**, und wählen Sie **Exportieren**.
 
     ![Exportieren des Zertifikats](./media/active-directory-domain-services-admin-guide/secure-ldap-export-cert.png)
 
@@ -147,7 +147,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 
     ![Exportieren des Zertifikats – Kennwort angeben](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
-	> [AZURE.NOTE] Notieren Sie sich dieses Kennwort. Sie benötigen es zum Aktivieren von sicherem LDAP für die verwaltete Domäne in [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain).
+	> [AZURE.NOTE] Notieren Sie sich dieses Kennwort. Sie benötigen es zum Aktivieren von sicherem LDAP für diese verwaltete Domäne in [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain).
 
 15. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an.
 
@@ -195,11 +195,13 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 
     ![Sicheres LDAP aktiviert](./media/active-directory-domain-services-admin-guide/secure-ldap-enabled.png)
 
+<br>
+
 
 ## Aufgabe 4: Aktiveren des Zugriffs über sicheres LDAP und Internetverbindung
 **Optionale Aufgabe**: Überspringen Sie diese Aufgabe, wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten.
 
-Vor dem Ausführen dieser Aufgabe müssen Sie die in [Schritt 3](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain) beschriebenen Schritte vollständig ausgeführt haben.
+Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain) beschriebenen Schritte vollständig ausgeführt haben.
 
 1. Auf der Seite **Konfigurieren** wird im Abschnitt **Domänendienste** eine Option **SICHEREN LDAP-ZUGRIFF ÜBER DAS INTERNET AKTIVIEREN** angezeigt. Die Einstellung hierfür ist standardmäßig auf **NEIN** festgelegt, weil der Internetzugriff auf die verwaltete Domäne über sicheres LDAP in der Standardeinstellung deaktiviert ist.
 
@@ -217,13 +219,14 @@ Vor dem Ausführen dieser Aufgabe müssen Sie die in [Schritt 3](./active-direc
 
     ![Sicheres LDAP aktiviert](./media/active-directory-domain-services-admin-guide/secure-ldap-internet-access-enabled.png)
 
+<br>
 
 ## Aufgabe 5: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet
 **Optionale Aufgabe**: Überspringen Sie diese Aufgabe, wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten.
 
-Vor dem Ausführen dieser Aufgabe müssen Sie die in [Schritt 4](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-4---enable-secure-ldap-access-over-the-internet) beschriebenen Schritte vollständig ausgeführt haben.
+Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 4](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-4---enable-secure-ldap-access-over-the-internet) beschriebenen Schritte vollständig ausgeführt haben.
 
-Nachdem Sie den Zugriff auf Ihre verwaltete Domäne über sicheres LDAP und eine Internetverbindung aktiviert haben, müssen Sie das DNS aktualisieren, damit die Clientcomputer die verwaltete Domäne finden können. Am Ende von Schritt 4 wird auf der Registerkarte **Konfigurieren** im Feld **EXTERNE IP-ADRESSE FÜR LDAPS-ZUGRIFF** eine externe IP-Adresse angezeigt.
+Nachdem Sie den Zugriff auf Ihre verwaltete Domäne über sicheres LDAP und eine Internetverbindung aktiviert haben, müssen Sie das DNS aktualisieren, damit die Clientcomputer die verwaltete Domäne finden können. Am Ende von Aufgabe 4 wird auf der Registerkarte **Konfigurieren** im Feld **EXTERNE IP-ADRESSE FÜR LDAPS-ZUGRIFF** eine externe IP-Adresse angezeigt.
 
 Konfigurieren Sie Ihren externen DNS-Anbieter so, dass der DNS-Name der verwalteten Domäne (z. B. „contoso100.com“) auf diese externe IP-Adresse verweist. In unserem Beispiel müssen Sie den folgenden DNS-Eintrag erstellen:
 
@@ -233,4 +236,10 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 
 > [AZURE.WARNING] Denken Sie daran, dass die Clientcomputer dem Aussteller des Zertifikats für LDAPS vertrauen müssen, damit die Verbindung mit der verwalteten Domäne über LDAPS erfolgreich hergestellt werden kann. Wenn Sie eine Unternehmenszertifizierungsstelle oder eine für die Öffentlichkeit vertrauenswürdige Zertifizierungsstelle verwenden, ist dies kein Problem, da Clientcomputer diesen Zertifikatausstellern vertrauen. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie den öffentlichen Teil des selbstsignierten Zertifikats (d. h. einen Export ohne den privaten Schlüssel) im vertrauenswürdigen Zertifikatspeicher auf den Clientcomputern installieren.
 
-<!---HONumber=AcomDC_0420_2016-->
+<br>
+
+## Verwandte Inhalte
+
+- [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+
+<!---HONumber=AcomDC_0427_2016-->

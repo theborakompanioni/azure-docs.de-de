@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie Salesforce mit Azure Active Directory verwenden können, um einmalige Anmeldung, automatisierte Bereitstellung und mehr zu aktivieren!"
     services="active-directory"
     documentationCenter=""
-    authors="liviodlc"
+    authors="asmalser-msft"
     manager="stevenpo"
     editor=""/>
 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
     ms.date="02/09/2016"
-    ms.author="liviodlc"/>
+    ms.author="asmalser-msft"/>
 
 #Tutorial: Integrieren von Salesforce in Azure Active Directory
 
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Salesforce-Umgebung mit Ihrem Azur
 
 2. Sie müssen einen gültigen Mandanten in [Salesforce.com](https://www.salesforce.com/) besitzen.
 
-> [AZURE.IMPORTANT]Bei Verwendung eines Salesforce.com-**Testkontos** können Sie die automatisierte Benutzerbereitstellung nicht konfigurieren. Bei Testkonten ist der erforderliche API-Zugriff erst nach dem Erwerb aktiviert.
+> [AZURE.IMPORTANT] Bei Verwendung eines Salesforce.com-**Testkontos** können Sie die automatisierte Benutzerbereitstellung nicht konfigurieren. Bei Testkonten ist der erforderliche API-Zugriff erst nach dem Erwerb aktiviert.
 > 
 > Sie können diese Einschränkung umgehen, indem Sie ein [kostenloses Entwicklerkonto](https://developer.salesforce.com/signup) verwenden, um dieses Tutorial durchzuführen.
 
@@ -106,7 +106,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 	![Klicken Sie auf die Schaltfläche "Bearbeiten"][11]
 
-	> [AZURE.NOTE]Wenn Sie keine Einstellungen für die einmalige Anmeldung für Ihr Salesforce-Konto aktivieren können, müssen Sie sich an den Salesforces-Support wenden, damit das Feature für Sie aktiviert wird.
+	> [AZURE.NOTE] Wenn Sie keine Einstellungen für die einmalige Anmeldung für Ihr Salesforce-Konto aktivieren können, müssen Sie sich an den Salesforces-Support wenden, damit das Feature für Sie aktiviert wird.
 
 9. Wählen Sie **SAML aktiviert**, und klicken Sie dann auf **Speichern**.
 
@@ -152,7 +152,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 	![Wählen Sie Ihre SSO-Konfiguration][17]
 
-	> [AZURE.NOTE]Wenn mehrere Authentifizierungsdienste aktiviert sind, und Benutzer versuchen, die einmalige Anmeldung für Ihre Salesforce-Umgebung zu initiieren, werden sie aufgefordert, einen Authentifizierungsdienst zur Anmeldung auszuwählen. Wenn Sie dies nicht möchten, sollten Sie **alle anderen Authentifizierungsdienste deaktiviert lassen**.
+	> [AZURE.NOTE] Wenn mehrere Authentifizierungsdienste aktiviert sind, und Benutzer versuchen, die einmalige Anmeldung für Ihre Salesforce-Umgebung zu initiieren, werden sie aufgefordert, einen Authentifizierungsdienst zur Anmeldung auszuwählen. Wenn Sie dies nicht möchten, sollten Sie **alle anderen Authentifizierungsdienste deaktiviert lassen**.
 
 15. Aktivieren Sie in Azure AD das Kontrollkästchen zur Bestätigung der Konfiguration der einmaligen Anmeldung, um das Zertifikat zu aktivieren, das Sie nach Salesforce hochgeladen haben. Klicken Sie auf **Weiter**.
 
@@ -174,7 +174,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 	![Geben Sie Ihren Administratorbenutzernamen oder Ihr Kennwort ein.][21]
 
-	> [AZURE.NOTE]Wenn Sie eine Produktionsumgebung konfigurieren, sollten Sie speziell für diesen Schritt ein neues Administratorkonto in Salesforce erstellen. Diesem Konto muss in Salesforce das Profil **Systemadministrator** zugewiesen werden.
+	> [AZURE.NOTE] Wenn Sie eine Produktionsumgebung konfigurieren, sollten Sie speziell für diesen Schritt ein neues Administratorkonto in Salesforce erstellen. Diesem Konto muss in Salesforce das Profil **Systemadministrator** zugewiesen werden.
 
 3. Um Ihr Salesforce-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce-Administratorkonto an. Klicken Sie in der oberen rechten Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen**.
 
@@ -216,7 +216,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 		![Confirm the assignment.][29]
 
-		> [AZURE.IMPORTANT] Bei der Bereitstellung in eine Salesforce-**Entwickler**umgebung steht Ihnen für jedes Profil eine sehr begrenzte Anzahl an Lizenzen zur Verfügung. Daher sollten Benutzer möglichst im **Chatter Free User**-Profil bereitgestellt werden, für das 4.999 Lizenzen verfügbar sind.
+		> [AZURE.IMPORTANT] If you are provisioning to a Salesforce **developer** environment, you will have a very limited number of licenses available for each profile. Therefore, it's best to provision users to the **Chatter Free User** profile, which has 4,999 licenses available.
 
 4. Um Ihre Einstellungen für die einmalige Anmeldung zu testen, öffnen Sie den Zugriffsbereich unter [https://myapps.microsoft.com](https://myapps.microsoft.com/), melden Sie sich beim Testkonto an, und klicken Sie auf **Salesforce**.
 
@@ -256,4 +256,4 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -30,7 +30,7 @@ Dies ist die vierte Artikel in der Reihe „Erste Schritte“ zu App Service-API
 
 Der Artikel enthält zwei Abschnitte:
 
-* Der Abschnitt [Konfigurieren der Benutzerauthentifizierung in Azure App Service](#authconfig) enthält eine allgemeine Beschreibung, wie Sie die Benutzerauthentifizierung für eine API-App konfigurieren. Sie gilt für alle Frameworks, die von App Service unterstützt werden, z. B. .NET, Node.js und Java.
+* Der Abschnitt [Konfigurieren der Benutzerauthentifizierung in Azure App Service](#authconfig) enthält eine allgemeine Beschreibung, wie Sie die Benutzerauthentifizierung für eine API-App konfigurieren. Sie gilt für alle Frameworks, die von App Service unterstützt werden, z. B. .NET, Node.js und Java.
 
 * Beginnend mit dem Abschnitt [Fortsetzen der Erste-Schritte-Tutorials für .NET](#tutorialstart) führt Sie dieser Artikel durch das Konfigurieren einer Beispielanwendung mit einem .NET-Back-End und einem AngularJS-Front-End, wobei Azure Active Directory für die Benutzerauthentifizierung verwendet wird.
 
@@ -66,21 +66,27 @@ Dieser Abschnitt enthält allgemeine Anweisungen, die für alle API-Apps gelten.
 
 7. Klicken Sie auf dem Blatt **Authentifizierung/Autorisierung** auf **Speichern**.
 
-Wenn dies abgeschlossen ist, authentifiziert App Service alle API-Aufrufe, bevor sie die API-App erreichen. Die Authentifizierungsdienste funktionieren für alle Sprachen gleich, die von App Service unterstützt werden, z. B. .NET, Node.js und Java.
+Wenn dies abgeschlossen ist, authentifiziert App Service alle API-Aufrufe, bevor sie die API-App erreichen. Die Authentifizierungsdienste funktionieren für alle Sprachen gleich, die von App Service unterstützt werden, z. B. .NET, Node.js und Java.
 
-Zum Durchführen authentifizierter API-Aufrufe fügt der Aufrufer das OAuth 2.0-Bearertoken des Authentifizierungsanbieters in den Autorisierungsheader von HTTP-Anforderungen ein. Das Token kann mit dem SDK des Authentifizierungsanbieters abgerufen werden.
+Zum Durchführen authentifizierter API-Aufrufe fügt der Aufrufer das OAuth 2.0-Bearertoken des Authentifizierungsanbieters in den Autorisierungsheader von HTTP-Anforderungen ein. Das Token kann mit dem SDK des Authentifizierungsanbieters abgerufen werden.
 
 ## <a id="tutorialstart"></a> Fortsetzen der Erste-Schritte-Tutorials für .NET
 
 Falls Sie die Reihe „Erste Schritte“ für Node.js oder Java und API-Apps durcharbeiten, können Sie mit dem nächsten Artikel [Dienstprinzipalauthentifizierung für API-Apps](app-service-api-dotnet-service-principal-auth.md) fortfahren.
 
-Wenn Sie die API-App-Reihe „Erste Schritte“ für .NET durcharbeiten und die Beispielanwendung schon bereitgestellt haben, wie dies im [ersten](app-service-api-dotnet-get-started.md) und [zweiten](app-service-api-cors-consume-javascript.md) Tutorial beschrieben ist, können Sie mit dem Abschnitt [Konfigurieren der Authentifizierung](#azureauth) fortfahren.
+Wenn Sie die .NET-Reihe „Erste Schritte“ für API-Apps durcharbeiten und die Beispielanwendung schon bereitgestellt haben, wie im [ersten](app-service-api-dotnet-get-started.md) und [zweiten](app-service-api-cors-consume-javascript.md) Tutorial beschrieben, können Sie mit dem Abschnitt [Einrichten der Authentifizierung in App Service und Azure AD](#azureauth) fortfahren.
 
-Falls Sie das erste und zweite Tutorial nicht durchgearbeitet haben und mit diesem Tutorial beginnen möchten, überprüfen Sie die Voraussetzungen im [ersten Tutorial](app-service-api-dotnet-get-started.md), und verwenden Sie dann die Schaltfläche **In Azure bereitstellen** in der [Infodatei im Repository mit dem Beispiel für eine To-Do-Liste](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md), um die API-Apps und die Web-App bereitzustellen.
+Wenn Sie das vorliegende Tutorial durcharbeiten möchten, ohne das erste und zweite Tutorial abzuschließen, führen Sie folgende Schritte aus:
 
-Nach Abschluss der Bereitstellung wird ein HTTP-Link zur Web-App angezeigt. Ändern Sie diese URL in eine HTTPS-URL, um die Anwendung auszuführen und zu überprüfen, ob sie funktioniert.
+1. Stellen Sie sicher, dass alle im [ersten Tutorial](app-service-api-dotnet-get-started.md) aufgeführten Voraussetzungen erfüllt sind. Zusätzlich zu den aufgeführten Voraussetzungen wird für diese Authentifizierungstutorials angenommen, dass Sie bereits mit App Service-Web-Apps und API-Apps in Visual Studio und dem Azure-Portal gearbeitet haben.
 
-## <a id="azureauth"></a> Einrichten der Authentifizierung in App Service und Azure AD
+2. Klicken Sie in der Infodatei [To Do List Azure API App Sample](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md) auf die Schaltfläche **Deploy to Azure**, um die API-Apps und die Web-App bereitzustellen. Notieren Sie die Azure-Ressourcengruppe, die erstellt wird, da Sie diese später verwenden können, um Web-App- und API-App-Namen nachzuschlagen.
+ 
+3. Laden Sie das [To Do List Azure API App Sample](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list)-Repository herunter, oder klonen Sie es, um den Code zu erhalten, mit dem Sie lokal in Visual Studio arbeiten werden.
+
+Mit diesen Schritten gelangen Sie zum gleichen Ausgangspunkt wie nach dem Durcharbeiten der ersten beiden Tutorials, mit einer Ausnahme: In Visual Studio liegen noch keine Informationen dazu vor, in welcher Web-App oder API-App die Projekte bereitgestellt werden sollen. Wenn Sie ein Projekt bereitstellen, müssen Sie die Azure-Web-App oder API-App auswählen, die für die Bereitstellung verwendet werden soll. Um die Web-App- und API-App-Namen abzurufen, öffnen Sie das Azure-Portal, und wechseln Sie zu dem Blatt der Ressourcengruppe, die Sie durch Klicken auf die Schaltfläche **Deploy to Azure** erstellt haben.
+
+## <a id="azureauth"></a> Einrichten der Authentifizierung in App Service und Azure AD
 
 Nun wird die Anwendung in Azure App Service ausgeführt, ohne dass Benutzer authentifiziert sein müssen. In diesem Abschnitt fügen Sie die Authentifizierung hinzu, indem Sie Folgendes durchführen:
 
@@ -92,7 +98,7 @@ Wenn beim Befolgen der Anweisungen in diesem Tutorial Probleme auftreten, lesen 
  
 ### Konfigurieren der Authentifizierung für die API-App der mittleren Ebene
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Einstellungen** der API-App, die Sie für das Projekt ToDoListAPI erstellt haben, suchen Sie den Abschnitt mit den **Features**, und klicken Sie dann auf **Authentifizierung/Autorisierung**.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Einstellungen** der API-App, die Sie für das ToDoListAPI-Projekt erstellt haben, suchen Sie den Abschnitt mit den **Features**, und klicken Sie dann auf **Authentifizierung/Autorisierung**.
 
 	![Authentifizierung/Autorisierung im Azure-Portal](./media/app-service-api-dotnet-user-principal-auth/features.png)
 
@@ -110,15 +116,15 @@ Wenn beim Befolgen der Anweisungen in diesem Tutorial Probleme auftreten, lesen 
 
 	![Option „Express“ für Authentifizierung/Autorisierung im Azure-Portal](./media/app-service-api-dotnet-user-principal-auth/aadsettings.png)
 
-	Mit der Option **Express** kann von App Service automatisch eine Azure AD-Anwendung in Ihrem Azure AD-[Mandanten](https://msdn.microsoft.com/de-DE/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) erstellt werden.
+	Mit der Option **Express** kann App Service automatisch eine Azure AD-Anwendung in Ihrem Azure AD-[Mandanten](https://msdn.microsoft.com/de-DE/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) erstellen.
 
 	Sie müssen keinen Mandanten erstellen, da jedes Azure-Konto automatisch darüber verfügt.
 
 7. Klicken Sie unter **Verwaltungsmodus** auf **Neue AD-App erstellen**, sofern die Option noch nicht aktiviert wurde, und notieren Sie sich den Wert im Textfeld **App erstellen**. Sie werden später im klassischen Azure-Portal nach dieser AAD-Anwendung suchen.
 
-	![Azure AD-Einstellungen im Azure-Portal](./media/app-service-api-dotnet-user-principal-auth/aadsettings2.png)
+	![Azure AD-Einstellungen im Azure-Portal](./media/app-service-api-dotnet-user-principal-auth/aadsettings2.png)
 
-	Azure erstellt in Ihrem Azure AD-Mandanten automatisch eine Azure AD-Anwendung mit dem angegebenen Namen. Standardmäßig hat die Azure AD-Anwendung den gleichen Namen wie die API-App. Wenn Sie möchten, können Sie auch einen anderen Namen eingeben.
+	Azure erstellt in Ihrem Azure AD-Mandanten automatisch eine Azure AD-Anwendung mit dem angegebenen Namen. Standardmäßig hat die Azure AD-Anwendung den gleichen Namen wie die API-App. Wenn Sie möchten, können Sie auch einen anderen Namen eingeben.
  
 7. Klicken Sie auf **OK**.
 
@@ -146,7 +152,7 @@ Jetzt kann die API-App nur von Benutzern aufgerufen werden, die im Azure AD-Mand
 
 Wenn Sie die Azure AD-Authentifizierung konfiguriert haben, erstellt App Service eine Azure AD-Anwendung für Sie. Standardmäßig ist die Azure AD-Anwendung so konfiguriert, dass das Bearertoken für die URL der API-App bereitgestellt wird. In diesem Abschnitt konfigurieren Sie die Azure AD-Anwendung, um das Bearertoken für das AngularJS-Front-End bereitzustellen, anstatt direkt für die API-App der mittleren Ebene. Das AngularJS-Front-End sendet das Token an die API-App, wenn es die API-App aufruft.
 
->[AZURE.NOTE] Um den Vorgang so einfach wie möglich zu halten, wird in diesem Tutorial eine einzelne Azure AD-Anwendung für das Front-End und die API-App der mittleren Ebene verwendet. Es ist aber auch möglich, zwei Azure AD-Anwendungen zu verwenden. In diesem Fall müssten Sie der Azure AD-Anwendung für das Front-End die Berechtigung zum Aufrufen der Azure AD-Anwendung der mittleren Ebene gewähren. Dieser Ansatz mit mehreren Anwendungen bietet mehr Kontrolle über die Berechtigungen der einzelnen Ebenen.
+>[AZURE.NOTE] Um den Vorgang so einfach wie möglich zu halten, wird in diesem Tutorial eine einzelne Azure AD-Anwendung für das Front-End und die API-App der mittleren Ebene verwendet. Es ist aber auch möglich, zwei Azure AD-Anwendungen zu verwenden. In diesem Fall müssten Sie der Azure AD-Anwendung für das Front-End die Berechtigung zum Aufrufen der Azure AD-Anwendung der mittleren Ebene gewähren. Dieser Ansatz mit mehreren Anwendungen bietet mehr Kontrolle über die Berechtigungen der einzelnen Ebenen.
 
 11. Navigieren Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) zu **Azure Active Directory**.
 
@@ -154,7 +160,7 @@ Wenn Sie die Azure AD-Authentifizierung konfiguriert haben, erstellt App Service
 
 12. Klicken Sie auf der Registerkarte **Verzeichnis** auf Ihren AAD-Mandanten.
 
-	![Azure AD im klassischen Portal](./media/app-service-api-dotnet-user-principal-auth/selecttenant.png)
+	![Azure AD im klassischen Portal](./media/app-service-api-dotnet-user-principal-auth/selecttenant.png)
 
 14. Klicken Sie auf **Anwendungen > Anwendungen im Besitz meines Unternehmens** und dann auf das Häkchen.
 
@@ -162,11 +168,11 @@ Wenn Sie die Azure AD-Authentifizierung konfiguriert haben, erstellt App Service
 
 15. Klicken Sie in der Liste mit den Anwendungen auf den Namen der Anwendung, die von Azure für Sie erstellt wurde, als Sie die Authentifizierung für Ihre API-App aktiviert haben.
 
-	![Registerkarte „Azure AD-Anwendungen“](./media/app-service-api-dotnet-user-principal-auth/appstab.png)
+	![Registerkarte „Azure AD-Anwendungen“](./media/app-service-api-dotnet-user-principal-auth/appstab.png)
 
 16. Klicken Sie auf **Konfigurieren**.
 
-	![Registerkarte „Azure AD konfigurieren“](./media/app-service-api-dotnet-user-principal-auth/configure.png)
+	![Registerkarte „Azure AD konfigurieren“](./media/app-service-api-dotnet-user-principal-auth/configure.png)
 
 17. Legen Sie die **Anmelde-URL** auf die URL für Ihre AngularJS-Web-App ohne nachgestellten Schrägstrich fest.
 
@@ -219,7 +225,7 @@ Nehmen Sie die folgenden Änderungen an den Dateien im Projekt ToDoListAngular v
 
 	Durch diese Änderung wird auf den ADAL-JS-Authentifizierungsanbieter verwiesen, und es werden Konfigurationswerte dafür bereitgestellt. In den folgenden Schritten legen Sie die Konfigurationswerte für Ihre API-App und die Azure AD-Anwendung fest.
 
-8. Legen Sie im Code, mit dem die Variable `endpoints` definiert wird, die API-URL auf die URL der API-App fest, die Sie für das Projekt ToDoListAPI erstellt haben. Legen Sie außerdem die ID der Azure AD-Anwendung auf die Client-ID fest, die Sie aus dem klassischen Azure-Portal kopiert haben.
+8. Legen Sie im Code, mit dem die Variable `endpoints` definiert wird, die API-URL auf die URL der API-App fest, die Sie für das ToDoListAPI-Projekt erstellt haben. Legen Sie außerdem die ID der Azure AD-Anwendung auf die Client-ID fest, die Sie aus dem klassischen Azure-Portal kopiert haben.
 
 	Der Code sieht jetzt wie im folgenden Beispiel aus.
 
@@ -242,7 +248,7 @@ Nehmen Sie die folgenden Änderungen an den Dateien im Projekt ToDoListAngular v
 		    $httpProvider
 		    );
 
-	Mit diesen Änderungen an `app.js` wird angegeben, dass sich der aufrufende Code und die aufgerufene API in derselben Azure AD-Anwendung befinden.
+	Mit diesen Änderungen an `app.js` wird angegeben, dass sich der aufrufende Code und die aufgerufene API in derselben Azure AD-Anwendung befinden.
 
 1. Öffnen Sie die Datei *app/scripts/homeCtrl.js*.
 
@@ -254,11 +260,11 @@ Nehmen Sie die folgenden Änderungen an den Dateien im Projekt ToDoListAngular v
 
 ### Bereitstellen des Projekts ToDoListAngular in Azure
 
-8. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt ToDoListAngular, und klicken Sie dann auf **Veröffentlichen**.
+8. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das ToDoListAngular-Projekt, und klicken Sie dann auf **Veröffentlichen**.
 
 9. Klicken Sie auf **Veröffentlichen**.
 
-	Visual Studio stellt das Projekt bereit und öffnet einen Browser mit der Basis-URL der Web-App. Dies führt zur Anzeige einer Seite mit dem Fehler 403, die jedoch immer angezeigt wird, wenn Sie versuchen, die Basis-URL einer Web-API in einem Browser zu öffnen.
+	Visual Studio stellt das Projekt bereit und öffnet einen Browser mit der Basis-URL der Web-App. Dies führt zur Anzeige einer Seite mit dem Fehler 403, die jedoch immer angezeigt wird, wenn Sie versuchen, die Basis-URL einer Web-API in einem Browser zu öffnen.
 
 	Sie müssen trotzdem eine Änderung an der API-App der mittleren Ebene vornehmen, bevor Sie die Anwendung testen können.
 
@@ -270,15 +276,15 @@ Derzeit sendet das Projekt ToDoListAPI „*“ als `owner`-Wert an ToDoListDataA
 
 Nehmen Sie am Projekt ToDoListAPI die folgenden Änderungen vor.
 
-1. Öffnen Sie die Datei *Controllers/ToDoListController.cs*, und heben Sie die Auskommentierung der Zeile in allen Aktionsmethoden auf, mit denen `owner` auf den Azure AD-Anspruchswert `NameIdentifier` festgelegt wird. Beispiel:
+1. Öffnen Sie die Datei *Controllers/ToDoListController.cs*, und heben Sie die Auskommentierung der Zeile in allen Aktionsmethoden auf, mit denen `owner` auf den Azure AD-Anspruchswert `NameIdentifier` festgelegt wird. Beispiel:
 
 		owner = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier).Value;
 
-	**Wichtig:** Heben Sie nicht Auskommentierung des Codes in der `ToDoListDataAPI`-Methode auf. Sie führen diesen Schritt später im Tutorial zur Dienstprinzipalauthentifizierung durch.
+	**Wichtig:** Heben Sie nicht die Auskommentierung des Codes in der `ToDoListDataAPI`-Methode auf. Sie führen diesen Schritt später im Tutorial zur Dienstprinzipalauthentifizierung durch.
 
 ### Bereitstellen des Projekts ToDoListAPI in Azure
 
-8. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt ToDoListAPI, und klicken Sie dann auf **Veröffentlichen**.
+8. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das ToDoListAPI-Projekt, und klicken Sie dann auf **Veröffentlichen**.
 
 9. Klicken Sie auf **Veröffentlichen**.
 
@@ -315,20 +321,20 @@ Nehmen Sie am Projekt ToDoListAPI die folgenden Änderungen vor.
 
 Die beiden Web-API-Projekte wurden mithilfe der Projektvorlage **Azure-API-App** erstellt, indem der standardmäßige Values-Controller durch einen ToDoList-Controller ersetzt wurde.
 
-Weitere Informationen zum Erstellen einer AngularJS-Single-Page-Anwendung mit einem Web-API 2-Back-End finden Sie unter [Hands On Lab: Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs) (Hands On Lab: Erstellen einer Single-Page-Anwendung (SPA) mit ASP.NET-Web-API und „Angular.js“). Informationen zum Hinzufügen von Azure AD-Authentifizierungscode finden Sie unter den folgenden Ressourcen:
+Weitere Informationen zum Erstellen einer einseitigen AngularJS-Anwendung mit einem Web-API 2-Back-End finden Sie unter [Hands On Lab: Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs) (Hands On Lab: Erstellen einer Single-Page-Anwendung (SPA) mit ASP.NET-Web-API und „Angular.js“). Informationen zum Hinzufügen von Azure AD-Authentifizierungscode finden Sie unter den folgenden Ressourcen:
 
-* [Schützen von AngularJS-Single-Page-Apps mit Azure AD](../active-directory/active-directory-devquickstarts-angular.md).
-* [Introducing ADAL JS v1 (Einführung in ADAL JS v1)](http://www.cloudidentity.com/blog/2015/02/19/introducing-adal-js-v1/)
+* [Schützen von einseitigen AngularJS-Apps mit Azure AD](../active-directory/active-directory-devquickstarts-angular.md).
+* [Introducing ADAL JS v1 (Einführung in ADAL JS v1)](http://www.cloudidentity.com/blog/2015/02/19/introducing-adal-js-v1/)
 
 ## Problembehandlung
 
 [AZURE.INCLUDE [Problembehandlung](../../includes/app-service-api-auth-troubleshooting.md)]
 
-* Achten Sie darauf, ToDoListAPI (mittlere Ebene) und ToDoListDataAPI (Datenebene) nicht zu verwechseln. Stellen Sie z. B. sicher, dass Sie die Authentifizierung für die API-App der mittleren Ebene – nicht der Datenebene – hinzufügen. 
-* Vergewissern Sie sich, dass der AngularJS-Quellcode auf die API-App-URL der mittleren Ebene (ToDoListAPI, nicht ToDoListDataAPI) sowie auf die richtige Azure AD-Client-ID verweist. 
+* Achten Sie darauf, ToDoListAPI (mittlere Ebene) und ToDoListDataAPI (Datenebene) nicht zu verwechseln. Stellen Sie z. B. sicher, dass Sie die Authentifizierung für die API-App der mittleren Ebene – nicht der Datenebene – hinzufügen. 
+* Vergewissern Sie sich, dass der AngularJS-Quellcode auf die API-App-URL der mittleren Ebene (ToDoListAPI, nicht ToDoListDataAPI) sowie auf die richtige Azure AD-Client-ID verweist. 
 
 ## Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie die App Service-Authentifizierung für eine API-App verwenden und die API-App mit der ADAL-JS-Bibliothek aufrufen. Im nächsten Tutorial geht es um das [Schützen des Zugriffs auf Ihre API-App für Dienst-zu-Dienst-Szenarios](app-service-api-dotnet-service-principal-auth.md).
+In diesem Tutorial haben Sie gelernt, wie Sie die App Service-Authentifizierung für eine API-App verwenden und die API-App mit der ADAL-JS-Bibliothek aufrufen. Im nächsten Tutorial geht es um das [Schützen des Zugriffs auf Ihre API-App für Dienst-zu-Dienst-Szenarien](app-service-api-dotnet-service-principal-auth.md).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

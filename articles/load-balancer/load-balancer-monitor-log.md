@@ -14,23 +14,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/01/2016"
+   ms.date="04/05/2016"
    ms.author="joaoma" />
 
 # Protokollanalysen für den Azure-Lastenausgleich (Vorschau)
 Sie können in Azure verschiedene Protokolltypen verwenden, um den Lastenausgleich zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle können Sie über das Portal zugreifen, und alle Protokolle können von einem Azure-Blobspeicher extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
 
-- **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
+- **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../../articles/azure-portal/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
 - **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um die Warnungen anzuzeigen, die für den Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.  
 - **Integritätstestprotokolle**: Verwenden Sie dieses Protokoll, um den Status von Integritätstests abzurufen und zu überprüfen, wie viele Instanzen im Back-End des Lastenausgleichs online sind und wie viel Prozent der virtuellen Computer Netzwerkdatenverkehr aus dem Lastenausgleich empfangen. Dieses Protokoll wird bei Ereignisänderungen des Teststatus geschrieben.
 
->[AZURE.WARNING] Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](resource-manager-deployment-model.md). <BR> Die Protokollanalyse funktioniert derzeit nur für Lastenausgleichsmodule mit Internetzugriff. Diese Einschränkung ist nicht dauerhaft und kann sich jederzeit ändern. Besuchen Sie diese Seite regelmäßig, um über zukünftige Änderungen informiert zu sein.
+>[AZURE.WARNING] Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../../articles/resource-manager-deployment-model.md). <BR> Die Protokollanalyse funktioniert derzeit nur für Lastenausgleichsmodule mit Internetzugriff. Diese Einschränkung ist nicht dauerhaft und kann sich jederzeit ändern. Besuchen Sie diese Seite regelmäßig, um über zukünftige Änderungen informiert zu sein.
 
 ## Aktivieren der Protokollierung
 Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Integritätstestprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus.
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. Wenn Sie noch nicht über ein Lastenausgleichsmodul verfügen, [erstellen Sie einen Load Balancer](load-balancer-internet-arm-ps.md), bevor Sie fortfahren.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](load-balancer-get-started-internet-arm-ps.md), bevor Sie fortfahren.
 
 Klicken Sie im Portal auf **Durchsuchen** >> **Load Balancer**.
 
@@ -49,7 +49,7 @@ Wählen Sie in der Dropdownliste direkt unter **Speicherkonto** aus, ob Sie Warn
 >[AZURE.INFORMATION] Für Überwachungsprotokolle ist kein separates Speicherkonto erforderlich. Bei der Nutzung von Speicher zur Ereignis- und Integritätstestprotokollierung fallen Gebühren an.
 
 ## Überwachungsprotokoll
-Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](insights-debugging-with-events.md).
+Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../../articles/azure-portal/insights-debugging-with-events.md).
 
 ## Warnereignisprotokoll
 Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für das jeweilige Lastenausgleichsmodul aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die Informationen werden im JSON-Format protokolliert, wie unten dargestellt.
@@ -115,8 +115,8 @@ Die JSON-Ausgabe zeigt im Eigenschaftenfeld die grundlegenden Informationen zum 
 ## Anzeigen und Analysieren des Überwachungsprotokolls
 Mit einer der folgenden Methoden können Sie die Überwachungsprotokolldaten anzeigen und analysieren:
 
-- **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](resource-group-audit.md).
-- **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://support.powerbi.com/knowledgebase/articles/742695) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
+- **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../../articles/resource-group-audit.md).
+- **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
 
 ## Anzeigen und Analysieren des Integritätstest- und Ereignisprotokolls 
 Sie müssen eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für das Integritätstest- und das Ereignisprotokoll abrufen. Sobald Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, PowerBI oder einem anderen Datenvisualisierungstool anzeigen.
@@ -128,4 +128,4 @@ Sie müssen eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Prot
 - Blogbeitrag [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx).
 - Blogbeitrag [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

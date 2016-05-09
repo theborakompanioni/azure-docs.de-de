@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
-	ms.author="genemi"/>
+	ms.date="04/25/2016" 
+	ms.author="annemill"/>
 
 
 # Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank V12
@@ -120,4 +120,4 @@ In diesem Thema werden die Unterschiede bei der Clientverbindung zwischen SQL-Da
 
 - [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

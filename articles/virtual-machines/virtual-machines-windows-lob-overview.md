@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="04/25/2016" 
 	ms.author="josephd"/>
 
 # Bereitstellen einer hochverfügbaren Branchenanwendung in Azure
@@ -85,7 +85,7 @@ Hierbei handelt es sich um eine genehmigte, vordefinierte Architektur. Berücksi
 - Wenn Sie bereits über eine Azure Hybrid Cloud-Implementierung verfügen, können Sie die Anweisungen in den Phasen 1 und 2 anpassen oder auch überspringen, um die virtuellen Computer für die neue Anwendung im geeigneten Subnetz zu hosten.
 - Alle Server befinden sich im gleichen Subnetz des virtuellen Azure-Netzwerks. Wenn Sie zusätzliche Sicherheit ähnlich der Subnetzisolierung bereitstellen möchten, verwenden Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 
-Zum Erstellen einer Test- und Entwicklungsumgebung bzw. einer Machbarkeitsstudie für diese Konfiguration lesen Sie [Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md).
+Zum Erstellen einer Test- und Entwicklungsumgebung bzw. einer Machbarkeitsstudie für diese Konfiguration lesen Sie [Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md).
 
 Weitere Informationen zum Entwickeln von IT-Workloads für Azure finden Sie in den [Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-linux-infrastructure-service-guidelines.md).
 
@@ -93,4 +93,4 @@ Weitere Informationen zum Entwickeln von IT-Workloads für Azure finden Sie in d
 
 - Starten Sie die Konfiguration dieser Workload mit [Phase 1](virtual-machines-windows-ps-lob-ph1.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

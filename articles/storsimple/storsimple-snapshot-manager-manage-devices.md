@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/02/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # Verwenden des StorSimple Snapshot Managers zum Verbinden und Verwalten von StorSimple-Geräten
@@ -51,7 +51,7 @@ Wenn Sie auf den Knoten **Geräte** klicken, und dann mit der rechten Maustaste 
 - Löschen einer Gerätekonfiguration 
 - Ändern eines Gerätekennworts
 
->[AZURE.NOTE]Alle diese Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
+>[AZURE.NOTE] Alle diese Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
  
 In diesem Lernprogramm wird erläutert, wie Sie dem StorSimple Snapshot Manager Verbindungen mit Geräten herstellen und diese verwalten. Außerdem wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
@@ -65,7 +65,7 @@ In diesem Lernprogramm wird erläutert, wie Sie dem StorSimple Snapshot Manager 
 - Ändern eines abgelaufenen Gerätekennworts
 - Ersetzen eines ausgefallenen Geräts
 
->[AZURE.NOTE]Allgemeine Informationen zu Features der StorSimple Snapshot Manager-Benutzeroberfläche finden Sie unter [Benutzeroberfläche des StorSimple Snapshot Managers](storsimple-use-snapshot-manager.md).
+>[AZURE.NOTE] Allgemeine Informationen zu Features der StorSimple Snapshot Manager-Benutzeroberfläche finden Sie unter [Benutzeroberfläche des StorSimple Snapshot Managers](storsimple-use-snapshot-manager.md).
 
 
 ## Hinzufügen oder Ersetzen eines Geräts
@@ -222,9 +222,9 @@ Wenn ein StorSimple-Gerät ausfällt und durch ein Austauschgerät ersetzt wird 
 
 #### So stellen Sie nach einem Failover eine Verbindung mit einem neuen Gerät her
 
-1. Konfigurieren Sie die iSCSI-Verbindung mit dem neuen Gerät neu. Anweisungen hierzu finden Sie unter "Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes" in [Bereitstellen lokaler StorSimple-Geräte](storsimple-deployment-walkthrough.md). 
+1. Konfigurieren Sie die iSCSI-Verbindung mit dem neuen Gerät neu. Anweisungen hierzu finden Sie unter "Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes" in [Bereitstellen lokaler StorSimple-Geräte](storsimple-deployment-walkthrough-u2.md). 
 
->[AZURE.NOTE]Verfügt das neue StorSimple-Gerät über dieselbe IP-Adresse wie das alte, können Sie eventuell die alte Konfiguration verwenden.
+>[AZURE.NOTE] Verfügt das neue StorSimple-Gerät über dieselbe IP-Adresse wie das alte, können Sie eventuell die alte Konfiguration verwenden.
 
 2. Beenden Sie den Microsoft StorSimple-Verwaltungsdienst:
 
@@ -263,4 +263,4 @@ Wenn ein StorSimple-Gerät ausfällt und durch ein Austauschgerät ersetzt wird 
 - Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 - Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Volumes](storsimple-snapshot-manager-manage-volumes.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0427_2016-->

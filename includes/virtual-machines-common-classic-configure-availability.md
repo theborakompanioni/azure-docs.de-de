@@ -7,12 +7,12 @@ Sie sollten eine Kombination aus Verfügbarkeitssätzen und Endpunkten mit Laste
 
 Beim klassischen Bereitstellungsmodell können Sie mithilfe einer der beiden folgenden Optionen virtuelle Maschinen in eine Verfügbarkeitsgruppe versetzen:
 
-- [Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe][]. Fügen Sie der Gruppe anschließend die neuen virtuellen Computer hinzu, wenn Sie diese virtuellen Computer erstellen.
-- [Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu][].
+- [Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe][]. Fügen Sie der Gruppe anschließend die neuen virtuellen Computer hinzu, wenn Sie diese virtuellen Computer erstellen.
+- [Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu][].
 
 >[AZURE.NOTE] Beim klassischen Modell müssen virtuelle Maschinen, die Sie in dieselbe Verfügbarkeitsgruppe versetzen möchten, zum selben Clouddienst gehören.
 
-## <a id="createset"> </a>Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe##
+## <a id="createset"> </a>Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe##
 
 Dafür können Sie entweder das klassische Azure-Portal oder die Azure PowerShell-Befehle verwenden.
 
@@ -44,13 +44,9 @@ Verwenden des klassischen Azure-Portals:
 
 	Wenn Sie im Dashboard des neuen virtuellen Computers auf **Konfigurieren** klicken, sehen Sie, dass der virtuelle Computer zur neuen Verfügbarkeitsgruppe gehört.
 
-Beachten Sie Folgendes, wenn Sie einen virtuellen Azure-Computer mithilfe von Azure PowerShell-Befehlen erstellen und einer neuen oder vorhandenen Verfügbarkeitsgruppe hinzufügen:
+Beachten Sie [Erstellen von virtuellen Windows-Computern mit PowerShell und dem klassischen Bereitstellungsmodell](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md), wenn Sie einen virtuellen Azure-Computer mithilfe von Azure PowerShell-Befehlen erstellen und einer neuen oder vorhandenen Verfügbarkeitsgruppe hinzufügen.
 
-
-- [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren von Linux-basierten virtuellen Computern](../articles/virtual-machines/virtual-machines-linux-classic-createpowershell.md)
-- [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)
-
-## <a id="addmachine"> </a>Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu##
+## <a id="addmachine"> </a>Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu##
 
 Im klassischen Azur-Portal können Sie einer vorhandenen Verfügbarkeitsgruppe vorhandene virtuelle Computer hinzufügen oder einen neuen virtuellen Computer für sie erstellen. (Beachten Sie, dass die virtuellen Computer in derselben Verfügbarkeitsgruppe zum selben Clouddienst gehören müssen.) Die Schritte sind beinah identisch. Mit Azure PowerShell können Sie einer vorhandenen Verfügbarkeitsgruppe den virtuellen Computer hinzufügen.
 
@@ -72,7 +68,7 @@ Im klassischen Azur-Portal können Sie einer vorhandenen Verfügbarkeitsgruppe v
 
 6. Klicken Sie auf **Speichern**.
 
-Um Azure PowerShell-Befehle zu verwenden, öffnen Sie eine Azure PowerShell-Sitzung mit Administratorrechten, und führen Sie den folgenden Befehl aus. Für die Platzhalter (z. B. &lt;VmCloudServiceName&gt;) ersetzen Sie alles innerhalb der Anführungszeichen einschließlich der Zeichen < and > durch die richtigen Namen.
+Um Azure PowerShell-Befehle zu verwenden, öffnen Sie eine Azure PowerShell-Sitzung mit Administratorrechten, und führen Sie den folgenden Befehl aus. Für die Platzhalter (z. B. &lt;VmCloudServiceName&gt;) ersetzen Sie alles innerhalb der Anführungszeichen einschließlich der Zeichen < and > durch die richtigen Namen.
 
 	Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
@@ -80,17 +76,17 @@ Um Azure PowerShell-Befehle zu verwenden, öffnen Sie eine Azure PowerShell-Sitz
 
 ## Zusätzliche Ressourcen
 
-[Artikel zu virtuellen Computern in der Dienstverwaltung]
+[Artikel für klassische VMs][]
 
 <!-- LINKS -->
-[Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe]: #createset
-[Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu]: #addmachine
+[Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe]: #createset
+[Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu]: #addmachine
 
 [Lastenausgleich für Azure-Infrastrukturdienste]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
 [Verwalten der Verfügbarkeit virtueller Computer]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
 
 [Erstellen eines virtuellen Windows-Computers]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Virtuelle Netzwerke im Überblick]: ../articles/virtual-network/virtual-networks-overview.md
-[Artikel zu virtuellen Computern in der Dienstverwaltung]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
+[Artikel für klassische VMs]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

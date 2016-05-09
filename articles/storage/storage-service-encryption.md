@@ -77,11 +77,11 @@ Dieses Feature wird nur für neu erstellte Azure Storage-Konten unterstützt, di
 
 -   Um sich für die Funktion zu registrieren, können Sie das Register-AzureRmProviderFeature-PowerShell-Cmdlet verwenden.
 
-    `Register-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage“`
-        
+    `Register-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage"`
+
 -   Um den Status Ihrer Registrierung abzufragen, um festzustellen, ob das Abonnement genehmigt wurde, können Sie das Get-AzureRmProviderFeature-PowerShell-Cmdlet verwenden.
 
-    `Get-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage“`
+    `Get-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage"`
 
 Wenn der Registrierungsstatus „Registriert“ zurückgegeben wird, wurde Ihr Abonnement genehmigt. Besuchen Sie auch unsere Azure Storage Service Encryption-Vorschaugruppe auf Yammer.
 
@@ -225,4 +225,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->
