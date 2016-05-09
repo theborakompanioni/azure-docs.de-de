@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/08/2016" 
 	ms.author="spelluru"/>
 
 # Versionshinweise für Datenverwaltungsgateway
@@ -22,11 +22,21 @@ Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschie
 
 Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md).
 
-## Aktuelle Version (1.10.5892.1)
+## Aktuelle Version (1.11.5918.1.)
 
-• Leistungsverbesserungen • Fehlerbehebungen
+- Die maximale Größe des Gatewayereignisprotokolls wurde von 1 MB auf 40 MB erhöht.
+- Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll. 
+- Wenn bei der automatischen Aktualisierung ein Fehler auftritt, versucht das Gatewayinstallationsprogramm maximal 3-mal, die automatische Aktualisierung zu wiederholen.
+- Leistungsverbesserungen
+	- Verbessern Sie die Leistung beim Laden großer Tabellen von lokalen Servern in Kopierszenarieren ohne Code.
+- Fehlerbehebungen
 
 ## Frühere Versionen
+
+## 1\.10.5892.1
+
+- Leistungsverbesserungen
+- Fehlerbehebungen
 
 ## 1\.9.5865.2
 
@@ -34,7 +44,8 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 - Neues Taskleistensymbol mit Gatewaystatusanzeige
 - „Jetzt aktualisieren“ auf dem Client
 - Festlegen der geplanten Updatezeit
-- PowerShell-Skript für Aktivierung/Deaktivierung der automatischen Aktualisierung 
+- PowerShell-Skript für Aktivierung/Deaktivierung der automatischen Aktualisierung
+- Unterstützung für JSON-Format  
 - Leistungsverbesserungen
 - Fehlerbehebungen
 
@@ -113,7 +124,7 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 
 ### 1\.4.5492.1
 
-- Einheitliche Binärdatei, die sowohl Microsoft Azure Data Factory als auch Office 365 Power BI-Dienste unterstützt
+- Einheitliche Binärdatei, die sowohl Microsoft Azure Data Factory als auch Office 365 Power BI-Dienste unterstützt
 - Optimierung von Konfigurationsbenutzeroberfläche und Registrierungsprozess
 - Azure Data Factory – Azure Ingress- und Egress-Unterstützung für SQL Server-Datenquelle
 
@@ -123,7 +134,7 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
  	
 ### 1\.1.5526.8
 
-- Erfordert .NET Framework 4.5.1 als Voraussetzung während des Setups.
+- Erfordert .NET Framework 4.5.1 als Voraussetzung während des Setups.
 
 ### 1\.0.5144.2
 
@@ -134,4 +145,4 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 ### Warum versucht der Datenquellen-Manager, eine Verbindung mit dem Gateway herzustellen?
 Dies ist ein Sicherheitsdesign, bei dem Sie nur lokale Datenquellen für den Cloudzugriff in Ihrem Unternehmensnetzwerk konfigurieren können. Ihre Anmeldeinformationen gelangen nicht an Orte außerhalb Ihrer Unternehmensfirewall. Stellen Sie sicher, dass Ihr Computer den Computer erreichen kann, auf dem das Gateway installiert ist.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

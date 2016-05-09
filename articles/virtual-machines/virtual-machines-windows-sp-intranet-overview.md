@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/25/2016"
 	ms.author="josephd"/>
 
 # Bereitstellen von SharePoint mit SQL Server AlwaysOn-Verfügbarkeitsgruppen in Azure
@@ -92,7 +92,7 @@ Berücksichtigen Sie Folgendes:
 - Wenn Sie bereits über eine Azure Hybrid Cloud-Bereitstellung verfügen, können Sie die Anweisungen in Phase 1 und 2 anpassen oder auch überspringen, um die neue SharePoint-Farm im entsprechenden Subnetz bereitzustellen.
 - Alle Server befinden sich im gleichen Subnetz des virtuellen Azure-Netzwerks. Wenn Sie zusätzliche Sicherheit ähnlich der Subnetzisolierung bereitstellen möchten, verwenden Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 
-Zum Erstellen einer Test- bzw. Entwicklungsumgebung zum Beispiel für Machbarkeitsstudien dieser Konfiguration lesen Sie [Einrichten einer SharePoint-Intranetfarm in einer Hybrid Cloud zu Testzwecken](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md).
+Zum Erstellen einer Test- bzw. Entwicklungsumgebung zum Beispiel für Machbarkeitsstudien dieser Konfiguration lesen Sie [Einrichten einer SharePoint-Intranetfarm in einer Hybrid Cloud zu Testzwecken](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md).
 
 Weitere Informationen zu SharePoint mit SQL Server AlwaysOn-Verfügbarkeitsgruppen finden Sie unter [Configure SQL Server 2012 AlwaysOn Availability Groups for SharePoint 2013](https://technet.microsoft.com/library/jj715261.aspx) (Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013).
 
@@ -100,4 +100,4 @@ Weitere Informationen zu SharePoint mit SQL Server AlwaysOn-Verfügbarkeitsgrupp
 
 - Starten Sie die Konfiguration dieser Workload mit [Phase 1](virtual-machines-windows-ps-sp-intranet-ph1.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

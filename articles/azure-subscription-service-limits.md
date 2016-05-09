@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="04/19/2016"
 	ms.author="jroth"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -189,7 +189,7 @@ Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Fol
 
 [AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
 
-Weitere Informationen zu anderen Einschränkungen, z. B. Dokumentgröße, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
+Weitere Informationen zu anderen Einschränkungen, z. B. Dokumentgröße, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
 
 ### Media Services-Grenzwerte
 
@@ -284,4 +284,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

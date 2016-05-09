@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/01/2016" 
 	ms.author="spelluru"/>
 
 # Anwendungsfall – Produktempfehlungen 
 
-Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Analytics Suite von Lösungsoptimierungen verwendet werden. Auf der Seite [Cortana Analytics Suite](http://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird einen allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Analytics-Komponentendiensten in den Griff bekommen und implementiert haben.
+Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden. Auf der Seite [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
 
 ## Szenario
 
@@ -36,7 +36,7 @@ Drittens müssen die Empfehlungen dem Kunden sofort zur Verfügung stehen, um ih
 
 ## Lösungsübersicht
 
-Dieser Beispielanwendungsfall wurde von realen Azure-Benutzern mit Azure Data Factory und anderen Cortana Analytics-Komponentendiensten gelöst und implementiert. Dabei kamen u. a.[HDInsight](https://azure.microsoft.com/services/hdinsight/) und [Power BI](https://powerbi.microsoft.com/) für das Erfassen, Vorbereiten, Transformieren, Analysieren und Veröffentlichen der endgültigen Daten zum Einsatz.
+Dieser Beispielanwendungsfall wurde von realen Azure-Benutzern mit Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert. Dabei kamen unter anderem [HDInsight](https://azure.microsoft.com/services/hdinsight/) und [Power BI](https://powerbi.microsoft.com/) für die Erfassung, Vorbereitung, Transformation, Analyse und Veröffentlichung der endgültigen Daten zum Einsatz.
 
 Der Onlinehändler verwendet einen Azure-Blobspeicher, einen lokalen SQL-Server, Azure SQL-Datenbank und einen relationalen Datamart als Datenspeicheroptionen im gesamten Workflow. Der Blobspeicher enthält Kundeninformationen, Daten zum Kundenverhalten und Produktdaten. Die Produktdaten enthalten Informationen zur Produktmarke und einen Produktkatalog, der lokal in einem SQL Data Warehouse gespeichert ist.
 
@@ -52,7 +52,7 @@ Schließlich wird das Resultset der personalisierten Produktempfehlungen in eine
 
 ## Vorteile
 
-Durch Optimieren ihrer Produktempfehlungsstrategie und deren Ausrichtung auf Unternehmensziele erfüllt die Lösung die Verkaufsförderungs- und Marketingziele des Onlinehändlers. Darüber hinaus kann das Unternehmen den Workflow für Produktempfehlungen nun effizient, zuverlässig und wirtschaftlich betreiben und verwalten. Das Modell kann mühelos aktualisiert und seine Effektivität basierend auf den Kennzahlen für die Kundengewinnung und -bindung optimiert werden. Mithilfe von Azure Data Factory konnte der Onlinehändler von seiner zeitaufwändigen und kostspieligen manuellen Cloudressourcenverwaltung zu einer bedarfsgesteuerten Lösung wechseln, wodurch Zeit und Geld gespart und die Zeit bis zur Lösungsbereitstellung verkürzt werden. Ansichten der Datenherkunft und Integrität von Diensten lassen sich dank der intuitiven Data Factory-Benutzeroberfläche für Überwachung und Verwaltung im klassischen Azure-Portal einfach visualisieren. Die Lösung kann nun so geplant und verwaltet werden, dass einsatzbereite Daten zuverlässig erzeugt und den Benutzern bereitgestellt werden. Zudem werden Daten- und Verarbeitungsabhängigkeiten ohne Administratoreingriffe automatisch verwaltet.
+Durch Optimieren ihrer Produktempfehlungsstrategie und deren Ausrichtung auf Unternehmensziele erfüllt die Lösung die Verkaufsförderungs- und Marketingziele des Onlinehändlers. Darüber hinaus kann das Unternehmen den Workflow für Produktempfehlungen nun effizient, zuverlässig und wirtschaftlich betreiben und verwalten. Das Modell kann mühelos aktualisiert und seine Effektivität basierend auf den Kennzahlen für die Kundengewinnung und -bindung optimiert werden. Mithilfe von Azure Data Factory konnte der Onlinehändler von seiner zeitaufwändigen und kostspieligen manuellen Cloudressourcenverwaltung zu einer bedarfsgesteuerten Lösung wechseln, wodurch Zeit und Geld gespart und die Zeit bis zur Lösungsbereitstellung verkürzt werden. Ansichten der Datenherkunft und Integrität von Diensten lassen sich dank der intuitiven Data Factory-Benutzeroberfläche für Überwachung und Verwaltung im Azure-Portal einfach visualisieren. Die Lösung kann nun so geplant und verwaltet werden, dass einsatzbereite Daten zuverlässig erzeugt und den Benutzern bereitgestellt werden. Zudem werden Daten- und Verarbeitungsabhängigkeiten ohne Administratoreingriffe automatisch verwaltet.
 
 Durch die Bereitstellung dieses personalisierten Einkaufserlebnisses hat der Onlinehändler eine wettbewerbsfähigere, ansprechende Kundenerfahrung geschaffen, die zu mehr Umsatz und höherer Kundenzufriedenheit geführt hat.
 
@@ -60,4 +60,4 @@ Durch die Bereitstellung dieses personalisierten Einkaufserlebnisses hat der Onl
 
   
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

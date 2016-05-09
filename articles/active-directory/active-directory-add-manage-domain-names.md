@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="04/20/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
@@ -74,10 +74,10 @@ Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory kö
 
 -   [Verwenden der Graph-API zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-**Nächste Schritte**
+## Nächste Schritte
 
 -   [Informationen zu Domänennamen in Azure AD](active-directory-add-domain-concepts.md)
 
 -   [Verwalten von benutzerdefinierten Domänennamen](active-directory-add-manage-domain-names.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

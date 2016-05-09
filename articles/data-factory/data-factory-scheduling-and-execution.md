@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/27/2016" 
+	ms.date="04/11/2016" 
 	ms.author="spelluru"/>
 
 # Planung und Ausführung mit Data Factory
@@ -52,7 +52,7 @@ Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstel
 
 ![Scheduler für "availability"](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
-Die stündlichen Datenslices für das Ein- und Ausgabedataset werden im Diagramm gezeigt. Das Diagramm zeigt drei Eingabeslices, die für die Verarbeitung bereit sind, und die laufende Aktivitätsausführung "10-11AM", die den Ausgabeslice "10-11AM" erzeugt.
+Die stündlichen Datenslices für das Ein- und Ausgabedataset werden im Diagramm gezeigt. Das Diagramm zeigt drei Eingabeslices, die für die Verarbeitung bereit sind, und die laufende Aktivitätsausführung "10-11AM", die den Ausgabeslice "10-11AM" erzeugt.
 
 Auf das Zeitintervall des aktuell erzeugten Slices kann in der JSON des Datasets über die Variablen **SliceStart** und **SliceEnd** zugegriffen werden.
 
@@ -262,23 +262,23 @@ Die Diagrammansicht mit beiden Aktivitäten in derselben Pipeline sieht wie folg
 ![Verketten von Aktivitäten in derselben Pipeline](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
 ### Sortierte Kopie
-Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Angenommen, Sie haben zwei Kopieraktivitäten in einer Pipeline: Kopieraktivität1 und Kopieraktivität mit den folgenden Eingabe-/Ausgabedatasets.
+Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Angenommen, Sie haben zwei Kopieraktivitäten in einer Pipeline: CopyActivity1 und CopyActivity2 mit den folgenden Eingabe-/Ausgabedatasets.
+
+CopyActivity1: Eingabe: Dataset1 Ausgabe: Dataset2
+
+CopyActivity2: Eingabe: Dataset2 Ausgabe: Dataset4
+
+CopyActivity2 wird nur ausgeführt, wenn CopyActivity1 erfolgreich ausgeführt wurde und Dataset2 verfügbar ist.
+
+Im obigen Beispiel kann CopyActivity2 eine andere Eingabe haben, z. B. Dataset3. Sie müssen jedoch auch Dataset2 als Eingabe für CopyActivity2 angeben, damit die Aktivität nicht so lange ausgeführt wird, bis CopyActivity1 abgeschlossen ist. Beispiel:
 
 Kopieraktivität1: Eingabe: Dataset1 Ausgabe: Dataset2
 
-Kopieraktivität2: Eingabe: Dataset2 Ausgabe: Dataset4
+CopyActivity2: Eingabe: Dataset3, Dataset2 Ausgabe: Dataset4
 
-Kopieraktivität2 wird nur ausgeführt, wenn Kopieraktivität1 erfolgreich ausgeführt wurde und Dataset2 verfügbar ist.
+Wenn mehrere Eingaben angegeben wurden, wird nur das erste Eingabedataset zum Kopieren der Daten verwendet, die anderen Datasets werden aber als Abhängigkeiten verwendet. CopyActivity2 wird nur ausgeführt, wenn die folgenden Bedingungen erfüllt sind:
 
-Im obigen Beispiel kann Kopieraktivität2 eine andere Eingabe haben, z. B. Dataset3. Sie müssen jedoch auch Dataset2 als Eingabe für Kopieraktivität2 angeben, damit die Aktivität nicht solange ausgeführt wird, bis Kopieraktivität1 abgeschlossen ist. Beispiel:
-
-Kopieraktivität1: Eingabe: Dataset1 Ausgabe: Dataset2
-
-Kopieraktivität2: Eingabe: Dataset3, Dataset2 Ausgabe: Dataset4
-
-Wenn mehrere Eingaben angegeben wurden, wird nur das erste Eingabedataset zum Kopieren der Daten verwendet, die anderen Datasets werden aber als Abhängigkeiten verwendet. Kopieraktivität2 wird nur ausgeführt, wenn die folgenden Bedingungen erfüllt sind:
-
-- Kopieraktivität2 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten zu Dataset4 nicht verwendet. Es fungiert nur als Terminplanungsabhängigkeit für Kopieraktivität2.   
+- CopyActivity2 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten zu Dataset4 nicht verwendet. Es fungiert nur als Terminplanungs-Abhängigkeit für CopyActivity2.   
 - Dataset3 ist verfügbar. Dieses Dataset stellt die Daten dar, die zum Ziel kopiert werden.  
 
 
@@ -402,7 +402,7 @@ Hier sehen Sie die Datenabhängigkeit.
 
 ![Datenabhängigkeit](./media/data-factory-scheduling-and-execution/data-dependency.png)
 
-Der Ausgabeslice für jeden Tag hängt von 24 stündlichen Slices aus dem Eingabedataset ab. Data Factory berechnet diese Abhängigkeiten automatisch, indem die Eingabedatenslices ermittelt werden, die im selben Zeitraum wie der zu erzeugende Ausgabeslice liegen. Wenn beliebige der 24 Eingabeslices nicht verfügbar sind (z. B. aufgrund einer Verarbeitung in einer vorgelagerten Aktivität, die diesen Slice erzeugt), wartet Data Factory ab, bis der Eingabeslice bereit ist, ehe die tägliche Aktivitätsausführung ausgelöst wird.
+Der Ausgabeslice für jeden Tag hängt von 24 stündlichen Slices aus dem Eingabedataset ab. Data Factory berechnet diese Abhängigkeiten automatisch, indem die Eingabedatenslices ermittelt werden, die im selben Zeitraum wie der zu erzeugende Ausgabeslice liegen. Wenn beliebige der 24 Eingabeslices nicht verfügbar sind (z. B. aufgrund einer Verarbeitung in einer vorgelagerten Aktivität, die diesen Slice erzeugt), wartet Data Factory ab, bis der Eingabeslice bereit ist, ehe die tägliche Aktivitätsausführung ausgelöst wird.
 
 
 ### Beispiel 2: Angeben von Abhängigkeiten mit Ausdrücken und Data Factory-Funktionen
@@ -572,7 +572,7 @@ Zum Generieren des Datasetslices ["start", "end"] ist eine Funktion erforderlich
 
 Wie in den zuvor gezeigten Beispielen entspricht der Abhängigkeitszeitraum meist dem Zeitraum des zu erstellenden Datenslices. In diesen Fällen berechnet Daten Factory automatisch die Eingabeslices, die in den Abhängigkeitszeitraum fallen.
 
-Beispiel: Beim obigen Aggregationsbeispiel, bei dem die Ausgabe täglich erzeugt wird und Eingabedaten stündlich verfügbar sind, ist der Zeitraum des Datenslices 24 Stunden. Data Factory sucht die relevanten stündlichen Eingabeslices für diesen Zeitraum und macht den Ausgabeslice vom Eingabeslice abhängig.
+Beispiel: Beim obigen Aggregationsbeispiel, bei dem die Ausgabe täglich erzeugt wird und Eingabedaten stündlich verfügbar sind, ist der Zeitraum des Datenslices 24 Stunden. Data Factory sucht die relevanten stündlichen Eingabeslices für diesen Zeitraum und macht den Ausgabeslice vom Eingabeslice abhängig.
 
 Sie können auch Ihre eigene Zuordnung für den Abhängigkeitszeitraum angeben (wie im obigen Beispiel gezeigt), bei dem eine der Eingabe wöchentlich erfolgte und der Ausgabeslice täglich erzeugt wurde.
    
@@ -621,6 +621,51 @@ Ein Dataset kann als extern gekennzeichnet werden (siehe die nachstehende JSON),
 	} 
 
 
+## Pipeline mit einmaliger Ausführung
+Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (stündlich, täglich usw.) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter [Planen von Aktivitäten](#scheduling-and-execution). Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck die **pipelineMode**-Eigenschaft in der Pipelinedefinition auf **onetime** (einmalig) fest, wie im JSON-Beispiel unten gezeigt. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
+
+	{
+	    "name": "CopyPipeline",
+	    "properties": {
+	        "activities": [
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource",
+	                        "recursive": false
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "InputDataset"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "OutputDataset"
+	                    }
+	                ]
+	                "name": "CopyActivity-0"
+	            }
+	        ]
+	        "pipelineMode": "OneTime"
+	    }
+	}
+
+Beachten Sie Folgendes:
+ 
+- Sie müssen keine Zeiten für **Start** und **Ende** der Pipeline angeben. 
+- Zu diesem Zeitpunkt müssen Sie die Verfügbarkeit der Eingabe- und Ausgabedatasets (Häufigkeit und Intervall) angeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
+- Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dies ist beabsichtigt. 
+- Einmalig ausgeführte Pipelines können nicht aktualisiert werden. Sie können eine einmalig ausgeführte Pipeline klonen, umbenennen, die Eigenschaften aktualisieren und bereitstellen, um eine andere Pipeline zu erstellen. 
+
+  
 
 
 
@@ -653,4 +698,4 @@ Ein Dataset kann als extern gekennzeichnet werden (siehe die nachstehende JSON),
 
   
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

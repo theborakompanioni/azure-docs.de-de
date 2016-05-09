@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/05/2016" 
 	ms.author="spelluru"/>
 
 # Ausführen eines U-SQL-Skripts auf Azure Data Lake Analytics in Azure Data Factory 
@@ -63,7 +63,7 @@ Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisieru
 | Benutzertyp | Läuft ab nach |
 | :-------- | :----------- | 
 | Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.) | 12 Stunden |
-| Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
+| Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
 
 Um diesen Fehler zu vermeiden/beheben, müssen Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut autorisieren, wenn das **Token abläuft**, und den verknüpften Dienst anschließend erneut bereitstellen. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mithilfe des Codes im folgenden Abschnitt generieren.
 
@@ -257,4 +257,4 @@ Die Werte für die Parameter **@in** und **@out** im oben dargestellten U-SQL-Sk
 
 Sie können in Ihrer Pipelinedefinition auch andere Eigenschaften wie etwa „degreeOfParallelism“ oder „priority“ für die Aufträge angeben, die im Azure Data Lake Analytics-Dienst ausgeführt werden.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

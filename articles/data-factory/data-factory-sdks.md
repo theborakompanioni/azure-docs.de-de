@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016" 
+	ms.date="04/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory-Entwicklerreferenz
 
-Sie können die Factorys mithilfe des klassischen Azure-Portals, von Azure PowerShell, der Klassenbibliothek von .NET oder REST-API erstellen, überwachen und verwalten.
+Sie können die Factorys mithilfe des Azure-Portals, von Azure PowerShell, der Klassenbibliothek von .NET oder REST-API erstellen, überwachen und verwalten.
 
 Methode | Resource Location | Entwicklerreferenzen
 ---------------------------------------------------- | ------------------------------ | -----------
@@ -30,4 +30,4 @@ REST-API | Zum Erstellen, Überwachen und Verwalten von Azure Data Factorys kön
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

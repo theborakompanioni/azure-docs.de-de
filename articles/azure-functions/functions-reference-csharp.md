@@ -180,7 +180,7 @@ Funktions-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Ap
 
 #### So laden Sie „project.json“ über den SCM-Endpunkt (Kudu) der Funktions-App hoch
 
-1. Navigieren Sie zu *https://<function_app_name>.scm.azurewebsites.net*.
+1. Navigieren Sie zu: `https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klicken Sie auf **Debugkonsole > CMD**.
 
@@ -246,7 +246,7 @@ Sie können mit der `#load`-Anweisung einen relativen Pfad verwenden:
 
 * `#load "loadedfiles\mylogger.csx"` lädt eine Datei in einem Ordner im Funktionsordner.
 
-* `#load "..\shared\mylogger.csx"` lädt eine Datei in einen Ordner, der sich auf der gleichen Ebene wie der Funktionsordner befindet, also direkt unter *wwwroot*.
+* `#load "..\shared\mylogger.csx"` lädt eine Datei in einem Ordner, der sich auf der gleichen Ebene wie der Funktionsordner befindet, also direkt unter *wwwroot*.
  
 Die `#load`-Anweisung kann nur mit *CSX*-Dateien (C#-Skript), nicht mit *CS*-Dateien verwendet werden.
 
@@ -258,4 +258,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

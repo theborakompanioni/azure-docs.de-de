@@ -16,6 +16,6 @@ Warnungsregeln pro Abonnement|250|250
 
 <sup>1</sup> Zusätzliche kleine Instanzen zählen als ganzer Prozessorkern im Sinn des Limits, obwohl nur ein Teil eines Kerns verwendet wird.
 
-<sup>2</sup>Wenn Sie mehr als 100 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario. Bei einer Genehmigung können Sie über bis zu 250 Speicherkonten verfügen.
+<sup>2</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 100 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -156,4 +156,4 @@ Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsaut
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -35,7 +35,7 @@ Beispielsweise können Sie eine Ressourcengruppe mit dem Namen *MyResourceGroup*
 
  	azure vm quick-create -g MyResourceGroup -n <your-virtual-machine-name> "centralus" -y Linux -Q canonical:ubuntuserver:14.04.2-LTS:latest -u <your-user-name> -p <your-password>
 
-Nachdem der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie einen Datenträger anbringen. Wie das geht, erfahren Sie [hier](virtual-machines-linux-add-disk).
+Nachdem der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie einen Datenträger anbringen. Wie das geht, erfahren Sie [hier](virtual-machines-linux-add-disk.md).
 
 
 ## Erfassen des virtuellen Computers
@@ -197,4 +197,4 @@ Führen Sie für zusätzliche Befehlsoptionen `azure help vm create` aus.
 
 Informationen zur Verwaltung Ihrer virtuellen Computer mit der CLI finden Sie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

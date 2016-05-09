@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/19/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Einschränkungen
@@ -40,21 +40,21 @@ Die folgenden Arten von Anwendungen werden in der Preview-Version von Azure AD B
 
 ### Single-Page-Anwendungen (JavaScript)
 
-Viele moderne Anwendungen verfügen über ein SPA-Front-End (Single-Page-Anwendung), das in erster Linie in JavaScript geschrieben ist und häufig SPA-Frameworks verwendet, z. B. AngularJS, Ember.js, Durandal usw. Dieser Ablauf ist in der Preview-Version von Azure AD B2C noch nicht verfügbar.
+Viele moderne Anwendungen verfügen über ein SPA-Front-End (Single-Page-Anwendung), das in erster Linie in JavaScript geschrieben ist und häufig SPA-Frameworks verwendet, z. B. AngularJS, Ember.js, Durandal usw. Dieser Ablauf ist in der Preview-Version von Azure AD B2C noch nicht verfügbar.
 
 ### Daemons/serverseitige Anwendungen
 
-Anwendungen, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Anwendungen können mithilfe der App-Identität (anstelle der delegierten Endkundenidentität) sowie über den [OAuth 2.0-Ablauf für Clientanmeldeinformationen](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow) die Authentifizierung durchführen und Token abrufen. Dieser Ablauf ist in der Vorschau von Azure AD B2C noch nicht verfügbar. Vorläufig können Anwendungen erst Token erhalten, nachdem ein interaktiver Endkunden-Anmeldeablauf stattgefunden hat
+Anwendungen, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Anwendungen können mithilfe der App-Identität (anstelle der delegierten Endkundenidentität) sowie über den [OAuth 2.0-Ablauf für Clientanmeldeinformationen](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow) die Authentifizierung durchführen und Token abrufen. Dieser Ablauf ist in der Vorschau von Azure AD B2C noch nicht verfügbar. Vorläufig können Anwendungen erst Token erhalten, nachdem ein interaktiver Endkunden-Anmeldeablauf stattgefunden hat
 
 ### Eigenständige Web-APIs
 
-In der Vorschau von Azure AD B2C können Sie eine [Web-API erstellen, die mit OAuth 2.0-Token geschützt wird](active-directory-b2c-apps.md#web-apis). Allerdings kann die Web-API nur Token von einem Client empfangen, der die gleiche Anwendungs-ID aufweist. Das Erstellen einer Web-API, auf die von mehreren unterschiedlichen Clients zugegriffen werden kann, wird nicht unterstützt.
+In der Vorschau von Azure AD B2C können Sie eine [Web-API erstellen, die mit OAuth 2.0-Token geschützt wird](active-directory-b2c-apps.md#web-apis). Allerdings kann die Web-API nur Token von einem Client empfangen, der die gleiche Anwendungs-ID aufweist. Das Erstellen einer Web-API, auf die von mehreren unterschiedlichen Clients zugegriffen werden kann, wird nicht unterstützt.
 
 ### Web-API-Ketten (Im Auftrag von)
 
-Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor, das wiederum einen Microsoft Online-Dienst aufruft, z. B. die Azure AD Graph-API.
+Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor, das wiederum einen Microsoft Online-Dienst aufruft, z. B. die Azure AD Graph-API.
 
-Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in der Vorschau von Azure AD B2C derzeit noch nicht implementiert.
+Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in der Vorschau von Azure AD B2C derzeit noch nicht implementiert.
 
 ## Einschränkungen für Bibliotheken und SDKs
 
@@ -64,7 +64,7 @@ Wenn Sie eine Anwendung mit einer anderen Sprache oder Plattform in die Vorschau
 
 ## Einschränkung für Protokolle
 
-Die Preview-Version von Azure AD B2C unterstützt OpenID Connect und OAuth 2.0. Allerdings wurden nicht alle Features und Funktionen der einzelnen Protokolle implementiert. Lesen Sie zum besseren Verständnis des Umfangs der unterstützten Protokollfunktionen in der Vorschauversion von Azure AD B2C die [OpenID Connect- und OAuth 2.0-Protokollreferenz](active-directory-b2c-reference-protocols.md). Die Protokolle SAML (Security Assertion Markup Language) und WS-Fed (WS-Federation) werden nicht unterstützt.
+Die Preview-Version von Azure AD B2C unterstützt OpenID Connect und OAuth 2.0. Allerdings wurden nicht alle Features und Funktionen der einzelnen Protokolle implementiert. Lesen Sie zum besseren Verständnis des Umfangs der unterstützten Protokollfunktionen in der Vorschauversion von Azure AD B2C die [OpenID Connect- und OAuth 2.0-Protokollreferenz](active-directory-b2c-reference-protocols.md). Die Protokolle SAML (Security Assertion Markup Language) und WS-Fed (WS-Federation) werden nicht unterstützt.
 
 ## Einschränkungen für Token
 
@@ -72,7 +72,7 @@ Viele der von der Preview-Version von Azure AD B2C ausgestellten Token werden al
 
 ## Probleme mit der Benutzerverwaltung im klassischen Azure-Portal
 
-Sie können über das Azure-Portal auf B2C-Features zugreifen. Sie können jedoch das klassische Azure-Portal verwenden, um auf andere Mandantenfeatures zuzugreifen, z. B. auf die Benutzerverwaltung. Derzeit treten im klassischen Azure-Portal einige bekannte Probleme mit der Benutzerverwaltung auf (Registerkarte **Benutzer**):
+Sie können über das Azure-Portal auf B2C-Features zugreifen. Sie können jedoch das klassische Azure-Portal verwenden, um auf andere Mandantenfeatures zuzugreifen, z. B. auf die Benutzerverwaltung. Derzeit treten im klassischen Azure-Portal einige bekannte Probleme mit der Benutzerverwaltung auf (Registerkarte **Benutzer**):
 
 - Für einen Benutzer mit lokalem Konto (also ein Endkunde, der sich mit E-Mail-Adresse und Kennwort oder Benutzername und Kennwort registriert) entspricht das Feld **Benutzername** nicht dem Anmeldebezeichner (E-Mail-Adresse oder Benutzername), der während der Registrierung verwendet wurde. Dies liegt daran, dass das im klassischen Azure-Portal angezeigte Feld eigentlich der Benutzerprinzipalname ist, der in B2C-Szenarien nicht verwendet wird. Wenn Sie den Anmeldebezeichner des lokalen Kontos anzeigen möchten, suchen Sie das Benutzerobjekt im [Graph-Explorer](https://graphexplorer.cloudapp.net/). Auf das gleiche Problem stoßen Sie bei einem Benutzer mit einem Konto bei einem sozialen Netzwerk (also ein Consumer, der sich mit Facebook, Google+ usw. anmeldet), aber in diesem Fall ist kein eigentlicher Anmeldebezeichner vorhanden.
 
@@ -92,4 +92,4 @@ Im klassischen Azure-Portal können Sie keinen Azure AD B2C-Mandanten löschen.
 
 Derzeit können Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) keine Domänen erfolgreich überprüfen. Wir arbeiten an der Behebung des Problems.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0427_2016-->

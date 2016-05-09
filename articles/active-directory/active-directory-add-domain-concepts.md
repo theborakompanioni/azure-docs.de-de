@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="04/21/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Konzeptioneller Überblick über benutzerdefinierte Domänennamen in Azure Active Directory
@@ -26,33 +26,35 @@ Domänennamen in Azure AD sind global eindeutig. Ein Domänenname kann von einem
 
 Jeder Domänenname in Azure AD ist entweder ein anfänglicher oder ein benutzerdefinierter Domänenname.
 
-Jedes Azure AD-Verzeichnis enthält einen anfänglichen Domänennamen in der Form „contoso.onmicrosoft.com“. Die dritte Ebene des Domänennamens (in diesem Fall „contoso.com“) wurde bei der Erstellung des Verzeichnisses eingerichtet, üblicherweise durch den Administrator, der das Verzeichnis erstellt hat. Der anfängliche Domänenname für ein Verzeichnis kann nicht geändert oder gelöscht werden. Der anfängliche Domänenname ist zwar voll funktionsfähig, ist jedoch primär als Bootstrappingmechanismus gedacht.
+Jedes Azure AD-Verzeichnis enthält einen anfänglichen Domänennamen in der Form „contoso.onmicrosoft.com“. Die dritte Ebene des Domänennamens (in diesem Fall „contoso.onmicrosoft.com“) wurde bei der Erstellung des Verzeichnisses eingerichtet, üblicherweise durch den Administrator, der das Verzeichnis erstellt hat. Der anfängliche Domänenname für ein Verzeichnis kann nicht geändert oder gelöscht werden. Der anfängliche Domänenname ist zwar voll funktionsfähig, ist jedoch primär als Bootstrappingmechanismus gedacht, bis ein benutzerdefinierter Domänenname überprüft wurde.
 
-In den meiden Produktionsumgebungen verfügt ein Verzeichnis über mindestens eine überprüfte benutzerdefinierte Domäne wie z. B. „contoso.com“. Diese benutzerdefinierte Domäne ist für die Endbenutzer sichtbar. Ein benutzerdefinierter Domänenname ist eine Ressource, die von einem globalen Administrator eines Verzeichnisses hinzugefügt wird. Ein benutzerdefinierter Domänenname ist eine Domäne, die dieser Organisation gehört, z. B. „contoso.com“. Die meisten Organisationen besitzen bereits einen Domänennamen, der zum Hosten der Website verwendet wird. Dieser Domänenname ist den Mitarbeitern vertraut, da er Teil des Benutzernamens ist, mit dem sie sich beim Unternehmensnetzwerk anmelden oder den sie zum Senden und Empfangen von E-Mail verwenden. Bevor der benutzerdefinierte Domänenname von einem Verzeichnis verwendet werden kann, muss er überprüft werden.
+In den meiden Produktionsumgebungen verfügt ein Verzeichnis über mindestens eine überprüfte benutzerdefinierte Domäne wie z. B. „contoso.com“. Diese benutzerdefinierte Domäne ist für die Endbenutzer sichtbar. Ein benutzerdefinierter Domänenname ist ein Domänenname im Besitz der Organisation (z.B. „contoso.com“), der von dieser Organisation beispielsweise zum Hosten ihrer Website verwendet wird. Dieser Domänenname ist den Mitarbeitern vertraut, da er Teil des Benutzernamens ist, mit dem sie sich beim Unternehmensnetzwerk anmelden oder den sie zum Senden und Empfangen von E-Mail verwenden.
+
+Bevor der benutzerdefinierte Domänenname von Azure AD verwendet werden kann, muss er Ihrem Verzeichnis hinzugefügt sowie überprüft werden.
 
 ## Überprüfte und nicht überprüfte Domänennamen
 
-Der anfängliche Domänenname für ein Verzeichnis wird implizit als durch Azure AD überprüft ausgewertet. Wenn ein Administrator einen benutzerdefinierten Domänennamen zu einem Azure AD-Verzeichnis hinzufügt, befindet dieser sich zunächst in einem nicht überprüften Status. Azure AD lässt nicht zu, dass Verzeichnisressourcen eine nicht überprüfte Domäne verwenden. Dadurch wird sichergestellt, dass nur ein einziges Verzeichnis einen benutzerdefinierten Domänennamen verwenden kann und dass es sich bei dem Unternehmen, dem das Azure AD-Verzeichnis gehört, um das Unternehmen handelt, dem der Domänenname tatsächlich gehört.
+Der anfängliche Domänenname für ein Verzeichnis wird implizit als durch Azure AD überprüft ausgewertet. Wenn ein Administrator einen benutzerdefinierten Domänennamen zu einem Azure AD-Verzeichnis hinzufügt, befindet dieser sich zunächst in einem nicht überprüften Status. Azure AD lässt nicht zu, dass Verzeichnisressourcen einen nicht überprüften Domänennamen verwenden. Dadurch wird sichergestellt, dass nur ein einziges Verzeichnis einen bestimmten Domänennamen verwenden kann und dass der Organisation, die den Domänennamen verwendet, dieser Domänenname tatsächlich gehört.
 
-Azure AD überprüft den Besitz eines Domänennamens durch Suchen nach bestimmten Einträgen in den DNS-Datensätzen (Domain Name Service) für die Domäne. Um den Besitz einer Domäne zu überprüfen, ruft ein Administrator die DNS-Einträge aus Azure AD ab, nach denen Azure AD suchen soll. Dann fügt er diese Einträge zu den DNS-Datensätzen für den Domänennamen hinzu, die durch die Domänennamen-Registrierungsstelle für diese Domäne verwaltet werden. Die zum Überprüfen einer Domäne erforderlichen Schritte werden im Artikel zum [Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Azure AD-Verzeichnis](active-directory-add-domain.md) beschrieben.
+Azure AD überprüft den Besitz eines Domänennamens durch Suchen nach einem bestimmten Eintrag in der DNS-Zonendatei (Domain Name Service) für den Domänennamen. Um den Besitz eines Domänennamens zu überprüfen, ruft ein Administrator den DNS-Eintrag aus Azure AD ab, nach dem Azure AD suchen wird, und fügt diesen Eintrag zur DNS-Zonendatei für den Domänennamen hinzu. Die DNS-Zonendatei wird von der Domänennamen-Registrierungsstelle für diese Domäne verwaltet. Die zum Überprüfen einer Domäne erforderlichen Schritte werden im Artikel zum [Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Azure AD-Verzeichnis](active-directory-add-domain.md) beschrieben.
 
-Das Hinzufügen von DNS-Einträgen zu Azure AD, um den Besitz einer Domäne zu überprüfen, wirkt sich nicht auf andere Domänendienste wie z. B. E-Mail- oder Webhostingdienste aus.
+Das Hinzufügen eines DNS-Eintrags zur Zonendatei für den Domänenamen wirkt sich nicht auf andere Domänendienste wie z.B. E-Mail- oder Webhostingdienste aus.
 
 ## Verbund- und verwaltete Domänennamen
 
-In Azure AD kann ein benutzerdefinierter Domänenname konfiguriert werden, um Benutzern die Verbundanmeldung beim lokalen Active Directory und Azure AD zu ermöglichen. Zum Konfigurieren einer Domäne für einen Verbund müssen sowohl privilegierte Ressourcen in Azure AD als auch Ihr lokales Active Directory aktualisiert werden. Die Konfiguration einer Verbunddomäne muss über Azure AD Connect oder mithilfe von PowerShell abgeschlossen werden. Das Hinzufügen einer benutzerdefinierten Domäne zu einem Verbund kann nicht über das klassische Azure-Portal initiiert werden. Sehen Sie sich das Video [Configuring AD FS for user sign-in with Azure AD Connect](http://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) an, um mehr über das Konfigurieren der Active Directory-Verbunddienste für die Benutzeranmeldung über Azure AD Connect zu erfahren.
+In Azure AD kann ein benutzerdefinierter Domänenname konfiguriert werden, um Benutzern die Verbundanmeldung beim lokalen Active Directory und Azure AD zu ermöglichen. Zum Konfigurieren einer Domäne für einen Verbund müssen sowohl privilegierte Ressourcen in Azure AD als auch Ihr Windows Server Active Directory aktualisiert werden. Die Konfiguration einer Verbunddomäne muss über Azure AD Connect oder mithilfe von PowerShell abgeschlossen werden. Das Hinzufügen einer benutzerdefinierten Domäne zu einem Verbund kann nicht über das klassische Azure-Portal initiiert werden. Sehen Sie sich das Video [Configuring AD FS for user sign-in with Azure AD Connect](http://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) an, um mehr über das Konfigurieren der Active Directory-Verbunddienste für die Benutzeranmeldung über Azure AD Connect zu erfahren.
 
 Domänen, bei denen es sich nicht um Verbunddomänen handelt, werden auch als verwaltete Domänen bezeichnet. Der anfängliche Domänenname für ein Azure AD-Verzeichnis wird implizit als verwaltete Domäne ausgewertet.
 
 ## Primäre Domänennamen
 
-Der primäre Domänenname für ein Verzeichnis ist der als Standardwert für den Benutzernamensbestandteil „Domäne“ vorab ausgewählte Domänenname. Dieser wird verwendet, wenn ein Administrator im [klassischen Azure-Portal](https://manage.windowsazure.com/) oder in einem anderen Portal wie beispielsweise dem Office 365-Verwaltungsportal einen neuen Benutzer erstellt. Ein Azure AD-Verzeichnis kann nur über einen primären Domänennamen verfügen. Ein Administrator kann den primären Domänennamen in eine beliebige andere überprüfte benutzerdefinierte Domäne (keine Verbunddomäne) oder in die anfängliche Domäne ändern.
+Der primäre Domänenname für ein Verzeichnis ist der als Standardwert für den Benutzernamensbestandteil „Domäne“ vorab ausgewählte Domänenname. Dieser wird verwendet, wenn ein Administrator im [klassischen Azure-Portal](https://manage.windowsazure.com/) oder in einem anderen Portal wie beispielsweise dem Office 365-Verwaltungsportal einen neuen Benutzer erstellt. Ein Verzeichnis kann nur über einen primären Domänennamen verfügen. Ein Administrator kann den primären Domänennamen in eine beliebige andere überprüfte benutzerdefinierte Domäne (keine Verbunddomäne) oder in die anfängliche Domäne ändern.
 
 ## Domänennamen in Azure AD und anderen Microsoft Online Services
 
 Ein Domänenname muss in Azure AD überprüft werden, bevor er von anderen Microsoft Online Services wie beispielsweise Exchange Online, SharePoint Online oder Intune verwendet werden kann. Für diese anderen Dienste ist es üblicherweise erforderlich, dass ein Administrator mindestens einen, für den jeweiligen Dienst spezifischen DNS-Eintrag hinzufügt.
 
-Azure-Web-Apps verwenden eigene Mechanismen, um den Besitz einer Domäne zu überprüfen. Eine Domäne muss für die Verwendung mit einem Azure AD-Verzeichnis überprüft werden, selbst wenn sie zuvor zur Verwendung durch eine Azure-Web-App in einem auf diesem Azure AD-Verzeichnis basierenden Abonnement überprüft wurde. Eine Azure-Web-App kann einen Domänennamen verwenden, der in einem anderen Azure AD-Verzeichnis als dem Verzeichnis überprüft wurde, das die Web-App sichert.
+Azure-Web-Apps verwenden eigene Mechanismen, um den Besitz einer Domäne zu überprüfen. Eine Domäne muss für die Verwendung mit einem Azure AD-Verzeichnis überprüft werden, selbst wenn sie zuvor zur Verwendung durch eine Azure-Web-App in einem auf diesem Azure AD-Verzeichnis basierenden Abonnement überprüft wurde. Eine Azure-Web-App kann einen Domänennamen verwenden, der in einem anderen Verzeichnis als dem Verzeichnis überprüft wurde, das die Web-App sichert.
 
 ## Verwalten von Domänennamen
 
@@ -66,4 +68,4 @@ Aufgaben der Domänenverwaltung können über das klassische Azure-Portal oder m
 
 -   [Verwenden der Azure AD-Graph-API zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

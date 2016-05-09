@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="04/22/2016"
 	ms.author="larryfr"/>
 
 # Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight
@@ -290,4 +290,4 @@ Weitere Informationen finden Sie außerdem im [Java Developer Center](https://az
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

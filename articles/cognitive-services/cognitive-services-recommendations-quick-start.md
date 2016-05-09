@@ -89,11 +89,11 @@ Die Empfehlungs-API lernt aus Ihrem Katalog und Ihren Transaktionen, um gute Pro
 
  Wir weisen darauf hin, dass eine Katalogdatei viel umfangreicher sein kann, z. B. können Sie Metadaten zu den Produkten hinzufügen (wir nennen diese *Artikelfeatures*). Beachten Sie auch in der API-Referenz die ausführlichen Informationen im Abschnitt zum [Katalogformat](http://go.microsoft.com/fwlink/?LinkID=760716).
 
-1. Mit den Nutzungsdaten verfahren wir gleichermaßen. Sie werden bemerken, dass die Nutzungsdaten das Format `<User Id>,<Item Id>` haben.
+1. Mit den Nutzungsdaten verfahren wir gleichermaßen. Sie werden feststellen, dass das Nutzungsdatum im Format `<User Id>,<Item Id>,<Time Stamp>,<Event>` vorliegt.
 
-  > 00030000A11B024B,GZA-00202<br> 0003BFFD93B934B7,P2W-00004<br> 000300009C01C881,W6F-00121<br> 00060000AF0D2B04,QR2-00011<br>
+  > 00037FFEA61FCA16,288186200,2015/08/04T11:02:52,Purchase 0003BFFDD4C2148C,297833400,2015/08/04T11:02:50,Purchase 0003BFFDD4C2118D,297833300,2015/08/04T11:02:40,Purchase 00030000D16C4237,297833300,2015/08/04T11:02:37,Purchase 0003BFFDD4C20B63,297833400,2015/08/04T11:02:12,Purchase 00037FFEC8567FB8,297833400,2015/08/04T11:02:04,Purchase
 
- Dies ist das Datenminimum für eine gültige Nutzungsdatei. Eine komplexere Nutzungsdatei kann zusätzliche Informationen zu jeder Transaktion enthalten, z. B. einen Zeitstempel für die Transaktion und den Typ des Ereignisses, das aufgetreten ist (ein Klick, eine Bestellung usw.). Weitere Informationen zu diesem Thema finden Sie im Abschnitt zum [Nutzungsformat](http://go.microsoft.com/fwlink/?LinkID=760712).
+Beachten Sie, dass die ersten drei Elemente zwingend erforderlich sind. Der Ereignistyp ist optional. Weitere Informationen zu diesem Thema finden Sie im Abschnitt zum [Nutzungsformat](http://go.microsoft.com/fwlink/?LinkID=760712).
 
  > **Wie viele Daten benötigen Sie?**
  <p>
@@ -111,7 +111,7 @@ In dieser Aufgabe verwenden Sie die Beispielanwendung zum Erstellen Ihres ersten
 
 1. Laden Sie die [Beispielanwendung](http://go.microsoft.com/fwlink/?LinkID=759344) in einen lokalen Ordner herunter.
 
-1. Öffnen Sie in Visual Studio die Lösung **RecommendationsSample.sln** – sie befindet sich im Ordner **C#**.
+1. Öffnen Sie in Visual Studio die Projektmappe **RecommendationsSample.sln** – sie befindet sich im Ordner **C#**.
 
 1. Öffnen Sie die Datei **SampleApp.cs**. Beachten Sie die folgenden Schritte in der Datei:
  + Modellerstellung
@@ -121,7 +121,7 @@ In dieser Aufgabe verwenden Sie die Beispielanwendung zum Erstellen Ihres ersten
  + Abrufen einer Empfehlung basierend auf einem Paar von Artikeln
 <p></p>
 
-1. Ersetzen Sie die Werte für die Felder **accountEmail** und **accountKey** durch Ihre E-Mail-Adresse und den Schlüssel aus Aufgabe 1.
+1. Ersetzen Sie den Wert im Feld **AccountKey** durch den Schlüssel aus Aufgabe 1.
 
 1. Gehen Sie die Lösung durch, und Sie sehen, wie ein Modell erstellt wird.
 
@@ -134,7 +134,7 @@ In dieser Aufgabe verwenden Sie die Beispielanwendung zum Erstellen Ihres ersten
 
 Da Sie nun ein Modell erstellen und Empfehlungen nutzen können, ist der nächste Schritt, es auf Ihrer Website bzw. mobilen Anwendung in Produktion zu bringen bzw. in Ihr CRM- oder ERP-System zu integrieren. Natürlich wäre jede dieser Implementierungen anders. Da die Empfehlungs-API als Webdienst angefordert wird, sollten Sie sie aus allen diesen verschiedenen Umgebungen einfach abrufen können.
 
-**Wichtig:** Wenn Sie Empfehlungen von einem öffentlichen Client (z. B. Ihrer E-Commerce-Website) aus anzeigen möchten, sollten Sie einen Proxyserver zum Bereitstellen der Empfehlungen erstellen. Dies ist wichtig, damit Ihr API-Schlüssel nicht für externe (potenziell nicht vertrauenswürdige) Entitäten verfügbar wird.
+**Wichtig:** Wenn Sie Empfehlungen von einem öffentlichen Client (z.B. Ihrer E-Commerce-Website) aus anzeigen möchten, sollten Sie einen Proxyserver zum Bereitstellen der Empfehlungen erstellen. Dies ist wichtig, damit Ihr API-Schlüssel nicht für externe (potenziell nicht vertrauenswürdige) Entitäten verfügbar wird.
 
 Ihre Empfehlungen könnten Sie z. B. an folgenden Positionen verwenden:
 
@@ -160,10 +160,10 @@ Ihre Empfehlungen könnten Sie z. B. an folgenden Positionen verwenden:
 Ein Empfehlungenmodell kann die Benutzer-ID als Eingabe verwenden. So werden dem Benutzer anhand des Verlaufs seiner Transaktionen personalisierte Empfehlungen geboten.
 </p>
 
-Lesen Sie die Dokumentation [Get recommendations based on items (I2I)](http://go.microsoft.com/fwlink/?LinkID=760719) (Abrufen von Empfehlungen auf Artikelbasis [I2I]).
+Lesen Sie die Dokumentation [Get Item Recommendations](http://go.microsoft.com/fwlink/?LinkID=760719) (Abrufen von Artikelempfehlungen).
 
 <a name="Ex1Task6"></a>
 ### Wie geht es weiter?
-Danke, dass Sie bis zum Schluss dabei waren! Weitere Informationen finden Sie in der vollständigen [Empfehlungen-API-Referenz](http://go.microsoft.com/fwlink/?LinkId=759348). Wenn Sie Fragen haben, zögern Sie nicht, sich unter mlapi@microsoft.com an uns zu wenden.
+Danke, dass Sie bis zum Schluss dabei waren! Weitere Informationen finden Sie in der vollständigen [Empfehlungs-API-Referenz](http://go.microsoft.com/fwlink/?LinkId=759348). Wenn Sie Fragen haben, wenden Sie sich gerne unter mlapi@microsoft.com an uns.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

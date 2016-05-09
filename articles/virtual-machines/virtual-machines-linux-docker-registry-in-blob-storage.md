@@ -14,7 +14,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="vm-linux"
   ms.workload="infrastructure-services"
-  ms.date="02/01/2016" 
+  ms.date="04/19/2016" 
   ms.author="ahmetb" />
 
 # Bereitstellen einer privaten Docker-Registrierung in Azure
@@ -23,7 +23,7 @@
 
 
 
-Dieses Dokument beschreibt, was eine private Docker-Registrierung ist, und zeigt, wie Sie einen Docker Registry 2.0-Container mit einer privaten Docker-Registrierung in Microsoft Azure mithilfe von Azure-Blob-Speicher bereitstellen.
+Dieses Dokument beschreibt, was eine private Docker-Registrierung ist, und zeigt, wie Sie einen Docker Registry 2.0-Container mit einer privaten Docker-Registrierung in Microsoft Azure mithilfe von Azure-Blob-Speicher bereitstellen.
 
 In diesem Dokument wird von Folgendem ausgegangen:
 
@@ -47,18 +47,18 @@ Das Hosten der Docker-Registrierungsinstanz in Microsoft Azure und das Speichern
   
 **Leistung**: Ihre Docker-Images werden innerhalb desselben Rechenzentrums oder Bereichs gespeichert wie Ihre Anwendungen. Dies bedeutet, dass die Images im Vergleich zu Docker Hub schneller und zuverlässiger sind.
 
-**Zuverlässigkeit**: Mithilfe von Microsoft Azure-Blob-Speicher können Sie viele Speichereigenschaften nutzen, z. B. hohe Verfügbarkeit, Redundanz, Premium-Speicher (SSDs) usw.
+**Zuverlässigkeit**: Mithilfe von Microsoft Azure-Blob-Speicher können Sie viele Speichereigenschaften nutzen, z. B. hohe Verfügbarkeit, Redundanz, Premium-Speicher (SSDs) usw.
 
 ## Konfigurieren von Docker-Registrierungen zur Verwendung von Azure-Blob-Speicher
 
-(Sie sollten die [Docker Registry 2.0-Dokumentation][registry-docs] lesen, bevor Sie fortfahren.)
+(Sie sollten die [Docker Registry 2.0-Dokumentation][registry-docs] lesen, bevor Sie fortfahren.)
 
 Sie können die Docker-Registrierung auf zwei unterschiedliche Arten [konfigurieren][registry-config]. Sie können:
 
 1. Eine `config.yml`-Datei verwenden. In diesem Fall müssen Sie ein separates Docker-Image auf dem `registry`-Image erstellen.
 2. Überschreiben Sie die Standardkonfigurationsdatei durch Umgebungsvariablen, sodass Sie kein separates Docker-Image erstellen und verwalten müssen.
 
-Der Einfachheit halber wird in diesem Thema Option 2 mit Umgebungsvariablen genutzt.
+Der Einfachheit halber wird in diesem Thema Option 2 mit Umgebungsvariablen genutzt.
 
 Zum Ausführen einer Docker-Registrierungsinstanz, die:
 * Ihr Azure-Speicherkonto zum Speichern der Images verwendet
@@ -87,7 +87,7 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 > [AZURE.IMPORTANT] Das Konfigurieren der Sicherheit für die Docker-Registrierung wird in diesem Dokument nicht behandelt, und auf Ihre Registrierung können standardmäßig alle Benutzer ohne Authentifizierung zugreifen, wenn Sie den Registrierungsport am Endpunkt des virtuellen Computers oder des Lastenausgleichs durch die Verwendung des Bereitstellungsbefehls oben öffnen.
 >
-> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] (in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
+> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] \(in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
 
 ## Nächste Schritte
 
@@ -99,4 +99,4 @@ Sobald Sie Ihre Registrierung eingerichtet haben, ist es an der Zeit, sie verst�
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

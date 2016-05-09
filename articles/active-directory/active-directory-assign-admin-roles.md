@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)
@@ -32,8 +32,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 - **Dienstadministrator**: verwaltet Dienstanforderungen und überwacht die Integrität des Dienstes.
 
-> [AZURE.NOTE]
-> Um einem Benutzer die Dienstadministratorrolle zuzuweisen, muss der globale Administrator zunächst dem Benutzer Administratorberechtigungen im Dienst (z. B. Exchange Online) zuweisen, und anschließend die Dienstadministratorrolle im klassischen Azure-Portal.
+	> [AZURE.NOTE] Um einem Benutzer die Dienstadministratorrolle zuzuweisen, muss der globale Administrator zunächst dem Benutzer Administratorberechtigungen im Dienst (z. B. Exchange Online) zuweisen, und anschließend die Dienstadministratorrolle im klassischen Azure-Portal.
 
 - **Benutzeradministrator**: setzte Kennwörter zurück, überwacht die Dienstintegrität und verwaltet Benutzerkonten, Benutzergruppen und Dienstanforderungen. Für die Berechtigungen eines Benutzerverwaltungsadministrators gelten einige Einschränkungen. Sie können z. B. keinen globalen Administrator löschen oder andere Administratoren erstellen. Sie können außerdem keine Kennwörter für Abrechnungs-, globale und Dienstadministratoren zurücksetzen.
 
@@ -103,4 +102,4 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 - [Gruppen verwalten](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0427_2016-->

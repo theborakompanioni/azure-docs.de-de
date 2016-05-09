@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/02/2016"
+   ms.date="04/05/2016"
    ms.author="joaoma" />
 
 
 # Load Balancer-Verteilungsmodus (Quell-IP-Affinität)
 
-Wir haben einen neue Verteilungsmodus namens Quell-IP-Affinität (auch Sitzungsaffinität oder Client-IP-Affinität genannt) eingeführt. Der Azure-Lastenausgleich kann für die Verwendung von 2 Tupeln (Quell-IP, Ziel-IP) oder 3 Tupeln (Quell-IP, Ziel-IP, Protokoll) konfiguriert werden, um Datenverkehr den verfügbaren Servern zuzuordnen. Mithilfe der Quell-IP-Affinität werden Verbindungen, die vom gleichen Clientcomputer initiiert werden, an den gleichen DIP-Endpunkt geleitet.
+Wir haben einen neue Verteilungsmodus namens Quell-IP-Affinität (auch Sitzungsaffinität oder Client-IP-Affinität genannt) eingeführt. Der Azure-Lastenausgleich kann für die Verwendung von 2 Tupeln (Quell-IP, Ziel-IP) oder 3 Tupeln (Quell-IP, Ziel-IP, Protokoll) konfiguriert werden, um Datenverkehr den verfügbaren Servern zuzuordnen. Mithilfe der Quell-IP-Affinität werden Verbindungen, die vom gleichen Clientcomputer initiiert werden, an den gleichen DIP-Endpunkt geleitet.
 
 ![Lastenausgleich auf Hashbasis](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
@@ -78,7 +78,7 @@ Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss d
 
 ### Clouddienstkonfiguration zum Ändern des Verteilungsmodus
 
-Sie können das Azure SDK für .NET 2.5 (wird im November veröffentlicht) nutzen, um Ihre Clouddienst-Endpunkteinstellungen in der CSDEF-Datei zu aktualisieren. Um den Lastenausgleichs-Verteilungsmodus für eine Bereitstellung mit Clouddiensten zu aktualisieren, ist ein Upgrade der Bereitstellung erforderlich. Nachfolgend sehen Sie ein Beispiel für in der CSDEF-Datei vorgenommene Änderungen für Endpunkteinstellungen:
+Sie können das Azure SDK für .NET 2.5 (wird im November veröffentlicht) nutzen, um Ihre Clouddienst-Endpunkteinstellungen in der CSDEF-Datei zu aktualisieren. Um den Lastenausgleichs-Verteilungsmodus für eine Bereitstellung mit Clouddiensten zu aktualisieren, ist ein Upgrade der Bereitstellung erforderlich. Nachfolgend sehen Sie ein Beispiel für in der CSDEF-Datei vorgenommene Änderungen für Endpunkteinstellungen:
 
 	<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
   	<Endpoints>
@@ -129,7 +129,7 @@ Anforderungsbeispiel
 	</InputEndpoint> 
 	</LoadBalancedEndpointList>
 
-Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) oder "sourceIPProtocol" (3-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, d. h. 5-Tupel-Konfiguration).
+Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) oder "sourceIPProtocol" (3-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, d. h. 5-Tupel-Konfiguration).
 
 	Response
 
@@ -149,4 +149,4 @@ Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) ode
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="02/01/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Dienst- und andere Einschränkungen für Azure AD
@@ -26,4 +26,4 @@ Einen vollständigen Überblick über die Microsoft Azure-Diensteinschränkungen
 - [Als Organisation für Azure registrieren](sign-up-organization.md)
 - [Verknüpfung von Azure-Abonnements mit Azure AD](active-directory-how-subscriptions-associated-directory.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

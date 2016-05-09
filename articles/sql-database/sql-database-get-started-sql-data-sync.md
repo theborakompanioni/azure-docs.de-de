@@ -3,7 +3,7 @@
 	description="Dieses Lernprogramm unterstützt Sie bei den ersten Schritten mit Azure SQL-Datensynchronisierung (Vorschau)."
 	services="sql-database"
 	documentationCenter=""
-	authors="jhubbard"
+	authors="jennieHubbard"
 	manager="jhubbard"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="04/26/2016"
 	ms.author="jhubbard"/>
 
 
@@ -202,4 +202,4 @@ Zusätzliche Informationen über SQL Database und SQL Data Sync finden Sie hier:
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

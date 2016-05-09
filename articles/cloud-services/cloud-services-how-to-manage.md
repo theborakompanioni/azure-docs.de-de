@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/20/2016"
+	ms.date="04/26/2016"
 	ms.author="adegeo"/>
 
 
@@ -23,8 +23,8 @@
 # Verwalten von Clouddiensten
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](cloud-services-how-to-manage.md)
-- [Azure portal](cloud-services-how-to-manage-portal.md)
+- [Azure-Portal](cloud-services-how-to-manage-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-manage.md)
 
 Im Bereich **Cloud Services** des klassischen Azure-Portals können Sie eine Dienstrolle oder eine Bereitstellung aktualisieren, eine Bereitstellung zur Produktion heraufstufen, Ressourcen mit Ihrem Clouddienst verknüpfen, sodass Sie die Ressourcenabhängigkeiten sehen und die Ressourcen zusammen skalieren können, und einen Clouddienst oder eine Bereitstellung löschen.
 
@@ -93,7 +93,7 @@ Im Folgenden wird beschrieben, wie eine neue SQL-Datenbankinstanz, die auf einem
 
 ### Verknüpfen einer SQL-Datenbankinstanz mit einem Cloud-Dienst
 
-1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf **Cloud-Dienste**. Klicken Sie anschließend auf den Namen des Cloud-Diensts, um das Dashboard zu öffnen.
+1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf **Cloud Services**. Klicken Sie anschließend auf den Namen des Cloud-Diensts, um das Dashboard zu öffnen.
 
 2. Klicken Sie auf **Linked Resources**.
 
@@ -121,7 +121,7 @@ Im Folgenden wird beschrieben, wie eine neue SQL-Datenbankinstanz, die auf einem
 
 ### Aufheben der Verknüpfung einer verknüpften Ressource
 
-1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf **Cloud-Dienste**. Klicken Sie anschließend auf den Namen des Cloud-Diensts, um das Dashboard zu öffnen.
+1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf **Cloud Services**. Klicken Sie anschließend auf den Namen des Cloud-Diensts, um das Dashboard zu öffnen.
 
 2. Klicken Sie auf **Linked Resources**, und wählen Sie die Ressource anschließend aus.
 
@@ -139,7 +139,7 @@ Um Rechenkosten zu sparen, können Sie Ihre Stagingbereitstellung löschen, nach
 
 Gehen Sie folgendermaßen vor, um eine Bereitstellung oder Ihren Cloud-Dienst zu löschen.
 
-1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf **Cloud-Dienste**.
+1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf **Cloud Services**.
 
 2. Wählen Sie den Cloud-Dienst aus, und klicken Sie dann auf **Löschen**. (Um einen Cloud-Dienst auszuwählen, ohne das Dashboard zu öffnen, klicken Sie im Cloud-Diensteintrag auf eine beliebige Stelle außerhalb des Namens.)
 
@@ -155,7 +155,7 @@ Gehen Sie folgendermaßen vor, um eine Bereitstellung oder Ihren Cloud-Dienst zu
 5. Klicken Sie zum Löschen des Cloud-Diensts auf **Cloud-Dienst löschen**. Klicken Sie dann an der Bestätigungsaufforderung auf **Ja**.
 
 > [AZURE.NOTE]
-Wenn für den Cloud-Dienst die ausführliche Überwachung konfiguriert ist, löscht Azure die Überwachungsdaten aus Ihrem Speicherkonto nicht, wenn Sie den Cloud-Dienst löschen. Sie müssen die Daten manuell löschen. Informationen zum Speicherort der Metriktabellen finden Sie unter „Zugreifen auf ausführliche Überwachungsdaten außerhalb des klassischen Azure-Portals“ in [Überwachen von Cloud-Dienste](cloud-services-how-to-monitor.md).
+Wenn für den Cloud-Dienst die ausführliche Überwachung konfiguriert ist, löscht Azure die Überwachungsdaten aus Ihrem Speicherkonto nicht, wenn Sie den Cloud-Dienst löschen. Sie müssen die Daten manuell löschen. Informationen zum Speicherort der Metriktabellen finden Sie unter „Zugreifen auf ausführliche Überwachungsdaten außerhalb des klassischen Azure-Portals“ in [Überwachen von Cloud Services](cloud-services-how-to-monitor.md).
 
 ## Nächste Schritte
 
@@ -164,4 +164,4 @@ Wenn für den Cloud-Dienst die ausführliche Überwachung konfiguriert ist, lös
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

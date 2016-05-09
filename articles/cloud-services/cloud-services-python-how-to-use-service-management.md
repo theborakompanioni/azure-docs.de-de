@@ -18,7 +18,7 @@
 
 # Verwenden der Dienstverwaltung aus Python
 
-In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure-SDK für Python](../python-how-to-install.md) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [klassischen Azure-Portal][management-portal] zur Verfügung stehen (z. B. **Erstellen, Aktualisieren und Löschen von Clouddiensten, Bereitstellungen, Datenverwaltungsdiensten und virtuellen Computern**). Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
+In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure-SDK für Python](../python-how-to-install.md) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [klassischen Azure-Portal][management-portal] zur Verfügung stehen (z. B. **Erstellen, Aktualisieren und Löschen von Clouddiensten, Bereitstellungen, Datenverwaltungsdiensten und virtuellen Computern**). Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
 
 > [AZURE.NOTE] Die Dienstverwaltungs-API wird durch die neue Ressourcenverwaltungs-API ersetzt, die derzeit als Vorschauversion verfügbar ist. Weitere Informationen zur Verwendung der neuen Ressourcenverwaltungs-API von Python finden Sie in der [Dokumentation zur Azure-Ressourcenverwaltung](http://azure-sdk-for-python.readthedocs.org/).
 
@@ -39,11 +39,11 @@ Um eine Verbindung zum Dienstverwaltungs-Endpunkt herzustellen, benötigen Sie I
 ### Verwaltungszertifikate unter Windows/Mac/Linux (OpenSSL)
 Sie können Ihr Verwaltungszertifikat mithilfe von [OpenSSL](http://www.openssl.org/) erstellen. Tatsächlich müssen Sie zwei Zertifikate erstellen, eins für den Server (eine `.cer`-Datei) und eins für den Client (eine `.pem`-Datei). Führen Sie zum Erstellen der `.pem`-Datei Folgendes aus:
 
-	`openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem`
+    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
 Führen Sie zum Erstellen des `.cer`-Zertifikats Folgendes aus:
 
-	`openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer`
+    openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
 Weitere Informationen zu Azure-Zertifikaten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](./cloud-services-certs-create.md). Eine vollständige Beschreibung von OpenSSL-Parametern finden Sie in der Dokumentation auf [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
@@ -433,6 +433,6 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[Clouddienst]: https://azure.microsoft.com/de-DE/documentation/services/cloud-services/
+[Clouddienst]: https://azure.microsoft.com/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

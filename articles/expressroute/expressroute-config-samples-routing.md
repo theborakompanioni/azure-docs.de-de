@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="expressroute"
@@ -12,14 +12,14 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="04/19/2016"
    ms.author="cherylmc"/>
 
 # Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
 
 Diese Seite enthält Schnittstellen- und Routingkonfigurationsbeispiele für Router der Reihen Cisco IOS-XE und Juniper MX. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten.
 
->[AZURE.IMPORTANT]Die Beispiele auf dieser Seite sind ausschließlich als Leitfaden konzipiert. Sie müssen mit dem Vertriebsteam/Technikteam Ihres Anbieters und Ihrem Netzwerkteam zusammenarbeiten, um für Ihre Anforderungen geeignete Konfigurationen zu bestimmen. Microsoft bietet keine Unterstützung bei Problemen im Zusammenhang mit Konfigurationen, die auf dieser Seite aufgeführt sind. Sie müssen sich bei Problemen an den Gerätehersteller wenden.
+>[AZURE.IMPORTANT] Die Beispiele auf dieser Seite sind ausschließlich als Leitfaden konzipiert. Sie müssen mit dem Vertriebsteam/Technikteam Ihres Anbieters und Ihrem Netzwerkteam zusammenarbeiten, um für Ihre Anforderungen geeignete Konfigurationen zu bestimmen. Microsoft bietet keine Unterstützung bei Problemen im Zusammenhang mit Konfigurationen, die auf dieser Seite aufgeführt sind. Sie müssen sich bei Problemen an den Gerätehersteller wenden.
 
 Die unten aufgeführten Beispiele zur Routerkonfiguration gelten für alle Peerings. Unter [ExpressRoute-Peerings](expressroute-circuit-peerings.md) und [Routinganforderungen für ExpressRoute](expressroute-routing.md) finden Sie weitere Details.
 
@@ -210,4 +210,4 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
 
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0427_2016-->

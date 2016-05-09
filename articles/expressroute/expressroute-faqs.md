@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/12/2016"
+   ms.date="04/20/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute – FAQ
@@ -86,7 +86,7 @@ Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querver
 ### Geht die Konnektivität verloren, wenn einer meiner ExpressRoute-Links ausfällt?
 Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es steht eine redundante Verbindung zur Verfügung, um die Auslastung des Netzwerks zu unterstützen. Sie können zudem mehrere Verbindungen an einem anderen Peeringstandort erstellen, um die Ausfallsicherheit bei einem Fehler sicherzustellen.
 
-### Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern? 
+### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern? 
 Nein, Sie benötigen nur eine einzige physische Verbindung, wenn Ihr Dienstanbieter zwei virtuelle Ethernet-Verbindungen über die physische Verbindung herstellen kann. Die physische Verbindung (z. B. Glasfaser) wird auf einem Gerät der Ebene 1 (L1) beendet (siehe Abbildung unten). Die zwei virtuellen Ethernet-Verbindungen werden mit unterschiedlichen VLAN-IDs markiert, eine für die primäre Verbindung und eine für die sekundäre Verbindung. Diese VLAN-IDs befinden sich im äußeren 802.1Q-Ethernet-Header. Der innere 802.1Q-Ethernet-Header (nicht dargestellt) wird einer bestimmten [ExpressRoute-Routingdomäne](expressroute-circuit-peerings.md) zugeordnet.
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
@@ -149,9 +149,7 @@ Sie müssen eine ExpressRoute-Verbindung einrichten und Routen für öffentliche
 Ja. Wir akzeptieren bis zu 4.000 Routenpräfixe für privates Peering und je 200 für öffentliches Peering und Microsoft-Peering. Sie können diesen Wert auf 10.000 Routen für privates Peering erhöhen, wenn Sie für ExpressRoute das Premium-Feature aktivieren.
 
 ### Gibt es Einschränkungen hinsichtlich der IP-Adressbereiche, die ich über die BGP-Sitzung ankündigen kann?
-Über BGP angekündigte Präfixe müssen "/29" oder größer (/28 bis /8) sein.
-
-Wir filtern private Präfixe (RFC1918) in der öffentlichen BGP-Peeringsitzung heraus.
+Wir akzeptieren keine privaten Präfixe (RFC1918) in der öffentlichen BGP-Peeringsitzung.
 
 ### Was geschieht, wenn ich die BGP-Limits überschreite?
 BGP-Sitzungen werden abgebrochen. Sie werden zurückgesetzt, sobald die Präfixanzahl unter das Limit fällt.
@@ -247,4 +245,4 @@ Weitere Informationen zur Liste der Partner und Standorte, die ExpressRoute unte
 ### Kann ich über das Internet auf Office 365 zugreifen, selbst wenn für meine Organisation ExpressRoute konfiguriert wurde?
 Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn ExpressRoute für Ihr Netzwerk konfiguriert wurde. Wenn Sie sich an einem Ort befinden, an dem die Verbindung mit Office 365-Diensten über ExpressRoute konfiguriert wurde, wird die Verbindung über ExpressRoute hergestellt.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

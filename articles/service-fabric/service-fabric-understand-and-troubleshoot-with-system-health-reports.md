@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/23/2016"
+   ms.date="04/25/2016"
    ms.author="oanapl"/>
 
 # Verwenden von Systemintegritätsberichten für die Problembehandlung
@@ -24,7 +24,7 @@ Für Azure Service Fabric-Komponenten werden für alle Entitäten im Cluster sta
 
 Die Systemintegritätsberichte sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme mit der Integrität hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht von Service Fabric richtig verhalten. Die Berichte umfassen keine Integritätsüberwachung der Geschäftslogik des Diensts und keine Erkennung von hängenden Prozessen. Benutzerdienste können die Integritätsdaten um spezielle Informationen zu ihrer Logik erweitern.
 
-> [AZURE.NOTE] Watchdog-Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z. B. eine neue Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
+> [AZURE.NOTE] Watchdog-Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z. B. eine neue Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
 
 Die Systemkomponentenberichte werden über die Quelle identifiziert, die mit dem Präfix „**System.**“ beginnt. Watchdogs können nicht das gleiche Präfix für ihre Quellen verwenden, da Berichte mit ungültigen Parametern abgelehnt werden. Wir sehen uns nun einige Systemberichte an, um zu verstehen, wodurch sie ausgelöst werden und wie mögliche Probleme behoben werden, die damit verbunden sind.
 
@@ -163,7 +163,7 @@ HealthEvents          :
 - **Property**: State
 - **Nächste Schritte**: Überprüfen Sie die Diensteinschränkungen und den aktuellen Zustand der Platzierung.
 
-Das folgende Beispiel zeigt einen Verstoß für einen Dienst, der mit sieben Zielreplikaten in einem Cluster mit fünf Knoten konfiguriert ist:
+Das folgende Beispiel zeigt einen Verstoß bezogen auf einen Dienst, der mit sieben Zielreplikaten in einem Cluster mit fünf Knoten konfiguriert ist:
 
 ```xml
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountService
@@ -171,16 +171,16 @@ PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountService
 
 ServiceName           : fabric:/WordCount/WordCountService
 AggregatedHealthState : Warning
-UnhealthyEvaluations  : 
-                        Unhealthy event: SourceId='System.PLB', 
-                        Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning', 
+UnhealthyEvaluations  :
+                        Unhealthy event: SourceId='System.PLB',
+                        Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
                         ConsiderWarningAsError=false.
-                        
-PartitionHealthStates : 
+
+PartitionHealthStates :
                         PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
                         AggregatedHealthState : Warning
-                        
-HealthEvents          : 
+
+HealthEvents          :
                         SourceId              : System.FM
                         Property              : State
                         HealthState           : Ok
@@ -192,7 +192,7 @@ HealthEvents          :
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Ok = 3/22/2016 7:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
-                        
+
                         SourceId              : System.PLB
                         Property              : ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b
                         HealthState           : Warning
@@ -201,32 +201,32 @@ HealthEvents          :
                         ReceivedAt            : 3/23/2016 4:14:03 PM
                         TTL                   : 00:01:05
                         Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
-                        fabric:/WordCount/WordCountService Secondary Partition a1f83a35-d6bf-4d39-b90d-28d15f39599b could not be placed, possibly, 
+                        fabric:/WordCount/WordCountService Secondary Partition a1f83a35-d6bf-4d39-b90d-28d15f39599b could not be placed, possibly,
                         due to the following constraints and properties:  
                         Placement Constraint: N/A
                         Depended Service: N/A
-                        
+
                         Constraint Elimination Sequence:
                         ReplicaExclusionStatic eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
                         ReplicaExclusionDynamic eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
-                        
+
                         Nodes Eliminated By Constraints:
-                        
+
                         ReplicaExclusionStatic:
-                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status: 
+                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status:
                         None/None
-                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status: 
+                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status:
                         None/None
-                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status: 
+                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status:
                         None/None
-                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status: 
+                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status:
                         None/None
-                        
+
                         ReplicaExclusionDynamic:
-                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status: 
+                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status:
                         None/None
-                        
-                        
+
+
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : Error->Warning = 3/22/2016 7:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
@@ -349,7 +349,7 @@ HealthEvents          :
 ### Öffnungszustand des Replikats
 Die Beschreibung dieses Integritätsberichts enthält den Startzeitpunkt (koordinierte Weltzeit), zu dem der API-Aufruf erfolgt ist.
 
-**System.RA** gibt eine Warnung aus, wenn das Öffnen des Replikats länger als der konfigurierte Zeitraum dauert (Standardwert: 30 Minuten). Wenn die API sich auf die Dienstverfügbarkeit auswirkt, wird der Bericht deutlich schneller ausgegeben (konfigurierbares Intervall, Standardwert: 30 Sekunden). Dieser Zeitraum enthält auch die Zeit für das Öffnen des Replikators und des Diensts. Die Eigenschaft ändert sich in „OK“, wenn das Öffnen abgeschlossen ist.
+**System.RA** gibt eine Warnung aus, wenn das Öffnen des Replikats länger länger dauert, als die Konfiguration für den Zeitraum vorgibt (Standardwert: 30 Minuten). Wenn die API sich auf die Dienstverfügbarkeit auswirkt, wird der Bericht deutlich schneller ausgegeben (konfigurierbares Intervall, Standardwert: 30 Sekunden). Dieser Zeitraum enthält auch die Zeit für das Öffnen des Replikators und des Diensts. Die Eigenschaft ändert sich in „OK“, wenn das Öffnen abgeschlossen ist.
 
 - **SourceId**: System.RA
 - **Property**: **ReplicaOpenStatus**
@@ -458,7 +458,7 @@ HealthEvents          :
 
 Wenn Sie die fehlerhafte Anwendung mit aktiviertem Debugger starten, wird in den Fenstern mit den Diagnoseereignissen die von RunAsync ausgelöste Ausnahme angezeigt:
 
-![Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in „fabric:/HelloWorldStatefulApplication“.][1]
+![Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in „fabric:/HelloWorldStatefulApplication“.][1]
 
 Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in **fabric:/HelloWorldStatefulApplication**.
 
@@ -606,4 +606,4 @@ HealthEvents          :
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->
