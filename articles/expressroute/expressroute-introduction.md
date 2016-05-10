@@ -12,7 +12,7 @@
    ms.topic="get-started-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="04/19/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute - Technische Übersicht
@@ -134,4 +134,4 @@ Sie können ein Abrechnungsmodell auswählen, das für Sie am besten geeignet is
 	- [Konfigurieren des Routings](expressroute-howto-routing-classic.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

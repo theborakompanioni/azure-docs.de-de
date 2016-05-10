@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/20/2016"
+    ms.date="04/05/2016"
     ms.author="spelluru"/>
 # HPC und Datenorchestrierung mit Azure Batch und Data Factory
 
@@ -761,11 +761,11 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität, der zuvor er
 
 	-   **AssemblyName** wird auf den Namen der DLL festgelegt: **MyActivities.dll**.
 
-	-   **EntryPoint** wird auf **MyDotNetActivityNS.MyDotNetActivity** festgelegt. Das entspricht im Grunde \<Namespace\>.\<Klassenname\> in Ihrem Code.
+	-   **EntryPoint** wird auf **MyDotNetActivityNS.MyDotNetActivity** festgelegt. Das entspricht im Grunde <Namespace>.<Klassenname> in Ihrem Code.
 
 	-   **PackageLinkedService** ist auf **StorageLinkedService** festgelegt, das auf den Blobspeicher verweist, der die Zip-Datei mit der benutzerdefinierten Aktivität enthält. Wenn Sie andere Azure-Speicherkonten für die Eingabe- und Ausgabedateien und die Zip-Datei mit der benutzerdefinierten Aktivität verwenden, müssen Sie einen weiteren verknüpften Azure Storage-Dienst erstellen. Dieser Artikel setzt voraus, dass Sie das gleiche Azure-Speicherkonto verwenden.
 
-	-   **PackageFile** wird auf **customactivitycontainer/MyCustomActivity.zip** festgelegt. Das entspricht dem Format: \<containerforthezip\>/\<nameofthezip.zip\>.
+	-   **PackageFile** wird auf **customactivitycontainer/MyCustomActivity.zip** festgelegt. Das entspricht dem Format: <containerforthezip>/<nameofthezip.zip>.
 
 	-   Die benutzerdefinierte Aktivität verwendet **InputDataset** als Eingabe und **OutputDataset** als Ausgabe.
 
@@ -901,13 +901,13 @@ Sie können dieses Beispiel erweitern, um mehr über Azure Data Factory und Azur
 
 Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Microsoft Power BI** nutzen. Hier erfahren Sie mehr über Power BI und die Verwendung in Azure:
 
--   [Untersuchen eines Datasets in Power BI](https://support.powerbi.com/knowledgebase/articles/475159)
+-   [Untersuchen eines Datasets in Power BI](https://powerbi.microsoft.com/de-DE/documentation/powerbi-service-get-data/)
 
--   [Erste Schritte mit Power BI Desktop.](https://support.powerbi.com/knowledgebase/articles/471664)
+-   [Erste Schritte mit Power BI Desktop.](https://powerbi.microsoft.com/de-DE/documentation/powerbi-desktop-getting-started/)
 
--   [Aktualisieren von Daten in Power BI](https://support.powerbi.com/knowledgebase/articles/474669)
+-   [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/de-DE/documentation/powerbi-refresh-data/)
 
--   [Azure und Power BI – grundlegende Übersicht](https://support.powerbi.com/knowledgebase/articles/568614)
+-   [Azure und Power BI – grundlegende Übersicht](https://powerbi.microsoft.com/de-DE/documentation/powerbi-azure-and-power-bi/)
 
 ## Referenzen
 
@@ -929,4 +929,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 
     -   [Erste Schritte mit der Azure Batch-Bibliothek für .NET](../batch/batch-dotnet-get-started.md)
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/19/2016"
+   ms.date="03/30/2016"
    ms.author="cherylmc" />
 
 # Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell
@@ -22,11 +22,22 @@
 - [PowerShell – Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
 - [Portal – klassisch](vpn-gateway-point-to-site-create.md)
 
-Mit einer Punkt-zu-Standort-Konfiguration können Sie von einem Clientcomputer eine einzelne sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Eine Punkt-zu-Standort-Verbindung ist eine hervorragende Lösung, wenn Sie von einem Remotestandort, z. B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Dieses Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen. Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Weitere Informationen zu Punkt-zu-Standort-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Informationen zu standortübergreifenden Verbindungen](vpn-gateway-cross-premises-options.md).
+Mit einer Punkt-zu-Standort-Konfiguration können Sie von einem Clientcomputer eine einzelne sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Eine Punkt-zu-Standort-Verbindung ist eine hervorragende Lösung, wenn Sie von einem Remotestandort, z. B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Dieses Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
 
-Dieser Artikel bezieht sich auf VNets und VPN-Gateways, die mithilfe des **Azure Resource Manager**-Bereitstellungsmodells erstellt wurden. Wenn Sie eine Punkt-zu-Standort-Verbindung für ein VNet konfigurieren möchten, das über die Dienstverwaltung erstellt wurde (auch als klassisches Bereitstellungsmodell bezeichnet), lesen Sie den Artikel [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet](vpn-gateway-point-to-site-create.md).
+Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Weitere Informationen zu Punkt-zu-Standort-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Informationen zu standortübergreifenden Verbindungen](vpn-gateway-cross-premises-options.md).
 
-[AZURE.INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+Dieser Artikel gilt für Punkt-zu-Standort-VPN Gateway-Verbindungen mit einem virtuellen Netzwerk, das mit dem **Resource Manager-Bereitstellungsmodell** (Dienstverwaltung) erstellt wurde.
+
+**Informationen zu Azure-Bereitstellungsmodellen**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**Bereitstellungsmodelle und Tools für Punkt-zu-Standort-Verbindungen**
+
+[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
+
+![Punkt-zu-Standort-Diagramm](./media/vpn-gateway-point-to-site-create/point2site.png "Point-to-Site")
+
 
 ## Informationen zu dieser Konfiguration.
 
@@ -50,7 +61,7 @@ Für diese Konfiguration verwenden wir die folgenden Werte:
 
 ## Vorbereitungen
 
-- Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+- Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 	
 - Sie müssen die PowerShell-Cmdlets (1.0.2 oder höher) für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
@@ -112,7 +123,7 @@ Für diese Konfiguration verwenden wir die folgenden Werte:
 		$pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 		
-10. Laden Sie eine CER-Stammzertifikatdatei in Azure hoch. Sie können ein Stammzertifikat aus Ihrer Unternehmenszertifikatumgebung oder ein selbstsigniertes Stammzertifikat verwenden. Sie können bis zu 20 Stammzertifikate hochladen. Eine Anleitung zum Erstellen eines selbstsignierten Stammzertifikats mithilfe von *MakeCert* finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Beachten Sie, dass die CER-Datei nicht den privaten Schlüssel des Stammzertifikats enthalten sollte.
+10. Laden Sie eine CER-Stammzertifikatdatei in Azure hoch. Sie können ein Stammzertifikat aus Ihrer Unternehmenszertifikatumgebung oder ein selbstsigniertes Stammzertifikat verwenden. Sie können bis zu 20 Stammzertifikate hochladen. Eine Anleitung zum Erstellen eines selbstsignierten Stammzertifikats mithilfe von *makecert* finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Beachten Sie, dass die CER-Datei nicht den privaten Schlüssel des Stammzertifikats enthalten sollte.
 	
 	Unten ist ein Beispiel aufgeführt. Die Herausforderung beim Hochladen der Daten für das öffentliche Zertifikat besteht darin, die gesamte Zeichenfolge ohne Leerzeichen zu kopieren und einzufügen. Andernfalls funktioniert der Upload nicht. Für diesen Schritt müssen Sie Ihre eigene CER-Zertifikatdatei verwenden. Versuchen Sie nicht, das unten gezeigte Beispiel zu kopieren und einzufügen.
 
@@ -229,4 +240,4 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 Sie können Ihrem virtuellen Netzwerk einen virtuellen Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

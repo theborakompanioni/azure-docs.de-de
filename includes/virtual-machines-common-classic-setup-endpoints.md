@@ -8,13 +8,13 @@ Die Standardwerte für das IP-Protokoll und die TCP- oder UDP-Ports für bekannt
 
 Nachdem Sie einen Endpunkt erstellt haben, können Sie eine Zugriffssteuerungsliste (ACL) zum Definieren von Regeln verwenden, die eingehenden Datenverkehr an den öffentlichen Port des Endpunkts basierend der Quell-IP-Adresse zulassen oder verweigern. Wenn der virtuelle Computer in Azure ist, sollten Sie stattdessen Netzwerk-Sicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
 
-> [AZURE.NOTE]Firewall-Konfiguration für virtuelle Computer in Azure erfolgt automatisch für Remote Desktop und Secure Shell (SSH) und in den meisten Fällen für Windows PowerShell-Remoting zugeordnete Ports. Für Ports, die für alle anderen Endpunkte angegeben werden, wird keine Konfiguration der Firewall des virtuellen Computers automatisch durchgeführt. Wenn Sie einen Endpunkt für den virtuellen Computer erstellen, müssen Sie sicherstellen, dass die Firewall des virtuellen Computers außerdem den Datenverkehr für das Protokoll und den privaten Port entsprechend der Endpunktkonfiguration ermöglicht.
+> [AZURE.NOTE]Firewallkonfiguration für virtuelle Computer in Azure erfolgt automatisch für Ports, die mit Remotekonnektivität-Endpunkten verknüpft sind, die Azure automatisch einrichtet. Für Ports, die für alle anderen Endpunkte angegeben werden, wird keine Konfiguration der Firewall des virtuellen Computers automatisch durchgeführt. Wenn Sie einen Endpunkt für den virtuellen Computer erstellen, müssen Sie sicherstellen, dass die Firewall des virtuellen Computers außerdem den Datenverkehr für das Protokoll und den privaten Port entsprechend der Endpunktkonfiguration ermöglicht. Informationen zum Konfigurieren der Firewall finden Sie in der Dokumentation oder der Onlinehilfe für das Betriebssystem, das auf dem virtuellen Computer ausgeführt wird.
 
 ## Erstellen eines Endpunkts
 
 1.	Melden Sie sich beim klassischen Azure-Portal an, falls noch nicht geschehen.
 2.	Klicken Sie auf **Virtuelle Computer** und dann auf den Namen des virtuellen Computers, den Sie konfigurieren möchten.
-3.	Klicken Sie auf **Endpunkte**. Auf der Seite **Endpunkte** sind alle aktuellen Endpunkte für den virtuellen Computer aufgelistet.
+3.	Klicken Sie auf **Endpunkte**. Auf der Seite **Endpunkte** sind alle aktuellen Endpunkte für den virtuellen Computer aufgelistet. (Dieses Beispiel ist eine Windows-VM. Eine Linux-VM weist standardmäßig einen Endpunkt für SSH auf.)
 
 	![Endpunkte](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png)
 
@@ -60,4 +60,4 @@ Sie können Regeln verwenden, um nur Verkehr von bestimmten Computern zuzulassen
 
 Die Regeln werden der Reihe nach, beginnend mit der ersten und endend mit der letzten Regel, bewertet. Dies bedeutet, dass die Regeln gemäß der Restriktivität geordnet werden sollen. Beispiele und weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste?](../articles/virtual-network/virtual-networks-acl.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

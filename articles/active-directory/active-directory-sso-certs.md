@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen."
 	services="active-directory"
 	documentationCenter=""
-	authors="liviodlc"
+	authors="asmalser-msft"
 	manager="stevenpo"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="02/09/2016"
-	ms.author="liviodlc"/>
+	ms.author="asmalser-msft"/>
 
 #Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 
@@ -82,4 +82,4 @@ Im Idealfall sollte die unten gezeigten Schritte zur Erneuerung keine wesentlich
 - [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
 - [Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="xamarin"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="02/04/2016"
-	ms.author="normesta"/>
+	ms.date="05/03/2016"
+	ms.author="glenga"/>
 
 #Erstellen einer Xamarin.Forms-App
 
@@ -148,6 +148,13 @@ Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Bac
 > [AZURE.NOTE]
 Sie finden den Code, der auf Ihr mobiles App-Back-End zugreift, in der C#-Datei „TodoItemManager.cs“ des Portable Class Library-Projekts Ihrer Projektmappe.
 
+##Nächste Schritte
+
+* [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-forms-get-started-users.md) Erhalten Sie Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+* [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-forms-get-started-push.md) Erfahren Sie, wie Sie Ihrer App Pushbenachrichtigungen hinzufügen.
+* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md) Lernen Sie, wie Sie das SDK für verwaltete Clients in Ihrer Xamarin-App verwenden. 
+
+
 <!-- Anchors. -->
 [Getting started with mobile app backends]: #getting-started
 [Create a new mobile app backend]: #create-new-service
@@ -168,4 +175,4 @@ Sie finden den Code, der auf Ihr mobiles App-Back-End zugreift, in der C#-Datei 
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

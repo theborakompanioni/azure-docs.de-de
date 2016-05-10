@@ -97,12 +97,4 @@ Zum Erstellen eines auf Windows basierenden virtuellen Computers in Azure folgen
 - Als Mitglied in einer vorhandenen Lastenausgleichsgruppe.
 - Mit einer statischen IP-Adresse.
 
-## Erstellen eines virtuellen Linux-Computers
-
-Zum Erstellen eines auf Linux basierenden virtuellen Computers in Azure folgen Sie den Anweisungen unter [Erstellen und Vorabkonfigurieren eines virtuellen Linux-Computers mit Azure PowerShell](virtual-machines-linux-classic-createpowershell.md).
-
-- Mit zusätzlichen Datenträgern.
-- Als Mitglied in einer vorhandenen Lastenausgleichsgruppe.
-- Mit einer statischen IP-Adresse.
-
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/14/2016"
+	ms.date="04/28/2016"
 	ms.author="cynthn"/>
 
 # Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows Server und Anmelden auf diesem Computer 
@@ -32,7 +32,7 @@ Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedes
 
 4. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Verbinden**.
 
-	![Screenshot des Azure-Portals beim Herstellen einer Verbindung mit Ihrem virtuellen Computer](./media/virtual-machines-windows-connect-logon/preview-portal-connect.png)
+	![Screenshot des Azure-Portals beim Herstellen einer Verbindung mit Ihrem virtuellen Computer](./media/virtual-machines-windows-connect-logon/connect.png)
 
 ## Anmelden beim virtuellen Computer
 
@@ -43,4 +43,4 @@ Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedes
 
 Wenn beim Verbindungsversuch Probleme auftreten, finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md) Informationen. Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="04/22/2016"
 	ms.author="larryfr"/>
 
 # Schnellstart-Lernprogramm für die Programmiersprache R für Azure Machine Learning
@@ -655,7 +655,7 @@ Der vollständige R-Code für diesen Abschnitt befindet sich in der ZIP-Datei, d
 
 Wie bereits erwähnt, sind Zeitreihen Reihen von Datenwerten, die einen Zeitindex besitzen. R-Zeitreihenobjekte dienen zum Erstellen und Verwalten des Zeitindex. Es gibt mehrere Vorteile bei der Verwendung von Zeitreihenobjekten. Zeitreihenobjekte übernehmen für Sie zahlreiche Details der Verwaltung der Zeitreihen-Indexwerte, die im Objekt gekapselt sind. Darüber hinaus ermöglichen Zeitreihenobjekte die Verwendung der zahlreichen Zeitreihenmethoden zum Plotten, Drucken, Modellieren usw.
 
-Die Zeitreihenklasse "POSIXct" wird häufig verwendet und ist relativ einfach. Diese Zeitreihenklasse misst die Zeit seit Beginn der Epoche, 1. Januar 1970. Wir verwenden in diesem Beispiel POSIXct-Zeitreihenobjekte. Andere weit verbreitete R-Zeitreihen-Objektklassen umfassen "zoo" und "xts" (für extensible time series, erweiterbare Zeitreihe). 
+Die Zeitreihenklasse "POSIXct" wird häufig verwendet und ist relativ einfach. Diese Zeitreihenklasse misst die Zeit seit Beginn der Epoche, 1. Januar 1970. Wir verwenden in diesem Beispiel POSIXct-Zeitreihenobjekte. Andere weit verbreitete R-Zeitreihen-Objektklassen umfassen "zoo" und "xts", die "extensible time series" (erweiterbare Zeitreihe).
 <!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ###	Beispiel für Zeitreihenobjekte
@@ -900,7 +900,7 @@ Der folgende Code extrahiert die Verzögerungswerte aus der Liste der ccf-Objekt
 
 	df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
 
-	c.names <- c("-1 lag", "0 lag", "+1 lag")
+	c.names <- c("correlation pair", "-1 lag", "0 lag", "+1 lag")
 	r.names  <- c("Corr Cot Cheese - Ice Cream",
 	              "Corr Cot Cheese - Milk Prod",
 	              "Corr Cot Cheese - Fat Price",
@@ -1358,4 +1358,4 @@ Einige weitere nützliche Internetressourcen:
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

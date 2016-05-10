@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie Google Apps mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und mehr zu aktivieren!"
     services="active-directory"
     documentationCenter=""
-    authors="liviodlc"
+    authors="asmalser-msft"
     manager="stevenpo"
     editor=""/>
 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
     ms.date="02/17/2016"
-    ms.author="liviodlc"/>
+    ms.author="asmalser-msft"/>
 
 #Tutorial: Integrieren von Google Apps in Azure Active Directory
 
@@ -313,4 +313,4 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0427_2016-->

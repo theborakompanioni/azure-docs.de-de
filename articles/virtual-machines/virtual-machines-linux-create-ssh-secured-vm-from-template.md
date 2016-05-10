@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/04/2016"
+	ms.date="04/27/2016"
 	ms.author="v-livech"/>
 
 # Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage
@@ -66,4 +66,4 @@ Sie können mithilfe des Parameters `--template-uri` eine neue Ressourcengruppe 
 
 Nachdem Sie Linux-VMs mit Vorlagen erstellt haben, können Sie sich darüber informieren, welche anderen App-Frameworks für die Verwendung mit Vorlagen verfügbar sind. Im [Katalog mit den Vorlagen](https://azure.microsoft.com/documentation/templates/) können Sie weitere App-Frameworks für die Bereitstellung auswählen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

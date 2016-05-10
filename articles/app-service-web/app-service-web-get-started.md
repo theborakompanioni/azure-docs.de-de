@@ -139,4 +139,4 @@ Es sind auch weitere Inhalte dazu verfügbar, welche unterschiedlichen Apps Sie 
 - [Erstellen von mobilen Apps](/documentation/learning-paths/appservice-mobileapps/)
 - [Erstellen von API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0420_2016-->

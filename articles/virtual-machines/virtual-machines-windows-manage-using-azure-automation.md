@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/19/2016"
 	ms.author="jolevy"/>
 
 
@@ -45,4 +45,4 @@ Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Einsatz 
 - [Mein erstes Runbook](../automation/automation-first-runbook-graphical.md)
 - [Azure Automation Lernkurve](https://azure.microsoft.com/documentation/learning-paths/automation/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

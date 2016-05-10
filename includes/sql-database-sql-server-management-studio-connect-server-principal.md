@@ -1,3 +1,5 @@
+
+
 ## Herstellen einer Verbindung mit einer Azure SQL-Datenbank mithilfe einer Prinzipalanmeldung auf Serverebene
 
 Führen Sie die folgenden Schritte aus, um mit SSMS mithilfe einer Prinzipalanmeldung auf Serverebene eine Verbindung mit der Azure SQL-Datenbank herzustellen.
@@ -37,4 +39,4 @@ Führen Sie die folgenden Schritte aus, um mit SSMS mithilfe einer Prinzipalanme
 
 Die häufigste Ursache für Verbindungsfehler sind Unregelmäßigkeiten beim Servernamen (Erinnerung: <*Servername*> ist der Name des logischen Servers, nicht der Datenbank), Benutzernamen oder Kennwort sowie das Verbieten der Verbindung durch den Server aus Sicherheitsgründen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

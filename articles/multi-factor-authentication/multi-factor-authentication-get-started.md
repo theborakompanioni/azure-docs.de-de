@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/07/2016" 
+	ms.date="05/02/2016" 
 	ms.author="billmath"/>
 
 #Auswählen der richtigen mehrstufigen Sicherheitslösung
@@ -73,7 +73,7 @@ Einmalumgehung | | ●
 Benutzerdefinierte Begrüßungen für Telefonanrufe | ● | ● 
 Benutzerdefinierte Anrufer-ID für Telefonanrufe | ● | ● 
 Vertrauenswürdige IP-Adressen | ● | ● 
-Speichern der MFA für vertrauenswürdige Geräte (öffentliche Vorschau) | ● |  
+Speichern der MFA für vertrauenswürdige Geräte | ● |  
 Bedingter Zugriff | ● | ● 
 Cache | | ● 
 
@@ -81,4 +81,4 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

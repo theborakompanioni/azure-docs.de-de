@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="03/07/2016"
+	ms.date="04/01/2016"
 	ms.author="spelluru"/>
 
 # Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank
@@ -45,7 +45,7 @@ Sie benötigen in diesem Lernprogramm den Kontonamen und -schlüssel Ihres Azure
 2. Klicken Sie auf der linken Seite auf den Hub **Durchsuchen**, und wählen Sie **Speicherkonten** aus.
 3. Wählen Sie auf dem Blatt **Speicherkonten** das **Azure-Speicherkonto** aus, das Sie in diesem Lernprogramm verwenden möchten.
 4. Klicken Sie auf dem Blatt **SPEICHER** auf die Kachel **SCHLÜSSEL**.
-5. Klicken Sie auf dem Blatt **Schlüssel verwalten** auf die (Bild-) Schaltfläche **Kopieren** neben dem Textfeld **SPEICHERKONTONAME**, und speichern Sie den Eintrag z. B. in einer Textdatei.  
+5. Klicken Sie auf dem Blatt **Schlüssel verwalten** auf die (Bild-) Schaltfläche **Kopieren** neben dem Textfeld **SPEICHERKONTONAME**, und speichern Sie den Eintrag z. B. in einer Textdatei.  
 6. Wiederholen Sie den vorherigen Schritt zum Kopieren oder Notieren des **PRIMÄREN ZUGRIFFSSCHLÜSSELS**.
 7. Schließen Sie alle Blätter, indem Sie auf **X** klicken.
 
@@ -91,16 +91,16 @@ Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausf
 
 		CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
-	**Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter "Schritt 2: Herstellen einer Verbindung mit SQL-Datenbank" im Artikel [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio][sql-management-studio], um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen. Beachten Sie, dass in diesem Artikel das [klassische Azure-Portal](http://manage.windowsazure.com) und nicht das [Azure-Portal](https://portal.azure.com) verwendet wird, um die Firewall für einen Azure SQL-Server zu konfigurieren.
+	**Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter "Schritt 2: Herstellen einer Verbindung mit SQL-Datenbank" im Artikel [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio][sql-management-studio], um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen. Beachten Sie, dass in diesem Artikel das [Azure-Portal](http://manage.windowsazure.com)[](https://portal.azure.com) verwendet wird, um die Firewall für einen Azure SQL-Server zu konfigurieren.
 
 	**Wenn Sie Visual Studio 2013 auf Ihrem Computer installiert haben:** Klicken Sie im [Azure-Portal](https://portal.azure.com) links auf **Durchsuchen**, dann auf **SQL-Server**, wählen Sie Ihre Datenbank aus, und klicken Sie auf der Symbolleiste auf die Schaltfläche **In Visual Studio öffnen**, um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen. Wenn Ihr Client nicht auf den Azure SQL-Server zugreifen darf, müssen Sie die Firewall für Ihren Azure SQL-Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Im vorherigen Artikel finden Sie Schritte zum Konfigurieren der Firewall für Ihren Azure SQL-Server.
 
 
 Gehen Sie wie folgt vor:
 
-- Klicken Sie oben auf den Link [Data Factory-Editor verwenden](data-factory-get-started-using-editor.md), um das Tutorial mithilfe des Data Factory-Editors auszuführen, der Teil des klassischen Azure-Portals ist.
+- Klicken Sie oben auf den Link [Data Factory-Editor verwenden](data-factory-get-started-using-editor.md), um das Lernprogramm mithilfe des Data Factory-Editors auszuführen, der Teil des Azure-Portals ist.
 - Klicken Sie oben auf den Link [PowerShell verwenden](data-factory-monitor-manage-using-powershell.md), um das Lernprogramm mit Azure PowerShell auszuführen.
-- Klicken Sie oben auf den Link [Mit Visual Studio](data-factory-get-started-using-vs.md), um das Lernprogramm mit Visual Studio 2013 auszuführen.
+- Klicken Sie oben auf den Link [Mit Visual Studio](data-factory-get-started-using-vs.md), um das Lernprogramm mit Visual Studio 2013 auszuführen.
 
 ## Kopieraktivität
 Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
@@ -116,4 +116,4 @@ Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Si
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

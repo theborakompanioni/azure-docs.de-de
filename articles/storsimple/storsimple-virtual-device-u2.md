@@ -12,18 +12,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/20/2016"
+   ms.date="04/29/2016"
    ms.author="alkohli" />
 
-# Bereitstellen und Verwalten eines virtuellen StorSimple-Geräts in Azure (Update 2)
+# Bereitstellen und Verwalten eines virtuellen StorSimple-Geräts in Azure
 
-> [AZURE.SELECTOR]
-- [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
-- [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
-- [GA-Version](../articles/storsimple/storsimple-virtual-device.md)
 
 ##Übersicht
-Das virtuelle StorSimple-Gerät ist eine zusätzliche, in der Microsoft Azure StorSimple-Lösung enthaltene Funktion. Das virtuelle StorSimple-Gerät wird auf einem virtuellen Computer in einem virtuellen Microsoft Azure-Netzwerk ausgeführt und kann zum Sichern und Klonen von Daten von Hosts verwendet werden.
+Das virtuelle Gerät der Serie StorSimple 8000 ist eine zusätzliche in der Microsoft Azure StorSimple-Lösung enthaltene Funktion. Das virtuelle StorSimple-Gerät wird auf einem virtuellen Computer in einem virtuellen Microsoft Azure-Netzwerk ausgeführt und kann zum Sichern und Klonen von Daten von Hosts verwendet werden. Dieses Tutorial beschreibt die Bereitstellung und Verwaltung eines virtuellen Geräts in Azure und gilt für alle virtuellen Geräte mit der Softwareversion Update 2 und niedriger.
 
 
 #### Vergleich virtueller Gerätemodelle
@@ -34,13 +30,15 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | Gerätemodell | 8010<sup>1</sup> | 8020 |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **Maximale Kapazität** | 30 TB | 64 TB |
-| **Azure-VM** | Standard\_A3 (4 Kerne, 7 GB Arbeitsspeicher) | Standard\_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
+| **Azure-VM** | Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher) | Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
 | **Versionskompatibilität** | Versionen unter Vorgängerversionen von Update 2 oder höher | Versionen unter Update 2 oder höher |
 | **Regionale Verfügbarkeit** | Alle Azure-Regionen | Azure-Regionen, die Storage Premium unterstützen<br></br>Eine Liste dieser Regionen finden Sie unter [Unterstützte Regionen für 8020](#supported-regions-for-8020). |
-| **Speichertyp** | Verwendet Azure Storage Standard<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](). | Verwendet Azure Storage Premium<br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk). |
-| **Informationen zu Workloads** | Abrufen von Dateien aus Sicherungskopien auf Elementebene | Cloudentwicklungs- und Testszenarios, niedrige Latenz und Workloads mit höherer Leistung <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
+| **Speichertyp** | Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](). | Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br> Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk). |
+| **Informationen zu Workloads** | Abrufen von Dateien aus Sicherungskopien auf Elementebene | Cloudentwicklungs- und Testszenarien, niedrige Latenz und Workloads mit höherer Leistung <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
  
 <sup>1</sup> *Ehemals 1100*.
+
+<sup>2</sup> *Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
 
 #### Unterstützte Regionen für 8020
 
@@ -212,8 +210,8 @@ In den folgenden Abschnitten werden einige der Unterschiede bei der Arbeit mit v
 
 Da es sich um ein reines Softwaregerät handelt, ist der Verwaltungsaufwand im Vergleich zu einem physischen Gerät minimal. Folgende Optionen stehen zur Auswahl:
 
-- **Softwareupdates** – Sie können das Datum des letzten Softwareupdates sowie alle Updatestatusmeldungen anzeigen. Mit der Schaltfläche **Updates scannen** unten auf der Seite können Sie manuell nach Updates suchen. Wenn Updates verfügbar sind, klicken Sie zu deren Installation auf **Updates installieren**. Da nur eine einzige Schnittstelle zum virtuellen Gerät vorhanden ist, tritt beim Übernehmen der Updates eine kurze Dienstunterbrechung auf. Das virtuelle Gerät wird heruntergefahren und (ggf.) neu gestartet, um alle veröffentlichten Updates zu übernehmen. Eine Schrittanleitung finden Sie unter [Aktualisieren Ihres Geräts](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
-- **Supportpaket** – Sie können ein Supportpaket erstellen und hochladen, um den Microsoft-Support beim Beheben von Problemen mit Ihrem virtuellen Gerät zu unterstützen. Eine Schrittanleitung finden Sie unter [Erstellen und Verwalten eines Unterstützungspakets](storsimple-create-manage-support-package.md).
+- **Softwareupdates** – Sie können das Datum des letzten Softwareupdates sowie alle Updatestatusmeldungen anzeigen. Mit der Schaltfläche **Updates scannen** unten auf der Seite können Sie manuell nach Updates suchen. Wenn Updates verfügbar sind, klicken Sie zu deren Installation auf **Updates installieren**. Da nur eine einzige Schnittstelle zum virtuellen Gerät vorhanden ist, tritt beim Übernehmen der Updates eine kurze Dienstunterbrechung auf. Das virtuelle Gerät wird heruntergefahren und (ggf.) neu gestartet, um alle veröffentlichten Updates zu übernehmen. Eine Schrittanleitung finden Sie unter [Aktualisieren Ihres Geräts](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
+- **Supportpaket** – Sie können ein Supportpaket erstellen und hochladen, um den Microsoft-Support beim Beheben von Problemen mit Ihrem virtuellen Gerät zu unterstützen. Eine Schrittanleitung finden Sie unter [Erstellen und Verwalten eines Unterstützungspakets](storsimple-create-manage-support-package.md).
 
 ### Speicherkonten für ein virtuelles Gerät
 
@@ -282,4 +280,4 @@ Wenn Sie das virtuelle Gerät herunterfahren oder löschen, wird es auf der Seit
  
 - Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

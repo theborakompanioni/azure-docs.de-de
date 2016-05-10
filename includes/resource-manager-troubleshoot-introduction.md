@@ -1,5 +1,7 @@
-You can troubleshoot your deployment by looking at either the audit logs, or the deployment operations. This topic shows both methods.
+Sie können die Fehler in Ihrer Bereitstellung anhand der Überwachungsprotokolle oder der Bereitstellungsvorgänge beheben. In diesem Thema werden beide Methoden veranschaulicht.
 
-You can avoid some errors by validating your template and infrastructure prior to deployment. For more information, see [Deploy a resource group with Azure Resource Manager template](../articles/resource-group-template-deploy.md).
+Einige Fehler lassen sich vermeiden, indem Sie Ihre Vorlage und die Infrastruktur vor der Bereitstellung überprüfen. Weitere Informationen finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../articles/resource-group-template-deploy.md).
 
-For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](../articles/resource-manager-common-deployment-errors.md).
+Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](../articles/resource-manager-common-deployment-errors.md).
+
+<!---HONumber=AcomDC_0427_2016-->

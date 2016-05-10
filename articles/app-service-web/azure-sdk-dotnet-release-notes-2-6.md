@@ -4,7 +4,7 @@
    services="app-service/web" 
    documentationCenter=".net" 
    authors="Juliako" 
-   manager="dwrede" 
+   manager="erikre" 
    editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="01/19/2016"
+   ms.date="04/25/2016"
    ms.author="juliako"/>
 
-
+ 
 # Versionshinweise zu Azure SDK für .NET 2.6
 
 Dieses Dokument enthält die Versionshinweise zu Azure SDK für .NET 2.6-Version.
@@ -108,4 +108,4 @@ Das Speicherkonto für die Diagnose kann jetzt in der Dienstkonfigurationsdatei 
 
 [Unterstützungs- und Deaktivierungsinformationen zum Azure SDK für .NET und APIs](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

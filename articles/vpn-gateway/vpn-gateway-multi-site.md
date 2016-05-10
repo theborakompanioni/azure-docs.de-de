@@ -3,8 +3,8 @@
    description="In diesem Artikel werden die Schritte zum Verbinden mehrerer lokaler Standorte mit einem virtuellen Netzwerk erläutert. Dabei wird ein VPN-Gateway im klassischen Bereitstellungsmodell verwendet."
    services="vpn-gateway"
    documentationCenter="na"
-   authors="cherylmc"
-   manager="carolz"
+   authors="yushwang"
+   manager="rossort"
    editor=""
    tags="azure-service-management"/>
 
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="12/17/2015"
-   ms.author="cherylmc" />
+   ms.author="yushwang" />
 
 # Verbinden mehrerer lokaler Standorte mit einem virtuellen Netzwerk
 
@@ -177,4 +177,4 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 Weitere Informationen zu VPN-Gateways finden Sie unter [Informationen zu VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Weitere Informationen zu Azure AD
@@ -37,4 +37,4 @@ Informationen zu Verwendungseinschränkungen und anderen Dienstbeschränkungen f
 * [Als Organisation für Azure registrieren](sign-up-organization.md)
 * [Azure-Identität](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0427_2016-->

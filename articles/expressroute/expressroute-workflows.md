@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="expressroute"
@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
+   ms.date="04/18/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
@@ -120,4 +120,4 @@ Wenn der Zustand der angekündigten öffentlichen Präfixe *validation needed* l
 	- [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

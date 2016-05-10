@@ -19,7 +19,7 @@ Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Vir
 
 5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Sie können Abonnements in der Dropdownliste ändern.
 
-6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue, indem Sie einen Namen für die neue Ressourcengruppe eingeben. Geben Sie der Ressourcengruppe beim Erstellen einer neuen Gruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md/#resource-groups).
+6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue, indem Sie einen Namen für die neue Ressourcengruppe eingeben. Geben Sie der Ressourcengruppe beim Erstellen einer neuen Gruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
 
 7. Wählen Sie als Nächstes für das VNet die Einstellungen für **Standort** aus. Beachten Sie, dass mit dem Standort angegeben wird, wo sich die in diesem VNet bereitgestellten Ressourcen befinden. Sie können dies später nicht mehr ändern, ohne die Ressourcen neu bereitzustellen.
 
@@ -32,4 +32,4 @@ Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Vir
 
 	![Kachel "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

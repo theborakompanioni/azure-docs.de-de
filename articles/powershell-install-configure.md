@@ -2,7 +2,7 @@
 	pageTitle="Installieren und Konfigurieren von Azure PowerShell"
 	description="Erfahren Sie, wie Sie Azure PowerShell installieren und konfigurieren."
 	editor="tysonn"
-	manager="stevenka"
+	manager="dongill"
 	documentationCenter=""
 	services=""
 	authors="coreyp-at-msft"/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="04/22/2016"
 	ms.author="coreyp"/>
 
 # Installieren und Konfigurieren von Azure PowerShell
@@ -30,7 +30,7 @@ Es folgen die beiden Methoden, mit denen Sie Azure PowerShell installieren könn
 
 ###Installieren von Azure PowerShell per WebPI
 
-Die Installation von Azure PowerShell 1.0 und höher per WebPI ist mit der Installation der Version 0.9.x identisch. Laden Sie [Azure PowerShell](http://aka.ms/webpi-azps) herunter, und starten Sie die Installation. Falls Sie Azure PowerShell 0.9.x installiert haben, wird Version 0.9.x im Rahmen des Upgrades deinstalliert. Wenn Sie Azure PowerShell-Module aus dem PowerShell-Katalog installiert haben, werden die Module vor der Installation automatisch vom Installationsprogramm entfernt, um die Einheitlichkeit der Azure PowerShell-Umgebung sicherzustellen.
+Die Installation von Azure PowerShell 1.0 und höher per WebPI ist mit der Installation der Version 0.9.x identisch. Laden Sie [Azure PowerShell](http://aka.ms/webpi-azps) herunter, und starten Sie die Installation. Falls Sie Azure PowerShell 0.9.x installiert haben, wird Version 0.9.x im Rahmen des Upgrades deinstalliert. Wenn Sie Azure PowerShell-Module aus dem PowerShell-Katalog installiert haben, werden die Module vor der Installation automatisch vom Installationsprogramm entfernt, um die Einheitlichkeit der Azure PowerShell-Umgebung sicherzustellen.
 
 > [AZURE.NOTE] Wenn Sie bereits Azure-Module aus dem PowerShell-Katalog installiert haben, entfernt das Installationsprogramm diese automatisch. Dies vermeidet Verwirrung in Bezug darauf, welche Modulversionen Sie installiert haben und wo sich diese befinden. Module des PowerShell-Katalogs werden normalerweise unter **%Programme%\\WindowsPowerShell\\Modules** installiert. Im Gegensatz dazu installiert das WebPI-Installationsprogramm die Azure-Module unter „**%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\PowerShell**“. Wenn während der Installation ein Fehler auftritt, können Sie die Azure*-Ordner aus Ihrem Ordner **%ProgramFiles%\\WindowsPowerShell\\Modules** entfernen und die Installation erneut durchführen.
 
@@ -67,14 +67,14 @@ Installieren Sie Azure PowerShell 1.3.0 oder höher aus dem PowerShell-Katalog �
 ####Weitere Informationen zu diesen Befehlen
 
 - **Install-Module AzureRM** installiert ein Rollup-Modul für die Azure Resource Manager-Cmdlets. Das AzureRM-Modul hängt für jedes Azure Resource Manager-Modul von einem bestimmte Versionsbereich ab. Der enthaltene Versionsbereich stellt sicher, dass keine aktuellen Moduländerungen aufgenommen werden können, wenn AzureRM-Module mit derselben Hauptversion installiert werden. Bei der Installation des AzureRM-Moduls werden alle noch nicht installierten Azure Resource Manager-Module aus dem PowerShell-Katalog heruntergeladen und installiert. Weitere Informationen zur von Azure PowerShell-Modulen verwendeten semantischen Versionsverwaltung finden Sie unter [semver.org](http://semver.org). 
-- **Install-Module Azure** installiert das Azure-Modul. Dieses Modul ist das Service Management-Modul aus Azure PowerShell 0.9.x. Hierfür sollten keine größeren Änderungen gelten, und es sollte gegenüber der vorherigen Version des Azure-Moduls austauschbar sein.
+- **Install-Module Azure** installiert das Azure-Modul. Dieses Modul ist das Service Management-Modul aus Azure PowerShell 0.9.x. Hierfür sollten keine größeren Änderungen gelten, und es sollte gegenüber der vorherigen Version des Azure-Moduls austauschbar sein.
 
 ## Schritt 2: Starten
 Sie können die Cmdlets über die Windows PowerShell-Standardkonsole oder über die PowerShell Integrated Scripting Environment (ISE) ausführen. Die Methode, die Sie zum Öffnen einer der beiden Konsolen verwenden, ist abhängig von der ausgeführten Windows-Version:
 
-- Auf einem Computer, auf dem mindestens Windows 8 oder Windows Server 2012 ausgeführt wird, können Sie die integrierte Suche verwenden. Beginnen Sie auf dem Bildschirm **Start** mit der Eingabe von „power“. Daraufhin wird eine entsprechende Liste von Anwendungen zurückgegeben, die auch Windows PowerShell umfasst. Klicken Sie auf eine dieser beiden Anwendungen, um die Konsole zu öffnen. (Klicken Sie mit der rechten Maustaste auf das Symbol, um die Anwendung an den **Startbildschirm** anzuheften.)
+- Auf einem Computer, auf dem mindestens Windows 8 oder Windows Server 2012 ausgeführt wird, können Sie die integrierte Suche verwenden. Beginnen Sie auf dem Bildschirm **Start** mit der Eingabe von „power“. Daraufhin wird eine entsprechende Liste von Anwendungen zurückgegeben, die auch Windows PowerShell umfasst. Klicken Sie auf eine dieser beiden Anwendungen, um die Konsole zu öffnen. (Klicken Sie mit der rechten Maustaste auf das Symbol, um die Anwendung an den **Startbildschirm** anzuheften.)
 
-- Verwenden Sie auf einem Computer, auf dem eine niedrigere Version als Windows 8 oder Windows Server 2012 ausgeführt wird, das **Startmenü**. Klicken Sie im **Startmenü** auf **Alle Programme**, **Zubehör** und den **Windows PowerShell**-Ordner, und klicken Sie dann auf **Windows PowerShell**.
+- Verwenden Sie auf einem Computer, auf dem eine niedrigere Version als Windows 8 oder Windows Server 2012 ausgeführt wird, das **Startmenü**. Klicken Sie im **Startmenü** auf **Alle Programme**, **Zubehör** und den **Windows PowerShell**-Ordner, und klicken Sie dann auf **Windows PowerShell**.
 
 Sie können auch die **Windows PowerShell ISE** ausführen, um Menüelemente und Tastenkombinationen zum Durchführen vieler Aufgaben zu nutzen, die Sie auch in der Windows PowerShell-Konsole durchführen würden. Geben Sie zum Verwenden der ISE in der Windows PowerShell-Konsole „Cmd.exe“ ein, oder geben Sie im Feld **Ausführen** den Befehl **powershell\_ise.exe** ein.
 
@@ -134,7 +134,7 @@ Melden Sie sich mit Ihrem Geschäfts- oder Schulkonto an:
 
 > 2. Wenn kein Verzeichnis vorhanden ist, wählen Sie **Create your directory** (Verzeichnis erstellen) aus, und stellen Sie die geforderten Informationen bereit.
 
-> 3. Wählen Sie Ihr Verzeichnis aus, und fügen Sie einen neuen Benutzer hinzu. Mit diesem neuen Benutzer können Sie sich über ein Geschäfts- oder Schulkonto anmelden. Während der Erstellung des Benutzers erhalten Sie sowohl eine E-Mail-Adresse für den Benutzer als auch ein temporäres Kennwort. Speichern Sie diese Informationen, da sie in Schritt 5 weiter unten benötigt werden.
+> 3. Wählen Sie Ihr Verzeichnis aus, und fügen Sie einen neuen Benutzer hinzu. Mit diesem neuen Benutzer können Sie sich über ein Geschäfts- oder Schulkonto anmelden. Während der Erstellung des Benutzers erhalten Sie sowohl eine E-Mail-Adresse für den Benutzer als auch ein temporäres Kennwort. Speichern Sie diese Informationen, da sie in Schritt 5 weiter unten benötigt werden.
 
 > 4. Wählen Sie im klassischen Azure-Portal **Einstellungen** und anschließend **Administratoren**. Wählen Sie **Hinzufügen** aus, und fügen Sie den neuen Benutzer als Co-Administrator hinzu. Dies ermöglicht es dem Geschäfts- oder Schulkonto, Ihr Azure-Abonnement zu verwalten.
 
@@ -175,4 +175,4 @@ Referenzinformationen zu den Cmdlets finden Sie unter [Azure-Cmdlet-Referenz](ht
 
 Beispielskripts und Anleitungen zur Unterstützung bei der Erstellung von Skripts zum Verwalten von Azure finden Sie im [Script Center](http://go.microsoft.com/fwlink/p/?LinkId=321940).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -14,28 +14,30 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/25/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
-# Erstellen eines Resource Manager-VNet mit Site-to-Site-VPN-Verbindung über das Azure-Portal
+# Erstellen eines VNet mit Site-to-Site-VPN-Verbindung über das Azure-Portal und Azure Resource Manager
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure-Portal – klassisch](vpn-gateway-site-to-site-create.md)
+- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
 In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Azure Resource Manager-Bereitstellungsmodells und des Azure-Portals geführt.
 
-**Bereitstellungsmodelle und Bereitstellungstools**
+
+**Informationen zu Azure-Bereitstellungsmodellen**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**Bereitstellungsmodelle und Tools für Site-to-Site-Verbindungen**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
 Wenn Sie VNets miteinander verbinden möchten, aber keine Verbindung mit einem lokalen Standort erstellen, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung](vpn-gateway-vnet-vnet-rm-ps.md) entsprechende Informationen.
 
-**Informationen zu Azure-Bereitstellungsmodellen**
-
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## Voraussetzungen
 
@@ -142,6 +144,8 @@ Stellen Sie sicher, dass das Gateway für das virtuelle Netzwerk und die Gateway
 
 ## Nächste Schritte
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter dem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) für virtuelle Computer.
+- Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter dem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) für virtuelle Computer.
 
-<!---HONumber=AcomDC_0406_2016-->
+- Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
+
+<!---HONumber=AcomDC_0504_2016-->

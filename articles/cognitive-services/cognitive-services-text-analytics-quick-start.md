@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Kurzanleitung: Machine Learning-Textanalyse-APIs | Microsoft Azure"
-	description="Azure Machine Learning-Textanalyse – Kurzanleitung"
+	description="Azure Machine Learning-Textanalyse – Kurzanleitung"
 	services="cognitive-services"
 	documentationCenter=""
 	authors="onewth"
@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
+	ms.service="cognitive-services"
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -157,9 +157,9 @@ Die Erkennung von Stimmung, Schlüsselwörtern und Sprachen im Text ist einfach.
 
 ## Aufgabe 3: Erkennen von Themen in einem Textcorpus ####
 
-Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z. B. Kritiken und Feedback von Benutzern.
+Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z. B. Kritiken und Feedback von Benutzern.
 
-Für diese API müssen **mindestens 100 Datensätze** übermittelt werden, sie kann jedoch Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als 3 Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB.
+Für diese API müssen **mindestens 100 Datensätze** übermittelt werden, sie kann jedoch Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als 3 Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB.
 
 Es gibt zwei zusätzliche **optionale** Eingabeparameter, die zur Verbesserung der Ergebnisqualität beitragen können:
 
@@ -240,4 +240,4 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 
 Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen für die Nutzung eines Tools wie z. B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

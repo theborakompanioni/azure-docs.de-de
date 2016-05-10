@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/03/2016"
+   ms.date="04/18/2016"
    ms.author="kdotchko"/>
 
 # Unterstützung zusätzlicher Protokolle für IoT Hub
@@ -39,4 +39,4 @@ Weitere Informationen über das Azure IoT-Protokollgateway sowie dessen Verwendu
 * [Repository für das Azure IoT-Protokollgateway auf GitHub](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 * [Entwicklungsleitfaden für das Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

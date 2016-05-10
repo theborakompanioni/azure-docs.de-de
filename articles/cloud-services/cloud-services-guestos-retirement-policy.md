@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="12/07/2015"
+   ms.date="04/19/2016"
    ms.author="yuemlu"/>
 
 # Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme
@@ -90,4 +90,4 @@ Wenn die Architektur Ihrer Webanwendung eine tiefer gehende Abhängigkeit vom zu
 ## Nächste Schritte
 Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

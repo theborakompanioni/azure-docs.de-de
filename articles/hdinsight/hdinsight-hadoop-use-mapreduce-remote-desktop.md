@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/05/2016"
+   ms.date="04/22/2016"
    ms.author="larryfr"/>
 
 # Verwenden von MapReduce in Hadoop in HDInsight über den Remotedesktop
@@ -47,7 +47,7 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
 
 		hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-	Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** im aktuellen Verzeichnis enthalten ist. Als Eingabe wird das Dokument ****wasb://example/data/gutenberg/davinci.txt** verwendet, und die Ausgabe wird unter ****wasb:///example/data/WordCountOutput** gespeichert.
+	Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** im aktuellen Verzeichnis enthalten ist. Als Eingabe wird das Dokument **wasb://example/data/gutenberg/davinci.txt** verwendet, und die Ausgabe wird unter **wasb:///example/data/WordCountOutput** gespeichert.
 
 	> [AZURE.NOTE] Weitere Informationen über diesen MapReduce-Auftrag und die Beispieldaten finden Sie unter <a href="hdinsight-use-mapreduce.md">Verwenden von MapReduce in HDInsight Hadoop</a>.
 
@@ -58,7 +58,7 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
 		File Output Format Counters
         Bytes Written=337623
 
-3. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter ****wasb://example/data/WordCountOutput** gespeichert sind:
+3. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter **wasb://example/data/WordCountOutput** gespeichert sind:
 
 		hadoop fs -ls wasb:///example/data/WordCountOutput
 
@@ -70,7 +70,7 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
 
 		hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-	Dadurch wird eine Liste der Wörter, die in der Datei ****wasb://example/data/gutenberg/davinci.txt** enthalten sind, sowie die Anzahl der Vorkommen der einzelnen Wörter angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
+	Dadurch wird eine Liste der Wörter, die in der Datei **wasb://example/data/gutenberg/davinci.txt** enthalten sind, sowie die Anzahl der Vorkommen der einzelnen Wörter angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
 
 		wreathed        3
 		wreathing       1
@@ -96,4 +96,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

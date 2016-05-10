@@ -75,7 +75,7 @@ Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung 
 
 Der nachstehende Cmdlet-Ausschnitt veranschaulicht das Erstellen einer Autorisierung.
 
-	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
+	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 
@@ -106,7 +106,7 @@ Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine besti
 Mit dem folgenden Cmdlet kann der Verbindungsbesitzer Autorisierungen hinzufügen.
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization2"
+	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization2"
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 	
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -117,7 +117,7 @@ Mit dem folgenden Cmdlet kann der Verbindungsbesitzer Autorisierungen hinzufüge
 
 Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung Autorisierungen für einen Benutzer widerrufen oder löschen.
 
-	Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -Circuit $circuit
+	Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit	
 
 ### Aktionen als Verbindungsbenutzer
@@ -142,4 +142,4 @@ Sie können eine Autorisierung durch das Löschen der Verbindung freigeben, die 
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

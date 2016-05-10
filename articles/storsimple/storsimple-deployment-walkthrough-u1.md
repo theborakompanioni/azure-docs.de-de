@@ -285,9 +285,9 @@ Installations- und Konfigurationsanweisungen f체r MPIO auf einem StorSimple-Ger�
 
 ## N채chste Schritte
 
-- Konfigurieren eines [virtuellen Ger채ts](storsimple-virtual-device.md)
+- Konfigurieren eines [virtuellen Ger채ts](storsimple-virtual-device-u2.md)
 
 - Verwenden des [StorSimple-Manager-Diensts](storsimple-manager-service-administration.md) f체r das Verwalten Ihres StorSimple-Ger채ts
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

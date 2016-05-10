@@ -185,7 +185,7 @@ Das Bedingungs- und das Aktionsfeld bieten Intellisense, damit Sie schnell eine 
 ![Alt text][9]
 
 ##Explizite Vorwärtsverkettung
-BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:
+BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:  
    1.	update <vocabulary definition> – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.  
    2.	Halt – Dieses Schlüsselwort beendet alle Regelausführungen.
 
@@ -253,4 +253,4 @@ Einer der Hauptvorteile der Verwendung von Geschäftsregeln ist, dass Änderunge
 [10]: ./media/app-service-logic-use-biztalk-rules/APIDef.PNG
 [11]: ./media/app-service-logic-use-biztalk-rules/PublicAnon.PNG
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0420_2016-->
