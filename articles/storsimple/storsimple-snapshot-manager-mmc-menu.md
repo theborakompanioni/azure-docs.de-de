@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/25/2016"
    ms.author="v-sharos" />
 
 # Verwenden der MMC-Menüaktionen im StorSimple Snapshot Manager
@@ -27,9 +27,7 @@ In StorSimple Snapshot Manager werden die folgenden Aktionen in allen Aktionsmen
 - Liste exportieren 
 - Hilfe 
 
-Diese Aktionen sind Teil der Microsoft Management Console (MMC) und nicht spezifisch für StorSimple Snapshot Manager.
-
-In diesem Lernprogramm werden diese Aktionen und ihre Verwendung in StorSimple Snapshot Manager beschrieben.
+Diese Aktionen sind Teil der Microsoft Management Console (MMC) und nicht spezifisch für StorSimple Snapshot Manager. In diesem Lernprogramm werden diese Aktionen und ihre Verwendung in StorSimple Snapshot Manager beschrieben.
 
 ## Ansicht
 
@@ -128,4 +126,4 @@ Mit der Aktion **Liste exportieren** können Sie eine Liste in einer Datei mit k
 - Weitere Informationen über die [Benutzeroberfläche des StorSimple Snapshot Managers](storsimple-use-snapshot-manager.md).
 - Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0427_2016-->

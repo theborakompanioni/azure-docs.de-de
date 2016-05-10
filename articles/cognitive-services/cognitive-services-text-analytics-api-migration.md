@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
+	ms.service="cognitive-services"
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -26,7 +26,7 @@ Falls Sie die API nicht verwendet haben und weitere Informationen benötigen, k�
 
 Zuerst müssen Sie aus dem **Azure-Portal** einen neuen API-Schlüssel abrufen:
 
-1. Navigieren Sie über den [Cortana Analytics-Katalog](//gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2) zum Text Analytics-Dienst. Hier finden Sie auch Links zur Dokumentation und zu Codebeispielen.
+1. Navigieren Sie über den [Cortana Analytics-Katalog](//gallery.cortanaintelligence.com/MachineLearningAPI/Text-Analytics-2) zum Text Analytics-Dienst. Hier finden Sie auch Links zur Dokumentation und zu Codebeispielen.
 
 1. Klicken Sie auf **Registrieren**. Mit diesem Link gelangen Sie zum Azure-Verwaltungsportal, in dem Sie sich für den Dienst registrieren können.
 
@@ -38,12 +38,12 @@ Zuerst müssen Sie aus dem **Azure-Portal** einen neuen API-Schlüssel abrufen:
 
 Aktualisieren Sie die übermittelten Headerwerte wie unten dargestellt. Beachten Sie, dass der Kontoschlüssel nicht mehr codiert ist.
 
-**Version 1**
+**Version 1**
 
     Authorization: Basic base64encode(<your Data Market account key>)
     Accept: application/json
 
-**Version 2**
+**Version 2**
 
     Content-Type: application/json
     Accept: application/json
@@ -52,11 +52,11 @@ Aktualisieren Sie die übermittelten Headerwerte wie unten dargestellt. Beachten
 
 ### Teil 3: Aktualisieren der Basis-URL ###
 
-**Version 1**
+**Version 1**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/
 
-**Version 2**
+**Version 2**
 
     https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/
 
@@ -88,7 +88,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       ]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents": [
@@ -101,7 +101,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
 
 #### Ausgabe für Stimmung ####
 
-**Version 1**
+**Version 1**
 
     {
       "SentimentBatch":[{
@@ -114,7 +114,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents":[{
@@ -129,7 +129,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
 
 #### Ausgabe für Schlüsselwörter ####
 
-**Version 1**
+**Version 1**
 
     {
       "KeyPhrasesBatch":[{
@@ -142,7 +142,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents":[{
@@ -158,7 +158,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
 #### Ausgabe für Sprachen ####
 
 
-**Version 1**
+**Version 1**
 
     {
       "LanguageBatch":[{
@@ -175,7 +175,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents":[{
@@ -204,7 +204,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
 
 #### Eingabeformate ####
 
-**Version 1**
+**Version 1**
 
     {
       "StopWords": [
@@ -221,7 +221,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       ]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "stopWords": [
@@ -308,4 +308,4 @@ Nachdem die Themen-API den Vorgang abgeschlossen hat, wird der Status `succeeded
 
 Jetzt sollte alles startklar sein! Testen Sie Ihren Code mit einer kleinen Stichprobe, um sicherzustellen, dass Sie die Daten erfolgreich verarbeiten können.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

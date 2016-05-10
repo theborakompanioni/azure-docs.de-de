@@ -301,7 +301,8 @@ Die Daten der Tokenanforderung zur Gewährung von Clientanmeldeinformationen:
 |----|----
 | grant\_type | **client\_credentials**
 | client\_id | Client-ID der Anwendung
-| resource | URL-codierter Bezeichner der Ressource, für die das Zugriffstoken angefordert wird. In diesem Fall ist der Bezeichner die Azure AD Graph-API: **https://graph.windows.net/** | client\_secret oder client\_assertion\_type und client\_assertion | Wenn Ihre Anwendung ein Kennwort verwendet, verwenden Sie „client\_secret“. Wenn Ihre Anwendung ein Zertifikat verwendet, verwenden Sie „client\_assertion“.
+| resource | URL-codierter Bezeichner der Ressource, für die das Zugriffstoken angefordert wird. In diesem Fall ist der Bezeichner die Azure AD Graph-API: **https://graph.windows.net/**
+| client\_secret oder client\_assertion\_type und client\_assertion | Wenn Ihre Anwendung ein Kennwort verwendet, verwenden Sie „client\_secret“. Wenn Ihre Anwendung ein Zertifikat verwendet, verwenden Sie „client\_assertion“.
 
 Beispielanforderung für ein Token zur Gewährung von Clientanmeldeinformationen:
 
@@ -443,4 +444,4 @@ Die [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgi
 
 Jetzt können Benutzer Ihre Anwendung verwenden, um problemlos eine Verbindung mit ihren Azure-Abonnements herzustellen und sie zu verwalten.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0420_2016-->

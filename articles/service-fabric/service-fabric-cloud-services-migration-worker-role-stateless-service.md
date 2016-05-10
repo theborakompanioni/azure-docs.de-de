@@ -277,4 +277,4 @@ Lesen Sie die weiteren Informationen zu Service Fabric Reliable Services und den
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

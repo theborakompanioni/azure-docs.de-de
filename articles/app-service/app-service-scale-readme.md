@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="04/25/2016"
 	ms.author="byvinyal"/>
 
 # Azure App Service: Skalierung von App Service-Anwendungen
@@ -38,4 +38,4 @@ Dieser Abschnitt hilft Ihnen dabei, all diese Faktoren zu verstehen und eine Str
 
 [AZURE.INCLUDE [app-service-blueprint-scaling-app-service-applications](../../includes/app-service-blueprint-scaling-app-service-applications.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

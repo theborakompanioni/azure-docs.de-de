@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/01/2016" 
 	ms.author="spelluru"/>
 
 
@@ -38,7 +38,7 @@ In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus:
 2. [Erstellen eines mit SQL Server verknüpften Diensts](#create-sql-server-linked-service). In diesem Schritt erstellen Sie zuerst eine Datenbank und eine Tabelle auf dem lokalen SQL Server-Computer und dann den verknüpften Dienst: **OnPremSqlLinkedService**.
 3. [Erstellen eines Datasets und einer Pipeline](#create-dataset-and-pipeline). In diesem Schritt erstellen Sie die Tabelle **MarketingCampaignEffectivenessOnPremSQLTable** und die Pipeline **EgressDataToOnPremPipeline**. 
 
-4. [Überwachen der Pipeline](#monitor-pipeline). In diesem Schritt überwachen Sie die Pipelines, Tabellen und Datenslices mithilfe des klassischen Azure-Portals.
+4. [Überwachen der Pipeline](#monitor-pipeline). In diesem Schritt überwachen Sie die Pipelines, Tabellen und Datenslices mithilfe des Azure-Portals.
 
 
 ## Erstellen eines Datenverwaltungsgateways
@@ -170,4 +170,4 @@ Glückwunsch! Sie haben die exemplarische Vorgehensweise zur Verwendung Ihrer lo
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

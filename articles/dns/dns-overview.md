@@ -3,8 +3,8 @@
    description="Übersicht über die Azure DNS-Hostingdienste in Microsoft Azure und Hosten der Domäne in Microsoft Azure" 
    services="dns" 
    documentationCenter="na" 
-   authors="joaoma" 
-   manager="adinah" 
+   authors="cherylmc" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -14,9 +14,9 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
    ms.date="02/09/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
-# Azure DNS – Übersicht
+# Azure DNS – Übersicht
 
 Hinter jeder Website und jedem Dienst im Internet steht eine IP-Adresse. www.microsoft.com verwendet beispielsweise die IP-Adresse 134.170.185.46. Das Domain Name System, oder DNS, ist für die Übersetzung (oder Auflösung) des Website- oder Dienstnamens in die IP-Adresse verantwortlich.
 
@@ -44,4 +44,4 @@ Azure DNS unterstützt derzeit nicht den Kauf von Domänennamen. Um Domänen zu 
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

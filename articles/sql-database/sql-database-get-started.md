@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Tutorial zu SQL-Datenbank: Erstellen einer Datenbank | Microsoft Azure"
 	description="Hier erfahren Sie, wie Sie einen logischen SQL-Datenbankserver, eine Firewallregel auf Serverebene, eine SQL-Datenbank und Beispieldaten einrichten, eine Verbindung mit Clienttools herstellen sowie Benutzer und eine Firewallregel auf Datenbankebene konfigurieren."
-	keywords="Tutorial zu SQL-Datenbank, Erstellen einer SQL­Datenbank"
+	keywords="Tutorial zu SQL-Datenbank, Erstellen einer SQL-Datenbank"
 	services="sql-database"
 	documentationCenter=""
 	authors="carlrabeler"
@@ -50,7 +50,7 @@ Nachdem Sie dieses Tutorial zu SQL-Datenbank ausgeführt und eine Datenbank mit 
 
 - Wenn Sie mit Excel vertraut sind, informieren Sie sich über das [Herstellen von Verbindungen mit SQL-Datenbank mit Excel](sql-database-connect-excel.md).
 
-- Wenn Sie mit der Programmierung beginnen möchten, finden Sie weitere Informationen unter [Herstellen von Verbindungen mit einer SQL-Datenbank und das Abfragen dieser mit C#](sql-database-connect-query.md) und [Verwenden von SQL-Datenbank mit .NET (C#)](sql-database-develop-dotnet-simple.md). Unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](sql-database-develop-quick-start-client-code-samples.md) finden Sie auch Beispiele und Anleitungen zu Node.js, Python, Ruby, Java, PHP und C++ neben C#.
+- Wenn Sie mit dem Programmieren loslegen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md) Ihre Programmiersprache aus.
 
 - Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, finden Sie unter [Migrieren von Datenbanken zu Azure SQL-Datenbank](sql-database-cloud-migrate.md) weitere Informationen.
 
@@ -59,4 +59,4 @@ Nachdem Sie dieses Tutorial zu SQL-Datenbank ausgeführt und eine Datenbank mit 
 
 [Übersicht über die SQL-Datenbank](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

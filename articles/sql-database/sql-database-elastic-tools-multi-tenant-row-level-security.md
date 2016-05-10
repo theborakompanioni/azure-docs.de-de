@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2016" 
+	ms.date="04/25/2016" 
 	ms.author="thmullan;torsteng;sidneyh" />
 
 # Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit 
@@ -312,4 +312,4 @@ Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum hor
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

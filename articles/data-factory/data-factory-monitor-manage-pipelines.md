@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Überwachen und Verwalten von Azure Data Factory-Pipelines" 
-	description="Erfahren Sie, wie Sie von Ihnen erstellte Azure Data Factorys und Pipelines mithilfe des klassischen Azure-Portals und Azure PowerShell überwachen und verwalten." 
+	description="Erfahren Sie, wie Sie von Ihnen erstellte Azure Data Factorys und Pipelines mithilfe des Azure-Portals und Azure PowerShell überwachen und verwalten." 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/04/2016" 
+	ms.date="03/28/2016" 
 	ms.author="spelluru"/>
 
 
@@ -47,7 +47,7 @@ Klicken Sie oben auf der Data Factory-Startseite auf **Diagramm**, um die Diagra
 
 ![Diagrammansicht](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-Sie können die Ansicht vergrößern, verkleinern, auf 100 % anpassen, das Layout des Diagramms sperren, Pipelines und Tabellen automatisch positionieren und Informationen zur Datenherkunft anzeigen (d. h. vor- und nachgelagerte Elemente ausgewählter Elemente anzeigen).
+Sie können die Ansicht vergrößern, verkleinern, auf 100 % anpassen, das Layout des Diagramms sperren, Pipelines und Tabellen automatisch positionieren und Informationen zur Datenherkunft anzeigen (d. h. vor- und nachgelagerte Elemente ausgewählter Elemente anzeigen).
  
 
 ### Aktivitäten innerhalb einer Pipeline 
@@ -68,7 +68,7 @@ Im folgenden Beispiel wurde die **BlobPartitionHiveActivity** erfolgreich ausgef
 
 ![Status der Pipeline](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
-Durch Doppelklicken auf **PartitionedProductsUsageTable** in der Diagrammansicht werden alle Slices gezeigt, die innerhalb einer Pipeline von verschiedenen Aktivitätsausführungen erzeugt wurden. Sie sehen, dass die **BlobPartitionHiveActivity** in den letzten 8 Monaten jeden Monat erfolgreich ausgeführt wurde und Slices mit dem Status **Ready** erzeugt hat.
+Durch Doppelklicken auf **PartitionedProductsUsageTable** in der Diagrammansicht werden alle Slices gezeigt, die innerhalb einer Pipeline von verschiedenen Aktivitätsausführungen erzeugt wurden. Sie sehen, dass die **BlobPartitionHiveActivity** in den letzten 8 Monaten jeden Monat erfolgreich ausgeführt wurde und Slices mit dem Status **Ready** erzeugt hat.
 
 Die Datasetslices in Data Factory können einen der folgenden Status haben:
 
@@ -165,7 +165,7 @@ Sie können Ihre Pipelines mit Azure PowerShell verwalten. Sie können z. B. mit
 ### Anhalten und Fortsetzen von Pipelines
 Sie können Pipelines mit dem PowerShell-Cmdlet **Suspend-AzureRmDataFactoryPipeline** anhalten. Dies ist hilfreich, wenn Sie ein Problem in Ihren Daten festgestellt haben und die Pipelines nicht weiter zum Verarbeiten von Daten ausführen möchten, bis das Problem behoben ist.
 
-Im nachstehende Screenshot wurde z. B. ein Problem in der **PartitionProductsUsagePipeline** in der Data Factory **productrecgamalbox1dev** festgestellt, weshalb die Pipeline angehalten werden soll.
+Im nachstehende Screenshot wurde z. B. ein Problem in der **PartitionProductsUsagePipeline** in der Data Factory **productrecgamalbox1dev** festgestellt, weshalb die Pipeline angehalten werden soll.
 
 ![Pipeline, die angehalten werden soll](./media/data-factory-monitor-manage-pipelines/pipeline-to-be-suspended.png)
 
@@ -187,12 +187,12 @@ Beispiel:
 
 
 ## Debuggen von Pipelines
-Azure Data Factory bietet über das klassische Azure-Portal und Azure PowerShell umfangreiche Funktionen zum Debuggen von Problemen bei Pipelines.
+Azure Data Factory bietet über das Azure-Portal und Azure PowerShell umfangreiche Funktionen zum Debuggen von Problemen bei Pipelines.
 
 ### Suchen von Fehlern in einer Pipeline
 Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat das von der Pipeline erstellte Dataset aufgrund des Fehlers den Status "Fehler". Sie können Fehler in Azure Data Factory mit den folgenden Verfahren debuggen und beheben.
 
-#### Debuggen eines Fehlers im klassischen Azure-Portal:
+#### Debuggen eines Fehlers im Azure-Portal:
 
 1.	Klicken Sie auf der Startseite der Data Factory auf der Kachel **Datasets** auf **Mit Fehlern**.
 	
@@ -265,13 +265,13 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
 
 ## Wiederholen von Fehlern in einer Pipeline
 
-### Verwendung des klassischen Azure-Portals
+### Verwenden des Azure-Portals
 
 Nachdem Sie eine Problembehandlung und ein Debugging für Fehler in einer Pipeline ausgeführt haben, können Sie Fehler wiederholen, indem Sie zum fehlerhaften Slice navigieren und dann auf der Befehlsleiste auf die Schaltfläche **Ausführen** klicken.
 
 ![Wiederholen eines fehlerhaften Slices](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
-Für den Fall, dass der Slice die Überprüfung aufgrund eines Richtlinienfehlers (z. B. Daten nicht verfügbar) nicht besteht, können Sie den Fehler korrigieren und die Überprüfung erneut ausführen, indem Sie auf der Befehlsleiste auf **Überprüfen** klicken. ![Beheben von Fehlern und Überprüfen](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
+Für den Fall, dass der Slice die Überprüfung aufgrund eines Richtlinienfehlers (z. B. Daten nicht verfügbar) nicht besteht, können Sie den Fehler korrigieren und die Überprüfung erneut ausführen, indem Sie auf der Befehlsleiste auf **Überprüfen** klicken. ![Beheben von Fehlern und Überprüfen](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### Verwenden von Azure PowerShell
 
@@ -581,8 +581,8 @@ Sie können eine Data Factory mithilfe der Schaltfläche **Verschieben** in der 
 
 ![Data Factory verschieben](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
 
-Sie können auch alle zugehörigen Ressourcen (z. B. mit der Data Factory verknüpfte Warnungen) zusammen mit der Data Factory verschieben.
+Sie können auch alle zugehörigen Ressourcen (z. B. mit der Data Factory verknüpfte Warnungen) zusammen mit der Data Factory verschieben.
 
 ![Dialogfeld „Ressourcen verschieben“](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

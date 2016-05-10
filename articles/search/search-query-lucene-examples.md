@@ -15,30 +15,38 @@
     ms.workload="search"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.date="03/25/2016"
+    ms.date="04/22/2016"
     ms.author="liamca"
 />
 
 # Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search
 
-Eine Alternative zur [Standardsyntax für einfache Abfragen](https://msdn.microsoft.com/library/azure/dn798920.aspx) besteht darin, den [Lucene-Abfrageparser in Azure Search](https://msdn.microsoft.com/library/azure/mt589323.aspx) zu verwenden. Der Lucene-Abfrageparser unterstützt komplexere Abfragekonstrukte, beispielsweise feldbezogene Abfragen, Fuzzysuche, NEAR-Suche, Begriffsverstärkung (Term Boosting) und die Suche nach regulären Ausdrücken.
+Beim Erstellen von Abfragen für Azure Search können Sie entweder die standardmäßige [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) oder alternativ dazu den [Lucene-Abfrageparser in Azure Search](https://msdn.microsoft.com/library/azure/mt589323.aspx) verwenden. Der Lucene-Abfrageparser unterstützt komplexere Abfragekonstrukte, beispielsweise feldbezogene Abfragen, Fuzzysuche, NEAR-Suche, Begriffsverstärkung (Term Boosting) und die Suche nach regulären Ausdrücken.
 
-In diesem Artikel können Sie Beispiele durchlaufen, in denen die Abfragesyntax und die Ergebnisse nebeneinander dargestellt werden. Die Beispiele werden für einen vorab geladenen Suchindex in [JSFiddle](https://jsfiddle.net/) ausgeführt, einem Online-Code-Editor zum Testen von Skripts und HTML.
+In diesem Artikel können Sie Beispiele durchlaufen, in denen die Abfragesyntax von Lucene und die Ergebnisse nebeneinander dargestellt werden. Die Beispiele werden für einen vorab geladenen Suchindex in [JSFiddle](https://jsfiddle.net/) ausgeführt, einem Online-Code-Editor zum Testen von Skripts und HTML.
 
 Klicken Sie mit der rechten Maustaste auf die URLs im Abfragebeispiel, um JSFiddle in einem separaten Browserfenster zu öffnen.
 
 > [AZURE.NOTE] Der in den folgenden Beispielen verwendete Suchindex besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://nycopendata.socrata.com/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index gilt für einen von Microsoft bereitgestellten Sandkastendienst. Sie benötigen weder ein Azure-Abonnement noch Azure Search, um diese Abfragen auszuprobieren.
 
-## Festlegen des Lucene-Abfrageparsers für die Suchanforderung
+## Anzeigen der Beispiele in diesem Artikel
 
-Geben Sie mithilfe des Suchparameters **queryType** den Lucene-Abfrageparser an. Der **queryType** wird bei jeder Anforderung angegeben. Gültige Werte sind **simple**|**full**, der Standardwert lautet **simple**. Ausführliche Informationen zur Angabe von Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](https://msdn.microsoft.com/library/azure/dn798927.aspx).
+Alle Beispiele in diesem Artikel geben den Lucene-Abfrageparser über den Suchparameter **queryType** an. Wenn Sie den Lucene-Abfrageparser in Ihrem Code verwenden, geben Sie den **queryType** bei jeder Anforderung an. Gültige Werte sind **simple**|**full**, wobei **simple** der Standardwert und **full** der Wert für den Lucene-Abfrageparser ist. Ausführliche Informationen zur Angabe von Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](https://msdn.microsoft.com/library/azure/dn798927.aspx).
 
-**Beispiel 1**: Klicken Sie mit der rechten Maustaste auf den folgenden Abfrageausschnitt, um diesen auf einer neuen Browserseite zu öffnen, auf der JSFiddle geladen und die Abfrage ausgeführt wird. Diese Abfrage gibt Dokumente aus unserem Stellenangebotsindex zurück (der in einem Sandkastendienst geladen ist):
+**Beispiel 1**: Klicken Sie mit der rechten Maustaste auf den folgenden Abfrageausschnitt, um diesen auf einer neuen Browserseite zu öffnen, auf der JSFiddle geladen und die Abfrage ausgeführt wird:
 - [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
 
-## Feldbezogener Abfragevorgang
+Diese Abfrage gibt Dokumente aus unserem Stellenangebotsindex zurück (der in einem Sandkastendienst geladen ist).
 
-In den folgenden Beispielen geben Sie ein Konstrukt aus **Feldname:Suchbegriff** an, um einen feldbezogenen Abfragevorgang zu definieren. Dabei besteht das Feld aus einem einzelnen Wort, und der Suchbegriff ist ebenfalls ein einzelnes Wort oder ein Ausdruck, optional mit booleschen Operatoren. Beispiele hierfür sind:
+Im neuen Browserfenster sehen Sie nebeneinander die JavaScript-Quelle und die HTML-Ausgabe. Das Skript verweist auf eine Abfrage, die von den Beispiel-URLs in diesem Artikel bereitgestellt wird. In **Beispiel 1** lautet die zugrunde liegende Abfrage folgendermaßen:
+
+    http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
+
+Beachten Sie, dass die Abfrage einen vorkonfigurierten Azure Search-Index mit der Bezeichnung „nycjobs“ verwendet. Der Parameter **searchFields** begrenzt die Suche auf das Feld mit den Berufsbezeichnungen. Der **queryType** ist auf **full** festgelegt, wodurch Azure Search angewiesen wird, für diese Abfrage den Lucene-Abfrageparser zu verwenden.
+
+### Feldbezogener Abfragevorgang
+
+Sie können die Beispiele in diesem Artikel ändern, indem Sie ein Konstrukt aus **Feldname:Suchbegriff** angeben, um einen feldbezogenen Abfragevorgang zu definieren. Dabei besteht das Feld aus einem einzelnen Wort, und der Suchbegriff ist ebenfalls ein einzelnes Wort oder ein Ausdruck, optional mit booleschen Operatoren. Beispiele hierfür sind:
 
 - business\_title:senior NOT junior
 - state:"New York" AND "New Jersey"
@@ -49,7 +57,7 @@ Das in **Feldname:Suchbegriff** angegebene Feld muss durchsuchbar sein. Einzelhe
 
 ## Fuzzysuche
 
-Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basieren Fuzzysuchen auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
+Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
 Verwenden Sie für eine Fuzzysuche das Tildesymbol „~“ am Ende eines einzelnen Worts mit einem optionalen Parameter, einem Wert zwischen 0 und 2, der die Editierdistanz angibt. Beispielsweise würden bei „blue~“ oder „blue~1“ die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
@@ -77,7 +85,7 @@ NEAR-Suchen werden verwendet, um Begriffe zu suchen, die in einem Dokument nahe 
 
 Die Begriffsverstärkung (Term Boosting) bezieht sich auf das Höherbewerten eines Dokuments, wenn es den verstärkten Begriff enthält, im Verhältnis zu Dokumenten, die den Begriff nicht enthalten. Dies unterscheidet sich insofern von Bewertungsprofilen, als dass bei Bewertungsprofilen bestimmte Felder statt bestimmter Begriffe verstärkt werden. Im folgenden Beispiel werden die Unterschiede veranschaulicht.
 
-Betrachten Sie ein Bewertungsprofil, das Übereinstimmungen in einem bestimmten Feld verstärkt, beispielsweise **genre** im musicstoreindex-Beispiel. Mit der Begriffsverstärkung könnten Sie bestimmte Suchbegriffe noch höher bewerten als andere. Zum Beispiel werden mit „rock^2 elektronic“ Dokumente, die die Suchbegriffe im Feld **genre** enthalten, höher eingestuft als andere durchsuchbare Felder im Index. Darüber hinaus werden Dokumente, die den Suchbegriff „Rock“ enthalten, höher eingestuft als der andere Suchbegriff „electronic“ – aufgrund des Werts (2) für die Begriffsverstärkung.
+Betrachten Sie ein Bewertungsprofil, das Übereinstimmungen in einem bestimmten Feld verstärkt, beispielsweise **genre** im musicstoreindex-Beispiel. Mit der Begriffsverstärkung könnten Sie bestimmte Suchbegriffe noch höher bewerten als andere. Zum Beispiel werden mit „rock^2 electronic“ Dokumente, die die Suchbegriffe im Feld **genre** enthalten, höher eingestuft als andere durchsuchbare Felder im Index. Darüber hinaus werden Dokumente, die den Suchbegriff „Rock“ enthalten, höher eingestuft als der andere Suchbegriff „electronic“ – aufgrund des Werts (2) für die Begriffsverstärkung.
 
 Verwenden Sie zum Verstärken eines Begriffs das Caretzeichen „^“ mit einem Verstärkungsfaktor (einer Zahl) am Ende des Begriffs, nach dem Sie suchen. Je höher der Verstärkungsfaktor, desto relevanter wird der Begriff im Verhältnis zu anderen Suchbegriffen. Der Standardverstärkungsfaktor ist 1. Der Verstärkungsfaktor muss zwar positiv, kann jedoch kleiner als 1 sein (z. B. „0.2“).
 
@@ -121,4 +129,4 @@ Versuchen Sie, den Lucene-Abfrageparser in Ihrem Code anzugeben. Unter den folge
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

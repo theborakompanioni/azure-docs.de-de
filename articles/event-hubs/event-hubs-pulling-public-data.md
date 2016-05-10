@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Übertragen öffentlicher Daten in Azure Event Hubs mithilfe von Pull | Microsoft Azure"
-   description="Übersicht über den Event Hubs-Import aus einem Webbeispiel"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="spyrossak"
-   manager="timlt"
-   editor=""/>
+    pageTitle="Übertragen öffentlicher Daten in Azure Event Hubs mithilfe von Pull | Microsoft Azure"
+    description="Übersicht über den Event Hubs-Import aus einem Webbeispiel"
+    services="event-hubs"
+    documentationCenter="na"
+    authors="spyrossak"
+    manager="timlt"
+    editor=""/>
 
 <tags 
-   ms.service="event-hubs"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="02/05/2016"
-   ms.author="spyros;sethm" />
+    ms.service="event-hubs"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="04/26/2016"
+    ms.author="spyros;sethm" />
 
 # Übertragen öffentlicher Daten in Azure Event Hubs mithilfe von Pull
 
@@ -47,4 +47,4 @@ Zum Bereitstellen der Lösung klonen Sie die Anwendung [GenericWebToEH](https://
 
 Weitere Event Hubs-Beispiele finden Sie im [Azure-Beispielkatalog](https://azure.microsoft.com/documentation/samples/?service=event-hubs) und unter [MSDN](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -23,7 +23,7 @@
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> Informationen für die entsprechende Mobile Apps-Version dieses Themas finden Sie unter [Erstellen einer iOS-App in Azure Mobile Apps](../app-service-mobile/app-service-mobile-android-get-started.md).
+> Informationen zur entsprechenden Mobile Apps-Version dieses Themas finden Sie unter [Erstellen einer iOS-App in Azure Mobile Apps](../app-service-mobile/app-service-mobile-ios-get-started.md).
 
 In diesem Lernprogramm erfahren Sie, wie Sie mit den Azure Mobile Services einen cloudbasierten Back-End-Dienst zu einer iOS-App hinzufügen können.
 
@@ -92,4 +92,4 @@ Erfahren Sie, wie Sie weitere wichtige Aufgaben in Mobile Services durchführen:
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET-Back-End-Version]: mobile-services-dotnet-backend-ios-get-started.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

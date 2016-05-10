@@ -1232,7 +1232,9 @@ GROUP BY p.[BrandName]
 Genießen Sie die Datenabfrage mit SQL Data Warehouse.
 
 ## Nächste Schritte
-Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][]. Weitere Informationen zum Suchen nach Columnstore-Indizes finden Sie unter [Manage Columnstore Indexes][] \(Verwalten von Columnstore-Indizes).
+Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][]. 
+
+Weitere Informationen zum Suchen nach Columnstore-Indizes finden Sie unter [manage columnstore indexes][].
 
 Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][].
 
@@ -1241,7 +1243,7 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 <!--Article references-->
 [Laden von Daten in SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
 [SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
-[Manage Columnstore Indexes][] (Verwalten von Columnstore-Indizes):
+[manage columnstore indexes]:
 [Statistiken]: ./sql-data-warehouse-develop-statistics.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [Bezeichnungen]: ./sql-data-warehouse-develop-label.md
@@ -1253,4 +1255,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0420_2016-->
+<!-----HONumber=AcomDC_0420_2016-->

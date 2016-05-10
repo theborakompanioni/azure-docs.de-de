@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="04/25/2016"
 	ms.author="thmullan"/>
 
 # Tutorial: Web-App mit mehrinstanzfähiger Datenbank und Verwendung von Entity Framework und Sicherheit auf Zeilenebene
@@ -250,4 +250,4 @@ In diesem Tutorial haben wir in Bezug auf die Möglichkeiten von RLS nur an der 
 
 Außerdem arbeiten wir daran, RLS auch über diese Möglichkeiten hinaus noch besser zu machen. Bitte teilen Sie uns im Kommentarbereich mit, wenn Sie Fragen oder Ideen haben oder Funktionen vorschlagen möchten. Wir schätzen Ihr Feedback!
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

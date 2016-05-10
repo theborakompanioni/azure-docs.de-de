@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
+   ms.date="04/05/2016"
    ms.author="joaoma" />
 
 
@@ -35,7 +35,7 @@ Der in SuccessFailCount festgelegte Wert für Timeout und Häufigkeit legt fest,
 Die Konfiguration von Tests muss für alle Instanzen mit Lastenausgleich für einen Endpunkt (mit anderen Worten: eine Gruppe mit Lastenausgleich) identisch sein. Das heißt, dass Sie nicht für jede Rolleninstanz oder VM im selben gehosteten Dienst für eine bestimmte Endpunktkombination eine unterschiedliche Testkonfiguration wählen können. Beispielsweise muss jede Instanz identische lokale Ports und Timeouts aufweisen.
 
 
->[AZURE.IMPORTANT] Ein Load Balancer-Test verwendet die IP-Adresse 168.63.129.16. Diese öffentliche IP-Adresse ermöglicht die Kommunikation mit internen Plattformressourcen für das Azure Virtual Network-Szenario mit eigener IP-Adresse. Die virtuelle öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen verwendet und nicht geändert. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien zulassen. Dies dürfte kein Sicherheitsrisiko darstellen, da nur die interne Azure-Plattform eine Nachricht von dieser Adresse senden kann. Andernfalls ist in einer Vielzahl von Szenarien ein unerwartetes Verhalten die Folge, wie z. B. beim Konfigurieren desselben IP-Adressbereichs von 168.63.129.16 mit duplizierten IP-Adressen.
+>[AZURE.IMPORTANT] Ein Load Balancer-Test verwendet die IP-Adresse 168.63.129.16. Diese öffentliche IP-Adresse ermöglicht die Kommunikation mit internen Plattformressourcen für das Azure Virtual Network-Szenario mit eigener IP-Adresse. Die virtuelle öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen verwendet und nicht geändert. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien zulassen. Dies dürfte kein Sicherheitsrisiko darstellen, da nur die interne Azure-Plattform eine Nachricht von dieser Adresse senden kann. Andernfalls ist in einer Vielzahl von Szenarien ein unerwartetes Verhalten die Folge, wie z. B. beim Konfigurieren desselben IP-Adressbereichs von 168.63.129.16 mit duplizierten IP-Adressen.
 
 
 ## Weitere Informationen über die Testtypen
@@ -93,4 +93,4 @@ TCP- und HTTP-Tests werden als fehlerfrei eingestuft und markieren die Rollenins
 
 Mit der [Protokollanalyse für den Load Balancer](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Load Balancers bereitzustellen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -136,7 +136,7 @@ Virtuelle Computer, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstell
 	$locName="West US"
 	$frontendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix 10.0.1.0/24
 	$backendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 10.0.2.0/24
-	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet,$backendSubnet
+	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -SubnetId $frontendSubnet,$backendSubnet
 
 Mit diesen Befehlen können Sie die vorhandenen virtuellen Netzwerke auflisten.
 
@@ -220,7 +220,7 @@ Kopieren Sie diese Zeilen in den Befehlssatz, und geben Sie die erforderlichen N
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$natRuleIndex=<index of the inbound NAT rule, starting at 0>
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
 
 Die „$nicName“-Zeichenfolge muss für die Ressourcengruppe eindeutig sein. Eine bewährte Methode ist die Integration des Namens des virtuellen Computers in der Zeichenfolge, wie z. B. "LOB07-NIC".
 
@@ -239,7 +239,7 @@ Kopieren Sie diese Zeilen in den Befehlssatz, und geben Sie die erforderlichen N
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
 
 Als Nächstes erstellen Sie ein lokales Objekt für den virtuellen Computer und fügen es optional einer Verfügbarkeitsgruppe hinzu. Kopieren Sie eine der beiden folgenden Optionen in den Befehlssatz, und geben Sie den Namen, die Größe und den Verfügbarkeitsgruppennamen ein.
 
@@ -392,4 +392,4 @@ Hier finden Sie den Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen
 
 [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

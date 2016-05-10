@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="04/08/2016"
+   ms.date="04/25/2016"
    ms.author="hascipio"/>
 
 # Abschließen der Angebotserstellung mit Marketinginhalten
@@ -29,30 +29,59 @@ In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketin
   > [AZURE.IMPORTANT] Alle Felder müssen ausgefüllt sein, einschließlich der Abbildungen, um das Angebot in die Stagingumgebung zu überführen.
 
 ### Details
-1. Geben Sie die Angebotsübersicht, die ausführliche Übersicht und eine Beschreibung Ihres Angebots ein.
-2.	Laden Sie Abbildungen gemäß den erforderlichen Spezifikationen (wie im Veröffentlichungsportal erläutert) im PNG-Format hoch. Laden Sie für jede gewünschte Größe ein Bild hoch.
+1. Geben Sie den Angebotstitel (max. 50 Zeichen), eine kurze Angebotsübersicht (max. 100 Zeichen), eine ausführliche Angebotsübersicht (max. 256 Zeichen), eine Angebotsbeschreibung (max. 1300 Zeichen) sowie Logos auf der Registerkarte **Details** ein.
+2. Geben Sie den SKU-Titel (max. 50 Zeichen), eine SKU-Übersicht (max. 100 Zeichen) und eine SKU-Beschreibung (max. 2000 Zeichen) auf der Registerkarte **Pläne** ein.
+3. Geben Sie für die Beschreibung des Angebots und der SKU nicht den gleichen Text ein.
+4. Geben Sie für den SKU-Titel und die ausführliche Angebotsübersicht nicht den gleichen Text ein.
+5. Geben Sie für den SKU-Titel und die Angebotsübersicht nicht den gleichen Text ein.
+6. Laden Sie Abbildungen gemäß den erforderlichen Spezifikationen (wie im Veröffentlichungsportal erläutert) im PNG-Format hoch. Laden Sie für jede gewünschte Größe ein Bild hoch.
+7. Stellen Sie sicher, dass die Logos die unten beschriebenen Azure Marketplace-Richtlinien für Logos erfüllen.
 
-  ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-02.png)
+  ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-02.png)
 
-  *Titel, Beschreibung und Logos für das Angebot*
+**Azure Marketplace-Richtlinien für Logos**
+
+Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlinien erfüllen:
+
+- Die Farbpalette des Azure-Designs ist einfach und geradlinig. Bitte verwenden Sie auf den Logos möglichst wenige Primär- und Sekundärfarben.
+- Logos sollten nicht auf einem weißen Hintergrund platziert werden. Wir empfehlen, einfache Primärfarben oder transparente Hintergründe zu verwenden.
+- Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
+- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
+- Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
+- Das Logo sollte nicht gestreckt sein.
+- Ein kleines Logo sollte 40 x 40 px groß sein.
+- Ein mittleres Logo sollte 90 x 90 px groß sein.
+- Ein großes Logo sollte 115 x 115 px groß sein.
+- Ein breites Logo sollte 255 x 115 px groß sein.
+- Ein Herologo sollte 815 x 290 px groß sein.
+
+  ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-03.png)
+
+**Zusätzliche Richtlinien für Herologobanner:**
+
+- Ein Herologo ist optional. Sie müssen kein Herologo hochladen.
+- Der Anzeigename des Herausgebers, der SKU-Titel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden automatisch in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie müssen diese Informationen also beim Entwerfen des Herologos nicht eingeben.
+- Da der Anzeigename des Herausgebers, der SKU-Titel und die ausführliche Angebotsübersicht in weißer Schriftfarbe angezeigt werden, sollten Sie den Hintergrund des Herologos nicht weiß oder in einer anderen hellen Farbe gestalten.
+- Lassen Sie im oberen Bereich des Herologos genügend Platz für die oben genannten Texte. Für den Text stehen 415 x 100 px zur Verfügung, der Abstand zum linken Rand beträgt 370 px.
+
+  ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
 ### Links
 Geben Sie auf der Registerkarte **Links** auf der linken Seite Links mit Informationen an, die Kunden weiterhelfen könnten. Geben Sie für jeden Link einen Namen und eine URL an.
 
-![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-02.png)
+![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-link-01.png)
 
 ### Beispielbilder (optional)
 > [AZURE.NOTE] Das Hinzufügen von Beispielbildern ist ein optionaler Schritt. Sie können auch nur die Marketinginhalte angeben, um die Voraussetzungen für die Überführung in die Stagingumgebung zu erfüllen.
 
 Laden Sie auf der Registerkarte **Beispielbilder** im Menü auf der linken Seite ein neues Bild hoch, indem Sie auf **Neues Bild hochladen** klicken. Wenn Sie ein vorhandenes Bild austauschen möchten, klicken Sie auf **Bild ersetzen**.
 
-![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-03.png)
-
-### Pläne
-![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-02.png)
+![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-sampleimg-01.png)
 
 ### Rechtliche Hinweise
-Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Richtlinien/Nutzungsbedingungen an. Geben Sie die Bedingungen im großen Feld **Nutzungsbedingungen** ein, oder kopieren Sie sie in das Feld.
+Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Richtlinien/Nutzungsbedingungen an. Geben Sie die Bedingungen im großen Feld **Nutzungsbedingungen** ein, oder kopieren Sie sie in das Feld. Die Nutzungsbedingungen dürfen maximal 1.000.000 Zeichen umfassen.
+
+![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
 > [AZURE.NOTE] Bei virtuellen Computern können folgende Angaben nach dem Staging oder der Liveschaltung einer SKU nicht mehr geändert werden: **Angebots-ID**, **Herausgeber-ID** und **SKU-ID**.
 
@@ -89,7 +118,7 @@ Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Rich
 5.	Es wird ein Assistent zur Preisgestaltung geöffnet, mit dem Sie Ihre Preise festlegen können. Hier können Sie auch Preise für andere Länder angeben, falls Sie Käufe in anderen Märkten als dem von Ihnen angegebenen Markt zulassen möchten.
 6.	Einige Länder sind ISV-Abführungsländer. Um in einem ISV-Abführungsland Produkte verkaufen zu können, müssen Sie sowohl Steuern für Ihre SKUs berechnen und einziehen als auch Steuern abrechnen und an die Behörden in diesem Land zahlen können. Microsoft kann keine rechtliche oder steuerliche Beratung anbieten. Weitere Informationen finden Sie im Abschnitt zu Käuferländern des Angebots in der Einführung zu diesem Dokument.
 
-  > [AZURE.NOTE] Bei virtuellen Computern können folgende Änderungen nach der Liveschaltung nicht mehr vorgenommen werden, da sich dies auf die Abrechnung für vorhandene Kunden auswirkt: **Tarifänderungen**, **Abrechnungsänderungen** und **Entfernen von Abrechnungsregionen**.
+  > [AZURE.NOTE] Bei virtuellen Computern können folgende Änderungen nach der Liveschaltung einer SKU nicht mehr vorgenommen werden, da sich dies auf die Abrechnung für vorhandene Kunden auswirkt: **Tarifänderungen**, **Änderungen von Abrechnungsmodellen** und **Entfernen von Abrechnungsregionen**.
 
 ### 2\.2. Festlegen der Preise für Entwicklerdienste
 Pläne können aus einer beliebigen Kombination aus Basis- und Verbrauchskonzepten bestehen. „Basis“ ist eine Monatspauschale, „Überschreitung“ ein nutzungsbasierter Preis. (Weitere Informationen siehe unten.)
@@ -107,7 +136,7 @@ Pläne können aus einer beliebigen Kombination aus Basis- und Verbrauchskonzept
 |Gold|1\.000 USD/Monat|Kontingent von 10.000 Nutzungseinheiten für Feature X, 1.000 Nutzungseinheiten für Feature Y und unbegrenzte Nutzung von Feature Z.|Migration zu allen Plänen außer zum kostenlosen Tarif möglich|
 
 ## Schritt 3: Angeben von Supportinformationen
-Einige dieser Informationen haben Sie bereits im Schritt für die Zertifizierung eingegeben. Mit den nachfolgenden Schritten können Sie Informationen hinzufügen oder bearbeiten. Die Kontaktinformationen werden nur für die interne Kommunikation zwischen dem Partner und Microsoft verwendet. Für die Endkunden steht eine Support-URL zur Verfügung.
+Die Kontaktinformationen werden nur für die interne Kommunikation zwischen dem Partner und Microsoft verwendet. Für die Endkunden steht eine Support-URL zur Verfügung.
 
 1.	Klicken Sie auf die Überschrift **Support** auf der linken Seite des Veröffentlichungsportals.
 2.	Füllen Sie die Felder für **Engineering-Kontaktdaten** aus.
@@ -118,7 +147,7 @@ Einige dieser Informationen haben Sie bereits im Schritt für die Zertifizierung
 Auf der Registerkarte **Kategorien** stehen verschiedene Möglichkeiten zur Auswahl. Wenn Ihr Angebot sich hier einordnen lässt, können Sie bis zu fünf Kategorien auswählen.
 
 ## Verwendung Ihrer Marketinginhalte
-Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketinginhalte des Angebots auf der [Azure Marketplace-Website](https://azure.microsoft.com/marketplace/) und im [Azure-Vorschauportal](https://ms.portal.azure.com) verwendet werden.
+Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketinginhalte des Angebots auf der [Azure Marketplace-Website](https://azure.microsoft.com/marketplace/) und im [Azure-Portal](https://portal.azure.com) verwendet werden.
 
 ### Azure Marketplace-Website
 ![Abbildung](media/marketplace-publishing-push-to-staging/acom-catalog-01.png)
@@ -135,14 +164,14 @@ Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketin
 
 * Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
 
-### Azure-Vorschauportal
+### Azure-Portal
 ![Abbildung](media/marketplace-publishing-push-to-staging/portal-catalog-01.png)
 
-*Auflisten der Angebote im Azure-Vorschauportal*
+*Auflisten der Angebote im Azure-Portal*
 
 ![Abbildung](media/marketplace-publishing-push-to-staging/portal-listing-details-01.png)
 
-*Beschreibung der Angebote im Azure-Vorschauportal*
+*Beschreibung der Angebote im Azure-Portal*
 
 ## Nächste Schritte
 Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Testen des Angebots in der Stagingumgebung. Da die Schritte jedoch je nach Angebotstyp unterschiedlich sind, müssen Sie den entsprechenden Angebotstyp in der Liste unten auswählen.
@@ -163,4 +192,4 @@ Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Test
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

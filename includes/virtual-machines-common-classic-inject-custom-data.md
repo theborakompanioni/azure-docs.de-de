@@ -3,7 +3,7 @@
 
 In diesem Thema wird Folgendes beschrieben:
 
-- Das Einfügen von Daten in einen virtuellen Azure-Computer, während dieser bereitgestellt wird.
+- Das Einfügen von Daten in einen virtuellen Azure-Computer (VM), während dieser bereitgestellt wird.
 
 - Das Abrufen des virtuellen Computers für Windows und Linux.
 
@@ -13,33 +13,32 @@ In diesem Thema wird Folgendes beschrieben:
 
 ## Einfügen benutzerdefinierter Daten in einem virtuellen Azure-Computer
 
-Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli) unterstützt. Sie können für den Befehl `azure vm create` jede der Optionen verwenden. Der folgende Ansatz ist sehr allgemein gehalten.
+Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli) unterstützt. Hier erstellen wir eine `custom-data.txt`-Datei, die unsere Daten enthält, und fügen sie während der Bereitstellung in die VM ein. Sie können für den Befehl `azure vm create` jede der Optionen verwenden. Der folgende Ansatz ist sehr allgemein gehalten:
 
 ```
-    PASSWORD='AcceptablePassword -- more than 8 chars, a cap, a num, a special'
-    VMNAME=mycustomdataubuntu
-    USERNAME=username
-    VMIMAGE= An image chosen from among those listed by azure vm image list
-    azure vm create $VMNAME $VMIMAGE $USERNAME $PASSWORD --location "West US" --json -d ./custom-data.txt -e 22
+    azure vm create <vmname> <vmimage> <username> <password> \  
+    --location "West US" --ssh 22 \  
+    --custom-data ./custom-data.txt  
 ```
 
 
 ## Verwenden von benutzerdefinierten Daten im virtuellen Computer
 
-+ Wenn es sich bei Ihrem virtuellen Azure-Computer um einen virtuellen Windows-Computer handelt, wird die benutzerdefinierte Datendatei unter `%SYSTEMDRIVE%\AzureData\CustomData.bin` gespeichert. Auch wenn sie für die Übertragung vom lokalen Computer zum neuen virtuellen Computer base64-codiert war, wird sie automatisch decodiert und kann sofort geöffnet oder verwendet werden.
++ Wenn es sich bei Ihrer Azure-VM um eine VM auf Windows-Basis handelt, wird die benutzerdefinierte Datendatei unter `%SYSTEMDRIVE%\AzureData\CustomData.bin` gespeichert. Auch wenn sie für die Übertragung vom lokalen Computer zur neuen VM base64-codiert war, wird sie automatisch decodiert und kann sofort geöffnet oder verwendet werden.
 
    > [AZURE.NOTE] Wenn die Datei vorhanden ist, wird sie überschrieben. Die Sicherheit im Verzeichnis ist auf **System:Full Control** und **Administrators:Full Control** festgelegt.
 
-+ Wenn es sich bei Ihrem virtuellen Azure-Computer um einen virtuellen Linux-Computer handelt, befindet sich die benutzerdefinierte Datendatei an den folgenden zwei Orten. Die Daten sind jedoch base64-codiert, sodass Sie sie zunächst decodieren müssen.
++ Wenn es sich bei Ihrer Azure-VM um eine VM auf Linux-Basis handelt, befindet sich die benutzerdefinierte Datendatei abhängig von Ihrer Distribution an einem der folgenden zwei Orte. Die Daten könnten jedoch base64-codiert sein, sodass Sie sie zunächst decodieren müssen.
 
-    + Unter `/var/lib/waagent/ovf-env.xml`
-    + Unter `/var/lib/waagent/CustomData`
+    - `/var/lib/waagent/ovf-env.xml`
+    - `/var/lib/waagent/CustomData`
+    - `/var/lib/cloud/instance/user-data.txt` 
 
 
 
 ## Cloud-Init in Azure
 
-Wenn Ihr virtueller Azure-Computer von einem Ubuntu- oder CoreOS-Image erstellt wurde, können Sie eine cloud-config-Datei an Cloud-Init senden. Wenn Ihre benutzerdefinierte Datendatei ein Skript ist, kann dieses einfach von Cloud-Init ausgeführt werden.
+Wenn Ihre Azure-VM von einem Ubuntu- oder CoreOS-Image erstellt wurde, können Sie mit CustomData eine Cloud-Config-Datei an Cloud-Init senden. Wenn Ihre benutzerdefinierte Datendatei ein Skript ist, kann dieses einfach von Cloud-Init ausgeführt werden.
 
 ### Ubuntu-Cloud-Images
 
@@ -59,4 +58,4 @@ Weitere Informationen finden Sie unter [cloud-init documentation for Ubuntu](htt
 
 [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0427_2016-->

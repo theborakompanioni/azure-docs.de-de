@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/11/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory – Benennungsregeln 
@@ -27,4 +27,4 @@ Data Factory | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinsc
 Verknüpfte Dienste/Tabellen/Pipelines | Innerhalb einer Data Factory eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen in einem Tabellennamen: 260.</li><li>Objektnamen müssen mit einem Buchstaben, einer Zahl oder einem Unterstrich beginnen (_).</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“</li></ul> 
 Ressourcengruppe | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen: 1.000.</li><li>Der Name darf Buchstaben, Zahlen und die folgenden Zeichen enthalten: „-“, „_“, „,“ und „.“.</li></ul>
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Elastische Datenbankabfragen für Sharding (horizontale Partitionierung) | Microsoft Azure"
-    description="Informationen zum Einrichten elastischer Abfragen horizontal partitionierter Datenbanken"    
+    pageTitle="Horizontal hochskalierte Clouddatenbanken übergreifende Berichte | Microsoft Azure"
+    description="Informationen zum Einrichten elastischer Abfragen, die horizontal partitionierte Datenbanken übergreifen"    
     services="sql-database"
     documentationCenter=""  
     manager="jhubbard"
@@ -12,51 +12,51 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/28/2016"
+    ms.date="04/26/2016"
     ms.author="torsteng;sidneyh" />
 
-# Elastische Datenbankabfragen bei Sharding (horizontaler Partitionierung)
-
-In diesem Dokument wird die Einrichtung von elastischen Datenbankabfragen für Szenarien mit horizontaler Partitionierung und die Ausführung von Abfragen erläutert. Eine Definition des Szenarios mit horizontaler Partitionierung finden Sie in der [Übersicht über elastische Datenbankabfragen](sql-database-elastic-query-overview.md).
+# Horizontal hochskalierte Clouddatenbanken übergreifende Berichte (Vorschau)
 
 ![Abfrage über Shards hinweg][1]
 
-Die Funktionalität ist Teil des Azure SQL-Datenbankfeatures [Elastische Datenbank](sql-database-elastic-scale-introduction.md).
+Horizontal partitionierte Datenbanken verteilen Zeilen auf einer horizontal hochskalierten Datenebene. Das Schema ist auf allen teilnehmenden Datenbanken identisch, auch bekannt als horizontale Partitionierung. Mit einer flexiblen Abfrage können Sie Berichte erstellen, die alle Datenbanken in einer horizontal partitionierten Datenbank umfassen.
+
+Wie Sie einen Schnellstart durchführen, erfahren Sie unter [Reporting across scaled-out cloud databases](sql-database-elastic-query-getting-started.md) (Horizontal hochskalierte Clouddatenbanken übergreifende Berichte).
+
+Informationen für nicht partitionierte Datenbanken finden Sie unter [Queries across sharded cloud databases (vertically partitioned)](sql-database-elastic-query-vertical-partitioning.md) (Partitionierte Clouddatenbanken [vertikal partitioniert] übergreifende Abfragen).
+
  
-## Erstellen von Datenbankobjekten
+## Voraussetzungen
 
-Mit einer elastischen Datenbankabfragen wird die T-SQL-Syntax so erweitert, dass auf Datenebenen verwiesen wird, die Sharding (bzw. horizontale Partitionierung) verwenden, um Daten auf viele Datenbanken zu verteilen. Dieser Abschnitt bietet eine Übersicht über die DDL-Anweisungen, die elastischen Abfragen von Shardingtabellen zugeordnet sind. Diese Anweisungen erstellen die Metadatendarstellung Ihrer Shardingdatenebene in der elastischen Abfragedatenbank. Eine Voraussetzung für die Ausführung dieser Anweisungen ist das Erstellen einer Shardzuordnung mithilfe der Clientbibliothek für elastische Datenbanken. Weitere Informationen finden Sie unter [Verwaltung von Shardzuordnungen](sql-database-elastic-scale-shard-map-management.md), oder verwenden Sie das Beispiel im Thema [Erste Schritte mit elastischen Datenbanktools](sql-database-elastic-scale-get-started.md), um eine zu erstellen.
+* Erstellen Sie eine Shardzuordnung mithilfe der Clientbibliothek für elastische Datenbanken (siehe [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md)). Oder verwenden Sie die Beispiel-App in [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
+* Alternativ dazu können Sie [Migrate existing databases to scaled-out databases](sql-database-elastic-convert-to-use-elastic-tools.md) (Migrieren vorhandener Datenbanken zu horizontal hochskalierten Datenbanken) lesen.
+* Der Benutzer muss über die Berechtigung ALTER ANY EXTERNAL DATA SOURCE verfügen. Diese Berechtigung ist in der Berechtigung ALTER DATABASE enthalten.
+* ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, um auf die zu Grunde liegende Datenquelle zu verweisen.
 
-Das Definieren der Datenbankobjekte für eine elastische Datenbankabfrage beruht auf den folgenden T-SQL-Anweisungen, die für das Szenario mit horizontaler Partitionierung weiter unten erläutert werden:
+## Übersicht
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) 
+Diese Anweisungen erstellen die Metadatendarstellung Ihrer Shardingdatenebene in der elastischen Abfragedatenbank.
 
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
+1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
+2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
+4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+## 1\.1 Erstellen des Datenbankhauptschlüssels und der Anmeldeinformationen 
 
-### 1\.1 Erstellen des Datenbankhauptschlüssels und der Anmeldeinformationen 
+Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung mit Ihren Remotedatenbanken verwendet.
 
-Benutzer-ID und Kennwort bilden die Anmeldeinformationen, die von der Abfrage für elastische Datenbanken zur Verbindung mit Ihren Remotedatenbanken in Azure SQL-Datenbank verwendet werden. Den erforderlichen Hauptschlüssel und die Anmeldeinformationen erstellen Sie mit der folgenden Syntax:
-
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = ’password’;
-    CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = ‘<username>’,  
-    SECRET = ‘<password>’
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
+    CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
+    SECRET = '<password>'
     [;]
-
-Geben Sie zum Löschen der Anmeldeinformationen und des Schlüssels Folgendes ein:
-
-    DROP DATABASE SCOPED CREDENTIAL <credential_name>;  
-    DROP MASTER KEY;   
-
  
-**Hinweis** Stellen Sie sicher, dass *< username>* kein *@servername*-Suffix enthält.
+**Hinweis** Stellen Sie sicher, dass *<username>* kein *@servername*-Suffix enthält.
 
-### 1\.2 Externe Datenquellen
+## 1\.2 Erstellen externer Datenquellen
 
-Stellen Sie die Informationen zu Ihrer Shardzuordnung und Datenebene bereit, indem Sie eine externe Datenquelle definieren. Die externe Datenquelle verweist auf Ihre Shardzuordnung. Eine elastische Abfrage verwendet anschließend die externe Datenquelle und zugrunde liegende Shardzuordnung zum Auflisten der Datenbanken, die zur Datenebene gehören. Die Syntax zum Erstellen einer externen Datenquelle ist wie folgt:
+Syntax:
 
 	<External_Data_Source> ::=    
 	CREATE EXTERNAL DATA SOURCE <data_source_name> WITH                               	           
@@ -66,18 +66,8 @@ Stellen Sie die Informationen zu Ihrer Shardzuordnung und Datenebene bereit, ind
 			CREDENTIAL = <credential_name>, 
 			SHARD_MAP_NAME = ‘<shardmapname>’ 
                    ) [;] 
- 
-So sieht die Syntax zum Löschen einer externen Datenquelle aus:
 
-	DROP EXTERNAL DATA SOURCE <data_source_name>[;] 
-
-#### Berechtigungen für CREATE/DROP EXTERNAL DATA SOURCE 
-
-Der Benutzer muss über die Berechtigung ALTER ANY EXTERNAL DATA SOURCE verfügen. Diese Berechtigung ist in der ALTER DATABASE-Berechtigung enthalten.
-
-**Beispiel**
-
-Das folgende Beispiel veranschaulicht die Verwendung der CREATE-Anweisung für externe Datenquellen.
+### Beispiel 
 
 	CREATE EXTERNAL DATA SOURCE MyExtSrc 
 	WITH 
@@ -89,23 +79,15 @@ Das folgende Beispiel veranschaulicht die Verwendung der CREATE-Anweisung für e
 		SHARD_MAP_NAME='ShardMap' 
 	);
  
-Sie können die Liste der aktuellen externen Datenquellen aus der folgenden Katalogsicht abrufen:
+Rufen Sie die Liste der aktuellen externen Datenquellen ab:
 
 	select * from sys.external_data_sources; 
 
-Beachten Sie, dass die gleichen Anmeldeinformationen während der Verarbeitung der elastischen Abfrage zum Lesen der Shardzuordnung und für den Zugriff auf die Daten in den Shards verwendet werden.
+Die externe Datenquelle verweist auf Ihre Shardzuordnung. Eine elastische Abfrage verwendet anschließend die externe Datenquelle und zugrunde liegende Shardzuordnung zum Auflisten der Datenbanken, die zur Datenebene gehören. Die gleichen Anmeldeinformationen werden während der Verarbeitung der elastischen Abfrage zum Lesen der Shardzuordnung und für den Zugriff auf die Daten in den Shards verwendet .
 
-### 1\.3 Externe Tabellen 
+## 1\.3 Erstellen externer Tabellen 
  
-Die elastische Abfrage erweitert die DDL für externe Tabellen so, dass auf externe Tabellen verwiesen wird, die über mehrere Datenbanken horizontal partitioniert sind. Die Definition der externen Tabelle deckt die folgenden Aspekte ab:
-
-* **Schema**: Die DDL für externe Tabellen definiert ein Schema, das Ihre Abfragen verwenden können. Das in Ihrer Definition für externe Tabellen angegebene Schema muss mit dem Schema der Tabellen in den Shards übereinstimmen, in denen die eigentlichen Daten gespeichert werden. 
-
-* **Datenverteilung**: Die DDL für externe Tabellen definiert die Verteilung der Daten auf Ihrer Datenebene. Beachten Sie, dass Azure SQL-Datenbank die Verteilung, die Sie für die externe Tabelle definieren, nicht mit Blick auf die tatsächliche Verteilung in den Shards überprüft. Sie müssen sicherstellen, dass die Verteilung der tatsächlichen Daten auf die Shards Ihrer Definition für externe Tabellen entspricht.
-
-* **Datenebenenverweis**: Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt eine Shardzuordnung an, die der externen Tabelle die Informationen bereitstellt, die benötigt werden, um alle Datenbanken in Ihrer Datenebene zu finden.
-
-Bei Verwenden einer externen Datenquelle ist die Syntax zum Erstellen und Löschen externer Tabellen, wie im vorherigen Abschnitt beschrieben, wie folgt:
+Syntax:
 
 	CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name  
         ( { <column_definition> } [ ,...n ])     
@@ -118,31 +100,7 @@ Bei Verwenden einer externen Datenquelle ist die Syntax zum Erstellen und Lösch
       [ OBJECT_NAME = N'nonescaped_object_name',] 
       DISTRIBUTION = SHARDED(<sharding_column_name>) | REPLICATED |ROUND_ROBIN
 
-Die DATA\_SOURCE-Klausel definiert die externe Datenquelle (bei horizontaler Partitionierung eine Shardzuordnung), die für die externe Tabelle verwendet wird.
-
-Die Klauseln SCHEMA\_NAME und OBJECT\_NAME bieten die Möglichkeit, die Definition der externen Tabelle einer Tabelle in einem anderen Schema im Shard bzw. einer Tabelle mit einem anderen Namen zuzuordnen. Falls nicht angegeben, wird davon ausgegangen, dass das Schema des Remoteobjekts „dbo“ und sein Name mit dem definierten Namen der externen Tabelle identisch ist.
-
-Die Klauseln SCHEMA\_NAME und OBJECT\_NAME sind besonders nützlich, wenn der Name der Remotetabelle bereits in der Datenbank verwendet wird, in der Sie die externe Tabelle erstellen möchten. Ein Beispiel für dieses Problem liegt vor, wenn Sie eine externe Tabelle zum Abrufen einer aggregrierten Sicht von Katalogsichten oder DMVs für Ihre horizontal hochskalierte Datenebene definieren möchten. Da Katalogsichten und DMVs bereits lokal vorhanden sind, können Sie ihre Namen nicht für die Definition der externen Tabelle verwenden. Verwenden Sie stattdessen in den Klauseln SCHEMA\_NAME und/oder OBJECT\_NAME einen anderen Namen und den Namen der Katalogsicht oder DMV. (Betrachten Sie das folgende Beispiel.)
-
-Die DISTRIBUTION-Klausel gibt die Datenverteilung für diese Tabelle an:
-
-* SHARDED bedeutet, dass die Daten dieser Tabelle horizontal auf die Datenbanken in Ihrer Shardzuordnung partitioniert werden. Der Partitionierungsschlüssel für die Datenverteilung wird im <sharding_column_name>-Parameter erfasst.  
-
-* REPLICATED bedeutet, dass identische Kopien der Tabelle für jede Datenbank in der Shardzuordnung vorhanden sind. Azure SQL-Datenbank speichert keine Kopien der Tabelle. Sie müssen sicherstellen, dass das Replikat in allen Datenbanken identisch ist.
-
-* ROUND\_ROBIN bedeutet, dass die Tabelle mithilfe der horizontalen Partitionierung verteilt wird. Es wurde jedoch eine anwendungsabhängige Verteilung verwendet.
-
-Der Abfrageprozessor nutzt die Informationen in der DISTRIBUTION-Klausel, um die effizientesten Abfragepläne zu erstellen.
-
-Mit der folgenden Anweisung können Sie externe Tabellen löschen:
-
-	DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]  
-
-**Berechtigungen für CREATE/DROP EXTERNAL TABLE:** ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, die auch für den Verweis auf die zugrunde liegende Datenquelle benötigt werden.
-
-**Sicherheitsüberlegungen:** Benutzer mit Zugriff auf die externe Tabelle erhalten automatisch Zugriff auf die zugrunde liegenden Remotetabellen gemäß den Anmeldeinformationen, die in der externen Datenquellendefinition angegeben sind. Sie müssen den Zugriff auf die externe Tabelle sorgfältig verwalten, um eine unerwünschte Erhöhung von Berechtigungen über die Anmeldeinformationen für die externe Datenquelle zu vermeiden. Herkömmliche SQL-Berechtigungen können zum Gewähren (GRANT) oder Widerrufen (REVOKE) des Zugriffs auf eine externe Tabelle wie bei einer normalen Tabelle verwendet werden.
-
-**Beispiel**: Das folgende Beispiel veranschaulicht, wie Sie eine externe Tabelle erstellen:
+**Beispiel**
 
 	CREATE EXTERNAL TABLE [dbo].[order_line]( 
 		 [ol_o_id] int NOT NULL, 
@@ -165,17 +123,38 @@ Mit der folgenden Anweisung können Sie externe Tabellen löschen:
 		DISTRIBUTION=SHARDED(ol_w_id)
 	); 
 
-Das folgende Beispiel zeigt, wie Sie die Liste der externen Tabellen aus der aktuellen Datenbank abrufen:
+Rufen Sie die Liste der externen Tabellen aus der aktuellen Datenbank ab:
 
-	select * from sys.external_tables; 
+	SELECT * from sys.external_tables; 
 
-## Abfragen 
+So löschen Sie externe Tabellen:
 
-### 2\.1 T-SQL-Abfragen mit voller Vertraulichkeit 
+	DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
+
+### Anmerkungen
+
+Die DATA\_SOURCE-Klausel definiert die externe Datenquelle (eine Shardzuordnung), die für die externe Tabelle verwendet wird.
+
+Die Klauseln SCHEMA\_NAME und OBJECT\_NAME ordnen die Definition der externen Tabelle einer Tabelle in einem anderen Schema zu. Falls nicht angegeben, wird davon ausgegangen, dass das Schema des Remoteobjekts „dbo“ und sein Name mit dem definierten Namen der externen Tabelle identisch ist. Dies ist nützlich, wenn der Name der Remotetabelle bereits in der Datenbank verwendet wird, in der Sie die externe Tabelle erstellen möchten. Sie möchten z.B. eine externe Tabelle zum Abrufen einer aggregrierten Sicht von Katalogsichten oder DMVs für Ihre horizontal hochskalierte Datenebene definieren. Da Katalogsichten und DMVs bereits lokal vorhanden sind, können Sie ihre Namen nicht für die Definition der externen Tabelle verwenden. Verwenden Sie stattdessen in den Klauseln SCHEMA\_NAME und/oder OBJECT\_NAME einen anderen Namen und den Namen der Katalogsicht oder DMV. (Betrachten Sie das folgende Beispiel.)
+
+Die DISTRIBUTION-Klausel gibt die Datenverteilung für diese Tabelle an: Der Abfrageprozessor nutzt die Informationen in der DISTRIBUTION-Klausel, um die effizientesten Abfragepläne zu erstellen.
+
+1. **SHARDED** bedeutet, dass Daten Datenbanken übergreifend horizontal partitioniert werden. Der Partitionierungsschlüssel für die Datenverteilung wird im **<sharding_column_name>**-Parameter erfasst.
+2. **REPLICATED** bedeutet, dass identische Kopien der Tabelle in jeder Datenbank vorhanden sind. Sie müssen sicherstellen, dass die Replikate in allen Datenbanken identisch sind.
+3. **ROUND\_ROBIN** bedeutet, dass die Tabelle mit einer anwendungsabhängigen Verteilungsmethode horizontal partitioniert wurde. 
+
+**Datenebenenverweis**: Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt eine Shardzuordnung an, die der externen Tabelle die Informationen bereitstellt, die benötigt werden, um alle Datenbanken in Ihrer Datenebene zu finden.
+
+
+### Sicherheitshinweise 
+
+Benutzer mit Zugriff auf die externe Tabelle erhalten automatisch Zugriff auf die zugrunde liegenden Remotetabellen gemäß den Anmeldeinformationen, die in der externen Datenquellendefinition angegeben sind. Vermeiden Sie eine unerwünschte Erhöhung von Berechtigungen durch die Anmeldeinformationen der externen Datenquelle. Verwenden Sie GRANT oder REVOKE für eine externe Tabelle, als handele es sich um eine normale Tabelle.
 
 Nachdem Sie die externe Datenquelle und die externen Tabellen definiert haben, können Sie jetzt vollständiges T-SQL in den externen Tabellen verwenden.
 
-**Beispiel für horizontale Partitionierung**: Die folgende Abfrage führt eine Dreiwegeverknüpfung zwischen Lagern, Aufträgen und Auftragspositionen aus und nutzt mehrere Aggregate und einen selektiven Filter. Es wird Folgendes vorausgesetzt: 1.) eine horizontale Partitionierung, 2.) dass für Lager, Aufträge und Auftragspositionen ein Sharding anhand der Spalte „warehouse id“ erfolgt ist, und 3.) dass die elastische Abfrage die Verknüpfungen für die Shards anordnen und den aufwendigen Teil der Abfrage in den Shards parallel verarbeiten kann.
+## Beispiel: Abfragen von horizontal partitionierten Datenbanken 
+
+Die folgende Abfrage führt eine Verknüpfung in drei Richtungen zwischen Lagern, Bestellungen und Auftragspositionen aus. Sie nutzt mehrere Aggregate und einen selektiven Filter. Es wird Folgendes vorausgesetzt: 1.) eine horizontale Partitionierung, 2.) dass für Lager, Aufträge und Auftragspositionen ein Sharding anhand der Spalte „warehouse id“ erfolgt ist, und 3.) dass die elastische Abfrage die Verknüpfungen für die Shards anordnen und den aufwendigen Teil der Abfrage in den Shards parallel verarbeiten kann.
 
 	select  
 		 w_id as warehouse,
@@ -192,9 +171,10 @@ Nachdem Sie die externe Datenquelle und die externen Tabellen definiert haben, k
 	where w_id > 100 and w_id < 200 
 	group by w_id, o_c_id 
  
-### 2\.2 Gespeicherte Prozedur für T-SQL-Remoteausführung
+## Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute\_remote
 
-Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur hat den Namen „sp\_execute\_remote“ und kann verwendet werden, um remote gespeicherte Prozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
+Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur hat den Namen **sp\_execute\_remote** und kann verwendet werden, um remote gespeicherte Prozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
+
 * Datenquellenname (nvarchar): Der Name der externen Datenquelle vom Typ RDBMS. 
 * Abfrage (nvarchar): Die T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird. 
 * Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im „Query“-Parameter verwendet werden (z. B. sp\_executesql). 
@@ -216,18 +196,16 @@ Verwenden Sie herkömmliche SQL Server-Verbindungszeichenfolgen, um Ihre Anwendu
 
 * Stellen Sie sicher, dass die Endpunktdatenbank für elastische Abfragen durch die Firewalls von Azure SQL-Datenbank hindurch Zugriff auf die Datenbank mit der Shardzuordnung und alle Shards hat.  
 
-* Eine elastische Abfrage überprüft die Verteilung der in der externen Tabelle definierten Daten nicht und erzwingt diese auch nicht. Wenn Ihre tatsächliche Datenverteilung sich von der Verteilung in der Tabellendefinition unterscheidet, können Ihre Abfragen zu unerwarteten Ergebnissen führen.
+* Überprüfen oder erzwingen Sie die in der externen Tabelle definierte Verteilung der Daten. Wenn Ihre tatsächliche Datenverteilung sich von der Verteilung in der Tabellendefinition unterscheidet, können Ihre Abfragen zu unerwarteten Ergebnissen führen.
 
 * Die elastische Abfrage führt derzeit keine Shardlöschung durch, wenn Prädikate für Shardingschlüssel ein gefahrloses Ausschließen der Verarbeitung bestimmter Shards zulassen würden.
 
 * Eine elastische Abfrage funktioniert am besten für Abfragen, in denen der größte Teil der Berechnung in den Shards erfolgt. In der Regel erhalten Sie optimale Abfrageleistung mit benutzerdefinierten Filterprädikaten, die in den Shards oder Verknüpfungen über die Partitionierungsschlüssel ausgewertet werden können, die auf partitionsbezogene Weise auf allen Shards ausgeführt werden können. Für andere Abfragemuster müssen möglicherweise große Mengen von Daten aus den Shards auf den Hauptknoten geladen werden, wodurch Leistungseinbußen auftreten.
 
-
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->
