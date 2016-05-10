@@ -105,7 +105,7 @@ Eine Beispiel-Suchprotokolldatei wurde in einen öffentlichen Azure-BLOB-Contain
 
 	$dataLakeStoreName = "<The default Data Lake Store account name>"
 	
-	$localFolder = "C:\Tutorials\Downloads" # A temp location for the file. 
+	$localFolder = "C:\Tutorials\Downloads\" # A temp location for the file. 
 	$storageAccount = "adltutorials"  # Don't modify this value.
 	$container = "adls-sample-data"  #Don't modify this value.
 
@@ -186,7 +186,7 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 		
 		Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId
 
-	Im Skript wird die U-SQL-Skriptdatei unter "c:\\tutorials\\data-lake-analytics\\copyFile.usql" gespeichert. Aktualisieren Sie den Dateipfad entsprechend.
+	Im Skript wird die U-SQL-Skriptdatei unter "c:\tutorials\data-lake-analytics\copyFile.usql" gespeichert. Aktualisieren Sie den Dateipfad entsprechend.
  
 Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwenden, um die Datei anzugeben und herunterzuladen:
 	

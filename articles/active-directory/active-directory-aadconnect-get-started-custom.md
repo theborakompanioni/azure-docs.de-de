@@ -57,9 +57,10 @@ Nicht konfigurieren | Keines der Features wird installiert oder konfiguriert. W�
 ## Herstellen einer Verbindung mit Azure AD
 Geben Sie im Bildschirm "Mit Azure AD verbinden" ein Konto und ein Kennwort für den globalen Administrator ein. Wenn Sie auf der vorherigen Seite **Verbund mit AD FS** ausgewählt haben, melden Sie sich nicht mit einem Konto in einer Domäne an, die Sie für den Verbund aktivieren möchten. Wir empfehlen Ihnen die Verwendung ein Kontos in der standardmäßigen Domäne **onmicrosoft.com**, die in Ihrem Azure AD-Verzeichnis enthalten ist.
 
-Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet. ![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
-
-Wenn MFA für Ihr globales Administratorkonto aktiviert ist, müssen Sie das Kennwort im Anmelde-Popupfenster erneut eingeben und die MFA-Abfrage ausfüllen. Bei der Abfrage kann es sich etwa um die Eingabe eines Überprüfungscodes oder um einen Anruf handeln. ![MFA-Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
+Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet.
+![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
+Wenn MFA für Ihr globales Administratorkonto aktiviert ist, müssen Sie das Kennwort im Anmelde-Popupfenster erneut eingeben und die MFA-Abfrage ausfüllen. Bei der Abfrage kann es sich etwa um die Eingabe eines Überprüfungscodes oder um einen Anruf handeln.
+![MFA-Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
 Für das globale Administratorkonto kann auch [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) aktiviert sein.
 
@@ -73,7 +74,8 @@ Zum Verbinden mit Ihrem Active Directory-Domänendienst benötigt Connect von Az
 ![Verzeichnis verbinden](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
 
 ### Filterung von Domänen und Organisationseinheiten
-Standardmäßig werden alle Domänen und Organisationseinheiten synchronisiert. Wenn Sie Domänen oder Organisationseinheiten nicht in Azure AD synchronisieren möchten, können Sie diese Domänen und Organisationseinheiten deaktivieren. ![Domänen und Organisationseinheiten filtern](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) Diese Seite des Assistenten dient zum Konfigurieren der domänenbasierten Filterung. Weitere Informationen finden Sie unter [Domänenbasierte Filterung](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering).
+Standardmäßig werden alle Domänen und Organisationseinheiten synchronisiert. Wenn Sie Domänen oder Organisationseinheiten nicht in Azure AD synchronisieren möchten, können Sie diese Domänen und Organisationseinheiten deaktivieren. 
+![Domänen und Organisationseinheiten filtern](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) Diese Seite des Assistenten dient zum Konfigurieren der domänenbasierten Filterung. Weitere Informationen finden Sie unter [Domänenbasierte Filterung](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering).
 
 Möglicherweise sind bestimmte Domänen aufgrund von Beschränkungen der Firewall nicht erreichbar. Diese Domänen sind standardmäßig nicht ausgewählt und mit einer Warnung versehen. ![Nicht erreichbare Domänen](./media/active-directory-aadconnect-get-started-custom/unreachable.png) Sollte diese Warnung angezeigt werden, vergewissern Sie sich, dass die entsprechenden Domänen tatsächlich nicht erreichbar sind und die Warnung zu erwarten ist.
 

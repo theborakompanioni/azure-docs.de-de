@@ -231,7 +231,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 
 1. Erweitern Sie im Projektmappen-Explorer den Ordner **Ansichten**, erweitern Sie den Ordner **Freigegeben**, und doppelklicken Sie auf **\_Layout.cshtml**.
 
-    ![\_Layout.cshtml][cache-layout-cshtml]
+    ![_Layout.cshtml][cache-layout-cshtml]
 
 2. Ändern Sie den Inhalt des `title`-Elements, und ersetzen Sie `My ASP.NET Application` durch `Contoso Team Stats`, wie im folgenden Beispiel gezeigt:
 

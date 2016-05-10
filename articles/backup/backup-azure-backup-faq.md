@@ -26,7 +26,8 @@
 Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazugehörigen Antworten) zum Azure Backup-Dienst. In unserer Community erhalten Sie schnell eine Antwort, und wenn eine Frage häufig gestellt wird, fügen wir sie diesem Artikel hinzu. Die Antworten auf Fragen enthalten in der Regel Referenz- bzw. Supportinformationen. Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
 
 ## Installation und Konfiguration
-**F1. Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt?** <br/> A1. Folgende Betriebssysteme werden von Azure Backup unterstützt:
+**F1. Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt?** <br/> 
+A1. Folgende Betriebssysteme werden von Azure Backup unterstützt:
 
 
 | Betriebssystem | Plattform | SKU |
@@ -101,10 +102,10 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 **F20. Welche Firewallregeln sollten für Azure Backup konfiguriert werden?** <br/> A20. Zur Erzielung eines nahtlosen Schutzes der Daten vom Typ „lokal zu Azure“ und „Workload zu Azure“ wird empfohlen, für die Firewall die Kommunikation mit den folgenden URLs zuzulassen:
 
 - www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- \*.Microsoft.com
+- \*.WindowsAzure.com
+- \*.microsoftonline.com
+- \*.windows.net
 
 **F21. Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, die mithilfe der VM-Erweiterung bereits vom Azure Backup-Dienst gesichert wurde?** <br/> A21. Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung. Sie können den Azure Backup-Agent auf einem Windows-Gastbetriebssystem installieren, um Dateien und Ordner auf dem Gastbetriebssystem zu schützen.
 

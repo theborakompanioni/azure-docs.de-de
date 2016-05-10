@@ -132,7 +132,8 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
     - **Erweitern von Spalten mit ***
 
-        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. ![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. 
+	![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.
 
@@ -342,7 +343,7 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
 
     #region - prepare the source data
     Write-Host "Import the source data ..."  -ForegroundColor Green
-    $localFolder = "C:\Tutorials\Downloads" # A temp location for the file.
+    $localFolder = "C:\Tutorials\Downloads\" # A temp location for the file.
     $storageAccount = "adltutorials"  # Don't modify this value.
     $container = "adls-sample-data"  #Don't modify this value.
 

@@ -30,7 +30,7 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | Gerätemodell | 8010<sup>1</sup> | 8020 |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **Maximale Kapazität** | 30 TB | 64 TB |
-| **Azure-VM** | Standard\_A3 (4 Kerne, 7 GB Arbeitsspeicher) | Standard\_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
+| **Azure-VM** | Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher) | Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
 | **Versionskompatibilität** | Versionen unter Vorgängerversionen von Update 2 oder höher | Versionen unter Update 2 oder höher |
 | **Regionale Verfügbarkeit** | Alle Azure-Regionen | Azure-Regionen, die Storage Premium unterstützen<br></br>Eine Liste dieser Regionen finden Sie unter [Unterstützte Regionen für 8020](#supported-regions-for-8020). |
 | **Speichertyp** | Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](). | Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br> Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk). |
@@ -144,7 +144,8 @@ Führen Sie die folgenden Schritte aus, um das virtuelle StorSimple-Gerät zu er
 
 Stellen Sie vorab sicher, dass Sie über eine Kopie des Verschlüsselungsschlüssels für die Dienstdaten verfügen. Der Schlüssel für die Dienstdatenverschlüsselung wurde beim Konfigurieren des ersten StorSimple-Geräts erstellt, und Sie wurden aufgefordert, diesen an einem sicheren Ort zu speichern. Wenn Sie über keine Kopie des Schlüssels für die Dienstdatenverschlüsselung verfügen, wenden Sie sich an den Microsoft-Support.
 
-Führen Sie die folgenden Schritte durch, um das virtuelle StorSimple-Gerät zu konfigurieren und zu registrieren:[AZURE.INCLUDE [Konfigurieren und Registrieren eines virtuellen Geräts](../../includes/storsimple-configure-register-virtual-device.md)]
+Führen Sie die folgenden Schritte durch, um das virtuelle StorSimple-Gerät zu konfigurieren und zu registrieren:
+[AZURE.INCLUDE [Konfigurieren und Registrieren eines virtuellen Geräts](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### Schritt 3: (Optional) Ändern der Konfigurationseinstellungen des Geräts
 
@@ -209,8 +210,8 @@ In den folgenden Abschnitten werden einige der Unterschiede bei der Arbeit mit v
 
 Da es sich um ein reines Softwaregerät handelt, ist der Verwaltungsaufwand im Vergleich zu einem physischen Gerät minimal. Folgende Optionen stehen zur Auswahl:
 
-- **Softwareupdates** – Sie können das Datum des letzten Softwareupdates sowie alle Updatestatusmeldungen anzeigen. Mit der Schaltfläche **Updates scannen** unten auf der Seite können Sie manuell nach Updates suchen. Wenn Updates verfügbar sind, klicken Sie zu deren Installation auf **Updates installieren**. Da nur eine einzige Schnittstelle zum virtuellen Gerät vorhanden ist, tritt beim Übernehmen der Updates eine kurze Dienstunterbrechung auf. Das virtuelle Gerät wird heruntergefahren und (ggf.) neu gestartet, um alle veröffentlichten Updates zu übernehmen. Eine Schrittanleitung finden Sie unter [Aktualisieren Ihres Geräts](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
-- **Supportpaket** – Sie können ein Supportpaket erstellen und hochladen, um den Microsoft-Support beim Beheben von Problemen mit Ihrem virtuellen Gerät zu unterstützen. Eine Schrittanleitung finden Sie unter [Erstellen und Verwalten eines Unterstützungspakets](storsimple-create-manage-support-package.md).
+- **Softwareupdates** – Sie können das Datum des letzten Softwareupdates sowie alle Updatestatusmeldungen anzeigen. Mit der Schaltfläche **Updates scannen** unten auf der Seite können Sie manuell nach Updates suchen. Wenn Updates verfügbar sind, klicken Sie zu deren Installation auf **Updates installieren**. Da nur eine einzige Schnittstelle zum virtuellen Gerät vorhanden ist, tritt beim Übernehmen der Updates eine kurze Dienstunterbrechung auf. Das virtuelle Gerät wird heruntergefahren und (ggf.) neu gestartet, um alle veröffentlichten Updates zu übernehmen. Eine Schrittanleitung finden Sie unter [Aktualisieren Ihres Geräts](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
+- **Supportpaket** – Sie können ein Supportpaket erstellen und hochladen, um den Microsoft-Support beim Beheben von Problemen mit Ihrem virtuellen Gerät zu unterstützen. Eine Schrittanleitung finden Sie unter [Erstellen und Verwalten eines Unterstützungspakets](storsimple-create-manage-support-package.md).
 
 ### Speicherkonten für ein virtuelles Gerät
 

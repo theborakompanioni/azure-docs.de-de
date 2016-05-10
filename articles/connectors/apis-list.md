@@ -55,7 +55,10 @@ Es gibt zwei Arten von Triggern:
 Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Aktionen sind hilfreich für die Suche nach Daten, die dann bei der Ausführung der App verwendet werden können. Beispielsweise kann es sein, dass Sie bei der Verarbeitung einer Bestellung Daten in einer SQL-Datenbank suchen müssen. Oder Sie müssen möglicherweise Daten in eine Zieltabelle schreiben oder in dieser aktualisieren oder löschen. Sie können dazu die Aktionen verwenden, die von den Connectors bereitgestellt werden. Aktionen sind den in den Swagger-Metadaten definierten Vorgängen zugeordnet.
 
 
-[Neue Schemaversion „2015-08-01-preview“](../app-service-logic/app-service-logic-schema-2015-08-01.md) [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md) [Was ist Microsoft PowerApps Enterprise?](../power-apps/powerapps-get-started-azure-portal.md) [Gewusst wie: Migrieren von Logik-Apps zur Schemaversion 2015-08-01-preview](connectors-schema-migration.md)
+[Neue Schemaversion „2015-08-01-preview“](../app-service-logic/app-service-logic-schema-2015-08-01.md) 
+[Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md) 
+[Was ist Microsoft PowerApps Enterprise?](../power-apps/powerapps-get-started-azure-portal.md) 
+[Gewusst wie: Migrieren von Logik-Apps zur Schemaversion 2015-08-01-preview](connectors-schema-migration.md)
 
 <!--API Documentation-->
 [azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Verbindung mit Azure-Blob zum Verwalten der Dateien in Ihrem Blobcontainer."

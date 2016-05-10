@@ -100,6 +100,6 @@ Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad]. Wei
 [virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-Umgebungen]: ../app-service-web/app-service-app-service-environment-intro.md
-[Lernpfad]: https://azure.microsoft.com/de-DE/documentation/learning-paths/appservice-mobileapps/
+[Lernpfad]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
 
 <!---HONumber=AcomDC_0504_2016-->

@@ -46,13 +46,13 @@ Verwenden Sie den Befehl ALTER DATABASE mit MODIFY, und legen Sie die Option SER
 	-- Move the database named db1 to a pool named P1M125  
 
 ## Verschieben einer Datenbank in einen elastischen Pool 
-Verwenden Sie den Befehl ALTER DATABASE mit MODIFY, und legen Sie die Option SERVICE\_OBJECTIVE als ELASTIC\_POOL fest. Legen Sie den Namen auf den Namen des Zielpools fest.
+Verwenden Sie den Befehl ALTER DATABASE mit MODIFY, und legen Sie die Option SERVICE\_OBJECTIVE als ELASTIC_POOL fest. Legen Sie den Namen auf den Namen des Zielpools fest.
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
 	-- Move the database named db1 to a pool named S3100.
 
 ## Verschieben einer Datenbank aus einem elastischen Pool
-Verwenden Sie den Befehl ALTER DATABASE, und legen Sie SERVICE\_OBJECTIVE auf eine Leistungsebene fest (S0, S1 usw.).
+Verwenden Sie den Befehl ALTER DATABASE, und legen Sie SERVICE_OBJECTIVE auf eine Leistungsebene fest (S0, S1 usw.).
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
 	-- Changes the database into a stand-alone database with the service objective S1.

@@ -114,7 +114,7 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                     _location = "East US 2";
 
-                    string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
+                    string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
                     string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
                     string remoteFilePath = remoteFolderPath + "file.txt";
@@ -139,7 +139,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateUser`-Methode veranschaulicht
  	// Authenticate the user with AAD through an interactive popup.
     // You need to have an application registered with AAD in order to authenticate.
     //   For more information and instructions on how to register your application with AAD, see:
-    //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+    //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -157,7 +157,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateApplication`-Methode veransch
 	// Authenticate the application with AAD through the application's secret key.
 	// You need to have an application registered with AAD in order to authenticate.
 	//   For more information and instructions on how to register your application with AAD, see:
-	//   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+	//   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -330,7 +330,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
                 _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                 _location = "East US 2";
 
-                string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
+                string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
                 string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                 string remoteFolderPath = "/data_lake_path/";
                 string remoteFilePath = remoteFolderPath + "file.txt";
@@ -400,7 +400,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the user with AAD through an interactive popup.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -415,7 +415,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the application with AAD through the application's secret key.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
