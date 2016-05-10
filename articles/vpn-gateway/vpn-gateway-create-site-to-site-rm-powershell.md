@@ -21,10 +21,10 @@
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure-Portal – klassisch](vpn-gateway-site-to-site-create.md)
+- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Bereitstellungsmodells aus dem **Azure Resource Manager** geführt. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
+In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Bereitstellungsmodells aus dem Azure Resource Manager geführt. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -67,7 +67,9 @@ Geben Sie das Abonnement an, das Sie verwenden möchten.
 
 ## 2\. Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
 
-Die folgenden Beispiele zeigen ein Gateway-Subnetz von /28. Es ist zwar möglich, ein kleines Gateway-Subnetz von /29 zu erstellen, empfohlen wird dies jedoch nicht. Wir empfehlen, ein Gateway-Subnetz von /27 oder größer (/26, /25 usw.) zu erstellen, um zusätzlichen Funktionsanforderungen gerecht zu werden. Wenn Sie bereits über ein virtuelles Netzwerk mit einem Gatewaysubnetz von /29 oder größer verfügen, können Sie direkt mit [Schritt 3: Hinzufügen Ihres Gateways für das lokale Netzwerk](#localnet) fortfahren.
+Die folgenden Beispiele zeigen ein Gateway-Subnetz von /28. Es ist zwar möglich, ein kleines Gateway-Subnetz von /29 zu erstellen, empfohlen wird dies jedoch nicht. Wir empfehlen, ein Gateway-Subnetz von /27 oder größer (/26, /25 usw.) zu erstellen, um zusätzlichen Funktionsanforderungen gerecht zu werden.
+
+Wenn Sie bereits über ein virtuelles Netzwerk mit einem Gatewaysubnetz von /29 oder größer verfügen, können Sie direkt mit [Hinzufügen Ihres Gateways für das lokale Netzwerk](#localnet) fortfahren.
 
 ### So erstellen Sie ein virtuelles Netzwerk und ein Gatewaysubnetz
 
@@ -146,10 +148,10 @@ In diesem Schritt erstellen Sie das Gateway des virtuellen Netzwerks. Beachten S
 
 Verwenden Sie die folgenden Werte:
 
-- **-GatewayType** für eine Standort-zu-Standort-Konfiguration lautet **Vpn**. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Beispielsweise kann für andere Gatewaykonfigurationen für -GatewayType die Einstellung „ExpressRoute“ erforderlich sein. 
+- *-GatewayType* für eine Standort-zu-Standort-Konfiguration lautet *Vpn*. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Beispielsweise kann für andere Gatewaykonfigurationen für -GatewayType die Einstellung „ExpressRoute“ erforderlich sein. 
 
-- **-VpnType** kann **routingbasiert** (in einigen Dokumentationen als dynamisches Gateway bezeichnet) oder **richtlinienbasiert** sein (in einigen Dokumentationen als statisches Gateway bezeichnet). Weitere Informationen zu VPN-Gatewaytypen finden Sie unter [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md#vpntype).
-- **-GatewaySku** kann auf **Basic**, **Standard** oder **HighPerformance** festgelegt werden. 	
+- *-VpnType* kann *routenbasiert* (in einigen Dokumentationen als dynamisches Gateway bezeichnet) oder *richtlinienbasiert* sein (in einigen Dokumentationen als statisches Gateway bezeichnet). Weitere Informationen zu VPN-Gatewaytypen finden Sie unter [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md#vpntype).
+- *-GatewaySku* kann auf *Basic*, *Standard* oder *HighPerformance* festgelegt werden. 	
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
@@ -163,7 +165,7 @@ Um die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks zu ermittel
 
 ## 8\. Erstellen der VPN-Verbindung
 
-Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem VPN-Gerät. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Der gemeinsame Schlüssel muss dem Wert entsprechen, den Sie für Ihre VPN-Gerätekonfiguration verwendet haben. Beachten Sie, dass `-ConnectionType` für Standort-zu-Standort **IPsec** lautet.
+Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem VPN-Gerät. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Der gemeinsame Schlüssel muss dem Wert entsprechen, den Sie für Ihre VPN-Gerätekonfiguration verwendet haben. Beachten Sie, dass `-ConnectionType` für Standort-zu-Standort *IPsec* lautet.
 
 	$gateway1 = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 	$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
@@ -187,6 +189,8 @@ Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gat
 
 ## Nächste Schritte
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+- Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
+
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="05/03/2016"
 	ms.author="piyushjo" />
 
 # Erste Schritte mit Azure Mobile Engagement für Windows Phone Silverlight-Apps
@@ -37,7 +37,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ##<a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
 
-In diesem Lernprogramm wird eine "einfache Integration" dargestellt. Dabei handelt es sich um den minimalen erforderlichen Satz zur Sammlung von Daten und zum Senden einer Pushbenachrichtigung. Die vollständige Integrationsdokumentation finden Sie im Artikel zur [Integration des Mobile Engagement Windows Phone SDK](../mobile-engagement-windows-phone-sdk-overview/).
+In diesem Lernprogramm wird eine "einfache Integration" dargestellt. Dabei handelt es sich um den minimalen erforderlichen Satz zur Sammlung von Daten und zum Senden einer Pushbenachrichtigung. Die vollständige Integrationsdokumentation finden Sie im Artikel zur [Integration des Mobile Engagement Windows Phone SDK](mobile-engagement-windows-phone-sdk-overview.md).
 
 Wir erstellen eine einfache App mit Visual Studio, um die Integration zu veranschaulichen.
 
@@ -166,4 +166,4 @@ Jetzt sollte auf Ihrem Gerät eine Benachrichtigung als In-App-Benachrichtigung 
 [5]: ./media/mobile-engagement-windows-phone-get-started/reach-capabilities.png
 [6]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

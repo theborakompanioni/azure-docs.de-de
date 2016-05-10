@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/25/2016"
+   ms.date="04/29/2016"
    ms.author="cherylmc" />
 
 # Informationen zu VPN-Geräten für VPN-Gatewayverbindungen zwischen Standorten
@@ -60,7 +60,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Microsoft | Routing- und RAS-Dienst | Windows Server 2012 | Nicht kompatibel | [Microsoft-Beispiele](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG | Mission Control Security Gateway | N/V | [Installationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) | [Installationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan | Openswan | 2\.6.32 | (In Kürze verfügbar) | Nicht kompatibel |
-| Palo Alto Networks | Alle Geräte mit PAN-OS 5.0 oder höher | PAN-OS 5x oder höher | [Palo Alto Networks](https://support.paloaltonetworks.com/) | Nicht kompatibel |
+| Palo Alto Networks | Alle Geräte mit PAN-OS 5.0 | PAN-OS 6.1.5 oder höher (richtlinienbasiert), PAN-OS 7.0.5 oder höher (routenbasiert) | [Konfigurationsanweisungen](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) | [Konfigurationsanweisungen](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
 | Watchguard | Alle | Fireware XTM v11.x | [Konfigurationsanweisungen](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) | Nicht kompatibel |
 
 
@@ -116,11 +116,8 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 |--------------------------------------------------------------------------|------------------------------------------------|--------------------------------------------------------------------|
 | IKE-Version | IKEv1 | IKEv2 |
 | Hashalgorithmus | SHA1(SHA128) | SHA1(SHA128) |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) | 3.600 Sekunden | - |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - |
-| IPSec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (unten) |
-| Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1) |
-| Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
+| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) | 3\.600 Sekunden | 3\.600 Sekunden |
+| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - | | IPsec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (unten) | | Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1, 2, 5, 14, 24) | | Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
 
 ### IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways
 
@@ -144,12 +141,11 @@ Die folgende Tabelle listet die IPSec-SA-Verschlüsselungs und -Authentifizierun
 | 14 | AH MD5 mit ESP DES Null HMAC, keine vorgesehene Lebensdauer | AH MD5 mit ESP DES MD5, keine Lebensdauer |
 | 15 | AH SHA1 mit ESP DES SHA1, keine Lebensdauer | ESP SHA, keine Lebensdauer |
 | 16 | AH MD5 mit ESP DES MD5, keine Lebensdauer | ESP MD5, keine Lebensdauer |
-| 17 | - | AH SHA, keine Lebensdauer |
-| 18 | - | AH MD5, keine Lebensdauer |
+| 17 | - | AH SHA, keine Lebensdauer || 18 | - | AH MD5, keine Lebensdauer |
 
 
 - Sie können IPsec-ESP-NULL-Verschlüsselung mit routenbasierten und High-Performance-VPN Gateways angeben. Verschlüsselung auf Basis von NULL bietet keinen Schutz der Daten während der Übertragung und sollte nur verwendet werden, wenn maximaler Durchsatz und minimale Latenz erforderlich sind. Clients können diese in Szenarios mit VNET-zu-VNET-Kommunikation oder bei Anwendung der Verschlüsselung an anderer Stelle in der Lösung verwenden.
 
 - Verwenden Sie für standortübergreifende Konnektivität über das Internet die Standardeinstellungen für Azure-VPN-Gateways mit Verschlüsselung und Hashalgorithmen, die in der Tabelle oben aufgelistet werden, um die Sicherheit Ihrer kritischen Kommunikation zu gewährleisten.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

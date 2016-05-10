@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/15/2016"
+	ms.date="04/25/2016"
 	ms.author="anhoh"/>
 
 # NoSQL-Tutorial: Erstellen einer DocumentDB-C#-Konsolenanwendung
@@ -61,15 +61,11 @@ In diesem Schritt erstellen Sie ein DocumentDB-Konto. Wenn Sie bereits über ein
 
 1. Öffnen Sie **Visual Studio 2015** auf Ihrem Computer.
 2. Wählen Sie im Menü **Datei** die Option **Neu** und anschließend **Projekt** aus.
-3. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Vorlagen**/**Visual C#**/**Konsolenanwendung** aus, geben Sie Ihrem Projekt einen Namen, und klicken Sie dann auf **OK**.
-![Screenshot des Fensters „Neues Projekt“](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+3. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Vorlagen**/**Visual C#**/**Konsolenanwendung** aus, geben Sie Ihrem Projekt einen Namen, und klicken Sie dann auf **OK**. ![Screenshot des Fensters „Neues Projekt“](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
 4. Im **Projektmappen-Explorer** klicken Sie mit der rechten Maustaste auf die neue Konsolenanwendung, die sich unter Ihrer Visual Studio-Projektmappe befindet.
-5. Klicken Sie im gleichen Menü auf **NuGet-Pakete verwalten...**.
-![Screenshot des Kontextmenüs für das Projekt](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-6. Klicken Sie im Bereich ganz links des Fensters **NuGet-Pakete verwalten** auf **Online** / **nuget.org**.
-7. Suchen Sie im Eingabefeld **Onlinesuche** nach **DocumentDB**.
-8. Suchen Sie in den Ergebnissen nach **Microsoft Azure DocumentDB-Clientbibliothek** und klicken Sie auf **Installieren**. Die Paket-ID für die DocumentDB-Clientbibliothek lautet [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB).
-![Screenshot des NuGet-Menüs zum Suchen nach dem DocumentDB-Client-SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+5. Klicken Sie im gleichen Menü auf **NuGet-Pakete verwalten...**. ![Screenshot des Kontextmenüs für das Projekt](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+6. Klicken Sie auf der Registerkarte **NuGet** auf **Durchsuchen**, und geben Sie in das Suchfeld **azure documentdb** ein.
+7. Suchen Sie in den Ergebnissen nach **Microsoft.Azure.DocumentDB**, und klicken Sie auf **Installieren**. Die Paket-ID für die DocumentDB-Clientbibliothek lautet [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB). ![Screenshot des NuGet-Menüs zum Suchen nach dem DocumentDB-Client-SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
 Prima. Damit ist die Einrichtung abgeschlossen und wir können mit dem Schreiben von Code beginnen. Ein vollständiges Codeprojekt dieses Tutorials finden Sie auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).
 
@@ -77,10 +73,11 @@ Prima. Damit ist die Einrichtung abgeschlossen und wir können mit dem Schreiben
 
 Fügen Sie zunächst in der Datei "Program.cs" am Anfang der C#-Anwendung folgende Verweise hinzu:
 
-		// ADD THIS PART TO YOUR CODE
-		using System;
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
+
+    // ADD THIS PART TO YOUR CODE
     using System.Net;
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
@@ -88,7 +85,7 @@ Fügen Sie zunächst in der Datei "Program.cs" am Anfang der C#-Anwendung folgen
 
 > [AZURE.IMPORTANT] Um dieses NoSQL-Tutorial abzuschließen, müssen Sie die oben genannten Abhängigkeiten hinzufügen.
 
-Fügen Sie diese beiden Konstanten und Ihre *Client* variable nun unter der öffentlichen *Program* -Klasse hinzu.
+Fügen Sie diese beiden Konstanten und Ihre *Client*variable nun unter der öffentlichen *Program*-Klasse hinzu.
 
 	public class Program
 	{
@@ -144,7 +141,6 @@ Fügen Sie den folgenden Code hinzu, um die asynchrone Aufgabe über die **Main*
 					Console.WriteLine("End of demo, press any key to exit.");
 					Console.ReadKey();
 			}
-	}
 
 Drücken Sie **F5**, um die Anwendung auszuführen.
 
@@ -165,7 +161,7 @@ Kopieren Sie die **WriteToConsoleAndPromptToContinue**-Methode, und fügen Sie s
 
 Ihre DocumentDB-[Datenbank](documentdb-resources.md#databases) kann mithilfe der Methode [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) der **DocumentClient**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für JSON-Dokumentspeicher, der auf Sammlungen aufgeteilt ist.
 
-Kopieren Sie die **CreateDatabaseIfNotExists**-Methode, und fügen Sie sie unterhalb der **GetStartedDemo**-Methode ein.
+Kopieren Sie die **CreateDatabaseIfNotExists**-Methode, und fügen Sie sie unterhalb der **WriteToConsoleAndPromptToContinue**-Methode ein.
 
 	// ADD THIS PART TO YOUR CODE
 	private async Task CreateDatabaseIfNotExists(string databaseName)
@@ -246,7 +242,7 @@ Kopieren Sie die **CreateDocumentCollectionIfNotExists**-Methode, und fügen Sie
 		}
 	}
 
-Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo**-Methode unterhalb der Datenbankerstellung ein. Es wird eine Dokumentsammlung mit dem Namen *FamilyCollection* erstellt.
+Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo**-Methode unterhalb der Datenbankerstellung ein. Dadurch wird eine Dokumentsammlung mit dem Namen *FamilyCollection* erstellt.
 
 		this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
@@ -614,4 +610,4 @@ Um die Verweise auf das DocumentDB .NET SDK in Visual Studio wiederherzustellen,
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

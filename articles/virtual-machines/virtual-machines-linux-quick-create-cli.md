@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="04/27/2016"
+   ms.date="04/29/2016"
    ms.author="v-livech"/>
 
 
@@ -23,9 +23,10 @@ Dieser Artikel zeigt, wie Sie mit dem Befehl `azure vm quick-create` der Azure-B
 
 ## Kurze Zusammenfassung der Befehle
 
+Befehl zum Bereitstellen des virtuellen Computers und Anfügen Ihres SSH-Schlüssels
+
 ```
-# One command to deploy the VM and attach your SSH key
-ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
+azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
 ```
 
 ## Bereitstellen eines virtuellen Linux-Computers
@@ -36,9 +37,15 @@ Für ImageURN verwenden wir `canonical:ubuntuserver:14.04.2-LTS:latest` zum Bere
 
 Ersetzen Sie in der folgenden exemplarischen Vorgehensweise für einen Befehl die Aufforderungen durch die Werte aus Ihrer eigenen Umgebung. Wir verwenden hier Beispielwerte. Die Ausgabe sollte dem folgenden Ausgabeblock ähneln.
 
+Befolgen Sie die Anweisungen und geben Sie Ihre Namen ein.
+
 ```bash
-# Follow the prompts and enter your own names
-ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
+azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
+```
+
+Ausgabe
+
+```bash
 info:    Executing command vm quick-create
 Resource group name: exampleRGname
 Virtual machine name: exampleVMname
@@ -48,10 +55,6 @@ ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to 
 User name: ahmet
 Password: ************************************************
 Confirm password: ************************************************
-```
-
-```bash
-########### expected output ###########
 + Looking up the VM "exampleVMname"
 info:    Verifying the public key SSH file: /home/ahmet/.ssh/azure_id_rsa.pub
 info:    Using the VM Size "Standard_D1"
@@ -130,12 +133,12 @@ info:    vm quick-create command OK
 Sie können jetzt eine SSH-Verbindung mit Ihrem virtuellen Computer auf dem SSH-Standardport 22 und der öffentlichen IP-Adresse oder den vollqualifizierten Domänennamen (FQDN) (s. Ausgabe oben) herstellen.
 
 ```
-ahmet@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
+ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
 ```
 
 ## Nächste Schritte
 
-`azure vm quick-create` ist eine Möglichkeit, schnell einen virtuellen Computer bereitszustellen, damit Sie sich bei einer Bash-Shell anmelden und arbeiten können. Mit `vm quick-create` stehen Ihnen die zusätzlichen Vorteile einer komplexen Umgebung nicht zur Verfügung. Lesen Sie zum Bereitstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
+`azure vm quick-create` ist eine Möglichkeit, schnell einen virtuellen Computer bereitzustellen, damit Sie sich bei einer Bash-Shell anmelden und arbeiten können. Mit `vm quick-create` stehen Ihnen die zusätzlichen Vorteile einer komplexen Umgebung nicht zur Verfügung. Lesen Sie zum Bereitstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
 
 - [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
 - [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
@@ -145,4 +148,4 @@ ahmet@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
 
 Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, Konfiguration und Orchestrierung.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

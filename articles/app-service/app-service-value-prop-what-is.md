@@ -41,11 +41,11 @@ Die folgenden allgemeinen Konzepte beschreiben, welche Möglichkeiten Ihnen App 
 ### App-Typen
 App Service ermöglicht Ihnen das Erstellen der folgenden App-Typen über eine einzige Entwicklungsumgebung:
 
-- [**Web-Apps**](../app-service-web-overview) – Schnelles Erstellen und Bereitstellen von unternehmenskritischen Web-Apps, die in Abstimmung auf Ihre Geschäftsanforderungen skaliert werden können.
-- [**Mobile Apps**](../app-service-mobile-value-prop-preview) – Unterstützen Sie Mitarbeiter, Partner und Kunden jederzeit auf beliebigen Geräten.
-- [**API-Apps**](../app-service-api-apps-why-best-platform) – Einfaches Erstellen und Nutzen von Cloud-APIs
-- [**Funktions-Apps**](../functions-overview) – Erstellen Sie einfache Funktionen, die auf Ereignisse in Azure, in lokalen Systemen und bei SaaS-Anbietern reagieren.
-- [**Logik-Apps**](../app-service-logic-what-are-logic-apps) – Automatisieren Sie Zugriff und Nutzung cloudübergreifend, ohne hierzu Code schreiben zu müssen.
+- [**Web-Apps**](../app-service-web/app-service-web-overview.md) – Schnelles Erstellen und Bereitstellen von unternehmenskritischen Web-Apps, die in Abstimmung auf Ihre Geschäftsanforderungen skaliert werden können.
+- [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) – Unterstützen Sie Mitarbeiter, Partner und Kunden jederzeit auf beliebigen Geräten.
+- [**API-Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) – Einfaches Erstellen und Nutzen von Cloud-APIs
+- [**Funktions-Apps**](../azure-functions/functions-overview.md) – Erstellen Sie einfache Funktionen, die auf Ereignisse in Azure, in lokalen Systemen und bei SaaS-Anbietern reagieren.
+- [**Logik-Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) – Automatisieren Sie Zugriff und Nutzung cloudübergreifend, ohne hierzu Code schreiben zu müssen.
 
 Als einzelner integrierter Dienst vereinfacht App Service das Kombinieren der zwei App-Typen in einer einzigen Lösung, sodass Sie auf einfache Weise und mit demselben Back-End Apps für Webclients und mobile Clients erstellen und diese in lokale System sowie gängige Dienste integrieren können – darunter z.B. Office 365 und salesforce.com.
 
@@ -60,4 +60,4 @@ Mit Azure App Service brauchen Sie dazu nur eine Sprache auszuwählen!
 [Erstellen Sie eine neue App](http://go.microsoft.com/fwlink/?LinkId=523751) – sofort und kostenlos. Keine Kreditkarte erforderlich, keine Verpflichtungen, kein Ärger.
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

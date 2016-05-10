@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/20/2016"
+   ms.date="04/27/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK
@@ -34,11 +34,17 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
 * Visual Studio 2013 oder 2015 Die folgenden Anweisungen verwenden Visual Studio 2015.
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
-* **Erstellen einer Azure Active Directory-Anwendung**. Siehe [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md). Für eine .NET-Konsolenanwendung, die Sie in diesem Artikel erstellen, müssen Sie eine **native Clientanwendung** erstellen (und keine Webanwendung wie unter dem Link gezeigt). Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
-	- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
-	- Festlegen der delegierten Berechtigungen
+* **Erstellen einer Azure Active Directory-Anwendung**. Zur Authentifizierung mithilfe von Azure Active Directory stehen Ihnen zwei Möglichkeiten zur Verfügung: **interaktiv** und **nicht interaktiv**. Je nach der gewählten Authentifizierung gelten unterschiedliche Voraussetzungen.
+	* **Interaktive Authentifizierung** (die in diesem Artikel verwendet wird) – Sie müssen in Azure Active Directory eine **native Clientanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
+		- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
+		- Festlegen der delegierten Berechtigungen
 
-	Informationen zum Abrufen dieser Werte und Festlegen der Berechtigungen sind unter dem oben angegebenen Link verfügbar.
+	* **Nicht interaktive Authentifizierung** – Sie müssen in Azure Active Directory eine **Webanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
+		- Abrufen von **Client-ID**,**geheimem Clientschlüssel** und **Umleitungs-URI** für die Anwendung
+		- Festlegen der delegierten Berechtigungen
+		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen. 
+
+	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen können, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
 
 ## Erstellen einer .NET-Anwendung
 
@@ -122,9 +128,9 @@ In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügb
 
 Es gibt zwei Möglichkeiten für die Authentifizierung mit Azure Active Directory:
 
-* **Interaktiv:** Ein Benutzer meldet sich über die Anwendung an. Diese Option wird in der `AuthenticateUser`-Methode im folgenden Codeausschnitt implementiert.
+* **Interaktiv**: Ein Benutzer meldet sich über die Anwendung an. Diese Option wird in der `AuthenticateUser`-Methode im folgenden Codeausschnitt implementiert.
 
-* **Nicht interaktiv:** Hierbei stellt die Anwendung eigene Anmeldeinformationen bereit. Diese Option wird in der `AuthenticateAppliaction`-Methode im folgenden Codeausschnitt implementiert.
+* **Nicht interaktiv**: Hierbei stellt die Anwendung eigene Anmeldeinformationen bereit. Diese Option wird in der `AuthenticateAppliaction`-Methode im folgenden Codeausschnitt implementiert.
 
 ### Interaktive Authentifizierung
 
@@ -284,11 +290,11 @@ Im folgenden Codeausschnitt wird eine `DeleteAccount`-Methode veranschaulicht, d
 
 ## Anhang: Beispielcode
 
-Der folgende Codeausschnitt ist ein umfassendes Codebeispiel, das Sie kopieren und in Ihre Anwendung einfügen können, um einen End-to-End-Vorgang im Data Lake-Speicher zu verfolgen. Stellen Sie vor dem Ausführen des Codeausschnitts sicher, dass Sie die erforderlichen Werte angeben, z.B. Data Lake-Speichername, Ressourcengruppenname usw. Sie müssen auch die Werte angeben, die für die Azure Active Direcctory-Authentifizierung benötigt werden, z.B. **<APPLICATION-CLIENT-ID>** , **<APPLICATION-REPLY-URI>** und **<SUBSCRIPTION-ID>**.
+Der folgende Codeausschnitt ist ein umfassendes Codebeispiel, das Sie kopieren und in Ihre Anwendung einfügen können, um einen End-to-End-Vorgang im Data Lake-Speicher zu verfolgen. Stellen Sie vor dem Ausführen des Codeausschnitts sicher, dass Sie die erforderlichen Werte angeben, z.B. Data Lake-Speichername, Ressourcengruppenname usw. Sie müssen auch die Werte angeben, die für die Azure Active Directory-Authentifizierung benötigt werden, z.B. **<APPLICATION-CLIENT-ID>** , **<APPLICATION-REPLY-URI>** und **<SUBSCRIPTION-ID>**.
 
 Der unten angegebene Codeausschnitt enthält zwar Methoden für beide Ansätze (interaktiv und nicht interaktiv), aber der nicht interaktive Codeblock ist auskommentiert. Für diese interaktive Methode müssen Sie die Client-ID und den Umleitungs-URI der AAD-Anwendung angeben. Im Link unter „Voraussetzungen“ finden Sie Anweisungen, wie Sie diese Informationen erhalten können.
 
->[AZURE.NOTE] Wenn Sie den Codeausschnitt ändern und stattdessen die nicht interaktive `AuthenticateApplication`-Methode verwenden möchten, müssen Sie zusätzlich zu Client-ID und Clientantwort-URI auch den Clientauthentifizierungsschlüssel als Eingabe für die Methode angeben. Im Artikel [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md) finden Sie auch Informationen zum Generieren und Abrufen des Clientauthentifizierungsschlüssels.
+>[AZURE.NOTE] Wenn Sie den Codeausschnitt ändern und stattdessen die nicht interaktive Methode (`AuthenticateApplication`) verwenden möchten, müssen Sie zusätzlich zu Client-ID und Clientantwort-URI auch den Clientauthentifizierungsschlüssel als Eingabe für die Methode angeben. Im Artikel [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md) finden Sie auch Informationen zum Generieren und Abrufen des Clientauthentifizierungsschlüssels.
 	
 Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der Dateiname auf dem Computer vorhanden sind. Wenn Sie Beispieldaten zum Hochladen verwenden möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) herunterladen.
 
@@ -520,4 +526,4 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -181,6 +181,7 @@ In diesem Abschnitt ersetzen Sie die serverseitige Implementierung des generiert
         import com.sun.jersey.core.header.FormDataContentDisposition;
         import com.sun.jersey.multipart.FormDataParam;
         import javax.ws.rs.core.Response;
+        import javax.ws.rs.core.SecurityContext;
 
         @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen", date = "2015-11-24T21:54:11.648Z")
         public class ContactsApiServiceImpl extends ContactsApiService {
@@ -295,4 +296,4 @@ Aufbauend auf diesem Beispiel können Sie mehr über das [Storage SDK für Java]
 
 Weitere Informationen zum Verwenden von Java in Azure finden Sie im [Java Developer Center](/develop/java/).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

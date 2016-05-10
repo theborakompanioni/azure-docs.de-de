@@ -18,13 +18,7 @@
 
 # Erste Schritte mit Node.js-Web-Apps in Azure App Service
 
-> [AZURE.SELECTOR]
-- [.Net](web-sites-dotnet-get-started.md)
-- [Node.js](app-service-web-nodejs-get-started.md)
-- [Java](web-sites-java-get-started.md)
-- [PHP – Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP – FTP](web-sites-php-mysql-deploy-use-ftp.md)
-- [Python](web-sites-python-ptvs-django-mysql.md)
+[AZURE.INCLUDE [Registerkarten](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js](http://nodejs.org)-Anwendung erstellen und für eine [Web-App](app-service-web-overview.md) in [Azure App Service](../app-service/app-service-value-prop-what-is.md) über die Befehlszeile bereitstellen, z.B. „cmd.exe“ oder Bash. Die Anweisungen in diesem Tutorial gelten für alle Betriebssysteme, unter denen Node.js ausgeführt werden kann.
 
@@ -35,7 +29,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js](http://nodejs.o
 - Yoeman. Eine Installationsanleitung finden Sie [hier](http://yeoman.io/).
 - Git. Binärdateien für die Installation finden Sie [hier](http://www.git-scm.com/downloads).
 - Azure-Befehlszeilenschnittstelle. Eine Installationsanleitung finden Sie [hier](../xplat-cli-install.md).
-- Ein Microsoft Azure-Konto. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- Ein Microsoft Azure-Konto. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion anmelden](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 ## Erstellen und Bereitstellen einer einfachen Node.js-Web-App
 
@@ -57,7 +51,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js](http://nodejs.o
 
     Navigieren Sie in Ihrem Browser zu [http://localhost:3000](http://localhost:3000), um zu prüfen, ob die Express-Startseite angezeigt wird. Nachdem Sie sich vergewissert haben, dass die App ordnungsgemäß ausgeführt wird, können Sie sie mit `Ctrl-C` beenden.
     
-1. Melden Sie sich wie folgt bei Azure an. (Hierzu benötigen Sie die [Azure-Befehlszeilenschnittstelle](#prereq).)
+1. Melden Sie sich wie folgt bei Azure an (hierzu benötigen Sie die [Azure-Befehlszeilenschnittstelle](#prereq)):
 
         azure login
 
@@ -209,4 +203,4 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 - [Node.js Developer Center](/develop/nodejs/)
 - [Erste Schritte mit Web-Apps in Azure App Service](app-service-web-get-started.md)
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

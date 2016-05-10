@@ -13,7 +13,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  ms.author="dobett"/>
 
 # Was ist Azure IoT Hub?
@@ -57,7 +57,10 @@ Mit Azure IoT Hub werden die Verbindungsanforderungen für Geräte wie folgt erf
 
 -   **Umfassender Satz von Gerätebibliotheken:** [Azure IoT-Geräte-SDKs][lnk-device-sdks] sind für die unterschiedlichsten Sprachen und Plattformen verfügbar und werden dafür unterstützt – C für viele Linux-Distributionen, Windows und Echtzeitbetriebssysteme. Azure IoT-Geräte-SDKs unterstützen auch verwaltete Sprachen wie C#, Java und JavaScript.
 
--   **IoT-Protokolle und -Erweiterbarkeit:** Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, macht IoT Hub ein öffentliches Protokoll verfügbar, mit dem Geräte die Protokolle MQTT 3.1.1, HTTP 1.1 und AMQP 1.0 nativ verwenden können. Sie können IoT Hub auch erweitern, um Unterstützung für benutzerdefinierte Protokolle durch Anpassen der Open Source-Komponente [Azure IoT-Protokollgateway][protocol-gateway] bereitzustellen. Sie können das Azure IoT-Protokollgateway in der Cloud oder lokal ausführen.
+-   **IoT-Protokolle und -Erweiterbarkeit:** Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, macht IoT Hub ein öffentliches Protokoll verfügbar, mit dem Geräte die Protokolle MQTT 3.1.1, HTTP 1.1 und AMQP 1.0 nativ verwenden können. Folgendermaßen können Sie IoT Hub erweitern, um benutzerdefinierte Protokolle zu unterstützen:
+
+    - Erstellen eines Bereichsgateways mit dem [Azure IoT Gateway SDK][lnk-gateway-sdk], das Ihr benutzerdefiniertes Protokoll in eines der drei Protokolle umwandelt, die von IoT Hub gelesen werden können. 
+    - Anpassen des [Azure IoT-Protokollgateways][protocol-gateway], einer Open-Source-Komponente, die in der Cloud ausgeführt wird.
 
 -   **Skalierung:** Azure IoT Hub kann auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skaliert werden.
 
@@ -71,7 +74,7 @@ Sie können auch andere gängige Muster implementieren, z. B. das Hoch- und Her
 
 ## Gateways
 
-Ein Gateway in einer IoT-Lösung ist i. d. R. entweder ein in der Cloud bereitgestelltes [Protokollgateway][lnk-gateway] oder ein [Bereichsgateway][lnk-field-gateway], das lokal mit Ihren Geräten bereitgestellt wird. Ein Protokollgateway führt die Protokollübersetzung, z. B. von MQTT in AMQP, durch. Ein Bereichsgateway stellt lokale Verwaltungsdienste für Ihre Geräte bereit. Es kann sich hierbei um ein spezielles Gerät oder eine Software handeln, die auf vorhandener Hardware ausgeführt wird. Beide Gatewaytypen fungieren als Vermittler zwischen Ihren Geräten und dem IoT Hub.
+Ein Gateway in einer IoT-Lösung ist i. d. R. entweder ein in der Cloud bereitgestelltes [Protokollgateway][lnk-gateway] oder ein [Bereichsgateway][lnk-field-gateway], das lokal mit Ihren Geräten bereitgestellt wird. Ein Protokollgateway führt die Protokollübersetzung, z. B. von MQTT in AMQP, durch. Ein Bereichsgateway kann Analysen ausführen, zeitkritische Entscheidungen treffen, die Latenzen reduzieren, Geräteverwaltungsdienste bereitstellen, zur Einhaltung von Sicherheits- und Datenschutzbestimmungen beitragen und die Protokollübersetzung durchführen. Beide Gatewaytypen fungieren als Vermittler zwischen Ihren Geräten und dem IoT Hub.
 
 Ein Bereichsgateway unterscheidet sich von einem einfachen Gerät für das Routing von Datenverkehr (z. B. einem Gerät für die Netzwerkadressübersetzung (NAT) oder einer Firewall), da es üblicherweise eine aktive Rolle bei der Verwaltung des Zugriffs und des Informationsflusses in der Lösung hat.
 
@@ -116,5 +119,6 @@ Weitere Informationen zu Azure IoT Hub finden Sie unter den folgenden Links:
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
+[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

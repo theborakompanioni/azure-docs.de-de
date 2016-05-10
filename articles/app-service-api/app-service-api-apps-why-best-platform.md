@@ -12,7 +12,7 @@
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="03/31/2016" 
 	ms.author="tdykstra"/>
 
@@ -64,4 +64,4 @@ Arbeiten Sie zum Einstieg in API-Apps eines der Tutorials unter [Erste Schritte 
 
 Wenn Sie Fragen zu API-Apps stellen möchten, starten Sie einen Thread im [API-Apps-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureAPIApps).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

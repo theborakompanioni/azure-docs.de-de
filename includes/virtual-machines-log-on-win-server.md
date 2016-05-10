@@ -2,9 +2,11 @@
 
 4. Nach Klicken auf **Verbinden** wird eine Remotedesktopprotokolldatei (RDP-Datei) erstellt und heruntergeladen. Klicken Sie auf **Öffnen**, damit diese Datei verwendet wird.
 
-5. Klicken Sie im Fenster "Remotedesktop" auf **Verbinden**, um den Vorgang fortzusetzen.
+	![Screenshot der heruntergeladenen .RDP-Datei.](./media/virtual-machines-log-on-win-server/open-rdp.png)
 
-	![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/virtual-machines-log-on-win-server/connectpublisher.png)
+5. Es erscheint eine Warnung mit dem Hinweis, dass die RDP-Datei von einem unbekannten Herausgeber stammt. Dies ist normal. Klicken Sie im Fenster "Remotedesktop" auf **Verbinden**, um den Vorgang fortzusetzen.
+
+	![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/virtual-machines-log-on-win-server/rdp-warn.png)
 
 6. Geben Sie im Fenster "Windows-Sicherheit" den Benutzernamen und das Kennwort eines Kontos auf dem virtuellen Computer ein, und klicken Sie anschließend auf **OK**.
 
@@ -16,6 +18,6 @@
 
 7.	Klicken Sie auf **Ja**, um die Identität des virtuellen Computers zu bestätigen und das Anmelden zu beenden.
 
-	![Screenshot mit einer Meldung zur Überprüfung der Identität des virtuellen Computers](./media/virtual-machines-log-on-win-server/connectverify.png)
+	![Screenshot mit einer Meldung zur Überprüfung der Identität des virtuellen Computers](./media/virtual-machines-log-on-win-server/cert-warning.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

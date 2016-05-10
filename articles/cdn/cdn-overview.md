@@ -48,7 +48,7 @@ Die Verwendung des CDN zum Zwischenspeichern von Azure-Daten bietet folgende Vor
 
 Der CDN-Tarif „Standard“ enthält die folgenden Features:
 
-- Einfache Integration mittels der Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), Web-Apps und [Media Services](../media-services/media-services-manage-origins.md#enable_cdn)
+- Einfache Integration mittels der Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web-Apps](../app-service-web/cdn-websites-with-cdn.md) und[ Media Services](../media-services/media-services-manage-origins.md#enable_cdn)
 - HTTPS-Unterstützung
 - Lastenausgleich
 - DDoS-Schutz
@@ -71,10 +71,10 @@ Der CDN-Tarif „Premium“ beinhaltet alle Funktionen des Standard-Tarifs und f
 
 ## Nächste Schritte
 
-Informationen zu den ersten Schritten mit CDN finden Sie unter [Einstieg in Azure CDN](./cdn-create-new-endpoint.md).
+Informationen zu den ersten Schritten mit CDN finden Sie unter [Verwenden von Azure CDN](./cdn-create-new-endpoint.md).
 
 Wenn Sie bereits CDN-Kunde sind, können Sie jetzt Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) verwalten.
 
-Im [Video zu unserer Build 2016-Sitzung](../../videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
+Im [Video zu unserer Build 2016-Sitzung](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->
