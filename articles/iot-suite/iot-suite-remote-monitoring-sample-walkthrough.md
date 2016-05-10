@@ -1,6 +1,6 @@
 <properties
  pageTitle="Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung | Microsoft Azure"
- description="Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
+ description="Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -32,7 +32,7 @@ Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten
 
 ### Simulierte Geräte
 
-In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
+In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
 
 
 | Message | Beschreibung |
@@ -217,7 +217,7 @@ Wenn das Gerät meldet, dass es den Befehl erfolgreich ausgeführt hat, wechselt
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_06.png)
 
-Mit dem Lösungsportal können Sie nach Geräten mit bestimmten Merkmalen wie z. B. einer Modellnummer suchen:
+Mit dem Lösungsportal können Sie nach Geräten mit bestimmten Merkmalen wie z. B. einer Modellnummer suchen:
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_07.png)
 
@@ -225,4 +225,12 @@ Sie können ein Gerät deaktivieren, und nachdem es deaktiviert wurde, können S
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+
+## Nächste Schritte
+
+In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur Remoteüberwachung vorkonfigurierter Lösungen:
+
+- [IoT Suite - Under The Hood - Remote Monitoring](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx) (IoT Suite – Weitere Informationen – Remoteüberwachung)
+- [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx) (IoT Suite – Remoteüberwachung – Hinzufügen von simulierten und Live-Geräten)
+
+<!---HONumber=AcomDC_0504_2016-->

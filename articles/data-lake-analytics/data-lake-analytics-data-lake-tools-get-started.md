@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen."
    services="data-lake-analytics"
    documentationCenter=""
-   authors="mumian"
+   authors="edmacauley"
    manager="paulettm"
    editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/15/2016"
-   ms.author="jgao"/>
+   ms.date="04/26/2016"
+   ms.author="edmaca"/>
 
 # Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 
@@ -130,10 +130,10 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
 		IntelliSense für Katalogentitäten (Datenbanken, Schemas, Tabellen, UDOs usw.) bezieht sich auf Ihr Compute-Konto. Sie können das aktuelle aktive Compute-Konto, die Datenbank und das Schema in der obersten Symbolleiste überprüfen und über die Dropdownlisten wechseln.
 
-    - **Erweitern von Spalten mit***
+    - **Erweitern von Spalten mit ***
 
-        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten.
-![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. 
+	![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.
 
@@ -343,7 +343,7 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
 
     #region - prepare the source data
     Write-Host "Import the source data ..."  -ForegroundColor Green
-    $localFolder = "C:\Tutorials\Downloads" # A temp location for the file.
+    $localFolder = "C:\Tutorials\Downloads\" # A temp location for the file.
     $storageAccount = "adltutorials"  # Don't modify this value.
     $container = "adls-sample-data"  #Don't modify this value.
 
@@ -362,4 +362,4 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

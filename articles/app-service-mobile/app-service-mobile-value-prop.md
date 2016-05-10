@@ -3,7 +3,7 @@
 	description="Erfahren Sie, welche Vorteile App Service für Ihre mobilen Unternehmens-Apps bietet."
 	services="app-service\mobile"
 	documentationCenter=""
-	authors="kirillg"
+	authors="adrianhall"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/04/2016"
-	ms.author="kirillg"/>
+	ms.date="05/03/2016"
+	ms.author="adrianha"/>
 
 # <a name="getting-started"> </a>Was sind Mobile Apps?
 
@@ -100,6 +100,6 @@ Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad]. Wei
 [virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-Umgebungen]: ../app-service-web/app-service-app-service-environment-intro.md
-[Lernpfad]: https://azure.microsoft.com/de-DE/documentation/learning-paths/appservice-mobileapps/
+[Lernpfad]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

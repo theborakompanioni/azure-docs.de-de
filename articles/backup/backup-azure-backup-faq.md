@@ -26,7 +26,8 @@
 Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazugehörigen Antworten) zum Azure Backup-Dienst. In unserer Community erhalten Sie schnell eine Antwort, und wenn eine Frage häufig gestellt wird, fügen wir sie diesem Artikel hinzu. Die Antworten auf Fragen enthalten in der Regel Referenz- bzw. Supportinformationen. Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
 
 ## Installation und Konfiguration
-**F1. Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt?** <br/> A1. Folgende Betriebssysteme werden von Azure Backup unterstützt:
+**F1. Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt?** <br/> 
+A1. Folgende Betriebssysteme werden von Azure Backup unterstützt:
 
 
 | Betriebssystem | Plattform | SKU |
@@ -47,7 +48,7 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F3. Welche SCDPM-Serverversion wird unterstützt?** <br/> A3. Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR6; Stand: Juli 2015) zu installieren.
 
-**F4. Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die **Tresoranmeldedaten** einzugeben. Laufen die Tresoranmeldeinformationen ab? A4. Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Azure Backup-Tresor herunter.
+****F4. Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die **Tresoranmeldedaten** einzugeben. Laufen die Tresoranmeldeinformationen ab? A4. Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Azure Backup-Tresor herunter.
 
 **F5. Gibt es eine Beschränkung hinsichtlich der Anzahl von Sicherungstresoren, die in einem Azure-Abonnement erstellt werden können?** <br/> A5. Ja. Sie können pro Abonnement 25 Tresore erstellen (Stand: Juli 2015). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
 
@@ -96,15 +97,15 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F18. Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?** <br/> A18: Nein. Der Sicherungstresor speichert die gesicherten Daten, die bis zum Zeitpunkt des Abbruchs übertragen wurden. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Die nächste ausgelöste Sicherung ist eine inkrementelle Sicherung, die auf dem vorherigen Sicherungsvorgang aufbaut. Eine inkrementelle Sicherung sorgt für eine bessere Nutzung der Bandbreite, da nicht mehrfach die gleichen Daten übertragen werden müssen.
 
-**F19. Warum wird eine Warnung mit dem Hinweis angezeigt, dass für diesen Server keine Azure-Sicherungen konfiguriert wurden, obwohl ich zuvor regelmäßige Sicherungen geplant habe?** <br/> A19: Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherungszeitplaneinstellungen nicht den Einstellungen im Sicherungstresor entsprechen. Wenn für den Server oder die Einstellungen ein als funktionierend bekannter Zustand wiederhergestellt wurde, ist unter Umständen die Synchronisierung der Sicherungszeitpläne verloren gegangen. Wenn Sie diese Warnung erhalten, sollten Sie die [Sicherungsrichtlinie neu konfigurieren](backup-azure-backup-windows-server.md) und dann **Sicherung jetzt ausführen** verwenden, um den lokalen Server wieder mit Azure zu synchronisieren.
+**F19. Warum wird eine Warnung mit dem Hinweis angezeigt, dass für diesen Server keine Azure-Sicherungen konfiguriert wurden, obwohl ich zuvor regelmäßige Sicherungen geplant habe?** <br/> A19: Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherungszeitplaneinstellungen nicht den Einstellungen im Sicherungstresor entsprechen. Wenn für den Server oder die Einstellungen ein als funktionierend bekannter Zustand wiederhergestellt wurde, ist unter Umständen die Synchronisierung der Sicherungszeitpläne verloren gegangen. Wenn Sie diese Warnung erhalten, sollten Sie die [Sicherungsrichtlinie neu konfigurieren](backup-azure-manage-windows-server.md) und dann **Sicherung jetzt ausführen** verwenden, um den lokalen Server wieder mit Azure zu synchronisieren.
 
 **F20. Welche Firewallregeln sollten für Azure Backup konfiguriert werden?** <br/> A20. Zur Erzielung eines nahtlosen Schutzes der Daten vom Typ „lokal zu Azure“ und „Workload zu Azure“ wird empfohlen, für die Firewall die Kommunikation mit den folgenden URLs zuzulassen:
 
 - www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- \*.Microsoft.com
+- \*.WindowsAzure.com
+- \*.microsoftonline.com
+- \*.windows.net
 
 **F21. Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, die mithilfe der VM-Erweiterung bereits vom Azure Backup-Dienst gesichert wurde?** <br/> A21. Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung. Sie können den Azure Backup-Agent auf einem Windows-Gastbetriebssystem installieren, um Dateien und Ordner auf dem Gastbetriebssystem zu schützen.
 
@@ -204,4 +205,4 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 
   Nachdem die Erstellung der Sicherung am neuen Cachespeicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

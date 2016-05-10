@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/21/2016"
+   ms.date="05/03/2016"
    ms.author="cherylmc"/>
 
 
@@ -22,7 +22,7 @@ Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute mü
 
 Der Artikel [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md) enthält eine Beschreibung der Routingsitzungen, die zum Herstellen der Konnektivität eingerichtet werden müssen.
 
-**Hinweis**: Microsoft unterstützt keine Routerredundanzprotokolle (z. B. HSRP, VRRP) für Konfigurationen mit hoher Verfügbarkeit. Wir nutzen ein redundantes Paar mit BGP-Sitzungen pro Peering, um die hohe Verfügbarkeit sicherzustellen.
+**Hinweis**: Microsoft unterstützt keine Routerredundanzprotokolle (z. B. HSRP, VRRP) für Konfigurationen mit hoher Verfügbarkeit. Wir nutzen ein redundantes Paar mit BGP-Sitzungen pro Peering, um die hohe Verfügbarkeit sicherzustellen.
 
 ## IP-Adressen für Peerings
 
@@ -48,8 +48,8 @@ a.b.c.d/29 wird in a.b.c.d/30 und a.b.c.d+4/30 unterteilt und über die Bereitst
 
 Betrachten wir den Fall, in dem Sie 192.168.100.128/29 zum Einrichten des privaten Peerings auswählen. 192.168.100.128/29 enthält die Adressen von 192.168.100.128 bis 192.168.100.135, für die Folgendes gilt:
 
-- 192\.168.100.128/30 wird link1 zugewiesen, wobei der Anbieter 192.168.100.129 und Microsoft 192.168.100.130 verwendet.
-- 192\.168.100.132/30 wird link2 zugewiesen, wobei der Anbieter 192.168.100.133 und Microsoft 192.168.100.134 verwendet.
+- 192.168.100.128/30 wird link1 zugewiesen, wobei der Anbieter 192.168.100.129 und Microsoft 192.168.100.130 verwendet.
+- 192.168.100.132/30 wird link2 zugewiesen, wobei der Anbieter 192.168.100.133 und Microsoft 192.168.100.134 verwendet.
 
 ### IP-Adressen für öffentliches Azure-Peering und Microsoft-Peering
 
@@ -78,15 +78,15 @@ Der Routingaustausch verläuft über das eBGP-Protokoll. EBGP-Sitzungen werden z
 
 ## Autonome Systemnummern
 
-Microsoft verwendet AS 12076 für das öffentliche und private Azure-Peering und das Microsoft-Peering. Wir haben AS 65515 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt.
+Microsoft verwendet AS 12076 für das öffentliche und private Azure-Peering und das Microsoft-Peering. Wir haben ASNs von 65515 bis 65520 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt.
 
 Es gibt keine Anforderungen in Bezug auf die Symmetrie der Datenübertragung. Die Weiterleitungs- und Rückgabepfade können unterschiedliche Routerpaare durchlaufen. Identische Routen müssen von beiden Seiten über mehrere Verbindungspaare angekündigt werden, die in Ihrem Besitz sind. Routenmetriken müssen nicht identisch sein.
 
 ## Routenaggregation- und Präfixgrenzen
 
-Wir unterstützen bis zu 4.000 Präfixe, die uns per privatem Azure-Peering angekündigt werden. Dies kann auf bis zu 10.000 Präfixe erhöht werden, wenn das ExpressRoute Premium-Add-On aktiviert wird. Wir akzeptieren bis zu 200 Präfixe pro BGP-Sitzung für das öffentliche Azure-Peering und das Microsoft-Peering.
+Wir unterstützen bis zu 4.000 Präfixe, die uns per privatem Azure-Peering angekündigt werden. Dies kann auf bis zu 10.000 Präfixe erhöht werden, wenn das ExpressRoute Premium-Add-On aktiviert wird. Wir akzeptieren bis zu 200 Präfixe pro BGP-Sitzung für das öffentliche Azure-Peering und das Microsoft-Peering.
 
-Die BGP-Sitzung wird verworfen, wenn die Anzahl der Präfixe den Grenzwert überschreitet. Wir akzeptieren Standardrouten nur über den Link für privates Peering. Der Anbieter muss die Standardroute und private IP-Adressen (RFC 1918) aus den Pfaden für das öffentliche Azure-Peering und das Microsoft-Peering herausfiltern.
+Die BGP-Sitzung wird verworfen, wenn die Anzahl der Präfixe den Grenzwert überschreitet. Wir akzeptieren Standardrouten nur über den Link für privates Peering. Der Anbieter muss die Standardroute und private IP-Adressen (RFC 1918) aus den Pfaden für das öffentliche Azure-Peering und das Microsoft-Peering herausfiltern.
 
 ## Transitrouting und regionsübergreifendes Routing
 
@@ -134,8 +134,6 @@ Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsof
 | **Europa** | | |
 | | Nordeuropa | 12076:51003 |
 | | Westeuropa | 12076:51002 |
-| | Großbritannien, Norden | 12076:51022 |
-| | Großbritannien, Süden 2 | 12076:51023 |
 | **Asien-Pazifik** | | |
 | | Ostasien | 12076:51010 |
 | | Südostasien | 12076:51011 |
@@ -163,7 +161,7 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | **SharePoint** | 12076:5020 |
 | **Skype for Business** | 12076:5030 |
 | **CRM Online** | 12076:5040 |
-| **Andere Office 365-Dienste** | 12076:5100 |
+| **Andere Office 365-Dienste** | 12076:5100 |
 
 
 ### Ändern von Routingvoreinstellungen
@@ -178,4 +176,4 @@ Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen festgelegt wer
 	- [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

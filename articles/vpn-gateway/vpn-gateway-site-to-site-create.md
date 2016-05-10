@@ -14,14 +14,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/16/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
 # Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit dem klassischen Azure-Portal
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure-Portal – klassisch](vpn-gateway-site-to-site-create.md)
+- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
@@ -64,7 +64,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 Geben Sie Folgendes ein:
 
 - **Name**: Name des virtuellen Netzwerks. Beispiel: *EastUSVNet*. Sie verwenden den hier festgelegten Namen bei der Bereitstellung Ihrer VMs und PaaS-Instanzen. Deshalb sollte der Name nicht zu kompliziert sein.
-- **Speicherort**: Der Speicherort steht in direkter Beziehung zu dem physischen Standort (Region), an dem sich Ihre Ressourcen (VMs) befinden soll. Wenn Sie z. B. möchten, dass sich die virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitstellen, physisch in *East US* (USA, Osten) befinden, wählen Sie diesen Speicherort aus. Sie können die Ihrem virtuellen Netzwerk zugeordnete Region nach dem Erstellen nicht mehr ändern.
+- **Speicherort**: Der Speicherort steht in direkter Beziehung zu dem physischen Standort (Region), an dem sich Ihre Ressourcen (VMs) befinden soll. Wenn Sie z. B. möchten, dass sich die virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitstellen, physisch in *East US* (USA, Osten) befinden, wählen Sie diesen Speicherort aus. Sie können die Ihrem virtuellen Netzwerk zugeordnete Region nach dem Erstellen nicht mehr ändern.
 
 ## Seite "DNS-Server und VPN-Konnektivität"
 
@@ -109,4 +109,4 @@ Als Nächstes konfigurieren Sie das Gateway für das virtuelle Netzwerk, um eine
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

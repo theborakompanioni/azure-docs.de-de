@@ -240,9 +240,9 @@ Führen Sie die folgenden Schritte im Verwaltungsportal aus, um nach Bedarf eine
 
 ## Nächste Schritte
 
-- Konfigurieren eines [virtuellen Geräts](storsimple-virtual-device.md)
+- Konfigurieren eines [virtuellen Geräts](storsimple-virtual-device-u2.md)
 
 - Verwenden des [StorSimple-Manager-Diensts](storsimple-manager-service-administration.md) für das Verwalten Ihres StorSimple-Geräts
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

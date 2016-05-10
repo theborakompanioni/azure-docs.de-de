@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
 # Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell
@@ -95,7 +95,7 @@ In Bezug auf die Konfigurationsschritte besteht der wichtigste Unterschied zwisc
 - [VNets in unterschiedlichen Abonnements](#difsub)
 
 
-## <a name ="samesub"/>Verbinden von VNets in demselben Abonnement
+## <a name="samesub"></a>Verbinden von VNets in demselben Abonnement
 
 Diese Konfiguration gilt für virtuelle Netzwerke, die sich unter demselben Abonnement befinden. Dies ist im folgenden Diagramm dargestellt:
 
@@ -107,7 +107,7 @@ Diese Konfiguration gilt für virtuelle Netzwerke, die sich unter demselben Abon
 	
 - Sie müssen die PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-### <a name ="Step1"/>Schritt 1: Planen der IP-Adressbereiche
+### <a name="Step1"></a>Schritt 1: Planen der IP-Adressbereiche
 
 
 Eine wichtige Entscheidung betrifft die Bereiche, die Sie zum Konfigurieren Ihrer Netzwerkkonfiguration verwenden. Denken Sie daran, dass Sie sicherstellen müssen, dass keiner der VNet-Bereiche oder der Bereiche des lokalen Netzwerks Überschneidungen aufweist.
@@ -152,7 +152,7 @@ Verwenden Sie für diese Übung die folgenden Werte für die VNets:
 
 
 
-### <a name ="Step2"/>Schritt 2: Erstellen und Konfigurieren von TestVNet1
+### <a name="Step2"></a>Schritt 2: Erstellen und Konfigurieren von TestVNet1
 
 1. Deklarieren von Variablen
 
@@ -312,7 +312,7 @@ Nachdem Sie TestVNet1 konfiguriert haben, wiederholen Sie die Schritte zum Erste
 
 	Nach einigen Minuten sollte die Verbindung hergestellt werden.
 
-## <a name ="Verify"/>Überprüfen einer VNet-zu-VNet-Verbindung
+## <a name="Verify"></a>Überprüfen einer VNet-zu-VNet-Verbindung
 
 In den Beispielen unten wird verdeutlicht, wie Sie Ihre Verbindung überprüfen. Achten Sie darauf, die Werte für Ihre Umgebung anzupassen.
 
@@ -355,7 +355,7 @@ Nachdem der Cmdlet-Vorgang abgeschlossen ist, können Sie einen Bildlauf durchf�
 	Name                       : VNet1toVNet4
 	Id                         : /subscriptions/<SubscriptionID>/resourceGroups/TestRG1/providers/Micr osoft.Network/connections/VNet1toVNet4
 
-## <a name ="difsub"/>Verbinden von VNets aus unterschiedlichen Abonnements
+## <a name="difsub"></a>Verbinden von VNets aus unterschiedlichen Abonnements
 
 Mit den unten angegebenen Konfigurationsschritten wird eine weitere VNet-zu-VNet-Verbindung hinzugefügt, um TestVNet1 mit TestVNet5 zu verbinden, also mit einem VNet aus einem anderen Abonnement. Der Unterschied besteht hierbei darin, dass ein Teil der Konfigurationsschritte in einer separaten PowerShell-Sitzung im Kontext des zweiten Abonnements ausgeführt werden muss. Dies gilt besonders, wenn die beiden Abonnements unterschiedlichen Organisationen gehören. Wenn Sie die Schritte unten ausführen, ergibt sich die Konfiguration, die im folgenden Diagramm dargestellt ist:
 
@@ -530,4 +530,4 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

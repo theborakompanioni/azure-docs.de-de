@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="xamarin"
 	authors="ggailey777"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/05/2016"
+	ms.date="05/03/2016"
 	ms.author="glenga" />
 
 #Erstellen einer Xamarin.Android-App
@@ -70,7 +70,9 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 
 ##Nächste Schritte
 
-* [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-android-get-started-users.md) <br/>Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+* [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-android-get-started-users.md) Erhalten Sie Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+* [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-android-get-started-push.md) Erfahren Sie, wie Sie Ihrer App Pushbenachrichtigungen hinzufügen.
+* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md) Lernen Sie, wie Sie das SDK für verwaltete Clients in Ihrer Xamarin-App verwenden. 
 
 
 <!-- Images. -->
@@ -84,4 +86,4 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 [Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->
