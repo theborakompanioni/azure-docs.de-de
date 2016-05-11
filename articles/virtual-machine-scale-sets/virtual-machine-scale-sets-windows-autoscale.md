@@ -472,7 +472,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
     In diesem Tutorial lauten die wichtigen Werte wie folgt:
 
     - **metricName**: Entspricht dem Leistungsindikator, den wir in der Variablen „wadperfcounter“ definiert haben. Anhand dieser Variablen führt die Diagnose-Erweiterung die Erfassung für den Indikator **Processor(\_Total)\\% Processor Time** durch.
-- **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe.
+	- **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe.
     - **timeGrain**: Dies ist die Granularität der erfassten Metriken. In dieser Vorlage ist sie auf eine Minute festgelegt.
     - **statistic**: Hiermit wird bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden. Mögliche Werte sind: Average, Min, Max. In dieser Vorlage suchen wir nach der durchschnittlichen CPU-Gesamtnutzung für die virtuellen Computer der Skalierungsgruppe.
     - **timeWindow**: Dies ist der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
@@ -561,4 +561,4 @@ Wenn Sie die Ressourcengruppe beibehalten möchten, können Sie auch nur die Ska
 
 	Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmsstestrg1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
 
-<!---HONumber=AcomDC_0427_2016-->
+<!----HONumber=AcomDC_0427_2016-->
