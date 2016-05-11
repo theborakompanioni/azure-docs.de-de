@@ -74,7 +74,7 @@ Erstellen Sie eine [DataBaseCreateorUpdateProperties](https://msdn.microsoft.com
 
     var poolDbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database2", newPooledDatabaseParameters);
 
-Informationen dazu, wie Sie eine bestehende Datenbank in einen Pool verschieben, finden Sie unter [Verwalten und Skalieren eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-manage-csharp.md#Move-a-database-into-an-elastic-pool).
+Informationen dazu, wie Sie eine bestehende Datenbank in einen Pool verschieben, finden Sie unter [Verschieben einer vorhandenen Datenbank in einen Pool](sql-database-elastic-pool-manage-csharp.md#Move-a-database-into-an-elastic-pool).
 
 ## Beispiel: Erstellen eines Pools mit C&#x23
 
