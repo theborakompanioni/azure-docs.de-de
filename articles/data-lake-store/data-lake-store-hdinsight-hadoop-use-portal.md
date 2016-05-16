@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/11/2016"
+   ms.date="04/27/2016"
    ms.author="nitinme"/>
 
-# Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals
+# Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals
 
 > [AZURE.SELECTOR]
 - [Verwenden des Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -29,7 +29,9 @@ Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters (H
 
 * **Bei Storm-Clustern (Windows und Linux)** kann der Data Lake-Speicher zum Schreiben von Daten aus einer Storm-Topologie verwendet werden. Der Data Lake-Speicher kann auch zum Speichern von Verweisdaten verwendet werden, die anschließend von einer Storm-Topologie gelesen werden. Weitere Informationen finden Sie unter [Verwenden des Data Lake-Speichers in einer Storm-Topologie](#use-data-lake-store-in-a-storm-topology).
 
-* Sie können **für HBase-Cluster (Windows und Linux)** den Data Lake-Speicher als Standardspeicher oder als Zusatzspeicher verwenden. Eine Option zum Erstellen von HBase-Clustern mit Zugriff auf Data Lake-Speicher ist nur verfügbar, wenn Sie die HDI-Versionen 3.1 oder 3.2 (für Windows) oder HDI-Version 3.2 (für Linux) verwenden. Weitere Informationen finden Sie unter [Verwenden des Data Lake-Speichers mit HBase-Clustern](#use-data-lake-store-with-hbase-clusters).
+* Sie können **für HBase-Cluster (Windows und Linux)** den Data Lake-Speicher als Standardspeicher oder als Zusatzspeicher verwenden. Weitere Informationen finden Sie unter [Verwenden des Data Lake-Speichers mit HBase-Clustern](#use-data-lake-store-with-hbase-clusters).
+
+> [AZURE.NOTE] Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für HDInsight-Version 3.2 (für Windows und Linux) verfügbar.
 
 
 ## Voraussetzungen
@@ -52,7 +54,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Cluster, für den der D
 
 2. Führen Sie die Schritte unter [Erstellen von Hadoop-Clustern in HDInsight](../hdinsight/hdinsight-provision-clusters.md#create-using-the-preview-portal) aus, um mit der Bereitstellung eines HDInsight-Clusters zu beginnen.
 
-3. Klicken Sie auf dem Blatt **Optionale Konfiguration** auf **Datenquelle**. Geben Sie auf dem Blatt **Datenquelle** die Details für das Speicherkonto und den Speichercontainer an, geben Sie den **Standort** als **USA (Osten) 2** an, und klicken Sie dann auf **Cluster-AAD-Identität**.
+3. Klicken Sie auf dem Blatt **Optionale Konfiguration** auf **Datenquelle**. Geben Sie auf dem Blatt **Datenquelle** die Details für das Speicherkonto und den Speichercontainer an, geben Sie den **Standort** als **USA (Osten) 2** an, und klicken Sie dann auf **Cluster-AAD-Identität**.
 
 	![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
@@ -105,7 +107,7 @@ Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträg
 
 	Sie können auch direkt zu Ambari navigieren, indem Sie in einem Webbrowser https://CLUSTERNAME.azurehdinsight.net aufrufen (wobei **CLUSTERNAME** der Name Ihres HDInsight-Clusters ist).
 
-2. Öffnen Sie die Hive-Ansicht. Klicken Sie im Seitenmenü auf die Gruppe der Quadrate (neben dem Link und der Schaltfläche für **Admin** rechts auf der Seite), um verfügbare Ansichten aufzulisten. Wählen Sie die **Hive-Ansicht** aus.
+2. Öffnen Sie die Hive-Ansicht. Klicken Sie im Seitenmenü auf die Gruppe der Quadrate (neben dem Link und der Schaltfläche für **Admin** rechts auf der Seite), um verfügbare Ansichten aufzulisten. Wählen Sie die **Hive**-Ansicht aus.
 
 	![Ambari-Ansichten auswählen](./media/data-lake-store-hdinsight-hadoop-use-portal/selecthiveview.png)
 
@@ -250,4 +252,4 @@ Mit HBase-Clustern können Sie den Data Lake-Speicher sowohl als Standardspeiche
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

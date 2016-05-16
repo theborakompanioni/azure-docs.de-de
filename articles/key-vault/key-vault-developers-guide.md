@@ -12,13 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="04/29/2016"
    ms.author="bruceper" />
 
 # Entwicklerhandbuch zu Azure-Schlüsseltresor
-
-> [AZURE.VIDEO azure-key-vault-developer-quick-start]
-
 Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertrauliche Daten zugreifen:
 
 - Schlüssel und geheime Schlüssel werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
@@ -26,6 +23,21 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 - Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte Anwendung geeignet ist.
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-whatis.md).
+
+## Videos
+Dieses Video zeigt Ihnen, wie Sie selbst einen Schlüsseltresor erstellen und diesen in der Beispielanwendung „Hello Key Vault“ verwenden.
+
+Links zu den im Video erwähnten Ressourcen:
+- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Azure Key Vault-Beispielcode](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+
+Um weitere Informationen zu erhalten, folgen Sie dem [Key Vault Blog](http://aka.ms/kvblog), und nehmen Sie am [Key Vault Forum](http://aka.ms/kvforum) teil.
+
+
+
+> [AZURE.VIDEO azure-key-vault-developer-quick-start]
+
+
 
 ## Erstellen und Verwalten von Schlüsseltresoren
 
@@ -40,13 +52,13 @@ Bevor Sie mit Azure Key Vault in Ihrem Code arbeiten, können Sie Tresore über 
 
 ## Programmieren mit dem Schlüsseltresor
 
-Das Schlüsseltresor-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen auf der Grundlage von REST: [Key Vault REST API Reference](https://msdn.microsoft.com/library/azure/dn903609.aspx) (Referenz für die Key Vault-REST-API).
+Das Schlüsseltresor-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen auf der Grundlage von REST: [Key Vault REST API Reference](https://msdn.microsoft.com/library/azure/dn903609.aspx) (Referenz für die Schlüsseltresor-REST-API).
 
 Nach erfolgreicher Autorisierung können Sie folgende Aufgaben ausführen:
 
 - Verwalten kryptografischer Schlüssel unter Verwendung von [Create](https://msdn.microsoft.com/library/azure/dn903634.aspx), [Import](https://msdn.microsoft.com/library/azure/dn903626.aspx), [Update](https://msdn.microsoft.com/library/azure/dn903616.aspx), [Delete](https://msdn.microsoft.com/library/azure/dn903611.aspx) und anderer Befehle
 
-- Verwalten geheimer Schlüssel unter Verwendung von [Get](https://msdn.microsoft.com/library/azure/dn903633.aspx), [Update](https://msdn.microsoft.com/library/azure/dn986818.aspx), [Delete](https://msdn.microsoft.com/library/azure/dn903613.aspx) und anderen Befehlen
+- Verwalten geheimer Schlüssel unter Verwendung von [Get](https://msdn.microsoft.com/library/azure/dn903633.aspx), [Update](https://msdn.microsoft.com/library/azure/dn986818.aspx), [Delete](https://msdn.microsoft.com/library/azure/dn903613.aspx) und anderer Befehle
 
 - Verwenden kryptografischer Schlüssel unter von [Sign](https://msdn.microsoft.com/library/azure/dn878096.aspx)/[Verify](https://msdn.microsoft.com/library/azure/dn878082.aspx), [WrapKey](https://msdn.microsoft.com/library/azure/dn878066.aspx)/[UnwrapKey](https://msdn.microsoft.com/library/azure/dn878079.aspx) und [Encrypt](https://msdn.microsoft.com/library/azure/dn878060.aspx)/[Decrypt](https://msdn.microsoft.com/library/azure/dn878097.aspx)
 
@@ -65,16 +77,22 @@ Vollständige Beispiele für die Verwendung des Schlüsseltresors mit Ihren Anwe
 
 ## Vorgehensweisen
 
-Die folgenden Artikel und Szenarios bieten aufgabenspezifische Anleitungen:
+Die folgenden Artikel und Szenarios bieten aufgabenspezifische Anleitungen für die Arbeit mit Azure Key Vault:
 
-- [Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor](key-vault-hsm-protected-keys.md)
-- [Übergeben sicherer Werte (z. B. Kennwörter) während der Bereitstellung](../resource-manager-keyvault-parameter.md).
-- Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie unter [Ryan Jones ARM template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (ARM-Vorlagenbeispiele von Ryan Jones für den Schlüsseltresor).
+- [Generieren und Übertragen von HSM-geschützten Schlüsseln für Azure Key Vault](key-vault-hsm-protected-keys.md): Verwenden Sie diesen Artikel zum Planen, Generieren und anschließenden Übertragen Ihrer eigenen HSM-geschützten Schlüssel für die Nutzung mit Azure Key Vault.
+- [Übergeben sicherer Werte während der Bereitstellung](../resource-manager-keyvault-parameter.md): Wenn Sie während der Bereitstellung einen sicheren Wert (z.B. ein Kennwort) als Parameter übergeben müssen, können Sie diesen Wert als geheimen Schlüssel in Azure Key Vault speichern und in anderen Resource Manager-Vorlagen auf ihn verweisen.
+- [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405.aspx): Der SQL Server-Connector für Azure Key Vault ermöglicht SQL Server und SQL-in-a-VM die Nutzung des Diensts Azure Key Vault als EKM-Anbieter (Extensible Key Management), um die Verschlüsselungsschlüssel für Anwendungslinks zu schützen – transparente Datenverschlüsselung, Verschlüsseln von Sicherungen und Verschlüsselung auf Spaltenebene.
+
+Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie unter [Ryan Jones ARM template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (ARM-Vorlagenbeispiele von Ryan Jones für den Schlüsseltresor).
 
 ## Unterstützung von Bibliotheken
 
-- Die [Microsoft Azure Key Vault-Kernbibliothek](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/1.0.0) bietet `IKey`- und `IKeyResolver`-Schnittstellen, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
+- Die [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/1.0.0) (Microsoft Azure Key Vault-Kernbibliothek) bietet `IKey`- und `IKeyResolver`-Schnittstellen, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
 
 - [Microsoft Azure-Schlüsseltresorerweiterungen](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/1.0.0) bieten erweiterte Funktionen für den Azure-Schlüsseltresor.
 
-<!---HONumber=AcomDC_0309_2016-->
+## Weitere Ressourcen für Schlüsseltresore
+- [Key Vault Blog](http://aka.ms/kvblog)
+- [Key Vault Forum](http://aka.ms/kvforum)
+
+<!---HONumber=AcomDC_0504_2016-->

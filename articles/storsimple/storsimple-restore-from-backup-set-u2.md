@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/31/2016"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 # Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz (Update 2)
@@ -23,7 +23,7 @@
 
 Auf der Seite **Sicherungskatalog** werden alle Sicherungssätze angezeigt, die mithilfe manueller oder automatisierter Sicherungen erstellt wurden. Sie können auf dieser Seite alle Sicherungen für eine Sicherungsrichtlinie oder ein Volume auflisten, Sicherungen auswählen oder löschen oder eine Sicherung zum Wiederherstellen oder Klonen eines Volumes verwenden.
 
- ![Seite "Sicherungskatalog"](./media/storsimple-restore-from-backup-set-u2/HCS_BackupCatalog.png)
+ ![Seite "Sicherungskatalog"](./media/storsimple-restore-from-backup-set-u2/restore.png)
 
 In diesem Tutorial erfahren Sie, wie Sie Ihr Gerät mithilfe der Seite **Sicherungskatalog** aus einem Sicherungssatz wiederherstellen.
 
@@ -73,7 +73,7 @@ Sie können Ihr StorSimple-Volume auf der Seite **Sicherungskatalog** aus einer 
 
 1. Klicken Sie auf der Seite des StorSimple Manager-Diensts auf die Registerkarte **Sicherungskatalog**.
 
-    ![Sicherungskatalog](./media/storsimple-restore-from-backup-set-u2/HCS_Restore.png)
+    ![Sicherungskatalog](./media/storsimple-restore-from-backup-set-u2/restore.png)
 
 2. Wählen Sie wie folgt einen Sicherungssatz aus:
   1. Wählen Sie das entsprechende Gerät aus.
@@ -115,4 +115,4 @@ Um den Wiederherstellungsvorgang erfolgreich abzuschließen, schalten Sie das Vo
 
 - Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

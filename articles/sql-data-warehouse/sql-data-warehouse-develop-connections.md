@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/30/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Herstellen einer Verbindung mit SQL Data Warehouse
-Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie zu Authentifizierungszwecken Sicherheitsanmeldeinformationen übergeben. Beim Herstellen einer Verbindung werden Sie feststellen, dass bestimmte Verbindungseinstellungen im Rahmen der Einrichtung Ihrer Abfragesitzung konfiguriert werden.
+Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie zu Authentifizierungszwecken Sicherheitsanmeldeinformationen übergeben. Beim Herstellen einer Verbindung werden Sie feststellen, dass bestimmte Verbindungseinstellungen im Rahmen der Einrichtung Ihrer Abfragesitzung konfiguriert werden. Sie sollten auch den Artikel [Sichern einer Datenbank in SQL Data Warehouse][] lesen, um weitere Informationen zur Sicherheit und zum Aktivieren von Verbindungen mit SQL Data Warehouse zu erhalten.
 
-In diesem Artikel werden die folgenden Aspekte der Verbindungsherstellung für SQL Data Warehouse beschrieben:
+In diesem Artikel werden die folgenden Aspekte der Verbindungsherstellung mit SQL Data Warehouse beschrieben:
 
 - Authentifizierung
 - Verbindungseinstellungen
@@ -52,7 +52,9 @@ Sie können eine Verbindung mit SQL Data Warehouse herstellen, indem Sie eines d
 - ADO.NET
 - ODBC
 - PHP
-- JDBC
+- JDBC 
+
+Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt. Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden. Navigieren Sie einfach im Azure-Portal zu Ihrer Datenbank. Klicken Sie unter *Essentials* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
 
 ### Beispiel-Verbindungszeichenfolge für ADO.NET
 
@@ -95,7 +97,7 @@ Nachdem eine Verbindung hergestellt und eine Sitzung eingerichtet wurde, können
 
 Jede Abfrage wird mit einem oder mehreren Anforderungsbezeichnern dargestellt. Alle Abfragen, die über diese Verbindung übermittelt werden, sind Teil einer einzelnen Sitzung und werden daher durch eine einzelne Sitzungs-ID dargestellt.
 
-Da SQL Data Warehouse aber ein verteiltes MPP-System ist, werden Sitzungs- und Anforderungsbezeichner im Vergleich zu SQL Server etwas anders verfügbar gemacht.
+Da SQL Data Warehouse jedoch ein verteiltes MPP-System ist (Massively Parallel Processing), werden Sitzungs- und Anforderungsbezeichner im Vergleich zu SQL Server etwas anders verfügbar gemacht.
 
 Sitzungen und Anforderungen werden logisch durch ihre jeweiligen Bezeichner dargestellt.
 
@@ -153,9 +155,10 @@ Nach dem Herstellen der Verbindung können Sie mit dem Entwerfen der Tabellen be
 <!--Azure.com references-->
 [Herstellen einer Verbindung und Durchführen von Abfragen]: ./sql-data-warehouse-get-started-connect.md
 [Tabellenentwurf]: ./sql-data-warehouse-develop-table-design.md
+[Sichern einer Datenbank in SQL Data Warehouse]: ./sql-data-warehouse-overview-security.md
 
 <!--MSDN references-->
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

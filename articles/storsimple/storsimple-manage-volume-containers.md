@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/08/2016"
+   ms.date="05/01/2016"
    ms.author="v-sharos" />
 
 # Verwalten von StorSimple-Volumecontainern mithilfe des StorSimple Manager-Diensts
@@ -66,4 +66,4 @@ In einem Volumecontainer sind Volumes enthalten. Er kann nur gelöscht werden, n
 - Erfahren Sie mehr über das [Verwalten von StorSimple-Volumes](storsimple-manage-volumes.md). 
 - Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0504_2016-->

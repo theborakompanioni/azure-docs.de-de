@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/02/2016" 
 	ms.author="billmath"/>
 
 
@@ -57,9 +57,7 @@ Führen Sie diesen Schritt für alle Konten durch, die Sie zur neuen App migrier
 
 Nachdem Sie der neuen App alle Konten hinzugefügt haben, deinstallieren Sie die alte Anwendung von Ihrem Telefon.
 
-Sie möchten lediglich einzelne Konten aus der alten App entfernen? Tippen Sie auf das Konto. Daraufhin wird eine Option zum Löschen angezeigt.
 
-![Konto entfernen](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
 ## Hinzufügen eines Kontos mit dem Barcodescanner
 
@@ -164,4 +162,10 @@ Danach müssen Sie zum Verifizieren Ihrer Anmeldung nur noch auf die erhaltene P
 
 ![Touch ID](./media/multi-factor-authentication-azure-authenticator/touchid2.png)
 
-<!---HONumber=AcomDC_0218_2016-->
+## Löschen eines Kontos
+
+Um einzelne Konten aus der Azure Authenticator-App zu entfernen, tippen Sie einfach auf das Konto. Daraufhin wird eine Option zum Löschen angezeigt.
+
+![Konto entfernen](./media/multi-factor-authentication-azure-authenticator/remove.png)
+
+<!---HONumber=AcomDC_0504_2016-->

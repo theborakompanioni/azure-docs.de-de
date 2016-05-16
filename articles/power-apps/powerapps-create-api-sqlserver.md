@@ -15,69 +15,83 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 
 # Erstellen einer neuen SQL Server-API in PowerApps Enterprise
 
-Fügen Sie die SQL Server-API in der App Service-Umgebung Ihrer Organisation (Mandant) hinzu.
+> [AZURE.IMPORTANT] Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
+> 
+> - Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
+> - Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen). 
 
-## Erstellen der API im Azure-Portal
+<!--Archived
+Add the SQL Server API to your organization's (tenant) app service environment. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit Ihrem Geschäftskonto an. Melden Sie sich beispielsweise mit *IhrBenutzername*@*IhrUnternehmen*.com an. Sie werden dann automatisch mit Ihrem Unternehmensabonnement angemeldet. 
-2. Wählen Sie in der Taskleiste **Durchsuchen**: ![][14]  
-3. Um PowerApps zu finden, können Sie in der Liste scrollen oder *powerapps* eingeben: ![][15]  
-4. Wählen Sie in **PowerApps** die Option **Manage APIs** aus.
-5. Wählen Sie in **Manage APIs** die Option **Add** aus, um die neue API hinzuzufügen.
-6. Geben Sie einen beschreibenden **Namen** für Ihre API ein. Wenn Sie beispielsweise die SQL Server-API zu Demonstrationszwecken hinzufügen, können Sie den Namen *SQLServerDemo* verwenden.  	
-7. Wählen Sie in **Source** die Option **Available APIs**, um die vorgefertigten APIs auszuwählen, und wählen Sie dann **SQL Server** aus. 
-8. Wählen Sie **OK** aus, um die Schritte abzuschließen.
+## Create the API in the Azure portal
 
-Ihrer App Service-Umgebung wird dann eine neue SQL Server-API hinzugefügt.
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription. 
+2. Select **Browse** in the task bar:  
+![][14]  
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][15]  
+4. In **PowerApps**, select **Manage APIs**.
+5. In **Manage APIs**, select **Add** to add the new API.
+6. Enter a descriptive **name** for your API. For example, you're adding the SQL Server API for demo, you can name it *SQLServerDemo*.  	
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **SQL Server**. 
+8. Select **OK** to complete the steps.
 
-## Konfigurieren der lokalen Verbindung mit SQL Server
+When finished, a new SQL Server API is added to your app service environment.
 
-Sie können lokal eine Verbindung mit SQL Server herstellen. Zum Herstellen dieser Hybridverbindung können Sie vorhandene Hybridnetzwerklösungen in Azure verwenden, z. B.:
+## Configure connectivity to SQL Server on-premises
+
+You can connect to SQL Server on-premises. To establish this hybrid connectivity, you can leverage existing hybrid networking solutions in Azure, including:
 
 - [ExpressRoute](../expressroute/expressroute-introduction.md)
-- [Standort-zu-Standort-VPN-Verbindung](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-- [Punkt-zu-Standort-Verbindung](../vpn-gateway/vpn-gateway-point-to-site-create.md)  
+- [Site-to-site VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Point-to-site connectivity](../vpn-gateway/vpn-gateway-point-to-site-create.md)  
 
-	> [AZURE.NOTE]  Jeder App Service-Umgebung ist ein virtuelles Netzwerk zugeordnet. Sie können die Netzwerkverbindung mit diesem virtuellen Netzwerk herstellen.  
-- [Hybridverbindungen](../app-service-web/web-sites-hybrid-connection-get-started.md)  
+	> [AZURE.NOTE]  Every app service environment has a virtual  network associated with it. You can establish this network connectivity to this virtual network.  
+- [Hybrid connections](../app-service-web/web-sites-hybrid-connection-get-started.md)  
 
-	> [AZURE.NOTE]  Jede registrierte API in Ihrer App Service-Umgebung verfügt über eine entsprechende Web-App. Über diese Web-App können Sie genau wie über jede andere Web-App Hybridverbindungen herstellen.
+	> [AZURE.NOTE]  Every registered API in your app service environment has a corresponding web app. You can establish hybrid connections from this web app just like you can from any other web app.
 	
-Im folgenden Beispiel wird veranschaulicht, wie eine Hybridverbindung hergestellt wird:
+The following example shows how to create a hybrid connection:  
 
-1. Wählen Sie die soeben erstellte SQL Server-API und die Ressourcengruppe aus. Wählen Sie in diesem Beispiel die API *sqlconnectordemo* und die Ressourcengruppe *DedicatedAses* aus: ![Ressourcengruppe](./media/powerapps-create-api-sqlserver/sqlapi.png)
+1. Select the SQL Server API you just created and select the Resource group. In this example, select the API called *sqlconnectordemo*, and select the *DedicatedAses* Resource Group:  
+![Resource group](./media/powerapps-create-api-sqlserver/sqlapi.png)
 
-2.  Wählen Sie die Kachel **Ressourcen** und dann die Web-App aus, deren Namen dem Ihrer SQL Server-API entspricht. Wählen Sie in diesem Beispiel die Web-App *sqlconnectordemo* aus: ![SQL-Web-App](./media/powerapps-create-api-sqlserver/sqlwebapp.png)
+2.  Select the **Resources** tile, and then select the web app with the same name as your SQL Server API. In this example, select *sqlconnectordemo*:  
+![Sql Web app](./media/powerapps-create-api-sqlserver/sqlwebapp.png)
 
-3.  Wählen Sie in **Einstellungen** die Option **Netzwerk** aus. Wählen Sie **Configure your hybrid connection endpoints** aus, und befolgen Sie dann [diese Anweisungen](../app-service-web/web-sites-hybrid-connection-get-started.md) zum Erstellen der Hybridverbindung: ![Netzwerk](./media/powerapps-create-api-sqlserver/network.png)
+3.  In **Settings**, select **Networking**. Select **Configure your hybrid connection endpoints**, and then follow [these instructions](../app-service-web/web-sites-hybrid-connection-get-started.md) to create the hybrid connection:  
+![Networking](./media/powerapps-create-api-sqlserver/network.png)
 
-Nachdem die Hybridverbindung erstellt und hergestellt wurde, haben Sie die Verbindung mit dem lokalen Server aktiviert. Erstellen Sie als Nächstes die Verbindung mit Ihren Daten, und richten Sie den Zugriff für Benutzer ein: ![Hybridverbindung](./media/powerapps-create-api-sqlserver/hybridconn.png)
+Once your hybrid connection is created and connected, you have enabled the connection to your on-premises server. Next, create the connection to your data and give users access:  
+![Hybrid connection](./media/powerapps-create-api-sqlserver/hybridconn.png)
 
-## Erstellen der Verbindung für die SQL Server-API
+## Create connection for SQL Server API
 
-1. Öffnen Sie PowerApps im Azure-Portal, und wählen Sie **Manage APIs** aus. Eine Liste der konfigurierten APIs wird angezeigt: ![](./media/powerapps-create-api-sqlserver/apilist.png)
+1. In the Azure portal, open PowerApps, and select **Manage APIs**. A list of the configured APIs is displayed:  
+  ![](./media/powerapps-create-api-sqlserver/apilist.png)
 
-2. Wählen Sie die gewünschte API aus. Wählen Sie in diesem Beispiel **SQLServerDemo** und dann **Verbindungen** aus.
+2. Select the API you want. In this example, select **SQLServerDemo**, and select **Connections**. 
 
-3. Wählen Sie in „Verbindungen“ die Option **Verbindung hinzufügen** aus: ![](./media/powerapps-create-api-sqlserver/addconnection.png)
+3. In Connections, select **Add connection**:  
+![](./media/powerapps-create-api-sqlserver/addconnection.png)
 
-4. Geben Sie einen Namen für die Verbindung und die Verbindungszeichenfolge ein. Für die Eingabe der Verbindungszeichenfolge müssen Sie einige spezifische Eigenschaften für den Dienst kennen, mit dem Sie eine Verbindung herstellen. Wenn Sie z. B. lokal eine Verbindung mit SQL Server herstellen, müssen Sie den Benutzernamen, das Kennwort und andere Eigenschaften kennen, die zum Herstellen der Verbindung erforderlich sind.
+4. Enter a name for the connection and enter the connection string. Entering the connection string requires you to know some specific properties about the service you're connecting to. For example, if you're connecting to on-premises SQL Server, then you need to know the username, password, and other properties required to successfully make the connection. 
 
-5. Klicken Sie zum Speichern der Änderungen auf **Hinzufügen**.
+5. Select **Add** to save your changes.
 
-## Zusammenfassung und nächste Schritte
-In diesem Thema haben Sie die SQL Server-API hinzugefügt, um lokal eine Verbindung mit SQL Server herzustellen. Als Nächstes können Sie den Zugriff für Benutzer auf die API einrichten, damit sie den Apps der Benutzer hinzugefügt werden kann:
+## Summary and next steps
+In this topic, you added the SQL Server API to connect to SQL Server on-premises. Next, give users access to the API so it can be added to their apps: 
 
-[Hinzufügen einer Verbindung und Einrichten des Zugriffs für Benutzer](powerapps-manage-api-connection-user-access.md)
-
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
 
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

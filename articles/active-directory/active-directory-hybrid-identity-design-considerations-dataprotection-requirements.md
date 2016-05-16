@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/12/2016"
+	ms.date="04/28/2016"
 	ms.author="yuridio"/>
 
 #Planen einer Erweiterung der Datensicherheit mit einer starken Identitätslösung
@@ -81,4 +81,4 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

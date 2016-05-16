@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/16/2016"
+   ms.date="04/27/2016"
    ms.author="larryfr"/>
 
 #Verwenden von Hive mit Hadoop in HDInsight über Beeline
@@ -68,6 +68,8 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 2. Verwenden Sie an der `beeline>`-Eingabeaufforderung Folgendes, um eine Verbindung mit dem HiveServer2-Dienst herzustellen: Ersetzen Sie __HOSTNAME__ durch den Hostnamen, der für den Hauptknoten bereits zurückgegeben wurde:
 
         !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
+        
+    Dies weist Beeline an, die Verbindung mit Port __10001__ auf dem angegebenen __HOSTNAME__ herzustellen, und __HTTP__ ist die Transportmethode. Das __Admin__-Konto wird zur Authentifizierung der Verbindung verwendet.
 
     Geben Sie nach Aufforderung das Kennwort für das Administratorkonto (admin) für den HDInsight-Cluster ein. Nach dem Herstellen der Verbindung wird die Aufforderung wie folgt geändert:
     
@@ -243,4 +245,4 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

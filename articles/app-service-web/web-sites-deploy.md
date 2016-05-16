@@ -37,7 +37,7 @@ Da Sie sich nicht um den Webserver oder das Anwendungsframework kümmern müssen
 
 Gängige Webentwicklungstools unterstützen einen oder mehrere dieser Bereitstellungsprozesse. Das von Ihnen gewählte Tool bestimmt zwar die Bereitstellungsprozesse, die Sie nutzen können, aber die eigentliche verfügbare DevOps-Funktionalität hängt von der Kombination aus Bereitstellungsprozess und den von Ihnen gewählten speziellen Tools ab. Wenn Sie den Web Deploy-Vorgang beispielsweise über [Visual Studio mit Azure SDK](#vspros) durchführen, können Sie die Paketwiederherstellungs- und MSBuild-Automatisierung in Visual Studio nutzen, auch wenn eine Automatisierung über Kudu nicht möglich ist.
 
->[AZURE.NOTE] Diese Bereitstellungsprozesse umfassen nicht die eigentliche [Bereitstellung der Azure-Ressourcen](resource-group-portal), die für Ihre App ggf. erforderlich sind. In den meisten verlinkten Gewusst-wie-Artikeln wird aber ausführlich gezeigt, wie Sie die App UND den Code dafür bereitstellen. Zusätzliche Optionen für die Bereitstellung von Azure-Ressourcen finden Sie auch im Abschnitt [Automatisieren der Bereitstellung mit Befehlszeilentools](#automate).
+>[AZURE.NOTE] Diese Bereitstellungsprozesse umfassen nicht die eigentliche [Bereitstellung der Azure-Ressourcen](../azure-portal/resource-group-portal.md), die für Ihre App ggf. erforderlich sind. In den meisten verlinkten Gewusst-wie-Artikeln wird aber ausführlich gezeigt, wie Sie die App UND den Code dafür bereitstellen. Zusätzliche Optionen für die Bereitstellung von Azure-Ressourcen finden Sie auch im Abschnitt [Automatisieren der Bereitstellung mit Befehlszeilentools](#automate).
      
 ## <a name="ftp"></a>Bereitstellen über FTP durch manuelles Kopieren von Dateien nach Azure
 Wenn Sie es gewohnt sind, Ihre Webinhalte manuell auf einen Webserver zu kopieren, können Sie Dateien mithilfe von Windows-Explorer oder über [FileZilla](https://filezilla-project.org/) auf einen [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol)-Server kopieren.
@@ -93,7 +93,7 @@ Vorteile der Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdiens
 
 - Es steht eine Versionskontrolle bereit, um Rollbacks zu ermöglichen.
 - Sie können eine kontinuierliche Bereitstellung für Git-Repositorys (und ggf. Mercurial-Repositorys) konfigurieren. 
-- Verzweigungsspezifische Bereitstellung: Sie können verschiedene Verzweigungen in unterschiedlichen [Slots](web-sites-staged-publishing) bereitstellen.
+- Verzweigungsspezifische Bereitstellung: Sie können verschiedene Verzweigungen in unterschiedlichen [Slots](web-sites-staged-publishing.md) bereitstellen.
 - Alle Funktionen des Kudu-Bereitstellungsmoduls sind verfügbar (z.B. Versionsverwaltung für die Bereitstellung, Rollback, Paketwiederherstellung, Automatisierung).
 
 Nachteile der Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdienst:
@@ -111,7 +111,7 @@ Wenn Ihr Entwicklungsteam einen lokalen, auf Git basierenden Quellcodeverwaltung
 Vorteile der Bereitstellung aus lokalem Git:
 
 - Es steht eine Versionskontrolle bereit, um Rollbacks zu ermöglichen.
-- Verzweigungsspezifische Bereitstellung: Sie können verschiedene Verzweigungen in unterschiedlichen [Slots](web-sites-staged-publishing) bereitstellen.
+- Verzweigungsspezifische Bereitstellung: Sie können verschiedene Verzweigungen in unterschiedlichen [Slots](web-sites-staged-publishing.md) bereitstellen.
 - Alle Funktionen des Kudu-Bereitstellungsmoduls sind verfügbar (z.B. Versionsverwaltung für die Bereitstellung, Rollback, Paketwiederherstellung, Automatisierung).
 
 Nachteile der Bereitstellung aus lokalem Git:
@@ -226,4 +226,4 @@ Informationen zur Verwendung der rollenbasierten Zugriffssteuerung von Azure zum
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

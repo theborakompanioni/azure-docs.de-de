@@ -18,7 +18,7 @@
 
 # Wiederherstellen einer App in Azure App Service
 
-In diesem Artikel erfahren Sie, wie Sie eine App Service-App wiederherstellen, die zuvor mit der [App Service](app-service-value-prop-what-is)-Sicherungsfunktion gesichert wurde. Weitere Informationen finden Sie unter [App Service-Sicherungen](web-sites-backup.md).
+In diesem Artikel erfahren Sie, wie Sie eine App Service-App wiederherstellen, die zuvor mit der [App Service](../app-service/app-service-value-prop-what-is.md)-Sicherungsfunktion gesichert wurde. Weitere Informationen finden Sie unter [App Service-Sicherungen](web-sites-backup.md).
 
 Mit dem App Service-Wiederherstellungsfeature können Sie Ihre App mit den zugehörigen verknüpften Datenbanken (SQL-Datenbank oder MySQL) bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf der Sicherung der ursprünglichen App eine neue App erstellen. Das Erstellen einer neuen App, die parallel zur letzten Version ausgeführt wird, kann für A/B-Tests nützlich sein.
 
@@ -106,4 +106,4 @@ Sie können App Service-Apps auch mithilfe der REST-API sichern und wiederherste
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

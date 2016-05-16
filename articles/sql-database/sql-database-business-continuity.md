@@ -5,7 +5,7 @@
    services="sql-database"
    documentationCenter=""
    authors="elfisher"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor="monicar"/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="02/09/2016"
+   ms.date="04/27/2016"
    ms.author="elfish"/>
 
 # Übersicht: Geschäftskontinuität für die Cloud und Notfallwiederherstellung für Datenbanken mit SQL-Datenbank
@@ -64,8 +64,7 @@ Die folgende Tabelle zeigt die Unterschiede zwischen den Funktionen der Geschäf
 | --- |--- | --- | ---
 | Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 14 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
 | Geografische Wiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
-| Standardmäßige Georeplikation | Nicht enthalten | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
-| Aktive Georeplikation | Nicht enthalten | Nicht enthalten | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
+| Aktive Georeplikation | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
 
 Diese Funktionen werden für die zuvor beschriebenen Szenarios bereitgestellt. Im Abschnitt [Entwurf für Geschäftskontinuität](sql-database-business-continuity-design.md) finden Sie Anleitungen zum Auswählen der jeweiligen Funktion.
 
@@ -80,12 +79,8 @@ Mit der Zeitpunktwiederherstellung können Sie die Datenbank in den Zustand zu e
 
 Die geografische Wiederherstellung steht ebenfalls für Basic-, Standard- und Premium-Datenbanken zur Verfügung. Sie stellt die Standardoption für die Wiederherstellung dar, wenn auch die Datenbank aufgrund eines Vorfalls in der Region, in dem die Datenbank gehostet wird, nicht verfügbar ist. Ähnlich wie die Zeitpunktwiederherstellung ist die geografische Wiederherstellung von Datenbanksicherungen in geografisch redundantem Azure-Speicher abhängig. Die Wiederherstellung erfolgt aus der geografisch replizierten Sicherungskopie und ist daher in Bezug auf Speicherausfälle in der primären Region flexibel. Weitere Informationen zum Verwenden von geografischer Wiederherstellung finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
-###Standardmäßige Georeplikation
-
-Die standardmäßige Georeplikation ist nur für Standard- und Premium-Datenbanken verfügbar. Sie ist für Anwendungen vorgesehen, die die Kapazität des Standarddienstebene verwenden, für die jedoch umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die geografische Wiederherstellung bieten kann. Wenn die primäre Datenbank ausfällt, können Sie ein Failover zu einer nicht lesbaren sekundären Datenbank initiieren, die in der gekoppelten DR-Region gespeichert ist. Informationen zur Konfiguration der Georeplikation finden Sie unter [Entwerfen für Geschäftskontinuität](sql-database-business-continuity-design.md) und Details zu einem Failover zu einer sekundären Datenbank unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
-
 ###Aktive Georeplikation
 
-Die aktive Georeplikation ist für Premium-Datenbanken verfügbar. Sie wurde für schreibintensive Anwendungen mit den umfassendsten Wiederherstellungsanforderungen entwickelt. Bei der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Replikate auf Servern in verschiedenen Regionen erstellen. Sie können auf die gleiche Weise wie bei der standardmäßigen Georeplikation ein Failover auf eines der sekundären Replikate initiieren. Darüber hinaus kann die aktive Georeplikation verwendet werden, um Anwendungsupgrades oder die räumliche Verlegung von Anwendungen zu unterstützen, sowie als Lastenausgleich für schreibgeschützte Arbeitsauslastungen. Informationen zur Konfiguration der Georeplikation finden Sie unter [Entwerfen für Geschäftskontinuität](sql-database-business-continuity-design.md) und Details zu einem Failover zu einer sekundären Datenbank unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md). Details zur Implementierung von Anwendungsupgrades ohne Ausfallzeit finden Sie unter [Anwendungsupgrades ohne Ausfallzeiten](sql-database-business-continuity-application-upgrade.md).
+Die aktive Georeplikation ist für alle Datenbanktarife erhältlich. Sie ist für Anwendungen vorgesehen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann. Bei der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Replikate auf Servern in verschiedenen Regionen erstellen. Sie können ein Failover auf ein beliebiges sekundäres Replikat initiieren. Darüber hinaus kann die aktive Georeplikation verwendet werden, um Anwendungsupgrades oder die räumliche Verlegung von Anwendungen zu unterstützen, sowie als Lastenausgleich für schreibgeschützte Arbeitsauslastungen. Unter [Entwerfen für Geschäftskontinuität](sql-database-business-continuity-design.md) finden Sie Informationen zur [Konfiguration der Georeplikation](sql-database-geo-replication-portal.md) und zum [Failover zu einer sekundären Datenbank](sql-database-geo-replication-failover-portal.md). Details zur Implementierung von Anwendungsupgrades ohne Ausfallzeit finden Sie unter [Anwendungsupgrades ohne Ausfallzeiten](sql-database-business-continuity-application-upgrade.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

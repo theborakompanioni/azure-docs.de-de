@@ -2,7 +2,7 @@
 	pageTitle="Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von PowerShell" 
 	description="PowerShell, verwendet zum Verwalten von Pools für Azure SQL-Datenbanken" 
 	services="sql-database" documentationCenter=""  
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove"/>
 
 <tags 
@@ -11,13 +11,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2016" 
+	ms.date="05/03/2016" 
 	ms.author="ddove;sidneyh" />
 
 # Erstellen und Verwalten von Aufträgen für die elastische SQL-Datenbank mithilfe von PowerShell (Vorschau)
 
 > [AZURE.SELECTOR]
-- [Azure Classic Portal](sql-database-elastic-jobs-create-and-manage.md)
+- [Klassisches Azure-Portal](sql-database-elastic-jobs-create-and-manage.md)
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
@@ -694,4 +694,4 @@ Nach der Erstellung eines DACPACs in Aufträge für die elastische Datenbank kan
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

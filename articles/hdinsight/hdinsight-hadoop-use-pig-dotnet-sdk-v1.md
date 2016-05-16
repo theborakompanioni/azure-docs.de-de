@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/04/2016"
    ms.author="larryfr"/>
 
 #Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight
@@ -24,9 +24,11 @@ Dieses Dokument enthält ein Beispiel zur Verwendung von .NET SDK für Hadoop zu
 
 Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. Mithilfe von Pig können Sie MapReduce-Vorgänge erstellen, indem Sie eine Reihe von Datentransformationen modellieren. Sie werden erfahren, wie Sie mit einer einfachen C#-Anwendung einen Pig-Auftrag an einen HDInsight-Cluster übermitteln.
 
-[AZURE.INCLUDE [azure-preview-portal](../../includes/hdinsight-azure-portal.md)]
-
-* [Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das klassische Azure-Portal verwendet. Microsoft empfiehlt die Verwendung des klassischen Azure-Portals nicht für die Erstellung neuer Dienste. Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
+>
+> Dieses Dokument enthält außerdem Informationen zur Verwendung des HDInsight .NET SDK. Die bereitgestellten Codeausschnitte basieren auf Befehlen, die Azure Service Management (ASM) zur Zusammenarbeit mit HDInsight verwenden, und sind __veraltet__. Diese Befehle werden zum 1. Januar 2017 eingestellt.
+>
+>Eine Version dieses Dokuments, die das Azure-Portal verwendet, finden Sie zusammen mit den HDInsight .NET SDK-Codeausschnitten, die den Azure Resource Manager (ARM) verwenden, unter [Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
 
 ##<a id="prereq"></a>Voraussetzungen
 
@@ -160,4 +162,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

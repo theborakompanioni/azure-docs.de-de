@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management"
-    ms.date="02/23/2016"
+    ms.date="05/03/2016"
     ms.author="sstein"/>
 
 # C&#x23;-Datenbankentwicklung: Erstellen und Konfigurieren eines Pools für elastische Datenbanken für SQL-Datenbank
@@ -317,7 +317,7 @@ Im folgenden Beispiel wird eine vorhandene Azure SQL-Datenbank in einen Pool ver
 
 ## Erstellen einer neuen Datenbank in einem elastischen Datenbankpool
 
-*Nach dem Erstellen eines Pools können Sie Transact-SQL auch zum Erstellen von neuen elastischen Datenbanken im Pool verwenden, Weitere Informationen finden Sie unter [Referenz für Pools für elastische Datenbanken – Transact-SQL](sql-database-elastic-pool-reference.md#Transact-SQL).*
+*Nach dem Erstellen eines Pools können Sie Transact-SQL auch zum Erstellen von neuen elastischen Datenbanken im Pool verwenden, Ausführliche Informationen finden Sie unter [Überwachen und Verwalten eines Pools für elastische Datenbanken per Transact-SQL](sql-database-elastic-pool-manage-tsql.md).*
 
 Im folgenden Beispiel wird eine neue Datenbank direkt in einem Pool erstellt:
 
@@ -562,9 +562,6 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 
 [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-[Referenz für Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md)
-
-
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool-csharp/aad.png
 [2]: ./media/sql-database-elastic-pool-csharp/permissions.png
@@ -576,4 +573,4 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

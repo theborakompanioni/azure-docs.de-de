@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="02/12/2016"
+    ms.date="04/27/2016"
     ms.author="carlrab"/>
 
 # Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL
@@ -21,26 +21,25 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-geo-replication-portal.md)
+- [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 Dieser Artikel beschreibt, wie Sie die Georeplikation für eine Azure SQL-Datenbank mithilfe von Transact-SQL konfigurieren.
 
+Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-transact-sql.md).
 
-Die Georeplikation ermöglicht das Erstellen von bis zu vier (sekundären) Replikatdatenbanken in verschiedenen Datencenterregionen. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
+>[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
-Die Georeplikation ist nur für Standard- und Premium-Datenbanken verfügbar.
-
-Standard-Datenbanken können über eine nicht lesbare sekundäre Datenbank verfügen und müssen die empfohlene Region verwenden. Premium-Datenbanken können bis zu vier lesbare sekundäre Datenbanken in beliebigen der verfügbaren Regionen aufweisen.
+Sie können bis zu vier lesbare sekundäre Datenbanken in derselben oder in verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
 
 
 Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement: Wenn Sie kein Azure-Abonnement haben, klicken Sie einfach oben auf dieser Seite auf den Link **KOSTENLOSE TESTVERSION** und kehren dann zu diesem Artikel zurück.
 - Einen logische Azure SQL-Datenbankserver <MyLocalServer> und eine Azure SQL-Datenbank <MyDB>: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
-- Ein oder mehrere logische Azure SQL-Datenbankserver <MySecondaryServer(n)>: Die logischen Server, die als Partnerserver fungieren, in denen Sie sekundäre Datenbanken für die Georeplikation erstellen.
+- Ein oder mehrere logische Azure SQL-Datenbankserver <MySecondaryServer(n)>: Die logischen Server, die als Partnerserver fungieren, in denen Sie sekundäre Datenbanken erstellen.
 - Eine Anmeldung mit der Berechtigung „DBManager“ für die primäre Datenbank, mit der Berechtigung „db\_ownership“ für die lokale Datenbank für die Georeplikation und der Berechtigung „DBManager“ für die Partnerserver, für die Sie die Georeplikation konfigurieren.
 - Neueste Version von SQL Server Management Studio: Die neueste Version von SQL Server Management Studio (SSMS) finden Sie unter [Herunterladen von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx). Informationen zur Verwendung von SQL Server Management Studio zum Verwalten von logischen Azure SQL-Datenbankservern und Datenbanken finden Sie unter [Verwalten von Azure SQL-Datenbank mit SQL Server Management Studio](sql-database-manage-azure-ssms.md).
 
@@ -48,7 +47,7 @@ Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
 
 Mithilfe der **ALTER DATABASE**-Anweisung können Sie auf einem Partnerserver eine georeplizierte sekundäre Datenbank erstellen. Sie führen diese Anweisung in der „master“-Datenbank des Servers mit der Datenbank aus, die repliziert werden soll. Die geografisch replizierte Datenbank (die „primäre Datenbank“) hat denselben Namen wie die zu replizierende Datenbank und standardmäßig dieselbe Dienstebene wie die primäre Datenbank. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzel- oder elastische Datenbank sein. Weitere Informationen finden Sie unter [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) und [Tarife](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die asynchrone Replikation aus der primären Datenbank. In den nachfolgenden Schritten wird beschrieben, wie die Georeplikation mithilfe von Management Studio konfiguriert wird. Schritte zum Erstellen von nicht lesbaren und lesbaren sekundären Datenbanken, entweder mit einer einzelnen oder einer elastischen Datenbank, sind angegeben.
 
-> [AZURE.NOTE] Wenn die sekundäre Datenbank auf dem angegebenen Partnerserver vorhanden ist (da z. B. eine Georeplikationsbeziehung derzeit besteht oder zuvor bestanden hat), misslingt der Befehl.
+> [AZURE.NOTE] Wenn auf dem angegebenen Partnerserver eine Datenbank mit dem gleichen Namen wie die primäre Datenbank vorhanden ist, wird durch den Befehl ein Fehler verursacht.
 
 
 ### Hinzufügen einer nicht lesbaren sekundären Datenbank (Einzeldatenbank)
@@ -87,6 +86,7 @@ Führen Sie zum Erstellen einer lesbaren sekundären Datenbank als Einzeldatenba
 
 
 ### Hinzufügen einer nicht lesbaren sekundären Datenbank (elastische Datenbank)
+
 Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als elastische Datenbank die folgenden Schritte aus:
 
 1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
@@ -137,61 +137,6 @@ Führen Sie zum Entfernen der sekundären Datenbank aus der Georeplikationsbezie
 
 4. Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
 
-
-## Auslösen eines geplanten Failovers mit Heraufstufen einer sekundären Datenbank zur neuen primären Datenbank
-
-Mit der **ALTER DATABASE**-Anweisung können Sie eine sekundäre Datenbank auf geplante Weise zur neuen primären Datenbank heraufstufen und die vorhandene primäre Datenbank zu einer sekundären Datenbank herabstufen. Diese Anweisung wird für die „master“-Datenbank auf dem logischen Azure SQL-Datenbankserver ausgeführt, in dem sich die geografisch replizierte Datenbank befindet, die heraufgestuft wird. Diese Funktionalität ist auf ein geplantes Failover ausgelegt, z. B. während der Notfallwiederherstellungsverfahren, und erfordert, dass die primäre Datenbank verfügbar ist.
-
-Der Befehl hat den folgenden Workflow:
-
-1. Die Replikation wird vorübergehend in den synchronen Modus umgeschaltet, was bewirkt, dass alle ausstehenden Transaktionen in die sekundäre Datenbank erfolgen und alle neuen Transaktionen blockiert werden.
-
-2. Die Rollen der beiden Datenbanken in der Georeplikationspartnerschaft werden getauscht.
-
-Durch diese Abfolge wird sichergestellt, dass kein Datenverlust auftritt. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) und [Tarife](sql-database-service-tiers.md).
-
-
-> [AZURE.NOTE] Falls die primäre Datenbank bei Aufruf des Befehls nicht verfügbar ist, misslingt der Befehl mit der Fehlermeldung, dass der primäre Server nicht verfügbar ist. In seltenen Fällen ist es möglich, dass der Vorgang nicht abgeschlossen werden kann und festzustecken scheint. In diesem Fall kann der Benutzer den Befehl zum Erzwingen des Failovers aufrufen und den Datenverlust akzeptieren.
-
-Führen Sie die folgenden Schritte aus, um ein geplantes Failover auszulösen.
-
-1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver, in dem sich eine geografisch repliziert sekundäre Datenbank befindet.
-
-2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
-
-3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um eine georeplizierte Datenbank als primäre Datenbank mit einer lesbaren sekundären Datenbank auf <MySecondaryServer4> in <ElasticPool2> einzurichten.
-
-        ALTER DATABASE <MyDB> FAILOVER;
-
-4. Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
-
-
-
-## Auslösen eines ungeplanten Failovers von der primären Datenbank zur sekundären Datenbank
-
-Mit der **ALTER DATABASE**-Anweisung können Sie eine sekundäre Datenbank auf ungeplante Weise zur neuen primären Datenbank heraufstufen und das Herabstufen der vorhandenen primären Datenbank zu einer sekundären Datenbank erzwingen, sobald die primäre Datenbank nicht mehr verfügbar ist. Diese Anweisung wird für die „master“-Datenbank auf dem logischen Azure SQL-Datenbankserver ausgeführt, in dem sich die geografisch replizierte Datenbank befindet, die heraufgestuft wird.
-
-Diese Funktion dient zur Notfallwiederherstellung, wenn das Wiederherstellen der Verfügbarkeit der Datenbank überaus wichtig und ein gewisser Datenverlust akzeptabel ist. Beim Auslösen eines erzwungenen Failovers wird die angegebene sekundäre Datenbank sofort zur primären Datenbank und beginnt mit dem Akzeptieren von Schreibtransaktionen. Sobald sich die ursprüngliche primäre Datenbank mit dieser neuen primären Datenbank verbinden kann, wird eine inkrementelle Sicherung der ursprünglichen Datenbank erstellt. Die alte primäre Datenbank wird zu einer sekundären Datenbank der neuen primären Datenbank. Anschließend ist sie lediglich ein sich synchronsierendes Replikat der neuen primären Datenbank.
-
-Da jedoch die Point-in-Time-Wiederherstellung für sekundäre Datenbanken nicht unterstützt wird, muss der Benutzer, wenn Daten mit erfolgtem Commit in der alten primären Datenbank wiederhergestellt werden sollen, die nicht in die neue primäre Datenbank repliziert wurden, bevor das erzwungene Failover erfolgt ist, den Support bitten, diese verloren gegangenen Daten wiederherzustellen.
-
-> [AZURE.NOTE] Falls der Befehl aufgerufen wird, wenn die primäre und sekundäre Datenbank online sind, wird die alte primäre Datenbank zur neuen sekundären Datenbank, ohne dass eine Synchronisierung der Daten versucht wird. Deshalb können Datenverluste auftreten.
-
-
-Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, ist der Befehl nur auf dem sekundären Server erfolgreich, auf dem der Befehl ausgeführt wurde. Den anderen sekundären Datenbanken ist jedoch nicht bekannt, dass das Erzwingen eines Failovers erfolgt ist. Der Benutzer muss diese Konfiguration mithilfe einer API vom Typ „remove secondary“ reparieren und dann die Georeplikation in diesen zusätzlichen sekundären Datenbanken neu konfigurieren.
-
-Führen Sie zum Erzwingen des Entfernens der georeplizierten sekundären Datenbank aus der Georeplikationsbeziehung folgende Schritte aus:
-
-1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver, in dem sich eine geografisch repliziert sekundäre Datenbank befindet.
-
-2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
-
-3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um <MyLocalDB> als eine georeplizierte primäre Datenbank mit einer lesbaren sekundären Datenbank auf <MySecondaryServer4> in <ElasticPool2> einzurichten.
-
-        ALTER DATABASE <MyDB>   FORCE_FAILOVER_ALLOW_DATA_LOSS;
-
-4. Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
-
 ## Überprüfen der Konfiguration und Integrität der Georeplikation
 
 Zu den Überwachungsaufgaben gehören die Überwachung der Konfiguration der Georeplikation und der Integrität der Datenreplikation. Sie können die dynamische Verwaltungssicht **sys.dm\_geo\_replication\_links** in der Masterdatenbank nutzen, um Informationen zu allen vorhandenen Replikationsverknüpfungen für alle Datenbanken auf dem logischen Azure SQL-Datenbankserver abzurufen. Diese Ansicht enthält eine Zeile für jede Replikationsverknüpfung zwischen primären und sekundären Datenbanken. Sie können die dynamische Verwaltungssicht **sys.dm\_replication\_status** verwenden, um eine Zeile für jede Azure SQL-Datenbank zurückzugeben, die derzeit an einer Replikationsverknüpfung beteiligt ist. Dies schließt primäre und sekundäre Datenbanken ein. Wenn für eine bestimmte primäre Datenbank mehrere Verknüpfungen für die fortlaufende Replikation vorhanden sind, enthält die Tabelle eine Zeile für jede der Beziehungen. Die Sicht wird in allen Datenbanken, einschließlich der logischen „master“-Datenbank, erstellt. Doch bei Abfragen dieser Sicht in der logischen „master“-Datenbank wird ein leeres Ergebnis zurückgegeben. Sie können mithilfe der Verwaltungssicht **sys.dm\_operation\_status** den Status aller Datenbankvorgänge anzeigen, einschließlich des Status der Replikationsverknüpfungen. Weitere Informationen finden Sie unter [sys.dm\_geo\_replication\_links (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt575501.aspx), [sys.dm\_geo\_replication\_link\_status (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt575504.aspx) und [sys.dm\_operation\_status (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn270022.aspx).
@@ -215,22 +160,27 @@ Gehen Sie folgendermaßen vor, um eine Georeplikationspartnerschaft zu überwach
 7. Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
 8. Verwenden Sie die folgende Anweisung, um die neuesten Georeplikationsvorgänge anzuzeigen, die der Datenbank MyDB zugeordnet sind.
 
-        SELECT * FROM sys.dm_operation_status where major_resource_is = 'MyDB'
+        SELECT * FROM sys.dm_operation_status where major_resource_id = 'MyDB'
         ORDER BY start_time DESC
 
 9. Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
 
 
+
 ## Nächste Schritte
 
+- [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-transact-sql.md)
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 
 
 ## Zusätzliche Ressourcen
 
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
 - [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/services/sql-database/)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

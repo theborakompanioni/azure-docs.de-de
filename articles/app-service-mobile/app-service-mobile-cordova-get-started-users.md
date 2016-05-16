@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="javascript"
 	authors="adrianhall"
-	manager="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="02/11/2016"
-	ms.author="adrianha"/>
+	ms.date="05/02/2016"
+	ms.author="glenga"/>
 
 # Hinzufügen von Authentifizierung zu Ihrer Apache Cordova-App
 
@@ -32,9 +32,7 @@ In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apach
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-+ Öffnen Sie das im Rahmen des Tutorials [Erste Schritte mit Mobile Apps] erstellte Projekt in Visual Studio. Führen Sie die Anwendung im **Google Android Emulator** aus, und überprüfen Sie, ob nach dem Start der App ein unerwarteter Verbindungsfehler angezeigt wird.
-
-    Dies liegt daran, dass die App versucht, als nicht authentifizierter Benutzer auf das Back-End zuzugreifen. Das Back-End leitet den Benutzer an eine Authentifizierungsseite weiter, die OAuth verwendet. Die Anwendung vertraut jedoch dem OAuth-Endpunkt nicht.
+Nun können Sie überprüfen, ob der anonyme Zugriff auf Ihr Back-End deaktiviert wurde. Öffnen Sie das im Rahmen des Tutorials [Erste Schritte mit Mobile Apps] erstellte Projekt in Visual Studio. Führen Sie die Anwendung im **Google Android Emulator** aus, und überprüfen Sie, ob nach dem Start der App ein unerwarteter Verbindungsfehler angezeigt wird.
 
 Als Nächstes werden Sie die App aktualisieren, um Benutzer zu authentifizieren, bevor diese Ressourcen vom Mobile App-Back-End anfordern.
 
@@ -111,4 +109,4 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 [ASP.NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server-SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

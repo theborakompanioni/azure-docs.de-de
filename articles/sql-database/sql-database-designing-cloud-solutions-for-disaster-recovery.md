@@ -1,11 +1,11 @@
 <properties
-   pageTitle="Cloudbasierte Lösungen für die Notfallwiederherstellung – SQL-Datenbank-Georeplikation | Microsoft Azure"
+   pageTitle="Cloudbasierte Lösungen für die Notfallwiederherstellung – Aktive Georeplikation in SQL-Datenbank | Microsoft Azure"
    description="Erfahren Sie, wie Sie cloudbasierte Notfallwiederherstellungslösungen entwerfen, bei denen die Geschäftskontinuität unter Verwendung der Georeplikation für die App-Datensicherung mit Azure SQL-Datenbank erzielt wird. "
    keywords="cloudbasierte Notfallwiederherstellung,Notfallwiederherstellungslösungen,App-Datensicherung,Georeplikation,Planen der Geschäftskontinuität"
    services="sql-database"
    documentationCenter=""
    authors="anosov1960"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor="monicar"/>
 
 <tags
@@ -14,12 +14,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="02/23/2016"
+   ms.date="04/25/2016"
    ms.author="sashan"/>
 
-# Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung mithilfe der Georeplikation in SQL-Datenbank
+# Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung mithilfe der aktiven Georeplikation in SQL-Datenbank
 
-Erfahren Sie, wie Sie unter Verwendung der Georeplikation in SQL-Datenbank Anwendungen für eine cloudbasierte Notfallwiederherstellung entwerfen. Für die Planung der Geschäftskontinuität betrachten Sie die Topologie für die Anwendungsbereitstellung, die angestrebte Vereinbarung zum Servicelevel, die Datenverkehrslatenz und die Kosten. In diesem Artikel untersuchen wir die gängigsten Anwendungsmuster und erörtern die Vor- und Nachteile der einzelnen Optionen.
+
+> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Tarifen verfügbar.
+
+
+
+Erfahren Sie, wie Sie die [Georeplikation](sql-database-geo-replication-overview.md) in der SQL-Datenbank verwenden, um Datenbankanwendungen zu entwerfen, die gegen regionale Ausfälle und schwerwiegende Fehler resistent sind. Für die Planung der Geschäftskontinuität betrachten Sie die Topologie für die Anwendungsbereitstellung, die angestrebte Vereinbarung zum Servicelevel, die Datenverkehrslatenz und die Kosten. In diesem Artikel untersuchen wir die gängigsten Anwendungsmuster und erörtern die Vor- und Nachteile der einzelnen Optionen.
 
 ## Entwurfsmuster 1: Aktiv-/Passiv-Bereitstellung für eine cloudbasierte Notfallwiederherstellung mit zusammengestellter Datenbank
 
@@ -35,7 +40,7 @@ In diesem Fall wird die Bereitstellungstopologie der Anwendung für das Bewälti
 
 Zusätzlich zu den Hauptanwendungsinstanzen sollten Sie die Bereitstellung einer kleinen [Workerrollenanwendung](cloud-services-choose-me.md#tellmecs) erwägen, die die primäre Datenbank durch regelmäßiges Aufrufen schreibgeschützter T-SQL-Befehle überwacht. Sie können sie verwenden, um automatisch ein Failover auszulösen, eine Warnung in der Verwaltungskonsole der Anwendung auszulösen oder beides. Um sicherzustellen, dass die Überwachung nicht von Ausfällen in der gesamten Region betroffen ist, müssen Sie zunächst die Instanzen der Überwachungsanwendung in den einzelnen Regionen bereitstellen. Anschließend müssen Sie sie mit der Datenbank in der anderen Region verbinden, wobei jedoch nur die Instanz in der sekundären Region aktiv sein muss.
 
-> [AZURE.NOTE] Bei Verwendung der [aktiven Georeplikation](https://msdn.microsoft.com/library/azure/dn741339.aspx) können beide Überwachungsanwendungen aktiv sein und sowohl die primären als auch die sekundären Datenbanken testen. Letztere kann verwendet werden, um einen Ausfall in der sekundären Region zu erkennen und zu warnen, wenn die Anwendung nicht geschützt ist.
+> [AZURE.NOTE] Beide Überwachungsanwendungen sollten aktiv sein und sowohl primäre als auch sekundäre Datenbanken testen. Letztere kann verwendet werden, um einen Ausfall in der sekundären Region zu erkennen und zu warnen, wenn die Anwendung nicht geschützt ist.
 
 Das folgende Diagramm zeigt diese Konfiguration vor einem Ausfall.
 
@@ -43,8 +48,8 @@ Das folgende Diagramm zeigt diese Konfiguration vor einem Ausfall.
 
 Nach einem Ausfall in der primären Region erkennt die Überwachungsanwendung, dass kein Zugriff auf die primäre Datenbank möglich ist, und löst eine Warnung aus. Je nach der für Ihre Anwendung geltenden SLA können Sie bestimmen, wie viele nachfolgende Überwachungstests fehlerhaft sein dürfen, ehe Sie einen Datenbankausfall bekanntgeben. Um ein koordiniertes Failover des Anwendungsendpunkts und der Datenbank zu ermöglichen, muss die Überwachungsanwendung die folgenden Schritte ausführen:
 
-1. [Aktualisieren des Status des primären Endpunkts](https://msdn.microsoft.com/library/hh758250.aspx) zum Auslösen des Endpunktfailovers
-2. Aufrufen der sekundären Datenbank zum [Auslösen des Datenbankfailovers](https://msdn.microsoft.com/library/azure/dn509573.aspx)
+1. [Aktualisieren Sie den Status des primären Endpunkts](https://msdn.microsoft.com/library/hh758250.aspx), um ein Endpunktfailover auszulösen.
+2. Rufen Sie die sekundäre Datenbank auf, um ein [Datenbankfailover zu initiieren](sql-database-geo-replication-portal.md).
 
 Nach einem Failover verarbeitet die Anwendung die Benutzeranforderungen in der sekundären Region, bleibt jedoch mit der Datenbank zusammengestellt, da die primäre Datenbank sich nun in der sekundären Region befindet. Dies wird im folgenden Diagramm veranschaulicht. In allen Diagrammen stehen durchgezogene Linien für aktive Verbindungen, gepunktete Linien für unterbrochene Verbindungen und Stoppschilder für Aktionstrigger.
 
@@ -77,16 +82,16 @@ Diese cloudbasierte Notfallwiederherstellung eignet sich am besten für Anwendun
 
 Wenn Ihre Anwendung diese Merkmale aufweist, kann ein Lastenausgleich der Endbenutzerverbindungen über mehrere Anwendungsinstanzen in verschiedenen Regionen die Leistung und Benutzerfreundlichkeit verbessern. Um dies zu erreichen, muss jede Region über eine aktive Instanz der Anwendung verfügen, wobei die Lese-/Schreiblogik mit der primären Datenbank in der primären Region verbunden ist. Die schreibgeschützte Logik muss mit einer sekundären Datenbank in derselben Region wie die Anwendungsinstanz verbunden werden. Traffic Manager muss so eingerichtet werden, dass für jede Anwendungsinstanz das [Roundrobin-Routing](../traffic-manager/traffic-manager-configure-round-robin-routing-method.md) oder das [Leistungsrouting](../traffic-manager/traffic-manager-configure-performance-routing-method.md) mit [Endpunktüberwachung](../traffic-manager/traffic-manager-monitoring.md) aktiviert wird.
 
-Wie bei Muster 1 sollten Sie das Bereitstellen einer ähnlichen Überwachungsanwendung erwägen. Doch im Gegensatz zu Muster 1 ist diese nicht für das Auslösen des Endpunktfailovers zuständig.
+Wie bei Muster 1 sollten Sie das Bereitstellen einer ähnlichen Überwachungsanwendung erwägen. Doch im Gegensatz zu Muster 1 ist diese nicht für das Auslösen des Endpunktfailovers zuständig.
 
-> [AZURE.NOTE] Wenngleich bei diesem Muster mehr als eine sekundäre Datenbank zum Einsatz kommt, wird nur eine dieser sekundären Datenbanken aus den zuvor genannten Gründen für das Failover genutzt. Da dieses Muster einen schreibgeschützten Zugriff auf die sekundäre Datenbank verlangt, ist eine [aktive Georeplikation](https://msdn.microsoft.com/library/azure/dn741339.aspx) erforderlich.
+> [AZURE.NOTE] Wenngleich bei diesem Muster mehr als eine sekundäre Datenbank zum Einsatz kommt, wird nur eine dieser sekundären Datenbanken aus den zuvor genannten Gründen für das Failover genutzt. Da dieses Muster einen schreibgeschützten Zugriff auf die sekundäre Datenbank verlangt, ist eine aktive Georeplikation erforderlich.
 
 Traffic Manager muss für das Leistungsrouting so konfiguriert werden, dass die Benutzerverbindungen zur Anwendungsinstanz geleitet werden, die dem geografischen Standort des Benutzers am nächsten ist. Das folgende Diagramm veranschaulicht diese Konfiguration vor einem Ausfall. ![Kein Ausfall: effizientes Routing zur nächstgelegenen Anwendung Georeplikation](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-1.png)
 
 Wenn in der primären Region ein Datenbankausfall erkannt wird, lösen Sie das Failover der primären Datenbanken in eine der sekundären Regionen aus, wodurch sich der Standort der primären Datenbank ändert. Traffic Manager schließt automatisch den Endpunkt im Offlinestatus aus der Routingtabelle aus, setzt aber das Routing des Endbenutzerdatenverkehrs an die verbleibenden Online-Instanzen fort. Da sich die primäre Datenbank nun in einer anderen Region befindet, muss bei allen Online-Instanzen die SQL-Verbindungszeichenfolge für den Lese-/Schreibzugriff so geändert werden, dass eine Verbindung mit der neuen primären Datenbank hergestellt wird. Wichtig ist, dass Sie diese Änderung vor dem Auslösen des Datenbankfailovers vornehmen. Schreibgeschützte SQL-Verbindungszeichenfolgen müssen unverändert bleiben, da sie stets auf die Datenbank in derselben Region zeigen. Die Failoverschritte sind wie folgt:
 
 1. Ändern der SQL-Verbindungszeichenfolgen für den Lese-/ Schreibzugriff dergestalt, dass sie auf die neue primäre Datenbank zeigen
-2. Aufrufen der vorgesehenen sekundären Datenbank zum [Auslösen des Datenbankfailovers](https://msdn.microsoft.com/library/azure/dn509573.aspx)
+2. Aufrufen der vorgesehenen sekundären Datenbank zum [Auslösen des Datenbankfailovers](sql-database-geo-replication-portal.md)
 
 Das folgende Diagramm veranschaulicht die neue Konfiguration nach dem Failover. ![Konfiguration nach Failover Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
 
@@ -118,7 +123,7 @@ Wenn Traffic Manager einen Ausfall der Verbindung mit der primären Region erken
 
 Nachdem die Ausfallursache in der primären Region beseitigt wurde, erkennt Traffic Manager die Wiederherstellung der Verbindung mit der primären Region und leitet den Datenverkehr der Benutzer wieder zur Anwendungsinstanz in der primären Region. Diese Anwendungsinstanz nimmt wieder den Betrieb im Lese-/Schreibmodus unter Verwendung der primären Datenbank auf.
 
-> [AZURE.NOTE] Da dieses Muster einen schreibgeschützten Zugriff auf die sekundäre Datenbank verlangt, ist eine [aktive Georeplikation](https://msdn.microsoft.com/library/azure/dn741339.aspx) erforderlich.
+> [AZURE.NOTE] Da dieses Muster einen schreibgeschützten Zugriff auf die sekundäre Datenbank verlangt, ist eine aktive Georeplikation erforderlich.
 
 Bei einem Ausfall in der sekundären Region markiert Traffic Manager den Anwendungsendpunkt in der primären Region als nicht einsatzbereit, und der Replikationskanal wird unterbrochen. Die Leistung der Anwendung wird jedoch während des Ausfalls nicht beeinträchtigt. Nach Behebung der Ausfallursache wird die sekundäre Datenbank sofort mit der primären synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank geringfügig beeinträchtigt werden, was von der Menge der Daten abhängt, die synchronisiert werden muss.
 
@@ -148,4 +153,14 @@ Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung k�
 | Aktiv-/Aktiv-Bereitstellung für den Anwendungslastenausgleich | Lese-/Schreibzugriff < 5 Sek. | Ausfallerkennungszeit + Aufruf der Failover-API + Änderung der SQL-Verbindungszeichenfolge + Anwendungsüberprüfungstest
 | Aktiv-/Passiv-Bereitstellung für die Beibehaltung von Daten | Schreibgeschützter Zugriff < 5 Sek. Lese-/ Schreibzugriff = 0 (null) | Schreibgeschützter Zugriff = Erkennungszeit für Verbindungsausfall + Anwendungsüberprüfungstest <br>Lese-/Schreibzugriff = Zeit zum Beseitigen der Ausfallursache
 
-<!---HONumber=AcomDC_0309_2016-->
+
+## Zusätzliche Ressourcen
+
+
+- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0504_2016-->

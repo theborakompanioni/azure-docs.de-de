@@ -4,7 +4,7 @@
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     editor=""/>
 
 <tags
@@ -13,26 +13,25 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="02/23/2016"
+    ms.date="04/27/2016"
     ms.author="sstein"/>
 
 # Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-geo-replication-portal.md)
+- [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 In diesem Artikel wird beschrieben, wie Sie die Georeplikation für eine SQL-Datenbank mit dem [Azure-Portal](http://portal.azure.com) konfigurieren.
 
-Die Georeplikation ermöglicht das Erstellen von bis zu vier (sekundären) Replikatdatenbanken in verschiedenen Datencenterregionen. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
+Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-portal.md).
 
-Die Georeplikation ist nur für Standard- und Premium-Datenbanken verfügbar.
+>[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
-Standard-Datenbanken können über eine nicht lesbare sekundäre Datenbank verfügen und müssen die empfohlene Region verwenden. Premium-Datenbanken können bis zu vier lesbare sekundäre Datenbanken in beliebigen der verfügbaren Regionen aufweisen.
-
+Sie können bis zu vier lesbare sekundäre Datenbanken in derselben oder in verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
 
 Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
 
@@ -47,9 +46,9 @@ Mit den folgenden Schritten wird eine neue sekundäre Datenbank in einer Partner
 
 Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer des Abonnements oder der Mitbesitzer sein.
 
-Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann lesbar (nur Premium-Ebene) oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
+Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
-> [AZURE.NOTE] Wenn die Partnerdatenbank bereits vorhanden ist (z. B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
+> [AZURE.NOTE] Wenn die Partnerdatenbank bereits vorhanden ist (z. B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 
 
 
@@ -58,13 +57,13 @@ Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und s
 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu der Datenbank, die Sie für die Georeplikation einrichten möchten.
 2. Wählen Sie auf dem Blatt „SQL-Datenbank“ die Option **Alle Einstellungen** > **Georeplikation**.
-3. Wählen Sie die Region für die Erstellung der sekundären Datenbank aus. Premium-Datenbanken können für eine sekundäre Datenbank eine beliebige Region verwenden. Für Standard-Datenbanken muss die empfohlene Region verwendet werden:
+3. Wählen Sie die Region für die Erstellung der sekundären Datenbank aus.
 
 
     ![Sekundäre Datenbank hinzufügen][1]
 
 
-4. Konfigurieren Sie den **Sekundären Typ** (**Lesbar** oder **Nicht lesbar**). Nur Premium-Datenbanken können über lesbare sekundäre Datenbanken verfügen. Sekundäre Datenbanken von Standard-Datenbanken können nur auf **Nicht lesbar** festgelegt werden.
+4. Konfigurieren Sie den **sekundären Typ** (**Lesbar** oder **Nicht lesbar**)
 5. Wählen Sie den Server für die sekundäre Datenbank aus bzw. konfigurieren Sie ihn.
 
     ![Sekundäre Datenbank erstellen][3]
@@ -104,39 +103,24 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
 
 
 
-## Initiieren eines Failovers
-
-Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie zur primären Datenbank wird.
-
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
-2. Wählen Sie auf dem Blatt „SQL-Datenbank“ die Option **Alle Einstellungen** > **Georeplikation**.
-3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll.
-4. Klicken Sie auf **Failover**.
-
-    ![Failover][10]
-
-Der Befehl hat den folgenden Workflow:
-
-1. Für die Replikation wird vorübergehend in den synchronen Modus gewechselt. Dadurch werden alle ausstehenden Transaktionen in die sekundäre Datenbank übertragen. 
-
-2. Die primären und sekundären Rollen der beiden Datenbanken in der Georeplikationspartnerschaft werden getauscht.
-
-Für ein geplantes Failover wird mit dieser Abfolge sichergestellt, dass kein Datenverlust auftritt. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute.
-
    
 
 ## Nächste Schritte
 
+- [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-portal.md)
 - [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 
 
 ## Zusätzliche Ressourcen
 
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
 - [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
 
 <!--Image references-->
@@ -151,4 +135,4 @@ Für ein geplantes Failover wird mit dieser Abfolge sichergestellt, dass kein Da
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

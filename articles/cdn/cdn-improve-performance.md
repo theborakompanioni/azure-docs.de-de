@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="04/26/2016" 
 	ms.author="casoper"/>
 
 # Verbessern der Leistung durch Komprimieren von Dateien
@@ -65,28 +65,69 @@ CDN bietet zwei Möglichkeiten zur Unterstützung der Komprimierung:
 
 	![Dateikomprimierung](./media/cdn-file-compression/cdn-compress-files.png)
 
-3. Nach dem Ändern der Liste mit den Dateitypen, klicken Sie auf die Schaltfläche **Update**.
+3. Aktivieren Sie die Komprimierung, indem Sie auf das Optionsfeld **Komprimierung aktiviert** klicken. Geben Sie im Textfeld **Dateitypen** die zu komprimierenden MIME-Typen als durch Trennzeichen getrennte Liste (ohne Leerzeichen) an.
+
+4. Wenn Sie die gewünschten Änderungen vorgenommen haben, klicken Sie auf die Schaltfläche **Aktualisieren**,
 
 
-## Komprimierungsprozess und -regeln
+## Komprimierungsprozess
+
+### Übersicht
 
 1. Die anfordernde Person sendet eine Inhaltsanforderung.
+
 2. Ein Edgeserver prüft, ob ein **Accept-Encoding**-Header vorhanden ist.
 	1. Sofern vorhanden, gibt dieser Header die angeforderte Komprimierungsmethode an.
-	1. Fehlt der Header, wird die Anforderung in einem nicht komprimierten Format verarbeitet.
-3.	Der nächstgelegene Edge-POP überprüft den Cachestatus sowie die Komprimierungsmethode und prüft, ob noch eine entsprechende Gültigkeitsdauer vorliegt.
-	1.	Cachefehler: Wenn die angeforderte Version nicht zwischengespeichert ist, wird die Anforderung an den Ursprungsserver weitergeleitet.
-	2.	Cachetreffer mit derselben Komprimierungsmethode: Der Edgeserver sendet die komprimierten Inhalte sofort an den Client.
-	3.	Cachetreffer mit anderer Komprimierungsmethode: Der Edgeserver transcodiert die Ressource in die angeforderte Komprimierungsmethode.
-	4.	Cachetreffer mit nicht komprimierten Inhalten: Wenn die anfängliche Anforderung dazu geführt hat, dass die Ressource in einem nicht komprimierten Format zwischengespeichert wurde, wird geprüft, ob für die Anforderung eine Edgeserverkomprimierung durchgeführt werden kann (die Prüfung erfolgt basierend auf den Kriterien im obigen Abschnitt zu Definition/Anforderungen).
-		1.	Sofern möglich, komprimiert der Edgeserver die Datei und sendet sie an den Client.
-		2.	Ist eine Komprimierung nicht möglich, sendet der Edgeserver den nicht komprimierten Inhalt sofort an den Client.
+		> [AZURE.NOTE] Unterstützte Komprimierungsmethoden sind **gzip**, **deflate**, und **bzip2**.
+	2. Fehlt der Header, wird die Anforderung in einem nicht komprimierten Format verarbeitet.
+	
+3.	Der nächstgelegene Edge-POP überprüft den Cachestatus sowie die Komprimierungsmethode und prüft, ob noch eine entsprechende Gültigkeitsdauer (TTL, Time to Live) vorliegt.
+	1.	**Cachefehler** („Miss“): Wenn die angeforderte Version nicht zwischengespeichert ist, wird die Anforderung an den Ursprungsserver weitergeleitet.
+	2.	**Cachetreffer** („Hit“): Wenn die angeforderte Version mit der angeforderten Komprimierungsmethode zwischengespeichert ist, sendet der Edgeserver den komprimierten Inhalt sofort an den Client.
+	3.	**Cachetreffer** („Hit“) Wenn die Datei mit einer anderen Komprimierungsmethode zwischengespeichert wurde, transcodiert der Edgeserver die Ressource in die angeforderte Komprimierungsmethode.
+	4.	**Cachetreffer** („Hit“): Wenn die Datei in einem nicht komprimierten Format zwischengespeichert wurde, wird geprüft, ob die Anforderung für die Komprimierung durch den Edgeserver geeignet ist. Sofern möglich, komprimiert der Edgeserver die Datei und sendet sie an den Client. Andernfalls wird der nicht komprimierte Inhalt zurückgegeben.
+		
+> [AZURE.IMPORTANT] Eine Datei ist für die Komprimierung geeignet, wenn sie folgende Bedingungen erfüllt:
+>
+> - Größer als 128 Bytes
+> - Kleiner als 1 MB
+> - Ein MIME-Typ, für den [die Komprimierung konfiguriert wurde](#enabling-compression)
+
+### Tabellen
+
+Die folgenden Tabellen beschreiben das Verhalten der CDN-Komprimierung für jedes Szenario.
+
+#### Komprimierung deaktiviert oder Datei ist nicht für die Komprimierung geeignet
+
+|Angefordertes Format|Zwischengespeicherte Datei|CDN-Reaktion|Hinweise|
+|----------------|-----------|------------|-----|
+|Komprimiert|Komprimiert|Komprimiert|CDN transcodiert zwischen unterstützten Formaten|
+|Komprimiert|Nicht komprimiert|Nicht komprimiert| |	
+|Komprimiert|Nicht zwischengespeichert|Komprimiert oder nicht komprimiert|Abhängig von der Reaktion des Ursprungsservers|
+|Nicht komprimiert|Komprimiert|Nicht komprimiert|CDN kontaktiert Ursprungsserver, um die nicht komprimierte Version zu erhalten|
+|Nicht komprimiert|Nicht komprimiert|Nicht komprimiert| |	
+|Nicht komprimiert|Nicht zwischengespeichert|Nicht komprimiert| |
+
+#### Komprimierung aktiviert und Datei zur Komprimierung geeignet
+
+|Angefordertes Format|Zwischengespeicherte Datei|CDN-Reaktion|Hinweise|
+|----------------|-----------|------------|-----|
+|Komprimiert|Komprimiert|Komprimiert|CDN transcodiert zwischen unterstützten Formaten|
+|Komprimiert|Nicht komprimiert|Komprimiert|CDN führt die Komprimierung durch|
+|Komprimiert|Nicht zwischengespeichert|Komprimiert|CDN führt die Komprimierung durch, wenn der Ursprungsserver die nicht komprimierte Datei zurückgibt|
+|Nicht komprimiert|Komprimiert|Nicht komprimiert|CDN führt Dekomprimierung durch|
+|Nicht komprimiert|Nicht komprimiert|Nicht komprimiert| |	
+|Nicht komprimiert|Nicht zwischengespeichert|Nicht komprimiert| |	
 
 
+## Hinweise
 
-## Überlegungen
+1. Genauso wie beim Bereitstellen neuer Endpunkte dauert es eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind. In den meisten Fällen werden Ihre Änderungen innerhalb von 90 Minuten übernommen. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden. Erst danach lohnt sich ggf. eine Problembehandlung.
+2. Auf dem Edgeserver wird nur eine Dateiversion (komprimiert oder nicht komprimiert) zwischengespeichert. Die Anforderung einer anderen Dateiversion führt dazu, dass der Inhalt vom Edgeserver transcodiert wird.
+3. Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für die folgenden Inhaltstypen standardmäßig aktiviert: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl,application/f4m+xml. Sie können die Komprimierung für die genannten Typen im Azure-Portal nicht aktivieren/deaktivieren.  
+4. Obwohl es möglich ist, die Komprimierung für komprimierte Formate wie ZIP, MP3, MP4, JPG usw. zu aktivieren, wird dies nicht empfohlen.
 
-1. Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für die folgenden Inhaltstypen standardmäßig aktiviert: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl,application/f4m+xml. Sie können die Komprimierung für die genannten Typen im Azure-Portal nicht aktivieren/deaktivieren.  
-2. Auf dem Edgeserver wird nur eine Dateiversion (komprimiert oder nicht komprimiert) zwischengespeichert. Die Anforderung einer anderen Dateiversion führt dazu, dass der Inhalt vom Edgeserver transcodiert wird.  
+## Weitere Informationen
+- [Problembehandlung bei der CDN-Dateikomprimierung](cdn-troubleshoot-compression.md)    
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

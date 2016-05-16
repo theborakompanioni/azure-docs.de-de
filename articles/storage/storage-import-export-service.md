@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="04/29/2016"
 	ms.author="renash"/>
 
 
@@ -239,13 +239,13 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 
 - Für US- und europäische Regionen wird nur [Federal Express](http://www.fedex.com/us/oadr/) (FedEx) unterstützt. Alle Pakete werden per FedEx Ground oder FedEx International Economy zurückgeschickt.
 
-- Für asiatische Regionen wird nur [DHL](http://www.dhl.com/) unterstützt. Alle Pakete werden per DHL Express Worldwide zurückgeschickt.
+- Für Asien-Pazifik (Osten), Asien-Pazifik (Südosten), Australien (Osten), Australien (Südosten) und Japan (Westen) wird nur [DHL](http://www.dhl.com/) unterstützt. Alle Pakete werden per DHL Express Worldwide zurückgeschickt.
 
 	> [AZURE.IMPORTANT] Sie müssen Ihre Tracking-Nummer an den Azure Import-/Export-Dienst übertragen, ansonsten kann Ihr Auftrag nicht verarbeitet werden.
 
 **Entstehen Kosten für den Rückversand?**
 
-- Microsoft verwendet die Kontonummer für das Transportunternehmen, die Sie bei der Auftragserstellung angegeben haben, um die Laufwerke vom Rechenzentrum an Ihre Absenderadresse zu schicken. Geben Sie daher unbedingt eine Kontonummer für ein Transportunternehmen an, das in der Region des Rechenzentrums unterstützt wird. Sie können ein Konto bei [FedEx](http://www.fedex.com/us/oadr/) (für USA und Europa) oder [DHL](http://www.dhl.com/) (Asien) erstellen, falls Sie kein solches Konto haben.
+- Microsoft verwendet die Kontonummer für das Transportunternehmen, die Sie bei der Auftragserstellung angegeben haben, um die Laufwerke vom Rechenzentrum an Ihre Absenderadresse zu schicken. Geben Sie daher unbedingt eine Kontonummer für ein Transportunternehmen an, das in der Region des Rechenzentrums unterstützt wird. Sie können ein Konto bei [FedEx](http://www.fedex.com/us/oadr/) (für USA und Europa) oder [DHL](http://www.dhl.com/) (Asien und Australien) erstellen, falls Sie noch über kein solches Konto verfügen.
 
 - Die Rücksendegebühren werden Ihrem Konto beim Transportunternehmen berechnet und hängen vom Transportunternehmen ab.
 
@@ -253,13 +253,18 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 
 - Der Import-/Exportdienst unterstützt Import und Export von Daten in Speicherkonten in den folgenden Regionen:
 	- USA (Ost)
-	- Westen USA
+	- USA (Westen)
+	- USA (Ost) 2
+	- USA (Mitte)
 	- USA Nord Mitte
 	- USA Süd Mitte
 	- Nordeuropa
 	- Westeuropa
 	- Asien (Osten)
 	- Südostasien
+	- Australien (Osten)
+	- Australien (Südosten)
+	- Japan (Westen)
 
 - Sie erhalten eine Lieferadresse in der Region, in der sich Ihr Speicherkonto befindet. Wenn Sie z. B. in den USA leben und sich Ihr Speicherkonto im Rechenzentrum in Westeuropa befindet, erhalten Sie für den Versand der Laufwerke eine Lieferadresse in Europa.
 
@@ -277,7 +282,7 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 
 **Warum wird als Auftragsstatus im klassischen Portal *Versand* angezeigt, während auf der Website des Transportunternehmens angezeigt wird, dass mein Paket zugestellt wird?**
 
-- Der Portalstatus ändert sich von *Versand* in *Übertragung*, wenn die Laufwerksverarbeitung beginnt. Wenn das Laufwerk den Standort erreicht hat, aber die Verarbeitung noch nicht gestartet wurde, wird als Auftragsstatus *Versand* angezeigt.
+- Der Portalstatus ändert sich von *Versand* in *Übertragung*, wenn die Laufwerkverarbeitung beginnt. Wenn das Laufwerk den Standort erreicht hat, aber die Verarbeitung noch nicht gestartet wurde, wird als Auftragsstatus *Versand* angezeigt.
 
 ## Weitere Informationen
 
@@ -288,4 +293,4 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

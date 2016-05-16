@@ -13,183 +13,114 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="05/04/2016" 
 	ms.author="stbaro"/>
 
 # Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers
 
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Vorlage des Azure-Ressourcen-Managers [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/), eine [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Web-App und eine Beispielwebanwendung bereitstellen und integrieren.
 
-Nach Abschluss dieses Lernprogramms können Sie die folgenden Fragen beantworten:
+Mit Azure Resource Manager-Vorlagen können Sie die Bereitstellung und Konfiguration von Azure-Ressourcen problemlos automatisieren. Dieses Tutorial zeigt, wie Sie eine Webanwendung bereitstellen und DocumentDB-Kontoverbindungsinformationen automatisch konfigurieren.
+
+Nach Abschluss dieses Tutorials können Sie die folgenden Fragen beantworten:
 
 -	Wie kann ich mithilfe einer Vorlage des Azure-Ressourcen-Managers ein DocumentDB-Konto und eine Web-App in Azure App Service bereitstellen und integrieren?
 -	Wie kann ich mithilfe einer Vorlage des Azure-Ressourcen-Managers ein DocumentDB-Konto, eine Web-App in App Service-Web-Apps und eine WebDeploy-Anwendung bereitstellen und integrieren?
 
 <a id="Prerequisites"></a>
 ## Voraussetzungen
-> [AZURE.TIP] Zwar wird für dieses Lernprogramm keine Erfahrung im Umgang mit Vorlagen des Azure-Ressourcen-Managers, JSON oder Azure PowerShell vorausgesetzt, wenn Sie jedoch die hierin verwendeten Vorlagen oder Bereitstellungsoptionen ändern möchten, sind Kenntnisse in jedem dieser Bereiche erforderlich.
+> [AZURE.TIP] Zwar wird für dieses Tutorial keine Erfahrung im Umgang mit Azure Resource Manager-Vorlagen oder JSON vorausgesetzt, wenn Sie jedoch die hierin verwendeten Vorlagen oder Bereitstellungsoptionen ändern möchten, sind Kenntnisse in jedem dieser Bereiche erforderlich.
 
 Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherstellen, dass Sie über Folgendes verfügen:
 
 - Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben](https://azure.microsoft.com/pricing/purchase-options/), [Spezielle Angebote](https://azure.microsoft.com/pricing/member-offers/) oder [Einen Monat kostenlos testen!](https://azure.microsoft.com/pricing/free-trial/).
-- Ein Azure-Speicherkonto. Anweisungen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
-- Eine Arbeitsstation mit Azure PowerShell 0.9.8. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Dieses Lernprogramm wurde noch nicht für Azure PowerShell 1.0 Vorschau aktualisiert. 
 
-##<a id="CreateDB"></a>Schritt 1: Herunterladen und Extrahieren der Beispieldateien ##
-Als Erstes laden wir die Beispieldateien herunter, die in diesem Lernprogramm verwendet werden.
+##<a id="CreateDB"></a>Schritt 1: Herunterladen der Vorlagendateien ##
+Als Erstes laden wir die Vorlagendateien herunter, die in diesem Tutorial verwendet werden.
 
-1. Laden Sie das [Beispiel zum Erstellen eines DocumentDB-Kontos, von Web-Apps und zum Bereitstellen einer Demoanwendung](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip) in einen lokalen Ordner (z. B. „C:\\DocumentDBTemplates“) herunter, und extrahieren Sie die Dateien. In diesem Beispiel werden ein DocumentDB-Konto, eine App Service-Web-App und eine Webanwendung bereitgestellt. Außerdem wird die Webanwendung automatisch so konfiguriert, dass sie eine Verbindung mit dem DocumentDB-Konto herstellt.
+1. Laden Sie die Vorlage zu einem [Beispiel mit Erstellen eines DocumentDB-Kontos, von Web-Apps und Bereitstellen einer Demoanwendung](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) in einen lokalen Ordner (z.B. „C:\\DocumentDBTemplates“) herunter. Diese Vorlage stellt ein DocumentDB-Konto, eine App Service-Web-App und eine Webanwendung bereit. Außerdem wird die Webanwendung automatisch so konfiguriert, dass sie eine Verbindung mit dem DocumentDB-Konto herstellt.
 
-2. Laden Sie das [Beispiel zum Erstellen eines DocumentDB-Kontos und Web-Apps](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip) in einen lokalen Ordner (z. B. „C:\\DocumentDBTemplates“) herunter, und extrahieren Sie die Dateien. Mit diesem Beispiel werden ein DocumentDB-Konto und eine App Service-Web-App bereitgestellt; außerdem wird die Konfiguration der Web-App so geändert, dass DocumentDB-Verbindungsinformationen problemlos angegeben werden können, eine Webanwendung ist jedoch nicht enthalten.
-
-> [AZURE.TIP] Beachten Sie, dass Sie je nach den Sicherheitseinstellungen des Computers möglicherweise die extrahierten Dateien entsperren müssen, indem Sie mit der rechten Maustaste darauf klicken und dann auf **Eigenschaften** und auf **Blockierung aufheben** klicken.
-
-![Screenshot des Fensters „Eigenschaften“ mit der hervorgehobenen Schaltfläche „Blockierung aufheben“](./media/documentdb-create-documentdb-website/image1.png)
+2. Laden Sie die Vorlage zu einem [Beispiel mit Erstellen eines DocumentDB-Kontos und von Web-Apps](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) in einen lokalen Ordner (z.B. „C:\\DocumentDBTemplates“) herunter. Mit dieser Vorlage werden ein DocumentDB-Konto und eine App Service-Web-App bereitgestellt; außerdem werden die Anwendungseinstellungen der Site so geändert, dass DocumentDB-Verbindungsinformationen problemlos angegeben werden können, eine Webanwendung ist jedoch nicht enthalten.
 
 <a id="Build"></a>
-##Schritt 2: Bereitstellen des Dokument-Kontos, der App Service-Web-App und der Demoanwendung
+##Schritt 2: Bereitstellen des Beispiels mit DocumentDB-Konto, App Service-Web-App und Demoanwendung
 
 Jetzt stellen wir unsere erste Vorlage bereit.
 
-> [AZURE.TIP] Die Vorlage überprüft nicht, ob die unten eingegebenen Namen der Web-App und der DocumentDB-Kontoname (a) gültig und (b) verfügbar sind. Es wird dringend empfohlen, die Verfügbarkeit der gewünschten Namen zu überprüfen, bevor Sie das PowerShell-Bereitstellungsskript ausführen.
+> [AZURE.TIP] Die Vorlage überprüft nicht, ob die unten eingegebenen Namen der Web-App und der DocumentDB-Kontoname (a) gültig und (b) verfügbar sind. Sie sollten unbedingt die Verfügbarkeit der gewünschten Namen überprüfen, bevor Sie die Bereitstellung ausführen.
 
-1. Öffnen Sie Microsoft Azure PowerShell, und navigieren Sie zu dem Ordner, in den Sie das [Beispiel zum Erstellen eines DocumentDB-Kontos, einer App Service-Web-App und Bereitstellen einer Demoanwendung](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip) heruntergeladen und extrahiert haben (z. B. „C:\\DocumentDBTemplates\\CreateDocDBWebsiteTodo“).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, klicken Sie auf „Neu“, und suchen Sie nach „Vorlagenbereitstellung“. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 
+2. Wählen Sie die Option zur Vorlagenbereitstellung, und klicken Sie auf **Erstellen**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 
-2. Wir führen das PowerShell-Skript "CreateDocDBWebsiteTodo.ps1" aus. Das Skript verwendet die folgenden erforderlichen Parameter:
-	- WebsiteName: Gibt den Namen der App Service-Web-App an und wird verwendet, um die URL zu erstellen, die Sie für den Zugriff auf die Web-App verwenden (wenn Sie z. B. „Mydemodocdbwebapp“ angeben, dann lautet die URL, mit der Sie auf die Web-App zugreifen, „mydemodocdbwebapp.azurewebsites.net“).
+3.  Klicken Sie auf **Vorlage bearbeiten**, fügen Sie den Inhalt der Vorlagendatei „DocDBWebsiteTodo.json“ ein, und klicken Sie auf **Speichern**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment3.png)
 
-	- ResourceGroupName: Gibt den Namen der bereitzustellenden Azure-Ressourcengruppe an. Wenn die angegebene Ressourcengruppe nicht existiert, wird sie erstellt.
+4. Klicken Sie auf **Parameter bearbeiten**, geben Sie Werte für jeden obligatorischen Parameter an, und klicken Sie auf **OK**. Die Parameter lauten wie folgt:
 
-	- docDBAccountName: Gibt den Namen des zu erstellenden DocumentDB-Kontos an.
+	1. SITENAME: Gibt den Namen der App Service-Web-App an und wird verwendet, um die URL zu erstellen, die Sie für den Zugriff auf die Web-App verwenden (wenn Sie z.B. „mydemodocdbwebapp“ angeben, dann lautet die URL, mit der Sie auf die Web-App zugreifen, „mydemodocdbwebapp.azurewebsites.net“).
 
-	- location: Gibt den Azure-Ort an, an dem die DocumentDB- und Web-App-Ressourcen erstellt werden sollen. Gültige Werte sind Ostasien, Südostasien, Osten USA, Westen USA, Nordeuropa, Westeuropa (beachten Sie, dass bei dem angegebenen Ortswert die Groß-/Kleinschreibung beachtet werden muss).
+	2. HOSTINGPLANNAME: Gibt den Namen des zu erstellenden App Service-Hostingplans an.
 
+	3. LOCATION: Gibt den Azure-Speicherort an, wo die DocumentDB- und Web-App-Ressourcen erstellt werden sollen.
 
-3. Hier sehen Sie einen Beispielbefehl zur Ausführung des Skripts:
+	4. DATABASEACCOUNTNAME: Gibt den Namen des zu erstellenden DocumentDB-Kontos an.
 
-    	PS C:\DocumentDBTemplates\CreateDocDBWebAppTodo> .\CreateDocDBWebsiteTodo.ps1 -WebSiteName "mydemodocdbwebapp" -ResourceGroupName "myDemoResourceGroup" -docDBAccountName "mydemodocdbaccount" -location "West US"
+	![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 
-	> [AZURE.TIP] Beachten Sie, dass Sie im Rahmen der Skriptausführung zur Eingabe des Benutzernamens und Kennworts für Ihr Azure-Konto aufgefordert werden. Die gesamte Bereitstellung nimmt zwischen 10 und 15 Minuten in Anspruch.
+5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen an, um eine neue Ressourcengruppe zu erstellen, und wählen Sie einen Speicherort für die Ressourcengruppe. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
+  
+6.  Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.**, **Kaufen** und dann auf **Erstellen**, um mit der Bereitstellung zu beginnen. Wählen Sie **An Dashboard anheften**, damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 
-4. Hier sehen Sie ein Beispiel der resultierenden Ausgabe:
+7.  Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet. ![Screenshot des Blatts „Ressourcengruppe“](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
-		VERBOSE: 1:06:00 PM - Created resource group 'myDemoResourceGroup' in location westus'
-		VERBOSE: 1:06:01 PM - Template is valid.
-		VERBOSE: 1:06:01 PM - Create template deployment 'Microsoft.DocumentDBWebSiteTodo'.
-		VERBOSE: 1:06:08 PM - Resource Microsoft.DocumentDb/databaseAccounts 'mydemodocdbaccount' provisioning status is running
-		VERBOSE: 1:06:10 PM - Resource Microsoft.Web/serverFarms 'mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:06:14 PM - Resource microsoft.insights/alertrules 'CPUHigh mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:06:16 PM - Resource microsoft.insights/autoscalesettings 'mydemodocdbwebapp-myDemoResourceGroup' provisioning status is succeeded
-		VERBOSE: 1:06:16 PM - Resource microsoft.insights/alertrules 'LongHttpQueue mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:06:21 PM - Resource Microsoft.Web/Sites 'mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:06:23 PM - Resource microsoft.insights/alertrules 'ForbiddenRequests mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:06:25 PM - Resource microsoft.insights/alertrules 'ServerErrors mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:06:25 PM - Resource microsoft.insights/components 'mydemodocdbwebapp' provisioning status is succeeded
-		VERBOSE: 1:16:22 PM - Resource Microsoft.DocumentDb/databaseAccounts 'mydemodocdbaccount' provisioning status is succeeded
-		VERBOSE: 1:16:22 PM - Resource Microsoft.DocumentDb/databaseAccounts 'mydemodocdbaccount' provisioning status is succeeded
-		VERBOSE: 1:16:24 PM - Resource Microsoft.Web/Sites/config 'mydemodocdbwebapp/web' provisioning status is succeeded
-		VERBOSE: 1:16:27 PM - Resource Microsoft.Web/Sites/Extensions 'mydemodocdbwebapp/MSDeploy' provisioning status is running
-		VERBOSE: 1:16:35 PM - Resource Microsoft.Web/Sites/Extensions 'mydemodocdbwebapp/MSDeploy' provisioning status is succeeded
-
-		ResourceGroupName : myDemoResourceGroup
-		Location          : westus
-		Resources         : {mydemodocdbaccount, CPUHigh mydemodocdbwebapp, ForbiddenRequests mydemodocdbwebapp, LongHttpQueue mydemodocdbwebapp...}
-		ResourcesTable    :
-                    Name                                    Type                                   Location
-                    ======================================  =====================================  =========
-                    mydemodocdbaccount                      Microsoft.DocumentDb/databaseAccounts  westus
-                    CPUHigh mydemodocdbwebapp              microsoft.insights/alertrules          eastus
-                    ForbiddenRequests mydemodocdbwebapp    microsoft.insights/alertrules          eastus
-                    LongHttpQueue mydemodocdbwebapp        microsoft.insights/alertrules          eastus
-                    ServerErrors mydemodocdbwebapp         microsoft.insights/alertrules          eastus
-                    mydemodocdbwebapp-myDemoResourceGroup  microsoft.insights/autoscalesettings   eastus
-                    mydemodocdbwebapp                      microsoft.insights/components          centralus
-                    mydemodocdbwebapp                      Microsoft.Web/serverFarms              westus
-                    mydemodocdbwebapp                      Microsoft.Web/sites                    westus
-
-		ProvisioningState : Succeeded
-
-
-5. Bevor wir die Beispielanwendung näher betrachten, sehen wir uns an, was bei der Vorlagenbereitstellung geschehen ist:
-
-	- Eine App Service-Web-App wurde erstellt.
-
-	- Ein DocumentDB-Konto wurde erstellt.
-
-	- Ein WebDeploy-Paket wurde für die App Service-Web-App bereitgestellt.
-
-	- Die Konfiguration der Web-App wurde so geändert, dass der DocumentDB-Endpunkt und der primäre Hauptschlüssel als Anwendungseinstellungen angegeben wurden.
-
-	- Eine Reihe von standardmäßigen Überwachungsregeln wurde erstellt.
-
-	
-6. Um die Anwendung zu verwenden, navigieren Sie einfach zur URL der Web-App (im obigen Beispiel würde die URLhttp://mydemodocdbwebapp.azurewebsites.net) lauten. Die folgende Webanwendung wird angezeigt:
+8.  Um die Anwendung zu verwenden, navigieren Sie einfach zur URL der Web-App (im obigen Beispiel lautet die URL http://mydemodocdbwebapp.azurewebsites.net). Die folgende Webanwendung wird angezeigt:
 
 	![Todo-Beispielanwendung](./media/documentdb-create-documentdb-website/image2.png)
 
-7. Erstellen Sie nun eine Reihe von Aufgaben, und öffnen Sie anschließend das [Microsoft Azure-Portal](https://portal.azure.com).
+9. Fahren Sie fort, erstellen Sie eine Reihe von Aufgaben in der Web-App, und kehren Sie dann zum Blatt der Ressourcengruppe im Azure-Portal zurück. Klicken Sie auf die DocumentDB-Kontoressource in der Liste „Ressourcen“ und dann auf **Abfrage-Explorer**. ![Screenshot der Zusammenfassung mit der hervorgehobenen Web-Apps „Myotherdocumentdbwebapp“](./media/documentdb-create-documentdb-website/TemplateDeployment8.png)
 
-8. Durchsuchen Sie die Ressourcengruppen, und wählen Sie die Ressourcengruppe aus, die wir bei der Bereitstellung erstellt haben (im Beispiel oben ist dies myDemoResourceGroup).
-
-	![Screenshot des klassischen Azure-Portals mit der hervorgehobenen „MyDemoResourceGroup“](./media/documentdb-create-documentdb-website/image3.png)
-9.  Beachten Sie, dass die Ressourcenzuordnung im Bereich „Zusammenfassung“ alle zugehörigen Ressourcen (DocumentDB-Konto, App Service-Web-App, Überwachung) anzeigt.
-
-	![Screenshot der Zusammenfassung](./media/documentdb-create-documentdb-website/image4.png)
-10.  Klicken Sie auf Ihr DocumentDB-Konto, und starten Sie Abfrage-Explorer (im unteren Bereich des Kontoblatts).
-
-	![Screenshot der Blätter „Ressourcengruppe“ und „Kontoblätter“ mit der hervorgehobenen Kachel „Abfrage-Explorer“.](./media/documentdb-create-documentdb-website/image8.png)
-
-11. Führen Sie die Standardabfrage "SELECT * FROM c" aus, und überprüfen Sie die Ergebnisse. Beachten Sie, dass die Abfrage die JSON-Darstellung der Aufgaben abgerufen hat, die Sie in Schritt 7 oben erstellt haben. Sie können gerne mit Abfragen experimentieren; führen Sie z. B. SELECT * FROM c WHERE c.isComplete = true aus, um alle Aufgaben zurückzugeben, die als abgeschlossen gekennzeichnet wurden.
-
+10. Führen Sie die Standardabfrage "SELECT * FROM c" aus, und überprüfen Sie die Ergebnisse. Beachten Sie, dass die Abfrage die JSON-Darstellung der Aufgaben abgerufen hat, die Sie in Schritt 7 oben erstellt haben. Sie können gerne mit Abfragen experimentieren; führen Sie z. B. SELECT * FROM c WHERE c.isComplete = true aus, um alle Aufgaben zurückzugeben, die als abgeschlossen gekennzeichnet wurden.
 
 	![Screenshot der Blätter „Abfrage-Explorer“ und „Ergebnisse“ mit Anzeige der Abfrageergebnisse](./media/documentdb-create-documentdb-website/image5.png)
-12. Erkunden Sie die Oberfläche des DocumentDB-Portals, oder ändern Sie die Todo-Beispielanwendung. Wenn Sie fertig sind, stellen wir eine andere Vorlage bereit.
+
+11. Erkunden Sie die Oberfläche des DocumentDB-Portals, oder ändern Sie die Todo-Beispielanwendung. Wenn Sie fertig sind, stellen wir eine andere Vorlage bereit.
 	
 <a id="Build"></a>
 ## Schritt 3: Bereitstellen des Dokument-Kontos und Web-App-Beispiels
 
-Jetzt stellen wir unsere zweite Vorlage bereit.
+Jetzt stellen wir unsere zweite Vorlage bereit. Diese Vorlage zeigt Ihnen sehr anschaulich, wie Sie DocumentDB-Verbindungsinformationen, z.B. Kontoendpunkt und Hauptschlüssel, mit Anwendungseinstellungen oder als benutzerdefinierte Verbindungszeichenfolge in eine Web-App einfügen können. Sie möchten vielleicht eine eigene Webanwendung mit einem DocumentDB-Konto bereitstellen, und die Verbindungsinformationen sollen während der Bereitstellung automatisch aufgefüllt werden.
 
-> [AZURE.TIP] Die Vorlage überprüft nicht, ob die unten eingegebenen Namen der Web-App und der DocumentDB-Kontoname (a) gültig und (b) verfügbar sind. Es wird dringend empfohlen, die Verfügbarkeit der gewünschten Namen zu überprüfen, bevor Sie das PowerShell-Bereitstellungsskript ausführen.
+> [AZURE.TIP] Die Vorlage überprüft nicht, ob die unten eingegebenen Namen der Web-App und der DocumentDB-Kontoname (a) gültig und (b) verfügbar sind. Sie sollten unbedingt die Verfügbarkeit der gewünschten Namen überprüfen, bevor Sie die Bereitstellung ausführen.
 
-1. Öffnen Sie Microsoft Azure PowerShell, und navigieren Sie zu dem Ordner, in den Sie das Beispiel zum [Erstellen eines DocumentDB-Kontos und eines Web-App-Beispiels](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip) heruntergeladen und extrahiert haben (z. B. C:\\DocumentDBTemplates\\CreateDocDBWebsite).
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „Neu“, und suchen Sie nach „Vorlagenbereitstellung“. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 
+2. Wählen Sie die Option zur Vorlagenbereitstellung, und klicken Sie auf **Erstellen**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 
-2. Wir führen das PowerShell-Skript "CreateDocDBWebsite.ps1" aus. Das Skript verwendet die gleichen Parameter wie die erste bereitgestellte Vorlage, nämlich:
-	- WebsiteName: Gibt den Namen der App Service-Web-App an und wird verwendet, um die URL zu erstellen, die Sie für den Zugriff auf die Web-App verwenden (wenn Sie z. B. „myobantherdocumentdbwebapp“ angeben, dann lautet die URL, mit der Sie auf die Web-App zugreifen, „myotherdocumentdbwebapp.azurewebsites.net“).
+3.  Klicken Sie auf **Vorlage bearbeiten**, fügen Sie den Inhalt der Vorlagendatei „DocDBWebSite.json“ ein, und klicken Sie auf **Speichern**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment3.png)
 
-	- ResourceGroupName: Gibt den Namen der bereitzustellenden Azure-Ressourcengruppe an. Wenn die angegebene Ressourcengruppe nicht existiert, wird sie erstellt.
+4. Klicken Sie auf **Parameter bearbeiten**, geben Sie Werte für jeden obligatorischen Parameter an, und klicken Sie auf **OK**. Die Parameter lauten wie folgt:
 
-	- docDBAccountName: Gibt den Namen des zu erstellenden DocumentDB-Kontos an.
+	1. SITENAME: Gibt den Namen der App Service-Web-App an und wird verwendet, um die URL zu erstellen, die Sie für den Zugriff auf die Web-App verwenden (wenn Sie z.B. „mydemodocdbwebapp“ angeben, dann lautet die URL, mit der Sie auf die Web-App zugreifen, „mydemodocdbwebapp.azurewebsites.net“).
 
-	- 	location: Gibt den Azure-Ort an, an dem die DocumentDB- und Web-App-Ressourcen erstellt werden sollen. Gültige Werte sind Ostasien, Südostasien, Osten USA, Westen USA, Nordeuropa, Westeuropa (beachten Sie, dass bei dem angegebenen Ortswert die Groß-/Kleinschreibung beachtet werden muss).
+	2. HOSTINGPLANNAME: Gibt den Namen des zu erstellenden App Service-Hostingplans an.
 
-3. Hier sehen Sie einen Beispielbefehl zur Ausführung des Skripts:
+	3. LOCATION: Gibt den Azure-Speicherort an, wo die DocumentDB- und Web-App-Ressourcen erstellt werden sollen.
 
-    	PS C:\DocumentDBTemplates\CreateDocDBWebSite> .\CreateDocDBWebSite.ps1 -WebSiteName "myotherdocumentdbwebapp" -ResourceGroupName "myOtherDemoResourceGroup" -docDBAccountName "myotherdocumentdbdemoaccount" -location "East US"
+	4. DATABASEACCOUNTNAME: Gibt den Namen des zu erstellenden DocumentDB-Kontos an.
 
-	> [AZURE.TIP] Beachten Sie, dass Sie im Rahmen der Skriptausführung zur Eingabe des Benutzernamens und Kennworts für Ihr Azure-Konto aufgefordert werden. Die gesamte Bereitstellung nimmt zwischen 10 und 15 Minuten in Anspruch.
+	![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 
-4. Die Ausgabe der Bereitstellung sieht der des ersten Vorlagenbeispiels sehr ähnlich.
-5. Bevor Sie das Azure-Portal öffnen, lassen Sie uns ansehen, was bei der Vorlagenbereitstellung geschehen ist:
+5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen an, um eine neue Ressourcengruppe zu erstellen, und wählen Sie einen Speicherort für die Ressourcengruppe. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
+  
+6.  Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.**, **Kaufen** und dann auf **Erstellen**, um mit der Bereitstellung zu beginnen. Wählen Sie **An Dashboard anheften**, damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 
-	- Eine App Service-Web-App wurde erstellt.
+7.  Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet. ![Screenshot des Blatts „Ressourcengruppe“](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
-	- Ein DocumentDB-Konto wurde erstellt.
+8. Klicken Sie auf die Web-App-Ressource in der Liste „Ressourcen“, und klicken Sie dann auf **Anwendungseinstellungen**. ![Screenshot der Ressourcengruppe](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)
 
-	- 	Die Konfiguration der Web-App wurde so geändert, dass der Azure DocumentDB-Endpunkt, der primäre Hauptschlüssel und der sekundäre Hauptschlüssel als Anwendungseinstellungen angegeben wurden.
+9. Beachten Sie, dass Anwendungseinstellungen für den DocumentDB-Endpunkt und jeden der DocumentDB-Hauptschlüssel vorhanden sind. ![Screenshot von Anwendungseinstellungen](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)
 
-	- 	Eine Reihe von standardmäßigen Überwachungsregeln wurde erstellt.
-
-6. Öffnen Sie nun das [Azure-Portal](https://portal.azure.com), durchsuchen Sie die Ressourcengruppen und wählen Sie die Ressourcengruppe aus, die wir bei der Bereitstellung erstellt haben (im Beispiel oben ist dies „myOtherDemoResourceGroup“).
-7. Klicken Sie im Bereich „Zusammenfassung“ auf die soeben bereitgestellte Web-App.
-
-	![Screenshot der Zusammenfassung mit der hervorgehobenen Web-Apps „Myotherdocumentdbwebapp“](./media/documentdb-create-documentdb-website/image6.png)
-8. Klicken Sie auf dem Blatt „Web-App“ auf **Alle Einstellungen** und dann auf **Anwendungseinstellungen**. Beachten Sie, dass Anwendungseinstellungen für den DocumentDB-Endpunkt und jeden der DocumentDB-Hauptschlüssel vorhanden sind.
-
-	![Screenshot der Blätter „Web-App“, „Einstellungen“ und „Anwendungseinstellungen“](./media/documentdb-create-documentdb-website/image7.png)
-9. Sie können das Azure-Portal gerne weiter erkunden oder eines der DocumentDB-[Beispiele](http://go.microsoft.com/fwlink/?LinkID=402386) durcharbeiten, um Ihre eigene DocumentDB-Anwendung zu erstellen.
+10. Sie können das Azure-Portal gerne weiter erkunden oder eines der DocumentDB-[Beispiele](http://go.microsoft.com/fwlink/?LinkID=402386) durcharbeiten, um Ihre eigene DocumentDB-Anwendung zu erstellen.
 
 	
 	
@@ -210,4 +141,4 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

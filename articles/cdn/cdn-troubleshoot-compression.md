@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/21/2016" 
+	ms.date="04/28/2016" 
 	ms.author="casoper"/>
     
 # Problembehandlung bei der CDN-Dateikomprimierung
@@ -36,12 +36,14 @@ Es gibt mehrere mögliche Ursachen, darunter folgende:
 
 ## Schritte zur Problembehandlung
 
+> [AZURE.TIP] Genauso wie beim Bereitstellen neuer Endpunkte dauert es eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind. In den meisten Fällen werden Ihre Änderungen innerhalb von 90 Minuten übernommen. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden.
+
 ### Überprüfen der Anforderung
 
 Zuerst sollten Sie eine schnelle Integritätsprüfung der Anforderung durchführen. Sie können die [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers verwenden, um die Anforderungen anzuzeigen.
 
 - Überprüfen Sie die Anforderung, die an die Endpunkt-URL gesendet wird (`<endpointname>.azureedge.net`), nicht Ihre ursprüngliche Anforderung.
-- Überprüfen Sie, ob die Anforderung einen **Accept-Encoding**-Header enthält und ob der Wert für diesen Header **gzip**, **defalte** oder **bzip2** enthält.
+- Überprüfen Sie, ob die Anforderung einen **Accept-Encoding**-Header enthält und ob der Wert für diesen Header **gzip**, **deflate** oder **bzip2** enthält.
 
 ![CDN-Anforderungsheader](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
@@ -63,11 +65,10 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, und klicken Sie auf die Schaltfläche **Verwalten**. Das zusätzliche Portal wird geöffnet. Zeigen Sie auf die Registerkarte **HTTP Groß** und dann auf das Flyout **Cacheeinstellungen**. Klicken Sie auf **Komprimierung**.
 
 - Überprüfen Sie, ob die Komprimierung aktiviert ist.
-- Überprüfen Sie, ob die Liste **Dateitypen** eine durch Trennzeichen getrennte Liste von MIME-Typen enthält.
+- Überprüfen Sie, ob die Liste **Dateitypen** eine durch Trennzeichen getrennte Liste von MIME-Typen ohne Leerzeichen enthält.
 - Überprüfen Sie, ob der MIME-Typ für den zu komprimierenden Inhalt in der Liste der komprimierten Formate enthalten ist.
 
 ![CDN-Komprimierungseinstellungen, Premium](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
-
 
 ### Überprüfen, ob der Inhalt zwischengespeichert wird
 
@@ -85,4 +86,4 @@ Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanfor
 - Größer als 128 Bytes.
 - Kleiner als 1 MB.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

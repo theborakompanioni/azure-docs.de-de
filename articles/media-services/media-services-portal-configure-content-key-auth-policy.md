@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/07/2016"  
+ 	ms.date="05/03/2016"   
 	ms.author="juliako"/>
 
 
@@ -97,7 +97,7 @@ Klicken Sie auf die Schaltfläche **XML für Importrichtlinie**, und geben Sie a
 
 
 ##Nächste Schritte
-Nachdem Sie die Autorisierungsrichtlinie für den Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Thema [Aktivieren der Verschlüsselung im klassischen Azure-Portal](../media-services-manage-content#encrypt/) fort.
+Nachdem Sie die Autorisierungsrichtlinie für den Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Thema [Aktivieren der Verschlüsselung im klassischen Azure-Portal](media-services-manage-content.md#encrypt) fort.
 
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
@@ -105,4 +105,4 @@ Nachdem Sie die Autorisierungsrichtlinie für den Inhaltsschlüssel konfiguriert
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

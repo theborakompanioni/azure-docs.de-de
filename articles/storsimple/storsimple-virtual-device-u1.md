@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="Virtuelles StorSimple-Gerät – Update 1 | Microsoft Azure"
-   description="Erfahren Sie, wie Sie ein virtuelles StorSimple-Gerät in einem virtuellen Microsoft Azure-Netzwerk erstellen, bereitstellen und verwalten. (Gilt für StorSimple Update 1)."
+   pageTitle="Virtuelles StorSimple-Gerät – Update 1 | Microsoft Azure"
+   description="Erfahren Sie, wie Sie ein virtuelles StorSimple-Gerät in einem virtuellen Microsoft Azure-Netzwerk erstellen, bereitstellen und verwalten. (Gilt für StorSimple Update 1)."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,12 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/01/2015"
+   ms.date="04/29/2016"
    ms.author="alkohli" />
 
 # Bereitstellen und Verwalten eines virtuellen StorSimple-Geräts in Azure
-
-[AZURE.INCLUDE [storsimple-version-selector-sva](../../includes/storsimple-version-selector-sva.md)]
 
 ##Übersicht
 Das virtuelle StorSimple-Gerät ist eine zusätzliche, in der Microsoft Azure StorSimple-Lösung enthaltene Funktion. Das virtuelle StorSimple-Gerät wird auf einem virtuellen Computer in einem virtuellen Microsoft Azure-Netzwerk ausgeführt und kann zum Sichern und Klonen von Daten von Hosts verwendet werden. In den folgenden Themen erfahren Sie mehr über das Konfigurieren und Verwenden des virtuellen StorSimple-Geräts.
@@ -36,7 +34,7 @@ Das virtuelle StorSimple-Gerät ist eine zusätzliche, in der Microsoft Azure St
 
 - Herunterfahren oder Löschen virtueller Geräte
 
-Dieses Tutorial gilt für alle virtuellen StorSimple-Geräte mit Update 1.
+Dieses Tutorial gilt für alle virtuellen StorSimple-Geräte mit Update 1.
 
 ## Unterschiede zwischen virtuellem und physischem Gerät
 
@@ -46,7 +44,7 @@ Das virtuelle StorSimple-Gerät ist eine reine Softwareversion von StorSimple, d
 
 Im Folgenden werden einige wichtige Unterschiede zwischen virtuellen und physischen StorSimple-Geräten aufgeführt:
 
-- Das virtuelle Gerät hat nur eine Netzwerkschnittstelle: DATA 0. Das physische Gerät verfügt über sechs Netzwerkschnittstellen: DATA 0 bis DATA 5.
+- Das virtuelle Gerät hat nur eine Netzwerkschnittstelle: DATA 0. Das physische Gerät verfügt über sechs Netzwerkschnittstellen: DATA 0 bis DATA 5.
 - Das virtuelle Gerät wird während der Konfiguration und nicht im Rahmen einer separaten Aufgabe registriert.
 - Der Schlüssel für die Dienstdatenverschlüsselung kann auf dem virtuellen Gerät nicht erneut generiert werden. Während des Schlüsselrollovers wird der Schlüssel auf dem physischen Gerät erneut generiert. Anschließend aktualisieren Sie das virtuelle Gerät mit dem neuen Schlüssel.
 - Wenn Updates für das virtuelle Gerät angewendet werden müssen, treten anders als beim physischen Gerät Ausfallzeiten auf.
@@ -126,20 +124,20 @@ Führen Sie die folgenden Schritte aus, um das virtuelle StorSimple-Gerät zu er
 
      ![StorSimple – virtuelles Gerät erstellen](./media/storsimple-virtual-device-u1/StorSimple_CreateVirtualDevice1.png)
 
-	1. **Name** – ein eindeutiger Name für Ihr virtuelles Gerät.
+	1. **Name** – ein eindeutiger Name für Ihr virtuelles Gerät.
 
-	2. **Version** – wählen Sie die Version des virtuellen Geräts aus. Diese Option ist nicht vorhanden, wenn Sie nur physische Geräte mit Update 1 (oder höher) für diesen Dienst registriert haben. Dieses Feld wird nur angezeigt, wenn Sie eine Kombination aus physischen Geräten ohne Update 1 und mit Update 1 im Dienst registriert haben. Angesichts der Tatsache, dass die Version des virtuellen Geräts angibt, von welchem physischen Gerät Sie ein Failover ausführen oder klonen können, ist es wichtig, eine geeignete Version des virtuellen Geräts zu erstellen. Auswahl:
+	2. **Version** – wählen Sie die Version des virtuellen Geräts aus. Diese Option ist nicht vorhanden, wenn Sie nur physische Geräte mit Update 1 (oder höher) für diesen Dienst registriert haben. Dieses Feld wird nur angezeigt, wenn Sie eine Kombination aus physischen Geräten ohne Update 1 und mit Update 1 im Dienst registriert haben. Angesichts der Tatsache, dass die Version des virtuellen Geräts angibt, von welchem physischen Gerät Sie ein Failover ausführen oder klonen können, ist es wichtig, eine geeignete Version des virtuellen Geräts zu erstellen. Auswahl:
 
-	   - Versionsupdate 0.3, wenn Sie einen Failover- oder Klonvorgang von einem physischen Gerät mit GA-Releaseversion oder Updates von 0.1 bis 0.3 ausführen. 
-	   - Versionsupdate 1, wenn Sie ein Failover oder einen Klonvorgang von einem physischen Gerät mit Update 1 (oder höher) ausführen. Mit Update 1 aus der Dropdownliste wird ein virtuelles Gerät mit Update 1.1 bereitgestellt.
+	   - Versionsupdate 0.3, wenn Sie einen Failover- oder Klonvorgang von einem physischen Gerät mit GA-Releaseversion oder Updates von 0.1 bis 0.3 ausführen. 
+	   - Versionsupdate 1, wenn Sie ein Failover oder einen Klonvorgang von einem physischen Gerät mit Update 1 (oder höher) ausführen. Mit Update 1 aus der Dropdownliste wird ein virtuelles Gerät mit Update 1.1 bereitgestellt.
  
-	3. **Virtuelles Netzwerk** – der Name des virtuellen Netzwerks, das für dieses virtuelle Gerät verwendet werden soll.
+	3. **Virtuelles Netzwerk** – der Name des virtuellen Netzwerks, das für dieses virtuelle Gerät verwendet werden soll.
 
-	4. **Subnetz** – das Subnetz im virtuellen Netzwerk für die Verwendung mit dem virtuellen Gerät.
+	4. **Subnetz** – das Subnetz im virtuellen Netzwerk für die Verwendung mit dem virtuellen Gerät.
 
-	5. **Speicherkonto zum Erstellen des virtuellen Geräts** – Dieses Speicherkonto wird verwendet, um das Image des virtuellen Geräts während der Bereitstellung zu speichern und die Datenträger des virtuellen Geräts nach der Bereitstellung zu hosten. Dieses Speicherkonto sollte sich in der gleichen Region wie das virtuelle Gerät und das virtuelle Netzwerk befinden. Es sollte weder vom physischen noch vom virtuellen Gerät zum Speichern von Daten verwendet werden. Hierfür wird standardmäßig ein neues Speicherkonto erstellt. Wenn Sie jedoch bereits über ein hierfür geeignetes Speicherkonto verfügen, können Sie dieses aus der Liste auswählen.
+	5. **Speicherkonto zum Erstellen des virtuellen Geräts**: Dieses Speicherkonto wird verwendet, um das Image des virtuellen Geräts während der Bereitstellung zu speichern und die Datenträger des virtuellen Geräts nach der Bereitstellung zu hosten. Dieses Speicherkonto sollte sich in der gleichen Region wie das virtuelle Gerät und das virtuelle Netzwerk befinden. Es sollte weder vom physischen noch vom virtuellen Gerät zum Speichern von Daten verwendet werden. Hierfür wird standardmäßig ein neues Speicherkonto erstellt. Wenn Sie jedoch bereits über ein hierfür geeignetes Speicherkonto verfügen, können Sie dieses aus der Liste auswählen.
 
-    >[AZURE.NOTE] Das virtuelle Gerät funktioniert nur mit Azure-Speicherkonten. Andere Clouddienstanbieter, wie z. B. Amazon, HP und OpenStack (die vom physischen Gerät unterstützt werden), werden für das virtuelle StorSimple-Gerät nicht unterstützt.
+    >[AZURE.NOTE] Das virtuelle Gerät funktioniert nur mit Azure-Speicherkonten. Andere Clouddienstanbieter, wie z. B. Amazon, HP und OpenStack (die vom physischen Gerät unterstützt werden), werden für das virtuelle StorSimple-Gerät nicht unterstützt.
 	
 4. Klicken Sie auf das Häkchen, um zu bestätigen, dass die auf dem virtuellen Gerät gespeicherten Daten in einem Microsoft-Datencenter gehostet werden. Wenn Sie lediglich ein physisches Gerät verwenden, wird der Verschlüsselungsschlüssel auf Ihrem Gerät beibehalten. Daher kann Microsoft dieses nicht entschlüsseln. ![StorSimple – virtuelles Gerät in Erstellungsphase](./media/storsimple-virtual-device-u1/StorSimple_VirtualDeviceCreating1M.png)
 
@@ -194,7 +192,7 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für StorSimple Snapshot
 
 1. Wechseln Sie auf dem virtuellen Gerät zu **Geräte > Konfigurieren**.
 
-2. Scrollen Sie nach unten zum Abschnitt **Momentaufnahme-Manager**. Geben Sie ein Kennwort mit einer Länge von 14 oder 15 Zeichen ein. Stellen Sie sicher, dass das Kennwort aus einer Kombination von drei der vier folgenden Elementen besteht: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
+2. Scrollen Sie nach unten zum Abschnitt **Momentaufnahme-Manager**. Geben Sie ein Kennwort mit einer Länge von 14 oder 15 Zeichen ein. Stellen Sie sicher, dass das Kennwort aus einer Kombination von drei der vier folgenden Elementen besteht: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
 
 3. Bestätigen Sie das Kennwort.
 
@@ -210,7 +208,7 @@ Führen Sie die folgenden Schritte aus, um das Geräteadministratorkennwort für
 
 1. Wechseln Sie auf dem virtuellen Gerät zu **Geräte > Konfigurieren**.
  
-2. Scrollen Sie nach unten zum Kennwortabschnitt für den **Geräteadministrator**. Geben Sie ein Administratorkennwort ein, das zwischen 8 und 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination von drei der vier folgenden Elemente handeln: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
+2. Scrollen Sie nach unten zum Kennwortabschnitt für den **Geräteadministrator**. Geben Sie ein Administratorkennwort ein, das zwischen 8 und 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination von drei der vier folgenden Elemente handeln: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
 
 3. Bestätigen Sie das Kennwort.
  
@@ -257,8 +255,8 @@ In den folgenden Abschnitten werden einige der Unterschiede bei der Arbeit mit v
 
 Da es sich um ein reines Softwaregerät handelt, ist der Verwaltungsaufwand im Vergleich zu einem physischen Gerät minimal. Folgende Optionen stehen zur Auswahl:
 
-- **Softwareupdates** – Sie können das Datum des letzten Softwareupdates sowie alle Updatestatusmeldungen anzeigen. Mit der Schaltfläche **Updates scannen** unten auf der Seite können Sie manuell nach Updates suchen. Wenn Updates verfügbar sind, klicken Sie zu deren Installation auf **Updates installieren**. Da nur eine einzige Schnittstelle zum virtuellen Gerät vorhanden ist, tritt beim Übernehmen der Updates eine kurze Dienstunterbrechung auf. Das virtuelle Gerät wird heruntergefahren und (ggf.) neu gestartet, um alle veröffentlichten Updates zu übernehmen.
-- **Supportpaket** – Sie können ein Supportpaket erstellen und hochladen, um den Microsoft-Support beim Beheben von Problemen mit Ihrem virtuellen Gerät zu unterstützen.
+- **Softwareupdates** – Sie können das Datum des letzten Softwareupdates sowie alle Updatestatusmeldungen anzeigen. Mit der Schaltfläche **Updates scannen** unten auf der Seite können Sie manuell nach Updates suchen. Wenn Updates verfügbar sind, klicken Sie zu deren Installation auf **Updates installieren**. Da nur eine einzige Schnittstelle zum virtuellen Gerät vorhanden ist, tritt beim Übernehmen der Updates eine kurze Dienstunterbrechung auf. Das virtuelle Gerät wird heruntergefahren und (ggf.) neu gestartet, um alle veröffentlichten Updates zu übernehmen.
+- **Supportpaket** – Sie können ein Supportpaket erstellen und hochladen, um den Microsoft-Support beim Beheben von Problemen mit Ihrem virtuellen Gerät zu unterstützen.
 
 ### Speicherkonten für ein virtuelles Gerät
 
@@ -342,7 +340,7 @@ Wenn Sie Ihr virtuelles Gerät neu einrichten möchten, deaktivieren und lösche
 
 Die Notfallwiederherstellung ist eines der wichtigsten Szenarios, für die das virtuelle StorSimple-Gerät entwickelt wurde. In diesem Szenario sind das physische StorSimple-Gerät oder das gesamte Datencenter möglicherweise nicht verfügbar. Glücklicherweise können Sie mit einem virtuellen Gerät den Betrieb an einem anderen Speicherort wiederherstellen. Bei der Notfallwiederherstellung wechseln die Volumecontainer vom Quellgerät den Eigentümer und werden auf das virtuelle Gerät übertragen. Als Voraussetzung für die Notfallwiederherstellung müssen ein virtuelles Gerät erstellt und konfiguriert, alle Volumes innerhalb der Volumecontainer offline geschaltet und dem Volumecontainer eine Cloudmomentaufnahme zugeordnet sein.
 
->[AZURE.NOTE] Ein Failover oder Klonen eines Geräts mit Update 1 auf ein Gerät mit Software vor Update 1 ist nicht möglich. Wenn Sie ein Zielgerät mit Software vor Update 1 auswählen, werden Sie benachrichtigt, dass Sie das Zielgerät vor der Durchführung des Failovers aktualisieren müssen.
+>[AZURE.NOTE] Ein Failover oder Klonen eines Geräts mit Update 1 auf ein Gerät mit Software vor Update 1 ist nicht möglich. Wenn Sie ein Zielgerät mit Software vor Update 1 auswählen, werden Sie benachrichtigt, dass Sie das Zielgerät vor der Durchführung des Failovers aktualisieren müssen.
 
 ### So stellen Sie Ihr physisches Gerät auf dem virtuellen StorSimple-Gerät wieder her
 
@@ -364,7 +362,7 @@ Die Notfallwiederherstellung ist eines der wichtigsten Szenarios, für die das v
 
 Der Failovervorgang wird gestartet. Wechseln Sie nach Abschluss des Failovers zur Seite "Geräte", und wählen Sie das virtuelle Gerät aus, das als Ziel für den Failovervorgang verwendet wurde. Wechseln Sie zur Seite "Volumecontainer". Es sollten alle angezeigt Volumecontainer und Volumes des alten Geräts angezeigt werden.
 
->[AZURE.NOTE] Der auf dem virtuellen Gerät unterstützte Speicherplatz beträgt 30 TB.
+>[AZURE.NOTE] Der auf dem virtuellen Gerät unterstützte Speicherplatz beträgt 30 TB.
 
 ## Herunterfahren oder Löschen virtueller Geräte
 
@@ -392,4 +390,4 @@ Wenn Sie das virtuelle Gerät herunterfahren oder löschen, wird es auf der Seit
 
 Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

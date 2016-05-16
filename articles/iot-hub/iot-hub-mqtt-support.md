@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  ms.author="dobett"/>
 
 # IoT Hub MQTT-Unterstützung
@@ -48,9 +48,9 @@ Wenn ein Gerät die SDKs von Geräteclients nicht verwenden kann, lässt es sich
 
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Namen des Geräts **MyDevice01** ist, sollte das vollständige Feld **Benutzername** den Namen `contoso.azure-devices.net/MyDevice01` enthalten.
 
-- Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das [Format des SAS-Tokens][lnk-iothub-security] entspricht dem beschriebenen Format für die Protokolle HTTP und AMQP:<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`.
+- Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie für die Protokolle HTTP und AMQP: <br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
-    Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT Hub-Sicherheitstoken][lnk-sas-tokens].
+    Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT Hub-Sicherheitstoken][lnk-sas-tokens] im Abschnitt zu Geräten.
     
     Beim Testen können Sie auch das Tool [Device Explorer][lnk-device-explorer] nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
     
@@ -61,9 +61,9 @@ Wenn ein Gerät die SDKs von Geräteclients nicht verwenden kann, lässt es sich
     
     Das generierte SAS-Token sieht folgendermaßen aus: `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`.
 
-    Folgender Teil wird im Feld **Kennwort** verwendet, um über MQTT eine Verbindung herzustellen: `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`.
+    Folgender Teil wird im Feld **Password** verwendet, um über MQTT eine Verbindung herzustellen: `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`.
 
-Für die MQTT-Pakete CONNECT und DISCONNECT löst der IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus.
+Für die MQTT-Pakete zum Herstellen und Trennen von Verbindungen löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus.
 
 ### Senden von Nachrichten an einen IoT Hub
 
@@ -75,15 +75,15 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 > [AZURE.NOTE] Dies ist die gleiche Codierung wie bei Abfragezeichenfolgen im HTTP-Protokoll.
 
-Die Geräteclientanwendung kann auch `devices/{device_id}/messages/events/{property_bag}` als **WILL-Themennamen** verwenden, um festzulegen, dass *WILL-Nachrichten* als Telemetrienachricht weitergeleitet werden.
+Die Geräteclientanwendung kann auch `devices/{device_id}/messages/events/{property_bag}` als **Will-Themennamen** verwenden, um festzulegen, dass *Will-Nachrichten* als Telemetrienachricht weitergeleitet werden.
 
 ### Empfangen von Nachrichten
 
-Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#”` als **Themenfilter** einrichten. IoT Hub liefert Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z. B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$**, Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix.
+Zum Empfangen von Nachrichten von IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#”` als **Themenfilter** einrichten. IoT Hub liefert Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$**, Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix.
 
 ## Nächste Schritte
 
-Weitere Informationen zu MQTT-Unterstützung mit den IoT-Geräte-SDKs finden Sie unter [Hinweise zur MQTT-Unterstützung][lnk-mqtt-devguide] im Entwicklungsleitfaden für Azure IoT Hub.
+Weitere Informationen zur MQTT-Unterstützung mit den IoT-Geräte-SDKs finden Sie unter [Hinweise zur MQTT-Unterstützung][lnk-mqtt-devguide] im Entwicklungsleitfaden für Azure IoT Hub.
 
 Weitere Informationen zum Verwenden der Geräteclient-SDKs zum Kommunizieren mit IoT Hub finden Sie unter [Erste Schritte mit Azure IoT Hub][lnk-iot-get-stated].
 
@@ -93,13 +93,12 @@ Weitere Informationen zum Protokoll MQTT finden Sie in der [MQTT-Dokumentation][
 [lnk-mqtt-org]: http://mqtt.org/
 [lnk-iot-get-stated]: iot-hub-csharp-csharp-getstarted.md
 [lnk-mqtt-docs]: http://mqtt.org/documentation
-[lnk-iothub-security]: iot-hub-devguide.md#security
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdks/blob/develop/node/device/samples/simple_sample_device.js
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdks/blob/develop/java/device/samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/iothub/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
-[lnk-sas-tokens]: iot-hub-sas-tokens.md
+[lnk-sas-tokens]: iot-hub-sas-tokens.md#using-sas-tokens-as-a-device
 [lnk-mqtt-devguide]: iot-hub-devguide.md#mqtt-support
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

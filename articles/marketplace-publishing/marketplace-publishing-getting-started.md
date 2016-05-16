@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/07/2016"
+   ms.date="04/29/2016"
    ms.author="hascipio" />
 
 # Veröffentlichen eines Angebots im Azure Marketplace
@@ -57,7 +57,7 @@ Einige Schritte müssen für alle Lösungstypen ausgeführt werden. In diesem Ar
 
 - [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)
 - [Erstellen eines lokalen VM-Images](marketplace-publishing-vm-image-creation-on-premise.md)
-- [Erstellen eines virtuellen Computers unter Windows im Azure-Vorschauportal](../virtual-machines-windows-hero-tutorial/)
+- [Erstellen eines virtuellen Computers unter Windows im Azure-Vorschauportal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 **Datendienste**
 
@@ -82,4 +82,4 @@ Einige Schritte müssen für alle Lösungstypen ausgeführt werden. In diesem Ar
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

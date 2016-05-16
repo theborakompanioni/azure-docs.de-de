@@ -13,16 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/28/2016"
+   ms.date="04/28/2016"
    ms.author="jgao"/>
 
 #Bereitstellen von Hadoop-Clustern in HDInsight
 
 Informationen zur Planung der Bereitstellung von HDInsight-Clustern.
 
-> [AZURE.WARNING] Für die Schritte in diesem Dokument werden das klassische Azure-Portal sowie ältere Versionen von Azure PowerShell und der Azure-Befehlszeilenschnittstelle verwendet. Microsoft empfiehlt die Verwendung dieser Schritte nicht. Sie sollten stattdessen das Azure-Portal sowie die neuesten Versionen von Azure PowerShell und der Azure-Befehlszeilenschnittstelle verwenden. Eine Version dieses Dokuments, in der das Azure-Portal und die neuesten Versionen von Azure PowerShell und der Azure-Befehlszeilenschnittstelle verwendet werden, finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md).
+> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das klassische Azure-Portal verwendet. Microsoft empfiehlt die Verwendung des klassischen Azure-Portals nicht für die Erstellung neuer Dienste. Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
 >
-> Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
+> Dieses Dokument enthält außerdem Informationen zur Verwendung von Azure PowerShell und Azure-Befehlszeilenschnittstelle (CLI, Command Line Interface). Die bereitgestellten Codeausschnitte basieren auf Befehlen, die Azure Service Management (ASM) zur Zusammenarbeit mit HDInsight verwenden, und sind __veraltet__. Diese Befehle werden zum 1. Januar 2017 eingestellt.
+>
+>Eine Version dieses Dokuments, die das Azure-Portal verwendet, finden Sie zusammen mit Codeausschnitten von PowerShell und Azure-CLI, die den Azure Resource Manager (ARM) verwenden, unter [Bereitstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md).
 
 **Voraussetzungen:**
 
@@ -231,7 +233,7 @@ Sie können zusätzliche Komponenten installieren oder die Clusterkonfiguration 
 
 	![Diagramm der Punkt-zu-Standort-Konfiguration](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-point-to-site.png)
 
-Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+Informationen zur Verwendung von HDInsight mit Virtual Network, einschließlich spezifischer Konfigurationsanforderungen für Virtual Network, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
 ## Bereitstellungstools
 
@@ -517,7 +519,7 @@ Sie können die Azure-Befehlszeilenschnittstelle entweder über NPM oder Windows
 
 		npm install -g https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
-	> [AZURE.NOTE] Wenn eine Fehlermeldung angezeigt wird, dass der NPM-Befehl nicht gefunden wurde, überprüfen Sie, ob sich die folgenden Pfade in der Umgebungsvariablen PATH befinden: <i>C:\\Program Files (x86)\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i> or <i>C:\\Program Files\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i>
+	> [AZURE.NOTE] Wenn eine Fehlermeldung angezeigt wird, dass der NPM-Befehl nicht gefunden wurde, überprüfen Sie, ob sich die folgenden Pfade in der Umgebungsvariablen PATH befinden: <i>C:\\Program Files (x86)\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i> oder <i>C:\\Program Files\\nodejs;C:\\Users[Benutzername]\\AppData\\Roaming\\npm</i>
 
 5.	Führen Sie den folgenden Befehl aus, um die Installation zu überprüfen:
 
@@ -709,7 +711,6 @@ Erstellen Sie ein selbstsigniertes Zertifikat, installieren Sie es auf Ihrer Arb
 		using Microsoft.Azure.Common.Authentication.Models;
 		using Microsoft.Azure.Management.HDInsight;
 		using Microsoft.Azure.Management.HDInsight.Models;
-		using Microsoft.Azure.Management.Resources;
 
 		namespace CreateHDICluster
 		{
@@ -723,7 +724,7 @@ Erstellen Sie ein selbstsigniertes Zertifikat, installieren Sie es auf Ihrer Arb
 		        private const string NewClusterName = "<HDINSIGHT CLUSTER NAME>";
 		        private const int NewClusterNumNodes = <NUMBER OF NODES>;
 		        private const string NewClusterLocation = "<LOCATION>";  // Must match the Azure Storage account location
-		        private const HDInsightClusterType NewClusterType = HDInsightClusterType.Hadoop;
+                private const string NewClusterType = "Hadoop";
 		        private const OSType NewClusterOSType = OSType.Windows;
 		        private const string NewClusterVersion = "3.2";
 
@@ -814,4 +815,4 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zu Bereitstellung von HDInsig
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

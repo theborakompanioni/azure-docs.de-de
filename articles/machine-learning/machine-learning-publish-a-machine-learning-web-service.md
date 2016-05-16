@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="05/02/2016"
 	ms.author="garye"/>
 
 # Bereitstellen eines Azure Machine Learning-Webdiensts
@@ -76,7 +76,7 @@ Klicken Sie zum Testen des Webdiensts im Webdienst-Dashboard auf den Link **Test
 
 ![Testen des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-3.png)
 
-Auf der Registerkarte **CONFIGURATION** (KONFIGURATION) können Sie den Anzeigenamen des Dienstes ändern und eine Beschreibung dafür eingeben. Der Namen und die Beschreibung werden im klassischen Azure-Portal angezeigt, wo Sie Ihre Webdienste verwalten. Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **EINGABESCHEMA**, **AUSGABESCHEMA** und **WEBDIENSTPARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet. Sie können auch die Protokollierung aktivieren, um Fehler zu diagnostizieren, die angezeigt werden, wenn Sie auf den Webdienst zugreifen.
+Auf der Registerkarte **CONFIGURATION** (KONFIGURATION) können Sie den Anzeigenamen des Dienstes ändern und eine Beschreibung dafür eingeben. Der Namen und die Beschreibung werden im [klassischen Azure-Portal](http://manage.windowsazure.com/) angezeigt, wo Sie Ihre Webdienste verwalten. Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **EINGABESCHEMA**, **AUSGABESCHEMA** und **WEBDIENSTPARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet. Sie können auch die Protokollierung aktivieren, um Fehler zu diagnostizieren, die angezeigt werden, wenn Sie auf den Webdienst zugreifen.
 
 Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](machine-learning-web-services-logging.md).
 
@@ -94,9 +94,9 @@ Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden 
 
 ## Verwalten des Webdiensts im klassischen Azure-Portal
 
-Im klassischen Azure-Portal können Sie Ihre Webdienste verwalten, indem Sie auf den Dienst **Machine Learning** klicken, den Machine Learning-Arbeitsbereich öffnen und anschließend auf der Registerkarte **Webdienste** den Webdienst öffnen. Auf dieser Seite aus können Sie den Webdienst überwachen, aktualisieren und löschen. Sie können auch zusätzlich zu dem Standardendpunkt, der beim Bereitstellen erstellt wird, einen zweiten Endpunkt für den Webdienst hinzufügen.
+Im [klassischen Azure-Portal](http://manage.windowsazure.com/) können Sie Ihre Webdienste verwalten, indem Sie auf den Dienst **Machine Learning** klicken, den Machine Learning-Arbeitsbereich öffnen und anschließend auf der Registerkarte **Webdienste** den Webdienst öffnen. Auf dieser Seite aus können Sie den Webdienst überwachen, aktualisieren und löschen. Sie können auch zusätzlich zu dem Standardendpunkt, der beim Bereitstellen erstellt wird, einen zweiten Endpunkt für den Webdienst hinzufügen.
 
-Weitere Informationen finden Sie unter [Verwalten eines Machine Learning-Arbeitsbereichs](machine-learning-manage-workspace.md).
+Weitere Informationen finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs](machine-learning-manage-workspace.md).
 <!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**.
 -->
@@ -112,4 +112,4 @@ Um den Webdienst zu aktualisieren, öffnen Sie das ursprüngliche Vorhersageexpe
 
 Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute Trainieren des Modells. Weitere Informationen finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md).
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

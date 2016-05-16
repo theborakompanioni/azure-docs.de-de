@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="04/27/2016"
 	ms.author="jgao"/>
 
 
-#Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
+#Verfügbarkeit und Zuverlässigkeit von Windows-basierten Hadoop-Clustern in HDInsight
 
+
+>[AZURE.NOTE] Die Schritte in diesem Dokument gelten speziell für Windows-basierte HDInsight-Cluster. Wenn Sie einen Linux-basierten Cluster verwenden, finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md) entsprechende Informationen für Linux.
 
 Mit HDInsight können Kunden verschiedene Clustertypen für unterschiedliche Datenanalyseworkloads bereitstellen. Gegenwärtig angebotene Clustertypen sind Hadoop-Cluster für Abfrage- und Analyseworkloads, HBase-Cluster für NoSQL-Workloads und Storm-Cluster für Workloads der Echtzeit-Ereignisverarbeitung. Innerhalb eines bestimmten Clustertyps gibt es unterschiedliche Rollen für die verschiedenen Knoten. Beispiel:
 
@@ -106,4 +108,4 @@ Das Verfahren für das SDK ist ähnlich. Die Erstellung und Bereitstellung eines
 - [Herstellen einer Verbindung zu HDInsight-Clustern mit RDP](hdinsight-administer-use-management-portal.md#rdp)
 - [Verwenden des HDInsight .NET SDK](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

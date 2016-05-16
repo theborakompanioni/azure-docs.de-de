@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/28/2016"
+   ms.date="04/20/2016"
    ms.author="cherylmc"/>
 
 # Planung und Entwurf für VPN Gateway
 
-Bei der Planung und dem Entwurf sind Ihre standortübergreifenden und VNet-zu-VNet-Verbindungen je nach Ihren Netzwerkanforderungen entweder sehr einfach oder recht kompliziert.
+Die Planung und der Entwurf Ihrer standortübergreifenden und VNet-zu-VNet-Verbindungen sind je nach Ihren Netzwerkanforderungen entweder sehr einfach oder recht kompliziert. Dieser Artikel führt Sie durch die grundlegenden Aspekte der Planung und des Entwurfs.
 
 ## Planung
 
@@ -164,4 +164,4 @@ Diese Tabelle zeigt das Bereitstellungsmodell, für das die Tunnelerzwingung ver
 
 Unter [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md) und [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md) finden Sie weitere Informationen zur Unterstützung bei Ihrem Entwurf. Weitere Informationen zu Verbindungstopologien finden Sie unter [Verbindungstopologien](vpn-gateway-topology.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

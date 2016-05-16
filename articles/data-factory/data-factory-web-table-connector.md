@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/02/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
@@ -27,7 +27,7 @@ Das nachstehende Beispiel zeigt Folgendes:
 
 1.	Einen verknüpften Dienst des Typs [Web](#web-linked-service-properties).
 2.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
-3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [WebTabe](#WebTable-dataset-properties)
+3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [WebTable](#WebTable-dataset-properties)
 4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
 4.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [WebSource](#websource-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
@@ -256,7 +256,7 @@ Wenn bei der Kopieraktivität die Quelle vom Typ **WebSource** ist, werden zu di
 2. Klicken Sie in der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 	
 	![Power Query-Menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png) 
-3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im verknüpften Dienst JSON verwenden würden (z. B.: https://en.wikipedia.org/wiki/) zusammen mit den Pfad ein, den Sie für das Dataset angeben würden (z. B.: AFI%27s\_100\_Years... 100\_Movies), und klicken Sie auf **OK**. 
+3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im verknüpften Dienst JSON verwenden würden (z. B.: https://en.wikipedia.org/wiki/) zusammen mit den Pfad ein, den Sie für das Dataset angeben würden (z. B.: AFI%27s\_100\_Years... 100\_Movies), und klicken Sie auf **OK**. 
 
 	![Aus dem Web (Dialogfeld)](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
@@ -283,4 +283,7 @@ Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query f�
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangular-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+## Leistung und Optimierung  
+Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+<!---HONumber=AcomDC_0504_2016-->

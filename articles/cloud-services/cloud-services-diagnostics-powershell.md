@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie die Diagnose mithilfe von PowerShell in Clouddiensten aktivieren."
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="sbtron"
+	authors="Thraka"
 	manager=""
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="02/09/2016"
-	ms.author="saurabh"/>
+	ms.author="adegeo"/>
 
 
 # Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services
@@ -127,4 +127,4 @@ So entfernen Sie die Diagnoseerweiterung aus jeder einzelnen Rolle
 - Das [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/dn782207.aspx) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
 - Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md).  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/27/2016" 
 	ms.author="awills"/>
 
 
@@ -160,14 +160,14 @@ Wir können dasselbe Verfahren anwenden, um Bereiche für Zeichenfolgen zu reduz
 
 Beachten Sie, dass Sie `name=` zum Festlegen des Namens einer Ergebnisspalte verwenden können, und zwar entweder in den Aggregationsausdrücken oder der by-Klausel.
 
-### Zählen von Datenpunkten
+## Zählen von Stichprobendaten
 
 `sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn aber das [Sampling](app-insights-sampling.md) in Betrieb ist, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkt in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount` Ereignisse vorhanden sind. Mit dem Summieren von itemCount erhalten Sie daher eine gute Schätzung der ursprünglichen Anzahl von Ereignissen.
 
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-Es ist auch die Aggregation `count()` für Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
+Es ist auch die Aggregation `count()` (und ein Zählvorgang) für Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
 
 
 Es gibt einen Bereich mit [Aggregationsfunktionen](app-insights-analytics-aggregations.md).
@@ -363,9 +363,9 @@ Wir haben auch die Obergrenze in der Where-Klausel entfernt, um die richtigen Za
 
 Daraus lässt sich Folgendes ablesen:
 
-* 5 % der Sitzungen sind kürzer als 3 Minuten 34 Sekunden. 
-* 50 % der Sitzung sind kürzer als 36 Minuten.
-* 5 % der Sitzungen dauern länger als 7 Tage.
+* 5 % der Sitzungen sind kürzer als 3 Minuten 34 Sekunden. 
+* 50 % der Sitzung sind kürzer als 36 Minuten.
+* 5 % der Sitzungen dauern länger als 7 Tage.
 
 Um eine separate Aufstellung für jedes Land zu erhalten, müssen Sie die Spalte „client\_CountryOrRegion“ separat durch beide summarize-Operatoren bringen:
 
@@ -423,4 +423,4 @@ Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die e
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

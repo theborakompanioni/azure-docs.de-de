@@ -14,124 +14,133 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/02/2016"
+   ms.date="05/02/2016"
    ms.author="guayan"/>
 
 # Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API
-Es gibt **Microsoft-verwaltete** und **IT-verwaltete** APIs. Wenn Sie PowerApps Enterprise aktivieren, stehen Ihnen die Microsoft-verwalteten APIs automatisch zur Verfügung. Der Arbeitsspeicher, die Konnektivität, die Vertrauenswürdigkeit und weitere Elemente werden ebenfalls automatisch für Sie verwaltet. Ihr nächster Schritt besteht darin, bestimmte Benutzereinstellungen einzugeben, etwa ein Twitter-Konto und -Kennwort.
 
-Mit den IT-verwalteten APIs können Sie alles steuern und überwachen, so auch den Arbeitsspeicher, die Konnektivität, die Vertrauenswürdigkeit und weitere Elemente. Die IT-verwalteten APIs umfassen auch die APIs, die Verbindungen mit einem lokalen System wie SQL Server und SharePoint Server herstellen können.
+> [AZURE.IMPORTANT] Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
+> 
+> - Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
+> - Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen).  
+> - Weitere Informationen zu benutzerdefinierten APIs in PowerApps finden Sie unter [What are Custom APIs](https://powerapps.microsoft.com/tutorials/register-custom-api/) (Was sind benutzerdefinierte APIs?). 
+
+<!--Archived
+There are **Microsoft managed** and **IT managed** APIs. When you enable PowerApps Enterprise, the Microsoft managed APIs are available to you automatically. The memory, connectivity, trust, and more are also automatically managed for you. Your next step is to enter any specific user settings, like a Twitter account and password. 
+
+Using the IT managed APIs, you control and monitor everything, including memory, connectivity, trust, and more. The IT managed APIs also include the APIs that can connect to an on-premises system, like SQL Server and SharePoint Server. 
 
 > [AZURE.SELECTOR]
-- [Verwaltete APIs](../articles/power-apps/powerapps-register-from-available-apis.md)
-- [APIs in Ihrer App Service-Umgebung](../articles/power-apps/powerapps-register-api-hosted-in-app-service.md)
-- [Swagger-APIs](../articles/power-apps/powerapps-register-existing-api-from-api-definition.md)
+- [Managed APIs](../articles/power-apps/powerapps-register-from-available-apis.md)
+- [APIs in your ASE](../articles/power-apps/powerapps-register-api-hosted-in-app-service.md)
+- [Swagger APIs](../articles/power-apps/powerapps-register-existing-api-from-api-definition.md)
 
-In diesem Thema konzentrieren wir uns auf die erste Option: **Registrieren von Microsoft-verwalteten APIs und IT-verwalteten APIs**.
+In this topic, we focus on the first option - **registering the Microsoft managed APIs and the IT managed APIs**. 
 
-#### Voraussetzungen für den Einstieg
+#### Prerequisites to get started
 
-- Anmelden für [PowerApps Enterprise](powerapps-get-started-azure-portal.md)
-- Erstellen einer [App Service-Umgebung](powerapps-get-started-azure-portal.md)
-
-
-## Anzeigen der verfügbaren Microsoft-verwalteten APIs
-Die **Microsoft-verwalteten** APIs werden mit PowerApps Enterprise bereitgestellt werden und auch von Microsoft gehostet. In vielen Fällen sind die Microsoft-verwalteten APIs ideal für Ihre Apps. Wenn Ihre App beispielsweise einen Tweet sendet, eine Datei auf OneDrive hochlädt oder Daten aus einer Excel-Datei anzeigt, dann sind diese Microsoft-verwalteten APIs eine gute Wahl.
-
-Einige zusätzliche Vorteile sind:
-
-- Sie erhalten alle Microsoft-verwalteten APIs, die für Sie verfügbar sind, um Ihre eigene Instanz zu registrieren. 
-- Die Ressourcen, einschließlich Netzwerk, Arbeitsspeicher oder Sicherheitskonfigurationen, werden automatisch überwacht. Wenn Sie z. B. mehr Arbeitsspeicher benötigen, um Excel-Daten in Ihrer App anzuzeigen, wird automatisch mehr Arbeitsspeicher hinzugefügt. 
-- Eine Vertrauensstellung zwischen Ihrer App und der API, etwa Office und Twitter, wird automatisch erstellt. 
+- Sign up for [PowerApps Enterprise](powerapps-get-started-azure-portal.md).
+- Create an [app service environment](powerapps-get-started-azure-portal.md).
 
 
-#### Microsoft-verwaltete APIs
+## View the available Microsoft managed APIs
+The **Microsoft managed** APIs are provided with PowerApps Enterprise and are also hosted by Microsoft. In many scenarios, the Microsoft managed APIs are ideal for your apps. For example, if your app sends a tweet, uploads a file to OneDrive, or displays data from an Excel file, then these Microsoft managed APIs are a good choice. 
 
-API | Beschreibung | Link zu Schritten
+Some additional benefits include: 
+
+- You get all the Microsoft managed APIs available for you to register your own instance. 
+- The resources, including network, memory, or security configurations, are monitored automatically. For example, if you need more memory to display Excel data in your app, more memory is automatically added. 
+- A trust between your app and the API, like Office and Twitter, is created automatically. 
+
+
+#### Microsoft managed APIs
+
+API | Description | Steps Link
 --- | --- | ---
-![][31] | **Dropbox**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-dropbox.md)
-![][32] | **DynamicsCRM Online**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-crmonline.md)
-![][33] | **Excel**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-excel.md)
-![][34] | **Google Drive**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-googledrive.md)
-![][35] | **Microsoft Translator**<br/><br/>Übersetzt Texte, erkennt Sprachen und vieles mehr. | [**Erste Schritte**](powerapps-create-api-microsofttranslator.md)
-![][36] | **Office 365 Outlook**<br/><br/>Verwalten Sie Ihre E-Mails. | [**Erste Schritte**](powerapps-create-api-office365-outlook.md)
-![][37] | **Office 365-Benutzer**<br/><br/>Zugriff auf Benutzerprofile, zugehörige Vorgesetzte, unterstellte Mitarbeiter und vieles mehr. | [**Erste Schritte**](powerapps-create-api-office365-users.md)
-![][38] | **OneDrive**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-onedrive.md)
-![][39] | **Salesforce**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-salesforce.md)
-![][40] | **SharePoint Online**<br/><br/> Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-sharepointonline.md)
-![][43] | **Twitter**<br/><br/> Senden Sie Tweets, durchsuchen Sie Tweets, finden Sie Follower und vieles mehr. | [**Erste Schritte**](powerapps-create-api-twitter.md)
+![][31] | **Dropbox**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-dropbox.md)
+![][32] | **DynamicsCRM Online**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-crmonline.md)
+![][33] | **Excel**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-excel.md)
+![][34] | **Google Drive**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-googledrive.md)
+![][35] | **Microsoft Translator**<br/><br/>Translates text, detects languages, and more. | [**Get Started**](powerapps-create-api-microsofttranslator.md)
+![][36] | **Office 365 Outlook**<br/><br/>Manage your email. | [**Get Started**](powerapps-create-api-office365-outlook.md)
+![][37] | **Office 365 Users**<br/><br/>Access user profiles, their managers, their direct reports, and more. | [**Get Started**](powerapps-create-api-office365-users.md)
+![][38] | **OneDrive**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-onedrive.md)
+![][39] | **Salesforce**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-salesforce.md)
+![][40] | **SharePoint Online**<br/><br/> You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-sharepointonline.md)
+![][43] | **Twitter**<br/><br/> Send tweets, search tweets, see followers, and more. | [**Get Started**](powerapps-create-api-twitter.md)
 
 
-## Anzeigen der verfügbaren IT-verwalteten APIs
-Die **IT-verwalteten** APIs werden von Ihnen gesteuert und von Ihnen verwaltet. Sie werden nicht in der Microsoft-verwalteten Umgebung ausgeführt. In einigen Fällen können durch Verwenden dieser APIs in Ihrer eigenen IT-verwalteten Umgebung die Anforderungen Ihrer Apps erfüllt werden. Angenommen, in Ihrer App wird die Twitter-API verwendet, und Sie müssen den Twitter-Schlüssel Ihrer Organisation (anstelle des Microsoft-Twitter-Schlüssels) verwenden. In diesem Fall empfiehlt es sich, die Twitter-API als eine IT-verwaltete API zu konfigurieren. In einem weiteren Beispiel wird in Ihrer App die SQL Server-API verwendet, um eine Verbindung mit einer lokalen Datenbank herzustellen. In einer IT-verwalteten Umgebung können Sie ein virtuelles Netzwerk einrichten oder ExpressRoute verwenden, um Verbindungen mit lokalen Komponenten herzustellen. Sie haben die Wahl.
+## View the available IT managed APIs
+The **IT managed** APIs are controlled by you and managed by you. They do not run in the Microsoft managed environment. In some scenarios, using these APIs in your own IT managed environment may suit the needs of your apps. For example, your app uses the Twitter API and you need to use your organization's Twitter key (instead of the Microsoft Twitter key). In this situation, it's best to configure the Twitter API as an IT managed API. In another example, your app use the SQL Server API to connect to an on-premises database. In an IT managed environment, you can set up a virtual network or use Express Route to connect to on-premises. The choice is yours.
 
-Einige zusätzliche Vorteile sind:
+Some additional benefits include:
 
-- Die Ressourcen, einschließlich Netzwerk, Arbeitsspeicher oder Sicherheitskonfigurationen, werden von Ihnen überwacht. Wenn Sie beispielsweise mehr Arbeitsspeicher benötigen, um Excel-Daten in Ihrer App anzuzeigen, steuern Sie, wie viel Arbeitsspeicher in Ihrer Umgebung hinzugefügt werden soll. 
-- Sie richten Sie die Vertrauensstellung zwischen Ihren Apps und der API ein und kontrollieren die Sicherheit zwischen den Apps und der API. Beispielsweise bestimmen Sie, ob die Office 365-API Microsoft-verwaltet sein kann (automatische Vertrauensstellung), oder ob die Office 365-API in Ihrer Umgebung (erstellen Sie Ihre eigene Vertrauensstellung) verwendet werden soll. 
-- **Alle** Microsoft-verwalteten APIs können auch IT-verwaltete APIs sein. Dies ist z. B. möglich, wenn Sie eine eigene Instanz von Office 365 erstellen und vollständige Kontrolle über diese Instanz haben. Sie können dann Ihre IT-verwaltete Office 365-API und die Microsoft-verwaltete Office 365-API in derselben Umgebung verwenden. Dies hängt tatsächlich von den Anforderungen Ihrer App ab.
-- Wenn Sie Verbindungen mit lokalen Systemen herstellen oder die Bing-Suche-API verwenden, steuern Sie Sicherheit, Authentifizierung, Lizenzierung und vieles mehr.
+- The resources, including network, memory, or security configurations, are monitored by you. For example, if you need more memory to display Excel data in your app, you control how much more memory to add in your environment. 
+- You set up the trust and control the security between your apps and the API. For example, you determine if the Office 365 API can be Microsoft managed (an automatic trust) or use the Office 365 API within your own environment (create your own trust). 
+- **All** of the Microsoft managed APIs can also be IT managed. For example, if you want to create your own instance of Office 365 and have full control over this instance, you can. You can then use your Office 365 IT managed API and the Office 365 Microsoft managed API in the same environment. It really depends on the needs of your app.
+- When connecting to on-premises systems or using the Bing Search API, you control security, authentication, licensing, and more.
 
 
-#### IT-verwaltete APIs
-> [AZURE.NOTE] Es sei daran erinnert, dass **alle** Microsoft-verwalteten APIs auch IT-verwaltete APIs sein können. Die folgenden APIs sind nur IT-verwaltete APIs. Sie können keine Microsoft-verwalteten APIs sein.
+#### IT managed APIs
+> [AZURE.NOTE] Remember, **all** of the Microsoft managed APIs can also be IT managed. The following APIs are only IT managed; they cannot be Microsoft managed.
 
-API | Beschreibung | Link zu Schritten
+API | Description | Steps Link
 --- | --- | ---
-![][30] | **Bing-Suche**<br/><br/>Betten Sie Suchergebnisse ein, fügen Sie Suchfunktionalität hinzu und vieles mehr. | [**Erste Schritte**](powerapps-create-api-bingsearch.md)
-![][42] | **SQL Server**<br/><br/>Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-sqlserver.md)
-![][41] | **SharePoint Server**<br/><br/>Sie können Elemente abrufen, aktualisieren, löschen usw. | [**Erste Schritte**](powerapps-create-api-sharepointserver.md)
+![][30] | **Bing Search**<br/><br/>Embed search results, add search functionality, and more. | [**Get Started**](powerapps-create-api-bingsearch.md)
+![][42] | **SQL Server**<br/><br/>You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-sqlserver.md)
+![][41] | **SharePoint Server**<br/><br/>You can get, update, delete items, and more. | [**Get Started**](powerapps-create-api-sharepointserver.md)
 
 
-#### Wann Sie eigene Instanzen registrieren sollten
+#### Why register your own instances
 
-Ein Verwenden der fertigen Microsoft-verwalteten APIs ist bequem. Demgegenüber hat ein Registrieren Ihrer eigenen Instanzen als IT-verwaltete APIs viele Vorteile. Im Grundsatz empfiehlt es sich, dass Sie IT-verwaltete APIs erstellen, wenn Folgendes zutrifft:
+Using the out-of-box Microsoft managed APIs is convenient. Having said that, registering your own instances as IT managed APIs has many benefits. At a high level, we recommend you create IT managed APIs when you want to: 
 
-- Sie wünschen vollständige Verwaltbarkeit der APIs einschließlich Benutzerzugriff, Sicherheit, wenn Verbindungen mit anderen Systemen hergestellt werden, API-Aufrufeinschränkungen, Überwachung, erweiterte Funktionen wie Richtlinien und vieles mehr.
-- Sie wünschen Zugriff auf lokale Daten, da die App Service-Umgebung virtuelle Netzwerke unterstützt.
-- Sie möchten die APIs für geschäftliche Benutzer einrichten, weil diese die APIs möglicherweise nicht selbst verwenden können.
+- Have full manageability on the APIs, including user access, security when connecting to other systems, API call limits, monitoring and advanced features like policies, and more.
+- Access on-premises data since App Service Environment supports virtual networks.
+- Set up the APIs for business users, which they may not be able to use by themselves.
 
-In der folgenden Tabelle sind die Funktionen von Microsoft-verwalteten und IT-verwalteten APIs verglichen:
+The following table compares the capabilities of the Microsoft managed and IT managed APIs:
 
-| Funktion | Microsoft-verwaltet | IT-verwaltet |
+| Capability | Microsoft Managed | IT Managed |
 | ---------- | ----------------- | ------------ |
-| API-Aufrufeinschränkungen | Von Microsoft definiert | Von Ihnen selbst definiert (über Richtlinien) |
-| Ihr eigener Schlüssel beim Verbinden mit SaaS | Nicht unterstützt | Unterstützt |
-| API-Benutzerzugriff | Für jeden Benutzer aktiviert | Vollständig verwaltbar auf AAD-Benutzer- und -Gruppenebene |
-| API-Überwachung | Nicht unterstützt | Unterstützt |
-| API-Richtlinien | Nicht unterstützt | Unterstützt |
-| Benutzerzugriff auf Verbindung | Nur anzeigen | Vollständig verwaltbar auf AAD-Benutzer- und -Gruppenebene |
-| Verbindungsverwaltung | Nur anzeigen | Vollständig verwaltbar |
+| API call limits | Defined by Microsoft | Defined by yourself (via policies) |
+| Bring your own key when connecting to SaaS | Not supported | Supported |
+| API user access | Enabled for everyone | Fully manageable at AAD user and group level |
+| API Monitoring | Not supported | Supported |
+| API Policies | Not supported | Supported |
+| Connection user access | View only | Fully manageable at AAD user and group level |
+| Connection management | View only | Fully manageable |
 
 
-## Registrieren einer Microsoft-verwalteten oder IT-verwalteten API
+## Register a Microsoft managed or IT managed API
 
-1. Melden Sie sich mit Ihrem Geschäftskonto (*IhrBenutzername*@*IhrUnternehmen*.com) beim [Azure-Portal](https://portal.azure.com/) an. Sie werden automatisch mit Ihrem Unternehmensabonnement angemeldet.
-2. Wählen Sie **Durchsuchen**, **PowerApps** und dann **APIs verwalten** aus:  
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account (*yourUserName*@*YourCompany*.com). You are automatically signed in to your company subscription.
+2. Select **Browse**, select **PowerApps**, and then select **Manage APIs**:  
 ![][17]
-3. Wählen Sie in „Manage APIs“ die Option **Add** aus:  
-![][18]
-4. Geben Sie in **Add API** die API-Eigenschaften ein:  
+3. In Manage APIs, select **Add**:  
+![][18]  
+4. In **Add API**, enter the API properties:  
 
-	- Geben Sie unter **Name** einen Namen für die API ein. Beachten Sie, dass der eingegebene Name in die Laufzeit-URL der API eingefügt wird. Geben Sie einen aussagekräftigen und innerhalb Ihrer Organisation eindeutigen Namen ein.
-	- Wählen Sie in **Source** die Option **From available APIs** aus:  
+	- In **Name**, enter a name for your API. Notice that the name you enter is included in the runtime URL of the API. Make the name meaningful and unique within your organization.
+	- In **Source**, select **From available APIs**:  
 	![][19]
-5. Wählen Sie **API** aus, und wählen Sie dann die API aus, die Sie registrieren möchten:  
+5. Select **API** and then choose the API you want to register:  
 ![][20]
-6. Wählen Sie Ihre spezielle API aus, und fügen Sie alle konfigurierbaren Eigenschaften hinzu.
-7. Wählen Sie **ADD** aus, um diese Schritte abzuschließen.
+6. Select your specific API and add any configurable properties.
+7. Select **ADD** to complete these steps.
 
-> [AZURE.TIP] Wenn Sie eine API registrieren, wird diese in Ihrer App Service-Umgebung registriert. Nach der Registrierung in der App Service-Umgebung kann sie von anderen Apps innerhalb der gleichen App Service-Umgebung verwendet werden.
-
-
-## Zusammenfassung und nächste Schritte
-
-In diesem Thema haben Sie erfahren, wie Sie eine eigene Instanz der verfügbaren APIs registrieren, die von PowerApps als fertige APIs bereitgestellt werden. In den folgenden Themen und Ressourcen finden Sie weitere Informationen zu PowerApps:
+> [AZURE.TIP] When you register an API, you're registering the API to your app service environment. Once in the app service environment, it can be used by other apps within the same app service environment.
 
 
-- [Konfigurieren der API-Eigenschaften](powerapps-configure-apis.md)
-- [Einrichten des Zugriffs für Benutzer auf die APIs](powerapps-manage-api-connection-user-access.md)
-- [Erstellen eigener Apps in PowerApps](https://powerapps.microsoft.com/tutorials/)
+## Summary and next steps
+
+In this topic, you've seen how to register your own instance of the available APIs that PowerApps provides out-of-box. Here are some related topics and resources for learning more about PowerApps:  
+
+
+- [Configure the API properties](powerapps-configure-apis.md)
+- [Give users access to the APIs](powerapps-manage-api-connection-user-access.md)
+- [Start creating your apps in PowerApps](https://powerapps.microsoft.com/tutorials/)
+-->
 
 
 <!--References-->
@@ -155,4 +164,4 @@ In diesem Thema haben Sie erfahren, wie Sie eine eigene Instanz der verfügbaren
 [42]: ./media/powerapps-register-from-available-apis/sqlserver.png
 [43]: ./media/powerapps-register-from-available-apis/twitter.png
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

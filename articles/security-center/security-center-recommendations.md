@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="05/02/2016"
    ms.author="terrylan"/>
 
 # Verwalten von Sicherheitsempfehlungen in Azure Security Center
@@ -58,7 +58,7 @@ Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine
     - **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
     - **Gelöst**: Die Empfehlung wurde bereits abgeschlossen (in diesem Fall wird die Zeile abgeblendet).
 - **SCHWEREGRAD**: Beschreibt den Schweregrad der jeweiligen Empfehlung:
-    - **Hoch**: Ein Sicherheitsrisiko betrifft eine bedeutsame Ressource (z. B. eine Anwendung, VM oder Netzwerksicherheitsgruppe) und erfordert Aufmerksamkeit.
+    - **Hoch**: Ein Sicherheitsrisiko betrifft eine bedeutsame Ressource (z. B. eine Anwendung, VM oder Netzwerksicherheitsgruppe) und erfordert Aufmerksamkeit.
     - **Mittel**: Es besteht ein Sicherheitsrisiko, und es sind nicht kritische bzw. weitere Schritte erforderlich, um es zu beseitigen oder einen Prozess abzuschließen.
     - **Niedrig**: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber es ist keine unmittelbare Aufmerksamkeit erforderlich. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
 
@@ -69,7 +69,7 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 |Empfehlungen|Beschreibung|
 |-----|-----|
 |Sammlung von Daten für Abonnements/virtuelle Computer aktivieren|Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements oder für ausgewählte virtuelle Maschinen zu aktivieren.|
-|Grundregelkonflikte lösen|Empfiehlt Ihnen, OS-Konfigurationen an den empfohlenen Grundregeln zu orientieren, z. B. nicht zuzulassen, dass Kennwörter gespeichert werden.|
+|Grundregelkonflikte lösen|Empfiehlt Ihnen, OS-Konfigurationen an den empfohlenen Grundregeln zu orientieren, z. B. nicht zuzulassen, dass Kennwörter gespeichert werden.|
 |Systemupdates anwenden|Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Maschinen (nur Windows-VMs) bereitzustellen.|
 |ACLs für Endpunkte konfigurieren|Empfiehlt Ihnen, Zugriffssteuerungslisten zu konfigurieren, um den eingehenden Zugriff auf virtuelle Maschinen (nur klassische VMs) einzuschränken.|
 |[Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)|Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. WAF-Geräte (erstellt mit dem Ressourcen-Manager-Bereitstellungsmodell) müssen in einem separaten virtuellen Netzwerk bereitgestellt werden. WAF-Geräte (erstellt mit dem klassischen Bereitstellungsmodell) sind auf die Verwendung einer Netzwerksicherheitsgruppe beschränkt. Diese Unterstützung wird in Zukunft auf eine vollständig angepasste Bereitstellung eines WAF-Geräts (klassisch) erweitert.|
@@ -80,8 +80,9 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 |Überwachung von SQL-Server aktivieren|Empfiehlt Ihnen, die Überwachung für Azure SQL-Server zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Maschinen).|
 |Überwachung der SQL-Datenbank aktivieren|Empfiehlt Ihnen, die Überwachung für Azure SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Maschinen).|
 |Transparent Data Encryption für SQL-Datenbanken aktivieren|Empfiehlt Ihnen, die Verschlüsselung für SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst).|
-|VM-Agent bereitstellen|Ermöglicht Ihnen, anzuzeigen, welche VMs den VM-Agent benötigen. Der VM-Agent muss auf virtuellen Maschinen installiert werden, um das Überprüfen von Patches, Überprüfen von Grundregeln und Antischadsoftware bereitzustellen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents.|
+|VM-Agent bereitstellen|Ermöglicht Ihnen, anzuzeigen, welche VMs den VM-Agent benötigen. Der VM-Agent muss auf virtuellen Maschinen installiert werden, um das Überprüfen von Patches, Überprüfen von Grundregeln und Antischadsoftware bereitzustellen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents.|
 | [Datenträgerverschlüsselung anwenden](security-center-apply-disk-encryption.md) |Empfiehlt Ihnen, dass Sie Ihre VM-Datenträger per Azure Disk Encryption (Windows- und Linux-VMs) verschlüsseln. Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen.|
+|Sicherheitskontaktinformationen bereitstellen | Empfiehlt, dass Sie Sicherheitskontaktinformationen für all Ihre Abonnements bereitstellen. Die Kontaktinformationen bestehen aus einer E-Mail-Adresse und einer Telefonnummer. Die Informationen werden verwendet, um mit Ihnen Kontakt aufzunehmen, sobald unser Sicherheitsteam feststellt, dass ein unbefugter Zugriff auf Ihre Ressourcen erfolgt. |
 
 Sie können Empfehlungen filtern und verwerfen.
 
@@ -109,11 +110,12 @@ Nach Auswertung aller Empfehlungen entscheiden Sie, welche zuerst angewendet wer
 ## Nächste Schritte
 In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center vorgestellt. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge über Azure-Sicherheit und -Compliance.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) (Überwachen von Partnerlösungen mit Azure Security Center): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
 <!--Image references-->
 [2]: ./media/security-center-recommendations/recommendations-tile.png
@@ -122,4 +124,4 @@ In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center v
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->
