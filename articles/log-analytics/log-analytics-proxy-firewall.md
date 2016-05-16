@@ -131,7 +131,7 @@ Verwenden Sie die folgenden Verfahren, um die Operations Manager-Verwaltungsgrup
 
 2. Erweitern Sie **Operational Insights**, und wählen Sie dann **Operational Insights-Verbindung** aus. ![Operations Manager, OMS-Verbindung](./media/log-analytics-proxy-firewall/proxy-om01.png)
 3. Klicken Sie in der Ansicht „OMS-Verbindung“ auf **Proxyserver konfigurieren**. ![Operations Manager, OMS-Verbindung, Proxyserver konfigurieren](./media/log-analytics-proxy-firewall/proxy-om02.png)
-4. Wählen Sie unter „Operational Insights-Einstellungsassistent: Proxyserver“ die Option **Einen Proxyserver verwenden, um auf den Operational Insights-Webdienst zuzugreifen** aus, und geben Sie dann die URL mit der Portnummer ein, z. B. ****http://myproxy:80**. ![Operations Manager, OMS-Proxyadresse](./media/log-analytics-proxy-firewall/proxy-om03.png)
+4. Wählen Sie unter „Operational Insights-Einstellungsassistent: Proxyserver“ die Option **Einen Proxyserver verwenden, um auf den Operational Insights-Webdienst zuzugreifen** aus, und geben Sie dann die URL mit der Portnummer ein, z. B. **http://myproxy:80**. ![Operations Manager, OMS-Proxyadresse](./media/log-analytics-proxy-firewall/proxy-om03.png)
 
 
 ### So geben Sie Anmeldeinformationen ein, wenn der Proxyserver eine Authentifizierung erfordert

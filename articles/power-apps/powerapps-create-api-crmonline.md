@@ -51,7 +51,7 @@ Add the Dynamics CRM Online API to your organization's (tenant) app service envi
 8. Select **Settings - Configure required settings**:  
 ![Configure Dynamics CRM Online API settings][6]
 
-9. Enter **Client Id** and **App Key** of your Dynamics CRM Online Azure Active Directory (AAD) application.  If you don't have one, see the "Register an AAD app for use with PowerApps" section in this topic to create the ID and secret values you need.  
+9. Enter **Client Id** and **App Key** of your Dynamics CRM Online Azure Active Directory (AAD) application.  If you don't have one, see the "Register an AAD app for use with PowerApps" section in this topic to create the ID and secret values you need.
 
 	> [AZURE.IMPORTANT] Save the **redirect URL**. You may need this value later in this topic.
 

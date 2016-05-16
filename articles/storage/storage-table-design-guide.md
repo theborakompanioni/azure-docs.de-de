@@ -206,13 +206,18 @@ In den folgenden Beispielen wird angenommen, dass der Tabellenspeicherdienst Ent
 
 Im Abschnitt [Übersicht über den Azure-Tabellenspeicherdienst](#overview) weiter oben werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Beachten Sie, dass die in den Beispielen unten verwendete Filtersyntax aus dem REST-API-Tabellenspeicherdienst stammt. Weitere Informationen finden Sie unter [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).
 
--	Eine ***Punktabfrage*** ist die effizienteste Suche und wird bei sehr umfangreichen Suchvorgängen oder für Suchvorgänge empfohlen, die eine sehr niedrige Latenz erfordern. Eine solche Abfrage kann Indizes verwenden, um durch die Angabe der **PartitionKey**- und **RowKey**-Werte eine einzelne Entität sehr effizient zu suchen. Beispiel: $filter=(PartitionKey eq 'Sales') und (RowKey eq '2')  
--	Die zweitbeste Lösung ist eine ***Bereichsabfrage***, die den **PartitionKey** verwendet und einen Bereich von **RowKey**-Werten filtert, um mehr als eine Entität zurückzugeben. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition und die **RowKey**-Werte identifizieren eine Teilmenge der Entitäten in dieser Partition. Beispiel: $filter=PartitionKey eq 'Sales' und RowKey ge 'S' und RowKey lt 'T'  
--	Die drittbeste Lösung ist ein ***Partitionsscan***, der den **PartitionKey** sowie Filter für eine andere Eigenschaft ohne Schlüssel verwendet und möglicherweise mehr als eine Entität zurückgibt. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition und die Eigenschaftswerte wählen eine Teilmenge der Entitäten in dieser Partition aus. Beispiel: $filter=PartitionKey eq 'Sales' und LastName eq 'Smith'  
--	Ein ***Tabellenscan*** umfasst den **PartitionKey** nicht und ist sehr ineffizient, da er alle Partitionen, aus denen Ihre Tabelle besteht, auf übereinstimmende Entitäten untersucht. Er führt einen Tabellenscan durch, unabhängig davon, ob der Filter **RowKey** verwendet. Beispiel: $filter=LastName eq 'Jones'  
+-	Eine ***Punktabfrage*** ist die effizienteste Suche und wird bei sehr umfangreichen Suchvorgängen oder für Suchvorgänge empfohlen, die eine sehr niedrige Latenz erfordern. Eine solche Abfrage kann Indizes verwenden, um durch die Angabe der **PartitionKey**- und **RowKey**-Werte eine einzelne Entität sehr effizient zu suchen. Beispiel:
+$filter=(PartitionKey eq 'Sales') und (RowKey eq '2')  
+-	Die zweitbeste Lösung ist eine ***Bereichsabfrage***, die den **PartitionKey** verwendet und einen Bereich von **RowKey**-Werten filtert, um mehr als eine Entität zurückzugeben. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition und die **RowKey**-Werte identifizieren eine Teilmenge der Entitäten in dieser Partition. Beispiel:
+$filter=PartitionKey eq 'Sales' und RowKey ge 'S' und RowKey lt 'T'  
+-	Die drittbeste Lösung ist ein ***Partitionsscan***, der den **PartitionKey** sowie Filter für eine andere Eigenschaft ohne Schlüssel verwendet und möglicherweise mehr als eine Entität zurückgibt. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition und die Eigenschaftswerte wählen eine Teilmenge der Entitäten in dieser Partition aus. Beispiel:
+$filter=PartitionKey eq 'Sales' und LastName eq 'Smith'  
+-	Ein ***Tabellenscan*** umfasst den **PartitionKey** nicht und ist sehr ineffizient, da er alle Partitionen, aus denen Ihre Tabelle besteht, auf übereinstimmende Entitäten untersucht. Er führt einen Tabellenscan durch, unabhängig davon, ob der Filter **RowKey** verwendet. Beispiel:
+$filter=LastName eq 'Jones'  
 -	Abfragen, die mehrere Entitäten zurückgeben, geben diese sortiert in der Reihenfolge **PartitionKey** und **RowKey** zurück. Um eine Neusortierung der Entitäten im Client zu vermeiden, müssen Sie einen **RowKey** auswählen, der die am häufigsten verwendeten Sortierreihenfolge definiert.  
 
-Beachten Sie, dass die Verwendung von **or** für die Festlegung eines Filters, der auf **RowKey**-Werten basiert, zu einem Partitionsscan führt und nicht als eine Bereichsabfrage behandelt wird. Aus diesem Grund sollten Sie Abfragen vermeiden, die z. B. folgende Filter verwenden: $filter=PartitionKey eq 'Sales' und (RowKey eq '121' or RowKey eq '322')
+Beachten Sie, dass die Verwendung von **or** für die Festlegung eines Filters, der auf **RowKey**-Werten basiert, zu einem Partitionsscan führt und nicht als eine Bereichsabfrage behandelt wird. Aus diesem Grund sollten Sie Abfragen vermeiden, die z. B. folgende Filter verwenden:
+$filter=PartitionKey eq 'Sales' und (RowKey eq '121' or RowKey eq '322')
 
 Beispiele für clientseitigen Code, der die Storage Client Library zur Ausführung effizienter Abfragen verwendet, finden Sie unter:
 
@@ -605,7 +610,7 @@ Verwenden Sie für die zweite Option die Index-Entitäten, die folgende Daten sp
 
 Die Eigenschaft **EmployeeIDs** enthält eine Liste der Mitarbeiter-IDs für Mitarbeiter, deren Nachnamen in **RowKey** gespeichert sind.
 
-Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie einen neuen Mitarbeiter hinzufügen. In diesem Beispiel werden wir einen Mitarbeiter mit der ID 000152 und einen Nachnamen Jones in der Vertriebsabteilung hinzufügen:
+Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie einen neuen Mitarbeiter hinzufügen. In diesem Beispiel werden wir einen Mitarbeiter mit der ID 000152 und einen Nachnamen Jones in der Vertriebsabteilung hinzufügen:  
 1.	Rufen Sie die Indexentität mit dem **PartitionKey**-Wert "Sales" und dem **RowKey**-Wert "Jones" ab. Speichern Sie das ETag der Entität, die in Schritt 2 verwendet wird.  
 2.	Erstellen Sie eine Entitätsgruppentransaktion (also einen Batchvorgang), mit der die neue Mitarbeiterentität eingefügt wird (**PartitionKey**-Wert "Sales" und **RowKey**-Wert "000152"), und aktualisieren Sie die Indexentität (**PartitionKey-Wert** "Sales" und **RowKey**-Wert "Jones") durch Hinzufügen der neuen Mitarbeiter-ID zu der Liste im Feld "EmployeeIDs". Weitere Informationen zu Entitätsgruppentransaktionen finden Sie unter [Entitätsgruppentransaktionen](#entity-group-transactions).  
 3.	Falls die Entitätsgruppentransaktion aufgrund eines Fehlers der vollständigen Nebenläufigkeit (jemand hat gerade die Indexentität geändert) nicht erfolgreich ist, müssen Sie erneut mit Schritt 1 beginnen.  
@@ -643,7 +648,7 @@ Verwenden Sie dieses Muster, wenn Sie eine Reihe von Entitäten nachschlagen mö
 
 #### Zugehörige Muster und Anleitungen  
 
-Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:
+Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 -	[Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
 -	[Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 -	[Entitätsgruppentransaktionen](#entity-group-transactions)  
@@ -833,7 +838,7 @@ Bei diesem Entwurf können Sie mit einem Zusammenführungsvorgang den Meldungsz�
 
 #### Probleme und Überlegungen  
 
-Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:
+Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
 -	Wenn eine vollständige Datenreihe nicht in eine einzelne Entität passt (eine Entität kann bis zu 252 Eigenschaften haben), verwenden Sie einen alternativen Datenspeicher, z. B einen Blob.  
 -	Wenn bei Ihnen mehrere Clients gleichzeitig eine Entität aktualisieren, müssen Sie **ETag** verwenden, um optimistische Nebenläufigkeit zu implementieren. Wenn Sie viele Clients haben, können eine Vielzahl von Konflikten auftreten.  
 
@@ -1455,7 +1460,8 @@ Es ist möglich, einen SAS-Token zu generieren, der Zugriff auf eine Teilmenge d
 
 ### Asynchrone und parallele Vorgänge  
 
-Angenommen, Sie verteilen Ihre Anfragen über mehrere Partitionen. In diesem Fall können Sie Durchsatz und Client-Reaktionsfähigkeit mithilfe von asynchronen oder parallelen Abfragen verbessern. Beispiel: Sie haben möglicherweise zwei oder mehr Workerrollen-Instanzen, die auf die Tabellen parallel zugreifen. Sie können einzelne Worker-Rollen haben, die für bestimmte Gruppen von Partitionen zuständig sind oder einfach mehrere Workerrollen-Instanzen, von denen jede auf alle Partitionen in einer Tabelle zugreifen kann.
+Angenommen, Sie verteilen Ihre Anfragen über mehrere Partitionen. In diesem Fall können Sie Durchsatz und Client-Reaktionsfähigkeit mithilfe von asynchronen oder parallelen Abfragen verbessern.
+Beispiel: Sie haben möglicherweise zwei oder mehr Workerrollen-Instanzen, die auf die Tabellen parallel zugreifen. Sie können einzelne Worker-Rollen haben, die für bestimmte Gruppen von Partitionen zuständig sind oder einfach mehrere Workerrollen-Instanzen, von denen jede auf alle Partitionen in einer Tabelle zugreifen kann.
 
 Innerhalb einer Client-Instanz können Sie den Durchsatz verbessern, indem Sie Speichervorgänge asynchron ausführen. Die Storage Client Library erleichtert das Schreiben von asynchronen Abfragen und Änderungen. Beispiel: Sie können mit der synchronen Methode starten, mit der alle Entitäten in einer Partition wie im folgenden C#-Code gezeigt abgerufen werden:
 

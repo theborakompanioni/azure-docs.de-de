@@ -115,7 +115,7 @@ Nachdem Sie die Änderungen in **server.js** gespeichert haben, gehen Sie folgen
 
         PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
 
-2.  Öffnen Sie einen Browser, und navigieren Sie zu ****http://127.0.0.1**.
+2.  Öffnen Sie einen Browser, und navigieren Sie zu **http://127.0.0.1**.
 
 3.  Wenn das Browserfenster geöffnet wird, geben Sie einen Spitznamen ein, und drücken Sie die Eingabetaste. So können Sie Nachrichten unter einem bestimmten Spitznamen posten. Um die Mehrbenutzerfunktion zu testen, öffnen Sie weitere Browserfenster mit derselben URL, und geben Sie andere Spitznamen ein.
 

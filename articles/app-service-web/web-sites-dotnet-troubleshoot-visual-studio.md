@@ -616,7 +616,7 @@ Sie können die Protokolle für fehlgeschlagene Anforderungen entweder direkt ü
 
 	![Neuer FTP-Benutzername und neues Passwort](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
-	****Wenn Sie sich anmelden, müssen Sie den vollständigen Benutzernamen mit dem vorangestellten Namen der Web-App verwenden. Angenommen, Sie geben „meine-id" als einen Benutzernamen ein, und die Website ist „meinbeispiel“, dann melden Sie sich als „meinbeispiel\\meine-id“ an.
+	**Wenn Sie sich anmelden, müssen Sie den vollständigen Benutzernamen mit dem vorangestellten Namen der Web-App verwenden. Angenommen, Sie geben „meine-id" als einen Benutzernamen ein, und die Website ist „meinbeispiel“, dann melden Sie sich als „meinbeispiel\\meine-id“ an.
 
 5. Öffnen Sie in einem neuen Browserfenster die URL, die auf dem **Web-App**-Blatt für Ihre Web-App unter **FTP-Hostname** oder unter **FTPS-Hostname** angezeigt wird.
 

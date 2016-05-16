@@ -48,7 +48,7 @@ Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeit
     1. Wählen Sie bei **Java project to debug** das Projekt **MyHelloWorld** aus.
     1. Bei **Configure debugging for** aktivieren Sie **Azure cloud (staging)**.
     1. Vergewissern Sie sich, dass **Azure compute emulator** deaktiviert ist.
-    1. Geben Sie bei **Host**, den DNS-Namen Ihrer Stagingbereitstellung ein, aber ohne das vorangestellte ****http://**. Beispiel (Ersetzen Sie die hier gezeigte GUID durch Ihre eigene GUID.): **4e616d65-6f6e-6d65-6973-526f62657274.cloudapp.net**
+    1. Geben Sie bei **Host**, den DNS-Namen Ihrer Stagingbereitstellung ein, aber ohne das vorangestellte **http://**. Beispiel (Ersetzen Sie die hier gezeigte GUID durch Ihre eigene GUID.): **4e616d65-6f6e-6d65-6973-526f62657274.cloudapp.net**
 1. Klicken Sie auf **OK**, um das Dialogfeld **Azure Debug Configuration** zu schließen.
 1. Klicken Sie auf **OK**, um das Dialogfeld **Properties for WorkerRole1 Debugging** zu schließen.
 1. Wenn Sie in „index.jsp“ noch keinen Haltepunkt festgelegt haben, legen Sie ihn jetzt fest:
@@ -56,7 +56,7 @@ Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeit
     1. Klicken Sie in „index.jsp“ mit der rechten Maustaste auf den blauen Balken links vom Java-Code, und klicken Sie auf **Toggle Breakpoints**, wie in der folgenden Abbildung gezeigt: ![][ic551537]
 1. Klicken Sie im Eclipse-Menü auf **Run** und dann auf **Debug Configurations**.
 1. Erweitern Sie im Dialogfeld **Debug Configurations** im linken Bereich den Eintrag **Remote Java Application**, wählen Sie **Azure Cloud (WorkerRole1)** aus, und klicken Sie auf **Debug**.
-1. Öffnen Sie einen Browser, und führen Sie darin die Staginganwendung ****http://***&lt;guid&gt;***.cloudapp.net/MyHelloWorld** aus, wobei Sie *&lt;guid&gt;* durch die GUID aus Ihrem DNS-Namen ersetzen müssen. Wenn Sie im Dialogfeld **Confirm Perspective Switch** zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes**. Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
+1. Öffnen Sie einen Browser, und führen Sie darin die Staginganwendung **http://***&lt;guid&gt;***.cloudapp.net/MyHelloWorld** aus, wobei Sie *&lt;guid&gt;* durch die GUID aus Ihrem DNS-Namen ersetzen müssen. Wenn Sie im Dialogfeld **Confirm Perspective Switch** zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes**. Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
 
 >[AZURE.NOTE] Wenn Sie versuchen, eine Remotedebugverbindung mit einer Bereitstellung herzustellen, von der mehrere Instanzen ausgeführt werden, können Sie derzeit nicht steuern, mit welcher Instanz der Debugger zuerst verbunden wird. Der Azure Load Balancer wählt die Instanz nach dem Zufallsprinzip aus. Wenn die Verbindung mit einer Instanz hergestellt ist, wird das Debuggen jedoch bei dieser Instanz fortgesetzt. Allerdings beendet Azure die Verbindung möglicherweise, wenn eine Inaktivität länger als 4 Minuten anhält (z. B. wenn die Unterbrechung an einem Haltepunkt zu lange dauert).
 
@@ -100,7 +100,7 @@ Wenn Sie die Nummer des öffentlichen Ports kennen, die der Instanz zugeordnet w
 1. Starten Sie die Anwendung im Serveremulator, indem Sie in der Azure-Symbolleiste auf die Schaltfläche **Run in Azure Emulator** klicken.
 1. Klicken Sie im Eclipse-Menü auf **Run** und dann auf **Debug Configurations**.
 1. Erweitern Sie im Dialogfeld **Debug Configurations** im linken Bereich den Eintrag **Remote Java Application**, wählen Sie **Azure Emulator (WorkerRole1)** aus, und klicken Sie auf **Debug**.
-1. Wenn der Serveremulator anzeigt, dass Ihre Anwendung ausgeführt wird, führen Sie in einem Browser ****http://localhost:8080/MyHelloWorld** aus. Wenn Sie im Dialogfeld **Confirm Perspective Switch** zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes**. Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
+1. Wenn der Serveremulator anzeigt, dass Ihre Anwendung ausgeführt wird, führen Sie in einem Browser **http://localhost:8080/MyHelloWorld** aus. Wenn Sie im Dialogfeld **Confirm Perspective Switch** zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes**. Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
 
 Hier wurde veranschaulicht, wie Sie beim Debuggen im Serveremulator vorgehen. Der folgende Abschnitt veranschaulicht das Debuggen einer in Azure bereitgestellten Anwendung.
 

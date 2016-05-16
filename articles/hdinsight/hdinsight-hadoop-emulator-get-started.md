@@ -494,7 +494,7 @@ Nachfolgend finden Sie ein Beispiel für die Übermittlung eines Hadoop-Jobs:
 	$hdinsightJob = <JobDefinition>
 	Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
 
-Sie werden zu einer Eingabe aufgefordert, wenn Sie Get-Credential aufrufen. Sie müssen **hadoop** als Benutzernamen verwenden. Das Kennwort kann eine beliebige Zeichenfolge sein. Der Clustername ist immer „****http://localhost:50111**“.
+Sie werden zu einer Eingabe aufgefordert, wenn Sie Get-Credential aufrufen. Sie müssen **hadoop** als Benutzernamen verwenden. Das Kennwort kann eine beliebige Zeichenfolge sein. Der Clustername ist immer „**http://localhost:50111**“.
 
 Weitere Informationen zur Übermittlung von Hadoop-Aufträgen finden Sie unter [Programmgesteuerte Übermittlung von Hadoop-Aufträgen](hdinsight-submit-hadoop-jobs-programmatically.md). Weitere Informationen zu den Azure PowerShell-Cmdlets für HDInsight finden Sie unter [HDInsight-Cmdlet-Referenz][hdinsight-powershell-reference].
 

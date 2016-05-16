@@ -103,7 +103,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 |Name| Erforderlich/wiederholt | Typ | Hinweise |
 |--- | ---                 | ---  | ---   |
 | **Trennzeichen** | Erforderlich | String | Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| ****Quelle1 … QuelleN ** | Erforderlich, unterschiedlich oft | String | Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **Quelle1 … QuelleN** | Erforderlich, unterschiedlich oft | String | Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 
 

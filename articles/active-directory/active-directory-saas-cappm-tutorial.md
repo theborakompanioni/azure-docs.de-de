@@ -120,7 +120,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
     a. Geben Sie im Textfeld **Bezeichner** die URL ein, die von Ihren Benutzern zur Anmeldung bei der CA PPM-Anwendung genutzt wird, und verwenden Sie dabei folgendes Muster: **https://ca.ondemand.saml.20.post.\<Unternehmensname>**.
 	
-	b. Geben Sie im Textfeld **Antwort-URL** die URL ****https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer** ein.
+	b. Geben Sie im Textfeld **Antwort-URL** die URL **https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer** ein.
 
 	c. Klicken Sie auf **Weiter**.
  

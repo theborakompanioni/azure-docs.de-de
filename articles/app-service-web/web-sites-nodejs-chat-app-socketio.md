@@ -97,7 +97,7 @@ Befolgen Sie diese Schritte, um eine Azure-Web-App zu erstellen und dann die Git
 	>[AZURE.NOTE]
 	Der Befehl "azure site set -w" funktioniert erst ab Version 0.7.4 der Azure-Befehlszeilenschnittstelle. Sie können die Unterstützung von WebSocket im [Azure-Portal](https://portal.azure.com) aktivieren.
 	>
-	>Um WebSockets mithilfe des Azure-Portals zu aktivieren, klicken Sie auf dem Web-Apps-Blatt auf die Web-App und dann auf **Alle Einstellungen** > ** Anwendungseinstellungen**. Klicken Sie unter **Web Sockets** auf **Ein**. Klicken Sie anschließend auf **Save**.
+	>Um WebSockets mithilfe des Azure-Portals zu aktivieren, klicken Sie auf dem Web-Apps-Blatt auf die Web-App und dann auf **Alle Einstellungen** > **Anwendungseinstellungen**. Klicken Sie unter **Web Sockets** auf **Ein**. Klicken Sie anschließend auf **Save**.
 
 1. Um die Website in Azure anzuzeigen, starten Sie den Webbrowser mit folgendem Befehl, und navigieren Sie zur gehosteten Web-App:
 

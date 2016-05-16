@@ -84,7 +84,7 @@ Es kann mehrere Minuten dauern, bis das Speicherkonto erstellt wurde. Nachdem es
 
 [Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)][]
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][] (in englischer Sprache).
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][] \(in englischer Sprache).
 
 <!-- URL List -->
 
