@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 #Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
@@ -30,9 +30,9 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um NSGs zu verwalten
 ##Aktivieren der Protokollierung
 Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Leistungsindikatorenprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus.
 
-1.  Melden Sie sich beim [Azure-Vorschauportal](https://portal.azure.com) an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md), bevor Sie fortfahren.
+1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md), bevor Sie fortfahren.
 
-2.  Klicken Sie im Vorschauportal auf **Durchsuchen** > **Netzwerksicherheitsgruppen**.
+2.  Klicken Sie im Vorschauportal auf **Durchsuchen** > **Netzwerksicherheitsgruppen**.
 
 	![Vorschauportal – Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable1.png)
 
@@ -114,4 +114,4 @@ Für Leistungsindikatoren- und Ereignisprotokolle müssen Sie eine Verbindung zu
 - Blogbeitrag [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx).
 - Blogbeitrag [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

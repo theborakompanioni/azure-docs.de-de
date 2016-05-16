@@ -17,9 +17,9 @@
  
 # Erstellen von Application Insights-Ressourcen mithilfe von PowerShell
 
-In diesem Artikel wird beschrieben, wie eine [Application Insights](app-insights-overview.md)-Ressource automatisch in Azure erstellt wird. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) erstellen, [Warnungen einrichten](app-insights-alerts.md) und andere Azure-Ressourcen erstellen.
+In diesem Artikel wird beschrieben, wie eine [Application Insights](app-insights-overview.md)-Ressource automatisch in Azure erstellt wird. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) erstellen, [Warnungen einrichten](app-insights-alerts.md) und andere Azure-Ressourcen erstellen.
 
-Im Wesentlichen werden diese Ressourcen mit JSON-Vorlagen für den [Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md) erstellt. Die Vorgehensweise lässt sich wie folgt zusammenfassen: Sie laden die JSON-Definitionen vorhandener Ressourcen herunter, parametrisieren bestimmte Werte, z. B. Namen, und führen dann die Vorlage immer aus, wenn Sie eine neue Ressource erstellen möchten. Sie können mehrere Ressourcen zusammenfassen und in einem Durchgang erstellen, z. B. einen App-Monitor mit Verfügbarkeitstests, Warnungen und Speicher für fortlaufenden Export. Einige Parametrisierungen weisen Besonderheiten auf, die hier erläutert werden.
+Im Wesentlichen werden diese Ressourcen mit JSON-Vorlagen für den [Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md) erstellt. Die Vorgehensweise lässt sich wie folgt zusammenfassen: Sie laden die JSON-Definitionen vorhandener Ressourcen herunter, parametrisieren bestimmte Werte, z. B. Namen, und führen dann die Vorlage immer aus, wenn Sie eine neue Ressource erstellen möchten. Sie können mehrere Ressourcen zusammenfassen und in einem Durchgang erstellen, z. B. einen App-Monitor mit Verfügbarkeitstests, Warnungen und Speicher für fortlaufenden Export. Einige Parametrisierungen weisen Besonderheiten auf, die hier erläutert werden.
 
 ## Einmalige Konfiguration
 
@@ -27,7 +27,7 @@ Wenn Sie PowerShell noch nicht mit Ihrem Azure-Abonnement verwendet haben:
 
 Installieren Sie das Azure PowerShell-Modul auf dem Computer, auf dem die Skripts ausgeführt werden sollen:
 
-1. Installieren Sie [Microsoft-Webplattform-Installer (Version 5 oder höher)](http://www.microsoft.com/web/downloads/platform.aspx).
+1. Installieren Sie [Microsoft-Webplattform-Installer (Version 5 oder höher)](http://www.microsoft.com/web/downloads/platform.aspx).
 2. Installieren Sie hiermit Microsoft Azure PowerShell.
 
 ## Kopieren der JSON-Definition für vorhandene Ressourcen
@@ -181,7 +181,7 @@ Die Ressourcen sollten in Azure in strikter Reihenfolge eingerichtet werden. Um 
 
 ## Definieren von Metrikwarnungen
 
-Es gibt eine spezifische [PowerShell-Methode zum Festlegen von Warnungen](app-insights-alerts.md/#set-alerts-by-using-powershell).
+Es gibt eine spezifische [PowerShell-Methode zum Festlegen von Warnungen](app-insights-alerts.md#set-alerts-by-using-powershell).
 
 
 ## Beispiel
@@ -321,4 +321,4 @@ Andere Artikel zu Automation:
 * [Senden von Azure-Diagnosedaten an Application Insights](app-insights-powershell-azure-diagnostics.md)
 * [Erstellen von Versionsanmerkungen](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

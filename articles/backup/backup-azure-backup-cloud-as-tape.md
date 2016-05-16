@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
-   ms.date="02/09/2016"
+   ms.date="05/03/2016"
    ms.author="jimpark;"/>
 
 # Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur
@@ -69,6 +69,6 @@ Durch Klicken auf **Ändern** im Bildschirm oben können Kunden noch flexiblere 
 Weitere Informationen zu Azure Backup finden Sie unter
 
 - [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
-- [Azure Backup testen](backup-try-azure-backup-in-10-mins)
+- [Azure Backup testen](backup-try-azure-backup-in-10-mins.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

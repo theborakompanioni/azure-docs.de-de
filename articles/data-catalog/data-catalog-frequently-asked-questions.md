@@ -64,7 +64,7 @@ Für Anfragen zu Features und anderes Feedback können Sie das [Azure Data Catal
 
 ## F: Wie beginne ich mit der Nutzung von Azure Data Catalog?
 
-Befolgen Sie am besten die Anleitung unter [Erste Schritte mit Data Catalog](../data-catalog-get-started/). Dieser Artikel enthält eine umfassende Übersicht der Funktionen des Diensts.
+Befolgen Sie am besten die Anleitung unter [Erste Schritte mit Data Catalog](data-catalog-get-started.md). Dieser Artikel enthält eine umfassende Übersicht der Funktionen des Diensts.
 
 ## F: Wie registriere ich meine Daten?
 
@@ -140,4 +140,4 @@ Zum Aktualisieren der Metadaten für Datenassets, die im Katalog bereits registr
 
 Wechseln Sie in das [Azure Data Catalog-Forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Fragen, die dort gestellt werden, werden in diesen Artikel aufgenommen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

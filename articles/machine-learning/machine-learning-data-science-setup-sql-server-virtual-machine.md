@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="04/28/2016"
 	ms.author="mohabib;xibingao;bradsev" />
 
 # Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse
@@ -81,6 +81,7 @@ In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu fin
     -   Wird ausgeführt (Bereitstellung)
     -   Wird ausgeführt
 
+
 ##<a name="RemoteDesktop"></a>Öffnen des virtuellen Computers mithilfe von Remotedesktop und vollständige Einrichtung
 
 1.  Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf den Namen des virtuellen Computers, um zur Seite "DASHBOARD" zu gelangen. Klicken Sie unten auf der Seite auf **Verbinden**.
@@ -93,11 +94,12 @@ In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu fin
 
 Nachdem Sie über Windows Remotedesktop mit dem virtuellen Computer verbunden sind, funktioniert der virtuelle Computer wie jeder andere Computer. Stellen Sie ganz normal eine Verbindung zur Standardinstanz von SQL Server mit SQL Server Management Studio, das auf dem virtuellen Computer ausgeführt wird, her.
 
+
 ##<a name="InstallIPython"></a>Installieren von IPython Notebook und anderen Tools
 
 Zum Konfigurieren der neuen SQL Server-VM als IPython Notebook-Server und zum Installieren zusätzlicher unterstützender Tools wie AzCopy, Azure-Speicher-Explorer, hilfreicher Python-Pakete für Data Science und anderer steht ein spezielles Anpassungsskript bereit. So führen Sie die Installation durch:
 
-- Klicken Sie mit der rechten Maustaste auf das Windows-Startmenü, und klicken dann Sie auf **Eingabeaufforderung (Administrator)**.
+- Klicken Sie mit der rechten Maustaste auf das Symbol **Windows-Start**, und klicken dann Sie auf **Eingabeaufforderung (Administrator)**.
 - Kopieren Sie die folgenden Befehle, und fügen Sie sie an der Eingabeaufforderung ein.
 
     	set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
@@ -154,7 +156,7 @@ Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentif
 
 	So ändern Sie den Authentifizierungsmodus mit SQL Server Management Studio:
 
-3.  Klicken Sie im Objekt-Explorer von SQL Server Management Studio mit der rechten Maustaste auf die Instanz von SQL Server (den Namen des virtuellen Computers), und klicken Sie dann auf **Eigenschaften**.
+3.  Klicken Sie im **Objekt-Explorer von SQL Server Management Studio** mit der rechten Maustaste auf die Instanz von SQL Server (den Namen des virtuellen Computers), und klicken Sie dann auf **Eigenschaften**.
 
     ![Servereigenschaften][7]
 
@@ -162,19 +164,20 @@ Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentif
 
     ![Authentifizierungsmodus auswählen][8]
 
-5.  Klicken Sie im Dialogfeld von SQL Server Management Studio auf **OK**, um zu bestätigen, dass es erforderlich ist, SQL Server neu zu starten.
+5.  Klicken Sie im Dialogfeld von **SQL Server Management Studio** auf **OK**, um zu bestätigen, dass es erforderlich ist, SQL Server neu zu starten.
 
-6.  Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Neu starten**. (Wenn SQL Server-Agent ausgeführt wird, muss dieser ebenfalls neu gestartet werden.)
+6.  Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Neu starten**. (Wenn SQL Server-Agent ausgeführt wird, muss dieser ebenfalls neu gestartet werden.)
 
     ![Neu starten][9]
 
-7.  Klicken Sie im Dialogfeld von SQL Server Management Studio auf **Ja**, um zu bestätigen, dass SQL Server neu gestartet werden soll.
+7.  Klicken Sie im Dialogfeld von **SQL Server Management Studio** auf **Ja**, um zu bestätigen, dass SQL Server neu gestartet werden soll.
 
 ##<a name="Logins"></a>Erstellen von Anmeldenamen für die SQL Server-Authentifizierung
 
 Um von einem anderen Computer aus eine Verbindung zum Datenbankmodul herzustellen, müssen Sie mindestens einen Anmeldenamen für die SQL Server-Authentifizierung erstellen.
 
-> [AZURE.TIP] Sie können programmgesteuert oder mithilfe von SQL Server Management Studio neue SQL Server-Anmeldungen erstellen. Um programmgesteuert einen neuen sysadmin-Benutzer mit SQL-Authentifizierung zu erstellen, starten Sie eine **Neue Abfrage** und führen das folgende Skript aus. Ersetzen Sie <new user name> und <new password> durch den gewünschten Benutzernamen und das gewünschte Kennwort. Passen Sie die Kennwortrichtlinie ggf. an (der Beispielcode deaktiviert die Richtlinienprüfung und den Ablauf von Kennwörtern). Weitere Informationen zu Anmeldenamen für SQL Server finden Sie unter [Erstellen eines Anmeldenamens](http://msdn.microsoft.com/library/aa337562.aspx).
+Sie können programmgesteuert oder mithilfe von SQL Server Management Studio neue SQL Server-Anmeldungen erstellen. Um programmgesteuert einen neuen sysadmin-Benutzer mit SQL-Authentifizierung zu erstellen, starten Sie eine **Neue Abfrage** und führen das folgende Skript aus. Ersetzen Sie <new user name> und <new password> durch den gewünschten *Benutzernamen* und das gewünschte *Kennwort*.
+
 
     USE master
     go
@@ -185,9 +188,12 @@ Um von einem anderen Computer aus eine Verbindung zum Datenbankmodul herzustelle
 
     EXEC sp_addsrvrolemember @loginame = N'<new user name>', @rolename = N'sysadmin';
 
+
+Passen Sie die Kennwortrichtlinie ggf. an (der Beispielcode deaktiviert die Richtlinienprüfung und den Ablauf von Kennwörtern). Weitere Informationen zu Anmeldenamen für SQL Server finden Sie unter [Erstellen eines Anmeldenamens](http://msdn.microsoft.com/library/aa337562.aspx).
+
 So erstellen Sie mit SQL Server Management Studio neue SQL Server-Anmeldungen:
 
-1.  Erweitern Sie in SQL Server Management Studio-Objekt-Explorer den Ordner der Serverinstanz, in der der neue Anmeldename erstellt werden soll.
+1.  Erweitern Sie im **SQL Server Management Studio-Objekt-Explorer** den Ordner der Serverinstanz, in der der neue Anmeldename erstellt werden soll.
 
 2.  Klicken Sie mit der rechten Maustaste auf den Ordner **Sicherheit**, zeigen Sie auf **Neu**, und wählen Sie **Anmeldung** aus.
 
@@ -221,11 +227,13 @@ So erstellen Sie mit SQL Server Management Studio neue SQL Server-Anmeldungen:
 
 ##<a name="DNS"></a>Bestimmen des DNS-Namens des virtuellen Computers
 
-Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verbinden, müssen Sie den DNS-Namen (Domain Name System) des virtuellen Computers kennen. (Dies ist der Name, den das Internet verwendet, um den virtuellen Computer zu identifizieren. Sie können die IP-Adresse verwenden, aber die IP-Adresse ändert sich möglicherweise, wenn Azure aufgrund von Redundanz oder Wartungsarbeiten Ressourcen verschiebt. Der DNS-Name bleibt bestehen, da er zu einer neuen IP-Adresse weitergeleitet werden kann.)
+Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verbinden, müssen Sie den DNS-Namen (Domain Name System) des virtuellen Computers kennen.
+
+(Dies ist der Name, den das Internet verwendet, um den virtuellen Computer zu identifizieren. Sie können die IP-Adresse verwenden, aber die IP-Adresse ändert sich möglicherweise, wenn Azure aufgrund von Redundanz oder Wartungsarbeiten Ressourcen verschiebt. Der DNS-Name bleibt bestehen, da er zu einer neuen IP-Adresse weitergeleitet werden kann.)
 
 1.  Wählen Sie im klassischen Azure-Portal (oder aus dem vorherigen Schritt) **VIRTUELLE COMPUTER**.
 
-2.  Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf **http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
+2.  Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf ****http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
 
 ##<a name="cde"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
 
@@ -243,7 +251,7 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 
 ##<a name="amlconnect"></a>Herstellen einer Verbindung von Azure Machine Learning zum Datenbankmodul
 
-In späteren Phasen des Advanced Analytics Process and Technology (ADAPT) verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen der Machine Learning-Modelle. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das Reader-Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net)-Experiment. Weitere Informationen finden Sie über die Anleitungslinks des Advanced Analytics Process and Technology (ADAPT). Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
+In späteren Phasen des Cortana Analytics-Prozesses verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen der Machine Learning-Modelle. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das **Reader**-Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net)-Experiment. Weitere Informationen zu diesem Thema finden Sie über die Links mit Anleitungen zum Cortana Analytics-Prozess. Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
 
 2.	Wählen Sie im Bereich **Properties** des [Reader-Moduls](https://msdn.microsoft.com/library/azure/dn905997.aspx) die Option **Azure SQL Database** aus der Dropdownliste **Data Source** aus.
 
@@ -298,4 +306,4 @@ Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiter
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

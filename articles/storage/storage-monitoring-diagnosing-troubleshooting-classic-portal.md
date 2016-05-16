@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="04/29/2016"
 	ms.author="jahogg"/>
 
 # Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
@@ -28,7 +28,7 @@ Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwa
 
 > [AZURE.NOTE] Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert.
 
-Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](../storage-e2e-troubleshooting/).
+Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](storage-e2e-troubleshooting.md).
 
 + [Einführung]
 	+ [Wie diese Anleitung aufgebaut ist]
@@ -409,7 +409,7 @@ Im Falle von hoher **AverageServerLatency** bei wiederholten Blob-Download-Anfra
 
 Hohe Werte bei der **AverageServerLatency** können auch ein Zeichen für schlecht entworfene Tabellen oder Abfragen sein, die zu Scanoperationen führen oder die dem angehängten/vorangestellten Gegenmuster folgen. Weitere Informationen finden Sie unter "[Metriken zeigen Anstieg bei PercentThrottlingError an]".
 
-> [AZURE.NOTE] Hier finden Sie eine umfassende Checkliste mit weiteren Problemstellungen: [Entwerfen einer skalierbaren und leistungsfähigen speicherbasierten Anwendungscheckliste](storage-performance-checklist.md).
+> [AZURE.NOTE] Hier finden Sie eine umfassende Checkliste im Hinblick auf die Leistung: [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](storage-performance-checklist.md).
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>Sie stoßen auf unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange
 
@@ -487,7 +487,8 @@ In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor 
 
 - In der Regel sollten Sie keine Startzeit festlegen, wenn Sie eine SAS für einen Client zur sofortigen Verwendung erstellen. Wenn es kleine Zeitunterschiede zwischen dem die SAS generierenden Host und dem Speicherdienst gibt, kann der Speicherdienst eine noch nicht gültige SAS empfangen.
 - Sie sollten keine sehr kurze Ablaufzeit für eine SAS einstellen. Auch hier können kleine Zeitunterschiede zwischen dem die SAS generierenden Host und dem Speicherdienst dazu führen, dass eine SAS scheinbar früher als erwartet abläuft.
-- Stimmt der Versionsparameter im SAS-Schlüssel (zum Beispiel **sv=2012-02-12**) mit der von Ihnen verwendeten Version der Speicher-Clientbibliothek überein? Sie sollten immer die neueste Version der Speicher-Clientbibliothek verwenden. Weitere Informationen zu SAS-Token-Versionsverwaltung und Abhängigkeiten von der Clientbibliotheksversion finden Sie unter <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx" target="_blank">Neuerungen bei Microsoft Azure Storage</a>.
+- Stimmt der Versionsparameter im SAS-Schlüssel (zum Beispiel **sv=2012-02-12**) mit der von Ihnen verwendeten Version der Speicher-Clientbibliothek überein? Sie sollten immer die neueste Version der Speicher-Clientbibliothek verwenden. Weitere Informationen zur Versionsverwaltung von SAS-Token finden Sie unter [What's new for Microsoft Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx) (Neuigkeiten für Microsoft Azure Storage).
+- 
 - Wenn Sie Ihren Speicherzugriffsschlüssel neu erstellen (klicken Sie auf einer beliebigen Seite in Ihrem Speicherkonto im klassischen Azure-Portal auf **Zugriffsschlüssel verwalten**), kann dies jedes vorhandene SAS-Token unwirksam machen. Dies kann problematisch sein, wenn Sie SAS-Token mit einer langen Ablaufzeit zum Cachen von Clientanwendungen generieren.
 
 Wenn Sie die Speicher-Clientbibliothek verwenden, um SAS-Token zu erstellen, ist es einfach, einen gültigen Token anzulegen. Wenn Sie allerdings die Speicher-REST-API verwenden und das SAS-Token manuell anlegen, sollten Sie sorgfältig das Thema <a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">Zugriffsdelegierung mit einer Shared Access Signature</a> in MSDN lesen.
@@ -925,4 +926,4 @@ Zum Redaktionszeitpunkt befindet sich Application Insights in der Vorschau. Weit
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

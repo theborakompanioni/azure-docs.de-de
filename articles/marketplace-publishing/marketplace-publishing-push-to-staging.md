@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="04/26/2016"
    ms.author="hascipio"/>
 
 # Abschließen der Angebotserstellung mit Marketinginhalten
@@ -162,14 +162,14 @@ Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketin
 
 ![Abbildung](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-*Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
+* Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
 
 ### Azure-Portal
-![Abbildung](media/marketplace-publishing-push-to-staging/portal-catalog-01.png)
+![Abbildung](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
 
 *Auflisten der Angebote im Azure-Portal*
 
-![Abbildung](media/marketplace-publishing-push-to-staging/portal-listing-details-01.png)
+![Abbildung](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-02.png)
 
 *Beschreibung der Angebote im Azure-Portal*
 
@@ -192,4 +192,4 @@ Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Test
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

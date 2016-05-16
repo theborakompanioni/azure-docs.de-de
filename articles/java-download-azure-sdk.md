@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="multiple" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="03/09/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 # Herunterladen des Azure SDK für Java
 
 Dieser Artikel enthält eine Anleitung zum Herunterladen und Installieren der Azure-Bibliotheken für Java.
 
-[Hinweis:][license] Die Azure-Bibliotheken für Java werden unter der **Apache-Lizenz, Version 2.0,** verteilt.
+[Hinweis:][license] Die Azure-Bibliotheken für Java werden unter der **Apache-Lizenz, Version 2.0,** verteilt.
 
 ## Azure-Bibliotheken für Java – manueller Download
 
@@ -38,11 +38,11 @@ Ausführliche Informationen zum Einrichten des Buildpfads in Eclipse finden Sie 
 
 ## Azure-Bibliotheken für Java – Erstellung mit Maven
 
-### Schritt 1: Einrichten des Projekts für die Verwendung von Maven zum Erstellen
+### Schritt 1: Einrichten des Projekts für die Verwendung von Maven zum Erstellen
 
 Informationen zum Erstellen von Maven-Projekten in Eclipse, die die Azure-Bibliotheken für Java verwenden, finden Sie im Artikel [Getting Started with Azure Management Libraries for Java][maven-getting-started] (in englischer Sprache).
 
-### Schritt 2: Konfigurieren Ihrer Maven-Einstellungen mit den erforderlichen Abhängigkeiten
+### Schritt 2: Konfigurieren Ihrer Maven-Einstellungen mit den erforderlichen Abhängigkeiten
 
 Nachdem das Projekt für die Verwendung von Maven für die Erstellung konfiguriert wurde, können Sie Ihrer Datei „pom.xml“ die erforderlichen Abhängigkeiten mit einer Syntax wie im folgenden Beispiel hinzufügen. Beachten Sie, dass Sie nicht jede im folgenden Beispiel aufgeführte Abhängigkeit hinzufügen müssen. Sie müssen nur die spezifischen Abhängigkeiten hinzufügen, die für Ihr Projekt erforderlich sind.
 
@@ -136,4 +136,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [zip-download]: http://go.microsoft.com/fwlink/?LinkId=690320
 [Neuigkeiten im Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=690333
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

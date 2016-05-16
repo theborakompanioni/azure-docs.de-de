@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/22/2016"
+   ms.date="05/04/2016"
    ms.author="larryfr"/>
 
 
@@ -21,7 +21,7 @@
 
 Mit Azure Virtual Network können Sie Ihre Hadoop-Lösungen erweitern, um lokale Ressourcen wie SQL Server zu integrieren oder sichere private Netzwerke zwischen Ressourcen in der Cloud zu erstellen.
 
-> [AZURE.NOTE] HDInsight unterstützt derzeit keine affinitätsbasierten virtuellen Azure-Netzwerke. Bei Verwendung von HDInsight müssen Sie standortbasierte virtuelle Netzwerke einsetzen.
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 
 ##<a id="whatis"></a>Was ist Azure Virtual Network?
@@ -80,20 +80,20 @@ Wenn sich Ressourcen in einem virtuellen Netzwerk befinden, das nicht von dem zu
 
 ###Geschützte virtuelle Netzwerke
 
-HDInsight wird nicht für Azure Virtual Networks unterstützt, bei denen der Zugriff auf das bzw. aus dem Internet explizit eingeschränkt ist. Ein Beispiel hierfür ist die Verwendung von Netzwerksicherheitsgruppen oder ExpressRoute zum Blockieren von Internetdatenverkehr zu Ressourcen im Virtual Network.
+Der HDInsight-Dienst ist ein verwalteter Dienst, und während der Bereitstellung und Ausführung ist ein Internetzugang erforderlich. So kann Azure die Integrität des Clusters überwachen, Failover von Clusterressourcen initiieren, die Anzahl der Knoten im Cluster durch Skalieren ändern und andere Verwaltungsaufgaben ausführen.
 
-Der HDInsight-Dienst ist ein verwalteter Dienst, der während der Bereitstellung und Ausführung Internetzugriff benötigt. Azure muss die Integrität des Clusters überprüfen, das Failover von Clusterressourcen initiieren und andere automatisierte Verwaltungsaufgaben durchführen können. Für die folgenden IP-Adressen muss der eingehende Zugriff auf das Subnetz zulässig sein, in dem Sie HDInsight installieren möchten:
+Wenn Sie HDInsight in einem sicheren virtuellen Netzwerk installieren müssen, müssen Sie den eingehenden Zugriff über Port 443 für die folgenden IP-Adressen zulassen, die Azure das Verwalten des HDInsight-Clusters ermöglichen.
 
 * 168\.61.49.99
 * 23\.99.5.239
 * 168\.61.48.131
 * 138\.91.141.162
 
-Das Zulassen des eingehenden Zugriffs von diesen Adressen ermöglicht Ihnen die erfolgreiche Installation von HDInsight in einem geschützten virtuellen Netzwerk.
+Das Zulassen des eingehenden Zugriffs über Port 443 von diesen Adressen ermöglicht Ihnen die erfolgreiche Installation von HDInsight in einem geschützten virtuellen Netzwerk.
 
-Unten ist ein Beispielskript angegeben, mit dem eine neue Netzwerksicherheitsgruppe erstellt wird. Hiermit werden die erforderlichen Adressen zugelassen, und die Sicherheitsgruppe wird auf ein Subnetz in Ihrem Virtual Network angewendet. Bei diesen Schritten wird vorausgesetzt, dass Sie bereits ein Virtual Network und ein Subnetz erstellt haben, in dem Sie HDInsight installieren möchten.
+Die folgenden Beispiele zeigen das Erstellen einer neuen Netzwerksicherheitsgruppe, die die erforderlichen Adressen zulässt, und die Sicherheitsgruppe wird auf ein Subnetz in Ihrem Virtual Network angewendet. Bei diesen Schritten wird vorausgesetzt, dass Sie bereits ein Virtual Network und ein Subnetz erstellt haben, in dem Sie HDInsight installieren möchten.
 
-> [AZURE.NOTE] Sie müssen Azure PowerShell installiert und konfiguriert haben, bevor Sie dieses Skript ausführen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+__Verwenden von Azure PowerShell__
 
     $vnetName = "Replace with your virtual network name"
     $resourceGroupName = "Replace with the resource group the virtual network is in"
@@ -114,10 +114,10 @@ Unten ist ein Beispielskript angegeben, mit dem eine neue Netzwerksicherheitsgru
         -Location $location `
         | Add-AzureRmNetworkSecurityRuleConfig `
             -name "hdirule1" `
-            -Description "HDI health and management address 16.61.49.99" `
+            -Description "HDI health and management address 168.61.49.99" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "168.61.49.99" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -128,7 +128,7 @@ Unten ist ein Beispielskript angegeben, mit dem eine neue Netzwerksicherheitsgru
             -Description "HDI health and management 23.99.5.239" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "23.99.5.239" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -139,7 +139,7 @@ Unten ist ein Beispielskript angegeben, mit dem eine neue Netzwerksicherheitsgru
             -Description "HDI health and management 168.61.48.131" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "168.61.48.131" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -150,7 +150,7 @@ Unten ist ein Beispielskript angegeben, mit dem eine neue Netzwerksicherheitsgru
             -Description "HDI health and management 138.91.141.162" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "138.91.141.162" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -165,7 +165,35 @@ Unten ist ein Beispielskript angegeben, mit dem eine neue Netzwerksicherheitsgru
         -AddressPrefix $subnet.AddressPrefix `
         -NetworkSecurityGroupId $nsg
 
-> [AZURE.IMPORTANT] Mit dem obigen Skript wird nur der Zugriff auf den HDInsight-Integritäts- und -Verwaltungsdienst in der Azure-Cloud ermöglicht. So können Sie einen HDInsight-Cluster erfolgreich in einem Subnetz installieren. Der Zugriff auf den HDInsight-Cluster von außerhalb des Virtual Network ist aber standardmäßig blockiert. Sie müssen zusätzliche Netzwerksicherheitsgruppen-Regeln hinzufügen, wenn Sie den Zugriff von außerhalb des Virtual Network ermöglichen möchten.
+__Verwenden der Azure-Befehlszeilenschnittstelle__
+
+1. Verwenden Sie den folgenden Befehl, um eine neue Netzwerksicherheitsgruppe namens `hdisecure` zu erstellen. Ersetzen Sie __RESOURCEGROUPNAME__ und __LOCATION__ mit der Ressourcengruppe, die das Azure Virtual Network enthält, und dem Speicherort (Region), wo die Gruppe erstellt wurde.
+
+        azure network nsg create RESOURCEGROUPNAME hdisecure LOCATION
+    
+    Nachdem die Gruppe erstellt wurde, erhalten Sie Informationen über die neue Gruppe. Suchen Sie nach einer Zeile ähnlich der folgenden, und speichern Sie die `/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure`-Informationen. Sie werden in einem späteren Schritt verwendet.
+    
+        data:    Id                              : /subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure
+
+2. Gehen Sie wie folgt vor, um der neuen Netzwerksicherheitsgruppe Regeln hinzuzufügen, die eingehende Kommunikation auf Port 443 aus dem Azure HDInsight-Integritäts- und Verwaltungsdienst ermöglichen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das Azure Virtual Network enthält.
+
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule1 -p "*" -o "*" -u "443" -f "168.61.49.99" -e "VirtualNetwork" -c "Allow" -y 300 -r "Inbound"
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule2 -p "*" -o "*" -u "443" -f "23.99.5.239" -e "VirtualNetwork" -c "Allow" -y 301 -r "Inbound"
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule3 -p "*" -o "*" -u "443" -f "168.61.48.131" -e "VirtualNetwork" -c "Allow" -y 302 -r "Inbound"
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "443" -f "138.91.141.162" -e "VirtualNetwork" -c "Allow" -y 303 -r "Inbound"
+
+3. Nachdem die Regeln erstellt wurden, gehen Sie wie folgt vor, um die neue Netzwerksicherheitsgruppe einem Subnetz zuzuordnen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das Azure Virtual Network enthält. Ersetzen Sie __VNETNAME__ und __SUBNETNAME__ durch den Namen des Azure Virtual Network und des Subnetzes, das Sie bei der Installation von HDInsight verwenden.
+
+        azure network vnet subnet set RESOURCEGROUPNAME VNETNAME SUBNETNAME -w "/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    
+    Nach Abschluss dieses Befehls können Sie HDInsight erfolgreich in dem in diesen Schritten verwendeten Subnetz im gesicherten Virtual Network installieren.
+
+> [AZURE.IMPORTANT] Die obigen Schritte ermöglichen nur den Zugriff auf den HDInsight-Integritäts- und -Verwaltungsdienst in der Azure-Cloud. So können Sie einen HDInsight-Cluster erfolgreich in einem Subnetz installieren. Der Zugriff auf den HDInsight-Cluster von außerhalb des Virtual Network ist aber standardmäßig blockiert. Sie müssen zusätzliche Netzwerksicherheitsgruppen-Regeln hinzufügen, wenn Sie den Zugriff von außerhalb des Virtual Network ermöglichen möchten.
+>
+> Um beispielsweise den SSH-Zugriff über das Internet zu ermöglichen, müssen Sie eine Regel ähnlich der folgenden hinzufügen:
+>
+> * Azure PowerShell – ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
+> * Azure-Befehlszeilenschnittstelle – ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
 
 Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md). Informationen zum Steuern des Routings in einem Azure Virtual Network finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
 
@@ -181,11 +209,11 @@ Der HDInsight-Cluster wird für die Virtual Network-Schnittstelle einen bestimmt
 
 > [AZURE.NOTE] Weitere Informationen zur Verwendung von Ambari mit HDInsight finden Sie unter [Überwachen von Hadoop-Clustern in HDInsight mit der Ambari-API](hdinsight-monitor-use-ambari-api.md).
 
-Sie müssen den Clusternamen und einen Dienst sowie eine Komponente angeben, die auf dem Cluster ausgeführt werden, z. B. den YARN Resource Manager.
+Sie müssen den Clusternamen und einen Dienst sowie eine Komponente angeben, die auf dem Cluster ausgeführt werden, z. B. den YARN Resource Manager.
 
 > [AZURE.NOTE] Die Daten werden als JSON-Dokument (JavaScript Object Notation) zurückgegeben, das viele Informationen zur Komponente enthält. Um nur den FQDN zu extrahieren, verwenden Sie einen JSON-Parser zum Abrufen des Werts von `host_components[0].HostRoles.host_name`.
 
-Wenn Sie z. B. den FQDN eines HDInsight Hadoop-Clusters zurückgegeben möchten, können Sie die Daten für den YARN Resource Manager mithilfe einer der folgenden Methoden abrufen:
+Wenn Sie z. B. den FQDN eines HDInsight Hadoop-Clusters zurückgegeben möchten, können Sie die Daten für den YARN Resource Manager mithilfe einer der folgenden Methoden abrufen:
 
 * [Azure PowerShell](../powershell-install-configure.md)
 
@@ -275,4 +303,4 @@ In den folgenden Beispielen wird die Verwendung von HDInsight mit Azure Virtual 
 
 Weitere Informationen zu virtuellen Azure Virtual-Netzwerken finden Sie unter [Überblick über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

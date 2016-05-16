@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Verwenden des Azure PowerShell-Befehls zum Erstellen eines leeren Clouddienstcontainers | Microsoft Azure"
-   description="In diesem Artikel wird erläutert, wie Sie PowerShell-Skripts verwenden, um Clouddienstcontainer zu erstellen und Verwaltungsvorgänge im Zusammenhang mit Clouddiensten auszuführen."
+   pageTitle="Erstellen eines Clouddienstcontainers mit PowerShell | Microsoft Azure"
+   description="Dieser Artikel beschreibt das Erstellen eines Clouddienstcontainers mit PowerShell. Der Container hostet Web- und Workerrollen."
    services="cloud-services"
    documentationCenter=".net"
    authors="cawaMS"
-   manager="paulyuk"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="04/25/2016"
    ms.author="cawa"/>
 
 # Verwenden des Azure PowerShell-Befehls zum Erstellen eines leeren Clouddienstcontainers
@@ -32,11 +32,13 @@ Dieser Artikel erläutert das schnelle Erstellen eines Cloud Services-Containers
     New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
 ```
 
-5. Folgen Sie diesem Beispiel, um das Cmdlet aufzurufen: ```
-New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
+5. Folgen Sie diesem Beispiel, um das Cmdlet aufzurufen:
+```
+New-AzureService -ServiceName "mytestcloudservice" -Location "Central US" -Label "mytestcloudservice"
 ```
 
-Führen Sie Folgendes aus, um weitere Informationen zum Erstellen eines Azure Clouddiensts zu erhalten: ```
+Führen Sie Folgendes aus, um weitere Informationen zum Erstellen eines Azure-Clouddiensts zu erhalten:
+```
 Get-help New-AzureService
 ```
 
@@ -46,4 +48,4 @@ Get-help New-AzureService
 
  * Um Ihr Clouddienst-Projekt in Azure zu veröffentlichen, nutzen Sie das Codebeispiel **PublishCloudService.ps1** auf der Seite [Kontinuierliche Zustellung für Cloud Services in Azure](cloud-services-dotnet-continuous-delivery.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

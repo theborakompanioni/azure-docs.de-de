@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/01/2015"
+   ms.date="04/04/2016"
    ms.author="v-sharos" />
 
 # Bereitstellen des StorSimple Manager-Diensts
@@ -50,7 +50,7 @@ Erstellen Sie mithilfe der Option **Schnellerfassung** einen StorSimple Manager-
 
 Sie können beim Erstellen des Diensts auch ein Standardspeicherkonto generieren.
 
-Mit einem Dienst können mehrere Geräte verwaltet werden. Ein Gerät kann jedoch nicht mehrere Dienste umfassen. Große Unternehmen können mit mehreren Dienstinstanzen mit verschiedenen Abonnements, Organisationen oder sogar Bereitstellungsstandorten arbeiten.
+Mit einem Dienst können mehrere Geräte verwaltet werden. Ein Gerät kann jedoch nicht mehrere Dienste umfassen. Große Unternehmen können mit mehreren Dienstinstanzen mit verschiedenen Abonnements, Organisationen oder sogar Bereitstellungsstandorten arbeiten. Beachten Sie, dass Sie separate Instanzen des StorSimple Manager-Diensts benötigen, um StorSimple-Geräte der Serie 8000 und StorSimple Virtual Arrays zu verwalten.
 
 Führen Sie die folgenden Schritte aus, um einen Dienst zu erstellen.
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um einen Dienst zu erstellen.
 
 Bevor Sie einen Dienst löschen, stellen Sie sicher, dass er von keinen verbundenen Geräten verwendet wird. Wenn der Dienst verwendet wird, deaktivieren Sie die verbundenen Geräte. Der deaktivierte Vorgang trennt die Verbindung zwischen dem Gerät und dem Dienst, behält aber die Gerätedaten in der Cloud bei.
 
-[AZURE.IMPORTANT]Das Löschen eines Diensts kann nicht rückgängig gemacht werden. Jedes Gerät, das den Dienst verwendet hat, muss auf die Werkseinstellungen zurückgesetzt werden, bevor es mit einem anderen Dienst verwendet werden kann. In diesem Szenario gehen sowohl die lokalen Daten auf dem Gerät als auch die Konfiguration verloren.
+[AZURE.IMPORTANT] Das Löschen eines Diensts kann nicht rückgängig gemacht werden. Jedes Gerät, das den Dienst verwendet hat, muss auf die Werkseinstellungen zurückgesetzt werden, bevor es mit einem anderen Dienst verwendet werden kann. In diesem Szenario gehen sowohl die lokalen Daten auf dem Gerät als auch die Konfiguration verloren.
 
 Führen Sie die folgenden Schritte aus, um einen Dienst zu löschen.
 
@@ -115,4 +115,4 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/28/2016"
+   ms.date="04/15/2016"
    ms.author="mcoskun"/>
 
 # Sichern und Wiederherstellen von Reliable Services und Reliable Actors
@@ -34,6 +34,19 @@ Ein Dienst möchte Daten beispielsweise in den folgenden Szenarien sichern:
 
 Das Feature für die Sicherung/Wiederherstellung ermöglicht mit Reliable Services-API entwickelten Diensten die Erstellung und Wiederherstellung von Sicherungen. Die von der Plattform bereitgestellten Sicherungs-APIs ermöglichen das Anlegen von Sicherungen des Status einer Dienstpartition, ohne Lese- oder Schreibvorgänge zu blockieren. Die Wiederherstellungs-APIs ermöglichen die Wiederherstellung des Status einer Dienstpartition aus einer Sicherung.
 
+## Sicherungstypen
+
+Es stehen zwei Optionen zur Sicherung zur Verfügung: vollständige Sicherung und inkrementelle Sicherung. Eine vollständige Sicherung ist eine Sicherung, die alle Daten umfasst, die zum Neuerstellen des Status des Replikats erforderlich sind, d.h. Prüfpunkte und alle Protokolleinträge. Da eine vollständige Sicherung die Prüfpunkte und das Protokoll umfasst, kann sie eigenständig wiederhergestellt werden.
+
+Probleme mit vollständigen Sicherungen entstehen, wenn die Prüfpunkte umfangreich sind. Ein Replikat mit einem Status von 16 GB weist beispielsweise Prüfpunkte auf, die sich auf ca. 16 GB belaufen. Bei einer Recovery Point Objective von 5 Minuten muss das Replikat alle 5 Minuten gesichert werden. Bei jeder Sicherung müssen neben Protokollen von 50 MB (konfigurierbar mit **CheckpointThresholdInMB**) Prüfpunkte von 16 GB kopiert werden.
+
+![Beispiel für vollständige Sicherung.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
+
+Die Lösung für dieses Problem besteht darin, inkrementelle Sicherungen durchzuführen, bei denen nur die seit der letzten Sicherung erfassten Protokolleinträge gesichert werden.
+
+![Beispiel für inkrementelle Sicherung.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
+
+Da inkrementelle Sicherungen nur die seit der letzten Sicherung vorgenommenen Änderungen umfassen (ohne die Prüfpunkte), werden sie meistens schneller durchgeführt, können aber nicht eigenständig wiederhergestellt werden. Zum Wiederherstellen einer inkrementellen Sicherung ist die gesamte Sicherungskette erforderlich. Eine Sicherungskette ist eine Kette von Sicherungen, die mit einer vollständigen Sicherung beginnt, auf die dann mehrere zusammenhängende inkrementelle Sicherungen folgen.
 
 ## Sichern von Reliable Services
 
@@ -41,7 +54,7 @@ Der Dienstautor kann bestimmen, wann Sicherungen erstellt und wo sie gespeichert
 
 Der Dienst muss die geerbte Memberfunktion **BackupAsync** aufrufen, um die Sicherung zu starten. Sicherungen können nur von primären Replikaten erstellt werden und benötigen Schreibzugriff.
 
-Wie Sie unten sehen, nimmt **BackupAsync** ein **BackupDescription**-Objekt an, in dem Sie eine vollständige oder inkrementelle Sicherung sowie die Rückruffunktion **Func << BackupInfo  bool >>** angeben können. Diese wird aufgerufen wird, wenn der Sicherungsordner lokal erstellt wurde, und sie kann in einen externen Speicher verschoben werden.
+Wie Sie unten sehen, nimmt **BackupAsync** ein **BackupDescription**-Objekt an, in dem Sie eine vollständige oder inkrementelle Sicherung sowie die Rückruffunktion **Func<< BackupInfo, CancellationToken, Task<bool>>>** angeben können. Diese wird aufgerufen, wenn der Sicherungsordner lokal erstellt wurde, und sie kann in einen externen Speicher verschoben werden.
 
 ```C#
 
@@ -51,16 +64,18 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
+Die Anforderung zum Durchführen einer inkrementellen Sicherung kann mit **FabricFullBackupMissingException** fehlschlagen, wobei angegeben wird, dass für das Replikat niemals eine vollständige Sicherung erstellt wurde oder dass einige der Protokolleinträge seit der letzten Sicherung abgeschnitten wurden. Benutzer können durch Ändern von **CheckpointThresholdInMB** anpassen, mit welcher Rate Protokolleinträge abgeschnitten werden sollen.
+
 **BackupInfo** liefert Informationen über die Sicherung, einschließlich des Speicherorts des Ordners, in dem die Runtime die Sicherung gespeichert hat **(BackupInfo.Directory)**. Die Rückruffunktion kann **BackupInfo.Directory** in einen externen Speicher oder an einen anderen Speicherort verschieben. Diese Funktion gibt auch einen booleschen Wert zurück, der angibt, ob der Sicherungsordner erfolgreich an den Zielspeicherort verschoben werden konnte.
 
-Der folgende Code zeigt, wie die Sicherung mit der **BackupCallbackAsync**-Methode in den Azure-Speicher hochgeladen wird:
+Der folgende Code zeigt, wie die Sicherung mit der **BackupCallbackAsync**-Methode in Azure Storage hochgeladen wird:
 
 ```C#
-private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo)
+private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
 {
     var backupId = Guid.NewGuid();
 
-    await externalBackupStore.UploadBackupFolderAsync(backupInfo.Directory, backupId, CancellationToken.None);
+    await externalBackupStore.UploadBackupFolderAsync(backupInfo.Directory, backupId, cancellationToken);
 
     return true;
 }
@@ -102,7 +117,7 @@ Der Dienstautor muss Folgendes wiederherstellen:
 
 - Geben Sie „true“ zurück, wenn die Wiederherstellung erfolgreich war.
 
-Nachfolgend finden Sie ein Beispiel für das Implementieren der **OnDataLossAsync**-Methode:
+Im Folgenden finden Sie ein Beispiel für das Implementieren der **OnDataLossAsync**-Methode:
 
 ```C#
 
@@ -118,14 +133,17 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
+**RestoreDescription** wird an den **RestoreContext.RestoreAsync**-Aufruf übergeben und enthält ein Mitglied mit dem Namen **BackupFolderPath**. Beim Wiederherstellen einer einzelnen vollständigen Sicherung muss dieser **BackupFolderPath** auf den lokalen Pfad des Ordners festgelegt werden, der die vollständige Sicherung enthält. Beim Wiederherstellen einer vollständigen Sicherung und mehrerer inkrementeller Sicherungen muss **BackupFolderPath** auf den lokalen Pfad des Ordners festgelegt werden, der die vollständige Sicherung sowie alle inkrementellen Sicherungen enthält. Der **RestoreAsync**-Aufruf kann **FabricFullBackupMissingException** auslösen, wenn der angegebene **BackupFolderPath** keine vollständige Sicherung enthält. Zudem kann **ArgumentException** ausgelöst werden, wenn **BackupFolderPath** eine unterbrochene Kette von inkrementellen Sicherungen enthält, beispielsweise die vollständige Sicherung, die erste inkrementelle und die dritte inkrementelle Sicherung, jedoch nicht die zweite inkrementelle Sicherung.
+
 >[AZURE.NOTE] Für die RestorePolicy ist standardmäßig „sicher“ eingestellt. Dies bedeutet, dass die **RestoreAsync**-API mit ArgumentException fehlschlägt, wenn sie erkennt, dass der Sicherungsordner einen Status enthält, der älter ist als der Status in diesem Replikat bzw. gleich alt ist. **RestorePolicy.Force** kann verwendet werden, um diese Sicherheitsprüfung zu überspringen. Dies wird als Teil von **RestoreDescription** angegeben.
 
 ## Gelöschter oder verlorener Dienst
 
-Wenn ein Dienst entfernt wird, muss der Dienst erst neu erstellt werden, bevor die Daten wiederhergestellt werden können. Der Dienst muss unbedingt mit der gleichen Konfiguration erstellt werden, z. B. dem Partitionierungsschema, damit die Daten problemlos wiederhergestellt werden können. Sobald der Dienst wieder läuft, muss die API zum Wiederherstellen von Daten (**OnDataLossAsync** oben) auf jeder Partition dieses Dienstes aufgerufen werden. Eine Möglichkeit, dies zu erreichen, ist die Verwendung von **FabricClient.ServiceManager.InvokeDataLossAsync** auf jeder Partition.
+Wenn ein Dienst entfernt wird, muss der Dienst erst neu erstellt werden, bevor die Daten wiederhergestellt werden können. Der Dienst muss unbedingt mit der gleichen Konfiguration erstellt werden, z. B. dem Partitionierungsschema, damit die Daten problemlos wiederhergestellt werden können. Sobald der Dienst wieder läuft, muss die API zum Wiederherstellen von Daten (**OnDataLossAsync** oben) auf jeder Partition dieses Dienstes aufgerufen werden. Eine Möglichkeit, dies zu erreichen, ist die Verwendung von **[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)** auf jeder Partition.
 
 Ab diesem Zeitpunkt erfolgt die Implementierung wie im oben aufgeführten Szenario. Jede Partition muss die letzte relevante Sicherung aus dem externen Speicher wiederherstellen. Ein Nachteil ist, dass die Partitions-ID sich geändert haben kann, da die Runtime Partitions-IDs dynamisch erstellt. Daher muss der Dienst die entsprechenden Partitionsinformationen und den Dienstnamen speichern, um die aktuelle Sicherung zum Speichern für jede Partition zu finden.
 
+>[AZURE.NOTE] Es wird davon abgeraten, **FabricClient.ServiceManager.InvokeDataLossAsync** auf jeder Partition zu verwenden, um den gesamten Dienst wiederherzustellen, da dadurch der Clusterstatus beschädigt werden kann.
 
 ## Replizieren beschädigter Anwendungsdaten
 
@@ -147,9 +165,12 @@ Beachten Sie Folgendes:
 
 Das Sichern und Wiederherstellen von Reliable Actors baut auf den Sicherungs- und Wiederherstellungsfunktionen von Reliable Services auf. Der Dienstbesitzer sollte einen benutzerdefinierten Actordienst erstellen, der von **ActorService** abgeleitet ist (d.h. einen Reliable Service von Service Fabric, der Actors hostet) und dann Sicherungen bzw. Wiederherstellungen entsprechend den Beschreibungen in den vorherigen Abschnitten wie bei Reliable Services durchführen. Da Sicherungen jeweils pro Partition erstellt werden, werden Status für alle Actors einer bestimmten Partition gesichert (die Wiederherstellung erfolgt ähnlich und jeweils pro Partition).
 
-Beachten Sie Folgendes:
 
-1) Wenn Sie einen benutzerdefinierten Actordienst erstellen, müssen Sie beim Registrieren des Akteurs auch den benutzerdefinierten Actordienst registrieren. Siehe die Beschreibung zu **ActorRuntime.RegistorActorAsync**. 2) **KvsActorStateProvider** unterstützt derzeit nur vollständige Sicherungen. Die Unterstützung für inkrementelle Sicherungen ist in zukünftigen Versionen möglich. **KvsActorStateProvider** ignoriert zudem die Option **RestorePolicy.Safe**.
+- Wenn Sie einen benutzerdefinierten Actordienst erstellen, müssen Sie beim Registrieren des Actors auch den benutzerdefinierten Actordienst registrieren. Siehe die Beschreibung zu **ActorRuntime.RegistorActorAsync**.
+- **KvsActorStateProvider** unterstützt derzeit nur vollständige Sicherungen. **KvsActorStateProvider** ignoriert zudem die Option **RestorePolicy.Safe**.
+
+>[AZURE.NOTE] Der standardmäßige „ActorStateProvider“ (d.h. **KvsActorStateProvider**) bereinigt die Sicherungsordner **nicht** eigenständig (im Arbeitsordner der Anwendung, abgerufen über „ICodePackageActivationContext.WorkDirectory“). Dadurch wird der Arbeitsordner möglicherweise übermäßig voll. Sie sollten den Sicherungsordner im Sicherungsrückruf ausdrücklich bereinigen, nachdem Sie die Sicherung in einen externen Speicher verschoben haben.
+
 
 ## Testen von Sicherung und Wiederherstellung
 
@@ -170,7 +191,6 @@ Sämtliche nach dem Aufrufen von **BackupAsync** bestätigten Transaktionen kön
 
 Der Reliable State Manager ermöglicht das Wiederherstellen aus einer Sicherung mit der **RestoreAsync**-API. Die **RestoreAsync**-Methode für **RestoreContext** kann nur innerhalb der **OnDataLossAsync**-Methode aufgerufen werden. Die von **OnDataLossAsync** zurückgegebene Bool gibt an, ob der Dienst seinen Status aus einer externen Quelle wiederhergestellt hat. Wenn für **OnDataLossAsync** „TRUE“ zurückgegeben wird, erstellt Service Fabric alle anderen Replikate aus diesem primären Replikat neu. Service Fabric stellt sicher, dass Replikate, die **OnDataLossAsync** empfangen, zunächst die primäre Rolle annehmen, aber nicht den Lese- oder Schreibstatus erhalten. Dies bedeutet, dass **RunAsync** bei StatefulService-Implementierern erst aufgerufen wird, wenn **OnDataLossAsync** erfolgreich abgeschlossen wurde. **OnDataLossAsync** wird dann für das neue primäre Replikat aufgerufen. Bis ein Dienst diese API erfolgreich (durch Rückgabe von true oder false) abschließt und die relevanten Neukonfigurationen fertigstellt, wird weiterhin die API nacheinander aufgerufen.
 
-
 **RestoreAsync** löscht zuerst jeden bestehenden Status in dem primären Replikat, von dem es aufgerufen wurde. Danach erstellt der Reliable State Manager alle Reliable Objects, die im Sicherungsordner vorhanden sind. Als Nächstes werden die Reliable Objects angewiesen, ihre Prüfpunkte im Sicherungsordner wiederherzustellen. Schließlich stellt der Reliable State Manager seinen eigenen Status aus den Protokolldatensätzen im Sicherungsordner wieder her und führt die Wiederherstellung aus. Im Rahmen des Wiederherstellungsprozesses werden ab dem „Startpunkt“ beginnende Vorgänge, die Protokolldatensätze in den Sicherungsordner ausgeführt haben, in den Reliable Objects wiederholt. Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

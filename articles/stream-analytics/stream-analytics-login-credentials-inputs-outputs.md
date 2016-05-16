@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/04/2016" 
+	ms.date="05/03/2016" 
 	ms.author="jeffstok"/>
 
 #Austauschen von Anmeldeinformationen für Ein- und Ausgaben in Stream Analytics-Aufträgen
@@ -121,7 +121,11 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 4.	Fahren Sie mit Teil 5 fort.  
 
 ##Teil 5: Entfernen des alten Anmeldeinformationssatzes
-Dieser Teil gilt für die folgenden Ein-/Ausgaben: * Blob-Speicher * Event Hubs * SQL-Datenbank * Tabellenspeicher
+Dieser Teil gilt für die folgenden Eingaben/Ausgaben:
+* Blob-Speicher
+* Event Hubs
+* SQL-Datenbank
+* Table Storage
 
 ###Blob-Speicher/Tabellenspeicher
 Wiederholen Sie Teil 1 für den Zugriffsschlüssel, der bislang für den Auftrag verwendet wurde, um den jetzt nicht mehr verwendeten Zugriffsschlüssel zu erneuern.
@@ -194,4 +198,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

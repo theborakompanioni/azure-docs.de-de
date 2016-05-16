@@ -17,7 +17,7 @@
 
 # Konfigurieren der Azure-Diagnose zum Protokollieren in Application Insights
 
-Wenn Sie ein Cloud Services-Projekt oder einen virtuellen Computer in Microsoft Azure einrichten, [kann Azure ein Diagnoseprotokoll generieren](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md/). Sie können veranlassen, dass dieses Protokoll an Application Insights gesendet wird. Danach können Sie es gemeinsam mit der Diagnose- und Nutzungstelemetrie auswerten, die das Application Insights SDK aus der App heraus sendet. Das Azure-Protokoll enthält Ereignisse beim Verwalten der App, z. B. Starten, Beenden, Abstürze sowie Leistungsindikatoren. Das Protokoll enthält außerdem Aufrufe von „System.Diagnostics.Trace“ in der App.
+Wenn Sie ein Cloud Services-Projekt oder einen virtuellen Computer in Microsoft Azure einrichten, [kann Azure ein Diagnoseprotokoll generieren](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md). Sie können veranlassen, dass dieses Protokoll an Application Insights gesendet wird. Danach können Sie es gemeinsam mit der Diagnose- und Nutzungstelemetrie auswerten, die das Application Insights SDK aus der App heraus sendet. Das Azure-Protokoll enthält Ereignisse beim Verwalten der App, z. B. Starten, Beenden, Abstürze sowie Leistungsindikatoren. Das Protokoll enthält außerdem Aufrufe von „System.Diagnostics.Trace“ in der App.
 
 Dieser Artikel beschreibt im Detail, wie Sie das Erfassen der Diagnose konfigurieren.
 
@@ -146,4 +146,4 @@ Bei diesen Funktionen sind einige Einschränkungen zu beachten:
 * [Senden von Azure-Diagnosedaten an Application Insights mit PowerShell](app-insights-powershell-azure-diagnostics.md)
 * [Azure-Diagnosekonfigurationsdatei](https://msdn.microsoft.com/library/azure/dn782207.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie die ShardMapManager-Klasse in .NET-Apps für das datenabhängige Routing, einem Feature von elastischen Datenbanken für Azure SQL-Datenbank, verwenden können." 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="torsteng" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016" 
+	ms.date="05/03/2016" 
 	ms.author="torsteng;sidneyh"/>
 
 #Datenabhängiges Routing
@@ -133,4 +133,4 @@ Weitere Informationen zum Trennen oder erneuten Anfügen eines Shards finden Sie
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

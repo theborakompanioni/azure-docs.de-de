@@ -20,30 +20,33 @@ Der Name des App Service-Plans zum Hosten der Web-App.
       "type":"string"
     }
 
-### siteLocation
-
-Der Speicherort zum Erstellen von Web-App und Hostingplan. Dabei muss es sich um einen der Azure-Speicherorte handeln, die Web-Apps unterstützen.
-
-    "siteLocation":{
-      "type":"string"
-    }
-
 ### sku
 
 Der Tarif für den Hostingplan.
 
-    "sku":{
-      "type":"string",
-      "allowedValues":[
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
       ],
-      "defaultValue":"Free"
+      "defaultValue": "S1",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
     }
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Free, Shared, Basic oder Standard), und weist einen Standardwert (Free) zu, wenn kein Wert angegeben wird.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind, und weist einen Standardwert (S1) zu, wenn kein Wert angegeben wird.
 
 ### workerSize
 
@@ -61,4 +64,3 @@ Die Instanzgröße des Hostingplans (klein, mittel oder groß).
     
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1 oder 2), und weist einen Standardwert (0) zu, wenn kein Wert angegeben wird. Die Werte entsprechen klein, mittel und groß.
 
-<!---HONumber=Oct15_HO3-->

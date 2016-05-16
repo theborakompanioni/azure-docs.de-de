@@ -1,6 +1,6 @@
 Diese Anleitung zeigt, wie Sie mit [ClearDB] eine MySQL-Datenbank über den [Azure Store] erstellen und wie Sie eine MySQL-Datenbank als verknüpfte Ressource erstellen, wenn Sie eine [Azure-Website][waws] erstellen. [ClearDB] ist ein fehlertoleranter Datenbank-Dienstanbieter, mit dem Sie MySQL-Datenbanken in Azure-Datencentern ausführen und verwalten und aus jeder Anwendung Verbindungen zu diesen herstellen können.
 
-> [AZURE.NOTE]Wenn Sie beim Erstellen einer Website eine MySQL-Datenbank erstellen, kann dies nur eine kostenlose sein. Wenn Sie eine MySQL-Datenbank über den Azure Store erstellen, können Sie eine kostenlose Datenbank erstellen oder unter bezahlten Optionen wählen.
+> [AZURE.NOTE] Wenn Sie beim Erstellen einer Website eine MySQL-Datenbank erstellen, kann dies nur eine kostenlose sein. Wenn Sie eine MySQL-Datenbank über den Azure Store erstellen, können Sie eine kostenlose Datenbank erstellen oder unter bezahlten Optionen wählen.
 
 ## Erstellen einer MySQL-Datenbank über den Azure Store
 
@@ -65,12 +65,11 @@ Um beim Erstellen einer [Azure-Website][waws] eine MySQL-Datenbank als verknüpf
 
 	![Verbindungszeichenfolge anzeigen](./media/create-mysql-db/shown-conn-string.png)
 
-> [AZURE.NOTE]Ihre Websiteanwendung greift über den Namen der Verbindungszeichenfolge auf Verbindungszeichenfolge zu. In .NET-Anwendungen stehen Verbindungszeichenfolgen im Objekt **connectionStrings** zur Verfügung. In anderen Programmiersprachen stehen Verbindungszeichenfolgen als Umgebungsvariablen zur Verfügung. Weitere Informationen finden Sie unter [Konfigurieren von Websites][configure].
+> [AZURE.NOTE] Ihre Websiteanwendung greift über den Namen der Verbindungszeichenfolge auf Verbindungszeichenfolge zu. In .NET-Anwendungen stehen Verbindungszeichenfolgen im Objekt **connectionStrings** zur Verfügung. In anderen Programmiersprachen stehen Verbindungszeichenfolgen als Umgebungsvariablen zur Verfügung. Weitere Informationen finden Sie unter [Konfigurieren von Websites][configure].
 
 [ClearDB]: http://www.cleardb.com/
 [waws]: /documentation/services/web-sites/
 [Azure Store]: ../articles/store.md
 [portal]: http://manage.windowsazure.com
-[configure]: ../article/app-service-web/web-sites-configure.md
+[configure]: ../articles/app-service-web/web-sites-configure.md
 
-<!---HONumber=Oct15_HO3-->

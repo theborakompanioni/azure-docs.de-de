@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="02/16/2016"
+      ms.date="05/03/2016"
       ms.author="markvi"/>
 
 # Verwalten von Anwendungen mit Azure Active Directory
@@ -135,4 +135,4 @@ Erste Schritte in die Anwendungsintegration in Azure AD finden Sie unter [Erste 
 
 [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

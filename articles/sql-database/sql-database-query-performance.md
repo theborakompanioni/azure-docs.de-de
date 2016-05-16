@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="02/03/2016"
+   ms.date="04/28/2016"
    ms.author="sstein"/>
 
 # Query Performance Insight für Azure SQL-Datenbank
@@ -27,7 +27,7 @@ Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine a
 
 ## Voraussetzungen
 
-- Query Performance Insight ist nur unter Azure SQL-Datenbank V12 verfügbar.
+- Query Performance Insight ist nur unter Azure SQL-Datenbank V12 verfügbar.
 - Query Performance Insight erfordert, dass der [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx) für Ihre Datenbank ausgeführt wird. Das Portal fordert Sie auf, den Abfragespeicher zu aktivieren, falls noch nicht erfolgt.
 
  
@@ -46,10 +46,10 @@ Query Performance Insight ist einfach zu verwenden:
 
 - Überprüfen Sie die Liste mit den Abfragen, die den höchsten Ressourcenverbrauch aufweisen. 
 - Wählen Sie eine einzelne Abfrage aus, um die Details anzuzeigen.
-- Klicken Sie auf **Einstellungen**, um die Anzeige von Daten anzupassen oder einen anderen Zeitraum anzuzeigen.
-- Öffnen Sie den [Indexratgeber](sql-database-index-advisor.md), und überprüfen Sie, ob alle Empfehlungen verfügbar sind.
-
-
+- Öffnen Sie den [Leistungsratgeber](sql-database-index-advisor.md), und überprüfen Sie, ob Empfehlungen verfügbar sind.
+- Vergrößern Sie die Ansicht, um ausführlichere Informationen abzurufen.
+- 
+    ![Leistungsdashboard](./media/sql-database-query-performance/performance.png)
 
 > [AZURE.NOTE] Einige Stunden mit Daten müssen von Query Store für SQL-Datenbank erfasst werden, um Query Performance Insight-Funktionen bereitstellen zu können. Wenn die Datenbank keine Aktivität aufweist oder Query Store während eines bestimmten Zeitraums nicht aktiv war, sind die Diagramme beim Anzeigen dieses Zeitraums leer. Sie können Query Store jederzeit aktivieren, wenn die Anwendung nicht ausgeführt wird.
 
@@ -59,13 +59,13 @@ Query Performance Insight ist einfach zu verwenden:
 
 Gehen Sie im [Portal](http://portal.azure.com) wie folgt vor:
 
-1. Navigieren Sie zu einer SQL-Datenbank, und klicken Sie auf **Query Performance Insight**. 
+1. Navigieren Sie zu einer SQL-Datenbank, und klicken Sie auf **Alle Einstellungen** > **Leistung** > **Abfragen**. 
 
     ![Query Performance Insight][1]
 
     Die Ansicht der Abfragen mit höchstem Verbrauch wird geöffnet, und die Abfragen mit der höchsten CPU-Auslastung werden aufgelistet.
 
-1. Klicken Sie an verschiedenen Stellen auf das Diagramm, um die Details anzuzeigen.<br>In der obersten Zeile wird der Gesamtwert für DTU% für die Datenbank angezeigt, und die Balken zeigen die Werte für die CPU%-Auslastung der ausgewählten Abfragen während des ausgewählten Intervalls an (wenn z. B. **Letzte Woche** ausgewählt ist, entspricht jeder ausgewählte Balken 1 Tag).
+1. Klicken Sie an verschiedenen Stellen auf das Diagramm, um die Details anzuzeigen.<br>In der obersten Zeile wird der Gesamtwert für DTU% für die Datenbank angezeigt, und die Balken zeigen die Werte für die CPU%-Auslastung der ausgewählten Abfragen während des ausgewählten Intervalls an (wenn z.B. **Letzte Woche** ausgewählt ist, entspricht jeder ausgewählte Balken 1 Tag).
 
     ![Abfragen mit höchstem Verbrauch][2]
 
@@ -79,7 +79,7 @@ Gehen Sie im [Portal](http://portal.azure.com) wie folgt vor:
 	Sie können einzelne Abfragen aktivieren oder deaktivieren, um sie in das Diagramm einzubeziehen oder davon auszuschließen.
 
 
-1. Wenn Ihre Daten veraltet ist, klicken Sie auf die Schaltfläche **Aktualisieren**.
+1. Wenn Ihre Daten veraltet sind, klicken Sie auf die Schaltfläche **Aktualisieren**.
 1. Optional können Sie auf **Einstellungen** klicken und anpassen, wie die CPU-Auslastungsdaten angezeigt werden, oder einen anderen Zeitraum auswählen.
 
     ![Einstellungen](./media/sql-database-query-performance/settings.png)
@@ -120,15 +120,15 @@ Diese Meldungen werden in der Regel angezeigt, wenn der Abfragespeicher keine ne
 Es gibt zwei Arten von Aufbewahrungsrichtlinien:
 
 - Größenbasiert – bei Festlegung auf AUTO werden Daten automatisch bereinigt, wenn die maximale Größe fast erreicht ist.
-- Zeitbasiert – standardmäßig legen wir ein Limit von 30 Tagen fest, d. h., wenn der Speicherplatz im Abfragespeicher zur Neige geht, werden Abfragedaten gelöscht, die älter als 30 Tage sind. 
+- Zeitbasiert – standardmäßig legen wir ein Limit von 30 Tagen fest, d. h., wenn der Speicherplatz im Abfragespeicher zur Neige geht, werden Abfragedaten gelöscht, die älter als 30 Tage sind. 
 
 Die Erfassungsrichtlinie sollte festgelegt werden auf:
 
-- **Alle** – alle Abfragen werden aufgezeichnet. Dies ist die Standardoption.
-- **Auto** – seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer werden ignoriert. Die Schwellenwerte für Ausführungszahl, Erstellungs- und Ausführungsdauer werden intern bestimmt.
-- **Keine** – der Abfragespeicher beendet die Erfassung neuer Abfragen.
+- **Alle**: Alle Abfragen werden aufgezeichnet. Dies ist die Standardoption.
+- **Auto**: Seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer werden ignoriert. Die Schwellenwerte für Ausführungszahl, Erstellungs- und Ausführungsdauer werden intern bestimmt.
+- **Keine**: Der Abfragespeicher beendet die Erfassung neuer Abfragen.
 	
-Sie sollten alle Richtlinien auf AUTO setzen und die Bereinigungsrichtlinie auf 30 Tage:
+Sie sollten alle Richtlinien auf AUTO setzen und die Bereinigungsrichtlinie auf 30 Tage:
 
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (SIZE_BASED_CLEANUP_MODE = AUTO);
@@ -158,11 +158,9 @@ Dank Query Performance Insight können Sie die Auswirkungen der Abfragen-Workloa
 
 ## Nächste Schritte
 
-Datenbankworkloads sind dynamisch und ändern sich ständig. Überwachen Sie Ihre Abfragen, und passen Sie sie weiter an, um die Leistung zu optimieren.
+Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie auf dem Blatt **Query Performance Insight** auf [Leistungsratgeber](sql-database-index-advisor.md).
 
-Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie im Blatt **Query Performance Insight** auf [Indexratgeber](sql-database-index-advisor.md).
-
-![Index Advisor](./media/sql-database-query-performance/ia.png)
+![Leistungsratgeber](./media/sql-database-query-performance/ia.png)
 
 
 <!--Image references-->
@@ -170,4 +168,4 @@ Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erh
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

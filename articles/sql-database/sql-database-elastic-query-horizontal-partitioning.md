@@ -23,7 +23,7 @@ Horizontal partitionierte Datenbanken verteilen Zeilen auf einer horizontal hoch
 
 Wie Sie einen Schnellstart durchführen, erfahren Sie unter [Reporting across scaled-out cloud databases](sql-database-elastic-query-getting-started.md) (Horizontal hochskalierte Clouddatenbanken übergreifende Berichte).
 
-Informationen für nicht partitionierte Datenbanken finden Sie unter [Queries across sharded cloud databases (vertically partitioned)](sql-database-elastic-query-vertical-partitioning.md) (Partitionierte Clouddatenbanken [vertikal partitioniert] übergreifende Abfragen).
+Informationen zu nicht partitionierten Datenbanken finden Sie unter [Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg](sql-database-elastic-query-vertical-partitioning.md).
 
  
 ## Voraussetzungen
@@ -173,7 +173,7 @@ Die folgende Abfrage führt eine Verknüpfung in drei Richtungen zwischen Lagern
  
 ## Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute\_remote
 
-Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur hat den Namen **sp\_execute\_remote** und kann verwendet werden, um remote gespeicherte Prozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
+Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur hat den Namen [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um remote gespeicherte Prozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
 
 * Datenquellenname (nvarchar): Der Name der externen Datenquelle vom Typ RDBMS. 
 * Abfrage (nvarchar): Die T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird. 
@@ -208,4 +208,4 @@ Verwenden Sie herkömmliche SQL Server-Verbindungszeichenfolgen, um Ihre Anwendu
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

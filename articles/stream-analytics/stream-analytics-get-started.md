@@ -14,21 +14,23 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="02/04/2016"
+	ms.date="05/03/2016"
 	ms.author="jeffstok" />
 
 
 
 # Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit
 
-Erfahren Sie, wie Sie mit Azure Stream Analytics eine End-to-End-Lösung zur Betrugserkennung in Echtzeit erstellen können. Binden Sie Ereignisse in Azure Event Hubs ein, schreiben Sie Stream Analytics-Abfragen für das Erfassen von Daten oder für Warnungen, und senden Sie das Ergebnis an eine Ausgabesenke, um in Echtzeit einen Dateneinblick zu erhalten. Anomalienerkennung in Echtzeit für Telekommunikation wird abgedeckt, aber die Beispieltechnik eignet sich gleichermaßen für andere Arten von Betrugserkennung, z. B. Kreditkarten- oder Identitätsdiebstahlszenarien.
+Erfahren Sie, wie Sie mit Azure Stream Analytics eine End-to-End-Lösung zur Betrugserkennung in Echtzeit erstellen können. Binden Sie Ereignisse in Azure Event Hubs ein, schreiben Sie Stream Analytics-Abfragen für das Erfassen von Daten oder für Warnungen, und senden Sie das Ergebnis an eine Ausgabesenke, um in Echtzeit einen Dateneinblick zu erhalten. Anomalienerkennung in Echtzeit für Telekommunikation wird abgedeckt, aber die Beispieltechnik eignet sich gleichermaßen für andere Arten von Betrugserkennung, z. B. Kreditkarten- oder Identitätsdiebstahlszenarien.
 
 Stream Analytics ist ein vollständig verwalteter Dienst, der eine geringe Latenz, Hochverfügbarkeit und eine skalierbare komplexe Ereignisverarbeitung für das Streaming von Daten in der Cloud bietet. Weitere Informationen finden Sie unter [Einführung in Azure Stream Analytics](stream-analytics-introduction.md).
 
 
 ## Szenario: Telekommunikation und SIM-Betrugserkennung in Echtzeit
 
-Ein Telekommunikationsunternehmen hat eine große Datenmenge durch eingehende Anrufe. Im Hinblick auf diese Daten ist für das Unternehmen Folgendes wichtig: * Die Daten sollen auf eine verwaltbare Menge reduziert werden, und es sollen Erkenntnisse über die Kundennutzung anhand der geografischen Regionen und der Zeit gewonnen werden. * Zudem möchte das Unternehmen SIM-Betrug (mehrere mehr oder weniger gleichzeitige Anrufe derselben Person von geografisch unterschiedlichen Standorten) in Echtzeit erkennen, damit es problemlos reagieren und die Kunden benachrichtigen oder den Dienst einstellen kann.
+Ein Telekommunikationsunternehmen hat eine große Datenmenge durch eingehende Anrufe. Das Unternehmen möchte an den Daten folgende Aktionen durchführen:
+* Reduzieren dieser Daten auf eine verwaltbare Menge und Gewinnen von Erkenntnissen über die Kundennutzung anhand der geografischen Regionen und über einen Zeitraum.
+* Erkennen von SIM-Betrug (mehrere mehr oder weniger gleichzeitige Anrufe derselben Person von geografisch unterschiedlichen Standorten) in Echtzeit, um problemlos reagieren und die Kunden benachrichtigen oder den Dienst einstellen zu können.
 
 In typischen Szenarien des Internet der Dinge (IoT) werden unzählige Telemetrie- oder Sensordaten generiert, die die Kunden erfassen möchten oder über die bei Abweichungen Benachrichtigungen in Echtzeit erstellt werden sollen.
 
@@ -58,12 +60,12 @@ So erstellen Sie ein Event Hub
 Wir haben eine Clientanwendung bereitgestellt, die Beispielmetadaten für eingehende Anrufe generiert und diese per Push an den Event Hub übermittelt. Gehen Sie folgendermaßen vor, um diese Anwendung einzurichten.
 
 1.	Herunterladen der Datei [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)
-2.	Ersetzen Sie die Werte Microsoft.ServiceBus.ConnectionString und EventHubName in **telcodatagen.exe.config** durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs.
+2.	Ersetzen Sie die Werte „Microsoft.ServiceBus.ConnectionString“ und „EventHubName“ in **telcodatagen.exe.config** durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs.
 3.	Starten Sie die Anwendung. Die Nutzung lautet wie folgt:
 
    telcodatagen.exe [#NumCDRsPerHour] [SIM-Kartenbetrugswahrscheinlichkeit] [#DurationHours]
 
-Im folgenden Beispiel werden im Lauf von zwei Stunden 1000 Ereignisse mit einer Betrugswahrscheinlichkeit von 20 Prozent generiert:
+Im folgenden Beispiel werden im Lauf von zwei Stunden 1000 Ereignisse mit einer Betrugswahrscheinlichkeit von 20 Prozent generiert:
 
     telcodatagen.exe 1000 .2 2
 
@@ -105,7 +107,7 @@ Nun, da wir einen Datenstrom von Telekommunikationsereignissen haben, können wi
 3.	Wählen Sie **Event Hub**, und klicken Sie dann mit der rechten Maustaste.
 4.	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
 
-	* **Input Alias**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, z. B. *CallStream*. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden.
+	* **Input Alias**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, z. B. *CallStream*. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden.
 	* **Event Hub**: Wenn der Event Hub, den Sie erstellt haben, sich in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
 
 	Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus anderem Abonnement verwenden**, und geben Sie manuell den **Service Bus-Namespace**, **Event Hub-Namen**, **Event Hub-Richtliniennamen**, **Event Hub-Richtlinienschlüssel** und die **Event Hub-Partitionsanzahl** ein.
@@ -257,4 +259,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

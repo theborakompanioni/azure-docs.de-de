@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/09/2016"
+   ms.date="04/26/2016"
    ms.author="nitinme"/>
 
 # Azure HDInsight-Dokumentationsrückstand
@@ -24,15 +24,7 @@ Auf dieser Seite werden die Artikel oder die Aktualisierungen von Artikeln aufge
 
 Bereich |Thema | Priority | Status | Zugewiesen zu | Angefordert von 
 ------------- | ------------- | -------------- | -------------- | --------------- | --------------
-Clustererstellung | Verwenden von Azure Data Factory für die Bereitstellung von HDInsight-Clustern | 2 | [Abgeschlossen](hdinsight-hadoop-create-linux-clusters-adf.md) | [@mumian](https://github.com/mumian) | - | 
-Automation | Aktualisieren des Artikels zum [Erstellen eines Spark-Clusters](hdinsight-apache-spark-jupyter-spark-sql.md) für die Verwendung einer ARM-Vorlage | 1 | [Abgeschlossen](hdinsight-apache-spark-jupyter-spark-sql.md#create-spark-cluster) | [@mumian](https://github.com/mumian) | - 
-Automation | Aktualisieren des Artikels zum [Erstellen eines Storm-Clusters und Ausführen von Storm-Starter-Beispielen](hdinsight-apache-storm-tutorial-get-started-linux.md) für die Verwendung einer ARM-Vorlage | 1 | [Abgeschlossen](hdinsight-apache-storm-tutorial-get-started-linux.md#create-a-storm-cluster) | [@mumian](https://github.com/mumian) | - 
-Automation | Aktualisieren des Artikels zum [Verwenden von Sqoop mit einem HDInsight-Cluster über SSH](hdinsight-use-sqoop-mac-linux.md) für die Verwendung einer ARM-Vorlage| 1 | [Abgeschlossen](hdinsight-use-sqoop.md#create-cluster-and-sql-database) | [@mumian](https://github.com/mumian) | -
-Automation | Aktualisieren des Artikels zum [Analysieren von Sensordaten mit Apache Storm-Clustern](hdinsight-storm-sensor-data-analysis.md) für die Verwendung einer ARM-Vorlage | 2 | Ausstehend | [@mumian](https://github.com/mumian) | - 
-Storage | Artikel zu WASB und Data Lake-Speicheroptionen | 2 | Ausstehend | [@mumian](https://github.com/mumian) | - 
-Leistung | Richtlinien für die Leistungsoptimierung von MapReduce-Anwendungen | 1 | Ausstehend | [@blackmist](https://github.com/blackmist) | - 
-Leistung | Richtlinien für die Leistungsoptimierung bei Spark-Clustern |1 | Ausstehend | [@nitinme](https://github.com/nitinme) | - 
-Entwicklung | Nicht interaktive Authentifizierung mit HDInsight .NET-Anwendung |2| Schreiben | [@mumian](https://github.com/mumian) | [@matt1883](https://github.com/matt1883)
+Administration | Verwalten von HDInsight-Clustern mit .NET SDK | 1 | Schreiben| [@mumian](https://github.com/mumian) | - | Administration| Verwenden von Azure Data Factory für die Bereitstellung von HDInsight-Clustern | 2 | [Abgeschlossen](hdinsight-hadoop-create-linux-clusters-adf.md) | [@mumian](https://github.com/mumian) | - | Automation | Aktualisieren des Artikels zum [Erstellen eines Spark-Clusters](hdinsight-apache-spark-jupyter-spark-sql.md) für die Verwendung einer ARM-Vorlage | 1 | [Abgeschlossen](hdinsight-apache-spark-jupyter-spark-sql.md#create-spark-cluster) | [@mumian](https://github.com/mumian) | - Automation | Aktualisieren des Artikels zum [Erstellen eines Storm-Clusters und Ausführen von Storm-Starter-Beispielen](hdinsight-apache-storm-tutorial-get-started-linux.md) für die Verwendung einer ARM-Vorlage | 1 | [Abgeschlossen](hdinsight-apache-storm-tutorial-get-started-linux.md#create-a-storm-cluster) | [@mumian](https://github.com/mumian) | - Automation | Aktualisieren des Artikels zum [Verwenden von Sqoop mit einem HDInsight-Cluster über SSH](hdinsight-use-sqoop-mac-linux.md) für die Verwendung einer ARM-Vorlage| 1 | [Abgeschlossen](hdinsight-use-sqoop.md#create-cluster-and-sql-database) | [@mumian](https://github.com/mumian) | - Automation | Aktualisieren des Artikels zum [Analysieren von Sensordaten mit Apache Storm-Clustern](hdinsight-storm-sensor-data-analysis.md) für die Verwendung einer ARM-Vorlage | 2 | Ausstehend | [@mumian](https://github.com/mumian) | - Storage | Artikel zu WASB und Data Lake-Speicheroptionen | 2 | Ausstehend | [@mumian](https://github.com/mumian) | - Leistung | Richtlinien für die Leistungsoptimierung von MapReduce-Anwendungen | 1 | Ausstehend | [@blackmist](https://github.com/blackmist) | - Leistung | Richtlinien für die Leistungsoptimierung bei Spark-Clustern |1 | Ausstehend | [@nitinme](https://github.com/nitinme) | - Entwicklung | Curl and Rest-API-Beispiel zur Verwendung von Sqoop | 2 | Ausstehend | [@mumian](https://github.com/mumian) | Jon Kennerly | Entwicklung| [Nicht interaktive Authentifizierung mit HDInsight .NET-Anwendung](hdinsight-create-non-interactive-authentication-dotnet-applications) |2| [Abgeschlossen](hdinsight-create-non-interactive-authentication-dotnet-applications.md) | [@mumian](https://github.com/mumian) | [@matt1883](https://github.com/matt1883)
 
 
 ## So senden Sie Feedback bezüglich des Rückstands
@@ -41,4 +33,4 @@ Für das Senden von Feedback bezüglich des Rückstands stehen mehrere Optionen 
 * Fügen Sie unten einen Kommentar hinzu.
 * Senden Sie im [Azure-Inhaltsrepository](https://github.com/Azure/azure-content/blob/master/articles/hdinsight/hdinsight-documentation-backlog.md) eine Pull-Anforderung für dieses Dokument.
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

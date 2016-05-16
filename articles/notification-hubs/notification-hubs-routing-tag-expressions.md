@@ -33,7 +33,7 @@ Die einzige Möglichkeit zum Verwenden bestimmter Benachrichtigungsregistrierung
 
 ## Tags
 
-Ein Tag kann eine beliebige bis zu 120 Zeichen umfassende Zeichenfolge mit alphanumerischen und den folgenden nicht-alphanumerischen Zeichen sein: „\_“, „@“, „#“, „.“, „:“, „-“. Das folgende Beispiel zeigt eine Anwendung, von der Sie Popupbenachrichtigungen zu bestimmten Musikgruppen empfangen können. In diesem Szenario besteht eine einfache Möglichkeit zum Weiterleiten von Benachrichtigungen im Kennzeichnen von Registrierungen mit Tags, die die verschiedenen Gruppen angeben. Dies ist in der folgenden Abbildung dargestellt.
+Ein Tag kann eine beliebige bis zu 120 Zeichen umfassende Zeichenfolge mit alphanumerischen und den folgenden nicht-alphanumerischen Zeichen sein: „\_“, „@“, „#“, „.“, „:“, „-“. Das folgende Beispiel zeigt eine Anwendung, von der Sie Popupbenachrichtigungen zu bestimmten Musikgruppen empfangen können. In diesem Szenario besteht eine einfache Möglichkeit zum Weiterleiten von Benachrichtigungen im Kennzeichnen von Registrierungen mit Tags, die die verschiedenen Gruppen angeben. Dies ist in der folgenden Abbildung dargestellt.
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -49,7 +49,7 @@ Sie können Benachrichtigungen mithilfe der Methoden zum Senden von Benachrichti
 	// Windows 8.1 / Windows Phone 8.1
 	var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
 	"You requested a Beatles notification</text></binding></visual></toast>";
-	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Beatles);
+	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Beatles");
 
 	// Windows 10
 	toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
@@ -67,7 +67,7 @@ Tags müssen nicht vorab bereitgestellt werden und können sich auf mehrere App-
 
 In dieser Abbildung ist Alice an Nachrichten über die Beatles interessiert, und Bob ist an Nachrichten über die Wailers interessiert. Bob ist außerdem an Charlies Kommentaren interessiert, und Charlie ist an den Wailers interessiert. Wenn eine Benachrichtigung für Charlies Kommentar zu den Beatles gesendet wird, empfangen Alice und Bob diese.
 
-Es können zwar mehrere Konzepte in Tags codiert werden (z. B. „Band\_Beatles“ oder „Folgt\_Charlie“), Tags sind jedoch einfache Zeichenfolgen und keine Eigenschaften mit Werten. Eine Registrierung wird nur auf das Vorhandensein oder Fehlen eines bestimmten Tags überprüft.
+Es können zwar mehrere Konzepte in Tags codiert werden (z. B. „Band\_Beatles“ oder „Folgt\_Charlie“), Tags sind jedoch einfache Zeichenfolgen und keine Eigenschaften mit Werten. Eine Registrierung wird nur auf das Vorhandensein oder Fehlen eines bestimmten Tags überprüft.
 
 Ein vollständiges schrittweises Tutorial zur Verwendung von Tags zum Senden an Interessengruppen finden Sie unter [Aktuelle Nachrichten](notification-hubs-windows-store-dotnet-send-breaking-news.md).
 
@@ -93,7 +93,7 @@ Beispiel: Eine Sportanwendung sendet eine Erinnerung an alle Benutzer in Boston 
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
 
-Tagausdrücke können alle boolesche Operatoren enthalten, z. B. AND (&&), OR (||) oder NOT (!). Sie können auch Klammern enthalten. Tagausdrücke sind auf 20 Tags beschränkt, wenn sie nur OR enthalten. Andernfalls sind sie auf 6 Tags beschränkt.
+Tagausdrücke können alle boolesche Operatoren enthalten, z. B. AND (&&), OR (||) oder NOT (!). Sie können auch Klammern enthalten. Tagausdrücke sind auf 20 Tags beschränkt, wenn sie nur OR enthalten. Andernfalls sind sie auf 6 Tags beschränkt.
 
 Es folgt ein Beispiel für das Senden von Benachrichtigungen mit Tagausdrücken mithilfe des SDK.
 
@@ -112,4 +112,4 @@ Es folgt ein Beispiel für das Senden von Benachrichtigungen mit Tagausdrücken 
 	"You want info on the Red Socks</text></binding></visual></toast>";
 	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

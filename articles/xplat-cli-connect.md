@@ -31,7 +31,7 @@ Es gibt zwei Möglichkeiten, über die Azure-Befehlszeilenschnittstelle eine Ver
 
 Hintergrundinformationen zu anderen Kontoidentitäten und zu Azure-Abonnements finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
 
-## Verwenden von „azure login“ für die interaktive Authentifizierung über ein Webportal
+## Verwenden der Azure-Anmeldung für die interaktive Authentifizierung
 
 Verwenden Sie den Befehl `azure login` – ohne Argumente – für die interaktive Authentifizierung mit:
 
@@ -54,7 +54,7 @@ Kopieren Sie den oben angegebenen Code, und öffnen Sie einen Browser für http:
 	+
 	info:    login command OK
 
-## Verwenden von „azure login“ mit dem Benutzernamen und dem Kennwort eines Organisationskontos
+## Verwenden der Azure-Anmeldung mit einem Benutzernamen und einem Kennwort
 
 
 Verwenden Sie den Befehl `azure login` mit einem Parameter für den Benutzernamen oder mit einem Benutzernamen und einem Kennwort für die Authentifizierung, wenn Sie ein Geschäfts-oder Schulkonto verwenden möchten, für das Multi-Factor Authentication nicht erforderlich ist. Im folgenden Beispiel wird der Benutzername eines Organisationskontos übergeben:
@@ -76,7 +76,7 @@ Wenn Sie sich das erste Mal mit diesen Anmeldeinformationen anmelden, werden Sie
 
 Wenn Sie einen Dienstprinzipal für eine Active Directory-Anwendung erstellt haben und der Dienstprinzipal über Berechtigungen für Ihr Abonnement verfügt, können Sie den Befehl `azure login` verwenden, um den Dienstprinzipal zu authentifizieren. Je nach Szenario könnten Sie die Anmeldeinformationen des Dienstprinzipals als explizite Parameter des Befehls `azure login` oder über ein Skript der Befehlszeilenschnittstelle bzw. über Anwendungscode angeben. Sie können auch ein Zertifikat verwenden, um den Dienstprinzipal in Automatisierungsszenarien nicht interaktiv zu authentifizieren. Details und Beispiele finden Sie unter [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](resource-group-authenticate-service-principal.md).
 
-## Verwenden der Methode mit der Veröffentlichungseinstellungendatei
+## Verwenden einer Datei mit Veröffentlichungseinstellungen
 
 Wenn Sie nur die Befehle der Befehlszeilenschnittstelle im Azure Service Management-Modus benötigen, können Sie die Verbindung mithilfe einer Datei mit Veröffentlichungseinstellungen herstellen.
 
@@ -122,13 +122,13 @@ Sobald Sie mit Ihrem Azure-Abonnement verbunden sind, können Sie beginnen, die 
 
 Die Azure-Befehlszeilenschnittstelle bietet zwei Befehlsmodi für die Arbeit mit Azure-Ressourcen, die jeweils unterschiedliche Befehle aufweisen:
 
-* **Azure Resource Manager-Modus**: Für die Arbeit mit Azure-Ressourcen im Resource Manager-Bereitstellungsmodell. Führen Sie zum Festlegen dieses Modus `azure config mode arm` aus.
+* **Resource Manager-Modus**: Für die Arbeit mit Azure-Ressourcen im Resource Manager-Bereitstellungsmodell. Führen Sie zum Festlegen dieses Modus `azure config mode arm` aus.
 
-* **Azure Service Management-Modus**: Für die Arbeit mit Azure-Ressourcen im klassischen Bereitstellungsmodell. Führen Sie zum Festlegen dieses Modus `azure config mode asm` aus.
+* **Dienstverwaltungsmodus**: Für die Arbeit mit Azure-Ressourcen im klassischen Bereitstellungsmodell. Führen Sie zum Festlegen dieses Modus `azure config mode asm` aus.
 
 Nach der Installation wird die Befehlszeilenschnittstelle im Service Management-Modus ausgeführt.
 
->[AZURE.NOTE]Der Azure-Ressourcen-Manager-Modus und der Azure-Dienstverwaltungsmodus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
+>[AZURE.NOTE]Der Resource Manager-Modus und der Dienstverwaltungsmodus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
 
 ## Speichern der Einstellungen für die Befehlszeilenschnittstelle
 
@@ -147,10 +147,10 @@ Verwenden Sie den folgenden Befehl, um sich abzumelden:
 Wenn die mit dem Konto verknüpften Abonnements nur über Active Directory authentifiziert wurden, werden bei der Abmeldung die Abonnementinformationen aus dem lokalen Profil gelöscht. Wenn jedoch auch eine Datei mit Veröffentlichungseinstellungen für die Abonnements importiert wurde, dann werden durch die Abmeldung nur die auf Active Directory bezogenen Informationen aus dem lokalen Profil gelöscht.
 ## Nächste Schritte
 
-* Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Azure Resource Manager-Modus](./virtual-machines/azure-cli-arm-commands.md) und [Befehle der Azure-Befehlszeilenschnittstelle im Azure Service Management-Modus](virtual-machines-command-line-tools.md).
+* Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Resource Manager-Modus](./virtual-machines/azure-cli-arm-commands.md) und unter [Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](virtual-machines-command-line-tools.md).
 
 * Wenn Sie weitere Informationen zur Azure-Befehlszeilenschnittstelle erhalten, den Quellcode herunterladen, Probleme melden oder etwas zum Projekt beitragen möchten, besuchen Sie die Webseite [GitHub repository for the Azure CLI](https://github.com/azure/azure-xplat-cli).
 
 * Wenn Sie Probleme bei der Verwendung der Azure-Befehlszeilenschnittstelle oder Azure haben, besuchen Sie die [Azure-Foren](http://social.msdn.microsoft.com/Forums/windowsazure/home).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

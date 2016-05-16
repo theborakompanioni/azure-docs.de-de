@@ -1,11 +1,11 @@
 <properties 
 	pageTitle="Problembehandlung von Web-Apps in Azure App Service in Visual Studio" 
-	description="Erfahren Sie mehr über die Problembehandlung für eine Azure-Web-App mithilfe von Remotedebugging-, Ablaufverfolgungs- und Protokollierungstools, die in Visual Studio 2013 integriert sind." 
+	description="Erfahren Sie mehr über die Problembehandlung für eine Azure-Web-App mithilfe von Remotedebugging-, Ablaufverfolgungs- und Protokollierungstools, die in Visual Studio 2013 integriert sind." 
 	services="app-service" 
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="04/28/2016" 
 	ms.author="tdykstra"/>
 
 # Problembehandlung von Web-Apps in Azure App Service in Visual Studio
 
 ## Übersicht
 
-In diesem Lernprogramm lernen Sie die Visual Studio-Tools zum Debuggen von Web-Apps kennen, während diese in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) ausgeführt werden. Sie führen die App entweder remote im [Debugmodus](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) aus oder arbeiten mit Anwendungs- und Webserverprotokollen.
+In diesem Tutorial lernen Sie die Visual Studio-Tools zum Debuggen von Web-Apps in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) kennen. Sie führen die App entweder remote im [Debugmodus](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) aus oder arbeiten mit Anwendungs- und Webserverprotokollen.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,17 +41,17 @@ Dieses Lernprogramm verwendet die Entwicklungsumgebung, das Webprojekt und die A
 
 Die Codebeispiele in diesem Lernprogramm stammen aus einer C# MVC-Webanwendung. Die Prozeduren gelten jedoch auch für die Problembehandlung in Visual Basic- und Web Forms-Anwendungen.
 
-Zum Remotedebuggen benötigen Sie Visual Studio 2013 oder Visual Studio 2012 mit Update 4. Die Remote-Debugging- und **Server-Explorer**-Funktionen für WebJobs erfordern [Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) oder höher. Die weiteren im Lernprogramm beschriebenen Features funktionieren auch unter Visual Studio 2013 Express für das Web und Visual Studio 2012 Express für das Web.
+Dieses Tutorial setzt voraus, dass Sie Visual Studio 2015 oder 2013 verwenden. Wenn Sie Visual Studio 2013 verwenden, ist für die WebJobs-Features [Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) oder höher erforderlich.
 
 Die Streamingprotokoll-Funktion funktioniert nur für Anwendungen, die das .NET Framework 4 oder später verwenden.
 
 ## <a name="sitemanagement"></a>Web-App-Konfiguration und -Verwaltung
 
-Visual Studio bietet Zugriff auf einen Teil der Web-App-Verwaltungsfunktionen und Konfigurationseinstellungen, die im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) verfügbar sind. In diesem Abschnitt lernen Sie die verfügbaren Optionen kennen.
+Visual Studio bietet Zugriff auf einen Teil der Web-App-Verwaltungsfunktionen und Konfigurationseinstellungen, die im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) verfügbar sind. In diesem Abschnitt lernen Sie die Optionen kennen, die bei Verwendung des **Server-Explorers** verfügbar sind. Um die neuesten Azure-Integrationsfeatures kennen zu lernen, probieren Sie auch den **Cloud-Explorer** aus. Sie können beide Fenster über das Menü **Ansicht** öffnen.
 
 1. Falls Sie noch nicht mit Visual Studio in Azure angemeldet sind, klicken Sie auf die Schaltfläche **Mit Azure verbinden** im **Server-Explorer**.
 
-	Als Alternative können Sie ein Verwaltungszertifikat installieren, das den Zugriff auf Ihr Konto ermöglicht. Falls Sie ein Zertifikat installieren möchten, klicken Sie mit der rechten Maustaste auf den Knoten **Azure** im **Server-Explorer** und wählen Sie im Kontextmenü **Abonnements verwalten** aus. Klicken Sie im Dialogfeld **Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf **Importieren**. Befolgen Sie die Anweisungen zum Herunterladen und Importieren einer Abonnementdatei (auch *.publishsettings*-Datei genannt) für Ihr Azure-Konto.
+	Als Alternative können Sie ein Verwaltungszertifikat installieren, das den Zugriff auf Ihr Konto ermöglicht. Falls Sie ein Zertifikat installieren möchten, klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Knoten **Azure**, und wählen Sie im Kontextmenü **Abonnements verwalten und filtern** aus. Klicken Sie im Dialogfeld **Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf **Importieren**. Befolgen Sie die Anweisungen zum Herunterladen und Importieren einer Abonnementdatei (auch *.publishsettings*-Datei genannt) für Ihr Azure-Konto.
 
 	> [AZURE.NOTE]
 	Wenn Sie eine Abonnementdatei herunterladen, sollten Sie diese in einem Ordner außerhalb Ihrer Quellcodeverzeichnisse speichern (beispielsweise im Ordner "Downloads") und nach Abschluss des Importvorgangs löschen. Böswillige Benutzer, die Zugriff auf die Abonnementdatei erlangen, können Ihre Azure-Services bearbeiten, erstellen und löschen.
@@ -72,7 +72,7 @@ Visual Studio bietet Zugriff auf einen Teil der Web-App-Verwaltungsfunktionen un
    
 	Weitere Informationen zu den Feldern für App-Einstellungen und Verbindungszeichenfolgen in diesem Fenster finden Sie unter [Azure-Web-Apps: Funktionsweise von Anwendungs- und Verbindungszeichenfolgen](http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx).
 
-	Falls Sie eine Web-App-Verwaltungsaufgabe ausführen möchten, die in diesem Fenster nicht ausgeführt werden kann, klicken Sie auf **Im Verwaltungsportal öffnen**, um ein Browserfenster für das klassische Azure-Portal zu öffnen. Weitere Informationen finden Sie unter [Konfigurieren von Web-Apps](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig).
+	Falls Sie eine Web-App-Verwaltungsaufgabe ausführen möchten, die in diesem Fenster nicht ausgeführt werden kann, klicken Sie auf **Im Verwaltungsportal öffnen** klicken, um ein Browserfenster für das Azure-Portal zu öffnen.
 
 ## <a name="remoteview"></a>Zugreifen auf Web-App-Dateien im Server-Explorer
 
@@ -149,31 +149,13 @@ Dieser Abschnitt zeigt, wie Sie das in [Erste Schritte mit Microsoft Azure und A
 
 4. Nachdem die Bereitstellung abgeschlossen ist und Ihr Browser die Azure-URL Ihrer Web-App öffnet, schließen Sie den Browser.
 
-5. Für Visual Studio 2013: Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf Ihre Web-App, und klicken Sie dann auf **Debugger anfügen**.
+5. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf Ihre Web-App, und klicken Sie dann auf **Debugger anfügen**.
 
 	![Debugger anfügen](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
 	Der Browser öffnet automatisch Ihre Startseite in Azure. Möglicherweise müssen Sie ca. 20 Sekunden warten, während Azure die den Server zum Debuggen einrichtet. Diese Verzögerung tritt nur bei der ersten Ausführung einer Web-App im Debugmodus auf. Bei weiteren Ausführungen in den folgenden 48 Stunden tritt keine Verzögerung auf.
 
-6. Für Visual Studio 2012 mit Update 4 oder höher:<a id="vs2012"></a>
-
-	* Navigieren Sie im klassischen Azure-Portal zu **Einstellungen > Anwendungseinstellungen** für Ihre Web-App, und scrollen Sie nach unten zum Abschnitt **Debugging**.
-
-	* Stellen Sie** Remotedebuggen** auf **Ein**, und stellen Sie **Remote Visual Studio-Version** auf **2012**.
-
-	* Klicken Sie im **Debug**-Menü in Visual Studio auf **An den Prozess anhängen**.
-
-	* Geben Sie in das Feld **Qualifizierer** die URL Ihrer Web-App ohne das `http://`-Präfix ein.
-
-	* Wählen Sie **Prozesse aller Benutzer anzeigen** aus.
-
-	* Wenn Sie zur Eingabe der Anmeldeinformationen aufgefordert werden, geben Sie den Benutzernamen mit dem zugehörigen Kennwort eines Benutzers ein, der die notwendigen Berechtigungen zum Bereitstellen von Inhalten in der Web-App hat. Sie erhalten diese Anmeldeinformationen, indem Sie die Dashboard-Registerkarte für Ihre Web-App im klassischen Portal öffnen und auf **Veröffentlichungsprofil herunterladen** klicken. Wenn Sie die Datei in einem Text-Editor öffnen, finden Sie Benutzername und Passwort nach den ersten Vorkommnissen von **userName=** und **userPWD=**.
-
-	* Wenn die Prozesse in der Tabelle **Verfügbare Prozesse** angezeigt werden, wählen Sie **w3wp.exe** aus und klicken Sie auf **Anhängen**.
-
-	* Öffnen Sie einen Browser mit der URL Ihrer Web-App.
-
-	Möglicherweise müssen Sie ca. 20 Sekunden warten, während Azure die den Server zum Debuggen einrichtet. Diese Verzögerung tritt nur bei der ersten Ausführung einer Web-App im Debugmodus auf. Bei weiteren Ausführungen in den folgenden 48 Stunden tritt keine Verzögerung auf.
+	**Hinweis:** Wenn beim Starten des Debuggers Probleme auftreten, versuchen Sie es über den **Cloud-Explorer** und nicht über den **Server-Explorer**.
 
 6. Klicken Sie im Menü auf **Info**.
 
@@ -195,7 +177,11 @@ Dieser Abschnitt zeigt, wie Sie das in [Erste Schritte mit Microsoft Azure und A
 
 ## <a name="remotedebugwj"></a>Remotedebuggen von WebJobs
 
-Dieser Abschnitt zeigt, wie Sie das Projekt und die Web-App, die Sie in [Erste Schritte mit dem Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md) erstellen, remote debuggen können. Die in diesem Abschnitt dargestellten Funktionen sind nur in Visual Studio 2013 mit Update 4 oder höher verfügbar. Remotedebuggen funktioniert nur bei kontinuierlichen WebJobs. Geplante und bedarfsabhängige WebJobs unterstützen Debuggen nicht.
+Dieser Abschnitt zeigt, wie Sie das Projekt und die Web-App, die Sie in [Erste Schritte mit dem Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md) erstellen, remote debuggen können.
+
+Die in diesem Abschnitt dargestellten Funktionen sind nur in Visual Studio 2013 mit Update 4 oder höher verfügbar.
+
+Remotedebuggen funktioniert nur bei kontinuierlichen WebJobs. Geplante und bedarfsabhängige WebJobs unterstützen Debuggen nicht.
 
 1. Öffnen Sie das Webprojekt, das Sie in [Erste Schritte mit dem Azure WebJobs SDK][GetStartedWJ] erstellt haben.
 
@@ -299,49 +285,36 @@ Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unte
 
 ### Hinzufügen von Ablaufverfolgungs-Anweisungen zur Anwendung
 
-1. Öffnen Sie *Controllers\\HomeController.cs*, und ersetzen Sie den Inhalt der Datei durch den folgenden Code, um `Trace`-Anweisungen und eine `using`-Anweisung für `System.Diagnostics` hinzuzufügen:
+1. Öffnen Sie *Controllers\\HomeController.cs*, und ersetzen Sie die Methoden `Index`, `About`, und `Contact` durch den folgenden Code, um `Trace`-Anweisungen und eine `using`-Anweisung für `System.Diagnostics` hinzuzufügen:
 
-		using System;
-		using System.Collections.Generic;
-		using System.Configuration;
-		using System.Diagnostics;
-		using System.Linq;
-		using System.Web;
-		using System.Web.Configuration;
-		using System.Web.Mvc;
-		namespace MyExample.Controllers
+		public ActionResult Index()
 		{
-		    public class HomeController : Controller
-		    {
-		        public ActionResult Index()
-		        {
-		            Trace.WriteLine("Entering Index method");
-		            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-		            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-		            Trace.WriteLine("Leaving Index method");
-		            return View();
-		        }
-		
-		        public ActionResult About()
-		        {
-		            Trace.WriteLine("Entering About method");
-		            ViewBag.Message = "Your app description page.";
-		            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-		            Trace.WriteLine("Leaving About method");
-		            return View();
-		        }
-		
-		        public ActionResult Contact()
-		        {
-		            Trace.WriteLine("Entering Contact method");
-		            ViewBag.Message = "Your contact page.";
-		            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-		            Trace.WriteLine("Leaving Contact method");
-		            return View();
-		        }
-		    }
+		    Trace.WriteLine("Entering Index method");
+		    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+		    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+		    Trace.WriteLine("Leaving Index method");
+		    return View();
 		}
 		
+		public ActionResult About()
+		{
+		    Trace.WriteLine("Entering About method");
+		    ViewBag.Message = "Your app description page.";
+		    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+		    Trace.WriteLine("Leaving About method");
+		    return View();
+		}
+		
+		public ActionResult Contact()
+		{
+		    Trace.WriteLine("Entering Contact method");
+		    ViewBag.Message = "Your contact page.";
+		    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+		    Trace.WriteLine("Leaving Contact method");
+		    return View();
+		}		
+
+2. Fügen Sie oben in der Datei eine `using System.Diagnostics;`-Anweisung hinzu.
 				
 ### Lokale Anzeige der Ablaufverfolgungs-Ausgabe
 
@@ -476,9 +449,9 @@ Webserverprotokolle zeichnen sämtliche HTTP-Aktivitäten für die Web-App auf. 
 	![Webserverprotokolle im Ausgabefenster](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
 
 
-Bei der ersten Aktivierung der Webserverprotokolle in Visual Studio schreibt Azure die Protokolle standardmäßig in das Dateisystem. Alternativ können Sie im klassischen Portal angeben, dass die Webserverprotokolle in einen Blobcontainer in einem Speicherkonto geschrieben werden sollen. Weitere Informationen finden Sie im Abschnitt **Diagnose** unter [Konfigurieren von Websites](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig).
+Bei der ersten Aktivierung der Webserverprotokolle in Visual Studio schreibt Azure die Protokolle standardmäßig in das Dateisystem. Alternativ können Sie im Azure-Portal angeben, dass die Webserverprotokolle in einen Blobcontainer in einem Speicherkonto geschrieben werden sollen.
 
-Wenn Sie die Webserverprotokollierung für ein Azure-Speicherkonto im klassischen Portal aktivieren und die Protokollierung anschließend in Visual Studio deaktivieren, werden die Speicherkontoeinstellungen bei der nächsten Aktivierung wiederhergestellt.
+Wenn Sie die Webserverprotokollierung für ein Azure-Speicherkonto im Portal aktivieren und die Protokollierung anschließend in Visual Studio deaktivieren, werden die Speicherkontoeinstellungen bei der nächsten Aktivierung wiederhergestellt.
 
 ## <a name="detailederrorlogs"></a>Anzeigen detaillierter Fehlermeldungsprotokolle
 
@@ -623,7 +596,7 @@ Speicherkonten bieten mehr Speicherplatz und längere Aufbewahrungszeiten für P
 
 Anhand der Protokolle für fehlgeschlagene Anforderungen können Sie im Detail herausfinden, wie IIS HTTP-Anforderungen bearbeitet, z. B. in Szenarien mit URL-Neuschreibung oder bei Authentifizierungsproblemen.
 
-Azure-Web-Apps verwenden die gleiche Funktion zum Verfolgen fehlgeschlagener Anforderungen, die in IIS 7.0 und höher verfügbar ist. Sie haben jedoch keinen Zugriff auf die IIS-Einstellungen, in denen festgelegt wird, welche Fehler protokolliert werden. Wenn Sie die Verfolgung fehlgeschlagener Anforderungen aktivieren, werden alle Fehler erfasst.
+Azure-Web-Apps verwenden die gleiche Funktion zum Verfolgen fehlgeschlagener Anforderungen, die in IIS 7.0 und höher verfügbar ist. Sie haben jedoch keinen Zugriff auf die IIS-Einstellungen, in denen festgelegt wird, welche Fehler protokolliert werden. Wenn Sie die Verfolgung fehlgeschlagener Anforderungen aktivieren, werden alle Fehler erfasst.
 
 Sie können die Protokolle für fehlgeschlagene Anforderungen in Visual Studio aktivieren, allerdings lassen sich diese Protokolle nicht in Visual Studio anzeigen. Diese Protokolle liegen in Form von XML-Dateien vor. Der Streamingprotokolldienst überwacht nur Dateien, die im Nur-Text-Modus lesbar sind: *.txt*-, *.html*- und *.log*-Dateien.
 
@@ -639,7 +612,7 @@ Sie können die Protokolle für fehlgeschlagene Anforderungen entweder direkt ü
 
 2. Klicken Sie in Visual Studio auf der Registerkarte **Konfiguration** im Fenster **Azure-Web-App** auf **Im Verwaltungsportal öffnen**.
 
-3. Klicken Sie im Azure-Portal (https://portal.azure.com) auf der Seite für Ihre Web-App auf **Einstellungen > Anmeldeinformationen für die Bereitstellung**, und geben Sie dann einen neuen Benutzernamen und ein neues Kennwort ein.
+3. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Einstellungen** für Ihre Web-App auf **Anmeldeinformationen für die Bereitstellung**, und geben Sie dann einen neuen Benutzernamen und ein neues Kennwort ein.
 
 	![Neuer FTP-Benutzername und neues Passwort](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
@@ -687,7 +660,7 @@ Sie haben gelernt, wie Visual Studio die Anzeige der Protokolle von Azure-Web-Ap
 Weitere Informationen zur Problembehandlung von Web-Apps in Azure App Service finden Sie in den folgenden Ressourcen:
 
 * [Überwachen von Web-Apps](/manage/services/web-sites/how-to-monitor-websites/)
-* [Untersuchen von Speicherlecks in Azure-Web-Apps mit Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Microsoft ALM-Blogbeiträge über Visual Studio-Funktionen für die Untersuchung von Problemen mit verwaltetem Speicher.
+* [Untersuchen von Speicherlecks in Azure-Web-Apps mit Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Microsoft ALM-Blogbeiträge über Visual Studio-Funktionen für die Untersuchung von Problemen mit verwaltetem Speicher.
 * [Onlinetools für Azure -Web-Apps, die Sie kennen sollten](/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Blogbeitrag von Amit Apple.
 
 Falls Sie spezifische Fragen zur Problembehandlung haben, können Sie diese in einem der folgenden Foren stellen:
@@ -751,15 +724,8 @@ Weitere Informationen zur Analyse von Webserverprotokollen finden Sie in den fol
 
 Die Microsoft TechNet-Website enthält einen Abschnitt zum Thema [Ablaufverfolgung fehlgeschlagener Anforderungen](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing), der für das Verständnis dieser Protokolle hilfreich ist. Diese Dokumentation konzentriert sich jedoch hauptsächlich auf die Ablaufverfolgung fehlgeschlagener Anforderungen in IIS. Diese Option ist für Azure-Web-Apps nicht verfügbar.
 
-### Debuggen von Cloud-Diensten.
-
-Informationen darüber, wie Sie statt einer Web-App einen Azure-Cloud-Dienst debuggen, finden Sie unter [Debuggen von Cloud-Diensten](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx).
-
-## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
-
 [GetStarted]: web-sites-dotnet-get-started.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

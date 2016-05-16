@@ -125,7 +125,7 @@ Da Sie jetzt die Datenbankverbindung überprüft haben, müssen Sie eine App-Ein
 
 ##Siehe auch##
 
-+ [Website zu Hybridverbindungen](../../services/biztalk-services/)
++ [Website zu Hybridverbindungen](https://azure.microsoft.com/services/biztalk-services/)
 + [Überblick über Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md)
 + [BizTalk Services: Registerkarten "Dashboard", "Überwachen", "Skalieren", "Konfigurieren" und "Hybridverbindungen"](../biztalk-services/biztalk-dashboard-monitor-scale-tabs.md)
 + [Ändern des Datenmodells eines mobilen .NET-Back-End-Diensts](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)
@@ -138,4 +138,4 @@ Da Sie jetzt die Datenbankverbindung überprüft haben, müssen Sie eine App-Ein
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 [Erste Schritte mit Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

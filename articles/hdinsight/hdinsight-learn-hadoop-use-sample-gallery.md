@@ -14,12 +14,12 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/04/2016"
+   ms.date="04/27/2016"
    ms.author="jgao"/>
 
 # Kennenlernen von Hadoop mithilfe der Azure HDInsight-Galerie für erste Schritte
 
-Die HDInsight-Galerie für erste Schritte bietet eine schnelle und einfache Möglichkeit, Hadoop durch das Ausführen von Beispielanwendungen in HDInsight kennenzulernen. Einige Beispiele verfügen über Beispieldaten. Für die restlichen Beispiele können Sie eigene Daten bereitstellen. Derzeit sind die folgenden sechs Beispiele verfügbar (weitere folgen):
+Der Erste-Schritte-Katalog ist nur für Windows-basierte HDInsight-Cluster verfügbar. Der Katalog bietet eine schnelle und einfache Möglichkeit, Hadoop durch das Ausführen von Beispielanwendungen in HDInsight kennenzulernen. Einige Beispiele verfügen über Beispieldaten. Für die restlichen Beispiele können Sie eigene Daten bereitstellen. Derzeit sind die folgenden sechs Beispiele verfügbar (weitere folgen):
 
 - Lösungen mit Ihren Azure-Daten
 	- Microsoft Azure Website-Protokollanalyse
@@ -60,8 +60,8 @@ Andere Möglichkeiten zum Kennenlernen von HDInsight:
 [hdinsight.twitter.sample]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Twitter-Trend-Analysis-sample.png
 
 <!--Link references-->
-[hdinsight.learn.map]: hdinsight-learn-map.md
+[hdinsight.learn.map]: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

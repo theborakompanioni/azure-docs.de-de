@@ -1,12 +1,11 @@
 <properties
-	pageTitle="Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)"
+	pageTitle="Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#) | Microsoft Azure"
 	description="Verwenden Sie den Beispielcode in diesem Schnelleinstieg zum Erstellen einer modernen Anwendung in C#, die mit Azure SQL-Datenbank durch eine leistungsfähige relationale Datenbank in der Cloud unterstützt wird."
 	services="sql-database"
 	documentationCenter=""
 	authors="tobbox"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
-
 
 <tags
 	ms.service="sql-database"
@@ -14,19 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/16/2016"
+	ms.date="04/20/2016"
 	ms.author="tobiast"/>
 
-
-# Verwenden von SQL-Datenbanken mit .NET (C#)
-
+# Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
-
 ## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
-.NET Framework ist unter Windows vorinstalliert. Für Linux und Mac OS X können Sie .NET Framework vom [Mono-Projekt](http://www.mono-project.com/) herunterladen.
+[Configure development environment for ADO.NET development](https://msdn.microsoft.com/library/mt718321.aspx) (Konfigurieren der Entwicklungsumgebung für die Entwicklung von ADO.NET)
 
 ## Schritt 2: Erstellen einer SQL-Datenbank
 
@@ -36,106 +32,9 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 [AZURE.INCLUDE [sql-database-include-connection-string-dotnet-20-portalshots](../../includes/sql-database-include-connection-string-dotnet-20-portalshots.md)]
 
-## Schritt 4: Verbinden
+## Schritt 4: Ausführen von Beispielcode
 
-Die [System.Data.SqlClient.SqlConnection-Klasse](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) wird zum Herstellen von Verbindungen mit SQL-Datenbanken verwendet.
+* [Proof of concept connecting to SQL using ADO.NET](https://msdn.microsoft.com/library/mt718320.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von ADO.NET)
+* [Connect resiliently to SQL with ADO.NET](https://msdn.microsoft.com/library/mt703195.aspx) (Stabiles Verbinden mit SQL mithilfe von ADO.NET)
 
-
-```
-using System.Data.SqlClient;
-
-class Sample
-{
-  static void Main()
-  {
-	  using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={yourpassword};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-	  {
-		  conn.Open();
-	  }
-  }
-}
-```
-
-## Schritt 5: Ausführen einer Abfrage
-
-Mit der [System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx)-Klasse und der [SqlDataReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqldatareader.aspx)-Klasse können Sie ein Resultset aus einer Abfrage an eine SQL-Datenbank abrufen. Beachten Sie, dass "System.Data.SqlClient" auch das Abrufen von Daten in ein Offline-[System.Data.DataSet](https://msdn.microsoft.com/library/system.data.dataset.aspx) unterstützt.
-
-```
-using System;
-using System.Data.SqlClient;
-
-class Sample
-{
-	static void Main()
-	{
-	  using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={yourpassword};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-		{
-			var cmd = conn.CreateCommand();
-			cmd.CommandText = @"
-					SELECT
-						c.CustomerID
-						,c.CompanyName
-						,COUNT(soh.SalesOrderID) AS OrderCount
-					FROM SalesLT.Customer AS c
-					LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID
-					GROUP BY c.CustomerID, c.CompanyName
-					ORDER BY OrderCount DESC;";
-
-			conn.Open();
-
-			using(var reader = cmd.ExecuteReader())
-			{
-				while(reader.Read())
-				{
-					Console.WriteLine("ID: {0} Name: {1} Order Count: {2}", reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
-				}
-			}					
-		}
-	}
-}
-
-```  
-
-## Schritt 6: Einfügen einer Zeile
-
-In diesem Beispiel erfahren Sie, wie Sie eine [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Anweisung sicher ausführen, Parameter zum Schutz Ihrer Anwendung vor einer [Einschleusung von SQL-Befehlen](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) übergeben und den automatisch generierten [Primärschlüsselwert](https://msdn.microsoft.com/library/ms179610.aspx) abrufen.
-
-```
-using System;
-using System.Data.SqlClient;
-
-class Sample
-{
-    static void Main()
-    {
-		using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={yourpassword};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-        {
-            var cmd = conn.CreateCommand();
-            cmd.CommandText = @"
-                INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate)
-                OUTPUT INSERTED.ProductID
-                VALUES (@Name, @Number, @Cost, @Price, CURRENT_TIMESTAMP)";
-
-            cmd.Parameters.AddWithValue("@Name", "SQL Server Express");
-            cmd.Parameters.AddWithValue("@Number", "SQLEXPRESS1");
-            cmd.Parameters.AddWithValue("@Cost", 0);
-            cmd.Parameters.AddWithValue("@Price", 0);
-
-            conn.Open();
-
-            int insertedProductId = (int)cmd.ExecuteScalar();
-
-            Console.WriteLine("Product ID {0} inserted.", insertedProductId);
-        }
-    }
-}
-```
-
-
-## Nächste Schritte
-
-Erfahren Sie, wie Sie Wiederholungslogik durch die Behandlung vorübergehender Fehlercodes verwenden, um Ihren Code robuster zu gestalten: [Codebeispiel: Wiederholungslogik in C# für die Verbindungsherstellung mit einer SQL-Datenbank](sql-database-develop-csharp-retry-windows.md)
-
-Weitere Informationen über mögliche Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

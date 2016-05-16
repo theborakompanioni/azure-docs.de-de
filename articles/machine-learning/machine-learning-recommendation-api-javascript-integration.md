@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="02/10/2016" 
+	ms.date="05/03/2016" 
 	ms.author="luisca"/>
 
 # Azure Machine Learning-Empfehlungen – JavaScript-Integration
@@ -88,8 +88,8 @@ Es gibt fünf Arten von Ereignissen, die von der Bibliothek unterstützt werden:
 Dieses Ereignis sollte jedes Mal, wenn ein Benutzer auf ein Element klickt, verwendet werden. Wenn der Benutzer auf ein Element klickt, wird in der Regel eine neue Seite mit den Elementdetails geöffnet. Auf dieser Seite sollte dieses Ereignis ausgelöst werden.
 
 Parameter:
-- event (Zeichenfolge, obligatorisch) – "click"
-- item (Zeichenfolge, obligatorisch) – eindeutiger Bezeichner des Elements
+- event (Zeichenfolge, erforderlich) – „click“
+- item (Zeichenfolge, erforderlich) – eindeutiger Bezeichner des Elements
 - itemName (Zeichenfolge, optional) – der Name des Elements
 - itemDescription (Zeichenfolge, optional) – die Beschreibung des Elements
 - itemCategory (Zeichenfolge, optional) – die Kategorie des Elements
@@ -111,13 +111,13 @@ Oder mit optionalen Daten:
 Dieses Ereignis sollte jedes Mal verwendet werden, wenn ein Benutzer auf ein Element klickt, das von Azure ML-Empfehlungen als empfohlenes Element empfangen wurde. Wenn der Benutzer auf ein Element klickt, wird in der Regel eine neue Seite mit den Elementdetails geöffnet. Auf dieser Seite sollte dieses Ereignis ausgelöst werden.
 
 Parameter:
-- event (Zeichenfolge, obligatorisch) – "recommendationclick"
-- item (Zeichenfolge, obligatorisch) – eindeutiger Bezeichner des Elements
+- event (Zeichenfolge, erforderlich) – „recommendationclick“
+- item (Zeichenfolge, erforderlich) – eindeutiger Bezeichner des Elements
 - itemName (Zeichenfolge, optional) – der Name des Elements
 - itemDescription (Zeichenfolge, optional) – die Beschreibung des Elements
 - itemCategory (Zeichenfolge, optional) – die Kategorie des Elements
-- seeds (Zeichenfolgenarray, optional) – Startwerte, mit der die Empfehlungsabfrage generiert wurde.
--recoList (Zeichenfolgenarray, optional) – das Ergebnis der Empfehlungsanforderung, die von dem Element, auf das geklickt wurde, generiert wurde.
+- seeds (Zeichenfolgenarray, optional) – die Seeds, die die Empfehlungsabfrage generiert haben
+- recoList (Zeichenfolgenarray, optional) – das Ergebnis der Empfehlungsanforderung, die das Element generiert hat, auf das geklickt wurde
 		
 		<script>
 			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
@@ -133,11 +133,9 @@ Oder mit optionalen Daten:
 
 
 ####3\.2.3. Addshopcart-Ereignis
-Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element zum Einkaufswagen hinzufügt.
-
-Parameter:
-* event (Zeichenfolge, obligatorisch) – "addshopcart"
-* item (Zeichenfolge, obligatorisch) – eindeutiger Bezeichner des Elements
+Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element zum Einkaufswagen hinzufügt. Parameter:
+* event (Zeichenfolge, erforderlich) – „addshopcart“
+* item (Zeichenfolge, erforderlich) – eindeutiger Bezeichner des Elements
 * itemName (Zeichenfolge, optional) – der Name des Elements
 * itemDescription (Zeichenfolge, optional) – die Beschreibung des Elements
 * itemCategory (Zeichenfolge, optional) – die Kategorie des Elements
@@ -151,8 +149,8 @@ Parameter:
 Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element aus dem Einkaufswagen entfernt.
 
 Parameter:
-* event (Zeichenfolge, obligatorisch) – "removeshopcart"
-* item (Zeichenfolge, obligatorisch) – eindeutiger Bezeichner des Elements
+* event (Zeichenfolge, erforderlich) – „removeshopcart“
+* item (Zeichenfolge, erforderlich) – eindeutiger Bezeichner des Elements
 * itemName (Zeichenfolge, optional) – der Name des Elements
 * itemDescription (Zeichenfolge, optional) – die Beschreibung des Elements
 * itemCategory (Zeichenfolge, optional) – die Kategorie des Elements
@@ -166,12 +164,11 @@ Parameter:
 Dieses Ereignis sollte verwendet werden, wenn der Benutzer seinen Einkaufswagen gekauft hat.
 
 Parameter:
-* event (string) – “purchase”
-* items ( Purchased ) – Array mit einem Eintrag für jedes gekaufte Element.<br><br>
-Purchased-Format:
-	* item (Zeichenfolge) - eindeutige Bezeichner des Elements
-	* count (ganze Zahl oder Zeichenfolge) – die Anzahl der Elemente, die gekauft wurden
-	* price (Gleitkommazahl oder Zeichenfolge) – optionales Feld – der Preis des Elements
+* event (Zeichenfolge) – „purchase“
+* items ( Purchased ) – Array mit einem Eintrag für jedes gekaufte Element.<br><br> Format für „Purchased“:
+	* item (Zeichenfolge) – eindeutiger Bezeichner des Elements
+	* count (Ganzzahl oder Zeichenfolge) – Anzahl der gekauften Elemente.
+	* price (Gleitkommazahl oder Zeichenfolge) – optionales Feld – der Preis des Elements.
 
 Das folgende Beispiel zeigt den Kauf von 3 Elementen (33, 34, 35), zwei Elemente, bei denen alle Feldern aufgefüllt sind (item, count, price), und ein Element ohne Preis (item 34).
 
@@ -185,13 +182,9 @@ Die Ereignisbibliothek für Azure ML-Empfehlungen Bibliothek erstellt und verwen
 
 Dieses Ereignis sollte nach der Benutzeranmeldung auf Ihrer Website verwendet werden.
 
-Parameters:
-* event (string) – “userlogin”
-* user (string) – eindeutige ID des Benutzers.
-		<script>
-			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; }
-			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
-		</script>
+Parameter:
+* event (Zeichenfolge) – „userlogin“
+* user (Zeichenfolge) – eindeutige Identifikation des Benutzers. <script> if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; } AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” }); </script>
 
 ##4\. Nutzen von Empfehlungen über JavaScript
 Der Code, der die Empfehlung nutzt, wird durch ein JavaScript-Ereignis von der Client-Webseite ausgelöst. Die Antwort mit der Empfehlung enthält die Ids der empfohlenen Elemente, deren Namen und ihre Bewertungen. Es empfiehlt sich, diese Option nur für eine Listenanzeige der empfohlenen Elemente zu verwenden. Eine komplexere Aufbereitung (wie z. B. das Hinzufügen von Metadaten des Elements) sollte in der serverseitigen Integration erledigt werden.
@@ -202,14 +195,14 @@ Um Empfehlungen nutzen zu können, müssen Sie die erforderlichen JavaScript-Bib
 Um Empfehlungen für ein oder mehrere Elemente zu nutzen, müssen Sie eine Methode namens AzureMLRecommendationsGetI2IRecommendation aufrufen.
 
 Parameter:
-* items (Array von Zeichenfolgen) – Ein oder mehrere Elemente, für die Empfehlungen abgerufen werden sollen. Wenn Sie einen Fbt-Build verwenden, können Sie hier nur ein Element festlegen.
-* numberOfResults (ganze Zahl) – Anzahl der Ergebnisse.
-* includeMetadata (Boolesch, optional) – Wenn der Parameter auf 'True' festgelegt wird, muss das Metadatenfeld im Ergebnis ausgefüllt werden.
-* function – eine Funktion, welche die zurückgegebenen Empfehlungen verarbeitet. Die Daten werden als Array mit folgenden Elementen zurückgegeben:
-	* Item – eindeutige ID des Elements
-	* name – Elementname (wenn im Katalog vorhanden)
+* items (Zeichenfolgenarray) – ein oder mehrere Elemente, für die Empfehlungen abgerufen werden sollen. Wenn Sie einen Fbt-Build nutzen, können Sie hier nur ein Element festlegen.
+* numberOfResults (Ganzzahl) – Anzahl der erforderlichen Ergebnisse.
+* includeMetadata (Boolesch, optional) – wenn der Wert auf „true“ festgelegt ist, weist dies darauf hin, dass das Metadatenfeld im Ergebnis aufgefüllt werden muss.
+* Verarbeitungsfunktion – eine Funktion, die die zurückgegebenen Empfehlungen verarbeitet. Die Daten werden als Array folgender Werte zurückgegeben:
+	* Item – eindeutige Element-ID
+	* name – Elementname (sofern im Katalog vorhanden)
 	* rating – Empfehlungsbewertung
-	* metadata – eine Zeichenfolge, die Metadaten des Elements darstellt
+	* metadata – eine Zeichenfolge, die die Metadaten des Elements repräsentiert
 
 Beispiel: Mit dem folgenden Code werden acht Empfehlungen für das Element "64f6eb0d-947a-4c18-a16c-888da9e228ba"angefordert (und da includeMetadata nicht angegeben wird, besagt dies implizit, dass keine Metadaten erforderlich ist) und die Ergebnisse in einen Puffer verkettet.
 
@@ -229,4 +222,4 @@ Beispiel: Mit dem folgenden Code werden acht Empfehlungen für das Element "64f6
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

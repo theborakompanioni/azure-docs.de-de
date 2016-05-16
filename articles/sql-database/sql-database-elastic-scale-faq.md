@@ -3,7 +3,7 @@
 	description="Häufig gestellte Fragen zur Elastic Scale-Funktion der Azure SQL-Datenbank." 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="sidneyh" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="05/03/2016" 
 	ms.author="sidneyh"/>
 
 # Tools für elastische Datenbanken – Häufig gestellte Fragen 
@@ -56,4 +56,4 @@ Nein. Bei **split**-Vorgängen muss die Zieldatenbank mit dem entsprechenden Sch
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

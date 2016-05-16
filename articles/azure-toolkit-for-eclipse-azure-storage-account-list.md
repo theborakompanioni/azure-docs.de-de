@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="03/04/2016" 
+    ms.date="05/04/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
@@ -26,7 +26,7 @@ Im Folgenden ist das Dialogfeld **Storage Accounts** abgebildet.
 
 ![][ic719496]
 
-Dieses Dialogfeld kann auch über einen der Links **Accounts** in Dialogfeldern geöffnet werden, in denen Speicherkonten verwendet werden, z. B.:
+Dieses Dialogfeld kann auch über einen der Links **Accounts** in Dialogfeldern geöffnet werden, in denen Speicherkonten verwendet werden, z. B.:
 
 * Registerkarte **JDK** im Dialogfeld **Server Configuration**.
 * Registerkarte **Server** im Dialogfeld **Server Configuration**.
@@ -100,4 +100,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic719496]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719496.png
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

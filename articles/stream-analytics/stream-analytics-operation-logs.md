@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Debuggen mithilfe von Vorgangs- und Dienstprotokollen in Stream Analytics | Microsoft Azure" 
-	description="Verwenden von Stream Analytics-Vorgangsprotokollen" 
+	description="Verwenden von Stream Analytics-Vorgangsprotokollen" 
 	keywords="Dienstprotokolle"
 	services="stream-analytics" 
 	documentationCenter="" 
@@ -14,34 +14,34 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="03/18/2016" 
+	ms.date="05/03/2016" 
 	ms.author="jeffstok"/>
 
-# Debuggen von Stream Analytics-Aufträgen mithilfe von Dienst- und Vorgangsprotokollen
+# Debuggen von Stream Analytics-Aufträgen mithilfe von Dienst- und Vorgangsprotokollen
 
-Alle Azure-Dienste stellen Benutzern operative Protokollierungsnachrichten bereit, um Details im Zusammenhang mit Verwaltungsvorgängen zu erfassen. In Azure Stream Analytics können diese Informationen für Debugzwecke wie z. B. das Anzeigen des Auftragsstatus, Auftragsfortschritts und von Fehlermeldungen verwendet werden, um den Fortschritt eines Auftrags im Laufe der Zeit von Beginn an, während der Verarbeitung und bis zur Ausgabe nachzuverfolgen.
+Alle Azure-Dienste stellen Benutzern operative Protokollierungsnachrichten bereit, um Details im Zusammenhang mit Verwaltungsvorgängen zu erfassen. In Azure Stream Analytics können diese Informationen für Debugzwecke wie z. B. das Anzeigen des Auftragsstatus, Auftragsfortschritts und von Fehlermeldungen verwendet werden, um den Fortschritt eines Auftrags im Laufe der Zeit von Beginn an, während der Verarbeitung und bis zur Ausgabe nachzuverfolgen.
 
 ## Vorgangsprotokolle finden Sie im Azure-Verwaltungsportal.
 
 Für den Zugriff auf Vorgangsprotokolle gibt es zwei Möglichkeiten:
 
-- Dashboard des Stream Analytics-Auftrags  
+- Dashboard des Stream Analytics-Auftrags  
 - Verwaltungsdienste im klassischen Azure-Portal  
 
-## Dashboard des Stream Analytics-Auftrags
+## Dashboard des Stream Analytics-Auftrags
 
-Auf der Dashboard-Registerkarte eines Stream Analytics-Auftrags wird eine Verknüpfung mit den zugehörigen Protokollen angezeigt. Wenn Sie auf diese Verknüpfung klicken, werden die Filter so festgelegt, dass aktuelle Protokolle für diesen Auftrag angezeigt werden.
+Auf der Dashboard-Registerkarte eines Stream Analytics-Auftrags wird eine Verknüpfung mit den zugehörigen Protokollen angezeigt. Wenn Sie auf diese Verknüpfung klicken, werden die Filter so festgelegt, dass aktuelle Protokolle für diesen Auftrag angezeigt werden.
 
   ![Verwaltungsdienstprotokolle auswählen](./media/stream-analytics-operation-logs/01-stream-analytics-operation-logs.png)
 
 ## Verwaltungsdienste
 
-So navigieren Sie manuell zu den Vorgangsprotokollen für Stream Analytics und andere Dienste im klassischen Azure-Portal:
+So navigieren Sie manuell zu den Vorgangsprotokollen für Stream Analytics und andere Dienste im klassischen Azure-Portal:
 
 1.	Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Verwaltungsdienste**.
 2.	Wählen Sie **Stream Analytics** als **Typ** und den Namen des Auftrags als **Dienstname** aus.  
 
-  ![Stream Analytics auswählen](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
+  ![Stream Analytics auswählen](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
 
 ## Überwachungsprotokolle finden Sie im Azure-Portal. ##
 
@@ -96,4 +96,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->
