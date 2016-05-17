@@ -1523,7 +1523,7 @@ Die folgenden Versionsänderungen wurden zwischen HDInsight 2.x (HDP1.x) und HDI
 
 
 ### Treiber
-Der JDBC-Treiber (Java Database Connnectivity) für SQL Server wird intern von HDInsight und nicht für externe Vorgänge verwendet. Wenn Sie über ODBC (Open Database Connectivity) eine Verbindung mit HDInsight herstellen möchten, verwenden Sie den Microsoft Hive ODBC-Treiber. Weitere Informationen finden Sie unter [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](hdinsight-connect-excel-hive-odbc-driver.md).
+Der JDBC-Treiber (Java Database Connnectivity) für SQL Server wird intern von HDInsight und nicht für externe Vorgänge verwendet. Wenn Sie über ODBC (Open Database Connectivity) eine Verbindung mit HDInsight herstellen möchten, verwenden Sie den Microsoft Hive ODBC-Treiber. Weitere Informationen finden Sie unter [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md).
 
 
 ### Fehlerbehebungen
