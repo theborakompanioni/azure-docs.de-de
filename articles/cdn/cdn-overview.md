@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/15/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Übersicht über das Azure Content Delivery Network (CDN)
 
-Das Azure CDN (Content Delivery Network, Netzwerk für die Inhaltsübermittlung) speichert von Websites verwendete Azure-Blobs und statische Inhalte an strategisch platzierten Standorten zwischen, um für das Bereitstellen von Inhalten für Benutzer den maximalen Durchsatz zu ermöglichen. Das CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite durch Zwischenspeichern der Inhalte auf physischen Knoten auf der ganzen Welt. Eine aktuelle Liste mit CDN-Knotenstandorten finden Sie unter [Azure-CDN-POP-Standorte](cdn-pop-locations.md).
+Das Azure Content Delivery Network (CDN) speichert statische Webinhalte an strategisch platzierten Standorten zwischen, um beim Bereitstellen von Inhalten für Benutzer einen maximalen Durchsatz zu ermöglichen. Das CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite durch Zwischenspeichern der Inhalte auf physischen Knoten auf der ganzen Welt. Eine Liste mit den aktuellen CDN-Knotenstandorten finden Sie unter [POP-Standorte von Azure Content Delivery Network (CDN)](cdn-pop-locations.md).
 
-Die Verwendung des CDN zum Zwischenspeichern von Azure-Daten bietet folgende Vorteile:
+Die Verwendung des CDN zum Zwischenspeichern von Websiteobjekten bietet folgende Vorteile:
 
 - Bessere Leistung und höhere Benutzerfreundlichkeit für Endbenutzer, vor allem bei Verwendung von Anwendungen, für die zum Laden von Inhalten mehrere Roundtrips erforderlich sind
 - Umfassende Skalierung, um hohe Lasten zu Beginn eines Ereignisses, z.B. bei einer Produkteinführung, besser verarbeiten zu können
@@ -44,30 +44,27 @@ Die Verwendung des CDN zum Zwischenspeichern von Azure-Daten bietet folgende Vor
 6. Sofern die Lebensdauer der Datei noch nicht abgelaufen ist, gibt der Edgeserver die Datei aus dem Cache zurück. Dies führt zu schnellen Reaktionen und somit zu einer höheren Benutzerfreundlichkeit.
 
 
-## Standard-Features
+## Azure CDN-Features
 
-Der CDN-Tarif „Standard“ enthält die folgenden Features:
+Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**. Die folgende Tabelle listet die Features auf, die bei jedem Produkt zur Verfügung stehen.
 
-- Einfache Integration mittels der Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web-Apps](../app-service-web/cdn-websites-with-cdn.md) und[ Media Services](../media-services/media-services-manage-origins.md#enable_cdn)
-- HTTPS-Unterstützung
-- Lastenausgleich
-- DDoS-Schutz
-- [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md)
-- [Unterstützung benutzerdefinierter Domänennamen](cdn-map-content-to-custom-domain.md)
-- [Länderfilter](cdn-restrict-access-by-country.md)
-- [Wichtige Analysen](cdn-analyze-usage-patterns.md)
-- [Schnelles Löschen](cdn-purge-endpoint.md)
-- [Vorabladen von Assets](cdn-preload-endpoint.md)
-- [Verwaltung über die REST-API](https://msdn.microsoft.com/library/mt634456.aspx)
+| | Standard Akamai | Standard Verizon | Premium Verizon |
+|-------|-----------------|------------------|-----------------|
+| Einfache Integration in Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web-Apps](../app-service-web/cdn-websites-with-cdn.md) und[ Media Services](../media-services/media-services-manage-origins.md#enable_cdn) | **&#x2713;** | **&#x2713;** | **&#x2713;**|
+| HTTPS-Unterstützung | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| Lastenausgleich | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| DDoS-Schutz | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [Unterstützung benutzerdefinierter Domänennamen](cdn-map-content-to-custom-domain.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [Länderfilter](cdn-restrict-access-by-country.md) | | **&#x2713;** | **&#x2713;** |
+| [Schnelles Löschen](cdn-purge-endpoint.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [Vorabladen von Assets](cdn-preload-endpoint.md) | | **&#x2713;** | **&#x2713;** |
+| [Wichtige Analysen](cdn-analyze-usage-patterns.md) | | **&#x2713;** | **&#x2713;** |
+| [Verwaltung über die REST-API](https://msdn.microsoft.com/library/mt634456.aspx) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [Anpassbares, regelbasiertes Modul zur Inhaltsübermittlung](cdn-rules-engine.md) | | | **&#x2713;** |
+| [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md) | | | **&#x2713;** |
+| [Echtzeitstatistiken](cdn-real-time-stats.md) | | | **&#x2713;** |
 
-
-## Premium-Features
-
-Der CDN-Tarif „Premium“ beinhaltet alle Funktionen des Standard-Tarifs und folgende zusätzliche Features:
-
-- [Anpassbares, regelbasiertes Modul zur Inhaltsübermittlung](cdn-rules-engine.md)
-- [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
-- [Echtzeitstatistiken](cdn-real-time-stats.md)
 
 ## Nächste Schritte
 
@@ -77,4 +74,6 @@ Wenn Sie bereits CDN-Kunde sind, können Sie jetzt Ihre CDN-Endpunkte über das 
 
 Im [Video zu unserer Build 2016-Sitzung](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
 
-<!---HONumber=AcomDC_0504_2016-->
+Preisinformationen finden Sie unter [Content Delivery Network (CDN) – Preise](https://azure.microsoft.com/pricing/details/cdn/).
+
+<!---HONumber=AcomDC_0511_2016-->

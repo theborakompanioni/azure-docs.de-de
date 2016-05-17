@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="04/26/2016" 
+	 ms.date="05/11/2016" 
 	 ms.author="casoper"/>
 
 # Verwenden von Azure CDN  
@@ -27,28 +27,9 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 > [AZURE.NOTE] Ein einzelnes Azure-Abonnement ist standardmäßig auf vier CDN-Profile beschränkt. Jedes CDN-Profil ist auf zehn CDN-Endpunkte beschränkt.
 >
-> Die Preise für Azure CDN gelten auf der Ebene von CDN-Profilen. Wenn Sie die Features von Standard-CDN und Premium-CDN kombinieren möchten, benötigen Sie mehrere CDN-Profile.
+> Die Preise für Azure CDN gelten auf der Ebene von CDN-Profilen. Wenn Sie die Azure CDN-Tarife kombinieren möchten, benötigen Sie mehrere CDN-Profile.
 
-
-**So erstellen Sie ein neues CDN-Profil**
-
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) oben links auf **Neu**. Wählen Sie auf dem Blatt **Neu** erst **Medien + CDN** und dann **CDN** aus.
-
-    Das Blatt für das neue CDN-Profil wird angezeigt.
-
-    ![Neues CDN-Profil][new-cdn-profile]
-
-2. Geben Sie einen Namen für das CDN-Profil ein.
-
-3. Wählen Sie einen **Tarif** aus, oder verwenden Sie den Standardtarif.
-
-4. Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
-
-5. Wählen Sie das **Abonnement** für dieses CDN-Profil aus.
-
-6. Wählen Sie einen **Speicherort** aus. Dies ist der Azure-Speicherort, an dem Ihre CDN-Profilinformationen gespeichert werden. Dies hat keine Auswirkung auf die Speicherorte von CDN-Endpunkten. Es muss nicht derselbe Speicherort wie für das Speicherkonto sein.
-
-7. Klicken Sie auf die Schaltfläche **Erstellen**, um das neue Profil zu erstellen.
+[AZURE.INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
 ## Erstellen eines neuen CDN-Endpunkts
 
@@ -70,7 +51,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 3. Geben Sie einen **Namen** für diesen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf die zwischengespeicherten Ressourcen in der Domäne `<endpointname>.azureedge.net` verwendet.
 
-4. Wählen Sie in der Dropdownliste **Ursprungstyp** Ihren Ursprungstyp aus. Wählen Sie **Storage** für ein Azure Storage-Konto, **Clouddienst** für einen Azure-Clouddienst, **Web-App** für eine Azure-Web-App oder **Benutzerdefinierter Ursprung** für einen öffentlich zugänglichen Webserver (in Azure oder anderswo gehostet).
+4. Wählen Sie in der Dropdownliste **Ursprungstyp** Ihren Ursprungstyp aus. Wählen Sie **Storage** für ein Azure-Speicherkonto, **Clouddienst** für einen Azure-Clouddienst, **Web-App** für eine Azure-Web-App oder **Benutzerdefinierter Ursprung** für einen öffentlich zugänglichen Webserver (in Azure oder anderswo gehostet).
 
 	![CDN-Ursprung](./media/cdn-create-new-endpoint/cdn-origin-type.png)
 		
@@ -84,7 +65,9 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 	
 	> [AZURE.NOTE] Der **Ursprungsport** bezieht sich nur darauf, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet. Der Endpunkt selbst ist nur für Endclients auf den Standard-HTTP- und -HTTPS-Ports (80 und 443) verfügbar, unabhängig vom **Ursprungsport**.
 	>
-	>Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
+	> **Azure CDN from Akamai**-Endpunkte lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai behavior details](cdn-akamai-behavior-details.md) (Verhaltensdetails für Azure CDN from Akamai).
+	>
+	> Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
 	> 
 	> - Sie müssen das vom CDN bereitgestellte SSL-Zertifikat verwenden. Zertifikate von Drittanbietern werden nicht unterstützt.
 	> - Sie müssen die vom CDN bereitgestellte Domäne (`<endpointname>.azureedge.net`) verwenden, um auf HTTPS-Inhalte zuzugreifen. HTTPS-Unterstützung ist für benutzerdefinierte Domänennamen (CNAMEs) nicht verfügbar, da das CDN derzeit keine benutzerdefinierten Zertifikate unterstützt.
@@ -95,7 +78,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
     ![CDN-Endpunkt][cdn-endpoint-success]
 
-    > [AZURE.IMPORTANT] Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. In der Regel ist er innerhalb von 90 Minuten verfügbar, in einigen Fällen kann es jedoch länger dauern.
+    > [AZURE.IMPORTANT] Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. Bei <b>Azure CDN from Akamai</b>-Profilen ist die Weitergabe in der Regel innerhalb einer Minute abgeschlossen. Bei <b>Azure CDN from Verizon</b>-Profilen dauert die Weitergabe in der Regel bis zu 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
 	>	 
 	> Benutzer, die versuchen, den CDN-Domänennamen zu verwenden, bevor die Endpunktkonfiguration an die POPs verteilt wurde, erhalten den Antwortcode „HTTP 404“. Wenn Sie ein paar Stunden nach der Erstellung des Endpunkts noch immer 404-Meldungen erhalten, finden Sie unter [Troubleshooting CDN endpoints returning 404 statuses](cdn-troubleshoot-endpoint.md) (Problembehandlung bei CDN-Endpunkten mit Status 404) weitere Informationen.
 
@@ -105,12 +88,11 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 - [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](cdn-map-content-to-custom-domain.md)
 - [Vorabladen von Assets auf einen Azure CDN-Endpunkt](cdn-preload-endpoint.md)
 - [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
-- [Troubleshooting CDN endpoints returning 404 statuses](cdn-troubleshoot-endpoint.md) (Problembehandlung bei CDN-Endpunkten mit Status 404)
+- [Troubleshooting CDN endpoints returning 404 statuses (Problembehandlung bei CDN-Endpunkten mit Status 404)](cdn-troubleshoot-endpoint.md)
 
-[new-cdn-profile]: ./media/cdn-create-new-endpoint/cdn-new-profile.png
 [cdn-profile-settings]: ./media/cdn-create-new-endpoint/cdn-profile-settings.png
 [cdn-new-endpoint-button]: ./media/cdn-create-new-endpoint/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/28/2016"
+	ms.date="05/05/2016"
 	ms.author="cynthn"/>
 
 # Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal
@@ -116,4 +116,4 @@ Wenn Sie den virtuellen Computer erneut verwenden möchten, klicken Sie einfach 
 
 * Darüber hinaus haben Sie die Möglichkeit zum [Erstellen eines virtuellen Windows-Computers mit PowerShell](virtual-machines-windows-ps-create.md) sowie zum [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-quick-create-cli.md) mithilfe der Azure-Befehlszeilenschnittstelle.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

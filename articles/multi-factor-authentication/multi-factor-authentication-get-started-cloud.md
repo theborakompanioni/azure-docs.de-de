@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Erste Schritte mit Azure Multi-Factor Authentication in der Cloud" 
-	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA in der Cloud beschrieben." 
+	pageTitle="Erste Schritte mit Microsoft Azure Multi-Factor Authentication in der Cloud" 
+	description="Auf dieser Seite zu Microsoft Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA in der Cloud beschrieben." 
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
@@ -13,148 +13,81 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/06/2016" 
+	ms.date="05/10/2016" 
 	ms.author="billmath"/>
 
 # Erste Schritte mit Azure Multi-Factor Authentication in der Cloud
+In diesem Artikel werden die ersten Schritte mit Azure Multi-Factor Authentication in der Cloud beschrieben.
+
+> [AZURE.NOTE]  Die folgende Dokumentation enthält Informationen zum Aktivieren von Benutzern mithilfe des klassischen Azure-Portals. Weitere Informationen zum Einrichten von Azure Multi-Factor Authentication für Office 365-Benutzer finden Sie unter [Einrichten der mehrstufigen Authentifizierung für Office 365-Benutzer](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=de-DE&rs=de-DE&ad=US).
+
+![MFA in der Cloud](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
+
+## Voraussetzungen
+Um Azure Multi-Factor Authentication für Ihre Benutzer aktivieren zu können, müssen zunächst folgende Voraussetzungen erfüllt werden:
 
 
 
-<center>![MFA in der Cloud](./media/multi-factor-authentication-get-started-cloud/cloud2.png)</center>
 
-Nachdem Sie sich nun für die Multi-Factor Authentication in der Cloud entschieden haben, können Sie mit der Einrichtung fortfahren. Für die ersten Schritte mit der Azure Multi-Factor Authentication sind nur wenige Klicks erforderlich. Wenn Sie Multi-Factor Authentication für Office 365 oder Multi-Factor Authentication für Azure-Administratoren verwenden, können Sie mit Schritt 3 fortfahren.
+- [Registrieren Sie sich für ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/): Falls Sie noch nicht über ein Azure-Abonnement verfügen, müssen Sie sich für ein Abonnement registrieren. Wenn Sie die Verwendung von Azure MFA testen möchten, können Sie ein Testabonnement verwenden.
+2. [Erstellen Sie einen Multi-Factor Authentication-Anbieter](multi-factor-authentication-get-started-auth-provider.md), und weisen Sie ihn Ihrem Verzeichnis zu, oder [weisen Sie Benutzern Lizenzen zu](multi-factor-authentication-get-started-assign-licenses.md). 
 
-
-1. [Anmelden für ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
-	- Falls Sie noch nicht über ein Azure-Abonnement verfügen, müssen Sie sich für ein Abonnement registrieren. Wenn Sie die Verwendung von Azure MFA testen möchten, können Sie ein Testabonnement verwenden.
-2. [Erstellen eines Multi-Factor Authentication-Anbieters](#creating-an-azure-multi-factor-auth-provider) oder [Zuweisen von Lizenzen zu Benutzern](#assigning-an-azure-ad-premium-or-enterprise-mobility-license-to-users)
-	- Als Nächstes müssen Sie einen der folgenden Schritte ausführen. Erstellen Sie einen Azure Multi-Factor Authentication-Anbieter, und weisen Sie ihn Ihrem Verzeichnis zu, oder weisen Sie Ihren Benutzern Lizenzen zu. Lizenzen sind für Benutzer verfügbar, die über Azure MFA, Azure AD Premium oder EMS verfügen. Azure Multi-Factor Authentication ist im Lieferumfang von Azure Active Directory Premium enthalten. Die Anwendung ist auch in der Enterprise Mobility Suite enthalten. Wenn Sie über genügend Lizenzen verfügen, müssen Sie keinen Authentifizierungsanbieter erstellen. 
-3. [Aktivieren von Multi-Factor Authentication für die Benutzer](#turn-on-multi-factor-authentication-for-users)
-	- Aktivieren Sie MFA für die Benutzer über das Office 365- oder das Azure-Portal. 
-4. [Senden einer E-Mail an Endbenutzer mit einer Benachrichtigung über MFA](#send-email-to-end-users)
-	- Sobald Multi-Factor Authentication für das Konto eines Benutzers aktiviert wurde, sollte Sie ihn mit einer entsprechenden Benachrichtigung per E-Mail darüber informieren. Der Benutzer wird beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen, und mit der E-Mail erhält er diese Info. 
-
-
-
-## Erstellen eines Anbieters für die mehrstufige Authentifizierung in Azure
-Multi-Factor Authentication ist standardmäßig für globale Administratoren, die mit Azure Active Directory arbeiten, und für Office 365-Benutzer verfügbar. Falls Sie die erweiterten Funktionen nutzen möchten, müssen Sie die Vollversion von Azure MFA erwerben.
-
-Ein Azure Multi-Factor Authentication-Anbieter wird verwendet, um die Features zu nutzen, die mit der Vollversion von Azure MFA bereitgestellt werden. Er wird für Benutzer verwendet, die keine Lizenzen über Azure MFA, Azure AD Premium oder EMS besitzen. Azure MFA, Azure AD Premium und EMS enthalten standardmäßig die Vollversion von Azure MFA. Wenn Sie im Besitz von Lizenzen sind, benötigen Sie keinen Azure Multi-Factor Authentication-Anbieter. In den folgenden Schritten wird veranschaulicht, wie Sie einen Azure Multi-Factor Authentication-Anbieter erstellen.
-
-### So erstellen Sie einen Anbieter für mehrstufige Authentifizierung
---------------------------------------------------------------------------------
-
-1. Melden Sie sich beim Azure-Portal als Administrator an.
-2. Wählen Sie im linken Bereich "Active Directory" aus.
-3. Wählen Sie auf der Seite "Active Directory" oben "Anbieter für mehrstufige Authentifizierung" aus. Klicken Sie dann unten auf **Neu**.
-4. Wählen Sie unter „App Services“ den Eintrag „Multi-Factor Authentication-Anbieter“ aus, und wählen Sie dann „Schnellerfassung“.
-5. Füllen Sie die folgenden Felder aus, und wählen Sie "Erstellen" aus.
-	1. Name: Der Name des Multi-Factor Authentication-Anbieters.
-	2. Nutzungsmodell: Das Nutzungsmodell des Anbieters für mehrstufige Authentifizierung.
-		- Pro Authentifizierung: Ein Kaufmodell, bei dem die Kosten pro Authentifizierung berechnet werden. Wird in der Regel für Szenarien verwendet, in denen Azure Multi-Factor Authentication in einer kundenorientierten Anwendung verwendet wird.
-		- Pro aktiviertem Benutzer: Ein Kaufmodell, bei dem die Kosten pro aktiviertem Benutzer berechnet werden. Wird in der Regel für den Mitarbeiterzugriff auf Anwendungen wie Office 365 verwendet.
-	2. Verzeichnis: Der Azure Active Directory-Mandant, dem der Anbieter für mehrstufige Authentifizierung zugeordnet ist. Bedenken Sie dabei Folgendes:
-		- Zum Erstellen eines Anbieters für mehrstufige Authentifizierung benötigen Sie kein Azure AD-Verzeichnis. Lassen Sie das Feld einfach leer, wenn Sie nur den Azure Multi-Factor Authentication-Server oder das Azure Multi-Factor Authentication-SDK verwenden möchten.
-		- Der Multi-Factor Authentication-Anbieter muss einem Azure AD-Verzeichnis zugeordnet werden, damit die erweiterten Features genutzt werden können.
-		- Azure AD Connect, AAD Sync oder DirSync ist nur erforderlich, wenn Sie Ihre lokale Active Directory-Umgebung mit einem Azure AD-Verzeichnis synchronisieren. Wenn Sie nur ein Azure AD-Verzeichnis verwenden, das nicht synchronisiert ist, ist keine Synchronisierung erforderlich.
+> [AZURE.NOTE]  Lizenzen sind für Benutzer verfügbar, die über Azure MFA, Azure AD Premium oder Enterprise Mobility Suite (EMS) verfügen. MFA ist in Azure AD Premium und in EMS enthalten. Wenn Sie über genügend Lizenzen verfügen, müssen Sie keinen Authentifizierungsanbieter erstellen.
 		
 
-
-
-5. Nach dem Klicken auf „Erstellen“ wird der Multi-Factor Authentication-Anbieter erstellt, und es wird die folgende Meldung angezeigt: „Der Anbieter für Multi-Factor Authentication wurde erstellt.“ Klicken Sie auf "OK".
-
-![MFA-Anbieter erstellen](./media/multi-factor-authentication-get-started-cloud/provider.png)
-	 
-## Zuweisen einer Azure MFA-, Azure AD Premium- oder Enterprise Mobility-Lizenz zu Benutzern
-
-Wenn Sie Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen erworben haben, müssen Sie keinen Multi-Factor Auth-Anbieter erstellen. Sie müssen lediglich die Lizenzen Ihren Benutzern zuweisen und dann können Sie sie für MFA aktivieren.
-
-### So weisen Sie eine Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenz zu
---------------------------------------------------------------------------------
-
-1. Melden Sie sich beim Azure-Portal als Administrator an.
-2. Wählen Sie im linken Bereich **Active Directory** aus.
-3. Doppelklicken Sie auf der Seite "Active Directory" auf das Verzeichnis mit den Benutzern, die Sie aktivieren möchten.
-4. Wählen Sie oben auf der Seite des Verzeichnisses die Option **Lizenzen** aus.
-5. Wählen Sie auf der Seite „Lizenzen“ die Option „Multi-Factor Authentication“, „Active Directory Premium“ oder „Enterprise Mobility Suite“ aus, und klicken Sie dann auf „Zuweisen“. ![Lizenzen zuweisen](./media/multi-factor-authentication-get-started-cloud/license2.png)
-6. Wählen Sie im Dialogfeld die Benutzer oder Gruppen aus, denen Sie Lizenzen zuweisen möchten, und klicken Sie dann auf das Häkchen, um die Änderungen zu speichern.
-
-
-
-
-
-
 ## Aktivieren von Multi-Factor Authentication für Benutzer
-
-Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Zustände aufweisen:
-
-Zustand | Beschreibung |Nicht-Browser-Apps betroffen| Hinweise 
-:-------------: | :-------------: |:-------------: |:-------------: |
-Deaktiviert | Der Standardzustand für einen neuen Benutzer, der nicht für Multi-Factor Authentication registriert ist.|Nein|Der Benutzer verwendet keine Multi-Factor Authentication.
-Aktiviert |Der Benutzer wurde für Multi-Factor Authentication registriert.|Nein. Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist.|Der Benutzer ist aktiviert, seine Registrierung ist jedoch nicht abgeschlossen. Er wird beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen.
-Erzwungen|Der Benutzer wurde registriert und hat die Registrierung für die Verwendung von Multi-Factor Authentication abgeschlossen.|Ja. Für Apps sind App-Kennwörter erforderlich. | Der Benutzer hat die Registrierung abgeschlossen oder nicht abgeschlossen. Wenn er die Registrierung abgeschlossen hat, verwendet er anschließend Multi-Factor Authentication. Andernfalls wird der Benutzer beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen.
+Zur Aktivierung von Multi-Factor Authentication für einen Benutzer muss lediglich der Zustand des Benutzers von „Deaktiviert“ in „Aktiviert“ geändert werden. Weitere Informationen zu Benutzerzuständen finden Sie unter [User States in Azure Multi-Factor Authentication](multi-factor-authentication-get-started-user-states.md) (Benutzerzustände in Azure Multi-Factor Authentication).
 
 Gehen Sie wie unten angegeben vor, um MFA für die Benutzer zu aktivieren.
 
 ### So aktivieren Sie Multi-Factor Authentication
 --------------------------------------------------------------------------------
-1.  Melden Sie sich beim Azure-Portal als Administrator an.
-2.  Klicken Sie im linken Bereich auf "Active Directory".
-3.  Klicken Sie unter "Verzeichnis" auf das Verzeichnis für den Benutzer, dem Sie die Erlaubnis erteilen möchten.
-4.  Klicken Sie oben auf "Benutzer".
-5.  Klicken Sie unten auf der Seite auf "Verwalten der Multi-Factor Authentication".
-6.  Suchen Sie den Benutzer, für den Sie Multi-Factor Authentication aktivieren möchten. Sie müssen möglicherweise oben die Ansicht ändern. Stellen Sie sicher, dass der Status „Deaktiviert“ lautet, und aktivieren Sie das Kontrollkästchen neben seinem Namen.
-7.  Klicken Sie auf der rechten Seite auf „Aktivieren“. Klicken Sie auf "Multi-Factor Authentication aktivieren".
-8.  Es wird empfohlen, dass Sie den Benutzer per E-Mail benachrichtigen, nachdem Sie ihn aktiviert haben. Diese sollte auch eine Information dazu enthalten, wie Benutzer ihre Nicht-Browser-Apps verwenden können, um eine Sperrung zu vermeiden.
+1.  Melden Sie sich beim klassischen Azure-Portal als Administrator an.
+2.  Klicken Sie im linken Bereich auf **Active Directory**.
+3.  Klicken Sie unter **Verzeichnis** auf das Verzeichnis für den Benutzer, den Sie aktivieren möchten. ![Auf „Verzeichnis“ klicken](./media/multi-factor-authentication-get-started-cloud/directory1.png)
+4.  Klicken Sie oben auf **Benutzer**.
+5.  Klicken Sie unten auf der Seite auf **Multi-Factor Auth verwalten**. ![Auf „Verzeichnis“ klicken](./media/multi-factor-authentication-get-started-cloud/manage1.png)
+6.  Dadurch wird eine neue Browserregisterkarte geöffnet. Suchen Sie den Benutzer, für den Sie Multi-Factor Authentication aktivieren möchten. Sie müssen möglicherweise oben die Ansicht ändern. Vergewissern Sie sich, dass der Status **Deaktiviert** lautet. ![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/enable1.png)
+7.  Aktivieren Sie das Kontrollkästchen neben dem gewünschten Namen.
+7.  Klicken Sie auf der rechten Seite auf **Aktivieren**. ![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/user1.png)
+8.  Klicken Sie auf **Multi-Factor Auth aktivieren**. ![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/enable2.png)
+9.  Der Zustand des Benutzers wird von **Deaktiviert** in **Aktiviert** geändert. ![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/user.png)
+10.  Es wird empfohlen, dass Sie den Benutzer per E-Mail benachrichtigen, nachdem Sie ihn aktiviert haben. Diese sollte auch eine Information dazu enthalten, wie Benutzer ihre Nicht-Browser-Apps verwenden können, um eine Sperrung zu vermeiden.
 
-<center>![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/user.png)</center>
 
-Um den Status mit Windows PowerShell zu ändern, können Sie wie folgt vorgehen: Sie können `$st.State` in einen der erwähnten Status ändern.
+## Automatisieren der Aktivierung von Multi-Factor Authentication mithilfe von PowerShell
 
+Sie können den Zustand[](multi-factor-authentication-whats-next.md) mithilfe von [Azure AD PowerShell](powershell-install-configuremd) auf folgende Weise ändern. `$st.State` kann auf einen der folgenden Zustände festgelegt werden:
+
+
+- Aktiviert
+- Erzwungen
+- Deaktiviert  
+
+> [AZURE.IMPORTANT]  Hinweis: Bei einem direkten Wechsel von „Deaktiviert“ zu „Erzwungen“ können ältere Authentifizierungsclients nicht mehr verwendet werden, da der Benutzer die MFA-Registrierung nicht durchlaufen und kein [App-Kennwort](multi-factor-authentication-whats-next.md#app-passwords) bezogen hat. Sollten Sie über ältere Authentifizierungsclients verfügen und App-Kennwörter benötigen, empfiehlt es sich, von „Deaktiviert“ zu „Aktiviert“ zu wechseln. So können sich Benutzer registrieren und ihr App-Kennwort beziehen.
+		
 		$st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
 		$st.RelyingParty = "*"
 		$st.State = “Enabled”
 		$sta = @($st)
 		Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
-
-## Senden einer E-Mail an Endbenutzer
-
-Nachdem Sie die Benutzer aktiviert haben, senden Sie ihnen eine E-Mail, um sie zu informieren, dass sie ihre Kontaktinformationen angeben müssen. Unten ist eine E-Mail-Vorlage angegeben, die Sie verwenden können. Sie enthält einen Link zu einem Video, das sich die Benutzer ansehen können.
-
-		Subject: ACTION REQUIRED: Your password for Outlook and other apps needs updated
-
-		Body:
-
-		For added security, we have enabled multi-factor authentication for your account. 
-
-		Action Required: You will need to complete the enrollment steps below to make your account secure with multi-factor authentication.  
-
-		What to expect once MFA is enabled:
-
-		Multi-factor authentication requires a password that you know and a phone that you have in order to sign into browser applications and to access Office 365, Azure portals.
-
-		For Office 365 non-browser applications such as outlook, lync, a mail client on your mobile device etc, a special password called an app password is required instead of your account password to sign in. App passwords are different than your account password, and are generated during the multi-factor authentication set up process. 
-
-		Please follow these enrollment steps to avoid interruption of your Office 365 service:
-
-			1.  Sign in to the Office 365 Portal at http://portal.microsoftonline.com.
-			2.  Follow the instructions to set up your preferred multi-factor authentication method when signing into Office 365 using a web browser. 
-			3.  Create one app password for each device.
-			4.  Enter the same app password in all applicable apps on that device e.g. Outlook, Mail client, Lync, Word, Powerpoint, Excel, CRM etc. 
-			5.  Update your Office client applications or other mobile applications to use an app password.
-
-		You can visit http://aka.ms/mfasetup to create app passwords or change your MFA Setting.  Please bookmark this.
-
-		NOTE: Before entering an app password, you will need to clear the sign-in information (delete sign-in info), restart the application, and sign in with the username and app password. Follow the steps documented: http://technet.microsoft.com/library/dn270518.aspx#apppassword.
+Die Verwendung von PowerShell ist eine Option für die Massenaktivierung von Benutzern. Derzeit steht im Azure-Portal keine Option für eine Massenaktivierung zur Verfügung, sodass jeder Benutzer einzeln ausgewählt werden muss. Dies kann bei einer großen Anzahl von Benutzern äußerst aufwendig sein. Mithilfe eines PowerShell-Skripts mit den obigen Angaben können Sie eine Liste mit Benutzern durchlaufen und die Benutzer aktivieren. Beispiel:
+    
+    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
+    foreach ($user in $users)
+    {
+    	$st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+    	$st.RelyingParty = "*"
+    	$st.State = “Enabled”
+    	$sta = @($st)
+    	Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
+    }
 
 
-		Watch a video showing these steps at http://g.microsoftonline.com/1AX00en/175.
-
-		Best Regards,
-		Your Administrator
+Weitere Informationen zu Benutzerzuständen finden Sie unter [User States in Azure Multi-Factor Authentication](multi-factor-authentication-get-started-user-states.md) (Benutzerzustände in Azure Multi-Factor Authentication).
 
 ## Nächste Schritte
-Nachdem Sie die Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
+Nachdem Sie die Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication].
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

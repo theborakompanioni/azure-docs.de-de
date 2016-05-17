@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako,anilmur" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
- 	ms.date="05/03/2016" 
+ 	ms.date="05/05/2016" 
 	ms.author="juliako"/>
 
 
@@ -26,7 +26,7 @@
 
 In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines **Kanals** geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird.
 
->[AZURE.NOTE]Weitere konzeptuelle Informationen zu Kanälen, bei denen Livecodierung aktiviert ist, finden Sie unter [Arbeiten mit Kanälen, von denen Livecodierung von Single-Bitrate- in Multi-Bitrate-Livedatenströme ausgeführt wird](media-services-manage-live-encoder-enabled-channels.md).
+>[AZURE.NOTE]Weitere grundlegende Informationen zu Kanälen, die für Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 ##Allgemeines Livestreamingszenario
 
@@ -109,7 +109,7 @@ Um die Anzahl der Einheiten zu ändern, die für das Streaming reserviert sind, 
 2.	Wählen Sie die Seite KANÄLE aus.
 3.	Klicken Sie auf „Hinzufügen“, um einen neuen Kanal hinzuzufügen.
 
-Wählen Sie **Standard** als Codierungstyp aus. Mit diesem Typen geben Sie an, dass Sie einen Kanal erstellen möchten, der für Livecodierung aktiviert ist. Dies bedeutet, dass der eingehende Single-Bitrate-Datenstrom an den Kanal gesendet und mithilfe angegebener Liveencodereinstellungen in einen Multi-Bitrate-Datenstrom codiert wird. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, von denen Livecodierung von Single-Bitrate- in Multi-Bitrate-Livedatenströme ausgeführt wird](media-services-manage-live-encoder-enabled-channels.md).
+Wählen Sie **Standard** als Codierungstyp aus. Mit diesem Typen geben Sie an, dass Sie einen Kanal erstellen möchten, der für Livecodierung aktiviert ist. Dies bedeutet, dass der eingehende Single-Bitrate-Datenstrom an den Kanal gesendet und mithilfe angegebener Liveencodereinstellungen in einen Multi-Bitrate-Datenstrom codiert wird. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 ![standard0][standard0]
 
@@ -119,7 +119,7 @@ Beim Codierungstyp **Standard** gibt es die folgenden gültigen Erfassungsprotok
 - Single-Bitrate-RTMP
 - RTP (MPEG-TS): MPEG-2-Transportdatenstrom über RTP
 
-Ausführliche Erläuterungen der Protokolle finden Sie unter [Arbeiten mit Kanälen, von denen Livecodierung von Single-Bitrate- in Multi-Bitrate-Livedatenströme ausgeführt wird](media-services-manage-live-encoder-enabled-channels.md).
+Ausführliche Informationen zu den einzelnen Protokollen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 ![standard1][standard1]
 
@@ -127,7 +127,7 @@ Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zu
 
 Auf der Seite **Werbung – Konfiguration** können Sie eine Quelle für AD-Markersignale angeben. Wenn Sie das Portal verwenden, können Sie nur den Wert „API“ auswählen. Dies bedeutet, dass vom Liveencoder im Kanal eine asynchrone AD-Marker-API überwacht werden soll. Wenn Sie das Portal verwenden, können Sie nur den Wert „API“ auswählen.
 
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, von denen Livecodierung von Single-Bitrate- in Multi-Bitrate-Livedatenströme ausgeführt wird](media-services-manage-live-encoder-enabled-channels.md).
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 ![standard2][standard2]
 
@@ -148,7 +148,7 @@ Nachdem Sie den Kanal erstellt haben, können Sie die Registerkarte **ENCODER** 
 
 ![standard5][standard5]
 
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, von denen Livecodierung von Single-Bitrate- in Multi-Bitrate-Livedatenströme ausgeführt wird](media-services-manage-live-encoder-enabled-channels.md).
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 
 ##Abrufen von Erfassungs-URLs
@@ -276,4 +276,4 @@ Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Res
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

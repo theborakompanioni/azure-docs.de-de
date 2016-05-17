@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="05/06/2016"
 	ms.author="sethm"/>
 
 
@@ -25,7 +25,7 @@ In diesem Artikel wird die Verwendung des Service Bus Relay-Diensts beschrieben.
 
 ## Was ist Service Bus Relay?
 
-Der [Service Bus *Relay*-Dienst](service-bus-relay-overview.md) ermöglicht Ihnen die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Rechenzentrum als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Service Bus Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung geöffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
+Der [Service Bus *Relay*-Dienst](service-bus-relay-overview.md) ermöglicht Ihnen die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Rechenzentrum als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Service Bus Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung eröffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
 
 ![Relaykonzepte](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
@@ -35,7 +35,7 @@ In diesem Artikel wird gezeigt, wie mit dem Service Bus Relay-Dienst ein mithilf
 
 ## Erstellen eines Dienstnamespaces
 
-Wenn Sie mit der Verwendung des Service Bus Relays in Azure beginnen möchten, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
+Wenn Sie mit der Verwendung des Service Bus Relays in Azure beginnen möchten, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
 
 So erstellen Sie einen Dienstnamespace:
 
@@ -65,11 +65,9 @@ So erstellen Sie einen Dienstnamespace:
 
 Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. das Erstellen einer Relayverbindung für den neuen Namespace, müssen Sie die SAS-Autorisierungsregel (Shared Access Signature) für den Namespace konfigurieren. Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus][].
 
-1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste verfügbarer Namespaces anzuzeigen. 
-	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
+1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste verfügbarer Namespaces anzuzeigen. ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
 
-2.  Doppelklicken Sie in der angezeigten Liste auf den Namen des Namespaces, den Sie soeben erstellt haben. 
-	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png)
+2.  Doppelklicken Sie in der angezeigten Liste auf den Namen des Namespaces, den Sie soeben erstellt haben. ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png)
 
 3.  Klicken Sie oben auf der Seite auf die Registerkarte **Konfigurieren**.
 
@@ -77,9 +75,7 @@ Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. das Erstellen einer Re
 
 ## Abrufen des NuGet-Pakets "Service Bus"
 
-Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Die NuGet Visual Studio-Erweiterung ermöglicht eine problemlose Installation und Aktualisierung von Bibliotheken und Tools in Visual Studio und Visual Studio Express. Das NuGet-Paket "Service Bus" stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar.
-
-Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
+Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
 
 1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach das folgende Dialogfeld.
@@ -267,8 +263,8 @@ Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das folgen
 
 Nachdem Sie nun mit den Grundlagen des Service Bus Relay-Diensts vertraut sind, können Sie auf die Informationen unter den folgenden Links zugreifen und sich weiter informieren.
 
+- [Übersicht über Service Bus-Relaymessaging](service-bus-relay-overview.md)
 - [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
-- [Verwenden des Service Bus Relay-Diensts](service-bus-dotnet-how-to-use-relay.md)
 - Laden Sie Service Bus-Beispiele unter [Azure-Beispiele][] herunter, oder sehen Sie sich die [Übersicht über Service Bus-Beispiele][] an.
 
   [klassischen Azure-Portal]: http://manage.windowsazure.com
@@ -276,4 +272,4 @@ Nachdem Sie nun mit den Grundlagen des Service Bus Relay-Diensts vertraut sind, 
   [Azure-Beispiele]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Übersicht über Service Bus-Beispiele]: service-bus-samples.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

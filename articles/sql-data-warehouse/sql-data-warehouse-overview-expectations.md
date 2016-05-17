@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/19/2016"
+   ms.date="05/05/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 
@@ -72,10 +72,11 @@ Während der Vorschau wird SQL Data Warehouse in regelmäßigen Abständen aktua
 <!--Image references-->
 
 <!--Article references-->
+[ein Supportticket zu erstellen]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Erste Schritte]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

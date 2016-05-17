@@ -4,7 +4,12 @@
 
 3. Wählen Sie für die **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue (verwenden Sie dabei den gleichen Namen wie für die App).
  
-4. Wählen Sie für den **App Service-Plan** einen vorhandenen App Service-Plan aus, oder [erstellen Sie einen neuen Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan). Klicken Sie auf **Erstellen**. Dadurch wird das Back-End für mobile Apps erstellt. Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App.
+
+ Sie können einen anderen vorhandenen App Service-Plan auswählen oder einen neuen Plan erstellen. Weitere Informationen zu App Services-Plänen sowie zum Erstellen eines neuen Plans in einem anderen Tarif und am gewünschten Standort finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+
+4. Für den **App Service-Plan** ist der Standardplan (im [Standard-Tarif](https://azure.microsoft.com/pricing/details/app-service/)) ausgewählt. Sie können auch einen anderen Plan auswählen oder [einen neuen Plan erstellen](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan). Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App. 
+
+	Nachdem Sie den Plan festgelegt haben, klicken Sie auf **Erstellen**. Dadurch wird das Back-End für mobile Apps erstellt.
 	
 6. Klicken Sie auf dem Blatt **Einstellungen** für das neue Back-End für mobile Apps auf **Schnellstart** > Ihre Clientanwendungsplattform > **Verbindung mit Datenbank herstellen**.
 
@@ -20,5 +25,3 @@
 
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com/
-
-<!---HONumber=AcomDC_0504_2016-->

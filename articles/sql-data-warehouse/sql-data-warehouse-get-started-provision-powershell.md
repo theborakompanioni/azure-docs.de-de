@@ -77,7 +77,7 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [Beispieldaten laden]: sql-data-warehouse-get-started-manually-load-samples.md
 [PowerShell-Cmdlets und REST-APIs]: sql-data-warehouse-reference-powershell-cmdlets.md
 [firewall rules]: sql-database-configure-firewall-settings.md
-[Installieren und Konfigurieren von Azure PowerShell]: powershell-install-configure.md
+[Installieren und Konfigurieren von Azure PowerShell]: ../powershell/powershell-install-configure.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references--> 
@@ -90,4 +90,4 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [SQL Data Warehouse – Preise]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

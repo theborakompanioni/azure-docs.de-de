@@ -16,7 +16,9 @@
  ms.date="04/29/2016"
  ms.author="elfarber"/>
 
-# Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (Vorschau)
+# Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)
+
+[AZURE.INCLUDE [iot-hub-device-management-get-started-selector](../../includes/iot-hub-device-management-get-started-selector.md)]
 
 ## Einführung
 Um die Azure IoT Hub-Geräteverwaltung verwenden zu können, müssen Sie zunächst einen Azure IoT Hub erstellen, Geräte im IoT Hub bereitstellen und mehrere simulierte Geräten starten. In diesem Tutorial werden die entsprechenden Schritte erläutert.
@@ -50,14 +52,16 @@ Sie müssen einen IoT Hub mit Geräteverwaltungsfunktionen erstellen, mit dem Ih
   -   Geben Sie im Feld **Name** einen Namen für Ihren IoT Hub ein. Wenn der **Name** gültig und verfügbar ist, wird im Feld **Name** ein grünes Häkchen angezeigt.
   -   Wählen Sie eine **Preis- und Skalierungsstufe** aus. Für dieses Tutorial ist keine bestimmte Stufe erforderlich.
   -   Erstellen Sie in **Ressourcengruppe** eine neue Ressourcengruppe, oder wählen Sie eine vorhandene aus. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen].
-  -   Aktivieren Sie das Kontrollkästchen zum Aktivieren der Geräteverwaltung.
-  -   Wählen Sie unter **Standort** den Standort aus, an dem Ihr IoT Hub gehostet werden soll. Die IoT Hub-Geräteverwaltung ist nur in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ verfügbar.
+  -   Aktivieren Sie das Kontrollkästchen **Enable Device Management** (Geräteverwaltung aktivieren).
+  -   Wählen Sie unter **Standort** den Standort aus, an dem Ihr IoT Hub gehostet werden soll. Die IoT Hub-Geräteverwaltung ist nur in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ verfügbar. Künftig wird sie in allen Regionen verfügbar sein.
 
-4.  Wenn Sie die Konfigurationsoptionen für Ihren IoT Hub ausgewählt haben, klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann einige Minuten dauern. Den Status können Sie im Startmenü oder im Benachrichtigungsbereich überwachen.
+    > [AZURE.NOTE]  Wenn sie das Kontrollkästchen **Enable Device Management** (Geräteverwaltung aktivieren) nicht aktivieren, können die Beispiele nicht ausgeführt werden.
+
+4.  Wenn Sie die Konfigurationsoptionen für Ihren IoT Hub ausgewählt haben, klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann einige Minuten dauern. Den Status können Sie im **Startmenü** oder im **Benachrichtigungsbereich** überwachen.
 
 	![][img-monitor]
 
-5.  Öffnen Sie nach erfolgreicher Erstellung des IoT Hubs das Blatt für den neuen IoT Hub, notieren Sie sich den Hostnamen, und klicken Sie dann auf das Schlüsselsymbol.
+5.  Nachdem Sie den IoT Hub erstellt haben, öffnen Sie das Blatt für den neuen IoT Hub, notieren Sie sich den **Hostnamen**, und klicken Sie dann auf das **Schlüsselsymbol**.
 
 	![][img-keys]
 
@@ -75,27 +79,27 @@ In diesem Abschnitt wird ein Skript ausgeführt, das das simulierte Gerät und d
 
 Gehen Sie wie folgt vor, um die Beispiele zu erstellen und Geräte in Ihrem IoT Hub bereitzustellen:
 
-1.  Öffnen Sie die Developer-Eingabeaufforderung für VS2015.
+1.  Öffnen Sie die **Developer-Eingabeaufforderung für VS2015**.
 
 2.  Klonen Sie das GitHub-Repository. **Das Zielverzeichnis für den Klonvorgang darf keine Leerzeichen enthalten.**
 
-  ```
-  git clone --recursive --branch dmpreview https://github.com/Azure/azure-iot-sdks.git
-  ```
+	  ```
+	  git clone --recursive --branch dmpreview https://github.com/Azure/azure-iot-sdks.git
+	  ```
 
 3.  Navigieren Sie in dem Stammordner, in dem Sie das Repository **azure-iot-sdks** geklont haben, zum Ordner **\\azure-iot-sdks\\csharp\\service\\samples**, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei den Platzhalterwert durch die Verbindungszeichenfolge aus dem vorherigen Abschnitt:
 
-  ```
-  setup.bat <IoT Hub Connection String>
-  ```
+	  ```
+	  setup.bat <IoT Hub Connection String>
+	  ```
 
 Das Skript bewirkt Folgendes:
 
-1.  Es führt **cmake** aus, um eine Visual Studio 2015-Projektmappe für das simulierte Gerät zu erstellen. Projektdatei: **azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj**. Die Quelldateien befinden sich im Ordner ****azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample**.
+1.  Es führt **cmake** aus, um eine Visual Studio 2015-Projektmappe für das simulierte Gerät zu erstellen. Die Projektdatei ist **azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj**. Die Quelldateien befinden sich im Ordner ****azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample**.
 
 2.  Es erstellt das Projekt **iotdm\_simple\_sample.vcxproj** für das simulierte Gerät.
 
-3.  Es erstellt Geräteverwaltungsbeispiele: **azure-iot-sdks\\csharp\\service\\samples\\GetStartedWithIoTDM\\GetStartedWithIoTDM.sln**.
+3.  Es erstellt die Geräteverwaltungsbeispiele **azure-iot-sdks\\csharp\\service\\samples\\GetStartedWithIoTDM\\GetStartedWithIoTDM.sln**.
 
 4.  Es führt **GenerateDevices.exe** aus, um Geräteidentitäten in Ihrem IoT Hub bereitzustellen. Die Geräte werden in **sampledevices.json** (im Ordner **azure-iot-sdks\\node\\service\\samples**) beschrieben. Nach der Bereitstellung der Geräte werden die Anmeldeinformationen in der Datei **devicecreds.txt** (im Ordner **azure-iot-sdks\\csharp\\service\\samples\\bin** Ordner) gespeichert.
 
@@ -129,9 +133,9 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 
 - [Gewusst wie: Verwenden des Gerätezwillings][lnk-tutorial-twin]
 
-- [Gewusst wie: Suchen nach Gerätezwillingen mithilfe von Abfragen][lnk-tutorial-queries]
+- [Suchen nach Gerätezwillingen mithilfe von Abfragen][lnk-tutorial-queries]
 
-- [Gewusst wie: Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen][lnk-tutorial-jobs]
+- [Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen][lnk-tutorial-jobs]
 
 <!-- images and links -->
 [img-new-hub]: media/iot-hub-device-management-get-started/image1.png
@@ -148,4 +152,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-tutorial-queries]: iot-hub-device-management-device-query.md
 [lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

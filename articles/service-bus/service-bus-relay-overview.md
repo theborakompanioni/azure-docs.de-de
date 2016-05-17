@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="05/06/2016"
 	ms.author="sethm"/>
 
 
@@ -31,11 +31,11 @@ Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mi
 
 ## Nächste Schritte
 
-Ausführliche Informationen zu Service Bus Relay finden Sie in den folgenden Themen.
+Weitere Informationen zu Service Bus Relay finden Sie in den folgenden Themen:
 
 - [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 - [Verwenden des Service Bus Relay-Diensts](service-bus-dotnet-how-to-use-relay.md)
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

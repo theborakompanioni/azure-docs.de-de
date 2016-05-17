@@ -34,7 +34,7 @@ In dieser exemplarischen Vorgehensweise wird das Verbinden mit und Abfragen eine
 
 ## Abrufen des vollqualifizierten Namens des SQL Azure-Servers
 
-Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers (***Servername**.database.windows.net*), auf dem sich die Datenbank befindet.
+Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers (****Servername**.database.windows.net*), auf dem sich die Datenbank befindet.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zu der Datenbank, mit der Sie eine Verbindung herstellen möchten.
@@ -83,4 +83,4 @@ Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versu
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->
