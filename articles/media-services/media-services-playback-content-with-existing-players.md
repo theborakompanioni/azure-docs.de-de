@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016" 
+ 	ms.date="05/03/2016" 
 	ms.author="juliako"/>
 
 
@@ -50,7 +50,7 @@ Verwenden Sie [Azure Media Player](http://amsplayer.azurewebsites.net/azuremedia
 
 ####AES-verschlüsselt mit Token 
 
-[http://aestoken.azurewebsites.net]("http://aestoken.azurewebsites.net)
+[http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
 ###Silverlight-Player
 
@@ -93,4 +93,4 @@ Informationen zum Entwickeln eigener Player finden Sie unter [Entwickeln von Vid
  
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

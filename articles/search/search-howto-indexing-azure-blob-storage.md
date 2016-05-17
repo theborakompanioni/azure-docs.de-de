@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="03/08/2016"
+ms.date="05/03/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
@@ -29,14 +29,15 @@ Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außer
 
 Ein Indexer ist die Ressource, die Datenquellen mit Zielsuchindizes verbindet.
 
-Führen Sie zum Einrichten eines Blobindexers folgende Schritte aus:
+Führen Sie zum Einrichten der Blobindizierung folgende Schritte aus:
 
 1. Erstellen Sie eine Datenquelle vom Typ `azureblob`, von der auf einen Container (und optional einen Ordner in diesem Container) in einem Azure-Speicherkonto verwiesen wird.
 	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter.
 	- Geben Sie einen Containernamen an. Sie können optional auch einen Ordner mit dem Parameter `query` einschließen.
-2. Erstellen Sie den Indexer, indem Sie die Datenquelle mit einem vorhandenen Zielindex verbinden (erstellen Sie den Index, falls er noch nicht vorhanden ist).
+2. Erstellen Sie einen Suchindex mit einem durchsuchbaren `content`-Feld. 
+3. Erstellen Sie den Indexer, indem Sie die Datenquelle mit dem Zielindex verbinden.
 
-Dies wird im folgenden Beispiel veranschaulicht:
+### Erstellen der Datenquelle
 
 	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -49,7 +50,27 @@ Dies wird im folgenden Beispiel veranschaulicht:
 	    "container" : { "name" : "my-container", "query" : "my-folder" }
 	}   
 
-Als Nächstes erstellen Sie einen Indexer, der auf die Datenquelle und einen Zielindex verweist. Beispiel:
+Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](search-api-indexers-2015-02-28-preview.md#create-data-source).
+
+### Erstellen des Index 
+
+	POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+  		"name" : "my-target-index",
+  		"fields": [
+    		{ "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+    		{ "name": "content", "type": "Edm.String", "searchable": true }
+  		]
+	}
+
+Weitere Informationen über die API zum Erstellen eines Index finden Sie unter [Index erstellen](https://msdn.microsoft.com/library/dn798941.aspx)
+
+### Erstellen eines Indexers 
+
+Zuletzt erstellen Sie einen Indexer, der auf die Datenquelle und einen Zielindex verweist. Beispiel:
 
 	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -61,6 +82,8 @@ Als Nächstes erstellen Sie einen Indexer, der auf die Datenquelle und einen Zie
 	  "targetIndexName" : "my-target-index",
 	  "schedule" : { "interval" : "PT2H" }
 	}
+
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](search-api-indexers-2015-02-28-preview.md#create-indexer).
 
 
 ## Unterstützte Dokumentformate
@@ -144,7 +167,7 @@ Hier wird beschrieben, wie Sie Feldzuordnungen hinzufügen und die Base64-Codier
 	  "parameters" : { "base64EncodeKeys": true }
 	}
 
-> [AZURE.NOTE] Weitere Informationen zu Feldzuordnungen finden Sie in [diesem Artikel](search-indexers-customization.md).
+> [AZURE.NOTE] Weitere Informationen zu Feldzuordnungen finden Sie in [diesem Artikel](search-indexer-field-mappings.md).
 
 ## Inkrementelle Indizierung und Erkennung von Löschungen
 
@@ -209,9 +232,54 @@ AzureSearch\_SkipContent | „true“ | Weist den Blobindexer an, nur die Metada
 <a name="IndexerParametersConfigurationControl"></a>
 ## Verwenden von Indexerparametern zum Steuern des Extrahierens von Dokumenten
 
-Falls Sie Metadaten extrahieren müssen, aber die Inhaltsextraktion für alle Blobs überspringen wollen, können Sie dieses Verhalten durch die Indexerkonfiguration anfordern, statt `AzureSearch_SkipContent`-Metadaten zu jedem Blob einzeln hinzuzufügen. Legen Sie zu diesem Zweck im `parameters`-Objekt die `skipContent`-Konfigurationseigenschaft auf `true` fest:
+Mehrere Konfigurationsparameter stehen für den Indexer zur Verfügung, mit denen gesteuert werden kann, welche Blobs und welche Teile des Inhalts und der Metadaten eines Blobs indiziert werden.
 
- 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+### Indizieren von Blobs mit bestimmten Dateierweiterungen
+
+Sie können nur die Blobs mit den Dateierweiterungen indizieren, die Sie über den `indexedFileNameExtensions`-Konfigurationsparameter des Indexers angeben. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise nur die PDF- und DOCX-Blobs zu indizieren, gehen Sie folgendermaßen vor:
+
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
+	}
+
+### Ausschließen von Blobs mit bestimmten Dateierweiterungen von der Indizierung
+
+Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie verhindern, dass Blobs mit bestimmten Dateierweiterungen indiziert werden. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise alle Blobs mit Ausnahme von Blobs mit den Erweiterungen PNG und JPEG zu indizieren, gehen Sie folgendermaßen vor:
+
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
+	}
+
+Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden sind, untersucht Azure Search zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions`. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
+
+### Indizieren von Speichermetadaten
+
+Mithilfe der Konfigurationseigenschaft `indexStorageMetadataOnly` können Sie nur die Speichermetadaten indizieren und den Prozess der Dokumentextrahierung vollständig überspringen. Dies ist hilfreich, wenn Sie weder den Inhalt des Dokuments noch die inhaltstypspezifischen Metadateneigenschaften benötigen. Legen Sie dazu die `indexStorageMetadataOnly`-Eigenschaft auf `true` fest:
+
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "indexStorageMetadataOnly" : true } }
+	}
+
+### Indizieren von Speicher- und Inhaltstyp-Metadaten und Überspringen der Inhaltsextrahierung
+
+Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs überspringen möchten, können Sie dieses Verhalten durch die Indexerkonfiguration anfordern, statt jedem einzelnen Blob `AzureSearch_SkipContent`-Metadaten hinzuzufügen. Legen Sie zu diesem Zweck die `skipContent`-Konfigurationseigenschaft des Indexers auf `true` fest:
+
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
 	api-key: [admin key]
 
@@ -224,4 +292,4 @@ Falls Sie Metadaten extrahieren müssen, aber die Inhaltsextraktion für alle Bl
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

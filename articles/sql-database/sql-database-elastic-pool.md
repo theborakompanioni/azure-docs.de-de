@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Pool für elastische Datenbanken für SQL-Datenbanken | Microsoft Azure"
+	pageTitle="Was ist ein Azure-Pool für elastische Datenbanken? | Microsoft Azure"
 	description="Verwalten Sie hunderte oder tausende Datenbanken mithilfe eines Pools. Ein Preis für einen Satz Leistungseinheiten kann über den Pool verteilt werden. Verschieben Sie die Datenbanken je nach Wunsch in den oder aus dem Pool."
 	keywords="elastische Datenbank, SQL-Datenbanken"
 	services="sql-database"
@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/04/2016"
+	ms.date="04/28/2016"
 	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -20,9 +20,7 @@
 
 # Was ist ein Azure-Pool für elastische Datenbanken?
 
-Ein SaaS-Entwickler muss Dutzende, Hunderte oder sogar Tausende von SQL-Datenbanken erstellen und verwalten. Ein Pool für elastische Datenbanken erleichtert die Erstellung, Wartung und Leistungsverwaltung über zahlreiche Datenbanken hinweg. Fügen Sie dem Pool je nach Bedarf Datenbanken hinzu, oder entfernen Sie diese. Weitere Informationen finden Sie unter [Erstellen eines skalierbaren Pools für elastische SQL-Datenbanken im Azure-Portal](sql-database-elastic-pool-create-portal.md), mithilfe von [PowerShell](sql-database-elastic-pool-create-powershell.md) oder [C#](sql-database-elastic-pool-csharp.md).
-
-Weitere Informationen zur API und zu Fehlern finden Sie unter [Referenz für Pools für elastische Datenbanken](sql-database-elastic-pool-reference.md).
+Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar.
 
 ## So funktioniert's
 
@@ -49,22 +47,33 @@ Datenbanken, die für Pools für elastische Datenbanken besonders geeignet sind,
 
 > [AZURE.NOTE] Pools für elastische Datenbanken sind derzeit als Vorschauversion ausschließlich für Server mit SQL-Datenbank V12 verfügbar.
 
+## eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken
+
+[AZURE.INCLUDE [Tabelle der SQL-Datenbank-Dienstebenen für elastische Datenbanken](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
+
 ## Eigenschaften von Pools für elastische Datenbanken
-Grenzen von elastischen Pools und elastischen Datenbanken.
+
+### Beschränkungen für elastische Pools
 
 | Eigenschaft | Beschreibung |
 | :-- | :-- |
-| Dienstebene | Basic, Standard oder Premium. Die Dienstebene bestimmt den Bereich der Leistungs- und Speichergrenzen, die konfiguriert werden können, sowie die Wahlmöglichkeiten für die Geschäftskontinuität. Jede Datenbank innerhalb eines Pools hat die gleiche Dienstebene wie der Pool. „Dienstebene“ wird auch als „Edition“ bezeichnet.|
-| eDTU per pool | Maximale Anzahl von eDTUs, die von Datenbanken im Pool gemeinsam verwendet werden können. Die Gesamtanzahl der eDTUs, die von Datenbanken im Pool genutzt werden, kann diese Grenze zum gleichen Zeitpunkt nicht überschreiten. |
-| Storage per pool | Maximale Menge von Speicherplatz, die von Datenbanken im Pool gemeinsam verwendet werden kann. Der Gesamtspeicher, der von allen Datenbanken im Pool verwendet wird, kann diese Grenze nicht überschreiten. Die Grenze wird durch die eDTUs per Pool bestimmt. Wenn diese Grenze überschritten wird, werden alle Datenbanken zu schreibgeschützten Datenbanken. |
-| Max eDTU per database | Maximale Anzahl von eDTUs, die jede Datenbank im Pool verwenden darf; gilt für alle Datenbanken im Pool. Die maximale Anzahl eDTUs pro Datenbank ist keine Ressourcengarantie. |
-| Min eDTU per database | Die Mindestanzahl von eDTUs, die jeder Datenbank im Pool garantiert ist; sie gilt für alle Datenbanken im Pool. Die Mindestanzahl für eDTUs pro Datenbank kann auf 0 festgelegt werden. Beachten Sie, dass das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von eDTUs pro Datenbank nicht die tatsächliche Anzahl der eDTUs pro Pool übersteigen kann. |
+| Dienstebene | Basic, Standard oder Premium. Die Dienstebene bestimmt den Bereich der Leistungs- und Speichergrenzen, die konfiguriert werden können, sowie die Wahlmöglichkeiten für die Geschäftskontinuität. Jede Datenbank innerhalb eines Pools hat die gleiche Dienstebene wie der Pool. „Dienstebene“ wird auch als „Edition“ bezeichnet. |
+| eDTUs pro Pool | Die maximale Anzahl der eDTUs, die von Datenbanken im Pool gemeinsam verwendet werden können. Die Gesamtanzahl der eDTUs, die von Datenbanken im Pool genutzt werden, kann diese Grenze zum gleichen Zeitpunkt nicht überschreiten. |
+| Max. Speicherkapazität pro Pool (GB) | Der maximale Speicherplatz in GB, der von Datenbanken im Pool gemeinsam verwendet werden kann. Der Gesamtspeicher, der von allen Datenbanken im Pool verwendet wird, kann diese Grenze nicht überschreiten. Die Grenze wird durch die eDTUs per Pool bestimmt. Wenn diese Grenze überschritten wird, werden alle Datenbanken zu schreibgeschützten Datenbanken. |
+| Max. Anzahl von Datenbanken pro Pool | Die maximale Anzahl der pro Pool zulässigen Datenbanken. |
+| Max. gleichzeitige Worker pro Pool | Die maximale Anzahl der gleichzeitigen für alle Datenbanken im Pool verfügbaren Worker (Anforderungen). |
+| Max. gleichzeitige Anmeldungen pro Pool | Die maximale Anzahl der gleichzeitigen Anmeldungen für alle Datenbanken im Pool. |
+| Max. gleichzeitige Sitzungen pro Pool | Die maximale Anzahl der für alle Datenbanken im Pool verfügbaren Sitzungen. |
 
 
-## eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken
+### Beschränkungen für elastische Datenbanken
 
+| Eigenschaft | Beschreibung |
+| :-- | :-- |
+| Max. Anz. von eDTUs pro Datenbank | Die maximale Anzahl der eDTUs, die jede Datenbank im Pool bei Verfügbarkeit verwenden kann, basierend auf der Nutzung durch andere Datenbanken im Pool. Die maximale Anzahl der eDTUs pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Legen Sie die maximale Anzahl der eDTUs pro Datenbank hoch genug fest, sodass Spitzen bei der Datenbanknutzung verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind. Angenommen, die Spitzenauslastung pro Datenbank beträgt 20 eDTUs und betrifft nur 20 % der 100 Datenbanken im Pool. Wenn die eDTU-Höchstanzahl pro Datenbank auf 20 eDTUs festgelegt ist, ist es sinnvoll, die fünffache Mehrlast für den Pool einzuplanen und die eDTUs pro Pool auf 400 festzulegen. |
+| Min. Anz. von eDTUs pro Datenbank | Die minimale Anzahl der eDTUs, die für jede Datenbank im Pool garantiert werden können. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl der eDTUs pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist normalerweise auf einen Wert zwischen 0 und der durchschnittlichen eDTU-Nutzung pro Datenbank festgelegt. Beachten Sie, dass das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von eDTUs pro Datenbank nicht die tatsächliche Anzahl der eDTUs pro Pool übersteigen kann. Wenn ein Pool beispielsweise 20 Datenbanken umfasst und die Mindestanzahl der eDTUs pro Datenbank auf 10 eDTUs festgelegt hat, müssen mindestens 200 eDTUs pro Pool festgelegt sein. |
+| Max. Speicherkapazität pro Datenbank (GB) | Der maximale Speicherplatz für eine Datenbank in einem Pool. Elastische Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt.|
 
-[AZURE.INCLUDE [Tabelle der SQL-Datenbank-Dienstebenen für elastische Datenbanken](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
 ## Aufträge für die elastische Datenbank
 
@@ -74,33 +83,23 @@ Weitere Informationen zu anderen Tools finden Sie unter [SQL-Datenbank – Featu
 
 ## Funktionen der Geschäftskontinuität für Datenbanken in einem Pool
 
-Derzeit unterstützen elastische Datenbanken in der Vorschau die meisten [Funktionen der Geschäftskontinuität](sql-database-business-continuity.md), die auch für Einzeldatenbanken auf V12-Servern zur Verfügung stehen.
+Elastische Datenbanken unterstützen in der Regel die gleichen [Funktionen der Geschäftskontinuität](sql-database-business-continuity.md), die auch für Einzeldatenbanken auf V12-Servern zur Verfügung stehen.
+
 
 ### Point-in-Time-Wiederherstellung
 
-Datenbanken in einem Pool für elastische Datenbanken werden automatisch vom System gesichert, und die Aufbewahrungsrichtlinie für die Sicherung stimmt mit der entsprechenden Dienstebene für einzelne Datenbanken überein. Die Datenbanken der einzelnen Ebenen haben also jeweils einen anderen Wiederherstellungsbereich:
-
-* **Basic-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten sieben Tage möglich.
-* **Standard-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten 14 Tage möglich.
-* **Premium-Pool:** Die Wiederherstellung ist für jeden Zeitpunkt innerhalb der letzten 35 Tage möglich.
-
-Während der Vorschau werden Datenbanken in einem Pool als eine neue Datenbank im gleichen Pool wiederhergestellt. Gelöschte Datenbanken werden immer als eigenständige Datenbank außerhalb des Pools in der niedrigsten Leistungsstufe für diese Dienstebene wiederhergestellt. Beispielsweise wird eine elastische Datenbank in einem Standard-Pool, die gelöscht wird, als S0-Datenbank wiederhergestellt. Sie können Datenbank-Wiederherstellungsvorgänge über das Azure-Verwaltungsportal oder programmgesteuert mithilfe der REST-API ausführen. PowerShell-Cmdlet-Unterstützung wird demnächst zur Verfügung stehen.
+Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md).
 
 ### Geografische Wiederherstellung
 
-Mit der geografischen Wiederherstellung können Sie eine Datenbank in einem Pool auf einem Server an einem anderen Standort wiederherstellen. Bei der Vorschau muss zum Wiederherstellen einer Datenbank in einem Pool auf einem anderen Server der Pool auf dem Zielserver über den gleichen Namen wie der Quellpool verfügen. Bei Bedarf erstellen Sie einen neuen Pool auf dem Zielserver und geben ihm den gleichen Namen wie vor dem Wiederherstellen der Datenbank. Die geografische Wiederherstellung schlägt fehl, wenn kein Pool mit dem gleichen Namen auf dem Zielserver vorhanden ist. Informationen finden Sie unter [Wiederherstellen mit geografischer Wiederherstellung](sql-database-disaster-recovery.md#recover-using-geo-restore).
+Die geografische Wiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Vorfalls in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Siehe [Wiederherstellen einer Azure SQL-Datenbank nach einem Ausfall](sql-database-disaster-recovery.md).
 
+### Aktive Georeplikation
 
-### Georeplikation
-
-Georeplikation ist für jede Datenbank in einem Standard- oder Premiumpool mit elastischen Datenbanken verfügbar. Eine oder alle Datenbanken in einer Georeplikationspartnerschaft können in einem Pool mit elastischen Datenbanken enthalten sein, sofern die Dienstebenen identisch sind. Sie können die Georeplikation für Pools mit elastischen Datenbanken mit dem [Azure-Portal](sql-database-geo-replication-portal.md), [PowerShell](sql-database-geo-replication-powershell.md) oder [Transact-SQL](sql-database-geo-replication-transact-sql.md) konfigurieren.
-
-### Import und Export
-
-Das Exportieren einer Datenbank aus einem Pool wird unterstützt. Derzeit wird das direkte Importieren einer Datenbank in einen Pool nicht unterstützt, aber Sie können Daten in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool verschieben.
+Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei der geografischen Wiederherstellung erforderlich sind, konfigurieren Sie die aktive Georeplikation über das [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](sql-database-geo-replication-powershell.md) oder [Transact-SQL](sql-database-geo-replication-transact-sql.md).
 
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

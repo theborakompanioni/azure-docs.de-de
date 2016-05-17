@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/04/2016"
 	ms.author="jgao"/>
 
 #Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
@@ -45,7 +45,9 @@ Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für M
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 - **Einen HDInsight-Cluster**. Anweisungen zu den verschiedenen Optionen beim Erstellen solcher Cluster finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md).
-- **Eine Arbeitsstation mit Azure PowerShell**. Siehe [Installieren von Azure PowerShell 1.0 und höher](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater).
+- **Eine Arbeitsstation mit Azure PowerShell**.
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ## <a name="hdinsight-sample-wordcount"></a>Wortzählung – Java 
 
@@ -119,15 +121,15 @@ Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map-
 
 > [AZURE.NOTE] Die Schritte in diesem Lernprogramm gelten nur für Windows-basierte HDInsight-Cluster. Ein Beispiel für das Streaming bei Linux-basierten HDInsight-Clustern finden Sie unter [Entwickeln von Python-Streamingprogrammen für HDInsight](hdinsight-hadoop-streaming-python.md).
 
-In diesem Beispiel sind Mapper und Reducer ausführbare Dateien, die die Eingabe von [stdin][stdin-stdout-stderr] (zeilenweise) lesen und die Ausgabe in [stdout][stdin-stdout-stderr] ausgeben. Das Programm zählt alle Wörter im Text.
+In diesem Beispiel sind sowohl Mapper als auch Reducer ausführbare Dateien, die die Eingabe (zeilenweise) von [stdin][stdin-stdout-stderr] lesen und die Ausgabe über [stdout][stdin-stdout-stderr] ausgeben. Das Programm zählt alle Wörter im Text.
 
-Wenn eine ausführbare Datei für **Mapper** angegeben wird, ruft jede Mapper-Task die ausführbare Datei als separaten Prozess auf, wenn der Mapper initialisiert wird. Während der Ausführung der Mapperaufgabe werden die Eingaben in Zeilen konvertiert und die Zeilen zu [stdout][stdin-stdout-stderr] im Prozess zugeführt.
+Wenn eine ausführbare Datei für **Mapper** angegeben wird, ruft jede Mapper-Task die ausführbare Datei als separaten Prozess auf, wenn der Mapper initialisiert wird. Während der Ausführung der Mapper-Task wird die Eingabe in Zeilen konvertiert, und diese Zeilen werden an die Eingabe ([stdin][stdin-stdout-stderr]) des Prozesses übermittelt.
 
 In der Zwischenzeit sammelt der Mapper die zeilenorientierte Ausgabe von der Ausgabe (stdout) des Prozesses. Jede Zeile wird in ein Schlüssel/Wert-Paar konvertiert, das als Ausgabe des Mappers erfasst wird. Standardmäßig ist das Präfix einer Zeile bis zum ersten Tabulatorzeichen der Schlüssel, und der Rest der Zeile (mit Ausnahme des Tabulatorzeichens) ist der Wert. Wenn die Zeile kein Tabulatorzeichen enthält, wird die gesamte Zeile als Schlüssel betrachtet, und der Wert ist NULL.
 
-Wenn eine ausführbare Datei für **Reducer** angegeben wird, ruft jede Reducer-Task die ausführbare Datei als separaten Prozess auf, wenn der Reducer initialisiert wird. Während der Ausführung der Reduceraufgabe werden die eingegebenen Schlüssel/Wert-Paare in Zeilen konvertiert und die Zeilen zu [stdin][stdin-stdout-stderr] im Prozess zugeführt.
+Wenn eine ausführbare Datei für **Reducer** angegeben wird, ruft jede Reducer-Task die ausführbare Datei als separaten Prozess auf, wenn der Reducer initialisiert wird. Während der Ausführung der Reducer-Task werden die eingegebenen Schlüssel/Wert-Paare in Zeilen konvertiert, und diese Zeilen werden an die Eingabe ([stdin][stdin-stdout-stderr]) des Prozesses übermittelt.
 
-In der Zwischenzeit sammelt der Reducer die zeilenorientierte Ausgabe von [stdout][stdin-stdout-stderr] im Prozess. Jede Zeile wird in ein Schlüssel/Wert-Paar konvertiert, das als Ausgabe des Reducers erfasst wird. Standardmäßig ist das Präfix einer Zeile bis zum ersten Tabulatorzeichen der Schlüssel, und der Rest der Zeile (mit Ausnahme des Tabulatorzeichens) ist der Wert.
+In der Zwischenzeit sammelt der Reducer die zeilenorientierte Ausgabe von der Ausgabe ([stdout][stdin-stdout-stderr]) des Prozesses. Jede Zeile wird in ein Schlüssel/Wert-Paar konvertiert, das als Ausgabe des Reducers erfasst wird. Standardmäßig ist das Präfix einer Zeile bis zum ersten Tabulatorzeichen der Schlüssel, und der Rest der Zeile (mit Ausnahme des Tabulatorzeichens) ist der Wert.
 
 Weitere Informationen zur Hadoop-Streamingschnittstelle finden Sie unter [Hadoop-Streaming][hadoop-streaming].
 
@@ -981,7 +983,7 @@ Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu 
 [hdinsight-introduction]: hdinsight-hadoop-introduction.md
 
 
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: ../powershell-install-configure.md
 
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
@@ -996,5 +998,6 @@ Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu 
 
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
+[stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

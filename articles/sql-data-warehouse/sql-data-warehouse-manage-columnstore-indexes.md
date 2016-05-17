@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/07/2016"
+   ms.date="05/02/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verwalten von Columnstore-Indizes in Azure SQL Data Warehouse
@@ -240,8 +240,6 @@ Weitere Informationen zum Neuerstellen von Partitionen mit `CTAS` finden Sie unt
 
 ## Nächste Schritte
 
-Detaillierte Hinweise zur Indexverwaltung finden Sie im Artikel [Verwalten von Indizes][].
-
 Weitere Verwaltungstipps finden Sie in der Übersicht über die [Verwaltung][].
 
 <!--Image references-->
@@ -251,7 +249,6 @@ Weitere Verwaltungstipps finden Sie in der Übersicht über die [Verwaltung][].
 [Tabellenpartitionen]: sql-data-warehouse-develop-table-partitions.md
 [Parallelität]: sql-data-warehouse-develop-concurrency.md
 [Verwaltung]: sql-data-warehouse-manage-monitor.md
-[Verwalten von Indizes]: sql-data-warehouse-manage-indexes.md
 
 <!--MSDN references-->
 [ALTER INDEX]: https://msdn.microsoft.com/library/ms188388.aspx
@@ -259,4 +256,4 @@ Weitere Verwaltungstipps finden Sie in der Übersicht über die [Verwaltung][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

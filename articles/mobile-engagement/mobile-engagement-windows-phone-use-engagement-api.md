@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Verwendung der Engagement-API auf Windows Phone
 
-Dieses Dokument ist ein Zusatz zum Dokument [Integration von Mobile Engagement in Ihrer Windows Phone Silverlight-App](../mobile-engagement-windows-phone-integrate-engagement/). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
+Dieses Dokument ist ein Zusatz zum Dokument [Integration von Mobile Engagement in Ihrer Windows Phone Silverlight-App](mobile-engagement-windows-phone-integrate-engagement.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
 
 Wenn Engagement nur die Sitzungsaktivitäten der Anwendung, Abstürze und technische Informationen melden soll, ist es am einfachsten, wenn alle Ihre `PhoneApplicationPage`-Unterklassen von der `EngagementPage`-Klasse erben.
 
@@ -386,4 +386,4 @@ Das SDK kann zum Erzeugen von Testprotokollen in der IDE-Konsole konfiguriert we
 			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
 			EngagementAgent.Instance.Init();
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

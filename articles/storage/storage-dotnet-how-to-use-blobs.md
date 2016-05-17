@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Azure Blob Storage mit .NET | Microsoft Azure"
-	description="Speichern Sie Dateidaten in der Cloud mit Azure Blob Storage (Objektspeicher). Informieren Sie sich über einfache Blob Storage-Vorgänge, z. B. das Erstellen eines Containers und das Hochladen, Auflisten und Löschen von Blob-Inhalten."
+	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -380,7 +380,7 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 
 ### Konzeptionelle Richtlinien
 
-- [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy)
+- [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - [Erste Schritte mit Dateispeicher für .NET](storage-dotnet-how-to-use-files.md)
 - [Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
@@ -395,4 +395,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

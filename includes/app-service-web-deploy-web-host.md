@@ -1,18 +1,18 @@
 ### App Service-Plan
 
-Erstellt den Dienstplan zum Hosten der Web-App. Geben Sie den Namen des Plans über den **hostingPlanName**-Parameter an. Der Speicherort des Plans ist mit dem für die Web-App identisch. Der Tarif und die Workergröße werden in den Parametern **sku** und **workerSize** angegeben.
+Erstellt den Dienstplan zum Hosten der Web-App. Geben Sie den Namen des Plans über den **hostingPlanName**-Parameter an. Der Speicherort des Plans ist mit demjenigen für die Ressourcengruppe identisch. Der Tarif und die Workergröße werden in den Parametern **sku** und **workerSize** angegeben.
 
     {
-      "apiVersion": "2014-06-01",
+      "apiVersion": "2015-08-01",
       "name": "[parameters('hostingPlanName')]",
       "type": "Microsoft.Web/serverfarms",
-      "location": "[parameters('siteLocation')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "[parameters('sku')]",
+        "capacity": "[parameters('workerSize')]"
+      },
       "properties": {
-        "name": "[parameters('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "numberOfWorkers": 1
+        "name": "[parameters('hostingPlanName')]"
       }
     },
 
-<!---HONumber=AcomDC_1203_2015-->

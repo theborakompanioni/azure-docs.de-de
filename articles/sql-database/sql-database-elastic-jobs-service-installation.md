@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2016" 
+	ms.date="05/02/2016" 
 	ms.author="ddove;sidneyh"/>
 
 # Installieren von Aufträgen für die elastische Datenbank – Übersicht
@@ -50,7 +50,7 @@ Wenn Sie **Aufträge für die elastische Datenbank** bereits aus einem vorhanden
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2.	Führen Sie das Skript „.\\InstallElasticDatabaseJobs.ps1“ aus, und geben Sie Werte für die erforderlichen Variablen an. Dieses Skript erstellt die in [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview/#components-and-pricing) beschriebenen Komponenten und konfiguriert den Azure Cloud Service passend für die Verwendung der abhängigen Komponenten.
+2.	Führen Sie das Skript „.\\InstallElasticDatabaseJobs.ps1“ aus, und geben Sie Werte für die erforderlichen Variablen an. Dieses Skript erstellt die in [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing) beschriebenen Komponenten und konfiguriert den Azure Cloud Service passend für die Verwendung der abhängigen Komponenten.
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
@@ -154,7 +154,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 Nachdem Sie einen [elastischen Datenbankpool erstellt](sql-database-elastic-pool-create-portal.md) haben, können Sie die Komponenten der **Aufträge für die elastische Datenbank** installieren, um die Ausführung von Verwaltungsaufgaben für jede der Datenbanken im elastischen Datenbankpool zu ermöglichen. Anders als bei der Verwendung der PowerShell-APIs für die **Aufträge für die elastische Datenbank**, ist die Portalschnittstelle aktuell auf die Ausführung auf einem vorhandenen Pool beschränkt.
 
 
-**Geschätzter Zeitaufwand:** 10 Minuten.
+**Geschätzter Zeitaufwand:** 10 Minuten.
 
 1. Klicken Sie in der Dashboardansicht des elastischen Datenbankpools im [Azure-Portal](https://ms.portal.azure.com/#) auf **Auftrag erstellen**.
 2. Wenn Sie zum ersten Mal einen Auftrag erstellen, müssen Sie **Aufträge für die elastische Datenbank** installieren, indem Sie auf **PREVIEW TERMS** klicken.
@@ -187,4 +187,4 @@ Stellen Sie sicher, dass Anmeldeinformationen mit den passenden Rechten für die
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

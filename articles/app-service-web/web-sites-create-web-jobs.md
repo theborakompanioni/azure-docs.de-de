@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/12/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Ausführen von Hintergrundaufgaben mit WebJobs
@@ -25,6 +25,8 @@ Sie können Programme oder Skripts in WebJobs auf drei Arten in Ihrer [App Servi
 Dieser Artikel zeigt, wie Sie WebJobs mithilfe des [Azure-Portals](https://portal.azure.com) bereitstellen. Informationen zum Bereitstellen über Visual Studio oder einen kontinuierlichen Bereitstellungsprozess finden Sie unter [Bereitstellen von Azure WebJobs in Azure-Web-Apps](websites-dotnet-deploy-webjobs.md).
 
 Das Azure WebJobs-SDK vereinfacht zahlreiche WebJobs-Programmieraufgaben. Weitere Informationen finden Sie unter [Was ist das WebJobs-SDK?](websites-dotnet-webjobs-sdk.md).
+
+ Azure Functions (derzeit in der Vorschau) ist eine weitere Möglichkeit zum Ausführen von Programmen und Skripts in Azure App Service. Weitere Informationen hierzu finden Sie in der [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -92,7 +94,7 @@ Um beispielsweise Ihren WebJob alle 15 Minuten auszulösen, sieht `settings.job`
 
 Weitere Beispiele für CRON-Zeitpläne:
 
-- Einmal pro Stunde (d. h. wenn die Minutenzahl 0 ist): `0 0 * * * *` 
+- Einmal pro Stunde (d. h. wenn die Minutenzahl 0 ist): `0 0 * * * *` 
 - Jede Stunde von 9:00 bis 17:00 Uhr: `0 0 9-17 * * *` 
 - Täglich um 9:30 Uhr: `0 30 9 * * *`
 - An jedem Werktag um 9:30 Uhr: `0 30 9 * * 1-5`
@@ -146,7 +148,7 @@ Das Azure-Portal bietet noch nicht die Möglichkeit, einen geplanten Webauftrag 
 	
 	![Bestimmte Wochentage in bestimmten Wochen in einem Monat planen][SchdMonthsOnPartWeekDaysOccurences]
 	
-11. Nachdem Sie mindestens einen Auftrag erstellt haben, werden die Namen zusammen mit dem Status, dem Zeitplantyp und anderen Informationen auf der Registerkarte WebJobs angezeigt. Die Verlaufsinformationen für die letzten 30 Webaufträge werden gespeichert.
+11. Nachdem Sie mindestens einen Auftrag erstellt haben, werden die Namen zusammen mit dem Status, dem Zeitplantyp und anderen Informationen auf der Registerkarte WebJobs angezeigt. Die Verlaufsinformationen für die letzten 30 Webaufträge werden gespeichert.
 	
 	![Auftragsliste][WebJobsListWithSeveralJobs]
 	
@@ -195,20 +197,15 @@ Geplante Aufträge können auf den Seiten im Azure Scheduler des [klassischen Po
 
 ## <a name="WHPNotes"></a>Hinweise
 	
-- Web-Apps im kostenlosen Modus können nach 20 Minuten ablaufen, wenn keine Anforderungen bei der scm-Website (Bereitstellung) eingehen und das Web-App-Portal in Azure nicht geöffnet ist. Dieses Verhalten wird durch Anforderungen bei der tatsächlichen Website nicht zurückgesetzt.
+- Web-Apps im kostenlosen Modus können nach 20 Minuten ablaufen, wenn keine Anforderungen bei der scm-Website (Bereitstellung) eingehen und das Web-App-Portal in Azure nicht geöffnet ist. Dieses Verhalten wird durch Anforderungen bei der tatsächlichen Website nicht zurückgesetzt.
 - Code für einen fortlaufenden Auftrag muss zur Ausführung in einer Endlosschleife geschrieben sein.
 - Kontinuierliche Aufträge werden nur dann fortlaufend ausgeführt, wenn die Web-App aktiv ist.
 - In den Modi "Basic" und "Standard" ist das Feature "Immer aktiviert" verfügbar. Ist es aktiviert, wird verhindert, dass Web-Apps in den Leerlauf wechseln.
 - Ein Debugging kann nur für kontinuierlich ausgeführte Webaufträge ausgeführt werden. Für geplante oder bei Bedarf ausgeführte Webaufträge wird Debugging nicht unterstützt.
 
->[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-
 ## <a name="NextSteps"></a>Nächste Schritte
  
 Weitere Informationen finden Sie unter [Empfohlene Ressourcen für Azure WebJobs][WebJobsRecommendedResources].
-
-## Änderungen
-* Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 [PSonWebJobs]: http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]: http://go.microsoft.com/fwlink/?LinkId=390226
@@ -238,4 +235,4 @@ Weitere Informationen finden Sie unter [Empfohlene Ressourcen für Azure WebJobs
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

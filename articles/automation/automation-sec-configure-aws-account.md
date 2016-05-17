@@ -5,14 +5,15 @@
    documentationCenter=""
    authors="mgoedtel"
    manager="jwhit"
-   editor="tysonn"/>
+   editor="tysonn"
+   keywords="AWS-Authentifizierung, AWS konfigurieren"/>
 <tags
    ms.service="automation"
    ms.workload="tbd"
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="04/08/2016"
+   ms.date="05/10/2016"
    ms.author="magoedte"/>
 
 # Authentifizieren von Runbooks mit Amazon Web Services
@@ -35,4 +36,4 @@ Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen S
 
 - Sehen Sie sich den Artikel [Automatisieren der Bereitstellung einer VM in Amazon Web Services](../automation/automation-scenario-aws-deployment.md) an, um zu erfahren, wie Sie Runbooks zum Automatisieren von Aufgaben in AWS erstellen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

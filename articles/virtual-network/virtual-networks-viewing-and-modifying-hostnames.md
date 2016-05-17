@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
+   ms.date="04/27/2016"
    ms.author="joaoma" />
 
 # Anzeigen und Ändern von Hostnamen
@@ -21,17 +21,17 @@ Damit auf Ihre Rolleninstanzen mit dem Hostnamen verwiesen werden kann, müssen 
 
 ## Anzeigen von Hostnamen
 
-Sie können die Hostnamen von virtuellen Computern und Rolleninstanzen in einem Clouddienst mit verschiedenen Tools anzeigen: Azure-Portal, Dienstkonfigurationsdatei, Remotedesktop und [REST-API der Azure-Dienstverwaltung](https://msdn.microsoft.com/library/azure/ee460799.aspx).
+Sie können die Hostnamen von virtuellen Computern und Rolleninstanzen in einem Clouddienst mithilfe der folgenden Tools anzeigen.
 
 ### Azure-Portal
 
-Über das Azure-Portal können Sie die Hostnamen für virtuelle Computer auf der Dashboardseite für die virtuellen Computer anzeigen. Beachten Sie, dass im Dashboard ein Wert für **Name** und ein Wert für **Hostname** angezeigt wird. Diese sind zu Beginn identisch, eine Änderung des Hostnamens führt jedoch nicht dazu, dass auch der Name des virtuellen Computers oder der Rolleninstanz geändert wird.
+Über das [Azure-Portal](http://portal.azure.com) können Sie die Hostnamen für virtuelle Computer auf dem Übersichtsblatt für einen virtuellen Computer anzeigen. Beachten Sie, dass auf dem Blatt ein Wert für **Name** und ein Wert für **Hostname** angezeigt wird. Diese sind zu Beginn identisch, eine Änderung des Hostnamens führt jedoch nicht dazu, dass auch der Name des virtuellen Computers oder der Rolleninstanz geändert wird.
 
-Rolleninstanzen können auch im Azure-Portal aufgeführt werden, wenn Sie die Instanzen jedoch in einem Clouddienst aufführen, wird der Hostname nicht angezeigt. Es wird ein Name für jede Instanz angezeigt, dieser Name stellt jedoch nicht den Hostnamen dar.
+Rolleninstanzen können auch im Azure-Portal angezeigt werden, wenn Sie die Instanzen jedoch in einem Clouddienst aufführen, wird der Hostname nicht angezeigt. Es wird ein Name für jede Instanz angezeigt, dieser Name stellt jedoch nicht den Hostnamen dar.
 
 ### Dienstkonfigurationsdatei
 
-Sie können die Dienstkonfigurationsdatei für einen bereitgestellten Dienst auf der Seite **Konfigurieren** im Azure-Portal herunterladen. Dann können Sie das **vmName**-Attribut für das **Role name**-Element suchen, um den Hostnamen anzuzeigen. Beachten Sie, dass dieser Hostname als Grundlage für den Hostnamen der einzelnen Rolleninstanzen verwendet wird. Wenn **vmName** beispielsweise *webrole* lautet und drei Instanzen dieser Rolle vorhanden sind, lauten die Hostnamen der Instanzen *webrole0*, *webrole1* und *webrole2*.
+Sie können die Dienstkonfigurationsdatei für einen bereitgestellten Dienst auf dem Blatt **Konfigurieren** für den Dienst im Azure-Portal herunterladen. Dann können Sie das **vmName**-Attribut für das **Role name**-Element suchen, um den Hostnamen anzuzeigen. Beachten Sie, dass dieser Hostname als Grundlage für den Hostnamen der einzelnen Rolleninstanzen verwendet wird. Wenn **vmName** beispielsweise *webrole* lautet und drei Instanzen dieser Rolle vorhanden sind, lauten die Hostnamen der Instanzen *webrole0*, *webrole1* und *webrole2*.
 
 ### Remotedesktop
 
@@ -71,4 +71,4 @@ Sie können den Hostnamen für einen virtuellen Computer oder eine Rolleninstanz
 
 [Angeben von DNS-Einstellungen mit Netzwerkkonfigurationsdateien](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

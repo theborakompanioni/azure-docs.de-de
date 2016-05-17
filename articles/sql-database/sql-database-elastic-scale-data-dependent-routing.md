@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie die ShardMapManager-Klasse in .NET-Apps für das datenabhängige Routing, einem Feature von elastischen Datenbanken für Azure SQL-Datenbank, verwenden können." 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="torsteng" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016" 
+	ms.date="05/03/2016" 
 	ms.author="torsteng;sidneyh"/>
 
 #Datenabhängiges Routing
@@ -85,7 +85,7 @@ In diesem Beispiel wird der Wert des Ganzzahlschlüssels **CustomerID** zusammen
 
 Die **OpenConnectionForKey**-Methode gibt eine neue, bereits offene Verbindung mit der richtigen Datenbank zurück. Verbindungen, die auf diese Weise verwendet werden, nutzen weiterhin alle Vorteile des Verbindungspooling in ADO.Net. Solange Transaktionen und Anforderungen jeweils durch ein einzelnes Shard erfüllt werden können, sollte dies die einzige Änderung sein, die für eine Anwendung, die bereits ADO.Net verwendet, erforderlich ist.
 
-Die **[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)**-Methode ist auch verfügbar, wenn die Anwendung die asynchrone Programmierung mit ADO.NET verwendet. Das Verhalten entspricht dem datenabhängigen Routing der ****[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)**-Methode von ADO.NET.
+Die **[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)**-Methode ist auch verfügbar, wenn die Anwendung die asynchrone Programmierung mit ADO.NET verwendet. Das Verhalten entspricht dem datenabhängigen Routing der **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)** -Methode von ADO.NET.
 
 ## Integration in die Behandlung vorübergehender Fehler 
 
@@ -133,4 +133,4 @@ Weitere Informationen zum Trennen oder erneuten Anfügen eines Shards finden Sie
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

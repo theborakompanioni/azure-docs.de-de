@@ -79,12 +79,12 @@ Zu berücksichtigende Punkte:
 
 ### Automatisches Einrichten von Warnungen
 
-[Erstellen neuer Warnungen mithilfe von PowerShell](app-insights-alerts/#set-alerts-by-using-powershell)
+[Erstellen neuer Warnungen mithilfe von PowerShell](app-insights-alerts.md#set-alerts-by-using-powershell)
 
 ## Verwalten von Application Insights mithilfe von PowerShell
 
 * [Erstellen neuer Ressourcen](app-insights-powershell-script-create-resource.md)
-* [Erstellen neuer Warnungen](app-insights-alerts/#set-alerts-by-using-powershell)
+* [Erstellen neuer Warnungen](app-insights-alerts.md#set-alerts-by-using-powershell)
 
 ## Anwendungsversionen und Zeitstempel
 
@@ -241,4 +241,4 @@ Zu den Metriken, die Sie im Metrik-Explorer anzeigen können, zählt u. a. eine
 * Fügen Sie zunächst [ein neues Diagramm hinzu](app-insights-metrics-explorer.md), und prüfen Sie dann, ob der gewünschte Leistungsindikator im angebotenen grundlegenden Satz enthalten ist.
 * Wenn dies nicht der Fall ist, [fügen Sie den Leistungsindikator dem über das Leistungsindikatormodul erfassten Satz hinzu](app-insights-web-monitor-performance.md#system-performance-counters).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

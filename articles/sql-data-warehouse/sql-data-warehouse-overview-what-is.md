@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/03/2016"
+   ms.date="05/10/2016"
    ms.author="lodipalm;barbkess;mausher;jrj;sonyama;"/>
 
 
@@ -108,7 +108,7 @@ Generell möchten wir DWUs einfach halten. Falls Sie schnellere Ergebnisse benö
 
 - Damit Sie verstehen, wie Ihr idealer DWU-Wert lautet, sollten Sie versuchsweise hoch- und herunterskalieren und nach dem Laden der Daten einige Abfragen ausführen. Da die Skalierung schnell geht, können Sie es mit mehreren unterschiedlichen Leistungsebenen probieren, ohne dass dies länger als eine Stunde dauert.
 
-> [AZURE.NOTE] Beachten Sie Folgendes: Aufgrund der Architektur bzw. von SQL Data Warehouse erzielen Sie bei kleineren Datenvolumen unter Umständen nicht die erwartete Leistungsskalierung. Wir empfehlen Ihnen, mit Datenvolumen von 1 TB oder höher zu beginnen, um bei Leistungstests genaue Ergebnisse zu erzielen.
+> [AZURE.NOTE] Beachten Sie Folgendes: Aufgrund der Architektur von SQL Data Warehouse erzielen Sie bei kleineren Datenvolumen unter Umständen nicht die erwartete Leistungsfähigkeit. Wir empfehlen Ihnen, mit Datenvolumen von 1 TB oder höher zu beginnen, um eine realistische Angabe der Leistungsvorteile zu erzielen.
 
 ## Integriert
 
@@ -142,23 +142,38 @@ PolyBase ist benutzerfreundlich und ermöglicht es Ihnen, Ihre Daten aus untersc
 
 - PolyBase kann zum Zugreifen auf Blob Storage verwendet werden, der auch als Speicher für einen HDInsight-Cluster genutzt wird. So erhalten Sie hervorragenden Zugriff auf dieselben Daten mit relationalen und nicht relationalen Tools.
 
-
 ## Nächste Schritte
 
-Nachdem Sie jetzt einige Informationen zu SQL Data Warehouse erhalten haben, können Sie mit der [Data Warehouse-Workload], der [Bereitstellung] und dem Laden von [Beispieldaten] fortfahren.
+Nachdem Sie jetzt einige Informationen zu SQL Data Warehouse erhalten haben, können Sie mit den Themen zur [Data Warehouse-Workload], zur [Bereitstellung einer SQL Data Warehouse-Instanz ] und zum [Laden von Beispieldaten] fortfahren. Oder sehen Sie sich die folgenden SQL Data Warehouse-Ressourcen an:
 
->[AZURE.NOTE] Wir möchten diesen Artikel verbessern. Wenn Sie auf die Frage „War dieser Artikel hilfreich?“ mit „Nein“ antworten, bitten wir Sie, einen kurzen Vorschlag dazu einzufügen, was fehlt oder wie der Artikel zu verbessern ist. Vielen Dank im Voraus!
+- [Blogs] 
+- [Funktionsanfragen]
+- [Videos]
+- [CAT Team-Blogs]
+- [Erstellen eines Supporttickets]
+- [MSDN-Forum]
+- [Stack Overflow-Forum]
+- [Twitter]
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
+[Erstellen eines Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Data Warehouse-Workload]: ./sql-data-warehouse-overview-workload.md
-[Beispieldaten]: ./sql-data-warehouse-get-started-manually-load-samples.md
-[Bereitstellung]: ./sql-data-warehouse-get-started-provision.md
+[Laden von Beispieldaten]: ./sql-data-warehouse-get-started-manually-load-samples.md
+[Bereitstellung einer SQL Data Warehouse-Instanz ]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
+[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[CAT Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[MSDN-Forum]: https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureSQLDataWarehouse
+[Stack Overflow-Forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

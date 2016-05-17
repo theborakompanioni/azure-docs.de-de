@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/12/2016"
+     ms.date="05/03/2016"
      ms.author="dobett"/>
 
 # Tutorial: Erstellen eines IoT-Hubs mithilfe eines C#-Programms mit einer ARM-Vorlage
@@ -115,7 +115,7 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen neuen IoT-Hub 
 
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine neue JSON-Datei namens **parameters.json** hinzu.
 
-4. Ersetzen Sie den Inhalt von **parameters.json** durch die folgenden Parameterinformationen, die **mynewiothub** als Namen des neuen IoT Hubs festlegen (beachten Sie, dass dieser Name global eindeutig sein muss):
+4. Ersetzen Sie den Inhalt von **parameters.json** durch die folgenden Parameterinformationen, die den Namen des neuen IoT Hubs festlegen, beispielsweise**{Ihre Initialen}mynewiothub** (beachten Sie, dass dieser Name global eindeutig sein muss und daher Ihren Namen oder Ihre Initialen enthalten sollte):
 
     ```
     {
@@ -215,4 +215,4 @@ Nachdem Sie nun einen IoT-Hub mithilfe einer ARM-Vorlage mit einem C#-Programm b
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

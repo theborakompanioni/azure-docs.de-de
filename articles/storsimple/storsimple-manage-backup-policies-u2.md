@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="04/29/2016"
    ms.author="v-sharos"/>
 
 # Verwalten von Sicherungsrichtlinien mithilfe des StorSimple Manager-Diensts (Update 2)
@@ -23,7 +23,7 @@
 
 In diesem Tutorial wird erläutert, wie Sie die Seite **Sicherungsrichtlinien** des StorSimple-Manager-Dienstes verwenden, um Sicherungsprozesse und die Sicherungsaufbewahrung für Ihre StorSimple-Volumes zu steuern. Außerdem wird beschrieben, wie eine manuelle Sicherung durchgeführt wird.
 
-Wenn Sie ein Volume sichern, können Sie eine lokale Momentaufnahme oder eine Cloudmomentaufnahme erstellen. Wenn Sie ein lokal fixiertes Volume sichern, wird empfohlen, dass Sie eine Cloudmomentaufnahme festlegen. Die Aufzeichnung einer großen Anzahl von lokalen Momentaufnahmen in Verbindung mit einem Dataset mit viel Abwanderung führt zu einer Situation, in der der lokale Speicherplatz schnell ausgeschöpft sein kann. Wir empfehlen bei der Aufzeichnung lokaler Momentaufnahmen, dass Sie weniger tägliche Momentaufnahmen erstellen, um den aktuellen Status zu sichern, diese für einen Tag beibehalten und dann löschen.
+Wenn Sie ein Volume sichern, können Sie eine lokale Momentaufnahme oder eine Cloudmomentaufnahme erstellen. Wenn Sie ein lokal fixiertes Volume sichern, wird empfohlen, dass Sie eine Cloudmomentaufnahme festlegen. Die Aufzeichnung einer großen Anzahl lokaler Momentaufnahmen von einem lokalen Volume in Verbindung mit einem Dataset mit zahlreichen Änderungen führt zu einer Situation, in der der lokale Speicherplatz schnell ausgeschöpft sein kann. Wir empfehlen bei der Aufzeichnung lokaler Momentaufnahmen, dass Sie weniger tägliche Momentaufnahmen erstellen, um den aktuellen Status zu sichern, diese für einen Tag beibehalten und dann löschen.
 
 Wenn Sie eine Cloudmomentaufnahme eines lokal fixierten Volumes erstellen, kopieren Sie nur die geänderten Daten in die Cloud, wo sie dedupliziert und komprimiert werden.
 
@@ -96,4 +96,4 @@ Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um eine benu
 
 Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="12/07/2015" 
+ms.date="05/02/2016" 
 ms.author="adegeo"/>
 
 # Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
@@ -35,7 +35,7 @@ Berücksichtigen Sie beim Erweitern von **RoleEntryPoint** das folgende Verhalte
 
 Wenn Ihre Rolle nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, wirft Ihr Code bei jedem Neustart der Rolle möglicherweise eine nicht behandelte Ausnahme in einem der Lebenszyklusereignisse aus. Verwenden Sie in diesem Fall das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx)-Ereignis, um die Ursache der Ausnahme zu ermitteln und die Ausnahme entsprechend zu behandeln. Ihre Rolle kann auch von der [Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode zurückgegeben werden, wodurch ein Neustart der Rolle veranlasst wird. Weitere Informationen zu den Bereitstellungszuständen finden Sie unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](https://msdn.microsoft.com/library/azure/gg465402.aspx).
 
-> [AZURE.NOTE]Wenn Sie zum Entwickeln Ihrer Anwendung die [Azure-Tools für Microsoft Visual Studio](https://msdn.microsoft.com/library/azure/ee405484.aspx) verwenden, erweitern die Rollenprojektvorlagen die **RoleEntryPoint**-Klasse automatisch in den Dateien „WebRole.cs“ und „WorkerRole.cs“.
+> [AZURE.NOTE] Wenn Sie zum Entwickeln Ihrer Anwendung die [Azure-Tools für Microsoft Visual Studio](https://msdn.microsoft.com/library/azure/ee405484.aspx) verwenden, erweitern die Rollenprojektvorlagen die **RoleEntryPoint**-Klasse automatisch in den Dateien „WebRole.cs“ und „WorkerRole.cs“.
 
 ## OnStart-Methode
 
@@ -63,7 +63,7 @@ public override bool OnStart()
 
 Die **OnStop**-Methode wird aufgerufen, nachdem eine Rolleninstanz von Azure offline geschaltet wurde und bevor der Prozess beendet wird. Sie können diese Methode zum Aufrufen von Code außer Kraft setzen, der für das saubere Herunterfahren der Rolleninstanz erforderlich ist.
 
-> [AZURE.IMPORTANT]Die Codeausführung in der **OnStop**-Methode muss innerhalb eines begrenzten Zeitraums abgeschlossen werden, wenn er nicht im Rahmen des vom Benutzer initiierten Herunterfahrens, sondern aus anderen Gründen aufgerufen wird. Nach diesem Zeitraum wird der Prozess beendet. Sie müssen also sicherstellen, dass der Code in der **OnStop**-Methode schnell ausgeführt werden kann oder die nicht vollständige Ausführung toleriert. Die **OnStop**-Methode wird nach dem Auslösen des **Stopping**-Ereignisses aufgerufen.
+> [AZURE.IMPORTANT] Die Codeausführung in der **OnStop**-Methode muss innerhalb eines begrenzten Zeitraums abgeschlossen werden, wenn er nicht im Rahmen des vom Benutzer initiierten Herunterfahrens, sondern aus anderen Gründen aufgerufen wird. Nach diesem Zeitraum wird der Prozess beendet. Sie müssen also sicherstellen, dass der Code in der **OnStop**-Methode schnell ausgeführt werden kann oder die nicht vollständige Ausführung toleriert. Die **OnStop**-Methode wird nach dem Auslösen des **Stopping**-Ereignisses aufgerufen.
 
 
 ## Run-Methode
@@ -80,4 +80,4 @@ Sie können die ASP.NET-Lebenszyklusmethoden zusätzlich zu den Methoden der **R
 ## Nächste Schritte
 Hier erfahren Sie, wie Sie ein [Clouddienstpaket erstellen](cloud-services-model-and-package.md).
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0504_2016-->

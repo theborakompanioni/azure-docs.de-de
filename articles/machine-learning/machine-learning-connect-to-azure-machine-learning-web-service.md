@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016" 
+	ms.date="05/02/2016" 
 	ms.author="garye" />
 
 
@@ -24,10 +24,9 @@ Die Azure Machine Learning-Entwicklungsumgebung ist eine Webdienst-API zum Erste
 
 Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts mit Machine Learning Studio finden Sie unter:
 
-- [Bereitstellen eines Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md)
-- [Erste Schritte mit Machine Learning Studio](https://azure.microsoft.com/documentation/videos/getting-started-with-ml-studio/)
-- [Azure-Machine Learning-Vorschau](https://studio.azureml.net/)
-- [Machine Learning Dokumentationscenter](https://azure.microsoft.com/documentation/services/machine-learning/)
+- Ein Tutorial zum Erstellen eines Experiments in Machine Learning Studio finden Sie unter [Erstellen Ihres ersten Experiments](machine-learning-create-experiment.md).
+- Ausführliche Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Bereitstellen eines Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md).
+- Allgemeine Informationen zu Machine Learning finden Sie im [Machine Learning-Dokumentationscenter](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 ## Azure Machine Learning-Webdienst ##
 
@@ -38,7 +37,7 @@ Azure Machine Learning verfügt über zwei Arten von Diensten:
 - Antwort-/Anfrage-Dienst (Request-Response Service, RRS): ein hochskalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in Machine Learning Studio erstellt und bereitgestellt wurden.
 - Batch Execution Service (BES) – ein asynchroner Dienst für die Bewertung eines Stapels für Datensätze.
 
-Weitere Informationen zu Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
+Weitere Informationen zu Machine Learning-Webdiensten finden Sie unter [Bereitstellen eines Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md).
 
 ## Abrufen eines Autorisierungsschlüssels für Azure Machine Learning ##
 Sie erhalten einen Webdienst-API-Schlüssel von einem Machine Learning-Webdienst. Sie können ihn über Machine Learning Studio oder das Azure-Portal abrufen.
@@ -103,4 +102,4 @@ Verwenden Sie zum Verbinden mit einem Machine Learning-Webdienst die **urllib2**
 2. Weisen Sie "apiKey" den Schlüssel von einem Webdienst zu. Siehe oben: **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning**.
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu. Weitere Informationen finden Sie unter "Abrufen einer Anforderungs-URI".
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

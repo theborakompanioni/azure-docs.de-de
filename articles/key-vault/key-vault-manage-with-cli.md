@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="04/29/2016"
 	ms.author="bruceper"/>
 
 # Verwalten von Schlüsseltresor mit CLI #
@@ -31,7 +31,6 @@ Verwenden Sie dieses Lernprogramm für den Einstieg in Azure-Schlüsseltresor, u
 Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)
 
 ## Voraussetzungen
-
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Ein Abonnement für Microsoft Azure. Wenn Sie kein Abonnement haben, können Sie sich für eine [kostenlose Testversion](../../../pricing/free-trial) registrieren.
@@ -106,6 +105,12 @@ Wenn Sie den Azure-Ressourcen-Manager verwenden, werden alle zugehörigen Ressou
 
 Der erste Parameter ist der Ressourcengruppenname und der zweite Parameter der Speicherort. Verwenden Sie für den Speicherort den Befehl `azure location list`, um zu ermitteln, wie Sie einen anderen Speicherort als den in diesem Beispiel verwendeten angeben können. Wenn Sie weitere Informationen benötigen, geben Sie Folgendes ein: `azure help location`
 
+## Registrieren des Schlüsseltresor-Ressourcenanbieters
+Stellen Sie sicher, dass der Schlüsseltresor-Ressourcenanbieter in Ihrem Abonnement registriert ist:
+
+`azure provider register Microsoft.KeyVault`
+
+Dies muss nur einmal pro Abonnement ausgeführt werden.
 
 
 ## Erstellen eines Schlüsseltresors
@@ -187,6 +192,8 @@ Wenn Ihr Tresorname beispielsweise "ContosoKeyVault" lautet, die Anwendung, die 
 
     azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-keys '["decrypt","sign"]'
 
+>[AZURE.NOTE] Wenn Sie an einer Windows-Eingabeaufforderung arbeiten, sollten Sie die einfachen durch doppelte Anführungszeichen ersetzen und die internen doppelten Anführungszeichen mit Escapezeichen versehen. Beispiel: "["decrypt","sign"]".
+
 Wenn Sie dieselbe Anwendung so autorisieren möchten, dass sie geheime Schlüssel im Tresor liest, führen Sie Folgendes aus:
 
 	azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '["get"]'
@@ -256,4 +263,4 @@ Hier ist ein Beispiel, wie ein bestimmten geheimer Schlüssel entfernt werden ka
 
 Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](key-vault-developers-guide.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

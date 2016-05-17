@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="04/08/2016"
 	ms.author="robmcm"/>
 
 # Debuggen einer Node.js-Web-App in Azure App Service
@@ -63,7 +63,7 @@ Es gibt drei Möglichkeiten zum Zugreifen auf Diagnoseprotokolle: über das File
 
 	npm install azure-cli -g
 
-Nachdem sie installiert wurden, können Sie mit dem Befehl "azure" auf die Tools zugreifen. Sie müssen die Befehlszeilentools zunächst für die Verwendung Ihrer Azure-Abonnements konfigurieren. Informationen hierzu finden Sie im Abschnitt **Herunterladen und Importieren der Veröffentlichungseinstellungen** des Artikels [Verwenden der Azure-Befehlszeilentools](../xplat-cli-connect).
+Nachdem sie installiert wurden, können Sie mit dem Befehl "azure" auf die Tools zugreifen. Sie müssen die Befehlszeilentools zunächst für die Verwendung Ihrer Azure-Abonnements konfigurieren. Informationen hierzu finden Sie im Abschnitt **Herunterladen und Importieren der Veröffentlichungseinstellungen** des Artikels [Verwenden der Azure-Befehlszeilentools](../xplat-cli-connect.md).
 
 ###FTP
 
@@ -73,7 +73,7 @@ Um per FTP auf die Diagnoseinformationen zuzugreifen, rufen Sie das [Azure-Porta
 
 Die im Dashboard zurückgegebene FTP-URL gilt für das Verzeichnis **LogFiles**, das folgende Unterverzeichnisse enthält:
 
-* [Bereitstellungsmethode](web-sites-deploy) – Wenn Sie eine Bereitstellungsmethode wie Git verwenden, wird ein Verzeichnis mit dem gleichen Namen erstellt, das die Informationen in Bezug auf die Bereitstellungen enthält.
+* [Bereitstellungsmethode](web-sites-deploy.md) – Wenn Sie eine Bereitstellungsmethode wie Git verwenden, wird ein Verzeichnis mit dem gleichen Namen erstellt, das die Informationen in Bezug auf die Bereitstellungen enthält.
 
 * nodejs – von "stdout" und "stderr" erfasste Informationen für alle Instanzen der Anwendung (wenn "loggingEnabled" auf "true" gesetzt ist)
 
@@ -89,7 +89,7 @@ Hierdurch wird eine **diagnostics.zip**-Datei in das aktuelle Verzeichnis herunt
 
 * LogFiles
 
-	* [Bereitstellungsmethode](web-sites-deploy) – Wenn Sie eine Bereitstellungsmethode wie Git verwenden, wird ein Verzeichnis mit dem gleichen Namen erstellt, das die Informationen in Bezug auf die Bereitstellungen enthält.
+	* [Bereitstellungsmethode](web-sites-deploy.md) – Wenn Sie eine Bereitstellungsmethode wie Git verwenden, wird ein Verzeichnis mit dem gleichen Namen erstellt, das die Informationen in Bezug auf die Bereitstellungen enthält.
 
 	* nodejs – von "stdout" und "stderr" erfasste Informationen für alle Instanzen der Anwendung (wenn "loggingEnabled" auf "true" gesetzt ist)
 
@@ -106,7 +106,7 @@ Hierdurch werden Sie in einem Livestream über Protokollereignisse informiert, s
 
 In diesem Artikel haben Sie erfahren, wie Sie Diagnoseinformationen für Azure aktivieren und darauf zugreifen. Diese Informationen sind nützlich, um in der Anwendung auftretende Probleme zu analysieren, sie können jedoch auch auf ein Problem mit einem von Ihnen verwendeten Modul hinweisen oder angeben, dass die von App Service-Web-Apps verwendete Version von Node.js sich von der in Ihrer Entwicklungsumgebung verwendeten Version unterscheidet.
 
-Weitere Informationen zur Arbeit mit Modulen in Azure finden Sie unter [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps).
+Weitere Informationen zur Arbeit mit Modulen in Azure finden Sie unter [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md).
 
 Weitere Informationen zum Festlegen einer Node.js-Version für Ihre Anwendung finden Sie unter [Festlegen einer Node.js-Version in einer Azure-Anwendung].
 
@@ -126,4 +126,4 @@ Weitere Informationen finden Sie außerdem im [Node.js Developer Center](/develo
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

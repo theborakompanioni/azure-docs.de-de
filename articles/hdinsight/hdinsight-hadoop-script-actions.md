@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="04/28/2016"
 	ms.author="jgao"/>
 
 # Entwickeln von Script Action-Skripts für HDInsight
@@ -31,6 +31,8 @@ Mit Skriptaktionen (Script Action) kann zusätzliche Software in einem Hadoop-Cl
 ## Beispielskripts
 
 Für die Erstellung von HDInsight-Clustern unter einem Windows-Betriebssystem wird als Skriptaktion ein Azure PowerShell-Skript verwendet. Nachfolgend sehen Sie ein Beispielskript für das Konfigurieren der Websitekonfigurationsdateien:
+
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 	param (
 	    [parameter(Mandatory)][string] $ConfigFileName,
@@ -351,4 +353,4 @@ Bei Auftreten eines Ausführungsfehlers enthält die Protokolldatei auch die bes
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

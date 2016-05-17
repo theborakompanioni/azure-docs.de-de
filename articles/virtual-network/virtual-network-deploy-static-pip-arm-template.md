@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/08/2016"
+   ms.date="04/27/2016"
    ms.author="telmos" />
 
 # Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse über eine Vorlage
@@ -46,9 +46,9 @@ Im folgenden Abschnitt wird die Definition der öffentlichen IP-Ressource auf Gr
         }
       },
 
-Beachten Sie die **publicIPAllocationMethod**-Eigenschaft, die auf *Static* festgelegt ist. Diese Eigenschaft kann entweder *Dynamic* (Standardwert) oder *Static* lauten. Durch das Festlegen auf „Static“ wird sichergestellt, dass sich die IP-Adresse für diese öffentliche IP-Adresse nicht ändert.
+Beachten Sie die **publicIPAllocationMethod**-Eigenschaft, die auf *Static* festgelegt ist. Diese Eigenschaft kann entweder *Dynamic* (Standardwert) oder *Static* lauten. Durch das Festlegen auf „Static“ wird sichergestellt, dass sich die zugewiesene öffentliche IP-Adresse nicht ändert.
 
-Der folgende Abschnitt zeigt die Zuordnung der obigen öffentlichen IP zu einer Netzwerkschnittstelle.
+Der folgende Abschnitt zeigt die Zuordnung der öffentlichen IP-Adresse zu einer Netzwerkschnittstelle.
 
       {
         "apiVersion": "2015-06-15",
@@ -95,7 +95,7 @@ Die obige Netzwerkschnittstelle wird jetzt unter der **networkProfile**-Eigensch
 
 ## Bereitstellen der Vorlage per Klick
 
-In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parameterdatei verwendet, die die Standardwerte zum Generieren des oben beschriebenen Szenarios enthält. Öffnen Sie zum Bereitstellen dieser Vorlage per Klick [diesen Link](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP), klicken Sie auf **Deploy to Azure**, ersetzen Sie ggf. die Werte der Standardparameter, und führen Sie die Schritte im Portal aus.
+In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parameterdatei verwendet, die die Standardwerte zum Generieren des oben beschriebenen Szenarios enthält. Klicken Sie zum Bereitstellen dieser Vorlage per Klick in der Datei „Readme.md“ für die Vorlage [VM with static PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) (VM mit statischer PIP) auf **Deploy to Azure**. Ersetzen Sie ggf. die Standardwerte für die Parameter, und geben Sie Werte für die leeren Parameter ein. Folgen Sie den Anweisungen im Portal zum Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse.
 
 ## Bereitstellen der Vorlage mithilfe von PowerShell
 
@@ -105,11 +105,11 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 
 2. Führen Sie in einer PowerShell-Konsole das **New-AzureRmResourceGroup**-Cmdlet aus, um bei Bedarf eine neue Ressourcengruppe zu erstellen. Fahren Sie mit Schritt 3 fort, falls Sie bereits eine Ressourcengruppe erstellt haben.
 
-		New-AzureRmResourceGroup -Name StaticPublicIP -Location westus
+		New-AzureRmResourceGroup -Name PIPTEST -Location westus
 
 	Erwartete Ausgabe:
 
-		ResourceGroupName : StaticPublicIP
+		ResourceGroupName : PIPTEST
 		Location          : westus
 		ProvisioningState : Succeeded
 		Tags              :
@@ -126,7 +126,7 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 		DeploymentName    : DeployVM
 		ResourceGroupName : PIPTEST
 		ProvisioningState : Succeeded
-		Timestamp         : 1/8/2016 7:04:44 PM
+		Timestamp         : <Deployment date> <Deployment time>
 		Mode              : Incremental
 		TemplateLink      :
 		                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
@@ -152,7 +152,7 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 
 Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die unten beschriebenen Schritte aus.
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, führen Sie die Schritte im Artikel [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) aus. Führen Sie anschließend die Schritte zum Verbinden der Befehlszeilenschnittstelle mit Ihrem Abonnement im Abschnitt „Verwenden von „azure login“ für die interaktive Authentifizierung“ des Artikels [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) aus.
 2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
 
 		azure config mode arm
@@ -161,13 +161,13 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 
 		info:    New mode is arm
 
-3. Öffnen Sie die [Parameterdatei](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), und speichern Sie den Inhalt dieser Datei in einer Datei auf Ihrem Computer. In diesem Beispiel haben wir die Parameterdatei in *parameters.json* gespeichert.
+3. Öffnen Sie die [Parameterdatei](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), und speichern Sie den Inhalt dieser Datei in einer Datei auf Ihrem Computer. In diesem Beispiel werden die Parameter in einer Datei namens *parameters.json* gespeichert. Ändern Sie die Werte der Parameter in der Datei bei Bedarf. Es empfiehlt sich jedoch, dass Sie zumindest den Wert für den Parameter „adminPassword“ in ein eindeutiges, komplexes Kennwort ändern.
 
-4. Führen Sie das Cmdlet **azure group deployment create** aus, um das neue VNet mithilfe der oben heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+4. Führen Sie das Cmdlet **azure group deployment create** aus, um das neue VNet mithilfe der oben heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. Ersetzen Sie im folgenden Befehl <path> durch den Pfad, an dem Sie die Datei gespeichert haben.
 
-		azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e parameters.json
+		azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json
 
-	Erwartete Ausgabe:
+	Erwartete Ausgabe (Liste der verwendeten Parameterwerte):
 
 		info:    Executing command group create
 		+ Getting resource group PIPTEST2
@@ -176,7 +176,7 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 		+ Initializing template configurations and parameters
 		+ Creating a deployment
 		info:    Created template deployment "azuredeploy"
-		data:    Id:                  /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/PIPTEST2
+		data:    Id:                  /subscriptions/<Subscription ID>/resourceGroups/PIPTEST2
 		data:    Name:                PIPTEST2
 		data:    Location:            westus
 		data:    Provisioning State:  Succeeded
@@ -184,4 +184,4 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

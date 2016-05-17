@@ -34,7 +34,7 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
     Sie können auf den Namen des Images eines virtuellen Computers klicken, um rechts auf der Seite Informationen zum Image anzuzeigen.
 
-        >[AZURE.NOTE] You can't add virtual machine images to the **Public Images** or **MSDN Images** lists because they are read-only. All virtual machines that you create are added to the **Private Images** list.
+    >[AZURE.NOTE] Sie können den Listen **Öffentliche Images** oder **MSDN-Images** keine Images virtueller Computer hinzufügen, da diese Listen schreibgeschützt sind. Alle virtuellen Computer, die Sie erstellen, werden der Liste **Private Images** hinzugefügt.
 
     Wenn Sie über ein MSDN-Abonnement auf Visual Studio-Ebene verfügen, können Sie einen vordefinierten virtuellen Azure-Computer erstellen, der Visual Studio enthält, sowie verschiedene weitere Images. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers in Visual Studio mithilfe von Images – Visual Studio 2013-Katalogimage für MSDN-Abonnenten](http://visualstudio2013msdngalleryimage.azurewebsites.net) und [MSDN-Abonnements](https://www.visualstudio.com/products/msdn-subscriptions-vs).
 
@@ -42,7 +42,7 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
     Sie verwenden den neuen Namen und das Kennwort, um sich mithilfe von Remotedesktop am Computer anzumelden. Daher ist es sinnvoll, sich diese Angaben zu notieren. Nachdem Sie einen virtuellen Azure-Computer in Visual Studio erstellt haben, können Sie seine Größe und andere Einstellungen im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=253103) ändern.
 
-        >[AZURE.NOTE] If you choose larger sizes for the virtual machine, extra charges may apply. See [Virtual Machines Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/) for more information.
+    >[AZURE.NOTE] Wenn Sie eine größere Größe für den virtuellen Computer auswählen, fallen ggf. zusätzliche Kosten an. Weitere Informationen finden Sie unter [Preisdetails für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 1. Für virtuelle Computer, die in Visual Studio erstellt werden, ist ein Clouddienst erforderlich. Wählen Sie auf der Seite **Einstellungen des Clouddiensts** einen Clouddienst für den virtuellen Computer aus, oder klicken Sie in der Dropdownliste auf **Neu erstellen…**, wenn Sie noch nicht über einen Clouddienst verfügen oder einen neuen Clouddienst verwenden möchten. Ein Speicherkonto ist ebenfalls erforderlich. Wählen Sie daher aus dem Dropdownlistenfeld **Speicherkonto** ein Speicherkonto aus (oder erstellen Sie ein neues Speicherkonto). Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](./storage/storage-introduction/).
 
@@ -158,4 +158,3 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 
 Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0413_2016-->

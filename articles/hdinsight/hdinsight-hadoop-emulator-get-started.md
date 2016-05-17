@@ -38,10 +38,12 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 - Der HDInsight Emulator benötigt eine 64-Bit-Version von Windows. Eine der folgenden Anforderungen muss erfüllt sein:
 
 	- Windows 10
-	- Windows 8
+	- Windows 8
 	- Windows Server 2012
 
-- **Azure PowerShell**. Siehe [Installieren und Verwenden von Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
+- **Azure PowerShell**
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 ##<a name="install"></a>Installieren des HDInsight-Emulators
@@ -198,7 +200,7 @@ Die Beispieldaten zentrieren um die Verarbeitung der vom IIS World Wide Web Cons
 
 ###<a name="scenarios"></a>Die IIS W3C-Protokolldatenszenarien
 
-Das W3C-Szenario generiert und importiert IIS W3C-Protokolldaten in drei Größen in HDFS oder Azure-Blobspeicher: 1 MB (klein), 500 MB (mittel) und 2 GB (groß). Es stellt drei Jobtypen zur Verfügung und implementiert jeden davon in C#, Java, Pig und Hive.
+Das W3C-Szenario generiert und importiert IIS W3C-Protokolldaten in drei Größen in HDFS oder Azure-Blobspeicher: 1 MB (klein), 500 MB (mittel) und 2 GB (groß). Es stellt drei Jobtypen zur Verfügung und implementiert jeden davon in C#, Java, Pig und Hive.
 
 - **totalhits** – Berechnet die Gesamtzahl der Anforderungen für eine bestimmte Seite.
 - **avgtime** – Berechnet die durchschnittliche Zeit (in Sekunden), die für eine Anforderung pro Seite benötigt wird.
@@ -492,7 +494,7 @@ Nachfolgend finden Sie ein Beispiel für die Übermittlung eines Hadoop-Jobs:
 	$hdinsightJob = <JobDefinition>
 	Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
 
-Sie werden zu einer Eingabe aufgefordert, wenn Sie Get-Credential aufrufen. Sie müssen **hadoop** als Benutzernamen verwenden. Das Kennwort kann eine beliebige Zeichenfolge sein. Der Clustername ist immer „****http://localhost:50111**“.
+Sie werden zu einer Eingabe aufgefordert, wenn Sie Get-Credential aufrufen. Sie müssen **hadoop** als Benutzernamen verwenden. Das Kennwort kann eine beliebige Zeichenfolge sein. Der Clustername ist immer „**http://localhost:50111**“.
 
 Weitere Informationen zur Übermittlung von Hadoop-Aufträgen finden Sie unter [Programmgesteuerte Übermittlung von Hadoop-Aufträgen](hdinsight-submit-hadoop-jobs-programmatically.md). Weitere Informationen zu den Azure PowerShell-Cmdlets für HDInsight finden Sie unter [HDInsight-Cmdlet-Referenz][hdinsight-powershell-reference].
 
@@ -506,7 +508,6 @@ In diesem Lernprogramm zu MapReduce haben Sie den HDInsight-Emulator – eine Ha
 
 - [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [Entwickeln von Java MapReduce-Programmen für HDInsight](hdinsight-develop-deploy-java-mapreduce.md)
-- [Entwickeln von Hadoop-Streaming-MapReduce-Programmen in C# für HDInsight](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [MSDN-Forum zur Erörterung von Themen rund um HDInsight](http://social.msdn.microsoft.com/Forums/hdinsight)
 
 
@@ -524,7 +525,6 @@ In diesem Lernprogramm zu MapReduce haben Sie den HDInsight-Emulator – eine Ha
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-deploy-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-versions]: hdinsight-component-versioning.md
 
 [Powershell-install-configure]: powershell-install-configure.md
@@ -534,4 +534,4 @@ In diesem Lernprogramm zu MapReduce haben Sie den HDInsight-Emulator – eine Ha
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

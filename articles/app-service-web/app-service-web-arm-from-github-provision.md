@@ -3,9 +3,9 @@
 	description="Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die ein Projekt aus einem GitHub-Repository enthält." 
 	services="app-service" 
 	documentationCenter="" 
-	authors="tfitzmac" 
+	authors="cephalin" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
-	ms.author="tomfitz"/>
+	ms.date="04/27/2016" 
+	ms.author="cephalin"/>
 
 # Bereitstellen einer Web-App in einem GitHub-Repository
 
@@ -69,31 +69,32 @@ Sie geben den Namen der Webanwendung über den **siteName**-Parameter und den Sp
 Die Web-App verfügt auch über eine untergeordnete Ressource, die unter **Ressourcen** weiter unten definiert wird. Diese untergeordnete Ressource definiert die Quellcodeverwaltung für das Projekt, das mit der Web-App bereitgestellt wird. In dieser Vorlage wird die Quellcodeverwaltung mit einem bestimmten GitHub-Repository verknüpft. Das GitHub-Repository wird durch den Code **"RepoUrl": "https://github.com/davidebbo-test/Mvc52Application.git"** definiert. Sie können die Repository-URL hart codieren, wenn Sie eine Vorlage erstellen möchten, die ein einzelnes Projekt wiederholt bereitstellt, während die minimale Anzahl von Parametern erforderlich ist. Anstelle einer hart codierten Repository-URL können Sie auch einen Parameter für die Repository-URL hinzufügen und diesen Wert für die **RepoUrl**-Eigenschaft verwenden.
 
     {
-      "apiVersion":"2015-04-01",
-      "name":"[parameters('siteName')]",
-      "type":"Microsoft.Web/sites",
-      "location":"[parameters('siteLocation')]",
-      "dependsOn":[
-         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      "apiVersion": "2015-08-01",
+      "name": "[parameters('siteName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
-      "properties":{
-        "serverFarmId":"[parameters('hostingPlanName')]"
+      "properties": {
+        "serverFarmId": "[parameters('hostingPlanName')]"
       },
-       "resources":[
-         {
-           "apiVersion":"2015-04-01",
-           "name":"web",
-           "type":"sourcecontrols",
-           "dependsOn":[
-             "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
-           ],
-           "properties":{
-             "RepoUrl":"https://github.com/davidebbo-test/Mvc52Application.git",
-             "branch":"master"
-           }
-         }
-       ]
-     }
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoURL')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": true
+          }
+        }
+      ]
+    }
 
 ## Befehle zum Ausführen der Bereitstellung
 
@@ -110,4 +111,4 @@ Die Web-App verfügt auch über eine untergeordnete Ressource, die unter **Resso
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

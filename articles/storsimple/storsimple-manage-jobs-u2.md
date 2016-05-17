@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="04/25/2016"
    ms.author="alkohli" />
 
 # Anzeigen und Verwalten von StorSimple-Aufträgen mithilfe des StorSimple Manager-Diensts (Update 2)
@@ -21,9 +21,9 @@
 
 ## Übersicht
 
-Die Seite **Aufträge** stellt ein zentrales Portal zum Anzeigen und Verwalten von Aufträgen bereit, die für Geräte gestartet wurden, die mit dem StorSimple Manager-Dienst verbunden sind. Sie können geplante, aktive, abgeschlossene und fehlgeschlagene Aufträge für mehrere Geräte anzeigen. Die jeweiligen Ergebnisse werden in einem Tabellenformat angezeigt.
+Die Seite **Aufträge** stellt ein zentrales Portal zum Anzeigen und Verwalten von Aufträgen bereit, die für Geräte gestartet wurden, die mit dem StorSimple Manager-Dienst verbunden sind. Sie können geplante, aktive, abgeschlossene, abgebrochene und fehlerhafte Aufträge für mehrere Geräte anzeigen. Die jeweiligen Ergebnisse werden in einem Tabellenformat angezeigt.
 
-![Seite „Aufträge“](./media/storsimple-manage-jobs-u2/HCS_JobsPage.png)
+![Seite „Aufträge“](./media/storsimple-manage-jobs-u2/jobs.png)
 
 Sie können die Aufträge, an denen Sie interessiert sind, schnell finden, indem Sie nach folgenden Feldern filtern:
 
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, um die Details eines Auftrags anzuzeigen
 
 Führen Sie die folgenden Schritte aus, um einen Auftrag abzubrechen, der momentan ausgeführt wird.
 
->[AZURE.NOTE]Einige Aufträge, wie z. B. das Ändern eines Volumetyps oder das Erweitern eines Volumes, können nicht abgebrochen werden.
+>[AZURE.NOTE] Einige Aufträge, wie z. B. das Ändern eines Volumetyps oder das Erweitern eines Volumes, können nicht abgebrochen werden.
 
 ### So brechen Sie einen Auftrag ab
 
@@ -93,4 +93,4 @@ Dieser Auftrag wird nun abgebrochen.
 
 - Erfahren Sie mehr über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0504_2016-->

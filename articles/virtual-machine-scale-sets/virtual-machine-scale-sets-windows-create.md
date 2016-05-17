@@ -14,34 +14,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="04/26/2016"
 	ms.author="davidmu"/>
 
 # Erstellen einer Windows-VM-Skalierungsgruppe mithilfe von Azure PowerShell
 
-Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung einer Azure-VM-Skalierungsgruppe. In diesem Artikel kommen Variablen zum Einsatz, für die Sie Werte angeben müssen. Ersetzen Sie alles innerhalb der Anführungszeichen durch Werte, die für Ihr Abonnement und Ihre Anwendung sinnvoll sind.
+Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung einer Azure-VM-Skalierungsgruppe. Weitere Informationen über Skalierungsgruppen finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
+
+Die Ausführung der Schritte im Artikel dauert ungefähr 30 Minuten.
 
 ## Schritt 1: Installieren von Azure PowerShell
 
-[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
-
-## Schritt 2: Festlegen des Abonnements
-
-1. Starten Sie eine PowerShell-Eingabeaufforderung.
-
-2. Melden Sie sich in Ihrem Konto an:
-
-        Login-AzureRmAccount
-
-3. Beziehen Sie Ihr Abonnement:
-
-        Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
-
-4. Legen Sie das Abonnement fest, das Sie als aktuelles Abonnement verwenden möchten:
-
-        $subscr = "subscription name"
-        Select-AzureSubscription -SubscriptionName $subscr –Current
-
+Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 ## Schritt 2: Erstellen von Ressourcen
 
@@ -51,7 +35,7 @@ Erstellen Sie die Ressourcen, die für die neue Skalierungsgruppe virtueller Com
 
 Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
 
-1.  Führen Sie den folgenden Befehl aus, um eine Liste der verfügbaren Standorte und Dienste abzurufen, die unterstützt werden:
+1.  Rufen Sie eine Liste der verfügbaren Standorte und der Dienste ab, die unterstützt werden:
 
         Get-AzureLocation | Sort Name | Select Name, AvailableServices
 
@@ -78,13 +62,16 @@ Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
         West India          {Compute, Storage, PersistentVMRole, HighMemory}
         West US             {Compute, Storage, PersistentVMRole, HighMemory}
 
-    Wählen Sie den für Sie am besten geeigneten Standort aus, und ersetzen Sie den Text in Anführungszeichen durch diesen Standortnamen:
+2. Wählen Sie einen Standort aus, der für Sie am besten geeignet ist, ersetzen Sie den Wert von **$locName** durch diesen Standortnamen, und erstellen Sie dann die Variable:
 
         $locName = "location name from the list, such as Central US"
 
-4. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für die neue Ressourcengruppe verwenden möchten, und erstellen Sie sie dann an dem zuvor ausgewählten Standort:
+3. Ersetzen Sie den Wert von **$rgName** durch den Namen, den Sie für die neue Ressourcengruppe verwenden möchten, und erstellen Sie dann die Variable:
 
         $rgName = "resource group name"
+        
+4. Erstellen Sie die Ressourcengruppe:
+    
         New-AzureRmResourceGroup -Name $rgName -Location $locName
 
     Die Ausgabe sollte folgendermaßen aussehen:
@@ -99,16 +86,24 @@ Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
 
 Für die in einer Skalierungsgruppe erstellten virtuellen Computer ist ein Speicherkonto zum Speichern der zugehörigen Datenträger erforderlich.
 
-1. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für das Speicherkonto verwenden möchten, und testen Sie dann, ob er eindeutig ist:
+1. Ersetzen Sie den Wert von **saName** durch den Namen, den Sie für das Speicherkonto verwenden möchten, und erstellen Sie dann die Variable: 
 
         $saName = "storage account name"
+        
+2. Testen Sie, ob der ausgewählte Name eindeutig ist:
+    
         Test-AzureName -Storage $saName
 
     Ist die Antwort **False**, ist der vorgeschlagene Name eindeutig.
 
-2. Ersetzen Sie den Text in Anführungszeichen durch den Typ des Speicherkontos, und erstellen Sie dann das Konto mit dem zuvor festgelegten Namen und Speicherort. Mögliche Werte: Standard\_LRS, Standard\_GRS, Standard\_RAGRS oder Premium\_LRS:
+3. Ersetzen Sie den Wert von **$saType** durch den Typ des Speicherkontos, und erstellen Sie dann die Variable:
 
         $saType = "storage account type"
+        
+    Mögliche Werte: Standard\_LRS, Standard\_GRS, Standard\_RAGRS oder Premium\_LRS.
+        
+4. Erstellen Sie das Konto:
+    
         New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
 
     Die Ausgabe sollte folgendermaßen aussehen:
@@ -136,165 +131,163 @@ Für die in einer Skalierungsgruppe erstellten virtuellen Computer ist ein Speic
 
 Für die virtuellen Computer in der Skalierungsgruppe ist ein virtuelles Netzwerk erforderlich.
 
-1. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für das Subnetz im virtuellen Netzwerk verwenden möchten, und erstellen Sie die Konfiguration:
+1. Ersetzen Sie den Wert von **$subName** durch den Namen, den Sie für das Subnetz im virtuellen Netzwerk verwenden möchten, und erstellen Sie dann die Variable: 
 
         $subName = "subnet name"
+        
+2. Erstellen Sie die Subnetzkonfiguration:
+    
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subName -AddressPrefix 10.0.0.0/24
+        
+    Das Adresspräfix kann in Ihrem virtuellen Netzwerk anders sein.
 
-2. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für das virtuelle Netzwerk verwenden möchten, und erstellen Sie es dann unter Verwendung der zuvor festgelegten Informationen und Ressourcen:
+3. Ersetzen Sie den Wert von **$netName** durch den Namen, den Sie für das virtuelle Netzwerk verwenden möchten, und erstellen Sie dann die Variable:
 
-        $netName="virtual network name"
-        $vnet=New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
+        $netName = "virtual network name"
+        
+4. Erstellen Sie das virtuelle Netzwerk:
+    
+        $vnet = New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 ### Öffentliche IP-Adresse
 
 Bevor eine Netzwerkschnittstelle erstellt werden kann, müssen Sie eine öffentliche IP-Adresse erstellen.
 
-1. Ersetzen Sie den Text in Anführungszeichen durch die Domänennamenbezeichnung, die Sie mit der öffentlichen IP-Adresse verwenden möchten, und testen Sie dann, ob der Name eindeutig ist. Die Bezeichnung darf nur Buchstaben, Zahlen und Bindestriche enthalten. Das letzte Zeichen muss jeweils ein Buchstabe oder eine Zahl sein:
+1. Ersetzen Sie den Wert von **$domName** durch die Domänennamenbezeichnung, die Sie mit der öffentlichen IP-Adresse verwenden möchten, und erstellen Sie dann die Variable:  
 
         $domName = "domain name label"
+        
+    Die Bezeichnung darf nur Buchstaben, Zahlen und Bindestriche enthalten. Das letzte Zeichen muss ein Buchstabe oder eine Zahl sein:
+    
+2. Testen Sie, ob der Name eindeutig ist:
+    
         Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
 
-    Ist die Antwort **False**, ist der vorgeschlagene Name eindeutig.
+    Ist die Antwort **True**, ist der vorgeschlagene Name eindeutig.
 
-2. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für die öffentliche IP-Adresse verwenden möchten, und erstellen Sie sie:
+3. Ersetzen Sie den Wert von **$pipName** durch den Namen, den Sie für die öffentliche IP-Adresse verwenden möchten, und erstellen Sie dann die Variable.
 
         $pipName = "public ip address name"
+        
+4. Erstellen Sie die öffentliche IP-Adresse:
+    
         $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic -DomainNameLabel $domName
 
 ### Netzwerkschnittstelle
 
 Sie verfügen jetzt über die öffentliche IP-Adresse und können die Netzwerkschnittstelle erstellen.
 
-1. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für die Netzwerkschnittstelle verwenden möchten, und erstellen Sie sie dann unter Verwendung der zuvor erstellten Ressourcen:
+1. Ersetzen Sie den Wert von **$nicName** durch den Namen, den Sie für die Netzwerkschnittstelle verwenden möchten, und erstellen Sie dann die Variable: 
 
         $nicName = "network interface name"
+        
+2. Erstellen Sie die Netzwerkschnittstelle:
+    
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
+### Konfiguration der Skalierungsgruppe
 
-### Erstellen der VM-Skalierungsgruppe
+Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration benötigen, also können Sie sie erstellen.
 
-Sie verfügen nun über alle Ressourcen, die Sie benötigen, und können die Skalierungsgruppe erstellen.
-
-1. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für die IP-Konfiguration verwenden möchten, und erstellen Sie sie:
+1. Ersetzen Sie den Wert von **$ipName** durch den Namen, den Sie für die IP-Konfiguration verwenden möchten, und erstellen Sie dann die Variable: 
 
         $ipName = "IP configuration name"
+        
+2. Erstellen Sie die IP-Konfiguration:
+
         $ipConfig = New-AzureRmVmssIpConfig -Name $ipName -LoadBalancerBackendAddressPoolsId $null -SubnetId $vnet.Subnets[0].Id
 
-2. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für die Skalierungsgruppenkonfiguration verwenden möchten, und erstellen Sie sie: In diesem Schritt wird auch die Größe der virtuellen Computer in der Gruppe festgelegt (als „SkuName“ bezeichnet) . Suchen Sie unter [Größen für virtuelle Computer](..\virtual-machines\virtual-machines-windows-sizes.md) die Größe, die Ihre Anforderungen am besten erfüllt. In diesem Beispiel wird die Verwendung von „Standard\_A0“ empfohlen:
+2. Ersetzen Sie den Wert von **$vmssConfig** durch den Namen, den Sie für die Skalierungsgruppenkonfiguration verwenden möchten, und erstellen Sie dann die Variable:
 
-        $vmssName = "Scale set configuration name"
-        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0"
-        Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssName -Primary $true -IPConfiguration $ipConfig
+        $vmssConfig = "Scale set configuration name"
+        
+3. Erstellen Sie die Konfiguration für die Skaliserungsgruppe:
 
+        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
+        
+    In diesem Beispiel wird veranschaulicht, wie eine Skalierungsgruppe mit drei virtuellen Computern erstellt wird. Weitere Informationen über die Kapazität von Skalierungsgruppen finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md). In diesem Schritt wird auch die Größe der virtuellen Computer in der Gruppe festgelegt (wird als „SkuName“ bezeichnet). Suchen Sie unter [Größen für virtuelle Computer](..\virtual-machines\virtual-machines-windows-sizes.md) die Größe, die Ihre Anforderungen erfüllt.
+    
+4. Fügen Sie die Konfiguration der Netzwerkschnittstelle der Skalierungsgruppenkonfiguration hinzu:
+        
+        Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssConfig -Primary $true -IPConfiguration $ipConfig
+        
     Die Ausgabe sollte folgendermaßen aussehen:
 
-        Sku                   : {
-                                  "name": "Standard_A0",
-                                  "tier": null,
-                                  "capacity": 3
-        						}
-        UpgradePolicy         : {
-                                  "mode": "automatic"
-                                }
-        VirtualMachineProfile : {
-                                  "osProfile": null,
-                                  "storageProfile": null,
-                                  "networkProfile": {
-                                    "networkInterfaceConfigurations": [
-                                      {
-                                        "name": "myniccfg1",
-                                        "properties.primary": true,
-                                        "properties.ipConfigurations": [
-                                          {
-                                            "name": "myipconfig1",
-                                            "properties.subnet": {
-                                              "id": "/subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft.Network/virtualNetworks/myvn1/subnets/mysn1"
-                                            },
-                                            "properties.loadBalancerBackendAddressPools": [],
-                                            "properties.loadBalancerInboundNatPools": [],
-                                            "id": null
-                                          }
-                                        ],
-                                        "id": null
-                                      }
-                                    ]
-                                  },
-                                  "extensionProfile": {
-                                    "extensions": null
-                                  }
-                                }
+        Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
+        UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
+        VirtualMachineProfile : Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile
         ProvisioningState     :
+        OverProvision         :
         Id                    :
         Name                  :
         Type                  :
         Location              : Central US
-        Tags.Count            : 0
         Tags                  :
 
-3. Ersetzen Sie den Text in Anführungszeichen für das Computernamenpräfix, das Sie verwenden möchten, für den Namen des Administratorkontos auf den virtuellen Computern und für das Kontokennwort. Erstellen Sie anschließend das Betriebssystemprofil:
+#### Betriebssystemprofil
+
+1. Ersetzen Sie den Wert von **$computerName** durch das Computernamenpräfix, das Sie verwenden möchten, und erstellen Sie dann die Variable: 
 
         $computerName = "computer name prefix"
+        
+2. Ersetzen Sie den Wert von **$adminName** durch den Namen des Administratorkontos auf den virtuellen Computern, und erstellen Sie dann die Variable:
+
         $adminName = "administrator account name"
+        
+3. Ersetzen Sie den Wert von **$adminPassword** durch das Kontokennwort, und erstellen Sie dann die Variable:
+
         $adminPassword = "password for administrator accounts"
+        
+4. Erstellen Sie das Betriebssystemprofil:
+
         Set-AzureRmVmssOsProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix $computerName -AdminUsername $adminName -AdminPassword $adminPassword
 
-    Im Abschnitt „OsProfile“ wird etwa Folgendes angezeigt:
+#### Speicherprofil
 
-        "osProfile": {
-          "computerNamePrefix": "myvmss1",
-          "adminUsername": "########",
-          "adminPassword": "########",
-          "customData": null,
-          "windowsConfiguration": null,
-          "linuxConfiguration": null,
-          "secrets": null
-        },
-
-4. Ersetzen Sie den Text in Anführungszeichen durch den Namen, den Sie für das Speicherprofil, die Imageinformationen und den Speicherpfad für die Datenträger der virtuellen Computer verwenden möchten, und erstellen Sie dann das Profil. Weitere Informationen finden Sie unter [Navigieren zwischen und Auswählen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](..\virtual-machines\virtual-machines-windows-cli-ps-findimage.md).
+1. Ersetzen Sie den Wert von **$storageProfile** durch den Namen, den Sie für das Speicherprofil verwenden möchten, und erstellen Sie dann die Variable:  
 
         $storeProfile = "storage profile name"
-        $imagePublisher = "image publisher name, such as MicrosoftWindowsServer"
-        $imageOffer = "offer from publisher, such as WindowsServer"
-        $imageSku = "sku of image, such as 2012-R2-Datacenter"
+        
+2. Erstellen Sie die Variablen, die das zu verwendende Image definieren:
+      
+        $imagePublisher = "MicrosoftWindowsServer"
+        $imageOffer = "WindowsServer"
+        $imageSku = "2012-R2-Datacenter"
+        
+    Weitere Informationen zum zu verwendenden Image finden Sie unter [Navigieren zwischen und Auswählen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](..\virtual-machines\virtual-machines-windows-cli-ps-findimage.md).
+        
+3. Ersetzen Sie den Wert von **$vhdContainer** durch den Pfad, in dem die virtuellen Festplatten gespeichert sind, z.B. „https://mystorage.blob.core.windows.net/vhds“, und erstellen Sie dann die Variable:
+       
         $vhdContainer = "URI of storage container"
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainer -OsDiskCreateOption "FromImage" -OsDiskCaching "None"
+        
+4. Erstellen Sie das Speicherprofil:
 
-    Die Ausgabe im Abschnitt „StorageProfile“ sollte folgendermaßen aussehen:
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainer -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
-        "storageProfile": {
-          "imageReference": {
-            "publisher": "MicrosoftWindowsServer",
-            "offer": "WindowsServer",
-            "sku": "2012-R2-Datacenter",
-            "version": "latest"
-          },
-          "osDisk": {
-            "name": "mystore1",
-            "caching": "None",
-            "createOption": "FromImage",
-            "osType": null,
-            "image": null,
-            "vhdContainers": {
-              "http://myst1.blob.core.windows.net/vhds"
-            }
-          }
-        },
+### VM-Skalierungsgruppe
 
-5. Ersetzen Sie den Text in Anführungszeichen durch den Namen der VM-Skalierungsgruppe, und erstellen Sie sie:
+Jetzt können Sie die Skalierungsgruppe erstellen.
+
+1. Ersetzen Sie den Wert von **$vmssName** durch den Namen der VM-Skalierungsgruppe, und erstellen Sie dann die Variable:
 
         $vmssName = "scale set name"
+        
+2. Erstellen Sie die Skalierungsgruppe:
+
         New-AzureRmVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmss
 
     Daraufhin sollte etwa folgende Ausgabe angezeigt werden, die darauf hinweist, dass die Bereitstellung erfolgreich war:
 
-        ProvisioningState     : Succeeded
-        Id                    : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
+        Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
+        UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
+        VirtualMachineProfile : Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile
+        ProvisioningState     : Updating
+        OverProvision         :
+        Id                    : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microso
+                               ft.Compute/virtualMachineScaleSets/myvmss1
         Name                  : myvmss1
         Type                  : Microsoft.Compute/virtualMachineScaleSets
         Location              : centralus
-        Tags.Count            : 0
         Tags                  :
 
 ## Schritt 3: Untersuchen von Ressourcen
@@ -309,8 +302,8 @@ Untersuchen Sie die eben erstellte VM-Skalierungsgruppe mithilfe der folgenden R
 
 ## Nächste Schritte
 
-1. Weitere Informationen finden Sie unter [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md) (Übersicht über VM-Skalierungsgruppen).
+- Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben, mithilfe der Informationen unter [Verwalten virtueller Computer in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-manage.md).
+- Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatic scaling and virtual machine scale sets](virtual-machine-scale-sets-autoscale-overview.md) (Automatische Skalierung und VM-Skalierungsgruppen).
+- Erfahren Sie mehr über die vertikale Skalierung, indem Sie [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) lesen.
 
-2. Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatic scaling and virtual machine scale sets](virtual-machine-scale-sets-autoscale-overview.md) (Automatische Skalierung und VM-Skalierungsgruppen).
-
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

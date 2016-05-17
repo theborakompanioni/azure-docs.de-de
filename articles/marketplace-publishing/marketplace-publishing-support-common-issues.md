@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="03/21/2015"
+      ms.date="05/03/2016"
       ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Beheben von häufig auftretenden Problemen mit dem Azure Marketplace für Herausgeber
@@ -46,7 +46,7 @@ Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftr
     - Das Datum der Rechnung für diesen Zeitraum
     - Den Grund für die Gutschrift
 
-Sie erhalten innerhalb von 24 Stunden eine Bestätigungs-E-Mail, dass wir Ihre Informationen erhalten haben. Nachdem eine Entscheidung bezüglich Ihrer Anfrage getroffen wurde, werden Sie über das Ergebnis informiert.
+Sie erhalten innerhalb von 24 Stunden eine Bestätigungs-E-Mail, dass wir Ihre Informationen erhalten haben. Nachdem eine Entscheidung bezüglich Ihrer Anfrage getroffen wurde, werden Sie über das Ergebnis informiert.
 
 ## Überprüfung des Kundenabonnements
 
@@ -72,7 +72,7 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 
 ![inprivate][4]
 
-**2. Melden Sie sich mit dem Geschäftskonto Ihres Unternehmens oder Ihrem Schulkonto an** (z. B. AzureStore@yourcompany.com).
+**2. Melden Sie sich mit dem Geschäftskonto Ihres Unternehmens oder Ihrem Schulkonto an** (z. B. AzureStore@yourcompany.com).
 
 ![signin][5]
 
@@ -120,4 +120,4 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

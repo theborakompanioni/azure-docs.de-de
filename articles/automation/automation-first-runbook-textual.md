@@ -5,15 +5,15 @@
     documentationCenter=""
     authors="mgoedtel"
     manager="jwhit"
-    editor=""/>
-
+    editor=""
+	keywords="PowerShell-Workflow, Beispiele für Powershell-Workflows, PowerShell-Workflows" />
 <tags
     ms.service="automation"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/21/2016"
+    ms.date="05/10/2016"
     ms.author="magoedte;bwren"/>
 
 # Mein erstes PowerShell-Workflow-Runbook
@@ -116,4 +116,4 @@ Unser Runbook startet zwar nun den virtuellen Computer, den wir im Runbook hartc
 -	[Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 -	[Mein erstes PowerShell-Runbook](automation-first-runbook-textual-PowerShell.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

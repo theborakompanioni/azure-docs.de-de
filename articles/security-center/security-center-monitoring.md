@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/22/2016"
+   ms.date="05/10/2016"
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
@@ -98,62 +98,58 @@ Im obigen Beispiel wird für eine virtuelle Maschine eine dringende Empfehlung i
 Dieses Blatt enthält die Sicherheitsdetails für den virtuellen Computer. Unten auf dem Blatt werden die empfohlenen Aktionen sowie der Schweregrad der einzelnen Probleme angezeigt.
 
 ###Überwachen virtueller Netzwerke
-Im Abschnitt mit dem Vorbeugungsstatus für das Netzwerk sind die virtuellen Netzwerke aufgeführt, die von Security Center überwacht werden. Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Netzwerk** klicken, wird das Blatt **Netzwerk** mit weiteren Details geöffnet (siehe folgende Abbildung):
+Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Netzwerk** klicken, wird das Blatt **Netzwerk** mit weiteren Details geöffnet (siehe folgende Abbildung):
 
 ![Netzwerk](./media/security-center-monitoring/security-center-monitoring-fig9-new.png)
-
-Nachdem Sie dieses Blatt geöffnet haben, sehen Sie zwei Abschnitte:
-- Netzwerkempfehlungen
-- Netzwerk
-
-In jedem Abschnitt können Sie eine individuelle Option wählen, um weitere Details zur Empfehlung zu erhalten. In den folgenden Abschnitten werden diese Bereiche ausführlicher behandelt.
 
 ####Netzwerkempfehlungen
 
 Ähnlich wie für die Ressourcenintegritätsinformationen für virtuelle Maschinen enthält dieses Blatt im oberen Bereich eine zusammengefasste Liste der Probleme und im unteren Bereich eine Liste der überwachten Netzwerke.
 
-![Endpunkt](./media/security-center-monitoring/security-center-monitoring-fig10-new.png)
+![Blatt „Netzwerk“](./media/security-center-monitoring/security-center-monitoring-fig9-new2.png)
 
 Im Abschnitt für die Statusanalyse der Netzwerke sind potenzielle Sicherheitsprobleme und entsprechende Empfehlungen aufgeführt. Beispiele für Probleme:
 
-- [ACLs für Endpunkte](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md) sind nicht aktiviert
-- [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) sind nicht aktiviert
-- Fehlerfreie Subnetze und „Zugriff in Netzwerksicherheitsgruppen (NSGs) nicht eingeschränkt“ werden aufgeführt.
+- Netzwerksicherheitsgruppen (NSGs) für Subnetze nicht aktiviert
+- NSGs für virtuelle Computer nicht aktiviert
+- Eingeschränkter Zugriff über öffentliche externe Endpunkte
+- Fehlerfrei Subnetze
 
 Wenn Sie auf eine dieser Empfehlungen klicken, wird ein neues Blatt mit weiteren Details zur Empfehlung angezeigt (siehe folgendes Beispiel).
 
-![Endpunkt einschränken](./media/security-center-monitoring/security-center-monitoring-fig11-new.png)
+![Endpunkt einschränken](./media/security-center-monitoring/security-center-monitoring-fig11-new2.png)
 
-In diesem Beispiel enthält das Blatt **Zugriff über öffentlichen externen Endpunkt einschränken** eine Liste der von dieser Warnung betroffenen Netzwerksicherheitsgruppen (NSGs) sowie das Subnetz und das Netzwerk, denen diese NSGs zugeordnet wurden, den aktuellen Status dieser Empfehlung und den Schweregrad des Problems. Wenn Sie auf die Netzwerksicherheitsgruppe klicken, wird ein weiteres Blatt angezeigt (siehe folgende Abbildung).
+In diesem Beispiel befindet sich auf dem Blatt **Fehlende Netzwerksicherheitsgruppen für Subnetze konfigurieren** eine Liste mit Subnetzen und virtuellen Computern ohne NSG-Schutz. Wenn Sie auf das Subnetz klicken, auf das Sie die NSG anwenden möchten, wird ein weiteres Blatt geöffnet.
 
-Dieses Blatt enthält die Informationen und den Speicherort der Netzwerksicherheitsgruppe. Außerdem ist hier die Liste mit den eingehenden Regeln angegeben, die derzeit aktiviert sind. Im unteren Teil dieses Blatts wird der virtuelle Computer aufgeführt, der dieser Netzwerksicherheitsgruppe zugeordnet ist. Klicken Sie oben im Blatt auf **Eingangsregel bearbeiten**, wenn Sie die Eingangsregeln zum Sperren eines unerwünschten, aber derzeit geöffneten Ports aktivieren oder die Quelle der aktuellen Eingangsregel ändern möchten.
+Auf dem Blatt **Netzwerksicherheitsgruppe auswählen** können Sie eine geeignete Netzwerksicherheitsgruppe für das Subnetz auswählen oder eine neue Netzwerksicherheitsgruppe erstellen.
 
 ####Abschnitt „Netzwerk“
 
-Der Abschnitt **Netzwerk** enthält eine hierarchische Ansicht der Ressourcengruppen, Subnetze und Netzwerkschnittstellen, die Ihrem virtuellen Computer zugeordnet sind (siehe folgende Abbildung).
+Der Abschnitt **Netzwerk** enthält eine hierarchische Ansicht der Ressourcen:
 
-![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig121-new.png)
+![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig121-new2.png)
 
-In diesem Abschnitt werden [auf dem Resource Manager basierende VMs von klassischen VMs abgegrenzt](../resource-manager-deployment-model.md). So können Sie schnell erkennen, ob für die virtuelle Maschine Azure Service Management- oder Azure Resource Management-Netzwerkfunktionen verfügbar sind. Wenn Sie von dieser Stelle aus auf die Eigenschaften einer Netzwerkschnittstellenkarte zugreifen möchten, müssen Sie das Subnetz erweitern und auf den Namen des virtuellen Computers klicken. Wenn Sie diese Aktion für eine Ressourcen-Manager-basierte virtuelle Maschine durchführen, wird ein neues Blatt geöffnet, das etwa wie folgt aussieht:
+Diese Tabelle ist nach Schweregrad sortiert (virtuelle Computer und Subnetze):
+- Rot (oben): hohe Priorität; sollte umgehend behoben werden 
+- Orange: mittlere Priorität; sollte zeitnah behoben werden
+- Grün (ganz unten): fehlerfrei
 
-![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig13-new.png)
+In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [virtuelle Netzwerkgateways](../vpn-gateway/vpn-gateway-site-to-site-create.md) und [Virtual Network (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze. Die dritte Ebene enthält die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe (NSG) für diese Ressourcen. Im folgenden Beispiel wurde der virtuelle Computer „VM-CL-W1“ ausgewählt:
 
-Auf diesem Blatt sind die Informationen zur Netzwerkschnittstellenkarte und die aktuellen Empfehlungen dafür zusammengefasst. Wenn es sich bei der ausgewählten virtuellen Maschine um eine über das klassische Azure-Portal bereitgestellte virtuelle Maschine handelt, wird ein neues Blatt mit anderen Optionen angezeigt (siehe folgende Abbildung).
+![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig13-new2.png)
 
-![ACL (Zugriffssteuerungsliste)](./media/security-center-monitoring/security-center-monitoring-fig14-new.png)
-
-Auf diesem Blatt können Sie Änderungen an den öffentlichen und privaten Ports vornehmen und eine ACL für diese VM erstellen.
+Im unteren Teil des Blatts befinden sich Empfehlungen für diesen virtuellen Computer (ähnlich wie weiter oben beschrieben). Sie können auf eine Empfehlung klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
 ###Überwachen von SQL-Ressourcen
 Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **SQL** klicken, wird das Blatt „SQL“ geöffnet. Es enthält Empfehlungen zu Problemen, die mit der Überwachung oder der nicht aktivierten Transparent Data Encryption zusammenhängen. Außerdem werden Empfehlungen zum allgemeinen Integritätsstatus der Datenbank angegeben.
 
 ![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig15-new.png)
 
-Sie können auf eine dieser Empfehlungen klicken, um weitere Details zu Aktionen zu erhalten, mit denen das jeweilige Problem behoben werden kann. Im folgenden Beispiel wird die Erweiterung der Empfehlung **Datenbanküberwachung nicht aktiviert** gezeigt.
+Sie können auf eine dieser Empfehlungen klicken, um weitere Details zu Aktionen zu erhalten, mit denen das jeweilige Problem behoben werden kann. Das folgende Beispiel zeigt die Erweiterung der Empfehlung **Datenbanküberwachung nicht aktiviert**.
 
 ![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig16-new.png)
 
-Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält die folgenden Informationen:
+Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält folgende Informationen:
 
 - Liste der SQL-Datenbanken
 - Server, auf dem sich eine Datenbank befindet
@@ -161,7 +157,7 @@ Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält die folgende
 - Aktueller Status
 - Schweregrad des Problems
 
-Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, wird das Blatt **Überwachung und Bedrohungserkennung** wie folgt angezeigt.
+Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, wird das Blatt **Überwachung und Bedrohungserkennung** angezeigt:
 
 ![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig17-new.png)
 
@@ -176,7 +172,7 @@ Sie können wie bei den anderen Empfehlungen auch auf eine Empfehlung klicken, u
 
 ![Apps](./media/security-center-monitoring/security-center-monitoring-fig19-new.png)
 
-Auf dem Blatt **Ungesicherte Webanwendungen** wird eine Liste aller virtuellen Computer angezeigt, die als unsicher betrachtete Anwendungen enthalten. In der Liste werden der Name der virtuellen Maschine, der aktuelle Problemstatus und der Schweregrad des Problems angezeigt. Wenn Sie auf diese Webanwendung klicken, wird das Blatt **Web Application Firewall hinzufügen** mit Optionen zum Installieren einer Web Application Firewall (WAF) von Drittanbietern angezeigt (siehe folgende Abbildung).
+Auf dem Blatt **Ungesicherte Webanwendungen** wird eine Liste mit allen virtuellen Computern angezeigt, die als unsicher geltende Anwendungen enthalten. In der Liste werden der Name der virtuellen Maschine, der aktuelle Problemstatus und der Schweregrad des Problems angezeigt. Wenn Sie auf diese Webanwendung klicken, wird das Blatt **Web Application Firewall hinzufügen** mit Optionen zum Installieren einer Web Application Firewall (WAF) eines Drittanbieters angezeigt:
 
 ![Web Application Firewall (WAF) hinzufügen](./media/security-center-monitoring/security-center-monitoring-fig20-new.png)
 
@@ -184,9 +180,9 @@ Auf dem Blatt **Ungesicherte Webanwendungen** wird eine Liste aller virtuellen C
 In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azure Security Center verwenden können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Monitoring partner solutions with Azure Security Center (Überwachen von Partnerlösungen mit Azure Security Center)](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
+- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

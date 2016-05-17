@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="04/26/2016"
 	ms.author="davidmu"/>
 
 # Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
@@ -39,17 +39,17 @@ Weitere Informationen zu Ressourcen-Manager-Ressourcen finden Sie unter [Azure-C
 
 Die Vorlage, die Sie in diesem Tutorial erstellen, ähnelt einer Vorlage aus dem Vorlagenkatalog. Weitere Informationen finden Sie unter [Bereitstellen einer einfachen VM-Skalierungsgruppe mit virtuellen Windows-Computern und einer Jumpbox](https://azure.microsoft.com/documentation/templates/201-vmss-windows-jumpbox/).
 
-[AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)]
+## Schritt 1: Installieren von Azure PowerShell
 
-## Schritt 1: Erstellen einer Ressourcengruppe und eines Speicherkontos
+Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-1. **Melden Sie sich an Microsoft Azure an**. Öffnen Sie das Microsoft Azure PowerShell-Fenster, und führen Sie **Login-AzureRmAccount** aus.
+## Schritt 2: Erstellen einer Ressourcengruppe und eines Speicherkontos
 
-2. **Erstellen einer Ressourcengruppe** – Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Geben Sie der Ressourcengruppe für dieses Tutorial den Namen **vmsstestrg1**. Siehe [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx).
+1. **Erstellen einer Ressourcengruppe** – Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Geben Sie der Ressourcengruppe für dieses Tutorial den Namen **vmsstestrg1**: Siehe [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx).
 
-3. **Bereitstellen eines Speicherkontos in der neuen Ressourcengruppe** – In diesem Tutorial werden mehrere Speicherkonten für die VM-Skalierungsgruppe verwendet. Verwenden Sie [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx), um ein Speicherkonto mit dem Namen **vmsstestsa** zu erstellen. Lassen Sie das Azure PowerShell-Fenster zur Ausführung weiterer Schritte dieses Tutorials geöffnet.
+2. **Bereitstellen eines Speicherkontos in der neuen Ressourcengruppe** – In diesem Tutorial werden mehrere Speicherkonten für die VM-Skalierungsgruppe verwendet. Verwenden Sie [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx), um ein Speicherkonto mit dem Namen **vmsstestsa** zu erstellen. Lassen Sie das Azure PowerShell-Fenster zur Ausführung weiterer Schritte dieses Tutorials geöffnet.
 
-## Schritt 2: Erstellen der Vorlage
+## Schritt 3: Erstellen der Vorlage
 Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemeinsam bereitstellen und verwalten. Sie verwenden hierfür eine JSON-Beschreibung der Ressourcen sowie der zugeordneten Bereitstellungsparameter.
 
 1. Erstellen Sie in Ihrem bevorzugten Editor die Datei „C:\\VMSSTemplate.json“, und fügen Sie die JSON-Ausgangsstruktur hinzu, um die Vorlage zu unterstützen.
@@ -472,7 +472,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
     In diesem Tutorial lauten die wichtigen Werte wie folgt:
 
     - **metricName**: Entspricht dem Leistungsindikator, den wir in der Variablen „wadperfcounter“ definiert haben. Anhand dieser Variablen führt die Diagnose-Erweiterung die Erfassung für den Indikator **Processor(\_Total)\\% Processor Time** durch.
-- **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe.
+    - **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe.
     - **timeGrain**: Dies ist die Granularität der erfassten Metriken. In dieser Vorlage ist sie auf eine Minute festgelegt.
     - **statistic**: Hiermit wird bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden. Mögliche Werte sind: Average, Min, Max. In dieser Vorlage suchen wir nach der durchschnittlichen CPU-Gesamtnutzung für die virtuellen Computer der Skalierungsgruppe.
     - **timeWindow**: Dies ist der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
@@ -486,7 +486,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 
 12.	Speichern Sie die Vorlagendatei.
 
-## Schritt 3: Hochladen der Vorlage in den Speicher
+## Schritt 4: Hochladen der Vorlage in den Speicher
 
 Die Vorlage kann aus dem Microsoft Azure PowerShell-Fenster hochgeladen werden, wenn Sie den Kontonamen und den primären Schlüssel des Speicherkontos kennen, das Sie in Schritt 1 erstellt haben.
 
@@ -515,15 +515,15 @@ Die Vorlage kann aus dem Microsoft Azure PowerShell-Fenster hochgeladen werden, 
             $fileName = "C:" + $BlobName
             Set-AzureStorageBlobContent -File $fileName -Container $ContainerName -Blob  $BlobName -Context $ctx
 
-## Schritt 4: Bereitstellen der Vorlage
+## Schritt 5: Bereitstellen der Vorlage
 
 Nachdem Sie die Vorlage erstellt haben, können Sie mit dem Bereitstellen der Ressourcen beginnen. Verwenden Sie diesen Befehl, um den Prozess zu starten:
 
-        New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
+    New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
 
 Wenn Sie die EINGABETASTE drücken, werden Sie aufgefordert, Werte für die von Ihnen zugewiesenen Variablen anzugeben. Geben Sie die folgenden Werte an:
 
-	vmName: vmsstestvm1
+    vmName: vmsstestvm1
 	vmSSName: vmsstest1
 	instanceCount: 5
 	adminUserName: vmadmin1
@@ -532,26 +532,30 @@ Wenn Sie die EINGABETASTE drücken, werden Sie aufgefordert, Werte für die von 
 
 Es dauert ungefähr 15 Minuten, bis alle Ressourcen bereitgestellt wurden.
 
->[AZURE.NOTE]Sie können zum Bereitstellen der Ressourcen auch das Portal verwenden. Verwenden Sie hierfür den folgenden Link: https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>
+>[AZURE.NOTE] Sie können zum Bereitstellen der Ressourcen auch das Portal verwenden. Nutzen Sie dazu diesen Link: „https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>“
 
-## Schritt 5: Überwachen von Ressourcen
+## Schritt 6: Überwachen von Ressourcen
 
 Mit den folgenden Methoden können Sie Informationen zu VM-Skalierungsgruppen erhalten:
 
  - Azure-Portal: Über das Portal können Sie derzeit eine begrenzte Menge an Informationen erhalten.
  - [Azure-Ressourcen-Explorer](https://resources.azure.com/): Dies ist das Tool, das zum Untersuchen des aktuellen Status Ihrer Skalierungsgruppe am besten geeignet ist. Wenn Sie diesem Pfad folgen, wird die Instanzansicht für die von Ihnen erstellte Skalierungsgruppe angezeigt:
 
-		subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
+        subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
  - Azure PowerShell: Verwenden Sie den folgenden Befehl, um Informationen zu erhalten:
 
-		Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
+        Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+        
+        Or
+        
+        Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
 
  - Stellen Sie eine Verbindung mit dem virtuellen Jumpbox-Computer her, wie Sie dies auch für jeden anderen Computer tun würden. Sie können dann per Remoteverbindung auf die virtuellen Computer der Skalierungsgruppe zugreifen, um die einzelnen Prozesse zu überwachen.
 
->[AZURE.NOTE]Eine vollständige REST-API zum Abrufen von Informationen zu Skalierungsgruppen finden Sie unter [VM-Skalierungsgruppen](https://msdn.microsoft.com/library/mt589023.aspx).
+>[AZURE.NOTE] Eine vollständige REST-API zum Abrufen von Informationen zu Skalierungsgruppen finden Sie unter [VM-Skalierungsgruppen](https://msdn.microsoft.com/library/mt589023.aspx).
 
-## Schritt 6: Entfernen der Ressourcen
+## Schritt 7: Entfernen der Ressourcen
 
 Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es sich grundsätzlich, nicht mehr benötigte Ressourcen zu löschen. Sie müssen nicht jede Ressource einzeln aus einer Ressourcengruppe löschen. Sie können auch die Ressourcengruppe löschen, sodass alle darin enthaltenen Ressourcen automatisch gelöscht werden.
 
@@ -559,6 +563,11 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 Wenn Sie die Ressourcengruppe beibehalten möchten, können Sie auch nur die Skalierungsgruppe löschen.
 
-	Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmsstestrg1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
+	Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"
+    
+## Nächste Schritte
 
-<!---HONumber=AcomDC_0427_2016-->
+- Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben, mithilfe der Informationen unter [Verwalten virtueller Computer in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-manage.md).
+- Erfahren Sie mehr über die vertikale Skalierung, indem Sie [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) lesen.
+
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/02/2016"
+	ms.date="05/02/2016"
 	ms.author="billmath"/>
 
 # Ermitteln der Identitätsanforderungen für Ihre Hybrid-Identitätslösung
@@ -44,7 +44,10 @@ Da Sie nun eine Vorstellung von den Bedürfnissen Ihres Unternehmens haben, müs
 - Nutzt Ihr Unternehmen derzeit lokale Synchronisierungsdienste?
 - Nimmt Ihr Unternehmen Drittanbieter-Identitätsanbieter (IdP) in Anspruch?
 
-Außerdem müssen Sie wissen, welche Clouddienste in Ihrem Unternehmen genutzt werden. Bewertungen zum Verstehen der aktuellen Integration in Saas-, Iaas oder Paas-Modelle in Ihrer Umgebung sind äußerst wichtig. Beantworten Sie während dieser Bewertung die folgenden Fragen: – Verfügt Ihr Unternehmen über eine Integration mit einem Cloud-Dienstanbieter? – Wenn ja, welche Dienste werden genutzt? – Ist diese Integration derzeit in der Produktion oder handelt es sich um ein Pilotprojekt?
+Außerdem müssen Sie wissen, welche Clouddienste in Ihrem Unternehmen genutzt werden. Bewertungen zum Verstehen der aktuellen Integration in Saas-, Iaas oder Paas-Modelle in Ihrer Umgebung sind äußerst wichtig. Beantworten Sie bei dieser Bewertung die folgenden Fragen:
+- Besteht bei Ihrem Unternehmen eine Integration mit einem Clouddienstanbieter?
+- Falls ja, welche Dienste werden genutzt?
+- Befindet sich diese Integration derzeit im Produktivbetrieb oder in einer Pilotphase?
 
 
 >[AZURE.NOTE]
@@ -89,7 +92,8 @@ Sie müssen zudem die Benutzeranforderungen bewerten. Diese Bewertung ist wichti
 - Wie melden sich Benutzer in der Regel bei ihrer lokalen Umgebung an?
 - Wie werden sich Benutzer in der Cloud anmelden?
 
->[Hinweis] Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Bestimmen der Anforderungen an Reaktionen auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) sind die verfügbaren Optionen und die Pros und Kontras jeder Option beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
+>[AZURE.NOTE]
+Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Bestimmen der Anforderungen an Reaktionen auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) sind die verfügbaren Optionen und die Pros und Kontras jeder Option beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
 
 ## Nächste Schritte
 [Ermitteln der Anforderungen an die Verzeichnissynchronisierung](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -97,4 +101,4 @@ Sie müssen zudem die Benutzeranforderungen bewerten. Diese Bewertung ist wichti
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

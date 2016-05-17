@@ -1,4 +1,13 @@
-<properties pageTitle="Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements | Microsoft Azure" description="Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung einrichten können, um Überraschungen bei der Abrechnung zu vermeiden." services="billing" documentationCenter="" authors="vikdesai" manager="msmbaldwin" editor=""/ tags="billing" />
+<properties
+	pageTitle="Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements | Microsoft Azure"
+	description="Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung einrichten können, um Überraschungen bei der Abrechnung zu vermeiden."
+	services="billing"
+	documentationCenter=""
+	authors="vikdesai"
+	manager="msmbaldwin"
+	editor=""
+	tags="billing"
+	/>
 
 <tags
 	ms.service="multiple"
@@ -39,4 +48,4 @@ Nach dem Einrichten von Warnungen werden diese im Account Center aufgelistet. Zu
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -12,45 +12,78 @@ Der Name der zu erstellenden Logik-App.
         "type": "string"
     }
 
-### svcPlanName
+### hostingPlanName
 
 Der Name des App Service-Plans zum Hosten der Logik-App.
     
-    "svcPlanName": {
-        "type": "string"
+    "hostingPlanName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the App Service plan to create for hosting the logic app."
+      }
     }
 
-### sku
+### flowSkuName
 
 Der Tarif für die Logik-App.
 
-    "sku": {
-        "type": "string",
-        "defaultValue": "Standard",
-        "allowedValues": [
-            "Free",
-            "Basic",
-            "Standard",
-            "Premium"
-        ]
-    }
+    "flowSkuName": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Free",
+        "Basic",
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "The pricing tier for the logic app."
+      }
+    },
+
 
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Free, Basic, Standard oder Premium), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
 
-### svcPlanSize
+### hostingSkuName
+
+Der Tarif des App Service-Plans.
+
+    "hostingSkuName": {
+      "type": "string",
+      "defaultValue": "S1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Describes plan's pricing tier and instance size."
+      }
+    },
+
+
+### hostingSkuCapacity
 
 Die Instanzgröße der App.
 
-    "svcPlanSize": {
-        "defaultValue": "0",
-        "type": "string",
-        "allowedValues": [
-            "0",
-            "1",
-            "2"
-        ]
-    }
+    "hostingSkuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "minValue": 1,
+      "metadata": {
+        "description": "Describes plan's instance count"
+      }
+    },
+
 
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1 oder 2), und weist einen Standardwert (0) zu, wenn kein Wert angegeben wird. Die Werte entsprechen klein, mittel und groß.
 
-<!---HONumber=Oct15_HO3-->
