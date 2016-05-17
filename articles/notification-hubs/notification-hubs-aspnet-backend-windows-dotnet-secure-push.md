@@ -19,7 +19,7 @@
 #Azure Notification Hubs – Sichere Pushbenachrichtigungen
 
 > [AZURE.SELECTOR]
-- [Windows Universal](notification-hubs-windows-dotnet-secure-push.md)
+- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
 - [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
 - [Android](notification-hubs-aspnet-backend-android-secure-push.md)
 
@@ -186,4 +186,4 @@ Gehen Sie zum Ausführen der Anwendung folgendermaßen vor:
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

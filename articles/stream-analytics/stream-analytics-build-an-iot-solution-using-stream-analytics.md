@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="03/21/2016" 
+	ms.date="05/03/2016" 
 	ms.author="jeffstok"
 />
 
@@ -47,7 +47,7 @@ Für den erfolgreichen Abschluss dieses Tutorials wird Folgendes vorausgesetzt:
 ## Einführung in das Szenario „Hallo Maut!“
 
 
-Mautstellen sind weitverbreitet – wir stoßen auf vielen Autobahnen, Brücken und in Tunneln in der ganzen Welt auf sie. Jede Mautstelle verfügt über mehrere Mauthäuschen: manuelle – d. h., Sie halten an, um die Maut bei einem Mitarbeiter zu zahlen oder automatisiert – während Sie am Mauthäuschen vorbeifahren, scannt ein Sensor auf dem Dach der Mautkabine eine RFID-Karte, die an der Windschutzscheibe Ihres Fahrzeugs befestigt ist. Es ist einfach, die Durchfahrt von Fahrzeugen durch diese Mautstellen als einen Strom von Ereignissen zu visualisieren, über den interessante Vorgänge ausgeführt werden können.
+Mautstellen sind weitverbreitet – wir stoßen auf vielen Autobahnen, Brücken und in Tunneln in der ganzen Welt auf sie. Jede Mautstelle verfügt über mehrere Mauthäuschen: manuelle – d. h., Sie halten an, um die Maut bei einem Mitarbeiter zu zahlen oder automatisiert – während Sie am Mauthäuschen vorbeifahren, scannt ein Sensor auf dem Dach der Mautkabine eine RFID-Karte, die an der Windschutzscheibe Ihres Fahrzeugs befestigt ist. Es ist einfach, die Durchfahrt von Fahrzeugen durch diese Mautstellen als einen Strom von Ereignissen zu visualisieren, über den interessante Vorgänge ausgeführt werden können.
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
 
@@ -223,7 +223,7 @@ Klicken Sie auf „TollDataDB“
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
 
-Kopieren Sie den Servernamen ohne die Portnummer (z. B. „*servername*.database.windows.net“).
+Kopieren Sie den Servernamen ohne die Portnummer (z. B. „*servername*.database.windows.net“).
 
 ## Herstellen einer Verbindung mit der Datenbank über Visual Studio
 
@@ -237,7 +237,7 @@ Gehen Sie folgendermaßen vor, um über Visual Studio eine Verbindung mit der Az
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image16.png)
 
-3) Fügen Sie in das Feld „Servername“ den Namen des SQL Servers ein, den Sie im vorherigen Abschnitt aus dem Azure-Portal kopiert haben (d. h. „*servername*.database.windows.net“).
+3) Fügen Sie in das Feld „Servername“ den Namen des SQL Servers ein, den Sie im vorherigen Abschnitt aus dem Azure-Portal kopiert haben (d. h. „*servername*.database.windows.net“).
 
 4) Wählen Sie „SQL Server-Authentifizierung“ im Feld „Authentifizierung“ aus
 
@@ -303,7 +303,7 @@ Wählen Sie „Event Hub“ auf der zweiten Seite des Assistenten.
 
 Geben Sie „EntryStream“ als Eingabealias ein.
 
-Klicken Sie auf die Dropdownliste „Event Hub“und wählen Sie denjenigen aus, der mit „TollData“ beginnt (z. B. TollData9518658221).
+Klicken Sie auf die Dropdownliste „Event Hub“und wählen Sie denjenigen aus, der mit „TollData“ beginnt (z. B. TollData9518658221).
 
 Wählen Sie „Eintrag“ als Event Hub-Name und „alle“ als Name der Event Hub-Richtlinie.
 
@@ -461,7 +461,7 @@ Betrachten Sie die Ausgabe der Abfrage.
 ## Starten des Stream Analytics-Auftrags
 
 
-Da wir unsere erste Azure Stream Analytics-Abfrage geschrieben haben, ist es nun an der Zeit die Konfiguration zu beenden und den Auftrag zu starten. Speichern Sie die Abfrage aus Frage 3, die eine Ausgabe entsprechend dem Schema der Ausgabetabelle **TollDataRefJoin** erzeugt.
+Da wir unsere erste Azure Stream Analytics-Abfrage geschrieben haben, ist es nun an der Zeit die Konfiguration zu beenden und den Auftrag zu starten. Speichern Sie die Abfrage aus Frage 3, die eine Ausgabe entsprechend dem Schema der Ausgabetabelle **TollDataRefJoin** erzeugt.
 
 Navigieren Sie zum Dashboard des Auftrags und klicken Sie auf „Start“.
 
@@ -535,4 +535,4 @@ Beachten Sie, dass Ressourcen anhand des Namens identifiziert werden. Stellen Si
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

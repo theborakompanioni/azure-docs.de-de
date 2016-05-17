@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/03/2016"
 	ms.author="billmath"/>
 
 
@@ -30,7 +30,7 @@ Ein Hotfix ist verfügbar, um dieses Problem zu beheben. Informationen hierzu fi
 
 ## Überprüfen, ob Schritte erforderlich sind
 
-Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Office 365 und Azure AD das Zertifikat automatisch, bevor es abläuft. Sie müssen keine manuellen Schritte ausführen bzw. kein Skript als geplante Aufgabe ausführen. Damit dies funktioniert, müssen die beiden folgenden AD FS-Konfigurationseinstellungen wirksam sein:
+Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Office 365 und Azure AD das Zertifikat automatisch, bevor es abläuft. Sie müssen keine manuellen Schritte ausführen bzw. kein Skript als geplante Aufgabe ausführen. Damit dies funktioniert, müssen die beiden folgenden AD FS-Konfigurationseinstellungen wirksam sein:
 
 - Die AD FS-Eigenschaft "AutoCertificateRollover" muss auf "True" festgelegt sein. Damit wird angegeben, dass AD FS automatisch neue Tokensignatur- und Tokenverschlüsselungszertifikate generiert, bevor die alten ablaufen.
 	- Wenn der Wert "False" ist, verwenden Sie benutzerdefinierte Zertifikateinstellungen. [Hier](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert) finden Sie umfassende Anleitungen.
@@ -53,7 +53,7 @@ Suchen Sie in der resultierenden Ausgabe nach der folgenden Einstellung:
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-Dabei wird `(your_FS_name) ` durch den Verbunddiensthostnamen ersetzt, den Ihre Organisation verwendet, z. B. "fs.contoso.com". Wenn Sie diese beiden Einstellungen erfolgreich überprüfen können, müssen Sie nichts weiter tun.
+Dabei wird `(your_FS_name) ` durch den Verbunddiensthostnamen ersetzt, den Ihre Organisation verwendet, z. B. "fs.contoso.com". Wenn Sie diese beiden Einstellungen erfolgreich überprüfen können, müssen Sie nichts weiter tun.
 
 Beispiel: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
@@ -96,9 +96,9 @@ Wenn die AutocertificateRollover-Einstellung "True" ist, aber die Verbundmetadat
 1.	Öffnen Sie das Microsoft Azure Active Directory-Modul für Windows PowerShell.
 2.	Führen Sie $cred=Get-Credential aus. Wenn Sie dieses Cmdlet zur Eingabe von Anmeldeinformationen auffordert, geben Sie die Anmeldeinformationen Ihres Clouddienstadministrators ein.
 3.	Führen Sie Connect-MsolService –Credential $cred aus. Dieses Cmdlet verbindet Sie mit dem Clouddienst. Sie müssen einen Kontext erstellen, der Sie mit dem Clouddienst verbindet, bevor Sie andere Cmdlets ausführen, die vom Tool installiert werden.
-4.	Wenn Sie diese Befehle auf einem Computer ausführen, der nicht der primäre AD FS-Verbundserver ist, führen Sie "Set-MSOLAdfscontext -Computer <AD FS primary server>" aus, wobei <AD FS primary server> der interne FQDN des primären AD FS-Servers ist. Dieses Cmdlet erstellt einen Kontext, der Sie mit AD FS verbindet.
+4.	Wenn Sie diese Befehle auf einem Computer ausführen, der nicht der primäre AD FS-Verbundserver ist, führen Sie "Set-MSOLAdfscontext -Computer <AD FS primary server>" aus, wobei <AD FS primary server> der interne FQDN des primären AD FS-Servers ist. Dieses Cmdlet erstellt einen Kontext, der Sie mit AD FS verbindet.
 5.	Führen Sie "Update-MSOLFederatedDomain -DomainName <domain>" aus. Dieses Cmdlet aktualisiert die Einstellungen von AD FS im Clouddienst und konfiguriert die Vertrauensstellung zwischen beiden.
 
->[AZURE.NOTE] Wenn Sie mehrere Domänen der obersten Ebene unterstützen müssen, z. B. "contoso.com" und "fabrikam.com", müssen Sie den SupportMultipleDomain-Switch mit den Cmdlets verwenden. Weitere Informationen finden Sie unter "Unterstützen mehrerer Domänen auf oberster Ebene". Stellen Sie abschließend sicher, dass alle Webanwendungsproxy-Server mit dem [Windows Server Mai 2014](http://support.microsoft.com/kb/2955164)-Rollup aktualisiert wurden. Andernfalls können sich die Proxys möglicherweise nicht mit dem neuen Zertifikat aktualisieren, was zu einem Ausfall führt.
+>[AZURE.NOTE] Wenn Sie mehrere Domänen der obersten Ebene unterstützen müssen, z. B. "contoso.com" und "fabrikam.com", müssen Sie den SupportMultipleDomain-Switch mit den Cmdlets verwenden. Weitere Informationen finden Sie unter [Unterstützung mehrerer Domänen der obersten Ebene](active-directory-aadconnect-multiple-domains.md). Stellen Sie abschließend sicher, dass alle Webanwendungsproxy-Server mit dem [Windows Server Mai 2014](http://support.microsoft.com/kb/2955164)-Rollup aktualisiert wurden. Andernfalls können sich die Proxys möglicherweise nicht mit dem neuen Zertifikat aktualisieren, was zu einem Ausfall führt.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

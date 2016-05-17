@@ -12,8 +12,8 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="04/28/2016" 
+	ms.topic="hero-article" 
+	ms.date="05/05/2016" 
 	ms.author="sdanie"/>
 
 # Gewusst wie: Erstellen einer Web-App mit Redis Cache
@@ -231,7 +231,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 
 1. Erweitern Sie im Projektmappen-Explorer den Ordner **Ansichten**, erweitern Sie den Ordner **Freigegeben**, und doppelklicken Sie auf **\_Layout.cshtml**.
 
-    ![_Layout.cshtml][cache-layout-cshtml]
+    ![\_Layout.cshtml][cache-layout-cshtml]
 
 2. Ändern Sie den Inhalt des `title`-Elements, und ersetzen Sie `My ASP.NET Application` durch `Contoso Team Stats`, wie im folgenden Beispiel gezeigt:
 
@@ -838,4 +838,4 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

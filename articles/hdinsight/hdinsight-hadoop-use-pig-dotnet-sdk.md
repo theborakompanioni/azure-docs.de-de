@@ -52,8 +52,6 @@ Speichern Sie die Abonnement-ID, da sie später verwendet wird.
 
 Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen.
 
-Das folgende Beispiel verwendet die interaktive Benutzerauthentifizierung. Weitere Informationen zur nicht interaktiven Authentifizierung finden Sie unter [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
-
 
 1. Öffnen Sie Visual Studio 2012 oder 2013.
 2. Wählen Sie im Menü **Datei** die Option **Neu** und anschließend **Projekt** aus.
@@ -209,4 +207,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

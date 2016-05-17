@@ -13,112 +13,57 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/20/2016"
+   ms.date="05/06/2016"
    ms.author="cherylmc"/>
 
-
-# Erstellen von DNS-Einträgen mithilfe der Befehlszeilenschnittstelle (CLI)
+# Erstellen von DNS-Datensatzgruppen und Datensätzen über die CLI
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
 - [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
 
-Nach dem Erstellen der DNS-Zone müssen Sie die DNS-Einträge für Ihre Domäne hinzufügen. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
+Dieser Artikel beschreibt das Erstellen von Datensätzen und Datensatzgruppen mithilfe der CLI. Nach dem Erstellen der DNS-Zone müssen Sie die DNS-Einträge für Ihre Domäne hinzufügen. Zu diesem Zweck benötigen Sie zunächst grundlegende Informationen zu DNS-Datensätzen und Datensatzgruppen.
 
-## Grundlegendes zu Datensatzgruppen und Einträgen
-Jeder DNS-Eintrag hat einen Namen und einen Typ.
+[AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-Ein _vollqualifizierter_ Name umfasst den Zonennamen, ein _relativer_ Name hingegen nicht. Der relative Eintragsname "www" in der Zone "contoso.com" gibt beispielsweise den vollqualifizierten Eintragsnamen "www.contoso.com" an.
+## Erstellen einer Datensatzgruppe und eines Datensatzes
 
->[AZURE.NOTE] Einträge in Azure DNS werden mit relativen Namen angegeben.
+Dieser Abschnitt zeigt, wie Sie eine Datensatzgruppe sowie Datensätze erstellen. In diesem Beispiel erstellen Sie eine Datensatzgruppe mit dem relativen Namen *www* in der DNS-Zone *contoso.com*. Der vollqualifizierte Name der Datensätze ist *www.contoso.com*. Der Datensatztyp ist *A*, und die Gültigkeitsdauer beträgt 60 Sekunden. Wenn Sie diesen Schritt ausgeführt haben, haben Sie eine leere Datensatzgruppe erstellt.
 
-Es gibt verschiedene Eintragstypen, je nach den darin enthaltenen Daten. Der häufigste Typ ist ein A-Eintrag, der einen Namen einer IPv4-Adresse zuordnet. Ein weiterer Typ ist ein MX-Eintrag, der einen Namen einem Mailserver zuordnet.
+Zum Erstellen einer Datensatzgruppe auf oberster Ebene der Zone (in diesem Fall "contoso.com") verwenden Sie den Namen des Datensatzes "@", einschließlich der Anführungszeichen. Dies ist eine allgemeine DNS-Konvention.
 
-Azure DNS unterstützt alle allgemeine DNS-Eintragstypen: A, AAAA, CNAME, MX, NS, SOA, SRV und TXT. (Beachten Sie, dass [SPF-Datensätze mit dem TXT-Eintragstyp erstellt werden sollten](http://tools.ietf.org/html/rfc7208#section-3.1).)
+### 1\. Erstellen einer Datensatzgruppe
 
-In einigen Fällen müssen Sie mehrere DNS-Einträge mit einem bestimmten Namen und Typ erstellen. Angenommen, die Website "www.contoso.com" wird auf zwei verschiedenen IP-Adressen gehostet. Dazu sind zwei verschiedene A-Einträge erforderlich, einer für jede IP-Adresse:
-
-	www.contoso.com.		3600	IN	A	134.170.185.46
-	www.contoso.com.		3600	IN	A	134.170.188.221
-
-Dies ist ein Beispiel für eine Datensatzgruppe. Eine Datensatzgruppe ist die Auflistung von DNS-Einträgen in einer Zone mit dem gleichen Namen und dem gleichen Typ. Die meisten Datensatzgruppen enthalten einen einzelnen Eintrag, aber Beispiele wie das obige, in dem eine Datensatzgruppe mehr als einen Eintrag enthält, sind nicht ungewöhnlich. (Datensatzgruppen vom Typ SOA und CNAME stellen eine Ausnahme dar; die DNS-Standards lassen nicht mehrere Einträge mit dem gleichen Namen für diese Typen zu.)
-
-Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag von den Clients zwischengespeichert wird, bevor er erneut abgefragt wird. Im obigen Beispiel ist der TTL-Wert 3600 Sekunden oder 1 Stunde. Der TTL-Wert wird für die Datensatzgruppe, nicht für jeden Eintrag angegeben, dadurch wird der gleiche Wert für alle Einträge in dieser Datensatzgruppe verwendet.
-
->[AZURE.NOTE] Azure DNS verwaltet die DNS-Einträge mithilfe von Datensatzgruppen.
-
-
-
-## Erstellen von Datensatzgruppen und Einträgen 
-
-Das folgende Beispiel zeigt, wie Sie eine Datensatzgruppe und Einträge erstellen. Wir verwenden den DNS-Datensatztyp "A-Datensatz". Informationen zu anderen Datensatztypen finden Sie unter [Verwalten von DNS-Einträgen](dns-operations-recordsets-cli.md).
-
-
-### Schritt 1
-
-Erstellen Sie eine Datensatzgruppe:
-
-	Usage: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>
+Verwenden Sie `azure network dns record-set create` zum Erstellen einer Datensatzgruppe. Geben Sie die Ressourcengruppe, den Zonennamen, den relativen Namen der Datensatzgruppe, den Datensatztyp und die Gültigkeitsdauer (TTL) an. Wenn der Parameter „--ttl“ nicht definiert ist, liegt der Standardwert bei 4 (in Sekunden). Wenn Sie diesen Schritt ausgeführt haben, verfügen Sie über eine leere „www“-Datensatzgruppe.
+	
+*Verwendung: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>*
 
 	azure network dns record-set create myresourcegroup  contoso.com  www A  60
 
-Die Datensatzgruppe hat den relativen Namen "www" in der DNS-Zone "contoso.com", somit lautet der vollqualifizierte Name der Einträge "www.contoso.com". Der Eintragstyp ist "A", und die Gültigkeitsdauer beträgt 60 Sekunden.
+### 2\. Hinzufügen von Datensätzen
 
->[AZURE.NOTE] Zum Erstellen einer Datensatzgruppe auf oberster Ebene der Zone (in diesem Fall "contoso.com") verwenden Sie den Namen des Datensatzes "@", einschließlich der Anführungszeichen. Dies ist eine allgemeine DNS-Konvention.
+Damit Sie die neu erstellte Datensatzgruppe *www* verwenden können, müssen Sie Datensätze hinzufügen. Datensätze werden mithilfe von `azure network dns record-set add-record` zu Datensatzgruppen hinzugefügt.
 
-Die Datensatzgruppe ist leer, und wir müssen Einträge hinzufügen, um die neu erstellte Datensatzgruppe "www" verwenden zu können.<BR>
+Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise eine Datensatzgruppe vom Typ *A* verwenden, können Sie nur Einträge mit dem Parameter `-a <IPv4 address>` angeben.
 
-### Schritt 2
+Mit dem folgenden Befehl können Sie der Datensatzgruppe *www* IPv4-*A*-Datensätze hinzufügen:
 
-Fügen Sie der Datensatzgruppe "www" IPv4-A-Einträge mithilfe des folgenden Befehls hinzu:
-
-	Usage: network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>
+*Verwendung: network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>*
 
 	azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
-	
 
-Damit sind die Änderungen abgeschlossen. Sie können die Datensatzgruppe mit dem Befehl "azure network dns-record-set show" aus Azure DNS abrufen:
+## Zusätzliche Beispiele für Datensatztypen
 
+Die folgenden Beispiele zeigen, wie Sie eine Datensatzgruppe jedes Datensatztyps erstellen, die jeweils eine einzelnen Datensatz enthält.
 
-	azure network dns record-set show myresourcegroup "contoso.com" www A
-	
-	info:    Executing command network dns-record-set show
-	+ Looking up the DNS record set "www"
-	data:    Id                              : /subscriptions/########################/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com/A/www
-	data:    Name                            : www
-	data:    Type                            : Microsoft.Network/dnszones/A
-	data:    Location                        : global
-	data:    TTL                             : 300
-	data:    A records:
-	data:        IPv4 address                : 134.170.185.46
-	data:
-	info:    network dns record-set show command OK
-
-
-Sie können auch nslookup oder andere DNS-Tools verwenden, um die neue Datensatzgruppe abzufragen.
-
->[AZURE.NOTE] Wenn Sie die Domäne noch nicht an die Azure DNS-Namenserver delegiert haben, müssen Sie die Namenserveradresse für die Zone explizit angeben, wie schon beim Erstellen der Zone.
-
-
-	C:\> nslookup www.contoso.com ns1-01.azure-dns.com
-
-	Server: ns1-01.azure-dns.com
-	Address:  208.76.47.1
-
-	Name:    www.contoso.com
-	Addresses:  134.170.185.46
-    	        
-
-
+[AZURE.INCLUDE [dns-add-record-cli-include](../../includes/dns-add-record-cli-include.md)]
 
 ## Nächste Schritte
-[Verwalten von DNS-Zonen](dns-operations-dnszones-cli.md)
 
-[Verwalten von DNS-Einträgen](dns-operations-recordsets-cli.md)<BR>
+Informationen zur Verwaltung Ihrer Datensatzgruppen und Datensätze finden Sie unter [So erstellen und verwalten Sie DNS-Einträge und Ressourceneintragssätze mit dem Azure-Portal](dns-operations-recordsets-portal.md).
 
-[Automatisieren von Azure-Vorgängen mit dem .NET SDK](dns-sdk.md)
- 
+Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

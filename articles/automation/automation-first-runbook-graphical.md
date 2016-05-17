@@ -5,15 +5,15 @@
     documentationCenter=""
     authors="mgoedtel"
     manager="jwhit"
-    editor=""/>
-
+    editor=""
+	keywords="Runbooks, Runbookvorlage, Runbookautomatisierung, Azure-Runbook"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/21/2016"
+    ms.date="05/10/2016"
     ms.author="magoedte;bwren"/>
 
 # Mein erstes grafisches Runbook
@@ -26,8 +26,8 @@ Dieses Tutorial führt Sie durch die Erstellung eines [grafischen Runbooks](auto
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
--	Azure-Abonnement. Wenn Sie noch kein Abonnement besitzen, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich <a href="/pricing/free-account/" target="_blank">[für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/).
--	Das [Automation-Konto](automation-security-overview.md) dient zur Speicherung des Runbooks und zur Authentifizierung gegenüber Azure-Ressourcen. Dieses Konto muss über die Berechtigung zum Starten und Beenden des virtuellen Computers verfügen.
+-	Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich <a href="/pricing/free-account/" target="_blank">[für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/).
+-	Das [Automation-Konto](automation-security-overview.md) dient zur Aufbewahrung des Runbooks und zur Authentifizierung gegenüber Azure-Ressourcen. Dieses Konto muss über die Berechtigung zum Starten und Beenden des virtuellen Computers verfügen.
 -	Einen virtuellen Azure-Computer. Da dieser Computer gestartet und beendet wird, darf er sich nicht in der Produktionsumgebung befinden.
 
 
@@ -46,7 +46,7 @@ Wir erstellen zunächst ein einfaches Runbook, das den Text *Hello World* ausgib
 
 Mithilfe des Bibliotheksteuerelements auf der linken Seite des Editors können Sie Aktivitäten auswählen und Ihrem Runbook hinzufügen. Wir fügen ein **Write-Output**-Cmdlet hinzu, um Text aus dem Runbook auszugeben.
 
-1.	Klicken Sie im Bibliotheksteuerelement auf das Textfeld für die Suche, und geben Sie **Write-Output** ein. Die Suchergebnisse werden weiter unten angezeigt. <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
+1.	Klicken Sie im Bibliotheksteuerelement auf das Textfeld für die Suche, und geben Sie **Write-Output** ein. Die Suchergebnisse werden darunter angezeigt. <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 2.	Führen Sie einen Bildlauf zum Ende der Liste durch. Sie können entweder mit der rechten Maustaste auf **Write-Output** klicken und **Zum Zeichenbereich hinzufügen** auswählen oder auf die Ellipse neben dem Cmdlet klicken und **Zum Zeichenbereich hinzufügen** auswählen.
 3.	Klicken Sie im Zeichenbereich auf die Aktivität **Write-Output**. Daraufhin öffnet sich das Blatt für die Konfigurationssteuerung, auf dem Sie die Aktivität konfigurieren können.
 4.	Die Bezeichnung ist standardmäßig auf den Namen des Cmdlets festgelegt, kann aber in einen aussagekräftigeren Wert geändert werden. Legen Sie ihn auf *Write Hello World to output* fest.
@@ -104,14 +104,14 @@ Nachdem wir nun über eine Variable für unsere Abonnement-ID verfügen, können
 4.	Geben Sie unter **Name** die Zeichenfolge *AzureCredentialAssetName* ein. Behalten Sie unter **Typ** die Option *Zeichenfolge* bei, und geben Sie als benutzerdefinierten Standardwert Ihre Azure Automation-Anmeldeinformationen ein. Klicken Sie auf **OK**.
 5.	Erweitern Sie im Bibliotheksteuerelement die Option **Ressourcen** und anschließend **Variablen**. Wählen Sie dann **Get-Variable zum Zeichenbereich hinzufügen** aus, um **AzureSubscriptionId** dem Zeichenbereich hinzuzufügen.
 6.	Wählen Sie im Zeichenbereich die Option **Get-AutomationVariable** aus, und geben Sie im Konfigurationssteuerungsbereich im Feld **Bezeichnung** die Zeichenfolge **Get Subscription ID** ein.  
-7.	Geben Sie im Bibliotheksteuerelement **Get-AutomationPS** in das Textfeld für die Suche ein.
+7.	Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Get-AutomationPS** ein.
 8.	Fügen Sie **Get-AutomationPSCredential** dem Zeichenbereich hinzu.<br>![Get-AutomationPSCred-Cmdlet suchen](media/automation-first-runbook-graphical/search-get-automationpscredential-cmdlet.png)
 9.	Wählen Sie im Zeichenbereich die Option **Get-AutomationPSCredential** aus, und geben Sie im Konfigurationssteuerungsbereich im Feld **Bezeichnung** die Zeichenfolge **Get Azure Credential** ein.
 10.	Klicken Sie auf **Parameter**, um das Konfigurationsblatt für Aktivitätsparameter anzuzeigen. 
 11. Klicken Sie auf dem Konfigurationsblatt für Aktivitätsparameter auf **Name**, um das Blatt „Parameterwert“ anzuzeigen.  
 12.	 Wählen Sie auf dem Blatt „Parameterwert“ unter **Datenquelle** die Option **Runbookeingabe** und in der Liste die Option **AzureCredentialAssetName** aus. Klicken Sie anschließend zweimal auf **OK**.   
 13.	Zeigen Sie auf **Get Subscription Id**, bis am unteren Rand der Form ein Kreis erscheint. Klicken Sie auf den Kreis, und ziehen Sie den Pfeil zu **Get Azure Credential**. Bei dem soeben erstellten Pfeil handelt es sich um eine *Verknüpfung*. Das Runbook startet mit **Get Subscription ID** und führt dann **Get Azure Credential** aus.<br> ![Verknüpfung zwischen Aktivitäten erstellen](media/automation-first-runbook-graphical/runbook-link-getsubscription-getcredential.png)
-14.	Geben Sie im Bibliotheksteuerelement **Add-AzureRm** in das Textfeld für die Suche ein.
+14.	Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Add-AzureRm** ein.
 15. Fügen Sie **Add-AzureRmAccount** dem Zeichenbereich hinzu.<br> ![Add-AzureRMAccount](media/automation-first-runbook-graphical/search-powershell-cmdlet-addazurermaccount.png)
 16.	Zeigen Sie auf **Get Azure Credential**, bis am unteren Rand der Form ein Kreis erscheint. Klicken Sie auf den Kreis, und ziehen Sie den Pfeil zu **Add-AzureRmAccount**.
 17.	Wählen Sie **Add-AzureRmAccount** aus, und klicken Sie anschließend im Konfigurationssteuerungsbereich auf **Parameter**.
@@ -127,7 +127,7 @@ Ihr Runbook sollte nun wie folgt aussehen: <br>![Konfiguration der Runbook-Authe
 
 In diesem Schritt fügen wir eine Aktivität vom Typ **Start-AzureRmVM** hinzu, um einen virtuellen Computer zu starten. Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen. Wir werden den Namen vorerst innerhalb des Cmdlets hartcodieren.
 
-1. Geben Sie im Bibliotheksteuerelement **Start-AzureRm** in das Textfeld für die Suche ein.
+1. Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Start-AzureRm** ein.
 2. Fügen Sie **Start-AzureRmVM** dem Zeichenbereich hinzu, und ziehen Sie das Element anschließend unter **Connect to Azure**.
 3. Zeigen Sie auf **Connect to Azure**, bis am unteren Rand der Form ein Kreis erscheint. Klicken Sie auf den Kreis, und ziehen Sie den Pfeil zu **Start-AzureRmVM**. 
 4.	Wählen Sie **Start-AzureRmVM** aus. Klicken Sie auf **Parameter** und anschließend auf **Parametersatz**, um die Sätze für **Start-AzureRmVM** anzuzeigen. Wählen Sie den Parametersatz **ResourceGroupNameParameterSetName** aus. Beachten Sie, dass neben **ResourceGroupName** und **Name** jeweils ein Ausrufezeichen angezeigt wird. Das bedeutet, dass es sich dabei um erforderliche Parameter handelt. Beachten Sie außerdem, dass für beide ein Zeichenfolgenwert erwartet wird.
@@ -140,7 +140,7 @@ Ihr Runbook sollte nun wie folgt aussehen: <br>![Konfiguration der Runbook-Authe
 
 ## Schritt 8: Hinzufügen zusätzlicher Eingabeparameter für das Runbook
 
-Unser Runbook startet zwar nun den virtuellen Computer in der Ressourcengruppe, die wir im Cmdlet **Start-AzureRmVM** angegeben haben, es wäre aber praktischer, wenn wir beides beim Start des Runbooks angeben könnten. Zu diesem Zweck fügen wir dem Runbook nun Eingabeparameter hinzu.
+Unser Runbook startet zwar nun den virtuellen Computer in der Ressourcengruppe, die wir im Cmdlet **Start-AzureRmVM** angegeben haben, es wäre aber praktischer, wenn wir beim Start des Runbooks beides angeben könnten. Zu diesem Zweck fügen wir dem Runbook nun Eingabeparameter hinzu.
 
 1. Öffnen Sie den grafischen Editor, indem Sie im Bereich **MyFirstRunbook** auf **Bearbeiten** klicken.
 2. Klicken Sie auf **Eingabe und Ausgabe** und anschließend auf **Eingabe hinzufügen**, um den Eingabeparameterbereich für das Runbook zu öffnen.<br> ![Runbookeingabe und -ausgabe](media/automation-first-runbook-graphical/runbook-toolbar-InputandOutput.png)
@@ -158,11 +158,11 @@ Unser Runbook startet zwar nun den virtuellen Computer in der Ressourcengruppe, 
 
 ## Schritt 9: Erstellen einer bedingten Verknüpfung
 
-In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur gestartet wird, wenn er noch nicht gestartet wurde. Zu diesem Zweck fügen wir dem Runbook ein Cmdlet vom Typ **Get-AzureRmVM** hinzu, das den Instanzebenenstatus des virtuellen Computers abruft. Anschließend fügen wir ein PowerShell-Workflow-Codemodul namens **Get Status** mit einem PowerShell-Codeausschnitt hinzu, der ermittelt, ob der virtuelle Computer ausgeführt wird und beendet ist. Eine bedingte Verknüpfung des Moduls **Get Status** führt **Start-AzureRmVM** nur dann aus, wenn der aktuelle Ausführungszustand angibt, dass der virtuelle Computer beendet ist. Schließlich geben wir mithilfe des PowerShell-Cmdlets „Write-Output“ noch eine Nachricht aus, die darüber informiert, ob der virtuelle Computer erfolgreich gestartet wurde.
+In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur gestartet wird, wenn er noch nicht gestartet wurde. Zu diesem Zweck fügen wir dem Runbook ein Cmdlet vom Typ **Get-AzureRmVM** hinzu, das den Instanzebenenstatus des virtuellen Computers abruft. Anschließend fügen wir ein PowerShell-Workflow-Codemodul namens **Get Status** mit einem PowerShell-Codeausschnitt hinzu, der ermittelt, ob der virtuelle Computer ausgeführt wird oder beendet ist. Eine bedingte Verknüpfung des Moduls **Get Status** führt **Start-AzureRmVM** nur dann aus, wenn der aktuelle Ausführungszustand angibt, dass der virtuelle Computer beendet ist. Schließlich geben wir mithilfe des PowerShell-Cmdlets „Write-Output“ noch eine Nachricht aus, die darüber informiert, ob der virtuelle Computer erfolgreich gestartet wurde.
 
 1. Öffnen Sie **MyFirstRunbook** im grafischen Editor.
 2. Entfernen Sie die Verknüpfung zwischen **Connect to Azure** und **Start-AzureRmVM**, indem Sie auf die Verknüpfung klicken und die ENTF-TASTE drücken.
-3. Geben Sie im Bibliotheksteuerelement **Get-AzureRm** in das Textfeld für die Suche ein.
+3. Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Get-AzureRm** ein.
 4. Fügen Sie dem Zeichenbereich **Get-AzureRmVM** hinzu.
 5. Wählen Sie **Get-AzureRmVM** und anschließend **Parametersatz** aus, um die Sätze für **Get-AzureRmVM** anzuzeigen. Wählen Sie den Parametersatz **GetVirtualMachineInResourceGroupNameParamSet** aus. Beachten Sie, dass neben **ResourceGroupName** und **Name** jeweils ein Ausrufezeichen angezeigt wird. Das bedeutet, dass es sich dabei um erforderliche Parameter handelt. Beachten Sie außerdem, dass für beide ein Zeichenfolgenwert erwartet wird.
 6. Wählen Sie unter **Datenquelle** für **Name** die Option **Runbookeingabe** und anschließend **VMName** aus. Klicken Sie auf **OK**.
@@ -187,7 +187,7 @@ In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur 
      ```
 
 16. Erstellen Sie eine Verknüpfung zwischen **Get Status** und **Start-AzureRmVM**.<br> ![Runbook mit Codemodul](media/automation-first-runbook-graphical/runbook-startazurermvm-get-status.png)
-17. Wählen Sie die Verknüpfung aus, und legen Sie die Anwendungsbedingung im Konfigurationsbereich auf **True** fest. Beachten Sie, dass die Verknüpfung nun als gestrichelte Linie dargestellt wird. Das bedeutet, dass die Aktivität nur ausgeführt wird, wenn die Bedingung erfüllt ist.  
+17. Wählen Sie die Verknüpfung aus, und legen Sie **Bedingung anwenden** im Konfigurationsbereich auf **Ja** fest. Beachten Sie, dass die Verknüpfung nun als gestrichelte Linie dargestellt wird. Das bedeutet, dass die Aktivität nur ausgeführt wird, wenn die Bedingung erfüllt ist.  
 18. Geben Sie für den Bedingungsausdruck Folgendes ein: *$ActivityOutput['Get Status'] -eq "Stopped"*. Nun wird **Start-AzureRmVM** nur noch ausgeführt, wenn der virtuelle Computer beendet ist.
 19.	Erweitern Sie im Bibliotheksteuerelement den Knoten **Cmdlets** und anschließend **Microsoft.PowerShell.Utility**.
 20.	Fügen Sie dem Zeichenbereich zweimal **Write-Output** hinzu.<br> ![Runbook mit Write-Output](media/automation-first-runbook-graphical/runbook-startazurermvm-final.png)
@@ -196,9 +196,9 @@ In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur 
 23. Klicken Sie im zweiten Steuerelement vom Typ **Write-Output** auf **Parameter**, und legen Sie die Bezeichnung auf *Notify VM Start Failed* fest.
 24. Legen Sie die Datenquelle für **InputObject** auf **PowerShell-Ausdruck** fest, und geben Sie den Ausdruck *"$VMName could not start."* ein.
 25. Verknüpfen Sie **Start AzureRmVM** mit **Notify VM Started** und **Notify VM Start Failed**.
-26. Wählen Sie die Verknüpfung mit **Notify VM Started** aus, und legen Sie die Anwendungsbedingung auf **True** fest.
+26. Wählen Sie die Verknüpfung mit **Notify VM Started** aus, und legen Sie **Bedingung anwenden** auf **True** fest.
 27. Geben Sie als Bedingungsausdruck Folgendes ein: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*. Dieses Write-Output-Steuerelement wird nur ausgeführt, wenn der virtuelle Computer erfolgreich gestartet wurde.
-28. Wählen Sie die Verknüpfung mit **Notify VM Start Failed** aus, und legen Sie die Anwendungsbedingung auf **True** fest.
+28. Wählen Sie die Verknüpfung mit **Notify VM Start Failed** aus, und legen Sie die **Bedingung anwenden** auf **True** fest.
 29. Geben Sie als Bedingungsausdruck Folgendes ein: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*. Dieses Write-Output-Steuerelement wird nur ausgeführt, wenn der virtuelle Computer nicht erfolgreich gestartet wurde.
 30.	Speichern Sie das Runbook, und öffnen Sie den Testbereich.
 31.	Wenn Sie nun das Runbook starten, während der virtuellen Computer beendet ist, wird der virtuelle Computer gestartet.
@@ -206,7 +206,7 @@ In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur 
 ## Nächste Schritte
 
 -	Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
--	Erste Schritte mit PowerShell-Workflow-Runbooks werden in [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md) beschrieben.
--	Erste Schritte mit PowerShell-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-PowerShell.md) beschrieben.
+-	Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md) beschrieben.
+-	Erste Schritte mit PowerShell-Workflow-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-PowerShell.md) beschrieben.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

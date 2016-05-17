@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="04/30/2016"
 	ms.author="markusvi"/>
 
 
@@ -46,9 +46,9 @@ Der Zugriffsbereich ermöglicht Benutzern, einige ihrer Profileinstellungen zu b
 ## Zugreifen auf den Zugriffsbereich
 
 
-Benutzer greifen auf den Zugriffsbereich zu, indem sie in einem Webbrowser die folgende URL verwenden: <br> ****http://myapps.microsoft.com**
+Benutzer greifen auf den Zugriffsbereich zu, indem sie in einem Webbrowser die folgende URL verwenden: <br> **http://myapps.microsoft.com**
 
-Wenn Sie benutzerdefiniertes Branding für Ihre Anmeldeseite konfiguriert haben, können Sie dieses Branding standardmäßig laden, indem Sie die Domäne Ihrer Organisation am Ende der URL anfügen <br> ****http://myapps.microsoft.com/contosobuild.com**
+Wenn Sie benutzerdefiniertes Branding für Ihre Anmeldeseite konfiguriert haben, können Sie dieses Branding standardmäßig laden, indem Sie die Domäne Ihrer Organisation am Ende der URL anfügen <br> **http://myapps.microsoft.com/contosobuild.com**
 
 In diesem Fall kann jeder aktive oder überprüfte Domänenname verwendet werden, der auf der Registerkarte "Domänen" Ihres Verzeichnisses im Azure-Verwaltungsportal konfiguriert wurde, wie in folgendem Screenshot gezeigt.
 
@@ -130,7 +130,7 @@ Wenn Sie Azure-Administrator und mit einem Konto im Verzeichnis am Azure-Verwalt
 
 1. Klicken Sie in der oberen rechten Ecke des Azure-Portals oder des Zugriffsbereichs auf das Benutzermenü, und wählen Sie **Abmelden** aus. Sie werden von Azure AD abgemeldet.
 
-2. Wechseln Sie zum Zugriffsbereich: ****http://myapps.microsoft.com**.
+2. Wechseln Sie zum Zugriffsbereich: **http://myapps.microsoft.com**.
 
 3. Geben Sie auf der Anmeldeseite den Benutzernamen und das Kennwort für das Konto in Ihrem Verzeichnis ein, das Sie testen möchten.
  
@@ -185,4 +185,4 @@ Beim Konfigurieren der einmaligen Anmeldung für eine Anwendung bietet das Azure
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory-Domänendienste (Vorschau): Administratorhandbuch | Microsoft Azure"
+	pageTitle="Azure Active Directory-Domänendienste (Vorschau): Verwalten von DNS in verwalteten Domänen | Microsoft Azure"
 	description="Verwalten von DNS in verwalteten Domänen mithilfe der Azure Active Directory-Domänendienste"
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,19 +13,37 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="04/27/2016"
 	ms.author="maheshu"/>
 
 # Verwalten von DNS in einer durch Azure AD-Domänendienste verwalteten Domäne
-Azure Active Directory-Domänendienste umfassen einen DNS-Server (Domain Name Service), der die DNS-Auflösung für die verwaltete Domäne durchführt. Gelegentlich kann es erforderlich sein, DNS in der verwalteten Domäne zu konfigurieren, um Einträge für Computer, die der Domäne nicht beigetreten sind, für virtuelle IP-Adressen für Load Balancer oder für die externe DNS-Weiterleitung zu erhalten. Aus diesem Grund werden Benutzern, die zur Administratorengruppe für Azure AD-Domänencontroller gehören, DNS-Administratorrechte in der verwalteten Domäne gewährt.
-
-## Einrichten eines der Domäne beigetretenen virtuellen Computers zur Remoteverwaltung von DNS für die verwaltete Domäne
-Durch die Azure AD-Domänendienste verwaltete Domänen können mithilfe bekannter Active Directory-Verwaltungstools remote verwaltet werden, beispielsweise über das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) oder AD PowerShell. Auf die gleiche Weise kann DNS für die verwaltete Domäne remote mithilfe der DNS-Server-Verwaltungstools verwaltet werden. Mandantenadministratoren besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Aus diesem Grund können Mitglieder der Administratorengruppe für Azure AD-Domänencontroller DNS für verwaltete Domänen remote über die DNS-Servertools eines Windows Server- oder Windows-Clientcomputers verwalten, der der verwalteten Domäne beigetreten ist. DNS-Servertools können im Rahmen der optionalen Remoteserver-Verwaltungstools (Remote Server Administration Tools, RSAT) auf Windows Server- und Windows-Clientcomputern installiert werden, die der verwalteten Domäne beigetreten sind.
-
-Der erste Schritt besteht darin, einen virtuellen Windows Server-Computer einzurichten, der der verwalteten Domäne beigetreten ist. Anleitungen hierzu finden Sie im Artikel [Hinzufügen eines virtuellen Windows Server-Computers zu einer verwalteten Domäne](active-directory-ds-admin-guide-join-windows-vm.md). Beachten Sie, dass bei dieser Anleitung ein virtueller Windows Server-Computer zur Administration der durch Azure AD-Domänendienste verwalteten Domäne verwendet wird. Sie können zu diesem Zweck auch einen virtuellen Windows-Clientcomputer (beispielsweise unter Windows 10) verwenden. In diesem Fall installieren Sie das optionale Feature der Remoteserver-Verwaltungstools auf dem virtuellen Computer.
+Azure Active Directory-Domänendienste umfassen einen DNS-Server (Domain Name Service), der die DNS-Auflösung für die verwaltete Domäne durchführt. Gelegentlich kann es erforderlich sein, DNS in der verwalteten Domäne zu konfigurieren, um DNS-Einträge für Computer, die nicht in die Domäne eingebunden sind, für virtuelle IP-Adressen für Load Balancer oder für die externe DNS-Weiterleitung zu erstellen. Aus diesem Grund werden Benutzern, die zur Administratorengruppe für Azure AD-Domänencontroller gehören, DNS-Administratorrechte in der verwalteten Domäne gewährt.
 
 
-## Installieren von DNS-Servertools auf dem virtuellen Computer
+## Voraussetzungen
+Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Folgendes:
+
+1. Ein gültiges **Azure-Abonnement**
+
+2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
+
+3. **Azure AD-Domänendienste** – diese müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](./active-directory-ds-getting-started.md) aus.
+
+4. Ein **in die Domäne eingebundener virtueller Computer**, über den Sie die durch Azure AD-Domänendienste verwaltete Domäne bearbeiten. Wenn Sie nicht über einen virtuellen Computer dieser Art verfügen, führen Sie alle im Artikel [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne](./active-directory-ds-admin-guide-join-windows-vm.md) beschriebenen Aufgaben aus.
+
+5. Sie benötigen die Anmeldeinformationen eines **Benutzerkontos, das der Administratorengruppe für Azure AD-Domänencontroller angehört**, in Ihrem Verzeichnis, um DNS für die verwaltete Domäne zu verwalten.
+
+<br>
+
+## Aufgabe 1: Einrichten eines der Domäne beigetretenen virtuellen Computers zur Remoteverwaltung von DNS für die verwaltete Domäne
+Durch die Azure AD-Domänendienste verwaltete Domänen können mithilfe bekannter Active Directory-Verwaltungstools verwaltet werden, beispielsweise über das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) oder AD PowerShell. Auf die gleiche Weise kann DNS für die verwaltete Domäne remote mithilfe der DNS-Server-Verwaltungstools verwaltet werden.
+
+Administratoren in Ihrem Azure AD-Verzeichnis verfügen über keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Aus diesem Grund können Mitglieder der Administratorengruppe für Azure AD-Domänencontroller DNS für verwaltete Domänen remote über die DNS-Servertools eines Windows Server- oder Windows-Clientcomputers verwalten, der der verwalteten Domäne beigetreten ist. DNS-Servertools können im Rahmen der optionalen Remoteserver-Verwaltungstools (Remote Server Administration Tools, RSAT) auf Windows Server- und Windows-Clientcomputern installiert werden, die der verwalteten Domäne beigetreten sind.
+
+Die erste Aufgabe besteht darin, einen virtuellen Windows Server-Computer einzurichten, der der verwalteten Domäne beigetreten ist. Anweisungen hierzu finden Sie im Artikel [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne](active-directory-ds-admin-guide-join-windows-vm.md).
+
+
+## Aufgabe 2: Installieren von DNS-Servertools auf dem virtuellen Computer
 Führen Sie die folgenden Schritte aus, um die DNS-Verwaltungstools auf dem virtuellen Computer zu installieren, der der Domäne beigetreten ist. Weitere Informationen zum [Bereitstellen der Remoteserver-Verwaltungstools](https://technet.microsoft.com/library/hh831501.aspx) finden Sie auf TechNet.
 
 1. Wechseln Sie im klassischen Azure-Portal zum Knoten **Virtuelle Computer**. Wählen Sie den virtuellen Computer aus, den Sie gerade erstellt haben, und klicken Sie auf der Befehlsleiste unten im Fenster auf **Verbinden**.
@@ -48,13 +66,13 @@ Führen Sie die folgenden Schritte aus, um die DNS-Verwaltungstools auf dem virt
 
 	![Seite „Installationstyp“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
 
-7. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer aus dem Serverpool aus, und klicken Sie auf **Weiter**.
+7. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer im Serverpool aus, und klicken Sie auf **Weiter**.
 
 	![Seite „Serverauswahl“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
 
 8. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**. Überspringen Sie diese Seite, da Sie in diesem Beispiel keine Rollen auf dem Server installieren.
 
-9. Klicken Sie auf der Seite **Features**, um den Knoten **Remoteserver-Verwaltungstools** zu erweitern, und klicken Sie erneut, um den Knoten **Rollenverwaltungstools** zu erweitern. Wählen Sie das Feature **DNS-Servertools** aus der Liste der Rollenverwaltungstools aus, wie unten gezeigt.
+9. Erweitern Sie auf der Seite **Features** durch Klicken den Knoten **Remoteserver-Verwaltungstools**, und erweitern Sie dann durch erneutes Klicken den Knoten **Rollenverwaltungstools**. Wählen Sie das Feature **DNS-Servertools** in der Liste der Rollenverwaltungstools aus (siehe Abbildung unten).
 
 	![Seite „Features“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 
@@ -63,8 +81,10 @@ Führen Sie die folgenden Schritte aus, um die DNS-Verwaltungstools auf dem virt
 	![Bestätigungsseite](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
 
-## Starten der DNS-Verwaltungskonsole
+## Aufgabe 3: Starten der DNS-Verwaltungskonsole zum Verwalten von DNS
 Nachdem das Feature der DNS-Servertools nun auf dem virtuellen Computer installiert ist, der der Domäne beigetreten ist, können Sie die DNS-Tools zur Administration von DNS in der verwalteten Domäne verwenden.
+
+> [AZURE.NOTE] Sie müssen der Administratorengruppe für Azure AD-Domänencontroller angehören, um DNS in der verwalteten Domäne verwalten zu können.
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Daraufhin sollte die auf dem virtuellen Computer installierte **DNS**-Konsole angezeigt werden.
 
@@ -72,7 +92,7 @@ Nachdem das Feature der DNS-Servertools nun auf dem virtuellen Computer installi
 
 2. Klicken Sie auf **DNS**, um die DNS-Verwaltungskonsole zu starten.
 
-3. Klicken Sie im Dialogfeld **Verbindung mit DNS-Server herstellen** auf die Option **Folgenden Computer**, und geben Sie den DNS-Domänennamen der verwalteten Domäne ein (z. B. „contoso100.com“).
+3. Klicken Sie im Dialogfeld **Verbindung mit DNS-Server herstellen** auf die Option **Folgenden Computer**, und geben Sie den DNS-Domänennamen der verwalteten Domäne ein (z.B. „contoso100.com“).
 
     ![DNS-Konsole – Verbindung mit Domäne herstellen](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 
@@ -87,4 +107,15 @@ Nachdem das Feature der DNS-Servertools nun auf dem virtuellen Computer installi
 
 Weitere Informationen zur Verwaltung von DNS finden Sie im [Technet-Artikel zu DNS-Tools](https://technet.microsoft.com/library/cc753579.aspx).
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## Verwandte Inhalte
+
+- [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](./active-directory-ds-getting-started.md)
+
+- [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+
+- [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
+
+- [DNS-Verwaltungstools](https://technet.microsoft.com/library/cc753579.aspx)
+
+<!---HONumber=AcomDC_0504_2016-->

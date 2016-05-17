@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/23/2016"
+   ms.date="04/27/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
@@ -38,7 +38,7 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Für Compute-, Storage- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Ressourcen-Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager** .
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -85,7 +85,7 @@ Ressourcen, die im klassischen Bereitstellungsmodell erstellt wurden, weisen fol
 
         ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        Alternativ können Sie das Vorschauportal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
+        Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -131,29 +131,23 @@ Weitere Informationen zur Verwendung von Tags im Ressourcen-Manager finden Sie u
 
 ## Unterstützte Vorgänge für die Bereitstellungsmodelle
 
-Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstützen keine Ressourcen-Manager-Vorgänge. In einigen Fällen können Sie mithilfe eines Ressourcen-Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder administrative Aufgaben ausführen, z. B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Ressourcen-Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die sowohl mit dem Ressourcen-Manager als auch mit dem klassischen Modell erstellte virtuelle Computer enthält. Wenn Sie folgenden PowerShell-Befehl ausführen:
+Ressourcen, die Sie im klassischen Bereitstellungsmodell erstellen, unterstützen keine Ressourcen-Manager-Vorgänge. In einigen Fällen können Sie mithilfe eines Ressourcen-Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder administrative Aufgaben ausführen, z. B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Ressourcen-Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die einen mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computer umfasst. Wenn Sie folgenden PowerShell-Befehl ausführen:
 
-    Get-AzureRmResourceGroup -Name ExampleGroup
+    Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 
-werden alle virtuellen Computer angezeigt:
+wird der virtuelle Computer zurückgegeben:
+    
+    Name              : ExampleClassicVM
+    ResourceId        : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.ClassicCompute/virtualMachines/ExampleClassicVM
+    ResourceName      : ExampleClassicVM
+    ResourceType      : Microsoft.ClassicCompute/virtualMachines
+    ResourceGroupName : ExampleGroup
+    Location          : westus
+    SubscriptionId    : {guid}
 
-    Resources :
-     Name                 Type                                          Location
-     ================     ============================================  ========
-     ExampleClassicVM     Microsoft.ClassicCompute/domainNames          eastus
-     ExampleClassicVM     Microsoft.ClassicCompute/virtualMachines      eastus
-     ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
-    ...
-
-Wenn Sie jedoch den Befehl **Get-AzureRmVM** ausführen,
+Das Cmdlet **Get-AzureRmVM** gibt jedoch nur über Resource Manager bereitgestellte virtuelle Computer zurück. Mit dem folgenden Befehl wird der über das klassische Bereitstellungsmodell erstellte virtuelle Computer nicht zurückgegeben.
 
     Get-AzureRmVM -ResourceGroupName ExampleGroup
-
-werden nur die virtuellen Computer abgerufen, die mit Resource Manager erstellt wurden.
-
-    Id       : /subscriptions/xxxx/resourceGroups/ExampleGroup/providers/Microsoft.Compute/virtualMachines/ExampleResourceVM
-    Name     : ExampleResourceVM
-    ...
 
 Im Allgemeinen sollten Sie davon ausgehen, dass Ressourcen, die über die klassische Bereitstellung erstellt wurden, mit Ressourcen-Manager-Befehlen funktionieren.
 
@@ -179,4 +173,4 @@ Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellun
 - Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

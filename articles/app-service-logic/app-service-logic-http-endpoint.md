@@ -1,10 +1,10 @@
 <properties
    pageTitle="Logik-Apps als aufrufbare Endpunkte"
-   description="Informationen zum Erstellen und Konfigurieren des HTTP-Listeners und seinem Verwenden in einer Logik-App in Azure App Service"
+   description="Gewusst wie: Erstellen und Konfigurieren von Trigger-Endpunkten und deren Verwendung in einer Logik-App in Azure App Service"
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,40 +13,34 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="04/05/2016"
+   ms.date="04/25/2016"
    ms.author="jehollan"/>
 
 
 # Logik-Apps als aufrufbare Endpunkte
 
-Die vorherige Schemaversion von Logik-Apps (*2014-12-01-preview*) erforderte eine API-App mit dem Namen **HTTP-Listener**, um einen HTTP-Endpunkt verfügbar zu machen, der synchron aufgerufen werden kann. Mithilfe des neuesten Schema (*2015-08-01-preview*) können Logik-Apps einen synchronen HTTP-Endpunkt nativ verfügbar machen.
+Die vorherige Schemaversion von Logik-Apps (*2014-12-01-preview*) erforderte eine API-App mit dem Namen **HTTP-Listener**, um einen HTTP-Endpunkt verfügbar zu machen, der synchron aufgerufen werden kann. Mithilfe des neuesten Schema (*2015-08-01-preview*) können Logik-Apps einen synchronen HTTP-Endpunkt nativ verfügbar machen. Sie können auch das Muster aufrufbarer Endpunkte verwenden, um Logik-Apps als geschachtelten Workflow über die Aktion „Workflow“ in einer Logik-App aufzurufen.
 
-## Hinzufügen eines Triggers zur Definition
-Im ersten Schritt wird der Definition Ihrer Logik-App ein Trigger hinzugefügt, der eingehende Anforderungen empfangen kann. Es gibt drei Arten von Triggern, die Anforderungen erhalten können:
+Es gibt drei Arten von Triggern, die Anforderungen erhalten können:
+
 * manual
 * apiConnectionWebhook
 * httpWebhook
 
-Im weiteren Verlauf des Artikels verwenden wir **manual** als Beispiel, wobei sämtliche Prinzipien auch genauso für die anderen beiden Triggertypen gelten. Nach Hinzufügen dieses Triggers zu Ihrer Workflowdefinition sieht diese wie folgt aus:
+Im weiteren Verlauf des Artikels verwenden wir **manual** als Beispiel, wobei sämtliche Prinzipien auch genauso für die anderen beiden Triggertypen gelten.
 
-```
-{
-    "$schema": "http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-    "triggers" : {
-        "myendpointtrigger" : {
-            "type" : "manual"
-        }
-    }
-}
-```
+## Hinzufügen eines Triggers zur Definition
+Im ersten Schritt wird der Definition Ihrer Logik-App ein Trigger hinzugefügt, der eingehende Anforderungen empfangen kann. Sie können im Designer nach „HTTP-Anforderung“ suchen, um die Trigger-Karte hinzuzufügen. Sie können ein JSON-Schema für den Anforderungstext definieren, sodass der Designer Token generiert, mit denen Sie Daten analysieren und vom manuellen Trigger durch den Workflow übergeben können. Empfohlen wird die Verwendung eines Tools wie z.B. [jsonschema.net](http://jsonschema.net), um ein JSON-Schema aus einer Beispieltextnutzlast zu generieren.
 
-Dadurch wird ein Endpunkt erstellt, den Sie über eine URL wie diese aufrufen können:
+![][2]
+
+Nach dem Speichern der Logik-App-Definition wird eine Rückruf-URL ähnlich der folgenden generiert:
  
 ```
-https://prod-03.brazilsouth.logic.azure.com:443/workflows/080cb66c52ea4e9cabe0abf4e197deff/triggers/myendpointtrigger?...
+https://prod-03.eastus.logic.azure.com:443/workflows/080cb66c52ea4e9cabe0abf4e197deff/triggers/myendpointtrigger?...
 ```
 
-Sie erhalten diesen Endpunkt hier auf der Benutzeroberfläche:
+Sie können diesen Endpunkt auch im Azure-Portal abrufen:
 
 ![][1]
 
@@ -57,33 +51,27 @@ POST https://management.azure.com/{resourceID of your logic app}/triggers/myendp
 ```
 
 ## Aufrufen des Endpunkts des Triggers der Logik-App
-Sobald Sie über den Endpunkt des Triggers verfügen, können Sie ihn in Ihrem Back-End-System speichern und über einen `POST`-Befehl mit der vollständigen URL aufrufen. Sie können zusätzliche Abfrageparameter, Header und Inhalte in Ihrem Hauptteil einschließen.
+Nachdem Sie den Endpunkt des Triggers erstellt haben, können Sie ihn in Ihrem Back-End-System speichern und über einen `POST`-Befehl mit der vollständigen URL aufrufen. Sie können zusätzliche Abfrageparameter, Header und Inhalte in den Hauptteil einfügen.
 
-Wenn „content-type“ `application/json` ist, können Sie innerhalb der Anforderung auf Eigenschaften verweisen. Andernfalls wird sie als einzelne binäre Einheit behandelt, die an andere APIs übergeben werden kann, ohne dass innerhalb der Anforderung auf Eigenschaften verwiesen werden kann.
+Wenn „content-type“ `application/json` ist, können Sie innerhalb der Anforderung auf Eigenschaften verweisen. Andernfalls wird sie als einzelne binäre Einheit behandelt, die an andere APIs übergeben werden kann, auf die jedoch innerhalb des Workflows nicht verwiesen werden kann, ohne dass der Inhalt konvertiert wird. Wenn Sie beispielsweise `application/xml`-Inhalt übergeben, können Sie mit `@xpath()` eine XPath-Extraktion durchführen oder mit `@json()` XML in JSON konvertieren. ([Die vollständige Dokumentation finden Sie hier.](http://aka.ms/logicappsdocs))
 
-Darüber hinaus können Sie ein JSON-Schema in der Definition angeben, damit der Designer Token generiert, die in den Schritten übergeben werden können. Im folgenden Beispiel werden ein `title`- und ein `name`-Token im Designer zur Verfügung gestellt:
+Darüber hinaus können Sie in der Definition ein JSON-Schema angeben. Dies bewirkt, dass der Designer Token generiert, die dann in den Schritten übergeben werden können. Im folgenden Beispiel werden ein `title`- und ein `name`-Token im Designer zur Verfügung gestellt:
 
 ```
 {
-    "manual": {
-        "inputs":{
-            "schema": {
-                "properties":{
-                    "title": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "title",
-                    "name"
-                ],
-                "type": "object"
-            }
+    "properties":{
+        "title": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
         }
-    }
+    },
+    "required": [
+        "title",
+        "name"
+    ],
+    "type": "object"
 }
 ```
 
@@ -108,22 +96,23 @@ Dies ist ein geringfügiger Unterschied zur Version *2014-12-01-preview*, bei de
 ## Reagieren auf die Anforderung
 Bei einige Anforderungen, die eine Logik-App starten, können Sie mit Inhalten auf den Aufrufer reagieren. Es gibt den neuen Aktionstyp **response**, der verwendet werden kann, um den Statuscode, Hauptteil und Header für die Antwort zu erstellen. Wenn **response** nicht vorhanden ist, antwortet der Endpunkt der Logik-App *sofort* mit **202 – Zulässig** (dies ist die Entsprechung von *Antwort automatisch senden* im HTTP-Listener).
 
+![][3]
+
 ```
-"myresponse" : {
-    "type" : "response",
-    "inputs" : {
-        "statusCode" : 200,
-        "body" : {
-            "contentFieldOne" : "value100",
-            "anotherField" : 10.001
-        },
-        "headers" : {
-            "x-ms-date" : "@utcnow()",
-            "Content-type" : "application/json"
+"Response": {
+            "conditions": [],
+            "inputs": {
+                "body": {
+                    "name": "@{triggerBody()['name']}",
+                    "title": "@{triggerBody()['title']}"
+                },
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "statusCode": 200
+            },
+            "type": "Response"
         }
-    },
-    "conditions" : []
-}
 ```
 
 Antworten haben die folgenden Eigenschaften:
@@ -134,10 +123,10 @@ Antworten haben die folgenden Eigenschaften:
 | body | Ein Hauptteilobjekt, das eine Zeichenfolge, ein JSON-Objekt oder sogar binäre Inhalte aufweisen kann, auf die in einem vorherigen Schritt verwiesen wird. | 
 | headers | Sie können eine beliebige Anzahl von Headern definieren, die in der Antwort enthalten sein können. | 
 
-Alle Schritte in der Logik-App, die für die Antwort erforderlich sind, müssen binnen *60 Sekunden* abgeschlossen sein, damit die ursprüngliche Anforderung die Antwort empfängt. Wenn binnen 60 Sekunden keine Antwortaktion erfolgt, kommt es bei der eingehenden Anforderung zu einem Timeout mit der HTTP-Antwort **408 – Clienttimeout**.
+Alle Schritte in der Logik-App, die für die Antwort erforderlich sind, müssen innerhalb von *60 Sekunden* abgeschlossen sein, damit die ursprüngliche Anforderung die Antwort empfängt, **es sei denn, der Workflow wird als geschachtelte Logik-App aufgerufen**. Wenn innerhalb von 60 Sekunden keine Antwortaktion erfolgt, kommt es bei der eingehenden Anforderung zu einem Timeout mit der HTTP-Antwort **408 – Clienttimeout**. Bei geschachtelten Logik-Apps wartet die übergeordnete Logik-App unabhängig von der Zeitdauer, bis die Antwort abgeschlossen ist.
 
 ## Erweiterte Endpunktkonfiguration
-Logik-Apps bieten eine integrierte Unterstützung des Direktzugriffsendpunks und können stets die `POST`-Methode zum Starten der Ausführung verwenden. Die API-App **HTTP-Listener** unterstützte zuvor auch das Ändern der URL-Segmente und HTTP-Methode. Sie konnten sogar eine zusätzliche Sicherheits- oder benutzerdefinierte Domäne einrichten, indem Sie sie dem API-App-Host hinzufügten (der Web-App, die die API-App gehostet hat).
+Logik-Apps bieten eine integrierte Unterstützung für den Direktzugriffsendpunkt und verwenden stets die `POST`-Methode, um die Ausführung der Logik-App zu starten. Die API-App **HTTP-Listener** unterstützte zuvor auch das Ändern der URL-Segmente und der HTTP-Methode. Sie konnten sogar eine zusätzliche Sicherheits- oder benutzerdefinierte Domäne einrichten, indem Sie sie dem API-App-Host hinzufügten (der Web-App, die die API-App gehostet hat).
 
 Diese Funktionalität ist über **API Management** verfügbar:
 * [Ändern der Methode der Anforderung ](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetRequestMethod)
@@ -150,7 +139,7 @@ Diese Funktionalität ist über **API Management** verfügbar:
 | 2014-12-01-preview | 2015-08-01-preview |
 |---------------------|--------------------|
 | Klicken auf die API-App **HTTP-Listener** | Klicken auf **Manueller Trigger** (keine API-App erforderlich) |
-| HTTP-Listener-Einstellung *Sendet Antwort automatisch* | Hinzufügen einer **response**-Aktion zur Workflowdefinition oder nicht |
+| HTTP-Listener-Einstellung *Sendet Antwort automatisch* | Hinzufügen oder Nichthinzufügen einer **response**-Aktion zur Workflowdefinition |
 | Konfigurieren der Standard- oder OAuth-Authentifizierung | Über API Management |
 | Konfigurieren der HTTP-Methode | Über API Management |
 | Konfigurieren des relativen Pfads | Über API Management |
@@ -158,6 +147,8 @@ Diese Funktionalität ist über **API Management** verfügbar:
 | Aktion **HTTP-Antwort senden** im HTTP-Listener | Klicken auf **Auf HTTP-Anforderung reagieren** (keine API-App erforderlich)
 
 
-[1]: ./media/app-service-logic-http-endpoint/manualtrigger.png
+[1]: ./media/app-service-logic-http-endpoint/manualtriggerurl.png
+[2]: ./media/app-service-logic-http-endpoint/manualtrigger.png
+[3]: ./media/app-service-logic-http-endpoint/response.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

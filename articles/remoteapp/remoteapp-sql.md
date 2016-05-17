@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="02/02/2016"
+   ms.date="05/02/2016"
    ms.author="elizapo"/>
 
 # SQL Azure mit Azure RemoteApp
@@ -50,4 +50,4 @@ Falls die Verwendung einer unter Azure RemoteApp gehosteten Clientanwendung mit 
 - Die unter Azure RemoteApp gehostete Client-App ist ausgelastet. Die Leistung verbessert sich, wenn Sie einen anderen Abrechnungsplan auswählen, z. B. Premium-Abrechnung. Ein anderer Trick zur Überwachung Ihrer Anwendung ist das Verfolgen der Verbrauchswerte: Drücken Sie während einer aktiven Sitzung die Tastenkombination STRG+ALT+ENDE, um den SAS-Bildschirm zu starten. Wählen Sie den Task-Manager aus, und beobachten Sie die Ressourcenauslastung für Ihre App.
 - Der SQL-Server ist ausgelastet oder nicht optimiert. Führen Sie die Schritte der SQL-Anleitung für die Problembehandlung aus. 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

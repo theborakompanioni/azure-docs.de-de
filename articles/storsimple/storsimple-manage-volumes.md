@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="04/29/2016"
    ms.author="v-sharos" />
 
 # Verwalten von Volumes mithilfe des StorSimple Manager-Diensts
@@ -41,7 +41,9 @@ Ein Volume umfasst eine Reihe von Attributen:
 
 - **Status** – online oder offline. Offline-Volumes sind für die Initiatoren (Server), die über Zugriff für die Verwendung des Volumes verfügen, nicht sichtbar.
 
-- **Kapazität** – gibt an, wie groß das Volume aus Sicht des Initiators (Servers) ist. Die Kapazität entspricht der Gesamtmenge der Daten, die vom Initiator (Server) gespeichert werden können. Die Volumes verfügen über eine schlanke Speicherzuweisung, und die Daten werden dedupliziert. Dies bedeutet, dass Ihr Gerät die physische Speicherkapazität weder intern noch in der Cloud vorab anhand der konfigurierten Volumekapazität zuweist. Die Volumekapazität ist zugewiesen und wird bei Bedarf genutzt.
+- **Kapazität** – gibt an, wie groß das Volume aus Sicht des Initiators (Servers) ist. Die Kapazität entspricht der Gesamtmenge der Daten, die vom Initiator (Server) gespeichert werden können. Die Volumes verfügen über eine schlanke Speicherzuweisung, und die Daten werden dedupliziert. Dies bedeutet, dass Ihr Gerät die physische Speicherkapazität weder intern noch in der Cloud vorab anhand der konfigurierten Volumekapazität zuweist. Die Volumekapazität wird nach Bedarf zugewiesen und genutzt.
+
+- **Typ** – Der Volumetyp kann mehrstufig oder Archivierung (ein Untertyp von mehrstufig) sein.
 
 - **Zugriff** – gibt die Initiatoren (Server) an, die Zugriff auf dieses Volume haben. Initiatoren, die nicht Mitglieder des dem Volume zugeordneten Zugriffssteuerungsdatensatzes (ACR) sind, wird das Volume nicht angezeigt.
 
@@ -73,7 +75,7 @@ Sie haben beim Bereitstellen der StorSimple-Lösung [ein Volume erstellt](storsi
 
   1. Geben Sie den **Namen** für das Volume ein.
   2. Geben Sie die **Bereitgestellte Kapazität** für das Volume in GB oder TB an. Die Kapazität muss für ein physisches Gerät zwischen 1 GB und 64 TB liegen. Die maximale Kapazität, die für ein Volume auf einem virtuellen StorSimple-Gerät bereitgestellt werden kann, beträgt 30 TB.
-  3. Wählen Sie aus der Dropdownliste den **Verwendungstyp** für das Volume aus. Wenn Sie dieses Volume für archivierte Daten verwenden, aktivieren Sie das Kontrollkästchen **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen**. Wählen Sie für alle anderen Verwendungstypen einfach **Mehrstufiges Volume** aus. (Mehrstufige Volumes wurden früher primäre Volumes genannt).
+  3. Wählen Sie den **Verwendungstyp** für das Volume aus. Bei Verwendung des mehrstufigen Volumes für archivierte Daten wird durch Aktivieren des Kontrollkästchens **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen** die Deduplizierungsblockgröße für das Volume in 512 KB geändert. Wenn dieses Feld nicht aktiviert ist, verwendet das entsprechende mehrstufige Volume eine Blockgröße von 64 KB. Bei Verwendung größerer Deduplizierungsblöcke kann das Gerät die Übertragung umfangreicher Archivdaten in die Cloud beschleunigen. (Mehrstufige Volumes wurden früher primäre Volumes genannt.)
   5. Klicken Sie auf das Pfeilsymbol ![Pfeilsymbol](./media/storsimple-manage-volumes/HCS_ArrowIcon.png), um zur Seite **Weitere Einstellungen** zu wechseln.
 
         ![Add Volume wizard Additional Settings](./media/storsimple-manage-volumes/AddVolume2.png)
@@ -105,7 +107,7 @@ Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, d
 
 4. Gehen Sie im Assistenten "Ändern von Volume" unter **Grundlegende Einstellungen** folgendermaßen vor:
 
-  - Ändern Sie **Name** und **Verwendungstyp**.
+  - Bearbeiten Sie den **Namen** und den **Typ**, wenn Sie ein mehrstufiges Volume in ein Archivierungsvolume ändern möchten, indem Sie das Kontrollkästchen **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen** aktivieren und so die Deduplizierungsblockgröße für das Volume in 512 KB ändern.
   - Erhöhen Sie die **Bereitgestellte Kapazität**. Die **Bereitgestellte Kapazität** kann nur erhöht werden. Ein Volume kann nach seiner Erstellung nicht mehr verkleinert werden.
 
     > [AZURE.NOTE] Sie können den Volumecontainer nicht ändern, nachdem dieser einem Volume zugeordnet wurde.
@@ -198,4 +200,4 @@ Führen Sie die folgenden Schritte durch, um die Überwachung eines Volumes zu a
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

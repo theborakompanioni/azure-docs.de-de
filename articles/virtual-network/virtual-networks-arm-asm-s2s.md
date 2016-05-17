@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Herstellen einer Verbindung zwischen klassischen VNets und ARM-VNets in Azure - Lösungshandbuch"
    description="Weitere Informationen zum Erstellen einer VPN-Verbindung zwischen klassischen VNets und neuen VNets"
-   services="virtual-network"
+   services="vpn-gateway"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="cherylmc"
    manager="carmonm"
    editor="tysonn" />
 <tags 
-   ms.service="virtual-network"
+   ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="cherylmc" />
 
 # Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets
 
@@ -350,4 +350,4 @@ Da die beiden VNets nun verbunden sind, müssen Sie die Konnektivität testen, i
 - Weitere Informationen zum [Netzwerkressourcenanbieter (Network Resource Provider, NRP) für ARM](resource-groups-networking.md).
 - Anzeigen der allgemeinen Richtlinien zum [Erstellen einer S2S-VPN-Verbindung zwischen einem klassischen VNet und einem ARM-VNet](virtual-networks-arm-asm-s2s-howto.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Dokumentationsressourcen zu Azure WebJobs
@@ -22,7 +22,7 @@
 
 Dieses Thema enthält Links zu Dokumentationsressourcen zur Verwendung von Azure WebJobs und dem Azure WebJobs-SDK. Azure WebJobs bietet eine einfache Möglichkeit zum Ausführen von Skripts oder Programmen als Hintergrundprozesse im Kontext einer [Web-App, API-App oder mobilen App von App Service](../app-service/app-service-value-prop-what-is.md). Sie können eine ausführbare Datei, z. B. eine CMD-, BAT-, EXE (.NET)-, PS1-, SH-, PHP, PY-, JS- und JAR-Datei, hochladen und ausführen. Diese Programme werden als Webaufträge nach einem Zeitplan (Cron) oder laufend ausgeführt.
 
-Der Zweck von [WebJobs SDK](websites-webjobs-resources.md) besteht darin, den Code zu vereinfachen, den Sie für allgemeine Aufgaben schreiben, die ein WebJob ausführen kann, z. B. Bildverarbeitung, Warteschlangenverarbeitung, RSS-Aggregation, Dateiwartung und Senden von E-Mails. Das WebJobs SDK verfügt über integrierte Funktionen für die Arbeit mit Azure Storage und Service Bus, zum Planen von Aufgaben und Behandeln von Fehlern sowie für viele weitere allgemeine Szenarien. Darüber hinaus ist es erweiterbar, und es gibt ein [Open Source-Repository für Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview).
+Der Zweck von [WebJobs SDK](websites-webjobs-resources.md) besteht darin, den Code zu vereinfachen, den Sie für allgemeine Aufgaben schreiben, die ein WebJob ausführen kann, z. B. Bildverarbeitung, Warteschlangenverarbeitung, RSS-Aggregation, Dateiwartung und Senden von E-Mails. Das WebJobs SDK verfügt über integrierte Funktionen für die Arbeit mit Azure Storage und Service Bus, zum Planen von Aufgaben und Behandeln von Fehlern sowie für viele weitere allgemeine Szenarien. Darüber hinaus ist es erweiterbar, und es gibt ein [Open Source-Repository für Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview). [Azure Functions](../azure-functions/functions-overview.md) (derzeit in der Vorschau) basiert auf einer Version des WebJobs-SDK, die mit C#-Skript, Node.js und anderen Sprachen funktioniert.
 
 Das Erstellen, Bereitstellen und Verwalten von WebJobs erfolgt dank der integrierten Tools in Visual Studio nahtlos. Sie können Webaufträge aus Vorlagen erstellen, veröffentlichen und verwalten (Ausführen/Anhalten/Überwachen/Debuggen).
 
@@ -82,7 +82,7 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 * [Wer hat dieses Blob geschrieben?](http://blogs.msdn.com/b/jmstall/archive/2014/02/19/who-wrote-that-blob.aspx) 
 * [Hosten von interaktivem Code in der Cloud](http://blogs.msdn.com/b/jmstall/archive/2014/04/26/hosting-interactive-code-in-the-cloud.aspx)
 * [Hinzufügen der Ablaufverfolgung zu Azure WebJobs](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)
-* [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage-monitoring-diagnosing-troubleshooting/)
+* [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/storage-monitoring-diagnosing-troubleshooting.md)
 * Videos
 	* [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
@@ -109,11 +109,13 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 ##<a name="additionalsdk"></a>Zusätzliche Ressourcen für das WebJobs-SDK
 
 * [Versionsanmerkungen zum WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)
-* [Open-Source-Repository für WebJobs-SDK-Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions) mit [ausführlichem Leitfaden für das Erweiterbarkeitsmodell](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview).  
 * [Quellcode des WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk)
+* [Quellcode von WebJobs-SDK-Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions) mit [ausführlichem Leitfaden für das Erweiterbarkeitsmodell](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview).  
+* [Quellcode von WebJobs-SDK-Skript](https://github.com/Azure/azure-webjobs-sdk-script/) (zur Verwendung für [Azure Functions](../azure-functions/functions-overview.md))
 * [Webauftrag zum Hochladen von FREB-Dateien in Azure Storage mithilfe des WebJobs-SDK](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
 * [Hosten von Azure WebJobs außerhalb von Azure mit den Protokollierungsvorteilen eines auf Azure geosteten Webauftrags](http://bypassion.dk/?p=510)
 * [Erstellen eines Tools zum Importieren von Daten mit Azure WebJobs](http://www.freshconsulting.com/building-data-import-tool-azure-webjobs/)
+* [Übersicht zu Azure Functions](../azure-functions/functions-overview.md)
 * Videos
 	* [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
@@ -133,10 +135,11 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 
 * [Stapelüberlauf bei WebJobs](http://stackoverflow.com/questions/tagged/azure-webjobs)
 * [Stapelüberlauf beim WebJobs-SDK](http://stackoverflow.com/questions/tagged/azure-webjobssdk)
+* [Stapelüberlauf bei Azure Functions](http://stackoverflow.com/questions/tagged/azure-functions)
 * [Forum für Azure und ASP.NET](http://forums.asp.net/1247.aspx)
 * [Forum für Azure App Service-Web-Apps](http://social.msdn.microsoft.com/Forums/azure/home?forum=windowsazurewebsitespreview)
 * [User Voice-Website für Azure-Web-Apps](https://feedback.azure.com/forums/169385-websites/)
 * [Twitter](http://twitter.com/). Verwenden Sie das Hashtag #AzureWebJobs
 * [Report a WebJobs bug or issue (Melden eines WebJobs-Fehlers oder -Problems; in englischer Sprache)](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

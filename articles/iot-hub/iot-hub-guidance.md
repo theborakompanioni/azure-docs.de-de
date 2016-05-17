@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  ms.author="dobett"/>
 
 # Entwerfen der Lösung
@@ -42,33 +42,20 @@ Mit den [IoT Hub-Identitätsregistrierungs-APIs][lnk-devguide-identityregistry]
 
 ## Bereichsgateways
 
-Bei einer IoT-Lösung ist zwischen Ihren Geräten und Ihrem IoT Hub ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway kommuniziert mit IoT Hub über ein Protokoll, das von IoT Hub unterstützt wird. Ein Bereichsgateway kann ein spezialisiertes Einzelgerät oder eine Software sein, die auf vorhandener Hardware ausgeführt wird.
+Bei einer IoT-Lösung ist zwischen Ihren Geräten und Ihrem IoT Hub ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway kommuniziert mit IoT Hub über ein Protokoll, das von IoT Hub unterstützt wird. Bei einem Bereichsgateway kann es sich um hochspezialisierte Hardware oder einen Computer mit niedriger Leistung handeln, auf dem Software für das End-to-End-Szenario ausgeführt wird, für das das Gateway vorgesehen ist.
 
 Ein Bereichsgateway unterscheidet sich von einem einfachen Gerät für das Routing von Datenverkehr (z. B. einem Gerät für die Netzwerkadressübersetzung (NAT) oder einer Firewall), da es üblicherweise eine aktive Rolle bei der Verwaltung des Zugriffs und des Informationsflusses in der Lösung hat. Beispielsweise kann ein Bereichsgateway folgende Aufgaben ausführen:
 
-- Verwalten von lokalen Geräten. Ein Bereichsgateway könnte beispielsweise das Verarbeiten von Ereignisregeln und das Senden von Befehlen an Geräte als Antwort auf bestimmte Telemetriedaten durchführen.
-- Filtern oder Aggregieren von Telemetriedaten, bevor sie an IoT Hub weiterleitet werden. Dies kann die Datenmenge verringern, die an IoT Hub gesendet wird, und möglicherweise die Kosten der Lösung reduzieren.
-- Helfen beim Bereitstellen von Geräten.
-- Transformieren von Telemetriedaten, um die Verarbeitung in Ihrem Lösungs-Back-End zu ermöglichen.
-- Ausführen von Protokollübersetzungen, um Geräten die Kommunikation mit IoT Hub zu ermöglichen, selbst wenn sie nicht die Transportprotokolle verwenden, die IoT Hub unterstützt.
-
-> [AZURE.NOTE] In der Regel stellen Sie ein Bereichsgateway lokal auf Ihren Geräten bereit, aber Sie können in einigen Szenarien auch ein [Protokollgateway][lnk-gateway] in der Cloud bereitstellen.
-
-### Typen von Bereichsgateways
-
-Ein Bereichsgateway kann *transparent* oder *nicht transparent* sein:
-
-| &nbsp; | Transparentes Gateway | Nicht transparentes Gateway|
-|--------|-------------|--------|
-| In der IoT Hub-Identitätsregistrierung gespeicherte Identitäten | Identitäten aller angeschlossenen Geräte | Nur die Identität des Bereichsgateways |
-| IoT Hub kann [Schutz vor Spoofing im Hinblick auf Geräteidentitäten][lnk-devguide-antispoofing] bieten | Ja | Nein |
-| [Drosselungen und Kontingente][lnk-throttles-quotas] | Auf jedes Gerät anwenden | Auf das Bereichsgateway anwenden |
-
-> [AZURE.IMPORTANT]  Bei Verwenden eines nicht transparenten Gatewaymusters nutzen alle Geräte, die sich über dieses Gateway verbinden, dieselbe C2D-Warteschlange, die maximal 50 Nachrichten enthalten darf. Daraus folgt, dass das nicht transparente Gatewaymuster nur dann verwendet werden sollte, wenn sehr wenige Geräte eine Verbindung über die einzelnen Bereichsgateways herstellen und ihr C2D-Datenverkehr niedrig ist.
+- **Hinzufügen von Unterstützung für neue und ältere Geräte**: Es gibt Millionen von neuen und älteren Sensoren und Auslösern, die Daten nicht direkt in die Cloud senden können. Diese Geräte verwenden entweder ein nicht internetfähiges Protokoll, implementieren keine Verschlüsselung oder können keine Identitätszertifikate speichern. Die Verwendung eines Gateways verringert den Aufwand und die Kosten für die Verbindung dieser Geräte.
+- **Ausführen von Edgeanalysen**: Es gibt viele Vorgänge, die lokal ausgeführt werden können, um die Menge an Daten zu reduzieren, die mit der Cloud ausgetauscht werden. Hierzu gehören beispielsweise die Filterung, Batchverarbeitung und Komprimierung von Daten. Es kann auch wünschenswert sein, einige Berechnungen wie etwa Datenbereinigung oder die Bewertung eines Machine Learning-Modells mit Echtzeitdaten lokal auszuführen.
+- **Minimieren der Latenz**: Wenn Sie versuchen, das Herunterfahren von Produktionslinien zu verhindern oder die Stromversorgung wiederherzustellen, geht es um Millisekunden. Die Fähigkeit, Daten in der Nähe des Geräts zu analysieren, das die Daten erfasst, kann den Unterschied zwischen dem Verhindern einer Katastrophe und einem kaskadierenden Systemfehler bedeuten.
+- **Einsparen von Netzwerkbandbreite**: Eine Bohrinsel generiert typischerweise zwischen 1 und 2 TB Daten pro Tag. In einer Boeing 787 entstehen pro Flug etwa 500 GB an Daten. Es ist nicht sinnvoll, große Datenmengen aus Tausenden oder sogar Hunderttausenden von Edgegeräten in die Cloud zu transportieren. Es ist auch nicht notwendig, denn viele kritische Analysen erfordern keine Verarbeitung und Speicherung im Cloudmaßstab.
+- **Zuverlässiger Betrieb**: IoT-Daten werden zunehmend für Entscheidungen verwendet, die die Sicherheit der Bevölkerung und kritische Infrastrukturen betreffen. Integrität und Verfügbarkeit von Infrastruktur und Daten dürfen durch unterbrechungsanfällige Cloudverbindungen nicht beeinträchtigt werden. Mithilfe von Funktionen wie „Speichern und Weiterleiten“, um Daten lokal zu erfassen und zu verarbeiten und anschließend ggf. an die Cloud zu senden, können Sie zuverlässige Lösungen erstellen.
+- **Beheben von Problemen mit Datenschutz und Sicherheit**: IoT-Geräte und die von ihnen generierten Daten müssen geschützt werden. Gateways erfüllen verschiedene Funktionen: Sie können Geräte vom offenen Internet isolieren und Verschlüsselungs- und Identitätsdienste für Geräte bieten, die diese Dienste nicht selbst bereitstellen können. Gateways können auch lokal gepufferte oder gespeicherte Daten sichern und personenbezogene Informationen entfernen, bevor die Daten über das Internet gesendet werden.
 
 ### Weitere Überlegungen
 
-Für die Implementierung eines Bereichsgateways können Sie die [Geräte-SDKs von Azure IoT][lnk-device-sdks] verwenden. Einige Geräte-SDKs bieten bestimmte Funktionen, die Sie beim Implementieren eines Bereichsgateways unterstützen, z. B. die Möglichkeit, die Kommunikation von mehreren Geräten über eine Verbindung mit IoT Hub im Multiplexverfahren zu übertragen. Wie unter [IoT Hub-Entwicklerleitfaden – Auswählen des Kommunikationsprotokolls][lnk-devguide-protocol] beschrieben, sollten Sie die Verwendung von HTTP/1 als Transportprotokoll für Bereichsgateways vermeiden.
+Sie können das [Azure IoT Gateway SDK][lnk-gateway-sdk] verwenden, um ein Bereichsgateway zu implementieren. Dieses SDK bietet bestimmte Funktionen, z.B. die Möglichkeit, die Kommunikation von mehreren Geräten über eine Verbindung mit IoT Hub im Multiplexverfahren zu übertragen.
 
 ## Benutzerdefinierte Geräteauthentifizierung
 
@@ -97,7 +84,7 @@ Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerd
 
 ## Gerätetakt <a id="heartbeat"></a>
 
-Die [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] enthält das Feld **connectionState**. Sie dürfen das Feld **connectionState** nur während der Entwicklung und des Debuggens verwenden. IoT-Lösungen sollten das Feld zur Laufzeit nicht abfragen (um beispielsweise eine Geräteverbindung zu prüfen und dann zu bestimmen, ob eine C2D-Nachricht oder SMS gesendet werden soll). Wenn Ihre IoT-Lösung wissen muss, ob ein Gerät verbunden ist (entweder zur Laufzeit oder mit höherer Genauigkeit als von der **connectionState**-Eigenschaft ermöglicht), muss Ihre Lösung das *Taktmuster* implementieren.
+Die [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] enthält das Feld **connectionState**. Sie sollten das Feld **connectionState** nur während der Entwicklung und des Debuggens verwenden. IoT-Lösungen sollten das Feld zur Laufzeit nicht abfragen (um beispielsweise eine Geräteverbindung zu prüfen und dann zu bestimmen, ob eine C2D-Nachricht oder SMS gesendet werden soll). Wenn Ihre IoT-Lösung wissen muss, ob ein Gerät verbunden ist (entweder zur Laufzeit oder mit höherer Genauigkeit als von der **connectionState**-Eigenschaft bereitgestellt), sollte Ihre Lösung das *Taktmuster* implementieren.
 
 Beim Taktmuster sendet das Gerät D2C-Nachrichten mindestens einmal pro festgelegtem Zeitraum (z. B. mindestens einmal pro Stunde). Dies bedeutet, dass selbst wenn ein Gerät keine zu sendenden Daten hat, es dennoch eine leere D2C-Nachricht sendet (in der Regel mit einer Eigenschaft, die sie als Takt identifiziert). Auf Dienstseite verwaltet die Lösung eine Zuordnung mit dem letzten für jedes Gerät empfangenen Takts und nimmt an, dass es ein Problem mit einem Gerät gibt, wenn es innerhalb des erwarteten Zeitraums keine Taktnachricht empfängt.
 
@@ -132,5 +119,6 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 [lnk-dotnet-sas]: https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx
 [lnk-java-sas]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/com/microsoft/azure/iot/service/auth/IotHubServiceSasToken.html
 [IoT Hub-Kontingente und -Drosselungen]: iot-hub-devguide.md#throttling
+[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

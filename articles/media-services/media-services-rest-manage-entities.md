@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/11/2016"  
+ 	ms.date="05/03/2016" 
 	ms.author="juliako"/>
 
 #Verwalten von Media Services-Entitäten mit der REST-API
@@ -35,7 +35,7 @@ Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von O
 >
 >Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 
->Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect_programmatically.md) müssen Sie nachfolgende Aufrufe an den neuen URI senden.
+>Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md) müssen Sie nachfolgende Aufrufe an den neuen URI senden.
 
 
 ##Hinzufügen von Entitäten
@@ -117,7 +117,7 @@ Das folgende Beispiel gibt alle JobTemplates mit dem Namen „SampleTemplate“ 
 
 ##Auflisten von großen Auflistungen von Entitäten
 
-Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Verwenden Sie **skip** und **top** zum Auflisten großer Auflistungen von Entitäten.
+Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Verwenden Sie **skip** und **top**, um die große Auflistung von Entitäten aufzuzählen.
 
 Das folgende Beispiel zeigt, wie Sie **skip** und **top** zum Überspringen der ersten 2.000 Aufträge und zum Abrufen der nächsten 1.000 Aufträge verwenden.
 
@@ -175,4 +175,4 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

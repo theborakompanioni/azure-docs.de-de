@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Zurücksetzen von Kennwörtern für Linux-VMs und Hinzufügen von Benutzern über die Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie die VMAccess-Erweiterung im Azure-Portal oder in der Azure-Befehlszeilenschnittstelle verwenden, um Kennwörter und SSH-Schlüssel der Linux-VM sowie SSH-Konfigurationen zurückzusetzen, Benutzerkonten hinzuzufügen oder zu löschen und die Datenträgerkonsistenz zu überprüfen."
+	pageTitle="Zurücksetzen des Kennworts und des SSH-Schlüssels für einen virtuellen Linux-Computer über die Befehlszeilenschnittstelle | Microsoft Azure"
+	description="Informationen zum Verwenden der VMAccess-Erweiterung über die Azure-Befehlszeilenschnittstelle (CLI) zum Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, zum Beheben von SSH-Konfigurationsproblemen und zum Überprüfen der Datenträgerkonsistenz"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,43 +14,30 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/15/2015"
+	ms.date="04/20/2016"
 	ms.author="cynthn"/>
 
-# Gewusst wie: Zurücksetzen des Zugriffs, Verwalten von Benutzern und Überprüfen von Datenträgern mit der Azure VMAccess-Erweiterung für Linux#
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+# Zurücksetzen des Zugriffs, Verwalten von Benutzern und Überprüfen von Datenträgern mit der Azure-VMAccess-Erweiterung für Linux
 
 
-Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH (Secure Shell)-Schlüssels oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einer virtuellen Linux-Maschine herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu das Azure-Portal oder die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle.
+Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH-Schlüssels (Secure Shell) oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einem virtuellen Linux-Computer herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle.
 
-## Azure-Portal
-
-Um die SSH-Konfiguration im [Azure-Portal](https://portal.azure.com) zurückzusetzen, klicken Sie auf **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Linux-Computer* > **Remotezugriff zurücksetzen**. Beispiel:
-
-![](./media/virtual-machines-linux-classic-reset-access/Portal-RDP-Reset-Linux.png)
-
-Um den Namen und das Kennwort des Benutzerkontos mit sudo-Berechtigungen oder den öffentlichen SSH-Schlüssel im [Azure-Portal](https://portal.azure.com) zurückzusetzen, klicken Sie auf **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Linux-Computer* > **Alle Einstellungen** > **Kennwortzurücksetzung**. Beispiel:
-
-![](./media/virtual-machines-linux-classic-reset-access/Portal-PW-Reset-Linux.png)
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
 
 
-## Azure-Befehlszeilenschnittstelle und PowerShell
+
+
+## Azure-Befehlszeilenschnittstelle
 
 Sie benötigen Folgendes:
 
-- Microsoft Azure Linux Agent Version 2.0.5 oder höher. Die meisten Linux-Images im VM-Katalog enthalten Version 2.0.5. Sie können **waagent -version** ausführen, um zu ermitteln, welche Version installiert ist. Folgen Sie den Anweisungen im [Benutzerhandbuch für Azure Linux-Agent], um den Agent zu aktualisieren.
-- Azure-Befehlszeilenschnittstelle (CLI). Informationen zum Installieren und Einrichten der Azure-CLI finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
-- Azure PowerShell. Sie verwenden Befehle im Cmdlet Set-AzureVMExtension, um die Erweiterung VMAccessForLinux automatisch zu laden und zu konfigurieren. Ausführliche Informationen zum Einrichten von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell].
+- Azure-Befehlszeilenschnittstelle (CLI). Sie müssen [die Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und [eine Verbindung mit Ihrem Abonnement herstellen](../xplat-cli-connect.md), um die mit Ihrem Konto verknüpften Azure-Ressourcen zu verwenden.
 - Ein neues Kennwort oder neue SSH-Schlüssel, wenn Sie diese zurücksetzen möchten. Dies ist nicht erforderlich, wenn Sie die SSH-Konfiguration zurücksetzen möchten.
 
-### Keine Installation erforderlich
 
-Die Erweiterung "VMAccess" muss installiert sein, bevor Sie es verwenden können. Solange der Linux-Agent auf dem virtuellen Computer installiert ist, wird beim Ausführen eines Azure PowerShell-Befehls, der das Cmdlet **Set-AzureVMExtension** verwendet, automatisch die Erweiterung geladen.
+## Verwenden des Befehls „azure vm extension set“
 
-## Verwenden der Azure-CLI
-
-Mit der Azure-Befehlszeilenschnittstelle können Sie den Befehl **azure** in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) verwenden, um auf Befehle zuzugreifen. Informationen zur Nutzung der Erweiterung erhalten Sie durch Ausführen von **azure vm extension set –help**.
+Mit der Azure-Befehlszeilenschnittstelle verwenden Sie den Befehl **azure vm extension set** in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung), um auf Befehle zuzugreifen. Informationen zur Nutzung der Erweiterung erhalten Sie durch Ausführen von **azure help vm extension set**.
 
 Mit der Azure-CLI können Sie die folgenden Aufgaben ausführen:
 
@@ -135,7 +122,7 @@ Schritt 2: Führen Sie diesen Befehl aus, und ersetzen Sie dabei "vmname" durch 
 
 Wenn Sie ein Benutzerkonto löschen möchten, ohne sich direkt auf dem virtuellen Computer anzumelden, können Sie dieses Skript verwenden.
 
-Schritt 1: Erstellen Sie eine Datei namens PrivateConf.json mit folgendem Inhalte, und ersetzen Sie dabei die Platzhalter-Werte.
+Schritt 1: Erstellen Sie eine Datei namens PrivateConf.json mit folgendem Inhalte, und ersetzen Sie dabei die Platzhalter-Werte.
 
 	{
 	"remove_user":"usernametoremove"
@@ -165,7 +152,7 @@ Schritt 2: Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei die Plat
 
    azure vm extension set vm-name VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
 
-### <a name='repairdisk'></a>Reparieren von hinzugefügten Datenträgern auf Ihrer virtuellen Linux-Maschine
+### <a name='repairdisk'></a>Reparieren von hinzugefügten Datenträgern auf Ihrem virtuellen Linux-Computer
 
 Verwenden Sie zum Reparieren von Datenträgern, die nicht bereitgestellt werden können oder für die Fehler bei der Bereitstellungskonfiguration angezeigt werden, die VMAccess-Erweiterung, um die Bereitstellungskonfiguration ihrer virtuellen Linux-Maschine zurückzusetzen.
 
@@ -180,141 +167,14 @@ Schritt 2: Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei die Plat
 
     azure vm extension set vm-name VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
 
-## Verwenden von Azure PowerShell
 
-Verwenden Sie das Cmdlet **Set-AzureVMExtension**, um die Änderungen vorzunehmen, die Sie mit VMAccess durchführen können. Beginnen Sie in allen Fällen mit der Verwendung des Clouddienstnamens und des Namens des virtuellen Computers, um das virtuelle Computerobjekt abzurufen und es in einer Variablen zu speichern.
-
-Geben Sie die Namen des Clouddiensts und des virtuellen Computers ein, und führen Sie die folgenden Befehle in einer Azure PowerShell-Eingabeaufforderung auf Administratorebene aus. Ersetzen Sie alles innerhalb der Anführungszeichen, einschließlich der Zeichen < and >.
-
-	$CSName = "<cloud service name>"
-	$VMName = "<virtual machine name>"
-	$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
-
-Wenn Sie den Namen des Clouddiensts und des virtuellen Computers nicht kennen, führen Sie **Get-AzureVM** aus, um diese Informationen für alle virtuellen Computer im aktuellen Abonnement anzuzeigen.
-
-
-> [AZURE.NOTE] Die Befehlszeilen, die mit $ beginnen, legen PowerShell-Variablen fest, die später in PowerShell-Befehlen verwendet werden.
-
-Wenn Sie die virtuelle Maschine mit dem klassischen Azure-Portal erstellt haben, führen Sie den folgenden zusätzlichen Befehl aus:
-
-	$vm.GetInstance().ProvisionGuestAgent = $true
-
-Dieser Befehl verhindert den Fehler "Provision Guest Agent muss für das VM-Objekt aktiviert sein, bevor Sie die IaaS VM Access-Erweiterung festlegen" bei der Ausführung des Befehls "Set-AzureVMExtension" in den folgenden Abschnitten.
-
-Anschließend können Sie die folgenden Aufgaben ausführen:
-
-+ [Zurücksetzen des Kennworts](#password)
-+ [Zurücksetzen eines SSH-Schlüssels](#SSHkey)
-+ [Zurücksetzen des Kennworts und des SSH-Schlüssels](#both)
-+ [Zurücksetzen der SSH-Konfiguration](#config)
-+ [Löschen eines Benutzers](#delete)
-+ [Anzeigen des Status der VMAccess-Erweiterung](#status)
-+ [Überprüfen der Konsistenz von hinzugefügten Datenträgern](#checkdisk)
-+ [Reparieren von hinzugefügten Datenträgern auf Ihrer Linux-VM](#repairdisk)
-
-### <a name="password"></a>Zurücksetzen des Kennworts
-
-Geben Sie den Namen des aktuellen Benutzers von Linux und das neue Kennwort ein, und führen Sie diese Befehle aus.
-
-	$UserName = "<current Linux account name>"
-	$Password = "<new password>"
-	$PrivateConfig = '{"username":"' + $UserName + '", "password": "' +  $Password + '"}'
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version =  "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM $vm -Publisher $Publisher -Version $Version -PrivateConfiguration $PrivateConfig | Update-AzureVM
-
-> [AZURE.NOTE] Wenn Sie das Kennwort oder den SSH-Schlüssel für ein vorhandenes Benutzerkonto zurücksetzen möchten, achten Sie darauf, dass Sie den genauen Benutzernamen eingeben. Wenn Sie einen anderen Namen eingeben, erstellt die Erweiterung "VMAccess" ein neues Benutzerkonto und weist das Kennwort diesem Konto zu.
-
-
-### <a name="SSHKey"></a>Zurücksetzen eines SSH-Schlüssels
-
-Geben Sie den Namen des aktuellen Benutzers von Linux und den Pfad zu dem Zertifikat ein, das die SSH-Schlüssel enthält, und führen Sie diese Befehle aus.
-
-	$UserName = "<current Linux user name>"
-	$Cert = Get-Content "<certificate path>"
-	$PrivateConfig = '{"username":"' + $UserName + '", "ssh_key":"' + $cert + '"}'
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version =  "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM  $vm -Publisher $Publisher -Version $Version -PrivateConfiguration $PrivateConfig | Update-AzureVM
-
-### <a name="both"></a>Zurücksetzen des Kennworts und des SSH-Schlüssels
-
-Geben Sie den Namen des aktuellen Benutzers von Linux, das neue Kennwort und den Pfad zu dem Zertifikat ein, das die SSH-Schlüssel enthält, und führen Sie diese Befehle aus.
-
-	$UserName = "<current Linux user name>"
-	$Password = "<new password>"
-	$Cert = Get-Content "<certificate path>"
-	$PrivateConfig = '{"username":"' + $UserName + '", "password": "' +  $Password + '", "ssh_key":"' + $cert + '"}'
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version =  "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM  $vm -Publisher $Publisher -Version $Version -PrivateConfiguration $PrivateConfig | Update-AzureVM
-
-### <a name="config"></a>Zurücksetzen der SSH-Konfiguration
-
-Fehler in der SSH-Konfiguration können verhindern, dass Sie auf den virtuellen Computer zugreifen können. Sie können dies beheben, indem Sie die SSH-Konfiguration auf den Standardzustand zurücksetzen. Dadurch werden alle neuen Zugriffsparameter in der Konfiguration entfernt, wie Benutzername, Kennwort und SSH-Schlüssel. Das Kennwort oder die SSH-Schlüssel des Benutzerkontos wird/werden jedoch nicht geändert. Die Erweiterung startet den SSH-Server neu, öffnet den SSH-Port auf Ihrem virtuellen Computer und setzt die SSH-Konfiguration auf die Standardeinstellungen zurück.
-
-Führen Sie diese Befehle aus.
-
-	$PrivateConfig = '{"reset_ssh": "True"}'
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version = "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM  $vm -Publisher $Publisher -Version $Version -PrivateConfiguration $PrivateConfig | Update-AzureVM
-
-> [AZURE.NOTE] Die SSH-Konfigurationsdatei befindet sich unter /etc/ssh/sshd\_config.
-
-### <a name="delete"></a>Löschen eines Benutzers
-
-Geben Sie den Namen des Linux-Benutzers ein, der gelöscht werden soll, und führen Sie diese Befehle aus.
-
-	$UserName = "<Linux user name to delete>"
-	$PrivateConfig = "{"remove_user": "' + $UserName + '"}"
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version = "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM $vm -Publisher $Publisher -Version $Version -PrivateConfiguration $PrivateConfig | Update-AzureVM
-
-
-### <a name="status"></a>Anzeigen des Status der VMAccess-Erweiterung
-
-Führen Sie zum Anzeigen des Status der VMAccess-Erweiterung diesen Befehl aus.
-
-	$vm.GuestAgentStatus
-
-### <a name="checkdisk"<</a>Überprüfen der Konsistenz von hinzugefügten Datenträgern
-
-Führen Sie zum Überprüfen der Konsistenz Ihrer Datenträger mit dem fsck-Hilfsprogramm die folgenden Befehle aus:
-
-	$PublicConfig = "{"check_disk": "true"}"
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version = "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM $vm -Publisher $Publisher -Version $Version -PublicConfiguration $PublicConfig | Update-AzureVM
-
-### <a name="checkdisk"<</a>Reparieren von hinzugefügten Datenträgern auf Ihrer Linux-VM
-
-Führen Sie zum Reparieren von Datenträgern mit dem fsck-Hilfsprogramm die folgenden Befehle aus:
-
-	$PublicConfig = "{"repair_disk": "true", "disk_name": "my_disk"}"
-	$ExtensionName = "VMAccessForLinux"
-	$Publisher = "Microsoft.OSTCExtensions"
-	$Version = "1.*"
-	Set-AzureVMExtension -ExtensionName $ExtensionName -VM $vm -Publisher $Publisher -Version $Version -PublicConfiguration $PublicConfig | Update-AzureVM
 
 ## Zusätzliche Ressourcen
 
-[Azure-VM-Erweiterungen und Features][]
+* Wenn Sie Azure PowerShell-Cmdlets oder Azure Resource Manager-Vorlagen verwenden möchten, um das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen, lesen Sie die [Dokumentation zur VMAccess-Erweiterung auf GitHub](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess). 
 
-[Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH][]
+* Sie können auch das [Azure-Portal](https://portal.azure.com) nutzen, um das Kennwort oder den SSH-Schlüssel für einen virtuellen Linux-Computers zurückzusetzen, der im klassischen Bereitstellungsmodell bereitgestellt wurde. Derzeit können Sie das Portal nicht verwenden, um dies für einen virtuellen Linux-Computer durchzuführen, der im Resource Manager-Bereitstellungsmodell bereitgestellt wurde.
 
+* Weitere Informationen zur Verwendung von VM-Erweiterungen für virtuelle Azure-Computer finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer](virtual-machines-linux-extensions-features.md).
 
-<!--Link references-->
-[Benutzerhandbuch für Azure Linux-Agent]: virtual-machines-linux-agent-user-guide.md
-[Installieren und Konfigurieren von Azure PowerShell]: ../install-configure-powershell.md
-[Azure-VM-Erweiterungen und Features]: virtual-machines-windows-extensions-features.md
-[Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH]: http://msdn.microsoft.com/library/azure/dn535788.aspx
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/12/2016"
+     ms.date="05/03/2016"
      ms.author="dobett"/>
 
 # Tutorial: Erstellen eines IoT-Hubs mithilfe eines C#-Programms und der REST-API
@@ -61,7 +61,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
     using Newtonsoft.Json;
     ```
     
-7. Fügen Sie in „Program.cs“ die folgenden statischen Variablen ein, mit denen die Platzhalterwerte ersetzt werden. Weiter oben in diesem Tutorial haben Sie sich die Werte für **ApplicationId**, **SubscriptionId**, **TenantId** und **Password** notiert. **Ressourcengruppenname** ist der Name der Ressourcengruppe, die beim Erstellen des IoT-Hubs verwendet wird – diese Gruppe kann neu oder bereits vorhanden sein. **IoT Hub name** ist der Name des zu erstellenden IoT Hubs, beispielsweise **MyIoTHub** (beachten Sie, dass dieser Name global eindeutig sein muss). **Bereitstellungsname** ist ein Name für die Bereitstellung, wie z. B. **Deployment\_01**.
+7. Fügen Sie in „Program.cs“ die folgenden statischen Variablen ein, mit denen die Platzhalterwerte ersetzt werden. Weiter oben in diesem Tutorial haben Sie sich die Werte für **ApplicationId**, **SubscriptionId**, **TenantId** und **Password** notiert. **Ressourcengruppenname** ist der Name der Ressourcengruppe, die beim Erstellen des IoT-Hubs verwendet wird – diese Gruppe kann neu oder bereits vorhanden sein. **IoT Hub-Name** ist der Name des zu erstellenden IoT Hubs, beispielsweise **MyIoTHub** (beachten Sie, dass dieser Name global eindeutig sein muss und daher Ihren Namen oder Ihre Initialen enthalten sollte). **Bereitstellungsname** ist ein Name für die Bereitstellung, wie z. B. **Deployment\_01**.
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -70,7 +70,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
     static string password = "{Your application Password}";
     
     static string rgName = "{Resource group name}";
-    static string iotHubName = "{IoT Hub name}";
+    static string iotHubName = "{IoT Hub name including your initials}";
     ```
 
 [AZURE.INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
@@ -183,4 +183,4 @@ Nachdem Sie nun einen IoT-Hub mit der REST-API bereitgestellt haben, möchten Si
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

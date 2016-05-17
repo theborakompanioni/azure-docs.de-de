@@ -5,7 +5,8 @@
    documentationCenter="na"
    authors="cherylmc"
    manager="carmonm"
-   editor=""/>
+   editor=""
+   tags="azure-service-management"/>
 
 <tags
    ms.service="vpn-gateway"
@@ -13,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
 
@@ -72,7 +73,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
 
 - VNet-zu-VNet erfordert Azure-VPN-Gateways mit VPNs mit dynamischem Routing. Azure-VPN-Gateways mit statischem Routing werden nicht unterstützt.
 
-- Virtuelle Netzwerkverbindungen können gleichzeitig mit VPNs mit mehreren Standorten und maximal 10 VPN-Tunneln für ein VPN-Gateway des virtuellen Netzwerks verwendet werden, das Verbindungen mit anderen virtuellen Netzwerken oder lokalen Standorten herstellt.
+- Virtuelle Netzwerkverbindungen können gleichzeitig mit VPNs mit mehreren Standorten und maximal 10 VPN-Tunneln für ein VPN-Gateway des virtuellen Netzwerks verwendet werden, das Verbindungen mit anderen virtuellen Netzwerken oder lokalen Standorten herstellt.
 
 - Die Adressräume der virtuellen Netzwerke und der lokalen Netzwerkstandorte dürfen sich nicht überschneiden. Wenn sich Adressbereiche überschneiden, tritt beim Erstellen eines virtuellen Netzwerks oder beim Hochladen von NETCFG-Konfigurationsdateien ein Fehler auf.
 
@@ -94,9 +95,9 @@ Dieses Verfahren verwendet in erster Linie das klassische Azure-Portal. Sie müs
 
 Eine wichtige Entscheidung betrifft die Bereiche, die Sie zum Konfigurieren Ihrer Netzwerkkonfigurationsdatei (NETCFG-Datei) verwenden. Aus der Perspektive von VNet1 ist VNet2 nur eine weitere VPN-Verbindung, die in der Azure-Plattform definiert ist. Aus der Sicht von VNet2 ist VNet1 nur eine weitere VPN-Verbindung. Beide Netzwerke identifizieren sich gegenseitig als lokaler Netzwerkstandort. Denken Sie daran, dass Sie sicherstellen müssen, dass keiner der VNet-Bereiche oder der Bereiche des lokalen Netzwerks Überschneidungen aufweist.
 
-Tabelle 1 zeigt ein Beispiel, wie VNets definiert werden. Verwenden Sie die unten aufgeführten Bereiche nur als Richtlinie. Notieren Sie sich die Bereiche, die Sie für Ihre virtuellen Netzwerke verwenden. Sie benötigen diese Informationen in den späteren Schritten.
+Tabelle 1 zeigt ein Beispiel, wie VNets definiert werden. Verwenden Sie die unten aufgeführten Bereiche nur als Richtlinie. Notieren Sie sich die Bereiche, die Sie für Ihre virtuellen Netzwerke verwenden. Sie benötigen diese Informationen in den späteren Schritten.
 
-**Tabelle 1**
+**Tabelle 1**
 
 |Virtuelles Netzwerk |Definition des virtuellen Netzwerkstandorts |Definition des lokalen Netzwerkstandorts|
 |:----------------|:-------------------------------|:----------------------------|
@@ -119,8 +120,8 @@ Geben Sie auf der Seite **Details zum virtuellen Netzwerk** die folgenden Inform
 
   ![Details zum virtuellen Netzwerk](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
 
-  - **Name** – Der Name des virtuellen Netzwerks. Beispiel: VNet1
-  - **Standort** – Wenn Sie ein virtuelles Netzwerk erstellen, ordnen Sie dieses einem Azure-Standort (einer Region) zu. Wenn Sie z. B. wünschen, dass Ihre virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitgestellt haben, physisch in "USA West" vorhanden sind, wählen Sie diesen Standort aus. Sie können den Ihrem virtuellen Netzwerk zugeordnete Standort nach dem Erstellen nicht mehr ändern.
+  - **Name** – Der Name des virtuellen Netzwerks. Beispiel: VNet1
+  - **Standort** – Wenn Sie ein virtuelles Netzwerk erstellen, ordnen Sie dieses einem Azure-Standort (einer Region) zu. Wenn Sie z. B. wünschen, dass Ihre virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitgestellt haben, physisch in "USA West" vorhanden sind, wählen Sie diesen Standort aus. Sie können den Ihrem virtuellen Netzwerk zugeordnete Standort nach dem Erstellen nicht mehr ändern.
 
 
 Geben Sie auf der Seite **DNS Server und VPN-Konnektivität** die folgenden Informationen ein, und klicken Sie dann in der unteren rechten Ecke auf den Pfeil "Weiter".
@@ -139,8 +140,8 @@ Geben Sie auf der Seite **Adressräume des virtuellen Netzwerks** die Adressräu
 
   **Geben Sie die folgenden Informationen ein**, und klicken Sie dann auf das Häkchen in der unteren rechten Ecke, um Ihr Netzwerk zu konfigurieren.
 
-  - **Adressraum** – Umfasst Start-IP und die Anzahl Adressen. Stellen Sie sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überschneiden. In diesem Beispiel verwenden Sie 10.1.0.0/16 für VNet1.
-  - **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich, aber Sie können eine getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von Ihren anderen Rolleninstanzen getrennt ist.
+  - **Adressraum** – Umfasst Start-IP und die Anzahl Adressen. Stellen Sie sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überschneiden. In diesem Beispiel verwenden Sie 10.1.0.0/16 für VNet1.
+  - **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich, aber Sie können eine getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von Ihren anderen Rolleninstanzen getrennt ist.
 
 **Klicken Sie auf das Häkchen** rechts unten auf der Seite, damit das virtuelle Netzwerk erstellt wird. Sobald der Vorgang abgeschlossen ist, wird im klassischen Azure-Portal auf der Seite *Netzwerke* unter *Status* der Eintrag *Erstellt* angezeigt.
 
@@ -190,7 +191,7 @@ Nachdem Sie nun alle VNets konfiguriert haben, konfigurieren Sie die VNet-Gatewa
 
   ![Gatewaytyp](./media/virtual-networks-configure-vnet-to-vnet-connection/IC717026.png)
 
-5. Während der Erstellung Ihres Gateways wechselt die Gatewaygrafik auf der Seite zu Gelb und zeigt "Gateway wird erstellt" an. Die Erstellung des Gateways nimmt normalerweise etwa 15 Minuten in Anspruch.
+5. Während der Erstellung Ihres Gateways wechselt die Gatewaygrafik auf der Seite zu Gelb und zeigt "Gateway wird erstellt" an. Die Erstellung des Gateways nimmt normalerweise etwa 15 Minuten in Anspruch.
 
 6. Wiederholen Sie die gleichen Schritte für das andere VNet. Stellen Sie dabei sicher, dass Sie **Dynamisches Gateway** auswählen. Das erste VNet-Gateway muss nicht fertiggestellt sein, wenn Sie mit dem Erstellen des Gateways für das andere VNet beginnen.
 
@@ -198,7 +199,7 @@ Nachdem Sie nun alle VNets konfiguriert haben, konfigurieren Sie die VNet-Gatewa
 
 ## Schritt 6: Bearbeiten des lokalen Netzwerks
 
-1. Klicken Sie auf der Seite **Lokale Netzwerke** auf den Namen des lokalen Netzwerks, den Sie bearbeiten möchten, und klicken Sie dann unten auf der Seite auf **Bearbeiten**. Geben Sie als **IP-Adresse des VPN-Geräts** die IP-Adresse des Gateways ein, das dem VNet entspricht. Geben Sie z. B. für VNet1 die Gateway-IP-Adresse ein, die VNet1 zugewiesen ist. Klicken Sie unten auf der Seite auf den Pfeil.
+1. Klicken Sie auf der Seite **Lokale Netzwerke** auf den Namen des lokalen Netzwerks, den Sie bearbeiten möchten, und klicken Sie dann unten auf der Seite auf **Bearbeiten**. Geben Sie als **IP-Adresse des VPN-Geräts** die IP-Adresse des Gateways ein, das dem VNet entspricht. Geben Sie z. B. für VNet1 die Gateway-IP-Adresse ein, die VNet1 zugewiesen ist. Klicken Sie unten auf der Seite auf den Pfeil.
 
 2. Klicken Sie auf der Seite **Den Adressraum angeben** unten rechts auf das Häkchen, ohne Änderungen vorzunehmen.
 
@@ -216,7 +217,7 @@ Für VNet2
 
 Warten Sie, bis die Verbindung initialisiert wird. Nachdem das Gateway initialisiert wurde, sieht es wie in der Abbildung unten gezeigt aus, und Ihre virtuellen Netzwerke sind verbunden.
 
-![Gatewaystatus – verbunden](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736059.jpg)
+![Gatewaystatus – verbunden](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736059.jpg)
 
 [AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -230,4 +231,4 @@ Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken v
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

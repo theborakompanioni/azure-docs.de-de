@@ -12,7 +12,7 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="04/13/2016"
 	ms.author="tdykstra"/>
 
@@ -193,8 +193,7 @@ In diesem Abschnitt stellen Sie das Webprojekt in der API-App bereit (siehe Schr
 
 	![Meldung zur erfolgreichen Bereitstellung im Visual Studio-Ausgabefenster](./media/app-service-api-dotnet-get-started-template/successfullycreated.png)
 
-> [AZURE.TIP] Um eine schnelle Bereitstellung zu ermöglichen, können Sie die Symbolleiste **Webveröffentlichung mit einem Klick** aktivieren. Klicken Sie auf **Ansicht > Symbolleisten**, und wählen Sie dann **Webveröffentlichung mit einem Klick** aus. Auf der Symbolleiste können Sie ein Profil auswählen, auf eine Schaltfläche zum Veröffentlichen klicken oder auf eine Schaltfläche klicken, um den Assistenten **Web veröffentlichen** zu öffnen.
-![Symbolleiste "Webveröffentlichung mit einem Klick"](./media/app-service-api-dotnet-get-started-template/weboneclickpublish.png)
+> [AZURE.TIP] Um eine schnelle Bereitstellung zu ermöglichen, können Sie die Symbolleiste **Webveröffentlichung mit einem Klick** aktivieren. Klicken Sie auf **Ansicht > Symbolleisten**, und wählen Sie dann **Webveröffentlichung mit einem Klick** aus. Auf der Symbolleiste können Sie ein Profil auswählen, auf eine Schaltfläche zum Veröffentlichen klicken oder auf eine Schaltfläche klicken, um den Assistenten **Web veröffentlichen** zu öffnen. ![Symbolleiste "Webveröffentlichung mit einem Klick"](./media/app-service-api-dotnet-get-started-template/weboneclickpublish.png)
 
 ## Testen der bereitgestellten Web-API
 
@@ -264,4 +263,4 @@ Nachdem Ihre ASP.NET-API-App in Azure App Service ausgeführt wird, ist es ratsa
 
 In diesem Tutorial haben Sie erfahren, wie eine einfache Web-API erstellt und in einer API-App in Azure App Service bereitgestellt wird. Eine Einführung in App Service-Features, die Ihnen die Entwicklung und Nutzung von Web-APIs erleichtern, finden Sie in der Tutorial-Reihe, die mit [Erste Schritte mit API-Apps und ASP.NET](app-service-api-dotnet-get-started.md) beginnt.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

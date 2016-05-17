@@ -216,7 +216,8 @@ $filter=PartitionKey eq 'Sales' und LastName eq 'Smith'
 $filter=LastName eq 'Jones'  
 -	Abfragen, die mehrere Entitäten zurückgeben, geben diese sortiert in der Reihenfolge **PartitionKey** und **RowKey** zurück. Um eine Neusortierung der Entitäten im Client zu vermeiden, müssen Sie einen **RowKey** auswählen, der die am häufigsten verwendeten Sortierreihenfolge definiert.  
 
-Beachten Sie, dass die Verwendung von **or** für die Festlegung eines Filters, der auf **RowKey**-Werten basiert, zu einem Partitionsscan führt und nicht als eine Bereichsabfrage behandelt wird. Aus diesem Grund sollten Sie Abfragen vermeiden, die z. B. folgende Filter verwenden: $filter=PartitionKey eq 'Sales' und (RowKey eq '121' or RowKey eq '322')
+Beachten Sie, dass die Verwendung von **or** für die Festlegung eines Filters, der auf **RowKey**-Werten basiert, zu einem Partitionsscan führt und nicht als eine Bereichsabfrage behandelt wird. Aus diesem Grund sollten Sie Abfragen vermeiden, die z. B. folgende Filter verwenden:
+$filter=PartitionKey eq 'Sales' und (RowKey eq '121' or RowKey eq '322')
 
 Beispiele für clientseitigen Code, der die Storage Client Library zur Ausführung effizienter Abfragen verwendet, finden Sie unter:
 
@@ -609,9 +610,9 @@ Verwenden Sie für die zweite Option die Index-Entitäten, die folgende Daten sp
 
 Die Eigenschaft **EmployeeIDs** enthält eine Liste der Mitarbeiter-IDs für Mitarbeiter, deren Nachnamen in **RowKey** gespeichert sind.
 
-Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie einen neuen Mitarbeiter hinzufügen. In diesem Beispiel werden wir einen Mitarbeiter mit der ID 000152 und einen Nachnamen Jones in der Vertriebsabteilung hinzufügen:
+Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie einen neuen Mitarbeiter hinzufügen. In diesem Beispiel werden wir einen Mitarbeiter mit der ID 000152 und einen Nachnamen Jones in der Vertriebsabteilung hinzufügen:  
 1.	Rufen Sie die Indexentität mit dem **PartitionKey**-Wert "Sales" und dem **RowKey**-Wert "Jones" ab. Speichern Sie das ETag der Entität, die in Schritt 2 verwendet wird.  
-2.	Erstellen Sie eine Entitätsgruppentransaktion (also einen Batchvorgang), mit der die neue Mitarbeiterentität eingefügt wird (**PartitionKey**-Wert "Sales" und **RowKey**-Wert "000152"), und aktualisieren Sie die Indexentität (**PartitionKey-Wert** "Sales" und **RowKey**-Wert "Jones") durch Hinzufügen der neuen Mitarbeiter-ID zu der Liste im Feld "EmployeeIDs". Weitere Informationen zu Entitätsgruppentransaktionen finden Sie unter [Entitätsgruppentransaktionen](#entity-group-transactions). 
+2.	Erstellen Sie eine Entitätsgruppentransaktion (also einen Batchvorgang), mit der die neue Mitarbeiterentität eingefügt wird (**PartitionKey**-Wert "Sales" und **RowKey**-Wert "000152"), und aktualisieren Sie die Indexentität (**PartitionKey-Wert** "Sales" und **RowKey**-Wert "Jones") durch Hinzufügen der neuen Mitarbeiter-ID zu der Liste im Feld "EmployeeIDs". Weitere Informationen zu Entitätsgruppentransaktionen finden Sie unter [Entitätsgruppentransaktionen](#entity-group-transactions).  
 3.	Falls die Entitätsgruppentransaktion aufgrund eines Fehlers der vollständigen Nebenläufigkeit (jemand hat gerade die Indexentität geändert) nicht erfolgreich ist, müssen Sie erneut mit Schritt 1 beginnen.  
 
 Wenn Sie die zweite Option verwenden, können Sie einen ähnlichen Ansatz beim Löschen eines Mitarbeiters wählen. Das Ändern des Nachnamen des Mitarbeiters ist etwas komplexer, da Sie eine Entitätsgruppentransaktion ausführen müssen, die drei Entitäten aktualisiert: die Mitarbeiterentität, die Indexentität für den alten Nachnamen und die Indexentität für den neuen Nachnamen. Sie müssen jede Entität abrufen, bevor Sie Änderungen vornehmen, um die ETag-Werte abzurufen, mit denen Sie dann die Updates unter Verwendung von optimistischer Nebenläufigkeit ausführen.
@@ -647,7 +648,7 @@ Verwenden Sie dieses Muster, wenn Sie eine Reihe von Entitäten nachschlagen mö
 
 #### Zugehörige Muster und Anleitungen  
 
-Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:
+Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 -	[Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
 -	[Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 -	[Entitätsgruppentransaktionen](#entity-group-transactions)  
@@ -682,7 +683,7 @@ Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implem
 Verwenden Sie dieses Muster, wenn Sie häufig nach zugeordneten Informationen suchen müssen. Dieses Muster reduziert die Anzahl der Abfragen, die Ihr Client vornehmen muss, um die benötigten Daten abzurufen.
 
 #### Zugehörige Muster und Anleitungen
-Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
+Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:
 -	[Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
 -	[Entitätsgruppentransaktionen](#entity-group-transactions)  
 -	[Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)
@@ -837,7 +838,7 @@ Bei diesem Entwurf können Sie mit einem Zusammenführungsvorgang den Meldungsz�
 
 #### Probleme und Überlegungen  
 
-Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:
+Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
 -	Wenn eine vollständige Datenreihe nicht in eine einzelne Entität passt (eine Entität kann bis zu 252 Eigenschaften haben), verwenden Sie einen alternativen Datenspeicher, z. B einen Blob.  
 -	Wenn bei Ihnen mehrere Clients gleichzeitig eine Entität aktualisieren, müssen Sie **ETag** verwenden, um optimistische Nebenläufigkeit zu implementieren. Wenn Sie viele Clients haben, können eine Vielzahl von Konflikten auftreten.  
 
@@ -1582,4 +1583,4 @@ Wir möchten auch den folgenden Microsoft-MVPs für ihr wertvolles Feedback zu d
 [29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

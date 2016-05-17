@@ -3,8 +3,8 @@
 	description="Ein Lernprogramm, in dem Sie erfahren, wie Sie Inhalte von einem CDN verwenden, um die Leistung Ihrer Webanwendung zu verbessern." 
 	services="cdn" 
 	documentationCenter=".net" 
-	authors="cephalin" 
-	manager="wpickett" 
+	authors="camsoper" 
+	manager="erikre" 
 	editor="jimbe"/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
-	ms.author="cephalin"/>
+	ms.date="04/29/2016" 
+	ms.author="casoper"/>
 
 # Bereitstellen von Inhalt aus Azure CDN in einer Webanwendung #
 
@@ -277,4 +277,4 @@ Ohne Integration in Azure App Service-Web-Apps oder Azure Cloud Services können
 - [Verwenden von Azure CDN](cdn-create-new-endpoint.md)
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

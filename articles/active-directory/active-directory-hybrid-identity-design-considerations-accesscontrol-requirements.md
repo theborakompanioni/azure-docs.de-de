@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="12/07/2015"
+	ms.date="04/28/2016"
 	ms.author="yuridio"/>
 
 # Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
@@ -73,4 +73,4 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

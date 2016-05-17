@@ -13,13 +13,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/05/2016"
+    ms.date="04/26/2016"
     ms.author="spelluru"/>
 # HPC und Datenorchestrierung mit Azure Batch und Data Factory
 
-High Performance Computing (HPC) war in der Vergangenheit die Domäne von lokalen Datencentern: Ein Supercomputer verarbeitete Daten, aber es stand nur eine begrenzte Anzahl von physischen Computern zur Verfügung. Der Dienst Azure Batch verändert dies grundlegend, denn er stellt HPC als Service zur Verfügung Bei Azure Batch können Sie so viele Computer konfigurieren, wie Sie benötigen. Batch übernimmt auch das Planen und Koordinieren der Arbeit, sodass Sie sich ganz auf die auszuführenden Algorithmen konzentrieren können. Azure Data Factory ist eine perfekte Ergänzung zu Azure Batch, weil Data Factory die Orchestrierung von Datentransfers vereinfacht. Mit Data Factory können Sie ein regelmäßiges Verschieben von Daten für ETL-Prozesse (Extrahieren, Transformieren und Laden) einrichten, die Daten verarbeiten und anschließend die Ergebnisse in einen permanenten Speicher transferieren. Zum Beispiel können von Sensoren gesammelte Daten (durch Data Factory) an einen temporären Speicherort verschoben werden, wo Batch sie (unter der Kontrolle von Data Factory) verarbeitet und neue Ergebnisse ermittelt. Anschließend verschiebt Data Factory die Ergebnisse in ein finales Repository als Speicherort. Durch diese beiden Hand in Hand arbeitenden Dienste können Sie HPC effizient nutzen, um große Datenmengen nach einem regelmäßigen Zeitplan zu verarbeiten.
+Hier stellen wir Ihnen eine Beispiellösung vor, bei der umfangreiche Datasets automatisch verschoben und verarbeitet werden. Die Lösung ist vollständig, sie enthält die Architektur und den Code. Sie basiert auf zwei Azure-Diensten. Azure Batch stellt HPC (High Performance Computing) als Dienst bereit, damit Sie so viele Computer wie nötig konfigurieren und die Arbeit planen und koordinieren können. Azure Data Factory ergänzt Batch und vereinfacht die Orchestrierung der Datenverschiebung. Sie können ein regelmäßiges Verschieben von Daten für ETL-Prozesse (Extrahieren, Transformieren und Laden) einrichten, die Daten verarbeiten und anschließend die Ergebnisse in einen permanenten Speicher transferieren.
 
-Hier stellen wir Ihnen ein komplettes Lösungsbeispiel vor, bei dem umfangreiche Datasets automatisch verschoben und verarbeitet werden. Die Architektur ist für viele Szenarien relevant, z. B. für die Risikomodellierung bei Finanzdienstleistern, für Bildverarbeitung und -rendering und für die Genomanalyse. Architekten und IT-Entscheidungsträger können sich im Diagramm und in den grundlegenden Schritten eine Übersicht verschaffen. Entwickler können den Code als Ausgangspunkt für ihre eigene Implementierung verwenden. Dieser Artikel enthält die gesamte Lösung.
+Die Architektur ist für viele Szenarien relevant, z. B. für die Risikomodellierung bei Finanzdienstleistern, für Bildverarbeitung und -rendering und für die Genomanalyse.
 
 Wenn Sie mit den beiden Diensten noch nicht vertraut sind, sollten Sie sich in der Dokumentation zu [Azure Batch](../batch/batch-api-basics.md) und [Data Factory](data-factory-introduction.md) informieren, bevor Sie sich mit den Schritten der Beispiellösung beschäftigen.
 
@@ -51,7 +51,7 @@ Die Lösung zählt, wie häufig ein Suchbegriff („Microsoft“) in Eingabedate
 
 **Zeit**: Wenn Sie mit Azure, Data Factory und Batch vertraut sind und die Voraussetzungen abgeschlossen haben, wird diese Lösung in ca. 1 bis 2 Stunden abgeschlossen.
 
-### Voraussetzungen
+## Voraussetzungen
 
 1.  **Azure-Abonnement**. Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -101,7 +101,7 @@ Die Lösung zählt, wie häufig ein Suchbegriff („Microsoft“) in Eingabedate
 
 6.  **Microsoft Visual Studio 2012 oder höher** (zum Erstellen einer benutzerdefinierten Batchaktivität, die in der Data Factory-Lösung verwendet werden soll).
 
-### Allgemeine Schritte zum Erstellen der Lösung
+## Allgemeine Schritte zum Erstellen der Lösung
 
 1.  Erstellen Sie eine benutzerdefinierte Aktivität zum Verwenden in der Data Factory-Lösung. Die benutzerdefinierte Aktivität enthält die Logik für die Datenverarbeitung.
 
@@ -552,7 +552,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     2.  Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
 
-    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**. ** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
     4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein. Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: <Kontoname>.<Region>.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
 
@@ -893,9 +893,18 @@ Sie können dieses Beispiel erweitern, um mehr über Azure Data Factory und Azur
 
 3.  Erstellen Sie einen Pool mit einer höheren/niedrigeren **maximalen Anzahl an Aufgaben pro virtueller Maschine**. Aktualisieren Sie den mit Azure Batch verknüpften Dienst in der Data Factory-Lösung, um den neu erstellten Anwendungspool zu verwenden. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die Einstellung zur **maximalen Anzahl an Aufgaben pro virtueller Maschine** zu erfahren.)
 
-4.  Erstellen Sie einen Azure Batch-Pool mit **automatischer Skalierung**. Das automatische Skalieren von Computeknoten in einem Azure Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird. Siehe [Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool](../batch/batch-automatic-scaling.md).
+4.  Erstellen Sie einen Azure Batch-Pool mit **automatischer Skalierung**. Das automatische Skalieren von Computeknoten in einem Azure Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird. Sie können z.B. einen Azure Batch-Pool ohne dedizierte VM erstellen und dabei eine Formel für die automatische Skalierung angeben, die von der Anzahl der ausstehenden Aufgaben abhängig ist:
+ 
+		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);$TargetDedicated = max(pendingTaskSampleVector);
 
-    In der Beispiellösung der **Execute**-Methode ruft die **Calculate** -Methode auf, die einen Eingabedatenslice verarbeiten, um einen Ausgabedatenslice zu erzeugen. Sie können eine eigene Methode erstellen, um Eingabedaten zu verarbeiten und den Calculate-Methodenaufruf in der Execute-Methode durch einen Aufruf Ihrer Methode zu ersetzen.
+	Weitere Informationen hierzu finden Sie unter [Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool](../batch/batch-automatic-scaling.md).
+
+	Unter Umständen benötigt der Azure Batch-Dienst 15–30 Minuten für die Vorbereitung der VM, bevor die benutzerdefinierte Aktivität auf der VM ausgeführt werden kann.
+	 
+5. In der Beispiellösung der **Execute**-Methode ruft die **Calculate** -Methode auf, die einen Eingabedatenslice verarbeiten, um einen Ausgabedatenslice zu erzeugen. Sie können eine eigene Methode erstellen, um Eingabedaten zu verarbeiten und den Calculate-Methodenaufruf in der Execute-Methode durch einen Aufruf Ihrer Methode zu ersetzen.
+
+ 
+
 
 ## Nächste Schritte: Nutzung der Daten
 
@@ -929,4 +938,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 
     -   [Erste Schritte mit der Azure Batch-Bibliothek für .NET](../batch/batch-dotnet-get-started.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

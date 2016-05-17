@@ -14,50 +14,58 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/29/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 # Erstellen einer neuen Bing-Such-API in PowerApps Enterprise
 
-> [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/connectors-create-api-bingsearch.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-bingsearch.md)
+> [AZURE.IMPORTANT] Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
+> 
+> - Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
+> - Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen). 
 
-Fügen Sie die Bing-Such-API in der App Service-Umgebung Ihrer Organisation (Mandant) hinzu.
+<!--Archived
+Add the Bing Search API to your organization's (tenant) app service environment. 
 
-## Erstellen der API im Azure-Portal
+## Create the API in the Azure portal
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit Ihrem Geschäftskonto an. Melden Sie sich beispielsweise mit *IhrBenutzername*@*IhrUnternehmen*.com an. Sie werden dann automatisch mit Ihrem Unternehmensabonnement angemeldet.
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
  
-2. Wählen Sie in der Taskleiste **Durchsuchen**: ![][4]
+2. Select **Browse** in the task bar:  
+![][4]
 
-3. Um PowerApps zu finden, können Sie in der Liste scrollen oder *powerapps* eingeben: ![][5]
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][5]  
 
-4. Wählen Sie in **PowerApps** die Option **Manage APIs** aus: ![Navigieren zu registrierten APIs][2]
+4. In **PowerApps**, select **Manage APIs**:  
+![Browse to registered apis][2]
 
-2. Wählen Sie in **Manage APIs** die Option **Add** aus, um die neue API hinzufügen: ![API hinzufügen][3]
+2. In **Manage APIs**, select **Add** to add the new API:  
+![Add API][3]
 
-3. Geben Sie einen beschreibenden **Namen** für Ihre API ein.
+3. Enter a descriptive **name** for your API. 
 
-4. Wählen Sie in **Quelle** die Option **Verfügbare API**, um die vorgefertigten APIs auszuwählen und wählen Sie **Bing-Suche**:
+4. In **Source**, select **Available API** to select the pre-built APIs, and select **Bing Search**:  
 
-	1. Wählen Sie **Einstellungen – Erforderliche Einstellungen konfigurieren** aus.
-	2. Geben Sie den *Kontoschlüssel* ein. Wenn Sie keinen Bing-Suche-Schlüssel haben, erstellen Sie ein kostenloses [Bing-Suche-Angebot][1], um einen Schlüssel zu erhalten.
-	3. Klicken Sie auf **OK**. 
+	1. Select **Settings - Configure required settings**.
+	2. Enter *Account Key*. If you don't have a Bing Search Key, create a free [Bing Search offer][1] to get a key.
+	3. Select **OK**. 
 
-5. Wählen Sie **OK** aus, um die Schritte abzuschließen.
+5. Select **OK** to complete the steps. 
 
-Abschließend wird in Ihrer App Service-Umgebung eine neue Bing-Such-API hinzugefügt.
+When finished, a new Bing Search API is added to your app service environment.
 
-## Informationen zu REST-APIs
+## See the REST APIs
 
-Referenz zur [REST API für die Bing-Suche](../connectors/connectors-create-api-bingsearch.md)
+[Bing Search REST API](../connectors/connectors-create-api-bingsearch.md) reference.
 
 
-## Zusammenfassung und nächste Schritte
-Mithilfe dieses Themas haben Sie die Bing-Suche-API zu PowerApps Enterprise hinzugefügt. Als nächstes können Sie Benutzern Zugriff auf die API verschaffen, sodass sie zu den Apps der Benutzer hinzugefügt werden kann:
+## Summary and next steps
+In this topic, you added the Bing Search API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps: 
 
-[Hinzufügen einer Verbindung und Einrichten des Zugriffs für Benutzer](powerapps-manage-api-connection-user-access.md)
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
+
 
 <!--References-->
 [1]: https://datamarket.azure.com/dataset/bing/search
@@ -66,4 +74,4 @@ Mithilfe dieses Themas haben Sie die Bing-Suche-API zu PowerApps Enterprise hinz
 [4]: ./media/powerapps-create-api-dropbox/browseall.png
 [5]: ./media/powerapps-create-api-dropbox/allresources.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

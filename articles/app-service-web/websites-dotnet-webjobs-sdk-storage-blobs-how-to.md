@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service-web" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK
@@ -253,4 +253,4 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 In dieser Anleitung wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Blobs behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

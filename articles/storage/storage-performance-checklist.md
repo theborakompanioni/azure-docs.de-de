@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="04/29/2016"
 	ms.author="robinsh"/>
 
 # Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
@@ -149,7 +149,7 @@ Normalerweise lässt der Browser kein JavaScript auf einer Seite zu, die von ein
 Beide dieser Technologien können dabei helfen, unnötige Lasten (und Engpässe) in der Webanwendung zu vermeiden.
 
 ####Nützliche Ressourcen
-Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](../storage-dotnet-shared-access-signature-part-1/).
+Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
 
 Weitere Informationen zu CORS finden Sie unter [Cross-Origin Resource Sharing (CORS)-Support für den Azure-Speicherdienst](http://msdn.microsoft.com/library/azure/dn535601.aspx).
 
@@ -393,7 +393,7 @@ Aktuelle Datenkosteninformationen finden Sie unter [Preise für Azure Storage](h
 ###<a name=subheading44"></a>UpdateMessage
 Sie können **UpdateMessage** verwenden, um das Unsichtbarkeits-Zeitlimit zu erhöhen oder die Statusinformationen einer Nachricht zu aktualisieren. Trotz der Möglichkeiten dieser Option sollten Sie beachten, dass jeder **UpdateMessage**-Vorgang für das Skalierbarkeitsziel zählt. Dies kann jedoch sehr viel effizienter sein als ein Workflow, der einen Auftrag von einer Warteschlange zur nächsten verschiebt, wenn der jeweilige Schritt abgeschlossen ist. Mithilfe des Vorgangs **UpdateMessage** kann Ihre Anwendung den Auftragsstatus in der Nachricht speichern und dann weiterarbeiten, statt die Nachricht jedes Mal für den nächsten Schritt erneut in die Warteschlange zu stellen.
 
-Weitere Informationen finden Sie im Artikel [Ändern des Inhalts von Nachrichten in der Warteschlange](storage-dotnet-how-to-use-queues#change-the-contents-of-a-queued-message).
+Weitere Informationen finden Sie im Artikel [Ändern des Inhalts von Nachrichten in der Warteschlange](storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).
 
 ###<a name=subheading45"></a>Anwendungsarchitektur
 Verwenden Sie Warteschlangen, um die Anwendungsarchitektur skalierbar zu machen. Nachfolgend sind einige Möglichkeiten aufgelistet, wie Sie Warteschlangen verwenden können, um Ihre Anwendung skalierbarer zu gestalten:
@@ -404,4 +404,4 @@ Verwenden Sie Warteschlangen, um die Anwendungsarchitektur skalierbar zu machen.
 ##Zusammenfassung
 In diesem Artikel wurden einige der häufigsten bewährten Vorgehensweisen zur Leistungsoptimierung bei der Verwendung des Azure-Speichers erläutert. Wir empfehlen jedem Anwendungsentwickler, seine Anwendung anhand dieser Vorgehensweisen zu überprüfen und ggf. die Empfehlungen umzusetzen, um bessere Leistung für ihre Anwendungen zu erzielen, die Azure-Speicher verwenden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

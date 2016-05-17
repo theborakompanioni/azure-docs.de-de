@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="05/02/2016" 
 	ms.author="thmullan;torsteng;sidneyh" />
 
 # Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit 
@@ -58,7 +58,7 @@ Nach dem Herstellen einer Verbindung mit einer Shard-Datenbank mithilfe der date
 
 ### Entity Framework
 
-Für Anwendungen, die Entity Framework verwenden, ist die einfachste Herangehensweise, SESSION\_CONTEXT in der „ElasticScaleContext“-Überschreibung festzulegen, wie unter [Datenabhängiges Routing mit EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md/#data-dependent-routing-using-ef-dbcontext) beschrieben. Vor der Rückgabe der über datenabhängiges Routing vermittelten Verbindung erstellen Sie einfach einen SqlCommand, der die „TenantId“ im SESSION\_CONTEXT auf den „shardingKey“ festlegt, der für diese Verbindung angegeben wurde, und führen ihn aus. Auf diese Weise müssen Sie nur einmal Code zum Festlegen von SESSION\_CONTEXT schreiben.
+Für Anwendungen, die Entity Framework verwenden, ist die einfachste Herangehensweise, SESSION\_CONTEXT in der Außerkraftsetzung „ElasticScaleContext“ festzulegen, wie unter [Datenabhängiges Routing mit EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext) beschrieben. Vor der Rückgabe der über datenabhängiges Routing vermittelten Verbindung erstellen Sie einfach einen SqlCommand, der die „TenantId“ im SESSION\_CONTEXT auf den „shardingKey“ festlegt, der für diese Verbindung angegeben wurde, und führen ihn aus. Auf diese Weise müssen Sie nur einmal Code zum Festlegen von SESSION\_CONTEXT schreiben.
 
 ```
 // ElasticScaleContext.cs 
@@ -312,4 +312,4 @@ Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum hor
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

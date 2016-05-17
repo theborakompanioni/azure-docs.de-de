@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwalten von Service Bus mit PowerShell | Microsoft Azure"
-	description="Verwalten von Service Bus mit PowerShell-Skripts anstelle von .NET"
+	description="Verwalten von Service Bus mit PowerShell-Skripts"
 	services="service-bus"
 	documentationCenter=".net"
 	authors="sethmanheim"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/02/2016"
 	ms.author="sethm"/>
 
 # Verwalten von Service Bus mit PowerShell
@@ -156,16 +156,32 @@ In diesem Teil des Skripts werden vier weitere lokale Variablen erstellt. Diese 
 	Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
 	```
 
+## Migrieren eines Namespaces zu einem anderen Azure-Abonnement
+
+Mit der folgenden Befehlssequenz wird ein Namespace aus einem Azure-Abonnement in ein anderes verschoben. Um diesen Vorgang auszuführen, muss der Namespace bereits aktiv sein und der Benutzer, der die PowerShell-Befehle ausführt, muss sowohl im Quell- als auch im Zielabonnement Administratorrechte besitzen.
+
+```
+# Create a new resource group in target subscription
+Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzureRmResourceGroup -Name 'targetRP' -Location 'East US'
+
+# Move namespace from source subscription to target subscription
+Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzureRmResource -DestinationResourceGroupName 'targetRP' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+```
+
 ## Nächste Schritte
 
 Dieser Artikel beschreibt die grundlegenden Schritte zur Bereitstellung von Service Bus-Entitäten mithilfe von PowerShell. Alle Aufgaben, die Sie mithilfe der .NET-Clientbibliotheken ausführen können, können Sie auch in einem PowerShell-Skript erledigen.
 
-In folgenden Blogbeiträgen finden Sie ausführlichere Beispiele:
+In den folgenden Blogbeiträgen finden Sie ausführlichere Beispiele:
 
 - [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 - [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung: [Service Bus-PowerShell-Skripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
+- [Service Bus PowerShell-Skripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Link references-->
 [Azure erwerben]: http://azure.microsoft.com/pricing/purchase-options/
@@ -179,4 +195,4 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung: [Servi
 [.NET-API für Service Bus]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.aspx
 [NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

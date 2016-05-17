@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/25/2016"
+   	ms.date="05/02/2016"
    	ms.author="jgao"/>
 
 
@@ -45,7 +45,22 @@ Jeder Clustertyp verfügt über eine eigene Terminologie für Knoten im Cluster,
 |Storm|Nimbus-Knoten (2), Supervisor-Server (1+), Zookeeper-Knoten (3)|![HDInsight-Storm-Clusterknoten](./media/hdinsight-provision-clusters/HDInsight.Storm.roles.png)|
 |Spark|Hauptknoten (2), Workerknoten (1+), Zookeeper-Knoten (3) (kostenlos für Zookeeper-VM-Größe A1)|![HDInsight-Spark-Clusterknoten](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)|
 
-* In Klammern ist die Anzahl der Knoten für die einzelnen Knotentypen aufgeführt.
+Hinweis: In Klammern ist die Anzahl der Knoten für die einzelnen Knotentypen aufgeführt.
+
+Die folgende Tabelle enthält die Standard-VM-Größen für HDInsight:
+
+|Clustertyp|	Hadoop|	HBase|	Storm|	Spark|
+|------------|--------|------|-------|-------|
+|Head – Standard-VM-Größe|	D3 |A3|	A3|	D12|
+|Head – empfohlene VM-Größen|	D3, D4, D12 |A3, A4, A5 |A3, A4, A5|	D12, D13, D14|
+|Worker – Standard-VM-Größe|	D3|	D3|	D3|	D12|
+|Worker – empfohlene VM-Größen |	D3, D4, D12|	D3, D4, D12 |D3, D4, D12|	D12, D13, D14|
+|Zookeeper – Standard-VM-Größe| |	A2|	A2 | |
+|Zookeeper – empfohlene VM-Größen | |A2, A3, A4 |A2, A3, A4 | |
+
+Hinweis: Head wird für den Storm-Clustertyp als „Nimbus“ bezeichnet. „Worker“ wird für den HBase-Clustertyp als „Region“ und für den Storm-Clustertyp als „Supervisor“ bezeichnet.
+
+
 
 > [AZURE.IMPORTANT] Wenn Sie mehr als 32 Workerknoten planen, entweder bei Erstellung des Clusters oder durch eine Skalierung des Clusters nach der Erstellung, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
 
@@ -53,7 +68,7 @@ Sie können zu diesen grundlegenden Typen mithilfe von [Skriptaktionen](#customi
 
 ## Cluster-Ebenen
 
-Azure HDInsight bietet Cloudlösungen für Big Data in zwei Kategorien an: Standard und [Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium). HDInsight Premium enthält R und andere zusätzliche Komponenten. HDInsight Premium wird nur von HDInsight-Version 3.4 unterstützt.
+Azure HDInsight bietet die Cloudlösungen für Big Data in zwei Kategorien an: Standard und [Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium). HDInsight Premium enthält R und andere zusätzliche Komponenten. HDInsight Premium wird nur von HDInsight-Version 3.4 unterstützt.
 
 Die folgende Tabelle listet den HDInsight-Clustertyp und die Supportmatrix für HDInsight Premium auf.
 
@@ -88,7 +103,7 @@ Folgende sind die grundlegenden Konfigurationsoptionen zum Erstellen eines HDIns
 - **Betriebssystem**
 
 	Sie können HDInsight-Cluster unter einem der beiden folgenden Betriebssysteme erstellen:
-	- **HDInsight unter Linux (Ubuntu 12.04 LTS for Linux)**: HDInsight bietet die Möglichkeit, Linux-Cluster unter Azure zu konfigurieren. Konfigurieren Sie einen Linux-Cluster, wenn Sie mit Linux oder Unix und der Migration von einer vorhandenen Linux-basierten Hadoop-Lösung vertraut sind, oder Sie eine einfache Integration mit Komponenten des Hadoop-Systems wünschen, die für Linux konzipiert sind. Weitere Informationen finden Sie unter [Erste Schritte mit Hadoop unter Linux in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+	- **HDInsight unter Linux (Ubuntu 12.04 LTS for Linux)**: HDInsight bietet die Möglichkeit, Linux-Cluster in Azure zu konfigurieren. Konfigurieren Sie einen Linux-Cluster, wenn Sie mit Linux oder Unix und der Migration von einer vorhandenen Linux-basierten Hadoop-Lösung vertraut sind, oder Sie eine einfache Integration mit Komponenten des Hadoop-Systems wünschen, die für Linux konzipiert sind. Weitere Informationen finden Sie unter [Erste Schritte mit Hadoop unter Linux in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 	- **HDInsight unter Windows (Windows Server 2012 R2 Datacenter)**:
     
 - **HDInsight-Version**
@@ -101,7 +116,7 @@ Folgende sind die grundlegenden Konfigurationsoptionen zum Erstellen eines HDIns
     
 - **Ressourcengruppenname**
 
-	Mit dem [Azure Resource Manager (ARM)](resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Diese wird als Azure-Ressourcengruppe bezeichnet. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen.
+	Mit dem [Azure Resource Manager (ARM)](resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, was als Azure-Ressourcengruppe bezeichnet wird. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen.
 
 - **Anmeldeinformationen**
 
@@ -193,7 +208,7 @@ Folgende sind die grundlegenden Konfigurationsoptionen zum Erstellen eines HDIns
         |Standard\_D13\_v2 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500|
         |Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500|    
  
-    Überlegungen zur Bereitstellung, die Sie im Hinblick auf die Verwendung dieser Ressourcen berücksichtigen sollten, finden Sie unter [Sizes for Linux virtual machines in Azure](../virtual-machines/virtual-machines-size-specs.md) (Größen für virtuelle Linux-Computer in Azure). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).
+    Überlegungen zur Bereitstellung, die Sie im Hinblick auf die Verwendung dieser Ressourcen berücksichtigen sollten, finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-size-specs.md). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).
     
 	> [AZURE.IMPORTANT] Wenn Sie mehr als 32 Workerknoten planen – entweder bei Erstellung des Clusters oder durch Skalierung des Clusters nach der Erstellung – müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB RAM auswählen. Die Abrechnung beginnt, sobald ein Cluster erstellt wurde, und endet erst, wenn der Cluster gelöscht wird. Weitere Informationen zu den Preisen finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -268,4 +283,4 @@ In diesem Artikel haben Sie grundlegende Informationen zum Erstellen eines Linux
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

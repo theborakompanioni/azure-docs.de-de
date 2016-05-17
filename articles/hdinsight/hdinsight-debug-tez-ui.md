@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="02/16/2016"
+ms.date="05/03/2016"
 ms.author="larryfr"/>
 
 # Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
@@ -147,4 +147,4 @@ Nachdem Sie sich mit der Verwendung der Tez-Ansicht vertraut gemacht haben, erfa
 
 Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

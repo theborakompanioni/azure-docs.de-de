@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/15/2016"
+	ms.date="04/29/2016"
 	ms.author="cynthn"/>
 
 # Erstellen eines benutzerdefinierten virtuellen Computers mit Windows
@@ -30,4 +30,4 @@
 
 Sie können mit dem klassischen Portal auch [einen benutzerdefinierten virtuellen Computer unter Linux erstellen](virtual-machines-linux-classic-createportal.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

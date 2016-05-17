@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="01/08/2016"
+	ms.date="05/06/2016"
 	ms.author="cabailey"/>
 
 # Azure-Schlüsseltresor-Protokollierung #
-Azure-Schlüsseltresor ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](../../../../pricing/details/key-vault/).
+Azure-Schlüsseltresor ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## Einführung  
 Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Hierfür können Sie die Protokollierung für den Schlüsseltresor aktivieren, bei der Informationen im von Ihnen bereitgestellten Azure-Speicherkonto gespeichert werden. Ein neuer Container mit dem Namen **insights-logs-auditevent** wird für Ihr angegebenes Speicherkonto automatisch erstellt, und Sie können dieses Speicherkonto verwenden, um Protokolle für mehrere Schlüsseltresore zu sammeln.
@@ -30,7 +30,7 @@ Sie können auf Ihre Protokollinformationen spätestens zehn Minuten nach dem Sc
 Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung, beim Erstellen Ihres Speicherkontos, Aktivieren der Protokollierung und Interpretieren der gesammelten Protokollierungsinformationen.
 
 
->[AZURE.NOTE]Dieses Tutorial enthält keine Anleitung zur Erstellung von Schlüsseltresoren, Schlüsseln oder geheimen Schlüsseln. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli.md).
+>[AZURE.NOTE]  Dieses Tutorial enthält keine Anleitung zur Erstellung von Schlüsseltresoren, Schlüsseln oder geheimen Schlüsseln. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli.md).
 >
 >Derzeit können Sie den Azure-Schlüsseltresor nicht im Azure-Portal konfigurieren. Sie müssen stattdessen die Anweisungen für Azure PowerShell verwenden.
 
@@ -73,7 +73,7 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 	$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
 
 
->[AZURE.NOTE]Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, muss dafür dasselbe Abonnement wie für den Schlüsseltresor verwendet werden. Außerdem muss das Ressourcen-Manager-Bereitstellungsmodell genutzt werden, nicht das klassische Bereitstellungsmodell.
+>[AZURE.NOTE]  Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, muss dafür dasselbe Abonnement wie für den Schlüsseltresor verwendet werden. Außerdem muss das Ressourcen-Manager-Bereitstellungsmodell genutzt werden, nicht das klassische Bereitstellungsmodell.
 
 ## <a id="identify"></a>Identifizieren des Schlüsseltresors für Ihre Protokolle ##
 
@@ -105,8 +105,8 @@ Protokollierte Daten:
 - Alle authentifizierten REST-API-Anforderungen werden protokolliert, z. B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind.
 - Vorgänge im Schlüsseltresor selbst, z. B. Erstellung, Löschung und Festlegung von Schlüsseltresor-Zugriffsrichtlinien und Aktualisierung von Schlüsseltresor-Attributen, beispielsweise Tags.
 - Vorgänge mit Schlüsseln und geheimen Schlüsseln im Schlüsseltresor, z. B. Erstellung, Änderung oder Löschung dieser Schlüssel bzw. geheimen Schlüssel. Vorgänge wie das Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Umschließen und Aufheben der Umschließung von Schlüsseln, Abrufen von geheimen Schlüsseln, Auflisten von Schlüsseln und geheimen Schlüsseln sowie ihren Versionen.
+- Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.  
 
-Nicht authentifizierte Anforderungen werden nicht protokolliert.
 
 ## <a id="access"></a>Zugreifen auf Ihre Protokolle ##
 
@@ -156,11 +156,11 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 
-- Verwenden Sie bei mehreren Ressourcengruppen und einem Download von Protokollen nur für eine Ressourcengruppe das Element `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
+- Wenn Sie über mehreren Ressourcengruppen verfügen und von Protokollen für nur eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 
-- Wenn Sie alle Protokolle für den Monat Januar 2016 herunterladen möchten, verwenden Sie `-Blob '*/year=2016/m=01/*'`:
+- Wenn Sie alle Protokolle für den Monat Januar 2016 herunterladen möchten, verwenden Sie `-Blob '*/year=2016/m=01/*'`:
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
@@ -221,11 +221,11 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
 
 Die Feldwerte unter **operationName** liegen im ObjectVerb-Format vor. Beispiel:
 
-- Alle Schlüsseltresor-Vorgänge verfügen über das Format „Vault`<action>`“, z. B. `VaultGet` und `VaultCreate`. 
+- Alle Schlüsseltresor-Vorgänge verfügen über das Format „Vault`<action>`“, z.B. `VaultGet` und `VaultCreate`. 
 
-- Alle Schlüsselvorgänge verfügen über das Format „Key`<action>`“, z. B. `KeySign` und `KeyList`.
+- Alle Schlüsselvorgänge verfügen über das Format „Key`<action>`“, z.B. `KeySign` und `KeyList`.
 
-- Alle Vorgänge mit geheimen Schlüsseln verfügen über das Format „Secret`<action>`“, z. B. `SecretGet` und `SecretListVersions`.
+- Alle Vorgänge mit geheimen Schlüsseln verfügen über das Format „Secret`<action>`“, z.B. `SecretGet` und `SecretListVersions`.
 
 Die folgende Tabelle enthält das operationName-Element und den entsprechenden REST-API-Befehl.
 
@@ -268,7 +268,7 @@ Ein Tutorial zur Verwendung des Azure-Schlüsseltresors in einer Webanwendung fi
 
 Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](key-vault-developers-guide.md).
 
-Eine Liste der Azure PowerShell 1.0-Cmdlets für den Azure-Schlüsseltresor finden Sie unter [Cmdlets für den Azure-Schlüsseltresor](https://msdn.microsoft.com/library/azure/dn868052.aspx).
+Eine Liste der Azure PowerShell 1.0-Cmdlets für den Azure-Schlüsseltresor finden Sie unter [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Cmdlets für den Azure-Schlüsseltresor).
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="05/03/2016" 
 	ms.author="juliako;cenkdin;anilmur"/>
 
 #Verwenden des Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
@@ -26,7 +26,7 @@
 
 In diesem Thema wird beschrieben, wie Sie den [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm)-Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
-In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool Azure Media Services Explorer (AMSE) verwalten. Dieses Tool kann nur auf Windows-PCs ausgeführt werden. Unter Mac OS oder Linux verwenden Sie das klassische Azure-Portal, um [Kanäle](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) und [Programme](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program) zu erstellen.
+In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool Azure Media Services Explorer (AMSE) verwalten. Dieses Tool kann nur auf Windows-PCs ausgeführt werden. Unter Mac OS oder Linux verwenden Sie das klassische Azure-Portal, um [Kanäle](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) und [Programme](media-services-portal-creating-live-encoder-enabled-channel.md#create-and-manage-a-program) zu erstellen.
 
 
 ##Voraussetzungen
@@ -180,4 +180,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

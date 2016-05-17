@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="04/18/2016" 
+ 	ms.date="05/03/2016" 
 	ms.author="cenkdin;juliako"/>
 
 #Filter und dynamische Manifeste
@@ -87,7 +87,7 @@ Smooth Streaming-URL mit Filter
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)
 
 
-Weitere Informationen zum Übermitteln Ihrer Inhalte und zum Erstellen von Streaming-URLs finden Sie unter [Übersicht zum Übermitteln von Inhalten](media-services-deliver-content-overview/).
+Weitere Informationen zum Übermitteln Ihrer Inhalte und zum Erstellen von Streaming-URLs finden Sie unter [Übersicht zum Übermitteln von Inhalten](media-services-deliver-content-overview.md).
 
 
 >[AZURE.NOTE]Beachten Sie, dass dynamische Manifeste nicht das Medienobjekt und das Standardmanifest für dieses Medienobjekt ändern. Ihre Kunden können auswählen, ob sie einen Stream mit oder ohne Filter anfordern.
@@ -236,4 +236,4 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

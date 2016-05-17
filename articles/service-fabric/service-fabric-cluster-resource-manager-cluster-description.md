@@ -214,10 +214,10 @@ Wir haben der für jeden Knoten angegebenen Kapazität reservierten Puffer hinzu
 ClusterManifest.xml
 
 ```xml
-        <Section Name=" NodeBufferPercentage">
-            <Parameter Name="DiskSpace" Value="10" />
-            <Parameter Name="Memory" Value="15" />
-            <Parameter Name="SomeOtherMetric" Value="20" />
+        <Section Name="NodeBufferPercentage">
+            <Parameter Name="DiskSpace" Value="0.10" />
+            <Parameter Name="Memory" Value="0.15" />
+            <Parameter Name="SomeOtherMetric" Value="0.20" />
         </Section>
 ```
 Bei Erstellungsaufrufen, die zu neuen Diensten führen, tritt ein Fehler auf, wenn dem Cluster keine gepufferte Kapazität mehr zur Verfügung steht. Dadurch wird sichergestellt, dass der Cluster über ausreichend Kapazitätsreserven verfügt und Upgrades und Ausfälle nicht dazu führen, dass Knoten die Kapazität überschreiten. Der Ressourcen-Manager macht viele dieser Informationen über PowerShell und die Abfrage-APIs verfügbar, sodass Sie die Einstellungen für die gepufferte Kapazität, die Gesamtkapazität und den aktuellen Verbrauch für jede angegebene Metrik anzeigen können. Hier sehen Sie ein Beispiel für diese Ausgabe:
@@ -262,4 +262,4 @@ LoadMetricInformation     :
 [Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 
@@ -24,7 +24,7 @@ Gepackte Anwendungen können in der Stagingumgebung von Azure bereitgestellt wer
 
 > [AZURE.NOTE] Die Schritte in diesem Beitrag gelten nur für Node-Anwendungen, die als Azure-Clouddienst gehostet werden.
 
-## Schritt 1: Staging einer Anwendung
+## Schritt 1: Staging einer Anwendung
 
 Dieser Abschnitt beschreibt das Staging einer Anwendung mit **Microsoft Azure PowerShell**.
 
@@ -75,4 +75,4 @@ Sie haben nun eine Bereitstellung in Staging getestet und eine Produktionsbereit
 [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
 [Bereitstellen eines Dienstupgrades in der Produktionsumgebung durch Austausch der VIPs in Azure]: cloud-services-how-to-manage.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

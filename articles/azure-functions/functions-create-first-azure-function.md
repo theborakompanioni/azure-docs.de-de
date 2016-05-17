@@ -15,7 +15,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/21/2016"
+   ms.date="05/05/2016"
    ms.author="glenga"/>
 
 # Erstellen Sie Ihre erste Funktion in Azure Functions
@@ -29,7 +29,7 @@ Dieses Thema behandelt die Verwendung des Azure Functions-Schnellstarts im Azure
 
 Das folgende Video zeigt die Ausführung der grundlegenden Schritte in diesem Tutorial.
 
-[AZURE.VIDEO create-your-first-azure-function]
+[AZURE.VIDEO create-your-first-azure-function-simple]
 
 ##Erstellen einer Funktion über den Schnellstart
 
@@ -64,4 +64,4 @@ Der Schnellstart zeigt eine sehr einfach Ausführung einer grundlegenden, über 
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

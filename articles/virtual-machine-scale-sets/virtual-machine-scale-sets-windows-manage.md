@@ -14,172 +14,70 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="04/26/2016"
 	ms.author="davidmu"/>
 
 # Verwalten virtueller Computer in einer VM-Skalierungsgruppe
 
-Azure PowerShell bietet ein hohes Maß an Leistung und Flexibilität beim Verwalten von Ressourcen in Microsoft Azure. Verwalten Sie mit den in diesem Artikel beschriebenen Aufgaben VM-Ressourcen in Ihrer VM-Skalierungsgruppe.
-
-- [Anzeigen von Informationen zu einer VM-Skalierungsgruppe](#displayvm)
-- [Starten eines virtuellen Computers in einer Skalierungsgruppe](#start)
-- [Stoppen eines virtuellen Computers in einer Skalierungsgruppe](#stop)
-- [Neustarten eines virtuellen Computers in einer Skalierungsgruppe](#restart)
-- [Löschen eines virtuellen Computers aus einer Skalierungsgruppe](#delete)
+Verwalten Sie mit den in diesem Artikel beschriebenen Aufgaben VM-Ressourcen in Ihrer VM-Skalierungsgruppe.
 
 Alle Aufgaben im Zusammenhang mit dem Verwalten eines virtuellen Computers in einer Skalierungsgruppe erfordern, dass Sie die Instanz-ID des Computers kennen, den Sie verwalten möchten. Sie können mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com) die Instanz-ID eines virtuellen Computers in einer Skalierungsgruppe finden. Sie können mit dem Ressourcen-Explorer auch den Status der Aufgaben überprüfen, die Sie fertig stellen.
 
-[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
+Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-## <a id="displayvm"></a>Anzeigen von Informationen zu einer VM-Skalierungsgruppe
+## Anzeigen von Informationen zu einer VM-Skalierungsgruppe
 
 Sie können allgemeine Informationen über eine Skalierungsgruppe abrufen, was auch als Instanzansicht bezeichnet wird. Oder Sie können spezifischere Informationen abrufen, z.B. Informationen zu den Ressourcen in der Gruppe.
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, und *scale set name* durch den Namen der VM-Skalierungsgruppe, und führen Sie den Befehl aus:
+Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, und *scale set name* durch den Namen der VM-Skalierungsgruppe, und führen Sie dann den Befehl aus:
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
 Folgendes sollte angezeigt werden:
 
-    Sku                      :  {
-                                  "name": "Standard_A0",
-                                  "tier": "Standard",
-                                  "capacity": 4
-                                }
-    UpgradePolicy            :  {
-                                  "mode": "Manual"
-                                }
-    VirtualMachineProfile    :  {
-                                  "osProfile": {
-                                    "computerNamePrefix": "myvmss1",
-                                    "adminUserName": "user1",
-                                    "adminPassword": null,
-                                    "customData": null,
-                                    "windowsConfiguration": {
-                                      "provisionVMAgent": true,
-                                      "enableAutomaticUpdates": true,
-                                      "timeZone": null,
-                                      "additionalUnattendContent": null,
-                                      "winRM": null
-                                    }
-                                    "linuxConfiguration": null,
-                                    "secrets": []
-                                  },
-                                  "storageProfile": {
-                                    "imageReference": {
-                                      "publisher": "MicrosoftWindowsServer",
-                                      "offer": "WindowsServer",
-                                      "sku": "2012-R2-Datacenter",
-                                      "version": "latest"
-                                    },
-                                    "osDisk": {
-                                      "name": "vmssosdisk",
-                                      "caching": "ReadOnly",
-                                      "createOption": "FromImage",
-                                      "osType": null,
-                                      "image": null,
-                                      "vhdContainers": [
-                                        "https://amyst1.blob.core.windows.net/vmss",
-                                        "https://gmyst1.blob.core.windows.net/vmss",
-                                        "https://mmyst1.blob.core.windows.net/vmss",
-                                        "https://smyst1.blob.core.windows.net/vmss",
-                                        "https://ymyst1.blob.core.windows.net/vmss"
-                                      ]
-                                    }
-                                  },
-                                  "networkProfile": {
-                                    "networkInterfaceConfigurations": [
-                                      {
-                                        "name": "myresnc2",
-                                        "properties.primary": true,
-                                        "properties.ipConfigurations": [
-                                          {
-                                            "name": "ip1",
-                                            "properties.subnet": {
-                                              "id": "/subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myresvn1/subnets/myressn1"
-                                            },
-                                            "properties.loadBalancerBackendAddressPools": [
-                                              {
-                                                "id": "/subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/myreslb1/backendAddressPools/bepool1"
-                                              }
-                                            ],
-                                            "properties.loadBalancerInboundNatPools": [
-                                              {
-                                                "id": "/subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/myreslb1/inboundNatPools/natpool1"
-                                              }
-                                            ],
-                                            "id": null
-                                          }
-                                        ],
-                                        "id": null
-                                      }
-                                    ]
-                                  },
-                                  "extensionProfile": {
-                                    "extensions": [
-                                      {
-                                        "name": "Microsoft.Insights.VMDiagnosticsSettings",
-                                        "properties.publisher": "Microsoft.Azure.Diagnostics",
-                                        "properties.type": "IaaSDiagnostics",
-                                        "properties.typeHandlerVersion": "1.5",
-                                        "properties.autoUpgradeMinorVersion": true,
-                                        "properties.settings": {
-                                          "xmlCfg": "{encoded configuration}",
-                                          "storageAccount": "amyst1"
-                                        },
-                                        "properties.protectedSettings": null,
-                                        "properties.provisioningState": null,
-                                        "id": null
-                                      }
-                                    ]
-                                  }
-                                }
-    ProvisioningState           : Succeeded
-    Id                          : /subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
-    Name                        : myvmss1
-	Type                        : Microsoft.Compute/virtualMachineScaleSets
-	Location                    : westus
-	Tags.Count                  : 0
-	Tags                        :
+    Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
+    UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
+    VirtualMachineProfile : Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile
+    ProvisioningState     : Succeeded
+    OverProvision         :
+    Id                    : /subscriptions/{subscription-id}/resourceGroups/myrg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
+    Name                  : myvmss1
+    Type                  : Microsoft.Compute/virtualMachineScaleSets
+    Location              : centralus
+    Tags                  :
 
-Um allgemeine Informationen abzurufen, ersetzen Sie *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, und *scale set name* durch den Namen der VM-Skalierungsgruppe, und führen Sie den Befehl aus:
+Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der VM-Skalierungsgruppe und *#* durch den Instanzbezeichner der VM, über die Sie Informationen abrufen möchten, und führen Sie dann den Befehl aus:
 
-	Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
-
+    Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
+        
 Folgendes sollte angezeigt werden:
 
-    VirtualMachine   :  {
-                          "statusesSummary": [
-                            {
-                              "code": "ProvisioningState/succeeded",
-                              "count": 4
-                            }
-                          ]
-                        }
-    Extensions.Count :  1
-    Extensions       :  {
-                          "name": "Microsoft.Insights.VMDiagnosticsSettings",
-                          "statusesSummary": [
-                            {
-                              "code": "ProvisioningState/succeeded",
-                              "count": 4
-                            }
-                          ]
-                        }
-	Statuses.Count   :  1
-	Statuses         :  {
-                          "code": "ProvisioningState/succeeded",
-                          "level": "Info",
-                          "displayStatus": "Provisioning succeeded",
-                          "message": null,
-                          "time": "2016-03-14T20:29:37.170809Z"
-                        }
+    InstanceId         : 1
+    Sku                : Microsoft.Azure.Management.Compute.Models.Sku
+    LatestModelApplied : True
+    InstanceView       :
+    HardwareProfile    :
+    StorageProfile     : Microsoft.Azure.Management.Compute.Models.StorageProfile
+    OsProfile          : Microsoft.Azure.Management.Compute.Models.OSProfile
+    NetworkProfile     : Microsoft.Azure.Management.Compute.Models.NetworkProfile
+    DiagnosticsProfile :
+    AvailabilitySet    :
+    ProvisioningState  : Succeeded
+    LicenseType        :
+    Plan               :
+    Resources          :
+    Id                 : /subscriptions/{subscription-id}/resourceGroups/myrg1/providers/Microsoft.
+                         Compute/virtualMachineScaleSets/myvmss1/virtualMachines/1
+    Name               : myvmss1_1
+    Type               : Microsoft.Compute/virtualMachineScaleSets/virtualMachines
+    Location           : centralus
+    Tags               :
+        
+## Starten eines virtuellen Computers in einer Skalierungsgruppe
 
-## <a id="start"></a>Starten eines virtuellen Computers in einer Skalierungsgruppe
+Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie starten möchten, und führen Sie dann den Befehl aus:
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *VM scale set name* durch den Namen der Skalierungsgruppe und *instance id* durch den Bezeichner der VM, die Sie neu starten möchten, und führen Sie den Befehl aus:
-
-    Start-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId "instance id"
+    Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
 Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **running** ist:
 
@@ -197,11 +95,13 @@ Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **running** ist:
       }
     ]
 
-## <a id="stop"></a>Stoppen eines virtuellen Computers in einer Skalierungsgruppe
+Sie können alle virtuellen Computer in der Gruppe starten, indem Sie nicht den -InstanceId-Parameter verwenden.
+    
+## Stoppen eines virtuellen Computers in einer Skalierungsgruppe
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *instance id* durch den Bezeichner der VM, die Sie stoppen möchten, und führen Sie den Befehl aus:
+Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie beenden möchten, und führen Sie dann den Befehl aus:
 
-	Stop-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId "instance id"
+	Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
 Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **deallocated** ist:
 
@@ -218,17 +118,23 @@ Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **deallocated** is
         "displayStatus": "VM deallocated"
       }
     ]
+    
+Um einen virtuellen Computer zu beenden und dessen Zuordnung nicht aufzuheben, verwenden Sie den -StayProvisioned-Parameter. Sie können alle virtuellen Computer in der Gruppe beenden, indem Sie nicht den -InstanceId-Parameter verwenden.
+    
+## Neustarten eines virtuellen Computers in einer Skalierungsgruppe
 
-## <a id="restart"></a>Neustarten eines virtuellen Computers in einer Skalierungsgruppe
+Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie neu starten möchten, und führen Sie dann den Befehl aus:
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *instance id* durch den Bezeichner der VM, die Sie neu starten möchten, und führen Sie den Befehl aus:
+	Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
+    
+Sie können alle virtuellen Computer in der Gruppe neu starten, indem Sie nicht den -InstanceId-Parameter verwenden.
 
-	Restart-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId "instance id"
+## Entfernen eines virtuellen Computers aus einer Skalierungsgruppe
 
-## <a id="delete"></a>Entfernen eines virtuellen Computers aus einer Skalierungsgruppe
+Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie aus der Skalierungsgruppe entfernen möchten, und führen Sie dann den Befehl aus:
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *instance id* durch den Bezeichner der VM, die Sie aus der Skalierungsgruppe entfernen möchten, und führen Sie den Befehl aus:
+	Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
-	Remove-AzureRmVmssVM -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId "instance id"
+Sie können die gesamte VM-Skalierungsgruppe entfernen, indem Sie nicht den -InstanceId-Parameter verwenden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

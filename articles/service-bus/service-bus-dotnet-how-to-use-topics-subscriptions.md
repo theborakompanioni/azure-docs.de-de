@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="01/26/2016"
+    ms.date="05/06/2016"
     ms.author="sethm"/>
 
 # Verwenden von Service Bus-Themen und -Abonnements
@@ -28,13 +28,11 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 
-Wenn Sie eine Anwendung erstellen, die den Servicebus verwendet, müssen Sie zu der Servicebus-Assembly eine Referenz hinzufügen und die zugehörigen Namespaces einbinden.
+Wenn Sie eine Anwendung erstellen, die den Servicebus verwendet, müssen Sie zu der Servicebus-Assembly eine Referenz hinzufügen und die zugehörigen Namespaces einbinden. Die einfachste Möglichkeit hierfür besteht darin, das entsprechende NuGet-Paket herunterzuladen.
 
 ## Abrufen des NuGet-Pakets "Service Bus"
 
-Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Die NuGet Visual Studio-Erweiterung ermöglicht eine problemlose Installation und Aktualisierung von Bibliotheken und Tools in Visual Studio und Visual Studio Express.
-
-Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
+Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen erforderlichen Service Bus-Abhängigkeiten dar. Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
 
 1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach das folgende Dialogfeld.
@@ -47,14 +45,14 @@ Sie können nun Code für Service Bus erstellen.
 
 Service Bus verwendet eine Verbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen. Sie können die Verbindungszeichenfolge in einer Konfigurationsdatei ablegen, statt sie fest zu programmieren:
 
-- Bei der Verwendung von Azure-Cloud-Diensten empfiehlt es sich, die Verbindungszeichenfolge mithilfe des Azure-Dienstkonfigurationssystems (Dateien .csdef and .cscfg) zu speichern.
+- Bei der Verwendung von Azure-Diensten empfiehlt es sich, die Verbindungszeichenfolge mithilfe des Azure-Dienstkonfigurationssystems (CSDEF- und CSCFG-Dateien) zu speichern.
 - Bei der Verwendung von Azure-Websites oder Azure Virtual Machines sollten Sie Ihre Verbindungszeichenfolge mithilfe des .NET-Konfigurationssystems speichern (z. B. die Web.config-Datei).
 
 In beiden Fällen können Sie Ihre Verbindungszeichenfolge über die `CloudConfigurationManager.GetSetting`-Methode abrufen, wie später in diesem Artikel beschrieben.
 
-### Konfigurieren der Verbindungszeichenfolge bei Verwendung von Cloud Services
+### Konfigurieren der Verbindungszeichenfolge
 
-Azure Cloud Services-Projekte bieten einen besonderen Dienstkonfigurationsmechanismus, mit dem Sie Ihre Konfigurationseinstellungen im [klassischen Azure-Portal][] dynamisch ändern können, ohne Ihre Anwendung neu bereitstellen zu müssen. Fügen Sie beispielsweise der Dienstdefinitionsdatei (****.csdef**) eine `Setting`-Bezeichnung hinzu, wie im folgenden Beispiel gezeigt:
+Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [klassischen Azure-Portal][], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (****.csdef**) eine `Setting`-Bezeichnung hinzu, wie im folgenden Beispiel gezeigt:
 
 ```
 <ServiceDefinition name="Azure1">
@@ -107,7 +105,7 @@ Verwaltungsvorgänge für Service Bus-Themen und -Abonnements können über die 
 Im folgenden Beispiel wird ein `NamespaceManager`-Objekt mit der Azure-Klasse `CloudConfigurationManager` mit einer Verbindungszeichenfolge erstellt, die aus der Basisadresse eines Service Bus-Namespace und den entsprechenden SAS-Anmeldeinformationen mit Berechtigungen für dessen Verwaltung besteht. Diese Verbindungszeichenfolge weist die folgende Form auf.
 
 ```
-Endpoint=sb://<yourServiceNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey
+Endpoint=sb://<yourNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<yourKey>
 ```
 
 Verwenden Sie das folgende Beispiel mit den Konfigurationseinstellungen aus dem vorherigen Abschnitt.
@@ -151,7 +149,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 
 ## Erstellen eines Abonnements
 
-Sie können auch Themenabonnements mit der [`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse erstellen. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übergeben werden.
+Sie können auch Themenabonnements mithilfe der [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse erstellen. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übergeben werden.
 
 ### Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 
@@ -283,7 +281,7 @@ Client.OnMessage((message) =>
 }, options);
 ```
 
-Das folgende Beispiel konfiguriert den [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx)-Rückruf mithilfe eines [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx)-Objekts. [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) ist auf **false** festgelegt, um die manuelle Steuerung für den Aufruf [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) für die empfangene Nachricht zu aktivieren. [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) ist auf „1 Minute“ festgelegt. Der Client wartet also bis zu eine Minute, bevor das Feature für die automatische Verlängerung beendet wird und der Client einen neuen Aufruf durchführt, um das Vorhandensein von Nachrichten zu prüfen. Dieser Eigenschaftswert verringert die Anzahl der kostenpflichtigen Aufrufe des Clients, bei denen keine Nachrichten abgerufen werden.
+Das folgende Beispiel konfiguriert den [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx)-Rückruf mithilfe eines [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx)-Objekts. [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) ist auf **false** festgelegt, um die manuelle Steuerung für den Aufruf [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) für die empfangene Nachricht zu aktivieren. [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) ist auf „1 Minute“ festgelegt. Der Client wartet also bis zu einer Minute, bevor das Feature für die automatische Verlängerung beendet wird und der Client einen neuen Aufruf durchführt, um das Vorhandensein von Nachrichten zu prüfen. Dieser Eigenschaftswert verringert die Anzahl der kostenpflichtigen Aufrufe des Clients, bei denen keine Nachrichten abgerufen werden.
 
 ## Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
 
@@ -313,8 +311,9 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 Nachdem Sie nun mit den Grundlagen der Service Bus-Themen und -Abonnements vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
 -   [Warteschlangen, Themen und Abonnements][]
+-   [Themenfilter – Beispiel][]
 -   API-Referenz für [SqlFilter][].
--   Erstellen Sie eine Arbeitsanwendung, die Nachrichten an eine Service Bus-Warteschlange sendet und von dort empfängt: [.NET-Tutorial zu Service Bus-Brokermessaging][].
+-   Erstellen Sie eine Arbeitsanwendung, die Nachrichten an eine Service Bus-Warteschlange sendet und von dort empfängt: [.NET-Tutorial zu Service Bus-Brokermessaging][].
 -   Service Bus-Beispiele: Laden Sie diese aus den [Azure-Beispielen][] herunter, oder sehen Sie sich die [Übersicht](service-bus-samples.md) an.
 
   [klassischen Azure-Portal]: http://manage.windowsazure.com
@@ -322,9 +321,10 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen und -Abonnements vertr
   [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
   [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
+  [Themenfilter – Beispiel]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [.NET-Tutorial zu Service Bus-Brokermessaging]: service-bus-brokered-tutorial-dotnet.md
   [Azure-Beispielen]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

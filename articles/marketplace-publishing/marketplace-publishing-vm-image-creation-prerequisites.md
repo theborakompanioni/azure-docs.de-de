@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="02/04/2016"
+  ms.date="04/29/2016"
   ms.author="hascipio; v-divte"/>
 
 # Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace
@@ -22,7 +22,7 @@ Lesen Sie die Informationen zum Prozess vor Beginn sorgfältig durch, um nachvol
 ## Herunterladen der erforderlichen Tools und Anwendungen
 Sie sollten die folgenden Aufgaben ausgeführt haben, bevor Sie mit dem hier beschriebenen Verfahren beginnen:
 
-- Installieren Sie abhängig vom Zielbetriebssystem die Azure PowerShell-Cmdlets oder die Linux-Befehlszeilenschnittstelle über die Downloadseite von Azure.
+- Installieren Sie abhängig vom Zielbetriebssystem die Azure PowerShell-Cmdlets oder die Linux-Befehlszeilenschnittstelle über die Downloadseite von Azure.
 - Laden Sie den Azure-Speicher-Explorer aus CodePlex herunter.
 - Laden Sie „Certification Test Tool for Azure Certified“ herunter:
   - [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). Zum Ausführen des Zertifizierungstools benötigen Sie einen Windows-basierten Computer. Wenn kein Windows-basierter Computer zur Verfügung steht, können Sie das Tool unter Verwendung eines Windows-basierten virtuellen Computers in Azure ausführen.
@@ -48,9 +48,9 @@ Sie haben die Voraussetzungen überprüft und die erforderlichen Aufgaben ausgef
 
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
-- [Erstellen eines virtuellen Computers unter Windows im Azure-Vorschauportal](../virtual-machines/virtual-machines-windows-hero-tutorial/)
+- [Erstellen eines virtuellen Computers unter Windows im Azure-Vorschauportal](../virtual-machines-windows-hero-tutorial/)
 
 
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

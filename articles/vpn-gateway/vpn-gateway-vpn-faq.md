@@ -250,6 +250,12 @@ Beim Datenverkehr zwischen verschiedenen virtuellen Netzwerken fallen nur Kosten
 
 Ja, diese Möglichkeit wird unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von gleichzeitig vorhandenen ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen](../expressroute/expressroute-howto-coexist-classic.md).
 
+## BGP
+
+[AZURE.INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
+
+
+
 ## Standortübergreifende Konnektivität und virtuelle Computer
 
 ### Wenn sich mein virtueller Computer in einem virtuellen Netzwerk befindet und ich über eine standortübergreifende Verbindung verfüge, wie sollte ich dann die Verbindung mit dem virtuellen Computer herstellen?
@@ -273,4 +279,4 @@ Weitere Informationen zu VPN-Gateways erhalten Sie auf der Seite [VPN Gateway-Do
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

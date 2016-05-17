@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="04/29/2016"
       ms.author="hascipio; avikova" />
 
 # Grundlegende Informationen zum Knotenschema zum Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
@@ -272,4 +272,4 @@ Die folgenden Parameter- und Eigenschaftstypen werden unterstützt. (Groß-/Klei
 - Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md), um Beispielcode kennen zu lernen und Codesyntax und Kontext zu verstehen.
 - Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0504_2016-->

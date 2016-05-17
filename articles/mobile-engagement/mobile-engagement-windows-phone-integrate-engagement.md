@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Integration von Windows Phone Silverlight Engagement-SDK
@@ -32,7 +32,7 @@ Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktiv
 
 Das Mobile Engagement-SDK für Windows Silverlight kann nur in Anwendungen für folgende Betriebssysteme eingebettet werden:
 
--   Windows Phone 8.0
+-   Windows Phone 8.0
 -   Windows Phone 8.1 Silverlight
 
 > [AZURE.NOTE] Informationen zu Windows Phone 8.1 (nicht Silverlight) finden Sie im [Windows Universal-Integrationsverfahren](mobile-engagement-windows-store-integrate-engagement.md).
@@ -207,7 +207,7 @@ Es empfiehlt sich, `StartActivity` innerhalb Ihrer Methode `OnNavigatedTo` von P
 
 Möglicherweise möchten Sie anwendungsspezifische Ereignisse, Fehler und Aufträge melden; verwenden Sie dazu die anderen Methoden in der Klasse `EngagementAgent`. Mit der Engagement-API können alle erweiterten Funktionen von Engagement verwendet werden.
 
-Weitere Informationen finden Sie unter [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer Windows Phone Silverlight-App](../mobile-engagement-windows-phone-use-engagement-api/).
+Weitere Informationen finden Sie unter [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer Windows Phone Silverlight-App](mobile-engagement-windows-phone-use-engagement-api.md).
 
 ##Erweiterte Konfiguration
 
@@ -247,4 +247,4 @@ Der Burst-Modus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den E
 > [AZURE.WARNING] Der Burstschwellenwert kann nicht auf einen Zeitraum von weniger als einer Sekunde konfiguriert werden. Wenn Sie dies versuchen, zeigt das SDK eine Ablaufverfolgung mit einem Fehler an und setzt den Wert automatisch auf den Standardwert von 0 Sekunden zurück. Dadurch wird ausgelöst, dass das SDK die Protokolle in Echtzeit meldet.
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

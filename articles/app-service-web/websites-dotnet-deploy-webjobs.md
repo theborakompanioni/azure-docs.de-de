@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="na" 
-	ms.date="01/08/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Bereitstellen von Webaufträgen mit Visual Studio
@@ -39,16 +39,12 @@ Sie können diese Elemente einem vorhandenen Konsolenanwendungsprojekt hinzufüg
 Sie können ein Projekt als eigenständigen Webauftrag bereitstellen oder es mit einem Webprojekt verknüpfen, sodass es automatisch bereitgestellt wird, wenn Sie das Webprojekt bereitstellen. Zum Verknüpfen von Projekten fügt Visual Studio den Namen des webauftragsfähigen Projekts der Datei [webjobs-list.json](#webjobslist) im Webprojekt hinzu.
 
 ![Abbildung der Verknüpfung eines Webauftragsprojekts mit einem Webprojekt](./media/websites-dotnet-deploy-webjobs/link.png)
- 
-
 
 ## Voraussetzungen
 
-WebJobs-Bereitstellungsfeatures stehen in Visual Studio 2013 zur Verfügung, wenn Sie die Azure SDK-Version 2.4 oder höher installieren:
+WebJobs-Bereitstellungsfeatures stehen in Visual Studio 2015 zur Verfügung, wenn Sie das Azure SDK für .NET installieren:
 
-* [Azure SDK für Visual Studio 2013](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409).
-
-Die Funktionen zur Bereitstellung von Webaufträgen sind ebenfalls in [Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) und höher enthalten.
+* [Azure SDK für .NET (Visual Studio 2015)](http://go.microsoft.com/fwlink/?linkid=518003).
 
 ## <a id="convert"></a>Aktivieren der Bereitstellung von Webaufträgen für ein vorhandenes Konsolenanwendungsprojekt
 
@@ -100,7 +96,7 @@ Zum Erstellen eines neuen webauftragsfähigen Projekts können Sie die Vorlage f
 
 	Erstellen Sie ein Projekt, das für eine automatische Bereitstellung als Webauftrag konfiguriert ist, wenn in derselben Projektmappe ein Webprojekt bereitgestellt wird. Wählen Sie diese Option, wenn Sie Ihren Webauftrag in derselben Web-App ausführen möchten, in der die dazugehörige Webanwendung ausgeführt wird.
 
-> [AZURE.NOTE]Die WebJobs-Vorlage „new-project“ installiert automatisch NuGet-Pakete und enthält in *Program.cs* Code für das [WebJobs-SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Wenn Sie das WebJobs-SDK nicht verwenden möchten oder lieber einen geplanten anstelle eines kontinuierlichen Webauftrags verwenden möchten, entfernen oder ändern Sie die `host.RunAndBlock`-Anweisung in *Program.cs*.
+> [AZURE.NOTE] Die WebJobs-Vorlage „new-project“ installiert automatisch NuGet-Pakete und enthält in *Program.cs* Code für das [WebJobs-SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Wenn Sie das WebJobs-SDK nicht verwenden möchten oder lieber einen geplanten anstelle eines kontinuierlichen WebJobs verwenden möchten, entfernen oder ändern Sie die `host.RunAndBlock`-Anweisung in *Program.cs*.
 
 ### <a id="createnolink"></a> Verwenden der Webauftragsvorlage "new-project" für einen unabhängigen Webauftrag
   
@@ -188,13 +184,8 @@ Klicken Sie zum Bereitstellen eines Webauftragsprojekts im Projektmappen-Explore
 	
 Bei einem unabhängigen Webauftrag wird derselbe Assistent **Web veröffentlichen** wie bei Webprojekten angezeigt, wobei allerdings weniger Einstellungen geändert werden können.
 
->[AZURE.NOTE]Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-
 ## <a id="nextsteps"></a>Nächste Schritte
 
-In diesem Artikel wird erklärt, wie WebJobs mit Visual Studio bereitgestellt wird. Informationen zum Bereitstellen von Azure WebJobs mit Visual Studio und mithilfe eines fortlaufenden Bereitstellungsprozesses finden Sie unter [Azure WebJobs – Empfohlene Ressourcen – Bereitstellung](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying).
+In diesem Artikel wird erklärt, wie WebJobs mit Visual Studio bereitgestellt wird. Weitere Informationen zur Bereitstellung von Azure WebJobs finden Sie unter [Azure WebJobs – Empfohlene Ressourcen – Bereitstellung](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying).
 
-## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
-
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0504_2016-->

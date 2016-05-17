@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Verwenden der Engagement-API auf der universellen Windows-Plattform
 
-Dieses Dokument ist ein Zusatz zu dem Dokument [Integration von Engagement in die universelle Windows-Plattform](../mobile-engagement-windows-store-integrate-engagement/): Es bietet tiefergehende Details zur Verwendung der Engagement-API zur Ausgabe von Anwendungsstatistiken.
+Dieses Dokument ist ein Zusatz zu dem Dokument [Integration von Engagement in die universelle Windows-Plattform](mobile-engagement-windows-store-integrate-engagement.md): Es bietet tiefergehende Details zur Verwendung der Engagement-API zur Ausgabe von Anwendungsstatistiken.
 
 Beachten Sie: Wenn Engagement nur die Sitzungsaktivitäten der Anwendung, Abstürze und technische Informationen melden soll, ist es am einfachsten, wenn alle `Page`-Unterklassen von der `EngagementPage`-Klasse erben.
 
@@ -30,7 +30,7 @@ Auch wenn das Agent-Modul nicht initialisiert wurde, wird jeder Aufruf zur API v
 
 ##Engagement-Konzepte
 
-In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](../mobile-engagement-concepts/) für die universelle Windows-Plattform genauer dargestellt.
+In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](mobile-engagement-concepts.md) für die universelle Windows-Plattform genauer dargestellt.
 
 ### `Session` und `Activity`
 
@@ -368,4 +368,4 @@ Das SDK kann zum Erzeugen von Testprotokollen in der IDE-Konsole konfiguriert we
 			EngagementAgent.Instance.Init();
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

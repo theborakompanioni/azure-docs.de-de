@@ -2,7 +2,7 @@
     pageTitle="Tutorial: Azure Active Directory-Integration mit TimeOffManager | Microsoft Azure" 
     description="Erfahren Sie, wie Sie TimeOffManager mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="05/03/2016" 
+    ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit TimeOffManager
   
@@ -39,7 +39,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Tim
 
 ###So aktivieren Sie die Anwendungsintegration für TimeOffManager:
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-timeoffmanager-tutorial/IC700993.png "Active Directory")
 
@@ -71,9 +71,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren TimeOffManager-Mandanten hochladen. 
 Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **TimeOffManager** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **TimeOffManager** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-timeoffmanager-tutorial/IC795912.png "Einmaliges Anmelden konfigurieren")
 
@@ -103,19 +103,26 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 
     ![Einstellungen für einmaliges Anmelden](./media/active-directory-saas-timeoffmanager-tutorial/IC795918.png "Einstellungen für einmaliges Anmelden")
 
-    1.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
+    a. Erstellen Sie eine **Base-64-codierte** Datei aus dem heruntergeladenen Zertifikat.
 
-        >[AZURE.TIP]Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache).
+        >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-    2.  Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie anschließend das gesamte Zertifikat in das Textfeld **X.509-Zertifikat** ein.
-    3.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren bei TimeOffManager** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **IdP-Aussteller** ein.
-    4.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für den TimeOffManager** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **IdP Endpoint-URL** ein.
-    5.  Wählen Sie unter **SAML erzwingen** die Option **Nein** aus.
-    6.  Wählen Sie für die **Automatisch erstellen Benutzer**, die Option **Ja** aus.
-    7.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren bei TimeOffManager** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn ins Textfeld **Logout URL** ein.
-    8.  Klicken Sie auf **Änderungen speichern**.
+    b. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie anschließend das gesamte Zertifikat in das Textfeld **X.509-Zertifikat** ein.
+    
+    c. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren bei TimeOffManager** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **IdP-Aussteller** ein.
+    
+    d. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren bei TimeOffManager** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **IdP Endpoint-URL** ein.
+    
+    e. Wählen Sie unter **SAML erzwingen** die Option **Nein** aus.
+    
 
-8.  Wählen Sie im Azure-Portal auf der Dialogseite **Einmaliges Anmelden konfigurieren für TimeOffManager** die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**.
+    f. Wählen Sie für die **Automatisch erstellen Benutzer**, die Option **Ja** aus.
+    
+    g. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren bei TimeOffManager** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn ins Textfeld **Logout URL** ein.
+    
+    h. Klicken Sie auf **Änderungen speichern**.
+
+8.  Wählen Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TimeOffManager** die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-timeoffmanager-tutorial/IC795919.png "Einmaliges Anmelden konfigurieren")
 
@@ -125,17 +132,21 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 
 10. So fügen Sie die erforderlichen Attributzuordnungen hinzu:
 
-    ![SAML-Tokenattribute](./media/active-directory-saas-timeoffmanager-tutorial/IC795921.png "SAML-Tokenattribute")
+    ![SAML-Tokenattribute](./media/active-directory-saas-timeoffmanager-tutorial/123.png "SAML-Tokenattribute")
 
     |Attributname|Attributwert|
 	|---|---|
+    |E-Mail|User.mail|
     |Firstname|User.givenname|
 	|Lastname|User.surname|
 
-    1.  Klicken Sie für jede Datenzeile in der obigen Tabelle auf **Benutzerattribut hinzufügen**.
-    2.  Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
-    3.  Geben Sie im Textfeld **Attribute Value** den für die Zeile angezeigten Attributwert ein.
-    4.  Klicken Sie auf **Fertig stellen**.
+    a. Klicken Sie für jede Datenzeile in der obigen Tabelle auf **Benutzerattribut hinzufügen**.
+
+    b. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein.
+
+    c. Geben Sie im Textfeld **Attribute Value** den für die Zeile angezeigten Attributwert ein.
+
+    d. Klicken Sie auf **Fertig stellen**.
 
 11. Klicken Sie auf **Apply Changes**.
 
@@ -153,7 +164,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 ###So weisen Sie TimeOffManager Benutzer zu:
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **TimeOffManager** auf **Benutzer zuweisen**.
 
@@ -165,4 +176,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0504_2016-->

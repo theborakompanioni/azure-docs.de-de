@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2016" 
+	ms.date="04/27/2016" 
 	ms.author="sdanie"/>
 
 # Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
@@ -71,14 +71,12 @@ Geben Sie den Anforderungstext gemäß der folgenden Vorlage ein.
       "credentials" : {
         "name" : "Name of the Event Hub from the Azure Classic Portal",
         "connectionString" : "Endpoint=Event Hub Sender connection string"
-        },
-        "isBuffered": "true | false"
+        }
     }
 
 -	`type` muss auf `AzureEventHub` festgelegt werden.
 -	`description` stellt eine optionale Beschreibung des Loggers bereit und kann auf Wunsch auch leer gelassen werden (als Zeichenfolge mit der Länge null).
 -	`credentials` enthält den `name` und die `connectionString` Ihres Azure Event Hubs.
--	`isBuffered` ermittelt, ob die Datensätze im Logger vor der Veröffentlichung gepuffert werden. Diese Eigenschaft ist optional, und der Standardwert lautet `true`. Wenn Datensätze gepuffert werden, werden sie alle 15 Sekunden oder sobald der Puffer 256 KB Nachrichten erhält an den Event Hub gesendet.
 
 Wenn Sie die Anforderung senden und der Logger daraufhin erstellt wurde, wird der Statuscode `201 Created` zurückgegeben.
 
@@ -135,4 +133,4 @@ Klicken Sie auf **Speichern**, um die aktualisierte Richtlinienkonfiguration zu 
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

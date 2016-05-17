@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/30/2015"
+   ms.date="04/28/2016"
    ms.author="v-sharos" />
 
 # Verwalten des Sicherungskatalogs mithilfe des StorSimple Manager-Diensts
@@ -23,7 +23,7 @@ Auf der Seite **Sicherungskatalog** des StorSimple Manager-Diensts werden alle S
 
 In diesem Tutorial wird erläutert, wie ein Sicherungssatz aufgeführt, ausgewählt und gelöscht wird. Um zu erfahren, wie Sie Ihr Gerät aus einer Sicherung wiederherstellen, gehen Sie zu [Wiederherstellen Ihres Geräts aus einem Sicherungssatz](storsimple-restore-from-backup-set.md). Um zu erfahren, wie Sie ein Volume klonen, gehen Sie zu [Klonen von StorSimple-Volumes](storsimple-clone-volume.md).
 
-![Sicherungskatalog](./media/storsimple-manage-backup-catalog/HCS_BackupCatalog.png)
+![Sicherungskatalog](./media/storsimple-manage-backup-catalog/backupcatalog.png)
 
 Die Seite **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der Sicherungssätze einschränken können. Sie können die abgerufenen Sicherungssätze anhand der folgenden Parameter filtern:
 
@@ -117,4 +117,4 @@ Löschen Sie eine Sicherung, wenn Sie die zugeordneten Daten nicht mehr beibehal
 
 - Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -251,6 +251,8 @@ Insofern kein Dataset von Azure Data Factory erzeugt wird, sollte es als **exter
 ## Zugeordnete Datasets
 Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipeline zugeordnet sind. Diese Datasets können nur von Aktivitäten innerhalb dieser Pipeline, aber nicht von Aktivitäten in anderen Pipelines verwendet werden. Das folgende Beispiel definiert eine Pipeline mit zwei Datasets (InputDataset Rdc und OutputDataset-Rdc), die in der Pipeline verwendet werden sollen.
 
+> [AZURE.IMPORTANT] Zugeordnete Datasets werden nur mit einmalig ausgeführten Pipelines unterstützt (**pipelineMode** auf **OneTime** festgelegt). Weitere Informationen finden Sie unter [Pipeline mit einmaliger Ausführung](data-factory-scheduling-and-execution.md#onetime-pipeline).
+
 	{
 	    "name": "CopyPipeline-rdc",
 	    "properties": {
@@ -340,4 +342,4 @@ Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipel
 	    }
 	}
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

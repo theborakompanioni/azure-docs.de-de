@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="05/04/2016"
    ms.author="charleywen"/>
 
 # Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen für das Resource Manager-Bereitstellungsmodell
@@ -115,7 +115,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
 		New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
 
-6. Erstellen Sie als Nächstes Ihr Standort-zu-Standort-VPN-Gateway. Weitere Informationen zur Konfiguration des VPN Gateways finden Sie unter [Konfigurieren von VNet-zu-VNet-Verbindungen](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md). Für GatewaySKU muss *Standard* oder *HighPerformance* ausgewählt werden. Für VpnType muss *RouteBased* verwendet werden.
+6. <a name="vpngw"></a>Erstellen Sie als Nächstes Ihr Standort-zu-Standort-VPN-Gateway. Weitere Informationen zur VPN Gateway-Konfiguration finden Sie unter [Konfigurieren von VNet-zu-VNet-Verbindungen](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md). Für „GatewaySKU“ muss *Standard* oder *HighPerformance* ausgewählt werden. Für „VpnType“ muss *RouteBased* verwendet werden.
 
 		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 		$gwIP = New-AzureRmPublicIpAddress -Name "VPNGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
@@ -137,9 +137,11 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 
 ## <a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
 
-Wenn Sie ein vorhandenes virtuelles Netzwerk über eine ExpressRoute- oder Standort-zu-Standort-VPN-Verbindung verbunden haben, um eine Verbindung beider Verbindungen mit dem vorhandenen Virtual Network zu ermöglichen, müssen Sie das vorhandene Gateway zunächst löschen. Dies bedeutet, dass lokal Ihre Verbindung mit Ihrem Virtual Network über das Gateway verloren geht, während Sie an dieser Konfiguration arbeiten.
+Wenn Sie über ein vorhandenes virtuelles Netzwerk verfügen, prüfen Sie die Größe des Gateway-Subnetzes. Wenn das Gateway-Subnet /28 oder /29 ist, müssen Sie zunächst das Gateway des virtuellen Netzwerks löschen, um die Größe des Gateway-Subnetzes zu erhöhen. Führen Sie dazu die in diesem Abschnitt beschriebenen Schritte aus.
 
-**Bevor Sie mit der Konfiguration beginnen:** Überprüfen Sie, dass Sie in Ihrem Virtual Network noch ausreichend IP-Adressen vorhanden sind, sodass Sie die Größe des Gateway-Subnetzes erhöhen können. Beachten Sie, dass Sie das Gateway auch dann löschen und neu erstellen müssen, wenn Sie über genügend IP-Adressen verfügen. Dies liegt daran, dass das Gateway erneut erstellt werden muss, damit es die gleichzeitig bestehenden Verbindungen berücksichtigt.
+Wenn das Gateway-Subnetz /27 oder größer ist und das virtuelle Netzwerk über ExpressRoute verbunden ist, können Sie die unten beschriebenen Schritte überspringen und direkt mit [„Schritt 6: Erstellen eines Standort-zu-Standort-VPN-Gateways“](#vpngw) (s. vorheriger Abschnitt) fortfahren.
+
+>[AZURE.NOTE] Wenn Sie das vorhandene Gateway löschen, geht Ihre lokale Verbindung mit Ihrem virtuellen Netzwerk verloren, während Sie an dieser Konfiguration arbeiten.
 
 1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
 
@@ -149,12 +151,13 @@ Wenn Sie ein vorhandenes virtuelles Netzwerk über eine ExpressRoute- oder Stand
 
 3. Löschen Sie das Gatewaysubnetz.
 		
-		$vnet = Get-AzureRmVirtualNetworkGateway -Name <yourvnetname> -ResourceGroupName <yourresourcegroup> 
+		$vnet = Get-AzureRmVirtualNetwork -Name <yourvnetname> -ResourceGroupName <yourresourcegroup> 
 		Remove-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet
 
 4. Fügen Sie ein Gatewaysubnetz hinzu, das mindestens die Größe /27 hat.
+	>[AZURE.NOTE] Wenn in Ihrem virtuellen Netzwerk nicht mehr ausreichend IP-Adressen vorhanden sind, um die Größe des Gateway-Subnetzes zu erhöhen, müssen Sie mehr IP-Adressraum hinzufügen.
 
-		$vnet = Get-AzureRmVirtualNetworkGateway -Name <yourvnetname> -ResourceGroupName <yourresourcegroup>
+		$vnet = Get-AzureRmVirtualNetwork -Name <yourvnetname> -ResourceGroupName <yourresourcegroup>
 		Add-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet -AddressPrefix "10.200.255.0/24"
 
 	Speichern Sie die VNET-Konfiguration.
@@ -191,4 +194,4 @@ Weitere Informationen zu Punkt-zu-Standort-VPN-Verbindungen finden Sie unter [Ko
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

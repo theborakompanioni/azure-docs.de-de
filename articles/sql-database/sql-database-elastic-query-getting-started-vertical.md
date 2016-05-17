@@ -3,7 +3,7 @@
 	description="Sie erfahren, wie Sie Abfragen für elastische Datenbanken für vertikal partitionierte Datenbanken verwenden."
 	services="sql-database"
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="sidneyh"/>
 
 <tags
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="04/26/2016"
 	ms.author="torsteng" />
 
-# Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung) 
+# Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung, Vorschau)
 
 Mit Abfragen für elastische Datenbanken (Vorschau) für Azure SQL-Datenbank können Sie T-SQL-Abfragen ausführen, die sich mit einem einzigen Verbindungspunkt über mehrere Datenbanken erstrecken. Dieses Thema gilt für [vertikal partitionierte Datenbanken](sql-database-elastic-query-vertical-partitioning.md).
 
@@ -39,7 +39,7 @@ Führen Sie die folgenden Abfragen in der Datenbank **Orders** aus, um die Tabel
 	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
 	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-Führen Sie die folgende Abfrage in der Datenbank „Customers“ aus, um die Tabelle „CustomerInformation“ zu erstellen und die Beispieldaten einzugeben.
+Führen Sie die folgende Abfrage in der Datenbank **Customers** aus, um die Tabelle **CustomerInformation** zu erstellen und die Beispieldaten einzugeben.
 
 	CREATE TABLE [dbo].[CustomerInformation]( 
 		[CustomerID] [int] NOT NULL, 
@@ -53,9 +53,6 @@ Führen Sie die folgende Abfrage in der Datenbank „Customers“ aus, um die Ta
 
 ## Erstellen von Datenbankobjekten
 ### Erstellen des Datenbankhauptschlüssels und der Anmeldeinformationen
-
-
-Diese Informationen werden für die Verbindung mit dem Shard-Zuordnungs-Manager und den Shards verwendet:
 
 1. Öffnen Sie SQL Server Management Studio oder SQL Server Data Tools in Visual Studio.
 2. Stellen Sie eine Verbindung mit der Datenbank „Orders“ her, und führen Sie die folgenden T-SQL-Befehle aus:
@@ -109,4 +106,4 @@ Preisinformationen finden Sie unter [Preise für SQL-Datenbank](/pricing/details
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

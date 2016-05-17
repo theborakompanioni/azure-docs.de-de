@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="02/16/2016" 
+	ms.date="05/10/2016" 
 	ms.author="billmath"/>
 
 # Erste Schritte mit Azure Multi-Factor Authentication-Server
@@ -71,7 +71,7 @@ Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und k
 Anforderungen an den Azure Multi-Factor Authentication-Server|Beschreibung|
 :------------- | :------------- | 
 Hardware|<li>200 MB freier Festplattenspeicherplatz</li><li>x32- oder x64-Prozessor</li><li>Mindestens 1 GB RAM</li>
-Software|<li>Windows Server 2003 oder höher, wenn der Host über ein Serverbetriebssystem verfügt</li><li>Windows Vista oder höher, wenn der Host über ein Clientbetriebssystem verfügt</li><li>Microsoft .NET Framework 2.0</li><li>IIS 6.0 oder höher, wenn das Benutzerportal oder das Webdienst-SDK installiert wird</li>
+Software|<li>Windows Server 2008 oder höher, wenn der Host über ein Serverbetriebssystem verfügt</li><li>Windows 7 oder höher, wenn der Host über ein Clientbetriebssystem verfügt</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 oder höher, wenn das Benutzerportal oder das Webdienst-SDK installiert wird</li>
 
 ### Anforderungen an die Azure Multi-Factor Authentication-Server-Firewall
 --------------------------------------------------------------------------------
@@ -186,4 +186,4 @@ Methode|Beschreibung
 [Synchronisieren mit Windows Server Active Directory](multi-factor-authentication-get-started-server-dirint.md)|Informationen zum Einrichten und Konfigurieren der Synchronisierung zwischen Active Directory und dem Azure MFA-Server.
 [Bereitstellen des mobilen App-Webdienstes für den Azure Multi-Factor Authentication-Server](multi-factor-authentication-get-started-server-webservice.md)|Informationen über das Einrichten und Konfigurieren des Azure MFA-Server-Webdienstes.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

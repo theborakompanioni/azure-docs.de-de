@@ -3,8 +3,8 @@
    description="Data Lake Analytics ist ein Azure Big Data-Berechnungsdienst zur Nutzung von Daten für die Betriebsführung auf Basis der aus Ihren Clouddaten ermittelten Erkenntnisse, unabhängig von Speicherort oder Datenvolumen. Data Lake Analytics ermöglicht dies auf die einfachste, am höchsten skalierbare und wirtschaftlichste Weise. Diese Seite dokumentiert den Rückstand unserer Dokumentationserstellung."
    documentationCenter="na"
    services="data-lake-analytics"
-   authors="pablissima"
-   manager="pablissima"
+   authors="edmacauley"
+   manager="paulettm"
    editor="cgronlun"/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/10/2016"
-   ms.author="mwinkle"/>
+   ms.date="04/26/2016"
+   ms.author="edmaca"/>
 
 # Dokumentationsrückstand bei Azure Data Lake Analytics
 
@@ -62,4 +62,4 @@ Für das Senden von Feedback bezüglich des Rückstands stehen mehrere Optionen 
 * Senden Sie im [Azure-Inhaltsrepository](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md) eine Pull-Anforderung für dieses Dokument.
 * Senden Sie eine E-Mail an [adlafeedback@microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

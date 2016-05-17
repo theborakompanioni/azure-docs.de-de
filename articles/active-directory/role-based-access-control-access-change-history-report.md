@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="03/23/2016"
+	ms.date="04/28/2016"
 	ms.author="kgremban"/>
 
 # Erstellen eines Verlaufsberichts zu Zugriffsänderungen
@@ -67,4 +67,4 @@ Wenn Sie den Bericht speichern oder die Daten bearbeiten möchten, exportieren S
 - Erste Schritte mit der [rollenbasierten Zugriffssteuerung von Azure](role-based-access-control-configure.md)
 - Arbeiten mit [benutzerdefinierten Rollen in Azure RBAC](role-based-access-control-custom-roles.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

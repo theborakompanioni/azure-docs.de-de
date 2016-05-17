@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/22/2016"
+   ms.date="05/02/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
@@ -96,6 +96,11 @@ Azure Security Center erfasst, analysiert und kombiniert automatisch Protokollda
 - Brute-Force-Angriffe gegen virtuelle Computer
 - Sicherheitswarnungen von integrierten Partnersicherheitslösungen wie Antischadsoftware oder Web Application Firewalls
 
+### Wo liegt bei der Bedrohungserkennung und Ausgabe von Warnungen der Unterschied zwischen Microsoft Security Response Center und Azure Security Center?
+Das Microsoft Security Response Center (MSRC) führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern. Wenn MSRC erkennt, dass eine Partei unrechtmäßig oder unbefugt auf Kundendaten zugreift oder dass der Kunde Azure nicht entsprechend den Bestimmungen für den Umgang mit vertraulichen Informationen (Acceptable Use) nutzt, wird der Kunde durch einen Manager für Sicherheitsincidents benachrichtigt. Die Benachrichtigung erfolgt in der Regel durch Senden einer E-Mail an die im Azure Security Center angegebenen Sicherheitskontakte oder an den Besitzer des Azure-Abonnements, falls kein Sicherheitskontakt angegeben wurde.
+
+Das Security Center ist ein Azure-Dienst, der die Azure-Umgebung des Kunden ständig überwacht und Analysefunktionen anwendet, um eine Vielzahl von potenziell schädlichen Aktivitäten automatisch zu erkennen. Diese Erkennungen werden als Sicherheitshinweise im Security Center-Dashboard angegeben. In Zukunft wird die E-Mail-Benachrichtigung über Sicherheitshinweise auch an Sicherheitskontakte gesendet.
+
 ### Wie werden Berechtigungen in Azure Security Center behandelt?
 Azure Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md).
 
@@ -111,4 +116,4 @@ Zugriffssteuerungslisten-Empfehlungen gelten derzeit für virtuelle Maschinen (k
 ### Werden virtuelle Linux-Computer unterstützt?
 Azure Security Center bietet eine Basisüberwachung für virtuelle Linux-Computer (nur für die Ubuntu-Versionen 12.04, 14.04, 14.10 und 15.04). Zukünftig werden weitere Sicherheitintegritätsüberwachung und Datensammlung/-analysen verfügbar sein, und es sollen weitere Linux-Distributionen unterstützt werden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

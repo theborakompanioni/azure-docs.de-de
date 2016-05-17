@@ -3,8 +3,8 @@
 	description="Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Ausführung von SQL Server auf Azure-VMs."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
-	manager="jeffreyg"
+	authors="v-shysun"
+	manager="msmets"
 	editor=""
 	tags="azure-service-management"/>
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/15/2016"
-	ms.author="jroth"/>
+	ms.date="04/27/2016"
+	ms.author="v-shysun"/>
 
 # SQL Server auf virtuellen Azure-Computern – FAQ
 
@@ -75,4 +75,4 @@ Zu weiteren Ressourcen zählen:
 - [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md)
 - [Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

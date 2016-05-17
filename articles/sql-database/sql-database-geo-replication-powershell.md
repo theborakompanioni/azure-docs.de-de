@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Konfigurieren der Georeplikation für Azure SQL-Datenbank mit PowerShell | Microsoft Azure" 
+    pageTitle="Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit PowerShell | Microsoft Azure" 
     description="Georeplikation für Azure SQL-Datenbank mit PowerShell" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="02/23/2016"
+    ms.date="04/27/2016"
     ms.author="sstein"/>
 
 # Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell
@@ -21,26 +21,24 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-geo-replication-portal.md)
+- [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 In diesem Artikel wird beschrieben, wie Sie die Georeplikation der SQL-Datenbank mit PowerShell konfigurieren.
 
-Die Georeplikation ermöglicht das Erstellen von bis zu vier (sekundären) Replikatdatenbanken in verschiedenen Datencenterregionen. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
+Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-powershell.md).
 
-Die Georeplikation ist nur für Standard- und Premium-Datenbanken verfügbar.
+>[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
-Standard-Datenbanken können über eine nicht lesbare sekundäre Datenbank verfügen und müssen die empfohlene Region verwenden. Premium-Datenbanken können bis zu vier lesbare sekundäre Datenbanken in beliebigen der verfügbaren Regionen aufweisen.
+Sie können bis zu vier lesbare sekundäre Datenbanken in derselben oder in verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
 
 Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenlose Testversion** klicken. Lesen Sie anschließend den Artikel weiter.
+- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **KOSTENLOSES KONTO** klicken. Lesen Sie anschließend diesen Artikel zu Ende.
 - Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
 - Azure PowerShell 1.0 oder höher Sie können die Azure-PowerShell-Module herunterladen und installieren, indem Sie Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
-
-
 
 
 ## Konfigurieren der Anmeldeinformationen und Auswählen des Abonnements
@@ -62,7 +60,6 @@ Zum Auswählen des Abonnements benötigen Sie Ihre Abonnement-ID. Sie können di
 Nach dem erfolgreichen Ausführen von **Select-AzureRMSubscription** kehren Sie zur PowerShell-Eingabeaufforderung zurück.
 
 
-
 ## Hinzufügen einer sekundären Datenbank
 
 
@@ -74,9 +71,9 @@ Sie können das Cmdlet **New-AzureRmSqlDatabaseSecondary** nutzen, um eine sekun
 
 Dieses Cmdlet ersetzt **Start AzureSqlDatabaseCopy** durch den **–IsContinuous**-Parameter. Es gibt ein **AzureRmSqlDatabaseSecondary**-Objekt aus, das von anderen Cmdlets für die eindeutige Bezeichnung einer bestimmten Replikationsverknüpfung verwendet werden kann. Dieses Cmdlet wird zurückgegeben, wenn die sekundäre Datenbank erstellt wurde und das Seeding erfolgt ist Je nach Größe der Datenbank liegt der Zeitaufwand zwischen wenigen Minuten und mehreren Stunden.
 
-Die replizierte Datenbank auf dem zweiten Server hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch die gleiche Dienstebene. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) und [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank. Nachfolgend erfahren Sie, wie Sie mithilfe von PowerShell nicht lesbare und lesbare sekundäre Datenbanken erstellen – mit einer Einzeldatenbank oder einer elastischen Datenbank.
+Die replizierte Datenbank auf dem zweiten Server hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch die gleiche Dienstebene. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) und [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank. Nachfolgend erfahren Sie, wie Sie mithilfe von PowerShell nicht lesbare und lesbare sekundäre Datenbanken erstellen – mit einer Einzeldatenbank oder einer elastischen Datenbank.
 
-Wenn die Partnerdatenbank bereits vorhanden ist (z. B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
+Wenn die Partnerdatenbank bereits vorhanden ist (z. B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 
 
 
@@ -136,56 +133,6 @@ Mit dem folgenden Code entfernen Sie die Replikationsverknüpfung der „mydb“
     $secondaryLink | Remove-AzureRmSqlDatabaseSecondary 
 
 
-
-
-## Initiieren eines geplanten Failovers
-
-Mit dem Cmdlet **Set-AzureRmSqlDatabaseSecondary** und dem **-Failover**-Parameter können Sie eine sekundäre Datenbank zur neuen primären Datenbank heraufstufen und die vorhandene primäre Datenbank zu einer sekundären Datenbank herabstufen. Diese Funktionalität ist auf ein geplantes Failover ausgelegt, z. B. bei Notfallwiederherstellungsverfahren, und erfordert, dass die primäre Datenbank verfügbar ist.
-
-Der Befehl hat den folgenden Workflow:
-
-1. Für die Replikation wird vorübergehend in den synchronen Modus gewechselt. Dadurch werden alle ausstehenden Transaktionen in die sekundäre Datenbank übertragen.
-
-2. Vertauschen Sie die Rollen der beiden Datenbanken in der Georeplikationspartnerschaft.
-
-Durch diese Abfolge wird sichergestellt, dass kein Datenverlust auftritt. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [Set- AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx).
-
-
-> [AZURE.NOTE] Falls die primäre Datenbank bei Aufruf des Befehls nicht verfügbar ist, misslingt dieser mit der Fehlermeldung, dass der primäre Server nicht verfügbar ist. In seltenen Fällen ist es möglich, dass der Vorgang nicht abgeschlossen werden kann und festzustecken scheint. In diesem Fall kann der Benutzer den Befehl zum Erzwingen des Failovers (ungeplantes Failover) aufrufen und den Datenverlust akzeptieren.
-
-
-
-Dieses Cmdlet wird zurückgegeben, wenn der Wechsel von der sekundären zur primären Datenbank abgeschlossen ist.
-
-Mit dem folgenden Befehl werden die Rollen der „mydb“-Datenbank auf dem Server „srv2“ in der Ressourcengruppe „rg2“ mit der primären Datenbank getauscht. Die ursprüngliche primäre Datenbank, mit der „db2“ verbunden war, wird nach der vollständigen Synchronisierung der beiden Datenbanken zur sekundären Datenbank.
-
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary -Failover
-
-
-
-## Auslösen eines ungeplanten Failovers von der primären Datenbank zur sekundären Datenbank
-
-
-Mit dem Cmdlet **Set-AzureRmSqlDatabaseSecondary** mit den Parametern **-Failover** und **-AllowDataLoss** können Sie eine sekundäre Datenbank auf ungeplante Weise zur neuen primären Datenbank heraufstufen und das Herabstufen der vorhandenen primären Datenbank zu einer sekundären Datenbank erzwingen, sobald die primäre Datenbank nicht mehr verfügbar ist.
-
-Diese Funktion dient zur Notfallwiederherstellung, wenn das Wiederherstellen der Verfügbarkeit der Datenbank überaus wichtig und ein gewisser Datenverlust akzeptabel ist. Beim Auslösen eines erzwungenen Failovers wird die angegebene sekundäre Datenbank sofort zur primären Datenbank und beginnt mit dem Akzeptieren von Schreibtransaktionen. Sobald sich die ursprüngliche primäre Datenbank wieder mit dieser neuen primären Datenbank verbinden kann, wird eine inkrementelle Sicherung der ursprünglichen Datenbank erstellt. Die alte primäre Datenbank wird zu einer sekundären Datenbank der neuen primären Datenbank. Anschließend ist sie lediglich ein Replikat der neuen primären Datenbank.
-
-Da die Point-in-Time-Wiederherstellung jedoch nicht auf sekundären Datenbanken unterstützt wird, müssen Sie zum Wiederherstellen von Daten aus der alten primären Datenbank, die nicht in der neuen primären Datenbank repliziert wurden, CSS erfassen, um eine Datenbank in der bekannten Protokollsicherung wiederherstellen.
-
-> [AZURE.NOTE] Falls der Befehl aufgerufen wird, wenn die primäre und sekundäre Datenbank online sind, wird die alte primäre Datenbank zur neuen sekundären Datenbank. Da jedoch kein Synchronisierungsversuch stattfindet, ist ein Datenverlust möglich.
-
-
-Falls die primäre Datenbank mehrere sekundäre Instanzen hat, wird der Befehl teilweise erfolgreich ausgeführt. Die sekundäre Datenbank, auf der der Befehl ausgeführt wurde, wird zur primären Datenbank. Die alten primären Datenbanken bleiben jedoch primäre Datenbanken. Die beiden primären Datenbanken befinden sich dadurch in einem inkonsistenten Zustand und sind über eine ausgesetzte Replizierungsverknüpfung miteinander verbunden. Der Benutzer muss diese Konfiguration mit einer „remove secondary“-API auf einer dieser primären Datenbanken manuell reparieren.
-
-
-Mit dem folgenden Befehl tauschen Sie die Rollen der „mydb“-Datenbank, wenn die primäre Datenbank nicht verfügbar ist. Die ursprüngliche primäre Datenbank, mit der „mydb“ verbunden war, wird zur sekundären Datenbank, sobald sie wieder online ist. Zu diesem Zeitpunkt kann bei der Synchronisierung Datenverlust entstehen.
-
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
-
-
-
 ## Überprüfen der Konfiguration und Integrität der Georeplikation
 
 Zu den Überwachungsaufgaben gehören die Überwachung der Konfiguration der Georeplikation und der Integrität der Datenreplikation.
@@ -198,11 +145,11 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
     $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
 
 
-
-   
+  
 
 ## Nächste Schritte
 
+- [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-powershell.md)
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 
 
@@ -210,9 +157,12 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
 
 ## Zusätzliche Ressourcen
 
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
 - [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

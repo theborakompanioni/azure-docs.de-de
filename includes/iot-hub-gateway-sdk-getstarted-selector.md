@@ -2,65 +2,65 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
 
-This article provides a detailed walkthrough of the [Hello World sample code][lnk-helloworld-sample] to illustrate the fundamental components of the [Azure IoT Gateway SDK][lnk-gateway-sdk] architecture. The sample uses the Gateway SDK to build a simple gateway that logs a "hello world" message to a file every five seconds.
+Dieser Artikel beschreibt eine ausführliche exemplarische Vorgehensweise für den [Hello World-Beispielcode][lnk-helloworld-sample] zur Veranschaulichung der grundlegenden Komponenten der [Azure IoT Gateway SDK][lnk-gateway-sdk]-Architektur. Das Beispiel verwendet das Gateway SDK zum Erstellen eines einfachen Gateways, das alle fünf Sekunden eine „Hello World“-Nachricht in eine Datei protokolliert.
 
-This walkthrough covers:
+Diese Anleitung umfasst:
 
-- **Concepts**: A conceptual overview of the components that compose any gateway you create with the Gateway SDK.  
-- **Hello World sample architecture**: Describes how the concepts apply to the Hello World sample and how the components fit together.
-- **How to build the sample**: The steps required to build the sample.
-- **How to run the sample**: The steps required to run the sample. 
-- **Typical output**: An example of the output to expect when you run the sample.
-- **Code snippets**: A collection of code snippets to show how the Hello World sample implements key gateway components.
+- **Konzepte**: eine konzeptionelle Übersicht über die Komponenten, aus denen jedes Gateway besteht, das Sie mit dem Gateway SDK erstellen.  
+- **Hello World-Beispielarchitektur**: beschreibt die Anwendung der Konzepte auf das Hello World-Beispiel und das Zusammenwirken der Komponenten.
+- **Erstellen des Beispiels**: die zum Erstellen des Beispiels erforderlichen Schritte.
+- **Ausführen des Beispiels**: die zum Ausführen Beispiels erforderlichen Schritte. 
+- **Typische Ausgabe**: Ein Beispiel der bei Ausführung des Beispiels zu erwartende Ausgabe.
+- **Codeausschnitte**: Eine Sammlung von Codeausschnitten, die veranschaulicht, wie das Hello World-Beispiel die wichtigsten Gatewaykomponenten implementiert.
 
-## Gateway SDK concepts
+## Gateway SDK-Konzepte
 
-Before you examine the sample code or create your own field gateway using the Gateway SDK, you should understand the key concepts that underpin the architecture of the SDK.
+Bevor Sie den Beispielcode untersuchen oder selbst mithilfe des Gateway SDK ein Bereichsgateway erstellen, sollten Sie die wichtigsten Konzepte kennen, die der Architektur des SDK zugrunde liegen.
 
-### Modules
+### Module
 
-You build a gateway with the Azure IoT Gateway SDK by creating and assembling *modules*. Modules use *messages* to exchange data with each other. A module receives a message, performs some action on it, optionally transforms it into a new message, and then publishes it for other modules to process. Some modules might only produce new messages and never process incoming messages. A chain of modules creates a data processing pipeline with each module performing a transformation on the data at one point in that pipeline.
+Sie erstellen ein Gateway mit dem Azure IoT Gateway SDK, indem Sie *Module* erstellen und zusammenstellen. Module verwenden *Nachrichten*, um untereinander Daten auszutauschen. Ein Modul empfängt eine Nachricht, führt eine Aktion damit aus, transformiert sie optional in eine neue Nachricht und veröffentlicht sie dann zur Verarbeitung an andere Module, Einige Module erzeugen nur neue Nachrichten und verarbeiten niemals eingehende Nachrichten. Eine Modulkette erstellt eine Datenverarbeitungspipeline, wobei jedes Modul an einem bestimmten Punkt dieser Pipeline eine Transformation der Daten ausführt.
 
 ![][1]
  
-The SDK contains the following:
+Das SDK enthält Folgendes:
 
-- Pre-written modules which perform common gateway functions.
-- The interfaces a developer can use to write custom modules.
-- The infrastructure necessary to deploy and run a set of modules.
+- Vordefinierte Module, die allgemeine Gatewayfunktionen ausführen.
+- Die Schnittstellen, die ein Entwickler zum Schreiben benutzerdefinierter Module verwenden kann.
+- Die Infrastruktur, die zur Bereitstellung und Ausführung eines Modulsatzes erforderlich ist.
 
-The SDK provides an abstraction layer that enables you to build gateways to run on a variety of operating systems and platforms.
+Das SDK stellt eine Abstraktionsschicht bereit, mit deren Hilfe Sie Gateways erstellen können, die auf einer Vielzahl von Betriebssystemen und Plattformen ausgeführt werden können.
 
 ![][2]
 
-### Messages
+### Meldungen
 
-Although thinking about modules passing messages to each other is a convenient way to conceptualize how a gateway functions, it does not accurately reflect what happens. Modules use a message bus to communicate with each other, they publish messages to the bus, and the bus broadcasts the messages to all the modules connected to the bus.
+Die Vorstellung, dass Module einander Nachrichten übergeben, ist eine praktische Möglichkeit, die Funktionsweise eines Gateways zu verstehen, spiegelt stellt den tatsächlichen Vorgang aber nicht exakt wider. Module verwenden einen Nachrichtenbus für die Kommunikation untereinander. Sie veröffentlichen Nachrichten im Bus, und der Bus überträgt die Nachrichten an alle mit dem Bus verbundenen Module.
 
-A module uses the **MessageBus_Publish** function to publish a message to the message bus. The message bus delivers messages to a module by invoking a callback function. A message consists of a set of key/value properties and content passed as a block of memory.
+Ein Modul verwendet die Funktion **MessageBus\_Publish**, um eine Nachricht im Nachrichtenbus zu veröffentlichen. Der Bus übermittelt die Nachrichten durch Aufruf einer Rückruffunktion an ein Modul. Eine Nachricht besteht aus einem Satz aus Schlüssel-Wert-Eigenschaften und Inhalten, der als Arbeitsspeicherblock übergeben wird.
 
 ![][3]
 
-Each module is responsible for filtering the messages because the message bus uses a broadcast mechanism to deliver each message to every module connected to it. A module should only act on messages that are intended for it. The message filtering effectively creates the message pipeline. A module typically filters the messages it receives using the message properties to identify messages it should process.
+Jedes Modul muss die Nachrichten filtern, da der Nachrichtenbus einen Broadcastmechanismus verwendet, um die Nachrichten an jedes verbundene Modul zu übermitteln. Ein Modul sollte nur bei Nachrichten agieren, die für das Modul vorgesehen sind. Durch die Nachrichtenfilterung entsteht die Nachrichtenpipeline. Ein Modul filtert üblicherweise die empfangenen Nachrichten anhand der Nachrichteneigenschaften, um die Nachrichten zu identifizieren, die es verarbeiten soll.
 
-## Hello World sample architecture
+## Hello World-Beispielarchitektur
 
-The Hello World sample illustrates the concepts described in the previous section. The Hello World sample implements a gateway that has a pipeline made up of two modules:
+Das Hello World-Beispiel veranschaulicht die Konzepte, die im vorherigen Abschnitt beschrieben wurden. Das Hello World-Beispiel implementiert ein Gateway, das über eine aus zwei Modulen bestehende Pipeline verfügt:
 
--	The *hello world* module creates a message every five seconds and passes it to the logger module.
--	The *logger* module writes the messages it receives to a file.
+-	Das Modul *hello world* erstellt alle fünf Sekunden eine Nachricht und übergibt sie an das Protokollierungsmodul.
+-	Das Modul *logger* schreibt die empfangene Nachricht in eine Datei.
 
 ![][4]
 
-As described in the previous section, the Hello World module does not pass messages directly to the logger module every five seconds. Instead, it publishes a message to the message bus every five seconds.
+Wie im vorherigen Abschnitt beschrieben, übergibt das Hello World-Modul Nachrichten nicht direkt an das Protokollierungsmodul. Stattdessen veröffentlicht es alle fünf Sekunden eine Nachricht im Nachrichtenbus.
 
-The logger module receives the message from the message bus and inspects its properties in a filter. If the logger module determines that it should process the message, it writes the contents of the message to a file.
+Das Protokollierungsmodul empfängt die Nachricht aus dem Nachrichtenbus und untersucht ihre Eigenschaften in einem Filter. Wenn das Protokollierungsmodul feststellt, dass es die Nachricht verarbeiten sollte, schreibt es die Inhalte der Nachricht in eine Datei.
 
-The logger module only consumes messages from the message bus, it never publishes new messages to the bus.
+Das Protokollierungsmodul verarbeitet Nachrichten aus dem Nachrichtenbus nur, es veröffentlicht niemals neue Nachrichten im Bus.
 
 ![][5]
 
-The figure above shows the architecture of the Hello World sample and the relative paths to the source files that implement different portions of the sample in the [repository][lnk-gateway-sdk]. Explore the code on your own, or use the code snippets below as a guide.
+Die Abbildung zeigt die Architektur des Hello World-Beispiels sowie die relativen Pfade zu den Quelldateien, die verschiedene Teile des Beispiels im [Repository][lnk-gateway-sdk] implementieren. Untersuchen Sie den Code selbst, oder verwenden Sie die unten stehenden Codeausschnitte als Leitfaden.
 
 <!-- Images -->
 [1]: media/iot-hub-gateway-sdk-getstarted-selector/modules.png
@@ -72,3 +72,4 @@ The figure above shows the architecture of the Hello World sample and the relati
 <!-- Links -->
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+

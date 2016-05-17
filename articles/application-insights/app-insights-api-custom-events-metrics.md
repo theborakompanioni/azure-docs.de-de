@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="04/18/2016" 
 	ms.author="awills"/>
 
 # Application Insights-API für benutzerdefinierte Ereignisse und Metriken 
@@ -339,7 +339,7 @@ Normalerweise sendet das SDK Daten zu ausgewählten Zeiten, um den Benutzer mög
     // Allow some time for flushing before shutdown.
     System.Threading.Thread.Sleep(1000);
 
-Beachten Sie, dass die Funktion für speicherinterne Kanäle asynchron ist, allerdings synchron, wenn Sie den [persistenten Kanal](app-insights-windows-desktop.md#persistence-channel) wählen.
+Beachten Sie, dass die Funktion für speicherinterne Kanäle asynchron ist, allerdings synchron, wenn Sie den [persistenten Kanal](app-insights-windows-services.md#persistence-channel) wählen.
 
 
 ## Authentifizierte Benutzer
@@ -567,16 +567,16 @@ Einzelne Telemetrieaufrufe können die Standardwerte in ihren Eigenschaftenwört
 
 **Für JavaScript-Webclients** verwenden Sie [JavaScript-Telemetrieinitialisierer](#js-initializer).
 
-**Um allen Telemetriedaten Eigenschaften hinzufügen**, einschließlich der Daten aus Standardsammlungsmodulen, [erstellen Sie einen Telemetrieinitialisierer](app-insights-api-filtering-sampling.md#add-properties).
+**Um allen Telemetriedaten Eigenschaften hinzufügen**, einschließlich der Daten aus Standardsammlungsmodulen, [implementieren Sie `ITelemetryInitializer`](app-insights-api-filtering-sampling.md#add-properties).
 
 
 ## Stichprobenerstellung, Filterung und Verarbeitung von Telemetriedaten 
 
-Sie können Code zum Verarbeiten Ihrer Telemetriedaten schreiben, bevor sie vom SDK gesendet werden. Die Verarbeitung umfasst Daten, die von den standardmäßigen Telemetriemodulen gesendet werden, z. B. die HTTP-Anforderungsauflistung und Abhängigkeitsauflistung.
+Sie können Code zum Verarbeiten Ihrer Telemetriedaten schreiben, bevor sie vom SDK gesendet werden. Die Verarbeitung umfasst Daten, die von den standardmäßigen Telemetriemodulen gesendet werden, z. B. die HTTP-Anforderungsauflistung und Abhängigkeitsauflistung.
 
-* Sie können Telemetriedaten [Eigenschaften hinzufügen](app-insights-api-filtering-sampling.md#add-properties), z. B. Versionsnummern oder aus anderen Eigenschaften berechnete Werte.
-* Mithilfe der [Stichprobenerstellung](app-insights-api-filtering-sampling.md#sampling) wird das von Ihrer App an das Portal gesendete Datenvolumen reduziert. Das hat keinerlei Auswirkungen auf die angezeigten Metriken oder die Fähigkeit, Probleme durch Navigieren zwischen verwandten Elementen wie Ausnahmen, Anforderungen und Seitenansichten zu diagnostizieren.
-* Das Datenvolumen kann auch per [Filterung](app-insights-api-filtering-sampling.md#filtering) reduziert werden. Sie steuern, was gesendet oder verworfen wird, aber Sie müssen die Auswirkung auf Ihre Metriken im Auge behalten. Je nach Vorgehensweise beim Verwerfen der Elemente kann es sein, dass Sie nicht mehr zwischen verwandten Elementen navigieren können.
+* [Fügen Sie Telemetriedaten Eigenschaften hinzu](app-insights-api-filtering-sampling.md#add-properties), z.B. Versionsnummern oder aus anderen Eigenschaften berechnete Werte, indem Sie `ITelemetryInitializer` implementieren. 
+* Durch [Filterung](app-insights-api-filtering-sampling.md#filtering) können Sie Telemetriedaten modifizieren oder verwerfen, bevor sie vom SDK gesendet werden. Implementieren Sie zu diesem Zweck `ITelemetryProcesor`. Sie steuern, was gesendet oder verworfen wird, aber Sie müssen die Auswirkung auf Ihre Metriken im Auge behalten. Je nach Vorgehensweise beim Verwerfen der Elemente kann es sein, dass Sie nicht mehr zwischen verwandten Elementen navigieren können.
+* Die [Erstellung von Stichproben](app-insights-api-filtering-sampling.md#sampling) ist eine sofort einsetzbare Methode, um das von Ihrer App an das Portal gesendete Datenvolumen zu reduzieren. Dies hat keinerlei Auswirkungen auf die angezeigten Metriken oder die Fähigkeit, Probleme durch Navigieren zwischen verwandten Elementen wie Ausnahmen, Anforderungen und Seitenansichten zu diagnostizieren.
 
 [Weitere Informationen](app-insights-api-filtering-sampling.md)
 
@@ -594,7 +594,7 @@ So können Sie die Sammlung und Übermittlung von Telemetriedaten **dynamisch be
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-Um **ausgewählte Standardsammlungsmodule zu deaktivieren** – z. B. Leistungsindikatoren, HTTP-Anforderungen oder Abhängigkeiten –, löschen Sie die entsprechenden Zeilen in [ApplicationInsights.config][config], oder kommentieren Sie sie aus. Diese Vorgehensweise bietet sich z. B. an, wenn Sie Ihre eigenen TrackRequest-Daten senden möchten.
+Um **ausgewählte Standardsammlungsmodule zu deaktivieren** – z. B. Leistungsindikatoren, HTTP-Anforderungen oder Abhängigkeiten –, löschen Sie die entsprechenden Zeilen in [ApplicationInsights.config][config], oder kommentieren Sie sie aus. Diese Vorgehensweise bietet sich z. B. an, wenn Sie Ihre eigenen TrackRequest-Daten senden möchten.
 
 ## <a name="debug"></a>Entwicklermodus
 
@@ -676,24 +676,14 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 * **Session** Identifiziert die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
 * **User**: Benutzerinformationen. 
 
-
-
 ## Grenzen
 
-Es gibt einige Beschränkungen hinsichtlich der Anzahl von Metriken und Ereignissen pro Anwendung (d. h. pro Instrumentationsschlüssel).
 
-1. Eine maximale Rate pro Sekunde, die separat für jeden Instrumentationsschlüssel gilt. Oberhalb des Limits werden einige Daten gelöscht.
- * Bis zu 500 Datenpunkte pro Sekunde für TrackTrace-Aufrufe und erfasste Protokolldaten. (100 pro Sekunde beim kostenlosen Tarif.)
- * Bis zu 50 Datenpunkte pro Sekunde für Ausnahmen, entweder von unseren Modulen oder durch TrackException-Aufrufe erfasst. 
- * Bis zu 500 Datenpunkte pro Sekunde für alle anderen Daten. Dazu gehören sowohl die vom SDK-Modul gesendete Standardtelemetrie als auch benutzerdefinierte Ereignisse, Metriken und andere Telemetriedaten, die vom Code gesendet werden. (100 pro Sekunde beim kostenlosen Tarif.)
-1. Monatliches Gesamtvolumen an Daten, abhängig von Ihrem [Tarif](app-insights-pricing.md).
-1.	Bis zu 200 eindeutige Metriknamen und 200 eindeutige Eigenschaftennamen für Ihre Anwendung. Zu den Metriken gehören Daten, die über TrackMetric gesendet werden, sowie Messungen für andere Datentypen wie z. B. Ereignisse. Metriken und Eigenschaftennamen gelten global pro Instrumentationsschlüssel und werden nicht auf den Datentyp begrenzt.
-2.	Eigenschaften können nur zur Filterung und zur Gruppierung verwendet werden, solange sie weniger als 100 eindeutige Werte für jede Eigenschaft aufweisen. Sobald es mehr als 100 eindeutige Werte gibt, kann die Eigenschaft zwar noch zur Suche, jedoch nicht mehr für Filter verwendet werden.
-3.	Standardeigenschaften wie z. B. RequestName und die Seiten-URL, sind auf 1000 eindeutige Werte pro Woche beschränkt. Nach 1000 eindeutigen Werten werden zusätzliche Werte als "Andere Werte" gekennzeichnet. Der ursprüngliche Wert kann nach wie vor für die Volltextsuche und die Filterung verwendet werden.
+[AZURE.INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
 *Wie kann ich das Erreichen der Obergrenze vermeiden?*
 
-* Installieren Sie das neueste SDK, um [Stichproben](app-insights-sampling.md) zu verwenden.
+* Verwenden Sie [Stichproben](app-insights-sampling.md).
 
 *Wie lange werden Daten aufbewahrt?*
 
@@ -758,4 +748,4 @@ Es gibt einige Beschränkungen hinsichtlich der Anzahl von Metriken und Ereignis
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

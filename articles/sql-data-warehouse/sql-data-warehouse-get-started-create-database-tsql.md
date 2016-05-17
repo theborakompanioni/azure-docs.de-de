@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie eine SQL Data Warehouse-Datenbank mithil
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenlose Testversion** klicken. Lesen Sie anschließend den Artikel weiter.
-- Einen logischen V12-Server. Sie benötigen einen V12-SQL-Server zum Erstellen des SQL Data Warehouse. Wenn Sie über keinen logischen V12-SQL-Server verfügen, finden Sie unter **Configure and create a server** (Konfigurieren und Erstellen eines Servers) im Artikel [Create a SQL Data Warehouse][] (Erstellen eines SQL Data Warehouse) weitere Informationen.
+- Einen logischen V12-Server. Sie benötigen einen V12-SQL-Server zum Erstellen des SQL Data Warehouse. Wenn Sie über keinen logischen V12-SQL-Server verfügen, finden Sie unter **Konfigurieren und Erstellen eines Servers** im Artikel zum [Erstellen eines SQL Data Warehouse im Azure-Portal][] weitere Informationen.
 - Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads][].
 
 
@@ -61,7 +61,7 @@ MAXSIZE kann zwischen 250 GB und 60 TB liegen. Das Dienstziel kann zwischen DW10
 Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] lernen.
 
 <!--Article references-->
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Erstellen eines SQL Data Warehouse im Azure-Portal]: sql-data-warehouse-get-started-provision.md
 [Connect to SQL Data Warehouse with Visual Studio]: sql-data-warehouse-get-started-connect.md
 [Migrieren]: sql-data-warehouse-overview-migrate.md
 [Entwickeln]: sql-data-warehouse-overview-develop.md
@@ -76,4 +76,4 @@ Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] o
 [SQL Data Warehouse – Preise]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Visual Studio-Downloads]: https://www.visualstudio.com/downloads/download-visual-studio-vs
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

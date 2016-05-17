@@ -14,7 +14,7 @@
   ms.topic="get-started-article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
-  ms.date="04/22/2016"
+  ms.date="05/09/2016"
   ms.author="araguila"/>
    
 # Häufig gestellte Fragen zu IoT Suite
@@ -51,6 +51,8 @@ Zwei. Sie können nur zwei Bing Maps-APIs im Tarif „Free“ in einem Abonnemen
    
   `<setting name="MapApiQueryKey" value="" />`
 
+### Kann ich eine vorkonfigurierte Lösung erstellen, wenn ich Microsoft Azure für DreamSpark besitze?
+Zu diesem Zeitpunkt können Sie keine vorkonfigurierte Lösung mit einem Konto für [Microsoft Azure für DreamSpark][lnk-dreamspark] erstellen. Sie können jedoch in wenigen Minuten ein [kostenloses Testkonto für Azure][lnk-30daytrial] einrichten, mit dem Sie eine vorkonfigurierte Lösung erstellen können.
 
 ### Wie lösche ich einen AAD-Mandanten?
 
@@ -61,6 +63,8 @@ Siehe den Blogbeitrag von Eric Golpe [Walkthrough of Deleting an Azure AD Tenant
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-remote-monitoring-github]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-dreamspark]: https://www.dreamspark.com/Product/Product.aspx?productid=99
+[lnk-30daytrial]: https://azure.microsoft.com/free/
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

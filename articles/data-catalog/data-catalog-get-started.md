@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Erste Schritte mit Azure Data Catalog | Microsoft Azure"
+   pageTitle="Azure Data Catalog – Erste Schritte mit Data Catalog | Microsoft Azure"
    description="Umfassendes Tutorial zu den Szenarios und Funktionen von Azure Data Catalog"
    documentationCenter=""
    services="data-catalog"
-   authors="dvana"
-   manager="mblythe"
+   authors="steelanddata"
+   manager=""
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="04/15/2016"
-   ms.author="derrickv"/>
+   ms.date="05/06/2016"
+   ms.author="maroche"/>
 
 # Erste Schritte mit Azure Data Catalog
 
@@ -184,6 +184,8 @@ In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um Datenassets
 
 In dieser Übung haben Sie registrierten Datenassets beschreibende Informationen hinzugefügt, damit Katalogbenutzer Datenquellen anhand von verständlichen Begriffen ermitteln können.
 
+> [AZURE.NOTE] Die Standard Edition von Data Catalog umfasst ein Unternehmensglossar, mit dem Katalogadministratoren eine globale Unternehmenstaxonomie definieren können. Katalogbenutzer können Datenassets dann mit Glossarbegriffen versehen. Weitere Informationen finden Sie unter [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Gewusst wie: Einrichten des Unternehmensglossars für verwaltete Markierungen).
+
 ## Übung 5: Crowdsourcing für Metadaten
 
 In dieser Übung arbeiten Sie mit einem anderen Benutzer zusammen, um den Datenassets im Katalog Metadaten hinzuzufügen. Beim Crowdsourcing-Ansatz von **Azure Data Catalog** für Anmerkungen können Benutzer Tags, Beschreibungen und andere Metadaten hinzufügen, damit alle an einem Datenasset und seiner Nutzung beteiligten Benutzer ihre Sichtweise erfassen und anderen Personen zur Verfügung stellen können.
@@ -196,7 +198,7 @@ Bitten Sie einen Kollegen, die obige Übung [Versehen von registrierten Datenque
 
 ![](media/data-catalog-get-started/data-catalog-crowdsource.png)
 
-In dieser Übung haben Sie die Funktionen von **Azure Data Catalog** zum Crowdsourcing von Metadaten untersucht, wobei jeder Katalogbenutzer die selbst ermittelten Datenassets mit Anmerkungen versehen kann.
+In dieser Übung haben Sie die Funktionen von **Azure Data Catalog** zum Crowdsourcing von Metadaten kennengelernt, wobei jeder Katalogbenutzer die selbst ermittelten Datenassets mit Anmerkungen versehen kann.
 
 ## Übung 6: Herstellen einer Verbindung mit Datenquellen
 
@@ -240,7 +242,7 @@ In dieser Übung haben Sie die registrierten Datenassets aus dem Katalog entfern
 
 ## Übung 8: Verwalten von registrierten Datenquellen
 
-In dieser Übung verwenden Sie die Verwaltungsfunktionen von **Azure Data Catalog**, um Datenassets in Besitz zu nehmen und zu steuern, was Benutzer ermitteln und wie sie diese Ressourcen verwalten können.
+In dieser Übung verwenden Sie die Verwaltungsfunktionen von **Azure Data Catalog**, um Datenassets in Besitz zu nehmen und zu steuern, was Benutzer ermitteln können und wie sie diese Ressourcen verwalten.
 
 > [AZURE.NOTE] Die in dieser Übung beschriebenen Verwaltungsfunktionen sind nur in der **Standard Edition von Azure Data Catalog** verfügbar, nicht in der **Free Edition**. In **Azure Data Catalog** können Sie Datenassets in Besitz nehmen, Datenassets Mitbesitzer hinzufügen und die Sichtbarkeit von Datenassets festlegen.
 
@@ -260,4 +262,4 @@ In dieser Übung haben Sie die Verwaltungsfunktionen von **Azure Data Catalog** 
 
 In diesem Tutorial haben Sie wichtige Funktionen von **Azure Data Catalog** kennengelernt, wie etwa das Registrieren, Ermitteln und Verwalten von Unternehmensdatenquellen sowie das Versehen mit Anmerkungen. Nachdem Sie das Lernprogramm abgeschlossen haben, ist es an der Zeit, mit der Verwendung zu beginnen. Sie können noch heute starten, indem Sie die Datenquellen registrieren, die Sie und Ihr Team verwenden, und indem Sie Kollegen zur Nutzung des Katalogs einladen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

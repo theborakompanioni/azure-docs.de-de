@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/02/2016"
+   ms.date="04/18/2016"
    ms.author="alkohli" />
 
-# Verwalten von Speicherkonten mithilfe des StorSimple Manager-Diensts
+# Verwenden des StorSimple Manager-Diensts zum Verwalten von Speicherkonten für das StorSimple Virtual Array
 
 ## Übersicht
 
@@ -28,7 +28,7 @@ In diesem Tutorial wird erläutert, wie Sie die Seite **Konfigurieren** zum Hinz
 
  ![Konfigurieren, Seite](./media/storsimple-ova-manage-storage-accounts/configure_service_page.png)
 
-Speicherkonten enthalten die Anmeldeinformationen, die das Gerät für den Zugriff auf das Speicherkonto mit dem Clouddienstanbieter nutzt. Für Microsoft Azure-Speicherkonten sind dies die Anmeldeinformationen, wie z. B. Kontoname und primärer Zugriffsschlüssel.
+Speicherkonten enthalten die Anmeldeinformationen, die das Gerät für den Zugriff auf das Speicherkonto mit dem Clouddienstanbieter nutzt. Für Microsoft Azure-Speicherkonten sind dies die Anmeldeinformationen, wie z. B. Kontoname und primärer Zugriffsschlüssel.
 
 Auf der Seite **Konfigurieren** werden alle Speicherkonten, die für das Abrechnungsabonnement erstellt werden, in einem Tabellenformat mit den folgenden Informationen angezeigt:
 
@@ -56,7 +56,9 @@ Sie können ein Speicherkonto zu Ihrer Konfiguration für den StorSimple Manager
 
 Sie können mehrere Konten für einen Clouddienstanbieter erstellen. Während das Speicherkonto gespeichert wird, versucht der Dienst mit dem Clouddienstanbieter zu kommunizieren. Die Anmelde- und Zugriffsinformationen, die Sie bereitgestellt haben, werden zu diesem Zeitpunkt authentifiziert. Ein Speicherkonto wird nur erstellt, wenn die Authentifizierung erfolgreich war. Wenn die Authentifizierung fehlschlägt, wird eine entsprechende Fehlermeldung angezeigt.
 
-Das Verfahren zum Hinzufügen eines Speicherkontos wird im Folgenden beschrieben.
+Resource Manager-Speicherkonten, die im Azure-Portal wurden, werden auch für StorSimple unterstützt. Die Resource Manager-Speicherkonten werden in der Dropdownliste nicht zur Auswahl angezeigt. Nur die im klassischen Azure-Portal erstellten Speicherkonten werden aufgeführt. Resource Manager-Speicherkonten müssen über das Verfahren zum Hinzufügen eines Speicherkontos hinzugefügt werden, wie unten beschrieben.
+
+Das Verfahren zum Hinzufügen eines klassischen Azure-Speicherkontos wird im Folgenden beschrieben.
 
 [AZURE.INCLUDE [add-a-storage-account](../../includes/storsimple-ova-configure-new-storage-account.md)]
 
@@ -74,9 +76,9 @@ Sie können ein Speicherkonto bearbeiten, das von Ihrem Gerät verwendet wird. W
 
   1. Wählen Sie in der Dropdownliste **Speicherkonten** ein vorhandenes Konto aus, das Sie ändern möchten.
   2. Ändern Sie ggf. die Auswahl für **SSL-Modus aktivieren**.
-  3. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#manage-your-storage-access-keys). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel 
+  3. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherkontoschlüsseln](storage-create-storage-account.md#manage-your-storage-access-keys). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel 
   4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-ova-manage-storage-accounts/checkicon.png) zum Speichern der Einstellungen. Die Einstellungen werden auf der Seite **Konfigurieren** aktualisiert. 
-  5. Klicken Sie unten auf der Seite auf **Speichern**, um gerade geänderten Einstellungen zu speichern. 
+  5. Klicken Sie unten auf der Seite auf **Speichern**, um die gerade geänderten Einstellungen zu speichern. 
 
      ![Bearbeiten eines Speicherkontos](./media/storsimple-ova-manage-storage-accounts/modifyexistingstorageaccount.png)
   
@@ -86,7 +88,7 @@ Sie können ein Speicherkonto bearbeiten, das von Ihrem Gerät verwendet wird. W
 
 #### So löschen Sie ein Speicherkonto
 
-1. Wählen Sie auf der Startseite des StorSimple Manager-Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen, und klicken Sie dann auf **Konfigurieren**.
+1. Wählen Sie auf der Startseite des StorSimple-Manager-Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen, und klicken Sie dann auf **Konfigurieren**.
 
 2. Zeigen Sie in der tabellarischen Liste der Speicherkonten auf das Konto, das Sie löschen möchten.
 
@@ -94,11 +96,11 @@ Sie können ein Speicherkonto bearbeiten, das von Ihrem Gerät verwendet wird. W
 
 4. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um den Löschvorgang fortzusetzen. Die tabellarische Auflistung wird den Änderungen entsprechend aktualisiert.
 
-5. Klicken Sie unten auf der Seite auf **Speichern**, um gerade geänderten Einstellungen zu speichern.
+5. Klicken Sie unten auf der Seite auf **Speichern**, um die gerade geänderten Einstellungen zu speichern.
 
 
 ## Nächste Schritte
 
 - Erfahren Sie, wie Sie [Ihr StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

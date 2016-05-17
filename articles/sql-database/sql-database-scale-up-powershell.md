@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="03/29/2016"
+	ms.date="04/29/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -25,15 +25,15 @@
 - [PowerShell](sql-database-scale-up-powershell.md)
 
 
-Diensttarife und Leistungsstufen beschreiben die für Ihre SQL-Datenbank verfügbaren Funktionen und Ressourcen und können aktualisiert werden, wenn sich die Anforderungen Ihrer Anwendung ändern. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md).
+Dienstebenen und Leistungsstufen beschreiben die für Ihre SQL-Datenbank verfügbaren Funktionen und Ressourcen und können aktualisiert werden, wenn sich die Anforderungen an Ihre Anwendung ändern. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md).
 
-Beachten Sie, dass durch das Ändern des Diensttarifs und/oder der Leistungsstufe einer Datenbank ein Replikat der ursprünglichen Datenbank an der neuen Leistungsstufe erstellt und dann die Verbindung zu diesem Replikat umgestellt wird. Während dieses Vorgangs gehen keine Daten verloren, aber während des kurzen Moments des Wechsels zum Replikat sind die Verbindungen zur Datenbank inaktiv, daher werden möglicherweise einige Transaktionen, die gerade ausgeführt werden, zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Dieses Fenster ist sehr selten länger, insbesondere falls viele Transaktionen gerade durchgeführt werden, wenn die Verbindungen deaktiviert werden.
+Beachten Sie, dass durch das Ändern des Diensttarifs und/oder der Leistungsstufe einer Datenbank ein Replikat der ursprünglichen Datenbank mit der neuen Leistungsstufe erstellt wird. Infolge wird die Verbindung zu diesem Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Nur in seltenen Fällen, z.B. wenn im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist dieses Fenster länger.
 
-Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte er beim Wechsel in einen Standarddiensttarif sowie beim Wechsel aus und innerhalb eines solchen bei einer 250 GB Datenbank innerhalb von sechs Stunden abgeschlossen sein. Für eine Datenbank der gleichen Größe, die ihre Leistungsstufen innerhalb des Premium-Diensttarifs ändert, sollte er innerhalb von drei Stunden abgeschlossen sein.
+Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte eine 250-GB-Datenbank beim Wechsel in, aus oder innerhalb eines Standarddiensttarifs innerhalb von sechs Stunden zentral hochskalieren. Für eine Datenbank der gleichen Größe, die ihre Leistungsstufen innerhalb des Premium-Diensttarifs ändert, sollte er innerhalb von drei Stunden abgeschlossen sein.
 
 
 - Für ein Downgrade einer Datenbank sollte die Datenbank kleiner als die in der Zieldienstebene maximal zulässige Größe sein. 
-- Beim Aktualisieren einer Datenbank, für die [Georeplikation](sql-database-geo-replication-portal) aktiviert ist, müssen Sie vor der Aktualisierung der primären Datenbank zunächst die zugehörigen sekundären Datenbanken auf die gewünschte Leistungsstufe aktualisieren.
+- Beim Aktualisieren einer Datenbank, für die [Georeplikation](sql-database-geo-replication-portal.md) aktiviert ist, müssen Sie vor der Aktualisierung der primären Datenbank zunächst die zugehörigen sekundären Datenbanken auf die gewünschte Leistungsstufe aktualisieren.
 - Beim Downgrade von einer Premium-Dienstebene müssen Sie zuerst alle geografischen Replikationsbeziehungen beenden. Sie können die im Thema [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) beschriebenen Schritte verwenden, um den Replikationsprozess zwischen der primären und den aktiven sekundären Datenbanken zu beenden.
 - Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen der Azure SQL-Datenbank](sql-database-business-continuity.md).
 - Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
@@ -72,7 +72,7 @@ Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID oder den Anmeldena
 
 ## Ändern der Dienstebene und Leistungsstufe Ihrer SQL-Datenbank
 
-Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-RequestedServiceObjectiveName** auf die Leistungsstufe des gewünschten Tarifs fest, z. B. *S0*, *S1*, *S2*, *S3*, *P1*, *P2*, ...
+Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-RequestedServiceObjectiveName** auf die Leistungsstufe des gewünschten Tarifs fest, z. B. *S0*, *S1*, *S2*, *S3*, *P1*, *P2*, ...
 
     $ResourceGroupName = "resourceGroupName"
     
@@ -128,4 +128,4 @@ Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-Requeste
 - [SQL-Datenbankdokumentation](http://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL-Datenbank-Cmdlets](http://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

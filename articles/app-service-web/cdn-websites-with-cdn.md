@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Verwenden von Azure CDN in Azure App Service" 
 	description="Ein Lernprogramm, in dem Sie erfahren, wie Sie eine Web-App in Azure App Service bereitstellen, die Inhalte über einen integrierten Azure CDN-Endpunkt zur Verfügung stellt." 
-	services="app-service\web" 
+	services="app-service\web,cdn" 
 	documentationCenter=".net" 
 	authors="cephalin" 
 	manager="wpickett" 
@@ -521,24 +521,24 @@ Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.as
 	
 	```
 	...
-	<link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
+	<link href="http://az673227.azureedge.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
 <script>(function() {
                 var loadFallback,
-                    len = document.styleSheets.length;
-                for (var i = 0; i < len; i++) {
-                    var sheet = document.styleSheets[i];
-                    if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
-                        var meta = document.createElement('meta');
-                        meta.className = 'sr-only';
-                        document.head.appendChild(meta);
-                        var value = window.getComputedStyle(meta).getPropertyValue('width');
-                        document.head.removeChild(meta);
-                        if (value !== '1px') {
-                            document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />');
-                        }
-                    }
-                }
-                return true;
+		    len = document.styleSheets.length;
+		for (var i = 0; i < len; i++) {
+		    var sheet = document.styleSheets[i];
+		    if (sheet.href.indexOf('http://az673227.azureedge.net/Content/css?v=1.0.0.25474') !== -1) {
+		        var meta = document.createElement('meta');
+			meta.className = 'sr-only';
+			document.head.appendChild(meta);
+			var value = window.getComputedStyle(meta).getPropertyValue('width');
+			document.head.removeChild(meta);
+			if (value !== '1px') {
+			    document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />');
+			}
+		    }
+		}
+		return true;
             }())||document.write('<script src="/Content/css"><\/script>');</script>
 
 	<script src="http://az673227.azureedge.net/bundles/modernizer?v=1.0.0.25474"></script>
@@ -566,13 +566,12 @@ Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.as
 
 ## Weitere Informationen 
 - [Übersicht über das Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md)
-- [Verarbeiten von Inhalt aus Azure CDN in einer Webanwendung](../cdn/cdn-serve-content-from-cdn-in-your-web-application.md)
+- [Verwenden von Azure CDN](../cdn/cdn-create-new-endpoint.md)
 - [Integrieren eines Clouddiensts in Azure CDN](../cdn/cdn-cloud-service-with-cdn.md)
 - [ASP.NET-Bündelung und -Minimierung](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-- [Verwenden von Azure CDN](../cdn/cdn-create-new-endpoint.md)
 
 ## Änderungen
-* Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
+* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

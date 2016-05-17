@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="02/02/2016"
+   ms.date="05/02/2016"
    ms.author="elizapo"/>
 
 # Mit Azure RemoteApp jede Windows-Anwendung auf jedem Gerät ausführen
@@ -68,7 +68,7 @@ Wenn Sie während der Sammlungserstellung vom Azure-RemoteApp-Knoten weg navigie
 ![Hinzufügen von Benutzern in RemoteApp](./media/remoteapp-anyapp/ra-anyappaddusers.png)
 
 
-1. Jetzt können Sie Ihren Benutzern mitteilen, wie sie auf die neuen Anwendungen zugreifen können. Dazu senden Sie Ihren Benutzern eine E-Mail, die auf die Download-URL für den Remotedesktop-Client verweist.
+1. Jetzt müssen Sie Ihren Benutzern mitteilen, wie sie auf die neuen Apps zugreifen können. Dazu senden Sie Ihren Benutzern eine E-Mail, die auf die Download-URL für den Remotedesktop-Client verweist.
 ![Die Download-URL des Clients für RemoteApp](./media/remoteapp-anyapp/ra-anyappurl.png)
 
 ## Konfigurieren Sie den Zugriff auf Access
@@ -80,9 +80,9 @@ Den ersten Teil führen Sie als Administrator aus. Dann müssen Ihre Benutzer ei
 1. Legen Sie los, indem Sie die Befehlszeilenschnittstelle (cmd.exe) veröffentlichen. Wählen Sie in der Registerkarte **Veröffentlichen** **Cmd** aus und klicken Sie dann auf **Veröffentlichen > Programm mit Pfad veröffentlichen**.
 2. Geben Sie den Namen der Anwendung und den Pfad ein. Verwenden Sie zu diesem Zweck "File Explorer" als Name und "% SYSTEMDRIVE%\\windows\\explorer.exe" als Pfad.
 ![Veröffentlichen Sie die Datei cmd.exe.](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. Nun müssen Sie ein Azure-[Speicherkonto](../storage-create-storage-account.md) erstellen. Wir haben unseres "accessstorage" genannt. Wählen Sie einen Namen, der für Sie von Bedeutung ist (es kann nur ein "accessstorage" geben).
+3. Nun müssen Sie ein Azure-[Speicherkonto](../storage/storage-create-storage-account.md) erstellen. Wir haben unseres "accessstorage" genannt. Wählen Sie einen Namen, der für Sie von Bedeutung ist. (Denken Sie an Highlander: Es kann nur einen "accessstorage" geben.)
 ![Unser Azure-Speicherkonto.](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
-4. Kehren Sie zurück zu Ihrem Dashboard, sodass Sie den Pfad zu Ihrem Speicherort (Endpunkt) abrufen können. Da Sie den Pfad in Kürze benötigen, sollten Sie ihn kopieren und aufbewahren.
+4. Kehren Sie zurück zu Ihrem Dashboard, sodass Sie den Pfad zu Ihrem Speicherort (Endpunkt) abrufen können. Da Sie diesen gleich benötigen, kopieren Sie ihn irgendwo hin.
 ![Der Speicherkontopfad](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
 5. Nachdem das Speicherkonto erstellt wurde, benötigen Sie als Nächstes den primären Zugriffsschlüssel. Klicken Sie auf **Zugriffstasten verwalten** und kopieren Sie dann den primären Zugriffsschlüssel.
 6. Nun legen Sie den Kontext des Speicherkontos fest und erstellen eine neue Dateifreigabe für Access. Führen Sie die folgenden Cmdlets in einem Windows PowerShell-Fenster mit erhöhten Rechten aus:
@@ -115,5 +115,6 @@ Sie können Access jetzt auf jedem Ihrer Geräte benutzen - Sie müssen nur sich
 Nun, da Sie eine Sammlung erstellen können, versuchen Sie das Erstellen einer [Sammlung, die Office 365 verwendet](remoteapp-tutorial-o365anywhere.md). Oder Sie erstellen eine [Hybrid-Sammlung](remoteapp-create-hybrid-deployment.md), die auf Ihr lokales Netzwerk zugreifen kann.
 
 <!--Image references-->
+ 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

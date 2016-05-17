@@ -184,7 +184,7 @@ In der Woche ab dem 18. September 2015 wurden **Azure Data Catalog** die folgen
 In der Woche ab dem 11. September 2015 wurden **Azure Data Catalog** die folgenden Funktionen hinzugefügt:
 
 - Unterstützung für das Registrieren und die Ermittlung von SQL Server Analysis Services-Objekten über HTTP/HTTPS. Benutzer können jetzt mithilfe einer URL (z. B. https://servername/olap/msmdpump.dll) anstelle eines Servernamens eine Verbindung mit SSAS-Servern herstellen und die Standardauthentifizierung und anonyme Verbindungen zusätzlich zur Windows-Authentifizierung verwenden. Weitere Informationen zu HTTP/HTTPS-Verbindungen mit SSAS finden Sie unter [Konfigurieren des HTTP-Zugriffs auf Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
-- Unterstützung für die Hive-Datenquellen auf HDInsight. Benutzer können jetzt Hive-Tabellen für Apache Hive in Hadoop in HDInsight-Datenquellen registrieren und ermitteln. Weitere Informationen zu Hive in HDInsight finden Sie im [HDInsight Documentation Center](../hdinsight-use-hive/).
+- Unterstützung für die Hive-Datenquellen auf HDInsight. Benutzer können jetzt Hive-Tabellen für Apache Hive in Hadoop in HDInsight-Datenquellen registrieren und ermitteln. Weitere Informationen zu Hive in HDInsight finden Sie im [HDInsight Documentation Center](../hdinsight/hdinsight-use-hive.md).
 - Unterstützung für das Registrieren und Ermitteln von Oracle-Datenbanken und HDFS-Clustern als Container Beim Registrieren von Oracle-Tabellen und -Sichten oder HDFS erstellt **Azure Data Catalog** einen Eintrag für die Datenbank sowie für die Tabellen und Sichten. Die Datenbank kann über das **Azure Data Catalog**-Portal ermittelt und mit Anmerkungen versehen werden. Benutzer können neben den Inhalten des Katalogs auch die Inhalte einer Datenbank oder eines Clusters durchsuchen und filtern.
 
 
@@ -216,4 +216,4 @@ Ab der Woche beginnend am 21. August 2015 wurden **Azure Data Catalog** die folg
 - Nur Standard Edition: Beim Hinzufügen von Besitzern zu Datenbeständen unterstützt **Azure Data Catalog** jetzt sowohl Benutzerkonten als auch Sicherheitsgruppen als Besitzer. Um eine Sicherheitsgruppe als Besitzer für ausgewählte Datenasset hinzuzufügen, können Sie entweder den Anzeigenamen der Gruppe oder die UPN-E-Mail-Adresse der Gruppe (sofern vorhanden) eingeben.
 - Unterstützung für Datenquellen in Azure Blob Storage. Benutzer können nun Azure Storage-Blobs und -Verzeichnisse registrieren und ermitteln.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

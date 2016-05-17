@@ -4,29 +4,28 @@
 	services="automation"
 	documentationCenter=""
 	authors="mgoedtel"
-	manager="stevenka"
-	editor=""/>
-
+	manager="jwhit"
+	editor=""
+	keywords="was ist Automation, Azure Automation, Azure Automation Beispiele"/>
 <tags
 	ms.service="automation"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="02/23/2016"
+	ms.date="05/10/2016"
 	ms.author="magoedte;bwren"/>
 
 # Azure Automation – Übersicht
-
 
 Microsoft Azure Automation bietet Benutzern die Möglichkeit, die manuellen, langfristigen, Fehler verursachenden und häufig wiederholten Aufgaben zu automatisieren, die für gewöhnlich in einer Cloud- und Unternehmensumgebung ausgeführt werden. Dies spart Zeit, erhöht die Zuverlässigkeit normaler Verwaltungsaufgaben und plant diese sogar so ein, dass sie in regelmäßigen Abständen automatisch ausgeführt werden. Sie können Prozesse mit Runbooks automatisieren oder die Konfigurationsverwaltung über die Konfiguration für den gewünschten Zustand automatisieren. Dieser Artikel enthält eine kurze Übersicht über Azure Automation und Antworten auf einige häufige Fragen. In anderen Artikeln dieser Bibliothek finden Sie ausführlichere Informationen zu den verschiedenen Themen.
 
 
 ## Automatisieren von Prozessen mit Runbooks
 
-Ein Runbook umfasst eine Reihe von Aufgaben, mit denen in Azure Automation ein automatisierter Prozess durchgeführt wird. Dies kann ein einfacher Prozess sein, z. B. das Starten eines virtuellen Computers oder das Erstellen eines Protokolleintrags. Sie können auch ein komplexes Runbook nutzen, in dem andere kleinere Runbooks kombiniert sind, um einen komplexen Prozess für mehrere Ressourcen oder sogar mehrere Clouds und lokale Umgebungen durchzuführen.
+Ein Runbook umfasst eine Reihe von Aufgaben, mit denen in Azure Automation ein automatisierter Prozess durchgeführt wird. Dies kann ein einfacher Prozess sein, z. B. das Starten eines virtuellen Computers oder das Erstellen eines Protokolleintrags. Sie können auch ein komplexes Runbook nutzen, in dem andere kleinere Runbooks kombiniert sind, um einen komplexen Prozess für mehrere Ressourcen oder sogar mehrere Clouds und lokale Umgebungen durchzuführen.
 
-Beispielsweise verfügen Sie über einen vorhandenen manuellen Prozess zum Abschneiden einer SQL-Datenbank, wenn die Gefahr besteht, dass sie die maximale Größe erreicht. Dieser Prozess umfasst mehrere Schritte, z. B. das Herstellen der Verbindung mit dem Server, das Herstellen der Verbindung mit der Datenbank, das Abrufen der aktuellen Datenbankgröße, das Prüfen der Schwellenwertüberschreitung und dann das Abschneiden und das Benachrichtigen von Benutzern. Anstatt diese Schritte manuell auszuführen, können Sie ein Runbook erstellen, mit dem diese Aufgaben als einzelner Prozess ausgeführt werden. Sie starten dazu das Runbook, geben die erforderlichen Informationen an, z. B. den Namen des SQL-Servers, den Datenbanknamen und die E-Mail-Adresse des Empfängers, und können sich dann zurücklehnen, während der Prozess durchgeführt wird.
+Beispielsweise verfügen Sie über einen vorhandenen manuellen Prozess zum Abschneiden einer SQL-Datenbank, wenn die Gefahr besteht, dass sie die maximale Größe erreicht. Dieser Prozess umfasst mehrere Schritte, z. B. das Herstellen der Verbindung mit dem Server, das Herstellen der Verbindung mit der Datenbank, das Abrufen der aktuellen Datenbankgröße, das Prüfen der Schwellenwertüberschreitung und dann das Abschneiden und das Benachrichtigen von Benutzern. Anstatt diese Schritte manuell auszuführen, können Sie ein Runbook erstellen, mit dem diese Aufgaben als einzelner Prozess ausgeführt werden. Sie starten dazu das Runbook, geben die erforderlichen Informationen an, z. B. den Namen des SQL-Servers, den Datenbanknamen und die E-Mail-Adresse des Empfängers, und können sich dann zurücklehnen, während der Prozess durchgeführt wird.
 
 
 ## Was kann mit Runbooks automatisiert werden?
@@ -52,7 +51,7 @@ Möchten Sie sich lieber ein Video ansehen? Sehen Sie sich das folgende Video au
 
 [PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) ist eine Verwaltungsplattform, mit der Sie die Konfiguration physischer Hosts und virtueller Computer mit einer deklarativen PowerShell-Syntax verwalten, bereitstellen und erzwingen können. Sie können Konfigurationen auf einem zentralen DSC-Pullserver definieren, die von Zielcomputern automatisch abgerufen und angewendet werden können. Für DSC (Desired State Configuration = Konfiguration für den gewünschten Zustand) wird eine Gruppe von PowerShell-Cmdlets bereitgestellt, die Sie zum Verwalten von Konfigurationen und Ressourcen verwenden können.
 
-[Azure Automation DSC](automation-dsc-overview.md) ist eine cloudbasierte Lösung für PowerShell DSC, mit der für Unternehmensumgebungen erforderliche Dienste bereitgestellt werden. Sie können Ihre DSC-Ressourcen in Azure Automation verwalten und Konfigurationen auf virtuelle oder physische Computer anwenden, mit denen sie von einem DSC-Pullserver in der Azure-Cloud abgerufen werden. Außerdem werden darüber Berichtdienste bereitgestellt, mit denen Sie über wichtige Ereignisse informiert werden, z. B. bei einer Abweichung der Knoten von ihrer zugewiesenen Konfiguration und bei Anwendung einer neuen Konfiguration.
+[Azure Automation DSC](automation-dsc-overview.md) ist eine cloudbasierte Lösung für PowerShell DSC, mit der für Unternehmensumgebungen erforderliche Dienste bereitgestellt werden. Sie können Ihre DSC-Ressourcen in Azure Automation verwalten und Konfigurationen auf virtuelle oder physische Computer anwenden, mit denen sie von einem DSC-Pullserver in der Azure-Cloud abgerufen werden. Außerdem werden darüber Berichtdienste bereitgestellt, mit denen Sie über wichtige Ereignisse informiert werden, z. B. bei einer Abweichung der Knoten von ihrer zugewiesenen Konfiguration und bei Anwendung einer neuen Konfiguration.
 
 
 ## Erstellen eigener DSC-Konfigurationen mit Azure Automation
@@ -67,11 +66,11 @@ Sie können [PowerShell-Module](automation-runbook-gallery.md#modules-in-powersh
 
 ## Beispiel: Praktische Anwendung von Azure Automation 
 
-Unten sind nur einige Beispiele für Szenarien angegeben, die Sie mit Azure Automation automatisieren können.
+Unten sind nur einige Beispiele angegeben, welche Automatisierungsszenarien mit Azure Automation möglich sind.
 
 * Erstellen und Kopieren von virtuellen Computern in unterschiedlichen Azure-Abonnements 
 * Planen von Dateikopiervorgängen von einem lokalen Computer in einen Azure Blob Storage-Container 
-* Automatisieren von Sicherheitsfunktionen, z. B. Ablehnung von Anforderungen von einem Client bei Erkennung eines Denial of Service-Angriffs 
+* Automatisieren von Sicherheitsfunktionen, z. B. Ablehnung von Anforderungen von einem Client bei Erkennung eines Denial of Service-Angriffs 
 * Sicherstellen, dass Computer ständig an der konfigurierten Sicherheitsrichtlinie ausgerichtet sind
 * Verwalten der kontinuierlichen Bereitstellung von Anwendungscode für die Cloud- und lokale Infrastruktur 
 * Erstellen einer Active Directory-Gesamtstruktur in Azure für Ihre Testumgebung 
@@ -83,7 +82,7 @@ Unten sind nur einige Beispiele für Szenarien angegeben, die Sie mit Azure Auto
 
 [Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) wird zum Automatisieren von Verwaltungsaufgaben in der privaten Cloud verwendet. Es wird lokal in Ihrem Datencenter als Komponente von [Microsoft Azure Pack](https://www.microsoft.com/de-DE/server-cloud/) installiert. Für SMA und Azure Automation wird dasselbe Runbookformat genutzt, das auf Windows PowerShell und dem Windows PowerShell-Workflow basiert, aber bei SMA werden keine [grafischen Runbooks](automation-graphical-authoring-intro.md) unterstützt.
 
-[System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) dient zur Automatisierung von lokalen Ressourcen. Hierbei wird ein anderes Runbookformat als für Azure Automation und Service Management Automation verwendet, und die Anwendung verfügt über eine grafische Oberfläche zum Erstellen von Runbooks ohne Skripts. Die Runbooks setzen sich aus den Aktivitäten der Integrationspakete zusammen, die speziell für Orchestrator geschrieben wurden.
+[System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) dient zur Automatisierung von lokalen Ressourcen. Hierbei wird ein anderes Runbookformat als für Azure Automation und Service Management Automation verwendet, und die Anwendung verfügt über eine grafische Oberfläche zum Erstellen von Runbooks ohne Skripts. Die Runbooks setzen sich aus den Aktivitäten der Integrationspakete zusammen, die speziell für Orchestrator geschrieben wurden.
 
 
 ## Wo erhalte ich weitere Informationen? 
@@ -101,4 +100,4 @@ Um mehr über Azure Automation zu erfahren und Ihre eigenen Runbooks zu erstelle
 
 **Bitte geben Sie uns Feedback!** Wenn Sie nach einer Azure Automation-Runbook-Lösung oder einem Integrationsmodul suchen, senden Sie im Script Center eine Skriptanforderung. Wenn Sie Feedback oder Vorschläge zu Features für Azure Automation haben, veröffentlichen Sie sie auf [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback). Vielen Dank!
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->
