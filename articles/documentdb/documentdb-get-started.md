@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/25/2016"
+	ms.date="05/11/2016"
 	ms.author="anhoh"/>
 
 # NoSQL-Tutorial: Erstellen einer DocumentDB-C#-Konsolenanwendung
@@ -61,15 +61,11 @@ In diesem Schritt erstellen Sie ein DocumentDB-Konto. Wenn Sie bereits über ein
 
 1. Öffnen Sie **Visual Studio 2015** auf Ihrem Computer.
 2. Wählen Sie im Menü **Datei** die Option **Neu** und anschließend **Projekt** aus.
-3. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Vorlagen**/**Visual C#**/**Konsolenanwendung** aus, geben Sie Ihrem Projekt einen Namen, und klicken Sie dann auf **OK**. 
-	![Screenshot des Fensters „Neues Projekt“](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+3. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Vorlagen**/**Visual C#**/**Konsolenanwendung** aus, geben Sie Ihrem Projekt einen Namen, und klicken Sie dann auf **OK**. ![Screenshot des Fensters „Neues Projekt“](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
 4. Im **Projektmappen-Explorer** klicken Sie mit der rechten Maustaste auf die neue Konsolenanwendung, die sich unter Ihrer Visual Studio-Projektmappe befindet.
-5. Klicken Sie im gleichen Menü auf **NuGet-Pakete verwalten...**.
- 	![Screenshot des Kontextmenüs für das Projekt](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+5. Klicken Sie im gleichen Menü auf **NuGet-Pakete verwalten...**. ![Screenshot des Kontextmenüs für das Projekt](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 6. Klicken Sie auf der Registerkarte **NuGet** auf **Durchsuchen**, und geben Sie in das Suchfeld **azure documentdb** ein.
-7. Suchen Sie in den Ergebnissen nach **Microsoft.Azure.DocumentDB**, und klicken Sie auf **Installieren**.
-Die Paket-ID für die DocumentDB-Clientbibliothek lautet [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB). 
-	![Screenshot des NuGet-Menüs zum Suchen nach dem DocumentDB-Client-SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+7. Suchen Sie in den Ergebnissen nach **Microsoft.Azure.DocumentDB**, und klicken Sie auf **Installieren**. Die Paket-ID für die DocumentDB-Clientbibliothek lautet [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB). ![Screenshot des NuGet-Menüs zum Suchen nach dem DocumentDB-Client-SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
 Prima. Damit ist die Einrichtung abgeschlossen und wir können mit dem Schreiben von Code beginnen. Ein vollständiges Codeprojekt dieses Tutorials finden Sie auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).
 
@@ -89,7 +85,7 @@ Fügen Sie zunächst in der Datei "Program.cs" am Anfang der C#-Anwendung folgen
 
 > [AZURE.IMPORTANT] Um dieses NoSQL-Tutorial abzuschließen, müssen Sie die oben genannten Abhängigkeiten hinzufügen.
 
-Fügen Sie diese beiden Konstanten und Ihre *Client* variable nun unter der öffentlichen *Program* - Klasse hinzu.
+Fügen Sie diese beiden Konstanten und Ihre *Client*variable nun unter der öffentlichen *Program*-Klasse hinzu.
 
 	public class Program
 	{
@@ -108,7 +104,7 @@ Klicken Sie in der Leiste **Essentials** auf das Symbol **Schlüssel**. Kopieren
 
 Zu Beginn erstellen wir für die Anwendung zu den ersten Schritten eine neue Instanz von **DocumentClient**.
 
-Fügen Sie unterhalb der **Main** -Methode diese neue asynchrone Aufgabe mit der Bezeichnung **GetStartedDemo** hinzu. Sie dient zum Instanziieren des neuen **DocumentClient**-Elements.
+Fügen Sie unterhalb der **Main**-Methode diese neue asynchrone Aufgabe mit der Bezeichnung **GetStartedDemo** hinzu. Sie dient zum Instanziieren des neuen **DocumentClient**-Elements.
 
 	static void Main(string[] args)
 	{
@@ -120,7 +116,7 @@ Fügen Sie unterhalb der **Main** -Methode diese neue asynchrone Aufgabe mit der
 		this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 	}
 
-Fügen Sie den folgenden Code hinzu, um die asynchrone Aufgabe über die **Main**-Methode auszuführen. Mit der **Main** -Methode werden Ausnahmen abgefangen und in die Konsole geschrieben.
+Fügen Sie den folgenden Code hinzu, um die asynchrone Aufgabe über die **Main**-Methode auszuführen. Mit der **Main**-Methode werden Ausnahmen abgefangen und in die Konsole geschrieben.
 
 	static void Main(string[] args)
 	{
@@ -153,7 +149,7 @@ Glückwunsch! Sie haben die Verbindung mit einem DocumentDB-Konto erfolgreich he
 ## Schritt 4: Erstellen einer Datenbank
 Bevor Sie den Code zum Erstellen einer Datenbank hinzufügen, fügen Sie eine Hilfsmethode zum Schreiben in die Konsole hinzu.
 
-Kopieren Sie die **WriteToConsoleAndPromptToContinue** -Methode, und fügen Sie sie unterhalb der **GetStartedDemo** -Methode ein.
+Kopieren Sie die **WriteToConsoleAndPromptToContinue**-Methode, und fügen Sie sie unterhalb der **GetStartedDemo**-Methode ein.
 
 	// ADD THIS PART TO YOUR CODE
 	private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
@@ -262,7 +258,7 @@ Glückwunsch! Sie haben die Erstellung einer DocumentDB-Dokumentsammlung erfolgr
 ##<a id="CreateDoc"></a>Schritt 6: Erstellen von JSON-Dokumenten
 Ein [Dokument](documentdb-resources.md#documents) kann mithilfe der [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie das [Datenmigrationstool](documentdb-import-data.md) von DocumentDB verwenden.
 
-Zunächst müssen wir eine **Family** -Klasse erstellen, die in diesem Beispiel in DocumentDB gespeicherte Objekte darstellt. Außerdem erstellen wir die Unterklassen **Parent**, **Child**, **Pet** und **Address**, die in **Family** verwendet werden. Beachten Sie, dass Dokumente eine **Id**-Eigenschaft enthalten müssen, die in JSON als **id** serialisiert wird. Erstellen Sie diese Klassen, indem Sie die folgenden internen Unterklassen nach der **GetStartedDemo**-Methode hinzufügen.
+Zunächst müssen wir eine **Family**-Klasse erstellen, die in diesem Beispiel in DocumentDB gespeicherte Objekte darstellt. Außerdem erstellen wir die Unterklassen **Parent**, **Child**, **Pet** und **Address**, die in **Family** verwendet werden. Beachten Sie, dass Dokumente eine **Id**-Eigenschaft enthalten müssen, die in JSON als **id** serialisiert wird. Erstellen Sie diese Klassen, indem Sie die folgenden internen Unterklassen nach der **GetStartedDemo**-Methode hinzufügen.
 
 Kopieren Sie die Klassen **Family**, **Parent**, **Child**, **Pet** und **Address**, und fügen Sie sie unterhalb der **WriteToConsoleAndPromptToContinue**-Methode ein.
 
@@ -316,7 +312,7 @@ Kopieren Sie die Klassen **Family**, **Parent**, **Child**, **Pet** und **Addres
 		public string City { get; set; }
 	}
 
-Kopieren Sie die **CreateFamilyDocumentIfNotExists** -Methode, und fügen Sie sie unterhalb der **CreateDocumentCollectionIfNotExists** -Methode ein.
+Kopieren Sie die **CreateFamilyDocumentIfNotExists**-Methode, und fügen Sie sie unterhalb der **CreateDocumentCollectionIfNotExists**-Methode ein.
 
 	// ADD THIS PART TO YOUR CODE
 	private async Task CreateFamilyDocumentIfNotExists(string databaseName, string collectionName, Family family)
@@ -342,7 +338,7 @@ Kopieren Sie die **CreateFamilyDocumentIfNotExists** -Methode, und fügen Sie si
 
 Fügen Sie zwei Dokumente ein: eines für die Familie Andersen und eines für die Familie Wakefield.
 
-Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo** -Methode unterhalb der Erstellung der Dokumentsammlung ein.
+Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo**-Methode unterhalb der Erstellung der Dokumentsammlung ein.
 
 	await this.CreateDatabaseIfNotExists("FamilyDB");
 
@@ -424,7 +420,7 @@ Glückwunsch! Sie haben die Erstellung von zwei DocumentDB-Dokumenten erfolgreic
 
 DocumentDB unterstützt umfassende [Abfragen](documentdb-sql-query.md) der in jeder Sammlung gespeicherten JSON-Dokumente. Der folgende Beispielcode zeigt die verschiedenen Abfragen - sowohl mithilfe der SQL-Syntax als auch LINQ -, die wir nun mit den Dokumenten ausführen können, die wir im vorherigen Schritt eingefügt haben.
 
-Kopieren Sie die **ExecuteSimpleQuery** -Methode, und fügen Sie sie unterhalb der **CreateFamilyDocumentIfNotExists** -Methode ein.
+Kopieren Sie die **ExecuteSimpleQuery**-Methode, und fügen Sie sie unterhalb der **CreateFamilyDocumentIfNotExists**-Methode ein.
 
 	// ADD THIS PART TO YOUR CODE
 	private void ExecuteSimpleQuery(string databaseName, string collectionName)
@@ -451,7 +447,7 @@ Kopieren Sie die **ExecuteSimpleQuery** -Methode, und fügen Sie sie unterhalb d
 					queryOptions);
 
 			Console.WriteLine("Running direct SQL query...");
-			foreach (Family family in familyQuery)
+			foreach (Family family in familyQueryInSql)
 			{
 					Console.WriteLine("\tRead {0}", family);
 			}
@@ -460,7 +456,7 @@ Kopieren Sie die **ExecuteSimpleQuery** -Methode, und fügen Sie sie unterhalb d
 			Console.ReadKey();
 	}
 
-Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo** -Methode unterhalb der Erstellung des zweiten Dokuments ein.
+Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo**-Methode unterhalb der Erstellung des zweiten Dokuments ein.
 
 	await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
@@ -481,7 +477,7 @@ Das [FROM](documentdb-sql-query.md#from-clause) -Schlüsselwort ist in der Abfra
 
 DocumentDB unterstützt das Ersetzen von JSON-Dokumenten.
 
-Kopieren Sie die **ReplaceFamilyDocument** -Methode, und fügen Sie sie unterhalb der **ExecuteSimpleQuery** -Methode ein.
+Kopieren Sie die **ReplaceFamilyDocument**-Methode, und fügen Sie sie unterhalb der **ExecuteSimpleQuery**-Methode ein.
 
 	// ADD THIS PART TO YOUR CODE
 	private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
@@ -519,7 +515,7 @@ Glückwunsch! Sie haben die Ersetzung eines DocumentDB-Dokuments erfolgreich abg
 
 DocumentDB unterstützt das Löschen von JSON-Dokumenten.
 
-Kopieren Sie die **DeleteFamilyDocument** -Methode, und fügen Sie sie unterhalb der **ReplaceFamilyDocument** -Methode ein.
+Kopieren Sie die **DeleteFamilyDocument**-Methode, und fügen Sie sie unterhalb der **ReplaceFamilyDocument**-Methode ein.
 
 	// ADD THIS PART TO YOUR CODE
 	private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
@@ -614,4 +610,4 @@ Um die Verweise auf das DocumentDB .NET SDK in Visual Studio wiederherzustellen,
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

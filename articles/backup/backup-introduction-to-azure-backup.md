@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/13/2016"
+	ms.date="05/10/2016"
 	ms.author="jimpark; trinadhk"/>
 
 # Was ist Azure Backup?
@@ -69,8 +69,7 @@ Als eine hybride Sicherungslösung besteht Azure Backup aus mehreren Komponenten
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
-| Azure IaaS-VMs (Windows) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) | 
-| Azure IaaS-VMs (Linux) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
+| Azure IaaS-VMs (Windows) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) | | Azure IaaS-VMs (Linux) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
 
 ## ARM- und Linux-Unterstützung
 
@@ -100,13 +99,6 @@ Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelös
 
 In der Regel wird der Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf Storage Premium wiederhergestellt. Unter Umständen ist es jedoch kostengünstiger, den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf dem Standardspeicher wiederherzustellen. Diese Art der Wiederherstellung ist möglich, wenn Sie einen Teil der Dateien des virtuellen Computers benötigen.
 
-Führen Sie die folgenden Schritte aus, um den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf Storage Premium wiederherzustellen:
-
-1. [Stellen Sie den des Wiederherstellungspunkt des virtuellen Storage Premium-Computers auf dem Standardspeicher wieder her.](backup-azure-restore-vms.md)
-2. [Kopieren Sie die Datenträger zu Storage Premium.](../storage/storage-use-azcopy.md)
-3. [Erstellen Sie den virtuellen Azure-IaaS-Computer.](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
-
-
 ## Funktionalität
 In diesen fünf Tabellen wird zusammengefasst, wie Sicherungsfunktionen in jeder Komponente gehandhabt werden:
 
@@ -132,7 +124,7 @@ Unabhängig vom Zielspeicher (Datenträger, Band, Sicherungstresor) unterstütze
 Sicherungen werden komprimiert, um den erforderlichen Speicherplatz zu reduzieren. Die einzige Komponente, für die keine Komprimierung verwendet wird, ist die VM-Erweiterung. Bei der VM-Erweiterung werden alle Sicherungsdaten aus dem Speicherkonto des Kunden in den Sicherungstresor in derselben Region kopiert, ohne dass eine Komprimierung erfolgt. Ohne Komprimierung wird zwar die Speicherbelegung etwas erhöht, doch das Speichern der Daten ohne Komprimierung ermöglicht kürzere Wiederherstellungszeiten.
 
 #### Deduplizierung
-Die Deduplizierung wird für System Center DPM und Backup Server unterstützt, wenn [die Bereitstellung in einem virtuellen Hyper-V-Computer erfolgt](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx). Die Deduplizierung erfolgt auf Hostebene mithilfe der Deduplizierung von Windows Server auf den virtuellen Festplatten (VHDs), die als Sicherungsspeicher an den virtuellen Computer angefügt sind.
+Die Deduplizierung wird für System Center DPM und Backup Server unterstützt, wenn [die Bereitstellung auf einem virtuellen Hyper-V-Computer erfolgt](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx). Die Deduplizierung erfolgt auf Hostebene mithilfe der Deduplizierung von Windows Server auf den virtuellen Festplatten (VHDs), die als Sicherungsspeicher an den virtuellen Computer angefügt sind.
 
 >[AZURE.WARNING] Die Deduplizierung ist in Azure für keine der Azure Backup-Komponenten verfügbar! Wenn System Center DPM und Azure Backup Server in Azure bereitgestellt werden, können an die VM angefügte Speicherdatenträger nicht dedupliziert werden.
 
@@ -235,4 +227,4 @@ Da diese Tutorials als schnelle Hilfe beim Sichern dienen sollen, wird nur der d
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -88,7 +88,7 @@ Führen Sie das folgende Cmdlet aus:
 
 		Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-Dem Benutzer wird die Anwendung im Azure RemoteApp-Client nun angezeigt, und Sie können eine Verbindung damit herstellen.
+Dem Benutzer wird die Anwendung im Azure RemoteApp-Client nun angezeigt und, er kann eine Verbindung damit herstellen.
 
 ## Gewusst wie: Entfernen einer Anwendung von einem Benutzer
 
@@ -102,4 +102,4 @@ Wir freuen uns auf Ihr Feedback und Ihre Vorschläge zu dieser Vorschaufunktion.
 ## Konnten Sie die Vorschaufunktion noch nicht ausprobieren?
 Wenn Sie an der Vorschau noch nicht teilgenommen haben, fordern Sie über diese [Umfrage](http://www.instant.ly/s/AY83p) Zugriff an.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

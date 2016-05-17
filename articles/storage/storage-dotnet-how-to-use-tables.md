@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Azure Table Storage mit .NET | Microsoft Azure"
-	description="Speichern Sie strukturierte Daten mit Azure Table Storage, dem NoSQL-Datenspeicher von Microsoft, in der Cloud. Beginnen Sie mit einfachen Table Storage-Vorgängen, z. B. Erstellen und Löschen von Tabellen und Einfügen, Aktualisieren, Löschen und Abfragen von Daten."
+	description="Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud."
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/07/2016"
+	ms.date="04/29/2016"
 	ms.author="tamram"/>
 
 
@@ -463,4 +463,4 @@ Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht h
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

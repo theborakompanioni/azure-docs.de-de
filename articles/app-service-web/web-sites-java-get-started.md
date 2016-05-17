@@ -167,9 +167,12 @@ Sie führen nun Ihren Java-Anwendungsserver in Ihrer Java-Web-App in Azure App S
 
 Weitere Informationen zum Entwickeln von Java-Anwendungen in Azure finden Sie im [Java Developer Center](/develop/java/).
 
-<!-- External Links -->
+<!-- URL List -->
+
 [Ihre Visual Studio-Abonnentenvorteile aktivieren]: http://go.microsoft.com/fwlink/?LinkId=623901
 [für eine kostenlose Testversion registrieren]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Azure App Service-App erstellen]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=AcomDC_0504_2016-->
+<!-- IMG List -->
+
+<!---HONumber=AcomDC_0511_2016-->

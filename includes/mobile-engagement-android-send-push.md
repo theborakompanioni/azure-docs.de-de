@@ -3,27 +3,27 @@
 
 Kopieren Sie die nachfolgenden In-App-Messaging-Ressourcen in die Datei "Manifest.xml" zwischen die Tags `<application>` und `</application>`.
 
-		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light">
+		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
   			<intent-filter>
     			<action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
     			<category android:name="android.intent.category.DEFAULT" />
     			<data android:mimeType="text/plain" />
   			</intent-filter>
 		</activity>
-		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity" android:theme="@android:style/Theme.Light">
+		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
 			<intent-filter>
 				<action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="text/html" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementPollActivity" android:theme="@android:style/Theme.Light">
+		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementPollActivity" android:theme="@android:style/Theme.Light" android:exported="false">
 			<intent-filter>
 				<action android:name="com.microsoft.azure.engagement.reach.intent.action.POLL"/>
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog">
+		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog" android:exported="false">
 			<intent-filter>
 				<action android:name="com.microsoft.azure.engagement.reach.intent.action.LOADING"/>
 				<category android:name="android.intent.category.DEFAULT"/>
@@ -53,7 +53,7 @@ Fügen Sie den folgenden XML-Codeausschnitt in die Datei "Manifest.xml" zwischen
 
 Dies definiert das Symbol, das in System- und In-App-Benachrichtigungen angezeigt wird. Es ist für In-App-Benachrichtigungen optional, für Systembenachrichtigungen jedoch obligatorisch. Android weist Systembenachrichtigungen mit ungültigen Symbolen zurück.
 
-Stellen Sie sicher, dass Sie ein Symbol in einem der **ziehbaren** Ordner verwenden (z. B. ``engagement_close.png``). **Mipmap**-Ordner werden nicht unterstützt.
+Stellen Sie sicher, dass Sie ein Symbol in einem der **ziehbaren** Ordner verwenden (z. B. ``engagement_close.png``). **Mipmap**-Ordner werden nicht unterstützt.
 
 >[AZURE.NOTE] Sie sollten das Symbol für das **Startprogramm** nicht verwenden. Es weist eine andere Auflösung auf und befindet sich in der Regel in den Mipmap-Ordnern, die nicht unterstützt werden.
 
@@ -90,4 +90,6 @@ Für reale Apps können Sie ein Symbol verwenden, das entsprechend den [Android-
 		<uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />
 		<permission android:name="<Your package name>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
-<!---HONumber=AcomDC_0330_2016-->
+
+
+

@@ -1,22 +1,23 @@
 <properties
    pageTitle="Azure Automation-Sicherheit"
-   description="Dieser Artikel enthält eine Übersicht über die Sicherheit und die unterschiedlichen Authentifizierungsmethoden, die für Automation-Konten in Azure Automation verfügbar sind."
+   description="Dieser Artikel enthält eine Übersicht über die Automation-Sicherheit und die unterschiedlichen Authentifizierungsmethoden, die für Automation-Konten in Azure Automation verfügbar sind."
    services="automation"
    documentationCenter=""
    authors="MGoedtel"
    manager="jwhit"
-   editor="tysonn" />
+   editor="tysonn"
+   keywords="Automation-Sicherheit, sicher Automation" />
 <tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/08/2016"
+   ms.date="05/10/2016"
    ms.author="magoedte" />
 
 # Azure Automation-Sicherheit
-Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren. Damit ein Runbook seine erforderlichen Aktionen durchführen kann, muss es über die Berechtigungen zum sicheren Zugreifen auf die benötigten Ressourcen verfügen. Hierbei sollten nur die minimalen Rechte gewährt werden, die im Rahmen des Abonnements erforderlich sind. In diesem Artikel werden die unterschiedlichen Sicherheitsszenarien beschrieben, die von Azure Automation unterstützt werden. Außerdem wird gezeigt, wie Sie für die Umgebung bzw. Umgebungen, die Sie verwalten müssen, die ersten Schritte durchführen.
+Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern, z.B. Amazon Web Services (AWS), automatisieren. Damit ein Runbook seine erforderlichen Aktionen durchführen kann, muss es über die Berechtigungen zum sicheren Zugreifen auf die Ressourcen verfügen. Hierbei sollten die minimalen Rechte gewährt werden, die im Rahmen des Abonnements erforderlich sind. In diesem Artikel werden die unterschiedlichen Authentifizierungsszenarien beschrieben, die von Azure Automation unterstützt werden. Außerdem wird gezeigt, wie Sie für die Umgebung bzw. Umgebungen, die Sie verwalten müssen, die ersten Schritte durchführen.
 
 ## Automation-Konto – Übersicht
 Wenn Sie das erste Mal mit Azure Automation arbeiten, müssen Sie zunächst mindestens ein Automation-Konto erstellen. Mithilfe von Automation-Konten können Sie Ihre Automation-Ressourcen (Runbooks, Objekte, Konfigurationen) von den Ressourcen in anderen Automation-Konten isolieren. Sie können Automation-Konten dazu verwenden, um Ressourcen in separate logische Umgebungen zu trennen. Beispielsweise können Sie ein Konto für die Entwicklung, ein Konto für die Produktion und ein Konto für Ihre lokale Umgebung nutzen. Ein Azure Automation-Konto unterscheidet sich von einem Microsoft-Konto, das unter Ihrem Azure-Abonnement erstellt wird.
@@ -44,4 +45,4 @@ Azure AD-Dienstprinzipalobjekt | Azure-Ressourcen-Manager | [Authentifizieren vo
 Windows-Authentifizierung | Lokales Rechenzentrum | [Authentifizieren von Runbooks für Hybrid Runbook Workers](../automation/automation-hybrid-runbook-worker.md)
 AWS-Anmeldeinformationen | Amazon Web Services | [Authentifizieren von Runbooks mit Amazon Web Services (AWS)](../automation/automation-sec-configure-aws-account.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

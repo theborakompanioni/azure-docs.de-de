@@ -26,14 +26,14 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js](http://nodejs.o
 ## Voraussetzungen
 
 - Node.js. Binärdateien für die Installation finden Sie [hier](https://nodejs.org/).
-- Yoeman. Eine Installationsanleitung finden Sie [hier](http://yeoman.io/).
+- Yeoman. Eine Installationsanleitung finden Sie [hier](http://yeoman.io/).
 - Git. Binärdateien für die Installation finden Sie [hier](http://www.git-scm.com/downloads).
 - Azure-Befehlszeilenschnittstelle. Eine Installationsanleitung finden Sie [hier](../xplat-cli-install.md).
 - Ein Microsoft Azure-Konto. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion anmelden](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 ## Erstellen und Bereitstellen einer einfachen Node.js-Web-App
 
-1. Öffnen Sie das Befehlszeilenterminal Ihrer Wahl, und installieren Sie den [Express Generator für Yoeman](https://github.com/petecoop/generator-express).
+1. Öffnen Sie das Befehlszeilenterminal Ihrer Wahl, und installieren Sie den [Express Generator für Yeoman](https://github.com/petecoop/generator-express).
 
         npm install -g generator-express
 
@@ -203,4 +203,4 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 - [Node.js Developer Center](/develop/nodejs/)
 - [Erste Schritte mit Web-Apps in Azure App Service](app-service-web-get-started.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

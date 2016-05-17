@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/04/2016" 
+	ms.date="05/10/2016" 
 	ms.author="billmath"/>
 
 # Erste Schritte mit dem Webdienst der mobilen App für den MFA-Server
@@ -24,12 +24,12 @@ Um die Azure Multi-Factor Authentication-App verwenden zu können, müssen folge
 
 - Informationen zu den Hardware- und Softwareanforderungen finden Sie unter "Hardware- und Softwareanforderungen".
 - Sie müssen Version 6.0 oder höher des Azure Multi-Factor Authentication-Servers verwenden.
-- Der Webdienst der mobilen App muss auf einem Webserver mit Internetverbindung installiert sein, auf dem Microsoft® Internetinformationsdienste (IIS) 6.x oder 7.x ausgeführt wird. Weitere Informationen finden Sie unter [IIS.NET](http://www.iis.net/).
-- Stellen Sie bei Verwendung von IIS 6.x sicher, dass ASP.NET, Version 2.0.50727, installiert, registriert und auf "Zulässig" festgelegt ist.
-- Bei Verwendung von IIS 7.x erforderliche Rollendienste umfassen ASP.NET und IIS 6-Metabasiskompatibilität.
+- Der Webdienst der mobilen App muss auf einem Webserver mit Internetverbindung installiert sein, auf dem Microsoft® Internetinformationsdienste (IIS) 7.x oder höher ausgeführt wird. Weitere Informationen zu IIS finden Sie unter [IIS.NET](http://www.iis.net/).
+- Stellen Sie sicher, dass ASP.NET v4.0.30319 installiert, registriert und auf „Zulässig“ gesetzt ist.
+- Erforderliche Rollendienste umfassen ASP.NET und IIS 6-Metabasiskompatibilität.
 - Der Webdienst der mobilen App muss über eine öffentliche URL erreichbar sein.
 - Der Webdienst der mobilen App muss mit einem SSL-Zertifikat gesichert sein.
-- In IIS 6.x oder IIS 7.x muss das Azure Multi-Factor Authentication-Webdienst-SDK auf dem Server installiert sein, auf dem der Azure Multi-Factor Authentication-Server installiert ist.
+- In IIS 7.x oder höher muss das Azure Multi-Factor Authentication-Webdienst-SDK auf dem Server installiert sein, auf dem der Azure Multi-Factor Authentication-Server installiert ist.
 - Das Azure Multi-Factor Authentication-Webdienst-SDK muss mit einem SSL-Zertifikat gesichert sein.
 - Der Webdienst der mobilen App muss eine SSL-Verbindung mit dem Azure Multi-Factor Authentication-Webdienst-SDK herstellen können.
 - Der Webdienst der mobilen App muss sich beim Azure Multi-Factor Authentication-Webdienst-SDK mit den Anmeldeinformationen eines Dienstkontos, das Mitglied der Sicherheitsgruppe „PhoneFactor Admins“ ist, authentifizieren können. Dieses Dienstkonto und diese Gruppe sind in Active Directory vorhanden, wenn der Azure Multi-Factor Authentication-Server auf einem in die Domäne eingebundenen Server ausgeführt wird. Dieses Dienstkonto und diese Gruppe sind lokal auf dem Azure Multi-Factor Authentication-Server vorhanden, wenn dieser nicht in eine Domäne eingebunden ist.
@@ -90,4 +90,4 @@ Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azu
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -12,8 +12,8 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article"
-	ms.date="05/03/2016"
+	ms.topic="hero-article"
+	ms.date="05/06/2016"
 	ms.author="glenga"/>
 
 #Erstellen einer Xamarin.Forms-App
@@ -63,7 +63,7 @@ Wenn Sie zuvor eine .NET-Back-End-Konfiguration gewählt haben, können Sie das 
 
 ##Herunterladen und Ausführen der Xamarin.Forms-Lösung
 
-Hier stehen Ihnen einige Optionen zur Verfügung. Sie können die Lösung auf einem Mac herunterladen und in Xamarin Studio öffnen, oder Sie können die Lösung auf einem Windows-Computer herunterladen und in Visual Studio öffnen. Verwenden Sie in letzterem Fall einen vernetzten Mac zum Erstellen der iOS-App. Anweisungen hierzu finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
+Hier stehen Ihnen einige Optionen zur Verfügung. Sie können die Lösung auf einem Mac herunterladen und in Xamarin Studio öffnen, oder Sie können die Lösung auf einem Windows-Computer herunterladen und in Visual Studio öffnen. Verwenden Sie in letzterem Fall einen vernetzten Mac zum Erstellen der iOS-App. Falls Sie ausführlichere Informationen zu den Xamarin-Setup-Szenarien benötigen, lesen Sie [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (Setup und Installation für Visual Studio und Xamarin).
 
 Fahren wir fort:
 
@@ -77,6 +77,7 @@ Fahren wir fort:
 	![][9]
 
 	![][8]
+
 
 ##(Optional) Ausführen des iOS-Projekts
 
@@ -93,13 +94,15 @@ Dieser Abschnitt bezieht sich auf das Ausführen des Xamarin iOS-Projekts für i
 3. Aktivieren Sie im Dialogfeld **Konfigurationsmanager** die Kontrollkästchen **Erstellen** und **Bereitstellen** des iOS-Projekts.
 4. Drücken Sie **F5**, um das Projekt zu erstellen und die App im iPhone-Simulator zu starten.
 
+	>[AZURE.NOTE] Falls Probleme bei der Erstellung auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die aktuelle Version der Xamarin-Supportpakete. Manchmal werden die Schnellstartprojekte erst mit einer gewissen Verzögerung auf den neuesten Stand gebracht.
+
 Geben Sie in der App sinnvollen Text ein, z. B. _Xamarin kennenlernen_, und klicken Sie dann auf die Schaltfläche **+**.
 
 ![][10]
 
 Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden von dem mobilen App-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
 
-> [AZURE.NOTE]
+>[AZURE.NOTE]
 Sie finden den Code, der auf Ihr mobiles App-Back-End zugreift, in der C#-Datei „TodoItemManager.cs“ des Portable Class Library-Projekts Ihrer Projektmappe.
 
 ##(Optional) Ausführen des Android-Projekts
@@ -112,10 +115,13 @@ Dieser Abschnitt bezieht sich auf das Ausführen des Xamarin Android-Projekts f�
 2. Klicken Sie im Menü **Ausführen** auf **Debuggen starten**, um das Projekt zu erstellen und die App im Android-Emulator zu starten.
 
 ####In Visual Studio
-1. Klicken Sie mit der rechten Maustaste auf das Android-Projekt, und klicken Sie dann auf **Als Startprojekt festlegen**.
+1. Klicken Sie mit der rechten Maustaste auf das Android (Droid)-Projekt, und klicken Sie dann auf **Als Startprojekt festlegen**.
 4. Klicken Sie im Menü **Build** auf **Konfigurations-Manager**.
 5. Aktivieren Sie im Dialogfeld **Konfigurationsmanager** die Kontrollkästchen **Erstellen** und **Bereitstellen** des Android-Projekts.
 6. Drücken Sie **F5**, um das Projekt zu erstellen und die App in einem Android-Emulator zu starten.
+
+	>[AZURE.NOTE] Falls Probleme bei der Erstellung auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die aktuelle Version der Xamarin-Supportpakete. Manchmal werden die Schnellstartprojekte erst mit einer gewissen Verzögerung auf den neuesten Stand gebracht.
+
 
 Geben Sie in der App sinnvollen Text ein, z. B. _Xamarin kennenlernen_, und klicken Sie dann auf die Schaltfläche **+**.
 
@@ -139,6 +145,9 @@ Dieser Abschnitt bezieht sich auf das Ausführen des Xamarin WinApp-Projekts fü
 5. Aktivieren Sie im Dialogfeld **Konfigurationsmanager** die Kontrollkästchen **Erstellen** und **Bereitstellen** des ausgewählten Windows-Projekts.
 6. Drücken Sie **F5**, um das Projekt zu erstellen und die App im Windows-Emulator zu starten.
 
+	>[AZURE.NOTE] Falls Probleme bei der Erstellung auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die aktuelle Version der Xamarin-Supportpakete. Manchmal werden die Schnellstartprojekte erst mit einer gewissen Verzögerung auf den neuesten Stand gebracht.
+
+
 Geben Sie in der App sinnvollen Text ein, z. B. _Xamarin kennenlernen_, und klicken Sie dann auf die Schaltfläche **+**.
 
 Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom mobilen App-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
@@ -150,9 +159,9 @@ Sie finden den Code, der auf Ihr mobiles App-Back-End zugreift, in der C#-Datei 
 
 ##Nächste Schritte
 
-* [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-forms-get-started-users.md) Erhalten Sie Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+* [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-forms-get-started-users.md) Hier erhalten Sie Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
 * [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-forms-get-started-push.md) Erfahren Sie, wie Sie Ihrer App Pushbenachrichtigungen hinzufügen.
-* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md) Lernen Sie, wie Sie das SDK für verwaltete Clients in Ihrer Xamarin-App verwenden. 
+* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md) Lesen Sie, wie Sie das SDK für verwaltete Clients in Ihrer Xamarin-App verwenden. 
 
 
 <!-- Anchors. -->
@@ -175,4 +184,4 @@ Sie finden den Code, der auf Ihr mobiles App-Back-End zugreift, in der C#-Datei 
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

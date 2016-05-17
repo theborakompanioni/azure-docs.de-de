@@ -48,7 +48,7 @@
     - Support für Fragen in Bezug auf Abrechnung und Abonnementverwaltung ist in allen Supportstufen verfügbar.
     - Support zur Behebung von Problemen wird in den Supportstufen „Developer“, „Standard“, „Professional Direct“ oder „Premier“ bereitgestellt. Problemlösungssupport betrifft Probleme, die bei der Verwendung von Azure auftreten und bei denen Grund zu der Annahme besteht, dass das Problem durch Microsoft verursacht wurde.
     - Anleitungen für Entwickler und beratende Dienstleistung sind für die Supportstufen „Professional Direct“ und „Premier“ verfügbar.
-    - Informieren Sie sich unter [Azure-Supportpläne][] weiter über den Azure-Support, z. B. Umfang, Reaktionszeiten, Preise usw.
+    - Informieren Sie sich unter [Azure-Supportpläne][] weiter über den Azure-Support, z. B. Umfang, Reaktionszeiten, Preise usw.
 
     ![Supportplan](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
 
@@ -84,4 +84,4 @@ Außerdem können Sie sich auch an der SQL Data Warehouse-Community beteiligen, 
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse-MSDN-Forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

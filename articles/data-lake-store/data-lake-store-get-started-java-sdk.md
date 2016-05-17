@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/07/2016"
+   ms.date="05/10/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mit Java
@@ -35,7 +35,17 @@ Erfahren Sie, wie Sie mithilfe des Java-SDK für Azure Data Lake-Speicher ein Az
 * IntelliJ oder eine andere geeignete Java-Entwicklungsumgebung. Ist optional, wird aber empfohlen. In der Anleitung unten wird IntelliJ verwendet.
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
-* Erstellen Sie eine AAD-Anwendung (Azure Active Directory), und rufen Sie dafür **Client-ID**, **Antwort-URI** und **Schlüssel** ab. Weitere Informationen über AAD-Anwendungen und Anweisungen zum Abrufen einer Client-ID finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md). Der Antwort-URI und der Schlüssel stehen auch über das Portal zur Verfügung, sobald Sie die Anwendung erstellt und den Schlüssel generiert haben.
+* **Erstellen einer Azure Active Directory-Anwendung**. Zur Authentifizierung mithilfe von Azure Active Directory stehen Ihnen zwei Möglichkeiten zur Verfügung: **interaktiv** und **nicht interaktiv**. Je nach der gewählten Authentifizierung gelten unterschiedliche Voraussetzungen.
+	* **Interaktive Authentifizierung** – Sie müssen in Azure Active Directory eine **native Clientanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
+		- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
+		- Festlegen der delegierten Berechtigungen
+
+	* **Nicht interaktive Authentifizierung** (die in diesem Artikel verwendet wird) – Sie müssen in Azure Active Directory eine **Webanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
+		- Abrufen von **Client-ID**,**geheimem Clientschlüssel** und **Umleitungs-URI** für die Anwendung
+		- Festlegen der delegierten Berechtigungen
+		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen. 
+
+	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen können, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
 
 ## Wie authentifiziere ich mich mithilfe von Azure Active Directory?
 
@@ -45,13 +55,13 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 
 ## Erstellen einer Java-Anwendung
 
-1. Öffnen Sie IntelliJ, und erstellen Sie ein neues Java-Projekt, indem Sie die Vorlage **Befehlszeilen-App** verwenden.
+1. Öffnen Sie IntelliJ, und erstellen Sie ein neues Java-Projekt, indem Sie die Vorlage **Befehlszeilen-App** verwenden. Schließen Sie den Assistenten ab, um das Projekt zu erstellen.
 
 2. Klicken Sie auf der linken Seite des Bildschirms mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **Frameworksupport hinzufügen**. Wählen Sie **Maven** aus, und klicken Sie auf **OK**.
 
 3. Öffnen Sie die neu erstellte Datei **„pom.xml“**, und fügen Sie den folgenden Textausschnitt zwischen dem Tag **</version>** und dem Tag **</project>** hinzu:
 
-    HINWEIS: Dieser Schritt ist vorläufiger Art, bis das Azure Data Lake-Speicher-SDK in Maven verfügbar ist. Der Artikel wird aktualisiert, sobald das SDK in Maven verfügbar ist. Alle zukünftigen Aktualisierungen dieses SDK sind über Maven erhältlich.
+    >[AZURE.NOTE] Dieser Schritt ist vorläufiger Art, bis das Azure Data Lake-Speicher-SDK in Maven verfügbar ist. Der Artikel wird aktualisiert, sobald das SDK in Maven verfügbar ist. Alle zukünftigen Aktualisierungen dieses SDK sind über Maven erhältlich.
 
         <repositories>
         	<repository>
@@ -88,9 +98,9 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
     	</dependencies>
 
 
-4. Navigieren Sie zu **Datei**, **Einstellungen** und dann zu **Build**, **Ausführung**, **Bereitstellung**. Wählen Sie **Buildtools**, **Maven**, **Importieren**. Aktivieren Sie anschließend die Option **Maven-Projekte automatisch importieren**.
+4. Navigieren Sie zu **Datei**, **Einstellungen** und dann zu **Build, Execution, and Deployment** (Build, Ausführung und Bereitstellung). Erweitern Sie **Buildtools**, **Maven**, und erweitern Sie dann **Importieren**. Aktivieren Sie das Kontrollkästchen **Maven-Projekte automatisch importieren**. Klicken Sie auf **Übernehmen** und anschließend auf **OK**.
 
-5. Öffnen Sie die Datei **Main.java**, und ersetzen Sie den vorhandenen Codeblock durch den unten angegebenen Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z.B. **localFolderPath**, **\_adlsAccountName**, **\_resourceGroupName**, und ersetzen Sie die Platzhalter für **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** und **SUBSCRIPTION-ID**.
+5. Navigieren Sie im linken Bereich, zu **src**, **main**, **java**, **<Paketname>**, öffnen Sie **Main.java** und ersetzen Sie den vorhandenen Codeblock durch den folgenden Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z.B. **localFolderPath**, **\_adlsAccountName**, **\_resourceGroupName**, und ersetzen Sie die Platzhalter für **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** und **SUBSCRIPTION-ID**.
 
     Dieser Code erstellt zunächst ein Konto im Data Lake-Speicher, erstellt dort Dateien, verkettet Dateien, lädt eine Datei herunter und löscht schließlich das Konto.
 
@@ -293,4 +303,4 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

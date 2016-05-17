@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/29/2016"
+	ms.date="05/10/2016"
 	ms.author="mandia"/>
 
 
@@ -35,7 +35,7 @@ Zu den Vorteilen von Hybridverbindungen zählen:
 - Anwendungen, die Hybridverbindungen verwenden, greifen nur auf die spezifische lokale Ressource zu, die über die Hybridverbindung veröffentlicht wurde.
 - Es sind Verbindungen zu allen lokalen Ressourcen möglich, die einen statischen TCP-Port verwenden, inklusive SQL Server, MySQL, HTTP Web-APIs und die meisten benutzerdefinierten Webdienste.
 
-	> [AZURE.NOTE] TCP-basierte Dienste, die dynamische Ports verwenden (wie passiver oder erweiterter passiver FTP-Modus) werden derzeit nicht unterstützt.
+	> [AZURE.NOTE] TCP-basierte Dienste, die dynamische Ports verwenden (wie passiver oder erweiterter passiver FTP-Modus) werden derzeit nicht unterstützt. LDAP wird ebenfalls nicht unterstützt. LDAP verwendet einen statischen TCP-Port, könnte jedoch auch UDP verwenden. Das Protokoll wird daher nicht unterstützt.
 
 - Sie können zusammen mit allen Frameworks verwendet werden, die von Web-Apps (.NET, PHP, Java, Python, Node.js) und Mobile Apps (Node.js, .NET) unterstützt werden.
 - Web-Apps und Mobile Apps können auf lokale Ressourcen genauso zugreifen, als ob sich die Web-App oder die mobile Apps im lokalen Netzwerk befände. So kann z. B. die lokal verwendete Verbindungszeichenfolge auch in Azure verwendet werden.
@@ -47,7 +47,7 @@ Hybridverbindungen bieten auch Unternehmensadministratoren Kontrolle und Einsich
 - Ereignis- und Überwachungsprotokolle im Unternehmensnetzwerk geben Einsicht in die Ressourcen, auf die von Hybridverbindungen zugegriffen wird.
 
 
-## Unterstützte Konfigurationen
+## Beispielszenarien
 
 Hybridverbindungen unterstützen die folgenden Framework- und Anwendungskombinationen:
 
@@ -84,8 +84,8 @@ Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
 Port | Grund
 --- | ---
 9350 - 9354 | Diese Ports werden für die Datenübertragung verwendet. Der Service Bus Relay-Manager prüft Port 9350, um festzustellen, ob die TCP-Konnektivität verfügbar ist. Wenn sie verfügbar ist, wird davon ausgegangen, dass Port 9352 ebenfalls verfügbar ist. Der Datenverkehr geht über Port 9352. <br/><br/>Ausgehende Verbindungen auf diese Ports zulassen.
-5671 | Wenn Port 9352 für den Datenverkehr verwendet wird, wird Port 5671 als Steuerungskanal verwendet. <br/><br/>Ausgehende Verbindungen auf diesen Port zulassen.
-80, 443 | Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn die Ports 9352 und 5671 nicht brauchbar sind, *dann* sind die Ports 80 und 443 die Alternative für die Datenübertragung und den Steuerungskanal.<br/><br/>Lassen Sie ausgehende Verbindungen auf diesen Ports zu.<br/><br/> **Hinweis** Sie sollten diese alternativen Ports nicht anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen.
+5671 | Wenn Port 9352 für den Datenverkehr verwendet wird, wird Port 5671 als Steuerungskanal verwendet. <br/><br/>Ausgehende Verbindungen auf diesen Port zulassen.
+80, 443 | Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn die Ports 9352 und 5671 nicht brauchbar sind, *dann* sind die Ports 80 und 443 die Alternative für die Datenübertragung und den Steuerungskanal.<br/><br/>Lassen Sie ausgehende Verbindungen auf diesen Ports zu.<br/><br/>** Hinweis ** Sie sollten diese alternativen Ports nicht anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen.
 
 
 
@@ -103,4 +103,4 @@ Port | Grund
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!----HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

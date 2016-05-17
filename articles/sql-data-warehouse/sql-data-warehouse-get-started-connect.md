@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="05/10/2016"
    ms.author="sonyama;barbkess"/>
 
 # Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio
@@ -53,7 +53,7 @@ Verwenden Sie für optimale Ergebnisse Visual Studio 2015 mit dem [aktuellen SQL
 
     ![SQL Server-Instanz hinzufügen][3]
 
-1. Füllen Sie die Felder im Fenster zum Herstellen einer Verbindung mit dem Server aus.
+4. Füllen Sie die Felder im Fenster zum Herstellen einer Verbindung mit dem Server aus.
 
     ![Verbindung mit dem Server herstellen][4]
 
@@ -63,10 +63,11 @@ Verwenden Sie für optimale Ergebnisse Visual Studio 2015 mit dem [aktuellen SQL
     - **Datenbankname**. Geben Sie den Datenbanknamen für die SQL DW-Datenbank ein.
     - Klicken Sie auf **Verbinden**.
 
-1. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
+5. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
 
     ![AdventureWorksDW erkunden][5]
 
+> [AZURE.NOTE] Die Angabe der SQL Data Warehouse-Datenbank im Feld **Datenbankname** zum Zeitpunkt der Verbindungsherstellung (Schritt 4) ist wichtig, damit die Objektstruktur ordnungsgemäß funktioniert. Es funktioniert unter Umständen nicht, diese Option leer zu lassen und eine Verbindung mit der Standarddatenbank **master** herzustellen, wenn manche der Datenbanken auf dem logischen Server angehalten wurden. Diese Einschränkung wird irgendwann behoben. In der Zwischenzeit wird durch das Herstellen einer Verbindung mit der SQL Data Warehouse-Datenbank jedoch die korrekte Funktionsweise der Objekt-Explorer-Struktur (siehe oben) gewährleistet.
 
 ## Schritt 3: Ausführen einer Beispielabfrage
 
@@ -88,7 +89,7 @@ Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, fahren wir 
 
     ![Abfrage ausführen][7]
 
-1. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.
+5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.
 
     ![Abfrageergebnisse][8]
 
@@ -110,4 +111,4 @@ Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versu
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->
