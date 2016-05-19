@@ -38,7 +38,7 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
