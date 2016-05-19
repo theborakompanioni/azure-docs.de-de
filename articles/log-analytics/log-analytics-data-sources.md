@@ -29,7 +29,12 @@ In der folgenden Tabelle werden die zurzeit in Log Analytics verfügbaren Datenq
 
 | Datenquelle | Ereignistyp | Beschreibung |
 |:--|:--|:--|
-| [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) | <LogName>\_CL | Textdateien in Windows- oder Linux-Agents mit Protokollinformationen. | | [Windows-Ereignisprotokolle](log-analytics-data-sources-windows-events.md) | Event | Aus dem Ereignisprotokoll auf Windows-Computern gesammelte Ereignisse. | | [Windows-Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Perf | Von Windows-Computern gesammelte Leistungsindikatoren. | | [Linux-Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Perf | Von Linux-Computern gesammelte Leistungsindikatoren. | | [IIS-Protokolle](log-analytics-data-sources-iis-logs.md) | W3CIISLog | IIS-Protokolle (Internetinformationsdienste) im W3C-Format. | | Syslog | Syslog | Syslog-Ereignisse auf Windows- oder Linux-Computern. |
+| [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) | \<LogName\>_CL | Textdateien in Windows- oder Linux-Agents mit Protokollinformationen. |
+| [Windows-Ereignisprotokolle](log-analytics-data-sources-windows-events.md) | Event | Aus dem Ereignisprotokoll auf Windows-Computern gesammelte Ereignisse. |
+| [Windows-Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Perf | Von Windows-Computern gesammelte Leistungsindikatoren. |
+| [Linux-Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Perf | Von Linux-Computern gesammelte Leistungsindikatoren. |
+| [IIS-Protokolle](log-analytics-data-sources-iis-logs.md) | W3CIISLog | IIS-Protokolle (Internetinformationsdienste) im W3C-Format. |
+| Syslog | Syslog | Syslog-Ereignisse auf Windows- oder Linux-Computern. |
 
 ## Konfigurieren von Datenquellen
 
