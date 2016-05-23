@@ -71,7 +71,7 @@ Für interaktive und nicht interaktive Anwendungen müssen sie Ihre Active Direc
 
      ![Anwendung benennen][9]
 
-7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** die URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI ** die URI an, die Ihre Anwendung identifiziert. Die Eindeutigkeit oder das Vorhandensein des Endpunktes wird nicht überprüft. Wenn Sie als Anwendungstyp **Native Clientanwendung** ausgewählt haben, geben Sie einen Wert für **Umleitungs-URI** an. Klicken Sie auf **Abschließen**, um Ihre AAD-Anwendung zu erstellen.
+7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** die URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI** die URI an, die Ihre Anwendung identifiziert. Die Eindeutigkeit oder das Vorhandensein des Endpunktes wird nicht überprüft. Wenn Sie als Anwendungstyp **Native Clientanwendung** ausgewählt haben, geben Sie einen Wert für **Umleitungs-URI** an. Klicken Sie auf **Abschließen**, um Ihre AAD-Anwendung zu erstellen.
 
      ![Anwendungseigenschaften][4]
 

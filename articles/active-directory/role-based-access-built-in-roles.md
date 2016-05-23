@@ -157,7 +157,19 @@ Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten un
 
 | **Aktionen** ||
 | ------- | ------ |
-| **/read | Ressourcen aller Typen lesen | | Microsoft.DevTestLab/labs/createEnvironment/action | Lab-Umgebung erstellen | | Microsoft.DevTestLab/labs/formulas/delete | Formeln löschen | | Microsoft.DevTestLab/labs/formulas/write | Formeln hinzufügen oder ändern | | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Lab-Richtlinien auswerten | | Microsoft.Compute/virtualMachines/start/action | virtuelle Computer starten | | Microsoft.Compute/virtualMachines/restart/action | virtuelle Computer neu starten | | Microsoft.Compute/virtualMachines/deallocate/action | Zuordnung virtueller Computer aufheben | | Microsoft.Storage/storageAccounts/listKeys/action | Speicherkontoschlüssel auflisten | | Microsoft.Network/virtualNetworks/subnets/join/action | virtuellem Netzwerk beitreten | | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Lastenausgleichs-Back-End-Adresspool beitreten | | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Lastenausgleichs-Eingangs-NAT-Regel beitreten | | Microsoft.Network/publicIPAddresses/join/action | öffentlicher IP-Adresse beitreten | | Microsoft.Network/networkInterfaces/join/action | virtuellen Computer mit einer Netzwerkschnittstelle verknüpfen | | Microsoft.Network/networkInterfaces/write | Netzwerkschnittstellen schreiben |
+| */read | Ressourcen aller Typen lesen | | Microsoft.DevTestLab/labs/createEnvironment/action | Lab-Umgebung erstellen | | Microsoft.DevTestLab/labs/formulas/delete | Formeln löschen | 
+| Microsoft.DevTestLab/labs/formulas/write | Formeln hinzufügen oder ändern | 
+| Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Lab-Richtlinien auswerten | 
+| Microsoft.Compute/virtualMachines/start/action | virtuelle Computer starten | 
+| Microsoft.Compute/virtualMachines/restart/action | virtuelle Computer neu starten | 
+| Microsoft.Compute/virtualMachines/deallocate/action | Zuordnung virtueller Computer aufheben | 
+| Microsoft.Storage/storageAccounts/listKeys/action | Speicherkontoschlüssel auflisten | 
+| Microsoft.Network/virtualNetworks/subnets/join/action | virtuellem Netzwerk beitreten | 
+| Microsoft.Network/loadBalancers/backendAddressPools/join/action | Lastenausgleichs-Back-End-Adresspool beitreten | 
+| Microsoft.Network/loadBalancers/inboundNatRules/join/action | Lastenausgleichs-Eingangs-NAT-Regel beitreten | 
+| Microsoft.Network/publicIPAddresses/join/action | öffentlicher IP-Adresse beitreten | 
+| Microsoft.Network/networkInterfaces/join/action | virtuellen Computer mit einer Netzwerkschnittstelle verknüpfen | 
+| Microsoft.Network/networkInterfaces/write | Netzwerkschnittstellen schreiben |
 
 ### Mitwirkender von DocumentDB-Konto
 Kann DocumentDB-Konten verwalten

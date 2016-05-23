@@ -137,7 +137,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     b. Kopieren Sie die **Aussteller-URL**, die **Dienst-URL für einmalige Anmeldung** und die **Dienst-URL für einmalige Abmeldung**.
 
    
-5. Lassen Sie das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren. Wenden Sie sich dazu über ****support@fusion-universal.com** an das Supportteam von Fuse, und fügen Sie die heruntergeladene Zertifikatsdatei an. Geben Sie außerdem die **Aussteller-URL**, die **Dienst-URL für einmalige Anmeldung** und die **Dienst-URL für einmalige Abmeldung an**.
+5. Lassen Sie das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren. Wenden Sie sich dazu über **support@fusion-universal.com** an das Supportteam von Fuse, und fügen Sie die heruntergeladene Zertifikatsdatei an. Geben Sie außerdem die **Aussteller-URL**, die **Dienst-URL für einmalige Anmeldung** und die **Dienst-URL für einmalige Abmeldung an**.
 
 
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.

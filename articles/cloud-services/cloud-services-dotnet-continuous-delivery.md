@@ -105,7 +105,7 @@ Um TFS zum Erstellen von Azure-Paketen zu konfigurieren, führen Sie die folgend
 
 In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt wird, das die Ausgabe des Cloud-App-Pakets mithilfe optionaler Parameter in Azure veröffentlicht. Dieses Skript kann im benutzerdefinierten automatischen Build nach dem Buildschritt aufgerufen werden. Es kann auch über Prozessvorlagen-Workflowaktivitäten in Visual Studio TFS Team Build aufgerufen werden.
 
-1.  Installieren Sie die [Azure PowerShell-Cmdlets][] (Version 0.6.1 oder höher). Wählen Sie während der Cmdlet-Einrichtung die Installation als Snap-In. Diese offiziell unterstützte Version ersetzt die ältere von CodePlex angebotene Version, auch wenn diese die Versionsnummer 2.x.x haben.
+1.  Installieren Sie die [Azure PowerShell-Cmdlets][] \(Version 0.6.1 oder höher). Wählen Sie während der Cmdlet-Einrichtung die Installation als Snap-In. Diese offiziell unterstützte Version ersetzt die ältere von CodePlex angebotene Version, auch wenn diese die Versionsnummer 2.x.x haben.
 
 2.  Starten Sie Azure PowerShell über das Startmenü oder die Startseite. Auf diese Weise werden die Azure PowerShell-Cmdlets geladen.
 

@@ -127,7 +127,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
 
 In diesem Lernprogramm haben Sie die meisten Schritte manuell ausgeführt. In einer Produktionsumgebung würden Sie die App auf einem Entwicklungscomputer schreiben und in der Azure-VM bereitstellen. Außerdem wird in den meisten Produktionsumgebungen die Rails-Anwendung zusammen mit einem anderen Serverprozess wie Apache oder NginX gehostet, der die Weiterleitung von Anfragen an mehrere Instanzen der Rails-Anwendung und statische Ressourcen bearbeitet. Weitere Informationen finden Sie unter http://rubyonrails.org/deploy/.
 
-Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails Guides][rails-guides] (in englischer Sprache).
+Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails Guides][rails-guides] \(in englischer Sprache).
 
 Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie unter:
 

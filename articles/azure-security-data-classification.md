@@ -135,7 +135,7 @@ Es ist wichtig, für alle Datenassets eine eindeutige Besitzerkette einzurichten
 | Verwalter | | | X | | |
 | Administrator | | | | | X |
 | Benutzer* | | X | | X | |
-****Benutzern können von einem Verwalter zusätzliche Rechte gewährt werden, z.B. Bearbeiten und Löschen*
+**Benutzern können von einem Verwalter zusätzliche Rechte gewährt werden, z.B. Bearbeiten und Löschen*
 
 > [AZURE.NOTE] Diese Tabelle enthält keine vollständige Liste der Rollen und Rechte, sondern nur einen repräsentativen Ausschnitt.
 

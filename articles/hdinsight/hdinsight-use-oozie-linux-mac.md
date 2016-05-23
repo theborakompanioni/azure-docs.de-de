@@ -64,7 +64,7 @@ Der Workflow, den Sie mithilfe der Anweisungen in diesem Dokument implementieren
 
 ##Erstellen des Arbeitsverzeichnisses
 
-Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben Verzeichnis gespeichert werden. In diesem Beispiel wird ****wasb:///tutorials/useoozie** verwendet. Geben Sie den folgenden Befehl zum Erstellen dieses Verzeichnisses und des Datenverzeichnisses ein, das die mit diesem Workflow erstellte neue Hive-Tabelle enthalten wird:
+Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben Verzeichnis gespeichert werden. In diesem Beispiel wird **wasb:///tutorials/useoozie** verwendet. Geben Sie den folgenden Befehl zum Erstellen dieses Verzeichnisses und des Datenverzeichnisses ein, das die mit diesem Workflow erstellte neue Hive-Tabelle enthalten wird:
 
 	hadoop fs -mkdir -p /tutorials/useoozie/data
 
@@ -114,7 +114,7 @@ Führen Sie die folgenden Schritte aus, um ein HiveQL-Skript zu erstellen, das e
 
 2. Drücken Sie STRG+X, um den Editor zu verlassen. Wählen Sie bei entsprechender Aufforderung **Y** aus, um die Datei zu speichern. Drücken Sie dann die **EINGABETASTE**, um den Dateinamen **useooziewf.hql** zu verwenden.
 
-3. Verwenden Sie die folgenden Befehle zum Kopieren von **useooziewf.hql** in ****wasb:///tutorials/useoozie/useooziewf.hql**:
+3. Verwenden Sie die folgenden Befehle zum Kopieren von **useooziewf.hql** in **wasb:///tutorials/useoozie/useooziewf.hql**:
 
 		hadoop fs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
 
@@ -187,7 +187,7 @@ Definitionen von Oozie-Workflows werden in hPDL (einer XML-Prozessdefinitionsspr
 
 	- **RunSqoopExport**: Diese Aktion exportiert die vom Hive-Skript erstellten Daten mithilfe von Sqoop in die SQL-Datenbank. Diese Aktion wird nur ausgeführt, wenn die Aktion **RunHiveScript** erfolgreich war.
 
-		> [AZURE.NOTE] Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight der Version 2.1).
+		> [AZURE.NOTE] Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight der Version 2.1).
 
 	Beachten Sie, dass der Workflow mehrere Einträge hat (z. B. `${jobTracker}`), die durch Werte ersetzt werden, die Sie in der Auftragsdefinition weiter unten in diesem Dokument verwenden.
 
@@ -195,7 +195,7 @@ Definitionen von Oozie-Workflows werden in hPDL (einer XML-Prozessdefinitionsspr
 
 2. Drücken Sie zum Speichern der Datei STRG+X, **Y** und dann **EINGABE**.
 
-3. Verwenden Sie den folgenden Befehl zum Kopieren der Datei **workflow.xml** in ****wasb:///tutorials/useoozie/workflow.xml**:
+3. Verwenden Sie den folgenden Befehl zum Kopieren der Datei **workflow.xml** in **wasb:///tutorials/useoozie/workflow.xml**:
 
 		hadoop fs -copyFromLocal workflow.xml wasb:///tutorials/useoozie/workflow.xml
 
@@ -286,7 +286,7 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 		<name>fs.defaultFS</name>
 		<value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
 
-	Speichern Sie den Wert ****wasb://mycontainer@mystorageaccount.blob.core.windows.net**, da er in den nächsten Schritten verwendet wird.
+	Speichern Sie den Wert **wasb://mycontainer@mystorageaccount.blob.core.windows.net**, da er in den nächsten Schritten verwendet wird.
 
 2. Rufen Sie den folgenden Befehl auf, um den FQDN des Cluster-Hauptknotens abzurufen. Dieser wird für die JobTracker-Adresse des Clusters verwendet. Diese wird in Kürze weiter unten in der Konfigurationsdatei verwendet:
 
@@ -363,7 +363,7 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 		  </property>
 		</configuration>
 
-	* Ersetzen Sie alle Vorkommen von ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** durch den Wert, den Sie zuvor erhalten haben.
+	* Ersetzen Sie alle Vorkommen von **wasb://mycontainer@mystorageaccount.blob.core.windows.net** durch den Wert, den Sie zuvor erhalten haben.
 
 	> [AZURE.WARNING] Sie müssen den vollständigen WASB-Pfad mit dem Container und Speicherkonto als Teil des Pfads verwenden. Das Verwenden des Kurzformats (wasb:///) bewirkt, dass die Aktion „RunHiveScript“ misslingt, wenn der Auftrag gestartet wird.
 
@@ -394,7 +394,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
 		<name>oozie.base.url</name>
 		<value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
 
-	Der Teil ****http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** ist die mit dem Oozie-Befehl zu verwendende URL.
+	Der Teil **http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** ist die mit dem Oozie-Befehl zu verwendende URL.
 
 2. Geben Sie Folgendes an, um eine Umgebungsvariable für die URL erstellen, damit Sie sie nicht für jeden Befehl eingeben müssen:
 
@@ -481,7 +481,7 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
 
 1. Erstellen Sie einen SSH-Tunnel zum HDInsight-Cluster. Informationen zur Vorgehensweise finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
-2. Nachdem der Tunnel erstellt wurde, öffnen Sie die Ambari-Webbenutzeroberfläche in Ihrem Webbrowser. Der URI der Ambari-Website lautet ****https://CLUSTERNAME.azurehdinsight.net**. Ersetzen Sie **CLUSTERNAME** durch den Namen des Linux-basierten HDInsight-Clusters.
+2. Nachdem der Tunnel erstellt wurde, öffnen Sie die Ambari-Webbenutzeroberfläche in Ihrem Webbrowser. Der URI der Ambari-Website lautet **https://CLUSTERNAME.azurehdinsight.net**. Ersetzen Sie **CLUSTERNAME** durch den Namen des Linux-basierten HDInsight-Clusters.
 
 3. Wählen Sie auf der linken Seite der Seite **Oozie**, dann **QuickLinks** und schließlich **Oozie Web UI** aus.
 

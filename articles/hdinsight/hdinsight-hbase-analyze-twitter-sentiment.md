@@ -367,7 +367,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
             }
         }
 
-6. Legen Sie die Konstanten im vorherigen Code fest, einschließlich **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD** und DICTIONARYFILENAME. Die DICTIONARYFILENAME ist der Dateinamen und der Speicherort von „direction.tsv“. Die Datei kann unter ****https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** heruntergeladen werden. Falls Sie den HBase-Tabellennamen ändern möchten, müssen Sie den Tabellennamen in der Webanwendung ebenfalls entsprechend ändern.
+6. Legen Sie die Konstanten im vorherigen Code fest, einschließlich **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD** und DICTIONARYFILENAME. Die DICTIONARYFILENAME ist der Dateinamen und der Speicherort von „direction.tsv“. Die Datei kann unter **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** heruntergeladen werden. Falls Sie den HBase-Tabellennamen ändern möchten, müssen Sie den Tabellennamen in der Webanwendung ebenfalls entsprechend ändern.
 
 7. Öffnen Sie die Datei **Program.cs**, und ersetzen Sie den Code durch Folgendes:
 

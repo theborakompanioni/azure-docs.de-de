@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Alle Themen über den SQL-Datenbankdienst | Microsoft Azure"
-	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL-Datenbank“ auf https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung"
+	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL-Datenbank“ auf https://azure.microsoft.com/documentation/articles/, Titel und Beschreibung"
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"
@@ -343,7 +343,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum SQL-Datenbankdienst in Az
 | 172 | [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-resource-limits.md) | Diese Seite beschreibt einige allgemeine Ressourceneinschränkungen für Azure SQL-Datenbanken. |
 | 173 | [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md) | Transact-SQL-Anweisungen, die in Azure SQL-Datenbank nicht vollständig unterstützt werden |
 | 174 | [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md) | Listet die mindestens erforderliche Versionsnummer für jeden Treiber auf, mit der Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können. Es wird ein Link zu Versionsinformationen für die Treiber bereitgestellt, die nicht von Microsoft, sondern von der Community freigegeben werden. |
-| 175 | [gefilterte Suche](https://azure.microsoft.com/de-DE/documentation/articles/?service=sql-database) | Suchen Sie mit Filtern nach Artikeln über die Azure SQL-Datenbank. |
+| 175 | [gefilterte Suche](https://azure.microsoft.com/documentation/articles/?service=sql-database) | Suchen Sie mit Filtern nach Artikeln über die Azure SQL-Datenbank. |
 
 
 ## Verschiedenes

@@ -57,7 +57,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 **In diesem Lernprogramm verwendete Dateien**
 
-In diesem Lernprogramm werden Flugdaten hinsichtlich der termingerechten Durchführung von Fluggesellschaften des [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (RITA) verwendet. Eine Kopie der Daten wurde in einen Azure-Blobspeichercontainer mit öffentlicher Blobzugriffsberechtigung hochgeladen. Ein Teil des PowerShell-Skripts kopiert die Daten aus dem öffentlichen Blobcontainer in den standardmäßigen Blobcontainer des Clusters. Das HiveQL-Skript wird ebenfalls in denselben Blobcontainer kopiert. Weitere Informationen darüber, wie Sie die Daten in Ihr eigenes Speicherkonto einfügen/hochladen und die HiveQL-Skriptdatei erstellen/hochladen können, finden Sie in [Anhang A](#appendix-a) und [Anhang B](#appendix-b).
+In diesem Lernprogramm werden Flugdaten hinsichtlich der termingerechten Durchführung von Fluggesellschaften des [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] \(RITA) verwendet. Eine Kopie der Daten wurde in einen Azure-Blobspeichercontainer mit öffentlicher Blobzugriffsberechtigung hochgeladen. Ein Teil des PowerShell-Skripts kopiert die Daten aus dem öffentlichen Blobcontainer in den standardmäßigen Blobcontainer des Clusters. Das HiveQL-Skript wird ebenfalls in denselben Blobcontainer kopiert. Weitere Informationen darüber, wie Sie die Daten in Ihr eigenes Speicherkonto einfügen/hochladen und die HiveQL-Skriptdatei erstellen/hochladen können, finden Sie in [Anhang A](#appendix-a) und [Anhang B](#appendix-b).
 
 In der folgenden Tabelle sind die in diesem Lernprogramm verwendeten Dateien aufgelistet:
 
@@ -245,7 +245,7 @@ Das Hochladen der Datendatei und der HiveQL-Skriptdateien (siehe [Anhang B](#ap
 
 **So laden Sie die Flugdaten herunter**
 
-1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (RITA) auf.
+1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] \(RITA) auf.
 2. Wählen Sie auf der Website die folgenden Werte aus:
 
 	<table border="1">

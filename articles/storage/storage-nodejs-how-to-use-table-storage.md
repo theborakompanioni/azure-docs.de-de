@@ -426,7 +426,7 @@ Nachdem die ACL festgelegt wurde, können Sie basierend auf der ID für eine Ric
 
 Weitere Informationen finden Sie in den folgenden Ressourcen.
 
--   [Azure Storage Team Blog][] (in englischer Sprache)
+-   [Azure Storage Team Blog][] \(in englischer Sprache)
 -   [Azure Storage SDK for Node.js][]-Repository auf GitHub (in englischer Sprache)
 -   [Node.js Developer Center (in englischer Sprache)](/develop/nodejs/)
 

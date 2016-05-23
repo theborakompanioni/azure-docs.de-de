@@ -357,7 +357,7 @@ Jede Person, für die ein Clientzertifikat ausgegeben wurde, muss folgende Schri
 * Wählen Sie im daraufhin geöffneten Dialogfeld "Zertifikat" die Registerkarte "Details".
 * Stellen Sie sicher, dass unter "Anzeigen" die Option "Alle" angezeigt wird.
 * Wählen Sie das Feld mit dem Namen "Fingerabdruck" in der Liste aus.
-* Kopieren des Werts des Fingerabdrucks ** Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer ** Löschen aller Leerzeichen
+* Kopieren des Werts des Fingerabdrucks **Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer** Löschen aller Leerzeichen
 
 ## Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei
 

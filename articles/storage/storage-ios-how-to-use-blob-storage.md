@@ -32,7 +32,7 @@ Um die Azure Storage-iOS-Bibliothek zu verwenden, müssen Sie zunächst die Fram
 
 1. Laden Sie zuerst das [azure-storage-ios-repo](https://github.com/azure/azure-storage-ios) herunter, oder klonen Sie es.
 
-2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `Azure Storage Client Library.xcodeproj` in Xcode.
+2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `Azure Storage Client Library.xcodeproj` in Xcode.
 
 3. Ändern Sie oben links in Xcode das aktive Schema von "Azure Storage-Client Library" in "Framework".
 

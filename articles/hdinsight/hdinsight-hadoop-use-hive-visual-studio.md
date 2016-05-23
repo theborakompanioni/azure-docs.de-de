@@ -85,7 +85,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
     * **ALS ORC GESPEICHERT**: Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
     * **ÜBERSCHREIBEN EINFÜGEN ... AUSWÄHLEN**: Wählt die Zeilen aus der Tabelle **log4jLogs** aus, die **[ERROR]** enthalten. Dann werden die Daten in die Tabelle **errorLogs** eingefügt.
 
-7. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie ** Auftragsstatus**, um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
+7. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie **Auftragsstatus**, um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
 
 8. Verwenden Sie den **Server-Explorer** und erweitern Sie **Azure** > **HDInsight** sowie Ihren HDInsight-Cluster > **Hive-Datenbanken** und **Standard**, um zu überprüfen, ob der Auftrag abgeschlossen und eine neue Tabelle erstellt wurde. Es sollten die beiden Tabellen **errorLogs** und **log4jLogs** angezeigt werden.
 
