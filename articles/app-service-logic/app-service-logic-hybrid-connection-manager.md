@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016" 
+	ms.date="05/10/2016" 
 	ms.author="mandia"/>
 
 # Verbinden eines lokalen Connectors in Azure App Service mithilfe des Hybrid Connection Managers
@@ -109,13 +109,17 @@ Lokaler System-Port | Öffnen Sie im lokalen System den Port, der vom System ver
 
 ## Häufig gestellte Fragen
 
-**Frage**: Es gibt zwei Hybrid Connection Manager. Was ist der Unterschied?<br/> **Antwort**: Es gibt die [Hybridverbindungs-](../biztalk-services/integration-hybrid-connection-overview.md)Technologie, die hauptsächlich von Web-Apps (früher Websites) und Mobile Apps (früher Mobile Services) zum Herstellen einer lokalen Verbindung verwendet wird. Dieser Hybrid Connection Manager ist ein eigener [Setup](../biztalk-services/integration-hybrid-connection-create-manage.md) und verwendet den Azure BizTalk-Dienst (im Hintergrund). Nur TCP und HTTP-Protokolle werden unterstützt.
+**Frage:** Es gibt zwei Hybrid Connection Manager. Wo liegt der Unterschied?
+
+**Antwort**: Es gibt die [Hybridverbindungs-](../biztalk-services/integration-hybrid-connection-overview.md)Technologie, die hauptsächlich von Web-Apps (früher Websites) und Mobile Apps (früher Mobile Services) zum Herstellen einer lokalen Verbindung verwendet wird. Dieser Hybrid Connection Manager ist ein eigener [Setup](../biztalk-services/integration-hybrid-connection-create-manage.md) und verwendet den Azure BizTalk-Dienst (im Hintergrund). Nur TCP und HTTP-Protokolle werden unterstützt.
 
 Mit Azure App Service-Connectors liegt auch ein Hybrid Connection Manager vor. Dieser Hybrid Connection Manager verwendet *keinen* Azure BizTalk-Dienst (im Hintergrund) und unterstützt nicht nur TCP- und HTTP-Protokolle. Informationen finden Sie in der [Liste der Connectors und API-Apps](app-service-logic-connectors-list.md)
 
 Beide verwenden Azure Service Bus für die Verbindung zum lokalen System.
 
-**Frage**: Kann ich beim Erstellen einer benutzerdefinierten API-App den App Service Hybrid Connection Manager zum Herstellen einer lokalen Verbindung nehmen? <br/> **Antwort**: Nicht im herkömmlichen Sinn. Sie können einen integrierten Connector verwenden und den App Service Hybrid Connection Manager so konfigurieren, dass eine Verbindung zum lokalen System hergestellt wird. Anschließend verwenden Sie diesen Connector mit der benutzerdefinierten API-App, möglicherweise mithilfe einer Logik-App. Derzeit können Sie keine eigene hybride API-App entwickeln oder erstellen (wie den SQL-Connector oder den Datei-Connector).
+**Frage:** Kann ich beim Erstellen einer benutzerdefinierten API-App den App Service Hybrid Connection Manager zum Herstellen einer lokalen Verbindung verwenden?
+
+**Antwort:** Nicht im herkömmlichen Sinn. Sie können einen integrierten Connector verwenden und den App Service Hybrid Connection Manager so konfigurieren, dass eine Verbindung zum lokalen System hergestellt wird. Anschließend verwenden Sie diesen Connector mit der benutzerdefinierten API-App, möglicherweise mithilfe einer Logik-App. Derzeit können Sie keine eigene hybride API-App (wie den SQL-Connector oder den Datei-Connector) entwickeln oder erstellen.
 
 Wenn Ihre benutzerdefinierte API einen TCP- oder HTTP-Port verwendet, können Sie [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und den Hybrid Connection Manager verwenden. In diesem Szenario wird ein Azure BizTalk-Dienst verwendet. [Verbinden mit einem lokalen SQL Server von einer Web-App aus](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md) könnte helfen.
 
@@ -136,4 +140,4 @@ Wenn Ihre benutzerdefinierte API einen TCP- oder HTTP-Port verwendet, können Si
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -26,7 +26,7 @@
 
     3. Geben Sie die Sicherungshäufigkeit in Minuten, Stunden, Tagen oder Wochen an.
 
-    4. Wählen Sie die Aufbewahrungsdauer aus. Die Aufbewahrungsdauer hängt von der Sicherungshäufigkeit ab. Für eine tägliche Richtlinie kann die Aufbewahrungsdauer z. B. in Wochen angegeben werden, während die Aufbewahrungsdauer für eine monatliche Richtlinie in Monaten angegeben wird.
+    4. Wählen Sie die Aufbewahrungsdauer aus. Die Aufbewahrungsdauer hängt von der Sicherungshäufigkeit ab.
  
     5. Wählen Sie die Startzeit und das Datum für die Richtlinie aus.
 
@@ -40,4 +40,4 @@
 
     ![Benutzerdefinierte Sicherungsrichtlinie](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
 
-<!---HONumber=AcomDC_1203_2015-->
+

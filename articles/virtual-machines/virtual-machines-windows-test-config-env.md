@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/25/2016"
 	ms.author="josephd"/>
 
 # Testumgebung für die Basiskonfiguration
@@ -302,9 +302,10 @@ Dies ist die endgültige Konfiguration.
 
 Die Basiskonfiguration in Azure kann nun zur Anwendungsentwicklung, zu Testzwecken oder für zusätzliche Testumgebungen verwendet werden.
 
-## Nächster Schritt
+## Nächste Schritte
 
-- Fügen Sie mit dem [Azure-Portal](virtual-machines-windows-hero-tutorial.md) einen neuen virtuellen Computer hinzu, oder erstellen Sie die [simulierte Testumgebung für Hybridclouds](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md).
+- Hinzufügen eines neuen virtuellen Computers über das [Azure-Portal](virtual-machines-windows-hero-tutorial.md)
+- Erstellen der [simulierten Hybrid Cloud-Testumgebung](virtual-machines-setup-simulated-hybrid-cloud-environment-testing.md)
 
 
 ## <a id="costs"></a>Minimizing the costs of test environment virtual machines in Azure (Minimieren der Kosten von Testumgebungen für virtuelle Computer in Azure)
@@ -334,4 +335,4 @@ Zum Starten der virtuellen Computer mit Azure PowerShell in der richtigen Reihen
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

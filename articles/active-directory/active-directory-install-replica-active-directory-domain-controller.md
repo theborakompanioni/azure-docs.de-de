@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Installieren eines Replikatdomänencontrollers in Azure | Microsoft Azure"
+	pageTitle="Installieren eines Active Directory-Replikatdomänencontrollers in Azure | Microsoft Azure"
 	description="Ein Lernprogramm, in dem Sie erfahren, wie Sie einen Domänencontroller aus einer lokalen Active Directory-Gesamtstruktur auf einem virtuellen Azure-Computer installieren."
 	services="virtual-network"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="05/10/2016"
 	ms.author="curtand"/>
 
 
@@ -27,13 +27,13 @@ Folgende Themen könnten für Sie ebenfalls von Interesse sein:
 -  Weitere Anleitungen zu den Konzepten für die Installation von Active Directory-Domänendiensten (AD DS) auf einem virtuellen Azure-Netzwerk finden Sie unter [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Computern in Microsoft Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
 
-## Szenario (Diagramm)
+## Szenariodiagramm
 
 In diesem Szenario müssen externe Benutzer auf Anwendungen zugreifen, die auf in die Domäne eingebundenen Servern ausgeführt werden. Die virtuellen Computer, auf denen die Anwendungsserver und die Replikatdomänencontroller ausgeführt werden, sind in einem virtuellen Azure-Netzwerk installiert. Das virtuelle Netzwerk kann über eine [Site-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-site-to-site-create.md), wie in der folgenden Abbildung dargestellt, mit dem lokalen Netzwerk verbunden werden, oder Sie können als schnellere Verbindung [ExpressRoute](../../services/expressroute/) verwenden.
 
 Die Anwendungsserver und Domänencontroller werden in separaten Clouddiensten bereitgestellt, um die Computeverarbeitung zu verteilen, sowie in [Verfügbarkeitsgruppen](../virtual-machines/virtual-machines-windows-manage-availability.md), um eine bessere Fehlertoleranz zu erzielen. Die Domänencontroller werden durch die Active Directory-Replikation untereinander und mit lokalen Domänencontroller repliziert. Es sind keine Synchronisierungstools erforderlich.
 
-![][1]
+![Diagramm eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk][1]
 
 ## Erstellen eines Active Directory-Standorts für das virtuelle Netzwerk in Azure
 
@@ -45,7 +45,7 @@ Es bietet sich an, einen Standort in Active Directory zu erstellen, der die Netz
 
 ## Erstellen eines virtuellen Azure-Netzwerks
 
-1. Klicken Sie im klassischen Azure-Portal auf **Neu** > **Netzwerkdienste** > **Virtuelles Netzwerk** > **Benutzerdefiniert erstellen**, und verwenden Sie die folgenden Werte, um den Assistenten abzuschließen.
+1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Neu** > **Netzwerkdienste** > **Virtuelles Netzwerk** > **Benutzerdefiniert erstellen**, und verwenden Sie die folgenden Werte, um den Assistenten abzuschließen.
 
     Seite des Assistenten… | Einzugebende Werte
 	------------- | -------------
@@ -58,12 +58,11 @@ Es bietet sich an, einen Standort in Active Directory zu erstellen, der die Netz
 3. Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem neuen virtuellen Netzwerk und einem lokalen VPN-Gerät. Anweisungen hierzu finden Sie unter [Konfigurieren des Gateways für das virtuelle Netzwerk](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md).
 
 
-
 ## Erstellen von virtuellen Azure-Computern für die DC-Rollen
 
 Wiederholen Sie die folgenden Schritte, um virtuelle Computer zum Hosten der DC-Rolle nach Bedarf zu erstellen. Sie sollten mindestens zwei virtuelle DC bereitstellen, um Fehlertoleranz und Redundanz zu gewährleisten. Wenn das virtuelle Azure-Netzwerk über mindestens zwei Domänencontroller verfügt, die auf ähnliche Weise konfiguriert sind (d. h. beide sind GCs, führen DNS-Server aus und beide führen keine FSMO-Rolle aus usw.), stellen Sie die virtuellen Computer, auf denen diese DCs ausgeführt werden, in eine Verfügbarkeitsgruppe, um eine verbesserte Fehlertoleranz zu erreichen. Um die virtuellen Computer mithilfe von Windows PowerShell anstelle der Benutzeroberfläche zu erstellen, lesen Sie [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../virtual-machines/virtual-machines-windows-classic-create-powershell.md).
 
-1. Klicken Sie im klassischen Azure-Portal auf **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog**. Verwenden Sie die folgenden Werte, um den Assistenten abzuschließen. Übernehmen Sie den Standardwert für eine Einstellung, sofern kein anderer Wert empfohlen wird oder erforderlich ist.
+1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog**. Verwenden Sie die folgenden Werte, um den Assistenten abzuschließen. Übernehmen Sie den Standardwert für eine Einstellung, sofern kein anderer Wert empfohlen wird oder erforderlich ist.
 
     Seite des Assistenten… | Einzugebende Werte
 	------------- | -------------
@@ -85,14 +84,13 @@ Melden Sie sich bei einem virtuellen Computer an, und stellen Sie sicher, dass S
 
 ## Erneutes Konfigurieren des DNS-Servers für das virtuelle Netzwerk
 
-1. Klicken Sie klassischen Azure-Portal auf den Namen des virtuellen Netzwerks und dann auf die Registerkarte **Konfigurieren**, um [die IP-Adressen der DNS-Server für das virtuelle Netzwerk neu zu konfigurieren](virtual-networks-manage-dns-in-vnet.md), sodass die den Replikatdomänencontrollern zugewiesenen statischen IP-Adressen anstelle der IP-Adressen eines lokalen DNS-Servers verwendet werden.
+1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf den Namen des virtuellen Netzwerks und dann auf die Registerkarte **Konfigurieren**, um [die IP-Adressen der DNS-Server für das virtuelle Netzwerk neu zu konfigurieren](../virtual-network/virtual-networks-manage-dns-in-vnet.md), sodass die den Replikatdomänencontrollern zugewiesenen statischen IP-Adressen anstelle der IP-Adressen eines lokalen DNS-Servers verwendet werden.
 
 2. Um sicherzustellen, dass alle virtuellen Computer des Replikatdomänencontroller im virtuellen Netzwerk für die Verwendung der DNS-Server im virtuellen Netzwerk konfiguriert sind, klicken Sie auf **Virtuelle Computer**, auf die Statusspalte für die einzelnen virtuellen Computer und dann auf **Neustart**. Warten Sie, bis der virtuelle Computer den Status **Wird ausgeführt** anzeigt, bevor Sie versuchen, sich anzumelden.
 
 ## Erstellen von virtuellen Computern für Anwendungsserver
 
 1. Wiederholen Sie die folgenden Schritte, um virtuelle Computer zu erstellen, die als Anwendungsserver ausgeführt werden. Übernehmen Sie den Standardwert für eine Einstellung, sofern kein anderer Wert empfohlen wird oder erforderlich ist.
-
 
 	Seite des Assistenten… | Einzugebende Werte
 	------------- | -------------
@@ -119,6 +117,6 @@ Weitere Informationen zum Verwenden von Windows PowerShell finden Sie unter [Ers
 -  [Azure-Verwaltungs-Cmdlets](https://msdn.microsoft.com/library/azure/jj152841)
 
 <!--Image references-->
-[1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
+[1]: ./media/active-directory-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

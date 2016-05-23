@@ -1,19 +1,19 @@
 <properties
-	pageTitle="Schützen von Active Directory und DNS mit Azure Site Recovery | Microsoft Azure" 
-	description="Dieser Artikel beschreibt das Implementieren einer Notfallwiederherstellungs-Lösung für Active Directory mit Azure Site Recovery." 
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="prateek9us" 
-	manager="abhiag" 
+	pageTitle="Schützen von Active Directory und DNS mit Azure Site Recovery | Microsoft Azure"
+	description="Dieser Artikel beschreibt das Implementieren einer Notfallwiederherstellungs-Lösung für Active Directory mit Azure Site Recovery."
+	services="site-recovery"
+	documentationCenter=""
+	authors="prateek9us"
+	manager="abhiag"
 	editor=""/>
 
-<tags 
-	ms.service="site-recovery" 
+<tags
+	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.workload="storage-backup-recovery"
+	ms.date="05/10/2016"
 	ms.author="pratshar"/>
 
 # Schützen von Active Directory und DNS mit Azure Site Recovery
@@ -36,7 +36,7 @@ Wenn nur eine geringe Anzahl von Anwendungen und ein einzelner Domänencontrolle
 
 Bei einer großen Anzahl von Anwendungen und mehreren Domänencontrollern in der Umgebung, oder wenn Sie das gleichzeitige Failover verschiedener Anwendungen planen, empfehlen wir Ihnen, zusätzlich zum Replizieren des virtuellen Computers, auf dem sich der Domänencontroller befindet, mit Site Recovery auch die Einrichtung eines zusätzlichen Domänencontrollers am Zielstandort (Azure oder ein sekundäres lokales Datencenter).
 
->[AZURE.NOTE]Auch wenn Sie Option-2 implementieren, müssen Sie für ein Testfailover dennoch den Domänencontroller mit Site Recovery replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Test-Failover](#considerations-for-test-failover).
+>[AZURE.NOTE] Auch wenn Sie Option-2 implementieren, müssen Sie für ein Testfailover dennoch den Domänencontroller mit Site Recovery replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Test-Failover](#considerations-for-test-failover).
 
 
 In den folgenden Abschnitten wird erläutert, wie der Schutz für einen Domänencontroller in Site Recovery aktiviert und ein Domänencontroller in Azure eingerichtet wird.
@@ -45,7 +45,7 @@ In den folgenden Abschnitten wird erläutert, wie der Schutz für einen Domänen
 ## Voraussetzungen
 
 - Active Directory- und DNS-Server sind lokal bereitgestellt.
-- Ein Azure Site Recovery Services-Tresor im Microsoft Azure-Abonnement. 
+- Ein Azure Site Recovery Services-Tresor im Microsoft Azure-Abonnement.
 - Falls Sie zu Azure replizieren, führen Sie das Tool „Azure Virtual Machine Readiness Assessment“ auf VMs aus, um sicherzustellen, dass diese mit Azure-VMs und Azure Site Recovery Services kompatibel sind.
 
 
@@ -62,7 +62,7 @@ Konfigurieren Sie für den virtuellen Computer mit dem Domänencontroller bzw. D
 
 ![VM-Netzwerkeinstellungen](./media/site-recovery-active-directory/VM-Network-Settings.png)
 
-## Schützen von Active Directory mit Active Directory-Replikation 
+## Schützen von Active Directory mit Active Directory-Replikation
 
 ### Standort-zu-Standort-Schutz
 
@@ -70,10 +70,10 @@ Erstellen Sie einen Domänencontroller am sekundären Standort, und geben Sie de
 
 ###Standort-zu-Azure-Schutz
 
-Befolgen Sie zum [Erstellen eines Domänencontrollers in einem virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md) diese Anweisungen. Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den gleichen Domänennamen an, der am primären Standort verwendet wird.
+Befolgen Sie zum [Erstellen eines Domänencontrollers in einem virtuellen Azure-Netzwerk](../active-directory/active-directory-install-replica-active-directory-domain-controller.md) diese Anweisungen. Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den gleichen Domänennamen an, der am primären Standort verwendet wird.
 
-Dann [konfigurieren Sie den DNS-Server für das virtuelle Netzwerk neu](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network), um den DNS-Server in Azure zu verwenden.
-  
+Dann [konfigurieren Sie den DNS-Server für das virtuelle Netzwerk neu](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network), um den DNS-Server in Azure zu verwenden.
+
 ![Azure-Netzwerk](./media/site-recovery-active-directory/azure-network.png)
 
 ## Überlegungen zum Test-Failover
@@ -84,16 +84,16 @@ Die meisten Anwendungen sind auch auf einen funktionierenden Domänencontroller 
 
 1. Aktivieren Sie in Site Recovery den Schutz von Domänencontroller/DNS-VM.
 2. Erstellen Sie ein isoliertes Netzwerk. Jedes in Azure erstellte virtuelle Netzwerk ist standardmäßig von anderen Netzwerken isoliert. Der IP-Adressbereich dieses Netzwerks sollte mit dem Ihres Produktionsnetzwerks identisch sein. Aktivieren Sie nicht die Standort-zu-Standort-Konnektivität in diesem Netzwerk.
-3. Stellen Sie eine im Netzwerk erstellte DNS-IP-Adresse als die IP-Adresse bereit, die der virtuelle DNS-Computer abrufen soll. Wenn Sie zu Azure replizieren, geben Sie die IP-Adresse für die VM, die beim Failover verwendet wird, in den VM-Eigenschaften in der Einstellung **Ziel-IP-Adresse** an. Wenn Sie zu einem anderen lokalen Standort replizieren und DHCP verwenden, befolgen Sie die Anweisungen zum [Einrichten von DNS und DHCP für das Testfailover](site-recovery-failover.md#prepare-dhcp). 
+3. Stellen Sie eine im Netzwerk erstellte DNS-IP-Adresse als die IP-Adresse bereit, die der virtuelle DNS-Computer abrufen soll. Wenn Sie zu Azure replizieren, geben Sie die IP-Adresse für die VM, die beim Failover verwendet wird, in den VM-Eigenschaften in der Einstellung **Ziel-IP-Adresse** an. Wenn Sie zu einem anderen lokalen Standort replizieren und DHCP verwenden, befolgen Sie die Anweisungen zum [Einrichten von DNS und DHCP für das Testfailover](site-recovery-failover.md#prepare-dhcp).
 
->[AZURE.NOTE]Die IP-Adresse, die einem virtuellen Computer während eines Testfailovers zugeordnet wird, entspricht der IP-Adresse, die dieser bei einem geplanten oder ungeplanten Failover erhalten würde, sofern die IP-Adresse im Testfailover-Netzwerk verfügbar ist. Wenn dies nicht der Fall ist, empfängt der virtuelle Computer eine andere IP-Adresse, die im Testfailover-Netzwerk verfügbar ist.
+>[AZURE.NOTE] Die IP-Adresse, die einem virtuellen Computer während eines Testfailovers zugeordnet wird, entspricht der IP-Adresse, die dieser bei einem geplanten oder ungeplanten Failover erhalten würde, sofern die IP-Adresse im Testfailover-Netzwerk verfügbar ist. Wenn dies nicht der Fall ist, empfängt der virtuelle Computer eine andere IP-Adresse, die im Testfailover-Netzwerk verfügbar ist.
 
-4. Führen Sie auf dem virtuellen Computer mit dem Domänencontroller ein Testfailover im isolierten Netzwerk aus. 
+4. Führen Sie auf dem virtuellen Computer mit dem Domänencontroller ein Testfailover im isolierten Netzwerk aus.
 5. Führen Sie ein Testfailover für den Anwendungswiederherstellungsplan aus.
-6. Markieren Sie nach Abschluss des Tests das Testfailover des Auftrags für den virtuellen Computer mit dem Domänencontroller und den Wiederherstellungsplan im Site Recovery-Portal auf der Registerkarte **Aufträge** als „Abgeschlossen“. 
+6. Markieren Sie nach Abschluss des Tests das Testfailover des Auftrags für den virtuellen Computer mit dem Domänencontroller und den Wiederherstellungsplan im Site Recovery-Portal auf der Registerkarte **Aufträge** als „Abgeschlossen“.
 
 ### DNS und Domänencontroller auf unterschiedlichen Computern
- 
+
 Wenn der DNS sich nicht auf dem gleichen virtuellen Computer wie der Domänencontroller befindet, müssen Sie eine DNS-VM für das Testfailover erstellen. Falls sich beide auf dem gleichen virtuellen Computer befinden, können Sie diesen Abschnitt überspringen.
 
 Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erstellen. Wenn Ihre Active Directory-Domäne beispielsweise „contoso.com“ lautet, können Sie eine DNS-Zone mit dem Namen „contoso.com“ erstellen. Die zu Active Directory gehörenden Einträge müssen wie folgt in DNS aktualisiert werden:
@@ -111,9 +111,9 @@ Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erste
 
 3. Fügen Sie dem DNS-Server eine Zone hinzu, erlauben Sie nicht sichere Updates, und fügen Sie einen Eintrag dafür dem DNS hinzu:
 
-	    dnscmd /zoneadd contoso.com  /Primary 
-	    dnscmd /recordadd contoso.com  contoso.com. SOA %computername%.contoso.com. hostmaster. 1 15 10 1 1 
-	    dnscmd /recordadd contoso.com %computername%  A <IP_OF_DNS_VM> 
+	    dnscmd /zoneadd contoso.com  /Primary
+	    dnscmd /recordadd contoso.com  contoso.com. SOA %computername%.contoso.com. hostmaster. 1 15 10 1 1
+	    dnscmd /recordadd contoso.com %computername%  A <IP_OF_DNS_VM>
 	    dnscmd /config contoso.com /allowupdate 1
 
 
@@ -121,4 +121,4 @@ Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erste
 
 Lesen Sie [Welche Workloads können mit Azure Site Recovery geschützt werden?](../site-recovery/site-recovery-workload.md), um weitere Informationen über den Schutz von Unternehmensworkloads mit Azure Site Recovery zu erhalten.
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Verwenden des Dashboards des StorSimple Manager-Geräts | Microsoft Azure"
    description="Beschreibt das Dashboard des StorSimple Manager-Geräts und erläutert, wie das Dashboard verwendet wird, um Speichermetriken und verbundene Initiatoren anzuzeigen sowie nach der Seriennummer und dem IQN zu suchen."
    services="storsimple"
@@ -6,13 +6,13 @@
    authors="alkohli"
    manager="carmonm"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/30/2015"
+   ms.date="05/09/2016"
    ms.author="alkohli" />
 
 # Verwenden des StorSimple Manager-Gerätedashboards
@@ -27,11 +27,11 @@ Das Dashboard enthält die folgenden Informationen:
 
 - **Diagrammfläche** – Sie sehen die zugehörigen Speichermetriken im Diagrammbereich oben auf dem Dashboard. In diesem Diagramm können Sie Metriken für den gesamten primären Speicher (die Menge der Daten, die von Hosts in das Gerät geschrieben wurden) sowie für den gesamten Cloudspeicher sehen, der von Ihrem Gerät in einem Zeitraum beansprucht wurde.
 
-     In diesem Zusammenhang bezieht sich *primärer Speicher* auf die Gesamtmenge der Daten, die vom Host geschrieben wurden. Er kann sowohl lokal gespeicherte Daten als auch Daten umfassen, die in die Cloud ausgelagert wurden. *Cloudspeicher* ist demgegenüber ein Maß für die Gesamtmenge der Daten, die in der Cloud gespeichert sind. Dies umfasst ausgelagerte Daten und Sicherungen. Beachten Sie Folgendes: In der Cloud gespeicherte Daten sind dedupliziert und komprimiert, der Primärspeicher dagegen zeigt die Menge an Speicherplatz an, der verwendet wird, bevor die Daten dedupliziert und komprimiert werden. (Sie können diese beiden Zahlen vergleichen, um einen Eindruck von der Komprimierungsrate zu erhalten.) Sowohl für primären als auch für Cloudspeicher basieren die angezeigten Mengen auf der Nachverfolgungshäufigkeit, die Sie konfigurieren. Wenn Sie beispielsweise eine Häufigkeit von einer Woche wählen, werden im Diagramm Daten für jeden Tag der vorherigen Woche angezeigt.
- 
+     In diesem Zusammenhang bezieht sich *primärer Speicher* auf die Gesamtmenge der Daten, die vom Host geschrieben wurden, und kann nach Volumetyp untergliedert werden: Der *primäre mehrstufige Speicher* enthält lokal gespeicherte Daten sowie auch Daten, die in die Cloud ausgelagert wurden. Der *primäre lokale Speicher* enthält nur lokal gespeicherte Daten. *Cloudspeicher* ist demgegenüber ein Maß für die Gesamtmenge der Daten, die in der Cloud gespeichert sind. Dies umfasst ausgelagerte Daten und Sicherungen. Beachten Sie Folgendes: In der Cloud gespeicherte Daten sind dedupliziert und komprimiert, der Primärspeicher dagegen zeigt die Menge an Speicherplatz an, der verwendet wird, bevor die Daten dedupliziert und komprimiert werden. (Sie können diese beiden Zahlen vergleichen, um einen Eindruck von der Komprimierungsrate zu erhalten.) Sowohl für primären als auch für Cloudspeicher basieren die angezeigten Mengen auf der Nachverfolgungshäufigkeit, die Sie konfigurieren. Wenn Sie beispielsweise eine Häufigkeit von einer Woche wählen, werden im Diagramm Daten für jeden Tag der vorherigen Woche angezeigt.
+
 	 Sie können das Diagramm wie folgt konfigurieren:
 
-	 - Um die Menge des über einen Zeitraum beanspruchten Cloudspeichers anzuzeigen, aktivieren Sie die Option **VERWENDETER CLOUDSPEICHER**. Um die gesamte Speichermenge anzuzeigen, die vom Host geschrieben wurde, aktivieren Sie die Option **VERWENDETER PRIMÄRER SPEICHER**. In der Abbildung sind beide Optionen aktiviert. Daher werden im Diagramm sowohl die Menge für den Cloudspeicher als auch die Menge für den primären Speicher angezeigt. 
+	 - Um die Menge des über einen Zeitraum beanspruchten Cloudspeichers anzuzeigen, aktivieren Sie die Option **VERWENDETER CLOUDSPEICHER**. Um die gesamte Speichermenge anzuzeigen, die vom Host geschrieben wurde, aktivieren Sie die Optionen **VERWENDETER PRIMÄRER MEHRSTUFIGER SPEICHER** und **VERWENDETER PRIMÄRER LOKALER SPEICHER**. In der Abbildung sind beide Optionen aktiviert. Daher werden im Diagramm sowohl die Menge für den Cloudspeicher als auch die Menge für den primären Speicher angezeigt. Beachten Sie, dass jeder vor der Installation von Update 2 verwendete primäre Speicher in der Zeile **VERWENDETER PRIMÄRER MEHRSTUFIGER SPEICHER** angegeben ist.
 	 - Verwenden Sie das Dropdownmenü in der oberen rechten Ecke des Diagramms, um einen Zeitraum von einer Woche, einem Monat, drei Monaten oder einem Jahr anzugeben. Beachten Sie, dass das Diagramm auf oberster Ebene nur einmal täglich aktualisiert wird und daher die Gesamtmengen des Vortags wiedergibt.
 
      Weitere Informationen finden Sie unter [Überwachen Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-monitor-device.md).
@@ -100,4 +100,4 @@ Möglicherweise benötigen Sie den Ziel-IQN des Geräts, wenn Sie das Challenge 
 - Erfahren Sie mehr über das [StorSimple Manager-Dienstdashboard](storsimple-service-dashboard.md).
 - Erfahren Sie mehr zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

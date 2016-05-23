@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/31/2016"
-	ms.author="lakasa"/>
+	ms.date="05/09/2016"
+	ms.author="robinsh"/>
 
 
 # Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
@@ -251,4 +251,4 @@ Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Le
 - Laden sie die Azure Key Vault-NuGet-Pakete [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) und [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) herunter.  
 - Werfen Sie einen Blick in die [Dokumentation zu Azure Key Vault](../key-vault/key-vault-whatis.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

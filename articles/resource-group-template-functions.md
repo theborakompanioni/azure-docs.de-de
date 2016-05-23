@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/22/2016"
+   ms.date="05/06/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenfunktionen im Azure-Ressourcen-Manager
@@ -228,15 +228,15 @@ Im nächsten Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 <a id="padleft" />
 ### padLeft
 
-**padLeft(stringToPad, totalLength, paddingCharacter)**
+**padLeft(valueToPad, totalLength, paddingCharacter)**
 
 Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen hinzugefügt werden, bis die angegebene Gesamtlänge erreicht ist.
   
 | Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| stringToPad | Ja | Die Zeichenfolge, die rechtsbündig ausgerichtet werden soll.
+| valueToPad | Ja | Die Zeichenfolge oder Ganzzahl, die rechtsbündig ausgerichtet werden soll.
 | totalLength | Ja | Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge.
-| paddingCharacter | Ja | Das Zeichen, das für das Auffüllen auf der linken Seite verwendet werden soll, bis die Gesamtlänge erreicht ist.
+| paddingCharacter | Nein | Das Zeichen, das für das Auffüllen auf der linken Seite verwendet werden soll, bis die Gesamtlänge erreicht ist. Der Standardwert ist ein Leerzeichen.
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis die Zeichenfolge zehn Zeichen lang ist. Wenn der ursprüngliche Parameterwert länger als zehn Zeichen ist, werden keine Zeichen hinzugefügt.
 
@@ -295,19 +295,35 @@ Im folgenden Beispiel wird die Eingabezeichenfolge durch ein Komma unterteilt.
 
 **string(valueToConvert)**
 
-Konvertiert den angegebenen Wert in eine Zeichenfolge (String).
+Konvertiert den angegebenen Wert in eine Zeichenfolge.
 
 | Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| valueToConvert | Ja | Der Wert, der in eine Zeichenfolge konvertiert werden soll. Der Wert kann nur den Typ „Boolean“, „Integer“ oder „String“ haben.
+| valueToConvert | Ja | Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays.
 
-Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in eine Zeichenfolge konvertiert.
+Im folgenden Beispiel werden die vom Benutzer angegebenen Parameterwerte in Zeichenfolgen konvertiert.
 
     "parameters": {
-        "appId": { "type": "int" }
+      "jsonObject": {
+        "type": "object",
+        "defaultValue": {
+          "valueA": 10,
+          "valueB": "Example Text"
+        }
+      },
+      "jsonArray": {
+        "type": "array",
+        "defaultValue": [ "a", "b", "c" ]
+      },
+      "jsonInt": {
+        "type": "int",
+        "defaultValue": 5
+      }
     },
     "variables": { 
-        "stringValue": "[string(parameters('appId'))]"
+      "objectString": "[string(parameters('jsonObject'))]",
+      "arrayString": "[string(parameters('jsonArray'))]",
+      "intString": "[string(parameters('jsonInt'))]"
     }
 
 <a id="substring" />
@@ -397,14 +413,14 @@ Im folgenden Beispiel werden die Leerzeichen aus dem vom Benutzer bereitgestellt
 
 **uniqueString (stringForCreatingUniqueString, ...)**
 
-Führt einen 64-Bit-Hash mit den bereitgestellten Zeichenfolgen durch, um eine eindeutige Zeichenfolge zu erstellen. Diese Funktion ist hilfreich, wenn Sie einen eindeutigen Namen für eine Ressource erstellen müssen. Sie geben Parameterwerte an, die die Ebene der Eindeutigkeit für das Ergebnis darstellen. Sie können angeben, ob der Name für Ihr Abonnement, die Ressourcengruppe oder die Bereitstellung eindeutig ist.
+Erstellt basierend auf den als Parametern angegebenen Werten eine eindeutige Zeichenfolge. Diese Funktion ist hilfreich, wenn Sie einen eindeutigen Namen für eine Ressource erstellen müssen. Sie geben Parameterwerte an, die die Ebene der Eindeutigkeit für das Ergebnis darstellen. Sie können angeben, ob der Name für Ihr Abonnement, die Ressourcengruppe oder die Bereitstellung eindeutig ist.
 
 | Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
 | stringForCreatingUniqueString | Ja | Die Basiszeichenfolge, die in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen.
 | Zusätzliche Parameter nach Bedarf. | Nein | Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt.
 
-Der zurückgegebene Wert ist keine vollständig zufällige Zeichenfolge, sondern eher das Ergebnis einer Hashfunktion. Der zurückgegebene Wert ist 13 Zeichen lang. Es ist nicht garantiert, dass er global eindeutig ist. Möglicherweise sollten Sie den Wert mit einem Präfix aus Ihren Benennungskonventionen kombinieren, um einen besser geeigneten Anzeigenamen zu erstellen.
+Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion. Der zurückgegebene Wert ist 13 Zeichen lang. Es ist nicht garantiert, dass er global eindeutig ist. Es empfiehlt sich, den Wert mit einem Präfix aus Ihrer Benennungskonvention zu kombinieren, um einen leichter erkennbaren Namen zu erstellen.
 
 Die folgenden Beispiele zeigen, wie Sie mithilfe von uniqueString einen eindeutigen Wert für verschiedene, häufig verwendete Ebenen erstellen können.
 
@@ -671,15 +687,6 @@ Sie können wie folgt über das zurückgegebene Objekt, beispielsweise den Blob-
 		}
 	}
 
-Wenn Sie die API-Version in Ihrer Vorlage nicht direkt angeben möchten, können Sie wie folgt mithilfe der [providers](#providers)-Funktion einen der Werte abrufen, etwa die aktuelle Version:
-
-    "outputs": {
-		"BlobUri": {
-			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).primaryEndpoints.blob]",
-			"type" : "string"
-		}
-	}
-
 Im folgenden Beispiel wird auf ein Speicherkonto in einer anderen Ressourcengruppe verwiesen:
 
     "outputs": {
@@ -717,7 +724,7 @@ Das folgende Beispiel nutzt den Speicherort der Ressourcengruppe, um einer Websi
 <a id="resourceid" />
 ### Ressourcen-ID
 
-**resourceId ([resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
+**resourceId ([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
 Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Der Bezeichner wird im folgenden Format zurückgeben:
 
@@ -725,6 +732,7 @@ Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird ver
       
 | Parameter | Erforderlich | Beschreibung
 | :---------------: | :------: | :----------
+| subscriptionId | Nein | Optionale Abonnement-ID. Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen.
 | ResourceGroupName | Nein | Optionaler Name von Ressourcengruppe. Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressource abrufen.
 | resourceType | Ja | Ressourcentyp einschließlich Namespace von Ressourcenanbieter.
 | resourceName1 | Ja | Name der Ressource.
@@ -733,7 +741,7 @@ Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird ver
 Das folgende Beispiel zeigt, wie die Ressourcen-IDs für eine Website und eine Datenbank abgerufen werden können. Die Website besteht in einer Ressourcengruppe namens **myWebsitesGroup** und die Datenbank in der aktuellen Ressourcengruppe für diese Vorlage.
 
     [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
-    [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'),parameters('databaseName'))]
+    [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
     
 Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen virtuellen Computer in einer alternativen Ressourcengruppe verwenden. Das Speicherkonto oder der virtuelle Computer können über mehrere Ressourcengruppen hinweg genutzt werden. Daher sollten Sie diese beim Löschvorgang für eine einzelne Ressourcengruppe nicht löschen. Das folgende Beispiel zeigt, wie eine Ressource einer externen Ressourcengruppe leicht genutzt werden kann:
 
@@ -807,4 +815,4 @@ Das folgende Beispiel zeigt ein Abrufen der Abonnement-Funktion im Ausgabeabschn
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="05/05/2016"
 	ms.author="giridham;jimpark"/>
 
 # Wiederherstellen von Daten von einem anderen DPM-Server im Sicherungstresor
@@ -32,7 +32,7 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
 
     ![Anmeldeinformationen des externen DPM](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
-    >[AZURE.NOTE]Sie können nur Daten zwischen DPM-Servern wiederherstellen, die bei demselben Sicherungstresor registriert sind.
+    >[AZURE.NOTE] Sie können nur Daten zwischen DPM-Servern wiederherstellen, die bei demselben Sicherungstresor registriert sind.
 
     Sobald der externe DPM-Server erfolgreich hinzugefügt wurde, können Sie die Daten vom externen DPM-Server und vom lokalen DPM-Server auf der Registerkarte **Wiederherstellung** durchsuchen.
 
@@ -73,7 +73,7 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
 
     ![Zusammenfassung der Optionen für die externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
-    >[AZURE.NOTE]Der Wiederherstellungsauftrag kann auf der Registerkarte **Überwachung** des DPM-Servers überwacht werden.
+    >[AZURE.NOTE] Der Wiederherstellungsauftrag kann auf der Registerkarte **Überwachung** des DPM-Servers überwacht werden.
 
     ![Überwachen der Wiederherstellung](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
 
@@ -103,4 +103,4 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
 ## Nächste Schritte:
 • [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0511_2016-->

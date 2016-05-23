@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="04/18/2016"
+	ms.date="05/10/2016"
 	ms.author="kgremban"/>
 
 #RBAC: Integrierte Rollen
@@ -34,7 +34,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von ClearDB-MySQL-DB](#cleardb-mysql-db-contributor) | Kann ClearDB MySQL-Datenbanken verwalten |
 | [Mitwirkender](#contributor) | Kann alles außer den Zugriff verwalten |
 | [Mitwirkender von Data Factory](#data-factory-contributor) | Kann Data Factorys verwalten |
-| [DevTest Lab-Benutzer](#devtest-lab-user) | Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
+| [DevTest Labs-Benutzer](#devtest-labs-user) | Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
 | [Mitwirkender von DocumentDB-Konto](#document-db-account-contributor) | Kann DocumentDB-Konten verwalten |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) | Kann Intelligent Systems-Konten verwalten |
 | [Mitwirkender von virtuellem Netzwerk](#network-contributor) | Kann alle Netzwerkressourcen verwalten |
@@ -152,22 +152,24 @@ Kann Data Factorys verwalten
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
-### DevTest Lab-Benutzer
+### DevTest Labs-Benutzer
 Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren
 
 | **Aktionen** ||
 | ------- | ------ |
-| */read | Lesen von Ressourcen aller Typen | | Microsoft.DevTestLab/labs/labStats/action | Lesen von Lab-Statistiken | | Microsoft.DevTestLab/Environments/* | Erstellen und Verwalten von Umgebungen |
-| Microsoft.DevTestLab/labs/createEnvironment/action | Erstellen einer Lab-Umgebung |
-| Microsoft.Compute/virtualMachines/start/action | Starten virtueller Computer |
-| Microsoft.Compute/virtualMachines/restart/action | Neustarten virtueller Computer |
-| Microsoft.Compute/virtualMachines/deallocate/action | Aufhebung der Zuordnung virtueller Computer |
-| Microsoft.Storage/storageAccounts/listKeys/action | Auflisten von Speicherkontoschlüsseln |
-| Microsoft.Network/virtualNetworks/join/action | Verknüpfen von virtuellen Netzwerken |
-| Microsoft.Network/loadBalancers/join/action | Verknüpfen von Load Balancern |
-| Microsoft.Network/publicIPAddresses/link/action | Verknüpfen mit öffentlichen IP-Adressen |
-| Microsoft.Network/networkInterfaces/link/action | Verknüpfen mit Netzwerkschnittstellen |
-| Microsoft.Network/networkInterfaces/write | Schreiben in Netzwerkschnittstellen |
+| */read | Ressourcen aller Typen lesen | | Microsoft.DevTestLab/labs/createEnvironment/action | Lab-Umgebung erstellen | | Microsoft.DevTestLab/labs/formulas/delete | Formeln löschen | 
+| Microsoft.DevTestLab/labs/formulas/write | Formeln hinzufügen oder ändern | 
+| Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Lab-Richtlinien auswerten | 
+| Microsoft.Compute/virtualMachines/start/action | virtuelle Computer starten | 
+| Microsoft.Compute/virtualMachines/restart/action | virtuelle Computer neu starten | 
+| Microsoft.Compute/virtualMachines/deallocate/action | Zuordnung virtueller Computer aufheben | 
+| Microsoft.Storage/storageAccounts/listKeys/action | Speicherkontoschlüssel auflisten | 
+| Microsoft.Network/virtualNetworks/subnets/join/action | virtuellem Netzwerk beitreten | 
+| Microsoft.Network/loadBalancers/backendAddressPools/join/action | Lastenausgleichs-Back-End-Adresspool beitreten | 
+| Microsoft.Network/loadBalancers/inboundNatRules/join/action | Lastenausgleichs-Eingangs-NAT-Regel beitreten | 
+| Microsoft.Network/publicIPAddresses/join/action | öffentlicher IP-Adresse beitreten | 
+| Microsoft.Network/networkInterfaces/join/action | virtuellen Computer mit einer Netzwerkschnittstelle verknüpfen | 
+| Microsoft.Network/networkInterfaces/write | Netzwerkschnittstellen schreiben |
 
 ### Mitwirkender von DocumentDB-Konto
 Kann DocumentDB-Konten verwalten
@@ -369,17 +371,17 @@ Kann klassische Speicherkonten verwalten
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von Speicherkonto
-Kann Speicherkonten verwalten
+Ermöglicht die Verwaltung von Speicherkonten, aber nicht den Zugriff darauf.
 
 | **Aktionen** ||
 | ------- | ------ |
 | Microsoft.Storage/storageAccounts/* | Erstellen und Verwalten von Speicherkonten |
 | Microsoft.Authorization/*/read | Lesen aller Autorisierungen |
-| Microsoft.Resources/subscriptions/resources/read | Lesen von Abonnementressourcen |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen für Abonnements |
-| Microsoft.Resources/subscriptions/resourceGroups/resources/read | Lesen von Ressourcen für Ressourcengruppen für Abonnements |
 | Microsoft.Resources/subscriptions/resourceGroups/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen für Abonnements |
+| Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
+| Microsoft.Insights/diagnosticSettings/* | Verwalten der Diagnoseeinstellungen |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Benutzerzugriffsadministrator
@@ -387,8 +389,7 @@ Kann den Benutzerzugriff auf Azure-Ressourcen verwalten
 
 | **Aktionen** ||
 | ------- | ------ |
-| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | 
-| Microsoft.Authorization/* | Lesen von Autorisierungen |
+| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | | Microsoft.Authorization/* | Lesen von Autorisierungen |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von klassischen virtuellen Computern
@@ -487,9 +488,9 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 | Microsoft.Insights/components/* | Erstellen und Verwalten von Insights-Komponenten |
 
 ## Weitere Informationen
-- [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
+- [Rollenbasierte Zugriffssteuerung:](role-based-access-control-configure.md) Erste Schritte mit RBAC im Azure-Portal.
 - [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihrer Zugriffsanforderungen erstellen.
 - [Erstellen eines Verlaufsbericht über Zugriffsänderungen](role-based-access-control-access-change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
 - [Problembehandlung bei rollenbasierter Zugriffssteuerung](role-based-access-control-troubleshooting.md): Abrufen von Vorschlägen zur Behebung häufig auftretender Probleme.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

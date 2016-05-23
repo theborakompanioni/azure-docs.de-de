@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Konfigurieren und Verwenden des Speicheremulators mit Visual Studio
 
 Die Azure SDK-Entwicklungsumgebung umfasst den Speicheremulator, ein Hilfsprogramm, das die in Azure verfügbaren Blob-, Warteschlangen- und Tabellenspeicherdienste auf dem lokalen Entwicklungscomputer simuliert. Wenn Sie einen Clouddienst erstellen, für den die Azure-Speicherdienste verwendet werden, oder wenn Sie eine beliebige externe Anwendung schreiben, mit der die Speicherdienste aufgerufen werden, können Sie den Code lokal mit dem Speicheremulator testen. Die Azure Tools für Microsoft Visual Studio integrieren die Verwaltung des Speicheremulators in Visual Studio. Mit den Azure Tools wird die Speicheremulator-Datenbank bei der ersten Verwendung initialisiert, der Speicheremulatordienst wird beim Ausführen oder Debuggen von Code von Visual Studio aus gestartet, und es wird schreibgeschützter Zugriff auf die Speicheremulatordaten über den Azure-Speicher-Explorer bereitgestellt.
 
-Ausführliche Informationen zum Speicheremulator, einschließlich der Systemanforderungen und der benutzerdefinierten Konfigurationsanweisungen, finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](./storage/storage-use-emulator/).
+Ausführliche Informationen zum Speicheremulator, einschließlich der Systemanforderungen und der benutzerdefinierten Konfigurationsanweisungen, finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](./storage/storage-use-emulator.md).
 
->[AZURE.NOTE] Es bestehen einige Unterschiede hinsichtlich der Funktionalität zwischen der Speicheremulatorsimulation und den Azure-Speicherdiensten. Informationen zu den spezifischen Unterschieden finden Sie in der Azure SDK-Dokumentation unter [Unterschiede zwischen dem Speicheremulator und den Azure-Speicherdiensten](./storage/storage-use-emulator).
+>[AZURE.NOTE] Es bestehen einige Unterschiede hinsichtlich der Funktionalität zwischen der Speicheremulatorsimulation und den Azure-Speicherdiensten. Informationen zu den spezifischen Unterschieden finden Sie in der Azure SDK-Dokumentation unter [Unterschiede zwischen dem Speicheremulator und den Azure-Speicherdiensten](./storage/storage-use-emulator.md).
 
 ## Konfigurieren einer Verbindungszeichenfolge für den Speicheremulator
 
@@ -43,4 +43,4 @@ Der Speicheremulator verfügt über eine Benutzeroberfläche, auf der Sie den St
 
 Der Azure Storage-Knoten im Server-Explorer ermöglicht Ihnen die Anzeige von Daten und das Ändern von Einstellungen für Blob- und Tabellendaten in Ihren Speicherkonten, einschließlich des Speicheremulators. Weitere Informationen finden Sie unter [Durchsuchen und Verwalten von Speicherressourcen mit Server-Explorer](https://msdn.microsoft.com/library/azure/ff683677.aspx).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

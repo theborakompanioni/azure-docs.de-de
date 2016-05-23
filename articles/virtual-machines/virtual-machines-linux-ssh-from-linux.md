@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/15/2015" 
+	ms.date="04/15/2016" 
 	ms.author="rasquill"/>
 
 #Verwenden von SSH mit Linux und Mac in Azure
@@ -29,7 +29,7 @@ In diesem Thema wird beschrieben, wie Sie **ssh-keygen** und **openssl** unter L
 
 ## Welche Dateien sind erforderlich?
 
-Ein grundlegendes SSH-Setup für Azure umfasst ein öffentliches und privates **SSH-RSA**-Schlüsselpaar mit 2.048 Bit (**ssh-keygen** speichert diese Dateien standardmäßig unter **~/.ssh/id\_rsa** und **~/.ssh/id-rsa.pub**, sofern Sie die Standardeinstellungen nicht ändern) sowie eine `.pem`-Datei, die zur Verwendung mit dem klassischen Bereitstellungsmodell des klassischen Portals aus der **id\_rsa**-Datei mit dem privaten Schlüssel generiert wird.
+Ein grundlegendes SSH-Setup für Azure umfasst ein öffentliches und privates **SSH-RSA**-Schlüsselpaar mit 2.048 Bit (**ssh-keygen** speichert diese Dateien standardmäßig unter **~/.ssh/id\_rsa** und **~/.ssh/id-rsa.pub**, sofern Sie die Standardeinstellungen nicht ändern) sowie eine `.pem`-Datei, die zur Verwendung mit dem klassischen Bereitstellungsmodell des klassischen Portals aus der **id\_rsa**-Datei mit dem privaten Schlüssel generiert wird.
 
 Im Folgenden sind die Dateitypen für die unterschiedlichen Bereitstellungsszenarien aufgeführt:
 
@@ -38,7 +38,7 @@ Im Folgenden sind die Dateitypen für die unterschiedlichen Bereitstellungsszena
 
 ## Erstellen von Schlüsseln zur Verwendung mit SSH
 
-Azure erfordert je nach Szenario 2.048 Bit große Schlüsseldateien im **SSH-RSA**-Format oder die entsprechenden PEM-Dateien. Wenn Sie bereits über diese Dateien verfügen, übergeben Sie die Datei mit dem öffentlichen Schlüssel beim Erstellen Ihrer Azure-VM.
+Wenn Sie bereits über SSH-Schlüssel verfügen, übergeben Sie die Datei mit dem öffentlichen Schlüssel beim Erstellen des virtuellen Azure-Computers.
 
 Falls Sie die Dateien erstellen müssen, gehen Sie wie folgt vor:
 
@@ -47,20 +47,17 @@ Falls Sie die Dateien erstellen müssen, gehen Sie wie folgt vor:
 	- Besuchen Sie im Fall von Mac die [Produktsicherheitswebsite von Apple](https://support.apple.com/HT201222), und wählen Sie ggf. die entsprechenden Updates aus.
 	- Für Debian-basierte Linux-Distributionen wie Ubuntu, Debian, Mint usw.:
 
-			sudo apt-get update ssh-keygen
-			sudo apt-get update openssl
+			sudo apt-get install --upgrade-only openssl
 
 	- Für RPM-basierte Linux-Distributionen wie CentOS und Oracle Linux:
 
-			sudo yum update ssh-keygen
 			sudo yum update openssl
 
 	- Für SLES und OpenSUSE
 
-			sudo zypper update ssh-keygen
 			sudo zypper update openssl
 
-2. Erstellen Sie mit **ssh-keygen** 2.048 Bit große RSA-Dateien für den öffentlichen und privaten Schlüssel, und übernehmen Sie den Standardspeicherort und -namen von `~/.ssh/id_rsa`, sofern Sie keinen bestimmten Speicherort oder Namen für die Dateien verwenden. Der grundlegende Befehl lautet wie folgt:
+2. Erstellen Sie mit **ssh-keygen** 2.048 Bit große RSA-Dateien für den öffentlichen und privaten Schlüssel, und übernehmen Sie den Standardspeicherort und -namen von `~/.ssh/id_rsa`, sofern Sie keinen bestimmten Speicherort oder Namen für die Dateien verwenden. Der grundlegende Befehl lautet wie folgt:
 
 		ssh-keygen -t rsa -b 2048 
 
@@ -72,9 +69,7 @@ Falls Sie die Dateien erstellen müssen, gehen Sie wie folgt vor:
 
 	Wenn Sie die PEM-Datei aus einer anderen Datei mit einem privaten Schlüssel erstellen möchten, ändern Sie das `-key`-Argument.
 
-> [AZURE.NOTE] Wenn Sie vorhaben, mit dem klassischen Bereitstellungsmodell bereitgestellte Dienste zu verwalten, können Sie auch eine **CER**-Datei erstellen. Dies erfordert jedoch weder die Verwendung von **SSH** noch das Herstellen einer Verbindung mit Linux-VMs und ist daher nicht Gegenstand dieses Artikels. Geben Sie zum Erstellen dieser Dateien unter Linux oder Mac „<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer“ ein,
-
-um die PEM-Datei in eine DER-codierte X509-Zertifikatsdatei zu konvertieren.
+> [AZURE.NOTE] Wenn Sie vorhaben, mit dem klassischen Bereitstellungsmodell bereitgestellte Dienste zu verwalten, können Sie auch eine **CER**-Datei erstellen. Dies erfordert jedoch weder die Verwendung von **SSH** noch das Herstellen einer Verbindung mit Linux-VMs und ist daher nicht Gegenstand dieses Artikels. Geben Sie zum Konvertieren der PEM-Datei in eine DER-codierte X509-Zertifikatsdatei unter Linux oder auf einem Mac Folgendes ein: <br /> openssl x509 -outform der -in myCert.pem -out myCert.cer
 
 ## Verwenden bereits vorhandener SSH-Schlüssel
 
@@ -86,7 +81,7 @@ Nachdem Sie die benötigten Dateien erstellt haben, stehen Ihnen viele Möglichk
 
 ### Beispiel: Erstellen einer VM mit der Datei „id\_rsa.pub“
 
-Das häufigste Szenario ist die imperative Erstellung einer VM – oder das Hochladen einer Vorlage zum Erstellen einer VM. Das folgende Codebeispiel veranschaulicht die Erstellung einer neuen, sicheren Linux-VM in Azure, indem der Name der öffentlichen Datei (in diesem Fall die Standarddatei `~/.ssh/id_rsa.pub`) an den Befehl `azure vm create` übergeben wird. (Die anderen Argumente wurden zuvor erstellt.)
+Das häufigste Szenario ist die imperative Erstellung einer VM – oder das Hochladen einer Vorlage zum Erstellen einer VM. Das folgende Codebeispiel veranschaulicht die Erstellung einer neuen, sicheren Linux-VM in Azure, indem der Name der öffentlichen Datei (in diesem Fall die Standarddatei `~/.ssh/id_rsa.pub`) an den Befehl `azure vm create` übergeben wird. (Die anderen Argumente, z.B. für die Ressourcengruppe und das Speicherkonto, wurden zuvor erstellt.) In diesem Beispiel wird die Resource Manager-Bereitstellungsmethode verwendet. Stellen Sie daher sicher, dass die Azure-Befehlszeilenschnittstelle entsprechend mit `azure config mode arm` festgelegt ist:
 
 	azure vm create \
 	--nic-name testnic \
@@ -94,7 +89,7 @@ Das häufigste Szenario ist die imperative Erstellung einer VM – oder das Hoch
 	--vnet-name testvnet \
 	--vnet-subnet-name testsubnet \
 	--storage-account-name computeteststore 
-	--image-urn canonical:UbuntuServer:14.04.3-LTS:latest \
+	--image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
 	--username ops \
 	-ssh-publickey-file ~/.ssh/id_rsa.pub \
 	testrg testvm westeurope linux
@@ -133,23 +128,23 @@ Das nächste Beispiel zeigt, wie das **SSH-RSA**-Format mit einer Ressourcen-Man
 	data:    location               String  West Europe
 	data:    vmSize                 String  Standard_A2
 	data:    vmName                 String  sshvm
-	data:    ubuntuOSVersion        String  14.04.2-LTS
+	data:    ubuntuOSVersion        String  14.04.4-LTS
 	info:    group deployment create command OK
 
 
 ### Beispiel: Erstellen einer VM mit einer PEM-Datei
 
-Sie können die PEM-Datei anschließend wie im folgenden Beispiel gezeigt mit dem klassischen Portal oder dem klassischen Bereitstellungsmodus und `azure vm create` verwenden:
+Sie können die PEM-Datei anschließend wie im folgenden Beispiel gezeigt mit dem klassischen Portal oder dem klassischen Bereitstellungsmodus (`azure config mode asm`) und `azure vm create` verwenden:
 
 	azure vm create \
 	-l "West US" -n testpemasm \
 	-P -t myCert.pem -e 22 \
 	testpemasm \
-	b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_3-LTS-amd64-server-20150908-de-DE-30GB \
+	b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160406-de-DE-30GB \
 	ops
 	info:    Executing command vm create
 	warn:    --vm-size has not been specified. Defaulting to "Small".
-	+ Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_3-LTS-amd64-server-20150908-de-DE-30GB
+	+ Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160406-de-DE-30GB
 	+ Looking up cloud service
 	info:    cloud service testpemasm not found.
 	+ Creating cloud service
@@ -232,7 +227,7 @@ Sie können die mit einer VM und dem klassischen Bereitstellungsmodell zu verwen
 	data:    Diagnostics Instance View:
 	info:    vm show command OK
 
-Wenn Sie bei der Erstellung der VM nicht den SSH-Standardport 22 verwendet haben, können Sie die Ports mit eingehenden Regeln wie im folgenden Beispiel gezeigt mit dem Befehl `azure network nsg show` ermitteln:
+Wenn Sie bei der Erstellung der VM nicht den SSH-Standardport 22 verwendet haben, können Sie die Ports mit eingehenden Regeln wie im folgenden Beispiel gezeigt mit dem Befehl `azure network nsg show` ermitteln:
 
 	azure network nsg show testrg testnsg
 	info:    Executing command network nsg show
@@ -263,30 +258,32 @@ Wenn Sie eine VM anhand einer PEM-Datei erstellt haben, die aus Ihrer Datei `~/.
 	RSA key fingerprint is dc:bb:e4:cc:59:db:b9:49:dc:71:a3:c8:37:36:fd:62.
 	Are you sure you want to continue connecting (yes/no)? yes
 	Warning: Permanently added 'testpemasm.cloudapp.net,40.83.178.221' (RSA) to the list of known hosts.
-	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
-
+	
+    Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-49-generic x86_64)
+	
 	* Documentation:  https://help.ubuntu.com/
 
-	System information as of Sat Oct 10 20:53:08 UTC 2015
+    System information as of Fri Apr 15 18:51:42 UTC 2016
 
-	System load: 0.52              Memory usage: 5%   Processes:       80
-	Usage of /:  45.3% of 1.94GB   Swap usage:   0%   Users logged in: 0
+    System load: 0.31              Memory usage: 2%   Processes:       213
+    Usage of /:  42.1% of 1.94GB   Swap usage:   0%   Users logged in: 0
 
-	Graph this data and manage this system at:
-		https://landscape.canonical.com/
+    Graph this data and manage this system at:
+    https://landscape.canonical.com/
 
-	Get cloud support with Ubuntu Advantage Cloud Guest:
-		http://www.ubuntu.com/business/services/cloud
+    Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
 
-	0 packages can be updated.
+    0 packages can be updated.
 	0 updates are security updates.
-
+	
 	The programs included with the Ubuntu system are free software;
 	the exact distribution terms for each program are described in the
 	individual files in /usr/share/doc/*/copyright.
-
+	
 	Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 	applicable law.
+
 
 ## Falls Sie Probleme beim Herstellen der Verbindung haben
 
@@ -296,4 +293,4 @@ Möglicherweise lässt sich das Problem mithilfe der Empfehlungen unter [Problem
  
 Nachdem Sie eine Verbindung mit Ihrer VM hergestellt haben, müssen Sie die ausgewählte Distribution vor der weiteren Verwendung unbedingt aktualisieren.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

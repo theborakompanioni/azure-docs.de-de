@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Hochladen einer Windows-VHD für den Ressourcen-Manager | Microsoft Azure"
-	description="Lernen Sie, wie Sie das Image einer VM auf Windows-Basis zur Verwendung mit dem Ressourcen-Manager-Bereitstellungsmodell hochladen."
+	description="Hier erfahren Sie, wie Sie das Image eines virtuellen Windows-Computers zur Verwendung mit dem Resource Manager-Bereitstellungsmodell hochladen."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -14,15 +14,13 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="05/06/2016"
 	ms.author="dkshir"/>
 
-# Hochladen eines Windows-VM-Images in Microsoft Azure für Ressourcen-Manager-Bereitstellungen
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-createupload-vhd.md).
+# Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen
 
 
-Dieser Artikel erläutert, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit einem Betriebssystem auf Windows-Basis hochladen, um sie zum Erstellen neuer Windows-VMs mithilfe des Ressourcen-Manager-Bereitstellungsmodells zu nutzen. Weitere Details zu Datenträgern und VHDs in Microsoft Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](virtual-machines-linux-about-disks-vhds.md).
+In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit einem Windows-Betriebssystem hochladen, um damit unter Verwendung des Azure Resource Manager-Bereitstellungsmodells neue virtuelle Windows-Computer (Windows-VMs) zu erstellen. Ausführlichere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](virtual-machines-linux-about-disks-vhds.md).
 
 
 
@@ -30,33 +28,37 @@ Dieser Artikel erläutert, wie Sie eine virtuelle Festplatte (Virtual Hard Disk,
 
 In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes verfügen:
 
-1. **Ein Azure-Abonnement** – wenn Sie keines besitzen, [eröffnen Sie ein kostenloses Azure-Konto](/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste – wie z. B. Websites – nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern. Sie können auch Ihre [Vorteile für MSDN-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Das MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
+- **Ein Azure-Abonnement**: Falls Sie noch nicht über ein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) und [MSDN-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
-2. **Microsoft Azure PowerShell 1.0.x** – stellen Sie sicher, dass Sie Microsoft Azure PowerShell Version 1.0.x installiert haben. Wenn Sie dies noch nicht installiert haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Sie sollten die Versionen 1.0 und höher verwenden, weil neue Ressourcen-Manager-Features nicht älteren PowerShell-Versionen hinzugefügt werden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/).
+- **Azure PowerShell ab Version 1.0**: Informationen zum Installieren finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-3. **Einen virtuellen Computer, auf dem das Betriebssystem Windows ausgeführt wird** – es stehen viele Tools zum lokalen Erstellen virtueller Computer zur Verfügung. Sie können z. B. Hyper-V Manager verwenden, um einen virtuellen Computer zu erstellen und das Betriebssystem zu installieren. Anweisungen hierzu finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx). Ausführliche Informationen zu unterstützen Windows-Betriebssystemen finden Sie unter [Microsoft Server Software-Support für virtuelle Microsoft Azure-Computer](https://support.microsoft.com/kb/2721672).
+- **Virtueller Windows-Computer**: Virtuelle Computer können mit verschiedensten Tools lokal erstellt werden. Informationen hierzu finden Sie beispielsweise unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx). Informationen zu von Azure unterstützen Windows-Betriebssystemen finden Sie unter [Microsoft Server Software-Support für virtuelle Microsoft Azure-Computer](https://support.microsoft.com/kb/2721672).
 
 
-## Stellen Sie sicher, dass der virtuelle Computer das richtige Dateiformat hat.
+## Sicherstellen, dass für den virtuellen Computer das richtige Dateiformat verwendet wird
 
-Microsoft Azure akzeptiert nur Images für [virtuelle Computer der Generation 1](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx), die im VHD-Dateiformat gespeichert sind. Die Größe der VHD muss fest sein und einer ganzen Zahl in MB entsprechen. Die maximal zulässige Größe für die VHD beträgt 1.023 GB.
+Azure akzeptiert Images nur für [virtuelle Computer der Generation 1](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx), die im VHD-Dateiformat gespeichert sind. Die Größe der virtuellen Festplatte muss statisch sein und als ganze, durch Acht teilbare Anzahl von Megabytes angegeben werden. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB.
 
-- Der Hyper-V Manager speichert in der Regel Ihr VM-Image in einem VHDX-Format, das in Microsoft Azure nicht unterstützt wird. Sie können es entweder mit Hyper-V oder dem [Convert-VHD-PowerShell-Cmdlet](http://technet.microsoft.com/library/hh848454.aspx) in das VHD-Format konvertieren. Informationen zu Verwendungsschritten mit PowerShell finden Sie unter [Converting Hyper-V .vhdx to .vhd file formats](https://blogs.technet.microsoft.com/cbernier/2013/08/29/converting-hyper-v-vhdx-to-vhd-file-formats-for-use-in-windows-azure/) (Konvertieren von Hyper-V-VHDX in VHD-Dateiformate). Oder wählen Sie in Hyper-V Ihren lokalen Computer auf der linken Seite, und klicken Sie dann im Menü darüber auf **Aktionen** > **Datenträger bearbeiten...**. Navigieren Sie durch die Bildschirme, indem Sie auf **Weiter** klicken und diese Optionen eingeben: Pfad für die VHDX-Datei > **Konvertieren** > **VHD** > **Feste Größe** > Pfad für die neue VHD-Datei. Klicken Sie zum Abschluss auf **Fertig stellen**.
+- Wenn Sie über ein Windows-VM-Image im VHDX-Format verfügen, konvertieren Sie es auf eine der folgenden Arten in eine virtuelle Festplatte:
 
-- Wenn Sie ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) besitzen, können Sie es mit dem [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) in ein VHD-Format konvertieren. Lesen Sie den Blog [How to Convert a VMWare VMDK to Hyper-V VHD](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx) (Konvertieren von VMWare-VMDK in Hyper-V-VHD), um weitere Informationen zu erhalten.
+	- Hyper-V: Öffnen Sie Hyper-V, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Klicken Sie im Menü darüber auf **Aktion** > **Datenträger bearbeiten...**. Klicken Sie auf **Weiter**, um durch die Bildschirme zu navigieren, und geben Sie dabei folgende Optionen ein: *Pfad für die VHDX-Datei* > **Konvertieren** > **VHD** > **Feste Größe** > *Pfad für die neue VHD-Datei*. Klicken Sie zum Abschluss auf **Fertig stellen**.
+
+	- [Convert-VHD (PowerShell-Cmdlet)](http://technet.microsoft.com/library/hh848454.aspx): Weitere Informationen finden Sie im Blogbeitrag [Converting Hyper-V .vhdx to .vhd file formats](https://blogs.technet.microsoft.com/cbernier/2013/08/29/converting-hyper-v-vhdx-to-vhd-file-formats-for-use-in-windows-azure/) (So wird's gemacht: Konvertieren des Hyper-V-VHDX-Dateiformats in das VHD-Dateiformat).
+
+- Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) in eine virtuelle Festplatte. Weitere Informationen finden Sie im Blog [How to Convert a VMWare VMDK to Hyper-V VHD](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx) (Konvertieren von VMWare-VMDK in Hyper-V-VHD).
 
 
 ## Vorbereiten des VHD-Images für den Upload
 
 In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer generalisieren. Dadurch werden unter anderem alle persönlichen Kontoinformationen entfernt. Sie sollten diesen Schritt üblicherweise ausführen, wenn Sie ein VM-Image zum schnellen Bereitstellen ähnlicher virtueller Computer verwenden möchten. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx) (in englischer Sprache).
 
-1. Melden Sie sich bei einem virtuellen Windows-Computer an.
+1. Melden Sie sich bei dem virtuellen Windows-Computer an.
 
-2. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\\system32\\sysprep**, und führen Sie dann `sysprep.exe` aus.
+2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\\system32\\sysprep**, und führen Sie dann `sysprep.exe` aus.
 
 3. Führen Sie im Dialogfeld **Systemvorbereitungstool** folgende Schritte aus:
 
-	1. Wählen Sie unter **Systembereinigungsaktion** die Option **Out-of-Box-Experience (OOBE) für System aktivieren** und stellen Sie sicher, dass **Verallgemeinern** aktiviert ist.
+	1. Wählen Sie unter **Systembereinigungsaktion** die Option **Out-of-Box-Experience (OOBE) für System aktivieren** und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
 
 	2. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
 
@@ -64,34 +66,34 @@ In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer gen
 
 	![Starten von Sysprep](./media/virtual-machines-windows-upload-image/sysprepgeneral.png)
 
-</br>
+</br> <a id="createstorage"></a>
 ## Erstellen oder Suchen eines Azure-Speicherkontos
 
-Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Sie können das Portal oder die PowerShell zu diesem Zweck nutzen.
+Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Für diesen Schritt kann entweder das Azure-Portal oder PowerShell verwendet werden.
 
-### Verwenden des Portals
+### So erstellen oder finden Sie ein Speicherkonto mithilfe des Azure-Portals
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Portal](https://portal.azure.com) an.
 
 2. Klicken Sie auf **Durchsuchen** > **Speicherkonten**.
 
-3. Überprüfen Sie, ob ein Speicherkonto vorhanden ist, dass Sie für das Hochladen dieses Bilds verwenden möchten. Notieren Sie den Namen dieses Speicherkontos. Wenn Sie ein vorhandenes Speicherkonto verwenden, können Sie mit dem Abschnitt [Hochladen des VM-Images auf Ihr Speicherkonto](#uploadvm) fortfahren.
+3. Prüfen Sie, ob ein Speicherkonto vorhanden ist, das Sie zum Hochladen des Images verwenden möchten. Notieren Sie den Namen dieses Speicherkontos. Bei Verwendung eines vorhandenen Speicherkontos können Sie mit dem Abschnitt [Hochladen des VM-Images auf Ihr Speicherkonto](#uploadvm) fortfahren.
 
-4. Wenn Sie ein neues Speicherkonto erstellen möchten, klicken Sie auf **Hinzufügen**, und geben Sie die folgenden Informationen ein:
+4. Wenn Sie ein neues Speicherkonto erstellen möchten, klicken Sie auf **Hinzufügen**, und geben Sie folgende Informationen ein:
 
-	1. Geben Sie den **Namen** für das Speicherkonto ein. Er sollte nur zwischen 3 und 24 Kleinbuchstaben und Ziffern enthalten. Dieser Name wird Teil der URL, mit der Sie vom Speicherkonto aus auf Blob, Dateien und andere Ressourcen zugreifen.
+	1. Geben Sie den Namen für das Speicherkonto ein. Er sollte nur zwischen 3 und 24 Kleinbuchstaben und Ziffern enthalten. Dieser Name wird Teil der URL, über die Sie auf Blobs, Dateien und andere Ressourcen des Speicherkontos zugreifen.
+	
+	2. Wählen Sie als Bereitstellungsmodell die Option *Resource Manager* aus.
 
-	2. Wählen Sie den **Typ** des Speicherkontos, das Sie erstellen möchten. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+	3. Wählen Sie passende Werte für Kontoart, Leistung und Replikation aus. Zeigen Sie bei Bedarf auf die Informationssymbole, um weitere Informationen zu den Werten zu erhalten.
 
-	3. Geben Sie den Namen der **Ressourcengruppe** ein. Das Portal erstellt eine neue Ressourcengruppe, wenn es keine vorhandene dieses Namens findet.
+	4. Wählen Sie unter **Ressourcengruppe** entweder *+ Neu* oder eine vorhandene Ressourcengruppe aus. Falls Sie eine neue Ressourcengruppe erstellen möchten, geben Sie den Namen der neuen Ressourcengruppe ein.
 
-	4. Wählen Sie den **Speicherort** für das Speicherkonto.
-
-	5. Klicken Sie auf **Erstellen**. Das Konto wird nun im Bereich **Speicherkonten** angezeigt.
+	5. Wählen Sie den Standort für das Speicherkonto aus, und klicken Sie anschließend auf **Erstellen**. Das Konto wird nun im Bereich **Speicherkonten** angezeigt.
 
 		![Speicherkontodetails eingeben](./media/virtual-machines-windows-upload-image/portal_create_storage_account.png)
 
-	6. Dieser und die nächsten Schritte zeigen Ihnen, wie Sie einen Blobcontainer in diesem Speicherkonto erstellen. Dies ist optional, da der PowerShell-Befehl zum Hochladen des Images auch einen neuen Blobcontainer für Ihr Image erstellen kann. Wenn Sie ihn nicht selbst erstellen möchten, fahren Sie mit dem Abschnitt [Hochladen des VM-Images auf Ihr Speicherkonto](#uploadvm) fort. Klicken Sie andernfalls in der Kachel **Dienste** auf **Blobs**.
+	6. Dieser und die nächsten Schritte zeigen die Vorgehensweise zum Erstellen eines Blobcontainers in diesem Speicherkonto. Dies ist optional, da Sie auch den PowerShell-Befehl zum Hochladen des Images verwenden können, um einen neuen Blobcontainer für Ihr Image zu erstellen. Wenn Sie den Container nicht selbst erstellen möchten, fahren Sie mit dem Abschnitt [Hochladen des VM-Images auf Ihr Speicherkonto](#uploadvm) fort. Klicken Sie andernfalls auf der Kachel **Dienste** auf **Blobs**.
 
 		![Blob-Dienst](./media/virtual-machines-windows-upload-image/portal_create_blob.png)
 
@@ -99,12 +101,12 @@ Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie kön
 
 		![Erstellen eines neuen Blobs](./media/virtual-machines-windows-upload-image/portal_create_container.png)
 
-  		> [AZURE.NOTE] Der Container ist standardmäßig privat, und der Containerzugriff ist auf den Kontobesitzer eingeschränkt. Um öffentliche Lesezugriffe auf die im Container enthaltenen Blobs, jedoch nicht auf die Containereigenschaften und -metadaten zuzulassen, verwenden Sie die Option **Blob**. Um vollständigen öffentlichen Lesezugriff auf den Container und die Blobs zuzulassen, verwenden Sie die Option **Container**.
+  		> [AZURE.NOTE] Der Container ist standardmäßig privat, und der Containerzugriff ist auf den Kontobesitzer eingeschränkt. Mit der Option **Blob** können Sie eine öffentliche Leseberechtigung für die im Container enthaltenen Blobs, jedoch nicht für die Containereigenschaften und -metadaten gewähren. Eine uneingeschränkte öffentliche Leseberechtigung für den Container und die Blobs kann mithilfe der Option **Container** gewährt werden.
 
-	8. Im Bereich **Blob-Dienst** wird der neue Blobcontainer aufgelistet. Notieren Sie die URL dieses Containers, denn Sie benötigen sie für den PowerShell-Befehl zum Hochladen des Images. Abhängig von der Länge der URL und Ihrer Bildschirmauflösung wird die URL möglicherweise teilweise ausgeblendet. Maximieren Sie in diesem Fall den Bereich, indem Sie auf das Symbol *Maximieren* in der oberen rechten Ecke klicken.
+	8. Der neue Blobcontainer wird im Bereich **Blob-Dienst** angezeigt. Notieren Sie sich die URL dieses Containers; sie wird für den PowerShell-Befehl zum Hochladen des Images benötigt. Je nach Bildschirmauflösung und Länge der URL wird die URL unter Umständen nicht vollständig angezeigt. Maximieren Sie in diesem Fall den Bereich, indem Sie in der rechten oberen Ecke auf das Symbol **Maximieren** klicken.
 
 
-### Mithilfe von PowerShell
+### So erstellen oder finden Sie ein Speicherkonto mithilfe von PowerShell
 
 1. Öffnen Sie Azure PowerShell 1.0.x, und melden Sie sich bei Ihrem Azure-Konto an.
 
@@ -112,7 +114,7 @@ Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie kön
 
 	Dieser Befehl öffnet ein Popupfenster, in dem Sie Ihre Azure-Anmeldeinformationen eingeben können.
 
-2. Wenn sich die standardmäßig ausgewählte Abonnement-ID von derjenigen unterscheidet, mit der Sie arbeiten möchten, verwenden Sie einen der beiden folgenden Befehle, um das gewünschte Abonnement festzulegen.
+2. Falls die standardmäßig ausgewählte Abonnement-ID nicht der gewünschten ID entspricht, verwenden Sie einen der folgenden Befehle, um das gewünschte Abonnement festzulegen:
 
 		Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
 
@@ -120,17 +122,17 @@ Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie kön
 
 		Select-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
 
-	Sie finden die in Ihrem Azure-Konto enthaltenen Abonnements mit dem Befehl `Get-AzureRmSubscription`.
+	Die in Ihrem Azure-Konto enthaltenen Abonnements können mithilfe des Befehls `Get-AzureRmSubscription` ermittelt werden.
 
-3. Suchen Sie die unter diesem Abonnement verfügbaren Speicherkonten.
+3. Ermitteln Sie die unter diesem Abonnement verfügbaren Speicherkonten.
 
 		Get-AzureRmStorageAccount
 
 	Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, fahren Sie mit dem Abschnitt [Hochladen des VM-Images auf Ihr Speicherkonto](#uploadvm) fort.
 
-4. Wenn Sie ein neues Speicherkonto zum Speichern dieses Images erstellen möchten, gehen Sie folgendermaßen vor:
+4. Gehen Sie andernfalls wie folgt vor, um ein neues Speicherkonto zum Speichern dieses Images zu erstellen:
 
-	1. Stellen Sie sicher, dass Sie über eine Ressourcengruppe für dieses Speicherkonto verfügen. Mit folgendem Befehl finden Sie alle Ressourcengruppen in Ihrem Abonnement:
+	1. Vergewissern Sie sich, dass Sie über eine Ressourcengruppe für dieses Speicherkonto verfügen. Verwenden Sie den folgenden Befehl, um alle in Ihrem Abonnement enthaltenen Ressourcengruppen zu ermitteln:
 
 			Get-AzureRmResourceGroup
 
@@ -144,26 +146,27 @@ Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie kön
 
 
 </br> <a id="uploadvm"></a>
+
 ## Hochladen des VM-Images auf Ihr Speicherkonto
 
-Verwenden Sie diese Schritte in Azure PowerShell, um das VM-Image auf Ihr Speicherkonto hochzuladen. Ihr Image wird in einen Blobspeichercontainer in diesem Konto hochgeladen; Sie können einen vorhandenen Container verwenden oder einen neuen erstellen.
+Führen Sie in Azure PowerShell die folgenden Schritte aus, um das VM-Image in Ihr Speicherkonto hochzuladen. Das Image wird in einen Blob-Speichercontainer des Kontos hochgeladen. Sie können entweder einen vorhandenen Container verwenden oder einen neuen Container erstellen.
 
-1. Melden Sie sich mit `Login-AzureRmAccount` bei Azure PowerShell 1.0.x an, und stellen Sie mit `Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` sicher, dass Sie das richtige Abonnement verwenden, wie im vorherigen Abschnitt erwähnt.
+1. Melden Sie mithilfe des folgenden Befehls bei Azure PowerShell 1.0.x an: `Login-AzureRmAccount`. Vergewissern Sie sich mithilfe des Befehls `Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"`, dass Sie das richtige Abonnement verwenden (wie im vorherigen Abschnitt beschrieben).
 
-2. Fügen Sie die allgemeine Azure-VHD mit [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) dem Speicherkonto hinzu:
+2. Fügen Sie die generalisierte virtuelle Azure-Festplatte mithilfe des Cmdlets [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) dem Speicherkonto hinzu:
 
 		Add-AzureRmVhd -ResourceGroupName YourResourceGroup -Destination "<StorageAccountURL>/<BlobContainer>/<TargetVHDName>.vhd" -LocalFilePath <LocalPathOfVHDFile>
 
 	Hierbei gilt:
-	- **StorageAccountURL** ist die URL für das Speicherkonto. In der Regel hat sie folgendes Format: `https://YourStorageAccountName.blob.core.windows.net`. Beachten Sie, dass Sie anstelle von **YourStorageAccountName** den Namen des vorhandenen oder neuen Speicherkontos verwenden müssen.
+	- **StorageAccountURL** ist die URL für das Speicherkonto. Sie hat in der Regel folgendes Format: `https://YourStorageAccountName.blob.core.windows.net`. Wichtig: Ersetzen Sie *YourStorageAccountName* durch den Namen des vorhandenen oder neuen Speicherkontos.
 	- **BlobContainer** ist der BLOB-Container, in dem Sie Ihre Images speichern möchten. Wenn das Cmdlet keinen vorhandenen BLOB-Container dieses Namens findet, erstellt es einen neuen für Sie.
 	- **TargetVHDName** ist der Name, unter dem Sie das Image speichern möchten.
 	- **LocalPathOfVHDFile** ist der vollständige Pfad und Name der VHD-Datei auf Ihrem lokalen Computer.
 
-	Eine erfolgreiche Ausführung von `Add-AzureRmVhd` sieht folgendermaßen aus:
+	Eine erfolgreiche Ausführung von `Add-AzureRmVhd` führt zu einem Ergebnis wie dem folgenden:
 
 		C:\> Add-AzureRmVhd -ResourceGroupName testUpldRG -Destination https://testupldstore2.blob.core.windows.net/testblobs/WinServer12.vhd -LocalFilePath "C:\temp\WinServer12.vhd"
-		MD5 hash is being calculated for the file  C:\temp\WinServer12.vhd.
+		MD5 hash is being calculated for the file C:\temp\WinServer12.vhd.
 		MD5 hash calculation is completed.
 		Elapsed time for the operation: 00:03:35
 		Creating new page blob of size 53687091712...
@@ -178,13 +181,13 @@ Verwenden Sie diese Schritte in Azure PowerShell, um das VM-Image auf Ihr Speich
 </br>
 ## Bereitstellen eines neuen virtuellen Computers vom hochgeladenen Image aus
 
-Jetzt können Sie das hochgeladene Image verwenden, um eine neue Windows-VM zu erstellen. In den folgenden Schritten lernen Sie, wie Sie diese VM mit Azure PowerShell und dem in den vorherigen Schritten hochgeladenen VM-Image in einem neuen virtuellen Netzwerk erstellen.
+Jetzt können Sie das hochgeladene Image verwenden, um eine neue Windows-VM zu erstellen. In den folgenden Schritten erfahren Sie, wie Sie mit Azure PowerShell und dem in den vorherigen Schritten hochgeladenen VM-Image einen virtuellen Computer in einem neuen virtuellen Netzwerk erstellen.
 
 >[AZURE.NOTE] Das VM-Image und der zu erstellende virtuelle Computer müssen sich in dem gleichen Speicherkonto befinden.
 
 ### Erstellen von Netzwerkressourcen
 
-Verwenden Sie das folgende PowerShell-Beispielskript, um ein virtuelles Netzwerk und eine Netzwerkschnittstellenkarte (Network Interface Card, NIC) für den neuen virtuellen Computer zu erstellen. Verwenden Sie für die durch das **$**-Zeichen dargestellten Variablen Werte, die für Ihre Anwendung geeignet sind.
+Verwenden Sie das folgende PowerShell-Beispielskript, um ein virtuelles Netzwerk und eine Netzwerkschnittstellenkarte (Network Interface Card, NIC) für den neuen virtuellen Computer zu erstellen. Verwenden Sie für die durch **$** gekennzeichneten Variablen geeignete Werte für Ihre Anwendung.
 
 	$pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
 
@@ -196,9 +199,9 @@ Verwenden Sie das folgende PowerShell-Beispielskript, um ein virtuelles Netzwerk
 
 ### Erstellen eines neuen virtuellen Computers
 
-Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für den virtuellen Computer einrichten und das hochgeladene VM-Image als Quelle für die neue Installation verwenden. </br>
+Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für den virtuellen Computer einrichten und das hochgeladene VM-Image als Quelle für die neue Installation verwenden: </br>
 
-	#Enter a new username and password in the pop-up for the following
+	#Enter a new user name and password in the pop-up window for the following
 	$cred = Get-Credential
 
 	#Get the storage account where the uploaded image is stored
@@ -216,14 +219,14 @@ Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für d
 	#Create the OS disk URI
 	$osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 
-	#Configure the OS disk to be created from image (-CreateOption fromImage) and give the URL of the uploaded image VHD for the -SourceImageUri parameter
+	#Configure the OS disk to be created from the image (-CreateOption fromImage), and give the URL of the uploaded image VHD for the -SourceImageUri parameter
 	#You can find this URL in the result of the Add-AzureRmVhd cmdlet above
 	$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
 
 	#Create the new VM
 	New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 
-Beispielsweise könnte der Workflow wie folgt aussehen:
+Der Workflow kann etwa wie folgt aussehen:
 
 		C:\> $pipName = "testpip6"
 		C:\> $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
@@ -248,7 +251,7 @@ Beispielsweise könnte der Workflow wie folgt aussehen:
 		--------- ------------------- ---------- ------------
 		                         True         OK OK
 
-Nun müsste der neu erstellte virtuelle Computer angezeigt werden – entweder im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** ODER nach Ausführen der folgenden PowerShell-Befehle:
+Der neu erstellte virtuelle Computer müsste nun im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
 
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
@@ -256,6 +259,6 @@ Nun müsste der neu erstellte virtuelle Computer angezeigt werden – entweder i
 
 ## Nächste Schritte
 
-Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager und PowerShell](virtual-machines-windows-ps-manage.md).
+Informationen zum Verwalten des neuen virtuellen Computers mithilfe von Azure PowerShell finden Sie unter [Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

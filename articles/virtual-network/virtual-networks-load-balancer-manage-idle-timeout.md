@@ -1,15 +1,15 @@
 <properties 
-   authors="danielceckert" 
+   authors="jimdial" 
    documentationCenter="dev-center-name" 
    editor=""
-   manager="jefco" 
+   manager="carmonm" 
    pageTitle="Verwalten: Leerlauftimeout für Lastenausgleich" 
    description="Verwaltungsfunktionen für das Leerlauftimeout für den Azure-Lastenausgleich" 
    services="virtual-network" 
    />
 
 <tags
-   ms.author="danecke"
+   ms.author="jdial"
    ms.date="09/01/2015"
    ms.devlang="na"
    ms.service="virtual-network"
@@ -20,7 +20,7 @@
    
 # Verwalten virtueller Netzwerke: TCP-Leerlauftimeout für Lastenausgleich
 
-Mithilfe eines **TCP-Leerlauftimeouts** kann ein Entwickler einen garantierten Schwellenwert für Inaktivität während Client/Server-Sitzungen festlegen, in denen der Azure-Lastenausgleich verwendet wird. Ein TCP-Leerlauftimeout von 4 Minuten (der Standardwert für den Azure-Lastenausgleich) bedeutet Folgendes: Wenn während einer Client/Server-Sitzung, in der der Azure-Lastenausgleich verwendet wird, über einen Zeitraum von mehr als 4 Minuten keine Aktivität festgestellt wird, wird die Verbindung geschlossen.
+Mithilfe eines **TCP-Leerlauftimeouts** kann ein Entwickler einen garantierten Schwellenwert für Inaktivität während Client/Server-Sitzungen festlegen, in denen der Azure-Lastenausgleich verwendet wird. Ein TCP-Leerlauftimeout von 4 Minuten (der Standardwert für den Azure-Lastenausgleich) bedeutet Folgendes: Wenn während einer Client/Server-Sitzung, in der der Azure-Lastenausgleich verwendet wird, über einen Zeitraum von mehr als 4 Minuten keine Aktivität festgestellt wird, wird die Verbindung geschlossen.
 
 Sobald eine Client/Server-Verbindung geschlossen wird, wird in der Clientanwendung eine Fehlermeldung ähnlich dieser angezeigt: "Die zugrunde liegende Verbindung wurde geschlossen: Eine Verbindung, deren Aufrechterhaltung erwartet wurde, ist vom Server geschlossen worden."
 
@@ -28,7 +28,7 @@ Sobald eine Client/Server-Verbindung geschlossen wird, wird in der Clientanwendu
 
 TCP-Keep-Alive funktioniert üblicherweise gut, ist für mobile Anwendungen im Allgemeinen jedoch nicht zu empfehlen, da es die begrenzten Energieressourcen mobiler Geräte belastet. Eine mobile Anwendung, die TCP-Keep-Alive verwendet, verbraucht den Geräteakku schneller, da sie ständig Energie für die Netzwerknutzung benötigt.
 
-Zur Unterstützung von Szenarien mit Mobilgeräten unterstützt der Azure-Lastenausgleich ein konfigurierbares TCP-Leerlauftimeout. Entwickler können das TCP-Leerlauftimeout für eingehende Verbindungen auf einen beliebigen Zeitraum zwischen 4 und 30 Minuten festlegen (das konfigurierbare TCP-Leerlauftimeout gilt nicht für ausgehende Verbindungen). So können Clients auch bei langen inaktiven Zeiträumen eine wesentlich längere Sitzung mit einem Server aufrechterhalten. Für eine Anwendung auf einem mobilen Gerät kann weiterhin das TCP-Keep-Alive-Verfahren genutzt werden, um Verbindungen mit einem Inaktivitätszeitraum von mehr als 30 Minuten aufrechtzuerhalten. Mit diesem höheren TCP-Leerlauftimeout ist es jedoch möglich, dass Anwendungen wesentlich seltener TCP-Keep-Alive-Anforderungen senden – dadurch werden die Energieressourcen von mobilen Geräten deutlich weniger belastet.
+Zur Unterstützung von Szenarien mit Mobilgeräten unterstützt der Azure-Lastenausgleich ein konfigurierbares TCP-Leerlauftimeout. Entwickler können das TCP-Leerlauftimeout für eingehende Verbindungen auf einen beliebigen Zeitraum zwischen 4 und 30 Minuten festlegen (das konfigurierbare TCP-Leerlauftimeout gilt nicht für ausgehende Verbindungen). So können Clients auch bei langen inaktiven Zeiträumen eine wesentlich längere Sitzung mit einem Server aufrechterhalten. Für eine Anwendung auf einem mobilen Gerät kann weiterhin das TCP-Keep-Alive-Verfahren genutzt werden, um Verbindungen mit einem Inaktivitätszeitraum von mehr als 30 Minuten aufrechtzuerhalten. Mit diesem höheren TCP-Leerlauftimeout ist es jedoch möglich, dass Anwendungen wesentlich seltener TCP-Keep-Alive-Anforderungen senden – dadurch werden die Energieressourcen von mobilen Geräten deutlich weniger belastet.
 
 ## Implementierung
 
@@ -46,11 +46,11 @@ Ein TCP-Leerlauftimeout kann für Folgendes konfiguriert werden:
 ## PowerShell-Beispiele
 Laden Sie die neueste [Azure PowerShell-Version](https://github.com/Azure/azure-sdk-tools/releases) herunter, um optimale Ergebnisse zu erzielen.
 
-### Festlegen des TCP-Timeouts für Ihre öffentliche IP auf Instanzebene auf 15 Minuten
+### Festlegen des TCP-Timeouts für Ihre öffentliche IP auf Instanzebene auf 15 Minuten
 
     Set-AzurePublicIP –PublicIPName webip –VM MyVM -IdleTimeoutInMinutes 15
 
-"IdleTimeoutInMinutes" ist optional. Wenn dieser Wert nicht festgelegt ist, beträgt das Standardtimeout 4 Minuten. Das Timeout kann jetzt auf einen Wert zwischen 4 und 30 Minuten festgelegt werden.
+"IdleTimeoutInMinutes" ist optional. Wenn dieser Wert nicht festgelegt ist, beträgt das Standardtimeout 4 Minuten. Das Timeout kann jetzt auf einen Wert zwischen 4 und 30 Minuten festgelegt werden.
 
 ### Festlegen des Leerlauftimeouts beim Erstellen eines Azure-Endpunkts auf einem virtuellen Computer
 
@@ -118,7 +118,7 @@ Entwickler können die Lastenausgleichsverteilung mithilfe der Dienstverwaltungs
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
 
-Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) oder "sourceIPProtocol" (3-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, d. h. 5-Tupel-Konfiguration).
+Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) oder "sourceIPProtocol" (3-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, d. h. 5-Tupel-Konfiguration).
 
 #### Antwort
 
@@ -152,4 +152,4 @@ Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) ode
     </LoadBalancedEndpointList>
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

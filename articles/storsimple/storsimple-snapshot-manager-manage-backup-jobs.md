@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 
@@ -40,7 +40,7 @@ Verwenden Sie das folgende Verfahren, um geplante Sicherungsaufträge anzuzeigen
 
     - **Letzte Ausführung** – das Datum und die Uhrzeit der letzten geplanten Momentaufnahme
 
-    >[AZURE.NOTE]Bei einmaligen Momentaufnahmen sind die Informationen **Nächste Ausführung** und **Letzte Ausführung** identisch.
+    >[AZURE.NOTE] Bei einmaligen Momentaufnahmen sind die Informationen **Nächste Ausführung** und **Letzte Ausführung** identisch.
  
     ![Geplante Sicherungsaufträge](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png)
  
@@ -96,11 +96,11 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Aufträgen, die derzeit au
     
     - **Verstrichene** – die Zeitspanne, die seit dem Start der Sicherung vergangen ist.
 
-    - **Durchschnittlicher Durchsatz (MB)** – die durchschnittliche Menge übermittelter Daten, ausgedrückt in Megabyte (MB).
+    - **Durchschnittlicher Durchsatz (MB)** – Verhältnis der gesamten verarbeiteten Datenbytes zur gesamten Verarbeitungszeit (in MB).
 
-    - **Verarbeitete Bytes (MB)** – die Menge der Daten aus der Volumegruppe, die (in MB) verarbeitet wurde.
+    - **Verarbeitete Bytes (MB)** – gesamte verarbeitete Datenbytes (in MB).
 
-    - **Geschriebene Bytes (MB)** – die Menge der Daten, die in die Sicherung (in MB) geschrieben wurde.
+    - **Geschriebene Bytes (MB)** – gesamte geschriebene Datenbytes (in MB). Dieser Wert umfasst die Daten sowie die Metadaten und ist daher normalerweise größer als der Wert von „Verarbeitete Bytes (MB)“.
 
     ![Aufträge, die derzeit ausgeführt werden](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 
@@ -130,4 +130,4 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Aufträgen, die derzeit au
 
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

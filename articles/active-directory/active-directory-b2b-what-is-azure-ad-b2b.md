@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="02/09/2016"
+   ms.date="05/09/2016"
    ms.author="viviali"/>
 
 # Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud
@@ -32,7 +32,7 @@ Ausführliche Informationen zur Azure AD B2B-Zusammenarbeit finden Sie [im Blogb
 Unter [Vergleich von Funktionen zum Verwalten externer Identitäten mithilfe von Azure AD](active-directory-b2b-compare-external-identities.md) werden die Anwendungsfälle für die Azure AD B2B-Zusammenarbeit, Azure AD B2C und die mehrinstanzenfähige Azure AD-App verglichen.
 
 ## Verwandte Artikel
-Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit:
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 - [So funktioniert's](active-directory-b2b-how-it-works.md)
 - [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
@@ -42,4 +42,4 @@ Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit:
 - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

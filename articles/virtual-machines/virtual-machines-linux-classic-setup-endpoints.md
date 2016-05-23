@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="04/19/2016"
 	ms.author="cynthn"/>
 
 # Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Computer in Azure
@@ -23,13 +23,15 @@ Alle virtuellen Linux-Computer, die Sie mit dem klassischen Bereitstellungsmodel
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
-Wenn Sie einen virtuellen Linux-Computer im klassischen Azure-Portal erstellen, werden allgemeine Endpunkte, z.B. für Secure Shell (SSH), in der Regel automatisch erstellt. Sie können zusätzliche Endpunkte beim Erstellen des virtuellen Computers oder später nach Bedarf konfigurieren.
+Wenn Sie einen virtuellen Linux-Computer im klassischen Azure-Portal erstellen, wird normalerweise automatisch ein Endpunkt für Secure Shell (SSH) erstellt. Sie können zusätzliche Endpunkte beim Erstellen des virtuellen Computers oder später nach Bedarf konfigurieren.
  
 
 [AZURE.INCLUDE [virtual-machines-common-classic-setup-endpoints](../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
 ## Nächste Schritte
 
-* Sie können auch einen VM-Endpunkt erstellen, indem Sie die Azure-Befehlszeilenschnittstelle im [Dienstverwaltungsmodus](../virtual-machines-command-line-tools.md) verwenden. Führen Sie den Befehl **azure vm endpoint create** aus.
+* Sie können einen VM-Endpunkt auch über die [Azure-Befehlszeilenschnittstelle](../virtual-machines-command-line-tools.md) erstellen. Führen Sie den Befehl **azure vm endpoint create** aus.
 
-<!---HONumber=AcomDC_0413_2016-->
+* Wenn Sie einen virtuellen Computer im Resource Manager-Bereitstellungsmodell erstellt haben, können Sie die Azure-Befehlszeilenschnittstelle im Ressource Manager-Modus verwenden, um [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-create-nsg-arm-cli.md) zum Steuern des Datenverkehrs an den virtuellen Computer zu erstellen.
+
+<!---HONumber=AcomDC_0511_2016-->

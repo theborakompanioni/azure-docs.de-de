@@ -252,7 +252,7 @@ Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-
 
     await client.ExecuteStoredProcedureAsync<DeviceReading>(
         UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
+        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
         "XMS-001-FE24C");
 
 Im nächsten Abschnitt untersuchen wir, wie partitionierte Sammlungen aus Sammlungen mit nur einer Partition verschoben werden können.
@@ -319,4 +319,4 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

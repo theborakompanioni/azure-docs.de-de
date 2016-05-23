@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="02/03/2016"
+   ms.date="05/09/2016"
    ms.author="viviali"/>
 
 # Vorschau der Azure AD B2B-Zusammenarbeit: Funktionsweise
@@ -34,7 +34,7 @@ Obwohl zur Nutzung von Azure AD B2B kein kostenpflichtiges Azure AD-Abonnement (
  - Für das Branding der Einladungs-E-Mails und beim Einlösen wird das Mandantenbranding verwendet, sodass den eingeladenen Partnerbenutzern mehr Kontext zur Verfügung steht.
 
 ## Verwandte Artikel
- Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit
+ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
  - [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
  - [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
@@ -44,4 +44,4 @@ Obwohl zur Nutzung von Azure AD B2B kein kostenpflichtiges Azure AD-Abonnement (
  - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
  - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

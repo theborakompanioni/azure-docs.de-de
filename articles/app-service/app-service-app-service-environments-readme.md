@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="Azure App Service-Umgebung" 
-	description="Erfahren Sie, wie App Service funktioniert." 
-	keywords="app service environment, azure app service environment"
+	pageTitle="App Service-Umgebung | Microsoft Azure" 
+	description="Was ist eine Azure App Service-Umgebung? Einführung in die App Service-Umgebung." 
+	keywords="Azure App Service-Umgebung, virtuelles Netzwerk, sicheres Netzwerk"
 	services="app-service" 
 	documentationCenter="" 
 	authors="yochay" 
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016" 
+	ms.date="05/10/2016" 
 	ms.author="stefsch"/>
 
-# Übersicht
+# Dokumentation zur App Service-Umgebung
 
 Eine App Service-Umgebung ist eine Option des [Premium][PremiumTier]-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung zahlreicher Azure App Service-Apps einschließlich [Web-Apps][WebApps], [Mobile Apps][MobileApps] und [API-Apps][APIApps] bereitstellt.
 
@@ -59,4 +59,4 @@ Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webd
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

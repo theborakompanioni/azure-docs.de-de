@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/23/2016"
+ms.date="05/10/2016"
 ms.author="mandia"/>
 
 # Erste Schritte mit der Twilio-API
@@ -91,7 +91,7 @@ Gibt eine Liste von Nachrichten zurück, die Ihrem Konto zugeordnet sind. ```GET
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -248,4 +248,4 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

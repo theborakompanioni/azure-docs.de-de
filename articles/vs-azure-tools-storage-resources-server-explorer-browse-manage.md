@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Durchsuchen und Verwalten von Speicherressourcen mit dem Server-Explorer
@@ -21,7 +21,7 @@ Wenn Sie die Azure Tools für Microsoft Visual Studio installiert haben, können
 
 Wählen Sie zum Anzeigen des Server-Explorers in Visual Studio in der Menüleiste nacheinander die Optionen **Ansicht** und **Server-Explorer**. Der Speicherknoten zeigt alle Speicherkonten an, die unter jedem Azure-Abonnement/-Zertifikat vorhanden sind, mit dem Sie verbunden sind. Wird das Speicherkonto nicht angezeigt, befolgen Sie die Anweisungen am [Ende des Themas](#add-storage-accounts-by-using-server-explorer), um das Konto hinzuzufügen.
 
-Ab Azure SDK 2.7 können Sie auch den neuen Cloud-Explorer zum Anzeigen und Verwalten von Azure-Ressourcen verwenden. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit dem Cloud-Explorer](vs-azure-tools-resources-managing-with-cloud-explorer).
+Ab Azure SDK 2.7 können Sie auch den neuen Cloud-Explorer zum Anzeigen und Verwalten von Azure-Ressourcen verwenden. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit dem Cloud-Explorer](./vs-azure-tools-resources-managing-with-cloud-explorer.md).
 
 
 ## Anzeigen und Verwalten von Speicherressourcen in Visual Studio
@@ -40,7 +40,7 @@ Erweitern Sie zum Anzeigen von Ressourcen in einem Speicherkonto den Knoten des 
 
 ## Arbeiten mit Blobressourcen
 
-Der Knoten "Blobs" zeigt eine Liste der Container für das ausgewählte Speicherkonto an. Blobcontainer enthalten Blobdateien, und Sie können diese Blobs in Ordnern und Unterordnern organisieren. Weitere Informationen finden Sie unter [Verwenden von BLOB-Speicher aus .NET](..storage/storage-dotnet-how-to-use-blobs/).
+Der Knoten "Blobs" zeigt eine Liste der Container für das ausgewählte Speicherkonto an. Blobcontainer enthalten Blobdateien, und Sie können diese Blobs in Ordnern und Unterordnern organisieren. Weitere Informationen finden Sie unter [Verwenden von BLOB-Speicher aus .NET](./storage/storage-dotnet-how-to-use-blobs.md).
 
 ### So erstellen Sie einen Blobcontainer
 
@@ -308,10 +308,10 @@ Es gibt zwei Möglichkeiten, Speicherkonten mithilfe des Server-Explorers hinzuz
 
 - Öffnen Sie im Server-Explorer das Kontextmenü für den Kontonamen, und wählen Sie **Löschen**. Wenn Sie ein Speicherkonto löschen, werden auch alle gespeicherten Schlüsselinformationen für dieses Konto entfernt.
 
-    >[AZURE.NOTE] Das Löschen eines Speicherkontos aus dem Server-Explorer besitzt keine Auswirkungen auf das Speicherkonto oder die darin enthaltenen Daten. Es wird lediglich der Verweis aus dem Server-Explorer entfernt. Verwenden Sie das Azure-Verwaltungsportal, um ein Speicherkonto dauerhaft zu löschen.
+    >[AZURE.NOTE] Das Löschen eines Speicherkontos aus dem Server-Explorer besitzt keine Auswirkungen auf das Speicherkonto oder die darin enthaltenen Daten. Es wird lediglich der Verweis aus dem Server-Explorer entfernt. Verwenden Sie das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885), um ein Speicherkonto dauerhaft zu löschen.
 
 ## Nächste Schritte
 
 Weitere Informationen dazu, wie Azure Storage Services verwendet wird, finden Sie unter [Zugreifen auf Azure Storage Services](https://msdn.microsoft.com/library/azure/ee405490.aspx).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

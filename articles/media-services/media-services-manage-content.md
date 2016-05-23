@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016"   
+	ms.date="04/25/2016"   
 	ms.author="juliako"/>
 
 
@@ -100,12 +100,14 @@ Dieser Abschnitt beschreibt die Schritte, die Sie ausführen können, um Ihre In
 
 1.  Wählen Sie die Datei aus, die Sie codieren möchten.
 
-  Wenn die Codierung für diesen Dateityp unterstützt wird, wird die Schaltfläche "Prozess" unten auf der Inhaltsseite aktiviert. 4. Wählen Sie im Dialogfeld **Prozess** den **Media Encoder Standard**-Prozessor aus. 5. Wählen Sie eine der **Codierungskonfigurationen** aus.
+  Wenn die Codierung für diesen Dateityp unterstützt wird, wird die Schaltfläche "Prozess" unten auf der Inhaltsseite aktiviert.
+4. Wählen Sie im Dialogfeld **Prozess** den **Media Encoder Standard**-Prozessor aus.
+5. Wählen Sie eine der **Codierungskonfigurationen** aus.
 
 ![Prozess2][process2]
 
 
-Im Thema [Systemvoreinstellungen für Media Encoder Standard](https://msdn.microsoft.com/library/mt269960) werden die einzelnen Voreinstellungen näher beschrieben.
+Im Thema [Vordefinierte für MWS (Media Encoder-Standard)](https://msdn.microsoft.com/library/mt269960) werden die einzelnen Voreinstellungen näher beschrieben.
 
 5. Anschließend geben Sie den gewünschten Anzeigenamen für den Inhalt ein oder übernehmen den Standardnamen. Klicken Sie anschließend auf das Häkchen, um den Codiervorgang zu starten. Den Fortschritt des Vorgangs können Sie unten im Portal verfolgen.
 6. Klicken Sie auf "OK".
@@ -220,4 +222,4 @@ Folgende Überlegungen sollten berücksichtigt werden:
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

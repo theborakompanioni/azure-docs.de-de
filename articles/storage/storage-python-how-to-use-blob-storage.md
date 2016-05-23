@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwenden des Azure-Blob-Speichers mit Python | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Azure-Blob-Speicher mit Python nutzen können, um Blobs hoch- und herunterzuladen, aufzulisten und zu löschen."
+	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	services="storage"
 	documentationCenter="python"
 	authors="emgerner-msft"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/29/2016"
+    ms.date="04/29/2016"
 	ms.author="jehine"/>
 
 # Verwenden des Azure-Blob-Speichers mit Python
@@ -125,4 +125,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

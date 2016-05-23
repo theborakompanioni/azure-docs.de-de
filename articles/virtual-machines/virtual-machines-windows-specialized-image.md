@@ -28,15 +28,15 @@ Wenn Sie Massenbereitstellungen ähnlicher Windows-VMs erstellen müssen, benöt
 
 ## Vorbereitungen
 
-In diesem Artikel wird davon ausgegangen, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie mit den Schritten beginnen:
+In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes verfügen:
 
-1. Sie haben einen virtuellen Azure-Computer unter Windows, der mit dem klassischen Bereitstellungsmodell oder dem Resource Manager-Bereitstellungsmodell erstellt wurde. Sie haben das Betriebssystem konfiguriert, Datenträger angefügt und andere Anpassungen vorgenommen, wie die Installation erforderlicher Anwendungen. Wir verwenden diesen virtuellen Computer, um die Kopie zu erstellen. Wenn Sie Hilfe bei der Erstellung des virtuellen Quellcomputers benötigen, lesen Sie [Erstellen einer Windows-VM mit Resource Manager und PowerShell](virtual-machines-windows-ps-create.md). 
+1. Einen **virtuellen Azure-Computer mit Windows** im klassischen oder Resource Manager-Bereitstellungsmodell mit konfiguriertem Betriebssystem, angehängten Datenträgern und installierten erforderlichen Anwendungen. Wenn Sie Hilfe beim Erstellen dieses virtuellen Computers benötigen, finden Sie Informationen unter [Erstellen eines virtuellen Windows-Computers mit Ressource Manager](virtual-machines-windows-ps-create.md). 
 
-1. Sie haben Azure PowerShell auf Ihrem Computer installiert und sind bei Ihrem Azure-Abonnement angemeldet. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+1. Sie haben **Azure PowerShell 1.0 oder höher** auf Ihrem Computer installiert und sind bei Ihrem Azure-Abonnement angemeldet. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-1. Sie haben das Tool AzCopy heruntergeladen und installiert. Weitere Informationen zu diesem Tool finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../storage/storage-use-azcopy.md).
+1. Das **AzCopy-Tool** ist auf Ihrem Computer installiert. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../storage/storage-use-azcopy.md).
 
-1. Sie haben eine Ressourcengruppe, ein Speicherkonto und einen Blobcontainer in der Ressourcengruppe erstellt, in die die VHDs kopiert werden. Im Abschnitt [Erstellen oder Suchen eines Azure-Speicherkontos](virtual-machines-windows-upload-image.md#createstorage) sind die Schritte aufgeführt, wenn Sie ein vorhandenes Speicherkonto verwenden oder ein neues Speicherkonto erstellen möchten.
+1. Eine **Ressourcengruppe** mit einem **Speicherkonto** und einem darin erstellten **Blob-Container**, in den die virtuellen Festplatten kopiert werden. Im Abschnitt [Erstellen oder Suchen eines Azure-Speicherkontos](virtual-machines-windows-upload-image.md#createstorage) sind die Schritte aufgeführt, wenn Sie ein vorhandenes Speicherkonto verwenden oder ein neues Speicherkonto erstellen möchten.
 
 
 
@@ -63,7 +63,7 @@ In diesem Artikel wird davon ausgegangen, dass die folgenden Voraussetzungen erf
 	
 	- Für einen mit dem Resource Manager-Bereitstellungsmodell erstellten virtuellen Computer oder für das Speicherkonto, das Sie für den neuen virtuellen Computer verwenden möchten, klicken Sie auf **Durchsuchen** > **Speicherkonten** > *Ihr Speicherkonto* > **Alle Einstellungen** > **Zugriffsschlüssel**, und kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
 
-1. Rufen Sie die URLs ab, um auf die Quell- und Zielspeicherkonten zuzugreifen. Wechseln Sie im Portal zu Ihrem Speicherkonto, und klicken Sie auf **Blobs**. Klicken Sie dann auf den Container, der die Quell-VHD hostet (z.B. *vhds* für das klassische Bereitstellungsmodell), oder auf den Container, in den die VHD kopiert werden soll. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Wir benötigen die URLs des Quell- und des Zielcontainers. Die URLs sehen etwa wie folgt aus: `https://myaccount.blob.core.windows.net/mycontainer`.
+1. Rufen Sie die URLs ab, um auf die Quell- und Zielspeicherkonten zuzugreifen. **Wechseln** Sie im Portal zu Ihrem Speicherkonto, und klicken Sie auf **Blobs**. Klicken Sie dann auf den Container, der die Quell-VHD hostet (z.B. *vhds* für das klassische Bereitstellungsmodell), oder auf den Container, in den die VHD kopiert werden soll. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Wir benötigen die URLs des Quell- und des Zielcontainers. Die URLs sehen etwa wie folgt aus: `https://myaccount.blob.core.windows.net/mycontainer`.
 
 1. Öffnen Sie auf dem lokalen Computer ein Befehlsfenster, und navigieren Sie zum Ordner, in dem AzCopy installiert ist. Dies sollte ein ähnlicher Ordner wie *C:\\Program Files (x86) \\Microsoft SDKs\\Azure\\AzCopy* sein. Führen Sie hier den folgenden Befehl aus: </br>
 
@@ -122,11 +122,11 @@ Sie sollten nun den neu erstellten virtuellen Computer im [Azure-Portal](https:/
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
 
-Melden Sie sich beim neuen virtuellen Computer an, wechseln Sie zum virtuellen Computer im [Portal](https://portal.azure.com), klicken Sie auf **Verbinden**, und öffnen Sie die *Remotedesktop*-RDP-Datei. Verwenden Sie die Kontoanmeldeinformationen des ursprünglichen virtuellen Computers für die Anmeldung bei Ihrem neuen virtuellen Computer.
+Melden Sie sich beim neuen virtuellen Computer an, **wechseln** Sie zum virtuellen Computer im [Portal](https://portal.azure.com), klicken Sie auf **Verbinden**, und öffnen Sie die *Remotedesktop*-RDP-Datei. Verwenden Sie die Kontoanmeldeinformationen des ursprünglichen virtuellen Computers für die Anmeldung bei Ihrem neuen virtuellen Computer.
 
 
 ## Nächste Schritte
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

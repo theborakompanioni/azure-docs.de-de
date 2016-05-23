@@ -13,15 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/20/2016"
+	ms.date="04/26/2016"
 	ms.author="adegeo"/>
 
 
 # Verwalten von Clouddiensten
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](cloud-services-how-to-manage.md)
-- [Azure portal](cloud-services-how-to-manage-portal.md)
+- [Azure-Portal](cloud-services-how-to-manage-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-manage.md)
+
 
 Im Bereich **Cloud Services** des Azure-Portals können Sie eine Dienstrolle oder eine Bereitstellung aktualisieren, eine Bereitstellung zur Produktion heraufstufen, Ressourcen mit Ihrem Clouddienst verknüpfen, sodass Sie die Ressourcenabhängigkeiten sehen und die Ressourcen zusammen skalieren können, und einen Clouddienst oder eine Bereitstellung löschen.
 
@@ -42,15 +43,13 @@ Wenn Sie den Anwendungscode für den Clouddienst aktualisieren müssen, verwende
 
 4. **Optional** können Sie die Bereitstellungsbezeichnung und das Speicherkonto aktualisieren.
 
-5. Wenn durch das Update die Anzahl der Rollen oder die Größe einer Rolle geändert wird, aktivieren Sie das Kontrollkästchen **Allow update if role sizes or number of roles changes**, um die Fortsetzung des Updates zu ermöglichen.
-
-	>[AZURE.WARNING] Wenn Sie die Größe einer Rolle (d. h. die Größe eines virtuellen Computers, der eine Rolleninstanz hostet) oder die Anzahl der Rollen ändern, denken Sie daran, dass für jede Rolleninstanz (virtueller Computer) ein neues Image erstellt werden muss und dass lokale Daten verloren gehen.
-
-6. Wenn Dienstrollen nur eine Rolleninstanz haben, aktivieren Sie das Kontrollkästchen **Auch dann aktualisieren, wenn für eine oder mehrere Rollen nur eine Instanz vorhanden ist**, damit das Update fortgesetzt werden kann.
+5. Wenn Dienstrollen nur eine Rolleninstanz haben, aktivieren Sie das Kontrollkästchen **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist**, damit das Update fortgesetzt werden kann.
 
 	Azure kann während des Updates eines Clouddiensts nur dann eine Dienstverfügbarkeit von 99,95 Prozent garantieren, wenn jede Rolle mindestens zwei Rolleninstanzen (virtuelle Computer) hat. In diesem Fall kann ein virtueller Computer Clientanforderungen verarbeiten, während der andere aktualisiert wird.
 
-8. Klicken Sie auf **OK**, um mit der Aktualisierung des Diensts zu beginnen.
+6. Aktivieren Sie **Bereitstellung starten**, wenn Sie festlegen möchten, dass das Update angewendet wird, nachdem der Upload des Pakets beendet wurde.
+
+7. Klicken Sie auf **OK**, um mit der Aktualisierung des Diensts zu beginnen.
 
 
 
@@ -114,4 +113,4 @@ Wenn für den Cloud-Dienst die ausführliche Überwachung konfiguriert ist, lös
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

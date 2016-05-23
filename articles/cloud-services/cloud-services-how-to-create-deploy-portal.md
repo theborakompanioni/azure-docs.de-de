@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/15/2016"
+	ms.date="04/15/2016"
 	ms.author="adegeo"/>
 
 
@@ -67,7 +67,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 ## Erstellen und Bereitstellen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **Neu > Compute**, führen Sie einen Bildlauf nach unten zu **Clouddienst** aus, und klicken Sie darauf.
+2. Klicken Sie auf **Neu > Virtuelle Computer**, scrollen Sie nach unten zu **Clouddienst**, und klicken Sie auf diese Option.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 
@@ -75,12 +75,13 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 4. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
 5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 6. Wählen Sie einen **Speicherort** aus.
-7. Wählen Sie **Paket**, und füllen Sie auf dem Blatt **Paket hochladen** die erforderlichen Felder aus.  
+7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus.  
 
      Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
 
 8. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
-9. Klicken Sie auf **OK**.
+9. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
+10. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
@@ -115,4 +116,4 @@ Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

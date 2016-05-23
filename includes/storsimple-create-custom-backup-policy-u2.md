@@ -19,7 +19,7 @@
 
     3. Geben Sie die Sicherungshäufigkeit in Minuten, Stunden, Tagen oder Wochen an.
 
-    4. Wählen Sie einen Aufbewahrungszeitplan in der Dropdownliste aus. Die Aufbewahrungsdauer hängt von der Sicherungshäufigkeit ab. Für eine tägliche Richtlinie kann die Aufbewahrungsdauer z. B. in Wochen angegeben werden, während die Aufbewahrungsdauer für eine monatliche Richtlinie in Monaten angegeben wird.
+    4. Wählen Sie einen Aufbewahrungszeitplan in der Dropdownliste aus. Die Aufbewahrungsdauer hängt von der Sicherungshäufigkeit ab.
  
     5. Wählen Sie die Startzeit und das Datum für die Richtlinie aus.
 
@@ -29,4 +29,4 @@
 
 8. Die Seite **Sicherungsrichtlinien**wird geöffnet. Die tabellarische Auflistung der Sicherungsrichtlinien wird aktualisiert, um die benutzerdefinierte Richtlinie anzuzeigen.
 
-<!---HONumber=AcomDC_1217_2015-->
+

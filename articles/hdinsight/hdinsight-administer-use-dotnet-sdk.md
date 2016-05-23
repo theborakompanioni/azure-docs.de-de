@@ -36,7 +36,8 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 Sie müssen die folgenden Nuget-Pakete installieren:
 
 	Install-Package Microsoft.Azure.Common.Authentication -Pre
-	Install-Package Microsoft.Azure.Management.HDInsight -Pre
+	Install-Package Microsoft.Azure.Management.ResourceManager -Pre
+	Install-Package Microsoft.Azure.Management.HDInsight
 
 Das folgende Codebeispiel veranschaulicht, wie Sie sich mit Azure verbinden, bevor Sie HDInsight-Cluster unter Ihrem Azure-Abonnement verwalten können.
 
@@ -48,6 +49,7 @@ Das folgende Codebeispiel veranschaulicht, wie Sie sich mit Azure verbinden, bev
 	using Microsoft.Azure.Common.Authentication.Models;
 	using Microsoft.Azure.Management.HDInsight;
 	using Microsoft.Azure.Management.HDInsight.Models;
+	using Microsoft.Azure.Management.ResourceManager;
 
 	namespace HDInsightManagement
 	{
@@ -60,6 +62,10 @@ Das folgende Codebeispiel veranschaulicht, wie Sie sich mit Azure verbinden, bev
 			{
 				var tokenCreds = GetTokenCloudCredentials();
 				var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+				
+				var svcClientCreds = new TokenCredentials(tokenCreds.Token); 
+				var resourceManagementClient = new ResourceManagementClient(svcClientCreds);
+				var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
 
 				_hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 
@@ -273,4 +279,4 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-flight]: hdinsight-analyze-flight-delay-data.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

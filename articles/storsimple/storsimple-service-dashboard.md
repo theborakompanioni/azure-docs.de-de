@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Dashboard des StorSimple Manager-Diensts | Microsoft Azure"
    description="Beschreibt das Dashboard des StorSimple Manager-Diensts und erläutert, wie Sie den Zustand Ihrer StorSimple-Lösung über dieses Dashboard verwalten."
    services="storsimple"
@@ -6,13 +6,13 @@
    authors="SharS"
    manager="carolz"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/01/2016"
+   ms.date="05/10/2016"
    ms.author="v-sharos" />
 
 # Verwenden des Dashboards des StorSimple Manager-Diensts
@@ -25,7 +25,7 @@ Auf der Dashboard-Seite des StorSimple Manager-Diensts erhalten Sie einen Überb
 
 Das Dashboard des StorSimple Manager-Diensts zeigt die folgenden Informationen an:
 
-- Im **Diagrammbereich** wird Ihnen das relevante Metrikdiagramm für Ihre Geräte präsentiert. Sie können den von allen Geräten über einen bestimmten Zeitraum verwendeten primären Speicher und Cloudspeicher anzeigen. Verwenden Sie die Steuerelemente oben rechts im Diagramm, um einen Zeitraum von einer Woche, einem Monat, drei Monaten oder einem Jahr anzugeben.
+- Im **Diagrammbereich** wird Ihnen das relevante Metrikdiagramm für Ihre Geräte präsentiert. Sie können den von allen Geräten über einen bestimmten Zeitraum verwendeten primären (lokalen und mehrstufigen) Speicher und Cloudspeicher anzeigen. Verwenden Sie die Steuerelemente oben rechts im Diagramm, um einen Zeitraum von einer Woche, einem Monat, drei Monaten oder einem Jahr anzugeben.
 
 - Die **Nutzungsübersicht** zeigt den bereitgestellten primären Speicher, der von allen Geräten im Verhältnis zum Gesamtspeicher genutzt wird, der für alle Geräte zur Verfügung steht. **Bereitgestellt** bezieht sich auf die Menge an Speicherplatz, die für die Verwendung vorbereitet und zugewiesen wird. **Verwendet** bezieht sich auf die Verwendung von Volumes, wie sie von den Initiatoren angezeigt wird, die mit den Geräten verbunden sind.
 
@@ -76,4 +76,4 @@ Sie können die Vorgangsprotokolle anzeigen, indem Sie auf den entsprechenden Li
 
 - Erfahren Sie mehr über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

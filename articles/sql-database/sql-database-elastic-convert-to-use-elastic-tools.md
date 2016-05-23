@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools für elastische Datenbanken"
+   pageTitle="Migrieren von vorhandenen Datenbanken für die horizontale Skalierung | Microsoft Azure"
    description="Erstellen eines Shardzuordnungs-Managers, um Sharddatenbanken für die Verwendung der Tools für elastische Datenbanken umzuwandeln"
    services="sql-database"
    documentationCenter=""
@@ -13,31 +13,30 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="04/01/2016"
+   ms.date="04/26/2016"
    ms.author="SilviaDoomra"/>
 
-# Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools für elastische Datenbanken
+# Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung
 
-Wenn Sie über eine vorhandene horizontal hochskalierte Shardlösung verfügen, können Sie die Tools für elastische Datenbanken wie die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) und das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md) nutzen, indem Sie die in diesem Artikel beschriebene Methode anwenden.
+Verwalten Sie Ihre vorhandenen horizontal skalierten Sharddatenbanken mithilfe von Azure SQL-Datenbanktools (z. B. die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)). Konvertieren Sie zunächst eine vorhandene Gruppe Datenbanken für die Verwendung des [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md).
+
+## Übersicht
+So migrieren Sie eine vorhandene Sharddatenbank:
+
+1. Bereiten Sie die [Shardzuordnungs-Manager-Datenbank](sql-database-elastic-scale-shard-map-management.md) vor.
+2. Erstellen Sie die Shardzuordnung.
+3. Bereiten Sie die einzelnen Shards vor.  
+2. Fügen Sie Zuordnungen zur Shardzuordnung hinzu.
 
 Diese Schritte können entweder unter Verwendung der [.NET Framework-Clientbibliothek](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) oder der PowerShell-Skripts ausgeführt werden, die unter [Azure SQL DB - Elastic Database tools scripts (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) verfügbar sind. Für die hier beschriebenen Beispiele werden die PowerShell-Skripts verwendet.
 
-Beachten Sie, dass Sie die Datenbanken erstellen müssen, bevor Sie die Cmdlets „Add-Shard“ und „New-ShardMapManager“ ausführen. Die Cmdlets erstellen keine Datenbanken für Sie.
-
-Es sind vier Schritte notwendig:
-
-1. Bereiten Sie die Shardzuordnungs-Manager-Datenbank vor.
-2. Erstellen Sie die Shardzuordnung.
-3. Bereiten Sie die einzelnen Shards vor.  
-2. Fügen Sie die Zuordnungen zur Shardzuordnung hinzu.
-
-Weitere Informationen zu ShardMapManager finden Sie unter [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md). Eine Übersicht der Tools für elastische Datenbanken finden Sie unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md).
+Weitere Informationen zum Shardzuordnungs-Manager finden Sie unter [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md). Eine Übersicht der Tools für elastische Datenbanken finden Sie unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md).
 
 ## Vorbereiten der Shardzuordnungs-Manager-Datenbank
-Sie können eine neue oder eine vorhandene Datenbank als Shardzuordnungs-Manager verwenden.
+
+Der Shardzuordnungs-Manager ist eine spezielle Datenbank, die Daten zur Verwaltung von horizontal skalierten Datenbanken enthält. Sie können eine vorhandene Datenbank verwenden oder eine neue Datenbank erstellen. Beachten Sie, dass es sich bei einer als Shardzuordnungs-Manager eingesetzten Datenbank nicht gleichzeitig um eine Datenbank handeln sollte, die als Shard definiert ist. Beachten Sie außerdem, dass das PowerShell-Skript die Datenbank nicht für Sie erstellt.
 
 ## Schritt 1: Erstellen eines Shardzuordnungs-Managers
-Beachten Sie, dass es sich bei einer als Shardzuordnungs-Manager eingesetzten Datenbank nicht gleichzeitig um eine Datenbank handeln sollte, die als Shard definiert ist.
 
 	# Create a shard map manager. 
 	New-ShardMapManager -UserName '<user_name>' 
@@ -59,31 +58,32 @@ Nach dem Erstellen können Sie den Shardzuordnungs-Manager mit diesem Cmdlet abr
 	-SqlDatabaseName '<smm_db_name>' 
 
   
-## Schritt 2: Erstellen einer Shardzuordnung
+## Schritt 2: Erstellen der Shardzuordnung
 
-Erstellen Sie eins der folgenden Modelle:
+Sie müssen den Typ der zu erstellenden Shardzuordnung auswählen. Die Auswahl hängt von der Architektur der Datenbank ab:
 
-1. Ein Mandant pro Datenbank 
+1. Ein Mandant pro Datenbank (Informationen finden Sie im [Glossar](sql-database-elastic-scale-glossary.md)). 
 2. Mehrere Mandanten pro Datenbank (zwei Typen):
-	3. Bereichszuordnung
-	4. Listenzuordnung
+	3. Listenzuordnung
+	4. Bereichszuordnung
  
 
-Wenn Sie das Datenbankmodell mit einem Mandanten wählen, verwenden Sie die Listenzuordnung. Beim Modell mit einem Mandanten wird eine Datenbank pro Mandant zugewiesen. Dies ist ein effektives Modell für SaaS-Entwickler, da es die Verwaltung vereinfacht.
+Erstellen Sie für ein Modell mit einem einzelnen Mandanten eine **Listenzuordnungs**-Shardzuordnung. Beim Modell mit einem Mandanten wird eine Datenbank pro Mandant zugewiesen. Dies ist ein effektives Modell für SaaS-Entwickler, da es die Verwaltung vereinfacht.
 
 ![Listenzuordnung][1]
 
-Beim Datenbankmodell mit mehreren Mandanten hingegen werden einer Datenbank mehrere Mandanten zugewiesen. Außerdem können Sie Mandantengruppen auf verschiedene Datenbanken verteilen. Dies ist ein geeignetes Modell, wenn eine geringe Datenmenge pro Mandant erwartet wird. Bei diesem Modell wird einer Datenbank mithilfe der *Bereichszuordnung* ein Bereich von Mandanten zugewiesen.
+Beim Modell mit mehreren Mandanten werden einer Datenbank mehrere Mandanten zugewiesen. Außerdem können Sie Mandantengruppen auf verschiedene Datenbanken verteilen. Verwenden Sie dieses Modell, wenn Sie erwarten, dass die einzelnen Mandanten geringe Datenanforderungen haben. In diesem Modell wird einer Datenbank mithilfe der **Bereichszuordnung** ein Bereich von Mandanten zugewiesen.
  
 
 ![Bereichszuordnung][2]
 
-Wenn Sie einer Einzeldatenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer Listenzuordnung implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu Mandanten 1 und 5, DB2 zum Speichern von Daten für Mandant 7 und 10 verwendet.
+Wenn Sie einer Einzeldatenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu Mandanten 1 und 5, DB2 zum Speichern von Daten für Mandant 7 und 10 verwendet.
 
 ![Einzeldatenbank mit mehreren Mandanten][3]
 
+**Basierend auf Ihrer Entscheidung wählen Sie eine der folgenden Optionen aus:**
 
-## Schritt 2, Option 1: Erstellen einer Shardzuordnung für eine Listenzuordnung
+### Option 1: Erstellen einer Shardzuordnung für eine Listenzuordnung
 Erstellen Sie mithilfe des ShardMapManager-Objekts eine Shardzuordnung.
 
 	# $ShardMapManager is the shard map manager object. 
@@ -92,7 +92,7 @@ Erstellen Sie mithilfe des ShardMapManager-Objekts eine Shardzuordnung.
 	-ShardMapManager $ShardMapManager 
  
  
-## Schritt 2, Option 2: Erstellen einer Shardzuordnung für eine Bereichszuordnung
+### Option 2: Erstellen einer Shardzuordnung für eine Bereichszuordnung
 
 Beachten Sie, dass die Mandanten-IDs bei Verwendung dieses Zuordnungsmusters fortlaufenden Bereichen entsprechen müssen. Dabei können Bereiche unterbrochen werden, indem Sie einen Bereich beim Erstellen der Datenbanken überspringen.
 
@@ -103,7 +103,7 @@ Beachten Sie, dass die Mandanten-IDs bei Verwendung dieses Zuordnungsmusters for
 	-RangeShardMapName 'RangeShardMap' 
 	-ShardMapManager $ShardMapManager 
 
-## Schritt 2, Option 3: Listenzuordnungen bei Einzeldatenbanken
+### Option 3: Listenzuordnungen bei Einzeldatenbanken
 Für die Einrichtung dieses Musters muss auch eine Listenzuordnung erstellt werden, wie in Schritt 2, Option 1 gezeigt.
 
 ## Schritt 3: Vorbereiten der einzelnen Shards
@@ -121,7 +121,7 @@ Fügen Sie die einzelnen Shards (Datenbanken) dem Shardzuordnungs-Manager hinzu.
 
 Die Schritte zum Hinzufügen von Zuordnungen hängen von der Art der Shardzuordnung ab, die Sie erstellt haben. Wenn Sie eine Listenzuordnung erstellt haben, fügen Sie Listenzuordnungen hinzu. Wenn Sie eine Bereichszuordnung erstellt haben, fügen Sie Bereichszuordnungen hinzu.
 
-### Schritt 4, Option 1: Zuordnen der Daten für eine Listenzuordnung
+### Option 1: Zuordnen der Daten für eine Listenzuordnung
 
 Ordnen Sie die Daten zu, indem Sie eine Listenzuordnung für jeden Mandanten hinzufügen.
 
@@ -133,7 +133,7 @@ Ordnen Sie die Daten zu, indem Sie eine Listenzuordnung für jeden Mandanten hin
 	-SqlServerName '<shard_server_name>' 
 	-SqlDatabaseName '<shard_database_name>' 
 
-### Schritt 4, Option 2: Zuordnen der Daten für eine Bereichszuordnung
+### Option 2: Zuordnen der Daten für eine Bereichszuordnung
 
 Fügen Sie die Bereichszuordnungen für alle Zuordnungen zwischen Mandanten-ID-Bereichen und der Datenbank hinzu.
 
@@ -181,4 +181,4 @@ Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren 
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

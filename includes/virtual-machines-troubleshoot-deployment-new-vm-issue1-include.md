@@ -1,5 +1,5 @@
-## Issue: Custom image; provisioning errors
+## Problem: benutzerdefiniertes Image; Bereitstellungsfehler
 
-Provisioning errors arise if you upload or capture a generalized VM image as a specialized VM image or vice versa. The former will cause a provisioning timeout error and the latter will cause a provisioning failure. To deploy your custom image without errors, you must ensure that the type of the image does not change during the capture process.
+Bereitstellungsfehler treten beim Hochladen oder Erfassen eines generalisierten VM-Images als spezialisiertes VM-Image (oder umgekehrt) auf. Im ersten Fall tritt bei der Bereitstellung ein Timeoutfehler auf und im zweiten Fall ein Bereitstellungsfehler. Um das benutzerdefinierte Image ohne Fehler bereitzustellen, müssen Sie sicherstellen, dass sich der Typ des Images während des Erfassungsvorgangs nicht ändert.
 
-The following table lists the possible combinations of generalized and specialized images, the error type you will encounter and what you need to do to fix the errors.
+In der folgenden Tabelle sind die möglichen Kombinationen von generalisierten und spezialisierten Images aufgeführt. Zudem werden die verschiedenen Fehlertypen und die Lösungen zum Beheben der Fehler beschrieben.
