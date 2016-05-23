@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio
@@ -45,7 +45,7 @@ Führen Sie die unten angegebenen Schritte aus, um eine Webanwendung aus Visual 
 
     - Die **Copy Local**-Eigenschaft wird für alle Assemblys, die für MVC 2-, MVC 3-, MVC 4- und Silverlight-Geschäftsanwendungen erforderlich sind, auf "true" festgelegt. So werden diese Assemblys dem Dienstpaket hinzugefügt, das für die Bereitstellung verwendet wird.
 
-  >[AZURE.IMPORTANT] Wenn Sie über andere Assemblys oder Dateien verfügen, die für diese Webanwendung benötigt werden, müssen Sie die Eigenschaften für diese Dateien manuell festlegen. Informationen zum Festlegen dieser Eigenschaften finden Sie im Abschnitt **Einschließen von Dateien in das Dienstpaket** weiter unten in diesem Artikel.  
+  >[AZURE.IMPORTANT] Wenn Sie über andere Assemblys oder Dateien verfügen, die für diese Webanwendung benötigt werden, müssen Sie die Eigenschaften für diese Dateien manuell festlegen. Informationen zum Festlegen dieser Eigenschaften finden Sie im Abschnitt **Einschließen von Dateien in das Dienstpaket** weiter unten in diesem Artikel.
 
   >[AZURE.NOTE] Wenn eine Webrolle für ein bestimmtes Webprojekt in einem Azure-Projekt der Lösung bereits vorhanden ist, wird **Konvertieren**, **In Azure-Clouddienstprojekt konvertieren** im Kontextmenü für dieses Webprojekt nicht angezeigt.
 
@@ -55,17 +55,17 @@ Führen Sie die unten angegebenen Schritte aus, um eine Webanwendung aus Visual 
 
 Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die eine lokale SQL Server-Datenbank verwendet wird, müssen Sie diese Verbindungszeichenfolge ändern, damit stattdessen eine von Azure gehostete Instanz der SQL-Datenbank verwendet wird.
 
->[AZURE.IMPORTANT] Sie müssen im Rahmen Ihres Abonnements zur Verwendung der SQL-Datenbank berechtigt sein. Wenn Sie auf Ihr Abonnement über das Azure-Verwaltungsportal zugreifen, können Sie bestimmen, welche Services Ihr Abonnement umfasst. Die folgenden Anweisungen gelten für das veröffentlichte Verwaltungsportal. Springen Sie zum nächsten Verfahren, wenn Sie die Preview-Version des Verwaltungsportals verwenden.|
+>[AZURE.IMPORTANT] Sie müssen im Rahmen Ihres Abonnements zur Verwendung der SQL-Datenbank berechtigt sein. Wenn Sie auf Ihr Abonnement über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) zugreifen, können Sie festlegen, welche Dienste Ihr Abonnement umfasst. Die folgenden Anweisungen gelten für das veröffentlichte [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885). Fahren Sie mit dem nächsten Verfahren fort, wenn Sie das [Azure-Portal](http://portal.microsoft.com) verwenden.
 
 ### So verwenden Sie eine SQL-Datenbankinstanz in der Webrolle für Ihre Verbindungszeichenfolge
 
-1. Führen Sie die Schritte im folgenden Artikel aus, um eine Instanz von SQL-Datenbank im Azure-Verwaltungsportal zu erstellen: [Erstellen eines SQL-Datenbank-Servers](http://go.microsoft.com/fwlink/?LinkId=225109).
+1. Führen Sie die Schritte im Artikel [Erstellen eines SQL-Datenbankservers](http://go.microsoft.com/fwlink/?LinkId=225109) aus, um eine Instanz von SQL-Datenbank im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) zu erstellen.
 
     >[AZURE.NOTE] Wenn Sie die Firewallregeln für die Instanz von SQL-Datenbank einrichten, müssen Sie das Kontrollkästchen **Anderen Azure-Diensten Zugriff auf diesen Server gewähren** aktivieren.
 
 1. Führen Sie die Schritte im nächsten Abschnitt des folgenden Artikels aus, um eine Instanz von SQL-Datenbank für Ihre Verbindungszeichenfolge zu erstellen: [Erstellen einer SQL-Datenbank](http://go.microsoft.com/fwlink/?LinkId=225110).
 
-1. Führen Sie die unten angegebenen Schritte im Verwaltungsportal für Azure aus, um die ADO.NET-Verbindungszeichenfolge zu kopieren, die Sie als Ihre Verbindungszeichenfolge verwenden möchten.
+1. Führen Sie die folgenden Schritte im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) aus, um die ADO.NET-Verbindungszeichenfolge zu kopieren, die Sie als Ihre Verbindungszeichenfolge verwenden möchten.
 
   1. Wählen Sie die Schaltfläche **Datenbank** aus, und öffnen Sie den Knoten für das Abonnement, das Sie zum Erstellen Ihrer Instanz von SQL-Datenbank verwendet haben.
 
@@ -99,9 +99,9 @@ Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die ei
 
 1. Speichern Sie die Datei, die Sie geändert haben, und veröffentlichen Sie die Anwendung erneut.
 
-### So verwenden Sie eine Instanz von SQL-Datenbank mithilfe des Azure-Verwaltungsportals
+### So verwenden Sie eine Instanz von SQL-Datenbank mithilfe des klassischen Azure-Portals
 
-1. Wählen Sie im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) den Knoten "SQL-Datenbanken" aus.
+1. Wählen Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) den Knoten „SQL-Datenbanken“ aus.
 
   - Wenn die Instanz von SQL-Datenbank angezeigt wird, die Sie verwenden möchten, öffnen Sie sie.
 
@@ -135,7 +135,7 @@ Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die ei
 
 1. (Optional) Um den Bereitstellungsprozess abzubrechen, öffnen Sie das Kontextmenü für die Position im Aktivitätsprotokoll und wählen **Abbrechen und entfernen** aus. Der Bereitstellungsprozess wird beendet, und die Bereitstellungsumgebung wird aus Azure gelöscht.
 
-    >[AZURE.NOTE] Sie müssen Sie das Azure-Verwaltungsportal verwenden, um diese Umgebung nach der Bereitstellung zu entfernen.
+    >[AZURE.NOTE] Sie müssen das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden, um diese Umgebung nach der Bereitstellung zu entfernen.
 
 1. (Optional) Nach dem Starten Ihrer Rolleninstanzen wird die Bereitstellungsumgebung in Visual Studio im **Cloud Explorer** oder **Server-Explorer** automatisch unter dem Knoten **Azure Compute** angezeigt. Hier können Sie den Status der einzelnen Rolleninstanzen anzeigen.
 
@@ -168,7 +168,7 @@ Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die ei
 
 1. Führen Sie die Schritte des Verfahrens unter **Verwenden einer SQL Azure-Datenbank für Ihre Anwendung** weiter oben in diesem Thema aus, um eine SQL Azure-Datenbank zu erstellen, die für eine ASP.NET Dynamic Entities-Webanwendung verwendet werden kann.
 
-1. Fügen Sie die Tabellen und Felder, die Sie für diese Datenbank benötigen, über das Azure-Verwaltungsportal hinzu.
+1. Fügen Sie die Tabellen und Felder, die Sie für diese Datenbank benötigen, über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hinzu.
 
 1. Die Verbindungszeichenfolge für diese Art von Anwendung hat in der Datei „web.config“ das folgende Format:
 
@@ -208,4 +208,4 @@ Zum Veröffentlichen einer Webanwendung unter Azure muss für die Anwendung eine
 ## Nächste Schritte
 Weitere Informationen zur Veröffentlichung finden Sie unter [Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md). Sehen Sie sich auch [Einrichten benannter Authentifizierungsanmeldeinformationen](vs-azure-tools-setting-up-named-authentication-credentials.md) an.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

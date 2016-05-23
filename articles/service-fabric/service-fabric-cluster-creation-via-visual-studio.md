@@ -51,7 +51,7 @@ Jeder Service Fabric-Cluster verfügt über einen Namen. Wenn ein Fabric-Cluster
 Standardmäßig wird der Name des Clusters automatisch generiert und durch Anfügen eines zufälligen Suffixes an das Präfix „cluster“ eindeutig festgelegt. So kann die Vorlage sehr einfach als Teil eines **Continuous Integration**-Systems (CI) verwendet werden. Wenn Sie einen bestimmten (für Sie aussagekräftigen) Namen für den Cluster verwenden möchten, legen Sie den Wert der `clusterName`-Variablen in der Resource Manager-Vorlagendatei (`ServiceFabricCluster.json`) auf Ihren ausgewählten Namen fest. Diese Variable ist die erste Variable, die in der Datei definiert ist.
 
 ## Optional: Hinzufügen öffentlicher Anwendungsports
-Vielleicht möchten Sie auch die öffentlichen Anwendungsports für den Cluster vor seiner Bereitstellung ändern. Standardmäßig öffnet die Vorlage nur zwei öffentliche TCP-Ports (80 und 8081). Wenn Sie für Ihre Anwendungen mehr benötigen, ändern Sie die Azure-Load Balancer-Definition in der Vorlage. Die Definition ist in der Hauptvorlagendatei (`SecureFabricCluster.json`) gespeichert. Öffnen Sie diese Datei, und suchen Sie nach `loadBalancedAppPort`. Sie werden feststellen, dass jeder Port mit drei Artefakten verknüpft ist:
+Vielleicht möchten Sie auch die öffentlichen Anwendungsports für den Cluster vor seiner Bereitstellung ändern. Standardmäßig öffnet die Vorlage nur zwei öffentliche TCP-Ports (80 und 8081). Wenn Sie für Ihre Anwendungen mehr benötigen, ändern Sie die Azure-Load Balancer-Definition in der Vorlage. Die Definition ist in der Hauptvorlagendatei (`ServiceFabricCluster.json`) gespeichert. Öffnen Sie diese Datei, und suchen Sie nach `loadBalancedAppPort`. Sie werden feststellen, dass jeder Port mit drei Artefakten verknüpft ist:
 
 1. Einer Vorlagenvariablen, die den Wert für den TCP-Port definiert:
 
@@ -126,4 +126,4 @@ Wenn Fehler auftreten, wechseln Sie zum [Azure-Portal](https://portal.azure.com/
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

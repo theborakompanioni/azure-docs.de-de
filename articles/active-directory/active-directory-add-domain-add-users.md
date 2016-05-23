@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="04/20/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Zuweisen von Benutzern zu einer benutzerdefinierten Domäne
@@ -56,10 +56,10 @@ Sie können dies auch mit [Microsoft PowerShell](https://msdn.microsoft.com/libr
 
 ## Nächste Schritte
 
-- [Verwenden von benutzerdefinierten Domänennamen zum Vereinfachen des Anmeldevorgangs für Benutzer](active-directory-add-domain.md)
-- [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
-- [Hinzufügen und Überprüfen eines benutzerdefinierten Domänennamens in Azure Active Directory](active-directory-add-domain-add-verify-general.md)
-- [Ändern der DNS-Registrierungsstelle für Ihren benutzerdefinierten Domänennamen](active-directory-add-domain-change-registrar.md)
-- [Löschen einer benutzerdefinierten Domäne in Azure Active Directory](active-directory-add-domain-delete-domain.md)
+-   [Verwenden von benutzerdefinierten Domänennamen zum Vereinfachen des Anmeldevorgangs für Benutzer](active-directory-add-domain.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+-   [Verwalten von benutzerdefinierten Domänennamen](active-directory-add-manage-domain-names.md)
+
+-   [Informationen zu den Konzepten der Domänenverwaltung in Azure AD](active-directory-add-domain-concepts.md)
+
+<!---HONumber=AcomDC_0511_2016-->

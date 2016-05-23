@@ -2,7 +2,7 @@
 	pageTitle="Informationen zum sicheren Zugriff auf Daten in DocumentDB | Microsoft Azure" 
 	description="Informationen zu Zugriffssteuerungskonzepten in DocumentDB, darunter Hauptschlüssel, Schlüssel mit Leseberechtigung, Benutzer und Berechtigungen." 
 	services="documentdb" 
-	authors="ryancrawcour" 
+	authors="kiratp" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="03/30/2016" 
-	ms.author="ryancraw"/>
+	ms.author="kipandya"/>
 
 # Sicherer Zugriff auf Daten in DocumentDB
 
@@ -48,7 +48,7 @@ DocumentDB unterstützt im Rahmen dieser zwei Kategorien die folgenden drei Type
  
 - Kontoadministrator: Vollzugriff auf alle Ressourcen (Verwaltung und Anwendung) in einem bestimmten DocumentDB-Konto.
 - Administrator mit Leseberechtigung: Schreibgeschützter Zugriff auf alle Ressourcen (Verwaltung und Anwendung) in einem bestimmten DocumentDB-Konto. 
-- Datenbankbenutzer: Die einem bestimmten Satz an DocumentDB-Datenbankressourcen zugeordnete DocumentDB-Benutzerressource (z. B. Sammlungen, Dokumente, Skripts). Es können mehrere Benutzerressourcen einer bestimmten Datenbank zugeordnet werden, und jede Benutzerressource kann über mehrere Berechtigungen verfügen.
+- Datenbankbenutzer: Die einem bestimmten Satz an DocumentDB-Datenbankressourcen zugeordnete DocumentDB-Benutzerressource (z. B. Sammlungen, Dokumente, Skripts). Es können mehrere Benutzerressourcen einer bestimmten Datenbank zugeordnet werden, und jede Benutzerressource kann über mehrere Berechtigungen verfügen.
 
 Das DocumentDB-Zugriffssteuerungsmodell definiert mit Berücksichtigung der oben genannten Kategorien drei Typen von Zugriffskonstrukten:
 
@@ -60,7 +60,7 @@ Das DocumentDB-Zugriffssteuerungsmodell definiert mit Berücksichtigung der oben
 
 ![Abbildung der schreibgeschützten DocumentDB-Schlüssel](./media/documentdb-secure-access-to-data/readonlykeys.png)
 
-- Ressourcentoken: Ein Ressourcentoken ist einer DocumentDB-Berechtigungsressource zugeordnet, und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte DocumentDB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt.
+- Ressourcentoken: Ein Ressourcentoken ist einer DocumentDB-Berechtigungsressource zugeordnet, und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte DocumentDB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt.
 
 ![Abbildung der DocumentDB-Ressourcentoken](./media/documentdb-secure-access-to-data/resourcekeys.png)
 
@@ -166,4 +166,4 @@ Um alle einem bestimmten Benutzer zugeordneten Berechtigungsressourcen abzurufen
 - Informationen zum Erstellen von DocumentDB-Autorisierungstoken finden klicken Sie [hier](https://msdn.microsoft.com/library/azure/dn783368.aspx)
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0511_2016-->

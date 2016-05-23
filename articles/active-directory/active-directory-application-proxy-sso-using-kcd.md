@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Einmaliges Anmelden mit Anwendungsproxy | Microsoft Azure"
-	description="Erläutert das Bereitstellen von einmaligem Anmelden mit dem Azure AD-Anwendungsproxy."
+	description="Erläutert das Bereitstellen von einmaligem Anmelden mit Azure AD-Anwendungsproxy."
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 
@@ -21,7 +21,10 @@
 
 > [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
-Die einmalige Anmeldung ist ein wichtiges Element des Azure AD-Anwendungsproxys. Sie bietet optimale Benutzerfreundlichkeit: Ein Benutzer meldet sich bei der Cloud an, alle Sicherheitsprüfungen finden in der Cloud statt (Vorauthentifizierung), und wenn die Anforderung an die lokale Anwendung gesendet wird, nimmt der Anwendungsproxyconnector die Identität des Benutzers an, damit die Back-End-Anwendung von einem regulären Benutzer eines mit einer Domäne verknüpften Geräts ausgeht.
+Die einmalige Anmeldung ist ein wichtiges Element von Azure AD-Anwendungsproxy. Sie bietet optimale Benutzerfreundlichkeit mit den folgenden Schritten:
+1. Ein Benutzer meldet sich bei der Cloud an.
+2. Alle Sicherheitsüberprüfungen erfolgen in der Cloud (Vorauthentifizierung).
+3. Wenn die Anforderung an die lokale Anwendung gesendet wird, nimmt der Anwendungsproxyconnector die Identität des Benutzers an, damit die Back-End-Anwendung von einem regulären Benutzer eines in eine Domäne eingebundenen Geräts ausgeht.
 
 ![Diagramm zum Zugriffsverlauf vom Endbenutzer über den Anwendungsproxy zum Unternehmensnetzwerk](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_diagram.png)
 
@@ -34,9 +37,9 @@ Sie können für Anwendungen, die die integrierte Windows-Authentifizierung (IWA
 
 ### Netzwerkdiagramm
 
-![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png)
+Dieses Diagramm erläutert die Vorgänge, die bei einem Zugriff eines Benutzers auf eine lokale Anwendung, die IWA verwendet, ablaufen.
 
-Dieses Diagramm erläutert die Vorgänge, die bei einem Zugriff eines Benutzers auf eine lokale Anwendung, die IWA verwendet, ablaufen. Im Allgemeinen geschieht Folgendes:
+![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png)
 
 1. Der Benutzer gibt die URL ein, um über den Anwendungsproxy auf die lokale Anwendung zuzugreifen.
 2. Der Anwendungsproxy leitet die Anforderung zur Vorauthentifizierung an Azure AD-Authentifizierungsdienste weiter. Zu diesem Zeitpunkt wendet Azure AD alle gültigen Authentifizierungs- und Autorisierungsrichtlinien an, wie z. B. mehrstufige Authentifizierung. Nachdem der Benutzer überprüft wurde, erstellt Azure AD ein Token und sendet es an den Benutzer.
@@ -49,9 +52,9 @@ Dieses Diagramm erläutert die Vorgänge, die bei einem Zugriff eines Benutzers 
 
 ### Voraussetzungen
 
-1. Stellen Sie sicher, dass Ihre Apps, wie z. B. Ihre SharePoint-Web-Apps, zur Verwendung der integrierten Windows-Authentifizierung konfiguriert sind. Weitere Informationen finden Sie unter [Aktivieren der Unterstützung für die Kerberos-Authentifizierung](https://technet.microsoft.com/library/dd759186.aspx). Weitere Informationen zu SharePoint finden Sie unter [Planen der Kerberos-Authentifizierung in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx).
-2. Erstellen Sie Dienstprinzipalnamen für Ihre Anwendungen.
-3. Stellen Sie sicher, dass der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, die Sie veröffentlichen, in die Domäne eingebunden und Teil der gleichen Domäne sind. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](https://technet.microsoft.com/library/dd807102.aspx).
+- Stellen Sie sicher, dass Ihre Apps, wie z. B. Ihre SharePoint-Web-Apps, zur Verwendung der integrierten Windows-Authentifizierung konfiguriert sind. Weitere Informationen finden Sie unter [Aktivieren der Unterstützung für die Kerberos-Authentifizierung](https://technet.microsoft.com/library/dd759186.aspx). Weitere Informationen zu SharePoint finden Sie unter [Planen der Kerberos-Authentifizierung in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx).
+- Erstellen Sie Dienstprinzipalnamen für Ihre Anwendungen.
+- Stellen Sie sicher, dass der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, die Sie veröffentlichen, in die Domäne eingebunden und Teil der gleichen Domäne sind. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](https://technet.microsoft.com/library/dd807102.aspx).
 
 
 ### Active Directory-Konfiguration
@@ -87,14 +90,14 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 
 1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](active-directory-application-proxy-publish.md). Stellen Sie sicher, dass **Azure Active Directory** als **Präauthentifizierungsmethode** ausgewählt ist.
 2. Wenn Ihre Anwendung in der Liste der Anwendungen angezeigt wird, wählen Sie sie aus und klicken auf **Konfigurieren**.
-3. Legen Sie unter **Eigenschaften** die Option **Interne Authentifizierungsmethode** auf **Integrierte Windows-Authentifizierung** fest.![Erweiterte Anwendungskonfiguration](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)  
+3. Legen Sie unter **Eigenschaften** die Option **Interne Authentifizierungsmethode** auf **Integrierte Windows-Authentifizierung** fest. ![Erweiterte Anwendungskonfiguration](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)  
 4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für die veröffentlichte Anwendung http/lob.contoso.com.  
 
 >[AZURE.IMPORTANT] Die UPNs in Azure Active Directory müssen mit den UPNs in Ihrem lokalen Active Directory identisch sein, damit die Vorauthentifizierung funktioniert. Stellen Sie sicher, dass Azure AD mit der lokalen AD-Instanz synchronisiert ist.
 
 | | |
 | --- | --- |
-| Interne Authentifizierungsmethode | Bei Verwendung von Azure AD für die Vorauthentifizierung können Sie eine interne Authentifizierungsmethode festlegen, die Ihren Benutzern ermöglicht, vom einmaligen Anmelden (SSO) bei dieser Anwendung zu profitieren. <br><br> Wählen Sie **Integrierte Windows-Authentifizierung** (IWA) aus, wenn Ihre Anwendung IWA verwendet. Außerdem können Sie die eingeschränkte Kerberos-Delegierung (KCD) zum Aktivieren von SSO für diese Anwendung konfigurieren. Anwendungen, die IWA verwenden, müssen mithilfe von KCD konfiguriert werden. Ansonsten kann der Anwendungsproxy diese Anwendungen nicht veröffentlichen. <br><br> Wählen Sie **Keine** aus, wenn Ihre Anwendung IWA nicht verwendet. |
+| Interne Authentifizierungsmethode | Bei Verwendung von Azure AD für die Vorauthentifizierung können Sie eine interne Authentifizierungsmethode festlegen, um Ihren Benutzern das einmalige Anmelden (SSO) für diese Anwendung zu ermöglichen. <br><br> Wählen Sie **Integrierte Windows-Authentifizierung** (IWA) aus, wenn Ihre Anwendung IWA verwendet. Außerdem können Sie die eingeschränkte Kerberos-Delegierung (KCD) zum Aktivieren von SSO für diese Anwendung konfigurieren. Anwendungen, die IWA verwenden, müssen mithilfe von KCD konfiguriert werden. Ansonsten kann der Anwendungsproxy diese Anwendungen nicht veröffentlichen. <br><br> Wählen Sie **Keine** aus, wenn Ihre Anwendung IWA nicht verwendet. |
 | Interner Anwendungs-SPN | Dies ist der Dienstprinzipalname (SPN) der internen Anwendung wie im lokalen Azure AD konfiguriert. Der SPN wird vom Anwendungsproxy-Connector verwendet, um Kerberos-Token für die Anwendung mithilfe der eingeschränkten Kerberos-Delegierung (KCD) abzurufen. |
 
 
@@ -120,7 +123,7 @@ Diese Funktion ermöglicht vielen Organisationen mit unterschiedlichen lokalen I
 
 - Besitzen intern mehrere Domänen (joe@us.contoso.com, joe@eu.contoso.com) und eine einzelne Domäne in der Cloud (joe@contoso.com).
 
-- Besitzen intern einen nicht routingfähigen Domänennamen (joe@contoso.usa) und einen routingfähigen Namen in der Cloud.
+- Sie besitzen intern einen nicht routingfähigen Domänennamen (joe@contoso.usa) und einen zulässigen Namen in der Cloud.
 
 - Sie verwenden intern keine Domänennamen (Joe).
 
@@ -131,7 +134,7 @@ Dies hilft auch bei Anwendungen, die keine Adressen in Form von E-Mail-Adressen 
 
 ### Festlegen von SSO für unterschiedliche lokale und cloudbasierte Identitäten
 
-1. Konfigurieren Sie die Azure AD Connect-Einstellungen so, dass die E-Mail-Adresse die Hauptidentität ist. Dies erfolgt als Teil des Anpassungsvorgangs per Änderung des **Benutzerprinzipalnamens** in den Synchronisierungseinstellungen. Diese Einstellungen bestimmen auch, wie sich Benutzer bei Office 365, Windows 10-Geräten und anderen Anwendungen anmelden, die Azure AD als Identitätsspeicher verwenden. ![Screenshot: Benutzer identifizieren – Dropdownliste für Benutzerprinzipalname](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)  
+1. Konfigurieren Sie die Azure AD Connect-Einstellungen so, dass die E-Mail-Adresse die Hauptidentität ist. Dies erfolgt als Teil des Anpassungsvorgangs durch Änderung des **Benutzerprinzipalnamens** in den Synchronisierungseinstellungen. Diese Einstellungen bestimmen auch, wie sich Benutzer bei Office 365, Windows 10-Geräten und anderen Anwendungen anmelden, die Azure AD als Identitätsspeicher verwenden. ![Screenshot: Benutzer identifizieren – Dropdownliste für Benutzerprinzipalname](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. Wählen Sie in den Anwendungskonfigurationseinstellungen für die zu modifizierende Anwendung die **Delegierte Identität für Anmeldung** aus:
   - Benutzerprinzipalname: joe@contoso.com  
   - Alternativer Benutzerprinzipalname: joed@contoso.local  
@@ -142,32 +145,21 @@ Dies hilft auch bei Anwendungen, die keine Adressen in Form von E-Mail-Adressen 
   ![Screenshot: Dropdownmenü „Delegierte Identität für Anmeldung“](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)
 
 ### Problembehandlung bei SSO für verschiedene Identitäten
-Wenn im SSO-Prozess ein Fehler auftritt, wird dieser im Ereignisprotokoll des Connectorcomputers aufgeführt, wie unter [Problembehandlung](active-directory-application-proxy-troubleshoot.md) beschrieben. In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwendung gesendet, während die Anwendung mit verschiedenen anderen HTTP-Antworten reagiert. Die Problembehandlung beginnt in diesen Fällen zweckmäßigerweise mit der Untersuchung der Ereignisnummer 24029 auf dem Connectorcomputer im Sitzungsereignisprotokoll des Anwendungsproxys. Die Identität des Benutzers, die für die Delegierung verwendet wurde, wird im Feld „Benutzer“ in den Ereignisdetails angezeigt. Wählen Sie zum Aktivieren des Sitzungsprotokolls im Menü „Ansicht“ der Ereignisanzeige die Option **Analytische und Debugprotokolle einblenden**.
+Wenn im SSO-Prozess ein Fehler auftritt, wird dieser im Ereignisprotokoll des Connectorcomputers aufgeführt, wie unter [Problembehandlung](active-directory-application-proxy-troubleshoot.md) beschrieben. In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwendung gesendet, während die Anwendung mit verschiedenen anderen HTTP-Antworten reagiert. Die Problembehandlung beginnt in diesen Fällen zweckmäßigerweise mit der Untersuchung der Ereignisnummer 24029 auf dem Connectorcomputer im Sitzungsereignisprotokoll des Anwendungsproxys. Die Identität des Benutzers, die für die Delegierung verwendet wurde, wird im Feld „Benutzer“ in den Ereignisdetails angezeigt. Wählen Sie zum Aktivieren des Sitzungsprotokolls im Menü „Ansicht“ der Ereignisanzeige die Option **Analytische und Debugprotokolle einblenden** aus.
 
 
 ## Weitere Informationen
-Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
-
 
 - [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
-- [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
-- [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
-- [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
 - [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
+- [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
+- [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
 
-## Weitere Informationen zum Anwendungsproxy
-- [Onlinehilfe anzeigen](active-directory-application-proxy-enable.md)
-- [Blog zum Anwendungsproxy aufrufen](http://blogs.technet.com/b/applicationproxyblog/)
-- [Sehen Sie sich unsere Videos auf Channel 9 an!](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
-
-## Zusätzliche Ressourcen
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-- [Als Organisation für Azure registrieren](sign-up-organization.md)
-- [Azure-Identität](fundamentals-identity.md)
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

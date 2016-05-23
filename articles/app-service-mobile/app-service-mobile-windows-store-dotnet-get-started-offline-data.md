@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/05/2016"
 	ms.author="wesmc"/>
 
 # Aktivieren der Offlinesynchronisierung für Ihre Windows-App
@@ -32,39 +32,46 @@ Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-* Visual Studio 2013 für Windows 8.1.
+* Visual Studio 2013 für Windows 8.1.
 * Durchführung des Lernprogramms [Erstellen einer Windows-App][create a windows app].
 * [Azure Mobile Services SQLite Store][sqlite store nuget]
-* [SQLite für Windows 8.1](http://www.sqlite.org/downloads)
+* [SQLite für Windows 8.1](http://www.sqlite.org/downloads)
 
 ## Aktualisieren der Client-App für die Unterstützung von Offlinefunktionen
 
 Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit einer lokalen Datenbank, wenn Sie sich in einem Offlineszenario befinden. Um diese Funktionen in der App zu verwenden, initialisieren Sie einen `MobileServiceClient.SyncContext` in einem lokalen Speicher. Erstellen Sie dann über die `IMobileServiceSyncTable`-Schnittstelle einen Verweis für die Tabelle. In diesem Lernprogramm verwenden wir SQLite als lokalen Speicher.
 
-1. Installieren Sie die SQLite-Laufzeit für Windows 8.1 und Windows Phone 8.1.
+1. Installieren Sie die SQLite-Laufzeit für Windows 8.1 und Windows Phone 8.1.
 
-    * **Windows 8.1-Runtime:** Installieren Sie [SQLite für Windows 8.1].
-    * **Windows Phone 8.1:** Installieren Sie [SQLite für Windows Phone 8.1].
+    * **Windows 8.1-Runtime:** Installieren Sie [SQLite für Windows 8.1].
+    * **Windows Phone 8.1:** Installieren Sie [SQLite für Windows Phone 8.1].
 
     >[AZURE.NOTE] Diese Anweisungen lassen sich auch für Windows 10 UAP-Projekte verwenden, doch es empfiehlt sich, stattdessen [SQLite für Windows 10] zu installieren.
 
-2. Öffnen Sie in Visual Studio das Projekt, das Sie in [Erstellen einer Windows-App] abgeschlossen haben. Installieren Sie das **Microsoft.Azure.Mobile.Client.SQLiteStore**-NuGet-Paket für Windows 8.1-Laufzeit- und für Windows Phone 8.1-Projekte. Fügen Sie den Windows Store 8.1- und den Windows Phone 8.1-Projekten den NuGet-Verweis hinzu.
+2. Öffnen Sie in Visual Studio das Projekt, das Sie in [Erstellen einer Windows-App] abgeschlossen haben. Installieren Sie das **Microsoft.Azure.Mobile.Client.SQLiteStore**-NuGet-Paket für Windows 8.1-Laufzeit- und für Windows Phone 8.1-Projekte. Fügen Sie den Windows Store 8.1- und den Windows Phone 8.1-Projekten den NuGet-Verweis hinzu.
 
     >[AZURE.NOTE] Wenn die Installation einen zusätzlichen Verweis auf eine andere Version von SQLite erstellt als die von Ihnen installierte, erhalten Sie einen Kompilierungsfehler. Sie sollten den Fehler beheben, indem Sie das Duplikat im Knoten **Verweise** in Ihren Projekten entfernen.
 
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** für Windows 8.1-Runtime- und Windows Phone 8.1-Plattformprojekte, und vergewissern Sie sich, dass ein Verweis auf SQLite vorhanden ist, der sich im Abschnitt **Erweiterungen** befindet.
+3. SQLite ist eine systemeigene Bibliothek und setzt voraus, dass Sie über eine plattformspezifische Architektur verfügen, z. B. **x86**, **x64** oder **ARM**. **Beliebige CPU** wird nicht unterstützt. Klicken Sie im Projektmappen-Explorer auf die oberste Projektmappe, und ändern Sie dann den Wert im Dropdownfeld für die Prozessorarchitektur in eine der unterstützten Einstellungen, die Sie testen möchten.
+
+    >[AZURE.NOTE] Wenn Sie Visual Studio 2015 verwenden, klicken Sie mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Eigenschaften**, um den Configuration Manager zu öffnen und die Plattform für die Windows- und Windows Phone-Projekte festzulegen.
+
+    ![][13]
+
+
+4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** für die Windows 8.1-Runtime- und Windows Phone 8.1-Plattformprojekte. Vergewissern Sie sich, dass ein Verweis auf SQLite im Abschnitt **Erweiterungen** vorhanden ist.
+
+    >[AZURE.NOTE] Wenn Sie Visual Studio 2015 verwenden, klicken Sie mit der rechten Maustaste auf den Knoten **Verweise** für die Windows 8.1-Runtime- und Windows Phone 8.1-Plattformprojekte, und klicken Sie auf **Verweis hinzufügen**, um den Verweis-Manager zu öffnen.
+
 
     ![][1] </br>
 
-    **Windows 8.1-Runtime**
+    **Windows 8.1-Runtime**
 
     ![][11] </br>
 
-    **Windows Phone 8.1**
+    **Windows Phone 8.1**
 
-4. SQLite ist eine systemeigene Bibliothek und setzt voraus, dass Sie über eine plattformspezifische Architektur verfügen, z. B. **x86**, **x64** oder **ARM**. **Beliebige CPU** wird nicht unterstützt. Klicken Sie im Projektmappen-Explorer auf die oberste Projektmappe, und ändern Sie dann den Wert im Dropdownfeld für die Prozessorarchitektur in eine der unterstützten Einstellungen, die Sie testen möchten.
-
-    ![][13]
 
 5. Öffnen Sie im Projektmappen-Explorer im freigegebenen Projekt die Datei "MainPage.cs". Heben Sie die Auskommentierung der folgenden Zeilen mithilfe von Anweisungen am Anfang der Datei auf:
 
@@ -206,7 +213,7 @@ In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen App-Back-End. D
 
 4. Klicken Sie in der App auf das Kontrollkästchen neben einigen Elementen, um sie im lokalen Speicher abzuschließen.
 
-  `UpdateCheckedTodoItem` ruft `SyncAsync` auf, um jedes Element vollständig mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. Sie sollten jedoch beachten, dass **bei jeder Ausführung eines Pullvorgangs gegen eine Tabelle, die der Client geändert hat, zunächst immer automatisch ein Pushvorgang im Clientsynchronisierungskontext ausgeführt wird**. Dadurch wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. In diesem Fall hätte der Aufruf von `PushAsync` entfernt werden können, da er automatisch bei der Ausführung eines Pullvorgangs ausgeführt wird. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen, wenn Sie sich dessen nicht bewusst sind. Weitere Informationen zu diesem Verhalten finden Sie unter [Offlinedatensynchronisierung in Azure Mobile Apps].
+  `UpdateCheckedTodoItem` ruft `SyncAsync` auf, um jedes abgeschlossene Element mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. Sie sollten jedoch beachten, dass **bei jeder Ausführung eines Pullvorgangs gegen eine Tabelle, die der Client geändert hat, zunächst immer automatisch ein Pushvorgang im Clientsynchronisierungskontext ausgeführt wird**. Dadurch wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. In diesem Fall hätte der Aufruf von `PushAsync` entfernt werden können, da er automatisch bei der Ausführung eines Pullvorgangs ausgeführt wird. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen, wenn Sie sich dessen nicht bewusst sind. Weitere Informationen zu diesem Verhalten finden Sie unter [Offlinedatensynchronisierung in Azure Mobile Apps].
 
 
 ##Zusammenfassung
@@ -259,11 +266,11 @@ Zur Synchronisierung des lokalen Speichers mit dem Server wurden die Methoden `I
 
 
 <!-- URLs. -->
-[Offlinedatensynchronisierung in Azure Mobile Apps]: ../app-service-mobile-offline-data-sync.md
-[create a windows app]: ../app-service-mobile-windows-store-dotnet-get-started.md
-[Erstellen einer Windows-App]: ../app-service-mobile-windows-store-dotnet-get-started.md
+[Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[create a windows app]: app-service-mobile-windows-store-dotnet-get-started.md
+[Erstellen einer Windows-App]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite für Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
-[SQLite für Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
+[SQLite für Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite für Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921
 
 [sqlite store nuget]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
@@ -271,4 +278,4 @@ Zur Synchronisierung des lokalen Speichers mit dem Server wurden die Methoden `I
 [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offlinefähige Apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

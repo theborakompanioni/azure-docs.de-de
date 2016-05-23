@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="05/03/2016"
    ms.author="alkohli" />
 
 # Verwenden des StorSimple Manager-Diensts zum Verwalten von Access Control-Datensätzen für das StorSimple Virtual Array 
@@ -35,7 +35,7 @@ In diesem Tutorial werden die folgenden häufig durchgeführten ACR-bezogenen Au
 
 ## Abrufen des IQN
 
-Führen Sie die folgenden Schritte aus, um den IQN eines Windows-Hosts abzurufen, auf dem Windows Server 2012 ausgeführt wird.
+Führen Sie die folgenden Schritte aus, um den IQN eines Windows-Hosts abzurufen, auf dem Windows Server 2012 ausgeführt wird.
 
 [AZURE.INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um den IQN eines Windows-Hosts abzurufen
 
 ACRs werden auf der Seite **Konfiguration** des StorSimple Manager-Diensts hinzugefügt. In der Regel ordnen Sie einem Volume einen ACR zu.
 
-Informationen zum Zuordnen eines ACR zu einem Volume finden Sie unter [Verwalten von Volumes in einem StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manage-volumes).
+Informationen zum Zuordnen eines ACR zu einem Volume finden Sie unter [Hinzufügen eines Volumes](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume).
 
 >[AZURE.IMPORTANT] 
 > 
@@ -114,4 +114,4 @@ Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu 
 
 - Lesen Sie sich die weiteren Informationen zum [Hinzufügen von Volumes und Konfigurieren von ACRs](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume) durch.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

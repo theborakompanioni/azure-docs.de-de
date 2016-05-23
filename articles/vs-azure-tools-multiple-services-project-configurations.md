@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen
@@ -91,7 +91,7 @@ Sie können die Eigenschaftenseite **Lokaler Speicher** verwenden, um mindestens
 
 Auf der Seite **Zertifikate** können Sie der Rolle Zertifikate zuordnen. Mit den hinzugefügten Zertifikaten können HTTPS-Endpunkte auf der Eigenschaftenseite **Endpunkte** konfiguriert werden.
 
-Auf der Eigenschaftenseite **Zertifikate** werden der Dienstkonfiguration Informationen zu den Zertifikaten hinzugefügt. Die Zertifikate sind kein Teil des Diensts, sondern müssen über das [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) gesondert in Azure hochgeladen werden.
+Auf der Eigenschaftenseite **Zertifikate** werden der Dienstkonfiguration Informationen zu den Zertifikaten hinzugefügt. Die Zertifikate sind im Dienstpaket nicht enthalten, sondern müssen über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) gesondert in Azure hochgeladen werden.
 
 Um der Rolle ein Zertifikat zuzuordnen, geben Sie einen Namen für das Zertifikat an. Mit diesem Namen wird beim Konfigurieren eines HTTPS-Endpunkts auf der Eigenschaftenseite **Endpunkte** auf das Zertifikat verwiesen. Geben Sie im nächsten Schritt an, ob der Zertifikatspeicher **Lokaler Computer** oder **Aktueller Benutzer** ist. Geben Sie außerdem den Namen des Speichers an. Geben Sie zuletzt den Fingerabdruck des Zertifikats ein. Wenn sich das Zertifikat im Speicher "Current User\\Personal (My)" befindet, können Sie den Fingerabdruck des Zertifikats eingeben, indem Sie das Zertifikat aus einer aufgefüllten Liste auswählen. Wenn es sich an einem beliebigen anderen Ort befindet, geben Sie den Fingerabdruckwert manuell ein.
 
@@ -110,4 +110,4 @@ Zum Konfigurieren von für ein gesamtes Azure-Clouddienstprojekt gültigen Einst
 |Entwicklung|Auf dieser Seite geben Sie Buildkonfigurationsanweisungen und die Bedingungen an, unter denen Postbuildereignisse ausgeführt werden.|
 |Web|Auf dieser Seite konfigurieren Sie Einstellungen für den Webserver.|
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

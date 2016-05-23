@@ -1,9 +1,9 @@
 <properties
-	pageTitle="Erste Schritte mit Abfragen für elastische Datenbanken bei Sharding (horizontaler Partitionierung) | Microsoft Azure"
+	pageTitle="Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken (horizontale Partitionierung) | Microsoft Azure"
 	description="Verwenden datenbankübergreifender Datenbankabfragen"
 	services="sql-database"
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="sidneyh"/>
 
 <tags
@@ -12,14 +12,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="04/26/2016"
 	ms.author="SilviaDoomra" />
 
-# Erste Schritte mit Abfragen für elastische Datenbanken bei Sharding (horizontaler Partitionierung)
+# Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
 
-Mit Abfragen für elastische Datenbanken (Vorschau) für Azure SQL-Datenbank können Sie T-SQL-Abfragen ausführen, die sich mit einem einzigen Verbindungspunkt über mehrere Datenbanken erstrecken. Weitere Informationen zu Abfragen für elastische Datenbanken finden Sie auf der [Übersichtsseite zum Feature](sql-database-elastic-query-overview.md).
+Sie können mit einer [elastischen Abfrage](sql-database-elastic-query-overview.md) Berichte aus mehreren Azure SQL-Datenbanken über nur einen Verbindungspunkt erstellen. Die Datenbanken müssen horizontal partitioniert werden (auch als „Sharding“ bezeichnet).
 
-Dieses Thema baut auf dem Beispiel unter [Erste Schritte mit den Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) auf. Nach Abschluss haben Sie Folgendes gelernt: Konfigurieren und Verwenden einer Azure SQL-Datenbank zum Ausführen von Abfragen, die sich über viele verbundene Datenbanken erstrecken.
+Wenn Sie über eine vorhandene Datenbank verfügen, finden Sie entsprechende Informationen unter [Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
+
+Informationen zu den für Abfragen benötigten SQL-Objekten finden Sie unter [Ausführen von Abfragen über horizontal partitionierte Clouddatenbanken (Sharddatenbanken) hinweg](sql-database-elastic-query-horizontal-partitioning.md).
+
 ## Voraussetzungen
 
 Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenbank](sql-database-elastic-scale-get-started.md) herunter, und führen Sie es aus.
@@ -142,4 +145,4 @@ Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://az
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

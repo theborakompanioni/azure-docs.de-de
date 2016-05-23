@@ -3,7 +3,7 @@
 	description="Verwenden der RecoveryManager-Klasse zum Beheben von Problemen mit Shardzuordnungen" 
 	services="sql-database" 
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="ddove"/>
 
 <tags 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/05/2016" 
 	ms.author="ddove"/>
 
 # Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shard-Zuordnung
@@ -129,14 +129,13 @@ Geofailover und -wiederherstellung sind Vorgänge, die in der Regel von einem Cl
 4. Ermitteln Sie Inkonsistenzen in der Zuordnung zwischen GSM und LSM. 
 5. Lösen Sie Unterschiede zwischen der GSM und der LSM auf, indem Sie die LSM als vertrauenswürdig einstufen. 
 
-In diesem Beispiel werden die folgende Schritte ausgeführt: 1. Entfernen von Shards aus der Shardzuordnung, die Shardspeicherorte von vor dem Failover angeben. 2. Anfügen von Shards an die Shardzuordnung, die die neuen Shardspeicherorte angeben. (Der Parameter „Configuration.SecondaryServer“ ist der neue Servername, aber derselbe Datenbankname.) 3. Abrufen der Wiederherstellungstoken durch das Erkennen von Zuordnungsunterschieden zwischen der GSM und der LSM für die einzelnen Shards. 4. Auflösen der Inkonsistenzen durch Verwenden der LSM-Zuordnung als vertrauenswürdige Zuordnung für die einzelnen Shards.
+In diesem Beispiel werden die folgenden Schritte ausgeführt:
+1. Entfernen von Shards aus der Shardzuordnung, die Shardspeicherorte von vor dem Failover angeben.
+2. Anfügen von Shards an die Shardzuordnung, die die neuen Shardspeicherorte angeben. (Der Parameter „Configuration.SecondaryServer“ ist der neue Servername, aber derselbe Datenbankname.)
+3. Abrufen der Wiederherstellungstoken durch das Erkennen von Zuordnungsunterschieden zwischen der GSM und der LSM für die einzelnen Shards. 
+4. Auflösen der Inkonsistenzen durch Verwenden der LSM-Zuordnung als vertrauenswürdige Zuordnung für die einzelnen Shards. 
 
-	var shards = smm.GetShards(); 
-	foreach (shard s in shards) 
-	{ 
-	 if (s.Location.Server == Configuration.PrimaryServer) 
-		 { 
-		  ShardLocation slNew = new ShardLocation(Configuration.SecondaryServer, s.Location.Database); 
+	var shards = smm.GetShards(); foreach (shard s in shards) { if (s.Location.Server == Configuration.PrimaryServer) { ShardLocation slNew = new ShardLocation(Configuration.SecondaryServer, s.Location.Database);
 		
 		  rm.DetachShard(s.Location); 
 		
@@ -149,7 +148,7 @@ In diesem Beispiel werden die folgende Schritte ausgeführt: 1. Entfernen von Sh
 			   rm.ResolveMappingDifferences(g, MappingDifferenceResolution.KeepShardMapping); 
 			} 
 		} 
-	} 
+	}
 
 
 
@@ -160,4 +159,4 @@ In diesem Beispiel werden die folgende Schritte ausgeführt: 1. Entfernen von Sh
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

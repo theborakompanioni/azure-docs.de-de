@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/05/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 # Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux
@@ -62,4 +62,4 @@ Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: 
 
 Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Service Fabric on Linux](service-fabric-linux-overview.md) (Service Fabric unter Linux)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

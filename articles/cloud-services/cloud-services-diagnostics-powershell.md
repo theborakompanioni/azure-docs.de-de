@@ -4,7 +4,7 @@
 	services="cloud-services"
 	documentationCenter=".net"
 	authors="Thraka"
-	manager=""
+	manager="timlt"
 	editor=""/>
 
 <tags
@@ -127,4 +127,4 @@ So entfernen Sie die Diagnoseerweiterung aus jeder einzelnen Rolle
 - Das [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/dn782207.aspx) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
 - Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md).  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

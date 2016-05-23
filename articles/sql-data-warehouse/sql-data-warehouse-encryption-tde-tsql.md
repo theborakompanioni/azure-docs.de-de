@@ -18,7 +18,7 @@
 
 # Erste Schritte mit Transparent Data Encryption (TDE)
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](sql-data-warehouse-encryption-tde.md)
+- [Azure-Portal](sql-data-warehouse-encryption-tde.md)
 - [TSQL](sql-data-warehouse-encryption-tde-tsql.md)
 
 Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der Datenbank, die dazugehörigen Backups und die Transaktionsprotokolldateien im Ruhezustand ausgeführt, ohne dass Änderungen an der Anwendung erforderlich sind.
@@ -73,4 +73,4 @@ Das Ergebnis ```1``` steht für eine verschlüsselte Datenbank, und mit ```0``` 
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

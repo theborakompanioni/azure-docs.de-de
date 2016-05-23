@@ -43,7 +43,7 @@ Ihnen steht eine Visual Studio-Vorlage für einen zustandslosen Dienst, der Web-
 
 ![Erstellen eines einzelnen zustandslosen Diensts](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
 
-Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält die erforderlichen Web-API-Pakete und die *Host* pakete. Dies ist für einen späteren Teil wichtig.
+Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält die erforderlichen Web-API-Pakete und die *Host*pakete. Dies ist für einen späteren Teil wichtig.
 
 ![Erstellen der Web-API mit dem NuGet-Paket-Manager](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 
@@ -308,6 +308,7 @@ In „OwinCommunicationListener.cs“ können Sie mit der Implementierung von Op
 public Task<string> OpenAsync(CancellationToken cancellationToken)
 {
     var serviceEndpoint = this.serviceContext.CodePackageActivationContext.GetEndpoint(this.endpointName);
+    var protocol = serviceEndpoint.Protocol;
     int port = serviceEndpoint.Port;
 
     if (this.serviceContext is StatefulServiceContext)
@@ -316,7 +317,8 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
         this.listeningAddress = string.Format(
             CultureInfo.InvariantCulture,
-            "http://+:{0}/{1}{2}/{3}/{4}",
+            "{0}://+:{1}/{2}{3}/{4}/{5}",
+            protocol,
             port,
             string.IsNullOrWhiteSpace(this.appRoot)
                 ? string.Empty
@@ -329,7 +331,8 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
     {
         this.listeningAddress = string.Format(
             CultureInfo.InvariantCulture,
-            "http://+:{0}/{1}",
+            "{0}://+:{1}/{2}",
+            protocol,
             port,
             string.IsNullOrWhiteSpace(this.appRoot)
                 ? string.Empty
@@ -367,7 +370,7 @@ Vor diesem Hintergrund startet OpenAsync den Webserver und gibt die von ihm übe
     }
     catch (Exception ex)
     {
-        this.eventSource.ServiceMessage(this.serviceContext, "Web server failed to open. " + ex.ToString());
+        this.eventSource.ServiceMessage(this.serviceContext, "Web server failed to open endpoint {0}. {1}", this.endpointName, ex.ToString());
 
         this.StopWebServer();
 
@@ -388,7 +391,7 @@ Implementieren Sie abschließend sowohl "CloseAsync" als auch "Abort", um den We
 ```csharp
 public Task CloseAsync(CancellationToken cancellationToken)
 {
-    this.eventSource.ServiceMessage(this.serviceContext, "Closing web server");
+    this.eventSource.ServiceMessage(this.serviceContext, "Closing web server on endpoint {0}", this.endpointName);
             
     this.StopWebServer();
 
@@ -397,7 +400,7 @@ public Task CloseAsync(CancellationToken cancellationToken)
 
 public void Abort()
 {
-    this.eventSource.ServiceMessage(this.serviceContext, "Aborting web server");
+    this.eventSource.ServiceMessage(this.serviceContext, "Aborting web server on endpoint {0}", this.endpointName);
     
     this.StopWebServer();
 }
@@ -427,11 +430,12 @@ Sie können nun eine Instanz von OwinCommunicationListener erstellen und zurück
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
 {
-    return new ServiceInstanceListener[]
-    {
-        new ServiceInstanceListener(serviceContext => 
-            new OwinCommunicationListener(Startup.ConfigureApp, serviceContext, ServiceEventSource.Current, "ServiceEndpoint"))
-    };
+    var endpoints = Context.CodePackageActivationContext.GetEndpoints()
+                           .Where(endpoint => endpoint.Protocol == EndpointProtocol.Http || endpoint.Protocol == EndpointProtocol.Https)
+                           .Select(endpoint => endpoint.Name);
+
+    return endpoints.Select(endpoint => new ServiceInstanceListener(
+        serviceContext => new OwinCommunicationListener(Startup.ConfigureApp, serviceContext, ServiceEventSource.Current, endpoint), endpoint));
 }
 ```
 
@@ -444,8 +448,11 @@ In diesem Beispiel müssen Sie für die `RunAsync()`-Methode keine Schritte ausf
 Die endgültige Implementierung des Diensts ist normalerweise sehr einfach. Es muss nur der Listener für die Kommunikation erstellt werden:
 
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Fabric;
+using System.Fabric.Description;
+using System.Linq;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 
@@ -459,11 +466,12 @@ namespace WebService
 
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new ServiceInstanceListener[]
-            {
-                new ServiceInstanceListener(serviceContext => 
-                    new OwinCommunicationListener(Startup.ConfigureApp, serviceContext, ServiceEventSource.Current, "ServiceEndpoint"))
-            };
+            var endpoints = Context.CodePackageActivationContext.GetEndpoints()
+                                   .Where(endpoint => endpoint.Protocol == EndpointProtocol.Http || endpoint.Protocol == EndpointProtocol.Https)
+                                   .Select(endpoint => endpoint.Name);
+
+            return endpoints.Select(endpoint => new ServiceInstanceListener(
+                serviceContext => new OwinCommunicationListener(Startup.ConfigureApp, serviceContext, ServiceEventSource.Current, endpoint), endpoint));
         }
     }
 }
@@ -535,6 +543,7 @@ namespace WebService
         public Task<string> OpenAsync(CancellationToken cancellationToken)
         {
             var serviceEndpoint = this.serviceContext.CodePackageActivationContext.GetEndpoint(this.endpointName);
+            var protocol = serviceEndpoint.Protocol;
             int port = serviceEndpoint.Port;
 
             if (this.serviceContext is StatefulServiceContext)
@@ -543,7 +552,8 @@ namespace WebService
 
                 this.listeningAddress = string.Format(
                     CultureInfo.InvariantCulture,
-                    "http://+:{0}/{1}{2}/{3}/{4}",
+                    "{0}://+:{1}/{2}{3}/{4}/{5}",
+                    protocol,
                     port,
                     string.IsNullOrWhiteSpace(this.appRoot)
                         ? string.Empty
@@ -556,7 +566,8 @@ namespace WebService
             {
                 this.listeningAddress = string.Format(
                     CultureInfo.InvariantCulture,
-                    "http://+:{0}/{1}",
+                    "{0}://+:{1}/{2}",
+                    protocol,
                     port,
                     string.IsNullOrWhiteSpace(this.appRoot)
                         ? string.Empty
@@ -581,7 +592,7 @@ namespace WebService
     }
     catch (Exception ex)
     {
-        this.eventSource.ServiceMessage(this.serviceContext, "Web server failed to open. " + ex.ToString());
+        this.eventSource.ServiceMessage(this.serviceContext, "Web server failed to open endpoint {0}. {1}", this.endpointName, ex.ToString());
 
         this.StopWebServer();
 
@@ -591,7 +602,7 @@ namespace WebService
 
         public Task CloseAsync(CancellationToken cancellationToken)
         {
-            this.eventSource.ServiceMessage(this.serviceContext, "Closing web server");
+            this.eventSource.ServiceMessage(this.serviceContext, "Closing web server on endpoint {0}", this.endpointName);
 
             this.StopWebServer();
 
@@ -600,7 +611,7 @@ namespace WebService
 
         public void Abort()
         {
-            this.eventSource.ServiceMessage(this.serviceContext, "Aborting web server");
+            this.eventSource.ServiceMessage(this.serviceContext, "Aborting web server on endpoint {0}", this.endpointName);
 
             this.StopWebServer();
         }
@@ -674,4 +685,4 @@ Weitere Informationen zum Erstellen von Anwendungs- und Dienstinstanzen finden S
 
 [Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio](service-fabric-debugging-your-application.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

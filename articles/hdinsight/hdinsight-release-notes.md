@@ -42,7 +42,7 @@ Diese Version enthält die folgenden Updates.
 | Wiederherstellung nach Livy-Absturz | Resilienz des Auftragsstatus für jeden über Livy gesendeten Auftrag. | Zuverlässigkeit | Spark unter Linux| –
 | Hohe Verfügbarkeit von Jupyter-Inhalten | Ermöglicht das Speichern und Laden von Jupyter Notebook-Inhalten auf und von dem mit dem Cluster verknüpften Speicherkonto. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark unter Linux| –
 | Entfernen von hiveContext in Jupyter Notebooks | Verwendung der Magic `%%sql` anstelle von `%%hive`. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark-Cluster unter Linux| –
-| Einstellung des Supports für ältere Versionen von Spark | Die ältere Version Spark 1.3.1 wird zum 31.05. aus dem Dienst entfernt. | Dienst | Spark-Cluster unter Linux | –
+| Einstellung des Supports für ältere Versionen von Spark | Die ältere Version Spark 1.3.1 wird zum 31.05. aus dem Dienst entfernt. | Dienst | Spark-Cluster unter Windows | –
 
 ## Hinweise für die HDInsight-Version vom 29.03.2016
 
@@ -198,7 +198,7 @@ Diese Version enthält die folgenden Updates.
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | HDP-Standardversion in HDP 2.2 geändert | Die Standardversion für HDInsight-Windows-Cluster wird in HDP 2.2 geändert. HDInsight-Version 3.2 (HDP 2.2) ist seit Februar 2015 allgemein verfügbar. Bei dieser Änderung wird die Standardversion des Clusters nur umgekehrt, sofern keine explizite Auswahl getroffen wurde, als der Cluster mit dem Azure-Portal, über PowerShell-Cmdlets oder das SDK bereitgestellt wurde. | Service | Alle| N/V |
-|Änderungen am Namensformat des virtuellen Computers zur Bereitstellung mehrerer HDInsight-Komponenten auf Linux-Clustern in einem einzelnen Virtual Network | Die Unterstützung für die Bereitstellung mehrerer HDInsight-Linux-Cluster in einem einzelnen virtuellen Netzwerk wird in dieser Version hinzugefügt. Hierbei hat sich das Format der Namen von virtuellen Computern im Cluster von headnode\*, workernode\* und zookeepernode\* in hn\*, wn\* bzw. zk\* geändert. Es ist keine empfohlene Vorgehensweise, eine direkte Abhängigkeit vom Format der Namen virtueller Computer zu verwenden, da sie Änderungen unterliegt. Verwenden Sie „hostname -f“ auf dem lokalen Computer oder Ambari-APIs, um die Liste mit den Hosts zu bestimmen, sowie die Zuordnung von Komponenten zu Hosts. Weitere Informationen finden Sie unter [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) und [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md). | Service | HDInsight-Cluster unter Linux | N/V |
+|Änderungen am Namensformat des virtuellen Computers zur Bereitstellung mehrerer HDInsight-Komponenten auf Linux-Clustern in einem einzelnen Virtual Network | Die Unterstützung für die Bereitstellung mehrerer HDInsight-Linux-Cluster in einem einzelnen virtuellen Netzwerk wird in dieser Version hinzugefügt. Hierbei hat sich das Format der Namen von virtuellen Computern im Cluster von headnode*, workernode* und zookeepernode* in hn*, wn* bzw. zk* geändert. Es ist keine empfohlene Vorgehensweise, eine direkte Abhängigkeit vom Format der Namen virtueller Computer zu verwenden, da sie Änderungen unterliegt. Verwenden Sie „hostname -f“ auf dem lokalen Computer oder Ambari-APIs, um die Liste mit den Hosts zu bestimmen, sowie die Zuordnung von Komponenten zu Hosts. Weitere Informationen finden Sie unter [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) und [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md). | Service | HDInsight-Cluster unter Linux | N/V |
 | Konfigurationsänderungen | Für HDInsight 3.1-Cluster sind jetzt die folgenden Konfigurationen aktiviert: <ul><li>tez.yarn.ats.enabled und yarn.log.server.url. So können der Anwendungszeitachsenserver und der Protokollserver als Server für Protokolle dienen.</li></ul>Für HDInsight 3.2-Cluster wurden die folgenden Konfigurationen geändert: <ul><li>mapreduce.fileoutputcommitter.algorithm.version wurde auf 2 festgelegt. Dies ermöglicht die Verwendung der Version V2 von FileOutputCommitter.</li></ul> | Service | Alle | N/V |
 
 
@@ -1523,7 +1523,7 @@ Die folgenden Versionsänderungen wurden zwischen HDInsight 2.x (HDP1.x) und HDI
 
 
 ### Treiber
-Der JDBC-Treiber (Java Database Connnectivity) für SQL Server wird intern von HDInsight und nicht für externe Vorgänge verwendet. Wenn Sie über ODBC (Open Database Connectivity) eine Verbindung mit HDInsight herstellen möchten, verwenden Sie den Microsoft Hive ODBC-Treiber. Weitere Informationen finden Sie unter [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md).
+Der JDBC-Treiber (Java Database Connnectivity) für SQL Server wird intern von HDInsight und nicht für externe Vorgänge verwendet. Wenn Sie über ODBC (Open Database Connectivity) eine Verbindung mit HDInsight herstellen möchten, verwenden Sie den Microsoft Hive ODBC-Treiber. Weitere Informationen finden Sie unter [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](hdinsight-connect-excel-hive-odbc-driver.md).
 
 
 ### Fehlerbehebungen
@@ -1565,4 +1565,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

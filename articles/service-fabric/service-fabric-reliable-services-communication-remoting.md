@@ -66,7 +66,7 @@ Methoden für einen Dienst, der den Remotingstapel nutzt, werden mithilfe eines 
 
 ```csharp
 
-IHelloWorldStateful helloWorldClient = ServiceProxy.Create<IHelloWorldStateful>(new Uri("fabric:/MyApplication/MyHelloWorldService"));
+IMyService helloWorldClient = ServiceProxy.Create<IMyService>(new Uri("fabric:/MyApplication/MyHelloWorldService"));
 
 string message = await helloWorldClient.GetHelloWorld();
 
@@ -82,4 +82,4 @@ Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weit
 
 * [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

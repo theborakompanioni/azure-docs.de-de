@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Konfigurieren eines Clouddiensts | Microsoft Azure" 
+	pageTitle="Gewusst wie: Konfigurieren eines Clouddiensts (klassisches Portal) | Microsoft Azure" 
 	description="Hier erfahren Sie, wie Sie Clouddienste in Azure konfigurieren. Hier erfahren Sie, wie Sie die Konfiguration für Clouddienste aktualisieren und Remotezugriff auf Rolleninstanzen konfigurieren." 
 	services="cloud-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/15/2016"
+	ms.date="04/22/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,8 +22,8 @@
 # Konfigurieren von Clouddiensten
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-configure-portal.md)
-- [Azure classic portal](cloud-services-how-to-configure.md)
+- [Azure-Portal](cloud-services-how-to-configure-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-configure.md)
 
 Im klassischen Azure-Portal können Sie die am häufigsten für einen Clouddienst verwendeten Einstellungen konfigurieren. Wenn Sie die Konfigurationsdateien jedoch direkt aktualisieren möchten, laden Sie eine zu aktualisierende Konfigurationsdatei herunter, laden Sie anschließend die aktualisierte Datei hoch, und aktualisieren Sie den Clouddienst mit den Konfigurationsänderungen. In beiden Fällen wird die aktualisierte Konfiguration an alle Rolleninstanzen übermittelt.
 
@@ -86,4 +86,4 @@ Während der Konfigurationsupdates kann Azure nur dann eine Dienstverfügbarkeit
 * [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](cloud-services-role-enable-remote-desktop.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

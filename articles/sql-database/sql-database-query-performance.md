@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="04/28/2016"
+   ms.date="05/05/2016"
    ms.author="sstein"/>
 
 # Query Performance Insight für Azure SQL-Datenbank
@@ -46,9 +46,9 @@ Query Performance Insight ist einfach zu verwenden:
 
 - Überprüfen Sie die Liste mit den Abfragen, die den höchsten Ressourcenverbrauch aufweisen. 
 - Wählen Sie eine einzelne Abfrage aus, um die Details anzuzeigen.
-- Öffnen Sie den [Leistungsratgeber](sql-database-index-advisor.md), und überprüfen Sie, ob Empfehlungen verfügbar sind.
+- Öffnen Sie den [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md), und überprüfen Sie, ob Empfehlungen verfügbar sind.
 - Vergrößern Sie die Ansicht, um ausführlichere Informationen abzurufen.
-- 
+
     ![Leistungsdashboard](./media/sql-database-query-performance/performance.png)
 
 > [AZURE.NOTE] Einige Stunden mit Daten müssen von Query Store für SQL-Datenbank erfasst werden, um Query Performance Insight-Funktionen bereitstellen zu können. Wenn die Datenbank keine Aktivität aufweist oder Query Store während eines bestimmten Zeitraums nicht aktiv war, sind die Diagramme beim Anzeigen dieses Zeitraums leer. Sie können Query Store jederzeit aktivieren, wenn die Anwendung nicht ausgeführt wird.
@@ -65,14 +65,15 @@ Gehen Sie im [Portal](http://portal.azure.com) wie folgt vor:
 
     Die Ansicht der Abfragen mit höchstem Verbrauch wird geöffnet, und die Abfragen mit der höchsten CPU-Auslastung werden aufgelistet.
 
-1. Klicken Sie an verschiedenen Stellen auf das Diagramm, um die Details anzuzeigen.<br>In der obersten Zeile wird der Gesamtwert für DTU% für die Datenbank angezeigt, und die Balken zeigen die Werte für die CPU%-Auslastung der ausgewählten Abfragen während des ausgewählten Intervalls an (wenn z.B. **Letzte Woche** ausgewählt ist, entspricht jeder ausgewählte Balken 1 Tag).
+1. Klicken Sie an verschiedenen Stellen auf das Diagramm, um die Details anzuzeigen.<br>In der obersten Zeile wird der Gesamtwert für DTU% für die Datenbank angezeigt, und die Balken zeigen die Werte für die CPU%-Auslastung der ausgewählten Abfragen während des ausgewählten Intervalls an. (Wenn z.B. **Letzte Woche** ausgewählt ist, entspricht jeder ausgewählte Balken einem Tag.)
 
     ![Abfragen mit höchstem Verbrauch][2]
 
     Das untere Raster zeigt zusammengefasste Informationen für die sichtbaren Abfragen.
 
-    -	Durchschnittliche CPU-Nutzung pro Abfrage während des beobachteten Intervalls. 
-    -	Gesamtdauer pro Abfrage.
+    -	Abfrage-ID: eindeutiger Bezeichner der Abfrage in der Datenbank. 
+    -	CPU-Auslastung pro Abfrage während des beobachteten Intervalls (je nach Aggregationsfunktion).
+    -	Dauer pro Abfrage (je nach Aggregationsfunktion).
     -	Gesamtzahl der Ausführungen für eine bestimmte Abfrage.
 
 
@@ -124,9 +125,9 @@ Es gibt zwei Arten von Aufbewahrungsrichtlinien:
 
 Die Erfassungsrichtlinie sollte festgelegt werden auf:
 
-- **Alle**: Alle Abfragen werden aufgezeichnet. Dies ist die Standardoption.
-- **Auto**: Seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer werden ignoriert. Die Schwellenwerte für Ausführungszahl, Erstellungs- und Ausführungsdauer werden intern bestimmt.
-- **Keine**: Der Abfragespeicher beendet die Erfassung neuer Abfragen.
+- **Alle:** Alle Abfragen werden aufgezeichnet. Dies ist die Standardoption.
+- **Auto:** Seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer werden ignoriert. Die Schwellenwerte für Ausführungszahl, Erstellungs- und Ausführungsdauer werden intern bestimmt.
+- **Keine:** Der Abfragespeicher beendet die Erfassung neuer Abfragen.
 	
 Sie sollten alle Richtlinien auf AUTO setzen und die Bereinigungsrichtlinie auf 30 Tage:
 
@@ -151,14 +152,14 @@ Löschen Sie den Abfragespeicher. Beachten Sie, dass dadurch alle aktuellen Info
 
 ## Zusammenfassung
 
-Dank Query Performance Insight können Sie die Auswirkungen der Abfragen-Workload und die Wechselwirkung mit dem Verbrauch von Datenbankressourcen besser verstehen. Mit diesem Feature erhalten Sie Informationen zu den Abfragen mit dem höchsten Verbrauch und können die Abfragen ermitteln, die angepasst werden müssen, bevor sie ein Problem verursachen. Klicken Sie in einer Datenbank auf **Query Performance Insight**, um die Abfragen mit der höchsten Ressourcenauslastung (CPU) anzuzeigen.
+Dank Query Performance Insight können Sie die Auswirkungen der Abfragen-Workload und die Wechselwirkung mit dem Verbrauch von Datenbankressourcen besser verstehen. Mit diesem Feature erhalten Sie Informationen zu den Abfragen mit dem höchsten Verbrauch und können die Abfragen ermitteln, die angepasst werden müssen, bevor sie ein Problem verursachen.
 
 
 
 
 ## Nächste Schritte
 
-Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie auf dem Blatt **Query Performance Insight** auf [Leistungsratgeber](sql-database-index-advisor.md).
+Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie auf dem Blatt **Query Performance Insight** auf [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md).
 
 ![Leistungsratgeber](./media/sql-database-query-performance/ia.png)
 
@@ -168,4 +169,4 @@ Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erh
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,19 +12,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/15/2016"
+   ms.date="04/25/2016"
    ms.author="alkohli" />
 
 # Ändern der DATA 0-Netzwerkschnittstelleneinstellungen auf dem StorSimple-Gerät
 
 ## Übersicht
 
-Ihr Microsoft Azure StorSimple-Gerät hat sechs Netzwerkschnittstellen (DATA 0 bis DATA 5). Die DATA 0-Schnittstelle wird immer über die Windows PowerShell-Schnittstelle oder die serielle Konsole konfiguriert und ist automatisch für die Cloud aktiviert. Die DATA 0-Schnittstelle wird zunächst über den Setup-Assistent während der ersten Bereitstellung des StorSimple-Geräts konfiguriert. Wenn sich das Gerät im Betriebsmodus befindet, müssen Sie die DATA 0-Einstellungen möglicherweise neu konfigurieren. In diesem Tutorial werden zwei Methoden zum Ändern der DATA 0-Netzwerkeinstellungen beschrieben. Beide Methoden werden über Windows PowerShell für StorSimple ausgeführt.
+Ihr Microsoft Azure StorSimple-Gerät hat sechs Netzwerkschnittstellen (DATA 0 bis DATA 5). Die DATA 0-Schnittstelle wird immer über die Windows PowerShell-Schnittstelle oder die serielle Konsole konfiguriert und ist automatisch für die Cloud aktiviert. Beachten Sie, dass Sie die DATA 0-Netzwerkschnittstelle nicht über das klassische Azure-Portal konfigurieren können.
+
+Die DATA 0-Schnittstelle wird zunächst über den Setup-Assistent während der ersten Bereitstellung des StorSimple-Geräts konfiguriert. Wenn sich das Gerät im Betriebsmodus befindet, müssen Sie die DATA 0-Einstellungen möglicherweise neu konfigurieren. In diesem Tutorial werden zwei Methoden zum Ändern der DATA 0-Netzwerkeinstellungen beschrieben. Beide Methoden werden über Windows PowerShell für StorSimple ausgeführt.
 
 In diesem Tutorial erfahren Sie Folgendes:
 
 - Ändern von DATA 0-Netzwerkeinstellungen über den Setup-Assistenten
-- Ändern von DATA 0-Netzwerkeinstellungen über das Cmdlet `Set-HcsNetInterface`
+- Ändern von DATA 0-Netzwerkeinstellungen über das Cmdlet `Set-HcsNetInterface`
+
 
 
 ## Ändern von DATA 0-Netzwerkeinstellungen über den Setup-Assistenten
@@ -40,11 +43,11 @@ Sie können die DATA 0-Netzwerkeinstellungen neu konfigurieren, indem Sie eine 
 
 3. Ein Setup-Assistent wird angezeigt, mit dessen Hilfe sie die DATA 0-Schnittstelle Ihres Geräts konfigurieren können. Geben Sie neue Werte für die IP-Adresse, das Gateway und die Netzmaske an.
 
-> [AZURE.NOTE]Die festen IP-Adressen des Controllers müssen auf der Seite **Konfigurieren** des StorSimple-Geräts im klassischen Azure-Portal neu konfiguriert werden. Weitere Informationen finden Sie unter [Ändern der Netzwerkschnittstelle](storsimple-modify-device-config.md#modify-network-interfaces).
+> [AZURE.NOTE] Die festen IP-Adressen des Controllers müssen auf der Seite **Konfigurieren** des StorSimple-Geräts im klassischen Azure-Portal neu konfiguriert werden. Weitere Informationen finden Sie unter [Ändern der Netzwerkschnittstelle](storsimple-modify-device-config.md#modify-network-interfaces).
 
 
 ## Ändern der DATA 0-Netzwerkeinstellungen über das Cmdlet „Set-HcsNetInterface“
-Sie können die DATA 0-Netzwerkschnittstelle auch mithilfe des Cmdlets `Set-HcsNetInterface` neu konfigurieren. Das Cmdlet wird über die Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts ausgeführt. Führen Sie die folgenden Schritte aus, um die DATA 0-Einstellungen zu ändern.
+Sie können die DATA 0-Netzwerkschnittstelle auch mithilfe des Cmdlets `Set-HcsNetInterface` neu konfigurieren. Das Cmdlet wird über die Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts ausgeführt. Bei diesem Verfahren können auch die festen IPs des Controllers hier konfiguriert werden. Führen Sie die folgenden Schritte aus, um die DATA 0-Einstellungen zu ändern.
 
 #### So ändern Sie DATA 0-Netzwerkeinstellungen über das Cmdlet „Set-HcsNetInterface“
 
@@ -66,10 +69,12 @@ Sie können die DATA 0-Netzwerkschnittstelle auch mithilfe des Cmdlets `Set-Hcs
 
 	- Feste IPv4-Adresse für Controller 1
 
+	Weitere Informationen zur Verwendung dieses Cmdlets finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](https://technet.microsoft.com/library/dn688161.aspx).
+
 ## Nächste Schritte
 
 - Um Netzwerkschnittstellen nicht als DATA 0 zu konfigurieren, können Sie die [Seite „Konfigurieren“ im klassischen Azure-Portal](storsimple-modify-device-config.md) verwenden. 
 
 - Wenn beim Konfigurieren der Netzwerkschnittstellen Probleme auftreten, lesen Sie die Informationen unter [Beheben von Bereitstellungsproblemen](storsimple-troubleshoot-deployment.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0511_2016-->

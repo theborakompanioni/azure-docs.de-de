@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Lernprogramm zum Split-Merge-Tool für elastische Datenbanken | Microsoft Azure"
+	pageTitle="Bereitstellen eines Split-Merge-Diensts | Microsoft Azure"
 	description="Aufteilen und Zusammenführen mit Tools für elastische Datenbanken"
 	services="sql-database"  
 	documentationCenter=""
@@ -13,21 +13,24 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
-	ms.author="sidneyh" />
+	ms.date="04/26/2016"
+	ms.author="ddove" />
 
-# Lernprogramm zum Split-Merge-Tool für elastische Datenbanken
+# Bereitstellen eines Split-Merge-Diensts 
+
+Mit dem Split-Merge-Tool können Sie Daten zwischen Sharddatenbanken verschieben. Siehe [Skalierung mit dem Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md).
 
 ## Herunterladen der Split-Merge-Pakete
+
 1. Laden Sie die neueste NuGet-Version von [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) herunter.
-2. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zu dem Verzeichnis, in das Sie „nuget.exe“ heruntergeladen haben.
+2. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zu dem Verzeichnis, in das Sie „nuget.exe“ heruntergeladen haben. Der Download enthält PowerShell-Befehle.
 3. Laden Sie das neueste Split-Merge-Paket mit folgendem Befehl in das aktuelle Verzeichnis herunter: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge`  
 
-Mit den oben genannten Schritten werden die Split-Merge-Dateien in das aktuelle Verzeichnis heruntergeladen. Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** abgelegt, wobei *x.x.xxx.x* der Versionsnummer entspricht. Die Split-Merge-Dienstdateien befinden sich im Unterverzeichnis **content\\splitmerge\\service** und die Split-Merge-PowerShell-Skripts (und erforderlichen Client-DLLs) im Unterverzeichnis **content\\splitmerge\\powershell**.
+Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** abgelegt, wobei *x.x.xxx.x* der Versionsnummer entspricht. Die Split-Merge-Dienstdateien befinden sich im Unterverzeichnis **content\\splitmerge\\service** und die Split-Merge-PowerShell-Skripts (und erforderlichen Client-DLLs) im Unterverzeichnis **content\\splitmerge\\powershell**.
 
 ## Voraussetzungen
 
-1. Erstellen Sie eine Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank**. Geben Sie den Namen der Datenbank ein, und erstellen Sie einen neuen Benutzer und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
+1. Erstellen Sie eine Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank**. Geben Sie einen Namen für die Datenbank ein, und erstellen Sie einen neuen Administrator und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
 
 2. Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Stellen Sie im Portal in den **Firewalleinstellungen** sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein** eingestellt ist. Klicken Sie auf das Symbol "Speichern".
 
@@ -42,9 +45,9 @@ Mit den oben genannten Schritten werden die Split-Merge-Dateien in das aktuelle 
 
 ### Konfiguration des Split-Merge-Diensts
 
-1. Erstellen Sie in dem Ordner, in den Sie die Split/Merge-Assemblys heruntergeladen haben, eine Kopie der Datei **ServiceConfiguration.Template.cscfg**, die zusammen mit **SplitMergeService.cspkg** bereitgestellt wurde, und benennen Sie sie in **ServiceConfiguration.cscfg** um.
+1. Erstellen Sie in dem Ordner, in den Sie die Split-Merge-Assemblys heruntergeladen haben, eine Kopie der Datei **ServiceConfiguration.Template.cscfg**, die zusammen mit **SplitMergeService.cspkg** bereitgestellt wurde, und benennen Sie sie in **ServiceConfiguration.cscfg** um.
 
-2. Öffnen Sie **ServiceConfiguration.cscfg** in einem Texteditor wie z. B. Visual Studio, der Eingaben wie das Format von Zertifikatfingerabdrücken überprüft.
+2. Öffnen Sie **ServiceConfiguration.cscfg** in einem Texteditor wie z.B. Visual Studio, der Eingaben wie das Format von Zertifikatfingerabdrücken überprüft.
 
 3. Erstellen Sie eine neue Datenbank, oder wählen Sie eine vorhandene Datenbank als Statusdatenbank für Teilungs-/Zusammenführungsvorgänge (Split/Merge) aus, und rufen Sie die Verbindungszeichenfolge dieser Datenbank ab.
 
@@ -58,6 +61,7 @@ Mit den oben genannten Schritten werden die Split-Merge-Dateien in das aktuelle 
 5.    Geben Sie für die **SplitMergeWorker**-Rolle eine gültige Verbindungszeichenfolge für den Azure-Speicher für die Einstellung **WorkerRoleSynchronizationStorageAccountConnectionString** ein.
         
 ### Konfigurieren der Sicherheit
+
 Ausführliche Anweisungen zum Konfigurieren der Dienstsicherheit finden Sie unter [Split-Merge-Sicherheitskonfiguration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
 Für eine einfache Testbereitstellung, die für dieses Tutorial geeignet ist, führen Sie einige wenige Konfigurationsschritte aus, um den Dienst zu aktivieren und auszuführen. Durch diese Schritte werden nur ein Computer und Konto für die Kommunikation mit dem Dienst aktiviert.
@@ -119,7 +123,7 @@ Für die Webrolle:
 
 Beachten Sie, dass in Produktionsbereitstellungen für die Zertifizierungsstelle, die Verschlüsselung, das Serverzertifikat und die Clientzertifikate getrennte Zertifikate verwendet werden müssen. Ausführliche Anweisungen finden Sie unter [Sicherheitskonfiguration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-### Bereitstellen des Split-Merge-Diensts
+## Bereitstellen des Diensts
 
 1. Öffnen Sie das [Azure-Portal](https://manage.windowsazure.com).
 2. Klicken Sie links auf die Registerkarte **Cloud-Dienste** , und wählen Sie den zuvor erstellten Cloud-Dienst aus.
@@ -150,7 +154,7 @@ Wenn die Workerrolle nicht online geschaltet wird, während der Vorgang bei der 
 * Stellen Sie sicher, dass der Servername nicht mit ****https://** beginnt.
 * Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Zu diesem Zweck öffnen Sie https://manage.windowsazure.com, klicken links auf „SQL-Datenbanken“, klicken oben auf „Server“ und wählen Ihren Server aus. Klicken Sie oben auf **Konfigurieren**, und stellen Sie sicher, dass die Einstellung für **Azure-Dienste** auf „Ja“ festgelegt ist. (Siehe den Abschnitt „Voraussetzungen“ am Anfang dieses Artikels.)
 
-## Testen der Split-Merge-Dienstbereitstellung
+## Testen der Dienstbereitstellung
 
 ### Herstellen einer Verbindung mit einem Webbrowser
 
@@ -212,7 +216,7 @@ Die enthaltenen Skriptdateien lauten:
   </tr>
 </table>
 
-##Überprüfen der Bereitstellung mithilfe von PowerShell
+## Überprüfen der Bereitstellung mithilfe von PowerShell
 
 1.    Öffnen Sie ein neues PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, in das Sie das Split-Merge-Paket heruntergeladen haben, und wechseln Sie dann in das Verzeichnis „powershell“.
 2.    Erstellen Sie einen Azure SQL-Datenbankserver (oder wählen Sie einen vorhandenen Server aus), auf dem ShardMapManager und Shards erstellt werden.
@@ -292,11 +296,11 @@ Die enthaltenen Skriptdateien lauten:
 
 6.    Probieren Sie andere Datentypen aus. Alle diese Skripts akzeptieren einen optionalen -ShardKeyType-Parameter, mit dem Sie den Schlüsseltyp angeben können. Der Standardwert ist „Int32“, Sie können aber auch „Int64“, „Guid“ oder „Binary“ angeben.
 
-## Erstellen eigener Anforderungen
+## Erstellen von Anforderungen
 
 Der Dienst kann entweder über die Web-Benutzeroberfläche verwendet werden, oder indem Sie das PowerShell-Modul „SplitMerge.psm1“ importieren und verwenden, das Ihre Anforderungen über die Webrolle übermittelt.
 
-Der Split-Merge-Dienst kann Daten sowohl in Shardtabellen als auch in Verweistabellen verschieben. Eine Shardtabelle verfügt über eine Shardingschlüsselspalte und weist auf jedem Shard unterschiedliche Zeilendaten auf. Eine Verweistabelle ist keine Shardtabelle, sodass sie auf jedem Shard dieselben Zeilendaten enthält. Verweistabellen sind hilfreich für Daten, die sich nicht häufig ändern, und werden für JOIN-Vorgänge mit Shardtabellen in Abfragen verwendet.
+Der Dienst kann Daten sowohl in Shardtabellen als auch in Verweistabellen verschieben. Eine Shardtabelle verfügt über eine Shardingschlüsselspalte und weist auf jedem Shard unterschiedliche Zeilendaten auf. Eine Verweistabelle ist keine Shardtabelle, sodass sie auf jedem Shard dieselben Zeilendaten enthält. Verweistabellen sind hilfreich für Daten, die sich nicht häufig ändern, und werden für JOIN-Vorgänge mit Shardtabellen in Abfragen verwendet.
 
 Um einen Teilungs-/Zusammenführungsvorgang auszuführen, müssen Sie die zu verschiebenden Shardtabellen und Verweistabellen deklarieren. Sie verwenden dazu die **SchemaInfo**-API. Diese API befindet sich im **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema**-Namespace.
 
@@ -312,6 +316,7 @@ Beachten Sie, dass durch den Split-Merge-Dienst keine Zieldatenbank (bzw. kein S
 
 
 ## Problembehandlung
+
 Beim Ausführen der PowerShell-Beispielskripts kann folgende Meldung angezeigt werden:
 
     Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.
@@ -334,4 +339,4 @@ Wenn Sie keine Anforderungen übermitteln können, wird möglicherweise Folgende
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin-android"
     ms.devlang="dotnet"
     ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/05/2016"
     ms.author="wesmc"/>
 
 # Aktivieren der Offlinesynchronisierung für Ihre mobile Xamarin.Android-App
@@ -123,7 +123,7 @@ In diesem Abschnitt ändern Sie die Client-App, um ein Offlineszenario mithilfe 
 
 5. (Optional) Verwenden Sie Visual Studio zum Anzeigen der Azure SQL-Datenbanktabelle, um festzustellen, ob sich die Daten in der Back-End-Datenbank nicht geändert haben.
 
-   Öffnen Sie den **Server-Explorer** in Visual Studio. Navigieren Sie zu der Datenbank in **Azure** -> **SQL-Datenbanken**. Klicken Sie mit der rechten Maustaste auf Ihre Datenbank, und wählen Sie **In SQL Server-Objekt-Explorer öffnen** aus. Jetzt können nach Ihrer SQL-Datenbanktabelle und seinen Inhalten suchen.
+   	Öffnen Sie den **Server-Explorer** in Visual Studio. Navigieren Sie zu der Datenbank in **Azure** -> **SQL-Datenbanken**. Klicken Sie mit der rechten Maustaste auf Ihre Datenbank, und wählen Sie **In SQL Server-Objekt-Explorer öffnen** aus. Jetzt können nach Ihrer SQL-Datenbanktabelle und seinen Inhalten suchen.
 
 6. (Optional) Verwenden Sie ein REST-Tool wie Fiddler oder Postman, um Ihr mobiles Back-End mit einer GET-Abfrage in Form von `https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` abzufragen.
 
@@ -132,7 +132,7 @@ In diesem Abschnitt ändern Sie die Client-App, um ein Offlineszenario mithilfe 
 
 In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem mobilen Back-End her, um zu simulieren, dass die App wieder im Onlinezustand ist. Wenn Sie die Aktualisierungsbewegung durchführen, werden Daten mit Ihrem mobilen Back-End synchronisiert.
 
-1. Öffnen Sie `ToDoActivity.cs`. Korrigieren Sie die `applicationURL`, um auf die richtigen URLs zu verweisen.
+1. Öffnen Sie `ToDoActivity.cs`. Korrigieren Sie die `applicationURL`, sodass sie auf die richtige URL verweist.
 
 2. Erstellen Sie die App erneut, und führen Sie sie aus. Die App versucht, sich nach dem Start mit dem Azure Mobile App-Back-End zu synchronisieren. Stellen Sie sicher, dass keine Ausnahmedialogfelder erstellt werden.
 
@@ -170,4 +170,4 @@ In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem 
 
 [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

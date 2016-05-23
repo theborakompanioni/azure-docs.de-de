@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="05/11/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Transaktionen in SQL Data Warehouse
 
-Wie zu erwarten unterstützt SQL Data Warehouse alle Transaktionseigenschaften. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet.
+Wie zu erwarten unterstützt SQL Data Warehouse alle Transaktionseigenschaften. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet.
 
 ## Transaktionsisolationsstufen
 SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolation der Transaktionsunterstützung ist jedoch beschränkt auf `READ UNCOMMITTED` und kann nicht geändert werden. Sie können eine Reihe von Codemethoden implementieren, um fehlerhafte Datenlesevorgänge zu verhindern, wenn dies ein Problem für Sie darstellt. Die am häufigsten verwendeten Methoden nutzen sowohl CTAS als auch Wechsel von Partitionstabellen (oftmals gleitendes Fenstermuster genannt), um zu verhindern, dass Benutzer Daten abrufen, die noch vorbereitet werden. Sichten, die die Daten vorab filtern, sind auch ein beliebter Ansatz.
@@ -27,6 +27,7 @@ SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolation der Transakti
 Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird heute „pro Verteilung“ angewendet. Zum Ermitteln der Gesamtsumme müssen wir daher den Grenzwert mit der Verteilungsanzahl multiplizieren. Um eine Annäherung für die maximale Zeilenanzahl in der Transaktion zu erhalten, teilen Sie die Verteilungsobergrenze durch die Gesamtgröße jeder Spalte. Bei Spalten mit variabler Länge können Sie erwägen, anstelle der maximalen Größe eine durchschnittliche Spaltenlänge zu verwenden.
 
 Für die Tabelle unten gelten die folgenden Annahmen:
+
 * Gleichmäßige Verteilung der Daten 
 * Durchschnittliche Zeilenlänge beträgt 250 Byte
 
@@ -140,4 +141,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0511_2016-->

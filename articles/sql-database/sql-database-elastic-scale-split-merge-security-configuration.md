@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Elastische Skalierung – Sicherheitskonfigurationen | Microsoft Azure" 
+    pageTitle="Split-Merge-Sicherheitskonfiguration| Microsoft Azure" 
     description="Einrichten von x409-Zertifikaten für die Verschlüsselung" 
     metaKeywords="Elastic Database certificates security" 
     services="sql-database" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="02/23/2016" 
+    ms.date="04/26/2016" 
     ms.author="torsteng;sidneyh" />
 
 
@@ -357,7 +357,7 @@ Jede Person, für die ein Clientzertifikat ausgegeben wurde, muss folgende Schri
 * Wählen Sie im daraufhin geöffneten Dialogfeld "Zertifikat" die Registerkarte "Details".
 * Stellen Sie sicher, dass unter "Anzeigen" die Option "Alle" angezeigt wird.
 * Wählen Sie das Feld mit dem Namen "Fingerabdruck" in der Liste aus.
-* Kopieren des Werts des Fingerabdrucks **Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer** Löschen aller Leerzeichen
+* Kopieren des Werts des Fingerabdrucks ** Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer ** Löschen aller Leerzeichen
 
 ## Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei
 
@@ -487,4 +487,4 @@ In dieser Datenbank gespeicherte Anmeldeinformationen werden verschlüsselt. Ste
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

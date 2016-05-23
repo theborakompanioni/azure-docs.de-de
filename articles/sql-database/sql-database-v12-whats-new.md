@@ -114,7 +114,6 @@ V12 bietet wesentlich bessere Recovery Point Objectives (RPO) und geschätzte Wi
 | Funktionen der Geschäftskontinuität | Frühere Version | V12 |
 | :-- | :-- | :-- |
 | Geografische Wiederherstellung | • RPO < 24 Stunden.<br/>• ERT < 12 Stunden. | • RPO < 1 Stunde.<br/>• ERT < 12 Stunden. |
-| Standardgeoreplikation | • RPO < 30 Minuten.<br/>• ERT < 2 Stunden. | • RPO < 5 Sekunden.<br/>• ERT < 30 Sekunden. |
 | Aktive Georeplikation | • RPO < 5 Minuten.<br/>• ERT < 1 Stunde. | • RPO < 5 Sekunden.<br/>• ERT < 30 Sekunden. |
 
 
@@ -167,4 +166,4 @@ Wenn Sie noch nicht V12 ausführen, können Sie ein Upgrade des logischen Server
 
 [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

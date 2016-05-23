@@ -24,9 +24,9 @@ Im Rahmen dieses Artikels verwenden wir das kanonische SaaS-ISV-Anwendungsmuster
 
 <i>Bei einer modernen cloudbasierten Webanwendung wird eine SQL-Datenbank für jeden Endbenutzer bereitgestellt. Der ISV verfügt über eine große Zahl von Kunden und setzt aus diesem Grund viele Datenbanken ein, die als Mandantendatenbanken bezeichnet werden. Da die Mandantendatenbanken in der Regel unvorhersagbare Aktivitätsmuster aufweisen, nutzt der ISV einen elastischen Pool, um die Datenbankkosten für längere Zeiträume eindeutig vorhersagbar zu machen. Mit dem elastischen Pool wird außerdem die Leistungsverwaltung bei Spitzen der Benutzeraktivität vereinfacht. Zusätzlich zu den Mandantendatenbanken werden für die Anwendung auch mehrere Datenbanken genutzt, um Benutzerprofile und die Sicherheit zu verwalten, Verwendungsmuster zu erfassen usw. Die Verfügbarkeit der einzelnen Mandanten wirkt sich nicht auf die Gesamtverfügbarkeit der Anwendung aus. Die Verfügbarkeit und Leistung von Verwaltungsdatenbanken ist für die Funktion der Anwendung von entscheidender Bedeutung, und wenn die Verwaltungsdatenbanken offline sind, ist auch die gesamte Anwendung offline.</i>
 
-Im restlichen Teil des Artikels werden mehrere verwandte Szenarien und eine Notfallwiederherstellungsstrategie für jeden Fall beschrieben.
+Im weiteren Verlauf des Artikels werden Strategien für die Notfallwiederherstellung anhand mehrerer Szenarios besprochen, angefangen bei kostenbewussten Anwendungen bis hin zu Anwendungen mit strengen Verfügbarkeitsanforderungen.
 
-## Szenario 1
+## Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
 
 <i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird. Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>
 
@@ -61,7 +61,7 @@ An diesem Punkt ist die Anwendung in der primären Region online, und alle Manda
 
 Der **Hauptvorteil** dieser Strategie sind die geringen laufenden Kosten für die Datenebenenredundanz. Sicherungen werden automatisch über den SQL-Datenbankdienst ohne Umschreiben der Anwendung und zusätzliche Kosten durchgeführt. Kosten fallen nur an, wenn die elastischen Datenbanken wiederhergestellt werden. Der **Nachteil** besteht darin, dass die gesamte Wiederherstellung aller Mandantendatenbanken sehr lange dauert. Die Dauer hängt von der Anzahl von Wiederherstellungen ab, die Sie in der Region für die Notfallwiederherstellung initiieren, sowie von der Gesamtgröße der Mandantendatenbanken. Auch wenn Sie den Wiederherstellungen einiger Mandanten Vorrang einräumen, entsteht ein Wettbewerb mit allen anderen Wiederherstellungen, die in derselben Region initiiert werden. Der Dienst führt Vermittlungen und Drosselungen durch, um die allgemeinen Auswirkungen auf die Datenbanken der vorhandenen Kunden gering zu halten. Außerdem kann die Wiederherstellung der Mandantendatenbanken erst beginnen, nachdem der neue elastische Pool in der Region für die Notfallwiederherstellung erstellt wurde.
 
-## Szenario 2:
+## Szenario 2: Ausgereifte Anwendung mit Diensten auf mehreren Ebenen 
 
 <i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen und unterschiedlichen SLAs für Testkunden und zahlende Kunden. Für die Testkunden sollen die Kosten so weit wie möglich reduziert werden. Für Testkunden kann es zu Ausfallzeiten kommen, aber die Wahrscheinlichkeit dafür soll verringert werden. In Bezug auf die zahlenden Kunden ist jede Ausfallzeit mit einem Abwanderungsrisiko verbunden. Daher soll sichergestellt sein, dass zahlende Kunden immer auf ihre Daten zugreifen können.</i>
 
@@ -102,7 +102,7 @@ Wenn die primäre Region von Azure wiederhergestellt wurde, *nachdem* Sie die An
 
 Der **Hauptvorteil** dieser Strategie besteht darin, dass für die zahlenden Kunden der höchste Servicelevel (SLA) erzielt wird. Außerdem ist sichergestellt, dass die Blockierung der neuen Testzugriffe sofort aufgehoben wird, sobald der Notfallwiederherstellungspool für Testkunden erstellt wurde. Der **Nachteil** ist, dass sich bei dieser Einrichtung die Gesamtkosten der Mandantendatenbanken um die Kosten für den sekundären Notfallwiederherstellungspool für zahlende Kunden erhöhen. Wenn der sekundäre Pool eine andere Größe hat, verringert sich für zahlende Kunden außerdem die Leistung nach einem Failover, bis das Poolupgrade in der Region für die Notfallwiederherstellung abgeschlossen ist.
 
-## Szenario 3
+## Szenario 3: Geografisch verteilte Anwendung mit Diensten auf mehreren Ebenen
 
 <i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen. Wir möchten zahlenden Kunden einen sehr aggressiven Servicelevel (SLA) anbieten und die Auswirkungen bei Ausfällen gering halten, da auch kurze Unterbrechungen bei Kunden zu Unzufriedenheit führen können. Es ist sehr wichtig, dass die zahlenden Kunden immer Zugriff auf ihre Daten haben. Die Testversionen sind kostenlos, und während des Testzeitraums wird kein SLA angeboten. </i>
 
@@ -146,25 +146,27 @@ Nach dem Wiederherstellen von Region A müssen Sie entscheiden, ob Sie Region B 
 - Löschen Sie den Pool für die Notfallwiederherstellung (14). 
 
 Die **Hauptvorteile** dieser Strategie lauten:
+
 - Es wird ein aggressiver Servicelevel (SLA) für die zahlenden Kunden unterstützt, da sichergestellt ist, dass bei einem Ausfall nicht mehr als 50% der Mandantendatenbanken betroffen sind. 
 - Es ist sichergestellt, dass die Blockierung der neuen Testzugriffe sofort aufgehoben wird, sobald der Notfallwiederherstellungspool für Testkunden bei der Wiederherstellung erstellt wurde. 
 - Ermöglicht eine effizientere Nutzung der Poolkapazität, da 50% der sekundären Datenbanken in Pool 1 und Pool 2 garantiert weniger aktiv als die primären Datenbanken sind.
 
 Die **Hauptnachteile** lauten:
+
 - Die CRUD-Vorgänge für die Verwaltungsdatenbanken weisen für die Endbenutzer, die mit Region A verbunden sind, eine geringere Latenz als für die Endbenutzer auf, die mit Region B verbunden sind. Der Grund ist, dass sie für das primäre Replikat der Verwaltungsdatenbanken ausgeführt werden.
 - Hierfür ist ein komplexeres Design der Verwaltungsdatenbank erforderlich. Beispielsweise muss jeder Mandantendatensatz über eine Standortkennzeichnung verfügen, die beim Failover und Failback geändert werden muss.  
 - Für die zahlenden Kunden kann sich die Leistung ggf. verschlechtern, bis das Poolupgrade in Region B abgeschlossen ist. 
 
 ## Zusammenfassung
 
-In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Datenbankebene, die für eine mehrinstanzenfähige SaaS-ISV-Anwendung verwendet werden. Die Wahl der Strategie sollte auf den Anforderungen der Anwendung basieren, z.B. dem Geschäftsmodell, dem SLA, das Sie Ihren Kunden anbieten möchten, Budgetbeschränkungen usw. Für jede Strategie werden die Vor- und Nachteile beschrieben, damit Sie eine fundierte Entscheidung treffen können. Ihre Anwendung umfasst wahrscheinlich noch weitere Azure-Komponenten. Es ist ratsam, die damit verbundenen Hinweise zur Geschäftskontinuität zu beachten und die Wiederherstellung der Datenbankebene mit anderen Anwendungskomponenten zu orchestrieren. Weitere Informationen zum Verwalten der Wiederherstellung von Datenbankanwendungen in Azure finden Sie unter [Entwerfen von Cloud-Lösungen für die Notfallwiederherstellung](./sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Datenbankebene, die für eine mehrinstanzenfähige SaaS-ISV-Anwendung verwendet werden. Die gewählte Strategie sollte auf den Anforderungen der Anwendung basieren, z.B. dem Geschäftsmodell, dem SLA, das Sie Ihren Kunden anbieten möchten, Budgetbeschränkungen usw. Für jede Strategie werden die Vor- und Nachteile beschrieben, damit Sie eine fundierte Entscheidung treffen können. Ihre Anwendung umfasst wahrscheinlich noch weitere Azure-Komponenten. Es ist ratsam, die damit verbundenen Hinweise zur Geschäftskontinuität zu beachten und die Wiederherstellung der Datenbankebene mit ihnen zu orchestrieren. Weitere Informationen zum Verwalten der Wiederherstellung von Datenbankanwendungen in Azure finden Sie unter [Entwerfen von Cloud-Lösungen für die Notfallwiederherstellung](./sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren der in diesem Artikel beschriebenen Szenarien erforderlich sind:
+Die einzelnen Schritte für jedes Szenario umfassen Vorgänge für eine große Anzahl von Datenbanken. Für die zuverlässige Verwaltung sollten Sie daher die Verwendung elastischer SQL-Datenbankaufträge in Betracht ziehen. Weitere Informationen finden Sie unter [Verwalten horizontal hochskalierter Clouddatenbanken](./sql-database-elastic-jobs-overview.md). Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren der in diesem Artikel beschriebenen Szenarien erforderlich sind:
 
 - [Hinzufügen einer sekundären Datenbank ](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
-- [Failover database to secondary](https://msdn.microsoft.com/library/azure/mt619393.aspx) (Failover für die Datenbank in eine sekundäre Datenbank)
-- [Geo-restore database](https://msdn.microsoft.com/library/azure/mt693390.aspx) (Geowiederherstellung der Datenbank) 
-- [Drop database](https://msdn.microsoft.com/library/azure/mt619368.aspx) (Verwerfen der Datenbank)
-- [Copy database](https://msdn.microsoft.com/library/azure/mt603644.aspx) (Kopieren der Datenbank)
+- [Failover database to secondary (Failover für die Datenbank in eine sekundäre Datenbank)](https://msdn.microsoft.com/library/azure/mt619393.aspx)
+- [Geo-restore database (Geowiederherstellung der Datenbank)](https://msdn.microsoft.com/library/azure/mt693390.aspx) 
+- [Drop database (Verwerfen der Datenbank)](https://msdn.microsoft.com/library/azure/mt619368.aspx)
+- [Copy database (Kopieren der Datenbank)](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

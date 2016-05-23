@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Verwalten von Azure-Ressourcen mit dem Cloud-Explorer
 
 ##Übersicht
 
-Der Cloud-Explorer ist so ausgelegt, dass Sie Ihre Azure-Ressourcen innerhalb der integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) von Visual Studio einfacher und schneller durchsuchen und verwalten können. Er dient z. B. zum Öffnen einer Web-App im Azure-Portal oder in einem Browser bzw. zum Anfügen eines Debuggers an die Web-App. Sie können im Cloud-Explorer auch die Eigenschaften eines Blobcontainers anzeigen oder diesen im Blobcontainer-Editor öffnen.
+Der Cloud-Explorer ist so ausgelegt, dass Sie Ihre Azure-Ressourcen innerhalb der integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) von Visual Studio einfacher und schneller durchsuchen und verwalten können. Er dient z.B. zum Öffnen einer Web-App im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder in einem Browser bzw. zum Anfügen eines Debuggers an die Web-App. Sie können im Cloud-Explorer auch die Eigenschaften eines Blobcontainers anzeigen oder diesen im Blobcontainer-Editor öffnen.
 
-Der Cloud-Explorer setzt wie das Microsoft Azure-Vorschauportal auf dem Azure-Ressourcen-Manager-Stapel auf. Er unterstützt Ressourcen wie Azure-Ressourcengruppen und Azure-Dienste wie Logik- und API-Apps sowie die [rollenbasierte Zugriffskontrolle](../role-based-access-control-configure/) (RBAC). Um Azure-Ressourcen anzuzeigen, die hinzugefügt oder geändert wurden, wählen Sie auf der Cloud Explorer-Symbolleiste die Schaltfläche **Aktualisieren** aus.
+Der Cloud-Explorer setzt wie das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) auf dem Azure Resource Manager-Stapel auf. Er unterstützt Ressourcen wie Azure-Ressourcengruppen und Azure-Dienste wie Logik- und API-Apps sowie die [rollenbasierte Zugriffskontrolle](../role-based-access-control-configure/) (RBAC). Um Azure-Ressourcen anzuzeigen, die hinzugefügt oder geändert wurden, wählen Sie auf der Cloud Explorer-Symbolleiste die Schaltfläche **Aktualisieren** aus.
 
 Der Cloud-Explorer wird als Teil der Visual Studio-Tools für Azure SDK 2.7 installiert.
 
@@ -66,12 +66,12 @@ Um Ihre Azure-Ressourcen anzuzeigen, wählen Sie entweder die Ansicht **Ressourc
 
 ![Dropdownliste in der Ressourcenansicht](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC819516.png)
 
-- In der Ansicht **Ressourcentypen**, die auch die übliche Ansicht im Azure-Portal ist, werden Ihre Azure-Ressourcen in Typkategorien wie Web-Apps, Speicherkonten und virtuellen Computern angezeigt. Dies ist ähnlich wie die Anzeige von Azure-Ressourcen im Server-Explorer.
+- In der Ansicht **Ressourcentypen**, die auch die übliche Ansicht im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) ist, werden Ihre Azure-Ressourcen in Typkategorien wie Web-Apps, Speicherkonten und virtuellen Computern angezeigt. Dies ist ähnlich wie die Anzeige von Azure-Ressourcen im Server-Explorer.
 
 - In der Ansicht "Ressourcengruppen" werden Azure-Ressourcen nach der Azure-Ressourcengruppe kategorisiert, der sie zugeordnet sind.
 
  
-	Eine Ressourcengruppe ist ein Bündel von Azure-Ressourcen, die in der Regel von einer bestimmten Anwendung verwendet werden. Weitere Informationen zu Azure-Ressourcengruppen finden Sie unter [Übersicht über Azure-Ressourcen-Manager](https://azure.microsoft.com/documentation/articles/resource-group-overview/).
+	Eine Ressourcengruppe ist ein Bündel von Azure-Ressourcen, die in der Regel von einer bestimmten Anwendung verwendet werden. Weitere Informationen zu Azure-Ressourcengruppen finden Sie unter [Übersicht über Azure-Ressourcen-Manager](./resource-group-overview.md).
 
 ## Anzeigen von und Navigieren durch Ressourcen
 
@@ -83,7 +83,7 @@ Um zu einer Azure-Ressource zu navigieren und dazugehörige Informationen im Clo
 
 - Auf der Registerkarte **Eigenschaften** werden die Eigenschaften der Ressource gezeigt, z. B. Typ, Gebietsschema und Ressourcengruppe, zu der sie gehört.
 
-Für jede Ressource gibt es die Aktion **Im Portal öffnen**. Wenn Sie diese Aktion auswählen, zeigt der Cloud-Explorer die ausgewählte Ressource im Azure-Portal. Diese Funktion ist besonders nützlich für die Navigation zu tief geschachtelten Ressourcen.
+Für jede Ressource gibt es die Aktion **Im Portal öffnen**. Wenn Sie diese Aktion auswählen, zeigt der Cloud-Explorer die ausgewählte Ressource im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an. Diese Funktion ist besonders nützlich für die Navigation zu tief geschachtelten Ressourcen.
 
 Zusätzliche Aktionen und Eigenschaftswerte können auch basierend auf der Azure-Ressource angezeigt werden. Für Web- und Logik-Apps gibt es zusätzlich zu **Im Portal öffnen** die Aktionen **Im Browser öffnen** und **Debugger anfügen**. Aktionen zum Öffnen von Editoren werden angezeigt, wenn Sie ein Blob, eine Warteschlange oder Tabelle eines Speicherkontos auswählen. Für Azure-Apps stehen die Eigenschaften **URL** und **Status** zur Verfügung, während Speicherressourcen Schlüssel und Verbindungszeichenfolgen-Eigenschaften aufweisen.
 
@@ -95,4 +95,4 @@ Um in Ihren Azure-Kontoabonnements Ressourcen mit einem bestimmten Namen zu such
 
 Bei der Eingabe von Zeichen in das Feld "Suchen" werden nur die Ressourcen in der Ressourcenstruktur angezeigt, die diesen Zeichen entsprechen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

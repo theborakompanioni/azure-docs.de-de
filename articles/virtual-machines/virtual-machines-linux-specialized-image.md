@@ -29,13 +29,14 @@ Wenn Sie Massenbereitstellungen ähnlicher Linux-VMs erstellen müssen, benötig
 
 ## Vorbereitungen
 
-In diesem Artikel wird davon ausgegangen, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie mit den Schritten beginnen:
+In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes verfügen:
 
-1. Sie haben einen virtuellen Azure-Computer unter Linux, der mit dem klassischen Bereitstellungsmodell oder dem Resource Manager-Bereitstellungsmodell erstellt wurde. Sie haben das Betriebssystem konfiguriert, Datenträger angefügt und andere Anpassungen vorgenommen, wie die Installation erforderlicher Anwendungen. Wir verwenden diesen virtuellen Computer, um die Kopie zu erstellen. Wenn Sie Hilfe bei der Erstellung des virtuellen Quellcomputers benötigen, lesen Sie [Erstellen eines virtuellen Linux-Computers in Azure](virtual-machines-linux-quick-create-cli.md). 
+1. Einen **virtuellen Azure-Computer mit Linux** im klassischen oder Resource Manager-Bereitstellungsmodell mit konfiguriertem Betriebssystem, angehängten Datenträgern und installierten erforderlichen Anwendungen. Wenn Sie Hilfe beim Erstellen dieses virtuellen Computers benötigen, lesen Sie [Erstellen eines virtuellen Linux-Computers in Azure](virtual-machines-linux-quick-create-cli.md). 
 
-1. Sie haben die Azure-Befehlszeilenschnittstelle heruntergeladen und auf Ihrem Computer installiert und sind bei Ihrem Azure-Abonnement angemeldet. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+1. Die **Azure-CLI** ist auf Ihrem Computer installiert, und Sie sind bei Ihrem Azure-Abonnement angemeldet. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
-1. Sie haben eine Ressourcengruppe, ein Speicherkonto und einen Blobcontainer in der Ressourcengruppe erstellt, in die die VHDs kopiert werden. Weitere Informationen zum Erstellen von Speicherkonten und Blobcontainern mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](../storage/storage-azure-cli.md).
+1. Eine **Ressourcengruppe** mit einem **Speicherkonto** und einem darin erstellten **Blob-Container**, in den die virtuellen Festplatten kopiert werden. Weitere Informationen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](../storage/storage-azure-cli.md).
+
 
 
 > [AZURE.NOTE] Ähnliche Schritte gelten für einen virtuellen Computer, der mit einem der beiden Bereitstellungsmodelle als Quellimage erstellt wurde. Wir werden bei Bedarf auf kleinere Unterschiede hinweisen.
@@ -127,4 +128,4 @@ Stellen Sie eine Verbindung mit Ihrem neuen virtuellen Computer mit einem SSH-Cl
 
 Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle, um den neuen virtuellen Computer zu verwalten, finden Sie unter [Azure-CLI-Befehle im Azure Resource Manager-Modus](azure-cli-arm-commands.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

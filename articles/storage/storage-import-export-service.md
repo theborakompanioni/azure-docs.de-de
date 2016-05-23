@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="05/09/2016"
 	ms.author="renash"/>
 
 
@@ -102,7 +102,7 @@ Das Import-/Exporttool für Azure generiert für jedes Laufwerk bei der Vorberei
 
 	Falls Sie Ihre Nachverfolgungsnummer haben, wählen Sie Ihr Transportunternehmen in der Liste aus und geben Sie die Nummer ein.
 
-	Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **Ich werde die Versanddaten für diesen Importauftrag an, sobald ich mein Paket verschickt habe**, und schließen Sie den Importprozess ab.
+	Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **I will provide my shipping information for this import job once I have shipped my package**, und schließen Sie den Importprozess ab.
 
 7. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie Ihr Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im klassischen Portal zurück, wählen Ihren Auftrag in der Liste aus und klicken auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
 
@@ -195,6 +195,7 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 	- Anker 68UPSATAA-02BU
 	- Anker 68UPSHHDS-BU
 	- Startech SATADOCK22UE
+	- Sharkoon QuickPort XT HC
 
 > [AZURE.NOTE] Falls Sie einen Konverter haben, der nicht in der Liste enthalten ist, können Sie versuchen, das Import-/Exporttool für Azure mit Ihrem Konverter zur Vorbereitung des Laufwerks auszuführen, bevor Sie einen unterstützten Konverter erwerben.
 
@@ -239,13 +240,13 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 
 - Für US- und europäische Regionen wird nur [Federal Express](http://www.fedex.com/us/oadr/) (FedEx) unterstützt. Alle Pakete werden per FedEx Ground oder FedEx International Economy zurückgeschickt.
 
-- Für Asien-Pazifik (Osten), Asien-Pazifik (Südosten), Australien (Osten), Australien (Südosten) und Japan (Westen) wird nur [DHL](http://www.dhl.com/) unterstützt. Alle Pakete werden per DHL Express Worldwide zurückgeschickt.
+- Für Asien-Pazifik (Osten), Asien-Pazifik (Südosten), Australien (Osten), Australien (Südosten), Japan (Westen), Japan (Osten) und Indien (Mitte) wird nur [DHL](http://www.dhl.com/) unterstützt. Alle Pakete werden per DHL Express Worldwide zurückgeschickt.
 
 	> [AZURE.IMPORTANT] Sie müssen Ihre Tracking-Nummer an den Azure Import-/Export-Dienst übertragen, ansonsten kann Ihr Auftrag nicht verarbeitet werden.
 
 **Entstehen Kosten für den Rückversand?**
 
-- Microsoft verwendet die Kontonummer für das Transportunternehmen, die Sie bei der Auftragserstellung angegeben haben, um die Laufwerke vom Rechenzentrum an Ihre Absenderadresse zu schicken. Geben Sie daher unbedingt eine Kontonummer für ein Transportunternehmen an, das in der Region des Rechenzentrums unterstützt wird. Sie können ein Konto bei [FedEx](http://www.fedex.com/us/oadr/) (für USA und Europa) oder [DHL](http://www.dhl.com/) (Asien und Australien) erstellen, falls Sie noch über kein solches Konto verfügen.
+- Microsoft verwendet die Kontonummer für das Transportunternehmen, die Sie bei der Auftragserstellung angegeben haben, um die Laufwerke vom Rechenzentrum an Ihre Absenderadresse zu schicken. Geben Sie daher unbedingt eine Kontonummer für ein Transportunternehmen an, das in der Region des Rechenzentrums unterstützt wird. Sie können ein Konto bei [FedEx](http://www.fedex.com/us/oadr/) (für USA und Europa) oder [DHL](http://www.dhl.com/) (Asien und Australien) erstellen, falls Sie noch nicht über ein solches Konto verfügen.
 
 - Die Rücksendegebühren werden Ihrem Konto beim Transportunternehmen berechnet und hängen vom Transportunternehmen ab.
 
@@ -265,6 +266,8 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 	- Australien (Osten)
 	- Australien (Südosten)
 	- Japan (Westen)
+	- Japan Ost
+	- Indien (Mitte)
 
 - Sie erhalten eine Lieferadresse in der Region, in der sich Ihr Speicherkonto befindet. Wenn Sie z. B. in den USA leben und sich Ihr Speicherkonto im Rechenzentrum in Westeuropa befindet, erhalten Sie für den Versand der Laufwerke eine Lieferadresse in Europa.
 
@@ -293,4 +296,4 @@ Bei Exportaufträgen können Sie die BitLocker-Schlüssel, die vom Dienst für I
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

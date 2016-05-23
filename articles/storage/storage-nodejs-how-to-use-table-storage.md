@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwenden des Azure-Tabellenspeichers mit Node.js | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Azure-Tabellenspeicher verwenden. Die Codebeispiele verwenden die Node.js-API."
+	description="Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud."
 	services="storage"
 	documentationCenter="nodejs"
 	authors="rmcmurray"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="04/29/2016"
 	ms.author="micurd"/>
 
 
@@ -442,4 +442,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
   [Node.js-Web-App mit Azure-Tabellendienst]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="04/28/2016"
+    ms.date="05/10/2016"
     ms.author="sidneyh"/>
 
 # Überwachen und Verwalten eines Pools für elastische Datenbanken mit PowerShell 
@@ -31,6 +31,7 @@ Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Client
 Werte für Pools finden Sie unter [eDTUs und Speicherbeschränkungen](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
 ## Voraussetzungen
+
 * Azure PowerShell 1.0 oder höher. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 * Pools für elastische Datenbanken sind nur auf SQL-Datenbank V12-Servern verfügbar. Wenn Sie über einen SQL-Datenbank V11-Server verfügen, können Sie in einem Schritt [mithilfe von PowerShell auf V12 aktualisieren und einen Pool erstellen](sql-database-upgrade-server-portal.md).
 
@@ -101,6 +102,26 @@ Die für diese API abgerufenen Metriken werden als Prozentsatz des Maximalwerts 
 So rufen Sie die Metriken ab
 
     $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
+
+## Sammeln und Überwachen von Ressourcennutzungsdaten über mehrere Pools in einem Abonnement hinweg
+
+Wenn Sie über eine große Anzahl von Datenbanken in einem Abonnement verfügen, ist es mühselig, jeden elastischen Pool einzeln zu überwachen. Stattdessen können PowerShell-Cmdlets und T-SQL-Abfragen für SQL-Datenbank kombiniert werden, um Ressourcennutzungsdaten aus mehreren Pools und ihren Datenbanken zu sammeln, um eine Überwachung und Analyse der Ressourcennutzung durchzuführen. Eine [einfache Implementierung](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) eines solchen Satzes an PowerShell-Skripts steht im GitHub-Repository für SQL Server-Beispiele zur Verfügung. Hier finden Sie außerdem eine Dokumentation zur Funktionsweise und Verwendung der Beispiele.
+
+Um diese Beispielimplementierung zu verwenden, führen Sie die nachfolgend aufgeführten Schritte aus.
+
+
+1. Laden Sie [Skripts und Dokumentation](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) herunter:
+2. Ändern Sie die Skripts für Ihre Umgebung ab. Geben Sie einen oder mehrere Server an, auf denen elastische Pools gehostet werden.
+3. Geben Sie eine Telemetriedatenbank an, in der die gesammelten Metriken gespeichert werden. 
+4. Passen Sie das Skript an, um die Dauer der Skriptausführung festzulegen.
+
+Im Allgemeinen führen die Skripts folgende Aufgaben aus:
+
+*	Auflisten aller Server in einem vorgegebenen Azure-Abonnement (oder einer angegebenen Serverliste).
+*	Ausführen eines Hintergrundauftrags für jeden Server. Der Auftrag wird in regelmäßigen Intervallen in einer Schleife ausgeführt und sammelt Telemetriedaten für alle Pools auf dem Server. Anschließend werden die gesammelten Daten in die angegebene Telemetriedatenbank geladen.
+*	Auflisten der Datenbanken in jedem Pool, um Daten zur Datenbank-Ressourcennutzung zu sammeln. Anschließend werden die gesammelten Daten in die Telemetriedatenbank geladen.
+
+Die gesammelten Metriken in der Telemetriedatenbank können analysiert werden, um die Integrität der elastischen Pools und der darin enthaltenen Datenbanken zu überwachen. Die Skripts installieren außerdem eine vordefinierte Tabellenwertfunktion (Table-Value Function, TVF) in der Telemetriedatenbank, um die Aggregation der Metriken für ein bestimmtes Zeitfenster zu ermöglichen. Beispielsweise können die Ergebnisse der TVF zur Anzeige der „Top-N der elastischen Pools mit der höchsten eDTU-Nutzung in einem vorgegebenen Zeitfenster“ verwendet werden. Optional können Sie Analysetools wie Excel oder Power BI zur Abfrage und Analyse der gesammelten Daten verwenden.
 
 ## Beispiel: Abrufen der Ressourcenverbrauchsmetriken für einen Pool und die zugehörigen Datenbanken
 
@@ -183,11 +204,11 @@ Referenzdokumentation zu diesen PowerShell-Cmdlets finden Sie unter:
 - [Stop-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
 
-Mit dem Cmdlet „Stop-“ wird der Vorgang abgebrochen, nicht angehalten. Ein Upgrade kann nach einem Abbruch nicht fortgesetzt werden, es muss wieder von vorne begonnen werden. Das Cmdlet "Stop-" bereinigt und setzt alle entsprechenden Ressourcen frei.
+Mit dem Cmdlet „Stop-“ wird der Vorgang abgebrochen, nicht angehalten. Ein Upgrade kann nach einem Abbruch nicht fortgesetzt werden, es muss wieder von vorne begonnen werden. Das Cmdlet „Stop-“ führt eine Bereinigung durch und gibt alle entsprechenden Ressourcen frei.
 
 ## Nächste Schritte
 
-- [Erstellen elastischer Aufträge:](sql-database-elastic-jobs-overview.md) Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
+- [Erstellen elastischer Aufträge](sql-database-elastic-jobs-overview.md): Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
 - Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Skalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

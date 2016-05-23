@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/25/2016"
 	ms.author="josephd"/>
 
 # Testumgebung für die Basiskonfiguration
@@ -289,7 +289,7 @@ Als Nächstes überprüfen Sie, ob Sie mit CLIENT1 auf die Web- und Dateifreigab
 2.	Klicken Sie unter **Eigenschaften von CLIENT1** neben **Verstärkte Sicherheitskonfiguration für IE** auf **Ein** .
 3.	Klicken Sie unter **Verstärkte Sicherheitskonfiguration für IE** bei **Administratoren** und **Benutzern** auf **Aus**, und klicken Sie dann auf **OK**.
 4.	Klicken Sie auf der Startseite auf **Internet Explorer** und dann auf **OK**.
-5.	Geben Sie in die Adressleiste **http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
+5.	Geben Sie in die Adressleiste ****http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
 6.	Klicken Sie in der Desktopsymbolleiste auf das Symbol des Datei-Explorers.
 7.	Geben Sie in der Adressleiste **\\\app1\\Files** ein, und drücken Sie dann die EINGABETASTE.
 8.	Es wird ein Fenster mit dem Inhalt des freigegebenen Ordners geöffnet.
@@ -302,9 +302,10 @@ Dies ist die endgültige Konfiguration.
 
 Die Basiskonfiguration in Azure kann nun zur Anwendungsentwicklung, zu Testzwecken oder für zusätzliche Testumgebungen verwendet werden.
 
-## Nächster Schritt
+## Nächste Schritte
 
-- Fügen Sie mit dem [Azure-Portal](virtual-machines-windows-hero-tutorial.md) einen neuen virtuellen Computer hinzu, oder erstellen Sie die [simulierte Testumgebung für Hybridclouds](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md).
+- Hinzufügen eines neuen virtuellen Computers über das [Azure-Portal](virtual-machines-windows-hero-tutorial.md)
+- Erstellen der [simulierten Hybrid Cloud-Testumgebung](virtual-machines-setup-simulated-hybrid-cloud-environment-testing.md)
 
 
 ## <a id="costs"></a>Minimizing the costs of test environment virtual machines in Azure (Minimieren der Kosten von Testumgebungen für virtuelle Computer in Azure)
@@ -334,4 +335,4 @@ Zum Starten der virtuellen Computer mit Azure PowerShell in der richtigen Reihen
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

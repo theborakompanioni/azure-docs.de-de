@@ -4,8 +4,8 @@
 	services="azure-resource-manager" 
 	documentationCenter="" 
 	authors="tfitzmac" 
-	manager="wpickett" 
-	editor=""/>
+	manager="timlt" 
+	editor="tysonn"/>
 
 <tags 
 	ms.service="azure-resource-manager" 
@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="04/25/2016" 
 	ms.author="tomfitz"/>
 
 # Sperren von Ressourcen mit dem Azure-Ressourcen-Manager
 
-Als Administrator gibt es Szenarios, in denen Sie ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren möchten, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen. Wenn Ressourcen gesperrt sind, können autorisierte Benutzer diese immer noch lesen und ändern, jedoch nicht löschen.
+Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen. Wenn Ressourcen gesperrt sind, können autorisierte Benutzer diese immer noch lesen und ändern, jedoch nicht löschen.
 
-Sperren unterscheiden sich von der Verwendung der rollenbasierten Zugriffssteuerung in Bezug auf die Zuweisung von Benutzerberechtigungen zur Durchführung bestimmter Aktionen. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md). Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung über alle Benutzer und Rollen hinweg anzuwenden, und meist wenden Sie die Sperren nur für eine begrenzte Dauer an.
+Im Gegensatz zur rollenbasierten Access Control verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen anzuwenden. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
 
 Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle untergeordneten Ressourcen diese Sperre.
 
 ## Personen in Ihrer Organisation, die Sperren erstellen oder löschen können
 
-Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktionen vom Typ **Microsoft.Authorization/*** oder **Microsoft.Authorization/locks/*** haben. Von den integrierten Rollen verfügen nur **Owner** (Besitzer) und **User Access Administrator** (Benutzerzugriffsadministrator) über diese Aktionen. Weitere Informationen zum Zuweisen der Zugriffssteuerung finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
+Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktionen vom Typ **Microsoft.Authorization/*** oder **Microsoft.Authorization/locks/*** haben. Von den integrierten Rollen verfügen nur **Owner** (Besitzer) und **User Access Administrator** (Benutzerzugriffsadministrator) über diese Aktionen.
 
 ## Erstellen einer Sperre in einer Vorlage
 
@@ -90,4 +90,4 @@ Azure PowerShell bietet auch andere Befehle für die Arbeit mit Sperren, z. B. 
 - Informationen dazu, wie Sie die Ressourcengruppe für eine Ressource ändern, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe](resource-group-move-resources.md).
 - Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

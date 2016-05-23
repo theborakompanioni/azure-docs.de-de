@@ -22,6 +22,8 @@
 
 Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar.
 
+> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“, „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „China, Norden“, wo sie sich derzeit in der Vorschauphase befinden. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt.
+
 ## So funktioniert's
 
 Ein weit verbreitetes Saas-Anwendungsmuster ist das Einzelmandanten-Datenbankmodell: Jeder Kunde erhält eine Datenbank. Jeder Kunde (jede Datenbank) verfügt über nicht vorhersagbare Ressourcenanforderungen für Arbeitsspeicher, E/A und CPU. Wie ordnen Sie bei einer schwankenden Nutzung mit Spitzen- und Tiefstwerten also Ressourcen zu? In der Vergangenheit hatten Sie zwei Optionen: (1) überdimensionierte Bereitstellung der Ressourcen, die sich an der Nutzung zu Spitzenzeiten orientiert (samt der damit verbundenen Kosten) oder (2) unterdimensionierte Bereitstellung, um Kosten einzusparen, zu Lasten von Leistung und Kundenzufriedenheit während der Spitzenzeiten. Pools für elastische Datenbanken beheben dieses Problem, indem sichergestellt wird, dass Datenbanken zum benötigten Zeitpunkt über die erforderlichen Leistungsressourcen verfügen, wobei gleichzeitig ein einfacher Mechanismus für die Ressourcenbelegung bei einem vorhersagbaren Budget geboten wird.
@@ -102,4 +104,4 @@ Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

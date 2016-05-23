@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="05/10/2016"
 	ms.author="mandia"/>
 
 # Verwalten und Überwachen integrierter API-Apps und Connectors
@@ -121,10 +121,7 @@ Sie können Benutzer problemlos hinzufügen und ihnen bestimmte Rollen für Ihre
 
 ## Weitere Informationen
 
-[Überwachen von Logik-App](app-service-logic-monitor-your-logic-apps.md)<br/>
-[Liste der Connectors und API-Apps in Microsoft Azure App Service](app-service-logic-connectors-list.md)<br/>
-[Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](../active-directory/role-based-access-control-configure.md)<br/>
-[Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md)
+[Überwachen von Logik-App](app-service-logic-monitor-your-logic-apps.md)<br/>[Liste der Connectors und API-Apps in Microsoft Azure App Service](app-service-logic-connectors-list.md)<br/>[Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](../active-directory/role-based-access-control-configure.md)<br/>[Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md)
 
 
 <!--Image references-->
@@ -137,4 +134,4 @@ Sie können Benutzer problemlos hinzufügen und ihnen bestimmte Rollen für Ihre
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure | Microsoft Azure"
-	description="In diesem Lernprogramm werden mit dem klassischen Bereitstellungsmodell erstellte Ressourcen verwendet. Es beschreibt die Verwendung des Assistenten zum Hinzufügen von Replikaten in SQL Server Management Studio (SSMS) zum Hinzufügen eines Replikats einer AlwaysOn-Verfügbarkeitsgruppe in Azure."
+	description="In diesem Tutorial werden mit dem klassischen Bereitstellungsmodell erstellte Ressourcen verwendet. Es beschreibt die Verwendung des Assistenten zum Hinzufügen von Replikaten in SQL Server Management Studio (SSMS) zum Hinzufügen eines Replikats einer AlwaysOn-Verfügbarkeitsgruppe in Azure."
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="MikeRayMSFT"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/05/2016"
+	ms.date="05/08/2016"
 	ms.author="mikeray" />
 
 # Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
@@ -35,7 +35,7 @@ Dieses Lernprogramm setzt voraus, dass Sie über die folgenden Punkte verfügen:
 
 ## Assistent zum Hinzufügen von Azure-Replikaten
 
-In diesem Abschnitt erfahren Sie, wie Sie den **Assistenten zum Hinzufügen von Azure-Replikaten** verwenden können, um Ihre AlwaysOn-Verfügbarkeitsgruppenlösung um Azure-Replikate erweitern können.
+In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen von Azure-Replikaten** Ihre AlwaysOn-Verfügbarkeitsgruppenlösung um Azure-Replikate erweitern.
 
 1. Erweitern Sie in SQL Server Management Studio **Hohe Verfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **[Name Ihrer Verfügbarkeitsgruppe]**.
 
@@ -81,7 +81,7 @@ In diesem Abschnitt erfahren Sie, wie Sie den **Assistenten zum Hinzufügen von 
 
 1. Klicken Sie auf **Weiter**.
 
-1. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die gewünschte Methode der Datensynchronisierung aus, und klicken Sie auf **Weiter**. Für die meisten Szenarien sollten Sie **Vollständige Datensynchronisation** auswählen. Weitere Informationen zu Methoden der Datensynchronisierung finden Sie unter [Seite "Anfängliche Datensynchronisierung auswählen" (Assistenten für AlwaysOn-Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/hh231021.aspx).
+1. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die gewünschte Methode der Datensynchronisierung aus, und klicken Sie auf **Weiter**. Für die meisten Szenarien sollten Sie **Vollständige Datensynchronisation** auswählen. Weitere Informationen zu Methoden der Datensynchronisierung finden Sie unter [Seite „Anfängliche Datensynchronisierung auswählen“ (Assistenten für AlwaysOn-Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/hh231021.aspx).
 
 1. Überprüfen Sie die Ergebnisse auf der Seite **Überprüfung**. Beheben Sie noch bestehende Probleme, und führen Sie die Überprüfung ggf. erneut aus. Klicken Sie auf **Weiter**.
 
@@ -103,4 +103,4 @@ Nach dem Erstellen der Verfügbarkeitsgruppe sollten Sie einen Listener für Cli
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter=""
 	authors="adrianhall"
-	manager="dwrede"
+	manager="ggailey"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="02/09/2016"
-	ms.author="chrande"/>
+	ms.date="05/05/2016"
+	ms.author="adrianha"/>
 
 # Aktualisieren eines vorhandenen Node.js-Azure Mobile Service auf App Service
 
@@ -38,7 +38,7 @@ Bei einem Upgrade auf das neue [Mobile Apps-SDK](https://www.npmjs.com/package/a
 
 - Beträchtliche Leistungssteigerungen im Vergleich zum Mobile Services SDK.
 
-- Sie können nun eine Website zusammen mit dem Mobil-Back-End hosten. Zudem ist es einfach, das Azure Mobile Apps SDK einer beliebigen vorhandenen expressv4-Anwendung hinzufügen.
+- Sie können nun eine Website zusammen mit dem Mobil-Back-End hosten. Zudem ist es einfach, das Azure Mobile Apps SDK einer beliebigen vorhandenen v4-Anwendung hinzuzufügen.
 
 - Das Mobile Apps SDK ist für die plattformübergreifende und lokale Entwicklung ausgelegt. Es kann lokal auf Windows-, Linux- und OS X-Plattformen ausgeführt und zur Entwicklung genutzt werden. Es ist nun einfach, häufig verwendete Node-Entwicklungstechniken zu verwenden, z. B. das Ausführen von [Mocha](https://mochajs.org/)-Tests vor der Bereitstellung.
 
@@ -288,4 +288,4 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

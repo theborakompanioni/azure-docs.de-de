@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verwaltung und Anpassung von AD FS mit Azure AD Connect | Microsoft Azure"
+	pageTitle="Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect | Microsoft Azure"
 	description="AD FS-Verwaltung mithilfe von Azure AD Connect und Anpassung der AD FS-Anmeldung für Benutzer mithilfe von Azure AD Connect und Powershell"
 	services="active-directory"
 	documentationCenter=""
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="05/04/2016"
 	ms.author="anandy"/>
 
-# Verwaltung und Anpassung von AD FS mit Azure AD Connect
+# Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect
 
-Dieser Artikel enthält Informationen zu den verschiedenen AD FS-bezogenen Aufgaben, die mithilfe von Azure AD Connect ausgeführt werden können, sowie zu anderen AD FS-Aufgaben, die möglicherweise für die vollständige Konfiguration einer AD FS-Farm erforderlich sind.
+Dieser Artikel enthält Informationen zu den verschiedenen auf die Active Directory-Verbunddienste (AD FS) bezogenen Aufgaben, die mithilfe von Azure AD Connect ausgeführt werden können, sowie zu anderen AD FS-Aufgaben, die möglicherweise für die vollständige Konfiguration einer AD FS-Farm erforderlich sind.
 
-## AD FS-Verwaltung
+## AD FS-Verwaltung.
 
 Azure AD Connect bietet verschiedene AD FS-bezogene Aufgaben, die mithilfe des Azure AD Connect-Assistenten mit minimalem Benutzereingriff ausgeführt werden können. Nachdem Sie die Installation von Azure AD Connect durch Ausführen des Assistenten abgeschlossen haben, können Sie den Assistenten erneut ausführen, um zusätzliche Aufgaben durchzuführen.
 
@@ -28,7 +28,7 @@ Azure AD Connect bietet verschiedene AD FS-bezogene Aufgaben, die mithilfe des A
 
 Azure AD Connect kann den aktuellen Status des AD FS- und Azure AD-Vertrauensstellung überprüfen und entsprechende Maßnahmen ergreifen, um die Vertrauensstellung zu reparieren. Führen Sie die folgenden Schritte aus, um Ihre Azure AD- und AD FS-Vertrauensstellung zu reparieren.
 
-Wählen Sie in der Liste mit verfügbaren Aufgaben die Option **Repair Azure AD and ADFS trust** (Azure AD- und AD FS-Vertrauensstellung reparieren).
+Wählen Sie in der Liste mit verfügbaren Aufgaben die Option **AAD- und ADFS-Vertrauensstellung reparieren**.
 
 ![](media\active-directory-aadconnect-federation-management\RepairADTrust1.PNG)
 
@@ -84,9 +84,9 @@ Klicken Sie auf „Weiter“, und führen Sie die Schritte auf der letzten Konfi
 
 ![](media\active-directory-aadconnect-federation-management\AddNewADFSServer8.PNG)
 
-### Hinzufügen eines neuen AD FS-WAP-Servers
+### Hinzufügen eines neuen AD FS-Webanwendungs-Proxyservers
 
-> [AZURE.NOTE] Azure AD Connect erfordert die PFX-Zertifikatdatei, um einen WAP-Server hinzuzufügen. Daher können Sie diesen Vorgang nur ausführen, wenn Sie die AD FS-Farm mit Azure AD Connect konfiguriert haben.
+> [AZURE.NOTE] Azure AD Connect erfordert die PFX-Zertifikatdatei, um einen Webanwendungs-Proxyserver hinzuzufügen. Daher können Sie diesen Vorgang nur ausführen, wenn Sie die AD FS-Farm mit Azure AD Connect konfiguriert haben.
 
 Wählen Sie in der Liste der verfügbaren Aufgaben die Option **Webanwendungsproxy bereitstellen**.
 
@@ -102,7 +102,7 @@ Als nächstes wird die Seite **SSL-Zertifikat angeben** angezeigt, auf der Sie d
 
 ![](media\active-directory-aadconnect-federation-management\WapServer4.PNG)
 
-Fügen Sie auf der nächsten Seite den Server als WAP hinzu. Da WAP-Server nicht unbedingt der Domäne angehören, werden Sie vom Assistenten zur Eingabe von Administratoranmeldeinformationen für den hinzugefügten Server aufgefordert.
+Fügen Sie auf der nächsten Seite den Server als Webanwendungs-Proxyserver hinzu. Da der Webanwendungs-Proxyserver nicht unbedingt der Domäne angehört, werden Sie vom Assistenten zur Eingabe von Administratoranmeldeinformationen für den hinzugefügten Server aufgefordert.
 
 ![](media\active-directory-aadconnect-federation-management\WapServer5.PNG)
 
@@ -138,7 +138,7 @@ Auf der nächsten Seite stellt der Assistent eine Liste der Azure AD-Domänen be
 
 ![](media\active-directory-aadconnect-federation-management\AdditionalDomain4.PNG)
 
-Nach der Auswahl der Domäne erhalten Sie vom Assistenten die entsprechenden Informationen zu weiteren Aktionen, die er ausführt, sowie zur Auswirkung der Konfiguration. In einigen Fällen – wenn Sie eine Domäne auswählen, die noch nicht in Azure AD überprüft wurde – erhalten Sie vom Assistenten Informationen zur Überprüfung der Domäne. Unter [Hinzufügen und Überprüfen eines benutzerdefinierten Domänennamens in Azure Active Directory](active-directory-add-domain-add-verify-general.md) finden Sie weitere Informationen zum Überprüfen Ihrer Domäne.
+Nach der Auswahl der Domäne erhalten Sie vom Assistenten die entsprechenden Informationen zu weiteren Aktionen, die er ausführt, sowie zur Auswirkung der Konfiguration. In einigen Fällen – wenn Sie eine Domäne auswählen, die noch nicht in Azure AD überprüft wurde – erhalten Sie vom Assistenten Informationen zur Überprüfung der Domäne. Unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md) finden Sie weitere Informationen zum Überprüfen Ihrer Domäne.
 
 Klicken Sie auf „Weiter“, und auf der Seite **Bereit für Konfiguration** wird die Liste der Aktionen angezeigt, die Azure AD Connect ausführt. Klicken Sie auf „Installieren“, um die Konfiguration abzuschließen.
 
@@ -191,7 +191,10 @@ Durch die Verwendung von „hinzufügen“ anstatt „ausgeben“ vermeiden Sie 
 
 Diese Regel definiert einfach das temporäre Flag „idflag“, das auf „useguid“ festgelegt ist, wenn „ms-ds-concistencyguid“ für den Benutzer nicht ausgefüllt ist. Die Logik dahinter ist die Tatsache, dass ADFS leere Ansprüche nicht zulasst. Wenn also die Ansprüche http://contoso.com/ws/2016/02/identity/claims/objectguid und http://contoso.com/ws/2016/02/identity/claims/msdsconcistencyguid in Regel 1 hinzugefügt werden, erhalten Sie den Anspruch „msdsconsistencyguid“ NUR, wenn der Wert für den Benutzer ausgefüllt ist. Ist er nicht ausgefüllt, erkennt ADFS, dass er als leerer Wert vorhanden ist und verwirft ihn umgehend. „ObjectGuid“, wie bekanntermaßen alle Objekte aufweisen, sodass dieser Anspruch immer vorhanden ist, nachdem Regel 1 ausgeführt wurde.
 
-**Rule 3: Ausgeben von „ms-ds-consistencyguid“ als unveränderliche ID, falls vorhanden** c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconcistencyguid"] => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
+**Regel 3: Ausgeben von „ms-ds-consistencyguid“ als unveränderliche ID, sofern vorhanden**
+
+    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconcistencyguid"]
+    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
 
 Dies ist eine implizite EXIST-Überprüfung. Wenn der Wert für den Anspruch vorhanden ist, geben Sie ihn als unveränderliche ID aus. Beachten Sie, dass ich den Anspruch „nameidentifier“ ausgebe. Sie müssen dies zum entsprechenden Anspruchstyp für die unveränderliche ID in Ihrer Umgebung ändern.
 
@@ -205,4 +208,35 @@ Mit dieser Regel wird einfach das temporäre Flag „idflag“ überprüft und b
 
 > [AZURE.NOTE] Die Reihenfolge dieser Regeln ist wichtig.
 
-<!---HONumber=AcomDC_0427_2016-->
+#### SSO mit Unterdomänen-UPN
+
+Mit Azure AD Connect können Sie mehrere Domänen für den Verbund hinzufügen ([Hinzufügen einer neuen Verbunddomäne](active-directory-aadconnect-federation-management.md#add-a-new-federated-domain)). Der UPN-Anspruch muss geändert werden, damit die Aussteller-ID der Stammdomäne und nicht der Unterdomäne entspricht, weil die Verbundstammdomäne auch das untergeordnete Element abdeckt.
+
+Standardmäßig wird die Anspruchsregel für die Aussteller-ID wie folgt festgelegt:
+
+	c:[Type 
+	== “http://schemas.xmlsoap.org/claims/UPN“]
+
+	=> issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
+
+![Standardmäßiger Aussteller-ID-Anspruch](media\active-directory-aadconnect-federation-management\issuer_id_default.png)
+
+Die Standardregel verwendet einfach das UPN-Suffix im Anspruch der Aussteller-ID. John ist z.B. ein Benutzer in „sub.contoso.com“, und „contoso.com“ ist mit Azure AD im Verbund. John gibt bei der Anmeldung bei Azure AD john@sub.contoso.com als Benutzernamen ein, und dann behandelt die standardmäßige Aussteller-ID-Anspruchsregel in AD FS ihn folgendermaßen:
+
+c:[Type == „http://schemas.xmlsoap.org/claims/UPN“]
+
+=> issue(Type = „http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, „.+@(?<domain>.+)“, „http://${domain}/adfs/services/trust/“));
+
+**Anspruchswert:** http://sub.contoso.com/adfs/services/trust/
+
+Damit nur die Stammdomäne im Ausstelleranspruchswert enthalten ist, ändern Sie die Anspruchsregel zu:
+
+	c:[Type == “http://schemas.xmlsoap.org/claims/UPN“]
+
+	=> issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
+
+## Nächste Schritte
+
+Erfahren Sie mehr über [Benutzeranmeldungsoptionen](active-directory-aadconnect-user-signin.md).
+
+<!---HONumber=AcomDC_0511_2016-->

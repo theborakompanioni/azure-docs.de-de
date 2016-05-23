@@ -71,7 +71,7 @@ Nachdem der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie 
 
 7. Beenden Sie den bereits aufgehobenen virtuellen Computer mithilfe des folgenden Befehls:
 
-	`azure vm stop –g <your-resource-group-name> -n <your-virtual-machine-name>`
+	`azure vm deallocate -g <your-resource-group-name> -n <your-virtual-machine-name>`
 
 8. Generalisieren Sie den virtuellen Computer mit dem folgenden Befehl:
 
@@ -197,4 +197,4 @@ Führen Sie für zusätzliche Befehlsoptionen `azure help vm create` aus.
 
 Informationen zur Verwaltung Ihrer virtuellen Computer mit der CLI finden Sie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

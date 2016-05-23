@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 # Arbeiten mit bedingtem Zugriff
 > [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
-Sie können ab sofort Zugriffsregeln aktivieren, mit denen Benutzern und Gruppen bedingter Zugriff auf Anwendungen gewährt wird, die mit dem Anwendungsproxy veröffentlicht werden. Hierdurch wird Folgendes ermöglicht:
+Sie können Zugriffsregeln konfigurieren, um den bedingten Zugriff auf Anwendungen zu gewähren, die mit dem Anwendungsproxy veröffentlicht werden. Hierdurch wird Folgendes ermöglicht:
 
-- Erfordern einer Multi-Factor-Authentication pro Anwendung
+- Erfordern einer Multi-Factor Authentication pro Anwendung
 - Erfordern einer Multi-Factor Authentication nur dann, wenn die Benutzer nicht am Arbeitsplatz sind
 - Blockieren des Zugriffs der Benutzer auf Anwendungen, wenn die Benutzer nicht am Arbeitsplatz sind
 
@@ -33,9 +33,7 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 
 - Azure Active Directory Premium-Abonnement
 - Ein Verbundmandant oder verwalteter Azure Active Directory-Mandant
-- Verbundmandanten erfordern die Aktivierung von Multi-Factor Authentication (MFA)
-
-![Konfigurieren von Zugriffsregeln – Erfordern von Multi-Factor Authentication](./media/active-directory-application-proxy-conditional-access/application-proxy-conditional-access.png)
+- Verbundmandanten erfordern die Aktivierung von Multi-Factor Authentication (MFA). ![Konfigurieren von Zugriffsregeln – Erfordern von Multi-Factor Authentication](./media/active-directory-application-proxy-conditional-access/application-proxy-conditional-access.png)
 
 ## Konfigurieren von Multi-Factor Authentication pro Anwendung
 1. Melden Sie sich als Administrator beim klassischen Azure-Portal an.
@@ -44,9 +42,9 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 4. Aktivieren Sie die Regeln, indem Sie **Zugriffsregeln aktivieren** auf **Ein** festlegen.
 5. Geben Sie die Benutzer und Gruppen an, auf die die Regeln angewendet werden sollen. Verwenden Sie die Schaltfläche **Gruppe hinzufügen**, um eine oder mehrere Gruppen auszuwählen, für die die Zugriffsregel gelten soll. Dieses Dialogfeld kann auch zum Entfernen ausgewählter Gruppen verwendet werden. Bei Anwendung der ausgewählten Regeln auf Gruppen werden die Zugriffsregeln nur für Benutzer erzwungen, die einer der angegebenen Sicherheitsgruppen angehören.  
 
-  - Um Sicherheitsregeln explizit von der Regel auszuschließen, aktivieren Sie die Option **Ausgenommen** und geben eine oder mehrere Gruppen an. Benutzer, die Mitglieder einer der in der Ausnahmeliste aufgeführten Gruppen sind, müssen keine mehrstufige Authentifizierung durchführen.  
+  - Um Sicherheitsregeln ausdrücklich von der Regel auszuschließen, aktivieren Sie die Option **Ausgenommen** und geben eine oder mehrere Gruppen an. Benutzer, die Mitglieder einer der in der Ausnahmeliste aufgeführten Gruppen sind, müssen keine mehrstufige Authentifizierung durchführen.  
 
-  - Wenn ein Benutzer unter Verwendung der Multi-Factor Authentication-Funktion auf Benutzerebene konfiguriert wurde, hat diese Einstellung Vorrang vor den Multi-Factor Authentication-Regeln auf Anwendungsebene. Dies bedeutet, dass Benutzer, die auf Benutzerebene für die mehrstufige Authentifizierung konfiguriert wurden, auch dann eine mehrstufige Authentifizierung durchlaufen müssen, wenn sie auf Anwendungsebene von den Multi-Factor Authentication-Regeln ausgenommen wurden. Erfahren Sie mehr über [Multi-Factor Authentication und Einstellungen auf Benutzerebene](../multi-factor-authentication/multi-factor-authentication.md).
+  - Wenn ein Benutzer unter Verwendung der Multi-Factor Authentication-Funktion auf Benutzerebene konfiguriert wurde, hat diese Einstellung Vorrang vor den Multi-Factor Authentication-Regeln auf Anwendungsebene. Dies bedeutet, dass Benutzer, die auf Benutzerebene für die mehrstufige Authentifizierung konfiguriert wurden, auch dann eine mehrstufige Authentifizierung durchlaufen müssen, wenn sie auf Anwendungsebene von den Multi-Factor Authentication-Regeln ausgenommen wurden. Erfahren Sie mehr über die [Multi-Factor Authentication und benutzerspezifische Einstellungen](../multi-factor-authentication/multi-factor-authentication.md).
 
 6. Wählen Sie die Zugriffsregel, die Sie festlegen möchten:
 	- **Erfordert mehrstufige Authentifizierung**: Benutzer, auf die Zugriffsregeln angewendet werden, müssen eine mehrstufige Authentifizierung durchlaufen, bevor sie auf die Anwendung zugreifen können, für die die Regel gilt.
@@ -57,29 +55,18 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 ## Konfigurieren von MFA für Verbunddienste
 Für Verbundmandanten kann Multi-Factor Authentication (MFA) von Azure Active Directory oder vom lokalen AD FS-Server durchgeführt werden. Standardmäßig wird MFA auf allen Seiten durchgeführt, die von Azure Active Directory gehostet werden. Führen Sie zur lokalen Konfiguration von MFA Windows PowerShell aus, und verwenden Sie die –SupportsMFA-Eigenschaft zum Festlegen des Azure AD-Moduls.
 
-Im folgenden Beispiel wird veranschaulicht, wie lokale MFA mithilfe des [Set-MsolDomainFederationSettings-Cmdlets](https://msdn.microsoft.com/library/azure/dn194088.aspx) auf dem Mandanten „contoso.com“ aktiviert wird: `Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `
+Im folgenden Beispiel wird veranschaulicht, wie lokale MFA mithilfe des [Cmdlets Set-MsolDomainFederationSettings](https://msdn.microsoft.com/library/azure/dn194088.aspx) im Mandanten „contoso.com“ aktiviert wird: `Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `
 
 Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbundmandanten für die Ausführung der mehrstufigen Authentifizierung konfiguriert werden. Folgen Sie hierzu den Anweisungen unter [Lokales Bereitstellen von Microsoft Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server.md).
 
 
 ## Weitere Informationen
-Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
 
-- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
-- [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
-- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 - [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
-- [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
+- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
+- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
+- [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
 
-## Weitere Informationen zum Anwendungsproxy
-- [Onlinehilfe anzeigen](active-directory-application-proxy-enable.md)
-- [Blog zum Anwendungsproxy aufrufen](http://blogs.technet.com/b/applicationproxyblog/)
-- [Sehen Sie sich unsere Videos auf Channel 9 an!](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-
-## Zusätzliche Ressourcen
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-- [Als Organisation für Azure registrieren](sign-up-organization.md)
-- [Azure-Identität](fundamentals-identity.md)
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

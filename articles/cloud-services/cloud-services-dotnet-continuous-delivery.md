@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Kontinuierliche Zustellung für Cloud Services in Azure
@@ -44,7 +44,7 @@ In diesem Abschnitt wird erläutert, wie ein MSBuild-Befehl konstruiert wird, de
 
 1.  Wenn Visual Studio auf dem Buildserver installiert ist, suchen Sie unter Windows im Ordner **Visual Studio Tools** nach **Visual Studio-Eingabeaufforderung**, und wählen Sie diese Option aus.
 
-    Wenn Visual Studio auf dem Buildserver nicht installiert ist, öffnen Sie eine Eingabeaufforderung, und stellen Sie sicher, dass MSBuild.exe im Pfad verfügbar ist. MSBuild wird mit .NET Framework unter "%WINDIR%\\Microsoft.NET\\Framework\\*Version*" installiert. Um z. B. MSBuild.exe der Umgebungsvariable PATH hinzuzufügen, wenn .NET Framework 4 installiert ist, geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
+    Wenn Visual Studio auf dem Buildserver nicht installiert ist, öffnen Sie eine Eingabeaufforderung, und stellen Sie sicher, dass MSBuild.exe im Pfad verfügbar ist. MSBuild wird mit .NET Framework unter "%WINDIR%\\Microsoft.NET\\Framework\*Version*" installiert. Um z. B. MSBuild.exe der Umgebungsvariable PATH hinzuzufügen, wenn .NET Framework 4 installiert ist, geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
 
         set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 
@@ -56,9 +56,9 @@ In diesem Abschnitt wird erläutert, wie ein MSBuild-Befehl konstruiert wird, de
 
     Sie können auch eine abgekürzte Version der Option verwenden: /t:Publish. Die Option "/t:Publish" in MSBuild darf nicht mit den in Visual Studio verfügbaren Veröffentlichungsbefehlen verwechselt werden, wenn Sie das Azure-SDK installiert haben. Die Option "/t:Publish" dient nur zum Erstellen der Azure-Pakete. Die Pakete werden nicht bereitgestellt, wie dies mit den Veröffentlichungsbefehlen in Visual Studio geschieht.
 
-    Den Projektnamen können Sie optional als MSBuild-Parameter angeben. Wird er nicht angegeben, wird das aktuelle Verzeichnis verwendet. Weitere Informationen über MSBuild-Befehlszeilenoptionen finden Sie unter [MSBuild-Befehlszeilenreferenz][1].
+    Den Projektnamen können Sie optional als MSBuild-Parameter angeben. Wird er nicht angegeben, wird das aktuelle Verzeichnis verwendet. Weitere Informationen über MSBuild-Befehlszeilenoptionen finden Sie unter [MSBuild-Befehlszeilenreferenz](1).
 
-4.  Suchen Sie die Ausgabe. Standardmäßig erstellt dieser Befehl ein Verzeichnis unter dem Stammordner des Projekts, z. B. "*ProjectDir*\\bin\\*Configuration*\\app.publish\". Beim Erstellen eines Azure-Projekts werden zwei Dateien generiert, die Paketdatei selbst und die zugehörige Konfigurationsdatei:
+4.  Suchen Sie die Ausgabe. Standardmäßig erstellt dieser Befehl ein Verzeichnis unter dem Stammordner des Projekts, z. B. "*ProjectDir*\\bin\*Configuration*\\app.publish\". Beim Erstellen eines Azure-Projekts werden zwei Dateien generiert, die Paketdatei selbst und die zugehörige Konfigurationsdatei:
 
     -   Project.cspkg
     -   ServiceConfiguration.*Zielprofil*.cscfg
@@ -105,7 +105,7 @@ Um TFS zum Erstellen von Azure-Paketen zu konfigurieren, führen Sie die folgend
 
 In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt wird, das die Ausgabe des Cloud-App-Pakets mithilfe optionaler Parameter in Azure veröffentlicht. Dieses Skript kann im benutzerdefinierten automatischen Build nach dem Buildschritt aufgerufen werden. Es kann auch über Prozessvorlagen-Workflowaktivitäten in Visual Studio TFS Team Build aufgerufen werden.
 
-1.  Installieren Sie die [Azure PowerShell-Cmdlets][] \(Version 0.6.1 oder höher). Wählen Sie während der Cmdlet-Einrichtung die Installation als Snap-In. Diese offiziell unterstützte Version ersetzt die ältere von CodePlex angebotene Version, auch wenn diese die Versionsnummer 2.x.x haben.
+1.  Installieren Sie die [Azure PowerShell-Cmdlets][] (Version 0.6.1 oder höher). Wählen Sie während der Cmdlet-Einrichtung die Installation als Snap-In. Diese offiziell unterstützte Version ersetzt die ältere von CodePlex angebotene Version, auch wenn diese die Versionsnummer 2.x.x haben.
 
 2.  Starten Sie Azure PowerShell über das Startmenü oder die Startseite. Auf diese Weise werden die Azure PowerShell-Cmdlets geladen.
 
@@ -123,17 +123,17 @@ In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt 
 
     Damit werden Informationen über Ihr Abonnement angezeigt. Prüfen Sie, ob alles richtig ist.
 
-4.  Speichern Sie die am Ende dieses Artikels bereitgestellte Skriptvorlage im Skriptordner unter „C:\\scripts\\WindowsAzure\\**PublishCloudService.ps1**“.
+4.  Speichern Sie die am Ende dieses Artikels bereitgestellte Skriptvorlage im Skriptordner unter „C:\\scripts\\WindowsAzure\**PublishCloudService.ps1**“.
 
 5.  Prüfen Sie den Parameterabschnitt des Skripts. Fügen Sie Standardwerte hinzu, oder ändern Sie diese. Diese Werte können durch Übergabe expliziter Parameter stets überschrieben werden.
 
 6.  Stellen Sie sicher, dass in Ihrem Abonnement gültige Clouddienst- und Speicherkonten erstellt sind, die vom Veröffentlichungsskript als Ziel angesprochen werden können. Das Speicherkonto (Blobspeicher) dient dazu, das Bereitstellungspaket und die Konfigurationsdatei hochzuladen und vorübergehend zu speichern, während die Bereitstellung erstellt wird.
 
-    -   Wenn Sie einen neuen Clouddienst erstellen möchten, können Sie dieses Skript aufrufen oder das Azure-Verwaltungsportal verwenden. Der Name des Clouddiensts wird als Präfix in einem vollqualifizierten Domänennamen verwendet und muss daher eindeutig sein.
+    -   Wenn Sie einen neuen Clouddienst erstellen möchten, können Sie dieses Skript aufrufen oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden. Der Name des Clouddiensts wird als Präfix in einem vollqualifizierten Domänennamen verwendet und muss daher eindeutig sein.
 
             New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
-    -   Wenn Sie ein neues Speicherkonto erstellen möchten, können Sie dieses Skript aufrufen oder das Azure-Verwaltungsportal verwenden. Der Name des Speicherkontos wird als Präfix in einem vollqualifizierten Domänennamen verwendet und muss daher eindeutig sein. Sie können versuchen, den gleichen Namen wie für den Clouddienst zu verwenden.
+    -   Wenn Sie ein neues Speicherkonto erstellen möchten, können Sie dieses Skript aufrufen oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden. Der Name des Speicherkontos wird als Präfix in einem vollqualifizierten Domänennamen verwendet und muss daher eindeutig sein. Sie können versuchen, den gleichen Namen wie für den Clouddienst zu verwenden.
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
@@ -145,7 +145,7 @@ In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt 
 
         PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-    In der Regel folgen danach eine Testlaufverifizierung und ein VIP-Swap. Der VIP-Swap kann über das Azure-Verwaltungsportal oder mit dem Move-Deployment-Cmdlet ausgeführt werden.
+    In der Regel folgen danach eine Testlaufverifizierung und ein VIP-Swap. Der VIP-Swap kann über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) oder mit dem Cmdlet Move-Deployment ausgeführt werden.
 
     **Beispielszenario 2:** kontinuierliche Bereitstellung in der Produktionsumgebung eines dedizierten Testdiensts
 
@@ -165,11 +165,11 @@ In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt 
 
         Add-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MY<THUMBPRINT>)
 
-    Zum Beispiel:
+    Beispiel:
 
         Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-    Alternativ können Sie die PFX-Zertifikatdatei mit privatem Schlüssel exportieren und Zertifikate über das Azure-Verwaltungsportal zu jedem Zielclouddienst hochladen. Weitere Informationen hierzu finden Sie im folgenden Artikel: [http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][].
+    Alternativ können Sie die PFX-Zertifikatdatei mit privatem Schlüssel exportieren und Zertifikate über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) in jeden Zielclouddienst hochladen. Weitere Informationen hierzu finden Sie im folgenden Artikel: [http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][].
 
     **Upgrade einer Bereitstellung im Vergleich zum Löschen einer Bereitstellung -> neue Bereitstellung**
 
@@ -573,4 +573,4 @@ Informationen zum Aktivieren des Remotedebuggens bei Verwendung der kontinuierli
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

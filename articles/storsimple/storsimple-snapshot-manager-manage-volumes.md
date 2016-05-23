@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # Verwenden des StorSimple Snapshot Managers zum Anzeigen und Verwalten von Volumes
 
 ## Übersicht
 
-Mit dem Knoten **Volumes** (im **Bereichsfenster**) im StorSimple Snapshot Manager können Sie Volumes auswählen und Informationen zu diesen anzeigen. Die Volumes werden als Laufwerke dargestellt, die jeweils den vom Host bereitgestellten Volumes entsprechen. Der Knoten **Volumes** zeigt die lokalen Volumes und Volumetypen an, die von Azure StorSimple unterstützt werden. Dazu gehören auch Volumes, die mithilfe von iSCSI und einem Gerät ermittelt wurden.
+Mit dem Knoten **Volumes** (im **Bereichsfenster**) im StorSimple Snapshot Manager können Sie Volumes auswählen und Informationen zu diesen anzeigen. Die Volumes werden als Laufwerke dargestellt, die jeweils den vom Host bereitgestellten Volumes entsprechen. Der Knoten **Volumes** zeigt die lokalen Volumes und Volumetypen an, die von StorSimple unterstützt werden. Dazu gehören auch Volumes, die mithilfe von iSCSI und einem Gerät ermittelt wurden.
 
 Weitere Informationen zu unterstützten Volumes finden Sie unter [Unterstützung für mehrere Volumetypen](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types).
 
@@ -35,11 +35,11 @@ In diesem Lernprogramm wird erläutert, wie Sie Volumes bereitstellen, initialis
 - Konfigurieren und Sichern eines Basisvolumes
 - Konfigurieren und Sichern eines dynamisch gespiegelten Volumes
 
->[AZURE.NOTE]Alle über den Knoten **Volume** verfügbaren Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
+>[AZURE.NOTE] Alle über den Knoten **Volume** verfügbaren Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
  
 ## Bereitstellen von Volumes
 
-Gehen Sie folgendermaßen vor, um Azure StorSimple-Volumes bereitzustellen, zu initialisieren und zu formatieren. Bei diesem Verfahren wird die Datenträgerverwaltung verwendet. Dies ist ein Systemprogramm zum Verwalten von Festplatten und den darauf enthaltenen Volumes oder Partitionen. Weitere Informationen zur Datenträgerverwaltung finden Sie unter [Disk Management](https://technet.microsoft.com/library/cc770943.aspx) (in englischer Sprache) auf der Microsoft TechNet-Website.
+Gehen Sie folgendermaßen vor, um StorSimple-Volumes bereitzustellen, zu initialisieren und zu formatieren. Bei diesem Verfahren wird die Datenträgerverwaltung verwendet. Dies ist ein Systemprogramm zum Verwalten von Festplatten und den entsprechenden Volumes oder Partitionen. Weitere Informationen zur Datenträgerverwaltung finden Sie unter [Disk Management](https://technet.microsoft.com/library/cc770943.aspx) (in englischer Sprache) auf der Microsoft TechNet-Website.
 
 #### So stellen Sie Volumes bereit
 
@@ -55,7 +55,7 @@ Gehen Sie folgendermaßen vor, um Azure StorSimple-Volumes bereitzustellen, zu i
 
     - Starten Sie **Verwaltung**, erweitern Sie den Knoten **Computerverwaltung**, und wählen Sie dann **Datenträgerverwaltung** aus.
 
-    >[AZURE.NOTE]Sie benötigen zum Ausführen der Datenträgerverwaltung Administratorrechte.
+    >[AZURE.NOTE] Sie benötigen zum Ausführen der Datenträgerverwaltung Administratorrechte.
  
 4. Schalten Sie die Volumes online:
 
@@ -110,7 +110,7 @@ Gehen Sie folgendermaßen vor, um Informationen zu lokalen und Azure StorSimple-
 
 Wenden Sie das folgende Verfahren zum Löschen eines Volumes aus dem StorSimple Snapshot Manager an.
 
->[AZURE.NOTE]Sie können kein Volume löschen, wenn dieses Teil einer Volumegruppe ist. (Die Löschoption ist für Volumes, die Mitglieder einer Volumegruppe sind, nicht verfügbar.) Löschen Sie die gesamte Volumegruppe, um das Volume zu löschen.
+>[AZURE.NOTE] Sie können kein Volume löschen, wenn dieses Teil einer Volumegruppe ist. (Die Löschoption ist für Volumes, die Mitglieder einer Volumegruppe sind, nicht verfügbar.) Löschen Sie die gesamte Volumegruppe, um das Volume zu löschen.
 
 
 #### So löschen Sie ein Volume
@@ -153,7 +153,7 @@ Wenden Sie das folgende Verfahren an, um eine Sicherung eines Basisvolumes zu ko
 
 Vorbereitungen
 
-- Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-deployment-walkthrough.md).
+- Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-deployment-walkthrough-u2.md).
 
 - Installieren und konfigurieren Sie den StorSimple Snapshot Manager. Weitere Informationen finden Sie unter [Bereitstellen des StorSimple Snapshot Managers](storsimple-snapshot-manager-deployment.md).
 
@@ -195,7 +195,7 @@ Führen Sie die folgenden Schritte aus, um die Sicherung eines dynamisch gespieg
 
 Vorbereitungen
 
-- Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-deployment-walkthrough.md).
+- Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-deployment-walkthrough-u2.md).
 
 - Installieren und konfigurieren Sie den StorSimple Snapshot Manager. Weitere Informationen finden Sie unter [Bereitstellen des StorSimple Snapshot Managers](storsimple-snapshot-manager-deployment.md).
 
@@ -271,4 +271,4 @@ Verwenden Sie das folgende Verfahren zum Konfigurieren eines dynamisch gespiegel
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,6 +13,13 @@ Alle Abonnenten können Serversoftware auf einem virtuellen Azure-Computer ausf�
 
 Für Windows-Client-Images stehen bestimmte Versionen von Windows 7 und Windows 8.1 für MSDN-Abonnenten von Azure-Vorteilen und Abonnenten von MSDN-Entwicklung und Tests mit nutzungsbasierter Zahlung für Entwicklungs- und Testzwecke bereit. Weitere Informationen, u. a. Anleitungen und Einschränkungen, finden Sie unter [Windows-Client-Images für MSDN-Abonnenten](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/).
 
+## Warum werden Affinitätsgruppen eingestellt?
+
+Affinitätsgruppen sind ein älteres Konzept, das ursprünglich zur Verbesserung der Netzwerkleistung zwischen virtuellen Computern in den frühen Azure-Netzwerkdesigns und zur Unterstützung der ersten Version von virtuellen Netzwerken (VNets) bereitgestellt wurde, die auf eine kleine Hardwaregruppen in einer Region beschränkt waren. Das aktuelle Azure-Netzwerk innerhalb einer Region wurde so entwickelt, dass Affinitätsgruppen nicht mehr benötigt werden. Auch VNets gibt es nur im regionalen Bereich, sodass für die VNet-Verwendung keine Affinitätsgruppe mehr erforderlich ist. Aufgrund dieser Verbesserungen sollten Kunde keine Affinitätsgruppen mehr verwenden, da sie in einigen Szenarien für Einschränkungen sorgen können. Bei Verwendung von Affinitätsgruppen werden Ihre virtuellen Computer unnötigerweise bestimmter Hardware zugeordnet, sodass sich die Auswahl der verfügbaren Größen virtueller Computer für Sie verringert. Außerdem kann es zu kapazitätsbezogenen Fehler bei dem Versuch kommen, neue virtuelle Computer hinzuzufügen, wenn die Kapazität der Hardware, die der Affinitätsgruppe zugeordnet ist, fast erschöpft ist.
+
+Affinitätsgruppenfunktionen wurden bereits im Azure Resource Manager-Bereitstellungsmodell und im Portal eingestellt. Wir stellen die Unterstützung zum Erstellen von Affinitätsgruppen und Speicherressourcen, die einer Affinitätsgruppe zugeordnet sind, im klassischen Portal ein. Vorhandenen Clouddienste, die Affinitätsgruppen verwenden, müssen nicht geändert werden. Neue Clouddienste sollten keine Affinitätsgruppen verwenden, es sei denn, dies wird von einem Azure-Supportmitarbeiter empfohlen.
+
+
 ## Wie viel Speicher kann mit einem virtuellen Computer verwendet werden?
 
 Jeder Datenträger kann bis zu 1 TB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
@@ -137,5 +144,3 @@ Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurier
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-creation-choices.md)
 
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
-
-<!---HONumber=AcomDC_0413_2016-->

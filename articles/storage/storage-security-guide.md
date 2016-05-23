@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/29/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage-Sicherheitsleitfaden
@@ -612,7 +612,7 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
 	Wenn Sie das Blob abrufen, gibt es Ihnen einen ggf. gespeicherten MD5-Wert in den Headern der Anforderung zurück. Sie können dann den MD5-Hash der empfangenen Daten berechnen und mit dem gespeicherten MD5-Wert vergleichen. Wenn sie nicht übereinstimmen, wurde das Blob während der Übertragung beschädigt.
 
-	Weitere Informationen finden Sie unter [Azure Blob MD5 Overview](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx) (Überblick zu Azure-Blob-MD5).
+	Weitere Informationen finden Sie unter [Windows Azure Blob MD5 Overview](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx) (Überblick zu Azure-Blob-MD5).
 
 2.  **Ist die FIPS-Konformität für die US-Regierung gegeben?**
 
@@ -634,4 +634,4 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
 	Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

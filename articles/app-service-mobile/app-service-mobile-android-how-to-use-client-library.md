@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/09/2016"
 	ms.author="ricksal"/>
 
 
@@ -93,7 +93,7 @@ Der Code ist in einer Datei namens **ToDoItem.java** gespeichert.
 
 Wenn Ihre SQL Azure-Tabelle weitere Spalten enthält, würden Sie die entsprechenden Felder dieser Klasse hinzufügen.
 
-Enthielte sie z. B. eine Integerspalte „Priority“, dann könnten Sie dieses Feld zusammen mit seinen Getter- und Setter-Methoden hinzufügen:
+Enthielte sie z. B. eine Integerspalte „Priority“, dann könnten Sie dieses Feld zusammen mit seinen Getter- und Setter-Methoden hinzufügen:
 
 		private Integer priority;
 
@@ -766,7 +766,7 @@ Die Zuordnung von Client-Tabellennamen zu anderen Tabellennamen im mobilen Diens
 
 ### <a name="conversions"></a>Automatisieren von Tabellennamenzuordnungen
 
-Die Zuordnung von Spaltennamen für kleine Tabellen mit nur wenigen Spalten ist kein großer Aufwand, wie zuvor gezeigt. Angenommen, die Tabelle hat jedoch viele Spalten, z. B. 20 oder 30. In diesem Fall können wir die <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a>-API aufrufen und eine Umwandlungsstrategie für alle Spalten angeben, um nicht jeden Spaltennamen einzeln zuordnen zu müssen.
+Die Zuordnung von Spaltennamen für kleine Tabellen mit nur wenigen Spalten ist kein großer Aufwand, wie zuvor gezeigt. Angenommen, die Tabelle hat jedoch viele Spalten, z. B. 20 oder 30. In diesem Fall können wir die <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a>-API aufrufen und eine Umwandlungsstrategie für alle Spalten angeben, um nicht jeden Spaltennamen einzeln zuordnen zu müssen.
 
 Dazu verwenden wir die <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a>-Bibliothek, mit der die Android-Clientbibliothek im Hintergrund Java-Objekte nach JSON-Daten serialisiert, die anschließend an Azure Mobile Services übertragen werden.
 
@@ -841,4 +841,4 @@ Sie können diese allgemeine Methode immer dann verwenden, wenn Sie mit komplexe
 [Get started with authentication]: app-service-mobile-android-get-started-users.md
 [Erste Schritte mit Authentifizierungen]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

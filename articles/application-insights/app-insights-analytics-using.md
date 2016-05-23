@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Verwenden von Analytics, das leistungsfähige Suchtool von Application Insights" 
-	description="Verwenden von Analytics, das leistungsfähige Diagnosesuchtool von Application Insights" 
+	description="Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -101,6 +101,7 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 
 
+
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0511_2016-->

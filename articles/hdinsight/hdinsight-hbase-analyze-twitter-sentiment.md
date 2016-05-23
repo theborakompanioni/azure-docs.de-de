@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="05/09/2016" 
 	ms.author="jgao"/>
 
 # Analysieren Sie Twitter-Stimmungen mit HBase in HDInsight
@@ -23,12 +23,12 @@ Erfahren Sie, wie Sie in Echtzeit [Stimmungsanalysen](http://en.wikipedia.org/wi
 
 Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. Öffentliche APIs von Websites wie Twitter sind eine nützliche Datenquelle für Analyse und Verständnis beliebter Trends. In diesem Tutorial entwickeln Sie eine Konsolenanwendung für Streamingdienste und eine ASP.NET-Webanwendung für folgende Zwecke:
 
-![][img-app-arch]
+![HDInsight HBase – Analysieren der Twitter-Stimmungen][img-app-arch]
 
 - Die Streaminganwendung
 	- Abrufen von Tweets mit Geotagging in Echtzeit über die Twitter-Streaming-API
 	- Analysieren der Stimmung dieser Tweets
-	- Speichern der Stimmungsinformationen in HBase mithilfe des Microsoft HBase SDK
+	- Speichern der Stimmungsinformationen in HBase mithilfe des Microsoft HBase SDK
 - Die Azure Websites-Anwendung
 	- Grafisches Darstellen der Echtzeit-Statistikergebnisse auf Bing Maps mithilfe einer ASP.NET-Webanwendung Eine Visualisierung der Tweets sieht etwa so aus:
 
@@ -140,13 +140,13 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
 
 **So erstellen Sie die Streaminganwendung**
 
-1. Öffnen Sie **Visual Studio**, und erstellen Sie eine Visual C#-Konsolenanwendung mit der Bezeichnung **TweetSentimentStreaming**. 
+1. Öffnen Sie **Visual Studio**, und erstellen Sie eine Visual C#-Konsolenanwendung mit der Bezeichnung **TweetSentimentStreaming**. 
 2. Führen Sie in der **Paket-Manager-Konsole** die folgenden Befehle aus:
 
 		Install-Package Microsoft.HBase.Client
 		Install-Package TweetinviAPI
-    Mit den folgenden Befehle installieren Sie das Paket [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/), das die Clientbibliothek für den Zugriff auf den HBase-Cluster ist, und das Paket [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/), das verwendet wird, um auf die Twitter-API zuzugreifen.
-3. Fügen Sie im **Projektmappen-Explorer** in der Referenz den Eintrag „System.Configuration“ hinzu.
+    Mit den folgenden Befehle installieren Sie das Paket [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/), das die Clientbibliothek für den Zugriff auf den HBase-Cluster ist, und das Paket [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/), das verwendet wird, um auf die Twitter-API zuzugreifen.
+3. Fügen Sie im **Projektmappen-Explorer** in der Referenz den Eintrag **System.Configuration** hinzu.
 4. Fügen Sie dem Projekt die neue Klassendatei **HBaseWriter.cs** hinzu, und ersetzen Sie den Code durch Folgendes:
 
         using System;
@@ -193,12 +193,12 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                     client = new HBaseClient(credentials);
 
                     // create the HBase table if it doesn't exist
-                    if (!client.ListTables().name.Contains(HBASETABLENAME))
+                    if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
                         TableSchema tableSchema = new TableSchema();
                         tableSchema.name = HBASETABLENAME;
                         tableSchema.columns.Add(new ColumnSchema { name = "d" });
-                        client.CreateTable(tableSchema);
+                        client.CreateTableAsync(tableSchema).Wait;
                         Console.WriteLine("Table "{0}" is created.", HBASETABLENAME);
                     }
 
@@ -344,7 +344,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                                 }
 
                                 // Write the Tweet by words cell set to the HBase table
-                                client.StoreCells(HBASETABLENAME, set);
+								client.StoreCellsAsync(HBASETABLENAME, set).Wait();
                                 Console.WriteLine("\tRows written: {0}", set.rows.Count);
                             }
                             Thread.Sleep(100);
@@ -445,7 +445,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
 
 Um den Streamingdienst auszuführen, drücken Sie **F5**. Nachfolgend sehen Sie einen Screenshot der Konsolenanwendung:
 
-	![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
+![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
     
 Führen Sie die Streaming-Konsolenanwendung weiter aus, während Sie die Webanwendung entwickeln, sodass Sie mehr Daten nutzen können. Zum Überprüfen der in die Tabelle eingefügten Daten können Sie die HBase-Befehlszeile verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data).
 
@@ -470,7 +470,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 7. Klicken Sie unter **Microsoft Azure-Abonnements verwalten** auf **Anmelden**.
 8. Geben Sie Ihre Azure-Anmeldeinformationen ein. Auf der Registerkarte **Konten** werden die Informationen zu Ihrem Azure-Abonnement angezeigt.
 9. Klicken Sie auf **Schließen**, um das Fenster **Microsoft Azure-Abonnements verwalten** zu schließen.
-10. Klicken Sie unter **Neues ASP.NET-Projekt – TweetSentimentWeb** auf **OK**.
+10. Klicken Sie unter **Neues ASP.NET-Projekt – TweetSentimentWeb** auf **OK**.
 11. Wählen Sie unter **Microsoft Azure-Site-Einstellungen konfigurieren** die Ihnen am nächsten gelegene **Region** aus. Sie müssen keinen Datenbankserver angeben. 
 12. Klicken Sie auf **OK**.
 
@@ -597,7 +597,7 @@ In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzei
 
 4. Ändern Sie innerhalb der Klasse **HBaseReader** die Konstantenwerte wie folgt:
 
-	- **CLUSTERNAME**: Der HBase-Clustername, z. B. *https://<HBaseClusterName>.azurehdinsight.net/*. 
+	- **CLUSTERNAME**: Der HBase-Clustername, z. B. *https://<HBaseClusterName>.azurehdinsight.net/*. 
     - **HADOOPUSERNAME**: Der Hadoop-Benutzername des HBase-Clusters. Der Standardname lautet *admin*.
     - **HADOOPUSERPASSWORD**: Das Hadoop-Benutzerkennwort des HBase-Clusters.
     - **HBASETABLENAME** = "tweets\_by\_words";
@@ -1236,8 +1236,8 @@ In diesem Tutorial haben Sie erfahren, wie Sie Tweets abrufen, die Stimmung von 
 - [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]
 
 
-[hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
-[website-get-started]: ../web-sites-dotnet-get-started.md
+[hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
+[website-get-started]: ../app-service-web/web-sites-dotnet-get-started.md
 
 
 
@@ -1248,9 +1248,8 @@ In diesem Tutorial haben Sie erfahren, wie Sie Tweets abrufen, die Stimmung von 
 
 
 
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-analyze-twitter-data]: hdinsight-analyze-twitter-data.md
-[hdinsight-hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
 
 
 
@@ -1277,4 +1276,4 @@ In diesem Tutorial haben Sie erfahren, wie Sie Tweets abrufen, die Stimmung von 
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

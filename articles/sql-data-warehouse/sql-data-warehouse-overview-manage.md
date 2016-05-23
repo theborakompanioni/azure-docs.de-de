@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/03/2016"
+   ms.date="05/04/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Verwalten von Datenbanken in Azure SQL Data Warehouse
@@ -42,7 +42,7 @@ Das [Azure-Portal][] ist ein webbasiertes Portal, in dem Sie Datenbanken erstell
 Informationen zum Einstieg in das Azure-Portal finden Sie unter [Erstellen eines SQL Data Warehouse (Azure-Portal)][].
 
 ### SQL Server Data Tools in Visual Studio
-Mit [SQL Server Data Tools][] \(SSDT) in Visual Studio können Sie eine Verbindung mit Ihren Datenbanken herstellen und diese verwalten und entwickeln. Wenn Sie ein Anwendungsentwickler sind, der mit Visual Studio oder anderen integrierten Entwicklungsumgebungen (IDEs) vertraut ist, sollten Sie SSDT in Visual Studio ausprobieren.
+Mit [SQL Server Data Tools][] (SSDT) in Visual Studio können Sie eine Verbindung mit Ihren Datenbanken herstellen und diese verwalten und entwickeln. Wenn Sie ein Anwendungsentwickler sind, der mit Visual Studio oder anderen integrierten Entwicklungsumgebungen (IDEs) vertraut ist, sollten Sie SSDT in Visual Studio ausprobieren.
 
 SSDT enthält den SQL Server-Objekt-Explorer, mit dem Sie SQL Data Warehouse-Datenbanken visuell darstellen, Verbindungen zu diesen herstellen und Skripts für sie ausführen können. Um eine schnelle Verbindung mit SQL Data Warehouse herzustellen, klicken Sie einfach in der Befehlsleiste auf die Schaltfläche **In Visual Studio öffnen**, während Sie die Datenbankdetails im klassischen Azure-Portal anzeigen.
 
@@ -115,7 +115,7 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Image references-->
 
 <!--Article references-->
-[Redundanzoptionen für Azure-Speicher]: storage-redundancy.md#read-access-geo-redundant-storage
+[Redundanzoptionen für Azure-Speicher]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [Erstellen eines SQL Data Warehouse (Azure-Portal)]: sql-data-warehouse-get-started-provision.md
 [Erstellen einer Datenbank (PowerShell)]: sql-data-warehouse-get-started-provision-powershell
 [connection]: sql-data-warehouse-develop-connections.md
@@ -139,4 +139,4 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Other web references-->
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="04/21/2016"
    ms.author="alkohli" />
 
 # Ein- und Ausschalten von StorSimple-Geräten 
@@ -28,12 +28,12 @@ Die folgende Tabelle führt verschiedene Szenarien auf, in denen StorSimple-Ger�
 |Einschalten eines neuen Geräts|[Einschalten eines neuen Geräts](#turn-on-a-new-device)<ul><li>[Neues Gerät nur mit primärem Gehäuse](#new-device-with-primary-enclosure-only)</li><li>[Neues Gerät mit EBOD-Gehäuse](#new-device-with-ebod-enclosure)</li></ul>|
 |Einschalten eines Geräts nach dem Herunterfahren|[Einschalten eines Geräts nach dem Herunterfahren](#turn-on-a-device-after-shutdown)<ul><li>[Gerät nur mit primärem Gehäuse](#device-with-primary-enclosure-only)</li><li>[Gerät mit EBOD-Gehäuse](#device-with-ebod-enclosure)</li></ul>|
 |Einschalten eines Geräts nach einem Stromausfall|[Einschalten eines Geräts nach einem Stromausfall](#turn-on-a-device-after-a-power-loss)<ul><li>[Gerät nur mit primärem Gehäuse](#8100)</li><li>[Gerät mit EBOD-Gehäuse](#8600)</li></ul>|
-|Einschalten eines Geräts nach Unterbrechung der Verbindung von primärem Gehäuse und EBOD|[Einschalten eines Geräts nach Unterbrechung der Verbindung von primärem Gehäuse und EBOD](#turn-on-a-device-after-the-primary-and-EBOD-enclosure-connection-is-lost)|
+|Einschalten eines Geräts nach Unterbrechung der Verbindung von primärem Gehäuse und EBOD|[Einschalten eines Geräts nach Unterbrechung der Verbindung von primärem Gehäuse und EBOD](#turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost)|
 |Herunterfahren eines ausgeführten Geräts|[Herunterfahren eines ausgeführten Geräts](#turn-off-a-running-device)<ul><li>[Gerät nur mit primärem Gehäuse](#8100a)</li><li>[Gerät mit EBOD-Gehäuse](#8600a)</li></ul>|
 
 ## Einschalten eines neuen Geräts
 
-Die Schritte zum erstmaligen Einschalten eines Microsoft Azure StorSimple-Geräts unterscheiden sich, je nachdem, ob es sich um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In den folgenden Abschnitten werden die detaillierten Schritte für beide Modelle beschrieben.
+Die Schritte zum erstmaligen Einschalten eines StorSimple-Geräts unterscheiden sich, je nachdem, ob es sich um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In den folgenden Abschnitten werden die detaillierten Schritte für beide Modelle beschrieben.
 
 - [Neues Gerät nur mit primärem Gehäuse](#new-device-with-primary-enclosure-only)
 
@@ -63,7 +63,7 @@ Wenn Sie dieses Gerät zum ersten Mal einrichten, führen Sie zuerst die Schritt
 
 ## Einschalten eines Geräts nach dem Herunterfahren
 
-Die Schritte zum Einschalten eines Microsoft Azure StorSimple-Geräts nach dem Herunterfahren unterscheiden sich, je nachdem, ob es sich um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse.
+Die Schritte zum Einschalten eines StorSimple-Geräts nach dem Herunterfahren unterscheiden sich, je nachdem, ob es sich um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse.
 
 - [Gerät nur mit primärem Gehäuse](#device-with-primary-enclosure-only)
 
@@ -107,7 +107,7 @@ Verwenden Sie das folgende Verfahren, um ein StorSimple-Gerät mit primärem und
 
 ## Einschalten eines Geräts nach einem Stromausfall
 
-Ein Ausfall oder eine Unterbrechung der Stromversorgung kann dazu führen, dass ein Microsoft Azure StorSimple-Gerät heruntergefahren wird. Ein solcher Stromausfall kann in einer oder beiden Stromversorgungen auftreten. Die Wiederherstellungsschritte unterscheiden sich, je nachdem, ob es sich bei dem Gerät um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In diesem Abschnitt werden die Wiederherstellungsverfahren für jedes Szenario besprochen.
+Ein Ausfall oder eine Unterbrechung der Stromversorgung kann dazu führen, dass ein StorSimple-Gerät heruntergefahren wird. Ein solcher Stromausfall kann in einer oder beiden Stromversorgungen auftreten. Die Wiederherstellungsschritte unterscheiden sich, je nachdem, ob es sich bei dem Gerät um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In diesem Abschnitt werden die Wiederherstellungsverfahren für jedes Szenario besprochen.
 
 - [Gerät nur mit primärem Gehäuse](#8100)
 
@@ -177,11 +177,11 @@ Wenn beide SAS-Kabel (Serial Attached SCSI) entfernt werden oder die Verbindung 
 
 10. Stellen Sie sicher, dass eine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, indem Sie überprüfen, ob alle SAS-Leitungs-LEDs (vier pro EBOD-Controller) leuchten.
 
->[AZURE.IMPORTANT]Wenn Sie das System einschalten und die SAS-Kabel beschädigt sind oder keine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, wechselt das System in den Wiederherstellungsmodus. [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md), falls dies eintritt.
+>[AZURE.IMPORTANT] Wenn Sie das System einschalten und die SAS-Kabel beschädigt sind oder keine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, wechselt das System in den Wiederherstellungsmodus. [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md), falls dies eintritt.
 
 ## Ausschalten eines ausgeführten Geräts
 
-Ein ausgeführtes Microsoft Azure StorSimple-Gerät muss möglicherweise heruntergefahren werden, wenn es verschoben oder außer Betrieb genommen werden soll oder wenn eine Komponente des Geräts fehlerhaft ist und ausgetauscht werden muss. Die Schritte unterscheiden sich, je nachdem, ob es sich bei dem Microsoft Azure StorSimple-Gerät um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In diesem Abschnitt werden die Schritte zum Herunterfahren eines ausgeführten Geräts beschrieben.
+Ein ausgeführtes StorSimple-Gerät muss möglicherweise heruntergefahren werden, wenn es verschoben oder außer Betrieb genommen werden soll oder wenn eine Komponente des Geräts fehlerhaft ist und ausgetauscht werden muss. Die Schritte unterscheiden sich, je nachdem, ob es sich bei dem StorSimple-Gerät um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In diesem Abschnitt werden die Schritte zum Herunterfahren eines ausgeführten Geräts beschrieben.
 
 - [Gerät mit primärem Gehäuse](#8100a)
 
@@ -191,7 +191,7 @@ Ein ausgeführtes Microsoft Azure StorSimple-Gerät muss möglicherweise herunte
 
 Zurzeit gibt es keine Möglichkeit, ein ausgeführtes StorSimple-Gerät über das klassische Azure-Portal herunterzufahren. Ein solches Gerät kann nur über Windows PowerShell für StorSimple heruntergefahren werden. Um das Gerät ordnungsgemäß und kontrolliert herunterzufahren, öffnen Sie Windows PowerShell für StorSimple, und führen Sie die unten stehenden Schritte aus.
 
->[AZURE.IMPORTANT]Schalten Sie ein ausgeführtes Gerät nicht über den Netzschalter auf der Geräterückseite aus.
+>[AZURE.IMPORTANT] Schalten Sie ein ausgeführtes Gerät nicht über den Netzschalter auf der Geräterückseite aus.
 >
 >Bevor Sie das Gerät herunterfahren, vergewissern Sie sich, dass alle Gerätekomponenten fehlerfrei funktionieren. Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**, und überprüfen Sie, ob der Status für alle Komponenten grün ist. Dies ist nur der Fall, wenn das System einwandfrei funktioniert. Wenn das System heruntergefahren wird, um eine fehlerhafte Komponente auszutauschen, wird für die jeweilige Komponente unter **Hardwarestatus** der Fehlerstatus (rot) oder der heruntergestufte Status (gelb) angezeigt.
 
@@ -211,7 +211,7 @@ Sie können über die serielle Gerätekonsole oder über Windows PowerShell-Remo
 
     Dadurch wird der aktuelle Standbycontroller heruntergefahren.
 
-    >[AZURE.IMPORTANT]Warten Sie, bis der Controller vollständig heruntergefahren ist, bevor Sie mit dem nächsten Schritt fortfahren.
+    >[AZURE.IMPORTANT] Warten Sie, bis der Controller vollständig heruntergefahren ist, bevor Sie mit dem nächsten Schritt fortfahren.
 
 5. Überprüfen Sie auf der Rückseite des Geräts, ob der Controller vollständig heruntergefahren ist. Die Controllerfehler-LED sollte dauerhaft rot leuchten.
 
@@ -225,7 +225,7 @@ Sie können über die serielle Gerätekonsole oder über Windows PowerShell-Remo
 
 ### Gerät mit EBOD-Gehäuse <a name="8600a">
 
->[AZURE.IMPORTANT]Bevor Sie das primäre und das EBOD-Gehäuse herunterfahren, stellen Sie sicher, dass sich alle Gerätekomponenten in fehlerfreiem Zustand befinden. Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**, und überprüfen Sie, ob alle Komponenten fehlerfrei funktionieren.
+>[AZURE.IMPORTANT] Bevor Sie das primäre und das EBOD-Gehäuse herunterfahren, stellen Sie sicher, dass sich alle Gerätekomponenten in fehlerfreiem Zustand befinden. Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**, und überprüfen Sie, ob alle Komponenten fehlerfrei funktionieren.
 
 #### So fahren Sie ein ausgeführtes Gerät mit EBOD-Gehäuse herunter
 
@@ -235,10 +235,10 @@ Sie können über die serielle Gerätekonsole oder über Windows PowerShell-Remo
 
 3. Stellen Sie sicher, dass das EBOD-Gehäuse heruntergefahren ist, indem Sie sich vergewissern, dass alle LEDs auf der Rückseite des EBOD-Gehäuses erloschen sind.
 
->[AZURE.NOTE]Die SAS-Verbindungskabel zwischen dem EBOD- und dem primären Gehäuse dürfen erst entfernt werden, nachdem das System heruntergefahren wurde.
+>[AZURE.NOTE] Die SAS-Verbindungskabel zwischen dem EBOD- und dem primären Gehäuse dürfen erst entfernt werden, nachdem das System heruntergefahren wurde.
 
 ## Nächste Schritte
 
 [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md), wenn beim Einschalten oder Herunterfahren eines StorSimple-Geräts Probleme auftreten.
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0511_2016-->

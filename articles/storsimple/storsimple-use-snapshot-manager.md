@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/25/2016"
    ms.author="v-sharos" />
 
 # Benutzeroberfläche des StorSimple Snapshot Managers
 
 ## Übersicht
 
-Der StorSimple Snapshot Manager verfügt über eine intuitive grafische Benutzeroberfläche (GUI), mit der Sie Sicherungskopien von Volumegruppen, einschließlich lokal und in der Cloud gespeicherter, verwalten können. Dieses Lernprogramm bietet eine Einführung in die Benutzeroberfläche und erläutert, wie die einzelnen Komponenten verwendet werden. Eine ausführliche Beschreibung des StorSimple Snapshot Managers finden Sie unter [Was ist der StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+Der StorSimple Snapshot Manager verfügt über eine intuitive Benutzeroberfläche, über die Sie Sicherungen erstellen und verwalten können. Dieses Tutorial bietet eine Einführung in die Benutzeroberfläche und erläutert, wie die einzelnen Komponenten verwendet werden. Eine ausführliche Beschreibung des StorSimple Snapshot Managers finden Sie unter [Was ist der StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
 
 ### Konsolenbeschreibung
 
@@ -110,7 +110,7 @@ Die folgende Tabelle enthält eine alphabetische Liste aller StorSimple Snapshot
 
 - In der Spalte **Beschreibung** werden die einzelnen Aktionen im Menü **Aktion** bzw. im Bereich "Aktionen" und ihre Funktionsweise erläutert.
 
->[AZURE.NOTE]Der Bereich **Aktionen** und das Menü **Aktion** enthalten zusätzliche Optionen, wie z. B. **Anzeigen**, **Neues Fenster hier öffnen**, **Aktualisieren**, **Liste exportieren** und **Hilfe**. Diese Optionen werden von der MMC zur Verfügung gestellt und sind nicht spezifisch für den StorSimple Snapshot Manager. Die Tabelle enthält Beschreibungen dieser Optionen.
+>[AZURE.NOTE] Der Bereich **Aktionen** und das Menü **Aktion** enthalten zusätzliche Optionen, wie z. B. **Anzeigen**, **Neues Fenster hier öffnen**, **Aktualisieren**, **Liste exportieren** und **Hilfe**. Diese Optionen werden von der MMC zur Verfügung gestellt und sind nicht spezifisch für den StorSimple Snapshot Manager. Die Tabelle enthält Beschreibungen dieser Optionen.
  
 | Aktion | Navigation | Beschreibung |
 |:--------|:------------|:-------------|
@@ -234,7 +234,7 @@ In der folgenden Tabelle werden die Symbole auf der Symbolleiste beschrieben.
  
 ## Bereichsfenster
 
-Das **Bereichsfenster** ist der linke Bereich in der StorSimple Snapshot Manager-Benutzeroberfläche. Es enthält die Konsolenstruktur (oder Knotenstruktur) und bildet den primären Navigationsbereich für StorSimple Snapshot Manager.
+Das **Bereichsfenster** ist der ganz linke Bereich in der StorSimple Snapshot Manager-Benutzeroberfläche. Es enthält die Konsolenstruktur (oder Knotenstruktur) und bildet den primären Navigationsbereich für StorSimple Snapshot Manager.
  
 ### Struktur des Bereichsfensters
 
@@ -307,7 +307,7 @@ Sicherungsrichtlinien sind Auftragszeitpläne für lokale und Cloudmomentaufnahm
 
 - Klicken Sie zum Anzeigen einer Liste der Sicherungsrichtlinien im **Bereichsfenster** auf **Sicherungsrichtlinien**. Die Liste der Sicherungsrichtlinien wird zusammen mit Informationen über die einzelnen Sicherungsrichtlinien im **Ergebnisbereich** angezeigt.
 
->[AZURE.NOTE]Sie können maximal 64 Sicherungen speichern.
+>[AZURE.NOTE] Sie können maximal 64 Sicherungen speichern.
 
 
 ### Knoten "Sicherungskatalog"
@@ -490,8 +490,7 @@ In den folgenden Tabellen werden die Tastenkombinationen für die einzelnen Knot
 | V | Öffnet das Menü **Ansicht**. |
 | W | Öffnet eine neue StorSimple Snapshot Manager-Konsole mit Fokus auf dem Knoten **Volumegruppen**.|
 | F | Aktualisiert die StorSimple Snapshot Manager-Konsole.|
-| L | Öffnet die Seite **Liste exportieren**.
-| H | Öffnet die Onlinehilfe. |
+| L | Öffnet die Seite **Liste exportieren**. | H | Öffnet die Onlinehilfe. |
  
 #### Tastenkombinationen für den Knoten "Sicherungskatalog"
 
@@ -516,4 +515,4 @@ In den folgenden Tabellen werden die Tastenkombinationen für die einzelnen Knot
 - Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 - Erfahren Sie, wie Sie [mit dem StorSimple Snapshot Manager Verbindungen mit Geräten herstellen und diese verwalten](storsimple-snapshot-manager-manage-devices.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Continuous Delivery für Azure mithilfe von Visual Studio Team Services und Git
@@ -59,7 +59,7 @@ Gehen Sie wie folgt vor, um mithilfe von Visual Studio Team Services einen Cloud
 
 ## 3: Verbinden des Projekts mit Azure
 
-1. Nachdem Sie in Visual Studio Team Services ein Git-Repository mit Quellcode erstellt haben, können Sie Ihr Git-Repository mit Azure verknüpfen. Wählen Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) Ihren Clouddienst oder Ihre Web-App aus, oder erstellen Sie einen neuen Clouddienst oder eine neue Web-App, indem Sie auf das +-Symbol links unten sowie auf **Cloud Services** oder **Web-App** und anschließend auf **Schnellerstellung** klicken.
+1. Nachdem Sie in Visual Studio Team Services ein Git-Repository mit Quellcode erstellt haben, können Sie Ihr Git-Repository mit Azure verknüpfen. Wählen Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) Ihren Clouddienst oder Ihre Web-App aus, oder erstellen Sie einen neuen Clouddienst oder eine neue Web-App, indem Sie auf das +-Symbol links unten sowie auf **Cloud Services** oder **Web-App** und anschließend auf **Schnellerstellung** klicken.
 
 	![][9]
 
@@ -152,7 +152,7 @@ Gehen Sie wie folgt vor, um mithilfe von Visual Studio Team Services einen Cloud
 
 	![][29]
 
-1. Im [klassischen Azure-Portal](http://manage.windowsazure.com) können Sie die entsprechende Bereitstellung auf der Registerkarte **Bereitstellungen** anzeigen, wenn die Stagingumgebung ausgewählt ist.
+1. Im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) können Sie die entsprechende Bereitstellung auf der Registerkarte **Bereitstellungen** anzeigen, wenn die Stagingumgebung ausgewählt ist.
 
 	![][30]
 
@@ -182,7 +182,7 @@ Wenn Sie bereit sind, können Sie die Stagingumgebung in die Produktionsumgebung
 
 ![][35]
 
-## 6: Bereitstellen von einer Arbeitsverzweigung
+## 7: Bereitstellen von einer Arbeitsverzweigung aus.
 
 Wenn Sie Git verwenden, nehmen Sie die Änderungen normalerweise an einer Arbeitsverzweigung vor und integrieren diese in die Hauptverzweigung, wenn Ihre Entwicklung den abgeschlossenen Status erreicht. Während der Entwicklungsphase eines Projekts möchten Sie die Arbeitsverzweigung in Azure erstellen und bereitstellen.
 
@@ -272,4 +272,4 @@ Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

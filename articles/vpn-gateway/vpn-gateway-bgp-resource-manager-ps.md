@@ -187,7 +187,7 @@ Erstellen Sie vor dem lokalen Netzwerkgateway zunächst die Ressourcengruppe (so
 #### 1\. Abrufen der beiden Gateways
 
 		$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
-		$lng5gw  = Get-AzureRmVirtualNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
+		$lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 
 #### 2\. Erstellen der Verbindung von TestVNet1 zu Site5
 
@@ -278,7 +278,7 @@ In diesem Beispiel befinden sich beide Gateways im selben Abonnement. Sie könne
 Stellen Sie sicher, dass Sie sich an „Abonnement 1“ anmelden und die Verbindung damit herstellen.
 
 	$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-	$vnet2gw = Get-AzureRmLocalNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
+	$vnet2gw = Get-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 	
 #### 2\. Erstellen der beiden Verbindungen
 
@@ -300,4 +300,4 @@ Wenn Sie alle drei Teile dieser Übung abgeschlossen haben, haben Sie eine Netzw
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->
