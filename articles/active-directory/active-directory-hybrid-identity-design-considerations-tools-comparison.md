@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/13/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
@@ -24,7 +24,7 @@ Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher 
 
 >[AZURE.NOTE] Azure AD Connect umfasst die Komponenten und Funktionen, die zuvor als DirSync und AAD Sync veröffentlicht wurden. Diese Tools werden nicht mehr einzeln veröffentlicht, und alle künftigen Verbesserungen werden in den Updates von Azure AD Connect enthalten sein, sodass Sie immer wissen, wo Sie die aktuellsten Funktionen bekommen.
 >
->DirSync and Azure AD Sync sind veraltet. Weitere Informationen finden Sie unter [Upgrade Windows Azure Active Directory Sync („DirSync“) and Azure Active Directory Sync („Azure AD Sync“)]( https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM) (Aktualisieren von Windows Azure Active Directory-Synchronisierung (DirSync) und von Azure Active Directory Sync (Azure AD Sync)).
+>DirSync and Azure AD Sync sind veraltet. Weitere Informationen finden Sie unter [Upgrade Microsoft Azure Active Directory Sync („DirSync“) and Azure Active Directory Sync („Azure AD Sync“)](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM) (Aktualisieren von Microsoft Azure Active Directory-Synchronisierung (DirSync) und von Azure Active Directory Sync (Azure AD Sync)).
 
 
 Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
@@ -94,4 +94,4 @@ Zulassen einer erweiterten Anpassung des Attributflusses | ● | ● | | ● | �
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

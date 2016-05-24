@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/13/2016"
    ms.author="cherylmc"/>
 
 # Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit dem klassischen Azure-Portal
@@ -27,17 +27,20 @@
 
 Dieser Artikel führt Sie durch den Erstellungsvorgang eines virtuellen Netzwerks und einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk. Standort-zu-Standort-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden. Dieser Artikel gilt für das klassische Bereitstellungsmodell, und es wird das klassische Azure-Portal verwendet.
 
+
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+## Verbindungsdiagramm
  
 ![Site-to-Site-Diagramm](./media/vpn-gateway-site-to-site-create/site2site.png "Site-to-Site")
 
 **Bereitstellungsmodelle und Tools für Site-to-Site-Verbindungen**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
- 
-Wenn Sie VNets miteinander verbinden, aber keine Verbindung mit einem lokalen Standort erstellen möchten, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](virtual-networks-configure-vnet-to-vnet-connection.md) oder [Konfigurieren einer VNet-zu-VNet-Verbindung für das Resource Manager-Bereitstellungsmodell](vpn-gateway-vnet-vnet-rm-ps.md) entsprechende Informationen.
+
+Wenn Sie VNets miteinander verbinden möchten, aber keine Verbindung mit einem lokalen Standort erstellen, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](virtual-networks-configure-vnet-to-vnet-connection.md) entsprechende Informationen. Andere Verbindungskonfigurationstypen finden Sie im Artikel [VPN Gateway-Verbindungstopologien](vpn-gateway-topology.md).
 
  
 ## Voraussetzungen
@@ -48,7 +51,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 -  Eine externe öffentliche IP-Adresse für Ihr VPN-Gerät. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
 
-- Ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+- Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
 
 ## Erstellen des virtuellen Netzwerks
@@ -83,7 +86,7 @@ Geben Sie die folgenden Informationen ein, und klicken Sie dann auf den Pfeil �
 - 	**Name:** Der Name, den Sie Ihrem lokalen Netzwerkstandort geben möchten.
 - 	**IP-Adresse des VPN-Geräts:** Dies ist die öffentliche IPv4-Adresse des lokalen VPN-Geräts, mit dem Sie die Verbindung mit Azure herstellen. Das VPN-Gerät kann sich nicht hinter einer NAT befinden.
 - 	**Adressraum:** Umfasst die Start-IP und CIDR (Adressenanzahl). Hier geben Sie die Adressbereiche an, die über das Gateway für das virtuelle Netzwerk an Ihren lokalen Standort gesendet werden sollen. Wenn eine IP-Zieladresse in die hier angegebenen Bereiche fällt, wird sie über das Gateway für das virtuelle Netzwerk geleitet.
-- 	**Adressraum hinzufügen:** Wenn mehrere Adressbereiche über das Gateway für das virtuelle Netzwerk gesendet werden sollen, geben Sie hier alle zusätzlichen Adressbereiche an. Sie können die Bereiche später auf der Seite **Lokales Netzwerk** hinzufügen oder entfernen.
+- 	**Adressraum hinzufügen**: Wenn mehrere Adressbereiche über das Gateway für das virtuelle Netzwerk gesendet werden sollen, geben Sie hier alle zusätzlichen Adressbereiche an. Sie können die Bereiche später auf der Seite **Lokales Netzwerk** hinzufügen oder entfernen.
 
 ## Seite "Adressräume von Virtual Network"
 
@@ -109,4 +112,4 @@ Als Nächstes konfigurieren Sie das Gateway für das virtuelle Netzwerk, um eine
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

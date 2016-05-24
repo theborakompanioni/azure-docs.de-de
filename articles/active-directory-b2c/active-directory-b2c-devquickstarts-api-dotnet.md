@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="12/22/2015"
+	ms.date="05/16/2016"
 	ms.author="dastrock"/>
 
 # Azure Active Directory B2C-Vorschau: Erstellen einer .NET-Web-API
@@ -109,7 +109,7 @@ Um zu erfahren, wie eine Web-App wie `TaskWebApp` Azure AD B2C verwendet, finden
 
 ## Sichern der API
 
-Wenn Sie über einen Client verfügen, der die API im Auftrag eines Benutzers aufruft, können Sie `TaskService` mit OAuth 2.0-Bearertoken sichern. Die API kann Token mit der OWIN-Bibliothek von Microsoft (Open Web Interface for .NET) akzeptieren und überprüfen.
+Wenn Sie über einen Client verfügen, der die API im Auftrag eines Benutzers aufruft, können Sie `TaskService` mit OAuth 2.0-Bearertoken sichern. Die API kann Token mit der OWIN-Bibliothek von Microsoft (Open Web Interface for .NET) akzeptieren und überprüfen.
 
 ### Installieren von OWIN
 Installieren Sie zuerst die OWIN-OAuth-Authentifizierungspipeline:
@@ -236,4 +236,4 @@ You can now move onto more advanced B2C topics. You may try:
 
 -->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

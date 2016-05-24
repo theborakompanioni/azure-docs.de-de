@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/21/2016"
+   ms.date="05/13/2016"
    ms.author="cherylmc"/>
 
 # Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit PowerShell und Azure Resource Manager
@@ -26,15 +26,21 @@
 
 In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Bereitstellungsmodells aus dem Azure Resource Manager geführt. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
+
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+## Verbindungsdiagramm 
 
 ![Site-to-Site-Diagramm](./media/vpn-gateway-create-site-to-site-rm-powershell/site2site.png "Site-to-Site")
 
 **Bereitstellungsmodelle und Tools für Site-to-Site-Verbindungen**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
+
+Wenn Sie VNets miteinander verbinden möchten, aber keine Verbindung mit einem lokalen Standort erstellen, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung](vpn-gateway-vnet-vnet-rm-ps.md) entsprechende Informationen. Andere Verbindungskonfigurationstypen finden Sie im Artikel [VPN Gateway-Verbindungstopologien](vpn-gateway-topology.md).
+
 
 ## Voraussetzungen
 
@@ -49,7 +55,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 - Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 
-## 1. Verbinden mit Ihrem Abonnement 
+## 1\. Verbinden mit Ihrem Abonnement 
 
 Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
@@ -65,11 +71,14 @@ Geben Sie das Abonnement an, das Sie verwenden möchten.
 
 	Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-## 2. Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
+## 2\. Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
 
 Die folgenden Beispiele zeigen ein Gateway-Subnetz von /28. Es ist zwar möglich, ein kleines Gateway-Subnetz von /29 zu erstellen, empfohlen wird dies jedoch nicht. Wir empfehlen, ein Gateway-Subnetz von /27 oder größer (/26, /25 usw.) zu erstellen, um zusätzlichen Funktionsanforderungen gerecht zu werden.
 
 Wenn Sie bereits über ein virtuelles Netzwerk mit einem Gatewaysubnetz von /29 oder größer verfügen, können Sie direkt mit [Hinzufügen Ihres Gateways für das lokale Netzwerk](#localnet) fortfahren.
+
+
+[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### So erstellen Sie ein virtuelles Netzwerk und ein Gatewaysubnetz
 
@@ -100,7 +109,7 @@ Legen Sie jetzt die Konfiguration fest.
 
 	Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-## 3. <a name="localnet"></a>Hinzufügen Ihres Gateways für das lokale Netzwerk
+## 3\. <a name="localnet"></a>Hinzufügen Ihres Gateways für das lokale Netzwerk
 
 In einem virtuellen Netzwerk ist mit dem Gateway für das lokale Netzwerk in der Regel Ihr lokaler Standort gemeint. Sie geben diesem Standort einen Namen, mit dem Azure darauf verweisen kann. Außerdem geben Sie das Adressraumpräfix für das Gateway für das lokale Netzwerk an.
 
@@ -121,10 +130,10 @@ So fügen Sie ein Gateway für das lokale Netzwerk mit mehreren Adresspräfixen 
 
 ### So ändern Sie die IP-Adresspräfixe für das Gateway für das lokale Netzwerk
 
-Es kann vorkommen, dass sich die Präfixe für das Gateway für das lokale Netzwerk ändern. Die Schritte, die Sie zum Ändern der IP-Adresspräfixe ausführen, richten sich danach, ob Sie eine VPN Gateway-Verbindung erstellt haben. Weitere Informationen finden Sie im Abschnitt [Ändern der IP-Adresspräfixe für ein Gateway für das lokale Netzwerk](#modify) dieses Artikels.
+Es kann vorkommen, dass sich die Präfixe für das Gateway für das lokale Netzwerk ändern. Die Schritte, die Sie zum Ändern der IP-Adresspräfixe ausführen, richten sich danach, ob Sie eine VPN Gateway-Verbindung erstellt haben. Weitere Informationen finden Sie in diesem Artikel im Abschnitt [Ändern der IP-Adresspräfixe für ein Gateway für das lokale Netzwerk](#modify).
 
 
-## 4. Anfordern einer öffentlichen IP-Adresse für das VPN Gateway
+## 4\. Anfordern einer öffentlichen IP-Adresse für das VPN Gateway
 
 Als Nächstes müssen Sie eine öffentliche IP-Adresse anfordern, die Ihrem Azure-VNet-VPN-Gateway zugewiesen wird. Dies ist nicht die gleiche IP-Adresse, die dem VPN-Gerät zugewiesen wird. Sie wird stattdessen dem Azure VPN Gateway selbst zugewiesen. Sie können nicht die IP-Adresse angeben, die Sie verwenden möchten. Diese wird Ihrem Gateway dynamisch zugewiesen. Sie verwenden diese IP-Adresse bei der Konfiguration des lokalen VPN-Geräts für die Verbindung zum Gateway.
 
@@ -134,7 +143,7 @@ Verwenden Sie das folgende PowerShell-Beispiel. Die Zuordnungsmethode für diese
 
 >[AZURE.NOTE] Azure VPN Gateway für das Ressourcen-Manager-Bereitstellungsmodell unterstützt derzeit nur öffentliche IP-Adressen. Dabei wird die Methode der dynamischen Zuweisung verwendet. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert. Die IP-Adresse von Azure VPN Gateway ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Die öffentliche IP-Adresse des Gateways ändert sich nicht bei Größenänderungen, beim Zurücksetzen oder bei anderen internen Wartungs-/Upgradeprozessen von Azure VPN Gateway.
 
-## 5. Erstellen der Gateway-IP-Adressierung
+## 5\. Erstellen der Gateway-IP-Adressierung
 
 Die Gatewaykonfiguration definiert das zu verwendende Subnetz und die zu verwendende öffentliche IP-Adresse. Verwenden Sie das folgende Beispiel, um Ihre Gatewaykonfiguration zu erstellen.
 
@@ -142,7 +151,7 @@ Die Gatewaykonfiguration definiert das zu verwendende Subnetz und die zu verwend
 	$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 	$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
 
-## 6. Erstellen des Gateways für das lokale Netzwerk
+## 6\. Erstellen des Gateways für das lokale Netzwerk
 
 In diesem Schritt erstellen Sie das Gateway des virtuellen Netzwerks. Beachten Sie, dass die Erstellung eines Gateways lange dauern kann. Häufig 20 Minuten oder länger.
 
@@ -155,7 +164,7 @@ Verwenden Sie die folgenden Werte:
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
-## 7. Konfigurieren des VPN-Geräts
+## 7\. Konfigurieren des VPN-Geräts
 
 An diesem Punkt benötigen Sie die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks für die Konfiguration Ihres lokalen VPN-Geräts. Halten Sie mit Ihrem Gerätehersteller für spezifische Informationen zur Konfiguration Rücksprache. Darüber hinaus finden Sie weitere Informationen unter [VPN-Geräte](vpn-gateway-about-vpn-devices.md).
 
@@ -163,7 +172,7 @@ Um die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks zu ermittel
 
 	Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName testrg
 
-## 8. Erstellen der VPN-Verbindung
+## 8\. Erstellen der VPN-Verbindung
 
 Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem VPN-Gerät. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Der gemeinsame Schlüssel muss dem Wert entsprechen, den Sie für Ihre VPN-Gerätekonfiguration verwendet haben. Beachten Sie, dass `-ConnectionType` für Standort-zu-Standort *IPsec* lautet.
 
@@ -174,7 +183,7 @@ Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway
 
 Die Verbindung wird nach kurzer Zeit hergestellt.
 
-## 9. Überprüfen einer VPN-Verbindung
+## 9\. Überprüfen einer VPN-Verbindung
 
 Es gibt mehrere Möglichkeiten, wie Sie Ihre VPN-Verbindung überprüfen können. Unten wird beschrieben, wie Sie eine einfache Überprüfung durchführen, indem Sie das Azure-Portal und PowerShell verwenden.
 
@@ -193,4 +202,4 @@ Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gat
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

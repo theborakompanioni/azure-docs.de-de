@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="05/06/2016"
+   ms.date="05/16/2016"
    ms.author="derrickv"/>
 
 # Einbetten eines Power BI-Berichts mit einem IFrame
@@ -180,8 +180,42 @@ function postActionLoadReport() {
     iframe.contentWindow.postMessage(message, "*");
 }
 ```
+Nachdem Sie einen Bericht in Ihre App eingebettet haben, können Sie den Bericht filtern. Im nächsten Abschnitt erfahren Sie, wie Sie einen Bericht mit einer URL-Syntax filtern.
 
-In diesem Artikel haben Sie den Code kennengelernt, mit dem Sie einen Bericht vom Typ **Power BI** in Ihre App integrieren können. Laden Sie die folgenden Beispiele von GitHub herunter, um schnell mit dem Integrieren eines Berichts in Ihre App zu beginnen:
+## Filtern eines Berichts
+
+Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL einen Abfragezeichenfolgenparameter mit angegebenem Filter hinzu. Sie können **nach einem Wert filtern** und den **Filterbereich ausblenden**.
+
+
+**Filtern nach einem Wert**
+
+Verwenden Sie zum Filtern nach einem Wert eine **$filter**-Abfragesyntax mit einem **eq**-Operator:
+
+```
+https://app.powerbi.com/reportEmbed
+?reportId=d2a0ea38-0694-...-ee9655d54a4a&
+$filter={tableName/fieldName}%20eq%20'{fieldValue}'
+```
+
+Sie können beispielsweise nach der Ladenkette „Lindseys“ filtern. Der Filterteil der URL sieht in dem Fall wie folgt aus:
+
+```
+$filter=Store/Chain%20eq%20'Lindseys'
+```
+
+> [AZURE.NOTE] {tableName/fieldName} darf keine Leerzeichen oder Sonderzeichen enthalten. Für {fieldValue} wird ein einzelner Kategoriewert akzeptiert.
+
+**Ausblenden des Filterbereichs**
+
+Wenn Sie den **Filterbereich** ausblenden möchten, fügen Sie der Berichtabfragezeichenfolge **filterPaneEnabled** hinzu:
+
+```
+&filterPaneEnabled=false
+```
+
+## Zusammenfassung
+
+In diesem Artikel haben Sie den Code kennengelernt, mit dem Sie einen **Power BI**-Bericht in Ihre App integrieren können. Laden Sie die folgenden Beispiele von GitHub herunter, um schnell mit dem Integrieren eines Berichts in Ihre App zu beginnen:
 
 - [Beispiel zum Integrieren eines Berichts mit einem IFrame](https://github.com/Azure-Samples/power-bi-embedded-iframe)
 - [Beispiel für eine Dashboard-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
@@ -192,6 +226,6 @@ In diesem Artikel haben Sie den Code kennengelernt, mit dem Sie einen Bericht vo
 - [System.IdentityModel.Tokens.SigningCredentials](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityToken](https://msdn.microsoft.com/library/system.identitymodel.tokens.jwtsecuritytoken.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
-- [Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) (Berichte abrufen)
+- [Get Reports (Berichte abrufen)](https://msdn.microsoft.com/library/mt711510.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -33,6 +33,8 @@ Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedes
 4. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Verbinden**.
 
 	![Screenshot des Azure-Portals beim Herstellen einer Verbindung mit Ihrem virtuellen Computer](./media/virtual-machines-windows-connect-logon/connect.png)
+	
+ > [AZURE.TIP] Wenn die Schaltfläche „Verbinden“ im Portal ausgeblendet ist und keine [Express Route](../expressroute/expressroute-introduction.md)- oder [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, damit Sie RDP nutzen können. Lesen Sie mehr über [öffentliche IP-Adressen in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
 ## Anmelden beim virtuellen Computer
 
@@ -41,6 +43,6 @@ Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedes
 
 ## Nächste Schritte
 
-Wenn beim Verbindungsversuch Probleme auftreten, finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md) Informationen. Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
+Informationen zum Behandeln von Verbindungsproblemen finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md). Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

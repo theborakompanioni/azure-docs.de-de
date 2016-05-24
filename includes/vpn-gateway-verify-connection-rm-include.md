@@ -1,6 +1,4 @@
-### So überprüfen Sie Ihre Verbindung mithilfe des Azure-Portals
-
-Sie können eine VPN-Verbindung im Azure-Portal überprüfen, indem Sie zu **Virtuelle Netzwerkgateways** navigieren, ***auf den Gatewaynamen klicken*** und **Einstellungen** und **Verbindungen** auswählen. Wenn Sie den Namen der Verbindung auswählen, können Sie weitere Informationen zur Verbindung anzeigen. Im folgenden Beispiel ist keine Verbindung hergestellt, und es werden keine Daten übertragen.
+Sie können eine VPN-Verbindung im Azure-Portal überprüfen, indem Sie zu **Virtuelle Netzwerkgateways** navigieren, ***auf den Gatewaynamen klicken*** und dann **Einstellungen** und schließlich **Verbindungen** auswählen. Wenn Sie den Namen der Verbindung auswählen, können Sie weitere Informationen zur Verbindung anzeigen. Im folgenden Beispiel ist keine Verbindung hergestellt, und es werden keine Daten übertragen.
 
 
 ![Überprüfen der Verbindung](./media/vpn-gateway-verify-connection-rm-include/connectionverify450.png)
@@ -8,7 +6,7 @@ Sie können eine VPN-Verbindung im Azure-Portal überprüfen, indem Sie zu **Vir
 
 ### So überprüfen Sie Ihre Verbindung mithilfe der PowerShell
 
-Sie können auch mit `Get-AzureRmVirtualNetworkGatewayConnection –Debug` überprüfen, ob die Verbindung eingerichtet wurde. Sie können das folgende Cmdlet-Beispiel verwenden und die Werte so konfigurieren, dass sie Ihren eigenen Werten entsprechen. Wählen Sie bei Aufforderung die Option *A* für „Alle ausführen“ aus.
+Sie können auch mit `Get-AzureRmVirtualNetworkGatewayConnection –Debug` überprüfen, ob die Verbindung eingerichtet wurde. Sie können das folgende Cmdlet-Beispiel verwenden und die Werte so konfigurieren, dass sie Ihren eigenen Werten entsprechen. Wählen Sie bei Aufforderung die Option „A“ aus, um alle auszuführen.
 
 	Get-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Debug
 
@@ -40,5 +38,3 @@ Sie können auch mit `Get-AzureRmVirtualNetworkGatewayConnection –Debug` über
 	    "ingressBytesTransferred": 33509044,
 	    "egressBytesTransferred": 4142431
 	  }
-
-<!---HONumber=AcomDC_0406_2016-->

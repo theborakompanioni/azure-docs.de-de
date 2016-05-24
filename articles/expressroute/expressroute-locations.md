@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/19/2016"
+   ms.date="05/11/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
@@ -64,7 +64,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 |**China Telecom Global** | Unterstützt | Nicht unterstützt | Hongkong |
 |**Cologix** | Unterstützt | In Kürze verfügbar | Montreal+, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | Unterstützt | Unterstützt | Amsterdam, Dublin, London |
-| **Comcast** | Unterstützt | Unterstützt | Silicon Valley, Washington, D.C. |
+| **Comcast** | Unterstützt | Unterstützt | Chicago, Silicon Valley, Washington, D.C. |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | Unterstützt | Unterstützt | Los Angeles | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Amsterdam, Atlanta, Chicago, Dallas, Hong Kong, London, Los Angeles, Melbourne, New York, Osaka, Sao Paulo, Seattle, Silicon Valley, Singapore, Sydney, Tokyo, Toronto, Washington DC |
 | **euNetworks** | Unterstützt | Unterstützt | Amsterdam |
@@ -79,7 +79,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **NTT Communications** | Unterstützt | Unterstützt | London, Osaka, Tokyo |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Washington, D.C. |
 | **PCCW Global Limited** | Unterstützt | Unterstützt | Hongkong |
-| **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | Unterstützt | Nicht unterstützt | Singapur |
+| **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | Unterstützt | Unterstützt | Singapur |
 | **SoftBank** | Unterstützt | Unterstützt | Osaka, Tokio | 
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | Unterstützt | Unterstützt | Amsterdam, Chennai, Hongkong, London, Mumbai, Silicon Valley, Singapur, Washington DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | Unterstützt | Unterstützt | Amsterdam, London |
@@ -134,7 +134,7 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 - Bestellen Sie eine ExpressRoute-Verbindung mit der Exchange als Konnektivitätsanbieter für die Verbindung mit Microsoft.
 	- Führen Sie die Schritte in [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md) aus, um die Verbindung einzurichten.
 
-|**Konnektivitätsanbieter**|**Exchange**|**Peeringstandorte**|
+|**Konnektivitätsanbieter**|**Exchange**|**Standorte**|
 |---|---|---|
 |**Alaska Communications**|Equinix|Seattle|
 |**[XO Communications](http://www.xo.com/)**|Equinix|Silicon Valley|
@@ -157,4 +157,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 - Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 - Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

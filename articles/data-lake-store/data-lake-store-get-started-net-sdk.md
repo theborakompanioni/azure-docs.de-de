@@ -10,7 +10,7 @@
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
-   ms.topic="hero-article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
    ms.date="04/27/2016"
@@ -114,7 +114,7 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                     _location = "East US 2";
 
-                    string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
+                    string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
                     string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
                     string remoteFilePath = remoteFolderPath + "file.txt";
@@ -330,7 +330,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
                 _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                 _location = "East US 2";
 
-                string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
+                string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
                 string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                 string remoteFolderPath = "/data_lake_path/";
                 string remoteFilePath = remoteFolderPath + "file.txt";
@@ -526,4 +526,4 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

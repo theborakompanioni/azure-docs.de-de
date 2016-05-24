@@ -15,14 +15,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/25/2016"
+	ms.date="05/09/2016"
 	ms.author="sstein;carlrab" />
 
 # Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage
 
 > [AZURE.SELECTOR]
-- [C#](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
+- [C#](sql-database-connect-query.md)
 - [Excel](sql-database-connect-excel.md)
 
 In diesem Artikel werden das Herstellen einer Verbindung mit einer Azure SQL-Datenbank mithilfe der neuesten Version von SQL Server Management Studio (SSMS) und das anschließende Durchführen einer einfachen Abfrage mithilfe von Transact-SQL-Anweisungen (T-SQL) veranschaulicht.
@@ -66,4 +66,4 @@ Wenn Sie mit T-SQL nicht vertraut sind, siehe [Tutorial: Schreiben von Transact-
 
 Informationen zu den ersten Schritten zum Erstellen von Datenbankbenutzern und Datenbankbenutzeradministratoren finden Sie unter [Get Started with Azure SQL Database security](sql-database-get-started-security.md) (Erste Schritte bei der Sicherheit für Azure SQL-Datenbanken).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

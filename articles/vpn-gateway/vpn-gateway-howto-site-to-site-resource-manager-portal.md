@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/13/2016"
    ms.author="cherylmc"/>
 
 # Erstellen eines VNet mit Site-to-Site-VPN-Verbindung über das Azure-Portal und Azure Resource Manager
@@ -25,19 +25,23 @@
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
-In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Azure Resource Manager-Bereitstellungsmodells und des Azure-Portals geführt.
+In diesem Artikel werden Sie durch das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Azure Resource Manager-Bereitstellungsmodells und des Azure-Portals geführt. Mit den unten angegebenen Schritten erstellen Sie ein VNet und fügen ein Gatewaysubnetz, ein Gateway, einen lokalen Standort und eine Verbindung hinzu. Außerdem müssen Sie Ihr VPN-Gerät konfigurieren.
+
 
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+## Verbindungsdiagramm
+
+![Standort-zu-Standort](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site2site.png)
+
 **Bereitstellungsmodelle und Tools für Site-to-Site-Verbindungen**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-Wenn Sie VNets miteinander verbinden möchten, aber keine Verbindung mit einem lokalen Standort erstellen, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung](vpn-gateway-vnet-vnet-rm-ps.md) entsprechende Informationen.
-
+Wenn Sie VNets miteinander verbinden möchten, aber keine Verbindung mit einem lokalen Standort erstellen, finden Sie unter [Konfigurieren einer VNet-zu-VNet-Verbindung](vpn-gateway-vnet-vnet-rm-ps.md) entsprechende Informationen. Andere Verbindungskonfigurationstypen finden Sie im Artikel [VPN Gateway-Verbindungstopologien](vpn-gateway-topology.md).
 
 ## Voraussetzungen
 
@@ -47,20 +51,12 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 - Eine externe öffentliche IP-Adresse für Ihr VPN-Gerät. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
 	
-- Ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) registrieren.
-
-## Informationen zu dieser Konfiguration.
-
-
-![Standort-zu-Standort](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site2site.png)
-
-Mit den unten angegebenen Schritten erstellen Sie ein VNet und fügen ein Gatewaysubnetz, ein Gateway, einen lokalen Standort und eine Verbindung hinzu. Außerdem müssen Sie Ihr VPN-Gerät konfigurieren.
-
-Sie können die folgenden Werte nutzen, wenn Sie diese Schritte als Übung verwenden:
-
-
+- Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) registrieren.
 
 ### <a name="values"></a>Beispielkonfigurationswerte für diese Übung
+
+
+Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden.
 
 - VNet-Name: TestVNet1
 - Adressraum: 10.11.0.0/16 und 10.12.0.0/16
@@ -83,9 +79,9 @@ Sie können die folgenden Werte nutzen, wenn Sie diese Schritte als Übung verwe
 
 ## 1\. Erstellen eines virtuellen Netzwerks 
 
-Falls Sie bereits ein virtuelles Netzwerk erstellt haben, sollten Sie überprüfen, ob die Einstellungen mit Ihrem VPN Gateway-Design kompatibel sind. Achten Sie dabei besonders auf alle Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Sie können dann mit [Angeben eines DNS-Servers](#dns) fortfahren.
+Falls Sie bereits ein virtuelles Netzwerk erstellt haben, sollten Sie überprüfen, ob die Einstellungen mit Ihrem VPN Gateway-Design kompatibel sind. Achten Sie dabei besonders auf alle Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei. Wenn Sie überprüft haben, ob für Ihr VNet die richtigen Einstellungen konfiguriert wurden, können Sie mit den Schritten im Abschnitt [Angeben eines DNS-Servers](#dns) beginnen.
 
-Wenn Sie zur Übung ein neues VNet erstellen, können Sie bei diesem Vorgang [diese Werte](#values) verwenden.
+### So erstellen Sie ein virtuelles Netzwerk
 
 [AZURE.INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
@@ -99,6 +95,8 @@ Sie können dem VNet nach dem Erstellen weitere Adressräume und Subnetze hinzuf
 
 Wenn Sie diese Konfiguration zu Übungszwecken erstellen, können Sie beim Angeben des DNS-Servers [diese Werte](#values) verwenden.
 
+### So geben Sie einen DNS-Server an
+
 [AZURE.INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## 4\. Erstellen eines Gatewaysubnetzes
@@ -109,11 +107,17 @@ Als Gatewaysubnetz-Präfix ist für einige Konfigurationen ein Subnetz der Grö�
 
 Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gatewaysubnetzes [diese Werte](#values) verwenden.
 
+### So erstellen Sie ein Gatewaysubnetz
+
+[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+
 [AZURE.INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ## 5\. Erstellen eines Gateways für das virtuelle Netzwerk
 
 Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gateways [diese Werte](#values) verwenden.
+
+### So erstellen Sie ein Gateway für das virtuelle Netzwerk
 
 [AZURE.INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -122,6 +126,8 @@ Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen de
 Mit dem *Gateway des lokalen Netzwerks* ist Ihr lokaler Standort gemeint. Geben Sie dem Gateway des lokalen Netzwerks einen Namen, mit dem von Azure darauf verwiesen werden kann.
 
 Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Hinzufügen Ihres lokalen Standorts [diese Werte](#values) verwenden.
+
+### So erstellen Sie ein Gateway für das lokale Netzwerk
 
 [AZURE.INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
@@ -135,10 +141,14 @@ Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway
 
 Stellen Sie sicher, dass das Gateway für das virtuelle Netzwerk und die Gateways für das lokale Netzwerk fertig erstellt wurden, bevor Sie mit diesem Abschnitt beginnen. Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen der Verbindung [diese Werte](#values) verwenden.
 
+### So erstellen Sie die VPN-Verbindung
+
 
 [AZURE.INCLUDE [vpn-gateway-add-site-to-site-connection-rm-portal](../../includes/vpn-gateway-add-site-to-site-connection-rm-portal-include.md)]
 
 ## 9\. Überprüfen der VPN-Verbindung
+
+Sie können Ihre VPN-Verbindung entweder im Portal oder mithilfe von PowerShell überprüfen.
 
 [AZURE.INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
@@ -148,4 +158,4 @@ Stellen Sie sicher, dass das Gateway für das virtuelle Netzwerk und die Gateway
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->
