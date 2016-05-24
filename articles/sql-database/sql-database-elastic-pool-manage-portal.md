@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/02/2016"
+	ms.date="05/09/2016"
 	ms.author="ninarn"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -27,17 +27,96 @@
 - [T-SQL](sql-database-elastic-pool-manage-tsql.md)
 
 
-Über das Azure-Portal können Sie einen Pool für elastische Datenbanken und die zugehörigen Datenbanken überwachen, verwalten und konfigurieren. Die SQL-Datenbank verfügt über eine integrierte Logik, die die bisherige Nutzung aller Datenbanken (eigenständige Datenbanken und Datenbanken in Pools) auf einem Server analysiert und einen Pool für Datenbanken empfiehlt, wenn dies die kostengünstigere Lösung ist.
+Mithilfe des Azure-Portals können Sie einen Pool für elastische Datenbanken sowie die darin enthaltenen Datenbanken überwachen und verwalten. Über das Portal können Sie die Verwendung eines elastischen Pools sowie der darin enthaltenen Datenbanken überwachen. Außerdem können Sie einen Änderungssatz für Ihren elastischen Pool erstellen und alle Änderungen gleichzeitig übermitteln. So können Sie etwa Datenbanken hinzufügen oder entfernen, die Einstellungen des elastischen Pools ändern oder Ihre Datenbankeinstellungen anpassen.
 
-Über das Portal können Sie die Pool- und Datenbankeinstellungen ändern, eine Vorschau der Änderungen anzeigen und dann alle Änderungen gleichzeitig übernehmen. Sie können eine Vorschau der Änderungen anzeigen, z.B. wenn Datenbanken hinzugefügt oder entfernt werden. Die möglichen Auswirkungen auf die Leistung und die Preise werden ebenfalls angezeigt.
+Die Abbildung weiter unten zeigt ein Beispiel für einen elastischen Pool. Die Ansicht enthält Folgendes:
 
-Um diese Anleitung durchzuarbeiten, benötigen Sie einige Datenbanken und einen Pool. Wenn Sie bereits über Datenbanken verfügen, finden Sie weiterführende Informationen unter [Erstellen eines Pools](sql-database-elastic-pool-create-portal.md). Wenn Sie keine Datenbank definiert haben, finden Sie entsprechende Informationen im [SQL-Datenbank-Tutorial](sql-database-get-started.md).
+*  Diagramme zur Überwachung der Ressourcenverwendung durch den elastischen Pool und die im Pool enthaltenen Datenbanken. 
+*  Die Schaltfläche **Pool konfigurieren** zum Vornehmen von Änderungen an dem elastischen Pool. 
+*  Die Schaltfläche **Datenbank erstellen** zum Erstellen einer neuen Datenbank und Hinzufügen der Datenbank zum aktuellen elastischen Pool.
+*  Elastische Aufträge zum Verwalten einer großen Anzahl von Datenbanken durch Ausführen von Transact-SQL-Skripts für alle Datenbanken in einer Liste. 
 
-## Auswählen eines zu verwendenden Pools
+![Poolansicht][2]
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Durchsuchen**.
-2. Klicken Sie auf **Elastische SQL-Pools**.
-3. Klicken Sie in der Liste auf den Pool, den Sie verwenden möchten.
+Für die Schritte in diesem Artikel benötigen Sie eine SQL Server-Instanz in Azure mit mindestens einer Datenbank und einem elastischen Pool. Informationen zum Erstellen eines elastischen Pools finden Sie unter [Erstellen eines Pools](sql-database-elastic-pool-create-portal.md). Falls Sie über keine Datenbank verfügen, sehen Sie sich das [SQL-Datenbank-Tutorial](sql-database-get-started.md) an.
+
+## Überwachung des elastischen Pools
+
+Navigieren Sie zu einem bestimmten Pool, um dessen Ressourcenverwendung anzuzeigen. In der Standardkonfiguration wird für den Pool die Speicher- und eDTU-Verwendung der letzten Stunde angezeigt. Das Diagramm kann mit anderen Metriken und Zeitfenstern konfiguriert werden.
+
+1. Wählen Sie einen zu verwendenden Pool aus.
+2. Unter **Überwachung des elastischen Pools** befindet sich ein Diagramm namens **Ressourcenverwendung**. Klicken Sie auf das Diagramm.
+
+	![Überwachung des elastischen Pools][3]
+
+	Das Blatt **Metrik** wird geöffnet und zeigt eine detaillierte Ansicht der angegebenen Metriken für das angegebene Zeitfenster.
+
+	![Blatt "Metrik"][9]
+
+### So passen Sie die Darstellung des Diagramms an
+
+Sie können das Diagramm und das Metrikblatt bearbeiten, um andere Metriken wie etwa die prozentuale Verwendung von CPU, Daten-E/A und Protokoll-E/A anzuzeigen.
+ 
+2. Klicken Sie auf dem Metrikblatt auf **Bearbeiten**.
+
+	![Klicken auf „Bearbeiten“][6]
+
+- Wählen Sie auf dem Blatt **Diagramm bearbeiten** einen neuen Zeitbereich („Letzte Stunde“, „Heute“ oder „Letzte Woche“) aus, oder klicken Sie auf **Benutzerdefiniert**, um einen beliebigen Datumsbereich innerhalb der letzten beiden Wochen auszuwählen. Wählen Sie den Diagrammtyp („Balken“ oder „Linie“) und dann die zu überwachenden Ressourcen aus. 
+
+	![Klicken auf „Bearbeiten“](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
+
+- Klicken Sie dann auf **OK**.
+
+
+## Überwachung der elastischen Datenbank
+
+Einzelne Datenbanken können auch auf potenzielle Probleme überwacht werden.
+
+1. Unter **Überwachung der elastischen Datenbank** befindet sich ein Diagramm mit Metriken für fünf Datenbanken. Standardmäßig zeigt das Diagramm die fünf wichtigsten Datenbanken des Pools (gemessen an der durchschnittlichen eDTU-Verwendung innerhalb der letzten Stunde). Klicken Sie auf das Diagramm.
+
+	![Überwachung des elastischen Pools][4]
+
+2. Das Blatt mit der Ressourcenverwendung der Datenbank wird angezeigt. Hier finden Sie eine detaillierte Ansicht der Datenbankverwendung im Pool. Über das Raster im unteren Teil des Blatts können Sie bis zu fünf beliebige Datenbanken im Pool auswählen und deren Verwendung im Diagramm anzeigen. Außerdem können Sie auf **Diagramm bearbeiten** klicken, um die Metriken und das Zeitfenster für das Diagramm anzupassen.
+
+	![Blatt mit der Ressourcenverwendung der Datenbank][8]
+
+### So passen Sie die Ansicht an
+
+1. Klicken Sie auf dem Blatt mit der Ressourcenverwendung der Datenbank auf **Diagramm bearbeiten**.
+
+	![Klicken auf „Diagramm bearbeiten“](./media/sql-database-elastic-pool-manage-portal/db-utilization-blade.png)
+
+2. Wählen Sie auf dem Blatt **Diagramm bearbeiten** einen neuen Zeitbereich („Letzte Stunde“ oder „Letzte 24 Stunden“) aus, oder klicken Sie auf **Benutzerdefiniert**, um einen anderen Tag innerhalb der letzten beiden Wochen auszuwählen.
+
+	![Klicken auf „Benutzerdefiniert“](./media/sql-database-elastic-pool-manage-portal/editchart-date-time.png)
+
+3. Klicken Sie auf das Dropdownfeld für den Datenbankvergleich, um eine andere Metrik auszuwählen.
+
+	![Bearbeiten des Diagramms](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
+
+### So wählen Sie die zu überwachenden Datenbanken aus
+
+In der Datenbankliste auf dem Blatt mit der Ressourcenverwendung der Datenbank können Sie nach bestimmten Datenbanken suchen, indem Sie die einzelnen Listenseiten durchgehen oder den Namen einer Datenbank eingeben. Aktivieren Sie das Kontrollkästchen, um die Datenbank auszuwählen.
+
+![Suchen nach zu überwachenden Datenbanken][7]
+  
+
+## Eine Warnung zu einer Poolressource hinzufügen
+
+Sie können Regeln zu Ressourcen hinzufügen, die E-Mails an Personen verschicken, oder Warnzeichenfolgen zu einem URL-Endpunkt, wenn die Ressource einen Verwendungsschwellenwert erreicht, den Sie eingerichtet haben.
+
+**So fügen Sie eine Warnung zu einer Ressource hinzu:**
+
+1. Klicken Sie auf das Diagramm **Ressourcenverwendung**, um das Blatt **Metrik** zu öffnen. Klicken Sie auf **Warnung hinzufügen**, und füllen Sie dann die Informationen auf dem Blatt **Warnungsregel hinzufügen** aus (**Ressource** wird automatisch auf den Pool festgelegt, mit dem Sie arbeiten).
+2. Geben Sie einen aussagekräftigen Namen und eine aussagekräftige Beschreibung für die Warnung ein.
+3. Wählen Sie in der Liste eine **Metrik** aus, für die die Warnung ausgegeben werden soll.
+
+    Das Diagramm zeigt dynamisch die Ressourcenverwendung für diese Metrik an, um Ihnen die Festlegung eines Schwellenwerts zu erleichtern.
+
+4. Wählen Sie eine Bedingung (größer als, kleiner als usw.) und einen Schwellenwert aus.
+5. Klicken Sie auf **OK**.
+
+
 
 ## Verschieben einer Datenbank in einen elastischen Pool
 
@@ -52,15 +131,15 @@ Sie können Datenbanken in einem vorhandenen Pool hinzufügen oder entfernen. Da
 	![Klicken auf „Zu Pool hinzufügen“](./media/sql-database-elastic-pool-manage-portal/add-to-pool.png)
 
 	
-3. Wählen Sie auf dem Blatt **Datenbanken hinzufügen** die Datenbanken aus, die dem Pool hinzugefügt werden sollen. Klicken Sie dann auf **Auswählen**.
+3. Wählen Sie auf dem Blatt **Datenbanken hinzufügen** die Datenbanken aus, die dem Pool hinzugefügt werden sollen. Klicken Sie auf **Auswählen**.
 
 	![Auswählen hinzuzufügender Datenbanken](./media/sql-database-elastic-pool-manage-portal/add-databases-pool.png)
 
-    Auf dem Blatt **Pool konfigurieren** wird nun die soeben hinzugefügte Datenbank angezeigt. Der Status der Datenbank ist auf **Ausstehend** festgelegt.
+    Auf dem Blatt **Pool konfigurieren** wird nun die hinzuzufügende Datenbank mit dem Status **Ausstehend** angezeigt.
 
     ![Ausstehende Hinzufügungen zum Pool](./media/sql-database-elastic-pool-manage-portal/pending-additions.png)
 
-3. Klicken Sie auf dem Blatt „Pool konfigurieren“ auf **Speichern**.
+3. Klicken Sie auf dem Blatt **Pool konfigurieren** auf **Speichern**.
 
     ![Klicken Sie auf Speichern.](./media/sql-database-elastic-pool-manage-portal/click-save.png)
 
@@ -72,52 +151,21 @@ Sie können Datenbanken in einem vorhandenen Pool hinzufügen oder entfernen. Da
 
 2. Klicken Sie auf **Aus Pool entfernen**.
 
-    ![Auflisten von Datenbanken](./media/sql-database-elastic-pool-manage-portal/remove-from-pool.png)
+    ![Auflisten von Datenbanken](./media/sql-database-elastic-pool-manage-portal/click-remove.png)
 
-	Die ausgewählten Datenbanken werden in der Benutzeroberfläche als zum Entfernen ausgewählt angezeigt.
+    Auf dem Blatt **Pool konfigurieren** wird nun die zu entfernende Datenbank mit dem Status **Ausstehend** angezeigt.
+    
+    ![Vorschau-Datenbank hinzufügen und entfernen](./media/sql-database-elastic-pool-manage-portal/pending-removal.png)
 
+3. Klicken Sie auf dem Blatt **Pool konfigurieren** auf **Speichern**.
 
-## Überwachen der Ressourcenverwendung eines Pools
-
-
-1. Wählen Sie einen zu verwendenden Pool aus.
-2. Unter **Überwachung des elastischen Pools** werden in einem Diagramm und in Live-Kacheln wichtige Auslastungsdaten zu Ihrem Pool angezeigt.
-
-![Überwachen eines elastischen Pools](./media/sql-database-elastic-pool-manage-portal/monitor-elastic-pool.png)
-
-**So ändern Sie das Diagramm und die Anzeige**
-
-- Klicken Sie auf **Bearbeiten**.
-
-	![Klicken auf „Bearbeiten“](./media/sql-database-elastic-pool-manage-portal/edit-resource-utlization.png)
-
-- Wählen Sie auf dem Blatt **Diagramm bearbeiten** einen neuen Zeitbereich („letzte Stunde“, „heute“ oder „letzte Woche“) aus, oder klicken Sie auf **benutzerdefiniert**, um einen anderen Zeitraum festzulegen. Wählen Sie den Diagrammtyp („Balken“ oder „Linie“) und dann die zu überwachenden Ressourcen aus.
-
-	![Klicken auf „Bearbeiten“](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
-
-- Klicken Sie dann auf **OK**.
-
-
-## Eine Warnung zu einer Poolressource hinzufügen
-
-Sie können Regeln zu Ressourcen hinzufügen, die E-Mails an Personen verschicken, oder Warnzeichenfolgen zu einem URL-Endpunkt, wenn die Ressource einen Verwendungsschwellenwert erreicht, den Sie eingerichtet haben.
-
-**So fügen Sie eine Warnung zu einer Ressource hinzu:**
-
-1. Klicken Sie auf das Diagramm **Ressourcenverwendung**, um das Blatt **Metrik** zu öffnen. Klicken Sie auf **Warnung hinzufügen**, und füllen Sie dann die Informationen auf dem Blatt **Warnungsregel hinzufügen** aus (**Ressource** wird automatisch auf den Pool festgelegt, mit dem Sie arbeiten).
-2. Geben Sie einen **Namen** und eine **Beschreibung** ein, die die Warnung Ihnen und anderen Empfängern gegenüber identifiziert.
-3. Wählen Sie in der Liste eine **Metrik** aus, für die eine Warnung ausgegeben werden soll.
-
-    Das Diagramm zeigt dynamisch die Ressourcenverwendung für diese Metrik an, um Ihnen die Festlegung eines Schwellenwerts zu erleichtern.
-
-4. Wählen Sie eine **Bedingung** (größer als, kleiner als usw.) und einen **Schwellenwert** aus.
-5. Klicken Sie auf **OK**.
+    ![Klicken Sie auf Speichern.](./media/sql-database-elastic-pool-manage-portal/click-save.png)
 
 ## Ändern Sie die Leistungseinstellungen eines Pools
 
-Bei der Überwachung der Ressourcenverwendung eines Pools stellen Sie möglicherweise fest, dass der Pool weitere eDTUs benötigt oder dass für einzelne Datenbanken im Pool unterschiedliche eDTU-Einstellungen erforderlich sind. Sie können das Setup des Pools jederzeit ändern, um die beste Leistungsverteilung und Kosteneffizienz zu erzielen. Weitere Informationen finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
+Im Zuge der Überwachung der Ressourcenverwendung eines Pools stellen Sie unter Umständen fest, dass gewisse Anpassungen erforderlich sind. Möglicherweise muss die Leistung oder Speicherbegrenzung des Pools geändert werden. Gegebenenfalls möchten Sie auch die Datenbankeinstellungen im Pool ändern. Sie können das Setup des Pools jederzeit ändern, um die beste Leistungsverteilung und Kosteneffizienz zu erzielen. Weitere Informationen finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md).
 
-**So ändern Sie die eDTUs pro Pool und die eDTUs pro Datenbank**
+**So ändern Sie die eDTUs oder Speicherbegrenzungen pro Pool und die eDTUs pro Datenbank:**
 
 1. Öffnen Sie das Blatt **Pool konfigurieren**.
 
@@ -129,18 +177,18 @@ Bei der Überwachung der Ressourcenverwendung eines Pools stellen Sie möglicher
 
     ![Einen Pool aktualisieren und neue monatliche Kosten](./media/sql-database-elastic-pool-manage-portal/pool-change-edtu.png)
 
-## Anzeigen der Vorschau von Datenbankaktion
-
-Sie können eine Vorschau der hinzugefügten und entfernten Datenbanken anzeigen, bevor Sie die Aktion auf dem Blatt **Pool konfigurieren** übernehmen:
-
-![Vorschau-Datenbank hinzufügen und entfernen](./media/sql-database-elastic-pool-manage-portal/pools-tab.png).
-
 
 ## Erstellen und Verwalten von elastischen Aufträgen
 
-Elastische Aufträge ermöglichen die Ausführung von Transact-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool. Vor der Verwendung von Aufträgen installieren Sie die Komponenten für elastische Aufträge, und geben Sie Ihre Anmeldeinformationen an. Weitere Informationen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md).
+Elastische Aufträge ermöglichen die Ausführung von Transact-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool. Sie können neue Aufträge erstellen oder vorhandene Aufträge über das Portal verwalten.
 
-Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Skalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
+![Erstellen und Verwalten von elastischen Aufträgen][5]
+
+
+Vor der Verwendung von Aufträgen installieren Sie die Komponenten für elastische Aufträge, und geben Sie Ihre Anmeldeinformationen an. Weitere Informationen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md).
+
+Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zum horizontalen Skalieren, zum Verschieben von Daten, zum Durchführen von Abfragen sowie zum Erstellen von Transaktionen mithilfe elastischer Datenbanktools.
+
 
 
 ## Zusätzliche Ressourcen
@@ -154,5 +202,13 @@ Unter [Übersicht über Features für elastische Datenbanken](sql-database-elast
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool-manage-portal/configure-pool.png
+[2]: ./media/sql-database-elastic-pool-manage-portal/basic.png
+[3]: ./media/sql-database-elastic-pool-manage-portal/basic-2.png
+[4]: ./media/sql-database-elastic-pool-manage-portal/basic-3.png
+[5]: ./media/sql-database-elastic-pool-manage-portal/elastic-jobs.png
+[6]: ./media/sql-database-elastic-pool-manage-portal/edit-metric.png
+[7]: ./media/sql-database-elastic-pool-manage-portal/select-dbs.png
+[8]: ./media/sql-database-elastic-pool-manage-portal/db-utilization.png
+[9]: ./media/sql-database-elastic-pool-manage-portal/metric.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

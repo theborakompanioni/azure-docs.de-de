@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/29/2016"
+   ms.date="05/07/2016"
    ms.author="glenga"/>
    
 # Erstellen eines Webhooks oder einer API-Azure-Funktion
@@ -67,7 +67,8 @@ Als Nächstes erstellen Sie den aktuellen Webhook im GitHub-Repository.
 
 	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook-3.png)
 
-An diesem Punkt ist der GitHub-Webhook so konfiguriert, dass die Funktion ausgelöst wird, wenn ein neuer Problembericht hinzugefügt wurde. Jetzt ist es Zeit, zu testen.
+An diesem Punkt ist der GitHub-Webhook so konfiguriert, dass die Funktion ausgelöst wird, wenn ein neuer Problembericht hinzugefügt wurde. 
+Jetzt ist es Zeit, zu testen.
 
 ##Testen der Funktion
 
@@ -82,11 +83,14 @@ An diesem Punkt ist der GitHub-Webhook so konfiguriert, dass die Funktion ausgel
 
 Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
-+ [Azure Functions developer reference (Azure Functions-Entwicklerreferenz)](functions-reference.md) Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen
-+ [Testing Azure Functions (Testen von Azure Functions)](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
-+ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden  
++ [Azure Functions developer reference (Azure Functions-Entwicklerreferenz)](functions-reference.md)  
+Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen
++ [Testing Azure Functions (Testen von Azure Functions)](functions-test-a-function.md)  
+Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
++ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md)  
+Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden  
 
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!----HONumber=AcomDC_0511_2016-->

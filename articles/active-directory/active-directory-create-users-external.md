@@ -74,6 +74,7 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 - Externe Benutzer können mehrinstanzenfähigen Anwendungen in Verzeichnissen außerhalb ihres Basisverzeichnisses nicht ihre Zustimmung geben.
 - PowerBI unterstützt den Zugriff durch externe Benutzer derzeit nicht.
 - Das Office-Portal unterstützt die Lizenzierung externer Benutzer nicht.
+- In Bezug auf Azure AD PowerShell werden externe Benutzer bei ihrem Basisverzeichnis angemeldet. Sie können Verzeichnisse, in denen sie externe Benutzer sind, nicht verwalten.
 
 
 ## Nächste Schritte
@@ -83,4 +84,4 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 - [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)
 - [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen
@@ -23,7 +23,7 @@ Mit dem Knoten **Volumegruppen** im **Bereichsfenster** können Sie Volumes Volu
 
 Volumegruppen sind Pools zusammengehöriger Volumes, mit denen sichergestellt werden soll, dass Sicherungen anwendungskonsistent sind. Weitere Informationen finden Sie unter [Volumes und Volumegruppen](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) und [Integration in den Windows-Volumeschattenkopie-Dienst](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
->[AZURE.IMPORTANT]
+>[AZURE.IMPORTANT] 
 >
 > * Alle Volumes in einer Volumegruppe müssen von einem Clouddienstanbieter stammen.
 > 
@@ -54,7 +54,7 @@ Anwendung | Die Spalte **Anwendungen** zeigt die Anzahl der VSS-Writer an, die z
 Aktiviert | Die Spalte **Ausgewählt** zeigt die Anzahl der Volumes in der Volumegruppe an. Eine Null (0) gibt an, dass den Volumes in der Volumegruppe keine Anwendung zugeordnet ist.
 Importiert | Die Spalte **Importiert** zeigt die Anzahl der importierten Volumes an. Bei Festlegung auf **True** gibt diese Spalte an, dass eine Volumegruppe aus dem klassischen Azure-Portal importiert und nicht im StorSimple Snapshot Manager erstellt wurde.
  
->[AZURE.NOTE]StorSimple Snapshot Manager-Volumegruppen werden ebenfalls auf der Registerkarte **Sicherungsrichtlinien** im klassischen Azure-Portal angezeigt.
+>[AZURE.NOTE] StorSimple Snapshot Manager-Volumegruppen werden ebenfalls auf der Registerkarte **Sicherungsrichtlinien** im klassischen Azure-Portal angezeigt.
  
 ## Erstellen einer Volumegruppe
 
@@ -78,11 +78,11 @@ Gehen Sie folgendermaßen vor, um eine neue Vorlumegruppe zu erstellen.
 
     2. Wählen Sie im Feld **Anwendungen** die Anwendungen aus, die den Volumes, die Sie der Volumegruppe hinzufügen werden, zugeordnet sind.
 
-        Das Feld **Anwendungen** enthält nur die Anwendungen, die Azure StorSimple-Volumes verwenden und für die VSS-Writer aktiviert sind. Ein VSS-Writer wird nur aktiviert, wenn alle vom Writer erkannten Volumes Azure StorSimple-Volumes sind. Wenn das Feld "Anwendungen" leer ist, sind keine Anwendungen installiert, die Azure StorSimple-Volumes und VSS-Writer verwenden. (Zurzeit unterstützt Azure StorSimple Microsoft Exchange und SQL Server.) Weitere Informationen zu VSS-Writern finden Sie unter [Integration in den Windows-Volumeschattenkopie-Dienst](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
+        Das Feld **Anwendungen** enthält nur die Anwendungen, die StorSimple-Volumes verwenden und für die VSS-Writer aktiviert sind. Ein VSS-Writer wird nur aktiviert, wenn alle vom Writer erkannten Volumes StorSimple-Volumes sind. Wenn das Feld "Anwendungen" leer ist, sind keine Anwendungen installiert, die Azure StorSimple-Volumes und VSS-Writer verwenden. (Zurzeit unterstützt Azure StorSimple Microsoft Exchange und SQL Server.) Weitere Informationen zu VSS-Writern finden Sie unter [Integration in den Windows-Volumeschattenkopie-Dienst](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
         Wenn Sie eine Anwendung auswählen, werden alle zugeordneten Volumes automatisch ausgewählt. Wenn Sie umgekehrt Volumes auswählen, die einer bestimmten Anwendung zugeordnet sind, wird die Anwendung automatisch im Feld **Anwendungen** ausgewählt.
 
-    3. Wählen Sie im Feld **Volumes** Azure StorSimple-Volumes aus, die der Volumegruppe hinzugefügt werden sollen.
+    3. Wählen Sie im Feld **Volumes** die StorSimple-Volumes aus, die der Volumegruppe hinzugefügt werden sollen.
 
       - Sie können Volumes mit einer oder mehreren Partitionen hinzufügen. (Volumes mit mehreren Partitionen können dynamische Datenträger oder Basisdatenträger mit mehreren Partitionen sein.) Ein Volume, das mehrere Partitionen enthält, wird als einzelne Einheit behandelt. Wenn Sie also nur eine der Partitionen einer Volumegruppe hinzufügen, werden alle anderen Partitionen automatisch auch dieser Volumegruppe hinzugefügt. Auch nach dem Hinzufügen eines Volumes mit mehreren Partitionen zu einer Volumegruppe wird das aus mehreren Partitionen bestehende Volume als eine Einheit behandelt.
 
@@ -130,7 +130,7 @@ Gehen Sie folgendermaßen vor, um eine Vorlumegruppe zu bearbeiten.
 
 Gehen Sie folgendermaßen vor, um eine Volumegruppe zu löschen.
 
->[AZURE.WARNING]Dadurch werden auch alle Sicherungen der Volumegruppe gelöscht.
+>[AZURE.WARNING] Dadurch werden auch alle Sicherungen der Volumegruppe gelöscht.
 
 #### So löschen Sie eine Volumegruppe
 
@@ -147,4 +147,4 @@ Gehen Sie folgendermaßen vor, um eine Volumegruppe zu löschen.
 - Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 - Weitere Informationen zum [Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien](storsimple-snapshot-manager-manage-backup-policies.md).
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0511_2016-->

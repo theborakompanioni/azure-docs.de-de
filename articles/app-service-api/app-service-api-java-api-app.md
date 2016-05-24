@@ -290,10 +290,10 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal eine neue API-App
 	![Verwenden Ihrer Java-Kontakte-REST-API in einer Liveinstanz in Azure](media/app-service-api-java-api-app/postman-calling-azure-contacts.png)
 	
 ## Nächste Schritte
-In diesem Artikel konnten Sie mit einer Swagger-JSON-Datei und Java-Code beginnen, der mit dem swagger.io-Editor generiert wurde. Durch einfache Änderungen und einen Git-Bereitstellungsprozess haben Sie eine funktionale, in Java geschriebene API-App erhalten. Im nächsten Tutorial der Reihe „Erste Schritte mit API-Apps“ wird gezeigt, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen](app-service-api-cors-consume-javascript.md).
+In diesem Artikel konnten Sie mit einer Swagger-JSON-Datei und Java-Code beginnen, der mit dem swagger.io-Editor generiert wurde. Durch einfache Änderungen und einen Git-Bereitstellungsprozess haben Sie eine funktionale, in Java geschriebene API-App erhalten. Im nächsten Tutorial wird gezeigt, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen](app-service-api-cors-consume-javascript.md). In weiteren Tutorials dieser Serie wird die Implementierung von Authentifizierung und Autorisierung erläutert.
 
 Aufbauend auf diesem Beispiel können Sie mehr über das [Storage SDK für Java](../storage/storage-java-how-to-use-blob-storage.md) erfahren, um die JSON-Blobs beständig zu speichern. Alternativ Sie können mithilfe des [Java SDK für DocumentDB](../documentdb/documentdb-java-application.md) Ihre Kontaktdaten in Azure DocumentDB speichern.
 
 Weitere Informationen zum Verwenden von Java in Azure finden Sie im [Java Developer Center](/develop/java/).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

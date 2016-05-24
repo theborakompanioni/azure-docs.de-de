@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/14/2016" 
+	ms.date="05/12/2016" 
 	ms.author="awills"/>
 
 
@@ -143,15 +143,20 @@ Im Application Insights-Portal werden Telemetriedaten angezeigt, sobald Ihre Anw
 
 Wenn Sie sich beim Hinzufügen von Application Insights zu dieser App nicht bei Azure angemeldet haben, tun Sie dies jetzt. Wählen Sie **Application Insights konfigurieren**. Dadurch können Sie nach der Bereitstellung Ihrer Live-App weiterhin Telemetriedaten aus dieser App anzeigen. Die Telemetriedaten werden im Application Insights-Portal angezeigt.
 
-### Metriken: Aggregierte Daten
+### Livestream
 
-Suchen Sie nach Daten in der Übersichtsdiagrammen. Zuerst sehen Sie lediglich einen oder zwei Punkte. Zum Beispiel:
+Verwenden Sie einen Livestream, um beim Debuggen oder direkt nach der Bereitstellung eine Schnellansicht Ihrer Telemetriedaten anzuzeigen.
 
-![Klicken Sie, um weitere Daten anzuzeigen.](./media/app-insights-asp-net/12-first-perf.png)
+![Klicken Sie auf dem Blatt „Übersicht“ auf „Livestream“.](./media/app-insights-asp-net/45.png)
 
-Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzuzeigen. [Weitere Informationen zu Metriken.][perf]
 
-* *Keine Daten zu Benutzern oder Seiten?* - [Hinzufügen von Daten zu Benutzern und Seiten](app-insights-web-track-usage.md)
+Der Livestream ist so konzipiert, dass Sie direkt nach der Bereitstellung überprüfen können, ob Ihre App ordnungsgemäß funktioniert.
+
+Im Livestream werden lediglich Daten der letzten paar Minuten angezeigt und keine Daten beibehalten.
+
+Für den Livestream ist mindestens Version 2.1.0-beta1 des SDK erforderlich.
+
+
 
 ### Suche: Einzelne Ereignisse
 
@@ -162,6 +167,23 @@ Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzu
 [Weitere Informationen zur Suche](app-insights-diagnostic-search.md)
 
 * *Keine zugeordneten Ereignisse?* Richten Sie [Serverausnahmen](app-insights-asp-net-exceptions.md) und [Abhängigkeiten](app-insights-asp-net-dependencies.md) ein.
+
+
+### Metriken: Aggregierte Daten
+
+Suchen Sie in den Übersichtsdiagrammen nach aggregierten Daten. Zuerst sehen Sie lediglich einen oder zwei Punkte. Zum Beispiel:
+
+![Klicken Sie, um weitere Daten anzuzeigen.](./media/app-insights-asp-net/12-first-perf.png)
+
+Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzuzeigen. [Weitere Informationen zu Metriken.][perf]
+
+* *Keine Daten zu Benutzern oder Seiten?* - [Hinzufügen von Daten zu Benutzern und Seiten](app-insights-web-track-usage.md)
+
+### Analytics: Leistungsfähige Abfragesprache
+
+Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von Daten als auch zum Ermitteln einzelner Instanzen ausführen. [Analytics]() ist ein leistungsfähiges Tool zum Nachvollziehen der Leistung und Nutzung sowie für Diagnosezwecke.
+
+![Analytics-Beispiel](./media/app-insights-asp-net/025.png)
 
 
 ## Sie sehen keine Daten?
@@ -179,19 +201,8 @@ Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzu
 
 Stellen Sie jetzt Ihre Anwendung bereit, und sehen Sie zu, wie Daten gesammelt werden.
 
-### Livestream
+Überwachen Sie mit dem [Livestream](#live-stream) die ersten Minuten einer Bereitstellung oder erneuten Bereitstellung, um zu ermitteln, ob die App ordnungsgemäß funktioniert. Vor allem beim Ersetzen einer älteren Version möchten Sie wissen, ob sich die Leistung verbessert hat. Falls ein Problem auftritt, möchten Sie möglicherweise die alte Version wiederherstellen.
 
-Die ersten Minuten einer Bereitstellung zeigen, ob die App ordnungsgemäß funktioniert. Vor allem beim Ersetzen einer älteren Version möchten Sie wissen, ob sich die Leistung verbessert hat. Falls ein Problem auftritt, möchten Sie möglicherweise die alte Version wiederherstellen.
-
-„Livestream“ stellt eine sofortige Ansicht einer Reihe wichtiger Leistungsmetriken bereit. Sie können die Ansicht während einer erneuten Bereitstellung oder einer Neukonfiguration anzeigen.
-
-![Klicken Sie auf dem Blatt „Übersicht“ auf „Livestream“.](./media/app-insights-asp-net/45.png)
-
-Im Gegensatz zu den anderen Metrikendiagrammen werden unter „Livestream“ lediglich Daten der letzten paar Minuten angezeigt und keine Daten beibehalten. Es wird eine minimale Aggregationspipeline verwendet, und die Anzeige wird sekündlich aktualisiert.
-
-Für „Livestream“ ist mindestens Version 2.1.0-beta1 des SDK erforderlich.
-
-*„Livestream“ ist auf der Konfigurationsseite hängengeblieben? – Aktualisieren Sie den Browser (F5).*
 
 #### Probleme auf dem Buildserver?
 
@@ -246,4 +257,4 @@ Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

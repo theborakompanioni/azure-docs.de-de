@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="05/05/2016" 
+	ms.date="05/18/2016" 
 	ms.author="sdanie"/>
 
 # Gewusst wie: Erstellen einer Web-App mit Redis Cache
@@ -688,12 +688,13 @@ Nach dem Klicken auf die Schaltfläche zum Bereitstellen für Azure gelangen Sie
 1. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** das zu verwendende Azure-Abonnement aus. Wählen Sie außerdem eine vorhandene Ressourcengruppe aus, oder erstellen eine neue Ressourcengruppe, und geben Sie den Speicherort der Ressourcengruppe an.
 2. Geben Sie auf dem Blatt **Parameter** einen Administratorkontonamen (**ADMINISTRATORLOGIN**; nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
 3. Die anderen Einstellungen können bei Bedarf geändert werden, Sie können aber auch die Standardwerte beibehalten. Klicken Sie anschließend auf **OK**.
-4. Klicken Sie nach dem Konfigurieren der Einstellungen auf **Prüfen Sie die rechtlichen Bedingungen**.
+
 
 ![Bereitstellen in Azure][cache-deploy-to-azure-step-2]
 
-1. Lesen Sie die Bedingungen auf dem Blatt **Erstellen**, und klicken Sie anschließend auf **Erstellen**.
-2. Klicken Sie zum Starten der Ressourcenbereitstellung auf dem Blatt **Benutzerdefinierte Bereitstellung** auf **Erstellen**.
+1. Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen**.
+2. Lesen Sie die Bedingungen auf dem Blatt **Erwerben**, und klicken Sie anschließend auf **Erwerben**.
+3. Klicken Sie zum Starten der Ressourcenbereitstellung auf dem Blatt **Benutzerdefinierte Bereitstellung** auf **Erstellen**.
 
 Klicken Sie auf das Benachrichtigungssymbol und anschließend auf **Bereitstellung gestartet...**, um den Status der Bereitstellung anzuzeigen.
 
@@ -838,4 +839,4 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

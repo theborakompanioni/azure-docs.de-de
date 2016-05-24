@@ -1,5 +1,3 @@
-### Um ein lokales Netzwerkgateway zu erstellen, führen Sie die folgenden Schritte aus:
-
 1. Navigieren Sie im Azure-Portal zu **Neu** **>** **Netzwerk** **>** **Lokales Netzwerkgateway**.
 
 	![Erstellen eines Gateways für das lokale Netzwerk](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
@@ -23,5 +21,3 @@
 10. Wenn das Gateway des lokalen Netzwerks erstellt wurde, wird es im Portal zum Anzeigen geöffnet.
 
 	
-
-<!---HONumber=AcomDC_0406_2016-->

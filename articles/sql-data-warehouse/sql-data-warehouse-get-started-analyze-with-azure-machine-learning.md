@@ -3,7 +3,7 @@
    description="Tipps für die Verwendung von Azure Machine Learning mit Azure SQL Data Warehouse für die Entwicklung von Lösungen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sahaj08"
+   authors="shivaniguptamsft"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="sahajs;barbkess;sonyama"/>
+   ms.date="05/17/2016"
+   ms.author="shivaniguptamsft;barbkess;sonyama"/>
 
 # Analysieren von Daten mit Azure Machine Learning
 In diesem Tutorial erfahren Sie, wie Sie ein prädiktives Machine Learning-Modell mit Azure Machine Learning und Ihren Azure SQL Data Warehouse-Daten erstellen. In diesem Tutorial werden wir eine gezielte Marketingkampagne für Adventure Works, einen Fahrradladen, erstellen und dabei eine Prognose, ob ein Kunde ein Fahrrad kauft.
@@ -65,9 +65,6 @@ Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf *
 Klicken Sie nach Abschluss des Experiments auf den Ausgabeport im unteren Bereich des Reader-Moduls, und wählen Sie **Visualisieren**, um die importierten Daten anzuzeigen. ![Anzeigen der importierten Daten][3]
 
 
-
-
-
 ## Schritt 2: Bereinigen von Daten
 Wir löschen einige Spalten, die für das Modell nicht relevant sind.
 
@@ -77,10 +74,8 @@ Wir löschen einige Spalten, die für das Modell nicht relevant sind.
 3. Schließen Sie zwei Spalten aus: CustomerAlternateKey und GeographyKey. ![Entfernen überflüssiger Spalten][5]
 
 
-
-
 ## Schritt 3: Erstellen des Modells
-Wir teilen die Daten im Verhältnis 80:20: 80 Prozent zum Trainieren eines Machine Learning-Modells und 20 Prozent zum Testen des Modells. Für dieses binäre Klassifizierungsproblem nutzen wir die Zwei-Klassen-Algorithmen.
+Wir teilen die Daten im Verhältnis 80:20: 80 Prozent zum Trainieren eines Machine Learning-Modells und 20 Prozent zum Testen des Modells. Für dieses binäre Klassifizierungsproblem nutzen wir die Zwei-Klassen-Algorithmen.
 
 1. Ziehen Sie das Modul **Split** in den Zeichenbereich.
 2. Geben Sie im Eigenschaftenbereich für den Anteil der Zeilen im ersten Ausgabedatensatz „0,8“ ein. ![Aufteilen von Daten in Trainings- und Testsätze][6]
@@ -91,10 +86,7 @@ Wir teilen die Daten im Verhältnis 80:20: 80 Prozent zum Trainieren eines Machi
 5. Wählen Sie die Spalte **BikeBuyer** als die vorherzusagende Spalte aus. ![Auswählen der vorherzusagenden Spalte][8]
 
 
-
-
-
-## Schritt 4: Bewertungsmodell
+## Schritt 4: Bewertungsmodell
 Wir testen nun die Leistung des Modells mithilfe von Testdaten. Wir vergleichen zwei Algorithmen, um zu ermitteln, welcher Algorithmus die bessere Leistung erzielt.
 
 1. Ziehen Sie das Modul **Score Model** in den Zeichenbereich. Erste Eingabe: Trainiertes Modell. Zweite Eingabe: Testdaten ![Bewertung des Modells][9]
@@ -104,22 +96,18 @@ Wir testen nun die Leistung des Modells mithilfe von Testdaten. Wir vergleichen 
 5. Sie können nun das Experiment **ausführen**. ![Ausführen des Experiments][10]
 6. Klicken Sie unten im Modul „Modell evaluieren“ auf den Ausgabeport und anschließend auf „Visualisieren“. ![Anzeigen der Auswertungsergebnisse][11]
 
-
-
 Folgende Metriken stehen zur Verfügung: ROC-Kurve, Precision-Recall-Diagramm und Lorenz-Kurve. Anhand dieser Metriken erkennen wir, dass mit dem ersten Modell eine bessere Leistung als mit dem zweiten Modell erzielt wird. Wenn Sie die Vorhersage des ersten Modells anzeigen möchten, klicken Sie im „Bewertungsmodell“ auf den Ausgabeport und anschließend auf „Visualisieren“. ![Anzeigen der Bewertungsergebnisse][12]
 
 Ihrem Testdatensatz werden zwei weitere Spalten hinzugefügt.
 
 - Bewertete Wahrscheinlichkeiten: Die Wahrscheinlichkeit, dass es sich bei einem Kunden um einen Fahrradkäufer handelt.
-- Bewertete Beschriftungen: die vom Modell vorgenommene Klassifizierung – Fahrradkäufer (1) oder kein Fahrradkäufer (0). Der Wahrscheinlichkeitsschwellenwert für die Beschriftung ist auf 50 Prozent festgelegt, kann aber angepasst werden.
+- Bewertete Beschriftungen: die vom Modell vorgenommene Klassifizierung – Fahrradkäufer (1) oder kein Fahrradkäufer (0). Der Wahrscheinlichkeitsschwellenwert für die Beschriftung ist auf 50 Prozent festgelegt, kann aber angepasst werden.
 
 Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Bewertete Beschriftungen“ (Vorhersage) können Sie die Leistung des Modells ermitteln. Als Nächstes können Sie mit diesem Modell Vorhersagen für neue Kunden treffen und das Modell als Webdienst veröffentlichen oder Ergebnisse zurück in SQL Data Warehouse schreiben.
 
 ## Nächste Schritte
 
 Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersagemodellen finden Sie unter [Einführung in das maschinelle Lernen in Microsoft Azure][].
-
-
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
@@ -142,4 +130,4 @@ Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersa
 [Beispieldaten manuell laden]: sql-data-warehouse-get-started-manually-load-samples.md
 [Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

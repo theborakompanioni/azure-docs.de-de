@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="04/19/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher" />
 
 # Verwalten von Azure-Speicherressourcen mit dem Speicher-Explorer (Vorschauversion)
@@ -42,8 +42,8 @@ Damit Ihre Azure-Speicherressourcen im Speicher-Explorer angezeigt werden, müss
 ### Anfügen eines externen Speichers
 
 1. Rufen Sie den Kontonamen und den Schlüssel für das anzufügende Speicherkonto ab.
-	1.	Wählen Sie im Azure-Vorschauportal das anzufügende Speicherkonto aus.
-	1.	Wählen Sie im Azure-Vorschauportal im Verwaltungsabschnitt des Bereichs **Einstellungen** die Schaltfläche **Schlüssel** aus.
+	1.	Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) das anzufügende Speicherkonto aus.
+	1.	Wählen Sie im Abschnitt **Verwalten** des Bereichs **Einstellungen** die Schaltfläche **Schlüssel** aus.
 	1.	Kopieren Sie die Werte für **Speicherkontoname** und **Primärer Zugriffsschlüssel**.
 
 		![][2]
@@ -182,4 +182,4 @@ Informieren Sie sich in den Artikeln unter [Einführung in Microsoft Azure Stora
 [19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
 [20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

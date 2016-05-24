@@ -21,7 +21,7 @@
 
 Dieses Thema enthält Informationen zum Einfügen verschiedener Typen von Werbeeinblendungen auf Clientseite.
 
-Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Livestreaming-Videos finden Sie unter [Standards für unterstützte Untertitel und für Werbeeinblendungen](media-services-manage-channels-overview.md#cc_and_ads).
+Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Livestreaming-Videos finden Sie unter [Standards für unterstützte Untertitel und für Werbeeinblendungen](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
 >[AZURE.NOTE] Azure Media Player unterstützt derzeit keine Werbeeinblendungen.
 
@@ -813,4 +813,4 @@ Das folgende Beispiel zeigt, wie eine Mid-Roll-Overlay-Werbeeinblendung geplant 
 
 [Entwickeln von Videoplayeranwendungen](media-services-develop-video-players.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

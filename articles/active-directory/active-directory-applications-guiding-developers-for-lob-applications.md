@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
-# Azure AD und Anwendungen: Leitfaden für Entwickler
-
-## Übersicht
+# Azure AD und Anwendungen: Entwickeln von Branchen-Apps
 
 Dieses Handbuch bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich speziell an globale Administratoren von Active Directory/Office 365.
+
+## Übersicht
 
 Das Erstellen von Anwendungen mit Azure AD ermöglicht Benutzern der betreffenden Organisation das einmalige Anmelden mit Office 365. Die Platzierung der Anwendung in Azure AD bietet Ihnen Kontrolle über die für die Anwendung festgelegte Authentifizierungsrichtlinie. Weitere Informationen zu bedingtem Zugriff und zum Schutz von Apps mit Multi-Factor Authentication (MFA) finden Sie in folgendem Dokument: [Konfigurieren von Zugriffsregeln](active-directory-conditional-access-azuread-connected-apps.md).
 
@@ -32,12 +32,12 @@ Durch das Registrieren einer Anwendung können alle Benutzer folgende Aktionen a
 
 - Eine Identität für ihre Anwendung erhalten, die von Azure AD erkannt wird
 - Ein oder mehrere Kennwörter/Schlüssel erhalten, mit denen die Anwendung sich gegenüber AD authentifizieren kann
-- Die Anwendung im Azure-Portal mit einem Namen, Logo usw. kennzeichnen
-- Die Azure AD-Autorisierungsfunktionen für ihre Anwendung nutzen
-  - Rollenbasierte Zugriffssteuerung (Role based Access Control, RBAC) von Anwendungen
+- Die Anwendung im Azure-Portal mit einem benutzerdefinierten Namen, Logo usw. kennzeichnen
+- Die Azure AD-Autorisierungsfunktionen für ihre Anwendung nutzen, einschließlich:
+  - Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
   - Azure Active Directory als oAuth-Autorisierungsserver (Absichern einer von der Anwendung offengelegten API)
 
-- Legen Sie die erforderlichen Berechtigungen für das ordnungsgemäße Funktionieren der Anwendung fest. Hierzu gehören folgende Berechtigungen:
+- Legen Sie die erforderlichen Berechtigungen für das ordnungsgemäße Funktionieren der Anwendung fest, einschließlich:
 	  - App-Berechtigungen (nur für globale Administratoren). Beispiel:
 	    - Rollenmitgliedschaft in einer anderen Azure AD-Anwendung oder Rollenmitgliedschaft in Bezug auf eine Azure-Ressource, -Ressourcengruppe oder ein Azure-Abonnement
 	  - Delegierte Berechtigungen (jeder Benutzer) Beispiel:
@@ -55,9 +55,7 @@ Folgende Schritte sind für globale Administratoren erforderlich, um Entwickler 
 
 ## Konfigurieren von Zugriffsregeln
 
-Wie bereits erwähnt finden Sie im folgenden Artikel weitere Informationen zum Konfigurieren von Zugriffsregeln für jede Anwendung.
-
-[Konfigurieren von Zugriffsregeln](active-directory-conditional-access-azuread-connected-apps.md).
+Konfigurieren Sie anwendungsspezifische Zugriffsregeln für Ihre SaaS-Apps. Dazu kann das Erfordern von MFA oder das Gewähren des Zugriffs ausschließlich für Benutzer in vertrauenswürdigen Netzwerken gehören. Weitere Informationen dazu finden Sie im Dokument [Konfigurieren von Zugriffsregeln](active-directory-conditional-access-azuread-connected-apps.md).
 
 ## Konfigurieren der Anwendung für das Erfordern von Benutzerrechten und Zuweisen von Benutzern
 
@@ -71,14 +69,17 @@ Abonnenten von Azure AD Premium oder Enterprise Mobility Suite (EMS) empfehlen 
 
 ## Unterdrücken der Benutzerzustimmung
 
-Standardmäßig muss der Benutzer seine Zustimmung zu der für die Anmeldung erforderlichen Berechtigung geben. Die Oberfläche für die Benutzerzustimmung kann Benutzern durch die Abfrage einer Zustimmung zu Berechtigungen einen negativen Eindruck vermitteln, sofern sie mit einer solchen Entscheidung nicht vertraut sind.
+Standardmäßig muss jeder Benutzer der Anmeldung zustimmen. Die Oberfläche für die Benutzerzustimmung kann Benutzern durch die Abfrage einer Zustimmung zu Berechtigungen einen negativen Eindruck vermitteln, sofern sie mit einer solchen Entscheidung nicht vertraut sind.
 
-Für vertrauenswürdige Anwendungen ist es möglich, dass Administratoren der Anwendung im Namen aller Benutzer der Organisation zustimmen.
+Für Anwendungen, die Sie als vertrauenswürdig einstufen, können Sie die Benutzererfahrung durch Zustimmung der Anwendung im Auftrag Ihres Unternehmens vereinfachen.
 
 Weitere Informationen über die Benutzerzustimmung und die Oberfläche der Benutzerzustimmung in Azure finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md).
 
 ##Verwandte Artikel
 
+- [Ermöglichen des sicheren Remotezugriffs auf lokale Anwendungen mit dem Azure AD-Anwendungsproxy](active-directory-application-proxy-get-started.md)
+- [Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps](active-directory-conditional-access-azuread-connected-apps.md)
+- [Verwalten des Zugriffs auf Apps mit Azure AD](active-directory-managing-access-to-apps.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

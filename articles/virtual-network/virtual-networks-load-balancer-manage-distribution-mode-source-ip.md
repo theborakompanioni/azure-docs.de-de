@@ -3,7 +3,7 @@
    description="Verwaltungsfunktionen für den Azure-Lastenausgleichs-Verteilungsmodus"
    services="virtual-network"
    documentationCenter=""
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    />
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="12/07/2015"
-   ms.author="telmos"
+   ms.author="jdial"
    />
 
 # Verwalten des virtuellen Netzwerks: Lastenausgleichs-Verteilungsmodus (Quell-IP-Affinität)
@@ -38,7 +38,7 @@ Die Quell-IP-Affinität kann für folgende Komponenten konfiguriert werden:
 
 ## Szenarios
 1. Remotedesktop-Gatewaycluster mit Verwendung eines einzelnen Cloud-Diensts
-2. Hochladen von Mediendaten (z. B. UDP für Daten, TCP für Steuerung)
+2. Hochladen von Mediendaten (z. B. UDP für Daten, TCP für Steuerung)
   * Client initiiert eine TCP-Sitzung mit einer über Azure gehosteten öffentlichen IP-Adresse mit Lastenausgleich
   * Clientanforderung wird über den Lastenausgleich an einen DIP Client geleitet; dieser Kanal bleibt aktiv, um die Verbindungsintegrität zu überwachen
   * Client initiiert eine UDP-Sitzung mit einer über Azure gehosteten öffentlichen IP-Adresse mit Lastenausgleich
@@ -148,7 +148,7 @@ Entwickler können die Lastenausgleichsverteilung mithilfe der Dienstverwaltungs
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) oder "sourceIPProtocol" (3-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, d. h. 5-Tupel-Konfiguration).
+Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) oder "sourceIPProtocol" (3-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, d. h. 5-Tupel-Konfiguration).
 
 #### Antwort
 
@@ -160,4 +160,4 @@ Der Wert von "LoadBalancerDistribution" kann "sourceIP" (2-Tupel-Affinität) ode
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

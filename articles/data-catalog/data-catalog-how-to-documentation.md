@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Dokumentieren von Datenquellen | Microsoft Azure"
-   description="Anleitungsartikel, in dem die Dokumentation von Datenressourcen in Azure Data Catalog beschrieben wird"
-   services="data-catalog"
-   documentationCenter=""
-   authors="dvana"
-   manager="NA"
-   editor=""
-   tags=""/>
+	pageTitle="Dokumentieren von Datenquellen | Microsoft Azure"
+	description="Anleitungsartikel, in dem die Dokumentation von Datenressourcen in Azure Data Catalog beschrieben wird"
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="03/31/2016"
-   ms.author="derrickv"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="04/07/2016"
+	ms.author="spelluru"/>
 
 # Dokumentdatenquellen
 
@@ -48,4 +48,4 @@ In der Dokumentation können z. B. die Merkmale und der Wert eines Datenressourc
 
 Durch das Dokumentieren von Datenquellen mit **Azure Data Catalog** können Sie eine Textbeschreibung Ihrer Datenressourcen mit allen erforderlichen Details erstellen. Mithilfe von Links können auf Inhalte in einem vorhandenen Inhaltsrepository verweisen; so werden Ihre vorhandenen Dokumente und Datenressourcen zusammengefasst. Sobald Ihre Benutzer geeignete Datenressourcen ermitteln, steht ihnen ein vollständiger Dokumentationssatz zur Verfügung.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

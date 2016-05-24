@@ -14,7 +14,7 @@ description="Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer ers
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/04/2016" 
+	ms.date="04/15/2016" 
 	ms.author="rasquill"/>
 
 #Verwenden von SSH mit Windows in Azure
@@ -28,11 +28,11 @@ In diesem Thema wird beschrieben, wie Sie **ssh-rsa** und öffentliche und priva
 
 ## Erforderliche SSH- und Schlüsselerstellungsprogramme
 
-**SSH** &#8212; oder [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) &#8212; ist ein Protokoll für verschlüsselte Verbindungen, das die sichere Anmeldung über ungesicherte Verbindungen ermöglicht. Es ist das Standardprotokoll für die Verbindung mit virtuellen Linux-Computern, die in Azure gehostet werden, sofern Sie nicht andere Verbindungsmechanismen für Ihre virtuellen Linux-Computer konfigurieren haben. Windows-Benutzer können mit **ssh**-Clientimplementierung auch Verbindungen mit Linux-VMs in Azure herstellen und diese verwalten, Windows-Computer bieten i. d. R. aber standardmäßig keinen **ssh**-Client, sodass Sie einen auswählen müssen.
+**SSH** &#8212; oder [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) &#8212; ist ein Protokoll für verschlüsselte Verbindungen, das die sichere Anmeldung über ungesicherte Verbindungen ermöglicht. Es ist das Standardprotokoll für die Verbindung mit virtuellen Linux-Computern, die in Azure gehostet werden, sofern Sie nicht andere Verbindungsmechanismen für Ihre virtuellen Linux-Computer konfigurieren haben. Windows-Benutzer können mit **ssh**-Clientimplementierung auch Verbindungen mit Linux-VMs in Azure herstellen und diese verwalten, Windows-Computer bieten i. d. R. aber standardmäßig keinen **ssh**-Client, sodass Sie einen auswählen müssen.
 
 Folgende häufig verwendete Clients können Sie installieren:
 
-- [puTTY und puTTYgen]((http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+- [puTTY und puTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 - [MobaXterm](http://mobaxterm.mobatek.net/)
 - [Cygwin](https://cygwin.com/)
 - [Git für Windows](https://git-for-windows.github.io/) bietet schon im Lieferumfang die Umgebung und Tools
@@ -50,23 +50,16 @@ Im Folgenden sind die Dateitypen für die unterschiedlichen Bereitstellungsszena
 1. **SSH-RSA**-Schlüssel sind unabhängig vom Bereitstellungsmodell für alle Bereitstellungen mithilfe des [Azure-Portals](https://portal.azure.com) erforderlich.
 2. PEM-Dateien sind erforderlich, um VMs mithilfe des [klassischen Portals](https://manage.windowsazure.com) zu erstellen. PEM-Dateien werden auch in klassischen Bereitstellungen mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) unterstützt.
 
-> [AZURE.NOTE] Wenn Sie vorhaben, mit dem klassischen Bereitstellungsmodell bereitgestellte Dienste zu verwalten, können Sie auch eine **CER**-Datei erstellen. Dies erfordert jedoch weder die Verwendung von **ssh** noch das Herstellen einer Verbindung mit Linux-VMs und ist daher nicht Gegenstand dieses Artikels. Geben Sie zum Erstellen dieser Dateien unter Linux oder auf einem Mac Folgendes ein:
+> [AZURE.NOTE] Wenn Sie vorhaben, mit dem klassischen Bereitstellungsmodell bereitgestellte Dienste zu verwalten, können Sie auch eine **CER**-Datei erstellen. Dies erfordert jedoch weder die Verwendung von **ssh** noch das Herstellen einer Verbindung mit Linux-VMs und ist daher nicht Gegenstand dieses Artikels. Geben Sie zum Erstellen dieser Dateien unter Windows Folgendes ein: <br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer
 
 ## Abrufen von ssh-keygen und openssl unter Windows ##
 
 [Dieser Abschnitt](#What-SSH-and-key-creation-programs-do-you-need) oben listet verschiedene Dienstprogramme auf, die `ssh-keygen` und `openssl` für Windows enthalten. Nachstehend finden Sie einige Beispiele:
 
-### Verwenden von Msysgit ###
+###Verwenden von GitHub für Windows###
 
-1.	Laden Sie msysgit von folgendem Speicherort herunter, und installieren Sie es: [http://msysgit.github.com/](http://msysgit.github.com/)
-2.	Führen Sie `msys` aus dem installierten Verzeichnis aus (Beispiel: c:\\msysgit\\msys.exe).
-3.	Wechseln Sie zum Verzeichnis `bin`, indem Sie `cd bin` eingeben.
-
-
-### Verwenden von GitHub für Windows ###
-
-1.	Laden und installieren Sie GitHub für Windows von folgendem Speicherort: [http://windows.github.com/](http://windows.github.com/)
-2.	Führen Sie die Git-Shell aus: Startmenü > Alle Programme > GitHub, Inc
+1.	Laden und installieren Sie GitHub für Windows von folgendem Speicherort: [https://git-for-windows.github.io/](https://git-for-windows.github.io/)
+2.	Führen Sie Git Bash über „Startmenü > Alle Apps > GitHub“ aus.
 
 > [AZURE.NOTE] Beim Ausführen der obigen `openssl`-Befehle tritt möglicherweise der folgende Fehler auf:
 
@@ -98,17 +91,35 @@ Die einfachste Lösung ist, die Umgebungsvariable `OPENSSL_CONF` festzulegen. De
 1.	Befolgen Sie eine der obigen Anweisungen, um `openssl.exe` auszuführen.
 2.	Geben Sie den folgenden Befehl ein:
 
-		# openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
-
+  ```
+  openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
+  ```
 3.	Ihr Bildschirm sollte nun folgendermaßen aussehen:
 
-	![linuxwelcomegit](./media/virtual-machines-linux-ssh-from-linux/linuxwelcomegit.png)
+  ```
+  $ openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
+  Generating a 2048 bit RSA private key
+  .......................................+++
+  .......................+++
+  writing new private key to 'myPrivateKey.key'
+  -----
+  You are about to be asked to enter information that will be incorporated
+  into your certificate request.
+  What you are about to enter is what is called a Distinguished Name or a DN.
+  There are quite a few fields but you can leave some blank
+  For some fields there will be a default value,
+  If you enter '.', the field will be left blank.
+  -----
+  Country Name (2 letter code) [AU]:
+  ```
 
 4.	Beantworten Sie die Fragen, die Ihnen gestellt werden.
 5.	Es wären zwei Dateien erstellt worden: `myPrivateKey.key` und `myCert.pem`.
 6.	Wenn Sie die API direkt ohne das Verwaltungsportal verwenden möchten, konvertieren Sie die Datei `myCert.pem` in `myCert.cer` (DER-codiertes X509-Zertifikat). Verwenden Sie dafür den folgenden Befehl:
 
-		# openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
+  ```
+  openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
+  ```
 
 ## Erstellen eines PPK für Putty ##
 
@@ -155,4 +166,4 @@ Die einfachste Lösung ist, die Umgebungsvariable `OPENSSL_CONF` festzulegen. De
 5.	Klicken Sie auf **Öffnen**, um die Verbindung mit Ihrem virtuellen Computer herzustellen.
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

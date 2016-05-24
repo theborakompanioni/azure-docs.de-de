@@ -23,7 +23,7 @@
 
 ## Übersicht
 
-Um digitale Videos über das Internet zu übermitteln, müssen Sie die Medien komprimieren. Digitale Videodateien sind sehr umfangreich und möglicherweise zu groß, um sie über das Internet zu übermitteln oder auf den Geräten Ihrer Kunden ordnungsgemäß wiederzugeben. Bei der Codierung werden Video- und Audiodaten komprimiert, damit Ihre Kunden Ihre Medien anzeigen können. Nach der Codierung eines Videos kann dieses in verschiedenen Dateicontainern abgelegt werden. Der Vorgang des Ablegens codierter Medien in einem Container wird als Paketerstellung bezeichnet. Sie können beispielsweise eine MP4-Datei mithilfe von Azure Media Packager in Smooth Streaming- oder HLS-Inhalt konvertieren. Weitere Informationen finden Sie unter [Encoding versus Packaging](http://blog-ndrouin.azurewebsites.net/streaming-media-terminology-explained/) (in englischer Sprache).
+Um digitale Videos über das Internet zu übermitteln, müssen Sie die Medien komprimieren. Digitale Videodateien sind sehr umfangreich und möglicherweise zu groß, um sie über das Internet zu übermitteln oder auf den Geräten Ihrer Kunden ordnungsgemäß wiederzugeben. Bei der Codierung werden Video- und Audiodaten komprimiert, damit Ihre Kunden Ihre Medien anzeigen können. Nach der Codierung eines Videos kann dieses in verschiedenen Dateicontainern abgelegt werden. Der Vorgang des Ablegens codierter Medien in einem Container wird als Paketerstellung bezeichnet. Sie können beispielsweise eine MP4-Datei mithilfe von Azure Media Packager in Smooth Streaming- oder HLS-Inhalt konvertieren.
 
 Media Services unterstützt die dynamische und die statische Paketerstellung. Bei der statischen Paketerstellung müssen Sie eine Kopie Ihrer Inhalte in allen von Ihren Kunden benötigten Formaten erstellen. Bei der dynamischen Paketerstellung müssen Sie lediglich ein Asset erstellen, das einen Satz von MP4- oder Smooth Streaming-Dateien mit adaptiver Bitrate enthält. Dann wird durch den Server für das On-Demand-Streaming auf Basis des in der Manifest- oder Fragmentanforderung angegebenen Formats sichergestellt, dass Benutzer den Datenstrom im ausgewählten Protokoll erhalten. So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht.
 
@@ -1447,4 +1447,4 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio
@@ -30,7 +30,7 @@ Befolgen Sie die folgenden Verfahren, um diese Dienste einzurichten und Ihre Anw
 
 ## Erstellen eines Clouddiensts
 
-Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen Clouddienst erstellen, in dem Ihre Rollen in der Azure-Umgebung ausgeführt werden. Sie können einen Clouddienst im Azure-Verwaltungsportal erstellen, wie im Abschnitt **So erstellen Sie einen Clouddienst über das Azure-Verwaltungsportal** weiter unten in diesem Artikel beschrieben. Sie können auch mit dem Veröffentlichungs-Assistenten einen Clouddienst in Visual Studio erstellen.
+Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen Clouddienst erstellen, in dem Ihre Rollen in der Azure-Umgebung ausgeführt werden. Sie können einen Clouddienst im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) erstellen, wie im Abschnitt **So erstellen Sie einen Clouddienst über das klassische Azure-Portal** weiter unten in diesem Artikel beschrieben. Sie können auch mit dem Veröffentlichungs-Assistenten einen Clouddienst in Visual Studio erstellen.
 
 ### So erstellen Sie einen Clouddienst in Visual Studio
 
@@ -48,9 +48,9 @@ Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen C
 
 1. Geben Sie den Namen Ihres Clouddiensts ein. Der Name bildet einen Teil der URL des Diensts und muss daher eindeutig sein. Groß-/Kleinschreibung wird beim Namen nicht unterschieden.
 
-### So erstellen Sie einen Clouddienst über das Azure-Verwaltungsportal
+### So erstellen Sie einen Clouddienst über das klassische Azure-Portal
 
-1. Melden Sie sich auf der Microsoft-Website beim [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkId=253103) an.
+1. Melden Sie sich auf der Microsoft-Website beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) an.
 
 1. (Optional) Um eine Liste der Clouddienste anzuzeigen, die Sie bereits erstellt haben, klicken Sie links auf der Seite auf "Clouddienste".
 
@@ -66,7 +66,7 @@ Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen C
 
 ## Erstellen eines Speicherkontos
 
-Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendienste. Sie können ein Speicherkonto in Visual Studio oder im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkId=253103) erstellen.
+Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendienste. Sie können ein Speicherkonto in Visual Studio oder im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) erstellen.
 
 ### So erstellen ein Speicherkonto mithilfe von Visual Studio
 
@@ -82,9 +82,9 @@ Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendien
 
 1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. Das neue Speicherkonto wird im **Server-Explorer** in der Liste **Speicher** angezeigt.
 
-### So erstellen Sie ein Speicherkonto im Azure-Verwaltungsportal
+### So erstellen Sie ein Speicherkonto im klassischen Azure-Portal
 
-1. Melden Sie sich auf der Microsoft-Website beim [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkId=253103) an.
+1. Melden Sie sich auf der Microsoft-Website beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) an.
 
 1. (Optional) Um Ihre Speicherkonten anzuzeigen, klicken Sie links auf der Seite auf den Link **Speicher**.
 
@@ -124,15 +124,15 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
 
 1. Wählen Sie in der Liste **Abonnement** Ihr Abonnement aus. Wenn die Liste der Abonnements nicht das gewünschte Abonnement enthält, klicken Sie auf den Link **Veröffentlichungseinstellungen herunterladen**.
 
-1. Wählen Sie in der Liste **Kontoname** den Namen Ihres Speicherkontos aus. Azure Tools erhält Anmeldeinformationen für das Speicherkonto automatisch mithilfe der PUBLISHSETTINGS-Datei. Wenn Sie die Anmeldeinformationen für das Speicherkonto manuell angeben möchten, wählen Sie die Option **Manuell eingegebene Anmeldeinformationen** aus und fahren mit diesen Schritten fort. Sie erhalten Ihren Speicherkontonamen und Primärschlüssel über das [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/p/?LinkID=213885). Wenn Sie die Einstellungen für das Speicherkonto nicht manuell angeben möchten, klicken Sie auf **OK**, um das Dialogfeld zu schließen.
+1. Wählen Sie in der Liste **Kontoname** den Namen Ihres Speicherkontos aus. Azure Tools erhält Anmeldeinformationen für das Speicherkonto automatisch mithilfe der PUBLISHSETTINGS-Datei. Wenn Sie die Anmeldeinformationen für das Speicherkonto manuell angeben möchten, wählen Sie die Option **Manuell eingegebene Anmeldeinformationen** aus und fahren mit diesen Schritten fort. Sie erhalten Ihren Speicherkontonamen und Primärschlüssel über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885). Wenn Sie die Einstellungen für das Speicherkonto nicht manuell angeben möchten, klicken Sie auf **OK**, um das Dialogfeld zu schließen.
 
 1. Klicken Sie auf den Link **Anmeldeinformationen für Speicherkonto eingeben**.
 
 1. Geben Sie in das Feld **Kontoname** den Namen Ihres Azure-Speicherkontos ein.
 
-    >[AZURE.NOTE] Melden Sie sich am Verwaltungsportal an, und klicken Sie dann auf die Schaltfläche **Speicher**. Im Portal wird eine Liste der Speicherkonten angezeigt. Wenn Sie ein Konto auswählen, wird eine entsprechende Seite geöffnet. Sie können den Namen des Speicherkontos von dieser Seite kopieren. Wenn Sie eine frühere Version des Verwaltungsportals verwenden, wird der Name Ihres Speicherkontos in der Ansicht **Speicherkonten** des Verwaltungsportals angezeigt. Um diesen Namen zu kopieren, markieren Sie ihn im Fenster **Eigenschaften** dieser Ansicht und drücken dann STRG+C. Um den Namen in Visual Studio einzufügen, wählen Sie das Textfeld **Kontoname** aus und drücken dann STRG+V.
+    >[AZURE.NOTE] Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) an, und klicken Sie dann auf die Schaltfläche **Speicher**. Im Portal wird eine Liste der Speicherkonten angezeigt. Wenn Sie ein Konto auswählen, wird eine entsprechende Seite geöffnet. Sie können den Namen des Speicherkontos von dieser Seite kopieren. Wenn Sie eine frühere Version des klassischen Portals verwenden, wird der Name Ihres Speicherkontos in der Ansicht **Speicherkonten** angezeigt. Um diesen Namen zu kopieren, markieren Sie ihn im Fenster **Eigenschaften** dieser Ansicht und drücken dann STRG+C. Um den Namen in Visual Studio einzufügen, wählen Sie das Textfeld **Kontoname** aus und drücken dann STRG+V.
 
-1. Geben Sie in das Feld **Kontoschlüssel** den Primärschlüssel ein, oder kopieren Sie ihn aus dem [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885), und fügen Sie ihn dann ein. So kopieren Sie diesen Schlüssel aus dem Verwaltungsportal
+1. Geben Sie im Feld **Kontoschlüssel** den Primärschlüssel ein, oder kopieren Sie ihn aus dem [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885), und fügen Sie ihn dann ein. So kopieren Sie den Schlüssel
 
     1. Klicken Sie unten auf der Seite für das entsprechende Speicherkonto auf die Schaltfläche **Schlüssel verwalten**.
 
@@ -153,4 +153,4 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
 
 Weitere Informationen zum Veröffentlichen von Anwendungen in Azure aus Visual Studio finden Sie unter [Veröffentlichen eines Clouddiensts mit den Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

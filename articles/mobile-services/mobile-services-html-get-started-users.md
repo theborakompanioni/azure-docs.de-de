@@ -103,11 +103,13 @@ Anschließend werden Sie die App aktualisieren, sodass diese sich authentifizier
 
     Diese Funktionen erledigen den Authentifizierungsprozess. Der Benutzer wird mithilfe eines Facebook-Logins authentifiziert. Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie den an die **login**-Methode übergebenen Wert auf einen der folgenden Werte: *microsoftaccount*, *facebook*, *twitter*, *google* oder *aad*.
 
-	>[AZURE.IMPORTANT]In einer PhoneGap-App müssen Sie dem Projekt auch die folgenden Plug-Ins hinzufügen:<ul><li><code>phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li> <li><code>phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
+	>[AZURE.IMPORTANT]In einer PhoneGap-App müssen Sie dem Projekt auch die folgenden Plug-Ins hinzufügen:
+	><ul><li><code>PhoneGap-Plug-In hinzufügen https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li>
+	> <li><code>PhoneGap-Plug-In hinzufügen https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
 
 9. Wechseln Sie zum Browser, in dem Ihre App ausgeführt wird, und aktualisieren Sie die Seite.
 
-	   Wenn Sie sich erfolgreich angemeldet haben, sollte die App fehlerfrei ausgeführt werden, und Sie sollten Mobile Services abfragen und Daten aktualisieren können.
+	Wenn Sie sich erfolgreich angemeldet haben, sollte die App fehlerfrei ausgeführt werden, und Sie sollten Mobile Services abfragen und Daten aktualisieren können.
 
 	>[AZURE.NOTE]Falls Sie Internet Explorer verwenden, kann es sein, dass Sie nach der Anmeldung den folgenden Fehler erhalten: <code>Fensteröffner nicht erreichbar. Möglicherweise befindet sich dieser in einer anderen Internet Explorer-Zone</code>. Dies liegt daran, dass das Popup in einer anderen Sicherheitszone (Internet) als Localhost (Intranet) ausgeführt wird. Dies betrifft nur Apps während der Entwicklung mit Localhost. Um dies zu vermeiden, öffnen Sie die Registerkarte **Sicherheit** in den **Internet-Optionen**, klicken Sie auf **Lokales Intranet**, anschließend auf **Sites** und deaktivieren Sie **Intranetnetzwerk automatisch ermitteln**. Vergessen Sie nicht, diese Einstellung nach Abschluss Ihrer Tests wiederherzustellen.
 
@@ -135,4 +137,4 @@ Im nächsten Lernprogramm [Autorisieren von Benutzern mit Skripts] werden Sie de
 [Mobile Services HTML/JavaScript How-to Conceptual Reference]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Sicherheitskonfiguration für die aktive Georeplikation"
+	pageTitle="Verwalten der Sicherheit nach der Notfallwiederherstellung"
 	description="In diesem Thema werden Sicherheitsaspekte für die Verwaltung von Szenarien der aktiven Georeplikation für die SQL-Datenbank erläutert."
 	services="sql-database"
 	documentationCenter="na"
@@ -14,36 +14,39 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/27/2016"
+	ms.date="05/10/2016"
 	ms.author="carlrab" />
 
-# Sicherheitskonfiguration für die Georeplikation
+# Verwalten der Sicherheit nach der Notfallwiederherstellung
 
 >[AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar.
 
-## Übersicht über die Authentifizierungsanforderungen für die aktive Georeplikation
-In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Weitere Informationen zur Verwendung der Georeplikation finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank nach einem Ausfall](sql-database-disaster-recovery.md).
+## Übersicht über die Authentifizierungsanforderungen für die Notfallwiederherstellung
 
-## Verwenden der aktiven Georeplikation mit eigenständigen Benutzern
-Mit der [V12-Version von Azure SQL-Datenbank](sql-database-v12-whats-new.md) unterstützt SQL-Datenbank jetzt eigenständige Benutzer. Im Gegensatz zu herkömmlichen Benutzern, die Anmeldungen in der „master“-Datenbank zugeordnet werden müssen, wird ein eigenständiger Benutzer vollständig von der Datenbank selbst verwaltet. Dies hat zwei Vorteile. Beim Georeplikationsszenario können sich die Benutzer weiter ohne zusätzliche Konfiguration mit der sekundären Datenbank verbinden, da die Datenbank die Benutzer verwaltet. Es gibt bei dieser Konfiguration auch vom Standpunkt der Anmeldung potenzielle Skalierbarkeits- und Leistungsvorteile. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
+In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der Geowiederherstellung der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Wiederherstellen einer Azure SQL-Datenbank oder Failover zu einer sekundären Datenbank).
 
-Wenn mehrere Ihrer Datenbanken dieselben Anmeldedaten verwenden, kann sich die Verwaltung der Anmeldeinformationen anhand von eigenständigen Benutzern in mehreren Datenbanken nachteilig auswirken. Bei einer Kennwortänderung kann das Kennwort für den Anmeldenamen beispielsweise nicht einmalig auf Serverebene geändert werden. Stattdessen muss die Änderung für den eigenständigen Benutzer separat in jeder Datenbank erfolgen. Wenn Sie daher mehrere Datenbanken mit demselben Benutzernamen und Kennwort verwenden, wird von der Verwendung eigenständiger Benutzer abgeraten.
+## Notfallwiederherstellung mit eigenständigen Benutzern
 
-## Verwenden von Anmeldenamen und Benutzern mit der aktiven Georeplikation
-Wenn Sie mit Anmeldungen und Benutzern (nicht mit eigenständigen Benutzern) arbeiten, müssen zusätzliche Schritte durchgeführt werden, um sicherzustellen, dass dieselben Anmeldenamen auf dem sekundären Datenbankserver vorhanden sind. In den folgenden Abschnitten werden die entsprechenden Schritte und zusätzliche Aspekte behandelt.
+Mit der [V12-Version von Azure SQL-Datenbank](sql-database-v12-whats-new.md) unterstützt SQL-Datenbank jetzt eigenständige Benutzer. Im Gegensatz zu herkömmlichen Benutzern, die Anmeldungen in der „master“-Datenbank zugeordnet werden müssen, wird ein eigenständiger Benutzer vollständig von der Datenbank selbst verwaltet. Dies hat zwei Vorteile. Beim Notfallwiederherstellungs-Szenario können sich die Benutzer weiter ohne zusätzliche Konfiguration mit der neuen primären Datenbank bzw. mit der Geowiederherstellung wiederhergestellten Datenbank verbinden, da die Datenbank die Benutzer verwaltet. Es gibt bei dieser Konfiguration auch vom Standpunkt der Anmeldung potenzielle Skalierbarkeits- und Leistungsvorteile. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
-### Einrichten des Benutzerzugriffs auf eine sekundäre Datenbank
-Damit die sekundäre Datenbank nach einem Failover als schreibgeschützte sekundäre Datenbank oder einsetzbare primäre Datenbank genutzt werden kann, muss die sekundäre Datenbank über die entsprechende Sicherheitskonfiguration verfügen.
+Der Hauptaspekt des Kompromisses ist, dass die Verwaltung des Notfallwiederherstellungs-Prozesses im Verhältnis eine größere Herausforderung darstellt. Wenn mehrere Ihrer Datenbanken dieselben Anmeldedaten verwenden, kann sich die Verwaltung der Anmeldeinformationen anhand von eigenständigen Benutzern in mehreren Datenbanken nachteilig auswirken. Die Kennwortrotationsrichtlinie erfordert beispielsweise, dass Änderungen konsistent in mehreren Datenbanken durchgeführt werden, anstatt das Kennwort für die Anmeldung einmal in der Masterdatenbank zu ändern. Wenn Sie mehrere Datenbanken mit dem gleichen Benutzernamen und Kennwort verwenden, sollten Sie darum keine eigenständigen Benutzer verwenden.
 
-Der Serveradministrator oder Benutzer mit entsprechenden Berechtigungen können die in diesem Thema beschriebenen Konfigurationsschritte ausführen. Die spezifischen Berechtigungen für die einzelnen Schritte werden weiter unten in diesem Thema beschrieben.
+## Konfigurieren von Anmeldungen und Benutzern
 
-Die Vorbereitung des Benutzerzugriffs auf eine sekundäre Onlinedatenbank für die aktive Georeplikation kann jederzeit erfolgen. Dies umfasst die drei folgenden Schritte:
+Wenn Sie mit Anmeldungen und Benutzern (nicht mit eigenständigen Benutzern) arbeiten, müssen Sie zusätzliche Schritte durchführen, um sicherzustellen, dass die gleichen Anmeldenamen in der Masterdatenbank vorhanden sind. In den folgenden Abschnitten werden die entsprechenden Schritte und zusätzliche Aspekte behandelt.
 
-1. Bestimmen der Anmeldungen mit Zugriff auf die primäre Datenbank
-2. Suchen der SID für diese Anmeldungen auf dem Quellserver
-3. Erstellen Sie die Anmeldenamen auf dem Zielserver mit der entsprechenden SID vom Quellserver.
+### Einrichten des Benutzerzugriffs auf eine sekundäre bzw. wiederhergestellte Datenbank
 
->[AZURE.NOTE] Wenn die Anmeldenamen auf dem Zielserver den Benutzern in der sekundären Datenbank nicht ordnungsgemäß zugeordnet sind, ist der schreibgeschützte Zugriff auf die Datenbank oder der Zugriff auf die neue primäre Datenbank nach dem Failover nur auf den Serveradministrator beschränkt.
+Damit die sekundäre Datenbank als schreibgeschützte sekundäre Datenbank verwendet werden kann, und um den ordnungsgemäßen Zugriff auf die neue primäre Datenbank bzw. mit der Geowiederherstellung wiederhergestellte Datenbank sicherzustellen, muss für die Masterdatenbank des Zielservers vor der Wiederherstellung die geeignete Sicherheitskonfiguration durchgeführt werden.
+
+Die spezifischen Berechtigungen für die einzelnen Schritte werden weiter unten in diesem Thema beschrieben.
+
+Die Vorbereitung des Benutzerzugriffs auf eine mit Georeplikation erzeugte sekundäre Datenbank sollte im Rahmen der Konfiguration der Georeplikation erfolgen. Die Vorbereitung des Benutzerzugriffs auf mit der Geowiederherstellung wiederhergestellte Datenbanken sollte zu einem beliebigen Zeitpunkt erfolgen, wenn der ursprüngliche Server online ist (z.B. als Teil des DR-Drills).
+
+>[AZURE.NOTE] Wenn Sie das Failover zu einem Server oder die Geowiederherstellung auf einem Server ausführen, für den die Anmeldenamen nicht ordnungsgemäß konfiguriert sind, beschränkt sich der Zugriff auf das Serveradministratorkonto.
+
+Das Einrichten von Anmeldenamen auf dem Zielserver umfasst die unten beschriebenen drei Schritte:
+
 
 #### 1\. Bestimmen der Anmeldungen mit Zugriff auf die primäre Datenbank:
 Der erste Schritt des Prozesses ist das Bestimmen, welche Anmeldungen auf dem Zielserver dupliziert werden müssen. Dies geschieht mit zwei SELECT-Anweisungen, die auf die logische „master“-Datenbank auf dem Quellserver und auf die primäre Datenbank selbst angewendet werden.
@@ -85,8 +88,9 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 >DISABLE ändert nicht das Kennwort, sodass Sie sie bei Bedarf stets aktivieren können.
 
 ## Nächste Schritte
-Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
+- Weitere Informationen zum Verwalten von Datenbankzugriff und Anmeldungen finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit](sql-database-manage-logins.md).
+- Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
 ## Zusätzliche Ressourcen
 
@@ -96,4 +100,4 @@ Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georep
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

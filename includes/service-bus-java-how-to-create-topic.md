@@ -12,9 +12,9 @@ Mit Service Bus-Themen und -Abonnements können Sie sehr viele Nachrichten an se
 
 ## Erstellen eines Dienstnamespaces
 
-Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Dienstnamespace ist eine Bereichseinheit zur Adressierung von Servicebus-Ressourcen innerhalb Ihrer Anwendung.
+Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
 
-So erstellen Sie einen Dienstnamespace:
+So erstellen Sie einen Namespace
 
 1.  Melden Sie sich beim [klassischen Azure-Portal][] an.
 
@@ -56,5 +56,3 @@ Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung eines T
 
   [6]: ./media/service-bus-java-how-to-create-topic/getting-started-multi-tier-27.png
   [34]: ./media/service-bus-java-how-to-create-topic/VSProperties.png
-
-<!---HONumber=AcomDC_1203_2015-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwenden des Blob-Speichers mit PHP | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Azure-Blob-Dienst nutzen können, um Blobs hoch- und herunterzuladen, aufzulisten und zu löschen. Die Codebeispiele sind in PHP geschrieben."
+	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	documentationCenter="php"
 	services="storage"
 	authors="rmcmurray"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="02/17/2016"
+    ms.date="04/29/2016"
 	ms.author="robmcm"/>
 
 # Verwenden des Blob-Speichers mit PHP
@@ -306,4 +306,4 @@ Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/ph
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

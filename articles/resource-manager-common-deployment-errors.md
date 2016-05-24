@@ -6,7 +6,7 @@
    tags=""
    authors="tfitzmac"
    manager="timlt"
-   editor=""/>
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/24/2016"
+   ms.date="04/19/2016"
    ms.author="tomfitz"/>
 
 # Beheben von häufigen Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager
@@ -22,6 +22,16 @@
 In diesem Thema wird beschrieben, wie Sie einige der häufigsten Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Informationen zur Problembehandlung für eine Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen](resource-manager-troubleshoot-deployments-portal.md).
 
 Einige Fehler lassen sich vermeiden, indem Sie Ihre Vorlage und die Parameter vor der Bereitstellung überprüfen. Beispiele zur Überprüfung der Vorlage finden Sie unter [Bereitstellen einer Ressource mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+
+## Ungültige Vorlage oder Ressource
+
+Wenn Sie eine Fehlermeldung erhalten, dass die Vorlage oder eine Eigenschaft für eine Ressource ungültig ist, fehlt in Ihrer Vorlage möglicherweise ein Zeichen. Dieser Fehler passiert schnell, wenn Sie Vorlagenausdrücke verwenden, da der Ausdruck in Anführungszeichen steht, sodass die Überprüfung durch JSON erfolgt, der Editor den Fehler aber möglicherweise nicht erkennt. Beispielsweise enthält die folgenden Namenszuweisung für ein Speicherkonto Klammern, drei Funktionen, drei Sätze mit Klammern, einen Satz mit einfachen Anführungszeichen und eine Eigenschaft:
+
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+
+Wenn Sie nicht die entsprechende Syntax bereitstellen, wird die Vorlage einen Wert erstellen, der sich von Ihrer Absicht stark unterscheidet.
+
+Je nachdem, wo sich das fehlende Zeichen in Ihrer Vorlage befindet, erhalten Sie eine Fehler, dass die Vorlage oder eine Ressource ungültig ist. Der Fehler kann auch darauf angeben, dass der Bereitstellungsprozess den Vorlagensprachausdruck nicht verarbeiten konnte. Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax.
 
 ## Der Ressourcenname ist bereits vorhanden
 
@@ -100,7 +110,7 @@ Informationen zur REST-API finden Sie unter [Abrufen von Informationen zu einem 
 
 ## Das Kontingent wurde überschritten
 
-Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](./azure-subscription-service-limits.md).
+Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](azure-subscription-service-limits.md).
 
 Um die Kontingente Ihres eigenen Abonnements für Kerne zu untersuchen, verwenden Sie den `azure vm list-usage`-Befehl in der Azure-CLI. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
 
@@ -139,7 +149,7 @@ Ausgabe des Befehls:
 
 In diesen Fällen sollten Sie zum Portal navigieren und ein Supportproblem einreichen, um Ihr Kontingent für die Region, in der Sie diese bereitstellen möchten, zu erhöhen.
 
-> [AZURE.NOTE] Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
+> [AZURE.NOTE] Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
 
 
 ## Fehler bei der Autorisierung
@@ -148,7 +158,7 @@ Möglicherweise wird während der Bereitstellung ein Fehler angezeigt, da das Ko
 
 Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
 
-Neben rollenbasierter Zugriffskontrolle können Ihre Bereitstellungsaktionen von Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Einzelheiten zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](./resource-manager-policy.md).
+Neben rollenbasierter Zugriffskontrolle können Ihre Bereitstellungsaktionen von Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Einzelheiten zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
 ## Überprüfen der Ressourcenanbieterregistrierung
 
@@ -223,7 +233,7 @@ Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatu
 
 ## Nächste Schritte
 
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](./resource-group-audit.md).
-- Weitere Informationen zu Aktionen zum Bestimmen der Fehler während der Bereitstellung finden Sie unter [Problembehandlung von Ressourcengruppenbereitstellungen](./resource-manager-troubleshoot-deployments-portal.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
+- Weitere Informationen zu Aktionen zum Bestimmen der Fehler während der Bereitstellung finden Sie unter [Problembehandlung von Ressourcengruppenbereitstellungen](resource-manager-troubleshoot-deployments-portal.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0511_2016-->

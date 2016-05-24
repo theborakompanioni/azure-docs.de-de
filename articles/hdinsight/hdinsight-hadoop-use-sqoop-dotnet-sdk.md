@@ -35,119 +35,67 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. In diesem Abschnitt erstellen Sie eine C#-Konsolenanwendung zum Exportieren der hivesampletable in die SQL-Datenbanktabelle, die Sie zuvor in diesem Lernprogramm erstellt haben.
 
-
 **So übermitteln Sie einen Sqoop-Job**
 
 1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio.
 2. Führen Sie in der Paket-Manager-Konsole von Visual Studio den folgenden NuGet-Befehl aus, um das Paket zu importieren.
 
-		Install-Package Microsoft.Azure.Common.Authentication -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight.Job
         
 3. Verwenden Sie den folgenden Code in der Datei „Program.cs“:
 
-        using System;
         using System.Collections.Generic;
-        using System.Security;
-        using System.Threading;
-        using Microsoft.Azure;
-        using Microsoft.Azure.Common.Authentication;
-        using Microsoft.Azure.Common.Authentication.Factories;
-        using Microsoft.Azure.Common.Authentication.Models;
-        using Microsoft.Azure.Management.Resources;
-        using Microsoft.Azure.Management.HDInsight;
         using Microsoft.Azure.Management.HDInsight.Job;
         using Microsoft.Azure.Management.HDInsight.Job.Models;
         using Hyak.Common;
-
+        
         namespace SubmitHDInsightJobDotNet
         {
             class Program
             {
-                private static HDInsightManagementClient _hdiManagementClient;
                 private static HDInsightJobManagementClient _hdiJobManagementClient;
-
-                private static Guid SubscriptionId = new Guid("<Your Subscription ID>");
-                private const string ResourceGroupName = "<Your Resource Group Name>";
-
+        
                 private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
                 private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
                 private const string ExistingClusterUsername = "<Cluster Username>";
                 private const string ExistingClusterPassword = "<Cluster User Password>";
-
-                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
-                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
-                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
-
+        
                 static void Main(string[] args)
                 {
                     System.Console.WriteLine("The application is running ...");
-
-                    var tokenCreds = GetTokenCloudCredentials();
-                    var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-
-                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
-                    var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
-
-                    _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
-
+        
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
-
+        
                     SubmitSqoopJob();
-
+        
                     System.Console.WriteLine("Press ENTER to continue ...");
                     System.Console.ReadLine();
                 }
-
-                public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
-                {
-                    var authFactory = new AuthenticationFactory();
-
-                    var account = new AzureAccount { Type = AzureAccount.AccountType.User };
-
-                    if (username != null && password != null)
-                        account.Id = username;
-
-                    var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-
-                    var accessToken =
-                        authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
-                            .AccessToken;
-
-                    return new TokenCloudCredentials(accessToken);
-                }
-
-                public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(TokenCloudCredentials creds, Guid subId)
-                {
-                    return new TokenCloudCredentials(subId.ToString(), creds.Token);
-                }
-
-
+        
                 private static void SubmitSqoopJob()
                 {
                     var sqlDatabaseServerName = "<SQLDatabaseServerName>";
                     var sqlDatabaseLogin = "<SQLDatabaseLogin>";
                     var sqlDatabaseLoginPassword = "<SQLDatabaseLoginPassword>";
                     var sqlDatabaseDatabaseName = "<DatabaseName>";
-
+        
                     var tableName = "<TableName>";
                     var exportDir = "/tutorials/usesqoop/data";
-
+        
                     // Connection string for using Azure SQL Database.
                     // Comment if using SQL Server
                     var connectionString = "jdbc:sqlserver://" + sqlDatabaseServerName + ".database.windows.net;user=" + sqlDatabaseLogin + "@" + sqlDatabaseServerName + ";password=" + sqlDatabaseLoginPassword + ";database=" + sqlDatabaseDatabaseName;
                     // Connection string for using SQL Server.
                     // Uncomment if using SQL Server
                     //var connectionString = "jdbc:sqlserver://" + sqlDatabaseServerName + ";user=" + sqlDatabaseLogin + ";password=" + sqlDatabaseLoginPassword + ";database=" + sqlDatabaseDatabaseName;
-
+        
                     var parameters = new SqoopJobSubmissionParameters
                     {
-                        Files = new List<string>{"/user/oozie/share/lib/sqoop/sqljdbc41.jar"}, // This line is required for Linux-based cluster.
+                        Files = new List<string> { "/user/oozie/share/lib/sqoop/sqljdbc41.jar" }, // This line is required for Linux-based cluster.
                         Command = "export --connect " + connectionString + " --table " + tableName + "_mobile --export-dir " + exportDir + "_mobile --fields-terminated-by \\t -m 1"
                     };
-
+        
                     System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
                     var response = _hdiJobManagementClient.JobManagement.SubmitSqoopJob(parameters);
                     System.Console.WriteLine("Validating that the response is as expected...");
@@ -168,4 +116,4 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 - [Analysieren von Daten zu Flugverspätungen mit HDInsight](hdinsight-analyze-flight-delay-data.md): Verwenden von Hive zur Analyse von Daten zu Flugverspätungen und Verwenden von Sqoop zum Exportieren von Daten in die SQL-Datenbank.
 - [Hochladen von Daten in HDInsight](hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob-Speicher.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

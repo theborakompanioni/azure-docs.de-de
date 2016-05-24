@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/05/2016"
+   ms.date="04/22/2016"
    ms.author="larryfr"/>
 
 #Ausführen von Hive-Abfragen mit HDInsight Tools für Visual Studio
@@ -31,7 +31,13 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
 
 * Einen Azure HDInsight-Cluster (Hadoop in HDInsight), der auf Linux oder Windows basiert
 
-* Visual Studio 2012 [Update 4](http://www.microsoft.com/download/details.aspx?id=39305), Visual Studio 2013 [Update 3](http://go.microsoft.com/fwlink/?LinkId=390465) oder [Visual Studio Express 2013](http://www.microsoft.com/download/details.aspx?id=40769)
+* Visual Studio (eine der folgenden Versionen):
+
+    Visual Studio 2013 Community/Professional/Premium/Ultimate mit [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
+
+    Visual Studio 2015 (Community/Enterprise)
+
+- HDInsight Tools für Visual Studio. Informationen zum Installieren und Konfigurieren der Tools finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
 ##<a id="run"></a> Ausführen von Hive-Abfragen mit HDInsight Tools für Visual Studio
 
@@ -59,7 +65,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
     * **AUSWÄHLEN**: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Dadurch sollte der Wert **3** zurückgegeben werden, da dieser Wert in drei Zeilen enthalten ist.
     * **INPUT\_\_FILE\_\_NAME LIKE '%.log'**: teilt Hive mit, dass nur Daten aus Dateien mit der Erweiterung ".log" zurückgeben werden sollen. Dies schränkt die Suche auf die Datei "sample.log" ein, die die Daten enthält, und verhindert, dass Daten aus anderen Beispieldatendateien zurückgegeben werden, die nicht dem von uns definierten Schema entsprechen.
 
-3. Wählen Sie auf der Symbolleiste den **HDInsight-Cluster** aus, den Sie für diese Abfrage verwenden möchten, und wählen Sie dann **Übermitteln** aus, um die Anweisungen als Hive-Auftrag auszuführen. Die **Hive-Auftragszusammenfassung** wird mit Informationen zum aktiven Auftrag angezeigt. Verwenden Sie den Link **Aktualisieren**, um die Auftragsinformationen zu aktualisieren, bis der **Auftragsstatus** zu **Abgeschlossen** wechselt.
+3. Wählen Sie auf der Symbolleiste den **HDInsight-Cluster** aus, den Sie für diese Abfrage verwenden möchten, und wählen Sie dann **An WebHCat übermitteln** aus, um die Anweisungen als Hive-Auftrag mit WebHCat auszuführen. Wenn HiveServer2 in Ihrer Clusterversion verfügbar ist, können Sie den Auftrag auch über die Schaltfläche __ Über HiveServer2 ausführen__ übermitteln. Die **Hive-Auftragszusammenfassung** wird mit Informationen zum aktiven Auftrag angezeigt. Verwenden Sie den Link **Aktualisieren**, um die Auftragsinformationen zu aktualisieren, bis der **Auftragsstatus** zu **Abgeschlossen** wechselt.
 
 4. Verwenden Sie den Link **Auftragsausgabe**, um die Ausgabe dieses Auftrags anzuzeigen. Es sollte `[ERROR] 3` angezeigt werden, was dem Wert entspricht, der von der Anweisung AUSWÄHLEN zurückgegeben wurde.
 
@@ -79,7 +85,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
     * **ALS ORC GESPEICHERT**: Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
     * **ÜBERSCHREIBEN EINFÜGEN ... AUSWÄHLEN**: Wählt die Zeilen aus der Tabelle **log4jLogs** aus, die **[ERROR]** enthalten. Dann werden die Daten in die Tabelle **errorLogs** eingefügt.
 
-7. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie ** Auftragsstatus**, um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
+7. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie **Auftragsstatus**, um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
 
 8. Verwenden Sie den **Server-Explorer** und erweitern Sie **Azure** > **HDInsight** sowie Ihren HDInsight-Cluster > **Hive-Datenbanken** und **Standard**, um zu überprüfen, ob der Auftrag abgeschlossen und eine neue Tabelle erstellt wurde. Es sollten die beiden Tabellen **errorLogs** und **log4jLogs** angezeigt werden.
 
@@ -135,4 +141,4 @@ Weitere Informationen zu den HDInsight Tools für Visual Studio:
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

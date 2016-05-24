@@ -2,6 +2,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 
 **Ressource** | **Standardlimit** | **Maximales Limit**
 -------- | ------------- | -------------
+Data Factorys in einem Azure-Abonnement | 50 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 Pipelines innerhalb einer Data Factory | 100 | 2500
 Datasets innerhalb einer Data Factory | 500 | 5\.000
 Gleichzeitige Slices pro Dataset | 10 | 10
@@ -29,4 +30,4 @@ Timeoutwert für Wiederholungsversuche | 1 Sekunde | 1 Sekunde
 
 Der Azure-Ressourcen-Manager weist Limits für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits des Azure-Ressourcen-Managers](../azure-subscription-service-limits/#resource-group-limits) ausführen.
 
-<!---HONumber=AcomDC_0323_2016-->
+

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,14 +12,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 # Verwenden Sie StorSimple Snapshot Manager zum Verwalten des Sicherungkatalogs
 
 ## Übersicht
 
-Die primäre Funktion des StorSimple Snapshot Managers ist das Erstellen anwendungskonsistenter Sicherungkopien von Azure StorSimple-Volumes in Form von Momentaufnahmen. Momentaufnahmen werden dann in einer XML-Datei aufgeführt, die *Sicherungkatalog* genannt wird. Der Sicherungkatalog gliedert Momentaufnahmen nach Volumegruppe und anschließend nach lokaler oder cloudbasierter Momentaufnahme.
+Die primäre Funktion des StorSimple Snapshot Managers ist das Erstellen anwendungskonsistenter Sicherungskopien von StorSimple-Volumes in Form von Momentaufnahmen. Momentaufnahmen werden dann in einer XML-Datei aufgeführt, die *Sicherungkatalog* genannt wird. Der Sicherungkatalog gliedert Momentaufnahmen nach Volumegruppe und anschließend nach lokaler oder cloudbasierter Momentaufnahme.
+
+In diesem Lernprogramm wird beschrieben, wie Sie mit dem Knoten **Sicherungskatalog** die folgenden Aufgaben ausführen können:
+
+- Wiederherstellen eines Volumes 
+- Klonen eines Volumes oder einer Volumegruppe 
+- Löschen einer Sicherung 
+- Wiederherstellen einer Datei
+- Wiederherstellen der Storsimple Snapshot Manager-Datenbank
 
 Sie können den Sicherungskatalog durch Erweitern des Knotens **Sicherungskatalog** im Fenster **Bereich**, und dem anschließendem Erweitern der Volumegruppe anzeigen.
 
@@ -33,7 +41,7 @@ Sie können den Sicherungskatalog durch Erweitern des Knotens **Sicherungskatalo
 
     - **Besitzer** – der Besitzer des Inhalts.
 
-    - **Verfügbar** – ob die Momentaufnahme aktuell verfügbar ist. „True“ gibt an, dass die Momentaufnahme verfügbar ist und wiederhergestellt werden kann. „False“ gibt an, dass die Momentaufnahme nicht mehr verfügbar ist.
+    - **Verfügbar** – ob die Momentaufnahme aktuell verfügbar ist. **True** gibt an, dass die Momentaufnahme verfügbar ist und wiederhergestellt werden kann. **False** gibt an, dass die Momentaufnahme nicht mehr verfügbar ist.
 
     - **Importiert** – ob die Sicherung importiert wurde. **True** gibt an, dass die Sicherung zum Zeitpunkt der Konfiguration des Geräts in StorSimple Snapshot Manager aus dem StorSimple Manager-Dienst importiert wurde. **False** gibt an, dass er nicht importiert, sondern vom StorSimple Snapshot Manager erstellt wurde. (Sie können problemlos eine importierte Volumegruppe identifizieren, da ein Suffix hinzugefügt wird, das das Gerät identifiziert, aus dem die Volume-Gruppe importiert wurde.)
 
@@ -49,13 +57,6 @@ Sie können den Sicherungskatalog durch Erweitern des Knotens **Sicherungskatalo
 
     - **Verfügbar** – ob die Momentaufnahme aktuell verfügbar ist. **True** gibt an, dass die Momentaufnahme verfügbar ist und wiederhergestellt werden kann. **False** gibt an, dass die Momentaufnahme nicht mehr verfügbar ist.
 
-In diesem Lernprogramm wird beschrieben, wie Sie mit dem Knoten **Sicherungskatalog** die folgenden Aufgaben ausführen können:
-
-- Wiederherstellen eines Volumes 
-- Klonen eines Volumes oder einer Volumegruppe 
-- Löschen einer Sicherung 
-- Wiederherstellen einer Datei
-- Wiederherstellen der Storsimple Snapshot Manager-Datenbank
 
 ## Wiederherstellen eines Volumes
 
@@ -69,7 +70,7 @@ Der StorSimple Snapshot Manager zeigt die folgende Meldung an, während aus Vors
 
 ![Nachricht zur automatischen Momentaufnahme](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png)
 
->[AZURE.IMPORTANT]Sie können kein Volume löschen, das Teil einer Volumegruppe ist. Die Löschoption ist nicht verfügbar. <br>
+>[AZURE.IMPORTANT] Sie können kein Volume löschen, das Teil einer Volumegruppe ist. Die Löschoption ist nicht verfügbar. <br>
 
 #### So stellen Sie ein Volume wieder her
 
@@ -117,7 +118,7 @@ Verwenden Sie das folgende Verfahren, um ein Duplikat (Klon) eines Volumes oder 
 
 Verwenden Sie für das Löschen einer Momentaufnahme aus dem Sicherungskatalog das folgende Verfahren.
 
->[AZURE.NOTE]Das Löschen einer Momentaufnahme löscht die gesicherten Daten, die der Momentaufnahme zugeordnet sind. Allerdings kann das Bereinigen von Daten in der Cloud einige Zeit dauern.<br>
+>[AZURE.NOTE] Das Löschen einer Momentaufnahme löscht die gesicherten Daten, die der Momentaufnahme zugeordnet sind. Allerdings kann das Bereinigen von Daten in der Cloud einige Zeit dauern.<br>
  
 #### So löschen Sie eine Sicherung
 
@@ -183,7 +184,7 @@ Sie sollten die StorSimple Snapshot Manager-Datenbank auf dem Hostcomputer regel
 
 2. Navigieren Sie auf dem Hostcomputer zu C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog.
 
-    >[AZURE.NOTE]ProgramData ist ein versteckter Ordner.
+    >[AZURE.NOTE] ProgramData ist ein versteckter Ordner.
  
 3. Suchen Sie die XML-Katalogdatei, kopieren Sie die Datei, und speichern Sie die Kopie an einem sicheren Ort oder in der Cloud. Wenn der Host ausfällt, können Sie diese Sicherungsdatei verwenden, um Sicherungsrichtlinien wiederzuherstellen, die Sie im StorSimple Snapshot Manager erstellt haben.
 
@@ -208,4 +209,4 @@ Sie sollten die StorSimple Snapshot Manager-Datenbank auf dem Hostcomputer regel
 - Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 - Weitere Informationen zu den [Aufgaben und Workflows im StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

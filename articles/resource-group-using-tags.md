@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="04/18/2016"
 	ms.author="tomfitz"/>
 
 
@@ -25,9 +25,9 @@ Wenn Sie Ressourcen mit einem bestimmten Tag anzeigen, sehen Sie Ressourcen aus 
 
 Jedes Tag, das Sie einer Ressource oder Ressourcengruppe hinzufügen, wird automatisch der Taxonomie für das Abonnement hinzugefügt. Sie können die Taxonomie für Ihr Abonnement auch vorab mit Tagnamen und -werten füllen, die Sie zukünftig zum Markieren von Ressourcen verwenden möchten.
 
-Jede Ressource oder Ressourcengruppe kann maximal 15 Tags haben. Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
+Jede Ressource oder Ressourcengruppe kann maximal 15 Tags haben. Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
 
-> [AZURE.NOTE] Sie können Tags nur auf Ressourcen anwenden, die Ressourcen-Manager-Vorgänge unterstützen. Wenn Sie eine virtuelle Maschine, ein virtuelles Netzwerk (VNET) oder Speicher über das klassische Bereitstellungsmodell erstellt haben (z. B. über das klassische Azure-Portal oder die Dienstverwaltungs-API), können Sie auf diese Ressource kein Tag anwenden. Sie müssen diese Ressourcen über den Ressourcen-Manager erneut bereitstellen, damit Tags unterstützt werden. Alle anderen Ressourcen unterstützen die Markierung durch Tags.
+> [AZURE.NOTE] Sie können Tags nur auf Ressourcen anwenden, die Ressourcen-Manager-Vorgänge unterstützen. Wenn Sie eine virtuelle Maschine, ein virtuelles Netzwerk (VNET) oder Speicher über das klassische Bereitstellungsmodell erstellt haben (z. B. über das klassische Azure-Portal oder die Dienstverwaltungs-API), können Sie auf diese Ressource kein Tag anwenden. Sie müssen diese Ressourcen über den Ressourcen-Manager erneut bereitstellen, damit Tags unterstützt werden. Alle anderen Ressourcen unterstützen die Markierung durch Tags.
 
 ## Tags in Vorlagen
 
@@ -92,19 +92,29 @@ Dies öffnet ein Fenster mit der Liste der Tags, die bereits angewendet wurden. 
 
 ![Markieren von Ressourcen mit Name-Wert-Paaren](./media/resource-group-using-tags/tag-resources.png)
 
-Um die Taxonomie von Tags im Portal anzuzeigen, verwenden Sie den Durchsuchenhub, um alles anzuzeigen, und wählen Sie dann Tags aus.
+Um die Taxonomie von Tags im Portal anzuzeigen, wählen Sie **Durchsuchen** und **Tags** aus.
 
-![Suchen von Markierungen über den Browse-Hub](./media/resource-group-using-tags/browse-tags.png)
+![Suchen von Markierungen über den Browse-Hub](./media/resource-group-using-tags/select-tags.png)
 
-Fixieren Sie die wichtigsten Tags für den schnellen Zugriff auf dem Startboard, und Sie können loslegen. Viel Spaß!
+Sie sehen eine Zusammenfassung der Tags in Ihrem Abonnement.
 
-![Anheften von Markierungen am das Startmenü](./media/resource-group-using-tags/pin-tags.png)
+![Alle Tags anzeigen](./media/resource-group-using-tags/show-tag-summary.png)
+
+Wenn Sie einen dieser Tags auswählen, werden die Ressourcen und Ressourcengruppen mit diesem Tag angezeigt.
+
+![Markierte Ressourcen anzeigen](./media/resource-group-using-tags/show-tagged-resources.png)
+
+Fixieren Sie die wichtigsten Tags für den schnellen Zugriff auf dem Dashboard.
+
+![Anheften von Markierungen am das Startmenü](./media/resource-group-using-tags/show-pinned-tag.png)
 
 ## Tags und PowerShell
 
 Tags sind direkt in Ressourcen und Ressourcengruppen vorhanden. Um festzustellen, welche Markierungen bereits angewendet wurden, können wir einfach eine Ressource oder Ressourcengruppe mit **Get-AzureRmResource** oder **Get-AzureRmResourceGroup** abrufen. Beginnen wir mit einer Ressourcengruppe.
 
-    PS C:\> Get-AzureRmResourceGroup -Name tag-demo-group
+    Get-AzureRmResourceGroup -Name tag-demo-group
+
+Dieses Cmdlet gibt mehrere Teile der Metadaten für die Ressourcengruppe zurück, einschließlich welche Tags ggf. angewendet wurden.
 
     ResourceGroupName : tag-demo-group
     Location          : westus
@@ -115,12 +125,11 @@ Tags sind direkt in Ressourcen und Ressourcengruppen vorhanden. Um festzustellen
                     Dept         Finance
                     Environment  Production
 
+Beim Abrufen von Metadaten für eine Ressource werden die Tags nicht direkt angezeigt.
 
-Dieses Cmdlet gibt mehrere Teile der Metadaten für die Ressourcengruppe zurück, einschließlich welche Tags ggf. angewendet wurden.
+    Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group
 
-Beim Abrufen von Metadaten für eine Ressource werden die Tags nicht direkt angezeigt. Unten können Sie sehen, dass die Tags nur als Hashtable-Objekt angezeigt werden.
-
-    PS C:\> Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group
+In den Ergebnissen können Sie sehen, dass die Tags nur als Hashtable-Objekt angezeigt werden.
 
     Name              : tfsqlserver
     ResourceId        : /subscriptions/{guid}/resourceGroups/tag-demo-group/providers/Microsoft.Sql/servers/tfsqlserver
@@ -134,25 +143,36 @@ Beim Abrufen von Metadaten für eine Ressource werden die Tags nicht direkt ange
 
 Die eigentlichen Tags können Sie durch Abrufen der **Tags**-Eigenschaft anzeigen.
 
-    PS C:\> (Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group).Tags | %{ $_.Name + ": " + $_.Value }
+    (Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group).Tags | %{ $_.Name + ": " + $_.Value }
+   
+So werden formatierte Ergebnisse zurückgegeben:
+    
     Dept: Finance
     Environment: Production
 
 Anstatt die Tags für eine bestimmte Ressourcengruppe oder Ressource anzuzeigen, möchten Sie wahrscheinlich häufig alle Ressourcen oder Ressourcengruppen abrufen, die ein bestimmtes Tag und einen bestimmten Wert aufweisen. Um Ressourcengruppen mit einem bestimmten Tag abzurufen, verwenden Sie das Cmdlet **Find-AzureRmResourceGroup** mit dem Parameter **-Tag**.
 
-    PS C:\> Find-AzureRmResourceGroup -Tag @{ Name="Dept"; Value="Finance" } | %{ $_.Name }
+    Find-AzureRmResourceGroup -Tag @{ Name="Dept"; Value="Finance" } | %{ $_.Name }
+    
+So werden die Namen von Ressourcengruppen mit diesem Tagwert zurückgegeben.
+   
     tag-demo-group
     web-demo-group
 
 Verwenden Sie zum Abrufen aller Ressourcen mit einem bestimmten Tag und Wert das Cmdlet **Find-AzureRmResource**.
 
-    PS C:\> Find-AzureRmResource -TagName Dept -TagValue Finance | %{ $_.ResourceName }
+    Find-AzureRmResource -TagName Dept -TagValue Finance | %{ $_.ResourceName }
+    
+So werden die Namen von Ressourcen mit diesem Tagwert zurückgegeben.
+    
     tfsqlserver
     tfsqldatabase
 
 Um einer Ressourcengruppe, die über keine Tags verfügt, ein Tag hinzuzufügen, verwenden Sie einfach den Befehl **Set-AzureRmResourceGroup**, und geben Sie ein Tag-Objekt an.
 
-    PS C:\> Set-AzureRmResourceGroup -Name test-group -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} )
+    Set-AzureRmResourceGroup -Name test-group -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} )
+
+So wird die Ressourcengruppe mit den neuen Tagwerten zurückgegeben.
 
     ResourceGroupName : test-group
     Location          : southcentralus
@@ -163,15 +183,15 @@ Um einer Ressourcengruppe, die über keine Tags verfügt, ein Tag hinzuzufügen,
                     Dept          IT
                     Environment   Test
                     
-Mit dem Befehl **SetAzureRmResource** können Sie einer Ressource, die über keine Tags verfügt, Tags hinzufügen.
+Mit dem Befehl **Set-AzureRmResource** können Sie einer Ressource, die über keine Tags verfügt, Tags hinzufügen.
 
-    PS C:\> Set-AzureRmResource -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} ) -ResourceId /subscriptions/{guid}/resourceGroups/test-group/providers/Microsoft.Web/sites/examplemobileapp
+    Set-AzureRmResource -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} ) -ResourceId /subscriptions/{guid}/resourceGroups/test-group/providers/Microsoft.Web/sites/examplemobileapp
 
 Tags werden als Ganzes aktualisiert. Wenn Sie einer Ressource, die bereits markiert wurde, ein Tag hinzufügen, müssen Sie zum Speichern ein Array mit allen Tags verwenden, die Sie beibehalten möchten. Hierzu können Sie zunächst die vorhandenen Tags auswählen, dieser Gruppe ein neues Tag hinzufügen und dann alle Tags erneut anwenden.
 
-    PS C:\> $tags = (Get-AzureRmResourceGroup -Name tag-demo).Tags
-    PS C:\> $tags += @{Name="status";Value="approved"}
-    PS C:\> Set-AzureRmResourceGroup -Name test-group -Tag $tags
+    $tags = (Get-AzureRmResourceGroup -Name tag-demo).Tags
+    $tags += @{Name="status";Value="approved"}
+    Set-AzureRmResourceGroup -Name test-group -Tag $tags
 
 Um ein Tag oder mehrere Tags zu entfernen, speichern Sie einfach das Array ohne die Tags, die Sie entfernen möchten.
 
@@ -179,7 +199,7 @@ Der Prozess ist für Ressourcen der gleiche, Sie verwenden jedoch die Cmdlets **
 
 Verwenden Sie das Cmdlet **Get-AzureRmTag**, um mithilfe von PowerShell eine Liste aller Markierungen innerhalb eines Abonnements abzurufen.
 
-    PS C:/> Get-AzureRmTag
+    Get-AzureRmTag
     Name                      Count
     ----                      ------
     env                       8
@@ -194,6 +214,9 @@ Verwenden Sie das Cmdlet **New-AzureRmTag**, um der Taxonomie neue Markierungen 
 Tags sind direkt in Ressourcen und Ressourcengruppen vorhanden. Um festzustellen, welche Tags bereits angewendet werden, kann mit **azure group show** einfach eine Ressourcengruppe mit den zugehörigen Ressourcen abgerufen werden.
 
     azure group show -n tag-demo-group
+    
+So werden Metadaten für die Ressourcengruppe zurückgegeben, einschließlich aller Tags, die darauf angewendet werden.
+    
     info:    Executing command group show
     + Listing resource groups
     + Listing resources for the group
@@ -211,9 +234,12 @@ Tags sind direkt in Ressourcen und Ressourcengruppen vorhanden. Um festzustellen
     data:      Tags    : Dept=Finance;Environment=Production
     ...
 
-Um nur die Tags für die Ressourcengruppe abzurufen, verwenden Sie ein JSON-Dienstprogramm, z. B. [jq](http://stedolan.github.io/jq/download/).
+Um nur die Tags für die Ressourcengruppe abzurufen, verwenden Sie ein JSON-Dienstprogramm, z. B. [jq](http://stedolan.github.io/jq/download/).
 
     azure group show -n tag-demo-group --json | jq ".tags"
+    
+So werden die Tags für diese Ressourcengruppe zurückgegeben.
+    
     {
       "Dept": "Finance",
       "Environment": "Production" 
@@ -222,6 +248,9 @@ Um nur die Tags für die Ressourcengruppe abzurufen, verwenden Sie ein JSON-Dien
 Mit **azure resource show** können Sie die Tags für eine bestimmte Ressource anzeigen.
 
     azure resource show -g tag-demo-group -n tfsqlserver -r Microsoft.Sql/servers -o 2014-04-01-preview --json | jq ".tags"
+    
+So werden die Tags für diese Ressource zurückgegeben.
+    
     {
       "Dept": "Finance",
       "Environment": "Production"
@@ -230,12 +259,18 @@ Mit **azure resource show** können Sie die Tags für eine bestimmte Ressource a
 Sie können alle Ressourcen mit einem bestimmten Tag und Wert abrufen (siehe folgende Darstellung).
 
     azure resource list --json | jq ".[] | select(.tags.Dept == "Finance") | .name"
+    
+So werden die Namen von Ressourcen mit diesem Tag zurückgegeben.
+    
     "tfsqlserver"
     "tfsqlserver/tfsqldata"
 
 Tags werden als Ganzes aktualisiert. Wenn Sie einer Ressource, die bereits markiert wurde, ein Tag hinzufügen, müssen Sie alle vorhandenen Tags abrufen, die Sie beibehalten möchten. Verwenden Sie **azure group set** zum Festlegen von Tagwerten für eine Ressourcengruppe, und geben Sie alle Tags für die Ressourcengruppe an.
 
     azure group set -n tag-demo-group -t Dept=Finance;Environment=Production;Project=Upgrade
+    
+Es wird eine Zusammenfassung der Ressourcengruppe mit den neuen Tags zurückgegeben.
+    
     info:    Executing command group set
     ...
     data:    Name:                tag-demo-group
@@ -268,4 +303,4 @@ Wenn Sie die CSV-Nutzungsdatei für Dienste herunterladen, die die Verwendung vo
 - Eine Einführung zur Verwendung der Azure-Befehlszeilenschnittstelle für das Bereitstellen von Ressourcen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](./xplat-cli-azure-resource-manager.md).
 - Eine Einführung zum Verwenden des Portals finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

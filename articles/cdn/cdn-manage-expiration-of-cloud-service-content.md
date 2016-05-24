@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="02/25/2016"
+ ms.date="05/11/2016"
  ms.author="casoper"/>
 
 # Verwalten des Ablaufs von Clouddienstinhalten in Azure CDN (Content Delivery Network)
@@ -50,4 +50,4 @@ Fügen Sie beispielsweise folgenden Code hinzu, um Inhalt eine Stunde lang zwisc
 
 [Verwalten des Ablaufs von Blobinhalten in Azure CDN (Content Delivery Network)](./cdn-manage-expiration-of-blob-content.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

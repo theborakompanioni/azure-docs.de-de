@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="02/05/2016"
+ ms.date="04/26/2016"
  ms.author="larryfr"/>
 
 # Entwickeln Sie Scalding MapReduce-Aufträge mit Apache Hadoop in HDInsight
@@ -201,15 +201,15 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
 
     > [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i`-Parameter und den Pfad zum privaten Schlüssel angeben. Zum Beispiel, `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
 
-3. Sobald es eine Verbindung zum Hauptknoten gibt, verwenden Sie den folgenden Befehl zum Ausführen des Wortzählauftrags
+3. Nachdem eine Verbindung mit dem Hauptknoten hergestellt wurde, verwenden Sie den folgenden Befehl zum Ausführen des Wortzählauftrags.
 
-        hadoop jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasb:///example/data/gutenberg/davinci.txt --output wasb:///example/wordcountout
+        yarn jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasb:///example/data/gutenberg/davinci.txt --output wasb:///example/wordcountout
 
     Dadurch wird die zuvor implementierte WordCount-Klasse ausgeführt. `--hdfs` weist den Auftrag an, HDFS zu verwenden. `--input` Gibt die Eingabetextdatei an, während `--output` den Ausgabespeicherort festlegt.
 
 4. Wenn der Auftrag abgeschlossen ist, können Sie die Ausgabe wie folgt anzeigen.
 
-        hadoop fs -text wasb:///example/wordcountout/part-00000
+        hdfs dfs -text wasb:///example/wordcountout/part-00000
 
     Die angezeigten Informationen sehen in etwa folgendermaßen aus:
 
@@ -229,9 +229,9 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
 
 ## Führen Sie den Auftrag auf einem Windows-basierten Cluster aus
 
-> [AZURE.NOTE] Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Methoden zur Ausführung von MapReduce-Aufträgen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md).
+Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Methoden zur Ausführung von MapReduce-Aufträgen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 
-1. [Installieren und konfigurieren Sie Azure PowerShell](../powershell-install-configure.md).
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 2. Starten Sie Azure PowerShell, und melden Sie sich bei Ihrem Azure-Konto an. Nach der Eingabe Ihrer Anmeldeinformationen gibt der Befehl die Informationen zu Ihrem Konto zurück.
 
@@ -344,4 +344,4 @@ Nachdem Sie erfahren haben, wie mit Scalding MapReduce-Aufträge für HDInsight 
 
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

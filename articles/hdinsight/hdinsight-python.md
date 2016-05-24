@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/10/2016" 
+	ms.date="04/26/2016" 
 	ms.author="larryfr"/>
 
 #Verwenden von Python mit Hive und Pig in HDInsight
@@ -225,6 +225,8 @@ Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und 
 ###PowerShell
 
 In diesen Schritten wird Microsoft Azure PowerShell verwendet. Wen es nicht bereits auf Ihrem Entwicklungsrechner installiert und konfiguriert ist, sehen Sie sich bitte [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) an und folgen Sie den Schritten dort.
+
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 1. Erstellen Sie mithilfe der Python-Beispiele [streaming.py](#streamingpy) und [jython.py](#jythonpy) lokale Kopien der Dateien auf Ihrem Entwicklungscomputer.
 
@@ -447,4 +449,4 @@ Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie In
 
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

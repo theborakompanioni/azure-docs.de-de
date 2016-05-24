@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 # Verwenden von Azure PowerShell mit Azure Storage
 
 ## Übersicht
 
-Azure PowerShell ist ein Modul, das Cmdlets zum Verwalten von Azure durch Windows PowerShell enthält. Es handelt sich um eine aufgabenbasierte Befehlszeilenshell und Skriptsprache, die insbesondere für die Systemverwaltung konzipiert ist. Mit PowerShell können Sie die Verwaltung Ihrer Azure-Dienste und -Anwendungen ganz einfach steuern und automatisieren. Sie können z. B. dieselben Aufgaben mithilfe der Cmdlets wie über das [Azure-Portal](https://portal.azure.com) ausführen.
+Azure PowerShell ist ein Modul, das Cmdlets zum Verwalten von Azure durch Windows PowerShell enthält. Es handelt sich um eine aufgabenbasierte Befehlszeilenshell und Skriptsprache, die insbesondere für die Systemverwaltung konzipiert ist. Mit PowerShell können Sie die Verwaltung Ihrer Azure-Dienste und -Anwendungen ganz einfach steuern und automatisieren. Sie können z. B. dieselben Aufgaben mithilfe der Cmdlets wie über das [Azure-Portal](https://portal.azure.com) ausführen.
 
 Diese Anleitung enthält Informationen zur Verwendung der [Azure Storage-Cmdlets](https://msdn.microsoft.com/library/azure/mt269418.aspx) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage.
 
@@ -28,7 +28,7 @@ Es wird davon ausgegangen, dass Sie bereits Erfahrung mit der Verwendung von [Az
 Der erste Abschnitt in diesem Handbuch bietet eine kurze Übersicht über Azure Storage und PowerShell. Beginnen Sie mit [Voraussetzungen für die Verwendung von Azure PowerShell mit Azure Storage](#prerequisites-for-using-azure-powershell-with-azure-storage), um ausführliche Informationen und Anweisungen zu erhalten
 
 
-## Erste Schritte mit Azure Storage und PowerShell in 5 Minuten
+## Erste Schritte mit Azure Storage und PowerShell in 5 Minuten
 
 In diesem Abschnitt wird veranschaulicht, wie Sie über PowerShell in 5 Minuten auf Azure Storage zugreifen können.
 
@@ -95,7 +95,7 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
     	$blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
     	#end
 
-5.	Drücken Sie in **Windows PowerShell ISE** STRG+V, um das Skript einzufügen. Klicken Sie auf **Datei** > **Speichern**. Geben Sie im Dialogfeld **Speichern unter** den Namen der Skriptdatei ein, z. B. "mystoragescript". Klicken Sie auf **Speichern**.
+5.	Drücken Sie in **Windows PowerShell ISE** STRG+V, um das Skript einzufügen. Klicken Sie auf **Datei** > **Speichern**. Geben Sie im Dialogfeld **Speichern unter** den Namen der Skriptdatei ein, z. B. "mystoragescript". Klicken Sie auf **Speichern**.
 
 6.	Nun müssen Sie die Skriptvariablen auf Basis der Konfigurationseinstellungen aktualisieren. Sie müssen die Variable **$SubscriptionName** mit Ihrem eigenen Abonnement aktualisieren. Sie können die anderen Variablen im Skript übernehmen oder bei Bedarf aktualisieren.
 
@@ -131,14 +131,14 @@ Nachdem das Skript ausgeführt wird, sollten Sie über einen lokalen Ordner verf
 ![Herunterladen von Blobs][Image3]
 
 
-> [AZURE.NOTE] Der Abschnitt "Erste Schritte mit Azure Storage und PowerShell in 5 Minuten" hat eine kurze Einführung zur Verwendung von Azure PowerShell mit Azure Storage geboten. Ausführliche Informationen und Anweisungen finden Sie in den folgenden Abschnitten.
+> [AZURE.NOTE] Der Abschnitt "Erste Schritte mit Azure Storage und PowerShell in 5 Minuten" hat eine kurze Einführung zur Verwendung von Azure PowerShell mit Azure Storage geboten. Ausführliche Informationen und Anweisungen finden Sie in den folgenden Abschnitten.
 
 ## Voraussetzungen für die Verwendung von Azure PowerShell mit Azure Storage
 Sie benötigen ein Azure-Abonnement und -Konto zum Ausführen der in diesem Handbuch angegebenen PowerShell-Cmdlets, wie oben beschrieben.
 
 Azure PowerShell ist ein Modul, das Cmdlets zum Verwalten von Azure durch Windows PowerShell enthält. Informationen zum Installieren und Einrichten von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Sie sollten daher das neueste Azure PowerShell-Modul herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieses Handbuch verwenden.
 
-Sie können die Cmdlets in der Azure PowerShell-Konsole, der Windows PowerShell-Standardkonsole oder der Windows PowerShell Integrated Scripting Environment (ISE) ausführen. Wechseln Sie z. B. zum Öffnen einer **Azure PowerShell-Konsole** zum Menü "Start", geben Sie "Microsoft Azure PowerShell" ein, klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf "Als Administrator ausführen". Wechseln Sie zum Öffnen der **Windows PowerShell ISE** zum Menü "Start", geben Sie "Verwaltung" ein, und klicken Sie dann darauf, um diese auszuführen. Klicken Sie im Fenster "Verwaltung" mit der rechten Maustaste auf "Windows PowerShell ISE", und klicken Sie dann auf "Als Administrator ausführen".
+Sie können die Cmdlets in der Azure PowerShell-Konsole, der Windows PowerShell-Standardkonsole oder der Windows PowerShell Integrated Scripting Environment (ISE) ausführen. Wechseln Sie z. B. zum Öffnen einer **Azure PowerShell-Konsole** zum Menü "Start", geben Sie "Microsoft Azure PowerShell" ein, klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf "Als Administrator ausführen". Wechseln Sie zum Öffnen der **Windows PowerShell ISE** zum Menü "Start", geben Sie "Verwaltung" ein, und klicken Sie dann darauf, um diese auszuführen. Klicken Sie im Fenster "Verwaltung" mit der rechten Maustaste auf "Windows PowerShell ISE", und klicken Sie dann auf "Als Administrator ausführen".
 
 ## Verwalten von Speicherkonten in Azure
 
@@ -208,7 +208,7 @@ Führen Sie das folgende Cmdlet aus, um die Namen und Statusangaben für die Spe
     Get-AzureStorageAccount | Format-Table -Property StorageAccountName, Location, AccountType, StorageAccountStatus
 
 ### Erstellen von Azure-Speicherkontexten
-Azure-Speicherkontext ist ein Objekt in PowerShell zum Kapseln der Speicheranmeldeinformationen. Durch die Verwendung eines Speicherkontextes während der Ausführung nachfolgender Cmdlets können Sie Ihre Anforderung authentifizieren, ohne das Speicherkonto und seinen Zugriffsschlüssel explizit anzugeben. Es gibt verschiedene Möglichkeiten zur Erstellung eines Speicherkontextes, z. B. durch die Verwendung von Speicherkontoname und Zugriffsschlüssel, SAS-Token (Shared Access Signature), Verbindungszeichenfolge oder die anonyme Erstellung. Weitere Informationen finden Sie unter [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx).
+Azure-Speicherkontext ist ein Objekt in PowerShell zum Kapseln der Speicheranmeldeinformationen. Durch die Verwendung eines Speicherkontextes während der Ausführung nachfolgender Cmdlets können Sie Ihre Anforderung authentifizieren, ohne das Speicherkonto und seinen Zugriffsschlüssel explizit anzugeben. Es gibt verschiedene Möglichkeiten zur Erstellung eines Speicherkontextes, z. B. durch die Verwendung von Speicherkontoname und Zugriffsschlüssel, SAS-Token (Shared Access Signature), Verbindungszeichenfolge oder die anonyme Erstellung. Weitere Informationen finden Sie unter [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx).
 
 Verwenden Sie eine der folgenden drei Methoden zum Erstellen eines Speicherkontextes:
 
@@ -409,7 +409,7 @@ Sie können eine Tabelle mithilfe des Cmdlets [Remove-AzureStorageTable](http://
 Azure PowerShell bietet derzeit keine Cmdlets zum direkten Verwalten von Tabellenentitäten. Sie können die in der [Azure Storage-Clientbibliothek für .NET](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx) bereitgestellten Klassen verwenden, um Vorgänge mit Tabellenentitäten auszuführen.
 
 #### Hinzufügen von Tabellenentitäten
-Um eine Entität zu einer Tabelle hinzuzufügen, erstellen Sie zunächst ein Objekt, das die Entitätseigenschaften definiert. Eine Entität kann bis zu 255 Eigenschaften besitzen, einschließlich der drei Systemeigenschaften **PartitionKey**, **RowKey** und **Timestamp**. Sie sind für das Einfügen und Aktualisieren der Werte von **PartitionKey** und **RowKey** zuständig. Der Server verwaltet die Werte von **Timestamp**, die nicht geändert werden können. Zusammen identifizieren **PartitionKey** und **RowKey** jede Entität in einer Tabelle eindeutig.
+Um eine Entität zu einer Tabelle hinzuzufügen, erstellen Sie zunächst ein Objekt, das die Entitätseigenschaften definiert. Eine Entität kann bis zu 255 Eigenschaften besitzen, einschließlich der drei Systemeigenschaften **PartitionKey**, **RowKey** und **Timestamp**. Sie sind für das Einfügen und Aktualisieren der Werte von **PartitionKey** und **RowKey** zuständig. Der Server verwaltet die Werte von **Timestamp**, die nicht geändert werden können. Zusammen identifizieren **PartitionKey** und **RowKey** jede Entität in einer Tabelle eindeutig.
 
 -	**PartitionKey**: Bestimmt die Partition, in der die Entität gespeichert ist.
 -	**RowKey**: Identifiziert die Entität innerhalb der Partition eindeutig.
@@ -615,7 +615,7 @@ Eine SAS kann zwei Formen aufweisen:
 
 Weitere Informationen finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) und [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
 
-In den nächsten Abschnitten erfahren Sie, wie Sie ein SAS-Token und eine gespeicherte Zugriffsrichtlinie für Azure-Tabellen erstellen. Azure PowerShell stellt ähnliche Cmdlets auch für Container, Blobs und Warteschlangen bereit. Um die Skripts in diesem Abschnitt auszuführen, laden Sie [Azure PowerShell, Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) oder höher herunter.
+In den nächsten Abschnitten erfahren Sie, wie Sie ein SAS-Token und eine gespeicherte Zugriffsrichtlinie für Azure-Tabellen erstellen. Azure PowerShell stellt ähnliche Cmdlets auch für Container, Blobs und Warteschlangen bereit. Um die Skripts in diesem Abschnitt auszuführen, laden Sie [Azure PowerShell, Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) oder höher herunter.
 
 ### Erstellen eines richtlinienbasierten SAS-Tokens
 Verwenden Sie das Cmdlet "New-AzureStorageTableStoredAccessPolicy", um eine neue gespeicherte Zugriffsrichtlinie zu erstellen. Rufen Sie dann das Cmdlet [New-AzureStorageTableSASToken](http://msdn.microsoft.com/library/azure/dn806400.aspx) auf, um ein neues richtlinienbasiertes SAS-Token für eine Azure-Speichertabelle zu erstellen.
@@ -647,7 +647,7 @@ Verwenden Sie das Cmdlet "Remove-AzureStorageTableStoredAccessPolicy", um eine g
 
 
 ## Verwenden von Azure Storage für die US-Regierung und Azure China
-Eine Azure-Umgebung ist eine unabhängige Bereitstellung von Microsoft Azure, z. B. [Azure Government für die US-Regierung](https://azure.microsoft.com/features/gov/), [AzureCloud für globales Azure](https://portal.azure.com) oder [AzureChinaCloud für Azure, das von 21Vianet in China betrieben wird](http://www.windowsazure.cn/). Sie können neue Azure-Umgebungen für die US-Regierung und Azure China bereitstellen.
+Eine Azure-Umgebung ist eine unabhängige Bereitstellung von Microsoft Azure, z. B. [Azure Government für die US-Regierung](https://azure.microsoft.com/features/gov/), [AzureCloud für globales Azure](https://portal.azure.com) oder [AzureChinaCloud für Azure, das von 21Vianet in China betrieben wird](http://www.windowsazure.cn/). Sie können neue Azure-Umgebungen für die US-Regierung und Azure China bereitstellen.
 
 Um Azure Storage mit AzureChinaCloud verwenden zu können, müssen Sie einen Speicherkontext erstellen, der AzureChinaCloud zugeordnet ist. Gehen Sie zu Beginn folgendermaßen vor:
 
@@ -665,13 +665,17 @@ Um Azure Storage mit AzureChinaCloud verwenden zu können, müssen Sie einen Spe
 
 Um Azure Storage mit [ Azure Government für die US-Regierung](https://azure.microsoft.com/features/gov/) verwenden zu können, sollten Sie eine neue Umgebung definieren und anschließend in dieser Umgebung einen neuen Speicherkontext erstellen:
 
-1. Rufen Sie das Cmdlet [Add-AzureEnvironment](http://msdn.microsoft.com/library/azure/dn790364.aspx) auf, um eine neue Azure-Umgebung für Ihr privates Rechenzentrum zu erstellen.
+1.	Führen Sie das Cmdlet [Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
 
-    	Add-AzureEnvironment -Name $EnvironmentName -PublishSettingsFileUrl $publishSettingsFileUrl -ServiceEndpoint $serviceEndpoint -ManagementPortalUrl $managementPortalUrl -StorageEndpoint $storageEndpoint -ActiveDirectoryEndpoint $activeDirectoryEndpoint -ResourceManagerEndpoint $resourceManagerEndpoint -GalleryEndpoint $galleryEndpoint -ActiveDirectoryServiceEndpointResourceId $activeDirectoryServiceEndpointResourceId -GraphEndpoint $graphEndpoint -SubscriptionDataFile $subscriptionDataFile
+    `Get-AzureEnvironment`
 
-2. Führen Sie das Cmdlet [New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx) aus, um einen neuen Speicherkontext für diese neue Umgebung zu erstellen, wie unten gezeigt.
+2.	Fügen Sie Windows PowerShell ein Azure US Government-Konto hinzu:
 
-	    $Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment $EnvironmentName
+    `Add-AzureAccount –Environment AzureUSGovernment`
+
+3.	Erstellen Sie einen Speicherkontext für ein AzureUSGovernment-Konto:
+
+    	$Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment AzureUSGovernment
 
 Weitere Informationen finden Sie unter:
 
@@ -730,4 +734,4 @@ In diesem Handbuch haben Sie erfahren, wie Sie Azure Storage mit Azure PowerShel
 [Next Steps]: #next
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

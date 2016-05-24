@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="05/04/2016"
 	ms.author="josephd"/>
 
 # Erstellen von SharePoint-Serverfarmen
@@ -53,17 +53,18 @@ So erstellen Sie die hoch verfügbare SharePoint-Farm (neun Server):
 
 > [AZURE.NOTE] Die **SharePoint 2013 nicht hoch verfügbare Farm** bzw. die **SharePoint 2013 hoch verfügbare Farm** kann nicht mit einer kostenlosen Azure-Testversion erstellt werden.
 
+Das Azure-Portal erstellt beide Farmen in einem virtuellen Cloudnetzwerk mit einer über das Internet zugänglichen Webpräsenz. Es gibt keine Standort-zu-Standort-VPN- oder ExpressRoute-Verbindung mit Ihrem Unternehmensnetzwerk.
+
 ## Verwalten der SharePoint-Farmen
 
 Sie können die Server dieser Farmen über Remotedesktopverbindungen verwalten. Weitere Informationen finden Sie unter [Anmelden beim virtuellen Computer](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine).
 
 Auf der SharePoint-Website für die Zentraladministration können Sie eigene Websites, SharePoint-Anwendungen und andere Funktionen konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von SharePoint 2013](http://technet.microsoft.com/library/ee836142.aspx).
 
-> [AZURE.NOTE] Das Azure-Portal erstellt beide Farmen in einem virtuellen Cloudnetzwerk mit einer über das Internet zugänglichen Webpräsenz. Es gibt keine Standort-zu-Standort-VPN- oder ExpressRoute-Verbindung mit Ihrem Unternehmensnetzwerk.
+> [AZURE.NOTE] Mit dem [SharePoint Server 2016-Testimage](https://azure.microsoft.com/blog/test-sharepoint-server-2016/) können Sie einen virtuellen Computer mit SharePoint Server 2016 erstellen.
 
 ## Nächste Schritte
 
-- Stellen Sie eine [SharePoint 2013-Intranetfarm](virtual-machines-windows-sp-intranet-overview.md) als Produktionsworkload in Azure-Infrastrukturdiensten bereit.
 - Lernen Sie weitere Konfigurationen von [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) in Azure-Infrastrukturdiensten kennen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

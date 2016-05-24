@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Assistent zur Veröffentlichung einer Azure-Anwendung
@@ -29,7 +29,7 @@ Bevor Sie Ihre Webanwendung in Azure veröffentlichen können, benötigen Sie ei
 
 1. Verschaffen Sie sich ein Microsoft-Konto und ein Azure-Abonnement. [Hier](https://azure.microsoft.com/pricing/free-trial/) können ein einen Monat lang kostenloses Azure-Abonnement bestellen.
 
-1. Erstellen Sie einen Clouddienst und ein Speicherkonto in Azure. Hierzu können Sie den Server-Explorer in Visual Studio oder das [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden.
+1. Erstellen Sie einen Clouddienst und ein Speicherkonto in Azure. Hierzu können Sie den Server-Explorer in Visual Studio oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden.
 
 1. Aktivieren Sie Ihre Webanwendung für Azure. Damit Ihre Webanwendung aus Visual Studio in Azure veröffentlicht werden kann, müssen Sie sie einem Azure-Clouddienstprojekt in Visual Studio zuordnen. Wenn Sie das zugeordnete Clouddienstprojekt erstellen möchten, öffnen Sie das Kontextmenü für das Projekt für Ihre Webanwendung, und wählen Sie dann **Konvertieren -> In Azure-Clouddienstprojekt konvertieren** aus.
 
@@ -139,4 +139,4 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
 
 [Lokales Testen der Leistung eines Cloud-Diensts](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

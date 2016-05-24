@@ -10,7 +10,7 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
    ms.date="03/30/2016"
@@ -76,4 +76,4 @@ Die Startseite des Azure Data Catalog-Portals enthält den Bereich „Meine Ress
 ## Zusammenfassung
 Azure Data Catalog enthält Funktionen, mithilfe derer Benutzer die benötigten Datenquellen einfacher finden können, damit das Suchen nach Daten schneller geht und mehr Zeit für die Arbeit mit den Daten bleibt. Gespeicherte Suchvorgänge und angeheftete Datenressourcen funktionieren auf Grundlage dieser Funktionen, damit Benutzer häufig benötigte Datenquellen schnell identifizieren.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

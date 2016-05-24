@@ -4,9 +4,9 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 
 1. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Sender**.
 
-   ![][7]
+	![][7]
 
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**. 
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**.
 
 3. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Stellen Sie sicher, dass der Projektname (**Absender**) im Feld **Version(en)** angegeben ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
@@ -21,7 +21,7 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und eine Verbindungszeichenfolge mit **Send**-Rechten (die Verbindungszeichenfolge **SendRule**). Entfernen Sie das Suffix `EntityPath` aus der Verbindungszeichenfolge:
+5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu, und ersetzen Sie dabei die Platzhalterwerte durch den Namen des im vorigen Abschnitt erstellten Event Hubs und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene.
 
 	```
 	static string eventHubName = "{Event Hub name}";
@@ -69,5 +69,3 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
-
-<!---HONumber=AcomDC_0413_2016-->

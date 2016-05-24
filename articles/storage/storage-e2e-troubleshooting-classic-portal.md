@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="05/09/2016" 
 	ms.author="robinsh"/>
 
 # End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollen sowie AzCopy und Message Analyzer 
@@ -208,8 +208,8 @@ Message Analyzer enthält Ressourcen für Azure Storage, mit denen Sie Server-, 
 
 1. Laden Sie [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) aus dem Microsoft Download Center herunter, und führen Sie das Installationsprogramm aus.
 2. Starten Sie Message Analyzer.
-3. Navigieren Sie auf der Seite **Start** zu **Downloads**, und filtern Sie die Anzeige nach **Azure Storage**. Die Azure-Speicherressourcen werden angezeigt, wie in der folgenden Abbildung dargestellt.
-4. Klicken Sie auf **Sync All Displayed Items**, um die Azure-Speicherressourcen zu installieren. Die verfügbaren Ressourcen umfassen: 
+3. Wählen Sie im Menü **Extras** die Option **Asset-Manager** aus. Wählen Sie im Dialogfeld **Asset-Manager** die Option **Downloads** aus, und filtern Sie die Anzeige nach **Azure Storage**. Die Azure-Speicherressourcen werden angezeigt, wie in der folgenden Abbildung dargestellt.
+4. Klicken Sie auf **Sync All Displayed Items**, um die Azure-Speicherressourcen zu installieren. Die verfügbaren Ressourcen umfassen:
 	- **Azure Storage Color Rules:** Die Azure-Speicherfarbregeln ermöglichen Ihnen die Angabe bestimmter Filter, die mithilfe von Farbe, Text und Schriftarten Nachrichten hervorheben, die bestimmte Informationen einer Nachverfolgung enthalten.
 	- **Azure Storage Charts:** Azure-Speicherdiagramme sind vordefinierte Diagramme, die Server-Protokolldaten grafisch darstellen. Beachten Sie, dass für die Verwendung der Azure-Speicherdiagramme zum jetzigen Zeitpunkt das Serverprotokoll nur in das Analyseraster geladen werden kann.
 	- **Azure Storage Parsers:** Die Azure-Speicherparser analysieren die Client-, Server- und HTTP-Protokolle des Azure-Speichers, um sie im Analyseraster anzuzeigen.
@@ -217,7 +217,7 @@ Message Analyzer enthält Ressourcen für Azure Storage, mit denen Sie Server-, 
 	- **Azure Storage View Layouts:** Azure-Speicheransichtslayouts sind vordefinierte Spaltenlayouts und -gruppierungen im Analyseraster.
 4. Starten Sie Message Analyzer nach der Installation der Ressourcen neu.
 
-![Message Analyzer-Startseite](./media/storage-e2e-troubleshooting-classic-portal/mma-start-page-1.png)
+![Message Analyzer: Asset-Manager](./media/storage-e2e-troubleshooting-classic-portal/mma-start-page-1.png)
 
 > [AZURE.NOTE] Installieren Sie für dieses Lernprogramm alle angezeigten Azure-Speicherressourcen.
 
@@ -347,7 +347,7 @@ Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Da
 | Zum Untersuchen von... | Verwenden Sie folgenden Filterausdruck... | Ausdruck gilt für Protokoll (Client, Server, Netzwerk, Alle) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange | AzureStorageClientDotNetV4.Description contains "Retrying failed operation." | Client |
-| HTTP-Zunahme von PercentThrottlingError | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | Netzwerk |
+| HTTP-Zunahme von PercentThrottlingError | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | Netzwerk |
 | Zunahme von PercentTimeoutError | HTTP.Response.StatusCode == 500 | Netzwerk |
 | Zunahme von PercentTimeoutError (alle) |    *StatusCode == 500 | All | 
 | Zunahme von PercentNetworkError | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client | 
@@ -375,4 +375,4 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
  
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

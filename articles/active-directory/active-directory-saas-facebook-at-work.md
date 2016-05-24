@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/02/2016"
+	ms.date="04/26/2016"
 	ms.author="asmalser"/>
 
 
 # Tutorial: Azure Active Directory-Integration mit Facebook at Work
 
-In diesem Tutorial erfahren Sie, wie Sie Facebook at Work in Azure Active Directory (Azure AD) integrieren können.<br>Die Integration von Facebook at Work in Azure AD bietet Ihnen folgende Vorteile:
+Dieses Tutorial soll Ihnen zeigen, wie Sie Facebook at Work in Azure Active Directory (Azure AD) integrieren können.
+
+Die Integration von Facebook at Work in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Facebook at Work hat. 
 - Sie können automatisch Konten für Benutzer bereitstellen, denen Zugriff auf Facebook at Work erteilt wurde.
@@ -47,15 +49,23 @@ Zum Konfigurieren der Integration von Facebook at Work in Azure AD müssen Sie F
 
 **Um Facebook at Work aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf **Active Directory**. <br><br>![Active Directory][1]<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+
+	![Active Directory][1]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Anwendungen][2]<br>
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**. <br><br>![Anwendungen][3]<br>
+	![Anwendungen][2]
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**. <br><br>![Anwendungen][4]<br>
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+	
+	![Anwendungen][3]
+
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+
+	![Anwendungen][4]
 
 6. Geben Sie im Suchfeld als Suchbegriff **Facebook at Work** ein.
 
@@ -68,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens in Azure AD mit Facebook at Work die folgenden Schritte aus:**
 
-1.	Wenn Sie Facebook at Work im Azure-Verwaltungsportal hinzugefügt haben, klicken Sie auf **Einmaliges Anmelden konfigurieren**.
+1.	Klicken Sie nach dem Hinzufügen von Facebook at Work im klassischen Azure-Portal auf **Einmaliges Anmelden konfigurieren**.
 
 2.	Geben Sie auf dem Bildschirm **App-URL konfigurieren** die URL ein, unter der sich Benutzer bei Facebook at Work anmelden. Hierbei handelt es sich um die URL Ihres Facebook at Work-Mandanten (Beispiel: https://example.facebook.com/). Klicken Sie anschließend auf **Weiter**.
 
@@ -76,25 +86,25 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 4. Führen Sie die Schritte unter der folgenden URL aus, um Facebook at Work für die Verwendung von Azure AD als Identitätsanbieter zu konfigurieren: [https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers).
 
-5.	Kehren Sie anschließend zum Browserfenster mit dem Azure-Verwaltungsportal zurück, und aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie den Vorgang abgeschlossen haben. Klicken Sie dann auf **Weiter** und **Abschließen**.
+5.	Kehren Sie anschließend zum Browserfenster mit dem klassischen Azure-Portal zurück, und aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie den Vorgang abgeschlossen haben. Klicken Sie dann auf **Weiter** und **Abschließen**.
 
 
 ## Automatische Bereitstellung von Benutzern in Facebook at Work
 
 Azure AD unterstützt die Möglichkeit, die Kontodetails zugewiesener Benutzer mit Facebook at Work zu synchronisieren. Dank dieser automatischen Synchronisierung kann Facebook at Work die erforderlichen Daten für die Autorisierung von Benutzern für den Zugriff abzurufen, bevor sie sich zum ersten Mal anmelden. Sie hebt zudem die Bereitstellung von Benutzern in Facebook at Work auf, wenn der Zugriff in Azure AD widerrufen wurde.
 
-Die automatische Bereitstellung kann durch Klicken auf **Benutzerbereitstellung konfigurieren** im Fenster des Azure-Verwaltungsportals eingerichtet werden.
+Die automatische Bereitstellung kann durch Klicken auf **Kontobereitstellung konfigurieren** im Fenster des klassischen Azure-Portals eingerichtet werden.
 
 Weitere Informationen zum Konfigurieren der automatischen Bereitstellung finden Sie unter [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers).
 
 
 ## Zuweisen von Benutzern zu Facebook at Work
 
-Damit bereitgestellten AAD-Benutzern Facebook at Work im Zugriffsbereich angezeigt wird, muss ihnen im Azure-Verwaltungsportal der Zugriff zugewiesen werden.
+Damit bereitgestellten AAD-Benutzern Facebook at Work im Zugriffsbereich angezeigt wird, muss ihnen im klassischen Azure-Portal der Zugriff zugewiesen werden.
 
 **So weisen Sie Facebook at Work Benutzer zu:**
 
-1.	Klicken Sie auf der Startseite für Facebook at Work im Azure-Verwaltungsportal auf **Konten zuweisen**.
+1.	Klicken Sie auf der Startseite für Facebook at Work im klassischen Azure-Portal auf **Konten zuweisen**.
 
 2.	Wählen Sie im Menü **Einblenden**, ob Sie einen Benutzer oder eine Gruppe zu Facebook at Work zuweisen möchten, und klicken Sie auf die Schaltfläche mit dem Häkchen.
 
@@ -114,4 +124,4 @@ Damit bereitgestellten AAD-Benutzern Facebook at Work im Zugriffsbereich angezei
 [3]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_04.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0511_2016-->

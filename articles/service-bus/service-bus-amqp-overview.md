@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
 
@@ -107,4 +107,4 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [Installieren von Apache Qpid Proton-C auf einem virtuellen Azure-Linux-Computer]: service-bus-amqp-apache.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

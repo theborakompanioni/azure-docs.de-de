@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Blob-Speicher und verbundenen Visual Studio-Diensten (WebJob-Projekte) | Microsoft Azure"
-	description="Erste Schritte mit Blobspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten"
+	description="Erste Schritte mit Blobspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten"
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure Blob-Speicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
@@ -191,7 +191,7 @@ Das SDK deserialisiert die JSON-Nachricht automatisch. Hier sehen Sie die **Pois
 
 Das WebJobs-SDK durchsucht beim Start der Anwendung alle vom **BlobTrigger**-Attribut angegebenen Container. Bei einem großen Speicherkonto kann diese Überprüfung durchaus länger dauern. Daher kann etwas Zeit vergehen, bis neue Blobs gefunden und **BlobTrigger**-Funktionen ausgeführt werden.
 
-Um neue oder geänderte Blobs nach dem Start der Anwendung zu erkennen, liest das SDK in regelmäßigen Abständen die Blobspeicherprotokolle. Die Blobprotokolle werden gepuffert und nur etwa alle 10 Minuten physisch geschrieben. Daher kann, nachdem ein Blob erstellt oder aktualisiert wurde, möglicherweise eine erhebliche Verzögerung eintreten, ehe die entsprechende **BlobTrigger**-Funktion ausgeführt wird.
+Um neue oder geänderte Blobs nach dem Start der Anwendung zu erkennen, liest das SDK in regelmäßigen Abständen die Blobspeicherprotokolle. Die Blobprotokolle werden gepuffert und nur etwa alle 10 Minuten physisch geschrieben. Daher kann, nachdem ein Blob erstellt oder aktualisiert wurde, möglicherweise eine erhebliche Verzögerung eintreten, ehe die entsprechende **BlobTrigger**-Funktion ausgeführt wird.
 
 Für Blobs, die Sie mit dem **Blob**-Attribut erstellen, gibt es eine Ausnahme. Wenn das WebJobs-SDK ein neues Blob erstellt, übergibt es dieses sofort an alle entsprechenden **BlobTrigger**-Funktionen. Wenn Sie also eine Kette von Ein- und Ausgaben von Blobs haben, kann das SDK sie effizient verarbeiten. Wenn es Ihnen bei Ihren Blobverarbeitungsfunktionen für anderweitig erstellte oder aktualisierte Blobs allerdings auf eine geringe Latenz ankommt, empfiehlt sich die Verwendung von **QueueTrigger** anstelle von **BlobTrigger**.
 
@@ -213,7 +213,7 @@ Wenn Sie eine erneute Verarbeitung eines Blobs erzwingen möchten, können Sie d
 
 Informationen zur Handhabung der Blobverarbeitung, die durch eine Warteschlangennachricht ausgelöst wird, oder zu Szenarien für das WebJobs-SDK, die sich nicht speziell auf die Blobverarbeitung beziehen, finden Sie unter [Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
 
-In diesem Artikel werden u. a. die folgenden Themen behandelt:
+In diesem Artikel werden u. a. die folgenden Themen behandelt:
 
 * Asynchrone Funktionen
 * Mehrere Instanzen
@@ -229,4 +229,4 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 
 In diesem Artikel wurden Codebeispiele bereitgestellt, in denen der Umgang mit gängigen Szenarien für das Arbeiten mit Azure-Blobs veranschaulicht wird. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
@@ -149,7 +149,7 @@ Wenn Sie einen virtuellen Computer erstellen, sieht die JSON-Konfigurationsdatei
 
 Sie können die JSON-Konfiguration bearbeiten, um das Verhalten beim Ausführen der Veröffentlichungsskripts zu ändern. Die Abschnitte `cloudService` und `virtualMachine` sind erforderlich, der Abschnitt `databases` kann jedoch gelöscht werden, wenn er nicht benötigt wird. Die Eigenschaften, die in der von Visual Studio generierten Standardkonfigurationsdatei leer sind, sind optional. Die Eigenschaften, die in der Standardkonfigurationsdatei Werte aufweisen, sind erforderlich.
 
-Wenn Sie eine Website mit mehreren Bereitstellungsumgebungen (als Slots bezeichnet) anstelle einer einzelnen Produktionswebsite in Azure verwenden, können Sie den Slotnamen in den Namen der Website in der JSON-Konfigurationsdatei einschließen. Wenn Sie z. B. eine Website mit dem Namen **mysite** und einen zugehörigen Slot namens **test** verwenden, lautet der URI "mysite-test.cloudapp.net". Der richtige Name zur Verwendung in der Konfigurationsdatei lautet jedoch "mysite(test)". Diese Vorgehensweise ist nur möglich, wenn die Website und die Slots bereits in Ihrem Abonnement vorhanden sind. Andernfalls erstellen Sie die Website, indem Sie das Skript ausführen, ohne den Slot anzugeben. Erstellen Sie den Slot dann im Azure-Verwaltungsportal, und führen Sie anschließend das Skript mit dem geänderten Websitenamen aus. Weitere Informationen zu den Bereitstellungsslots für Web-Apps finden Sie unter [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](./app-service-web/web-sites-staged-publishing.md).
+Wenn Sie eine Website mit mehreren Bereitstellungsumgebungen (als Slots bezeichnet) anstelle einer einzelnen Produktionswebsite in Azure verwenden, können Sie den Slotnamen in den Namen der Website in der JSON-Konfigurationsdatei einschließen. Wenn Sie z. B. eine Website mit dem Namen **mysite** und einen zugehörigen Slot namens **test** verwenden, lautet der URI "mysite-test.cloudapp.net". Der richtige Name zur Verwendung in der Konfigurationsdatei lautet jedoch "mysite(test)". Diese Vorgehensweise ist nur möglich, wenn die Website und die Slots bereits in Ihrem Abonnement vorhanden sind. Andernfalls erstellen Sie die Website, indem Sie das Skript ausführen, ohne den Slot anzugeben. Erstellen Sie den Slot dann im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885), und führen Sie anschließend das Skript mit dem geänderten Websitenamen aus. Weitere Informationen zu den Bereitstellungsslots für Web-Apps finden Sie unter [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](./app-service-web/web-sites-staged-publishing.md).
 
 ## Ausführen der Veröffentlichungsskripts
 
@@ -351,4 +351,4 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 
 Weitere Informationen zur PowerShell-Skripterstellung finden Sie unter [Scripting with Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx). Weitere Azure PowerShell-Skripts finden Sie im [Script Center](https://azure.microsoft.com/documentation/scripts/).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

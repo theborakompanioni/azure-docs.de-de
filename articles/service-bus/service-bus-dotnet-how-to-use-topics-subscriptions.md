@@ -52,7 +52,7 @@ In beiden Fällen können Sie Ihre Verbindungszeichenfolge über die `CloudConfi
 
 ### Konfigurieren der Verbindungszeichenfolge
 
-Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [klassischen Azure-Portal][], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (****.csdef**) eine `Setting`-Bezeichnung hinzu, wie im folgenden Beispiel gezeigt:
+Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [klassischen Azure-Portal][], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (***.csdef**) eine `Setting`-Bezeichnung hinzu, wie im folgenden Beispiel gezeigt:
 
 ```
 <ServiceDefinition name="Azure1">
@@ -327,4 +327,4 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen und -Abonnements vertr
   [.NET-Tutorial zu Service Bus-Brokermessaging]: service-bus-brokered-tutorial-dotnet.md
   [Azure-Beispielen]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_0511_2016-->
+<!----HONumber=AcomDC_0511_2016-->

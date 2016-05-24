@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,20 +13,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/10/2016"
+   ms.date="04/18/2016"
    ms.author="tomfitz"/>
 
 # Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals
 
 ## Übersicht
-Bei Verwendung eines automatisierten Prozesses oder einer automatisierten Anwendung, der bzw. die auf Ressourcen zugreifen oder diese ändern muss, können Sie im klassischen Portal eine Active Directory-Anwendung erstellen. Wenn Sie eine Active Directory-Anwendung über das klassische Portal erstellen, wird tatsächlich sowohl die Anwendung als auch ein Dienstprinzipal erstellt. Sie können die Anwendung unter ihrer eigenen Identität oder unter der Identität des angemeldeten Benutzers Ihrer Anwendung ausführen. Diese beiden Methoden zur Authentifizierung von Anwendungen werden als interaktiv (Anmeldung durch Benutzer) und nicht interaktiv (Bereitstellung eigener Anmeldeinformationen durch die App ) bezeichnet. Im nicht interaktiven Modus müssen Sie den Dienstprinzipal einer Rolle mit den richtigen Berechtigungen zuweisen.
+Bei Verwendung eines automatisierten Prozesses oder einer automatisierten Anwendung, der bzw. die auf Ressourcen zugreifen oder diese ändern muss, können Sie im klassischen Portal eine Active Directory-Anwendung erstellen. Sie können die Anwendung unter ihrer eigenen Identität oder unter der Identität des angemeldeten Benutzers Ihrer Anwendung ausführen. Diese beiden Methoden zur Authentifizierung von Anwendungen werden als interaktiv (Anmeldung durch Benutzer) und nicht interaktiv (Bereitstellung eigener Anmeldeinformationen durch die App ) bezeichnet. Im nicht interaktiven Modus müssen Sie eine Rolle mit den richtigen Berechtigungen der Identität für die Anwendung zuweisen. Wenn Ihre App unbeaufsichtigt ausgeführt wird, z. B. als Back-End-Prozess, müssen Sie die nicht interaktive Authentifizierung verwenden.
 
-In diesem Thema wird erklärt, wie eine neue Anwendung und ein neuer Dienstprinzipal mithilfe des klassischen Portals erstellt werden. Derzeit müssen Sie das klassische Portal zum Erstellen einer neuen Active Directory-Anwendung verwenden. Das Azure-Portal wird in einer späteren Version um diese Möglichkeit erweitert. Im Portal können Sie die Anwendung einer Rolle zuweisen. Sie können diese Schritte auch über Azure PowerShell oder Azure CLI ausführen. Informationen zur Verwendung von PowerShell oder CLI mit dem Dienstprinzipal finden Sie unter [Authentifizieren eines Dienstprinzipals mit dem Azure-Ressourcen-Manager](resource-group-authenticate-service-principal.md).
+In diesem Thema wird erläutert, wie eine neue Anwendung mithilfe des klassischen Portals erstellt wird. Derzeit müssen Sie das klassische Portal zum Erstellen einer neuen Active Directory-Anwendung verwenden. Im Portal können Sie die Anwendung einer Rolle zuweisen.
+
+Sie können diese Schritte auch über Azure PowerShell oder Azure CLI ausführen. Informationen zur Verwendung von PowerShell oder CLI mit dem Dienstprinzipal finden Sie unter [Authentifizieren eines Dienstprinzipals mit dem Azure-Ressourcen-Manager](resource-group-authenticate-service-principal.md).
 
 ## Konzepte
 1. Azure Active Directory (AAD) - ein Cloud-Dienst für Identitäts- und Zugriffsverwaltung. Weitere Informationen finden Sie unter [Was ist Azure Active Directory](active-directory/active-directory-whatis.md)
-2. Dienstprinzipal - ein Anwendungsbeispiel in einem Verzeichnis.
-3. AD-Anwendung - ein Verzeichnisdatensatz im AAD, der eine Anwendung für AAD identifiziert. 
+2. AD-Anwendung – ein Verzeichnisdatensatz in Active Directory, der eine Anwendung identifiziert. 
+3. Dienstprinzipal – eine Instanz der Anwendung, auf die Sie Zugriffssteuerungsrollen anwenden können.
 
 Eine ausführlichere Erläuterung zu Anwendungen und Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory/active-directory-application-objects.md). Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory/active-directory-authentication-scenarios.md).
 
@@ -40,10 +42,14 @@ Für interaktive und nicht interaktive Anwendungen müssen sie Ihre Active Direc
 2. Wählen Sie im linken Bereich **Active Directory** aus.
 
      ![Active Directory auswählen][1]
-
-3. Wählen Sie das Verzeichnis aus, das Sie zum Erstellen der neuen Anwendung nutzen möchten.
+     
+3. Wählen Sie das Verzeichnis aus, das Sie zum Erstellen der neuen Anwendung nutzen möchten. Für Ressourcen in Ihrem Abonnement können Sie den Zugriff nur für Dienstprinzipale im gleichen Verzeichnis wie Ihr Abonnement zuweisen. Sie möchten die Anwendung in der Regel in dem Verzeichnis erstellen, in dem sich Ihr Abonnement befindet.
 
      ![Verzeichnis wählen][2]
+     
+    Wenn Sie das Verzeichnis für Ihr Abonnement suchen müssen, wählen Sie **Einstellungen** aus, und suchen Sie den Namen des Verzeichnisses.
+   
+     ![Standardverzeichnis suchen](./media/resource-group-create-service-principal-portal/show-default-directory.png)
 
 3. Klicken Sie auf **Anwendungen**, um die Anwendungen in Ihrem Verzeichnis anzuzeigen.
 
@@ -61,11 +67,11 @@ Für interaktive und nicht interaktive Anwendungen müssen sie Ihre Active Direc
 
      ![neue Anwendung][10]
 
-6. Füllen Sie den Namen der Anwendung aus und wählen Sie den Anwendungstyp aus, den Sie nutzen möchten. Wählen Sie den Anwendungstyp aus, den Sie erstellen. In diesem Tutorial erstellen wir eine **WEBANWENDUNG UND/ODER WEB-API**, und klicken auf die Schaltfläche „Weiter“.
+6. Füllen Sie den Namen der Anwendung aus und wählen Sie den Anwendungstyp aus, den Sie nutzen möchten. Wählen Sie den Anwendungstyp aus, den Sie erstellen. In diesem Tutorial erstellen wir eine **WEBANWENDUNG UND/ODER WEB-API**, und klicken auf die Schaltfläche "Weiter".
 
      ![Anwendung benennen][9]
 
-7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** die URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI ** die URI an, die Ihre Anwendung identifiziert. Die Eindeutigkeit oder das Vorhandensein des Endpunktes wird nicht überprüft. Wenn Sie als Anwendungstyp **Native Clientanwendung** ausgewählt haben, geben Sie einen Wert für **Umleitungs-URI** an. Klicken Sie auf **Abschließen**, um Ihre AAD-Anwendung zu erstellen.
+7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** die URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI** die URI an, die Ihre Anwendung identifiziert. Die Eindeutigkeit oder das Vorhandensein des Endpunktes wird nicht überprüft. Wenn Sie als Anwendungstyp **Native Clientanwendung** ausgewählt haben, geben Sie einen Wert für **Umleitungs-URI** an. Klicken Sie auf **Abschließen**, um Ihre AAD-Anwendung zu erstellen.
 
      ![Anwendungseigenschaften][4]
 
@@ -73,7 +79,7 @@ Sie haben Ihre Anwendung erstellt.
 
 ## Abrufen von Client-ID und Mandanten-ID
 
-Beim programmgesteuerten Zugriff auf Ihre Anwendung benötigen Sie die ID für Ihre Anwendung. Wählen Sie die Registerkarte **Konfigurieren**, und kopieren Sie die **CLIENT-ID**.
+Beim programmgesteuerten Zugriff auf Ihre Anwendung benötigen Sie die ID für Ihre Anwendung. Wählen Sie die Registerkarte **Konfigurieren** aus, und kopieren Sie die **CLIENT-ID**.
   
    ![Client-ID][5]
 
@@ -83,7 +89,7 @@ In einigen Fällen müssen Sie bei Ihrer Authentifizierungsanforderung die Manda
 
 Endpunkte sind nicht für native Clientanwendungen verfügbar. Stattdessen können Sie die Mandanten-ID über PowerShell abrufen:
 
-    PS C:\> Get-AzureRmSubscription
+    Get-AzureRmSubscription
 
 Oder mit der Azure-Befehlszeilenschnittstelle:
 
@@ -118,7 +124,7 @@ Ihre Anwendung ist nun bereit und das Dienstprinzipal in Ihrem Mandanten erstell
 
 Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugreift, müssen Sie der Anwendung die delegierten Berechtigungen für den Zugriff auf andere Anwendungen gewähren. Dieser Schritt wird auf der Registerkarte **Konfigurieren** im Abschnitt **Berechtigungen für andere Anwendungen** ausgeführt. Eine delegierte Berechtigung ist standardmäßig bereits für die Azure Active Directory-Instanz aktiviert. Lassen Sie diese delegierte Berechtigung unverändert.
 
-1. Wählen Sie **Anwendung hinzufügen**.
+1. Wählen Sie **Anwendung hinzufügen** aus.
 
 2. Wählen Sie in der Liste die **Azure-Dienstverwaltungs-API** aus.
 
@@ -218,7 +224,7 @@ Sie können das Token im Anforderungsheader mit dem folgenden Code übergeben:
 
 - Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).  
 - Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
-- Informationen zur Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle zum Arbeiten mit Active Directory-Anwendungen und Dienstprinzipalen, einschließlich der Verwendung eines Zertifikats für die Authentifizierung, finden Sie unter [Authentifizieren eines Dienstprinzipals mit dem Azure-Ressourcen-Manager](./resource-group-authenticate-service-principal.md).
+- Informationen zur Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle zum Arbeiten mit Active Directory-Anwendungen und Dienstprinzipalen, einschließlich der Verwendung eines Zertifikats für die Authentifizierung, finden Sie unter [Authentifizieren eines Dienstprinzipals mit dem Azure-Ressourcen-Manager](resource-group-authenticate-service-principal.md).
 - Anleitungen für die Implementierung von Sicherheitseinstellungen mit dem Azure-Ressourcen-Manager finden Sie unter [Sicherheitsaspekte für Azure-Ressourcen-Manager](best-practices-resource-manager-security.md).
 
 
@@ -237,4 +243,4 @@ Sie können das Token im Anforderungsheader mit dem folgenden Code übergeben:
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

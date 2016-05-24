@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Zugreifen auf virtuelle Computer in Azure über den Server-Explorer
@@ -27,7 +27,7 @@ Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den 
 
 1. Wählen Sie im Server-Explorer einen virtuellen Computer aus, und drücken Sie anschließend F4, um das Eigenschaftenfenster für den Computer anzuzeigen.
 
-    Die folgende Tabelle zeigt, welche Eigenschaften verfügbar sind – diese jedoch alle schreibgeschützt. Um sie zu ändern, verwenden Sie das Verwaltungsportal.
+    Die folgende Tabelle zeigt, welche Eigenschaften verfügbar sind – diese jedoch alle schreibgeschützt. Sie können sie über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) ändern.
 
   	|Eigenschaft|Beschreibung|
   	|---|---|
@@ -35,12 +35,12 @@ Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den 
   	|Umgebung|Für einen virtuellen Computer lautet der Wert dieser Eigenschaft immer "Produktion".|
   	|Name|Der Name des virtuellen Computers.|
   	|Größe|Die Größe des virtuellen Computers. Diese Eigenschaft gibt die Menge an verfügbarem Arbeitsspeicher und Festplattenspeicher an. Weitere Informationen finden Sie unter "Konfigurieren von Größen für Clouddienste".|
-  	|Status|Mögliche Werte lauten "Wird gestartet", "Gestartet", "Wird angehalten", "Angehalten" und "Status wird abgerufen". Wird "Status wird abgerufen" angezeigt, ist der aktuelle Status unbekannt. Die Werte für diese Eigenschaft unterscheiden sich von den Werten, die im Verwaltungsportal verwendet werden.|
-  	|SubscriptionID|Die Abonnement-ID für Ihr Azure-Konto. Sie können diese Informationen im Verwaltungsportal anzeigen, indem Sie die Eigenschaften für ein Abonnement öffnen.|
+  	|Status|Mögliche Werte lauten "Wird gestartet", "Gestartet", "Wird angehalten", "Angehalten" und "Status wird abgerufen". Wird "Status wird abgerufen" angezeigt, ist der aktuelle Status unbekannt. Die Werte für diese Eigenschaft unterscheiden sich von den Werten, die im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwendet werden.|
+  	|SubscriptionID|Die Abonnement-ID für Ihr Azure-Konto. Sie können diese Informationen im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) anzeigen, indem Sie die Eigenschaften für ein Abonnement öffnen.|
 
 1. Wählen Sie einen Endpunktknoten aus, und zeigen Sie dann das Fenster **Eigenschaften** an.
 
-1. Die folgende Tabelle beschreibt die verfügbaren Endpunkteigenschaften. Alle Eigenschaften sind schreibgeschützt. Verwenden Sie zum Hinzufügen oder Bearbeiten der Endpunkte für einen virtuellen Computer das Verwaltungsportal.
+1. Die folgende Tabelle beschreibt die verfügbaren Endpunkteigenschaften. Alle Eigenschaften sind schreibgeschützt. Verwenden Sie zum Hinzufügen oder Bearbeiten der Endpunkte für einen virtuellen Computer das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
   	|Eigenschaft|Beschreibung|
   	|---|---|
@@ -53,4 +53,4 @@ Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den 
 
 Weitere Informationen zum Verwenden von Azure-Rollen in Visual Studio finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](vs-azure-tools-remote-desktop-roles.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

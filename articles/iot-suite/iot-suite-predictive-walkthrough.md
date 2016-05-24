@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="03/02/2016"
+ ms.date="05/16/2016"
  ms.author="araguila"/>
 
 # Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für vorbeugende Wartung
@@ -126,4 +126,4 @@ Im TechNet-Blogbeitrag [IoT Suite - Under The Hood - Predictive Maintenance](htt
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

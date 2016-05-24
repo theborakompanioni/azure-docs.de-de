@@ -3,7 +3,7 @@
    description="Erstellen, Bereitstellen und Debuggen einer Service Fabric-Anwendung in Visual Studio"
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/27/2016"
-   ms.author="seanmck"/>
+   ms.author="ryanwi"/>
 
 # Erstellen Ihrer ersten Azure Service Fabric-Anwendung in Visual Studio
 
@@ -115,9 +115,9 @@ Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
   Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Auch nach dem Beenden des Debuggers und dem Schließen von Visual Studio werden Ihre Anwendungen weiterhin im Hintergrund ausgeführt. Je nach Art Ihrer Apps kann diese Hintergrundaktivität erhebliche Ressourcen auf dem Computer beanspruchen. Sie haben mehrere Möglichkeiten, hier steuernd einzugreifen:
 
   1. Zum Entfernen einer einzelnen Anwendung und all ihrer Daten verwenden Sie im Service Fabric-Explorer die Aktion **Anwendung löschen**. Rufen Sie dazu in der Anwendungslistenansicht im linken Bereich entweder das Menü **AKTIONEN** oder das Kontextmenü auf.
-  
+
     ![Löschen einer Anwendung in Service Fabric-Explorer][sfe-delete-application]
-    
+
   2. Nachdem Sie die Anwendung aus dem Cluster gelöscht haben, können Sie für die Anwendung die **Bereitstellung des Typs aufheben**. Dabei wird das Paket der Anwendung, einschließlich Code und Konfiguration,aus dem Imagespeicher des Clusters entfernt.
   3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
 
@@ -150,4 +150,4 @@ Temporarily removing this link because we have removed the ASP.NET template.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

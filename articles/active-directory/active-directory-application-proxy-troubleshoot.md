@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 
@@ -25,9 +25,7 @@
 
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
 
-- Öffnen Sie die Windows Services-Konsole, und vergewissern Sie sich, dass der Dienst "Microsoft AAD-Anwendungsproxy-Connector" aktiviert ist und ausgeführt wird. Sie können ggf. auch – wie in der folgenden Abbildung gezeigt – die Eigenschaftenseite des Anwendungsproxy-Diensts anzeigen:
-
-  ![Screenshot: Fenster mit Microsoft AAD-Anwendungsproxy-Connector-Eigenschaften](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
+- Öffnen Sie die Windows Services-Konsole, und vergewissern Sie sich, dass der Dienst **Microsoft AAD-Anwendungsproxy-Connector** aktiviert ist und ausgeführt wird. Sie können gegebenenfalls auch – wie in der folgenden Abbildung gezeigt – die Eigenschaftenseite des Anwendungsproxy-Diensts anzeigen: ![Screenshot: Fenster mit Microsoft AAD-Anwendungsproxy-Connector-Eigenschaften](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 
 - Öffnen Sie die Ereignisanzeige, und suchen Sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Administrator** nach Ereignissen, die sich auf den Anwendungsproxy-Connector beziehen.
 - Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie die Analyse- und Debugprotokolle aktivieren und das Sitzungsprotokoll des Anwendungsproxy-Connectors aktivieren.
@@ -54,7 +52,7 @@ Wenn während der Connector-Installation durch den Assistenten ein Fehler bei de
 | Fehler bei der Connector-Registrierung: Vergewissern Sie sich, dass der Computer mit dem Internet verbunden ist. Fehler: „Unter `https://connector.msappproxy.net:9090/register/RegisterConnector` hat kein Endpunkt gelauscht, der die Nachricht akzeptieren konnte. Ursache dieses Fehlers ist häufig eine falsche Adresse oder SOAP-Aktion. Weitere Informationen können Sie, sofern vorhanden, der InnerException entnehmen." | Wenn Sie sich mithilfe Ihres Azure AD-Benutzernamens und -Kennworts anmelden und dann diese Fehlermeldung erhalten, sind ggf. alle Ports über 8081 blockiert. | Stellen Sie sicher, dass die erforderlichen Ports geöffnet sind. Weitere Informationen finden Sie unter [Voraussetzungen für den Anwendungsproxy](active-directory-application-proxy-enable.md). |
 | Klartextfehler wird im Registrierungsfenster angezeigt. Der Vorgang kann nicht fortgesetzt werden – Fenster schließen. | Sie haben einen falschen Benutzernamen oder ein falsches Kennwort eingegeben. | Versuchen Sie es erneut. |
 | Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: AADSTS50059: In der Anforderung oder in den bereitgestellten Anmeldeinformationen wurden keine Informationen gefunden, die den Mandanten identifizieren, und bei der Suche nach dem Dienstprinzipal-URI ist ein Fehler aufgetreten. | Sie versuchen, sich mithilfe eines Microsoft-Kontos und nicht mithilfe einer Domäne anzumelden, die Bestandteil der Organisations-ID des Verzeichnisses ist, auf das Sie versuchen, zuzugreifen. | Stellen Sie sicher, dass der Administrator Teil des gleichen Domänennamens wie die Mandantendomäne ist. Wenn die Azure AD-Domäne z. B. contoso.com ist, sollte der Administrator admin@contoso.com lauten. |
-| Fehler beim Abrufen der aktuellen Ausführungsrichtlinie für die Ausführung von PowerShell-Skripts | Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. | Öffnen Sie den Gruppenrichtlinien-Editor. Wechseln Sie zu „Computerkonfiguration > Administrative Vorlagen > Windows-Komponenten > Windows PowerShell“, und doppelklicken Sie auf **Skriptausführung aktivieren**. Die Option kann entweder auf **Nicht konfiguriert** oder **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ entweder auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. |
+| Fehler beim Abrufen der aktuellen Ausführungsrichtlinie für die Ausführung von PowerShell-Skripts. | Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. | Öffnen Sie den Gruppenrichtlinien-Editor. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. Die Option kann entweder auf **Nicht konfiguriert** oder auf **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. |
 | Der Connector konnte die Konfiguration nicht herunterladen. | Das Clientzertifikat des Connectors, das für die Authentifizierung verwendet wird, ist abgelaufen. Dies kann auch auftreten, wenn Sie den Connector hinter einem Proxy installiert haben. In diesem Fall kann der Connector nicht auf das Internet zugreifen, und wird nicht in der Lage sein, Anwendungen für Remotebenutzer bereitzustellen. | Erneuern Sie die Vertrauensstellung manuell mithilfe des Cmdlets `Register-AppProxyConnector` in Windows PowerShell. Wenn sich der Connector hinter einem Proxy befindet, ist es notwendig, den Connector-Konten "Netzwerkdienste" und "Lokales System" Zugriff auf das Internet zu gewähren. Hierzu können sie entweder Zugriff auf den Proxy erhalten, oder sie werden zur Umgehung des Proxys eingestellt. |
 | Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie ein globaler Administrator Ihres Active Directory-Verzeichnisses sind, um den Connector zu registrieren. Fehler: "Die Registrierungsanforderung wurde verweigert." | Der Alias, mit dem Sie versuchen, sich anzumelden, ist kein Administrator für diese Domäne. Ihr Connector wird immer für das Verzeichnis installiert, das Besitzer der Domäne des Benutzers ist. | Stellen Sie sicher, dass der Administrator, als der Sie sich anmelden möchten, über globale Berechtigungen für den Azure AD-Mandanten verfügt.|
 
@@ -63,7 +61,7 @@ Wenn während der Connector-Installation durch den Assistenten ein Fehler bei de
 
 | Error | Beschreibung | Lösung |
 | --- | --- | --- |
-| Fehler beim Abrufen der aktuellen Ausführungsrichtlinie für die Ausführung von PowerShell-Skripts. | Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. | Öffnen Sie den Gruppenrichtlinien-Editor. Wechseln Sie zu „Computerkonfiguration > Administrative Vorlagen > Windows-Komponenten > Windows PowerShell“, und doppelklicken Sie auf **Skriptausführung aktivieren**. Die Option kann entweder auf **Nicht konfiguriert** oder **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ entweder auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. |
+| Fehler beim Abrufen der aktuellen Ausführungsrichtlinie für die Ausführung von PowerShell-Skripts. | Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. | Öffnen Sie den Gruppenrichtlinien-Editor. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. Die Option kann entweder auf **Nicht konfiguriert** oder auf **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. |
 | 12008 - Azure AD hat die maximale Anzahl von zulässigen Kerberos-Authentifizierungsversuchen beim Back-End-Server überschritten. | Dieses Ereignis deutet möglicherweise auf eine falsche Konfiguration zwischen Azure AD und dem Back-End-Anwendungsserver oder ein Problem bei der Konfiguration von Datum und Uhrzeit auf beiden Computern hin. | Der Back-End-Server hat das von Azure AD erstellte Kerberos-Ticket abgelehnt. Überprüfen Sie, ob die Konfiguration von Azure AD und des Back-End-Anwendungsservers korrekt ist. Stellen Sie sicher, dass die Konfiguration von Datum und Uhrzeit in Azure AD und auf dem Back-End-Anwendungsserver synchronisiert ist. |
 | 13016 – Azure AD kann kein Kerberos-Ticket für den Benutzer abrufen, da kein UPN im Edgetoken oder im Zugriffscookie vorliegt. | Es gibt ein Problem mit der STS-Konfiguration. | Korrigieren Sie die UPN-Anspruchskonfiguration im STS. |
 | 13019 – Azure AD kann aufgrund des folgenden allgemeinen API-Fehlers kein Kerberos-Ticket für den Benutzer abrufen. | Dieses Ereignis deutet möglicherweise auf eine falsche Konfiguration zwischen Azure AD und dem Domänencontrollerserver oder ein Problem bei der Konfiguration von Datum und Uhrzeit auf beiden Computern hin. | Der Domänencontroller hat das von Azure AD erstellte Kerberos-Ticket abgelehnt. Überprüfen Sie, ob die Konfiguration von Azure AD und des Back-End-Anwendungsservers korrekt ist, insbesondere die SPN-Konfiguration. Sorgen Sie dafür, dass Azure AD in dieselbe Domäne wie der Domänencontroller eingebunden ist, um sicherzustellen, dass der Domänencontroller eine Vertrauensstellung mit Azure AD herstellt. Stellen Sie sicher, dass die Konfiguration von Datum und Uhrzeit in Azure AD und auf dem Domänencontroller synchronisiert ist. |
@@ -76,28 +74,17 @@ Wenn während der Connector-Installation durch den Assistenten ein Fehler bei de
 
 
 ## Weitere Informationen
-Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
 
-
+- [Aktivieren des Azure AD-Anwendungsproxys](active-directory-application-proxy-enable.md)
 - [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
-- [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
-- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
+- [Einmaliges Anmelden aktivieren](active-directory-application-proxy-sso-using-kcd.md)
 - [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
-- [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
 
-## Weitere Informationen zum Anwendungsproxy
-- [Onlinehilfe anzeigen](active-directory-application-proxy-enable.md)
-- [Blog zum Anwendungsproxy aufrufen](http://blogs.technet.com/b/applicationproxyblog/)
-- [Sehen Sie sich unsere Videos auf Channel 9 an!](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
-
-## Zusätzliche Ressourcen
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-- [Als Organisation für Azure registrieren](sign-up-organization.md)
-- [Azure-Identität](fundamentals-identity.md)
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

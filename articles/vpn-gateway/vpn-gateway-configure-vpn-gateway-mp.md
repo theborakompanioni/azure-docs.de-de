@@ -4,7 +4,7 @@
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2016"
+   ms.date="05/09/2016"
    ms.author="cherylmc" />
 
 # Konfigurieren eines VPN Gateways für das klassische Bereitstellungsmodell
@@ -69,7 +69,7 @@ Klicken Sie anschließend am unteren Seitenrand auf **Gateway erstellen**. Sie h
 
 ![VPN-Routingtyp des Gateways](./media/vpn-gateway-configure-vpn-gateway-mp/IC717026.png)
 
-Während der Gatewayerstellung wechselt die Gatewaygrafik auf der Seite zu Gelb und zeigt *Gateway wird erstellt* an. Die Gatewayerstellung kann bis zu 25 Minuten dauern. Warten Sie, bis die Gatewayerstellung abgeschlossen ist, bevor Sie mit anderen Konfigurationseinstellungen fortfahren.
+Während der Gatewayerstellung wechselt die Gatewaygrafik auf der Seite zu Gelb und zeigt *Gateway wird erstellt* an. Die Gatewayerstellung kann bis zu 25 Minuten dauern. Warten Sie, bis die Gatewayerstellung abgeschlossen ist, bevor Sie mit anderen Konfigurationseinstellungen fortfahren.
 
 ![Gatewayerstellung](./media/vpn-gateway-configure-vpn-gateway-mp/IC717027.png)
 
@@ -162,12 +162,10 @@ Vergewissern Sie sich vor dem Ändern des VPN-Typs des Gateways, dass Ihr VPN-Ge
 
 ## Nächste Schritte
 
-Weitere Informationen zu den standortübergreifenden Verbindungen für virtuelle Netzwerke finden Sie unter [Informationen zu sicheren, standortübergreifenden virtuellen Netzwerkverbindungen](vpn-gateway-cross-premises-options.md).
-
 Sie können dem virtuellen Netzwerk virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Computers](../virtual-machines/virtual-machines-windows-classic-createportal.md).
 
 Wenn Sie eine Punkt-zu-Standort-VPN-Verbindung konfigurieren möchten, helfen Ihnen die Informationen unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung](vpn-gateway-point-to-site-create.md).
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

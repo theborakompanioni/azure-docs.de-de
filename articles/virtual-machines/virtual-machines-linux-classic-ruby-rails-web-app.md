@@ -14,21 +14,16 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="05/06/2016"
 	ms.author="robmcm"/>
 
-
-
-
-
-#Ruby on Rails-Webanwendung auf Azure VM
+# Ruby on Rails-Webanwendung auf Azure VM
 
 In diesem Lernprogramm wird gezeigt, wie Sie eine Ruby on Rails-Website auf Azure mit einem virtuellen Linux-Computer hosten.
 
 Dieses Lernprogramm wurde mit Ubuntu Server 14.04 LTS getestet. Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte zur Rails-Installation möglicherweise anpassen.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
-
 
 ## Erstellen einer Azure-VM
 
@@ -70,9 +65,9 @@ Nachdem der virtuelle Computer bereitgestellt wurde, können Sie den SSH-Endpunk
 
 3. Geben Sie den folgenden Befehl für die Installation von Rails ein:
 
-		sudo gem install rails --no-rdoc --no-ri
+		sudo gem install rails --no-rdoc --no-ri -V
 
-	Verwenden Sie die Flags "--no-rdoc" und "--no-ri", um zur Beschleunigung des Vorgangs die Installation der Dokumentation zu überspringen.
+	Verwenden Sie die Flags "--no-rdoc" und "--no-ri", um zur Beschleunigung des Vorgangs die Installation der Dokumentation zu überspringen. Die Ausführung dieses Befehls dauert wahrscheinlich etwas länger. Durch Hinzufügen des Befehls „-V“ können Sie Informationen zum Installationsstatus anzeigen.
 
 ## Erstellen und Ausführen einer App
 
@@ -93,7 +88,6 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
 	[2015-06-09 23:34:23] INFO  WEBrick 1.3.1
 	[2015-06-09 23:34:23] INFO  ruby 1.9.3 (2013-11-22) [x86_64-linux]
 	[2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
-
 
 ## Hinzufügen eines Endpunkts
 
@@ -129,12 +123,11 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
 
 	![Standard-Rails-Seite][default-rails-cloud]
 
-
-##<a id="next"></a>Nächste Schritte
+## Nächste Schritte
 
 In diesem Lernprogramm haben Sie die meisten Schritte manuell ausgeführt. In einer Produktionsumgebung würden Sie die App auf einem Entwicklungscomputer schreiben und in der Azure-VM bereitstellen. Außerdem wird in den meisten Produktionsumgebungen die Rails-Anwendung zusammen mit einem anderen Serverprozess wie Apache oder NginX gehostet, der die Weiterleitung von Anfragen an mehrere Instanzen der Rails-Anwendung und statische Ressourcen bearbeitet. Weitere Informationen finden Sie unter http://rubyonrails.org/deploy/.
 
-Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails Guides][rails-guides] (in englischer Sprache).
+Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails Guides][rails-guides] \(in englischer Sprache).
 
 Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie unter:
 
@@ -144,35 +137,23 @@ Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie 
 
 * [Bereitstellen von Inhalten mit hoher Bandbreite über das Content Delivery Network][cdn-howto]
 
-
-
 <!-- WA.com links -->
 [blobs]: ../storage/storage-ruby-how-to-use-blob-storage.md
-
-[cdn-howto]: /develop/ruby/app-services/
-
+[cdn-howto]: https://azure.microsoft.com/develop/ruby/app-services/
 [management-portal]: https://manage.windowsazure.com/
-
-[tables]: /develop/ruby/how-to-guides/table-service/
-
+[tables]: ../storage/storage-ruby-how-to-use-table-storage.md
 [vm-instructions]: virtual-machines-linux-classic-createportal.md
-
 
 <!-- External Links -->
 [rails-guides]: http://guides.rubyonrails.org/
-
 [sqlite3]: http://www.sqlite.org/
 
 <!-- Images -->
 
 [default-rails-cloud]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/basicrailscloud.png
-
 [vmlist]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/vmlist.png
-
 [endpoints]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/endpoints.png
-
 [new-endpoint]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint.png
-
 [new-endpoint1]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

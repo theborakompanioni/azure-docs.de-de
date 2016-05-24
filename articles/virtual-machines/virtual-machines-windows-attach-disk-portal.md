@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="05/09/2016"
 	ms.author="cynthn"/>
 
 # Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 
 ## <a id="initializeinWS"></a>Gewusst wie: Initialisieren eines neuen Datenträgers unter Windows Server
 
-1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](virtual-machines-windows-connect-logon.md).
+1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](virtual-machines-windows-connect-logon.md).
 
 2. Öffnen Sie den **Server-Manager**, nachdem Sie sich auf dem virtuellen Computer angemeldet haben. Klicken Sie im linken Bereich auf **Datei- und Speicherdienste**.
 
@@ -55,4 +55,4 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 
 Wenn Ihre Anwendung das Laufwerk „D:“ für die Datenspeicherung verwenden muss, können Sie [den Laufwerkbuchstaben des temporären Windows-Datenträgers ändern](virtual-machines-windows-classic-change-drive-letter.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

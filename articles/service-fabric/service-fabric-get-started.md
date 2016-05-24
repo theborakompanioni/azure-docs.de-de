@@ -3,7 +3,7 @@
    description="Installieren Sie Laufzeit, SDK und Tools, und erstellen Sie einen lokalen Entwicklungscluster. Nach Abschluss des Setups können Sie mit der Erstellung von Clientanwendungen beginnen."
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="04/18/2016"
-   ms.author="seanmck"/>
+   ms.author="ryanwi"/>
 
 # Vorbereiten Ihrer Entwicklungsumgebung
  Zum Entwickeln und Ausführen von [Azure Service Fabric-Anwendungen][1] auf dem Entwicklungscomputer müssen Sie die Laufzeit, das SDK und Tools installieren. Sie müssen auch die Ausführung der im SDK enthaltenen Windows PowerShell-Skripts aktivieren.
@@ -64,4 +64,4 @@ Ihre Entwicklungsumgebung ist nun eingerichtet, und Sie können mit der Entwickl
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "WebPI-Link für Core SDK"
 [powershell5-download]: https://www.microsoft.com/de-DE/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->
