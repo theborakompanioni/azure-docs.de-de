@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/10/2016"
+   ms.date="05/13/2016"
    ms.author="sonyama;barbkess"/>
 
 # Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio
@@ -22,27 +22,26 @@
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL Data Warehouse-Datenbank veranschaulicht, das mit den SQL Server Data Tools (SSDT) in Visual Studio nur wenige Minuten dauert. Nachdem die Verbindung hergestellt wurde, führen Sie eine einfache Abfrage aus.
+In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL Data Warehouse-Instanz veranschaulicht, das mit der SQL Server Data Tools-Erweiterung (SSDT) in Visual Studio nur wenige Minuten dauert. Nachdem die Verbindung hergestellt wurde, führen Sie eine einfache Abfrage aus.
 
 ## Voraussetzungen
 
-+ AdventureWorksDW-Beispieldatenbank in SQL Data Warehouse. Informationen zum Erstellen dieser Datenbank finden Sie unter [Erstellen einer SQL Data Warehouse-Datenbank](sql-data-warehouse-get-started-provision.md).
-+ SQL Server Data Tools für Visual Studio. Installationshinweise und Optionen finden Sie unter [Installieren von Visual Studio und/oder SSDT](sql-data-warehouse-install-visual-studio.md).
++ AdventureWorksDW-Beispieldaten in SQL Data Warehouse. Informationen zum Erstellen dieser Daten finden Sie unter [Erstellen eines SQL Data Warehouse][].
++ SQL Server Data Tools für Visual Studio. Installationshinweise und -optionen finden Sie unter [Installieren von Visual Studio und SSDT][].
 
 ## Schritt 1: Ermitteln des vollqualifizierten Namens des SQL Azure-Servers
 
-Ihre Datenbank ist einem Azure SQL-Server zugeordnet. Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollqualifizierten Namen des Servers (**Servername**.database.windows.net*).
+Ihre SQL Data Warehouse-Datenbank ist einem Azure SQL Server zugeordnet. Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollqualifizierten Namen des Servers (**Servername**.database.windows.net*).
 
 So ermitteln Sie den vollqualifizierten Servernamen:
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal][].
 2. Klicken Sie auf **SQL-Datenbanken**, und klicken Sie auf die Datenbank, mit der Sie eine Verbindung herstellen möchten. In diesem Beispiel wird die AdventureWorksDW-Beispieldatenbank verwendet.
 3. Suchen Sie den vollständigen Servernamen.
 
     ![Vollständiger Servername][1]
 
-## Schritt 2: Herstellen einer Verbindung mit der SQL-Datenbank
-Verwenden Sie für optimale Ergebnisse Visual Studio 2015 mit dem [aktuellen SQL Server Data Tools (SSDT)-Update](https://msdn.microsoft.com/library/mt204009.aspx).
+## Schritt 2: Herstellen einer Verbindung mit SQL Data Warehouse
 
 1. Öffnen Sie Visual Studio 2013 oder 2015.
 2. Öffnen Sie den SQL Server-Objekt-Explorer. Wählen Sie zu diesem Zweck **Ansicht** > **SQL Server-Objekt-Explorer** aus.
@@ -57,21 +56,18 @@ Verwenden Sie für optimale Ergebnisse Visual Studio 2015 mit dem [aktuellen SQL
 
     ![Verbindung mit dem Server herstellen][4]
 
-    - **Servername**. Geben Sie den zuvor ermittelten *Servernamen* ein.
-    - **Authentifizierung**. Wählen Sie SQL Server-Authentifizierung.
-    - **Benutzername** und **Kennwort**. Geben Sie den Benutzernamen und das Kennwort für den Azure SQL-Server ein.
-    - **Datenbankname**. Geben Sie den Datenbanknamen für die SQL DW-Datenbank ein.
+    - **Servername**. Geben Sie den zuvor ermittelten **Servernamen** ein.
+    - **Authentifizierung**. Wählen Sie **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
+    - **Benutzername** und **Kennwort**. Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
     - Klicken Sie auf **Verbinden**.
 
 5. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
 
     ![AdventureWorksDW erkunden][5]
 
-> [AZURE.NOTE] Die Angabe der SQL Data Warehouse-Datenbank im Feld **Datenbankname** zum Zeitpunkt der Verbindungsherstellung (Schritt 4) ist wichtig, damit die Objektstruktur ordnungsgemäß funktioniert. Es funktioniert unter Umständen nicht, diese Option leer zu lassen und eine Verbindung mit der Standarddatenbank **master** herzustellen, wenn manche der Datenbanken auf dem logischen Server angehalten wurden. Diese Einschränkung wird irgendwann behoben. In der Zwischenzeit wird durch das Herstellen einer Verbindung mit der SQL Data Warehouse-Datenbank jedoch die korrekte Funktionsweise der Objekt-Explorer-Struktur (siehe oben) gewährleistet.
-
 ## Schritt 3: Ausführen einer Beispielabfrage
 
-Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, fahren wir mit dem Schreiben einer Abfrage fort.
+Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, schreiben wir eine Abfrage.
 
 1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
 
@@ -97,8 +93,16 @@ Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, fahren wir 
 
 Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren][].
 
+Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierung finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung][].
+
+<!--Arcticles-->
+[Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Installieren von Visual Studio und SSDT]: sql-data-warehouse-install-visual-studio.md
+[Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung]: ../sql-database/sql-database-aad-authentication.md
 [die Daten mit Power BI zu visualisieren]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 
+<!--Other-->
+[Azure-Portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -111,4 +115,4 @@ Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versu
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

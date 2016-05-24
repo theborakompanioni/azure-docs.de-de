@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/12/2016"
+	ms.date="05/13/2016"
 	ms.author="sethm"/>
 
 # Erste Schritte mit Event Hubs
@@ -32,35 +32,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 + Ein aktives Azure-Konto. <br/>Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank").
 
-## Erstellen eines Ereignis-Hubs
-
-1. Melden Sie sich beim [klassischen Azure-Portal][] an, und klicken Sie im unteren Teil des Bildschirms auf **NEU**.
-
-2. Klicken Sie auf **App Services**, **Service Bus**, **Event Hub** und dann auf **Schnellerfassung**.
-
-	![][1]
-
-3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
-
-	![][2]
-
-4. Wenn Sie nicht explizit einen vorhandenen Namespace in einer bestimmten Region ausgewählt haben, wird im Portal ein Namespace für Sie erstellt (normalerweise ***Event Hub-Name*-ns**). Klicken Sie auf diesen Namespace (in diesem Beispiel **eventhub-ns**).
-
-	![][3]
-
-5. Klicken Sie am oberen Seitenrand auf die Registerkarte **Event Hubs**, und klicken Sie dann auf den soeben erstellten Event Hub.
-
-	![][4]
-
-6. Klicken Sie am oberen Seitenrand auf die Registerkarte **Konfigurieren**, und fügen Sie eine Regel namens **SendRule** mit Send-Berechtigung hinzu. Fügen Sie eine weitere Regel namens **ReceiveRule** mit den Berechtigungen *Manage*, *Send* und *Listen* hinzu, und klicken Sie dann auf **Speichern**.
-
-	![][5]
-
-7. Klicken Sie am oberen Seitenrand auf die Registerkarte **Dashboard**, und klicken Sie dann auf **Verbindungsinformationen**. Kopieren Sie die beiden Verbindungszeichenfolgen an einen temporären Speicherort, da Sie sie später in diesem Tutorial noch benötigen.
-
-	![][6]
-
-Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Empfangen von Ereignissen erforderlichen Verbindungszeichenfolgen.
+[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
 
@@ -77,7 +49,7 @@ Sie können jetzt die Anwendung ausführen.
  
 3. Suchen Sie nach der vorhandenen Datei „Sender.csproj“, und doppelklicken Sie dann auf die Datei, um sie der Projektmappe hinzuzufügen.
  
-4. Klicken Sie erneut mit der rechten Maustaste auf die Projektmappe **Receiver**, und klicken Sie dann auf **Eigenschaften**. Die Eigenschaftenseite **Receiver** wird angezeigt.
+4. Klicken Sie erneut mit der rechten Maustaste auf die Projektmappe **Receiver**, und klicken Sie dann auf **Eigenschaften**. Die Eigenschaftenseite für **Receiver** wird angezeigt.
 
 5. Klicken Sie auf **Startprojekt** und dann auf die Schaltfläche **Mehrere Startprojekte**. Legen Sie das Feld **Aktion** für das Projekt **Receiver** und **Sender** jeweils auf **Start** fest.
 
@@ -93,11 +65,11 @@ Sie können jetzt die Anwendung ausführen.
 
 	![][21]
 
-2.	Das Projekt **Sender** wird automatisch ausgeführt. Drücken Sie im Konsolenfenster die **Eingabetaste**, und sehen Sie sich die im Empfängerfenster angezeigten Ereignisse an.
+2.	Das Projekt **Sender** wird automatisch ausgeführt. Drücken Sie im Konsolenfenster die EINGABETASTE, und sehen Sie sich die im Empfängerfenster angezeigten Ereignisse an.
 
 	![][22]
 
-Drücken Sie im Fenster **Sender** die Tastenkombination **STRG+C**, um die Anwendung „Sender“ zu beenden. Drücken Sie anschließend im Fenster „Receiver“ die **Eingabetaste**, um die Anwendung herunterzufahren.
+Drücken Sie im Fenster **Sender** die Tastenkombination STRG+C, um die Anwendung „Sender“ zu beenden. Drücken Sie anschließend im Fenster „Receiver“ die EINGABETASTE, um die Anwendung herunterzufahren.
 
 ## Nächste Schritte
 
@@ -109,20 +81,13 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 - [Übersicht über Event Hubs][]
 
 <!-- Images. -->
-[1]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub1.png
-[2]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub2.png
-[3]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub3.png
-[4]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub4.png
-[5]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub5.png
-[6]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub6.png
-
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png
 [20]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj2.png
 [21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[klassischen Azure-Portal]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [Ereignisprozessorhost]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Übersicht über Event Hubs]: event-hubs-overview.md
 [Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
@@ -130,4 +95,4 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

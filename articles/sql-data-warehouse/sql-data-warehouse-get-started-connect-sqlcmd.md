@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="05/16/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Verbinden und Abfragen mit SQLCMD
 
 > [AZURE.SELECTOR]
-- [Visual Studio](sql-data-warehouse-get-started-connect.md)
-- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [Visual Studio][]
+- [SQLCMD][]
 
 In dieser exemplarischen Vorgehensweise wird das Verbinden mit und Abfragen einer Azure SQL Data Warehouse-Datenbank veranschaulicht, was mit dem Hilfsprogramm SQLCMD.EXE nur wenige Minuten dauert. In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
 
@@ -30,13 +30,13 @@ In dieser exemplarischen Vorgehensweise wird das Verbinden mit und Abfragen eine
 
 ## Voraussetzungen
 
-+ [SQLCMD.EXE](https://msdn.microsoft.com/library/azure/ms162773.aspx): Informationen zum Herunterladen von SQLCMD.EXE finden unter [Microsoft Command Line Utilities 11 for SQL Server](http://go.microsoft.com/fwlink/?LinkId=321501).
++ Informationen zum Herunterladen von [sqlcmd.exe][] finden Sie unter [Microsoft-Befehlszeilenprogramme 11 für SQL Server][].
 
 ## Abrufen des vollqualifizierten Namens des SQL Azure-Servers
 
 Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollständigen Namen des Servers (****Servername**.database.windows.net*), auf dem sich die Datenbank befindet.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal][].
 2. Navigieren Sie zu der Datenbank, mit der Sie eine Verbindung herstellen möchten.
 3. Suchen Sie den vollständigen Servernamen (der in den folgenden Schritten verwendet wird):
 
@@ -70,17 +70,27 @@ C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Pas
 3> QUIT
 ```
 
-Weitere Informationen zu SQLCMD finden Sie in der [SQLCMD-Dokumentation](https://msdn.microsoft.com/library/azure/ms162773.aspx).
+Weitere Informationen zu SQLCMD finden Sie in der [SQLCMD-Dokumentation][sqlcmd.exe].
 
 
 ## Nächste Schritte
 
 Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [eine Verbindung mit Power BI herzustellen][].
 
-[eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
+Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierung finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung][].
 
+<!--Articles-->
+[Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung]: ../sql-database/sql-database-aad-authentication.md
+[eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
+[Visual Studio]: ./sql-data-warehouse-get-started-connect.md
+[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
+
+<!--Other-->
+[sqlcmd.exe]: https://msdn.microsoft.com/de-DE/library/ms162773.aspx
+[Microsoft-Befehlszeilenprogramme 11 für SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
+[Azure-Portal]: https://portal.azure.com
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

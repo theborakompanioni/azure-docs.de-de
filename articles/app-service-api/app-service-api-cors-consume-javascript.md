@@ -72,7 +72,7 @@ Sie können CORS für eine API-App auch konfigurieren, indem Sie [Azure Resource
 
 ## <a id="tutorialstart"></a> Fortsetzen des Erste-Schritte-Tutorials für .NET
 
-Falls Sie die Reihe „Erste Schritte“ für Node.js oder Java und API-Apps durcharbeiten, können Sie mit dem nächsten Artikel fortfahren: [Authentifizierung für App Service-API-Apps](app-service-api-authentication.md).
+Falls Sie die API-App-Reihe „Erste Schritte“ für Node.js oder Java durcharbeiten, haben Sie die Reihe „Erste Schritte“ abgeschlossen. Im Abschnitt [Nächste Schritte](#next-steps) erfahren Sie, wo Sie sich noch ausführlicher über API-Apps informieren können.
 
 Der Rest dieses Artikels ist eine Fortsetzung der Reihe „Erste Schritte“ für .NET. Es wird vorausgesetzt, dass Sie das [erste Tutorial](app-service-api-dotnet-get-started.md) erfolgreich abgeschlossen haben.
 
@@ -264,6 +264,13 @@ In den folgenden Schritten ist der Prozess zum Aktivieren der Web-API-Unterstüt
 		    [EnableCors(origins:"https://todolistangular0121.azurewebsites.net", headers:"accept,content-type,origin,x-my-header", methods: "get,post")]
 		    public class ToDoListController : ApiController
  
+## Verwenden von Azure API Management mit API-Apps
+
+Wenn Sie Azure API Management mit einer API-App verwenden, konfigurieren Sie CORS in API Management und nicht in der API-App. Weitere Informationen finden Sie in den folgenden Ressourcen:
+
+* [Azure API Management Overview](https://azure.microsoft.com/documentation/videos/azure-api-management-overview/) (Übersicht über Azure API Management) (Video: CORS beginnt bei 12:10)
+* [API Management cross domain policies](https://msdn.microsoft.com/library/azure/dn894084.aspx#CORS) (Domänenübergreifende API Management-Richtlinien)
+ 
 ## Problembehandlung
 
 Wenn Sie beim Durcharbeiten dieses Tutorials auf ein Problem stoßen, sollten Sie sich vergewissern, dass Sie die aktuelle Version des Azure SDK für .NET verwenden. Die einfachste Möglichkeit ist hierbei das [Herunterladen des Azure SDK für Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). Wenn Sie die aktuelle Version installiert haben, werden Sie vom Webplattform-Installer darüber informiert, dass keine Installation erforderlich ist.
@@ -279,6 +286,6 @@ Weitere Informationen zu Visual Studio-Features, mit denen die Problembehandlung
 
 ## Nächste Schritte 
 
-In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Im nächsten Artikel der Serie zu ersten Schritten mit API-Apps lernen Sie die [Authentifizierung für App Service-API-Apps](app-service-api-authentication.md) kennen.
+In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Wenn Sie mehr über API-Apps erfahren möchten, lesen Sie die [Einführung in die Authentifizierung in App Service](../app-service/app-service-authentication-overview.md), und wechseln Sie dann zum Tutorial [Benutzerauthentifizierung für API-Apps ](app-service-api-dotnet-user-principal-auth.md).
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

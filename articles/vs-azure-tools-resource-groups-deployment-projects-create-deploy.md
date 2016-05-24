@@ -173,7 +173,13 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
 
     ![Referenz hinzufügen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
     
-    Zu den Schlüsseleigenschaften eines Subnetzes zählen:Durch Hinzufügen eines Verweises verknüpfen Sie das Web-App-Projekt mit dem Ressourcengruppenprojekt, und legen Sie drei Schlüsseleigenschaften fest. **Zusätzliche Eigenschaften** enthält den Stagingspeicherort für das Webbereitstellungspaket für die Übertragung auf den Azure-Speicher. **Dateipfad einbeziehen** enthält den Pfad, in dem das Paket erstellt wird. **Ziele einbeziehen** enthält den Befehl, der von der Bereitstellung ausgeführt wird. Der Standardwert **Erstellen;Paket** ermöglicht der Bereitstellung das Erstellen eines Webbereitstellungspakets (package.zip). Ein Veröffentlichungsprofil ist nicht erforderlich, da die Bereitstellung die erforderlichen Informationen aus den Eigenschaften zum Erstellen des Pakets bezieht.
+    Durch Hinzufügen eines Verweises verknüpfen Sie das Web-App-Projekt mit dem Ressourcengruppenprojekt und legen automatisch drei Schlüsseleigenschaften fest.
+    
+    - **Zusätzliche Eigenschaften** enthält den Stagingspeicherort für das Webbereitstellungspaket für die Übertragung in Azure Storage. 
+    - **Dateipfad einbeziehen** enthält den Pfad, in dem das Paket erstellt wird. **Ziele einbeziehen** enthält den Befehl, der von der Bereitstellung ausgeführt wird. 
+    - Der Standardwert **Erstellen;Paket** ermöglicht der Bereitstellung das Erstellen eines Webbereitstellungspakets (package.zip).  
+    
+    Ein Veröffentlichungsprofil ist nicht erforderlich, da die Bereitstellung die erforderlichen Informationen aus den Eigenschaften zum Erstellen des Pakets bezieht.
     
       ![Referenz anzeigen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
       
@@ -193,7 +199,7 @@ Navigieren Sie nach Abschluss der Bereitstellung zu der Website. Dort sehen Sie,
 
 ## Nächste Schritte
 
-- Informationen zum Veralten von Ressourcen über das Portal finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
-- Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
+- Informationen zum Verwalten von Ressourcen über das Portal finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
+- Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

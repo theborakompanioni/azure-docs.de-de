@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/06/2016"
+	ms.date="05/16/2016"
 	ms.author="jroth" />
 
 # Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal
@@ -76,11 +76,13 @@ Geben Sie auf dem Blatt **Grundeinstellungen** die folgenden Informationen an:
 * Geben Sie ein sicheres **Kennwort** an.
 * Wenn Sie über mehrere Abonnements verfügen, müssen Sie überprüfen, ob das Abonnement für die zu erstellende VM korrekt ist.
 * Geben Sie im Feld **Ressourcengruppe** einen Namen für eine neue Ressourcengruppe ein. Klicken Sie auf **Vorhandene auswählen**, um alternativ dazu eine vorhandene Ressourcengruppe zu verwenden. Bei einer Ressourcengruppe handelt es sich um eine Sammlung verwandter Ressourcen in Azure (virtuelle Computer, Speicherkonten, virtuelle Netzwerke usw.).
->[AZURE.NOTE] Die Verwendung einer neuen Ressourcengruppe ist hilfreich, wenn Sie SQL Server-Bereitstellungen in Azure testen oder sich gerade damit vertraut machen. Nachdem Sie den Test abgeschlossen haben, können Sie die gesamte Ressourcengruppe löschen. Es werden alle Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind, einschließlich der SQL-VM. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
+	
+	>[AZURE.NOTE] Die Verwendung einer neuen Ressourcengruppe ist hilfreich, wenn Sie SQL Server-Bereitstellungen in Azure testen oder sich gerade damit vertraut machen. Nachdem Sie den Test abgeschlossen haben, können Sie die gesamte Ressourcengruppe löschen. Es werden alle Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind, einschließlich der SQL-VM. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
+
 * Wählen Sie einen **Standort** für die Bereitstellung aus.
 * Klicken Sie auf **OK**, um die Einstellungen zu speichern.
 
-	![Blatt mit SQL-Grundeinstellungen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png)
+	![Blatt mit SQL-Grundeinstellungen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## 2\. VM-Größe auswählen
 Wählen Sie unter dem Schritt **Größe** im Blatt **Größe auswählen** die Größe für einen virtuellen Computer aus. Es werden empfohlene Computergrößen angezeigt. Die Größen basieren auf der Vorlage, die Sie ausgewählt haben. Außerdem werden die monatlichen Kosten für die Ausführung der VM geschätzt.
@@ -247,4 +249,4 @@ Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [S
 
 Eine Übersicht über SQL Server auf virtuellen Azure-Computern als Video finden Sie unter [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Azure-VM ist die beste Plattform für SQL Server 2016).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->
