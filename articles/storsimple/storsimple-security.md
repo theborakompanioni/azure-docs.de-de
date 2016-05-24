@@ -4,7 +4,7 @@
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
-   manager="Carolz" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="01/22/2016"
+   ms.date="05/03/2016"
    ms.author="v-sharos"/>
 
 # StorSimple-Sicherheit und -Datenschutz
@@ -70,7 +70,7 @@ Kennwörter sind ein wichtiger Aspekt der Computersicherheit und werden in der S
 
 Windows PowerShell für StorSimple ist eine Befehlszeilenschnittstelle, mit der Sie das StorSimple-Gerät verwalten können. Windows PowerShell für StorSimple bietet Features, mit denen Sie Ihr Gerät registrieren, die Netzwerkschnittstelle Ihres Geräts konfigurieren, bestimmte Arten von Updates installieren, Probleme Ihres Geräts durch Zugriff auf eine Supportsitzung beheben und den Gerätestatus ändern können. Sie können auf Windows PowerShell für StorSimple zugreifen, indem Sie eine Verbindung mit der seriellen Konsole auf dem Gerät herstellen oder Windows PowerShell-Remoting verwenden.
 
-Das PowerShell-Remoting kann über HTTPS oder HTTP erfolgen. Wenn die Remoteverwaltung über HTTPS aktiviert ist, müssen Sie das Remoteverwaltungszertifikat vom Gerät herunterladen und es auf dem Remoteclient installieren. Weitere Informationen zum PowerShell-Remoting finden Sie unter [Herstellen einer Remoteverbindung mit dem StorSimple-Gerät](storsimple-remote-connect).
+Das PowerShell-Remoting kann über HTTPS oder HTTP erfolgen. Wenn die Remoteverwaltung über HTTPS aktiviert ist, müssen Sie das Remoteverwaltungszertifikat vom Gerät herunterladen und es auf dem Remoteclient installieren. Weitere Informationen zum PowerShell-Remoting finden Sie unter [Herstellen einer Remoteverbindung mit dem StorSimple-Gerät](storsimple-remote-connect.md).
 
 Nachdem Sie Windows PowerShell für StorSimple verwendet haben, um eine Verbindung mit dem Gerät herzustellen, müssen Sie das Geräteadministratorkennwort für die Anmeldung auf dem Gerät bereitstellen.
 
@@ -269,4 +269,4 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 [Bereitstellen von StorSimple-Geräten](storsimple-deployment-walkthrough.md).
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -215,4 +215,4 @@ Nachdem Sie nun einen IoT-Hub mithilfe einer ARM-Vorlage mit einem C#-Programm b
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0504_2016--->

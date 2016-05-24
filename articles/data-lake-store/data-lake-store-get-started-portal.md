@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/07/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des Azure-Portals
@@ -44,6 +44,13 @@ Zunächst müssen Sie die Aktivierung Ihres Azure-Abonnements für die öffentli
 3. Klicken Sie auf dem Blatt **Neuer Data Lake-Speicher** auf **Für Vorschau anmelden**. Prüfen Sie die Informationen, und klicken Sie auf **OK**. Sie erhalten eine E-Mail, sobald Ihr Abonnement für die öffentliche Vorschau aktiviert wurde.
 
 	![Anmeldung für die öffentliche Vorschau](./media/data-lake-store-get-started-portal/preview-signup.png "Erstellen eines neuen Azure Data Lake-Kontos")
+
+## Lernen Sie schnell mithilfe von Videos?
+
+Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speicher an.
+
+* [Erstellen eines Data Lake-Speicherkontos](https://mix.office.com/watch/1k1cycy4l4gen)
+* [Verwalten von Daten im Data Lake-Speicher mit dem Daten-Explorer](https://mix.office.com/watch/icletrxrh6pc)
 
 ## Erstellen eines Azure Data Lake-Speicherkontos
 
@@ -130,4 +137,4 @@ Um ein Azure Data Lake-Speicherkonto zu löschen, klicken Sie auf dem Blatt „D
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

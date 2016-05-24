@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/05/2016"
+	ms.date="05/11/2016"
 	ms.author="glenga"/>
 
 
@@ -120,14 +120,13 @@ Weitere Informationen zu universellen Windows-Apps finden Sie unter [Unterstütz
 <!-- URLs. -->
 [Visual Studio 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Get started with data]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md
-[Get started with data]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [Erste Schritte mit der Synchronisierung von Offlinedaten]: mobile-services-windows-store-dotnet-get-started-offline-data.md
-[Get started with authentication]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
-[Get started with push notifications]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
+[Get started with authentication]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
+[Get started with push notifications]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [JavaScript and HTML]: mobile-services-win8-javascript/
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 [Beheben von Problemen bei einem Mobile Services .NET-Back-End]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

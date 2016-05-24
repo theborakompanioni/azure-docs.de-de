@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/03/2016"
+	ms.date="05/16/2016"
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
@@ -206,8 +206,8 @@ Klicken Sie auf die Registerkarte **Verwenden des Data Factory-Editors**, um zu 
 						                "linkedServiceName": "HDInsightOnDemandLinkedService"
 						            }
 						        ],
-						        "start": "2014-02-01T00:00:00Z",
-						        "end": "2014-02-02T00:00:00Z",
+						        "start": "2016-04-01T00:00:00Z",
+						        "end": "2016-04-02T00:00:00Z",
 						        "isPaused": false
 						    }
 	                    }
@@ -235,7 +235,7 @@ Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HD
 1. Starten Sie **Azure PowerShell**, und führen Sie den folgenden Befehl aus. 
 	- Führen Sie **Login-AzureRmAccount** aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben.  
 	- Führen Sie den folgenden Befehl aus, um ein Abonnement auszuwählen, in dem die Data Factory erstellt werden soll. Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
-1. Führen Sie den folgenden Befehl aus, um die Data Factory-Entitäten bereitzustellen, die Sie in Schritt 1 mit der ARM-Vorlage erstellt haben. 
+1. Führen Sie den folgenden Befehl aus, um die Data Factory-Entitäten bereitzustellen, die Sie in Schritt 1 mit der ARM-Vorlage erstellt haben. 
 
 		New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json
 
@@ -250,10 +250,15 @@ Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HD
 8. Doppelklicken Sie in der Diagrammansicht auf das Dataset **AzureBlobOutput**. Sie sehen den Slice, der gerade verarbeitet wird.
 
 	![Datensatz](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-9. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt. Beachten Sie, dass die bedarfsgesteuerte Erstellung eines HDInsight-Clusters in der Regel einige Zeit dauert (etwa 20 Minuten). 
+9. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt. Beachten Sie, dass die bedarfsgesteuerte Erstellung eines HDInsight-Clusters in der Regel einige Zeit dauert (etwa 20 Minuten). 
 
 	![Datensatz](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)	
 10. Sobald der Slice den Status **Bereit** hat, überprüfen Sie, ob die Ausgabedaten sich in Ihrem Blobspeicher im Ordner **partitioneddata** im Container **adfgetstarted** befinden.  
- 
 
-<!---HONumber=AcomDC_0323_2016-->
+Unter [Überwachen von Datasets und Pipelines](data-factory-monitor-manage-pipelines.md) finden Sie eine Anleitung zum Überwachen der in diesem Tutorial erstellten Pipeline und Datasets über das Azure-Portal.
+
+Mit der App „Überwachung und Verwaltung“ können Sie Ihre Datenpipelines auch überwachen. Einzelheiten zur Verwendung der Anwendung finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
+
+> [AZURE.IMPORTANT] Die Eingabedatei wird bei erfolgreicher Verarbeitung des Slice gelöscht. Wenn Sie den Slice erneut ausführen oder das Tutorial nochmals durchgehen möchten, laden Sie die Eingabedatei (input.log) daher in den Ordner „inputdata“ des Containers „adfgetstarted“ hoch.
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # Ausführen des Assistenten zum Aktivieren einer Datenbank für Stretch
@@ -44,7 +44,7 @@ Wählen Sie die Tabellen, die Sie für Stretch aktivieren möchten.
 |**Name**|Gibt den Namen der Spalte in der Tabelle an.|
 |(ohne Titel)|Ein Symbol in dieser Spalte gibt normalerweise an, dass Sie die ausgewählte Tabelle aufgrund eines Hindernisses nicht für Stretch aktivieren können. Möglicherweise verwendet die Tabelle einen nicht unterstützten Datentyp. Zeigen Sie auf das Symbol, um weitere Informationen in einer QuickInfo anzuzeigen. Weitere Informationen finden Sie unter [Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank](sql-server-stretch-database-limitations.md).|
 |**Gestreckt**|Gibt an, ob die Tabelle bereits aktiviert ist.|
-|**Migrieren**|In RC3 können Sie eine ganze Tabelle (**Ganze Tabelle**) migrieren oder ein datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um das Filterprädikat nach Beenden des Assistenten festzulegen. Weitere Informationen zum Filterprädikat finden Sie unter [Use a filter predicate to select rows to migrate (Stretch Database)](sql-server-stretch-database-predicate-function.md) (Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)). Weitere Informationen zum Anwenden des Prädikats finden Sie unter [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) (Aktivieren von Stretch-Datenbank für eine Tabelle) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
+|**Migrieren**|Sie können eine ganze Tabelle (**Ganze Tabelle**) migrieren oder ein datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um das Filterprädikat nach Beenden des Assistenten festzulegen. Weitere Informationen zum Filterprädikat finden Sie unter [Use a filter predicate to select rows to migrate (Stretch Database)](sql-server-stretch-database-predicate-function.md) (Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)). Weitere Informationen zum Anwenden des Prädikats finden Sie unter [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) (Aktivieren von Stretch-Datenbank für eine Tabelle) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
 |**beibehalten**|Gibt die Anzahl der Zeilen in der Tabelle an|
 |**Größe (KB)**|Gibt die Größe der Tabelle in KB an.|
 
@@ -163,4 +163,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 [StretchWizardImage7]: ./media/sql-server-stretch-database-wizard/stretchwiz7.png
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

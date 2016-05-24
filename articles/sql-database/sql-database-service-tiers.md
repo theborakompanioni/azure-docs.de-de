@@ -6,7 +6,7 @@
 	documentationCenter=""
 	authors="carlrabeler"
 	manager="jhubbard"
-	editor="jeffreyg"/>
+	editor=""/>
 
 <tags
 	ms.service="sql-database"
@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/27/2016"
+	ms.date="05/13/2016"
 	ms.author="carlrab"/>
 
 # SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
@@ -64,4 +64,4 @@ Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanke
 - Erfahren Sie, wie Sie [einen elastischen Pool überwachen und verwalten und seine Größe ändern](sql-database-elastic-pool-manage-portal.md) und [die Leistung von Einzeldatenbanken überwachen](sql-database-single-database-monitor.md).
 - Nachdem Sie jetzt die Ebenen der SQL-Datenbank kennen, können Sie sie mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) ausprobieren und sich mit der [Erstellung Ihrer ersten SQL-Datenbank](sql-database-get-started.md) befassen.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

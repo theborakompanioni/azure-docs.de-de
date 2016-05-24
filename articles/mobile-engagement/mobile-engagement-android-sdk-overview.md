@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Integration des Azure Mobile Engagement Android SDKs"
+	pageTitle="Integration des Android SDK für Azure Mobile Engagement"
 	description="Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,44 +13,55 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="03/10/2016"
-	ms.author="piyushjo" />
+	ms.date="05/10/2016"
+	ms.author="piyushjo;ricksal" />
 
 
-#Android SDK für Azure Mobile Engagement
+# Verwenden erweiterter Azure Mobile Engagement-Funktionen für Android-Apps
 
-Beginnen Sie hier, um alle Details zum Integrieren von Azure Mobile Engagement in eine Android-App zu erhalten. Wenn Sie es zunächst nur probieren möchten, stellen Sie sicher, dass Sie das [15-Minuten-Lernprogramm](mobile-engagement-android-get-started.md) durchführen
+> [AZURE.SELECTOR]
+- [Universal Windows](mobile-engagement-windows-store-sdk-overview.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-sdk-overview.md)
+- [iOS](mobile-engagement-ios-sdk-overview.md)
+- [Android](mobile-engagement-android-sdk-overview.md)
 
-Klicken Sie, um den [SDK-Inhalt](mobile-engagement-android-sdk-content.md) anzuzeigen.
+Erfahren Sie mehr über die erweiterten Funktionen von Azure Mobile Engagement, die Sie in Ihrer Android-App integrieren können.
 
-##Integrationsverfahren
-1. Beginnen Sie hier: [Integrieren von Mobile Engagement in Ihre Android-App](mobile-engagement-android-integrate-engagement.md)
+## Voraussetzungen
 
-2. Für Benachrichtigungen: [Integration von Reach (Benachrichtigungen) in Ihre Android-App](mobile-engagement-android-integrate-engagement-reach.md)
-	1. Google Cloud Messaging (GCM): [Integrieren von GCM mit Mobile Engagement](mobile-engagement-android-gcm-integrate.md)
-	2. Amazon Device Messaging (ADM): [Integrieren von ADM mit Mobile Engagement](mobile-engagement-android-adm-integrate.md)
+[AZURE.INCLUDE [Voraussetzungen](../../includes/mobile-engagement-android-prereqs.md)]
 
-3. Tag-Plan-Implementierung: [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer Android-App](mobile-engagement-android-use-engagement-api.md)
+## Erweiterte Funktionen
 
+### Berichterstellungsfunktionen
 
-##Versionshinweise
+Sie können die folgenden Funktionen hinzufügen:
 
-##4\.2.0 (03/11/2016)
+1. [Erweiterte Berichterstellungsoptionen](mobile-engagement-android-advanced-reporting.md)
+2. [Erweiterte Berichterstellungsoptionen für Speicherorte](mobile-engagement-android-location-reporting.md)
+3. [Erweiterte Konfigurationsoptionen](mobile-engagement-android-advanced-configuration.md)
+
+### Benachrichtigungen:
+[Integrieren von Reach (Benachrichtigungen) in Ihre Android-App](mobile-engagement-android-integrate-engagement-reach.md)
+
+1. Google Cloud Messaging (GCM): [Integrieren von GCM mit Mobile Engagement](mobile-engagement-android-gcm-integrate.md)
+
+2. Amazon Device Messaging (ADM): [Integrieren von ADM mit Mobile Engagement](mobile-engagement-android-adm-integrate.md)
+
+### Tag-Plan-Implementierung:
+[Verwenden der erweiterten Kennzeichnungs-API von Mobile Engagement in Ihrer Android-App](mobile-engagement-android-use-engagement-api.md)
+
+## Versionshinweise
+
+### 4\.2.0 (03/11/2016)
 
 - Das SDK ist jetzt unter MIT lizenziert.
 - Erlauben Sie die Angabe eines benutzerdefinierten Gerätebezeichners während der SDK-Initialisierung.
 
-##4\.1.0 (25.08.2015)
+Alle Versionen finden Sie unter [Vollständige Versionshinweise](mobile-engagement-android-release-notes.md).
 
-- Behandlung eines neuen Berechtigungsmodells für Android M.
-- Konfiguration von Standortfunktionen zur Laufzeit ist nun möglich, anstatt `AndroidManifest.xml` zu verwenden.
-- Korrektur eines Berechtigungsfehlers: bei Verwendung von `ACCESS_FINE_LOCATION` wird `ACCESS_COARSE_LOCATION` nicht mehr benötigt.
-- Verbesserungen der Stabilität.
-
-Alle Versionen finden Sie unter [Vollständige Versionshinweise](mobile-engagement-android-release-notes.md)
-
-##Upgrade-Verfahren
+## Upgrade-Verfahren
 
 Wenn Sie bereits eine ältere Version unseres SDKs in die Anwendung integriert haben, finden Sie Informationen dazu in [Upgrade-Verfahren](mobile-engagement-android-upgrade-procedure.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

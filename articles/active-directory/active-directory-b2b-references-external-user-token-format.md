@@ -14,17 +14,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="05/09/2016"
    ms.author="viviali"/>
 
 # Vorschau der Azure AD B2B-Zusammenarbeit: Tokenformat für externe Benutzer
 
 Die Ansprüche für ein standardmäßiges Azure AD-Token werden im Artikel [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md) auf azure.microsoft.com beschrieben.
 
-Die Ansprüche, die für einen für die B2B-Zusammenarbeit authentifizierten externen Benutzer anders sind, lauten wie folgt:<br/> - **OID:** Die Objekt-ID aus dem Ressourcenmandanten<br/> - **TID**: Mandanten-ID aus dem Ressourcenmandanten<br/> - **Aussteller**: Dies ist der Ressourcenmandant<br/> - **IDP**: Hierbei handelt es sich um den Home-Mandanten des Benutzers<br/> - **AltSecId**: Dies ist die alternative Sicherheits-ID, die für Sie nicht transparent ist.<br/>
+Die Ansprüche, die für einen für die B2B-Zusammenarbeit authentifizierten externen Benutzer anders sind, lauten wie folgt:<br/>
+- **OID:** Objekt-ID aus dem Ressourcenmandanten<br/>
+- **TID:** Mandanten-ID aus dem Ressourcenmandanten<br/>
+- **Aussteller:** Dies ist der Ressourcenmandant.<br/>
+- **IDP:** Hierbei handelt es sich um den Home-Mandanten des Benutzers.<br/>
+- **AltSecId:** Dies ist die alternative Sicherheits-ID, die für Sie nicht transparent ist.<br/>
 
 ## Verwandte Artikel
-Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit:
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 - [So funktioniert's](active-directory-b2b-how-it-works.md)
@@ -34,4 +39,4 @@ Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit:
 - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

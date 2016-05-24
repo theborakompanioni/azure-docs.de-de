@@ -57,6 +57,7 @@ Sie können jede von Tez ermöglichte Hive-Abfrage ausführen, indem Sie der Abf
 
 Für Windows-basierte HDInsight-Cluster muss Tez zum Zeitpunkt der Bereitstellung aktiviert sein. Nachfolgend sehen Sie ein Azure PowerShell-Beispielskript für die Bereitstellung eines Hadoop-Clusters mit aktiviertem Tez:
 
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 	$clusterName = "[HDInsightClusterName]"
 	$location = "[AzureDataCenter]" #i.e. West US
@@ -220,4 +221,4 @@ In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

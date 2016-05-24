@@ -47,7 +47,7 @@ Wenn Ihre Firewall Datenverkehr gemäß Ursprungsbenutzern erzwingt, öffnen Sie
 
 
 ## Schritt 1: Aktivieren des Anwendungsproxys in Azure AD
-1. Melden Sie sich als Administrator beim klassischen Azure-Portal an.
+1. Melden Sie sich als Administrator beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an.
 2. Gehen Sie zu Active Directory, und wählen Sie das Verzeichnis aus, in dem Sie den Anwendungsproxy aktivieren möchten.
 3. Klicken Sie auf **Konfigurieren**, führen Sie einen Bildlauf nach unten zu „Anwendungsproxy“ aus, und stellen Sie „Anwendungsproxydienste für dieses Verzeichnis aktivieren“ auf **Aktiviert** ein.
 
@@ -96,4 +96,4 @@ Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
 - [Azure-Identität](fundamentals-identity.md)
 - [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

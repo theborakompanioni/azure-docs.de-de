@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Verwalten von StorSimple-Bandbreitenvorlagen | Microsoft Azure"
    description="Beschreibt die Verwaltung von StorSimple-Bandbreitenvorlagen, mit denen Sie die Auslastung der Netzwerkbandbreite steuern."
    services="storsimple"
@@ -6,13 +6,13 @@
    authors="alkohli"
    manager="carolz"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/14/2015"
+   ms.date="05/10/2016"
    ms.author="alkohli" />
 
 # Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple Manager-Diensts
@@ -28,7 +28,7 @@ Mit Zeitplänen zur Bandbreiteneinschränkung können Sie folgende Aktionen ausf
 - Zentralisieren Sie die Verwaltung und verwenden Sie die Zeitpläne wiederholt einfach und nahtlos auf mehreren Geräten.
 
 > [AZURE.NOTE] Dieses Feature steht nur für physische StorSimple-Geräte und nicht für virtuelle Geräte zur Verfügung.
-   
+
 Alle Bandbreitenvorlagen für den Dienst werden in einem Tabellenformat angezeigt und enthalten die folgenden Informationen:
 
 - **Name:** der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
@@ -63,11 +63,11 @@ Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu erstellen.
    2. Wählen Sie die Option **Gesamter Tag** aus, wenn der Zeitplan für den ganzen Tag erzwungen werden soll. Wenn diese Option aktiviert ist, können Sie keine **Startzeit** oder **Endzeit** mehr angeben. Der Zeitplan wird von 0:00 Uhr bis 23:59 Uhr ausgeführt.
    3. Wählen Sie in der Dropdownliste eine **Startzeit** aus. Dies liegt den Beginn des Zeitplans fest.
    4. Wählen Sie in der Dropdownliste eine **Endzeit** aus. Dies liegt das Ende des Zeitplans fest.
-   
+
          > [AZURE.NOTE] Überlappende Zeitpläne sind nicht erlaubt. Falls durch die Start- und Endzeiten ein überlappender Zeitplan entsteht, erhalten Sie eine entsprechende Fehlermeldung.
 
-   5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
-   
+   5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen (Uploads und Downloads) verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
+
    6. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). Die Vorlage, die Sie erstellt haben, wird der Liste der Bandbreitenvorlagen auf der Seite **Konfigurieren** des Diensts hinzugefügt.
 
     ![Erstellen einer neuen Bandbreitenvorlage](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
@@ -172,4 +172,4 @@ Folgen Sie diesen Empfehlungen für Ihr StorSimple-Gerät:
 
 Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

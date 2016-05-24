@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Konfigurieren eines Clouddiensts | Microsoft Azure" 
+	pageTitle="Konfigurieren eines Clouddiensts (Portal) | Microsoft Azure" 
 	description="Hier erfahren Sie, wie Sie Clouddienste in Azure konfigurieren. Hier erfahren Sie, wie Sie die Konfiguration für Clouddienste aktualisieren und Remotezugriff auf Rolleninstanzen konfigurieren. In diesen Beispielen wird das Azure-Portal verwendet." 
 	services="cloud-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/15/2016"
+	ms.date="04/22/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,71 +22,89 @@
 # Konfigurieren von Clouddiensten
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-configure-portal.md)
-- [Azure classic portal](cloud-services-how-to-configure.md)
+- [Azure-Portal](cloud-services-how-to-configure-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-configure.md)
 
 Im Azure-Portal können Sie die am häufigsten für einen Clouddienst verwendeten Einstellungen konfigurieren. Wenn Sie die Konfigurationsdateien jedoch direkt aktualisieren möchten, laden Sie eine zu aktualisierende Konfigurationsdatei herunter, laden Sie anschließend die aktualisierte Datei hoch, und aktualisieren Sie den Clouddienst mit den Konfigurationsänderungen. In beiden Fällen wird die aktualisierte Konfiguration an alle Rolleninstanzen übermittelt.
 
-Sie können auch eine Remotedesktopverbindung zu einer oder allen Rollen aktivieren, die in Ihrem Clouddienst ausgeführt werden. Mit Remotedesktop können Sie auf den Desktop Ihrer Anwendung zugreifen, während diese ausgeführt wird, und Probleme diagnostizieren und beheben. Sie können eine Remotedesktopverbindung zu Ihrer Rolle auch aktivieren, wenn Sie während der Entwicklung der Anwendung die Servicedefinitionsdatei (.csdef) für Remotedesktop nicht konfiguriert haben. Die Anwendung muss nicht erneut bereitgestellt werden, um eine Remotedesktopverbindung zu aktivieren.
+Sie können die Instanzen Ihrer Clouddienstrollen außerdem verwalten oder eine Remotedesktopverbindung mit ihnen herstellen.
 
 Während der Konfigurationsupdates kann Azure nur dann eine Dienstverfügbarkeit von 99,95 Prozent sicherstellen, wenn Sie mindestens zwei Rolleninstanzen für jede Rolle haben. In diesem Fall kann ein virtueller Computer Clientanforderungen verarbeiten, während der andere aktualisiert wird. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
 ## Ändern eines Clouddiensts
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Clouddienst.
+Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu Ihrem Clouddienst. Von hier aus können Sie zahlreiche Aspekte des Clouddiensts verwalten.
 
-2. Klicken Sie auf das Symbol **Einstellungen** oder den Link **Essentials/Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen.
+![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-    ![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
-    
-    Hier können Sie **Eigenschaften** anzeigen, die **Konfiguration** ändern und die **Zertifikate** sowie die **Benutzer** verwalten, die auf diesen Clouddienst zugreifen können.
+Über die Links **Einstellungen** oder **Alle Einstellungen** wird das Blatt **Einstellungen** geöffnet. Hier können Sie die **Eigenschaften** und die **Konfiguration** ändern, **Zertifikate** verwalten, **Warnungsregeln** einrichten und die **Benutzer** verwalten, die Zugriff auf diesen Clouddienst haben.
 
-2. Klicken Sie unter dem Abschnitt **Überwachung** auf eine beliebige Kachel, um Warnungen zu konfigurieren.
-
-    ![Clouddienstüberwachung](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
-    
-3. Klicken Sie unter dem Abschnitt **Rollen und Instanz** auf eine beliebige Clouddienstrolle, um die Instanz zu verwalten.
-
-    ![Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance.png)
-    
-    Sie können hier eine Remoteverbindung mit dem Clouddienst herstellen, den Clouddienst neu starten oder ein Reimaging durchführen.
-    
-    ![Schaltflächen für die Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
+![Blatt mit Einstellungen für den Azure-Clouddienst](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
 >[AZURE.NOTE]
 Das für den Clouddienst verwendete Betriebssystem kann nicht über das **Azure-Portal** geändert werden. Diese Einstellung können Sie nur über das [klassische Azure-Portal](http://manage.windowsazure.com/) ändern. Weitere Informationen finden Sie [hier](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file).
 
-## Aktualisieren einer Clouddienst-Konfigurationsdatei
+## Überwachung
 
-1. Laden Sie zunächst die vorhandene Clouddienst-Konfigurationsdatei (.cscfg) herunter.
+Sie können Ihrem Clouddienst Warnungen hinzufügen. Klicken Sie auf **Einstellungen** > **Warnungsregeln** > **Warnung hinzufügen**.
 
-    1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Clouddienst.
+![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-    2. Klicken Sie auf das Symbol **Einstellungen** oder den Link **Essentials/Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen.
+In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **Metrik** können Sie eine Warnung für die folgenden Datentypen einrichten:
 
-        ![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+- Datenträgerlesevorgänge
+- Datenträgerschreibvorgänge
+- Eingehender Netzwerkverkehr
+- Ausgehender Netzwerkverkehr
+- CPU-Prozentsatz 
+
+![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+
+### Konfigurieren der Überwachung über eine Metrikkachel
+
+Statt die Ansicht **Einstellungen** > **Warnungsregeln** zu verwenden, können Sie auch auf eine der Metrikkacheln im Abschnitt **Überwachung** des Blatts **Clouddienst** klicken.
+
+![Clouddienstüberwachung](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
+
+Von hier aus können Sie das in der Kachel verwendete Diagramm anpassen oder eine Warnungsregel hinzufügen.
+
+
+## Neustart, Reimaging oder Remotedesktop
+
+Momentan ist eine Konfiguration von Remotedesktop mit dem **Azure-Portal** nicht möglich. Sie können die Konfiguration stattdessen jedoch über das [klassische Azure-Portal](cloud-services-role-enable-remote-desktop.md), mithilfe von [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) oder [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) durchführen.
+
+Klicken Sie zunächst auf die Instanz des Clouddiensts.
+
+![Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance.png)
+
+Auf dem so geöffneten Blatt können Sie eine Remotedesktopverbindung starten, die Instanz remote neu starten oder remote ein Reimaging der Instanz durchführen (mit einem neuen Image starten).
+
+![Schaltflächen für die Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
+
+
+
+## Neukonfigurieren der .cscfg-Datei
+
+Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkonfiguration](cloud-services-model-and-package.md#cscfg) (.cscfg) neu konfigurieren. Dazu müssen Sie Ihre .cscfg-Datei herunterladen, sie bearbeiten und wieder hochladen.
+
+1. Klicken Sie auf das Symbol **Einstellungen** oder den Link **Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen.
+
+    ![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+
+2. Klicken Sie auf das Element **Konfiguration**.
+
+    ![Blatt „Konfiguration“](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
+
+3. Klicken Sie auf die Schaltfläche **Herunterladen**.
+
+    ![Herunterladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+
+4. Laden Sie nach dem Update der Dienstkonfigurationsdatei die Konfigurationsupdates hoch, und wenden Sie sie an:
+
+    ![Hochladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
     
-    3. Klicken Sie auf das Element **Konfiguration**.
+5. Wählen Sie die CSCFG-Datei aus, und klicken Sie auf **OK**.
 
-        ![Blatt „Konfiguration“](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
-    
-    4. Klicken Sie auf die Schaltfläche **Herunterladen**.
-
-        ![Herunterladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
-
-2. Laden Sie nach dem Update der Dienstkonfigurationsdatei die Konfigurationsupdates hoch, und wenden Sie sie an:
-
-    1. Führen Sie die ersten drei Schritte oben aus, um das Blatt **Konfiguration** für den Clouddienst zu öffnen.
-    
-    2. Klicken Sie auf die Schaltfläche **Hochladen**.
-
-        ![Hochladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
-    
-    3. Wählen Sie die CSCFG-Datei aus, und klicken Sie auf **OK**.
-
-## Konfigurieren des Remotezugriffs auf Rolleninstanzen
-
-Der Remotezugriff kann nicht über das **Azure-Portal** konfiguriert werden. Sie können Sie diese Einstellung nur über das [klassische Azure-Portal](http://manage.windowsazure.com/) ändern. Dies wird [hier](cloud-services-role-enable-remote-desktop.md) beschrieben.
 			
 ## Nächste Schritte
 
@@ -95,4 +113,4 @@ Der Remotezugriff kann nicht über das **Azure-Portal** konfiguriert werden. Sie
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

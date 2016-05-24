@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Windows Server Active Directory auf Azure-VMs | Microsoft Azure" 
-	description="Sie können Windows Server Active Directory-Domänendienste (AD DS) oder Active Directory-Verbunddienste (AD FS) auf virtuellen Azure-Computern ausführen." 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="markusvi" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Windows Server Active Directory auf Azure-VMs | Microsoft Azure"
+	description="Sie können Windows Server Active Directory-Domänendienste (AD DS) oder Active Directory-Verbunddienste (AD FS) auf virtuellen Azure-Computern ausführen."
+	services="active-directory"
+	documentationCenter=""
+	authors="markusvi"
+	manager="stevenpo"
 	tags="azure-classic-portal"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/07/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/07/2016"
 	ms.author="markusvi"/>
 
 
@@ -24,7 +24,7 @@ Dieses Navigationsthema enthält Links zu anderen Themen zum Bereitstellen von W
 
 ## Konzeptionelle Richtlinien
 
-- [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx) 
+- [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
 ## Video
 
@@ -33,7 +33,7 @@ Dieses Navigationsthema enthält Links zu anderen Themen zum Bereitstellen von W
 ## Artikel mit Anleitungen
 
 - [Installieren einer neuen Active Directory-Gesamtstruktur auf einem virtuellen Azure-Netzwerk](active-directory-new-forest-virtual-machine.md)
-- [Installieren eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md) 
+- [Installieren eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)
 - [Einrichten einer Hybridcloudumgebung zu Testzwecken](../virtual-machines/virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)
 
 
@@ -42,9 +42,4 @@ Dieses Navigationsthema enthält Links zu anderen Themen zum Bereitstellen von W
 - [Als Organisation für Azure registrieren](sign-up-organization.md)
 - [Azure-Identität](fundamentals-identity.md)
 
-
-
-
- 
-
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

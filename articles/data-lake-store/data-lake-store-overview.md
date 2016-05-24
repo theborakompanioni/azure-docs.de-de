@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/13/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Übersicht über Azure Data Lake-Speicher
@@ -67,11 +67,18 @@ Azure Data Lake-Speicher verwendet Azure Active Directory zur Authentifizierung 
 | Authentifizierung | Zur Identitäts- und Zugriffsverwaltung für alle in Azure Data Lake-Speicher gespeicherten Daten ist Azure Data Lake-Speicher in Azure Active Directory (AAD) integriert. Dank dieser Integration nutzt Azure Data Lake sämtliche AAD-Funktionen, z. B. Multi-Factor Authentication, bedingter Zugriff, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, Sicherheitsüberwachung und -warnungen usw. Azure Data Lake-Speicher unterstützt das OAuth 2.0-Protokoll für die Authentifizierung mit der REST-Schnittstelle. |
 | Zugriffssteuerung | Azure Data Lake-Speicher ermöglicht eine Zugriffssteuerung durch die Unterstützung von POSIX-Berechtigungen, die vom WebHDFS-Protokoll verfügbar gemacht werden. Berechtigungen können in der aktuellen Version auf der Data Lake-Ebene angegeben werden und gelten für alle Dateien und Ordner im Data Lake. Zukünftige Updates werden eine detaillierte Zugriffssteuerung ermöglichen, bei der Berechtigungen für einzelne Dateien und Ordner angegeben werden können.|
 
-Anweisungen zum Sichern von Daten in Data Lake-Speicher finden Sie unter [Sichern von Daten in Azure Data Lake-Speicher](data-lake-store-secure-data.md).
+Weitere Informationen zum Schützen von Daten im Data Lake-Speicher finden Sie unter folgenden Links:
+
+* Anweisungen zum Sichern von Daten in Data Lake-Speicher finden Sie unter [Sichern von Daten in Azure Data Lake-Speicher](data-lake-store-secure-data.md).
+* Bevorzugen Sie Videos? Sehen Sie sich [dieses Video](https://mix.office.com/watch/1q2mgzh9nn5lx) über das Schützen von im Data Lake-Speicher gespeicherten Daten an.
 
 ## Mit Azure Data Lake-Speicher kompatible Anwendungen
 
-Eine Liste der mit Azure Data Lake-Speicher interoperablen Open-Source-Anwendungen finden Sie unter [Mit Azure Data Lake-Speicher kompatible Anwendungen und Dienste](data-lake-store-compatible-oss-other-applications.md). Informationen dazu, wie Data Lake-Speicher mit anderen Azure-Diensten verwendet werden kann, um ein breiteres Spektrum von Szenarien zu ermöglichen, finden Sie unter [Integration in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md).
+Azure Data Lake-Speicher ist mit den meisten Open Source-Komponenten des Hadoop-Systems kompatibel. Außerdem ist eine problemlose Integration in andere Azure-Dienste möglich. Das macht Data Lake-Speicher zur optimalen Lösung für Ihre Datenspeicheranforderungen. Unter den folgenden Links finden Sie weitere Informationen zur Verwendung von Data Lake-Speicher mit Open Source-Komponenten und anderen Azure-Diensten:
+
+* Eine Liste der mit Data Lake-Speicher interoperablen Open-Source-Anwendungen finden Sie unter [Mit Azure Data Lake-Speicher kompatible Anwendungen und Dienste](data-lake-store-compatible-oss-other-applications.md).
+* Informationen dazu, wie Data Lake-Speicher mit anderen Azure-Diensten verwendet werden kann, um ein breiteres Spektrum von Szenarien zu ermöglichen, finden Sie unter [Integration in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md).
+* Informationen dazu, wie Data Lake-Speicher beispielsweise zum Erfassen von Daten, zum Verarbeiten von Daten, zum Herunterladen von Daten und zum Visualisieren von Daten verwendet werden kann, finden Sie unter [Datenszenarien im Zusammenhang mit dem Azure Data Lake-Speicher](data-lake-store-data-scenarios.md).
 
 ## Was ist das Azure Data Lake-Speicherdateisystem (adl://)?
 
@@ -87,4 +94,20 @@ Informationen zur Bereitstellung eines Data Lake-Speichers über das Azure-Porta
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## Videos zum Data Lake-Speicher
+
+Für Benutzer, die sich lieber anhand von Videos informieren, stellt Data Lake-Speicher Videos für eine Reihe von Features bereit:
+
+* [Create an Azure Data Lake Store Account](https://mix.office.com/watch/1k1cycy4l4gen) (Erstellen eines Azure Data Lake-Speicherkontos)
+* [Use the Data Explorer to Manage Data in Azure Data Lake Store](https://mix.office.com/watch/icletrxrh6pc) (Verwalten von Daten im Azure Data Lake-Speicher mithilfe des Daten-Explorers)
+* [Connect Azure Data Lake Analytics to Azure Data Lake Store](https://mix.office.com/watch/qwji0dc9rx9k) (Verknüpfen von Azure Data Lake Analytics mit dem Azure Data Lake-Speicher)
+* [Access Azure Data Lake Store via Data Lake Analytics](https://mix.office.com/watch/1n0s45up381a8) (Zugreifen auf den Azure Data Lake-Speicher mit Azure Data Lake Analytics)
+* [Connect Azure HDInsight to Azure Data Lake Store](https://mix.office.com/watch/l93xri2yhtp2) (Verknüpfen von Azure HDInsight mit dem Azure Data Lake-Speicher)
+* [Access Azure Data Lake Store via Hive and Pig](https://mix.office.com/watch/1n9g5w0fiqv1q) (Zugreifen auf den Azure Data Lake-Speicher mit Hive und Pig)
+* [Use DistCp (Hadoop Distributed Copy) to copy data to and from Azure Data Lake Store](https://mix.office.com/watch/1liuojvdx6sie) (Kopieren von Daten aus dem und in den Azure Data Lake-Speicher mithilfe von DistCp [Hadoop Distributed Copy])
+* [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store](https://mix.office.com/watch/1butcdjxmu114) (Verschieben von Daten zwischen relationalen Quellen und dem Azure Data Lake-Speicher mithilfe von Apache Sqoop)
+* [Data Orchestration using Azure Data Factory for Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka) (Datenorchestrierung mithilfe von Azure Data Factory für den Azure Data Lake-Speicher)
+* [Securing Data in the Azure Data Lake Store](https://mix.office.com/watch/1q2mgzh9nn5lx) (Schützen von Daten im Azure Data Lake-Speicher)
+
+<!---HONumber=AcomDC_0518_2016-->

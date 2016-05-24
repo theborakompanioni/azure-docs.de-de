@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Informationen zu VPN-Gateways für standortübergreifende Verbindungen in Virtual Network | Microsoft Azure"
-   description="Erfahren Sie, wie Sie VPN Gateways einsetzen, die für standortübergreifende Site-to-Site-Verbindungen für Hybridkonfigurationen, VNet-to-VNet-Verbindungen und Point-to-Site-Verbindungen verwendet werden können."
+   pageTitle="Informationen zu VPN Gateway | Microsoft Azure"
+   description="Hier erhalten Sie Informationen zu VPN Gateway für Azure Virtual Network."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -13,12 +13,12 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/18/2016"
+   ms.date="05/16/2016"
    ms.author="cherylmc" />
 
-# Informationen zu VPN-Gateways
+# Informationen zu VPN Gateway
 
-VPN Gateways, die auch als Azure Virtual Network Gateways bezeichnet werden, werden zum Senden von Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten verwendet. Außerdem dienen sie zum Senden von Datenverkehr zwischen mehreren virtuellen Netzwerken in Azure (VNET-zu-VNET). In den folgenden Abschnitten werden die Elemente beschrieben, die zu einem VPN Gateway gehören.
+VPN Gateway wird zum Senden von Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten verwendet. Außerdem dient dieser Dienst zum Senden von Datenverkehr zwischen mehreren virtuellen Netzwerken in Azure (VNET-zu-VNET). In den folgenden Abschnitten werden die Elemente beschrieben, die zu VPN Gateway gehören.
 
 Die Anleitung, die Sie zum Erstellen des VPN Gateways verwenden, richtet sich nach dem Bereitstellungsmodell, das Sie bei der Erstellung Ihres virtuellen Netzwerks genutzt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um das VPN Gateway zu erstellen und zu konfigurieren. Es ist nicht möglich, ein Resource Manager VPN Gateway für ein virtuelles Netzwerk zu erstellen, das auf dem klassischen Bereitstellungsmodell basiert.
 
@@ -39,6 +39,7 @@ Im Beispiel unten ist ein Gatewaysubnetz mit dem Namen GatewaySubnet zu sehen. S
 
 	Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 
+>[AZURE.IMPORTANT] Stellen Sie sicher, dass dem Gatewaysubnetz keine Netzwerksicherheitsgruppe (NSG) zugewiesen ist, da dies Verbindungsfehler verursachen kann.
 
 ## <a name="gwtype"></a>Gatewaytypen
 
@@ -64,7 +65,7 @@ Im Beispiel unten wird `-GatewaySku` als *Standard* angegeben.
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard -GatewayType Vpn -VpnType RouteBased
 
-### Geschätzter aggregierter Durchsatz nach SKU und Gatewaytyp
+###  <a name="aggthroughput"></a>Geschätzter aggregierter Durchsatz nach SKU und Gatewaytyp
 
 
 In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz angegeben. Für die einzelnen Gateway-SKUs gelten unterschiedliche Preise. Informationen zu den Preisen finden Sie unter [VPN-Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
@@ -73,7 +74,9 @@ In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefas
 
 ## <a name="vpntype"></a>VPN-Typen
 
-Für jede Konfiguration ist ein bestimmter VPN-Typ erforderlich, damit sie funktioniert. Wenn Sie zwei Konfigurationen kombinieren, z.B. das Erstellen einer Site-to-Site-Verbindung und einer Point-to-Site-Verbindung mit demselben VNET, müssen Sie einen VPN-Typ verwenden, mit dem beide Verbindungsanforderungen erfüllt werden. Bei einer Koexistenz von Point-to-Site- und Site-to-Site-Verbindungen müssen Sie einen routenbasierten VPN-Typ nutzen, wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, bzw. ein dynamisches Gateway, wenn Sie das klassische Bereitstellungsmodell verwenden.
+Für jede Konfiguration ist ein bestimmter VPN-Typ erforderlich, damit sie funktioniert. Wenn Sie zwei Konfigurationen kombinieren, z.B. das Erstellen einer Site-to-Site-Verbindung und einer Point-to-Site-Verbindung mit demselben VNET, müssen Sie einen VPN-Typ verwenden, mit dem beide Verbindungsanforderungen erfüllt werden.
+
+Bei einer Koexistenz von Point-to-Site- und Site-to-Site-Verbindungen müssen Sie einen routenbasierten VPN-Typ nutzen, wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, bzw. ein dynamisches Gateway, wenn Sie das klassische Bereitstellungsmodell verwenden.
 
 Beim Erstellen der Konfiguration wählen Sie den VPN-Typ aus, der für Ihre Verbindung erforderlich ist.
 
@@ -107,7 +110,7 @@ Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gem
 
 ### Ändern von Adresspräfixen – Resource Manager
 
-Beim Ändern von Adresspräfixen unterscheidet sich das Verfahren in Abhängigkeit davon, ob Sie Ihr VPN Gateway bereits erstellt haben. Weitere Informationen finden Sie im Artikelabschnitt [Ändern von Adresspräfixen für ein lokales Netzwerkgateway](vpn-gateway-create-site-to-site-rm-powershell.md#modify).
+Beim Ändern von Adresspräfixen unterscheidet sich das Verfahren in Abhängigkeit davon, ob Sie Ihr VPN Gateway bereits erstellt haben. Weitere Informationen finden Sie im Artikelabschnitt [Ändern von Adresspräfixen für ein Gateway für das lokale Netzwerk](vpn-gateway-create-site-to-site-rm-powershell.md#modify).
 
 Im Beispiel unten sehen Sie, dass ein Gateway des lokalen Netzwerks mit dem Namen MyOnPremiseWest angegeben ist und zwei IP-Adresspräfixe enthält.
 
@@ -115,14 +118,14 @@ Im Beispiel unten sehen Sie, dass ein Gateway des lokalen Netzwerks mit dem Name
 
 ### Ändern von Adresspräfixen – Klassische Bereitstellung
 
-Wenn Sie Ihre lokalen Standorte bei Verwendung des klassischen Bereitstellungsmodells ändern, können Sie hier die Konfigurationsseite „Lokale Netzwerke“ im klassischen Portal verwenden oder die Datei für die Netzwerkkonfiguration (NETCFG.XML) direkt ändern.
+Wenn Sie Ihre lokalen Standorte bei Verwendung des klassischen Bereitstellungsmodells ändern, können Sie die Konfigurationsseite „Lokale Netzwerke“ im klassischen Portal verwenden oder die Datei für die Netzwerkkonfiguration (NETCFG.XML) direkt ändern.
 
 
-## VPN-Geräte
+##  <a name="devices"></a> VPN-Geräte
 
 Sie müssen sicherstellen, dass das VPN-Gerät, dessen Einsatz Sie planen, den für die Konfiguration erforderlichen VPN-Typ unterstützt. Weitere Informationen zu kompatiblen VPN-Geräten finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md).
 
-## Gatewayanforderungen
+##  <a name="requirements"></a>Gatewayanforderungen
 
 
 [AZURE.INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
@@ -130,7 +133,7 @@ Sie müssen sicherstellen, dass das VPN-Gerät, dessen Einsatz Sie planen, den f
 
 ## Nächste Schritte
 
-Lesen Sie sich die weiteren Informationen im Artikel [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md) durch, bevor Sie mit der Planung und dem Entwurf Ihrer Konfiguration fortfahren.
+Lesen Sie sich die weiteren Informationen im Artikel [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md) durch, bevor Sie mit der Planung und dem Entwurf Ihrer Konfiguration fortfahren.
 
 
 
@@ -138,4 +141,4 @@ Lesen Sie sich die weiteren Informationen im Artikel [Häufig gestellte Fragen z
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

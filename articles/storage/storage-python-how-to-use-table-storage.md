@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwenden des Tabellenspeichers mit Python | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Tabellendienst aus Python zum Erstellen und Löschen von Tabellen sowie zum Einfügen und Abfragen in der Tabelle verwenden."
+	description="Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud."
 	services="storage"
 	documentationCenter="python"
 	authors="emgerner-msft"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="04/29/2016"
 	ms.author="emgerner"/>
 
 
@@ -149,4 +149,4 @@ Nachdem Sie sich nun mit den Grundlagen von Table Storage vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

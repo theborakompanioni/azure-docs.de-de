@@ -82,7 +82,7 @@ Nachfolgend finden Sie eine Liste der SDKs und Integrationen, die Sie mit Event 
 
 * [Java-Event Hubs-Client](https://github.com/hdinsight/eventhubs-client)
 * [Apache Storm-Spout](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md), Sie können sich die [Spoutquelle](https://github.com/apache/storm/tree/master/external/storm-eventhubs) bei GitHub ansehen.
-* [Apache Spark-Integration](../hdinsight/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
+* [Apache Spark-Integration](../hdinsight/hdinsight-apache-spark-eventhub-streaming.md)
 
 ## Geräteidentitätsregistrierung
 
@@ -494,7 +494,7 @@ Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die
 
 Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Das bedeutet, dass das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten) dauert. Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Geräteidentitätsregistrierung registriert sind.
 
-Der Blogbeitrag [IoT Hub throttling and you][lnk-throttle-blog] (Was habe ich mit der IoT Hub-Drosselung zu tun?) enthält eine ausführliche Erläuterung der IoT Hub-Drosselung.
+Der Blogbeitrag [IoT Hub throttling and you][lnk-throttle-blog] \(Was habe ich mit der IoT Hub-Drosselung zu tun?) enthält eine ausführliche Erläuterung der IoT Hub-Drosselung.
 
 **Hinweis**: Die Kontingente oder Drosselungsgrenzwerte können jederzeit angehoben werden, indem die Anzahl von bereitgestellten Einheiten in einem IoT Hub erhöht wird.
 
@@ -557,4 +557,4 @@ Nachdem Sie in diesem Dokument einen Überblick über die Entwicklung für IoT H
 [lnk-mqtt-support]: iot-hub-mqtt-support.md
 [lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

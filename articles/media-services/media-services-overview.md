@@ -45,10 +45,6 @@ Sie können sich die AMS-Lernpfade hier ansehen:
 - [Media Services - Live Streaming (in englischer Sprache)](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [Media Services - on Demand Streaming (in englischer Sprache)](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-##Poster
-
-[Hier](https://azure.microsoft.com/documentation/infographics/media-services/) können Sie das Azure Media Services-Poster ansehen, das die AMS-Workflows zeigt, von der Medienerstellung bis zur Nutzung.
-
 ##Voraussetzungen
 
 Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
@@ -64,7 +60,7 @@ Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
 
 Azure Media Services-Konzepte finden Sie unter [Konzepte](media-services-concepts.md).
 
-Eine Reihe mit Vorgehensweisen (Gewusst wie), in der Sie in die wichtigsten Komponenten von Azure Media Services eingeführt werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) (Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet einen hervorragenden Überblick über die Konzepte und verwendet das AMSE-Tool, um die AME-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder mit dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
+Eine Reihe mit Vorgehensweisen (Gewusst wie), in der Sie in die wichtigsten Komponenten von Azure Media Services eingeführt werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) (Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet einen hervorragenden Überblick über die Konzepte und verwendet das AMSE-Tool, um die AME-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
 
 ##<a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
 
@@ -132,17 +128,6 @@ Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit de
   
 1. Führen Sie einen progressiven Download der Inhalte durch.
 
-###Siehe auch
-
-- [Hochladen von Inhalten](media-services-manage-content.md#upload)
-- [Abrufen eines Medienprozesses](media-services-get-media-processor.md)
-- [Codieren von Inhalten](media-services-manage-content.md#encode)
-- [Überwachen von Aufträgen](media-services-portal-check-job-progress.md)
-- [Verwenden von Analysen](media-services-analytics-overview.md)
-- [Schützen von Inhalten](media-services-manage-content.md#encrypt)
-- [Geschütztes Veröffentlichen](media-services-manage-content.md#publish)
-- [Skalieren der Codierung](media-services-portal-encoding-units.md)
-
 ##<a id="live_scenarios"></a>Bereitstellen von Livestreamingereignissen mit Azure Media Services
 
 Beim Arbeiten mit Livestreaming werden normalerweise die folgenden Komponenten verwendet:
@@ -150,13 +135,14 @@ Beim Arbeiten mit Livestreaming werden normalerweise die folgenden Komponenten v
 - Eine Kamera, mit der ein Ereignis übertragen wird.
 - Ein Live-Video-Encoder, der Signale von der Kamera in Datenströme konvertiert, die an einen Livestreaming-Dienst gesendet werden.
 
-Optional mehrere Live-Encoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
+	Optional: mehrere zeitsynchronisierte Liveencoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder mit Zeitsynchronisierung empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
 - Ein Livestreaming-Dienst, der Ihnen Folgendes ermöglicht:
-- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming)
-- Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
-- Vorschau des Livestreams
-- Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
-- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung
+	
+	- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming)
+	- Optional: Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
+	- Vorschau des Livestreams
+	- Aufzeichnen und Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
+	- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung
 
 
 Mit **Microsoft Azure Media Services** (AMS) können Sie Livestreaminginhalte erfassen, codieren, in der Vorschau anzeigen, speichern und bereitstellen.
@@ -165,17 +151,24 @@ Bei der Übermittlung Ihrer Inhalte für Kunden besteht Ihr Ziel darin, qualitat
 
 In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streamingendpunkte** alle Livestreamingfunktionen, einschließlich Erfassung, Formatierung, DVR, Sicherheit, Skalierbarkeit und Redundanz.
 
-Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Derzeit kann ein Kanal Live-Eingabedatenströme auf folgende Weise empfangen:
+Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
+- Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
+	>[AZURE.NOTE] Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](/pricing/details/media-services/).
+	
 - Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-Die Codierung eines Livedatenstroms mit Media Services befindet sich in der **Vorschau**.
-- Von einem lokalen Live-Encoder wird Multi-Bitrate-**RTMP** oder -**Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Die aufgenommenen Datenströme werden ohne weitere Verarbeitung durch die **Kanäle** geleitet. Ihr Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Live-Codierung aktiviert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
+###Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)
+
+Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am **Pass-Through-Workflow** beteiligt sind:
+
+![Liveworkflow][live-overview2]
+
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md).
 
 ###Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden
-
 
 Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die in Livestreaming-Workflows beteiligt sind, wenn ein Kanal zum Ausführen der Livecodierung mit Media Services aktiviert ist.
 
@@ -183,15 +176,6 @@ Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die in Lives
 
 Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
-
-###Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen
-
-
-Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am Livestreaming-Workflow beteiligt sind.
-
-![Liveworkflow][live-overview2]
-
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md).
 
 ##Nutzung von Inhalten
 
@@ -236,4 +220,4 @@ Weitere Informationen finden Sie im [Microsoft Azure-SLA](https://azure.microsof
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

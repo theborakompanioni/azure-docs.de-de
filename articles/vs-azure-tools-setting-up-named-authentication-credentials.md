@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Einrichten benannter Authentifizierungsanmeldeinformationen
@@ -33,7 +33,7 @@ Visual Studio verwendet die Abonnement-ID zusammen mit den Zertifikatdaten als A
 
 Im Dialogfeld **Neues Abonnement/Abonnement bearbeiten** können Sie die Abonnementinformationen bearbeiten, wie weiter unten in diesem Thema erläutert.
 
-Wenn Sie ein Zertifikat selbst erstellen möchten, finden Sie Anweisungen dazu unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx). Laden Sie anschließend das Zertifikat manuell in das Verwaltungsportal hoch.
+Wenn Sie ein Zertifikat selbst erstellen möchten, finden Sie die entsprechenden Anweisungen unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx). Laden Sie anschließend das Zertifikat manuell in das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hoch.
 
 >[AZURE.NOTE] Diese Anmeldeinformationen, die Visual Studio zum Verwalten Ihrer Clouddienste benötigt, müssen nicht den Anmeldeinformationen entsprechen, die zum Authentifizieren einer Anforderung für die Azure-Speicherdienste erforderlich sind.
 
@@ -53,15 +53,15 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
 
 1. Wählen Sie die Schaltfläche **Vollständigen Pfad kopieren**. Der Pfad des Zertifikats (CER-Datei) wird in die Zwischenablage kopiert.
 
-    >[AZURE.IMPORTANT] Laden Sie dieses Zertifikat ins Verwaltungsportal hoch, um die Azure-Anwendung aus Visual Studio zu veröffentlichen.
+    >[AZURE.IMPORTANT] Laden Sie dieses Zertifikat in das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hoch, um die Azure-Anwendung aus Visual Studio zu veröffentlichen.
 
-1. So laden Sie das Zertifikat in das Azure-Verwaltungsportal hoch
+1. So laden Sie das Zertifikat in das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hoch
 
     1. Klicken Sie auf den Link für das Azure-Portal.
 
-         Das [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) wird geöffnet.
+         Das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) wird geöffnet.
 
-    1. Melden Sie sich mit Ihrem Microsoft-Konto beim Azure-Verwaltungsportal an, und klicken Sie dann auf die Schaltfläche **Cloud Services**.
+    1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) an, und klicken Sie dann auf die Schaltfläche **Clouddienste**.
 
     1. Wählen Sie den gewünschten Clouddienst aus.
 
@@ -71,4 +71,4 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
 
     1. Fügen Sie den vollständigen Pfad der erstellten CER-Datei ein, und geben Sie dann das festgelegte Kennwort ein.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -50,7 +50,8 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken zur Vereinfachung der Ar
 6. Führen Sie den folgenden Befehl in der Konsole aus, um die Pakete zu installieren:
 
         Install-Package Microsoft.Azure.Common.Authentication -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight -Pre
+        Install-Package Microsoft.Azure.Management.ResourceManager -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight
 
     Diese Befehle installieren .NET-Bibliotheken und fügen Verweise zum aktuellen Visual Studio-Projekt hinzu.
 
@@ -64,7 +65,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken zur Vereinfachung der Ar
         using Microsoft.Azure.Common.Authentication.Models;
         using Microsoft.Azure.Management.HDInsight;
         using Microsoft.Azure.Management.HDInsight.Models;
-        using Microsoft.Azure.Management.Resources;
+        using Microsoft.Azure.Management.ResourceManager;
 
         namespace CreateHDInsightCluster
         {
@@ -103,7 +104,8 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken zur Vereinfachung der Ar
                     var tokenCreds = GetTokenCloudCredentials();
                     var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
                     
-                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+                    var svcClientCreds = new TokenCredentials(tokenCreds.Token); 
+                    var resourceManagementClient = new ResourceManagementClient(svcClientCreds);
                     var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
 
                     _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
@@ -158,8 +160,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken zur Vereinfachung der Ar
                 }
             }
         }
-
-		
+	
 10. Ersetzen Sie die Klassenmemberwerte.
 
 7. Drücken Sie **F5**, um die Anwendung auszuführen. In einem Konsolenfenster wird der Status der Anwendung angezeigt. Sie werden auch zur Eingabe Ihrer Azure-Anmeldeinformationen aufgefordert. Die Erstellung eines HDInsight-Clusters kann etwas Zeit in Anspruch nehmen, normalerweise etwa 15 Minuten.
@@ -370,4 +371,4 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 - [Run Sqoop jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) (Ausführen von Sqoop-Aufträgen in HDInsight mithilfe des .NET SDK)
 - [Run Oozie jobs in HDInsight](hdinsight-use-oozie.md) (Ausführen von Oozie-Aufträgen in HDInsight)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

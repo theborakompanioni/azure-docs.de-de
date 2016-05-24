@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="02/24/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio
@@ -279,8 +279,8 @@ Sie können Diagnosedaten für den Azure-Clouddienst sammeln. Diese Daten werden
 
 1. Wählen Sie unter **Kontoname** das Speicherkonto aus, das Sie verwenden möchten.
 
-    Wenn Sie die Anmeldeinformationen für das Speicherkonto manuell eingeben, muss der Primärschlüssel in **Kontoschlüssel** kopiert oder eingegeben werden. Der Schlüssel kann vom Azure-Verwaltungsportal kopiert werden. Führen Sie zum Kopieren dieses Schlüssels folgende Schritte in der Ansicht **Speicherkonten** im Azure-Verwaltungsportal aus:
-
+    Wenn Sie die Anmeldeinformationen für das Speicherkonto manuell eingeben, muss der Primärschlüssel in **Kontoschlüssel** kopiert oder eingegeben werden. Der Schlüssel kann vom [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) kopiert werden. Führen Sie zum Kopieren dieses Schlüssels folgende Schritte in der Ansicht **Speicherkonten** im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) aus:
+    
   1. Wählen Sie das Speicherkonto, das Sie für Ihren Clouddienst verwenden möchten.
 
   1. Wählen Sie die Schaltfläche **Zugriffsschlüssel verwalten** am unteren Bildschirmrand aus. Das Dialogfeld **Zugriffsschlüssel verwalten** wird angezeigt.
@@ -311,7 +311,7 @@ Die für die einzelnen virtuellen Computer in Azure erforderlichen Ressourcen wi
 
 Sie konfigurieren Netzwerkendpunkte durch die Angabe des Protokolls, der Portnummer und, für HTTPS, der SSL-Zertifikatsinformationen. Versionen vor Juni 2012 unterstützen HTTP, HTTPS und TCP. Von der Juni 2012-Version werden diese Protokolle und UDP unterstützt. Sie können UDP nicht für Eingabeendpunkte im Serveremulator verwenden. Dieses Protokoll kann nur für interne Endpunkte verwendet werden.
 
-Zum Verbessern der Sicherheit Ihres Azure-Clouddiensts können Sie Endpunkte erstellen, die das HTTPS-Protokoll verwenden. Wenn Sie z. B. einen Clouddienst besitzen, der von Kunden für Bestellungen verwendet wird, möchten Sie durch Verwendung von SSL sicherstellen, dass die Informationen der Kunden sicher sind.
+Zum Verbessern der Sicherheit Ihres Azure-Clouddiensts können Sie Endpunkte erstellen, die das HTTPS-Protokoll verwenden. Wenn Sie z. B. einen Clouddienst besitzen, der von Kunden für Bestellungen verwendet wird, möchten Sie durch Verwendung von SSL sicherstellen, dass die Informationen der Kunden sicher sind.
 
 Sie können außerdem Endpunkte hinzufügen, die intern oder extern verwendet werden können. Externe Endpunkten werden Eingabeendpunkte genannt. Ein Eingabeendpunkt ermöglicht einen anderen Zugriffspunkt für Benutzer Ihres Clouddiensts. Wenn Sie einen WCF-Dienst haben, möchten Sie möglicherweise einen internen Endpunkt für eine Webrolle verfügbar machen, den sie zum Zugreifen auf diesen Dienst verwenden soll.
 
@@ -319,7 +319,7 @@ Sie können außerdem Endpunkte hinzufügen, die intern oder extern verwendet we
 
 Wenn Sie HTTPS-Endpunkte hinzufügen, müssen Sie ein SSL-Zertifikat verwenden. Dazu können Sie Ihrer Rolle Zertifikate für alle Dienstkonfigurationen zuordnen und diese für Ihre Endpunkte verwenden.
 
->[AZURE.IMPORTANT] Diese Zertifikate werden nicht mit dem Dienst paketiert. Sie müssen die Zertifikate über das Azure Platform-Verwaltungsportal gesondert in Azure hochladen.
+>[AZURE.IMPORTANT] Diese Zertifikate werden nicht mit dem Dienst paketiert. Sie müssen die Zertifikate über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) gesondert in Azure hochladen.
 
 Alle Verwaltungszertifikate, die Sie den Dienstkonfigurationen zuordnen, gelten nur, wenn der Clouddienst in Azure ausgeführt wird. Wenn der Clouddienst in der lokalen Entwicklungsumgebung ausgeführt wird, wird ein Standardzertifikat verwendet, das vom Azure-Serveremulator verwaltet wird.
 
@@ -376,4 +376,4 @@ Alle Verwaltungszertifikate, die Sie den Dienstkonfigurationen zuordnen, gelten 
 ## Nächste Schritte
 Unter [Konfigurieren eines Azure-Projekts](vs-azure-tools-configuring-an-azure-project.md) erhalten Sie weitere Informationen zu Azure-Projekten in Visual Studio. Informationen zum Clouddienstschema finden Sie unter [Schemareferenz](https://msdn.microsoft.com/library/azure/dd179398).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

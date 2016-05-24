@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/03/2016"
+	ms.date="05/16/2016"
 	ms.author="spelluru"/>
 
 # Erstellen der ersten Azure Data Factory mit Azure PowerShell
@@ -64,7 +64,7 @@ In diesem Schritt erstellen Sie mit Azure PowerShell eine Azure Data Factory nam
 
 		New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
 
-	> [AZURE.IMPORTANT] Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „FirstDataFactoryPSH“ nicht verfügbar** ändern Sie den Namen (z. B. in „IhrNameFirstDataFactoryPSH“). Verwenden Sie diesen Namen beim Ausführen der Schritte in diesem Lernprogramm anstelle von "ADFTutorialDataFactoryPSH". Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+	> [AZURE.IMPORTANT] Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „FirstDataFactoryPSH“ nicht verfügbar** ändern Sie den Namen (z. B. in „IhrNameFirstDataFactoryPSH“). Verwenden Sie diesen Namen beim Ausführen der Schritte in diesem Lernprogramm anstelle von "ADFTutorialDataFactoryPSH". Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
 	> 
 	> Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
 
@@ -269,8 +269,8 @@ In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive**-
 		                "linkedServiceName": "HDInsightOnDemandLinkedService"
 		            }
 		        ],
-		        "start": "2014-02-01T00:00:00Z",
-		        "end": "2014-02-02T00:00:00Z",
+		        "start": "2016-04-01T00:00:00Z",
+		        "end": "2016-04-02T00:00:00Z",
 		        "isPaused": false
 		    }
 		}
@@ -279,7 +279,7 @@ In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive**-
 	
 	Die Hive-Skriptdatei **partitionweblogs.hql** ist im Azure-Speicherkonto (das durch den scriptLinkedService-Dienst namens **StorageLinkedService** angegeben ist) und im Ordner **script** im Container **adfgetstarted** gespeichert.
 
-	Der Abschnitt **defines** dient zum Angeben der Laufzeiteinstellungen, die als Hive-Konfigurationswerte (z. B. „${hiveconf:inputtable}“, „${hiveconf:partitionedtable}“) an das Hive-Skript übergeben werden.
+	Der Abschnitt **defines** dient zum Angeben der Laufzeiteinstellungen, die als Hive-Konfigurationswerte (z. B. „${hiveconf:inputtable}“, „${hiveconf:partitionedtable}“) an das Hive-Skript übergeben werden.
 
 	Die Eigenschaften **start** und **end** der Pipeline geben den aktiven Zeitraum der Pipeline an.
 
@@ -357,4 +357,4 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

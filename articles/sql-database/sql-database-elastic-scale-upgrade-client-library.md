@@ -4,7 +4,7 @@
 	description="Upgrade apps and libraries using Nuget" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove"/>
 
 <tags 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/01/2016" 
+	ms.date="04/26/2016" 
 	ms.author="ddove;sidneyh" />
 
-# Upgrade auf die neueste Clientbibliothek für elastische Datenbanken
+# Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
 
-Neue Versionen der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) stehen über [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) und die NuGetPackage Manager-Benutzeroberfläche in Visual Studio zur Verfügung. Upgrades bieten Fehlerkorrekturen und Unterstützung für die neuen Funktionen der Clientbibliothek.
+Neue Versionen der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) stehen über NuGet und die NuGetPackage Manager-Benutzeroberfläche in Visual Studio zur Verfügung. Upgrades bieten Fehlerkorrekturen und Unterstützung für die neuen Funktionen der Clientbibliothek.
+
+**Die neueste Version** erhalten Sie unter [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 Erstellen Sie die Anwendung mit der neuen Bibliothek neu, und ändern Sie Ihre vorhandenen Shard Map Manager-Metadaten, die in Ihren Azure SQL-Datenbanken gespeichert sind, damit neue Features unterstützt werden.
 
@@ -74,20 +76,7 @@ Diese Techniken für die Metadatenaktualisierung können ohne Probleme mehrmals 
 
 ## Elastischer Datenbank-Client – Versionsverlauf 
 
-**Version 1.0 – April 2015**
-
-* Version mit allgemeiner Verfügbarkeit
-* Zusätzliche Unterstützung für Datetime-Typen als Sharding Schlüssel
-
-**Version 0.8 – März 2015**
-
-* Unterstützung von Asynchronität für datenabhängiges Routing mit den neuen "ShardMap.OpenConnectionForKeyAsync"-Methoden hinzugefügt 
-* "Public KeyType"-Eigenschaft zu ShardMap hinzugefügt 
-* Verbesserungen zur Unterstützung von Szenarien für Datenbank- und Notfallwiederherstellung hinzugefügt 
-
-**Version 0.7 – Oktober 2014**
-
-Erste Vorschauversion
+Einen Versionsverlauf erhalten Sie unter [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -97,4 +86,4 @@ Erste Vorschauversion
 [1]: ./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0511_2016-->

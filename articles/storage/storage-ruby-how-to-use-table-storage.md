@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwenden des Azure-Tabellenspeichers mit Ruby | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Azure-Tabellenspeicher in Azure verwenden. Die Codebeispiele verwenden die Ruby-API."
+	description="Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud."
 	services="storage"
 	documentationCenter="ruby"
 	authors="rmcmurray"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="04/10/2016"
+	ms.date="04/29/2016"
 	ms.author="robmcm"/>
 
 
@@ -164,4 +164,4 @@ Unter den folgenden Links erhalten Sie weitere Informationen zu komplexeren Spei
 - [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby)-Repository auf GitHub
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

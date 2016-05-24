@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/31/2016"
+   ms.date="05/09/2016"
    ms.author="curtand"/>
 
 # Azure Active Directory B2B-Zusammenarbeit
@@ -47,7 +47,7 @@ Einladungen an E-Mail-Adressen von Privatbenutzern (wie Gmail oder [*comcast.net
 Weitere Informationen zur Funktionsweise der B2B-Zusammenarbeit erhalten Sie in [diesem Video](http://aka.ms/aadshowb2b).
 
 ## Nächste Schritte
-Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit.
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit.
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 - [So funktioniert's](active-directory-b2b-how-it-works.md)
@@ -58,4 +58,4 @@ Durchsuchen Sie unsere anderen Artikel zur Azure B2B-Zusammenarbeit.
 - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

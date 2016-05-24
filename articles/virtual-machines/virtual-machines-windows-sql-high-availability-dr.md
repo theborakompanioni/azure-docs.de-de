@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/27/2016"
+	ms.date="05/04/2016"
 	ms.author="mikeray" />
 
 # Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
@@ -36,7 +36,7 @@ Darüber hinaus ist möglicherweise der georedundante Speicher (GRS) in Azure, d
 Zu den in Azure unterstützten SQL Server-HADR-Technologien gehören:
 
 - [AlwaysOn-Verfügbarkeitsgruppen](https://technet.microsoft.com/library/hh510230.aspx)
-- [Datenbankspiegelung](https://technet.microsoft.com/library/ms189852.aspx)
+- [Spiegeln von Datenbanken](https://technet.microsoft.com/library/ms189852.aspx)
 - [Protokollversand](https://technet.microsoft.com/library/ms187103.aspx)
 - [Sicherung und Wiederherstellung mit dem Azure-Blob-Speicherdienst](https://msdn.microsoft.com/library/jj919148.aspx)
 - [AlwaysOn-Failoverclusterinstanzen](https://technet.microsoft.com/library/ms189134.aspx)
@@ -45,7 +45,7 @@ Es ist möglich, mehrere Technologie zu kombinieren, um eine SQL Server-Lösung
 
 ## Nur in Azure: Lösungen mit hoher Verfügbarkeit
 
-Sie können eine Lösung mit hoher Verfügbarkeit für SQL Server-Datenbanken in Azure mit AlwaysOn-Verfügbarkeitsgruppen oder per Datenbankspiegelung umsetzen.
+Sie können eine Lösung mit hoher Verfügbarkeit für SQL Server-Datenbanken in Azure mit AlwaysOn-Verfügbarkeitsgruppen oder per Datenbankspiegelung umsetzen.
 
 |Technologie|Beispielarchitekturen|
 |---|---|
@@ -54,7 +54,7 @@ Sie können eine Lösung mit hoher Verfügbarkeit für SQL Server-Datenbanken i
 
 ## Nur in Azure: Notfallwiederherstellungslösungen
 
-Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbanken in Azure mit AlwaysOn-Verfügbarkeitsgruppen, Datenbankspiegelung oder Sicherung und Wiederherstellung mit Speicher-Blobs umsetzen.
+Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbanken in Azure mit AlwaysOn-Verfügbarkeitsgruppen, Datenbankspiegelung oder Sicherung und Wiederherstellung mit Speicher-Blobs umsetzen.
 
 |Technologie|Beispielarchitekturen|
 |---|---|
@@ -64,11 +64,11 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenban
 
 ## Hybride IT: Notfallwiederherstellungslösungen
 
-Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbanken in Hybridlösungen mit AlwaysOn-Verfügbarkeitsgruppen, Datenbankspiegelung, Protokollversand und Sicherung und Wiederherstellung mit Azure-Blob-Speicher umsetzen.
+Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbanken in Hybridlösungen mit AlwaysOn-Verfügbarkeitsgruppen, Datenbankspiegelung, Protokollversand und Sicherung und Wiederherstellung mit Azure-Blob-Speicher umsetzen.
 
 |Technologie|Beispielarchitekturen|
 |---|---|
-|**AlwaysOn-Verfügbarkeitsgruppen**|Einige Replikate für die Verfügbarkeit werden auf virtuellen Azure-Computern ausgeführt und andere lokal, um eine standortübergreifende Notfallwiederherstellung sicherzustellen. Der Produktionsstandort kann sich entweder vor Ort oder in einem Azure-Rechenzentrum befinden.<br/>![AlwaysOn-Verfügbarkeitsgruppen](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Da sich alle Verfügbarkeitsreplikate in demselben WSFC-Cluster befinden müssen, muss der WSFC-Cluster beide Netzwerke (mit WSFC-Clustern in mehreren Subnetzen) einschließen. Diese Konfiguration erfordert eine VPN-Verbindung zwischen Azure und dem lokalen Netzwerk.<br/><br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren.<br/><br/>Es ist möglich, den Assistenten zum Hinzufügen von Replikaten in SSMS zu verwenden, um ein Azure-Replikat einer vorhandenen AlwaysOn-Verfügbarkeitsgruppe hinzufügen. Weitere Informationen finden Sie im Lernprogramm zum Erweitern der AlwaysOn-Verfügbarkeitsgruppe auf Azure.|
+|**AlwaysOn-Verfügbarkeitsgruppen**|Einige Replikate für die Verfügbarkeit werden auf virtuellen Azure-Computern ausgeführt und andere lokal, um eine standortübergreifende Notfallwiederherstellung sicherzustellen. Der Produktionsstandort kann sich entweder vor Ort oder in einem Azure-Rechenzentrum befinden.<br/>![AlwaysOn-Verfügbarkeitsgruppen](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Da sich alle Verfügbarkeitsreplikate in demselben WSFC-Cluster befinden müssen, muss der WSFC-Cluster beide Netzwerke (mit WSFC-Clustern in mehreren Subnetzen) einschließen. Diese Konfiguration erfordert eine VPN-Verbindung zwischen Azure und dem lokalen Netzwerk.<br/><br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren.<br/><br/>Es ist möglich, den Assistenten zum Hinzufügen von Replikaten in SSMS zu verwenden, um ein Azure-Replikat einer vorhandenen AlwaysOn-Verfügbarkeitsgruppe hinzufügen. Weitere Informationen finden Sie im Tutorial zum Erweitern der AlwaysOn-Verfügbarkeitsgruppe auf Azure.|
 |**Spiegeln von Datenbanken**|Ein Partner wird auf einem virtuellen Azure-Computer und der andere lokal ausgeführt, um eine standortübergreifende Notfallwiederherstellung unter Verwendung von Serverzertifikaten zu gewährleisten. Die Partner müssen sich nicht in derselben Active Directory-Domäne befinden, und es ist keine VPN-Verbindung erforderlich.<br/>![Datenbankspiegelung](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Ein anderes Szenario zur Datenbankspiegelung sieht einen Partner vor, der auf einem virtuellen Azure-Computer ausgeführt wird, während der andere lokal in derselben Active Directory-Domäne für die standortübergreifende Notfallwiederherstellung ausgeführt wird. Es ist eine [VPN-Verbindung zwischen dem virtuellen Azure-Netzwerk und dem lokalen Netzwerk](../vpn-gateway/vpn-gateway-site-to-site-create.md) erforderlich.<br/><br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren.|
 |**Versenden von Protokollen**|Ein Server wird auf einem virtuellen Azure-Computer und der andere lokal für die standortübergreifende Notfallwiederherstellung ausgeführt. Für das Versenden von Protokollen ist der Windows-Dateiaustausch erforderlich, deshalb muss eine VPN-Verbindung zwischen dem virtuellen Azure-Netzwerk und dem lokalen Netzwerk bestehen.<br/>![Protokollversand](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren.|
 |**Sicherung und Wiederherstellung mit dem Azure-Blob-Speicherdienst**|Die lokalen Produktionsdatenbanken werden direkt im Azure-Blob-Speicher für die Notfallwiederherstellung gesichert.<br/>![Sichern und Wiederherstellen](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md).|
@@ -99,7 +99,7 @@ Beachten Sie folgendes Szenario, wenn ein Cluster mit zwei Knoten erstellt und o
 
 1. In der Zwischenzeit kann KNOTEN1 Pakete an KNOTEN2 senden, aber KNOTEN2 kann nicht antworten. KNOTEN1 verliert das Quorum und fährt den Cluster herunter.
 
-Dieses Szenario kann vermieden werden, indem Sie dem Netzwerknamen des Clusters eine nicht verwendete statische IP-Adresse zuweisen, z. B. eine verbindungslokale IP-Adresse wie 169.254.1.1, um diesen online zu schalten. Informationen zur Vereinfachung dieses Vorgangs finden Sie unter [Konfigurieren eines Windows-Failoverclusters in Azure für AlwaysOn-Verfügbarkeitsgruppen](http://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx) (in englischer Sprache).
+Dieses Szenario kann vermieden werden, indem Sie dem Netzwerknamen des Clusters eine nicht verwendete statische IP-Adresse zuweisen, z. B. eine verbindungslokale IP-Adresse wie 169.254.1.1, um diesen online zu schalten. Informationen zur Vereinfachung dieses Vorgangs finden Sie unter [How to Configure Windows Failover Cluster in Azure for AlwaysOn Availability Groups](http://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx) (Konfigurieren eines Windows-Failoverclusters in Azure für AlwaysOn-Verfügbarkeitsgruppen).
 
 Weitere Informationen finden Sie unter [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in Azure (GUI)](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md).
 
@@ -107,12 +107,12 @@ Weitere Informationen finden Sie unter [Konfigurieren von AlwaysOn-Verfügbarkei
 
 Verfügbarkeitsgruppenlistener werden auf virtuellen Azure-Computern unter Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2 unterstützt. Möglich wird diese Unterstützung durch die Verwendung von Endpunkten mit Lastenausgleich auf den virtuellen Azure-Computern, die Verfügbarkeitsgruppenknoten sind. Sie müssen bestimmte Konfigurationsschritte für die Listener einhalten, damit sie sowohl für in Azure als auch lokal ausgeführte Clientanwendungen funktionieren.
 
-Es gibt zwei Hauptoptionen für das Einrichten des Listeners: extern (öffentlich) oder intern. Der externe (öffentliche) Listener ist mit einer öffentlichen VIP (Virtual IP) verknüpft, die über das Internet zugänglich ist. Bei einem externen Listener müssen Sie Direct Server Return (DSR) aktivieren, d. h. dass Sie von einem Computer, der sich nicht im selben Clouddienst wie die Knoten der AlwaysOn-Verfügbarkeitsgruppe befindet, eine Verbindung mit dem Listener herstellen müssen. Stattdessen können Sie auch einen internen Listener verwenden, der den internen Load Balancer (ILB) verwendet. Ein interner Listener unterstützt nur Clients im gleichen virtuellen Netzwerk.
+Es gibt zwei Hauptoptionen für das Einrichten des Listeners: extern (öffentlich) oder intern. Der externe (öffentliche) Listener ist mit einer öffentlichen VIP (Virtual IP) verknüpft, die über das Internet zugänglich ist. Bei einem externen Listener müssen Sie Direct Server Return (DSR) aktivieren, d.h., dass Sie von einem Computer, der sich nicht im selben Clouddienst wie die Knoten der AlwaysOn-Verfügbarkeitsgruppe befindet, eine Verbindung mit dem Listener herstellen müssen. Stattdessen können Sie auch einen internen Listener verwenden, der den internen Load Balancer (ILB) verwendet. Ein interner Listener unterstützt nur Clients im gleichen virtuellen Netzwerk.
 
 Wenn die Verfügbarkeitsgruppe mehrere Azure-Subnetze umfasst (z. B. bei einer Bereitstellung über mehrere Azure-Regionen hinweg), muss die Client-Verbindungszeichenfolge "**MultisubnetFailover = True**" enthalten. Dies führt zu parallelen Verbindungsversuchen mit den Replikaten in unterschiedlichen Subnetzen. Eine Anleitung zum Einrichten eines Listeners finden Sie unter
 
-- [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
-- [Konfigurieren eines externen Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-ext-listener.md).
+- [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md)
+- [Konfigurieren eines externen Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](virtual-machines-windows-classic-ps-sql-ext-listener.md)
 
 Sie können weiterhin separate Verbindungen mit den einzelnen Verfügbarkeitsreplikaten herstellen, indem Sie eine direkte Verbindung mit der Serverinstanz herstellen. Da AlwaysOn-Verfügbarkeitsgruppen abwärtskompatibel mit Clients für die Datenbankspiegelung sind, können Sie außerdem Verbindungen mit Verfügbarkeitsreplikaten wie Datenbankspiegelungspartnern herstellen, sofern die Replikate ähnlich wie die Datenbankspiegelung konfiguriert sind:
 
@@ -151,6 +151,6 @@ Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Comput
 ### Weitere Ressourcen
 
 - [Installieren einer neuen Active Directory-Gesamtstruktur in Azure](../active-directory/active-directory-new-forest-virtual-machine.md)
-- [Create WSFC Cluster for AlwaysOn Availability Groups in Microsoft Azure VM (in englischer Sprache)](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
+- [Create WSFC Cluster for AlwaysOn Availability Groups in Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Erstellen eines WSFC-Clusters für AlwaysOn-Verfügbarkeitsgruppen in virtuellen Azure-Computern)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

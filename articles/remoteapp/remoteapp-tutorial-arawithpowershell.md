@@ -13,13 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="02/23/2016"
+   ms.date="05/05/2016"
    ms.author="elizapo"/>
 
 
 
 # Verwenden von Windows PowerShell-Cmdlets mit Azure RemoteApp
-=====================================
 
  Sie können die PowerShell-Cmdlets in Azure RemoteApp zur Bereitstellung und Verwaltung Ihrer Sammlungen verwenden. Die folgenden Informationen erleichtern Ihnen den Einsteig.
 
@@ -27,7 +26,7 @@
 -------------
 Laden Sie [hier](http://go.microsoft.com/?linkid=9811175) zunächst die Azure PowerShell-Cmdlets herunter. Diese enthalten auch die RemoteApp-Cmdlets.
 
-Weitere Informationen finden Sie in der [Azure RemoteApp-Cmdlet-Hilfe](https://msdn.microsoft.com/library/mt428031.aspx).
+Weitere Informationen finden Sie in der [Hilfe zu Azure RemoteApp-Cmdlets](https://msdn.microsoft.com/library/mt428031.aspx).
 
 ## Konfigurieren Sie Azure-Cmdlets, um Ihr Abonnement zu verwenden
 ------------------
@@ -41,7 +40,7 @@ Für den Schnelleinstieg können Sie die folgenden Schritte ausführen:
 4.	Führen Sie **Get-AzureSubscription** aus, um die Ihrem Benutzerkonto zugeordneten Abonnements anzuzeigen. 
 5.	Führen Sie **Select-AzureSubscription** aus, und geben Sie den Abonnementnamen oder die ID an, der bzw. die in der PowerShell-Konsole verwendet wird.
 
-Herzlichen Glückwunsch, damit ist die Azure PowerShell-Konsole konfiguriert und einsatzbereit. Beachten Sie, dass Sie die Schritte 2 bis 5 bei jedem Start der Azure PowerShell-Konsole wiederholen müssen.
+Herzlichen Glückwunsch, damit ist die Azure PowerShell-Konsole konfiguriert und einsatzbereit. Beachten Sie, dass Sie die Schritte 2 bis 5 bei jedem Start der Azure PowerShell-Konsole wiederholen müssen.
 
 ## Erstellen einer Cloudsammlung
 --------------------
@@ -112,4 +111,4 @@ Andere RemoteApp-Cmdlets:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

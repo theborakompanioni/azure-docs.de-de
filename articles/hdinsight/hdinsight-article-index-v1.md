@@ -74,7 +74,7 @@ Eine vollständige Liste von Artikeln zur Verwendung von Linux und Linux-Cluster
 * [Bereitstellen und Verwalten von Apache Storm-Topologien](hdinsight-storm-deploy-monitor-topology.md)
 * [Entwickeln von C#-Topologien für Apache Storm mithilfe von Hadoop-Tools für Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [Entwickeln von Java-basierten Topologien für eine einfache Anwendung zum Zählen von Wörtern mit Apache Storm und Maven](hdinsight-storm-develop-java-topology.md)
-* [Verarbeitung von Ereignissen von Azure-Event Hubs mit Storm](hdinsight-storm-develop-csharp-event-hub-topology.md)
+* [Verarbeitung von Ereignissen von Azure-Event Hubs mit Storm](hdinsight-storm-develop-csharp-event-hub-topology.md)
 * [Verwenden von Power BI zur Visualisierung von Daten aus einer Apache Storm-Topologie ](hdinsight-storm-power-bi-topology.md)
 * [Verarbeiten von Fahrzeugsensordaten von Azure Event Hubs mit Apache Storm](hdinsight-storm-iot-eventhub-documentdb.md)
 
@@ -84,8 +84,7 @@ Artikel zur Verwendung von systemeigenen Apache Spark-Clustern im Azure-Portal f
 
 * [Übersicht: Apache Spark für Azure HDInsight](hdinsight-apache-spark-overview.md)
 * [Installieren und Verwenden von Spark in Hadoop-Clustern](hdinsight-hadoop-spark-install.md)
-* [Spark-Auftragsserver in HDInsight-Clustern](hdinsight-apache-spark-job-server.md)
-* [Bereitstellen von Apache Spark und Ausführen von interaktiven Abfragen mit Spark-SQL](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1.md)
+
 
 
 ## Big Data-Lösungen
@@ -131,4 +130,4 @@ Artikel zur Verwendung von systemeigenen Apache Spark-Clustern im Azure-Portal f
 * [Interpretieren von Fehlermeldungen](hdinsight-debug-jobs.md)
 * [Hilfe im Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

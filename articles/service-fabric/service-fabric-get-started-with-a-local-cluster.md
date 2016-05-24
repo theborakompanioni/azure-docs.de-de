@@ -3,7 +3,7 @@
    description="Richten Sie einen lokalen Service Fabric-Cluster ein, stellen Sie eine vorhandene Anwendung in dem Cluster bereit, und aktualisieren Sie die Anwendung."
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="04/12/2016"
-   ms.author="seanmck"/>
+   ms.author="ryanwi"/>
 
 # Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.
@@ -190,4 +190,4 @@ Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal begin
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

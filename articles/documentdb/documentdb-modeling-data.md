@@ -3,7 +3,7 @@
 	description="Informationen zur Datenmodellierung für DocumentDB, eine NoSQL-Dokumentdatenbank." 
 	keywords="Modellieren von Daten"
 	services="documentdb" 
-	authors="ryancrawcour" 
+	authors="stephbaron" 
 	manager="jhubbard" 
 	editor="mimig1" 
 	documentationCenter=""/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
-	ms.author="ryancraw"/>
+	ms.date="05/12/2016" 
+	ms.author="stbaro"/>
 
 #Modellieren von Daten in DocumentDB#
 Schemafreie Datenbanken wie DocumentDB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie etwas über Ihre Daten nachdenken.
@@ -393,4 +393,4 @@ Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf 
 Anleitungen für die Datenmodellierung und das Sharding für mehrinstanzenfähige Anwendungen finden Sie unter [Skalieren einer mehrinstanzenfähigen Anwendung mit Azure DocumentDB](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx).
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/06/2016"
 	ms.author="micurd"/>
 
 # Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy
@@ -477,7 +477,7 @@ Wenn Sie nach der Option `/V` einen relativen Pfad angeben, z. B. `/V:test/azco
 
 ### Angeben der Anzahl der zu startenden gleichzeitigen Vorgängen
 
-Die Option `/NC` gibt die Anzahl der gleichzeitigen Kopiervorgänge an. Standardmäßig startet AzCopy gleichzeitige Vorgänge mit dem Achtfachen der Anzahl der verfügbaren Core-Prozessoren. Wenn Sie AzCopy in einem Netzwerk mit geringer Bandbreite ausführen, können Sie eine niedrigere Anzahl für diese Option angeben, um Fehler durch gleichzeitig verwendete Ressourcen zu vermeiden.
+Die Option `/NC` gibt die Anzahl der gleichzeitigen Kopiervorgänge an. AzCopy startet standardmäßig eine bestimmte Anzahl gleichzeitiger Vorgänge zum Erhöhen des Datenübertragungsdurchsatzes. Bei Tabellenvorgängen entspricht die Anzahl gleichzeitiger Vorgänge der Anzahl der verfügbaren Prozessoren. Bei Blob- und Dateivorgängen entspricht die Anzahl gleichzeitiger Vorgänge der achtfachen Anzahl der verfügbaren Prozessoren. Wenn Sie AzCopy in einem Netzwerk mit geringer Bandbreite ausführen, können Sie eine niedrigere Anzahl für „/NC“ angeben, um Fehler durch gleichzeitig verwendete Ressourcen zu vermeiden.
 
 ### AzCopy gegen Azure-Speicheremulator ausführen
 
@@ -583,7 +583,7 @@ AzCopy legt die Content-MD5-Eigenschaft für einen Azure-BLOB oder eine entsprec
 
 Gibt an, ob Momentaufnahmen übertragen werden. Diese Option ist nur gültig, wenn es sich bei der Quelle um einen BLOB handelt.
 
-Die übertragenen Blobmomentaufnahmen werden im folgenden Format umbenannt: [Blobname](snapshot-time) [Erweiterung].
+Die übertragenen Blobmomentaufnahmen werden im folgenden Format umbenannt: „Blob-Name (Zeitpunkt-der-Momentaufnahme).Erweiterung“.
 
 Momentaufnahmen werden standardmäßig nicht kopiert.
 
@@ -864,4 +864,4 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 - [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/14/2016" 
+	ms.date="05/09/2016" 
 	ms.author="robinsh"/>
 
 # Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten
@@ -204,4 +204,4 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 [Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

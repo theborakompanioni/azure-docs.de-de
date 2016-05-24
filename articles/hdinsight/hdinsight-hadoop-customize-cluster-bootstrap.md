@@ -33,6 +33,9 @@ Die Cluster können die Änderungen aufgrund des Re-Imagings nicht beibehalten. 
 Es gibt drei Methoden zum Verwenden von Bootstrap:
 
 - Verwenden von Azure PowerShell
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+    
 - Verwenden von .NET SDK
 - Verwenden von ARM-Vorlagen
 
@@ -249,4 +252,4 @@ Dieses PowerShell-Skript erstellt einen HDInsight-Cluster und passt eine Hive-Ei
 
     #endregion
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 # Überwachen eines Speicherkontos im Azure-Portal
@@ -159,4 +159,4 @@ Für jeden der für Ihr Speicherkonto verfügbaren Speicherdienste (Blob, Wartes
 
 Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Informationen zum Zugreifen auf den Container $logs finden Sie unter [Informationen zur Protokollierung durch die Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343262.aspx).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

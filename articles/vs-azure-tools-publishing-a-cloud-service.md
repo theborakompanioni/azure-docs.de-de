@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Veröffentlichen eines Clouddiensts mit den Azure Tools
 
 Mit den Azure-Tools für Microsoft Visual Studio können Sie Ihre Azure-Anwendung direkt aus Visual Studio veröffentlichen. Visual Studio unterstützt die integrierte Veröffentlichung für die Staging- oder Produktionsumgebung eines Clouddiensts.
 
-Um eine Azure-Anwendung veröffentlichen zu können, müssen Sie über ein Azure-Abonnement verfügen. Sie müssen auch einen Clouddienst und ein Speicherkonto für die Nutzung durch die Anwendung einrichten. Dies können Sie im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) festlegen.
+Um eine Azure-Anwendung veröffentlichen zu können, müssen Sie über ein Azure-Abonnement verfügen. Sie müssen auch einen Clouddienst und ein Speicherkonto für die Nutzung durch die Anwendung einrichten. Dies können Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) festlegen.
 
 >[AZURE.IMPORTANT] Beim Veröffentlichen können Sie die Bereitstellungsumgebung für Ihren Clouddienst auswählen. Außerdem müssen Sie ein Speicherkonto auswählen, das zum Speichern des Anwendungspakets für die Bereitstellung verwendet wird. Nach der Bereitstellung wird das Anwendungspaket aus dem Speicherkonto entfernt.
 
@@ -35,7 +35,7 @@ Verwenden Sie die folgenden Verfahren zum Veröffentlichen der Azure-Anwendung u
 
 Wenn Sie Ihre Azure-Anwendung veröffentlichen, können Sie eine der folgenden Aufgaben ausführen:
 
-- Erstellen eines Dienstpakets: Sie können dieses Paket und die Dienstkonfigurationsdatei verwenden, um Ihre Anwendung über das [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) in einer Bereitstellungsumgebung zu veröffentlichen.
+- Erstellen eines Dienstpakets: Sie können dieses Paket und die Dienstkonfigurationsdatei verwenden, um Ihre Anwendung über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) in einer Bereitstellungsumgebung zu veröffentlichen.
 
 - Veröffentlichen Ihres Azure-Projekts in Visual Studio: Verwenden Sie den Veröffentlichungs-Assistenten, um die Anwendung direkt in Azure zu veröffentlichen. Informationen hierzu finden Sie unter [Assistent zur Veröffentlichung einer Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md).
 
@@ -55,13 +55,13 @@ Wenn Sie Ihre Azure-Anwendung veröffentlichen, können Sie eine der folgenden A
 
   1. Wählen Sie den Link **Verpacken**, um das Paket zu erstellen.
 
-      Im Datei-Explorer wird der Dateispeicherort des neu erstellten Pakets angezeigt. Sie können diesen Speicherort kopieren, damit Sie ihn im Azure-Verwaltungsportal verwenden können.
+      Im Datei-Explorer wird der Dateispeicherort des neu erstellten Pakets angezeigt. Sie können diesen Speicherort kopieren, damit Sie ihn im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden können.
 
-  1. Um dieses Paket in einer Bereitstellungsumgebung zu veröffentlichen, müssen Sie diesen Speicherort als Paketspeicherort verwenden, wenn Sie mit dem [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885)einen Clouddienst erstellen und dieses Paket in einer Umgebung bereitstellen.
+  1. Um dieses Paket in einer Bereitstellungsumgebung zu veröffentlichen, müssen Sie diesen Speicherort als Paketspeicherort verwenden, wenn Sie über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) einen Clouddienst erstellen und dieses Paket in einer Umgebung bereitstellen.
 
 1. (Optional) Um den Bereitstellungsprozess abzubrechen, wählen Sie im Kontextmenü für die Position im Aktivitätsprotokoll die Option **Abbrechen und entfernen**. Der Bereitstellungsprozess wird beendet, und die Bereitstellungsumgebung wird aus Azure gelöscht.
 
-    >[AZURE.NOTE] Sie müssen Sie das Azure-Verwaltungsportal verwenden, um diese Umgebung nach der Bereitstellung zu entfernen.
+    >[AZURE.NOTE] Sie müssen das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden, um diese Umgebung nach der Bereitstellung zu entfernen.
 
 1. (Optional) Nach dem Starten Ihrer Rolleninstanzen wird die Bereitstellungsumgebung in Visual Studio im Server-Explorer automatisch unter dem Knoten **Cloud Services** angezeigt. Hier können Sie den Status der einzelnen Rolleninstanzen anzeigen. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit dem Cloud-Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md). Die folgende Abbildung zeigt die Rolleninstanzen, während sie sich noch im Zustand der Initialisierung befinden:
 
@@ -121,7 +121,7 @@ Beim folgenden Verfahren wird davon ausgegangen, dass Sie den Assistenten **Azur
 
 1. Für Web Deploy wird standardmäßig ein nicht vertrauenswürdiges, selbstsigniertes Zertifikat verwendet. Dies wird nicht zum Hochladen von vertraulichen Daten empfohlen. Wenn Sie diesen Prozess für vertrauliche Daten schützen möchten, können Sie ein SSL-Zertifikat hinzufügen, das für Web Deploy-Verbindungen verwendet wird. Dieses Zertifikat muss ein vertrauenswürdiges Zertifikat von einer Zertifizierungsstelle sein.
 
-    Um Web Deploy für jeden virtuellen Computer und jede Webrolle sicher zu machen, müssen Sie das vertrauenswürdige Zertifikat hochladen, das Sie für Web Deploy im [Azure-Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden möchten. Dadurch wird sichergestellt, dass das Zertifikat dem virtuellen Computer hinzugefügt wird, der beim Veröffentlichen der Anwendung für die Webrolle erstellt wird.
+    Um Web Deploy für jeden virtuellen Computer und jede Webrolle sicher zu machen, müssen Sie das vertrauenswürdige Zertifikat hochladen, das Sie für Web Deploy im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden möchten. Dadurch wird sichergestellt, dass das Zertifikat dem virtuellen Computer hinzugefügt wird, der beim Veröffentlichen der Anwendung für die Webrolle erstellt wird.
 
 1. Führen Sie die folgenden Schritte aus, um ein vertrauenswürdiges SSL-Zertifikat für IIS hinzuzufügen, das für Remoteverbindungen verwendet wird:
 
@@ -129,7 +129,7 @@ Beim folgenden Verfahren wird davon ausgegangen, dass Sie den Assistenten **Azur
 
       Sie werden im Browser aufgefordert, eine RDP-Datei herunterzuladen.
 
-  1. Öffnen Sie den Verwaltungsdienst im IIS-Manager, um ein SSL-Zertifikat hinzuzufügen. Aktivieren Sie SSL im IIS-Manager, indem Sie im Aktionsbereich den Link **Bindungen** öffnen. Das Dialogfeld **Sitebindung hinzufügen** wird angezeigt. Wählen Sie **Hinzufügen** und in der Dropdownliste **Typ** dann die Option HTTPS. Wählen Sie in der Liste **SSL-Zertifikat** das SSL-Zertifikat aus, das von einer Zertifizierungsstelle signiert wurde und das Sie in das Azure-Verwaltungsportal hochgeladen haben. Weitere Informationen finden Sie unter [Konfigurieren der Verbindungseinstellungen für den Verwaltungsdienst](http://go.microsoft.com/fwlink/?LinkId=215824).
+  1. Öffnen Sie den Verwaltungsdienst im IIS-Manager, um ein SSL-Zertifikat hinzuzufügen. Aktivieren Sie SSL im IIS-Manager, indem Sie im Aktionsbereich den Link **Bindungen** öffnen. Das Dialogfeld **Sitebindung hinzufügen** wird angezeigt. Wählen Sie **Hinzufügen** und in der Dropdownliste **Typ** dann die Option HTTPS. Wählen Sie in der Liste **SSL-Zertifikat** das SSL-Zertifikat aus, das von einer Zertifizierungsstelle signiert wurde und das Sie in das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hochgeladen haben. Weitere Informationen finden Sie unter [Konfigurieren der Verbindungseinstellungen für den Verwaltungsdienst](http://go.microsoft.com/fwlink/?LinkId=215824).
 
       >[AZURE.NOTE] Wenn Sie ein vertrauenswürdiges SSL-Zertifikat hinzufügen, wird die Warnung mit dem gelben Dreieck im **Veröffentlichungs-Assistenten** nicht mehr angezeigt.
 
@@ -173,4 +173,4 @@ Unter Umständen müssen Sie bestimmte Dateien in Ihr Dienstpaket einschließen,
 
 Weitere Informationen zum Veröffentlichen in Azure aus Visual Studio finden Sie unter [Assistent zur Veröffentlichung einer Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

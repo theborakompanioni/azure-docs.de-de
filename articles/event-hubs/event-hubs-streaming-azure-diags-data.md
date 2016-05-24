@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/30/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
@@ -51,7 +51,7 @@ Die Azure-Diagnose verwendet standardmäßig stets ein Azure-Speicherkonto als S
 
 In diesem Beispiel wird die Event Hub-URL auf den vollqualifizierten Namespace des Event Hubs festgelegt (ServiceBus-Namespace + „/“ + Event Hub-Name).
 
-Die Event Hub-URL wird im [klassischen Azure-Portal](https://manage.windowsazure.com) im Event Hubs-Dashboard angezeigt.
+Die Event Hub-URL wird im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) im Event Hubs-Dashboard angezeigt.
 
 Der Name der **Senke** kann auf eine beliebige gültige Zeichenfolge festgelegt werden, solange der Wert in der gesamten Konfigurationsdatei konsistent verwendet wird.
 
@@ -295,4 +295,4 @@ Die ergänzende Datei *ServiceConfiguration.Cloud.cscfg* für dieses Beispiel si
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="Verwenden der Engagement-API unter Android" 
+<properties
+	pageTitle="Verwenden der Engagement-API unter Android"
 	description="Neuestes Android SDK – Verwenden der Engagement-API unter Android"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/29/2016" 
-	ms.author="piyushjo" />
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/10/2016"
+	ms.author="piyushjo;ricksal" />
 
 #Verwenden der Engagement-API unter Android
 
-Dieses Dokument ist eine Ergänzung zum Dokument [Integrieren von Engagement unter Android](mobile-engagement-android-integrate-engagement.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
+Dieses Dokument ergänzt das Dokument [Erweiterte Berichterstellungsoptionen für Android für Azure Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
 
 Bedenken Sie, dass die einfachste Methode darin besteht, dass Ihre `Activity`-Unterklassen von der entsprechenden `EngagementActivity`-Klasse erben, wenn Engagement lediglich die Sitzungen, Aktivitäten, Abstürze und technischen Informationen Ihrer Anwendung melden soll.
 
@@ -34,7 +34,7 @@ In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](mobile-enga
 
 Wenn sich der Benutzer zwischen zwei *Aktivitäten* mehr als zwei Sekunden im Leerlauf befindet, dann wird diese Folge von *Aktivitäten* in zwei einzelne *Sitzungen* unterteilt. Diese paar Sekunden werden als „Sitzungszeitlimit“ bezeichnet.
 
-Eine *Aktivität* ist üblicherweise mit einem Bildschirm einer Anwendung verknüpft, d. h. die *Aktivität* startet, wenn der Bildschirm angezeigt wird und endet, wenn der Bildschirm geschlossen wird. Dies ist der Fall, wenn das Engagement-SDK über die `EngagementActivity`-Klassen integriert wird.
+Eine *Aktivität* ist üblicherweise mit einem Bildschirm einer Anwendung verknüpft, d. h. die *Aktivität* startet, wenn der Bildschirm angezeigt wird und endet, wenn der Bildschirm geschlossen wird. Dies ist der Fall, wenn das Engagement-SDK über die `EngagementActivity`-Klassen integriert wird.
 
 Aber *Aktivitäten* können auch manuell mithilfe der Engagement-API gesteuert werden. Auf diese Weise kann ein vorhandener Bildschirm in mehrere Unterabschnitte geteilt werden, um mehr Details über die Verwendung des Bildschirms zu erhalten (um beispielsweise zu erfahren, wie häufig und wie lange Dialoge in diesem Bildschirm verwendet werden).
 
@@ -136,7 +136,7 @@ Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kon
 Das folgende Beispiel veranschaulicht die Meldung eines Fehlers, sobald auf dem Mobiltelefon nicht ausreichend Arbeitsspeicher zur Verfügung steht, während Ihr Anwendungsprozess aktiv ist.
 
 			public MyApplication extends EngagementApplication {
-			
+
 			  @Override
 			  protected void onApplicationProcessLowMemory() {
 			    EngagementAgent.getInstance(this).sendError("low_memory", null);
@@ -148,18 +148,18 @@ Das folgende Beispiel veranschaulicht die Meldung eines Fehlers, sobald auf dem 
 ### Beispiel
 
 Angenommen, Sie möchten die Dauer des Anmeldevorgangs melden:
-			
+
 			[...]
 			public void signIn(Context context, ...) {
-			
+
 			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
 			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
-			
+
 			  /* Report sign in job has started */
 			  engagementAgent.startJob("sign_in", null);
-			
+
 			  [... sign in ...]
-			
+
 			  /* Report sign in job is now ended */
 			  engagementAgent.endJob("sign_in");
 			}
@@ -177,10 +177,10 @@ Angenommen, Sie möchten einen Fehler während des Anmeldeprozesses melden:
 
 			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
 			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
-			
+
 			  /* Report sign in job has been started */
 			  engagementAgent.startJob("sign_in", null);
-			
+
 			  /* Try to sign in */
 			  while(true)
 			    try {
@@ -190,7 +190,7 @@ Angenommen, Sie möchten einen Fehler während des Anmeldeprozesses melden:
 			    catch(Exception e) {
 			      /* Report the error to Engagement */
 			      engagementAgent.sendJobError("sign_in_error", "sign_in", null);
-			
+
 			      /* Retry after a moment */
 			      sleep(2000);
 			    }
@@ -209,7 +209,7 @@ Ereignisse können statt mit der aktuellen Benutzersitzung in Zusammenhang mit e
 Angenommen, wir verfügen über ein soziales Netzwerk und verwenden einen Auftrag, um die Zeit insgesamt zu melden, die der Benutzer mit dem Server verbunden ist. Der Benutzer kann im Hintergrund mit dem Server verbunden bleiben, auch wenn er eine andere Anwendung verwendet oder sich das Mobiltelefon im Ruhemodus befindet und somit keine Sitzung besteht.
 
 Der Benutzer kann Nachrichten von Freunden empfangen, hierbei handelt es sich um ein Auftragsereignis.
-			
+
 			[...]
 			public void signin(Context context, ...) {
 			  [...Sign in code...]
@@ -235,7 +235,7 @@ Diese Daten können strukturiert werden. Sie verwenden die „Bundle“-Klasse v
 
 > [AZURE.IMPORTANT] Wenn Sie verpackbare oder serialisierbare Parameter einfügen, stellen Sie sicher, dass ihre `toString()`-Methode implementiert ist, damit eine lesbare Zeichenfolge zurückgegeben wird. Serialisierbare Klassen, die nicht flüchtige Felder enthalten, die nicht serialisiert werden können, führen zu einem Absturz von Android, wenn Sie `bundle.putSerializable("key",value);` aufrufen.
 
-> [AZURE.WARNING] Spärliche Arrays in zusätzlichen Parametern werden nicht unterstützt, d. h. sie werden nicht als Array serialisiert. Sie sollten sie in Standardarrays konvertieren, bevor sie in zusätzlichen Parametern verwendet werden.
+> [AZURE.WARNING] Spärliche Arrays in zusätzlichen Parametern werden nicht unterstützt, d. h. sie werden nicht als Array serialisiert. Sie sollten sie in Standardarrays konvertieren, bevor sie in zusätzlichen Parametern verwendet werden.
 
 ### Beispiel
 
@@ -296,6 +296,5 @@ Anwendungsinformationen sind auf **1024** Zeichen pro Aufruf begrenzt (nach der 
 Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
 
 			{"expiration":"2016-12-07","status":"premium"}
- 
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

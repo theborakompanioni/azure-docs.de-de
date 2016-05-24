@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"
+ 	ms.date="05/04/2016"
 	ms.author="juliako"/>
 
 #Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten 
@@ -41,6 +41,9 @@ Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HL
 
 	- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F).
 	- Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Konto erstellen](media-services-create-account.md).
+	- Registrieren Sie sich für das [Apple-Entwicklungsprogramm](https://developer.apple.com/).
+	- Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/) verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Azure Media Services implementiert haben und dass Sie das endgültige FPS-Paket anfordern. Im endgültigen FPS-Paket gibt es Anweisungen zum Generieren der Zertifizierung und zum Abrufen von ASK, den Sie zum Konfigurieren von FairPlay verwenden werden. 
+
 	- Azure Media Services .NET SDK, Version **3.6.0** oder höher.
 
 - Folgendes muss seitens der AMS-Schlüsselbereitstellung festgelegt werden:
@@ -52,7 +55,7 @@ Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HL
 	- **App Cert-Kennwort-ID**: Der Kunde muss das Kennwort hochladen, auf die gleiche Weise wie andere AMS-Schlüssel und unter Verwendung des Enumerationswerts **ContentKeyType.FairPlayPfxPassword**. Als Ergebnis erhält der Kunde eine AMS-ID, die er in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
 	- **iv**: Zufälliger 16-Bytes-Wert, muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Der Kunde generiert den iv-Wert und gibt ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an. 
 	- **ASK**: Ein ASK (Application Secret Key) wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Azure Media Services konfigurieren. 
-	-  **ASK-ID**: Wird von Apple bereitgestellt. Der Kunde muss den ASK hochladen, auf die gleiche Weise wie andere AMS-Schlüssel und unter Verwendung des Enumerationswerts **ContentKeyType.FairPlayASk**. Als Ergebnis erhält der Kunde eine WAMS-ID, die er in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
+	-  **ASK-ID**: Wird abgerufen wird, wenn der Kunde ASK in AMS hochlädt. Der Kunde muss ASK mit dem **ContentKeyType.FairPlayASk**-Aufzählungswert hochladen. Dadurch wird die AMS-ID zurückgegeben, die Sie beim Festlegen der Schlüsselbereitstellungs-Richtlinienoption verwenden sollten.
 
 - Folgendes muss seitens des FPS-Clients festgelegt werden:
  	- **App Cert (AC)**: CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung der Nutzlast verwendet. AMS muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
@@ -75,7 +78,9 @@ Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Med
 1. Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels. Wenn Sie die Autorisierungsrichtlinie für Inhaltsschlüssel erstellen, müssen Sie Folgendes angeben: 
 	
 	- Bereitstellungsmethode (in diesem Fall FairPlay) 
-	- Konfiguration der FairPlay-Richtlinienoptionen; Informationen zum Konfigurieren von FairPlay finden Sie weiter unten in der ConfigureFairPlayPolicyOptions()-Methode
+	- Konfiguration der FairPlay-Richtlinienoptionen; Informationen zum Konfigurieren von FairPlay finden Sie im Beispiel weiter unten in der ConfigureFairPlayPolicyOptions()-Methode
+	
+		>[AZURE.NOTE] In den meisten Fällen sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifizierung und ASK haben.
 	- Einschränkungen (offen oder tokenbasiert) 
 	- Informationen zum Typ der Schlüsselbereitstellung, der definiert, wie der Schlüssel an den Kunden übermittelt wird. 
 	
@@ -91,6 +96,11 @@ Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Med
 	>- Eine weitere IAssetDeliveryPolicy-Richtlinie zum Konfigurieren von FairPlay für HLS
 
 1. Erstellen eines "OnDemand"-Locators, um eine Streaming-URL zu erhalten.
+
+>[AZURE.NOTE] Azure Media Player unterstützt standardmäßig keine FairPlay-Wiedergabe. Sie benötigen den Beispiel-Player des Apple-Entwicklerkontos, um FairPlay-Wiedergabe unter MAC OSX zu erhalten.
+>
+>Sie können Apps auch mithilfe des iOS-SDK entwickeln.
+
 
 ##.NET-Beispiel
 
@@ -281,7 +291,7 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 		
 		        static public IContentKey CreateCommonCBCTypeContentKey(IAsset asset)
 		        {
-		            // Create envelope encryption content key
+		            // Create HLS SAMPLE AES encryption content key
 		            Guid keyId = Guid.NewGuid();
 		            byte[] contentKey = GetRandomBuffer(16);
 		
@@ -439,6 +449,13 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 		            // Get the FairPlay license service URL.
 		            Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay);
 		
+					// The reason the below code replaces "https://" with "skd://" is because
+					// in the IOS player sample code which you obtained in Apple developer account, 
+					// the player only recognizes a Key URL that starts with skd://. 
+					// However, if you are using a customized player, 
+					// you can choose whatever protocol you want. 
+					// For example, "https". 
+
 		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
 		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
 		                {
@@ -519,4 +536,4 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

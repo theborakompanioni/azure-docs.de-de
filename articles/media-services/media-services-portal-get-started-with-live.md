@@ -22,7 +22,7 @@
 [AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
 
 
-Dieses Lernprogramm führt Sie durch die Schritte zum Implementieren von grundlegenden Media Services-Anwendungen zum Livestreamen, in denen ein Kanal einen Livestream mit mehreren Bitraten von lokalen Encodern empfängt. Ausführlichere Informationen zum Arbeiten mit Kanälen und dazugehörigen Komponenten finden Sie unter [Arbeiten mit Kanälen, von denen Multi-Bitrate-Livedatenströme aus lokalen Encodern empfangen werden](media-services-manage-channels-overview.md).
+Dieses Lernprogramm führt Sie durch die Schritte zum Implementieren von grundlegenden Media Services-Anwendungen zum Livestreamen, in denen ein Kanal einen Livestream mit mehreren Bitraten von lokalen Encodern empfängt. Ausführlichere Informationen zum Arbeiten mit Kanälen und dazugehörigen Komponenten finden Sie unter [Arbeiten mit Kanälen, von denen Multi-Bitrate-Livedatenströme aus lokalen Encodern empfangen werden](media-services-live-streaming-with-onprem-encoders.md).
 
 In diesem Lernprogramm wird das klassische Azure-Portal verwendet, um die folgenden Aufgaben auszuführen:
 
@@ -88,7 +88,7 @@ Wenn der Kanal erstellt wurde, können Sie Erfassungs-URLs abrufen, die Sie dem 
 
 ![ingesturls](./media/media-services-portal-get-started-with-live/media-services-ingest-urls.png)
 
-Weitere Informationen über Erfassungs-URLs finden Sie unter [Verwenden von lokalen Encodern zum Senden von Livestreams mit mehreren Bitraten an einen Kanal](media-services-manage-channels-overview.md).
+Weitere Informationen über Erfassungs-URLs finden Sie unter [Verwenden von lokalen Encodern zum Senden von Livestreams mit mehreren Bitraten an einen Kanal](media-services-live-streaming-with-onprem-encoders.md).
 
 ## Konfigurieren Sie einen Live-Encoder und erfassen Sie Livedatenströme
 
@@ -212,4 +212,4 @@ Wenn dieses Thema nicht die erwarteten Informationen enthält, Informationen feh
 
 <!-- Images -->
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

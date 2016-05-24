@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="05/04/2016" 
 	ms.author="josephd"/>
 
 # Azure-Infrastrukturdienste-Workload: Branchenanwendung mit hoher Verfügbarkeit
@@ -52,7 +52,7 @@ Die grundlegende, repräsentative Konfiguration für eine Branchenanwendung mit 
 Sie besteht aus folgenden Elementen:
 
 - Eine nur im Intranet verfügbare Branchenanwendung mit zwei Servern auf Web- und Datenbankebene.
-- Eine SQL Server AlwaysOn-Konfiguration mit zwei virtuellen Computern, auf denen SQL Server ausgeführt wird, sowie einem Hauptknotencomputer in einem Cluster.
+- Eine SQL Server AlwaysOn-Konfiguration mit zwei virtuellen Computern, auf denen SQL Server ausgeführt wird, sowie einem Hauptknotencomputer in einem Cluster.
 - Active Directory-Domänendienste im virtuellen Netzwerk mit zwei Replikatdomänencontrollern.
 
 Eine Übersicht über die Branchenanwendungen finden Sie unter [Architekturblaupause für Branchenanwendungen](http://msdn.microsoft.com/dn630664).
@@ -75,9 +75,9 @@ Verwenden Sie zum Bereitstellen dieser Konfiguration das folgende Verfahren:
 
 	Erstellen Sie die virtuellen Webservercomputer, und fügen Sie Ihre Branchenanwendung hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 4](virtual-machines-windows-ps-lob-ph4.md).
 
-- Phase 5: Konfigurieren einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe
+- Phase 5: Konfigurieren einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe
 
-	Bereiten Sie die Anwendungsdatenbanken vor, erstellen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, und fügen Sie dann die Anwendungsdatenbanken hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
+	Bereiten Sie die Anwendungsdatenbanken vor, erstellen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, und fügen Sie dann die Anwendungsdatenbanken hinzu. Die ausführlichen Konfigurationsschritte finden Sie unter [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
 
 Nach der Konfiguration können Sie diese Branchenanwendung problemlos erweitern, indem Sie dem Cluster weitere Webserver oder virtuelle Computer hinzufügen, auf denen SQL Server ausgeführt wird.
 
@@ -85,4 +85,4 @@ Nach der Konfiguration können Sie diese Branchenanwendung problemlos erweitern,
 
 - Verschaffen Sie sich einen [Überblick](virtual-machines-windows-lob-overview.md) über den Produktions-Workload, bevor Sie sich die Konfiguration näher anschauen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

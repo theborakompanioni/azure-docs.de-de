@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/19/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
-Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend. Dies ist der Unterschied zwischen einer guten Anwendung und einer hervorragenden – und zwischen lediglich aktiven Consumern und wirklich engagierten. Azure Active Directory (Azure AD) B2C ermöglicht es Ihnen, die Seiten für die Registrierung und Anmeldung von Endkunden (*siehe Hinweis unten*) und für die Profilbearbeitung mit einer präzisen Kontrolle anzupassen.
+Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend. Dies ist der Unterschied zwischen einer guten Anwendung und einer hervorragenden – und zwischen lediglich aktiven Consumern und wirklich engagierten. Azure Active Directory (Azure AD) B2C ermöglicht es Ihnen, die Seiten für die Registrierung und Anmeldung von Endkunden (*siehe Hinweis unten*), für die Profilbearbeitung und für die Kennwortzurücksetzung mit einer präzisen Kontrolle anzupassen.
 
 > [AZURE.NOTE]
-Gegenwärtig sind Anmeldeseiten für lokale Konten, Überprüfungs-E-Mails und Seiten zum eigenständigen Zurücksetzen des Kennworts nur mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) anpassbar, nicht durch die Mechanismen, die in diesem Artikel beschrieben sind.
+Derzeit können Anmeldeseiten für lokale Konten (und die zugehörigen Seiten für die Kennwortzurücksetzung) und Überprüfungs-E-Mails nur mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) angepasst werden und nicht durch die Mechanismen, die in diesem Artikel beschrieben sind.
 
 Dieser Artikel enthält Folgendes:
 
@@ -36,7 +36,7 @@ Dieser Artikel enthält Folgendes:
 
 Mit dem Anpassungsfeature für die Seiten-UI können Sie das Aussehen und Verhalten der Seiten für die Registrierung und Anmeldung von Endkunden und für die Profilbearbeitung anpassen (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)). Beim Navigieren zwischen der Anwendung und den Seiten, die vom Azure AD B2C-Dienst verarbeitet werden, wird den Endkunden eine einheitliche Benutzeroberfläche angeboten.
 
-Im Gegensatz zu anderen Diensten, in denen UI-Optionen beschränkt oder nur über APIs verfügbar sind, verwendet Azure AD B2C eine moderne (und einfachere) Vorgehensweise bei der Anpassung der Seiten-UI. So funktioniert es: Azure AD B2C führt Code im Browser des Consumers aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) zum Laden des Inhalts von einer URL, die Sie in einer Richtlinie angeben. Sie können verschiedene URLs für unterschiedliche Seiten angeben. Der Code führt die UI-Elemente aus Azure AD B2C mit dem Inhalt, der von der URL geladen wird, zusammen und zeigt die Seite für den Endkunden an. Sie müssen lediglich wohlgeformten HTML5-Inhalt mit einem `<div id="api"></div>`-Element an einer beliebigen Stelle in `<body>` erstellen. Dieses Element markiert die Stelle, an der der Azure AD B2C-Inhalt eingefügt wird. Diese Inhalte müssen auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist) gehostet werden. Sie können Azure AD B2C-UI-Elemente zudem vollständig formatieren.
+Im Gegensatz zu anderen Diensten, in denen UI-Optionen beschränkt oder nur über APIs verfügbar sind, verwendet Azure AD B2C eine moderne (und einfachere) Vorgehensweise bei der Anpassung der Seiten-UI. So funktioniert es: Azure AD B2C führt Code im Browser des Consumers aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) zum Laden des Inhalts von einer URL, die Sie in einer Richtlinie angeben. Sie können verschiedene URLs für unterschiedliche Seiten angeben. Der Code führt die UI-Elemente aus Azure AD B2C mit dem Inhalt, der von der URL geladen wird, zusammen und zeigt die Seite für den Endkunden an. Sie müssen lediglich wohlgeformten HTML5-Inhalt mit einem `<div id="api"></div>`-Element (muss ein leeres Element sein) an einer beliebigen Stelle in `<body>` erstellen. Dieses Element markiert die Stelle, an der der Azure AD B2C-Inhalt eingefügt wird. Diese Inhalte müssen auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist) gehostet werden. Sie können Azure AD B2C-UI-Elemente zudem vollständig formatieren.
 
 ## Ausprobieren des Anpassungsfeatures für die Benutzeroberfläche (UI)
 
@@ -44,7 +44,7 @@ Wenn Sie das UI-Anpassungsfeature anhand unseres auf Azure Blob Storage gehostet
 
 ## Die wichtigsten UI-Elemente in den einzelnen Seitentypen
 
-In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente (für die einzelnen Seitentypen), die Azure AD B2C im <div id="api"></div>-Element in Ihrem Inhalt zusammenführt. Sie können diese UI-Elemente mit Ihren eigenen Stylesheets anpassen. Diese Stylesheets müssen die standardmäßigen Stylesheets überschreiben, die wir in diesen Seiten in den <head>-Fragmenten hinzufügen.
+In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente, die Azure AD B2C im <div id="api"></div>-Element in Ihrem Inhalt zusammenführt. Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein. Sie dienen hier lediglich zur Veranschaulichung. Der Azure AD B2C-Dienst fügt sie zur Laufzeit ein. Sie können diese UI-Elemente mit Ihren eigenen Stylesheets anpassen. Diese Stylesheets müssen die standardmäßigen Stylesheets überschreiben, die wir in diesen Seiten in den <head>-Fragmenten hinzufügen.
 
 > [AZURE.IMPORTANT]
 	Gehen Sie in der Vorschau davon aus, dass sich die genauen UI-Elemente ändern, da sie an Ihr Feedback angepasst werden. Überprüfen Sie immer den Quellcode der Standardseiten auf die neuesten Aktualisierungen. Tatsächlich wird als erste Änderung in Betracht gezogen, unsere Standardstylesheets zu entfernen. Dies bedeutet, dass Sie immer Ihre eigenen Stylesheets für diese UI-Elemente in Ihrem Inhalt bereitstellen müssen.
@@ -265,7 +265,7 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
 
 Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten Sie die folgenden bewährten Methoden:
 
-- Sie sollten nicht die Azure AD B2C-Standardvorlage kopieren und versuchen, sie zu ändern. Es wird empfohlen, eigene HTML5-Inhalte von Grund auf neu zu erstellen und die Standardvorlage als Referenz zu verwenden.
+- Kopieren und ändern Sie den Azure AD B2C-Standardinhalt nicht. Es wird empfohlen, eigene HTML5-Inhalte von Grund auf neu zu erstellen und den Standardinhalt als Referenz zu verwenden.
 - Aus Gründen der Sicherheit ist es nicht zulässig, JavaScript in Ihren Inhalt aufzunehmen. Das meiste, was Sie benötigen, sollte im Programmumfang enthalten sein. Falls nicht, fordern Sie über [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) neue Funktionen an.
 - Unterstützte Browserversionen:
 	- Internet Explorer 11
@@ -277,4 +277,4 @@ Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten S
 	- Mozilla Firefox 38.0
 	- Mozilla Firefox 37.0
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

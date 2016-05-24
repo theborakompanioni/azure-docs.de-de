@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/03/2016"
+   ms.date="05/04/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Verwalten von Datenbanken in Azure SQL Data Warehouse
@@ -115,7 +115,7 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Image references-->
 
 <!--Article references-->
-[Redundanzoptionen für Azure-Speicher]: storage-redundancy.md#read-access-geo-redundant-storage
+[Redundanzoptionen für Azure-Speicher]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [Erstellen eines SQL Data Warehouse (Azure-Portal)]: sql-data-warehouse-get-started-provision.md
 [Erstellen einer Datenbank (PowerShell)]: sql-data-warehouse-get-started-provision-powershell
 [connection]: sql-data-warehouse-develop-connections.md
@@ -139,4 +139,4 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Other web references-->
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

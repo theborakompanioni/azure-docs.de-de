@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/10/2016"
+    ms.date="05/16/2016"
     ms.author="magoedte"/>
 
 # Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“
@@ -53,7 +53,15 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal e
 
 7. Während das Automation-Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen.
 
-Nach Abschluss des Vorgangs wird das Automation-Konto mit einem Zertifikatobjekt mit dem Namen **AzureRunAsCertificate** erstellt, das über eine Lebensdauer von einem Jahr verfügt. Außerdem wird ein Verbindungsobjekt mit dem Namen **AzureRunAsConnection** erstellt.
+### Enthaltene Ressourcen
+Nach Abschluss der Erstellung des Automation-Kontos werden automatisch verschiedene Ressourcen erstellt. Diese sind in der folgenden Tabelle zusammengefasst:
+
+Ressource|Beschreibung 
+----|----
+AzureAutomationTutorial-Runbook|Ein Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos und die Anzeige der ersten zehn Azure-VMs in Ihrem Abonnement veranschaulicht.
+AzureRunAsCertificate|Die Zertifikatressource, die erstellt wird, wenn Sie sich entweder bei der Erstellung des Automation-Kontos für die Erstellung des ausführenden Kontos entschieden haben oder das folgende PowerShell-Skript für ein vorhandenes Konto verwenden. Dieses Zertifikat ist ein Jahr lang gültig. 
+AzureRunAsConnection|Die Verbindungsressource, die erstellt wird, wenn Sie sich entweder bei der Erstellung des Automation-Kontos für die Erstellung des ausführenden Kontos entschieden haben oder das folgende PowerShell-Skript für ein vorhandenes Konto verwenden.
+Module|15 Module mit Cmdlets für Azure, PowerShell und Automation, die Sie umgehend in Ihren Runbooks verwenden können.  
 
 ## Aktualisieren eines Automation-Kontos mit PowerShell
 Mit dem unten angegebenen Verfahren wird ein vorhandenes Automation-Konto aktualisiert und der Dienstprinzipal mit PowerShell erstellt. Dieses Verfahren ist erforderlich, wenn Sie ein Konto erstellt, die Erstellung von „Ausführendes Konto“ aber abgelehnt haben.
@@ -71,8 +79,8 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 Mit dem PowerShell-Skript wird Folgendes konfiguriert:
 
 * Eine Azure AD-Anwendung, die mit dem selbstsignierten Zertifikat authentifiziert wird, und ein Dienstprinzipalkonto für diese Anwendung in Azure AD. Außerdem wird die Rolle „Mitwirkender“ (kann auch in „Besitzer“ oder eine andere Rolle geändert werden) für dieses Konto in Ihrem aktuellen Abonnement zugewiesen. Weitere Informationen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).  
-* Ein Automation-Zertifikatobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsCertificate**, in dem das im Dienstprinzipal verwendete Zertifikat enthalten ist
-* Ein Automation-Verbindungsobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsConnection**, das die Elemente „applicationId“, „tenantId“, „subscriptionId“ und den Zertifikatfingerabdruck enthält  
+* Ein Automation-Zertifikatobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsCertificate**, in dem das im Dienstprinzipal verwendete Zertifikat enthalten ist.
+* Ein Automation-Verbindungsobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsConnection**, das die Elemente „applicationId“, „tenantId“, „subscriptionId“ und den Zertifikatfingerabdruck enthält.  
 
 
 ### Ausführen des PowerShell-Skripts
@@ -92,6 +100,9 @@ Mit dem PowerShell-Skript wird Folgendes konfiguriert:
     [String] $ApplicationDisplayName,
 
     [Parameter(Mandatory=$true)]
+    [String] $SubscriptionName,
+
+    [Parameter(Mandatory=$true)]
     [String] $CertPlainPassword,
 
     [Parameter(Mandatory=$false)]
@@ -100,6 +111,7 @@ Mit dem PowerShell-Skript wird Folgendes konfiguriert:
 
     Login-AzureRmAccount
     Import-Module AzureRM.Resources
+    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
     $CurrentDate = Get-Date
     $EndDate = $CurrentDate.AddMonths($NoOfMonthsUntilExpired)
@@ -156,17 +168,18 @@ Mit dem PowerShell-Skript wird Folgendes konfiguriert:
     ```
 <br>
 2. Starten Sie **Windows PowerShell** auf Ihrem Computer über den **Startbildschirm** mit erhöhten Benutzerrechten.
-3. Navigieren Sie von der PowerShell-Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält, und führen Sie das Skript aus. Ändern Sie dabei die Werte für die Parameter *-ResourceGroup*, *-AutomationAccountName*, *-ApplicationDisplayName* und *-CertPlainPassword*.<br>
+3. Navigieren Sie über die PowerShell-Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält, und führen Sie das Skript aus. Ändern Sie dabei die Werte für die Parameter *-ResourceGroup*, *-AutomationAccountName*, *-ApplicationDisplayName*, *-SubscriptionName* und *-CertPlainPassword*.<br>
 
     ```
     .\New-AzureServicePrincipal.ps1 -ResourceGroup <ResourceGroupName> `
      -AutomationAccountName <NameofAutomationAccount> `
      -ApplicationDisplayName <DisplayNameofAutomationAccount> `
+     -SubscriptionName <SubscriptionName> `
      -CertPlainPassword "<StrongPassword>"
     ```   
 <br>
 
-    >[AZURE.NOTE] Nach dem Ausführen des Skripts werden Sie aufgefordert, sich gegenüber Azure zu authentifizieren. Sie *müssen* sich mit einem Konto anmelden, das als Dienstadministrator im Abonnement eingerichtet ist. <br>
+    >[AZURE.NOTE] Nach dem Ausführen des Skripts werden Sie aufgefordert, sich gegenüber Azure zu authentifizieren. Melden Sie sich *unbedingt* mit einem Konto an, das im Abonnement als Dienstadministrator eingerichtet ist. <br>
 4. Nachdem das Skript erfolgreich abgeschlossen wurde, können Sie mit dem nächsten Abschnitt fortfahren, um die Konfiguration der neuen Anmeldeinformationen zu testen und zu überprüfen.
 
 ### Überprüfen der Authentifizierung
@@ -174,15 +187,15 @@ Als Nächstes führen wir einen kleinen Test durch, um zu bestätigen, dass Sie 
 
 1. Öffnen Sie im Azure-Portal das zuvor erstellte Automation-Konto.  
 2. Klicken Sie auf die Kachel **Runbooks**, um die Liste mit den Runbooks zu öffnen.
-3. Erstellen Sie ein neues Runbook, indem Sie auf die Schaltfläche **Runbook hinzufügen** klicken, und wählen Sie dann auf dem Blatt **Runbook hinzufügen** die Option **Neues Runbook erstellen**.
-4. Geben Sie dem Runbook den Namen *Test-SecPrin-Runbook*, und wählen Sie „PowerShell“ als **Runbooktyp**. Klicken Sie auf **Erstellen**, um das Runbook zu erstellen.
-5. Fügen Sie auf dem Blatt **PowerShell-Runbook bearbeiten** den folgenden Code im Zeichenbereich hinzu:<br>
+3. Erstellen Sie ein neues Runbook, indem Sie auf die Schaltfläche **Runbook hinzufügen** klicken, und wählen Sie dann auf dem Blatt **Runbook hinzufügen** die Option **Neues Runbook erstellen** aus.
+4. Geben Sie dem Runbook den Namen *Test-SecPrin-Runbook*, und wählen Sie unter **Runbooktyp** die Option „PowerShell“ aus. Klicken Sie auf **Erstellen**, um das Runbook zu erstellen.
+5. Fügen Sie auf dem Blatt **PowerShell-Runbook bearbeiten** im Zeichenbereich den folgenden Code hinzu:<br>
 
     ```
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection `
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
      -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-   ```  
+    ```  
 <br>
 6. Klicken Sie auf **Speichern**, um das Runbook zu speichern.
 7. Klicken Sie auf **Testbereich**, um das Blatt **Test** zu öffnen.
@@ -194,10 +207,43 @@ Als Nächstes führen wir einen kleinen Test durch, um zu bestätigen, dass Sie 
 13. Schließen Sie das Blatt **PowerShell-Runbook bearbeiten**.
 14. Schließen Sie das Blatt **Test-SecPrin-Runbook**.
 
-Den obigen Code zum Überprüfen, ob das neue Konto richtig eingerichtet ist, verwenden Sie in Ihren PowerShell-Runbooks, um sich in Azure Automation zum Verwalten von ARM-Ressourcen zu authentifizieren. Natürlich können Sie sich auch weiterhin mit dem Automation-Konto authentifizieren, das Sie bisher genutzt haben.
+## Beispielcode für die Authentifizierung mit ARM-Ressourcen
+
+Mit dem weiter unten angegebenen aktualisierten Beispielcode aus dem AzureAutomationTutorial-Beispielrunbook können Sie für die Authentifizierung das Ausführungskonto verwenden und ARM-Ressourcen mit Ihren Runbooks verwalten.
+
+   ```
+   $connectionName = "AzureRunAsConnection"
+   $SubId = Get-AutomationVariable -Name 'SubscriptionId'
+   try
+   {
+      # Get the connection "AzureRunAsConnection "
+      $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
+
+      "Logging in to Azure..."
+      Add-AzureRmAccount `
+         -ServicePrincipal `
+         -TenantId $servicePrincipalConnection.TenantId `
+         -ApplicationId $servicePrincipalConnection.ApplicationId `
+         -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+	  "Setting context to a specific subscription"	 
+	  Set-AzureRmContext -SubscriptionId $SubId	 		 
+   }
+   catch {
+       if (!$servicePrincipalConnection)
+       {
+           $ErrorMessage = "Connection $connectionName not found."
+           throw $ErrorMessage
+       } else{
+           Write-Error -Message $_.Exception
+           throw $_.Exception
+       }
+   } 
+   ```
+
+Das Skript enthält zwei zusätzliche Codezeilen, um Verweise auf einen Abonnementkontext zu unterstützen und so die problemlose Verwendung mehrerer Abonnements zu ermöglichen. Eine Variablenressource namens „SubscriptionId“ enthält die ID des Abonnements, und nach der Add-AzureRmAccount-Cmdlet-Anweisung wird das [Set-AzureRmContext-Cmdlet](https://msdn.microsoft.com/library/mt619263.aspx) mit dem Parametersatz *-SubscriptionId* angegeben. Sollte der Variablenname zu allgemein sein, können Sie den Namen der Variablen mit einem Präfix versehen oder eine andere Namenskonvention anwenden, um einen aussagekräftigeren Variablennamen zu erhalten. Alternativ können Sie anstelle von „-SubscriptionId“ auch den Parametersatz „-SubscriptionName“ mit einer entsprechenden Variablenressource verwenden.
 
 ## Nächste Schritte
 - Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

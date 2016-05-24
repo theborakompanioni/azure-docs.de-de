@@ -4,7 +4,7 @@ Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nic
 
 Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.
 
-> [AZURE.NOTE] Es ist nicht möglich, einen Betriebssystem-Datenträger zu trennen, es sei denn, Sie löschen auch den virtuellen Computer.
+> [AZURE.NOTE] Ein Betriebssystem-Datenträger kann erst getrennt werden, nachdem der virtuelle Computer gelöscht wurde.
 
 
 ## Suchen des Datenträgers
@@ -32,5 +32,3 @@ Wenn Sie den Namen des Datenträgers nicht kennen oder diesen vor dem Trennen ü
 	![Details zum Trennen des Datenträgers](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
-
-<!---HONumber=AcomDC_0211_2016-->

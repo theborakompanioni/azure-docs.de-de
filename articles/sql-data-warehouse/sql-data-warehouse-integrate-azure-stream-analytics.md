@@ -35,17 +35,17 @@ Erstellen Sie dann eine Azure SQL Data Warehouse-Datenbank.
 
 ## Festlegen der Auftragsausgabe: Azure SQL Data Warehouse-Datenbank
 
-### Schritt 1
+### Schritt 1
 
 Klicken Sie in Ihrem Stream Analytics-Auftrag am oberen Rand der Seite auf **AUSGABE**, und klicken Sie dann auf **AUSGABE HINZUFÜGEN**.
 
-### Schritt 2
+### Schritt 2
 
 Wählen Sie „SQL-Datenbank“ aus, und klicken Sie auf „Weiter“.
 
 ![][add-output]
 
-### Schritt 3
+### Schritt 3
 Geben Sie auf der nächsten Seite die folgenden Werte ein:
 
 - *Ausgabealias*: Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
@@ -63,7 +63,7 @@ Geben Sie auf der nächsten Seite die folgenden Werte ein:
 
 ![][add-database]
 
-### Schritt 4
+### Schritt 4
 
 Klicken Sie auf das Häkchen, um diese Auftragsausgabe hinzuzufügen und um zu überprüfen, ob Stream Analytics erfolgreich mit der Datenbank verbunden werden kann.
 
@@ -86,8 +86,8 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 
 <!--Article references-->
 
-[Einführung in Azure Stream Analytics]: stream-analytics-introductiond.md
-[Erste Schritte mit Azure Stream Analytics]: stream-analytics-get-started.md
+[Einführung in Azure Stream Analytics]: ../stream-analytics/stream-analytics-introductiond.md
+[Erste Schritte mit Azure Stream Analytics]: ../stream-analytics/stream-analytics-get-started.md
 [SQL Data Warehouse-Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
 [SQL Data Warehouse-Integration (Übersicht)]: sql-data-warehouse-overview-integrate.md
 
@@ -96,4 +96,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

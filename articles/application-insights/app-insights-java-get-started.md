@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/02/2016"
+	ms.date="05/12/2016"
 	ms.author="awills"/>
 
 # Erste Schritte mit Application Insights in einem Java-Webprojekt
@@ -214,35 +214,38 @@ Führen Sie sie entweder im Debugmodus auf dem Entwicklungscomputer aus, oder ve
 
 ## 6\. Anzeigen Ihrer Telemetriedaten in Application Insights
 
+
 Kehren Sie zur Application Insights-Ressource im [Microsoft Azure-Portal](https://portal.azure.com) zurück.
 
 HTTP-Anforderungsdaten werden auf dem Blatt "Übersicht" angezeigt. (Wenn sie nicht vorhanden sind, warten Sie einige Sekunden, und klicken Sie dann auf "Aktualisieren".)
 
 ![Beispieldaten](./media/app-insights-java-get-started/5-results.png)
 
+[Weitere Informationen zu Metriken.][metrics]
 
-Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzuzeigen.
+Klicken Sie sich durch ein beliebiges Diagramm, um ausführliche aggregierte Metriken anzuzeigen.
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
+> Application Insights setzt voraus, dass das Format von HTTP-Anforderungen für MVC-Anwendungen wie folgt lautet: `VERB controller/action` `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` und `GET Home/Product/sdf96vws` werden beispielsweise in `GET Home/Product` gruppiert. Dadurch werden aussagekräftige Aggregationen von Anforderungen ermöglicht, z. B. die Anzahl der Anforderungen und die durchschnittliche Ausführungszeit von Anforderungen.
 
 
-Beim Anzeigen der Eigenschaften einer Anforderung können Sie die damit verbundenen Telemetrieereignisse erkennen, wie z. B. Anforderungen und Ausnahmen.
+### Instanzdaten 
+
+Klicken Sie sich durch einen bestimmten Anforderungstyp, um einzelne Instanzen anzuzeigen.
+
+In Application Insights werden zwei Arten von Daten angezeigt: aggregierte Daten, die als Mittelwerte, Anzahl und Summen gespeichert und angezeigt werden, sowie Instanzdaten, bei denen es sich um einzelne Berichte von HTTP-Anforderungen, Ausnahmen, Seitenansichten oder benutzerdefinierten Ereignissen handelt.
+
+Beim Anzeigen der Eigenschaften einer Anforderung können Sie die damit verbundenen Telemetrieereignisse erkennen, wie z.B. Anforderungen und Ausnahmen.
 
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 
+### Analytics: Leistungsfähige Abfragesprache
 
-[Weitere Informationen zu Metriken.][metrics]
+Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von Daten als auch zum Ermitteln einzelner Instanzen ausführen. [Analytics]() ist ein leistungsfähiges Tool zum Nachvollziehen der Leistung und Nutzung sowie für Diagnosezwecke.
 
-#### Intelligente Berechnung von Adressnamen
-
-Application Insights setzt voraus, dass das Format von HTTP-Anforderungen für MVC-Anwendungen so ist: `VERB controller/action`
-
-
-`GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` und `GET Home/Product/sdf96vws` werden beispielsweise in `GET Home/Product` gruppiert.
-
-Dadurch werden aussagekräftige Aggregationen von Anforderungen ermöglicht, z. B. die Anzahl der Anforderungen und die durchschnittliche Ausführungszeit von Anforderungen.
+![Analytics-Beispiel](./media/app-insights-java-get-started/025.png)
 
 
 ## 5\. Installieren der App auf dem Server
@@ -398,4 +401,4 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -61,11 +61,13 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 7. Geben Sie unter **Header des Ursprungshosts** den Hostheader ein, den das CDN bei jeder Anforderung senden soll, oder übernehmen Sie den Standardwert.
 
+	> [AZURE.WARNING] Bei einigen Ursprungstypen wie etwa Azure Storage und Web-Apps muss der Hostheader mit der Domäne des Ursprungs übereinstimmen. Verwenden Sie den Standardwert, es sei denn, Sie nutzen einen Ursprung, bei dem der Hostheader von der Domäne abweichen muss.
+
 8. Geben Sie unter **Protokoll** und **Ursprungsport** die Protokolle und Ports an, über die auf die Ressourcen am Ursprung zugegriffen werden soll. Sie müssen mindestens ein Protokoll (HTTP oder HTTPS) auswählen.
 	
 	> [AZURE.NOTE] Der **Ursprungsport** bezieht sich nur darauf, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet. Der Endpunkt selbst ist nur für Endclients auf den Standard-HTTP- und -HTTPS-Ports (80 und 443) verfügbar, unabhängig vom **Ursprungsport**.
 	>
-	> **Azure CDN from Akamai**-Endpunkte lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai behavior details](cdn-akamai-behavior-details.md) (Verhaltensdetails für Azure CDN from Akamai).
+	> Endpunkte vom Typ **Azure CDN von Akamai** lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai behavior details](cdn-akamai-behavior-details.md) (Verhaltensdetails für Azure CDN von Akamai).
 	>
 	> Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
 	> 
@@ -78,7 +80,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
     ![CDN-Endpunkt][cdn-endpoint-success]
 
-    > [AZURE.IMPORTANT] Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. Bei <b>Azure CDN from Akamai</b>-Profilen ist die Weitergabe in der Regel innerhalb einer Minute abgeschlossen. Bei <b>Azure CDN from Verizon</b>-Profilen dauert die Weitergabe in der Regel bis zu 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
+    > [AZURE.IMPORTANT] Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. Bei Profilen vom Typ <b>Azure CDN von Akamai</b> ist die Weitergabe in der Regel innerhalb einer Minute abgeschlossen. Bei Profilen vom Typ <b>Azure CDN von Verizon</b> ist die Weitergabe in der Regel in bis zu 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
 	>	 
 	> Benutzer, die versuchen, den CDN-Domänennamen zu verwenden, bevor die Endpunktkonfiguration an die POPs verteilt wurde, erhalten den Antwortcode „HTTP 404“. Wenn Sie ein paar Stunden nach der Erstellung des Endpunkts noch immer 404-Meldungen erhalten, finden Sie unter [Troubleshooting CDN endpoints returning 404 statuses](cdn-troubleshoot-endpoint.md) (Problembehandlung bei CDN-Endpunkten mit Status 404) weitere Informationen.
 
@@ -95,4 +97,4 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -41,7 +41,7 @@ Als Erstes ermitteln Sie beim Erstellen eines SSH-Tunnels unter Linux oder OS X 
 ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 
-### DC/OS-Tunnel
+## DC/OS-Tunnel
 
 Öffnen Sie einen Tunnel zu den zu DC/OS gehörigen Endpunkten, indem Sie einen Befehl wie den folgenden ausführen:
 
@@ -59,7 +59,7 @@ Nun können Sie wie folgt auf die zu DC/OS gehörigen Endpunkte zugreifen:
 
 Sie erreichen die REST-APIs für jede Anwendung über diesen Tunnel auf ähnliche Weise:
 
-### Swarm-Tunnel
+## Swarm-Tunnel
 
 Führen Sie zum Öffnen eines Tunnels zum Swarm-Endpunkt einen Befehl wie diesen aus:
 
@@ -117,4 +117,4 @@ Bereitstellen und Verwalten von Containern mit DC/OS oder Swarm
 
 [Arbeiten mit Azure Container Service und DC/OS](./container-service-mesos-marathon-rest.md) [Arbeiten mit Azure Container Service und Docker Swarm](./container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

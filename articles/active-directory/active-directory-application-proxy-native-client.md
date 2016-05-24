@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 # Aktivieren von systemeigenen Client-Apps für die Interaktion mit Proxyanwendungen
 
 > [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
-Mit Azure Active Directory-Anwendungsproxy werden häufig Browseranwendungen wie SharePoint, Outlook Web Access und benutzerdefinierte Branchenanwendungen veröffentlicht. Außerdem können damit HTTP-Back-End-Anwendungen veröffentlicht werden, die über systemeigene Clients genutzt werden. Dies erfolgt durch die Unterstützung von durch Azure AD ausgegebenen Token, die in standardmäßigen Authorize- HTTP-Headern gesendet werden.
+Mit Azure Active Directory-Anwendungsproxy werden häufig Browseranwendungen wie SharePoint, Outlook Web Access und benutzerdefinierte Branchenanwendungen veröffentlicht. Außerdem können damit native Client-Apps veröffentlicht werden, die sich insofern von Web-Apps unterscheiden, als sie auf einem Gerät installiert werden. Dies erfolgt durch die Unterstützung von durch Azure AD ausgegebenen Token, die in standardmäßigen Authorize- HTTP-Headern gesendet werden.
 
 ![Beziehung zwischen Endbenutzern, Azure Active Directory und veröffentlichten Anwendung](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
@@ -35,11 +35,11 @@ Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, weisen Sie B
 Konfigurieren Sie Ihre systemeigene Anwendung wie folgt:
 
 1. Melden Sie sich am klassischen Azure-Portal an.
-2. Klicken Sie im linken Menü auf das Active Directory-Symbol, und klicken Sie dann auf das gewünschte Verzeichnis.
+2. Wählen Sie im linken Menü das Active Directory-Symbol und dann Ihr Verzeichnis aus.
 3. Klicken Sie im oberen Menü auf **Anwendungen**. Wenn Ihrem Verzeichnis keine Apps hinzugefügt wurden, wird auf dieser Seite nur der Link **App hinzufügen** angezeigt. Klicken Sie auf den Link, oder klicken Sie auf der Befehlsleiste auf die Schaltfläche **Hinzufügen**.
 4. Klicken Sie auf der Seite **What do you want to do** auf den Link **Eine von meinem Unternehmen entwickelte Anwendung hinzufügen**.
-5. Geben Sie auf der Seite **Geben Sie uns Informationen zu Ihrer Anwendung** den Namen Ihrer Anwendung an, und wählen Sie **Systemeigene Clientanwendung** aus. Diese Einstellung steht für eine Anwendung, die auf einem Gerät wie einem Smartphone oder einem Computer installiert wird. Klicken Sie danach auf das Pfeilsymbol in der rechten unteren Ecke der Seite.
-6. Geben Sie auf der Seite **App-Eigenschaften** den **Umleitungs-URI** für die systemeigene Clientanwendung an, und klicken Sie dann auf das Häkchen unten rechts auf der Seite.
+5. Geben Sie auf der Seite **Geben Sie uns Informationen zu Ihrer Anwendung** einen Namen für Ihre Anwendung ein, und wählen Sie **Systemeigene Clientanwendung** aus. Klicken Sie auf das Pfeilsymbol, um fortzufahren.
+6. Geben Sie auf der Seite **Anwendungsinformationen** den **Umleitungs-URI** für die native Clientanwendung an, und klicken Sie abschließend auf das Häkchen.
 
 Ihre Anwendung wird hinzugefügt, und Sie werden auf die Seite "Schnellstart" für Ihre Anwendung umgeleitet.
 
@@ -80,23 +80,13 @@ Die Variablen müssen wie folgt ersetzt werden:
 Weitere Informationen über den Fluss bei systemeigenen Anwendungen finden Sie unter [Systemeigene Anwendung zu Web-API](active-directory-authentication-scenarios.md#native-application-to-web-api).
 
 
-## Wie geht es weiter?
-Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
+## Weitere Informationen
 
 - [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
-- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
-- [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
 - [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
+- [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
+- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-### Weitere Informationen zum Anwendungsproxy
-- [Onlinehilfe anzeigen](active-directory-application-proxy-enable.md)
-- [Blog zum Anwendungsproxy aufrufen](http://blogs.technet.com/b/applicationproxyblog/)
-- [Sehen Sie sich unsere Videos auf Channel 9 an!](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
-
-## Zusätzliche Ressourcen
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-- [Als Organisation für Azure registrieren](sign-up-organization.md)
-- [Azure-Identität](fundamentals-identity.md)
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

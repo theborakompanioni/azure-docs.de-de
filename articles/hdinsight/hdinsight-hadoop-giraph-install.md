@@ -83,7 +83,9 @@ Das Beispiel "SimpleShortestPathsComputation" demonstriert die grundlegende <a h
 
 
 
-4. Führen Sie das Beispiel "SimpleShortstPathsComputation" aus. Verwenden Sie die folgenden Azure PowerShell-Cmdlets, um das Beispiel unter Verwendung der Datei "tiny\_graph.txt" als Eingabe auszuführen. Das macht es erforderlich, dass [Azure PowerShell][powershell-install] installiert und konfiguriert wurde.
+4. Führen Sie das Beispiel "SimpleShortstPathsComputation" aus. Verwenden Sie die folgenden Azure PowerShell-Cmdlets, um das Beispiel unter Verwendung der Datei "tiny\_graph.txt" als Eingabe auszuführen.
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 		$clusterName = "clustername"
 		# Giraph examples jar
@@ -181,4 +183,4 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

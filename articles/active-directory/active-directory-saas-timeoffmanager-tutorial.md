@@ -81,7 +81,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-timeoffmanager-tutorial/IC795913.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** in das Textfeld **TimeOffManager-Antwort-URL** die TimeOffManager AssertionConsumerService-URL ein (z. B.: "* Beispiel: https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company\_id=IC34216*", und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** in das Textfeld **TimeOffManager-Antwort-URL** die TimeOffManager AssertionConsumerService-URL ein (z. B.: "*Beispiel: https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company\_id=IC34216*", und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-timeoffmanager-tutorial/IC795914.png "App-URL konfigurieren")
 

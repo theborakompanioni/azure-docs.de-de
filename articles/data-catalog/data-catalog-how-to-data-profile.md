@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Erstellen von Datenprofilen für Datenquellen"
-   description="Anleitungsartikel, in dem beschrieben wird, wie Sie beim Registrieren von Datenquellen in Azure Data Catalog Datenprofile auf Tabellen- und Spaltenebene hinzufügen und Datenprofile zum Nachvollziehen von Datenquellen verwenden."
-   services="data-catalog"
-   documentationCenter=""
-   authors="dvana"
-   manager="NA"
-   editor=""
-   tags=""/>
+	pageTitle="Erstellen von Datenprofilen für Datenquellen"
+	description="Anleitungsartikel, in dem beschrieben wird, wie Sie beim Registrieren von Datenquellen in Azure Data Catalog Datenprofile auf Tabellen- und Spaltenebene hinzufügen und Datenprofile zum Nachvollziehen von Datenquellen verwenden."
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="04/07/2016"
-   ms.author="derrickv"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="04/07/2016"
+	ms.author="spelluru"/>
 
 # Datenprofil-Datenquellen
 
@@ -91,4 +91,4 @@ Bei der Datenprofilerstellung werden Statistiken und Informationen zu registrier
 -	[Registrieren von Datenquellen](data-catalog-how-to-register.md)
 -	[Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

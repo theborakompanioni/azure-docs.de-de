@@ -25,7 +25,7 @@ NSGs haben die folgenden Eigenschaften:
 
 |Eigenschaft|Beschreibung|Einschränkungen|Überlegungen|
 |---|---|---|---|
-|Name|Name der NSG|Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Kann bis zu 80 Zeichen enthalten.|Da Sie u. U. eine ganze Reihe von NSGs erstellen müssen, sollten Sie durch Ihre Namenskonvention sicherstellen, dass sich die Funktion der NSGs leicht am Namen erkennen lässt.|
+|Name|Name der NSG|Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Kann bis zu 80 Zeichen enthalten.|Da Sie u. U. eine ganze Reihe von NSGs erstellen müssen, sollten Sie durch Ihre Namenskonvention sicherstellen, dass sich die Funktion der NSGs leicht am Namen erkennen lässt.|
 |Region|Die Azure-Region, in der die NSG gehostet wird|NSGs können nur auf Ressourcen innerhalb der Region angewendet werden, in der sie erstellt wurden.|Lesen Sie unten unter [Einschränkungen](#Limits), wie viele NSGs Sie in einer Region nutzen können.|
 |Ressourcengruppe|Die Ressourcengruppe, zu der die NSG gehört|Obwohl eine NSG zu einer Ressourcengruppe gehört, kann sie Ressourcen in beliebigen Ressourcengruppen zugeordnet werden, sofern die Ressource zu derselben Azure-Region gehört wie die NSG.|Ressourcengruppen werden verwendet, um mehrere Ressourcen gemeinsam als eine Bereitstellungseinheit zu verwalten.<br/>Unter Umständen ist es ratsam, NSGs mit den Ressourcen zu gruppieren, denen sie zugeordnet sind.|
 |Regeln|Regeln definieren, welcher Datenverkehr zugelassen oder verweigert wird.||Siehe Abschnitt [NSG-Regeln](#Nsg-rules) unten.| 
@@ -39,11 +39,11 @@ NSG-Regeln haben die folgenden Eigenschaften:
 |Eigenschaft|Beschreibung|Einschränkungen|Überlegungen|
 |---|---|---|---|
 |**Name**|Name der Regel|Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Kann bis zu 80 Zeichen enthalten.|Da eine NSG mehrere Regeln enthalten kann, sollten Sie durch Ihre Namenskonvention sicherstellen, dass sich die Funktion der Regel leicht am Namen erkennen lässt.|
-|**Protokoll**|Protokoll entsprechend der Regel|TCP, UDP oder *|Wenn Sie das Protokoll mit * angeben, schließt dies ICMP (nur Ost-West-Datenverkehr) sowie UDP und TCP ein. Auf diese Weise können Sie u. U. die Anzahl der benötigten Regeln reduzieren.<br/>Gleichzeitig kann die Angabe von * zu allgemein sein. Verwenden Sie diesen Ansatz deshalb nur, wenn er wirklich nötig ist.|
+|**Protokoll**|Protokoll entsprechend der Regel|TCP, UDP oder *|Wenn Sie das Protokoll mit * angeben, schließt dies ICMP (nur Ost-West-Datenverkehr) sowie UDP und TCP ein. Auf diese Weise können Sie u. U. die Anzahl der benötigten Regeln reduzieren.<br/>Gleichzeitig kann die Angabe von * zu allgemein sein. Verwenden Sie diesen Ansatz deshalb nur, wenn er wirklich nötig ist.|
 |**Quellportbereich**|Quellportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65635) oder * (für alle Ports)|Quellports könnte kurzlebig sein. Sofern Ihr Clientprogramm keinen bestimmten Port nutzt, verwenden Sie in den meisten Fällen „*“.<br/>Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden. 
 |**Zielportbereich**|Zielportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65535) oder * (für alle Ports)|Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden
-|**Quelladresspräfix**|Quelladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
-|**Zieladresspräfix**|Zieladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
+|**Quelladresspräfix**|Quelladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
+|**Zieladresspräfix**|Zieladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
 |**Richtung**|Richtung des Datenverkehrs entsprechend der Regel|Eingehend oder ausgehend|Die Regeln für eingehenden und ausgehenden Datenverkehr werden getrennt verarbeitet, abhängig von der Richtung.|
 |**Priority**|Regeln werden in der Reihenfolge ihrer Priorität überprüft. Sobald eine Regel erfüllt ist, werden keine Übereinstimmungen mit weiteren Regeln gesucht.|Eine Zahl zwischen 100 und 4096|Vergeben Sie beim Erstellen von Regeln die Prioritäten am besten jeweils in Hunderterschritten, damit noch Platz für später hinzukommende Regeln bleibt, die von der Priorität her zwischen die bestehenden Regeln eingeordnet werden müssen.|
 |**Access**|Typ des Zugriffs bei Übereinstimmung mit der Regel|Zulassen oder verweigern|Beachten Sie, dass ein Paket verworfen wird, wenn keine Zulassungsregel dafür gefunden wird.|
@@ -60,7 +60,7 @@ Standardtags sind vom System bereitgestellte Bezeichner für eine Kategorie von 
 
 - **VIRTUAL\_NETWORK**: Standardtag für Ihren gesamten Netzwerkadressraum. Dieser umfasst den Adressraum des virtuellen Netzwerks (in Azure definierte CIDR-Bereiche) sowie den gesamten verbundenen lokalen Adressraum und verbundene Azure VNets (lokale Netzwerke).
 
-- **AZURE\_LOADBALANCER**: Standardtag für den Infrastruktur-Load Balancer von Azure. Wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert.
+- **AZURE\_LOADBALANCER**: Standardtag für den Infrastruktur-Load Balancer von Azure. Wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert.
 
 - **INTERNET**: Standardtag für den IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Dieser Bereich schließt auch den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) mit ein.
 
@@ -161,7 +161,7 @@ Sie müssen die folgenden Begrenzungen berücksichtigen, wenn Sie Ihre NSGs entw
 
 ### Entwurf von VNET und Subnetz
 
-Da NSGs auf Subnetze angewendet werden können, können Sie die Anzahl der NSGs minimieren, indem Sie Ihre Ressourcen nach Subnetz gruppieren und die NSGs auf Subnetze anwenden. Wenn Sie sich dafür entscheiden, NSGs auf Subnetze anzuwenden, werden Sie u. U. feststellen, dass beim Definieren der vorhandenen VNETs und Subnetze die NSGs nicht bedacht wurden. Möglicherweise müssen Sie neue VNETs und Subnetze definieren, die Ihr NSG-Design unterstützen. Außerdem müssen Sie in den neuen Subnetzen neue Ressourcen bereitstellen. Anschließend können Sie in einer Migrationsstrategie festlegen, wie die vorhandenen Ressourcen in die neuen Subnetze verlagert werden.
+Da NSGs auf Subnetze angewendet werden können, können Sie die Anzahl der NSGs minimieren, indem Sie Ihre Ressourcen nach Subnetz gruppieren und die NSGs auf Subnetze anwenden. Wenn Sie sich dafür entscheiden, NSGs auf Subnetze anzuwenden, werden Sie u. U. feststellen, dass beim Definieren der vorhandenen VNETs und Subnetze die NSGs nicht bedacht wurden. Möglicherweise müssen Sie neue VNETs und Subnetze definieren, die Ihr NSG-Design unterstützen. Außerdem müssen Sie in den neuen Subnetzen neue Ressourcen bereitstellen. Anschließend können Sie in einer Migrationsstrategie festlegen, wie die vorhandenen Ressourcen in die neuen Subnetze verlagert werden.
 
 ### Spezielle Regeln
 
@@ -169,11 +169,11 @@ Sie müssen die folgenden besonderen Regeln berücksichtigen. Vergewissern Sie s
 
 - **Virtuelle IP des Hostknotens**: Grundlegende Infrastrukturdienste wie DHCP, DNS und die Systemüberwachung werden über die virtualisierte Host-IP-Adresse 168.63.129.16 bereitgestellt. Diese öffentliche IP-Adresse gehört Microsoft und ist die einzige virtuelle IP-Adresse, die in allen Regionen zu diesem Zweck verwendet wird. Die IP-Adresse wird der physischen IP-Adresse des Servercomputers (Hostknoten) zugeordnet, der den virtuellen Computer hostet. Der Hostknoten fungiert als DHCP-Relay, als rekursiver DNS-Resolver und als Integritätstestquelle für den Load Balancer und den Computer. Eingehende Kommunikation für diese IP-Adresse darf nicht als Angriff betrachtet werden.
 
-- **Lizenzierung (Schlüsselverwaltungsdienst)**: Die auf den virtuellen Computern verwendeten Windows-Images müssen lizenziert werden. Zu diesem Zweck wird eine Lizenzierungsanforderung an die Hostserver des Schlüsselverwaltungsdiensts gesendet, die solche Abfragen verarbeiten. Dafür wird immer der ausgehende Port 1688 verwendet.
+- **Lizenzierung (Schlüsselverwaltungsdienst)**: Die auf den virtuellen Computern verwendeten Windows-Images müssen lizenziert werden. Zu diesem Zweck wird eine Lizenzierungsanforderung an die Hostserver des Schlüsselverwaltungsdiensts gesendet, die solche Abfragen verarbeiten. Dafür wird immer der ausgehende Port 1688 verwendet.
 
 ### ICMP-Datenverkehr
 
-In NSG-Regeln kann derzeit als Protokoll nur *TCP* oder *UDP* angegeben werden. Ein spezielles Tag für *ICMP* ist nicht verfügbar. ICMP-Datenverkehr ist in einem virtuellen Netzwerk jedoch standardmäßig über die eingehende VNet-Regel (Standardregel 65500 eingehend) zulässig, die ein-/ausgehenden Datenverkehr für sämtliche Ports und Protokolle innerhalb des VNets zulassen.
+In NSG-Regeln kann derzeit als Protokoll nur *TCP* oder *UDP* angegeben werden. Ein spezielles Tag für *ICMP* ist nicht verfügbar. ICMP-Datenverkehr ist in einem virtuellen Netzwerk jedoch standardmäßig über die eingehende VNet-Regel (Standardregel 65000 eingehend) zulässig, die ein-/ausgehenden Datenverkehr für sämtliche Ports und Protokolle innerhalb des VNets zulassen.
 
 ### Subnetze
 
@@ -252,7 +252,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 |---|---|---|---|---|---|---|---|
 |RDP aus dem Internet zulassen|Zulassen|100|INTERNET|*|\*|3389|TCP|
 
->[AZURE.NOTE] Beachten Sie, dass der Quelladressbereich für dieser Regel **Internet** ist und nicht die VIP des Load Balancers; der Quellport ist **\*** und nicht 500001. Verwechseln Sie NAT-Regeln und Lastenausgleichsregeln nicht mit NSG-Regeln. Die NSG-Regeln beziehen sich immer auf die ursprüngliche Quelle und das endgültige Ziel des Datenverkehrs, **NICHT** auf den zwischen beiden liegenden Load Balancer.
+>[AZURE.NOTE] Beachten Sie, dass der Quelladressbereich für dieser Regel **Internet** ist und nicht die VIP des Load Balancers; der Quellport ist ***** und nicht 500001. Verwechseln Sie NAT-Regeln und Lastenausgleichsregeln nicht mit NSG-Regeln. Die NSG-Regeln beziehen sich immer auf die ursprüngliche Quelle und das endgültige Ziel des Datenverkehrs, **NICHT** auf den zwischen beiden liegenden Load Balancer.
 
 ### NSG für Verwaltungsnetzwerkkarten in „BackEnd“
 
@@ -282,4 +282,4 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

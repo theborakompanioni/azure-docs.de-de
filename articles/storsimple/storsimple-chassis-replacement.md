@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/30/2015"
+   ms.date="04/22/2016"
    ms.author="alkohli" />
 
 # Ersetzen des Gehäuses des StorSimple-Geräts
@@ -23,7 +23,7 @@ In diesem Tutorial wird erläutert, wie Sie das Gehäuse eines StorSimple-Gerät
 
 In beiden Fällen wird ein leeres Ersatzgehäuse von Microsoft ausgeliefert. Die Gehäuse enthalten keine Stromversorgungs- und Kühleinheiten (PCMs), Controllermodule, SSDs (Solid-State-Festplatten), HDDs (Festplattenlaufwerke) oder EBOD-Module.
 
->[AZURE.IMPORTANT]Vor dem Entfernen und Austauschen des Gehäuses überprüfen Sie die Sicherheitsinformationen unter [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+>[AZURE.IMPORTANT] Vor dem Entfernen und Austauschen des Gehäuses überprüfen Sie die Sicherheitsinformationen unter [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
 ## Entfernen des Gehäuses
 
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um das Gehäuse des StorSimple-Geräts z
 
 ## Installieren des Gehäuses
 
-Führen Sie die folgenden Schritte aus, um das Gehäuse in einem Microsoft Azure StorSimple-Gerät zu installieren.
+Führen Sie die folgenden Schritte aus, um das Gehäuse in Ihrem StorSimple-Gerät zu installieren.
 
 #### So installieren Sie ein Gehäuse
 
@@ -55,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um das Gehäuse in einem Microsoft Azure
 
 3. Installieren Sie die Laufwerke an den gleichen Positionen und Steckplätzen, an denen sie zuvor installiert waren.
 
-    >[AZURE.NOTE]Wir empfehlen, dass Sie zuerst die SSDs installieren und dann die Festplatten.
+    >[AZURE.NOTE] Wir empfehlen, dass Sie zuerst die SSDs installieren und dann die Festplatten.
 
 2. Nach dem Einbau des Geräts und der Installation der Komponenten verbinden Sie das Gerät mit den entsprechenden Stromquellen, und schalten Sie es ein. Weitere Informationen finden Sie unter [Verkabeln des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) bzw. [Verkabeln des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
@@ -63,4 +63,4 @@ Führen Sie die folgenden Schritte aus, um das Gehäuse in einem Microsoft Azure
 
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

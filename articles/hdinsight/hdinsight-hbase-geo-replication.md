@@ -48,7 +48,11 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-- **Eine Arbeitsstation mit Azure PowerShell**. Siehe [Installieren und Verwenden von Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/). Um PowerShell-Skripts ausführen zu können, müssen Sie Azure PowerShell als Administrator ausführen und die Ausführungsrichtlinie auf *RemoteSigned* setzen. Siehe Verwenden des Cmdlet "Set-ExecutionPolicy".
+- **Eine Arbeitsstation mit Azure PowerShell**.
+
+    Um PowerShell-Skripts ausführen zu können, müssen Sie Azure PowerShell als Administrator ausführen und die Ausführungsrichtlinie auf *RemoteSigned* setzen. Siehe Verwenden des Cmdlet "Set-ExecutionPolicy".
+	
+	[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 - **Zwei virtuelle Netzwerke in Azure mit VPN-Konnektivität und konfiguriertem DNS**. Anweisungen hierzu finden Sie unter [Konfigurieren einer VPN-Verbindung zwischen zwei virtuellen Netzwerken in Azure][hdinsight-hbase-replication-vnet] und [Konfigurieren von DNS zwischen zwei virtuellen Netzwerken in Azure][hdinsight-hbase-replication-dns].
 
@@ -310,4 +314,4 @@ In diesem Lernprogramm haben Sie gelernt, HBase-Replikation über zwei Rechenzen
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -30,7 +30,7 @@ Der Workflow, den Sie mithilfe der Anweisungen in diesem Lernprogramm implementi
 
 ![Workflowdiagramm][img-workflow-diagram]
 
-1. Eine Hive-Aktion führt ein HiveQL-Skript aus, das die Vorkommen der verschiedenen Protokollierungsebenen in einer log4j-Datei zählt. Jede log4j-Datei besteht aus einer Reihe von Feldern, unter denen sich ein Feld namens [LOG LEVEL] befindet, das die Art und den Schweregrad des jeweiligen Fehlers anzeigt, z. B.
+1. Eine Hive-Aktion führt ein HiveQL-Skript aus, das die Vorkommen der verschiedenen Protokollierungsebenen in einer log4j-Datei zählt. Jede log4j-Datei besteht aus einer Reihe von Feldern, unter denen sich ein Feld namens [LOG LEVEL] befindet, das die Art und den Schweregrad des jeweiligen Fehlers anzeigt, z. B.
 
 		2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
 		2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -56,7 +56,11 @@ Der Workflow, den Sie mithilfe der Anweisungen in diesem Lernprogramm implementi
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-- **Eine Arbeitsstation mit Azure PowerShell**. Siehe [Installieren und Verwenden von Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/). Um Windows PowerShell-Skripts ausführen zu können, müssen Sie PowerShell als Administrator ausführen und die Ausführungsrichtlinie auf *RemoteSigned* setzen. Weitere Informationen finden Sie unter [Ausführen von Windows PowerShell-Skripts][powershell-script].
+- **Eine Arbeitsstation mit Azure PowerShell**. 
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+    
+    Um Windows PowerShell-Skripts ausführen zu können, müssen Sie PowerShell als Administrator ausführen und die Ausführungsrichtlinie auf *RemoteSigned* setzen. Weitere Informationen finden Sie unter [Ausführen von Windows PowerShell-Skripts][powershell-script].
 
 ##Definieren des Oozie-Workflows und des zugehörigen HiveQL-Skripts
 
@@ -142,7 +146,7 @@ Das RunHiveScript enthält mehrere Variablen. Die Werte werden übergeben, wenn 
 <tr><td>${hiveOutputFolder}</td><td>Gibt den Ausgabeordner für die Hive-Anweisung INSERT OVERWRITE an. Dieser entspricht dem für den Sqoop-Export angegebenen Ordner (export-dir).</td></tr>
 </table>
 
-Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight der Version 2.1).
+Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight der Version 2.1).
 
 
 Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skriptdatei enthält drei HiveQL-Anweisungen:
@@ -620,7 +624,6 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 
 - [Verwenden des zeitbasierten Oozie-Koordinators mit HDInsight][hdinsight-oozie-coordinator-time]
 - [Erste Schritte bei der Nutzung von Hadoop mit Hive in HDInsight zur Analyse der Verwendung von Mobiltelefonen][hdinsight-get-started]
-- [Erste Schritte mit dem HDInsight-Emulator][hdinsight-get-started-emulator]
 - [Verwenden von Azure-Blobspeicher mit HDInsight][hdinsight-storage]
 - [Verwalten von HDInsight mit PowerShell][hdinsight-admin-powershell]
 - [Hochladen von Daten für Hadoop-Aufträge in HDInsight][hdinsight-upload-data]
@@ -637,7 +640,7 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 [azure-data-factory-pig-hive]: ../data-factory/data-factory-data-transformation-activities.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
@@ -649,10 +652,9 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
 
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
@@ -678,4 +680,4 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

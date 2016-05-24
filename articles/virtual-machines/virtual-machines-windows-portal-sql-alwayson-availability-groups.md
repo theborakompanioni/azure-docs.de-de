@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen im Azure-Ressourcen-Manager | Microsoft Azure"
-	description="Erstellen Sie eine AlwaysOn-Verfügbarkeitsgruppe mit Azure-VMs im Azure-Ressourcen-Manager-Modus. In diesem Tutorial wird die Benutzeroberfläche in erster Linie zum automatischen Erstellen der gesamten Lösung verwendet."
+	pageTitle="Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen im Azure Resource Manager | Microsoft Azure"
+	description="Erstellen Sie eine AlwaysOn-Verfügbarkeitsgruppe mit Azure-VMs im Azure Resource Manager-Modus. In diesem Tutorial wird die Benutzeroberfläche in erster Linie zum automatischen Erstellen der gesamten Lösung verwendet."
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="MikeRayMSFT"
@@ -13,27 +13,25 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="02/04/2016"
+	ms.date="05/10/2016"
 	ms.author="mikeray" />
 
-# Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe auf Azure-Ressourcen-Manager-VMs (GUI).
+# Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe auf Azure Resource Manager-VMs (GUI)
 
 > [AZURE.SELECTOR]
-- [Portal – Resource Manager – Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-- [Portal – Resource Manager – Manuell](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
-- [Portal – Klassisch – Manuell](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-- [PowerShell – klassisch](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+- [Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Manuell](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 
 <br/>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Modell.
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Modell.
 
 
 Dieses End-to-End-Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe mit Azure-Ressourcen-Manager-VMs erstellen. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, überprüfen Sie Standardeinstellungen, geben erforderliche Einstellungen ein und aktualisieren die Blätter im Portal.
 
->[AZURE.NOTE] Das Azure-Verwaltungsportal enthält einen neuen Katalog, der für AlwaysOn-Verfügbarkeitsgruppen mit einem Listener eingerichtet ist. Damit wird alles automatisch konfiguriert, was Sie für AlwaysOn-Verfügbarkeitsgruppen benötigen. Weitere Informationen finden Sie unter [SQL Server AlwaysOn Offering in Microsoft Azure classic portal Gallery](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) (in englischer Sprache).
+>[AZURE.NOTE] Im Azure-Verwaltungsportal gibt es einen neuen Katalog, der für AlwaysOn-Verfügbarkeitsgruppen mit einem Listener eingerichtet ist. Hierüber wird alles automatisch konfiguriert, was Sie für Verfügbarkeitsgruppen benötigen. Weitere Informationen finden Sie unter [SQL Server Always On Offering in Microsoft Azure classic portal Gallery](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) (SQL Server-AlwaysOn-Angebot im Katalog des klassischen Microsoft Azure-Portals).
 
-Am Ende des Tutorials besteht Ihre SQL Server AlwaysOn-Lösung in Azure aus folgenden Elementen:
+Am Ende des Tutorials besteht Ihre SQL Server-Verfügbarkeitsgruppenlösung in Azure aus folgenden Elementen:
 
 - Einem virtuellen Netzwerk, das mehrere Subnetze enthält, einschließlich einem Front-End- und Back-End-Subnetz
 
@@ -55,15 +53,15 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 - Sie besitzen bereits ein Azure-Abonnement. Falls Sie keines besitzen, können Sie sich für ein [kostenloses Testkonto registrieren](http://azure.microsoft.com/pricing/free-trial/).
 
-- Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem virtuellen Computerkatalog bereitgestellt wird. Weitere Informationen finden Sie unter [Provisioning a SQL Server virtual machine on Azure](virtual-machines-windows-portal-sql-server-provision.md) (Bereitstellen eines virtuellen SQL Server-Computers in Azure).
+- Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem virtuellen Computerkatalog bereitgestellt wird. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
-- Sie verfügen bereits über solide Kenntnisse über AlwaysOn-Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx).
+- Sie verfügen bereits über solide Kenntnisse über Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx).
 
->[AZURE.NOTE] Wenn Sie an der Verwendung von AlwaysOn-Verfügbarkeitsgruppen mit SharePoint interessiert sind, finden Sie Informationen hierzu unter [Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013](http://technet.microsoft.com/library/jj715261.aspx).
+>[AZURE.NOTE] Wenn Sie an der Verwendung von Verfügbarkeitsgruppen mit SharePoint interessiert sind, finden Sie Informationen hierzu unter [Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013](http://technet.microsoft.com/library/jj715261.aspx).
 
 In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 
-- Auswählen der neuen AlwaysOn-Verfügbarkeitsgruppen-Vorlage im Portal
+- Auswählen der AlwaysOn-Vorlage aus dem Portal
 
 - Überprüfen der Vorlageneinstellungen und Aktualisieren einiger Konfigurationseinstellungen für Ihre Umgebung
 
@@ -71,7 +69,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 
 - Verbinden mit einem der Domänencontroller und dann mit einer der SQL Server-Instanzen
 
-## Bereitstellen einer AlwaysOn-Verfügbarkeitsgruppe aus dem Katalog mit dem Ressourcen-Manager-Bereitstellungsmodell
+## Bereitstellen einer Verfügbarkeitsgruppe aus dem Katalog mit dem Resource Manager-Bereitstellungsmodell
 
 Azure bietet ein Katalogimage für die gesamte Lösung. Um die Vorlage zu suchen:
 
@@ -79,7 +77,7 @@ Azure bietet ein Katalogimage für die gesamte Lösung. Um die Vorlage zu suchen
 1.	Klicken Sie im Azure-Portal auf **+Neu**. Im Portal wird das Blatt „Neu“ geöffnet.
 1.	Suchen Sie auf dem Blatt „Neu“ die Option **AlwaysOn**. ![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 1.	Suchen Sie in den Suchergebnissen **SQL Server AlwaysOn-Cluster**. ![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
-1.	Wählen Sie in **Bereitstellungsmodell auswählen** die Option **Ressourcen-Manager** aus.
+1.	Wählen Sie in **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus.
 
 ### Grundlagen
 
@@ -89,7 +87,7 @@ Klicken Sie auf **Grundlagen**, und konfigurieren Sie Folgendes:
 
 - **Kennwort** ist das Kennwort für das Domänenadministratorkonto. Verwenden Sie ein komplexes Kennwort. Bestätigen Sie das Kennwort.
 
-- **Abonnement** ist das Abonnement, das Azure abrechnet, um alle für die AlwaysOn-Verfügbarkeitsgruppe bereitgestellten Ressourcen auszuführen. Sie können ein anderes Abonnement angeben, wenn Ihr Konto über mehrere Abonnements verfügt.
+- **Abonnement** ist das Abonnement, das Azure abrechnet, um alle für die Verfügbarkeitsgruppe bereitgestellten Ressourcen auszuführen. Sie können ein anderes Abonnement angeben, wenn Ihr Konto über mehrere Abonnements verfügt.
 
 - **Ressourcengruppe** ist der Name für die Gruppe, zu der alle von diesem Tutorial erstellten Azure-Ressourcen gehören sollen. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter (Azure-Ressourcen-Manager-Übersicht) [resource-group-overview.md/#resource-groups].
 
@@ -163,9 +161,9 @@ Wählen Sie bei **Größe des virtuellen Computers, Einstellungen des Speichers*
 
     - **Allgemeine Workload** legt keine bestimmten Konfigurationseinstellungen fest.
 
-    - **Transaktionsverarbeitung** legt Ablaufverfolgungsflag 1117 und 1118 fest
+    - **Transaktionsverarbeitung** legt Ablaufverfolgungsflag 1117 und 1118 fest.
 
-    - **Data Warehousing** legt Ablaufverfolgungsflag 1117 und 610 fest
+    - **Data Warehousing** legt Ablaufverfolgungsflag 1117 und 610 fest.
 
 Verwenden Sie für dieses Tutorial **Allgemeine Workload**.
 
@@ -222,7 +220,7 @@ Auf der Zusammenfassungsseite überprüft Azure die Einstellungen. Sie können a
 
 ###Kaufen
 
-Dieses letzte Blatt enthält **Nutzungsbedingungen** und **Datenschutzrichtlinie**. Überprüfen Sie diese Informationen. Wenn Sie zum Erstellen der virtuellen Computer und aller anderen erforderlichen Ressourcen für die AlwaysOn-Verfügbarkeitsgruppe in Azure bereit sind, klicken Sie auf **Erstellen**.
+Dieses letzte Blatt enthält **Nutzungsbedingungen** und **Datenschutzrichtlinie**. Überprüfen Sie diese Informationen. Wenn Sie zum Erstellen der virtuellen Computer und aller anderen erforderlichen Ressourcen für die Verfügbarkeitsgruppe in Azure bereit sind, klicken Sie auf **Erstellen**.
 
 Das Azure-Portal erstellt die Ressourcengruppe und alle Ressourcen.
 
@@ -244,7 +242,7 @@ Um eine RDP-Verbindung mit dem primären Domänencontroller herzustellen, gehen 
 
 1.	Klicken Sie auf dem Blatt **Ressourcen** auf **ad-primary-dc**, den Computernamen des virtuellen Computers für den primären Domänencontroller.
 
-1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**. ![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
+1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png).
 1.	Die **Remotedesktopverbindung** warnt Sie möglicherweise, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**.
 
 1.	Die Windows-Sicherheit fordert Sie auf, zur Verbindung mit der IP-Adresse des primären Domänencontrollers Ihre Anmeldeinformationen einzugeben. Klicken Sie auf **Anderes Konto verwenden**. Geben Sie für **Benutzername** **contoso\\DomainAdmin** ein. Dieses Konto haben Sie für den Administratorbenutzernamen ausgewählt. Verwenden Sie das komplexe Kennwort, das Sie beim Konfigurieren der Vorlage ausgewählt haben.
@@ -259,6 +257,6 @@ Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgend
 
 1.	Verwenden Sie das gleiche Benutzerkonto und Kennwort wie beim Herstellen der RDP-Verbindung mit dem Domänencontroller.
 
-Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die AlwaysOn-Verfügbarkeitsgruppe konfiguriert ist.
+Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die Verfügbarkeitsgruppe konfiguriert ist.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

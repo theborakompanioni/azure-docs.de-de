@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/26/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher"/>
 
 # Bereitstellen eines ASP.NET-Containers auf einem Docker-Remotehost
@@ -51,11 +51,11 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
 1.  Starten Sie Visual Studio neu.
 
 ## 5\. Konfigurieren des Azure-Docker-Host-Endpunkts
-Fügen Sie vor der Bereitstellung Ihrer App von Visual Studio an Azure Ihrem virtuellen Docker-Hostcomputer den Endpunkt 80 hinzu, damit Sie Ihre App später im Browser anzeigen können. Dies ist entweder über das klassische Azure-Portal oder über Windows PowerShell möglich:
+Fügen Sie vor der Bereitstellung Ihrer App von Visual Studio an Azure Ihrem virtuellen Docker-Hostcomputer den Endpunkt 80 hinzu, damit Sie Ihre App später im Browser anzeigen können. Dies ist entweder über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) oder über Windows PowerShell möglich:
 
-- **Konfiguration des Azure-Docker-Hostendpunkts mithilfe des klassischen Azure-Portals**
+- **Konfiguration des Azure-Docker-Host-Endpunkts mithilfe des [klassischen Azure-Portals](http://go.microsoft.com/fwlink/?LinkID=213885)**
 
-    1.  Navigieren Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com/). 
+    1.  Navigieren Sie zum [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885). 
     
     1.  Tippen Sie auf **VIRTUELLE COMPUTER**
     
@@ -79,9 +79,9 @@ Fügen Sie vor der Bereitstellung Ihrer App von Visual Studio an Azure Ihrem vir
 ## 6\. Erstellen und Ausführen der App
 Bei der Bereitstellung auf Remotehosts funktioniert das Volumezuordnungsfeature für die Entwicklung mithilfe des Features zum Bearbeiten und Aktualisieren nicht. Daher müssen Sie beim Erstellen der App die *Releasekonfiguration* verwenden, um die Konfiguration der Volumezuordnung zu vermeiden. Führen Sie diese Schritte aus, um Ihre App auszuführen.
 
-1.  Wählen Sie in der Symbolleiste von Visual Studio die **Releasekonfiguration** aus.
+1.  Wählen Sie auf der Symbolleiste von Visual Studio die **Releasekonfiguration** aus.
 
-1.  Ändern Sie das Startziel zu **Docker**.
+1.  Ändern Sie das Startziel in **Docker**.
 
 1.  Tippen Sie auf das **Docker**-Symbol, um die App zu erstellen und auszuführen.
 
@@ -96,4 +96,4 @@ Die Ergebnisse sollten in etwa wie folgt aussehen:
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0511_2016-->

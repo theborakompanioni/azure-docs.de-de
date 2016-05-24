@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016" 
+	ms.date="05/09/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory – Funktionen und Systemvariablen
@@ -83,9 +83,9 @@ Text | Format(X) | X: Stringvariable | Formatiert den Text.
 	    "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
 	}
 
-Im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://msdn.microsoft.com/library/8kb3ddd4.aspx) werden verschiedene Formatoptionen beschrieben (z. B. „JJ“ im Vergleich zu „JJJJ“).
+Im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://msdn.microsoft.com/library/8kb3ddd4.aspx) werden verschiedene Formatoptionen beschrieben (z. B. „JJ“ im Vergleich zu „JJJJ“).
 
 > [AZURE.NOTE] Bei Verwenden einer Funktion in einer anderen Funktion müssen Sie für die innere Funktion nicht das Präfix **$$** verwenden. Beispiel: $$Text.Format('PartitionKey eq \\'my\_pkey\_filter\_value\\' und RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). Beachten Sie bei diesem Beispiel, dass das Präfix **$$** für die **Time.AddHours**-Funktion nicht verwendet wird.
   
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

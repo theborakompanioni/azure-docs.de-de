@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/31/2016"
+   ms.date="04/19/2016"
    ms.author="alkohli" />
 
 # Klonen eines Volumes mithilfe des StorSimple Manager-Diensts (Update 2)
@@ -35,7 +35,7 @@ In diesem Tutorial wird beschrieben, wie Sie einen Sicherungssatz zum Klonen ein
 >
 >`Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.`
 >
->Sie können das Volume in lokal fixiert konvertieren, wenn Sie zunächst den vorübergehenden Klon in einen permanenten Klon konvertieren. Zeichnen Sie zum Konvertieren des vorübergehenden Klons in einen permanenten Klon eine Cloudmomentaufnahme auf.
+>Dieser Fehler wird nur ausgegeben, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können das Volume in lokal fixiert konvertieren, wenn Sie zunächst den vorübergehenden Klon in einen permanenten Klon konvertieren. Zeichnen Sie zum Konvertieren des vorübergehenden Klons in einen permanenten Klon eine Cloudmomentaufnahme auf.
 
 ## Erstellen von Klonen von einem Volume
 
@@ -90,9 +90,9 @@ Dieser Klon ist jetzt ein reguläres Volume, und jeder mit einem Volume möglich
 
 ## Vergleich von vorübergehenden und dauerhaften Klonen
 
-Sie können ein bestimmtes Volume aus einem Sicherungssatz klonen. Ein auf diese Weise erstellter Klon ist ein *vorübergehender* Klon. Der vorübergehende Klon enthält Verweise auf das ursprüngliche Volume, und er verwendet dieses für das Lesen während des lokalen Schreibens. Dies kann zu einer Leistungsverminderung führen. Dies gilt insbesondere dann, wenn das geklonte Volume groß ist.
+Vorübergehende und dauerhafte Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen Gerät klonen. Ein auf diese Weise erstellter Klon ist ein *vorübergehender* Klon. Der vorübergehende Klon enthält Verweise auf das ursprüngliche Volume, und er verwendet dieses für das Lesen während des lokalen Schreibens.
 
-Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Der dauerhafte Klon ist unabhängig und verfügt nicht über Verweise auf das ursprüngliche Volume, aus dem er geklont wurde. Für eine höhere Leistung wird das Erstellen dauerhafter Klone empfohlen.
+Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Der dauerhafte Klon ist unabhängig und verfügt nicht über Verweise auf das ursprüngliche Volume, aus dem er geklont wurde.
 
 ## Szenarios für vorübergehende und dauerhafte Klone
 
@@ -108,7 +108,7 @@ Um ein Video zu schauen, in dem gezeigt wird, wie Sie mithilfe des Klons und Wie
 
 ### Testen in der Produktionsumgebung mit einem dauerhaften Klon
 
-Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstellen einen Klon des Volumes in der Produktionsumgebung. Zur Leistungsoptimierung müssen Sie eine Cloudmomentaufnahme dieses Klons erstellen. Das geklonte Volume ist jetzt unabhängig, wodurch eine höhere Leistung erzielt wird. In diesem Szenario wird ein dauerhafter Klon verwendet.
+Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstellen einen Klon des Volumes in der Produktionsumgebung und dann eine Cloudmomentaufnahme dieses Klons, um ein unabhängiges geklontes Volume zu erstellen. In diesem Szenario wird ein dauerhafter Klon verwendet.
 
 ## Nächste Schritte
 - Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set-u2.md).
@@ -117,4 +117,4 @@ Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstel
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

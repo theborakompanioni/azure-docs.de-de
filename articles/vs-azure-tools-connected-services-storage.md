@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Hinzufügen von Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten
@@ -79,7 +79,7 @@ Wenn Sie die Bearbeitung des Dialogfelds abschließen, fügt Visual Studio Verwe
  - Weitere Informationen zu ASP.NET-Projekten finden Sie unter [Was ist passiert – ASP.NET-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513126). 
  - Weitere Informationen zu ASP.NET 5-Projekten finden Sie unter [Was ist passiert – ASP.NET 5-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513124). 
  - Weitere Informationen zu Clouddienstprojekten (Web- und Workerrollen) finden Sie unter [Was ist passiert – Clouddienstprojekte](http://go.microsoft.com/fwlink/p/?LinkId=516965). 
- - Informationen zu WebJob-Projekten finden Sie unter [Was ist passiert – WebJob-Projekte](vs-storage-webjobs-what-happened/).
+ - Informationen zu WebJob-Projekten finden Sie unter [Was ist passiert – WebJob-Projekte](./storage/vs-storage-webjobs-what-happened.md).
 
 ## Nächste Schritte
 
@@ -94,4 +94,4 @@ Wenn Sie die Bearbeitung des Dialogfelds abschließen, fügt Visual Studio Verwe
 
      - [Speicherdokumentation auf "azure.microsoft.com"](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

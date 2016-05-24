@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure Storage (Azure WebJob-Projekte)
@@ -24,7 +24,7 @@ Dieser Artikel enthält C#-Codebeispiele, die zeigen, wie das Azure WebJobs-SDK 
 
 Der Azure-Tabellenspeicherdienst ermöglicht das Speichern großer Mengen von strukturierten Daten. Der Dienst ist ein NoSQL-Datenspeicher, der authentifizierte Aufrufe von innerhalb und außerhalb der Azure-Cloud akzeptiert. Azure-Tabellen sind hervorragend zur Speicherung strukturierter nicht relationaler Daten geeignet. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Table Storage mit .NET](storage-dotnet-how-to-use-tables.md#create-a-table).
 
-Einige der Codeausschnitte zeigen das **Table**-Attribut in Funktionen, die manuell aufgerufen werden, d. h. nicht mit einem der Triggerattribute.
+Einige der Codeausschnitte zeigen das **Table**-Attribut in Funktionen, die manuell aufgerufen werden, d. h. nicht mit einem der Triggerattribute.
 
 ## Hinzufügen von Entitäten zu einer Tabelle
 
@@ -153,4 +153,4 @@ Informationen zur Handhabung der durch eine Warteschlangennachricht ausgelösten
 
 In diesem Artikel wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Tabellen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

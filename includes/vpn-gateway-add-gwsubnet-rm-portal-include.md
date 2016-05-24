@@ -1,5 +1,3 @@
-### So erstellen Sie ein Gatewaysubnetz im Azure-Portal
-
 1. Navigieren Sie im Portal zu dem virtuellen Netzwerk, mit dem Sie ein Gateway verbinden möchten. Klicken Sie auf dem Blatt für Ihr virtuelles Netzwerk auf das Symbol **Einstellungen** oben auf dem Blatt, um das Blatt „Einstellung“ zu erweitern. 
 
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Subnetze**, um das Blatt „Subnetze“ zu erweitern.
@@ -14,4 +12,5 @@
 
 6. Klicken Sie unten auf dem Blatt auf **OK**, um das Subnetz zu erstellen.
 
-<!---HONumber=AcomDC_0406_2016-->
+
+
