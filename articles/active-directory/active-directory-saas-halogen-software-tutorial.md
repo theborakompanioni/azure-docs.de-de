@@ -118,7 +118,7 @@ Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im klassi
 
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: ![Konfigurieren von App-Einstellungen][10]
  
-     a. Geben Sie im Textfeld **Anmelde-URL** die URL, die Benutzer zum Anmelden bei Ihrer Halogen Software-Anwendung verwenden, in folgendem Format ein: **https://global.hgncloud.com/fabrikam/welcome.jsp*.
+     a. Geben Sie im Textfeld **Anmelde-URL** die URL, die Benutzer zum Anmelden bei Ihrer Halogen Software-Anwendung verwenden, in folgendem Format ein: *https://global.hgncloud.com/fabrikam/welcome.jsp*.
 
      b. Klicken Sie auf **Weiter**.
  
@@ -321,4 +321,4 @@ Wenn Sie auf die Kachel Halogen Software im Zugriffsbereich klicken, sollten Sie
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!----HONumber=AcomDC_0511_2016-->

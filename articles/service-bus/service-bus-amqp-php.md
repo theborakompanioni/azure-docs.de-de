@@ -156,7 +156,25 @@ In der folgende Tabelle sind die .NET-Eigenschaftstypen den PHP-Eigenschaftstype
 
 | .NET-Eigenschaftstyp | PHP-Eigenschaftstyp | Hinweise |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | integer | - | | sbyte | integer | - | | char | Char | Proton-PHP-Klasse | | short | integer | - | | ushort | integer | - | | int | integer | - | | uint | Integer | - | | long | integer | - | | ulong | integer | - | | float | double | - | | double | double | - | | decimal | string | "Decimal" wird derzeit nicht mit Proton unterstützt. | | bool | boolean | - | | Guid | UUID | Proton-PHP-Klasse | | string | string | - | | DateTime | integer | - | | DateTimeOffset | DescribedType | DateTimeOffset.UtcTicks zugeordnet zu AMQP-Typ:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> | | TimeSpan | DescribedType | Timespan.Ticks zugeordnet zu AMQP-Typ:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> | | Uri | DescribedType | Uri.AbsoluteUri zugeordnet zu AMQP-Typ:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
+| byte | integer | - | 
+| sbyte | integer | - | 
+| char | Char | Proton-PHP-Klasse | 
+| short | integer | - | 
+| ushort | integer | - | 
+| int | integer | - | 
+| uint | Integer | - | 
+| long | integer | - | 
+| ulong | integer | - | 
+| float | double | - | 
+| double | double | - | 
+| decimal | string | "Decimal" wird derzeit nicht mit Proton unterstützt. | 
+| bool | boolean | - | 
+| Guid | UUID | Proton-PHP-Klasse | 
+| string | string | - | 
+| DateTime | integer | - | 
+| DateTimeOffset | DescribedType | DateTimeOffset.UtcTicks zugeordnet zu AMQP-Typ:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> | 
+| TimeSpan | DescribedType | Timespan.Ticks zugeordnet zu AMQP-Typ:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> | 
+| Uri | DescribedType | Uri.AbsoluteUri zugeordnet zu AMQP-Typ:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
 
 ### Standardeigenschaften
 
@@ -167,13 +185,38 @@ Die folgenden Tabellen enthalten die Zuordnung zwischen den Proton-PHP-Standardn
 | Durable | – | Service Bus unterstützt nur dauerhafte Nachrichten. |
 | Priority | – | Service Bus unterstützt nur eine Nachrichtenpriorität. |
 | Ttl | Message.TimeToLive | Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
-| first\_acquirer | - | - | | delivery\_count | - | - | | Id | Message.Id | - | | user\_id | - | - | | Address | Message.To | - | | Subject | Message.Label | - | | reply\_to | Message.ReplyTo | - | | correlation\_id | Message.CorrelationId | - | | content\_type | Message.ContentType | - | | content\_encoding | – | - | | expiry\_time | Message.ExpiresAtUTC | - | | creation\_time | – | - | | group\_id | Message.SessionId | - | | group\_sequence | - | - | | reply\_to\_group\_id | Message.ReplyToSessionId | - | | Format | – | -
+| first\_acquirer | - | - | 
+| delivery\_count | - | - | 
+| Id | Message.Id | - | 
+| user\_id | - | - | 
+| Address | Message.To | - | 
+| Subject | Message.Label | - | 
+| reply\_to | Message.ReplyTo | - | 
+| correlation\_id | Message.CorrelationId | - | 
+| content\_type | Message.ContentType | - | 
+| content\_encoding | – | - | 
+| expiry\_time | Message.ExpiresAtUTC | - | 
+| creation\_time | – | - | 
+| group\_id | Message.SessionId | - | 
+| group\_sequence | - | - | 
+| reply\_to\_group\_id | Message.ReplyToSessionId | - | 
+| Format | – | -
 
 #### .NET-APIs von Service Bus zu Proton-PHP
 
 | Service Bus .NET | Proton-PHP | Hinweise |
 |-------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| ContentType | Message->content\_type | - | | CorrelationId | Message->correlation\_id | - | | EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | | Label | Message->subject | - | | MessageId | Message->id | - | | ReplyTo | Message->reply\_to | - | | ReplyToSessionId | Message->reply\_to\_group\_id | - | | ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - | | SessionId | Message->group\_id | - | | TimeToLive | Message->ttl | Konvertierung, Proton-PHP-TTL-Wert wird in Millisekunden definiert. | | To | Message->address | - |
+| ContentType | Message->content\_type | - | 
+| CorrelationId | Message->correlation\_id | - | 
+| EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | 
+| Label | Message->subject | - | 
+| MessageId | Message->id | - | 
+| ReplyTo | Message->reply\_to | - | 
+| ReplyToSessionId | Message->reply\_to\_group\_id | - | 
+| ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - | 
+| SessionId | Message->group\_id | - | 
+| TimeToLive | Message->ttl | Konvertierung, Proton-PHP-TTL-Wert wird in Millisekunden definiert. | 
+| To | Message->address | - |
 
 ## Nächste Schritte
 
@@ -187,4 +230,4 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!----HONumber=AcomDC_0511_2016-->
