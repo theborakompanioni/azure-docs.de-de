@@ -157,7 +157,9 @@ Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten un
 
 | **Aktionen** ||
 | ------- | ------ |
-| */read | Ressourcen aller Typen lesen | | Microsoft.DevTestLab/labs/createEnvironment/action | Lab-Umgebung erstellen | | Microsoft.DevTestLab/labs/formulas/delete | Formeln löschen | 
+| */read | Ressourcen aller Typen lesen | 
+| Microsoft.DevTestLab/labs/createEnvironment/action | Lab-Umgebung erstellen | 
+| Microsoft.DevTestLab/labs/formulas/delete | Formeln löschen | 
 | Microsoft.DevTestLab/labs/formulas/write | Formeln hinzufügen oder ändern | 
 | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Lab-Richtlinien auswerten | 
 | Microsoft.Compute/virtualMachines/start/action | virtuelle Computer starten | 
@@ -389,7 +391,8 @@ Kann den Benutzerzugriff auf Azure-Ressourcen verwalten
 
 | **Aktionen** ||
 | ------- | ------ |
-| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | | Microsoft.Authorization/* | Lesen von Autorisierungen |
+| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | 
+| Microsoft.Authorization/* | Lesen von Autorisierungen |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von klassischen virtuellen Computern
@@ -493,4 +496,4 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 - [Erstellen eines Verlaufsbericht über Zugriffsänderungen](role-based-access-control-access-change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
 - [Problembehandlung bei rollenbasierter Zugriffssteuerung](role-based-access-control-troubleshooting.md): Abrufen von Vorschlägen zur Behebung häufig auftretender Probleme.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!----HONumber=AcomDC_0511_2016-->

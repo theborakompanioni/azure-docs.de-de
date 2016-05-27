@@ -86,13 +86,13 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 | Type=Perf | Alle Leistungsdaten. |
 | Type=Perf Computer="MyComputer" | Alle Leistungsdaten eines bestimmten Computers. |
 | Type=Perf CounterName="Aktuelle Warteschlangenlänge" | Alle Leistungsdaten eines bestimmten Leistungsindikators. |
-| Type=Perf (ObjectName=Processor) CounterName="% Prozessorzeit" InstanceName=\_Total measure Avg(Average) as AVGCPU by Computer | Durchschnittliche CPU-Nutzung aller Computer. |
-| Type=Perf (CounterName="% Prozessorzeit") measure max(Max) by Computer | Maximale CPU-Nutzung aller Computer. |
-| Type=Perf ObjectName=LogicalDisk CounterName="Aktuelle Warteschlangenlänge" Computer="MyComputerName" measure Avg(Average) by InstanceName | Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers. |
-| Type=Perf CounterName="Übertragungen/s" measure percentile95(Average) by Computer | 95\. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
-| Type=Perf CounterName="% Prozessorzeit" InstanceName="\_Total" measure avg(CounterValue) by Computer Interval 1HOUR | Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern. |
-| Type=Perf Computer="MyComputer" CounterName=%* InstanceName=\_Total measure percentile70(CounterValue) by CounterName Interval 1HOUR | 70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer. |
-| Type=Perf CounterName="% Prozessorzeit" InstanceName="\_Total" (Computer="MyComputer") measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR | Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer. |
+| Type=Perf (ObjectName=Processor) CounterName="% Prozessorzeit" InstanceName=\_Total &#124; measure Avg(Average) as AVGCPU by Computer | Durchschnittliche CPU-Nutzung aller Computer. |
+| Type=Perf (CounterName="% Prozessorzeit") | measure max(Max) by Computer &#124; Maximale CPU-Nutzung aller Computer. |
+| Type=Perf ObjectName=LogicalDisk CounterName="Aktuelle Warteschlangenlänge" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName | Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers. |
+| Type=Perf CounterName="Übertragungen/s" &#124; measure percentile95(Average) by Computer | 95\. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
+| Type=Perf CounterName="% Prozessorzeit" InstanceName="\_Total" &#124; measure avg(CounterValue) by Computer Interval 1HOUR | Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern. |
+| Type=Perf Computer="MyComputer" CounterName=%* InstanceName=\_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR | 70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer. |
+| Type=Perf CounterName="% Prozessorzeit" InstanceName="\_Total" (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR | Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer. |
 
 ## Anzeigen von Leistungsdaten
 
@@ -110,4 +110,4 @@ Wenn die ausgewählte Zeitspanne 6 Stunden oder weniger beträgt, zeigt das Diag
 - Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 - Exportieren Sie gesammelte Daten nach [Power BI](log-analytics-powerbi.md), um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
 
-<!-----HONumber=AcomDC_0504_2016-->
+<!------HONumber=AcomDC_0504_2016-->
