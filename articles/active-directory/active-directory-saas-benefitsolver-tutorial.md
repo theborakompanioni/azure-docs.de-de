@@ -83,7 +83,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Konfigurieren von App-Einstellungen](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Konfigurieren von App-Einstellungen")
 
     1.  Geben Sie im Textfeld **Anmelde-URL** die URL **http://azure.benefitsolver.com** ein.
-2.  Geben Sie im Textfeld **Antwort-URL** die URL **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml** ein.
+    2.  Geben Sie im Textfeld **Antwort-URL** die URL **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml** ein.
 
     3.  Klicken Sie auf **Weiter**.
 
