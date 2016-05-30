@@ -1,7 +1,7 @@
-Resource|Maximum Limit
+Ressource|Maximales Limit
 ---|---
-Max number of new jobs that can be submitted every 30 seconds per Automation Account (non Scheduled jobs)|100
-Max number of concurrent running jobs at the same instance of time per Automation Account (non Scheduled jobs)|200
-Max number of modules that can be imported every 30 seconds per Automation Account|5
-Max size of a Module|100 MB
-Job Run Time - Free tier|500 minutes per subscription per calendar month
+Max. Anzahl von neuen Aufträgen, die alle 30 Sekunden pro Automation-Konto (nicht geplante Aufträge) übermittelt werden können|100
+Max. Anzahl gleichzeitig ausgeführter Aufträge pro Automation-Konto (nicht geplante Aufträge)|200
+Max. Anzahl von Modulen, die alle 30 Sekunden pro Automation-Konto importiert werden können|5
+Max. Größe eines Moduls|100 MB
+Auftrag-Laufzeit – Free-Tarif|500 Minuten pro Abonnement pro Kalendermonat

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="04/27/2016"
 	ms.author="maheshu"/>
 
 # Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD-Domänendienste verwaltete Domäne
@@ -26,7 +26,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
 
-3. **Domänendienste**. Diese müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](./active-directory-ds-getting-started.md) aus.
+3. **Azure AD-Domänendienste** – diese müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](./active-directory-ds-getting-started.md) aus.
 
 4. Ein **Zertifikat, das zum Aktivieren von sicherem LDAP verwendet werden kann**
     - **Empfohlen**: Beschaffen Sie ein Zertifikat von Ihrer Unternehmenszertifizierungsstelle oder von einer öffentlichen Zertifizierungsstelle. Dies ist die wesentlich sicherere Konfigurationsoption.
@@ -198,10 +198,10 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 <br>
 
 
-## Aufgabe 4: Aktiveren des Zugriffs über sicheres LDAP und Internetverbindung
+## Aufgabe 4: Aktivieren des Zugriffs über sicheres LDAP und eine Internetverbindung
 **Optionale Aufgabe**: Überspringen Sie diese Aufgabe, wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten.
 
-Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain) beschriebenen Schritte vollständig ausgeführt haben.
+Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain) beschriebenen Schritte vollständig ausgeführt haben.
 
 1. Auf der Seite **Konfigurieren** wird im Abschnitt **Domänendienste** eine Option **SICHEREN LDAP-ZUGRIFF ÜBER DAS INTERNET AKTIVIEREN** angezeigt. Die Einstellung hierfür ist standardmäßig auf **NEIN** festgelegt, weil der Internetzugriff auf die verwaltete Domäne über sicheres LDAP in der Standardeinstellung deaktiviert ist.
 
@@ -242,4 +242,4 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 
 - [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

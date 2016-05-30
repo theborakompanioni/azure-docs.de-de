@@ -3,7 +3,7 @@
    description="Informationen zum Modellieren und Beschreiben von Anwendungen und Diensten in Service Fabric."
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor="mani-ramaswamy"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/05/2016"   
-   ms.author="seanmck"/>
+   ms.date="05/12/2016"   
+   ms.author="ryanwi"/>
 
 # Modellieren von Anwendungen in Service Fabric
 
@@ -29,9 +29,9 @@ Eine Anwendung ist eine Sammlung von einzelnen Diensten, die eine bzw. mehrere b
 
 Ein Anwendungstyp ist eine Kategorisierung einer Anwendung und besteht aus einem Bündel von Diensttypen. Ein Diensttyp ist eine Kategorisierung eines Diensts. Bei der Kategorisierung können die Einstellungen und Konfigurationen variieren, die Kernfunktionen bleiben jedoch gleich. Die Instanzen eines Diensts sind die verschiedenen Dienstkonfigurationsvarianten desselben Diensttyps.
 
-Klassen (oder „Typen“) von Anwendungen und Diensten werden über XML-Dateien (Anwendungsmanifeste und Dienstmanifeste) beschrieben, bei denen es sich um die Vorlagen handelt, mit denen Anwendungen vom Imagespeicher des Clusters aus instanziiert werden können.
+Klassen (oder „Typen“) von Anwendungen und Diensten werden über XML-Dateien (Anwendungsmanifeste und Dienstmanifeste) beschrieben, bei denen es sich um die Vorlagen handelt, mit denen Anwendungen vom Imagespeicher des Clusters aus instanziiert werden können. Die Schemadefinition für die Dateien „ServiceManifest.xml“ und „ApplicationManifest.xml“ wird über das Service Fabric-SDK und die Service Fabric-Tools unter *C:\\Programme\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* installiert.
 
-Die Codes für verschiedene Anwendungsinstanzen werden als separate Prozesse ausgeführt, auch wenn sie im gleichen Service Fabric-Knoten gehostet werden. Darüber hinaus kann der Lebenszyklus jeder Anwendungsinstanz unabhängig verwaltet (d. h. aktualisiert) werden. Die folgende schematische Darstellung zeigt die Gliederung von Anwendungstypen in Diensttypen, die wiederum aus Code, Konfiguration und Paketen bestehen. Um das Diagramm zu vereinfachen, werden nur die Code-/Konfigurations-/Datenpakete für `ServiceType4` gezeigt, obwohl jeder Diensttyp normalerweise einige oder alle dieser Pakettypen enthält.
+Die Codes für verschiedene Anwendungsinstanzen werden als separate Prozesse ausgeführt, auch wenn sie im gleichen Service Fabric-Knoten gehostet werden. Darüber hinaus kann der Lebenszyklus jeder Anwendungsinstanz unabhängig verwaltet (d. h. aktualisiert) werden. Die folgende schematische Darstellung zeigt die Gliederung von Anwendungstypen in Diensttypen, die wiederum aus Code, Konfiguration und Paketen bestehen. Obwohl jeder Diensttyp normalerweise einige oder alle dieser Pakettypen enthält, werden nur die Code-/Konfigurations-/Datenpakete für `ServiceType4` angezeigt, um das Diagramm zu vereinfachen.
 
 ![Service Fabric-Anwendungstypen und Diensttypen][cluster-imagestore-apptypes]
 
@@ -44,7 +44,7 @@ Die folgende schematische Darstellung zeigt die Beziehung zwischen Anwendungen u
 ![Partitionen und Replikate in einem Dienst][cluster-application-instances]
 
 
->[AZURE.TIP] Sie können das Layout von Anwendungen in einem Cluster mit dem Service Fabric-Explorer-Tool anzeigen, das unter http://&lt;yourclusteraddress&gt;:19080/Explorer verfügbar ist. Weitere Informationen finden Sie unter [Visualisieren Ihres Clusters mit dem Service Fabric-Explorer](service-fabric-visualizing-your-cluster.md).
+>[AZURE.TIP] Sie können das Layout von Anwendungen in einem Cluster mit dem Service Fabric Explorer-Tool anzeigen, das unter http://&lt;yourclusteraddress&gt;:19080/Explorer verfügbar ist. Weitere Informationen finden Sie unter [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 ## Beschreiben eines Diensts
 
@@ -254,4 +254,4 @@ Nachdem die Anwendung ordnungsgemäß gepackt und die Überprüfung erfolgreich 
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

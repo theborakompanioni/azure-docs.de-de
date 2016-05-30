@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/10/2016"
+   ms.date="05/17/2016"
    ms.author="navale;tomfitz;"/>
 
 # Azure Resource Manager SDK für .NET  
@@ -28,7 +28,7 @@ In dieser Dokumentation sollen nicht alle Aspekte des Azure SDK für .NET, von A
 Ein vollständiges Beispielprojekt als Download, aus dem alle unten angegebenen Codeausschnitte stammen, finden Sie [hier](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net).
 
 ## Authentifizierung
-Die Authentifizierung für ARM wird per Azure Active Directory (AD) durchgeführt. Zum Herstellen einer Verbindung mit einer API müssen Sie sich zuerst gegenüber Azure AD authentifizieren, um ein Authentifizierungstoken zu erhalten, das Sie für jede Anforderung übergeben können. Um dieses Token zu erhalten, müssen Sie zuerst eine so genannte Azure AD-Anwendung und einen Dienstprinzipal erstellen, der für die Anmeldung verwendet wird. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals](./resource-group-create-service-principal-portal.md).
+Die Authentifizierung für ARM wird per Azure Active Directory (AD) durchgeführt. Zum Herstellen einer Verbindung mit einer API müssen Sie sich zuerst gegenüber Azure AD authentifizieren, um ein Authentifizierungstoken zu erhalten, das Sie für jede Anforderung übergeben können. Um dieses Token zu erhalten, müssen Sie zuerst eine so genannte Azure AD-Anwendung und einen Dienstprinzipal erstellen, der für die Anmeldung verwendet wird. Eine detaillierte Anleitung finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals](resource-group-create-service-principal-portal.md).
 
 Nach dem Erstellen des Dienstprinzipals sollten Sie über Folgendes verfügen:
 * Client-ID (GUID)
@@ -274,7 +274,7 @@ private static async Task<VirtualMachine> CreateVirtualMachineAsync(TokenCredent
 ```
 
 ### Verwenden einer Bereitstellung mit Vorlage
-Eine ausführliche Anleitung zur Bereitstellung einer Vorlage finden Sie unter [Bereitstellen von Azure-Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](./arm-template-deployment/#step-4-create-the-credentials-that-are-used-to-authenticate-requests).
+Eine ausführliche Anleitung zur Bereitstellung einer Vorlage finden Sie unter [Bereitstellen von Azure-Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](./virtual-machines/virtual-machines-windows-csharp-template.md).
 
 Zusammenfassung: Das Bereitstellen einer Vorlage ist viel einfacher als das manuelle Bereitstellen der Ressourcen. Die Vorgehensweise wird im Code unten veranschaulicht, indem auf die URIs verwiesen wird, unter denen sich die Vorlage und die Parameterdatei befinden.
 
@@ -298,4 +298,4 @@ private static async Task<DeploymentExtended> CreateTemplatedDeployment(TokenCre
  
    
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

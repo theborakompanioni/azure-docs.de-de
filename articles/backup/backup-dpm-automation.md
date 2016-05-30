@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/20/2016"
 	ms.author="jimpark; aashishr; anuragm"/>
 
 
@@ -98,11 +98,11 @@ Die verfügbaren Optionen umfassen:
 
 | Option | Details | Standard |
 | ---- | ----- | ----- |
-| /q | Unbeaufsichtigte Installation | - |
+| /q | Unbeaufsichtigte Installation | - | 
 | /p: "location" | Der Pfad zum Installationsordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
 | /s: "Location" | Der Pfad zum Cacheordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
 | /m | Microsoft Update abonnieren | - | 
-| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - |
+| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - | 
 | /d | Microsoft Azure Recovery Services Agent wird deinstalliert | - | 
 | /ph | Proxyhostadresse | - | 
 | /po | Proxyhost-Portnummer | - | 
@@ -300,7 +300,10 @@ Zum Schluss muss für die Änderungen ein Commit ausgeführt werden, bevor DPM d
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 ## Anzeigen der Sicherungspunkte
-Sie können das [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746)-Cmdlet verwenden, um eine Liste aller Wiederherstellungspunkte für eine Datenquelle abzurufen. In diesem Beispiel rufen wir Folgendes ab: alle Schutzgruppen auf dem DPM-Server, die in einem Array ```$PG``` gespeichert werden, die Datenquellen, die ```$PG[0]``` entsprechen, und alle Wiederherstellungspunkte für eine Datenquelle.
+Sie können das [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746)-Cmdlet verwenden, um eine Liste aller Wiederherstellungspunkte für eine Datenquelle abzurufen. In diesem Beispiel werden wir:
+- alle Schutzgruppen auf dem DPM-Server aufrufen, die in einem Array ```$PG``` gespeichert werden
+- Datenquellen abrufen, die ```$PG[0]``` entsprechen
+- alle Wiederherstellungspunkte für eine Datenquelle abrufen.
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -333,4 +336,4 @@ Die Befehle können mühelos für beliebige Datenquellentypen erweitert werden.
 
 - Weitere Informationen zu Azure Backup für DPM finden Sie unter [Einführung in DPM Backup](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

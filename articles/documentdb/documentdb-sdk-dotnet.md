@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="05/06/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -36,11 +36,17 @@
 
 ## Versionsinformationen
 
+### <a name="1.7.1"/>[1\.7.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.1)
+  - URI basierend auf der „ExecuteStoredProcedureAsync“-Methode eine Überladung hinzugefügt, die „RequestOptions“ als Parameter akzeptiert.
+  
+### <a name="1.7.0"/>[1\.7.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.0)
+  - Unterstützung einer Gültigkeitsdauer (TTL) für Dokumente hinzugefügt.
+
 ### <a name="1.6.3"/>[1\.6.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.3)
   - Ein Fehler in der Nuget-Paketerstellung von .NET SDK wurde behoben (dient zum Verpacken von .NET SDK als Teil einer Azure Cloud Service-Lösung).
   
 ### <a name="1.6.2"/>[1\.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.2)
-  - Implementierte [partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) 
+  - [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert. 
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
   - **[Behoben]** Die Abfrage des DocumentDB-Endpunkts löst Folgendes aus: 'System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Datenstrom.
@@ -127,6 +133,8 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
  
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
+| [1\.7.1](#1.7.1) | 6. Mai 2016 |--- 
+| [1\.7.0](#1.7.0) | 26. April 2016 |--- 
 | [1\.6.3](#1.6.3) | 8. April 2016 |--- 
 | [1\.6.2](#1.6.2) | 29. März 2016 |--- 
 | [1\.5.3](#1.5.3) | 19. Februar 2016 |--- 
@@ -139,10 +147,10 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 | [1\.2.0](#1.2.0) | 6. Juli 2015 |--- 
 | [1\.1.0](#1.1.0) | 30. April 2015 |--- 
 | [1\.0.0](#1.0.0) | 8. April 2015 |--- 
-| [0\.9.3-Vorabversion](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 
-| [0\.9.2-Vorabversion](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 
-| [0\.9.1-Vorabversion](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016 
-| [0\.9.0-Vorabversion](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
+| [0\.9.3-prelease](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 
+| [0\.9.2-prelease](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 
+| [0\.9.1-prelease](#0.9.x-preview) | 13. 29. Februar 2014 | 29. Februar 2016 
+| [0\.9.0-prelease](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -151,4 +159,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,7 +3,7 @@
    description="Tipps für die Verwendung von Azure Machine Learning mit Azure SQL Data Warehouse für die Entwicklung von Lösungen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sahaj08"
+   authors="shivaniguptamsft"
    manager="barbkess"
    editor=""/>
 
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="sahajs;barbkess;sonyama"/>
+   ms.date="05/17/2016"
+   ms.author="shigu;barbkess;sonyama"/>
 
 # Verwenden von Azure Machine Learning mit SQL Data Warehouse
 
-Azure Machine Learning ist ein vollständig verwalteter Vorhersageanalysedienst, den Sie zum Erstellen von Vorhersagemodellen anhand Ihrer Daten in SQL Data Warehouse verwenden können, die Sie als sofort nutzbare Webdienste veröffentlichen können. Zum Erlernen der Grundlagen von Vorhersageanalysen und vom maschinellen Lernen lesen Sie [Einführung in Machine Learning in Azure][]. Anschließend erfahren Sie im [Lernprogramm zum Erstellen eines Experiments][] wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.
+Azure Machine Learning ist ein vollständig verwalteter Predictive Analytics-Dienst, für das Erstellen von Vorhersagemodellen anhand Ihrer Daten in SQL Data Warehouse. Diese können Sie anschließend als sofort nutzbare Webdienste veröffentlichen. Zum Erlernen der Grundlagen von Vorhersageanalysen und vom maschinellen Lernen lesen Sie [Einführung in Machine Learning in Azure][]. Anschließend erfahren Sie im [Lernprogramm zum Erstellen eines Experiments][] wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.
 
 In diesem Artikel erfahren Sie, wie Sie Folgendes mit [Azure Machine Learning Studio][] ausführen:
 
@@ -30,20 +30,20 @@ In diesem Artikel erfahren Sie, wie Sie Folgendes mit [Azure Machine Learning St
 
 Wie werden Daten aus der Product-Tabelle in der AdventureWorksDW-Datenbank lesen.
 
-### Schritt 1
+### Schritt 1
 
-Starten Sie ein neues Experiment, indem Sie am unteren Rand des Fensters von Machine Learning Studio auf "+NEU" klicken und anschließend "EXPERIMENT" und dann "Blank Experiment" auswählen. Wählen Sie den Standardnamen am oberen Rand des Bereichs aus, und geben Sie einen aussagekräftigeren Namen ein, z. B. "Fahrradpreisvorhersage".
+Starten Sie ein neues Experiment, indem Sie am unteren Rand des Fensters von Machine Learning Studio auf "+NEU" klicken und anschließend "EXPERIMENT" und dann "Blank Experiment" auswählen. Wählen Sie den Standardnamen am oberen Rand des Bereichs aus, und geben Sie einen aussagekräftigeren Namen ein, z. B. "Fahrradpreisvorhersage".
 
-### Schritt 2
+### Schritt 2
 
 Suchen Sie in der Palette von DataSets und Modulen auf der linken Seite im Experimentbereich nach dem Reader-Modul. Ziehen Sie das Modul in den Experimentbereich. ![][drag_reader]
 
-### Schritt 3
+### Schritt 3
 
 Wählen Sie das Reader-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 1. Wählen Sie „Azure SQL-Datenbank“ als Datenquelle aus.
-2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [klassischen Azure-Portal][].
+2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [Azure-Portal][].
 
 ![][server_name]
 
@@ -63,7 +63,7 @@ FROM dbo.DimProduct;
 
 ![][reader_properties]
 
-### Schritt 4
+### Schritt 4
 
 1. Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf "Ausführen" klicken.
 2. Nach Abschluss des Experiments ist das Reader-Modul mit einem grünen Häkchen markiert, um anzuzeigen, dass es erfolgreich abgeschlossen wurde. Beachten Sie auch den Status Finished running in der oberen rechten Ecke.
@@ -90,18 +90,18 @@ Im [Lernprogramm zum Erstellen eines Experiments][] erfahren Sie, wie Sie ein Mo
 
 Wir schreiben das Resultset in die ProductPriceForecast-Tabelle in der AdventureWorksDW-Datenbank.
 
-### Schritt 1
+### Schritt 1
 
 Suchen Sie in der Palette von DataSets und Modulen auf der linken Seite im Experimentbereich nach dem Writer-Modul. Ziehen Sie das Modul in den Experimentbereich.
 
 ![][drag_writer]
 
-### Schritt 2
+### Schritt 2
 
 Wählen Sie das Writer-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 1. Wählen Sie "Azure SQL-Datenbank" als Datenziel aus.
-2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [klassischen Azure-Portal][].
+2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [Azure-Portal][].
 3. Datenbankname: Geben Sie den Namen einer Datenbank auf dem Server ein, den Sie soeben angegeben haben.
 4. Server user account name: Geben Sie den Benutzernamen eines Kontos ein, das über Schreibberechtigungen für die Datenbank verfügt.
 5. Server user account password: Geben Sie das Kennwort für das angegebene Benutzerkonto ein.
@@ -113,7 +113,7 @@ Wählen Sie das Writer-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 ![][writer_properties]
 
-### Schritt 3
+### Schritt 3
 
 1. Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf "Ausführen" klicken.
 2. Nach Abschluss des Experiments sind alle Module mit einem grünen Häkchen markiert, um anzuzeigen, dass diese erfolgreich abgeschlossen wurden.
@@ -136,12 +136,12 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 
 <!--Article references-->
 
-[SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop/
-[SQL Data Warehouse-Integration (Übersicht)]: ./sql-data-warehouse-overview-integration/
-[Lernprogramm zum Erstellen eines Experiments]: https://azure.microsoft.com/de-DE/documentation/articles/machine-learning-create-experiment/
-[Einführung in Machine Learning in Azure]: https://azure.microsoft.com/de-DE/documentation/articles/machine-learning-what-is-machine-learning/
+[SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
+[SQL Data Warehouse-Integration (Übersicht)]: ./sql-data-warehouse-overview-integration.md
+[Lernprogramm zum Erstellen eines Experiments]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
+[Einführung in Machine Learning in Azure]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
-[klassischen Azure-Portal]: https://portal.azure.com/
+[Azure-Portal]: https://portal.azure.com/
 
 <!--MSDN references-->
 
@@ -149,4 +149,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

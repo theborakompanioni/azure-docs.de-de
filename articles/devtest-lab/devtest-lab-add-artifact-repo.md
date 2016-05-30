@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Hinzufügen eines Git-Artefaktrepositorys zu Ihrem DevTest Lab | Microsoft Azure"
-	description="Fügen Sie ein GitHub- oder Visual Studio Team Services-Git-Repository für Ihre benutzerdefinierten Elemente in Ihrem Lab hinzu."
+	pageTitle="Hinzufügen eines Git-Artefaktrepositorys zu einem Lab | Microsoft Azure"
+	description="Fügen Sie ein GitHub- oder Visual Studio Team Services-Git-Repository für Ihre benutzerdefinierten Artefakte in DevTest Labs hinzu."
 	services="devtest-lab,virtual-machines,visual-studio-online"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# Hinzufügen eines Git-Artefaktrepositorys zu Ihrem DevTest Lab
+# Hinzufügen eines Git-Artefaktrepositorys zu einem Lab
 
-> [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Gewusst wie: Hinzufügen eines privaten Artefaktrepositorys in einem DevTest Lab](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab).
+> [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Hinzufügen eines privaten Artefaktrepositorys zu einem Lab in DevTest Labs](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab).
 
 ## Übersicht
 
-Standardmäßig enthält ein DevTest Lab Artefakte aus dem offiziellen Azure DevTest Lab-Artefaktrepository. Sie können Ihrem Lab ein Git-Artefaktrepository hinzufügen, das die von Ihrem Team erstellten Artefakte enthalten soll. Das Repository kann auf [GitHub](https://github.com) oder bei [Visual Studio Team Services (VSTS)](https://visualstudio.com) gehostet werden.
+Standardmäßig enthält ein Lab Artefakte aus dem offiziellen Azure DevTest Labs-Artefaktrepository. Sie können Ihrem Lab ein Git-Artefaktrepository hinzufügen, das die von Ihrem Team erstellten Artefakte enthalten soll. Das Repository kann auf [GitHub](https://github.com) oder bei [Visual Studio Team Services (VSTS)](https://visualstudio.com) gehostet werden.
 
 - Anweisungen zum Erstellen eines GitHub-Repositorys finden Sie unter [GitHub Bootcamp](https://help.github.com/categories/bootcamp/) (in englischer Sprache).
 - Anweisungen zum Erstellen eines Team Services-Projekts mit einem Git-Repository finden Sie unter [Connect to Visual Studio Team Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online) (in englischer Sprache).
@@ -51,7 +51,7 @@ Um Ihrem Lab ein GitHub-Artefaktrepository hinzuzufügen, rufen Sie zunächst di
 
 ###Verbinden Ihres Labs mit dem GitHub-Repository
 
-1. Melden Sie sich beim [Azure-Vorschauportal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
 
@@ -77,7 +77,7 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
 
 ### Visual Studio-Webseite des Artefaktprojekts
 
-1. Öffnen Sie die Startseite Ihrer Teamauflistung (z. B. `https://contoso-web-team.visualstudio.com`), und tippen Sie dann auf das Artefaktprojekt.
+1. Öffnen Sie die Startseite Ihrer Teamauflistung (z. B. `https://contoso-web-team.visualstudio.com`), und tippen Sie dann auf das Artefaktprojekt.
 
 2. Tippen Sie auf der Startseite des Projekts auf **Code**.
 
@@ -101,7 +101,7 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
 
 1. Nach Abschluss wird das neue Token in der Liste **Persönliche Zugriffstoken** angezeigt. Tippen Sie auf **Token kopieren**, und speichern Sie dann den Tokenwert, da er in Kürze verwendet wird.
 
-### Im DevTest Lab
+### Im Lab
 
 1. Tippen Sie auf dem Blatt des Labs auf **Einstellungen**.
 
@@ -117,4 +117,4 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
     3. Geben Sie das gespeicherte **Persönliche Zugriffstoken** für das Artefaktrepository ein.
     4. Tippen Sie auf **Speichern**.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

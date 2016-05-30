@@ -11,7 +11,7 @@ In der folgenden Tabelle werden allgemeine Aufgaben für virtuelle Computer verg
 
 Aufgabe | Dienstverwaltungsmodus | Ressourcen-Manager-Modus
 -------------- | ----------- | -------------------------
-Erstellen grundlegender virtueller Computer | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Rufen Sie `image-urn` aus dem Befehl `azure vm image list` ab. Nähere Einzelheiten finden Sie [in diesem Artikel](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md).)
+Erstellen grundlegender virtueller Computer | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Abrufen von `image-urn` für beliebte Marketplace-Images durch Ausführen von `azure help vm quick-create`. Beispiele für URNs im Format *publisherName:offer:skus:version* finden Sie in [diesem Artikel](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md).)
 Erstellen eines virtuellen Linux-Computers | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
 Erstellen eines virtuellen Windows-Computers | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
 Auflisten der virtuellen Computer | `azure  vm list [options]` | `azure  vm list [options]`
@@ -42,4 +42,3 @@ Abrufen Sie aller verfügbaren Größen von virtuellen Computern | Nicht verfüg
 
 * Weitere Beispiele für Befehle der Befehlszeilenschnittstelle finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)](../articles/virtual-machines-command-line-tools.md) und [Azure-CLI-Befehle im Azure Resource Manager-Modus (ARM-Modus)](../articles/virtual-machines/azure-cli-arm-commands.md).
 
-<!---HONumber=AcomDC_0420_2016-->

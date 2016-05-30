@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="IIS-Protokolle in Log Analytics | Microsoft Azure"
    description="IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können. Dieser Artikel beschreibt die Konfiguration der Sammlung von IIS-Protokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
    services="log-analytics"
@@ -6,13 +6,13 @@
    authors="bwren"
    manager="jwhit"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="log-analytics"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/11/2016"
    ms.author="bwren" />
 
 # IIS-Protokolle in Log Analytics
@@ -27,6 +27,8 @@ Log Analytics unterstützt nur IIS-Protokolldateien, die im W3C-Format gespeiche
 
 Konfigurieren Sie die IIS-Protokolle in Log Analytics über das [Menü „Daten“ in den Log Analytics-Einstellungen](log-analytics-data-sources.md/configuring-data-sources). Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln** ist keine Konfiguration erforderlich.
 
+Wenn Sie die IIS-Protokollsammlung aktivieren, sollten Sie für jeden Server die Einstellung für das IIS-Protokollrollover konfigurieren.
+
 
 ## Datensammlung
 
@@ -35,7 +37,7 @@ Log Analytics sammelt etwa alle 15 Minuten IIS-Protokolleinträge aus jeder verb
 
 ## Eigenschaften der IIS-Protokolldatensätze
 
-IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
+IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften:
 
 | Eigenschaft | Beschreibung |
 |:--|:--|
@@ -47,7 +49,7 @@ IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in de
 | csUserName | Name des authentifizierten Benutzers, der auf den Server zugegriffen hat. Anonyme Benutzer werden durch einen Bindestrich gekennzeichnet. |
 | csUriStem | Ziel der Anforderung, beispielsweise eine Webseite. |
 | csUriQuery | Abfrage, die der Client versucht hat auszuführen. |
-| ManagementGroupName | Name der Verwaltungsgruppe für SCOM-Agents. Bei anderen Agents lautet diese „AOI-<Arbeitsbereich-ID>“. |
+| ManagementGroupName | Bei SCOM-Agents: Der Name der Verwaltungsgruppe. Bei anderen Agents lautet diese „AOI-<Arbeitsbereich-ID>“. |
 | RemoteIPCountry | Land der IP-Adresse des Clients. |
 | RemoteIPLatitude | Breitengrad der Client-IP-Adresse. |
 | RemoteIPLongitude | Längengrad der Client-IP-Adresse. |
@@ -76,7 +78,7 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 ## Nächste Schritte
 
 - Konfigurieren Sie Log Analytics für die Sammlung von Daten aus anderen [Datenquellen](log-analytics-data-sources.md) zur Analyse.
-- Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+- Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 - Konfigurieren Sie Warnungen in Log Analytics, sodass Sie proaktiv benachrichtigt werden, wenn in IIS-Protokollen wichtige Probleme gefunden werden.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

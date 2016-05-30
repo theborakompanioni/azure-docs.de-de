@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/31/2016"
+   ms.date="05/06/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog-Terminologie
@@ -73,7 +73,7 @@ Ein Experte ist ein Benutzer, der in Bezug auf ein Datenasset über eine fundier
 
 ## Besitzer
 
-Ein Besitzer ist ein Benutzer mit zusätzlichen Berechtigungen zum Verwalten eines Datenassets in Azure Data Catalog. Benutzer können registrierte Datenassets in Besitz nehmen, und Besitzer können andere Benutzer als Mitbesitzer hinzufügen.
+Ein Besitzer ist ein Benutzer mit zusätzlichen Berechtigungen zum Verwalten eines Datenassets in Azure Data Catalog. Benutzer können registrierte Datenassets in Besitz nehmen, und Besitzer können andere Benutzer als Mitbesitzer hinzufügen. Weitere Informationen finden Sie unter [Verwalten von Datenassets](data-catalog-how-to-manage.md).
 > [AZURE.NOTE] Diese Besitz- und Verwaltungsfunktionen sind nur in der Standard Edition von Azure Data Catalog verfügbar.
 
 ## Registrierung
@@ -86,4 +86,4 @@ Die Registrierung umfasst das Extrahieren der Metadaten eines Datenassets aus ei
 
 - [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) Dieser Artikel enthält ein umfassendes Lernprogramm zur Verwendung von Azure Data Catalog für die Ermittlung von Datenquellen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

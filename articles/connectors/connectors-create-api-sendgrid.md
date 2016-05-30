@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem SendGrid-Connector
@@ -57,9 +57,13 @@ Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
 |ApiKey|Ja|Angeben Ihres API-Schlüssels für SendGrid|
-Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+ 
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit SendGrid](../../includes/connectors-create-api-sendgrid.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
+
+Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 ## Referenz für SendGrid
 Gilt für Version: 1.0.
@@ -83,7 +87,7 @@ E-Mail senden: Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfän
 |403|Verboten (403)|
 |404|Nicht gefunden|
 |429|Zu viele Anforderungen|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -106,7 +110,7 @@ Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Emp
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -188,4 +192,4 @@ Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Emp
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

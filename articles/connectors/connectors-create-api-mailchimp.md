@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem MailChimp-Connector
@@ -61,8 +61,9 @@ Um Logik-Apps mit MailChimp zu erstellen, müssen Sie zuerst eine **Verbindung**
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für MailChimp|
-Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für MailChimp|
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -87,7 +88,7 @@ Neue Kampagne: Erstellen einer neuen Kampagne auf Grundlage eines Kampagnentyps,
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -109,7 +110,7 @@ Neue Liste: Erstellen einer neuen Liste in Ihrem MailChimp-Konto
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -132,7 +133,7 @@ Mitglied einer Liste hinzufügen: Hinzufügen eines Mitglieds zu einer Liste ode
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -155,7 +156,7 @@ Mitglied aus der Liste entfernen: Löschen eines Mitglied aus der Liste
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -179,7 +180,7 @@ Mitgliedsinformationen aktualisieren: Aktualisieren von Informationen für ein b
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -202,7 +203,7 @@ Wenn einer Liste ein Mitglied hinzugefügt wurde: Löst einen Workflow aus, wenn
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -222,7 +223,7 @@ Es gibt keine Parameter für diesen Aufruf
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -402,7 +403,7 @@ Es gibt keine Parameter für diesen Aufruf
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
 |id|string|Nein |
-|type|string|Nein |
+|Typ|string|Nein |
 |create\_time|string|Nein |
 |archive\_url|string|Nein |
 |status|string|Nein |
@@ -525,7 +526,7 @@ Es gibt keine Parameter für diesen Aufruf
 |from\_name|string|Ja |
 |from\_email|string|Ja |
 |subject|string|Nein |
-|language|string|Ja |
+|Sprache|string|Ja |
 
 
 
@@ -535,7 +536,7 @@ Es gibt keine Parameter für diesen Aufruf
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
 |id|string|Ja |
-|name|string|Ja |
+|Name|string|Ja |
 |contact|nicht definiert|Ja |
 |permission\_reminder|string|Ja |
 |use\_archive\_bar|Boolescher Wert|Nein |
@@ -598,7 +599,7 @@ Es gibt keine Parameter für diesen Aufruf
 |status|string|Ja |
 |merge\_fields|nicht definiert|Nein |
 |interests|string|Nein |
-|language|string|Nein |
+|Sprache|string|Nein |
 |VIP|Boolescher Wert|Nein |
 |location|nicht definiert|Nein |
 |email\_address|string|Ja |
@@ -644,8 +645,8 @@ Es gibt keine Parameter für diesen Aufruf
 |timestamp\_opt|string|Nein |
 |member\_rating|integer|Nein |
 |last\_changed|string|Nein |
-|language|string|Nein |
-|vip|Boolescher Wert|Nein |
+|Sprache|string|Nein |
+|VIP|Boolescher Wert|Nein |
 |email\_client|string|Nein |
 |location|nicht definiert|Nein |
 |last\_note|nicht definiert|Nein |
@@ -677,7 +678,7 @@ Es gibt keine Parameter für diesen Aufruf
 
 
 
-### Object
+### Objekt
 
 
 | Eigenschaftenname | Datentyp | Erforderlich |
@@ -695,8 +696,8 @@ Es gibt keine Parameter für diesen Aufruf
 |status|string|Ja |
 |merge\_fields|nicht definiert|Nein |
 |interests|string|Nein |
-|language|string|Nein |
-|vip|Boolescher Wert|Nein |
+|Sprache|string|Nein |
+|VIP|Boolescher Wert|Nein |
 |location|nicht definiert|Nein |
 
 
@@ -743,4 +744,4 @@ Es gibt keine Parameter für diesen Aufruf
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

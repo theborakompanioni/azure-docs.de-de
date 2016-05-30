@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Unterstützung mehrerer Domänen für den Verbund mit Azure AD
@@ -128,7 +128,7 @@ Außerdem wurde der IssuerUri für die neue Domäne auf https://bmfabrikam.com/a
 ##Unterstützung für Unterdomänen
 Wenn Sie eine Unterdomäne hinzufügen, erbt sie die Einstellungen der übergeordneten Domäne. Dies liegt an der Art und Weise, wie Azure AD Domänen behandelt. Dies bedeutet, dass der IssuerUri mit den übergeordneten Elementen übereinstimmen muss.
 
-Angenommen, Sie verfügen über „bmcontoso.com“ und fügen dann „corp.bmcontoso.com“ hinzu. Dies bedeutet, dass der IssuerUri für einen Benutzer von „corp.bmcontoso.com“ wie folgt lauten muss: ****http://bmcontoso.com/adfs/services/trust.** Mit der oben für Azure AD implementierten Standardregel wird aber ein Token mit folgendem Aussteller generiert: ****http://corp.bmcontoso.com/adfs/services/trust.**. Dies stimmt nicht mit dem erforderlichen Wert der Domäne überein, und für die Authentifizierung tritt ein Fehler auf.
+Angenommen, Sie verfügen über „bmcontoso.com“ und fügen dann „corp.bmcontoso.com“ hinzu. Dies bedeutet, dass der IssuerUri für einen Benutzer von „corp.bmcontoso.com“ wie folgt lauten muss: **http://bmcontoso.com/adfs/services/trust.** Mit der oben für Azure AD implementierten Standardregel wird aber ein Token mit folgendem Aussteller generiert: **http://corp.bmcontoso.com/adfs/services/trust.**. Dies stimmt nicht mit dem erforderlichen Wert der Domäne überein, und für die Authentifizierung tritt ein Fehler auf.
 
 ### Aktivieren der Unterstützung für Unterdomänen
 Um dieses Problem zu umgehen, muss die AD FS-Vertrauensstellung der vertrauenden Seite für Microsoft Online aktualisiert werden. Hierzu müssen Sie eine benutzerdefinierte Anspruchsregel so konfigurieren, dass beim Erstellen des benutzerdefinierten Issuer-Werts alle Unterdomänen aus dem UPN-Suffix des Benutzers entfernt werden.
@@ -153,4 +153,4 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
 ![Anspruch ersetzen](./media/active-directory-multiple-domains/sub2.png)
 5.	Klicken Sie auf "OK". Klicken Sie auf „Übernehmen“. Klicken Sie auf "OK". Schließen Sie die AD FS-Verwaltung.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

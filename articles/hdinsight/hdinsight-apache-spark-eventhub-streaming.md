@@ -123,7 +123,7 @@ Eine Scala-Beispielanwendung, die das Ereignis empfängt und an verschiedene Zie
 
 5. Die Anwendung benötigt zwei JAR-Abhängigkeitsdateien:
 
-	* **EventHub JAR-Empfängerdatei**. Diese ist erforderlich, damit Spark Nachrichten aus Event Hub empfangen kann. Diese JAR-Datei steht auf dem Spark-Linux-Cluster unter `/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar` zur Verfügung. Mit pscp können Sie die JAR-Datei auf Ihren lokalen Computer kopieren.
+	* **EventHub JAR-Empfängerdatei**. Diese ist erforderlich, damit Spark Nachrichten aus Event Hub empfangen kann. Diese JAR-Datei steht auf dem Spark-Linux-Cluster unter `/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar` zur Verfügung. Mit pscp können Sie die JAR-Datei auf Ihren lokalen Computer kopieren. (Hinweis: Bei einigen Instanzen befindet sich die Datei unter `/usr/hdp/2.4.1.0-327/spark/lib`.)
 
 			pscp sshuser@mysparkcluster-ssh.azurehdinsight.net:/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar C:/eventhubjar
 
@@ -257,6 +257,8 @@ Zum Ausführen der Anwendung, die Ereignisse in eine Hive-Tabelle streamt, benö
 
 Die **JAR**-Dateien stehen in Ihrem HDInsight Spark-Cluster unter `/usr/hdp/current/spark-client/lib` zur Verfügung. Die Datei **hive-site.xml** ist unter `/usr/hdp/current/spark-client/conf` verfügbar.
 
+
+
 Sie können [WinScp](http://winscp.net/eng/download.php) verwenden, um diese Dateien aus dem Cluster auf den lokalen Computer zu kopieren. Sie können dann Tools verwenden, um diese Dateien in das Ihrem Cluster zugeordnete Speicherkonto zu kopieren. Weitere Informationen zum Hochladen von Dateien in das Speicherkonto finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
 
 Nachdem Sie die Dateien in Ihr Azure-Speicherkonto kopiert haben, öffnen Sie ein Eingabeaufforderungsfenster, navigieren Sie zu dem Verzeichnis, in dem Sie CURL installiert haben, und führen Sie den folgenden Befehl aus (ersetzen Sie Benutzername, Kennwort und Clustername):
@@ -374,4 +376,4 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

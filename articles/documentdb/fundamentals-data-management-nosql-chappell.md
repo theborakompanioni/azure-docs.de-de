@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="05/09/2016" 
 	ms.author="mimig"/>
 
 # NoSQL auf Microsoft Azure
 
-Möchten Sie mehr über die in Azure verfügbaren NoSQL-Technologien wissen, sind aber nicht sicher, wie sie sich voneinander und von den verfügbaren relationalen Modellen unterscheiden? Oder denken Sie über bestimmte Daten nach, sind aber nicht sicher, welche NoSQL-Technologie sich für Ihre Anwendung am besten eignet? Dann profitieren Sie von den wichtigen Erkenntnissen, die David Chappell in diesem aufschlussreichen Whitepaper bietet.
+Möchten Sie mehr über die in Azure verfügbaren NoSQL-Technologien wissen, sind aber nicht sicher, wie sie sich voneinander und von den verfügbaren relationalen Modellen unterscheiden? Oder denken Sie über bestimmte Daten nach, sind aber nicht sicher, welche NoSQL-Technologie sich für Ihre Anwendung am besten eignet?
 
-In diesem Whitepaper werden die folgenden Themen behandelt:
+
+Wenn dem so ist, haben wir zwei informative Dokumente für Sie:
+
+- Den Artikel [NoSQL im Vergleich zu SQL](documentdb-nosql-vs-sql.md). In diesem Artikel werden die Unterschiede zwischen NoSQL und SQL erläutert. Außerdem werden die NoSQL- und SQL-Angebote von Microsoft vorgestellt.
+- Das Whitepaper [Understanding NoSQL on Microsoft Azure](http://go.microsoft.com/fwlink/p/?LinkId=330292) (Grundlegendes zu NoSQL in Microsoft Azure) von David Chappell. In diesem Whitepaper werden die folgenden Themen behandelt:
 
  - Unterscheidung zwischen operativen Daten, die von Anwendungen gelesen und geschrieben werden, und analytischen Daten, die zur Bereitstellung von Business Intelligence (BI) dienen, damit Sie die richtige Technologie für Ihre Anforderungen bestimmen können.
  - Eine kurze Übersicht über relationale Technologien.
@@ -28,8 +32,7 @@ In diesem Whitepaper werden die folgenden Themen behandelt:
  - Ein Vergleich zwischen den NoSQL-Technologien und Azure SQL-Datenbank. 
  - Verwendung von DocumentDB im Vergleich zu Tabellenspeicher im Vergleich zu HBase im Vergleich zu HDInsight im Vergleich zu eingeben.
 
-**PDF-Download:** [NoSQL auf Microsoft Azure](http://go.microsoft.com/fwlink/p/?LinkId=330292)
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

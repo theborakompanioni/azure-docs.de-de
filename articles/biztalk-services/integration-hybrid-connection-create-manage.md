@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mandia"/>
 
 
@@ -22,7 +22,7 @@
 
 ## Übersicht über die Schritte
 1. Erstellen Sie eine Hybridverbindung, indem Sie den Hostnamen oder die IP-Adresse der lokalen Ressource im privaten Netzwerk eingeben.
-2. Verknüpfen Sie die Azure-Web-Apps bzw. die mobilen Azure-Apps mit der Hybridverbindung.
+2. Verknüpfen Sie Ihre Azure-Web-Apps bzw. mobile Azure-Apps mit der Hybridverbindung.
 3. Installieren Sie den Hybrid Connection Manager auf der lokalen Ressource, und stellen Sie eine Verbindung zur betreffenden Hybridverbindung her. Das Azure-Portal stellt ein Ein-Klick-Verfahren für die Installation und Verbindung bereit.
 4. Verwalten Sie Hybridverbindungen und deren Verbindungsschlüssel.
 
@@ -33,7 +33,7 @@ In diesem Thema werden diese Schritte aufgeführt.
 
 Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk Services erstellt werden.
 
-**Informationen zum Erstellen von Hybridverbindungen mit Web-Apps** finden Sie unter [Verbinden von Azure-Web-Apps mit einer lokalen Ressource](../app-service-web/web-sites-hybrid-connection-get-started.md).
+**Informationen zum Erstellen von Hybridverbindungen mit Web-Apps** finden Sie unter [Verbinden von Azure-Web-Apps mit einer lokalen Ressource](../app-service-web/web-sites-hybrid-connection-get-started.md). Sie können auch in Ihrer Web-App den Hybrid Connection Manager (HCM) installieren, was die bevorzugte Vorgehensweise ist.
 
 **So erstellen Sie Hybridverbindungen in BizTalk Services**:
 
@@ -68,7 +68,7 @@ Um die mobilen Azure-Apps mit einer vorhandenen Hybridverbindung zu verknüpfen,
 
 ## <a name="InstallHCM"></a>Lokale Installation des Hybrid Connection Manager
 
-Nachdem eine Hybridverbindung erstellt wurde, installieren Sie den Hybrid Connection Manager auf der lokalen Ressource. Er kann aus den Azure-Web-Apps oder von BizTalk Service heruntergeladen werden. Schritte für BizTalk Services:
+Nachdem eine Hybridverbindung erstellt wurde, installieren Sie den Hybrid Connection Manager auf der lokalen Ressource. Er kann aus Azure-Web-Apps oder BizTalk Service heruntergeladen werden. Schritte für BizTalk Services:
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) an.
 2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
@@ -152,4 +152,4 @@ Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Ri
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # Aktivieren von Stretch-Datenbank für eine Tabelle
@@ -43,7 +43,7 @@ Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch |
 
 Bestätigen Sie, dass die Tabelle, die Sie aktivieren möchten, angezeigt wird und ausgewählt ist.
 
-In RC3 können Sie eine ganze Tabelle migrieren oder ein einfaches datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat zur Auswahl der zu migrierenden Zeilen verwenden, führen Sie einen der folgenden Schritte aus.
+Sie können eine ganze Tabelle migrieren oder ein einfaches datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat zur Auswahl der zu migrierenden Zeilen verwenden, führen Sie einen der folgenden Schritte aus.
 
 -   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und ein Prädikat anzugeben.
 
@@ -118,4 +118,4 @@ Weitere Informationen finden Sie unter [CREATE TABLE (Transact-SQL)](https://msd
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erstellen eines virtuellen Computers mit PowerShell | Microsoft Azure"
-	description="Sie können einen virtuellen Azure-Computer mit dem PowerShell- und dem Ressourcen-Manager-Bereitstellungsmodell erstellen und konfigurieren."
+	description="Erstellen und Konfigurieren eines virtuellen Azure-Computers mit PowerShell und dem Resource Manager-Bereitstellungsmodell"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,7 +17,7 @@
 	ms.date="03/04/2016"
 	ms.author="cynthn"/>
 
-# Erstellen und Konfigurieren eines virtuellen Windows-Computers mit dem Ressourcen-Manager und Azure PowerShell
+# Erstellen und Konfigurieren eines virtuellen Windows-Computers mit Azure PowerShell im Resource Manager-Bereitstellungsmodell
 
 > [AZURE.SELECTOR]
 - [Portal – Windows](virtual-machines-windows-hero-tutorial.md)
@@ -28,19 +28,17 @@
 
 <br>
 
-
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-create-powershell.md).
-
 Diese Schritte zeigen, wie eine Reihe von Azure PowerShell-Befehlen zum Erstellen und Konfigurieren eines virtuellen Azure-Computers erstellt werden. Sie können dieses Bausteinverfahren verwenden, um schnell einen Befehlssatz für einen neuen Windows-basierten virtuellen Computer zu erstellen und eine vorhandene Bereitstellung zu erweitern. Sie können damit auch mehrere Befehlssätze erstellen, mit denen Sie schnell eine benutzerdefinierte professionelle Entwicklungs- und Test-IT-Umgebung aufbauen können.
 
 Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure PowerShell-Befehlssätzen. Dieser Ansatz kann hilfreich sein, wenn Sie noch nicht mit PowerShell gearbeitet haben oder einfach wissen möchten, welche Werte Sie für die erfolgreiche Konfiguration angeben müssen. Wenn Sie ein fortgeschrittener PowerShell-Benutzer sind, können Sie die Befehle verwenden und die Variablen (mit "$" beginnende Zeilen) durch eigene Werte ersetzen.
+
+> [AZURE.IMPORTANT] Wenn der virtuelle Computer einer Verfügbarkeitsgruppe angehören soll, müssen Sie ihn bei seiner Erstellung der Gruppe hinzufügen. Derzeit ist es nicht möglich, einen virtuellen Computer einer Verfügbarkeitsgruppe hinzuzufügen, nachdem er erstellt wurde.
 
 ## Schritt 1: Installieren von Azure PowerShell
 
 Es gibt zwei Hauptoptionen für die Installation: [PowerShell-Katalog](https://www.powershellgallery.com/profiles/azure-sdk/) und [WebPI](http://aka.ms/webpi-azps). WebPI wird monatlich aktualisiert. Der PowerShell-Katalog wird fortlaufend aktualisiert.
 
-Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com//blog/azps-1-0/) (in englischer Sprache).
+Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com//blog/azps-1-0/) (in englischer Sprache).
 
 ## Schritt 2: Festlegen des Abonnements
 
@@ -52,7 +50,7 @@ Melden Sie sich in Ihrem Konto an.
 
 Rufen Sie die verfügbaren Abonnements mit dem folgenden Befehl ab.
 
-	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+	Get-AzureRmSubscription | Sort SubscriptionName | Select SubscriptionName
 
 Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
 
@@ -115,6 +113,7 @@ Wenn DNSNameAvailability "True" ist, ist der vorgeschlagene Name global eindeuti
 ### Verfügbarkeitsgruppe
 
 
+
 Erstellen Sie bei Bedarf mit den folgenden Befehlen eine neue Verfügbarkeitsgruppe für den neuen virtuellen Computer.
 
 	$avName="<availability set name>"
@@ -136,7 +135,7 @@ Virtuelle Computer, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstell
 	$locName="West US"
 	$frontendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix 10.0.1.0/24
 	$backendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 10.0.2.0/24
-	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -SubnetId $frontendSubnet,$backendSubnet
+	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet,$backendSubnet
 
 Mit diesen Befehlen können Sie die vorhandenen virtuellen Netzwerke auflisten.
 
@@ -220,7 +219,7 @@ Kopieren Sie diese Zeilen in den Befehlssatz, und geben Sie die erforderlichen N
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$natRuleIndex=<index of the inbound NAT rule, starting at 0>
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
 
 Die „$nicName“-Zeichenfolge muss für die Ressourcengruppe eindeutig sein. Eine bewährte Methode ist die Integration des Namens des virtuellen Computers in der Zeichenfolge, wie z. B. "LOB07-NIC".
 
@@ -239,7 +238,7 @@ Kopieren Sie diese Zeilen in den Befehlssatz, und geben Sie die erforderlichen N
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
 
 Als Nächstes erstellen Sie ein lokales Objekt für den virtuellen Computer und fügen es optional einer Verfügbarkeitsgruppe hinzu. Kopieren Sie eine der beiden folgenden Optionen in den Befehlssatz, und geben Sie den Namen, die Größe und den Verfügbarkeitsgruppennamen ein.
 
@@ -293,7 +292,7 @@ Als Nächstes müssen Sie Herausgeber, Angebot und SKU des virtuellen Computerim
 |MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials |
 |MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 |
 
-Wenn das benötigte Image des virtuellen Computers nicht aufgeführt ist, folgen Sie diesen [Anweisungen](virtual-machines-linux-cli-ps-findimage.md#powershell), um Herausgeber, Angebot und SKU-Namen zu ermitteln.
+Wenn das benötigte Image des virtuellen Computers nicht aufgeführt ist, folgen Sie diesen [Anweisungen](virtual-machines-windows-cli-ps-findimage.md#powershell), um Herausgeber, Angebot und SKU-Namen zu ermitteln.
 
 Kopieren Sie diese Befehle in den Befehlssatz, und geben Sie Herausgeber, Angebot und SKU-Namen ein.
 
@@ -317,7 +316,7 @@ Schließlich kopieren Sie diese Befehle in den Befehlssatz, und geben den Namens
 
 Überprüfen Sie den in Schritt 4 erstellten Azure PowerShell-Befehlssatz in einem Texteditor oder der PowerShell ISE. Stellen Sie sicher, dass Sie alle Variablen angegeben haben und diese die richtigen Werte aufweisen. Stellen Sie außerdem sicher, dass Sie alle < and > entfernt haben.
 
-Wenn Sie Ihre Befehle in einem Texteditor verwenden, kopieren Sie den Befehlssatz in die Zwischenablage, und klicken Sie dann mit der rechten Maustaste auf Ihre Azure PowerShell-Eingabeaufforderung. Dies sendet den Befehlssatz als Serie von PowerShell-Befehlen und erstellt den virtuellen Azure-Computer. Führen Sie alternativ den Befehlssatz in Azure PowerShell ISE aus.
+Wenn Sie Ihre Befehle in einem Text-Editor verwenden, kopieren Sie den Befehlssatz in die Zwischenablage, und klicken Sie dann mit der rechten Maustaste auf die Windows PowerShell-Eingabeaufforderung. Dies sendet den Befehlssatz als Serie von PowerShell-Befehlen und erstellt den virtuellen Azure-Computer. Führen Sie alternativ den Befehlssatz in PowerShell ISE aus.
 
 Wenn Sie diese Informationen zum Erstellen zusätzlicher virtueller Computer wieder verwenden möchten, können Sie diesen Befehlssatz als PowerShell-Skriptdatei (*.ps1) speichern.
 
@@ -341,7 +340,7 @@ Hier finden Sie den Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen
 	# Set the existing virtual network and subnet index
 	$vnetName="AZDatacenter"
 	$subnetIndex=0
-	$vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+	$vnet=Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 
 	# Create the NIC
 	$nicName="LOB07-NIC"
@@ -392,4 +391,4 @@ Hier finden Sie den Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen
 
 [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

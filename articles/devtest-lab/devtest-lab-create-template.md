@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Create a DevTest Lab custom image from a VHD file | Microsoft Azure"
-	description="Learn how to create a custom image from a VHD file, which can then be used to create VMs in a DevTest Lab"
+<properties
+	pageTitle="Erstellen eines benutzerdefinierten DevTest Labs-Images aus einer VHD-Datei | Microsoft Azure"
+	description="Erfahren Sie, wie Sie ein benutzerdefiniertes Image aus einer VHD-Datei erstellen, das zum Erstellen von VMs in DevTest Labs verwendet werden kann."
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/13/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# Erstellen eines benutzerdefinierten DevTest Lab-Images von einer VHD-Datei
+# Erstellen eines benutzerdefinierten DevTest Labs-Images aus einer VHD-Datei
 
 ## Übersicht
 
-Nachdem Sie [ein DevTest Lab erstellt](devtest-lab-create-lab.md) haben, können Sie [diesem Lab virtuelle Computer (VMs) hinzufügen](devtest-lab-add-vm-with-artifacts.md). Wenn Sie einen virtuellen Computer erstellen, geben Sie eine *Basis* an, was entweder ein *benutzerdefiniertes Image* oder *Marketplace-Image* sein kann. In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Image aus einer VHD-Datei erstellen. Beachten Sie, dass Sie Zugriff auf eine gültige VHD-Datei benötigen, um alle Schritte in diesem Artikel auszuführen.
+Nachdem Sie [ein Lab erstellt](devtest-lab-create-lab.md) haben, können Sie [diesem Lab virtuelle Computer (VMs) hinzufügen](devtest-lab-add-vm-with-artifacts.md). Wenn Sie einen virtuellen Computer erstellen, geben Sie eine *Basis* an, was entweder ein *benutzerdefiniertes Image* oder *Marketplace-Image* sein kann. In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Image aus einer VHD-Datei erstellen. Beachten Sie, dass Sie Zugriff auf eine gültige VHD-Datei benötigen, um alle Schritte in diesem Artikel auszuführen.
 
 ## Erstellen eines benutzerdefinierten Images
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
 
@@ -36,7 +36,7 @@ Nachdem Sie [ein DevTest Lab erstellt](devtest-lab-create-lab.md) haben, können
 
     ![Option „Benutzerdefinierte Images“](./media/devtest-lab-create-template/lab-settings-custom-images.png)
 
-1. Tippen Sie auf dem Blatt **Benutzerdefinierte Images** auf **+ benutzerdefiniertes Image**.
+1. Tippen Sie auf dem Blatt **Benutzerdefinierte Images** auf **+ Benutzerdefiniertes Image**.
 
     ![Hinzufügen des benutzerdefinierten Images](./media/devtest-lab-create-template/add-custom-image.png)
 
@@ -76,6 +76,6 @@ Um ein neues benutzerdefiniertes Image hinzuzufügen, benötigen Sie Zugriff auf
 
 ##Nächste Schritte
 
-Nachdem Sie ein benutzerdefiniertes Image zum Erstellen eines virtuellen Computers hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem DevTest Lab einen virtuellen Computer hinzuzufügen](./devtest-lab-add-vm-with-artifacts.md).
+Nachdem Sie ein benutzerdefiniertes Image zum Erstellen eines virtuellen Computers hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

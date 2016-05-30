@@ -18,25 +18,24 @@
 
 # Benutzerauthentifizierung für API-Apps in Azure App Service
 
-[AZURE.INCLUDE [Auswahl](../../includes/app-service-api-auth-selector.md)]
-
 ## Übersicht
 
-Dies ist die vierte Artikel in der Reihe „Erste Schritte“ zu App Service-API-Apps. In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel wird gezeigt, wie Sie eine Azure API-App schützen, damit sie nur von authentifizierten Benutzern aufgerufen werden kann. In dem Artikel wird davon ausgegangen, dass Sie die [Übersicht über die Authentifizierung in Azure App Service](../app-service/app-service-authentication-overview.md) gelesen haben
 
-* Schützen einer App Service-API-App, damit sie nur von authentifizierten Benutzern aufgerufen werden kann
+Sie lernen Folgendes:
+
 * Konfigurieren eines Authentifizierungsanbieters mit Details für Azure Active Directory (Azure AD)
 * Nutzen einer geschützten API-App mit der [Active Directory Authentication Library (ADAL) für JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js)
 
 Der Artikel enthält zwei Abschnitte:
 
-* Der Abschnitt [Konfigurieren der Benutzerauthentifizierung in Azure App Service](#authconfig) enthält eine allgemeine Beschreibung, wie Sie die Benutzerauthentifizierung für eine API-App konfigurieren. Sie gilt für alle Frameworks, die von App Service unterstützt werden, z. B. .NET, Node.js und Java.
+* Der Abschnitt [Konfigurieren der Benutzerauthentifizierung in Azure App Service](#authconfig) enthält eine allgemeine Beschreibung, wie Sie die Benutzerauthentifizierung für eine API-App konfigurieren. Sie gilt für alle Frameworks, die von App Service unterstützt werden, z.B. für .NET, Node.js und Java.
 
-* Beginnend mit dem Abschnitt [Fortsetzen der Erste-Schritte-Tutorials für .NET](#tutorialstart) führt Sie dieser Artikel durch das Konfigurieren einer Beispielanwendung mit einem .NET-Back-End und einem AngularJS-Front-End, wobei Azure Active Directory für die Benutzerauthentifizierung verwendet wird.
+* Beginnend mit dem Abschnitt [Fortsetzen der .NET-Tutorials für API-Apps](#tutorialstart) führt Sie dieser Artikel durch das Konfigurieren einer Beispielanwendung mit einem .NET-Back-End und einem AngularJS-Front-End, wobei Azure Active Directory für die Benutzerauthentifizierung verwendet wird.
 
 ## <a id="authconfig"></a> Konfigurieren der Benutzerauthentifizierung in Azure App Service
 
-Dieser Abschnitt enthält allgemeine Anweisungen, die für alle API-Apps gelten. Die speziellen Schritte für die .NET-Beispielanwendung (Aufgabenliste) sind in [Fortsetzen der „Erste Schritte“-Tutorials für .NET](#tutorialstart) enthalten.
+Dieser Abschnitt enthält allgemeine Anweisungen, die für alle API-Apps gelten. Die speziellen Schritte für die .NET-Beispielanwendung (Aufgabenliste) sind in [Fortsetzen der .NET-Tutorials für API-Apps](#tutorialstart) enthalten.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Einstellungen** der zu schützenden API-App, suchen Sie den Abschnitt mit den **Features**, und klicken Sie dann auf **Authentifizierung/Autorisierung**.
 
@@ -60,7 +59,7 @@ Dieser Abschnitt enthält allgemeine Anweisungen, die für alle API-Apps gelten.
 
 	Bei der Auswahl eines Authentifizierungsanbieters wird im Portal ein Konfigurationsblatt für den Anbieter angezeigt.
 
-	Eine ausführliche Anleitung zum Konfigurieren des Authentifizierungsanbieters auf dem jeweiligen Blatt finden Sie unter [Gewusst wie: Konfigurieren Ihrer App Service-Anwendung für die Azure Active Directory-Anmeldung](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md). (Der Link führt zu einem Artikel über Azure AD, aber der Artikel selbst enthält Registerkarten mit Links zu Artikeln für die anderen Authentifizierungsanbieter.)
+	Eine ausführliche Anleitung zum Konfigurieren des Authentifizierungsanbieters auf dem jeweiligen Blatt finden Sie unter [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md). (Der Link führt zu einem Artikel über Azure AD, aber der Artikel selbst enthält Registerkarten mit Links zu Artikeln für die anderen Authentifizierungsanbieter.)
 
 7. Wenn Sie mit dem Blatt für die Konfiguration des Authentifizierungsanbieters fertig sind, klicken Sie auf **OK**.
 
@@ -70,21 +69,21 @@ Wenn dies abgeschlossen ist, authentifiziert App Service alle API-Aufrufe, bevor
 
 Zum Durchführen authentifizierter API-Aufrufe fügt der Aufrufer das OAuth 2.0-Bearertoken des Authentifizierungsanbieters in den Autorisierungsheader von HTTP-Anforderungen ein. Das Token kann mit dem SDK des Authentifizierungsanbieters abgerufen werden.
 
-## <a id="tutorialstart"></a> Fortsetzen der Erste-Schritte-Tutorials für .NET
+## <a id="tutorialstart"></a> Fortsetzen der .NET-Tutorials für API-Apps
 
-Falls Sie die Reihe „Erste Schritte“ für Node.js oder Java und API-Apps durcharbeiten, können Sie mit dem nächsten Artikel [Dienstprinzipalauthentifizierung für API-Apps](app-service-api-dotnet-service-principal-auth.md) fortfahren.
+Wenn Sie die Node.js- oder Java-Tutorials für API-Apps durcharbeiten, können Sie mit dem nächsten Artikel [Dienstprinzipalauthentifizierung für API-Apps](app-service-api-dotnet-service-principal-auth.md) fortfahren.
 
-Wenn Sie die .NET-Reihe „Erste Schritte“ für API-Apps durcharbeiten und die Beispielanwendung schon bereitgestellt haben, wie im [ersten](app-service-api-dotnet-get-started.md) und [zweiten](app-service-api-cors-consume-javascript.md) Tutorial beschrieben, können Sie mit dem Abschnitt [Einrichten der Authentifizierung in App Service und Azure AD](#azureauth) fortfahren.
+Wenn Sie die .NET-Tutorialreihe für API-Apps durcharbeiten und die Beispielanwendung schon bereitgestellt haben, wie im [ersten](app-service-api-dotnet-get-started.md) und [zweiten](app-service-api-cors-consume-javascript.md) Tutorial beschrieben, können Sie mit dem Abschnitt [Einrichten der Authentifizierung in App Service und Azure AD](#azureauth) fortfahren.
 
-Wenn Sie das vorliegende Tutorial durcharbeiten möchten, ohne das erste und zweite Tutorial abzuschließen, führen Sie folgende Schritte aus:
+Wenn Sie dieses Tutorial durcharbeiten möchten, ohne das erste und zweite Tutorial zu absolvieren, führen Sie die folgenden Schritte aus. Darin werden erste Schritte beschrieben, durch die Sie die Beispielanwendung mit einem automatisierten Prozess bereitstellen können.
+
+>[AZURE.NOTE] Mit diesen nachfolgenden Schritten gelangen Sie zum gleichen Ausgangspunkt wie nach dem Durcharbeiten der ersten beiden Tutorials, mit einer Ausnahme: In Visual Studio liegen noch keine Informationen dazu vor, in welcher Web-App oder API-App die Projekte bereitgestellt werden sollen. Mit anderen Worten: Sie finden in diesem Tutorial keine genauen Anweisungen, wie Sie die Bereitstellung an den richtigen Zielen durchführen. Wenn Sie sich das Vorgehen für diese Bereitstellungsschritte nicht selbst erschließen möchten, ist es besser, die Tutorialreihe vom [ersten Tutorial](app-service-api-dotnet-get-started.md) an durchzuarbeiten und nicht mit dem automatisierten Bereitstellungsprozess zu beginnen.
 
 1. Stellen Sie sicher, dass alle im [ersten Tutorial](app-service-api-dotnet-get-started.md) aufgeführten Voraussetzungen erfüllt sind. Zusätzlich zu den aufgeführten Voraussetzungen wird für diese Authentifizierungstutorials angenommen, dass Sie bereits mit App Service-Web-Apps und API-Apps in Visual Studio und dem Azure-Portal gearbeitet haben.
 
 2. Klicken Sie in der Infodatei [To Do List Azure API App Sample](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md) auf die Schaltfläche **Deploy to Azure**, um die API-Apps und die Web-App bereitzustellen. Notieren Sie die Azure-Ressourcengruppe, die erstellt wird, da Sie diese später verwenden können, um Web-App- und API-App-Namen nachzuschlagen.
  
-3. Laden Sie das [To Do List Azure API App Sample](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list)-Repository herunter, oder klonen Sie es, um den Code zu erhalten, mit dem Sie lokal in Visual Studio arbeiten werden.
-
-Mit diesen Schritten gelangen Sie zum gleichen Ausgangspunkt wie nach dem Durcharbeiten der ersten beiden Tutorials, mit einer Ausnahme: In Visual Studio liegen noch keine Informationen dazu vor, in welcher Web-App oder API-App die Projekte bereitgestellt werden sollen. Wenn Sie ein Projekt bereitstellen, müssen Sie die Azure-Web-App oder API-App auswählen, die für die Bereitstellung verwendet werden soll. Um die Web-App- und API-App-Namen abzurufen, öffnen Sie das Azure-Portal, und wechseln Sie zu dem Blatt der Ressourcengruppe, die Sie durch Klicken auf die Schaltfläche **Deploy to Azure** erstellt haben.
+3. Laden Sie das Repository [To Do List Azure API App Sample](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list) herunter, oder klonen Sie es, um den Code zu erhalten, mit dem Sie lokal in Visual Studio arbeiten werden.
 
 ## <a id="azureauth"></a> Einrichten der Authentifizierung in App Service und Azure AD
 
@@ -337,4 +336,4 @@ Weitere Informationen zum Erstellen einer einseitigen AngularJS-Anwendung mit ei
 
 In diesem Tutorial haben Sie gelernt, wie Sie die App Service-Authentifizierung für eine API-App verwenden und die API-App mit der ADAL-JS-Bibliothek aufrufen. Im nächsten Tutorial geht es um das [Schützen des Zugriffs auf Ihre API-App für Dienst-zu-Dienst-Szenarien](app-service-api-dotnet-service-principal-auth.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

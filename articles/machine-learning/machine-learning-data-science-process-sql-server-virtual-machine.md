@@ -3,7 +3,7 @@
 	description="Verarbeiten von Daten aus SQL Azure" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="fashah" 
+	authors="garyericson" 
 	manager="paulettm" 
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
-	ms.author="fashah;garye" />
+	ms.date="05/16/2016" 
+	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Verarbeiten von Daten auf einer SQL Server-VM in Azure
 
@@ -66,7 +66,7 @@ In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von S
 
 ###<a name="sql-countfeature"></a>Anzahlbasierte Funktionsgenerierung
 
-In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die "where"-Klausel. Diese können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
+In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die WHERE-Klausel. Diese können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
 
 	select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -84,7 +84,7 @@ Das folgende Beispiel zeigt, wie Sie klassifizierte Funktionen erstellen, indem 
 
 In diesem Abschnitt wird gezeigt, wie Sie eine einzelne Spalte in eine Tabelle einführen, um zusätzliche Funktionen zu generieren. Im Beispiel wird davon ausgegangen, dass die Tabelle, aus der Sie Funktionen generieren, die Spalten "latitude" und "longitude" enthält.
 
-Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (aus Stackoverflow: `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Dies ist für das Verständnis hilfreich, bevor Sie die Positionsfelder verwenden:
+Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (aus Stackoverflow: [How to measure the accuracy of latitude and longitude?](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude) (Gewusst wie: Messen der Genauigkeit von Längen- und Breitengraden)). Dies ist für das Verständnis hilfreich, bevor Sie die Positionsfelder verwenden:
 
 - Das Vorzeichen gibt an, ob sich die Position im Norden, Süden, Osten oder Westen auf dem Globus befindet.
 - Ein Hunderterwert ungleich null gibt an, dass der Längengrad und nicht der Breitengrad verwendet wird!
@@ -97,7 +97,7 @@ Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (
 - Die fünfte Dezimalstelle ist auf etwa 1,1 m genau: Damit können Sie einzelne Strukturen voneinander unterscheiden. Eine Genauigkeit auf dieser Stufe lässt sich mit kommerziellen GPS-Geräten nur mit einer differenziellen Korrektur erreichen.
 - Die sechste Dezimalstelle bietet eine Genauigkeit von etwa 0,11 m: Damit können Sie Strukturen detailgetreu erkennen, um Landschaften zu planen oder Straßen zu bauen. Dies sollte mehr als ausreichend für die Nachverfolgung der Bewegungen von Gletschern und Flüssen sein. Erreicht wird diese Genauigkeit nur durch umfangreiche GPS-Maßnahmen, z. B. differenziell korrigiertes GPS.
 
-Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, wobei die Informationen zu Region, Standort und Stadt getrennt werden. Beachten Sie, dass Sie auch einen REST-Endpunkt wie die Bing Maps-API unter `https://msdn.microsoft.com/library/ff701710.aspx` aufrufen können, um Informationen über Region/Bezirk abzurufen.
+Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, wobei die Informationen zu Region, Standort und Stadt getrennt werden. Beachten Sie, dass Sie auch einen REST-Endpunkt wie die Bing Maps-API unter [Find a Location by Point](https://msdn.microsoft.com/library/ff701710.aspx) (Suchen eines Standorts nach Punkt) aufrufen können, um Informationen über Region/Bezirk abzurufen.
 
 	select 
 		<location_columnname>
@@ -110,17 +110,17 @@ Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, w
 		,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end 	
 	from <tablename>
 
-Die oben beschriebenen positionsbasierten Funktionen können dann wie oben beschrieben zum Generieren weiterer Anzahlfunktionen verwendet werden.
+Die oben beschriebenen positionsbasierten Funktionen können dann wie zuvor beschrieben zum Generieren weiterer Anzahlfunktionen verwendet werden.
 
 
-> [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. [Ein pyodbc-Beispiel dazu finden Sie hier](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
+> [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. (Ein Beispiel zur Vorgehensweise unter Verwendung von „pyodbc“ finden Sie unter [A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python) (HelloWorld-Beispiel für den SQL Server-Zugriff mit Python).)
  
 
 > [AZURE.TIP] Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem [Reader][reader]-Modul in Azure ML Funktionen generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
+Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem Modul [Daten importieren][reader] in Azure Machine Learning Funktionen generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
 
 ![azureml-Reader][1]
 
@@ -139,7 +139,7 @@ Die [Pandas-Bibliothek](http://pandas.pydata.org/) in Python bietet eine Vielzah
 	# Query database and load the returned results in pandas data frame
 	data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Sie können nun mit dem Pandas-DataFrame arbeiten. Die Vorgehensweise wird in den Themen unter [Verarbeiten von Azure-Blobdaten in Ihrer Datenwissenschaftsumgebung](machine-learning-data-science-process-data-blob.md) beschrieben.
+Sie können nun mit dem Pandas-Datenrahmen arbeiten. Die Vorgehensweise wird im Artikel [Verarbeiten von Azure-Blobdaten in Ihrer Datenwissenschaftsumgebung](machine-learning-data-science-process-data-blob.md) beschrieben.
 
 ## Beispiel für Azure Data Science in Aktion
 
@@ -152,4 +152,4 @@ Ein umfassendes Beispiel für den Azure Data Science Process anhand eines öffen
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -94,20 +94,14 @@ Sie können den Auftragsverlauf abfragen, um den Status von Aufträgen zu erkenn
 
 ## Geräteimplementierung
 
-Da wir nun die dienstseitigen Konzepte behandelt haben, wenden wir uns jetzt dem Erstellen von Geräten mit Verwaltungsfunktionen zu. Die Clientbibliothek der Azure IoT Hub-Geräteverwaltung auf dem Gerät bietet die erforderlichen Artefakte, um die Kommunikation zwischen dem physischen Gerät und IoT Hub zu implementieren.
+Wir haben die dienstseitigen Konzepte behandelt und wenden uns jetzt dem Erstellen eines verwalteten physischen Geräts zu. Mit der Clientbibliothek der Azure IoT Hub-Geräteverwaltung können Sie Ihre IoT-Geräte mit Azure IoT Hub verwalten. Das „Verwalten“ umfasst Aktionen wie das Neustarten, Zurücksetzen auf die Werkseinstellung und Aktualisieren der Firmware. Derzeit stellen wir eine plattformunabhängige C-Bibliothek bereit, aber wir werden in Kürze Unterstützung für weitere Sprachen hinzufügen.
 
-Die Clientbibliothek der Azure IoT Hub-Geräteverwaltung entnimmt den [LWM2M][lnk-lwm2m]-Standard und das CoAP-basierte Anforderungs/Antwort-Protokoll. Daher verfügt die Bibliothek über ein Gerätemodell der *Objekte* und *Ressourcendefinitionen*:
+Die Clientbibliothek der Geräteverwaltung hat zwei Hauptaufgaben:
 
--   Objekte beschreiben eine Reihe von zusammenhängenden Funktionsentitäten im System, z.B. die Geräte- und Firmwareupdates.
--   Ressourcen dienen zum Beschreiben von Attributen oder Aktionen, die in diesen Objekten enthalten sind, z.B. Informationen zum Akkustand und die Neustartaktion.
+- Synchronisieren von Eigenschaften auf dem physischen Gerät mit dem entsprechenden Gerätezwilling in IoT Hub
+- Choreographieren von Geräteaufträgen, die von IoT Hub an das Gerät gesendet werden
 
-Wenn Sie die Clientbibliothek der Azure IoT Hub-Geräteverwaltung verwenden, müssen Sie die Rückrufe für Lese-, Schreib- und Ausführungsvorgänge für jede Ressource auf dem physischen Gerät implementieren. Die Bibliothek führt ein asynchrones Aktualisieren von IoT Hub aus, wenn Eigenschaften geändert werden.
-
-Das folgende Diagramm zeigt die verschiedenen Komponenten, die im IoT Hub-Client-Agent benötigt werden.
-
-![][img-client]
-
-Mehr über die Implementierung auf dem physischen Gerät erfahren Sie in [Introducing the Azure IoT Hub device management (DM) client library][lnk-library-c] (Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung).
+Weitere Informationen zu diesen Aufgaben und der Implementierung auf dem physischen Gerät finden Sie unter [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung für C][lnk-library-c].
 
 ## Nächste Schritte
 
@@ -135,4 +129,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

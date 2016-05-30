@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erweiterte Berichtserstellungsoptionen für Android Azure Mobile Engagement SDK"
-	description="Erweiterte Berichtserstellungsoptionen für Android für Azure Mobile Engagement SDK"
+	pageTitle="Erweiterte Berichtserstellungsoptionen für das Android-SDK für Azure Mobile Engagement"
+	description="Hier wird beschrieben, wie Sie mit der erweiterten Berichterstellung Analysedaten für das Android-SDK für Azure Mobile Engagement erfassen."
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="05/12/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Berichtserstellungsoptionen mit Engagement unter Android
@@ -29,43 +29,9 @@ Dieses Thema beschreibt zusätzliche Berichtserstellungsszenarien in Ihrer Andro
 
 Das Lernprogramm, das Sie abgeschlossen haben, war absichtlich direkt und einfach, aber Sie können aus einer Reihe von Optionen auswählen.
 
-## Erstellen mit ProGuard
-
-Wenn Sie das Anwendungspaket mithilfe von ProGuard erstellen, müssen Sie einige Klassen behalten. Sie können den folgenden Codeausschnitt der Konfiguration verwenden:
-
-
-			-keep public class * extends android.os.IInterface
-			-keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
-			<methods>;
-		 	}
-
-## Tags in der Datei "AndroidManifest.xml"
-
-Im Dienst-Tag der Datei "AndroidManifest.xml" ermöglicht es das `android:label`-Attribut Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, dieses Attribut auf `"<Your application name>Service"` festzulegen (z. B. `"AcmeFunGameService"`).
-
-Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement in demselben Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
-
-## Verwenden von "Application.onCreate()"
-
-Sämtlicher in `Application.onCreate()` und in anderen Anwendungsrückruffunktionen hinzugefügter Code wird für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben, z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess oder doppelte Übertragungsempfänger oder -dienste.
-
-Wenn Sie `Application.onCreate()` außer Kraft setzen, wird empfohlen, den folgenden Codeausschnitt am Anfang der `Application.onCreate()`-Funktion hinzuzufügen:
-
-			 public void onCreate()
-			 {
-			   if (EngagementAgentUtils.isInDedicatedEngagementProcess(this))
-			     return;
-
-			   ... Your code...
-			 }
-
-Sie können dieselben Schritte für `Application.onTerminate()`, `Application.onLowMemory()` und `Application.onConfigurationChanged(...)` ausführen.
-
-Sie können auch `EngagementApplication` anstelle von `Application` erweitern: Die Rückruffunktion `Application.onCreate()` übernimmt die Prozessprüfung und ruft `Application.onApplicationProcessCreate()` nur auf, wenn es sich bei dem aktuellen Prozess nicht um den Prozess handelt, der den Engagement-Dienst hostet. Dieselben Regeln gelten für die anderen Rückruffunktionen.
-
 ## Ändern der `Activity`-Klassen
 
-Im [Erste-Schritte-Lernprogramm](mobile-engagement-android-get-started.md) mussten Sie lediglich dafür sorgen, dass die `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen erben (wenn z. B. Ihre Legacyaktivität `ListActivity` erweiterte, war die Erweiterung von `EngagementListActivity` erforderlich).
+Im Tutorial [Erste Schritte](mobile-engagement-android-get-started.md) mussten Sie lediglich dafür sorgen, dass die `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen erben (wenn z.B. Ihre Legacyaktivität `ListActivity` erweiterte, war die Erweiterung von `EngagementListActivity` erforderlich).
 
 > [AZURE.IMPORTANT] Stellen Sie bei der Verwendung von `EngagementListActivity` oder `EngagementExpandableListActivity` sicher, dass jeder Aufruf von `requestWindowFeature(...);` vor dem Aufruf von `super.onCreate(...);` erfolgt, da es andernfalls zu einem Absturz kommt.
 
@@ -79,24 +45,57 @@ Wenn Sie die `Activity`-Klassen nicht überladen können oder möchten, können 
 
 Beispiel:
 
-			public class MyActivity extends Some3rdPartyActivity
-			{
-			  @Override
-			  protected void onResume()
-			  {
-			    super.onResume();
-			    String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
-			    EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
-			  }
+	public class MyActivity extends Some3rdPartyActivity
+	{
+	  @Override
+	  protected void onResume()
+	  {
+	    super.onResume();
+	    String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
+	    EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
+	  }
 
-			  @Override
-			  protected void onPause()
-			  {
-			    super.onPause();
-			    EngagementAgent.getInstance(this).endActivity();
-			  }
-			}
+	  @Override
+	  protected void onPause()
+	  {
+	    super.onPause();
+	    EngagementAgent.getInstance(this).endActivity();
+	  }
+	}
 
-Dieses Beispiel ähnelt der `EngagementActivity`-Klasse und ihrer Varianten, deren Quellcode im Ordner `src` bereitgestellt wird.
+Dieses Beispiel ähnelt der `EngagementActivity`-Klasse und ihren Varianten, deren Quellcode im Ordner `src` bereitgestellt wird.
 
-<!---HONumber=AcomDC_0511_2016-->
+## Verwenden von "Application.onCreate()"
+
+Sämtlicher in `Application.onCreate()` und in anderen Anwendungsrückruffunktionen hinzugefügter Code wird für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben, z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess oder doppelte Übertragungsempfänger oder -dienste.
+
+Wenn Sie `Application.onCreate()` außer Kraft setzen, wird empfohlen, den folgenden Codeausschnitt am Anfang der `Application.onCreate()`-Funktion hinzuzufügen:
+
+	 public void onCreate()
+	 {
+	   if (EngagementAgentUtils.isInDedicatedEngagementProcess(this))
+	     return;
+
+	   ... Your code...
+	 }
+
+Sie können dieselben Schritte für `Application.onTerminate()`, `Application.onLowMemory()` und `Application.onConfigurationChanged(...)` ausführen.
+
+Sie können auch `EngagementApplication` anstelle von `Application` erweitern: Die Rückruffunktion `Application.onCreate()` übernimmt die Prozessprüfung und ruft `Application.onApplicationProcessCreate()` nur auf, wenn es sich bei dem aktuellen Prozess nicht um den Prozess handelt, der den Engagement-Dienst hostet. Dieselben Regeln gelten für die anderen Rückruffunktionen.
+
+## Tags in der Datei "AndroidManifest.xml"
+
+Im Dienst-Tag der Datei „AndroidManifest.xml“ ermöglicht es das `android:label`-Attribut Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, dieses Attribut auf `"<Your application name>Service"` festzulegen (z.B. `"AcmeFunGameService"`).
+
+Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement in demselben Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
+
+## Erstellen mit ProGuard
+
+Wenn Sie das Anwendungspaket mithilfe von ProGuard erstellen, müssen Sie einige Klassen behalten. Sie können den folgenden Codeausschnitt der Konfiguration verwenden:
+
+	-keep public class * extends android.os.IInterface
+	-keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
+	<methods>;
+ 	}
+
+<!---HONumber=AcomDC_0518_2016-->

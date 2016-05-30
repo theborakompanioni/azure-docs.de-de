@@ -34,7 +34,7 @@ Sie benötigen ein Facebook-Konto mit verifizierter E-Mail-Adresse und einer Mob
 
 4. Klicken Sie auf **My Apps** > **Add a New App** > **Website** > **Skip and Create App ID**.
 
-5. Geben Sie in **Display Name** einen eindeutigen Anzeigenamen für Ihre App ein, wählen Sie unter **Category** eine Kategorie für die App aus, klicken Sie dann auf **Create App ID**, und schließen Sie die Schritte für die Sicherheitsüberprüfung ab. Dadurch gelangen Sie zum Entwickler-Dashboard für Ihre neue Facebook-App.
+5. Geben Sie in **Display Name** einen eindeutigen Anzeigenamen für Ihre App ein, und geben Sie in **Contact Email** Ihre E-Mail-Adresse ein. Wählen Sie unter **Category** eine Kategorie für die App aus, klicken Sie dann auf **Create App ID**, und schließen Sie die Schritte für die Sicherheitsüberprüfung ab. Dadurch gelangen Sie zum Entwickler-Dashboard für Ihre neue Facebook-App.
 
 6. Klicken Sie unter „Facebook Login“ auf **Get Started**. Fügen Sie den **Redirect URI** Ihrer Anwendung zu **Valid OAuth redirect URIs** hinzu, und klicken Sie dann auf **Save Changes**.
 
@@ -75,4 +75,4 @@ Sie können nun Facebook für die Authentifizierung in Ihrer App verwenden.
 [Get started with authentication]: /de-DE/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

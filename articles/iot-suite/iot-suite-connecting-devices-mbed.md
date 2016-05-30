@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/05/2016"
+   ms.date="04/26/2016"
    ms.author="dobett"/>
 
 
-# Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite
+# Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (mbed)
 
 [AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
@@ -199,7 +199,7 @@ Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, de
 
     ![][11]
 
-4. Klicken Sie in PuTTY auf den Verbindungstyp **Seriell**. Das Gerät stellt i.d.R. eine Verbindung mit 115.200 Baud her. Geben Sie also in das Feld **Geschwindigkeit** den Wert „115200“ ein. Klicken Sie anschließend auf **Öffnen**.
+4. Klicken Sie in PuTTY auf den Verbindungstyp **Seriell**. Das Gerät stellt in der Regel eine Verbindung mit 9.600 Baud her. Geben Sie also in das Feld **Geschwindigkeit** den Wert „9600“ ein. Klicken Sie anschließend auf **Öffnen**.
 
 5. Das Programm wird gestartet. Unter Umständen müssen Sie das Board zurücksetzen (drücken Sie STRG+UNTBR, oder drücken Sie die Reset-Taste des Boards), falls das Programm nach dem Herstellen der Verbindung nicht automatisch gestartet wird.
 
@@ -220,4 +220,4 @@ Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, de
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 [lnk-serializer]: https://azure.microsoft.com/documentation/articles/iot-hub-device-sdk-c-intro/#serializer
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

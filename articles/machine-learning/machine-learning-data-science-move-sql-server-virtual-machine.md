@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/10/2016" 
-	ms.author="fashah;mohabib;bradsev" />
+	ms.date="05/10/2016" 
+	ms.author="fashah;bradsev" />
 
 # Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
 
-## Einführung
-
-**In diesem Dokument** beschreiben wir die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Format) oder von einem lokalen SQL Server in SQL Server auf einem virtuellen Azure-Computer. Diese Aufgaben zum Verschieben von Daten in die Cloud gehören zum Cortana-Analyseprozess, der von Azure bereitgestellt wird.
+In diesem Thema werden die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Format) oder von einer lokalen SQL Server-Instanz in SQL Server auf einem virtuellen Azure-Computer beschrieben. Diese Aufgaben zum Verschieben von Daten in die Cloud gehören zum Cortana-Analyseprozess, der von Azure bereitgestellt wird.
 
 Ein Thema, in dem die Optionen für das Verschieben von Daten in eine Azure SQL-Datenbank für Machine Learning beschrieben werden, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](machine-learning-data-science-move-sql-azure.md).
 
@@ -85,6 +83,7 @@ BPC ist ein Befehlszeilenprogramm, das mit SQL Server installiert wird und eine 
 	`bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
 
 > **Optimieren von BCP-Einfügevorgängen**: Im Artikel [Richtlinien zur Optimierung von Massenimport](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) finden Sie Informationen zum Optimieren von Massenimportvorgängen.
+
 
 ### <a name="insert-tables-bulkquery-parallel"></a>Parallelisieren von Einfügevorgängen für schnellere Datenverschiebungen
 
@@ -160,6 +159,7 @@ Sie können die SQL Server Integration Services (SSIS) zum Importieren von Daten
 - Einzelheiten zu den SQL Server Data Tools finden Sie unter [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx).  
 - Ausführliche Informationen zum Import/Export-Assistenten finden Sie unter [SQL Server-Import/Export-Assistent](https://msdn.microsoft.com/library/ms141209.aspx).
 
+
 ## <a name="sqlonprem_to_sqlonazurevm"></a> Verschieben von Daten von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer
 
 Sie können auch die folgenden Migrationsstrategien verwenden:
@@ -224,4 +224,4 @@ Einen Screenshot der Optionen für das Sichern/Wiederherstellen von Datenbanken 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

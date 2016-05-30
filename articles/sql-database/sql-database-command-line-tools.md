@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
@@ -13,42 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="05/09/2016" 
 	ms.author="sstein"/>
 
 # Verwalten von Azure SQL-Datenbanken mit PowerShell
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-manage-portal.md)
+- [Azure-Portal](sql-database-manage-portal.md)
 - [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
 In diesem Thema werden PowerShell-Befehle vorgestellt, mit denen viele Azure SQL-Datenbank-Aufgaben ausgeführt werden können.
 
+[AZURE.INCLUDE [Starten der PowerShell-Sitzung](../../includes/sql-database-powershell.md)]
 
-Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
-
-
-
-## Konfigurieren Ihrer Anmeldeinformationen
-
-Um PowerShell-Cmdlets für Ihr Azure-Abonnement ausführen zu können, müssen Sie zunächst den Zugriff auf Ihr Azure-Konto herstellen. Führen Sie Folgendes aus. Es wird eine Anmeldeseite angezeigt, auf der Sie Ihre Anmeldeinformationen eingeben müssen. Verwenden Sie die E-Mail-Adresse und das Kennwort für die Anmeldung beim klassischen Azure-Portal.
-
-	Login-AzureRmAccount
-
-Nach der erfolgreichen Anmeldung sollten einige Informationen auf dem Bildschirm angezeigt werden, wie die ID, mit der Sie sich angemeldet haben, und die Azure-Abonnements, auf die Sie zugreifen können.
-
-
-## Auswählen des Azure-Abonnements
-
-Zur Auswahl des Abonnements, mit dem Sie arbeiten möchten, benötigen Sie Ihre Abonnement-ID (**-SubscriptionId**) oder den Abonnementnamen (**-SubscriptionName**). Sie können diese Informationen aus dem vorherigen Schritt kopieren. Falls Sie über mehrere Abonnements verfügen, können Sie sie über das Cmdlet **Get-AzureSubscription** abrufen und die gewünschten Abonnementinformationen aus dem ResultSet kopieren.
-
-Führen Sie das folgende Cmdlet mit den Informationen zu Ihrem Abonnement aus, um Ihr aktuelles Abonnement festlegen:
-
-	Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
-
-Die folgenden Befehle werden für das soeben ausgewählte Abonnement ausgeführt.
 
 ## Erstellen einer Ressourcengruppe
 
@@ -64,7 +43,7 @@ Wenn Sie bereits über eine Ressourcengruppe verfügen, können Sie mit dem Erst
 
 ## Erstellen eines Servers 
 
-Um einen neuen V12-Server zu erstellen, verwenden Sie das Cmdlet [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx). Ersetzen Sie "server12" durch den Namen Ihres Servers. Der muss für Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann. Die Serverdetails und PowerShell-Eingabeaufforderung werden angezeigt, nachdem der Server erfolgreich erstellt wurde. Sie können den Befehl für einen beliebigen gültigen Speicherort anpassen.
+Um einen neuen V12-Server zu erstellen, verwenden Sie das Cmdlet [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx). Ersetzen Sie "server12" durch den Namen Ihres Servers. Der muss für Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann. Die Serverdetails und PowerShell-Eingabeaufforderung werden angezeigt, nachdem der Server erfolgreich erstellt wurde. Sie können den Befehl für einen beliebigen gültigen Speicherort anpassen.
 
 	New-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -Location "Japan West" -ServerVersion "12.0"
 
@@ -115,7 +94,7 @@ Wenn Sie diese oder ähnliche Azure SQL-Ressourcen erneut erstellen, haben Sie f
 
 ## Nächste Schritte
 
-Kombinieren und Automatisieren von Befehlen. Ersetzen Sie z. B. alles innerhalb der Anführungszeichen, einschließlich der Zeichen < and >, durch Ihre Werte, um einen Server, die Firewallregel und die Datenbank zu erstellen:
+Kombinieren und Automatisieren von Befehlen. Ersetzen Sie z. B. alles innerhalb der Anführungszeichen, einschließlich der Zeichen < and >, durch Ihre Werte, um einen Server, die Firewallregel und die Datenbank zu erstellen:
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -127,4 +106,4 @@ Kombinieren und Automatisieren von Befehlen. Ersetzen Sie z. B. alles innerhalb 
 
 - [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

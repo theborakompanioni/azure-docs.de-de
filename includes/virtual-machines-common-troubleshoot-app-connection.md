@@ -1,21 +1,44 @@
+Verschiedene Gründe können zu Problemen beim Herstellen einer Verbindung mit einer Anwendung führen, die auf einem virtuellen Azure-Computer ausgeführt wird, z.B. wenn die Anwendung nicht ausgeführt wird und nicht auf die erwarteten Ports lauscht oder wenn Netzwerkregeln den Datenverkehr nicht ordnungsgemäß an die Anwendung weiterleiten. In diesem Artikel wird ein methodischer Ansatz zum Ermitteln und Beheben der Probleme beschrieben.
 
+Wenn beim Herstellen einer Verbindung mit dem virtuellen Computer mit RDP oder SSH Probleme auftreten, finden Sie entsprechende Informationen zunächst in den folgenden Artikeln:
 
+ - [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
+ - [Behandeln von Problemen mit Secure Shell-Verbindungen (SSH) mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-Wenn Sie auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird, nicht zugreifen können, finden Sie in diesem Artikel einen methodischen Ansatz zum Ermitteln der Ursache des Problems und zu seiner Behebung.
+> [AZURE.NOTE] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../articles/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung beider Modelle, Microsoft empfiehlt jedoch für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
-> [AZURE.NOTE]  Hilfeinformationen zum Herstellen einer Verbindung mit einem virtuellen Azure-Computer finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) oder [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
+Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.
 
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
+## Allgemeine Problembehandlung bei Endpunktverbindungen
 
+Wenn beim Herstellen der Verbindung mit einer Anwendung Probleme auftreten, führen Sie die folgenden allgemeinen Schritte zur Problembehandlung aus. Versuchen Sie nach jedem Schritt erneut, eine Verbindung mit der Anwendung herzustellen.
+
+- Starten Sie den virtuellen Computer neu.
+- Erstellen Sie den Endpunkt, die Firewallregeln und die Regeln für die Netzwerksicherheitsgruppen (NSG) neu.
+	- [Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+	- [Verwalten der Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+- Stellen Sie die Verbindung über einen anderen Ort her, z.B. über ein anderes virtuelles Azure-Netzwerk.
+- Stellen Sie den virtuellen Computer erneut bereit.
+	- [Erneutes Bereitstellen von virtuellen Windows-Computern](../articles/virtual-machines/virtual-machines-windows-redeploy-to-new-node.md)
+	- [Erneutes Bereitstellen von virtuellen Linux-Computern](../articles/virtual-machines/virtual-machines-linux-redeploy-to-new-node.md)
+- Erstellen Sie den virtuellen Computer neu.
+
+Weitere Informationen finden Sie unter [Problembehandlung bei Endpunktverbindungen (RDP/SSH/HTTP-Fehler usw.)](https://social.msdn.microsoft.com/Forums/azure/de-DE/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
+
+## Übersicht: Ausführliche Problembehandlung
 
 Die Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird, konzentriert sich auf vier Hauptbereiche.
 
 ![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
 1.	Die Anwendung, die auf dem virtuellen Azure-Computer ausgeführt wird.
+	- Wird die Anwendung selbst ordnungsgemäß ausgeführt?
 2.	Den virtuellen Azure-Computer.
+	- Wird der virtuelle Computer selbst ordnungsgemäß ausgeführt, und reagiert er auf Anforderungen?
 3.	Azure-Endpunkte für den Clouddienst, der den virtuellen Computer enthält (für virtuelle Computer im klassischen Bereitstellungsmodell), eingehende NAT-Regeln (für virtuelle Computer im Resource Manager-Bereitstellungsmodell) und Netzwerksicherheitsgruppen
+	- Ist der Datenverkehrsfluss von den Benutzern zu dem virtuellen Computer bzw. der Anwendung über die erwarteten Ports möglich?
 4.	Ihre Internet-Edgegerät.
+	- Verhindern Firewallregeln den ordnungsgemäßen Datenverkehrsfluss?
 
 Bei Clientcomputern, die über eine Site-to-Site-VPN- oder ExpressRoute-Verbindung auf die Anwendung zugreifen, sind die Hauptbereiche, die zu Problemen führen können, die Anwendung und der virtuelle Azure-Computer. Gehen Sie folgendermaßen vor, um die Quelle des Problems und dessen Korrektur zu bestimmen.
 
@@ -34,7 +57,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 - Die Anwendung wird auf dem virtuellen Zielcomputer ausgeführt.
 - Die Anwendung überwacht die erwarteten TCP- und UDP-Ports.
 
-Verwenden Sie bei Windows- und Linux-basierten virtuellen Computern den Befehl **netstat -a**, um die aktiven Überwachungsports anzuzeigen. Überprüfen Sie die Ausgabe für die erwarteten Ports, die die Anwendung überwachen soll. Starten Sie die Anwendung neu, oder konfigurieren Sie sie so, dass Sie die erwarteten Ports nach Bedarf verwendet.
+Verwenden Sie bei Windows- und Linux-basierten virtuellen Computern den Befehl **netstat -a**, um die aktiven Überwachungsports anzuzeigen. Überprüfen Sie die Ausgabe für die erwarteten Ports, die die Anwendung überwachen soll. Starten Sie die Anwendung neu, oder konfigurieren Sie sie so, dass die erwarteten Ports nach Bedarf verwendet werden, und versuchen Sie erneut, lokal auf die Anwendung zuzugreifen.
 
 ## <a id="step2"></a>Schritt 2: Können von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk aus auf die Anwendung zugreifen?
 
@@ -50,7 +73,9 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 
 - Die Hostfirewall auf der Ziel-VM lässt die eingehende Anforderung und den ausgehenden Antwortdatenverkehr zu.
 - Software zur Angriffserkennung oder Netzwerküberwachung, die auf der Ziel-VM ausgeführt wird, lässt den Datenverkehr zu.
-- Netzwerksicherheitsgruppen lassen den Datenverkehr zu.
+- Die Endpunkte der Clouddienste oder die Netzwerksicherheitsgruppen lassen den Datenverkehr zu.
+	- [Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+	- [Verwalten der Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 - Eine separate Komponente, die auf Ihrer VM auf dem Pfad zwischen der Test-VM und Ihrer VM ausgeführt wird, z.B. ein Load Balancer oder eine Firewall, lässt den Datenverkehr zu.
 
 Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewall mit erweiterter Sicherheit, um zu bestimmen, ob die Firewallregeln den eingehenden und ausgehenden Datenverkehr der Anwendung ausschließen.
@@ -65,16 +90,19 @@ Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuc
 
 Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 
-- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, muss die Endpunktkonfiguration für die VM eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
-- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, dürfen Zugriffssteuerungslisten (ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
+- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, muss die Endpunktkonfiguration für die VM eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
+	- Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
+- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, dürfen Zugriffssteuerungslisten (ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern.
+	- Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 - Bei VMs, die mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurden, muss die eingehende NAT-Regelkonfiguration für die VM den eingehenden Verkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
-- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../articles/virtual-network/virtual-networks-nsg.md).
+- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu.
+	- Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../articles/virtual-network/virtual-networks-nsg.md).
 
 Wenn der virtuelle Computer oder der Endpunkt Mitglied einer Gruppe mit Lastenausgleich ist:
 
 - Stellen Sie sicher, dass der Prüfpunkt-Protokoll (TCP oder UDP) und die Portnummer richtig sind.
 - Wenn das Prüfpunkt-Protokoll und der Port vom Protokoll und Port der Gruppe mit Lastenausgleich abweichen:
-	- Stellen Sie sicher, dass die Anwendung das Testprotokoll (TCP oder UDP) und die Portnummer überwacht (Verwenden Sie **netstat –a** auf der Ziel-VM).
+	- Überprüfen Sie, ob die Anwendung auf das Testprotokoll (TCP oder UDP) und die Portnummer lauscht (verwenden Sie **netstat –a** auf dem virtuellen Zielcomputer).
 	- Die Hostfirewall auf der Ziel-VM lässt die eingehende Testanforderung und den ausgehenden Prüfpunkt-Antwortdatenverkehr zu.
 
 Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Internet-Edgegeräte Folgendes zulassen:
@@ -82,24 +110,8 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 - Den ausgehenden Anwendungsanforderungs-Datenverkehr vom Clientcomputer zum virtuellen Azure-Computer.
 - Den eingehenden Anwendungs-Antwortdatenverkehr vom virtuellen Azure-Computer.
 
-## Problembehandlung bei Endpunktverbindungen
-
-Wenn Probleme beim Verbinden mit einem Endpunkt, z. B. Remotedesktop-Endpunkt, auftreten, können Sie die folgenden allgemeinen Schritte zur Fehlerbehebung ausprobieren:
-
-- Neustarten des virtuellen Computers
-- Neuerstellen des Endpunkts
-- Herstellen einer Verbindung von einem anderen Standort
-- Ändern der Größe des virtuellen Computers
-- Neuerstellen des virtuellen Computers
-
-Weitere Informationen finden Sie unter [Problembehandlung bei Endpunktverbindungen (RDP/SSH/HTTP-Fehler usw.)](https://social.msdn.microsoft.com/Forums/azure/de-DE/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
-
-
-
 ## Zusätzliche Ressourcen
 
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
-
-<!---HONumber=AcomDC_0420_2016-->

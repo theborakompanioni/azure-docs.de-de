@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
-	ms.author="andkjell;markusvi"/>
+	ms.date="05/10/2016"
+	ms.author="andkjell;markvi"/>
 
 # Features des Azure AD Connect-Synchronisierungsdiensts
 
@@ -77,7 +77,7 @@ Früher wurden Updates des userPrincipalName-Attributs mithilfe des Synchronisie
 
 Weitere Informationen finden Sie unter [Benutzernamen in Office 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID.](https://support.microsoft.com/kb/2523192)
 
-Durch Aktivierung dieses Features kann das Synchronisierungsmodul den userPrincipalName aktualisieren, wenn dieser lokal geändert wird, sofern Sie keine Verbunddomänen verwenden.
+Durch Aktivierung dieses Features kann das Synchronisierungsmodul den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennwortsynchronisierung verwenden. Wenn Sie einen Verbund verwenden, funktioniert das Feature nicht.
 
 Dieses Feature ist standardmäßig für neu erstellte Azure AD-Verzeichnisse aktiviert. Sie können ermitteln, ob es aktiviert ist, indem Sie Folgendes ausführen:
 ```
@@ -100,4 +100,4 @@ Diese Einstellungen werden für alle Azure AD-Verzeichnisse in Zukunft aktiviert
 
 - [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

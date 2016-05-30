@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Azure-PowerShell-Cmdlets für Azure Storage zum Erstellen und Verwalten von Speicherkonten, zum Arbeiten mit Blobs, Tabellen, Warteschlangen und Dateien, zum Konfigurieren und Abfragen von Speicheranalysen und zum Erstellen von SAS verwenden."
 	services="storage"
 	documentationCenter="na"
-	authors="robinsh" 
+	authors="robinsh"
 	manager="carmonm"/>
 
 <tags
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="05/18/2016"
 	ms.author="robinsh"/>
 
 # Verwenden von Azure PowerShell mit Azure Storage
@@ -102,16 +102,16 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 	- **$SubscriptionName**: Sie müssen diese Variable mit Ihrem eigenen Abonnementnamen aktualisieren. Suchen Sie den Namen Ihres Abonnements auf eine der folgenden drei Arten:
 
 		a. Klicken Sie in **Windows PowerShell ISE** auf **Datei** > **Neu**, um eine neue Skriptdatei zu erstellen. Kopieren Sie das folgende Skript in die neue Skriptdatei, und klicken Sie auf **Debuggen** > **Ausführen**. Das folgende Skript fordert zunächst Ihre Azure-Anmeldeinformationen an, um Ihr Azure-Konto zur lokalen PowerShell-Umgebung hinzuzufügen. Anschließend werden alle Abonnements angezeigt, die mit der lokalen PowerShell-Sitzung verbunden sind. Notieren Sie den Namen des Abonnements, das Sie in diesem Lernprogramm verwenden möchten:
-		
+
 			Add-AzureAccount
 				Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
-		
+
 		b. Klicken Sie im [Azure-Portal](https://portal.azure.com) im Menü „Hub“ links auf **Abonnement**, um Ihren Abonnementnamen zu finden und zu kopieren. Kopieren Sie den Namen des Abonnements, das Sie während der Ausführung der in diesem Handbuch angegebenen Skripts verwenden möchten.
-		
+
 		![Azure-Portal][Image2]
-		  
+
 		c. Scrollen Sie auf der linken Seite im [klassischen Azure-Portal](https://manage.windowsazure.com/) nach unten und klicken Sie auf **Einstellungen**, um Ihren Abonnementnamen zu finden und zu kopieren. Klicken Sie auf **Abonnements**, um eine Liste Ihrer Abonnements anzuzeigen. Kopieren Sie den Namen des Abonnements, das Sie während der Ausführung der in diesem Handbuch angegebenen Skripts verwenden möchten.
-		
+
 		![Klassisches Azure-Portal][Image1]
 
 	- **$StorageAccountName**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihr Speicherkonto ein. **Wichtig:** Der Name des Speicherkontos muss in Azure eindeutig sein. Er darf außerdem nur aus Kleinbuchstaben bestehen!
@@ -235,8 +235,26 @@ Weitere Informationen zum Konfigurieren einer Speicherverbindungszeichenfolge fi
 
 Sie haben jetzt Ihren Computer eingerichtet und erfahren, wie Sie Abonnements und Speicherkonten mithilfe von Azure PowerShell verwalten. Fahren Sie mit dem nächsten Abschnitt fort, um zu erfahren, wie Sie Azure-Blobs und Blob-Momentaufnahmen verwalten.
 
+### So rufen Sie Azure-Speicherschlüssel ab und generieren sie erneut
+
+Ein Azure-Speicherkonto verfügt über zwei Speicherschlüssel. Sie können das folgende Cmdlet verwenden, um Ihre Schlüssel abzurufen.
+
+	Get-AzureStorageKey -StorageAccountName "yourstorageaccount"
+
+Verwenden Sie das folgende Cmdlet, um einen bestimmten Schlüssel abzurufen. Gültige Werte sind Primary und Secondary.
+
+	(Get-AzureStorageKey -StorageAccountName $StorageAccountName).Primary
+
+	(Get-AzureStorageKey -StorageAccountName $StorageAccountName).Secondary
+
+Wenn Sie Ihre Schlüssel neu generieren möchten, verwenden Sie das folgende Cmdlet. Gültige Werte für KeyType sind „Primary“ und „Secondary“.
+
+	New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Primary”
+
+	New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
+
 ## Verwalten von Azure-Blobs
-Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit den Konzepten des Azure-Blob-Speicherdiensts vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) und [Blob-Dienst-Konzepte](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit den Konzepten des Azure-Blob-Speicherdiensts vertraut sind. Ausführliche Informationen finden Sie unter [How to use Blob storage from .NET](storage-dotnet-how-to-use-blobs.md) und [Blob-Dienst-Konzepte](http://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### Erstellen von Containern
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Sie können mithilfe des Cmdlets "New-AzureStorageContainer" einen privaten Container erstellen:
@@ -247,7 +265,7 @@ Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Sie können 
 > [AZURE.NOTE] Es gibt drei Stufen des anonymen Lesezugriffs: **Off**, **Blob** und **Container**. Legen Sie für den Parameter "Permission" den Wert **Off** fest, um den anonymen Zugriff auf Blobs zu verhindern. Der neue Container ist standardmäßig privat, und der Zugriff ist ausschließlich dem Kontobesitzer gestattet. Um den anonymen öffentlichen Lesezugriff auf Blob-Ressourcen, jedoch nicht auf Containermetadaten oder die Liste der im Container enthaltenen Blobs zuzulassen, legen Sie für den Parameter "Permission" den Wert **Blob** fest. Um den vollständigen öffentlichen Lesezugriff auf Blob-Ressourcen, Containermetadaten und die Liste der im Container enthaltenen Blobs zuzulassen, legen Sie für den Parameter "Permission" den Wert **Container** fest. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
 
 ### Hochladen von Blobs in einen Container
-Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. Weitere Informationen finden Sie unter [Grundlegendes zu Block-BLOBs, Anhang-BLOBS und Seiten-BLOBs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. Weitere Informationen finden Sie unter [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 Verwenden Sie das Cmdlet [Set-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806379.aspx), um Blobs in einen Container hochzuladen. Dieser Befehl lädt standardmäßig die lokalen Dateien in einen Blockblob hoch. Sie können den Parameter "-BlobType" verwenden, um den Blob-Typ anzugeben.
 
@@ -300,7 +318,7 @@ Beachten Sie, dass in diesem Beispiel ein asynchroner Kopiervorgang ausgeführt 
 ### Kopieren von Blobs von einem sekundären Standort
 Sie können Blobs vom sekundären Standort eines Kontos mit RA-GRS kopieren.
 
-    #define secondary storage context using a connection string constructed from secondary endpoints. 
+    #define secondary storage context using a connection string constructed from secondary endpoints.
     $SrcContext = New-AzureStorageContext -ConnectionString "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***;BlobEndpoint=http://***-secondary.blob.core.windows.net;FileEndpoint=http://***-secondary.file.core.windows.net;QueueEndpoint=http://***-secondary.queue.core.windows.net; TableEndpoint=http://***-secondary.table.core.windows.net;"
     Start-AzureStorageBlobCopy –Container *** -Blob *** -Context $SrcContext –DestContainer *** -DestBlob *** -DestContext $DestContext
 
@@ -732,6 +750,5 @@ In diesem Handbuch haben Sie erfahren, wie Sie Azure Storage mit Azure PowerShel
 [How to manage Shared Access Signature (SAS) and Stored Access Policy]: #sas
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
- 
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

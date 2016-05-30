@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs
@@ -25,11 +25,11 @@ Sowohl [benutzerdefinierte Images](./devtest-lab-create-template.md) als auch [F
 Benutzerdefinierte Images stellen eine statische, unveränderliche Möglichkeit zum Erstellen virtueller Computer aus einer bestimmten Umgebung bereit.
 
 **Vorteile**
-- Die VM-Bereitstellung über ein benutzerdefiniertes Images ist schnell, da sich nichts mehr ändert, nachdem der virtuelle Computer aus dem Image erstellt wurde. Anders gesagt: Es müssen keine Einstellungen angewendet werden, da ein benutzerdefiniertes Image ganz einfach ein Image ohne Einstellungen ist. 
+- Die VM-Bereitstellung über ein benutzerdefiniertes Image ist schnell, da sich nichts mehr ändert, nachdem der virtuelle Computer aus dem Image erstellt wurde. Anders gesagt: Es müssen keine Einstellungen angewendet werden, da ein benutzerdefiniertes Image ganz einfach ein Image ohne Einstellungen ist. 
 - Virtuelle Computer, die aus einem einzigen benutzerdefinierten Image erstellt wurden, sind identisch.
 
 **Nachteile**
-- Wenn Sie einen Aspekt des benutzerdefinierten Image aktualisieren müssen, muss das Image neu erstellt werden.  
+- Wenn Sie einen Aspekt des benutzerdefinierten Images aktualisieren müssen, muss das Image neu erstellt werden.  
 
 ## Formeln – Vor- und Nachteile
 Formeln stellen eine dynamische Möglichkeit bereit, um virtuelle Computer mithilfe der gewünschten Konfigurationseinstellungen zu erstellen.
@@ -42,4 +42,4 @@ Formeln stellen eine dynamische Möglichkeit bereit, um virtuelle Computer mithi
 **Nachteile**
 - Die Erstellung eines virtuellen Computers aus einer Formel dauert länger als die Erstellung eines virtuellen Computers aus einem benutzerdefinierten Image.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

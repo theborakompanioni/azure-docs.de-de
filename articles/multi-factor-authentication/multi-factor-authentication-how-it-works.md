@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/16/2016"
 	ms.author="billmath"/>
 
 #Funktionsweise von Azure Multi-Factor Authentication
@@ -34,7 +34,7 @@ Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und A
 
 Weitere Informationen zur Funktionsweise erhalten Sie im folgenden Video.
 
-[AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
+>[AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
 
 ##Verfügbare Methoden für Multi-Factor Authentication
 Wenn ein Benutzer sich anmeldet, wird eine zusätzliche Bestätigung an den Benutzer gesendet. In der folgenden Liste sind die verschiedenen Methoden zusammengefasst, die für diese zweite Überprüfung verwendet werden können.
@@ -91,4 +91,4 @@ Wählen Sie das Pro-Arbeitsplatz-Modell oder das nutzungsbasierte Modell, das am
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

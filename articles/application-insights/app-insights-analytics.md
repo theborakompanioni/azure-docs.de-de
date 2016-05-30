@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/18/2016" 
 	ms.author="awills"/>
 
 
@@ -30,14 +30,14 @@ Finden wir also heraus, zu welcher Tageszeit die Einwohner von Hyderabad unsere 
 
 ```AIQL
 
-    requests 
-    | where timestamp > ago(30d) and client_City == "Hyderabad"
+    requests      // Table of events that log HTTP requests.
+    | where timestamp > ago(7d) and client_City == "Hyderabad"
     | summarize clients = dcount(client_IP) 
       by tod_UTC=bin(timestamp % 1d, 1h), resultCode
     | extend local_hour = (tod_UTC + 5h + 30min) % 24h + datetime("2001-01-01") 
 ```
 
-Wir zählen verschiedene Client-IP-Adresse der letzten 30 Tage auf und gruppieren sie nach Uhrzeit.
+Wir zählen verschiedene Client-IP-Adressen der letzten 7 Tage auf und gruppieren sie nach Uhrzeit.
 
 Wir zeigen die Ergebnisse mit der Balkendiagramm-Präsentation und listen die Ergebnisse von verschiedenen Antwortcodes auf.
 
@@ -53,15 +53,15 @@ Es gibt auch leistungsstarke statistische Vorgänge:
 
 Die Sprache verfügt über viele attraktive Features:
 
-* [Filtern](app-insights-analytics-queries.md) Ihrer rohen App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
-* [Verbinden](app-insights-analytics-queries.md#join-operator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
-* Leistungsstarke statistische [Aggregationen](app-insights-analytics-aggregations.md).
+* [Filtern](app-insights-analytics-reference.md#where-operator) Ihrer rohen App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
+* [Verbinden](app-insights-analytics-reference.md#join-operator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
+* Leistungsstarke statistische [Aggregationen](app-insights-analytics-reference.md#aggregations).
 * Genauso leistungsstark wie SQL, aber viel einfacher für komplexe Abfragen: anstelle der Schachtelung von Anweisungen übergeben Sie die Daten aus einem elementaren Vorgang an den nächsten.
 * Sofortige und leistungsfähige Visualisierungen.
 
 
 
->[AZURE.NOTE] Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-insights-analytics-tour.md) anzufangen.
+>[AZURE.NOTE] Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-insights-analytics-tour.md) zu beginnen.
 
 
 
@@ -82,4 +82,4 @@ Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

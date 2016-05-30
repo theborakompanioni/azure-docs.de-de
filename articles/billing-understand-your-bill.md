@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="04/28/2016"
    ms.author="erihur"/>
 
 
@@ -35,11 +35,11 @@ Weitere Informationen über Verbrauch und Tarife finden Sie auf der Seite [Micro
 
 ### Anzeigen oder Herunterladen von Rechnungen für Microsoft Azure:
 
-Im [Azure-Kontoportal](https://account.windowsazure.com/subscriptions) können Sie aktuelle Rechnungen anzeigen und ältere Rechnungen herunterladen.
+Im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) können Sie aktuelle Rechnungen anzeigen und ältere Rechnungen herunterladen.
 
 Anzeigen oder Herunterladen von Rechnungen:
 
-1. Melden Sie sich mit der ID Ihres Microsoft-Kontos bzw. Ihres Geschäfts- oder Schulkontos beim [Kontoportal](https://account.windowsazure.com/subscriptions) an.
+1. Melden Sie sich mit der ID Ihres Microsoft-Kontos bzw. Ihres Geschäfts- oder Schulkontos beim [Kontocenter](https://account.windowsazure.com/subscriptions) an.
 
 2. Klicken Sie auf das Abonnement, zu dem Sie Details und Informationen zur Verwendung anzeigen möchten.
 
@@ -48,7 +48,7 @@ Anzeigen oder Herunterladen von Rechnungen:
     ![Zusammenfassung: Verlauf der Rechnungsstellung 1](./media/billing-understand-your-bill/ContentViewaBillforMA1.png)
 
 
-4. Im Abschnitt **Abrechnung – Verlauf** sind Ihre Rechnungen für die letzten sechs Abrechnungszeiträume sowie der aktuelle, noch nicht abgerechnete Zeitraum aufgeführt. Die Angaben zum aktuellen Zeitraum sind eine Schätzung Ihrer Gebühren zum Zeitpunkt der Erstellung der Schätzung. Diese Informationen werden nur einmal täglich aktualisiert und umfassen möglicherweise nicht alle angefallenen Gebühren. Ihre monatliche Rechnung kann von dieser Schätzung abweichen.
+4. Im Abschnitt **Abrechnung – Verlauf** sind Ihre Rechnungen für die vorhergehenden Abrechnungszeiträume sowie der aktuelle, noch nicht abgerechnete Zeitraum aufgeführt. Die Angaben zum aktuellen Zeitraum sind eine Schätzung Ihrer Gebühren zum Zeitpunkt der Erstellung der Schätzung. Diese Informationen werden nur einmal täglich aktualisiert und umfassen möglicherweise nicht alle angefallenen Gebühren. Ihre monatliche Rechnung kann von dieser Schätzung abweichen.
 
     ![Zusammenfassung: Verlauf der Rechnungsstellung 2](./media/billing-understand-your-bill/ContentViewaBillforMA2.png)
 
@@ -140,7 +140,7 @@ Die Seite „Additional Information“ enthält Verweise auf andere Ressourcen z
 ![Zusatzinformationen](./media/billing-understand-your-bill/AdditionalInformation.png)
 
 ### Detailed Usage
-Der Link in der Beschreibung unter **Detailed Usage** führt Sie zum Kontoportal, in dem Sie die genaue Nutzung für dieses Abonnement sehen können. Es sind jetzt zwei Versionen zum Herunterladen verfügbar: **CSV-Version 1** enthält die alten Benennungskonventionen und Nutzungsfelder, und **CSV-Version 2** enthält kundenfreundliche Namen für jede Kategorie sowie zusätzliche Felder, damit Sie besser erkennen können, welche Dienste Sie unter Microsoft Azure nutzen. Beachten Sie, dass die CSV-Version 1 keine Details zu Azure Resource Manager enthält. Azure Resource Manager-Informationen finden Sie in der CSV-Version 2.
+Der Link in der Beschreibung unter **Detaillierte Nutzung** führt Sie zum Kontocenter, in dem Sie die genaue Nutzung für dieses Abonnement sehen können. Es sind jetzt zwei Versionen zum Herunterladen verfügbar: **CSV-Version 1** enthält die alten Benennungskonventionen und Nutzungsfelder, und **CSV-Version 2** enthält kundenfreundliche Namen für jede Kategorie sowie zusätzliche Felder, damit Sie besser erkennen können, welche Dienste Sie unter Microsoft Azure nutzen. Beachten Sie, dass die CSV-Version 1 keine Details zu Azure Resource Manager enthält. Azure Resource Manager-Informationen finden Sie in der CSV-Version 2.
 
 ### Additional Information and Useful Resources
 Dieser Abschnitt enthält Links zu einfachen Fragen in Bezug auf Serverinstanzgrößen, SQL-Datenbank-Gebühren sowie nützliche Links für die Beantwortung weiterer Fragen.
@@ -238,18 +238,19 @@ Im Abschnitt **Verwalten von Konten, Abonnements und Administratorrollen** unter
 
 - [Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen](billing-subscription-faq.md)
 
-- [Verwalten der Zahlungsmethode für Azure-Abonnements](https://msdn.microsoft.com/library/azure/dn736054.aspx)
+- [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md)
 
-- [Bearbeiten von Zahlungsinformationen für eine vorhandene Kreditkarte](https://msdn.microsoft.com/library/azure/dn736053.aspx)
-
-- [Hinzufügen einer neuen Kreditkarte zur Verwendung als Zahlungsmethode](https://msdn.microsoft.com/library/azure/dn736057.aspx)
-
-- [Ändern der Kreditkarte, die zum Bezahlen von Azure-Rechnungen verwendet wird](https://msdn.microsoft.com/library/azure/dn736050.aspx)
-
-<!-- - [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)-->
+<!--
+OLD MSDN Articles
+- [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)
+- [Edit payment information for an existing credit card](https://msdn.microsoft.com/library/azure/dn736053.aspx)
+- [Add a new credit card to use as a payment method](https://msdn.microsoft.com/library/azure/dn736057.aspx)
+- [Change the credit card on your Microsoft Azure account](https://msdn.microsoft.com/library/azure/dn736050.aspx)
+- [Manage your payment method](https://msdn.microsoft.com/library/azure/dn736054.aspx)
+-->
 
 
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

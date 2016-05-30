@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/10/2016"
+ms.date="05/12/2016"
 ms.author="mandia"/>
 
 # Erste Schritte mit der Twilio-API
@@ -47,11 +47,12 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Twilio-
 |Konto-ID|Ja|Geben Sie Ihre Twilio-Konto-ID ein.|
 |Access Token|Ja|Geben Sie Ihr Twilio-Zugriffstoken ein.|
 
-Informationen zum Erstellen eines Zugriffstokens finden Sie unter [Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity).
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Twilio](../../includes/connectors-create-api-twilio.md)]
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Twilio-Eigenschaften ein. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Wenn Sie noch kein Zugriffstoken besitzen, nutzen Sie die Informationen zum Erstellen unter [Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity).
 
->[AZURE.TIP] Sie können dieselbe Twilio-Verbindung in anderen Logik-Apps verwenden.
+
+>[AZURE.TIP] Sie können die gleiche Twilio-Verbindung in anderen Logik-Apps verwenden.
 
 ## Swagger-REST-API – Referenz
 #### Diese Dokumentation gilt für Version 1.0.
@@ -248,4 +249,4 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

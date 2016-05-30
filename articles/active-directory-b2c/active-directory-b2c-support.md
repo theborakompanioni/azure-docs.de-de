@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="05/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C Preview: Senden von Supportanfragen
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
     - Wählen Sie für **Problemtyp** den Eintrag **Technisch** aus.
 	- Wählen Sie das entsprechende **Abonnement**.
     - **Dienst** ist **Active Directory**.
-    - Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/de-DE/support/plans/) für einen Supportplan registrieren.
+    - Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/support/plans/) für einen Supportplan registrieren.
 
     ![Support: Grundlagen](./media/active-directory-b2c-support/support-basics.png)
 
@@ -63,11 +63,11 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
 
 ## Bekanntes Problem: Senden von Supportanfragen im Kontext eines B2C-Mandanten
 
-Wenn Sie den oben beschriebenen Schritt 2 nicht durchführen und versuchen, eine Supportanfrage im Kontext Ihres B2C-Mandanten zu erstellen, wird der folgende Fehler angezeigt.
+Wenn Sie den oben beschriebenen Schritt 2 nicht durchführen und versuchen, eine Supportanfrage im Kontext Ihres B2C-Mandanten zu erstellen, wird der folgende Fehler angezeigt.
 
 > [AZURE.IMPORTANT]
 Versuchen Sie nicht, sich in Ihrem B2C-Mandanten für ein neues Azure-Abonnement zu registrieren.
 
 ![Support – Kein Abonnement](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

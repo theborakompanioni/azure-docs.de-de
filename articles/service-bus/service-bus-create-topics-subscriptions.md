@@ -47,7 +47,7 @@ Bei dieser Konfiguration wird jede Nachricht von den POS-Terminals sowohl dem Ab
 
 ## Anwendungscode
 
-Unter [Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden](service-bus-create-queues.md) wird beschrieben, wie Sie sich für ein Service Bus-Konto anmelden und einen Dienstnamespace erstellen. Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly verweisen, d. h. auf "Microsoft.ServiceBus.dll". Die einfachste Möglichkeit zum Verweisen auf Service Bus-Abhängigkeiten besteht darin, das [NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) "Service Bus" zu installieren. Die Assembly ist auch Bestandteil des Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden.
+Unter [Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden](service-bus-create-queues.md) wird beschrieben, wie Sie sich für ein Service Bus-Konto anmelden und einen Dienstnamespace erstellen. Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly verweisen, d. h. auf "Microsoft.ServiceBus.dll". Die einfachste Möglichkeit zum Verweisen auf Service Bus-Abhängigkeiten besteht darin, das [NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) "Service Bus" zu installieren. Die Assembly ist auch Bestandteil des Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden.
 
 ### Erstellen des Themas und der Abonnements
 
@@ -75,13 +75,13 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard");
 
 ### Senden von Nachrichten an das Thema
 
-Für Vorgänge zur Laufzeit für Service Bus-Entitäten, z. B. Senden und Empfangen von Nachrichten, muss eine Anwendung zunächst ein [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Objekt erstellen. Ähnlich wie die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse wird die [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Instanz aus der Basisadresse des Dienstnamespaces und dem Tokenanbieter erstellt.
+Für Vorgänge zur Laufzeit für Service Bus-Entitäten, z. B. Senden und Empfangen von Nachrichten, muss eine Anwendung zunächst ein [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Objekt erstellen. Ähnlich wie die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse wird die [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Instanz aus der Basisadresse des Dienstnamespaces und dem Tokenanbieter erstellt.
 
 ```
 MessagingFactory factory = MessagingFactory.Create(uri, tokenProvider);
 ```
 
-Die Nachrichten, die an die Service Bus-Themen gesendet und von diesen empfangen werden, sind Instanzen der [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)-Klasse. Diese Klasse besteht aus einem Satz von Standardeigenschaften (z. B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) und [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), einem Wörterbuch, in dem Anwendungseigenschaften enthalten sind, und einem Bestand beliebiger Anwendungsdaten. Eine Anwendung kann durch Übergeben eines beliebigen serialisierbaren Objekts den Bestand festlegen (im folgenden Beispiel wird ein **SalesData**-Objekt übergeben, das die Verkaufsdaten vom POS-Terminal darstellt), der mithilfe von [DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) das Objekt serialisiert. Alternativ kann ein [Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx)-Objekt angegeben werden.
+Die Nachrichten, die an die Service Bus-Themen gesendet und von diesen empfangen werden, sind Instanzen der [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)-Klasse. Diese Klasse besteht aus einem Satz von Standardeigenschaften (z. B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) und [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), einem Wörterbuch, in dem Anwendungseigenschaften enthalten sind, und einem Bestand beliebiger Anwendungsdaten. Eine Anwendung kann durch Übergeben eines beliebigen serialisierbaren Objekts den Bestand festlegen (im folgenden Beispiel wird ein **SalesData**-Objekt übergeben, das die Verkaufsdaten vom POS-Terminal darstellt), der mithilfe von [DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) das Objekt serialisiert. Alternativ kann ein [Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx)-Objekt angegeben werden.
 
 ```
 BrokeredMessage bm = new BrokeredMessage(salesData);
@@ -93,7 +93,7 @@ bm.Properties["MachineID"] = "POS_1";
 Die einfachste Möglichkeit zum Senden von Nachrichten an das Thema ist die Verwendung von [CreateMessageSender](https://msdn.microsoft.com/library/azure/hh322659.aspx) zum Erstellen eines [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx)-Objekts direkt aus der [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Instanz.
 
 ```
-MessageSender sender = factory.CreateMessageSender("DataCollectionQueue");
+MessageSender sender = factory.CreateMessageSender("DataCollectionTopic");
 sender.Send(bm);
 ```
 
@@ -119,7 +119,7 @@ catch (Exception e)
 
 ## Abonnementfilter
 
-Bislang werden in diesem Szenario alle Nachrichten, die an das Thema gesendet wurden, allen registrierten Abonnements zur Verfügung gestellt. Der Kernpunkt lautet "zur Verfügung gestellt". Auch wenn für Service Bus-Abonnements alle Nachrichten angezeigt werden, die an das Thema gesendet wurden, können Sie nur eine Teilmenge dieser Nachrichten in die virtuelle Abonnementwarteschlange kopieren. Dies erfolgt mithilfe von *Abonnementfiltern*. Wenn Sie ein Abonnement erstellen, können Sie einen Filterausdruck angeben, der das Format eines SQL92-Prädikats hat und auf die Eigenschaften der Nachricht angewendet wird, und zwar sowohl auf die Systemeigenschaften (z. B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)) als auch auf die Anwendungseigenschaften (z. B. **StoreName** aus dem vorherigen Beispiel).
+Bislang werden in diesem Szenario alle Nachrichten, die an das Thema gesendet wurden, allen registrierten Abonnements zur Verfügung gestellt. Der Kernpunkt lautet "zur Verfügung gestellt". Auch wenn für Service Bus-Abonnements alle Nachrichten angezeigt werden, die an das Thema gesendet wurden, können Sie nur eine Teilmenge dieser Nachrichten in die virtuelle Abonnementwarteschlange kopieren. Dies erfolgt mithilfe von *Abonnementfiltern*. Wenn Sie ein Abonnement erstellen, können Sie einen Filterausdruck angeben, der das Format eines SQL92-Prädikats hat und auf die Eigenschaften der Nachricht angewendet wird, und zwar sowohl auf die Systemeigenschaften (z. B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)) als auch auf die Anwendungseigenschaften (z. B. **StoreName** aus dem vorherigen Beispiel).
 
 Das Szenario soll erweitert werden, um dies zu veranschaulichen. Dazu wird dem Einzelhandelsszenario ein zweites Geschäft hinzugefügt. Weiterhin müssen die Verkaufsdaten von allen POS-Terminals aus beiden Geschäften an das zentrale Lagerverwaltungssystem weitergeleitet werden, aber ein Geschäftsführer, der mit dem Dashboardtool arbeitet, ist nur an der Geschäftsentwicklung des zweiten Ladens interessiert. Dies können Sie durch Filterung der Abonnements erreichen. Wenn die POS-Terminals Nachrichten veröffentlichen, wird die **StoreName**-Eigenschaft der Anwendung für die Nachrichten festgelegt. Bei zwei Läden, beispielsweise **Redmond** und **Seattle**, stempeln die POS-Terminals im Laden in Redmond ihre Verkaufsdatennachrichten in **StoreName** mit dem Namen **Redmond**, während die POS-Terminals im Laden in Seattle für **StoreName** den Namen **Seattle** verwenden. Der Geschäftsführer des Ladens in Redmond möchte nur Daten von seinen POS-Terminals sehen. Das System sieht nun wie folgt aus:
 
@@ -144,10 +144,10 @@ Alle Gründe, die für die Verwendung von Warteschlangen sprechen und die unter 
 
 - Lastenausgleich: Ähnlich wie bei einer Warteschlange können Sie mehrere Consumer festlegen, die ein einzelnes Abonnement überwachen, wobei jede Nachricht nur an einen der Consumer gesendet wird und so die Last ausgeglichen wird.
 
-- Lose Kopplung: Sie können das Messagingnetzwerk ohne Auswirkung auf die vorhandenen Endpunkte erweitern, z. B. Hinzufügen von Abonnements zu einem Thema oder Ändern von Filtern eines Themas, damit neue Consumer berücksichtigt werden können.
+- Lose Kopplung: Sie können das Messagingnetzwerk ohne Auswirkung auf die vorhandenen Endpunkte erweitern, z. B. Hinzufügen von Abonnements zu einem Thema oder Ändern von Filtern eines Themas, damit neue Consumer berücksichtigt werden können.
 
 ## Nächste Schritte
 
 Informationen zur Verwendung von Warteschlangen im POS-Einzelhandelsszenario finden Sie unter [Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden](service-bus-create-queues.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

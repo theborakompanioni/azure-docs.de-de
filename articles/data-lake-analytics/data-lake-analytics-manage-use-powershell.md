@@ -39,7 +39,7 @@ Siehe den Abschnitt „Voraussetzungen“ unter [Verwenden von Azure PowerShell 
 	
 ## Konten verwalten
 
-Zur Ausführung von Data Lake Analytics-Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Im Gegensatz zu Azure HDInsight entstehen durch ein Analytics-Konto keine Kosten, solange darin kein Auftrag ausgeführt wird. Sie bezahlen nur für die Zeit, während der in dem Konto ein Auftrag ausgeführt wird. Weitere Informationen finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Zur Ausführung von Data Lake Analytics-Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Im Gegensatz zu Azure HDInsight entstehen durch ein Analytics-Konto keine Kosten, solange darin kein Auftrag ausgeführt wird. Sie bezahlen nur für die Zeit, während der in dem Konto ein Auftrag ausgeführt wird. Weitere Informationen finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
 ###Erstellen von Konten
 
@@ -71,7 +71,7 @@ Zur Ausführung von Data Lake Analytics-Aufträgen ist ein Data Lake Analytics-K
 		-ResourceGroupName $resourceGroupName `
 		-Name $dataLakeAnalyticsAccountName  
 
-Sie können hierfür auch eine Azure-Ressourcengruppenvorlage verwenden. Eine Vorlage für das Erstellen eines Data Lake Analytics-Kontos und des zugehörige Data Lake-Speicherkontos finden Sie in [Anhang A](#appendix-a). Speichern Sie die Vorlage in eine Datei mit JSON-Vorlage, und verwenden Sie dann das folgende PowerShell-Skript, um sie aufzurufen:
+Sie können hierfür auch eine Azure-Ressourcengruppenvorlage verwenden. Eine Vorlage für das Erstellen eines Data Lake Analytics-Kontos und des zugehörigen Data Lake-Speicherkontos finden Sie in [Anhang A](#appendix-a). Speichern Sie die Vorlage in eine Datei mit JSON-Vorlage, und verwenden Sie dann das folgende PowerShell-Skript, um sie aufzurufen:
 
 
 	$AzureSubscriptionID = "<Your Azure Subscription ID>"
@@ -132,7 +132,7 @@ Das Cmdlet gibt entweder **True** oder **False** zurück.
 	
 	Remove-AzureRmDataLakeAnalyticsAccount -Name $dataLakeAnalyticsAccountName 
 
-Durch das Löschen eines Analytics-Kontos wird das zugehörige Data Lake-Speicherkonto nicht gelöscht. Im folgenden Beispiel werden das Data Lake Analytics-Konto und das Data Lake-Standardspeicherkonto gelöscht.
+Durch das Löschen eines Data Lake Analytics-Kontos wird das zugehörige Data Lake-Speicherkonto nicht gelöscht. Im folgenden Beispiel werden das Data Lake Analytics-Konto und das Data Lake-Standardspeicherkonto gelöscht.
 
 	$resourceGroupName = "<ResourceGroupName>"
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
@@ -190,7 +190,7 @@ Beim Erstellen eines Analytics-Kontos müssen Sie ein Azure Data Lake-Speicherko
 <!-- ################################ -->
 ## Verwalten von Aufträgen
 
-Für das Erstellen eines Auftrags ist ein Data Lake Analytics-Konto erforderlich. Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics-Konten](#manage-data-lake-analytics-accounts).
+Für das Erstellen eines Auftrags ist ein Data Lake Analytics-Konto erforderlich. Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics-Konten](#manage-data-lake-analytics-accounts).
 
 ### Auflisten von Aufträgen
 
@@ -326,7 +326,7 @@ Alle diese Komponenten lassen sich zur einfacheren Verwaltung unter einer ARM-Gr
 
 ![Azure Data Lake Analytics-Konto und -Speicher](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 
-Ein Data Lake Analytics-Konto und das zugehörige Speicherkonto müssen sich in demselben Azure-Rechenzentrum befinden. Die ARM-Gruppe kann sich jedoch in einem anderen Rechenzentrum befinden.
+Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen sich im gleichen Azure-Rechenzentrum befinden. Die ARM-Gruppe kann sich jedoch in einem anderen Rechenzentrum befinden.
 
 ##Weitere Informationen 
 
@@ -392,4 +392,4 @@ Die folgende ARM-Vorlage kann zum Bereitstellen eines Data Lake Analytics-Kontos
 	  }
 	}
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Architektur der Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen | Microsoft Azure"
+	pageTitle="Architektur der vorbeugenden Wartung | Microsoft Azure"
 	description="Architekturdiagramm der Microsoft Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen."
 	services="cortana-analytics"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/12/2016"
+	ms.date="05/14/2016"
 	ms.author="garye" />
 
 # Architektur der Cortana Intelligence-Lösungsvorlage zum Vorhersagen des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
@@ -26,4 +26,4 @@ Eine Version des Diagramms in voller Größe können Sie hier herunterladen: [Ar
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

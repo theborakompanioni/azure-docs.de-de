@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="mblythe"
+	manager="paulettm"
 	editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="03/15/2016"
+	ms.date="05/17/2016"
 	ms.author="heidist"/>
 
 #Azure Search: Codebeispiele, Demos, Videos und Tutorials
@@ -25,7 +25,7 @@ Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen sc
 
 - Das [**Codebeispiel für die Demo-Website zu Jobs in New York City**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) enthält Quellcode für die Azure Search-Demowebsite für Jobdaten von New York City mit Verwendung von ASP.NET MVC.
 
-- [**Code sample for .NET client library**](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
+- [**Code sample for .NET client library**](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
 
 - Das [**Codebeispiel für die REST-API**](https://github.com/Azure-Samples/search-rest-api-getting-started) enthält Beispielcode, mit dem die Verwendung der REST-API veranschaulicht wird.
 
@@ -37,11 +37,10 @@ Bei diesen Websites handelt es sich um voll funktionsfähige Webanwendungen, die
 
 Die [**Demo eines Jobportals für New York City (NYC) mit Azure Search**](http://aka.ms/azjobsdemo) ist eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx) auszuprobieren.
 
-[**Testen von App Service und Azure Search in einer ASP.NET MVC-Kombinations-App**](search-tryappservice.md) ist eine kostenlose einstündige Sitzung mit Azure Search, die Daten, eine funktionsfähige Webanwendung und Quellcode umfasst, den Sie zum Testen verschiedener Suchfunktionen in einer ASP.NET-Anwendung online ändern können.
 
 [**Azure Search-Demo-Website**](https://searchsamples.azurewebsites.net/#/) ist eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search.
 
-##Top 5
+##Top 5
 
 Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufgeführt.
 
@@ -64,11 +63,11 @@ Link|Veröffentlicht|Details
 [Build 2015: Using Azure Search to Build Great Search Experiences in Mobile and WebApps](http://channel9.msdn.com/Events/Build/2015/2-745)|Juni 2015|1 Stunde. Vortrag von Pablo Castro bei Microsoft Build 2015.
 [Ignite 2015: Adding Search Capabilities to Your Business Applications Using Microsoft Azure Search](http://channel9.msdn.com/Events/Ignite/2015/BRK2565)|Mai 2015|1 Stunde und 16 Minuten. Vortrag von Liam Cavanagh bei Microsoft Ignite 2015.
 [Microsoft Virtual Academy: Adding Azure Search to your Websites and Apps](http://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps)|April 2015|7-teilige Reihe über das Hinzufügen von Azure Search zu einer Anwendung, präsentiert von Liam Cavanagh, Janusz Lembicz und Bernardita Torres Garayar.
-[Elastic{ON} 2015: Powering Real-Time Search at Microsoft](https://www.elastic.co/elasticon/2015/sf/powering-real-time-search-at-microsoft)|März 2015|16 Minuten. Vortrag von Pablo Castro bei Elastic{ON} 2015, in dem er erläutert, wie Azure Search und andere Gruppen bei Microsoft ElasticSearch verwenden.
-[Channel9 Data Exposed: „Azure Search General Availability and What's New“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-General-Availability-and-Whats-New)|März 2015|12 Minuten. Azure Search wird allgemein verfügbar – präsentiert von Liam Cavanagh.
+[Elastic{ON} 2015: Powering Real-Time Search at Microsoft](https://www.elastic.co/elasticon/2015/sf/powering-real-time-search-at-microsoft)|März 2015|16 Minuten. Vortrag von Pablo Castro bei Elastic{ON} 2015, in dem er erläutert, wie Azure Search und andere Gruppen bei Microsoft ElasticSearch verwenden.
+[Channel9 Data Exposed: „Azure Search General Availability and What's New“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-General-Availability-and-Whats-New)|März 2015|12 Minuten. Azure Search wird allgemein verfügbar – präsentiert von Liam Cavanagh.
 [Channel9 Data Exposed: „Azure Search Suggestions“](https://channel9.msdn.com/Shows/Data-Exposed/DataExposedAzureSearchSuggestions)|Februar 2015| 15 Minuten. Ein Video zu Vorschlägen (auch als Eingabevorschläge oder automatisches Vervollständigen für Abfragen bekannt). Bei dieser Funktion werden mögliche Suchbegriffe angezeigt, während ein Benutzer einen Begriff eingibt. In Azure Search sind Fuzzyübereinstimmungen über Vorschläge implementiert.
 [Channel9 Data Exposed: „SQL Server To Azure Search Synchronization“](http://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-to-Azure-Search-Synchronization)|Dezember 2014|16 Minuten. Synchronisieren von Datenbanktransaktionen. Laden von relationalen Azure SQL-Daten in Azure Search.
-[TechEd Europe: Deep Dive into Azure Search](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410)|Oktober 2014|1 Stunde und 15 Minuten. Eine Demo zu allen Teilen von Azure Search, präsentiert von Pablo Castro.
+[TechEd Europe: Deep Dive into Azure Search](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410)|Oktober 2014|1 Stunde und 15 Minuten. Eine Demo zu allen Teilen von Azure Search, präsentiert von Pablo Castro.
 [Channel9 Data Exposed: „GeoSpatial Data and Azure Search“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)|September 2014|18 Minuten. Szenarios für die Geosuche.
 [Connect Event: Ein Überblick in 8 Minuten](http://channel9.msdn.com/events/Visual-Studio/Connect-event-2014/421)|September 2014|9 Minuten. Eine kurze Präsentation zu den Vorteilen von Azure Search, präsentiert von Liam Cavanagh.
 [Channel9 Cloud Cover: Episode 152](http://channel9.msdn.com/Shows/Cloud%20Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)|September 2014|25 Minuten. Eine Erörterung zu technischen Funktionen: Wie werden reguläre und geodatenbezogene Abfragen über Fiddler ausgegeben, und wie werden die zurückgegebenen Ergebnisse interpretiert?
@@ -89,4 +88,4 @@ Exemplarische Vorgehensweise|Beschreibung
 [Lernprogramm zu Bewertungsprofilen](search-get-started-scoring-profiles.md)|Testen von Bewertungsprofilen mit einer Konsolenanwendung.
 [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md)|So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

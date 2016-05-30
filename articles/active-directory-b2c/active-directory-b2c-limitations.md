@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="05/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Einschränkungen
 
-Es gibt mehrere Features und Funktionen von Azure Active Directory (Azure AD) B2C, die in der Vorschau noch nicht unterstützt werden. Viele dieser Einschränkungen werden aufgehoben, bevor Azure AD B2C allgemein verfügbar ist. Sie sollten aber damit vertraut sein, wenn sie Azure AD B2C während der Preview-Phase zum Erstellen von Consumer-orientierten Anwendungen verwenden.
+Es gibt mehrere Features und Funktionen von Azure Active Directory (Azure AD) B2C, die in der Vorschau noch nicht unterstützt werden. Viele dieser bekannten Probleme und Einschränkungen werden beseitigt sein, bevor Azure AD B2C allgemein verfügbar ist. Sie sollten jedoch die möglichen Probleme und Einschränkungen kennen, wenn sie Azure AD B2C während der Vorschauphase zum Erstellen von kundenorientierten Anwendungen verwenden.
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
@@ -92,4 +92,11 @@ Im klassischen Azure-Portal können Sie keinen Azure AD B2C-Mandanten löschen.
 
 Derzeit können Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) keine Domänen erfolgreich überprüfen. Wir arbeiten an der Behebung des Problems.
 
-<!---HONumber=AcomDC_0427_2016-->
+## Probleme beim Anmelden mit der MFA-Richtlinie in Safari-Browsern
+
+Anforderungen an Anmelderichtlinien (bei aktiviertem MFA) führen in Safari-Browsern zeitweise zu HTTP 400-Fehlern (ungültige Anforderung). Dies liegt am niedrigen Größenlimit für Cookies in Safari. Für dieses Problem gibt es mehrere Umgehungen:
+
+- Verwenden Sie die anstelle der Anmelderichtlinie die Richtlinie für Registrierung oder Anmeldung.
+- Verringern Sie die Anzahl von **Anwendungsansprüchen**, die in Ihrer Richtlinie angefordert werden. 
+
+<!---HONumber=AcomDC_0518_2016-->

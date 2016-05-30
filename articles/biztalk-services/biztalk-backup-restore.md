@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mandia"/>
 
 
@@ -35,7 +35,7 @@ Sie können BizTalk Services auch mithilfe der [BizTalk Services-REST-API](http:
 
 - BizTalk Services können in derselben Edition oder in einer höheren Edition wiederhergestellt werden. Die Wiederherstellung von BizTalk Services in einer früheren Edition als derjenigen, von der die Sicherungskopie erstellt wurde, wird nicht unterstützt.
 
-	Eine Sicherungskopie der Basic Edition kann z. B. auf die Premium Edition wiederhergestellt werden. Aber eine Sicherungskopie der Premium Edition kann nicht auf die Standard Edition wiederhergestellt werden.
+	Eine Sicherungskopie der Basic Edition kann z. B. auf die Premium Edition wiederhergestellt werden. Aber eine Sicherungskopie der Premium Edition kann nicht auf die Standard Edition wiederhergestellt werden.
 
 - Die EDI-Kontrollnummern werden gesichert, um ihre Kontinuität aufrechtzuerhalten. Wenn Nachrichten nach der letzten Sicherung verarbeitet werden, kann es bei der Wiederherstellung dieses Sicherungsinhalts zu doppelten Kontrollnummern kommen.
 
@@ -235,4 +235,4 @@ Um Azure BizTalk Services im klassischen Azure-Portal zu erstellen, lesen Sie [K
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

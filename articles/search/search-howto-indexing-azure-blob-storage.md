@@ -12,12 +12,12 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/03/2016"
+ms.date="05/17/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
 
-Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z. B. PDF- oder Office-Dateien) verwenden, die in Azure-Blobspeicher gespeichert sind. Mit dem neuen Azure Search-Blobindexer verläuft dieser Prozess schnell und reibungslos.
+Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure-Blobspeicher gespeichert sind. Mit dem neuen Azure Search-Blobindexer verläuft dieser Prozess schnell und reibungslos.
 
 > [AZURE.IMPORTANT] Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 
@@ -31,7 +31,7 @@ Ein Indexer ist die Ressource, die Datenquellen mit Zielsuchindizes verbindet.
 
 Führen Sie zum Einrichten der Blobindizierung folgende Schritte aus:
 
-1. Erstellen Sie eine Datenquelle vom Typ `azureblob`, von der auf einen Container (und optional einen Ordner in diesem Container) in einem Azure-Speicherkonto verwiesen wird.
+1. Erstellen Sie eine Datenquelle vom Typ `azureblob`, die auf einen Container (und optional einen Ordner in diesem Container) in einem Azure-Speicherkonto verweist.
 	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter.
 	- Geben Sie einen Containernamen an. Sie können optional auch einen Ordner mit dem Parameter `query` einschließen.
 2. Erstellen Sie einen Suchindex mit einem durchsuchbaren `content`-Feld. 
@@ -104,7 +104,7 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 Azure Search indiziert jedes Dokument (Blob) wie folgt:
 
 - Der gesamte Inhalt des Dokuments wird in ein Zeichenfolgenfeld mit dem Namen `content` extrahiert. Beachten Sie, dass derzeit keine Unterstützung zum Extrahieren mehrerer Dokumente aus einem einzelnen Blob vorhanden ist:
-	- Beispielsweise wird eine CSV-Datei als einzelnes Dokument indiziert.
+	- Beispielsweise wird eine CSV-Datei als einzelnes Dokument indiziert. Wenn Sie jede Zeile in einer CSV-Datei als separates Dokument behandeln müssen, stimmen Sie für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate).
 	- Ein Verbunddokument oder eingebettetes Dokument (z. B. ein ZIP-Archiv oder ein Word-Dokument mit eingebetteter Outlook-E-Mail mit PDF-Anhang) wird ebenfalls als einzelnes Dokument indiziert.
 
 - Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert. Die Metadateneigenschaften können auch verwendet werden, um bestimmte Aspekte des Prozesses der Dokumentextrahierung zu steuern. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Metadaten zum Steuern der Dokumentextrahierung](#CustomMetadataControl).
@@ -260,7 +260,7 @@ Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie v
 	  "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
 	}
 
-Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden sind, untersucht Azure Search zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions`. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
+Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden ist, untersucht Azure Search zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions`. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
 
 ### Indizieren von Speichermetadaten
 
@@ -292,4 +292,4 @@ Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

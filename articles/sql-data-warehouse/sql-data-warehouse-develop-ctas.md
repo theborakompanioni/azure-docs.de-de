@@ -17,7 +17,7 @@
    ms.author="jrj;barbkess;sonyama"/>
 
 # Create Table As Select (CTAS) in SQL Data Warehouse
-„Create Table As Select“ (`CTAS`) ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen vollständig parallelisierten Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. `CTAS` ist die einfachste und schnellste Möglichkeit, eine Kopie einer Tabelle zu erstellen. Sie können sich dies wie eine Turboversion von `SELECT..INTO` vorstellen. Dieses Dokument beinhaltet Beispiele und bewährte Methoden für `CTAS`.
+„Create Table As Select“ (`CTAS`) ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen vollständig parallelisierten Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. `CTAS` ist die einfachste und schnellste Möglichkeit, eine Kopie einer Tabelle zu erstellen. Sie können sich dies wie eine Turboversion von `SELECT..INTO` vorstellen. Dieses Dokument beinhaltet sowohl Beispiele als auch bewährte Methoden für `CTAS`.
 
 ## Kopieren einer Tabelle mithilfe von CTAS
 
@@ -282,7 +282,7 @@ SELECT @d*@f
 ;
 ```
 
-Instinktiv denken Sie vielleicht, dass Sie diesen Code zu CTAS migrieren sollten, und damit hätten Sie auch recht. Hierbei liegt aber ein verstecktes Problem vor.
+Instinktiv denken Sie vielleicht, dass Sie diesen Code zu CTAS migrieren sollten, und damit hätten Sie auch recht. Hierbei liegt jedoch ein verstecktes Problem vor.
 
 Der folgende Code führt NICHT zum gleichen Ergebnis:
 
@@ -433,4 +433,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -98,7 +98,7 @@ Für das Service Bus Relay umschließt diese Ausnahme die [System.ServiceModel.Q
 
 ## TimeoutException 
 
-[TimeoutException][] gibt an, dass ein manueller Vorgang das Zeitlimit für den Vorgang überschreitet.
+Eine [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) zeigt an, dass ein von einem Benutzer initiierter Vorgang länger als das Timeout des Vorgangs dauert.
 
 ### Warteschlangen und Topics
 
@@ -139,4 +139,4 @@ Weitere Informationen zu [Service Bus](https://azure.microsoft.com/services/serv
 - [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus-Architektur](service-bus-architecture.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

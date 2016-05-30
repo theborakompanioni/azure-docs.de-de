@@ -56,4 +56,6 @@ Sie können Clientcode für eine API-App mit Visual Studio oder über die Befehl
 
 Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen, Bereitstellen und Nutzen einer API-App finden Sie unter [Erste Schritte mit API-Apps in Azure App Service](app-service-api-dotnet-get-started.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+Wenn Sie Azure API Management mit API-Apps verwenden, können Sie Ihre API mithilfe von Swagger-Metadaten in API Management importieren. Weitere Informationen finden Sie unter [Importieren einer API-Definition mit Operationen in Azure API Management](../api-management/api-management-howto-import-api.md)
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/04/2016"
    ms.author="bwren" />
 
 # Benutzerdefinierte Protokolle in Log Analytics
@@ -70,8 +70,8 @@ Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Prot
 |:--|:--|
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\\Logs* mit der Erweiterung „.txt“ | C:\\Logs\\*.txt |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\\Logs* mit einem Namen, der mit „log“ beginnt und die Erweiterung „.txt“ besitzt | C:\\Logs\\log*.txt |
-| Alle Dateien auf dem Windows-Agent im Verzeichnis */var/log/audit* mit der Erweiterung „.txt“ | /var/log/audit/*.txt |
-| Alle Dateien auf dem Windows-Agent im Verzeichnis */var/log/audit* mit einem Namen, der mit „log“ beginnt und die Erweiterung „.txt“ besitzt | /var/log/audit/log*.txt |
+| Alle Dateien auf dem Linux-Agent im Verzeichnis */var/log/audit* mit der Erweiterung „.txt“ | /var/log/audit/*.txt |
+| Alle Dateien auf dem Linux-Agent im Verzeichnis */var/log/audit* mit einem Namen, der mit „log“ beginnt und die Erweiterung „.txt“ besitzt | /var/log/audit/log*.txt |
   
 
 1.	Wählen Sie „Windows“ oder „Linux“ aus, um anzugeben, welches Pfadformat Sie hinzufügen.
@@ -178,4 +178,4 @@ Wir definieren mithilfe benutzerdefinierter Felder die Felder *EventTime*, *Code
 - Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md), um die Einträge des benutzerdefinierten Protokolls in einzelne Felder aufzuschlüsseln.
 - Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="01/22/2016"
+	ms.date="04/21/2016"
 	ms.author="marsma" />
 
 # Ausführen von Auftragsvorbereitungs- und Auftragsabschlussaufgaben auf Azure Batch-Computeknoten
 
-Azure Batch-Aufträge erfordern vor ihrer Ausführung häufig eine Einrichtung und eine Art Wartung nach Abschluss der Aufgaben des Auftrags. Batch stellt die Mechanismen für diese Vorbereitung und Wartung in Form von optionalen Aufgaben zur *Auftragsvorbereitung* und *Auftragsfreigabe* bereit.
+Azure Batch-Aufträge erfordern sowohl vor ihrer Ausführung häufig eine Einrichtung als auch nach Abschluss der Aufgaben des Auftrags eine Art Wartung. Batch stellt die Mechanismen für diese Vorbereitung und Wartung in Form von optionalen Aufgaben zur Auftragsvorbereitung und Auftragsfreigabe bereit.
 
-Bevor eine Aufgabe eines Auftrags ausgeführt wird, wird die Auftragsvorbereitungsaufgabe auf allen Computeknoten durchgeführt, die für die Ausführung von Aufgaben eingeplant sind. Nach Abschluss des Auftrags wird die Auftragsfreigabeaufgabe auf jedem Knoten im Pool ausgeführt, der mindestens eine Aufgabe ausgeführt hat. Sowohl für Auftragsvorbereitungs- als auch Freigabeaufgaben können Sie eine Befehlszeile angeben, die aufgerufen werden soll, wenn die Aufgabe ausgeführt wird. Diese besonderen Aufgaben bieten vertraute Features wie das Herunterladen von Dateien, Ausführen mit höheren Rechten, benutzerdefinierte Umgebungsvariablen, maximale Ausführungsdauer, Anzahl der Wiederholungsversuche und Dateiaufbewahrungsdauer.
+Bevor eine Aufgabe eines Auftrags ausgeführt wird, wird die **Auftragsvorbereitungsaufgabe** auf allen Serverknoten ausgeführt, die für die Ausführung von Aufgaben eingeplant sind. Nach Abschluss des Auftrags wird die **Auftragsfreigabeaufgabe** auf jedem Knoten im Pool ausgeführt, der mindestens eine Aufgabe ausgeführt hat. Wie bei normalen Batch-Aufgaben können Sie eine Befehlszeile für Aufgaben zur Auftragsvorbereitung oder -freigabe angeben, die zur Ausführung dieser Aufgaben aufgerufen wird. Diese besonderen Aufgaben bieten andere vertraute Aufgabenfeatures wie das Herunterladen von Dateien, Ausführen mit höheren Rechten, benutzerdefinierte Umgebungsvariablen, maximale Ausführungsdauer, Anzahl der Wiederholungsversuche und Dateiaufbewahrungsdauer.
 
 In den folgenden Abschnitten wird erläutert, wie Sie diese zwei speziellen Aufgabentypen mithilfe der Klassen „[JobPreparationTask][net_job_prep]” und „[JobReleaseTask][net_job_release]” in der [Batch .NET][api_net]-API verwenden.
 
@@ -58,7 +58,7 @@ Nachdem ein Auftrag als abgeschlossen markiert wurde, wird die Auftragsfreigabea
 
 ## Auftragsvorbereitungs- und -freigabeaufgaben in der Batch .NET API
 
-Sie erstellen und konfigurieren ein [JobPreparationTask][net_job_prep]-Objekt, um eine Auftragsvorbereitungsaufgabe anzugeben, und weisen es der [CloudJob.JobPreparationTask][net_job_prep_cloudjob]-Eigenschaft Ihres Auftrags zu. Auf ähnliche Weise initialisieren Sie die [JobReleaseTask][net_job_release], die Sie der [CloudJob.JobReleaseTask][net_job_prep_cloudjob]-Eigenschaft zuweisen, um die Freigabeaufgabe des Auftrags festzulegen.
+Sie erstellen und konfigurieren ein [JobPreparationTask][net_job_prep]-Objekt, um eine Auftragsvorbereitungsaufgabe zu verwenden, und weisen es der [CloudJob.JobPreparationTask][net_job_prep_cloudjob]-Eigenschaft Ihres Auftrags zu. Auf ähnliche Weise initialisieren Sie die [JobReleaseTask][net_job_release], die Sie der [CloudJob.JobReleaseTask][net_job_prep_cloudjob]-Eigenschaft zuweisen, um die Freigabeaufgabe des Auftrags festzulegen.
 
 In diesem Codeausschnitt ist `myBatchClient` eine vollständig initialisierte Instanz von [BatchClient][net_batch_client], und `myPool` ist ein vorhandener Pool im Batch-Konto.
 
@@ -185,6 +185,5 @@ Der folgende Screenshot hebt die im Bereich **Auftragsdetails** angezeigten Eige
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/batchexplorer-01.png
-[2]: ./media/batch-job-prep-release/batchexplorer-02.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

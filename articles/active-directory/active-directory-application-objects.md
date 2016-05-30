@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/08/2016"
+   ms.date="05/16/2016"
    ms.author="mbaldwin"/>
 
 
@@ -31,7 +31,7 @@ Wenn Sie eine Anwendung im Azure-Verwaltungsportal registrieren, werden zwei Obj
 - **ServicePrincipal-Objekt**: Dieses Objekt stellt eine Instanz der App in Ihrem Verzeichnismandanten dar. Sie können Richtlinien auf ServicePrincipal-Objekte anwenden, einschließlich des Zuweisens von Berechtigungen zum ServicePrincipal, mit deren Hilfe die App die Verzeichnisdaten des Mandanten lesen kann. Wenn Sie das Anwendungsobjekt ändern, werden die Änderungen auch auf das zugeordnete ServicePrincipal-Objekt im Mandanten übertragen.
 
 
-> [AZURE.NOTE]Wenn die Anwendung für den externen Zugriff konfiguriert ist, werden die Änderungen am Anwendungsobjekt erst dann im ServicePrincipal des Consumermandanten berücksichtigt, wenn der Consumermandant den Zugriff aufhebt und anschließend erneut erteilt.
+> [AZURE.NOTE] Wenn die Anwendung für den externen Zugriff konfiguriert ist, werden die Änderungen am Anwendungsobjekt erst dann im ServicePrincipal des Consumermandanten berücksichtigt, wenn der Consumermandant den Zugriff aufhebt und anschließend erneut erteilt.
 
 
 
@@ -85,4 +85,4 @@ Eigenschaft | Beschreibung
 
 ##
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0518_2016-->

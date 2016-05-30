@@ -147,7 +147,7 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 
 **Syntax**
 
-    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
 
 **Argumente**
 
@@ -543,7 +543,7 @@ Zeigt, wie mit dem `range`-Operator eine kleine Ad-hoc-Dimensionstabelle erstell
 Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Gruppe das Muster (`Pattern`) aus, das die Gruppe wahrscheinlich am besten beschreibt, sowie die Anzahl (`Count`) der Datensätze in dieser Gruppe.
 
 
-![](./media/app-insights-analytics-queries/reduce.png)
+![](./media/app-insights-analytics-reference/reduce.png)
 
 **Syntax**
 
@@ -792,7 +792,7 @@ Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, 
 
 
 
-## Aggregrationen
+## Aggregationen
 
 Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vorgang](#summarize-operator) erstellt werden. In dieser Abfrage ist z.B. dcount() eine Aggregatfunktion:
 
@@ -844,7 +844,7 @@ Suchen Sie den niedrigsten Wert jeder Metrik, zusammen mit dem Zeitstempel und a
       by name
 
 
-![](./media/app-insights-analytics-aggregations/argmin.png)
+![](./media/app-insights-analytics-reference/argmin.png)
  
 
 
@@ -980,7 +980,7 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
     | summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
-![](./media/app-insights-analytics-aggregations/dcount.png)
+![](./media/app-insights-analytics-reference/dcount.png)
 
 ### makelist
 
@@ -1004,7 +1004,7 @@ Gibt ein `dynamic`-Array (JSON) des Satzes von unterschiedlichen Werten zurück,
     | summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
-![](./media/app-insights-analytics-aggregations/makeset.png)
+![](./media/app-insights-analytics-reference/makeset.png)
 
 Siehe auch den [`mvexpand`-Operator](#mvexpand-operator) für die umgekehrte Funktion.
 
@@ -1052,7 +1052,7 @@ Berechnen Sie gleichzeitig mehrere Quantile für andere Anforderungsnamen:
         percentiles(duration, 5, 20, 50, 80, 95) 
       by name
 
-![](./media/app-insights-analytics-aggregations/percentiles.png)
+![](./media/app-insights-analytics-reference/percentiles.png)
 
 Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
 
@@ -1911,7 +1911,7 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
 
 Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der Wert unter `details` ist ein Array.
 
-![](./media/app-insights-analytics-scalars/310.png)
+![](./media/app-insights-analytics-reference/310.png)
 
 **Indizierung**: Arrays und Objekte werden wie in JavaScript indiziert:
 
@@ -1943,7 +1943,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
     | mvexpand details[0].parsedStack[0]
 
 
-![](./media/app-insights-analytics-scalars/410.png)
+![](./media/app-insights-analytics-reference/410.png)
 
 
 **treepath**: Zum Suchen aller Pfade in einem komplexen Objekt:
@@ -1953,7 +1953,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
     | mvexpand path
 
 
-![](./media/app-insights-analytics-scalars/420.png)
+![](./media/app-insights-analytics-reference/420.png)
 
 **buildschema**: Zum Suchen des minimalen Schemas, das alle Werte des Ausdrucks in der Tabelle zulässt:
 
@@ -2233,4 +2233,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -47,7 +47,7 @@ Service Fabric-Actors sind virtuell. Daher ist ihre Lebensdauer nicht an die Dar
 
 Diese Abstraktion der Lebensdauer virtueller Akteure birgt infolge des Modells für virtuelle Akteure einige Nachteile, und die Reliable Actors-Implementierung weicht tatsächlich manchmal von diesem Modell ab.
 
- - Wenn das erste Mal eine Nachricht an die Akteur-ID gesendet wird, wird der Akteur automatisch aktiviert (dadurch wird ein Akteurobjekt erstellt). Nach einer gewissen Zeit wird für das Akteurobjekt eine Garbage Collection ausgeführt. Wenn die Akteur-ID in Zukunft erneut verwendet wird, wird ein neues Akteurobjekt erstellt. Die Lebensdauer eines Akteurzustands ist länger als die Lebensdauer des Objekts, wenn der Akteur im Zustands-Manager gespeichert ist.
+ - Ein Akteur wird automatisch aktiviert (und löst die Erstellung eines Akteurobjekts aus), sobald eine Nachricht zum ersten Mal an die Akteur-ID gesendet wird. Nach einer gewissen Zeit wird für das Akteurobjekt eine Garbage Collection ausgeführt. Wenn die Akteur-ID in Zukunft erneut verwendet wird, wird ein neues Akteurobjekt erstellt. Die Lebensdauer eines Akteurzustands ist länger als die Lebensdauer des Objekts, wenn der Akteur im Zustands-Manager gespeichert ist.
  
  - Durch den Aufruf einer Akteurmethode für eine Akteur-ID wird dieser Akteur aktiviert. Aus diesem Grund wird der Konstruktor von Akteurtypen implizit von der Laufzeit aufgerufen. Daher kann Clientcode keine Parameter an den Konstruktor des Akteurtyps übergeben, obwohl Parameter vom Dienst selbst an den Akteurkonstruktor übergeben werden können. Das führt dazu, dass Akteure unter Umständen mit einem teilweise initialisierten Zustand erstellt werden, wenn andere Methoden dafür aufgerufen werden, falls der Akteur Initialisierungsparameter vom Client anfordert. Es gibt keinen einzelnen Einstiegspunkt für die Aktivierung eines Akteurs auf dem Client.
 
@@ -158,4 +158,4 @@ Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in dene
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

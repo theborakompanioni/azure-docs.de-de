@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
 
@@ -27,7 +27,7 @@ In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements ü
 
 ## Erstellen einer Node.js-Anwendung
 
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website], [Node.js-Clouddienst][Node.js Cloud Service] (mithilfe von Windows PowerShell) oder Website mit WebMatrix.
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website], [Node.js-Clouddienst][Node.js Cloud Service] \(mithilfe von Windows PowerShell) oder Website mit WebMatrix.
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 
@@ -119,7 +119,7 @@ Nachdem die Vorverarbeitung der Anforderungsoptionen abgeschlossen ist, ruft die
 function (returnObject, finalCallback, next)
 ```
 
-Nachdem das returnObject-Objekt (die Antwort auf die an den Server gesendete Anforderung) verarbeitet wurde, muss in dieser Rückruffunktion entweder "next" aufgerufen werden, wenn die Tabelle vorhanden ist, um weitere Filter zu verarbeiten, oder andernfalls einfach "finallCallback" aufrufen, um den Dienstaufruf zu beenden.
+Nachdem bei dem Rückruf **returnObject** (die Antwort auf die an den Server gesendete Anforderung) verarbeitet wurde, muss der Rückruf „next“ aufrufen, wenn „next“ vorhanden ist. Andernfalls muss er schlicht **finalCallback** aufrufen, um den Dienstaufruf zu beenden.
 
 Zwei Filter, die eine Wiederholungslogik implementieren, sind im Azure SDK für Node.js enthalten: **ExponentialRetryPolicyFilter** und **LinearRetryPolicyFilter**. Der folgende Code erstellt ein **ServiceBusService**-Objekt, das den **ExponentialRetryPolicyFilter** verwendet:
 
@@ -317,8 +317,8 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen vertraut sind, finden 
 -   Besuchen Sie das [Azure SDK für Node][]-Repository auf GitHub.
 
   [Azure SDK für Node]: https://github.com/Azure/azure-sdk-for-node
-  [klassische Azure-Portal]: http://manage.windowsazure.com
-  [klassischen Azure-Portal]: http://manage.windowsazure.com
+  [klassische Azure-Portal]: https://manage.windowsazure.com
+  [klassischen Azure-Portal]: https://manage.windowsazure.com
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Service Bus-Warteschlangen, -Themen und -Abonnements]: service-bus-queues-topics-subscriptions.md
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
@@ -328,4 +328,4 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen vertraut sind, finden 
   [Node.js-Webanwendung mit Speicher]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

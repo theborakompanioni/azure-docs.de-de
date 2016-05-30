@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="02/05/2016"
+    ms.date="05/10/2016"
     ms.author="sstein"/>
 
 # Importieren einer BACPAC-Datei zum Erstellen einer neuen Azure SQL-Datenbank mithilfe von PowerShell
@@ -41,10 +41,6 @@ Zum Importieren einer SQL-­Datenbank benötigen Sie Folgendes:
 - Eine BACPAC-Datei (.bacpac) der Datenbank, die Sie importieren möchten. Die BACPAC-Datei muss sich in einem [Azure Storage-Konto (klassisch)](../storage/storage-create-storage-account.md)-Blobcontainer befinden.
 
 
-> [AZURE.IMPORTANT] Dieser Artikel enthält Befehle für Azure PowerShell-Versionen *vor* Version 1.0. Sie können Ihre Version von Azure PowerShell mit dem Befehl **Get-Module azure | format-table version** überprüfen.
-
-
-
 ## Konfigurieren der Anmeldeinformationen und Auswählen des Abonnements
 
 Zuerst müssen Sie den Zugriff auf Ihr Azure-Konto einrichten. Starten Sie also PowerShell, und führen Sie dann das folgende Cmdlet aus. Geben Sie auf dem Anmeldebildschirm die E-Mail-Adresse und das Kennwort wie für die Anmeldung beim Azure-Portal ein.
@@ -67,7 +63,7 @@ Nach dem erfolgreichen Ausführen von **Select-AzureSubscription** kehren Sie zu
 
 Es gibt einige Variablen, bei denen Sie die Beispielwerte durch die speziellen Werte für Ihre Datenbank und Ihr Speicherkonto ersetzen müssen.
 
-Der Servername muss ein Server sein, der derzeit in dem im vorherigen Schritt ausgewählten Abonnement vorhanden ist, und auf dem Sie die Datenbank erstellen möchten.
+Der Servername muss ein Server sein, der derzeit in dem im vorherigen Schritt ausgewählten Abonnement vorhanden ist, und auf dem Sie die Datenbank erstellen möchten. Beachten Sie, dass das direkte Importieren einer Datenbank in einen elastischen Pool nicht unterstützt wird. Sie können jedoch Daten zuerst in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool verschieben.
 
 Der Datenbankname ist der gewünschte Name für die neue Datenbank.
 
@@ -153,4 +149,4 @@ Beim Ausführen dieses Befehls werden Sie zur Eingabe eines Kennworts aufgeforde
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

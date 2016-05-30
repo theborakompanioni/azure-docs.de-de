@@ -365,7 +365,7 @@ Sie können diesen Ausdruck im Abschnitt „outputs“ oder im Abschnitt „reso
         "type": "string"
       }
      
-Ein Beispiel für die Verwendung des Abschnitts „outputs“ einer verknüpften Vorlage, um Datenträger für einen virtuellen Computer zurückzugeben, finden Sie unter [Erstellen mehrerer Datenträger für einen virtuellen Computer](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine).
+Ein Beispiel für die Verwendung des Abschnitts „outputs“ einer verknüpften Vorlage, um Datenträger für einen virtuellen Computer zurückzugeben, finden Sie unter [Erstellen mehrerer Datenträger für einen virtuellen Computer](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine).
 
 ## Definieren von Authentifizierungseinstellungen für den virtuellen Computer
 
@@ -426,4 +426,4 @@ Wenn Sie den virtuellen Computer definieren, legen Sie **osProfile** auf die ers
 - Informationen zu den Abschnitten der Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Unter [Vorlagenfunktionen in Azure Resource Manager](resource-group-template-functions.md) finden Sie alle Funktionen, die in einer Vorlage verfügbar sind.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

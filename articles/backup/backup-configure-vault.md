@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Sichern eines Windows-Servers oder -Clients in Azure | Microsoft Azure"
+	pageTitle="Sichern eines Windows-Servers oder -Clients in Azure mit Azure Backup unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft Azure"
 	description="Sichern Sie Windows-Server oder -Clients in Azure, indem Sie einen Sicherungstresor erstellen, Anmeldeinformationen herunterladen, den Backup-Agent installieren und eine erste Sicherung Ihrer Dateien und Ordner durchführen."
 	services="backup"
 	documentationCenter=""
@@ -14,142 +14,145 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/19/2016"
+	ms.date="05/10/2016"
 	ms.author="jimpark; trinadhk; markgal"/>
 
+# Sichern eines Windows-Servers oder -Clients in Azure mit Azure Backup unter Verwendung des Resource Manager-Bereitstellungsmodells
 
-# Sichern eines Windows-Servers oder -Clients in Azure
-In diesem Artikel werden die Verfahren beschrieben, die Sie zur Vorbereitung Ihrer Umgebung und zum Sichern eines Windows-Servers (oder -Clients) in Azure ausführen müssen. Darüber hinaus erfahren Sie, welche Punkte Sie bei der Bereitstellung Ihrer Sicherungslösung beachten müssen. Wenn Sie Azure Backup das erste Mal einsetzen, finden Sie in diesem Artikel Informationen für den Schnelleinstieg.
+> [AZURE.SELECTOR]
+- [Azure-Portal](backup-configure-vault.md)
+- [Klassisches Portal](backup-configure-vault-classic.md)
 
-![Tresor erstellen](./media/backup-configure-vault/initial-backup-process.png)
+In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers (oder Windows-Clients) mithilfe von Azure Backup und des Resource Manager-Bereitstellungsmodells in Azure sichern.
+
+![Sicherungsprozessschritte](./media/backup-configure-vault/initial-backup-process.png)
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
 
 ## Vorbereitung
 Um einen Server oder Client in Azure zu sichern, benötigen Sie ein Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
 
-## Schritt 1: Erstellen eines Sicherungstresors
-Um Dateien und Ordner von einem Server oder Client in Azure zu sichern, müssen Sie einen Sicherungstresor in der geografischen Region erstellen, in der die Daten gespeichert werden sollen.
+## Schritt 1: Erstellen eines Recovery Services-Tresors
 
-### Erstellen eines Sicherungstresors
+Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die Sie im Laufe der Zeit erstellen. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinie, die auf die geschützten Dateien und Ordner angewendet wird. Wenn Sie einen Recovery Services-Tresor erstellen, sollten Sie auch die entsprechende Speicherredundanzoption auswählen.
 
-1. Melden Sie sich beim [Azure-Portal](https://manage.windowsazure.com/) an.
+### So erstellen Sie einen Recovery Services-Tresor
 
-2. Klicken Sie auf **Neu** > **Data Services** > **Recovery Services** > **Sicherungstresor**, und wählen Sie **Schnellerfassung** aus.
+1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
 
-3. Geben Sie für den Parameter **Name** einen benutzerfreundlichen Namen für den Sicherungstresor ein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Dieser Name muss für jedes Abonnement eindeutig sein.
+2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresore**.
 
-4. Wählen Sie für den Parameter **Region** die geografische Region für den Sicherungstresor aus. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden. Wenn Sie eine geografische Region in der Nähe Ihres eigenen Standorts auswählen, können Sie dadurch die Netzwerklatenz beim Sichern in Azure reduzieren.
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-configure-vault/browse-to-rs-vaults.png) <br/>
 
-5. Klicken Sie auf **Tresor erstellen**.
+    Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 
-    ![Erstellen eines Sicherungstresors](./media/backup-configure-vault/demo-vault-name.png)
+3. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
 
-    Es kann eine Weile dauern, bis der Sicherungstresor fertiggestellt wird. Überwachen Sie die Benachrichtigungen unten im Portal, um den Status zu überprüfen.
+    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-configure-vault/rs-vault-menu.png)
 
-    Nach dem erfolgreichen Erstellen des Sicherungstresors wird dies in einer entsprechenden Meldung angezeigt. Er wird zudem in der Ressourcenliste von **Recovery Services** als **Aktiv** angezeigt.
+    Das Blatt „Recovery Services-Tresor“ wird geöffnet, und Sie werden aufgefordert, **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** anzugeben.
 
-    ![Status zum Erstellen eines Tresors](./media/backup-configure-vault/recovery-services-select-vault.png)
+    ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-configure-vault/rs-vault-attributes.png)
 
-4. Wählen Sie die Speicherredundanzoption, indem Sie die hier beschriebenen Schritte ausführen.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 
-    >[AZURE.IMPORTANT] Der beste Zeitpunkt zum Identifizieren von Speicherredundanzoptionen ist unmittelbar nach der Erstellung des Tresors, bevor Computer beim Tresor registriert werden. Nachdem ein Element beim Tresor registriert wurde, wird die Speicherredundanzoption gesperrt und kann nicht mehr geändert werden.
+5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
-    Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden (wenn Sie beispielsweise von einem Windows-Server in Azure sichern), sollten Sie die (Standard-)Option [Georedundanter Speicher](../storage/storage-redundancy.md#geo-redundant-storage) in Betracht ziehen.
+6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Die vollständigen Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
 
-    Wenn Sie Azure als tertiären Speicherendpunkt für die Sicherung verwenden (wenn Sie beispielsweise System Center Data Protection Manager zum Erstellen einer lokalen Sicherungskopie und Azure für die langfristige Aufbewahrung benutzen), sollten Sie ggf. einen [lokal redundanten Speicher](../storage/storage-redundancy.md#locally-redundant-storage) auswählen. Dadurch werden die Kosten zum Speichern von Daten in Azure gesenkt, und es wird eine geringere Dauerhaftigkeit für Ihre Daten bereitgestellt, die möglicherweise für tertiäre Kopien ausreicht.
+7. Klicken Sie auf **Standort**, um die geografische Region für den Tresor auszuwählen. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden. Wenn Sie eine geografische Region in der Nähe Ihres eigenen Standorts auswählen, können Sie dadurch die Netzwerklatenz beim Sichern in Azure reduzieren.
 
-    **So wählen Sie die Speicherredundanzoption aus**
+8. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal. Nachdem der Tresor erstellt wurde, sollte er im Portal geöffnet werden. Sollte Ihr Tresor nach Abschluss des Vorgangs nicht in der Liste angezeigt werden, klicken Sie auf **Aktualisieren**. Klicken Sie in der aktualisierten Liste auf den Namen des Tresors.
 
-    a. Klicken Sie auf den Tresor, den Sie gerade erstellt haben.
+### So bestimmen Sie die Speicherredundanz
+Bei der erstmaligen Erstellung eines Recovery Services-Tresors bestimmen Sie, wie der Speicher repliziert werden soll.
 
-    b. Klicken Sie auf der Seite „Schnellstart“ auf **Konfigurieren**.
+1. Klicken Sie auf dem Blatt **Einstellungen**, das automatisch zusammen mit Ihrem Tresordashboard geöffnet wird, auf **Sicherungsinfrastruktur**.
 
-    ![Status zum Konfigurieren eines Tresors](./media/backup-configure-vault/configure-vault.png)
+2. Klicken Sie auf dem Blatt „Sicherungsinfrastruktur“ auf **Sicherungskonfiguration**, um den **Speicherreplikationstyp** anzuzeigen.
 
-    c. Wählen Sie die entsprechende Speicherredundanzoption aus.
+    ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-configure-vault/backup-infrastructure.png)
 
-    Wenn Sie **Lokal redundant** auswählen, müssen Sie auf **Speichern** klicken (weil **Georedundant** die Standardoption ist).
+3. Wählen Sie die Speicherreplikationsoption für den Tresor aus.
 
-    d. Klicken Sie im linken Navigationsbereich auf **Recovery Services**, um zur Liste mit den Ressourcen für Recovery Services zurückzukehren.
+    ![Liste mit den Recovery Services-Tresoren](./media/backup-configure-vault/choose-storage-configuration.png)
 
-## Schritt 2: Herunterladen der Datei mit Tresoranmeldeinformationen
-Der lokale Computer muss bei einem Sicherungstresor authentifiziert werden, bevor Daten in Azure gesichert werden können. Die Authentifizierung erfolgt mithilfe von *Tresoranmeldeinformationen*. Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem Azure-Portal heruntergeladen. Der private Schlüssel des Zertifikats ist nicht dauerhaft im Verwaltungsportal oder im Dienst gespeichert.
+    Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin den georedundanten Speicher. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie den lokal redundanten Speicher aus, um die Kosten für die Datenspeicherung in Azure zu verringern. Weitere Informationen zu den Optionen für [georedundanten](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in [dieser Übersicht](../storage/storage-redundancy.md).
 
-Erfahren Sie mehr über die [Verwendung von Tresoranmeldeinformationen zum Authentifizieren mit dem Backup-Dienst](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file).
+    Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie Ihre Dateien und Ordner dem Tresor zuordnen.
 
-### So laden Sie die Datei mit den Tresoranmeldeinformationen auf einen lokalen Computer herunter
+Nachdem Sie nun über einen Tresor verfügen, können Sie Ihre Infrastruktur zum Sichern von Dateien und Ordnern vorbereiten, indem Sie den Microsoft Azure Recovery Services-Agent herunterladen und installieren, Tresoranmeldeinformationen herunterladen und dann mit diesen Anmeldeinformationen den Agent beim Tresor registrieren.
 
-1. Klicken Sie im linken Navigationsbereich auf **Recovery Services**, und wählen Sie den von Ihnen erstellten Sicherungstresor aus.
+## Schritt 2: Herunterladen der Dateien
 
-    ![Abgeschlossen](./media/backup-configure-vault/rs-left-nav.png)
+>[AZURE.NOTE] Die Aktivierung der Sicherung über das Azure-Portal wird in Kürze verfügbar. Aktuell wird der Microsoft Azure Recovery Services-Agent lokal zum Sichern von Dateien und Ordnern verwendet.
 
-2.  Klicken Sie auf der Seite "Schnellstart" auf **Tresoranmeldeinformationen herunterladen**.
+1. Klicken Sie auf dem Dashboard des Recovery Services-Tresors auf **Einstellungen**.
 
-    Das Portal generiert Tresoranmeldeinformationen mit einer Kombination aus dem Tresornamen und dem aktuellen Datum. Die Datei mit den Tresoranmeldeinformationen wird nur während des Registrierungsworkflows verwendet und läuft nach 48 Stunden ab.
+    ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-configure-vault/settings-button.png)
 
-    Sie können die Datei mit den Tresoranmeldeinformationen aus dem Portal herunterladen.
+2. Klicken Sie auf dem Blatt „Einstellungen“ auf **Erste Schritte > Sicherung**.
 
-3. Klicken Sie auf **Speichern**, um die Tresoranmeldeinformationen in den Ordner „Downloads“ des lokalen Kontos herunterzuladen. Sie können auch im Menü **Speichern** die Option **Speichern unter** wählen, um einen Speicherort für die Datei mit den Tresoranmeldeinformationen anzugeben.
+    ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-configure-vault/getting-started-backup.png)
 
-    >[AZURE.NOTE] Stellen Sie sicher, dass die Datei mit den Tresoranmeldeinformationen an einem Ort gespeichert wird, der von Ihrem Computer aus zugänglich ist. Wenn sie auf einer Dateifreigabe oder in einem Server Message Block gespeichert ist, stellen Sie sicher, dass Sie die entsprechenden Berechtigungen für den Zugriff besitzen.
+3. Klicken Sie auf dem Blatt „Sicherung“ auf **Sicherungsziel**.
 
-## Schritt 3: Herunterladen, Installieren und Registrieren des Backup-Agents
-Nachdem Sie den Sicherungstresor erstellt und die Datei mit den Anmeldeinformationen heruntergeladen haben, muss ein Agent auf jedem Ihrer Windows-Computer installiert werden.
+    ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-configure-vault/backup-goal.png)
 
-### So laden Sie den Agent herunter und installieren und registrieren den Agent
+4. Wählen Sie im Menü „Wo wird Ihre Workload ausgeführt?“ die Option **Lokal** aus.
 
-1. Klicken Sie auf **Recovery Services**, und wählen Sie den Sicherungstresor aus, den Sie bei einem Server registrieren möchten.
+5. Wählen Sie im Menü „Was möchten Sie sichern?“ die Option **Dateien und Ordner** aus, und klicken Sie anschließend auf **OK**.
 
-2. Klicken Sie auf der Seite „Schnellstart“ auf **Agent für Windows Server oder System Center Data Protection Manager oder Windows-Client**. Klicken Sie anschließend auf **Save**.
+#### Herunterladen des Recovery Services-Agents
 
-    ![Agent speichern](./media/backup-configure-vault/agent.png)
+1. Klicken Sie auf dem Blatt **Infrastruktur vorbereiten** auf **Agent für Windows Server oder Windows-Client herunterladen**.
 
-3. Klicken Sie nach Abschluss des Downloads von „MARSagentInstaller.exe“ auf **Ausführen** (oder doppelklicken Sie am Speicherort auf **MARSAgentInstaller.exe**).
+    ![Vorbereiten der Infrastruktur](./media/backup-configure-vault/prepare-infrastructure-short.png)
 
-4. Wählen Sie den Installationsordner und den Cacheordner aus, die für den Agent erforderlich sind, und klicken Sie auf **Weiter**. Der von Ihnen angegebene Cachespeicherort muss freien Speicherplatz in einer Größenordnung enthalten, die mindestens 5 Prozent der Sicherungsdaten entspricht.
+2. Klicken Sie im Downloadpopupfenster auf **Speichern**. Die Datei **MARSagentinstaller.exe** wird standardmäßig in Ihrem Downloadordner gespeichert.
 
-5. Sie können die Internetverbindung weiterhin mit den standardmäßigen Proxyeinstellungen herstellen. Wenn Sie zum Herstellen der Internetverbindung einen Proxyserver verwenden, aktivieren Sie auf der Seite „Proxykonfiguration“ das Kontrollkästchen **Benutzerdefinierte Proxyeinstellungen verwenden**, und geben Sie die Details für den Proxyserver ein. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie die Informationen zum Benutzernamen und Kennwort ein und klicken auf **Weiter**.
+#### Herunterladen der Tresoranmeldedaten
 
-7. Klicken Sie auf **Installieren**, um mit der Installation des Agents zu beginnen. Der Backup-Agent installiert .NET Framework 4.5 und Windows PowerShell (falls noch nicht geschehen), um die Installation abzuschließen.
+1. Klicken Sie auf dem Blatt „Infrastruktur vorbereiten“ auf **Herunterladen > Speichern**.
 
-8. Klicken Sie nach der Installation des Agents auf **Mit Registrierung fortfahren**, um den Workflow fortzusetzen.
+    ![Vorbereiten der Infrastruktur](./media/backup-configure-vault/prepare-infrastructure-download.png)
 
-9. Navigieren Sie auf der Seite „Tresor-ID“ zu der Datei mit den Tresoranmeldeinformationen, die Sie zuvor heruntergeladen haben, und wählen Sie sie aus.
+## Schritt 3: Installieren und Registrieren des Agents
 
-    Die Datei mit den Tresoranmeldeinformationen ist nach dem Herunterladen aus dem Portal nur 48 Stunden lang gültig. Wenn auf dieser Seite Fehler auftreten (z.B. „Datei mit Tresoranmeldeinformationen abgelaufen“), melden Sie sich beim Portal an, und laden Sie die Datei mit den Tresoranmeldeinformationen erneut herunter.
+1. Doppelklicken Sie im Downloadordner (bzw. am entsprechenden Speicherort) auf die Datei **MARSagentinstaller.exe**.
 
-    Stellen Sie sicher, dass die Datei mit den Tresoranmeldeinformationen an einem Speicherort verfügbar ist, der für die Setupanwendung zugänglich ist. Wenn Zugriffsfehler auftreten, kopieren Sie die Datei mit den Tresoranmeldeinformationen in einen temporären Speicherort auf denselben Computer, und wiederholen Sie den Vorgang.
+2. Führen Sie die Schritte im Setup-Assistenten für den Microsoft Azure Recovery Services Agent aus. Zum Abschließen des Assistenten sind folgende Schritte erforderlich:
 
-    Wenn ein Fehler in Bezug auf die Tresoranmeldeinformationen angezeigt wird (z.B. „Ungültige Tresoranmeldeinformationen angegeben“), ist die Datei entweder beschädigt oder enthält nicht die aktuellen Anmeldeinformationen, die dem Wiederherstellungsdienst zugeordnet sind. Wiederholen Sie den Vorgang, nachdem Sie eine neue Datei mit Tresoranmeldeinformationen vom Portal heruntergeladen haben. Dieser Fehler kann auch auftreten, wenn der Benutzer mehrmals hintereinander schnell auf die Option **Tresoranmeldedaten herunterladen** klickt. In diesem Fall ist nur die zuletzt heruntergeladene Datei mit Tresoranmeldeinformationen gültig.
+    - Wählen Sie einen Speicherort für den Installations- und Cacheordner aus.
+    - Geben Sie Ihre Proxyserverinformationen an, wenn Sie einen Proxyserver verwenden, um eine Internetverbindung herzustellen.
+    - Geben Sie die Informationen zum Benutzernamen und zum Kennwort ein, wenn Sie einen authentifizierten Proxy verwenden.
+    - Angeben der heruntergeladenen Tresoranmeldeinformationen
+    - Speichern Sie die Verschlüsselungspassphrase an einem sicheren Ort.
 
-9. Auf der Seite Bildschirm „Verschlüsselungseinstellung“ können Sie entweder eine Passphrase generieren oder eine Passphrase angeben (mindestens 16 Zeichen). Vergessen Sie nicht, die Passphrase an einem sicheren Speicherort zu speichern.
+    >[AZURE.NOTE] Wenn Sie die Passphrase verlieren oder vergessen, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Speichern Sie die Datei daher an einem sicheren Ort. Sie ist erforderlich, um eine Sicherung wiederherzustellen.
 
-10. Klicken Sie auf **Fertig stellen**. Mit dem Assistenten zum Registrieren von Servern wird der Server bei Backup registriert.
-
-
-    > [AZURE.WARNING] Wenn Sie die Passphrase verlieren oder vergessen, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Sie sind im Besitz der Verschlüsselungspassphrase, und Microsoft kann nicht auf die von Ihnen verwendete Passphrase zugreifen. Speichern Sie die Datei an einem sicheren Ort, da sie bei einem Wiederherstellungsvorgang erforderlich ist.
-
-11. Lassen Sie nach dem Festlegen des Verschlüsselungsschlüssels das Kontrollkästchen **Microsoft Azure Recovery Services-Agent starten** aktiviert, und klicken Sie dann auf **Schließen**.
+Der Agent wurde jetzt installiert, und Ihr Computer wurde im Tresor registriert. Sie können die Sicherung jetzt konfigurieren und planen.
 
 ## Schritt 4: Abschließen der ersten Sicherung
 
 Die erste Sicherung umfasst zwei wichtige Aufgaben:
 
-- Erstellen des Sicherungszeitplans
+- Planen der Sicherung
 - Erstmaliges Sichern von Dateien und Ordnern
 
-Wenn die erste Sicherung von der Sicherungsrichtlinie abgeschlossen wird, werden Sicherungspunkte erstellt, die Sie zum Wiederherstellen der Daten verwenden können. Die Sicherungsrichtlinie führt diesen Schritt basierend auf dem von Ihnen erstellten Zeitplan aus.
+Für die erste Sicherung verwenden Sie den Microsoft Azure Backup-Agent.
 
 ### So planen Sie die Sicherung
 
-1. Öffnen Sie den Microsoft Azure Backup-Agent. (Er wird automatisch geöffnet, wenn Sie beim Schließen des Assistenten zum Registrieren von Servern das Kontrollkästchen **Microsoft Azure Recovery Services-Agent starten** aktiviert gelassen haben.) Sie finden den Agent, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
+1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
 
     ![Starten des Azure Backup-Agents](./media/backup-configure-vault/snap-in-search.png)
 
 2. Klicken Sie im Backup-Agent auf **Sicherung planen**.
 
-    ![Planen einer Windows Server-Sicherung](./media/backup-configure-vault/schedule-backup-close.png)
+    ![Planen einer Windows Server-Sicherung](./media/backup-configure-vault/schedule-first-backup.png)
 
-3. Klicken Sie im Assistenten zum Planen der Sicherung auf der Seite mit ersten Schritten auf **Weiter**.
+3. Klicken Sie im Assistenten zum Planen der Sicherung auf der Seite mit den ersten Schritten auf **Weiter**.
 
 4. Klicken Sie auf der Seite „Elemente für Sicherung auswählen“ auf **Elemente hinzufügen**.
 
@@ -163,7 +166,7 @@ Wenn die erste Sicherung von der Sicherungsrichtlinie abgeschlossen wird, werden
 
     ![Elemente eines Windows Server-Backups](./media/backup-configure-vault/specify-backup-schedule-close.png)
 
-    >[AZURE.NOTE] Weitere Informationen dazu, wie Sie den Sicherungszeitplan angeben, finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
+    >[AZURE.NOTE] Weitere Informationen zum Angeben des Sicherungszeitplans finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
 
 8. Wählen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen** die **Aufbewahrungsrichtlinie** für die Sicherungskopie aus.
 
@@ -171,11 +174,11 @@ Wenn die erste Sicherung von der Sicherungsrichtlinie abgeschlossen wird, werden
 
 9. Wählen Sie auf der Seite „Erstsicherungstyp wählen“ den Typ für die erste Sicherung. Lassen Sie die Option **Automatisch über das Netzwerk** aktiviert, und klicken Sie auf **Weiter**.
 
-    Sie können die Sicherung automatisch über das Netzwerk oder offline durchführen. In den verbleibenden Abschnitten dieses Artikels wird das Verfahren für eine automatische Sicherung beschrieben. Falls Sie es vorziehen, eine Offlinesicherung durchzuführen, finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md) weitere Informationen.
+    Sie können die Sicherung automatisch über das Netzwerk oder offline durchführen. In den verbleibenden Abschnitten dieses Artikels wird das Verfahren für eine automatische Sicherung beschrieben. Falls Sie vorziehen, eine Offlinesicherung durchzuführen, finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md) weitere Informationen.
 
 10. Lesen Sie sich die Informationen auf der Seite „Bestätigung“ durch, und klicken Sie dann auf **Fertig stellen**.
 
-11. Nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat, klicken Sie auf **Schließen**.
+11. Klicken Sie auf **Schließen**, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
 
 ### Aktivieren der Netzwerkdrosselung (optional)
 
@@ -193,13 +196,13 @@ Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird d
 
 3. Nachdem Sie die Drosselung aktiviert haben, geben Sie die zulässige Bandbreite für die Sicherungsdatenübertragung für **Arbeitsstunden** und **Arbeitsfreie Stunden** an.
 
-    Die Bandbreitenwerte können zwischen 512 Kilobyte pro Sekunde (KBit/s) 1.023 Megabyte pro Sekunde (MBit/s) liegen. Sie können außerdem den Start und das Ende für die **Arbeitsstunden** angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Stunden außerhalb der festgelegten Arbeitsstunden gelten arbeitsfreie Stunden.
+    Die Bandbreitenwerte beginnen bei 512 Kilobits pro Sekunde (KBit/s) und können mit bis zu 1.023 Megabits pro Sekunde (MBit/s) angegeben werden. Sie können außerdem den Start und das Ende für die **Arbeitsstunden** angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Stunden außerhalb der festgelegten Arbeitsstunden gelten arbeitsfreie Stunden.
 
 4. Klicken Sie auf **OK**.
 
-### So führen Sie eine sofortige Sicherung aus
+### So führen Sie erstmals eine Sicherung von Dateien und Ordnern durch
 
-1. Klicken Sie im Backup-Agent auf **Jetzt sichern**, um das anfängliche Seeding über das Netzwerk abzuschließen.
+1. Klicken Sie im Backup-Agent auf **Jetzt sichern**, um das erste Seeding über das Netzwerk abzuschließen.
 
     ![Windows Server jetzt sichern](./media/backup-configure-vault/backup-now.png)
 
@@ -207,17 +210,17 @@ Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird d
 
 3. Klicken Sie auf **Schließen**, um den Assistenten zu schließen. Wenn Sie auf „Schließen“ klicken, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
 
-Wenn die erste Sicherung abgeschlossen ist, wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.
+Nach Abschluss der ersten Sicherung wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.
 
 ![Abgeschlossen](./media/backup-configure-vault/ircomplete.png)
 
-## Nächste Schritte
-- Registrieren Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/).
+## Fragen?
+Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
+## Nächste Schritte
 Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Workloads finden Sie hier:
 
-- [Sichern von IaaS-VMs](backup-azure-vms-prepare.md)
-- [Sichern von Workloads in Azure mit Microsoft Azure Backup Server](backup-azure-microsoft-azure-backup.md)
-- [Sichern von Workloads in Azure mit DPM](backup-azure-dpm-introduction.md)
+- Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
+- Informationen zum Wiederherstellen einer Sicherung finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

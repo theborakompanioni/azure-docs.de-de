@@ -24,90 +24,134 @@ Der Artikel [Get started with Log Analytics](log-analytics-get-started.md) (Erst
 
 Auch wenn Sie nicht alle Verwaltungsaufgaben gleich ausführen müssen, werden hier die häufig ausgeführten Aufgaben behandelt, die Sie in den folgenden Abschnitten unter Umständen benötigen:
 
+- Bestimmen der benötigten Anzahl von Arbeitsbereichen
 - Verwalten von Konten und Benutzern
 - Hinzufügen einer Gruppe zu einem vorhandenen Arbeitsbereich
-- Bestimmen der benötigten Anzahl von Arbeitsbereichen
 - Verknüpfen eines vorhandenen Arbeitsbereichs mit einem Azure-Abonnement
 - Upgrade eines Arbeitsbereichs auf einen kostenpflichtigen Datenplan
 - Ändern des Datenplantyps
 - Hinzufügen einer Azure Active Directory-Organisation zu einem vorhandenen Arbeitsbereich
-- Steuern des Zugriffs auf OMS-Log Analytics-Ressourcen
 - Schließen Ihres OMS-Arbeitsbereichs
-
-## Verwalten von Konten und Benutzern
-Sie verwalten Konten und Benutzer mithilfe der Registerkarte **Konten** auf der Einstellungsseite. Dort können Sie in den folgenden Bereichen die Aufgaben ausführen.
-
-![Verwalten von Benutzern](./media/log-analytics-manage-access/setup-workspace-manage-users.png)
-
-### Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich
-
-Gehen Sie folgendermaßen vor, um einen Benutzer oder eine Gruppe zu einem OMS-Arbeitsbereich hinzuzufügen. Der Benutzer oder die Gruppe kann alle Warnungen, die diesem Arbeitsbereich zugeordnet sind, anzeigen und darauf reagieren.
-
->[AZURE.NOTE] Wenn Sie einen Benutzer oder eine Gruppe aus Ihrem Azure Active Directory-Organisationskonto hinzufügen möchten, müssen Sie zunächst sicherstellen, dass Sie Ihr OMS-Konto mit Ihrer Active Directory-Domäne verknüpft haben. Siehe [Hinzufügen einer Azure Active Directory-Organisation zu einem vorhandenen Arbeitsbereich](#add-an-azure-active-directory-organization-to-an-existing-workspace).
-
-#### So fügen Sie einen Benutzer einem vorhandenen Arbeitsbereich hinzu
-1. Klicken Sie in OMS auf die Kachel **Einstellungen**.
-2. Klicken Sie auf Registerkarte **Konten**.
-3. Wählen Sie im Abschnitt **Benutzer verwalten** den hinzuzufügenden Kontotyp aus: **Unternehmenskonto** oder **Microsoft-Konto**.
-    - Wenn Sie „Microsoft-Konto“ auswählen, geben Sie die E-Mail-Adresse des Benutzers ein, der dem Microsoft-Konto zugeordnet ist.
-    - Wenn Sie „Unternehmenskonto“ auswählen, können Sie einen Teil des Benutzer- oder Gruppennamens bzw. des E-Mail-Alias eingeben. Anschließend wird eine Liste der Benutzer und Gruppen angezeigt. Wählen Sie einen Benutzer oder eine Gruppe aus.
-
-    >[AZURE.NOTE] Damit Sie eine optimale Leistung erzielen, begrenzen Sie die Anzahl von Active Directory-Gruppen, die einem einzelnen OMS-Konto zugeordnet sind, auf zwei – eines für Administratoren und eines für Benutzer. Mehr Gruppen können sich auf die Leistung von Log Analytics auswirken.
-
-7. Wählen Sie den hinzuzufügenden Benutzer- oder Gruppentyp aus: **Administrator** oder **Benutzer**.
-8. Klicken Sie auf **Hinzufügen**.
-
-  Wenn Sie ein Microsoft-Konto hinzufügen, wird eine Einladung zur Teilnahme am Arbeitsbereich an die angegebene E-Mail-Adresse gesendet. Nachdem der Benutzer die Anweisungen in der Einladung zur Teilnahme an OMS befolgt hat, kann er die Warnungen und Kontoinformationen für dieses OMS-Konto anzeigen, und Sie können die Benutzerinformationen auf der Seite **Einstellungen** auf der Registerkarte **Konten** anzeigen. Wenn Sie ein Organisationskonto hinzufügen, kann der Benutzer sofort auf Log Analytics zugreifen. ![Einladungs-E-Mail](./media/log-analytics-manage-access/setup-workspace-invitation-email.png)
-
-### Bearbeiten eines vorhandenen Benutzertyps
-
-Sie können die Kontorolle eines Benutzers ändern, der Ihrem OMS-Konto zugeordnet ist. Sie haben die folgenden Rollenoptionen:
-
- - *Administrator*: Kann Benutzer verwalten, alle Warnungen anzeigen und darauf reagieren sowie Server hinzufügen und entfernen
-
- - *Benutzer*: Kann alle Warnungen anzeigen und darauf reagieren sowie Server hinzufügen und entfernen
-
-#### So bearbeiten Sie ein Konto
-1. Wählen Sie in OMS auf der Seite **Einstellungen** auf der Registerkarte **Konten** die Rolle für den Benutzer aus, die Sie ändern möchten.
-2. Klicken Sie auf **OK**.
-
-## Entfernen eines Benutzers aus einem OMS-Arbeitsbereich
-
-Gehen Sie folgendermaßen vor, um einen Benutzer aus einem OMS-Arbeitsbereich zu entfernen. Beachten Sie, dass dadurch der Arbeitsbereich des Benutzers nicht geschlossen wird. Stattdessen wird die Zuordnung zwischen diesem Benutzer und dem Arbeitsbereich aufgehoben. Wenn ein Benutzer mehreren Arbeitsbereichen zugeordnet ist, kann sich dieser Benutzer weiter bei OMS anmelden.
-
-### So entfernen Sie einen Benutzer aus einem Arbeitsbereich
-
-1. Klicken Sie in OMS auf der Seite **Einstellungen** auf der Registerkarte **Konten** neben dem Benutzernamen, den Sie entfernen möchten, auf „Entfernen“.
-2. Klicken Sie auf **OK**, um zu bestätigen, dass Sie den Benutzer entfernen möchten.
-
-
-## Hinzufügen einer Gruppe zu einem vorhandenen Arbeitsbereich
-
-1.	Führen Sie die oben unter „So fügen Sie einen Benutzer einem vorhandenen Arbeitsbereich hinzu“ beschriebenen Schritte 1–4 aus.
-2.	Wählen Sie unter **Choose User/Group** (Benutzer/Gruppe auswählen) die Option **Gruppe** aus. ![Hinzufügen einer Gruppe zu einem vorhandenen Arbeitsbereich](./media/log-analytics-manage-access/add-group.png)
-3.	Geben Sie den Anzeigenamen oder die E-Mail-Adresse für die Gruppe ein, die Sie hinzufügen möchten.
-4.	Wählen Sie aus der Liste die gewünschte Gruppe aus, und klicken Sie auf **Hinzufügen**.
 
 ## Bestimmen der benötigten Anzahl von Arbeitsbereichen
 
-Ein Arbeitsbereich wird im Azure-Verwaltungsportal als Azure-Ressource angezeigt.
+Ein Arbeitsbereich ist eine Azure-Ressource. Es handelt sich hierbei um einen Container, in dem Daten gesammelt, aggregiert, analysiert und im OMS-Portal angezeigt werden.
 
-Sie können entweder einen neuen Arbeitsbereich erstellen oder eine Verknüpfung mit einem vorhandenen Arbeitsbereich herstellen, den Sie zuvor für die Verwendung mit System Center Operations Manager geöffnet, aber möglicherweise noch keinem Azure-Abonnement zugeordnet haben (was für die Abrechnung erforderlich ist).
+Es ist möglich, mehrere OMS Log Analytics-Arbeitsbereiche zu erstellen, und Benutzer können Zugriff auf einen oder mehrere Arbeitsbereiche haben. Meist ist es ratsam, die Anzahl von Arbeitsbereichen zu reduzieren, da Sie auf diese Weise die meisten Daten abfragen und korrelieren können. In diesem Abschnitt wird beschrieben, wann es hilfreich sein kann, mehr als einen Arbeitsbereich zu erstellen.
 
-Ein Arbeitsbereich stellt die Ebene dar, auf der Daten erfasst, aggregiert, analysiert und im OMS-Portal angezeigt werden. Sie können nach Wunsch mit mehreren Arbeitsbereichen arbeiten, um Daten aus verschiedenen Umgebungen und Systemen zu trennen. Jede Operations Manager-Verwaltungsgruppe (und alle ihre Agents) oder einzelne VMs/Agents können jeweils mit nur einem Arbeitsbereich verbunden werden.
+Ein Log Analytics-Arbeitsbereich bietet derzeit Folgendes:
+
+- Einen geografischen Standort für die Speicherung von Daten 
+- Granularität für die Abrechnung 
+- Datenisolation 
+
+Basierend auf den obigen Merkmalen sollten Sie mehrere Arbeitsbereiche erstellen, wenn Folgendes gilt:
+
+- Sie sind ein globales Unternehmen und müssen Daten aus Gründen der Datensouveränität bzw. aus Compliancegründen in bestimmten Regionen speichern. 
+- Sie nutzen Azure und möchten Gebühren für ausgehende Datenübertragungen vermeiden, indem Sie einen Log Analytics-Arbeitsbereich in derselben Region wie die verwalteten Azure-Ressourcen nutzen.
+- Sie möchten Gebühren basierend auf der Nutzung unterschiedlichen Abteilungen bzw. Geschäftseinheiten zuordnen. Indem Sie einen Arbeitsbereich für jede Abteilung bzw. Geschäftseinheit erstellen, werden die Gebühren in Ihrer Azure-Rechnung und Nutzungsaufstellung für jeden Arbeitsbereich separat aufgeführt.
+- Sie sind ein Service Provider mit Verwaltung und müssen die Log Analytics-Daten für jeden Kunden, den Sie verwalten, von den Daten der anderen Kunden isolieren. 
+- Sie verwalten mehrere Kunden und möchten erreichen, dass jeder Kunde, jede Abteilung und jede Geschäftseinheit die eigenen Daten sieht, aber nicht die Daten für andere Kunden, Abteilungen oder Geschäftseinheiten. 
+
+Wenn Sie Agents zum Sammeln von Daten verwenden, können Sie jeden Agent so konfigurieren, dass er Daten an den erforderlichen Arbeitsbereich liefert.
+
+Wenn Sie System Center Operations Manager verwenden, kann jede Operations Manager-Verwaltungsgruppe nur mit einem Arbeitsbereich verbunden werden. Sie können den Microsoft Monitoring Agent auf Computern installieren, die mit Operations Manager verwaltet werden, und den Agent so einrichten, dass er sowohl Daten an Operations Manager als auch an einen anderen Log Analytics-Arbeitsbereich liefert.
+
+## Verwalten von Konten und Benutzern
 
 Jedem Arbeitsbereich können mehrere Benutzerkonten zugeordnet sein, wobei jedes Benutzerkonto (Microsoft- oder Organisationskonto) Zugriff auf mehrere OMS-Arbeitsbereiche hat.
 
 Standardmäßig wird der Besitzer des Microsoft- oder Organisationskontos, das zum Erstellen des Arbeitsbereichs verwendet wird, zum Administrator des Arbeitsbereichs. Der Administrator kann anschließend zusätzliche Microsoft-Konten einladen oder Benutzer in seinem Azure Active Directory auswählen.
 
+Das Gewähren von Zugriff auf den OMS-Arbeitsbereich kann an zwei Stellen gesteuert werden:
+
+- Mit der rollenbasierten Zugriffssteuerung von Azure können Sie den Zugriff auf das Azure-Abonnement und die dazugehörigen Azure-Ressourcen bereitstellen. Sie wird auch für den Zugriff auf PowerShell und die REST-API verwendet.
+- Der ausschließliche Zugriff auf das OMS-Portal ohne Zugriff auf das dazugehörige Azure-Abonnement kann im OMS-Portal verwaltet werden.
+
+Wenn Sie Benutzern Zugriff auf das OMS-Portal gewährt haben, auf das damit verknüpfte Azure-Abonnement jedoch nicht, werden diesen Benutzern auf den Kacheln für Automation, Backup und Site Recovery keine Daten angezeigt, wenn sie sich beim OMS-Portal anmelden.
+
+Damit die Daten in diesen Lösungen allen Benutzern angezeigt werden, benötigen sie mindestens **Lesezugriff** für das mit dem OMS-Arbeitsbereich verknüpfte Automation-Konto, den Sicherungstresor und den Site Recovery-Tresor.
+
+### Verwalten des Zugriffs auf Log Analytics mit dem Azure-Portal
+
+Wenn Sie Benutzern Zugriff auf den Log Analytics-Arbeitsbereich gewähren, indem Sie Azure-Berechtigungen verwenden (z.B. im Azure-Portal), können diese Benutzer auch auf das Log Analytics-Portal zugreifen. Wenn Benutzer sich im Azure-Portal befinden, können sie zum OMS-Portal navigieren, indem sie beim Anzeigen der Log Analytics-Arbeitsbereichressource auf die Aufgabe „OMS-Portal“ klicken.
+
+Beachten Sie hierbei vier wichtige Punkte:
+
+1. Dies ist keine rollenbasierte Zugriffssteuerung. Wenn Sie im Azure-Portal für den Log Analytics-Arbeitsbereich Zugriffsberechtigungen vom Typ „Leser” haben, können Sie Änderungen über das OMS-Portal vornehmen. Für das OMS-Portal wird das Konzept „Administrator“, „Mitwirkender“ und „ReadOnly-Benutzer“ (nur Lesezugriff) verwendet. Wenn sich das Konto, mit dem Sie sich angemeldet haben, in der Azure Active Directory-Instanz mit Verknüpfung zum Arbeitsbereich befindet, gelten Sie im OMS-Portal als Administrator. Andernfalls sind Sie ein Mitwirkender.
+2. Falls Sie sich am OMS-Portal mit „mms.microsoft.com“ anmelden, enthält die Liste „Arbeitsbereich wählen” nur Arbeitsbereiche, denen Sie im OMS-Portal hinzugefügt wurden. Zum Anzeigen der Arbeitsbereiche, auf die Sie über Azure-Abonnements Zugriff haben, müssen Sie als Teil der URL einen Mandanten angeben, z.B. „mms.microsoft.com/?tenant=contoso.com“. (Der Mandantenbezeichner ist häufig der letzte Teil der E-Mail-Adresse, mit der Sie sich anmelden.)
+3. Wenn das Konto, mit dem Sie sich anmelden, ein Konto in der Mandanten-AAD-Instanz ist (ist normalerweise der Fall, es sei denn, Sie melden sich als CSP an), gelten Sie im OMS-Portal als Administrator. Wenn sich Ihr Konto nicht in der Mandanten-AAD-Instanz befindet, sind Sie im OMS-Portal ein Benutzer.
+4. Wenn Sie direkt zu einem Portal navigieren möchten, auf das Sie mit Azure-Berechtigungen Zugriff haben, müssen Sie die Ressource als Teil der URL angeben. Es ist möglich, diese URL über PowerShell abzurufen, z.B. (Get-AzureRmOperationalInsightsWorkspace).PortalUrl. Die URL sieht dann wie folgt aus: https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12
+
+
+### Verwalten von Benutzern im OMS-Portal
+
+Sie verwalten Konten und Benutzer mithilfe der Registerkarte **Konten** auf der Einstellungsseite. Dort können Sie in den folgenden Bereichen die Aufgaben ausführen.
+
+![Verwalten von Benutzern](./media/log-analytics-manage-access/setup-workspace-manage-users.png)
+
+#### Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich
+
+Gehen Sie folgendermaßen vor, um einen Benutzer oder eine Gruppe zu einem OMS-Arbeitsbereich hinzuzufügen. Der Benutzer oder die Gruppe kann alle Warnungen, die diesem Arbeitsbereich zugeordnet sind, anzeigen und darauf reagieren.
+
+>[AZURE.NOTE] Wenn Sie einen Benutzer oder eine Gruppe aus Ihrem Azure Active Directory-Organisationskonto hinzufügen möchten, müssen Sie zunächst sicherstellen, dass Sie Ihr OMS-Konto mit Ihrer Active Directory-Domäne verknüpft haben. Siehe [Hinzufügen einer Azure Active Directory-Organisation zu einem vorhandenen Arbeitsbereich](#add-an-azure-active-directory-organization-to-an-existing-workspace).
+
+1. Klicken Sie in OMS auf die Kachel **Einstellungen**.
+2. Klicken Sie auf Registerkarte **Konten**.
+3. Wählen Sie im Abschnitt **Benutzer verwalten** den hinzuzufügenden Kontotyp aus: **Unternehmenskonto**, **Microsoft-Konto** oder **Microsoft-Support**.
+    - Wenn Sie „Microsoft-Konto“ auswählen, geben Sie die E-Mail-Adresse des Benutzers ein, der dem Microsoft-Konto zugeordnet ist.
+    - Wenn Sie „Unternehmenskonto“ auswählen, können Sie einen Teil des Benutzer- oder Gruppennamens bzw. des E-Mail-Alias eingeben. Anschließend wird eine Liste der Benutzer und Gruppen angezeigt. Wählen Sie einen Benutzer oder eine Gruppe aus.
+    - Verwenden Sie „Microsoft-Support“, um einem Microsoft-Supportmitarbeiter vorübergehenden Zugriff auf Ihren Arbeitsbereich zu gewähren, damit er bei der Problembehandlung behilflich sein kann.
+
+    >[AZURE.NOTE] Damit Sie eine optimale Leistung erzielen, sollten Sie die Anzahl von Active Directory-Gruppen, die einem einzelnen OMS-Konto zugeordnet sind, auf drei begrenzen – eines für Administratoren, eines für Mitwirkende und eines für ReadOnly-Benutzer. Mehr Gruppen können sich auf die Leistung von Log Analytics auswirken.
+
+7. Wählen Sie den hinzuzufügenden Benutzer- oder Gruppentyp aus: **Administrator**, **Mitwirkender** oder **ReadOnly-Benutzer** .
+8. Klicken Sie auf **Hinzufügen**.
+
+  Wenn Sie ein Microsoft-Konto hinzufügen, wird eine Einladung zur Teilnahme am Arbeitsbereich an die angegebene E-Mail-Adresse gesendet. Nachdem der Benutzer die Anweisungen in der Einladung zur Teilnahme an OMS befolgt hat, kann er die Warnungen und Kontoinformationen für dieses OMS-Konto anzeigen, und Sie können die Benutzerinformationen auf der Seite **Einstellungen** auf der Registerkarte **Konten** anzeigen. Wenn Sie ein Organisationskonto hinzufügen, kann der Benutzer sofort auf Log Analytics zugreifen. ![Einladungs-E-Mail](./media/log-analytics-manage-access/setup-workspace-invitation-email.png)
+
+#### Bearbeiten eines vorhandenen Benutzertyps
+
+Sie können die Kontorolle eines Benutzers ändern, der Ihrem OMS-Konto zugeordnet ist. Sie haben die folgenden Rollenoptionen:
+
+ - *Administrator*: Kann Benutzer verwalten, alle Warnungen anzeigen und darauf reagieren sowie Server hinzufügen und entfernen
+
+ - *Mitwirkender*: Kann alle Warnungen anzeigen und darauf reagieren sowie Server hinzufügen und entfernen
+
+ - *ReadOnly-Benutzer*: Benutzer, die als schreibgeschützt gekennzeichnet sind, können Folgendes nicht durchführen:
+   1. Lösungen hinzufügen/entfernen (Lösungskatalog ist ausgeblendet)
+   2. Kacheln unter „Mein Dashboard“ hinzufügen/ändern/entfernen
+   3. Einstellungsseiten anzeigen (Seiten sind ausgeblendet)
+   4. In der Suchansicht: PowerBI-Konfiguration, gespeicherte Suchen und Warnungsaufgaben sind ausgeblendet
+
+
+#### So bearbeiten Sie ein Konto
+1. Wählen Sie in OMS auf der Seite **Einstellungen** auf der Registerkarte **Konten** die Rolle für den Benutzer aus, die Sie ändern möchten.
+2. Klicken Sie auf **OK**.
+
+### Entfernen eines Benutzers aus einem OMS-Arbeitsbereich
+
+Gehen Sie folgendermaßen vor, um einen Benutzer aus einem OMS-Arbeitsbereich zu entfernen. Beachten Sie, dass dadurch der Arbeitsbereich des Benutzers nicht geschlossen wird. Stattdessen wird die Zuordnung zwischen diesem Benutzer und dem Arbeitsbereich aufgehoben. Wenn ein Benutzer mehreren Arbeitsbereichen zugeordnet ist, kann sich dieser Benutzer weiter bei OMS anmelden und andere Arbeitsbereiche anzeigen.
+
+1. Klicken Sie in OMS auf der Seite **Einstellungen** auf der Registerkarte **Konten** neben dem Benutzernamen, den Sie entfernen möchten, auf „Entfernen“.
+2. Klicken Sie auf **OK**, um zu bestätigen, dass Sie den Benutzer entfernen möchten.
+
+
+### Hinzufügen einer Gruppe zu einem vorhandenen Arbeitsbereich
+
+1.	Führen Sie die oben unter „So fügen Sie einen Benutzer einem vorhandenen Arbeitsbereich hinzu“ beschriebenen Schritte 1–4 aus.
+2.	Wählen Sie unter **Choose User/Group** (Benutzer/Gruppe auswählen) die Option **Gruppe** aus. ![Hinzufügen einer Gruppe zu einem vorhandenen Arbeitsbereich](./media/log-analytics-manage-access/add-group.png)
+3.	Geben Sie den Anzeigenamen oder die E-Mail-Adresse für die Gruppe ein, die Sie hinzufügen möchten.
+4.	Wählen Sie in der Liste die gewünschte Gruppe aus, und klicken Sie auf **Hinzufügen**.
+
 ## Verknüpfen eines vorhandenen Arbeitsbereichs mit einem Azure-Abonnement
 
 Ein Arbeitsbereich kann auf der Webseite [microsoft.com/oms](https://microsoft.com/oms) erstellt werden. Es gelten jedoch bestimmte Grenzwerte für diese Arbeitsbereiche. Der wichtigste bei der Verwendung eines kostenlosen Kontos ist die Beschränkung auf 500 MB/Tag für das Hochladen von Daten. Um Änderungen für diesen Arbeitsbereich vorzunehmen, müssen Sie Ihren **vorhandenen Arbeitsbereich mit einem Azure-Abonnement verknüpfen**.
 
->[AZURE.IMPORTANT] Damit Sie einen Arbeitsbereich verknüpfen können, muss Ihr Azure-Konto bereits Zugriff auf den Arbeitsbereich haben, zu dem Sie eine Verknüpfung herstellen möchten. Anders ausgedrückt muss das Konto, das Sie für den Zugriff auf das Azure-Portal verwenden, **identisch** mit dem Konto sein, mit dem Sie auf Ihren OMS-Arbeitsbereich zugreifen. Wenn dies nicht der Fall ist, finden Sie weitere Informationen unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace).
+>[AZURE.IMPORTANT] Damit Sie einen Arbeitsbereich verknüpfen können, muss Ihr Azure-Konto bereits Zugriff auf den Arbeitsbereich haben, zu dem Sie eine Verknüpfung herstellen möchten. Anders ausgedrückt: Das Konto, das Sie für den Zugriff auf das Azure-Portal verwenden, muss **identisch** mit dem Konto sein, mit dem Sie auf Ihren OMS-Arbeitsbereich zugreifen. Wenn dies nicht der Fall ist, finden Sie weitere Informationen unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace).
 
 1.	Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
-2.	Suchen Sie nach **Log Analytics (OMS)**, und wählen Sie die Lösung aus.
+2.	Suchen Sie nach **Log Analytics (OMS)**, und wählen Sie diese Option aus.
 3.	Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Klicken Sie auf **Hinzufügen**. ![Liste der Arbeitsbereiche](./media/log-analytics-manage-access/manage-access-link-azure01.png)
 4.	Klicken Sie unter **OMS Workspace** (OMS-Arbeitsbereich) auf **Or link existing** (Oder vorhandenen einfügen). ![Vorhandene verknüpfen](./media/log-analytics-manage-access/manage-access-link-azure02.png)
 5.	Klicken Sie auf **Erforderliche Einstellungen konfigurieren**. ![Konfigurieren erforderlicher Einstellungen](./media/log-analytics-manage-access/manage-access-link-azure03.png)
@@ -133,7 +177,7 @@ Es gibt drei Arten von Arbeitsbereichsdatenplänen für OMS: **Kostenlos**, **St
 
 Das OMS-Add-On für System Center umfasst eine Berechtigung für den Premium-Plan von OMS Log Analytics (siehe [Preise](https://www.microsoft.com/de-DE/server-cloud/operations-management-suite/pricing.aspx)).
 
-Wenn Sie das OMS-Add-On für System Center kaufen, wird Ihr Microsoft-Konto-Team oder der Händler die OMS-Add-Ons Ihrem Enterprise Agreement, das Ihre Azure-Käufe enthält, zuordnen. Ihr OMS-Add-On erstellt eine Berechtigung für Ihre Vereinbarung, und jedes Azure-Abonnement kann diese Berechtigung verwenden. Dadurch können Sie zum Beispiel mehrere OMS-Arbeitsbereiche haben, die die Berechtigung des OMS-Add-Ons verwenden.
+Wenn Sie das OMS-Add-On für System Center kaufen, wird das OMS-Add-On in Ihrem System Center-Vertrag als Berechtigung hinzugefügt. Alle Azure-Abonnements, die im Rahmen dieses Vertrags erstellt werden, können die Berechtigung verwenden. Dadurch können Sie zum Beispiel mehrere OMS-Arbeitsbereiche haben, die die Berechtigung des OMS-Add-Ons verwenden.
 
 Gehen Sie folgendermaßen vor, um sicherzustellen, dass die Berechtigungen des OMS-Add-Ons auf die Verwendung eines OMS-Arbeitsbereichs angewandt werden:
 
@@ -148,7 +192,7 @@ Wenn Sie das Azure-Abonnement ändern möchten, mit dem Ihr OMS-Arbeitsbereich v
 
 Wenn Sie den eigenständigen Tarif für OMS-Komponenten auswählen, zahlen Sie für jede OMS-Komponenten separat, und die Nutzung wird auf Ihrer Azure-Rechnung ausgewiesen.
 
-Wenn Sie die Azure-Nutzung in einem gewissen Umfang als Teil Ihres Enterprise Agreements bezahlt haben, wird die Nutzung von OMS mit Ihrer vorausgezahlten Nutzung verrechnet. Damit Sie die Azure Commitment-Preise für OMS-Log Analytics verwenden können, muss das Abonnement, mit dem der OMS-Arbeitsbereich verknüpft ist, zum Azure Enterprise Agreement gehören.
+Wenn Sie über einen monetären Azure-Verpflichtungsbetrag für die Unternehmensanmeldung verfügen, mit der Ihre Azure-Abonnements verknüpft sind, wird jegliche Nutzung von Log Analytics automatisch mit dem verbleibenden monetären Verpflichtungsbetrag verrechnet.
 
 Wenn Sie das Azure-Abonnement ändern möchten, mit dem der OMS-Arbeitsbereich verknüpft ist, können Sie das Azure PowerShell-Cmdlet [Move-AzureRMResource](https://msdn.microsoft.com/library/mt652516.aspx) verwenden.
 
@@ -170,24 +214,17 @@ Nun können Sie Daten erfassen, ohne dass die Beschränkung eines kostenlosen Pl
 
 Sie können Ihren Operational Insights (OMS)-Arbeitsbereich einer Azure Active Directory-Domäne zuordnen. Dies ermöglicht es Ihnen, Benutzer aus Active Directory direkt Ihrem OMS-Arbeitsbereich hinzuzufügen, ohne dass ein separates Microsoft-Konto erforderlich ist.
 
+Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Unternehmenskonto verknüpft.
+
+Falls Sie den Arbeitsbereich über das OMS-Portal erstellen, werden Sie aufgefordert, eine Verknüpfung mit einem Azure-Abonnement und einem Unternehmenskonto zu erstellen.
+
 ### So fügen Sie eine Azure Active Directory-Organisation einem vorhandenen Arbeitsbereich hinzu
 
 1. Klicken Sie in OMS auf der Seite mit den Einstellungen auf **Konten** und anschließend auf **Workspace Information** (Arbeitsbereichsinformationen).  
 2. Überprüfen Sie die Informationen zu Organisationskonten, und klicken Sie dann auf **Organisation hinzufügen**. ![Hinzufügen einer Organisation](./media/log-analytics-manage-access/manage-access-add-adorg01.png)
 3. Geben Sie die Identitätsinformationen des Administrators Ihrer Azure Active Directory-Domäne ein. Anschließend wird Ihnen eine Bestätigung angezeigt, in der angegeben ist, dass Ihr Arbeitsbereich mit Ihrer Azure Active Directory-Domäne verknüpft ist. ![Verknüpfte Arbeitsbereichsbestätigung](./media/log-analytics-manage-access/manage-access-add-adorg02.png)
 
-
-## Steuern des Zugriffs auf OMS-Log Analytics-Ressourcen
-
-Das Gewähren von Zugriff auf den OMS-Arbeitsbereich wird an zwei Stellen gesteuert:
-
-- Der Zugriff auf das OMS-Portal wird innerhalb des OMS-Portals gesteuert. Der Zugriff auf die Azure-Abonnements, in denen sich diese Ressourcen befinden, ist davon getrennt.
-- Bei PowerShell und direktem REST-API-Zugriff erfolgt die Verwaltung innerhalb von Azure mithilfe von Azure RBAC.
-
-Wenn Sie Benutzern Zugriff auf das OMS-Portal gewährt haben, auf das damit verknüpfte Azure-Abonnement jedoch nicht, werden diesen Benutzern auf den Kacheln für Automation, Backup und Site Recovery keine Daten angezeigt, wenn sie sich beim OMS-Portal anmelden.
-
-Damit die Daten in diesen Lösungen allen Benutzern angezeigt werden, benötigen Sie mindestens **Lesezugriff** für das mit dem OMS-Arbeitsbereich verknüpfte Automation-Konto, den Sicherungstresor und den Site Recovery-Tresor.
-
+>[AZURE.NOTE]Nachdem Ihr Konto mit einem Unternehmenskonto verknüpft wurde, kann die Verknüpfung nicht mehr entfernt oder geändert werden.
 
 ## Schließen Ihres OMS-Arbeitsbereichs
 
@@ -205,8 +242,8 @@ Wenn Sie Administrator sind und mehrere Benutzer mit dem Arbeitsbereich verknüp
 
 ## Nächste Schritte
 
-- Informationen zum Hinzufügen von Agents und zum Erfassen von Daten finden Sie unter [Connect Windows computers to Log Analytics](log-analytics-windows-agents.md) (Verbinden von Windows-Computern mit Log Analytics).
-- [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog) beschreibt das Hinzufügen von Funktionen und das Sammeln von Daten.
-- [Configure proxy and firewall settings in Log Analytics](log-analytics-proxy-firewall.md) (Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics) beschreibt, wie Sie vorgehen müssen, damit die Agents mit dem Log Analytics-Dienst kommunizieren können, wenn Ihre Organisation einen Proxyserver oder eine Firewall verwendet.
+- Informationen zum Hinzufügen von Agents und zum Erfassen von Daten finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md).
+- [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md), um Funktionen hinzuzufügen und Daten zu sammeln.
+- Unter [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md) wird beschrieben, wie Sie vorgehen müssen, damit die Agents mit dem Log Analytics-Dienst kommunizieren können, wenn Ihre Organisation einen Proxyserver oder eine Firewall verwendet.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

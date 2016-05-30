@@ -1,7 +1,7 @@
-##Highly available solutions with Azure traffic manager
+##Lösungen für hohe Verfügbarkeit mit Azure Traffic Manager
 
-You need to determine whether your workload's high availability requirements can be met by using Azure traffic manager alone, or if you need to combine traffic manager with other DNS solutions, or processes. Depending on your needs, you can use:
+Sie müssen festlegen, ob die Anforderungen an hohe Verfügbarkeit der Workload durch die alleinige Verwendung von Azure Traffic Manager erfüllt werden können oder ob Traffic Manager mit anderen DNS-Lösungen oder Prozessen kombiniert werden muss. Je nach Ihren Anforderungen haben Sie folgende Möglichkeiten:
 
-- **Traffic manager alone**. If a 99.99% up time is sufficient for your workload, you can use traffic manager by itself. In the event of failure in the traffic manager service, users will not be able to access your workload until the traffic manager service is reestablished.
+- **Alleinige Verwendung von Traffic Manager**: Wenn eine 99,99%ige Betriebszeit für Ihre Workload ausreicht, können Sie nur Traffic Manager verwenden. Bei einem Ausfall im Traffic Manager-Dienst können Benutzer erst dann wieder auf Ihre Workload zugreifen, wenn der Traffic Manager-Dienst wiederhergestellt ist.
 
-- **Use another traffic manager solution along with Azure traffic manager**. In the event of failure in the traffic manager service, you can change your CNAME record to point to the other traffic manager service. Access to your workload is still available, and distributed to all locations hosting your workload. This is the most expensive solution, but may be required for workloads that need a higher SLA.
+- **Verwendung einer anderen Lösung zusammen mit Azure Traffic Manager:** Für den Fall eines Ausfalls im Traffic Manager-Dienst können Sie den CNAME-Eintrag so ändern, dass er auf einen anderen Dienst zur Verwaltung des Datenverkehrs verweist. Der Zugriff auf Ihre Workload ist weiterhin verfügbar und wird an alle Standorte verteilt, an denen die Workload gehostet wird. Dies ist die kostenintensivste Lösung, die für Workloads mit höherer SLA jedoch erforderlich sein kann.

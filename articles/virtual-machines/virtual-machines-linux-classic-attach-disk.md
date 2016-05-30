@@ -19,26 +19,21 @@
 
 # Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. So fügen Sie [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodell an](virtual-machines-linux-add-disk.md).
 
-
-Sie können sowohl leere Datenträger als auch Datenträger mit Daten anfügen. Die Datenträger sind eigentlich VHD-Dateien, die sich in einem Azure-Speicherkonto befinden. Sie müssen den Datenträger nach dem Anfügen initialisieren, damit er verwendet werden kann.
+Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre virtuellen Azure-Computer anfügen. Beide Arten von Datenträgern sind VHD-Dateien, die sich in einem Azure Storage-Konto befinden. Wie bei jedem Hinzufügen von Datenträgern an einen Linux-Computer, müssen Sie nach dem Anfügen des Datenträgers diesen initialisieren und formatieren, damit er verwendet werden kann. In diesem Artikel wird beschrieben, wie Sie sowohl leere Datenträger als auch Datenträger mit Daten an Ihre VMs anfügen, und wie Sie daraufhin einen neuen Datenträger initialisieren und formatieren.
 
 > [AZURE.NOTE] Es empfiehlt sich, einen oder mehrere separate Datenträger zu verwenden, um die Daten eines virtuellen Computers zu speichern. Wenn Sie einen virtuellen Azure-Computer erstellen, verfügt dieser über einen Betriebssystem-Datenträger und über einen temporären Datenträger. **Verwenden Sie den temporären Datenträger nicht zum Speichern von persistenten Daten.** Wie der Name schon sagt, bietet dieser Datenträger nur temporäre Speicherung. Er ermöglicht keine Redundanz oder Sicherung, da er sich nicht im Azure-Speicher befindet. Unter Linux wird der temporäre Datenträger normalerweise vom Azure Linux Agent verwaltet und automatisch an **/mnt/resource** (oder auf Ubuntu-Images an **/mnt**) angefügt. Andererseits kann ein Datenträger vom Linux-Kernel beispielsweise den Namen `/dev/sdc` erhalten, und Sie müssen diese Ressource partitionieren, formatieren und einbinden. Weitere Informationen finden Sie im [Benutzerhandbuch für Azure Linux-Agent][Agent].
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
-## Vorgehensweise: Initialisieren eines neuen Datenträgers unter Linux
+## Initialisieren eines neues Datenträgers unter Linux
 
-Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausführen. Verwenden Sie dabei die richtige Geräte-ID (siehe unten).
-
-1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Linux ausgeführt wird][Logon].
-
-
+1. Stellen Sie mithilfe des SSH-Netzwerkprotokolls eine Verbindung zu Ihrer VM her. Weitere Informationen finden Sie unter [Anmelden bei einem mit Linux betriebenen virtuellen Computer][Logon].
 
 2. Als Nächstes müssen Sie die Geräte-ID für den zu initialisierenden Datenträger finden. Dafür gibt zwei Möglichkeiten:
 
-	a) Geben Sie im SSH-Fenster den folgenden Befehl ein:
+	a) Grep für SCSI-Geräte in den Protokollen, z.B. wie im nachfolgenden Befehl:
 
 			$sudo grep SCSI /var/log/messages
 
@@ -46,37 +41,34 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 	In den angezeigten Meldungen können Sie den Bezeichner des letzten hinzugefügten Datenträgers finden.
 
-	![Datenträgermeldungen abrufen](./media/virtual-machines-linux-classic-attach-disk/DiskMessages.png)
+	![Datenträgermeldungen abrufen](./media/virtual-machines-linux-classic-attach-disk/scsidisklog.png)
 
 	OR
 
 	(b) Verwenden Sie den `lsscsi`-Befehl, um die Geräte-ID herauszufinden.`lsscsi` kann entweder über `yum install lsscsi` (für auf Red Hat basierende Distributionen) oder über `apt-get install lsscsi` (für auf Debian basierende Distributionen) installiert werden. Den gesuchten Datenträger finden Sie anhand seiner _LUN_ oder **logischen Gerätenummer**. Zum Beispiel kann die _LUN_ für die angefügten Datenträger leicht mit `azure vm disk list <virtual-machine>` angezeigt werden:
 
-			~$ azure vm disk list ubuntuVMasm
+			~$ azure vm disk list TestVM
 			info:    Executing command vm disk list
 			+ Fetching disk images
 			+ Getting virtual machines
 			+ Getting VM disks
 			data:    Lun  Size(GB)  Blob-Name                         OS
 			data:    ---  --------  --------------------------------  -----
-			data:         30        ubuntuVMasm-2645b8030676c8f8.vhd  Linux
-			data:    1    10        test.VHD
-			data:    2    30        ubuntuVMasm-76f7ee1ef0f6dddc.vhd
+			data:         30        TestVM-2645b8030676c8f8.vhd  Linux
+			data:    0    100       TestVM-76f7ee1ef0f6dddc.vhd
 			info:    vm disk list command OK
 
 	Vergleichen Sie dies mit der Ausgabe von `lsscsi` für denselben virtuellen Beispielcomputer:
 
-			adminuser@ubuntuVMasm:~$ lsscsi
+			ops@TestVM:~$ lsscsi
 			[1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
 			[2:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sda
 			[3:0:1:0]    disk    Msft     Virtual Disk     1.0   /dev/sdb
 			[5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
-			[5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd
-			[5:0:0:2]    disk    Msft     Virtual Disk     1.0   /dev/sde
 
 	Die letzte Zahl im Tupel in jeder Zeile ist die _LUN_. Weitere Informationen finden Sie unter `man lsscsi`.
 
-3. Geben Sie im SSH-Fenster den folgenden Befehl ein, um ein neues Gerät zu erstellen:
+3. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein, um Ihr Gerät zu erstellen:
 
 		$sudo fdisk /dev/sdc
 
@@ -84,46 +76,48 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 4. Geben Sie nach Aufforderung **n** ein, um eine neue Partition zu erstellen.
 
 
-	![Neues Gerät erstellen](./media/virtual-machines-linux-classic-attach-disk/DiskPartition.png)
+	![Neues Gerät erstellen](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
 5. Geben Sie nach Aufforderung **p** ein, um die Partition zur primären zu machen, geben Sie **1** ein, um sie zur ersten Partition zu machen, und drücken Sie die Eingabetaste, um den Standardwert für den Zylinder zu übernehmen. Bei einigen Systemen werden unter Umständen anstelle des Zylinders die Standardwerte des ersten und letzten Abschnitts angezeigt. Sie können diese Standardeinstellungen auch übernehmen.
 
 
-	![Partition erstellen](./media/virtual-machines-linux-classic-attach-disk/DiskCylinder.png)
+	![Partition erstellen](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
 
 
 6. Geben Sie **p** ein, um die Details zum Datenträger anzuzeigen, der gerade partitioniert wird.
 
 
-	![Informationen zum Datenträger auflisten](./media/virtual-machines-linux-classic-attach-disk/DiskInfo.png)
+	![Informationen zum Datenträger auflisten](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
 
 
 7. Geben Sie **w** ein, um die Einstellungen für den Datenträger zu schreiben.
 
 
-	![Datenträgeränderungen schreiben](./media/virtual-machines-linux-classic-attach-disk/DiskWrite.png)
+	![Datenträgeränderungen schreiben](./media/virtual-machines-linux-classic-attach-disk/fdiskwritedisk.png)
 
-8. Erstellen Sie das Dateisystem auf der neuen Partition. Fügen Sie die Partitionsnummer (1) an die Geräte-ID an. Beispielsweise zum Erstellen einer „ext4-Partition“ auf „/dev/sdc1“:
+8. Sie können nun das Dateisystem auf der neuen Partition erstellen. Fügen Sie die Nummer der Partition an die Geräte-ID an (im folgenden Beispiel `/dev/sdc1`). Das folgende Beispiel erstellt eine „ext4“-Partition auf /dev/sdc1:
 
 		# sudo mkfs -t ext4 /dev/sdc1
 
-	![Dateisystem erstellen](./media/virtual-machines-linux-classic-attach-disk/DiskFileSystem.png)
+	![Dateisystem erstellen](./media/virtual-machines-linux-classic-attach-disk/mkfsext4.png)
 
-	>[AZURE.NOTE] Beachten Sie, dass SUSE Linux Enterprise 11-Systeme nur schreibgeschützten Zugriff für ext4-Dateisysteme unterstützen. Für diese Systeme wird empfohlen, das neue Dateisystem als ext3 statt als ext4 zu formatieren.
+	>[AZURE.NOTE] Beachten Sie, dass SUSE Linux Enterprise 11-Systeme nur den schreibgeschützten Zugriff für ext4-Dateisysteme unterstützen. Für diese Systeme wird empfohlen, das neue Dateisystem als ext3 statt als ext4 zu formatieren.
 
 
-9. Erstellen Sie ein Verzeichnis zum Einbinden des neuen Dateisystems. Geben Sie den folgenden Befehl als ein Beispiel ein:
+9. Erstellen Sie ein Verzeichnis zum Bereitstellen des neuen Dateisystems, wie nachfolgend beschrieben:
 
 		# sudo mkdir /datadrive
 
 
-10. Geben Sie den folgenden Befehl ein, um das Laufwerk einzubinden:
+10. Schließlich können Sie das Laufwerk wie folgt bereitstellen:
 
 		# sudo mount /dev/sdc1 /datadrive
 
 	Der Datenträger kann nun als **/datadrive** verwendet werden.
+	
+	![Erstellen des Verzeichnisses und Bereitstellen der Festplatte](./media/virtual-machines-linux-classic-attach-disk/mkdirandmount.png)
 
 
 11. Fügen Sie das neue Laufwerk zu /etc/fstab hinzu:
@@ -149,7 +143,7 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 
 		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
 
-	In auf SUSE Linux basierenden Systemen müssen Sie eventuell ein etwas unterschiedliches Format verwenden:
+	In auf SUSE Linux basierenden Systemen müssen Sie möglicherweise ein leicht anderes Format verwenden:
 
 		/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults   1   2
 
@@ -177,4 +171,4 @@ Sie können die gleichen Schritte zum Initialisieren mehrerer Datenträger ausf�
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

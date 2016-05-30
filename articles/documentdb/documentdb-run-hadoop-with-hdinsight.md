@@ -44,7 +44,7 @@ Sie haben nicht die Zeit, das gesamte Lernprogramm zu bearbeiten und möchten le
 	<tr><th>Skript-URI</th>
 		<td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</td></tr>
 	<tr><th>Änderungsdatum</th>
-		<td>26.04.2015</td></tr>
+		<td>26.04.2016</td></tr>
 	<tr><th>Unterstützte HDInsight-Versionen</th>
 		<td>3.1, 3.2.</td></tr>
 	<tr><th>Änderungsprotokoll</th>
@@ -220,8 +220,8 @@ Dieses Lernprogramm verwendet Skriptaktionen aus dem klassischen Azure-Portal zu
 
     <p>Zunächst soll eine Hive-Tabelle aus der entsprechenden DocumentDB-Auflistung erstellt werden. Fügen Sie den folgenden Codeausschnitt zum PowerShell-Skript-Bereich <strong>nach</strong> dem Codeausschnitt von Nr.&#160;1 hinzu. Sie müssen den optionalen DocumentDB.Abfrage-Parameter einbinden, um die entsprechenden Dokumente gemäß _ts und _rid zuzuschneiden. </p>
 
-    > [AZURE.NOTE] **Bei der Benennung von DocumentDB.inputCollections handelt es sich nicht um einen Fehler.** Ja, Sie können mehrere Sammlungen als Eingabe hinzufügen: </br>
-    '*DocumentDB.inputCollections*' = '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*' </br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt.
+    > [AZURE.NOTE] **Bei der Benennung von DocumentDB.inputCollections handelt es sich nicht um einen Fehler.** Ja, Sie können mehrere Sammlungen als Eingabe hinzufügen: </br> 
+    '*DocumentDB.inputCollections*' = '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*' </br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt.
 
 
 		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
@@ -238,8 +238,8 @@ Dieses Lernprogramm verwendet Skriptaktionen aus dem klassischen Azure-Portal zu
 3.  Als Nächstes wird eine Hive-Tabelle für die Ausgabeauflistung erstellt. Bei den Eigenschaften des Ausgabedokuments handelt es sich um Monat, Tag, Stunde, Minute und die Gesamtanzahl an Vorkommen.
 
 	> [AZURE.NOTE] **Auch hier handelt es sich bei der Benennung von DocumentDB.outputCollections nicht um einen Fehler.** Ja, Sie können mehrere Sammlungen als Ausgabe hinzufügen: </br> 
-	'*DocumentDB.outputCollections*' = '*\<DocumentDB output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt. </br></br> 
-  Die Dokumente werden in Umlauf gebracht und über mehrere Auflistungen hinweg per Roundrobin verteilt. Ein Batch von Dokumenten wird in einer Auflistung gespeichert. Ein zweiter Batch von Dokumenten wird dann in der nächsten Auflistung gespeichert usw.
+	'*DocumentDB.outputCollections*' = '*<DocumentDB output Collection Name 1>*,*<DocumentDB Output Collection Name 2>*' </br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt. </br></br> 
+	Die Dokumente werden in Umlauf gebracht und über mehrere Auflistungen hinweg per Roundrobin verteilt. Ein Batch von Dokumenten wird in einer Auflistung gespeichert. Ein zweiter Batch von Dokumenten wird dann in der nächsten Auflistung gespeichert usw.
 
 		# Create a Hive table for the output data to DocumentDB.
 	    $queryStringPart2 = "drop table DocumentDB_analytics; " +
@@ -316,9 +316,10 @@ Dieses Lernprogramm verwendet Skriptaktionen aus dem klassischen Azure-Portal zu
 
 2. <p>Beginnen Sie mit dem Erstellen der Abfragezeichenfolge. Eine Pig-Abfrage wird geschrieben, welche die systemgenerierten Zeitstempel (_ts) aller Dokumente und die eindeutige ids (_rid) aus einer DocumentDB-Auflistung aufnimmt, alle Dokumente minutengenau aufeinander abstimmt und die Ergebnisse dann in einer neuen DocumentDB-Auflistung abspeichert.</p>
     <p>Laden Sie zunächst die Dokumente aus DocumentDB in HDInsight. Fügen Sie den folgenden Codeausschnitt zum PowerShell-Skript-Bereich <strong>nach</strong> dem Codeausschnitt von Nr.&#160;1 hinzu. Achten Sie darauf, dass eine DocumentDB-Abfrage zum optionalen DocumentDB-Abfrageparameter hinzugefügt wird, um die Dokumente gemäß _ts und _rid zu verkürzen.</p>
-    
-    > [AZURE.NOTE] Ja, Sie können mehrere Sammlungen als Eingabe hinzufügen: </br>
-    '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*'</br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt. </b>
+
+    > [AZURE.NOTE] Ja, Sie können mehrere Sammlungen als Eingabe hinzufügen: </br> 
+    '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*'</br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt. </b>
+
 	Die Dokumente werden in Umlauf gebracht und über mehrere Auflistungen hinweg verteilt. Ein Batch von Dokumenten wird in einer Auflistung gespeichert. Ein zweiter Batch von Dokumenten wird dann in der nächsten Auflistung gespeichert usw.
 
 		# Load data from DocumentDB. Pass DocumentDB query to filter transferred data to _rid and _ts.
@@ -337,9 +338,9 @@ Dieses Lernprogramm verwendet Skriptaktionen aus dem klassischen Azure-Portal zu
 
 4. Schließlich werden die Ergebnisse in der neuen Ausgabeauflistung abgespeichert.
 
-    > [AZURE.NOTE] Ja, Sie können mehrere Sammlungen als Ausgabe hinzufügen: </br>
-    '\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>'</br> Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt.</br>
-    Die Dokumente werden in Umlauf gebracht und über die mehrfachen Auflistungen hinweg verteilt. Ein Batch von Dokumenten wird in einer Auflistung gespeichert. Ein zweiter Batch von Dokumenten wird dann in der nächsten Auflistung gespeichert usw.
+    > [AZURE.NOTE] Ja, Sie können mehrere Sammlungen als Ausgabe hinzufügen: </br> 
+'<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> 
+Die Sammlungsnamen werden ohne Leerzeichen nur durch ein Komma getrennt.</br> Die Dokumente werden in Umlauf gebracht und über die mehrfachen Auflistungen hinweg verteilt. Ein Batch von Dokumenten wird in einer Auflistung gespeichert. Ein zweiter Batch von Dokumenten wird dann in der nächsten Auflistung gespeichert usw.
 
 		# Store output data to DocumentDB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +
@@ -466,7 +467,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 [documentdb-import-data]: documentdb-import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md#powershell
-[hdinsight-develop-deploy-java-mapreduce]: ../hdinsight/hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-deploy-java-mapreduce]: ../hdinsight/hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-hadoop-customize-cluster]: ../hdinsight/hdinsight-hadoop-customize-cluster.md
 [hdinsight-get-started]: ../hdinsight/hdinsight-hadoop-tutorial-get-started-windows.md
 [hdinsight-storage]: ../hdinsight/hdinsight-hadoop-use-blob-storage.md
@@ -485,4 +486,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 [powershell-install-configure]: ../powershell-install-configure.md
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

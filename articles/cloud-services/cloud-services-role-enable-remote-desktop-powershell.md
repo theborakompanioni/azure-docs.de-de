@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="01/19/2016" 
+ms.date="05/17/2016" 
 ms.author="adegeo"/>
 
 # Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit PowerShell
@@ -35,7 +35,7 @@ Mit dem Cmdlet [Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.c
 Wenn Sie PowerShell interaktiv verwenden, können Sie das PSCredential-Objekt durch Aufrufen des Cmdlets [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) auf einfache Weise festlegen.
 
 ```
-	$remoteusercredentials = Get-Credential
+$remoteusercredentials = Get-Credential
 ```
 
 Dadurch wird ein Dialogfeld angezeigt, in dem Sie den Benutzernamen und das Kennwort für einen Benutzer auf sichere Weise eingeben können.
@@ -45,7 +45,7 @@ Da PowerShell hauptsächlich für Automatisierungsszenarios verwendet wird, kön
 Verwenden Sie das folgende PowerShell-Skript zum Erstellen einer sicheren Kennwortdatei:
 
 ```
-	ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
+ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ``` 
 
 Nachdem die Kennwortdatei (password.txt) erstellt wurde, verwenden Sie nur diese Datei und müssen das Kennwort nicht im Klartext angeben. Wenn Sie das Kennwort aktualisieren möchten, können Sie das oben aufgeführte PowerShell-Skript mit dem neuen Kennwort erneut ausführen und die Datei "password.txt" neu generieren.
@@ -57,12 +57,12 @@ Zum Erstellen des Anmeldeinformationsobjekts aus der sicheren Kennwortdatei müs
 Im folgenden PowerShell-Beispiel wird die Remotedesktoperweiterung für einen Clouddienst festgelegt:
 
 ```
-	$servicename = "cloudservice"
-	$username = "RemoteDesktopUser"
-	$securepassword = Get-Content -Path "password.txt" | ConvertTo-SecureString
-	$expiry = $(Get-Date).AddDays(1)
-	$credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
-	Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry 
+$servicename = "cloudservice"
+$username = "RemoteDesktopUser"
+$securepassword = Get-Content -Path "password.txt" | ConvertTo-SecureString
+$expiry = $(Get-Date).AddDays(1)
+$credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
+Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry 
 ```
 Sie können optional auch den Bereitstellungsslot und die Bereitstellungsrollen angeben, für die Sie Remotedesktop aktivieren möchten. Wenn diese Parameter nicht angegeben werden, verwendet das Cmdlet standardmäßig den Produktionsbereitstellungsslot und aktiviert Remotedesktop für alle Rollen in der Produktionsbereitstellung.
 
@@ -73,7 +73,7 @@ Die Remotedesktoperweiterung ist immer einer Bereitstellung zugeordnet. Wenn Sie
 Mit dem Cmdlet [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) können Sie eine Remotedesktopverbindung mit einer bestimmten Rolleninstanz Ihres Clouddiensts herstellen. Sie können den *LocalPath*-Parameter für das Cmdlet verwenden, um die RDP-Datei lokal herunterzuladen, oder den *Launch*-Parameter, um das Dialogfeld "Remotedesktopverbindung" für den Zugriff auf die Rolleninstanz des Clouddiensts direkt zu starten.
 
 ```
-	Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
+Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
 
@@ -81,7 +81,7 @@ Mit dem Cmdlet [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/a
 Das Cmdlet [Get-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495261.aspx) zeigt an, ob Remotedesktop für eine Dienstbereitstellung aktiviert ist. Das Cmdlet gibt den Benutzernamen des Remotedesktopbenutzers und die Rollen zurück, für die die Remotedesktoperweiterung aktiviert ist. Sie können optional einen Bereitstellungsslot angeben. Standardeinstellung ist der Produktionsbereitstellungsslot.
 
 ```
-	Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
+Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
 ## Entfernen der Remotedesktoperweiterung für einen Dienst 
@@ -91,10 +91,11 @@ Zum Entfernen der Remotedesktoperweiterung aus einer Dienstbereitstellung könne
 
 ```
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
-
 ```  
 
->[AZURE.NOTE] Mit dem *UninstallConfiguration*-Parameter wird die gesamte Erweiterungskonfiguration deinstalliert, die auf den Dienst angewendet wurde. Die gesamte Erweiterungskonfiguration ist immer der Dienstkonfiguration zugeordnet. Um die Erweiterung mit einer Bereitstellung zu aktivieren, muss der Bereitstellung diese Erweiterungskonfiguration zugeordnet werden. Durch Aufrufen des Cmdlets "Remove" ohne den *UninstallConfiguration*-Parameter wird die Zuordnung der Bereitstellung zur Erweiterungskonfiguration aufgehoben und faktisch die Erweiterung aus der Bereitstellung entfernt. Die Erweiterungskonfiguration ist jedoch weiterhin dem Dienst zugeordnet. Um die Erweiterungskonfiguration vollständig zu entfernen, sollten Sie das Cmdlet "Remove" mit dem *UninstallConfiguration*-Parameter aufrufen.
+>[AZURE.NOTE] Um die Erweiterungskonfiguration vollständig zu entfernen, sollten Sie das Cmdlet *remove* mit dem **UninstallConfiguration**-Parameter aufrufen.
+>
+>Mit dem **UninstallConfiguration**-Parameter wird die gesamte Erweiterungskonfiguration deinstalliert, die auf den Dienst angewendet wurde. Die gesamte Erweiterungskonfiguration ist immer der Dienstkonfiguration zugeordnet. Um die Erweiterung mit einer Bereitstellung zu aktivieren, muss der Bereitstellung diese Erweiterungskonfiguration zugeordnet werden. Durch Aufrufen des Cmdlets *remove* ohne den **UninstallConfiguration**-Parameter wird die Zuordnung der Bereitstellung zur Erweiterungskonfiguration aufgehoben und faktisch die Erweiterung aus der Bereitstellung entfernt. Die Erweiterungskonfiguration ist jedoch weiterhin dem Dienst zugeordnet.
 
 
 
@@ -102,4 +103,4 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 
 [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

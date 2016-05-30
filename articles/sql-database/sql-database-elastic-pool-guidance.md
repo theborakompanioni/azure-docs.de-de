@@ -22,7 +22,7 @@ Schätzen Sie auf Grundlage der Datenbankverwendungsmuster und der Preisuntersch
 
 - Eine Übersicht zu Pools finden Sie unter [SQL-Datenbank – Pool für elastische Datenbanken](sql-database-elastic-pool.md).
 
-> [AZURE.NOTE] Pools für elastische Datenbanken sind als Vorschauversion ausschließlich für Server mit SQL-Datenbank V12 verfügbar.
+> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“, „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „China, Norden“, wo sie sich derzeit in der Vorschauphase befinden. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt.
 
 ## Elastische Datenbankpools
 
@@ -131,4 +131,4 @@ Nicht alle einzelnen Datenbanken sind gute Kandidaten für Pools. Datenbanken mi
 - [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md)
 - [PowerShell script for identifying databases suitable for an elastic database pool (PowerShell-Skript zum Ermitteln von Datenbanken mit Eignung für einen Pool für elastische Datenbanken)](sql-database-elastic-pool-database-assessment-powershell.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

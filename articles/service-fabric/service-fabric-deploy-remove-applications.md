@@ -3,7 +3,7 @@
    description="Bereitstellen und Entfernen von Anwendungen in Service Fabric"
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/08/2016"
-   ms.author="seanmck"/>
+   ms.author="ryanwi"/>
 
 # Bereitstellen von Anwendungen
 
@@ -82,7 +82,7 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-Der Befehl **Register-ServiceFabricApplicationType** wird erst zurückgegeben, wenn das Paket vom System erfolgreich kopiert wurde. Die Dauer des Kopiervorgangs hängt vom Inhalt des Anwendungspakets ab. Verwenden Sie den Parameter**-TimeoutSec**, wenn ein längeres Zeitlimit erforderlich ist. (Das Standardzeitlimit beträgt 60 Sekunden.)
+Der Befehl **Register-ServiceFabricApplicationType** wird erst zurückgegeben, wenn das Paket vom System erfolgreich kopiert wurde. Die Dauer des Kopiervorgangs hängt vom Inhalt des Anwendungspakets ab. Verwenden Sie den Parameter**-TimeoutSec**, wenn ein längeres Zeitlimit erforderlich ist. (Das Standardzeitlimit beträgt 60 Sekunden.)
 
 Der Befehl **Get-ServiceFabricApplicationType** listet alle erfolgreich registrierten Anwendungstypversionen auf.
 
@@ -128,7 +128,7 @@ Für jede Version des registrierten Anwendungstyps können mehrere Anwendungsins
 
 ## Entfernen einer Anwendung
 
-Wird eine Anwendungsinstanz nicht mehr benötigt, kann diese mit dem Befehl **Remove-ServiceFabricApplication** dauerhaft entfernt werden. Mit diesem Befehl werden auch alle Dienste automatisch entfernt, die mit der Anwendung verknüpft sind, d. h., der Dienstzustand wird vollständig und dauerhaft entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden, und der Anwendungsstatus kann nicht wiederhergestellt werden.
+Wird eine Anwendungsinstanz nicht mehr benötigt, kann diese mit dem Befehl **Remove-ServiceFabricApplication** dauerhaft entfernt werden. Mit diesem Befehl werden auch alle Dienste automatisch entfernt, die mit der Anwendung verknüpft sind, d. h., der Dienstzustand wird vollständig und dauerhaft entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden, und der Anwendungsstatus kann nicht wiederhergestellt werden.
 
 ~~~
 PS D:\temp> Remove-ServiceFabricApplication fabric:/MyApp
@@ -225,4 +225,4 @@ PS D:\temp>
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

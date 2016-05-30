@@ -13,15 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/10/2016"
 	ms.author="bradsev" />
 
 # Verschieben von Daten in den und aus dem Azure-Blobspeicher mithilfe von Python
 
-## Einführung
-Dieses Thema beschreibt das Auflisten, Hochladen und Herunterladen von Blobs mit der Python-API.
-
-Mit der Python-API im Azure SDK können Sie folgende Aufgaben ausführen:
+Dieses Thema beschreibt das Auflisten, Hochladen und Herunterladen von Blobs mit der Python-API. Mit der Python-API im Azure SDK können Sie folgende Aufgaben ausführen:
 
 - Erstellen eines Containers
 - Hochladen eines Blobs in einen Container
@@ -40,12 +37,14 @@ Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben vo
 
 > [AZURE.NOTE] Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Grundlagen zu Azure-Blobspeicher](../storage/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
+
 ## Voraussetzungen
 
 In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, ein Speicherkonto und den zugehörigen Speicherschlüssel für dieses Konto verfügen. Bevor Sie Daten hoch- und herunterladen können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
 
 - Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose 1-Monat-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+
 
 ## Hochladen von Daten zum Blob
 
@@ -93,6 +92,7 @@ Der folgende Beispielcode lädt alle Dateien (ausgenommen Verzeichnisse) in eine
 	    except:
 	        print "something wrong happened when uploading the data %s"%blob_name
 
+
 ## Herunterladen von Daten aus dem Blob
 
 Verwenden Sie die folgenden Methoden zum Herunterladen von Daten aus einem Blob:
@@ -129,4 +129,4 @@ Der folgende Beispielcode lädt alle Blobs aus einem Container herunter. Dabei w
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

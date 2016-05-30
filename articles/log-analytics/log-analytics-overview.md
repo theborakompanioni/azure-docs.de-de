@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/13/2016"
    ms.author="bwren" />
 
 # Was ist Log Analytics?
@@ -69,8 +69,8 @@ Wenn Sie sich [bei Log Analytics registrieren](log-analytics-get-started.md), er
 
 ## Nächste Schritte
 
-- [Registrieren Sie sich für ein kostenloses Log Analytics-Konto](log-analytics), um es in Ihrer eigenen Umgebung auszuprobieren.
+- [Registrieren Sie sich für ein kostenloses Log Analytics-Konto](log-analytics-get-started.md), um es in Ihrer eigenen Umgebung auszuprobieren.
 - Sehen Sie sich die verschiedenen verfügbaren [Datenquellen](log-analytics-data-sources.md) an, aus denen Daten für das OMS-Repository gesammelt werden können. 
 - [Durchsuchen Sie die verfügbaren Lösungen im Lösungskatalog](log-analytics-add-solutions.md), um Funktionen zu Log Analytics hinzuzufügen. 
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

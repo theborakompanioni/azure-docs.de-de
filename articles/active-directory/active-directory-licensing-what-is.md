@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/01/2016"
+    ms.date="05/16/2016"
     ms.author="curtand"/>
 
 # Was ist Microsoft Azure Active Directory-Lizenzierung?
@@ -45,7 +45,11 @@ Im Allgemeinen werden Azure AD-Abonnementinformationen über das klassische Azur
 
 > Beim Kauf von Azure AD oder Enterprise Mobility Suite über ein Abonnement mit Volumenlizenzierung erfolgt die Aktivierung automatisch, wenn die Vereinbarung andere Microsoft Online-Dienste wie Office 365 enthält.
 
-Kostenpflichtige Azure AD-Funktionen decken das gesamte Verzeichnis ab. Beispiele: – Gruppenbasierte Zuweisung zu Anwendungen, die für die jeweilige Anwendung aktiviert wird, die Sie verwalten. – Erweiterte und Self-Service-Gruppenverwaltungsfunktionen stehen in der Verzeichniskonfiguration oder in den jeweiligen Gruppen zur Verfügung. – Premium-Sicherheitsberichte finden Sie auf der Registerkarte "Berichterstellung". – Die Ermittlung von Cloudanwendungen befindet sich im Azure-Portal unter "Identität".
+Kostenpflichtige Azure AD-Funktionen decken das gesamte Verzeichnis ab. Beispiele:
+- Eine gruppenbasierte Zuweisung zu Anwendungen, die für die jeweilige Anwendung aktiviert wird, die Sie verwalten.
+- Erweiterte und Self-Service-Gruppenverwaltungsfunktionen stehen in der Verzeichniskonfiguration oder in den jeweiligen Gruppen zur Verfügung.
+- Premium-Sicherheitsberichte finden Sie auf der Registerkarte „Berichterstellung“.
+- Die Ermittlung von Cloudanwendungen befindet sich im Azure-Portal unter „Identität“.
 
 ###Zuweisen von Lizenzen
 Zwar ist nur der Erwerb eines Abonnements erforderlich, um kostenpflichtige Funktionen zu konfigurieren, die Verwendung Ihrer kostenpflichtigen Azure AD-Funktionen erfordert jedoch die Verteilung von Lizenzen an die richtigen Personen. Im Allgemeinen muss allen Benutzern, die Zugriff haben sollen oder die über kostenpflichtige Azure AD-Funktionen verwaltet werden, eine Lizenz zugewiesen werden. Die Lizenzzuweisung ist eine Zuordnung zwischen einem Benutzer und einem erworbenen Dienst wie Azure AD Premium, Basic oder Enterprise Mobility Suite.
@@ -58,7 +62,9 @@ Mit der gruppenbasierten Lizenzzuweisung erben Benutzer, denen ein Verwendungssp
 
 Die ersten Schritte mit Azure AD sind einfach. Sie können das Verzeichnis im Rahmen der Anmeldung bei einer kostenlosen Testversion von Azure erstellen. [Erfahren Sie mehr über die Anmeldung als Organisation](sign-up-organization.md). Mit Folgendem können Sie sicherstellen, dass das Verzeichnis optimal auf andere Microsoft-Dienste, die Sie möglicherweise nutzen oder zu nutzen planen, und auf Ihre Ziele beim Erwerb des Diensts abgestimmt ist.
 
-Dies sind einige bewährte Methoden: – Wenn Sie bereits Organisationsdienste von Microsoft verwenden, verfügen Sie schon über ein Azure AD-Verzeichnis. In diesem Fall sollten Sie dasselbe Verzeichnis für andere Dienste verwenden, damit die zentrale Identitätsverwaltung, einschließlich Bereitstellung und Hybrid-SSO, von den Diensten genutzt werden kann. Ihre Benutzer müssen sich nur einmal anmelden und können umfangreichere Funktionen der Dienste nutzen. Wenn Sie einen kostenpflichtigen Azure AD-Dienst für Ihre Mitarbeiter erwerben möchten, empfehlen wir, dass Sie dafür dasselbe Verzeichnis verwenden. – Wenn Sie beabsichtigen, Azure AD für andere Benutzer (Partner, Kunden usw.) zu verwenden oder wenn Sie Azure AD-Dienste auswerten möchten und dies isoliert vom Produktionsdienst erledigen möchten oder wenn Sie eine Sandkastenumgebung für Ihre Dienste einrichten möchten, empfehlen wir, dass Sie zuerst ein neues Verzeichnis über das klassische Azure-Portal erstellen. [Erfahren Sie mehr über das Erstellen eines neuen Azure AD-Verzeichnisses im klassischen Azure-Portal](active-directory-licensing-directory-independence.md). Das neue Verzeichnis wird mit Ihrem Konto als externer Benutzer mit globalen Administratorberechtigungen erstellt. Wenn Sie sich beim klassischen Azure-Portal mit diesem Konto anmelden, wird dieses Verzeichnis angezeigt und Sie haben Zugriff auf alle Verwaltungsaufgaben für das Verzeichnis. Es wird empfohlen, dass Sie ein lokales Konto mit entsprechenden Berechtigungen zum Verwalten von anderen Microsoft-Diensten (auf die nicht über das klassische Azure-Portal zugegriffen werden kann) erstellen. [Erfahren Sie mehr über das Erstellen von Benutzerkonten in Azure AD](active-directory-create-users.md).
+Dies sind einige bewährte Methoden:
+- Wenn Sie bereits Organisationsdienste von Microsoft verwenden, verfügen Sie schon über ein Azure AD-Verzeichnis. In diesem Fall sollten Sie dasselbe Verzeichnis für andere Dienste verwenden, damit die zentrale Identitätsverwaltung, einschließlich Bereitstellung und Hybrid-SSO, von den Diensten genutzt werden kann. Ihre Benutzer müssen sich nur einmal anmelden und können umfangreichere Funktionen der Dienste nutzen. Wenn Sie einen kostenpflichtigen Azure AD-Dienst für Ihre Mitarbeiter erwerben möchten, empfehlen wir, dafür dasselbe Verzeichnis zu verwenden.
+- Wenn Sie beabsichtigen, Azure AD für andere Benutzer (Partner, Kunden usw.) zu verwenden, wenn Sie Azure AD-Dienste isoliert vom Produktionsdienst auswerten oder eine Sandkastenumgebung für Ihre Dienste einrichten möchten, empfehlen wir, zuerst ein neues Verzeichnis über das klassische Azure-Portal zu erstellen. [Erfahren Sie mehr über das Erstellen eines neuen Azure AD-Verzeichnisses im klassischen Azure-Portal](active-directory-licensing-directory-independence.md). Das neue Verzeichnis wird mit Ihrem Konto als externer Benutzer mit globalen Administratorberechtigungen erstellt. Wenn Sie sich beim klassischen Azure-Portal mit diesem Konto anmelden, wird dieses Verzeichnis angezeigt und Sie haben Zugriff auf alle Verwaltungsaufgaben für das Verzeichnis. Es wird empfohlen, dass Sie ein lokales Konto mit entsprechenden Berechtigungen zum Verwalten von anderen Microsoft-Diensten (auf die nicht über das klassische Azure-Portal zugegriffen werden kann) erstellen. [Erfahren Sie mehr über das Erstellen von Benutzerkonten in Azure AD](active-directory-create-users.md).
 
 > [AZURE.NOTE] Azure AD unterstützt "externe Benutzer". Dies sind Benutzerkonten in einer Instanz von Azure AD, die mit einem Microsoft-Konto (MSA) oder einer Azure AD-Identität aus einem anderen Verzeichnis erstellt wurden. Während diese Funktion in alle Organisationsdienste von Microsoft implementiert werden soll, werden diese Konten noch nicht in allen Diensten unterstützt. Beispielsweise unterstützt das Office 365-Verwaltungsportal derzeit diese Benutzer nicht. Daher können externe Benutzer mit Microsoft-Konten nicht auf das Office 365-Verwaltungsportal zugreifen, während externe Benutzer aus anderen Azure AD-Verzeichnissen ignoriert werden. Im letzteren Fall kann nur auf das lokale Konto des Benutzers, das Azure AD- oder Office 365-Verzeichnis, in dem der Benutzer ursprünglich erstellt wurde, über diese Dienste zugegriffen werden.
 
@@ -97,7 +103,9 @@ Sie können jetzt Gruppen suchen oder durchblättern und sie der Spalte **Zuweis
 
 Wenn eine Gruppe zugewiesen wurde, erben ihre Mitglieder die Lizenzen innerhalb von 30 Minuten, aber in der Regel innerhalb von 1 bis 2 Minuten.
 
-Zuweisungsfehler können bei der Azure AD-Lizenzzuweisung auftreten, sind jedoch relativ selten. Potenzielle Zuweisungsfehler sind beschränkt auf: – Zuweisungskonflikte – Wenn einem Benutzer zuvor eine Lizenz zugewiesen war, die nicht mit der aktuellen Lizenz kompatibel ist. In diesem Fall ist für das Zuweisen der neuen Lizenz das Entfernen der vorherigen erforderlich. – Überschrittene verfügbare Lizenzen – Wenn die Anzahl der Benutzer in zugewiesenen Gruppen die Anzahl der verfügbaren Lizenzen überschreitet, gibt der Zuweisungsstatus für den Benutzer einen Zuweisungsfehler aufgrund fehlender Lizenzen an.
+Zuweisungsfehler können bei der Azure AD-Lizenzzuweisung auftreten, sind jedoch relativ selten. Potenzielle Zuweisungsfehler sind beschränkt auf:
+- Zuweisungskonflikte: Treten auf, wenn einem Benutzer zuvor eine Lizenz zugewiesen war, die nicht mit der aktuellen Lizenz kompatibel ist. In diesem Fall ist für das Zuweisen der neuen Lizenz das Entfernen der vorherigen Lizenz erforderlich.
+- Überschreitung der verfügbaren Lizenzanzahl: Wenn die Anzahl der Benutzer in zugewiesenen Gruppen die Anzahl der verfügbaren Lizenzen überschreitet, gibt der Zuweisungsstatus für den Benutzer einen Zuweisungsfehler aufgrund fehlender Lizenzen an.
 
 ###Anzeigen zugewiesener Lizenzen
 
@@ -132,4 +140,4 @@ Jetzt sind Sie möglicherweise bereit, einige Funktionen von Azure AD Premium zu
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 - [Direkter Erwerb von Azure AD Premium-Lizenzen](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

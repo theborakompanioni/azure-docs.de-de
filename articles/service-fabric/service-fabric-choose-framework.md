@@ -34,7 +34,7 @@ Reliable Services können zustandsfrei sein, ähnlich wie die meisten Dienstplat
 
 Reliable Services können auch zustandsbehaftet sein – ein exklusives Feature von Service Fabric, da der Status mithilfe von Reliable Collections direkt im Dienst gespeichert wird. Der Status wird durch Replikation als „hochverfügbar“ festgelegt und durch Partitionierung verteilt. Die Verwaltung erfolgt automatisch durch Service Fabric.
 
-[Erfahren Sie mehr über Reliable Services](service-fabric-reliable-services-introduction), oder legen Sie direkt los, indem Sie [Ihren ersten Reliable Service erstellen](service-fabric-reliable-services-quick-start.md).
+[Erfahren Sie mehr über Reliable Services](service-fabric-reliable-services-introduction.md) oder legen Sie los, [indem Sie Ihren ersten eigenen Reliable Service schreiben](service-fabric-reliable-services-quick-start.md).
 
 ## Reliable Actors
 
@@ -45,4 +45,4 @@ Da es sich bei Reliable Actors selbst um ein Anwendungsframework handelt, das au
 ## Nächste Schritte
 [Erfahren Sie mehr über Reliable Actors](service-fabric-reliable-actors-introduction.md), oder legen Sie direkt los, indem Sie [Ihren ersten Reliable Actor-Dienst erstellen](service-fabric-reliable-actors-get-started.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -123,7 +123,7 @@ Für diese Konfiguration verwenden wir die folgenden Werte:
 		$pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 		
-10. Laden Sie eine CER-Stammzertifikatdatei in Azure hoch. Sie können ein Stammzertifikat aus Ihrer Unternehmenszertifikatumgebung oder ein selbstsigniertes Stammzertifikat verwenden. Sie können bis zu 20 Stammzertifikate hochladen. Eine Anleitung zum Erstellen eines selbstsignierten Stammzertifikats mithilfe von *makecert* finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Beachten Sie, dass die CER-Datei nicht den privaten Schlüssel des Stammzertifikats enthalten sollte.
+10. Laden Sie eine CER-Stammzertifikatdatei in Azure hoch. Sie können ein Stammzertifikat aus Ihrer Unternehmenszertifikatumgebung oder ein selbstsigniertes Stammzertifikat verwenden. Sie können bis zu 20 Stammzertifikate hochladen. Eine Anleitung zum Erstellen eines selbstsignierten Stammzertifikats mithilfe von *makecert* finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Beachten Sie, dass die CER-Datei nicht den privaten Schlüssel des Stammzertifikats enthalten sollte. Um den öffentlichen Schlüssel wie im Beispiel unten gezeigt abzurufen, exportieren Sie die CER-Datei als Base64-codierte X.509-Datei (.CER). Öffnen Sie diese Datei dann in Editor. Kopieren Sie alles zwischen „-----BEGIN CERTIFICATE-----“ und „-----END CERTIFICATE-----“.
 	
 	Unten ist ein Beispiel aufgeführt. Die Herausforderung beim Hochladen der Daten für das öffentliche Zertifikat besteht darin, die gesamte Zeichenfolge ohne Leerzeichen zu kopieren und einzufügen. Andernfalls funktioniert der Upload nicht. Für diesen Schritt müssen Sie Ihre eigene CER-Zertifikatdatei verwenden. Versuchen Sie nicht, das unten gezeigte Beispiel zu kopieren und einzufügen.
 
@@ -240,4 +240,4 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 Sie können Ihrem virtuellen Netzwerk einen virtuellen Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,7 +3,7 @@
     description="So stellen Sie das Internet Explorer-Add-On für das Portal ";Meine Apps"; mithilfe von Gruppenrichtlinien bereit"
     services="active-directory"
     documentationCenter=""
-    authors="liviodlc"
+    authors="MarkusVi"
     manager="stevenpo"
     editor=""/>
 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
     ms.date="02/09/2016"
-    ms.author="liviodlc"/>
+    ms.author="markvi;liviodlc"/>
 
 #Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer
 
@@ -109,4 +109,4 @@ Wenn beim Deinstallieren der Erweiterung Probleme auftreten, können Sie diese a
 - [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
 - [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (auf Englisch)](active-directory-saas-ie-group-policy.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem GitHub-Connector
@@ -58,8 +58,10 @@ Um Logik-Apps mit GitHub zu erstellen, müssen Sie zuerst eine **Verbindung** he
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für GitHub|
+|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für GitHub|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit GitHub](../../includes/connectors-create-api-github.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -86,7 +88,7 @@ Problemmeldung erstellen: Erstellt eine Problemmeldung.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -105,7 +107,7 @@ Es gibt keine Parameter für diesen Aufruf
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -124,7 +126,7 @@ Es gibt keine Parameter für diesen Aufruf
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -143,7 +145,7 @@ Es gibt keine Parameter für diesen Aufruf
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -177,4 +179,4 @@ Es gibt keine Parameter für diesen Aufruf
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

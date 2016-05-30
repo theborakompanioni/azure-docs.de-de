@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,8 +19,7 @@
 
 # API-Implementierungsleitfaden
 
-![](media/best-practices-api-implementation/pnp-logo.png)
-
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 Einige Themen in diesem Leitfaden werden noch diskutiert und können sich unter Umständen ändern. Wir freuen uns auf Ihr Feedback!
 
@@ -1152,4 +1151,4 @@ Anhand dieser Informationen können Sie bestimmen, ob eine bestimmte Web-API ode
 - Auf der Seite [Überprüfen von Code mithilfe von Komponententests](https://msdn.microsoft.com/library/dd264975.aspx) der Microsoft-Website werden ausführliche Informationen zum Erstellen und Verwalten von Komponententests mit Visual Studio bereitgestellt.
 - Auf der Seite [Ausführen von Leistungstests für Ihre App](https://msdn.microsoft.com/library/dn250793.aspx) der Microsoft-Website wird beschrieben, wie Sie Visual Studio Ultimate zum Erstellen eines Projekts zum Testen der Webleistung und Auslastung verwenden.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

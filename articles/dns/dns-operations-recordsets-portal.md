@@ -10,14 +10,14 @@
 
 <tags
    ms.service="dns"
-   ms.devlang="en"
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="03/29/2016"
+   ms.date="05/06/2016"
    ms.author="cherylmc"/>
 
-# So erstellen und verwalten Sie DNS-Einträge und Ressourceneintragssätze mit dem Azure-Portal
+# Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
 
 
 > [AZURE.SELECTOR]
@@ -26,9 +26,9 @@
 - [PowerShell](dns-operations-recordsets.md)
 
 
-Dieser Leitfaden veranschaulicht, wie Sie für Ihre DNS-Zone Ressourceneintragssätze und Einträge mit dem Azure-Portal erstellen und verwalten.
+In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone im Azure-Portal verwalten.
 
-Es ist wichtig, den Unterschied zwischen DNS-Datensatzgruppen und einzelnen DNS-Einträge zu verstehen. Ein Ressourceneintragssatz ist die Auflistung von Einträgen in einer Zone, die den gleichen Namen tragen und den gleichen Typ aufweisen. Weitere Informationen finden Sie unter [Grundlegende Informationen zu Ressourceneinträgen und Ressourceneintragssätzen](../dns-getstarted-create-recordset#Understanding-record-sets-and-records).
+Es ist wichtig, den Unterschied zwischen DNS-Ressourceneintragssätzen und einzelnen DNS-Ressourceneinträgen zu verstehen. Ein Ressourceneintragssatz ist die Auflistung von Einträgen in einer Zone, die den gleichen Namen tragen und den gleichen Typ aufweisen. Weitere Informationen finden Sie unter [Grundlegende Informationen zu Ressourceneinträgen und Ressourceneintragssätzen](dns-getstarted-create-recordset-portal.md).
 
 ## Erstellen eines neuen Ressourceneintragssatzes und eines Eintrags
 
@@ -44,9 +44,9 @@ Weitere Informationen zum Erstellen eines Ressourceneintragssatzes im Azure-Port
 	![Suchen eines Ressourceneintragssatzes](./media/dns-operations-recordsets-portal/searchset500.png)
 
 
-## Hinzufügen eines Eintrags zu einem vorhandenen Ressourceneintragssatz
+## Hinzufügen eines Eintrags zu einem Ressourceneintragssatz
 
-Sie können einer Datensatzgruppe bis zu 20 Einträge hinzufügen. Ein Ressourceneintragssatz darf nicht zwei identische Einträge enthalten. Leere Datensatzgruppen (ohne Einträge) können erstellt werden, sie werden jedoch nicht im Azure DNS-Namenserver angezeigt. Ressourceneintragssätze vom Typ CNAME können höchstens einen Eintrag enthalten.
+Sie können einem Ressourceneintragssatz bis zu 20 Einträge hinzufügen. Ein Ressourceneintragssatz darf nicht zwei identische Einträge enthalten. Leere Datensatzgruppen (ohne Einträge) können erstellt werden, sie werden jedoch nicht im Azure DNS-Namenserver angezeigt. Ressourceneintragssätze vom Typ CNAME können höchstens einen Eintrag enthalten.
 
 
 1. Klicken Sie im Blatt **Eigenschaften des Ressourceneintragssatzes** Ihrer DNS-Zone auf den Ressourceneintragssatz, dem Sie einen Eintrag hinzufügen möchten.
@@ -77,14 +77,11 @@ Wenn Sie einen Eintrag innerhalb eines vorhandenen Ressourceneintragssatzes aktu
 	![Ändern eines Eintrags](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
 3. Klicken Sie oben auf dem Blatt auf **Speichern**, um Ihre Einstellungen zu speichern. Die Benachrichtigung, dass der Eintrag gespeichert wurde, wird in der oberen rechten Ecke angezeigt.
-
 	
 	![Speichern eines Eintrags](./media/dns-operations-recordsets-portal/saved150.png)
 
 
-
 3. Nachdem der Eintrag gespeichert wurde, spiegeln die Werte für den Ressourceneintragssatz auf dem DNS-Blatt den aktualisierten Eintrag wieder.
-
 
 
 ## Entfernen eines Eintrags aus einem Ressourceneintragssatz
@@ -135,4 +132,8 @@ Sie können nicht die SOA- und NS-Datensatzgruppen an der Zonenspitze (Name = "@
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md). Weitere Informationen zum Automatisieren von DNS finden Sie unter [Erstellen von DNS-Zonen und -Datensatzgruppen mithilfe des .NET SDK](dns-sdk.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+
+Wenn Sie mit Reverse-DNS-Einträgen arbeiten möchten, siehe [Verwalten von Reverse-DNS-Einträgen](dns-reverse-dns-record-operations-ps.md).
+ 
+
+<!---HONumber=AcomDC_0518_2016-->

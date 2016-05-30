@@ -18,7 +18,7 @@
 
 
 # Actor-Timer und -Erinnerungen
-Actors können regelmäßige Arbeit an sich selbst einplanen, indem sie entweder Timer oder Erinnerungen registrieren. In diesem Artikel wird gezeigt, wie Timer und Erinnerungen verwendet werden können, und es werden die Unterschiede zwischen ihnen erklärt.
+Akteure können regelmäßige Arbeit an sich selbst einplanen, indem sie entweder Timer oder Erinnerungen registrieren. In diesem Artikel wird gezeigt, wie Timer und Erinnerungen verwendet werden können, und es werden die Unterschiede zwischen ihnen erklärt.
 
 ## Actor-Timer
 Actor-Timer bieten einen einfachen Wrapper um .NET-Timer, um sicherzustellen, dass die Rückrufmethoden die von der Actors-Laufzeit bereitgestellten wechselseitigen Parallelitätsgarantien respektieren.
@@ -125,4 +125,4 @@ Wie oben gezeigt, akzeptiert die Methode `UnregisterReminder` die Schnittstelle 
  - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

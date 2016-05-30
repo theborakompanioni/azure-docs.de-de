@@ -3,7 +3,7 @@
 	description="Bewerten von Learning-Modellen, die im Azure-Blobspeicher (WASB) gespeichert wurden."
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev"
+	authors="bradsev,deguhath,gokuma"
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,34 +13,31 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="05/05/2016"
 	ms.author="deguhath;bradsev" />
 
 # Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden 
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-
-## Einführung
-
 In diesem Thema wird das Laden von Machine Learning-Modellen (ML) beschrieben, die mit Spark MLlib erstellt und in Azure-Blobspeicher (WASB) gespeichert wurden, und wie sie mit Datasets bewertet werden, die auch in WASB gespeichert wurden. Es zeigt, wie eingegebene Daten vorab verarbeitet, Funktionen mithilfe der Indizierungs- und Codierungsfunktionen im MLlib-Toolkit transformiert werden und ein bezeichnetes Datenpunktobjekt erstellt wird, das als Eingabe für die Bewertung der ML-Modelle verwendet werden kann. Zu den für die Bewertung verwendeten Modellen zählen lineare Regression, logistische Regression, zufällige Gesamtstrukturmodelle und Gradient-Boosted-Strukturmodelle.
 
 
 ## Voraussetzungen
 
-1. Sie benötigen ein Azure-Konto und einen HDInsight Spark-Cluster, um mit dieser exemplarischen Vorgehensweise zu beginnen. Unter [Overview of Data Science using Spark on Azure HDInsight](machine-learning-data-science-spark-overview.md) (Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight) finden Sie diese Anforderungen, eine Beschreibung der hier verwendeten NYC-Taxi-Daten von 2013 und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook auf dem Spark-Cluster. Das **machine-learning-data-science-spark-model-consumption.ipynb**-Notebook, das die Codebeispiele in diesem Thema enthält, ist in [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Python) verfügbar.
+1. Sie benötigen ein Azure-Konto und HDInsight Spark. Zum Durcharbeiten dieser exemplarischen Vorgehensweise ist ein Cluster vom Typ HDInsight 3.4 Spark 1.6 erforderlich. Unter [Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight](machine-learning-data-science-spark-overview.md) finden Sie diese Anforderungen, eine Beschreibung der hier verwendeten NYC-Taxidaten von 2013 und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook im Spark-Cluster. Das Notebook **machine-learning-data-science-spark-data-exploration-modeling.ipynb**, das die Codebeispiele in diesem Thema enthält, ist bei [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) verfügbar.
 
-2. Außerdem müssen Sie die hier zu bewertenden Machine Learning-Modelle erstellen, indem Sie das Thema [Data exploration and modeling with Spark](machine-learning-data-science-spark-data-exploration-modeling.md) (Durchsuchen von Daten und Modellierung mit Spark) durcharbeiten.
+2. Außerdem müssen Sie die hier zu bewertenden Modelle für maschinelles Lernen erstellen, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md) durcharbeiten.
 
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
  
 
-## Einrichten von Spark und Verzeichnispfaden für gespeicherte Daten und Modelle 
+## Setup: Speicherorte, Bibliotheken und vorab festgelegter Spark-Kontext
 
 Spark kann aus dem Azure Storage-Blob (WASB) lesen und darin schreiben. Es können also alle Ihre vorhandenen Daten mithilfe von Spark verarbeitet und die Ergebnisse wieder im WASB gespeichert werden.
 
-Um Modelle oder Dateien im WASB zu speichern, muss der Pfad korrekt angegeben werden. Auf den an den Spark-Cluster angefügten Standardcontainer können Sie mit einem Pfad verweisen, der mit *„wasb///“* beginnt. Das folgende Codebeispiel gibt den Speicherort der zu lesenden Daten und den Pfad für das Modellspeicherverzeichnis an, in dem die Ausgabe des Modells gespeichert wird.
+Um Modelle oder Dateien im WASB zu speichern, muss der Pfad korrekt angegeben werden. Auf den an den Spark-Cluster angefügten Standardcontainer können Sie mit einem Pfad verweisen, der mit *wasb//* beginnt. Das folgende Codebeispiel gibt den Speicherort der zu lesenden Daten und den Pfad für das Modellspeicherverzeichnis an, in dem die Ausgabe des Modells gespeichert wird.
 
 
 ### Festlegen von Verzeichnispfaden für Speicherorte im WASB
@@ -49,7 +46,11 @@ Modelle werden gespeichert in: „wasb:///user/remoteuser/NYCTaxi/Models“. Wen
 
 Die bewerteten Ergebnisse wurden gespeichert in: „wasb:///user/remoteuser/NYCTaxi/ScoredResults“. Wenn der Pfad zum Ordner falsch ist, werden die Ergebnisse nicht in diesem Ordner gespeichert.
 
->AZURE.HINWEIS: Die Dateipfade können aus der Ausgabe der letzten Zelle des **machine-learning-data-science-spark-data-exploration-modeling.ipynb**-Notebooks kopiert und in die Platzhalter in diesem Code eingefügt werden.
+
+>[AZURE.NOTE] Die Dateipfade können aus der Ausgabe der letzten Zelle des **machine-learning-data-science-spark-data-exploration-modeling.ipynb**-Notebooks kopiert und in die Platzhalter in diesem Code eingefügt werden.
+
+
+Hier ist der Code zum Festlegen der Verzeichnispfade:
 
 	# LOCATION OF DATA TO BE SCORED (TEST DATA)
 	taxi_test_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Test.tsv";
@@ -76,10 +77,10 @@ Die bewerteten Ergebnisse wurden gespeichert in: „wasb:///user/remoteuser/NYCT
 
 **AUSGABE:**
 
-datetime.datetime(2016, 4, 19, 17, 21, 28, 379845)
+datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 
-### Importieren benötigter Bibliotheken und Festlegen des Spark-Kontexts 
+### Importieren von Bibliotheken
 
 Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliotheken mit dem folgenden Code.
 
@@ -88,6 +89,8 @@ Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliot
 	from pyspark import SparkConf
 	from pyspark import SparkContext
 	from pyspark.sql import SQLContext
+	import matplotlib
+	import matplotlib.pyplot as plt
 	from pyspark.sql import Row
 	from pyspark.sql.functions import UserDefinedFunction
 	from pyspark.sql.types import *
@@ -95,17 +98,22 @@ Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliot
 	from numpy import array
 	import numpy as np
 	import datetime
-	
-	# SET SPARK CONTEXT
-	sc = SparkContext(conf=SparkConf().setMaster('yarn-client'))
-	sqlContext = SQLContext(sc)
-	atexit.register(lambda: sc.stop())
-	
-	sc.defaultParallelism
 
-**AUSGABE:**
 
-4
+### Vorab festgelegter Spark-Kontext und PySpark-Magics
+
+Die PySpark-Kernel, die mit Jupyter-Notebooks verfügbar sind, verfügen über einen vorab festgelegten Kontext. Sie müssen die Spark- oder Hive-Kontexte also nicht mehr ausdrücklich festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
+
+- sc – für Spark 
+- sqlContext – für Hive
+
+Der PySpark-Kernel bietet einige vordefinierte „Magics“. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
+
+- **%%local** gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
+- **%%sql -o <variable name>** führt eine Hive-Abfrage für den sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im Python-Kontext „%%local“ als Pandas-Datenrahmen beibehalten.
+ 
+
+Weitere Informationen zu den Kerneln für Jupyter-Notebooks und den zugehörigen vordefinierten Magics, die mit %% aufgerufen werden (z.B. „%%local“), finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 
 ## Erfassen von Daten und Erstellen eines bereinigten Datenrahmens
@@ -174,7 +182,7 @@ Die Dateien für Taxifahrten und Fahrpreise wurden basierend auf dem Verfahren v
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 15,36 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 46,37 Sekunden
 
 
 ## Vorbereiten von Daten für die Bewertung in Spark 
@@ -195,7 +203,7 @@ Der [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.pre
 	timestart = datetime.datetime.now()
 	
 	# LOAD PYSPARK LIBRARIES
-	from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler, OneHotEncoder, VectorIndexer
+	from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler, VectorIndexer
 	
 	# CREATE FOUR BUCKETS FOR TRAFFIC TIMES
 	sqlStatement = """
@@ -249,14 +257,14 @@ Der [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.pre
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 4,88 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 5,37 Sekunden
 
 
 ### Erstellen von RDD-Objekten mit Featurearrays für die Eingabe in Modelle
 
-Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [Robuste verteilte Datasets](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html)-Objekten (RDD) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
+Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html)-Objekten (Robuste verteilte Datasets) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
 
-Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl von Machine Learning-Modellen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten.
+Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Modellen für maschinelles Lernen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten.
 
 
 	# CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
@@ -326,7 +334,7 @@ Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 9,94 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 11,72 Sekunden
 
 
 ## Bewerten mit dem logistischen Regressionsmodell und Speichern der Ausgabe im Blob
@@ -360,7 +368,7 @@ Der Code in diesem Abschnitt veranschaulicht das Laden eines in Azure-Blobspeich
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 32,46 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 19,22 Sekunden
 
 
 ## Bewerten eines linearen Regressionsmodells
@@ -377,7 +385,7 @@ Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
+	# LOAD MODEL AND SCORE USING **SCALED VARIABLES**
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -395,14 +403,14 @@ Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 25,00 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 16,63 Sekunden
 
 
 ## Bewerten der zufälligen Gesamtstrukturmodelle für Klassifizierung und Regression
 
 Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten zufälligen Gesamtstrukturmodelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder im Blobspeicher gespeichert werden.
 
-[Zufällige Gesamtstrukturen](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen. In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Zufällige Gesamtstrukturen können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Zufällige Gesamtstrukturen zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
+[Zufällige Gesamtstrukturen](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Gruppen von Entscheidungsstrukturen. In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Zufällige Gesamtstrukturen können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Zufällige Gesamtstrukturen zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 
 [spark.mllib](http://spark.apache.org/mllib/) unterstützt zufällige Gesamtstrukturen für binäre und Mehrklassenklassifizierung sowie für Regression mit kontinuierlichen und kategorischen Features.
 
@@ -443,7 +451,7 @@ Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten 
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 52,2 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 31,07 Sekunden
 
 
 ## Bewerten der Gradient-Boosted-Strukturmodelle für Klassifizierung und Regression
@@ -452,7 +460,7 @@ Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten 
 
 **spark.mllib** unterstützt GBTs für binäre Klassifizierung sowie Regression mit kontinuierlichen und kategorischen Features.
 
-[Gradient-Boosted-Strukturen](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Ensembles von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+[Gradient-Boosted-Strukturen](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
 
 	# SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
@@ -463,7 +471,7 @@ Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten 
 	#IMPORT MLLIB LIBRARIES
 	from pyspark.mllib.tree import GradientBoostedTrees, GradientBoostedTreesModel
 	
-	# CLASSIFICATION:LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+	# CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
 
 	#LOAD AND SCORE THE MODEL
 	savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeClassificationFileLoc)
@@ -496,7 +504,8 @@ Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten 
 	
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 27,73 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 14,6 Sekunden
+
 
 ## Bereinigen von Objekten aus dem Arbeitsspeicher und Drucken bewerteter Dateispeicherorte
 
@@ -520,27 +529,29 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 27,73 Sekunden
 
 **AUSGABE:**
 
-logisticRegFileLoc: LogisticRegressionWithLBFGS\_2016-04-1917\_22\_36.354603.txt
+logisticRegFileLoc: LogisticRegressionWithLBFGS\_2016-05-0317\_22\_38.953814.txt
 
-linearRegFileLoc: LinearRegressionWithSGD\_2016-04-1917\_23\_06.083178
+linearRegFileLoc: LinearRegressionWithSGD\_2016-05-0317\_22\_58.878949
 
-randomForestClassificationFileLoc: RandomForestClassification\_2016-04-1917\_23\_33.994108.txt
+randomForestClassificationFileLoc: RandomForestClassification\_2016-05-0317\_23\_15.939247.txt
 
-randomForestRegFileLoc: RandomForestRegression\_2016-04-1917\_24\_00.352683.txt
+randomForestRegFileLoc: RandomForestRegression\_2016-05-0317\_23\_31.459140.txt
 
-BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification\_2016-04-1917\_24\_21.465683.txt
+BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification\_2016-05-0317\_23\_49.648334.txt
 
-BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-04-1917\_24\_32.371641.txt
+BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-05-0317\_23\_56.860740.txt
 
 
 
 ## Verwenden von Spark-Modellen über eine Weboberfläche
 
-Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy mit Spark-Clustern in HDInsight (Linux)](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md).
+Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md).
 
-Livy können Sie zur Remoteübermittlung eines Auftrags verwenden, der eine Datei im Batch bewertet, die in einem Azure-Blob gespeichert ist, und dann die Ergebnisse in einen anderen Blob schreibt. Laden Sie zu diesem Zweck das Python-Skript aus [Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können ein Tool wie **Microsoft Azure Storage Explorer** oder **AzCopy** zum Kopieren des Skripts in das Clusterblob verwenden. In unserem Fall laden wir das Skript in ***wasb:///example/python/ConsumeGBNYCReg.py*** hoch.
+Livy können Sie zur Remoteübermittlung eines Auftrags verwenden, der eine Datei im Batch bewertet, die in einem Azure-Blob gespeichert ist, und dann die Ergebnisse in einen anderen Blob schreibt. Laden Sie zu diesem Zweck das Python-Skript von [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure-Speicher-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript also zu ***wasb:///example/python/ConsumeGBNYCReg.py*** hochgeladen.
 
->AZURE.HINWEIS: Die benötigten Zugriffsschlüssel finden Sie im Portal für das Speicherkonto, das dem Spark-Cluster zugeordnet ist.
+
+>[AZURE.NOTE] Die benötigten Zugriffsschlüssel finden Sie im Portal für das Speicherkonto, das dem Spark-Cluster zugeordnet ist.
+
 
 Nach dem Hochladen an diesen Speicherort wird dieses Skript innerhalb des Spark-Clusters in einem verteilten Kontext ausgeführt. Es lädt das Modell und führt Vorhersagen an Eingabedateien auf Grundlage des Modells aus.
 
@@ -553,7 +564,9 @@ Sie können dieses Skript durch eine einfache HTTPS/REST-Anforderung von Livy re
 
 Sie können mit einem einfachen HTTPS-Anruf mit Standardauthentifizierung jede Sprache auf dem Remotesystem verwenden, um den Spark-Auftrag über Livy aufzurufen.
 
->AZURE.HINWEIS: Es wäre hilfreich, die Python Requests-Bibliothek bei der Ausführung dieses HTTP-Aufrufs zu verwenden, aber sie ist zurzeit nicht standardmäßig in den Azure-Funktionen installiert. Stattdessen werden darum ältere HTTP-Bibliotheken verwendet.
+
+>[AZURE.NOTE] Es wäre hilfreich, die Python Requests-Bibliothek bei der Ausführung dieses HTTP-Aufrufs zu verwenden, aber sie ist zurzeit nicht standardmäßig in Azure Functions installiert. Stattdessen werden darum ältere HTTP-Bibliotheken verwendet.
+
 
 Hier ist der Python-Code für den HTTP-Aufruf:
 
@@ -582,9 +595,9 @@ Hier ist der Python-Code für den HTTP-Aufruf:
 	conn.close()
 
 
-Sie können diesen Python-Code auch den [Azure-Funktionen](../functions/) hinzufügen, um eine Spark-Auftragsübermittlung auszulösen, die einen Blob basierend auf verschiedenen Ereignissen wie einem Timer, Erstellung oder Aktualisieren eines Blobs bewertet.
+Sie können diesen Python-Code auch [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) hinzufügen, um eine Spark-Auftragsübermittlung auszulösen, die einen Blob basierend auf verschiedenen Ereignissen wie einem Timer, Erstellung oder Aktualisieren eines Blobs bewertet.
 
-Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie die [Azure Logik-Apps](../app-service/logic/) zum Aufrufen der Spark-Batchbewertung durch Definieren einer HTTP-Aktion für den **Logik-Apps-Designer** und Festlegung seiner Parameter.
+Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) zum Aufrufen der Spark-Batchbewertung durch Definieren einer HTTP-Aktion für den **Logik-Apps-Designer** und Festlegung seiner Parameter.
 
 - Erstellen Sie im Azure-Portal eine neue Logik-App durch Auswählen von **+Neu** -> **Web und mobil** -> **Logik-App**. 
 - Geben Sie den Namen der Logik-App und den App Service-Plan ein, um den **Logik-Apps-Designer** aufzurufen.
@@ -592,4 +605,9 @@ Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie die [Azure Log
 
 ![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## Wie geht es weiter? 
+
+**Übergreifende Validierung und Hyper-Parameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit übergreifender Validierung und Hyper-Parameter-Sweeping trainiert werden können.
+
+<!---HONumber=AcomDC_0518_2016-->
