@@ -47,23 +47,7 @@ Um die Yammer-API zu verwenden, stellen Sie zunächst eine **Verbindung** her un
 | ---|---|---|
 |Tokenverschlüsselung|Ja|Angeben der Yammer-Anmeldeinformationen|
 
-Führen Sie folgende Schritte aus, um sich bei Yammer anzumelden und die Konfiguration der Yammer-**Verbindung** in Ihrer Logik-App abzuschließen:
-
-1. Wählen Sie **Wiederholung**.
-2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
-3. Wählen Sie **Aktion hinzufügen**.
-![Yammer konfigurieren][1]
-4. Geben Sie in das Suchfeld „Yammer“ ein, und warten Sie, bis die Suche alle Einträge mit „Yammer“ im Namen zurückgibt.
-5. Wählen Sie **Yammer – Alle Nachrichten abrufen** aus.
-6. Wählen Sie **Bei Yammer anmelden**:
-![Yammer konfigurieren][2]
-7. Geben Sie Ihre Yammer-Anmeldeinformationen ein, um die Anwendung zu autorisieren.
-![Yammer konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Yammer für die Interaktion mit Ihrer Logik-App:
-![Yammer konfigurieren][4] 
-9. Kehren Sie nach der Anmeldung zur Logik-App zurück, um diese zu vervollständigen. Dazu konfigurieren Sie den Abschnitt **Yammer – Alle Nachrichten abrufen** und fügen bei Bedarf weitere Trigger und Aktionen hinzu.
-![Yammer konfigurieren][5]  
-10. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Yammer](../../includes/connectors-create-api-yammer.md)]
 
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
@@ -203,7 +187,7 @@ Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe,
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 [1]: ./media/connectors-create-api-yammer/connectionconfig1.png
 [2]: ./media/connectors-create-api-yammer/connectionconfig2.png
@@ -211,4 +195,4 @@ Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe,
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

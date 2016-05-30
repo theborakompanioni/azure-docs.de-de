@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="bradsev" />
 
 # Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
 
-In diesem Dokument wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben.
-
-Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von _partitionierten Tabellen und Sichten_ verbessert werden.
+In diesem Dokument wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von _partitionierten Tabellen und Sichten_ verbessert werden.
 
 
 ## Erstellen einer neuen Datenbank und eines Satzes von Dateigruppen
@@ -31,7 +29,7 @@ Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-
 
 - Fügen Sie (je nach Anforderungen) den einzelnen Datenbank-Dateigruppen eine oder mehrere Dateien hinzu.
 
- > [AZURE.NOTE] Geben Sie die Ziel-Dateigruppe an, die die Daten für diese Partition enthalten wird, und die Dateinamen der physischen Datenbank, in der die Dateigruppendaten gespeichert werden.
+ > [AZURE.NOTE] Geben Sie die Zieldateigruppe an, die die Daten für diese Partition enthalten wird, und die Dateinamen der physischen Datenbank, in der die Dateigruppendaten gespeichert werden.
  
 Mit dem folgenden Beispiel wird eine neue Datenbank mit drei Dateigruppen erstellt, die sich von den primären und Protokollgruppen unterscheiden und jeweils eine physische Datei enthalten. Die Datenbankdateien werden im Standarddatenordner von SQL Server erstellt, der in der SQL Server-Instanz konfiguriert wurde. Weitere Informationen zu den Standarddateispeicherorten finden Sie unter [Dateispeicherorte für Standard- und benannte Instanzen von SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
 
@@ -92,6 +90,7 @@ Erstellen Sie die partitionierten Tabellen gemäß dem Datenschema, das den im v
 	    ON <TablePScheme>(<partition_field>)
 
 - Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und Indizes](https://msdn.microsoft.com/library/ms188730.aspx).
+
 
 ## Massenimport der Daten für die einzelne Partitionstabellen
 
@@ -166,6 +165,7 @@ Das folgende PowerShell-Skript ist ein Beispiel für das parallele Laden von Dat
     While (Get-Job -State "Running") { Start-Sleep 10 }
     date
 
+
 ## Erstellen von Indizes zum Optimieren der Leistung beim Zusammenführen und Abfragen
 
 - Wenn Sie Daten für die Modellierung aus mehreren Tabellen extrahieren, erstellen Sie die Indizes für die Verknüpfungsschlüssel zur Verbesserung der Leistung beim Zusammenführen.
@@ -181,9 +181,10 @@ oder
 
  > [AZURE.NOTE] Sie können auch die Indizes vor dem Massenimport von Daten erstellen. Die Indexerstellung vor dem Massenimport verlangsamt das Laden der Daten.
 
+
 ## Advanced Analytics Process and Technology in Aktion – Beispiel
 
 Eine umfassende exemplarische Vorgehensweise zur Verwendung des Cortana-Analyseprozesses mit einem öffentlichen DataSet finden Sie unter [Cortana-Analyseprozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

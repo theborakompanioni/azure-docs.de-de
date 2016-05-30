@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/27/2016"
+   ms.date="05/13/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
@@ -26,7 +26,9 @@ Bei den meisten Ressourcen können Sie problemlos zum Resource Manager-Modell we
 - **Speicherressourcen** – unterstützen erforderliche Speicherkonten, die VHDs für virtuelle Computer speichern, einschließlich der Datenträger für Betriebssysteme und zusätzlicher Datenträger.
 - **Netzwerkressourcen** – unterstützen erforderliche NICs, IP-Adressen virtueller Computer und Subnetze innerhalb von virtuellen Netzwerken sowie optionale Load Balancer, deren IP-Adressen und Netzwerksicherheitsgruppen.
 
-Für diese Ressourcentypen müssen Sie darauf achten, welche Version Sie verwenden, da sich die unterstützten Vorgänge unterscheiden. Damit Sie besser nachvollziehen können, welches Modell für die Bereitstellung Ihrer Ressourcen verwendet wurde, werden die beiden Modelle im Folgenden genauer erläutert.
+Für diese Ressourcentypen müssen Sie darauf achten, welche Version Sie verwenden, da sich die unterstützten Vorgänge unterscheiden. Wenn Sie bereit sind, Ihre Ressourcen aus der klassischen Bereitstellung in die Resource Manager-Bereitstellung zu migrieren, lesen Sie [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md).
+
+Damit Sie besser nachvollziehen können, welches Modell für die Bereitstellung Ihrer Ressourcen verwendet wurde, werden die beiden Modelle im Folgenden genauer erläutert.
 
 ## Merkmale des Ressourcen-Managers
 
@@ -38,7 +40,7 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -161,7 +163,7 @@ Bei der Arbeit mit virtuellen Computern sind einige wichtige Aspekte zu berücks
 - Virtuelle Computer, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden, müssen in ein virtuelles Netzwerk eingebunden werden.
 - Virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, müssen nicht in ein virtuelles Netzwerk eingebunden werden.
 
-Wenn Ausfallzeiten für Ihre virtuellen Computer eingeplant werden können, dann können Sie diese mit [ASM2ARM-PowerShell-Skripts](https://github.com/fullscale180/asm2arm) von der klassischen Bereitstellung zu Ressourcen-Manager übertragen.
+Wenn Sie bereit sind, Ihre Ressourcen aus der klassischen Bereitstellung in die Resource Manager-Bereitstellung zu migrieren, lesen Sie [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md).
 
 Detaillierte Informationen zum Verschieben von Compute-, Speicher- und Netzwerkressourcen finden Sie unter [Azure-Compute-, Netzwerk- und Speicheranbieter unter dem Azure-Ressourcen-Manager](./virtual-machines/virtual-machines-windows-compare-deployment-models.md).
 
@@ -173,4 +175,4 @@ Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellun
 - Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

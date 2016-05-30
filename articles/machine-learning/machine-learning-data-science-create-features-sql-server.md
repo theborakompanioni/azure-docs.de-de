@@ -13,20 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="05/10/2016" 
 	ms.author="bradsev;fashah;garye" />
 
 
 # Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
 
-## Einführung
 
-Dieses Dokument veranschaulicht das Generieren von Features für Daten in einer SQL Server-VM in Azure, aus denen Algorithmen effizient lernen können. Dies kann mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden. Hier werden beide Methoden eingesetzt.
+Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Dies kann mithilfe von SQL oder durch die Verwendung einer Programmiersprache wie Python erreicht werden. Hier werden beide Methoden erläutert.
+
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 > [AZURE.NOTE] Für ein praktisches Beispiel können Sie das [NYC Taxi-DataSet](http://www.andresmh.com/nyctaxitrips/) verwenden. Eine vollständige Beschreibung finden Sie im IPython Notebook-Beispiel unter [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb).
-
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 
 ## Voraussetzungen
@@ -126,4 +124,4 @@ Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Feat
 
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

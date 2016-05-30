@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="c"
 	ms.devlang="csharp"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="05/13/2016"
 	ms.author="sethm"/>
 
 # Erste Schritte mit Event Hubs
@@ -36,42 +36,9 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 + Ein aktives Azure-Konto. <br/>Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Kostenlose Azure-Testversion</a>.
 
-## Erstellen eines Ereignis-Hubs
-
-1. Melden Sie sich beim [klassischen Azure-Portal][] an, und klicken Sie im unteren Teil des Bildschirms auf **NEU**.
-
-2. Klicken Sie auf **App Services**, **Service Bus**, **Event Hub** und dann auf **Schnellerfassung**.
-
-	![][1]
-
-3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
-
-	![][2]
-
-4. Klicken Sie auf den soeben erstellten Namespace (üblicherweise ***Name\_des\_Event\_Hubs*-ns**).
-
-	![][3]
-
-5. Klicken Sie am oberen Seitenrand auf die Registerkarte **Event Hubs**, und klicken Sie dann auf den soeben erstellten Event Hub.
-
-	![][4]
-
-6. Klicken oben auf der Seite auf die Registerkarte **Konfigurieren**, und fügen Sie eine Regel namens **SendRule** mit *Send*-Berechtigung hinzu. Fügen Sie eine weitere Regel namens **ReceiveRule** mit den Berechtigungen *Manage, Send, Listen* hinzu, und klicken Sie dann auf **Speichern**.
-
-	![][5]
-
-7. Beachten Sie auf derselben Seite die generierten Schlüssel für **SendRule**.
-
-	![][6b]
-
-8. Klicken Sie am oberen Seitenrand auf die Registerkarte **Dashboard**, und klicken Sie dann auf **Verbindungsinformationen**. Notieren Sie sich die beiden Verbindungszeichenfolgen.
-
-	![][6]
-
-Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Empfangen von Ereignissen erforderlichen Verbindungszeichenfolgen.
+[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-c](../../includes/service-bus-event-hubs-get-started-send-c.md)]
-
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
@@ -97,20 +64,11 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 - [Übersicht über Event Hubs][]
 
 <!-- Images. -->
-[1]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub1.png
-[2]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub2.png
-[3]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub3.png
-[4]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub4.png
-[5]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub5.png
-[6]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub6.png
-[6b]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub6b.png
-
-
 [21]: ./media/event-hubs-c-ephcs-getstarted/run-csharp-ephcs1.png
 [24]: ./media/event-hubs-c-ephcs-getstarted/receive-eph-c.png
 
 <!-- Links -->
-[klassischen Azure-Portal]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [Ereignisprozessorhost-Bibliothek]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Übersicht über Event Hubs]: event-hubs-overview.md
 [Übersicht über Event Hubs]: event-hubs-overview.md
@@ -118,4 +76,4 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

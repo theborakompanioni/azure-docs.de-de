@@ -3,7 +3,7 @@
    description="Richtlinien und Empfehlungen zur Verwendung von PolyBase in SQL Data Warehouse-Szenarios."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sahaj08"
+   authors="happynicolle"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="sahajs;barbkess;sonyama"/>
+   ms.date="05/18/2016"
+   ms.author="nicw;barbkess;sonyama"/>
 
 
 # Anleitung für die Verwendung von PolyBase in SQL Data Warehouse
@@ -178,12 +178,12 @@ Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie
 <!--Image references-->
 
 <!--Article references-->
-[Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[Laden von Daten mit PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
-[solution partners]: sql-data-warehouse-solution-partners.md
-[development overview]: sql-data-warehouse-overview-develop.md
-[Statistiken]: sql-data-warehouse-develop-statistics.md
-[Übersicht über die Datenmigration]: sql-data-warehouse-overview-migrate.md
+[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Laden von Daten mit PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[solution partners]: ./sql-data-warehouse-solution-partners.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[Statistiken]: ./sql-data-warehouse-develop-statistics.md
+[Übersicht über die Datenmigration]: ./sql-data-warehouse-overview-migrate.md
 
 <!--MSDN references-->
 [supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
@@ -191,8 +191,6 @@ Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie
 [SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
-
-<!-- External Links -->
 [CREATE EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935022.aspx
 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx
 [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx
@@ -208,4 +206,6 @@ Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!-- External Links -->
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -19,6 +19,11 @@
 
 
 # Sichern von virtuellen Azure-Computern
+
+> [AZURE.SELECTOR]
+- [Sichern von ARM-VMs in Azure](backup-azure-arm-vms.md)
+- [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)
+
 In diesem Artikel werden die Verfahren zum Sichern Ihrer virtuellen Azure-Computer (VMs) erläutert.
 
 Bevor Sie einen virtuellen Azure-Computer sichern können, müssen Sie zunächst einige Dinge erledigen. Falls noch nicht erfolgt, erfüllen Sie die [Voraussetzungen](backup-azure-vms-prepare.md) zur Vorbereitung Ihrer Umgebung auf das Sichern Ihrer VMs.
@@ -36,8 +41,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, um sicherzustellen, dass all
 
 1. Melden Sie sich beim [klassischen Portal](http://manage.windowsazure.com/) an.
 
-2. Klicken Sie in der Liste mit den Azure-Diensten auf **Recovery Services**, um die Liste mit den Backup- und Site Recovery-Tresoren zu öffnen.
-![Tresorliste öffnen](./media/backup-azure-vms/choose-vault-list.png)
+2. Klicken Sie in der Liste mit den Azure-Diensten auf **Recovery Services**, um die Liste mit den Backup- und Site Recovery-Tresoren zu öffnen. ![Tresorliste öffnen](./media/backup-azure-vms/choose-vault-list.png)
 
 3. Wählen Sie in der Liste mit den Backup-Tresoren den Tresor zum Sichern einer VM aus.
 
@@ -55,8 +59,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, um sicherzustellen, dass all
 
     ![Workload auswählen](./media/backup-azure-vms/discovery-select-workload.png)
 
-6. Klicken Sie unten auf der Seite auf **ERMITTELN**.
-![Schaltfläche „Ermitteln“](./media/backup-azure-vms/discover-button-only.png)
+6. Klicken Sie unten auf der Seite auf **ERMITTELN**. ![Schaltfläche „Ermitteln“](./media/backup-azure-vms/discover-button-only.png)
 
     Der Ermittlungsvorgang kann einige Minuten dauern, während die virtuellen Computer in einer Tabelle aufgeführt werden. Am unteren Rand des Bildschirms wird eine Benachrichtigung angezeigt, die Ihnen mitteilt, dass der Vorgang ausgeführt wird.
 
@@ -77,8 +80,7 @@ Sie registrieren einen virtuellen Azure-Computer, um ihn dem Azure Backup-Dienst
 
     ![Workload auswählen](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. Klicken Sie unten auf der Seite auf **REGISTRIEREN**.
-![Schaltfläche „Registrieren“](./media/backup-azure-vms/register-button-only.png)
+3. Klicken Sie unten auf der Seite auf **REGISTRIEREN**. ![Schaltfläche „Registrieren“](./media/backup-azure-vms/register-button-only.png)
 
 4. Wählen Sie im Kontextmenü **Elemente registrieren** die virtuellen Computer aus, die Sie registrieren möchten. Wenn zwei oder mehr virtuelle Computer denselben Namen aufweisen, verwenden Sie den Clouddienst, um sie unterscheiden.
 
@@ -143,7 +145,7 @@ Azure-Sicherungstresore, die nach Mai 2015 erstellt wurden, enthalten eine im T
 
     Ein Auftrag wird erstellt, um die Schutzrichtlinie zu konfigurieren und die virtuellen Computer, die Sie ausgewählt haben, dieser Richtlinie zuzuordnen.
 
-6. Um die Liste der **Schutz konfigurieren**-Aufträge anzuzeigen, klicken Sie im Menü der Tresore auf **Aufträge** und wählen unter **Vorgänge** den Filter **Schutz konfigurieren** aus.
+6. Um die Liste der **Schutz konfigurieren**-Aufträge anzuzeigen, klicken Sie im Menü der Tresore auf **Aufträge**, und wählen Sie unter **Vorgänge** den Filter **Schutz konfigurieren** aus.
 
     ![Schutzauftrag konfigurieren](./media/backup-azure-vms/protect-configureprotection.png)
 
@@ -181,4 +183,4 @@ Wenn beim Sichern des virtuellen Computers Probleme auftreten, finden Sie Hilfe 
 - [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 - [Wiederherstellen virtueller Computer](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

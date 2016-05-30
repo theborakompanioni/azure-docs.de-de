@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte zum Wiederherstellen über das Azure-Portal a
 
 Verwenden Sie Azure PowerShell für eine programmgesteuerte Datenbankwiederherstellung mit dem Cmdlet [Restore-AzureRmSqlDatabase][].
 
-> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0.3 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version von [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell][].
+> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0.3 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version von [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
 1. Öffnen Sie Windows PowerShell.
 2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und listen Sie alle Abonnements auf, die Ihrem Konto zugeordnet sind.
@@ -163,9 +163,9 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: sql-database-business-continuity.md
-[Abschließen der wiederhergestellten Azure SQL-Datenbank]: sql-database-recovered-finalize.md
-[Gewusst wie: Installieren und Konfigurieren von Azure PowerShell]: powershell-install-configure.md
+[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: ../sql-database/sql-database-business-continuity.md
+[Abschließen der wiederhergestellten Azure SQL-Datenbank]: ../sql-database/sql-database-recovered-finalize.md
+[Installieren und Konfigurieren von Azure PowerShell]: ../powershell/powershell-install-configure.md
 
 <!--MSDN references-->
 [Datenbankwiederherstellungsanforderung erstellen]: https://msdn.microsoft.com/library/azure/dn509571.aspx
@@ -181,4 +181,4 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 [Azure-Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

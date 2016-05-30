@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="05/16/2016"
    ms.author="derrickv"/>
 
 # Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded
@@ -222,14 +222,14 @@ Sobald Sie über einen **Bericht** verfügen, verwenden Sie einen **IFrame**, um
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-iframe-code.png)
 
 
-### Filtern von in die Anwendung eingebetteten Berichten
+## Filtern von in die Anwendung eingebetteten Berichten
 
-Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL einen Abfragezeichenfolgenparameter mit angegebenem Filter hinzu. Dies ist die Syntax der Filterabfrage:
+Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL mit dem angegebenem Filter den Abfragezeichenfolgenparameter **$filter** mit dem Operator **eq** hinzu. Dies ist die Syntax der Filterabfrage:
 
 ```
 https://app.powerbi.com/reportEmbed
-?reportId=d2a0ea38-0694-4c70-9673-ee9655d54a4a&
-$filter={tableName/fieldName} eq '{fieldValue}'
+?reportId=d2a0ea38-...-9673-ee9655d54a4a&
+$filter={tableName/fieldName}%20eq%20'{fieldValue}'
 ```
 
 > [AZURE.NOTE] {tableName/fieldName} darf keine Leerzeichen oder Sonderzeichen enthalten. Für {fieldValue} wird ein einzelner Kategoriewert akzeptiert.
@@ -242,4 +242,4 @@ $filter={tableName/fieldName} eq '{fieldValue}'
 - [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 - [Informationen zum App-Tokenfluss in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/01/2016" 
@@ -197,4 +197,4 @@ Im folgenden Diagramm ist die aus dem erfolgreichen Abschluss dieser Phase resul
 
 - Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 3](virtual-machines-windows-ps-lob-ph3.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

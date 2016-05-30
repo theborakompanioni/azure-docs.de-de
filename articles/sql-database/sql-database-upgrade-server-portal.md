@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Durchführen eines Upgrades auf SQL-Datenbank V12 mithilfe des Azure-Portals | Microsoft Azure"
-	description="Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der Datenbanken in einen Pool für elastische Datenbanken mithilfe des Azure-Portals."
+	pageTitle="Durchführen eines Upgrades auf SQL-Datenbank V12 mithilfe des Azure-Portals | Microsoft Azure"
+	description="Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der Datenbanken in einen Pool für elastische Datenbanken mithilfe des Azure-Portals."
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="02/23/2016"
+	ms.date="05/09/2016"
 	ms.author="sstein"/>
 
 
@@ -25,21 +25,21 @@
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
-SQL-Datenbank V12 ist die neueste Version, sodass eine Aktualisierung auf SQL-Datenbank V12 empfohlen wird. SQL-Datenbank V12 verfügt über viele [Vorteile gegenüber der vorherigen Version](sql-database-v12-whats-new.md), einschließlich:
+SQL-Datenbank V12 ist die neueste Version, sodass eine Aktualisierung auf SQL-Datenbank V12 empfohlen wird. SQL-Datenbank V12 verfügt über viele [Vorteile gegenüber der vorherigen Version](sql-database-v12-whats-new.md), einschließlich:
 
 - Höhere Kompatibilität mit SQL Server.
 - Verbesserte Premium-Leistung und neue Leistungsstufen.
 - [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
-Dieser Artikel enthält Anweisungen zum Aktualisieren von vorhandenen SQL-Datenbank V11-Servern und -Datenbanken auf SQL-Datenbank V12.
+Dieser Artikel enthält Anweisungen zum Aktualisieren von vorhandenen SQL-Datenbank V11-Servern und -Datenbanken auf SQL-Datenbank V12.
 
 Bei der Aktualisierung auf V12 führen Sie ein Upgrade aller Web- und Business-Datenbanken auf eine neue Dienstebene durch, daher stehen Anleitungen für das Upgrade von Web- und Business-Datenbanken zur Verfügung.
 
 Zudem kann eine Migration zu einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) kostengünstiger sein als die Aktualisierung auf einzelne Leistungsstufen (Tarife) für einzelne Datenbanken. Pools vereinfachen zudem das Datenbankmanagement, da Sie nur die Leistungseinstellungen für den Pool verwalten müssen, und nicht die Leistungsmerkmale der einzelnen Datenbanken. Wenn Sie über Datenbanken auf mehreren Servern verfügen, sollten Sie sie auf einen gemeinsamen Server verschieben und die Vorteile aus dem Zusammenfassen in einem Pool nutzen. Sie können Datenbanken [mit PowerShell direkt auf einfache Weise automatisiert von V11-Servern in Pool für elastische Datenbanken migrieren](sql-database-upgrade-server-powershell.md). Die Migration von V11-Datenbanken in Pools kann auch mithilfe des Portals durchgeführt werden, dort muss jedoch bereits ein V12-Server vorhanden sein, um den Pool zu erstellen. Weiter unten in diesem Artikel finden Sie eine Anleitung für das Erstellen des Pools nach dem Serverupgrade, falls [Datenbanken vorhanden sind, die von einem Pool profitieren können](sql-database-elastic-pool-guidance.md).
 
-Beachten Sie, dass Ihre Datenbanken während des gesamten Upgradevorgangs online bleiben und weiterhin funktionieren. Zum Zeitpunkt des tatsächlichen Übergangs auf die neue Leistungsstufe können die Datenbankverbindungen ggf. für einen kurzen Zeitraum – i. d. R. 90 Sekunden, eventuell jedoch bis zu 5 Minuten – unterbrochen werden. Wenn eine Anwendung über [Maßnahmen zur Behandlung vorübergehender Fehler bei Verbindungsunterbrechungen](sql-database-connect-central-recommendations.md) verfügt, ist es ausreichend, am Ende des Upgrades Schutz vor unterbrochenen Verbindungen vorzusehen.
+Beachten Sie, dass Ihre Datenbanken während des gesamten Upgradevorgangs online bleiben und weiterhin funktionieren. Zum Zeitpunkt des tatsächlichen Übergangs auf die neue Leistungsstufe können die Datenbankverbindungen ggf. für einen kurzen Zeitraum – i. d. R. 90 Sekunden, eventuell jedoch bis zu 5 Minuten – unterbrochen werden. Wenn eine Anwendung über [Maßnahmen zur Behandlung vorübergehender Fehler bei Verbindungsunterbrechungen](sql-database-connect-central-recommendations.md) verfügt, ist es ausreichend, am Ende des Upgrades Schutz vor unterbrochenen Verbindungen vorzusehen.
 
-Das Upgrade auf SQL-Datenbank V12 kann nicht rückgängig gemacht werden. Nach dem Upgrade kann der Server nicht auf V11 zurückgesetzt werden.
+Das Upgrade auf SQL-Datenbank V12 kann nicht rückgängig gemacht werden. Nach dem Upgrade kann der Server nicht auf V11 zurückgesetzt werden.
 
 Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-service-tier-advisor.md) und [Überlegungen zur Leistung für elastische Pools](sql-database-elastic-pool-guidance.md) erst dann zur Verfügung, wenn der Dienst Zeit für die Evaluierung der Workloads auf dem neuen Server hat. Der Empfehlungsverlauf für V11-Server gilt nicht für V12-Server und wird daher nicht beibehalten.
 
@@ -47,7 +47,7 @@ Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-serv
 
 - **Aktualisieren aller Web- und Business-Datenbanken:** Informationen hierzu finden Sie im Abschnitt [Durchführen eines Upgrades für alle Web- und Business-Datenbanken](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases) weiter unten oder unter [Überwachen und Verwalten eines Pools für elastische Datenbanken (PowerShell)](sql-database-elastic-pool-manage-powershell.md).
 - **Überprüfen und Beenden der Georeplikation**: Wenn Ihre Azure SQL-Datenbank für Georeplikation konfiguriert ist, sollten Sie ihre aktuelle Konfiguration dokumentieren und die [Georeplikation beenden](sql-database-geo-replication-portal.md#remove-secondary-database). Nachdem das Upgrade abgeschlossen ist, können Sie Ihre Datenbank erneut für die Georeplikation konfigurieren.
-- **Öffnen Sie folgende Ports, falls Sie Clients auf einer Azure-VM verwenden**: Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank V12 herstellt und der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie die Portbereiche 11000 – 11999 und 14000 – 14999 auf dem virtuellen Computer öffnen. Weitere Informationen finden Sie unter [Ports für SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md).
+- **Öffnen Sie folgende Ports, falls Sie Clients auf einer Azure-VM verwenden**: Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank V12 herstellt und der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie die Portbereiche 11000 – 11999 und 14000 – 14999 auf dem virtuellen Computer öffnen. Weitere Informationen finden Sie unter [Ports für SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 
 
@@ -60,7 +60,7 @@ Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-serv
 
 ## Durchführen eines Upgrades für alle Web- und Business-Datenbanken
 
-Wenn Ihr Server Web- oder Business-Datenbanken hat, müssen Sie für diese ein Upgrade durchführen. Im Verlauf der Aktualisierung auf SQL-Datenbank V12 werden Sie alle Web- und Business-Datenbanken auf eine neue Dienstebene aktualisieren.
+Wenn Ihr Server Web- oder Business-Datenbanken hat, müssen Sie für diese ein Upgrade durchführen. Im Verlauf der Aktualisierung auf SQL-Datenbank V12 werden Sie alle Web- und Business-Datenbanken auf eine neue Dienstebene aktualisieren.
 
 Um Sie beim Durchführen des Upgrades zu unterstützen, empfiehlt der SQL-Datenbank-Dienst eine geeignete Dienstebene und Leistungsstufe (Tarif) für jede Datenbank. Der Dienst empfiehlt die beste Dienstebene für das Ausführen der vorhandenen Workload der Datenbank durch Analyse ihres Nutzungsverlaufs.
 
@@ -108,7 +108,7 @@ Wenn die Meldung **Zum Anzeigen der empfohlenen elastischen Datenbankpools für 
 
 Befolgen Sie die Anleitung im Artikel [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool.md), um die Erstellung des Pools abzuschließen.
 
-## Überwachen von Datenbanken nach dem Upgrade auf SQL-Datenbank V12
+## Überwachen von Datenbanken nach dem Upgrade auf SQL-Datenbank V12
 
 >[AZURE.IMPORTANT] Führen Sie ein Upgrade auf die aktuelle Version von SQL Server Management Studio (SSMS) aus, um die neuen v12-Funktionen nutzen zu können. [Laden Sie SQL Server Management Studio herunter](https://msdn.microsoft.com/library/mt238290.aspx).
 
@@ -139,7 +139,7 @@ Zusätzliche Überwachungsinformationen:
 
 **Warnungen**: Richten Sie im Azure-Portal „Warnungen“ ein, damit Sie benachrichtigt werden, wenn der DTU-Verbrauch für eine aktualisierte Datenbank eine bestimmte hohe Ebene erreicht. Datenbankwarnungen können im Azure-Portal für verschiedene Leistungsmetriken wie DTU, CPU, E/A und die Protokollierung eingerichtet werden. Navigieren Sie zu der Datenbank, und wählen Sie **Warnungsregeln** auf dem Blatt **Einstellungen** aus.
 
-Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festlegen, wenn der durchschnittliche prozentuale DTU-Wert 75 % innerhalb der letzten 5 Minuten überschreitet. Weitere Informationen zur Konfiguration von Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../azure-portal/insights-receive-alert-notifications.md).
+Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festlegen, wenn der durchschnittliche prozentuale DTU-Wert 75 % innerhalb der letzten 5 Minuten überschreitet. Weitere Informationen zur Konfiguration von Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../azure-portal/insights-receive-alert-notifications.md).
 
 
 
@@ -167,4 +167,4 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festle
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

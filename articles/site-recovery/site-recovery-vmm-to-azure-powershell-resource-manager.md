@@ -19,9 +19,11 @@
 # Replizieren virtueller Hyper-V-Computer in VMM-Clouds nach Azure mithilfe von PowerShell und Azure Resource Manager
 
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](site-recovery-vmm-to-azure.md)
+- [Azure-Portal](site-recovery-vmm-to-azure.md)
+- [PowerShell ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+- [Klassisches Portal](site-recovery-vmm-to-azure-classic.md)
 - [PowerShell – klassisch](site-recovery-deploy-with-powershell.md)
-- [PowerShell – Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md) 
+
 
 
 ## Übersicht
@@ -40,9 +42,9 @@ Der Artikel enthält Voraussetzungen für das Szenario und zeigt Ihnen folgende 
 - Aktivieren des Schutzes für diese virtuellen Computer 
 - Testen des Failovers, um sicherzustellen, dass alles wie erwartet funktioniert
 
-Sollten beim Einrichten dieses Szenarios Probleme auftreten, besuchen Sie das [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Sollten beim Einrichten dieses Szenarios Probleme auftreten, besuchen Sie das [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-> [AZURE.NOTE] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells.
+> [AZURE.NOTE] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells.
 
 ## Vorbereitung
 
@@ -50,10 +52,10 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 
 ### Voraussetzungen für Azure
 
-- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Wenn Sie keins besitzen, beginnen Sie mit einem [kostenloses Konto](https://azure.microsoft.com/free). Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
+- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Wenn Sie keins besitzen, beginnen Sie mit einem [kostenloses Konto](https://azure.microsoft.com/free). Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
 - Sie benötigen ein CSP-Abonnement, wenn Sie die Replikation zu einem CSP-Abonnementszenario ausführen möchten. Erfahren Sie mehr über das CSP-Programm unter [Registrieren für das CSP-Programm](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx).
-- Sie benötigen ein Azure-Speicherkonto der Version 2 (ARM), um nach Azure replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement oder dem CSP-Abonnement zugeordnet sein. Weitere Informationen zum Einrichten von Azure-Speicher finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md).
-- Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, den [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) entsprechen.
+- Sie benötigen ein Azure-Speicherkonto der Version 2 (ARM), um nach Azure replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement oder dem CSP-Abonnement zugeordnet sein. Weitere Informationen zum Einrichten von Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md).
+- Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, die [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.
 
 > [AZURE.NOTE] Derzeit sind nur Vorgänge auf VM-Ebene über Powershell möglich. Die Unterstützung für Vorgänge auf Wiederherstellungsplanebene ist bald erhältlich. Derzeit können Sie Failover nur auf der Ebene von geschützten VMs und nicht auf der Ebene von Wiederherstellungsplänen durchführen.
 
@@ -65,9 +67,9 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 	- Einen oder mehrere Hyper-V-Hostserver oder Cluster in jeder Hostgruppe.
 	- Einen oder mehrere virtuelle Computer auf dem Hyper-V-Quellserver.
 - Erfahren Sie mehr über das Einrichten von VMM-Clouds:
-	- Weitere Informationen über private VMM-Clouds erhalten Sie unter [Private Cloud-Neuerungen mit System Center 2012 R2 VMM](http://go.microsoft.com/fwlink/?LinkId=324952) und unter [VMM 2012 und die Clouds](http://go.microsoft.com/fwlink/?LinkId=324956).
+	- Weitere Informationen über private VMM-Clouds erhalten Sie unter [Private Cloud-Neuerungen mit System Center 2012 R2 VMM](http://go.microsoft.com/fwlink/?LinkId=324952) und unter [VMM 2012 und die Clouds](http://go.microsoft.com/fwlink/?LinkId=324956).
 	- Informationen zum [Planen der VMM-Infrastruktur](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)
-	- Sobald Ihre Cloudfabricelemente eingerichtet sind, finden Sie Informationen zum Erstellen privater Clouds unter [Erstellen einer privaten Cloud in VMM](http://go.microsoft.com/fwlink/p/?LinkId=324953) und [Exemplarische Vorgehensweise: Erstellen von privaten Clouds mit System Center 2012 SP1 VMM](http://go.microsoft.com/fwlink/p/?LinkId=324954).
+	- Nachdem Sie Ihre Cloudstrukturelemente eingerichtet haben, finden Sie Informationen zum Erstellen privater Clouds unter [Erstellen einer privaten Cloud in VMM](http://go.microsoft.com/fwlink/p/?LinkId=324953) und [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://go.microsoft.com/fwlink/p/?LinkId=324954) (Exemplarische Vorgehensweise: Erstellen von privaten Clouds mit System Center 2012 SP1 VMM).
 
 
 ### Hyper-V-Voraussetzungen
@@ -99,9 +101,9 @@ Informationen zur Netzwerkzuordnung finden Sie unter:
 ###PowerShell-Voraussetzungen
 Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx) anzeigen.
 
-Tipps für die Verwendung von Cmdlets, z. B. wie Parameterwerte, Eingaben und Ausgaben in der Regel in Azure PowerShell behandelt werden, finden Sie unter [Erste Schritte mit Azure-Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx).
+Tipps für die Verwendung von Cmdlets, z.B. wie Parameterwerte, Eingaben und Ausgaben in der Regel in Azure PowerShell behandelt werden, finden Sie unter [Erste Schritte mit Azure-Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx).
 
-## Schritt 1: Festlegen des Abonnements 
+## Schritt 1: Festlegen des Abonnements 
 
 1. Melden Sie sich über Azure PowerShell mithilfe der folgenden Cmdlets beim Azure-Konto an.
  
@@ -121,7 +123,7 @@ Tipps für die Verwendung von Cmdlets, z. B. wie Parameterwerte, Eingaben und Au
 		Set-AzureRmContext –SubscriptionID <subscriptionId>
 
 
-## Schritt 2: Erstellen eines Recovery Services-Tresors
+## Schritt 2: Erstellen eines Recovery Services-Tresors 
 
 1. Falls noch keine vorhanden ist, erstellen Sie eine ARM-Ressourcengruppe.
 
@@ -131,19 +133,11 @@ Tipps für die Verwendung von Cmdlets, z. B. wie Parameterwerte, Eingaben und Au
 
 		$vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location 
 
-## Schritt 3: Generieren eines Tresorregistrierungsschlüssels
+## Schritt 3: Festlegen des Kontexts des Recovery Services-Tresors
 
-Generieren Sie einen Registrierungsschlüssel im Tresor. Nachdem Sie den Azure Site Recovery-Anbieter heruntergeladen und auf dem VMM-Server installiert haben, verwenden Sie diesen Schlüssel, um den VMM-Server im Tresor zu registrieren.
+1.  Legen Sie den Tresorkontext durch Ausführen des nachstehenden Befehls fest.
 
-1.	Rufen Sie die Tresoreinstellungsdatei ab, und legen Sie den Kontext fest:
-	
-
-		Get-AzureRmRecoveryServicesVaultSettingsFile -Vault vaultname -Path #VaultSettingFilePath
-	
-	
-2.	Legen Sie den Tresorkontext durch Ausführen der folgenden Befehle fest:
-	
-		Import-AzureRmSiteRecoveryVaultSettingsFile -Path $VaultSettingFilePath
+		Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## Schritt 4: Installieren des Azure Site Recovery-Anbieters
 
@@ -198,7 +192,7 @@ Beachten Sie, dass sich das Speicherkonto in der gleichen Region wie der Azure S
 
 	marsagentinstaller.exe /q /nu
 
-## Schritt 7: Konfigurieren der Cloudschutzeinstellungen
+## Schritt 7: Konfigurieren der Cloudschutzeinstellungen
 
 1.	Erstellen Sie eine Replikationsrichtlinie für Azure durch Ausführen des folgenden Befehls:
 
@@ -319,7 +313,7 @@ Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Übe
 
 ### Ausführen eines ungeplanten Failovers
 
-1. Starten Sie dann das geplante Failover, indem Sie den folgenden Befehl ausführen:
+1. Starten Sie das ungeplante Failover, indem Sie den folgenden Befehl ausführen:
 		
 		$protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
 
@@ -351,4 +345,4 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/dn850420.aspx) über PowerShell-Cmdlets für Azure Site Recovery</a>.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

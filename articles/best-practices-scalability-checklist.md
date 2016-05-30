@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # Checkliste für die Skalierbarkeit
 
-![](media/best-practices-scalability-checklist/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Dienstentwurf
 - **Partitionieren der Workload**. Entwickeln Sie Teile des Prozesses als diskret und zerlegbar. Minimieren Sie die Größe der einzelnen Teile, während Sie die üblichen Regeln für die Trennung von Belangen und das Single-Responsibility-Prinzip befolgen. Dadurch können Komponententeile auf eine Weise verteilt werden, die die Verwendung jeder Recheneinheit (beispielsweise eine Rolle oder ein Datenbankserver) maximiert. Es erleichtert auch die Skalierung der Anwendung, indem Sie Instanzen bestimmter Ressourcen hinzufügen. Weitere Informationen finden Sie unter [Leitfaden Partitionierungsberechnung](https://msdn.microsoft.com/library/dn589773.aspx).
@@ -68,4 +68,4 @@
 - **Erwägen Sie, die Anzahl der Dienstkonten zu minimieren**. Verwenden Sie z. B. ein spezielles Konto für den Zugriff auf Ressourcen oder Dienste, die Verbindungen beschränken oder bessere Leistung bringen, wenn weniger Verbindungen verwaltet werden. Dieser Ansatz wird häufig für Dienste wie z. B. Datenbanken verwendet, kann aber die Möglichkeit zur genauen Überwachung der Vorgänge aufgrund der Identitätswechsel des ursprünglichen Benutzers beeinflussen.
 - Im Rahmen der Test-Routinen während der Entwicklung **führen Sie Leistungsprofilerstellung und Auslastungstests durch** und stellen vor der endgültigen Version sicher, dass die Anwendung ausführt und nach Bedarf skaliert wird. Diese Tests sollten auf der gleichen Art von Hardware stattfinden, wie die Produktionsplattform, mit den gleichen Datentypen und -mengen sowie der Benutzerauslastung, die in der Produktion auftreten. Weitere Informationen finden Sie unter [Testen der Leistung eines Clouddiensts](vs-azure-tools-performance-profiling-cloud-services.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

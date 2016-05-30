@@ -1,19 +1,19 @@
 <properties
    pageTitle="Probleme beim Neustart oder Ändern der Größe eines virtuellen Computers | Microsoft Azure"
    description="Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)"
-   services="virtual-machines"
+   services="virtual-machines-windows"
    documentationCenter=""
-   authors="delhan"
+   authors="Deland-Han"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
 
 <tags
-   ms.service="virtual-machines"
-   ms.topic="support-article"
-   ms.tgt_pltfrm="virtual-machines"
+   ms.service="virtual-machines-windows"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-windows"
    ms.workload="required"
-   ms.date="04/28/2016"
+   ms.date="05/12/2016"
    ms.devlang="na"
    ms.author="delhan"/>
 
@@ -21,9 +21,9 @@
 
 > [AZURE.SELECTOR]
 - [Klassisch](../articles/virtual-machines/virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-- [Ressourcen-Manager](../articles/virtual-machines/virtual-machines-windows-arm-restart-resize-error-troubleshooting.md)
+- [Ressourcen-Manager](../articles/virtual-machines/virtual-machines-windows-restart-resize-error-troubleshooting.md)
 
-Wenn Sie versuchen, einen beendeten virtuellen Azure-Computer zu starten oder die Größe eines vorhandenen virtuellen Azure-Computers zu ändern, tritt häufig ein Zuordnungsfehler auf. Dieser Fehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
+Wenn Sie versuchen, einen beendeten virtuellen Azure-Computer zu starten oder die Größe eines vorhandenen virtuellen Azure-Computers zu ändern, tritt häufig ein Zuordnungsfehler auf. Dieser Fehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind, oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
@@ -37,7 +37,7 @@ Klicken Sie im Azure-Portal auf **Durchsuchen** > **Virtuelle Computer** > _Ihr 
 
 ## Problem: Fehler beim Starten eines angehaltenen virtuellen Computers
 
-Sie versuchen, einen angehaltenen virtuellen Computer zu starten, erhalten aber einen Zuordnungsfehler.
+Sie versuchen, einen angehaltenen virtuellen Computer zu starten, erhalten aber eine Zuordnungsfehlermeldung.
 
 ### Ursache
 
@@ -59,7 +59,7 @@ Sollte bei der Erstellung eines neuen Clouddiensts ein Fehler auftreten, wiederh
 
 ## Problem: Fehler beim Neustart eines vorhandenen virtuellen Computers
 
-Sie versuchen, die Größe eines angehaltenen virtuellen Computers zu ändern, erhalten aber einen Zuordnungsfehler.
+Sie versuchen, die Größe eines angehaltenen virtuellen Computers zu ändern, erhalten aber eine Zuordnungsfehlermeldung.
 
 ### Ursache
 
@@ -76,9 +76,9 @@ Wenn die Größe des virtuellen Computers nicht verringert werden kann, führen 
   * Erstellen Sie einen neuen Clouddienst, und stellen Sie dabei sicher, dass er weder mit einer Affinitätsgruppe verknüpft, noch einem virtuellen Netzwerk zugeordnet ist, das mit einer Affinitätsgruppe verknüpft ist.
 
   * Erstellen Sie in diesem Clouddienst einen neuen größeren virtuellen Computer.
-  
+
 Sie können alle Ihre virtuellen Computer im gleichen Clouddienst zusammenführen. Wenn Ihr vorhandener Clouddienst einem regionsbasierten virtuellen Netzwerk zugeordnet ist, können Sie den neuen Clouddienst mit dem vorhandenen virtuellen Netzwerk verbinden.
 
 Wenn der vorhandene Clouddienst nicht einem regionsbasierten virtuellen Netzwerk zugeordnet ist, müssen Sie die virtuellen Computer im vorhandenen Clouddienst löschen und über die zugehörigen Datenträger im neuen Clouddienst neu erstellen. Berücksichtigen Sie dabei allerdings, dass der neue Clouddienst einen neuen Namen und eine neue VIP besitzt und diese für alle Abhängigkeiten aktualisiert werden müssen, die derzeit diese Informationen für den vorhandenen Clouddienst verwenden.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

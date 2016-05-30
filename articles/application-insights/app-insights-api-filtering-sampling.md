@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="04/27/2016" 
 	ms.author="awills"/>
 
 # Stichprobenerstellung, Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
@@ -46,9 +46,9 @@ Bei der [Erstellung von Stichproben](app-insights-sampling.md) handelt es sich u
 
 ### So aktivieren Sie die Erfassungs-Stichprobenerstellung
 
-Öffnen Sie auf der Leiste „Einstellungen“ das Blatt „Kontingente und Preise“. Klicken Sie auf „Sampling“, und wählen Sie ein Stichprobenverhältnis aus.
+Öffnen Sie auf der Leiste „Einstellungen“ das Blatt „Kontingente und Preise“. Klicken Sie auf „Sampling“, und wählen Sie einen Stichprobenverhältnis aus.
 
-Die Erfassung wird nicht ausgeführt, wenn das SDK festes oder adaptives Sampling ausführt. Solange die Samplingrate im SDK unter 100 % liegt, wird die Einstellung für das Erfassungssampling ignoriert.
+Die Erfassung wird nicht ausgeführt, wenn das SDK eine adaptive Stichprobenerstellung oder eine Stichprobenerstellung mit festem Prozentsatz ausführt. Solange der Stichproben-Prozentsatz im SDK unter 100% liegt, wird die Einstellung für die Erfassungs-Stichprobenerstellung ignoriert.
 
 ### So aktivieren Sie die adaptive Stichprobenerstellung
 
@@ -77,9 +77,10 @@ Um eine Stichprobenerstellung mit festem Prozentsatz für die Daten von Webseite
 * Legen Sie einen Prozentsatz fest (in diesem Beispiel „10“), der „100/N“ entspricht. Dabei steht N für eine Ganzzahl. Beispiele: 50 (=100/2), 33,33 (=100/3), 25 (=100/4) oder 10 (=100/10). 
 * Wenn Sie auch auf dem Server die [Stichprobenerstellung mit festem Prozentsatz](app-insights-sampling.md) aktivieren, wird die Stichprobenerstellung zwischen Client und Server synchronisiert, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 
-[Erfahren Sie mehr über Sampling](app-insights-sampling.md).
+[Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
 
-## Filterung
+<a name="filtering"></a>
+## Filtern: ITelemetryProcessor
 
 Diese Technik bietet Ihnen eine bessere Kontrolle über die Daten aus dem Telemetriedatenstrom, die ein- oder ausgeschlossen werden. Sie können sie zusammen mit der Stichprobenerstellung oder einzeln verwenden.
 
@@ -87,7 +88,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
 
 > [AZURE.WARNING] Die Filterung der vom SDK gesendeten Telemetriedaten mithilfe von Prozessoren kann die im Portal angezeigten Statistiken verfälschen und die Nachverfolgung verwandter Elemente erschweren.
 > 
-> Verwenden Sie stattdessen [Sampling](#sampling).
+> Verwenden Sie stattdessen die [Stichprobenerstellung](#sampling).
 
 ### Erstellen eines Telemetrieprozessors
 
@@ -239,8 +240,8 @@ public void Process(ITelemetry item)
 
 ```
 
-
-## Eigenschaften hinzufügen
+<a name="add-properties"></a>
+## Hinzufügen von Eigenschaften: ITelemetryInitializer
 
 Mithilfe von Telemetrieinitialisierern definieren Sie globale Eigenschaften, die mit allen Telemetriedaten gesendet werden, und setzen das ausgewählte Verhalten der Standardtelemetriemodule außer Kraft.
 
@@ -368,6 +369,15 @@ Eine Übersicht der für „telemetryItem“ verfügbaren nicht benutzerdefinier
 Sie können beliebig viele Initialisierer hinzufügen.
 
 
+## ITelemetryProcessor und ITelemetryInitializer
+
+Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisierern?
+
+* Die Einsatzmöglichkeiten überlappen sich teilweise: Beide können verwendet werden, um einer Telemetrie Eigenschaften hinzuzufügen.
+* Telemetrieinitialisierer werden immer vor Telemetrieprozessoren ausgeführt.
+* Mit Telemetrieprozessoren können Sie ein Telemetrieelement vollständig ersetzen oder verwerfen.
+* Telemetrieprozessoren verarbeiten keine Telemetrie von Leistungsindikatoren.
+
 ## Referenz
 
 * [API-Übersicht](app-insights-api-custom-events-metrics.md)
@@ -409,4 +419,4 @@ Sie können beliebig viele Initialisierer hinzufügen.
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

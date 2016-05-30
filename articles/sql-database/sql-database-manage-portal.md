@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
-	ms.date="01/22/2016"
+	ms.date="05/10/2016"
 	ms.author="sstein"/>
 
 
@@ -30,6 +30,7 @@ Das [Azure-Portal](https://portal.azure.com/) ermöglicht das Erstellen, Überwa
 ![Datenbankübersicht](./media/sql-database-manage-portal/sqldatabase_annotated.png)
 
 ## 1\. Aktionen zur Datenbankverwaltung
+
 ![Datenbankverwaltungsaktionen](./media/sql-database-manage-portal/sqldatabase_actions.png)
 
 Das Azure-Portal bietet eine Reihe von allgemeinen Datenbankaktionen, auf die oben auf dem Blatt „Datenbank“ zugegriffen werden kann. Sie können eine Datenbank zu einem früheren Zeitpunkt wiederherstellen, eine Datenbank in Visual Studio öffnen, eine Datenbank auf einen neuen Server kopieren und die Datenbank in ein Azure-Speicherkonto exportieren.
@@ -39,13 +40,15 @@ Das Azure-Portal bietet eine Reihe von allgemeinen Datenbankaktionen, auf die ob
 - [Exportieren einer SQL-­Datenbank](sql-database-export.md)
 
 ## 2\. Datenbanküberwachung
+
 ![Datenbanküberwachung](./media/sql-database-manage-portal/sqldatabase_monitoring.png)
 
-Azure SQL-Datenbanken verfügen standardmäßig über Überwachungsdiagramme für die Datenbanktransaktionseinheit (DTU), die Größe der Datenbank und die Verbindungsintegrität. Diese Überwachungsdiagramme können angepasst und erweitert werden, um außerdem die CPU-Nutzung, den Daten-E/A-Prozentsatz, Deadlocks, den Protokoll-E/A-Prozentsatz oder sogar den Prozentsatz der Anforderungen anzuzeigen, die von der Firewall blockiert werden. Weitere Informationen zum Anpassen der Überwachungsdiagrammen finden Sie [hier][Azure part monitoring].
+Azure SQL-Datenbanken verfügen standardmäßig über Überwachungsdiagramme für die Datenbanktransaktionseinheit (DTU), die Größe der Datenbank und die Verbindungsintegrität. Diese Überwachungsdiagramme können angepasst und erweitert werden, um außerdem die CPU-Nutzung, den Daten-E/A-Prozentsatz, Deadlocks, den Protokoll-E/A-Prozentsatz oder sogar den Prozentsatz der Anforderungen anzuzeigen, die von der Firewall blockiert werden.
 
-Darüber hinaus können Regeln für Warnhinweise eingerichtet werden, um eine angegebene Metrik zu überwachen und einen bestimmten Administrator und Co-Administrator zu warnen, wenn vordefinierte Grenzwerte erreicht werden. Weitere Informationen zum Einrichten von Regeln für Warnhinweise im klassischen Azure-Portal finden Sie [hier][Azure part monitoring].
+Darüber hinaus können Regeln für Warnhinweise eingerichtet werden, um eine angegebene Metrik zu überwachen und einen bestimmten Administrator und Co-Administrator zu warnen, wenn vordefinierte Grenzwerte erreicht werden.
 
 ## 3\. Datenbanksicherheit und Überwachung
+
 ![Datenbanksicherheit](./media/sql-database-manage-portal/sqldatabase_security.png)
 
 Azure SQL-Datenbanken können so konfiguriert werden, dass alle Datenbankereignisse verfolgt werden und in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto geschrieben werden. Diese Funktion kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
@@ -58,31 +61,17 @@ Azure SQL-Datenbanken können auch zum Maskieren vertraulicher Daten für nicht 
 
 
 ## 4\. Georeplikation
+
 ![Georeplikation](./media/sql-database-manage-portal/sqldatabase_georeplication.png)
 
 Azure SQL-Datenbanken können konfiguriert werden, um bereits übergebene Transaktionen asynchron in eine sekundäre Datenbank zu replizieren. Mit der Georeplikation im Portal können Sie die Azure-Region wählen, in der die sekundäre Datenbank gespeichert werden soll.
 
-- [Georeplikation](https://msdn.microsoft.com/library/azure/dn783447.aspx)
+- [Georeplikation](sql-database-geo-replication-overview.md)
 
 
 
+## Zusätzliche Ressourcen
 
+- [SQL-Datenbank](sql-database-technical-overview.md)
 
-##Zusätzliche Ressourcen
-* [SQL-Datenbank](sql-database-technical-overview.md)   
-* [Überwachen der SQL-Datenbank mit dynamischen Verwaltungssichten][]   
-* [Transact-SQL-Referenz (SQL-Datenbank)][]
-
-  [Azure Classic Portal Tour]: https://go.microsoft.com/fwlink/?LinkID=522341
-  [Classic Portal]: https://portal.azure.com
-  [Azure part monitoring]: ../documentdb-monitor-accounts.md
-  [AzureDb management overview]: http://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/
-  [Introducing SQL Database]: http://azure.microsoft.com/services/sql-database
-  [Database geo-replication]: http://azure.microsoft.com/blog/2014/07/12/spotlight-on-sql-database-active-geo-replication/
-  [Managing Azure SQL Database using SQL Server Management Studio]: sql-database-manage-azure-ssms.md
-  [Überwachen der SQL-Datenbank mit dynamischen Verwaltungssichten]: http://msdn.microsoft.com/library/windowsazure/ff394114.aspx
-  [Transact-SQL-Referenz (SQL-Datenbank)]: http://msdn.microsoft.com/library/bb510741(v=sql.120).aspx
-  [AzureDb Auditing]: http://azure.microsoft.com/documentation/articles/sql-database-auditing-get-started/
-  [AzureDb datamasking]: http://azure.microsoft.com/documentation/articles/sql-database-dynamic-data-masking-get-started/
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

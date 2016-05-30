@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/16/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C-Vorschau: Aufrufen einer Web-API über eine .NET-Web-App
@@ -21,7 +21,7 @@
 
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Web-Apps und Web-APIs in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel wird erläutert, wie Sie eine .NET Model-View-Controller-Web-App (MVC) für Aufgabenlisten erstellen, die eine .NET-Web-API mithilfe von OAuth 2.0-Bearertoken aufruft. Sowohl die Web-App als auch die Web-API verwenden Azure AD B2C zum Verwalten von Benutzeridentitäten und zum Authentifizieren von Benutzern.
+Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Web-Apps und Web-APIs in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel wird erläutert, wie Sie eine .NET Model-View-Controller-Web-App (MVC) für Aufgabenlisten erstellen, die eine .NET-Web-API mithilfe von OAuth 2.0-Bearertoken aufruft. Sowohl die Web-App als auch die Web-API verwenden Azure AD B2C zum Verwalten von Benutzeridentitäten und zum Authentifizieren von Benutzern.
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
@@ -54,7 +54,7 @@ In Azure AD B2C wird jede Benutzeroberfläche durch eine [Richtlinie](active-dir
 
 Nachdem Sie die drei Richtlinien erstellt haben, können Sie Ihre App erstellen.
 
-Beachten Sie, dass in diesem Artikel nicht behandelt wird, wie die gerade erstellten Richtlinien verwendet werden. Grundlegende Informationen zur Funktionsweise von Richtlinien in Azure AD B2C finden Sie im [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md).
+Beachten Sie, dass in diesem Artikel nicht behandelt wird, wie die gerade erstellten Richtlinien verwendet werden. Grundlegende Informationen zur Funktionsweise von Richtlinien in Azure AD B2C finden Sie im [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md).
 
 ## Herunterladen des Codes
 
@@ -134,7 +134,7 @@ public class TasksController : Controller
 
 ## Abrufen von Zugriffstoken und Aufrufen der Aufgaben-API
 
-In diesem Abschnitt wird erläutert, wie Sie einen OAuth 2.0-Tokenaustausch in einer Web-App mit den Bibliotheken und Frameworks von Microsoft durchführen. Falls Sie mit Autorisierungscodes und Zugriffstoken nicht vertraut sind, finden Sie in der [Referenz zum OpenID Connect-Protokoll](active-directory-b2c-reference-protocols.md) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie einen OAuth 2.0-Tokenaustausch in einer Web-App mit den Bibliotheken und Frameworks von Microsoft durchführen. Falls Sie mit Autorisierungscodes und Zugriffstoken nicht vertraut sind, finden Sie in der [Referenz zum OpenID Connect-Protokoll](active-directory-b2c-reference-protocols.md) weitere Informationen.
 
 ### Abrufen eines Autorisierungscodes
 
@@ -388,4 +388,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -19,7 +19,7 @@
 
 # Checkliste für die Verfügbarkeit
 
-![](media/best-practices-availability-checklist/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Anwendungsentwurf
 
@@ -68,4 +68,4 @@
 - **Verfolgen Sie den Fortschritt von Workflows mit langer Laufzeit**, und wiederholen Sie Vorgänge im Fehlerfall. Workflows mit langer Laufzeit umfassen häufig mehrere Schritte. Stellen Sie sicher, dass jeder Schritt unabhängig ist und wiederholt werden kann, um das Risiko zu minimieren, dass der gesamte Workflow rückgängig gemacht werden muss oder mehrere ausgleichende Transaktionen ausgeführt werden müssen. Überwachen und verwalten Sie den Status Workflows mit langer Ausführungszeit, indem Sie ein Muster wie das [Scheduler Agent Supervisor Pattern](https://msdn.microsoft.com/library/dn589780.aspx) (Scheduler-Agent-Supervisor-Muster) implementieren.
 - **Planen Sie die Wiederherstellung im Notfall.** Stellen Sie sicher, dass ein dokumentierter vereinbarter und vollständig getesteter Plan für die Wiederherstellung nach jeder Art von Ausfall vorhanden ist, durch den ein Teil des Hauptsystems oder das gesamte Hauptsystem nicht mehr verfügbar ist. Testen Sie diese Verfahren regelmäßig, und stellen Sie sicher, dass alle Mitarbeiter mit dem Prozess vertraut sind.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

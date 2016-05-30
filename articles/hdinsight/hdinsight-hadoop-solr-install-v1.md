@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2016" 
+	ms.date="05/17/2016" 
 	ms.author="nitinme"/>
 
 # Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern
@@ -51,16 +51,18 @@ Das in diesem Thema verwendete Beispielskript erstellt einen Windows-basierten S
 	![Anpassen eines Clusters mit "Skriptaktion"](./media/hdinsight-hadoop-solr-install-v1/hdi-script-action-solr.png "Anpassen eines Clusters mit "Skriptaktion"")
 	
 	<table border='1'>
-	<tr><th>Eigenschaft</th><th>Wert</th></tr>
-	<tr><td>Name</td>
-		<td>Geben Sie einen Namen für die Skriptaktion an. Beispiel: <b>Solr installieren</b>.</td></tr>
-	<tr><td>Skript-URI</td>
-		<td>Geben Sie den Uniform Resource Identifier (URI) für das Skript an, das aufgerufen wird, um den Cluster anzupassen. Beispiel: <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
-	<tr><td>Knotentyp</td>
-		<td>Gibt die Knoten an, auf denen das Anpassungsskript ausgeführt wird. Sie können <b>Alle Knoten</b>, <b>Nur Hauptknoten</b> oder <b>Nur Workerknoten</b> auswählen.
-	<tr><td>Parameter</td>
-		<td>Geben Sie die Parameter an, wenn dies für das Skript erforderlich ist. Für das Skript zum Installieren von Solr sind keine Parameter erforderlich, sodass Sie dieses Feld leer lassen können.</td></tr>
-</table>Sie können dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzufügen. Nachdem Sie die Skripts hinzugefügt haben, klicken Sie auf das Häkchen, um mit dem Erstellen des Clusters zu beginnen.
+		<tr><th>Eigenschaft</th><th>Wert</th></tr>
+		<tr><td>Name</td>
+			<td>Geben Sie einen Namen für die Skriptaktion an. Beispiel: <b>Solr installieren</b>.</td></tr>
+		<tr><td>Skript-URI</td>
+			<td>Geben Sie den Uniform Resource Identifier (URI) für das Skript an, das aufgerufen wird, um den Cluster anzupassen. Beispiel: <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
+		<tr><td>Knotentyp</td>
+			<td>Gibt die Knoten an, auf denen das Anpassungsskript ausgeführt wird. Sie können <b>Alle Knoten</b>, <b>Nur Hauptknoten</b> oder <b>Nur Workerknoten</b> auswählen.
+		<tr><td>Parameter</td>
+			<td>Geben Sie die Parameter an, wenn dies für das Skript erforderlich ist. Für das Skript zum Installieren von Solr sind keine Parameter erforderlich, sodass Sie dieses Feld leer lassen können.</td></tr>
+	</table>	
+
+	Sie können dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzufügen. Nachdem Sie die Skripts hinzugefügt haben, klicken Sie auf das Häkchen, um mit dem Erstellen des Clusters zu beginnen.
 
 Sie können das Skript auch zum Installieren von Solr in HDInsight mit Azure PowerShell oder dem HDInsight .NET SDK verwenden. Anweisungen zu diesen Verfahren finden Sie nachfolgend in diesem Thema.
 
@@ -196,4 +198,4 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

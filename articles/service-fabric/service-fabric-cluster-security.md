@@ -178,7 +178,7 @@ Erforderliche Parameter:
     https://chackdan-kmstest-eastus.vault.azure.net:443/secrets/MyCert/6b5cc15a753644e6835cb3g3486b3812
     ```
 
-- **Zertifikatfingerabdruck.** Dies bezieht sich auf den Fingerabdruck des Zertifikats, der unter der zuvor festgelegten URL zu finden ist.
+- ** Zertifikatfingerabdruck.** Dies bezieht sich auf den Fingerabdruck des Zertifikats, der unter der zuvor festgelegten URL zu finden ist.
 
 Optionale Parameter:
 
@@ -250,6 +250,37 @@ Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizieru
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
+
+### Herstellen einer Verbindung mit einem sicheren Cluster
+
+1. Führen Sie die folgenden Befehle aus, um das Zertifikat auf dem Computer einzurichten, den Sie zum Ausführen des PowerShell-Befehls „Connect-serviceFabricCluster“ verwenden möchten.
+
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
+
+2. Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem sicheren Cluster herzustellen. Die Zertifikatdetails sind identisch mit denen, die Sie bei der Einrichtung des Clusters angegeben haben.
+
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
+              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+              -StoreLocation CurrentUser -StoreName My
+    ```
+
+    Beispielsweise sollte der obige PowerShell-Befehl ähnlich wie der Folgende aussehen:
+
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
+              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
+              -StoreLocation CurrentUser -StoreName My
+    ```
+
 ## Nächste Schritte
 
 - [Service Fabric-Cluster-Upgradeprozess und Erwartungen](service-fabric-cluster-upgrade.md)
@@ -263,4 +294,4 @@ Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizieru
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/10/2016"
 	ms.author="sunliangms;fashah;garye;bradsev" />
 
 #<a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
@@ -48,6 +48,7 @@ Um ein DataSet zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in e
     	dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.
+
 
 ##<a name="blob-dataexploration"></a>Durchsuchen von Daten
 
@@ -149,6 +150,7 @@ Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
 
 		dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)	
 
+
 ##<a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
 
 Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt haben, können Sie die Daten (als Stichproben oder über Funktionen) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden. Beachten Sie, dass in Azure Machine Learning Studio ebenfalls weitere Funktionen erstellt werden können.
@@ -189,4 +191,4 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

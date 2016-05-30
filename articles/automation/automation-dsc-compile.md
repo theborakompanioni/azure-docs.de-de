@@ -37,7 +37,7 @@ Sie können DSC-Konfigurationen (Desired State Configuration, Konfiguration des 
 
 Wenn Sie sich für eine Kompilierungsmethode entschieden haben, folgen Sie dem jeweiligen unten beschriebenen Verfahren, um mit der Kompilierung zu beginnen.
 
-##Kompilieren einer DSC-Konfiguration mit dem Azure-Vorschauportal##
+##Kompilieren einer DSC-Konfiguration mit dem Azure-Portal##
 
 1.  Klicken Sie in Ihrem Automation-Konto auf **Konfigurationen**.
 2.  Klicken Sie auf eine Konfiguration, um das zugehörige Blatt zu öffnen.
@@ -115,7 +115,7 @@ PowerShell erfordert Parameter in einer [Hashtabelle](http://technet.microsoft.c
     }
     
     
-    Start-AzureRMAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "ParametersExample" -Parameters $Parameters 
+    Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "ParametersExample" -Parameters $Parameters 
     
 
 Informationen zum Übergeben von PSCredentials als Parameter finden Sie im Abschnitt <a href="#credential-assets">**Anmeldeinformationen**</a> weiter unten.
@@ -228,4 +228,4 @@ Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Hierbei we
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

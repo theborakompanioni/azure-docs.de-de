@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="05/17/2016"
    ms.author="tomfitz"/>
 
 # Erstellen von Azure-Ressourcen-Manager-Vorlagen
@@ -77,7 +77,7 @@ Das folgende Beispiel zeigt, wie Sie verschiedene Funktionen beim Erstellen von 
        "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
     }
 
-Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](./resource-group-template-functions.md) finden Sie eine vollständige Liste der Vorlagenfunktionen.
+Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](resource-group-template-functions.md) finden Sie eine vollständige Liste der Vorlagenfunktionen.
 
 
 ## Parameter
@@ -167,7 +167,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie Parameter definieren:
        }
     }
 
-Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy/#parameter-file).
+Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md#parameter-file).
 
 ## Variablen
 
@@ -241,10 +241,10 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 
 | Elementname | Erforderlich | Beschreibung
 | :----------------------: | :------: | :----------
-| apiVersion | Ja | Version der REST-API zum Erstellen der Ressource. Wie Sie die verfügbaren Versionsnummern für einen bestimmten Ressourcentyp ermitteln, erfahren Sie unter [Unterstützte API-Versionen](../resource-manager-supported-services/#supported-api-versions).
+| apiVersion | Ja | Version der REST-API zum Erstellen der Ressource. Wie Sie die verfügbaren Versionsnummern für einen bestimmten Ressourcentyp ermitteln, erfahren Sie unter [Unterstützte API-Versionen](resource-manager-supported-services.md#supported-api-versions).
 | type | Ja | Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp, den der Ressourcenanbieter unterstützt.
-| Name | Ja | Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen.
-| location | Variabel | Unterstützte Standorte der angegebenen Ressource Die verfügbaren Standorte finden Sie unter [Unterstützte Regionen](../resource-manager-supported-services/#supported-regions). Die meisten Ressourcentypen benötigen einen Standort, einige (wie z.B. eine Rollenzuweisung) jedoch nicht.
+| Name | Ja | Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Darüber hinaus überprüfen Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. Siehe [Überprüfen des Ressourcennamens](https://msdn.microsoft.com/library/azure/mt219035.aspx).
+| location | Variabel | Unterstützte Standorte der angegebenen Ressource Die verfügbaren Standorte finden Sie unter [Unterstützte Regionen](resource-manager-supported-services.md#supported-regions). Die meisten Ressourcentypen benötigen einen Standort, einige (wie z.B. eine Rollenzuweisung) jedoch nicht.
 | tags | Nein | Markierungen, die der Ressource zugeordnet sind
 | Kommentare | Nein | Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage
 | dependsOn | Nein | Ressourcen, von denen die definierte Ressource abhängig ist. Die Abhängigkeiten zwischen den Ressourcen werden ausgewertet, und die Ressourcen werden in ihrer Abhängigkeitsreihenfolge bereitgestellt. Wenn Ressourcen nicht voneinander abhängig sind, wird versucht, sie parallel bereitzustellen. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein.
@@ -370,20 +370,11 @@ Das folgende Beispiel zeigt einen Wert, der im Ausgabeabschnitt zurückgegeben w
        }
     }
 
-## Fortgeschrittenere Szenarios.
-Dieses Thema bietet einen einführenden Einblick in die Vorlage. Ihr Szenario erfordert jedoch möglicherweise komplexere Aufgaben.
-
-Sie müssen möglicherweise zwei Vorlagen zusammenführen oder eine untergeordnete Vorlage innerhalb einer übergeordneten Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md).
-
-Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
-
-Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dies geschieht normalerweise bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](../resource-group-template-functions#resourceid).
-
 ## Nächste Schritte
 - Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
-- Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](resource-group-template-functions.md).
-- Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
-- Ein ausführliches Beispiel für die Bereitstellung einer Anwendung finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](app-service-web/app-service-deploy-complex-application-predictably.md).
-- Die verfügbaren Schemas finden Sie unter [Schemas des Azure-Ressourcen-Managers](https://github.com/Azure/azure-resource-manager-schemas).
+- Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
+- Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
+- Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
+- Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dies geschieht normalerweise bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions.md#resourceid).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

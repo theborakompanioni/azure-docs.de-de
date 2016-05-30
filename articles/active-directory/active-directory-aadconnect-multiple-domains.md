@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Unterstützung mehrerer Domänen für den Verbund mit Azure AD
@@ -153,4 +153,4 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
 ![Anspruch ersetzen](./media/active-directory-multiple-domains/sub2.png)
 5.	Klicken Sie auf "OK". Klicken Sie auf „Übernehmen“. Klicken Sie auf "OK". Schließen Sie die AD FS-Verwaltung.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

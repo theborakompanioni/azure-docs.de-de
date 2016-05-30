@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/20/2016"
+   ms.date="05/11/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Versionsveröffentlichungsverlauf
@@ -29,6 +29,22 @@ Liste der verwandten Themen:
 | Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect. |
 | Erforderliche Berechtigungen | Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt. |
 | Herunterladen| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771) |
+
+## 1\.1.180.0
+Veröffentlicht im Mai 2016
+
+**Neue Features:**
+
+- Warnungen und Unterstützung beim Überprüfen von Domänen, wenn Sie in Azure AD Connect noch keine Überprüfung durchgeführt haben.
+- Unterstützung für [Microsoft Cloud Deutschland](active-directory-aadconnect-instances.md#microsoft-cloud-germany) wurde hinzugefügt.
+- Unterstützung für die neueste Infrastruktur der [Microsoft Azure Government-Cloud](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud) mit neuen URL-Anforderungen wurde hinzugefügt.
+
+**Behobene Probleme und Verbesserungen:**
+
+- Eine neue Filterfunktion im Editor für Synchronisierungsregeln erleichtert das Auffinden von Synchronisierungsregeln.
+- Verbesserte Leistung beim Löschen eines Connectorbereichs.
+- Beseitigung eines Problems, bei dem in einem Vorgang dasselbe Objekt sowohl gelöscht als auch hinzugefügt wurde (Löschen/Hinzufügen).
+- Eine deaktivierte Synchronisierungsregel führt bei einem Upgrade oder einer Aktualisierung des Verzeichnisschemas nicht mehr dazu, dass eingeschlossene Objekte und Attribute erneut aktiviert werden.
 
 ## 1\.1.130.0
 Veröffentlicht im April 2016
@@ -53,8 +69,8 @@ Veröffentlicht im Februar 2016
 
 **Behobene Probleme:**
 
-- Das Upgrade von früheren Versionen kann nicht ausgeführt werden, wenn die Installation nicht im Standardordner **C:\\Programme** durchgeführt wird.
-- Wenn Sie bei der Installation am Ende des Installations-Assistenten die Option **Starten Sie den Synchronisierungsvorgang ...** deaktivieren, wird der Scheduler durch erneutes Ausführen des Installations-Assistenten nicht aktiviert.
+- Ein Upgrade von früheren Versionen kann nicht ausgeführt werden, wenn die Installation nicht im Standardordner **C:\\Programme** durchgeführt wird.
+- Wenn Sie bei der Installation am Ende des Installations-Assistenten die Option **Starten Sie den Synchronisierungsvorgang** deaktivieren, wird der Scheduler durch erneutes Ausführen des Installations-Assistenten nicht aktiviert.
 - Auf Servern, auf denen das Datums-/Uhrzeitformat nicht dem US-englischen Format entspricht, wird der Planer nicht wie erwartet ausgeführt. Außerdem wird verhindert, dass `Get-ADSyncScheduler` korrekte Zeitangaben zurückgibt.
 - Wenn Sie eine frühere Version von Azure AD Connect mit AD FS als Anmeldeoption und Upgrade installiert haben, können Sie den Installations-Assistenten nicht erneut ausführen.
 
@@ -63,7 +79,7 @@ Veröffentlicht im Februar 2016
 
 **Neue Features:**
 
-- Feature für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Expresseinstellungen.
+- Feature für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Express-Einstellungen.
 - Unterstützung für den globalen Administrator mit MFA und PIM im Installations-Assistenten.
     - Sie müssen für Ihren Proxy festlegen, dass auch Datenverkehr für https://secure.aadcdn.microsoftonline-p.com zulässig ist, wenn Sie MFA verwenden.
     - Sie müssen https://secure.aadcdn.microsoftonline-p.com zur Liste vertrauenswürdiger Websites hinzufügen, damit MFA ordnungsgemäß funktioniert.
@@ -73,8 +89,8 @@ Veröffentlicht im Februar 2016
 
 **Features, die von der Vorschau auf die allgemeine Verfügbarkeit hochgestuft wurden:**
 
-- [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md).
-- [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md).
+- [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md)
+- [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md)
 
 **Neue Vorschaufeatures:**
 
@@ -268,4 +284,4 @@ Veröffentlicht im September 2014
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

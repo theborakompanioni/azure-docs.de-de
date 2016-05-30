@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/01/2016" 
@@ -215,4 +215,4 @@ Die simulierte Hybrid Cloud-Umgebung kann jetzt zum Testen verwendet werden.
 
 - Richten Sie in dieser Umgebung eine [SharePoint-Intranetfarm](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md), eine [webbasierte Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) oder einen [Office 365-Verzeichnissynchronisierungsserver (DirSync)](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md) ein.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

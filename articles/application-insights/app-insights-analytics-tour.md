@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="05/04/2016" 
 	ms.author="awills"/>
 
 
@@ -31,10 +31,10 @@ Sehen Sie sich zu Beginn einige grundlegende Abfragen im Detail an.
 
 Öffnen Sie Analytics über das [Blatt „Übersicht“](app-insights-dashboards.md) Ihrer App in Application Insights:
 
-![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics/001.png)
+![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-tour/001.png)
 
 	
-## [take](app-insights-analytics-aggregations.md#take): Anzeigen von n Zeilen
+## [take](app-insights-analytics-reference.md#take-operator): Anzeigen von n Zeilen
 
 Datenpunkte, mit denen Benutzervorgänge protokolliert werden (normalerweise HTTP-Anforderungen, die von der Web-App empfangen werden) werden in einer Tabelle mit dem Namen `requests` gespeichert. Jede Zeile ist ein Telemetriedatenpunkt, der aus dem Application Insights-SDK in Ihrer App empfangen wird.
 
@@ -56,7 +56,7 @@ Erweitern Sie ein Element, um die Details anzuzeigen:
 
 > [AZURE.NOTE] Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse neu zu ordnen. Beachten Sie aber, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Daher sollten Sie im Hinterkopf behalten, dass diese Sortierung Ihnen nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente anzeigt. Hierfür sollten Sie den Operator `top` oder `sort` verwenden.
 
-## [top](app-insights-analytics-aggregations.md#top) und [sort](app-insights-analytics-aggregations.md#sort)
+## [top](app-insights-analytics-reference.md#top-operator) und [sort](app-insights-analytics-reference.md#sort-operator)
 
 `take` ist hilfreich, um schnell eine Stichprobe abzurufen. Die Zeilen aus der Tabelle werden aber nicht in einer bestimmten Reihenfolge angezeigt. Verwenden Sie für eine sortierte Ansicht `top` (für eine Stichprobe) oder `sort` (für die gesamte Tabelle).
 
@@ -84,9 +84,9 @@ Das Ergebnis wäre identisch, würde jedoch etwas langsamer ausgeführt. (Sie k�
 Die Spaltenüberschriften in der Tabellenansicht können auch zum Sortieren der Ergebnisse auf dem Bildschirm verwendet werden. Wenn Sie aber `take` oder `top` verwendet haben, um nur einen Teil einer Tabelle abzurufen, ordnen Sie nur die Reihenfolge der abgerufenen Datensätze neu.
 
 
-## [project](app-insights-analytics-aggregations.md#project): Auswählen, Umbenennen und Berechnen von Spalten
+## [project](app-insights-analytics-reference.md#project-operator): Auswählen, Umbenennen und Berechnen von Spalten
 
-Verwenden Sie [`project`](app-insights-analytics-aggregations.md#project), um nur die gewünschten Spalten auszuwählen:
+Verwenden Sie [`project`](app-insights-analytics-reference.md#project-operator), um nur die gewünschten Spalten auszuwählen:
 
 ```AIQL
 
@@ -117,11 +117,13 @@ Im skalaren Ausdruck:
 * `1d` (die Ziffer Eins, gefolgt von einem „d“) ist ein Zeitraumliteral für einen Tag. Dies sind einige weitere Zeitraumliterale: `12h`, `30m`, `10s`, `0.01s`.
 * `floor` (Alias `bin`) rundet einen Wert auf das nächste Vielfache des von Ihnen angegebenen Basiswerts ab. `floor(aTime, 1s)` rundet demnach eine Zeit auf die nächstniedrigere Sekunde ab.
 
-[Ausdrücke](app-insights-analytics-scalars.md) können alle üblichen Operatoren (`+`, `-`, ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
+[Ausdrücke](app-insights-analytics-reference.md#scalars) können alle üblichen Operatoren (`+`, `-`, ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
 
-## [extend](app-insights-analytics-aggregations.md#extend): Berechnen von Spalten
+    
 
-Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](app-insights-analytics-aggregations.md#extend):
+## [extend](app-insights-analytics-reference.md#extend-operator): Berechnen von Spalten
+
+Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](app-insights-analytics-reference.md#extend-operator):
 
 ```AIQL
 
@@ -130,9 +132,53 @@ Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-[`extend`](app-insights-analytics-aggregations.md#extend) ist weniger ausführlich als die Nutzung von [`project`](app-insights-analytics-aggregations.md#project), wenn Sie alle vorhandenen Spalten beibehalten möchten.
+[`extend`](app-insights-analytics-reference.md#extend-operator) ist weniger ausführlich als die Nutzung von [`project`](app-insights-analytics-reference.md#project-operator), wenn Sie alle vorhandenen Spalten beibehalten möchten.
 
-## [summarize](app-insights-analytics-aggregations.md#summarize): Aggregieren von Zeilengruppen
+
+## Zugreifen auf geschachtelte Objekte
+
+Auf geschachtelte Objekte kann leicht zugegriffen werden. Beispielsweise finden Sie im Ausnahmedatenstrom strukturierte Objekte wie diese:
+
+![result](./media/app-insights-analytics-tour/520.png)
+
+Sie können sie vereinfachen, indem Sie nur die für Sie interessanten Eigenschaften auswählen.
+
+```AIQL
+
+    exceptions | take 10
+    | extend method1 = details[0].parsedStack[1].method
+```
+
+## Benutzerdefinierte Eigenschaften und Messungen
+
+Wenn Ihre Anwendung [benutzerdefinierte Dimensionen (Eigenschaften) und benutzerdefinierte Messungen](app-insights-api-custom-events-metrics.md#properties) an Ereignisse anfügt, dann sehen Sie sie in den Objekten `customDimensions` und `customMeasurements`.
+
+
+Zum Beispiel kann Ihre App Folgendes einfügen:
+
+```C#
+
+    var dimensions = new Dictionary<string, string> 
+                     {{"p1", "v1"},{"p2", "v2"}};
+    var measurements = new Dictionary<string, double>
+                     {{"m1", 42.0}, {"m2", 43.2}};
+	telemetryClient.TrackEvent("myEvent", dimensions, measurements);
+```
+
+Und so extrahieren Sie diese Werte in Analytics:
+
+```AIQL
+
+    customEvents
+    | extend p1 = customDimensions.p1, 
+      m1 = todouble(customMeasurements.m1) // cast numerics
+
+``` 
+
+> [AZURE.NOTE] Im [Metrik-Explorer](app-insights-metrics-explorer.md) werden im Blatt „Metriken“ alle benutzerdefinierten und an einen Telemetrietyp angefügten Messungen zusammen mit den Metriken angezeigt, die mithilfe von `TrackMetric()` gesendet wurden. In Analytics hingegen bleiben die benutzerdefinierten Messungen weiterhin an den jeweiligen Telemetrietyp gebunden, und die Metriken werden in ihrem eigenen `metrics`-Datenstrom angezeigt.
+
+
+## [summarize](app-insights-analytics-reference.md#summarize-operator): Aggregieren von Zeilengruppen
 
 `Summarize` wendet eine angegebene *Aggregationsfunktion* auf Zeilengruppen an.
 
@@ -145,13 +191,13 @@ Wir können das Ergebnis auch in Anforderungen mit unterschiedlichen Namen unter
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` erfasst die Datenpunkte im Datenstrom in Gruppen, für die die `by`-Klausel gleich ausgewertet wird. Jeder Wert im Ausdruck `by` – jeder Vorgangsname im obigen Beispiel – ergibt eine Zeile in der Ergebnistabelle.
+`Summarize` erfasst die Datenpunkte im Datenstrom und fasst sie zu Gruppen zusammen, für die die `by`-Klausel gleich ausgewertet wird. Jeder Wert im Ausdruck `by` – jeder Vorgangsname im obigen Beispiel – ergibt eine Zeile in der Ergebnistabelle.
 
 Außerdem können Ergebnisse nach der Tageszeit gruppiert werden:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Beachten Sie, dass wir die Funktion `bin` (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, würde jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet werden. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute Abrundungsfunktion `floor` handelt, ist hierfür die einfachste Möglichkeit.
+Beachten Sie, dass wir die Funktion `bin` (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwendeten, würde jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet werden. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute Abrundungsfunktion `floor` handelt, ist hierfür die einfachste Möglichkeit.
 
 Wir können dasselbe Verfahren anwenden, um Bereiche für Zeichenfolgen zu reduzieren:
 
@@ -162,15 +208,15 @@ Beachten Sie, dass Sie `name=` zum Festlegen des Namens einer Ergebnisspalte ver
 
 ## Zählen von Stichprobendaten
 
-`sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn aber das [Sampling](app-insights-sampling.md) in Betrieb ist, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkt in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount` Ereignisse vorhanden sind. Mit dem Summieren von itemCount erhalten Sie daher eine gute Schätzung der ursprünglichen Anzahl von Ereignissen.
+`sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn jedoch [Stichproben erstellt](app-insights-sampling.md) werden, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkt in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount` Ereignisse vorhanden sind. Mit dem Summieren von itemCount erhalten Sie daher eine gute Schätzung der ursprünglichen Anzahl von Ereignissen.
 
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-Es ist auch die Aggregation `count()` (und ein Zählvorgang) für Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
+Es ist auch die Aggregation `count()` (und ein Zählvorgang) für die Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
 
 
-Es gibt einen Bereich mit [Aggregationsfunktionen](app-insights-analytics-aggregations.md).
+Es gibt eine ganze Reihe von [Aggregationsfunktionen](app-insights-analytics-reference.md#aggregations).
 
 
 ## Darstellen der Ergebnisse in Diagrammen
@@ -196,7 +242,7 @@ Es gibt jedoch noch eine bessere Ansicht als die Tabelle. Betrachten Sie die Erg
 Beachten Sie, dass die Diagrammdarstellung die Uhrzeitangaben immer in der richtigen Reihenfolge anzeigt, auch wenn wir die Ergebnisse nicht nach Zeit sortiert haben (wie es in der Tabellenansicht der Fall ist).
 
 
-## [where](app-insights-analytics-aggregations.md#where): Nach einer Bedingung filtern
+## [where](app-insights-analytics-reference.md#where-operator): Filtern nach einer Bedingung
 
 Wenn Sie die Application Insights-Überwachung für die [Client](app-insights-javascript.md)- und Serverseite der App eingerichtet haben, stammen einige der Telemetriedaten in der Datenbank aus Browsern.
 
@@ -218,7 +264,7 @@ Der `where`-Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige 
  * `==`, `<>`: gleich und ungleich
  * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich. Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
-Erfahren Sie mehr über [skalare Ausdrücke](app-insights-analytics-scalars.md).
+Erfahren Sie mehr über [skalare Ausdrücke](app-insights-analytics-reference.md#scalars).
 
 ### Filtern von Ereignissen
 
@@ -230,7 +276,7 @@ Suchen Sie nach nicht erfolgreichen Anforderungen:
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
 
-`responseCode` ist vom Typ „String“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-scalars.md#casts) müssen.
+`responseCode` ist vom Typ „String“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-reference.md#casts) müssen.
 
 Fassen Sie die unterschiedlichen Antworten zusammen:
 
@@ -339,7 +385,7 @@ Die `where`-Klausel schließt einmalige Sitzungen (sessionDuration==0) aus und l
 
 
 
-## [Quantile](app-insights-analytics-aggregations.md#percentiles)
+## [Quantile](app-insights-analytics-reference.md#percentiles)
 
 Welche Bereichsdauern decken verschiedene Prozentsätze von Sitzungen ab?
 
@@ -385,11 +431,11 @@ Um eine separate Aufstellung für jedes Land zu erhalten, müssen Sie die Spalte
 ![](./media/app-insights-analytics-tour/190.png)
 
 
-## [Join](app-insights-analytics-aggregations.md#join)
+## [Join](app-insights-analytics-reference.md#join)
 
 Wir haben Zugriff auf mehrere Tabellen, einschließlich der Anforderungen und Ausnahmen.
 
-Um Ausnahmen im Hinblick auf eine Anforderung zu suchen, die eine Fehlerantwort zurückgegeben hat, können wir die Tabellen anhand von `session_Id` verknüpfen:
+Um Ausnahmen im Zusammenhang mit einer Anforderung zu suchen, die eine Fehlerantwort zurückgegeben hat, können wir die Tabellen anhand von `session_Id` verknüpfen:
 
 ```AIQL
 
@@ -404,7 +450,7 @@ Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten a
 
 
 
-## [let](app-insights-analytics-aggregations.md#let): Einer Variablen ein Ergebnis zuweisen
+## [let](app-insights-analytics-reference.md#let-clause): Zuweisen eines Ergebnisses zu einer Variablen
 
 Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks auszusortieren. Die Ergebnisse sind wie folgt unverändert:
 
@@ -423,4 +469,4 @@ Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die e
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

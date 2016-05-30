@@ -93,7 +93,7 @@ Darüber hinaus kann es sinnvoll sein, eine maximale Anzahl von Wiederholungsver
 
 Auf der folgenden Seite finden Sie Codebeispiele mit Wiederholungslogik in diversen Programmiersprachen:
 
-- [Schnellstart-Codebeispiele](sql-database-develop-quick-start-client-code-samples.md)
+- [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
@@ -162,8 +162,8 @@ Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClie
 Beim Erstellen der [Verbindungszeichenfolge](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) für Ihr **SqlConnection**-Objekt sollten Sie die Werte der folgenden Parameter abstimmen:
 
 - ConnectRetryCount &nbsp;&nbsp;*(Der Standardwert ist 1. Der Bereich reicht von 0 bis 255.)*
-- ConnectRetryInterval &nbsp;&nbsp;*(Der Standardwert ist 1 Sekunde. Der Bereich reicht von 1 bis 60.)*
-- Verbindungstimeout &nbsp;&nbsp;*(Der Standardwert ist 15 Sekunden. Der Bereich reicht von 0 bis 2147483647.)*
+- ConnectRetryInterval &nbsp;&nbsp;*(Der Standardwert ist 1 Sekunde. Der Bereich reicht von 1 bis 60.)*
+- Verbindungstimeout &nbsp;&nbsp;*(Der Standardwert ist 15 Sekunden. Der Bereich reicht von 0 bis 2147483647.)*
 
 
 Insbesondere sollte für Ihre ausgewählten Werte die folgende Gleichung gelten:
@@ -226,10 +226,10 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Konfigurieren von Firewa
 ### Verbindung: Ports
 
 
-Üblicherweise muss lediglich auf dem Computer, auf dem Ihr Clientprogramm gehostet wird, sichergestellt werden, dass Port 1433 für die ausgehende Kommunikation geöffnet ist.
+Üblicherweise muss lediglich auf dem Computer, auf dem Ihr Clientprogramm gehostet wird, sichergestellt werden, dass Port 1433 für die ausgehende Kommunikation geöffnet ist.
 
 
-Wenn Ihr Clientprogramm z. B. auf einem Windows-Computer gehostet wird, kann Port 1433 über die Windows-Firewall auf dem Host geöffnet werden:
+Wenn Ihr Clientprogramm z. B. auf einem Windows-Computer gehostet wird, kann Port 1433 über die Windows-Firewall auf dem Host geöffnet werden:
 
 
 1. Öffnen Sie die Systemsteuerung.
@@ -265,7 +265,7 @@ ADO.NET 4.6.1:
 Bei Verwendung eines Verbindungsobjekts aus einem Verbindungspool sollte Ihr Programm die Verbindung vorübergehend schließen, wenn diese nicht umgehend verwendet wird. Das erneute Öffnen einer Verbindung ist weniger kostenintensiv als das Erstellen einer neuen Verbindung.
 
 
-Wenn Sie ADO.NET 4.0 oder früher verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen.
+Wenn Sie ADO.NET 4.0 oder früher verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen.
 
 - Ab November 2015 können Sie [ADO.NET 4.6.1 herunterladen](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
 
@@ -408,7 +408,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 ## Enterprise Library 6
 
 
-Bei Enterprise Library 6 (EntLib60) handelt es sich um ein Framework aus .NET-Klassen, mit denen Sie stabile Clouddienstclients implementieren können (u. a. den Azure SQL-Datenbankdienst). Auf der folgenden Seite finden Sie Themen zu den verschiedenen Bereichen, in denen EntLib60 nützlich ist:
+Bei Enterprise Library 6 (EntLib60) handelt es sich um ein Framework aus .NET-Klassen, mit denen Sie stabile Clouddienstclients implementieren können (u. a. den Azure SQL-Datenbankdienst). Auf der folgenden Seite finden Sie Themen zu den verschiedenen Bereichen, in denen EntLib60 nützlich ist:
 
 - [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
@@ -416,11 +416,6 @@ Bei Enterprise Library 6 (EntLib60) handelt es sich um ein Framework aus .NET-Kl
 EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorübergehenden Fehlern hilfreich sein:
 
 - [4 – Hartnäckigkeit, das Geheimnis aller Erfolge: Verwenden des Anwendungsblocks für die Behandlung vorübergehender Fehler](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
-
-
-Ein kurzes C#-Codebeispiel unter Verwendung von EntLib60 in der Wiederholungslogik finden Sie unter:
-
-- [Codebeispiel: Wiederholungslogik aus Enterprise Library 6 in C# für das Herstellen einer Verbindung mit SQL-Datenbank](sql-database-develop-entlib-csharp-retry-windows.md)
 
 
 > [AZURE.NOTE] Der Quellcode für EntLib60 steht zum öffentlichen [Download](http://go.microsoft.com/fwlink/p/?LinkID=290898) bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
@@ -461,7 +456,7 @@ Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
 - Bewährte Methoden: [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) bietet eine detaillierte Erläuterung wichtiger Aspekte im Zusammenhang mit Wiederholungslogik.
 
-- NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
+- NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
@@ -484,7 +479,7 @@ Einzelheiten finden Sie hier: [5 – Protokollierung leicht gemacht: mit dem Pro
 ### Quellcode der IsTransient-Methode von EntLib60
 
 
-Nachfolgend wird der C#-Quellcode für die Methode **IsTransient** der Klasse **SqlDatabaseTransientErrorDetectionStrategy** gezeigt. Anhand dieses Quellcodes wird ermittelt, welche Fehler als vorübergehend eingestuft werden und einen Wiederholungsversuch rechtfertigen (April 2013).
+Nachfolgend wird der C#-Quellcode für die Methode **IsTransient** der Klasse **SqlDatabaseTransientErrorDetectionStrategy** gezeigt. Anhand dieses Quellcodes wird ermittelt, welche Fehler als vorübergehend eingestuft werden und einen Wiederholungsversuch rechtfertigen (April 2013).
 
 Zur Verbesserung der Lesbarkeit wurden eine Reihe von **//comment**-Zeilen aus diesem Code entfernt.
 
@@ -558,11 +553,11 @@ public bool IsTransient(Exception ex)
 
 ## Nächste Schritte
 
-- Informationen zur Problembehandlung bei anderen häufigen Problemen mit der Verbindung zu Azure SQL-Datenbank erhalten Sie unter [Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
+- Informationen zur Problembehandlung bei anderen häufigen Problemen bei der Verbindung mit Azure SQL-Datenbank erhalten Sie unter [Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
 
 - [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 
 
-- [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckwiederholungsbibliothek, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
+- [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckwiederholungsbibliothek, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

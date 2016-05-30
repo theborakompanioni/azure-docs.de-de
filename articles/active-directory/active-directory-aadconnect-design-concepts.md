@@ -65,7 +65,32 @@ Aus diesem Grund gelten die folgenden Einschränkungen für Azure AD Connect:
 - Wenn Sie einen anderen Azure AD Connect-Server installieren, müssen Sie das gleiche Attribut sourceAnchor wie zuvor auswählen. Wenn Sie zuvor bereits DirSync verwendet haben und zu Azure AD wechseln, müssen Sie **objectGUID** verwenden, da dieses Attribut von DirSync verwendet wird.
 - Wenn der Wert für sourceAnchor geändert wird, nachdem das Objekt nach Azure AD exportiert wurde, meldet die Azure AD Connect-Synchronisierung einen Fehler, und lässt keine weiteren Änderungen am Objekt zu, bevor das Problem behoben und die Änderung von sourceAnchor im Quellverzeichnis wieder rückgängig gemacht worden ist.
 
+## Azure AD-Anmeldung
+
+Bei der Integration Ihres lokalen Verzeichnisses in Azure AD ist es wichtig zu wissen, wie sich die Synchronisierungseinstellungen auf die Art und Weise auswirken, in der ein Benutzer sich authentifiziert. Azure AD verwendet einen userPrincipalName (UPN, Benutzerprinzipalname), um den Benutzer zu authentifizieren. Wenn Sie jedoch Ihre Benutzer synchronisieren, müssen Sie das Attribut, das als Wert für userPrincipalName verwendet werden soll, sehr sorgfältig auswählen.
+
+### Auswählen des Attributs für userPrincipalName
+
+Bei Auswahl des Attributs, das den in Azure zu verwendenden UPN-Wert bereitstellt, sollten Sie Folgendes sicherstellen:
+
+* Die Attributwerte entsprechen der UPN-Syntax (RFC 822), müssen also im Format username@domain vorliegen.
+* Das Suffix in den Werten stimmt mit einer der überprüften benutzerdefinierten Domänen in Azure AD überein.
+
+In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Wenn Sie jedoch der Meinung sind, dass das userprincipalname-Attribut nicht den Wert enthält, den Ihre Benutzer für die Anmeldung bei Azure verwenden sollten, wählen Sie **Benutzerdefinierte Installation** aus, und stellen Sie ein geeignetes Attribut bereit.
+
+### Benutzerdefinierter Domänenstatus und UPN
+Sie müssen unbedingt sicherstellen, dass eine überprüfte Domäne für das UPN-Suffix existiert.
+
+John ist ein Benutzer in contoso.com. John soll den lokalen UPN john@contoso.com für die Anmeldung bei Azure verwenden, nachdem Sie die Benutzer mit Ihrem Azure AD-Verzeichnis azurecontoso.onmicrosoft.com synchronisiert haben. Zu diesem Zweck müssen Sie contoso.com als benutzerdefinierte Domäne in Azure AD hinzufügen und überprüfen, bevor Sie mit dem Synchronisieren der Benutzer beginnen können. Wenn das UPN-Suffix von John (contoso.com) mit keiner überprüften Domäne in Azure übereinstimmt, ersetzt Azure AD das UPN-Suffix durch azurecontoso.onmicrosoft.com, und John muss sich mit john@azurecontoso.onmicrosoft.com bei Azure anmelden.
+
+### Nicht routingfähige lokale Domänen und UPN für Azure AD
+Einige Unternehmen verfügen über nicht routingfähige Domänen, z.B. contoso.local, oder einteilige Domänen, z.B. contoso. Sie können eine nicht routingfähige Domäne in Azure AD nicht überprüfen. Azure AD Connect kann Synchronisierungen nur mit einer überprüften Domäne in Azure AD durchführen. Wenn Sie ein Azure AD-Verzeichnis erstellen, wird eine routingfähige Domäne erstellt, die zur Standarddomäne für Ihr Azure AD wird, z.B. contoso.onmicrosoft.com. Daher ist es notwendig, in einem solchen Szenario alle anderen routingfähigen Domänen zu überprüfen, wenn Sie Synchronisierungen nicht mit der standardmäßigen Domäne .onmicrosoft.com durchführen möchten.
+
+Unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md) finden Sie weitere Informationen zum Überprüfen Ihrer Domäne.
+
+Azure AD Connect erkennt, ob Sie eine nicht routingfähige Domänenumgebung ausführen, und warnt Sie entsprechend davor, nicht mit den Expresseinstellungen fortzufahren. Wenn Sie sich in einer nicht routingfähigen Domäne befinden, ist es wahrscheinlich, dass auch der UPN der Benutzer ein nicht routingfähiges Suffix aufweist. Wenn Sie z.B. contoso.local ausführen, empfiehlt Azure AD Connect die Verwendung von benutzerdefinierten Einstellungen anstatt der Expresseinstellungen. Indem Sie benutzerdefinierte Einstellungen verwenden, können Sie das Attribut angeben, das als UPN für die Anmeldung bei Azure verwendet werden soll, nachdem die Benutzer mit Azure AD synchronisiert wurden. Weitere Informationen finden Sie unter **Auswählen des Attributs für den Benutzerprinzipalnamen in Azure AD**.
+
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -16,7 +16,10 @@
  ms.date="04/29/2016"
  ms.author="elfarber"/>
 
-# Tutorial: Verwenden des Gerätezwillings (Vorschau)
+# Tutorial: Verwenden des Gerätezwillings mit C# (Vorschau)
+
+[AZURE.INCLUDE [iot-hub-device-management-twin-selector](../../includes/iot-hub-device-management-twin-selector.md)]
+## Einführung
 
 Die Azure IoT Hub-Geräteverwaltung führt den Gerätezwilling ein, eine dienstseitige Darstellung eines physischen Geräts. Das folgende Diagramm zeigt die verschiedenen Komponenten des Gerätezwillings.
 
@@ -28,9 +31,9 @@ Geräteeigenschaften sind ein vordefiniertes Wörterbuch von Eigenschaften, die 
 
 ## Synchronisierung von Geräteeigenschaften
 
-Das physische Gerät ist die autoritative Quelle für die Geräteeigenschaften. Ausgewählte Werte auf dem physischen Gerät werden automatisch mit dem Gerätezwilling in IoT Hub über das von LWM2M beschriebene Muster *observe/notify* synchronisiert.
+Das physische Gerät ist die autoritative Quelle für die Geräteeigenschaften. Ausgewählte Werte auf dem physischen Gerät werden automatisch mit dem Gerätezwilling in IoT Hub über das von [LWM2M][lnk-lwm2m] beschriebene Muster *Beobachten/Benachrichtigen* (Observe/Notify) synchronisiert.
 
-Wenn das physische Gerät eine Verbindung mit IoT Hub herstellt, initiiert der Dienst *Beobachtungen* der ausgewählten Geräteeigenschaften. Anschließend *benachrichtigt* das physische Gerät IoT Hub über Änderungen der Geräteeigenschaften. Zum Implementieren der Hysterese wird **pmin** (das Mindestintervall zwischen Benachrichtigungen) auf 5 Minuten festgelegt. Dies bedeutet, dass das physische Gerät für jede Eigenschaft IoT Hub nicht öfter als einmal alle 5 Minuten benachrichtigt, selbst wenn eine Änderung vorliegt. Um die Aktualität sicherzustellen, wird **pmax** (das Höchstintervall zwischen Benachrichtigungen) auf 6 Stunden festgelegt. Dies bedeutet, dass das physische Gerät für jede Eigenschaft IoT Hub mindestens einmal alle 6 Stunden benachrichtigt, selbst wenn keine Änderung vorliegt.
+Wenn das physische Gerät eine Verbindung mit IoT Hub herstellt, initiiert der Dienst *Beobachtungen* der ausgewählten Geräteeigenschaften. Anschließend *benachrichtigt* das physische Gerät IoT Hub über Änderungen der Geräteeigenschaften. Zum Implementieren der Hysterese wird **pmin** (das Mindestintervall zwischen Benachrichtigungen) auf fünf Minuten festgelegt. Dies bedeutet, dass das physische Gerät für jede Eigenschaft IoT Hub nicht öfter als einmal alle 5 Minuten benachrichtigt, selbst wenn eine Änderung vorliegt. Um die Aktualität sicherzustellen, wird **pmax** (das Höchstintervall zwischen Benachrichtigungen) auf sechs Stunden festgelegt. Dies bedeutet, dass das physische Gerät für jede Eigenschaft IoT Hub mindestens einmal alle 6 Stunden benachrichtigt, selbst wenn keine Änderung vorliegt.
 
 Wenn das physische Gerät die Verbindung trennt, endet die Synchronisierung. Die Synchronisierung startet neu, wenn das Gerät sich erneut mit dem Dienst verbindet. Sie können den Zeitpunkt der letzten Aktualisierung für eine Eigenschaft immer überprüfen, um die Aktualität sicherzustellen.
 
@@ -38,13 +41,14 @@ Die vollständige Liste der Geräteeigenschaften, die automatisch beobachtet wer
 
 ![][img-observed]
 
+
 ## Beispiel für das Ausführen des Gerätezwillings
 
-Das folgende Beispiel legt die Funktionalität des Tutorials [Get started with Azure IoT Hub device management using C# (preview)][lnk-get-started] (Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mit C# [Vorschau]) dar. Auf der Basis, dass die verschiedenen simulierten Geräte ausgeführt werden, wird der Gerätezwilling zum Lesen und Ändern von Eigenschaften auf einem simulierten Gerät verwendet.
+Das folgende Beispiel erweitert die Funktionalität des Tutorials [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)][lnk-get-started]. Auf der Basis, dass die verschiedenen simulierten Geräte ausgeführt werden, wird der Gerätezwilling zum Lesen und Ändern von Eigenschaften auf einem simulierten Gerät verwendet.
 
 ### Voraussetzungen 
 
-Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Get started with Azure IoT Hub device management using C# (preview)][lnk-get-started] (Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mit C# [Vorschau]) abgeschlossen haben. Das bedeutet, dass Ihre simulierten Geräte ausgeführt werden müssen. Wenn Sie den Vorgang zuvor abgeschlossen haben, starten Sie Ihre simulierten Geräte jetzt neu.
+Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)][lnk-get-started] abgeschlossen haben. Das bedeutet, dass Ihre simulierten Geräte ausgeführt werden müssen. Wenn Sie den Vorgang zuvor abgeschlossen haben, starten Sie Ihre simulierten Geräte jetzt neu.
 
 ### Starten des Beispiels
 
@@ -92,12 +96,12 @@ Sie können keinen tiefen Lesevorgang auf Diensteigenschaften oder Tags anwenden
 
 ### Tiefer Schreibvorgang
 
-Wenn Sie eine beschreibbare Geräteeigenschaft ändern möchten, können Sie hierzu einen tiefen Schreibvorgang anwenden, der einen Geräteauftrag zum Schreiben des Werts in das physische Gerät startet. Nicht alle Geräteeigenschaften sind beschreibbar. Eine vollständige Liste finden Sie in Anhang A von [Introducing the Azure IoT Hub device management client library][lnk-dm-library] (Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung).
+Wenn Sie eine beschreibbare Geräteeigenschaft ändern möchten, können Sie hierzu einen tiefen Schreibvorgang anwenden, der einen Geräteauftrag zum Schreiben des Werts in das physische Gerät startet. Nicht alle Geräteeigenschaften sind beschreibbar. Eine vollständige Liste finden Sie in Anhang A von [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung][lnk-dm-library].
 
 Der Auftrag sendet eine Nachricht an das physische Gerät, um die angegebene Eigenschaft zu aktualisieren. Der Gerätezwilling wird nach Abschluss des Auftrags nicht sofort aktualisiert. Sie müssen bis zum nächsten Benachrichtigungsintervall warten. Sobald die Synchronisierung erfolgt, können Sie die Änderung im Gerätezwilling mit einem flachen Lesevorgang erkennen.
 
 ```
-JobResponse jobResponse = await deviceJobClient.ScheduleDevicePropertyWriteAsync(Guid.NewGuid().ToString(), deviceId, propertyToSet, setValue);
+JobResponse jobResponse = await deviceJobClient.ScheduleDevicePropertyWriteAsync(Guid.NewGuid().ToString(), deviceId, propertyToSet, setValue); TODO
 ```
 
 ### Details zur Gerätesimulatorimplementierung
@@ -111,7 +115,7 @@ int level = get_batterylevel();  // call to platform specific code
 set_device_batterylevel(0, level);
 ```
 
-Anstatt die Set-Methode zu verwenden, könnten Sie einen Rückruf implementieren. Weitere Informationen zu dieser Option finden Sie unter [Introducing the Azure IoT Hub device management client library][lnk-dm-library] (Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung).
+Anstatt die Set-Methode zu verwenden, könnten Sie einen Rückruf implementieren. Weitere Informationen zu dieser Option finden Sie unter [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung][lnk-dm-library].
 
 ## Nächste Schritte
 
@@ -121,12 +125,13 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 
 - [Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen][lnk-dm-jobs]
 
-- Die Clientbibliothek der Geräteverwaltung bietet ein End-to-End-Beispiel mit einem [Intel Edison-Gerät][lnk-edison].
+- Die Clientbibliotheken der Geräteverwaltung bieten ein End-to-End-Beispiel mit einem [Intel Edison-Gerät][lnk-edison].
 
 <!-- images and links -->
 [img-twin]: media/iot-hub-device-management-device-twin/image1.png
 [img-observed]: media/iot-hub-device-management-device-twin/image2.png
 
+[lnk-lwm2m]: http://technical.openmobilealliance.org/Technical/technical-information/release-program/current-releases/oma-lightweightm2m-v1-0
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-dm-library]: iot-hub-device-management-library.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
@@ -134,4 +139,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-dm-jobs]: iot-hub-device-management-device-jobs.md
 [lnk-edison]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/samples/iotdm_edison_sample
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

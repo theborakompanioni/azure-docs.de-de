@@ -80,21 +80,28 @@ Verwenden Sie für virtuelle Azure Resource Manager-Computer dieses PowerShell-B
 Login-AzureRMAccount
 Select-AzureSubscription -SubscriptionId "**"
 
+$workspaceName = "your workspace name"
+$VMresourcegroup = "**"
+$VMresourcename = "**"
 
-$workspaceId="**"
-$workspaceKey="**"
+$workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq $workspaceName})
 
-$resourcegroup = "**"
-$resourcename = "**"
+if ($workspace.Name -ne $workspaceName) 
+{
+    Write-Error "Unable to find OMS Workspace $workspaceName. Do you need to run Select-AzureRMSubscription?"
+}
 
-$vm = Get-AzureRMVM -ResourceGroupName $resourcegroup -Name $resourcename
+$workspaceId = $workspace.CustomerId 
+$workspaceKey = (Get-AzureRmOperationalInsightsWorkspaceSharedKeys -ResourceGroupName $workspace.ResourceGroupName -Name $workspace.Name).PrimarySharedKey
+
+$vm = Get-AzureRMVM -ResourceGroupName $VMresourcegroup -Name $VMresourcename
 $location = $vm.Location
 
-Set-AzureRMVMExtension -ResourceGroupName $resourcegroup -VMName $resourcename -Name 'MicrosoftMonitoringAgent' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'MicrosoftMonitoringAgent' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId':  '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey' }"
+Set-AzureRMVMExtension -ResourceGroupName $VMresourcegroup -VMName $VMresourcename -Name 'MicrosoftMonitoringAgent' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'MicrosoftMonitoringAgent' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId':  '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey' }"
 
 
 ```
-Bei der Konfiguration mit PowerShell müssen Sie die Arbeitsbereichs-ID und einen Primärschlüssel bereitstellen. Sie finden Ihre Arbeitsbereichs-ID und den Primärschlüssel auf der Seite **Einstellungen** im OMS-Portal.
+Bei der Konfiguration mit PowerShell müssen Sie die Arbeitsbereichs-ID und einen Primärschlüssel bereitstellen. Sie finden Ihre Arbeitsbereichs-ID und den Primärschlüssel auf der Seite **Einstellungen** im OMS-Portal. Oder verwenden Sie PowerShell wie im Beispiel oben gezeigt.
 
 ![Arbeitsbereichs-ID und Primärschlüssel](./media/log-analytics-azure-storage/oms-analyze-azure-sources.png)
 
@@ -130,12 +137,15 @@ Syslog|An die Syslog- oder Rsyslog-Daemons gesendete Ereignisse.
 Zurzeit kann OMS Folgendes analysieren:
 
 - IIS-Protokolle von Webrollen und virtuellen Maschinen
-- Windows-Ereignisprotokolle von Webrollen, Workerrollen und virtuellen Azure-Computern unter einem Windows-Betriebssystem
+- Windows-Ereignisprotokolle und ETW-Protokolle von Webrollen, Workerrollen und virtuellen Azure-Computern unter einem Windows-Betriebssystem
 - Syslog aus virtuellen Azure-Computern mit Linux-Betriebssystem
+- In Blobspeicher geschriebene Diagnosen im JSON-Format für Netzwerksicherheitsgruppen, Application Gateway und KeyVault-Ressourcen
 
 Die Protokolle müssen in folgenden Speicherorten enthalten sein:
 
 - WADWindowsEventLogsTable (Tabellenspeicherung) – Enthält Informationen aus Windows-Ereignisprotokollen.
+- WADETWEventTable (Tabellenspeicher) – Enthält Informationen aus Windows ETW-Protokollen.
+- WADServiceFabricSystemEventTable, WADServiceFabricReliableActorEventTable, WADServiceFabricReliableServiceEventTable (Tabellenspeicher) – Enthält Informationen zu Service Fabric-Betriebsereignissen sowie zu Actor- und Dienstereignissen.
 - wad-iis-logfiles (Blob-Speicher) – Enthält Informationen zu IIS-Protokollen.
 - LinuxsyslogVer2v0 (Tabellenspeicherung) – enthält Linux-Syslog-Ereignisse.
 
@@ -143,7 +153,7 @@ Die Protokolle müssen in folgenden Speicherorten enthalten sein:
 
 Bei virtuellen Computern haben Sie auch die Möglichkeit, [Microsoft Monitoring Agent](http://go.microsoft.com/fwlink/?LinkId=517269) auf Ihrem virtuellen Computer zu installieren, um weitere Einblicke zu aktivieren. Auf diese Weise können Sie nicht nur IIS-Protokolle und Ereignisprotokolle analysieren, sondern auch zusätzliche Analysen durchführen, einschließlich der Nachverfolgung von Konfigurationsänderungen, SQL-Bewertung und der Bewertung von Updates.
 
-Sie können uns durch Ihre Stimme auf unserer [Feedbackseite](http://feedback.azure.com/forums/267889-azure-operational-insights/category/88086-log-management-and-log-collection-policy) helfen, die Prioritäten für weitere zu analysierende Protokolle für OMS zu verteilen.
+Sie können uns durch Ihre Stimme auf unserer [Feedbackseite](http://feedback.azure.com/forums/267889-azure-log-analytics/category/88086-log-management-and-log-collection-policy) helfen, die Prioritäten für weitere zu analysierende Protokolle für OMS zu verteilen.
 
 ## Aktivieren der Azure-Diagnose in einer Webrolle für die Sammlung von IIS-Protokollen und -Ereignissen
 
@@ -157,7 +167,7 @@ Bei aktivierter Azure-Diagnose:
 
 ### So aktivieren Sie die Diagnose
 
-Um Windows-Ereignisprotokolle zu aktivieren oder „scheduledTransferPeriod“ zu ändern, konfigurieren Sie die Azure-Diagnose mithilfe der XML-Konfigurationsdatei (diagnostics.wadcfg), wie im Thema „Aktivieren der Diagnose in einem Clouddienst“ in [Schritt 2: Hinzufügen der Datei „diagnostics.wadcfg“ zur Visual Studio-Projektmappe](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step2) und in [Schritt 3: Konfigurieren der Diagnose für Ihre Anwendung](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step3) beschrieben wird. Die folgende Beispielkonfigurationsdatei sammelt IIS-Protokolle und alle Ereignisse aus dem Anwendungs- und dem Systemprotokoll:
+Um Windows-Ereignisprotokolle zu aktivieren oder „scheduledTransferPeriod“ zu ändern, konfigurieren Sie die Azure-Diagnose mithilfe der XML-Konfigurationsdatei (diagnostics.wadcfg), wie im Thema „Aktivieren der Diagnose in einem Clouddienst“ in [Schritt 2: Hinzufügen der Datei „diagnostics.wadcfg“ zur Visual Studio-Projektmappe](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step2) und in [Schritt 3: Konfigurieren der Diagnose für Ihre Anwendung](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step3) beschrieben wird. Die folgende Beispielkonfigurationsdatei sammelt IIS-Protokolle und alle Ereignisse aus dem Anwendungs- und dem Systemprotokoll:
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -261,6 +271,6 @@ Nach etwa einer Stunde stehen Daten aus dem Speicherkonto für die Analyse in OM
 
 ## Nächste Schritte
 
-- [Konfigurieren Sie Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md), wenn Ihre Organisation einen Proxyserver oder eine Firewall verwendet, sodass die Agents mit dem Log Analytics-Dienst kommunizieren können.
+- [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md) beschreibt, wie Sie vorgehen müssen, damit die Agents mit dem Log Analytics-Dienst kommunizieren können, wenn Ihre Organisation einen Proxyserver oder eine Firewall verwendet.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

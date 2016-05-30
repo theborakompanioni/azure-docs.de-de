@@ -83,8 +83,14 @@ Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [
 
 ##<a id="apr_changes16"></a>Version April 2016
 
-In dieser Version hat Azure Media Services Azure Media Analytics für leistungsstarke Videointelligenz eingeführt. Ausführliche Informationen finden Sie unter „Azure Media Services Analytics Overview“ (Azure Media Services Analytics – Übersicht) [media-services-analytics-overview.md].
+### Azure Media Analytics
 
+Azure Media Services hat Azure Media Analytics für leistungsstarke Videointelligenz eingeführt. Ausführliche Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md).
+
+### Apple FairPlay (Vorschau)
+
+Mit Azure Media Services können Sie nun Ihre HLS-Inhalte (HTTP Live Streaming) mit Apple FairPlay dynamisch verschlüsseln: Sie können auch den AMS-Lizenzbereitstellungsdienst verwenden, um FairPlay-Lizenzen an Clients zu übermitteln. Ausführlichere Informationen finden Sie unter [Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten](media-services-protect-hls-with-fairplay.md).
+  
 ##<a id="feb_changes16"></a>Version Februar 2016
 
 Die neueste Version von Azure Media Services SDK für .NET (3.5.3) enthält eine Fehlerbehebung für Widevine. Es bestand folgendes Problem: AssetDeliveryPolicy konnte nicht für mehrere mit Widevine verschlüsselte Medienobjekte wiederverwendet werden. Die folgende Eigenschaft wurde als Teil dieser Fehlerbehebung im SDK hinzugefügt: **WidevineBaseLicenseAcquisitionUrl**.
@@ -200,29 +206,29 @@ Ankündigung der folgenden neuen Funktionen:
 
 ##<a id="april_changes_15"></a>Version April 2015
 
-###Allgemeine Media Services-Updates
+        ###General Media Services Updates
 
-- [Ankündigung von Azure Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/).
-- Beginnend mit Media Services REST 2.10 werden Kanäle, die zur Erfassung eines RTMP-Protokolls konfiguriert sind, mit primären und sekundären Erfassungs-URLs erstellt. Weitere Informationen finden Sie unter [Kanalerfassungskonfigurationen](media-services-manage-channels-overview.md#channel_input)
-- Azure Media Indexer-Updates
-	- Unterstützung für Spanisch
-	- Neues Konfigurations-XML-Format
-	
-	Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
-###Media Services .NET SDK-Updates
+        - [Announcing Azure Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/).
+        - Starting with Media Services REST 2.10, channels that are configured to ingest an RTMP protocol, are created with primary and secondary ingest URLs. For more information, see [Channel ingest configurations](media-services-live-streaming-with-onprem-encoders.md#channel_input)
+        - Azure Media Indexer updates
+        - Support for Spanish Language
+        - New configuration xml format
 
-Azure Media Services .NET SDK ist jetzt in der Version 3.2.0.0 erhältlich.
+        For more information see [this blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+        ###Media Services .NET SDK Updates
 
-Im Folgenden werden einige der Updates für Kunden aufgeführt:
- 
-- **Wichtige Änderung**: **TokenRestrictionTemplate.Issuer** und **TokenRestrictionTemplate.Audience** weisen jetzt einen Zeichenfolgentyp auf. 
-- Updates im Zusammenhang mit der Erstellung von benutzerdefinierten Wiederholungsrichtlinien. 
-- Fehlerbehebungen im Zusammenhang mit dem Hochladen/Herunterladen von Dateien. 
-- Die **MediaServicesCredentials**-Klasse akzeptiert jetzt primäre und sekundäre Endpunkte für die Zugriffssteuerung zum Authentifizieren.
+        Azure Media Services .NET SDK is now version 3.2.0.0.
+
+        The following are some of the customer facing updates:
+
+        - **Breaking change**: Changed **TokenRestrictionTemplate.Issuer** and **TokenRestrictionTemplate.Audience** to be of a string type.
+        - Updates related to creating custom retry policies.
+        - Bug fixes related to uploading/downloading files.
+        - The **MediaServicesCredentials** class now accepts primary and secondary access control endpoint to authenticate against.
 
 
 
-##<a id="march_changes_15"></a>Version März 2015
+        ##<a id="march_changes_15"></a>March 2015 Release
 
 ### Allgemeine Media Services-Updates
 
@@ -660,4 +666,4 @@ Die folgende Funktion war neu in der November-Version des SDK.
 [Verarbeiten von Media Services-Auftragsbenachrichtigungen]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

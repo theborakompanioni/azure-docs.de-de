@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Konfigurieren der Tunnelerzwingung für VPN-Gateways mit Resource Manager | Microsoft Azure"
-   description="Wenn Sie über ein virtuelles Netzwerk mit einem standortübergreifenden VPN-Gateway verfügen, können Sie den gesamten Internetdatenverkehr an Ihren lokalen Standort zurückleiten oder dorthin erzwingen. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell."
+   pageTitle="Konfigurieren der Tunnelerzwingung für Standort-zu-Standort-Verbindungen mit dem Resource Manager-Bereitstellungsmodell | Microsoft Azure"
+   description="Gewusst wie: „Erzwingen“ der Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -13,16 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/12/2016"
+   ms.date="05/16/2016"
    ms.author="cherylmc" />
 
-# Konfigurieren der Tunnelerzwingung mit PowerShell und dem Azure-Ressourcen-Manager
+# Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell
 
 > [AZURE.SELECTOR]
 - [PowerShell – Dienstverwaltung](vpn-gateway-about-forced-tunneling.md)
 - [PowerShell – Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 
-Dieser Artikel bezieht sich auf VNets und VPN-Gateways, die mithilfe des Azure-Ressourcen-Manager-Bereitstellungsmodells erstellt wurden.
+Über die Tunnelerzwingung können Sie die Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort „erzwingen“. Sie verwenden dazu einen Standort-zu-Standort-VPN-Tunnel für die Kontrolle und Überwachung. Dies ist eine wichtige Sicherheitsvoraussetzung der IT-Richtlinien für die meisten Unternehmen.
+
+Ohne die Tunnelerzwingung wird der Internetdatenverkehr Ihrer virtuellen Computer in Azure immer direkt von der Azure-Netzwerkinfrastruktur an das Internet geleitet, ohne dass Sie die Möglichkeit haben, diesen zu überprüfen oder zu überwachen. Nicht autorisierter Zugriff auf das Internet kann potenziell zur Offenlegung von Informationen oder anderen Arten von Sicherheitsverletzungen führen.
+
+Dieser Artikel beschreibt die Konfiguration der Tunnelerzwingung für virtuelle Netzwerke, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden.
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -30,22 +34,25 @@ Dieser Artikel bezieht sich auf VNets und VPN-Gateways, die mithilfe des Azure-R
 
 **Bereitstellungsmodelle und Tools für die Tunnelerzwingung**
 
+Eine Verbindung mit erzwungenem Tunneling kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Weitere Informationen finden Sie in der folgenden Tabelle. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
+
 [AZURE.INCLUDE [vpn-gateway-table-forced-tunneling](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
 
 
 ## Informationen zur Tunnelerzwingung
 
-Über die Tunnelerzwingung können Sie die Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort "erzwingen". Sie verwenden dazu einen Standort-zu-Standort-VPN-Tunnel für die Kontrolle und Überwachung. Dies ist eine wichtige Sicherheitsvoraussetzung der IT-Richtlinien für die meisten Unternehmen. Ohne die Tunnelerzwingung wird der Internetdatenverkehr Ihrer virtuellen Computer in Azure immer direkt von der Azure-Netzwerkinfrastruktur an das Internet geleitet, ohne dass Sie die Möglichkeit haben, diesen zu überprüfen oder zu überwachen. Nicht autorisierter Zugriff auf das Internet kann potenziell zur Offenlegung von Informationen oder anderen Arten von Sicherheitsverletzungen führen.
 
 Das folgende Diagramm veranschaulicht die Funktionsweise der Tunnelerzwingung.
 
 ![Tunnelerzwingung](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
 
-Im obigen Beispiel wird für das Frontend-Subnetz kein Tunneln erzwungen. Die Workloads im Frontend-Subnetz können weiterhin Kundenanfragen direkt aus dem Internet akzeptieren und darauf reagieren. Für die Subnetze "Midtier" und "Backend" wird das Tunneln erzwungen. Bei allen ausgehenden Verbindungen mit dem Internet aus diesen zwei Subnetzen wird eine Umleitung an einen lokalen Standort über einen der S2S-VPN-Tunnel erzwungen. Dadurch können Sie den Internetzugriff aus Virtual Machines und Cloud Services in Azure einschränken und überprüfen, während die erforderliche mehrschichtige Dienstarchitektur weiterhin in Betrieb bleibt. Sie haben auch die Möglichkeit, das erzwungene Tunneln auf alle virtuellen Netzwerke anzuwenden, wenn in diesen keine Workloads mit Internetverbindung erforderlich sind.
+Im obigen Beispiel wird für das Frontend-Subnetz kein Tunneln erzwungen. Die Workloads im Frontend-Subnetz können weiterhin Kundenanfragen direkt aus dem Internet akzeptieren und darauf reagieren. Für die Subnetze "Midtier" und "Backend" wird das Tunneln erzwungen. Bei allen ausgehenden Verbindungen mit dem Internet aus diesen zwei Subnetzen wird eine Umleitung an einen lokalen Standort über einen der S2S-VPN-Tunnel erzwungen.
+
+Dadurch können Sie den Internetzugriff über die virtuellen Computer oder Clouddienste in Azure einschränken und überprüfen, während die erforderliche mehrschichtige Dienstarchitektur weiterhin in Betrieb bleibt. Sie haben auch die Möglichkeit, das erzwungene Tunneln auf alle virtuellen Netzwerke anzuwenden, wenn in diesen keine Workloads mit Internetverbindung erforderlich sind.
 
 ## Anforderungen und Überlegungen
 
-Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt. Weitere Informationen zu benutzerdefiniertem Routing und virtuellen Netzwerken finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
+Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt. Weitere Informationen zu benutzerdefiniertem Routing und virtuellen Netzwerken finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](../virtual-network/virtual-networks-udr-overview.md).
 
 - Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
 
@@ -61,16 +68,14 @@ Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen
 
 - Beachten Sie, dass ExpressRoute-Tunnelerzwingung über diesen Mechanismus nicht konfiguriert werden kann. Sie wird stattdessen durch Anfordern einer Standardroute über die ExpressRoute-BGP-Peeringsitzungen aktiviert. Weitere Informationen finden Sie unter der [ExpressRoute-Dokumentation](https://azure.microsoft.com/documentation/services/expressroute/).
 
-## Konfigurieren der Tunnelerzwingung
+## Konfigurationsübersicht
 
-### Konfigurationsübersicht
+Das folgende Verfahren hilft Ihnen dabei, eine Ressourcengruppe und ein VNet zu erstellen. Sie erstellen dann ein VPN-Gateway und konfigurieren die Tunnelerzwingung. Bei diesem Verfahren verfügt das virtuelle Netzwerk „MultiTier-VNet“ über drei Subnetze: *Frontend*, *Midtier* und *Backend*, die vier standortübergreifende Verbindungen aufweisen: *DefaultSiteHQ* und drei *Verzweigungen*.
 
-Das folgende Verfahren hilft Ihnen dabei, eine Ressourcengruppe und ein VNet zu erstellen. Sie erstellen dann ein VPN-Gateway und konfigurieren die Tunnelerzwingung.
-
-Im Beispiel verfügt das virtuelle Netzwerk „MultiTier-VNet“ über drei Subnetze: *Frontend*, *Midtier* und *Backend*, die vier standortübergreifende Verbindungen aufweisen: *DefaultSiteHQ* und drei *Verzweigungen*. Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-Standortverbindung für die Tunnelerzwingung ist und dass die Subnetze *Midtier* und *Backend* die Tunnelerzwingung verwenden müssen.
+Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-Standortverbindung für die Tunnelerzwingung ist und dass die Subnetze „Midtier“ und „Backend“ die Tunnelerzwingung verwenden müssen.
 
 	
-### Vorbereitungen
+## Voraussetzungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
@@ -79,7 +84,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 - Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager (1.0 oder höher) installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 
-### Konfigurationsschritte
+## Konfigurieren der Tunnelerzwingung
 
 1. Melden Sie sich in der PowerShell-Konsole bei Ihrem Azure-Konto an. Sie werden von diesem Cmdlet zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen.
 
@@ -120,21 +125,21 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 		Set-AzureRmRouteTable -RouteTable $rt
 
 
-6. Ordnen Sie die Routingtabelle den Subnetzen „Midtier“ und „Backend“ zu.
+7. Ordnen Sie die Routingtabelle den Subnetzen „Midtier“ und „Backend“ zu.
 
 		$vnet = Get-AzureRmVirtualNetwork -Name "MultiTier-Vnet" -ResourceGroupName "ForcedTunneling"
 		Set-AzureRmVirtualNetworkSubnetConfig -Name "MidTier" -VirtualNetwork $vnet -AddressPrefix "10.1.1.0/24" -RouteTable $rt
 		Set-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
 		Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-9. Erstellen Sie das Gateway mit einem Standardstandort. Dieser Schritt dauert einige Zeit, manchmal 20 Minuten oder länger, weil Sie das Gateway erstellen und konfigurieren. Obwohl nur wenige Cmdlets in der Konsole angezeigt werden, passiert eine Menge im Hintergrund. Beachten Sie, dass „GatewayDefaultSite“ der Cmdlet-Parameter ist, durch den die Konfiguration des erzwungenen Routings funktioniert, Sie sollten ihn also verwenden. Er ist nur in PowerShell 1.0 oder höher verfügbar.
+8. Erstellen Sie das Gateway mit einem Standardstandort. Dieser Schritt dauert einige Zeit, manchmal 20 Minuten oder länger, weil Sie das Gateway erstellen und konfigurieren. Obwohl nur wenige Cmdlets in der Konsole angezeigt werden, passiert eine Menge im Hintergrund. Beachten Sie, dass „GatewayDefaultSite“ der Cmdlet-Parameter ist, durch den die Konfiguration des erzwungenen Routings funktioniert, Sie sollten ihn also verwenden. Er ist nur in PowerShell 1.0 oder höher verfügbar.
 
 		$pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
 		$gwsubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 		$ipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "gwIpConfig" -SubnetId $gwsubnet.Id -PublicIpAddressId $pip.Id
 		New-AzureRmVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -IpConfigurations $ipconfig -GatewayType Vpn -VpnType RouteBased -GatewayDefaultSite $lng1 -EnableBgp $false
 
-10. Richten Sie die Site-to-Site-VPN-Verbindungen ein.
+9. Richten Sie die Standort-zu-Standort-VPN-Verbindungen ein.
 
 		$gateway = Get-AzureRmVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling"
 		$lng1 = Get-AzureRmLocalNetworkGateway -Name "DefaultSiteHQ" -ResourceGroupName "ForcedTunneling" 
@@ -150,4 +155,4 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

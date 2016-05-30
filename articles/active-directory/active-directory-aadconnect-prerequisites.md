@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/14/2016"
+   ms.date="05/10/2016"
    ms.author="andkjell;billmath"/>
 
 # Voraussetzungen für Azure AD Connect
@@ -50,13 +50,14 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 - [Konten in Active Directory](active-directory-aadconnect-accounts-permissions.md), wenn Sie den Installationspfad für benutzerdefinierte Einstellungen verwenden.
 
 ### Azure AD Connect-Serverkonfiguration
-- Wenn Ihre globalen Administratoren MFA aktiviert haben, muss die URL **https://secure.aadcdn.microsoftonline-p.com** in der Liste der vertrauenswürdigen Websites aufgeführt sein. Andernfalls werden Sie aufgefordert, sie der Liste vertrauenswürdiger Websites hinzuzufügen, bevor Sie zu einer MFA-Überprüfung aufgefordert werden. Sie können dafür den Internet Explorer verwenden.
+- Wenn Ihre globalen Administratoren MFA aktiviert haben, muss die URL ****https://secure.aadcdn.microsoftonline-p.com** in der Liste der vertrauenswürdigen Websites aufgeführt sein. Andernfalls werden Sie aufgefordert, sie der Liste vertrauenswürdiger Websites hinzuzufügen, bevor Sie zu einer MFA-Überprüfung aufgefordert werden. Sie können dafür den Internet Explorer verwenden.
 
 ### Konnektivität
 - Der Azure AD Connect-Server benötigt die DNS-Auflösung sowohl für das Intranet als auch für das Internet. Der DNS-Server muss Namen sowohl zu Ihrem lokalen Active Directory als auch zu den Azure AD-Endpunkten auflösen können.
 - Wenn Sie in Ihrem Intranet Firewalls verwenden und die Ports zwischen den Azure AD Connect-Servern und Ihren Domaincontrollern öffnen müssen, finden Sie Informationen hierzu unter [Azure AD Connect-Ports](active-directory-aadconnect-ports.md).
 - Wenn Ihr Proxy den Zugriff auf bestimmte URLs beschränkt, müssen die unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) dokumentierten URLs im Proxy geöffnet werden.
-- Wenn Sie einen ausgehenden Proxy für die Verbindung mit dem Internet verwenden, muss die folgende Einstellung in der Datei **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** für den Installations-Assistenten und die Azure AD Connect-Synchronisierung hinzugefügt werden, um die Verbindung mit dem Internet und Azure AD zu ermöglichen. Dieser Text muss am Ende der Datei eingegeben werden. In diesem Codeabschnitt steht „&lt;PROXYADRESS&gt;“ für die Proxy-IP-Adresse oder den Hostnamen.
+    - Wenn Sie die Microsoft Cloud in Deutschland oder die Microsoft Azure Government-Cloud verwenden, finden Sie die URLs unter [Azure AD Connect: Besondere Überlegungen zu Instanzen](active-directory-aadconnect-instances.md).
+- Wenn Sie einen ausgehenden Proxy für die Verbindung mit dem Internet verwenden, muss die folgende Einstellung in der Datei **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** für den Installations-Assistenten und die Azure AD Connect-Synchronisierung hinzugefügt werden, um die Verbindung mit dem Internet und Azure AD zu ermöglichen. Dieser Text muss am Ende der Datei eingegeben werden. In diesem Codeabschnitt steht „&lt;PROXYADRESS&gt;“ für die Proxy-IP-Adresse oder den Hostnamen.
 
 ```
     <system.net>
@@ -98,11 +99,11 @@ Azure AD Connect ist abhängig von Microsoft PowerShell und .NET Framework 4.
   - Microsoft PowerShell ist standardmäßig installiert, es ist keine Aktion erforderlich.
   - .NET Framework 4.5.1 und neuere Versionen werden über Windows Update angeboten. Stellen Sie in der Systemsteuerung sicher, dass die neuesten Updates von Windows Server installiert sind.
 - Windows Server 2008 R2 und Windows Server 2012
-  - Die neueste Version von Microsoft PowerShell steht unter **Windows Management Framework 4.0** im [Microsoft Download Center](http://www.microsoft.com/downloads) zur Verfügung.
-  - .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](http://www.microsoft.com/downloads) verfügbar.
+  - Die neueste Version von Microsoft PowerShell steht unter **Windows Management Framework 4.0** im [Microsoft Download Center](http://www.microsoft.com/downloads) zur Verfügung.
+  - .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](http://www.microsoft.com/downloads) verfügbar.
 - Windows Server 2008
   - Die neueste unterstützte Version von PowerShell steht im **Windows Management Framework 3.0** im [Microsoft Download Center](http://www.microsoft.com/downloads) zur Verfügung.
- - .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](http://www.microsoft.com/downloads) verfügbar.
+ - .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](http://www.microsoft.com/downloads) verfügbar.
 
 ## Voraussetzungen für die Verbundinstallation und -konfiguration
 
@@ -172,4 +173,4 @@ Im Folgenden sind die Mindestanforderungen für Computer mit AD FS oder Webanwe
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

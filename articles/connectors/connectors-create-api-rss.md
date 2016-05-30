@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem RSS-Connector
@@ -82,7 +82,7 @@ Wenn ein neues Feedelement veröffentlicht wird: Löst einen Workflow aus, sobal
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -105,7 +105,7 @@ Alle RSS-Feedelemente auflisten: Ruft alle RSS-Feedelemente ab.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -127,7 +127,7 @@ Alle RSS-Feedelemente auflisten: Ruft alle RSS-Feedelemente ab.
 |---|---|---|
 |id|string|Ja |
 |title|string|Ja |
-|content|string|Ja |
+|Inhalt|string|Ja |
 |links|array|Nein |
 |updatedOn|string|Nein |
 
@@ -135,4 +135,4 @@ Alle RSS-Feedelemente auflisten: Ruft alle RSS-Feedelemente ab.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

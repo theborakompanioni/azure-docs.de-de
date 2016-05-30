@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Ressourcen, Rollen und Zugriffssteuerung in Application Insights"
-	description="Besitzer Mitwirkende und Leser für die gewonnenen Unternehmensinformationen."
+	description="";Besitzer";, ";Mitwirkende"; und ";Leser"; für die gewonnenen Unternehmensinformationen."
 	services="application-insights"
     documentationCenter=""
 	authors="alancameronwills"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="05/07/2016"
 	ms.author="awills"/>
 
 # Ressourcen, Rollen und Zugriffssteuerung in Application Insights
@@ -58,7 +58,7 @@ Zum Steuern des Zugriffs auf diese Ressourcen empfiehlt es sich daher, folgender
 
 Sie benötigen Eigentümerrechte für das Abonnement oder die Ressourcengruppe.
 
-Der Benutzer benötigt ein [Microsoft-Konto][account]. Sie können den Zugriff an Einzelpersonen und auch an Benutzergruppen erteilen, die in Azure Active Directory definiert sind.
+Der Benutzer muss über ein [Microsoft-Konto][account] oder über Zugriff auf sein [Microsoft-Organisationskonto](..\active-directory\sign-up-organization.md) verfügen. Sie können den Zugriff an Einzelpersonen und auch an Benutzergruppen erteilen, die in Azure Active Directory definiert sind.
 
 #### Navigieren zur Ressourcengruppe
 
@@ -104,8 +104,8 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../azure-preview-portal-using-resource-groups.md
-[portal]: http://portal.azure.com/
+[group]: ../azure-portal/resource-group-portal.md
+[portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

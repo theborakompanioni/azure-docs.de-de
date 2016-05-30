@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="04/26/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
@@ -332,6 +332,33 @@ Wenn Sie Ihren migrierten mobilen Dienst mithilfe von Azure PowerShell klonen un
 
 Lösung: Wir arbeiten an diesem Problem. Wenn Sie Ihre Website klonen möchten, verwenden Sie dazu das Portal.
 
+### Das Ändern von „web.config“ funktioniert nicht
+
+Für ASP.NET-Websites funktionieren Änderungen an der `Web.config`-Datei nicht. Azure App Service erstellt beim Start eine geeignete `Web.config`-Datei, um die Mobile Services-Runtime zu unterstützen. Sie können bestimmte Einstellungen (z.B. benutzerdefinierte Header) mithilfe einer XML-Transformationsdatei überschreiben. Erstellen Sie eine Datei mit dem Namen `applicationHost.xdt`. Diese Datei muss im Verzeichnis `D:\home\site` für den Azure-Dienst abgelegt werden. Dies kann über ein benutzerdefiniertes Bereitstellungsskript oder direkt mithilfe von Kudu erreicht werden. Im Folgenden finden Sie ein Beispieldokument:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.webServer>
+    <httpProtocol>
+      <customHeaders>
+        <add name="X-Frame-Options" value="DENY" xdt:Transform="Replace" />
+        <remove name="X-Powered-By" xdt:Transform="Insert" />
+      </customHeaders>
+    </httpProtocol>
+    <security>
+      <requestFiltering removeServerHeader="true" xdt:Transform="SetAttributes(removeServerHeader)" />
+    </security>
+  </system.webServer>
+</configuration>
+```
+
+Weitere Informationen finden Sie auf GitHub in der Dokumentation zu [XDT-Transformationsbeispielen].
+
+### Migrierte Mobile Services können nicht zu Traffic Manager hinzugefügt werden
+
+Wenn Sie ein Traffic Manager-Profil erstellen, können Sie nicht direkt einen migrierten Mobile Service für das Profil auswählen. Sie müssen einen externen Endpunkt verwenden. Der externe Endpunkt kann nur mithilfe von PowerShell hinzugefügt werden. Weitere Informationen finden Sie im [Tutorial zu Traffic Manager](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch mehr Features nutzen:
@@ -354,7 +381,7 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service – Preise]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service – Preise]: https://azure.microsoft.com/de-DE/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatische Skalierung]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
@@ -362,10 +389,10 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [klassische Azure-Portal]: https://manage.windowsazure.com
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 [Azure-Portal]: https://portal.azure.com
-[Azure-Region]: https://azure.microsoft.com/regions/
+[Azure-Region]: https://azure.microsoft.com/de-DE/regions/
 [Azure Scheduler-Pläne]: ../scheduler/scheduler-plans-billing.md
 [fortlaufend bereitstellen]: ../app-service-web/web-sites-publish-source-control.md
-[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/de-DE/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [benutzerdefinierten Domänennamen]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
@@ -381,5 +408,6 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [Stagingslots]: ../app-service-web/web-sites-staged-publishing.md
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
+[XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

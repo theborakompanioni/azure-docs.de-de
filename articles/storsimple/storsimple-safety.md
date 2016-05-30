@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/20/2016"
+   ms.date="05/13/2016"
    ms.author="alkohli" />
 
 # Sichere Installation und Verwendung des StorSimple-Geräts
@@ -179,4 +179,4 @@ Nachdem Sie diese Sicherheitshinweise gelesen haben, ist der nächste Schritt, d
 
 - Wenn es sich um ein 8600-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0518_2016-->

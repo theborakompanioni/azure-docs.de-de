@@ -89,7 +89,7 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 |---|---|---|
 |Reihenfolgengarantie|**Nein** <br/><br>Weitere Informationen finden Sie in der ersten Anmerkung im Abschnitt "Weitere Informationen".</br>|**Ja – First-In-First-Out (FIFO)**<br/><br>(durch Verwendung von Messagingsitzungen)|
 |Zustellungsgarantie|**At-Least-Once**|**At-Least-Once**<br/><br/>**At-Most-Once**|
-|Unterstützung von Transaktionen|**Nein**|**Ja**<br/><br/>(durch Verwendung lokaler Transaktionen)|
+|Unterstützung für atomare Operationen|**Nein**|**Ja**<br/><br/>|
 |Empfangsverhalten|**Nicht blockierend**<br/><br/>(wird sofort beendet, wenn keine neue Nachricht gefunden wird)|**Blockieren mit/ohne Timeout**<br/><br/>(bietet ein langes Abrufintervall bzw. die ["Comet-Technik"](http://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nicht blockierend**<br/><br/>(nur durch Verwendung .NET-verwalteter APIs)|
 |API im Pushstil|**Nein**|**Ja**<br/><br/>[OnMessage](https://msdn.microsoft.com/library/azure/jj908682.aspx)- und **OnMessage**-Sitzungs-.NET-API.|
 |Empfangsmodus|**Peek & Lease**|**Peek & Lock**<br/><br/>**Receive & Delete**|
@@ -178,7 +178,7 @@ In diesem Abschnitt werden Azure-Warteschlangen und Service Bus-Warteschlangen i
 |Vergleichskriterien|Azure-Warteschlangen|Service Bus-Warteschlangen|
 |---|---|---|
 |Maximale Warteschlangengröße|**200 TB**<br/><br/>(beschränkt auf die Kapazität eines einzelnen Speicherkontos)|**1–80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt "Zusätzliche Informationen")|
-|Maximale Nachrichtengröße|**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64**-Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden.|**256 KB**<br/><br/>(Einschließlich Header und Text. Die maximale Headergröße beträgt 64 KB.)|
+|Maximale Nachrichtengröße|**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64**-Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden.|**256 KB** oder **1 MB**<br/><br/>(einschließlich Header und Text. Maximale Headergröße: 64 KB).<br/><br/>Abhängig von der [Preisstufe](service-bus-premium-messaging.md).|
 |Maximaler TTL-Wert der Nachricht|**7 Tage**|**Unbegrenzt**|
 |Maximale Anzahl von Warteschlangen|**Unbegrenzt**|**10.000**<br/><br/>(pro Dienstnamespace, kann jedoch erhöht werden)|
 |Maximale Anzahl gleichzeitiger Clients|**Unbegrenzt**|**Unbegrenzt**<br/><br/>(Die Beschränkung auf 100 gleichzeitige Verbindungen gilt nur für die Kommunikation über das TCP-Protokoll.)|
@@ -191,7 +191,7 @@ In diesem Abschnitt werden Azure-Warteschlangen und Service Bus-Warteschlangen i
 
 - Wenn der Inhalt der Nachricht bei Azure-Warteschlangen nicht XML-sicher ist, muss er mit **Base64** codiert werden. Wenn Sie die Nachricht mit **Base64** codieren, darf die Benutzernutzlast statt 64 KB nur 48 KB betragen.
 
-- Bei Service Bus-Warteschlangen besteht jede in einer Warteschlange gespeicherte Nachricht aus zwei Teilen: einem Header und einem Text. Die Gesamtgröße der Nachricht darf 256 KB nicht überschreiten.
+- Bei Service Bus-Warteschlangen besteht jede in einer Warteschlange gespeicherte Nachricht aus zwei Teilen: einem Header und einem Text. Die Gesamtgröße der Nachricht darf die maximale, von der Preisstufe unterstützte Nachrichtengröße nicht überschreiten.
 
 - Wenn Clients über das TCP-Protokoll mit Service Bus-Warteschlangen kommunizieren, ist die maximale Anzahl gleichzeitiger Verbindungen mit einer einzelnen Service Bus-Warteschlange auf 100 beschränkt. Diese Anzahl wird zwischen Absendern und Empfängern aufgeteilt. Wenn dieses Kontingent erreicht wird, werden nachfolgende Anforderungen für zusätzliche Verbindungen abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. Diese Begrenzung gilt nicht für Clients, die über die REST-basierte API eine Verbindung mit Warteschlangen herstellen.
 
@@ -204,14 +204,13 @@ In diesem Abschnitt werden die von Azure-Warteschlangen und Service Bus-Wartesch
 |Vergleichskriterien|Azure-Warteschlangen|Service Bus-Warteschlangen|
 |---|---|---|
 |Verwaltungsprotokoll|**REST über HTTP/HTTPS**|**REST über HTTPS**|
-|Laufzeitprotokoll|**REST über HTTP/HTTPS**|**REST über HTTPS**<br/><br/>** AMQP 1.0 Standard (TCP mit TLS)**| 
-|. NET-verwaltete API|**Ja**<br/><br/>(.NET verwaltete Speicherclient-API)|**Ja**<br/><br/>(.NET-verwaltete API für Brokermessaging)|
+|Laufzeitprotokoll|**REST über HTTP/HTTPS**|**REST über HTTPS**<br/><br/>** AMQP 1.0 Standard (TCP mit TLS)**| |. NET-verwaltete API|**Ja**<br/><br/>(.NET verwaltete Speicherclient-API)|**Ja**<br/><br/>(.NET-verwaltete API für Brokermessaging)|
 |Systemeigenes C++|**Ja**|**Nein**|
 |Java-API|**Ja**|**Ja**|
 |PHP-API|**Ja**|**Ja**|
 |Node.js-API|**Ja**|**Ja**|
 |Unterstützung beliebiger Metadaten|**Ja**|**Nein**|
-|Benennungsregeln für Warteschlangen|**Bis zu 63 Zeichen**<br/><br/>(Warteschlangennamen müssen in Kleinbuchstaben geschrieben sein.)|**Bis zu 260 Zeichen**<br/><br/>(Bei Warteschlangennamen wird die Groß-/Kleinschreibung unterschieden.)|
+|Benennungsregeln für Warteschlangen|**Bis zu 63 Zeichen**<br/><br/>(Warteschlangennamen müssen in Kleinbuchstaben geschrieben sein.)|**Bis zu 260 Zeichen lang**<br/><br/>(Bei Warteschlangenpfaden und -namen wird die Groß-/Kleinschreibung nicht unterschieden.)|
 |Funktion zum Abrufen der Warteschlangenlänge|**Ja**<br/><br/>(ungefährer Wert, wenn Nachrichten nach dem TTL-Wert ablaufen, ohne gelöscht zu werden)|**Ja**<br/><br/>(genau, Zeitpunktwert)|
 |Peek-Funktion|**Ja**|**Ja**|
 
@@ -223,7 +222,7 @@ In diesem Abschnitt werden die von Azure-Warteschlangen und Service Bus-Wartesch
 
 - Die verwalteten .NET-APIs für Brokermessaging von Service Bus nutzen im Vergleich zu "REST über HTTP" Vollduplex-TCP-Verbindungen zur Leistungsoptimierung und unterstützen das AMQP 1.0-Standardprotokoll.
 
-- Azure-Warteschlangennamen dürfen 3 bis 63 Zeichen lang sein und Kleinbuchstaben, Ziffern und Bindestriche enthalten. Weitere Informationen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+- Die Namen von Azure-Warteschlangen dürfen 3 bis 63 Zeichen lang sein und Kleinbuchstaben, Ziffern und Bindestriche enthalten. Weitere Informationen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
 - Namen von Service Bus-Warteschlangen können bis zu 260 Zeichen lang sein und verfügen über weniger restriktive Benennungsregeln. Namen von Service Bus-Warteschlangen dürfen Buchstaben, Ziffern, Punkte (.), Bindestriche (-) und Unterstriche (\_) enthalten.
 
@@ -311,9 +310,8 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 - [Using the Queuing Service in Azure (Verwenden des Warteschlangendiensts in Azure, in englischer Sprache)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 - [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Grundlagen zur Abrechnung von Azure Storage – Bandbreite, Transaktionen und Kapazität, in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
-
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 [klassischen Azure-Portals]: http://manage.windowsazure.com
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

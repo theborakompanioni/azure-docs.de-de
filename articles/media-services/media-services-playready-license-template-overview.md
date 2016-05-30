@@ -48,7 +48,7 @@ Das folgende Beispiel zeigt die einfachste (und am häufigsten verwendete) Vorla
 
 Der XML-Code entspricht dem XML-Schema der PlayReady-Lizenzvorlage, das im XML-Schemaabschnitt in der PlayReady-Lizenzvorlage definiert wurde.
 
-Media Services definiert auch eine Reihe von .NET-Klassen, die für die Serialisierung und Deserialisierung in und aus XML verwendet werden können. Eine Beschreibung der wichtigsten Klassen, mit denen Lizenzvorlagen konfiguriert werden, finden Sie unter [Media Services-.NET-Klassen]((media-services-playready-license-template-overview.md#classes).
+Media Services definiert auch eine Reihe von .NET-Klassen, die für die Serialisierung und Deserialisierung in und aus XML verwendet werden können. Eine Beschreibung der Hauptklassen finden Sie unter [Media Services-.NET-Klassen zum Konfigurieren von Lizenzvorlagen](media-services-playready-license-template-overview.md#classes).
 
 Ein End-to-End-Beispiel, in dem mit .NET-Klassen die PlayReady-Lizenzvorlage konfiguriert wird, finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](https://msdn.microsoft.com/library/azure/dn783467.aspx).
 
@@ -311,4 +311,4 @@ Ein Beispiel für die von Silverlight unterstützten Schutzebenen finden Sie unt
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

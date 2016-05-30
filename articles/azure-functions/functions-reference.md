@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="04/07/2016"
+	ms.date="05/13/2016"
 	ms.author="chrande"/>
 
 # Entwicklerreferenz zu Azure Functions
@@ -80,7 +80,7 @@ Um HTTP-Trigger zu ermöglichen, gibt es auch einen Webhost, der in Produktionss
 Ein Skripthost verweist auf einen Ordner, der eine Konfigurationsdatei und ein oder mehrere Funktionen enthält.
 
 ```
-parentFolder (for example, wwwroot)
+parentFolder (for example, wwwroot in a function app)
  | - host.json
  | - mynodefunction
  | | - function.json
@@ -93,19 +93,67 @@ parentFolder (for example, wwwroot)
  | | - run.csx
 ```
 
-Die Datei *host.json* enthält die für den Skripthost spezifische Konfiguration und befindet sich im übergeordneten Ordner.
+Die Datei *host.json* enthält die für den Skripthost spezifische Konfiguration und befindet sich im übergeordneten Ordner. Informationen zu den verfügbaren Einstellungen finden Sie unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki zum WebJobs.Script-Repository.
 
-Jede Funktion verfügt über einen Ordner, der die Codedatei(en), *function.json*, sowie weitere Abhängigkeiten enthält.
+Jede Funktion verfügt über einen Ordner, der die Codedateien, *function.json* sowie weitere Abhängigkeiten enthält.
 
-Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktions-App in Azure App Service bereitzustellen, können Sie diese Ordnerstruktur als Sitecode behandeln. Sie können vorhandene Tools, wie z.B. die fortlaufende Integration und Bereitstellung, oder benutzerdefinierte Bereitstellungsskripts verwenden, um eine Paketinstallation zur Bereitstellungszeit oder eine Codetranspilierung umzusetzen.
+Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktionen-App in Azure App Service bereitzustellen, können Sie diese Ordnerstruktur als Sitecode behandeln. Sie können vorhandene Tools, wie z.B. die fortlaufende Integration und Bereitstellung, oder benutzerdefinierte Bereitstellungsskripts verwenden, um eine Paketinstallation zur Bereitstellungszeit oder eine Codetranspilierung umzusetzen.
+
+## <a id="fileupdate"></a> Aktualisieren von Funktionen-App-Dateien
+
+Der im Azure-Portal integrierte Funktionen-Editor ermöglicht das Aktualisieren der Datei *function.json* und der Codedatei für eine Funktion. Zum Hochladen oder Aktualisieren anderer Dateien wie *package.json* oder *project.json* oder von Abhängigkeiten müssen Sie andere Bereitstellungsmethoden nutzen.
+
+Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service-web/web-sites-deploy.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können.
+
+#### So verwenden Sie Visual Studio Team Services (Monaco)
+
+1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
+
+2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen wechseln**.
+
+3. Klicken Sie auf **Tools**.
+
+4. Klicken Sie unter **Entwickeln** auf **Visual Studio Team Services**.
+
+5. **Aktivieren** Sie diese Option, wenn sie noch nicht aktiviert ist, und klicken Sie auf **Los**.
+
+	Nachdem Visual Studio Team Services geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*.
+
+6. Öffnen Sie die Dateien, um Sie zu bearbeiten, oder laden Sie Dateien per Drag & Drop von Ihrem Entwicklungscomputer hoch.
+
+#### So verwenden Sie den SCM-Endpunkt (Kudu) der Funktionen-App
+
+1. Navigieren Sie zu: `https://<function_app_name>.scm.azurewebsites.net`.
+
+2. Klicken Sie auf **Debugkonsole > CMD**.
+
+3. Navigieren Sie zu `D:\home\site\wwwroot`, um *host.json* zu aktualisieren, oder zu `D:\home\site\wwwroot<function_name>`, um die Dateien einer Funktion zu aktualisieren.
+
+4. Verschieben Sie eine Datei per Drag & Drop, die Sie im Dateiraster in den entsprechenden Ordner hochladen möchten.
+
+#### So verwenden Sie FTP
+
+1. Führen Sie die [hier](../app-service-web/web-sites-deploy.md#ftp) aufgeführten Schritte aus, um FTP zu konfigurieren.
+
+2. Wenn Sie mit der Website der Funktionen-App verbunden sind, kopieren Sie die aktualisierte Datei *host.json* in `/site/wwwroot`, oder kopieren Sie Funktionendateien in `/site/wwwroot/<function_name>`.
 
 ## Parallele Ausführung
 
-Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen. Wenn eine Funktions-App den [dynamischen Serviceplan](functions-scale.md#dynamic-service-plan) verwendet, könnte die App automatisch horizontal auf bis zu 10 gleichzeitige Instanzen hochskaliert werden. Jede Instanz der Funktions-App – unabhängig davon, ob die App im dynamischen Serviceplan oder einem regulären [App Services-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann dann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten. Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Instanz der Funktions-App variiert je nach Größe des Arbeitsspeichers der Funktions-App.
+Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen. Wenn eine Funktionen-App den [dynamischen Serviceplan](functions-scale.md#dynamic-service-plan) verwendet, kann die App automatisch horizontal auf bis zu 10 gleichzeitige Instanzen hochskaliert werden. Jede Instanz der Funktionen-App – unabhängig davon, ob die App im dynamischen Serviceplan oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann dann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten. Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Instanz der Funktionen-App variiert je nach Größe des Arbeitsspeichers der Funktionen-App.
 
 ## Azure Functions Pulse  
 
 Pulse ist ein Liveereignisstream, der anzeigt, wie häufig Ihre Funktion ausgeführt wird und welche Ausführungen erfolgreich oder fehlerhaft waren. Sie können auch die durchschnittliche Ausführungszeit überwachen. Wir werden im Lauf der Zeit weitere Features und Anpassungen hinzufügen. Sie können über die Registerkarte **Überwachung** auf die Seite **Pulse** zugreifen.
+
+## Repositorys
+
+Der Code für Azure Functions ist Open Source und in GitHub-Repositorys gespeichert:
+
+* [Azure Functions-Laufzeit](https://github.com/Azure/azure-webjobs-sdk-script/)
+* [Azure Functions-Portal](https://github.com/projectkudu/AzureFunctionsPortal)
+* [Azure Functions-Vorlagen](https://github.com/Azure/azure-webjobs-sdk-templates/)
+* [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
+* [Azure WebJobs SDK-Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## Bindungen
 
@@ -124,5 +172,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
+* [Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) im Blog des Azure App Service-Teams. Überblick, wie Azure Functions entwickelt wurde.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

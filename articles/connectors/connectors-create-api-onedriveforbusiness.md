@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem OneDrive for Business-Connector
@@ -67,8 +67,10 @@ Um Logik-Apps mit OneDrive for Business zu erstellen, müssen Sie zuerst eine **
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für OneDrive for Business|
+|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für OneDrive for Business|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit OneDrive for Business](../../includes/connectors-create-api-onedriveforbusiness.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -206,7 +208,7 @@ Datei kopieren: Kopiert eine Datei auf OneDrive for Business.
 | ---|---|---|---|---|---|
 |source|string|Ja|query|(Keine)|URL zur Quelldatei|
 |destination|string|Ja|query|(Keine)|Zieldateipfad in OneDrive for Business, einschließlich Zieldateiname|
-|overwrite|Boolescher Wert|Nein|query|false|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
+|overwrite|Boolescher Wert|no|query|false|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
 
 #### Antwort
 
@@ -290,7 +292,7 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 | ---|---|---|---|---|---|
 |source|string|Ja|query|(Keine)|Pfad zur Archivdatei|
 |destination|string|Ja|query|(Keine)|Pfad in OneDrive for Business, in den der Archivinhalt extrahiert wird|
-|overwrite|Boolescher Wert|Nein|query|false|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
+|overwrite|Boolescher Wert|no|query|false|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
 
 #### Antwort
 
@@ -354,7 +356,7 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 
 
 
-### Object
+### Objekt
 
 
 | Eigenschaftenname | Datentyp | Erforderlich |
@@ -364,4 +366,4 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

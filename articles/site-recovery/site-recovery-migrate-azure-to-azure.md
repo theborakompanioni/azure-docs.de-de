@@ -20,7 +20,7 @@
 
 ## Übersicht
 
-In diesem Artikel erfahren Sie, wie virtuelle Azure-Computer mithilfe von Site Recovery zwischen Azure-Regionen migriert werden. Bevor Sie beginnen, beachten Sie bitte Folgendes:
+In diesem Artikel erfahren Sie, wie virtuelle Azure-Computer mithilfe von Site Recovery zwischen Azure-Regionen migriert werden. Bevor Sie beginnen, beachten Sie bitte Folgendes:
 
 - Derzeit sind nur Migrationen möglich. Sie können für virtuelle Computer also ein Failover von einer Azure-Region in eine andere durchführen, aber nicht wieder zurück.
 - In diesem Artikel werden viele der Schritte zusammengefasst und verwendet, die im [Artikel über das Replizieren virtueller VMware-Computer oder physischer Server in Azure](site-recovery-vmware-to-azure-classic.md) ausführlich beschrieben sind. Dieser Artikel enthält die neuesten erweiterten Anweisungen zum Einrichten der Replikation. Es empfiehlt sich, diesen Artikel bei der Migration heranzuziehen.
@@ -33,7 +33,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 
 Für diese Bereitstellung benötigen Sie Folgendes:
 
-- **Verwaltungsserver**: Ein lokaler virtueller Computer mit Windows Server 2012 R2, der als Verwaltungsserver dient. Sie können die Site Recovery-Komponenten (einschließlich Konfigurationsserver und Prozessserver) auf diesem Server installieren. Weitere Informationen finden Sie in den [Überlegungen zu Verwaltungsservern](site-recovery-vmware-to-azure-classic.md#management-server-considerations) und unter [Lokale Voraussetzungen](site-recovery-vmware-to-azure-classic.md#on-premises-prerequisites).
+- **Verwaltungsserver**: Ein virtueller Computer, auf dem Windows Server 2012 R2 ausgeführt wird, und der als Verwaltungsserver dient. Sie können die Site Recovery-Komponenten (einschließlich Konfigurationsserver und Prozessserver) auf diesem Server installieren. Weitere Informationen finden Sie in den [Überlegungen zu Verwaltungsservern](site-recovery-vmware-to-azure-classic.md#management-server-considerations) und unter [Voraussetzungen für die Quelle](site-recovery-vmware-to-azure-classic.md#on-premises-prerequisites).
 - **Virtuelle IaaS-Computer**: die virtuellen Computer, die Sie migrieren möchten.
 
 ## Bereitstellungsschritte
@@ -61,4 +61,4 @@ Für diese Bereitstellung benötigen Sie Folgendes:
 
 Weitere Informationen zu anderen Replikationsszenarien finden Sie in [Was ist Azure Site Recovery?](site-recovery-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

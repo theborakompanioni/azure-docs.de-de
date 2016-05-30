@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016" 
+	ms.date="05/09/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
@@ -287,4 +287,7 @@ Beim Verschieben von Daten aus OData-Datenspeichern werden die OData-Datentypen 
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!-----HONumber=AcomDC_0224_2016-->
+## Leistung und Optimierung  
+Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+<!---HONumber=AcomDC_0518_2016-->

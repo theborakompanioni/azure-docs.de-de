@@ -14,25 +14,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/16/2016"
    ms.author="mandia"/>
 
 
 # Erste Schritte mit der SQL Azure-API
-Stellen Sie eine Verbindung mit SQL Azure her, um Tabellen und Zeilen zu verwalten, z. B. Einfügen von Zeilen, Abrufen von Tabellen usw.
+Stellen Sie eine Verbindung mit der Azure SQL-Datenbank her, um Tabellen und Zeilen zu verwalten, z.B. Einfügen von Zeilen, Abrufen von Tabellen usw.
 
-Die SQL Azure-API kann in Folgendem verwendet werden:
+Die Azure SQL-Datenbank-API kann verwendet werden in:
 
-- Logik-Apps 
+- Logik-Apps (in diesem Thema erläutert)
+- PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
-Mit SQL Azure können Sie folgende Aktionen ausführen:
+Die Azure SQL-Datenbank bietet Ihnen folgende Möglichkeiten:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die über SQL Azure abgerufen werden. 
-- Verwenden Sie Aktionen zum Abrufen einer Zeile, Einfügen einer Zeile usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. eine Datenzeile aus SQL Azure abrufen und dann die Daten in Excel hinzufügen. 
+- Erstellen Sie einen Geschäftsworkflow auf der Basis der Daten, die Sie von der Azure SQL-Datenbank erhalten. 
+- Verwenden Sie Aktionen zum Abrufen einer Zeile, Einfügen einer Zeile usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z.B. eine Datenzeile aus der Azure SQL-Datenbank abrufen und dann die Daten in Excel hinzufügen. 
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 
 ## Trigger und Aktionen
@@ -49,7 +50,7 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte e
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|SQL-Verbindungszeichenfolge|Ja|Geben Sie Ihre SQL Azure-Verbindungszeichenfolge ein.|
+|SQL-Verbindungszeichenfolge|Ja|Eingeben der Verbindungszeichenfolge für die Azure SQL-Datenbank|
 
 Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ein, z. B. den Tabellennamen. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -59,18 +60,18 @@ Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ei
 Gilt für Version: 1.0.
 
 ### Zeile abrufen 
-Ruft eine einzelne Zeile aus einer SQL-Tabelle ab. ```GET: /datasets/default/tables/{table}/items/{id}```
+Ruft eine einzelne Zeile aus einer SQL-Tabelle ab.```GET: /datasets/default/tables/{table}/items/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Tabelle|string|Ja|path|(Keine)|Name der SQL-Tabelle|
+|table|string|Ja|path|(Keine)|Name der SQL-Tabelle|
 |id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der abzurufenden Zeile|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Zeilen abrufen 
@@ -78,7 +79,7 @@ Ruft Zeilen aus einer SQL-Tabelle ab. ```GET: /datasets/default/tables/{table}/i
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Tabelle|string|Ja|path|(Keine)|Name der SQL-Tabelle|
+|table|string|Ja|path|(Keine)|Name der SQL-Tabelle|
 |$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
 |$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
 |$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
@@ -88,7 +89,7 @@ Ruft Zeilen aus einer SQL-Tabelle ab. ```GET: /datasets/default/tables/{table}/i
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Zeile einfügen 
@@ -96,29 +97,29 @@ Fügt eine neue Zeile in eine SQL-Tabelle ein. ```POST: /datasets/default/tables
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Tabelle|string|Ja|path|(Keine)|Name der SQL-Tabelle|
+|table|string|Ja|path|(Keine)|Name der SQL-Tabelle|
 |item|ItemInternalId: string|Ja|body|(Keine)|In der angegebenen SQL-Tabelle einzufügende Zeile|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Zeile löschen 
-Löscht eine einzelne Zeile aus einer SQL-Tabelle. ```DELETE: /datasets/default/tables/{table}/items/{id}```
+Löscht eine Zeile aus einer SQL-Tabelle. ```DELETE: /datasets/default/tables/{table}/items/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Tabelle|string|Ja|path|(Keine)|Name der SQL-Tabelle|
+|table|string|Ja|path|(Keine)|Name der SQL-Tabelle|
 |id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der zu löschenden Zeile|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Tabellen abrufen 
@@ -130,7 +131,7 @@ Es gibt keine Parameter für diesen Aufruf.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Zeile aktualisieren 
@@ -138,7 +139,7 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Tabelle|string|Ja|path|(Keine)|Name der SQL-Tabelle|
+|table|string|Ja|path|(Keine)|Name der SQL-Tabelle|
 |id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der zu aktualisierenden Zeile|
 |item|ItemInternalId: string|Ja|body|(Keine)|Zeile mit aktualisierten Werten|
 
@@ -146,7 +147,7 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ## Objektdefinitionen
 
@@ -161,7 +162,7 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 
 |Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -171,7 +172,7 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 
 |Eigenschaftenname | Datentyp |Erforderlich |
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -225,6 +226,6 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

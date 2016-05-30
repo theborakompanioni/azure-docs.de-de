@@ -15,8 +15,8 @@
    ms.date="02/10/2016"
    ms.author="telmos" />
 
-# Überblick über die öffentliche IP-Adresse auf Instanzebene
-Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie Ihrer VM- oder Rolleninstanz direkt zuweisen können, statt dem Clouddienst, in dem sich die VM- oder Rolleninstanz befindet. Sie tritt nicht an die Stelle der VIP (Virtual IP), die dem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
+# Übersicht über die öffentliche IP-Adresse auf Instanzebene
+Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie anstelle des Clouddiensts, in dem sich die VM- oder Rolleninstanz befindet, Ihrer VM- oder Rolleninstanz direkt zuweisen können. Sie tritt nicht an die Stelle der VIP (Virtual IP), die dem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-network-ip-addresses-overview-arm.md).
 
@@ -36,7 +36,9 @@ Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende 
 >[AZURE.NOTE] Sie können einer VM- oder Rolleninstanz jeweils nur eine ILPIP zuweisen. Sie können bis zu 5 ILPIPs pro Abonnement verwenden. Derzeit wird die ILPIP nicht für virtuelle Computer mit mehreren Netzwerkkarten unterstützt.
 
 ## Warum sollte ich ein ILPIP anfordern?
-Wenn Sie über eine direkt zugewiesene IP-Adresse eine Verbindung mit Ihrer VM- oder Rolleninstanz herstellen möchten, statt VIP:&lt;Portnummer&gt; des Clouddiensts zu verwenden, dann fordern Sie eine ILPIP für die VM- oder Rolleninstanz an. - **Passives FTP** – Wenn dem virtuellen Computer eine ILPIP zugewiesen ist, können Sie an fast allen Ports Daten empfangen und müssen keinen Endpunkt für das Empfangen von Daten öffnen. Dadurch werden Szenarien wie passives FTP möglich, in denen die Ports dynamisch ausgewählt werden. – **Ausgehende IP** – Der vom virtuellen Computer ausgehende Datenverkehr wird mit der ILPIP als Quelle gesendet, und dadurch wird der virtuelle Compter gegenüber externen Entitäten eindeutig identifiziert.
+Wenn Sie über eine direkt zugewiesene IP-Adresse eine Verbindung mit Ihrer VM- oder Rolleninstanz herstellen möchten, anstatt VIP:&lt;Portnummer&gt; des Clouddiensts zu verwenden, fordern Sie eine ILPIP für die VM- oder Rolleninstanz an.
+- **Passives FTP:** Wenn dem virtuellen Computer eine ILPIP zugewiesen ist, können Sie an fast allen Ports Daten empfangen und müssen keinen Endpunkt für das Empfangen von Daten öffnen. Dadurch werden Szenarios wie passives FTP möglich, in denen die Ports dynamisch ausgewählt werden.
+- **Ausgehende IP:** Der vom virtuellen Computer ausgehende Datenverkehr wird mit der ILPIP als Quelle gesendet, und dadurch wird der virtuelle Computer gegenüber externen Entitäten eindeutig identifiziert.
 
 ## Anfordern einer ILPIP während der Erstellung des virtuellen Computers
 Das folgende PowerShell-Skript erstellt einen neuen Clouddienst namens *FTPService*, ruft dann ein Image aus Azure ab und erstellt mit dem abgerufenen Image einen virtuellen Computer namens *FTPInstance*, konfiguriert den virtuellen Computer für die Verwendung einer ILPIP, und fügt den virtuellen Computer dem neuen Dienst hinzu:
@@ -94,7 +96,7 @@ Führen Sie den folgenden Befehl aus, um dem virtuellen Computer, der mit dem ob
 	| Update-AzureVM
 
 ## Zuordnen einer ILPIP zu einem virtuellen Computer mithilfe einer Dienstkonfigurationsdatei
-Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen Computer zugeordnet werden. Im folgenden Beispiel wird gezeigt, wie Sie einen Clouddienst so konfigurieren, dass eine reservierte IP namens *MyReservedIP* als ILPIP für eine Rolleninstanz verwendet wird:
+Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen Computer zugeordnet werden. Im folgenden Beispiel wird gezeigt, wie Sie einen Clouddienst so konfigurieren, dass eine ILPIP mit dem Namen *MyPublicIP* für eine Rolleninstanz verwendet wird:
 	
 	<?xml version="1.0" encoding="utf-8"?>
 	<ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">
@@ -113,7 +115,7 @@ Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen C
 	          <Subnet name="Subnet2"/>
 	        </Subnets>
 	        <PublicIPs>
-	          <PublicIP name="MyReservedIP" domainNameLabel="MyReservedIP" />
+	          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
 	        </PublicIPs>
 	      </InstanceAddress>
 	    </AddressAssignments>
@@ -127,4 +129,4 @@ Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen C
 - Informationen zu [reservierten IPs](../virtual-networks-reserved-public-ip)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

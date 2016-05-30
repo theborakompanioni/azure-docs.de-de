@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="05/16/2016"
 	ms.author="curtand"/>
 
 # Verwalten von Kennwörtern in Azure Active Directory
@@ -49,4 +49,4 @@ Azure AD Premium steht Kunden in China über die internationale Instanz von Azur
 - [Erstellen oder Bearbeiten von Benutzern in Azure AD](active-directory-create-users.md)
 - [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

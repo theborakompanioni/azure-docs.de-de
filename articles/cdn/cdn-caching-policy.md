@@ -1,14 +1,14 @@
 <properties
 	pageTitle="CDN-Cachingrichtlinie in der Media Services-Erweiterung"
 	description="Dieses Thema bietet einen Überblick über CDN-Cachingrichtlinien in der Media Services-Erweiterung."
-	services="cdn"
+	services="media-services,cdn"
 	documentationCenter=".NET"
 	authors="juliako"
 	manager="erikre"
 	editor=""/>
 
 <tags
-	ms.service="cdn"
+	ms.service="media-services"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -28,6 +28,8 @@ Standardmäßig wenden Streamingendpunkte Cacheheader zum Zwischenspeichern für
 
 Azure Media Services bietet ein [integriertes CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) für Streamingendpunkte. Cachesteuerungsheader werden auf CDN-aktivierte Streamingendpunkte genauso angewendet wie Streamingendpunkte. Azure CDN verwendet für Streamingendpunkte konfigurierte Cachewerte, um die Lebensdauer der intern zwischengespeicherten Objekte zu definieren, und verwendet diesen Wert, um die Übermittlungscacheheader festzulegen. Bei der Verwendung von CDN-aktivierten Streamingendpunkten empfiehlt es sich nicht, kleine Cachewerte festzulegen. Das Festlegen von kleinen Werten senkt die Leistung und reduziert die Vorteile von CDN. Es ist nicht zulässig, Cacheheader für CDN-aktivierte Streamingendpunkte auf Werte unterhalb von 600 Sekunden festzulegen.
 
+>[AZURE.IMPORTANT] Azure Media Services-Integration mit Azure CDN ist in **Azure CDN von Verizon** implementiert. Wenn Sie **Azure CDN von Akamai** für Azure Media Services verwenden möchten, müssen Sie [den Endpunkt manuell konfigurieren](cdn-create-new-endpoint.md). Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md).
+
 ##Konfigurieren von Cacheheadern mit Azure Media Services
 
 Sie können das Azure Verwaltungsportal oder Azure Media Services-APIs verwenden, um Cacheheaderwerte zu konfigurieren.
@@ -42,4 +44,4 @@ Sie können das Azure Verwaltungsportal oder Azure Media Services-APIs verwenden
 2. Wenn keine manuelle Konfiguration vorhanden ist, werden die Standardwerte angewendet.
 3. Cacheheader zum Zwischenspeichern für 2 Sekunden werden unabhängig von der Azure Media- oder Azure Storage-Konfiguration auf Livestreamingmanifeste (Wiedergabelisten) angewendet. Dieser Wert kann nicht überschrieben werden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

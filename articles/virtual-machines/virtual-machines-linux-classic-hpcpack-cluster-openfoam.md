@@ -30,7 +30,7 @@ Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen An
 
 ## Voraussetzungen
 
-*   **HPC Pack-Cluster mit Linux-Computeknoten der Größe A8 oder A9:** Stellen Sie einen HPC Pack-Cluster mit Linux Compute-Knoten der Größe A8 oder A9 in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-hpcpack-cluster-powershell-script) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Wenn Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012-Hauptknoten der Größe A8 und zwei SUSE Linux Enterprise Server 12-Computeknoten der Größe A8 besteht. Ersetzen Sie die Werte durch die entsprechenden Werte für Ihr Abonnement und Ihre Dienstnamen. 
+*   **HPC Pack-Cluster mit Linux-Computeknoten der Größe A8 oder A9:** Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten der Größe A8 oder A9 in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Wenn Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012-Hauptknoten der Größe A8 und zwei SUSE Linux Enterprise Server 12-Computeknoten der Größe A8 besteht. Ersetzen Sie die Werte durch die entsprechenden Werte für Ihr Abonnement und Ihre Dienstnamen. 
 
     **Weitere wichtige Informationen**
 
@@ -42,7 +42,7 @@ Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen An
         
 *   **Intel MPI:** Zum Ausführen von OpenFOAM auf Linux-Computeknoten in Azure benötigen Sie die Intel MPI Library 5-Laufzeit von der [Intel.com-Website](https://software.intel.com/de-DE/intel-mpi-library/) (Registrierung erforderlich). In einem späteren Schritt installieren Sie Intel MPI auf Ihren Linux-Serverknoten. Folgen Sie als Vorbereitung dazu nach der Registrierung bei Intel dem Link in der Bestätigungs-E-Mail auf die entsprechende Webseite, und kopieren Sie den Downloadlink der TGZ-Datei für die entsprechende Version von Intel MPI. Dieser Artikel basiert auf Intel MPI-Version 5.0.3.048.
 
-*   **OpenFOAM Source Pack**: Laden Sie die OpenFOAM Source Pack-Software für Linux auf der [Website der OpenFOAM Foundation](http://www.openfoam.org/download/source.php) herunter. Dieser Artikel basiert auf Source Pack-Version 2.3.1, die als „OpenFOAM-2.3.1.tgz“ zum Download verfügbar ist. Befolgen Sie die Anleitung weiter unten in diesem Artikel, um OpenFOAM auf den Linux-Computeknoten zu entpacken und zu kompilieren.
+*   **OpenFOAM Source Pack**: Laden Sie die OpenFOAM Source Pack-Software für Linux auf der [Website der OpenFOAM Foundation](http://www.openfoam.org/download/source.php) herunter. Dieser Artikel basiert auf Source Pack-Version 2.3.1, die als „OpenFOAM-2.3.1.tgz“ zum Download verfügbar ist. Befolgen Sie die Anleitung weiter unten in diesem Artikel, um OpenFOAM auf den Linux-Computeknoten zu entpacken und zu kompilieren.
 
 *   **EnSight** (optional): Um die Ergebnisse Ihrer OpenFOAM-Simulation anzuzeigen, müssen Sie die Windows-Version der [EnSight](https://www.ceisoftware.com/download/)-Visualisierung und das Analyseprogramm auf den Hauptknoten des HPC Pack-Clusters herunterladen und installieren. Die Informationen zu Lizenzierung und Download finden Sie auf der EnSight-Website.
 
@@ -74,7 +74,7 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
 ### Hinzufügen des Schlüsselpaars zum HPC Pack-Cluster
 1.	Stellen Sie mit dem HPC Pack-Administratorkonto (das Administratorkonto, das Sie mit dem Bereitstellungsskript eingerichtet haben) eine Remotedesktopverbindung mit dem Hauptknoten her.
 
-2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen "hpclab\\hpcuser" erstellen.
+2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen "hpclab\\hpcuser" erstellen.
 
 3.	Erstellen Sie die Datei "C:\\cred.xml", und kopieren Sie die RSA-Schlüsseldaten in diese Datei. Ein Beispiel für diese Datei finden Sie in den Beispieldateien am Ende dieses Artikels.
 
@@ -99,7 +99,7 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
 
 ## Einrichten einer Dateifreigabe für Linux-Knoten
 
-Richten Sie nun eine SMB-Standardfreigabe für einen Ordner auf dem Hauptknoten ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf Anwendungsdateien mit einem gemeinsamen Pfad zugreifen können. Wenn Sie möchten, können Sie eine andere Dateifreigabeoption verwenden, z. B. eine Azure Files-Freigabe (für viele Szenarien empfohlen) oder eine NFS-Freigabe. Dateifreigabeinformationen und die zugehörigen ausführlichen Schritte finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
+Richten Sie nun eine SMB-Standardfreigabe für einen Ordner auf dem Hauptknoten ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf Anwendungsdateien mit einem gemeinsamen Pfad zugreifen können. Wenn Sie möchten, können Sie eine andere Dateifreigabeoption verwenden, z. B. eine Azure Files-Freigabe (für viele Szenarien empfohlen) oder eine NFS-Freigabe. Dateifreigabeinformationen und die zugehörigen ausführlichen Schritte finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
 1.	Erstellen Sie auf dem Hauptknoten einen Ordner, und geben Sie ihn für alle Benutzer mit Lese-/Schreibberechtigungen frei. Beispielsweise können Sie „C:\\OpenFOAM“ auf dem Hauptknoten als „\\\SUSE12RDMA-HN\\OpenFOAM“ freigeben. Hierbei ist *SUSE12RDMA-HN* der Hostname des Hauptknotens.
 
@@ -157,7 +157,7 @@ Zu Testzwecken sollten Sie auf den Linux-Knoten in „/etc/security/limits.conf�
 *               soft    memlock         unlimited
 ```
 
-Starten Sie die Linux-Knoten neu, nachdem Sie die Datei „limits.conf“ aktualisiert haben. Verwenden Sie z. B. den folgenden Befehl **clusrun**.
+Starten Sie die Linux-Knoten neu, nachdem Sie die Datei „limits.conf“ aktualisiert haben. Verwenden Sie z. B. den folgenden Befehl **clusrun**.
 
 ```
 clusrun /nodegroup:LinuxNodes systemctl reboot
@@ -236,7 +236,7 @@ Verwenden Sie die bereits konfigurierte Hauptknotenfreigabe, um Dateien für die
 
     ![Schrittvariablen ändern][step_variables]
 
-5.  Geben Sie die gewünschten Werte für die Variablen in der Datei „system/decomposeParDict“ an. In diesem Beispiel werden zwei Linux-Knoten mit jeweils acht Kernen verwendet. Legen Sie also „numberOfSubdomains“ auf 16 und „n“ von „hierarchicalCoeffs“ auf (1 1 16) fest, damit OpenFOAM parallel mit 16 Prozessen ausgeführt wird. Weitere Informationen finden Sie unter [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4) (OpenFOAM-Benutzerhandbuch: 3.4 Parallele Ausführung von Anwendungen).
+5.  Geben Sie die gewünschten Werte für die Variablen in der Datei „system/decomposeParDict“ an. In diesem Beispiel werden zwei Linux-Knoten mit jeweils acht Kernen verwendet. Legen Sie also „numberOfSubdomains“ auf 16 und „n“ von „hierarchicalCoeffs“ auf (1 1 16) fest, damit OpenFOAM parallel mit 16 Prozessen ausgeführt wird. Weitere Informationen finden Sie unter [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4) (OpenFOAM-Benutzerhandbuch: 3.4 Parallele Ausführung von Anwendungen).
 
     ![Prozesse zerlegen][decompose]
 
@@ -299,7 +299,7 @@ In diesem Schritt erstellen Sie eine Hostdatei (eine Liste mit Serverknoten), di
         
         * `<Cores of node_n_...>`: Anzahl der Kerne auf dem Knoten, die dem Auftrag zugeordnet sind.
 
-        Wenn der Auftrag für die Ausführung beispielsweise zwei Kerne benötigt, lautet „$CCP\_NODES\_CORES“ etwa wie folgt:
+        Wenn der Auftrag für die Ausführung beispielsweise zwei Kerne benötigt, lautet „$CCP\_NODES\_CORES“ etwa wie folgt:
         
         ```
         2 SUSE12RDMA-LN1 8 SUSE12RDMA-LN2 8
@@ -322,7 +322,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
 
 3.  Klicken Sie in **Job Management** auf **Neuer Auftrag**.
 
-4.  Geben Sie einen Namen für den Auftrag ein, z. B. _sloshingTank3D_.
+4.  Geben Sie einen Namen für den Auftrag ein, z. B. _sloshingTank3D_.
 
     ![Auftragsdetails][job_details]
 
@@ -334,7 +334,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
 
     >[AZURE.NOTE]Mit der Ausführung von `source /openfoam/settings.sh` werden die OpenFOAM- und MPI-Laufzeitumgebungen eingerichtet. Bei jeder folgenden Aufgabe wird also vor dem OpenFOAM-Befehl die Laufzeitumgebung aufgerufen.
 
-    *   **Aufgabe 1**: Ausführen von **decomposePar**, um Datendateien für die parallele Ausführung von **interDyMFoam** zu generieren.
+    *   **Aufgabe 1**: Ausführen von **decomposePar**, um Datendateien für die parallele Ausführung von **interDyMFoam** zu generieren.
     
         *   Zuweisung von einem Knoten zur Aufgabe
 
@@ -344,9 +344,9 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
         
         Dies wird in der folgenden Abbildung veranschaulicht. Die restlichen Aufgaben werden auf ähnliche Weise konfiguriert.
 
-        ![Aufgabe 1 Details][task_details1]
+        ![Aufgabe 1 Details][task_details1]
 
-    *   **Aufgabe 2**: Paralleles Ausführen von **interDyMFoam**, um das Beispiel zu berechnen.
+    *   **Aufgabe 2**: Paralleles Ausführen von **interDyMFoam**, um das Beispiel zu berechnen.
 
         *   Zuweisung von zwei Knoten zur Aufgabe
 
@@ -354,7 +354,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
 
         *   **Arbeitsverzeichnis**: /openfoam/sloshingTank3D
 
-    *   **Aufgabe 3**: Ausführen von **reconstructPar**, um die Sätze mit den Zeitverzeichnissen für jedes processor\_N\_-Verzeichnis zu einem zentralen Satz mit Zeitverzeichnissen zusammenzuführen.
+    *   **Aufgabe 3**: Ausführen von **reconstructPar**, um die Sätze mit den Zeitverzeichnissen für jedes processor\_N\_-Verzeichnis zu einem zentralen Satz mit Zeitverzeichnissen zusammenzuführen.
 
         *   Zuweisung von einem Knoten zur Aufgabe
 
@@ -362,7 +362,7 @@ Sie können einen Auftrag jetzt in HPC Cluster Manager übermitteln. Sie müssen
 
         *   **Arbeitsverzeichnis**: /openfoam/sloshingTank3D
 
-    *   **Aufgabe 4**: Paralleles Ausführen von **foamToEnsight**, um die OpenFOAM-Ergebnisdateien in das EnSight-Format zu kopieren und die EnSight-Dateien in ein Verzeichnis mit dem Namen „Ensight“ im case-Verzeichnis abzulegen.
+    *   **Aufgabe 4**: Paralleles Ausführen von **foamToEnsight**, um die OpenFOAM-Ergebnisdateien in das EnSight-Format zu kopieren und die EnSight-Dateien in ein Verzeichnis mit dem Namen „Ensight“ im case-Verzeichnis abzulegen.
 
         *   Zuweisung von zwei Knoten zur Aufgabe
 
@@ -654,4 +654,4 @@ exit ${RTNSTS}
 [isosurface_color]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/linux_processes.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

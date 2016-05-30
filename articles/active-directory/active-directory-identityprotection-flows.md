@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory Identity Protection Abläufe| Microsoft Azure"
+	pageTitle="Anmeldefunktionen von Azure AD Identity Protection | Microsoft Azure"
 	description="Bietet eine Übersicht über die Anmeldungen, wenn Identity Protection einen Benutzer migriert oder bereinigt hat, oder wenn die mehrstufige Authentifizierung durch eine Richtlinie gefordert wird."
 	services="active-directory"
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie"
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="05/17/2016"
 	ms.author="markvi"/>
 
-#Azure Active Directory Identity Protection- Abläufe
+# Anmeldefunktionen von Azure AD Identity Protection
 
 Mit Azure Active Directory Identity Protection können Sie:
 
@@ -60,7 +60,7 @@ Die Benutzerfreundlichkeit ist für den Wiederherstellungsablauf für kompromitt
 Administratoren haben folgende Möglichkeiten:
 
 - Festlegen einer Richtlinie, die es für Benutzer erforderlich macht, ihre Konten für die zusätzliche Sicherheitsüberprüfung einzurichten 
-- Zulassen des Überspringens der Multi-Factor Authentication-Registrierung für bis zu 30 Tage, falls Benutzern vor dem Registrieren eine Schonfrist eingeräumt werden soll
+- Zulassen des Überspringens der Multi-Factor Authentication-Registrierung für bis zu 30 Tage, falls Benutzern vor dem Registrieren eine Schonfrist eingeräumt werden soll
 
 **Die Registrierung für die mehrstufige Authentifizierung umfasst drei Schritte:**
 
@@ -81,7 +81,7 @@ Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, wer
 
 **Der Ablauf für risikobehaftete Anmeldungen besteht aus zwei Schritten:**
 
-1. Der Benutzer wird informiert, dass im Zusammenhang mit seiner Anmeldung eine Unregelmäßigkeit erkannt wurde, z. B. das Anmelden von einem neuen Standort, mit einem neuen Gerät oder mit einer neuen App. <br><br> ![Korrektur](./media/active-directory-identityprotection-flows/120.png "Korrektur") <br>
+1. Der Benutzer wird informiert, dass im Zusammenhang mit seiner Anmeldung eine Unregelmäßigkeit erkannt wurde, z. B. das Anmelden von einem neuen Standort, mit einem neuen Gerät oder mit einer neuen App. <br><br> ![Korrektur](./media/active-directory-identityprotection-flows/120.png "Korrektur") <br>
 
 2. Der Benutzer muss seine Identität nachweisen, indem er eine Sicherheitsabfrage richtig beantwortet. Wenn der Benutzer für die Multi-Factor Authentication registriert ist, muss er mit einem Sicherheitscode einen Roundtripvorgang für seine Telefonnummer durchführen. Da es sich nur um eine risikobehaftete Anmeldung und nicht um ein kompromittiertes Konto handelt, muss der Benutzer sein Kennwort bei diesem Ablauf nicht ändern. <br><br> ![Korrektur](./media/active-directory-identityprotection-flows/121.png "Korrektur") <br>
 
@@ -158,4 +158,4 @@ Wenn die Anmeldung für einen kompromittierten Benutzer gesperrt ist, kann ein A
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

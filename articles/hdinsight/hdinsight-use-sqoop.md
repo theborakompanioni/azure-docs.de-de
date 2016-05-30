@@ -37,7 +37,9 @@ Informationen zu den unterstützten Sqoop-Versionen in HDInsight-Clustern finden
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-- **Eine Arbeitsstation mit Azure PowerShell**. Siehe [Installieren von Azure PowerShell 1.0 und höher](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater).
+- **Eine Arbeitsstation mit Azure PowerShell**.
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ##Das Szenario
 
@@ -76,25 +78,25 @@ In diesem Abschnitt wird gezeigt, wie Sie einen Cluster und die SQL-Datenbanksch
 
 1. Klicken Sie auf die folgende Abbildung, um eine ARM-Vorlage im Azure-Portal zu öffnen.         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/de-DE/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Die ARM-Vorlage befindet sich in einem öffentlichen Blobcontainer, **https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*.
+    Die ARM-Vorlage befindet sich in einem öffentlichen Blobcontainer: **https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*.
     
-    Die ARM-Vorlage ruft ein bacpac-Paket auf, um die Tabellenschemas der SQL-Datenbank bereitzustellen. Das bacpac-Paket befindet sich ebenfalls in einem öffentlichen Blob-Container, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
+    Die ARM-Vorlage ruft ein bacpac-Paket auf, um die Tabellenschemas der SQL-Datenbank bereitzustellen. Das bacpac-Paket befindet sich ebenfalls in einem öffentlichen Blob-Container (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac). Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
     
         "storageKeyType": "Primary",
         "storageKey": "<TheAzureStorageAccountKey>",
     
 2. Geben Sie auf dem Blatt "Parameter" Folgendes ein:
 
-    - **ClusterName**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
+    - **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
     - **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet „admin“.
     - **SSH-Benutzername und -Kennwort**.
     - **Anmeldename und Kennwort für den SQL-Datenbankserver**.
 
     Die folgenden Werte sind im Abschnitt mit den Variablen hartcodiert:
     
-    |Name des Standard-Speicherkontos|<CluterName>store|
+    |Name des Standard-Speicherkontos|<CluterName>Speicher|
     |----------------------------|-----------------|
     |Servername der Azure SQL-Datenbank|<ClusterName>dbserver|
     |Azure SQL-Datenbankname|<ClusterName>db|
@@ -624,7 +626,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 
-[sqldatabase-get-started]: ../sql-database-get-started.md
+[sqldatabase-get-started]: ../sql-database/sql-database-get-started.md
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
@@ -633,4 +635,4 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

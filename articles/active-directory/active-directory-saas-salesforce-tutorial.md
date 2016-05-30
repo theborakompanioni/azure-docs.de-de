@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/09/2016"
+    ms.date="05/16/2016"
     ms.author="asmalser-msft"/>
 
 #Tutorial: Integrieren von Salesforce in Azure Active Directory
@@ -22,7 +22,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Salesforce-Umgebung mit Ihrem Azur
 
 ##Voraussetzungen
 
-1. Um über das [Azure-Verwaltungsportal](https://manage.windowsazure.com) auf Azure Active Directory zuzugreifen, müssen Sie über ein gültiges Azure-Abonnement verfügen.
+1. Um über das [klassische Azure-Portal](https://manage.windowsazure.com) auf Azure Active Directory zuzugreifen, müssen Sie über ein gültiges Azure-Abonnement verfügen.
 
 2. Sie müssen einen gültigen Mandanten in [Salesforce.com](https://www.salesforce.com/) besitzen.
 
@@ -46,7 +46,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 ##Schritt 1: Hinzufügen von Salesforce zu Ihrem Verzeichnis
 
-1. Klicken Sie im linken Navigationsbereich des [Azure-Verwaltungsportals](https://manage.windowsazure.com) auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com) auf **Active Directory**.
 
 	![Wählen Sie im linken Navigationsbereich "Active Directory".][0]
 
@@ -216,7 +216,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 		![Confirm the assignment.][29]
 
-		> [AZURE.IMPORTANT] Bei der Bereitstellung in eine Salesforce- **Entwickler** umgebung steht Ihnen für jedes Profil eine sehr begrenzte Anzahl an Lizenzen zur Verfügung. Daher sollten Benutzer möglichst im **Chatter Free User** - Profil bereitgestellt werden, für das 4.999 Lizenzen verfügbar sind.
+		> [AZURE.IMPORTANT] If you are provisioning to a Salesforce **developer** environment, you will have a very limited number of licenses available for each profile. Therefore, it's best to provision users to the **Chatter Free User** profile, which has 4,999 licenses available.
 
 4. Um Ihre Einstellungen für die einmalige Anmeldung zu testen, öffnen Sie den Zugriffsbereich unter [https://myapps.microsoft.com](https://myapps.microsoft.com/), melden Sie sich beim Testkonto an, und klicken Sie auf **Salesforce**.
 
@@ -256,4 +256,4 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!----HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

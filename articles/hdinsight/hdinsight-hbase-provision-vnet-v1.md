@@ -21,9 +21,11 @@
 
 Erfahren Sie, wie Sie Azure HDInsight HBase-Cluster in einem [Azure Virtual Network][1] erstellen können.
 
-[AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
-
-* [Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk](hdinsight-hbase-provision-vnet.md)
+> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das klassische Azure-Portal verwendet. Microsoft empfiehlt die Verwendung des klassischen Azure-Portals nicht für die Erstellung neuer Dienste. Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
+>
+> Dieses Dokument enthält außerdem Informationen zur Verwendung von Azure PowerShell. Die bereitgestellten Codeausschnitte basieren auf Befehlen, die Azure Service Management (ASM) zur Zusammenarbeit mit HDInsight verwenden, und sind __veraltet__. Diese Befehle werden zum 1. Januar 2017 eingestellt.
+>
+>Eine Version dieses Dokuments, die das Azure-Portal verwendet, finden Sie zusammen mit Codeausschnitten von PowerShell, die den Azure Resource Manager (ARM) verwenden, unter [Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk](hdinsight-hbase-provision-vnet.md).
 
 Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtuellen Netzwerk bereitgestellt werden wie Ihre Anwendungen, sodass Anwendungen direkt mit HBase kommunizieren können. Es ergeben sich folgende Vorteile:
 
@@ -68,7 +70,7 @@ Vor der Bereitstellung eines HBase-Clusters müssen Sie ein virtuelles Azure-Net
 7. Notieren Sie sich die ID des virtuellen Netzwerks. Sie finden diese unter **Auf einen Blick**. Sie benötigen die ID, wenn Sie den HBase-Cluster bereitstellen.
 8. Klicken Sie oben auf der Seite auf **KONFIGURIEREN**.
 9. Unten auf der Seite finden Sie den Namen des Standardsubnetzes. Dieser lautet **Subnet-1**. Sie können das Subnetz optional umbenennen oder ein neues Subnetz für den HBase-Cluster hinzufügen. Notieren Sie sich den Namen des Subnetzes. Sie benötigen ihn bei der Bereitstellung des Clusters.
-10. Prüfen Sie den Wert unter **CIDR(ANZAHL VON ADRESSEN)** für das Subnetz, das für den Cluster verwendet wird. Die Anzahl der Adressen muss größer als die Anzahl der Workerknoten plus sieben sein (Gateway: 2, Hauptknoten: 2, Zookeeper: 3). Wenn Sie zum Beispiel einen HBase-Cluster mit 10 Knoten benötigen, muss die Anzahl der Adressen für das Subnetz größer als 17 (10 + 7) sein. Andernfalls schlägt die Bereitstellung fehl.
+10. Prüfen Sie den Wert unter **CIDR(ANZAHL VON ADRESSEN)** für das Subnetz, das für den Cluster verwendet wird. Die Anzahl der Adressen muss größer als die Anzahl der Workerknoten plus sieben sein (Gateway: 2, Hauptknoten: 2, Zookeeper: 3). Wenn Sie zum Beispiel einen HBase-Cluster mit 10 Knoten benötigen, muss die Anzahl der Adressen für das Subnetz größer als 17 (10 + 7) sein. Andernfalls schlägt die Bereitstellung fehl.
 11. Klicken Sie unten auf der Seite auf **Speichern**, wenn Sie die Werte für das Subnetz aktualisiert haben.
 
 
@@ -434,4 +436,4 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie einen HBase-Cluster bereitste
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Bereitstellen von Details für den neuen HBase-Cluster"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Verwenden von Skriptaktionen zum Anpassen eines HBase-Clusters"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

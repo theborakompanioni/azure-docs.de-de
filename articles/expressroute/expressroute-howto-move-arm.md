@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/01/2016"
+   ms.date="05/05/2016"
    ms.author="ganesr"/>
 
 
@@ -98,7 +98,7 @@ Führen Sie den folgenden Befehl aus, um die Details zur ExpressRoute-Verbindung
 
     get-azurededicatedcircuit
 
-Sie müssen in der Lage sein, den aufgeführten Dienstschlüssel anzuzeigen. Sie können jetzt Verknüpfungen mit der ExpressRoute-Verbindung verwalten. In den folgenden Artikeln werden Informationen zum Verwalten von Verknüpfungen mit der ExpressRoute-Verbindung bereitgestellt:
+Sie müssen in der Lage sein, den aufgeführten Dienstschlüssel anzuzeigen. Sie können jetzt Verknüpfungen mit der ExpressRoute-Verbindung mithilfe der Standardbefehle des klassischen Bereitstellungsmodells für klassische VNets und der ARM-Standardbefehle für ARM-VNETs verwalten. In den folgenden Artikeln werden Informationen zum Verwalten von Verknüpfungen mit der ExpressRoute-Verbindung bereitgestellt:
 
 - [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen im Resource Manager-Bereitstellungsmodell](expressroute-howto-linkvnet-arm.md)
 - [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen im klassischen Bereitstellungsmodell](expressroute-howto-linkvnet-classic.md)
@@ -126,4 +126,4 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 - [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-arm.md)
 - [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

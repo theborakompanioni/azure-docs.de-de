@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/17/2016"
+	ms.date="05/12/2016"
 	ms.author="genli"/>
 
 # Warum haben Sie eine Benachrichtigung erhalten, dass Ihr Azure-Abonnement einen überfälligen Saldo aufweist?
@@ -30,9 +30,11 @@ Bezahlen Sie Ihren ausstehenden Saldo vollständig.
 
 **Szenario 1**: Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Wenn Sie Hilfe benötigen, wenden Sie sich an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-**Szenario 2**: Wenn die Rechnung nicht beglichen wurde, weil die registrierte Kreditkarte abgelehnt wurde oder abgelaufen ist, verwenden Sie eine andere Kreditkarte oder eine andere Zahlungsmethode für die Abonnements, oder wenden Sie sich an Ihre Bank, um das Problem zu beheben. Anweisungen zum Ändern der Zahlungsmethode in Azure finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](./billing-how-to-change-credit-card.md). Sie müssen sich als Kontoadministrator anmelden, um diese Änderung vornehmen zu können.
+**Szenario 2**: Wenn die Rechnung nicht beglichen wurde, weil die registrierte Kreditkarte abgelehnt wurde oder abgelaufen ist, verwenden Sie eine andere Kreditkarte oder eine andere Zahlungsmethode für die Abonnements, oder wenden Sie sich an Ihre Bank, um das Problem zu beheben. Wenn Sie die Zahlungsmethode aktualisieren, werden alle ausstehenden Gebühren für die alte Zahlungsmethode automatisch übernommen. Dazu gehören ausstehende Gebühren für Azure sowie für alle anderen Microsoft-Dienste, für die diese Karte verwendet wurde.
+
+Anweisungen zum Ändern der Zahlungsmethode in Azure finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](./billing-how-to-change-credit-card.md). Sie müssen sich als Kontoadministrator anmelden, um diese Änderung vornehmen zu können.
 
 
 **Szenario 3**: Wenn die Rechnung nicht eingegangen ist, weil der Kontoadministrator aus dem Unternehmen ausgeschieden ist oder die Rolle gewechselt hat, wenden Sie sich an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem zu beheben.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

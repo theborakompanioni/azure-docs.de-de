@@ -424,11 +424,48 @@ Bevor Sie das IngestManifestAsset erstellen können, müssen Sie das Medienobjek
 	Expect: 100-continue
 	{ "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "Asset" : { "Id" : "nb:cid:UUID:b757929a-5a57-430b-b33e-c05c6cbef02e"}}
 
-###(Optional) Erstellen von ContentKeys zur Verschlüsselung
 
-Wenn Ihr Medienobjekt Verschlüsselung verwenden soll, müssen Sie einen ContentKey erstellen, über den die Verschlüsselung erfolgen soll, bevor Sie die IngestManifestFiles für das Medienobjekt erstellen. In diesem Fall sind die folgenden Eigenschaften im Anforderungstext enhalten.
+###Erstellen der IngestManifestFiles für jedes Medienobjekt
+
+Eine IngestManifestFile repräsentiert ein tatsächliches Video- oder Audioblobobjekt, das im Rahmen einer Massenerfassung für ein Medienobjekt hochgeladen wird. Verschlüsselungseigenschaften sind nur erforderlich, wenn das Medienobjekt eine Verschlüsselungsoption verwendet. Das Beispiel in diesem Abschnitt zeigt die Erstellung einer IngestManifestFile, die die Option "StorageEncryption" für das zuvor erstellte Medienobjekt verwendet.
+
+
+**HTTP-Antwort**
+
+	POST https://media.windows.net/API/IngestManifestFiles HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 367
+	Expect: 100-continue
+	
+	{ "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
+	
+###Hochladen der Dateien in den Blobspeicher
+
+Sie können eine beliebige hochleistungsfähige Clientanwendung nutzen, die in der Lage ist, die Medienobjektdateien mithilfe des durch die BlobStorageUriForUpload-Eigenschaft von IngestManifest angegebenen URI des Blobspeichercontainers hochzuladen. Der Uploaddienst [Aspera On Demand für Azure](http://go.microsoft.com/fwlink/?LinkId=272001) bietet beispielsweise hohe Geschwindigkeiten.
+
+###Überwachen des Massenerfassungsprozesses
+
+Sie können den Status der Massenerfassung für alle Medienobjekte bestimmen, die einem IngestManifest zugeordnet sind, indem Sie die Statistics-Eigenschaft von IngestManifest abrufen. Diese Eigenschaft weist einen komplexen Typ auf: [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx). Zum Abrufen der Statistics-Eigenschaft senden Sie eine HTTP-GET-Anforderung, in der Sie die IngestManifest-ID übergeben.
  
-Anforderungstexteigenschaft | Beschreibungs-ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: "nb:kid:UUID:<NEW GUID>". ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung. EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden "GetProtectionKeyId" und "GetProtectionKey" ausführen. ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde. ProtectionKeyType | Dies ist der Verschlüsselungstyp für den Schutzschlüssel, der zur Verschlüsselung des Inhaltsschlüssels verwendet wurde. In unserem Beispiel lautet der Wert "StorageEncryption(1)". Checksum | Die per MD5 berechnete Prüfsumme für den Inhaltsschlüssel. Die Berechnung erfolgt durch Verschlüsselung der Inhalts-ID mit dem Inhaltsschlüssel. Der Beispielcode zeigt, wie die Prüfsumme berechnet wird.
+
+##Erstellen von Inhaltsschlüsseln zur Verschlüsselung
+
+Wenn Ihr Objekt Verschlüsselung verwenden soll, müssen Sie einen ContentKey erstellen, über den die Verschlüsselung erfolgen soll, bevor Sie die Objektdateien erstellen. Bei der Speicherverschlüsselung sollten folgende Eigenschaften im Anforderungstext enthalten sein.
+ 
+Eigenschaft im Anforderungstext | Beschreibung
+---|---
+ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEW GUID>“.
+ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung.
+EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden "GetProtectionKeyId" und "GetProtectionKey" ausführen.
+ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde.
+ProtectionKeyType | Dies ist der Verschlüsselungstyp für den Schutzschlüssel, der zur Verschlüsselung des Inhaltsschlüssels verwendet wurde. In unserem Beispiel lautet der Wert "StorageEncryption(1)".
+Checksum |Die per MD5 berechnete Prüfsumme für den Inhaltsschlüssel. Die Berechnung erfolgt durch Verschlüsselung der Inhalts-ID mit dem Inhaltsschlüssel. Der Beispielcode zeigt, wie die Prüfsumme berechnet wird.
 
 
 **HTTP-Antwort**
@@ -465,35 +502,6 @@ Der ContentKey wird durch Senden einer HTTP-POST-Anforderung mit mindestens eine
 	
 	{ "uri": "https://media.windows.net/api/ContentKeys('nb%3Akid%3AUUID%3A32e6efaf-5fba-4538-b115-9d1cefe43510')"}
 
-###Erstellen der IngestManifestFiles für jedes Medienobjekt
-
-Eine IngestManifestFile repräsentiert ein tatsächliches Video- oder Audioblobobjekt, das im Rahmen einer Massenerfassung für ein Medienobjekt hochgeladen wird. Verschlüsselungseigenschaften sind nur erforderlich, wenn das Medienobjekt eine Verschlüsselungsoption verwendet. Das Beispiel in diesem Abschnitt zeigt die Erstellung einer IngestManifestFile, die die Option "StorageEncryption" für das zuvor erstellte Medienobjekt verwendet.
-
-
-**HTTP-Antwort**
-
-	POST https://media.windows.net/API/IngestManifestFiles HTTP/1.1
-	Content-Type: application/json;odata=verbose
-	Accept: application/json;odata=verbose
-	DataServiceVersion: 3.0
-	MaxDataServiceVersion: 3.0
-	x-ms-version: 2.11
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-	Host: media.windows.net
-	Content-Length: 367
-	Expect: 100-continue
-	
-	{ "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
-	
-###Hochladen der Dateien in den Blobspeicher
-
-Sie können eine beliebige hochleistungsfähige Clientanwendung nutzen, die in der Lage ist, die Medienobjektdateien mithilfe des durch die BlobStorageUriForUpload-Eigenschaft von IngestManifest angegebenen URI des Blobspeichercontainers hochzuladen. Der Uploaddienst [Aspera On Demand für Azure](http://go.microsoft.com/fwlink/?LinkId=272001) bietet beispielsweise hohe Geschwindigkeiten.
-
-###Überwachen des Massenerfassungsprozesses
-
-Sie können den Status der Massenerfassung für alle Medienobjekte bestimmen, die einem IngestManifest zugeordnet sind, indem Sie die Statistics-Eigenschaft von IngestManifest abrufen. Diese Eigenschaft weist einen komplexen Typ auf: [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx). Zum Abrufen der Statistics-Eigenschaft senden Sie eine HTTP-GET-Anforderung, in der Sie die IngestManifest-ID übergeben.
- 
-
 **HTTP-Antwort**
 
 	GET https://media.windows.net/API/IngestManifests('nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048') HTTP/1.1
@@ -521,4 +529,4 @@ Sie können den Status der Massenerfassung für alle Medienobjekte bestimmen, di
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

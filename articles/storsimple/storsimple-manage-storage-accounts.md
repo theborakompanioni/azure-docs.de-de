@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/01/2015"
+   ms.date="04/29/2016"
    ms.author="v-sharos" />
 
 # Verwalten von Speicherkonten mithilfe des StorSimple Manager-Diensts
@@ -60,7 +60,10 @@ Sie können mehrere Konten für einen Clouddienstanbieter erstellen. Bedenken Si
 
 Während das Speicherkonto gespeichert wird, versucht der Dienst mit dem Clouddienstanbieter zu kommunizieren. Die Anmelde- und Zugriffsinformationen, die Sie bereitgestellt haben, werden zu diesem Zeitpunkt authentifiziert. Ein Speicherkonto wird nur erstellt, wenn die Authentifizierung erfolgreich war. Wenn die Authentifizierung fehlschlägt, wird eine entsprechende Fehlermeldung angezeigt.
 
-> [AZURE.NOTE]Das Verfahren zum Hinzufügen eines Speicherkontos unterscheidet sich je nach Version der verwendeten StorSimple-Software. Achten Sie darauf, dass Sie dem für Ihre StorSimple-Version richtige Verfahren folgen.
+Resource Manager-Speicherkonten, die im Azure-Portal wurden, werden auch für StorSimple unterstützt. Die Resource Manager-Speicherkonten werden in der Dropdownliste nicht zur Auswahl angezeigt, wenn ein Volumecontainer erstellt werden soll. Nur die im klassischen Azure-Portal erstellten Speicherkonten werden aufgeführt. Resource Manager-Speicherkonten müssen über das Verfahren zum Hinzufügen eines Speicherkontos hinzugefügt werden, wie unten beschrieben.
+
+> [AZURE.NOTE] Das Verfahren zum Hinzufügen eines Speicherkontos unterscheidet sich je nach Version der verwendeten StorSimple-Software. Achten Sie darauf, dass Sie dem für Ihre StorSimple-Version richtige Verfahren folgen.
+
 
 [AZURE.INCLUDE [add-a-storage-account-update1](../../includes/storsimple-configure-new-storage-account-u1.md)]
 
@@ -87,7 +90,7 @@ Sie können ein Speicherkonto, das von einem Volumecontainer verwendet wird, bea
   
 ## Löschen eines Speicherkontos
 
-> [AZURE.IMPORTANT]Sie können ein Speicherkonto nur dann löschen, wenn es nicht von einem Volumecontainer verwendet wird. Wenn ein Speicherkonto von einem Volumecontainer verwendet wird, löschen Sie zunächst den Volumecontainer, und löschen Sie dann das zugehörige Speicherkonto.
+> [AZURE.IMPORTANT] Sie können ein Speicherkonto nur dann löschen, wenn es nicht von einem Volumecontainer verwendet wird. Wenn ein Speicherkonto von einem Volumecontainer verwendet wird, löschen Sie zunächst den Volumecontainer, und löschen Sie dann das zugehörige Speicherkonto.
 
 #### So löschen Sie ein Speicherkonto
 
@@ -103,7 +106,7 @@ Sie können ein Speicherkonto, das von einem Volumecontainer verwendet wird, bea
 
 Aus Sicherheitsgründen wird in Rechenzentren oft Schlüsselrotation erfordert.
 
-> [AZURE.NOTE]Die folgenden Informationen zu Schlüsselrotation und Rotationsverfahren gelten nur für Microsoft Azure-Speicherkonten. Wenn Sie einen anderen Clouddienstanbieter verwenden, können Sie die Speicherkontoschlüssel über das Dashboard dieses Anbieters verwalten.
+> [AZURE.NOTE] Die folgenden Informationen zu Schlüsselrotation und Rotationsverfahren gelten nur für Microsoft Azure-Speicherkonten. Wenn Sie einen anderen Clouddienstanbieter verwenden, können Sie die Speicherkontoschlüssel über das Dashboard dieses Anbieters verwalten.
  
 Jedes Microsoft Azure-Abonnement kann ein oder mehrere zugeordnete Speicherkonten haben. Der Zugriff auf diese Konten wird durch die Abonnement- und Zugriffsschlüssel für jedes Speicherkonto gesteuert.
 
@@ -151,4 +154,4 @@ Um den StorSimple-Manager-Dienst über die Änderung zu informieren, müssen Sie
 - Weitere Informationen zur [StorSimple-Sicherheit](storsimple-security.md)
 - Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0518_2016-->

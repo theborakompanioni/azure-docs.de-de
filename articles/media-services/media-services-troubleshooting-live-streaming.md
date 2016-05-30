@@ -16,7 +16,7 @@
  	ms.date="03/02/2016"  
 	ms.author="juliako"/>
 
-#Anleitung zur Behandlung von Problemen bei Livestreaming 
+#Anleitung zur Behandlung von Problemen bei Livestreaming
 
 Dieses Thema bietet Empfehlungen zum Behandeln von Problemen bei Livestreaming.
 
@@ -29,7 +29,7 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 - **Mögliches Problem:** Encoderprotokolle, mit denen möglicherweise Fehler behoben werden können, können nicht gefunden werden.
 	
 	- **Telestream Wirecast**: Normalerweise finden Sie Protokolle unter „C:\\Benutzer{Benutzername}\\AppData\\Roaming\\Wirecast\\“. 
-	- **Elemental Live**: Sie finden im Verwaltungsportal Links zu Protokollen. Klicken Sie auf **Stats** und dann auf **Protokolle**. Auf der Seite **Protokolldateien** sehen Sie eine Liste der Protokolle für alle LiveEvent-Elemente. Wählen Sie das Protokoll für Ihre aktuellen Sitzung aus. 
+	- **Elemental Live**: Sie finden im Verwaltungsportal Links zu Protokollen. Klicken Sie auf **Stats** und dann auf **Protokolle**. Auf der Seite **Protokolldateien** sehen Sie eine Liste der Protokolle für alle LiveEvent-Elemente. Wählen Sie das Protokoll für Ihre aktuelle Sitzung aus. 
 	- **Flash Media Live-Encoder**: Sie finden das **... Protokollverzeichnis** auf der Registerkarte **Encoding Log**.
 	
 ###Problem: Es ist keine Option zum Ausgeben eines progressiven Datenstroms vorhanden
@@ -85,4 +85,4 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

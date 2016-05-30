@@ -19,8 +19,9 @@
 # Replizieren von virtuellen VMware-Computern und physischen Servern zu Azure mithilfe von Azure Site Recovery (Legacy)
 
 > [AZURE.SELECTOR]
-- [Verbessert](site-recovery-vmware-to-azure-classic.md)
-- [Vorgängerversion](site-recovery-vmware-to-azure-classic-legacy.md)
+- [Azure-Portal](site-recovery-vmware-to-azure.md)
+- [Klassisches Portal](site-recovery-vmware-to-azure-classic.md)
+- [Klassisches Portal (Vorgängerversion)](site-recovery-vmware-to-azure-classic-legacy.md)
 
 
 Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Datencenter repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
@@ -29,8 +30,8 @@ Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontin
 
 Dieser Artikel beschreibt die Vorgehensweise zum
 
-- **Replizieren virtueller VMware-Computer in Azure**: Sie stellen Site Recovery bereit, um die Replikation, das Failover und die Wiederherstellung von lokalen virtuellen VMware-Computern im Azure-Speicher zu koordinieren.
-- **Replizieren physischer Server in Azure**: Sie stellen Azure Site Recovery bereit, um die Replikation, das Failover und die Wiederherstellung von lokalen physischen Windows- und Linux-Servern in Azure zu koordinieren.
+- **Replizieren virtueller VMware-Computer in Azure**: Sie stellen Site Recovery bereit, um die Replikation, das Failover und die Wiederherstellung von lokalen virtuellen VMware-Computern auf Azure Storage zu koordinieren.
+- **Replizieren physischer Server in Azure**: Sie stellen Azure Site Recovery bereit, um die Replikation, das Failover und die Wiederherstellung von lokalen physischen Windows- und Linux-Servern auf Azure zu koordinieren.
 
 >[AZURE.NOTE] Das in diesem Artikel beschriebene Szenario enthält **Anweisungen für ältere Versionen**. Verwenden Sie diesen Artikel nicht für neue Bereitstellungen. Verwenden Sie stattdessen die Anweisungen der [erweiterten Bereitstellung](site-recovery-vmware-to-azure-classic.md) für das klassische Portal. Wenn Sie Site Recovery bereits nach der in diesem Artikel beschriebenen Methode bereitgestellt haben, empfehlen wir Ihnen , wie unten beschrieben zur neuen Version zu migrieren.
 
@@ -57,7 +58,7 @@ Migrieren Sie wie folgt:
 
 1. Lesen Sie die Dokumentation zu [erweiterten Funktionen](site-recovery-vmware-to-azure-classic.md#enhanced-deployment), achten Sie darauf, die neue [Architektur](site-recovery-vmware-to-azure-classic.md#scenario-architecture) zu verstehen, und überprüfen Sie die [Voraussetzungen](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment) für die erweiterte Bereitstellung.
 2. Deinstallieren Sie den Mobilitätsdienst auf Computern, die Sie derzeit schützen. Eine neue Version des Mobilitätsdiensts wird auf den Computern installiert, wenn Sie sie der neuen Schutzgruppe hinzufügen.
-3. Beziehen Sie einen [Tresorregistrierungsschlüssel](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key), und führen Sie den [Assistenten für ein einheitliches Setup](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) aus, um den Konfigurationsserver, den Prozessserver und die Komponenten des Masterzielservers auf dem Verwaltungsserver zu installieren. Erfahren Sie mehr über die [Kapazitätsplanung](site-recovery-vmware-to-azure-classic.md#capacity-planning).
+3. Beziehen Sie einen [Tresorregistrierungsschlüssel](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key), und führen Sie den [Assistenten für ein einheitliches Setup](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) aus, um die Komponenten des Konfigurationsservers, des Prozessservers und des Masterzielservers auf dem Verwaltungsserver zu installieren. Erfahren Sie mehr über die [Kapazitätsplanung](site-recovery-vmware-to-azure-classic.md#capacity-planning).
 4. Falls Sie einen VMware vCenter-Server haben, [richten Sie die Anmeldeinformationen](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server) so ein, dass Site Recovery darauf zugreifen und automatisch die von ihm verwalteten virtuellen Computer ermitteln kann. Erfahren Sie mehr über die [erforderlichen Berechtigungen](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access).
 5. Fügen Sie [vCenter-Server oder ESXi-Hosts](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts) hinzu. Es dauert bis zu 15 Minuten, bis das Portal aktualisiert ist und die Anmeldeinformationen angezeigt werden.
 6. Erstellen Sie eine [neue Schutzgruppe](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group). Es dauert bis zu 15 Minuten, bis das Portal aktualisiert ist und die virtuellen Computer ermittelt und angezeigt werden. Wenn Sie nicht warten möchten, können Sie den Namen des Verwaltungsservers markieren (nicht darauf klicken) und auf **Aktualisieren** klicken.
@@ -65,10 +66,10 @@ Migrieren Sie wie folgt:
 
 	![Konto hinzufügen](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
 
-8. Wählen Sie unter **Virtuellen Computer auswählen** die Schutzgruppe, aus der Sie migrieren möchten, sowie die zu migrierenden virtuellen Computer aus.
+8. Wählen Sie unter **Computer auswählen** die Schutzgruppe, aus der Sie migrieren möchten, sowie die zu migrierenden Computer aus.
 
 	![Konto hinzufügen](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration2.png)
-9. Geben Sie bei **Zieleinstellungen konfigurieren** an, ob Sie für alle Computer die gleichen Einstellungen verwenden möchten, und wählen Sie den Prozessserver und das Azure-Speicherkonto aus. Wenn Sie nur einen Verwaltungsserver eingerichtet haben, ist der Prozessserver die IP-Adresse dieses Verwaltungsservers.
+9. Geben Sie unter **Zieleinstellungen konfigurieren** an, ob Sie für alle Computer die gleichen Einstellungen verwenden möchten, und wählen Sie den Prozessserver und das Azure-Speicherkonto aus. Wenn Sie nur einen Verwaltungsserver eingerichtet haben, ist der Prozessserver die IP-Adresse dieses Verwaltungsservers.
 
 	![Konto hinzufügen](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration3.png)
 
@@ -121,8 +122,8 @@ Wichtige zu berücksichtigende Punkte:
 - **Anzahl von Quellen pro Masterzielserver** – Mit einem einzelnen Masterzielserver können mehrere Quellcomputer geschützt werden. Ein einzelner Quellcomputer kann jedoch nicht über mehrere Masterzielserver geschützt werden, da bei der Datenträgerreplikation eine virtuelle Festplatte, die die Größe des Datenträgers widerspiegelt, in Azure-BLOB-Speicher erstellt und als Datenträger mit dem Masterzielserver verbunden wird.  
 - **Maximale tägliche Änderungsrate pro Quellcomputer** – Bei der empfohlenen Änderungsrate pro Quellcomputer müssen drei Faktoren berücksichtigt werden. Im Hinblick auf den Zieldatenträger sind für jeden Vorgang auf dem Quellcomputer zwei IOPS auf dem Zieldatenträger erforderlich. Der Grund dafür ist, dass auf dem Zieldatenträger ein Lesevorgang für alte Daten und ein Schreibvorgang für neue Daten erfolgen. 
 	- **Vom Prozessserver unterstützte tägliche Änderungsrate** – Ein Quellcomputer kann nicht mehrere Prozessserver umfassen. Ein einzelner Prozessserver unterstützt eine tägliche Änderungsrate von bis zu 1 TB. Daher beträgt die maximale Datenänderungsrate pro Tag, die für einen Quellcomputer unterstützt wird, 1 TB. 
-	- **Maximaler vom Zieldatenträger unterstützter Durchsatz** – Die maximale Codeänderung pro Quelldatenträger darf nicht mehr als 144 GB/Tag (mit einer Schreibgröße von 8 K) betragen. Informationen zum Durchsatz und den IOPS des Ziels für verschiedene Schreibgrößen finden Sie in der Tabelle im Abschnitt zum Masterzielserver. Diese Zahl muss durch zwei dividiert werden, da jede Quell-IOPS 2 IOPS auf dem Zieldatenträger generiert. Informieren Sie sich über [Skalierbarkeit und Leistungsziele von Azure](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts) beim Konfigurieren des Ziels für Storage Premium-Konten.
-	- **Maximaler vom Speicherkonto unterstützter Durchsatz** – Ein Quellcomputer kann nicht mehrere Speicherkonten umfassen. Da ein Speicherkonto bis zu 20.000 Anforderungen pro Sekunde annimmt und jede Quell-IOPS 2 IOPS auf dem Masterzielserver generiert, wird empfohlen, die Anzahl der IOPS für den Quellcomputer auf 10.000 zu beschränken. Informieren Sie sich über [Skalierbarkeit und Leistungsziele von Azure](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts) beim Konfigurieren der Quelle für Storage Premium-Konten.
+	- **Maximaler vom Zieldatenträger unterstützter Durchsatz ** – Die maximale Codeänderung pro Quelldatenträger darf nicht mehr als 144 GB/Tag (mit einer Schreibgröße von 8 K) betragen. Informationen zum Durchsatz und den IOPS des Ziels für verschiedene Schreibgrößen finden Sie in der Tabelle im Abschnitt zum Masterzielserver. Diese Zahl muss durch zwei dividiert werden, da jede Quell-IOPS 2 IOPS auf dem Zieldatenträger generiert. Informieren Sie sich über [Skalierbarkeit und Leistungsziele von Azure](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts) beim Konfigurieren des Ziels für Premium-Speicherkonten.
+	- **Maximaler vom Speicherkonto unterstützter Durchsatz** – Ein Quellcomputer kann nicht mehrere Speicherkonten umfassen. Da ein Speicherkonto bis zu 20.000 Anforderungen pro Sekunde annimmt und jede Quell-IOPS 2 IOPS auf dem Masterzielserver generiert, wird empfohlen, die Anzahl der IOPS für den Quellcomputer auf 10.000 zu beschränken. Informieren Sie sich über [Skalierbarkeit und Leistungsziele von Azure](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts) beim Konfigurieren der Quelle für Premium-Speicherkonten.
 
 ### Überlegungen zu Komponentenservern
 
@@ -183,7 +184,7 @@ Standard DS4 | 1 Datenträger (1 * 1023 GB) | 1 Datenträger (1 * 1023 GB) | 15 
 Die Kapazitätsplanung für den Masterzielserver hängt von folgenden Faktoren ab:
 
 - Leistung und Einschränkungen des Azure-Speichers
-	- Die maximale Anzahl der Datenträger mit hoher Auslastung für einen virtuellen Computer im Standard-Tarif liegt bei etwa 40 Datenträgern (20.000/500 IOPS pro Datenträger) in einem einzigen Speicherkonto. Informieren Sie sich über [Skalierbarkeitsziele für Standardspeicherkonten](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts) und für [Storage Premium-Konten](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts).
+	- Die maximale Anzahl der Datenträger mit hoher Auslastung für einen virtuellen Computer im Standard-Tarif liegt bei etwa 40 Datenträgern (20.000/500 IOPS pro Datenträger) in einem einzigen Speicherkonto. Informieren Sie sich über [Skalierbarkeitsziele für Standardspeicherkonten](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts) und für [Premium-Speicherkonten](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts).
 -	Tägliche Änderungsrate 
 -	Speicher des Aufbewahrungsvolumes
 
@@ -316,12 +317,12 @@ Der Konfigurationsserver wird in einem automatisch erstellten Azure-Clouddienst 
 	- Wenn Sie auf **Weiter** klicken, wird ein Test ausgeführt, um die Proxyverbindung zu überprüfen.
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden oder wenn der Standardproxy Authentifizierung erfordert, müssen Sie die Proxydetails eingeben, einschließlich Adresse, Port und Anmeldeinformationen.
 	- Über den Proxy sollte Zugriff auf die folgenden URLs möglich sein:
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- Wenn Sie auf IP-Adressen basierende Firewallregeln verwenden, sollten Sie sicherstellen, dass die Regeln die Kommunikation zwischen dem Konfigurationsserver und den unter [IP-Bereiche des Azure-Rechenzentrums](https://msdn.microsoft.com/library/azure/dn175718.aspx) beschriebenen IP-Adressen sowie das HTTPS (443)-Protokoll zulassen. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+- Wenn Sie auf IP-Adressen basierende Firewallregeln verwenden, sollten Sie sicherstellen, dass die Regeln die Kommunikation zwischen dem Konfigurationsserver und den unter [IP-Bereiche des Azure-Rechenzentrums](https://msdn.microsoft.com/library/azure/dn175718.aspx) beschriebenen IP-Adressen sowie das HTTPS (443)-Protokoll zulassen. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
 
 	![Proxyregistrierung](./media/site-recovery-vmware-to-azure-classic-legacy/register-proxy.png)
 
@@ -423,10 +424,9 @@ Beachten Sie, dass in jedem Subnetz die ersten vier IP-Adressen für die interne
 
 8. Wenn Sie Linux verwenden:
 	1. Stellen Sie sicher, dass Sie die aktuellen Linux Integration Services (LIS) installiert haben, bevor Sie die Masterzielserver-Software installieren. Die neueste Version von LIS sowie eine Anleitung zur Installation finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=46842). Starten Sie den Computer nach der LIS-Installation neu.
-	2. Klicken Sie unter **Zielressourcen (Azure-Ressourcen) vorbereiten** auf **Weitere Software herunterladen und installieren (nur für Linux-Masterzielserver)**, um das Linux-Masterzielserverpaket herunterzuladen. Kopieren Sie die heruntergeladene TAR-Datei mit einem SFTP-Client auf den virtuellen Computer. Alternativ können Sie sich bei dem bereitgestellten Linux-Masterzielserver anmelden und die Datei mithilfe von *wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* herunterladen.
-	2. Melden Sie sich über einen Secure Shell-Client beim Server an. Wenn Sie über VPN mit dem Azure-Netzwerk verbunden sind, verwenden Sie die interne IP-Adresse. Verwenden Sie andernfalls die externe IP-Adresse und den öffentlichen SSH-Endpunkt.
-	3. Extrahieren Sie die Dateien aus dem GZIP-Installationsprogramm, indem Sie folgenden Befehl ausführen: **tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64*** 
-	![Linux-Masterzielserver](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
+	2. Klicken Sie unter ** Zielressourcen (Azure-Ressourcen) vorbereiten** auf **Weitere Software herunterladen und installieren (nur für Linux-Masterzielserver)**, um das Linux-Masterzielserverpaket herunterzuladen. Kopieren Sie die heruntergeladene TAR-Datei mit einem SFTP-Client auf den virtuellen Computer. Alternativ können Sie sich bei dem bereitgestellten Linux-Masterzielserver anmelden und die Datei mithilfe von *wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* herunterladen.
+2. Melden Sie sich über einen Secure Shell-Client beim Server an. Wenn Sie über VPN mit dem Azure-Netzwerk verbunden sind, verwenden Sie die interne IP-Adresse. Verwenden Sie andernfalls die externe IP-Adresse und den öffentlichen SSH-Endpunkt.
+	3. Extrahieren Sie die Dateien aus dem GZIP-Installationsprogramm, indem Sie folgenden Befehl ausführen: **tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64*** ![Linux-Masterzielserver](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
 	4. Stellen Sie sicher, dass Sie sich in dem Verzeichnis befinden, in das Sie den Inhalt der TAR-Datei extrahiert haben.
 	5. Kopieren Sie die Passphrase für den Konfigurationsserver mit dem Befehl **echo *`<passphrase>`* >passphrase.txt** in eine lokale Datei.
 	6. Führen Sie den Befehl „**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**“ aus.
@@ -814,4 +814,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/10/2016"
+   ms.date="05/17/2016"
    ms.author="larryfr"/>
 
 # Verarbeitung von Ereignissen von Azure-Event-Hubs mit Storm auf HDInsight (C#)
@@ -567,7 +567,9 @@ In diesem Dokument haben Sie erfahren, wie Sie den Java-Spout und den -Bolt für
 
 * [Entwickeln von C#-Topologien für Apache Storm in HDInsight mithilfe von Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
+* [SCP-Programmierleitfaden](hdinsight-storm-scp-programming-guide.md)
+
 * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

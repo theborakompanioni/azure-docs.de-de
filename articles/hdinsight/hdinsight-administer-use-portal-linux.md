@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="05/13/2016"
 	ms.author="jgao"/>
 
 #Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
@@ -64,7 +64,7 @@ In HDInsight kann eine Vielzahl von Hadoop-Komponenten verwendet werden. Eine Li
 	
 	- **Einstellungen** und **Alle Einstellungen**: Zeigt das Blatt **Einstellungen** für den Cluster an, über das Sie auf detaillierte Konfigurationsinformationen für den Cluster zugreifen können.
 	- **Dashboard**, **Cluster-Dashboard** und **URL: Über diese Optionen können Sie auf das Cluster-Dashboard zugreifen (Ambari Web für Linux-basierte Cluster).
-	- **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
+- **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
 	- **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
 	- **Löschen**: Löscht den Cluster.
 	- **Schnellstart** (![Cloud- und Blitzsymbol = Schnellstart](./media/hdinsight-administer-use-portal-linux/quickstart.png)): Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
@@ -196,17 +196,49 @@ Es gibt viele Methoden, mit denen Sie den Prozess programmieren können:
 
 Die Preisinformationen finden Sie unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/). Informationen zum Löschen eines Clusters aus dem Portal finden Sie unter [Löschen von Clustern](#delete-clusters).
 
-##Ändern des Clusterbenutzernamens
+##Ändern von Kennwörtern
 
-Ein HDInsight-Cluster kann über zwei Benutzerkonten verfügen. Das HDInsight-Clusterbenutzerkonto (auch HTTP-Benutzerkonto genannt) und das SSH-Benutzerkonto werden während des Erstellungsprozesses erstellt. Sie können die Ambari-Webbenutzeroberfläche verwenden, um Benutzername und Kennwort für das Clusterbenutzerkonto zu ändern:
+Ein HDInsight-Cluster kann über zwei Benutzerkonten verfügen. Das HDInsight-Clusterbenutzerkonto (auch HTTP-Benutzerkonto genannt) und das SSH-Benutzerkonto werden während des Erstellungsprozesses erstellt. Sie können die Ambari-Webbenutzeroberfläche verwenden, um Benutzername und Kennwort für das Clusterbenutzerkonto zu ändern, und Skriptaktionen, um das SSH-Benutzerkonto zu ändern.
 
-**So ändern Sie das Benutzerkennwort für den HDInsight-Cluster**
+###Ändern des Clusterbenutzerkennworts
+
+> [AZURE.NOTE] Wenn Sie das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise fehlschlagen. Wenn Sie Skriptaktionen beibehalten möchten, deren Ziel Workerknoten sind, können sie fehlschlagen, wenn Sie dem Cluster über eine Größenänderung Knoten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 1. Melden Sie sich bei der Ambari-Webbenutzeroberfläche mit den HDInsight-Clusterbenutzer-Anmeldeinformationen an. Der Standard-Benutzername lautet **admin**. Die URL ist **https://<HDInsight Cluster Name>azurehdinsight.net**.
 2. Klicken Sie im Hauptmenü auf **Administrator** und anschließend auf „Ambari verwalten“. 
 3. Klicken Sie im linken Menü auf **Benutzer**.
 4. Klicken Sie auf **Administrator**.
 5. Klicken Sie auf **Kennwort ändern**.
+
+Ambari ändert anschließend das Kennwort auf allen Knoten im Cluster.
+
+###Ändern des SSH-Benutzerkennworts
+
+1. Speichern Sie mit einem Text-Editor Folgendes als Datei namens __changepassword.sh__.
+
+    > [AZURE.IMPORTANT] Sie müssen einen Editor verwenden, der „LF“ als Zeilenende verwendet. Wenn der Editor „CRLF“ verwendet, funktioniert das Skript nicht.
+    
+        #! /bin/bash
+        USER=$1
+        PASS=$2
+
+        usermod --password $(echo $PASS | openssl passwd -1 -stdin) $USER
+
+2. Laden Sie die Datei an einen Speicherort hoch, auf den von HDInsight über eine HTTP- oder HTTPS-Adresse zugegriffen werden kann. Verwenden Sie z.B. einen öffentlichen Dateispeicher wie OneDrive oder Azure Blob Storage. Speichern Sie den URI (HTTP- oder HTTPS-Adresse) in der Datei, da dieser im nächsten Schritt benötigt wird.
+
+3. Wählen Sie im Azure-Portal den HDInsight-Cluster und dann __Alle Einstellungen__ aus. Wählen Sie auf dem Blatt __Einstellungen__ die Option __Skriptaktionen__ aus.
+
+4. Wählen Sie auf dem Blatt __Skriptaktionen__ die Option __Neue übermitteln__ aus. Geben Sie auf dem Blatt __Skriptaktion übermitteln__ die folgenden Informationen ein.
+
+    | Feld | Wert |
+    | ----- | ----- |
+    | Name | Ändern des SSH-Kennworts |
+    | Bash-Skript-URI | Der URI zur Datei „changepassword.sh“ |
+    | Knoten (Hauptknoten, Worker, Nimbus, Supervisor, Zookeeper usw.) | ✓ für alle aufgeführten Knotentypen |
+    | Parameter | Geben Sie den SSH-Benutzernamen und dann das neue Kennwort ein. Es muss ein Leerzeichen zwischen den Benutzernamen und das Kennwort eingefügt werden.
+    | Speichern Sie diese Skriptaktion ... | Lassen Sie dieses Feld deaktiviert.
+
+5. Wählen Sie __Erstellen__ aus, um das Skript anzuwenden. Nachdem das Skript ausgeführt wurde, können Sie per SSH mit dem neuen Kennwort eine Verbindung mit dem Cluster herstellen.
 
 ##Gewähren/Entziehen des Zugriffs
 
@@ -218,7 +250,7 @@ In HDInsight-Clustern stehen die folgenden HTTP-Webdienste zur Verfügung (alle 
 - Oozie
 - Templeton
 
-Der Zugriff auf diese Dienste wird standardmäßig gewährt. Sie können den Zugriff mit [Azure-CLI](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) und [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) widerrufen/gewähren.
+Der Zugriff auf diese Dienste wird standardmäßig gewährt. Sie können den Zugriff mit der [Azure-CLI](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) und [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) widerrufen/gewähren.
 
 ##Suchen der Abonnement-ID
 
@@ -254,7 +286,7 @@ Hive-Aufträge können Sie nicht direkt vom Azure-Portal aus ausführen, aber Si
 2. Öffnen Sie die Hive-Ansicht wie im folgenden Screenshot dargestellt:  
 
 	![HDInsight-Hive-Ansicht](./media/hdinsight-administer-use-portal-linux/hdinsight-hive-view.png)
-3. Klicken Sie im Hauptmenü auf **Abfrage**.
+3. Klicken Sie im Menü oben auf **Abfrage**.
 4. Geben Sie eine Hive-Abfrage im **Abfrage-Editor** ein, und klicken Sie dann auf **Ausführen**.
 
 ##Überwachen von Aufträgen
@@ -266,10 +298,10 @@ Siehe [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläc
 Mit dem Azure-Portal können Sie den Inhalt des Standardcontainers durchsuchen.
 
 1. Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com) an.
-2. Klicken Sie im linken Menü auf **HDInsight-Cluster**, um die bestehenden Cluster aufzulisten.
+2. Klicken Sie im linken Menü auf **HDInsight-Cluster**, um die vorhandenen Cluster aufzulisten.
 3. Klicken Sie auf den Clusternamen. Wenn die Clusterliste lang ist, können Sie oben auf der Seite filtern.
 4. Klicken Sie auf **Einstellungen**.
-5. Wählen Sie im Blatt **Einstellungen** die Option **Azure-Speicherschlüssel** aus.
+5. Klicken Sie auf dem Blatt **Einstellungen** auf **Azure-Speicherschlüssel**.
 6. Klicken Sie auf den Standardspeicherkonto-Namen.
 7. Klicken Sie auf die Kachel **Blobs**.
 8. Klicken Sie auf den Standardcontainernamen.
@@ -277,7 +309,7 @@ Mit dem Azure-Portal können Sie den Inhalt des Standardcontainers durchsuchen.
 
 ##Überwachen der Clusternutzung
 
-Der Abschnitt __Nutzung__ des Blatts für den HDInsight-Cluster enthält Informationen zur Anzahl von Kernen, die für Ihr Abonnement zur Verwendung mit HDInsight verfügbar sind, und zur Anzahl von Kernen, die diesem Cluster zugeordnet sind. Es wird auch angezeigt, wie die Kerne für die Knoten innerhalb dieses Clusters zugeordnet werden. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
+Der Abschnitt __Nutzung__ auf dem Blatt für den HDInsight-Cluster enthält Informationen zur Anzahl der Kerne, die für Ihr Abonnement zur Verwendung mit HDInsight verfügbar sind, und zur Anzahl der Kerne, die diesem Cluster zugeordnet sind. Es wird auch angezeigt, wie die Kerne für die Knoten innerhalb dieses Clusters zugeordnet werden. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
 
 > [AZURE.IMPORTANT] Um die vom HDInsight-Cluster bereitgestellten Dienste zu überwachen, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -300,4 +332,4 @@ In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem Azure-Po
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop-Befehlszeile"
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

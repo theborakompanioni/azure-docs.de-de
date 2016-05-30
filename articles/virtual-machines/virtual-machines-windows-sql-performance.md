@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/07/2016"
+	ms.date="04/22/2016"
 	ms.author="jroth" />
 
 # Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure
@@ -23,7 +23,7 @@
 
 Dieses Thema enthält bewährte Methoden zur Optimierung der Leistung von SQL Server in Microsoft Azure Virtual Machines. Es empfiehlt sich, beim Ausführen von SQL Server in Azure Virtual Machines weiterhin die gleichen Optionen zur Optimierung der Datenbankleistung zu verwenden, die für SQL Server in der lokalen Server-Umgebung gelten. Die Leistung einer relationalen Datenbank in einer öffentlichen Cloud hängt jedoch von vielen Faktoren ab, z. B. der Größe eines virtuellen Computers und der Konfiguration der Datenträger für Daten.
 
-Wenn Sie SQL Server-Images erstellen, [empfiehlt sich die Bereitstellung der virtuellen Computer im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md), damit Sie dessen Funktionalität, etwa die standardmäßige Verwendung von Storage Premium, sowie weitere Optionen, z. B. automatisierte Anwendung von Patches, automatisierte Sicherung und AlwaysOn-Konfigurationen, nutzen können.
+Wenn Sie SQL Server-Images erstellen, [empfiehlt sich die Bereitstellung der virtuellen Computer im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Über virtuelle SQL Server-Computer, die im Portal mit Resource Manager bereitgestellt werden, werden alle diese optimalen Verfahren implementiert, darunter auch die Speicherkonfiguration.
 
 Dieser Artikel konzentriert sich auf die *optimale* Leistung von SQL Server auf Azure-VMs. Wenn Ihre Workload weniger anspruchsvoll ist, sind möglicherweise nicht alle unten aufgeführten Optimierungen erforderlich. Berücksichtigen Sie bei der Evaluierung dieser Empfehlungen Ihre Leistungsanforderungen und Workloadmuster.
 
@@ -36,7 +36,7 @@ Im folgenden finden eine kurze Checkliste für die optimale Leistung von SQL Ser
 |Bereich|Optimierungen|
 |---|---|
 |[Größe des virtuellen Computers](#vm-size-guidance)|[DS3](virtual-machines-windows-sizes.md#standard-tier-ds-series) oder höher für SQL Enterprise Edition.<br/><br/>[DS2](virtual-machines-windows-sizes.md#standard-tier-ds-series) oder höher für SQL Standard und Web Edition.|
-|[Speicher](#storage-guidance)|Verwenden Sie [Storage Premium](../storage/storage-premium-storage.md).<br/><br/>Das [Speicherkonto](../storage/storage-create-storage-account.md) und der virtuelle SQL Server-Computer müssen sich in derselben Region befinden.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../storage/storage-redundancy.md) (Georeplikation).|
+|[Speicher](#storage-guidance)|Verwenden Sie [Storage Premium](../storage/storage-premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Das [Speicherkonto](../storage/storage-create-storage-account.md) und der virtuelle SQL Server-Computer müssen sich in derselben Region befinden.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../storage/storage-redundancy.md) (Georeplikation).|
 |[Datenträger](#disks-guidance)|Verwenden Sie mindestens 2 [P30-Datenträger](../storage/storage-premium-storage.md#scalability-and-performance-targets-whde-DEing-premium-storage) (1 für Protokolldateien, 1 für Datendateien und TempDB).<br/><br/>Verwenden Sie keine Betriebssystem- oder temporäre Datenträger für die Datenbankspeicherung oder -protokollierung.<br/><br/>Aktivieren Sie das Caching von Lesevorgängen auf den Datenträgern, auf denen die Datendateien und TempDB gehostet werden.<br/><br/>Aktivieren Sie Caching nicht auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Kombinieren Sie mehrere Azure-Datenträger über Striping, um einen höheren E/A-Durchsatz zu erhalten.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen.|
 |[E/A](#io-guidance)|Aktivieren Sie die Datenbankseitenkomprimierung.<br/><br/>Aktivieren Sie die sofortige Dateiinitialisierung für Datendateien.<br/><br/>Begrenzen oder deaktivieren Sie die automatische Vergrößerung für die Datenbank.<br/><br/>Deaktivieren Sie die automatische Verkleinerung für die Datenbank.<br/><br/>Verschieben Sie alle Datenbanken auf Datenträger für Daten, einschließlich der Systemdatenbanken.<br/><br/>Verschieben Sie Verzeichnisse für SQL Server-Fehlerprotokoll- und -Ablaufverfolgungsdateien auf Datenträger für Daten.<br/><br/>Richten Sie Standardspeicherorte für Sicherungen und Datenbankdateien ein.<br/><br/>Aktivieren Sie gesperrte Seiten.<br/><br/>Wenden Sie SQL Server-Leistungs-Hotfixpakete an.|
 |[Funktionsspezifisch](#feature-specific-guidance)|Sichern Sie direkt in den Blobspeicher.|
@@ -78,11 +78,11 @@ Die für den Betriebssystem-Datenträger verwendete Caching-Standardrichtlinie e
 
 ### Temporärer Datenträger
 
-Das temporäre Speicherlaufwerk, das als Laufwerk **D**: bezeichnet wird, wird nicht für Azure-BLOB-Speicher beibehalten. Speichern Sie Ihre Daten- oder Protokolldateien nicht auf Laufwerk **D:**.
+Das temporäre Speicherlaufwerk, das als Laufwerk **D**: bezeichnet wird, wird nicht für Azure-BLOB-Speicher beibehalten. Speichern Sie die Datenbank- oder Transaktionsprotokolldateien für Ihre Benutzer nicht auf Laufwerk **D**.
 
-Speichern Sie für virtuelle Computer der D-Serie, Dv2-Serie und G-Serie „tempdb“ und/oder Pufferpoolerweiterungen auf Laufwerk **D**. Das temporäre Laufwerk dieser virtuellen Computer ist SSD-basiert. Dies kann die Leistung von Workloads verbessern, die starken Gebrauch von temporären Objekten machen oder über Arbeitssätze verfügen, die nicht in den Arbeitsspeicher passen.
+Das temporäre Laufwerk auf virtuellen Computern der D-Serie, Dv2-Serie und G-Serie ist SSD-basiert. Bei hoher Workload von „tempdb“ (z.B. für temporäre Objekte oder komplexe Verknüpfungen) kann das Speichern von „tempdb“ auf Laufwerk **D** zu einem höheren Durchsatz und einer geringeren Latenz von „tempdb“ führen.
 
-Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie und GS-Serie), sollten Sie „tempdb“ und/oder Pufferpoolerweiterungen auf einem Datenträger speichern, der Storage Premium mit aktiviertem Lesecache unterstützt. Es gibt eine Ausnahme von dieser Empfehlung: Wenn die „tempdb“-Auslastung schreibintensiv ist, können Sie eine höhere Leistung erzielen, wenn Sie „tempdb“ auf dem lokalen Laufwerk **D** speichern.
+Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie und GS-Serie), sollten Sie „tempdb“ und/oder Pufferpoolerweiterungen auf einem Datenträger speichern, der Storage Premium mit aktiviertem Lesecache unterstützt. Es gibt eine Ausnahme von dieser Empfehlung: Wenn die „tempdb“-Auslastung schreibintensiv ist, können Sie eine höhere Leistung erzielen, indem Sie „tempdb“ auf dem lokalen Laufwerk **D** speichern, das für diese Größe virtueller Computer auch SSD-basiert ist.
 
 ### Datenträger
 
@@ -148,4 +148,4 @@ Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegunge
 
 Weitere Themen zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Verwenden von AMQP 1.0 mit der Java Service Bus-API | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden." 
+	description="Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden." 
 	services="service-bus" 
 	documentationCenter="java" 
 	authors="sethmanheim" 
@@ -53,7 +53,7 @@ JMS verwendet die Java Naming and Directory Interface (JNDI), um eine Trennung z
 	
 # Register a ConnectionFactory in JNDI using the form:
 # connectionfactory.[jndi_name] = [ConnectionURL]
-connectionfactory.SBCF = amqps://[username]:[password]@[namespace].servicebus.windows.net
+connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 	
 # Register some queues in JNDI using the form
 # queue.[jndi_name] = [physical_name]
@@ -77,13 +77,13 @@ Dabei bedeuten **[jndi\_name]** und **[ConnectionURL]** Folgendes:
 **ConnectionURL** hat das folgende Format:
 
 ```
-amqps://[username]:[password]@[namespace].servicebus.windows.net
+amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 ```
-Dabei bedeuten **[namespace]**, **[benutzername]** und **[kennwort]** Folgendes:
+Dabei bedeuten **[namespace]**, **[SASPolicyName]** und **[SASPolicyKey]** Folgendes:
 
 - **[namespace]**: Der Service Bus-Namespace.
-- **[benutzername]**: Der Service Bus-Ausstellername.
-- **[kennwort]**: URL-codierte Form des Service Bus-Ausstellerschlüssels.
+- **[SASPolicyName]**: Der Name der SAS-Richtlinie (Shared Access Signature) der Warteschlange.
+- **[SASPolicyKey]**: Der Shared Access Signature-Richtlinienschlüssel der Warteschlange.
 
 > [AZURE.NOTE] Sie müssen das Kennwort manuell URL-codieren. Ein nützliches URL-Codierungshilfsprogramm ist unter [http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) verfügbar.
 
@@ -329,9 +329,9 @@ Sie können Service Bus AMQP 1.0 auch mit anderen Sprachen verwenden, unter ande
 
 ## Nächste Schritte
 
-* [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
+* [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
 * [Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
-* [Entwicklerhandbuch für Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
+* [Entwicklerhandbuch für Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
 * [Java Developer Center](/develop/java/).
 
@@ -339,4 +339,4 @@ Sie können Service Bus AMQP 1.0 auch mit anderen Sprachen verwenden, unter ande
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,11 +3,9 @@
 	description="Einrichten eine ADF-Pipeline, die aus zwei Datenmigrationsaktivitäten besteht, die zusammen täglich Daten zwischen lokalen Datenbanken und in die Cloud verschieben."
 	services="machine-learning"
 	documentationCenter=""
-	authors="fashah"
-	manager="jacob.spoelstra"
-	editor=""
-	videoId=""
-	scriptId="" />
+	authors="bradsev"
+	manager="paulettm"
+	editor="cgronlun" />
 
 <tags
 	ms.service="machine-learning"
@@ -15,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="fashah;bradsev" />
 
 
@@ -27,6 +25,7 @@ Das nachstehende **Menü** bietet Links zu Themen, in denen beschrieben wird, wi
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
+
 ## <a name="intro"></a>Einführung: Was ist ADF und wann sollte es für die Migration von Daten eingesetzt werden?
 
 Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert. Das Hauptkonzept im ADF-Modell ist die Pipeline. Eine Pipeline ist eine logische Gruppierung von Aktivitäten, von denen jede die Aktionen definiert, die mit den in Datasets enthaltenen Daten auszuführen sind. Verknüpfte Dienste werden verwendet, um die Informationen zu definieren, die Data Factory benötigt, um eine Verbindung mit den Datenressourcen herzustellen.
@@ -34,6 +33,7 @@ Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegra
 Mit ADF können vorhandene Datenverarbeitungsdienste zu Datenpipelines zusammengestellt werden, die hoch verfügbar sind und in der Cloud verwaltet werden. Diese Datenpipelines können geplant werden, um Daten zu erfassen, vorzubereiten, zu transformieren, zu analysieren und zu veröffentlichen, und all diese komplexen Daten und Verarbeitungsabhängigkeiten werden von ADF verwaltet und orchestriert. Lösungen lassen sich schnell in der Cloud erstellen und bereitstellen, wodurch eine wachsende Anzahl von lokalen und Clouddatenquellen miteinander verbunden werden.
 
 Sie sollten die Verwendung von ADF in Betracht ziehen, wenn Daten in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift, und wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen im Rahmen der Migration eine Geschäftslogik hinzugefügt wird. ADF gestatte die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge. Weitere Informationen zu ADF finden Sie in der Dokumentation zu [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
+
 
 ## <a name="scenario"></a>Das Szenario
 
@@ -55,6 +55,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 > [AZURE.NOTE] In diesem Verfahren wird das [Azure-Portal](https://ms.portal.azure.com/) verwendet.
 
+
 ##<a name="upload-data"></a> Hochladen der Daten auf Ihren lokalen SQL Server
 
 Wir verwenden das [NYC Taxi-Dataset](http://chriswhong.com/open-data/foil_nyc_taxi/), um den Migrationsprozess zu demonstrieren. Das NYC Taxi-Dataset ist, wie in diesem Beitrag erwähnt, in Azure Blob Storage unter [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/) verfügbar. Die Daten umfassen zwei Dateien, die Datei "trip\_data.csv", die Details zu den einzelnen Fahrten enthält, und die Datei "trip\_far.csv", die Details zu den pro Fahrt bezahlten Fahrpreisen enthält. Ein Beispiel und eine Beschreibung dieser Dateien finden Sie unter [Beschreibung des NYC Taxi Trips-Datasets](machine-learning-data-science-process-sql-walkthrough.md#dataset).
@@ -62,9 +63,11 @@ Wir verwenden das [NYC Taxi-Dataset](http://chriswhong.com/open-data/foil_nyc_ta
 
 Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigenen Daten anpassen oder die Schritte wie beschrieben unter Verwendung des NYC Taxi-Datasets durchführen. Um das NYC Taxi-Dataset in Ihre lokale SQL Server-Datenbank hochzuladen, befolgen Sie das in [Massenimport von Daten in eine SQL Server-Datenbank](machine-learning-data-science-process-sql-walkthrough.md#dbload) beschriebene Verfahren. Diese Anleitungen gelten für einen SQL Server auf einem virtuellen Azure-Computer, aber das Verfahren zum Hochladen in auf den lokalen SQL Server ist identisch.
 
+
 ##<a name="create-adf"></a> Erstellen einer Azure Data Factory
 
 Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://ms.portal.azure.com/) finden Sie unter [Create an Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp*, und nennen Sie die erstellte Ressourcengruppe *adfdsprg*.
+
 
 ## Installieren und Konfigurieren das Datenverwaltungsgateways
 
@@ -208,6 +211,7 @@ Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *AzureSqlTable
 
 	New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
 
+
 ##<a name="adf-pipeline"></a>Definieren und Erstellen der Pipeline
 
 Geben Sie die Aktivitäten an, die zu der Pipeline gehören, und erstellen Sie die Pipeline mit den folgenden skriptbasierten Verfahren. Zum Definieren der Pipeline-Eigenschaften wird eine JSON-Datei verwendet.
@@ -294,6 +298,7 @@ Vergewissern Sie sich, dass die Pipeline im klassischen Azure-Portal auf der ADF
 
 ![](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
+
 ##<a name="adf-pipeline-start"></a>Starten der Pipeline
 Die Pipeline kann jetzt mithilfe der folgenden Befehle ausgeführt werden:
 
@@ -305,4 +310,4 @@ Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die i
 
 Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Detailinformationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

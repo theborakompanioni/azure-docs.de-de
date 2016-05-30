@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="05/12/2016" 
 	ms.author="awills"/>
  
 # Diagnostizieren von Problemen mit Abhängigkeiten in Application Insights
@@ -57,6 +57,16 @@ Webseiten | [JavaScript-Monitor](app-insights-javascript.md) (ohne zusätzliche 
 Azure Cloud Service | [Verwenden Sie die Startaufgabe](app-insights-cloudservices.md#dependencies), oder [installieren Sie .NET Framework 4.6 oder höher](../cloud-services/cloud-services-dotnet-install-dotnet.md)  
 
 Für den Statusmonitor für IIS-Server müssen Sie das Quellprojekt nicht mit dem Application Insights-SDK neu erstellen.
+
+## Anwendungszuordnung
+
+Die Anwendungszuordnung dient als visuelle Hilfe zum Erkennen von Abhängigkeiten zwischen den Komponenten Ihrer Anwendung.
+
+![Klicken Sie auf „Einstellungen“, dann auf „Anwendungszuordnung“.](./media/app-insights-dependencies/08.png)
+
+Aus den Feldern können Sie zur relevanten Abhängigkeit und zu anderen Diagrammen navigieren.
+
+Klicken Sie auf das kleine [x], um eine Unterstruktur zu reduzieren.
 
 ## <a name="diagnosis"></a> Diagnostizieren von Leistungsproblemen der Abhängigkeit auf dem Webserver
 
@@ -140,4 +150,4 @@ Siehe [Webseiten](app-insights-javascript.md).
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

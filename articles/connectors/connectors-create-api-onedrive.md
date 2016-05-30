@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/12/2016"
 ms.author="mandia"/>
 
 # Erste Schritte mit der OneDrive-API
@@ -59,7 +59,7 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstelle
 1. Melden Sie sich bei Ihrem OneDrive-Konto an.
 2. Erlauben Sie, dass Ihre Logik-Apps sich mit Ihrem OneDrive verbinden und es nutzen. 
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die OneDrive-Eigenschaften ein, z. B. Ordnerpfad oder Dateiname. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit OneDrive](../../includes/connectors-create-api-onedrive.md)]
 
 >[AZURE.TIP] Sie können dieselbe Verbindung in anderen Logik-Apps verwenden.
 
@@ -78,11 +78,11 @@ Ruft Metadaten einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/defau
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren
-Aktualisiert eine Datei auf OneDrive. ```PUT: /datasets/default/files/{id}```
+Aktualisiert eine Datei in OneDrive. ```PUT: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -94,7 +94,7 @@ Aktualisiert eine Datei auf OneDrive. ```PUT: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Datei löschen
 Löscht eine Datei aus OneDrive. ```DELETE: /datasets/default/files/{id}```
@@ -108,11 +108,11 @@ Löscht eine Datei aus OneDrive. ```DELETE: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Metadaten einer Datei auf OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Metadaten einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -123,13 +123,13 @@ Ruft Metadaten einer Datei auf OneDrive anhand des Pfads ab. ```GET: /datasets/d
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft den Inhalt einer Datei auf OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft den Inhalt einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -141,13 +141,13 @@ Ruft den Inhalt einer Datei auf OneDrive anhand des Pfads ab. ```GET: /datasets/
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 
 ### Dateiinhalt anhand der ID abrufen
-Ruft den Inhalt einer Datei auf OneDrive anhand der ID ab. ```GET: /datasets/default/files/{id}/content```
+Ruft den Inhalt einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -159,13 +159,13 @@ Ruft den Inhalt einer Datei auf OneDrive anhand der ID ab. ```GET: /datasets/def
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 
 ### Datei erstellen
-Lädt eine Datei auf OneDrive hoch. ```POST: /datasets/default/files```
+Lädt eine Datei in OneDrive hoch. ```POST: /datasets/default/files```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -179,17 +179,17 @@ Lädt eine Datei auf OneDrive hoch. ```POST: /datasets/default/files```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 ### Datei kopieren
-Kopiert eine Datei auf OneDrive. ```POST: /datasets/default/copyFile```
+Kopiert eine Datei in OneDrive. ```POST: /datasets/default/copyFile```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query|(Keine)|URL zur Quelldatei|
-|Ziel|string|Ja|query|(Keine)|Zieldateipfad in OneDrive, einschließlich Zieldateiname|
+|source|string|Ja|query|(Keine)|URL zur Quelldatei|
+|destination|string|Ja|query|(Keine)|Zieldateipfad in OneDrive, einschließlich Zieldateiname|
 |overwrite|Boolescher Wert|no|query|false|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
 
 
@@ -198,7 +198,7 @@ Kopiert eine Datei auf OneDrive. ```POST: /datasets/default/copyFile```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -215,7 +215,7 @@ Löst einen Datenfluss aus, wenn in einem OneDrive-Ordner eine neue Datei erstel
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -232,17 +232,17 @@ Löst einen Datenfluss aus, wenn in einem OneDrive-Ordner eine Datei geändert w
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 ### Ordner extrahieren
-Extrahiert einen Ordner auf OneDrive. ```POST: /datasets/default/extractFolderV2```
+Extrahiert einen Ordner in OneDrive. ```POST: /datasets/default/extractFolderV2```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query|(Keine)|Pfad zur Archivdatei|
-|Ziel|string|Ja|query|(Keine)|Pfad in OneDrive, in den der Archivinhalt extrahiert wird|
+|source|string|Ja|query|(Keine)|Pfad zur Archivdatei|
+|destination|string|Ja|query|(Keine)|Pfad in OneDrive, in den der Archivinhalt extrahiert wird|
 |overwrite|Boolescher Wert|no|query|false|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
 
 
@@ -251,7 +251,7 @@ Extrahiert einen Ordner auf OneDrive. ```POST: /datasets/default/extractFolderV2
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -269,7 +269,7 @@ Extrahiert einen Ordner auf OneDrive. ```POST: /datasets/default/extractFolderV2
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -280,7 +280,7 @@ Extrahiert einen Ordner auf OneDrive. ```POST: /datasets/default/extractFolderV2
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -312,4 +312,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
 [7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

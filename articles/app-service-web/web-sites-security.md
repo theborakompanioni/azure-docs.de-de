@@ -56,13 +56,13 @@ Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine and
 
 ##<a name="https"></a> Sichere Kommunikation mit Kunden
 
-Wenn Sie den Domänennamen „**\*.azurewebsites.net**“ nutzen, der für Ihren App Service erstellt wurde, können Sie HTTPS sofort verwenden, da ein SSL-Zertifikat für alle Domänennamen vom Typ „**\*.azurewebsites.net**“ bereitgestellt wird. Wenn Ihre Site einen [kundenspezifischen Domänennamen](web-sites-custom-domain-name.md) verwendet, können Sie ein SSL-Zertifikat hochladen, um für die kundenspezifische Domäne [HTTPS zu aktivieren](web-sites-configure-ssl-certificate.md).
+Wenn Sie den Domänennamen „***.azurewebsites.net**“ nutzen, der für Ihren App Service erstellt wurde, können Sie HTTPS sofort verwenden, da ein SSL-Zertifikat für alle Domänennamen vom Typ „***.azurewebsites.net**“ bereitgestellt wird. Wenn Ihre Site einen [kundenspezifischen Domänennamen](web-sites-custom-domain-name.md) verwendet, können Sie ein SSL-Zertifikat hochladen, um für die kundenspezifische Domäne [HTTPS zu aktivieren](web-sites-configure-ssl-certificate.md).
 
 Aktivieren von [HTTPS](https://en.wikipedia.org/wiki/HTTPS) kann gegen MITM-Angriffe auf die Kommunikation zwischen Ihrer Anwendung und deren Benutzern schützen.
 
 ## Sichern der Datenebene
 
-App Service ist mit der SQL-Datenbank so vernetzt, dass alle Verbindungszeichenfolgen durchgehend verschlüsselt werden. Nur auf dem virtuellen Computer, auf dem die Anwendung ausgeführt wird, kann diese entschlüsselt werden *und* auch nur wenn die Anwendung ausgeführt wird. Darüber hinaus enthält die Azure SQL-Datenbank viele Sicherheitsfeatures zum Schutz Ihrer Anwendungsdaten vor Bedrohungen aus dem Internet, darunter [ruhende Verschlüsselung](https://msdn.microsoft.com/library/dn948096.aspx), [immer verschlüsselt](https://msdn.microsoft.com/library/mt163865.aspx), [dynamische Datenmaskierung](../sql-database/sql-database-dynamic-data-masking-get-started.md) und [Bedrohungserkennung](sql-database-threat-detection-get-started). Wenn für Sie Anforderungen aufgrund vertraulicher Daten oder der Compliance gelten, finde Sie unter [Sichern Ihrer SQL-Datenbank](../sql-database/sql-database-security.md) weitere Informationen zum Schutz Ihrer Daten.
+App Service ist mit der SQL-Datenbank so vernetzt, dass alle Verbindungszeichenfolgen durchgehend verschlüsselt werden. Nur auf dem virtuellen Computer, auf dem die Anwendung ausgeführt wird, kann diese entschlüsselt werden *und* auch nur wenn die Anwendung ausgeführt wird. Darüber hinaus enthält die Azure SQL-Datenbank viele Sicherheitsfeatures zum Schutz Ihrer Anwendungsdaten vor Bedrohungen aus dem Internet, darunter [Verschlüsselung für ruhende Daten](https://msdn.microsoft.com/library/dn948096.aspx), [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx), [dynamische Datenmaskierung](../sql-database/sql-database-dynamic-data-masking-get-started.md) und [Bedrohungserkennung](../sql-database/sql-database-threat-detection-get-started.md). Wenn für Sie Anforderungen aufgrund vertraulicher Daten oder der Compliance gelten, finde Sie unter [Sichern Ihrer SQL-Datenbank](../sql-database/sql-database-security.md) weitere Informationen zum Schutz Ihrer Daten.
 
 Wenn Sie eine Drittanbieter-Datenbank, wie z. B. ClearDB verwenden, sollten Sie sich an die vom Provider bereitgestellte Dokumentation zum Thema bewährte Sicherheitsmethoden halten.
 
@@ -123,4 +123,4 @@ Weitere Informationen zum Protokollieren von Informationen für App Service-Apps
 
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

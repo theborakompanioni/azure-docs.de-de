@@ -91,15 +91,13 @@ Eine Bedingung prüft, ob ein **Feld** oder eine **Quelle** bestimmte Kriterien 
 | Geben Sie in | "in" : [ "&lt;Wert1&gt;","&lt;Wert2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;Schlüsselname&gt;" |
 
-### Felder und Quellen
+### Felder
 
 Bedingungen werden mithilfe von Feldern und Quellen gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird. Eine Quelle stellt Merkmale der Anforderung selbst dar.
 
 Die folgenden Felder und Quellen werden unterstützt:
 
 Felder: **name**, **kind**, **type**, **location**, **tags**, **tags.*** und **property alias**.
-
-Quellen: **action**
 
 ### Eigenschaftenaliase 
 „property alias“ ist ein Name, der in einer Richtliniendefinition für den Zugriff auf die für einen Ressourcentyp spezifischen Eigenschaften (z. B. Einstellungen und SKUs) verwendet werden kann. Er kann in allen API-Versionen verwendet werden, in denen die Eigenschaft vorhanden ist. Aliase können mithilfe der folgenden REST-API abgerufen werden (die PowerShell-Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt):
@@ -147,7 +145,7 @@ Derzeit werden die folgenden Aliase unterstützt:
 Weitere Informationen zu Aktionen finden Sie unter [RBAC – Integrierte Rollen](active-directory/role-based-access-built-in-roles.md). Derzeit gilt die Richtlinie nur bei PUT-Anforderungen.
 
 ## Effekt
-Die Richtlinie unterstützt drei Arten von Effekten: **deny**, **audit** und **append**.
+Die Richtlinie unterstützt drei Arten von Auswirkungen: **deny**, **audit** und **append**.
 
 - Mit „deny“ wird ein Ereignis im Überwachungsprotokoll generiert, und die Anforderung schlägt fehl.
 - Mit „audit“ wird ein Ereignis im Überwachungsprotokoll generiert, aber die Anforderung schlägt nicht fehl.
@@ -339,8 +337,8 @@ Das folgende Beispiel zeigt, wie logische Operatoren so verschachtelt werden, da
                 }
               },
               {
-                "source": "action",
-                "like": "Microsoft.Storage/*"
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
               }
             ]
         },
@@ -464,4 +462,4 @@ Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung ste
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,9 +3,9 @@
 	description="Wählen Sie die geeigneten Szenarien für den erweiterten Predictive Analytics-Prozess in Azure Machine Learning."
 	services="machine-learning"
 	documentationCenter=""
-	authors="msolhab"
+	authors="bradsev"
 	manager="paulettm"
-	editor="" />
+	editor="cgronlun" />
 
 <tags
 	ms.service="machine-learning"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
-	ms.author="msolhab;bradsev" />
+	ms.date="05/10/2016" 
+	ms.author="bradsev" />
 
 
 # Szenarien für die erweiterte Analyse in Azure Machine Learning
 
-Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarios, die mit dem Cortana-Analyseprozess (CAP) verarbeitet werden können. Das Beispiel veranschaulicht einige der Optionen in den Verarbeitungssequenzen, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
+Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarios, die mit dem Cortana Analytics-Prozess (CAP) verarbeitet werden können. Das Beispiel veranschaulicht einige der Optionen in den Verarbeitungssequenzen, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
 
 Die **Entscheidungsstruktur**, mit deren Hilfe Sie die für Ihre Daten und Ziele geeigneten Beispielszenarien auswählen, wird im letzten Abschnitt vorgestellt.
 
@@ -314,4 +314,4 @@ Umfassende exemplarische Vorgehensweisen zu Azure Machine Learning, die die Adva
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

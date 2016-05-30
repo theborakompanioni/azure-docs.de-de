@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/15/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind
@@ -34,6 +34,10 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - **Ein Azure Data Lake-Speicherkonto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake-Speicher](data-lake-store-get-started-portal.md).
+
+## Lernen Sie schnell mithilfe von Videos?
+
+[Sehen Sie sich dieses Video](https://mix.office.com/watch/1q2mgzh9nn5lx) über das Sichern von im Data Lake-Speicher gespeicherten Daten an.
 
 ## Erstellen von Sicherheitsgruppen in Azure Active Directory
 
@@ -98,8 +102,8 @@ Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuwei
 
 	![Standardzugriff und benutzerdefinierten Zugriff auflisten](./media/data-lake-store-secure-data/adl.acl.2.png "Standardzugriff und benutzerdefinierten Zugriff auflisten")
 
-	* Der Standardzugriff ist ein Zugriff im UNIX-Stil, bei dem Sie Lesen, Schreiben und Ausführen (read, write, execute (rwx)) für drei eigene Benutzerklassen angeben: Besitzer, Gruppe und Sonstige.
-	* Der benutzerdefinierte Zugriff entspricht den POSIX-Zugriffssteuerungslisten, bei denen Sie Berechtigungen für speziell benannte Benutzer oder Gruppen festlegen können, und nicht nur den Besitzer oder die Gruppe der Datei.
+	* Der **Standardzugriff** ist ein Zugriff im UNIX-Stil, bei dem Sie Lesen, Schreiben und Ausführen (read, write, execute (rwx)) für drei unterschiedliche Benutzerklassen angeben: Besitzer, Gruppe und Sonstige.
+	* Der **benutzerdefinierte Zugriff** entspricht den POSIX-Zugriffssteuerungslisten, bei denen Sie Berechtigungen für speziell benannte Benutzer oder Gruppen festlegen können, und nicht nur den Besitzer oder die Gruppe der Datei. 
 	
 	Weitere Informationen finden Sie unter [HDFS-Zugriffssteuerungslisten](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists) (in englischer Sprache).
 
@@ -111,8 +115,13 @@ Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuwei
 
 	![Berechtigungen für Gruppe zuweisen](./media/data-lake-store-secure-data/adl.acl.4.png "Berechtigungen für Gruppe zuweisen")
 
+	Die Berechtigungen bedeuten Folgendes:
 
-	>[AZURE.NOTE] Die Berechtigung zum Ausführen (Execute) ist für die Aufzählung von Verzeichnissen erforderlich und wird häufig benötigt, wenn für einen Benutzer oder eine Gruppe der schreibgeschützte Zugriff auf Daten bereitgestellt wird.
+	* **Lesen**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, können die Namen der Dateien im Verzeichnis gelesen werden.
+	* **Schreiben**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, können die Einträge im Verzeichnis geändert werden, beispielsweise kann eine Datei erstellt, gelöscht oder umbenannt werden.
+	* **Ausführen**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, kann auf den Inhalt der Datei im Verzeichnis zugegriffen werden. Sie ermöglicht auch Zugriff auf die Metadaten der Datei, wenn der Dateiname bekannt ist. Jedoch können Sie mit dieser Berechtigung die Dateien im Verzeichnis nicht auflisten, es sei denn, die Berechtigung **Lesen** wurde ebenfalls festgelegt.
+
+	>[AZURE.NOTE] Die Berechtigung **Lesen und Ausführen** ist für die Aufzählung von Verzeichnissen erforderlich und wird häufig benötigt, wenn für einen Benutzer oder eine Gruppe der schreibgeschützte Zugriff auf Daten bereitgestellt wird.
 
 
 6. Klicken Sie auf dem Blatt **Benutzerdefinierten Zugriff hinzufügen** auf **OK**. Die neu hinzugefügte Gruppe mit den zugeordneten Berechtigungen wird jetzt auf dem Blatt **Zugriff** aufgelistet.
@@ -165,4 +174,4 @@ Wenn Sie Zugriffssteuerungslisten von Sicherheitsgruppen aus dem Azure Data Lake
 - [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)
 - [Erste Schritte mit Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

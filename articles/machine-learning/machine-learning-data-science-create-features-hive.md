@@ -13,20 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="05/10/2016"
 	ms.author="hangzh;bradsev" />
+
 
 #Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
 
-## Einführung
-Es werden Beispiele für Hive-Abfragen vorgestellt, mit denen Funktionen in den Daten erstellt werden, die in einem Azure HDInsight Hadoop-Cluster gespeichert sind. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.
+Dieses Dokument veranschaulicht, wie Features für Daten in einem Azure HDInsight Hadoop-Cluster mithilfe von Hive-Abfragen erstellt werden. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.
 
-Beispiele für Abfragen speziell für Szenarios mit den [NYC Taxi Trip-Daten](http://chriswhong.com/open-data/foil_nyc_taxi/) stehen auch im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) bereit. Für diese Abfragen ist bereits ein Datenschema angegeben, sodass sie bereit für die Übermittlung zur Ausführung sind.
+Die Vorgänge zum Erstellen von Features können speicherintensiv sein. In solchen Fällen fällt die Leistung von Hive-Abfragen noch stärker ins Gewicht. Sie kann durch die Optimierung bestimmter Parameter verbessert werden. Die Optimierung dieser Parameter wird im letzten Abschnitt erläutert.
 
-Im letzten Abschnitt werden Parameter beschrieben, mit denen Sie die Leistung der Hive-Abfragen optimieren können.
+Beispiele für die vorgestellten Abfragen gelten speziell für Szenarios mit den [NYC Taxi Trip-Daten](http://chriswhong.com/open-data/foil_nyc_taxi/) und stehen auch im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) bereit. Für diese Abfragen ist bereits ein Datenschema angegeben, sodass sie bereit für die Übermittlung zur Ausführung sind. Im letzten Abschnitt werden außerdem Parameter beschrieben, mit denen Benutzer die Leistung der Hive-Abfragen optimieren können.
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 
 ## Voraussetzungen
@@ -143,7 +142,7 @@ Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zie
 
 Die mathematischen Gleichungen zur Berechnung der Entfernung zwischen zwei GPS-Koordinaten finden Sie auf der Website <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> von Peter Lapisu. In seinem JavaScript-Code ist die `toRad()`-Funktion nur *lat\_or\_lon*pi/180* und rechnet Grad in Radianten um. Hierbei ist *lat\_or\_lon* der Längen- oder Breitengrad. Da Hive keine `atan2`-Funktion bereitstellt, jedoch die `atan`-Funktion, wird die `atan2`-Funktion in der oben angegebenen Hive-Abfrage anhand der in <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> angegebenen Definition durch die `atan`-Funktion implementiert.
 
-![Arbeitsbereich erstellen][1]
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-create-features-hive/atan2new.png)
 
 Eine vollständige Liste der eingebetteten Hive-UDFs finden Sie im Abschnitt **Built-in Functions** im <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive-Wiki</a>.
 
@@ -181,13 +180,7 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
 		set mapred.reduce.tasks=128;
 		set mapred.tasktracker.reduce.tasks.maximum=128;
 
-[1]: ./media/machine-learning-data-science-process-hive-tables/atan2new.png
-[10]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-1.png
-[11]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-2.png
-[12]: ./media/machine-learning-data-science-process-hive-tables/output-hive-results-1.png
-[13]: ./media/machine-learning-data-science-process-hive-tables/output-hive-results-2.png
-[14]: ./media/machine-learning-data-science-process-hive-tables/output-hive-results-3.png
-[15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
+
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

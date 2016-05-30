@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/17/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 
@@ -36,7 +36,7 @@ Wenn Sie eine VM-Skalierungsgruppe zentral hochskalieren, wird eine neue Instanz
 
 Wenn Sie Ihren Cluster vom Portal aus bereitgestellt oder die bereitgestellte ARM-Beispielvorlage verwendet haben und dann eine Liste aller Ressourcen in einer Ressourcengruppe abrufen, wird der Lastenausgleich für jede VM-Skalierungsgruppe oder jeden Knotentyp angezeigt.
 
-Der Name würde etwa folgendermaßen lauten: **LB-&lt;Knotentypname&gt;**. Z. B. „LB-sfcluster4doc-0“, wie in diesem Screenshot gezeigt:
+Der Name würde etwa folgendermaßen lauten: **LB-&lt;Knotentypname&gt;**. Z. B. „LB-sfcluster4doc-0“, wie in diesem Screenshot gezeigt:
 
 
 ![Ressourcen][Resources]
@@ -66,7 +66,7 @@ Weiter oben in diesem Dokument habe ich die Zuordnung der VM-Skalierungsgruppeni
 
 Die Zuweisung der Ports erfolgt in der aufsteigenden Reihenfolge der VM-Skalierungsgruppeninstanz. In meinem Beispiel für den Knotentyp „FrontEnd“ erhalten die fünf Instanzen also die folgenden Ports. Jetzt müssen Sie die gleiche Zuordnung für Ihre VM-Skalierungsgruppeninstanz vornehmen.
 
-|**VMSS-Instanz**|**Port**|
+|**VM-Skalierungsgruppeninstanz**|**Port**|
 |-----------------------|--------------------------|
 |FrontEnd\_0|3389|
 |FrontEnd\_1|3390|
@@ -94,7 +94,7 @@ Wechseln Sie zur Ressourcendefinition für **Microsoft.Network/loadBalancers**. 
 
 
 ### Nach der Clusterbereitstellung
-Dies ist etwas komplizierter und kann dazu führen, dass die virtuellen Computern neu gestartet werden. Sie müssen nun neue Werte mit Azure PowerShell festlegen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
+Dies ist etwas komplizierter und kann dazu führen, dass die virtuellen Computern neu gestartet werden. Sie müssen nun neue Werte mit Azure PowerShell festlegen. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls noch nicht erfolgt, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
 
 Melden Sie sich beim Azure-Konto an. Wenn dieser PowerShell-Befehl aus irgendeinem Grund Fehler verursacht, sollten Sie prüfen, ob Azure PowerShell ordnungsgemäß installiert ist.
 
@@ -133,4 +133,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

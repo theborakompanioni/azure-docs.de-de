@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="Vorgänge für DNS-Zonen mithilfe der Befehlszeilenschnittstelle (CLI) | Microsoft Azure" 
+   pageTitle="Verwalten von DNS-Zonen mithilfe der Befehlszeilenschnittstelle | Microsoft Azure" 
    description="Sie können DNS-Zonen mithilfe der Azure-Befehlszeilenschnittstelle (CLI) verwalten. Aktualisieren, Löschen und Erstellen von DNS-Zonen in Azure DNS" 
    services="dns" 
    documentationCenter="na" 
-   authors="joaoma" 
-   manager="Adinah" 
+   authors="cherylmc" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="02/09/2016"
-   ms.author="joaoma"/>
+   ms.date="05/09/2016"
+   ms.author="cherylmc"/>
 
 # Verwalten von DNS-Zonen mithilfe der Befehlszeilenschnittstelle (CLI)
 
@@ -22,23 +22,16 @@
 - [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 - [PowerShell](dns-operations-dnszones.md)
 
+
 In dieser Anleitung wird erläutert, wie die DNS-Zonenressourcen mithilfe der plattformübergreifenden Azure-Befehlszeilenschnittstelle verwaltet werden.
 
->[AZURE.NOTE] Azure DNS ist ein nur über Azure-Ressourcen-Manager verfügbarer Dienst. Er besitzt keine ASM-API. Sie müssen daher mit dem Befehl „azure config mode arm“ sicherstellen, dass die Azure-Befehlszeilenschnittstelle für die Verwendung des Ressourcen-Manager-Modus konfiguriert ist.
+Für diese Anweisungen wird die Microsoft Azure-Befehlszeilenschnittstelle (CLI) verwendet. Aktualisieren Sie vor dem Verwenden von Azure DNS-Befehlen auf die neueste Version der Azure-Befehlszeilenschnittstelle (mindestens 0.9.8). Geben Sie `azure -v` ein, um zu überprüfen, welche Version der Azure-Befehlszeilenschnittstelle derzeit auf Ihrem Computer installiert ist. Sie können die Azure-Befehlszeilenschnittstelle für Windows, Linux oder Mac installieren. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
->Falls „Fehler: ‚dns‘ ist kein Azure-Befehl“ angezeigt wird, verwenden Sie wahrscheinlich die Azure-CLI im ASM-Modus und nicht im Ressourcen-Manager-Modus.
- 
+Azure DNS ist ein nur über Azure-Ressourcen-Manager verfügbarer Dienst. Er besitzt keine ASM-API. Sie müssen sicherstellen, dass die Azure-Befehlszeilenschnittstelle für den Resource Manager-Modus konfiguriert ist. Verwenden Sie dazu den Befehl `azure config mode arm`.<BR> Falls die Meldung: *„Fehler: ‚dns‘ ist kein Azure-Befehl“* angezeigt wird, verwenden Sie wahrscheinlich die Azure-Befehlszeilenschnittstelle im ASM-Modus und nicht im Resource Manager-Modus.
+
 ## Erstellen einer neuen DNS-Zone
 
-Um eine neue DNS-Zone zum Hosten Ihrer Domäne zu erstellen, verwenden Sie `azure network dns zone create`:
-
-	azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
-
-Der Vorgang erstellt eine neue DNS-Zone in Azure DNS. Optional können Sie ein Array von Azure-Ressourcen-Manager-Tags angeben. Weitere Informationen finden Sie unter [Etags und Tags](dns-getstarted-create-dnszone.md#Etags-and-tags).
-
-Der Name der Zone innerhalb der Ressourcengruppe muss eindeutig sein, und die Zone darf noch nicht vorhanden sein, andernfalls schlägt der Vorgang fehl.
-
-Der gleiche Zonennamen kann in einer anderen Ressourcengruppe oder einem anderen Azure-Abonnement erneut verwendet werden. Wenn mehrere Zonen denselben Namen haben, werden jeder Instanz verschiedene Namensserveradressen zugewiesen, und nur eine Instanz kann von der übergeordneten Domäne delegiert werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+Informationen zum Erstellen einer neuen DNS-Zone zum Hosten Ihrer Domäne finden Sie unter [Erstellen einer Azure-DNS-Zone mithilfe der Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md).
 
 ## Abrufen einer DNS-Zone
 
@@ -51,31 +44,27 @@ Der Vorgang gibt eine DNS-Zone mit deren ID, der Anzahl der Datensätze und Tags
 
 ## Auflisten von DNS-Zonen
 
-Verwenden Sie zum Abrufen von DNS-Zonen innerhalb einer Ressourcengruppe `azure network dns zone list`:
+Verwenden Sie zum Abrufen von DNS-Zonen innerhalb einer Ressourcengruppe `azure network dns zone list`.
 
 	azure network dns zone list myresourcegroup
 
-
 ## Aktualisieren einer DNS-Zone
 
-Änderungen an einer DNS-Zonenressource können mithilfe von `azure network dns zone set` vorgenommen werden. Dadurch wird keine der DNS-Datensatzgruppen in der Zone aktualisiert (siehe [Verwalten von DNS-Einträgen](dns-operations-recordsets.md)). Es wird nur verwendet, um Eigenschaften der Zonenressource selbst zu aktualisieren. Dies ist derzeit auf die Azure-Ressourcen-Manager-"Tags" für die Zonenressource beschränkt. Weitere Informationen finden Sie unter [Etags und Tags](dns-getstarted-create-dnszone.md#Etags-and-tags).
+Änderungen an einer DNS-Zonenressource können mithilfe von `azure network dns zone set` vorgenommen werden. Dadurch wird keine der DNS-Datensatzgruppen in der Zone aktualisiert (siehe [Verwalten von DNS-Einträgen](dns-operations-recordsets.md)). Es wird nur verwendet, um Eigenschaften der Zonenressource selbst zu aktualisieren. Dies ist derzeit auf die Azure-Ressourcen-Manager-"Tags" für die Zonenressource beschränkt. Weitere Informationen finden Sie unter [Etags und Tags](dns-getstarted-create-dnszone.md#tagetag).
 
 	azure network dns zone set myresourcegroup contoso.com -t prod=value2
 
 ## Löschen einer DNS-Zone
 
-DNS-Zonen können mithilfe von `azure network dns zone delete` gelöscht werden.
+DNS-Zonen können mithilfe von `azure network dns zone delete` gelöscht werden. Dieser Vorgang hat einen optionalen Switch *-q*, der die Eingabeaufforderung zur Bestätigung des Entfernens der DNS-Zone unterdrückt.
  
 Vor dem Löschen einer DNS-Zone in Azure DNS müssen Sie alle Datensatzgruppen löschen, mit Ausnahme der NS- und SOA-Einträge im Zonenstamm, die beim Erstellen der Zone automatisch erstellt wurden.
 
 	azure network dns zone delete myresourcegroup contoso.com 
 
-Dieser Vorgang hat einen optionalen Switch "-q", der die Eingabeaufforderung zur Bestätigung des Löschvorgangs der DNS-Zone unterdrückt.
 
 
 ## Nächste Schritte
+Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset-cli.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
 
-
-Erfahren Sie mehr über das [Verwalten von DNS-Einträgen](dns-operations-recordsets-cli.md)und [Automatisieren von Vorgängen mit dem .NET SDK](dns-sdk.md).
-
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

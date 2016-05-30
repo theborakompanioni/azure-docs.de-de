@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="05/10/2016"
+   ms.author="jrj;barbkess;sonyama;nicw"/>
 
 # Verwalten von Statistiken in SQL Data Warehouse
  In SQL Data Warehouse werden statistische Daten verwendet, um die Kosten für unterschiedliche Wege zum Durchführen einer verteilten Abfrage zu bewerten. Wenn die Statistiken präzise sind, können mit dem Abfrageoptimierer qualitativ hochwertige Abfragepläne generiert werden, um die Abfrageleistung zu verbessern.
@@ -29,7 +29,7 @@ Das Erstellen und Aktualisieren der Statistiken ist wichtig, um die Abfrageleist
 
 Statistiken für einzelne Spalten sind Objekte, die Informationen zum Wertebereich und zur Häufigkeit von Werten in einer Spalte enthalten. Der Abfrageoptimierer verwendet dieses Histogramm, um die Anzahl von Spalten im Abfrageergebnis zu schätzen. Dies wirkt sich direkt auf Entscheidungen aus, die in Bezug auf die Optimierung der Abfrage getroffen werden.
 
-Statistiken für mehrere Spalten sind Statistiken, die für eine Liste mit Spalten erstellt werden. Sie enthalten Einspaltenstatistiken für die erste Spalte der Liste sowie einige spaltenübergreifende Korrelationsinformationen, die als „Densities“ (Dichten) bezeichnet werden. Mehrspaltenstatistiken können die Abfrageleistung für bestimmte Vorgänge verbessern, z. B. zusammengesetzte Verknüpfungen (Joins) und Group By-Vorgänge.
+Statistiken für mehrere Spalten sind Statistiken, die für eine Liste mit Spalten erstellt werden. Sie enthalten Einspaltenstatistiken für die erste Spalte der Liste sowie einige spaltenübergreifende Korrelationsinformationen, die als „Densities“ (Dichten) bezeichnet werden. Mehrspaltenstatistiken können die Abfrageleistung für bestimmte Vorgänge verbessern, z. B. zusammengesetzte Verknüpfungen (Joins) und Group By-Vorgänge.
 
 Weitere Informationen finden Sie unter [DBCC SHOW\_STATISTICS][] auf der MSDN-Website.
 
@@ -54,13 +54,50 @@ Wenn Sie später genauer wissen, wie Sie Ihre Daten abfragen möchten, können S
 ## Gründe für das Aktualisieren von Statistiken
 Es ist wichtig, das Aktualisieren von Statistiken in den üblichen Ablauf Ihrer Datenbankverwaltung einzubeziehen. Wenn sich die Verteilung der Daten in der Datenbank ändert, müssen die Statistiken aktualisiert werden. Andernfalls kann es zu einer suboptimalen Abfrageleistung kommen, und es könnte sich nicht lohnen, die weitere Problembehebung für die Abfrage durchzuführen.
 
-Deshalb sollte bei der Problembehebung für eine Abfrage eine der ersten Fragen wie folgt lauten: „Sind die Statistiken auf dem aktuellen Stand?“
+Eine bewährte Methode ist es, die Statistiken für Datenspalten im Zuge des Hinzufügens neuer Daten täglich zu aktualisieren. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Dadurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell. Im Gegensatz dazu müssen Statistiken zu einer Länderspalte in einer Kundentabelle möglicherweise nie aktualisiert werden, da sich die Verteilung der Werte in der Regel nicht ändert. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse allerdings nur ein Land enthält und Sie Daten eines neuen Landes hinzufügen, führt dies dazu, dass Daten aus mehreren Ländern gespeichert werden. Sie müssen dann auf jedem Fall die Statistiken in der Länderspalte aktualisieren.
 
-Diese Frage kann nicht anhand des Alters beantwortet werden. Ein aktuelles Statistikobjekt kann sehr alt sein. Wenn sich die Anzahl von Zeilen ändert oder eine wesentliche Änderung bei der Verteilung der Werte für eine bestimmte Spalte vorgenommen wird, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
+Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: „Sind die Statistiken auf dem aktuellen Stand?“
 
-Für Datumsspalten in einem Data Warehouse sind normalerweise häufige Statistikaktualisierungen erforderlich. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Dadurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell.
+Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand könnte sehr alt sein, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine bestimmte Spalte gibt, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
 
-Im Gegensatz dazu müssen die Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ auf jeden Fall aktualisieren.
+Für die spätere Verwendung aktualisiert **SQL Server** (nicht SQL Data Warehouse) die Statistiken für folgende Situationen automatisch:
+
+- Wenn Sie null Zeilen in der Tabelle haben und eine Zeile (oder mehrere Zeilen) hinzufügen, erhalten Sie ein automatisches Update der Statistiken.
+- Wenn Sie einer Tabelle, die mit weniger als 500 Zeilen beginnt, mehr als 500 Zeilen hinzufügen (Sie haben z.B. am Anfang 499 und fügen 500 Zeilen hinzu, sodass Sie insgesamt 999 Zeilen haben), erhalten Sie ein automatisches Update. 
+- Sobald Sie über mehr als 500 Zeilen verfügen, müssen Sie 500 zusätzliche Zeilen + 20 % der Tabellengröße hinzufügen, bevor Sie ein automatisches Update der Statistiken erhalten.
+
+Da keine DMV existiert, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben, kann das Alter Ihrer Statistiken Ihnen teilweise Einblick bieten, ob die Daten aktuell sind. Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden.
+
+> [AZURE.NOTE] Beachten Sie, dass Sie immer wenn sich die Verteilung der Werte einer bestimmten Sprache wesentlich ändern, Sie Statistiken aktualisieren sollten, unabhängig vom Zeitpunkt des letzten Updates.
+
+```sql
+SELECT
+    sm.[name] AS [schema_name],
+    tb.[name] AS [table_name],
+    co.[name] AS [stats_column_name],
+    st.[name] AS [stats_name],
+    STATS_DATE(st.[object_id],st.[stats_id]) AS [stats_last_updated_date]
+FROM
+    sys.objects ob
+    JOIN sys.stats st
+        ON  ob.[object_id] = st.[object_id]
+    JOIN sys.stats_columns sc    
+        ON  st.[stats_id] = sc.[stats_id]
+        AND st.[object_id] = sc.[object_id]
+    JOIN sys.columns co    
+        ON  sc.[column_id] = co.[column_id]
+        AND sc.[object_id] = co.[object_id]
+    JOIN sys.types  ty    
+        ON  co.[user_type_id] = ty.[user_type_id]
+    JOIN sys.tables tb    
+        ON  co.[object_id] = tb.[object_id]
+    JOIN sys.schemas sm    
+        ON  tb.[schema_id] = sm.[schema_id]
+WHERE
+    st.[user_created] = 1;
+```
+
+Beispielsweise benötigen Datumsspalten in einem Data Warehouse normalerweise häufige Statistikaktualisierungen. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Dadurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell. Im Gegensatz dazu müssen die Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ auf jeden Fall aktualisieren.
 
 Weitere Informationen finden Sie unter [Statistiken][] auf der MSDN-Website.
 
@@ -72,11 +109,11 @@ Unten sind einige Richtlinien zur Aktualisierung von Statistiken während des La
 
 - Stellen Sie sicher, dass jede geladene Tabelle mindestens über ein aktualisiertes Statistikobjekt verfügt. Im Rahmen der Statistikaktualisierung werden dann die Informationen zur Tabellengröße (Zeilen- und Seitenanzahl) aktualisiert.
 - Konzentrieren Sie sich auf Spalten mit JOIN-, GROUP BY-, ORDER BY- und DISTINCT-Klauseln.
-- Erwägen Sie, Spalten vom Typ „aufsteigender Schlüssel“, z. B. Transaktionsdaten, häufiger zu aktualisieren, da diese Werte nicht in das Statistikhistogramm einbezogen werden.
+- Erwägen Sie, Spalten vom Typ „aufsteigender Schlüssel“, z. B. Transaktionsdaten, häufiger zu aktualisieren, da diese Werte nicht in das Statistikhistogramm einbezogen werden.
 - Erwägen Sie, Spalten mit statischer Verteilung weniger häufig zu aktualisieren.
 - Bedenken Sie, dass jedes statistische Objekt der Reihe nach aktualisiert wird. Es ist ggf. nicht ideal, einfach `UPDATE STATISTICS <TABLE_NAME>` zu implementieren. Dies gilt besonders für breite Tabellen mit vielen Statistikobjekten.
 
-> [AZURE.NOTE] Weitere Informationen zum Thema [Aufsteigender Schlüssel] finden Sie im Whitepaper zum Kardinalitätsschätzungsmodell von SQL Server 2014.
+> [AZURE.NOTE] Weitere Informationen zum Thema [Aufsteigender Schlüssel] finden Sie im Whitepaper zum Kardinalitätsschätzungsmodell von SQL Server 2014.
 
 Weitere Informationen finden Sie unter [Kardinalitätsschätzung][] auf der MSDN-Website.
 
@@ -88,7 +125,7 @@ In diesen Beispielen wird veranschaulicht, wie Sie verschiedene Optionen zum Ers
 
 Zum Erstellen von Statistiken für eine Spalte geben Sie einfach einen Namen für das Statistikobjekt und den Namen der Spalte an.
 
-Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in SQL Data Warehouse beim Erstellen von Statistiken eine Stichprobe von 20 % der Tabelle verwendet.
+Bei dieser Syntax werden alle Standardoptionen verwendet. Standardmäßig wird in SQL Data Warehouse beim Erstellen von Statistiken eine Stichprobe von 20 % der Tabelle verwendet.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -102,7 +139,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 
 ### B. Erstellen von Einspaltenstatistiken per Untersuchung jeder Zeile
 
-Die standardmäßige Stichprobenrate von 20 % ist in den meisten Fällen ausreichend. Sie können die Stichprobenrate aber auch anpassen.
+Die standardmäßige Stichprobenrate von 20 % ist in den meisten Fällen ausreichend. Sie können die Stichprobenrate aber auch anpassen.
 
 Verwenden Sie die folgende Syntax, um die gesamte Tabelle zu verwenden:
 
@@ -430,11 +467,11 @@ DBCC SHOW\_STATISTICS() ist im Vergleich zu SQL Server strenger in SQL Data Ware
 
 1. Nicht dokumentierte Funktionen werden nicht unterstützt.
 - Verwendung von Stats\_stream nicht möglich
-- Ergebnisse für bestimmte Teilmengen von Statistikdaten können nicht verknüpft werden, z. B. (STAT\_HEADER JOIN DENSITY\_VECTOR)
+- Ergebnisse für bestimmte Teilmengen von Statistikdaten können nicht verknüpft werden, z. B. (STAT\_HEADER JOIN DENSITY\_VECTOR)
 2. NO\_INFOMSGS kann für die Meldungsunterdrückung nicht festgelegt werden
 3. Eckige Klammern um Namen von Statistiken können nicht verwendet werden
 4. Spaltennamen können nicht zum Identifizieren von Statistikobjekten verwendet werden
-5. Benutzerdefinierter Fehler 2767 wird nicht unterstützt
+5. Benutzerdefinierter Fehler 2767 wird nicht unterstützt
 
 
 ## Nächste Schritte
@@ -461,4 +498,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [Aktualisieren von Statistiken]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

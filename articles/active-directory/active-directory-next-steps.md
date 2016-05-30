@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="05/16/2016"
 	ms.author="curtand"/>
 
 # Was sind die nächsten Schritte in Azure AD?
@@ -40,4 +40,4 @@ Die Azure AD-Geräteregistrierung versieht Geräte mit einer Identität, die ver
 * [Als Organisation für Azure registrieren](sign-up-organization.md)
 * [Azure-Identität](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0518_2016-->

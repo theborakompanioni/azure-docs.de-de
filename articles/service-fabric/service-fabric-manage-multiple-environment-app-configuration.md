@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/08/2016"
+   ms.date="04/26/2016"
    ms.author="seanmck"/>
 
 # Verwalten von Anwendungsparametern für mehrere Umgebungen
@@ -24,7 +24,7 @@ Sehen Sie sich `InstanceCount` als Beispiel für einen zustandslosen Dienst an. 
 
 ## Angeben von umgebungsspezifischen Parametern
 
-Die Lösung dieses Konfigurationsproblems ist ein Satz von parametrisierten Standarddiensten und Anwendungsparameterdateien, mit denen die Parameterwerte für eine bestimmte Umgebung angegeben werden.
+Die Lösung dieses Konfigurationsproblems ist ein Satz von parametrisierten Standarddiensten und Anwendungsparameterdateien, mit denen die Parameterwerte für eine bestimmte Umgebung angegeben werden. Standarddienste und Anwendungsparameter werden in den Anwendungs- und Dienstmanifesten konfiguriert. Die Schemadefinition für die Dateien „ServiceManifest.xml“ und „ApplicationManifest.xml“ wird über das Service Fabric SDK und die Service Fabric-Tools unter *C:\\Programm\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* installiert.
 
 ### Standarddienste
 
@@ -33,10 +33,13 @@ Service Fabric-Programme bestehen aus einer Sammlung von Dienstinstanzen. Sie k�
     <DefaultServices>
         <Service Name="Stateful1">
             <StatefulService
-                ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
+                ServiceTypeName="Stateful1Type"
+                TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]"
+                MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
 
                 <UniformInt64Partition
-                    PartitionCount="[Stateful1_PartitionCount]" LowKey="-9223372036854775808"
+                    PartitionCount="[Stateful1_PartitionCount]"
+                    LowKey="-9223372036854775808"
                     HighKey="9223372036854775807"
                 />
         </StatefulService>
@@ -58,7 +61,7 @@ Die DefaultValue-Attribute geben den zu verwendenden Wert an, wenn ein spezifisc
 
 ### Dienstkonfigurationseinstellungen pro Umgebung
 
-Aufgrund des [Service Fabric-Anwendungsmodells](service-fabric-application-model.md) können Dienste Konfigurationspakete mit benutzerdefinierten Schlüssel-Wert-Paaren enthalten, die zur Laufzeit gelesen werden können. Die Werte dieser Einstellungen können auch nach Umgebung unterschieden werden, indem `ConfigOverride` im Anwendungsmanifest angegeben wird.
+Das [Service Fabric-Anwendungsmodel](service-fabric-application-model.md) ermöglicht es Diensten, Konfigurationspakete zu einzubinden, die zu Laufzeit lesbare, benutzerdefinierte Schlüssel-Wert-Paare enthalten. Die Werte dieser Einstellungen können auch nach Umgebung unterschieden werden, indem `ConfigOverride` im Anwendungsmanifest angegeben wird.
 
 Angenommen, es gibt die folgende Einstellung in der Datei „Config\\Settings.xml“ für den `Stateful1`-Dienst:
 
@@ -67,7 +70,7 @@ Angenommen, es gibt die folgende Einstellung in der Datei „Config\\Settings.xm
       <Parameter Name="MaxQueueSize" Value="25" />
     </Section>
 
-Um diesen Wert für ein bestimmtes Paar aus Anwendung und Umgebung zu überschreiben, erstellen Sie `ConfigOverride` beim Importieren des Dienstmanifests in das Anwendungsmanifest.
+Erstellen Sie `ConfigOverride` beim Importieren des Dienstmanifests in das Anwendungsmanifest, um diesen Wert für ein bestimmtes Paar aus Anwendung und Umgebung zu überschreiben.
 
     <ConfigOverrides>
      <ConfigOverride Name="Config">
@@ -116,17 +119,19 @@ Sie können in der Liste mit den verfügbaren Parameterdateien eine Auswahl tref
 
 ### Bereitstellen über PowerShell
 
-Das PowerShell-Skript `DeployCreate-FabricApplication.ps1` akzeptiert eine Parameterdatei als Parameter.
+Das PowerShell-Skript `Deploy-FabricApplication.ps1` in der Projektvorlage der Anwendung akzeptiert ein Veröffentlichungsprofil als Parameter, und PublishProfile enthält einen Verweis auf die Anwendungsparameterdatei.
 
-    ./DeployCreate-FabricApplication -ApplicationPackagePath <app_package_path> -ApplicationDefinitionFilePath <app_instance_definition_path>
+  ```PowerShell
+    ./Deploy-FabricApplication -ApplicationPackagePath <app_package_path> -PublishProfileFile <publishprofile_path>
+  ```
 
 ## Nächste Schritte
 
-Weitere Informationen zu einigen grundlegenden Konzepten, die in diesem Thema behandelt werden, finden Sie unter [Service Fabric – Technische Übersicht](service-fabric-technical-overview.md). Informationen zu anderen App-Verwaltungsfunktionen in Visual Studio finden Sie unter [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Weitere Informationen zu einigen grundlegenden Konzepten, die in diesem Thema behandelt werden, finden Sie unter [Service Fabric – Technische Übersicht](service-fabric-technical-overview.md). Informationen zu anderen App-Verwaltungsfunktionen in Visual Studio finden Sie unter [Verwalten Ihrer Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
 
 <!-- Image references -->
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

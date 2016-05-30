@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/22/2016"
+   ms.date="05/12/2016"
    ms.author="rickbyh"/>
 
 # Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit  
@@ -24,7 +24,7 @@ Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und insbeso
 
 ## Datenbankbereitstellung und Prinzipalanmeldung auf Serverebene
 
-Wenn Sie sich in Microsoft Azure SQL-Datenbank für den Dienst registrieren, werden vom Bereitstellungsprozess ein Azure SQL-Datenbankserver, eine Datenbank mit dem Namen **master** und eine Anmeldung erstellt, bei der es sich um den Serverebenenprinzipal Ihres Azure SQL-Datenbank-Servers handelt. Diese Anmeldung ähnelt dem Serverebenenprinzipal (**sa**) für eine lokale Instanz von SQL Server.
+Wenn Sie sich in Microsoft Azure SQL-Datenbank für den Dienst registrieren, werden vom Bereitstellungsprozess ein Azure SQL-Datenbankserver, eine Datenbank mit dem Namen **master** und eine Anmeldung erstellt, bei der es sich um den Serverebenenprinzipal Ihres Azure SQL-Datenbank-Servers handelt. Diese Anmeldung ähnelt dem Serverebenenprinzipal (**sa**) für eine lokale Instanz von SQL Server. Die in diesem Thema beschriebenen Konzepte gelten auch für Azure SQL Data Warehouse.
 
 Das Serverebenenprinzipal-Konto von Azure SQL-Datenbank verfügt immer über die Berechtigung, die gesamte Sicherheit auf Server- und Datenbankebene zu verwalten. In diesem Thema wird beschrieben, wie Sie den Serverebenenprinzipal und andere Konten verwenden können, um in SQL-Datenbank Anmeldungen und Datenbanken zu verwalten.
 
@@ -176,4 +176,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database Tutorial: Get Started with Azure SQL Database Security](sql-database-get-started-security.md) (Azure SQL-Datenbanktutorial: Erste Schritte mit SQL-Datenbanksicherheit) [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md) [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

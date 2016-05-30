@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/23/2016"
+   ms.date="04/25/2016"
    ms.author="oanapl"/>
 
 # Einführung in die Service Fabric-Integritätsüberwachung
@@ -41,11 +41,11 @@ Zu den Integritätsentitäten zählen Folgende:
 
 - **Cluster**: Stellt die Integrität eines Service Fabric-Clusters dar. Clusterintegritätsberichte beschreiben Bedingungen, die den gesamten Cluster betreffen; das Eingrenzen auf ein oder mehrere untergeordnete fehlerhafte Elemente ist nicht möglich. Beispiele hierfür sind das Split-Brain-Syndrom des Clusters aufgrund von Problemen mit der Netzwerkpartitionierung oder der Kommunikation.
 
-- **Node**: Stellt die Integrität eines Service Fabric-Knotens dar. In Knotenintegritätsberichten werden Bedingungen beschrieben, die sich auf die Knotenfunktionen auswirken. Sie wirken sich normalerweise auf alle bereitgestellten Entitäten aus, die darauf ausgeführt werden. Beispiele hierfür sind ein Knoten ohne verbleibenden Festplattenplatz (oder eine andere computerweite Eigenschaft, z. B. Arbeitsspeicher, Verbindungen) und der Ausfall eines Knotens. Die Knotenentität wird anhand des Knotennamens (Zeichenfolge) identifiziert.
+- **Node**: Stellt die Integrität eines Service Fabric-Knotens dar. In Knotenintegritätsberichten werden Bedingungen beschrieben, die sich auf die Knotenfunktionen auswirken. Sie wirken sich normalerweise auf alle bereitgestellten Entitäten aus, die darauf ausgeführt werden. Beispiele hierfür sind ein Knoten ohne verbleibenden Festplattenplatz (oder eine andere computerweite Eigenschaft, z. B. Arbeitsspeicher, Verbindungen) und der Ausfall eines Knotens. Die Knotenentität wird anhand des Knotennamens (Zeichenfolge) identifiziert.
 
 - **Application**: Stellt die Integrität einer im Cluster ausgeführten Anwendungsinstanz dar. In Berichten zur Anwendungsintegrität werden Bedingungen beschrieben, die sich auf die Gesamtintegrität der Anwendung auswirken. Sie können nicht auf einzelne untergeordnete Elemente (Dienste oder bereitgestellte Anwendungen) eingegrenzt werden. Ein Beispiel hierfür ist die End-to-End-Interaktion zwischen verschiedenen Diensten in der Anwendung. Die Anwendungsentität wird anhand des Anwendungsnamens (URI) identifiziert.
 
-- **Service**: Stellt die Integrität eines im Cluster ausgeführten Diensts dar. Dienstintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die allgemeine Integrität des Diensts haben. Das Eingrenzen auf eine Partition oder ein Replikat ist nicht möglich. Ein Beispiel hierfür ist eine Dienstkonfiguration (z. B. ein Port oder eine externe Dateifreigabe), die in allen Partitionen Probleme verursacht. Die Dienstentität wird anhand des Dienstnamens (URI) identifiziert.
+- **Service**: Stellt die Integrität eines im Cluster ausgeführten Diensts dar. Dienstintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die allgemeine Integrität des Diensts haben. Das Eingrenzen auf eine Partition oder ein Replikat ist nicht möglich. Ein Beispiel hierfür ist eine Dienstkonfiguration (z. B. ein Port oder eine externe Dateifreigabe), die in allen Partitionen Probleme verursacht. Die Dienstentität wird anhand des Dienstnamens (URI) identifiziert.
 
 - **Partition**: Stellt die Integrität einer Dienstpartition dar. Partitionsintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die gesamte Replikatgruppe haben. Beispiele hierfür sind eine Anzahl der Replikate unterhalb der Zielanzahl und eine Partition mit Quorumverlust. Die Entität für die Partition wird anhand der Partitions-ID (GUID) identifiziert.
 
@@ -59,7 +59,7 @@ Die Granularität des Integritätsmodells erleichtert das Erkennen und Beheben v
 
 Die Integritätshierarchie besteht aus Beziehungen zwischen übergeordneten und untergeordneten Elementen. Ein Cluster besteht aus Knoten und Anwendungen. Anwendungen verfügen über Dienste und bereitgestellte Anwendungen. Bereitgestellte Anwendungen verfügen über bereitgestellte Pakete. Dienste verfügen über Partitionen, wobei jede Partition über ein oder mehrere Replikate verfügt. Zwischen Knoten und bereitgestellten Entitäten besteht eine besondere Beziehung. Wird ein Knoten von der übergeordneten Systemkomponente (Failover-Manager-Dienst) als fehlerhaft gemeldet, hat dies Auswirkungen auf die darauf bereitgestellten Anwendungen, Dienstpakete und Replikate.
 
-Die Integritätshierarchie stellt den aktuellen Zustand des Systems basierend auf den aktuellen Integritätsberichten dar, d. h., die Informationen sind nahezu in Echtzeit verfügbar. Interne und externe Watchdogs können Berichte über dieselben Entitäten basierend auf anwendungsspezifischer Logik oder benutzerdefinierten überwachten Bedingungen erstellen. Benutzerberichte können zusammen mit den Systemberichten verwendet werden.
+Die Integritätshierarchie stellt den aktuellen Zustand des Systems basierend auf den aktuellen Integritätsberichten dar, d. h., die Informationen sind nahezu in Echtzeit verfügbar. Interne und externe Watchdogs können Berichte über dieselben Entitäten basierend auf anwendungsspezifischer Logik oder benutzerdefinierten überwachten Bedingungen erstellen. Benutzerberichte können zusammen mit den Systemberichten verwendet werden.
 
 Beim Entwerfen eines großen Clouddiensts kann die Zeit, die Sie für die Planung des Meldens und Reagierens auf Integritätsprobleme aufwenden, das Debugging, die Überwachung und den nachfolgenden Betrieb des Diensts erleichtern.
 
@@ -94,7 +94,7 @@ Die [Clusterintegritätsrichtlinie](https://msdn.microsoft.com/library/azure/sys
 
 - [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx). Die Zuordnung der Anwendungstyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Anwendungstypen zu beschreiben. Standardmäßig werden alle Anwendungen in einen Pool eingefügt und anhand von MaxPercentUnhealthyApplications bewertet. Wenn spezielle Anwendungstypen vorliegen, die auf andere Weise behandelt werden sollen, können diese aus dem globalen Pool entfernt und anhand von Prozentangaben ausgewertet werden, die in der Zuordnung ihrem Anwendungstypnamen zugeordnet sind. Beispielsweise enthält ein Cluster Tausende von Anwendungen mit unterschiedlichen Typen und wenige Steueranwendungsinstanzen eines besonderen Anwendungstyps. Die Steueranwendungen dürfen niemals einen Fehlerstatus aufweisen. Benutzer können daher den globalen MaxPercentUnhealthyApplications-Wert auf 20 % setzen, um einige Fehler zu tolerieren, aber für den Anwendungstyp „ControlApplicationType“ wird der MaxPercentUnhealthyApplications-Wert auf 0 festgelegt. Wenn einige der zahlreichen Anwendungen fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Anwendungen liegen, wird der Cluster mit einer Warnung ausgewertet. Der Integritätszustand „Warnung“ wirkt sich nicht auf die ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Dahingegen führt eine einzige fehlerhafte Steueranwendung zu einem Clusterintegritätsfehler, durch den ein Clusterupgrade verhindert bzw. ein Rollback durchgeführt wird. Für die in der Zuordnung definierten Anwendungstypen werden alle Anwendungsinstanzen aus dem globalen Anwendungspool entfernt. Sie werden anhand des speziellen MaxPercentUnhealthyApplications-Werts aus der Zuordnung basierend auf der Gesamtanzahl von Anwendungen des Anwendungstyps ausgewertet. Die restlichen Anwendungen verbleiben im globalen Pool und werden mit MaxPercentUnhealthyApplications ausgewertet.
 
-Hier sehen Sie einen Auszug aus einem Clustermanifest: Um Einträge in der Anwendungstypzuordnung zu definieren, stellen Sie dem Parameternamen das Präfix „ApplicationTypeMaxPercentUnhealthyApplications-“, gefolgt vom Namen des Anwendungstyps, voran.
+Hier sehen Sie einen Auszug aus einem Clustermanifest: Ordnen Sie dem Parameternamen „ApplicationTypeMaxPercentUnhealthyApplications-“ gefolgt von dem Namen des Anwendungstyps als Präfixe zu, um Einträge in der Anwendungstypzuordnung zu definieren.
 
 ```xml
 <FabricSettings>
@@ -218,7 +218,7 @@ Die [Integritätsberichte](https://msdn.microsoft.com/library/azure/system.fabri
 
   - DeployedServicePackage: Anwendungsname (URI), Knotenname (Zeichenfolge) und Dienstmanifestname (Zeichenfolge).
 
-- **Property**: Ein *Zeichenfolge* (keine feste Enumeration), mit der Berichtersteller das Integritätsereignis für eine bestimmte Eigenschaft der Entität kategorisieren. Beispiel: Berichterstatter A kann einen Integritätsbericht für die Eigenschaft „storage“ auf Node01 erstellen, und Berichterstatter B kann einen Integritätsbericht für die Eigenschaft „connectivity“ auf Node01 erstellen. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für die Entität „Node01“ behandelt.
+- **Property**: Ein *Zeichenfolge* (keine feste Enumeration), mit der Berichtersteller das Integritätsereignis für eine bestimmte Eigenschaft der Entität kategorisieren. Beispiel: Berichterstatter A kann einen Integritätsbericht für die Eigenschaft „storage“ auf Node01 erstellen, und Berichterstatter B kann einen Integritätsbericht für die Eigenschaft „connectivity“ auf Node01 erstellen. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für die Entität „Node01“ behandelt.
 
 - **Beschreibung**: Eine Zeichenfolge, die es einem Berichterstatter ermöglicht, detaillierte Informationen zum Integritätsereignis bereitzustellen. Die Verwendung von **SourceId**, **Property** und **HealthState** reicht in der Regel aus, um den Bericht vollständig zu beschreiben. Mit der Beschreibung werden dem Bericht für Menschen lesbare Informationen hinzugefügt. Dies erleichtert Administratoren und Benutzern das Verständnis.
 
@@ -226,7 +226,7 @@ Die [Integritätsberichte](https://msdn.microsoft.com/library/azure/system.fabri
 
 - **TimeToLive**: Ein Zeitraum, der angibt, wie lange der Integritätsbericht gültig ist. In Kombination mit **RemoveWhenExpired** weist dieser Wert den Integritätsspeicher an, wie abgelaufene Ereignisse ausgewertet werden sollen. Der Zeitraum ist standardmäßig unendlich, und der Bericht ist immer gültig.
 
-- **RemoveWhenExpired**: Ein boolescher Wert. Wenn hierfür „true“ festgelegt ist, wird der abgelaufene Integritätsbericht automatisch aus dem Integritätsspeicher entfernt, und der Bericht wirkt sich nicht auf die Integritätsevaluierung der Entität aus. Dies wird verwendet, wenn der Bericht nur für einen angegebenen Zeitraum gilt und der Berichterstatter den Bericht nicht explizit bereinigen muss. Das Verfahren wird auch zum Löschen von Berichten aus dem Integritätsspeicher verwendet (z. B. wird ein Watchdog geändert und beendet das Senden von Berichten für die vorherige Quelle und Eigenschaft). Hierbei kann ein Bericht mit einer kurzen TimeToLive zusammen mit RemoveWhenExpired gesendet werden, um alle vorherigen Zustände aus dem Integritätsspeicher zu löschen. Wenn der Wert auf „false“ festgelegt ist, wird der abgelaufene Bericht bei der Integritätsevaluierung als Fehler („Error“) behandelt. Mit dem Wert „false“ wird für den Integritätsspeicher angegeben, dass die Quelle regelmäßig Berichte zu dieser Eigenschaft senden soll. Wenn dies nicht der Fall ist, muss ein Fehler für den Watchdog vorliegen. Die Integrität des Watchdogs wird berücksichtigt, indem das Ereignis als Fehler behandelt wird.
+- **RemoveWhenExpired**: Ein boolescher Wert. Wenn hierfür „true“ festgelegt ist, wird der abgelaufene Integritätsbericht automatisch aus dem Integritätsspeicher entfernt, und der Bericht wirkt sich nicht auf die Integritätsevaluierung der Entität aus. Dies wird verwendet, wenn der Bericht nur für einen angegebenen Zeitraum gilt und der Berichterstatter den Bericht nicht explizit bereinigen muss. Das Verfahren wird auch zum Löschen von Berichten aus dem Integritätsspeicher verwendet (z. B. wird ein Watchdog geändert und beendet das Senden von Berichten für die vorherige Quelle und Eigenschaft). Hierbei kann ein Bericht mit einer kurzen TimeToLive zusammen mit RemoveWhenExpired gesendet werden, um alle vorherigen Zustände aus dem Integritätsspeicher zu löschen. Wenn der Wert auf „false“ festgelegt ist, wird der abgelaufene Bericht bei der Integritätsevaluierung als Fehler („Error“) behandelt. Mit dem Wert „false“ wird für den Integritätsspeicher angegeben, dass die Quelle regelmäßig Berichte zu dieser Eigenschaft senden soll. Wenn dies nicht der Fall ist, muss ein Fehler für den Watchdog vorliegen. Die Integrität des Watchdogs wird berücksichtigt, indem das Ereignis als Fehler behandelt wird.
 
 - **SequenceNumber**: Eine positive ganze Zahl, mit der die Reihenfolge der Berichte dargestellt wird und die daher stetig erhöht wird. Der Wert wird vom Integritätsspeicher verwendet, um überfällige Berichte zu ermitteln, die wegen Netzwerkverzögerungen oder anderen Problemen verspätet empfangen werden. Ein Bericht wird abgelehnt, wenn die Sequenznummer kleiner oder gleich der zuletzt angewendeten Nummer für dieselbe Entität, Quelle und Eigenschaft ist. Wenn sie nicht angegeben wird, wird die Sequenznummer automatisch generiert. Die Sequenznummer muss nur angegeben werden, wenn Berichte zu Statusübergängen erstellt werden. In diesem Fall muss für die Quelle gespeichert werden, welche Berichte gesendet werden, und die Informationen müssen für die Wiederherstellung bei einem Failover vorgehalten werden.
 
@@ -247,11 +247,11 @@ Die hinzugefügte Metadaten enthalten Folgendes:
 
 Die Felder für die Zustandsübergänge können für erweiterte Warnungen verwendet werden und geben Verlaufsinformationen für das Integritätsereignis an. Sie ermöglichen beispielsweise folgende Szenarien:
 
-- Warnung ausgeben, wenn der Zustand einer Eigenschaft länger als X Minuten den Zustand „Warning/Error“ aufweist: Dadurch werden Warnungen zu vorübergehenden Bedingungen vermieden. Eine Warnung, die ausgegeben wird, wenn der Integritätsstatus „Warning“ länger als 5 Minuten besteht, wird beispielsweise wie folgt angegeben: (HealthState == Warning and Now – LastWarningTransitionTime > 5 minutes).
+- Warnung ausgeben, wenn der Zustand einer Eigenschaft länger als X Minuten den Zustand „Warning/Error“ aufweist: Dadurch werden Warnungen zu vorübergehenden Bedingungen vermieden. Eine Warnung, die ausgegeben wird, wenn der Integritätsstatus „Warning“ länger als 5 Minuten besteht, wird beispielsweise wie folgt angegeben: (HealthState == Warning and Now – LastWarningTransitionTime > 5 minutes).
 
-- Warnung nur zu Bedingungen ausgeben, die sich in den letzten X Minuten geändert haben: Wenn ein Bericht schon vor dem angegebenen Zeitpunkt den Zustand „Error“ erreicht hat, kann er ignoriert werden, da dies bereits signalisiert wurde.
+- Warnung nur zu Bedingungen ausgeben, die sich in den letzten X Minuten geändert haben: Wenn ein Bericht schon vor dem angegebenen Zeitpunkt den Zustand „Error“ erreicht hat, kann er ignoriert werden, da dies bereits signalisiert wurde.
 
-- Beim Umschalten des Zustands einer Eigenschaft zwischen „Warning“ und „Error" bestimmen, wie lange die Eigenschaft fehlerhaft (d. h. nicht „OK“) war: Eine Warnung, die ausgegeben wird, wenn die Eigenschaft länger als fünf Minuten fehlerhaft war, wird beispielsweise wie folgt angegeben: (HealthState != Ok and Now - LastOkTransitionTime > 5 minutes).
+- Beim Umschalten des Zustands einer Eigenschaft zwischen „Warning“ und „Error" bestimmen, wie lange die Eigenschaft fehlerhaft (d. h. nicht „OK“) war: Eine Warnung, die ausgegeben wird, wenn die Eigenschaft länger als fünf Minuten fehlerhaft war, wird beispielsweise wie folgt angegeben: (HealthState != Ok and Now - LastOkTransitionTime > 5 minutes).
 
 ## Beispiel: Melden und Evaluieren der Anwendungsintegrität
 Im folgenden Beispiel wird über PowerShell ein Integritätsbericht zur Anwendung **fabric:/WordCount** aus der Quelle **MyWatchdog** gesendet. Der Integritätsbericht enthält Informationen zur Integritätseigenschaft „Availability“, die den Integritätszustand „Error“ und den TimeToLive-Wert „Infinite“ aufweist. Anschließend wird die Anwendungsintegrität abgefragt. Die Abfrage gibt den aggregierten Integritätszustand „Error“ und die gemeldeten Integritätsereignisse in der Liste mit den Integritätsereignissen zurück.
@@ -264,38 +264,38 @@ PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount
 
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Error
-UnhealthyEvaluations            : 
+UnhealthyEvaluations            :
                                   Error event: SourceId='MyWatchdog', Property='Availability'.
-                                  
-ServiceHealthStates             : 
+
+ServiceHealthStates             :
                                   ServiceName           : fabric:/WordCount/WordCountService
                                   AggregatedHealthState : Error
-                                  
+
                                   ServiceName           : fabric:/WordCount/WordCountWebService
                                   AggregatedHealthState : Ok
-                                  
-DeployedApplicationHealthStates : 
+
+DeployedApplicationHealthStates :
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_0
                                   AggregatedHealthState : Ok
-                                  
+
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_2
                                   AggregatedHealthState : Ok
-                                  
+
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_3
                                   AggregatedHealthState : Ok
-                                  
+
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_4
                                   AggregatedHealthState : Ok
-                                  
+
                                   ApplicationName       : fabric:/WordCount
                                   NodeName              : _Node_1
                                   AggregatedHealthState : Ok
-                                  
-HealthEvents                    : 
+
+HealthEvents                    :
                                   SourceId              : System.CM
                                   Property              : State
                                   HealthState           : Ok
@@ -307,7 +307,7 @@ HealthEvents                    :
                                   RemoveWhenExpired     : False
                                   IsExpired             : False
                                   Transitions           : Error->Ok = 3/22/2016 7:56:53 PM, LastWarning = 1/1/0001 12:00:00 AM
-                                  
+
                                   SourceId              : MyWatchdog
                                   Property              : Availability
                                   HealthState           : Error
@@ -315,7 +315,7 @@ HealthEvents                    :
                                   SentAt                : 3/23/2016 3:27:56 PM
                                   ReceivedAt            : 3/23/2016 3:27:56 PM
                                   TTL                   : Infinite
-                                  Description           : 
+                                  Description           :
                                   RemoveWhenExpired     : False
                                   IsExpired             : False
                                   Transitions           : Ok->Error = 3/23/2016 3:27:56 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -337,4 +337,4 @@ Das Integritätsmodell wird hauptsächlich für die Überwachung und Diagnose, E
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

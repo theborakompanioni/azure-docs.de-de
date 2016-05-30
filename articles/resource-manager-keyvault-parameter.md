@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Verwenden eines geheimen Schlüssels aus einem Schlüsseltresor mit Ressourcen-Manager-Vorlagen | Microsoft Azure"
+   pageTitle="Verwenden eines geheimen Schlüssels aus einem Schlüsseltresor mit Resource Manager-Vorlage | Microsoft Azure"
    description="Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung."
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="05/16/2016"
    ms.author="tomfitz"/>
 
 # Übergeben sicherer Werte während der Bereitstellung
 
-Wenn Sie während der Bereitstellung einen sicheren Wert (z. B. ein Kennwort) als Parameter übergeben müssen, können Sie diesen Wert als geheimen Schlüssel in einem [Azure-Schlüsseltresor](./key-vault/key-vault-whatis.md) speichern und in anderen Ressourcen-Manager-Vorlagen auf ihn verweisen. In Ihrer Vorlage fügen Sie lediglich einen Verweis auf den geheimen Schlüssel ein, sodass dieser niemals offengelegt wird. Zudem müssen Sie den Wert für den geheimen Schlüssel nicht bei jedem Bereitstellen der Ressourcen manuell eingeben. Sie geben an, welche Benutzer oder Dienstprinzipale auf den geheimen Schlüssel zugreifen können.
+Wenn Sie während der Bereitstellung einen sicheren Wert (z. B. ein Kennwort) als Parameter übergeben müssen, können Sie diesen Wert als geheimen Schlüssel in einem [Azure-Schlüsseltresor](./key-vault/key-vault-whatis.md) speichern und in anderen Ressourcen-Manager-Vorlagen auf ihn verweisen. In Ihrer Vorlage fügen Sie lediglich einen Verweis auf den geheimen Schlüssel ein, sodass dieser niemals offengelegt wird. Zudem müssen Sie den Wert für den geheimen Schlüssel nicht bei jedem Bereitstellen der Ressourcen manuell eingeben. Sie geben an, welche Benutzer oder Dienstprinzipale auf den geheimen Schlüssel zugreifen können.
 
 ## Bereitstellen eines Schlüsseltresors und eines geheimen Schlüssels
 
@@ -103,4 +103,4 @@ Der Parameter, der den geheimen Schlüssel annimmt, sollte ein Parameter des Typ
 - Informationen zur Verwendung eines Schlüsseltresors mit einem virtuellen Computer finden Sie unter [Sicherheitsaspekte für Azure Resource Manager](best-practices-resource-manager-security.md).
 - Vollständige Beispiele für Verweise auf geheime Schlüssel finden Sie unter [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (in englischer Sprache).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

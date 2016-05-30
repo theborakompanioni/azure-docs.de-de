@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Installieren der Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-	description="Installieren der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows, um Azure Services zu nutzen"
+	description="Installieren der Azure-Befehlszeilenschnittstelle (CLI) für Mac, Linux und Windows, um Azure Services zu nutzen"
 	editor=""
 	manager="timlt"
 	documentationCenter=""
@@ -14,10 +14,14 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="04/20/2016"
 	ms.author="danlep"/>
-
+    
 # Installieren der Azure-Befehlszeilenschnittstelle
+
+> [AZURE.SELECTOR]
+- [PowerShell](powershell-install-configure.md)
+- [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md)
 
 Installieren Sie schnell die Azure-Befehlszeilenschnittstelle (Azure-CLI), um eine Reihe von auf der Open-Source-Shell basierenden Befehlen zum Erstellen und Verwalten von Ressourcen in Microsoft Azure zu verwenden. Sie haben mehrere Möglichkeiten: Verwenden Sie eines der bereitgestellten Installationspakete für verschiedene Betriebssysteme, installieren Sie von einem npm-Paket aus, oder installieren Sie die Azure-Befehlszeilenschnittstelle als Container auf einem Docker-Host. Weitere Optionen und Hintergrundinformationen finden Sie im Projektrepository auf [GitHub](https://github.com/azure/azure-xplat-cli).
 
@@ -31,7 +35,7 @@ Die folgenden Installer-Pakete sind verfügbar:
 
 * [Windows Installer][windows-installer]
 
-* [OS X Installer](http://go.microsoft.com/fwlink/?LinkId=252249)
+* [OS X Installer][mac-installer]
 
 * [Linux Installer][linux-installer]
 
@@ -59,6 +63,11 @@ Sobald die Azure-Befehlszeilenschnittstelle installiert ist, können Sie den Bef
 ```
 azure help
 ```
+> [AZURE.NOTE]Bei einigen Linux-Distributionen erhalten Sie möglicherweise die folgende Fehlermeldung: /usr/bin/env: „Knoten“: Datei oder Verzeichnis nicht vorhanden. Diese stammt von jüngsten Installationen von Nodejs, das unter „/usr/bin/nodejs“ installiert wird. Erstellen Sie zum Beheben dieses Fehlers eine symbolische Verknüpfung mit „/usr/bin/node“, indem Sie den folgenden Befehl ausführen:
+
+```
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
 
 Um die installierte Version der Azure-Befehlszeilenschnittstelle anzuzeigen, geben Sie Folgendes ein:
 
@@ -68,10 +77,12 @@ azure --version
 
 Jetzt sind Sie soweit. Um Zugriff auf alle CLI-Befehle für die Arbeit mit Ihren eigenen Ressourcen zu erhalten, [stellen Sie über die Azure-Befehlszeilenschnittstelle eine Verbindung mit Ihrem Azure-Abonnement her](xplat-cli-connect.md).
 
+>[AZURE.NOTE] Wenn Sie zuerst die Azure CLI-Version 0.9.20 oder später verwenden, werden Sie in einer Meldung gefragt, ob Sie Microsoft das Sammeln von Informationen zur Verwendung der Befehlszeilenschnittstelle erlauben möchten. Die Teilnahme ist freiwillig. Wenn Sie sich zur Teilnahme entscheiden, Sie können diese durch Ausführen von `azure telemetry --disable` jederzeit beenden. Zum Aktivieren der Teilnahme können Sie jederzeit `azure telemetry --enable` ausführen.
+
 
 ## Aktualisieren der CLI
 
-Microsoft veröffentlicht regelmäßig aktualisierte Versionen der Azure-Befehlszeilenschnittstelle. Installieren Sie die CLI erneut mit dem Installationsprogramm für Ihr Betriebssystem. Wenn Node.js und npm installiert sind, aktualisieren Sie sie, indem Sie Folgendes eingeben (in Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden):
+Microsoft veröffentlicht regelmäßig aktualisierte Versionen der Azure-Befehlszeilenschnittstelle. Installieren Sie die CLI erneut mit dem Installationsprogramm für Ihr Betriebssystem. Wenn Node.js und npm installiert sind, aktualisieren Sie sie, indem Sie Folgendes eingeben (bei Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden):
 
 ```
 npm update -g azure-cli
@@ -93,4 +104,4 @@ npm update -g azure-cli
 [cliasm]: virtual-machines-command-line-tools.md
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

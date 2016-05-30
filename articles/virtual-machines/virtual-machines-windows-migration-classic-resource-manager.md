@@ -23,13 +23,13 @@ Es ist schon fast ein Jahr her, dass wir die Unterstützung für virtuelle Compu
 
 ## Was ist unser Ziel bei der Migration?
 
-Wir freuen uns sehr über die Leistungsfähigkeit und die Funktionalität der neuen Oberfläche und APIs der virtuellen Computer. Wir sind der Meinung, dass dies wirklich viele neue Möglichkeiten zur Nutzung der Cloud schafft. Dank der Veröffentlichung des neuen Modells können Sie die jeweiligen Dienste in einer Ressourcengruppe bereitstellen, verwalten und überwachen. Resource Manager ermöglicht die Bereitstellung komplexer Anwendungen mit Vorlagen, konfiguriert virtuelle Computer mit VM-Erweiterungen und bietet eine Zugriffsverwaltung und das Taggen. Außerdem kann die skalierbare, parallele Bereitstellung für virtuelle Computer in Verfügbarkeitsgruppen genutzt werden. Darüber hinaus bietet das neue Modell die unabhängige Lebenszyklusverwaltung der Bereiche Compute, Netzwerk und Speicher. Der Schwerpunkt liegt zudem auf der standardmäßigen Sicherstellung der Sicherheit, indem virtuelle Computer in einem virtuellen Netzwerk verwendet werden.
+Wir freuen uns sehr über die Leistungsfähigkeit und die Funktionalität der neuen Oberfläche und APIs der virtuellen Computer. Wir sind der Meinung, dass dies die Verwendung der Cloud auf vielfältige Weise ändern wird. Mit der Veröffentlichung des neuen Modells können Sie Dienste für eine Ressourcengruppe bereitstellen, verwalten und überwachen. Resource Manager ermöglicht die Bereitstellung komplexer Anwendungen mit Vorlagen, konfiguriert virtuelle Computer mit VM-Erweiterungen und bietet eine Zugriffsverwaltung und das Taggen. Außerdem kann die skalierbare, parallele Bereitstellung für virtuelle Computer in Verfügbarkeitsgruppen genutzt werden. Darüber hinaus bietet das neue Modell die unabhängige Lebenszyklusverwaltung der Bereiche Compute, Netzwerk und Speicher. Schließlich liegt ein Schwerpunkt auf der standardmäßigen Sicherstellung der Sicherheit, indem virtuelle Computer in einem virtuellen Netzwerk verwendet werden.
 
-Aus Sicht der Features werden unter Azure Resource Manager fast alle Features für die Bereiche Compute, Netzwerk und Speicher unterstützt. Es gibt noch ein paar Ausnahmen, an denen wir in den nächsten Monaten mit Hochdruck arbeiten werden. Wir optimieren die Benutzeroberfläche ständig und fügen dem Azure-Portal weitere Features hinzu, um die Umgebungen noch besser zu verknüpfen.
+Aus Sicht der Features werden unter Azure Resource Manager fast alle Features aus dem klassischen Bereitstellungsmodell für die Bereiche Compute, Netzwerk und Speicher unterstützt. Es gibt noch ein paar Ausnahmen, an denen wir in den nächsten Monaten mit Hochdruck arbeiten werden. Wir optimieren die Benutzeroberfläche ständig und fügen dem Azure-Portal weitere Features hinzu, um die Umgebungen noch besser zu verknüpfen.
 
 Aufgrund dieser neuen Funktion und der wachsenden Bereitstellungsbasis im neuen Azure Resource Manager möchten wir erreichen, dass Kunden vorhandene Bereitstellungen unter dem klassischen Bereitstellungsmodell migrieren können.
 
->[AZURE.NOTE] Mit dieser Ankündigung starten wir die öffentliche Vorschauversion des Migrationsdiensts. Während der öffentlichen Vorschauphase empfehlen wir nur die Migration von Entwicklungs- oder Testworkloads unter Ihrem Azure-Abonnement.
+>[AZURE.NOTE] Mit dieser Ankündigung starten wir die öffentliche Vorschauversion des Migrationsdiensts. Während der öffentlichen Vorschauphase empfehlen wir nur die Migration von Nicht-Produktions-Workloads unter Ihrem Azure-Abonnement.
 
 ## Änderungen an der Automatisierung und an den Tools nach der Migration
 
@@ -46,13 +46,16 @@ Bevor wir näher auf die Details eingehen, möchten wir kurz den Unterschied zwi
 
 ## Wie lauten die unterstützten Migrationsbereiche?
 
-Während der öffentlichen Vorschauphase bieten wir zwei Migrationsbereiche an, bei denen es hauptsächlich um Compute und Netzwerk geht. Die Unterstützung für die Migration von Speicherkonten ist geplant und wird in Kürze veröffentlicht. Um eine nahtlose Migration zu ermöglichen, haben wir dafür gesorgt, dass die klassischen Speicherkonten Datenträger für Resource Manager-VMs enthalten. Unten finden Sie hierzu weitere Details.
+Während der öffentlichen Vorschauphase bieten wir zwei Migrationsbereiche an, bei denen es hauptsächlich um Compute und Netzwerk geht. Die Unterstützung für die Migration von Speicherkonten ist geplant und wird in Kürze veröffentlicht. Um eine nahtlose Migration zu ermöglichen, haben wir dafür gesorgt, dass die klassischen Speicherkonten Datenträger für virtuelle Resource Manager-Computer enthalten. Unten finden Sie hierzu weitere Details.
 
 ### Migration von virtuellen Computern (nicht in einem virtuellen Netzwerk)
 
-Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendungen standardmäßig erzwungen. Daher müssen sich beim Resource Manager-Modell alle VMs in einem virtuellen Netzwerk befinden. Im Rahmen der Migration werden die VMs deshalb neu gestartet (beenden, Zuordnung aufheben und starten). In Bezug auf virtuelle Netzwerke haben Sie folgende Wahlmöglichkeiten:
+Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendungen standardmäßig erzwungen. Daher müssen sich beim Resource Manager-Modell alle VMs in einem virtuellen Netzwerk befinden. Daher werden die virtuellen Computer neu gestartet (beenden, Zuordnung aufheben und starten). In Bezug auf virtuelle Netzwerke haben Sie folgende Wahlmöglichkeiten:
 - Sie können für die Plattform die Erstellung eines neuen virtuellen Netzwerks anfordern und den virtuellen Computer in das neue virtuelle Netzwerk migrieren. (oder)
 - Sie können den virtuellen Computer zu einem vorhandenen virtuellen Netzwerk in Resource Manager migrieren.
+
+- Sie können für die Plattform die Erstellung eines neuen virtuellen Netzwerks anfordern und den virtuellen Computer in das neue virtuelle Netzwerk migrieren, oder
+- Sie können den virtuellen Computer in ein vorhandenes virtuelles Netzwerk in Resource Manager migrieren.
 
 >[AZURE.NOTE] In diesem Migrationsbereich sind die Vorgänge auf „Verwaltungsebene“ und „Datenebene“ für einen bestimmten Zeitraum während der Migration unter Umständen nicht zulässig.
 
@@ -60,7 +63,7 @@ Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendunge
 
 In diesem Bereich migrieren wir für die meisten VM-Konfigurationen nur die Metadaten zwischen dem klassischen Bereitstellungsmodell und Resource Manager. Die zugrunde liegenden virtuellen Computer werden auf derselben Hardware, in demselben Netzwerk und mit demselben Speicher ausgeführt. Wenn es um die Migration der Metadaten aus dem klassischen Bereitstellungsmodell zu Resource Manager geht, sind die Vorgänge der „Verwaltungsebene“ also unter Umständen für einen bestimmten Zeitraum während der Migration nicht zulässig. Die Datenebene funktioniert aber weiterhin. Die bedeutet, dass es für Ihre Anwendungen, die auf virtuellen Computern ausgeführt werden (klassisch), während der Migration nicht zu Ausfallzeiten kommt.
 
-Die folgenden Konfigurationen werden derzeit nicht unterstützt. Wenn wir diese Unterstützung später hinzufügen, können für folgende VMs bei dieser Konfiguration aber Ausfallzeiten auftreten (beenden, Zuordnung aufheben und neu starten):
+Die folgenden Konfigurationen werden derzeit nicht unterstützt. Wenn wir diese Unterstützung später hinzufügen, können für folgende virtuelle Computer bei dieser Konfiguration Ausfallzeiten auftreten (beenden, Zuordnung aufheben und neu starten):
 
 -	Verwendung von mehr als einer Verfügbarkeitsgruppe in einem Clouddienst
 -	Verwendung von mindestens einer Verfügbarkeitsgruppe und von VMs, die keiner Verfügbarkeitsgruppe angehören, in einem Clouddienst
@@ -72,7 +75,8 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt. Wenn wir diese 
 Die Speicherkontomigration wird derzeit für die öffentliche Vorschauphase nicht unterstützt. Die Unterstützung für die Speicherkontomigration ist aber geplant und soll in Kürze veröffentlicht werden. Es gibt zwei wichtige Aspekte in Bezug auf die Migration und das damit verbundene Speicherkontoverhalten.
 
 - Ermöglichen der Bereitstellung von Resource Manager-VMs in einem klassischen Speicherkonto: Um die nahtlose Migration zu ermöglichen, haben wir die Funktion zum Bereitstellen von Resource Manager-VMs in einem klassischen Speicherkonto eingebaut. Mit dieser Funktion können Compute- und Netzwerkressourcen unabhängig von Speicherkonten migriert werden.
-- Bewährte Methode für Speicherkontomigration: Wenn die Speicherkontomigration unterstützt wird, setzt die Plattform die Compute- und Netzwerkressourcen separat von den Speicherkonten durch, um für einen nahtlosen Vorgang zu sorgen.
+- Bewährte Methode für die Migration von Speicherkonten
+	- Wenn die Speicherkontomigration unterstützt wird, erzwingt die Plattform die Compute- und Netzwerkressourcen separat von den Speicherkonten, um für einen nahtlosen Vorgang zu sorgen.
 
 ## Nicht unterstützte Features und Konfigurationen
 
@@ -113,11 +117,11 @@ Dynamics Lifecycle Services | Virtuelles Netzwerk, das virtuelle Computer mit Ve
 
 ## Migrationsvorgang
 
-Wir empfehlen Ihnen, einige Schritte auszuführen, bevor Sie mit dem Migrationsvorgang beginnen.
+Wir empfehlen, bestimmte Schritte auszuführen, bevor Sie mit dem Migrationsvorgang beginnen.
 
 1. Stellen Sie sicher, dass für die Ressourcen, die für die Migration eingeplant sind, keine nicht unterstützten Features oder Konfigurationen genutzt werden. In den meisten Fällen erkennt die Plattform Probleme dieser Art und löst einen Fehler aus.
-2. Wenn Sie über VMs verfügen, die nicht in einem virtuellen Netzwerk enthalten sind, werden sie während der Vorbereitung beendet, und die Zuordnung wird aufgehoben. Wenn Sie die öffentliche IP-Adresse also nicht verlieren möchten, ist es hilfreich, sich die Informationen zum Reservieren der IP-Adresse anzusehen, bevor Sie den Vorbereitungsprozess auslösen. Wenn sich die VMs aber in einem virtuellen Netzwerk befinden, werden sie nicht beendet, und die Zuordnung wird nicht aufgehoben.
-3. Für Azure ist es ratsam, dass Sie eine Testumgebung mit einem ähnlichen Setup einrichten und diese Ressourcen migrieren, bevor Sie Produktionsbereitstellungen migrieren.
+2. Wenn Sie über VMs verfügen, die nicht in einem virtuellen Netzwerk enthalten sind, werden sie während der Vorbereitung beendet, und die Zuordnung wird aufgehoben. Wenn Sie die öffentliche IP-Adresse nicht verlieren möchten, ist es hilfreich, sich die Informationen zum Reservieren der IP-Adresse anzusehen, bevor Sie den Vorbereitungsprozess beginnen. Wenn sich die VMs aber in einem virtuellen Netzwerk befinden, werden sie nicht beendet, und die Zuordnung wird nicht aufgehoben.
+3. Azure empfiehlt, zu diesem Zeitpunkt keine Produktionsressourcen zu migrieren.
 4. Planen Sie die Migration für einen Zeitraum außerhalb der Geschäftszeiten, um Raum für unerwartete Fehler zu lassen, die während der Migration unter Umständen auftreten können.
 5. Laden Sie die aktuelle Konfiguration Ihrer virtuellen Computer mit PowerShell, CLI-Befehlen oder REST-APIs herunter, um die Überprüfung zu vereinfachen, nachdem der Vorbereitungsschritt abgeschlossen ist.
 6. Aktualisieren Sie Ihre Skripts für die Automatisierung und Operationalisierung, um sie an das Resource Manager-Bereitstellungsmodell anzupassen, bevor Sie die Migration starten. Außerdem können Sie optional GET-Vorgänge durchführen, wenn sich die Ressourcen im Zustand „Vorbereitet“ befinden.
@@ -148,17 +152,10 @@ Mit der Ankündigung der öffentlichen Vorschau haben wir Unterstützung für da
 
 4.	Commit
   * Nachdem Sie die Überprüfung abgeschlossen haben, können Sie ein „Commit“ für die Migration durchführen. Die Ressourcen werden unter dem klassischen Bereitstellungsmodell nicht mehr angezeigt, sondern sind nur noch unter dem Resource Manager-Bereitstellungsmodell verfügbar. Dies bedeutet auch, dass die migrierten Ressourcen nur im neuen Portal verwaltet werden können.
-	* Wenn dieser Vorgang nicht erfolgreich ist, raten wir Ihnen, es einige Male erneut zu versuchen. Falls sich kein Erfolg einstellt, sollten Sie ein Supportticket oder einen Eintrag im Forum mit dem Tag ClassicIaaSMigration erstellen. Dies ist [hier](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) möglich.
+	* Wenn dieser Vorgang nicht erfolgreich ist, raten wir Ihnen, es einige Male erneut zu versuchen. Falls weiterhin Fehler auftreten, sollten Sie ein Supportticket oder einen Eintrag im Forum mit dem Tag „ClassicIaaSMigration“ erstellen. Dies ist [hier](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) möglich.
 
 >[AZURE.NOTE] Beachten Sie Folgendes: Alle im Anschluss beschriebenen Vorgänge sind idempotent. Sollte ein Fehler auftreten, der nicht auf ein nicht unterstütztes Feature oder auf eine nicht unterstützte Konfiguration zurückzuführen ist, wiederholen Sie den prepare-, abort- oder commit-Vorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 
-## Nächste Schritte
-Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen zu Resource Manager haben, können Sie damit beginnen, die Ressourcen zu migrieren.
-
-- [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-- [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell](virtual-machines-windows-ps-migration-classic-resource-manager.md)
-- [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-cli-migration-classic-resource-manager.md)
-- [Klonen eines klassischen virtuellen Computers für Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
 ## Häufig gestellte Fragen
 
@@ -168,7 +165,7 @@ Nein. Bei den virtuellen Computern (klassisch) handelt es sich um vollständig u
 
 **Was passiert mit meinen VMs, wenn ich für die nahe Zukunft keine Migration plane?**
 
-Die vorhandenen klassischen APIs und das Ressourcenmodell werden nicht als veraltet ausgesondert. Wir möchten die Migration extrem einfach gestalten, indem wir die erweiterten Funktionen für das Resource Manager-Bereitstellungsmodell zur Verfügung stellen. Daher empfehlen wir Ihnen dringend, sich [hier](virtual-machines-windows-compare-deployment-models.md) über einige Weiterentwicklungen zu informieren, die im Rahmen des IaaS-Vorgangs unter Resource Manager vorgenommen wurden.
+Die vorhandenen klassischen APIs und das Ressourcenmodell werden nicht als veraltet ausgesondert. Wir möchten die Migration extrem einfach gestalten, indem wir die erweiterten Funktionen für das Resource Manager-Bereitstellungsmodell zur Verfügung stellen. Daher empfehlen wir Ihnen dringend, sich [hier](virtual-machines-windows-compare-deployment-models.md) über einige Weiterentwicklungen zu informieren, die im Rahmen von IaaS unter Resource Manager vorgenommen wurden.
 
 **Was bedeutet dieser Migrationsplan für meine vorhandenen Tools?**
 
@@ -184,7 +181,7 @@ Sie können die Migration abbrechen, solange sich die Ressourcen im Zustand „V
 
 **Kann ich für meine Migration ein Rollback durchführen, wenn beim Commit-Vorgang ein Fehler auftritt?**
 
-Sie können die Migration nicht abbrechen, wenn für den Commit-Vorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commit-Vorgangs, sind idempotent. Daher wird empfohlen, dass Sie versuchen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Falls der Fehler weiterhin auftritt, sollten Sie ein Supportticket oder einen Eintrag im Forum mit dem Tag ClassicIaaSMigration erstellen. Dies ist [hier](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) möglich.
+Sie können die Migration nicht abbrechen, wenn für den Commit-Vorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commit-Vorgangs, sind idempotent. Daher wird empfohlen, dass Sie versuchen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Falls der Fehler weiterhin auftritt, sollten Sie ein Supportticket oder einen Eintrag im Forum mit dem Tag „ClassicIaaSMigration“ erstellen. Dies ist [hier](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) möglich.
 
 **Muss ich eine weitere ExpressRoute-Verbindung kaufen, wenn ich IaaS unter dem Resource Manager verwenden muss?**
 
@@ -212,7 +209,7 @@ Wir empfehlen Ihnen, die Migration abzubrechen. Erstellen Sie anschließend eine
 
 **Wie kann ich ein Problem melden, wenn ich keinen Supportvertrag habe?**
 
-Bitte posten Sie Ihre Probleme und Fragen zur Migration [hier](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) in unserem Forum zu Virtual Machines unter dem Schlüsselwort ClassicIaaSMigration. Wir empfehlen Ihnen, alle Fragen in diesem Forum zu stellen. Falls Sie über einen Supportvertrag verfügen, können Sie auch gern zusätzlich ein Supportticket erstellen.
+Bitte posten Sie Ihre Probleme und Fragen zur Migration [hier](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) in unserem Forum zu virtuellen Computern unter dem Schlüsselwort „ClassicIaaSMigration“. Wir empfehlen Ihnen, alle Fragen in diesem Forum zu stellen. Falls Sie über einen Supportvertrag verfügen, können Sie auch gern zusätzlich ein Supportticket erstellen.
 
 **Was passiert, wenn mir die Namen nicht gefallen, die von der Plattform während der Migration für meine Ressourcengruppen ausgewählt wurden?**
 
@@ -222,4 +219,13 @@ In Kürze wird die Unterstützung für das Verschieben von Ressourcen zwischen R
 
 Für alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell explizit Namen angeben, werden diese während der Migration beibehalten. In einigen Fällen werden neue Ressourcen erstellt. Beispiel: Für jede VM wird eine Netzwerkschnittstelle erstellt. Derzeit wird es nicht unterstützt, die Namen dieser neuen Ressourcen, die während der Migration erstellt werden, zu steuern. Sie können [hier](http://feedback.azure.com) Ihre Stimme für diese Funktion abgeben.
 
-<!---HONumber=AcomDC_0511_2016-->
+
+## Nächste Schritte
+Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen zu Resource Manager haben, können Sie damit beginnen, die Ressourcen zu migrieren.
+
+- [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+- [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell](virtual-machines-windows-ps-migration-classic-resource-manager.md)
+- [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-cli-migration-classic-resource-manager.md)
+- [Klonen eines klassischen virtuellen Computers für Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
+
+<!---HONumber=AcomDC_0518_2016-->

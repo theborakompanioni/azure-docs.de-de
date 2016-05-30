@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Gewusst wie: Erstellen einer Datenbank in DocumentDB | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie eine Datenbank mit dem Onlinedienstportal für Azure DocumentDB, einer NoSQL-Dokumentendatenbank für JSON, erstellen. Erhalten Sie noch heute ein kostenloses Konto." 
+	description="Erfahren Sie, wie Sie eine Datenbank mit dem Onlinedienstportal für Azure DocumentDB erstellen, einer superschnellen NoSQL-Datenbank mit globaler Skalierbarkeit." 
 	keywords="So erstellen Sie eine Datenbank" 
 	services="documentdb" 
 	authors="mimig1" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mimig"/>
 
 # So erstellen Sie über das Azure-Portal eine Datenbank für DocumentDB
@@ -51,4 +51,4 @@ Sobald die Sammlung erstellt ist, können Sie mithilfe des Dokument-Explorers im
 
 Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#executing-sql-queries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](documentdb-sdk-dotnet.md) verwenden.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

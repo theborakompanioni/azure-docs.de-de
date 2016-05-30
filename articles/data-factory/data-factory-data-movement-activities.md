@@ -60,7 +60,7 @@ Die Kopieraktivität kopiert Daten aus einem Eingabedataset (**Quelle**) in ein 
 Die Kopieraktivität bietet die folgenden Funktionen:
 
 ### <a name="global"></a>Global verfügbare Datenverschiebung
-Obwohl Azure Data Factory selbst nur in den Regionen „USA, Westen“ und „Nordeuropa“ verfügbar ist, steht der Dienst, der die Kopieraktivität unterstützt, global in den folgenden Regionen und Gebieten zur Verfügung. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen und vermeidet in den meisten Fällen regionsübergreifende Hops.
+Obwohl Azure Data Factory selbst nur in den Regionen „USA, Westen“, „USA, Osten“ und „Europa, Norden“ verfügbar ist, steht der Dienst, der die Kopieraktivität unterstützt, global in den folgenden Regionen und Gebieten zur Verfügung. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen und vermeidet in den meisten Fällen regionsübergreifende Hops.
 
 Das **Datenverwaltungsgateway** oder die **Azure Data Factory** führt die Datenverschiebung basierend auf dem Speicherort der Quell- und Zieldatenspeicher als Kopiervorgang durch. Die folgende Tabelle enthält die Details hierzu:
 
@@ -195,4 +195,4 @@ Sie können auch, wie nachfolgend dargestellt, eine **benutzerdefinierte** Varia
 
 ![Verwenden von benutzerdefinierten Variablen](./media/data-factory-data-movement-activities/blob-custom-variables-in-folder-path.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

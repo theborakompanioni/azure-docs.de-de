@@ -22,12 +22,7 @@ In diesem Tutorial wird veranschaulicht, wie eine API-App in einer in [App Servi
 
 ## Voraussetzungen
 
-Dieses Tutorial baut auf der Reihe der API-App-Tutorials auf:
-
-1. [Erstellen einer Azure API-App](../app-service-dotnet-create-api-app)
-3. [Bereitstellen einer Azure API-App](../app-service-dotnet-deploy-api-app)
-4. [Debuggen einer Azure API-App](../app-service-dotnet-remotely-debug-api-app)
-
+Dieses Tutorial baut auf [Erstellen einer Azure-API-App](../app-service-api/app-service-api-dotnet-get-started.md) auf.
 
 ## Erstellen einer ASP.NET MVC-Anwendung in Visual Studio
 
@@ -43,7 +38,7 @@ Dieses Tutorial baut auf der Reihe der API-App-Tutorials auf:
 
 	![Azure API-App-Verweis hinzufügen...](./media/app-service-web-connect-web-app-to-saas-api/3-Add-Azure-API-App-SDK.png)
 
-1. Wählen Sie unter **REST-API-Client hinzufügen** die Option „Aus Microsoft Azure API-App herunterladen“ aus, und klicken Sie auf „Durchsuchen“. Wählen sie die API-App aus, mit der eine Verbindung hergestellt werden soll.
+1. Wählen Sie unter **REST-API-Client hinzufügen** die Option „Aus Microsoft Azure-API-App herunterladen“ aus, und klicken Sie auf „Durchsuchen“. Wählen Sie die API-App aus, mit der eine Verbindung hergestellt werden soll.
 
 	![Auswählen einer vorhandenen API-App](./media/app-service-web-connect-web-app-to-saas-api/4-Add-Azure-API-App-SDK-Dialog.png)
 
@@ -89,4 +84,4 @@ Befolgen Sie die Anweisungen unter [Bereitstellen einer Azure Web-App](web-sites
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

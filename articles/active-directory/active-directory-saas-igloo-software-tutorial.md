@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="02/17/2016" 
+    ms.date="05/16/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Igloo Software
@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-igloo-software-tutorial/IC783965.png "Microsoft Azure AD – einmaliges Anmelden")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Igloo Software-Anmelde-URL** die URL im Format „*https://company.igloocommunities.com/?signin*" ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Igloo Software-Anmelde-URL** die URL im Format „**https://company.igloocommunities.com/?signin*" ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "App-URL konfigurieren")
 
@@ -154,4 +154,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

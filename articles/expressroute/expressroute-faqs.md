@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/20/2016"
+   ms.date="05/11/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute – FAQ
@@ -149,7 +149,7 @@ Sie müssen eine ExpressRoute-Verbindung einrichten und Routen für öffentliche
 Ja. Wir akzeptieren bis zu 4.000 Routenpräfixe für privates Peering und je 200 für öffentliches Peering und Microsoft-Peering. Sie können diesen Wert auf 10.000 Routen für privates Peering erhöhen, wenn Sie für ExpressRoute das Premium-Feature aktivieren.
 
 ### Gibt es Einschränkungen hinsichtlich der IP-Adressbereiche, die ich über die BGP-Sitzung ankündigen kann?
-Wir akzeptieren keine privaten Präfixe (RFC1918) in der öffentlichen BGP-Peeringsitzung.
+Wir akzeptieren keine privaten Präfixe (RFC1918) in der öffentlichen und Microsoft-BGP-Peeringsitzung.
 
 ### Was geschieht, wenn ich die BGP-Limits überschreite?
 BGP-Sitzungen werden abgebrochen. Sie werden zurückgesetzt, sobald die Präfixanzahl unter das Limit fällt.
@@ -245,4 +245,7 @@ Weitere Informationen zur Liste der Partner und Standorte, die ExpressRoute unte
 ### Kann ich über das Internet auf Office 365 zugreifen, selbst wenn für meine Organisation ExpressRoute konfiguriert wurde?
 Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn ExpressRoute für Ihr Netzwerk konfiguriert wurde. Wenn Sie sich an einem Ort befinden, an dem die Verbindung mit Office 365-Diensten über ExpressRoute konfiguriert wurde, wird die Verbindung über ExpressRoute hergestellt.
 
-<!---HONumber=AcomDC_0427_2016-->
+### Kann über eine ExpressRoute-Verbindung auf Dynamics AX zugegriffen werden?
+Nein, dies wird nicht unterstützt.
+
+<!---HONumber=AcomDC_0518_2016-->

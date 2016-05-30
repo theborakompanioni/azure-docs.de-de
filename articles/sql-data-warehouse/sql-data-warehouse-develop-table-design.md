@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="05/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Tabellenentwurf in SQL Data Warehouse #
-SQL Data Warehouse ist ein verteiltes Datenbanksystem mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP). Daten werden an vielen verschiedenen Orten gespeichert, die als **Verteilungen** bezeichnet werden. Jede **Verteilung** fungiert wie ein „Bucket“. Darin werden eindeutige Teilmengen von Daten im Data Warehouse gespeichert. Indem die Daten- und Verarbeitungsfunktionen über mehrere Knoten verteilt werden, ist in SQL Data Warehouse eine umfassende Skalierbarkeit möglich, die die Skalierbarkeit eines einzelnen Systems weit übersteigt.
+SQL Data Warehouse ist ein verteiltes Datenbanksystem mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP). Daten werden an vielen verschiedenen Orten gespeichert, die als **Verteilungen** bezeichnet werden. Jede **Verteilung** fungiert wie ein „Bucket“. Darin werden eindeutige Teilmengen von Daten im Data Warehouse gespeichert. Indem die Daten- und Verarbeitungsfunktionen über mehrere Knoten verteilt werden, ermöglicht SQL Data Warehouse eine deutlich umfassendere Skalierbarkeit als ein Einzelsystem.
 
 Wenn eine Tabelle in SQL Data Warehouse erstellt wird, wird sie dabei auf alle Verteilungen verteilt.
 
@@ -52,8 +52,10 @@ In SQL Data Warehouse werden die folgenden allgemeinen Geschäftsdatentypen unte
 - **smalldatetime**
 - **smallint**
 - **smallmoney**
+- **sysname**
 - **time**
 - **tinyint**
+- **uniqueidentifier**
 - **varbinary**
 - **varchar**
 
@@ -75,26 +77,17 @@ WHERE y.[name] IN
                 ,   'hierarchyid'
                 ,   'image'
                 ,   'ntext'
-                ,   'numeric'
                 ,   'sql_variant'
-                ,   'sysname'
                 ,   'text'
                 ,   'timestamp'
-                ,   'uniqueidentifier'
                 ,   'xml'
                 )
-
-OR  (   y.[name] IN (  'nvarchar','varchar','varbinary')
-    AND c.[max_length] = -1
-    )
-OR  y.[is_user_defined] = 1
+AND  y.[is_user_defined] = 1
 ;
 
 ```
 
-Die Abfrage enthält alle benutzerdefinierten Datentypen, die nicht unterstützt werden.
-
-Im Folgenden finden Sie einige Alternativen, die denen Sie anstelle von nicht unterstützten Datentypen verwenden können.
+Die Abfrage enthält alle benutzerdefinierten Datentypen, die nicht unterstützt werden. Im Folgenden finden Sie einige Alternativen, die Sie anstelle von nicht unterstützten Datentypen verwenden können.
 
 Alternativen:
 
@@ -102,22 +95,22 @@ Alternativen:
 - **geography**: stattdessen einen varbinary-Typ
 - **hierarchyid**: CLR-Typ, nicht systemeigen
 - **image**, **text**, **ntext**: falls textbasiert, varchar/nvarchar verwenden (je kleiner desto besser)
-- **nvarchar(max)**: nvarchar(4000) oder kleiner zur Verbesserung der Leistung
-- **numeric**: decimal
 - **sql\_variant**: Spalte in mehrere Spalten mit starker Typisierung unterteilen
-- **sysname**: nvarchar(128)
 - **table**: in temporäre Tabellen konvertieren
 - **timestamp**: Code anpassen, sodass datetime2 und die `CURRENT_TIMESTAMP`-Funktion verwendet wird. Beachten Sie, dass Sie current\_timestamp nicht als Standardeinschränkung verwenden können und dass der Wert nicht automatisch aktualisiert wird. Wenn Sie rowversion-Werte aus einer Spalte mit timestamp-Typ migrieren müssen, sollten Sie BINARY(8) oder VARBINARY(8) für NOT NULL- oder NULL-Zeilenversionswerte verwenden.
+- **Benutzerdefinierte Datentypen**: zurück in systemeigene Typen konvertieren, falls möglich
+- **xml**: varchar(max) oder kleiner zur Verbesserung der Leistung
+
+Für bessere Leistung anstelle von:
+
+- **nvarchar(max)**: nvarchar(4000) oder kleiner zur Verbesserung der Leistung
 - **varchar(max)**: varchar(8000) oder kleiner zur Verbesserung der Leistung
-- **uniqueidentifier**: varbinary(8)
-- **user defined types**: zurück in systemeigene Typen konvertieren, falls möglich
-- **xml**: varchar(8000) oder kleiner zur Verbesserung der Leistung verwenden – bei Bedarf auf Spalten aufteilen
 
 Teilweise unterstützt:
 
-- Standardeinschränkungen unterstützen nur Literale und Konstanten. Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt.
+- Standardeinschränkungen unterstützen nur Literale und Konstanten. Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt.
 
-> [AZURE.NOTE] Definieren Sie Ihre Tabellen so, dass die maximal mögliche Zeilengröße, einschließlich der vollständigen Länge der Spalten mit variabler Länge, 32.767 Byte nicht überschreitet. Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der dieser Wert überschritten wird, aber Sie können keine Daten in die Tabelle einfügen. Versuchen Sie außerdem, die Größe Ihrer Spalten mit variabler Länge zu beschränken, um beim Ausführen von Abfragen einen noch besseren Durchsatz zu erzielen.
+> [AZURE.NOTE] Falls Sie PolyBase zum Laden Ihrer Tabellen verwenden, definieren Sie Ihre Tabellen so, dass die maximal mögliche Zeilengröße, einschließlich der vollständigen Länge der Spalten mit variabler Länge, 32.767 Byte nicht überschreitet. Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der dieser Wert überschritten wird und Reihen mit BCP laden, jedoch können Sie PolyBase gegenwärtig noch nicht verwenden, um diese Daten zu laden. Die PolyBase-Unterstützung für große Zeilen wird bald verfügbar sein. Versuchen Sie außerdem, die Größe Ihrer Spalten mit variabler Länge zu beschränken, um beim Ausführen von Abfragen einen noch besseren Durchsatz zu erzielen.
 
 ## Prinzipien der Datenverteilung
 
@@ -181,7 +174,7 @@ Dieser Tabellentyp wird häufig verwendet, wenn keine offensichtliche Schlüssel
 
 Das Laden von Daten in eine verteilte Roundrobin-Tabelle ist meist schneller als das Laden in eine verteilte Hashtabelle. Bei einer verteilten Roundrobin-Tabelle ist es nicht erforderlich, die Daten genau zu verstehen oder das Hashing vor dem Laden durchzuführen. Daher sind Roundrobin-Tabellen häufig gute Ladeziele.
 
-> [AZURE.NOTE] Wenn Daten per Roundrobin verteilt werden, werden die Daten der Verteilung auf *Puffer* ebene zugeordnet.
+> [AZURE.NOTE] Wenn Daten per Roundrobin verteilt werden, werden die Daten der Verteilung auf *Puffer*ebene zugeordnet.
 
 ### Empfehlungen
 
@@ -195,13 +188,13 @@ Erwägen Sie die Verwendung der Roundrobin-Verteilung für die Tabelle in den fo
 
 ## Hashverteilung
 
-Bei der Hashverteilung wird eine interne Funktion verwendet, um ein Dataset auf die Verteilungen zu verteilen, indem das Hashing für eine einzelne Spalte durchgeführt wird. Wenn Daten gehasht werden, gibt es keine explizite Reihenfolge für die Zuordnung der Daten zur Verteilung. Der Hashvorgang selbst ist aber ein deterministischer Prozess. Dadurch werden die Ergebnisse des Hashvorgangs vorhersehbar. Beim Hashing einer Ganzzahlspalte mit dem Wert 10 ergibt sich immer derselbe Hashwert. Dies bedeutet, dass ***jede*** gehashte Ganzzahlspalte, die den Wert 10 enthält, derselben Verteilung zugeordnet wird. Dies gilt auch tabellenübergreifend.
+Bei der Hashverteilung wird eine interne Funktion verwendet, um ein Dataset auf die Verteilungen zu verteilen, indem das Hashing für eine einzelne Spalte durchgeführt wird. Wenn Daten gehasht werden, gibt es keine explizite Reihenfolge für die Zuordnung der Daten zur Verteilung. Der Hashvorgang selbst ist aber ein deterministischer Prozess. Dadurch werden die Ergebnisse des Hashvorgangs vorhersehbar. Beim Hashing einer Ganzzahlspalte mit dem Wert 10 ergibt sich immer derselbe Hashwert. Dies bedeutet, dass ***jede*** gehashte Ganzzahlspalte, die den Wert 10 enthält, derselben Verteilung zugeordnet wird. Dies gilt auch tabellenübergreifend.
 
 Die Vorhersagbarkeit des Hashings ist äußerst wichtig. Dies bedeutet, dass die Hashverteilung der Daten zu Leistungsverbesserungen führen kann, wenn Daten gelesen und Tabellen verknüpft werden.
 
 Wie unten dargestellt, kann die Hashverteilung sehr effektiv für die Abfrageoptimierung sein. Daher wird dies als eine optimierte Form der Datenverteilung angesehen.
 
-> [AZURE.NOTE] Beachten Sie Folgendes: Das Hashing basiert nicht auf dem Wert der Daten, sondern auf dem Typ der Daten, die gehasht werden.
+> [AZURE.NOTE] Beachten Sie Folgendes: Der Hash basiert nicht nur auf dem Wert der Daten. Der Hash ist eine Kombination aus dem Wert und dem Datentyp.
 
 Unten ist eine Tabelle angegeben, für die eine Hashverteilung nach ProductKey durchgeführt wurde.
 
@@ -228,7 +221,7 @@ WITH
 ## Tabellenpartitionen
 Tabellenpartitionen werden unterstützt und sind einfach zu definieren.
 
-Beispiel: Partitionierung von SQL Data Warehouse mit dem `CREATE TABLE`-Befehl:
+Ein Beispiel des SQL Data Warehouse-Befehls `CREATE TABLE` mit Partitionierung:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -254,7 +247,7 @@ WITH
 ;
 ```
 
-Beachten Sie, dass in der Definition keine Partitionierungsfunktion oder ein entsprechendes Schema vorhanden ist. Dies wird alles bei der Erstellung der Tabellen erledigt. Sie müssen lediglich die Grenzpunkte für die Spalte identifizieren, die als Partitionierungsschlüssel dienen soll.
+Beachten Sie, dass in der Definition keine Partitionierungsfunktion oder ein entsprechendes Schema vorhanden ist. SQL Data Warehouse verwendet eine vereinfachte Definition der Partitionen, die sich geringfügig von der in SQL Server unterscheidet. Sie müssen lediglich die Grenzpunkte für die partitionierte Spalte identifizieren.
 
 ## Statistiken
 
@@ -274,36 +267,39 @@ Beachten Sie die folgenden Empfehlungen zum Generieren von Statistiken:
 2. Generieren Sie Mehrspaltenstatistiken für zusammengesetzte Klauseln.
 3. Aktualisieren Sie Statistiken regelmäßig. Denken Sie daran, dass dies nicht automatisch durchgeführt wird!
 
->[AZURE.NOTE] In der Regel wird in SQL Server Data Warehouse ausschließlich `AUTOSTATS` genutzt, um die Spaltenstatistiken auf dem aktuellen Stand zu halten. Dies ist auch für SQL Server Data Warehouses nicht die bewährte Methode. `AUTOSTATS` wird bei einer Änderungsrate von 20 % ausgelöst. Dies ist für große Faktentabellen mit Millionen oder Milliarden von Zeilen ggf. nicht ausreichend. Daher ist es immer ratsam, die Aktualisierung der Statistiken im Auge zu behalten. So ist sichergestellt, dass die Statistiken die Kardinalität der Tabelle präzise widerspiegeln.
+>[AZURE.NOTE] In der Regel wird in SQL Server Data Warehouse ausschließlich `AUTOSTATS` genutzt, um die Spaltenstatistiken auf dem aktuellen Stand zu halten. Dies ist auch für SQL Server Data Warehouses nicht die bewährte Methode. `AUTOSTATS` wird bei einer Änderungsrate von 20 % ausgelöst. Dies ist für große Faktentabellen mit Millionen oder Milliarden von Zeilen ggf. nicht ausreichend. Daher ist es immer ratsam, die Aktualisierung der Statistiken im Auge zu behalten. So ist sichergestellt, dass die Statistiken die Kardinalität der Tabelle präzise widerspiegeln.
 
 ## Nicht unterstützte Funktionen
 In SQL Data Warehouse werden die folgenden Funktionen nicht verwendet oder nicht unterstützt:
 
-- Primärschlüssel
-- Fremdschlüssel
-- CHECK-Einschränkungen
-- UNIQUE-Einschränkungen
-- Eindeutige Indizes
-- Berechnete Spalten
-- Spalten mit geringer Dichte
-- Benutzerdefinierte Typen
-- Indizierte Sichten
-- Identitäten
-- Sequenzen
-- Trigger
-- Synonyme
-
+| Funktion | Problemumgehung |
+| --- | --- |
+| Identitäten | [Zuweisen von Ersatzschlüsseln] |
+| Primärschlüssel | – |
+| Fremdschlüssel | – |
+| CHECK-Einschränkungen | – |
+| UNIQUE-Einschränkungen | – |
+| Eindeutige Indizes | – |
+| Berechnete Spalten | – |
+| Spalten mit geringer Dichte | – |
+| Benutzerdefinierte Typen | – |
+| Indizierte Sichten | – |
+| Sequenzen | – |
+| Trigger | – |
+| Synonyme | – |
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][]. Weitere Tipps und bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
 <!--Article references-->
 [Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
+[Zuweisen von Ersatzschlüsseln]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
+[Bewährte Methoden für SQL Data Warehouse]: sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

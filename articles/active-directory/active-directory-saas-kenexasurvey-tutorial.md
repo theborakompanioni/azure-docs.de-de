@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="04/20/2016"
 	ms.author="jeedes"/>
 
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. <br> Das in diesem Tutorial beschriebene Szenario besteht aus zwei großen Bausteinen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von IBM Kenexa Survey Enterprise aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -58,20 +58,39 @@ Zum Konfigurieren der Integration von IBM Kenexa Survey Enterprise in Azure AD m
 
 **Um IBM Kenexa Survey Enterprise aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br> ![Active Directory][1]<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+
+	![Active Directory][1]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.<br><br> ![Anwendungen][2]<br>
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.<br><br> ![Anwendungen][3]<br>
-5. Klicken Sie im Dialogfeld **What do you want to do** auf **Anwendung aus dem Katalog hinzufügen**.<br><br> ![Anwendungen][4]<br>
-6. Geben Sie im Suchfeld als Suchbegriff **IBM Kenexa Survey Enterprise** ein.<br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_01.png)<br>
-7. Wählen Sie im Ergebnisbereich **IBM Kenexa Survey Enterprise** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+
+	![Anwendungen][2]
+
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+
+	![Anwendungen][3]
+
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+
+	![Anwendungen][4]
+
+6. Geben Sie im Suchfeld als Suchbegriff **IBM Kenexa Survey Enterprise** ein.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_01.png)
+
+7. Wählen Sie im Ergebnisbereich **IBM Kenexa Survey Enterprise** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_02.png)
+
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit IBM Kenexa Survey Enterprise basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in IBM Kenexa Survey Enterprise als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in IBM Kenexa Survey Enterprise muss eine Linkbeziehung eingerichtet werden.<br> Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in IBM Kenexa Survey Enterprise zuweisen.
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in IBM Kenexa Survey Enterprise als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in IBM Kenexa Survey Enterprise muss eine Linkbeziehung eingerichtet werden.
+
+Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in IBM Kenexa Survey Enterprise zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei IBM Kenexa Survey Enterprise müssen Sie die folgenden Bausteine ausführen:
 
@@ -88,16 +107,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei IBM Kenexa Survey Enterprise die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **IBM Kenexa Survey Enterprise** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen. <br><br> ![Einmaliges Anmelden konfigurieren][6] <br>
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **IBM Kenexa Survey Enterprise** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei IBM Kenexa Survey Enterprise anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**. <br><br> ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_03.png) <br>
+	![Einmaliges Anmelden konfigurieren][6]
 
-3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** folgende Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_04.png) <br>
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei IBM Kenexa Survey Enterprise anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+ 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_03.png)
+
+3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_04.png)
 
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der IBM Kenexa Survey Enterprise-Anwendung verwendet wird, nach folgendem Muster ein: **https://surveys.kenexa.com/<Unternehmenscode>**.
 
-    b. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: **https://surveys.kenexa.com/\<Firmenname>/tools**.
+    b. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: **https://surveys.kenexa.com/\<Unternehmenscode>/tools**.
 
 	> [AZURE.NOTE] Senden Sie die Bezeichner-URL an das IBM Kenexa Survey-Team, und bitten Sie das Team, diese als Entitäts-ID für Ihre Instanz festzulegen.
   
@@ -105,7 +130,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     c. Klicken Sie auf **Weiter**.
 
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden bei IBM Kenexa Survey Enterprise konfigurieren** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_05.png) <br>
+4. Führen Sie auf der Seite **Einmaliges Anmelden bei IBM Kenexa Survey Enterprise konfigurieren** die folgenden Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_05.png)
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
@@ -124,27 +151,41 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_51.png)
 
  
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**. <br><br>![Azure AD – einmaliges Anmelden][10]<br>
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**. <br><br>![Azure AD – einmaliges Anmelden][11]
+	![Azure AD – einmaliges Anmelden][10]
+
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+  
+	![Azure AD – einmaliges Anmelden][11]
 
 
 
 
 ### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.<br> Wählen Sie in der Benutzerliste **Britta Simon** aus.<br><br>![Azure AD-Benutzer erstellen][20]<br>
+In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+
+![Azure AD-Benutzer erstellen][20]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_09.png)<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_09.png)
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_03.png) <br>
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_04.png) <br>
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_03.png)
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_05.png) <br>
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+ 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_04.png)
+
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+ 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_05.png)
 
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
@@ -152,7 +193,9 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
     c. Klicken Sie auf **Weiter**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_06.png) <br>
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_06.png)
 
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
@@ -164,9 +207,13 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
     e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_07.png) <br>
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_08.png) <br>
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_07.png)
+
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -184,25 +231,37 @@ In diesem Abschnitt erstellen Sie in IBM Kenexa Survey Enterprise einen Benutzer
 
 ### Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf IBM Kenexa Survey Enterprise gewähren. <br><br>![Benutzer zuweisen][200] <br>
+In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf IBM Kenexa Survey Enterprise gewähren.
+
+![Benutzer zuweisen][200]
 
 **Um Britta Simon zu IBM Kenexa Survey Enterprise zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Benutzer zuweisen][201] <br>
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-2. Wählen Sie in der Anwendungsliste **IBM Kenexa Survey Enterprise** aus. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_50.png) <br>
+	![Benutzer zuweisen][201]
 
-1. Klicken Sie im oberen Menü auf **Benutzer**. <br><br>![Benutzer zuweisen][203] <br>
+2. Wählen Sie in der Anwendungsliste **IBM Kenexa Survey Enterprise** aus.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_50.png)
+
+1. Klicken Sie im oberen Menü auf **Benutzer**.
+
+	![Benutzer zuweisen][203]
 
 1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**. <br><br>![Benutzer zuweisen][205]
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+	
+	![Benutzer zuweisen][205]
 
 
 
 ### Testen der einmaligen Anmeldung
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.<br> Wenn Sie im Zugriffsbereich auf die Kachel „IBM Kenexa Survey Enterprise“ klicken, sollten Sie automatisch bei Ihrer IBM Kenexa Survey Enterprise-Anwendung angemeldet werden.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „IBM Kenexa Survey Enterprise“ klicken, sollten Sie automatisch bei Ihrer IBM Kenexa Survey Enterprise-Anwendung angemeldet werden.
 
 
 ## Zusätzliche Ressourcen
@@ -230,4 +289,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 [204]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

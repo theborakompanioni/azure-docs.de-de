@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="05/13/2016"
 	ms.author="larryfr"/>
 
 # Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
@@ -49,9 +49,11 @@ Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie eine URL und die Par
 
 * Sie können über das __Azure-Portal__, __Azure PowerShell__, die __Azure-Befehlszeilenschnittstelle (CLI)__ oder das __HDInsight .NET SDK__ verwendet werden.
 
-> [AZURE.IMPORTANT] Es gibt keine automatische Möglichkeit, die von einer Skriptaktion vorgenommenen Änderungen rückgängig zu machen. Falls Sie die Auswirkungen eines Skripts umkehren möchten, müssen Sie wissen, welche Änderungen vorgenommen wurden, und diese manuell rückgängig machen (oder eine Skriptaktion bereitstellen, mit der dieser Vorgang durchgeführt wird).
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
 Als Hilfe bei der Ermittlung, welche Skripts auf einen Cluster angewendet wurden, und bei der Bestimmung der ID von Skripts für die Höher- oder Herunterstufung wird im Cluster der Verlauf aller ausgeführten Skripts gespeichert.
+
+> [AZURE.IMPORTANT] Es gibt keine automatische Möglichkeit, die von einer Skriptaktion vorgenommenen Änderungen rückgängig zu machen. Falls Sie die Auswirkungen eines Skripts umkehren möchten, müssen Sie wissen, welche Änderungen vorgenommen wurden, und diese manuell rückgängig machen (oder eine Skriptaktion bereitstellen, mit der dieser Vorgang durchgeführt wird).
 
 ### Skriptaktionen im Clustererstellungsvorgang
 
@@ -83,12 +85,14 @@ Im Gegensatz zu Skriptaktionen, die während der Clustererstellung verwendet wer
 >
 > Skriptaktionen werden mit Stammberechtigungen ausgeführt. Stellen Sie also sicher, dass Sie die Auswirkungen eines Skripts verstehen, bevor Sie es auf den Cluster anwenden.
 
-Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus für erfolgreiche Skripts von __Wird ausgeführt__ in __Akzeptiert__ und über __HDInsight-Konfiguration__ dann wieder in __Wird ausgeführt__. Der Status des Skripts wird im Verlauf der Skriptaktion protokolliert, sodass Sie ermitteln können, ob ein Skript erfolgreich ausgeführt wurde. Beispielsweise können Sie das `Get-AzureRmHDInsightScriptActionHistory`-PowerShell-Cmdlet verwenden, um den Status eines Skripts anzuzeigen. Die Ausgabe dieses Befehls sieht etwa so aus:
+Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus für erfolgreiche Skripts von __Wird ausgeführt__ in __Akzeptiert__ und über __HDInsight-Konfiguration__ dann wieder in __Wird ausgeführt__. Der Status des Skripts wird im Verlauf der Skriptaktion protokolliert, sodass Sie ermitteln können, ob ein Skript erfolgreich ausgeführt wurde. Beispielsweise können Sie das PowerShell-Cmdlet `Get-AzureRmHDInsightScriptActionHistory` verwenden, um den Status eines Skripts anzuzeigen. Die Ausgabe dieses Befehls sieht etwa so aus:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 2/23/2016 7:40:55 PM
     EndTime           : 2/23/2016 7:41:05 PM
     Status            : Succeeded
+
+> [AZURE.NOTE] Wenn Sie nach dem Erstellen des Clusters das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise fehlschlagen. Wenn Sie Skriptaktionen beibehalten möchten, deren Ziel Workerknoten sind, können sie fehlschlagen, wenn Sie dem Cluster über eine Größenänderung Knoten hinzufügen.
 
 ## Script Action-Beispielskripts
 
@@ -430,17 +434,17 @@ Dieser Abschnitt enthält Beispiele zu den verschiedenen Anwendungsmöglichkeite
 
     ![Link „Skriptaktionen“](./media/hdinsight-hadoop-customize-cluster-linux/settings.png)
 
-4. Wählen Sie oben auf dem Blatt „Skriptaktionen“ die Option __Neue übermitteln__.
+4. Wählen Sie oben auf dem Blatt „Skriptaktionen“ die Option __Neue übermitteln__ aus.
 
     ![Symbol „Neue übermitteln“](./media/hdinsight-hadoop-customize-cluster-linux/newscriptaction.png)
 
 5. Geben Sie auf dem Blatt „Skriptaktion hinzufügen“ die folgenden Informationen ein.
 
-    * __Name__: Der Anzeigename für die Skriptaktion. In diesem Beispiel ist dies `R`.
-    * __SKRIPT-URI__: Dies ist der URI für das Skript. In diesem Beispiel ist dies `https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh`.
+    * __Name:__ Der Anzeigename für diese Skriptaktion. In diesem Beispiel ist dies `R`.
+    * __SKRIPT-URI:__ Der URI für das Skript. In diesem Beispiel ist dies `https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh`.
     * __Hauptknoten__, __Worker__ und __Zookeeper__: Aktivieren Sie die Knoten, auf die das Skript angewendet werden soll. In diesem Beispiel sind Haupt- und Workerknoten aktiviert.
-    * __PARAMETER__: Falls das Skript Parameter akzeptiert, können Sie diese hier eingeben.
-    * __PERMANENT__: Aktivieren Sie diesen Eintrag, wenn das Skript dauerhaft gespeichert werden soll, damit es beim zentralen Hochskalieren des Clusters auf neue Workerknoten angewendet wird.
+    * __PARAMETER:__ Falls das Skript Parameter akzeptiert, können Sie diese hier eingeben.
+    * __PERMANENT:__ Aktivieren Sie diesen Eintrag, wenn das Skript dauerhaft gespeichert werden soll, damit es beim zentralen Hochskalieren des Clusters auf neue Workerknoten angewendet wird.
 
 6. Verwenden Sie abschließend die Schaltfläche __Erstellen__, um das Skript auf den Cluster anzuwenden.
 
@@ -612,9 +616,9 @@ Wenn die Erstellung des Clusters aufgrund eines Fehlers der Skriptaktion fehlges
 	![Screenshot von Vorgängen](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
 
 	Hier sind die Protokolle separat für Hauptknoten, Workerknoten und zookeeper-Knoten aufgeführt. Hier einige Beispiele:
-	* **Hauptknoten** – `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
-	* **Workerknoten** – `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
-	* **Zookeeper-Knoten** – `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+	* **Hauptknoten:** `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+	* **Workerknoten:** `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+	* **Zookeeper-Knoten:** `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
 * Alle stdout- und stderr-Elemente des entsprechenden Hosts werden in das Speicherkonto hochgeladen. Für jede Skriptaktion liegen die Dateien **output-*.txt** und **errors-*.txt** vor. Die Datei „output-*.txt“ enthält Informationen zum URI des Skripts, das auf dem Host ausgeführt wurde. Beispiel:
 
@@ -643,7 +647,7 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
 > [AZURE.WARNING] Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es Projektwebsites auf [http://apache.org](http://apache.org), z. B. [Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
 
 Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponenten zu verwenden. Unabhängig davon, wie die Komponente verwendet wird oder im Cluster installiert ist, gilt der gleiche Supportumfang. Nachfolgend finden Sie eine Liste der am häufigsten genutzten Möglichkeiten für die Verwendung von benutzerdefinierten Komponenten in HDInsight-Clustern:
 
@@ -680,4 +684,4 @@ Informationen und Beispiele zum Erstellen und Verwenden von Skripts zum Anpassen
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Phasen während der Clustererstellung"
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

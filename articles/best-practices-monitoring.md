@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # Anleitung zur Überwachung und Diagnose
 
-![Leitfadenlogo](media/best-practices-monitoring/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Übersicht
 Verteilte Anwendungen und Dienste in der Cloud sind naturgemäß komplexe Softwarekomponenten, die viele bewegliche Teile umfassen. In einer Produktionsumgebung sollten Sie unbedingt nachvollziehen können, auf welche Weise Benutzer Ihr System verwenden. Ferner müssen Sie in der Lage sein, die Ressourcennutzung nachzuverfolgen und allgemein die Integrität und Leistung des Systems zu überwachen. Diese Informationen dienen als Diagnosehilfe, um Probleme zu erkennen und zu korrigieren sowie potenzielle Probleme frühzeitig zu erkennen und zu verhindern.
@@ -664,4 +664,4 @@ In vielen Fällen können Batchprozesse Berichte nach einem definierten Zeitplan
 - [Empfangen von Warnbenachrichtigungen](./azure-portal/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](./azure-portal/insights-service-health.md)
 - [Application Insights](./application-insights/app-insights-get-started.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

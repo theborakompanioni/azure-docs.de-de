@@ -233,7 +233,7 @@ end
 ```
 
 
-Um die „\_ondisk“-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge „ *\_inmem* “ durch „ *\_ondisk* “ ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
+Um die „\_ondisk“-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge „*\_inmem*“ durch „*\_ondisk*“ ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
 
 
 ### Installieren von RML-Hilfsprogrammen und ostress
@@ -310,7 +310,7 @@ Sobald Sie über das Ergebnis der Ausführung von „\_inmem“ verfügen, führ
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. Bearbeiten Sie die „ostress.exe“-Befehlszeile so, dass alle Vorkommen von „ *\_inmem* “ durch „ *\_ondisk* “ ersetzt werden.
+2. Bearbeiten Sie die „ostress.exe“-Befehlszeile so, dass alle Vorkommen von „*\_inmem*“ durch „*\_ondisk*“ ersetzt werden.
 
 3. Führen Sie „ostress.exe“ ein zweites Mal aus, und erfassen Sie die Dauer.
 
@@ -460,7 +460,7 @@ GO
 Die In-Memory OLTP-Features in der Azure SQL-Datenbank [wurden am 28. Oktober 2015 als Vorschau aktiviert](https://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/).
 
 
-In der Vorschauphase vor der allgemeinen Verfügbarkeit wird In-Memory OLTP nur für Folgendes unterstützt:
+In der aktuellen Vorschauversion wird In-Memory OLTP nur für Folgendes unterstützt:
 
 - Datenbanken im Tarif *Premium*.
 
@@ -491,7 +491,11 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 #### Andere Beziehungen
 
 
-- Das Verwenden von In-Memory OLTP-Features mit Datenbanken in elastischen Pools wird in der Vorschauphase nicht unterstützt, jedoch ggf. künftig unterstützt werden:
+- Die Verwendung von In-Memory OLTP-Features mit Datenbanken in elastischen Pools wird in der Vorschauversion nicht unterstützt.
+ - Gehen Sie folgendermaßen vor, um eine Datenbank, die über In-Memory-OLTP-Objekte verfügt oder verfügte, in einen elastischen Pool zu verschieben:
+  - 1. Löschen Sie alle speicheroptimierten Tabellen, Tabellentypen und nativ kompilierten T-SQL-Module in der Datenbank.
+  - 2. Ändern Sie die Dienstebene der Datenbank auf „Standard“. (*Derzeit besteht ein Problem beim Verschieben von Premium-Datenbanken in einen elastischen Pool, wenn die Datenbanken in der Vergangenheit über In-Memory-OLTP-Objekte verfügten. Das Team von Azure DB arbeitet an der Behebung des Problems.)
+  - 3. Verschieben Sie die Datenbank in den elastischen Pool.
 
 - Die Verwendung von In-Memory OLTP mit SQL Data Warehouse wird nicht unterstützt.
  - Das Columnstore-Indexfeature von In-Memory Analytics wird in SQL Data Warehouse unterstützt.
@@ -533,4 +537,4 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 
 - [Überwachen von In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md) für In-Memory OLTP
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

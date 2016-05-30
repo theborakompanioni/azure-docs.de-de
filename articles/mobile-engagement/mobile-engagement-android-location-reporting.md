@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Berichterstellung für Android für Mobile Engagement"
-	description="Berichterstellung für Android für Azure Mobile Engagement"
+	pageTitle="Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement"
+	description="Hier wird beschrieben, wie Sie die Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement-konfigurieren."
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
@@ -13,20 +13,19 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="05/12/2016"
 	ms.author="piyushjo;ricksal" />
 
-# Berichterstellung für Speicherorte in Engagement unter Android
+# Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement
 
 > [AZURE.SELECTOR]
 - [Android](mobile-engagement-android-integrate-engagement.md)
 
-In diesem Thema wird die Berichterstellung für Speicherorte in Engagement in Android-Anwendungen erläutert.
+In diesem Thema wird die Berichterstellung für Speicherorte für Ihre Android-Anwendung erläutert.
 
 ## Voraussetzungen
 
 [AZURE.INCLUDE [Voraussetzungen](../../includes/mobile-engagement-android-prereqs.md)]
-
 
 ## Speicherortberichte
 
@@ -47,7 +46,7 @@ Verzögerte Bereichsspeicherortberichte aktivieren Sie mithilfe der zuvor in die
 
 Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht vorhanden ist:
 
-		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits Teil Ihrer Anwendung ist.
 
@@ -66,7 +65,7 @@ Um die Echtzeit-Berichterstellung für Speicherorte zu aktivieren, fügen Sie ei
 
 Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht vorhanden ist:
 
-		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits Teil Ihrer Anwendung ist.
 
@@ -82,7 +81,7 @@ Die Echtzeit-Berichterstellung für Speicherorte verwendet standardmäßig nur n
 
 Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht vorhanden ist:
 
-		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 #### Berichterstellung im Hintergrund
 
@@ -98,18 +97,18 @@ Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, 
 
 Der Hintergrundbericht für Speicherorte wird beendet, wenn der Benutzer sein Gerät neu startet. Sie können dies hinzufügen, damit zur Startzeit automatisch ein Neustart erfolgt:
 
-		<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
-			   android:exported="false">
-			<intent-filter>
-			    <action android:name="android.intent.action.BOOT_COMPLETED" />
-			</intent-filter>
-		</receiver>
+	<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
+		   android:exported="false">
+		<intent-filter>
+		    <action android:name="android.intent.action.BOOT_COMPLETED" />
+		</intent-filter>
+	</receiver>
 
 Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht vorhanden ist:
 
-		<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-### Android M-Berechtigungen
+## Android M-Berechtigungen
 
 Ab Android M werden bestimmte Berechtigungen zur Laufzeit verwaltet und erfordern die Genehmigung des Benutzers.
 
@@ -160,4 +159,4 @@ Hier ist ein Codebeispiel, dass Sie in einer Aktivität Ihrer Anwendung verwende
         getEngagementAgent().refreshPermissions();
     }
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/02/2016"
+    ms.date="05/12/2016"
     ms.author="elizapo" />
 
 
@@ -45,4 +45,4 @@ Mit Clients sind die Desktops, Geräte usw. gemeint, mit denen Benutzer eine Ver
 -  Ausgehend: TCP: 443  
 -  Optional – UDP: 3391 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

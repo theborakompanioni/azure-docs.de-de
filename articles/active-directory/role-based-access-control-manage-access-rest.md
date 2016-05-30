@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="rest-api"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="05/13/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
@@ -36,7 +36,7 @@ Zum Auflisten von Rollenzuweisungen benötigen Sie Zugriff auf den Vorgang `Micr
 
 Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
-	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
@@ -56,8 +56,8 @@ Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit d
 | Bedingung | *{Filter}* | Replace |
 |-----------|------------|---------|
 | Auflisten der Rollenzuweisungen nur für den angegebenen Bereich, ohne die Rollenzuweisungen der Unterbereiche | `atScope()` | |
-| Auflisten der Rollenzuweisungen nur für spezielle Benutzer, Gruppen oder Anwendungen | `principalId%20eq%20'{objectId}'` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzer-, Gruppen- oder Dienstprinzipals. Zum Beispiel `&filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
-| Auflisten von Rollenzuweisungen nur für bestimmte Benutzer (einschließlich der Zuweisungen von Gruppen, deren Mitglied der Benutzer ist) | `assignedTo('{objectId}')` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzers. Zum Beispiel `&filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
+| Auflisten der Rollenzuweisungen nur für spezielle Benutzer, Gruppen oder Anwendungen | `principalId%20eq%20'{objectId}'` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzer-, Gruppen- oder Dienstprinzipals. Beispiel: `&$filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
+| Auflisten von Rollenzuweisungen nur für bestimmte Benutzer (einschließlich der Zuweisungen von Gruppen, deren Mitglied der Benutzer ist) | `assignedTo('{objectId}')` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzers. Beispiel: `&$filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
 
 
 
@@ -259,7 +259,7 @@ Zum Auflisten von Rollen benötigen Sie Zugriff auf den Vorgang `Microsoft.Autho
 
 Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
-	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
@@ -714,4 +714,4 @@ Statuscode: 200
 
 ```
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

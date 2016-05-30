@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/25/2016" 
@@ -215,4 +215,4 @@ Die simulierte Hybrid Cloud-Umgebung kann jetzt zum Testen verwendet werden.
 
 - Sie können dem TestVNET-Subnetz [einen neuen virtuellen Computer hinzufügen](virtual-machines-windows-create-powershell.md), beispielsweise einen Computer unter Microsoft SQL Server.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

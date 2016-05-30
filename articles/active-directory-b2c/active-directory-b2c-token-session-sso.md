@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="05/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C – Vorschau: Token, Sitzung und einmaliges Anmelden – Konfiguration
@@ -66,7 +66,7 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
 Azure AD B2C unterstützt das [OpenID Connect-Authentifizierungsprotokoll](active-directory-b2c-reference-oidc.md) zum Aktivieren der sicheren Anmeldung bei Webanwendungen. Dies sind die Eigenschaften, die Sie verwenden können, um Webanwendungssitzungen zu verwalten:
 
 - **Gültigkeitsdauer von Web-App-Sitzungen (Minuten)**: Die Gültigkeitsdauer von Azure AD B2C-Sitzungscookies, die nach erfolgreicher Authentifizierung des Benutzers im Browser gespeichert werden.
-   - Standardwert: 1.440 Minuten.
+   - Standardwert: 1.440 Minuten.
    - Minimum (inklusive): 15 Minuten.
    - Maximum (inklusive): 1.440 Minuten.
 - **Web-App-Sitzungs-Zeitüberschreitung**: Wenn diese Option auf **Absolut** gesetzt ist, muss der Benutzer sich nach dem in **Gültigkeitsdauer von Web-App-Sitzungen (Minuten)** angegebenen Zeitraum erneut authentifizieren. Wenn diese Option auf **Rollen** gesetzt ist (Standardeinstellung), bleibt der Benutzer angemeldet, solange er ständig in Ihrer Webanwendung aktiv ist.
@@ -80,8 +80,9 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
 
 Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfügen, können Sie die Interaktionen der Benutzer mithilfe der Eigenschaft **Konfiguration des einmaligen Anmeldens** übergreifend verwalten. Sie können die Eigenschaft auf eine der folgenden Optionen festlegen:
 
-- **Mandant**: Dies ist die Standardeinstellung. Mit dieser Einstellung können mehrere Anwendungen und Richtlinien in Ihrem B2C-Mandanten die gleiche Benutzersitzung gemeinsam nutzen. Sobald ein Benutzer sich z. B. bei einer Anwendung, Contoso Shopping, anmeldet, kann er sich beim Zugriff darauf auch nahtlos bei einer anderen anmelden, Contoso Pharmacy.
+- **Mandant**: Dies ist die Standardeinstellung. Mit dieser Einstellung können mehrere Anwendungen und Richtlinien in Ihrem B2C-Mandanten die gleiche Benutzersitzung gemeinsam nutzen. Sobald sich ein Benutzer bei einer Anwendung – beispielsweise Contoso Shopping – angemeldet hat, erfolgt die Anmeldung bei einer anderen Anwendung – etwa Contoso Pharmacy – nahtlos beim Zugriff auf die Anwendung.
+- **Anwendung**: Damit können Sie eine Benutzersitzung ausschließlich für eine Anwendung beibehalten, unabhängig von anderen Anwendungen. Verwenden Sie diese Einstellung beispielsweise, wenn Sie möchten, dass sich der Benutzer (mit denselben Anmeldeinformationen) bei Contoso Pharmacy anmeldet – auch wenn der Benutzer bereits bei Contoso Shopping angemeldet ist, einer anderen Anwendung im selben B2C-Mandanten. 
 - **Richtlinie**: Damit können Sie eine Benutzersitzung ausschließlich für eine Richtlinie beibehalten, unabhängig von den Anwendungen, die sie verwenden. Wenn der Benutzer sich z. B. bereits angemeldet und einen Multi-Factor Authentication-Schritt (MFA) abgeschlossen hat, kann er Zugriff auf Hochsicherheitsteile mehrerer Anwendungen erhalten, solange die an die Richtlinie gebundene Sitzung nicht abläuft.
-- **Deaktiviert**: Bei jeder Ausführung der Richtlinie muss der Benutzer die gesamte Benutzerreise ausführen. Dies erlaubt beispielsweise mehreren Benutzern, sich bei der Anwendung anzumelden (in einem Szenario mit freigegebenem Desktop), auch während ein einzelner Benutzer während der gesamten Zeit angemeldet bleibt.
+- **Deaktiviert**: Bei jeder Ausführung der Richtlinie muss der Benutzer die gesamte User Journey ausführen. Dies erlaubt beispielsweise mehreren Benutzern, sich bei der Anwendung anzumelden (in einem Szenario mit freigegebenem Desktop), auch während ein einzelner Benutzer während der gesamten Zeit angemeldet bleibt.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

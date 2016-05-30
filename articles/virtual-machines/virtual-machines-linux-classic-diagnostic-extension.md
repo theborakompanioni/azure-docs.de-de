@@ -44,7 +44,7 @@ Die Erweiterung kann über das [Azure-Portal](https://ms.portal.azure.com/#), di
 Um die System- und Leistungsdaten direkt im Azure-Portal anzuzeigen und zu konfigurieren, führen Sie diese [Schritte](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ „URL zum Windows-Blog“/) aus.
 
 
-Dieser Artikel befasst sich mit dem Aktivieren und Konfigurieren der Erweiterung per Azure-Befehlszeilenschnittstelle. Dadurch können Sie die Daten direkt in der Speichertabelle anzeigen und lesen.
+Dieser Artikel befasst sich mit dem Aktivieren und Konfigurieren der Erweiterung per Azure-Befehlszeilenschnittstelle. Dadurch können Sie die Daten direkt in der Speichertabelle anzeigen und lesen. Beachten Sie, dass die nachfolgend beschriebenen Konfigurationsmethoden nicht für das Azure-Portal funktionieren. Diese Erweiterung muss, wie im vorherigen Abschnitt erwähnt, durch das Azure-Portal aktiviert werden, um das System und die Leistungsdaten direkt aus dem Azure-Portal anzeigen und konfigurieren zu können.
 
 
 ## Voraussetzungen
@@ -74,15 +74,13 @@ Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Micros
 ###   Szenario 2: Anpassen der Leistungsüberwachungsmetrik  
 Dieser Abschnitt beschreibt, wie Sie die Tabelle mit den Leistungs- und Diagnosedaten anpassen.
 
-Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt aus dem nächsten Beispiel. Geben Sie die Daten an, die Sie sammeln möchten.
+Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt, der in Szenario 1 oben beschrieben wurde. Erstellen Sie außerdem eine Datei namens „PublicConfig.json“, die im nächsten Beispiel angezeigt wird. Geben Sie die Daten an, die Sie sammeln möchten.
 
 Alle unterstützten Anbieter und Variablen finden Sie in diesem [Dokument](https://scx.codeplex.com/wikipage?title=xplatproviders). Sie können mehrere Abfragen in mehreren Tabellen speichern, indem Sie weitere Abfragen an das Skript anhängen.
 
 Rsyslog-Daten werden standardmäßig gesammelt.
 
 	{
-     	"storageAccountName":"storage account to receive data",
-     	"storageAccountKey":"key of the account",
       	"perfCfg":[
            	{"query":"SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation","table":"LinuxMemory"
            	}
@@ -90,17 +88,15 @@ Rsyslog-Daten werden standardmäßig gesammelt.
 	}
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2: Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
 
 
 ###   Szenario 3: Hochladen eigener Protokolldateien
 In diesem Abschnitt erfahren Sie, wie Sie bestimmte Protokolldateien sammeln und an Ihr Speicherkonto hochladen. Zum Speichern des Protokolls müssen Sie den Pfad zur Protokolldatei und den Namen der Tabelle angeben. Sie können mehrere Protokolldateien nutzen, indem Sie mehrere Datei-/Tabelleneinträge an das Skript anfügen.
 
-Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem Inhalt:
+Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt, der in Szenario 1 beschrieben wurde. Erstellen Sie eine weitere Datei namens „PublicConfig.json“ mit folgendem Inhalt.
 
 	{
-     	"storageAccountName":"the storage account to receive data",
-     	"storageAccountKey":"key of the account",
       	"fileCfg":[
            	{"file":"/var/log/mysql.err",
              "table":"mysqlerr"
@@ -109,21 +105,19 @@ Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem 
 	}
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
 
 
 ###   Szenario 4: Deaktivieren der Linux-Überwachungserweiterung
-Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem Inhalt:
+Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt, der in Szenario 1 beschrieben wurde. Erstellen Sie eine weitere Datei namens „PublicConfig.json“ mit folgendem Inhalt.
 
 	{
-     	"storageAccountName":"the storage account to receive data",
-     	"storageAccountKey":"the key of the account",
-     	“perfCfg”:[],
-     	“enableSyslog”:”False”
+     	"perfCfg":[],
+     	"enableSyslog":”False”
 	}
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
 
 
 ## Überprüfen der Daten
@@ -143,4 +137,4 @@ Wenn Sie in Szenario 2 und 3 „fileCfg“ oder „perfCfg“ aktiviert haben,
 ## Bekannte Probleme
 - In Version 2.0 kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur über Skripts zugegriffen werden.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

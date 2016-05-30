@@ -31,12 +31,12 @@ Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisu
 
 Nachdem Sie Änderungen vorgenommen haben, wird der Assistent nicht mehr angezeigt. Wenn Sie oder ein anderer Sicherheitsadministrator sich PIM das nächste Mal verwenden, wird das PIM-Dashboard angezeigt.
 
-- Wenn Sie Benutzer zu Rollen hinzufügen oder aus Rollen entfernen oder permanente in temporäre Zuweisungen ändern möchten, erhalten Sie weitere Informationen unter [Hinzufügen oder Entfernen einer Benutzerrolle](active-directory-privileged-identity-management-how-to-add-role-to-user).
-- Wenn Sie weiteren Benutzern Verwaltungszugriff auf PIM gewähren möchten, erhalten Sie weitere Informationen unter [Gewähren des Zugriffs zur Verwaltung von PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim)
+- Wenn Sie Benutzer zu Rollen hinzufügen oder aus Rollen entfernen oder permanente in temporäre Zuweisungen ändern möchten, finden Sie weitere Informationen unter [Hinzufügen oder Entfernen einer Benutzerrolle](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
+- Wenn Sie weiteren Benutzern Verwaltungszugriff auf PIM gewähren möchten, finden Sie weitere Informationen unter [Gewähren des Zugriffs zur Verwaltung von PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)
 
 
 
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

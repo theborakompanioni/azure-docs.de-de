@@ -25,4 +25,5 @@
 
 11. Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt. Sie können auf das verbundene Gerät (Ihr Virtual Network-Gateway) klicken, um weitere Informationen anzuzeigen.
 
-<!---HONumber=AcomDC_0406_2016-->
+
+

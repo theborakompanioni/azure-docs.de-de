@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # Leitfaden zur Datenpartitionierung
 
-![](media/best-practices-data-partitioning/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Übersicht
 
@@ -566,4 +566,4 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 [Was ist Azure SQL-Datenbank?]: sql-database/sql-database-technical-overview.md
 [Was ist SQL-Datenbank?]: sql-database/sql-database-technical-overview.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

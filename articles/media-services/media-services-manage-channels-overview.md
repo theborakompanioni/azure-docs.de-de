@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen" 
-	description="In diesem Thema wird das Einrichten eines Kanals beschrieben, der einen Livestream mit mehreren Bitraten von einem lokalen Encoder empfängt. Der Stream kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Dazu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG DASH, HDS." 
+	pageTitle="Übersicht über Livestreaming mit Azure Media Services" 
+	description="Dieses Thema bietet eine Übersicht über das Livestreaming mit Azure Media Services." 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,239 +13,133 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
-	ms.author="cenkdin;juliako"/>
+	ms.date="05/17/2016"
+	ms.author="juliako"/>
 
-#Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen
+#Übersicht über Livestreaming mit Azure Media Services
 
 ##Übersicht
 
-In Azure Media Services repräsentiert ein **Kanal** eine Pipeline zum Verarbeiten von Livestreaminginhalten. Es gibt zwei Arten, wie Live-Eingabedatenströme von **Kanälen** empfangen werden können:
+Beim Bereitstellen von Livestreamingereignissen mit Azure Media Services sind häufig die folgenden Komponenten beteiligt:
 
-- Von einem lokalen Liveencoder wird Multi-Bitrate- **RTMP** oder -**Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Die aufgenommenen Datenströme werden ohne weitere Verarbeitung durch die **Kanäle** geleitet. Der Liveencoder kann auch einen Datenstrom mit einer Bitrate senden, dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+- Eine Kamera, mit der ein Ereignis übertragen wird.
+- Ein Live-Video-Encoder, der Signale von der Kamera in Datenströme konvertiert, die an einen Livestreaming-Dienst gesendet werden.
 
-
-Das folgende Diagramm stellt einen Livestreaming-Workflow dar, der über einen lokalen Live-Encoder Streams RTMP- oder Fragmented MP4-Streams (Smooth Streaming) mit mehreren Bitraten ausgibt.
-
-![Liveworkflow][live-overview]
-
-In diesem Thema werden folgende Themen behandelt:
-
-- [Allgemeines Livestreamingszenario](media-services-manage-channels-overview.md#scenario)
-- [Beschreibung von Kanälen und zugehörigen Komponenten](media-services-manage-channels-overview.md#channel)
-- [Überlegungen](media-services-manage-channels-overview.md#considerations)
-- [Aufgaben im Zusammenhang mit Livestreaming](media-services-manage-channels-overview.md#tasks)
-
-##<a id="scenario"></a>Allgemeines Livestreamingszenario
-Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von gebräuchlichen Livestreaminganwendungen.
-
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Live-Encoder, der einen RTMP- oder Fragmented MP4-Stream (Smooth Streaming) mit mehreren Bitraten ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](http://go.microsoft.com/fwlink/?LinkId=532824).
+	Optional: mehrere zeitsynchronisierte Liveencoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder mit Zeitsynchronisierung empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
+- Ein Livestreaming-Dienst, der Ihnen Folgendes ermöglicht:
 	
-	Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
+	- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming)
+	- Optional: Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
+	- Vorschau des Livestreams
+	- Aufzeichnen und Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
+	- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung
 
-1. Erstellen Sie einen Kanal, und starten Sie ihn.
-1. Rufen Sie die Erfassungs-URL des Kanals ab. 
 
-	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-1. Rufen Sie die Vorschau-URL des Kanals ab. 
+Mit **Microsoft Azure Media Services** (AMS) können Sie Livestreaminginhalte erfassen, codieren, in der Vorschau anzeigen, speichern und bereitstellen.
 
-	Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
+Bei der Übermittlung Ihrer Inhalte für Kunden besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen bereitzustellen. Dazu codieren Sie den Datenstrom mit Liveencodern in einen Videodatenstrom mit mehreren Bitraten (adaptive Bitrate). Verwenden Sie die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md) von Media Services, um den Datenstrom dynamisch erneut in verschiedene Protokolle zu packen. Media Services unterstützt die Übermittlung der folgenden Streamingtechnologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
 
-3. Erstellen Sie ein Programm.
+In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streamingendpunkte** alle Livestreamingfunktionen, einschließlich Erfassung, Formatierung, DVR, Sicherheit, Skalierbarkeit und Redundanz.
 
-	Im klassischen Azure-Portal wird beim Erstellen eines Programms auch ein Medienobjekt erstellt.
+Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
-	Wenn Sie hingegen .NET SDK oder REST verwenden, müssen Sie beim Erstellen eines Programms ein Medienobjekt erstellen und angeben, dass es verwendet werden soll. 
-1. Veröffentlichen Sie das mit dem Programm verknüpfte Medienobjekt.   
+- Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast und Tricaster-Transcoder. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-	Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
-1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
-2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
-1. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-1. Löschen Sie das Programm (und optional das Medienobjekt).     
-
-Im Abschnitt [Livestreaming-Aufgaben](media-services-manage-channels-overview.md#tasks) finden Sie Verknüpfungen zu Themen, in welchen veranschaulicht wird, wie die beschriebenen Aufgaben auszuführen sind.
-
-##<a id="channel"></a>Beschreibung von Kanälen und zugehörigen Komponenten
-
-###<a id="channel_input"></a>Kanaleingangskonfigurationen (Erfassung)
-
-####<a id="ingest_protocols"></a>Erfassungsstreamingprotokoll
-
-Media Services unterstützt die Erfassung von Livefeeds mithilfe der folgenden Streamingprotokolle:
-
-- **Fragmented MP4 mit mehreren Bitraten**
- 
-- **RTMP mit mehreren Bitraten**
-
-	Wenn das Erfassungs-Streamingprotokoll **RTMP** aktiviert ist, werden zwei Erfassungs-(Eingangs-)Endpunkte für den Kanal erstellt:
+	>[AZURE.NOTE] Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](/pricing/details/media-services/).
 	
-	**Primäre URL**: Gibt die vollqualifizierte URL des primären RTMP-Erfassungsendpunkts für den Kanal an.
-
-	**Sekundäre URL** (optional): Gibt die vollqualifizierte URL des sekundären RTMP-Erfassungsendpunkts für den Kanal an.
-
-
-	Verwenden Sie die sekundäre URL, um die Beständigkeit und Fehlertoleranz des Erfassungsdatenstroms sowie das Failover und die Fehlertoleranz des Encoders zu verbessern. Dies gilt insbesondere für die folgenden Szenarien:
-
-	- Einzelne Encoder, die einen doppelten Push zu primären und sekundären URLs ausführen:
 	
-		Der Hauptzweck ist hierbei, mehr Resilienz gegenüber Netzwerkfluktuationen und Jitter bereitzustellen. Einige RTMP-Encoder können Trennungen der Netzwerkverbindung nicht gut verwalten. Wenn die Netzwerkverbindung getrennt wird, beendet der Encoder möglicherweise die Codierung und sendet die gepufferten Daten nicht, wenn die Verbindung wiederhergestellt wird. Dies führt zu Diskontinuitäten und Datenverlust. Trennungen der Netzwerkverbindung können aufgrund einer instabilen Netzwerkverbindung oder Wartungen auf der Seite von Azure auftreten. Durch primäre/sekundäre URLs werden Netzwerkprobleme reduziert und es kann ein kontrollierter Aktualisierungsprozess bereitgestellt werden. Jedes Mal, wenn eine geplante Netzwerktrennung auftritt, verwaltet Media Services die primäre und sekundäre Trennung und stellt eine verzögerte Trennung dazwischen bereit. So erhalten die Encoder Zeit, um Daten zu senden und die Verbindung wiederherzustellen. Die Reihenfolge der Trennungen kann zufällig sein. Es gibt jedoch immer eine Verzögerung zwischen primär/sekundär oder sekundär/primär. In diesem Szenario ist der Encoder immer noch die einzige Fehlerquelle.
-	 
-	- Mehrere Encoder, bei denen jeder Encoder einen Push zum dedizierten Endpunkt ausführt:
-		
-		Dieses Szenario bietet Redundanz für Encoder sowie Erfassung. In diesem Szenario überträgt encoder1 an die primäre URL und encoder2 sendet an die sekundäre URL. Wenn ein Encoderfehler auftritt, kann der andere Encoder weiterhin Daten senden. Die Datenredundanz kann erhalten werden, da Media Services die primäre und sekundäre Verbindung nicht zur gleichen Zeit trennt. Bei diesem Szenario wird davon ausgegangen, dass die Encoder zeitsynchronisiert sind und genau die gleichen Daten bereitgestellt werden.
- 
-	- Mehrere Encoder, die einen doppelten Push zu primären und sekundären URLs ausführen:
-	
-		In diesem Szenario senden beide Encoder Daten zu primären und sekundären URLs. Dies bietet die höchste Zuverlässigkeit und Fehlertoleranz sowie Datenredundanz. Es kann ein Ausfall beider Encoder toleriert werden, ebenso wie Trennungen der Netzwerkverbindung, auch wenn ein Encoder nicht mehr ausgeführt wird. Bei diesem Szenario wird davon ausgegangen, dass die Encoder zeitsynchronisiert sind und genau die gleichen Daten bereitgestellt werden.
+- Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). RTP (MPEG-TS) wird ebenfalls unterstützt, sofern Sie über eine dedizierte Verbindung mit dem Azure-Rechenzentrum verfügen. Bei den folgenden Liveencodern mit RTMP-Ausgabe ist bekannt, dass sie mit Kanälen dieses Typs funktionieren: Telestream Wirecast, FMLE. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-Informationen zu RTMP-Liveencodern finden Sie unter [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (in englischer Sprache).
 
-Es gelten die folgenden Bedingungen:
+Mit Media Services-Version 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Eingabedatenstrom vom Kanal empfangen werden soll und ob vom Kanal eine Livecodierung des Datenstroms ausgeführt werden soll. Sie haben zwei Möglichkeiten:
 
-- Stellen Sie sicher, dass Sie ausreichend ungenutzte Internetbandbreite zum Senden an die Erfassungspunkte haben. 
-- Das Verwenden einer sekundären Erfassungs-URL erfordert zusätzlichen Bandbreite. 
-- Der eingehende Stream mit mehreren Bitraten kann maximal zehn Ebenen (oder Schichten) der Videoqualität und maximal fünf Audiospuren aufweisen.
-- Die höchste durchschnittliche Bitrate für die Videoqualitätsebenen oder -schichten sollte unter 10 Mbit/s liegen.
-- Die zusammengezählten durchschnittlichen Bitraten für alle Video- und Audiostreams sollten unter 25 Mbit/s liegen.
-- Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal. 
-- Sie können auch eine einzelne Bitrate in Ihrem Kanal erfassen, aber da der Datenstrom nicht vom Kanal verarbeitet wird, erhalten die Clientanwendungen ebenfalls einen Datenstrom mit nur einer Bitrate (diese Option wird nicht empfohlen).
+- **Keine** (Pass-Through): Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, von dem ein Multi-Bitrate-Datenstrom (Pass-Through-Datenstrom) ausgegeben wird. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Bis zur Version 2.10 ist dies das Standardkanalverhalten.  
 
-####Erfassungs-URLs (Endpunkte) 
+- **Standard**: Wählen Sie diesen Wert, wenn Sie Media Services verwenden möchten, um einen Single-Bitrate-Livedatenstrom in einen Multi-Bitrate-Datenstrom zu codieren. Diese Methode ist effizient für das schnelle Skalieren selten auftretender Ereignisse. Beachten Sie, dass das Live Encoding sich auf die Abrechnung auswirkt und dass die Beibehaltung des Status „Wird ausgeführt“ für einen Live Encoding-Kanal mit Gebühren verbunden ist. Es wird empfohlen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden.
 
-Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) dar, den Sie im Live-Encoder angeben, damit dieser Streams an die Kanäle übertragen kann.
+##Vergleich von Kanaltypen
 
-Sie können die Erfassungs-URLs beim Erstellen des Kanals erhalten. Der Kanal muss dazu nicht den Status **Running** (Wird ausgeführt) aufweisen. Wenn Sie beginnen möchten, Daten an den Kanal zu senden, muss der Kanal den Status **Running** (Wird ausgeführt) aufweisen. Sobald der Kanal mit dem Erfassen von Daten beginnt, können Sie Ihren Datenstrom über die Vorschau-URL anzeigen.
+Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von Media Services unterstützten Kanaltypen.
 
-Sie können Fragmented MP4-Livestreams (Smooth Streaming) über eine SSL-Verbindung erfassen. Zur Erfassung über SSL stellen Sie sicher, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. Derzeit kann RTMP nicht über SSL erfasst werden.
-
-####<a id="keyframe_interval"></a>Keyframe-Intervall
-
-Wenn ein lokaler Live-Encoder Zum Erzeugen eines Streams mit mehreren Bitraten verwendet wird, gibt das Keyframe-Intervall die GOP-Dauer (wie von diesem externen Encoder verwendet) an. Sobald dieser eingehende Datenstrom durch den Kanal empfangen wird, können Sie Ihren Livedatenstrom in einem der folgenden Formate für Wiedergabe-Clientanwendungen bereitstellen: Smooth Streaming, DASH und HLS. Bei Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS Segment-Paketerstellungsverhältnis (Fragmente pro Segment) basierend auf dem Keyframe-Intervall, auch bezeichnet als Gruppe von Bildern, GOP, die vom Live-Encoder empfangen wird.
-
-Die folgende Tabelle zeigt, wie die Segmentdauer berechnet wird:
-
-Keyframe-Intervall|Paketerstellungsverhältnis für HLS-Segmente (FragmentsPerSegment)|Beispiel
+Funktion|Pass-Through-Kanal|Standardkanal
 ---|---|---
-kleiner oder gleich 3 Sekunden|3:1|Wenn das KeyFrameInterval (oder GOP) 2 Sekunden beträgt, ist das Standard-Paketerstellungsverhältnis für HLS-Segmente 3:1, und es wird ein HLS-Segment von 6 Sekunden erstellt.
-3 bis 5 Sekunden|2:1|Wenn das KeyFrameInterval (oder GOP) 4 Sekunden beträgt, ist das Standard-Paketerstellungsverhältnis für HLS-Segmente 2:1, und es wird ein HLS-Segment von 8 Sekunden erstellt.
-größer als 5 Sekunden|1:1|Wenn das KeyFrameInterval (oder GOP) 6 Sekunden beträgt, ist das Standard-Paketerstellungsverhältnis für HLS-Segmente 1:1, und es wird ein HLS-Segment von 6 Sekunden erstellt.
+Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert.|Nein|Ja
+Maximale Auflösung, Anzahl der Ebenen|1080p, 8 Ebenen, 60 fps oder mehr|720p, 6 Ebenen, 30 fps
+Eingabeprotokolle|RTMP, Smooth Streaming|RTMP, Smooth Streaming und RTP
+Preis|Informieren Sie sich auf der [Preisseite](/pricing/details/media-services/), und klicken Sie auf die Registerkarte „Live-Video“.|Informieren Sie sich auf der [Preisseite](/pricing/details/media-services/). 
+Maximale Laufzeit|Rund um die Uhr|8 Stunden
+Unterstützung für das Einfügen von Slates|Nein|Ja
+Unterstützung für Werbeeinblendungen|Nein|Ja
+Pass-Through-CEA-608/708-Untertitel|Ja|Ja
+Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag|Ja|Nein (Kanal beginnt Slating nach 6 Sekunden ohne Dateneingabe)
+Unterstützung für nicht einheitliche Eingabe-GOPs|Ja|Nein, Eingabe muss aus festen 2-Sekunden-GOPs bestehen
+Unterstützung für Eingaben mit variable Bildwiederholrate|Ja|Nein, Eingabe muss eine feste Bildwiederholrate aufweisen.<br/>Kleinere Abweichungen, z.B. während sehr aktiver Szenen, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen.
+Automatische Abschaltung der Kanäle, wenn der Eingabefeed verloren geht|Nein|Nach 12 Stunden, wenn kein Programm ausgeführt wird 
+
+##Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)
+
+Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am **Pass-Through-Workflow** beteiligt sind:
+
+![Liveworkflow](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
+
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md).
+
+##Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden
+
+Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die in Livestreaming-Workflows beteiligt sind, wenn ein Kanal zum Ausführen der Livecodierung mit Media Services aktiviert ist.
+
+![Liveworkflow](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
+
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+
+##Beschreibung von Kanälen und zugehörigen Komponenten
+
+###Kanal
+
+In Media Services sind [Kanäle](https://msdn.microsoft.com/library/azure/dn783458.aspx) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem Live-Transcoder vorlegen. Der Kanal empfängt Live-Eingabestreams aus dem Live-Transcoder und stellt diese zum Streamen durch einen oder mehrere StreamingEndpoints zur Verfügung. Zudem bieten Kanäle einen Vorschauendpunkt (Vorschau-URL), mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie diesen weiter verarbeiten und übermitteln.
+
+Beim Erstellen des Kanals können Sie die Erfassungs-URL und die Vorschau-URL erhalten. Zum Abfragen dieser URLs muss sich der Kanal nicht im gestarteten Zustand befinden. Wenn Sie zum Übermitteln von Daten aus einem Live-Transcoder an den Kanal bereit sind, muss der Kanal gestartet werden. Sobald der Live-Transcoder mit dem Erfassen von Daten beginnt, können Sie eine Vorschau des Streams anzeigen.
+
+Jedes Media Services-Konto kann mehrere Kanäle, mehrere Programme und mehrere StreamingEndpoints enthalten. Je nach den Anforderungen an Bandbreite und Sicherheit können StreamingEndpoint-Dienste einem oder mehreren Kanälen zugeordnet werden. Jeder StreamingEndpoint kann von jedem Kanal abrufen.
 
 
-Sie können das Verhältnis der Fragmente pro Segment ändern, indem Sie den Ausgang des Kanals konfigurieren und FragmentsPerSegment für ChannelOutputHls festlegen.
+###Programm 
 
-Sie können den Keyframe-Intervallwert auch durch Festlegen der KeyFrameInterval-Eigenschaft für ChannelInput ändern.
+Mit einem [Programm](https://msdn.microsoft.com/library/azure/dn783463.aspx) können Sie die Veröffentlichung und Speicherung von Segmenten in einem Livestream steuern. Kanäle verwalten Programme. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Stream von Inhalten aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist. Über die Eigenschaft **ArchiveWindowLength** können Sie die Anzahl der Stunden festlegen, für die Sie den aufgezeichneten Inhalt für das Programm beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden.
 
-Wenn Sie das KeyFrameInterval explizit festlegen, wird FragmentsPerSegment für das Paketerstellungsverhältnis für HLS-Segmente anhand der oben beschriebenen Regeln berechnet.
+ArchiveWindowLength bestimmt außerdem die maximale Dauer, für die Clients von der aktuellen Liveposition aus rückwärts suchen können. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Durch den Wert dieser Eigenschaft wird außerdem festgelegt, wie lange Clientmanifeste wachsen können.
 
-Wenn Sie sowohl KeyFrameInterval als auch FragmentsPerSegment explizit festlegen, werden von Media Services die festgelegten Werte verwendet.
-
-
-####Zulässige IP-Adressen
-
-Sie können die IP-Adressen definieren, die zum Veröffentlichen von Videos in diesem Kanal zugelassen sind. Zulässige IP-Adressen können als eine einzelne IP-Adresse (z. B. „10.0.0.1“), als IP-Adressbereich mithilfe einer IP-Adresse und einer CIDR-Subnetzmaske (z. B. „10.0.0.1/22“) oder als IP-Adressbereich mithilfe einer Subnetzmaske in punktierter Dezimalschreibweise (z. B. „10.0.0.1(255.255.252.0)“) angegeben werden.
-
-Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen „0.0.0.0/0“ fest.
-
-###Kanalvorschau 
-
-####Vorschau-URLs
-
-Mit den Kanälen ist ein Vorschauendpunkt (Vorschau-URL) verfügbar, mit dem Sie eine Vorschau anzeigen und Ihren Datenstrom vor der weiteren Verarbeitung und Übermittlung überprüfen können.
-
-Wenn Sie einen Kanal erstellen, können Sie die Vorschau-URL abrufen. Der Kanal muss zum Abrufen der URL nicht den Status **Running** (Wird ausgeführt) aufweisen.
-
-Sobald der Kanal mit dem Erfassen von Daten beginnt, können Sie eine Vorschau des Streams anzeigen.
-
-Beachten Sie, dass der Vorschaustream derzeit unabhängig vom angegebenen Eingabetyp nur im Fragmented MP4-Format (Smooth Streaming) bereitgestellt werden kann. Sie können den Player [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) verwenden, um den Smooth Stream zu testen. Sie können auch einen Player verwenden, der im klassischen Azure-Portal gehostet wird, um Ihren Datenstrom anzuzeigen.
-
-
-####Zulässige IP-Adressen
-
-Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit dem Vorschauendpunkt zugelassen sind. Wenn keine IP-Adressen angegeben werden, wird jede IP-Adresse zugelassen. Zulässige IP-Adressen können als eine einzelne IP-Adresse (z. B. „10.0.0.1“), als IP-Adressbereich mithilfe einer IP-Adresse und einer CIDR-Subnetzmaske (z. B. „10.0.0.1/22“) oder als IP-Adressbereich mithilfe einer Subnetzmaske in punktierter Dezimalschreibweise (z. B. „10.0.0.1(255.255.252.0)“) angegeben werden.
-
-###Kanalausgabe
-
-Weitere Informationen finden Sie im Abschnitt zum [Festlegen von Keyframe-Intervallen](#keyframe_interval).
-
-
-###Programme von Kanälen
-
-Einem Kanal sind Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livestream steuern können. Die Programme werden von den Kanälen verwaltet. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Inhaltsdatenstrom aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist.
-
-Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Es können Werte zwischen mindestens 5 Minuten und höchstens 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
-
-Jedem Programm ist ein Medienobjekt zugeordnet, von welchem die gestreamten Inhalte gespeichert werden. Ein Medienobjekt ist einem BLOB-Container im Azure Storage-Konto zugeordnet, und die im Medienobjekt enthaltenen Dateien werden als BLOBs in diesem Container gespeichert. Zum Veröffentlichen des Programms, damit Ihre Kunden den Datenstrom sehen können, müssen Sie einen OnDemand-Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
+Jedes Programm ist mit einem Medienobjekt verknüpft. Zum Veröffentlichen des Programms müssen Sie einen Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Clients bereitstellen können.
 
 Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, 6 Stunden eines Programms zu archivieren, jedoch nur die letzten 10 Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von 6 Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Programm wird auf die Archivierung von 10 Minuten festgelegt. Dieses Programm wird veröffentlicht.
 
-Verwenden Sie vorhandene Programme nicht erneut für nachfolgende Ereignisse. Erstellen und starten Sie stattdessen für jedes Ereignis ein neues Programm wie im Abschnitt „Programmieren von Livestreaminganwendungen“ beschrieben.
 
-Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
+##Hinweise zur Gebührenberechnung
 
-Zum Löschen von archivierten Inhalten beenden und löschen Sie das Programm und löschen anschließend das zugehörige Medienobjekt. Medienobjekte können nicht gelöscht werden, wenn sie von Programmen verwendet werden. Zuerst muss das betreffende Programm gelöscht werden.
+Für einen Live Encoding-Kanal beginnt die Berechnung von Gebühren, sobald der Status über die API in „Wird ausgeführt“ geändert wird.
 
-Auch nach dem Beenden und Löschen des Programms können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde.
+In der folgenden Tabelle ist dargestellt, wie Kanalzustände den Abrechnungszuständen in der API und im klassischen Azure-Portal zugeordnet werden. Beachten Sie, dass sich die Zustände zwischen der API und der Benutzeroberfläche des Portals leicht unterscheiden. Sobald ein Kanal über die API in den Zustand „Wird ausgeführt“ oder im klassischen Azure-Portal in den Zustand „Bereit“ oder „Streaming“ versetzt wird, wird die Abrechnung aktiv.
 
-Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für das Streaming verfügbar sein sollen, löschen Sie den Streaminglocator.
+Um die weitere Gebührenberechnung für den Kanal zu beenden, müssen Sie den Kanal über die API oder im klassischen Azure-Portal beenden. Sie sind für das Beenden Ihrer Kanäle verantwortlich, wenn Sie die Nutzung des Live Encoding-Kanals abgeschlossen haben. Wenn Sie einen Codierkanal nicht beenden, werden weiter Gebühren berechnet.
 
-##<a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus 
+###<a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus 
 
 Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
-- **Stopped** (Beendet): Dies ist der Ausgangsstatus des Kanals nach der Erstellung. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist jedoch nicht zulässig.
-- **Starting** (Wird gestartet): Der Kanal wird gestartet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird der Kanal in den Status „Stopped“ (Angehalten) geschaltet.
-- **Running** (Wird ausgeführt): Vom Kanal können Livestreams verarbeitet werden.
-- **Stopping** (Wird beendet): Der Kanal wird beendet. In diesem Status sind weder Updates noch Streaming zulässig.
-- **Deleting** (Wird gelöscht): Der Kanal wird gelöscht. In diesem Status sind weder Updates noch Streaming zulässig.
+- **Stopped** (Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status werden keine Gebühren berechnet. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist jedoch nicht zulässig.
+- **Starting** (Wird gestartet): Der Kanal wird gestartet. In diesem Status werden keine Gebühren berechnet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird der Kanal in den Status „Stopped“ (Angehalten) geschaltet.
+- **Running** (Wird ausgeführt): Vom Kanal können Livestreams verarbeitet werden. Die Nutzung wird jetzt berechnet. Sie müssen den Kanal beenden, um zu verhindern, dass weiter Gebühren berechnet werden. 
+- **Stopping** (Wird beendet): Der Kanal wird beendet. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Status sind weder Updates noch Streaming zulässig.
+- **Deleting** (Wird gelöscht): Der Kanal wird gelöscht. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Status sind weder Updates noch Streaming zulässig.
 
 In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmodi aufgeführt.
  
-Kanalstatus|Portal-UI-Indikatoren|In Rechnung gestellt?
----|---|---|---
+Kanalstatus|Portal-UI-Indikatoren|Werden Gebühren berechnet?
+---|---|---
 Wird gestartet|Wird gestartet|Nein (Übergangsstatus)
-Wird ausgeführt|Bereit (keine ausgeführten Programme)<p>oder<p>Streaming (mindestens ein laufendes Programm)|Ja
+Wird ausgeführt|Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein laufendes Programm)|JA
 Wird beendet|Wird beendet|Nein (Übergangsstatus)
 Beendet|Beendet|Nein
-
-##<a id="cc_and_ads"></a>Untertitel und Werbeeinblendungen 
-
-Die folgende Tabelle zeigt die unterstützten Untertitel- und Werbeeinblendungsstandards.
-
-Standard|Hinweise
----|---
-CEA-708 und EIA-608 (708/608)|CEA-708 und EIA 608 sind Untertitelstandards für die USA und Kanada.<p><p>Derzeit werden Untertitel nur unterstützt, wenn sie im codierten Eingabestream übertragen werden. Sie müssen einen Live-Media Encoder verwenden, der Untertitel nach 608 oder 708 in den codierten Stream, die an Media Services gesendet wird, einfügen kann. Media Services sendet die Inhalte mit eingefügten Untertiteln an Ihre Zuschauer.
-TTML in ISMT (Smooth Streaming-Texttracks)|Die dynamische Paketerstellung von Media Services ermöglicht Ihren Clients das Streamen von Inhalten in einem der folgenden Formate: MPEG DASH, HLS oder Smooth Streaming. Wenn Sie jedoch Fragmented MP4 (Smooth Streaming) mit Untertitel in ISMT (Smooth Streaming-Texttracks) erfassen, kann der Stream nur an Smooth Streaming-Clients gesendet werden.
-SCTE-35|Hierbei handelt es sich um ein digitales Signalisierungssystem zum Einfügen von Werbeeinblendungen. Downstream-Empfänger verwenden das Signal zum Einfügen von Werbung in den Stream für die vorgesehene Zeit. SCTE-35 muss als platzsparende Spur im Eingabestream versendet werden. <p><p>Beachten Sie, dass derzeit als Eingabestreamformat mit Werbesignalen nur Fragmented MP4 (Smooth Streaming) unterstützt wird. Das einzige unterstützte Ausgabeformat ist ebenfalls Smooth Streaming.
-
-
-##<a id="Considerations"></a>Überlegungen
-
-Wenn Sie mit einem lokalen Live-Encoder einen Datenstrom mit mehreren Bitraten an einem Kanal senden, gelten folgende Einschränkungen:
-
-- Stellen Sie sicher, dass Sie ausreichend ungenutzte Internetbandbreite zum Senden an die Erfassungspunkte haben. 
-- Der eingehende Stream mit mehreren Bitraten kann maximal zehn Videoqualitätsebenen (zehn Schichten) und maximal fünf Audiospuren aufweisen.
-- Die höchste durchschnittliche Bitrate für die Videoqualitätsebenen oder -schichten sollte unter 10 Mbit/s liegen.
-- Die zusammengezählten durchschnittlichen Bitraten für alle Video- und Audiostreams sollten unter 25 Mbit/s liegen.
-- Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal. 
-
-
-Weitere Aspekte im Zusammenhang mit der Arbeit mit Kanälen und zugehörigen Komponenten:
-
-- Rufen Sie bei jeder Neukonfiguration des Liveencoders die **Reset**-Methode für den Kanal auf. Bevor Sie den Kanal zurückzusetzen, müssen Sie das Programm beenden. Wenn Sie den Kanal zurückgesetzt haben, starten Sie das Programm neu. 
-- Ein Kanal kann nur beendet werden, wenn er den Status „Wird ausgeführt“ aufweist und alle Programme im Kanal beendet wurden.
-- In der Standardeinstellung können Sie Ihrem Media Services-Konto nur fünf Kanäle hinzufügen. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).
-- Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal. 
-- Es werden nur Kanäle in Rechnung gestellt, die den Status **Running** (Wird ausgeführt) aufweisen. Weitere Informationen finden Sie in [diesem Abschnitt](media-services-manage-channels-overview.md#states).
-
-##Erstellen von Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen
-
-Weitere Informationen zu lokalen Liveencodern finden Sie unter [Verwenden von Drittanbieter-Liveencodern mit Azure Media Services](https://azure.microsoft.com/blog/azure-media-services-rtmp-support-and-live-encoders/).
-
-Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Erstellen und Verwalten von Kanälen und Programmen zuzugreifen.
-
-[AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
-
 
 
 ##Media Services-Lernpfade
@@ -262,11 +156,12 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)
 
-[Bereitstellen von Livestreamingereignissen mit Azure Media Services](media-services-live-streaming-workflow.md)
+[Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md)
+
+[Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md)
+
+[Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).
 
 [Media Services-Konzepte](media-services-concepts.md)
 
-[live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
- 
-
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

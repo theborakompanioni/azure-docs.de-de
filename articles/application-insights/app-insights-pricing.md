@@ -56,7 +56,7 @@ Sie können jederzeit zur kostenlosen 30-Tage-Testversion des Premium-Tarifs wec
 * Das Kontingent wird in *Datenpunkten* gemessen. Ein einzelner Datenpunkt ist ein Aufruf einer der Nachverfolgungsmethoden, unabhängig davon, ob sie explizit in Ihrem Code oder durch eines der Standardtelemetriemodule aufgerufen wird. Er kann mehrere angefügte Eigenschaften und Metriken besitzen.
 * Datenpunkte werden generiert:
  * Über [SDK-Module](app-insights-configuration-with-applicationinsights-config.md), die automatisch Daten sammeln, beispielsweise zum Melden einer Anforderung oder eines Absturzes oder zum Messen der Leistung.
- * Über von Ihnen geschriebene [API](app-insights-api-custom-events-metrics.md)-`Track...`-Aufrufe, z. B. `TrackEvent` oder `trackPageView`.
+ * Über von Ihnen geschriebene [API](app-insights-api-custom-events-metrics.md)-`Track...`-Aufrufe, z. B. `TrackEvent` oder `trackPageView`.
  * Über [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), die Sie eingerichtet haben.
 * Beim Debuggen können Sie die Datenpunkte sehen, die von Ihrer App im Visual Studio-Ausgabefenster gesendet werden. Client-Ereignisse können durch Öffnen der Registerkarte „Netzwerk“ im Debuggingbereich Ihres Browsers angezeigt werden (in der Regel mit F12).
 * *Sitzungsdaten* werden im Kontingent nicht berücksichtigt. Hierzu zählen die Anzahl von Benutzern oder Sitzungen sowie Umgebungs- und Gerätedaten.
@@ -67,7 +67,7 @@ Sie können jederzeit zur kostenlosen 30-Tage-Testversion des Premium-Tarifs wec
 * Sie können auch einzelne Datenpunkte in der Quelle während des Debuggens überprüfen:
  * Wenn Sie Ihre App im Debugmodus in Visual Studio ausführen, werden die Datenpunkte im Ausgabefenster protokolliert. 
  * Um Clientdatenpunkte anzuzeigen, öffnen Sie den Debuggingbereich Ihres Browserfensters (in der Regel über F12) und die Registerkarte „Netzwerk“.
-* Die Datenrate wird möglicherweise (standardmäßig) durch [adaptive Stichprobenerstellung](app-insights-sampling) reduziert. Dies bedeutet, dass bei steigender Verwendung Ihrer App die Telemetrierate nicht in dem von Ihnen erwarteten Maß ansteigt.
+* Die Datenrate wird möglicherweise (standardmäßig) durch die [adaptive Stichprobenerstellung](app-insights-sampling.md) reduziert. Dies bedeutet, dass bei steigender Verwendung Ihrer App die Telemetrierate nicht in dem von Ihnen erwarteten Maß ansteigt.
 
 ### Überschreitung
 
@@ -86,12 +86,12 @@ Das Diagramm im unteren Bereich des Blatts mit der Preisübersicht zeigt das Dat
 
 Klicken Sie auf das Diagramm, um weitere Details einzublenden, oder ziehen Sie den Mauszeiger darüber, und klicken Sie auf „(+)“, um einen Zeitraum im Detail anzuzeigen.
 
-Das Diagramm zeigt die Menge an Daten, die der Application Insights-Dienst nach Durchführung der [Stichproben](app-insights-sampling) empfängt.
+Das Diagramm zeigt die Menge der Daten, die der Application Insights-Dienst nach der [Stichprobenerstellung](app-insights-sampling.md) empfängt.
 
 
 ## Datenrate
 
-Zusätzlich zum monatlichen Kontingent gibt es Begrenzungen der Datenrate. Beim Tarif [Free][pricing] liegt die Grenze bei 200 Datenpunkten pro Sekunde, gemittelt über 5 Minuten. Bei kostenpflichtigen Tarifen ist der Grenzwert 500/s, gemittelt über eine Minute.
+Zusätzlich zum monatlichen Kontingent gibt es Begrenzungen der Datenrate. Beim Tarif [Free][pricing] liegt die Grenze bei 200 Datenpunkten pro Sekunde, gemittelt über 5 Minuten. Bei kostenpflichtigen Tarifen ist der Grenzwert 500/s, gemittelt über eine Minute.
 
 Es gibt drei Buckets, die getrennt gezählt werden:
 
@@ -121,7 +121,7 @@ Wenn Begrenzungsdrosselungen auftreten, können Sie verschiedene Schritte ausfü
 
 * Verwenden Sie [Stichproben](app-insights-sampling.md). Diese Technologie verringert die Datenrate, ohne die Metriken zu verzerren und ohne die Navigation zwischen verwandten Elementen bei der Suche zu stören.
 * [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](app-insights-javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
-* Deaktivieren Sie nicht benötigte Erfassungsmodule durch [Bearbeiten von „ApplicationInsights.config“](app-insights-configuration-with-applicationinsights-config.md). Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
+* Deaktivieren Sie nicht benötigte Erfassungsmodule durch [Bearbeiten von „ApplicationInsights.config“](app-insights-configuration-with-applicationinsights-config.md). Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
 * Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden. 
 
 
@@ -148,7 +148,7 @@ Es gibt verschiedene Formen der Stichprobenerstellung. Wir empfehlen die [adapti
 
 Alternativ können Sie auf dem Blatt „Kontingente und Preise“ die *Erfassungs-Stichprobenerstellung* festlegen. Diese Form der Stichprobenerstellung arbeitet an dem Punkt, an dem Telemetriedaten von Ihrer App den Application Insights-Dienst erreichen. Diese Art der Stichprobenerstellung wirkt sich nicht auf die Menge der Telemetriedaten aus, die von Ihrer App gesendet werden, verringert jedoch die Menge der Daten, die vom Dienst beibehalten werden.
 
-![Klicken Sie im Blatt „Kontingent und Preise“ auf die Kachel „Stichproben“, und wählen Sie eine Einheit für die Stichprobenerstellung.](./media/app-insights-sampling/04.png)
+![Klicken Sie im Blatt „Kontingent und Preise“ auf die Kachel „Stichproben“, und wählen Sie eine Einheit für die Stichprobenerstellung.](./media/app-insights-pricing/04.png)
 
 Die Stichprobenerstellung ist eine effektive Möglichkeit, die Gebühren zu senken und innerhalb Ihres monatlichen Kontingents zu bleiben. Der Stichprobenalgorithmus behält Elemente in Bezug auf die Telemetrie bei, sodass Sie beispielsweise in Search die Anforderung ermitteln können, die in Beziehung zu einer bestimmten Ausnahme steht. Der Algorithmus behält außerdem korrekte Zahlenwerte bei, sodass Sie im Metrik-Explorer die richtigen Werte für Anforderungsraten, Ausnahmeraten und weitere Messwerte sehen.
 
@@ -173,4 +173,4 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

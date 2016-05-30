@@ -37,7 +37,7 @@ Zur Entwicklung der vollständigen Arbeitsanwendung müssen Sie folgende Schritt
 3. Installieren und Konfigurieren von ADAL
 5. Verwenden von ADAL zum Abrufen von Tokens aus Azure AD
 
-Beginnen Sie, indem Sie [ein Projektgerüst](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip). Bei beidem handelt es sich um eine Visual Studio 2013-Lösung. Außerdem benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstellen und Ihre Anwendung registrieren können. Wenn Sie über noch keinen Mandanten verfügen, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
+Beginnen Sie, indem Sie [ein Projektgerüst](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip). Bei beidem handelt es sich um eine Visual Studio 2015-Lösung. Außerdem benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstellen und Ihre Anwendung registrieren können. Wenn Sie über noch keinen Mandanten verfügen, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
 ## *1. Registrieren der Anwendung DirectorySearcher*
 Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen:
@@ -53,7 +53,8 @@ Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure A
 - Suchen Sie ebenso auf der Registerkarte **Konfigurieren** den Abschnitt „Berechtigungen für andere Anwendungen“. Für die Anwendung „Azure Active Directory“ fügen Sie unter **delegierte Berechtigungen** die Berechtigung **Zugriff auf das Verzeichnis Ihrer Organisation** hinzu. Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
 
 ## *2. Installieren und Konfigurieren von ADAL*
-Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL installieren und Ihren identitätsbezogenen Code schreiben. Damit ADAL mit Azure AD kommunizieren kann, müssen Sie ihm einige Informationen über die Registrierung Ihrer Anwendung bereitstellen. Fügen Sie ADAL dazu zunächst über die Paket-Manager-Konsole zum Projekt DirectorySearcher hinzu.
+Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL installieren und Ihren identitätsbezogenen Code schreiben. Damit ADAL mit dem Azure AD kommunizieren kann, müssen Sie einige Informationen zur App-Registrierung bereitstellen.
+-	Fügen Sie dazu ADAL zunächst mithilfe der Paket-Manager-Konsole zum DirectorySearcher-Projekte hinzu.
 
 ```
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -96,13 +97,16 @@ public MainPage()
 private async void Search(object sender, RoutedEventArgs e)
 {
     ...
-    AuthenticationResult result = await authContext.AcquireTokenAsync(graphResourceId, clientId, redirectURI);
-    if (result.Status != AuthenticationStatus.Success)
+    AuthenticationResult result = null;
+    try
     {
-        if (result.Error != "authentication_canceled")
+        result = await authContext.AcquireTokenAsync(graphResourceId, clientId, redirectURI, new PlatformParameters(PromptBehavior.Auto, false));
+    }
+    catch (AdalException ex)
+    {
+        if (ex.ErrorCode != "authentication_canceled")
         {
-            MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError: {0}\n\nError Description:\n\n{1}", result.Error, result.ErrorDescription), "Sorry, an error occurred while signing you in.");
-            await dialog.ShowAsync();
+            ShowAuthError(string.Format("If the error continues, please contact your administrator.\n\nError: {0}\n\nError Description:\n\n{1}", ex.ErrorCode, ex.Message));
         }
         return;
     }
@@ -114,8 +118,8 @@ private async void Search(object sender, RoutedEventArgs e)
 - An dieser Stelle wird das zuvor abgerufene Zugriffstoken benötigt. Hängen Sie das Token noch in der `Search(...)`-Methode an die Graph-API-GET-Anforderung im Autorisierungsheader an:
 
 ```C#
-// Add the access token to the Authorization Header of the call to the Graph API
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+// Add the access token to the Authorization Header of the call to the Graph API, and call the Graph API.
+httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", result.AccessToken);
 
 ```
 - Mit dem Objekt `AuthenticationResult` können Sie in Ihrer Anwendung auch Informationen zum Benutzer, zum Beispiel die Benutzer-ID, anzeigen.
@@ -146,4 +150,4 @@ Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClie
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->
