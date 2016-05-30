@@ -258,7 +258,7 @@ Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozes
 
 	f. Klicken Sie auf **Group 1: Start** (Gruppe 1: Start), wählen Sie **Virtual Machines** (Virtuelle Computer) aus, und fügen Sie die VMs hinzu, die im Wiederherstellungsplan geschützt werden sollen.
 
-    g. Klicken Sie auf **Group 1: Start ** (Gruppe 1: Start), wählen Sie **Script** (Skript), und fügen Sie alle folgenden Skripts nach**Group 1: Post-steps ** (Gruppe 1: nachfolgende Schritte) hinzu.
+    g. Klicken Sie auf **Group 1: Start** (Gruppe 1: Start), wählen Sie **Script** (Skript), und fügen Sie alle folgenden Skripts nach **Group 1: Post-steps** (Gruppe 1: nachfolgende Schritte) hinzu.
 
 	- Das Runbook „Start-StorSimple-Virtual-Appliance“
 	- Das Runbook „Fail over-StorSimple-volume-containers“

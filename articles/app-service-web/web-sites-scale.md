@@ -18,7 +18,7 @@
 
 # Skalieren einer Web-App in Azure App Service #
 
-Zur Steigerung von Leistung und Durchsatz für Ihre Web-Apps unter Microsoft Azure können Sie mithilfe des [Azure-Portals](http://portal.azure.com) Ihren[App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Plan vom Modus **Kostenlos** zum Modus **Freigegeben**,**Basic**, **Standard** oder **Premium** hochstufen.
+Zur Steigerung von Leistung und Durchsatz für Ihre Web-Apps unter Microsoft Azure können Sie mithilfe des [Azure-Portals](http://portal.azure.com) Ihren [App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Plan vom Modus **Kostenlos** zum Modus **Freigegeben**,**Basic**, **Standard** oder **Premium** hochstufen.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -66,7 +66,7 @@ Weitere Informationen zu App Service-Plänen finden Sie unter [Was ist ein App S
 	
 	Sie können wie im Modus **Basic** (siehe oben) weiterhin den Schieberegler **Instanz** bewegen, um manuell die Anzahl von Instanzen zu erhöhen. In diesem Abschnitt erfahren Sie jedoch, wie Sie Ihre App automatisch skalieren können.
 	
-2. Wählen Sie unter **Skalieren nach** die Option ** Zeitplan und Leistungsregeln**, um Ihre App automatisch zu skalieren.
+2. Wählen Sie unter **Skalieren nach** die Option **Zeitplan und Leistungsregeln**, um Ihre App automatisch zu skalieren.
 	
 	![Festlegen des Modus für automatische Skalierung nach Leistung][Autoscale]
 	

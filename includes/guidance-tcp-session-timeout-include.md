@@ -1,11 +1,11 @@
 ##TCP-Einstellungen für virtuelle Azure-Computer
 
-Die Kommunikation virtueller Azure-Computer mit dem öffentlichen Internet erfolgt über [NAT][nat] (Netzwerkadressübersetzung). NAT-Geräte weisen einem virtuellen Azure-Computer eine öffentliche IP-Adresse und einen Port zu, sodass der virtuelle Computer einen Socket für die Kommunikation mit anderen Geräten einrichten kann. Wenn Pakete nach einer bestimmten Zeit nicht mehr durch diesen Socket geleitet werden, beendet das NAT-Gerät die Zuordnung, und der Socket kann von anderen virtuellen Computern verwendet werden.
+Die Kommunikation virtueller Azure-Computer mit dem öffentlichen Internet erfolgt über [NAT][nat] \(Netzwerkadressübersetzung). NAT-Geräte weisen einem virtuellen Azure-Computer eine öffentliche IP-Adresse und einen Port zu, sodass der virtuelle Computer einen Socket für die Kommunikation mit anderen Geräten einrichten kann. Wenn Pakete nach einer bestimmten Zeit nicht mehr durch diesen Socket geleitet werden, beendet das NAT-Gerät die Zuordnung, und der Socket kann von anderen virtuellen Computern verwendet werden.
 
 Dies ist ein allgemeines NAT-Verhalten, das zu Kommunikationsproblemen in TCP-basierten Anwendungen führen kann, in denen erwartet wird, dass ein Socket über einen Timeoutzeitraum hinaus beibehalten wird. Bei Sitzungen mit *bestehender Verbindung* sind zwei Einstellungen für das Leerlauftimeout zu berücksichtigen:
 
 - **Eingehend** und über den [Azure Load Balancer][azure-lb-timeout]. Dieses Timeout ist standardmäßig auf 4 Minuten festgelegt und kann bis hin zu 30 Minuten geändert werden.
-- **Ausgehend** unter Verwendung von [SNAT][snat] (Quell-NAT). Dieses Timeout ist auf 4 Minuten festgelegt und kann nicht angepasst werden.
+- **Ausgehend** unter Verwendung von [SNAT][snat] \(Quell-NAT). Dieses Timeout ist auf 4 Minuten festgelegt und kann nicht angepasst werden.
 
 Um sicherzustellen, dass Verbindungen nach dem Timeout nicht getrennt werden, sollten Sie entweder dafür sorgen, dass die Sitzung in der Anwendung aktiv bleibt, oder das zugrunde liegende System so konfigurieren, dass dies gewährleistet ist. Die zu verwendenden Einstellungen unterscheiden sich bei Linux- und Windows-Systemen (siehe unten).
 

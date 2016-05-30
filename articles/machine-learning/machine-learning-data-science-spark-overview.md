@@ -107,7 +107,7 @@ Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihre
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-Sie können auch zu ******https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter-Notebooks zuzugreifen. Ersetzen Sie einfach das Element „CLUSTERNAME“ in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
+Sie können auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter-Notebooks zuzugreifen. Ersetzen Sie einfach das Element „CLUSTERNAME“ in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
@@ -122,7 +122,7 @@ Sie können die Notebooks direkt von Github auf den Jupyter-Notebook-Server in I
 
 Sie sehen den Dateinamen in der Jupyter-Dateiliste, wieder mit einer Schaltfläche **Hochladen**. Klicken Sie auf diese Schaltfläche **Hochladen**. Sie haben nun das Notebook importiert. Wiederholen Sie diese Schritte, um die folgenden Notebooks dieser exemplarischen Vorgehensweise hochzuladen.
 
-> [AZURE.TIP] (Hinweis: Sie können mit der rechten Maustaste auf die Links unten in Ihrem Browser klicken und **Link kopieren** auswählen, um die GitHub-URL für den unformatierten Inhalt abzurufen, die Sie in das Dialogfeld des Jupyter-Datei-Explorers zum Hochladen einfügen können.)
+> [AZURE.TIP] \(Hinweis: Sie können mit der rechten Maustaste auf die Links unten in Ihrem Browser klicken und **Link kopieren** auswählen, um die GitHub-URL für den unformatierten Inhalt abzurufen, die Sie in das Dialogfeld des Jupyter-Datei-Explorers zum Hochladen einfügen können.)
 
 Sie können jetzt:
 

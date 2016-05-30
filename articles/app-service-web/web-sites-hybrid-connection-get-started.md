@@ -99,7 +99,7 @@ Anschließend erstellen Sie eine Hybridverbindung und einen BizTalk-Dienst für 
 6. Sobald der Prozess abgeschlossen ist, werden Sie im Benachrichtigungsbereich des Portals informiert, dass die Verbindung erfolgreich erstellt wurde.
 	<!--- TODO
 	
-	Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
+    Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
 	(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
 	Create hybrid conn step, you get the following error
 	Failed to create hybrid connection RelecIoudHC. The 

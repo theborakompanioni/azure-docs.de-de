@@ -178,7 +178,7 @@ Erforderliche Parameter:
     https://chackdan-kmstest-eastus.vault.azure.net:443/secrets/MyCert/6b5cc15a753644e6835cb3g3486b3812
     ```
 
-- ** Zertifikatfingerabdruck.** Dies bezieht sich auf den Fingerabdruck des Zertifikats, der unter der zuvor festgelegten URL zu finden ist.
+- **Zertifikatfingerabdruck.** Dies bezieht sich auf den Fingerabdruck des Zertifikats, der unter der zuvor festgelegten URL zu finden ist.
 
 Optionale Parameter:
 

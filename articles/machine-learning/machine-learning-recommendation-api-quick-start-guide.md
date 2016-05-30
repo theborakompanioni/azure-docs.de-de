@@ -30,7 +30,8 @@ Zur Verwendung von Azure Machine Learning-Empfehlungen müssen Sie die folgenden
 * Importieren von Katalogdaten – Kataloge enthalten Metadateninformationen zu den Elementen. 
 * Importieren von Nutzungsdaten – Nutzungsdaten können auf zwei Arten (oder beide Arten) hochgeladen werden:
 	* Durch Hochladen einer Datei, die die Verwendung von Daten enthält.
-	* Durch das Senden von Ereignissen zur Datenerfassung. In der Regel laden Sie eine Nutzungsdatei hoch, damit Sie ein erstes Empfehlungsmodell (bootstrap) erstellen und dieses verwenden können, bis das System über das Datenerfassungsformat ausreichend Daten gesammelt hat.
+	* Durch das Senden von Ereignissen zur Datenerfassung. 
+	In der Regel laden Sie eine Nutzungsdatei hoch, damit Sie ein erstes Empfehlungsmodell (bootstrap) erstellen und dieses verwenden können, bis das System über das Datenerfassungsformat ausreichend Daten gesammelt hat.
 * Entwickeln eines Empfehlungsmodells – Dies ist ein asynchroner Vorgang, in dem das Empfehlungssystem anhand aller Nutzungsdaten ein Empfehlungsmodell erstellt. Dieser Vorgang dauert einige Minuten oder mehrere Stunden, je nach Größe der Daten und der Build-Konfigurationsparameter. Beim Auslösen des Builds erhalten Sie eine Build-ID. Überprüfen Sie anhand dieser ID, wann der Buildprozess beendet wurde, bevor Sie beginnen, die Empfehlungen zu nutzen.
 * Empfehlungen nutzen – Sie erhalten Empfehlungen für ein bestimmtes Element oder eine Liste von Elementen.
 
@@ -87,14 +88,18 @@ Erstellen einer Anforderung „Modell erstellen“:
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
-|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 | | apiVersion | 1.0 | ||| | Anforderungstext | NONE |
+|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 | 
+| apiVersion | 1.0 | 
+||| 
+| Anforderungstext | NONE |
 
 
 **Antwort**:
 
 HTTP-Statuscode: 200
 
-- `feed/entry/content/properties/id` - Enthält die Modell-ID. **Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
+- `feed/entry/content/properties/id` - Enthält die Modell-ID. 
+**Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
 
 OData-XML
 
@@ -138,7 +143,10 @@ Wenn Sie durch mehrere Aufrufe mehrere Katalogdateien zum gleichen Modell hochla
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 |	modelId |	Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
-| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 | | apiVersion | 1.0 | ||| | Anforderungstext | Katalogdaten. Format:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Elementname</td><td>Ja</td><td>Alphanumerisch, max. Länge: 255</td><td>Elementname</td></tr><tr><td>Elementkategorie</td><td>Ja</td><td>Alphanumerisch, max. Länge: 255</td><td>Kategorie, zu der das Element gehört (z. B. Kochbücher, Drama…)</td></tr><tr><td>Beschreibung</td><td>Nein</td><td>Alphanumerisch, max. Länge: 4000</td><td>Beschreibung dieses Elements</td></tr></table><br>Max. Dateigröße: 200 MB.<br><br>Beispiel:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Buch<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: Belletristik (Byzanz-Reihe),Buch<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Buch<br>552a1940-21e4-4399-82bb-594b46d7ed54,Die Herren der Zäune,Buch</pre> |
+| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 | 
+| apiVersion | 1.0 | 
+||| 
+| Anforderungstext | Katalogdaten. Format:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Elementname</td><td>Ja</td><td>Alphanumerisch, max. Länge: 255</td><td>Elementname</td></tr><tr><td>Elementkategorie</td><td>Ja</td><td>Alphanumerisch, max. Länge: 255</td><td>Kategorie, zu der das Element gehört (z. B. Kochbücher, Drama…)</td></tr><tr><td>Beschreibung</td><td>Nein</td><td>Alphanumerisch, max. Länge: 4000</td><td>Beschreibung dieses Elements</td></tr></table><br>Max. Dateigröße: 200 MB.<br><br>Beispiel:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Buch<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: Belletristik (Byzanz-Reihe),Buch<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Buch<br>552a1940-21e4-4399-82bb-594b46d7ed54,Die Herren der Zäune,Buch</pre> |
 
 
 **Antwort**:
@@ -184,7 +192,10 @@ In diesem Abschnitt wird gezeigt, wie Nutzungsdaten mithilfe einer Datei hochgel
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 |	modelId |	Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
-| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 | | apiVersion | 1.0 | ||| | Anforderungstext | Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>Alphanumerisch</td><td>Eindeutiger Bezeichner eines Benutzers</td></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge: 50</td><td> Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Zeit</td><td>Nein</td><td>Datum im Format: YYYY/MM/DDTHH:MM:SS (z. B. 2013/06/20T10:00:00)</td><td>Zeitstempel der Daten</td></tr><tr><td>Ereignis</td><td>Nein, wenn bereitgestellt, muss auch ein Datum angegeben werden</td><td>Eins der Folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Max. Dateigröße: 200 MB.<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 | 
+| apiVersion | 1.0 | 
+||| 
+| Anforderungstext | Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>Alphanumerisch</td><td>Eindeutiger Bezeichner eines Benutzers</td></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge: 50</td><td> Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Zeit</td><td>Nein</td><td>Datum im Format: YYYY/MM/DDTHH:MM:SS (z. B. 2013/06/20T10:00:00)</td><td>Zeitstempel der Daten</td></tr><tr><td>Ereignis</td><td>Nein, wenn bereitgestellt, muss auch ein Datum angegeben werden</td><td>Eins der Folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Max. Dateigröße: 200 MB.<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Antwort**:
 
@@ -286,7 +297,22 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
   		</EventData>
 		</Event>
 
-- Beispiel für das Ereignis „Purchase“: <Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId> <SessionId>11112222</SessionId> <EventData> <EventData> <Name>Purchase</Name> <PurchaseItems> <PurchaseItems> <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId> <Count>3</Count> </PurchaseItems> </PurchaseItems> </EventData> </EventData> </Event>
+- Beispiel für das Ereignis „Purchase“: 
+		 <Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		 <ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+		 <SessionId>11112222</SessionId>
+		 <EventData>
+		 <EventData>
+			 <Name>Purchase</Name>
+			 <PurchaseItems>
+			 <PurchaseItems>
+				 <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+				 <Count>3</Count>
+			 </PurchaseItems>
+		 </PurchaseItems>
+		 </EventData>
+		 </EventData>
+		 </Event>
 
 - Beispiel für das Senden von 2 Ereignissen („Click“ und „AddShopCart“):
 
@@ -650,7 +676,8 @@ Die folgende Beispielantwort enthält 10 empfohlene Elemente:
 	</feed>
 
 ###Aktualisieren des Modells
-Sie können die Modellbeschreibung oder die aktive Build-ID aktualisieren. *Aktive Build-ID*: Jeder Build für jedes Modell weist eine „Build-ID“ auf. Die aktive Build-ID ist der erste erfolgreich erstellte Build jedes neuen Modells. Wenn Sie über eine aktive Build-ID verfügen und für das gleiche Modell zusätzliche Builds erstellen, müssen Sie die aktive Build-ID gegebenenfalls ausdrücklich als Standard-Build-ID festlegen. Wenn Sie Empfehlungen nutzen und die zu verwendende Build-ID nicht definieren, wird automatisch der Standardbuild verwendet.
+Sie können die Modellbeschreibung oder die aktive Build-ID aktualisieren. 
+*Aktive Build-ID*: Jeder Build für jedes Modell weist eine „Build-ID“ auf. Die aktive Build-ID ist der erste erfolgreich erstellte Build jedes neuen Modells. Wenn Sie über eine aktive Build-ID verfügen und für das gleiche Modell zusätzliche Builds erstellen, müssen Sie die aktive Build-ID gegebenenfalls ausdrücklich als Standard-Build-ID festlegen. Wenn Sie Empfehlungen nutzen und die zu verwendende Build-ID nicht definieren, wird automatisch der Standardbuild verwendet.
 
 Wenn ein Empfehlungsmodell in der Produktion verwendet wird, können mit diesem Mechanismus neue Modelle erstellt und getestet werden, bevor sie in der Produktion verwendet werden.
 
@@ -682,7 +709,10 @@ OData-XML
 	</feed>
 
 ##Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Keine Ähnlichkeit oder Verbindung ist beabsichtigt und ist rein zufällig. Dieses Dokument gibt keine Rechte an geistigem Eigentum an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. © 2014 Microsoft. Alle Rechte vorbehalten.
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. 
+Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Keine Ähnlichkeit oder Verbindung ist beabsichtigt und ist rein zufällig. 
+Dieses Dokument gibt keine Rechte an geistigem Eigentum an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. 
+© 2014 Microsoft. Alle Rechte vorbehalten.
  
 
 <!---HONumber=AcomDC_0518_2016-->

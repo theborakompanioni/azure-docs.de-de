@@ -150,7 +150,7 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 1. Bei einem Benutzer mit einer bestimmten Attributkonfiguration treten immer wieder Exportfehler auf, obwohl Attribute eigentlich isoliert werden sollten. Beispiel:
 
-    a. In Active Directory wird ein neuer Benutzer mit dem UPN-Wert ****Joe@contoso.com** und dem ProxyAddress-Wert **smtp:Joe@contoso.com** erstellt.
+    a. In Active Directory wird ein neuer Benutzer mit dem UPN-Wert **Joe@contoso.com** und dem ProxyAddress-Wert **smtp:Joe@contoso.com** erstellt.
 
     b. Die Eigenschaften dieses Objekts stehen mit einer vorhandenen Gruppe mit dem ProxyAddress-Wert **SMTP:Joe@contoso.com** in Konflikt.
 
@@ -158,7 +158,7 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 2. Die Timer-Aufgabe, die nach behobenen Konflikten mit doppelten Attributen sucht, vergleicht nur UPN-Konflikte mit anderen UPN-Konflikten. Dadurch kommt es zu dem Problem, das in Schritt 4 des folgenden Szenarios beschrieben ist:
 
-    a. ****UserA@contoso.com** hat einen nicht eindeutigen UPN-Wert, da das ProxyAddress-Attribut eines anderen Objekts den gleichen Wert besitzt.
+    a. **UserA@contoso.com** hat einen nicht eindeutigen UPN-Wert, da das ProxyAddress-Attribut eines anderen Objekts den gleichen Wert besitzt.
 
     b. UserA erhält einen temporären Wert vom Typ **MOERA UPN** (****UserA1234@contoso.onmicrosoft.com**), und der tatsächliche UPN-Wert wird unter Quarantäne gestellt (wie erwartet).
 
@@ -188,9 +188,9 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
     b. Anschließend wird versucht, **Benutzer B** mit **UPN = User@contoso.com** zu synchronisieren.
 
-    c. Der UPN-Wert von **Benutzer B** wird in ****User1234@contoso.onmicrosoft.com** geändert, und ****User@contoso.com** wird zu **DirSyncProvisioningErrors** hinzugefügt.
+    c. Der UPN-Wert von **Benutzer B** wird in **User1234@contoso.onmicrosoft.com** geändert, und ***User@contoso.com** wird zu **DirSyncProvisioningErrors** hinzugefügt.
 
-    d. Die Fehlermeldung für **Benutzer B** sollte angeben, dass **Benutzer A** bereits den UPN-Wert ****User@contoso.com** besitzt, enthält aber den displayName-Wert von **Benutzer B**.
+    d. Die Fehlermeldung für **Benutzer B** sollte angeben, dass **Benutzer A** bereits den UPN-Wert **User@contoso.com** besitzt, enthält aber den displayName-Wert von **Benutzer B**.
 
 3. Der Bericht enthält unter Umständen nur ausführliche Fehlerinformationen zu Benutzern mit **UPN**-Konflikten, nicht zu Benutzern mit **ProxyAddress**-Fehlern. (Es wird noch untersucht, ob dies immer so ist oder von der Umgebung abhängt.)
 

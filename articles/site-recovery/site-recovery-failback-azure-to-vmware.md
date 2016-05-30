@@ -38,7 +38,7 @@ Verwenden Sie diese Architektur, wenn der Prozessserver lokal angeordnet ist und
 
 Verwenden Sie diese Architektur, wenn der Prozessserver in Azure angeordnet ist und wenn Sie entweder ein VPN oder eine ExpressRoute-Verbindung verwenden.
 
-![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 Eine vollständige Liste der Ports und das Failbackarchitekturdiagramm sehen Sie in der folgenden Abbildung.
 
@@ -96,7 +96,7 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 
 1.  Wählen Sie im Tresor unter „Settings“ (Einstellungen) > „Manage Site Recovery Infrastructure“ (Site-Recovery-Infrastruktur verwalten) > **Konfigurationsserver** unter der Überschrift „For VMware and Physical Machines“ (Für VMware und physische Computer) den Konfigurationsserver aus. Klicken Sie auf „+ Prozessserver“
 
-	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.png)
+	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.PNG)
 
 2. Wählen Sie zum Bereitstellen des Prozessservers „Bereitstellen eines Failbackprozessservers in Azure“ aus
 
@@ -106,11 +106,11 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 
 5. Wenn Sie ein Netzwerk mit *klassischer Bereitstellung* ausgewählt haben, werden Sie dazu aufgefordert, eine neue VM über den Azure-Katalog zu erstellen und den neuen Prozessserver darin zu installieren.
 
-	![](./media/site-recovery-failback-azure-to-vmware-new/add-classic.png)
+	![](./media/site-recovery-failback-azure-to-vmware-new/add-classic.PNG)
 	
 	1. Der Name des Images ist *Microsoft Azure Site Recovery Process Server V2*. Stellen Sie sicher, dass Sie *Klassisch* als Bereitstellungsmodell auswählen.
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/templatename.png)
+		![](./media/site-recovery-failback-azure-to-vmware-new/templateName.PNG)
 	
 	2. Installieren Sie den Prozessserver gemäß den [hier angegebenen](./site-recovery-vmware-to-azure-classicz.md#step-5-install-the-management-server) Schritten
 	
@@ -126,7 +126,7 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 	
 	5. Wählen Sie das angegebene Subnetz und die Netzwerkschnittstelle, mit der Sie eine Verbindung zu ihm herstellen. Hinweis: Sie müssen Ihre eigene [Netzwerkschnittstelle](../virtual-network/virtual-networks-multiple-nics.md) (NIC) erstellen und diese während der Bereitstellung auswählen.
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/psinputsadd.png)
+		![](./media/site-recovery-failback-azure-to-vmware-new/PSinputsadd.PNG)
 	
 	6. Klicken Sie auf OK. Dadurch wird ein Auftrag ausgelöst, der einen virtuellen Computer mit dem Bereitstellungstyp „Resource Manager“ mit dem Prozessserversetup erstellt. Sie müssen das Setup auf dem virtuellen Computer ausführen, um den Server auf dem Konfigurationsserver zu registrieren. Dazu müssen Sie [diese Schritte](./site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) ausführen:
 
@@ -250,4 +250,4 @@ Ein Failback kann über eine VPN-Verbindung oder über Azure ExpressRoute ausgef
 - ExpressRoute muss in dem virtuellen Azure-Netzwerk eingerichtet werden, zu dem das Failover der Quellcomputer durchgeführt wird und in dem sich die virtuellen Azure-Computer nach dem Failover befinden.
 - Die Daten werden zu einem Azure-Speicherkonto auf einem öffentlichen Endpunkt repliziert. Sie müssen ein öffentliches Peering in ExpressRoute einrichten, bei dem das Zieldatencenter für die Site Recovery-Replikation ExpressRoute verwendet.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!-----HONumber=AcomDC_0518_2016--->

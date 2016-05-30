@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Vorlage von Azure Resource Mana
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace template][] (Service Bus-Namespace-Vorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus namespace template][] \(Service Bus-Namespace-Vorlage) auf GitHub.
 
 >[AZURE.NOTE] Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 >

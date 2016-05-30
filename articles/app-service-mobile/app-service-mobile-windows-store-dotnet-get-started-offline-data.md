@@ -175,7 +175,7 @@ Weitere Informationen zu diesen Konzepten finden Sie unter [Synchronisierung von
 In folgenden Themen finden Sie weitere Hintergrundinformationen zur Offlinesynchronisierungsfunktion von Mobile Apps:
 
 * [Offlinedatensynchronisierung in Azure Mobile Apps]
-* [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services] (Hinweis: Im Video geht es zwar um Mobile Services, aber die Offlinesynchronisierung in Azure Mobile Apps funktioniert auf ähnliche Weise.)
+* [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services] \(Hinweis: Im Video geht es zwar um Mobile Services, aber die Offlinesynchronisierung in Azure Mobile Apps funktioniert auf ähnliche Weise.)
 * [Azure Friday: Offlinefähige Apps in Azure Mobile Services]
 
 <!-- Anchors. -->

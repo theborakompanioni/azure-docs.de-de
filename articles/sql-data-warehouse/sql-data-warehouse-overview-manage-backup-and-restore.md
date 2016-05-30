@@ -59,7 +59,7 @@ SQL Data Warehouse trennt Compute und Speicher. Alle Ihre Daten werden direkt in
 
 ### Datenbankwiederherstellung
 
-Mit der Datenbankwiederherstellung können Sie die Datenbank in den Zustand zu einem früheren Zeitpunkt wiederherstellen. Der Azure SQL Data Warehouse-Dienst schützt alle Datenbanken durch automatische Speichermomentaufnahmen mindestens alle acht Stunden, die sieben Tage lang aufbewahrt werden und einen diskreten Satz von Wiederherstellungspunkten für Sie bereitstellen. Diese Sicherungen werden in Azure Storage in RA-GRS gespeichert und sind daher standardmäßig georedundant. Die Funktionen für die automatische Sicherung und Wiederherstellung bieten eine verwaltungsfreie Möglichkeit, Datenbanken vor versehentlicher Beschädigung oder Löschung zu schützen. Weitere Informationen zur Datenbankwiederherstellung finden Sie unter [Backup and restore tasks][] (Aufgaben zur Sicherung und Wiederherstellung).
+Mit der Datenbankwiederherstellung können Sie die Datenbank in den Zustand zu einem früheren Zeitpunkt wiederherstellen. Der Azure SQL Data Warehouse-Dienst schützt alle Datenbanken durch automatische Speichermomentaufnahmen mindestens alle acht Stunden, die sieben Tage lang aufbewahrt werden und einen diskreten Satz von Wiederherstellungspunkten für Sie bereitstellen. Diese Sicherungen werden in Azure Storage in RA-GRS gespeichert und sind daher standardmäßig georedundant. Die Funktionen für die automatische Sicherung und Wiederherstellung bieten eine verwaltungsfreie Möglichkeit, Datenbanken vor versehentlicher Beschädigung oder Löschung zu schützen. Weitere Informationen zur Datenbankwiederherstellung finden Sie unter [Backup and restore tasks][] \(Aufgaben zur Sicherung und Wiederherstellung).
 
 ### Geografische Wiederherstellung
 

@@ -53,7 +53,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit][] und [Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication][] (Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung).
+Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit][] und [Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication][] \(Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung).
 
 
 ## Autorisierung

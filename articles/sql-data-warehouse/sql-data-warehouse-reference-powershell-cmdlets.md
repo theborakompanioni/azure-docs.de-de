@@ -18,7 +18,7 @@
 
 # PowerShell-Cmdlets und REST-APIs für SQL Data Warehouse
 
-Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden. Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren. Alternativ finden Sie eine Liste mit REST-APIs für die Automatisierung derselben Aufgaben unter [Operations for Azure SQL Databases][] (Vorgänge für Azure SQL-Datenbanken).
+Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden. Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren. Alternativ finden Sie eine Liste mit REST-APIs für die Automatisierung derselben Aufgaben unter [Operations for Azure SQL Databases][] \(Vorgänge für Azure SQL-Datenbanken).
 
 > [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0.3 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
@@ -87,7 +87,7 @@ Weitere PowerShell-Beispiele finden Sie unter:
 - [Wiederherstellung von einer Momentaufnahme][]
 - [Geowiederherstellung von einer Momentaufnahme][]
 
-Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, finden Sie unter [Azure SQL Database Cmdlets][] (Azure SQL-Datenbank-Cmdlets).
+Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, finden Sie unter [Azure SQL Database Cmdlets][] \(Azure SQL-Datenbank-Cmdlets).
 
 <!--Image references-->
 

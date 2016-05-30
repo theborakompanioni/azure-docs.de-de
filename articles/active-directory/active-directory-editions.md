@@ -163,7 +163,7 @@ Das standardmäßige Nutzungskontingent liegt bei 150.000 Objekten. Bei einem O
 
 | Free Edition| Basic Edition| Premium Edition| Nur für Office 365-Apps |
 | :-: | :-: | :-: | :-: |
-| 10 Apps pro Benutzer [1] (vorab integrierte SaaS-Apps und von Entwicklern integrierte Apps)| 10 Apps pro Benutzer [1] (Free-Tarif und Anwendungsproxy-Apps) | Keine Begrenzung [2] (Free-, Basic-Tarif und Vorlagen für Self-Service-App-Integration)| 10 Apps pro Benutzer [1] (vorab integrierte SaaS-Apps und von Entwicklern integrierte Apps)|
+| 10 Apps pro Benutzer [1] \(vorab integrierte SaaS-Apps und von Entwicklern integrierte Apps)| 10 Apps pro Benutzer [1] \(Free-Tarif und Anwendungsproxy-Apps) | Keine Begrenzung [2] \(Free-, Basic-Tarif und Vorlagen für Self-Service-App-Integration)| 10 Apps pro Benutzer [1] \(vorab integrierte SaaS-Apps und von Entwicklern integrierte Apps)|
 
 [1] Mit Azure AD Free und Azure AD Basic können Endbenutzer mit zugewiesenem Zugriff auf SaaS-Apps bis zu 10 Apps in ihrem Zugriffsbereich anzeigen und über SSO auf diese zugreifen. Bei den Editionen „Free“ und „Basic“ können Administratoren SSO konfigurieren und einen Benutzerzugriff auf eine beliebige Anzahl von SaaS-Apps einrichten. Im Zugriffsbereich der Endbenutzer werden jedoch jeweils nur maximal 10 Apps angezeigt.
 

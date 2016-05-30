@@ -86,7 +86,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
 
 	Das Hilfsprogramm "post.jar" indiziert Solr mit zwei Beispieldokumenten: **solr.xml** und **monitor.xml**. Das Dienstprogramm "post.jar" und die Beispieldokumente stehen in der Solr-Installation zur Verfügung.
 
-3. **Verwenden Sie das Solr-Dashboard, um die indizierten Dokumente zu durchsuchen**. Öffnen Sie in der RDP-Sitzung mit dem HDInsight-Cluster Internet Explorer, und starten Sie das Solr-Dashboard unter ****http://headnodehost:8983/solr/#/**. Wählen Sie im linken Bereich in der Dropdownliste **Core Selector** den Eintrag **collection1** aus, und klicken Sie dann auf **Query**. Geben Sie beispielsweise die folgenden Werte an, um alle Dokumente in Solr auszuwählen und zurückzugeben.
+3. **Verwenden Sie das Solr-Dashboard, um die indizierten Dokumente zu durchsuchen**. Öffnen Sie in der RDP-Sitzung mit dem HDInsight-Cluster Internet Explorer, und starten Sie das Solr-Dashboard unter **http://headnodehost:8983/solr/#/**. Wählen Sie im linken Bereich in der Dropdownliste **Core Selector** den Eintrag **collection1** aus, und klicken Sie dann auf **Query**. Geben Sie beispielsweise die folgenden Werte an, um alle Dokumente in Solr auszuwählen und zurückzugeben.
 	1. Geben Sie im Textfeld **q** Folgendes ein: ***:***. Dadurch werden alle Dokumente zurückgegeben, die in Solr indiziert sind. Wenn Sie nach einer bestimmten Zeichenfolge innerhalb der Dokumente suchen möchten, können diese Zeichenfolge hier eingeben.
 	2. Wählen Sie im Textfeld **wt** das Ausgabeformat aus. Der Standardwert ist **json**. Klicken Sie auf **Execute Query**.
 

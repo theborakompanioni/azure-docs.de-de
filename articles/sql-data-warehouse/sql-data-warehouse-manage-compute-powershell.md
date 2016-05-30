@@ -34,7 +34,7 @@ Diese Sammlung von Tasks verwendet das Azure-Portal für folgende Aufgaben:
 - Anhalten von Computeressourcen
 - Fortsetzen von Computeressourcen
 
-Informationen hierzu finden Sie unter [Manage compute power in Azure SQL Data Warehouse (Overview)][] (Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)).
+Informationen hierzu finden Sie unter [Manage compute power in Azure SQL Data Warehouse (Overview)][] \(Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)).
 
 
 ## Voraussetzungen

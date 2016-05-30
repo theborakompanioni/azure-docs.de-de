@@ -109,7 +109,7 @@ Entpacken Sie die Datei in einen Ordner mit einem kurzen Pfadnamen, z.B. „C:\\
 
 Wenn Sie auf dem Laufenden bleiben oder einen Beitrag zu unserem Code leisten möchten, können Sie das Repository wie folgt klonen:
 
-****git clone https://github.com/Azure-Samples/MyDriving.git**
+**git clone https://github.com/Azure-Samples/MyDriving.git**
 
 ## Abrufen eines Bing Maps-API-Schlüssels
 

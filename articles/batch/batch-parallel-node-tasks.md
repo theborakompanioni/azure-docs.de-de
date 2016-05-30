@@ -71,7 +71,7 @@ pool.Commit();
 
 ## Beispiel für Batch REST
 
-Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus zwei großen Knoten mit maximal vier Aufgaben pro Knoten. Weitere Informationen zum Hinzufügen von Pools mit der REST-API finden Sie unter [Add a pool to an account][rest_addpool] (Hinzufügen eines Pools zu einem Konto).
+Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus zwei großen Knoten mit maximal vier Aufgaben pro Knoten. Weitere Informationen zum Hinzufügen von Pools mit der REST-API finden Sie unter [Add a pool to an account][rest_addpool] \(Hinzufügen eines Pools zu einem Konto).
 
 ```json
 {

@@ -289,7 +289,7 @@ Als Nächstes überprüfen Sie, ob Sie mit CLIENT1 auf die Web- und Dateifreigab
 2.	Klicken Sie unter **Eigenschaften von CLIENT1** neben **Verstärkte Sicherheitskonfiguration für IE** auf **Ein** .
 3.	Klicken Sie unter **Verstärkte Sicherheitskonfiguration für IE** bei **Administratoren** und **Benutzern** auf **Aus**, und klicken Sie dann auf **OK**.
 4.	Klicken Sie auf der Startseite auf **Internet Explorer** und dann auf **OK**.
-5.	Geben Sie in die Adressleiste ****http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
+5.	Geben Sie in die Adressleiste **http://app1.corp.contoso.com/** ein, und drücken Sie dann die EINGABETASTE. Nun sollte die IIS-Standardwebseite (Internet-Informationsdienste) für APP1 angezeigt werden.
 6.	Klicken Sie in der Desktopsymbolleiste auf das Symbol des Datei-Explorers.
 7.	Geben Sie in der Adressleiste **\\\app1\\Files** ein, und drücken Sie dann die EINGABETASTE.
 8.	Es wird ein Fenster mit dem Inhalt des freigegebenen Ordners geöffnet.

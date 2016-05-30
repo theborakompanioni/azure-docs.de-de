@@ -22,7 +22,7 @@ Eine Zusammenfassung der Optionen und Empfehlungen für das Szenario zum Laden v
 
 Der schwierigste Teil beim Laden von Daten ist in der Regel die Daten für das Laden vorzubereiten. Azure vereinfacht das Laden mithilfe von Azure Blob Storage als gemeinsamer Datenspeicher für viele Dienste und mithilfe von Azure Data Factory zum Organisieren der Kommunikation und des Datentransfers zwischen den Azure-Diensten. Diese Prozesse sind in der PolyBase-Technologie integriert, die MPP (Massively Parallel Processing) verwendet, um die Daten parallel vom Azure Blob Storage in SQL Data Warehouse zu laden.
 
-Tutorials, die Beispieldatenbanken laden, finden Sie unter [Load sample databases][] (Laden von Beispieldatenbanken).
+Tutorials, die Beispieldatenbanken laden, finden Sie unter [Load sample databases][] \(Laden von Beispieldatenbanken).
 
 ## Laden aus Azure Blob Storage
 Der schnellste Weg, Daten in SQL Data Warehouse zu importieren, ist die Verwendung von PolyBase zum Laden von Daten aus Azure Blob Storage. PolyBase verwendet die MPP-Struktur (Massively Parallel Processing) von SQL Data Warehouse, um Daten parallel von Azure Blob Storage zu laden. Sie können T-SQL-Befehle oder eine Azure Data Factory-Pipeline verwenden, um PolyBase zu verwenden.
@@ -37,7 +37,7 @@ Zusammenfassung des Ladeprozesses:
 4. Führen Sie einen T-SQL-Befehl aus, um die Daten parallel in eine neue Datenbanktabelle zu laden.
 <!-- 5. Schedule and run a loading job. --> 
 
-Ein Tutorial finden Sie unter [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][] (Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)).
+Ein Tutorial finden Sie unter [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][] \(Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)).
 
 ### 2\. Verwenden von Azure Data Factory
 
@@ -79,7 +79,7 @@ Zusammenfassung des Ladeprozesses:
 2. Verwenden Sie das Befehlszeilen-Hilfsprogramm AZCopy zum Kopieren von Daten aus Flatfiles in Azure Blob Storage.
 3. Verwenden Sie PolyBase zum Laden in SQL Data Warehouse.
 
-Ein Tutorial finden Sie unter [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][] (Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)).
+Ein Tutorial finden Sie unter [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][] \(Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)).
 
 ### Verwenden von BCP
 Wenn Sie eine kleine Menge Daten haben, können Sie BCP zum direkten Laden in Azure SQL Data Warehouse verwenden.

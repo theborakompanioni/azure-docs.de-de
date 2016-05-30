@@ -1164,7 +1164,7 @@ Time taken to execute above cell: 25.98 seconds
 
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-**** Trainieren und bewerten**
+** Trainieren und bewerten**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1464,7 +1464,7 @@ Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeic
 PythonRDD[122] at RDD at PythonRDD.scala:43
 
 
-****Drucken Sie den Pfad zu den Modelldateien für die Verwendung im Consumption Notebook. ** Um für ein unabhängiges Dataset den Verbrauch und die Bewertung zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
+**Drucken Sie den Pfad zu den Modelldateien für die Verwendung im Consumption Notebook.** Um für ein unabhängiges Dataset den Verbrauch und die Bewertung zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
 
 
 	# PRINT MODEL FILE LOCATIONS FOR CONSUMPTION

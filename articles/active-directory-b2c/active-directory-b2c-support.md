@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
     - Wählen Sie für **Problemtyp** den Eintrag **Technisch** aus.
 	- Wählen Sie das entsprechende **Abonnement**.
     - **Dienst** ist **Active Directory**.
-    - Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/de-DE/support/plans/) für einen Supportplan registrieren.
+    - Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/support/plans/) für einen Supportplan registrieren.
 
     ![Support: Grundlagen](./media/active-directory-b2c-support/support-basics.png)
 

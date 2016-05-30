@@ -83,7 +83,23 @@ Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden a
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.7.1](#1.7.1) | 30. April 2016 |--- | [1\.7.0](#1.7.0) | 27. April 2016 |--- | [1\.6.0](#1.6.0) | 29. März 2016 |--- | [1\.5.1](#1.5.1) | 31. Dezember 2015 |--- | [1\.5.0](#1.5.0) | 4. Dezember 2015 |--- | [1\.4.0](#1.4.0) | 5. Oktober 2015 |--- | [1\.3.0](#1.3.0) | 5. Oktober 2015 |--- | [1\.2.0](#1.2.0) | 5. August 2015 |--- | [1\.1.0](#1.1.0) | 9. Juli 2015 |--- | [1\.0.1](#1.0.1) | 12. Mai 2015 |--- | [1\.0.0](#1.0.0) | 7. April 2015 |--- | 0.9.5-prelease | 9. März 2015 | 29. Februar 2016 | 0.9.4-prelease | 17. Februar 2015 | 29. Februar 2016 | 0.9.3-prelease | 13. Januar 2015 | 29. Februar 2016 | 0.9.2-prelease | 19. Dezember 2014 | 29. Februar 2016 | 0.9.1-prelease | 19. Dezember 2014 | 29. Februar 2016 | 0.9.0-prelease | 19. Dezember 2014 | 29. Februar 2016
+| [1\.7.1](#1.7.1) | 30. April 2016 |--- 
+| [1\.7.0](#1.7.0) | 27. April 2016 |--- 
+| [1\.6.0](#1.6.0) | 29. März 2016 |--- 
+| [1\.5.1](#1.5.1) | 31. Dezember 2015 |--- 
+| [1\.5.0](#1.5.0) | 4. Dezember 2015 |--- 
+| [1\.4.0](#1.4.0) | 5. Oktober 2015 |--- 
+| [1\.3.0](#1.3.0) | 5. Oktober 2015 |--- 
+| [1\.2.0](#1.2.0) | 5. August 2015 |--- 
+| [1\.1.0](#1.1.0) | 9. Juli 2015 |--- 
+| [1\.0.1](#1.0.1) | 12. Mai 2015 |--- 
+| [1\.0.0](#1.0.0) | 7. April 2015 |--- 
+| 0.9.5-prelease | 9. März 2015 | 29. Februar 2016 
+| 0.9.4-prelease | 17. Februar 2015 | 29. Februar 2016 
+| 0.9.3-prelease | 13. Januar 2015 | 29. Februar 2016 
+| 0.9.2-prelease | 19. Dezember 2014 | 29. Februar 2016 
+| 0.9.1-prelease | 19. Dezember 2014 | 29. Februar 2016 
+| 0.9.0-prelease | 19. Dezember 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]

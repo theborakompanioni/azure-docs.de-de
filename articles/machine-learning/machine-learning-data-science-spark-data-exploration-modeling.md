@@ -963,7 +963,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 49,21 Sekunden
 
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-****Trainieren und bewerten**
+**Trainieren und bewerten**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 

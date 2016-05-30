@@ -70,7 +70,7 @@ Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um z
 <!-- links -->
    
 [azure-cli]: ../xplat-cli-install.md
-[boot-diagnostics]: https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/
+[boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md
 [vm-sizes]: virtual-machines-linux-sizes.md
 

@@ -354,7 +354,7 @@ Verwenden Sie das Skript unter [Entwurfsentscheidungen und Programmiertechniken 
 [Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 [Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
 [Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse]: sql-data-warehouse-overview-develop.md
-[Manage Columnstore Indexes][] (Verwalten von Columnstore-Indizes):
+[Manage Columnstore Indexes][] \(Verwalten von Columnstore-Indizes):
 [Statistiken]: sql-data-warehouse-develop-statistics.md
 [CTAS]: sql-data-warehouse-develop-ctas.md
 [label]: sql-data-warehouse-develop-label.md

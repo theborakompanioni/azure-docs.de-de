@@ -88,7 +88,8 @@ Wenn `TaskService` eine Anforderung von `TaskWebApp` erhält, sucht er nach eine
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-Dieser Artikel behandelt nicht die Details der Sicherung von `TaskService`. Um zu erfahren, wie eine Web-API sicher Anforderungen mithilfe von Azure AD B2C authentifiziert, sehen Sie sich unseren [Artikel mit den ersten Schritten für die Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) an.
+Dieser Artikel behandelt nicht die Details der Sicherung von `TaskService`. Um zu erfahren, wie eine Web-API sicher Anforderungen mithilfe von Azure AD B2C authentifiziert, sehen Sie sich unseren 
+[Artikel mit den ersten Schritten für die Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) an.
 
 ## Konfigurieren der Aufgaben-Web-App
 

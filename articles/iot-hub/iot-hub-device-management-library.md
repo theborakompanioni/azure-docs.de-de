@@ -152,7 +152,7 @@ Um praktische Erfahrungen zu sammeln, können Sie die folgenden Ressourcen verwe
 
 - Beispiel für Intel Edison-Firmwareupdate: Dies ist ein Beispiel, bei dem Geräteverwaltungsfunktionen für ein Intel Edison-Gerät aktiviert sind. Weitere Informationen finden Sie unter [iotdm\_edison\_sample][lnk-edison-sample].
 - Beispiel für simulierte Geräte: Ein plattformunabhängiges Gerätebeispiel, das auf Linux- und Windows-Geräten ausgeführt werden kann. Weitere Informationen finden Sie unter [iotdm\_simple\_sample][lnk-simple-sample].
-- Weitere Informationen zu LWM2M-Objekten finden Sie unter [OMNA Lightweight M2M (LWM2M) Object & Resource Registry][lnk-oma] (OMNA Lightweight M2M (LWM2M) – Objekt- und Ressourcenregistrierung).
+- Weitere Informationen zu LWM2M-Objekten finden Sie unter [OMNA Lightweight M2M (LWM2M) Object & Resource Registry][lnk-oma] \(OMNA Lightweight M2M (LWM2M) – Objekt- und Ressourcenregistrierung).
 
 ## Anhang: Derzeit unterstützte LWM2M-Objekte und -Ressourcen
 
