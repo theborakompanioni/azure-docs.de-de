@@ -139,7 +139,7 @@ In diesem Schritt erstellen Sie die beiden verknüpften Dienste **StorageLinkedS
 		  		}
 			}
 
-	Ersetzen Sie **servername**, **databasename**, ****username@servername** und **password** durch die Namen des Azure SQL-Servers und der Datenbank bzw. durch Benutzerkonto und Kennwort.
+	Ersetzen Sie **servername**, **databasename**, **username@servername** und **password** durch die Namen des Azure SQL-Servers und der Datenbank bzw. durch Benutzerkonto und Kennwort.
 
 2.	Führen Sie den folgenden Befehl aus, um einen verknüpften Dienst zu erstellen.
 	
@@ -241,7 +241,7 @@ Eine Tabelle ist ein rechteckiges Dataset und verfügt über ein Schema. In dies
 	- Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (**columnDelimiter**).	
 	- Die Verfügbarkeit (**availability**) ist auf **hourly** festgelegt (**frequency** auf **hour** und **interval** auf **1**), sodass der Data Factory-Dienst den Stammordner im angegebenen Blob-Container (**adftutorial**) stündlich auf Eingabedaten untersucht.
 
-	Wenn Sie keinen **fileName** für eine **Eingabe****tabelle** angeben, werden alle Dateien/Blobs aus dem Eingabeordner (**folderPath**) als Eingaben angesehen. Wenn Sie einen Dateinamen in der JSON-Datei angeben, wird nur die angegebene Datei/der angegebene Blob als Eingabe betrachtet.
+	Wenn Sie keinen **fileName** für eine **Eingabe** **tabelle** angeben, werden alle Dateien/Blobs aus dem Eingabeordner (**folderPath**) als Eingaben angesehen. Wenn Sie einen Dateinamen in der JSON-Datei angeben, wird nur die angegebene Datei/der angegebene Blob als Eingabe betrachtet.
  
 	Wenn Sie keinen **fileName** für eine **Ausgabetabelle** angeben, werden die generierten Dateien in **folderPath** im folgenden Format benannt: Data.<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt).
 
@@ -309,7 +309,7 @@ In diesem Teil des Schritts erstellen Sie eine Ausgabetabelle namens **EmpSQLTab
 ## Erstellen der Pipeline
 In diesem Schritt erstellen Sie eine Pipeline mit einer **Kopieraktivität**, die **EmpTableFromBlob** als Eingabe und **EmpSQLTable** als Ausgabe verwendet.
 
-1.	Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialPipeline.json** im Ordner **C:\\ADFGetStartedPSH ** mit dem folgenden Inhalt: 
+1.	Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialPipeline.json** im Ordner **C:\\ADFGetStartedPSH** mit dem folgenden Inhalt: 
 	
 			 {
 			  "name": "ADFTutorialPipeline",

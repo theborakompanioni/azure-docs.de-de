@@ -52,7 +52,7 @@ In beiden Fällen können Sie Ihre Verbindungszeichenfolge über die `CloudConfi
 
 ### Konfigurieren der Verbindungszeichenfolge
 
-Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [klassischen Azure-Portal][], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (****.csdef**) eine `Setting`-Bezeichnung hinzu, wie im folgenden Beispiel gezeigt:
+Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [klassischen Azure-Portal][], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (**.csdef**) eine `Setting`-Bezeichnung hinzu, wie im folgenden Beispiel gezeigt:
 
 ```
 <ServiceDefinition name="Azure1">

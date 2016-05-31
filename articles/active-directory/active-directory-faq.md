@@ -28,7 +28,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 ## Zugreifen auf Azure und Azure Active Directory
 
 
-****F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen (https://manage.windowsazure.com)?**
+**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen (https://manage.windowsazure.com)?**
 
 **A:** Zum Zugreifen auf das klassische Azure-Portal müssen alle Benutzer über Berechtigungen unter dem Azure-Abonnement verfügen. Wenn Sie über eine kostenpflichtige Version von Office 365 oder Azure AD verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt durchführen. Andernfalls müssen Sie eine vollwertige [Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 

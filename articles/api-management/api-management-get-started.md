@@ -105,7 +105,7 @@ Klicken Sie zum Importieren der Rechner-API im Menü **API Management** auf der 
 
 Führen Sie die folgenden Schritte aus, um die Rechner-API zu konfigurieren:
 
-1. Klicken Sie auf **Aus URL**, geben Sie ****http://calcapi.cloudapp.net/calcapi.json** in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
+1. Klicken Sie auf **Aus URL**, geben Sie **http://calcapi.cloudapp.net/calcapi.json** in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
 2. Geben Sie in das Textfeld **URL-Suffix für Web-API** den Wert **calc** ein.
 3. Klicken Sie auf das Feld **Produkte (optional)**, und wählen Sie **Starter**.
 4. Klicken Sie auf **Speichern**, um die API zu importieren.

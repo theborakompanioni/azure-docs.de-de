@@ -16,7 +16,7 @@
    ms.date="05/19/2016"
    ms.author="andkjell;shoatman;billmath"/>
 
-# Azure AD Connect: Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)
+# Azure AD Connect: Aktualisieren des Microsoft Azure Active Directory-Synchronisierungstools (DirSync)
 
 Die folgende Dokumentation hilft Ihnen beim Upgrade Ihrer vorhandenen DirSync-Installation auf Azure AD Connect.
 

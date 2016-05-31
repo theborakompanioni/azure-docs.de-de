@@ -47,7 +47,7 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F3. Welche SCDPM-Serverversion wird unterstützt?** <br/> A3. Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR6; Stand: Juli 2015) zu installieren.
 
-****F4. Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die **Tresoranmeldedaten** einzugeben. Laufen die Tresoranmeldeinformationen ab? A4. Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Azure Backup-Tresor herunter.
+**F4. Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die **Tresoranmeldedaten** einzugeben. Laufen die Tresoranmeldeinformationen ab? A4. Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Azure Backup-Tresor herunter.
 
 **F5. Gibt es eine Beschränkung hinsichtlich der Anzahl von Sicherungstresoren, die in einem Azure-Abonnement erstellt werden können?** <br/> A5. Ja. Sie können pro Abonnement 25 Tresore erstellen (Stand: Juli 2015). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
 
