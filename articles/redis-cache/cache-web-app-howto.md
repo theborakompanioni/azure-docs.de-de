@@ -18,6 +18,13 @@
 
 # Gewusst wie: Erstellen einer Web-App mit Redis Cache
 
+> [AZURE.SELECTOR]
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [ASP.NET](cache-web-app-howto.md)
+- [Node.js](cache-nodejs-get-started.md)
+- [Java](cache-java-get-started.md)
+- [Python](cache-python-get-started.md)
+
 In diesem Tutorial wird erläutert, wie Sie mithilfe von Visual Studio 2015 eine ASP.NET-Webanwendung erstellen und für eine Web-App in Azure App Service bereitstellen. Die Beispielanwendung zeigt eine Teamstatistik aus einer Datenbank an und veranschaulicht verschiedene Möglichkeiten zum Speichern und Abrufen von Daten aus dem Cache mithilfe von Azure Redis Cache. Nach Abschluss des Tutorials verfügen Sie über eine funktionsfähige Web-App, die Lese- und Schreibvorgänge in einer Datenbank durchführt, mit Azure Redis Cache optimiert ist und in Azure gehostet wird.
 
 Sie lernen Folgendes:
@@ -45,7 +52,7 @@ Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie kö
 
 ### Visual Studio 2015 mit dem Azure SDK für .NET
 
-Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 (oder höher) geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio 2015 wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
+Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio 2015 wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
 
 Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für Visual Studio 2013 herunterladen](http://go.microsoft.com/fwlink/?LinkID=324322). Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
 
@@ -59,7 +66,7 @@ Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für V
  
     ![Projekt erstellen][cache-create-project]
 
-3. Wählen Sie als Projekttyp die Option **MVC** aus. Deaktivieren Sie das Kontrollkästchen **In der Cloud hosten**. Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials durchgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
+3. Wählen Sie als Projekttyp die Option **MVC** aus. Deaktivieren Sie das Kontrollkästchen **In der Cloud hosten**. Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
 
     ![Projektvorlage auswählen][cache-select-template]
 
@@ -188,7 +195,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 
     ![Controller hinzufügen][cache-add-controller]
 
-3. Wählen Sie **MVC 5-Controller mit Ansichten per Entity Framework** aus, und klicken Sie auf **Hinzufügen**. Sollte nach dem Klicken auf **Hinzufügen** eine Fehlermeldung angezeigt werden, vergewissern Sie sich, dass das Projekt erstellt wurde.
+3. Wählen Sie **MVC 5-Controller mit Ansichten per Entity Framework** aus, und klicken Sie auf **Hinzufügen**. Sollte nach dem Klicken auf **Hinzufügen** eine Fehlermeldung angezeigt werden, vergewissern Sie sich, dass das Projekt erstellt wurde.
 
     ![Controllerklasse hinzufügen][cache-add-controller-class]
 
@@ -677,7 +684,7 @@ Klicken Sie auf die folgende Schaltfläche, um diese Dienste für eine neue oder
 
 [![Bereitstellen in Azure][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
 
-Die Schaltfläche zum Bereitstellen für Azure verwendet die [Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates) namens [Create a Web App plus Redis Cache plus SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database), um diese Dienste bereitstellen und die Verbindungszeichenfolge für die SQL-Datenbank sowie die Anwendungseinstellung für die Azure Redis Cache-Verbindungszeichenfolge festzulegen.
+Die Schaltfläche zum Bereitstellen für Azure verwendet die [Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates) namens [Create a Web App plus Redis Cache plus SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database), um diese Dienste bereitzustellen und die Verbindungszeichenfolge für die SQL-Datenbank sowie die Anwendungseinstellung für die Azure Redis Cache-Verbindungszeichenfolge festzulegen.
 
 >[AZURE.NOTE] Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero).
 
@@ -686,7 +693,7 @@ Nach dem Klicken auf die Schaltfläche zum Bereitstellen für Azure gelangen Sie
 ![Bereitstellen in Azure][cache-deploy-to-azure-step-1]
 
 1. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** das zu verwendende Azure-Abonnement aus. Wählen Sie außerdem eine vorhandene Ressourcengruppe aus, oder erstellen eine neue Ressourcengruppe, und geben Sie den Speicherort der Ressourcengruppe an.
-2. Geben Sie auf dem Blatt **Parameter** einen Administratorkontonamen (**ADMINISTRATORLOGIN**; nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
+2. Geben Sie auf dem Blatt **Parameter** einen Administratorkontonamen (**ADMINISTRATORLOGIN**, nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
 3. Die anderen Einstellungen können bei Bedarf geändert werden, Sie können aber auch die Standardwerte beibehalten. Klicken Sie anschließend auf **OK**.
 
 
@@ -776,7 +783,7 @@ Wenn Sie die Anwendung lokal auf Ihrem Computer ausführen möchten, benötigen 
 -	Falls Sie über eine andere vorhandene Azure Redis Cache-Instanz verfügen, können Sie auch diese Instanz verwenden, um das Beispiel lokal auszuführen.
 -	Eine Anleitung zum Erstellen einer Azure Redis Cache-Instanz finden Sie unter [Erstellen eines Caches](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigieren Sie im Azure-Portal zu dem Cache, und rufen Sie [Hostname](cache-configure.md#properties) und [Zugriffsschlüssel](cache-configure.md#access-keys) für Ihren Cache ab. Eine entsprechende Anleitung finden Sie unter [Konfigurieren von Azure Redis Cache](cache-configure.md#configure-redis-cache-settings).
+Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigieren Sie im Azure-Portal zum Cache, und rufen Sie [Hostname](cache-configure.md#properties) und [Zugriffsschlüssel](cache-configure.md#access-keys) für Ihren Cache ab. Eine entsprechende Anleitung finden Sie unter [Konfigurieren von Azure Redis Cache](cache-configure.md#configure-redis-cache-settings).
 
 1. Öffnen Sie die Datei `WebAppPlusCacheAppSecrets.config`, die Sie in diesem Tutorial beim [Konfigurieren der Anwendung für die Verwendung von Redis Cache](#configure-the-application-to-use-redis-cache) erstellt haben, mit einem beliebigen Editor.
 
@@ -794,7 +801,7 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 
 ## Nächste Schritte
 
--	Informieren Sie sich auf der [ASP.NET-Website](http://asp.net/) ausführlicher über die [ersten Schritten mit ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started).
+-	Informieren Sie sich auf der [ASP.NET-Website](http://asp.net/) ausführlicher über die [ersten Schritte mit ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started).
 -	Beschäftigen Sie sich unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542) ausführlicher mit dem in diesem Tutorial verwendeten Code First-Ansatz für Entity Framework.
 -	Machen Sie sich ausführlicher mit [Web-Apps in Azure App Service](../app-service-web/app-service-web-overview.md) vertraut.
 -	Informieren Sie sich, wie Sie Ihren Cache im Azure-Portal [überwachen](cache-how-to-monitor.md).
@@ -839,4 +846,4 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

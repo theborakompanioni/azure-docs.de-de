@@ -53,7 +53,9 @@ Nachdem Sie die drei Richtlinien erfolgreich erstellt haben, können Sie Ihre Ap
 
 ## Herunterladen des Codes
 
-Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
+[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-devquickstarts-bug-fix.md)]
+
+Der Code für dieses Tutorial [wird auf GitHub verwaltet](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet). Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet.git
@@ -65,7 +67,7 @@ Nachdem Sie den Beispielcode heruntergeladen haben, öffnen Sie zum Einstieg die
 
 ## Konfigurieren der Aufgaben-Web-App
 
-Wenn ein Benutzer mit `TaskWebApp` interagiert, sendet der Client Anforderungen an Azure AD und erhält dafür Token, die für den Aufruf der Web-API `TaskService` verwendet werden können. Zum Anmelden des Benutzers und zum Abrufen von Token benötigt `TaskWebApp` einige Informationen über Ihre App. Öffnen Sie im Projekt `TaskWebApp` die Datei `web.config` im Stammverzeichnis des Projekts, und ersetzen Sie die Werte im Abschnitt `<appSettings>`:
+Wenn ein Benutzer mit `TaskWebApp` interagiert, sendet der Client Anforderungen an Azure AD und erhält dafür Token, die für den Aufruf der Web-API `TaskService` verwendet werden können. Zum Anmelden des Benutzers und zum Abrufen von Token benötigt `TaskWebApp` einige Informationen über Ihre App. Öffnen Sie im `TaskWebApp`-Projekt die Datei `web.config` im Stammverzeichnis des Projekts, und ersetzen Sie die Werte im Abschnitt `<appSettings>`:
 
 ```
 <appSettings>
@@ -105,11 +107,11 @@ public class TasksController : Controller
 {
 ```
 
-Um zu erfahren, wie eine Web-App wie `TaskWebApp` Azure AD B2C verwendet, finden Sie unter [Erstellen einer .NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet.md).
+Informationen dazu, wie Azure AD B2C von einer Web-App wie `TaskWebApp` verwendet wird, finden Sie unter [Erstellen einer .NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet.md).
 
 ## Sichern der API
 
-Wenn Sie über einen Client verfügen, der die API im Auftrag eines Benutzers aufruft, können Sie `TaskService` mit OAuth 2.0-Bearertoken sichern. Die API kann Token mit der OWIN-Bibliothek von Microsoft (Open Web Interface for .NET) akzeptieren und überprüfen.
+Wenn Sie über einen Client verfügen, der die API im Auftrag eines Benutzers aufruft, können Sie `TaskService` mit OAuth 2.0-Bearertoken sichern. Die API kann Token mit der OWIN-Bibliothek von Microsoft (Open Web Interface for .NET) akzeptieren und überprüfen.
 
 ### Installieren von OWIN
 Installieren Sie zuerst die OWIN-OAuth-Authentifizierungspipeline:
@@ -215,7 +217,7 @@ public IEnumerable<Models.Task> Get()
 
 ## Ausführen der Beispiel-App
 
-Zum Schluss erstellen Sie `TaskWebApp` und `TaskService` und führen sie aus. Registrieren Sie sich für die App mit einer E-Mail-Adresse oder einem Benutzernamen. Erstellen Sie einige Aufgaben in der Aufgabenliste des Benutzers, und beachten Sie, wie sie in der API beibehalten werden, auch nachdem Sie den Client beendet und neu gestartet haben.
+Zum Schluss erstellen Sie `TaskWebApp` und `TaskService` und führen diese Elemente aus. Registrieren Sie sich für die App mit einer E-Mail-Adresse oder einem Benutzernamen. Erstellen Sie einige Aufgaben in der Aufgabenliste des Benutzers, und beachten Sie, wie sie in der API beibehalten werden, auch nachdem Sie den Client beendet und neu gestartet haben.
 
 ## Bearbeiten der Richtlinien
 
@@ -236,4 +238,4 @@ You can now move onto more advanced B2C topics. You may try:
 
 -->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

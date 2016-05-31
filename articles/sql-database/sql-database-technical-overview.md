@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/29/2016"
+   ms.date="05/23/2016"
    ms.author="shkurhek"/>
 
 # Was ist SQL Database? Einführung in SQL-Datenbank
@@ -31,7 +31,7 @@ Für SQL-Datenbanken sind die *Dienstebenen* Basic, Standard und Premium verfüg
 
 Für viele Unternehmen und Apps genügt es, wenn Datenbanken erstellt werden können und sich die Leistung von Einzeldatenbanken nach oben oder unten anpassen lässt, insbesondere, wenn die Nutzungsmuster relativ vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten.
 
-Dieses Problem lässt sich mit [elastischen Pools](sql-database-elastic-pool.md) in SQL-Datenbank beheben. Das Konzept ist denkbar einfach. Sie weisen einem Pool eine bestimmte Leistung zu und zahlen für die gesamte Leistung des Pools und nicht für die Leistung der Einzeldatenbanken. Sie müssen die Datenbankleistung nicht nach oben oder unten anpassen. Die Datenbanken in dem Pool, die sogenannten *elastischen Datenbanken*, werden automatisch nach Bedarf zentral hoch- und herunterskaliert. Elastische Datenbanken nutzen die Grenzwerte des Pools, überschreiten sie jedoch nicht, sodass Ihre Kosten vorhersagbar bleiben, selbst wenn sich die Nutzung der Datenbanken nicht prognostizieren lässt. Darüber hinaus können Sie [Datenbanken im Pool hinzufügen und entfernen](sql-database-elastic-pool-manage-portal.md) und so Ihre App von einigen wenigen auf Tausende Datenbanken skalieren, und das in einem kontrollierten Kostenrahmen.
+Dieses Problem lässt sich mit [elastischen Pools](sql-database-elastic-pool.md) in SQL-Datenbank beheben. Das Konzept ist denkbar einfach. Sie weisen einem Pool eine bestimmte Leistung zu und zahlen für die gesamte Leistung des Pools und nicht für die Leistung der Einzeldatenbanken. Sie müssen die Datenbankleistung nicht nach oben oder unten anpassen. Die Datenbanken in dem Pool, die sogenannten *elastischen Datenbanken*, werden automatisch nach Bedarf zentral hoch- und herunterskaliert. Elastische Datenbanken nutzen die Grenzwerte des Pools, überschreiten sie jedoch nicht, sodass Ihre Kosten vorhersagbar bleiben, selbst wenn sich die Nutzung der Datenbanken nicht prognostizieren lässt. Darüber hinaus können Sie [Datenbanken im Pool hinzufügen und entfernen](sql-database-elastic-pool-manage-portal.md) und so Ihre App von einigen wenigen auf Tausende Datenbanken skalieren, und das in einem kontrollierten Kostenrahmen. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 Ob Sie sich nun für Einzeldatenbanken oder elastische Datenbanken entscheiden, ist dies keine endgültige Entscheidung. Sie können Einzeldatenbanken mit Pools für elastische Datenbanken kombinieren und die Dienstebenen von Einzeldatenbanken und Pools ändern, um innovative Anwendungsdesigns zu erhalten. Außerdem können Sie mit der Leistungsstärke und Reichweite von Azure einzelne Azure-Dienste mit der SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen an modernes App-Design zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
 
@@ -59,4 +59,4 @@ Nachdem Sie eine Einführung in SQL-Datenbank gelesen und die Frage „Was ist S
 - Erstellen Sie Ihre erste App in C#, Java, Node.js, PHP, Python oder Ruby: [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 - Einen Index der Titel und Beschreibungen finden Sie unter [Alle Themen für den Azure SQL-Datenbankdienst](sql-database-index-all-articles.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

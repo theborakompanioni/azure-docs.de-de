@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/09/2016"
+    ms.date="05/23/2016"
     ms.author="brjohnst"/>
 
 # Hochladen von Daten in Azure Search mit dem .NET SDK
@@ -114,7 +114,7 @@ In diesem Fall verwenden wir `Upload`, `MergeOrUpload` und `Delete` als Suchakti
 
 Wir gehen davon aus, dass der Index in diesem Beispiel („hotels“) bereits mit einigen Dokumenten gefüllt ist. Beachten Sie, dass bei `MergeOrUpload` nicht alle möglichen Dokumentfelder festgelegt werden mussten und bei `Delete` nur der Dokumentschlüssel (`HotelId`) definiert werden musste.
 
-Beachten Sie außerdem, dass in einer Indizierungsanforderung nur bis zu 1.000 Dokumente enthalten sein können.
+Beachten Sie außerdem, dass in einer Indizierungsanforderung nur bis zu 1.000 Dokumente enthalten sein können.
 
 > [AZURE.NOTE] In diesem Beispiel wenden wir unterschiedliche Aktionen auf unterschiedliche Dokumente an. Falls Sie für alle Dokumente im Batch die gleichen Aktionen durchführen möchten, können Sie die anderen statischen Methoden von `IndexBatch` verwenden, anstatt `IndexBatch.New` aufzurufen. Beispielsweise können Sie Batches erstellen, indem Sie `IndexBatch.Merge`, `IndexBatch.MergeOrUpload` oder `IndexBatch.Delete` aufrufen. Für diese Methoden wird anstelle von `IndexAction`-Objekten eine Sammlung mit Dokumenten verwendet (in diesem Beispiel Objekte vom Typ `Hotel`).
 
@@ -205,4 +205,4 @@ Aus diesem Grund empfehlen wir als bewährte Methode, in Ihren Modellklassen Typ
 ## Weiter
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen des Azure Search-Index](search-query-overview.md).
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

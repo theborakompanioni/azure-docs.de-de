@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Häufig gestellte Fragen zu Azure Active Directory | Microsoft Azure"
-	description="Häufig gestellte Fragen zu Azure Active Directory"
+	description="Häufig gestellte Fragen zu Azure Active Directory und Antworten in Bezug auf den Zugriff auf Azure und Azure Active Directory, Kennwortverwaltung und Anwendungszugriff."
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -13,65 +13,87 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/20/2016"
+	ms.date="05/20/2016"
 	ms.author="markusvi"/>
 
 # Häufig gestellte Fragen zu Azure Active Directory
 
-Azure Active Directory (Azure AD) ist eine umfassende cloudbasierte IDaaS-Lösung (Identity as a Service) mit Identitäts- und Zugriffsverwaltungsfunktionen. Mit Azure AD als IDaaS-Anbieter können Sie in Ihrem Computernetzwerk steuern, *wer wozu berechtigt ist*. Darüber hinaus bietet Azure AD einmaliges Anmelden (SSO) für Ihre Anwendungen. Mit SSO können Sie Anmeldeprozesse für Benutzer erheblich verbessern. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
+Azure Active Directory ist eine umfassende IDaaS-Lösung (Identity as a Service), mit der alle Aspekte von Identität, Zugriffsverwaltung und Sicherheit abgedeckt werden.
+
+
+Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
 
 
 
 ## Zugreifen auf Azure und Azure Active Directory
 
-****F: Warum finde ich Azure AD nicht im Azure-Portal (http://portal.azure.com)?**
 
-**A:** Die Verwaltungsumgebung für Azure AD ist weiterhin im klassischen Azure-Portal (`http://manage.windowsazure.com`) verfügbar. Eine öffentliche Vorschau der neuen, in das Azure-Portal integrierten Verwaltungsumgebung wird voraussichtlich im September veröffentlicht. Neueste Informationen zu Veröffentlichungen finden Sie im [Active Directory-Teamblog](https://blogs.technet.microsoft.com/ad/).
+**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen (https://manage.windowsazure.com)?**
 
+**A:** Zum Zugreifen auf das klassische Azure-Portal müssen alle Benutzer über Berechtigungen unter dem Azure-Abonnement verfügen. Wenn Sie über eine kostenpflichtige Version von Office 365 oder Azure AD verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt durchführen. Andernfalls müssen Sie eine vollwertige [Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 
----
+Weitere Informationen finden Sie unter:
 
-****F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen (http://manage.windowsazure.com)?**
+- [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
-**A:** Sie benötigen Berechtigungen für ein Azure-Abonnement. Wenn Sie über eine kostenpflichtige Version von Office 365 oder Azure AD verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt durchführen. Andernfalls müssen Sie eine vollwertige [Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
+- [Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure](active-directory-manage-o365-subscription.md)
 
 ---
 
 **F: Welche Beziehung besteht zwischen Azure AD, Office 365 und Azure?**
 
-**A:** Microsoft Azure ist eine offene, flexible, erstklassige Cloud Computing-Plattform und -Infrastruktur zum Erstellen, Bereitstellen und Verwalten von Anwendungen und Diensten über ein globales Netzwerk aus von Microsoft verwalteten Datencentern. Azure bietet unter anderem SaaS-Lösungen (Software as a Service) wie etwa Office 365. Bei Office 365 handelt es sich um eine Gruppe von Software plus Service-Abonnements, über die Ihnen Produktivitätssoftware und entsprechende Onlinedienste zur Verfügung gestellt werden. Azure AD ergänzt Office 365 mit einer umfassenden cloudbasierten IDaaS-Lösung (Identity as a Service) mit Identitäts- und Zugriffsverwaltungsfunktionen. Wenn Sie über ein Office 365-Abonnement verfügen, haben Sie auch eine Azure AD-Instanz unter Azure.
+**A:** Mit Azure Active Directory verfügen Sie über allgemeine Identitäts- und Zugriffsfunktionen für alle Microsoft Online Services. Wenn Sie Office 365, Microsoft Azure, Intune oder andere Anwendungen nutzen, verwenden Sie bereits eine Azure AD-Instanz, um die Anmeldung und Zugriffsverwaltung für diese Dienste zu ermöglichen.
+
+Alle Benutzer, die Sie für Microsoft Online Services aktiviert haben, werden als Benutzerkonten in einer oder mehreren Azure AD-Instanzen definiert. Sie können diese Konten für kostenlose Azure AD-Funktionen aktivieren, z.B. den Zugriff auf Cloudanwendungen.
+ 
+Außerdem stellen kostenpflichtige Azure AD-Dienste (z.B. Azure AD Basic, Premium, EMS usw.) eine Erweiterung anderer Onlinedienste, wie Office 365 und Microsoft Azure, durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen dar.
 
 
 ---
 
-**F: Welche Azure AD-Features stehen kostenlos zur Verfügung?**
-
-**A:** Alle allgemeinen Features eines Azure-Abonnements stehen kostenlos zur Verfügung. Eine vollständige Featureliste finden Sie unter [Allgemeine Features](active-directory-editions.md/#common-features).
 
 
+## Erste Schritte mit Azure AD als Hybridanwendung
 
----
 
 **F: Wie kann ich mein lokales Verzeichnis mit Azure AD verknüpfen?**
 
-A: Die Verbindung zwischen Ihrem lokalen Verzeichnis und Azure AD kann mithilfe von **Azure AD Connect** hergestellt werden. Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+**A:** Die Verbindung zwischen Ihrem lokalen Verzeichnis und Azure AD kann mithilfe von **Azure AD Connect** hergestellt werden.
+
+Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
 
 ---
 
 **F: Wie richte ich SSO zwischen meinem lokalen Verzeichnis und meinen Cloudanwendungen ein?**
 
-**A:** SSO muss lediglich zwischen Ihrem lokalen Verzeichnis und Azure AD eingerichtet werden. Solange Ihre Cloudanwendungen von Azure AD verwaltet werden, können Sie die SSO-Reichweite auf Ihre lokale Umgebung ausdehnen, indem Sie einen Verbund mit AD FS oder eine Kennwortsynchronisierung implementieren. Beide Optionen stehen in **Azure AD Connect** zur Verfügung. Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+**A:** SSO muss lediglich zwischen Ihrem lokalen Verzeichnis und Azure AD eingerichtet werden. Solange Sie auf Ihre Cloudanwendungen über Azure AD zugreifen, wird vom Dienst für die Benutzer automatisch die richtige Authentifizierung mit ihren lokalen Anmeldeinformationen verwendet.
+
+Das Implementieren des einmaligen Anmeldens (SSO) aus einer lokalen Umgebung lässt sich mit Verbundlösungen wie AD FS oder durch die Konfiguration der Kennworthashsynchronisierung leicht erreichen. Es ist auch nicht schwierig, beide Optionen bereitzustellen, indem Sie den Konfigurationsassistenten von Azure AD Connect verwenden.
   
+
+Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+  
+
+---
+
+**F: Wird unter Azure Active Directory ein Self-Service-Portal für Benutzer in meiner Organisation bereitgestellt?**
+
+**A:** Ja. Azure Active Directory verfügt über den [Azure AD-Zugriffsbereich](http://myapps.microsoft.com) für Self-Service-Aktionen und den Anwendungszugriff der Benutzer. Wenn Sie Office 365-Kunde sind, stehen Ihnen im Office 365-Portal viele dieser Funktionen bereits zur Verfügung.
+
+Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+
 
 
 ---
 
 **F: Unterstützt mich Azure AD bei der Verwaltung meiner lokalen Infrastruktur?**
 
-**A:** Ja. In der Premium Edition von Azure AD ist **Connect Health** enthalten. Azure AD Connect Health unterstützt Sie bei der Überwachung Ihrer lokalen Identitätsinfrastruktur und Synchronisierungsdienste und vermittelt Ihnen wichtige Einblicke. Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](active-directory-aadconnect-health.md).
+**A:** Ja. In der Premium Edition von Azure AD ist **Connect Health** enthalten. Azure AD Connect Health unterstützt Sie bei der Überwachung Ihrer lokalen Identitätsinfrastruktur und Synchronisierungsdienste und vermittelt Ihnen wichtige Einblicke.
 
+Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](active-directory-aadconnect-health.md).
 
+---
 
 ## Kennwortverwaltung
 
@@ -83,47 +105,101 @@ A: Die Verbindung zwischen Ihrem lokalen Verzeichnis und Azure AD kann mithilfe 
 
 **F: Wie lange dauert das Zurückschreiben eines Kennworts in das lokale AD?**
 
-**A:** Kennwörter werden in Echtzeit zurückgeschrieben. Ausführlichere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md).
+**A:** Kennwörter werden in Echtzeit zurückgeschrieben.
+
+Ausführlichere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md).
 
 
 ---
 
 **F: Kann ich das Kennwortrückschreiben-Feature für Kennwörter verwenden, die von einem Administrator verwaltet werden?**
 
-**A:** Ja. Bei aktiviertem Kennwortrückschreiben werden die von einem Administrator durchgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben. Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md).
+**A:** Ja. Bei aktiviertem Kennwortrückschreiben werden die von einem Administrator durchgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben.
 
+Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md).
 
+---
 
 ## Anwendungszugriff
 
 
 **F: Wo finde ich eine Liste mit bereits in Azure AD integrierten Anwendungen und deren Funktionen?**
 
-**A:** Für Azure AD stehen bereits über 2600 integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active Directory-Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+**A:** Für Azure AD stehen bereits über 2.600 integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Alle vorab integrierten Anwendungen unterstützen SSO. SSO ermöglicht Ihnen die Verwendung der Anmeldeinformationen Ihres Unternehmens zum Zugreifen auf Apps. Einige Anwendungen unterstützen auch die automatisierte Bereitstellung und Aufhebung der Bereitstellung.
+
+Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active Directory-Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 
 ---
 
 **F: Was kann ich tun, wenn die Anwendung, die ich benötige, nicht im Azure AD-Marketplace enthalten ist?**
 
-**A:** Mit Azure AD Premium können Sie beliebige Anwendungen hinzufügen und konfigurieren. Darüber hinaus können Sie (abhängig von den Funktionen Ihrer Anwendung und Ihren Präferenzen) SSO und die automatische Bereitstellung konfigurieren. Weitere Informationen finden Sie unter:
+**A:** Mit Azure AD Premium können Sie beliebige Anwendungen hinzufügen und konfigurieren. Abhängig von den Funktionen Ihrer Anwendung und Ihren Präferenzen können Sie SSO und die automatische Bereitstellung konfigurieren.
+
+Weitere Informationen finden Sie unter:
 
 - [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](active-directory-saas-custom-apps.md)
 - [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md) 
 
+
+---
+
+**F: Wie melden sich Benutzer mit Azure Active Directory an Anwendungen an?**
+ 
+**A:** In Azure Active gibt es mehrere Möglichkeiten, wie Benutzer ihre Anwendungen anzeigen und darauf zugreifen können, z.B.:
+
+- Azure AD-Zugriffsbereich
+
+- Office 365-Anwendungsstartprogramm
+
+- Direkte Anmeldung bei Verbund-Apps
+
+- Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
+
+Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+
+
+---
+
+**F: Auf welche Weise ermöglicht Azure Active Directory die Authentifizierung und das einmalige Anmelden für Anwendungen?**
+ 
+**A:** Azure Active Directory unterstützt viele standardisierte Protokolle für die Authentifizierung und Autorisierung, z.B. SAML 2.0, OpenID Connect, OAuth 2.0 und WS-Federation. Außerdem unterstützt Azure AD Kennworttresore und Funktionen für die automatisierte Anmeldung für Apps, die nur die formularbasierte Authentifizierung unterstützen.
+
+Weitere Informationen finden Sie unter:
+
+- [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md)
+
+- [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+
+- [Wie funktioniert das einmalige Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
 
 
 ---
 
 **F: Kann ich lokal ausgeführte Anwendungen hinzufügen?**
 
-**A:** Mit dem Anwendungsproxy von Azure AD können Sie auf Ihre lokalen Webanwendungen auf die gleiche Weise zugreifen wie auf Ihre SaaS-Apps in Azure Active Directory – ganz ohne VPN oder Anpassung der Netzwerkinfrastruktur. Ausführlichere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md).
+**A:** Mit dem Azure AD-Anwendungsproxy haben Sie einfachen und sicheren Zugriff auf lokale Webanwendungen, die Sie auswählen. Sie können auf diese Anwendungen genauso zugreifen, wie Sie in Azure Active Directory auf Ihre SaaS-Apps zugreifen. Ein VPN bzw. eine Änderung der Netzwerkinfrastruktur ist nicht erforderlich.
+
+Ausführlichere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md).
 
 
 --- 
 
 **F: Wie kann ich für Benutzer, die auf eine bestimmte Anwendung zugreifen, die Verwendung von MFA erforderlich machen?**
 
-**A:** Mit dem bedingten Zugriff von Azure AD können Sie jeder Anwendung eine individuelle Zugriffsrichtlinie zuweisen. In dieser Richtlinie können Sie festlegen, dass MFA immer erforderlich ist oder nur dann, wenn Benutzer gerade nicht mit dem lokalen Netzwerk verbunden sind. Ausführlichere Informationen finden Sie unter [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md).
+**A:** Mit dem bedingten Zugriff von Azure AD können Sie jeder Anwendung eine individuelle Zugriffsrichtlinie zuweisen. In dieser Richtlinie können Sie festlegen, dass MFA immer erforderlich ist oder nur dann, wenn Benutzer gerade nicht mit dem lokalen Netzwerk verbunden sind.
 
-<!---HONumber=AcomDC_0518_2016-->
+Ausführlichere Informationen finden Sie unter [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md).
+
+
+---
+
+**F: Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?**
+
+**A:** Azure Active Directory ermöglicht Ihnen die Automatisierung der Erstellung, Wartung und Entfernung von Benutzeridentitäten in vielen gängigen Cloudanwendungen (SaaS).
+
+Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md).
+
+---
+
+<!---HONumber=AcomDC_0525_2016-->

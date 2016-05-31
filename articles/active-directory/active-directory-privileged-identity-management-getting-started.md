@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/28/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Erste Schritte mit Azure AD Privileged Identity Management
@@ -35,9 +35,9 @@ Bevor Sie Azure AD Privileged Identity Management verwenden können, müssen Sie
 6. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf die Schaltfläche **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
 
-Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, führt Sie der [Sicherheits-Assistent](active-directory-privileged-identity-management-security-wizard.md) durch die erste Zuweisung. Danach sind Sie automatisch der erste **Sicherheitsadministrator** des Verzeichnisses. Nur ein Sicherheitsadministrator kann auf diese Anwendung zugreifen, um den Zugriff für andere Administratoren zu verwalten.
+Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, führt Sie der [Sicherheits-Assistent](active-directory-privileged-identity-management-security-wizard.md) durch die erste Zuweisung. Danach sind Sie automatisch der erste **Sicherheitsadministrator** und der **Administrator für privilegierte Rollen** des Verzeichnisses. Nur ein Administrator für privilegierte Rollen kann auf diese Anwendung zugreifen, um den Zugriff für andere Administratoren zu verwalten.
 
-Andernfalls, wenn Ihnen durch einen anderen Sicherheitsadministrator eine oder mehrere Rollen zugewiesen wurden, können Sie auswählen, welche Rolle Sie aktivieren möchten. Wenn Sie selbst Sicherheitsadministrator sind, wird eine Option angezeigt, mit der Sie **Identitäten verwalten** können.
+Wenn Ihnen durch einen anderen Administrator für privilegierte Rollen eine oder mehrere Rollen zugewiesen wurden, können Sie andernfalls auswählen, welche Rolle Sie aktivieren möchten. Wenn Sie selbst Administrator für privilegierte Rollen sind, wird eine Option angezeigt, mit der Sie **Identitäten verwalten** können.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -47,4 +47,4 @@ Die Übersicht über [Azure AD Privileged Identity Management](active-directory-
 
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

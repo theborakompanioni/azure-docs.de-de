@@ -56,7 +56,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 ### <a name="values"></a>Beispielkonfigurationswerte für diese Übung
 
 
-Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden.
+Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden:
 
 - VNet-Name: TestVNet1
 - Adressraum: 10.11.0.0/16 und 10.12.0.0/16
@@ -158,4 +158,4 @@ Sie können Ihre VPN-Verbindung entweder im Portal oder mithilfe von PowerShell 
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

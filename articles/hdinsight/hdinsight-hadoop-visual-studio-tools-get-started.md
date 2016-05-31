@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="04/28/2016"
+	ms.date="05/25/2016"
 	ms.author="jgao"/>
 
 # Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight zum Ausführen einer Hive-Abfrage
@@ -230,6 +230,8 @@ HDInsight-Tools für Visual Studio unterstützen die Erstellung und das Senden v
 
 - Wenn die Ergebnisse mit NULL-Werten beginnen, werden die Ergebnisse derzeit nicht angezeigt. Dieses Problem wurde inzwischen behoben. Sollte es bei Ihnen auftreten, senden Sie uns eine E-Mail, oder wenden Sie sich an das Supportteam.
 
+- Das von Visual Studio erstellte HQL-Skript wird je nach der lokalen Regionseinstellung des Benutzer codiert. Es wird unter Umständen nicht richtig ausgeführt, wenn der Benutzer das Skript als Binärdaten in einen Cluster hochlädt.
+
 Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probleme auftreten, senden Sie eine E-Mail an „hdivstool@microsoft.com“.
 
 ## Nächste Schritte
@@ -275,4 +277,4 @@ In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Hado
 
 [apache.hive]: http://hive.apache.org
 
-<!----HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

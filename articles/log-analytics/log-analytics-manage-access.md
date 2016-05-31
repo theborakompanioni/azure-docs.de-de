@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="04/28/2016"
 	ms.author="banders"/>
 
@@ -41,17 +41,17 @@ Es ist möglich, mehrere OMS Log Analytics-Arbeitsbereiche zu erstellen, und Ben
 
 Ein Log Analytics-Arbeitsbereich bietet derzeit Folgendes:
 
-- Einen geografischen Standort für die Speicherung von Daten 
-- Granularität für die Abrechnung 
-- Datenisolation 
+- Einen geografischen Standort für die Speicherung von Daten
+- Granularität für die Abrechnung
+- Datenisolation
 
 Basierend auf den obigen Merkmalen sollten Sie mehrere Arbeitsbereiche erstellen, wenn Folgendes gilt:
 
-- Sie sind ein globales Unternehmen und müssen Daten aus Gründen der Datensouveränität bzw. aus Compliancegründen in bestimmten Regionen speichern. 
+- Sie sind ein globales Unternehmen und müssen Daten aus Gründen der Datensouveränität bzw. aus Compliancegründen in bestimmten Regionen speichern.
 - Sie nutzen Azure und möchten Gebühren für ausgehende Datenübertragungen vermeiden, indem Sie einen Log Analytics-Arbeitsbereich in derselben Region wie die verwalteten Azure-Ressourcen nutzen.
 - Sie möchten Gebühren basierend auf der Nutzung unterschiedlichen Abteilungen bzw. Geschäftseinheiten zuordnen. Indem Sie einen Arbeitsbereich für jede Abteilung bzw. Geschäftseinheit erstellen, werden die Gebühren in Ihrer Azure-Rechnung und Nutzungsaufstellung für jeden Arbeitsbereich separat aufgeführt.
-- Sie sind ein Service Provider mit Verwaltung und müssen die Log Analytics-Daten für jeden Kunden, den Sie verwalten, von den Daten der anderen Kunden isolieren. 
-- Sie verwalten mehrere Kunden und möchten erreichen, dass jeder Kunde, jede Abteilung und jede Geschäftseinheit die eigenen Daten sieht, aber nicht die Daten für andere Kunden, Abteilungen oder Geschäftseinheiten. 
+- Sie sind ein Service Provider mit Verwaltung und müssen die Log Analytics-Daten für jeden Kunden, den Sie verwalten, von den Daten der anderen Kunden isolieren.
+- Sie verwalten mehrere Kunden und möchten erreichen, dass jeder Kunde, jede Abteilung und jede Geschäftseinheit die eigenen Daten sieht, aber nicht die Daten für andere Kunden, Abteilungen oder Geschäftseinheiten.
 
 Wenn Sie Agents zum Sammeln von Daten verwenden, können Sie jeden Agent so konfigurieren, dass er Daten an den erforderlichen Arbeitsbereich liefert.
 
@@ -246,4 +246,4 @@ Wenn Sie Administrator sind und mehrere Benutzer mit dem Arbeitsbereich verknüp
 - [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md), um Funktionen hinzuzufügen und Daten zu sammeln.
 - Unter [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](log-analytics-proxy-firewall.md) wird beschrieben, wie Sie vorgehen müssen, damit die Agents mit dem Log Analytics-Dienst kommunizieren können, wenn Ihre Organisation einen Proxyserver oder eine Firewall verwendet.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

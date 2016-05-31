@@ -160,7 +160,7 @@ In diesem Beispiel verwenden Sie eine Schlüsselwortsuche. Die **Azure Data Cata
 In diesem Beispiel führen Sie eine Suche vom Typ **Gruppierung** für Datenassets durch, bei denen der Name mit dem Produkt übereinstimmt und Tags mit der Abbildung oder dem Foto übereinstimmen.
 
 1. Navigieren Sie zu https://azure.microsoft.com/services/data-catalog, klicken Sie auf **Erste Schritte**, und melden Sie sich beim **Azure Data Catalog**-Portal an.
-2. Geben Sie im Feld **Data Catalog durchsuchen** eine **Gruppierung** wie folgt ein: query: (tags:description OR tags:photo).
+2. Geben Sie im Feld **Data Catalog durchsuchen** eine Abfrage zur **Gruppierung** ein: (**tags:description OR tags:photo**).
 3. Klicken Sie auf das Suchsymbol, oder drücken Sie die EINGABETASTE. In **Azure Data Catalog** werden Datenassets für diese Suchabfrage angezeigt.
 
     ![](media/data-catalog-get-started/data-catalog-search-box.png)
@@ -184,7 +184,7 @@ In dieser Übung verwenden Sie das **Azure Data Catalog**-Portal, um Datenassets
 
 In dieser Übung haben Sie registrierten Datenassets beschreibende Informationen hinzugefügt, damit Katalogbenutzer Datenquellen anhand von verständlichen Begriffen ermitteln können.
 
-> [AZURE.NOTE] Die Standard Edition von Data Catalog umfasst ein Unternehmensglossar, mit dem Katalogadministratoren eine globale Unternehmenstaxonomie definieren können. Katalogbenutzer können Datenassets dann mit Glossarbegriffen versehen. Weitere Informationen finden Sie unter [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Gewusst wie: Einrichten des Unternehmensglossars für verwaltete Markierungen).
+> [AZURE.NOTE] Die Standard Edition von Data Catalog umfasst ein Unternehmensglossar, mit dem Katalogadministratoren eine globale Unternehmenstaxonomie definieren können. Katalogbenutzer können Datenassets dann mit Glossarbegriffen versehen. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md).
 
 ## Übung 5: Crowdsourcing für Metadaten
 
@@ -198,7 +198,7 @@ Bitten Sie einen Kollegen, die obige Übung [Versehen von registrierten Datenque
 
 ![](media/data-catalog-get-started/data-catalog-crowdsource.png)
 
-In dieser Übung haben Sie die Funktionen von **Azure Data Catalog** zum Crowdsourcing von Metadaten kennengelernt, wobei jeder Katalogbenutzer die selbst ermittelten Datenassets mit Anmerkungen versehen kann.
+In dieser Übung haben Sie die Funktionen von **Azure Data Catalog** für das Crowdsourcing von Metadaten kennengelernt, wobei jeder Katalogbenutzer die selbst ermittelten Datenassets mit Anmerkungen versehen kann.
 
 ## Übung 6: Herstellen einer Verbindung mit Datenquellen
 
@@ -260,6 +260,6 @@ In dieser Übung haben Sie die Verwaltungsfunktionen von **Azure Data Catalog** 
 
 ## Zusammenfassung
 
-In diesem Tutorial haben Sie wichtige Funktionen von **Azure Data Catalog** kennengelernt, wie etwa das Registrieren, Ermitteln und Verwalten von Unternehmensdatenquellen sowie das Versehen mit Anmerkungen. Nachdem Sie das Lernprogramm abgeschlossen haben, ist es an der Zeit, mit der Verwendung zu beginnen. Sie können noch heute starten, indem Sie die Datenquellen registrieren, die Sie und Ihr Team verwenden, und indem Sie Kollegen zur Nutzung des Katalogs einladen.
+In diesem Tutorial haben Sie wichtige Funktionen von **Azure Data Catalog** kennengelernt, z.B. das Registrieren, Ermitteln und Verwalten von Unternehmensdatenquellen sowie das Versehen mit Anmerkungen. Nachdem Sie das Lernprogramm abgeschlossen haben, ist es an der Zeit, mit der Verwendung zu beginnen. Sie können noch heute starten, indem Sie die Datenquellen registrieren, die Sie und Ihr Team verwenden, und indem Sie Kollegen zur Nutzung des Katalogs einladen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

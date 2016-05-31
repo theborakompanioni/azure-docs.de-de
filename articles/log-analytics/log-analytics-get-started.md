@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="05/11/2016"
 	ms.author="banders"/>
 
@@ -35,7 +35,7 @@ Hier wird die Vorgehensweise erläutert:
 - Sie benötigen ein kostenpflichtiges Microsoft Azure-Abonnement, um Log Analytics vollständig nutzen zu können. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, mit dem Sie auf alle Azure-Dienste zugreifen können. Sie können auch ein kostenloses OMS-Konto auf der [Operations Management Suite](http://microsoft.com/oms)-Website erstellen und auf **Kostenlos testen** klicken.
 - OMS-Arbeitsbereich
 - Auf jedem Windows-Computer, von dem Sie Daten erfassen möchten, muss Windows Server 2008 SP1 oder höher ausgeführt werden.
-- [Firewall](log-analytics-proxy-firewall)zugriff auf die Adressen des OMS-Webdiensts
+- [Firewall](log-analytics-proxy-firewall.md)zugriff auf die Adressen des OMS-Webdiensts
 - Einen Server vom Typ [OMS Log Analytics Forwarder](https://blogs.technet.microsoft.com/msoms/2016/03/17/oms-log-analytics-forwarder) (Gatewayserver) zum Weiterleiten von Datenverkehr von Servern an OMS, wenn der Internetzugriff nicht über Computer verfügbar ist
 - Bei Verwendung von Operations Manager unterstützt Log Analytics die Anwendungen Operations Manager 2012 SP1 UR6 und höher sowie Operations Manager 2012 R2 UR2 und höher. Proxyunterstützung wurde in Operations Manager 2012 SP1 UR7 und Operations Manager 2012 R2 UR3 hinzugefügt. Bestimmen Sie, wie die Integration in OMS erfolgt.
 - Bestimmen Sie, ob Ihre Computer über direkten Internetzugang verfügen. Falls nicht, ist ein Gatewayserver für den Zugriff auf die Websites des OMS-Webdiensts erforderlich. Der gesamte Zugriff erfolgt per HTTPS.
@@ -131,4 +131,4 @@ Mit der Operations Management Suite können Sie schnell Ereignis- und IIS-Protok
 - Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 - Verwenden Sie [Dashboards](log-analytics-dashboards.md) zum Speichern und Anzeigen eigener benutzerdefinierter Suchvorgänge.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

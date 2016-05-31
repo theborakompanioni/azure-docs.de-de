@@ -24,9 +24,9 @@ Docker Swarm bietet eine Umgebung zum Bereitstellen von in Containern enthaltene
 
 Voraussetzungen für die Übungen in diesem Dokument:
 
-[Bereitstellen eines Azure Container Service-Clusters](./container-service-deployment.md)
+[Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md)
 
-[Verbinden mit einem Azure Container Service-Cluster](./container-service-connect.md)
+[Verbinden mit einem Azure Container Service-Cluster](container-service-connect.md)
 
 ## Bereitstellen eines neuen Containers
 
@@ -119,4 +119,4 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 [Weitere Informationen zu Docker Swarm](https://docs.docker.com/swarm/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

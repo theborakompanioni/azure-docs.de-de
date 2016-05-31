@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/04/2016"
+	ms.date="05/25/2016"
 	ms.author="sdanie"/>
 
 # Verwalten Ihrer ersten API in Azure API Management
@@ -28,7 +28,7 @@ Mithilfe von Azure API Management können Sie ein API-Programm mit vollem Funkti
 
 Zu den häufigen Szenarios gehören:
 
-* **Schutz einer mobilen Infrastruktur** durch Einschränkung des Zugriffs mit API-Schlüsseln, das Verhindern von DOS-Angriffen über eine Drosselung oder das Verwenden erweiterter Sicherheitsrichtlinien wie z. B. der JWT-Tokenüberprüfung.
+* **Schutz einer mobilen Infrastruktur** durch Einschränkung des Zugriffs mit API-Schlüsseln, das Verhindern von DOS-Angriffen über eine Drosselung oder das Verwenden erweiterter Sicherheitsrichtlinien wie z. B. der JWT-Tokenüberprüfung.
 * **Bereitstellung eines ISV-Partnerökosystems** durch eine schnelle Partnerintegration über das Entwicklerportal und das Erstellen einer API-Fassade zum Entkoppeln interner Implementierungen, die noch nicht für die Partnernutzung geeignet sind.
 * **Ausführung eines internen API-Programms** durch Bereitstellung einer zentralen Stelle innerhalb der Organisation für den Austausch über Verfügbarkeit und neueste Änderungen an APIs, Einschränkung des Zugriffs basierend auf Organisationskonten – all dies basierend auf einem sicheren Kanal zwischen API-Gateway und Back-End.
 
@@ -46,7 +46,7 @@ Das System setzt sich aus den folgenden Komponenten zusammen:
 * Das **Herausgeberportal** ist die Verwaltungsoberfläche, in der Sie Ihr API-Programm einrichten. Verwenden Sie es zu folgenden Zwecken:
 	* Definieren oder Importieren des API-Schemas
 	* Paketieren von APIs in Produkten
-	* Konfigurieren von Richtlinien wie z. B. Kontingenten oder Transformationen für die APIs
+	* Konfigurieren von Richtlinien wie z. B. Kontingenten oder Transformationen für die APIs
 	* Gewinnen von Erkenntnissen mithilfe von Analysen
 	* Verwalten von Benutzern
 
@@ -105,20 +105,20 @@ Klicken Sie zum Importieren der Rechner-API im Menü **API Management** auf der 
 
 Führen Sie die folgenden Schritte aus, um die Rechner-API zu konfigurieren:
 
-1. Klicken Sie auf **Aus URL**, geben Sie ****http://calcapi.cloudapp.net/calcapi.json** in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
+1. Klicken Sie auf **Aus URL**, geben Sie **http://calcapi.cloudapp.net/calcapi.json** in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
 2. Geben Sie in das Textfeld **URL-Suffix für Web-API** den Wert **calc** ein.
 3. Klicken Sie auf das Feld **Produkte (optional)**, und wählen Sie **Starter**.
 4. Klicken Sie auf **Speichern**, um die API zu importieren.
 
 ![Neue API hinzufügen][api-management-import-new-api]
 
->[AZURE.NOTE] **API Management** unterstützt derzeit die Versionen 1.2 und 2.0 des Swagger-Dokuments für den Import. Achten Sie darauf, dass Ihr Swagger 2.0-Dokument, obwohl die [Spezifikation von Swagger 2.0](http://swagger.io/specification) die Eigenschaften `host`, `basePath` und `schemes` als optional deklariert, diese Eigenschaften enthalten **MUSS**. Andernfalls wird der Import nicht durchgeführt.
+>[AZURE.NOTE] **API Management** unterstützt derzeit die Versionen 1.2 und 2.0 des Swagger-Dokuments für den Import. Achten Sie darauf, dass Ihr Swagger 2.0-Dokument, obwohl die [Spezifikation von Swagger 2.0](http://swagger.io/specification) die Eigenschaften `host`, `basePath` und `schemes` als optional deklariert, diese Eigenschaften enthalten **MUSS**. Andernfalls wird der Import nicht durchgeführt.
 
 Sobald die API importiert wurde, wird die Zusammenfassungsseite für die API im Herausgeberportal angezeigt.
 
 ![API-Zusammenfassung][api-management-imported-api-summary]
 
-Der API-Bereich umfasst verschiedene Registerkarten. Die Registerkarte **Zusammenfassung** enthält grundlegende Metriken und Informationen über die API. Auf der Registerkarte [Einstellungen](api-management-howto-create-apis.md#configure-api-settings) können Sie die Konfiguration einer API anzeigen und bearbeiten. Mithilfe der Registerkarte [Operationen](api-management-howto-add-operations.md) können Sie die API-Operationen verwalten. Auf der Registerkarte **Sicherheit** können Sie die Gatewayauthentifizierung für den Back-End-Server konfigurieren, indem Sie die Standardauthentifizierung oder die [gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md) verwenden, und Sie können die [Benutzerautorisierung mithilfe von OAuth 2.0](api-management-howto-oauth2.md) konfigurieren. Die Registerkarte **Probleme** dient zum Anzeigen der Probleme, die von den Entwicklern gemeldet werden, die Ihre APIs verwenden. Auf der Registerkarte **Produkte** werden die Produkte konfiguriert, die diese API enthalten.
+Der API-Bereich umfasst verschiedene Registerkarten. Die Registerkarte **Zusammenfassung** enthält grundlegende Metriken und Informationen über die API. Auf der Registerkarte [Einstellungen](api-management-howto-create-apis.md#configure-api-settings) können Sie die Konfiguration einer API anzeigen und bearbeiten. Mithilfe der Registerkarte [Operationen](api-management-howto-add-operations.md) können Sie die API-Operationen verwalten. Auf der Registerkarte **Sicherheit** können Sie die Gatewayauthentifizierung für den Back-End-Server konfigurieren, indem Sie die Standardauthentifizierung oder die [gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md) verwenden, und Sie können die [Benutzerautorisierung mithilfe von OAuth 2.0](api-management-howto-oauth2.md) konfigurieren. Die Registerkarte **Probleme** dient zum Anzeigen der Probleme, die von den Entwicklern gemeldet werden, die Ihre APIs verwenden. Auf der Registerkarte **Produkte** werden die Produkte konfiguriert, die diese API enthalten.
 
 Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte:
 
@@ -245,4 +245,4 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->
