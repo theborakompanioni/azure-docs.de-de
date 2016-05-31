@@ -20,12 +20,12 @@
 # Was ist Azure App Service?
 Azure App Service ist der einzige Clouddienst, der alle Komponenten integriert, die für das schnelle und einfache Erstellen von Web-Apps und mobilen Apps für beliebige Plattformen und Geräte benötigt werden. App Service ist eine für Entwickler konzipierte, vollständig verwaltete Plattform, die leistungsstarke Funktionen bereitstellt, wie z. B. integrierte DevOps, fortlaufende Integration in Visual Studio Team Services und GitHub, Staging- und Produktionsunterstützung sowie automatisches Patching.
 
-Azure App Service ist ein einzelner Dienst, der alle Funktionen von Azure-Websites, Azure Mobile Services und Azure BizTalk Services bietet. Azure Functions ist ein Beispiel für kontinuierliche Erweiterungen von App Service, die die nächste Generation von Anwendungen ermöglichen.
+Azure App Service ist ein einzelner Dienst, der neben allen vorhandenen Funktionen von Azure-Websites, Azure Mobile Services und Azure BizTalk Services verschiedene neue Funktionen bietet. [Hier erfahren Sie](https://azure.microsoft.com/documentation/services/app-service/), wie App Service zu den vorhandenen Diensten in Beziehung steht.
 
 ## Warum App Service?
 Azure App Service ist auf die schnelle Entwicklung von Web-Apps und mobilen Apps sowie auf das Automatisieren von Geschäftsprozessen ausgelegt und bietet einen integrierten Satz an Unternehmensfunktionen, die über eine einzige Entwicklungs- und Verwaltungsumgebung bereitgestellt werden. Dies bietet Ihnen folgende Vorteile:
 
-- **Schnelles Erstellen von Web-Apps und mobilen Apps** – Sie können mithilfe eines einzigen Back-Ends schnell und unkompliziert Web-Apps und mobile Apps für Mitarbeiter oder Kunden entwickeln, bereitstellen und verwalten. Nutzen Sie Ihre vorhandenen Kenntnisse in verschiedenen Programmiersprachen – .NET, Java, Node.js, PHP oder Python. Beschleunigen Sie die Entwicklung dank Zugriff auf einen umfassende Katalog mit APIs, Connectors und Logik im Azure Marketplace.
+- **Schnelles Erstellen von Web-Apps und mobilen Apps** – Sie können mit nur einem Back-End schnell und unkompliziert Web-Apps und mobile Apps für Mitarbeiter oder Kunden entwickeln, bereitstellen und verwalten. Nutzen Sie Ihre vorhandenen Kenntnisse in verschiedenen Programmiersprachen – .NET, Java, Node.js, PHP oder Python. Beschleunigen Sie die Entwicklung dank Zugriff auf einen umfassende Katalog mit APIs, Connectors und Logik im Azure Marketplace.
 
 - **Herstellen einer Verbindung mit beliebigen Diensten und Freigeben Ihrer Daten** – Verbinden Sie Ihre Web-App oder mobile App dank integrierter Connectors innerhalb von Minuten mit Unternehmenssystemen oder SaaS-Lösungen. Wählen Sie aus über 50 Connectors für Unternehmenssysteme wie SAP, Siebel und Oracle, gängige SaaS-Dienste für Unternehmen, darunter Salesforce und Office 365, sowie gängige Internetdienste wie Facebook, Twitter und Dropbox.
 
@@ -44,7 +44,6 @@ App Service ermöglicht Ihnen das Erstellen der folgenden App-Typen über eine e
 - [**Web-Apps**](../app-service-web/app-service-web-overview.md) – Schnelles Erstellen und Bereitstellen von unternehmenskritischen Web-Apps, die in Abstimmung auf Ihre Geschäftsanforderungen skaliert werden können.
 - [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) – Unterstützen Sie Mitarbeiter, Partner und Kunden jederzeit auf beliebigen Geräten.
 - [**API-Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) – Einfaches Erstellen und Nutzen von Cloud-APIs
-- [**Funktions-Apps**](../azure-functions/functions-overview.md) – Erstellen Sie einfache Funktionen, die auf Ereignisse in Azure, in lokalen Systemen und bei SaaS-Anbietern reagieren.
 - [**Logik-Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) – Automatisieren Sie Zugriff und Nutzung cloudübergreifend, ohne hierzu Code schreiben zu müssen.
 
 Als einzelner integrierter Dienst vereinfacht App Service das Kombinieren der zwei App-Typen in einer einzigen Lösung, sodass Sie auf einfache Weise und mit demselben Back-End Apps für Webclients und mobile Clients erstellen und diese in lokale System sowie gängige Dienste integrieren können – darunter z.B. Office 365 und salesforce.com.
@@ -60,4 +59,4 @@ Mit Azure App Service brauchen Sie dazu nur eine Sprache auszuwählen!
 [Erstellen Sie eine neue App](http://go.microsoft.com/fwlink/?LinkId=523751) – sofort und kostenlos. Keine Kreditkarte erforderlich, keine Verpflichtungen, kein Ärger.
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

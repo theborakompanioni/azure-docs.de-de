@@ -24,8 +24,8 @@ DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter W
 
 Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem Dokument wird beschrieben, wie Sie Containerbereitstellungen mit Marathon erstellen und skalieren. Bevor Sie diese Beispiele durcharbeiten, benötigen Sie einen DC/OS-Cluster, der im Azure Container Service konfiguriert ist. Sie müssen auch über Remoteverbindungen mit diesem Cluster verfügen. Weitere Informationen zu diesen Elementen finden Sie in den folgenden Artikeln:
 
-- [Bereitstellen eines Azure Container Service-Clusters](./container-service-deployment.md)
-- [Verbinden mit einem Azure Container Service-Cluster](./container-service-connect.md)
+- [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md)
+- [Verbinden mit einem Azure Container Service-Cluster](container-service-connect.md)
 
 ## Untersuchen der DC/OS-Benutzeroberfläche
 
@@ -95,6 +95,6 @@ Sobald der Skalierungsvorgang abgeschlossen ist, sehen Sie mehrere Instanzen der
 
 ## Nächste Schritte
 
-[Arbeiten mit der DC/OS- und Marathon-API](./container-service-mesos-marathon-rest.md)
+[Arbeiten mit der DC/OS- und Marathon-API](container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

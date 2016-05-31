@@ -13,13 +13,14 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="03/04/2016"
+	ms.date="05/24/2016"
 	ms.author="sdanie"/>
 
 # Verwenden von Azure Redis Cache mit Java
 
 > [AZURE.SELECTOR]
-- [.Net](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [ASP.NET](cache-web-app-howto.md)
 - [Node.js](cache-nodejs-get-started.md)
 - [Java](cache-java-get-started.md)
 - [Python](cache-python-get-started.md)
@@ -28,36 +29,28 @@ Azure Redis Cache bietet Zugriff auf einen dedizierten Redis-Cache, der von Micr
 
 Dieses Thema beschreibt die ersten Schritte mit Azure Redis Cache und Java.
 
-
 ## Voraussetzungen
 
 [Jedis](https://github.com/xetorthio/jedis) – Java-Client für Redis
 
 In diesem Lernprogramm wird Jedis verwendet. Sie können jedoch alle unter [http://redis.io/clients](http://redis.io/clients) aufgeführten Java-Clients nutzen.
 
-
 ## Erstellen eines Redis-Caches in Azure
 
-Klicken Sie im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=398536) auf **Neu** und **Daten und Speicher**, und wählen Sie **Redis-Cache** aus.
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-  ![][1]
+## Abrufen des Hostnamens und der Zugriffsschlüssel
 
-Geben Sie einen DNS-Hostnamen ein. Das Format hierfür ist `<name>.redis.cache.windows.net`. Klicken Sie auf **Erstellen**.
-
-  ![][2]
-
-
-Sobald Sie den Cache erstellt haben, klicken Sie im Azure-Portal darauf, um die Cache-Einstellungen anzuzeigen. Klicken Sie auf den Link unter **Schlüssel**, und kopieren Sie den Primärschlüssel. Sie benötigen ihn zum Authentifizieren von Anforderungen.
-
-  ![][4]
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 
 ## Aktivieren des Nicht-SSL-Endpunkts
 
+Einige Redis-Clients weisen keine Unterstützung für SSL auf, und der [Nicht-SSL-Port ist für neue Azure Redis Cache-Instanzen standardmäßig deaktiviert](cache-configure.md#access-ports). Zum Zeitpunkt der Erstellung dieses Dokuments wird SSL vom [Jedis](https://github.com/xetorthio/jedis)-Client nicht unterstützt.
 
-Klicken Sie auf den Link unter **Ports**, und klicken Sie bei "Zugriff nur über SSL zulassen" auf **Nein**. Dadurch wird der Nicht-SSL-Port für den Cache aktiviert. Der Jedis-Client unterstützt SSL derzeit nicht.
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
-  ![][3]
+
 
 
 ## Fügen Sie dem Cache Daten hinzu, und rufen Sie sie ab.
@@ -86,11 +79,4 @@ Klicken Sie auf den Link unter **Ports**, und klicken Sie bei "Zugriff nur über
 - [Aktivieren Sie die Cachediagnose](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics), damit Sie die Integrität Ihres Caches [überwachen](https://msdn.microsoft.com/library/azure/dn763945.aspx) können.
 - Lesen Sie die offizielle [Redis-Dokumentation](http://redis.io/documentation).
 
-
-<!--Image references-->
-[1]: ./media/cache-java-get-started/cache01.png
-[2]: ./media/cache-java-get-started/cache02.png
-[3]: ./media/cache-java-get-started/cache03.png
-[4]: ./media/cache-java-get-started/cache04.png
-
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

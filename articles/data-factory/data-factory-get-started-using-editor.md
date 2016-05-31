@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/07/2016" 
+	ms.date="05/16/2016" 
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors
@@ -64,6 +64,8 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 	![Data Factory-Name nicht verfügbar][image-data-factory-name-not-available]
 	
 	> [AZURE.NOTE] Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
+	> 
+	> Um Data Factory-Instanzen erstellen zu können, müssen Sie unter dem Azure-Abonnement ein Mitwirkender oder Administrator sein.
 
 9. Klicken Sie auf der linken Seite auf **BENACHRICHTIGUNGEN**, und suchen Sie nach Benachrichtigungen zum Erstellungsprozess. Klicken Sie auf **X**, um das Blatt **Benachrichtigungen** zu schließen, falls es geöffnet ist.
 10. Nach Abschluss der Erstellung wird das Blatt **DATA FACTORY** wie unten dargestellt angezeigt:
@@ -91,7 +93,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 	
 	Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](http://go.microsoft.com/fwlink/?LinkId=516971).
 
-6. Klicken Sie auf der Symbolleiste auf **Bereitstellen**, um den verknüpften Dienst „AzureStorageLinkedService“ bereitzustellen. Vergewissern Sie sich, dass die Meldung **VERKNÜPFTER DIENST ERFOLGREICH ERSTELLT** auf der Titelleiste des Editors angezeigt wird.
+6. Klicken Sie auf der Symbolleiste auf **Bereitstellen**, um „AzureStorageLinkedService“ bereitzustellen. Vergewissern Sie sich, dass die Meldung **VERKNÜPFTER DIENST ERFOLGREICH ERSTELLT** auf der Titelleiste des Editors angezeigt wird.
 
 	![Editor – Blobspeicher bereitstellen][image-editor-blob-storage-deploy]
 
@@ -371,16 +373,24 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 
 
 ## Zusammenfassung 
-In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Sie haben mithilfe des Azure-Portals die Data Factory, verknüpfte Dienste, Tabellen und eine Pipeline erstellt. Nachfolgend sind die allgemeinen Schritte aufgeführt, die Sie in diesem Lernprogramm ausgeführt haben:
+In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Sie haben mithilfe des Azure-Portals die Data Factory, verknüpfte Dienste, Datasets und eine Pipeline erstellt. Nachfolgend sind die allgemeinen Schritte aufgeführt, die Sie in diesem Lernprogramm ausgeführt haben:
 
-1.	Erstellen einer Azure **Data Factory**.
-2.	Erstellen von **verknüpften Diensten**, die Datenspeicher und Computes (sog. **verknüpfte Dienste**) mit der Data Factory verknüpfen.
-3.	Erstellen von **Tabellen**, die Eingabe- und Ausgabedaten für Pipelines beschreiben.
-4.	Erstellen von **Pipelines**. Eine Pipeline besteht aus einer oder mehreren Aktivitäten, verarbeitet die Eingaben und erzeugt Ausgaben. Sie legen den aktiven Zeitraum für die Pipeline durch Angabe der **Start**- und **Endzeit** für die Pipeline fest. Der aktive Zeitraums definiert die Dauer, für die Datenslices erzeugt werden.
+1.	Sie haben eine Azure **Data Factory** erstellt.
+2.	Sie haben **verknüpfte Dienste** erstellt:
+	1. Einen verknüpften **Azure Storage**-Dienst zum Verknüpfen Ihres Azure Storage-Kontos, in dem Eingabedaten enthalten sind. 	
+	2. Einen verknüpften **Azure SQL**-Dienst zum Verknüpfen Ihrer Azure SQL-Datenbank, in der die Ausgabedaten enthalten sind. 
+3.	Sie haben **Datasets** erstellt, mit denen Eingabedaten und Ausgabedaten für Pipelines beschrieben werden.
+4.	Sie haben eine **Pipeline** mit einer **Kopieraktivität** und **BlobSource** als Quelle und **SqlSink** als Senke erstellt.  
 
 
-## Siehe auch
-Ausführliche Informationen zur **Kopieraktivität** in Azure Data Factory finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
+## Weitere Informationen
+| Thema | Beschreibung |
+| :---- | :---- |
+| [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) | Dieser Artikel enthält ausführliche Informationen zur Kopieraktivität, die Sie in diesem Tutorial verwendet haben. |
+| [Planung und Ausführung](data-factory-scheduling-and-execution.md) | In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
+| [Pipelines](data-factory-create-pipelines.md) | In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |
+| [Datasets](data-factory-create-datasets.md) | Dieser Artikel bietet Ihnen Informationen über Datasets in Azure Data Factory.
+| [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
 <!--Link references-->
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -455,4 +465,4 @@ Ausführliche Informationen zur **Kopieraktivität** in Azure Data Factory finde
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

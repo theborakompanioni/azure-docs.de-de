@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/09/2016"
+    ms.date="05/23/2016"
     ms.author="brjohnst"/>
 
 # Hochladen von Daten in Azure Search mit dem .NET SDK
@@ -53,8 +53,7 @@ Aktion | Beschreibung | Erforderliche Felder für jedes Dokument | Hinweise
 --- | --- | --- | ---
 `Upload` | Eine `Upload`-Aktion entspricht „upsert“, wobei neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. | Schlüssel und alle anderen zu definierenden Felder | Wenn ein bestehendes Dokument aktualisiert/ersetzt wird, werden alle in der Anforderung nicht festgelegten Felder auf `null` festgelegt. Dies tritt auch auf, wenn das Feld zuvor auf einen Wert festgelegt wurde, der nicht Null ist.
 `Merge` | Aktualisiert ein bestehendes Dokument mit den angegebenen Feldern. Wenn das Dokument im Index nicht vorhanden ist, schlägt die Zusammenführung fehl. | Schlüssel und alle anderen zu definierenden Felder | Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Dies beinhaltet auch Felder vom Typ `DataType.Collection(DataType.String)`. Wenn das Dokument beispielsweise das Feld `tags` mit dem Wert `["budget"]` enthält und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für `tags` durchführen, hat das Feld `tags` am Ende den Wert `["economy", "pool"]`. Der Wert lautet nicht `["budget", "economy", "pool"]`.
-`MergeOrUpload` | Verhält sich wie `Merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `Upload` mit einem neuen Dokument. | Schlüssel und alle anderen zu definierenden Felder | -
-`Delete` | Entfernt das festgelegte Dokument aus dem Index. | Nur Schlüssel | Alle festgelegten Felder mit Ausnahme des Schlüsselfelds werden ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `Merge`, und setzen Sie das Feld ausdrücklich auf Null.
+`MergeOrUpload` | Verhält sich wie `Merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `Upload` mit einem neuen Dokument. | Schlüssel und alle anderen zu definierenden Felder | - `Delete` | Entfernt das festgelegte Dokument aus dem Index. | Nur Schlüssel | Alle festgelegten Felder mit Ausnahme des Schlüsselfelds werden ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `Merge`, und setzen Sie das Feld ausdrücklich auf Null.
 
 Sie können angeben, welche Aktion Sie verwenden möchten, indem Sie verschiedene statische Methoden der Klassen `IndexBatch` und `IndexAction` verwenden. Dies wird im nächsten Abschnitt gezeigt.
 
@@ -114,7 +113,7 @@ In diesem Fall verwenden wir `Upload`, `MergeOrUpload` und `Delete` als Suchakti
 
 Wir gehen davon aus, dass der Index in diesem Beispiel („hotels“) bereits mit einigen Dokumenten gefüllt ist. Beachten Sie, dass bei `MergeOrUpload` nicht alle möglichen Dokumentfelder festgelegt werden mussten und bei `Delete` nur der Dokumentschlüssel (`HotelId`) definiert werden musste.
 
-Beachten Sie außerdem, dass in einer Indizierungsanforderung nur bis zu 1.000 Dokumente enthalten sein können.
+Beachten Sie außerdem, dass in einer Indizierungsanforderung nur bis zu 1.000 Dokumente enthalten sein können.
 
 > [AZURE.NOTE] In diesem Beispiel wenden wir unterschiedliche Aktionen auf unterschiedliche Dokumente an. Falls Sie für alle Dokumente im Batch die gleichen Aktionen durchführen möchten, können Sie die anderen statischen Methoden von `IndexBatch` verwenden, anstatt `IndexBatch.New` aufzurufen. Beispielsweise können Sie Batches erstellen, indem Sie `IndexBatch.Merge`, `IndexBatch.MergeOrUpload` oder `IndexBatch.Delete` aufrufen. Für diese Methoden wird anstelle von `IndexAction`-Objekten eine Sammlung mit Dokumenten verwendet (in diesem Beispiel Objekte vom Typ `Hotel`).
 
@@ -205,4 +204,4 @@ Aus diesem Grund empfehlen wir als bewährte Methode, in Ihren Modellklassen Typ
 ## Weiter
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen des Azure Search-Index](search-query-overview.md).
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

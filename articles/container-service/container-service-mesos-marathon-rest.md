@@ -24,8 +24,8 @@ DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter W
 
 Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem Dokument wird beschrieben, wie Sie Containerbereitstellungen mit Marathon erstellen und skalieren. Bevor Sie diese Beispiele durcharbeiten, benötigen Sie einen DC/OS-Cluster, der im Azure Container Service konfiguriert ist. Sie müssen auch über Remoteverbindungen mit diesem Cluster verfügen. Weitere Informationen zu diesen Elementen finden Sie in den folgenden Artikeln:
 
-- [Bereitstellen eines Azure Container Service-Clusters](./container-service-deployment.md)
-- [Verbinden mit einem Azure Container Service-Cluster](./container-service-connect.md)
+- [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md)
+- [Verbinden mit einem Azure Container Service-Cluster](container-service-connect.md)
 
 Nachdem die Verbindung mit dem Azure Container Service-Cluster hergestellt wurde, können Sie auf DC/OS und die verwandten REST-APIs über http://localhost:local-port zugreifen. Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass das Tunneling über Port 80 erfolgt. Der Marathon-Endpunkt kann beispielsweise unter `http://localhost/marathon/v2/` erreicht werden. Weitere Informationen zu den verschiedenen APIs finden Sie in der Mesosphere-Dokumentation für die [Marathon-API](https://mesosphere.github.io/marathon/docs/rest-api.html) und die [Chronos-API](https://mesos.github.io/chronos/docs/api.html) sowie in der Apache-Dokumentation für die [Mesos Scheduler-API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
@@ -172,6 +172,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 ## Nächste Schritte
 
-[Lesen Sie mehr über die Mesos-HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/). [Weitere Informationen zur Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
+Informieren Sie sich unter Apache Mesos weiter über [HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/). [Weitere Informationen zur Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

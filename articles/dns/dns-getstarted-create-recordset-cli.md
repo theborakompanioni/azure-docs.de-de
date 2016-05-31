@@ -62,8 +62,8 @@ Die folgenden Beispiele zeigen, wie Sie eine Datensatzgruppe jedes Datensatztyps
 
 ## Nächste Schritte
 
-Informationen zur Verwaltung Ihrer Datensatzgruppen und Datensätze finden Sie unter [So erstellen und verwalten Sie DNS-Einträge und Ressourceneintragssätze mit dem Azure-Portal](dns-operations-recordsets-portal.md).
+Informationen zur Verwaltung Ihrer Datensatzgruppen und Datensätze finden Sie unter [Verwalten von DNS-Ressourceneinträgen und DNS-Ressourceneintragssätzen über die Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md).
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -12,10 +12,11 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/19/2016"
+	ms.date="05/18/2016"
 	ms.author="awills"/>
 
 # Application Insights für Webseiten
+
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
@@ -89,8 +90,14 @@ Zu den [verfügbaren Parametern](https://github.com/Microsoft/ApplicationInsight
     // Don't log browser exceptions.
     disableExceptionTracking: true,
 
+    // Don't log ajax calls.
+    disableAjaxTracking: boolean,
+
     // Limit number of Ajax calls logged, to reduce traffic.
     maxAjaxCallsPerView: 10, // default is 500
+
+    // Time page load up to execution of first trackPageView().
+    overridePageViewDuration: boolean,
 
     // Set these dynamically for an authenticated user.
     appUserId: string,
@@ -204,7 +211,11 @@ Wählen Sie ein Ereignis, um weitere Details anzuzeigen. Klicken Sie auf der Det
 
 ### Eigenschaften von Seitenansichten
 
-* **Dauer der Seitenansicht**: Die Zeit, die das Laden der Seite und das Starten der Ausführung von Skripts in Anspruch nimmt. Insbesondere das Intervall vom Beginn des Ladens der Seite bis zur Ausführung von trackPageView. Wenn Sie nach der Initialisierung des Skripts trackPageView von seiner üblichen Position verschoben haben, wird ein anderer Wert wiedergegeben.
+* **Dauer der Seitenansicht** 
+
+ * Dies ist standardmäßig die Dauer des Ladevorgangs der Seite von der Clientanforderung bis zum vollständigen Laden (einschließlich Hilfsdateien, aber ohne asynchrone Aufgaben wie Ajax-Aufrufe).
+ * Wenn Sie `overridePageViewDuration` in der [Seitenkonfiguration](#detailed-configuration) festlegen, ist dies das Intervall zwischen Clientanforderung und Ausführung des ersten `trackPageView`-Elements. Wenn Sie nach der Initialisierung des Skripts trackPageView von seiner üblichen Position verschoben haben, wird ein anderer Wert wiedergegeben.
+ * Wenn `overridePageViewDuration` festgelegt und im `trackPageView()`-Aufruf ein Argument für die Dauer angegeben ist, wird stattdessen der Argumentwert verwendet. 
 
 
 ## Benutzerdefinierte Seitenzähler
@@ -238,4 +249,4 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](app-insights-overview-usage.md)
 
-<!------HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

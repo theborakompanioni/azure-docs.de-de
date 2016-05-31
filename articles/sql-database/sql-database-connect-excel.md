@@ -22,7 +22,7 @@
 # Tutorial zu SQL-Datenbank: Verbinden von Excel mit einer Azure SQL-Datenbank und Erstellen eines Berichts
 
 > [AZURE.SELECTOR]
-- [C#](sql-database-connect-query.md)
+- [Visual Studio](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
@@ -83,4 +83,4 @@ Nachdem Sie die Verbindung hergestellt und die Datei mit Daten und Verbindungsin
 - Erfahren Sie mehr über die Vorteile von [elastischen Pools](sql-database-elastic-pool.md).
 - Erfahren Sie, wie Sie [eine Webanwendung erstellen, die eine Verbindung mit SQL-Datenbank auf dem Back-End herstellt](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

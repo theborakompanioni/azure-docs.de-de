@@ -56,7 +56,9 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 
 Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine neue Client-App erstellen oder eine vorhandene App so ändern, dass eine Verbindung mit Azure hergestellt wird. In diesem Abschnitt laden Sie ein Vorlagenprojekt für eine UWP-App herunter, das zum Herstellen einer Verbindung mit dem Mobile App-Back-End angepasst wird.
 
-1. Klicken Sie auf dem Blatt **Erste Schritte** für Ihr Back-End für mobile Apps auf **Neue App erstellen** > **Herunterladen**, und entpacken Sie die komprimierten Projektdateien auf Ihrem lokalen Computer.
+1. Klicken Sie im Blatt **Schnellstart** für Ihr Back-End für mobile Apps auf **Neue App erstellen** > **Herunterladen**, und entpacken Sie die komprimierten Projektdateien auf Ihrem lokalen Computer.
+
+	![Windows-Schnellstartprojekt herunterladen](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
 
 3. (Optional) Fügen Sie das UWP-App-Projekt der gleichen Projektmappe hinzu wie das Serverprojekt. Dies erleichtert es, bei Bedarf sowohl die App als auch das Back-End in der gleichen Visual Studio-Projektmappe zu debuggen. Wenn Sie der Projektmappe ein UWP-App-Projekt hinzufügen möchten, müssen Sie mindestens Visual Studio 2015 verwenden.
 
@@ -64,13 +66,13 @@ Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine ne
 
 5. Geben Sie in der App unter **TodoItem einfügen** einen beschreibenden Text ein, zum Beispiel *Abschließen des Tutorials*. Klicken Sie dann auf **Speichern**.
 
-	![](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
+	![Windows-Schnellstart – Vollständig für Desktop](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
 	Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet.
 
 6. (Optional) Beenden Sie die App, und starten Sie sie auf einem anderen Gerät oder in einem Emulator für mobile Geräte.
 
-	![](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
+	![Windows-Schnellstart – Vollständig für Smartphone](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
 
 	Beachten Sie, dass nach dem Starten der UWP-App Daten aus Azure geladen werden, die im vorhergehenden Schritt gespeichert wurden.
 
@@ -87,6 +89,6 @@ Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine ne
 <!-- URLs. -->
 [Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

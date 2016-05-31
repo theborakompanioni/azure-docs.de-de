@@ -167,7 +167,7 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 
 **F12. Gibt es eine Möglichkeit, die vom Backup-Dienst genutzte Bandbreite anzupassen?**<br/> A12. Ja. Verwenden Sie die Option **Eigenschaften ändern** im Backup-Agent, um die Bandbreite anzupassen. Passen Sie die Bandbreitenmenge und die Zeiten an, zu denen Sie die Bandbreite nutzen. Weitere Informationen finden Sie unter [Netzwerkdrosselung](../backup-configure-vault.md#enable-network-throttling).
 
-**F13. Meine Internetbandbreite ist im Hinblick auf die zu sichernden Daten begrenzt. Gibt es eine Möglichkeit, die Daten an einen bestimmten Speicherort mit einer großen Netzwerk-Pipe zu verschieben und diese Daten dann an Azure zu übertragen?** <br/> A13. Sie können Daten in Azure mit dem standardmäßigen Prozess für die Onlinesicherung sichern, oder Sie können den Azure-Import/Export-Dienst verwenden, um Daten an den Blobspeicher in Azure zu übertragen. Es gibt keine weiteren Möglichkeiten, um Sicherungsdaten in den Azure-Speicher zu verschieben. Informationen zur Verwendung des Azure-Import/Export-Diensts mit Azure Backup finden Sie im Artikel [Workflow zur Offlinesicherung](backup-azure-backup-import-export).
+**F13. Meine Internetbandbreite ist im Hinblick auf die zu sichernden Daten begrenzt. Gibt es eine Möglichkeit, die Daten an einen bestimmten Speicherort mit einer großen Netzwerk-Pipe zu verschieben und diese Daten dann an Azure zu übertragen?** <br/> A13. Sie können Daten in Azure mit dem standardmäßigen Prozess für die Onlinesicherung sichern, oder Sie können den Azure-Import/Export-Dienst verwenden, um Daten an den Blobspeicher in Azure zu übertragen. Es gibt keine weiteren Möglichkeiten, um Sicherungsdaten in den Azure-Speicher zu verschieben. Informationen zur Verwendung des Azure-Import/Export-Diensts mit Azure Backup finden Sie im Artikel [Workflow zur Offlinesicherung](backup-azure-backup-import-export.md).
 
 
 ## Wiederherstellen
@@ -205,7 +205,7 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
   ```PS C:\> Net start obengine```
 
   Nachdem die Erstellung der Sicherung am neuen Cachespeicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
-  
+
 **F2. Wo kann ich den Cacheordner platzieren, damit der Azure Backup-Agent erwartungsgemäß funktioniert?**<br/> A2. Folgende Speicherorte werden für den Cacheordner nicht empfohlen:
 
 - Netzwerkfreigabe oder Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, die mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
@@ -221,4 +221,4 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 
 Damit der Azure Backup-Agent erwartungsgemäß funktioniert, darf weder der Cacheordner noch die Metadaten-VHD die oben angegebenen Attribute besitzen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

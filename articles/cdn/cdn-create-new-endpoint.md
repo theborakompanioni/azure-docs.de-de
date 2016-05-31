@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="05/11/2016" 
+	 ms.date="05/24/2016" 
 	 ms.author="casoper"/>
 
 # Verwenden von Azure CDN  
@@ -25,7 +25,7 @@ In diesem Thema werden die Schritte zum Aktivieren von Azure CDN durch Erstellun
 
 Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält mindestens einen CDN-Endpunkt. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren.
 
-> [AZURE.NOTE] Ein einzelnes Azure-Abonnement ist standardmäßig auf vier CDN-Profile beschränkt. Jedes CDN-Profil ist auf zehn CDN-Endpunkte beschränkt.
+> [AZURE.NOTE] Ein einzelnes Azure-Abonnement ist standardmäßig auf acht CDN-Profile beschränkt. Jedes CDN-Profil ist auf zehn CDN-Endpunkte beschränkt.
 >
 > Die Preise für Azure CDN gelten auf der Ebene von CDN-Profilen. Wenn Sie die Azure CDN-Tarife kombinieren möchten, benötigen Sie mehrere CDN-Profile.
 
@@ -97,4 +97,4 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->
