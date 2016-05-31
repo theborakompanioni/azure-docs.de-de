@@ -104,7 +104,7 @@ Nachdem Sie nun über einen Tresor verfügen, können Sie Ihre Infrastruktur zum
 
 ### Herunterladen des Recovery Services-Agents
 
-1. Klicken Sie auf dem Blatt **Prepare infrastructure** (Infrastruktur vorbereiten) auf **Download Agent for Windows Server or Windows Client** (Agent für Windows-Server oder -Client herunterladen).
+1. Klicken Sie auf dem Blatt **Prepare infrastructure** (Infrastruktur vorbereiten) auf **Download Agent for Windows Server or Windows Client** (Agent für Windows Server oder Windows-Client herunterladen).
 
     ![Vorbereiten der Infrastruktur](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-short.png)
 
