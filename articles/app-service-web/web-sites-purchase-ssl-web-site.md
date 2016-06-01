@@ -146,7 +146,7 @@ In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes f
             
             * Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
                               
-            Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen ***.contosocertdemo.com** oder ***.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf „dzc.contosocertdemo.com“ mit dem Wert **cAGgQrKc** erstellen.
+            Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen **.contosocertdemo.com** oder **.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf „dzc.contosocertdemo.com“ mit dem Wert **cAGgQrKc** erstellen.
 
 
 ##<a name="bkmk_AssignCertificate"></a>Schritt 3: Zuweisen des Zertifikats zur App Service-App
@@ -208,4 +208,4 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!----HONumber=AcomDC_0518_2016-->
