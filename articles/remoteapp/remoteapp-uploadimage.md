@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/02/2016"
+    ms.date="05/12/2016"
     ms.author="ericor" />
 
 
@@ -51,4 +51,4 @@ Nachdem Sie Ihr benutzerdefiniertes Vorlagenimage erstellt oder aktualisiert hab
 - Nehmen Sie keine Änderungen am Skript vor, die Überprüfungen sollen Ihnen helfen.
 - Wenn die VHD-Datei beim Upload ausgesperrt wird, kopieren oder verschieben Sie sie an den neuen Speicherort, und wiederholen Sie den Upload. Möglicherweise verhindern bestimmte Windows-Prozesse den Upload.  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

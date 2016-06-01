@@ -3,7 +3,7 @@
    description="Hier erhalten Sie eine Übersicht über die Einrichtung der Continuous Integration für eine Service Fabric-Anwendung mit Visual Studio Team Services (VSTS)."
    services="service-fabric"
    documentationCenter="na"
-   authors="cawams"
+   authors="mthalman-msft"
    manager="timlt"
    editor="" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="03/29/2016"
-   ms.author="cawa" />
+   ms.author="mthalman" />
 
 # Einrichten der Continuous Integration für eine Service Fabric-Anwendung mit Visual Studio Team Services
 
@@ -45,7 +45,7 @@ Bevor Sie den Buildcomputer einrichten können, müssen Sie einen [Dienstprinzip
 
     a. Falls Sie Windows 10 mit den neusten Aktualisierungen verwenden, können Sie diesen Schritt überspringen (PowerShellGet ist bereits vorinstalliert).
 
-    b. Falls nicht, installieren Sie [Windows Management Framework 5.0](http://www.microsoft.com/download/details.aspx?id=48729), welches PowerShellGet enthält.
+    b. Installieren Sie andernfalls [Windows Management Framework 5.0](https://aka.ms/wmf5download), denn PowerShellGet ist darin enthalten.
 
 2.	Installieren und aktualisieren Sie das AzureRM-Modul. Wenn Sie eine ältere Version von Azure PowerShell installiert haben, entfernen Sie sie:
 
@@ -53,11 +53,9 @@ Bevor Sie den Buildcomputer einrichten können, müssen Sie einen [Dienstprinzip
 
     b. Suchen Sie nach „Azure PowerShell“, und deinstallieren Sie es.
 
-    c. Öffnen Sie eine PowerShell-Eingabeaufforderung.
+    c. Öffnen Sie eine PowerShell-Eingabeaufforderung als Administrator.
 
     d. Installieren Sie das AzureRM-Modul mit dem Befehl `Install-Module AzureRM`.
-
-    e. Aktualisieren Sie das AzureRM-Modul mit dem Befehl `Update-AzureRM`.
 
 3.	Deaktivieren (oder aktivieren) Sie die Azure-Datensammlung.
 
@@ -99,10 +97,10 @@ Bevor Sie den Buildcomputer einrichten können, müssen Sie einen [Dienstprinzip
 | --- | --- |
 | KeyVaultLocation | Ein beliebiger Wert. Dieser Parameter muss dem Ort entsprechen, an dem Sie den Cluster erstellen möchten. |
 | CertificateSecretName | Ein beliebiger Wert. |
-| CertificateDnsName | Muss dem DNS-Namen Ihres Clusters entsprechen. Beispiel: `mycluster.westus.azure.cloudapp.net` |
+| CertificateDnsName | Muss dem DNS-Namen Ihres Clusters entsprechen. Beispiel: `mycluster.westus.cloudapp.azure.com` |
 | SecureCertificatePassword | Ein beliebiger Wert. Dieser Parameter wird verwendet, wenn Sie das Zertifikat auf Ihrem Buildcomputer importieren. |
-| KeyVaultResourceGroupName | Ein beliebiger Wert. Verwenden Sie jedoch nicht den Ressourcengruppennamen, den Sie für Ihren Cluster verwenden möchten. |
 | KeyVaultName | Ein beliebiger Wert. |
+| KeyVaultResourceGroupName | Ein beliebiger Wert. Verwenden Sie jedoch nicht den Ressourcengruppennamen, den Sie für Ihren Cluster verwenden möchten. |
 | PfxFileOutputPath| Ein beliebiger Wert. Diese Datei wird verwendet, um das Zertifikat auf Ihren Buildcomputer zu importieren. |
 
 Nach Abschluss des Skripts werden die folgenden drei Werte ausgegeben. Notieren Sie sich diese Werte, da sie als Buildvariablen verwendet werden.
@@ -129,7 +127,7 @@ Wenn Sie noch nicht über einen Computer verfügen, können Sie schnell einen vi
 
 5. Wählen Sie **Compute** > **Virtueller Computer** > **Aus Katalog** aus.
 
-6. Wählen Sie das Image **Visual Studio Enterprise 2015 Update 1 mit Azure SDK 2.8 unter Windows Server 2012 R2** aus.
+6. Wählen Sie das Image **Visual Studio Enterprise 2015 Update 2 mit den universelle Windows-Tools und dem Azure SDK 2.9 unter Windows Server 2012 R2** aus.
 
     >[AZURE.NOTE] Azure SDK ist zwar keine erforderliche Komponente, es sind jedoch derzeit keine Images verfügbar, bei denen nur Visual Studio 2015 installiert ist.
 
@@ -137,7 +135,7 @@ Wenn Sie noch nicht über einen Computer verfügen, können Sie schnell einen vi
 
 ### Installieren Sie das Service Fabric-SDK.
 
-Installieren Sie das [Service Fabric-SDK](https://azure.microsoft.com/campaigns/service-fabric/) auf Ihrem Computer.
+Installieren Sie das [Service Fabric SDK](service-fabric-get-started.md#install-the-runtime-sdk-and-tools) auf Ihrem Computer.
 
 ### Installieren von Azure PowerShell
 
@@ -147,7 +145,7 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 >[AZURE.NOTE] Führen Sie dies aus, *bevor* Sie den Build-Agent starten. Andernfalls erkennt er nicht die neue Umgebungsvariable.
 
-1. Drücken Sie WINDOWS+R-TASTE, geben Sie **regedit** ein, und drücken Sie die EINGABE-TASTE.
+1. Drücken Sie WINDOWS+R-TASTE, geben Sie **regedit** ein, und drücken Sie die EINGABETASTE.
 
 2. Klicken Sie mit der rechten Maustaste auf den Knoten `HKEY_Users\.Default\Environment`, und wählen Sie **Neu** > **Wert der erweiterbaren Zeichenfolge** aus.
 
@@ -161,14 +159,14 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
     b. Öffnen Sie eine PowerShell-Eingabeaufforderung mit Administratorrechten, und führen Sie die folgenden Befehle aus. Verwenden Sie dazu das Kennwort, das Sie zuvor an `CreateAndUpload-Certificate.ps1` übergeben haben.
 
-        ```
-        $password = Read-Host -AsSecureString
-        Import-PfxCertificate -FilePath <path/to/cert.pfx> -CertStoreLocation Cert:\LocalMachine\My -Password $password -Exportable
-        ```
+    ```powershell
+    $password = Read-Host -AsSecureString
+    Import-PfxCertificate -FilePath <path/to/cert.pfx> -CertStoreLocation Cert:\LocalMachine\My -Password $password -Exportable
+    ```
 
 2.	Führen Sie den Zertifikat-Manager aus.
 
-    a. Öffnen Sie unter Windows die Systemsteuerung. Klicken Sie mit der rechten Maustaste auf die Schaltfläche „Start“, und wählen Sie dann **Systemsteuerung** aus.
+    a. Öffnen Sie unter Windows die Systemsteuerung. Klicken Sie mit der rechten Maustaste auf die Schaltfläche „Start“, und wählen Sie anschließend **Systemsteuerung** aus.
 
     b. Suchen Sie nach **Zertifikat**.
 
@@ -180,17 +178,17 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
     b. Suchen Sie in der Liste nach Ihrem Zertifikat.
 
-    c. Klicken Sie mit der rechten Maustaste auf Ihr Zertifikat, und wählen Sie dann **Alle Aufgaben** > **Private Schlüssel verwalten**.
+    c. Klicken Sie mit der rechten Maustaste auf Ihr Zertifikat, und wählen Sie dann **Alle Aufgaben** > **Private Schlüssel verwalten** aus.
 
-    d. Wählen Sie die Schaltfläche **Hinzufügen** aus, geben Sie **Netzwerkdienst** ein, und wählen Sie dann **Namen überprüfen** aus.
+    d. Wählen Sie die Schaltfläche **Hinzufügen** aus, geben Sie **Netzwerkdienst** ein, und wählen Sie anschließend **Namen überprüfen** aus.
 
-    e. Wählen Sie **OK**, und schließen Sie anschließend den Zertifikat-Manager.
+    e. Klicken Sie auf **OK**.
 
     ![Screenshot der Schritte zum Erteilen der Berechtigungen für das lokale Dienstkonto](media/service-fabric-set-up-continuous-integration/windows-certificate-manager.png)
 
 4.  Kopieren Sie das Zertifikat in den Ordner `Trusted People`.
 
-    a. Ihr Zertifikat wurde in **Persönlich/Zertifikate** importiert, aber wir müssen es zu **Vertrauenswürdige Personen** hinzufügen. Klicken Sie mit der rechten Maustaste auf das Zertifikat und wählen Sie **Kopieren** aus. Klicken Sie dann mit der rechten Maustaste auf den Ordner **Vertrauenswürdige Personen**, und wählen Sie **Einfügen**.
+    a. Ihr Zertifikat wurde in **Persönlich/Zertifikate** importiert, aber wir müssen es zu **Vertrauenswürdige Personen** hinzufügen. Klicken Sie mit der rechten Maustaste auf das Zertifikat, und wählen Sie **Kopieren** aus. Klicken Sie anschließend mit der rechten Maustaste auf den Ordner **Vertrauenswürdige Personen**, und wählen Sie **Einfügen** aus.
 
 ### Registrieren Ihres Build-Agents
 
@@ -208,11 +206,11 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
     e. Kopieren Sie „agent.zip“ auf den zuvor erstellten Buildcomputer.
 
-    f. Entpacken Sie „agent.zip“ auf dem Buildcomputer unter `C:\agent` (oder an einem anderen Speicherort mit einem kurzen Pfad).
+    f. Entpacken Sie „agent.zip“ in `C:\agent` (oder an einem anderen Speicherort mit einem kurzen Pfad) auf dem Buildcomputer.
 
-    >[AZURE.NOTE] Wenn Sie ASP.NET 5-Webdienste verwenden möchten, empfiehlt sich die Wahl eines möglichst kurzen Ordnernamens. So vermeiden Sie, dass bei der Bereitstellung Fehler vom Typ **PathTooLongExceptions** auftreten. Wenn ein ASP.NET Core veröffentlicht wird, werden die Auswirkungen dieses Problems minimiert.
+    >[AZURE.NOTE] Wenn Sie ASP.NET 5-Webdienste verwenden möchten, empfiehlt sich die Wahl eines möglichst kurzen Ordnernamens. Andernfalls treten bei der Bereitstellung unter Umständen Fehler vom Typ **PathTooLongExceptions** auf. Wenn ein ASP.NET Core veröffentlicht wird, werden die Auswirkungen dieses Problems minimiert.
 
-2.	Führen Sie an einer Eingabeaufforderung mit Administratorrechten `C:\agent\ConfigureAgent.cmd` aus. Das Skript fordert Sie zur Eingabe folgender Parameter auf:
+2.	Führen Sie über eine Eingabeaufforderung mit Administratorrechten `C:\agent\ConfigureAgent.cmd` aus. Das Skript fordert Sie zur Eingabe folgender Parameter auf:
 
 |Parameter|Wert|
 |---|---|
@@ -220,8 +218,8 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 |TFS Url|Geben Sie die URL zu Ihrem Teamprojekt ein, z.B. `https://[your-VSTS-account-name].visualstudio.com`.|
 |Agent Pool|Geben Sie den Namen Ihres Agentpools ein. (Falls Sie keinen Agentpool erstellt haben, übernehmen Sie den Standardwert.)|
 |Work folder|Übernehmen Sie den Standardwert. In diesem Ordner erstellt der Build-Agent Ihre Anwendung. Wenn Sie ASP.NET 5-Webdienste verwenden möchten, empfiehlt sich die Wahl eines möglichst kurzen Ordnernamens. Andernfalls treten bei der Bereitstellung unter Umständen Fehler vom Typ „PathTooLongExceptions“ auf.|
-|Install as Windows Service?|Der Standardwert ist „N“. Ändern Sie den Wert in **Y**.|
-|User account to run the service|Übernehmen Sie den Standardwert. (`NT AUTHORITY\NetworkService`)|
+|Install as Windows Service?|Der Standardwert ist „N“. Ändern Sie den Wert in **Y** (Ja).|
+|User account to run the service|Der Standardwert ist `NT AUTHORITY\LOCAL SERVICE`. Ändern Sie den Standardwert auf `NT AUTHORITY\NetworkService`.|
 |Kennwort für `NT AUTHORITY\Network Service`|Das Netzwerkdienstkonto verfügt nicht über ein Kennwort, akzeptiert jedoch keine leeren Kennwörter. Geben Sie eine beliebige nicht-leere Zeichenfolge als Kennwort ein (egal was Sie eingeben, es wird ignoriert).|
 |Un-configure existing agent?|Übernehmen Sie den Standardwert. (**N**)|
 
@@ -237,7 +235,7 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
     ![Screenshot des Status des Build-Agents](media/service-fabric-set-up-continuous-integration/vso-configured-agent.png)
 
-    d. Wählen Sie den Build-Agenten aus, wählen Sie dann die Registerkarte **Funktionen** aus.
+    d. Wählen Sie den Build-Agent aus, wählen Sie anschließend die Registerkarte **Funktionen** aus.
 
     e. Fügen Sie eine Funktion mit dem Namen **azureps** mit einem beliebigen Wert hinzu. Dadurch wird VSTS angezeigt, dass auf diesem Computer Azure PowerShell installiert ist. Dies wird für einige der von VSTS bereitgestellten Buildaufgaben vorausgesetzt.
 
@@ -255,7 +253,7 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
     |Parameter|Wert|
     |---|---|
     |clusterLocation|Muss dem Standort Ihres Schlüsseltresors entsprechen. Beispiel: `westus`|
-    |clusterName|Muss mit dem DNS-Namen Ihres Zertifikats übereinstimmen. Wenn der DNS-Name des Zertifikats z. B. `mycluster.westus.cloudapp.net` ist, dann muss `clusterName` `mycluster` sein.|
+    |clusterName|Muss mit dem DNS-Namen Ihres Zertifikats übereinstimmen. Wenn der DNS-Name des Zertifikats z.B. `mycluster.westus.cloudapp.net` ist, dann muss `clusterName` `mycluster` sein.|
     |adminPassword|8-123 Zeichen mit mindestens 3 der folgenden Zeichenarten: Großbuchstaben, Kleinbuchstaben, Zahlen, Sonderzeichen.|
     |certificateThumbprint|Aus der Ausgabe von `CreateAndUpload-Certificate.ps1`|
     |sourceVaultValue|Aus der Ausgabe von `CreateAndUpload-Certificate.ps1`|
@@ -273,11 +271,13 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
     c. Wählen Sie das grüne Pluszeichen (**+**) aus, um eine neue Builddefinition zu erstellen.
 
-    d. Wählen Sie **Leer** und dann **Weiter** aus.
+    d. Wählen Sie **Leer** und anschließend **Weiter** aus.
 
     e. Vergewissern Sie sich, dass das richtige Repository und die richtige Verzweigung ausgewählt sind.
 
-    f. Wählen Sie die Agent-Warteschlange aus, bei der Sie Ihren Build-Agent registriert haben, und aktivieren Sie das Kontrollkästchen **Fortlaufende Integration**.
+    f. Aktivieren Sie das Kontrollkästchen **Fortlaufende Integration**, um sicherzustellen, dass dieser Build ausgelöst wird, wenn die Verzweigung aktualisiert wird.
+
+    g. Wählen Sie die Agent-Warteschlange, für die Sie Ihren Build-Agent registriert haben.
 
 2.	Erstellen Sie auf der Registerkarte **Variablen** die folgenden Variablen mit den angegebenen Werten:
 
@@ -337,24 +337,25 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 5.	Speichern Sie die Builddefinition.
 
-### Hinzufügen eines Schritts „Clusterressourcengruppe entfernen“
+### <a name="RemoveClusterResourceGroup"></a> Hinzufügen des Schritts „Clusterressourcengruppe entfernen“
 
 Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beispielsweise, weil der Buildvorgang vor der Bereinigung abgebrochen wurde), ist unter Umständen eine Ressourcengruppe vorhanden, die einen Konflikt mit der neuen Ressourcengruppe verursachen könnte. Bereinigen Sie zur Vermeidung von Konflikten alle übrig gebliebenen Ressourcengruppen (und die dazugehörigen Ressourcen), bevor Sie eine neue erstellen.
 
 1.	Wählen Sie auf der Registerkarte **Erstellen** den Befehl **Buildschritt hinzufügen...** aus.
 
-2.	Wählen Sie **Bereitstellen** > **Bereitstellung von Azure-Ressourcengruppe**.
+2.	Wählen Sie **Bereitstellen** > **Bereitstellung einer Azure-Ressourcengruppe** aus.
 
-3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie dann den Namen in **Clusterressourcengruppe entfernen**.
+3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie anschließend den Namen in **Clusterressourcengruppe entfernen**.
 
 4. Kopieren Sie diese Werte:
 
     |Name der Einstellung|Wert|
     |---|---|
     |AzureConnectionType|**Azure Resource Manager**|
-    |Azure RM-Abonnement|Wählen Sie den Verbindungsendpunkt, den Sie im Abschnitt **Erstellen eines Dienstprinzipals** erstellt haben.|
+    |Azure RM-Abonnement|Wählen Sie den Verbindungsendpunkt aus, den Sie im Abschnitt **Erstellen eines Dienstprinzipals** erstellt haben.|
     |Aktion|**Ressourcengruppe löschen**|
     |Ressourcengruppe|Geben Sie einen nicht verwendeten Namen ein. Sie müssen den gleichen Namen im nächsten Schritt verwenden.|
+    |Bei Fehler fortsetzen|Bei diesem Schritt tritt ein Fehler auf, wenn die Ressourcengruppe nicht vorhanden ist. Aktivieren Sie **Bei Fehler fortsetzen** in dem Abschnitt **Steuerungsoptionen** aus, um dies zu vermeiden.|
 
 5.	Speichern Sie die Builddefinition.
 
@@ -362,16 +363,16 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
 
 1.	Wählen Sie auf der Registerkarte **Erstellen** den Befehl **Buildschritt hinzufügen...** aus.
 
-2.	Wählen Sie **Bereitstellen** > **Bereitstellung von Azure-Ressourcengruppe**.
+2.	Wählen Sie **Bereitstellen** > **Bereitstellung einer Azure-Ressourcengruppe** aus.
 
-3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie dann den Namen in **Sicheren Cluster bereitstellen**.
+3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie anschließend den Namen in **Sicheren Cluster bereitstellen**.
 
 4. Kopieren Sie diese Werte:
 
     |Name der Einstellung|Wert|
     |---|---|
     |AzureConnectionType|**Azure Resource Manager**|
-    |Azure RM-Abonnement|Wählen Sie den Verbindungsendpunkt, den Sie im Abschnitt **Erstellen eines Dienstprinzipals** erstellt haben.|
+    |Azure RM-Abonnement|Wählen Sie den Verbindungsendpunkt aus, den Sie im Abschnitt **Erstellen eines Dienstprinzipals** erstellt haben.|
     |Aktion|**Erstellen oder Aktualisieren einer Ressourcengruppe**|
     |Ressourcengruppe|Muss dem Namen entsprechen, den Sie im vorherigen Schritt verwendet haben.|
     |Standort|Muss dem Standort Ihres Schlüsseltresors entsprechen.|
@@ -393,20 +394,28 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
     |Name der Einstellung|Wert|
     |---|---|
     |Typ|**Dateipfad**|
-    |Skriptdateiname|Klicken Sie auf die Schaltfläche **...**, und navigieren Sie zum Verzeichnis **Scripts** innerhalb Ihres Anwendungsprojekts. Wählen Sie `Deploy-FabricApplication.ps1`.|
+    |Skriptdateiname|Klicken Sie auf die Schaltfläche **...**, und navigieren Sie zum Verzeichnis **Skripts** innerhalb Ihres Anwendungsprojekts. Wählen Sie `Deploy-FabricApplication.ps1` aus.|
     |Argumente|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
 
 5.	Speichern Sie die Builddefinition.
 
+### Hinzufügen des Schritts „Überprüfen“
+
+1. Dieser Schritt ist optional, wenn Sie diese Builddefinition noch konfigurieren. Sobald Sie aber einen Build erfolgreich ausgeführt und die Richtigkeit der anderen Buildschritte sichergestellt haben, können Sie an dieser Stelle Ihren eigenen Buildschritt zur Überprüfung einfügen. Dieser Schritt wäre anwendungsspezifisch und ist dazu bestimmt, die Richtigkeit der in dem Cluster bereitgestellten Anwendung zu überprüfen.
+  
+### Hinzufügen des abschließenden Schritts „Bereinigen“
+
+1. Führen Sie die gleichen Schritte aus wie in dem Abschnitt [Hinzufügen des Schritts „Clusterressourcengruppe entfernen“](#RemoveClusterResourceGroup). Damit werden alle bereitgestellten Azure-Ressourcen bereinigt, die während des Builds erstellt wurden.
+
 ### Ausprobieren
 
-Wählen Sie **Build zur Warteschlange hinzufügen**, um einen Build zu starten. Buildvorgänge werden auch beim Pushvorgang oder Einchecken ausgelöst.
+Wählen Sie **Build zur Warteschlange hinzufügen** aus, um einen Build zu starten. Buildvorgänge werden auch beim Pushvorgang oder Einchecken ausgelöst.
 
 ## Alternativen
 
 Mit den oben aufgeführten Anweisungen wird für jeden Buildvorgang ein neuer Cluster erstellt und am Ende des Buildvorgangs wieder entfernt. Wenn Sie stattdessen bei jedem Buildvorgang ein Anwendungsupgrade (für einen vorhandenen Cluster) durchführen möchten, führen Sie die folgenden Schritte aus:
 
-1.	Erstellen Sie manuell über das Azure-Portal oder über Azure PowerShell einen Testcluster gemäß [dieser Anweisungen](service-fabric-cluster-creation-via-portal.md).
+1.	Erstellen Sie manuell einen Testcluster über das Azure-Portal oder über Azure PowerShell gemäß [dieser Anweisungen](service-fabric-cluster-creation-via-portal.md).
 
 2.	Konfigurieren Sie Ihr Veröffentlichungsprofil für die Unterstützung von Anwendungsupgrades. Entsprechende Anweisungen finden Sie [hier](service-fabric-visualstudio-configure-upgrade.md).
 
@@ -420,4 +429,4 @@ Weitere Informationen zu Continuous Integration für Service Fabric-Anwendungen 
  - [Bereitstellen eines Build-Agents](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
  - [Erstellen und Konfigurieren einer Builddefinition](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

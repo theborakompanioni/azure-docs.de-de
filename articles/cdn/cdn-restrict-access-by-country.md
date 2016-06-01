@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 #Einschränken des Zugriffs auf Inhalte nach Ländern
 
+[AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+
 Wenn ein Benutzer Ihren Inhalt anfordert, wird unabhängig davon, wo der Benutzer diese Anforderung vorgenommen hat, der Inhalt angezeigt. In einigen Fällen empfiehlt es sich, den Zugriff auf Ihre Inhalte nach Ländern einzuschränken. In diesem Thema wird erläutert, wie Sie das Feature **Länderfilter** einsetzen, um den Zugriff je nach Land zu genehmigen oder verweigern.
 
->[AZURE.NOTE]Nachdem die Konfiguration eingerichtet wurde, gilt diese für alle CDN-Endpunkte in Ihrem Abonnement.
+>[AZURE.NOTE]Nachdem die Konfiguration eingerichtet wurde, gilt sie für alle **Azure CDN von Verizon**-Endpunkte in Ihrem Abonnement.
 
 Informationen zu Überlegungen, die Sie beim Konfigurieren dieser Art von Einschränkungen berücksichtigen sollten, finden Sie im Abschnitt [Überlegungen](cdn-restrict-access-by-country.md#considerations) am Ende dieses Themas.
 
@@ -61,8 +63,8 @@ Die Funktion **Länderfilter** verwendet Landeskennzahlen, um die Länder zu def
 ##<a id="considerations"></a>Überlegungen
 
 - Es kann bis zu einer Stunde dauern, bis die Änderungen an Ihrem Länderfilter wirksam werden.
-- Diese Funktion unterstützt keine Platzhalterzeichen (z. B. "*").
+- Diese Funktion unterstützt keine Platzhalterzeichen (z. B. "*").
 - Das dem relativen Pfad zugeordnete Länderfilterkonfiguration wird rekursiv auf diesen Pfad angewendet.
 - Pro relativen Pfad kann nur eine Regel angewendet werden (Sie können nicht mehrere Länderfilter erstellen, die auf den gleichen relativen Pfad verweisen). Jedoch können mehrere Länderfilter auf einen Ordner angewendet werden. Das liegt an der rekursiven Natur der Länderfilter. Anders ausgedrückt: Ein Unterordner eines zuvor konfigurierten Ordners kann einem anderen Länderfilter zugewiesen werden.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

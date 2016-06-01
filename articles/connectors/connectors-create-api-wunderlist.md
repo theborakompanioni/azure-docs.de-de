@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Wunderlist-Connector
@@ -85,8 +85,12 @@ Um Logik-Apps mit Wunderlist zu erstellen, müssen Sie zuerst eine **Verbindung*
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für Wunderlist|
+|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für Wunderlist|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
+
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -156,7 +160,7 @@ Listen abrufen: Ruft die Ihrem Konto zugeordneten Listen ab.
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -193,7 +197,7 @@ Aufgaben abrufen: Ruft Aufgaben aus einer bestimmten Liste ab.
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -230,7 +234,7 @@ Teilaufgaben abrufen: Ruft Teilaufgaben aus einer bestimmten Liste oder einer be
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -266,7 +270,7 @@ Notizen abrufen: Ruft Notizen für eine bestimmte Liste oder eine bestimmte Aufg
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -302,7 +306,7 @@ Aufgabenkommentare abrufen: Ruft Aufgabenkommentare für eine bestimmte Liste od
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -338,7 +342,7 @@ Erinnerungen abrufen: Ruft Erinnerungen für eine bestimmte Liste oder eine best
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -375,7 +379,7 @@ Dateien abrufen: Ruft Dateien für eine bestimmte Liste oder eine bestimmte Aufg
 |---|---|
 |200|Vorgang erfolgreich|
 |400|Ungültige Anforderung|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -849,7 +853,7 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 |revision|integer|Nein |
 |title|string|Nein |
 |assignee\_id|integer|Nein |
-|completed|Boolescher Wert|Nein |
+|abgeschlossen|Boolescher Wert|Nein |
 |recurrence\_type|string|Nein |
 |recurrence\_count|integer|Nein |
 |due\_date|string|Nein |
@@ -874,7 +878,7 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 |---|---|---|
 |revision|integer|Nein |
 |title|string|Nein |
-|completed|Boolescher Wert|Nein |
+|abgeschlossen|Boolescher Wert|Nein |
 
 
 
@@ -884,7 +888,7 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
 |revision|integer|Nein |
-|content|string|Nein |
+|Inhalt|string|Nein |
 
 
 
@@ -900,4 +904,4 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,13 +13,14 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="03/04/2016"
+	ms.date="05/24/2016"
 	ms.author="sdanie"/>
 
 # Verwenden von Azure Redis Cache mit Python
 
 > [AZURE.SELECTOR]
-- [.Net](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [ASP.NET](cache-web-app-howto.md)
 - [Node.js](cache-nodejs-get-started.md)
 - [Java](cache-java-get-started.md)
 - [Python](cache-python-get-started.md)
@@ -34,30 +35,37 @@ Installieren Sie [redis-py](https://github.com/andymccurdy/redis-py).
 
 ## Erstellen eines Redis-Caches in Azure
 
-Klicken Sie im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=398536) auf **Neu** und **Daten und Speicher**, und wählen Sie **Redis-Cache** aus.
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-  ![][1]
+## Abrufen des Hostnamens und der Zugriffsschlüssel
 
-Geben Sie einen DNS-Hostnamen ein. Das Format hierfür ist `<name>
-  .redis.cache.windows.net`. Klicken Sie auf **Erstellen**.
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-  ![][2]
 
-  [Navigieren](cache-configure.md#configure-redis-cache-settings) Sie zum Cache nach dessen Erstellung, um die Cache-Einstellungen anzuzeigen. Was Sie benötigen:
+## Aktivieren des Nicht-SSL-Endpunkts
 
-  - **Hostname.** Sie haben diesen Namen beim Erstellen des Caches eingegeben.
-  - **Port.** Klicken Sie auf den Link unter **Ports**, um die Ports anzuzeigen. Verwenden Sie den SSL-Port.
-  - **Zugriffsschüssel.** Klicken Sie auf den Link unter **Schlüssel**, und kopieren Sie den Primärschlüssel.
+Einige Redis-Clients weisen keine Unterstützung für SSL auf, und der [Nicht-SSL-Port ist für neue Azure Redis Cache-Instanzen standardmäßig deaktiviert](cache-configure.md#access-ports). Zum Zeitpunkt der Erstellung dieses Dokuments wird SSL vom [redis-py](https://github.com/andymccurdy/redis-py)-Client nicht unterstützt.
 
-  ## Add something to the cache and retrieve it
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
-  >>> import redis r = redis.StrictRedis(host='<name>.redis.cache.windows.net', port=6380, db=0, password='<key>', ssl=True) >>> r.set('foo', 'bar') True >>> r.get('foo') b'bar'
 
-Ersetzen Sie *&lt;name&gt;* durch den Namen Ihres Caches und *&lt;name&gt;* durch Ihren Zugriffsschlüssel.
+## Fügen Sie dem Cache Daten hinzu, und rufen Sie sie ab.
+
+
+	>>> import redis
+	>>> r = redis.StrictRedis(host='<name>.redis.cache.windows.net',
+	      port=6380, db=0, password='<key>', ssl=True)
+	>>> r.set('foo', 'bar')
+	True
+	>>> r.get('foo')
+	b'bar'
+
+
+Ersetzen Sie `<name>` durch den Namen Ihres Caches und `key` durch Ihren Zugriffsschlüssel.
 
 
 <!--Image references-->
-[1]: ./media/cache-python-get-started/cache01.png
-[2]: ./media/cache-python-get-started/cache02.png
+[1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
+[2]: ./media/cache-python-get-started/redis-cache-cache-create.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Grant user permissions to specific DevTest Lab policies | Microsoft Azure"
-	description="Learn how to grant user permissions to specific DevTest Lab policies based on each user's needs"
+<properties
+	pageTitle="Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien | Microsoft Azure"
+	description="Erfahren Sie, wie Sie Berechtigungen für bestimmte Labrichtlinien in DevTest Labs basierend auf den Anforderungen der Benutzer gewähren."
 	services="devtest-lab,virtual-machines,visual-studio-online"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,27 +13,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# Gewähren von Benutzerberechtigungen für bestimmte DevTest Lab-Richtlinien
+# Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien
 
 ## Übersicht
 
-Dieser Artikel veranschaulicht, wie Sie mit PowerShell Benutzerberechtigungen für eine bestimmte Azure DevTest Lab-Richtlinie gewähren. Auf diese Weise können Berechtigungen basierend auf den Anforderungen der einzelnen Benutzer gewährt werden. Sie möchten beispielsweise einem bestimmten Benutzer die Möglichkeit zum Ändern der Richtlinieneinstellungen der virtuellen Computer gewähren, jedoch nicht für die Kostenrichtlinien.
+Dieser Artikel veranschaulicht, wie Sie mit PowerShell Benutzerberechtigungen für eine bestimmte Labrichtlinie gewähren. Auf diese Weise können Berechtigungen basierend auf den Anforderungen der einzelnen Benutzer gewährt werden. Sie möchten beispielsweise einem bestimmten Benutzer die Möglichkeit zum Ändern der Richtlinieneinstellungen der virtuellen Computer gewähren, jedoch nicht für die Kostenrichtlinien.
 
 ## Richtlinien als Ressourcen
 
 Wie im Artikel [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md) verdeutlicht, ermöglicht RBAC eine differenzierte Zugriffsverwaltung für Azure-Ressourcen. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
-In DevTest Lab ist eine Richtlinie ein Ressourcentyp, der die RBAC-Aktion **Microsoft.DevTestLab/labs/policySets/policies/** ermöglicht. Jede DevTest Lab-Richtlinie ist eine Ressource im Richtlinienressourcentyp und kann als Bereich einer RBAC-Rolle zugewiesen werden.
+In DevTest Labs ist eine Richtlinie ein Ressourcentyp, der die RBAC-Aktion **Microsoft.DevTestLab/labs/policySets/policies/** ermöglicht. Jede Labrichtlinie ist eine Ressource im Richtlinienressourcentyp und kann als Bereich einer RBAC-Rolle zugewiesen werden.
 
-Um Benutzern beispielsweise Lese-/Schreibberechtigungen für die Richtlinie **Zulässige VM-Größen** zu erteilen, erstellen Sie eine benutzerdefinierte Rolle, die mit der Aktion **Microsoft.DevTestLab/labs/policySets/policies/*** arbeitet, und weisen dieser benutzerdefinierten Rolle anschließend im Bereich von **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** entsprechend Benutzer zu.
+Um Benutzern beispielsweise Lese-/Schreibberechtigungen für die Richtlinie **Zulässige VM-Größen** zu erteilen, erstellen Sie eine benutzerdefinierte Rolle, die mit der Aktion **Microsoft.DevTestLab/labs/policySets/policies/*** arbeitet, und weisen dieser benutzerdefinierten Rolle anschließend im Bereich von **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** entsprechende Benutzer zu.
 
 Weitere Informationen zu benutzerdefinierten Rollen in RBAC finden Sie im Abschnitt [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac) im Artikel [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md).
 
-##Erstellen einer benutzerdefinierten DevTest Lab-Rolle mithilfe von PowerShell
-Zu Beginn lesen Sie den folgenden Artikel, der erklärt, wie Sie die Azure PowerShell-Cmdlets installieren und konfigurieren: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
+##Erstellen einer benutzerdefinierten Labrolle mithilfe von PowerShell
+Lesen Sie zuerst den folgenden Artikel, der erklärt, wie Sie die Azure PowerShell-Cmdlets installieren und konfigurieren: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
 
 Nachdem Sie Azure PowerShell-Cmdlets eingerichtet haben, können Sie die folgenden Aufgaben ausführen:
 
@@ -70,11 +70,11 @@ Im folgenden Beispiel lautet die **ObjectId** des Benutzers *SomeUser* 05DEFF7B-
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Sobald Sie über die **ObjectId** für den Benutzer und einen Namen für die benutzerdefinierte Rolle verfügen, können Sie dem Benutzer diese Rolle per **New-AzureRmRoleAssignment**-Cmdlet zuweisen:
+Sobald Sie über die **ObjectId** für den Benutzer und einen Namen für die benutzerdefinierte Rolle verfügen, können Sie dem Benutzer diese Rolle mit dem **New-AzureRmRoleAssignment**-Cmdlet zuweisen:
 
     PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
 
-Im vorherigen Beispiel die **AllowedVmSizesInLab**-Richtlinie verwendet wird. Sie können auch eine der folgenden Richtlinien verwenden:
+Im vorherigen Beispiel wird die **AllowedVmSizesInLab**-Richtlinie verwendet. Sie können auch eine der folgenden Richtlinien verwenden:
 
 - MaxVmsAllowedPerUser
 - MaxVmsAllowedPerLab
@@ -83,9 +83,9 @@ Im vorherigen Beispiel die **AllowedVmSizesInLab**-Richtlinie verwendet wird. Si
 
 ## Nächste Schritte
 
-Nachdem Sie Berechtigungen für bestimmte DevTest Lab-Richtlinien gewährt haben, finden Sie im Folgenden Informationen zu den nächsten möglichen Schritten:
+Nachdem Sie Benutzerberechtigungen für bestimmte Labrichtlinien gewährt haben, finden Sie im Folgenden Informationen zu den nächsten möglichen Schritten:
 
-- [Absichern des Zugriffs auf ein DevTest Lab](devtest-lab-add-devtest-user.md).
+- [Sicherer Zugriff auf ein Lab](devtest-lab-add-devtest-user.md)
 
 - [Festlegen von Labrichtlinien](devtest-lab-set-lab-policy.md).
 
@@ -93,6 +93,6 @@ Nachdem Sie Berechtigungen für bestimmte DevTest Lab-Richtlinien gewährt haben
 
 - [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 
-- [Hinzufügen einer VM mit Artefakten zu einem Azure DevTest Lab](devtest-lab-add-vm-with-artifacts.md).
+- [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

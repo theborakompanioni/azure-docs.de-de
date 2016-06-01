@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/22/2016"
+   ms.date="05/13/2016"
    ms.author="larryfr"/>
 
 #Entwickeln von Python-Streamingprogrammen für HDInsight
@@ -32,6 +32,8 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 * Ein Linux-basierter Hadoop-Cluster in HDInsight
 
 * Ein Texteditor
+
+    > [AZURE.IMPORTANT] Im Text-Editor muss LF als Zeilenende verwendet werden. Wenn CRLF verwendet wird, verursacht dies beim Ausführen des MapReduce-Auftrags auf Linux-basierten HDInsight-Clustern Fehler. Wenn Sie nicht sicher sind, führen Sie die optionalen Schritte im Abschnitt [Ausführen von MapReduce](#run-mapreduce) aus, um CRLF-Vorkommen in LF zu konvertieren.
 
 * Für Windows-Clients: PuTTY und PSCP Diese Dienstprogramme stehen über die <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY-Downloadseite</a> zur Verfügung.
 
@@ -154,6 +156,11 @@ Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
 
 	> [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` und den Pfad zum privaten Schlüssel, z. B. `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`, angeben.
 
+2. (Optional) Falls Sie einen Text-Editor verwendet haben, der beim Erstellen der Dateien „mapper.py“ und „reducer.py“ CRLF als Zeilenende verwendet, oder nicht wissen, welches Zeilenende Ihr Editor einsetzt, konvertieren Sie CRLF-Vorkommen in „mapper.py“ und „reducer.py“ mithilfe der folgenden Befehle in LF.
+
+        perl -pi -e 's/\r\n/\n/g' mappery.py
+        perl -pi -e 's/\r\n/\n/g' reducer.py
+
 2. Verwenden Sie zum Starten des MapReduce-Auftrags den folgenden Befehl.
 
 		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
@@ -205,4 +212,4 @@ Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight 
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

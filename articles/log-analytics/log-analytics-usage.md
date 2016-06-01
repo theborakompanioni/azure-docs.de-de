@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="04/28/2016"
 	ms.author="banders"/>
 
@@ -61,4 +61,4 @@ Auf der Seite **Nutzung** werden die folgenden Informationen angezeigt:
 
 - Detaillierte Informationen zu Daten, die von Lösungen gesammelt werden, finden Sie unter [Protokollsuchvorgänge in Log Analytics](log-analytics-log-searches.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

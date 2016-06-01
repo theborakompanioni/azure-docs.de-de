@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem SQL-Connector
@@ -61,6 +61,8 @@ Um Logik-Apps mit dem SQL-Connector zu erstellen, müssen Sie zuerst eine **Verb
 | ---|---|---|
 |SqlConnectionString|Ja|Angeben Ihrer SQL-Verbindungszeichenfolge|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Mashup SQL](../../includes/connectors-create-api-mashupsql.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -214,7 +216,7 @@ Zeile aktualisieren: Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle.
 
 
 
-### Object
+### Objekt
 
 
 | Eigenschaftenname | Datentyp | Erforderlich |
@@ -302,4 +304,4 @@ Zeile aktualisieren: Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,8 +19,7 @@
 
 # Anleitungen für Hintergrundaufträge
 
-![Muster- und Methoden-Logo](media/best-practices-background-jobs/pnp-logo.png)
-
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Übersicht
 
@@ -202,7 +201,7 @@ Beim Entwerfen von Hintergrundaufgaben sollten verschiedene grundlegende Faktore
 
 ## Partitionierung
 
-Wenn Sie Hintergrundaufgaben in eine vorhandene Compute-Instanz (z. B. eine Web-App, Webrolle, vorhandene Workerrolle oder einen virtuellen Computer) aufnehmen möchten, müssen Sie berücksichtigen, wie sich dies auf die Qualitätsattribute der Compute-Instanz und auf die Hintergrundaufgabe selbst auswirken wird. Anhand dieser Faktoren können Sie entscheiden, ob die Aufgaben in der vorhandenen Compute-Instanz oder in einer separaten Compute-Instanz ausgeführt werden sollen:
+Wenn Sie Hintergrundaufgaben in eine vorhandene Compute-Instanz (z. B. eine Web-App, Webrolle, vorhandene Workerrolle oder einen virtuellen Computer) aufnehmen möchten, müssen Sie berücksichtigen, wie sich dies auf die Qualitätsattribute der Compute-Instanz und auf die Hintergrundaufgabe selbst auswirken wird. Anhand dieser Faktoren können Sie entscheiden, ob die Aufgaben in der vorhandenen Compute-Instanz oder in einer separaten Compute-Instanz ausgeführt werden sollen:
 
 - **Verfügbarkeit**: Für Hintergrundaufgaben ist möglicherweise nicht dasselbe Maß an Verfügbarkeit wie für andere Teile der Anwendung erforderlich, insbesondere die Benutzeroberfläche und andere Teile, die direkt an der Interaktion mit dem Benutzer beteiligt sind. Hintergrundaufgaben können toleranter gegenüber Latenz, wiederholten Verbindungsfehlern und anderen Faktoren sein, die sich auf die Verfügbarkeit auswirken, da die Vorgänge in eine Warteschlange eingefügt werden können. Allerdings muss genügend Kapazität vorhanden sein, um die Sicherung von Anforderungen zu verhindern, wodurch Warteschlangen blockiert werden könnten und die Anwendung als Ganzes beeinträchtigt werden könnte.
 - **Skalierbarkeit**: Für Hintergrundaufgaben gelten wahrscheinlich andere Anforderungen an die Skalierbarkeit als für die Benutzeroberfläche und die interaktiven Teile der Anwendung. Eine Skalierung der Benutzeroberfläche kann erforderlich sein, um Nachfragespitzen zu bedienen, während ausstehende Hintergrundaufgaben in Zeiten mit weniger starker Auslastung von einer geringeren Anzahl von Compute-Instanzen abgeschlossen werden können.
@@ -283,7 +282,7 @@ Hintergrundaufgaben müssen stabil sein, um der Anwendung zuverlässige Dienste 
 - Hintergrundaufgaben, die durch Nachrichten initiiert werden oder Nachrichten verarbeiten, müssen so entworfen werden, dass sie Inkonsistenzen behandeln können, z. B. Nachrichten, die nicht in der ordnungsgemäßen Reihenfolge eintreffen, Nachrichten, die wiederholt einen Fehler verursachen (sogenannte _nicht verarbeitbare Nachrichten_), und Nachrichten, die mehrmals übermittelt werden. Beachten Sie Folgendes:
   - Nachrichten, die in einer bestimmten Reihenfolge verarbeitet werden müssen, z. B. Nachrichten, die Daten basierend auf dem vorhandenen Datenwert (z. B. durch Hinzufügen eines Werts zu einem vorhandenen Wert) ändern, treffen möglicherweise nicht in der ursprünglichen Reihenfolge ein, in der sie gesendet wurden. Stattdessen können sie auch von anderen Instanzen einer Hintergrundaufgabe in einer anderen Reihenfolge je nach Auslastung der verschiedenen Instanzen behandelt werden. Nachrichten, die in einer bestimmten Reihenfolge verarbeitet werden müssen, sollten eine Sequenznummer, einen Schlüssel oder einen anderen Indikator enthalten, damit in Hintergrundaufgaben sichergestellt werden kann, dass sie in der richtigen Reihenfolge verarbeitet werden. Bei Verwendung von Azure Service Bus können Sie mit Nachrichtensitzungen die Reihenfolge der Bereitstellung gewährleisten. Es ist in der Regel jedoch effizienter, den Prozess möglichst so zu entwerfen, dass die Reihenfolge der Nachrichten nicht von Bedeutung ist.
   - In der Regel sieht eine Hintergrundaufgabe Nachrichten in der Warteschlange ein. Dadurch sind sie vorübergehend vor anderen Nachrichtenconsumern verborgen. Dann löscht sie die Nachrichten, nachdem sie erfolgreich verarbeitet wurden. Wenn eine Hintergrundaufgabe beim Verarbeiten einer Nachricht fehlschlägt, wird die Nachricht in der Warteschlange erneut angezeigt, sobald das Timeout für das Einsehen erreicht ist. Sie wird von einer anderen Instanz der Aufgabe oder während des nächsten Verarbeitungszyklus dieser Instanz verarbeitet. Wenn die Nachricht beständig einen Fehler im Consumer verursacht, blockiert sie die Aufgabe, die Warteschlange und schließlich die Anwendung selbst, wenn die Warteschlange voll ist. Daher ist es wichtig, dass nicht verarbeitbare Nachrichten erkannt und aus der Warteschlange entfernt werden. Bei Verwendung von Azure Service Bus können Nachrichten, die einen Fehler verursachen, automatisch oder manuell an eine zugeordnete Warteschlange für unzustellbare Nachrichten verschoben werden.
-  - Warteschlangen verfügen garantiert über Übermittlungsmechanismen für eine _mindestens einmalige_ Zustellung, aber sie können die gleiche Nachricht mehrmals übermitteln. Wenn eine Hintergrundaufgabe ausfällt, nachdem eine Nachricht verarbeitet, aber bevor diese aus der Warteschlange gelöscht wurde, wird die Nachricht wieder zur Verarbeitung verfügbar. Hintergrundaufgaben sollte idempotent sein, d. h. dass die mehrmalige Verarbeitung derselben Nachricht keinen Fehler oder keine Inkonsistenzen in den Daten der Anwendung verursacht. Einige Vorgänge sind naturgemäß idempotent, z. B. das Festlegen einer gespeicherten Einstellung auf einen bestimmten neuen Wert. Jedoch führen andere Vorgänge zu Inkonsistenzen, z. B. das Hinzufügen eines Werts zu einem vorhandenen gespeicherten Wert, ohne zu überprüfen, ob der gespeicherte Wert dem Wert entspricht, der in der Nachricht ursprünglich gesendet wurde. Azure Service Bus-Warteschlangen können so konfiguriert werden, dass doppelte Nachrichten automatisch entfernt werden.
+  - Warteschlangen verfügen garantiert über Übermittlungsmechanismen für eine _mindestens einmalige_ Zustellung, aber sie können die gleiche Nachricht mehrmals übermitteln. Wenn eine Hintergrundaufgabe ausfällt, nachdem eine Nachricht verarbeitet, aber bevor diese aus der Warteschlange gelöscht wurde, wird die Nachricht wieder zur Verarbeitung verfügbar. Hintergrundaufgaben sollte idempotent sein, d. h. dass die mehrmalige Verarbeitung derselben Nachricht keinen Fehler oder keine Inkonsistenzen in den Daten der Anwendung verursacht. Einige Vorgänge sind naturgemäß idempotent, z. B. das Festlegen einer gespeicherten Einstellung auf einen bestimmten neuen Wert. Jedoch führen andere Vorgänge zu Inkonsistenzen, z. B. das Hinzufügen eines Werts zu einem vorhandenen gespeicherten Wert, ohne zu überprüfen, ob der gespeicherte Wert dem Wert entspricht, der in der Nachricht ursprünglich gesendet wurde. Azure Service Bus-Warteschlangen können so konfiguriert werden, dass doppelte Nachrichten automatisch entfernt werden.
   - Einige Messagingsysteme, wie z. B. Azure-Speicherwarteschlangen und Azure Service Bus-Warteschlangen unterstützen eine Eigenschaft, die angibt, wie oft eine Nachricht aus der Warteschlange gelesen wurde. Dies kann bei der Verarbeitung wiederholter und nicht verarbeitbarer Nachrichten hilfreich sein. Weitere Informationen finden Sie unter [Einführung in asynchrone Nachrichten](http://msdn.microsoft.com/library/dn589781.aspx) und [Idempotenzmuster](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/).
 
 ## Überlegungen zur Skalierung und Leistung
@@ -321,4 +320,4 @@ Hintergrundaufgaben müssen ausreichend Leistung bieten, damit sichergestellt is
 - [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](./service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [Aktivieren der Diagnose in einem Clouddienst](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

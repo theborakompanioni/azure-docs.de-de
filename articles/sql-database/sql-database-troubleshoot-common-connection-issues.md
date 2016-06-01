@@ -22,7 +22,8 @@ Verbindungsprobleme mit Azure SQL-Datenbank können wie folgt grob klassifiziert
 - [Vorübergehende Fehler (kurzlebige oder zeitweilige Fehler)](#troubleshoot-the-transient-errors)
 - [Dauerhafte oder nicht vorübergehende Fehler (Fehler, die sich regelmäßig wiederholen)](#troubleshoot-the-persistent-errors-non-transient-errors)
 
-Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus.[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus.
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Problembehandlung bei vorübergehenden Fehlern
 Wenn in Ihrer Anwendung vorübergehende Fehler auftreten, lesen Sie die folgenden Themen. Darin finden Sie Tipps, wie Sie bei der Problembehandlung vorgehen und die Häufigkeit dieser Fehler reduzieren können:
@@ -44,4 +45,4 @@ Wenn die Anwendung dauerhaft keine Verbindung mit SQL Azure-Datenbank herstellen
 3.	Überprüfen Sie die Verbindungszeichenfolge und andere Verbindungseinstellungen. Siehe im Thema [Verbindungsprobleme](sql-database-connectivity-issues.md#connections-to-azure-sql-database) den Abschnitt „Verbindungszeichenfolge“.
 4.	Überprüfen Sie im Dashboard den Dienststatus. Wenn Sie glauben, dass es sich um einen regionalen Ausfall handelt, finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) Schritte zum Wiederherstellen in einer neuen Region.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!----HONumber=AcomDC_0511_2016-->

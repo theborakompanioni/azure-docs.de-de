@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/14/2016"
-   ms.author="mani-ramaswamy"/>
+   ms.date="05/13/2016"
+   ms.author="subramar"/>
 
 # Angeben von Ressourcen in einem Dienstmanifest
 
 ## Übersicht
 
-Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder geändert werden, ohne dass der kompilierte Code geändert werden muss. Azure Service Fabric unterstützt die Konfiguration von Endpunktressourcen für den Dienst. Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das SecurityGroup-Element im Anwendungsmanifest gesteuert werden. Die Deklaration von Ressourcen ermöglicht es, dass diese Ressourcen zur Bereitstellungszeit geändert werden, sodass der Dienst keinen neuen Konfigurationsmechanismus einführen muss.
+Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder geändert werden, ohne dass der kompilierte Code geändert werden muss. Azure Service Fabric unterstützt die Konfiguration von Endpunktressourcen für den Dienst. Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das SecurityGroup-Element im Anwendungsmanifest gesteuert werden. Die Deklaration von Ressourcen ermöglicht es, dass diese Ressourcen zur Bereitstellungszeit geändert werden, sodass der Dienst keinen neuen Konfigurationsmechanismus einführen muss. Die Schemadefinition für die Datei „ServiceManifest.xml“ wird über das Service Fabric SDK und die Service Fabric-Tools unter *C:\\Programm\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* installiert.
 
 ## Endpunkte
 
-Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sofern kein expliziter Port angegeben ist (sehen Sie sich beispielsweise den Endpunkt *ServiceEndpoint1* weiter unten an). Außerdem können Dienste auch einen bestimmten Port einer Ressource anfordern. Dienstreplikate, die auf unterschiedlichen Clusterknoten ausgeführt werden, können unterschiedlichen Portnummern zugewiesen werden, während für Replikate eines Diensts auf demselben Knoten derselbe Port verwendet wird. Diese Ports können von den Dienstreplikaten für unterschiedliche Zwecke genutzt werden, z. B. die Replikation, das Lauschen auf Clientanforderungen usw.
+Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich des reservierten Anwendungsports zu, sofern kein expliziter Port angegeben ist (sehen Sie sich beispielsweise den Endpunkt *ServiceEndpoint1* weiter unten an). Außerdem können Dienste auch einen bestimmten Port einer Ressource anfordern. Dienstreplikate, die auf unterschiedlichen Clusterknoten ausgeführt werden, können unterschiedlichen Portnummern zugewiesen werden, während für Replikate eines Diensts auf demselben Knoten derselbe Port verwendet wird. Diese Ports können von den Dienstreplikaten für unterschiedliche Zwecke genutzt werden, z. B. die Replikation, das Lauschen auf Clientanforderungen usw.
 
 ```xml
 <Resources>
@@ -90,7 +90,7 @@ HTTP-Endpunkte werden von Service Fabric automatisch mit einer Zugriffssteuerung
 
 ## Beispiel: Angeben eines HTTPS-Endpunkts für Ihren Dienst
 
-Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Um dieses Protokoll für Ihren Service Fabric-Dienst zu aktivieren, geben Sie es beim Festlegen des Diensts im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an (wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt).
+Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Geben Sie dieses Protokoll beim Festlegen des Diensts im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an (wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt), um es für Ihren Service Fabric-Dienst zu aktivieren.
 
 >[AZURE.NOTE] Das Protokoll eines Diensts kann nicht während der Anwendungsaktualisierung geändert werden, da diese Änderung eine Unterbrechung verursacht.
 
@@ -137,4 +137,4 @@ Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS fest
 </ApplicationManifest>
 ```
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

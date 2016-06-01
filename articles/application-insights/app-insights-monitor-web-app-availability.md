@@ -12,10 +12,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/18/2016"
+	ms.date="05/20/2016"
 	ms.author="awills"/>
 
 # Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
+
+
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
 Nachdem Sie die Webanwendung bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionszeit zu überwachen. Application Insights sendet regelmäßig Webanforderungen von verschiedenen Punkten rund um die Welt und benachrichtigt Sie, wenn Ihre Anwendung langsam oder gar nicht reagiert.
 
@@ -258,6 +261,28 @@ Sie können Webtests beispielsweise deaktivieren, während Sie Wartungsarbeiten 
 
     Konfigurieren Sie die Firewall, um Anfragen von den IP-Adressen in der Liste am Ende dieses Artikels zuzulassen.
 
+* *Fehler beim Hochladen eines Webtests mit mehreren Schritten*
+
+    Die Größenbeschränkung beträgt 300 K.
+
+    Schleifen werden nicht unterstützt.
+
+    Verweise auf andere Webtests werden nicht unterstützt.
+
+    Datenquellen werden nicht unterstützt.
+
+    
+* *Test mit mehreren Schritten wird nicht abgeschlossen*
+
+    Pro Test können maximal 100 Anforderungen verwendet werden.
+
+    Der Test wird beendet, wenn die Ausführung länger als zwei Minuten dauert.
+
+* *Wie kann ich einen Test mit Clientzertifikaten durchführen?*
+
+    Dies wird leider nicht unterstützt.
+
+
 ## <a name="video"></a>Video
 
 > [AZURE.VIDEO monitoring-availability-with-application-insights]
@@ -396,4 +421,4 @@ Wenn Sie eine Firewall zum Zulassen von Webtests öffnen müssen, sehen Sie sich
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

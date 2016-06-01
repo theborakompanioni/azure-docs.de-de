@@ -33,7 +33,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 
 Sie benötigen Folgendes:
 
-- **Verwaltungsserver**: Ein lokaler virtueller Computer mit Windows Server 2012 R2, der als Verwaltungsserver dient. Sie können die Site Recovery-Komponenten (einschließlich Konfigurationsserver und Prozessserver) auf diesem Server installieren. Weitere Informationen finden Sie in den [Überlegungen zu Verwaltungsservern](site-recovery-vmware-to-azure-classic.md#management-server-considerations) und unter [Lokale Voraussetzungen](site-recovery-vmware-to-azure-classic.md#on-premises-prerequisites).
+- **Verwaltungsserver**: Ein virtueller Computer, auf dem Windows Server 2012 R2 ausgeführt wird, und der als Verwaltungsserver dient. Sie können die Site Recovery-Komponenten (einschließlich Konfigurationsserver und Prozessserver) auf diesem Server installieren. Weitere Informationen finden Sie in den [Überlegungen zu Verwaltungsservern](site-recovery-vmware-to-azure-classic.md#management-server-considerations) und unter [Voraussetzungen für die Quelle](site-recovery-vmware-to-azure-classic.md#on-premises-prerequisites).
 - **EC2-VM-Instanzen**: Die Instanzen, die Sie migrieren und anschließend schützen möchten.
 
 ## Bereitstellungsschritte
@@ -62,4 +62,4 @@ Sie benötigen Folgendes:
 
 Weitere Informationen zu anderen Replikationsszenarien finden Sie in [Was ist Azure Site Recovery?](site-recovery-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

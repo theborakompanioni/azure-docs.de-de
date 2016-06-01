@@ -28,7 +28,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerrefere
 
 Mit einem HTTP- oder WebHook-Trigger können Sie eine Funktion als Antwort auf eine HTTP-Anforderung aufrufen. Die Anforderung muss einen API-Schlüssel enthalten, der derzeit nur auf der Benutzeroberfläche des Azure-Portals verfügbar ist.
 
-Die Funktions-URL ist eine Kombination aus der URL der Funktions-App und dem Funktionsnamen:
+Die Funktions-URL ist eine Kombination aus der URL der Funktionen-App und dem Funktionsnamen:
 
 ```
  https://{function app name}.azurewebsites.net/api/{function name} 
@@ -38,7 +38,7 @@ Die Datei *function.json* enthält Eigenschaften, die die HTTP-Anforderung und d
 
 Eigenschaften für die HTTP-Anforderung:
 
-- `name`: Der Variablenname, der im Funktionscode für das Anforderungsobjekt (oder bei Node.js-Funktionen im Hauptteil der Anforderung) verwendet wird.
+- `name`: Der Variablenname, der im Funktionscode für das Anforderungsobjekt (oder bei Node.js-Funktionen im Anforderungstext) verwendet wird.
 - `type`: Muss auf *httpTrigger* festgelegt werden.
 - `direction`: Muss auf *in* festgelegt werden. 
 - `webHookType`: Für WebHook-Trigger sind gültige Werte *github*, *slack* und *genericJson*. Für einen HTTP-Trigger, der kein WebHook ist, legen Sie diese Eigenschaft auf eine leere Zeichenfolge fest. Weitere Informationen zu WebHooks finden Sie im folgenden Abschnitt zu [WebHook-Triggern](#webhook-triggers).
@@ -77,7 +77,7 @@ Beispiel für *function.json*:
 Ein WebHook-Trigger ist ein HTTP-Trigger, der die folgenden für WebHooks entwickelten Features umfasst:
 
 * Für bestimmte WebHook-Anbieter (zurzeit werden GitHub und Slack unterstützt) wird die Signatur des Anbieters durch die Functions-Laufzeit überprüft.
-* Für Node.js-Funktionen stellt die Functions-Laufzeit den Hauptteil der Anforderung anstelle des Anforderungsobjekts bereit. Für C#-Funktionen gibt es keine spezielle Verarbeitung, weil Sie durch die Angabe des Parametertyps steuern, was bereitgestellt wird. Bei Angabe von `HttpRequestMessage` erhalten Sie das Anforderungsobjekt. Wenn Sie einen POCO-Typ angeben, versucht die Functions-Laufzeit, ein JSON-Objekt im Hauptteil der Anforderung zu analysieren, um die Objekteigenschaften aufzufüllen.
+* Für Node.js-Funktionen stellt die Functions-Laufzeit den Anforderungstext anstelle des Anforderungsobjekts bereit. Für C#-Funktionen gibt es keine spezielle Verarbeitung, weil Sie durch die Angabe des Parametertyps steuern, was bereitgestellt wird. Bei Angabe von `HttpRequestMessage` erhalten Sie das Anforderungsobjekt. Wenn Sie einen POCO-Typ angeben, versucht die Functions-Laufzeit, ein JSON-Objekt im Anforderungstext zu analysieren, um die Objekteigenschaften aufzufüllen.
 * Zum Auslösen einer WebHook-Funktion muss die HTTP-Anforderung einen API-Schlüssel enthalten. Für andere HTTP-Trigger als WebHook ist diese Anforderung optional.
 
 Informationen zum Einrichten eines GitHub-WebHooks finden Sie unter [GitHub Developer – Creating WebHooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409) (Erstellen von WebHooks).
@@ -86,7 +86,7 @@ Informationen zum Einrichten eines GitHub-WebHooks finden Sie unter [GitHub Deve
 
 Standardmäßig muss eine HTTP-Anforderung einen API-Schlüssel aufweisen, um eine HTTP- oder WebHook-Funktion auszulösen. Der Schlüssel kann in einer Abfragezeichenfolgen-Variablen namens `code` oder in einem `x-functions-key`-HTTP-Header enthalten sein. Für andere Funktionen als WebHook können Sie angeben, dass kein API-Schlüssel erforderlich ist, indem Sie in der Datei *function.json* die `authLevel`-Eigenschaft auf „anonymous“ festlegen.
 
-Sie finden API-Schlüsselwerte im Ordner *D:\\home\\data\\Functions\\secrets* im Dateisystem der Funktions-App. Der Hauptschlüssel und der Funktionsschlüssel werden in der Datei *host.json* festgelegt, wie im folgenden Beispiel gezeigt.
+Sie finden API-Schlüsselwerte im Ordner *D:\\home\\data\\Functions\\secrets* im Dateisystem der Funktionen-App. Der Hauptschlüssel und der Funktionsschlüssel werden in der Datei *host.json* festgelegt, wie im folgenden Beispiel gezeigt.
 
 ```json
 {
@@ -117,7 +117,7 @@ using System.Threading.Tasks;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-    log.Verbose($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
 
     // parse query parameter
     string name = req.GetQueryNameValuePairs()
@@ -177,7 +177,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
     string jsonContent = await req.Content.ReadAsStringAsync();
     dynamic data = JsonConvert.DeserializeObject(jsonContent);
 
-    log.Verbose($"WebHook was triggered! Comment: {data.comment.body}");
+    log.Info($"WebHook was triggered! Comment: {data.comment.body}");
 
     return req.CreateResponse(HttpStatusCode.OK, new {
         body = $"New GitHub comment: {data.comment.body}"
@@ -254,7 +254,7 @@ Dieses C#-Codebeispiel schreibt bei jedem Auslösen der Funktion ein Protokoll.
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
 {
-    log.Verbose($"C# Timer trigger function executed at: {DateTime.Now}");    
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");    
 }
 ```
 
@@ -262,43 +262,23 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
-* [Azure Storage-Verbindungseigenschaft in „function.json“](#storageconnection)
 * [Azure Storage-Warteschlangentrigger](#storagequeuetrigger)
 * [Bindung der Azure Storage-Warteschlangenausgabe](#storagequeueoutput)
 * [Azure Storage-Blobtrigger](#storageblobtrigger)
 * [Azure Storage-Blobeingabe- und -ausgabebindungen](#storageblobbindings)
 * [Azure Storage-Tabelleneingabe- und -ausgabebindungen](#storagetablesbindings)
 
-### <a id="storageconnection"></a> Azure Storage-Verbindungseigenschaft in „function.json“
+### <a id="storagequeuetrigger"></a>Azure Storage-Warteschlangentrigger
 
-Für alle Azure Storage-Trigger und -Bindungen enthält die Datei *function.json* eine `connection`-Eigenschaft. Beispiel:
+Die Datei *function.json* für einen Trigger einer Speicherwarteschlange gibt die folgenden Eigenschaften an.
 
-```json
-{
-    "disabled": false,
-    "bindings": [
-        {
-            "name": "myQueueItem",
-            "type": "queueTrigger",
-            "direction": "in",
-            "queueName": "myqueue-items",
-            "connection":""
-        }
-    ]
-}
-```
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird. 
+- `queueName`: Name der abzufragenden Warteschlange. Benennungsregeln für Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx).
+- `connection`: Name einer App-Einstellung, die eine Speicher-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen ist, verwendet der Trigger für die Funktionen-App die standardmäßige Speicher-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *queueTrigger* festgelegt werden.
+- `direction`: Muss auf *in* festgelegt werden. 
 
-Wenn Sie `connection` leer lassen, funktioniert der Trigger bzw. die Bindung mit dem Standardspeicherkonto für die Funktions-App. Wenn der Trigger bzw. die Bindung mit einem anderen Speicherkonto funktionieren soll, erstellen Sie eine App-Einstellung in der Funktions-App, die auf das gewünschte Speicherkonto verweist, und legen Sie `connection` auf den Namen der App-Einstellung fest. Um eine App-Einstellung hinzuzufügen, gehen Sie folgendermaßen vor:
-
-1. Klicken Sie im Azure-Portal auf dem Blatt **Funktions-App** auf **Funktions-App-Einstellungen > Zu App Service-Einstellungen wechseln**.
-
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
-
-3. Scrollen Sie zum Abschnitt **App-Einstellungen**, und fügen Sie einen Eintrag mit **Schlüssel** = *{eindeutiger Wert Ihrer Wahl}* und **Wert** = die Verbindungszeichenfolge für das Speicherkonto.
-
-### <a id="storagequeuetrigger"></a> Azure Storage-Warteschlangentrigger
-
-Die Datei *function.json* enthält den Namen der abzufragenden Warteschlange und den Variablennamen für die Warteschlangennachricht. Beispiel:
+#### Beispiel von *Function.json* für einen Speicherwarteschlangentrigger
 
 ```json
 {
@@ -306,10 +286,10 @@ Die Datei *function.json* enthält den Namen der abzufragenden Warteschlange und
     "bindings": [
         {
             "name": "myQueueItem",
-            "type": "queueTrigger",
-            "direction": "in",
             "queueName": "myqueue-items",
-            "connection":""
+            "connection":"",
+            "type": "queueTrigger",
+            "direction": "in"
         }
     ]
 }
@@ -317,16 +297,16 @@ Die Datei *function.json* enthält den Namen der abzufragenden Warteschlange und
 
 #### Vom Warteschlangentrigger unterstützte Typen
 
-Die Warteschlangennachricht kann auf alle folgenden Typen deserialisiert werden:
+Die Warteschlangennachricht kann in alle folgenden Typen deserialisiert werden:
 
-* `string`
-* `byte[]`
-* JSON-Objekt   
-* `CloudQueueMessage`
+* Objekt (aus JSON)
+* String
+* Bytearray 
+* `CloudQueueMessage` (C#) 
 
 #### Metadaten für Warteschlangentrigger
 
-Sie können Warteschlangenmetadaten in Ihrer Funktion mithilfe dieser Variablennamen abrufen:
+Sie können Warteschlangen-Metadaten in Ihrer Funktion mithilfe dieser Variablennamen abrufen:
 
 * expirationTime
 * insertionTime
@@ -336,7 +316,7 @@ Sie können Warteschlangenmetadaten in Ihrer Funktion mithilfe dieser Variablenn
 * dequeueCount
 * queueTrigger (eine weitere Möglichkeit, den Text der Warteschlangennachricht als Zeichenfolge abzurufen)
 
-In diesem C#-Codebeispiel werden Warteschlangenmetadaten abgerufen und protokolliert:
+In diesem C#-Codebeispiel werden Warteschlangen-Metadaten abgerufen und protokolliert:
 
 ```csharp
 public static void Run(string myQueueItem, 
@@ -349,7 +329,7 @@ public static void Run(string myQueueItem,
     int dequeueCount,
     TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}\n" +
+    log.Info($"C# Queue trigger function processed: {myQueueItem}\n" +
         $"queueTrigger={queueTrigger}\n" +
         $"expirationTime={expirationTime}\n" +
         $"insertionTime={insertionTime}\n" +
@@ -372,23 +352,33 @@ Wenn Sie nicht verarbeitbare Nachrichten manuell verarbeiten möchten, können S
 
 ### <a id="storagequeueoutput"></a> Bindung der Azure Storage-Warteschlangenausgabe
 
-Die Datei *function.json* enthält den Namen der Ausgabewarteschlange und einen Variablennamen für den Inhalt der Nachricht. In diesem Beispiel wird ein Warteschlangentrigger verwendet und eine Warteschlangennachricht geschrieben.
+Die Datei *function.json* für die Bindung der Ausgabe einer Speicherwarteschlange gibt die folgenden Eigenschaften an.
+
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird. 
+- `queueName`: Name der Warteschlange. Benennungsregeln für Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx).
+- `connection`: Name einer App-Einstellung, die eine Speicher-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen ist, verwendet der Trigger für die Funktionen-App die standardmäßige Speicher-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *queue* festgelegt werden.
+- `direction`: Muss auf *out* festgelegt werden. 
+
+#### Beispiel von *Function.json* für die Bindung der Ausgabe einer Speicherwarteschlange
+
+In diesem Beispiel wird ein Warteschlangentrigger verwendet und eine Warteschlangennachricht geschrieben.
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
     },
     {
       "name": "myQueue",
-      "type": "queue",
       "queueName": "samples-workitems-out",
-      "connection": "",
+      "connection": "MyStorageConnection",
+      "type": "queue",
       "direction": "out"
     }
   ],
@@ -400,10 +390,12 @@ Die Datei *function.json* enthält den Namen der Ausgabewarteschlange und einen 
 
 Die `queue`-Bindung kann die folgenden Typen in eine Warteschlangennachricht serialisieren:
 
-* `string` (Warteschlangennachricht wird erstellt, wenn der Parameterwert bei Funktionsbeendigung nicht NULL ist)
-* `byte[]` (funktioniert wie eine Zeichenfolge) 
-* `CloudQueueMessage` (funktioniert wie eine Zeichenfolge) 
-* JSON-Objekt (erstellt eine Nachricht mit einem NULL-Objekt, wenn der Parameter bei Funktionsbeendigung NULL ist)
+* Objekt (`out T` in C#, erstellt eine Nachricht mit einem NULL-Objekt, wenn der Parameter bei Funktionsbeendigung NULL ist)
+* Zeichenfolge (`out string` in C#, erstellt eine Warteschlangennachricht, wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird)
+* Bytearray (`out byte[]` in C#, funktioniert wie Zeichenfolge) 
+* `out CloudQueueMessage` (C#, funktioniert wie Zeichenfolge) 
+
+In C# können Sie auch eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
 
 #### Codebeispiel für die Bindung der Warteschlangenausgabe
 
@@ -416,7 +408,7 @@ public static void Run(string myQueueItem, out string myOutputQueueItem, TraceWr
 }
 ```
 
-Dieses C#-Codebeispiel schreibt mehrere Nachrichten mit `ICollector<T>` (verwenden Sie `IAsyncCollector<T>` in einer Async-Funktion):
+Dieses C#-Codebeispiel schreibt mehrere Nachrichten mit `ICollector<T>` (verwenden Sie `IAsyncCollector<T>` in einer „async“-Funktion):
 
 ```csharp
 public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWriter log)
@@ -428,7 +420,17 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 ### <a id="storageblobtrigger"></a> Azure Storage-Blobtrigger
 
-Die Datei *function.json* stellt einen Pfad bereit, der den zu überwachenden Container und bei Bedarf ein Blobnamensmuster angibt. Dieses Beispiel löst aus, wenn dem Container „samples-workitems“ Blobs hinzugefügt werden.
+Die Datei *function.json* für einen Trigger eines Speicherblobtriggers gibt die folgenden Eigenschaften an.
+
+- `name`: Variablenname, der im Funktionscode für das Blob verwendet wird. 
+- `path`: Pfad, der den zu überwachenden Container und bei Bedarf ein Blobnamensmuster angibt.
+- `connection`: Name einer App-Einstellung, die eine Speicher-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen ist, verwendet der Trigger für die Funktionen-App die standardmäßige Speicher-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *blobTrigger* festgelegt werden.
+- `direction`: Muss auf *in* festgelegt werden.
+
+#### Beispiel von *Function.json* für einen Speicherblobtrigger
+
+Dieses Beispiel löst aus, wenn dem Container „samples-workitems“ Blobs hinzugefügt werden.
 
 ```json
 {
@@ -445,13 +447,15 @@ Die Datei *function.json* stellt einen Pfad bereit, der den zu überwachenden Co
 }
 ```
 
-> [AZURE.NOTE] Wenn der Blobcontainer, der vom Trigger überwacht wird, mehr als 10.000 Blobs enthält, überprüft die Functions-Laufzeit Protokolldateien auf neue oder geänderte Blobs. Dieser Vorgang verläuft nicht in Echtzeit. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Darüber hinaus [werden Speicherprotokolle auf einer „best effort“-Basis](https://msdn.microsoft.com/library/azure/hh343262.aspx) erstellt; es gibt keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die eingeschränkte Geschwindigkeit und Zuverlässigkeit von Blobtriggern für große Container für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen und für die Verarbeitung des Blobs anstelle des Blobtriggers einen Warteschlangentrigger zu verwenden.
-
 #### Vom Blobtrigger unterstützte Typen
 
-Blobs können in diese Typen deserialisiert werden:
+Das Blob kann in einen der folgenden Typen in Node- oder C#-Funktionen deserialisiert werden:
 
-* string
+* Objekt (aus JSON)
+* String
+
+In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen herstellen:
+
 * `TextReader`
 * `Stream`
 * `ICloudBlob`
@@ -465,18 +469,18 @@ Blobs können in diese Typen deserialisiert werden:
 
 #### C#-Codebeispiel für Blobtrigger
 
-Dieses C#-Codebeispiel protokolliert den Inhalt der einzelnen Blobs, die dem Container hinzugefügt werden.
+Dieses C#-Codebeispiel protokolliert den Inhalt der einzelnen Blobs, die dem überwachten Container hinzugefügt werden.
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
 {
-    log.Verbose($"C# Blob trigger function processed: {myBlob}");
+    log.Info($"C# Blob trigger function processed: {myBlob}");
 }
 ```
 
 #### Namensmuster für Blobtrigger
 
-Sie können ein Blobnamensmuster im `path` angeben. Beispiel:
+Sie können in der `path`-Eigenschaft ein Blobnamensmuster angeben. Beispiel:
 
 ```json
 "path": "input/original-{name}",
@@ -492,7 +496,7 @@ Ein weiteres Beispiel:
 
 Mit diesem Pfad erhalten Sie ein Blob mit dem Namen *original-Blob1.txt*, und die Werte der Variablen `blobname` und `blobextension` im Funktionscode lauten *original-Blob1* und *txt*.
 
-Sie können die Typen von Blobs einschränken, die die Funktion auslösen, indem Sie ein Muster mit einem festen Wert für die Dateierweiterung angeben. Wenn Sie den `path` auf *samples/{name}.png* festlegen, wird die Funktion nur durch *.png*-Blobs im Container *samples* ausgelöst.
+Sie können die Typen von Blobs einschränken, die die Funktion auslösen, indem Sie ein Muster mit einem festen Wert für die Dateierweiterung angeben. Wenn Sie den `path` auf *samples/{name}.png* festlegen, wird die Funktion nur durch *PNG*-Blobs im Container *samples* ausgelöst.
 
 Wenn Sie ein Namensmuster für Blobnamen angeben müssen, die geschweifte Klammern enthalten, verdoppeln Sie die geschweiften Klammern. Wenn Sie beispielsweise Blob im Container *images* suchen, deren Namen wie folgt lauten:
 
@@ -510,7 +514,7 @@ Die Azure Functions-Laufzeit stellt sicher, dass Blobtriggerfunktionen für ein 
 
 Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* in dem Azure-Speicherkonto gespeichert, das in der Verbindungszeichenfolge "AzureWebJobsStorage" angegeben ist. Ein Blobbeleg enthält die folgenden Informationen:
 
-* Die Funktion, die für das Blob aufgerufen wurde („ *{Funktions-App-Name}* .Functions. *{Funktionsname}* “, Beispiel: „functionsf74b96f7.Functions.CopyBlob“)
+* Die Funktion, die für das Blob aufgerufen wurde („ *{Funktionen-App-Name}* .Functions. *{Funktionsname}* “, Beispiel: „functionsf74b96f7.Functions.CopyBlob“)
 * Der Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname
@@ -524,22 +528,36 @@ Wenn bei einer Blobtriggerfunktion ein Fehler auftritt, wird sie für den Fall, 
 
 Die Warteschlangennachricht für nicht verarbeitbare Blobs ist ein JSON-Objekt, das die folgenden Eigenschaften enthält:
 
-* FunctionId (im Format *{Funktions-App-Name}*.Functions.*{Funktionsname}*)
+* FunctionId (im Format *{Funktionen-App-Name}*.Functions.*{Funktionsname}*)
 * BlobType ("BlockBlob" oder "PageBlob")
 * ContainerName
 * BlobName
 * ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
 
+#### Abfragen von Blobs für große Container
+
+Wenn der Blobcontainer, der vom Trigger überwacht wird, mehr als 10.000 Blobs enthält, überprüft die Functions-Laufzeit Protokolldateien auf neue oder geänderte Blobs. Dieser Vorgang verläuft nicht in Echtzeit. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Darüber hinaus [werden Speicherprotokolle nach dem Prinzip „Beste Leistung“](https://msdn.microsoft.com/library/azure/hh343262.aspx) erstellt; es gibt keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die eingeschränkte Geschwindigkeit und Zuverlässigkeit von Blobtriggern für große Container für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen und für die Verarbeitung des Blobs anstelle des Blobtriggers einen Warteschlangentrigger zu verwenden.
+ 
 ### <a id="storageblobbindings"></a> Azure Storage-Blobeingabe- und -ausgabebindungen
 
-Die Datei *function.json* enthält den Namen des Containers und Variablennamen für Blobname und -inhalt. In diesem Beispiel wird ein Warteschlangentrigger verwendet, um ein Blob zu kopieren:
+Die Datei *function.json* für eine Bindung der Eingabe oder Ausgabe eines Speicherblobs gibt die folgenden Eigenschaften an.
+
+- `name`: Variablenname, der im Funktionscode für das Blob verwendet wird. 
+- `path`: Pfad, der den Container angibt, aus dem das Blob gelesen bzw. in den das Blob geschrieben wird, und bei Bedarf ein Blobnamensmuster angibt.
+- `connection`: Name einer App-Einstellung, die eine Speicher-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen ist, verwendet die Bindung für die Funktionen-App die standardmäßige Speicher-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *blob* festgelegt werden.
+- `direction`: Auf *in* oder *out* festlegen. 
+
+#### Beispiel von *Function.json* für die Bindung der Eingabe oder Ausgabe eines Speicherblobs
+
+In diesem Beispiel wird ein Warteschlangentrigger verwendet, um ein Blob zu kopieren:
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -548,14 +566,14 @@ Die Datei *function.json* enthält den Namen des Containers und Variablennamen f
       "name": "myInputBlob",
       "type": "blob",
       "path": "samples-workitems/{queueTrigger}",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "direction": "in"
     },
     {
       "name": "myOutputBlob",
       "type": "blob",
       "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "direction": "out"
     }
   ],
@@ -565,13 +583,16 @@ Die Datei *function.json* enthält den Namen des Containers und Variablennamen f
 
 #### Für Blobeingabe- und Ausgabeparameter unterstützte Typen
 
-Die `blob`-Bindung kann die folgenden Typen serialisieren oder deserialisieren:
+Die `blob`-Bindung kann in Node.js- oder C#-Funktionen die folgenden Typen serialisieren oder deserialisieren:
 
+* Objekt (`out T` in C# für Ausgabeblob: Erstellt ein Blob als NULL-Objekt, wenn der Parameterwert bei Funktionsbeendigung NULL ist)
+* Zeichenfolge (`out string` in C# für Ausgabeblob: Erstellt ein Blob nur dann, wenn der Zeichenfolgenparameter bei Rückgabe der Funktion ungleich NULL ist)
+
+In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen herstellen:
+
+* `TextReader` (nur Eingabe)
+* `TextWriter` (nur Ausgabe)
 * `Stream`
-* `TextReader`
-* `TextWriter`
-* `string` (für Ausgabeblob: Erstellt ein Blob nur dann, wenn der Zeichenfolgenparameter bei Rückgabe der Funktion ungleich NULL ist)
-* JSON-Objekt (für Ausgabeblob: Erstellt ein Blob als NULL-Objekt, wenn der Parameterwert bei Funktionsbeendigung NULL ist)
 * `CloudBlobStream` (nur Ausgabe)
 * `ICloudBlob`
 * `CloudBlockBlob` 
@@ -581,25 +602,41 @@ Die `blob`-Bindung kann die folgenden Typen serialisieren oder deserialisieren:
 
 Dieses C#-Codebeispiel kopiert ein Blob, dessen Name in einer Warteschlangennachricht empfangen wird.
 
-```CSHARP
+```csharp
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
 }
 ```
 
-### <a id="storagetablesbindings"></a> Azure Storage-Tabelleneingabe- und -ausgabebindungen
+### <a id="storagetablesbindings"></a> Bindungen für die Azure Storage-Tabelleneingabe- und -ausgabe
 
-Die Datei *function.json* für Speichertabellen stellt mehrere Eigenschaften bereit:
+Die Datei *function.json* für Speichertabellen gibt die folgenden Eigenschaften an.
 
-* `name`: Name der Variablen für die Tabellenbindung im Code.
-* `tableName`
-* `partitionKey` und `rowKey`: Werden zusammen verwendet, um eine einzelne Entität in einer C#- oder Node-Funktion zu lesen oder um eine einzelne Entität in eine Node-Funktion zu schreiben.
-* `take`: Maximale Anzahl von Zeilen, die für die Tabelleneingabe in einer Node-Funktion gelesen werden sollen.
-* `filter`: OData-Filterausdruck für die Tabelleneingabe in einer Node-Funktion.
+- `name`: Variablenname, der im Funktionscode für die Tabellenbindung verwendet wird. 
+- `tableName`: Name der Tabelle.
+- `partitionKey` und `rowKey`: Werden zusammen verwendet, um eine einzelne Entität in einer C#- oder Node-Funktion zu lesen oder um eine einzelne Entität in eine Node-Funktion zu schreiben.
+- `take`: Maximale Anzahl von Zeilen, die für die Tabelleneingabe in einer Node-Funktion gelesen werden sollen.
+- `filter`: OData-Filterausdruck für die Tabelleneingabe in einer Node-Funktion.
+- `connection`: Name einer App-Einstellung, die eine Speicher-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen ist, verwendet die Bindung für die Funktionen-App die standardmäßige Speicher-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *table* festgelegt werden.
+- `direction`: Auf *in* oder *out* festlegen. 
 
-Diese Eigenschaften unterstützen die folgenden Szenarien:
+#### Für Speichertabelleneingabe und -ausgabe unterstützte Typen
+
+Die `table`-Bindung kann in Node.js- oder C#-Funktionen Objekte serialisieren oder deserialisieren: Die Objekte haben „RowKey“- und „PartitionKey“-Eigenschaften.
+
+In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen herstellen:
+
+* `T`, wobei `ITableEntity` von `T` implementiert wird
+* `IQueryable<T>` (nur Eingabe)
+* `ICollector<T>` (nur Ausgabe)
+* `IAsyncCollector<T>` (nur Ausgabe)
+
+#### Szenarien für die Speichertabellenbindung
+
+Die Tabellenbindung unterstützt die folgenden Szenarien:
 
 * Lesen einer einzelnen Zeile in einer C#- oder Node-Funktion.
 
@@ -611,13 +648,13 @@ Diese Eigenschaften unterstützen die folgenden Szenarien:
 
 * Lesen mehrerer Zeilen in einer Node-Funktion.
 
-	Legen Sie die Eigenschaften `filter` und `take` fest. Legen Sie nicht `partitionKey` oder `rowKey` fest.
+	Legen Sie die Eigenschaften `filter` und `take` fest. Legen Sie `partitionKey` oder `rowKey` nicht fest.
 
 * Schreiben einer oder mehrerer Zeilen in eine C#-Funktion.
 
 	Die Functions-Laufzeit stellt einen an die Tabelle gebundenen `ICollector<T>` oder `IAsyncCollector<T>` bereit, wobei `T` das Schema der Entitäten angibt, die Sie hinzufügen möchten. In der Regel ist der Typ `T` von `TableEntity` abgeleitet oder implementiert `ITableEntity`, was aber nicht sein muss. Die Eigenschaften `partitionKey`, `rowKey`, `filter` und `take` werden in diesem Szenario nicht verwendet.
 
-#### Lesen einer einzelnen Tabellenentität in C# oder Node
+#### Beispiel für Speichertabellen: Lesen einer einzelnen Tabellenentität in C# oder Node
 
 Dieses Beispiel für *function.json* verwendet einen Warteschlangentrigger zum Lesen einer einzelnen Tabellenzeile mit einem hartcodierten Partitionsschlüsselwert und einem Zeilenschlüssel, der in der Warteschlangennachricht bereitgestellt wird.
 
@@ -626,7 +663,7 @@ Dieses Beispiel für *function.json* verwendet einen Warteschlangentrigger zum L
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -637,20 +674,21 @@ Dieses Beispiel für *function.json* verwendet einen Warteschlangentrigger zum L
       "tableName": "Person",
       "partitionKey": "Test",
       "rowKey": "{queueTrigger}",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "direction": "in"
     }
   ],
   "disabled": false
 }
 ```
-Das folgende C#-Codebeispiel kann mit der vorhergehenden Datei *function.json* verwendet werden, um eine einzelne Tabellenentität zu lesen. Die Warteschlangennachricht enthält den Zeilenschlüsselwert, und die Tabellenentität wird in einen Typ gelesen, der in der Datei *run.csx* definiert ist. Der Typ umfasst `PartitionKey`- und `RowKey`-Eigenschaften und wird nicht von `TableEntity` abgeleitet.
+
+Das folgende C#-Codebeispiel kann mit der vorhergehenden Datei *function.json* verwendet werden, um eine einzelne Tabellenentität zu lesen. Die Warteschlangennachricht enthält den Zeilenschlüsselwert, und die Tabellenentität wird in einen Typ gelesen, der in der Datei *run.csx* definiert ist. Der Typ umfasst `PartitionKey`- und `RowKey`-Eigenschaften und ist nicht von `TableEntity` abgeleitet.
 
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
-    log.Verbose($"Name in Person entity: {personEntity.Name}");
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    log.Info($"Name in Person entity: {personEntity.Name}");
 }
 
 public class Person
@@ -671,7 +709,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-#### Lesen mehrerer Tabellenentitäten in C# 
+#### Beispiel für Speichertabellen: Lesen mehrerer Tabellenentitäten in C# 
 
 Das folgende *function.json*- und C#-Codebeispiel liest Entitäten für einen Partitionsschlüssel, der in der Warteschlangennachricht angegeben ist.
 
@@ -680,7 +718,7 @@ Das folgende *function.json*- und C#-Codebeispiel liest Entitäten für einen Pa
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -688,6 +726,7 @@ Das folgende *function.json*- und C#-Codebeispiel liest Entitäten für einen Pa
     {
       "name": "tableBinding",
       "type": "table",
+      "connection": "MyStorageConnection",
       "tableName": "Person",
       "direction": "in"
     }
@@ -696,7 +735,7 @@ Das folgende *function.json*- und C#-Codebeispiel liest Entitäten für einen Pa
 }
 ```
 
-Der C#-Code fügt einen Verweis auf das Azure Storage-SDK hinzu, sodass der Entitätstyp von `TableEntity` abgeleitet werden kann.
+Der C#-Code fügt einen Verweis auf das Azure Storage SDK hinzu, sodass der Entitätstyp von `TableEntity` abgeleitet werden kann.
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -704,10 +743,10 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 public static void Run(string myQueueItem, IQueryable<Person> tableBinding, TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
     foreach (Person person in tableBinding.Where(p => p.PartitionKey == myQueueItem).ToList())
     {
-        log.Verbose($"Name: {person.Name}");
+        log.Info($"Name: {person.Name}");
     }
 }
 
@@ -717,9 +756,9 @@ public class Person : TableEntity
 }
 ``` 
 
-#### Erstellen mehrerer Tabellenentitäten in C# 
+#### Beispiel für Speichertabellen: Erstellen mehrerer Tabellenentitäten in C# 
 
-Im folgenden *function.json*- und *run.csx*-Beispiel wird veranschaulicht, wie Tabellenentitäten in C# geschrieben werden.
+Im folgenden Beispiel zu *function.json* und *run.csx* wird veranschaulicht, wie Tabellenentitäten in C# geschrieben werden.
 
 ```json
 {
@@ -731,7 +770,7 @@ Im folgenden *function.json*- und *run.csx*-Beispiel wird veranschaulicht, wie T
     },
     {
       "tableName": "Person",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "tableBinding",
       "type": "table",
       "direction": "out"
@@ -746,7 +785,7 @@ public static void Run(string input, ICollector<Person> tableBinding, TraceWrite
 {
     for (int i = 1; i < 10; i++)
         {
-            log.Verbose($"Adding Person entity {i}");
+            log.Info($"Adding Person entity {i}");
             tableBinding.Add(
                 new Person() { 
                     PartitionKey = "Test", 
@@ -766,16 +805,16 @@ public class Person
 
 ```
 
-#### Erstellen einer Tabellenentität in Node
+#### Beispiel für Speichertabellen: Erstellen einer Tabellenentität in Node
 
-Im folgenden *function.json*- und *run.csx*-Beispiel wird veranschaulicht, wie eine Tabellenentität in Node geschrieben wird.
+Im folgenden Beispiel zu *function.json* und *run.csx* wird veranschaulicht, wie eine Tabellenentität in Node geschrieben wird.
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -784,7 +823,7 @@ Im folgenden *function.json*- und *run.csx*-Beispiel wird veranschaulicht, wie e
       "tableName": "Person",
       "partitionKey": "Test",
       "rowKey": "{queueTrigger}",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "personEntity",
       "type": "table",
       "direction": "out"
@@ -798,6 +837,167 @@ Im folgenden *function.json*- und *run.csx*-Beispiel wird veranschaulicht, wie e
 module.exports = function (context, myQueueItem) {
     context.log('Node.js queue trigger function processed work item', myQueueItem);
     context.bindings.personEntity = {"Name": "Name" + myQueueItem }
+    context.done();
+};
+```
+
+## Azure Service Bus-Trigger und -Bindungen
+
+Dieser Abschnitt enthält die folgenden Unterabschnitte:
+
+* [Azure Service Bus: PeekLock-Verhalten](#sbpeeklock)
+* [Azure Service Bus: Handhabung nicht verarbeitbarer Nachrichten](#sbpoison)
+* [Azure Service Bus: Single-Threading](#sbsinglethread)
+* [Azure Service Bus-Warteschlangen- oder Thementrigger](#sbtrigger)
+* [Azure Storage Bus-Warteschlange oder -Thema – Bindung der Ausgabe](#sboutput)
+
+### <a id="sbpeeklock"></a> Azure Service Bus: PeekLock-Verhalten
+
+Die Functions-Laufzeit empfängt eine Nachricht im `PeekLock`-Modus und ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Ist die Ausführung nicht erfolgreich, wird `Abandon` aufgerufen. Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch erneuert.
+
+### <a id="sbpoison"></a> Azure Service Bus: Handhabung nicht verarbeitbarer Nachrichten
+
+Service Bus kümmert sich selbst um die Handhabung nicht verarbeitbarer Nachrichten, die in Azure Functions-Konfigurationen und -Code nicht gesteuert oder konfiguriert werden kann.
+
+### <a id="sbsinglethread"></a> Azure Service Bus: Single-Threading
+
+Die Functions-Laufzeit verarbeitet standardmäßig mehrere Warteschlangennachrichten gleichzeitig. Um die Laufzeit anzuweisen, immer nur eine Warteschlangen- oder Themennachricht gleichzeitig zu verarbeiten, legen Sie `serviceBus.maxConcurrrentCalls` in der Datei *host.json* auf 1 fest. Informationen zur Datei *host.json* finden Sie in der [Ordnerstruktur](functions-reference.md#folder-structure) im Artikel in der Referenz für Entwickler und unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki des WebJobs.Script-Repositorys.
+
+### <a id="sbtrigger"></a> Azure Service Bus-Warteschlangen- oder Thementrigger
+
+Die Datei *function.json* für einen Service Bus-Trigger gibt die folgenden Eigenschaften an.
+
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder das Thema bzw. die Warteschlangen- oder Themennachricht verwendet wird. 
+- `queueName`: Name der abzufragenden Warteschlange (nur für Warteschlangentrigger).
+- `topicName`: Name des abzufragenden Themas (nur für Thementrigger).
+- `subscriptionName`: Name des Abonnements (nur für Thementrigger).
+- `connection`: Name einer App-Einstellung, die eine Service Bus-Verbindungszeichenfolge enthält. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. Wenn die Verbindungszeichenfolge keine Verwaltungsrechte hat, legen Sie die `accessRights`-Eigenschaft fest. Wenn Sie `connection` leer lassen ist, verwendet der Trigger für die Funktionen-App die standardmäßige Service Bus-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsServiceBus“ angegeben wird.
+- `accessRights`: Gibt die Zugriffsrechte an, die für die Verbindungszeichenfolge zur Verfügung stehen. Der Standardwert ist `manage`. Legen Sie diese Einstellung auf `listen` fest, wenn Sie eine Verbindungszeichenfolge nutzen, die keine Verwaltungsberechtigungen bietet. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
+- `type`: Muss auf *serviceBusTrigger* festgelegt werden.
+- `direction`: Muss auf *in* festgelegt werden. 
+
+Die Service Bus-Warteschlangennachricht kann in alle folgenden Typen deserialisiert werden:
+
+* Objekt (aus JSON)
+* Zeichenfolge
+* Bytearray 
+* `BrokeredMessage` (C#) 
+
+#### *Function.json*-Beispiel für die Verwendung eines Service Bus-Warteschlangentriggers
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "testqueue",
+      "connection": "MyServiceBusConnection",
+      "name": "myQueueItem",
+      "type": "serviceBusTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+#### C#-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
+
+```csharp
+public static void Run(string myQueueItem, TraceWriter log)
+{
+    log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+}
+```
+
+#### Node.js-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
+
+```javascript
+module.exports = function(context, myQueueItem) {
+    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.done();
+};
+```
+
+### <a id="sboutput"></a> Azure Service Bus-Warteschlangen- oder Themenausgabe
+
+Die Datei *function.json* für eine Bindung der Service Bus-Ausgabe gibt die folgenden Eigenschaften an.
+
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird. 
+- `queueName`: Name der abzufragenden Warteschlange (nur für Warteschlangentrigger).
+- `topicName`: Name des abzufragenden Themas (nur für Thementrigger).
+- `subscriptionName`: Name des Abonnements (nur für Thementrigger).
+- `connection`: Exakt wie für den Service Bus-Trigger.
+- `accessRights`: Gibt die Zugriffsrechte an, die für die Verbindungszeichenfolge zur Verfügung stehen. Der Standardwert ist `manage`. Legen Sie diese Einstellung auf `send` fest, wenn Sie eine Verbindungszeichenfolge nutzen, die keine Verwaltungsberechtigungen bietet. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern, z. B. das Erstellen von Warteschlangen.
+- `type`: Muss auf *serviceBus* festgelegt werden.
+- `direction`: Muss auf *out* festgelegt werden. 
+
+Azure Functions kann eine Service Bus-Warteschlangennachricht mit einem der folgenden Typen erstellen.
+
+* Objekt (erstellt immer eine JSON-Nachricht; erstellt die Nachricht mit einem NULL-Objekt, wenn der Wert bei Funktionsbeendigung NULL ist)
+* Zeichenfolge (eine Nachricht wird erstellt, wenn der Wert bei Funktionsbeendigung nicht NULL ist)
+* Bytearray (funktioniert wie Zeichenfolge) 
+* `BrokeredMessage` (C#, funktioniert wie Zeichenfolge)
+
+Für das Erstellen mehrerer Nachrichten in einer C#-Funktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add`-Methode wird eine Nachricht erstellt.
+
+#### *function.json*-Beispiel für die Verwendung eines Zeitgebertriggers zum Schreiben von Service Bus-Warteschlangennachrichten
+
+```JSON
+{
+  "bindings": [
+    {
+      "schedule": "0/15 * * * * *",
+      "name": "myTimer",
+      "runsOnStartup": true,
+      "type": "timerTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "outputSbQueue",
+      "type": "serviceBus",
+      "queueName": "testqueue",
+      "connection": "MyServiceBusConnection",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+``` 
+
+#### C#-Codebeispiele, die Service Bus-Warteschlangennachrichten erstellen
+
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
+{
+	string message = $"Service Bus queue message created at: {DateTime.Now}";
+    log.Info(message); 
+    outputSbQueue = message;
+}
+```
+
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
+{
+	string message = $"Service Bus queue message created at: {DateTime.Now}";
+    log.Info(message); 
+    outputSbQueue.Add("1 " + message);
+    outputSbQueue.Add("2 " + message);
+}
+```
+
+#### Node.js-Codebeispiel, das eine Service Bus-Warteschlangennachricht erstellt
+
+```javascript
+module.exports = function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+    
+    if(myTimer.isPastDue)
+    {
+        context.log('Node.js is running late!');
+    }
+    var message = 'Service Bus queue message created at ' + timeStamp;
+    context.log(message);   
+    context.bindings.outputSbQueueMsg = message;
     context.done();
 };
 ```
@@ -816,12 +1016,12 @@ Eingabebindungen können ein Dokument aus einer DocumentDB-Sammlung laden und di
 Die Datei „function.json“ enthält die folgenden Eigenschaften zur Verwendung mit der DocumentDB-Eingabebindung:
 
 - `name`: Variablenname, der im Funktionscode für das Dokument verwendet wird.
-- `type`: Muss auf „documentdb“ festgelegt werden.
+- `type`: Muss auf "documentdb" festgelegt werden.
 - `databaseName`: Die Datenbank mit dem Dokument.
 - `collectionName`: Die Sammlung mit dem Dokument.
 - `id`: Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungen wie „{queueTrigger}“, die den Zeichenfolgenwert der Warteschlangennachricht als Dokument-ID verwenden.
-- `connection`: Diese Zeichenfolge muss eine Anwendungseinstellung sein, die auf den Endpunkt für Ihr DocumentDB-Konto festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte „Integrieren“ auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: IhrKonto\_DOCUMENTDB. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die eigentliche Verbindungszeichenfolge im folgenden Format vorliegen: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
-- direction: Muss auf *"in"* festgelegt werden.
+- `connection`: Diese Zeichenfolge muss eine Anwendungseinstellung sein, die auf den Endpunkt Ihres DocumentDB-Kontos festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte „Integrieren“ auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: IhrKonto\_DOCUMENTDB. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die tatsächliche Verbindungszeichenfolge im folgenden Format vorliegen: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
+- `direction: Muss auf *"in"* festgelegt werden.
 
 Beispiel für „function.json“:
  
@@ -867,10 +1067,10 @@ Die Datei „function.json“ enthält die folgenden Eigenschaften zur Verwendun
 
 - `name`: Variablenname, der im Funktionscode für das neue Dokument verwendet wird.
 - `type`: Muss auf *"documentdb"* festgelegt werden.
-- `databaseName`: Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird.
-- `collectionName`: Die Sammlung, in der das neue Dokument erstellt wird.
-- `createIfNotExists`: Dies ist ein boolescher Wert, der angibt, ob die Sammlung erstellt wird, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Der Grund hierfür ist, dass Sammlungen mit reserviertem Durchsatz erstellt werden, was sich auf den Preis auswirkt. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection`: Diese Zeichenfolge muss eine **Anwendungseinstellung** sein, die auf den Endpunkt für Ihr DocumentDB-Konto festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte **Integrieren** auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: `yourAccount_DOCUMENTDB`. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die eigentliche Verbindungszeichenfolge im folgenden Format vorliegen: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`. 
+- `databaseName`: Datenbank mit der Sammlung, in der das neue Dokument erstellt wird.
+- `collectionName`: Sammlung, in der das neue Dokument erstellt wird.
+- `createIfNotExists`: Boolescher Wert, der angibt, ob die Sammlung erstellt wird, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Der Grund hierfür ist, dass Sammlungen mit reserviertem Durchsatz erstellt werden, was sich auf den Preis auswirkt. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).
+- `connection`: Diese Zeichenfolge muss eine **Anwendungseinstellung** sein, die auf den Endpunkt Ihres DocumentDB-Kontos festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte **Integrieren** auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: `yourAccount_DOCUMENTDB`. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die tatsächliche Verbindungszeichenfolge im folgenden Format vorliegen: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`. 
 - `direction`: Muss auf *"out"* festgelegt werden. 
  
 Beispiel für „function.json“:
@@ -917,7 +1117,7 @@ Das Ausgabedokument:
 
 	public static void Run(string myQueueItem, out object document, TraceWriter log)
 	{
-	    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
 	   
 	    document = new {
 	        text = $"I'm running in a C# function! {myQueueItem}"
@@ -945,7 +1145,7 @@ Sie könnten den folgenden C#-Code in einer Warteschlangentrigger-Funktion verwe
 	
 	public static void Run(string myQueueItem, out object employeeDocument, TraceWriter log)
 	{
-	    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
 	    
 	    dynamic employee = JObject.Parse(myQueueItem);
 	    
@@ -966,32 +1166,32 @@ Beispielausgabe:
 	  "address": "A town nearby"
 	}
 
-## Einfache Tabellenbindungen in mobilen Azure-Apps
+## Azure Mobile Apps-Bindungen
 
-Mit mobilen Azure App Service-Apps können Sie Tabellenendpunkt-Daten auf mobilen Clients verfügbar machen. Dieselben Tabellendaten können sowohl in Eingabe- als auch in Ausgabebindungen mit Azure Functions verwendet werden. Bei einer mobilen Node.js-Back-End-App können Sie über *Einfache Tabellen* mit diesen Tabellendaten im Azure-Portal arbeiten. Einfache Tabellen unterstützen das dynamische Schema, sodass Spalten automatisch entsprechend der Form der eingefügten Daten hinzugefügt werden, um die Schemaentwicklung zu vereinfachen. Das dynamische Schema ist standardmäßig aktiviert und sollte in einer mobilen Produktions-App deaktiviert werden. Weitere Informationen zu einfachen Tabellen in mobilen Apps finden Sie unter [Gewusst wie: Verwenden einfacher Tabellen im Azure-Portal](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing). Beachten Sie, dass einfache Tabellen im Portal für mobile .NET-Back-End-Apps derzeit nicht unterstützt werden. Sie können zwar Funktionsbindungen für Tabellenendpunkte in mobilen .NET-Back-End-Apps verwenden, aber das dynamische Schema wird in mobilen .NET-Back-End-Apps nicht unterstützt.
+Mit mobilen Azure App Service-Apps können Sie Tabellenendpunkt-Daten auf mobilen Clients verfügbar machen. Dieselben Tabellendaten können sowohl in Eingabe- als auch in Ausgabebindungen in Azure Functions verwendet werden. Da ein dynamisches Schema unterstützt wird, eignet sich eine mobile Node.js-Back-End-App besonders zum Verfügbarmachen von Tabellendaten für die Verwendung mit Ihren Funktionen. Das dynamische Schema ist standardmäßig aktiviert und sollte in einer mobilen Produktions-App deaktiviert werden. Weitere Informationen zu Tabellenendpunkten in einem Node.js-Back-End finden Sie unter [Übersicht: Tabellenvorgänge](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations). In Mobile Apps unterstützt das Node.js-Back-End das portalinterne Durchsuchen und Bearbeiten von Tabellen. Weitere Informationen finden Sie im Abschnitt zur [portalinternen Bearbeitung](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing) im Thema „Node.js SDK“. Beim Verwenden einer mobilen .NET-Back-End-App mit Azure Functions müssen Sie das Datenmodell entsprechend den Anforderungen der Funktion manuell aktualisieren. Weitere Informationen zu Tabellenendpunkten in einer mobilen .NET Back-End-App finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) im Thema „.NET-Back-End SDK“.
 
 Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
-* [API-Schlüssel für einfache Tabellen in mobilen Azure-Apps](#easytablesapikey)
-* [Eingabebindung für einfache Tabellen in mobilen Azure-Apps](#easytablesinput)
-* [Ausgabebindung für einfache Tabellen in mobilen Azure-Apps](#easytablesoutput)
+* [API-Schlüssel für Azure Mobile Apps-Tabellen](#mobiletablesapikey)
+* [Eingabebindung für Azure Mobile Apps-Tabellen](#mobiletablesinput)
+* [Ausgabebindung für Azure Mobile Apps-Tabellen](#mobiletablesoutput)
 
-### <a id="easytablesapikey"></a> Verwenden Sie einen API-Schlüssel zum Sichern des Zugriffs auf die Endpunkte für einfache Tabellen in Ihren mobilen Apps.
+### <a id="mobiletablesapikey"></a> Verwenden Sie einen API-Schlüssel zum Schützen des Zugriffs auf Ihre Mobile Apps-Tabellenendpunkte.
 
-Azure Functions kann derzeit nicht auf Endpunkte zugreifen, die durch die App Service-Authentifizierung gesichert werden. Daher müssen Endpunkte von mobilen Apps, die Sie in Ihren Funktionen mit einfachen Tabellenbindungen verwenden, den anonymen Zugriff zulassen müssen. Dies ist die Standardeinstellung. Bei einfachen Tabellenbindungen können Sie einen API-Schlüssel angeben. Dabei handelt es sich um einen gemeinsamen geheimen Schlüssel, mit dem der unbefugte Zugriff aus anderen Apps als Ihren Funktionen verhindert wird. Mobile Apps bieten keine integrierte Unterstützung für die Authentifizierung von API-Schlüsseln. Sie können jedoch einen API-Schlüssel in der mobilen Node.js-Back-End-App implementieren, indem Sie die Beispiele unter [Azure App Service Mobile Apps backend implementing an API key](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) (Back-End mobiler Azure App Service-Apps zum Implementieren eines API-Schlüssels) befolgen.
+In Azure Functions ermöglichen Ihnen Bindungen mobiler Tabellen, einen API-Schlüssel anzugeben. Dabei handelt es sich um einen gemeinsamen geheimen Schlüssel für Ihre Funktionen. Der unbefugte Zugriff aus anderen Apps wird so verhindert. Mobile Apps bieten keine integrierte Unterstützung für die Authentifizierung von API-Schlüsseln. Sie können jedoch einen API-Schlüssel in der mobilen Node.js-Back-End-App implementieren, indem Sie die Beispiele unter [Azure App Service Mobile Apps backend implementing an API key](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) (Back-End mobiler Azure App Service-Apps zum Implementieren eines API-Schlüssels) befolgen. In einer [mobilen .NET-Back-End-App](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) können Sie auf ähnliche Weise einen API-Schlüssel implementieren.
 
 >[AZURE.IMPORTANT] Dieser API-Schlüssel darf nicht mit Ihren mobilen App-Clients verteilt werden, er sollte nur sicher an dienstseitige Clients wie Azure Functions verteilt werden.
 
-### <a id="easytablesinput"></a> Eingabebindung für einfache Tabellen in mobilen Azure-Apps
+### <a id="mobiletablesinput"></a> Azure Mobile Apps-Eingabebindung
 
-Eingabebindungen können einen Datensatz aus einem Tabellenendpunkt von mobilen Apps laden und direkt an Ihre Bindung übergeben. Die Datensatz-ID wird anhand des Triggers ermittelt, der die Funktion aufgerufen hat. In einer C#-Funktion werden alle Änderungen am Datensatz automatisch wieder an die Tabelle zurückgesendet, wenn die Funktion erfolgreich beendet wird.
+Eingabebindungen können einen Datensatz aus einem mobilen Tabellenendpunkt laden und direkt an Ihre Bindung übergeben. Die Datensatz-ID wird anhand des Triggers ermittelt, der die Funktion aufgerufen hat. In einer C#-Funktion werden alle Änderungen am Datensatz automatisch wieder an die Tabelle zurückgesendet, wenn die Funktion erfolgreich beendet wird.
 
-Die Datei „function.json“ unterstützt die folgenden Eigenschaften für die Verwendung mit Eingabebindungen für einfache Tabellen in mobilen Apps:
+Die Datei „function.json“ unterstützt die folgenden Eigenschaften für die Verwendung mit Mobile Apps-Eingabebindungen:
 
 - `name`: Variablenname, der im Funktionscode für den neuen Datensatz verwendet wird.
-- `type`: Bindungstyp muss auf *easyTable* festgelegt werden.
-- `tableName`: Die Tabelle, in der der neue Datensatz erstellt wird.
-- `id`: Die ID des abzurufenden Datensatzes. Diese Eigenschaft unterstützt Bindungen wie `{queueTrigger}`, die den Zeichenfolgenwert der Warteschlangennachricht als Datensatz-ID verwenden.
+- `type`: Der Bindungstyp muss auf *mobileTable* festgelegt werden.
+- `tableName`: Tabelle, in der der neue Datensatz erstellt wird.
+- `id`: ID des abzurufenden Datensatzes. Diese Eigenschaft unterstützt Bindungen wie `{queueTrigger}`, die den Zeichenfolgenwert der Warteschlangennachricht als Datensatz-ID verwenden.
 - `apiKey`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den optionalen API-Schlüssel für die mobile App angibt. Dies ist erforderlich, wenn Ihre mobile App einen API-Schlüssel verwendet, um den Clientzugriff einzuschränken.
 - `connection`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den URI für Ihre mobile App angibt.
 - `direction`: Bindungsrichtung, die auf *in* festgelegt werden muss.
@@ -1002,7 +1202,7 @@ Beispiel für „function.json“:
 	  "bindings": [
 	    {
 	      "name": "record",
-	      "type": "easyTable",
+	      "type": "mobileTable",
 	      "tableName": "MyTable",
 	      "id" : "{queueTrigger}",
 	      "connection": "My_MobileApp_Uri",
@@ -1013,9 +1213,9 @@ Beispiel für „function.json“:
 	  "disabled": false
 	}
 
-#### Codebeispiel für einfache Tabellen in mobilen Azure-Apps für einen C#-Warteschlangentrigger
+#### Azure Mobile Apps-Codebeispiel für einen C#-Warteschlangentrigger
 
-Basierend auf dem oben genannten Beispiel für „function.json“ ruft die Eingabebindung den Datensatz mit der ID ab, die der Zeichenfolge der Warteschlangennachricht entspricht, und übergibt ihn an den Parameter *record*. Wenn der Datensatz nicht gefunden wird, ist der Parameter NULL. Der Datensatz wird dann mit dem neuen *Text*-Wert aktualisiert, wenn die Funktion beendet wird.
+Basierend auf dem vorherigen Beispiel für „function.json“ ruft die Eingabebindung den Datensatz von einem Mobile Apps-Tabellenendpunkt mit der ID ab, die der Zeichenfolge der Warteschlangennachricht entspricht, und übergibt ihn an den Parameter *record*. Wenn der Datensatz nicht gefunden wird, ist der Parameter NULL. Der Datensatz wird dann mit dem neuen *Text*-Wert aktualisiert, wenn die Funktion beendet wird.
 
 	#r "Newtonsoft.Json"	
 	using Newtonsoft.Json.Linq;
@@ -1028,9 +1228,9 @@ Basierend auf dem oben genannten Beispiel für „function.json“ ruft die Eing
 	    }    
 	}
 
-#### Codebeispiel für einfache Tabellen in mobilen Azure-Apps für einen Node.js-Warteschlangentrigger
+#### Azure Mobile Apps-Codebeispiel für einen Node.js-Warteschlangentrigger
 
-Basierend auf dem oben genannten Beispiel für „function.json“ ruft die Eingabebindung den Datensatz mit der ID ab, die der Zeichenfolge der Warteschlangennachricht entspricht, und übergibt ihn an den Parameter *record*. In Node.js-Funktionen werden aktualisierte Datensätze nicht an die Tabelle zurückgesendet. Dieses Codebeispiel schreibt den abgerufenen Datensatz in das Protokoll.
+Basierend auf dem vorherigen Beispiel für „function.json“ ruft die Eingabebindung den Datensatz von einem Mobile Apps-Tabellenendpunkt mit der ID ab, die der Zeichenfolge der Warteschlangennachricht entspricht, und übergibt ihn an den Parameter *record*. In Node.js-Funktionen werden aktualisierte Datensätze nicht an die Tabelle zurückgesendet. Dieses Codebeispiel schreibt den abgerufenen Datensatz in das Protokoll.
 
 	module.exports = function (context, input) {    
 	    context.log(context.bindings.record);
@@ -1038,15 +1238,15 @@ Basierend auf dem oben genannten Beispiel für „function.json“ ruft die Eing
 	};
 
 
-### <a id="easytablesoutput"></a> Ausgabebindung für einfache Tabellen in mobilen Azure-Apps
+### <a id="mobiletablesoutput"></a>Azure Mobile Apps-Ausgabebindung
 
-Ihre Funktion kann einen Datensatz über eine Ausgabebindung mit einfachen Tabellen in einen Tabellenendpunkt für mobile Apps schreiben.
+Ihre Funktion kann einen Datensatz mithilfe einer Ausgabebindung in einen Mobile Apps-Tabellenendpunkt schreiben.
 
-Die Datei „function.json“ unterstützt die folgenden Eigenschaften für die Verwendung mit Ausgabebindungen für einfache Tabellen:
+Die Datei „function.json“ unterstützt die folgenden Eigenschaften für die Verwendung mit Ausgabebindungen für mobile Tabellen:
 
 - `name`: Variablenname, der im Funktionscode für den neuen Datensatz verwendet wird.
-- `type`: Bindungstyp, der auf *easyTable* festgelegt werden muss.
-- `tableName`: Die Tabelle, in der der neue Datensatz erstellt wird.
+- `type`: Bindungstyp, der auf *mobileTable* festgelegt werden muss.
+- `tableName`: Tabelle, in der der neue Datensatz erstellt wird.
 - `apiKey`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den optionalen API-Schlüssel für die mobile App angibt. Dies ist erforderlich, wenn Ihre mobile App einen API-Schlüssel verwendet, um den Clientzugriff einzuschränken.
 - `connection`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den URI für Ihre mobile App angibt.
 - `direction`: Bindungsrichtung, die auf *out* festgelegt werden muss.
@@ -1057,7 +1257,7 @@ Beispiel für „function.json“:
 	  "bindings": [
 	    {
 	      "name": "record",
-	      "type": "easyTable",
+	      "type": "mobileTable",
 	      "tableName": "MyTable",
 	      "connection": "My_MobileApp_Uri",
 	      "apiKey": "My_MobileApp_Key",
@@ -1067,9 +1267,9 @@ Beispiel für „function.json“:
 	  "disabled": false
 	}
 
-#### Codebeispiel für einfache Tabellen in mobilen Azure-Apps für einen C#-Warteschlangentrigger
+#### Azure Mobile Apps-Codebeispiel für einen C#-Warteschlangentrigger
 
-Dieses C#-Codebeispiel fügt einen neuen Datensatz mit einer *Text*-Eigenschaft in die Tabelle ein, die in der obigen Bindung angegeben ist.
+Dieses C#-Codebeispiel fügt einen neuen Datensatz mit einer *Text*-Eigenschaft in den Mobile Apps-Tabellenendpunkt in die Tabelle ein, die in der obigen Bindung angegeben ist.
 
 	public static void Run(string myQueueItem, out object record)
 	{
@@ -1078,9 +1278,9 @@ Dieses C#-Codebeispiel fügt einen neuen Datensatz mit einer *Text*-Eigenschaft 
 	    };
 	}
 
-#### Codebeispiel für einfache Tabellen in mobilen Azure-Apps für einen Node.js-Warteschlangentrigger
+#### Azure Mobile Apps-Codebeispiel für einen Node.js-Warteschlangentrigger
 
-Dieses Node.js-Codebeispiel fügt einen neuen Datensatz mit einer *Text*-Eigenschaft in die Tabelle ein, die in der obigen Bindung angegeben ist.
+Dieses Node.js-Codebeispiel fügt einen neuen Datensatz mit einer *text*-Eigenschaft in den Mobile Apps-Tabellenendpunkt in die Tabelle ein, die in der obigen Bindung angegeben ist.
 
 	module.exports = function (context, input) {
 	
@@ -1093,15 +1293,15 @@ Dieses Node.js-Codebeispiel fügt einen neuen Datensatz mit einer *Text*-Eigensc
 
 ## Azure Notification Hub-Ausgabebindung
 
-Ihre Funktionen können über einen konfigurierten Azure Notification Hub mit sehr wenigen Codezeilen Pushbenachrichtigungen senden. Allerdings muss der Notification Hub für das PNS (Plattformbenachrichtigungssystem) konfiguriert sein, das Sie verwenden möchten. Weitere Informationen zum Konfigurieren eines Azure Notification Hubs und zum Entwickeln von Clientanwendungen, die sich für Benachrichtigungen registrieren, finden Sie unter [Erste Schritte mit Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md), wenn Sie oben auf die Client-Zielplattform klicken.
+Ihre Funktionen können über einen konfigurierten Azure Notification Hub mit sehr wenigen Codezeilen Pushbenachrichtigungen senden. Allerdings muss der Notification Hub für die Plattformbenachrichtigungsdienste konfiguriert sein, die Sie verwenden möchten. Weitere Informationen zum Konfigurieren eines Azure Notification Hubs und zum Entwickeln von Clientanwendungen, die sich für Benachrichtigungen registrieren, finden Sie unter [Erste Schritte mit Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md), und klicken Sie oben auf Ihre Zielclientplattform.
 
 Die Datei „function.json“ enthält die folgenden Eigenschaften zur Verwendung mit einer Notification Hub-Ausgabebindung:
 
 - `name`: Variablenname, der im Funktionscode für die Notification Hub-Nachricht verwendet wird.
 - `type`: Muss auf *"notificationHub"* festgelegt werden.
-- `tagExpression`: Mit Tagausdrücken können Sie Benachrichtigungen an eine Reihe von Geräten übermitteln lassen, die sich für den Empfang von Benachrichtigungen registriert haben, die dem Tagausdruck entsprechen. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-routing-tag-expressions.md).
-- `hubName`: Der Name der Notification Hub-Ressource im Azure-Portal.
-- `connection`: Diese Verbindungszeichenfolge muss eine Verbindungszeichenfolge für die **Anwendungseinstellung** sein, die auf den *DefaultFullSharedAccessSignature*-Wert für Ihren Notification Hub festgelegt ist.
+- `tagExpression`: Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln lassen, die sich für den Empfang von Benachrichtigungen registriert haben, die dem Tagausdruck entsprechen. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-routing-tag-expressions.md).
+- `hubName`: Name der Notification Hub-Ressource im Azure-Portal.
+- `connection`: Diese Verbindungszeichenfolge muss eine Verbindungszeichenfolge für die **Anwendungseinstellung** sein, die auf den *DefaultFullSharedAccessSignature*-Wert Ihres Notifications Hub festgelegt ist.
 - `direction`: Muss auf *"out"* festgelegt werden. 
  
 Beispiel für „function.json“:
@@ -1126,7 +1326,7 @@ Um eine Notification Hub-Ausgabebindung zu verwenden, müssen Sie die Verbindung
 
 Sie können eine Verbindungszeichenfolge für einen vorhandenen Hub auch manuell hinzufügen, indem Sie Ihrem Notification Hub eine Verbindungszeichenfolge für *DefaultFullSharedAccessSignature* hinzufügen. Diese Verbindungszeichenfolge stellt Ihrer Funktion die Zugriffsberechtigungen zum Senden von Nachrichten bereit. Der Wert der *DefaultFullSharedAccessSignature*-Verbindungszeichenfolge ist über die Schaltfläche **Schlüssel** auf dem Hauptblatt der Notification Hub-Ressource im Azure-Portal zugänglich. Um eine Verbindungszeichenfolge für den Hub manuell hinzuzufügen, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie im Azure-Portal auf dem Blatt **Funktions-App** auf **Funktions-App-Einstellungen > Zu App Service-Einstellungen wechseln**.
+1. Klicken Sie im Azure-Portal auf dem Blatt **Funktionen-App** auf **Funktionen-App-Einstellungen > Zu App Service-Einstellungen wechseln**.
 
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
 
@@ -1163,7 +1363,7 @@ In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](
 	 
 	public static void Run(string myQueueItem,  out IDictionary<string, string> notification, TraceWriter log)
 	{
-	    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
         notification = GetTemplateProperties(myQueueItem);
 	}
 	 
@@ -1174,19 +1374,19 @@ In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](
 	    return templateProperties;
 	}
 
-In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates.md) mit `message` über eine gültige JSON-Zeichenfolge gesendet.
+In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates.md), die `message` enthält, über eine gültige JSON-Zeichenfolge gesendet.
 
 	using System;
 	 
 	public static void Run(string myQueueItem,  out string notification, TraceWriter log)
 	{
-		log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+		log.Info($"C# Queue trigger function processed: {myQueueItem}");
 		notification = "{"message":"Hello from C#. Processed a queue item!"}";
 	}
 
 ### C#-Codebeispiel für einen Azure Notification Hub-Warteschlangentrigger mit Benachrichtigungstyp
 
-Dieses Beispiel zeigt, wie Sie den in der [Bibliothek für Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) definierten `Notification`-Typ verwenden. Um diesen Typ und die Bibliothek zu verwenden, müssen Sie eine Datei *project.json* für Ihre Funktions-App hochladen. Die Datei „project.json“ ist eine JSON-Textdatei, die in etwa folgendermaßen aussieht:
+Dieses Beispiel zeigt, wie Sie den in der [Bibliothek für Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) definierten `Notification`-Typ verwenden. Um diesen Typ und die Bibliothek zu verwenden, müssen Sie die Datei *project.json* für Ihre Funktionen-App hochladen. Die Datei „project.json“ ist eine JSON-Textdatei, die in etwa folgendermaßen aussieht:
 
 	{
 	  "frameworks": {
@@ -1198,7 +1398,7 @@ Dieses Beispiel zeigt, wie Sie den in der [Bibliothek für Microsoft Azure Notif
 	  }
 	}
 
-Weitere Informationen zum Hochladen der Datei „project.json“ finden Sie unter [Hochladen einer Datei „project.json“](http://stackoverflow.com/questions/36411536/how-can-i-use-nuget-packages-in-my-azure-functions).
+Weitere Informationen zum Hochladen der Datei „project.json“ finden Sie unter [Hochladen der Datei „project.json“](http://stackoverflow.com/questions/36411536/how-can-i-use-nuget-packages-in-my-azure-functions).
 
 Beispielcode:
 
@@ -1208,7 +1408,7 @@ Beispielcode:
 	 
 	public static void Run(string myQueueItem,  out Notification notification, TraceWriter log)
 	{
-	   log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	   log.Info($"C# Queue trigger function processed: {myQueueItem}");
 	   notification = GetTemplateNotification(myQueueItem);
 	}
 	private static TemplateNotification GetTemplateNotification(string message)
@@ -1226,4 +1426,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 
-<!----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

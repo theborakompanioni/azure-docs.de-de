@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Erforderliche Ports und Protokolle für die Hybrid-Identität
@@ -84,4 +84,4 @@ In dieser Tabelle werden die folgenden ausgehenden Ports und Protokolle beschrie
 ### Tabelle 6b: Endpunkte für Azure AD Connect Health-Agent für (AD FS/Sync) und Azure AD
 Eine Liste mit Endpunkten finden Sie im [Abschnitt mit den Anforderungen für den Azure AD Connect Health-Agent](active-directory-aadconnect-health.md#requirements).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

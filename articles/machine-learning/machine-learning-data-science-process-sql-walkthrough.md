@@ -3,7 +3,7 @@
 	description="Advanced Analytics Process and Technology in Aktion"  
 	services="machine-learning"
 	documentationCenter=""
-	authors="msolhab"
+	authors="bradsev"
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
-	ms.author="mohabib;fashah;bradsev"/>
+	ms.date="05/10/2016"
+	ms.author="fashah;bradsev"/>
 
 
 # Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server
 
-In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Modells geleitet. Hierbei wird das öffentlich verfügbare DataSets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem Workflow „Cortana Analytics Prozess“ (CAP).
+In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierbei wird das öffentlich verfügbare DataSet [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
 
 
 ## <a name="dataset"></a>Beschreibung des NYC Taxi Trips-DataSets
@@ -716,4 +716,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

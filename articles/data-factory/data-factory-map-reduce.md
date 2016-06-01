@@ -217,7 +217,6 @@ Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDIn
 
 [adfgetstarted]: data-factory-get-started.md
 [adfgetstartedmonitoring]: data-factory-get-started.md#monitor-pipelines
-[adftutorial]: data-factory-tutorial.md
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: http://portal.azure.com
@@ -226,7 +225,7 @@ Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDIn
 - [Hive-Aktivität](data-factory-hive-activity.md)
 - [Pig-Aktivität](data-factory-pig-activity.md)
 - [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
-- [Invoke Spark programs](data-factory-spark.md) (Aufrufen von Spark-Programmen)
-- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (Aufrufen von R-Skripts)
+- [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
+- [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

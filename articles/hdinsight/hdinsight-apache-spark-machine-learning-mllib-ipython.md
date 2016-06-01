@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2016" 
+	ms.date="05/16/2016" 
 	ms.author="nitinme"/>
 
 
@@ -170,7 +170,7 @@ Wir können `sqlContext` verwenden, um Transformationen strukturierter Daten aus
 1. Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset enthalten ist. Wie lauten z. B. die verschiedenen Werte in der Spalte **results**?
 
 
-	df.select('results').distinct().show()
+		df.select('results').distinct().show()
 
 	
 	Folgendes sollte angezeigt werden:
@@ -412,4 +412,4 @@ Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, 
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

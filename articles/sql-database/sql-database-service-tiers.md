@@ -52,7 +52,7 @@ In der folgenden Tabelle sind die Merkmale der Dienstebenen eines Pools beschrie
 
 [AZURE.INCLUDE [Tabelle der SQL-Datenbank-Dienstebenen für elastische Datenbanken](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
-Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanken für die entsprechende Dienstebene. Beispielsweise liegt für einen Pool mit dem Tarif „Basic“ die maximale Grenze bei 2.400 - 28.800 Sitzungen, für eine Einzeldatenbank in diesem Pool ist jedoch ein Limit von 300 Sitzungen definiert (entsprechend der Angabe für eine Einzeldatenbank mit dem Tarif „Basic“ im vorhergehenden Abschnitt).
+Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanken für die entsprechende Dienstebene. Beispielsweise liegt für einen Pool mit dem Tarif „Basic“ die maximale Grenze bei 4.800 - 28.800 Sitzungen, für eine Einzeldatenbank in diesem Pool ist jedoch ein Limit von 300 Sitzungen definiert (entsprechend der Angabe für eine Einzeldatenbank mit dem Tarif „Basic“ im vorhergehenden Abschnitt).
 
 ## Grundlegendes zu DTUs
 
@@ -64,4 +64,4 @@ Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanke
 - Erfahren Sie, wie Sie [einen elastischen Pool überwachen und verwalten und seine Größe ändern](sql-database-elastic-pool-manage-portal.md) und [die Leistung von Einzeldatenbanken überwachen](sql-database-single-database-monitor.md).
 - Nachdem Sie jetzt die Ebenen der SQL-Datenbank kennen, können Sie sie mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) ausprobieren und sich mit der [Erstellung Ihrer ersten SQL-Datenbank](sql-database-get-started.md) befassen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

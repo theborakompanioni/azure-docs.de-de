@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/02/2016"
+   ms.date="05/16/2016"
    ms.author="mbaldwin"/>
 
 # Integration in Azure Active Directory
@@ -38,7 +38,7 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Azure AD zu integrieren. Nutze
 
 **Wiederverwenden von Active Directory-Gruppen und Verteilerlisten, die Ihr Kunde bereits verwaltet.** Azure AD enthält die Gruppen, die Ihr Kunde bereits für die E-Mail-Verteilung und das Verwalten des Zugriffs verwendet. Verwenden Sie diese Gruppen mithilfe der Graph-API wieder, anstatt vom Kunden zu verlangen, eine getrennte Zusammenstellung von Gruppen in Ihrer Anwendung zu erstellen und zu nutzen. Informationen zu Gruppen können auch in Anmeldetoken an Ihre Anwendung gesendet werden. Erfahren Sie mehr über die [Graph-API](active-directory-graph-api.md).
 
-**Verwenden von Azure AD zum Steuern des Zugriffs auf Ihre Anwendung.** Administratoren und Besitzer von Anwendungen in Azure AD können den Zugriff auf Anwendungen bestimmten Benutzern und Gruppen zuweisen. Mithilfe der Graph-API können Sie diese Liste lesen und zum Steuern der Bereitstellung bzw. der Aufhebung der Bereitstellung von Ressourcen und des Zugriffs innerhalb Ihrer Anwendung verwenden.
+**Verwenden von Azure AD zum Steuern des Zugriffs auf Ihre Anwendung.** Administratoren und Besitzer von Anwendungen in Azure AD können bestimmten Benutzern und Gruppen Zugriff auf Anwendungen zuweisen. Mithilfe der Graph-API können Sie diese Liste lesen und zum Steuern der Bereitstellung bzw. der Aufhebung der Bereitstellung von Ressourcen und des Zugriffs innerhalb Ihrer Anwendung verwenden.
 
 **Verwenden von Azure AD für die auf Rollen basierende Zugriffskontrolle.** Administratoren und Besitzer von Anwendungen können Benutzer und Gruppen Rollen zuweisen, die Sie definieren, wenn Sie Ihre Anwendung in Azure AD registrieren. Rolleninformationen werden in Anmeldetoken an die Anwendung gesendet und können auch mithilfe der Graph-API gelesen werden. Erfahren Sie mehr über das [Verwenden von Azure AD für die Autorisierung](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx).
 
@@ -90,4 +90,4 @@ Die Integration in Azure AD bietet den Vorteil, dass Sie keinen zusätzlichen Co
 
 [Anmelden von Benutzern über Azure AD](active-directory-authentication-scenarios.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

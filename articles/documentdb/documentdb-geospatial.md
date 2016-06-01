@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="03/30/2016" 
+    ms.date="05/16/2016" 
     ms.author="arramac"/>
     
 # Arbeiten mit Geodaten in Azure DocumentDB
@@ -28,7 +28,7 @@ In diesem [Github-Projekt](https://github.com/Azure/azure-documentdb-dotnet/blob
 
 ## Einführung in räumliche Daten
 
-Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und werden deshalb Geodaten genannt. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Übliche Anwendungsbeispiele sind häufig Abfragen der Entfernung, z. B. "alle Cafés in der Nähe meines aktuellen Standorts suchen".
+Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und werden deshalb Geodaten genannt. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Übliche Anwendungsbeispiele sind häufig Abfragen der Entfernung, z. B. "alle Cafés in der Nähe meines aktuellen Standorts suchen".
 
 ### GeoJSON
 DocumentDB unterstützt eine Volltextindizierung und Abfrage von Geopunktdaten, die mithilfe der [GeoJSON-Spezifikation](http://geojson.org/geojson-spec.html) dargestellt werden. GeoJSON-Datenstrukturen sind stets gültige JSON-Objekte, weshalb sie mit DocumentDB gespeichert und ohne spezielle Tools oder Bibliotheken abgefragt werden können. Die DocumentDB SDKs bieten Hilfsklassen und Methoden, die das Arbeiten mit räumlichen Daten erleichtern.
@@ -163,7 +163,7 @@ DocumentDB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospati
 </tr>
 </table>
 
-Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST\_DISTANCE-Funktion verwendet.
+Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST\_DISTANCE-Funktion verwendet.
 
 **Abfrage**
 
@@ -181,7 +181,7 @@ Wenn Sie die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen
 
 ST\_WITHIN kann verwendet werden, um zu prüfen, ob ein Punkt innerhalb eines Polygons liegt. Polygone werden häufig verwendet, um Umgrenzungen wie Postleitzahlen, Staatsgrenzen oder natürliche Gebilde darzustellen. Wenn Sie wiederum die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen, werden Abfragen nach enthaltenen Elementen effizient über den Index beantwortet.
 
-Polygonargumente in ST\_WITHIN dürfen nur einen einzigen Ring enthalten, d. h. die Polygone dürfen keine Löcher aufweisen. Überprüfen Sie die [DocumentDB-Grenzen](documentdb-limits.md) auf die maximale Anzahl von Punkten in einem Polygon, die für eine ST\_WITHIN-Abfrage zulässig ist.
+Polygonargumente in ST\_WITHIN dürfen nur einen einzigen Ring enthalten, d. h. die Polygone dürfen keine Löcher aufweisen.
 
 **Abfrage**
 
@@ -233,7 +233,7 @@ Diese Funktionen können auch verwendet werden, um Polygone zu überprüfen. Bei
 
 Das .NET SDK für DocumentDB stellt auch die Stub-Methoden `Distance()` und `Within()` für die Verwendung in LINQ-Ausdrücken bereit. Der LINQ-Anbieter für DocumentDB übersetzt diese Methodenaufrufe in entsprechende integrierte SQL-Funktionsaufrufe (ST\_DISTANCE bzw. ST\_WITHIN).
 
-Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der DocumentDB-Sammlung findet, deren Wert "location" sich in einem Radius von 30 km um den angegebenen Punkt befindet.
+Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der DocumentDB-Sammlung findet, deren Wert "location" sich in einem Radius von 30 km um den angegebenen Punkt befindet.
 
 **LINQ-Abfrage der Entfernung**
 
@@ -276,7 +276,7 @@ Kurz gesagt, die Geometrie wird von geodätischen Koordinaten auf eine 2D-Ebene 
 
 Wenn Sie eine Indizierungsrichtlinie angeben, die einen räumlichen Index für "/*" (alle Pfade) enthält, werden alle in der Sammlung gefundenen Punkte für effiziente räumliche Abfragen (ST\_WITHIN und ST\_DISTANCE) indiziert. Räumliche Indizes haben keinen Genauigkeitswert und verwenden stets einen Standardwert für die Genauigkeit.
 
-Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter räumlicher Indizierung, d. h. dass alle in Dokumenten für räumliche Abfragen gefundenen GeoJSON-Punkte indiziert werden. Wenn Sie die Indizierungsrichtlinie im Azure-Portal ändern, können Sie die folgende JSON für die Indizierungsrichtlinie angeben, um die räumliche Indizierung für Ihre Sammlung zu aktivieren.
+Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter räumlicher Indizierung, d. h. dass alle in Dokumenten für räumliche Abfragen gefundenen GeoJSON-Punkte indiziert werden. Wenn Sie die Indizierungsrichtlinie im Azure-Portal ändern, können Sie die folgende JSON für die Indizierungsrichtlinie angeben, um die räumliche Indizierung für Ihre Sammlung zu aktivieren.
 
 **JSON-Sammlungsindizierungsrichtlinie mit aktivierter räumlicher Indizierung**
 
@@ -346,4 +346,4 @@ Nachdem Sie die ersten Schritte mit räumlichen Daten in DocumentDB ausgeführt 
 - Weitere Informationen zu [DocumentDB-Abfragen](documentdb-sql-query.md)
 - Weitere Informationen zu [DocumentDB-Indizierungsrichtlinien](documentdb-indexing-policies.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

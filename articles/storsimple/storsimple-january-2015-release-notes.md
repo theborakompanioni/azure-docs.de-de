@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
  <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="05/16/2016"
    ms.author="v-sharos" />
 
 
@@ -26,7 +26,7 @@ Dieses Update ändert die Softwareversion des physischen Geräts nach dem Oktobe
 
 Lesen Sie die folgenden Informationen in den Versionshinweisen für das Update vom Januar 2015.
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT]  
 >
 >- Dieses Update ist nicht über Windows Update verfügbar und kann nicht wie andere Updates installiert werden. Ihr Gerät erhält dieses Update selbst dann nicht, wenn Sie die Updates über das klassische Azure-Portal installiert haben. Dieses Update gilt nur für virtuelle Geräte, die nach dem 20. Januar 2015 erstellt wurden. 
 > 
@@ -78,4 +78,4 @@ Diese Version enthält ein aktualisiertes Image für das virtuelle Gerät. Für 
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -15,7 +15,7 @@
     ms.workload="search"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.date="04/22/2016"
+    ms.date="05/17/2016"
     ms.author="liamca"
 />
 
@@ -48,8 +48,8 @@ Beachten Sie, dass die Abfrage einen vorkonfigurierten Azure Search-Index mit de
 
 Sie können die Beispiele in diesem Artikel ändern, indem Sie ein Konstrukt aus **Feldname:Suchbegriff** angeben, um einen feldbezogenen Abfragevorgang zu definieren. Dabei besteht das Feld aus einem einzelnen Wort, und der Suchbegriff ist ebenfalls ein einzelnes Wort oder ein Ausdruck, optional mit booleschen Operatoren. Beispiele hierfür sind:
 
-- business\_title:senior NOT junior
-- state:"New York" AND "New Jersey"
+- business\_title:(senior NOT junior)
+- state:("New York" AND "New Jersey")
 
 Achten Sie darauf, dass Sie mehrere Zeichenfolgen in Anführungszeichen setzen, wenn beide Zeichenfolgen als einzelne Entität ausgewertet werden sollen, da in diesem Fall im Ortsfeld nach zwei verschiedenen Städte gesucht wird. Stellen Sie außerdem sicher, dass der Operator großgeschrieben wird, wie im Fall von NOT und AND.
 
@@ -129,4 +129,4 @@ Versuchen Sie, den Lucene-Abfrageparser in Ihrem Code anzugeben. Unter den folge
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

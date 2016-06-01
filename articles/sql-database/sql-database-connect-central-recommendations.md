@@ -130,8 +130,7 @@ Eine Erörterung der *Sperrfrist* für Clients, die ADO.NET verwenden, finden Si
 
 Codebeispiele, die die Wiederholungslogik veranschaulichen, finden Sie in folgenden Themen:
 
-- [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](sql-database-develop-quick-start-client-code-samples.md)
-
+- Codebeispiele unter: [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 
 ### Fehlernummern für vorübergehende Fehler
 
@@ -161,10 +160,12 @@ Weitere Informationen finden Sie unter:
 Die folgenden Themen enthalten Links zu Codebeispielen für mehrere Sprachen und Treiber-Technologien, die Sie zum Herstellen einer Verbindung mit Azure SQL-Datenbank aus dem Clientprogramm verwenden können.
 
 
-Für Clients, die unter Windows, Linux und Mac OS X ausgeführt werden, sind unterschiedliche Codebeispiele angegeben.
+Für Clients, die unter Windows-, Linux- und Mac-Plattformen ausgeführt werden, sind unterschiedliche Codebeispiele angegeben.
 
 
-**Allgemeine Beispiele:** Es gibt [Codebeispiele](sql-database-develop-quick-start-client-code-samples.md) für eine Vielzahl von Programmiersprachen, einschließlich PHP, Python, Node.js und .NET CSharp. Darüber hinaus gibt es Beispiele für Clients, die unter Windows, Linux und Mac OS X ausgeführt werden.
+**Allgemeine Beispiele:** Es gibt Codebeispiele für eine Vielzahl von Programmiersprachen, einschließlich PHP, Python, Java, Node.js und .NET CSharp. Links zu den Codebeispielen finden Sie unter:
+
+- [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 
 
 **Elastische Skalierung:** Informationen zur Konnektivität für Datenbanken mit elastischer Skalierung finden Sie unter:
@@ -172,9 +173,4 @@ Für Clients, die unter Windows, Linux und Mac OS X ausgeführt werden, sind unt
 - [Erste Schritte mit der Vorschauversion von Elastic Scale für Azure SQL-Datenbank](sql-database-elastic-scale-get-started.md)
 - [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md)
 
-
-**Treiberbibliotheken:** Informationen zu Verbindungstreiberbibliotheken, einschließlich empfohlener Versionen, finden Sie unter:
-
-- [Connection Libraries for SQL Database and SQL Server (Verbindungsbibliotheken für SQL-Datenbanken und SQL Server, in englischer Sprache)](sql-database-libraries.md)
-
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

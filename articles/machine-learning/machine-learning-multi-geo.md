@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/12/2016"
+   ms.date="05/09/2016"
    ms.author="tedway; neerajkh"/>
 
 # Hilfedokumentation für mehrere geografische Räume
@@ -38,7 +38,9 @@ Wenn Sie ein Experiment aus der Galerie öffnen, können Sie ebenfalls auswähle
 
 ## Webdienstverwaltung
 
-Um Webdienste programmgesteuert zu verwalten, etwa zum erneuten Trainieren, verwenden Sie die regionsspezifische Adresse: ****https://asiasoutheast.management.azureml.net**
+Um Webdienste programmgesteuert zu verwalten, etwa zum erneuten Trainieren, verwenden Sie die regionsspezifische Adresse:
+- https://asiasoutheast.management.azureml.net
+- https://europewest.management.azureml.net
 
 ### Was Sie beachten sollten
 
@@ -57,4 +59,4 @@ Stellen Sie eine Frage im [Azure Machine Learning-Forum](https://social.msdn.mic
 [3]: ./media/machine-learning-multi-geo/multi-geo_3.png
 [4a]: ./media/machine-learning-multi-geo/multi-geo_4a.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

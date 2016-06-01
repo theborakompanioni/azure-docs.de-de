@@ -34,11 +34,11 @@ Standardmäßig tritt für eine Anforderung nach einer Minute ein Timeout durch 
 
 Beim Ausführen eines Schritts oder einer Aufgabe mit langer Ausführungszeit müssen Sie als Erstes dem Modul angeben, dass kein Timeout aufgetreten ist. Sie müssen dem Modul außerdem mitteilen, wie es feststellen kann, wann die Aufgabe beendet ist. Zuletzt müssen Sie relevante Daten an das Modul zurückgeben, damit der Workflow fortgesetzt werden kann. Dies kann über eine API umgesetzt werden, indem Sie den unten aufgeführten Fluss befolgen. Diese Schritte werden aus der Sicht der benutzerdefinierten API beschrieben:
 
-1\. Wenn eine Anforderung empfangen wird, sofort eine Antwort zurückgeben (bevor die Arbeit abgeschlossen ist). Diese Antwort ist eine `202 ACCEPTED`-Antwort, um dem Modul mitzuteilen, dass die Daten erhalten wurden, die Nutzlast angenommen wurde und jetzt die Verarbeitung stattfindet. Die 202-Antwort sollte die folgenden Header enthalten:
+1. Wenn eine Anforderung empfangen wird, sofort eine Antwort zurückgeben (bevor die Arbeit abgeschlossen ist). Diese Antwort ist eine `202 ACCEPTED`-Antwort, um dem Modul mitzuteilen, dass die Daten erhalten wurden, die Nutzlast angenommen wurde und jetzt die Verarbeitung stattfindet. Die 202-Antwort sollte die folgenden Header enthalten: 
  * `location`-Header (erforderlich): Dies ist ein absoluter Pfad zu der URL, die von Logik-Apps zum Überprüfen des Status des Auftrags verwendet werden kann.
  * `retry-after` (optional, Standardwert für Aktionen lautet 20). Dies ist die Anzahl der Sekunden, die das Modul warten soll, bevor die Adressheader-URL abgerufen wird, um den Status zu überprüfen.
 
-2\. Bei der Überprüfung des Auftragsstatus folgende Prüfungen durchführen:
+2. Bei der Überprüfung des Auftragsstatus folgende Prüfungen durchführen: 
  * Wenn der Auftrag abgeschlossen ist: eine `200 OK`-Antwort mit der Antwortnutzlast zurückgeben.
  * Wenn der Auftrag noch immer verarbeitet wird: Eine weitere `202 ACCEPTED`-Antwort mit den gleichen Headern wie in der ersten Antwort zurückgeben.
 
@@ -89,4 +89,4 @@ Derzeit wird das Ermitteln eines Webhooktriggers über Swagger nicht vom Logik-A
 
 Ein Beispiel für einen Webhooktrigger finden Sie [hier](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers) in GitHub.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

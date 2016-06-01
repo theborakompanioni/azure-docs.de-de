@@ -6,14 +6,14 @@
    authors="bmscholl"
    manager="timlt"
    editor=""/>
-   
+
 <tags
    ms.service="service-fabric"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="05/17/2016"
    ms.author="bscholl"/>
 
 # Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric
@@ -34,7 +34,7 @@ In diesem Artikel werden die grundlegenden Schritte zum Verpacken einer ausführ
 
 ## Kurzübersicht über die Anwendungs- und Dienstmanifestdateien
 
-Bevor Sie sich im Detail mit der Bereitstellung einer ausführbaren Gastanwendungsdatei befassen, sollten Sie das Service Fabric-Modell für das Verpacken und Bereitstellen von Anwendungen kennen. Das Service Fabric-Packmodell beruht hauptsächlich auf zwei Dateien:
+Bevor Sie sich im Detail mit der Bereitstellung einer ausführbaren Gastanwendungsdatei befassen, sollten Sie das Service Fabric-Modell für das Verpacken und Bereitstellen von Anwendungen kennen. Das Verpackungs- und Bereitstellungsmodell von Service Fabric basiert hauptsächlich auf zwei XML-Dateien: dem Anwendungs- und dem Dienstmanifest. Die Schemadefinition für die Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ wird über das Service Fabric-SDK und die Service Fabric-Tools unter *C:\\Programme\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* installiert.
 
 
 * **Anwendungsmanifest**
@@ -44,64 +44,12 @@ Bevor Sie sich im Detail mit der Bereitstellung einer ausführbaren Gastanwendun
   In der Service Fabric-Terminologie ist eine Anwendung eine „aktualisierbare Einheit“. Eine Anwendung kann als eine Einheit aktualisiert werden, wobei potenzielle Fehler (und mögliche Zurücksetzungen) von der Plattform verwaltet werden. Durch die Plattform wird sichergestellt, dass der Upgradevorgang vollständig erfolgreich ist bzw. dass die Anwendung bei einem Upgradefehler nicht in einem unbekannten/instabilen Zustand belassen wird.
 
 
-  ```xml
-  <?xml version="1.0" encoding="utf-8"?>
-  <ApplicationManifest ApplicationTypeName="actor2Application"
-                       ApplicationTypeVersion="1.0.0.0"
-                       xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-    <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="actor2Pkg" ServiceManifestVersion="1.0.0.0" />
-      <ConfigOverrides />
-    </ServiceManifestImport>
-
-    <DefaultServices>
-      <Service Name="actor2">
-        <StatelessService ServiceTypeName="actor2Type">
-          <SingletonPartition />
-        </StatelessService>
-      </Service>
-    </DefaultServices>
-
-  </ApplicationManifest> 
-  ```
-
 * **Dienstmanifest**
 
   Das Dienstmanifest beschreibt die Komponenten eines Diensts. Es enthält Daten, z. B. den Namen und den Typ des Diensts (die Informationen, die Service Fabric zur Verwaltung des Diensts verwendet), und seine Code-, Konfigurations- und Datenkomponenten. Das Dienstmanifest enthält auch einige zusätzliche Parameter, die verwendet werden können, um den Dienst zu konfigurieren, nachdem er bereitgestellt wurde.
 
   Hier werden nicht die Details aller unterschiedlichen Parameter beschrieben, die im Dienstmanifest verfügbar sind. Wir werden auf den relevanten Abschnitt eingehen, um eine ausführbare Gastanwendungsdatei in Service Fabric auszuführen.
 
-  ```xml
-  <?xml version="1.0" encoding="utf-8"?>
-  <ServiceManifest Name="actor2Pkg"
-                   Version="1.0.0.0"
-                   xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <ServiceTypes>
-      <StatelessServiceType ServiceTypeName="actor2Type" />
-    </ServiceTypes>
-
-    <CodePackage Name="Code" Version="1.0.0.0">
-      <EntryPoint>
-        <ExeHost>
-          <Program>actor2.exe</Program>
-        </ExeHost>
-      </EntryPoint>
-    </CodePackage>
-
-    <ConfigPackage Name="Config" Version="1.0.0.0" />
-
-    <Resources>
-      <Endpoints>
-        <Endpoint Name="ServiceEndpoint" />
-      </Endpoints>
-    </Resources>
-  </ServiceManifest>
-  ```
 
 ## Dateistruktur des Anwendungspakets
 Damit eine Anwendung in Service Fabric bereitgestellt werden kann, muss die Anwendung einer vordefinierten Verzeichnisstruktur folgen. Es folgt ein Beispiel dieser Struktur.
@@ -300,10 +248,10 @@ Der letzte Schritt ist das Bereitstellen der Anwendung. Das folgende PowerShell-
 Connect-ServiceFabricCluster localhost:19000
 
 Write-Host 'Copying application package...'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath 'C:\Dev\MultipleApplications' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'Store\nodeapp'
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath 'C:\Dev\MultipleApplications' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'nodeapp'
 
 Write-Host 'Registering application type...'
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'Store\nodeapp'
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'nodeapp'
 
 New-ServiceFabricApplication -ApplicationName 'fabric:/nodeapp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0
 
@@ -324,11 +272,11 @@ Dies ist eine praktische Konfiguration für Front-End-Anwendungen (z. B. REST-E
 
 Bestimmen Sie im Service Fabric-Explorer den Knoten, auf dem der Dienst ausgeführt wird. In diesem Beispiel ist es „Node1“:
 
-![Knoten, auf dem der Dienst ausgeführt wird](./media/service-fabric-deploy-existing-app/runningapplication.png)
+![Knoten, auf dem der Dienst ausgeführt wird](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
 Wenn Sie zum Knoten navigieren und zur Anwendung wechseln, sehen Sie die wesentlichen Knoteninformationen, einschließlich des Speicherorts auf dem Datenträger.
 
-![Speicherort auf dem Datenträger](./media/service-fabric-deploy-existing-app/locationondisk.png)
+![Speicherort auf dem Datenträger](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
 Wenn Sie in Server-Explorer zum Verzeichnis wechseln, sehen Sie das Arbeitsverzeichnis und den Protokollordner des Diensts, wie nachstehend gezeigt.
 
@@ -338,8 +286,8 @@ Wenn Sie in Server-Explorer zum Verzeichnis wechseln, sehen Sie das Arbeitsverze
 ## Nächste Schritte
 In diesem Artikel wurden das Verpacken einer ausführbaren Gastanwendungsdatei sowie ihre Bereitstellung in Service Fabric beschrieben. Als nächsten Schritt können Sie weitere Informationen zu diesem Thema lesen.
 
-- [Beispiel für das Verpacken und Bereitstellen einer ausführbaren Gastanwendungsdatei auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Custom/SimpleApplication), einschließlich eines Links zur Vorabversion des Packtools
+- [Beispiel für das Verpacken und Bereitstellen einer ausführbaren Gastanwendungsdatei auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication), einschließlich eines Links zur Vorabversion des Packtools
 - [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
 - [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

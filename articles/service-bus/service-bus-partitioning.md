@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Partitionierte Nachrichtenentitäten | Microsoft Azure"
-   description="Es wird beschrieben, wie Nachrichtenentitäten mit mehreren Nachrichtenbrokern partitioniert werden."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" /> 
+    pageTitle="Partitionierte Nachrichtenentitäten | Microsoft Azure"
+    description="Es wird beschrieben, wie Nachrichtenentitäten mit mehreren Nachrichtenbrokern partitioniert werden."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/28/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # Partitionierte Nachrichtenentitäten
 
@@ -23,9 +23,9 @@ Weitere Informationen zum inneren Aufbau von Service Bus finden Sie im Thema [Se
 
 ## Partitionierte Warteschlangen und Themen
 
-Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Fragmenten. Jedes Fragment wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein Thema gesendet wird, weist Service Bus die Nachricht einem der Fragmente zu. Die Auswahl erfolgt nach dem Zufallsprinzip durch Service Bus oder einen Partitionsschlüssel, der vom Absender angegeben werden kann.
+Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Fragmenten. Jedes Fragment wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein Thema gesendet wird, weist Service Bus die Nachricht einem der Fragmente zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
 
-Wenn ein Client eine Nachricht von einer partitionierten Warteschlange oder von einem Abonnement oder partitionierten Thema empfangen möchte, fragt Service Bus alle Fragmente auf Nachrichten ab. Anschließend wird die erste Nachricht zurückgegeben, die von einem der Nachrichtenspeicher an den Empfänger zurückgegeben wird. Service Bus speichert die anderen Nachrichten zwischen und gibt sie zurück, wenn zusätzliche Empfangsanforderungen eingehen. Ein empfangender Client ist sich der Partitionierung nicht bewusst. Das Verhalten einer partitionierten Warteschlange oder eines Themas (z. B. „read“, „complete“, „defer“, „deadletter“, „prefetching“) dem Client gegenüber ist mit dem Verhalten einer normalen Entität identisch.
+Wenn ein Client eine Nachricht von einer partitionierten Warteschlange oder von einem Abonnement eines partitionierten Themas empfangen möchte, fragt Service Bus alle Fragmente auf Nachrichten ab. Anschließend wird die erste Nachricht zurückgegeben, die von einem der Nachrichtenspeicher an den Empfänger gesendet wird. Service Bus speichert die anderen Nachrichten zwischen und gibt sie zurück, wenn zusätzliche Empfangsanforderungen eingehen. Ein empfangender Client ist sich der Partitionierung nicht bewusst. Das Verhalten einer partitionierten Warteschlange oder eines Themas (z. B. „read“, „complete“, „defer“, „deadletter“, „prefetching“) dem Client gegenüber ist mit dem Verhalten einer normalen Entität identisch.
 
 Es fallen keine zusätzlichen Kosten an, wenn eine Nachricht an eine partitionierte Warteschlange oder ein Thema gesendet oder von dort empfangen wird.
 
@@ -125,7 +125,7 @@ In der aktuellen Implementierung gelten bei Service Bus die folgenden Einschrän
 
 ## Nächste Schritte
 
-Weitere Informationen zur Partitionierung von Messagingentitäten finden Sie in der Beschreibung der [AMQP 1.0-Unterstützung für partitionierte Service Bus-Warteschlangen und -Themen][].
+Weitere Informationen zur Partitionierung von Nachrichtenentitäten finden Sie in der Diskussion [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus][].
 
   [Service Bus-Architektur]: service-bus-architecture.md
   [klassischen Azure-Portal]: http://manage.windowsazure.com
@@ -142,6 +142,6 @@ Weitere Informationen zur Partitionierung von Messagingentitäten finden Sie in 
   [MessagingFactorySettings.OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
-  [AMQP 1.0-Unterstützung für partitionierte Service Bus-Warteschlangen und -Themen]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+  [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0518_2016-->

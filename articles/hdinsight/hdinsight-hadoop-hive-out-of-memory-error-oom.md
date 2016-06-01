@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="12/10/2015"
+	ms.date="05/18/2016"
 	ms.author="rashimg;cgronlun"/>
 
 # Beheben eines „Nicht genügend Arbeitsspeicher“-Fehlers (Out of Memory, OOM) mit Hive-Arbeitsspeichereinstellungen in Hadoop in Azure HDInsight
@@ -109,7 +109,7 @@ Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](http://blogs.msdn.
 
 Wie im Blogbeitrag schon sagt, definieren die folgenden zwei Einstellungen den Containerspeicher für den Heap: **hive.tez.container.size** und **hive.tez.java.opts**. Nach unserer Erfahrung bedeutet die OOM-Ausnahme nicht, dass der Container zu klein ist. Es bedeutet, dass der Java-Heap (hive.tez.java.opts) zu klein ist. Wenn Sie also eine OOM-Fehlermeldung erhalten, können Sie versuchen, **hive.tez.java.opts** heraufzusetzen. Ggf. können Sie **hive.tez.container.size** heraufsetzen. Die Einstellung **java.opts** sollte ungefähr 80 % von **container.size** betragen.
 
-> [AZURE.NOTE]Die Einstellung **hive.tez.java.opts** muss stets kleiner sein als **hive.tez.container.size**.
+> [AZURE.NOTE]  Die Einstellung **hive.tez.java.opts** muss stets kleiner sein als **hive.tez.container.size**.
 
 Da ein D12-Computer 28 GB Arbeitsspeicher hat, haben wir beschlossen, eine Containergröße von 10 GB (10.240 MB) zu verwenden und java.opts 80 % zuzuweisen. Dies erfolgte in der Hive-Konsole mit der folgenden Einstellung:
 
@@ -122,4 +122,4 @@ Basierend auf diesen Einstellungen wurde die Abfrage in weniger als zehn Minuten
 
 Eine OOM-Fehlermeldung zu erhalten, bedeutet nicht unbedingt, dass der Container zu klein ist. Konfigurieren Sie stattdessen die Einstellungen für den Arbeitsspeicher, sodass die Heapgröße erhöht wird und mindestens 80 % der Größe des Containerspeichers entspricht.
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0518_2016-->

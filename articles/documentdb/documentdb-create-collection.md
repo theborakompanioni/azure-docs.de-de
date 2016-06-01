@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mimig"/>
 
 # So erstellen Sie eine DocumentDB-Sammlung über das Azure-Portal
@@ -44,11 +44,11 @@ Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist e
 
 	Wenn Sie eine partitionierte Sammlung erstellen möchten, fahren Sie mit Schritt 7 fort, da Sie keinen Tarif auswählen müssen.
 
-7. Wählen Sie einen **Partitionierungsmodus** für die Sammlung aus, entweder **Einzelne Partition** oder **Partitioniert**. Eine einzelne Partition verfügt über eine reservierte Speicherkapazität von 10 GB und kann Durchsatzebenen von 400 bis 10.000 Anforderungseinheiten pro Sekunde aufweisen. Eine partitionierte Auflistung kann skaliert werden, um 250 GB an Speicher über mehrere Partitionen verteilt zu verarbeiten, und kann Durchsatzebenen von 10.100 bis 250.000 Anforderungseinheiten pro Sekunde aufweisen.
+7. Wählen Sie einen **Partitionierungsmodus** für die Sammlung aus, entweder **Einzelne Partition** oder **Partitioniert**. Eine einzelne Partition verfügt über eine reservierte Speicherkapazität von 10 GB und kann Durchsatzebenen von 400 bis 10.000 Anforderungseinheiten pro Sekunde aufweisen. Eine partitionierte Auflistung kann skaliert werden, um 250 GB an Speicher über mehrere Partitionen verteilt zu verarbeiten, und kann Durchsatzebenen von 10.100 bis 250.000 Anforderungseinheiten pro Sekunde aufweisen. Informationen zum Anfordern von Erhöhungen dieser Standardzuordnungen nach dem Erstellen einer Sammlung finden Sie unter [Anfordern von erhöhten DocumentDB-Kontolimits](documentdb-increase-limits.md).
 
-8. Wählen Sie den **Durchsatz** für die partitionierte Sammlung. Eine Anforderungseinheit (Request Unit, RU) entspricht dem Durchsatz des Lesevorgangs eines Dokuments mit 1 KB. Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](documentdb-request-units.md).
+8. Wählen Sie den **Durchsatz** für die partitionierte Sammlung aus. Eine Anforderungseinheit (Request Unit, RU) entspricht dem Durchsatz des Lesevorgangs eines Dokuments mit 1 KB. Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](documentdb-request-units.md).
 
-9. Wenn Sie eine partitionierte Sammlung erstellen, wählen Sie den **Partitionsschlüssel** für die Sammlung. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen-Auflistung. Weitere Informationen zum Auswählen eines Partitionsschlüssels finden Sie unter [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md).
+9. Wenn Sie eine partitionierte Sammlung erstellen, wählen Sie den **Partitionsschlüssel** für die Sammlung. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen zum Auswählen eines Partitionsschlüssels finden Sie unter [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md).
 
 10. Klicken Sie am unteren Bildschirmrand auf **OK**, um die neue Sammlung zu erstellen.
 
@@ -66,7 +66,7 @@ Sammlungen sind nicht identisch mit Tabellen in relationalen Datenbanken. Sammlu
 
 ## Weitere Methoden zum Erstellen einer DocumentDB-Sammlung
 
-Sammlungen müssen nicht über das Portal erstellt werden. Sie können diese auch mithilfe der [DocumentDB-SDKs](documentdb-sdk-dotnet.md) und der REST-API erstellen.
+Sammlungen müssen nicht über das Portal erstellt werden, sondern können auch mithilfe der [DocumentDB SDKs](documentdb-sdk-dotnet.md) und der REST-API erstellt werden.
 
 - Ein C#-Codebeispiel finden Sie unter [C#-Sammlungsbeispiele](documentdb-dotnet-samples.md#collection-examples). 
 - Ein Node.js-Codebeispiel finden Sie unter [Node.js-Sammlungsbeispiele](documentdb-nodejs-samples.md#collection-examples).
@@ -83,8 +83,8 @@ Nachdem Sie nun über eine Sammlung verfügen, besteht der nächste Schritt dari
 
 - Sie können [Dokumente hinzufügen](documentdb-view-json-document-explorer.md), indem Sie den Dokument-Explorer im Portal verwenden.
 - Sie können [Dokumente und Daten importieren](documentdb-import-data.md), indem Sie das Datenmigrationstool für DocumentDB verwenden, mit dem Sie JSON- und CSV-Dateien importieren können. Sie können auch Daten aus SQL Server, MongoDB, dem Azure-Tabellenspeicher und anderen DocumentDB-Sammlungen importieren. 
-- Sie können Dokumente auch mithilfe eines der [DocumentDB-SDKs](documentdb-sdk-dotnet.md) hinzufügen. DocumentDB verfügt über SDKs für .NET, Java, Python, Node.js und JavaScript-API. C#-Codebeispiele, die die Verwendung von Dokumenten mithilfe des DocumentDB .NET SDK veranschaulichen, finden Sie unter [C#-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples). Node.js-Codebeispiele, die die Verwendung von Dokumenten mithilfe des DocumentDB Node.js SDK veranschaulichen, finden Sie unter [Node.js-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).
+- Sie können Dokumente auch mithilfe eines der [DocumentDB-SDKs](documentdb-sdk-dotnet.md) hinzufügen. DocumentDB verfügt über SDKs für .NET, Java, Python, Node.js und JavaScript-API. C#-Codebeispiele, die die Verwendung von Dokumenten mithilfe des .NET SDK für DocumentDB veranschaulichen, finden Sie unter [C#-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples). Node.js-Codebeispiele, die die Verwendung von Dokumenten mithilfe des Node.js SDK für DocumentDB veranschaulichen, finden Sie unter [Node.js-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).
 
 Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#executing-queries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](documentdb-sdk-dotnet.md) verwenden.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

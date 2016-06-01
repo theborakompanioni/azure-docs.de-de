@@ -154,10 +154,10 @@ let query = table.query()
 let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 ```
 
-Mit `MSQuery` können Sie verschiedene Abfrageeigenschaften steuern, darunter die Folgenden. Führen Sie eine `MSQuery`-Abfrage durch, indem Sie auf `readWithCompletion`, wie im folgenden Beispiel gezeigt, aufrufen.
+Mit `MSQuery` können Sie verschiedene Abfrageeigenschaften steuern, darunter die Folgenden. Führen Sie eine `MSQuery`-Abfrage durch, indem Sie `readWithCompletion` aufrufen, wie im folgenden Beispiel gezeigt.
 * Festlegen der Reihenfolge der Ergebnisse
-* Einschränkung der zurückzugebenden Felder
-* Einschränkung der Anzahl der zurückzugebenden Datensätze
+* Einschränken der zurückzugebenden Felder
+* Einschränken der Anzahl der zurückzugebenden Datensätze
 * Festlegen der Gesamtanzahl in der Antwort
 * Festlegen benutzerdefinierter Abfrageparameter in der Anforderung
 * Anwenden zusätzlicher Funktionen
@@ -216,7 +216,7 @@ query.selectFields = @[@"text", @"complete"];
 query.selectFields = ["text", "complete"]
 ```
 
-Um zusätzliche Abfragezeichenfolgen-Parameter in die Anforderung einzubinden (z. B. weil diese Parameter von einem benutzerdefinierten serverseitigen Skript verwendet werden), füllen Sie `query.parameters` wie folgt aus:
+Um zusätzliche Abfragezeichenfolgen-Parameter in die Anforderung einzubinden (z. B. weil diese Parameter von einem benutzerdefinierten serverseitigen Skript verwendet werden), füllen Sie `query.parameters` wie folgt aus:
 
 **Objective-C**:
 
@@ -390,7 +390,7 @@ Mit einer benutzerdefinierten API können Sie beliebige Back-End-Funktionen verf
 
 Rufen Sie zum Öffnen einer benutzerdefinierten APIs `MSClient.invokeAPI` wie unten dargestellt auf. Der Inhalt der Anforderung und der Antwort wird als JSON behandelt. Um weitere Medientypen zu nutzen, [verwenden Sie die andere Überladung von `invokeAPI`](http://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:).
 
-Um eine `GET`-Anforderung anstelle einer `POST`-Anforderung zu erstellen, setzen Sie den Parameter `HTTPMethod` auf `"GET"` und den Parameter `body` auf `nil` (da GET-Anforderungen keinen Nachrichtentext enthalten). Wenn Ihre benutzerdefinierte API anderen HTTP-Verben unterstützt, ändern Sie `HTTPMethod` entsprechend.
+Um eine `GET`-Anforderung anstelle einer `POST`-Anforderung zu erstellen, setzen Sie den Parameter `HTTPMethod` auf `"GET"` und den Parameter `body` auf `nil` (da GET-Anforderungen keinen Nachrichtentext enthalten). Wenn Ihre benutzerdefinierte API andere HTTP-Verben unterstützt, ändern Sie `HTTPMethod` entsprechend.
 
 **Objective-C**:
 ```
@@ -525,7 +525,7 @@ und der Pod:
 
 * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 
-* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website mithilfe des HTTPS-Schemas. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
+* Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
 
 **Objective-C**:
 
@@ -565,8 +565,8 @@ und der Pod:
 **Swift**:
 
 	// add the following imports to your bridging header:
-	//     #import <ADALiOS/ADAuthenticationContext.h>
-	//     #import <ADALiOS/ADAuthenticationSettings.h>
+	//		#import <ADALiOS/ADAuthenticationContext.h>
+	//		#import <ADALiOS/ADAuthenticationSettings.h>
 
 	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
 		let authority = "INSERT-AUTHORITY-HERE"
@@ -588,6 +588,158 @@ und der Pod:
     		}
 	}
 
+
+## <a name="facebook-sdk"></a>Gewusst wie: Authentifizieren von Benutzern mit dem Facebook-SDK für iOS
+
+Mithilfe des Facebook-SDKs für iOS können Sie Benutzer über Facebook bei Ihrer App anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den `loginAsync()`-Methoden häufig vorgezogen.
+
+1. Konfigurieren Sie Ihr mobiles App-Back-End für die Facebook-Anmeldung, indem Sie die im Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](app-service-mobile-how-to-configure-facebook-authentication.md) beschriebenen Schritte ausführen.
+
+2. Installieren Sie das Facebook-SDK für iOS gemäß den Anweisungen unter [Facebook-SDK für iOS – Erste Schritte](https://developers.facebook.com/docs/ios/getting-started). Anstatt eine neue App zu erstellen, können Sie die iOS-Plattform zu ihrer vorhandenen Registrierung hinzufügen.
+
+    Die Facebook-Dokumentation enthält im App-Delegat etwas Objective-C-Code. Wenn Sie **Swift** verwenden, können Sie die folgenden Übersetzungen für „AppDelegate.swift“ verwenden:
+  
+		// Add the following import to your bridging header:
+		//		#import <FBSDKCoreKit/FBSDKCoreKit.h>
+		
+		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+			FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+			// Add any custom logic here.
+			return true
+		}
+
+		func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+			let handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+			// Add any custom logic here.
+			return handled
+		}
+
+3. Fügen Sie Ihrem Projekt nicht nur `FBSDKCoreKit.framework` hinzu, sondern auch `FBSDKLoginKit.framework`, und zwar auf die gleiche Weise.
+
+4. Fügen Sie auf Grundlage der verwendeten Sprache den unten stehenden Code zu Ihrer Anwendung hinzu.
+
+**Objective-C**:
+
+	#import <FBSDKLoginKit/FBSDKLoginKit.h>
+	#import <FBSDKCoreKit/FBSDKAccessToken.h>
+	// ...
+	- (void) authenticate:(UIViewController*) parent
+	           completion:(void (^) (MSUser*, NSError*)) completionBlock;
+	{	    
+	    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+	    [loginManager
+	     logInWithReadPermissions: @[@"public_profile"]
+	     fromViewController:parent
+	     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+	         if (error) {
+	             completionBlock(nil, error);
+	         } else if (result.isCancelled) {
+	             completionBlock(nil, error);
+	         } else {
+	             NSDictionary *payload = @{
+	                                       @"access_token":result.token.tokenString
+	                                       };
+	             [client loginWithProvider:@"facebook" token:payload completion:completionBlock];
+	         }
+	     }];
+	}
+
+
+**Swift**:
+
+	// Add the following imports to your bridging header:
+	//		#import <FBSDKLoginKit/FBSDKLoginKit.h>
+	//		#import <FBSDKCoreKit/FBSDKAccessToken.h>
+	
+	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
+		let loginManager = FBSDKLoginManager()
+		loginManager.logInWithReadPermissions(["public_profile"], fromViewController: parent) { (result, error) in
+			if (error != nil) {
+				completion(nil, error)
+			}
+			else if result.isCancelled {
+				completion(nil, error)
+			}
+			else {
+				let payload: [String: String] = ["access_token": result.token.tokenString]
+				client.loginWithProvider("facebook", token: payload, completion: completion)
+			}
+		}
+	}
+
+## <a name="twitter-fabric"></a>Gewusst wie: Authentifizieren von Benutzern mit Twitter Fabric für iOS
+
+Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den `loginAsync()`-Methoden häufig vorgezogen.
+
+1. Konfigurieren Sie Ihr mobiles App-Back-End für die Twitter-Anmeldung, indem Sie die im Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Twitter-Anmeldung](app-service-mobile-how-to-configure-twitter-authentication.md) beschriebenen Schritte ausführen.
+
+2. Fügen Sie Fabric Ihrem Projekt hinzu, indem Sie die Anweisungen unter [Fabric for iOS – Getting Started](https://docs.fabric.io/ios/fabric/getting-started.html) (Fabric für iOS – Erste Schritte) ausführen und das TwitterKit einrichten.
+
+    > [AZURE.NOTE] Standardmäßig erstellt Fabric eine neue Twitter-Anwendung für Sie. Sie können das ändern, indem Sie den zuvor erstellten Consumer Key und das Consumer Secret registrieren. Verwenden Sie dazu die folgenden Codeausschnitte. Alternativ können Sie auch die Werte für Consumer Key und Consumer Secret, die für App Service bereitgestellt werden, durch die im [Fabric Dashboard](https://www.fabric.io/home) angezeigten Werte ersetzen. Wenn Sie sich für diese Möglichkeit entscheiden, müssen Sie die Rückruf-URL auf einen Platzhalterwert festlegen, z.B. auf `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.
+
+	Wenn Sie die zuvor erstellten geheimen Schlüssel verwenden, müssen Sie Ihrem App-Delegat Folgendes hinzufügen:
+	
+	**Objective-C**:
+
+		#import <Fabric/Fabric.h>
+		#import <TwitterKit/TwitterKit.h>
+		// ...
+		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+		{
+		    [[Twitter sharedInstance] startWithConsumerKey:@"your_key" consumerSecret:@"your_secret"];
+		    [Fabric with:@[[Twitter class]]];
+			// Add any custom logic here.
+		    return YES;
+		}
+		
+	**Swift**:
+	
+		import Fabric
+		import TwitterKit
+		// ...
+		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+			Twitter.sharedInstance().startWithConsumerKey("your_key", consumerSecret: "your_secret")
+			Fabric.with([Twitter.self])
+			// Add any custom logic here.
+			return true
+		}
+	
+3. Fügen Sie auf Grundlage der verwendeten Sprache den unten stehenden Code zu Ihrer Anwendung hinzu.
+
+**Objective-C**:
+
+	#import <TwitterKit/TwitterKit.h>
+	// ...
+	- (void)authenticate:(UIViewController*)parent completion:(void (^) (MSUser*, NSError*))completionBlock
+	{
+		[[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
+			if (session) {
+				NSDictionary *payload = @{
+											@"access_token":session.authToken,
+											@"access_token_secret":session.authTokenSecret
+										};
+				[client loginWithProvider:@"twitter" token:payload completion:completionBlock];
+			} else {
+				completionBlock(nil, error);
+			}
+	    }];
+	}
+
+**Swift**:
+
+	import TwitterKit
+	// ...
+	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
+		let client = self.table!.client
+		Twitter.sharedInstance().logInWithCompletion { session, error in
+			if (session != nil) {
+				let payload: [String: String] = ["access_token": session!.authToken, "access_token_secret": session!.authTokenSecret]
+				client.loginWithProvider("twitter", token: payload, completion: completion)
+			} else {
+				completion(nil, error)
+			}
+		}
+	}
 
 <!-- Anchors. -->
 
@@ -640,4 +792,4 @@ und der Pod:
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

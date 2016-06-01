@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="bradsev" />
 
 
 # Bereitstellen der Microsoft Data Science Virtual Machine
-
-## Einführung
 
 Die Microsoft Data Science Virtual Machine ist das Image eines virtueller Azure-Computers (VM), das vorinstalliert und mit einigen gängigen Tools konfiguriert ist, die häufig für Datenanalysen und Machine Learning verwendet werden. Die enthaltenen Tools sind:
 
@@ -99,7 +97,7 @@ Führen Sie den folgenden Befehl über die Befehlszeile der Data Science Virtual
 
 Verwenden Sie ein sicheres Kennwort, sobald Sie dazu aufgefordert werden.
 
-Der Kennworthash wird in der Ausgabe im Format "sha1:xxxxxx" angezeigt. Kopieren Sie diesen Kennworthash, und ersetzen Sie den vorhandenen Hash in Ihrer Notebook-Konfigurationsdatei in diesem Verzeichnis: **C:\\ProgramData\\jupyter\\jupyter\_notebook\_config.py**. Verwenden Sie den Parameternamen „***c.NotebookApp.password***”.
+Der Kennworthash wird in der Ausgabe im Format "sha1:xxxxxx" angezeigt. Kopieren Sie diesen Kennworthash, und ersetzen Sie den vorhandenen Hash in Ihrer Notebook-Konfigurationsdatei in diesem Verzeichnis: **C:\\ProgramData\\jupyter\\jupyter\_notebook\_config.py**. Verwenden Sie den Parameternamen ***c.NotebookApp.password***.
 
 Ersetzen Sie nur den vorhandenen Hashwert innerhalb der Anführungszeichen. Die Anführungszeichen und das Präfix ***sha1:*** für den Parameterwert müssen beibehalten werden.
 
@@ -108,13 +106,13 @@ Zum Schluss müssen Sie den IPython-Server, der auf dem virtuellen Computer als 
 ## In der Microsoft Data Science Virtual Machine installierte Tools
 
 ### Microsoft R Server Developer Edition
-Für die Durchführung Ihrer Analysen ist auf der VM Microsoft R Server Developer Edition vorinstalliert. Microsoft R Server ist eine unterstützte, sichere und in großem Maße bereitstell- und skalierbare Analyseplattform für Unternehmen, die auf R basiert. Dank vielfältiger Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen unterstützt R Server Analysen vollumfänglich - von der Exploration über die Analyse bis hin zur Visualisierung und der Modellierung. Die Verwendung und Erweiterung der Open-Source-Sprache R sorgt für die vollständige Kompatibilität zwischen Microsoft R Server und in R geschriebenen Skripten, Funktionen und CRAN-Paketen für die Datenanalyse in Unternehmen. Mit der Möglichkeit, Daten parallel und in großen Stücken verarbeiten zu können, hebt Microsoft R Server die Speicherbeschränkungen der Open-Source-Sprache R auf und ermöglicht den Benutzern so auch die Analyse von Daten, deren Größe die des Hauptspeichers bei weitem überschreitet. Zusätzlich enthält die VM eine integrierte Entwicklungsumgebung für R (IDE), die Sie durch Klicken auf das Symbol „Revolution R Enterprise 8.0“ im Startmenü oder auf dem Desktop öffnen können. Sie können auch andere IDEs wie „[RStudio](http://www.rstudio.com)” herunterladen und verwenden.
+Für die Durchführung Ihrer Analysen ist auf der VM Microsoft R Server Developer Edition vorinstalliert. Microsoft R Server ist eine unterstützte, sichere und in großem Maße bereitstell- und skalierbare Analyseplattform für Unternehmen, die auf R basiert. Dank vielfältiger Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen unterstützt R Server Analysen vollumfänglich - von der Exploration über die Analyse bis hin zur Visualisierung und der Modellierung. Die Verwendung und Erweiterung der Open-Source-Sprache R sorgt für die vollständige Kompatibilität zwischen Microsoft R Server und in R geschriebenen Skripten, Funktionen und CRAN-Paketen für die Datenanalyse in Unternehmen. Mit der Möglichkeit, Daten parallel und in großen Stücken verarbeiten zu können, hebt Microsoft R Server die Speicherbeschränkungen der Open-Source-Sprache R auf und ermöglicht den Benutzern so auch die Analyse von Daten, deren Größe die des Hauptspeichers bei weitem überschreitet. Zusätzlich enthält die VM eine integrierte Entwicklungsumgebung für R (IDE), die Sie durch Klicken auf das Symbol „Revolution R Enterprise 8.0“ im Startmenü oder auf dem Desktop öffnen können. Sie können auch andere IDEs wie [RStudio](http://www.rstudio.com) herunterladen und verwenden.
 
 ### Python
-Für die Entwicklung mithilfe von Python wurden Anaconda Python Distribution 2.7 und 3.5 installiert. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen. Sie können die Python-Tools für Visual Studio (PTVS), die mit der Visual Studio 2015 Community Edition installiert werden, oder eine der mit Anaconda gebündelten IDEs wie IDLE oder Spyder verwenden. Sie können eines dieser Tools über eine Suche auf der Suchleiste starten (**Windows-Taste**+**S**). **Hinweis**: Damit die Python-Tools für Visual Studio auf Anaconda Python 2.7 und 3.5 verweisen können, müssen Sie benutzerdefinierte Umgebungen für jede Version erstellen. Wechseln Sie in der Visual Studio 2015 Community Edition zu „Tools -> Python-Tools -> Python-Umgebungen“, und klicken Sie auf „+ Benutzerdefiniert“. Legen Sie die Umgebungspfade fest. Anaconda Python 2.7 wird unter C:\\Anaconda installiert, Anaconda Python 3.5 unter C:\\Anaconda\\envs\\py35. Ausführliche Schrittanleitungen hierzu finden Sie in der [PTVS-Dokumentation](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it).
+Für die Entwicklung mithilfe von Python wurden Anaconda Python Distribution 2.7 und 3.5 installiert. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen. Sie können die Python-Tools für Visual Studio (PTVS), die mit der Visual Studio 2015 Community Edition installiert werden, oder eine der mit Anaconda gebündelten IDEs wie IDLE oder Spyder verwenden. Sie können eines dieser Tools über eine Suche auf der Suchleiste starten (**Windows-Taste**+**S**). **Hinweis:** Damit die Python-Tools für Visual Studio auf Anaconda Python 2.7 und 3.5 verweisen können, müssen Sie benutzerdefinierte Umgebungen für jede Version erstellen. Wechseln Sie in der Visual Studio 2015 Community Edition zu „Tools -> Python-Tools -> Python-Umgebungen“, und klicken Sie auf „+ Benutzerdefiniert“. Legen Sie die Umgebungspfade fest. Anaconda Python 2.7 wird unter C:\\Anaconda installiert, Anaconda Python 3.5 unter C:\\Anaconda\\envs\\py35. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it).
 
 ### Jupyter Notebook
-Zur Anaconda Distribution gehört außerdem ein Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Es wurde bereits ein Jupyter Notebook-Server mit Python 2, Python 3 und R-Kernels konfiguriert. Es gibt ein Desktopsymbol namens „Jupyter Notebook“, um den Browser für den Zugriff auf den Notebook-Server zu starten. Wenn Sie die VM über Remotedesktop verwenden, können Sie auch [https://localhost:9999/](https://localhost:9999/) für den Zugriff auf den Jupyter Notebook-Server aufrufen. (Hinweis: Fahren Sie fort, wenn Warnungen zu Zertifikaten angezeigt werden). Es sind Beispiele für Notebooks enthalten - eines für Python und eines für R. Der Link zu den Beispielen wird Ihnen auf der Startseite für die Notebooks angezeigt, nachdem Sie sich mit dem im vorherigen Schritt festgelegten Passwort am Jupyter Notebook authentifiziert haben.
+Zur Anaconda Distribution gehört außerdem ein Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Es wurde bereits ein Jupyter Notebook-Server mit Python 2, Python 3 und R-Kernels konfiguriert. Es gibt ein Desktopsymbol namens „Jupyter Notebook“, um den Browser für den Zugriff auf den Notebook-Server zu starten. Wenn Sie den virtuellen Computer über Remotedesktop verwenden, können Sie auch [https://localhost:9999/](https://localhost:9999/) für den Zugriff auf den Jupyter Notebook-Server aufrufen. (Hinweis: Fahren Sie fort, wenn Warnungen zu Zertifikaten angezeigt werden). Es sind Beispiele für Notebooks enthalten - eines für Python und eines für R. Der Link zu den Beispielen wird Ihnen auf der Startseite für die Notebooks angezeigt, nachdem Sie sich mit dem im vorherigen Schritt festgelegten Passwort am Jupyter Notebook authentifiziert haben.
 
 ### Visual Studio 2015 Community Edition
 Visual Studio Community Edition ist auf der VM installiert. Dies ist eine kostenlose Version der beliebten IDE von Microsoft, die Sie zur Evaluierung und für sehr kleine Teams verwenden können. Die Lizenzbedingungen können Sie [hier](https://www.visualstudio.com/support/legal/mt171547) prüfen. Öffnen Sie Visual Studio durch Doppelklicken auf das Desktopsymbol oder über das **Startmenü**. Sie können auch nach Programmen suchen, indem Sie die **Windows-Taste**+**S** drücken und „Visual Studio“ eingeben. Anschließend können Sie Projekte in Sprachen wie C# und Python erstellen. Zusätzlich werden Sie feststellen, dass bereits Plugins installiert wurden, die Ihnen die Arbeit mit Azure-Diensten wie Azure Data Catalog, Azure, HDInsight (Hadoop, Spark) und Azure Data Lake erleichtern.
@@ -127,7 +125,7 @@ Eine eingeschränkte Version von SQL Server gehört ebenfalls zu Visual Studio C
 ### Azure 
 Mehrere Azure-Tools werden auf dem virtuellen Computer installiert:
 - Es gibt eine Desktopverknüpfung, um auf die Azure SDK-Dokumentation zuzugreifen. 
-- **AzCopy** wird zum Verschieben von Daten in und aus Ihrem Microsoft Azure Storage-Konto verwendet. 
+- **AzCopy** wird zum Verschieben von Daten in Ihr und aus Ihrem Microsoft Azure Storage-Konto verwendet. 
 - Der **Azure-Speicher-Explorer** wird verwendet, um die Objekte zu durchsuchen, die in Ihrem Azure Storage-Konto gespeichert sind. 
 - **Microsoft Azure PowerShell** ist ein Tool zur Verwaltung Ihrer Azure-Ressourcen in der PowerShell-Skriptsprache und ist auch auf Ihrem virtuellen Computer installiert ist. 
 
@@ -144,9 +142,9 @@ Der [**Microsoft-Webplattform-Installer**](https://www.microsoft.com/web/downloa
 Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 
 * Verschaffen Sie sich einen Überblick über die verschiedenen Tools, die auf der Data Science-VM installiert sind, indem Sie das Startmenü öffnen und sich die Liste der installierten Tools ansehen.
-* Navigieren Sie zu **C:\\Programme\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts**, um Anwendungsbeispiele der RevoScaleR-Bibliothek in R zu erhalten, die Datenanalysen auf Unternehmensebene unterstützt.  
-* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings)
-* Erfahren Sie, wie Sie mithilfe des [Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) systematisch vollständige Analyselösungen erstellen.
-* Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com), um Anwendungsbeispiele der Cortana Intelligence Suite für die Bereiche Machine Learning und Data Analytics zu erhalten. Für den einfachen Zugriff haben wir auch ein Symbol auf dem Desktop und im Startmenü der virtuellen Maschine bereitgestellt. 
+* Navigieren Sie zu **C:\\Programme\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts**, um Beispiele der RevoScaleR-Bibliothek in R zu erhalten, die Datenanalysen auf Unternehmensebene unterstützt.  
+* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings).
+* Erfahren Sie, wie Sie mithilfe des Data Science-Ablaufs ([Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)) systematisch vollständige Analyselösungen erstellen.
+* Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com), um Beispiel der Cortana Intelligence Suite für die Bereiche Machine Learning und Datenanalyse zu erhalten. Für den einfachen Zugriff haben wir auch ein Symbol auf dem Desktop und im Startmenü der virtuellen Maschine bereitgestellt. 
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

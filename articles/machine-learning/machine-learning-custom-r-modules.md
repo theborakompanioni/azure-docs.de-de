@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="tbd" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="bradsev;ankarloff" />
 
 
@@ -243,7 +243,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements vom Abschn
 
 * *Optionale Eigenschaften*: **min**, **max** und **Standard**
 
-**bool ** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
+**bool** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
 
 		<Arg id="boolValue1" name="Boolean Param" type="bool">
 			<Properties default="true" />
@@ -363,4 +363,4 @@ Die Ausführungsumgebung für das R-Skript verwendet die gleiche Version von R w
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="04/16/2016"
+  ms.date="05/09/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -147,12 +147,8 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Global Azure Bootcamp: SoCal](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | Orange, CA | 16\. April 2016 | [#GlobalAzure](https://twitter.com/hashtag/GlobalAzure)
-| [Global Azure Bootcamp: Redmond](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | Redmond, WA | 16\. April 2016 | [#GlobalAzure](https://twitter.com/hashtag/GlobalAzure)
-| [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | Webinar | 25\. April 2016 | – |
-| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | New York City, NY | 21\. April 2016 | – |
-| [SQLBits XV](https://sqlbits.com/) | Andrew Liu, Aravind Ramachandran | Liverpool, Großbritannien | 4\. bis 7. Mai 2016 | [#SQLBits](https://twitter.com/hashtag/SQLBits)
 | [Meetup: Azure-Benutzergruppe Großbritannien](http://www.meetup.com/UKAzureUserGroup/events/229673468/) | Andrew Liu | London, Großbritannien | 12\. Mai 2016 | – |
+| [Meetup: ONETUG – .NET-Benutzergruppe Orlando](http://www.meetup.com/ONETUG/events/230797164/) | Santosh Hari | Orlando, Florida, USA | 12\. Mai 2016 | [#ONETUG](https://twitter.com/search?q=%23onetug&src=typd) |
 
 *Sprechen Sie auf einer Veranstaltung oder organisieren Sie sie? [Teilen Sie uns mit, ](mailto:askdocdb@microsoft.com)wie wir helfen können!*
 
@@ -160,8 +156,13 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Aufzeichnung |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [SQLBits XV](https://sqlbits.com/) | Andrew Liu, Aravind Ramachandran | Liverpool, Großbritannien | 4\. bis 7. Mai 2016 | –
+| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | New York City, NY | 21\. April 2016 | – |
+| [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | Webinar | 25\. April 2016 | – |
+| [Global Azure Bootcamp: SoCal](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | Orange, CA | 16\. April 2016 | – |
+| [Global Azure Bootcamp: Redmond](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | Redmond, WA | 16\. April 2016 | – |
 | [SQL Saturday #481 – Israel 2016](http://www.sqlsaturday.com/481/Sessions/Details.aspx?sid=40912) | Leonard Lobel | HaMerkaz, Israel | 04\. April 2016 | – |
-| [Build 2016](https://build.microsoft.com/) | John Macintyre | San Francisco, CA | 31\. März 2016 | [Delivering Applications at Scale with DocumentDB, Azure's NoSQL Document Database](https://channel9.msdn.com/Events/Build/2016/B840) (Bereitstellen skalierter Anwendungen mit DocumentDB, der NoSQL-Dokumentdatenbank von Azure)
+| [Build 2016](https://build.microsoft.com/) | John Macintyre | San Francisco, CA | 31\. März 2016 | [Delivering Applications at Scale with DocumentDB, Azure's NoSQL Document Database (Bereitstellen skalierter Anwendungen mit DocumentDB, der NoSQL-Dokumentdatenbank von Azure)](https://channel9.msdn.com/Events/Build/2016/B840)
 | [SQL Saturday #505 – Belgien 2016](http://www.sqlsaturday.com/505/Sessions/Details.aspx?sid=44217) | Mihail Mateev | Antwerpen, Belgien | 19\. März 2016 | – |
 | [Meetup: CloudTalk](http://www.meetup.com/CloudTalk/events/227963695/) | Kirat Pandya | Bellevue, WA | 3\. März 2016 | – |
 | [Meetup: Azure Austin](http://www.meetup.com/azureaustin/events/228209275/) | Merwan Chinta | Austin, TX | 28\. Januar 2016 | – |
@@ -202,7 +203,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Sendung | Referent | Datum | Episode |
 | ------------------------------------------- | --------------------------- | ------------------ | ------- |
-| Channel 9: Microsoft + Open Source | Jose Miguel Parrella | 14\. April 2016 | [From MEAN to DEAN in Azure with Bitnami, VM Scale Sets and DocumentDB](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) (Von MEAN zu DEAN in Azure mit Bitnami, VM-Skalierungsgruppen und DocumentDB) |
+| Channel 9: Microsoft + Open Source | Jose Miguel Parrella | 14\. April 2016 | [From MEAN to DEAN in Azure with Bitnami, VM Scale Sets and DocumentDB (Von MEAN zu DEAN in Azure mit Bitnami, VM-Skalierungsgruppen und DocumentDB)](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) |
 | Wired2WinWebinar | Sai Sankar Kunnathukuzhiyil | 9\. März 2016 | [Developing Solutions with Azure DocumentDB (Entwickeln von Lösungen mit Azure DocumentDB)](https://www.youtube.com/watch?v=xKttEwXv_bs)
 | Integration User Group | Han Wong | 17\. Februar 2016 | [Analyze and visualize non-relational data with DocumentDB + Power BI (Analysieren und Visualisieren von nicht relationalen Daten mit DocumentDB + Power BI)](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
 | The Azure Podcast | Cale Teeter | 14\. Januar 2016 | [Episode 110: Using DocumentDB & Search (Episode 110: Verwenden von DocumentDB und Suche)](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
@@ -307,4 +308,4 @@ DocumentDB-Genies sind wichtige Mitglieder der Community, die sich durch ein bei
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,43 +13,31 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="04/27/2016"
 	ms.author="spelluru"/>
 
 
 # Handbuch zur Leistung und Optimierung der Kopieraktivität
 Dieser Artikel beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken. Außerdem werden die beobachtete Leistung bei internen Tests aufgeführt und verschiedene Methoden zur Optimierung der Leistung der Kopieraktivität erläutert.
 
-## Übersicht über die Datenverschiebung in Azure Data Factory
-Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, und die Aktivität wird von einem [global verfügbaren Datenverschiebungsdienst](data-factory-data-movement-activities.md#global) gestützt, mit dem Daten zwischen [verschiedenen Datenspeichern](data-factory-data-movement-activities.md#supported-data-stores-for-copy-activity) auf sichere, zuverlässige, skalierbare und leistungsfähige Weise kopiert werden können. Der Datenverschiebungsdienst wählt automatisch die optimale Region aus, um die Datenverschiebung basierend auf dem Speicherort der Quell- und Senkendatenspeicher durchzuführen. Derzeit wird die dem Senkendatenspeicher am nächsten gelegene Region verwendet.
+Mit der Kopieraktivität erreichen Sie einen hohen Durchsatz bei Datenverschiebungen, wie in den folgenden Beispielen dargestellt:
 
-Betrachten wir nun, wie diese Datenverschiebung in verschiedenen Szenarios erfolgt.
+- Erfassen von 1 TB Daten in einem Azure-Blobspeicher aus einem lokalen Dateisystem und einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s)
+- Erfassen von 1 TB Daten in einem Azure Data Lake-Speicher aus einem lokalen Dateisystem und einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s) 
+- Erfassen von 1 TB Daten in Azure SQL Data Warehouse aus einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s) 
 
-### Kopieren von Daten zwischen zwei Clouddatenspeichern
-Wenn sowohl die Quell- als auch die Senkendatenspeicher (sprich die Zieldatenspeicher) sich in der Cloud befinden, durchläuft die Kopieraktivität die folgenden Phasen, um die Daten aus der Quelle in die Senke zu kopieren bzw. zu verschieben.
+In den folgenden Abschnitten erfahren Sie mehr über die Leistung der Kopieraktivität und über Optimierungstipps, um sie weiter zu verbessern.
 
-1.	liest Daten aus dem Quelldatenspeicher
-2.	führt die Serialisierung/Deserialisierung, Komprimierung/Dekomprimierung, Spaltenzuordnung und Typumwandlung basierend auf der Konfiguration des Eingabedatasets, Ausgabedatasets und der Kopieraktivität durch
-3.	schreibt Daten in den Zieldatenspeicher
-
-![Kopieren von Daten zwischen zwei Clouddatenspeichern](./media/data-factory-copy-activity-performance/copy-data-between-two-cloud-stores.png)
-
-**Hinweis:** Formen mit gepunkteten Linien (Komprimierung, Spaltenzuordnung usw.) sind Funktionen, die in Ihrem Anwendungsfall möglicherweise nicht genutzt werden können.
-
-
-### Kopieren von Daten zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher
-Zum [Verschieben von Daten zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher](data-factory-move-data-between-onprem-and-cloud.md) müssen Sie auf dem lokalen Computer das Datenverwaltungsgateway installieren. Dabei handelt es sich um einen Agent, der eine hybride Datenverschiebung und -verarbeitung ermöglicht. In diesem Szenario werden die Serialisierung/Deserialisierung, Komprimierung/Dekomprimierung, Spaltenzuordnung und Typumwandlung basierend auf der Konfiguration des Eingabedatasets, Ausgabedatasets und der Kopieraktivität vom Datenverwaltungsgateway durchgeführt.
-
-![Kopieren von Daten zwischen einem lokalen und einem Clouddatenspeicher](./media/data-factory-copy-activity-performance/copy-data-between-onprem-and-cloud.png)
+> [AZURE.NOTE] Wenn Sie mit der Kopieraktivität im Allgemeinen nicht vertraut sind, lesen Sie zuerst [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md), bevor Sie diesen Artikel lesen.
 
 ## Schritte zur Optimierung der Leistung
 Nachfolgend finden Sie die typischen Schritte, die wir zur Optimierung der Leistung Ihrer Azure Data Factory-Lösung mit Kopieraktivität vorschlagen.
 
 1.	**Einrichten einer Baseline** Testen Sie Ihre Pipeline mit der Kopieraktivität während der Entwicklungsphase mithilfe von repräsentativen Beispieldaten. Mithilfe des [Modell für das Aufteilen in Slices](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices) von Azure Data Factory können Sie die Datenmenge beschränken, mit der Sie arbeiten.
 
-	Erfassen Sie die Ausführungszeit und Leistungsmerkmale durch Überprüfen des Blatts „Datenslice“ des Ausgabedatasets und des Blatts „Aktivitätsausführung – Details“ im Azure-Vorschauportal, das die Kopieraktivität, Dauer und die Größe der kopierten Daten anzeigt.
-
-	![Aktivitätsausführung – Details](./media/data-factory-copy-activity-performance/activity-run-details.png)
+	Erfassen Sie mit der **App „Überwachung und Verwaltung“** Merkmale der Ausführungszeit und der Leistung: Klicken Sie auf der Startseite Ihrer Data Factory auf die Kachel **Überwachung und Verwaltung**, wählen Sie das **Ausgabedataset** in der Strukturansicht aus, und wählen Sie dann die auszuführende Kopieraktivität in der Liste **Aktivitätsfenster** aus. Daraufhin sollten die Dauer der Kopieraktivität in der Liste **Aktivitätsfenster** und die Größe der Daten, die kopiert werden, sowie der Durchsatz im Fenster **Aktivitätsfenster-Explorer** auf der rechten Seite angezeigt werden. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die App.
+	
+	![Aktivitätsausführung – Details](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
 	Sie können die Leistung und Konfigurationen Ihres Szenarios basierend auf internen Beobachtungen mit der [Leistungsreferenz](#performance-reference) der Kopieraktivität vergleichen.
 2. **Leistungsdiagnose und Optimierung** Wenn die beobachtete Leistung unter Ihren Erwartungen liegt, müssen Sie Leistungsengpässe identifizieren und Optimierungen durchführen, um die Auswirkung von Engpässen zu beseitigen oder zu reduzieren. Eine vollständige Beschreibung der Leistungsdiagnose geht über den Rahmen dieses Artikels hinaus, nachfolgend finden Sie jedoch einige allgemeine Überlegungen.
@@ -60,6 +48,9 @@ Nachfolgend finden Sie die typischen Schritte, die wir zur Optimierung der Leist
 	- [Spaltenzuordnung](#considerations-on-column-mapping)
 	- [Gateway zur Datenverwaltung](#considerations-on-data-management-gateway)
 	- [Weitere Überlegungen](#other-considerations)
+	- [Parallele Kopie](#parallel-copy)
+	- [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units)    
+
 3. **Erweitern der Konfiguration auf Ihre gesamten Daten** Sobald Sie mit den Ergebnissen und der Leistung der Ausführung zufrieden sind, können Sie die Datasetdefinition und den aktiven Zeitraum der Pipeline erweitern, um die gesamten Daten in der Abbildung abzudecken.
 
 ## Leistungsreferenz
@@ -67,13 +58,12 @@ Nachfolgend finden Sie die typischen Schritte, die wir zur Optimierung der Leist
 
 ![Leistungsmatrix](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
-> [AZURE.NOTE] **In Kürze verfügbar:** Wir sind dabei, die grundlegenden Leistungsmerkmale zu verbessern, und in Kürze werden Sie in der obigen Tabelle mehr und bessere Durchsatzzahlen finden.
-
 Beachten Sie Folgendes:
 
 - Der Durchsatz wird anhand der folgenden Formel berechnet: [Größe der aus der Quelle gelesenen Daten]/[Ausführungsdauer der Kopieraktivität]
 - Das Dataset [TPC-H](http://www.tpc.org/tpch/) wurde genutzt, um die oben genannten Zahlen zu berechnen.
 - Microsoft Azure-Datenspeichern befinden sich Quelle und Senke in derselben Azure-Region.
+- **cloudDataMovementUnits** ist auf 1 festgelegt, und **parallelCopies** wurde nicht angegeben.
 - Bei der Hybriddatenverschiebung (lokale Daten in die Cloud oder umgekehrt) wurde das Datenverwaltungsgateway (Einzelinstanz) mit der folgenden Konfiguration auf einem anderen Computer gehostet, als der lokale Datenspeicher. Hinweis: Da auf dem Gateway nur eine Aktivitätsausführung erfolgte, verbrauchte der Kopiervorgang nur einen kleinen Teil der CPU-/Speicherressource und Netzwerkbandbreite dieses Computers.
 	<table>
 	<tr>
@@ -90,11 +80,104 @@ Beachten Sie Folgendes:
 	</tr>
 	</table>
 
+## Parallele Kopie
+Eine der Methoden, den Durchsatz eines Kopiervorgangs zu verbessern und die Zeit für das Verschieben der Daten zu verkürzen, ist, Daten **parallel in einer Kopieraktivitätsausführung** aus der Quelle zu lesen und/oder Daten in das Ziel zu schreiben.
+ 
+Beachten Sie, dass sich diese Einstellung von der Eigenschaft **Parallelität** in der Aktivitätsdefinition unterscheidet. Die Eigenschaft „Parallelität“ bestimmt die Anzahl der **gleichzeitigen Kopieraktivitätsausführungen**, die zur Laufzeit zusammen ausgeführt werden, um Daten aus unterschiedlichen Aktivitätsfenstern (1:00 bis 2:00 Uhr, 2:00 bis 3:00 Uhr, 3:00 bis 4:00 Uhr usw.) zu verarbeiten. Dies ist beim Laden von Verlaufsdaten sehr nützlich. Dagegen gilt die Funktion für parallele Kopien, die hier erörtert wird, für eine **einzelne Aktivitätsausführung**.
+
+Sehen wir uns ein **Beispielszenario** an: Im folgenden Beispiel müssen mehrere Slices aus der Vergangenheit verarbeitet werden. Der Data Factory-Dienst führt eine Instanz der Kopieraktivität (Aktivitätsausführung) für jeden Slice aus.
+
+- Datenslice des 1. Aktivitätsfensters (1:00 bis 2:00 Uhr) == > Aktivitätsausführung 1
+- Datenslice des 2. Aktivitätsfensters (2:00 bis 3:00 Uhr) == > Aktivitätsausführung 2
+- Datenslice des 3. Aktivitätsfensters (3:00 bis 4:00 Uhr) == > Aktivitätsausführung 3
+- und so weiter sein.
+
+Wenn in diesem Beispiel die Einstellung **Parallelität** auf **2** festgelegt ist, können **Aktivitätsausführung 1** und **Aktivitätsausführung 2** Daten aus zwei Aktivitätsfenstern **gleichzeitig** kopieren, um die Leistung von Datenübertragungen zu verbessern. Sind jedoch mehrere Dateien mit Aktivitätsausführung 1 verknüpft, werden die Dateien nacheinander von der Quelle zum Ziel kopiert.
+
+### parallelCopies
+Sie können die **parallelCopies**-Eigenschaft verwenden, um die Parallelität anzugeben, die von der Kopieraktivität verwendet werden soll. Einfach ausgedrückt: Stellen Sie sich diese Eigenschaft als die maximale Anzahl von Threads in einer Kopieraktivität vor, die parallel aus Quelldatenspeichern lesen und/oder in Senkendatenspeicher schreiben können.
+
+Für jede Kopieraktivitätsausführung ermittelt Azure Data Factory auf intelligente Weise die Anzahl paralleler Kopien, die zum Kopieren von Daten aus dem Quelldatenspeicher in den Zieldatenspeicher verwendet werden. Die verwendete Standardanzahl paralleler Kopien hängt von den Typen der Quelle und der Senke ab:
+
+Quelle und Senke |	Standardanzahl der vom Dienst ermittelten parallelen Kopien
+------------- | -------------------------------------------------
+Kopieren von Daten zwischen **dateibasierten Speichern** (Azure-Blob, Azure Data Lake, lokales Dateisystem, lokales HDFS) | Zwischen **1 und 32**, basierend auf der **Größe der Dateien** und der **Anzahl von Einheiten für Clouddatenverschiebungen** (die Definition finden Sie im nächsten Abschnitt), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder der physischen Konfiguration des Gatewaycomputers, der für Hybridkopien (Kopieren von Daten in einen bzw. aus einem lokalen Datenspeicher) verwendet wird.
+Kopieren von Daten aus einem **Quelldatenspeicher in eine Azure-Tabelle** | 4
+Alle anderen Paare aus Quelle und Senke | 1
+
+Bei der Mehrheit der Fälle sollten Sie mit dem Standardverhalten den besten Durchsatz erreichen. Sie können den Standardwert jedoch überschreiben, indem Sie einen Wert für die **parallelCopies**-Eigenschaft angeben, um die Auslastung der Computer mit Ihren Datenspeichern zu steuern oder die Kopierleistung zu optimieren. Er muss zwischen **1 und 32 (jeweils einschließlich)** liegen. Zur Laufzeit wählt die Kopieraktivität einen Wert aus, der kleiner oder gleich dem konfigurierten Wert ist, um die beste Leistung zu bieten.
+
+	"activities":[  
+	    {
+	        "name": "Sample copy activity",
+	        "description": "",
+	        "type": "Copy",
+	        "inputs": [{ "name": "InputDataset" }],
+	        "outputs": [{ "name": "OutputDataset" }],
+	        "typeProperties": {
+	            "source": {
+	                "type": "BlobSource",
+	            },
+	            "sink": {
+	                "type": "AzureDataLakeStoreSink"
+	            },
+	            "parallelCopies": 8
+	        }
+	    }
+	]
+
+Beachten Sie Folgendes:
+
+- Zum Kopieren von Daten zwischen dateibasierten Speichern besteht die Parallelität auf Dateiebene, es erfolgt also keine Segmentierung in einer einzelnen Datei. Die tatsächliche Anzahl von parallelen Kopien, die für den Kopiervorgang zur Laufzeit verwendet wird, liegt nicht über der Anzahl der vorhandenen Dateien. Wenn das Kopierverhalten „mergeFile“ ist, wird Parallelität nicht genutzt.
+- Wenn Sie einen Wert für die parallelCopies-Eigenschaft angeben, bedenken Sie die Erhöhung der Last, die dadurch für die Quell- und Senkendatenspeicher sowie das Gateway (bei einer Hybridkopie) entsteht. Dies gilt insbesondere bei mehreren Aktivitäten oder gleichzeitigen Ausführungen der gleichen Aktivitäten für denselben Datenspeicher. Wenn Sie feststellen, dass der Datenspeicher oder das Gateway überlastet ist, verringern Sie den parallelCopies-Wert, um die Last zu reduzieren.
+- Beim Kopieren von Daten aus nicht dateibasierten Speichern in dateibasierte Speicher wird die parallelCopies-Eigenschaft ignoriert, auch wenn sie angegeben wurde, und Parallelität wird nicht genutzt.
+
+> [AZURE.NOTE] Zur Nutzung der parallelCopies-Funktion bei einer Hybridkopie müssen Sie das Datenverwaltungsgateway in der Version 1.11 oder höher verwenden.
+
+### Einheiten für Clouddatenverschiebungen
+Die **Einheit für Clouddatenverschiebungen** ist eine Messgröße, die die Leistungsfähigkeit (Kombination aus CPU-, Speicher- und Netzwerkressourcenzuweisung) einer einzelnen Einheit im Azure Data Factory-Dienst darstellt, die verwendet wird, um einen Cloud-zu-Cloud-Kopiervorgang auszuführen. Sie spielt bei Hybridkopien keine Rolle. Der Azure Data Factory-Dienst verwendet standardmäßig eine einzelne Einheit für Clouddatenverschiebungen, um eine einzelne Kopieraktivitätsausführung durchzuführen. Sie können diese Standardeinstellung überschreiben, indem Sie einen Wert für die **cloudDataMovementUnits**-Eigenschaft angeben. Zurzeit wird die cloudDataMovementUnits-Einstellung **nur** beim Kopieren von Daten **zwischen zwei Azure-Blobspeichern** oder aus einem **Azure-Blobspeicher in einen Azure Data Lake-Speicher** unterstützt, und sie wird wirksam, wenn mehrere Dateien kopiert werden müssen, die einzeln eine Größe von 16 MB und mehr aufweisen.
+
+Wenn Sie eine Reihe von relativ großen Dateien kopieren, führt das Festlegen eines hohen Werts für die **parallelCopies**-Eigenschaft möglicherweise aufgrund von Ressourcenbeschränkungen der Einheit für Clouddatenverschiebungen nicht zu einer Verbesserung der Leistung. In solchen Fällen sollten Sie mehr Einheiten für Clouddatenverschiebungen verwenden, um große Datenmengen mit hohem Durchsatz zu kopieren. Um die Anzahl der Einheiten für Clouddatenverschiebungen anzugeben, die für die Kopieraktivität verwendet werden soll, legen Sie einen Wert für die **cloudDataMovementUnits**-Eigenschaft fest, wie unten dargestellt:
+
+	"activities":[  
+	    {
+	        "name": "Sample copy activity",
+	        "description": "",
+	        "type": "Copy",
+	        "inputs": [{ "name": "InputDataset" }],
+	        "outputs": [{ "name": "OutputDataset" }],
+	        "typeProperties": {
+	            "source": {
+	                "type": "BlobSource",
+	            },
+	            "sink": {
+	                "type": "AzureDataLakeStoreSink"
+	            },
+	            "cloudDataMovementUnits": 4
+	        }
+	    }
+	]
+
+Die **zulässigen Werte** für die cloudDataMovementUnits-Eigenschaft sind: 1 (Standard), 2, 4 und 8. Wenn Sie weitere Einheiten für Clouddatenverschiebungen für einen höheren Durchsatz benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). Die **tatsächliche Anzahl von Einheiten für Clouddatenverschiebungen**, die für den Kopiervorgang zur Laufzeit verwendet wird, ist gleich oder kleiner als der konfigurierte Wert. Dies ist davon abhängig, ob die Anzahl der aus der Quelle zu kopierenden Dateien dem Kriterium für die Größe entspricht.
+
+> [AZURE.NOTE] „parallelCopies“ muss größer oder gleich „cloudDataMovementUnits“ sein, sofern angegeben. Wenn „cloudDataMovementUnits“ größer als 1 ist, wird die parallele Datenverschiebung auf die „cloudDataMovementUnits“ für diese Kopieraktivitätsausführung verteilt, und dadurch wird der Durchsatz gesteigert.
+
+Wenn Sie mehrere große Dateien kopieren und **cloudDataMovementUnits** dabei als 2, 4 und 8 konfiguriert ist, kann die Leistung das zwei-, vier- und siebenfache der Referenzwerte aus dem Abschnitt „Leistungsreferenz“ erreichen.
+
+In den [Beispielen für Anwendungsfälle](#case-study---parallel-copy) finden Sie Hinweise zur besseren Nutzung der oben genannten zwei Eigenschaften zur Verbesserung des Durchsatzes bei Datenverschiebungen.
+ 
+**Denken Sie daran**, dass Ihnen die Gebühren basierend auf der Gesamtdauer des Kopiervorgangs berechnet werden. Wenn also ein Kopierauftrag bisher mit einer Cloudeinheit eine Stunde gedauert hat und jetzt mit vier Cloudeinheiten 15 Minuten dauert, ist die Gesamtrechnung etwa gleich hoch. Ein anderes Szenario: Angenommen, Sie verwenden vier Cloudeinheiten für eine Kopieraktivität. Die erste und die zweite Einheit benötigen jeweils 10 Minuten und die dritte und vierte jeweils 5 Minuten. In diesem Fall wird Ihnen die Gesamtdauer des Kopiervorgangs (bzw. der Datenverschiebung) berechnet, also 10 + 10 + 5 + 5 = 30 Minuten. Die Verwendung von **parallelCopies** hat keine Auswirkungen auf die Abrechnung.
+
+
+
 ## Hinweise zur Datenquelle
 ### Allgemein
 Stellen Sie sicher, dass der zugrundeliegende Datenspeicher nicht von anderen darauf oder dafür ausgeführten Workloads überlastet ist, u. a. die Kopieraktivität.
 
 Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifischen [Themen zur Überwachung und Optimierung](#appendix-data-store-performance-tuning-reference). Diese helfen Ihnen dabei, Leistungsmerkmale, die Minimierung von Antwortzeiten und die Maximierung des Durchsatzes zu verstehen.
+
+Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** kopieren, könnten Sie **PolyBase** aktivieren, um die Leistung zu steigern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse).
+
 
 ### Dateibasierte Datenspeicher
 *(Einschließlich Azure-Blob, Azure Data Lake, lokales Dateisystem)*
@@ -116,6 +199,9 @@ Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifische
 Stellen Sie sicher, dass der zugrundeliegende Datenspeicher nicht von anderen darauf oder dafür ausgeführten Workloads überlastet ist, u. a. die Kopieraktivität.
 
 Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifischen [Themen zur Überwachung und Optimierung](#appendix-data-store-performance-tuning-reference). Diese helfen Ihnen dabei, Leistungsmerkmale, die Minimierung von Antwortzeiten und die Maximierung des Durchsatzes zu verstehen.
+
+Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** kopieren, könnten Sie **PolyBase** aktivieren, um die Leistung zu steigern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse).
+
 
 ### Dateibasierte Datenspeicher
 *(Einschließlich der Azure-Blob, Azure Data Lake, lokales Dateisystem)*
@@ -214,14 +300,33 @@ Bei einem oder mehreren der folgenden Faktoren kann es sich um den Leistungsengp
 
 In diesem Fall könnte die BZIP2-Datenkomprimierung die gesamte Pipeline verlangsamen. Ein Wechsel zum GZIP-Komprimierungscodec kann diesen Engpass beheben.
 
-## Anhang – Referenz zum Optimieren der Datenspeicherleistung
+
+## Fallstudie: Parallele Kopien  
+
+**Szenario I:** Kopieren von 1000 Dateien mit 1 MB aus einem lokalen Dateisystem in einen Azure-Blobspeicher
+
+**Analyse und Leistungsoptimierung:** Wenn Sie das Datenverwaltungsgateway auf einem Computer mit vier Kernen installiert haben, verwendet Data Factory standardmäßig 16 parallele Kopien, um Dateien gleichzeitig aus dem Dateisystem in den Azure-Blob zu verschieben. Dies sollte zu einem guten Durchsatz führen. Sie können die Anzahl paralleler Kopien auch explizit angeben. Wenn Sie eine große Anzahl von kleinen Dateien kopieren, können Sie mit parallelen Kopien den Durchsatz erheblich verbessern, indem Sie die beteiligten Ressourcen effektiver nutzen.
+
+![Szenario 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+
+**Szenario II:** Kopieren von 20 Blobs mit 500 MB aus dem Azure-Blobspeicher in den Azure Data Lake-Speicher
+
+**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory standardmäßig die Daten mit einer Kopie („parallelCopies“ ist 1) aus dem Azure-Blob in Azure Data Lake und nutzt eine Einheit für Clouddatenverschiebungen. Der beobachtete Durchsatz entspricht etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference) weiter oben.
+
+![Szenario 2:](./media/data-factory-copy-activity-performance/scenario-2.png)
+
+Wenn eine einzelne Datei größer als Dutzende von MB ist und der Gesamtumfang groß ist, führt das Erhöhen von „parallelCopies“ angesichts der Ressourcenbeschränkungen einer Einheit für Clouddatenverschiebungen nicht zu einer besseren Leistung. Stattdessen sollten Sie weitere Einheiten für Clouddatenverschiebungen angeben, um weitere Ressourcen zum Ausführen der Datenverschiebung zu erhalten. Geben Sie keinen Wert für die parallelCopies-Eigenschaft an, sodass Data Factory die Parallelität für Sie verarbeitet. In diesem Fall führt die Angabe von 4 für „cloudDataMovementUnits“ zu einem etwa vierfachen Durchsatz.
+
+![Szenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
+
+## Referenz zum Optimieren der Datenspeicherleistung
 Hier finden Sie einige Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
 - Azure-Speicher (einschließlich Azure Blob und Azure-Tabelle): [ Skalierbarkeitsziele für Azure-Speicher](../storage/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Azure-Speicher](../storage//storage-performance-checklist.md)
-- Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-service-tiers.md#monitoring-performance) und den Prozentsatz der Datenbanktransaktionseinheit (DTU = Database Throughput Unit) überprüfen .
+- Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-service-tiers.md#monitoring-performance) und den Prozentsatz der Datenbanktransaktionseinheit (Database Throughput Unit, DTU) überprüfen.
 - Azure SQL Datawarehouse: Die Funktionalität wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Informationen finden Sie unter [Flexible Leistung und Skalierbarkeit mit SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-scalability.md).
 - Azure DocumentDB: [Leistungsstufe in DocumentDB](../documentdb/documentdb-performance-levels.md).
 - Lokale SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 - Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

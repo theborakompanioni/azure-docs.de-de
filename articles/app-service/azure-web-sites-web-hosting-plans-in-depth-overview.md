@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/15/2016" 
+	ms.date="05/18/2016" 
 	ms.author="byvinyal"/>
 
 #Azure App Service-Pläne – Detaillierte Übersicht#
@@ -86,7 +86,7 @@ Es gibt zwei Möglichkeiten, einen Plan zu skalieren:
 
 - Ändern Sie die **Preisstufe** des Plans. Ein Plan der Preisstufe **Basic** kann beispielsweise in einen Plan der Preisstufe **Standard** oder **Premium** geändert werden. Anschließend können alle Apps, die diesem Plan zugeordnet sind, die von der neuen Preisstufe bereitgestellten Funktionen nutzen.
 - Ändern Sie die **Instanzgröße** eines Plan. Ein Plan der Preisstufe **Basic** mit **kleinen** Instanzen kann beispielsweise zur Verwendung **großer** Instanzen geändert werden. Alle Apps, die diesem Plan zugeordnet sind, können die zusätzlichen Arbeitsspeicher- und CPU-Ressourcen nutzen, die aufgrund der größeren Instanzen verfügbar sind.
-- Ändern Sie die **Instanzanzahl** des Plans. Ein **Standard**-Plan mit drei Instanzen kann z.B. auf zehn Instanzen skaliert werden. Ein **Premium**-Plan kann auf 20 Instanzen skaliert werden. Alle Apps, die diesem Plan zugeordnet sind, können die zusätzlichen Arbeitsspeicher- und CPU-Ressourcen nutzen, die aufgrund der größeren Instanzanzahl verfügbar sind.
+- Ändern Sie die **Instanzanzahl** des Plans. Ein **Standard**-Plan mit drei Instanzen kann z.B. auf zehn Instanzen skaliert werden. Ein **Premium**-Plan kann auf 20 Instanzen skaliert werden (sofern verfügbar). Alle Apps, die diesem Plan zugeordnet sind, können die zusätzlichen Arbeitsspeicher- und CPU-Ressourcen nutzen, die aufgrund der größeren Instanzanzahl verfügbar sind.
 
 Sie können den Tarif und die Instanzgröße ändern, indem Sie für die App oder den App Service-Plan unter „Einstellungen“ auf die Option **Zentral hochskalieren** klicken. Änderungen gelten für den **App Service-Plan** und wirken sich auf alle Apps aus, die darunter gehostet werden.
  
@@ -107,4 +107,4 @@ App Service-Pläne stellen einen Satz an Funktionen und Kapazitäten dar, die Si
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 [appclone]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/app-clone.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -14,13 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/16/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit der Facebook-API
 Verbinden Sie sich mit Facebook, um z. B. die Chronik zu ergänzen oder einen Seitenfeed abzurufen. Die Facebook-API kann in Folgendem verwendet werden:
 
-- Logik-Apps 
+- Logik-Apps (in diesem Thema erläutert)
+- PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -31,14 +32,14 @@ Facebook ermöglicht Folgendes:
 - Verwenden eines Triggers, wenn ein neuer Beitrag empfangen wird.
 - Verwenden von Aktionen, die z. B. die Chronik ergänzen oder einen Seitenfeed abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein neuer Beitrag in Ihrer Chronik vorhanden ist, können Sie diesen Beitrag per Push an Ihren Twitter-Feed übertragen. 
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 Die Facebook-API weist die folgenden Trigger und Aktionen auf.
 
 | Trigger | Aktionen|
 | --- | --- |
-| <ul><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li></ul> |<ul><li>Feed aus meiner Chronik abrufen</li><li>Beitrag zu meiner Chronik hinzufügen</li><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li><li>Seitenfeed abrufen</li><li>Benutzerchronik abrufen</li><li>Beitrag zu Seite hinzufügen</li></ul>
+| <ul><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li></ul> |<ul><li>Feed aus meiner Chronik abrufen</li><li>Beitrag meiner Chronik hinzufügen</li><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li><li>Seitenfeed abrufen</li><li>Benutzerchronik abrufen</li><li>Beitrag der Seite hinzufügen</li></ul>
 
 Alle APIs unterstützen Daten im JSON- und XML-Format.
 
@@ -48,7 +49,7 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstelle
 1. Melden Sie sich bei Ihrem Facebook-Konto an.
 2. Wählen Sie **Autorisieren** aus, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrer Facebook-Präsenz verbinden und diese nutzen. 
 
-Nachdem Sie die Verbindung hergestellt haben, geben Sie die Facebook-Eigenschaften ein. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Facebook](../../includes/connectors-create-api-facebook.md)]
 
 >[AZURE.TIP] Sie können dieselbe Facebook-Verbindung in anderen Logik-Apps verwenden.
 
@@ -71,7 +72,7 @@ Ruft die Feeds aus der Chronik des angemeldeten Benutzers ab. ```GET: /me/feed``
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Beitrag meiner Chronik hinzufügen
@@ -87,7 +88,7 @@ Senden einer Statusnachricht an die Chronik des angemeldeten Benutzers. ```POST:
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Wenn ein neuer Beitrag in meiner Chronik vorhanden ist
@@ -101,7 +102,7 @@ Es gibt keine Parameter.
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Seitenfeed abrufen
@@ -120,7 +121,7 @@ Ruft Beiträge aus dem Feed einer angegebenen Seite ab. ```GET: /{pageId}/feed``
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Chronik des Benutzers abrufen
@@ -140,7 +141,7 @@ Ruft Beiträge aus der Chronik eines Benutzers ab. ```GET: /{userId}/feed```
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### An Seite senden
@@ -157,7 +158,7 @@ Nachricht als angemeldeter Benutzer an eine Facebook-Seite senden. ```POST: /{pa
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -433,6 +434,6 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

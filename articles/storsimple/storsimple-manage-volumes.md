@@ -4,15 +4,15 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/29/2016"
+   ms.date="05/11/2016"
    ms.author="v-sharos" />
 
 # Verwalten von Volumes mithilfe des StorSimple Manager-Diensts
@@ -51,11 +51,11 @@ Ein Volume umfasst eine Reihe von Attributen:
 
 Die häufigsten Aufgaben im Zusammenhang mit einem Volume sind:
 
-- Hinzufügen eines Volumes 
-- Ändern von Volumes 
-- Löschen von Volumes 
-- Offlineschalten von Volumes 
-- Überwachen von Volumes 
+- Hinzufügen eines Volumes
+- Ändern von Volumes
+- Löschen von Volumes
+- Offlineschalten von Volumes
+- Überwachen von Volumes
 
 ## Hinzufügen eines Volumes
 
@@ -79,9 +79,9 @@ Sie haben beim Bereitstellen der StorSimple-Lösung [ein Volume erstellt](storsi
   5. Klicken Sie auf das Pfeilsymbol ![Pfeilsymbol](./media/storsimple-manage-volumes/HCS_ArrowIcon.png), um zur Seite **Weitere Einstellungen** zu wechseln.
 
         ![Add Volume wizard Additional Settings](./media/storsimple-manage-volumes/AddVolume2.png)
-   
+
 5. Fügen Sie unter **Weitere Einstellungen** einen neuen Zugriffssteuerungsdatensatz (Access Control Record, ACR) hinzu:
-  
+
   1. Wählen Sie aus der Dropdownliste einen Zugriffssteuerungsdatensatz aus. Sie können auch einen neuen Zugriffssteuerungsdatensatz hinzufügen. Mithilfe von Zugriffssteuerungsdatensätzen wird festgelegt, welche Hosts auf die Volumes zugreifen dürfen, indem der Host-IQN mit dem im Datensatz aufgeführten abgeglichen wird.
   2. Es wird empfohlen, eine Standardsicherung zu aktivieren, indem Sie das Kontrollkästchen **Standardsicherung für dieses Volume aktivieren** aktivieren.
    3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-volumes/HCS_CheckIcon.png), um das Volume mit den angegebenen Einstellungen zu erstellen.
@@ -92,10 +92,10 @@ Das neue Volume kann nun verwendet werden.
 
 Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, die auf das Volume zugreifen.
 
-> [AZURE.IMPORTANT] 
+> [AZURE.IMPORTANT]
 >
-> - Wenn Sie die Größe des Volumes auf dem Gerät ändern, muss auch die Größe des Volumes auf dem Host geändert werden. 
-> - Die hier beschriebenen hostseitigen Schritte gelten für Windows Server 2012 (2012R2). Vorgehensweisen für Linux oder andere Hostbetriebssysteme können davon abweichen. Beachten Sie beim Ändern des Volumes auf einem Host mit einem anderen Betriebssystem die Anweisungen zu Ihrem Hostbetriebssystem. 
+> - Wenn Sie die Größe des Volumes auf dem Gerät ändern, muss auch die Größe des Volumes auf dem Host geändert werden.
+> - Die hier beschriebenen hostseitigen Schritte gelten für Windows Server 2012 (2012R2). Vorgehensweisen für Linux oder andere Hostbetriebssysteme können davon abweichen. Beachten Sie beim Ändern des Volumes auf einem Host mit einem anderen Betriebssystem die Anweisungen zu Ihrem Hostbetriebssystem.
 
 ### So ändern Sie ein Volume
 
@@ -116,7 +116,7 @@ Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, d
 
   - Ändern Sie die Zugriffssteuerungsdatensätze, sofern das Volume offline ist. Wenn das Volume online ist, müssen Sie dieses zunächst offline schalten. Lesen Sie vor dem Bearbeiten eines Zugriffssteuerungsdatensatzes die Schritte unter [Offlineschalten von Volumes](#take-a-volume-offline).
   - Ändern Sie die Liste der Zugriffssteuerungsdatensätze, nachdem das Volume offline ist.
- 
+
     > [AZURE.NOTE] Die Option **Standardsicherung für dieses Volume aktivieren** kann für das Volume nicht geändert werden.
 
 6. Speichern Sie die Änderungen, indem Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-volumes/HCS_CheckIcon.png) klicken. Das klassische Azure-Portal zeigt eine Meldung zur Aktualisierung des Volumes an. Eine Erfolgsmeldung wird angezeigt, wenn das Volume aktualisiert wurde.
@@ -198,6 +198,4 @@ Führen Sie die folgenden Schritte durch, um die Überwachung eines Volumes zu a
 
 - Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
 
- 
-
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

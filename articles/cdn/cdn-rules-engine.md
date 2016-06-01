@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls
 
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
+
 ## Übersicht
 
 Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden, z. B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern. In diesem Tutorial wird die Erstellung einer Regel erläutert, die das Zwischenspeicherungsverhalten von CDN-Assets ändert. Im Abschnitt „[Siehe auch](#see-also)“ sind außerdem Videoinhalte verfügbar.
-
-> [AZURE.NOTE] Das Regelmodul ist ein Feature im CDN-Tarif „Premium“. Einen Vergleich der Features der CDN-Tarife „Standard“ und „Premium“ finden Sie in der [Übersicht über das Azure CDN](cdn-overview.md).
 
 ## Lernprogramm:
 
@@ -38,6 +38,8 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 	![Optionen für neue CDN-Regeln](./media/cdn-rules-engine/cdn-new-rule.png)
 
+	>[AZURE.IMPORTANT] Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
+	
 3. Geben Sie einen Namen in das Textfeld **Name/Beschreibung** ein.
 
 4. Ermitteln Sie die Anforderungstypen, auf die die Regel angewendet wird. In der Standardeinstellung ist die Übereinstimmungsbedingung **Immer** ausgewählt. Für dieses Tutorial verwenden Sie **Immer**, lassen Sie die Option also ausgewählt.
@@ -58,12 +60,10 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 6.  Klicken Sie auf die Schaltfläche **Hinzufügen**, um die neue Regel zu speichern. Die neue Regel wartet jetzt auf ihre Genehmigung. Sobald sie genehmigt wurde, wird der Status von **Pending XML** in **Active XML** geändert.
 
-## Überlegungen
-
-- Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
+	>[AZURE.IMPORTANT] Es kann bis zu 90 Minuten dauern, Regeländerungen über das CDN weiterzugeben.
 
 ## Weitere Informationen
-* [Azure Friday: Azure CDN's powerful new Premium Features](../../videos/azure-cdns-powerful-new-premium-features/) (Video)
+* [Azure Friday: Azure CDN's powerful new Premium Features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (Die leistungsstarken neuen Premium-Features von Azure CDN) (Video)
 * [Regelmodul – Übereinstimmungsbedingungen und Featuredetails](cdn-rules-engine-details.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

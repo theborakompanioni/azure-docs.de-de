@@ -35,8 +35,8 @@ Preisinformationen zu Azure Data Factory finden Sie auf der Seite [Data Factory 
 ### F: Was sind die ersten Schritte mit Azure Data Factory?
 
 - Eine Übersicht über Azure Data Factory finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md).
-- Ein kurzes Lernprogramm finden Sie unter [Erste Schritte mit Azure Data Factory](data-factory-get-started.md).
-- Die umfassende Dokumentation finden Sie in der [Dokumentation zu Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
+- Ein Tutorial zum **Kopieren/Verschieben von Daten** mit der Kopieraktivität finden Sie unter [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-get-started.md).
+- Ein Tutorial zum **Transformieren von Daten** mit der HDInsight Hive-Aktivität finden Sie unter [Verarbeiten von Daten durch Ausführen eines Hive-Skripts in einem Hadoop-Cluster](data-factory-build-your-first-pipeline.md). 
   
 ### In welchen Regionen ist Data Factory verfügbar?
 Data Factory ist in den Regionen **USA, Westen** sowie in **Europa, Norden** verfügbar. Die von Data Factory verwendeten Rechen- und Speicherdienste können in anderen Regionen verfügbar sein. Siehe [Unterstützte Regionen](data-factory-introduction.md#supported-regions).
@@ -45,18 +45,17 @@ Data Factory ist in den Regionen **USA, Westen** sowie in **Europa, Norden** ver
  
 Weitere Informationen finden Sie im Abschnitt **Einschränkungen von Azure Data Factory** unter dem Artikel [Begrenzungen, Kontingente und Einschränkungen von Azure-Abonnements und -Diensten](../azure-subscription-service-limits.md#data-factory-limits).
 
-
 ### Was sieht die Erstellung-/Entwicklungsumgebung im Azure Data Factory-Dienst aus?
 
 Sie können Data Factorys mithilfe einer der folgenden Methoden erstellen:
 
-- **Azure-Portal** Die Data Factory-Blätter im Azure-Portal bieten eine umfassende Benutzeroberfläche zum Erstellen von Data Factorys und den zugehörigen Diensten. Der **Data Factory-Editor**, der auch Teil des Portals ist, ermöglicht Ihnen die einfache Erstellung von verknüpften Diensten, Tabellen, Datasets und Pipelines durch Angabe von JSON-Definitionen für diese Artefakte. Unter [Erste Schritte mit Data Factory](data-factory-get-started.md) finden Sie ein Beispiel für das Verwenden des Portals/Editors zum Erstellen und Bereitstellen einer Data Factory.   
+- **Azure-Portal**: Die Data Factory-Blätter im Azure-Portal bieten eine umfassende Benutzeroberfläche zum Erstellen von Data Factorys und verknüpften Diensten. Der **Data Factory-Editor**, der auch Teil des Portals ist, ermöglicht Ihnen die einfache Erstellung von verknüpften Diensten, Tabellen, Datasets und Pipelines durch Angabe von JSON-Definitionen für diese Artefakte. Unter [Erstellen der ersten Azure Data Factory mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md) finden Sie ein Beispiel für das Verwenden des Portals/Editors zum Erstellen und Bereitstellen einer Data Factory.
 
-- **Azure PowerShell** Wenn Sie ein PowerShell-Benutzer sind und PowerShell anstelle der Portalbenutzeroberfläche nutzen möchten, können Sie Azure Data Factory-Cmdlets einsetzen, die mit Azure PowerShell mitgeliefert werden und zum Erstellen und Bereitstellen von Data Factorys dienen. Unter [Erstellen und Überwachen von Azure Data Factory mit Azure PowerShell](data-factory-monitor-manage-using-powershell.md) finden Sie ein einfaches Beispiel. Unter [Lernprogramm: Verschieben und Verarbeiten von Protokolldateien mithilfe von Data Factory][adf-tutorial] finden Sie ein erweitertes Beispiel der Verwendung von PowerShell-Cmdlets zum Erstellen und Bereitstellen einer Data Factory. In der [Data Factory-Cmdlet-Referenz][adf-powershell-reference] in der MSDN-Bibliothek finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
-  
-- **Visual Studio** Sie können auch Visual Studio verwenden, um Data Factorys programmgesteuert zu erstellen, zu überwachen und zu verwalten. Unter dem Artikel [Erstellen, Überwachen und Verwalten von Azure-Data-Factorys mithilfe des Data Factory .NET SDK](data-factory-create-data-factories-programmatically.md) finden Sie weitere Informationen.
-  
-- **.NET-Klassenbibliothek** Sie können Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen. Unter [Erstellen, Überwachen und Verwalten von Daten Factorys mit dem .NET SDK][create-factory-using-dotnet-sdk] finden Sie eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mit dem .NET SDK. Unter [Data Factory-Klassenbibliotheksreferenz][msdn-class-library-reference] finden Sie eine umfassende Dokumentation zum Data Factory .NET SDK.
+- **Visual Studio**: Sie können mit Visual Studio eine Azure Data Factory erstellen. Unter [Erstellen der ersten Azure Data Factory-Pipeline mit Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) finden Sie weitere Informationen.
+
+- **Azure PowerShell**: Unter [Erstellen der ersten Azure Data Factory mit Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) finden Sie ein Tutorial und eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mithilfe von PowerShell. In der [Data Factory-Cmdlet-Referenz][adf-powershell-reference] in der MSDN-Bibliothek finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
+   
+- **.NET-Klassenbibliothek** Sie können Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen. Unter [Erstellen, Überwachen und Verwalten von Daten Factorys mit dem .NET SDK](data-factory-create-data-factories-programmatically.md) finden Sie eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mit dem .NET SDK. Unter [Data Factory-Klassenbibliotheksreferenz][msdn-class-library-reference] finden Sie eine umfassende Dokumentation zum Data Factory .NET SDK.
 
 - **REST-API** Sie können auch die vom Azure-Data Factory-Dienst verfügbar gemachte REST-API zum Erstellen und Bereitstellen von Data Factorys nutzen. Unter [Data Factory-REST-API][msdn-rest-api-reference] finden Sie eine umfassende Dokumentation zur Data Factory-REST-API.
  
@@ -102,10 +101,12 @@ Wenn Sie einen bedarfsgesteuerten Cluster verwenden, der vom Data Factory-Dienst
 	    "properties":
 	    {
 	        "type": "HDInsightOnDemandLinkedService",
-	        "clusterSize": 1,
-	        "timeToLive": "00:01:00",
-	        "linkedServiceName": "LinkedService-SampleData",
-	        "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ] 
+			"typeProperties": {
+	        	"clusterSize": 1,
+		        "timeToLive": "00:01:00",
+		        "linkedServiceName": "LinkedService-SampleData",
+		        "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ] 
+			}
 	    }
 	} 
 
@@ -137,7 +138,6 @@ Wenn Sie die Ausführung der Pipeline beenden müssen, können Sie das Cmdlet [S
 Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige Möglichkeit das Löschen und erneute Erstellen der Pipeline. Wenn Sie die Pipeline löschen, müssen Sie keine Tabellen und verknüpften Dienste löschen, die von der Pipeline verwendet werden.
 
 
-[adf-tutorial]: data-factory-tutorial.md
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
 [msdn-class-library-reference]: https://msdn.microsoft.com/library/dn883654.aspx
 [msdn-rest-api-reference]: https://msdn.microsoft.com/library/dn906738.aspx
@@ -152,4 +152,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

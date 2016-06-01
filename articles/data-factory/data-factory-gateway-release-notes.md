@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="05/17/2016" 
 	ms.author="spelluru"/>
 
 # Versionshinweise für Datenverwaltungsgateway
@@ -22,7 +22,13 @@ Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschie
 
 Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md).
 
-## Aktuelle Version (1.11.5918.1.)
+## AKTUELLE VERSION (1.12.5953.1.)
+- Fehlerbehebungen
+
+
+## Frühere Versionen
+
+## 1\.11.5918.1
 
 - Die maximale Größe des Gatewayereignisprotokolls wurde von 1 MB auf 40 MB erhöht.
 - Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll. 
@@ -30,8 +36,6 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 - Leistungsverbesserungen
 	- Verbessern Sie die Leistung beim Laden großer Tabellen von lokalen Servern in Kopierszenarieren ohne Code.
 - Fehlerbehebungen
-
-## Frühere Versionen
 
 ## 1\.10.5892.1
 
@@ -145,4 +149,4 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 ### Warum versucht der Datenquellen-Manager, eine Verbindung mit dem Gateway herzustellen?
 Dies ist ein Sicherheitsdesign, bei dem Sie nur lokale Datenquellen für den Cloudzugriff in Ihrem Unternehmensnetzwerk konfigurieren können. Ihre Anmeldeinformationen gelangen nicht an Orte außerhalb Ihrer Unternehmensfirewall. Stellen Sie sicher, dass Ihr Computer den Computer erreichen kann, auf dem das Gateway installiert ist.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

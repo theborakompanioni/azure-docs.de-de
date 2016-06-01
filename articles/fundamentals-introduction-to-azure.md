@@ -35,8 +35,8 @@ Azure gruppiert Dienste im Verwaltungsportal unter verschiedenen Kategorien und 
 
 Dieser Artikel **geht anders vor**, denn die Dienste werden nach Funktionsverwandtschaft dargestellt, und es werden wichtige Teildienste hervorgehoben, die zu größeren Diensten gehören.
 
-![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)
- *Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden.*
+![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png) 
+*Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden. *
 
 ## Verwaltungsportal
 Azure verfügt über eine Webschnittstelle, das so genannte [Verwaltungsportal](http://manage.windowsazure.com), über das Administratoren auf die meisten Azure-Features zugreifen und die meisten Azure-Features verwalten können. Microsoft gibt das Portal mit der neueren Benutzeroberfläche in der Regel als Beta-Version heraus, bevor eine ältere Version zurückgezogen wird. Die neuere Version heißt [Azure-Vorschauportal](https://portal.azure.com/).
@@ -323,7 +323,7 @@ Bei den meisten Anwendungen findet eine Identitätsbestimmung statt. Eine Anwend
 
 Wie die meisten Verzeichnisdienste speichert Azure Active Directory Informationen über Benutzer und Organisationen, denen sie angehören. Active Directory ermöglicht es Benutzern sich anzumelden und weist ihnen Tokens zu, mit denen ihre Identität in Anwendungen bestätigt wird. Auch die Synchronisierung der Benutzerinformationen mit Windows Server Active Directory, das in Ihrem lokalen Netzwerk ausgeführt wird, ist möglich. Auch wenn die Mechanismen und Datenformate, die von Azure Active Directory verwendet werden, nicht mit denen in Windows Server Active Directory identisch sind, sind die durchgeführten Funktionen sich doch sehr ähnlich.
 
-Es ist wichtig, dass Sie verstehen, dass Azure Active Directory primär für Cloudanwendungen konzipiert wurde. Es kann beispielsweise von Anwendungen unter Azure oder auf einer anderen Cloudplattform verwendet werden. Es wird auch von Microsoft-eigenen Cloudanwendungen wie zum Beispiel Office 365 verwendet. Wenn Sie Ihr Rechenzentrum jedoch mit Azure Virtual Machines und Azure Virtual Network auf die Cloud erweitern möchten, ist Azure Active Directory nicht die richtige Wahl. Stattdessen möchten Sie möglicherweise Windows Server Active Directory auf Virtual Machines ausführen.
+Es ist wichtig, dass Sie verstehen, dass Azure Active Directory primär für Cloudanwendungen konzipiert wurde. Es kann beispielsweise von Anwendungen unter Azure oder auf einer anderen Cloudplattform verwendet werden. Es wird auch von Microsoft-eigenen Cloudanwendungen wie zum Beispiel Office 365 verwendet. Wenn Sie Ihr Rechenzentrum jedoch mit Azure Virtual Machines und Azure Virtual Network auf die Cloud erweitern möchten, ist Azure Active Directory nicht die richtige Wahl. Stattdessen sollten Sie Windows Server Active Directory auf Virtual Machines ausführen.
 
 Damit Anwendungen auf die enthaltenen Informationen zugreifen können, bietet Azure Active Directory eine RESTful-API mit dem Namen Azure Active Directory Graph. Mit dieser API können die auf einer beliebigen Plattform ausgeführten Anwendungen auf Verzeichnisobjekte und auf die Beziehungen zwischen ihnen zugreifen. Eine autorisierte Anwendung kann diese API beispielsweise verwenden, um Informationen über einen Benutzer, über Gruppen, denen er angehört, oder um andere Informationen zu erhalten. Anwendungen können auch die Beziehungen zwischen Benutzern (den sogenannten "Social Graph") anzeigen, sodass sie intelligenter mit den Beziehungen zwischen Menschen arbeiten können.
 
@@ -607,4 +607,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

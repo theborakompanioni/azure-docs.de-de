@@ -3,7 +3,7 @@
    description="Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden."
    services="service-fabric"
    documentationCenter=".net"
-   authors="msfussell"
+   authors="rwike77"
    manager="timlt"
    editor="chackdan;subramar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="04/05/2016"
-   ms.author="msfussell"/>
+   ms.author="ryanwi"/>
 
 # Übersicht über Service Fabric-Terminologie
 
@@ -67,7 +67,7 @@ In jedem Cluster werden Systemdienste erstellt, die die Plattformfunktionen von 
 
 **Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst und Ihnen die Verwaltung der Dienstnamen und -eigenschaften ermöglicht. Dies entspricht einem Internetdomänen-Namendienst (DNS) für den Cluster. Mithilfe des Naming Service können Clients sicher mit allen Knoten im Cluster kommunizieren, um einen Dienstnamen und den entsprechenden Speicherort aufzulösen (d.h. die tatsächliche IP-Adresse und den Port des Computers zu beziehen, auf dem er derzeit ausgeführt wird). Mithilfe der Kommunikations-Client-APIs können Sie Dienste und Clients entwickeln, die in der Lage sind, den aktuellen Netzwerkstandort aufzulösen, auch wenn Anwendungen innerhalb des Clusters (z.B. aufgrund von Fehlern, des Ressourcenausgleichs oder der Größenanpassung des Clusters) verschoben werden.
 
-Im Artikel [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md) finden Sie weitere Informationen zur Verwendung der API für die Kommunikation zwischen Client und Dienst, die in Verbindung mit dem Naming Service genutzt wird.
+Weitere Informationen zu der Verwendung des Client und der Dienstkommunikations-API, die mit Naming Service zusammenarbeiten, finden Sie in dem Artikel [Kommunikation mit Diensten](service-fabric-connect-and-communicate-with-services.md).
 
 **Imagespeicherdienst**: Jeder Service Fabric-Cluster verfügt über einen Imagespeicherdienst, in dem bereitgestellte Anwendungspakete mit Versionsangabe aufbewahrt werden. Sie müssen den Inhalt eines Anwendungspakets in den Imagespeicherdienst kopieren und anschließend den in diesem Anwendungspaket enthaltene Anwendungstyp in diesem Anwendungspaket registrieren. Nach der Bereitstellung des Anwendungstyps können Sie benannte Anwendungen daraus erstellen. Sie können die Registrierung eines Anwendungstyps im Imagespeicherdienst aufheben, wenn alle seine benannten Anwendungen gelöscht wurden.
 
@@ -90,4 +90,4 @@ Weitere Informationen zu Service Fabric
 - [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
 - [Anwendungsszenarien](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -663,7 +663,7 @@ Beachten Sie Folgendes:
 - Sie müssen keine Zeiten für **Start** und **Ende** der Pipeline angeben. 
 - Zu diesem Zeitpunkt müssen Sie die Verfügbarkeit der Eingabe- und Ausgabedatasets (Häufigkeit und Intervall) angeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
 - Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dies ist beabsichtigt. 
-- Einmalig ausgeführte Pipelines können nicht aktualisiert werden. Sie können eine einmalig ausgeführte Pipeline klonen, umbenennen, die Eigenschaften aktualisieren und bereitstellen, um eine andere Pipeline zu erstellen. 
+- Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen. 
 
   
 
@@ -698,4 +698,4 @@ Beachten Sie Folgendes:
 
   
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -138,8 +138,6 @@ Zur Entwicklung systemeigener mobiler Geräte-Apps für alle großen mobilen Ger
 
 Einige plattformübergreifende Tools gewährleisten eine funktionsreichere systemeigene Benutzeroberfläche auf mobilen Geräten, nutzen jedoch noch eine gemeinsame Codebasis – typischerweise JavaScript. Mobile Services erleichtern die Erstellung und Verwaltung eines Back-End-Diensts für die plattformübergreifende App-Entwicklung durch Schnellstart-Lernprogramme für die folgenden Entwicklungsplattformen:
 
-+ [**Appcelerator**](http://go.microsoft.com/fwlink/p/?LinkId=509987)<br/>Mit Appcelerator können Sie unter Verwendung von JavaScript eine einzelne App entwickeln, die für die Ausführung als systemeigene App auf allen mobilen Geräteplattformen kompiliert ist. Das Ergebnis sind eine attraktive Benutzeroberfläche, Zugriff auf alle systemeigenen Geräteressourcen und eine systemeigene App-Leistung. Weitere Informationen finden Sie im [Appcelerator-Lernprogramm][Appcelerator].
-
 + [**PhoneGap**](https://go.microsoft.com/fwLink/p/?LinkID=390707)**/**[**Cordova**](http://cordova.apache.org/)<br/>PhoneGap (eine Distribution des Apache Cordova-Projekts) ist ein kostenloses Open Source-Framework, mit dem Sie unter Verwendung von standardisierten Web-APIs, HTML und JavaScript eine einzelne, auf Android-, iOS- und Windows-Geräten ausführbare App entwickeln können. PhoneGap bietet eine auf Webansichten basierende Benutzeroberfläche. Die Lösung optimiert die Nutzererfahrung durch den Zugriff auf systemeigene Geräteressourcen wie Pushbenachrichtigungen, Beschleunigungsmesser, Kamera, Speicher, Geolocation und In-App-Browser. Weitere Informationen finden Sie im [PhoneGap-Schnellstart-Lernprogramm][PhoneGap].
 
 	Visual Studio unterstützt jetzt auch die Erstellung plattformübergreifender Cordova-Apps mithilfe der Erweiterung für hybride Multi-Device-Apps für Visual Studio. Diese Software steht als Vorabversion zur Verfügung. Weitere Informationen finden Sie unter [Erste Schritte mit hybriden Multi-Device-Apps unter Verwendung von HTML und JavaScript](http://msdn.microsoft.com/library/dn771545.aspx).
@@ -167,10 +165,10 @@ Einige plattformübergreifende Tools gewährleisten eine funktionsreichere syste
 [TemplatePushMessage]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.templatepushmessage.aspx
 [PhoneGap]: mobile-services-javascript-backend-phonegap-get-started.md
 [Sencha]: partner-sencha-mobile-services-get-started.md
-[Appcelerator]: ../partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started.md
+[Appcelerator]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started.md
 [SendAsync]: http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
 [What's next for Windows Phone 8 developers]: http://msdn.microsoft.com/library/windows/apps/dn655121(v=vs.105).aspx
 [Building universal Windows apps for all Windows devices]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [Universal Windows app project for Azure Mobile Services using MVVM]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0518_2016-->

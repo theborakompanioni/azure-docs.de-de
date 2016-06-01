@@ -19,7 +19,7 @@
 
 # Schreiben, Bearbeiten und Ausführen von SQL-Abfragen für DocumentDB mit dem Abfrage-Explorer 
 
-Dieser Artikel enthält eine Übersicht über den Abfrage-Explorer von [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Hierbei handelt es sich um ein Tool im Azure-Portal, mit dem Sie SQL-Abfragen in einer [DocumentDB-Sammlung](documentdb-create-collection) schreiben, bearbeiten und ausführen können.
+Dieser Artikel enthält eine Übersicht über den Abfrage-Explorer von [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Hierbei handelt es sich um ein Tool im Azure-Portal, mit dem Sie SQL-Abfragen für eine [DocumentDB-Sammlung](documentdb-create-collection.md) schreiben und bearbeiten und darauf anwenden können.
 
 1. Klicken Sie in der Navigationsleiste im Azure-Portal auf **DocumentDB-Konten**. Wenn **DocumentDB-Konten** nicht sichtbar ist, klicken Sie auf **Durchsuchen** und dann auf **DocumentDB-Konten**.
 
@@ -79,4 +79,4 @@ Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen 
 
 Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Abfrage-Explorer unterstützt wird, finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md), oder drucken Sie sich den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) aus. Sie können auch experimentieren, indem Sie auf den [Query Playground](https://www.documentdb.com/sql/demo) zugreifen, um Abfragen online mit einem Beispieldataset zu testen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

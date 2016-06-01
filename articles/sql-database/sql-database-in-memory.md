@@ -460,7 +460,7 @@ GO
 Die In-Memory OLTP-Features in der Azure SQL-Datenbank [wurden am 28. Oktober 2015 als Vorschau aktiviert](https://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/).
 
 
-In der Vorschauphase vor der allgemeinen Verfügbarkeit wird In-Memory OLTP nur für Folgendes unterstützt:
+In der aktuellen Vorschauversion wird In-Memory OLTP nur für Folgendes unterstützt:
 
 - Datenbanken im Tarif *Premium*.
 
@@ -491,7 +491,11 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 #### Andere Beziehungen
 
 
-- Das Verwenden von In-Memory OLTP-Features mit Datenbanken in elastischen Pools wird in der Vorschauphase nicht unterstützt, jedoch ggf. künftig unterstützt werden:
+- Die Verwendung von In-Memory OLTP-Features mit Datenbanken in elastischen Pools wird in der Vorschauversion nicht unterstützt.
+ - Gehen Sie folgendermaßen vor, um eine Datenbank, die über In-Memory-OLTP-Objekte verfügt oder verfügte, in einen elastischen Pool zu verschieben:
+  - 1. Löschen Sie alle speicheroptimierten Tabellen, Tabellentypen und nativ kompilierten T-SQL-Module in der Datenbank.
+  - 2. Ändern Sie die Dienstebene der Datenbank auf „Standard“. (*Derzeit besteht ein Problem beim Verschieben von Premium-Datenbanken in einen elastischen Pool, wenn die Datenbanken in der Vergangenheit über In-Memory-OLTP-Objekte verfügten. Das Team von Azure DB arbeitet an der Behebung des Problems.)
+  - 3. Verschieben Sie die Datenbank in den elastischen Pool.
 
 - Die Verwendung von In-Memory OLTP mit SQL Data Warehouse wird nicht unterstützt.
  - Das Columnstore-Indexfeature von In-Memory Analytics wird in SQL Data Warehouse unterstützt.
@@ -533,4 +537,4 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 
 - [Überwachen von In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md) für In-Memory OLTP
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

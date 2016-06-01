@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="04/14/2016"
+	ms.date="05/13/2016"
 	ms.author="chrande"/>
 
 # C#-Entwicklerreferenz zu Azure Functions
@@ -100,8 +100,10 @@ Die folgenden Namespaces werden automatisch importiert und sind daher optional:
 
 * `System`
 * `System.Collections.Generic`
+* `System.IO`
 * `System.Linq`
 * `System.Net.Http`
+* `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`.
 
@@ -121,7 +123,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 Die folgenden Assemblys werden automatisch von der Azure Functions-Hostumgebung hinzugefügt:
 
-* `mscorlib`
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -132,17 +134,19 @@ Die folgenden Assemblys werden automatisch von der Azure Functions-Hostumgebung 
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Darüber hinaus sind die folgenden Assemblys besondere Fälle, die über SimpleName referenziert werden können (z. B. `#r "AssemblyName"`):
+Darüber hinaus sind die folgenden Assemblys besondere Fälle, die über „SimpleName“ referenziert werden können (z. B. `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
+* `Microsoft.WindowsAzure.Storage`
+* `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens (z. B. `#r "MyAssembly.dll"`) darauf verweisen.
+Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens (z. B. `#r "MyAssembly.dll"`) darauf verweisen. Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
 
 ## Paketverwaltung
 
-Um NuGet-Pakete in einer C#-Funktion zu verwenden, laden Sie eine Datei *project.json* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für eine Datei *project.json*, die einen Verweis auf Microsoft.ProjectOxford.Face, Version 1.1.0, hinzufügt:
+Um NuGet-Pakete in einer C#-Funktion zu verwenden, laden Sie die Datei *project.json* in den Ordner der Funktion im Dateisystem der Funktionen-App hoch. Hier sehen Sie ein Beispiel der Datei *project.json*, die einen Verweis auf Microsoft.ProjectOxford.Face, Version 1.1.0, hinzufügt:
 
 ```json
 {
@@ -156,47 +160,17 @@ Um NuGet-Pakete in einer C#-Funktion zu verwenden, laden Sie eine Datei *project
 }
 ```
 
-Beim Hochladen einer Datei *project.json* erhält die Runtime die Pakete und fügt automatisch Verweise auf die Paketassemblys hinzu. Sie müssen keine `#r "AssemblyName"`-Anweisungen hinzufügen. Fügen Sie Ihrer Datei *run.csx* einfach die erforderlichen `using`-Anweisungen hinzu, um die in den NuGet-Paketen definierten Typen zu verwenden.
+Beim Hochladen der Datei *project.json* erhält die Laufzeit die Pakete und fügt automatisch Verweise auf die Paketassemblys hinzu. Sie müssen keine `#r "AssemblyName"`-Direktiven hinzufügen. Fügen Sie Ihrer Datei *run.csx* einfach die erforderlichen `using`-Anweisungen hinzu, um die in den NuGet-Paketen definierten Typen zu verwenden.
 
 ### Hochladen einer Datei „project.json“
 
-Stellen Sie zunächst sicher, dass Ihre Funktions-App ausgeführt wird. Öffnen Sie zu diesem Zweck Ihre Funktion im Azure-Portal. Dies ermöglicht auch Zugriff auf die Streamingprotokolle, in denen die Ausgabe der Paketinstallation angezeigt wird.
+1. Stellen Sie zunächst sicher, dass Ihre Funktionen-App ausgeführt wird. Öffnen Sie zu diesem Zweck Ihre Funktion im Azure-Portal. 
 
-Funktions-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service-web/web-sites-deploy.md) auch für Funktions-Apps zur Verfügung. Hier sind einige Methoden aufgeführt, die Sie verwenden können.
+	Dies ermöglicht auch Zugriff auf die Streamingprotokolle, in denen die Ausgabe der Paketinstallation angezeigt wird.
 
-#### So laden Sie „project.json“ mithilfe von Visual Studio Online (Monaco) hoch
+2. Verwenden Sie zum Hochladen der Datei „project.json“ eine der Methoden, die im Abschnitt **Aktualisieren von Funktionen-App-Dateien** im entsprechenden Thema der [Referenz für Azure Functions-Entwickler](functions-reference.md#fileupdate) beschrieben werden.
 
-1. Klicken Sie im Azure Functions-Portal auf **Funktions-App-Einstellungen**.
-
-2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen wechseln**.
-
-3. Klicken Sie auf **Tools**.
-
-4. Klicken Sie unter **Entwickeln** auf **Visual Studio Online**.
-
-5. **Aktivieren** Sie diese Option, wenn sie noch nicht aktiviert ist, und klicken Sie auf **Los**.
-
-6. Nachdem Visual Studio Online geladen wurde, ziehen Sie die Datei *project.json* in den Ordner Ihrer Funktion (der nach Ihrer Funktion benannt ist).
-
-#### So laden Sie „project.json“ über den SCM-Endpunkt (Kudu) der Funktions-App hoch
-
-1. Navigieren Sie zu: `https://<function_app_name>.scm.azurewebsites.net`.
-
-2. Klicken Sie auf **Debugkonsole > CMD**.
-
-3. Navigieren Sie zu *D:\\home\\site\\wwwroot<Funktionsname>*.
-
-4. Ziehen Sie Ihre Datei *project.json* in den Ordner (auf das Dateiraster).
-
-#### So laden Sie „project.json“ mithilfe von FTP hoch
-
-1. Führen Sie die [hier](../app-service-web/web-sites-deploy.md#ftp) aufgeführten Schritte aus, um FTP zu konfigurieren.
-
-2. Wenn Sie mit der Funktions-App-Website verbunden sind, kopieren Sie Ihre Datei *project.json* nach */site/wwwroot/<function_name>*.
-
-#### Protokoll zur Paketinstallation 
-
-Nach dem Hochladen der Datei *project.json* wird im Streamingprotokoll Ihrer Funktion in etwa folgende Ausgabe angezeigt:
+3. Nach dem Hochladen der Datei *project.json* wird im Streamingprotokoll Ihrer Funktion in etwa folgende Ausgabe angezeigt:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -215,9 +189,28 @@ Nach dem Hochladen der Datei *project.json* wird im Streamingprotokoll Ihrer Fun
 2016-04-04T19:02:57.455 Packages restored.
 ```
 
+## Umgebungsvariablen
+
+Verwenden Sie `System.Environment.GetEnvironmentVariable` zum Abrufen einer Umgebungsvariablen oder des Werts einer App-Einstellung (siehe das folgende Codebeispiel):
+
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log)
+{
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.Info(GetEnvironmentVariable("AzureWebJobsStorage"));
+    log.Info(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
+}
+
+public static string GetEnvironmentVariable(string name)
+{
+    return name + ": " + 
+        System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
+}
+```
+
 ## Wiederverwenden von CSX-Code
 
-Sie können Klassen und Methoden, die in anderen *CSX*-Dateien definiert sind, in Ihrer Datei *run.csx* verwenden. Verwenden Sie hierzu `#load`-Anweisungen in Ihrer Datei *run.csx*, wie im folgenden Beispiel gezeigt.
+Sie können in Ihrer Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX*-Dateien definiert sind. Verwenden Sie hierzu, wie im folgenden Beispiel gezeigt, `#load`-Direktiven in Ihrer Datei *run.csx*.
 
 Beispiel für *run.csx*:
 
@@ -240,15 +233,15 @@ public static void MyLogger(TraceWriter log, string logtext)
 }
 ```
 
-Sie können mit der `#load`-Anweisung einen relativen Pfad verwenden:
+Sie können mit der `#load`-Direktive einen relativen Pfad verwenden:
 
-* `#load "mylogger.csx"` lädt eine Datei im Funktionsordner.
+* `#load "mylogger.csx"` lädt eine Datei, die sich im Funktionenordner befindet.
 
-* `#load "loadedfiles\mylogger.csx"` lädt eine Datei in einem Ordner im Funktionsordner.
+* `#load "loadedfiles\mylogger.csx"` lädt eine Datei, die sich in einem Ordner im Funktionenordner befindet.
 
-* `#load "..\shared\mylogger.csx"` lädt eine Datei in einem Ordner, der sich auf der gleichen Ebene wie der Funktionsordner befindet, also direkt unter *wwwroot*.
+* `#load "..\shared\mylogger.csx"` lädt eine Datei, die sich in einem Ordner auf derselben Ebene wie der Funktionenordner direkt unter *wwwroot* befindet.
  
-Die `#load`-Anweisung kann nur mit *CSX*-Dateien (C#-Skript), nicht mit *CS*-Dateien verwendet werden.
+Die `#load`-Direktive kann nur mit *CSX*-Dateien (C#-Skript), nicht mit *CS*-Dateien verwendet werden.
 
 ## Nächste Schritte
 
@@ -258,4 +251,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

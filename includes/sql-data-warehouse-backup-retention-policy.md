@@ -8,8 +8,8 @@ As of circa 2016-04-22, the following topics might include this include:
 articles/sql-data-warehouse/sql-data-warehouse-overview-expectations.md
 articles/sql-data-warehouse/sql-data-warehouse-overview-backup-and-restore.md
 -->
-SQL Data Warehouse backs up all live data at least every 8 hours using Azure Storage Snapshots. These snapshots are maintained for 7 days. This allows you to restore the data to one of at least 21 points in time within the past 7 days up to the time when the last snapshot was taken. 
+SQL Data Warehouse sichert sämtliche Livedaten mindestens alle 8 Stunden mit Azure Storage-Momentaufnahmen. Diese Momentaufnahmen werden 7 Tage lang aufbewahrt. Dadurch können Sie Daten an einem von mindestens 21 Punkten innerhalb der letzten 7 Tage bis zu dem Zeitpunkt wiederherstellen, zu dem die letzte Momentaufnahme erstellt wurde.
 
-SQL Data Warehouse takes a database snapshot before a database is dropped and retains it for 7 days. When this occurs, it no longer retains snapshots from the live database. This allows you to restore a deleted database to the point when it was deleted.
+SQL Data Warehouse erstellt eine Datenbankmomentaufnahme, bevor eine Datenbank gelöscht wird, und bewahrt diese sieben Tage lang auf. In diesem Fall werden keine Momentaufnahmen der Livedatenbank mehr beibehalten. Auf diese Weise können Sie eine gelöschte Datenbank bis zu dem Punkt wiederherstellen, zu dem sie gelöscht wurde.
 
-SQL Data Warehouse copies snapshots asynchronously to a different geographical Azure region for added recoverability in case of a regional failure. If you cannot access your database because of a failure in an Azure region, you can restore your database to one of the geo-redundant snapshots.
+SQL Data Warehouse kopiert Momentaufnahmen asynchron in eine andere geografischen Azure-Region, um die Wiederherstellbarkeit bei einem regionalen Ausfall zu erhöhen. Wenn Sie aufgrund eines Fehlers in einer Azure-Region nicht mehr auf Ihre Datenbank zugreifen können, können Sie Ihre Datenbank auf Grundlage einer geografisch redundanten Momentaufnahme wiederherstellen.

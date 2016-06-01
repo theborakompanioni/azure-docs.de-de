@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/29/2016"
+	ms.date="05/11/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption für ruhende Daten (Vorschau)
@@ -37,7 +37,7 @@ Nach Klicken auf die Einstellung „Verschlüsselung“ können Sie Storage Serv
 
 ##Availability
 
-Beachten Sie, dass dieses Feature derzeit in Asien-Pazifik, Osten für Standard Storage und Japan, Osten für Storage Premium verfügbar ist. Wenn wir dieses Feature in weiteren Regionen einführen, werden wir dieses Dokument entsprechend aktualisieren.
+Beachten Sie, dass dieses Feature derzeit in den Regionen Asien, Osten und Europa, Westen für Standard Storage und in der Region Japan, Osten für Storage Premium verfügbar ist. Wenn wir dieses Feature in weiteren Regionen einführen, werden wir dieses Dokument entsprechend aktualisieren.
 
 ##Verschlüsselungsszenarien
 
@@ -215,7 +215,7 @@ A: Wann haben Sie das Speicherkonto erstellt? Bei der Vorschau müssen Sie Ihr A
 
 **F: Ist die SSE-Vorschau nur in bestimmten Regionen möglich?**
 
-A: Die SSE-Vorschau ist derzeit in Asien-Pazifik, Osten für Standard Storage und Japan, Osten für Storage Premium verfügbar. Wenn wir dieses Feature in den folgenden Monaten in zusätzlichen Regionen einführen, wird dieses Dokument aktualisiert.
+A: Die SSE-Vorschau ist derzeit in den Regionen Asien, Osten und Europa, Westen für Standard Storage und in der Region Japan, Osten für Storage Premium verfügbar. Wenn wir dieses Feature in den folgenden Monaten in zusätzlichen Regionen einführen, wird dieses Dokument aktualisiert.
 
 **F: Wohin wende ich mich, wenn Probleme auftreten oder ich Feedback geben möchte?**
 
@@ -225,4 +225,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

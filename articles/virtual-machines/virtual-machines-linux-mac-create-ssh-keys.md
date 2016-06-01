@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/02/2016"
+	ms.date="05/16/2016"
 	ms.author="v-livech"/>
 
 # Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure
 
-Auf Ihrer Arbeitsstation muss ein Terminal geöffnet sein, wenn Sie einen per Kennwort geschützten öffentlichen und privaten SSH-Schlüssel erstellen möchten. Nachdem Sie über SSH-Schlüssel verfügen, können Sie standardmäßig neue VMs mit diesem Schlüssel erstellen oder den öffentlichen Schlüssel vorhandenen VMs hinzufügen, indem Sie die Azure-Befehlszeilenschnittstelle und Azure-Vorlagen verwenden.
+Auf Ihrer Arbeitsstation muss ein Terminal geöffnet sein, wenn Sie einen per Kennwort geschützten öffentlichen und privaten SSH-Schlüssel erstellen möchten. Nachdem Sie über SSH-Schlüssel verfügen, können Sie standardmäßig neue VMs mit diesem Schlüssel erstellen oder den öffentlichen Schlüssel vorhandenen VMs hinzufügen, indem Sie die Azure-Befehlszeilenschnittstelle und Azure-Vorlagen verwenden. Dies ermöglicht Anmeldungen per SSH ohne Kennwort und die Verwendung der deutlich sichereren Authentifizierungsmethode mit Schlüsseln anstelle von Kennwörtern.
 
 ## Kurze Befehlsliste
 
@@ -64,7 +64,7 @@ $
 
 ## Einführung
 
-Die Verwendung von öffentlichen und privaten SSH-Schlüsseln ist die einfachste Möglichkeit, sich an Ihren Linux-Servern anzumelden. Aber [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) (Public-Key-Kryptosystem) ist ein Weg mit deutlich mehr Sicherheit für die Anmeldung an Ihrer Linux- oder BSD-VM in Azure als Kennwörter, die viel leichter einem Brute-Force-Angriff unterzogen werden können. Sie können Ihren öffentlichen Schlüssel an beliebige Personen weitergeben, während Ihr privater Schlüssel ausschließlich für Ihren Besitz bestimmt ist (bzw. Ihre lokale Sicherheitsinfrastruktur). Der erstellte private SSH-Schlüssel verfügt als Schutz über ein [sicheres Kennwort](https://www.xkcd.com/936/). Dieses Kennwort ist nur für den Zugriff auf den privaten SSH-Schlüssel bestimmt und dient **nicht** als Kennwort für das Benutzerkonto. Alle Personen, die im Besitz eines privaten Schlüssels ohne Kennwort sind, können auf alle Server mit installiertem öffentlichem Schlüssel zugreifen. Ohne Kennwort kann der private Schlüssel nicht verwendet werden.
+Die Verwendung von öffentlichen und privaten SSH-Schlüsseln ist die einfachste Möglichkeit, sich an Ihren Linux-Servern anzumelden. Aber [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) (Public-Key-Kryptosystem) ist ein Weg mit deutlich mehr Sicherheit für die Anmeldung an Ihrer Linux- oder BSD-VM in Azure als Kennwörter, die viel leichter einem Brute-Force-Angriff unterzogen werden können. Sie können Ihren öffentlichen Schlüssel an beliebige Personen weitergeben, während Ihr privater Schlüssel ausschließlich für Ihren Besitz bestimmt ist (bzw. Ihre lokale Sicherheitsinfrastruktur). Der erstellte private SSH-Schlüssel verfügt als Schutz über ein [sicheres Kennwort](https://www.xkcd.com/936/). Dieses Kennwort ist nur für den Zugriff auf den privaten SSH-Schlüssel bestimmt und dient **nicht** als Kennwort für das Benutzerkonto. Wenn Sie Ihrem SSH-Schlüssel ein Kennwort hinzufügen, wird der private Schlüssel verschlüsselt, sodass der private Schlüssel ohne ein Kennwort zum Entschlüsseln nicht verwendet werden kann. Falls ein Angreifer Ihren privaten Schlüssel entwendet und dafür kein Kennwort vergeben wurde, kann er sich mit dem privaten Schlüssel an Ihren Servern anmelden, auf denen der entsprechende öffentliche Schlüssel installiert ist. Wenn der private Schlüssel mit einem Kennwort geschützt ist, kann er vom Angreifer nicht genutzt werden, und Ihre Infrastruktur verfügt unter Azure über eine weitere Sicherheitsschicht.
 
 
 In diesem Artikel werden Dateien mit Schlüsseln im *ssh-rsa*-Format erstellt, da diese für Bereitstellungen im Resource Manager empfohlen werden und im [Portal](https://portal.azure.com) sowohl für klassische Bereitstellungen als auch für Resource Manager-Bereitstellungen benötigt werden.
@@ -76,7 +76,7 @@ Für Azure sind öffentliche und private Schlüssel mit mindestens 2048 Bit im F
 
 ## Verwenden von ssh-keygen
 
-Mit diesem Befehl wird ein kennwortgeschütztes SSH-Schlüsselpaar per RSA mit 2048 Bit erstellt und kommentiert, um die einfache Identifizierung zu ermöglichen.
+Mit diesem Befehl wird ein kennwortgeschütztes (verschlüsseltes) SSH-Schlüsselpaar per RSA mit 2048 Bit erstellt und kommentiert, um die einfache Identifizierung zu ermöglichen.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "ahmet@fedoraVMAzure"
@@ -235,4 +235,4 @@ Der nächste Schritt besteht darin, Azure-Linux-VMs mit dem neuen öffentlichen 
 - [Erstellen einer geschützten Linux-VM mit dem Azure-Portal](virtual-machines-linux-quick-create-portal.md)
 - [Erstellen einer geschützten Linux-VM mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -92,7 +92,7 @@ Es folgt ein Beispiel, wie Sie Anaconda unter Ubuntu installieren können.
 	rm -rf anaconda/
 
 	# Update Jupyter to the latest install and generate its config file
-	sudo /anaconda3/bin/conda install -f jupyter -y
+	sudo /anaconda3/bin/conda install jupyter -y
 	/anaconda3/bin/jupyter-notebook --generate-config
 
 
@@ -124,7 +124,7 @@ Dadurch werden Sie aufgefordert, ein Kennwort einzugeben und zu bestätigen. Ans
     Verify password:
     sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
 
-Als Nächstes bearbeiten wir die Konfigurationsdatei des Profils. Hierbei handelt es sich um die Datei `jupyter_notebook_config.py` in dem Verzeichnis, in dem Sie sich befinden. Beachten Sie, dass diese Datei möglicherweise nicht vorhanden ist. In diesem Fall erstellen Sie sie einfach. Diese Datei verfügt über einige Felder, und standardmäßig sind alle auskommentiert. Öffnen Sie diese Datei in einem Text-Editor Ihrer Wahl und stellen Sie sicher, dass mindestens der folgende Text enthalten ist. Ersetzen Sie das Kennwort durch den SHA1 aus dem vorherigen Schritt.
+Als Nächstes bearbeiten wir die Konfigurationsdatei des Profils. Hierbei handelt es sich um die Datei `jupyter_notebook_config.py` in dem Verzeichnis, in dem Sie sich befinden. Beachten Sie, dass diese Datei möglicherweise nicht vorhanden ist. In diesem Fall erstellen Sie sie einfach. Diese Datei verfügt über einige Felder, und standardmäßig sind alle auskommentiert. Öffnen Sie diese Datei in einem Text-Editor Ihrer Wahl und stellen Sie sicher, dass mindestens der folgende Text enthalten ist. **Ersetzen Sie „c.NotebookApp.password“ in der config-Datei durch den SHA1 aus dem vorherigen Schritt.**
 
     c = get_config()
 
@@ -135,7 +135,7 @@ Als Nächstes bearbeiten wir die Konfigurationsdatei des Profils. Hierbei handel
     c.NotebookApp.password = u'sha1:b86e933199ad:a02e9592e5 etc... '
 
     # Network and browser details. We use a fixed port (9999) so it matches
-    # our Azure setup, where we've allowed :wqtraffic on that port
+    # our Azure setup, where we've allowed traffic on that port
     c.NotebookApp.ip = '*'
     c.NotebookApp.port = 9999
     c.NotebookApp.open_browser = False
@@ -199,4 +199,4 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [repository]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -24,17 +24,17 @@
 Beim Arbeiten mit Livestreaming werden normalerweise die folgenden Komponenten verwendet:
 
 - Eine Kamera, mit der ein Ereignis übertragen wird.
-- Ein Live-Video-Encoder, der Signale von der Kamera in Datenströme konvertiert, die an einen Livestreaming-Dienst gesendet werden. 
-  
-	Optional mehrere Live-Encoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
-- Ein Livestreaming-Dienst, der Ihnen Folgendes ermöglicht: 
-	- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming) 
-	- Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
-	- Vorschau des Livestreams
-	- Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
-	- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung 
-	
-		
+- Ein Live-Video-Encoder, der Signale von der Kamera in Datenströme konvertiert, die an einen Livestreaming-Dienst gesendet werden.
+
+Optional mehrere Live-Encoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
+- Ein Livestreaming-Dienst, der Ihnen Folgendes ermöglicht:
+- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming)
+- Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
+- Vorschau des Livestreams
+- Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
+- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung
+
+
 Mit **Microsoft Azure Media Services** (AMS) können Sie Livestreaminginhalte erfassen, codieren, in der Vorschau anzeigen, speichern und bereitstellen.
 
 Bei der Übermittlung Ihrer Inhalte für Kunden besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen bereitzustellen. Damit Qualität und Netzwerkbedingungen sichergestellt werden, codieren Sie den Datenstrom mit Live-Encodern in einen Videodatenstrom mit mehreren Bitraten (adaptive Bitrate). Verwenden Sie die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md) von Media Services, um den Datenstrom dynamisch erneut in verschiedene Protokolle zu packen. Media Services unterstützt die Übermittlung der folgenden Streamingtechnologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
@@ -66,7 +66,7 @@ Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am Lives
 
 ![Liveworkflow][live-overview2]
 
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-manage-channels-overview.md).
+Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md).
 
 
 
@@ -91,6 +91,5 @@ Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenstr�
 [live-overview1]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png
 
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
- 
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

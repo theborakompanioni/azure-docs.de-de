@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/14/2016"
+   ms.date="05/11/2016"
    ms.author="andkjell;billmath"/>
 
 # Weitere Informationen zu den Funktionen in der Vorschau
@@ -36,19 +36,11 @@ Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem loka
 >[AZURE.NOTE] Für das Gruppenrückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
 
 ## Rückschreiben von Benutzern
-> [AZURE.IMPORTANT] Die Vorschaufunktion „Rückschreiben von Benutzern“ wurde im Azure AD Connect-Update vom August 2015 vorübergehend entfernt. Wenn Sie diese Funktion aktiviert haben, sollten Sie sie deaktivieren.
-
-„Rückschreiben von Benutzern“ befindet sich in einem frühen Vorschaustadium. Die Funktion kann nur verwendet werden, wenn Azure AD die Quelle für alle Benutzerobjekte ist und das lokale Active Directory leer ist, bevor Sie die Funktion aktivieren (Bereitstellung ohne bestehende Infrastruktur).
-
->[AZURE.WARNING] Diese Funktion sollte nur in einer Testumgebung evaluiert und nicht in einem Azure AD-Verzeichnis verwendet werden, das für die Produktion verwendet wird.
-
-.
-
->[AZURE.NOTE] Für das Rückschreiben von Benutzern ist ein Azure AD Premium-Abonnement erforderlich.
+> [AZURE.IMPORTANT] Die Vorschaufunktion „Rückschreiben von Benutzern“ wurde im Azure AD Connect-Update vom August 2015 entfernt. Wenn Sie diese Funktion aktiviert haben, sollten Sie sie deaktivieren.
 
 ## Nächste Schritte
 Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md) fort.
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

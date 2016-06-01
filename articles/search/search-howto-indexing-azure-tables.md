@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="04/12/2016"
+ms.date="05/12/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Azure Table Storage mit Azure Search
@@ -29,15 +29,16 @@ Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außer
 
 Mit einem Indexer werden Daten aus einer Datenquelle gelesen und in einen Zielsuchindex geladen.
 
-So richten Sie einen Indexer für Tabellen ein
+So richten Sie die Tabellenindizierung ein:
 
 1. Erstellen Sie eine Datenquelle vom Typ `azuretable`, mit der auf eine Tabelle (und optional eine Abfrage) in einem Azure-Speicherkonto verwiesen wird.
 	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter.
 	- Geben Sie den Tabellennamen mit dem Parameter `container.name` an.
 	- Geben Sie optional eine Abfrage mit dem Parameter `container.query` an. Verwenden Sie nach Möglichkeit einen Filter für PartitionKey, um die beste Leistung zu erzielen. Alle anderen Abfragen führen zu einem vollständigen Tabellenscan, wodurch bei großen Tabellen die Leistung beeinträchtigt werden kann.
-2. Erstellen Sie den Indexer, indem Sie die Datenquelle mit einem vorhandenen Zielindex verbinden (erstellen Sie den Index, falls er noch nicht vorhanden ist).
+2. Erstellen Sie einen Suchindex mit dem Schema, das den Spalten in der Tabelle entspricht, die Sie indizieren möchten. 
+3. Erstellen Sie den Indexer, indem Sie die Datenquelle mit dem Suchindex verbinden.
 
-Dies wird im folgenden Beispiel veranschaulicht:
+### Erstellen der Datenquelle
 
 	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -50,7 +51,27 @@ Dies wird im folgenden Beispiel veranschaulicht:
 	    "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
 	}   
 
-Als Nächstes erstellen Sie einen Indexer, der auf die Datenquelle und einen Zielindex verweist. Beispiel:
+Weitere Informationen zur API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](search-api-indexers-2015-02-28-preview.md#create-data-source).
+
+### Erstellen des Index 
+
+	POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+  		"name" : "my-target-index",
+  		"fields": [
+    		{ "name": "key", "type": "Edm.String", "key": true, "searchable": false },
+    		{ "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
+  		]
+	}
+
+Weitere Informationen über die API zum Erstellen eines Index finden Sie unter [Index erstellen](https://msdn.microsoft.com/library/dn798941.aspx)
+
+### Erstellen eines Indexers 
+
+Zuletzt erstellen Sie den Indexer, der auf die Datenquelle und den Zielindex verweist. Zum Beispiel:
 
 	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -63,19 +84,21 @@ Als Nächstes erstellen Sie einen Indexer, der auf die Datenquelle und einen Zie
 	  "schedule" : { "interval" : "PT2H" }
 	}
 
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](search-api-indexers-2015-02-28-preview.md#create-indexer).
+
 Das ist schon alles. Viel Spaß beim Indizieren!
+
+## Behandeln von unterschiedlichen Feldnamen
+
+Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich häufig von den Eigenschaftennamen in Ihrer Tabelle. Sie können **Feldzuordnungen** verwenden, um die Eigenschaftennamen der Tabelle den Feldnamen in Ihrem Suchindex zuzuordnen. Weitere Informationen zu Feldzuordnungen finden Sie unter [Durch Azure Search-Indexerfeldzuordnungen werden die Unterschiede zwischen Datenquellen und Suchindizes überbrückt](search-indexer-field-mappings.md).
 
 ## Behandeln von Dokumentschlüsseln
 
 In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ `Edm.String` verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist gleichzeitig das einzige erforderliche Feld).
 
-Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Search ein gemeinsames Feld mit dem Namen `Key`, wobei es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der PartitionKey einer Zeile beispielsweise `PK1` lautet und RowKey den Wert `RK1` hat, hat das Feld `Key` den Wert `PK1RK1`.
+Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Search ein gemeinsames Feld mit dem Namen `Key`, bei dem es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der Partitionsschlüssel einer Zeile beispielsweise `PK1` lautet und der Zeilenschlüssel den Wert `RK1` hat, hat das Feld `Key` den Wert `PK1RK1`.
 
-> [AZURE.NOTE] Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z. B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die Option `base64EncodeKeys` in den Indexereigenschaften aktivieren. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z. B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
-
-## Behandeln von unterschiedlichen Feldnamen
-
-Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich häufig von den Eigenschaftennamen in Ihrer Tabelle. Sie können **Feldzuordnungen** verwenden, um die Eigenschaftennamen der Tabelle den Feldnamen in Ihrem Suchindex zuzuordnen. Weitere Informationen zu Feldzuordnungen finden Sie unter [Anpassen von Azure Search-Indexern](search-indexers-customization.md).
+> [AZURE.NOTE] Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Ungültige Zeichen können Sie mit der [Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) `base64Encode` behandeln. Verwenden Sie in diesem Fall auch die URL-sichere Base64-Codierung beim Übergeben von Dokumentschlüsseln in API-Aufrufen (z.B. Suche).
 
 ## Inkrementelle Indizierung und Erkennung von Löschungen
  
@@ -100,4 +123,4 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="bradsev" />
 
 # Verschieben von Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors
@@ -24,7 +24,6 @@ Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben vo
 
 [AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-## Einführung
 
 Nachdem Kunden lokale Daten in die Cloud verschoben haben, können sie über sämtliche Azure-Dienste darauf zugreifen, um die ganze Leistungsfähigkeit der Azure-Technologiepalette zu nutzen. Die Daten können beispielsweise in Azure Machine Learning oder einem HDInsight-Cluster verwendet werden.
 
@@ -38,7 +37,7 @@ Eine Beschreibung gängiger Szenarien, in denen SQL Server Integration Services 
 
 Zum Ausführen der in diesem Artikel beschriebenen Aufgaben benötigen Sie ein eingerichtetes Azure-Abonnement und Azure-Speicherkonto. Um Daten hoch- und herunterladen zu können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
 
-- Informationen zum Einrichten eines **Azure-Abonnements** finden Sie unter [Einen Monat kostenlos testen!](https://azure.microsoft.com/pricing/free-trial/).
+- Informationen zum Einrichten eines **Azure-Abonnements** finden Sie unter [Kostenlose 1-Monat-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - Anleitungen zum Erstellen eines **Speicherkontos** und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
 
 
@@ -88,4 +87,4 @@ Hier sei angemerkt, dass das SSIS Feature Pack komplexere zu verarbeitende Ablä
 - Verwenden Sie zum Anwenden eines Hive-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Hive-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146771.aspx).
 - Verwenden Sie zum Anwenden eines Pig-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Pig-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146781.aspx).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

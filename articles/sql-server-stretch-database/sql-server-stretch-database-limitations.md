@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank | Microsoft Azure"
-	description="Erfahren Sie mehr über Hindernisse, die Sie beheben müssen, bevor Sie Stretch-Datenbank aktivieren können."
+	pageTitle="Einschränkungen für Stretch-Datenbank | Microsoft Azure"
+	description="Erfahren Sie mehr über die Einschränkungen für Stretch-Datenbank."
 	services="sql-server-stretch-database"
 	documentationCenter=""
 	authors="douglaslMS"
@@ -13,61 +13,73 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
-# Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank
+# Einschränkungen für Stretch-Datenbank
 
-Erfahren Sie mehr über Hindernisse, die Sie beheben müssen, bevor Sie Stretch-Datenbank aktivieren können.
+Erfahren Sie mehr zu Einschränkungen für Tabellen, für die Stretch aktiviert ist und zu Einschränkungen, die Sie derzeit daran hindern, Stretch für eine Tabelle zu aktivieren.
 
-## <a name="Limitations"></a>Hindernisse
-In der aktuellen Vorversion von SQL Server 2016 sind Tabellen mit den folgenden Komponenten nicht für Stretch berechtigt.
+##  <a name="Caveats"></a>Einschränkungen für Tabellen, für die Stretch aktiviert ist
 
-**Tabelleneigenschaften**
--   Mehr als 1.023 Spalten
+Tabellen, für die Stretch aktiviert ist, weisen die folgenden Einschränkungen auf.
 
--   Mehr als 998 Indizes
+### Einschränkungen
 
--   Tabellen, die FILESTREAM-Daten enthalten
+-   Eindeutigkeit wird nicht für UNIQUE-Einschränkungen und PRIMARY KEY-Einschränkungen in der Azure-Tabelle erzwungen, die die migrierten Daten enthält.
 
--   FileTables
+### DML-Vorgänge
 
--   Replizierte Tabellen
+-   Die Befehle UPDATE oder DELETE können nicht für Zeilen einer Tabelle ausgeführt werden, für die Stretch aktiviert ist, oder in einer Ansicht, die Tabellen enthält, für die Stretch aktiviert ist.
 
--   Tabellen, die aktiv Change Tracking oder Change Data Capture verwenden
+-   Sie können in einem verknüpften Server keine Zeilen mit dem Befehl INSERT in eine Tabelle einfügen, für die Stretch aktiviert ist.
+
+### Indexe
+
+-   Sie können keinen Index für eine Sicht erstellen, die Stretch-fähige Tabellen enthält.
+
+-   Filter für SQL Server-Indizes werden nicht an die Remotetabelle weitergegeben.
+
+##  <a name="Limitations"></a> Einschränkungen, die Sie derzeit vom Aktivieren von Stretch für eine Tabelle abhalten
+
+Die folgenden Elemente verhindern derzeit das Aktivieren von Stretch für eine Tabelle.
+
+### Tabelleneigenschaften
+
+-   Tabellen, die mehr als 1.023 Spalten oder mehr als 998 Indizes enthalten
+
+-   FileTables oder Tabellen, die FILESTREAM-Daten enthalten
+
+-   Tabellen, die repliziert werden oder aktiv Change Tracking oder Change Data Capture verwenden
 
 -   Speicheroptimierte Tabellen
 
-**Datentypen und Spalteneigenschaften**
+### Datentypen
+
+-   text, ntext und image
+
 -   timestamp
 
 -   sql\_variant
 
 -   XML
 
--   geometry
+-   CLR-Datentypen, einschließlich geometry, geography, hierarchyid und benutzerdefinierte CLR-Typen
 
--   geography
+### Spaltentypen
 
--   hierarchyid
-
--   CLR-benutzerdefinierte Typen (UDTs)
-
-**Spaltentypen**
 -   COLUMN\_SET
 
 -   Berechnete Spalten
 
-**Einschränkungen**
--   CHECK-Einschränkungen
+### Einschränkungen
 
--   Standardeinschränkungen
+-   Standardeinschränkungen und CHECK-Einschränkungen
 
--   Fremdschlüsseleinschränkungen, die auf die Tabelle verweisen
+-   Fremdschlüsseleinschränkungen, die auf die Tabelle verweisen In einer unter- und übergeordneten Beziehung (z.B. Bestellung und Bestellung\_Detail) können Sie Stretch für die untergeordnete Tabelle (Order\_Detail), aber nicht für die übergeordnete Tabelle (Order) aktivieren.
 
-    Auf die Tabelle, für die die Stretch-Datenbank nicht aktiviert werden kann, wird mit einer Fremdschlüsseleinschränkung verwiesen. In unter- und übergeordneten Beziehungen (beispielsweise Aufträge und Auftragsdetails) ist dies die übergeordnete Tabelle (Aufträge).
+### Indexe
 
-**Indexe**
 -   Volltextindizes
 
 -   XML-Indizes
@@ -75,23 +87,6 @@ In der aktuellen Vorversion von SQL Server 2016 sind Tabellen mit den folgenden 
 -   Räumliche Indizes
 
 -   Indizierte Sichten, die auf die Tabelle verweisen
-
-## <a name="Caveats"></a>Einschränkungen und Vorbehalte für Stretch-fähige Tabellen
-In der aktuellen Vorversion von SQL Server 2016 haben Stretch-fähige Tabellen die folgenden Einschränkungen oder Vorbehalte.
-
--   Eindeutigkeit wird für UNIQUE-Einschränkungen und PRIMARY KEY-Einschränkungen nicht für eine Stretch-fähige Tabelle erzwungen.
-
--   Sie können keine UPDATE- oder DELETE-Vorgänge für eine Stretch-fähige Tabelle ausführen.
-
--   Sie können in einem verknüpften Server keinen INSERT in eine Tabelle, für die Stretch aktiviert ist, als Remotevorgang vornehmen.
-
--   Sie können bei Tabellen, für die Stretch aktiviert ist, keine Replikation verwenden.
-
--   Sie können keinen Index für eine Sicht erstellen, die Stretch-fähige Tabellen enthält.
-
--   Sie können kein Update und keine Löschung aus einer Sicht ausführen, die Stretch-fähige Tabellen enthält. Sie können jedoch etwas in eine Sicht einfügen, die Stretch-fähige Tabellen enthält.
-
--   Filter für Indizes werden nicht an die Remotetabelle weitergegeben.
 
 ## Weitere Informationen
 
@@ -101,4 +96,4 @@ In der aktuellen Vorversion von SQL Server 2016 haben Stretch-fähige Tabellen d
 
 [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

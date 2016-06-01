@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="zhangya;bradsev" />
 
 
@@ -21,15 +21,16 @@
 
 In diesem Thema werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
-[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Einführung
 
 In diesem Thema wird der Grund zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
-Die Entwicklung und die Auswahl der Features sind ein Teil der CAP-Vorgehensweise, die unter [Was ist der Cortana-Analyseprozess?](machine-learning-data-science-the-cortana-analytics-process.md) beschrieben ist. Die Entwicklung und Auswahl von Features stellen einen Teil des Schritts **Entwickeln von Features** des CAP dar. * **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern. * **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
+Die Entwicklung und die Auswahl der Features sind ein Teil der CAP-Vorgehensweise, die unter [Was ist der Cortana-Analyseprozess?](machine-learning-data-science-the-cortana-analytics-process.md) beschrieben ist. Die Entwicklung und die Auswahl der Features sind Teil des Schritts **Entwickeln von Features** der CAP-Vorgehensweise.
+* **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
+* **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
-Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
+Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder stark korrelierte Features zu entfernen.
 
 
 ## Filtern von Features aus Ihren Daten – Featureauswahl 
@@ -73,4 +74,4 @@ Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedin
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

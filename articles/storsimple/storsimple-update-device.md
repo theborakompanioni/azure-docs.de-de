@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/13/2016"
+   ms.date="05/12/2016"
    ms.author="v-sharos" />
 
-# Aktualisieren von Geräten der StorSimple 8000-Serie
+# Aktualisieren von Geräten der StorSimple 8000-Serie
 
 ## Übersicht
 
@@ -42,7 +42,7 @@ Regelmäßige Updates können ohne Unterbrechung des normalen Betriebs auf dem G
 
 ### Wartungsmodus-Updates
 
-Für Wartungsmodus-Updates muss der Betrieb unterbrochen werden. Dazu gehören z. B. Firmwareupgrades für Datenträger oder USM-Firmwareupgrades. Für diese Updates muss das Gerät in den Wartungsmodus versetzt werden. Einzelheiten dazu finden Sie hier: [Schritt 2: Wechseln in den Wartungsmodus](#step2). Sie können Wartungsmodus-Updates nicht über das klassische Azure-Portal installieren. Sie müssen stattdessen Windows PowerShell für StorSimple verwenden.
+Für Wartungsmodus-Updates muss der Betrieb unterbrochen werden. Dazu gehören z. B. Firmwareupgrades für Datenträger oder USM-Firmwareupgrades. Für diese Updates muss das Gerät in den Wartungsmodus versetzt werden. Einzelheiten dazu finden Sie hier: [Schritt 2: Wechseln in den Wartungsmodus](#step2). Sie können Wartungsmodus-Updates nicht über das klassische Azure-Portal installieren. Sie müssen stattdessen Windows PowerShell für StorSimple verwenden.
 
 Weitere Informationen zum Installieren von Wartungsmodus-Updates finden Sie unter [Installieren von Wartungsmodus-Updates über Windows PowerShell für StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
 
@@ -117,6 +117,6 @@ Wenn ein Gerät auf die Werkseinstellungen zurückgesetzt wird, gehen alle Updat
 ## Nächste Schritte
 
 - Erfahren Sie mehr zur [Verwendung von Windows PowerShell für StorSimple zum Verwalten Ihres StorSimple-Geräts](storsimple-windows-powershell-administration.md).
-- Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+- Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

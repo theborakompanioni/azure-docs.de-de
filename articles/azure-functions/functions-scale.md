@@ -30,11 +30,11 @@ In diesem Artikel erhalten Sie einen Überblick über die Funktionsweise des dyn
 
 Wenn Sie noch nicht mit Azure Functions vertraut sind, lesen Sie die [Übersicht zu Azure Functions](functions-overview.md), um die Funktionsweise besser zu verstehen.
 
-## Konfigurieren Ihrer Funktions-App
+## Konfigurieren Ihrer Funktionen-App
 
 Im Zusammenhang mit der Skalierung müssen zwei wichtige Entscheidungen getroffen werden:
 
-* [App Services-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) oder dynamischer Serviceplan 
+* [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) oder dynamischer Serviceplan 
 * Größe des Arbeitsspeichers für die Ausführungsumgebung 
 
 Die Kosten einer Funktion ändern sich je nach Art des Serviceplans, den Sie auswählen. Bei dynamischen Serviceplänen richten sich die Kosten nach der Ausführungszeit, der Arbeitsspeichergröße und der Anzahl der Ausführungen. Kosten entstehen nur, wenn Sie tatsächlich Code ausführen.
@@ -43,8 +43,8 @@ Bei regulären Serviceplänen können Sie Ihre Funktionen auf vorhandenen virtue
 
 ## Auswählen eines Serviceplans
 
-Beim Erstellen von Funktions-Apps können Sie sich zwischen einem dynamischen Serviceplan (neu!) oder einem regulären [App Services-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) entscheiden. In einem App Services-Plan werden Ihre Funktionen auf einem dedizierten virtuellen Computer ausgeführt – auf die gleiche Weise, wie heute Web-Apps (für Basic-, Standard- oder Premium-SKUs) funktionieren. Dieser dedizierte virtuelle Computer ist Ihren Apps bzw. Funktionen zugeordnet und steht zur Verfügung, unabhängig davon, ob Code aktiv ausgeführt wird oder nicht. Diese Option eignet sich besonders, wenn Sie über virtuelle Computer verfügen, auf denen bereits anderer Code ausgeführt wird, die jedoch nicht vollständig ausgelastet sind, oder wenn Sie Funktionen kontinuierlich oder nahezu kontinuierlich ausführen möchten. Bei Verwendung eines virtuellen Computers hängen die Kosten nicht von der Laufzeit oder der Arbeitsspeichergröße ab – so können Sie die Kosten für eine große Anzahl von Funktionen mit langer Ausführungszeit auf die Kosten des virtuellen Computers bzw. der virtuellen Computer beschränken, auf dem/denen die Funktionen ausgeführt werden.
+Beim Erstellen von Funktionen-Apps können Sie sich zwischen einem dynamischen Serviceplan (neu!) oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) entscheiden. In einem App Service-Plan werden Ihre Funktionen auf einem dedizierten virtuellen Computer ausgeführt – auf die gleiche Weise, wie heute Web-Apps (für Basic-, Standard- oder Premium-SKUs) funktionieren. Dieser dedizierte virtuelle Computer ist Ihren Apps bzw. Funktionen zugeordnet und steht zur Verfügung, unabhängig davon, ob Code aktiv ausgeführt wird oder nicht. Diese Option eignet sich besonders, wenn Sie über virtuelle Computer verfügen, auf denen bereits anderer Code ausgeführt wird, die jedoch nicht vollständig ausgelastet sind, oder wenn Sie Funktionen kontinuierlich oder nahezu kontinuierlich ausführen möchten. Bei Verwendung eines virtuellen Computers hängen die Kosten nicht von der Laufzeit oder der Arbeitsspeichergröße ab – so können Sie die Kosten für eine große Anzahl von Funktionen mit langer Ausführungszeit auf die Kosten des virtuellen Computers bzw. der virtuellen Computer beschränken, auf dem/denen die Funktionen ausgeführt werden.
 
 [AZURE.INCLUDE [Dynamischer Serviceplan](../../includes/functions-dynamic-service-plan.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

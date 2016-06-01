@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/11/2016"
+	ms.date="05/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -47,7 +47,7 @@ Zum Importieren einer SQL-­Datenbank aus einer BACPAC-Datei benötigen Sie Folg
 
 ## Auswählen des Servers, der die Datenbank enthalten soll
 
-Öffnen Sie das SQL Server-Blatt für die Datenbank, die Sie importieren möchten:
+Öffnen Sie das Blatt „SQL Server“:
 
 1.	Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2.	Klicken Sie auf **SQL-Server**.
@@ -60,7 +60,7 @@ Zum Importieren einer SQL-­Datenbank aus einer BACPAC-Datei benötigen Sie Folg
 
     ![Speicheroptionen konfigurieren][2]
 
-1.  Wählen Sie den Tarif für die neue Datenbank aus, und klicken Sie auf **Auswählen**.
+1.  Wählen Sie den Tarif für die neue Datenbank aus, und klicken Sie auf **Auswählen**. Das direkte Importieren einer Datenbank in einen elastischen Pool wird nicht unterstützt. Sie können Daten jedoch zuerst in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool verschieben.
 
     ![Tarif auswählen][3]
 
@@ -109,4 +109,4 @@ Durch Klicken auf **Erstellen** wird eine Anforderung zum Importieren der Datenb
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

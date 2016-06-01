@@ -18,7 +18,7 @@
 
 # Skalieren einer Web-App in Azure App Service #
 
-Zur Steigerung von Leistung und Durchsatz für Ihre Web-Apps unter Microsoft Azure können Sie mithilfe des [Azure-Portals](http://portal.azure.com) Ihren[App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Plan vom Modus **Kostenlos** zum Modus **Freigegeben**,**Basic**, **Standard** oder **Premium** hochstufen.
+Zur Steigerung von Leistung und Durchsatz für Ihre Web-Apps unter Microsoft Azure können Sie mithilfe des [Azure-Portals](http://portal.azure.com) Ihren [App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Plan vom Modus **Kostenlos** zum Modus **Freigegeben**,**Basic**, **Standard** oder **Premium** hochstufen.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -45,7 +45,7 @@ Weitere Informationen zu App Service-Plänen finden Sie unter [Was ist ein App S
 	
 	Auf der Registerkarte **Benachrichtigungen** wird in grüner Schrift der Text **ERFOLGREICH** angezeigt, sobald der Vorgang abgeschlossen wurde.
 	
-5. Klicken Sie in den Einstellungen auf **Horizontal hochskalieren**, wählen Sie in der Dropdownliste *Manuell ausgewählte Anzahl der Instanzen* aus, und schieben Sie den Balken **Instanz** von links nach rechts, um die Anzahl der Instanzen zu erhöhen. Klicken Sie dann in der Befehlsleiste auf **Speichern**. Die Instanzgrößenoption ist im Modus **Freigegeben** nicht verfügbar. Weitere Informationen zu den Instanzgrößen finden Sie unter [Größen virtueller Computer und Clouddienste für Microsoft Azure][vmsizes].
+5. Klicken Sie in den Einstellungen auf **Horizontal hochskalieren**, wählen Sie in der Dropdownliste *Manuell ausgewählte Anzahl der Instanzen* aus, und schieben Sie den Balken **Instanz** von links nach rechts, um die Anzahl der Instanzen zu erhöhen. Klicken Sie dann in der Befehlsleiste auf **Speichern**. Die Instanzgrößenoption ist im Modus **Freigegeben** nicht verfügbar. Weitere Informationen zu diesen Instanzgrößen finden Sie unter [App Service-Preise][vmsizes].
 	
 	![Instanzgröße für Basic-Modus][ChooseBasicInstances]
 	
@@ -66,7 +66,7 @@ Weitere Informationen zu App Service-Plänen finden Sie unter [Was ist ein App S
 	
 	Sie können wie im Modus **Basic** (siehe oben) weiterhin den Schieberegler **Instanz** bewegen, um manuell die Anzahl von Instanzen zu erhöhen. In diesem Abschnitt erfahren Sie jedoch, wie Sie Ihre App automatisch skalieren können.
 	
-2. Wählen Sie unter **Skalieren nach** die Option ** Zeitplan und Leistungsregeln**, um Ihre App automatisch zu skalieren.
+2. Wählen Sie unter **Skalieren nach** die Option **Zeitplan und Leistungsregeln**, um Ihre App automatisch zu skalieren.
 	
 	![Festlegen des Modus für automatische Skalierung nach Leistung][Autoscale]
 	
@@ -80,9 +80,9 @@ Weitere Informationen zu App Service-Plänen finden Sie unter [Was ist ein App S
 	
 	Sie können Regeln für die automatische Skalierung konfigurieren, die für verschiedene Leistungsmetriken gelten, wie z. B. CPU, Arbeitsspeicher, Datenträgerwarteschlange,HTTP-Warteschlange und Datenfluss. In diesem Beispiel konfigurieren Sie die automatische Skalierung für den CPU-Prozentsatz, der Folgendes bewirkt:
 	
-	- Zentral hochskalieren um 1 Instanz, wenn der CPU-Prozentsatz in den letzten 10 Minuten über 80 % liegt
-	- Skalierung nach oben um 3 Instanzen, wenn der CPU-Prozentsatz in den letzten 5 Minuten über 90 % liegt
-	- Skalierung nach unten um 1 Instanz, wenn der CPU-Prozentsatz in den letzten 30 Minuten unter 50 % liegt 
+	- Zentral hochskalieren um 1 Instanz, wenn der CPU-Prozentsatz in den letzten 10 Minuten über 80 % liegt
+	- Skalierung nach oben um 3 Instanzen, wenn der CPU-Prozentsatz in den letzten 5 Minuten über 90 % liegt
+	- Skalierung nach unten um 1 Instanz, wenn der CPU-Prozentsatz in den letzten 30 Minuten unter 50 % liegt 
 	
 	
 4. Behalten Sie im Dropdownfeld **Metrikname** die Einstellung **CPU-Prozentsatz** bei.
@@ -115,7 +115,7 @@ Wenn Sie eine oder mehrere SQL Server-Datenbanken mit Ihrer Web-App verknüpft h
 
 	![Verknüpfte Datenbank][ResourceGroup]
 	
-2. Klicken Sie im Blatt für Ihre verknüpfte SQL-Datenbank auf den Bereich **Einstellungen** > **Tarif**, wählen Sie basierend auf Ihren Leistungsanforderungen einen Tarif aus, und klicken Sie auf **Auswählen**.
+2. Klicken Sie im Blatt für Ihre verknüpfte SQL-Datenbank auf den Bereich **Einstellungen** > **Tarif**, wählen Sie basierend auf Ihren Leistungsanforderungen einen Tarif aus, und klicken Sie auf **Auswählen**.
 	
 	![Skalieren Ihrer SQL-Datenbank][ScaleDatabase]
 	
@@ -180,7 +180,7 @@ Je nach Modus der Web-App stehen die folgenden entwicklungsbezogenen Funktionen 
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 <!-- LINKS -->
-[vmsizes]: http://go.microsoft.com/fwlink/?LinkId=309169
+[vmsizes]: /pricing/details/app-service/
 [SQLaccountsbilling]: http://go.microsoft.com/fwlink/?LinkId=234930
 [azuresubscriptions]: http://go.microsoft.com/fwlink/?LinkID=235288
 [portal]: https://portal.azure.com/
@@ -202,4 +202,4 @@ Je nach Modus der Web-App stehen die folgenden entwicklungsbezogenen Funktionen 
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

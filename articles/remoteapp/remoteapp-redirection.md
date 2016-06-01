@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/21/2016"
+    ms.date="05/13/2016"
     ms.author="elizapo" />
 
 # Verwenden von Umleitungen in Azure RemoteApp
@@ -104,4 +104,4 @@ Sie können auch das Gruppenrichtlinienverwaltungstool verwenden, um die USB-Uml
 7. Wählen Sie **Aktiviert** und anschließend unter **Zugriffsrechte für RemoteFX USB-Umleitung** die Option für Administratoren und Benutzer aus.
 8. Klicken Sie auf **OK**.  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

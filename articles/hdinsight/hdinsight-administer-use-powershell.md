@@ -31,9 +31,11 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-##Installieren von Azure PowerShell 1.0 und höher
+##Installieren von Azure PowerShell
 
-Zunächst müssen Sie die 0.9x-Versionen deinstallieren.
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+Wenn Sie Azure PowerShell Version 0.9x installiert haben, müssen Sie sie deaktivieren, bevor Sie eine neue Version installieren können.
 
 So überprüfen Sie die Version der installierten PowerShell:
 
@@ -41,22 +43,6 @@ So überprüfen Sie die Version der installierten PowerShell:
 	
 Um die ältere Version zu deinstallieren, rufen Sie „Programme und Features“ in der Systemsteuerung auf.
 
-Es gibt zwei Hauptoptionen für die Installation von Azure PowerShell.
-
-- [PowerShell-Katalog](https://www.powershellgallery.com/). Führen Sie die folgenden Befehle in einer erweiterten PowerShell ISE oder einer Windows PowerShell-Konsole mit erhöhten Rechten aus:
-
-		# Install the Azure Resource Manager modules from PowerShell Gallery
-		Install-Module AzureRM
-		Install-AzureRM
-		
-		# Import AzureRM modules for the given version manifest in the AzureRM module
-		Import-AzureRM
-
-	Weitere Informationen finden Sie unter [PowerShell Gallery](https://www.powershellgallery.com/) (in englischer Sprache).
-
-- [Microsoft Web Platform Installer (WebPI)](http://aka.ms/webpi-azps) (in englischer Sprache). Falls Sie Azure PowerShell 0.9.x installiert haben, werden Sie aufgefordert, diese Version zu deinstallieren. Wenn Sie Azure PowerShell-Module aus dem PowerShell-Katalog installiert haben, erfordert das Installationsprogramm, dass diese Module vor der Installation deinstalliert werden, um eine konsistente Azure PowerShell-Umgebung herzustellen. Anweisungen hierzu finden Sie unter [Installing Azure PowerShell 1.0 via WebPI](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
-
-WebPI wird monatlich aktualisiert. Der PowerShell-Katalog wird fortlaufend aktualisiert. Wenn Sie mit der Installation aus dem PowerShell-Katalog erst einmal vertraut sind, wird der Katalog sicherlich Ihre erste Anlaufstelle für die neusten und beliebtesten Cmdlets in Azure PowerShell.
 
 ##Erstellen von Clustern
 
@@ -81,7 +67,7 @@ Mit dem folgenden Befehl können Sie ein Cluster löschen:
 ##Skalieren von Clustern
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDInsight ausgeführten Cluster verwendeten Workerknoten ändern, ohne den Cluster neu erstellen zu müssen.
 
->[AZURE.NOTE] Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters. Siehe [Einführung in die Portaloberfläche für Cluster](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface).
+>[AZURE.NOTE] Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 
 Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unterstützten Clustertypen:
 
@@ -99,7 +85,6 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
 		>hbase shell
 		>balancer
 
-	Weitere Informationen zur Verwendung der HBase-Shell finden Sie unter
 - Storm
 
 	Sie können Datenknoten übergangslos zum Storm-Cluster hinzufügen oder aus diesem entfernen, während er aktiv ist. Nach erfolgreichen Abschluss des Skalierungsvorgangs müssen Sie die Topologie neu ausgleichen.
@@ -249,4 +234,4 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

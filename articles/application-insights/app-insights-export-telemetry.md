@@ -12,21 +12,24 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
+	ms.date="05/07/2016" 
 	ms.author="awills"/>
  
 # Exportieren von Telemetriedaten aus Application Insights
 
-Möchten Sie Ihre Telemetriedaten einer angepassten Analyse unterziehen? Oder möchten Sie vielleicht eine E-Mail-Benachrichtigung zu Ereignissen mit bestimmten Eigenschaften erhalten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.
+Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.
 
-Der fortlaufende Export ist im kostenlosen Testzeitraum und in den [Standard- und Premium-Preisplänen](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar.
-
->[AZURE.NOTE] Wenn Sie [Ihre Daten in Power BI untersuchen](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx) möchten, benötigen Sie dazu keinen fortlaufenden Export.
->
->Wenn Sie die Daten in einem der Blätter „Metriken“ oder „Suchen“ nur [einmal exportieren](app-insights-metrics-explorer.md#export-to-excel) möchten, klicken Sie oben auf dem Blatt auf „Export“.
+Der fortlaufende Export ist im kostenlosen Testzeitraum und in den [Standard- und Premium-Tarifen](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar.
 
 
-## Speicherkonto erstellen
+Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen zu dieser Vorgehensweise prüfen:
+
+* [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können. 
+* [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten, und mithilfe dieser Sprache lassen sich auch Ergebnisse exportieren.
+* Wenn Sie [Ihre Daten in Power BI untersuchen](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx) möchten, benötigen Sie dazu keinen fortlaufenden Export.
+
+
+## Erstellen Sie ein Speicherkonto.
 
 Wenn Sie noch nicht über ein "klassisches" Speicherkonto verfügen, erstellen Sie jetzt eins.
 
@@ -74,6 +77,8 @@ Um den Datenstrom dauerhaft zu beenden, löschen Sie den Exportvorgang. Dabei we
 
 Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen.
 
+Daten, die während der [Stichprobenerstellung](app-insights-sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
+
 Andere berechnete Metriken sind nicht enthalten. Wir exportieren z. B. nicht die durchschnittliche CPU-Auslastung, doch wir exportieren die rohen Telemetriedaten, anhand derer der Durchschnitt berechnet wird.
 
 Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), die Sie eventuell eingerichtet haben.
@@ -97,21 +102,22 @@ Hier ist die Form des Pfads:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
   
-Where
+Hierbei gilt:
 
--	`blobCreationTimeUtc` die Uhrzeit ist, zu der der Blob im internen Stagingspeicher erstellt wurde
--	`blobDeliveryTimeUtc` die Uhrzeit ist, zu der der Blob nach dem Zielspeicher exportiert wird
+-	`blobCreationTimeUtc` ist die Uhrzeit, zu der das Blob im internen Stagingspeicher erstellt wurde.
+-	`blobDeliveryTimeUtc` ist die Uhrzeit, zu der das Blob in den Zielspeicher für den Export kopiert wird.
 
 
 
 ## <a name="format"></a> Datenformat
 
 * Jedes Blob ist eine Textdatei, die mehrere durch '\\n' getrennte Zeilen enthält.
+* Jede Zeile stellt einen Telemetriedatenpunkt dar, z.B. eine Anforderung oder einen Seitenaufruf.
 * Jede Zeile ist ein unformatiertes JSON-Dokument. Wenn Sie den Vorgang verfolgen möchten, öffnen Sie es in Visual Studio, und wählen Sie "Bearbeiten", "Erweitert", "Formatdatei":
 
 ![Zeigen Sie die Telemetriedaten mit einem geeigneten Tool an](./media/app-insights-export-telemetry/06-json.png)
 
-Zeiten werden mithilfe von Teilstrichen dargestellt: 10.000 Teilstriche = 1 ms. Diese Werte zeigen beispielsweise einen Zeitraum von 10 ms für das Senden einer Anforderung aus dem Browser, von 30 ms für den Empfang und von 1,8 s für die Verarbeitung der Seite im Browser:
+Zeiten werden mithilfe von Teilstrichen dargestellt: 10.000 Teilstriche = 1 ms. Diese Werte zeigen beispielsweise einen Zeitraum von 10 ms für das Senden einer Anforderung aus dem Browser, von 30 ms für den Empfang und von 1,8 s für die Verarbeitung der Seite im Browser:
 
 	"sendRequest": {"value": 10000.0},
 	"receiveRequest": {"value": 30000.0},
@@ -223,4 +229,4 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

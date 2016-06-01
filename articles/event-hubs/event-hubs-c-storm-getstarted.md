@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="c"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="05/13/2016"
 	ms.author="sethm"/>
 
 # Erste Schritte mit Event Hubs
@@ -36,35 +36,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 + Ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-## Erstellen eines Ereignis-Hubs
-
-1. Melden Sie sich beim [klassischen Azure-Portal] an, und klicken Sie im unteren Teil des Bildschirms auf **NEU**.
-
-2. Klicken Sie auf **App Services** und anschließend nacheinander auf **Service Bus**, **Event Hub** und **Schnellerfassung**.
-
-	![][1]
-
-3. Geben Sie einen Namen für den Event Hub ein. Wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Neuen Event Hub erstellen**.
-
-	![][2]
-
-4. Klicken Sie auf den soeben erstellten Namespace (üblicherweise ***Name\_des\_Event\_Hubs*-ns**).
-
-	![][3]
-
-5. Klicken Sie am oberen Seitenrand auf die Registerkarte **Event Hubs**, und klicken Sie dann auf den soeben erstellten Event Hub.
-
-	![][4]
-
-6. Klicken Sie am oberen Seitenrand auf die Registerkarte **Konfigurieren**, und fügen Sie eine Regel namens **SendRule** mit *Send*-Berechtigung hinzu. Fügen Sie eine weitere Regel namens **ReceiveRule** mit der Berechtigung *Listen* hinzu, und klicken Sie dann auf **Speichern**.
-
-	![][5]
-
-7. Beachten Sie auf derselben Seite die generierten Schlüssel für **SendRule** und **ReceiveRule**.
-
-	![][6c]
-
-Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Empfangen von Ereignissen erforderlichen Verbindungszeichenfolgen.
+[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-c](../../includes/service-bus-event-hubs-get-started-send-c.md)]
 
@@ -90,18 +62,10 @@ Die folgenden Ressourcen sind für die Entwicklung von Anwendungen verfügbar, d
 - [Entwickeln von Anwendungen zur Verarbeitung von Streamingdaten mit SCP.NET und C# mit Storm und HDInsight][] ist ein Lernprogramm zum Schreiben von Storm-Pipelines mithilfe von C#.
 
 <!-- Images. -->
-[1]: ./media/event-hubs-c-storm-getstarted/create-event-hub1.png
-[2]: ./media/event-hubs-c-storm-getstarted/create-event-hub2.png
-[3]: ./media/event-hubs-c-storm-getstarted/create-event-hub3.png
-[4]: ./media/event-hubs-c-storm-getstarted/create-event-hub4.png
-[5]: ./media/event-hubs-c-storm-getstarted/create-event-hub5.png
-[6]: ./media/event-hubs-getstarted/create-event-hub6.png
-[6c]: ./media/event-hubs-c-storm-getstarted/create-event-hub6c.png
-
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
 
 <!-- Links -->
-[klassischen Azure-Portal]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Übersicht über Event Hubs]: event-hubs-overview.md
 
@@ -110,4 +74,4 @@ Die folgenden Ressourcen sind für die Entwicklung von Anwendungen verfügbar, d
 [Analysieren von Sensordaten mit Storm und HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 [Entwickeln von Anwendungen zur Verarbeitung von Streamingdaten mit SCP.NET und C# mit Storm und HDInsight]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -70,7 +70,7 @@ Nutzen Sie das Ihrem Back-End-Projekttyp entsprechende Verfahren: entweder [.NET
 	    logger.info('Running TodoItem.insert');
 	    
 	    // Define the template payload.
-	    var payload = '{"messageParam": context.item.text}'; 
+	    var payload = '{"messageParam":' + context.item.text + '}'; 
 	    
 	    // Execute the insert.  The insert returns the results as a Promise,
 	    // Do the push as a post-execute action within the promise flow.
@@ -100,5 +100,3 @@ Nutzen Sie das Ihrem Back-End-Projekttyp entsprechende Verfahren: entweder [.NET
 	Damit wird eine Vorlagenbenachrichtigung gesendet, die „item.text“ enthält, wenn ein neues Todo-Element eingefügt wird.
 
 2. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
-
-<!---HONumber=AcomDC_1223_2015-->

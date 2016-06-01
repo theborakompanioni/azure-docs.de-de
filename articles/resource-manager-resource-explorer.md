@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/04/2016"
+   ms.date="05/16/2016"
    ms.author="stuartle;tomfitz"/>
 
 # Verwenden des Azure-Ressourcen-Explorer zum Anzeigen und Ändern von Ressourcen
@@ -58,20 +58,20 @@ Sobald die Anforderung gesendet wurde, initiiert der Ressourcen-Explorer die GET
 
 ## Ausführen von Aktionen für Ressourcen
 
-Auf der Registerkarte **Aktionen** können Sie zusätzliche REST-Vorgänge anzeigen und ausführen. Wenn Sie z. B. eine Websiteressource ausgewählt haben, wird auf der Registerkarte „Aktionen“ eine lange Liste verfügbarer Vorgänge angezeigt, von denen einige unten dargestellt werden.
+Auf der Registerkarte **Aktionen** können Sie zusätzliche REST-Vorgänge anzeigen und ausführen. Wenn Sie z. B. eine Websiteressource ausgewählt haben, wird auf der Registerkarte „Aktionen“ eine lange Liste verfügbarer Vorgänge angezeigt, von denen einige unten dargestellt werden.
 
 ![Web – POST-Anforderung](./media/resource-manager-resource-explorer/are-web-post.png)
 
 ## Aufrufen der API über PowerShell
-Auf der PowerShell-Registerkarte im Ressourcen-Explorer werden die Cmdlets für die Interaktion mit der Ressource angezeigt, die Sie derzeit untersuchen. Je nach Typ der Ressource, die Sie ausgewählt haben, reicht das angezeigte PowerShell-Skript von einfachen Cmdlets (z. B. `Get-AzureRmResource` und `Set-AzureRmResource`) bis zu komplizierteren Cmdlets (z. B. das Austauschen von Slots auf einer Website).
+Auf der PowerShell-Registerkarte im Ressourcen-Explorer werden die Cmdlets für die Interaktion mit der Ressource angezeigt, die Sie derzeit untersuchen. Je nach Typ der Ressource, die Sie ausgewählt haben, reicht das angezeigte PowerShell-Skript von einfachen Cmdlets (z. B. `Get-AzureRmResource` und `Set-AzureRmResource`) bis zu komplizierteren Cmdlets (z. B. das Austauschen von Slots auf einer Website).
 
 ![PowerShell](./media/resource-manager-resource-explorer/are-07-powershell.png)
 
-Weitere Informationen zu Azure PowerShell-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](./powershell-azure-resource-manager.md).
+Weitere Informationen zu Azure PowerShell-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](powershell-azure-resource-manager.md).
 
 ## Zusammenfassung
 Bei der Arbeit mit ARM kann der Ressourcen-Explorer ein äußerst nützliches Tool sein. Er ist eine hervorragende Möglichkeit, Verfahren zur Verwendung von PowerShell zum Abfragen und Ausführen von Änderungen zu entdecken. Wenn Sie mit der REST-API arbeiten, ist er eine hervorragende Möglichkeit für Sie, die ersten Schritte zu gehen und API-Aufrufe schnell zu testen, bevor Sie mit dem Schreiben von Code beginnen. Und wenn Sie ARM-Vorlagen schreiben, kann er eine hervorragende Möglichkeit sein, die Ressourcenhierarchie kennenzulernen und herauszufinden, wo Konfiguration eingebracht werden kann – Sie können eine Änderung im Portal vornehmen und dann die entsprechenden Einträge im Ressourcen-Explorer finden!
 
 Weitere Informationen bietet Ihnen das [Channel 9-Video mit Scott Hanselman und David Ebbo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

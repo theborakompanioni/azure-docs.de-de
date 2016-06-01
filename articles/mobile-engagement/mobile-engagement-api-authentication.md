@@ -95,7 +95,7 @@ Sie sollten die Anweisungen unten befolgen, um die Einrichtung mithilfe eines Po
 1. Rufen Sie die API mit den folgenden Parametern auf, und stellen Sie sicher, dass Sie TENANT\_ID, CLIENT\_ID und CLIENT\_SECRET ersetzen:
 
 	- **Abfrage-URL** als **https://login.microsoftonline.com/{TENANT\_ID}/oauth2/token*
-	- **HTTP Content-Type-Header** als *application/x-www-form-urlencoded*
+- **HTTP Content-Type-Header** als *application/x-www-form-urlencoded*
 	- **HTTP Request Body** als *grant\_type=client\_credentials&client\_id={CLIENT\_ID}&client\_secret={CLIENT\_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
 
 	Im Folgenden finden Sie eine Beispielanforderung:
@@ -136,7 +136,7 @@ Da Sie jetzt über ein gültiges Token verfügen, sind Sie bereit für die API-A
 		https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/
 		providers/Microsoft.MobileEngagement/appcollections/{app-collection}/apps/{app-resource-name}/
 
-	Um die Parameter abzurufen, klicken Sie auf den Namen Ihrer Anwendung, und klicken Sie auf das Dashboard, um eine Seite wie die folgende mit allen 3 Parametern anzuzeigen.
+	Um die Parameter abzurufen, klicken Sie auf den Namen Ihrer Anwendung, und klicken Sie auf das Dashboard, um eine Seite wie die folgende mit allen 3 Parametern anzuzeigen.
 
 	- **1** `{subscription-id}`
 	- **2** `{app-collection}`
@@ -146,7 +146,8 @@ Da Sie jetzt über ein gültiges Token verfügen, sind Sie bereit für die API-A
 	![Mobile Engagement-API-URI-Parameter][2]
 
 >[AZURE.NOTE] <br/>
->1. Ignorieren Sie die API-Stammadresse, da diese für die vorherigen APIs galt.<br/> 2. Sie müssen den Namen der Anwendungsressource verwenden, der sich vom Namen der Anwendung selbst unterscheidet. 
+>1. Ignorieren Sie die API-Stammadresse, da diese für die vorherigen APIs galt.<br/>
+>2. Wenn Sie die App mit dem klassischen Azure-Portal erstellt haben, müssen Sie den Namen der Anwendungsressource verwenden, der sich vom Namen der Anwendung selbst unterscheidet. Wenn Sie die App im Azure-Portal erstellt haben, sollten Sie den App-Namen selbst verwenden (Anwendungsressourcennamen und App-Namen sind für im neuen Portal erstellte Apps identisch).  
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication/azure-module.png
@@ -154,4 +155,4 @@ Da Sie jetzt über ein gültiges Token verfügen, sind Sie bereit für die API-A
 [3]: ./media/mobile-engagement-api-authentication/ps-cmdlets.png
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

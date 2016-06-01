@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/24/2016"
+	ms.date="04/05/2016"
 	ms.author="onewth"/>
 
 # Erste Schritte mit den Textanalyse-APIs zur Erkennung von Stimmung, Schlüsselwörtern, Themen und Sprache
@@ -24,7 +24,7 @@ Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung integrieren
 
 Technische Dokumentation für die APIs finden Sie in den [API-Definitionen](//go.microsoft.com/fwlink/?LinkID=759346).
 
-Dieses Handbuch bezieht sich auf Version 2 der APIs. Ausführliche Informationen über Version 1 der APIs [finden Sie in diesem Dokument](machine-learning-apps-text-analytics/).
+Dieses Handbuch bezieht sich auf Version 2 der APIs. Ausführliche Informationen über Version 1 der APIs [finden Sie in diesem Dokument](../machine-learning-apps-text-analytics/).
 
 Am Ende dieses Tutorials können Sie programmgesteuert Folgendes erkennen:
 
@@ -64,7 +64,7 @@ In dieser Aufgabe können Sie sich für den Textanalysedienst registrieren.
 
 Die Erkennung von Stimmung, Schlüsselwörtern und Sprachen im Text ist einfach. Es werden programmgesteuert die gleichen Ergebnisse wie in der [Nutzungsdemo](//go.microsoft.com/fwlink/?LinkID=759712) zurückgegeben.
 
-**Tipp!** Für die Stimmungsanalyse empfehlen wir, dass Sie den Text in Sätze aufteilen. Dies trägt im Allgemeinen zu einer höhere Genauigkeit der Stimmungsvorhersagen bei.
+>[AZURE.TIP] Für die Stimmungsanalyse empfehlen wir, dass Sie den Text in Sätze aufteilen. Dies trägt im Allgemeinen zu einer höhere Genauigkeit der Stimmungsvorhersagen bei.
 
 1. Dafür müssen die Header wie folgt festgelegt werden. Beachten Sie, dass JSON derzeit das einzige akzeptierte Eingabeformat für die APIs ist. XML wird nicht unterstützt.
 
@@ -164,7 +164,7 @@ Für diese API müssen **mindestens 100 Datensätze** übermittelt werden, sie 
 Es gibt zwei zusätzliche **optionale** Eingabeparameter, die zur Verbesserung der Ergebnisqualität beitragen können:
 
 - **Stoppwörter.** Diese Wörter und deren verwandte Formen (z. B. Pluralformen) werden aus der gesamten Themenerkennungspipeline ausgeschlossen. Verwenden Sie dies für häufige Wörter. („Problem“, „Fehler“ und „Benutzer“ sind womöglich beispielsweise angemessene Optionen für Kundenbeschwerden über Software.) Jede Zeichenfolge sollte ein einzelnes Wort sein.
-- **Stoppausdrücke.** Diese Ausdrücke werden von der Liste der zurückgegebenen Themen ausgeschlossen. Verwenden Sie diese Option, um allgemeine Themen auszuschließen, die nicht in den Ergebnissen angezeigt werden sollen. „Microsoft“ und „Azure“ sind beispielsweise geeignete Optionen für Themen, die Sie ausschließen möchten. Zeichenfolgen können mehrere Wörter enthalten.
+- **Stoppausdrücke** – Diese Ausdrücke werden von der Liste der zurückgegebenen Themen ausgeschlossen. Verwenden Sie diese Option, um allgemeine Themen auszuschließen, die nicht in den Ergebnissen angezeigt werden sollen. „Microsoft“ und „Azure“ sind beispielsweise geeignete Optionen für Themen, die Sie ausschließen möchten. Zeichenfolgen können mehrere Wörter enthalten.
 
 Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 
@@ -236,8 +236,52 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 			}
 		}
 
+Beachten Sie, dass die erfolgreiche Antwort für Themen vom `operations`-Endpunkt das folgende Schema hat:
+
+	{
+    		"topics" : [{
+        		"id" : "string",
+        		"score" : "number",
+        		"keyPhrase" : "string"
+    		}],
+    		"topicAssignments" : [{
+        		"documentId" : "string",
+        		"topicId" : "string",
+        		"distance" : "number"
+    		}],
+    		"errors" : [{
+        		"id" : "string",
+        		"message" : "string"
+    		}]
+    	}
+
+Die Erläuterungen für jeden Teil dieser Antwort lauten:
+
+**topics**
+
+| Schlüssel | Beschreibung |
+|:-----|:----|
+| id | Ein eindeutiger Bezeichner für jedes Thema. |
+| Ergebnis Ihrer App | Anzahl der Dokumente, die dem Thema zugewiesen sind. |
+| keyPhrase | Eine Zusammenfassung des Themas in einem Wort oder Ausdruck. |
+
+**topicAssignments**
+
+| Schlüssel | Beschreibung |
+|:-----|:----|
+| documentId | Bezeichner des Dokuments. Entspricht der in der Eingabe enthaltenen ID. |
+| topicId | Die Themen-ID, der das Dokument zugewiesen wurde. |
+| distance | Dokument-Thema-Zugehörigkeitsfaktor zwischen 0 und 1. Je niedriger der Abstandswert, desto stärker die Zugehörigkeit des Themas. |
+
+**errors**
+
+| Schlüssel | Beschreibung |
+|:-----|:----|
+| id | Eindeutiger Bezeichner des Eingabedokuments, auf den sich der Fehler bezieht. |
+| message | Fehlermeldung. |
+
 ## Nächste Schritte ##
 
-Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen für die Nutzung eines Tools wie z. B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
+Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen über die Nutzung eines Tools wie z.B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

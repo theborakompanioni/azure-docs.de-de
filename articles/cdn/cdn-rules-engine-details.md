@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 
 # CDN-Regelmodul – Übereinstimmungsbedingungen und Featuredetails
 
-Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen und Features für das [Regelmodul](cdn-rules-engine.md) von Azure Content Delivery Network (CDN).
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-> [AZURE.NOTE] Das Regelmodul erfordert den CDN-Tarif „Premium“. Weitere Informationen zu den Features der CDN-Tarife „Standard“ und „Premium“ finden Sie unter [Übersicht über das Azure Content Delivery Network](cdn-overview.md).
+Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen und Features für das [Regelmodul](cdn-rules-engine.md) von Azure Content Delivery Network (CDN).
 
 ## Übereinstimmungsbedingungen
 
@@ -98,6 +98,8 @@ Ein Feature definiert die Art der Aktion, die auf die Art von Anforderung angewe
 ### Access
 
 Diese Features dienen zum Steuern des Zugriffs auf Inhalte.
+
+> [AZURE.NOTE] Die Tokenauthentifizierung ist noch nicht allgemein verfügbar, wird aber in einer zukünftigen Version unterstützt.
 
 Name | Zweck
 -----|--------
@@ -206,4 +208,4 @@ Das Feature „Web Application Firewall“ bestimmt, ob eine Anforderung von der
 * [Übersicht über das Azure CDN](cdn-overview.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

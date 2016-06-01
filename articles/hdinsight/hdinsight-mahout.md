@@ -41,7 +41,9 @@ Mahout ist eine [Bibliothek für maschinelles Lernen][ml] für Apache Hadoop. Ma
 ##Voraussetzungen
 
 - **Ein Windows-basierter Hadoop-Cluster in HDInsight**. Weitere Informationen zur Erstellung finden Sie unter [Erste Schritte mit Hadoop in HDInsight][getstarted].
-- **Eine Arbeitsstation mit Azure PowerShell**. Siehe [Installieren von Azure PowerShell 1.0 und höher](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater).
+- **Eine Arbeitsstation mit Azure PowerShell**.
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 ##<a name="recommendations"></a>Generieren von Empfehlungen mithilfe von PowerShell
@@ -66,7 +68,7 @@ Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Fil
 
 Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei „user-ratings.txt“ der Benutzerbewertung wird während der Analyse verwendet, während „moviedb.txt“ beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Textinformationen angibt.
 
-Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben folgende Struktur: `userID`, `movieID`, `userRating` und `timestamp`. Dies gibt Aufschluss darüber, wie die einzelnen Benutzer einen Film bewertet haben. Hier sehen Sie ein Beispiel für die Daten:
+Die Daten in der Datei „user-ratings.txt“ haben folgende Struktur: `userID`, `movieID`, `userRating` und `timestamp`. Dies gibt Aufschluss darüber, wie die einzelnen Benutzer einen Film bewertet haben. Hier sehen Sie ein Beispiel für die Daten:
 
 
     196	242	3	881250949
@@ -170,7 +172,7 @@ Die erste Spalte ist die `userID`. Die in "[" und "]" enthaltenen Werte sind `mo
 
 ###Anzeigen der Ausgabe
 
-Obwohl die generierte Ausgabe in einer Anwendung verwendet werden kann, ist sie für Benutzer nicht gut lesbar. Mit der Datei `moviedb.txt` vom Server kann `movieId` in den Namen eines Films aufgelöst werden. Sie müssen jedoch zuerst die Datei und die Bewertungsdatei mithilfe des folgenden Skripts vom Server herunterladen :
+Obwohl die generierte Ausgabe in einer Anwendung verwendet werden kann, ist sie für Benutzer nicht gut lesbar. Mit der Datei `moviedb.txt` vom Server kann `movieId` in den Namen eines Films aufgelöst werden. Sie müssen jedoch zuerst die Datei und die Bewertungsdatei mithilfe des folgenden Skripts vom Server herunterladen:
 
     # The HDInsight cluster name.
 	$clusterName = "the cluster name"
@@ -527,4 +529,4 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

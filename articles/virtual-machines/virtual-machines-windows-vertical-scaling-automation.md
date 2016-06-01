@@ -53,7 +53,7 @@ Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
 
 ## Einrichten von Azure Automation für den Zugriff auf Ihre virtuellen Computer
 
-Als Erstes müssen Sie lediglich ein Azure Automation-Konto erstellen, in dem die Runbooks gehostet werden, mit denen die Instanzen der VM-Skalierungsgruppen skaliert werden. Vor Kurzem wurde für den Automation-Dienst die Funktion des ausführenden Kontos eingeführt, wodurch die Einrichtung des Dienstprinzipals für die automatische Ausführung der Runbooks im Auftrag des Benutzers stark vereinfacht wird. Weitere Informationen darüber finden Sie im unten stehenden Artikel:
+Als Erstes müssen Sie ein Azure Automation-Konto erstellen, in dem die Runbooks gehostet werden, mit denen ein virtueller Computer skaliert wird. Vor Kurzem wurde für den Automation-Dienst die Funktion des ausführenden Kontos eingeführt, wodurch die Einrichtung des Dienstprinzipals für die automatische Ausführung der Runbooks im Auftrag des Benutzers stark vereinfacht wird. Weitere Informationen darüber finden Sie im unten stehenden Artikel:
 
 * [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
 
@@ -90,4 +90,4 @@ Stellen Sie sicher, dass Sie den Webhook kopieren, bevor Sie das Dialogfeld für
 
 ![Hinzufügen einer Warnung zu VM 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

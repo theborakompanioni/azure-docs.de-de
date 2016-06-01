@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Trello-Connector
@@ -25,11 +25,11 @@ Der Trello-Connector kann verwendet werden in:
 
 - [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
 - [PowerApps](http://powerapps.microsoft.com)  
-- [Flows](http://flows.microsoft.com)  
+- [Flow](http://flows.microsoft.com)  
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
-Erstellen Sie zu Beginn eine Logik-App (siehe [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)).
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
 ## Trigger und Aktionen
 
@@ -67,6 +67,8 @@ Um Logik-Apps mit Trello zu erstellen, müssen Sie zuerst eine **Verbindung** he
 | ---|---|---|
 |Tokenverschlüsselung|Ja|Angeben von Anmeldeinformationen für Trello|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Trello](../../includes/connectors-create-api-trello.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -608,4 +610,4 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

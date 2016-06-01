@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/16/2015"
+   ms.date="04/25/2016"
    ms.author="sngun"/>
 
 # Runbookeingabeparameter
@@ -132,7 +132,7 @@ In der Beschriftung unter dem Eingabefeld können Sie sehen, welche Attribute f�
     **Beispiel:**
 
       ```
-        $params = @{„VMName“=„WSVMClassic“; „ServiceName“=„WSVMClassicSG“}
+        $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
 
         Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
       ```
@@ -143,12 +143,12 @@ In der Beschriftung unter dem Eingabefeld können Sie sehen, welche Attribute f�
     **Beispiel:**
 
       ```
-        $params = @{„VMName“=„WSVMClassic“;„ServiceName“=„WSVMClassicSG“}
+        $params = @{“VMName”=”WSVMClassic”;”ServiceName”=”WSVMClassicSG”}
 
         Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomationRG” -Name “Get-AzureVMGraphical” –ResourceGroupName “RG1” -Parameters $params
       ```
 
->[AZURE.NOTE] Wenn Sie ein Runbook mit PowerShell-Cmdlets starten, wird der Standardparameter „**MicrosoftApplicationManagementStartedBy**” mit dem Wert „**PowerShell**” erstellt. Sie können diesen Parameter im Blatt „**Auftragsdetails**” ansehen.
+>[AZURE.NOTE] Wenn Sie ein Runbook mit PowerShell-Cmdlets starten, wird der Standardparameter **MicrosoftApplicationManagementStartedBy** mit dem Wert **PowerShell** erstellt. Sie können diesen Parameter im Blatt **Auftragsdetails** ansehen.
 
 - **Starten eines Runbooks mit dem SDK und Zuweisen von Parametern**
 
@@ -192,7 +192,7 @@ In der Beschriftung unter dem Eingabefeld können Sie sehen, welche Attribute f�
         }
     ```
 
-Um diese Methode zu starten, erstellen Sie ein Wörterbuch, um die Runbook-Parameter „**VMName**“ und „**ServiceName**“ und deren Werte zu speichern. Starten Sie jetzt das Runbook. Unten befindet sich ein C#-Codeausschnitt um die oben definierte Methode aufzurufen.
+Zum Starten dieser Methode erstellen Sie ein Wörterbuch, um die Runbook-Parameter **VMName** und **ServiceName** und deren Werte zu speichern. Starten Sie jetzt das Runbook. Unten befindet sich ein C#-Codeausschnitt um die oben definierte Methode aufzurufen.
 
 ```
     IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -214,16 +214,16 @@ Ein Runbookauftrag kann mit der REST-API von Azure Automation erstellt und gesta
 Ersetzen Sie in der Anforderungs-URI die folgenden Parameter:
 
 * **subscription-id**: Ihre Azure-Abonnement-ID.  
-* **cloud-service-name:** Der Name des Clouddiensts,an den die Anforderung geschickt werden soll.  
+* **cloud-service-name:** Der Name des Clouddiensts, an den die Anforderung gesendet werden soll.  
 * **automation-account-name**: Name Ihres Automation-Kontos, das im angegebenen Clouddienst gehostet wird.  
 * **job-id**: Die GUID für den Auftrag. Die GUID in PowerShell kann mit dem Befehl **[GUID]::NewGuid().ToString()** erstellt werden.
 
 Um Parameter an den Runbookauftrag zu übergeben, verwenden Sie den Anforderungstext. Die folgenden zwei Eigenschaften werden im JSON-Format benötigt:
 
-* **Runbookname**-- Erforderlich. Der Name des Runbooks für den zu startenden Auftrag.  
-* **Runbookparameter**--Optional. Ein Wörterbuch der Parameterliste im Format (Name, Wert), wobei der Name vom Typ „Zeichenfolge“ sein sollte, und als Wert jeder gültige JSON-Wert infrage kommt.
+* **Runbookname**: Erforderlich. Der Name des Runbooks für den zu startenden Auftrag.  
+* **Runbookparameter**: Optional. Ein Wörterbuch der Parameterliste im Format (Name, Wert), wobei der Name vom Typ „Zeichenfolge“ sein sollte, und als Wert jeder gültige JSON-Wert infrage kommt.
 
-Wenn Sie das zuvor erstellte Runbook „**Get-AzureVMTextual**” mit „**VMName**” und „**ServiceName**” als Parameter starten wollen, verwenden Sie das folgende JSON-Format für den Anforderungstext.
+Wenn Sie das zuvor erstellte Runbook **Get-AzureVMTextual** mit **VMName** und **ServiceName** als Parameter starten möchten, verwenden Sie das folgende JSON-Format für den Anforderungstext.
 
 ```
         {
@@ -239,17 +239,17 @@ Wenn Sie das zuvor erstellte Runbook „**Get-AzureVMTextual**” mit „**VMNam
        }
 ```
 
-Wenn der Auftrag erfolgreich erstellt wurde, erhalten Sie als Antwort den HTTP-Statuscode 201. Weitere Informationen zu den Antwortheadern und dem Antworttext finden Sie im Artikel [Erstellen eines Runbooks mit REST-API.](https://msdn.microsoft.com/library/azure/mt163849.aspx).
+Wenn der Auftrag erfolgreich erstellt wurde, erhalten Sie als Antwort den HTTP-Statuscode 201. Weitere Informationen zu den Antwortheadern und dem Antworttext finden Sie im Artikel zum [Erstellen eines Runbookauftrags mit REST-API.](https://msdn.microsoft.com/library/azure/mt163849.aspx).
 
 ### Testen eines Runbooks und Zuweisen von Parametern
 
-Wenn Sie mithilfe der Testoption [die Entwurfsversion Ihres Runbooks testen](automation-testing-runbook.md), öffnet sich das Blatt „**Testen**” und Sie können die Werte für Ihre gerade erstellten Parameter konfigurieren.
+Wenn Sie mithilfe der Testoption [die Entwurfsversion Ihres Runbooks testen](automation-testing-runbook.md), wird das Blatt **Testen** geöffnet, und Sie können die Werte für Ihre gerade erstellten Parameter konfigurieren.
 
 ![Testen und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
 
 ### Verknüpfen eines Zeitplans mit einem Runbook und Zuweisen von Parametern
 
-Sie können einen [Zeitplan mit Ihrem Runbook verknüpfen](automation-scheduling-a-runbook.md),dass Ihr Runbook zu einem bestimmten Zeitpunkt startet. Sie weisen Eingabeparameter bei der Erstellung des Zeitplanes zu, und das Runbook verwendet diese Werte wenn es vom Zeitplan gestartet wird. Sie können den Zeitplan erst speichern, wenn alle erforderlichen Parameterwerte bereitgestellt sind.
+Sie können einen [Zeitplan mit Ihrem Runbook verknüpfen](automation-scheduling-a-runbook.md), damit Ihr Runbook zu einem bestimmten Zeitpunkt startet. Sie weisen Eingabeparameter bei der Erstellung des Zeitplanes zu, und das Runbook verwendet diese Werte wenn es vom Zeitplan gestartet wird. Sie können den Zeitplan erst speichern, wenn alle erforderlichen Parameterwerte bereitgestellt sind.
 
 ![Planen und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation_07_ScheduleAndAssignParameters.png)
 
@@ -259,16 +259,16 @@ Sie können einen [Webhook](automation-webhooks.md) für Ihr Runbook erstellen u
 
 ![Erstellen eines Webhooks und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation_08_CreateWebhookAndAssignParameters.png)
 
-Wenn Sie einen Webhook verwenden, um ein Runbook ausführen zu lassen, wird der vordefinierte Eingabeparameter „**[Webhookdata](automation-webhooks.md#details-of-a-webhook)**” zusammen mit den von Ihnen definierten Eingabeparametern gesendet. Klicken Sie für die Anzeige weiterer Details zu **WebhookData**-Parametern.
+Wenn Sie einen Webhook verwenden, um ein Runbook auszuführen, wird der vordefinierte Eingabeparameter **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** zusammen mit den von Ihnen definierten Eingabeparametern gesendet. Sie können auf den **WebhookData**-Parameter klicken, um ihn zu erweitern und weitere Details anzuzeigen.
 
 ![WebhookData-Parameter](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
 
 
 ## Nächste Schritte
 
-- Weitere Informationen zu Runbookeingabe und -ausgabe finden Sie unter [Azure Automation: Runbookeingabe, -ausgabe und geschachtelte Runbooks](https://azure.microsoft.com/blog/azure-automation-runbook-input-output-and-nested-runbooks/).
-- Weitere Informationen zu den verschieden Methoden ein Runbook zu starten finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
+- Weitere Informationen zu Runbookeingabe und -ausgabe finden Sie unter [Azure Automation: runbook input, output, and nested runbooks](https://azure.microsoft.com/blog/azure-automation-runbook-input-output-and-nested-runbooks/) (Azure Automation: Runbookeingabe, -ausgabe und geschachtelte Runbooks).
+- Weitere Informationen über die verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
 - Informationen zum Bearbeiten eines Textrunbooks finden Sie unter [Bearbeiten von Textrunbooks](automation-edit-textual-runbook.md).
 - Informationen zum Bearbeiten eines grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

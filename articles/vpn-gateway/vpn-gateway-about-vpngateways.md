@@ -27,7 +27,7 @@ Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Grundlagen de
 
 ## <a name="gwsub"></a>Gatewaysubnetz
 
-Sie müssen zuerst ein Gatewaysubnetz für Ihr VNET erstellen, um ein VPN Gateway zu konfigurieren. Alle Gatewaysubnetze müssen den Namen „GatewaySubnet“ haben, damit sie einwandfrei funktionieren.
+Sie müssen zuerst ein Gatewaysubnetz für Ihr VNET erstellen, um ein VPN Gateway zu konfigurieren. Das Gatewaysubnetz muss den Namen *GatewaySubnet* haben, damit es einwandfrei funktioniert. Anhand dieses Namens kann Azure erkennen, dass dieses Subnetz für das Gateway verwendet werden soll.<BR>Wenn Sie das klassische Portal verwenden, erhält das Gatewaysubnetz auf der Portaloberfläche automatisch den Namen *Gateway*. Dies gilt nur speziell für die Anzeige des Gatewaysubnetzes im klassischen Portal. In diesem Fall wird das Subnetz in Azure dann als *GatewaySubnet* erstellt und kann auf diese Weise im Azure-Portal und in PowerShell angezeigt werden.
 
 Die Mindestgröße des Gatewaysubnetzes hängt gänzlich von der Konfiguration ab, die Sie erstellen möchten. Obwohl es bei manchen Konfigurationen möglich ist, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, empfehlen wir, ein Gatewaysubnetz von mindestens /28 (/28, /27, /26 usw.) zu erstellen.
 
@@ -43,7 +43,7 @@ Im Beispiel unten ist ein Gatewaysubnetz mit dem Namen GatewaySubnet zu sehen. S
 
 ## <a name="gwtype"></a>Gatewaytypen
 
-Mit dem Gatewaytyp wird angegeben, wie die Verbindung für das Gateway selbst hergestellt wird. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell. Verwechseln Sie den Gatewaytyp nicht mit dem VPN-Typ, mit dem der Typ der Weiterleitung für Ihr VPN angegeben wird. Die verfügbaren Werte für `-GatewayType` sind:
+Mit dem Gatewaytyp wird angegeben, wie die Verbindung für das Gateway selbst hergestellt wird. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell. Verwechseln Sie den Gatewaytyp nicht mit dem VPN-Typ, mit dem der Typ der Weiterleitung für Ihr VPN angegeben wird. Die verfügbaren Werte für `-GatewayType` lauten:
 
 - VPN
 - ExpressRoute
@@ -133,7 +133,7 @@ Sie müssen sicherstellen, dass das VPN-Gerät, dessen Einsatz Sie planen, den f
 
 ## Nächste Schritte
 
-Lesen Sie sich die weiteren Informationen im Artikel [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md) durch, bevor Sie mit der Planung und dem Entwurf Ihrer Konfiguration fortfahren.
+Lesen Sie sich die weiteren Informationen im Artikel [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md) durch, bevor Sie mit der Planung und dem Entwurf Ihrer Konfiguration fortfahren.
 
 
 
@@ -141,4 +141,4 @@ Lesen Sie sich die weiteren Informationen im Artikel [Häufig gestellte Fragen z
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Verwenden eines Bürotelefons als Kontaktmethode mit Azure Multi-Factor Authentication
@@ -31,7 +31,10 @@ Wenn Sie Ihr Bürotelefon als primäre Kontaktmethode verwenden möchten, finden
 <li>Wählen Sie Ihr Land aus der Dropdownliste aus, und geben Sie Ihre Mobiltelefonnummer ein.</li>
 <li>Wählen Sie als Modus für das Mobiltelefon "Textnachricht" oder "Anruf" aus.</li>
 <li>Klicken Sie auf Weiter.</li>
-<li>Klicken Sie auf die Schaltfläche "Jetzt überprüfen". Dadurch wird ein Anruf bei Ihrem Bürotelefon ausgelöst. Stellen Sie sicher, dass Sie sich in der Nähe Ihres Bürotelefons aufhalten. <li>Klicken Sie auf "Weiter".</li> <li>Ihre Kontaktmethode ist nun eingerichtet. Als Nächstes richten Sie App-Kennwörter für Nicht-Browser-Apps wie Outlook 2010 oder früher ein. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**. Fahren Sie andernfalls mit dem nächsten Schritt fort. <li>Wenn Sie solche Apps verwenden, kopieren Sie das angegebene App-Kennwort.</li>
+<li>Klicken Sie auf die Schaltfläche "Jetzt überprüfen". Dadurch wird ein Anruf bei Ihrem Bürotelefon ausgelöst. Stellen Sie sicher, dass Sie sich in der Nähe Ihres Bürotelefons aufhalten.
+<li>Klicken Sie auf "Weiter".</li>
+<li>Ihre Kontaktmethode ist nun eingerichtet. Als Nächstes richten Sie App-Kennwörter für Nicht-Browser-Apps wie Outlook 2010 oder früher ein. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
+<li>Wenn Sie solche Apps verwenden, kopieren Sie das angegebene App-Kennwort.</li>
 
 <li>Fügen Sie das Kennwort, das Sie in die Zwischenablage kopiert haben, in die Nicht-Browser-Anwendung ein. Die Schritte für bestimmte Anwendungen wie Outlook und Lync finden Sie unter "Ändern des Kennworts in Ihrer E-Mail in das App-Kennwort" und "Ändern des Kennworts in Ihrer Anwendung in das App-Kennwort".</li>
 <li>Klicken Sie auf Done.</li>
@@ -39,5 +42,6 @@ Wenn Sie Ihr Bürotelefon als primäre Kontaktmethode verwenden möchten, finden
 
 
 <center>![Setup](./media/multi-factor-authentication-end-user-first-time-office-phone/app.png)</center>
+ 
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

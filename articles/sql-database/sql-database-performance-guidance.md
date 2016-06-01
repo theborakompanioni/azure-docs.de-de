@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/20/2016"
+	ms.date="04/29/2016"
 	ms.author="carlrab" />
 
 # Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken
@@ -62,6 +62,8 @@ Dank der Einstellungen für die Leistungsebene bei den Dienstebenen Standard und
 
 Weitere Informationen zu Dienstebenen, Leistungsebenen und DTUs finden Sie unter [Dienst- und Leistungsebenen für Azure SQL-Datenbanken](sql-database-service-tiers.md).
 
+
+
 ## Gründe für die Verwendung der Dienstebenen
 
 Jede Workload ist unterschiedlich, und der Zweck der Dienstebenen besteht darin, für Vorhersagbarkeit mit hoher Leistung für verschiedene Leistungsebenen zu sorgen. Kunden mit hohen Ressourcenanforderungen können ihre Datenbanken in einer dedizierteren Computingumgebung betreiben.
@@ -84,6 +86,20 @@ Jede Workload ist unterschiedlich, und der Zweck der Dienstebenen besteht darin,
 Die genaue Ebene, die Sie benötigen, richtet sich nach den Spitzenlastanforderungen für jede Ressourcendimension. Bei einigen Anwendungen kann es so sein, dass sie nur einen geringen Anteil einer Ressource nutzen, dafür aber erhebliche Anforderungen in Bezug auf eine andere Ressource bestehen.
 
 Weitere Informationen zu den Dienstebenen finden Sie unter [Dienst- und Leistungsebenen für Azure SQL-Datenbanken](sql-database-service-tiers.md).
+
+## Abrechnungs- und Preisinformationen
+
+Pools für elastische Datenbanken werden anhand der folgenden Merkmale abgerechnet:
+
+- Ein elastischer Pool wird bei seiner Erstellung abgerechnet, auch wenn keine Datenbanken im Pool vorhanden sind.
+- Ein elastischer Pool wird stündlich abgerechnet. Dies ist die gleiche Häufigkeit wie für Leistungsstufen von Einzeldatenbanken.
+- Wenn ein elastischer Pool auf die Größe einer neuen Anzahl von eDTUs geändert wird, wird der Pool erst dann gemäß den neuen eDTUs berechnet, wenn die Größenänderung abgeschlossen ist. Dies erfolgt nach dem gleichen Muster wie beim Ändern der Leistungsstufe von eigenständigen Datenbanken.
+
+
+- Der Preis für einen elastischen Pool basiert auf der Anzahl von eDTUs des Pools. Der Preis eines elastischen Pools hängt nicht von der Auslastung der darin enthaltenen elastischen Datenbanken ab.
+- Der Preis wird wie folgt berechnet: (Anzahl von Pool-eDTUs) x (Einzelpreis pro eDTU).
+
+Der eDTU-Einzelpreis für einen elastischen Anwendungspool ist höher als der DTU-Stückpreis für eine eigenständige Datenbank derselben Dienstebene. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## Funktionen und Beschränkungen von Dienstebenen
 Jeder Dienstebene und Leistungsebene sind verschiedene Beschränkungen und Leistungsmerkmale zugeordnet. In der folgenden Tabelle sind diese Merkmale für eine Einzeldatenbank beschrieben.
@@ -110,7 +126,7 @@ Die **Notfallwiederherstellung** bezieht sich auf die Fähigkeit, nach einem Aus
 
 Die *geografische Wiederherstellung* ist für alle Dienstebenen ohne zusätzliche Kosten verfügbar. Bei einem Ausfall können Sie das letzte georedundante Backup verwenden, um Ihre Datenbank für eine beliebige Azure-Region wiederherzustellen.
 
-Die standardmäßige und aktive Georeplikation bietet ähnliche Funktionen für die Notfallwiederherstellung, aber mit deutlich geringerem RPO-Wert (Recovery Point Objective). Bei der Geowiederherstellung beträgt der RPO-Wert beispielsweise weniger als eine Stunde (das Backup kann also bis zu einer Stunde zurückreichen). Für die Georeplikation beträgt der RPO-Wert aber weniger als fünf Sekunden.
+[Die aktive Georeplikation](sql-database-geo-replication-overview.md) bietet ähnliche Funktionen für die Notfallwiederherstellung, aber mit deutlich geringerem RPO-Wert (Recovery Point Objective). Bei der Geowiederherstellung beträgt der RPO-Wert beispielsweise weniger als eine Stunde (das Backup kann also bis zu einer Stunde zurückreichen). Für die aktive Georeplikation beträgt der RPO-Wert aber weniger als fünf Sekunden.
 
 Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
@@ -291,11 +307,11 @@ Die Dienstebenen sind für die Verbesserung der Leistungsstabilität und Vorhers
 ## Optimierungsverfahren
 In diesem Abschnitt werden einige Verfahren beschrieben, mit denen Sie Azure SQL-Datenbank so optimieren können, dass Sie für Ihre Anwendung die beste Leistung erzielen und für die Ausführung die kleinstmögliche Leistungsebene wählen können. Einige Verfahren sind mit herkömmlichen bewährten Methoden zum Optimieren von SQL Server identisch, aber die anderen Verfahren gelten speziell für Azure SQL-Datenbank. In einigen Fällen können herkömmliche SQL Server-Verfahren so erweitert werden, dass sie auch für Azure SQL-Datenbank funktionieren. Hierzu werden die verbrauchten Ressourcen für eine Datenbank untersucht, um Bereiche zu ermitteln, in denen eine weitere Optimierung möglich ist.
 
-### Query Performance Insight und Index Advisor
-SQL-Datenbank umfasst zwei Tools im klassischen Azure-Portal, mit denen Leistungsprobleme Ihrer Datenbank analysiert und behoben werden können:
+### Query Performance Insight und SQL-Datenbank-Ratgeber
+SQL-Datenbank umfasst zwei Tools im Azure-Portal, mit denen Leistungsprobleme Ihrer Datenbank analysiert und behoben werden können:
 
 - [Query Performance Insight](sql-database-query-performance.md)
-- [Index Advisor](sql-database-index-advisor.md)
+- [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md)
 
 Weitere Informationen zu den beiden Tools und zu ihrer Verwendung finden Sie unter den oben angegebenen Links. In den folgenden beiden Abschnitten zu fehlenden Indizes und zur Abfragenoptimierung wird auf weitere Möglichkeiten hingewiesen, wie Sie ähnliche Leistungsprobleme manuell finden und beheben können. Es ist ratsam, zuerst die Tools im Portal auszuprobieren, um Probleme effizienter diagnostizieren und beheben zu können. Verwenden Sie den Ansatz der manuellen Optimierung für besondere Fälle.
 
@@ -324,7 +340,7 @@ Im folgenden Beispiel wird ein Fall erstellt, in dem der ausgewählte Abfragepla
 
 Azure SQL-Datenbank enthält Funktionen, mit denen Datenbankadministratoren Hinweise dazu erhalten können, wie sie allgemeine fehlende Indexbedingungen finden und dies beheben können. Mit in Azure SQL-Datenbank integrierten dynamischen Verwaltungssichten (DMVs) wird die Abfragenkompilierung daraufhin untersucht, ob ein Index die geschätzten Kosten zum Ausführen einer Abfrage erheblich reduzieren würde. Während der Abfragenausführung wird nachverfolgt, wie häufig jeder Abfrageplan ausgeführt wird. Außerdem wird die geschätzte Differenz zwischen dem ausgeführten Abfrageplan und dem imaginären Abfrageplan mit dem Index ermittelt. So kann ein Datenbankadministrator schnell abschätzen, welche Änderungen am physischen Datenbankdesign zu einer Verbesserung der Workload-Gesamtkosten für eine bestimmte Datenbank und der tatsächlichen Workload führen können.
 
->[AZURE.NOTE] Lesen Sie sich zuerst den Abschnitt [Query Performance Insight und Index Advisor](#query-performance-insight-and-index-advisor) durch, bevor Sie dynamische Verwaltungssichten zum Suchen nach fehlenden Indizes verwenden.
+>[AZURE.NOTE] Lesen Sie sich zuerst den Abschnitt [Query Performance Insight und SQL-Datenbank-Ratgeber](#query-performance-insight-and-index-advisor) durch, bevor Sie DMVs zum Suchen nach fehlenden Indizes verwenden.
 
 Die folgende Abfrage kann verwendet werden, um potenzielle fehlende Indizes zu ermitteln.
 
@@ -491,4 +507,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

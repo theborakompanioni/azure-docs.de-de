@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erweitertes Untersuchen von Daten und Modellierung mit Spark | Microsoft Azure"
-	description="TBD."
+	description="Verwenden Sie HDInsight Spark zum Untersuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression mithilfe der Kreuzvalidierung und Hyperparameteroptimierung."
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath,gokuma"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="05/05/2016"
 	ms.author="deguhath;bradsev" />
 
 # Erweitertes Untersuchen und Modellieren von Daten mit Spark 
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuchen von Daten sowie für Aufgaben zur binären Klassifizierung und Regressionsmodellierung mithilfe der Kreuzvalidierung und der Hyperparameteroptimierung zum Trainieren der Modelle für eine Stichprobe des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 verwendet. Sie werden schrittweise unter Verwendung eines HDInsight Spark-Clusters für die Verarbeitung und von Azure-Blobs zum Speichern der Daten und Modelle durch den gesamten [Data Science-Prozess](http://aka.ms/datascienceprocess) geführt. In diesem Prozess werden Daten aus einem Azure Storage-Blob untersucht sowie visualisiert und anschließend für das Erstellen von Vorhersagemodellen vorbereitet. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen. Diese Modelle werden mithilfe des Spark MLlib-Toolkits erstellt, um Aufgaben zur binären Klassifizierung und Regressionsmodellierung ausführen.
+In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression verwendet. Hierbei werden die Kreuzvalidierung und Hyperparameteroptimierung für eine Stichprobe des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 genutzt. Sie werden schrittweise unter Verwendung eines HDInsight Spark-Clusters für die Verarbeitung und von Azure-Blobs zum Speichern der Daten und Modelle durch den gesamten [Data Science-Prozess](http://aka.ms/datascienceprocess) geführt. In diesem Prozess werden Daten aus einem Azure Storage-Blob untersucht sowie visualisiert und anschließend für das Erstellen von Vorhersagemodellen vorbereitet. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen. Diese Modelle werden mithilfe des Spark MLlib-Toolkits erstellt, um Aufgaben zur binären Klassifizierung und Regressionsmodellierung ausführen.
 
 - Die Aufgabe zur **binären Klassifizierung** besteht darin, vorherzusagen, ob ein Trinkgeld für eine Fahrt bezahlt wird. 
 - Die Aufgabe zur **Regression** besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldfunktionen vorherzusagen. 
@@ -49,17 +49,17 @@ Beispiele für die Modellierung mit Kreuzvalidierung und Hyperparameter-Sweeping
 
 ## Voraussetzungen
 
-Sie benötigen ein Azure-Konto und einen HDInsight Spark-Cluster der Version Spark 1.5.2 (HDI 3.3), um mit dieser exemplarischen Vorgehensweise zu beginnen. Unter [Overview of Data Science using Spark on Azure HDInsight](machine-learning-data-science-spark-overview.md) (Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight) finden Sie diese Anforderungen, eine Beschreibung der hier verwendeten NYC-Taxi-Daten von 2013 und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook auf dem Spark-Cluster. Das **machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb**-Notebook, das die Codebeispiele in diesem Thema enthält, ist in [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Python) verfügbar.
+Sie benötigen ein Azure-Konto und HDInsight Spark. Zum Durcharbeiten dieser exemplarischen Vorgehensweise ist ein Cluster vom Typ HDInsight 3.4 Spark 1.6 erforderlich. Unter [Overview of Data Science using Spark on Azure HDInsight](machine-learning-data-science-spark-overview.md) (Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight) finden Sie diese Anforderungen, eine Beschreibung der hier verwendeten NYC-Taxi-Daten von 2013 und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook auf dem Spark-Cluster. Das **machine-learning-data-science-spark-data-exploration-modeling.ipynb**-Notebook, das die Codebeispiele in diesem Thema enthält, ist bei [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) verfügbar.
 
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-## Setup: Speicherorte, Bibliotheken und Spark-Kontext
+## Setup: Speicherorte, Bibliotheken und vorab festgelegter Spark-Kontext
 
 Spark kann aus dem Azure Storage-Blob (auch bekannt als WASB) lesen und darin schreiben. Es können also alle Ihre vorhandenen Daten mithilfe von Spark verarbeitet und die Ergebnisse wieder im WASB gespeichert werden.
 
-Um Modelle oder Dateien im WASB zu speichern, muss der Pfad korrekt angegeben werden. Auf den an den Spark-Cluster angefügten Standardcontainer können Sie mit einem Pfad verweisen, der mit „wasb///“ beginnt. Auf andere Speicherorte wird mit „wasb://“ verwiesen.
+Um Modelle oder Dateien im WASB zu speichern, muss der Pfad korrekt angegeben werden. Auf den an den Spark-Cluster angefügten Standardcontainer können Sie mit einem Pfad verweisen, der mit „wasb:///“ beginnt. Auf andere Speicherorte wird mit „wasb://“ verwiesen.
 
 ### Festlegen von Verzeichnispfaden für Speicherorte im WASB
 
@@ -84,19 +84,17 @@ Das folgende Codebeispiel gibt den Speicherort der zu lesenden Daten und den Pfa
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
 
-### Importieren benötigter Bibliotheken und Festlegen des Spark-Kontexts 
+### Importieren von Bibliotheken
 
-Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliotheken mit dem folgenden Code.
+Importieren Sie die erforderlichen Bibliotheken mit dem unten angegebenen Code.
 
 	# LOAD PYSPARK LIBRARIES
 	import pyspark
 	from pyspark import SparkConf
 	from pyspark import SparkContext
 	from pyspark.sql import SQLContext
-	%matplotlib inline
 	import matplotlib
 	import matplotlib.pyplot as plt
-	#matplotlib.style.use('ggplot')
 	from pyspark.sql import Row
 	from pyspark.sql.functions import UserDefinedFunction
 	from pyspark.sql.types import *
@@ -105,18 +103,24 @@ Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliot
 	import numpy as np
 	import datetime
 	
-	# SET SPARK CONTEXT
-	sc = SparkContext(conf=SparkConf().setMaster('yarn-client'))
-	sqlContext = SQLContext(sc)
-	atexit.register(lambda: sc.stop())
-	
-	sc.defaultParallelism
 
-**AUSGABE**
+### Vorab festgelegter Spark-Kontext und PySpark-Magic-Befehle
 
-4
+Die PySpark-Kernel, die mit Jupyter Notebooks bereitgestellt werden, verfügen über einen vorab festgelegten Kontext. Sie müssen die Spark- oder Hive-Kontexte also nicht mehr explizit festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
 
-## Datenerfassung: 
+- sc – für Spark 
+- sqlContext – für Hive
+
+Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefiniert sind. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
+
+- **%%local** Gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
+- **%%sql -o <variable name>** Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als Pandas-Dataframe beibehalten.
+ 
+
+Weitere Informationen zu den Kerneln für Jupyter Notebooks und dazugehörigen vordefinierten „Magic-Befehle“, die mit %% aufgerufen werden (z.B. %%local), finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+
+
+## Datenerfassung über das öffentliche Blob: 
 
 Dieser Abschnitt enthält den Code für eine Reihe erforderlicher Aufgaben zum Erfassen des Datenbeispiels, das modelliert werden soll. Lesen Sie eine verknüpfte 0,1 %-Stichprobe der Datei für Taxifahrten und Fahrpreise (gespeichert als TSV-Datei) ein, formatieren und bereinigen Sie die Daten, erstellen Sie einen Datenrahmen im Arbeitsspeicher, zwischenspeichern Sie ihn dort, und registrieren Sie ihn dann als temporäre Tabelle im SQL-Kontext.
 
@@ -164,6 +168,9 @@ Hier ist der Code für die Datenerfassung.
 	                        float(p[20]),float(p[21]),float(p[22]),float(p[23]),float(p[24]),int(p[25]),int(p[26])))
 	
 	    
+	# CREATE DATA FRAME
+	taxi_train_df = sqlContext.createDataFrame(taxi_temp, taxi_schema)
+	
 	# CREATE A CLEANED DATA-FRAME BY DROPPING SOME UN-NECESSARY COLUMNS & FILTERING FOR UNDESIRED VALUES OR OUTLIERS
 	taxi_df_train_cleaned = taxi_train_df.drop('medallion').drop('hack_license').drop('store_and_fwd_flag').drop('pickup_datetime')\
 	    .drop('dropoff_datetime').drop('pickup_longitude').drop('pickup_latitude').drop('dropoff_latitude')\
@@ -171,7 +178,7 @@ Hier ist der Code für die Datenerfassung.
 	    .drop('direct_distance').drop('surcharge')\
 	    .filter("passenger_count > 0 and passenger_count < 8 AND payment_type in ('CSH', 'CRD') AND tip_amount >= 0 AND tip_amount < 30 AND fare_amount >= 1 AND fare_amount < 150 AND trip_distance > 0 AND trip_distance < 100 AND trip_time_in_secs > 30 AND trip_time_in_secs < 7200" )
 	
-	# CACHE DATA-FRAME IN MEMORY & MATERIALIZE DF IN MEMORY
+	# CACHE & MATERIALIZE DATA-FRAME IN MEMORY. GOING THROUGH AND COUNTING NUMBER OF ROWS MATERIALIZES THE DATA-FRAME IN MEMORY
 	taxi_df_train_cleaned.cache()
 	taxi_df_train_cleaned.count()
 	
@@ -186,7 +193,7 @@ Hier ist der Code für die Datenerfassung.
 
 **AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 17,73 Sekunden
+Time taken to execute above cell: 276.62 seconds
 
 
 ## Durchsuchen und Visualisierung von Daten 
@@ -195,28 +202,47 @@ Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Da
 
 ### Zeichnen eines Histogramms der Häufigkeit der Fahrgastzahlen im Taxifahrtenbeispiel
 
-Der Code sammelt die Daten in einer SQL-Abfrage und konvertiert die Ergebnisse in einen zu zeichnenden Pandas-Datenrahmen.
+In diesem Code und den nachfolgenden Codeausschnitten werden SQL-Magic-Befehle verwendet, um das Beispiel abzufragen, und lokale Magic-Befehle, um die Daten in einem Diagramm darzustellen.
+
+- **SQL-Magic-Befehl (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für sqlContext. Mit dem Argument (-o VARIABLE\_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Dies bedeutet, dass die Daten im lokalen Modus verfügbar sind.
+- Der **Magic-Befehl `%%local`** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dies ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
+
+Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
+
+Mit dieser Abfrage werden die Fahrten nach der Fahrgastanzahl abgerufen.
 
 	# PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
-	# SQL SQUERY
-	sqlStatement = """
-	    SELECT passenger_count, COUNT(*) as trip_counts 
-	    FROM taxi_train 
-	    WHERE passenger_count > 0 and passenger_count < 7
-	    GROUP BY passenger_count 
-	"""
-	sqlResults = sqlContext.sql(sqlStatement)
+	# SQL QUERY
+	%%sql -q -o sqlResults
+	SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
+
+
+Mit dem Code wird aus der Ausgabe der Abfrage ein lokaler Dataframe erstellt, und die Daten werden in einem Diagramm dargestellt („geplottet“). Der Magic-Befehl `%%local` erstellt den lokalen Dataframe `sqlResults`, der für das Plotten mit matplotlib verwendet werden kann.
+
+>[AZURE.NOTE] Dieser PySpark-Magic-Befehl wird in dieser exemplarischen Vorgehensweise mehrfach genutzt. Bei einer großen Datenmenge sollten Sie Stichproben verwenden, um einen Dataframe zu erstellen, der nicht zu groß für den lokalen Arbeitsspeicher ist.
+
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+	%%local
 	
-	#CONVERT TO PANDAS DATA-FRAMES FOR PLOTTING IN PYTHON
-	resultsPDDF = sqlResults.toPandas()
+	# USE THE JUPYTER AUTO-PLOTTING FEATURE TO CREATE INTERACTIVE FIGURES. 
+	# CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
+	sqlResults
+
+Hier ist der Code zum Plotten der Fahrten nach der Fahrgastanzahl angegeben:
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+	%%local
+	import matplotlib.pyplot as plt
+	%matplotlib inline
 	
-	# PLOT PASSENGER NUMBER VS. TRIP COUNTS
-	x_labels = resultsPDDF['passenger_count'].values
-	fig = resultsPDDF[['trip_counts']].plot(kind='bar', facecolor='lightblue')
+	# PLOT PASSENGER NUMBER VS TRIP COUNTS
+	x_labels = sqlResults['passenger_count'].values
+	fig = sqlResults[['trip_counts']].plot(kind='bar', facecolor='lightblue')
 	fig.set_xticklabels(x_labels)
 	fig.set_title('Counts of trips by passenger count')
-	fig.set_xlabel('Passenger counts')
+	fig.set_xlabel('Passenger count in trips')
 	fig.set_ylabel('Trip counts')
 	plt.show()
 
@@ -224,27 +250,31 @@ Der Code sammelt die Daten in einer SQL-Abfrage und konvertiert die Ergebnisse i
 
 ![Fahrtenhäufigkeit nach Anzahl der Fahrgäste](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
+Sie können unter verschiedenen Arten von Visualisierungen wählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden. Hier ist das Balkendiagramm dargestellt.
+
 
 ### Zeichnen eines Histogramms des Trinkgeldbetrags und der Variation des Trinkgeldbetrags nach Anzahl der Fahrgäste und Höhe des Fahrpreises
 
-Der Code sammelt die Daten in einer SQL-Abfrage und konvertiert die Ergebnisse in einen zu zeichnenden Pandas-Datenrahmen.
-
-	# RECORD START TIME
-	timestart = datetime.datetime.now()
+Verwenden Sie eine SQL-Abfrage, um Beispieldaten zu erstellen.
 	
 	# SQL SQUERY
-	sqlStatement = """
+	%%sql -q -o sqlResults
 	    SELECT fare_amount, passenger_count, tip_amount, tipped
 	    FROM taxi_train 
-	    WHERE passenger_count > 0 AND passenger_count < 7
-	    AND fare_amount > 0 AND fare_amount < 200
+	    WHERE passenger_count > 0 
+		AND passenger_count < 7
+	    AND fare_amount > 0 
+		AND fare_amount < 200
 	    AND payment_type in ('CSH', 'CRD')
-	    AND tip_amount > 0 AND tip_amount < 25
-	"""
-	sqlResults = sqlContext.sql(sqlStatement)
+	    AND tip_amount > 0 
+		AND tip_amount < 25
 	
-	# CONVERT TO PANDAS DATA-FRAME FOR PLOTTING IN PYTHON
-	resultsPDDF= sqlResults.toPandas()
+
+In dieser Codezelle wird die SQL-Abfrage verwendet, um drei Diagramme der Daten zu erstellen.
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+	%%local
+	%matplotlib inline
 	
 	# TIP BY PAYMENT TYPE AND PASSENGER COUNT
 	ax1 = resultsPDDF[['tip_amount']].plot(kind='hist', bins=25, facecolor='lightblue')
@@ -270,20 +300,14 @@ Der Code sammelt die Daten in einer SQL-Abfrage und konvertiert die Ergebnisse i
 	plt.axis([-2, 120, -2, 30])
 	plt.show()
 	
-	# PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
-	timeend = datetime.datetime.now()
-	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Ausgabe:**
+**AUSGABE:**
 
 ![Trinkgeldbetragverteilung](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/tip-amount-distribution.png)
 
 ![Trinkgeldbetrag nach Anzahl der Fahrgäste](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
 ![Trinkgeldbetrag nach Höhe des Fahrpreises](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
-
-Für die Ausführung der obigen Zelle benötigte Zeit: 10,42 Sekunden
 
 
 ## Feature Engineering, Transformation und Datenvorbereitung für die Modellierung
@@ -316,6 +340,8 @@ Dieser Code zeigt, wie Sie ein neues Feature durch Diskretisieren von Stunden in
 	taxi_df_train_with_newFeatures = sqlContext.sql(sqlStatement)
 	
 	# CACHE DATA-FRAME IN MEMORY & MATERIALIZE DF IN MEMORY
+	# THE .COUNT() GOES THROUGH THE ENTIRE DATA-FRAME,
+	# MATERIALIZES IT IN MEMORY, AND GIVES THE COUNT OF ROWS.
 	taxi_df_train_with_newFeatures.cache()
 	taxi_df_train_with_newFeatures.count()
 
@@ -328,7 +354,7 @@ Dieser Code zeigt, wie Sie ein neues Feature durch Diskretisieren von Stunden in
 
 Dieser Abschnitt beschreibt das Indizieren oder Codieren von kategorischen Features für die Eingabe in die Modellierungsfunktionen. Die Modellierungs- und Vorhersagefunktionen von MLlib erfordern, dass Features mit kategorischen Eingabedaten vor der Verwendung indiziert oder codiert werden.
 
-Je nach Modell müssen Sie sie auf unterschiedliche Weise indizieren oder codieren. Logistische und lineare Regressionsmodelle erfordern beispielsweise One-Hot-Codierung, wobei z.B. ein Feature mit 3 Kategorien auf 3 Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) zur One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
+Je nach Modell müssen Sie sie auf unterschiedliche Weise indizieren oder codieren. Logistische und lineare Regressionsmodelle erfordern beispielsweise One-Hot-Codierung, wobei z.B. ein Feature mit 3 Kategorien auf 3 Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) für die One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
 
 Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
 
@@ -375,17 +401,18 @@ Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
 
 **AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 1,22 Sekunden
+Time taken to execute above cell: 3.14 seconds
 
 
 ### Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
 
 Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als bezeichneten Punktdatentyp und so codieren, dass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer Klassifizierungsmodelle verwendet werden können. Bezeichnete Punktobjekte sind robuste verteilte Datasets (RDD), die in einer Weise formatiert sind, die von den meisten ML-Algorithmen in MLlib als Eingabedaten benötigt wird. Ein [bezeichneter Punkt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) ist ein lokaler Vektor, entweder dicht oder platzsparend, der mit einer Bezeichnung/Antwort verknüpft ist.
 
+Hier ist der Code angegeben, mit dem Textfeatures für die binäre Klassifizierung indiziert und codiert werden.
 
 	# FUNCTIONS FOR BINARY CLASSIFICATION
 
-	# LOAD PYSPARK LIBRARIES
+	# LOAD LIBRARIES
 	from pyspark.mllib.regression import LabeledPoint
 	from numpy import array
 
@@ -405,6 +432,8 @@ Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als be
 	    return  labPt
 
 
+Hier ist der Code angegeben, mit dem kategorische Textfeatures für die lineare Regressionsanalyse codiert und indiziert werden.
+
 	# FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
 	# ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO TREE-BASED MODELS
@@ -423,7 +452,6 @@ Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als be
 	                                        line.paymentVec.toArray(), line.TrafficTimeBinsVec.toArray()), axis=0)
 	    labPt = LabeledPoint(line.tip_amount, features)
 	    return  labPt
-
 
 
 ### Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
@@ -470,16 +498,14 @@ Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verw
 
 **AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 0,4 Sekunden
+Time taken to execute above cell: 0.31 seconds
 
 
 ### Featureskalierung
 
-Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
+Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Im Code für die Featureskalierung wird [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz verwendet. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
 
-
->[AZURE.NOTE] Wir haben festgestellt, dass der LinearRegressionWithSGD-Algorithmus für die Featureskalierung zu empfindlich ist.
-
+>[AZURE.TIP] Wir haben festgestellt, dass der LinearRegressionWithSGD-Algorithmus für die Featureskalierung zu empfindlich ist.
 
 Im Folgenden finden Sie den Code zum Skalieren von Variablen für die Verwendung mit dem regularisierten linearen SGD-Algorithmus.
 
@@ -512,7 +538,8 @@ Im Folgenden finden Sie den Code zum Skalieren von Variablen für die Verwendung
 
 **AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 7,33 Sekunden
+Time taken to execute above cell: 11.67 seconds
+
 
 ### Zwischenspeichern von Objekten im Arbeitsspeicher
 
@@ -542,9 +569,9 @@ Die Zeit zum Trainieren und Testen von ML-Algorithmen kann durch Zwischenspeiche
 	timedelta = round((timeend-timestart).total_seconds(), 2) 
 	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Ausgabe:**
+**AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 0,11 Sekunden
+Time taken to execute above cell: 0.13 seconds
 
 
 ## Vorhersage, ob ein Trinkgeld bezahlt wird, mit Modellen zur binären Klassifizierung
@@ -563,7 +590,7 @@ Jeder Codeabschnitt zur Modellerstellung ist in Schritte unterteilt:
 
 Die Kreuzvalidierung mit Parameter-Sweeping kann auf zweierlei Weise ausgeführt werden:
 
-1. Mithilfe von **allgemeinem** benutzerdefinierten Code, der auf jeden Algorithmus in MLlib und auf all Parametersätze in einem Algorithmus angewandt werden kann. 
+1. Mithilfe von **allgemeinem** benutzerdefiniertem Code, der auf jeden Algorithmus in MLlib und auf alle Parametersätze in einem Algorithmus angewendet werden kann. 
 1. Mithilfe der **PySpark CrossValidator-Pipelinefunktion**. CrossValidator ist zwar praktisch, weist erfahrungsgemäß aber auch einige Beschränkungen für Spark 1.5.0 auf: 
 
 	- Pipelinemodelle können für die zukünftige Verwendung nicht gespeichert/beibehalten werden.
@@ -575,15 +602,18 @@ Die Kreuzvalidierung mit Parameter-Sweeping kann auf zweierlei Weise ausgeführt
 
 Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im NYC-Taxifahrten- und Fahrpreisedataset vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit benutzerdefiniertem Code implementiert, der auf alle Lernalgorithmen in MLlib angewandt werden kann.
 
-
 >[AZURE.NOTE] Die Ausführung dieser benutzerdefinierten Kreuzvalidierung kann einige Minuten in Anspruch nehmen.
 
+**Trainieren des logistischen Regressionsmodells per Kreuzvalidierung und Hyperparameter-Sweeping**
 
 	# LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
+
+	# GET ACCURACY FOR HYPERPARAMETERS BASED ON CROSS-VALIDATION IN TRAINING DATA-SET
 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
 	
+	# LOAD LIBRARIES
 	from pyspark.mllib.classification import LogisticRegressionWithLBFGS 
 	from pyspark.mllib.evaluation import BinaryClassificationMetrics
 	
@@ -605,7 +635,7 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das 
 	    validateUB = (i + 1) * h
 	    condition = (trainData["rand"] >= validateLB) & (trainData["rand"] < validateUB)
 	    validation = trainData.filter(condition)
-	    # Create labeled points from data-frames
+	    # Create LabeledPoints from data-frames
 	    if i > 0:
 	        trainCVLabPt.unpersist()
 	        validationLabPt.unpersist()
@@ -642,6 +672,14 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das 
 	                                              regParam=bestParam['regParam'], tolerance = bestParam['tolerance'], 
 	                                              intercept=True)
 	
+	
+	# PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
+	# NOTE: There are 20 coefficient terms for the 10 features, 
+	#       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+	print("Coefficients: " + str(logitBest.weights))
+	print("Intercept: " + str(logitBest.intercept))
+	
+	# PRINT ELAPSED TIME	
 	timeend = datetime.datetime.now()
 	timedelta = round((timeend-timestart).total_seconds(), 2) 
 	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
@@ -649,18 +687,22 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das 
 
 **AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 160,47 Sekunden
+Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
+
+Intercept: -0.0111216486893
+
+Time taken to execute above cell: 14.43 seconds
 
 
-**Evaluieren des binären Klassifizierungsmodells mit Standardmetriken und Ausgabe der ROC-Kurve**
+**Evaluieren des binären Klassifizierungsmodells mit Standardmetriken**
 
 Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell mit einem Testdataset evaluiert wird, einschließlich Ausgabe der ROC-Kurve.
 
 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
-	
-	# LOAD PYSPARK LIBRARIES
+
+	#IMPORT LIBRARIES
 	from sklearn.metrics import roc_curve,auc
 	from pyspark.mllib.evaluation import BinaryClassificationMetrics
 	from pyspark.mllib.evaluation import MulticlassMetrics
@@ -687,19 +729,60 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell mit e
 	print("Recall = %s" % recall)
 	print("F1 Score = %s" % f1Score)
 	
-	
-	# CREATE A PANDAS DATA-FRAME AND PLOT ROC-CURVE, FROM PREDICTED PROBS AND LABELS                                     
-	logitBest.clearThreshold() # This clears threshold for classification (0.5) and outputs probabilities
-	predictionAndLabels = oneHotTESTbinary.map(lambda lp: (float(logitBest.predict(lp.features)), lp.label))
+	# OUTPUT PROBABILITIES AND REGISTER TEMP TABLE
+	logitBest.clearThreshold(); # This clears threshold for classification (0.5) and outputs probabilities
 	predictionAndLabelsDF = predictionAndLabels.toDF()
-	test_predictions = predictionAndLabelsDF.toPandas()
-	predictions_pddf = test_predictions.rename(columns={'_1': 'probability', '_2': 'label'})
+	predictionAndLabelsDF.registerTempTable("tmp_results");
+
+	# PRINT ELAPSED TIME	
+	timeend = datetime.datetime.now()
+	timedelta = round((timeend-timestart).total_seconds(), 2) 
+	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+
+
+**AUSGABE**
+
+Area under PR = 0.985336538462
+
+Area under ROC = 0.983383274312
+
+Summary Stats
+
+Precision = 0.984174341679
+
+Recall = 0.984174341679
+
+F1 Score = 0.984174341679
+
+Time taken to execute above cell: 2.67 seconds
+
+
+**Zeichnen Sie das Diagramm mit der ROC-Kurve.**
+
+*predictionAndLabelsDF* ist als Tabelle *tmp\_results* in der vorherigen Zelle registriert. Sie können *tmp\_results* verwenden, um Abfragen durchzuführen und Ergebnisse zum Plotten in den Dataframe sqlResults einzufügen. Hier ist der Code angegeben.
+
+
+	# QUERY RESULTS                              
+	%%sql -q -o sqlResults
+	SELECT * from tmp_results
+
+
+Hier ist der Code zum Treffen von Vorhersagen und Zeichnen des Diagramms mit der ROC-Kurve angegeben.
+
+	# MAKE PREDICTIONS AND PLOT ROC-CURVE
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES                              
+	%%local
+	%matplotlib inline
+	from sklearn.metrics import roc_curve,auc
 	
+	#PREDICTIONS
+	predictions_pddf = sqlResults.rename(columns={'_1': 'probability', '_2': 'label'})
 	prob = predictions_pddf["probability"] 
 	fpr, tpr, thresholds = roc_curve(predictions_pddf['label'], prob, pos_label=1);
 	roc_auc = auc(fpr, tpr)
 	
-	# PLOT ROC CURVE
+	# PLOT ROC CURVES
 	plt.figure(figsize=(5,5))
 	plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
 	plt.plot([0, 1], [0, 1], 'k--')
@@ -711,28 +794,10 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell mit e
 	plt.legend(loc="lower right")
 	plt.show()
 	
-	# PRINT ELAPSED TIME
-	timeend = datetime.datetime.now()
-	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 **AUSGABE**
 
-Area under PR = 0.985319161941
-
-Area under ROC = 0.983511076103
-
-Summary Stats
-
-Precision = 0.984187223276
-
-Recall = 0.984187223276
-
-F1 Score = 0.984187223276
-
 ![ROC-Kurve der logistischen Regression für die allgemeine Methode](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
-
-Für die Ausführung der obigen Zelle benötigte Zeit: 5,02 Sekunden
 
 
 **Beibehalten des Modells im Blob für die zukünftige Nutzung**
@@ -760,10 +825,10 @@ Der Code in diesem Abschnitt zeigt, wie das logistische Regressionsmodell für d
 
 **AUSGABE**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 9,96 Sekunden
+Time taken to execute above cell: 34.57 seconds
 
 
-### Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem LogisticRegression-Modell (elastische Regression)
+### Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem logistischen Regressionsmodell (elastische Regression)
 
 Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im NYC-Taxifahrten- und Fahrpreisedataset vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit der MLlib CrossValidator-Pipeline-Funktion für die Kreuzvalidierung mit Hyperparameter-Sweeping implementiert.
 
@@ -810,14 +875,37 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das 
 	testDataFrame = sqlContext.createDataFrame(oneHotTESTbinary, ["features", "label"])
 	test_predictions = cv_model.transform(testDataFrame)
 	
-	# CONVERT RTO PANDAS DATA-FRAME FOR CALCULATING AND PLOTTING ROC CURVE
-	predictions_pddf = test_predictions.toPandas()
-	predictions_pddf.dtypes
-	prob = [x[1] for x in predictions_pddf["probability"]]
-	fpr, tpr, thresholds = roc_curve(predictions_pddf['label'], prob, pos_label=1);
+	# PRINT ELAPSED TIME
+	timeend = datetime.datetime.now()
+	timedelta = round((timeend-timestart).total_seconds(), 2) 
+	print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+
+**AUSGABE**
+
+Time taken to execute above cell: 107.98 seconds
+
+
+**Zeichnen Sie das Diagramm mit der ROC-Kurve.**
+
+*predictionAndLabelsDF* ist als Tabelle *tmp\_results* in der vorherigen Zelle registriert. Sie können *tmp\_results* verwenden, um Abfragen durchzuführen und Ergebnisse zum Plotten in den Dataframe sqlResults einzufügen. Hier ist der Code angegeben.
+
+
+	# QUERY RESULTS
+	%%sql -q -o sqlResults
+	SELECT label, prediction, probability from tmp_results
+
+Hier ist der Code zum Plotten der ROC-Kurve angegeben.
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES 
+	%%local
+	from sklearn.metrics import roc_curve,auc
+	
+	# ROC CURVE
+	prob = [x["values"][1] for x in sqlResults["probability"]]
+	fpr, tpr, thresholds = roc_curve(sqlResults['label'], prob, pos_label=1);
 	roc_auc = auc(fpr, tpr)
 	
-	# PLOT ROC CURVE
+	#PLOT
 	plt.figure(figsize=(5,5))
 	plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
 	plt.plot([0, 1], [0, 1], 'k--')
@@ -828,17 +916,12 @@ Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das 
 	plt.title('ROC Curve')
 	plt.legend(loc="lower right")
 	plt.show()
-	
-	# PRINT ELAPSED TIME
-	timeend = datetime.datetime.now()
-	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+
 
 **AUSGABE**
 
 ![ROC-Kurve der logistischen Regression mithilfe des CrossValidator von MLlib](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 118,25 Sekunden
 
 
 ### Klassifizierung der zufälligen Gesamtstruktur
@@ -890,9 +973,9 @@ Der Code in diesem Abschnitt zeigt, wie eine Regression der zufälligen Gesamtst
 
 **AUSGABE**
 
-Area under ROC = 0.985240932843
+Area under ROC = 0.985336538462
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 22,9 Sekunden
+Time taken to execute above cell: 26.72 seconds
 
 
 ### Klassifizierung von Gradient-Boosted-Strukturen
@@ -937,9 +1020,9 @@ Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das
 
 **AUSGABE**
 
-Area under ROC = 0.985240932843
+Area under ROC = 0.985336538462
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 22,41 Sekunden
+Time taken to execute above cell: 28.13 seconds
 
 
 ## Vorhersage von Trinkgeldbeträgen mit Regressionsmodellen (ohne Kreuzvalidierung)
@@ -957,15 +1040,17 @@ Diese Modelle wurden in der Einführung beschrieben. Jeder Codeabschnitt zur Mod
 3. **Speichern des Modells** im Blob für die zukünftige Nutzung   
 
 
->AZURE-HINWEIS: Die Kreuzvalidierung wird nicht mit den drei Regressionsmodellen in diesem Abschnitt verwendet. Ein Beispiel dazu, wie die Kreuzvalidierung mit Elastic Net für die lineare Regression verwendet wird, finden Sie im Anhang zu diesem Thema.
+>AZURE-HINWEIS: Die Kreuzvalidierung wird für die drei Regressionsmodelle in diesem Abschnitt nicht verwendet, da dies für die logistischen Regressionsmodelle ausführlich gezeigt wurde. Ein Beispiel dazu, wie die Kreuzvalidierung mit Elastic Net für die lineare Regression verwendet wird, finden Sie im Anhang zu diesem Thema.
 
 
->AZURE-HINWEIS: Nach unserer Erfahrung können Probleme mit der Konvergenz von LinearRegressionWithSGD-Modellen auftreten, und Parameter müssen sorgfältig geändert/optimiert werden, um ein gültiges Modell zu erhalten. Das Skalieren von Variablen ist bei der Konvergenz hilfreich. Auch Elastic Net-Regression (s. Anhang zu diesem Thema) kann für eine verbesserte Konvergenz eingesetzt werden.
+>AZURE-HINWEIS: Nach unserer Erfahrung können Probleme mit der Konvergenz von LinearRegressionWithSGD-Modellen auftreten, und Parameter müssen sorgfältig geändert/optimiert werden, um ein gültiges Modell zu erhalten. Das Skalieren von Variablen ist bei der Konvergenz hilfreich. Die Elastic Net-Regression, die im Anhang dieses Themas veranschaulicht wird, kann auch anstelle von LinearRegressionWithSGD verwendet werden.
 
 
 ### Lineare Regression mit SGD
 
 Der Code in diesem Abschnitt zeigt, wie skalierte Features zum Trainieren einer linearen Regression verwendet werden, die das stochastische Gradientenverfahren (SGD) für die Optimierung verwendet, und wie das Modell bewertet, evaluiert und in Azure-Blobspeicher (WASB) gespeichert wird.
+
+>[AZURE.TIP] Nach unserer Erfahrung können Probleme mit der Konvergenz von LinearRegressionWithSGD-Modellen auftreten, und Parameter müssen sorgfältig geändert/optimiert werden, um ein gültiges Modell zu erhalten. Das Skalieren von Variablen ist bei der Konvergenz hilfreich.
 
 
 	# LINEAR REGRESSION WITH SGD 
@@ -973,13 +1058,19 @@ Der Code in diesem Abschnitt zeigt, wie skalierte Features zum Trainieren einer 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
 	
-	# LOAD PYSPARK LIBRARIES
+	# LOAD LIBRARIES
 	from pyspark.mllib.regression import LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel
 	from pyspark.mllib.evaluation import RegressionMetrics
 	from scipy import stats
 	
 	# USE SCALED FEATURES TO TRAIN MODEL
 	linearModel = LinearRegressionWithSGD.train(oneHotTRAINregScaled, iterations=100, step = 0.1, regType='l2', regParam=0.1, intercept = True)
+
+	# PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
+	# NOTE: There are 20 coefficient terms for the 10 features, 
+	#       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+	print("Coefficients: " + str(linearModel.weights))
+	print("Intercept: " + str(linearModel.intercept))
 	
 	# SCORE ON SCALED TEST DATA-SET & EVALUATE
 	predictionAndLabels = oneHotTESTregScaled.map(lambda lp: (float(linearModel.predict(lp.features)), lp.label))
@@ -1002,17 +1093,20 @@ Der Code in diesem Abschnitt zeigt, wie skalierte Features zum Trainieren einer 
 
 **AUSGABE**
 
-RMSE = 1,29395294535
+Coefficients: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
-R-sqr = 0,588405443258
+Intercept: 0.854507624459
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 36,14 Sekunden
+RMSE = 1.23485131376
+
+R-sqr = 0.597963951127
+
+Time taken to execute above cell: 38.62 seconds
 
 
 ### Regression der zufälligen Gesamtstruktur
 
 Der Code in diesem Abschnitt zeigt, wie ein zufälliges Gesamtstrukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
-
 
 >[AZURE.NOTE] Kreuzvalidierung mit Parameter-Sweeping mithilfe von benutzerdefinierten Code finden Sie im Anhang.
 
@@ -1059,17 +1153,18 @@ Der Code in diesem Abschnitt zeigt, wie ein zufälliges Gesamtstrukturmodell, da
 
 **AUSGABE**
 
-RMSE = 0,962262172157
+RMSE = 0.931981967875
 
-R-sqr = 0,69142848223
+R-sqr = 0.733445485802
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 29,3 Sekunden
+Time taken to execute above cell: 25.98 seconds
 
 
 ### Gradient-Boosted-Strukturenregression
 
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
+** Trainieren und bewerten**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1097,20 +1192,10 @@ Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das
 	test_predictions= sqlContext.createDataFrame(predictionAndLabels)
 	test_predictions_pddf = test_predictions.toPandas()
 	
-	ax = test_predictions_pddf.plot(kind='scatter', figsize = (6,6), x='_1', y='_2', color='blue', alpha = 0.25, label='Actual vs. predicted');
-	fit = np.polyfit(test_predictions_pddf['_1'], test_predictions_pddf['_2'], deg=1)
-	ax.set_title('Actual vs. Predicted Tip Amounts ($)')
-	ax.set_xlabel("Actual")
-	ax.set_ylabel("Predicted")
-	ax.plot(test_predictions_pddf['_1'], fit[0] * test_predictions_pddf['_1'] + fit[1], color='magenta')
-	plt.axis([-1, 20, -1, 20])
-	plt.show(ax)
-	
 	# SAVE MODEL IN BLOB
 	datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
 	btregressionfilename = "GradientBoostingTreeRegression_" + datestamp;
 	dirfilename = modelDir + btregressionfilename;
-	
 	gbtModel.save(sc, dirfilename)
 	
 	# PRINT ELAPSED TIME
@@ -1121,9 +1206,39 @@ Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das
 
 **AUSGABE**
 
-RMSE = 0.962160568829
+RMSE = 0.928172197114
 
-R-Sqr = 0.717354800581
+R-sqr = 0.732680354389
+
+Time taken to execute above cell: 20.9 seconds
+
+
+**Diagrammausgabe**
+	
+*tmp\_results* ist als Hive-Tabelle in der vorherigen Zelle registriert. Ergebnisse aus der Tabelle werden zum Plotten in den Dataframe *sqlResults* ausgegeben. Hier ist der Code angegeben.
+
+	# PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
+
+	# SELECT RESULTS
+	%%sql -q -o sqlResults
+	SELECT * from tmp_results
+
+
+Hier ist der Code zum Plotten der Daten mit dem Jupyter-Server angegeben.
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+	%%local
+	import numpy as np
+	
+	# PLOT
+	ax = sqlResults.plot(kind='scatter', figsize = (6,6), x='_1', y='_2', color='blue', alpha = 0.25, label='Actual vs. predicted');
+	fit = np.polyfit(sqlResults['_1'], sqlResults['_2'], deg=1)
+	ax.set_title('Actual vs. Predicted Tip Amounts ($)')
+	ax.set_xlabel("Actual")
+	ax.set_ylabel("Predicted")
+	ax.plot(sqlResults['_1'], fit[0] * sqlResults['_1'] + fit[1], color='magenta')
+	plt.axis([-1, 15, -1, 15])
+	plt.show(ax)
 
 ![Actual-vs-predicted-tip-amounts](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
@@ -1148,46 +1263,42 @@ Der Code in diesem Abschnitt zeigt wie die Kreuzvalidierung mithilfe von Elastic
 	from pyspark.ml.evaluation import RegressionEvaluator
 	from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
 	
-	# Define algo / model
+	# DEFINE ALGORITHM/MODEL
 	lr = LinearRegression()
 	
-	# Define grid parameters
+	# DEFINE GRID PARAMETERS
 	paramGrid = ParamGridBuilder().addGrid(lr.regParam, (0.01, 0.1))\
 	                              .addGrid(lr.maxIter, (5, 10))\
 	                              .addGrid(lr.tol, (1e-4, 1e-5))\
 	                              .addGrid(lr.elasticNetParam, (0.25,0.75))\
 	                              .build() 
 	
-	# Define pipeline, in this case, simply the modeling (without any transformations etc.)
+	# DEFINE PIPELINE 
+	# SIMPLY THE MODEL HERE, WITHOUT TRANSFORMATIONS
 	pipeline = Pipeline(stages=[lr])
 	
-	# Define CV with parameter sweep
+	# DEFINE CV WITH PARAMETER SWEEP
 	cv = CrossValidator(estimator= lr,
 	                    estimatorParamMaps=paramGrid,
 	                    evaluator=RegressionEvaluator(),
 	                    numFolds=3)
 	
-	# Convert to data-frame, as CrossValidator won't run on RDDs
+	# CONVERT TO DATA FRAME, AS CROSSVALIDATOR WON'T RUN ON RDDS
 	trainDataFrame = sqlContext.createDataFrame(oneHotTRAINreg, ["features", "label"])
 	
-	# Train with cross-validation
+	# TRAIN WITH CROSS-VALIDATION
 	cv_model = cv.fit(trainDataFrame)
-	
-	timeend = datetime.datetime.now()
-	timeend-timestart
 	
 
 	# EVALUATE MODEL ON TEST SET
 	testDataFrame = sqlContext.createDataFrame(oneHotTESTreg, ["features", "label"])
 	
-	# MAKE PREDICTIONS ON TEST DOCUMENTS 
-	#THE cvModel USES THE BEST MODEL FOUND (lrModel).
-	test_predictions = cv_model.transform(testDataFrame)
-	predictions_pddf = test_predictions.toPandas()
+	# MAKE PREDICTIONS ON TEST DOCUMENTS
+	# cvModel uses the best model found (lrModel).
+	predictionAndLabels = cv_model.transform(testDataFrame)
 	
-	corstats = stats.linregress(predictions_pddf['label'],predictions_pddf['prediction'])
-	r2 = (corstats[2]*corstats[2])
-	print("R-sqr = %s" % r2)
+	# CONVERT TO DF AND SAVE REGISER DF AS TABLE
+	predictionAndLabels.registerTempTable("tmp_results");
 	
 	# PRINT ELAPSED TIME
 	timeend = datetime.datetime.now()
@@ -1197,9 +1308,32 @@ Der Code in diesem Abschnitt zeigt wie die Kreuzvalidierung mithilfe von Elastic
 
 **AUSGABE**
 
-R-sqr = 0,594830601664
+Time taken to execute above cell: 161.21 seconds
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 129,51 Sekunden
+**Auswerten mit R-SQR-Metrik**
+
+*tmp\_results* ist als Hive-Tabelle in der vorherigen Zelle registriert. Ergebnisse aus der Tabelle werden zum Plotten in den Dataframe *sqlResults* ausgegeben. Hier ist der Code angegeben.
+
+	# SELECT RESULTS
+	%%sql -q -o sqlResults
+	SELECT label,prediction from tmp_results
+
+
+Hier ist der Code zum Berechnen von R-sqr angegeben.
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+	%%local
+	from scipy import stats
+	
+	#R-SQR TEST METRIC
+	corstats = stats.linregress(sqlResults['label'],sqlResults['prediction'])
+	r2 = (corstats[2]*corstats[2])
+	print("R-sqr = %s" % r2)
+
+
+**AUSGABE**
+
+R-sqr = 0.619184907088
 
 
 ### Kreuzvalidierung mit Parameter-Sweeping mithilfe von benutzerdefiniertem Code für die Regression der zufälligen Gesamtstruktur
@@ -1289,11 +1423,11 @@ Der Code in diesem Abschnitt zeigt wie die Kreuzvalidierung mit Parameter-Sweepi
 
 **AUSGABE**
 
-RMSE = 0,990182456723
+RMSE = 0.906972198262
 
-R-sqr = 0,609523627251
+R-sqr = 0.740751197012
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 72,5 Sekunden
+Time taken to execute above cell: 69.17 seconds
 
 
 ### Bereinigen von Objekten aus dem Arbeitsspeicher und Drucken von Modellspeicherorten
@@ -1324,6 +1458,15 @@ Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeic
 	oneHotTRAINregScaled.unpersist()
 	oneHotTESTregScaled.unpersist()
 
+
+**AUSGABE**
+
+PythonRDD[122] at RDD at PythonRDD.scala:43
+
+
+**Drucken Sie den Pfad zu den Modelldateien für die Verwendung im Consumption Notebook.** Um für ein unabhängiges Dataset den Verbrauch und die Bewertung zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
+
+
 	# PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
 	print "logisticRegFileLoc = modelDir + "" + logisticregressionfilename + """;
 	print "linearRegFileLoc = modelDir + "" + linearregressionfilename + """;
@@ -1335,24 +1478,22 @@ Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeic
 
 **AUSGABE**
 
-PythonRDD[119] at RDD at PythonRDD.scala:43
+logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS\_2016-05-0316\_47\_30.096528"
 
-logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS\_2016-04-1817\_40\_35.796789"
+linearRegFileLoc = modelDir + "LinearRegressionWithSGD\_2016-05-0316\_51\_28.433670"
 
-linearRegFileLoc = modelDir + "LinearRegressionWithSGD\_2016-04-1817\_44\_00.993832"
+randomForestClassificationFileLoc = modelDir + "RandomForestClassification\_2016-05-0316\_50\_17.454440"
 
-randomForestClassificationFileLoc = modelDir + "RandomForestClassification\_2016-04-1817\_42\_58.899412"
+randomForestRegFileLoc = modelDir + "RandomForestRegression\_2016-05-0316\_51\_57.331730"
 
-randomForestRegFileLoc = modelDir + "RandomForestRegression\_2016-04-1817\_44\_27.204734"
+BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification\_2016-05-0316\_50\_40.138809"
 
-BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification\_2016-04-1817\_43\_16.354770"
-
-BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression\_2016-04-1817\_44\_46.206262"
+BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression\_2016-05-0316\_52\_18.827237"
 
 ## Wie geht es weiter?
 
 Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt haben, können Sie jetzt lernen, wie diese Modelle bewertet und evaluiert werden.
 
-**Modellnutzung**: Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Score Spark-built machine learning models](machine-learning-data-science-spark-model-consumption.md) (Bewerten mit Spark erstellter Machine Learning-Modelle).
+**Modellnutzung**: Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten und Evaluieren von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

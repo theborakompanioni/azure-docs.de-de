@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="05/11/2016"
 	ms.author="jroth"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -41,6 +41,7 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [API Management](#api-management-limits)
 - [App Service](#app-service-limits)
 - [Application Insights](#application-insights-limits)
+- [Automation](#automation-limits)
 - [Azure Redis Cache](#azure-redis-cache-limits)
 - [Azure RemoteApp](#azure-remoteapp-limits)
 - [Sicherung](#backup-limits)
@@ -184,12 +185,12 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Folgende Tarife sind verfügbar:
 
 - **Free:** Mehrmandantendienst, der mit anderen Azure-Abonnenten gemeinsam genutzt wird und für Bewertung und kleine Entwicklungsprojekte vorgesehen ist.
-- **Basic (Vorschau)** bietet spezifische Computerressourcen für Produktions-Workloads mit geringerem Umfang. Dieser Tarif wird derzeit in der Vorschau und zu einem reduzierten Preis angeboten.
+- **Basic (Vorschau)** bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang. Dieser Tarif wird derzeit in der Vorschau und zu einem reduzierten Preis angeboten.
 - **Standard (S1 und S2)** ist für Produktions-Workloads vorgesehen. Eine Version mit höherer Kapazität (**S2**) ist auf Anfrage verfügbar (senden Sie eine E-Mail an azuresearch_contact@microsoft.com).
 
 [AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
 
-Weitere Informationen zu anderen Einschränkungen, z. B. Dokumentgröße, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
+Weitere Informationen zu anderen Einschränkungen, z.B. Dokumentgröße, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
 
 ### Media Services-Grenzwerte
 
@@ -272,6 +273,9 @@ Weitere Informationen zu anderen Einschränkungen, z. B. Dokumentgröße, Schl�
 ### Multi-Factor Authentication
 [AZURE.INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
+### Automatisierungsgrenzwerte
+[AZURE.INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
+
 ### Grenzwerte für SQL-Datenbanken
 
 Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md).
@@ -284,4 +288,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

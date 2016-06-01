@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/23/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Ermitteln der Anforderungen an die Verzeichnissynchronisierung
@@ -32,7 +32,7 @@ Beantworten Sie die folgenden Fragen:
   
 - Verwenden Sie derzeit lokal ein Synchronisierungstool?
   - Wenn ja: Ist für Ihre Benutzer ein virtuelles Verzeichnis bzw. eine Integration der Identitäten vorhanden?
-- Sind lokal noch weitere Verzeichnisse vorhanden, die synchronisiert werden sollen (z. B. LDAP-Verzeichnis, HR-Datenbank usw.)?
+- Sind lokal noch weitere Verzeichnisse vorhanden, die synchronisiert werden sollen (z. B. LDAP-Verzeichnis, HR-Datenbank usw.)?
   - Sollen GALSync-Vorgänge durchgeführt werden?
   - Welchen aktuellen Stand haben UPNs in Ihrem Unternehmen? 
   - Verwenden Sie ein anderes Verzeichnis, das für die Authentifizierung der Benutzer eingesetzt wird?
@@ -52,7 +52,7 @@ Außerdem müssen Sie die Sicherheitsanforderungen und Einschränkungen der Verz
 
 - Wo soll sich der Synchronisierungsserver befinden?
 - Soll er Mitglied einer Domäne sein?
-- Befindet sich der Server in einem eingeschränkten Netzwerk hinter einer Firewall, z. B. einer DMZ?
+- Befindet sich der Server in einem eingeschränkten Netzwerk hinter einer Firewall, z. B. einer DMZ?
   - Können Sie die erforderlichen Firewallports öffnen, um die Synchronisierung zu unterstützen?
 - Verfügen Sie für den Synchronisierungsserver über einen Plan für die Notfallwiederherstellung?
 - Verfügen Sie über ein Konto mit den richtigen Berechtigungen für alle Gesamtstrukturen, für die eine Synchronisierung durchgeführt werden soll?
@@ -68,4 +68,4 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

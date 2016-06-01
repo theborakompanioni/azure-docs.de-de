@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/16/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Project Online-Connector
@@ -64,8 +64,9 @@ Um Logik-Apps mit Project Online zu erstellen, müssen Sie zuerst eine **Verbind
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für Project Online|
-Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für Project Online|
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Project Online](../../includes/connectors-create-api-projectonline.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -90,7 +91,7 @@ Wenn ein neues Projekt erstellt wird: Löst einen Workflow aus, sobald ein neues
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -112,7 +113,7 @@ Wenn eine neue Ressource erstellt wird: Löst einen neuen Workflow aus, sobald e
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -134,7 +135,7 @@ Wenn eine neue Aufgabe erstellt wird: Löst einen Workflow aus, sobald eine neue
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -156,7 +157,7 @@ Projekte auflisten: Listet die Projekte auf Ihrer Project Online-Website auf.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -179,7 +180,7 @@ Neues Projekt erstellen: Erstellt ein neues Projekt auf Ihrer Project Online-Web
 |401|Nicht autorisiert|
 |403|Verboten|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -203,7 +204,7 @@ Neue Aufgabe erstellen: Erstellt eine neue Aufgabe in Ihrem Projekt.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -226,7 +227,7 @@ Neue Ressource erstellen: Erstellt eine Enterprise-Ressource auf Ihrer Project O
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -249,7 +250,7 @@ Aufgaben auflisten: Listet die veröffentlichten Aufgaben in einem Projekt auf.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -272,7 +273,7 @@ Ein Projekt auschecken: Checkt ein Projekt auf Ihrer Website aus.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -295,7 +296,7 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
 
 
@@ -523,4 +524,4 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

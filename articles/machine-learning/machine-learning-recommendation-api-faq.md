@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="05/18/2016" 
 	ms.author="luisca"/>
 
 #Häufig gestellte Fragen zur Einrichtung und Verwendung der Machine Learning RECOMMENDATIONS-API
@@ -35,8 +35,8 @@ Azure Machine Learning-Empfehlungen hat die folgenden Nutzungsbeschränkungen:
 * Maximale Anzahl von Modellen pro Abonnement: 10
 * Maximale Anzahl von Elementen, die ein Katalog aufnehmen kann: 100.000
 * Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
-* Die maximale Größe der Daten, die per E-Mail gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Ein aktives Empfehlungsmodellbuild kann bis zu 20 TPS aufnehmen.
+* Die maximale Größe der Daten, die per E-Mail gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
+* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Ein aktives Empfehlungsmodellbuild kann bis zu 20 TPS aufnehmen.
 
 ##Einkauf und Abrechnung 
 
@@ -51,7 +51,7 @@ Nicht im Moment.
 
 **Gibt es eine kostenlose Testversion von RECOMMENDATIONS?**
 
-Es gibt eine kostenlose Testversion, die auf 10.000 Transaktionen pro Monat beschränkt ist.
+Es gibt eine kostenlose Testversion, die auf 10.000 Transaktionen pro Monat beschränkt ist.
 
 **Wann erhalte ich eine Rechnung für RECOMMENDATIONS?**
 
@@ -135,4 +135,4 @@ Der technische Support ist auf der Website des [Microsoft Azure-Supports](https:
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="04/28/2016"
 	ms.author="banders"/>
 
@@ -27,7 +27,7 @@ Damit der Microsoft Monitoring Agent eine Verbindung herstellen und sich beim OM
 
 |**Agent-Ressource**|**Ports**|
 |--------------|-----|
-|*.ods.opinsights.azure.com|Port 443|
+|*.ods.opinsights.azure.com|Port 443| 
 |*.oms.opinsights.azure.com|Port 443|
 |ods.systemcenteradvisor.com|Port 443|
 |*.blob.core.windows.net|Port 443|
@@ -40,8 +40,8 @@ Mit dem folgenden Verfahren können Sie Proxyeinstellungen für den Microsoft Mo
 
 2. Öffnen Sie **Microsoft Monitoring Agent**.
 
-3. Klicken Sie auf die Registerkarte **Proxyeinstellungen**.  
-  ![Registerkarte „Proxyeinstellungen“](./media/log-analytics-proxy-firewall/proxy-direct-agent-proxy.png)
+3. Klicken Sie auf die Registerkarte **Proxyeinstellungen**. 
+![Registerkarte „Proxyeinstellungen“](./media/log-analytics-proxy-firewall/proxy-direct-agent-proxy.png)
 
 4. Wählen Sie **Proxyserver verwenden** aus, und geben Sie die URL und gegebenenfalls die Portnummer ein (siehe dazu das Beispiel oben). Wenn der Proxyserver eine Authentifizierung erfordert, geben Sie den Benutzernamen und das Kennwort für den Zugriff auf den Proxyserver ein.
 
@@ -97,7 +97,7 @@ Es folgt eine Liste der Ressourcen und Ports für Agents:
 
 |**Agent-Ressource**|**Ports**|
 |--------------|-----|
-|*.ods.opinsights.azure.com|Port 443|
+|*.ods.opinsights.azure.com|Port 443| 
 |*.oms.opinsights.azure.com|Port 443|
 |ods.systemcenteradvisor.com|Port 443|
 |*. blob.core.windows.net|Port 443|
@@ -106,10 +106,10 @@ Es folgt eine Liste der Ressourcen und Ports für Verwaltungsserver:
 
 |**Verwaltungsserver-Ressource**|**Ports**|
 |--------------|-----|
-|*.ods.opinsights.azure.com|Port 443|
-|service.systemcenteradvisor.com|Port 443|
-|scadvisor.accesscontrol.windows.net|Port 443|
-|scadvisorservice.accesscontrol.windows.net|Port 443|
+|*.ods.opinsights.azure.com|Port 443| 
+|service.systemcenteradvisor.com|Port 443| 
+|scadvisor.accesscontrol.windows.net|Port 443| 
+|scadvisorservice.accesscontrol.windows.net|Port 443| 
 |*.blob.core.windows.net|Port 443|
 |data.systemcenteradvisor.com|Port 443|
 |ods.systemcenteradvisor.com|Port 443|
@@ -119,9 +119,9 @@ Es folgt eine Liste der Ressourcen und Ports für OMS und die Operations Manager
 
 |**Ressourcen für OMS und Operations Manager-Konsole**|**Ports**|
 |----|----|
-|*.systemcenteradvisor.com|Port 80 und 443|
+|*.systemcenteradvisor.com|Port 80 und 443| 
 |*.live.com|Ports 80 und 443|
-|*.microsoftonline.com|Port 80 und 443|
+|*.microsoftonline.com|Port 80 und 443| 
 |login.windows.net|Port 80 und 443|
 
 
@@ -196,5 +196,4 @@ Der auf dem lokalen Computer ausgeführte Hybrid Runbook Worker muss an Port 443
 - [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog) beschreibt das Hinzufügen von Funktionen und das Sammeln von Daten.
 - Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 
-<!---HONumber=AcomDC_0504_2016-->
-
+<!---HONumber=AcomDC_0525_2016-->

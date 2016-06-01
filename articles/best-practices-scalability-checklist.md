@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # Checkliste für die Skalierbarkeit
 
-![](media/best-practices-scalability-checklist/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Dienstentwurf
 - **Partitionieren der Workload**. Entwickeln Sie Teile des Prozesses als diskret und zerlegbar. Minimieren Sie die Größe der einzelnen Teile, während Sie die üblichen Regeln für die Trennung von Belangen und das Single-Responsibility-Prinzip befolgen. Dadurch können Komponententeile auf eine Weise verteilt werden, die die Verwendung jeder Recheneinheit (beispielsweise eine Rolle oder ein Datenbankserver) maximiert. Es erleichtert auch die Skalierung der Anwendung, indem Sie Instanzen bestimmter Ressourcen hinzufügen. Weitere Informationen finden Sie unter [Leitfaden Partitionierungsberechnung](https://msdn.microsoft.com/library/dn589773.aspx).
@@ -58,7 +58,7 @@
 	> [AZURE.NOTE]\: APIs verwenden Verbindungen für einige Dienste automatisch wieder, sofern dienstspezifische Richtlinien eingehalten werden. Es ist wichtig, dass Sie die Umstände verstehen, unter denen eine Verbindung für jeden Dienst, die die Anwendung nutzt, erneut verwendet werden kann.
 
 - **Stapelweises Senden von Anforderungen zur Netzwerknutzungsoptimierung**. Senden Sie z. B. Nachrichten stapelweise, wenn Sie auf eine Warteschlange zugreifen und führen Sie beim Zugriff auf Speicher oder einen Cache mehrere Lese- oder Schreibvorgänge als Batch aus. Dies kann helfen, die Effizienz der Dienste und Datenspeicher zu maximieren, indem die Anzahl der Aufrufe über das Netzwerk verringert wird.
-- **Vermeiden Sie eine Anforderung zum Speichern des serverseitigen Sitzungsstatus ** wenn möglich. Serverseitige Sitzungsstatusverwaltung erfordert in der Regel Clientaffinität (sprich das Routing jeder Anforderung zur gleichen Serverinstanz), wodurch die Skalierungsfähigkeit des Systems beeinflusst wird. Im Idealfall sollten Sie die Clients in Bezug auf die Server, die sie verwenden, statusfrei entwerfen. Speichern Sie jedoch vertrauliche Daten oder große Mengen von Client-Daten in einem verteilten serverseitigen Cache, auf den alle Instanzen der Anwendung zugreifen können, wenn die Anwendung den Sitzungszustand beibehalten muss.
+- **Vermeiden Sie eine Anforderung zum Speichern des serverseitigen Sitzungsstatus** wenn möglich. Serverseitige Sitzungsstatusverwaltung erfordert in der Regel Clientaffinität (sprich das Routing jeder Anforderung zur gleichen Serverinstanz), wodurch die Skalierungsfähigkeit des Systems beeinflusst wird. Im Idealfall sollten Sie die Clients in Bezug auf die Server, die sie verwenden, statusfrei entwerfen. Speichern Sie jedoch vertrauliche Daten oder große Mengen von Client-Daten in einem verteilten serverseitigen Cache, auf den alle Instanzen der Anwendung zugreifen können, wenn die Anwendung den Sitzungszustand beibehalten muss.
 - **Optimieren Sie Tabellenspeicherschemas**. Erwägen Sie bei der Verwendung von Tabellenspeichern, bei denen die Tabellen- und Spaltennamen übergeben und mit jeder Abfrage verarbeitet werden müssen, wie z. B. Azure-Tabellenspeicher, die Nutzung von kürzeren Namen, um diesen zusätzlichen Aufwand zu reduzieren. Gehen Sie keine Kompromisse hinsichtlich der Lesbarkeit und Verwaltbarkeit ein, indem Sie übermäßig kompakte Namen verwenden.
 - **Verwenden Sie die Task Parallel Library (TPL) zum Durchführen asynchroner Vorgänge**. Die TPL erleichtert das Schreiben von asynchronem Code, der E/A-Vorgänge ausführt. Verwenden Sie _ConfigureAwait(false)_ so oft wie möglich, um die Abhängigkeit von einer Fortsetzung von einem bestimmten Synchronisierungskontext zu beseitigen. Damit reduzieren Sie auch die Wahrscheinlichkeit für einen Thread-Deadlock.
 - **Stellen Sie Ressourcenabhängigkeiten während der Bereitstellung oder beim Anwendungsstart her**. Vermeiden Sie den wiederholten Aufruf von Methoden, die das Vorhandensein einer Ressource testen und dann die Ressource erstellen, wenn sie nicht vorhanden ist. (Methoden wie _CloudTable.CreateIfNotExists_ und _CloudQueue.CreateIfNotExists_ in der Azure Storage-Clientbibliothek folgen diesem Muster). Diese Methoden können einen beträchtlichen Aufwand nötig machen, wenn sie vor jedem Zugriff auf einen Tabellenspeicher oder eine Speicherwarteschlange aufgerufen werden. Alternative:
@@ -68,4 +68,4 @@
 - **Erwägen Sie, die Anzahl der Dienstkonten zu minimieren**. Verwenden Sie z. B. ein spezielles Konto für den Zugriff auf Ressourcen oder Dienste, die Verbindungen beschränken oder bessere Leistung bringen, wenn weniger Verbindungen verwaltet werden. Dieser Ansatz wird häufig für Dienste wie z. B. Datenbanken verwendet, kann aber die Möglichkeit zur genauen Überwachung der Vorgänge aufgrund der Identitätswechsel des ursprünglichen Benutzers beeinflussen.
 - Im Rahmen der Test-Routinen während der Entwicklung **führen Sie Leistungsprofilerstellung und Auslastungstests durch** und stellen vor der endgültigen Version sicher, dass die Anwendung ausführt und nach Bedarf skaliert wird. Diese Tests sollten auf der gleichen Art von Hardware stattfinden, wie die Produktionsplattform, mit den gleichen Datentypen und -mengen sowie der Benutzerauslastung, die in der Produktion auftreten. Weitere Informationen finden Sie unter [Testen der Leistung eines Clouddiensts](vs-azure-tools-performance-profiling-cloud-services.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

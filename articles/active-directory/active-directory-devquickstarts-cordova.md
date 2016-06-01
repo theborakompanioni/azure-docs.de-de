@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/16/2016"
 	ms.author="vittorib"/>
 
 # Integrieren von Azure AD in eine Apache Cordova-App
@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Mit Apache Cordova können Sie HTML5/JavaScript-Anwendungen entwickeln, die auf mobilen Geräten als vollständige systemeigene Anwendungen ausgeführt werden können. Mit Azure AD können Sie Ihren Cordova-Anwendungen Authentifizierungsfunktionen hinzufügen, die für Unternehmen geeignet sind. Dank eines Cordova-Plug-Ins, mit dem die systemeigenen SDKs von Azure AD unter iOS, Android, Windows Store und Windows Phone abgedeckt werden, können Sie Ihre Anwendung erweitern. So ist es möglich, dass die Anmeldung über die AD-Konten Ihrer Benutzer unterstützt wird, der Zugriff auf die Office 365- und Azure-API besteht und sogar Aufrufe Ihrer eigenen benutzerdefinierten Web-API geschützt werden.
+Mit Apache Cordova können Sie HTML5/JavaScript-Anwendungen entwickeln, die auf mobilen Geräten als vollständige systemeigene Anwendungen ausgeführt werden können. Mit Azure AD können Sie Ihren Cordova-Anwendungen Authentifizierungsfunktionen hinzufügen, die für Unternehmen geeignet sind. Dank eines Cordova-Plug-Ins, mit dem die systemeigenen SDKs von Azure AD unter iOS, Android, Windows Store und Windows Phone abgedeckt werden, können Sie Ihre Anwendung erweitern. So ist es möglich, dass die Anmeldung über die AD-Konten Ihrer Benutzer unterstützt wird, der Zugriff auf die Office 365- und Azure-API besteht und sogar Aufrufe Ihrer eigenen benutzerdefinierten Web-API geschützt werden.
 
 In diesem Lernprogramm wird das Apache Cordova-Plug-In für die Active Directory-Authentifizierungsbibliothek (ADAL) verwendet, um eine einfache App mit den folgenden Features zu verbessern:
 
@@ -44,35 +44,35 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 - Einen Azure AD-Mandanten, unter dem Sie über ein Konto mit Rechten für die App-Entwicklung verfügen
 - Eine Entwicklungsumgebung, die für die Verwendung von Apache Cordova konfiguriert ist  
 
-Falls Sie beides bereits eingerichtet haben, können Sie direkt mit Schritt 1 fortfahren.
+Falls Sie beides bereits eingerichtet haben, können Sie direkt mit Schritt 1 fortfahren.
 
 Falls Sie noch nicht über einen Azure AD-Mandanten verfügen, finden Sie hier eine [entsprechende Anleitung](active-directory-howto-tenant.md).
 
 Installieren Sie Folgendes, wenn Sie Apache Cordova noch nicht auf Ihrem Computer eingerichtet haben:
 
-- [Git]( http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [NodeJS]( https://nodejs.org/download/)
-- [Cordova-Befehlszeilenschnittstelle]( https://cordova.apache.org/) (einfache Installation per NPM-Paket-Manager: `npm install -g cordova`)
+- [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [NodeJS](https://nodejs.org/download/)
+- [Cordova-Befehlszeilenschnittstelle](https://cordova.apache.org/) (einfache Installation per NPM-Paket-Manager: `npm install -g cordova`)
 
 Beachten Sie, dass dies sowohl für den PC als auch für den Macintosh funktionieren sollte.
 
 Für jede Zielplattform gelten unterschiedliche Voraussetzungen.
 
 - Erstellen und Ausführen einer Version für Windows-Tablet/PC oder -Smartphone
-	- [Visual Studio 2013 für Windows mit Update 2 oder höher]( http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-windows-8) (Express oder andere Version)
+	- [Visual Studio 2013 für Windows mit Update 2 oder höher](http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-windows-8) (Express oder andere Version)
 - Erstellen und Ausführen für iOS
-	-   Xcode 5.x oder höher: Download unter http://developer.apple.com/downloads oder im [Mac App Store]( http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-	-   [ios-sim]( https://www.npmjs.org/package/ios-sim): Ermöglicht Ihnen das Starten von iOS-Apps im iOS-Simulator über die Befehlszeile (einfache Installation über das Terminal: `npm install -g ios-sim`).
+	-   Xcode 5.x oder höher: Download unter http://developer.apple.com/downloads oder im [Mac App Store](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+	-   [ios-sim](https://www.npmjs.org/package/ios-sim): Ermöglicht Ihnen das Starten von iOS-Apps im iOS-Simulator über die Befehlszeile (einfache Installation über das Terminal: `npm install -g ios-sim`).
 
 - Erstellen und Ausführen der Anwendung für Android
-	- Installieren Sie das [Java Development Kit (JDK) 7]( http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher. Achten Sie darauf, dass `JAVA_HOME` (Umgebungsvariable) gemäß JDK-Installationspfad richtig festgelegt ist (z. B. C:\\Programme\\Java\\jdk1.7.0\_75).
-	- Installieren Sie das [Android SDK]( http://developer.android.com/sdk/installing/index.html?pkg=tools), und fügen Sie den Speicherort `<android-sdk-location>\tools` (z. B. C:\\tools\\Android\\android-sdk\\tools) Ihrer Umgebungsvariable `PATH` hinzu.
-	- Öffnen Sie den Android SDK Manager (z. B. über das Terminal: `android`), und installieren Sie Folgendes:
-    - *Android 5.0.1 (API 21)*-Plattform-SDK
-    - *Android SDK Build-Tools* Version 19.1.0 oder höher
+	- Installieren Sie das [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher. Achten Sie darauf, dass `JAVA_HOME` (Umgebungsvariable) gemäß JDK-Installationspfad richtig festgelegt ist (z. B. C:\\Programme\\Java\\jdk1.7.0\_75).
+	- Installieren Sie das [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools), und fügen Sie den Speicherort `<android-sdk-location>\tools` (z. B. C:\\tools\\Android\\android-sdk\\tools) Ihrer Umgebungsvariable `PATH` hinzu.
+	- Öffnen Sie den Android SDK Manager (z. B. über das Terminal: `android`), und installieren Sie Folgendes:
+    - *Android 5.0.1 (API 21)*-Plattform-SDK
+    - *Android SDK Build-Tools* Version 19.1.0 oder höher
     - *Android Support Repository* (Extras)
 
-  Für das Android SDK wird keine standardmäßige Emulatorinstanz bereitgestellt. Erstellen Sie eine neue Instanz, indem Sie `android avd` über das Terminal ausführen und dann *Erstellen...* auswählen, wenn Sie die Android-App in einem Emulator ausführen möchten. Die empfohlene *API-Ebene* lautet 19 oder höher. Weitere Informationen zum Android-Emulator und zu den Optionen für die Erstellung finden Sie unter [AVD Manager]( http://developer.android.com/tools/help/avd-manager.html).
+  Für das Android SDK wird keine standardmäßige Emulatorinstanz bereitgestellt. Erstellen Sie eine neue Instanz, indem Sie `android avd` über das Terminal ausführen und dann *Erstellen...* auswählen, wenn Sie die Android-App in einem Emulator ausführen möchten. Die empfohlene *API-Ebene* lautet 19 oder höher. Weitere Informationen zum Android-Emulator und zu den Optionen für die Erstellung finden Sie unter [AVD Manager](http://developer.android.com/tools/help/avd-manager.html).
 
 
 ## *1. Registrieren einer Anwendung unter Azure AD*
@@ -81,20 +81,20 @@ Hinweis: Dieser __Schritt ist optional__. Im Lernprogramm sind vorab bereitgeste
 
 Azure AD stellt nur Token für bekannte Anwendungen aus. Bevor Sie Azure AD über Ihre App nutzen können, müssen Sie dafür einen Eintrag in Ihrem Mandanten erstellen. Gehen Sie wie folgt vor, um in Ihrem Mandanten eine neue Anwendung zu registrieren:
 
--	Melden Sie sich am [Azure-Verwaltungsportal]( https://manage.windowsazure.com) an.
+-	Melden Sie sich am [Azure-Verwaltungsportal](https://manage.windowsazure.com) an.
 -	Klicken Sie in der linken Navigationsleiste auf **Active Directory**.
 -	Wählen Sie den Mandanten aus, in dem die Beispielanwendung registriert werden soll.
 -	Klicken Sie auf die Registerkarte **Anwendungen** und dann unten auf **Hinzufügen**.
--	Folgen Sie den Eingabeaufforderungen, und erstellen Sie eine neue **systemeigene Clientanwendung** (trotz der Tatsache, dass Cordova-Apps HTML-basierte sind, erstellen wir hier native Clientanwendung und daher muss die Opton `Native Client Application` ausgewählt werden; andernfalls funktioniert die Anwendung nicht).
+-	Folgen Sie den Eingabeaufforderungen, und erstellen Sie eine neue **systemeigene Clientanwendung** (trotz der Tatsache, dass Cordova-Apps HTML-basierte sind, erstellen wir hier native Clientanwendung und daher muss die Option `Native Client Application` ausgewählt werden; andernfalls funktioniert die Anwendung nicht).
     -	Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
     -	Der **Umleitungs-URI** ist der URI, der zum Zurückgeben von Token an Ihre App verwendet wird. Geben Sie `http://MyDirectorySearcherApp` ein.
 
 Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Client-ID zu. Sie benötigen diesen Wert in den nächsten Abschnitten: Er befindet sich auf der Registerkarte **Konfigurieren** der neu erstellten App.
 
 Zum Ausführen von `DirSearchClient Sample` gewähren Sie der neu erstellten App die Berechtigung zum Abfragen der _Azure AD Graph-API_:
--	Suchen Sie auf der Registerkarte **Konfigurieren** den Abschnitt „Berechtigungen für andere Anwendungen“. Fügen Sie für die Anwendung „Azure Active Directory“ unter **delegierte Berechtigungen** die Berechtigung **Als angemeldeter Benutzer auf das Verzeichnis zugreifen** hinzu. Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
+-	Suchen Sie auf der Registerkarte **Konfigurieren** den Abschnitt „Berechtigungen für andere Anwendungen“. Fügen Sie für die Anwendung „Azure Active Directory“ unter **Delegierte Berechtigungen** die Berechtigung **Als angemeldeter Benutzer auf das Verzeichnis zugreifen** hinzu. Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
 
-## *2. Klonen des für das Lernprogramm erforderlichen Beispiel-App-Repositorys*
+## *2. Klonen des Beispiel-App-Repositorys, das für das Lernprogramm erforderlich ist*
 
 Geben Sie in der Shell oder über die Befehlszeile den folgenden Befehl ein:
 
@@ -139,7 +139,7 @@ Als Erstes müssen Sie in Ihren Code die Protokollwerte, die von AAD zum Identif
     graphApiVersion = "2013-11-08";
 ```
 
-Die Werte `redirectUri` und `clientId` sollten mit den Werten übereinstimmen, mit denen Ihre App in AAD beschrieben wird. Sie finden die Werte im Azure-Portal auf der Registerkarte „Konfigurieren“. Dies ist weiter oben in diesem Lernprogramm unter Schritt 1 beschrieben. Hinweis: Wenn Sie sich gegen die Registrierung einer neuen App in Ihrem eigenen Mandanten entschieden haben, können Sie die oben angegebenen vorkonfigurierten Werte unverändert einfügen. Sie können das Beispiel dann ausführen, aber Sie sollten für Apps, die für die Produktion bestimmt sind, immer einen eigenen Eintrag erstellen.
+Die Werte `redirectUri` und `clientId` sollten mit den Werten übereinstimmen, mit denen Ihre App in AAD beschrieben wird. Sie finden die Werte im Azure-Portal auf der Registerkarte „Konfigurieren“. Dies ist weiter oben in diesem Lernprogramm unter Schritt 1 beschrieben. Hinweis: Wenn Sie sich gegen die Registrierung einer neuen App in Ihrem eigenen Mandanten entschieden haben, können Sie die oben angegebenen vorkonfigurierten Werte unverändert einfügen. Sie können das Beispiel dann ausführen, aber Sie sollten für Apps, die für die Produktion bestimmt sind, immer einen eigenen Eintrag erstellen.
 
 Als Nächstes muss der Code für die eigentliche Tokenanforderung hinzugefügt werden. Fügen Sie den folgenden Codeausschnitt zwischen den Definitionen `search ` und `renderdata ` ein.
 
@@ -223,15 +223,15 @@ Ihre App ist jetzt für die Ausführung bereit. Die Bedienung ist sehr einfach: 
 
    Tablet/PC: `cordova run windows --archs=x64 -- --appx=uap`
 
-   Mobile (erfordert ein mit dem PC verbundenes Gerät mit Windows10 Mobile): `cordova run windows --archs=arm -- --appx=uap --phone`
+   Mobile (erfordert ein mit dem PC verbundenes Gerät mit Windows 10 Mobile): `cordova run windows --archs=arm -- --appx=uap --phone`
 
-   __Hinweis__: Bei der ersten Ausführung werden Sie ggf. aufgefordert, sich für eine Entwicklerlizenz zu registrieren. Weitere Details finden Sie unter [Entwicklerlizenz]( https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
+   __Hinweis__: Bei der ersten Ausführung werden Sie ggf. aufgefordert, sich für eine Entwicklerlizenz zu registrieren. Weitere Details finden Sie unter [Entwicklerlizenz](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
 
 ####Windows 8.1-Tablet/PC:
 
    `cordova run windows`
 
-   __Hinweis__: Bei der ersten Ausführung werden Sie ggf. aufgefordert, sich für eine Entwicklerlizenz zu registrieren. Weitere Details finden Sie unter [Entwicklerlizenz]( https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
+   __Hinweis__: Bei der ersten Ausführung werden Sie ggf. aufgefordert, sich für eine Entwicklerlizenz zu registrieren. Weitere Details finden Sie unter [Entwicklerlizenz](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
 
 ####Windows Phone 8,1:
 
@@ -239,7 +239,7 @@ Ihre App ist jetzt für die Ausführung bereit. Die Bedienung ist sehr einfach: 
 
    Ausführung in einem Standardemulator: `cordova emulate windows -- --phone`
 
-   Verwenden Sie `cordova run windows --list -- --phone`, um alle verfügbaren Ziele anzuzeigen, und `cordova run windows --target=<target_name> -- --phone`, um die Anwendung auf einem bestimmten Gerät oder Emulator auszuführen (z. B. `cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`).
+   Verwenden Sie `cordova run windows --list -- --phone`, um alle verfügbaren Ziele anzuzeigen, und `cordova run windows --target=<target_name> -- --phone`, um die Anwendung auf einem bestimmten Gerät oder Emulator auszuführen (z. B. `cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`).
 
 ####Android:
 
@@ -249,7 +249,7 @@ Ihre App ist jetzt für die Ausführung bereit. Die Bedienung ist sehr einfach: 
 
    __Hinweis__: Stellen Sie sicher, dass Sie die Emulatorinstanz mit *AVD Manager* erstellt haben. Dies ist im Abschnitt *Voraussetzungen* beschrieben.
 
-   Verwenden Sie `cordova run android --list`, um alle verfügbaren Ziele anzuzeigen, und `cordova run android --target=<target_name>`, um die Anwendung auf einem bestimmten Gerät oder Emulator auszuführen (z. B. `cordova run android --target="Nexus4_emulator"`).
+   Verwenden Sie `cordova run android --list`, um alle verfügbaren Ziele anzuzeigen, und `cordova run android --target=<target_name>`, um die Anwendung auf einem bestimmten Gerät oder Emulator auszuführen (z. B. `cordova run android --target="Nexus4_emulator"`).
 
 ####iOS:
 
@@ -263,10 +263,10 @@ Ihre App ist jetzt für die Ausführung bereit. Die Bedienung ist sehr einfach: 
 
 Verwenden Sie `cordova run --help`, um weitere Optionen für die Erstellung und Ausführung anzuzeigen.
 
-Als Referenz stellen wir [hier]( https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient) das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit. Sie können jetzt mit anspruchsvolleren (und zugegebenermaßen interessanteren) Szenarien fortfahren. Sie können beispielsweise Folgendes testen:
+Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient) das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit. Sie können jetzt mit anspruchsvolleren (und zugegebenermaßen interessanteren) Szenarien fortfahren. Sie können beispielsweise Folgendes testen:
 
 [Schützen einer Node.js-Web-API mit Azure AD >>](active-directory-devquickstarts-webapi-nodejs.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

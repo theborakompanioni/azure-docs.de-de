@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="05/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -35,7 +35,7 @@ Um die Azure AD-Integration mit Moxtra konfigurieren zu können, benötigen Sie
 - Ein Moxtra-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
-> [AZURE.NOTE]Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration von Moxtra in Azure AD müssen Sie Moxtra aus
 
 **Um Moxtra aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf **Active Directory**. <br><br>
+1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br>
 ![Active Directory][1]<br>
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
@@ -108,7 +108,7 @@ Die Moxtra-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. D
 3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_04.png) <br>
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die folgende URL ein: ****https://www.moxtra.com/service/#login**.
+    a. Geben Sie im Textfeld **Anmelde-URL** die folgende URL ein: **https://www.moxtra.com/service/#login**.
 
     b. Klicken Sie auf **Weiter**.
  
@@ -143,7 +143,7 @@ Die Moxtra-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. D
     f. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Textfeld **Zertifikat** ein.
 
     g. Geben Sie im Textfeld für die SAML-E-Mail-Domäne Ihre SAML-E-Mail-Domäne ein.
-    > [AZURE.NOTE]Klicken Sie unten auf „**i**“, um die Schritte zum Überprüfen der Domäne anzuzeigen.
+    > [AZURE.NOTE] Klicken Sie unten auf „**i**“, um die Schritte zum Überprüfen der Domäne anzuzeigen.
 
 
     h. Klicken Sie auf **Aktualisieren**.
@@ -207,7 +207,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.<br><br>![Azure AD-Benutze
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-moxtra-tutorial/create_aaduser_05.png) <br>
 
-    a. Wählen Sie als "Benutzertyp" die Option "Neuer Benutzer in Ihrer Organisation" aus.
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
     b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
 
@@ -323,4 +323,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Moxtra“ klicken, sollten Sie aut
 [204]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

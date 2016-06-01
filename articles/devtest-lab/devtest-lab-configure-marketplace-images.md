@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Konfigurieren von Azure Marketplace-Image-Einstellungen in einem DevTest Lab | Microsoft Azure"
-	description="Konfigurieren, welche Azure Marketplace-Images beim Erstellen eines virtuellen Computers in einem DevTest Lab verwendet werden können"
+	pageTitle="Konfigurieren von Azure Marketplace-Image-Einstellungen in einem Lab | Microsoft Azure"
+	description="Konfigurieren Sie, welche Azure Marketplace-Images beim Erstellen eines virtuellen Computers in DevTest Labs verwendet werden können"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# Konfigurieren von Azure Marketplace-Image-Einstellungen in einem DevTest Lab
+# Konfigurieren von Azure Marketplace-Image-Einstellungen in einem Lab
 
 ## Übersicht
 
-DevTest Labs unterstützt die Erstellung neuer VMs auf Basis von Azure Marketplace-Images, abhängig davon, wie Sie Azure Marketplace-Images zur Verwendung in Ihrem Lab konfiguriert haben. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen neuer virtueller VMs in einem DevTest Lab verwendet werden können.
+DevTest Labs unterstützt die Erstellung neuer VMs auf Basis von Azure Marketplace-Images, abhängig davon, wie Sie Azure Marketplace-Images zur Verwendung in Ihrem Lab konfiguriert haben. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen neuer VMs in einem Lab verwendet werden können.
 
 ## Auswählen, welche Azure Marketplace-Images beim Erstellen eines virtuellen Computers zulässig sind
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
 
@@ -52,6 +52,6 @@ DevTest Labs unterstützt die Erstellung neuer VMs auf Basis von Azure Marketpla
 
 ## Nächste Schritte
 
-Nachdem Sie konfiguriert haben, wie Azure Marketplace-Images beim Erstellen eines virtuellen Computers zulässig sind, ist der nächste Schritt das [Hinzufügen eines virtuellen Computers zu Ihrem DevTest Lab](./devtest-lab-add-vm-with-artifacts.md).
+Nachdem Sie konfiguriert haben, wie Azure Marketplace-Images beim Erstellen eines virtuellen Computers zulässig sind, ist der nächste Schritt das [Hinzufügen eines virtuellen Computers zu Ihrem Lab](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

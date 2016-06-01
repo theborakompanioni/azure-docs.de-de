@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="05/16/2016"
 	ms.author="curtand"/>
 
 
@@ -60,4 +60,4 @@ Die folgende Tabelle beschreibt die verfügbaren Kennwortrichtlinieneinstellunge
 * [Problembehandlung für die Kennwortverwaltung](active-directory-passwords-troubleshoot.md)
 * [Weitere Informationen](active-directory-passwords-learn-more.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -95,7 +95,7 @@ Die Ausgabe der ersten Instanz von **Get-ServiceFabricNode** (ein Cmdlet aus dem
 
 Eine Testability-Aktion kann für einen Azure-Cluster (mit PowerShell) auf ähnliche Weise ausgeführt werden wie für einen lokalen Cluster. Der einzige Unterschied besteht darin, dass vor dem Ausführen der Aktion keine Verbindung mit dem lokalen Cluster hergestellt werden muss, sondern mit dem Azure-Cluster.
 
-## Ausführen einer Testability-Aktion
+## Ausführen einer Testability-Aktion mit C&#35; 
 
 Zum Ausführen einer Testability-Aktion mit C# müssen Sie zuerst per FabricClient eine Verbindung mit dem Cluster herstellen. Anschließend rufen Sie die Parameter ab, die Sie zum Ausführen der Aktion benötigen. Es können verschiedene Parameter verwendet werden, um die gleiche Aktion auszuführen. Eine Möglichkeit zum Ausführen der Aktion „RestartServiceFabricNode“ besteht in der Verwendung der Knoteninformationen (Knotenname und Knoteninstanz-ID) im Cluster.
 
@@ -236,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [Simulieren von Ausfällen während der Bearbeitung von Dienstworkloads](service-fabric-testability-workload-tests.md)
    - [Ausfälle bei der Kommunikation von Dienst zu Dienst](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

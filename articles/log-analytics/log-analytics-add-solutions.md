@@ -21,14 +21,15 @@
 Log Analytics-Lösungen sind eine Sammlung von **Logik-**, **Visualisierungs-** und **Datenerfassungsregeln**, die Metriken rund um einen bestimmten Problembereich bereitstellen. Dieser Artikel beschreibt von Log Analytics unterstützte Lösungen und erläutert, wie Sie diese über den Lösungskatalog hinzufügen und entfernen.
 
 Die detaillierten Einblicke der Lösungen ermöglichen Folgendes:
+
 - Schnelleres Untersuchen und Lösen von Betriebsproblemen
 - Sammeln und Korrelieren von verschiedenen Arten von Computerdaten
 - Proaktive Umsetzung von Maßnahmen wie Kapazitätsplanung, Patchstatusberichte und Sicherheitsüberwachung.
 
 
->[AZURE.NOTE] OMS umfasst Funktionen für die Protokollsuche, Sie müssen also keine separate Lösung dafür installieren. Allerdings können Sie zusätzliche Funktionen nutzen, indem Sie Lösungen aus dem Lösungskatalog hinzufügen.
+>[AZURE.NOTE] Log Analytics umfasst Funktionen für die Protokollsuche, sodass Sie keine separate Lösung dafür installieren müssen. Sie können aber Datenvisualisierungen, Vorschläge für Suchen und Einblicke nutzen, indem Sie Lösungen aus dem Lösungskatalog hinzufügen.
 
-Nachdem Sie eine Lösung hinzugefügt haben, werden Daten von den Servern in Ihrer Infrastruktur erfasst und an den OMS-Dienst gesendet. Die Verarbeitung durch den OMS-Dienst kann wenige Minuten, jedoch auch mehrere Stunden dauern. Nach der Verarbeitung der Daten durch den Dienst können Sie diese in OMS anzeigen.
+Nachdem Sie eine Lösung hinzugefügt haben, werden Daten von den Servern in Ihrer Infrastruktur erfasst und an den OMS-Dienst gesendet. Die Verarbeitung durch den OMS-Dienst dauert normalerweise von einigen Minuten bis zu einer Stunde. Nach der Verarbeitung der Daten durch den Dienst können Sie diese in OMS anzeigen.
 
 Wenn eine Lösung nicht mehr benötigt wird, können Sie sie problemlos entfernen. Wenn Sie eine Lösung entfernen, werden ihre Daten nicht mehr an OMS gesendet, und die Datenmenge, die Ihr Tageskontingent belastet (sofern vorhanden), verringert sich entsprechend.
 
@@ -37,17 +38,18 @@ Wenn eine Lösung nicht mehr benötigt wird, können Sie sie problemlos entferne
 
 Zurzeit können Server, die über den Microsoft Monitoring Agent direkt mit OMS verbunden sind, die meisten verfügbaren Lösungen nutzen, einschließlich der folgenden:
 
-- System Updates
-- Antimalware
-- Change Tracking
-- SQL Assessment
 - Active Directory Assessment
 - Alert Management (ohne SCOM-Warnungen)
+- Antimalware
+- Change Tracking
+- Sicherheit
+- SQL Assessment
+- System Updates
 
 Die folgenden Lösungen werden hingegen *nicht* mit dem Microsoft Monitoring Agent unterstützt, sondern erfordern einen SCOM-Agent (System Center Operations Manager).
 
-- Capacity Management
 - Alert Management (mit SCOM-Warnungen)
+- Capacity Management
 - Konfigurationsbewertung
 
 Informationen zum Verbinden des SCOM-Agents mit Log Analytics finden Sie unter [Connecting Operations Manager to Log Analytics](log-analytics-om-agents.md) (Verbinden von Operations Manager mit Log Analytics).
@@ -67,7 +69,7 @@ Informationen zum Verbinden des SCOM-Agents mit Log Analytics finden Sie unter [
 ### So entfernen Sie eine Lösung mit Solutions Gallery
 
 1. Klicken Sie in OMS auf der Übersichtsseite auf die Kachel **Einstellungen**.
-2. Klicken Sie auf der Einstellungsseite auf der Registerkarte mit den Lösungen bei der Lösung, die Sie entfernen möchten, auf **Entfernen**.
+2. Klicken Sie auf der Einstellungsseite auf der Registerkarte mit den Lösungen für die Lösung, die Sie entfernen möchten, auf **Entfernen**.
 3. Klicken Sie im Bestätigungsdialogfeld auf **Ja**, um die Lösung zu entfernen.
 
 ## Details zur Datensammlung für OMS-Features und -Lösungen
@@ -102,9 +104,76 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, w
 |Windows-Ereignisprotokolle|Windows|![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png)|![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png)|![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png)|![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png)|![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png)| Für Azure-Speicher: 1 Minute; für Agent: bei Ankunft|
 |Wire Data|Windows (2012 R2 / 8.1 oder höher)|![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png)|![Ja](./media/log-analytics-add-solutions/oms-bullet-green.png)|![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png)|![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png)|![Nein](./media/log-analytics-add-solutions/oms-bullet-red.png)| Jede Minute|
 
+## Lösungen und Features der Vorschauversion von Log Analytics
+
+Indem wir einen Dienst ausführen und DevOps-Methoden anwenden, können wir als Partner mit Kunden zusammenarbeiten, um Features und Lösungen zu entwickeln.
+
+Während der Phase der privaten Vorschau erhält eine kleine Gruppe von Kunden Zugriff auf eine frühe Implementierung des Features bzw. der Lösung, damit wir Feedback erhalten und Verbesserungen einbauen können. Diese frühe Implementierung verfügt nur über minimale Features und betriebsbezogene Funktionen.
+
+Das Ziel besteht darin, Dinge schnell auszuprobieren, um zu ermitteln, was funktioniert und was nicht funktioniert. Dieser Prozess wird durchlaufen, bis wir von den Kunden mit der privaten Vorschauversion das Feedback erhalten, dass alles für eine öffentliche Vorschauversion bereit ist.
+
+Während der öffentlichen Vorschauphase stellen wir das Feature oder die Lösung für alle Benutzer zur Verfügung, um weiteres Feedback zu erhalten und die Skalierung und Effizienz zu überprüfen. Während dieser Phase gilt Folgendes:
+
+- Vorschaufeatures werden auf der Registerkarte „Einstellungen“ angezeigt und können von jedem Benutzer aktiviert werden.
+- Vorschaulösungen können über den Katalog oder mit einem veröffentlichten Skript hinzugefügt werden.
+
+### Was sollte ich über Features und Lösungen der Vorschauversion wissen?
+
+Wir freuen uns, die neuen Features und Lösungen anbieten zu können, und wir arbeiten bei der Entwicklung gern mit Ihnen zusammen.
+
+Vorschaufeatures und -lösungen sind aber nicht für jeden Benutzer geeignet. Stellen Sie also sicher, dass die Verwendung einer in der Entwicklung befindlichen Anwendung für Sie in Ordnung ist, bevor Sie die Nutzung einer privaten Vorschauversion beantragen oder eine öffentliche Vorschau aktivieren.
+
+Wenn Sie ein Vorschaufeature über das Portal aktivieren, wird eine Warnung mit dem Hinweis angezeigt, dass sich das Feature in der Vorschauphase befindet.
+
+#### Für *private* und *öffentliche* Vorschauversion
+
+Folgendes gilt sowohl für öffentliche als auch für private Vorschauversionen:
+
+- Es kann sein, dass nicht immer alles einwandfrei funktioniert. 
+  - Probleme können von kleineren Unzulänglichkeiten bis zu Fehlern reichen, bei denen ein Feature gar nicht funktioniert.
+- Es besteht die Möglichkeit, dass die Vorschauversion eine negative Auswirkung auf Ihr System bzw. Ihre Umgebung hat.
+  - Wir versuchen zu vermeiden, dass sich für die Systeme, die Sie mit OMS verwenden, negative Auswirkungen ergeben, aber es kann sein, dass unerwartete Dinge passieren.
+- Es kann zu Datenverlust oder zur Beschädigung von Daten kommen.
+- Unter Umständen bitten wir Sie, Diagnoseprotokolle oder andere Daten als Beitrag zur Problembehandlung zu erfassen.
+- Es kann sein, dass das Feature oder die Lösung entfernt wird (entweder vorübergehend oder dauerhaft).
+  - Aufgrund der Erkenntnisse während der Vorschauphase kann es sein, dass das Feature bzw. die Lösung nicht veröffentlicht wird.
+- Es kann sein, dass Vorschauversionen nicht mit allen Konfigurationen funktionieren bzw. nicht umfassend getestet wurden und dass Folgendes von uns eingeschränkt wird:
+  - Zulässige Betriebssysteme (z.B. kann ein Feature in der Vorschauphase nur für Linux gelten).
+  - Zulässiger Agent-Typ (MMA, SCOM) (z.B. funktioniert ein Feature in der Vorschauphase nicht mit SCOM).  
+- Vorschaulösungen und -features sind nicht durch die Vereinbarung zum Servicelevel abgedeckt.
+- Für die Nutzung von Vorschaufeatures fallen Nutzungsgebühren an.
+- Features oder Funktionen, die Sie benötigen, damit das Feature bzw. die Lösung nützlich ist, können fehlen oder unvollständig sein.
+- Features/Lösungen sind unter Umständen nicht in allen Regionen verfügbar.
+- Features/Lösungen werden unter Umständen nicht lokalisiert.
+- Für Features/Lösungen gilt ggf. eine Beschränkung bei der Anzahl von Kunden oder Geräten für die Nutzung.
+- Unter Umständen müssen Sie Skripts verwenden, um die Konfiguration durchzuführen und die Lösung bzw. das Feature zu aktivieren.
+- Die Benutzeroberfläche ist unvollständig und kann sich von Tag zu Tag ändern.
+- Öffentliche Vorschauversionen sind für Ihre Produktionssysteme bzw. kritischen Systeme ggf. nicht geeignet.
+
+#### Für *private* Vorschauversion
+
+Zusätzlich zu den obigen Punkten gilt für private Vorschauversionen Folgendes:
+
+- Wir erwarten, dass Sie uns Feedback zu Ihren Erfahrungen liefern, damit wir das Feature bzw. die Lösung verbessern können.
+- Unter Umständen wenden wir uns per Umfrage, Telefon oder E-Mail an Sie, um Feedback zu erhalten.
+- Es funktioniert nicht immer alles einwandfrei.
+- Unter Umständen ist ein Geheimhaltungsvertrag für die Teilnahme erforderlich, oder Inhalte werden als vertraulich gekennzeichnet.
+  - Informieren Sie sich beim Program Manager, der für die Vorschauversion verantwortlich ist, über geltende Beschränkungen zur Offenlegung, bevor Sie Bloggen, Tweeten oder auf andere Art mit Dritten kommunizieren.
+- Keine Verwendung für Produktionssysteme oder kritische Systeme.
+
+
+### Wie erhalte ich Zugriff auf Features und Lösungen der privaten Vorschauversion?
+
+Wir laden Kunden je nach Art der Version über verschiedene Wege zur Nutzung von privaten Vorschauversionen ein.
+
+- Indem Sie an der monatlichen Kundenumfrage teilnehmen und uns die Erlaubnis erteilen, mit Ihnen Kontakt aufzunehmen, erhöhen Sie Ihre Chancen für eine Einladung zur privaten Vorschauversion.
+- Sie können von Ihrem Microsoft-Kundenteam nominiert werden.
+- Sie können sich über die bei Twitter geposteten Details anmelden ([msopsmgmt](https://twitter.com/msopsmgmt)). 
+- Sie können sich basierend auf den Details registrieren, die bei Communityveranstaltungen bereitgestellt werden. Halten Sie bei Treffen, Konferenzen und in Onlinecommunitys nach uns Ausschau. 
+
 
 ## Nächste Schritte
 
-- [Suchprotokolle](log-analytics-log-searches.md) zur Anzeige von detaillierten Informationen, die von Lösungen gesammelt wurden.
+- Informieren Sie sich über das [Durchsuchen von Protokollen](log-analytics-log-searches.md) und darüber, wie Sie detaillierte Informationen anzeigen, die von Lösungen gesammelt wurden.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

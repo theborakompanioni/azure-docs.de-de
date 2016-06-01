@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="Verknüpfen von Ressourcen im Azure-Ressourcen-Manager" 
-	description="Erstellen Sie in Azure-Ressourcen-Manager einen Link zwischen Ressourcen in verschiedenen Ressourcengruppen." 
+	pageTitle="Verknüpfen von Ressourcen in Azure Resource Manager | Microsoft Azure" 
+	description="Erstellen Sie in Azure Resource Manager eine Verknüpfung zwischen verwandten Ressourcen in verschiedenen Ressourcengruppen." 
 	services="azure-resource-manager" 
 	documentationCenter="" 
 	authors="tfitzmac" 
-	manager="wpickett" 
-	editor=""/>
+	manager="timlt" 
+	editor="tysonn"/>
 
 <tags 
 	ms.service="azure-resource-manager" 
@@ -13,22 +13,34 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="05/16/2016" 
 	ms.author="tomfitz"/>
 
 # Verknüpfen von Ressourcen im Azure-Ressourcen-Manager
 
-Nach der Bereitstellung können Sie die Beziehungen oder Links zwischen Ressourcen abfragen. Abhängigkeiten informieren die Bereitstellung, aber dieser Lebenszyklus endet mit der Bereitstellung. Nach Abschluss der Bereitstellung gibt es keine identifizierte Beziehung zwischen abhängigen Ressourcen.
+Während der Bereitstellung können Sie eine Ressource als von einer anderen Ressource abhängig markieren, aber dieser Lebenszyklus endet bei der Bereitstellung. Nach der Bereitstellung gibt es keine identifizierte Beziehung zwischen abhängigen Ressourcen. Stattdessen bietet Resource Manager ein neues Feature namens Ressourcenverknüpfungen, um dauerhafte Beziehungen zwischen Ressourcen herzustellen.
 
-Stattdessen bietet Azure-Ressourcen-Manager ein neues Feature namens Ressourcenlinks, um Beziehungen zwischen Ressourcen herzustellen und abzufragen. Sie können bestimmen, welche Ressourcen mit oder welche Ressourcen aus einer Ressource verknüpft sind.
+Mithilfe von Ressourcenverknüpfungen können Sie Beziehungen ressourcengruppenübergreifend dokumentieren. Beispielsweise ist es üblich, dass eine Datenbank mit einem eigenen Lebenszyklus sich in einer Ressourcengruppe und eine App mit einem anderen Lebenszyklus in einer anderen Ressourcengruppe befindet. Die App verbindet sich mit der Datenbank, weshalb Sie eine Verknüpfung zwischen der App und der Datenbank markieren sollten.
 
-Der Bereich für einen Ressourcenlink kann ein Abonnement, eine Ressourcengruppe oder eine bestimmte Ressource sein. Dies bedeutet, dass Ressourcenlinks Beziehungen dokumentieren können, die sich über Ressourcengruppen hinweg erstrecken. Wenn Sie mit der Zerlegung Ihrer Projektmappe in mehrere Vorlagen und mehrere Ressourcengruppen beginnen, kann sich ein Mechanismus zur Identifizierung dieser Ressourcenlinks als nützlich erweisen. Beispielsweise ist es üblich, dass eine Datenbank mit einem eigenen Lebenszyklus sich in einer Ressourcengruppe und eine App mit einem anderen Lebenszyklus in einer anderen Ressourcengruppe befindet. Die App stellt eine Verbindung zur Datenbank her, sodass es einen Link zwischen den Ressourcen in verschiedenen Ressourcengruppen gibt.
-
-Alle verknüpften Ressourcen müssen zum selben Abonnement gehören. Jede Ressource kann mit 50 anderen Ressourcen verknüpft werden. Wenn verknüpfte Ressourcen gelöscht oder verschoben werden, muss der Besitzer des Links den verbleibenden Link bereinigen.
+Alle verknüpften Ressourcen müssen zum selben Abonnement gehören. Jede Ressource kann mit 50 anderen Ressourcen verknüpft werden. Die einzige Möglichkeit, verwandte Ressourcen abzufragen, ist über die REST-API. Wenn verknüpfte Ressourcen gelöscht oder verschoben werden, muss der Besitzer des Links den verbleibenden Link bereinigen. Sie werden **nicht** gewarnt, wenn Sie eine Ressource löschen, die mit anderen Ressourcen verknüpft ist.
 
 ## Verknüpfen in Vorlagen
 
-Informationen zum Definieren eines Links zwischen Ressourcen in einer Vorlage finden Sie unter [Ressourcenverknüpfungen – Vorlagenschema](resource-manager-template-links.md).
+Um eine Verknüpfung in einer Vorlage zu definieren, schließen Sie einen Ressourcentyp ein, der den Namespace des Ressourcenanbieters kombiniert, und geben die Quellressource mit **/providers/links** ein. Der Name muss den Namen der Quellressource enthalten. Sie geben die Ressourcen-ID der Zielressource an. Im folgenden Beispiel wird eine Verknüpfung zwischen einer Website und einem Speicherkonto eingerichtet.
+
+    {
+      "type": "Microsoft.Web/sites/providers/links",
+      "apiVersion": "2015-01-01",
+      "name": "[concat(variables('siteName'),'/Microsoft.Resources/SiteToStorage')]",
+      "dependsOn": [ "[variables('siteName')]" ],
+      "properties": {
+        "targetId": "[resourceId('Microsoft.Storage/storageAccounts','storagecontoso')]",
+        "notes": "This web site uses the storage account to store user information."
+      }
+    }
+
+
+Eine vollständige Beschreibung der Vorlage finden Sie unter [Ressourcenverknüpfungen – Vorlagenschema](resource-manager-template-links.md).
 
 ## Verknüpfen mit der REST-API
 
@@ -50,6 +62,10 @@ Schließen Sie in die Anforderung ein Objekt ein, das die zweite Ressource im Li
 
 Das properties-Element enthält den Bezeichner für die zweite Ressource.
 
+Sie können Verknüpfungen in Ihrem Abonnement wie folgt abfragen:
+
+    https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Resources/links?api-version={api-version}
+
 Weitere Beispiele, wie z. B. das Abrufen von Informationen zu Links, finden Sie unter [Verknüpfte Ressourcen](https://msdn.microsoft.com/library/azure/mt238499.aspx).
 
 ## Nächste Schritte
@@ -57,4 +73,4 @@ Weitere Beispiele, wie z. B. das Abrufen von Informationen zu Links, finden Sie 
 - Sie können Ihre Ressourcen auch mithilfe von Tags organisieren. Informationen zum Markieren von Ressourcen mit Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
 - Eine Beschreibung der Vorgehensweise zum Erstellen von Vorlagen und Definieren der bereitzustellenden Ressourcen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

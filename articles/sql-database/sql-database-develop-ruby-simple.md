@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby"
+	pageTitle="Herstellen von Verbindungen mit SQL-Datenbank mithilfe von Ruby | Microsoft Azure"
 	description="Geben Sie ein Ruby-Codebeispiel an, das zum Herstellen einer Verbindung mit Azure SQL-Datenbank ausgeführt werden kann."
 	services="sql-database"
 	documentationCenter=""
@@ -40,4 +40,4 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 [Proof of Concept connecting to SQL using Ruby](http://msdn.microsoft.com/library/mt715797.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von Ruby)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->
