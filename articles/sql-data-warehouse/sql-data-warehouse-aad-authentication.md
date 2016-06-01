@@ -1,0 +1,48 @@
+<properties
+   pageTitle="Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung | Microsoft Azure"
+   description="Erfahren Sie, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung eine Verbindung mit SQL Data Warehouse herstellen."
+   services="sql-data-warehouse"
+   documentationCenter=""
+   authors="BYHAM"
+   manager="jhubbard"
+   editor=""
+   tags=""/>
+
+<tags
+   ms.service="sql-data-warehouse"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="data-management"
+   ms.date="05/11/2016"
+   ms.author="rick.byham@microsoft.com"/>
+
+# Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung
+
+
+Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure Active Directory-Authentifizierung ist es möglich, die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten an einer zentralen Stelle zu verwalten. Die zentrale ID-Verwaltung bietet einen Ort, an dem die SQL Data Warehouse-Benutzer verwaltet werden und von vereinfacht die Berechtigungsverwaltung. Daraus ergeben sich u. a. die folgenden Vorteile:
+
+- Es wird eine Alternative zur SQL Server-Authentifizierung bereitgestellt.
+- Es wird einer unkontrollierten Ausbreitung von Benutzeridentitäten über Datenbankserver hinweg Einhalt geboten.
+- Es wird eine Kennwortrotation über eine zentrale Stelle ermöglicht.
+- Kunden können Datenbankberechtigungen mithilfe von externen Gruppen (AAD) verwalten.
+- Durch das Aktivieren der integrierten Windows-Authentifizierung und andere von Azure Active Directory unterstützte Authentifizierungsformen wird das Speichern von Kennwörtern überflüssig.
+- Die Azure Active Directory-Authentifizierung verwendet eigenständige Datenbankbenutzer zum Authentifizieren von Identitäten auf Datenbankebene.
+- Azure Active Directory unterstützt die tokenbasierte Authentifizierung für Anwendungen, die sich mit SQL Data Warehouse verbinden.
+
+> [AZURE.IMPORTANT] Die Azure Active Directory-Authentifizierung ist ein Vorschaufeature und unterliegt den Vorschaubestimmungen in Ihrer Lizenzvereinbarung (z. B. Enterprise Agreement, Microsoft Azure-Vertrag oder Microsoft Online-Abonnementvertrag) sowie allen anwendbaren Bestimmungen unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung ein:
+
+1. Erstellen und Auffüllen eines Azure Active Directory-Verzeichnisses
+2. Optional: Zuordnen oder Ändern des aktiven Verzeichnisses für Ihr Azure-Abonnement
+3. Erstellen eines Azure Active Directory-Administrators für Azure SQL Data Warehouse
+4. Konfigurieren der Clientcomputer
+5. Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
+6. Herstellen einer Verbindung mit Ihrem Data Warehouse unter Verwendung von Azure AD-Identitäten
+
+Die ausführlichen Schritte zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung sind fast identisch für die Azure SQL-Datenbank und für Azure SQL Data Warehouse. Befolgen Sie die ausführlichen Schritte im Thema [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](../sql-database/sql-database-aad-authentication.md).
+
+Der wesentliche Unterschied zwischen der Verwendung von Azure Active Directory-Authentifizierung mit Azure SQL-Datenbank und Azure SQL Data Warehouse liegt darin, dass Sie SQL Server Data Tools statt SQL Server Management Studio verwenden müssen, um eine Verbindung mit SQL Data Warehouse herzustellen SQL Data Warehouse erfordert mindestens die Version von April 2016 (Version 14.0.60311.1) von SQL Server Data Tools für Visual Studio 2015. Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer angezeigt. Sie können die Benutzer in [sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) anzeigen, um dieses Problem zu umgehen
+
+<!---HONumber=AcomDC_0518_2016-->

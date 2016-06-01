@@ -29,7 +29,7 @@
 
 Klicken Sie auf der Startseite Ihrer App in Application Insights auf Analytics.
 
-![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics/001.png)
+![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-using/001.png)
 
 Das Inlinetutorial bietet Ihnen Anregungen, wozu Sie Analytics verwenden können.
 
@@ -37,7 +37,7 @@ Eine [ausführlichere Einführung finden Sie hier](app-insights-analytics-tour.m
 
 ## Schreiben von Abfragen
 
-Schreiben Sie eine Abfrage, indem Sie mit den Namen der Tabellen auf der linken Seite beginnen. Verwenden Sie `|` zum Erstellen einer Pipeline von [Operatoren](app-insights-analytics-queries.md).
+Schreiben Sie eine Abfrage, indem Sie mit den Namen der Tabellen auf der linken Seite beginnen. Verwenden Sie `|` zum Erstellen einer Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators).
 
 
 ![](./media/app-insights-analytics-using/150.png)
@@ -60,9 +60,9 @@ Sie können die Spalten auswählen, die Sie anzeigen möchten. Erweitern Sie ein
 
 ![](./media/app-insights-analytics-using/030.png)
 
-> [AZURE.NOTE] Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse schnell neu zu ordnen. Beachten Sie jedoch, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Diese Sortierung zeigt Ihnen aus diesem Grund nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente an. Dazu sollten Sie den [top](app-insights-analytics-queries.md#top-operator)- oder [sort](app-insights-analytics-queries.md#sort-operator)-Operator verwenden.
+> [AZURE.NOTE] Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse schnell neu zu ordnen. Beachten Sie jedoch, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Diese Sortierung zeigt Ihnen aus diesem Grund nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente an. Dazu sollten Sie den [top](app-insights-analytics-reference.md#top-operator)- oder [sort](app-insights-analytics-reference.md#sort-operator)-Operator verwenden.
 
-Es ist allerdings üblich, die [take](app-insights-analytics-queries.md#take-operator)-, [top](app-insights-analytics-queries.md#top-operator)- oder [summarize](app-insights-analytics-queries.md#summarize-operator)-Operatoren zu verwenden, um zu vermeiden, dass riesige Tabellen vom Server heruntergeladen werden. Die automatische Beschränkung liegt ohnehin bei 10.000 Zeilen pro Abfrage.
+Es ist allerdings üblich, die [take](app-insights-analytics-reference.md#take-operator)-, [top](app-insights-analytics-reference.md#top-operator)- oder [summarize](app-insights-analytics-reference.md#summarize-operator)-Operatoren zu verwenden, um zu vermeiden, dass riesige Tabellen vom Server heruntergeladen werden. Die automatische Beschränkung liegt ohnehin bei 10.000 Zeilen pro Abfrage.
 
 
 ## Diagramme
@@ -75,7 +75,7 @@ Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie di
 
 ![](./media/app-insights-analytics-using/100.png)
 
-Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-queries.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
+Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
 
 ## Exportieren in Excel
 
@@ -104,4 +104,4 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

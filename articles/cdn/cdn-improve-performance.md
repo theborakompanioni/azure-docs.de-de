@@ -13,23 +13,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Verbessern der Leistung durch Komprimieren von Dateien
 
-In diesem Thema wird erläutert, wie Sie die Geschwindigkeit von Dateiübertragungen erhöhen und die Leistung beim Laden von Seiten verbessern, indem Sie Ihre Dateien komprimieren.
+Die Komprimierung ist eine einfache und effektive Methode zur Verbesserung der Dateiübertragungsrate und zum Steigern der Seitenladeleistung, indem die Dateigröße reduziert wird, bevor die Datei vom Server gesendet wird. Sie reduziert die Bandbreitekosten und steigert die Benutzerfreundlichkeit.
 
-CDN bietet zwei Möglichkeiten zur Unterstützung der Komprimierung:
+Es gibt zwei Methoden zur Aktivierung der Komprimierung:
 
-- Sie können die Komprimierung auf Ihrem Ursprungsserver aktivieren. In diesem Fall unterstützt CDN die Komprimierung standardmäßig und sendet komprimierte Dateien an Clients.
-- Sie können die Komprimierung direkt auf CDN-Edgeservern aktivieren. In diesem Fall komprimiert CDN die Dateien und sendet sie an die Endbenutzer.
+- Sie können die Komprimierung auf Ihrem Ursprungsserver aktivieren. In diesem Fall leitet CDN die komprimierten Dateien weiter und liefert komprimierte Dateien an Clients, die sie anfordern.
+- Sie können die Komprimierung direkt auf CDN-Edgeservern aktivieren. In diesem Fall komprimiert CDN die Dateien und sendet sie an die Endbenutzer, auch dann, wenn sie nicht vom Ursprungsserver aktiviert wurden.
+
+> [AZURE.IMPORTANT] Es dauert eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind. Bei <b>Azure CDN von Akamai</b>-Profilen ist die Weitergabe in der Regel in weniger als einer Minute abgeschlossen. Bei <b>Azure CDN von Verizon</b>-Profilen werden Ihre Änderungen in der Regel innerhalb von 90 Minuten übernommen. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden. Erst danach lohnt sich ggf. eine Problembehandlung.
 
 ## Aktivieren der Komprimierung
 
 > [AZURE.NOTE] Die CDN-Tarife „Standard“ und „Premium“ bieten die gleiche Komprimierungsmethode, jedoch mit einer anderen Benutzeroberfläche. Weitere Informationen zu den Unterschieden zwischen den CDN-Tarifen „Standard“ und „Premium“ finden Sie unter [Übersicht über Azure CDN](cdn-overview.md).
 
-### Standard-Ebene
+### Standard-Tarif
+
+> [AZURE.NOTE] Dieser Abschnitt gilt für **Azure CDN Standard von Verizon**- und **Azure CDN Standard von Akamai**-Profile.
 
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf den CDN-Endpunkt, den Sie verwalten möchten.
 
@@ -48,10 +52,14 @@ CDN bietet zwei Möglichkeiten zur Unterstützung der Komprimierung:
 	![CDN-Komprimierungsoptionen](./media/cdn-file-compression/cdn-compress-standard.png)
 
 4. Verwenden Sie die Standardtypen, oder ändern Sie die Liste durch Entfernen oder Hinzufügen von Dateitypen.
-
+	
+	> [AZURE.TIP] Obwohl es möglich ist, die Komprimierung für komprimierte Formate wie ZIP, MP3, MP4, JPG usw. zu aktivieren, wird dies nicht empfohlen.
+	
 5. Klicken Sie auf die Schaltfläche **Speichern**, wenn Sie die gewünschten Änderungen vorgenommen haben.
 
-### Premium-Ebene
+### Premium-Tarif
+
+> [AZURE.NOTE] Dieser Abschnitt gilt für **Azure CDN Premium von Verizon**-Profile.
 
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten**.
 
@@ -66,51 +74,43 @@ CDN bietet zwei Möglichkeiten zur Unterstützung der Komprimierung:
 	![Dateikomprimierung](./media/cdn-file-compression/cdn-compress-files.png)
 
 3. Aktivieren Sie die Komprimierung, indem Sie auf das Optionsfeld **Komprimierung aktiviert** klicken. Geben Sie im Textfeld **Dateitypen** die zu komprimierenden MIME-Typen als durch Trennzeichen getrennte Liste (ohne Leerzeichen) an.
+		
+	> [AZURE.TIP] Obwohl es möglich ist, die Komprimierung für komprimierte Formate wie ZIP, MP3, MP4, JPG usw. zu aktivieren, wird dies nicht empfohlen.
 
 4. Wenn Sie die gewünschten Änderungen vorgenommen haben, klicken Sie auf die Schaltfläche **Aktualisieren**,
 
 
-## Komprimierungsprozess
+## Komprimierungsregeln
 
-### Übersicht
+Diese Tabellen beschreiben das Verhalten der Azure CDN-Komprimierung für jedes Szenario.
 
-1. Die anfordernde Person sendet eine Inhaltsanforderung.
-
-2. Ein Edgeserver prüft, ob ein **Accept-Encoding**-Header vorhanden ist.
-	1. Sofern vorhanden, gibt dieser Header die angeforderte Komprimierungsmethode an.
-		> [AZURE.NOTE] Unterstützte Komprimierungsmethoden sind **gzip**, **deflate**, und **bzip2**.
-	2. Fehlt der Header, wird die Anforderung in einem nicht komprimierten Format verarbeitet.
-	
-3.	Der nächstgelegene Edge-POP überprüft den Cachestatus sowie die Komprimierungsmethode und prüft, ob noch eine entsprechende Gültigkeitsdauer (TTL, Time to Live) vorliegt.
-	1.	**Cachefehler** („Miss“): Wenn die angeforderte Version nicht zwischengespeichert ist, wird die Anforderung an den Ursprungsserver weitergeleitet.
-	2.	**Cachetreffer** („Hit“): Wenn die angeforderte Version mit der angeforderten Komprimierungsmethode zwischengespeichert ist, sendet der Edgeserver den komprimierten Inhalt sofort an den Client.
-	3.	**Cachetreffer** („Hit“) Wenn die Datei mit einer anderen Komprimierungsmethode zwischengespeichert wurde, transcodiert der Edgeserver die Ressource in die angeforderte Komprimierungsmethode.
-	4.	**Cachetreffer** („Hit“): Wenn die Datei in einem nicht komprimierten Format zwischengespeichert wurde, wird geprüft, ob die Anforderung für die Komprimierung durch den Edgeserver geeignet ist. Sofern möglich, komprimiert der Edgeserver die Datei und sendet sie an den Client. Andernfalls wird der nicht komprimierte Inhalt zurückgegeben.
-		
-> [AZURE.IMPORTANT] Eine Datei ist für die Komprimierung geeignet, wenn sie folgende Bedingungen erfüllt:
+> [AZURE.IMPORTANT] Für **Azure CDN von Verizon** (Standard und Premium) werden nur zugelassene Dateien komprimiert. Eine Datei ist für die Komprimierung geeignet, wenn sie folgende Bedingungen erfüllt:
 >
 > - Größer als 128 Bytes
 > - Kleiner als 1 MB
-> - Ein MIME-Typ, für den [die Komprimierung konfiguriert wurde](#enabling-compression)
+> 
+> Für **Azure CDN von Akamai** sind alle Dateien zur Komprimierung zugelassen.
+>
+> Für alle Azure CDN-Produkte muss eine Datei ein MIME-Typ sein, der [für die Komprimierung konfiguriert](#enabling-compression) wurde.
+>
+> **Azure CDN von Verizon**-Profile (Standard und Premium) unterstützen **gzip**-, **deflate**- oder **bzip2**-Codierung. **Azure CDN von Akamai**-Profile unterstützen nur **gzip**-Codierung.
+>
+> **Azure CDN von Akamai**-Endpunkte fordern unabhängig von der Clientanforderung stets **gzip**-codierte Dateien beim Ursprung an.
 
-### Tabellen
+### Komprimierung deaktiviert oder Datei ist nicht für die Komprimierung geeignet
 
-Die folgenden Tabellen beschreiben das Verhalten der CDN-Komprimierung für jedes Szenario.
-
-#### Komprimierung deaktiviert oder Datei ist nicht für die Komprimierung geeignet
-
-|Angefordertes Format|Zwischengespeicherte Datei|CDN-Reaktion|Hinweise|
+|Vom Client angefordertes Format (über Accept-Encoding-Header)|Zwischengespeichertes Dateiformat|CDN-Antwort an den Client|Hinweise|
 |----------------|-----------|------------|-----|
-|Komprimiert|Komprimiert|Komprimiert|CDN transcodiert zwischen unterstützten Formaten|
+|Komprimiert|Komprimiert|Komprimiert| |
 |Komprimiert|Nicht komprimiert|Nicht komprimiert| |	
 |Komprimiert|Nicht zwischengespeichert|Komprimiert oder nicht komprimiert|Abhängig von der Reaktion des Ursprungsservers|
-|Nicht komprimiert|Komprimiert|Nicht komprimiert|CDN kontaktiert Ursprungsserver, um die nicht komprimierte Version zu erhalten|
+|Nicht komprimiert|Komprimiert|Nicht komprimiert| |
 |Nicht komprimiert|Nicht komprimiert|Nicht komprimiert| |	
 |Nicht komprimiert|Nicht zwischengespeichert|Nicht komprimiert| |
 
-#### Komprimierung aktiviert und Datei zur Komprimierung geeignet
+### Komprimierung aktiviert und Datei zur Komprimierung geeignet
 
-|Angefordertes Format|Zwischengespeicherte Datei|CDN-Reaktion|Hinweise|
+|Vom Client angefordertes Format (über Accept-Encoding-Header)|Zwischengespeichertes Dateiformat|CDN-Antwort an den Client|Hinweise|
 |----------------|-----------|------------|-----|
 |Komprimiert|Komprimiert|Komprimiert|CDN transcodiert zwischen unterstützten Formaten|
 |Komprimiert|Nicht komprimiert|Komprimiert|CDN führt die Komprimierung durch|
@@ -119,15 +119,10 @@ Die folgenden Tabellen beschreiben das Verhalten der CDN-Komprimierung für jede
 |Nicht komprimiert|Nicht komprimiert|Nicht komprimiert| |	
 |Nicht komprimiert|Nicht zwischengespeichert|Nicht komprimiert| |	
 
-
 ## Hinweise
-
-1. Genauso wie beim Bereitstellen neuer Endpunkte dauert es eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind. In den meisten Fällen werden Ihre Änderungen innerhalb von 90 Minuten übernommen. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden. Erst danach lohnt sich ggf. eine Problembehandlung.
-2. Auf dem Edgeserver wird nur eine Dateiversion (komprimiert oder nicht komprimiert) zwischengespeichert. Die Anforderung einer anderen Dateiversion führt dazu, dass der Inhalt vom Edgeserver transcodiert wird.
-3. Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für die folgenden Inhaltstypen standardmäßig aktiviert: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl,application/f4m+xml. Sie können die Komprimierung für die genannten Typen im Azure-Portal nicht aktivieren/deaktivieren.  
-4. Obwohl es möglich ist, die Komprimierung für komprimierte Formate wie ZIP, MP3, MP4, JPG usw. zu aktivieren, wird dies nicht empfohlen.
+1. Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für die folgenden Inhaltstypen standardmäßig aktiviert: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl,application/f4m+xml. Sie können die Komprimierung für die genannten Typen im Azure-Portal nicht aktivieren/deaktivieren.  
 
 ## Weitere Informationen
 - [Problembehandlung bei der CDN-Dateikomprimierung](cdn-troubleshoot-compression.md)    
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

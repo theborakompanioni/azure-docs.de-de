@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="BYHAM"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""
    tags=""/>
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="02/18/2016"
+   ms.date="05/12/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL-Datenbank – Abweichungen bei Transact-SQL
@@ -93,7 +93,7 @@ Azure SQL-Datenbank V12 unterstützt einige, aber nicht alle Argumente, die in d
 - Ablaufverfolgungskennzeichen
 - Transact-SQL-Debugging
 - Trigger: Auf Server begrenzt oder Anmeldetrigger
-- USE-Anweisung
+- USE-Anweisung: Sie müssen eine neue Verbindung zu der neuen Datenbank herstellen, um den Datenbankkontext in eine andere Datenbank zu ändern.
 
 
 ## Vollständige Transact-SQL-Referenz
@@ -104,8 +104,8 @@ Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele find
 
 Die Transact-SQL-Referenz umfasst Themen zu SQL Server-Versionen ab 2008. Unter der Themenüberschrift sind normalerweise unter „Gilt für“ die SQL Server-Versionen und möglicherweise auch andere Produktnamen aufgeführt. Häufig ist dort auch Azure SQL-Datenbank aufgeführt. Wenn Azure SQL-Datenbank nicht angegeben ist, gilt der Inhalt des Themas nicht für Azure SQL-Datenbank. Wenn unter „Gilt für“ mehrere Produkte aufgeführt sind, wird mit einem kleinen Symbol angegeben, ob das Thema jeweils für die einzelnen Produkte gilt.
 
- Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Das Thema **VERFÜGBARKEITSGRUPPE ERSTELLEN** gibt an, dass es für **SQL Server (SQL Server 2012 bis zur aktuellen Version)** gilt. Es gilt nicht für SQL Server 2008, SQL Server 2008 R2 oder Azure SQL-Datenbank.
+ Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Das Thema **VERFÜGBARKEITSGRUPPE ERSTELLEN** gibt an, dass es für **SQL Server (SQL Server 2012 bis zur aktuellen Version)** gilt. Es gilt nicht für SQL Server 2008, SQL Server 2008 R2 oder Azure SQL-Datenbank.
 
 In einigen Fällen kann der allgemeine Gegenstand eines Themas in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Thema entsprechend angegeben.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

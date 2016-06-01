@@ -45,12 +45,12 @@ Wir haben das Konzept der Azure-Berechnungseinheit ACU (Azure Compute Unit) erst
 |[Standard\_A0](#standard-tier-a-series) |50 |
 |[Standard\_A1-4](#standard-tier-a-series) |100 |
 |[Standard\_A5-7](#standard-tier-a-series) |100 |
-|[A8-A11](#standard-tier-a-series) |225 *|
-|[D1-14](#standard-tier-d-series) |160 |
-|[D1-15v2](#standard-tier-dv2-series) |210 - 250 *|
-|[DS1-14](#standard-tier-ds-series) |160 |
-|[DS1-14v2](#standard-tier-dsv2-series) |210-250* |
-| [G1-5](#standard-tier-g-series) |180 - 240 *|
+|[A8-A11](#standard-tier-a-series) |225 *| 
+|[D1-14](#standard-tier-d-series) |160 | 
+|[D1-15v2](#standard-tier-dv2-series) |210 - 250 *| 
+|[DS1-14](#standard-tier-ds-series) |160 | 
+|[DS1-15v2](#standard-tier-dsv2-series) |210-250* | 
+|[G1-5](#standard-tier-g-series) |180 - 240 *| 
 |[GS1-5](#standard-tier-gs-series) |180 - 240 *|
 
 
@@ -150,6 +150,7 @@ Hinweis: Informationen und Überlegungen zum Verwenden dieser Größen finden Si
 |Standard\_DS12\_v2 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800 192 MB pro Sekunde | hoch |
 |Standard\_DS13\_v2 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600 384 MB pro Sekunde | hoch |
 |Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 50\.000 768 MB pro Sekunde | sehr hoch |
+|Standard\_DS15\_v2 |20|140 GB|10|Lokales SSD-Laufwerk = 280 GB |40| 720|62\.500 960 MB pro Sekunde | sehr hoch |
 
 
 **Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
@@ -190,6 +191,7 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 ## Nächste Schritte
 
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
-- Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen für Workloads wie etwa High-Performance Computing (HPC)](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md).
+- Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
 
-<!---HONumber=AcomDC_0406_2016-->
+
+

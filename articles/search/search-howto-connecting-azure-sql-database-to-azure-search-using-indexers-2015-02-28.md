@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="02/08/2016" 
+	ms.date="05/06/2016" 
 	ms.author="eugenesh"/>
 
 #Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
@@ -30,7 +30,7 @@ Um einen Azure SQL-Indexer einzurichten und zu konfigurieren, rufen Sie die [Azu
 
 Sie können zum Erstellen und Planen eines Indexers auch die [Indexer-Klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.indexer.aspx) im [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) oder den Datenimport-Assistenten im [klassischen Azure-Portal](https://portal.azure.com) verwenden.
 
-Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (wie z. B. neue, geänderte oder gelöschte Zeilen). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
+Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (wie z. B. neue, geänderte oder gelöschte Zeilen). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
 
 Ein **Indexer** ist die Ressource, die Datenquellen mit Zielsuchindizes verbindet. Ein Indexer kann folgendermaßen verwendet werden:
  
@@ -70,7 +70,7 @@ Sie können die Verbindungszeichenfolge mit der Option `ADO.NET connection strin
 
 Dann erstellen Sie den Azure Search-Zielindex, sofern Sie bislang über keinen Index verfügen. Sie können dies von der Azure-[Portal-Benutzeroberfläche](https://portal.azure.com) aus tun oder indem Sie die [Create-Index-API](https://msdn.microsoft.com/library/azure/dn798941.aspx) verwenden. Stellen Sie sicher, dass das Schema des Zielindexes mit dem Schema der Quelltabelle kompatibel ist. Sie finden in der folgende Tabelle Informationen zum Zuordnen der SQL-Datentypen zu Azure Search-Datentypen.
 
-****Zuordnung zwischen SQL-Datentypen und Azure Search-Datentypen
+## Zuordnung zwischen SQL-Datentypen und Azure Search-Datentypen
 
 |SQL-Datentyp | Zulässige Ziel-Index-Feldtypen |Hinweise 
 |------|-----|----|
@@ -247,11 +247,11 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
 	    }
 	}
 
-Beachten Sie, dass **softDeleteMarkerValue** eine Zeichenfolge sein muss. Verwenden Sie die Zeichenfolgendarstellung des tatsächlichen Werts. Wenn Sie z. B. über eine "integer"-Spalte verfügen, in der gelöschte Zeilen durch den Wert 1 gekennzeichnet sind, verwenden Sie `"1"`; wenn Sie über eine "BIT"-Spalte verfügen, in der gelöschte Zeilen durch den booleschen Wert "true" markiert werden, verwenden Sie `"True"`.
+Beachten Sie, dass **softDeleteMarkerValue** eine Zeichenfolge sein muss. Verwenden Sie die Zeichenfolgendarstellung des tatsächlichen Werts. Wenn Sie z. B. über eine "integer"-Spalte verfügen, in der gelöschte Zeilen durch den Wert 1 gekennzeichnet sind, verwenden Sie `"1"`; wenn Sie über eine "BIT"-Spalte verfügen, in der gelöschte Zeilen durch den booleschen Wert "true" markiert werden, verwenden Sie `"True"`.
 
 ## Anpassen von Azure SQL-Indexer
  
-Sie können bestimmte Aspekte des Indexerverhaltens anpassen (z. B. die Batchgröße, wie viele Dokumente übersprungen werden können, bevor eine Indexerausführung fehlschlägt, usw.). Weitere Details finden Sie unter [Anpassen von Azure Search-Indexern](search-indexers-customization.md)
+Sie können bestimmte Aspekte des Indexerverhaltens anpassen (z. B. die Batchgröße, wie viele Dokumente übersprungen werden können, bevor eine Indexerausführung fehlschlägt, usw.). Weitere Details finden Sie unter [Anpassen von Azure Search-Indexern](search-indexers-customization.md)
 
 ## Häufig gestellte Fragen
 
@@ -275,4 +275,4 @@ A: Ja. Allerdings kann zu einem gegebenen Zeitpunkt nur ein Indexer auf einem Kn
 
 A: Ja. Indexer werden auf einem der Knoten im Suchdienst ausgeführt, und die Ressourcen dieses Knotens werden für die Indizierung und das Bearbeiten des Datenverkehrs für Abfragen und andere API-Anforderungen gemeinsam genutzt. Wenn Sie intensive Indizierungs- und Abfragearbeitsauslastungen ausführen und viele 503-Fehler oder zunehmend längere Antwortzeiten auftreten, sollten Sie Ihren Suchdienst skalieren.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

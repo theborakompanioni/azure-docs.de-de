@@ -22,7 +22,7 @@
 
 ## Übersicht
 
-In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [Apache Cordova-Schnellstartprojekt] hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung gesendet wird. Dieses Tutorial baut auf dem [Apache Cordova-Schnellstarttutorial] auf, das Sie zuerst abschließen müssen. Wenn Sie über ein ASP.NET-Back-End verfügen und das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Pushbenachrichtigungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps] (in englischer Sprache).
+In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [Apache Cordova-Schnellstartprojekt] hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung gesendet wird. Dieses Tutorial baut auf dem [Apache Cordova-Schnellstarttutorial] auf, das Sie zuerst abschließen müssen. Wenn Sie über ein ASP.NET-Back-End verfügen und das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Pushbenachrichtigungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps] \(in englischer Sprache).
 
 ##<a name="prerequisites"></a>Voraussetzungen
 
@@ -105,7 +105,7 @@ Das Push-Plug-In nutzt Android Google Play-Dienste für Pushbenachrichtigungen.
      
 2.  Klicken Sie auf **Pakete installieren**, und warten Sie, bis die Installation abgeschlossen ist.
 
-Die aktuell erforderlichen Bibliotheken werden in der [phonegap-plugin-push installation documentation] (Dokumentation zur Pushinstallation des PhoneGap-Plug-Ins) aufgelistet.
+Die aktuell erforderlichen Bibliotheken werden in der [phonegap-plugin-push installation documentation] \(Dokumentation zur Pushinstallation des PhoneGap-Plug-Ins) aufgelistet.
 
 ### Registrieren des Geräts zum Push bei Start
 
@@ -198,8 +198,8 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 [Visual Studio Community 2015]: http://www.visualstudio.com/
 [Visual Studio-Tools für Apache Cordova]: https://www.visualstudio.com/de-DE/features/cordova-vs.aspx
 [Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
-[Apache Cordova-SDK]: app-service-mobile-codova-how-to-use-client-library.md
+[Apache Cordova-SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server-SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -12,8 +12,8 @@
 	ms.workload="multiple" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="04/08/2016" 
+	ms.topic="article" 
+	ms.date="05/16/2016" 
 	ms.author="tomfitz"/>
 
 
@@ -71,67 +71,9 @@ Nach dem Einrichten der Ressourcengruppe kann es sein, dass Sie die Resource Man
 
 2. Sie können sich mit der Vorlagensyntax vertraut machen, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
 
-Über das Portal können Sie entweder eine Vorlage generieren, die den aktuellen Status Ihrer Ressourcengruppe darstellt, oder die Vorlage abrufen, die für eine bestimmte Bereitstellung verwendet wurde. Beide Optionen werden in diesem Thema veranschaulicht.
-
-Das Exportieren der Vorlage für eine Ressourcengruppe ist hilfreich, wenn Sie Änderungen an einer Ressourcengruppe vorgenommen haben und die JSON-Darstellung ihres aktuellen Zustands abrufen müssen. Die generierte Vorlage enthält aber nur eine minimale Anzahl von Parametern und keine Variablen. Die meisten Werte in der Vorlage sind hartcodiert. Vor dem Bereitstellen der generierten Vorlage kann es ratsam sein, weitere Werte in Parameter zu konvertieren, damit Sie die Bereitstellung für unterschiedliche Umgebungen anpassen können.
-
-Das Exportieren der Vorlage für eine bestimmte Bereitstellung ist hilfreich, wenn Sie die eigentliche Vorlage anzeigen möchten, die zum Bereitstellen von Ressourcen verwendet wurde. Die Vorlage enthält alle Parameter und Variablen, die für die ursprüngliche Bereitstellung definiert wurden. Wenn eine Person in Ihrer Organisation aber Änderungen an der Ressourcengruppe vorgenommen hat, die über die Definition in der Vorlage hinausgehen, stellt diese Vorlage nicht den aktuellen Zustand der Ressourcengruppe dar.
-
 > [AZURE.NOTE] Die Funktion zum Exportieren von Vorlagen befindet sich in der Vorschau, und das Exportieren einer Vorlage wird derzeit nicht für alle Ressourcentypen unterstützt. Wenn Sie versuchen, eine Vorlage zu exportieren, wird ggf. ein Fehler mit dem Hinweis angezeigt, dass einige Ressourcen nicht exportiert wurden. Bei Bedarf können Sie diese Ressourcen nach dem Herunterladen manuell in der Vorlage definieren.
 
-### Exportieren einer Vorlage für die Ressourcengruppe
-
-Im Blatt „Ressourcengruppe“ können Sie die Vorlage exportieren, die den aktuellen Zustand der Ressource darstellt.
-
-Wählen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe die Option **Vorlage exportieren**.
-
-![Ressourcengruppe exportieren](./media/resource-group-portal/export-resource-group.png)
-
-Der Resource Manager generiert vier Dateien für Sie:
-
-1. Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird
-
-2. Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können
-
-3. Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage ausführen können
-
-4. Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage ausführen können
-
-Sehen Sie sich zuerst die Vorlage an, die die aktuelle Ressourcengruppe darstellt.
-
-![Vorlage anzeigen](./media/resource-group-portal/show-rg-template.png)
-
-Im Abschnitt **Ressourcen** werden die Definitionen für die bereitzustellenden Ressourcen angezeigt.
-
-In der Parameterdatei können Sie Parameterwerte speichern, die während der Bereitstellung übergeben werden sollen.
-
-![Parameter anzeigen](./media/resource-group-portal/show-parameters.png)
-
-Es ist eine Skriptdatei zum Bereitstellen der Vorlage über die Azure PowerShell vorhanden.
-
-![Azure PowerShell anzeigen](./media/resource-group-portal/show-powershell.png)
-
-Außerdem ist eine Skriptdatei zum Bereitstellen der Vorlage über die Azure-Befehlszeilenschnittstelle vorhanden.
-
-![Azure-Befehlszeilenschnittstelle anzeigen](./media/resource-group-portal/show-cli.png)
-
-Das Portal enthält drei Optionen zum Verwenden dieser Vorlage. Wählen Sie **Bereitstellen**, um die Vorlage jetzt erneut bereitzustellen. Wählen Sie die Option **Herunterladen**, um alle Dateien lokal herunterzuladen. Wählen Sie **Vorlage speichern**, um die Dateien zur späteren Verwendung über das Portal in Ihrem Azure-Konto zu speichern.
-
-### Herunterladen der Vorlage aus einer Bereitstellung
-
-Im Ressourcengruppen-Blatt können Sie das Datum und den Status der letzten Bereitstellung für diese Ressourcengruppe sehen. Wenn Sie den Link auswählen, wird ein Verlauf der Bereitstellungen für die Gruppe angezeigt.
-
-![Letzte Bereitstellung](./media/resource-group-portal/last-deployment.png)
-
-Wenn Sie eine Bereitstellung aus dem Verlauf auswählen, werden Details zu dieser Bereitstellung angezeigt. Bei jeder Bereitstellung von Ressourcen wird die verwendete Vorlage vom Resource Manager beibehalten. Sie können die tatsächliche Vorlage abrufen, die für die Bereitstellung verwendet wurde, indem Sie die Option **Vorlage anzeigen** wählen.
-
-![Vorlage exportieren](./media/resource-group-portal/export-template.png)
-
-Es wird die Vorlage angezeigt, die für die Bereitstellung verwendet wurde. Sie enthält alle von Ihnen definierten Parameter und Variablen.
-
-![Vorlage anzeigen](./media/resource-group-portal/show-template.png)
-
-Wie bereits erwähnt, muss dies nicht unbedingt eine vollständige Darstellung der Ressourcengruppe sein. Wenn Sie Ressourcen außerhalb dieser Bereitstellung hinzugefügt oder gelöscht haben, werden diese Aktionen nicht in der Vorlage widergespiegelt. Sie können die Vorlage, Parameterdatei und Skriptdateien wie im vorherigen Abschnitt dargestellt anzeigen. Außerdem können Sie die Vorlage wie im vorherigen Abschnitt gezeigt auch neu bereitstellen, herunterladen oder speichern.
+Eine detaillierte Anleitung finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](../resource-manager-export-template/).
 
 ## Verwalten einer Ressourcengruppe
 
@@ -238,7 +180,7 @@ Beachten Sie, dass die einzelnen Kacheln im Dashboard jeweils eigene Anforderung
 
 ## Nächste Schritte
 
-- Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit dem Resource Manager](../resource-group-audit.md).
+- Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md).
 - Informationen zur Problembehandlung von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

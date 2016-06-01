@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Erstellen von App-Kennwörtern für Azure Multi-Factor Authentication im Portal "Meine Apps 365"
@@ -25,7 +25,7 @@ Wenn Sie Multi-Factor Authentication nicht mit Office 365 verwenden und nicht ü
 ## So erstellen Sie App-Kennwörter ohne Office 365- oder Azure-Abonnement
 --------------------------------------------------------------------------------
 <ol>
-<li>Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.</li>
+<li>Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.</li>	
 <li>Wählen Sie oben "Profil" aus.</li>
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-myapps/myapp.png)</center>
@@ -39,4 +39,7 @@ Wenn Sie Multi-Factor Authentication nicht mit Office 365 verwenden und nicht ü
 <li>Geben Sie einen Namen für das App-Kennwort an, und klicken Sie auf **Weiter**.</li>
 <li>Kopieren Sie das App-Kennwort in die Zwischenablage, und fügen Sie es in Ihrer App ein.</li>
 
-<!---HONumber=AcomDC_0218_2016-->
+
+ 
+
+<!---HONumber=AcomDC_0518_2016-->

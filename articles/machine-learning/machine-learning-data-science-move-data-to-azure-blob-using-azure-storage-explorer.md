@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/10/2016" 
+	ms.date="05/10/2016"
 	ms.author="bradsev" />
 
 # Verschieben von Daten in den und aus dem Azure-Blobspeicher mithilfe des Azure-Speicher-Explorers
 
-## Einführung 
-
-Azure Storage Explorer ist ein kostenloses Windows-Tool zum Prüfen und Ändern der Daten in einem Azure-Speicherkonto. Dieses Thema beschreibt dessen Verwendung zum Hoch- und Herunterladen von Daten aus Azure Blob Storage. Das Tool kann von [Azure Storage Explorer](http://storageexplorer.com/) heruntergeladen werden.
+Azure Storage Explorer ist ein kostenloses Windows-Tool zum Prüfen und Ändern der Daten in einem Azure-Speicherkonto. Dieses Thema beschreibt dessen Verwendung zum Hoch- und Herunterladen von Daten aus Azure Blob Storage. Das Tool kann von [Azure Storage-Explorer](http://storageexplorer.com/) heruntergeladen werden.
 
 Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben von Daten in den und aus dem Azure-BLOB-Speicher:
  
@@ -59,4 +57,4 @@ Die folgenden Schritte beschreiben das Hoch- und Herunterladen von Daten mithilf
 [2]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img2.png
 [3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

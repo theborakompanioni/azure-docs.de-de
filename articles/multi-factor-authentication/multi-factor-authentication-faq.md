@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/07/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication – Häufig gestellte Fragen
@@ -185,4 +185,4 @@ Derzeit kann die zusätzliche Sicherheitsüberprüfung nur für Anwendungen und 
 
 Als Problemumgehung können Sie zusätzlich zu Ihrem normalen Konto ein separates Benutzerkonto für Administratoraufgaben erstellen. Anschließend können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie für die Anmeldung bei Outlook lediglich ihr normales Konto benötigen. Weitere Informationen hierzu finden Sie unter [Einem Administrator das Öffnen und Anzeigen des Inhalts des Postfachs eines Benutzers ermöglichen](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

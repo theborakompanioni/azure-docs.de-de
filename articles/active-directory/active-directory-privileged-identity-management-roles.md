@@ -60,7 +60,7 @@ Wenn Sie einem anderen Benutzer Verwaltungszugriff zu PIM gewähren möchten, we
 
 Mit Ausnahme der oben genannten Rollen werden Rollen in Exchange Online oder SharePoint Online nicht durch Azure AD verwaltet und sind daher in PIM nicht sichtbar. Informationen zum Ändern von differenzierten Rollenzuweisungen in diesen Office 365-Diensten finden Sie unter [Berechtigungen in Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Azure-Abonnements und -Ressourcengruppen werden ebenfalls nicht in Azure AD verwaltet. Informationen zum Verwalten von Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator). Weitere Informationen zu Azure RBAC finden Sie unter [Rollenbasierte Access Control in Azure](role-based-access-control-configure.md).
+Azure-Abonnements und -Ressourcengruppen werden ebenfalls nicht in Azure AD verwaltet. Informationen zum Verwalten von Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md). Weitere Informationen zu Azure RBAC finden Sie unter [Rollenbasierte Access Control in Azure](role-based-access-control-configure.md).
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
@@ -87,4 +87,4 @@ Für den Zugriff auf Microsoft Online Services ist es möglicherweise erforderli
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

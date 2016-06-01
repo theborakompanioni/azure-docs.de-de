@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # Anleitungen für die automatische Skalierung
 
-![Muster- und Methoden-Logo](media/best-practices-auto-scaling/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## Übersicht
 Die automatische Skalierung ist der Prozess der dynamischen Zuweisung von Ressourcen, die von einer Anwendung benötigt werden, um Leistungsanforderungen und Vereinbarungen zum Servicelevel (SLAs) zu erfüllen und gleichzeitig die Laufzeitkosten zu senken. Wächst der Umfang der Arbeit, kann eine Anwendung zusätzliche Ressourcen benötigen, um ihre Aufgaben rechtzeitig zu erledigen. Wenn der Bedarf abnimmt, können Ressourcen wieder abgezogen werden, um Kosten zu minimieren, während gleichzeitig eine angemessene Leistung beibehalten und SLAs erfüllt werden. Die automatische Skalierung nutzt die Elastizität von Umgebungen, die in der Cloud gehostet werden, und reduziert gleichzeitig den Verwaltungsaufwand. Der reduzierte Verwaltungsaufwand ist möglich, da die Leistung des Systems nicht ständig von einem Mitarbeiter überwacht werden muss, der Entscheidungen über das Hinzufügen oder Entfernen von Ressourcen trifft.
@@ -62,7 +62,7 @@ Die automatische Skalierung ist keine sofortige Lösung. Durch das einfache Hinz
 Es gibt mehrere Optionen zum Konfigurieren der automatischen Skalierung für Ihre Azure-Lösungen:
 
 - Die **automatische Skalierung in Azure** unterstützt die gängigsten Skalierungsszenarien basierend auf einem Zeitplan und löst optional Skalierungsvorgänge auf Grundlage von Laufzeitmetriken aus (z. B. Prozessorauslastung, Warteschlangenlänge oder integrierte und benutzerdefinierte Leistungsindikatoren). Einfache Richtlinien für die automatische Skalierung können schnell und problemlos über das Azure-Portal konfiguriert werden. Wenn Sie eine detailliertere Steuerung wünschen, können Sie die [Azure-Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx) oder die [Azure Resource Manager-REST-API](https://msdn.microsoft.com//library/azure/dn790568.aspx) verwenden. Außerdem stehen mit der [Azure Monitoring Services-Verwaltungsbibliothek](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring) und der [Microsoft Insights-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Insights/) (in der Vorschau) SDKs zur Verfügung, mit denen Sie Metriken aus verschiedenen Ressourcen sammeln und mithilfe von REST-APIs eine automatische Skalierung durchführen können. Für Ressourcen, die nicht durch Azure Resource Manager unterstützt werden, oder bei Verwendung von Azure Cloud Services kann die automatische Skalierung mit der Dienstverwaltungs-REST-API durchgeführt werden. Verwenden Sie in allen anderen Fällen Azure Resource Manager.
-- **Eine benutzerdefinierte Lösung**, die auf Ihrer Instrumentierung der Anwendung und den Verwaltungsfunktionen von Azure basiert, kann nützlich sein. So können Sie in Ihrer Anwendung z. B. die Azure-Diagnose oder andere Methoden der Instrumentierung gemeinsam mit benutzerdefiniertem Code verwenden, um die Metriken der Anwendung fortlaufend zu überwachen und zu exportieren. Die Metriken können dann von benutzerdefinierten Regeln ausgewertet werden, die mithilfe der Dienstverwaltungs-REST-API oder der Resource Manager-REST-API die automatische Skalierung auslösen. Die Metriken für das Auslösen eines Skalierungsvorgangs können von jedem integrierten bzw. benutzerdefinierten Leistungsindikator oder einer anderen Instrumentation stammen, den bzw. die Sie in der Anwendung implementieren. Eine benutzerdefinierte Lösung ist aber nicht einfach zu implementieren und sollte nur in Betracht gezogen werden, wenn keine der vorherigen Methoden Ihre Anforderungen erfüllen kann. Beim [Autoscaling Application Block](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx) wird diese Herangehensweise genutzt.
+- **Eine benutzerdefinierte Lösung**, die auf Ihrer Instrumentierung der Anwendung und den Verwaltungsfunktionen von Azure basiert, kann nützlich sein. So können Sie in Ihrer Anwendung z. B. die Azure-Diagnose oder andere Methoden der Instrumentierung gemeinsam mit benutzerdefiniertem Code verwenden, um die Metriken der Anwendung fortlaufend zu überwachen und zu exportieren. Die Metriken können dann von benutzerdefinierten Regeln ausgewertet werden, die mithilfe der Dienstverwaltungs-REST-API oder der Resource Manager-REST-API die automatische Skalierung auslösen. Die Metriken für das Auslösen eines Skalierungsvorgangs können von jedem integrierten bzw. benutzerdefinierten Leistungsindikator oder einer anderen Instrumentation stammen, den bzw. die Sie in der Anwendung implementieren. Eine benutzerdefinierte Lösung ist aber nicht einfach zu implementieren und sollte nur in Betracht gezogen werden, wenn keine der vorherigen Methoden Ihre Anforderungen erfüllen kann. Beim [Autoscaling Application Block](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx) wird diese Herangehensweise genutzt.
 - **Dienste von Drittanbietern**, wie z. B. [Paraleap AzureWatch](http://www.paraleap.com/AzureWatch), ermöglichen es Ihnen, eine Lösung auf Grundlage von Zeitplänen, Dienstauslastungen und Leistungsindikatoren, benutzerdefinierten Regeln und Kombinationen von verschiedenen Regeltypen zu skalieren.
 
 Beachten Sie Folgendes, wenn Sie sich für eine Lösung für die automatische Skalierung entscheiden:
@@ -113,4 +113,4 @@ Die folgenden Muster und Anleitungen können auch für Ihr Szenario relevant sei
 - [Vorgänge bei der automatischen Skalierung](http://msdn.microsoft.com/library/azure/dn510374.aspx)
 - [Microsoft.WindowsAzure.Management.Monitoring.Autoscale-Namespace](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

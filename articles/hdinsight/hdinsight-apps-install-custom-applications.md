@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/18/2016"
+   	ms.date="05/24/2016"
    	ms.author="jgao"/>
 
 # Installieren benutzerdefinierter HDInsight-Anwendungen
@@ -86,8 +86,25 @@ Sie können den Status der Anwendung im Azure-Portal nachverfolgen und sich so v
  
 ## Behandeln von Installationsproblemen
 
-Entsprechende Informationen finden Sie im [Problembehandlungsabschnitt](hdinsight-apps-install-applications.md#troubleshoot) des Themas zum Installieren von HDInsight-Anwendungen.
+Sie können den Status der Anwendungsinstallation über die Portalbenachrichtigung überprüfen. (Klicken Sie oben im Portal auf das Glockensymbol.)
 
+Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie die Fehlermeldungen anzeigen und Informationen an drei Stellen debuggen:
+
+- HDInsight-Anwendungen: allgemeine Fehlerinformationen.
+
+    Öffnen Sie den Cluster im Portal, und klicken Sie im Blatt „Einstellungen“ auf „Anwendungen“:
+
+    ![HDInsight-Anwendungen: Fehler bei Anwendungsinstallation](./media/hdinsight-apps-install-applications/hdinsight-apps-error.png)
+
+- HDInsight-Skriptaktion: Wenn mit der Fehlermeldung der HDInsight-Anwendung ein Skriptaktionsfehler angegeben wird, werden im Bereich mit den Skriptaktionen Details zum Skriptfehler angezeigt.
+
+    Klicken Sie im Blatt „Einstellungen“ auf „Skriptaktion“. Im Skriptaktionsverlauf werden die Fehlermeldungen angezeigt.
+
+    ![HDInsight-Anwendungen: Fehler bei Skriptaktion](./media/hdinsight-apps-install-applications/hdinsight-apps-script-action-error.png)
+    
+- Ambari-Webbenutzeroberfläche: Wenn das Installationsskript der Grund für den Fehler war, können Sie die Ambari-Webbenutzeroberfläche verwenden, um die vollständigen Protokolle zu den Installationsskripts zu überprüfen.
+
+    Weitere Informationen finden Sie unter [Problembehandlung](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 
 ## Nächste Schritte
 
@@ -96,4 +113,4 @@ Entsprechende Informationen finden Sie im [Problembehandlungsabschnitt](hdinsigh
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 - [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

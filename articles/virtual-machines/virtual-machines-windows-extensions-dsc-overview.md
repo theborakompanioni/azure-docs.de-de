@@ -22,12 +22,12 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten zur Erweiterung der VM-Funktionen und vereinfachen verschiedene VM-Verwaltungsvorgänge. So können Sie beispielsweise mit der VMAccess-Erweiterung das Kennwort eines virtuellen Computers zurücksetzen oder mit der Erweiterung für benutzerdefinierte Skripts ein Skript auf dem virtuellen Computer ausführen.
+Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten zur Erweiterung der VM-Funktionen und vereinfachen verschiedene VM-Verwaltungsvorgänge. So können Sie beispielsweise mit der VMAccess-Erweiterung das Kennwort eines Administrators zurücksetzen oder mit der Erweiterung für benutzerdefinierte Skripts ein Skript auf dem virtuellen Computer ausführen.
 
-In diesem Artikel wird die PowerShell-Erweiterung zum Konfigurieren des gewünschten Zustands (Desired State Configuration, DSC) für virtuelle Azure-Computer als Teil des Azure PowerShell SDKs vorgestellt. Sie können neue Cmdlets verwenden, um eine PowerShell DSC-Konfiguration auf einen virtuellen Azure-Computer, der über die PowerShell DSC-Erweiterung verfügt, hochzuladen und anzuwenden. Die PowerShell DSC-Erweiterung richtet einen Aufruf an PowerShell DSC, um die empfangene DSC-Konfiguration auf dem virtuellen Computer in Kraft zu setzen. Diese Funktion steht auch über die Benutzeroberfläche des Vorschauportals zur Verfügung.
+In diesem Artikel wird die PowerShell-Erweiterung zum Konfigurieren des gewünschten Zustands (Desired State Configuration, DSC) für virtuelle Azure-Computer als Teil des Azure PowerShell SDKs vorgestellt. Sie können neue Cmdlets verwenden, um eine PowerShell DSC-Konfiguration auf einen virtuellen Azure-Computer, der über die PowerShell DSC-Erweiterung verfügt, hochzuladen und anzuwenden. Die PowerShell DSC-Erweiterung richtet einen Aufruf an PowerShell DSC, um die empfangene DSC-Konfiguration auf dem virtuellen Computer in Kraft zu setzen. Diese Funktion steht auch über das Azure-Portal zur Verfügung.
 
 ## Voraussetzungen ##
-**Lokaler Computer** Für die Interaktion mit der Erweiterung für virtuelle Azure-Computer müssen Sie entweder die Benutzeroberfläche des Vorschauportals oder das Azure PowerShell SDK verwenden.
+**Lokaler Computer** Für die Interaktion mit der Erweiterung für virtuelle Azure-Computer müssen Sie entweder das Azure-Portal oder das Azure PowerShell SDK verwenden.
 
 **Gast-Agent** Der virtuelle Azure-Computer, der mit der DSC-Konfiguration konfiguriert wird, muss über ein Betriebssystem verfügen, das Version 4.0 oder 5.0 von Windows Management Framework (WMF) unterstützt. Die vollständige Liste der unterstützten Betriebssystemversionen finden Sie im Versionsverlauf der DSC-Erweiterung.
 
@@ -42,7 +42,7 @@ Konfigurationsdaten: Eine PSD1-Datei mit Umgebungsdaten für eine Konfiguration.
 
 ## Übersicht über die Architektur ##
 
-Die Azure DSC-Erweiterung nutzt das Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung erwartet eine ZIP-Datei mit mindestens einem Konfigurationsdokument sowie einen Parametersatz, der entweder über das Azure PowerShell SDK oder über die Benutzeroberfläche des Verwaltungsportals bereitgestellt wird.
+Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung erwartet eine ZIP-Datei mit mindestens einem Konfigurationsdokument sowie einen Parametersatz, der entweder über das Azure PowerShell SDK oder über das Azure-Portal bereitgestellt wird.
 
 Wenn die Erweiterung zum ersten Mal aufgerufen wird, wird ein Installationsvorgang ausgeführt. Dabei wird eine Version von Windows Management Framework (WMF) installiert:
 
@@ -50,7 +50,7 @@ Wenn die Erweiterung zum ersten Mal aufgerufen wird, wird ein Installationsvorga
 2. Bei Angabe der Eigenschaft `wmfVersion` wird die entsprechende WMF-Version installiert (es sei denn, sie ist nicht mit dem Betriebssystem des virtuellen Computers kompatibel).
 3. Ohne Angabe der Eigenschaft `wmfVersion` wird die neueste geeignete WMF-Version installiert.
 
-Die WMF-Installation erfordert einen Neustart. Nach dem Neustart lädt die Erweiterung die in der Eigenschaft `modulesUrl` angegebene ZIP-Datei herunter. Befindet sich der Speicherort im Azure-Blob Storage, kann in der Eigenschaft `sasToken` ein SAS-Token für den Dateizugriff angegeben werden. Nachdem die ZIP heruntergeladen und entpackt wurde, wird durch Ausführen der in `configurationFunction` definierten Konfigurationsfunktion die MOF-Datei generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -force` für die generierte MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal. Ab diesem Punkt behandelt der DSC-LCM die Überwachung und Korrektur wie gewohnt.
+Die WMF-Installation erfordert einen Neustart. Nach dem Neustart lädt die Erweiterung die in der Eigenschaft `modulesUrl` angegebene ZIP-Datei herunter. Befindet sich der Speicherort im Azure-Blob Storage, kann in der Eigenschaft `sasToken` ein SAS-Token für den Dateizugriff angegeben werden. Nachdem die ZIP-Datei heruntergeladen und entpackt wurde, wird durch Ausführen der in `configurationFunction` definierten Konfigurationsfunktion die MOF-Datei generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` für die generierte MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal. Ab diesem Punkt behandelt der DSC-LCM die Überwachung und Korrektur wie gewohnt.
 
 ## PowerShell-Cmdlets ##
 
@@ -60,7 +60,7 @@ PowerShell-Cmdlets können mit ARM oder ASM zum Verpacken, Veröffentlichen und 
 
 Bei der durch dieses Cmdlet erstellten ZIP-Datei befindet sich das PS1-Skript im Stammverzeichnis des Archivordners. Der Modulordner für Ressourcen wird im Archivordner platziert.
 
-`Set-AzureVMDscExtension` fügt die erforderlichen Einstellungen für die PowerShell DSC-Erweiterung in ein VM-Konfigurationsobjekt ein, das dann mit `Update-AzureVm` auf einen virtuellen Azure-Computer angewendet werden kann.
+`Set-AzureVMDscExtension` fügt die erforderlichen Einstellungen für die PowerShell DSC-Erweiterung in ein VM-Konfigurationsobjekt ein, das dann mit `Update-AzureVM` auf einen virtuellen Azure-Computer angewendet werden kann.
 
 `Get-AzureVMDscExtension` ruft den DSC-Erweiterungsstatus eines bestimmten virtuellen Computers ab.
 
@@ -76,17 +76,17 @@ Bei der durch dieses Cmdlet erstellten ZIP-Datei befindet sich das PS1-Skript im
 - ConfigurationArchive heißt bei ARM ArchiveBlobName.
 - ContainerName heißt bei ARM ArchiveContainerName.
 - StorageEndpointSuffix heißt bei ARM ArchiveStorageEndpointSuffix.
-- Für ARM wurde der Switch „–AutoUpdate“ hinzugefügt, um die automatische Aktualisierung des Erweiterungshandlers auf die neueste Version zu ermöglichen, sobald diese verfügbar ist. Hierdurch wird der virtuelle Computer unter Umständen neu gestartet, wenn eine neue WMF-Version veröffentlicht wird. 
+- Für ARM wurde der Switch „AutoUpdate“ hinzugefügt, um die automatische Aktualisierung des Erweiterungshandlers auf die neueste Version zu ermöglichen, sobald diese verfügbar ist. Hierdurch wird der virtuelle Computer unter Umständen neu gestartet, wenn eine neue WMF-Version veröffentlicht wird. 
 
 
-## Funktionen des Vorschauportals ##
-Navigieren Sie zu einem virtuellen Computer. Klicken Sie unter „Einstellungen“ > „Verwalten“ auf „Erweiterungen“. Ein neuer Bereich wird erstellt. Klicken Sie auf „Hinzufügen“, und wählen Sie „PowerShell DSC“ aus.
+## Funktionen des Azure-Portals ##
+Navigieren Sie zu einem klassischen virtuellen Computer. Klicken Sie unter „Einstellungen“ > „Allgemein“ auf „Erweiterungen“. Ein neuer Bereich wird erstellt. Klicken Sie auf „Hinzufügen“, und wählen Sie „PowerShell DSC“ aus.
 
 Nehmen Sie im Portal die erforderlichen Eingaben vor. **Konfigurationsmodule oder -skript**: Dies ist ein Pflichtfeld. Erfordert eine PS1-Datei mit einem Konfigurationsskript oder eine ZIP-Datei mit einem PS1-Konfigurationsskript am Verzeichnisstamm und allen abhängigen Ressourcen in Modulordnern innerhalb der ZIP. Die Datei kann mithilfe des Cmdlets `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` aus dem Azure PowerShell SDK erstellt werden. Die ZIP-Datei wird in Ihren Benutzer-Blob Storage hochgeladen und durch ein SAS-Token geschützt.
 
 **PSD1-Konfigurationsdatendatei**: Dies ist ein optionales Feld. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blob Storage hoch, wo sie durch ein SAS-Token geschützt wird.
  
-**Modulspezifischer Konfigurationsname**: .PS1-Dateien können mehrere Konfigurationsfunktionen besitzen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von '' und dem Namen der Konfigurationsfunktion. Beispiel:
+**Modulspezifischer Konfigurationsname**: .PS1-Dateien können mehrere Konfigurationsfunktionen besitzen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von '' und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration „IisInstall“ lautet, geben Sie Folgendes ein: `configuration.ps1\IisInstall`
 
 **Konfigurationsargumente**: Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im folgenden Format ein: `argumentName1=value1,argumentName2=value2`. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder ARM-Vorlagen akzeptiert werden.
 
@@ -97,7 +97,7 @@ Die Azure DSC-Erweiterung akzeptiert DSC-Konfigurationsdokumente und setzt sie a
 ```powershell
 configuration IISInstall 
 { 
-    node ("localhost") 
+    node "localhost"
     { 
         WindowsFeature IIS 
         { 
@@ -111,23 +111,23 @@ configuration IISInstall
 In den folgenden Schritten wird das Skript „IisInstall.ps1“ dann auf dem angegebenen virtuellen Computer platziert, die Konfiguration wird ausgeführt, und der Status wird gemeldet.
  
 ```powershell
-#Requires Azure Powershell cmdlets
+#Azure PowerShell cmdlets are required
 Import-Module Azure
 
 #Use an existing Azure Virtual Machine, 'DscDemo1'
-$demoVM = get-AzureVM DscDemo1
+$demoVM = Get-AzureVM DscDemo1
 
 #Publish the configuration script into user storage.
 Publish-AzureVMDscConfiguration -ConfigurationPath ".\IisInstall.ps1" -StorageContext $storageContext -Verbose -Force
 
 #Set the VM to run the DSC configuration
-Set-AzureVMDscExtension -vm $demoVM -ConfigurationArchive "demo.ps1.zip" -StorageContext $storageContext -ConfigurationName "runScript" -verbose
+Set-AzureVMDscExtension -VM $demoVM -ConfigurationArchive "demo.ps1.zip" -StorageContext $storageContext -ConfigurationName "runScript" -Verbose
 
-#Azure Powershell batches commands until an update-AzureVM command is given
+#Update the configuration of an Azure Virtual Machine
 $demoVM | Update-AzureVM -Verbose
 
 #check on status
-get-azurevmdscextensionstatus -VM $demovm -verbose
+Get-AzureVMDscExtensionStatus -VM $demovm -Verbose
 ```
 
 ## Protokollierung ##
@@ -142,6 +142,6 @@ Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentations
 
 Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, finden Sie, indem Sie den [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) nach weiteren DSC-Ressourcen durchsuchen.
 
-Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Sicheres Verwalten von Anmeldeinformationen mit dem DSC-Erweiterungshandler](virtual-machines-windows-extensions-dsc-credentials.md).
+Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungs-Handler](virtual-machines-windows-extensions-dsc-credentials.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -22,17 +22,17 @@ In diesem Artikel wird beschrieben, wie Sie einen Microsoft HPC Pack-Cluster in 
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)].
 
-NAMD (Nanoscale Molecular Dynamics Program) ist ein paralleles Molecular Dynamics-Paket für die Simulation großer Biomolekularsysteme mit Millionen von Atomen, z. B. Viren, Zellstrukturen und große Proteine. NAMD skaliert für normale Simulationen auf Hunderte Kerne und für die größten Simulationen auf mehr als 500.000 Kerne.
+NAMD (Nanoscale Molecular Dynamics Program) ist ein paralleles Molecular Dynamics-Paket für die Simulation großer Biomolekularsysteme mit Millionen von Atomen, z. B. Viren, Zellstrukturen und große Proteine. NAMD skaliert für normale Simulationen auf Hunderte Kerne und für die größten Simulationen auf mehr als 500.000 Kerne.
 
 Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen Anwendungen, einschließlich MPI-Anwendungen, auf Clustern mit virtuellen Microsoft Azure-Computern. HPC Pack wurde ursprünglich als Lösung für Windows HPC-Workloads entwickelt und unterstützt jetzt die Ausführung von Linux HPC-Anwendungen auf Linux-Computeknoten-VMs, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung finden Sie unter [Erste Schritte mit Linux-Serverknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
 
 ## Voraussetzungen
 
-* **HPC Pack-Cluster mit Linux-Computeknoten**: Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-hpcpack-cluster-powershell-script) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Wenn Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012 R2-Hauptknoten und vier großen (A3) CentOS 6.6-Computeknoten besteht. Passen Sie dies je nach Bedarf für Ihre Umgebung an.
+* **HPC Pack-Cluster mit Linux-Computeknoten**: Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Falls Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012 R2-Hauptknoten und vier großen (A3) CentOS 6.6-Computeknoten besteht. Passen Sie dies je nach Bedarf für Ihre Umgebung an.
 
 
-* **NAMD-Software und Lernprogrammdateien**: Sie können die NAMD-Software für Linux von der [NAMD](http://www.ks.uiuc.edu/Research/namd/)-Website herunterladen (Registrierung erforderlich). Dieser Artikel basiert auf NAMD, Version 2.10, und verwendet das Archiv [Linux-x86\_64 (64-Bit-Intel/AMD mit Ethernet)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310), das Sie zum Ausführen von NAMD auf mehrere Linux-Computeknoten in einem Clusternetzwerk verwenden. Laden Sie auch die [NAMD-Lernprogrammdateien](http://www.ks.uiuc.edu/Training/Tutorials/#namd) herunter. Da es sich bei den Downloads um TAR-Dateien handelt, benötigen Sie ein Windows-Tool, um die Dateien auf dem Hauptknoten des Clusters zu extrahieren. Folgen Sie hierzu den Anweisungen weiter unten in diesem Artikel.
+* **NAMD-Software und Lernprogrammdateien**: Sie können die NAMD-Software für Linux von der [NAMD](http://www.ks.uiuc.edu/Research/namd/)-Website herunterladen (Registrierung erforderlich). Dieser Artikel basiert auf NAMD, Version 2.10, und verwendet das Archiv [Linux-x86\_64 (64-Bit-Intel/AMD mit Ethernet)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310), das Sie zum Ausführen von NAMD auf mehrere Linux-Computeknoten in einem Clusternetzwerk verwenden. Laden Sie auch die [NAMD-Lernprogrammdateien](http://www.ks.uiuc.edu/Training/Tutorials/#namd) herunter. Da es sich bei den Downloads um TAR-Dateien handelt, benötigen Sie ein Windows-Tool, um die Dateien auf dem Hauptknoten des Clusters zu extrahieren. Folgen Sie hierzu den Anweisungen weiter unten in diesem Artikel.
 
 * **VMD** (optional) – zum Anzeigen der Ergebnisse des NAMD-Auftrags laden Sie das Programm zur Molekularvisualisierung, [VMD](http://www.ks.uiuc.edu/Research/vmd/), auf einen Computer Ihrer Wahl herunter und installieren es. Die aktuelle Version ist 1.9.2. Informationen zu den ersten Schritten finden Sie auf der Downloadwebsite von VMD.
 
@@ -62,7 +62,7 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
 ### Hinzufügen des Schlüsselpaars zum HPC Pack-Cluster
 1.	Stellen Sie mit dem HPC Pack-Administratorkonto (das Administratorkonto, das Sie mit dem Bereitstellungsskript eingerichtet haben) eine Remotedesktopverbindung mit dem Hauptknoten her.
 
-2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen "hpclab\\hpcuser" erstellen.
+2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen "hpclab\\hpcuser" erstellen.
 
 3. Fügen Sie den Domänenbenutzer dem HPC Pack-Cluster als Clusterbenutzer hinzu. Weitere Informationen finden Sie unter [Add or Remove Cluster Users](https://technet.microsoft.com/library/ff919330.aspx) (Hinzufügen oder Entfernen von Clusterbenutzern).
 
@@ -146,7 +146,7 @@ Es folgen Details dazu, was mit diesem Bash-Skript durchgeführt wird. Wenn Sie 
     <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>…
     ```
 
-    Hier werden die Gesamtzahl der Knoten, die Knotennamen und die Anzahl der Kerne auf jedem Knoten aufgelistet, die dem Auftrag zugeordnet sind. Wenn der Auftrag z. B. 10 Kerne zum Ausführen benötigt, ist der Wert von "$CCP\_NODES\_CORES" etwa wie folgt:
+    Hier werden die Gesamtzahl der Knoten, die Knotennamen und die Anzahl der Kerne auf jedem Knoten aufgelistet, die dem Auftrag zugeordnet sind. Wenn der Auftrag z. B. 10 Kerne zum Ausführen benötigt, ist der Wert von "$CCP\_NODES\_CORES" etwa wie folgt:
 
     ```
     3 CENTOS66LN-00 4 CENTOS66LN-01 4 CENTOS66LN-03 2
@@ -230,11 +230,11 @@ Jetzt können Sie einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln.
 
 2.  Klicken Sie in **Job Management** auf **Neuer Auftrag**.
 
-3.	Geben Sie einen Namen für den Auftrag ein, z. B. *hpccharmrun*.
+3.	Geben Sie einen Namen für den Auftrag ein, z. B. *hpccharmrun*.
 
     ![Neuer HPC-Auftrag][namd_job]
 
-4.	Wählen Sie auf der Seite **Auftragsdetails** unter **Job Resources** den Ressourcentyp **Knoten** aus, und legen Sie **Minimum** auf "3" fest. In diesem Beispiel führen wir den Auftrag auf 3 Linux-Knoten aus, von denen jeder über 4 Kerne verfügt.
+4.	Wählen Sie auf der Seite **Auftragsdetails** unter **Job Resources** den Ressourcentyp **Knoten** aus, und legen Sie **Minimum** auf "3" fest. In diesem Beispiel führen wir den Auftrag auf 3 Linux-Knoten aus, von denen jeder über 4 Kerne verfügt.
 
     ![Auftragsressourcen][job_resources]
 
@@ -415,4 +415,4 @@ exit ${RTNSTS}
 [task_details]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/vmd_view.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

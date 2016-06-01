@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 #Landeskennzahlen
+
+[AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
 Das Feature **Länderfilter** verwendet Landeskennzahlen, um die Länder zu definieren, von denen aus eine Anforderung für ein sicheres Verzeichnis zugelassen oder blockiert wird. Die folgende Tabelle enthält alle Landeskennzahlen. Wenn Sie "EU" (Europa) oder "AP" (Asien/Pazifik) angeben, wird eine Teilmenge der IP-Adressen, die aus einem Land in diesen Regionen stammen, blockiert oder zugelassen. Details zur Verwendung des Länderfilterfeatures finden Sie unter [Einschränken des Zugriffs auf Ihre Inhalte nach Ländern](cdn-restrict-access-by-country.md).
 
@@ -268,4 +270,4 @@ Das Feature **Länderfilter** verwendet Landeskennzahlen, um die Länder zu defi
 | ZM | Sambia | |
 | ZW | Simbabwe | |
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

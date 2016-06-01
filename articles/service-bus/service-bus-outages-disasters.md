@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="Schützen von Service Bus-Anwendungen vor Ausfällen und Notfällen | Microsoft Azure"
-   description="Es werden Verfahren beschrieben, die Sie zum Schützen von Anwendungen vor einem potenziellen Service Bus-Ausfall verwenden können."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" /> 
+    pageTitle="Schützen von Service Bus-Anwendungen vor Ausfällen und Notfällen | Microsoft Azure"
+    description="Es werden Verfahren beschrieben, die Sie zum Schützen von Anwendungen vor einem potenziellen Service Bus-Ausfall verwenden können."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 
 Unternehmenswichtige Anwendungen müssen ohne Unterbrechung ausgeführt werden. Dies gilt auch bei ungeplanten Ausfällen oder in Notsituationen. In diesem Thema werden Verfahren beschrieben, mit denen Sie Service Bus-Anwendungen vor einem potenziellen Dienstausfall oder Notfällen schützen können.
 
-Ein Ausfall wird als vorübergehende Nichtverfügbarkeit von Azure Service Bus definiert. Der Ausfall kann nur einige Komponenten von Service Bus betreffen, z. B. einen Nachrichtenspeicher, oder auch das gesamte Rechenzentrum. Nachdem das Problem behoben wurde, ist Service Bus wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für den Ausfall einer Komponente ist die Nichtverfügbarkeit eines bestimmten Nachrichtenspeichers. Beispiele für den Ausfall eines gesamten Rechenzentrums sind ein Stromausfall im Rechenzentrum oder ein fehlerhafter Netzwerkswitch im Rechenzentrum. Ein Ausfall kann einige Minuten oder auch bis zu einigen Tagen dauern.
+Ein Ausfall wird als vorübergehende Nichtverfügbarkeit von Azure Service Bus definiert. Der Ausfall kann nur einige Komponenten von Service Bus betreffen, z. B. einen Nachrichtenspeicher, oder auch das gesamte Rechenzentrum. Nachdem das Problem behoben wurde, ist Service Bus wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für den Ausfall einer Komponente ist die Nichtverfügbarkeit eines bestimmten Nachrichtenspeichers. Beispiele für den Ausfall eines gesamten Rechenzentrums sind ein Stromausfall im Rechenzentrum oder ein fehlerhafter Netzwerkswitch im Rechenzentrum. Ein Ausfall kann einige Minuten oder auch bis zu einigen Tagen dauern.
 
 Ein Notfall wird als dauerhafter Verlust einer Service Bus-Skalierungseinheit oder eines Rechenzentrums definiert. Das Rechenzentrum kann danach wieder zur Verfügung stehen oder auch nicht. Häufig gehen bei einem Notfall einige oder alle Nachrichten oder anderen Daten verloren. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben.
 
@@ -27,11 +27,11 @@ Ein Notfall wird als dauerhafter Verlust einer Service Bus-Skalierungseinheit od
 
 Service Bus nutzt mehrere Nachrichtenspeicher zum Speichern von Nachrichten, die an Warteschlangen oder Themen gesendet werden. Eine nicht partitionierte Warteschlange bzw. ein Thema ist einem Nachrichtenspeicher zugewiesen. Wenn dieser Nachrichtenspeicher nicht verfügbar ist, treten für alle Vorgänge der Warteschlange oder des Themas Fehler auf.
 
-Alle Service Bus-Nachrichtenentitäten (Warteschlangen, Themen, Relays) befinden sich in einem Dienstnamespace, der einem Rechenzentrum zugeordnet ist. Service Bus ermöglicht keine automatische Georeplikation von Daten, und es ist auch nicht zulässig, dass ein Dienstnamespace über mehrere Rechenzentren verläuft.
+Alle Service Bus-Nachrichtenentitäten (Warteschlangen, Themen, Relays) befinden sich in einem Dienstnamespace, der einem Rechenzentrum zugeordnet ist. Service Bus aktiviert weder die automatische Georeplikation von Daten noch erlaubt es die Verwendung eines Namespace für mehrere Rechenzentren.
 
 ## Schutz vor ACS-Ausfällen
 
-Wenn Sie ACS-Anmeldeinformationen verwenden und ACS nicht verfügbar ist, können Clients keine Token mehr abrufen. Clients, die während des ACS-Ausfalls über ein Token verfügen, können Service Bus weiter nutzen, bis die Token ablaufen. Die Standardgültigkeitsdauer von Token beträgt 3 Stunden.
+Wenn Sie ACS-Anmeldeinformationen verwenden und ACS nicht verfügbar ist, können Clients keine Token mehr abrufen. Clients, die während des ACS-Ausfalls über ein Token verfügen, können Service Bus weiter nutzen, bis die Token ablaufen. Die Standardgültigkeitsdauer von Token beträgt 3 Stunden.
 
 Verwenden Sie zum Schutz vor ACS-Ausfällen Shared Access Signature (SAS)-Token. In diesem Fall führt der Client die Authentifizierung direkt mit Service Bus durch, indem ein selbsterstelltes Token mit einem geheimen Schlüssel signiert wird. Aufrufe von ACS sind dann nicht mehr erforderlich. Weitere Informationen zu SAS-Token finden Sie unter [Service Bus-Authentifizierung][].
 
@@ -41,7 +41,7 @@ Eine nicht partitionierte Warteschlange bzw. ein Thema ist einem Nachrichtenspei
 
 ## Schutz vor Ausfällen von Rechenzentren oder Notfällen
 
-Um ein Failover zwischen zwei Rechenzentren zu ermöglichen, können Sie in jedem Rechenzentrum einen Service Bus-Dienstnamespace erstellen. Beispielsweise kann sich der Service Bus-Dienstnamespace **contosoPrimary.servicebus.windows.net** in der Region USA Nord Mitte befinden, während sich **contosoSecondary.servicebus.windows.net** in der Region USA Süd Mitte befindet. Wenn eine Service Bus-Nachrichtenentität bei einem Ausfall des Rechenzentrums verfügbar bleiben muss, können Sie die Entität in beiden Namespaces erstellen.
+Um ein Failover zwischen zwei Rechenzentren zu ermöglichen, können Sie in jedem Rechenzentrum einen Service Bus-Dienstnamespace erstellen. Beispielsweise kann sich der Service Bus-Dienstnamespace **contosoPrimary.servicebus.windows.net** in der Region „Nord/Mitte“ der USA befinden, während sich **contosoSecondary.servicebus.windows.net** in der US-Region „Süd/Mitte“ befindet. Wenn eine Service Bus-Nachrichtenentität bei einem Ausfall des Rechenzentrums verfügbar bleiben muss, können Sie die Entität in beiden Namespaces erstellen.
 
 Weitere Informationen finden Sie im Abschnitt „Ausfall von Service Bus in einem Azure-Rechenzentrum“ unter [Asynchrone Nachrichtenmuster und hohe Verfügbarkeit][].
 
@@ -61,7 +61,7 @@ Falls die Anwendung keine permanente Kommunikation vom Absender zum Empfänger e
 
 ## Aktive Replikation
 
-Bei der aktiven Replikation werden Entitäten in beiden Dienstnamespaces für jeden Vorgang verwendet. Von allen Clients, die eine Nachricht senden, werden jeweils zwei Exemplare derselben Nachricht gesendet. Die erste Kopie wird an die primäre Entität gesendet (z. B. **contosoPrimary.servicebus.windows.net/sales**), und die zweite Kopie der Nachricht wird an die sekundäre Entität gesendet (z. B. **contosoSecondary.servicebus.windows.net/sales**).
+Bei der aktiven Replikation werden für jeden Vorgang Entitäten in beiden Namespaces verwendet. Von allen Clients, die eine Nachricht senden, werden jeweils zwei Exemplare derselben Nachricht gesendet. Die erste Kopie wird an die primäre Entität gesendet (z. B. **contosoPrimary.servicebus.windows.net/sales**), und die zweite Kopie der Nachricht wird an die sekundäre Entität gesendet (z. B. **contosoSecondary.servicebus.windows.net/sales**).
 
 Ein Client empfängt Nachrichten aus beiden Warteschlangen. Der Empfänger verarbeitet die erste Kopie einer Nachricht, und die zweite Kopie wird unterdrückt. Damit doppelte Nachrichten unterdrückt werden können, muss der Absender jede Nachricht mit einem eindeutigen Bezeichner versehen. Beide Kopien der Nachricht müssen mit dem gleichen Bezeichner gekennzeichnet werden. Sie können die Eigenschaften [BrokeredMessage.MessageId][] oder [BrokeredMessage.Label][] oder auch eine benutzerdefinierte Eigenschaft zum Kennzeichnen der Nachricht verwenden. Der Empfänger muss eine Liste der Nachrichten vorhalten, die er bereits empfangen hat.
 
@@ -111,4 +111,4 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln
   [Geschäftskontinuität in Azure SQL-Datenbank]: ../sql-database/sql-database-business-continuity.md
   [Azure-Geschäftskontinuität – Technische Anleitung]: https://msdn.microsoft.com/library/azure/hh873027.aspx
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

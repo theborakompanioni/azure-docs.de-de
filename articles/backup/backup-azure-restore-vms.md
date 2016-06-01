@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="05/06/2016"
 	ms.author="trinadhk; jimpark;"/>
 
 
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Computer aus den Sic
 
 1. Geben Sie im Bildschirm **Wiederherstellungsinstanz auswählen** Details an, wo der virtuelle Computer wiederhergestellt werden soll.
 
-  - Geben Sie den Namen des virtuellen Computers an: In einem bestimmten Clouddienst sollte der Name des virtuellen Computers eindeutig sein. Wenn Sie beabsichtigen, einen vorhandenen virtuellen Computer durch denselben Namen zu ersetzen, löschen Sie zuerst den vorhandenen virtuellen Computer und die Datenträger, und stellen Sie dann die Daten aus Azure Backup wieder her.
+  - Geben Sie den Namen des virtuellen Computers an: In einem bestimmten Clouddienst sollte der Name des virtuellen Computers eindeutig sein. Das Überschreiben vorhandener VMs wird nicht unterstützt. 
   - Wählen Sie einen Clouddienst für den virtuellen Computer aus: Dies ist für das Erstellen eines virtuellen Computers erforderlich. Sie können entweder einen vorhandenen Clouddienst verwenden oder einen neuen Clouddienst erstellen.
 
         Es kann ein beliebiger Name für den Clouddienst gewählt werden, dieser muss jedoch eindeutig sein. Typischerweise wird der Clouddienstname einer öffentlich zugänglichen URL der Form "[Clouddienst].cloudapp.net" zugeordnet. Azure lässt die Erstellung eines neuen Clouddiensts nicht zu, wenn der Name bereits verwendet wird. Wenn Sie einen neuen Clouddienst erstellen, erhält dieser denselben Namen wie der virtuelle Computer – deshalb sollte der gewählte VM-Name eindeutig sein, um auf den zugeordneten Clouddienst angewendet werden zu können.
@@ -101,6 +101,12 @@ Nach dem Abschluss des Wiederherstellungsvorgangs wird dieser auf der Registerka
 ![Wiederherstellungsauftrag abgeschlossen](./media/backup-azure-restore-vms/restore-job-complete.png)
 
 Nach dem Wiederherstellen des virtuellen Computers müssen Sie möglicherweise die auf dem ursprünglichen virtuellen Computer vorhandenen Erweiterungen neu installieren und für den virtuellen Computer im Azure-Portal [die Endpunkte ändern](virtual-machines-set-up-endpoints).
+
+## Sicherung für wiederhergestellte virtuelle Computer
+Wenn Sie den virtuellen Computer unter dem gleichen Clouddienst mit dem gleichen Namen wie die ursprünglich gesicherte VM wiederhergestellt haben, wird die VM nach der Wiederherstellung weiterhin gesichert. Wenn Sie entweder die VM unter einem anderen Clouddienst wiederhergestellt oder einen anderen Namen für die wiederhergestellte VM angegeben haben, wird sie als neue VM behandelt, und Sie müssen die Sicherung für die wiederhergestellte VM einrichten.
+
+## Wiederherstellen eines virtuellen Computers während einer Azure-Datencenter-Notfallwiederherstellung
+Mit Azure Backup können gesicherte virtuelle Computer im gekoppelten Datencenter wiederhergestellt werden, falls in dem primären Datencenter, in dem VMs ausgeführt werden, ein Notfall eingetreten ist, und Sie den Sicherungstresor als georedundant konfiguriert haben. Bei solchen Szenarien müssen Sie ein Speicherkonto auswählen, das im gekoppelten Datencenter vorhanden ist – ansonsten ändert sich am Wiederherstellungsprozess nichts. Azure Backup verwendet den Computedienst des gekoppelten georedundanten Datencenters, um den wiederhergestellten virtuellen Computer zu erstellen.
 
 ## Wiederherstellen von virtuellen Computern des Domänencontrollers
 Die Sicherung von virtuellen Computern des Domänencontrollers wird in Azure Backup unterstützt. Der Wiederherstellungsvorgang erfordert jedoch besondere Sorgfalt. Der Wiederherstellungsvorgang für virtuelle Computer eines Domänencontrollers in einer Konfiguration mit einem einzelnen Domänencontroller unterscheidet sich stark von der Wiederherstellung von virtuellen Computern in einer Konfiguration mit mehreren Domänencontrollern.
@@ -149,4 +155,4 @@ Zum vollständigen Wiederherstellen des virtuellen Computers im Anschluss an die
 - [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
 - [Verwalten virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

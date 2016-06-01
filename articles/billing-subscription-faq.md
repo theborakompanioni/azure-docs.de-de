@@ -123,7 +123,7 @@ Sie müssen ein Supportticket anfordern, um Hilfe anzufordern. Informationen zum
 
 ### Wie aktualisiere oder ändere ich meine Kreditkarteninformationen?
 
-Anweisungen zum Verwenden einer anderen Kreditkarte als Zahlungsmethode oder zum Hinzufügen einer neuen Kreditkarte finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md).
+Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt, können Sie einfach die Details der Kreditkarte (z.B. das Ablaufdatum) ändern. Wenn Ihre Kartennummer sich ändert, oder Sie eine andere Karte verwenden möchten, müssen Sie die neue Karte hinzufügen. Anweisungen zum Aktualisieren oder Hinzufügen einer Kreditkarte finden Sie hier: [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md).
 
 ### Wie werden wir vorab über den Ausfall des Diensts aufgrund einer geplanten Wartung informiert?
 
@@ -277,4 +277,4 @@ Ja.
 
 Derzeit ist nicht geplant, Azure oder SQL-Datenbank über einen Lizenzvertrag für Microsoft-Dienstanbieter anzubieten.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

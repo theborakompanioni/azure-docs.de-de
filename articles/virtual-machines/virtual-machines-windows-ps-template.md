@@ -23,11 +23,13 @@ Dieser Artikel bietet eine Einführung in Azure Resource Manager-Vorlagen und ze
 
 Die Ausführung der Schritte in diesem Artikel dauert ungefähr 20 Minuten.
 
+> [AZURE.IMPORTANT] Wenn der virtuelle Computer einer Verfügbarkeitsgruppe angehören soll, müssen Sie ihn bei seiner Erstellung der Gruppe hinzufügen. Derzeit ist es nicht möglich, einen virtuellen Computer einer Verfügbarkeitsgruppe hinzuzufügen, nachdem er erstellt wurde.
+
 ## Schritt 1: Erstellen der Vorlagendatei
 
-Sie können eine eigene Vorlage mithilfe der Informationen unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) erstellen. Sie können auch Vorlagen bereitstellen, die für Sie aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) erstellt wurden. Das in diesem Artikel verwendete Beispiel ähnelt der Vorlage, die unter [Bereitstellen eines einfachen virtuellen Windows-Computers in der Region „USA, Westen“](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/) beschrieben wurde.
+Sie können eine eigene Vorlage mithilfe der Informationen unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) erstellen. Sie können auch Vorlagen bereitstellen, die für Sie aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) erstellt wurden. Das in diesem Artikel verwendete Beispiel ähnelt der Vorlage, die unter [Deploy a simple Windows VM in West US](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers in der Region „USA, Westen“) beschrieben wird.
 
-1. Öffnen Sie Ihren bevorzugten Texteditor, und kopieren Sie diese JSON-Informationen in eine neue Datei namens *VirtualMachineTemplate.json*:
+1. Öffnen Sie Ihren bevorzugten Text-Editor, und kopieren Sie diese JSON-Informationen in eine neue Datei namens *VirtualMachineTemplate.json*:
 
         {
           "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -201,7 +203,7 @@ Sie können eine eigene Vorlage mithilfe der Informationen unter [Erstellen von 
 
 Um Werte für die Ressourcenparameter anzugeben, die in der Vorlage definiert wurden, müssen Sie eine Parameterdatei erstellen, die die Werte enthält und sie mit der Vorlage an den Ressourcen-Manager senden.
 
-1. Kopieren Sie im Texteditor diese JSON-Informationen in eine neue Datei namens *Parameters.json*:
+1. Kopieren Sie im Text-Editor diese JSON-Informationen in eine neue Datei namens *Parameters.json*:
 
         {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
@@ -218,7 +220,7 @@ Um Werte für die Ressourcenparameter anzugeben, die in der Vorlage definiert wu
 
 ## Schritt 3: Installieren von Azure PowerShell
 
-Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich am Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 ## Schritt 4: Erstellen einer Ressourcengruppe
 
@@ -228,7 +230,7 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
 
 	    Get-AzureLocation | sort Name | Select Name
 
-2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z. B. **USA, Mitte**. Erstellen Sie die Variable.
+2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z.B. **USA, Mitte**. Erstellen Sie die Variable.
 
         $locName = "location name"
         
@@ -282,4 +284,4 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
 - Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
 - Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

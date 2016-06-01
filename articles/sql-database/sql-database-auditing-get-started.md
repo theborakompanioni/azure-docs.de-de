@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="05/17/2016"
 	ms.author="carlrabeler; ronitr"/>
- 
+
 # Erste Schritte bei der Überwachung von SQL-Datenbank
 Die Azure SQL-Datenbanküberwachung verfolgt Datenbankereignisse und schreibt überwachte Ereignisse in ein Überwachungsprotokoll in Ihr Azure-Speicherkonto. Die Überwachung ist in den Tarifen Basic, Standard und Premium allgemein verfügbar.
 
@@ -57,7 +57,7 @@ Weitere Einzelheiten zu den überwachten Aktivitäten und Ereignissen finden Sie
 
 Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Standardserverrichtlinie definiert werden. Eine Standardrichtlinie für die Serverüberwachung wird auf alle Datenbanken auf einem Server angewendet, für die keine Datenbanküberwachungsrichtlinie definiert wurde, die Vorrang hat.
 
-Überprüfen Sie vor der Einrichtung der Überwachung, ob Sie einen [kompatiblen Client](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) verwenden.
+Überprüfen Sie vor der Einrichtung der Überwachung, ob Sie einen [kompatiblen Client](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) verwenden. Beachten Sie außerdem, falls Sie strenge Firewalleinstellungen haben, dass der [IP-Endpunkt Ihrer Datenbank verändert wird](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md), wenn Sie die Überwachung aktivieren.
 
 
 ##<a id="subheading-2"></a>Einrichten der Überwachung für Ihre Datenbank
@@ -140,7 +140,7 @@ In der Produktion werden Sie wahrscheinlich Ihre Speicherschlüssel regelmäßig
 3. Wechseln Sie zurück zum Blatt für die Überwachungskonfiguration, ändern Sie den **Speicherzugriffsschlüssel** von *Sekundär* in *Primär*, und klicken Sie auf **SPEICHERN**.
 
 4. Wechseln Sie zurück zur Speicherbenutzeroberfläche, und **generieren Sie erneut** den *sekundären Zugriffsschlüssel* (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
-  
+
 ##<a id="subheading-7"></a>Automatisierung
 Es gibt mehrere PowerShell-Cmdlets, die Sie zum Konfigurieren der Überwachung in Azure SQL-Datenbank verwenden können.
 
@@ -175,7 +175,4 @@ Es gibt mehrere PowerShell-Cmdlets, die Sie zum Konfigurieren der Überwachung i
 [7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_classic_portal_storage.png
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_storage_key_rotation.png
 
-
- 
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

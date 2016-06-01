@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/29/2016"
+	ms.date="05/19/2016"
 	ms.author="deonhe"/>
 
 # Liste verwalteter Connectors
@@ -27,7 +27,7 @@ Informationen zu Preisen und eine Liste der auf den einzelnen Dienstebenen verf�
 
 Wählen Sie ein Symbol aus, um zu erfahren, wie Sie über diese Connectors schnell Apps zum Aufrufen der Dienste erstellen können. Diese Connectors können zum Erstellen von Logik-Apps, PowerApps und Flows verwendet werden.
 
-|APIs||||
+|Connectors||||
 |-----------|-----------|-----------|-----------|
 |[![API-Symbol][blobicon]<br/>**Azure Blob**][azureblobdoc]|[![API-Symbol][bingsearchicon]<br/>**Bing-Suche**][bingsearchdoc]|[![API-Symbol][boxicon]<br/>**Box**][boxDoc]|[![API-Symbol][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|
 |[![API-Symbol][dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API-Symbol][facebookicon]<br/>**Facebook**][facebookdoc]|[![API-Symbol][ftpicon]<br/>**FTP**][ftpdoc]|[![API-Symbol][githubicon]<br/>**GitHub**][githubdoc]|
@@ -35,9 +35,8 @@ Wählen Sie ein Symbol aus, um zu erfahren, wie Sie über diese Connectors schne
 |[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API-Symbol][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API-Symbol][onedriveicon]<br/>**OneDrive<br/>for Business**][onedriveforbusinessdoc]|
 |[![API-Symbol][outlookicon]<br/>**Outlook**][outlookdoc]|[![API-Symbol][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API-Symbol][rssicon]<br/>**RSS**][rssdoc]|[![API-Symbol][salesforceicon]<br/>**Salesforce**][salesforcedoc]|
 |[![API-Symbol][sendgridicon]<br/>**SendGrid**][sendgriddoc]|[![API-Symbol][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API-Symbol][sftpicon]<br/>**SFTP**][sftpdoc]|[![API-Symbol][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|
-|[![API-Symbol][slackicon]<br/>**Slack**<br/>][slackdoc]|[![API-Symbol][smtpicon]<br/>**SMTP**][smtpdoc]|[![API-Symbol][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API-Symbol][sqlicon]<br/>**SQL Mashup**][mashupsqldoc]|
-|[![API-Symbol][trelloicon]<br/>**Trello**][trellodoc]|[![API-Symbol][twilioicon]<br/>**Twilio**][twiliodoc]|[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|
-[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
+|[![API-Symbol][slackicon]<br/>**Slack**<br/>][slackdoc]|[![API-Symbol][smtpicon]<br/>**SMTP**][smtpdoc]|[![API-Symbol][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API-Symbol][trelloicon]<br/>**Trello**][trellodoc]|
+[![API-Symbol][twilioicon]<br/>**Twilio**][twiliodoc]|[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
 
 > [AZURE.NOTE] Wenn Sie Logik-Apps mit dem Schema „2014-12-01-preview“ erstellt haben, werden Sie bemerken, dass die Enterprise Integration-Connectors, z.B. für BizTalk, oben nicht aufgeführt sind. Wir wissen, dass dies wichtig ist, und wir arbeiten hart daran, diese schnellstmöglich für Sie bereitzustellen. Wir können derzeit zwar noch kein genaues Verfügbarkeitsdatum angeben, aber diese Aufgabe gehört bei uns zu den Aufgaben mit der höchsten Priorität. In der Zwischenzeit können Sie auf Ihre [v1-APIs und BizTalk-APIs über Logik-Apps zugreifen](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/). Vielen Dank für Ihr Verständnis. Halten Sie sich hierüber auf dem Laufenden.
 
@@ -55,12 +54,11 @@ Es gibt zwei Arten von Triggern:
 Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Aktionen sind hilfreich für die Suche nach Daten, die dann bei der Ausführung der App verwendet werden können. Beispielsweise kann es sein, dass Sie bei der Verarbeitung einer Bestellung Daten in einer SQL-Datenbank suchen müssen. Oder Sie müssen möglicherweise Daten in eine Zieltabelle schreiben oder in dieser aktualisieren oder löschen. Sie können dazu die Aktionen verwenden, die von den Connectors bereitgestellt werden. Aktionen sind den in den Swagger-Metadaten definierten Vorgängen zugeordnet.
 
 
-[Neue Schemaversion „2015-08-01-preview“](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
-[Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md)  
-[Was ist Microsoft PowerApps Enterprise?](../power-apps/powerapps-get-started-azure-portal.md)  
-[Gewusst wie: Migrieren von Logik-Apps zur Schemaversion 2015-08-01-preview](connectors-schema-migration.md) 
+[Neuigkeiten](../app-service-logic/app-service-logic-schema-2015-08-01.md) [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) 
+[Erste Schritte mit PowerApps](../power-apps/powerapps-get-started-azure-portal.md) 
+[Migrieren vorhandener Logik-Apps zur neuesten Schemaversion](connectors-schema-migration.md)
 
-<!--API Documentation-->
+<!--Connectors Documentation-->
 [azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Verbindung mit Azure-Blob zum Verwalten der Dateien in Ihrem Blobcontainer."
 [bingsearchDoc]: ./connectors-create-api-bingsearch.md "Für die Suche in Bing im Web und nach Bildern, Nachrichten, und Videos."
 [boxDoc]: ./connectors-create-api-box.md "Stellt eine Verbindung mit Box her und kann zum Hochladen, Abrufen, Löschen, Auflisten und weitere Dateiaufgaben verwendet werden."
@@ -90,7 +88,6 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [mailchimpdoc]: ./connectors-create-api-mailchimp.md "Bessere E-Mails versenden"
 [smtpdoc]: ./connectors-create-api-smtp.md "Stellt eine Verbindung mit einem SMTP-Server her und kann E-Mails mit Anlagen senden."
 [sqldoc]: ./connectors-create-api-sqlazure.md "Stellt eine Verbindung mit einer SQL Azure-Datenbank her. Sie können Einträge in einer SQL-Datenbanktabelle erstellen, aktualisieren, abrufen und löschen."
-[mashupsqldoc]: ./connectors-create-api-mashupsql.md "Stellt eine Verbindung mit SQL her. Sie können Einträge in einer SQL-Datenbanktabelle erstellen, aktualisieren, abrufen und löschen."
 [trellodoc]: ./connectors-create-api-trello.md "Trello ist eine kostenlose, flexible und visuelle Möglichkeit, um etwas mit jemandem zu organisieren."
 [twiliodoc]: ./connectors-create-api-twilio.md "Stellt eine Verbindung mit Twilio her und kann Nachrichten und verfügbare Nummern abrufen, eingehende Telefonnummern verwalten usw."
 [twitterdoc]: ./connectors-create-api-twitter.md "Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets."
@@ -124,11 +121,10 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [slackicon]: ./media/apis-list/slackicon.png
 [smtpicon]: ./media/apis-list/smtpicon.png
 [sqlicon]: ./media/apis-list/sqlicon.png
-[mashupsqlicon]: ./media/apis-list/mashupsqlicon.png
 [trelloicon]: ./media/apis-list/trelloicon.png
 [twilioicon]: ./media/apis-list/twilioicon.png
 [twittericon]: ./media/apis-list/twittericon.png
 [wunderlisticon]: ./media/apis-list/wunderlisticon.png
 [yammericon]: ./media/apis-list/yammericon.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/28/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 
@@ -38,7 +38,7 @@ Auf dieser Seite erhalten Sie Informationen zum Einrichten eines Service Fabric-
 
 5. Ihnen wird nun ein Blatt **Service Fabric-Cluster erstellen** angezeigt, auf dem 4 Schritte aufgeführt sind.
 
-## Schritt 1: Grundeinstellungen
+## Schritt 1: Grundeinstellungen
 
 Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für Ihren Cluster angegeben werden.
 
@@ -57,7 +57,7 @@ Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für 
 
 5. Wählen Sie einen **Standort** aus der Dropdownliste aus. Der Standardwert ist **USA, Westen**. Klicken Sie auf "OK".
 
-## Schritt 2: Konfigurieren des Clusters
+## Schritt 2: Konfigurieren des Clusters
 
 10. Zunächst soll erläutert werden, was ein **Knotentyp** ist. Der Knotentyp kann als Äquivalent zu Rollen in Clouddiensten betrachtet werden. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Der Cluster kann über mehrere Knotentypen verfügen. Der primäre Knotentyp (der erste, den Sie im Portal definieren), muss jedoch mindestens fünf VMs aufweisen. Dies ist der Knotentyp, auf dem Service Fabric-Systemdienste platziert werden. Berücksichtigen Sie Folgendes, wenn Sie Ihre Anforderungen im Hinblick auf mehrere Knotentypen ermitteln.
 
@@ -69,13 +69,13 @@ Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für 
 
 13.  So konfigurieren Sie Ihren Knotentyp:
 
-	a. Wählen Sie einen Namen für Ihren Knotentyp aus (ein bis zwölf Zeichen, nur Buchstaben und Zahlen).
+	a. Wählen Sie einen Namen für Ihren Knotentyp aus (ein bis zwölf Zeichen, nur Buchstaben und Zahlen).
 
 	b. Die Mindestgröße von VMs für den primären Knotentyp hängt von der Dauerhaftigkeitsstufe ab, die Sie für den Cluster wählen. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen zum [Auswählen der Zuverlässigkeits- und Dauerhaftigkeitsmerkmale für Service Fabric-Cluster](service-fabric-cluster-capacity.md).
 
 	b. Wählen Sie die VM-Größe und den Tarif aus. Standardmäßig ist D4 Standard ausgewählt. Wenn Sie diesen Cluster jedoch nur zum Testen Ihrer Anwendung verwenden, können Sie auch D2 oder kleinere virtuelle Computer auswählen.
 
-	c. Die Mindestanzahl von VMs für den primären Knotentyp hängt von der Zuverlässigkeitsstufe ab, die Sie für den Cluster wählen. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Weitere Informationen zum [Auswählen der Zuverlässigkeits- und Dauerhaftigkeitsmerkmale für Service Fabric-Cluster](service-fabric-cluster-reliability-and-durability.md).
+	c. Die Mindestanzahl von VMs für den primären Knotentyp hängt von der Zuverlässigkeitsstufe ab, die Sie für den Cluster wählen. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Erfahren Sie mehr über das [Auswählen der Service Fabric-Clusterzuverlässigkeit und -dauerhaftigkeit](service-fabric-cluster-capacity.md).
 
 	c. Wählen Sie die Anzahl von VMs für den Knotentyp aus. Sie können die Anzahl von VMs auf einem Knotentyp später zentral hoch- oder herunterskalieren, beim primären Knotentyp wird die Mindestanzahl jedoch durch die gewählte Zuverlässigkeitsstufe bestimmt. Die anderen Knotentypen können über mindestens einen virtuellen Computer verfügen.
 
@@ -86,9 +86,9 @@ Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für 
 
 	a. Sie finden die Anwendungsports in Ihren Dienstmanifesten, die im Anwendungspaket enthalten sind. Rufen Sie Ihre Anwendungen auf, öffnen Sie die Dienstmanifeste, und notieren Sie alle Eingabeendpunkte, die Ihre Anwendung zum Kommunizieren mit der Außenwelt benötigt.
 
-	b. Fügen Sie im Feld **Anwendungseingabe-Endpunkte** alle Ports (durch Kommas getrennt) hinzu. Der Endpunkt der TCP-Client-Verbindung ist standardmäßig 19000, sodass Sie keinen angegeben müssen. Für die Beispielanwendung „WordCount“ muss beispielsweise Port 83 geöffnet sein. Sie finden dies im Anwendungspaket in der Datei „servicemanifest.xml“. (Es gibt möglicherweise mehrere Dateien des Namens „servicemanifest.xml“.)
+	b. Fügen Sie im Feld **Anwendungseingabe-Endpunkte** alle Ports (durch Kommas getrennt) hinzu. Der Endpunkt der TCP-Client-Verbindung ist standardmäßig 19000, sodass Sie keinen angegeben müssen. Für die Beispielanwendung „WordCount“ muss beispielsweise Port 83 geöffnet sein. Sie finden dies im Anwendungspaket in der Datei „servicemanifest.xml“. (Es gibt möglicherweise mehrere Dateien des Namens „servicemanifest.xml“.)
 
-    c. Die meisten Beispielanwendungen verwenden Port 80 und 8081. Fügen Sie diese also hinzu, wenn Sie Beispiele in diesem Cluster bereitstellen möchten. ![Ports][Ports]
+    c. Die meisten Beispielanwendungen verwenden Port 80 und 8081. Fügen Sie diese also hinzu, wenn Sie Beispiele in diesem Cluster bereitstellen möchten. ![Ports][Ports]
 
 10. Sie müssen keine **Platzierungseigenschaften** konfigurieren, da vom System eine standardmäßige Platzierungseigenschaft „NodeTypeName“ hinzugefügt wird. Wenn die Anwendung dies erfordert, können Sie weitere hinzufügen.
 
@@ -127,12 +127,10 @@ Sobald der Cluster erstellt wurde, können Sie Ihren Cluster im Portal überprü
 
 1. Wechseln Sie zu **Durchsuchen**, und klicken Sie auf **Service Fabric-Cluster**.
 
-2. Suchen Sie Ihren Cluster, und klicken Sie darauf. 
+2. Suchen Sie Ihren Cluster, und klicken Sie darauf. ![Screenshot der Suche nach dem Cluster im Portal.][BrowseCluster]
 
-![Screenshot der Suche nach dem Cluster im Portal.][BrowseCluster]
-3. Sie können jetzt die Details Ihres Clusters, einschließlich der öffentlichen IP-Adresse, im Dashboard anzeigen. Wenn Sie die Maus über **Öffentliche IP-Adresse des Clusters** bewegen, wird eine Zwischenablage angezeigt, in die Sie die Adresse kopieren können, indem Sie hinein klicken. 
+3. Sie können jetzt die Details Ihres Clusters, einschließlich der öffentlichen IP-Adresse, im Dashboard anzeigen. Wenn Sie die Maus über **Öffentliche IP-Adresse des Clusters** bewegen, wird eine Zwischenablage angezeigt, in die Sie die Adresse kopieren können, indem Sie hinein klicken. ![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]
 
-![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]
   Der Abschnitt **Knotenmonitor** auf dem Dashboardblatt des Clusters gibt die Anzahl von virtuellen Computern an, die fehlerfrei bzw. fehlerhaft sind. Weitere Informationen zur Clusterintegrität finden Sie unter [Service Fabric health model introduction (Einführung in die Service Fabric-Integritätsüberwachung)](service-fabric-health-introduction.md).
 
 >[AZURE.NOTE] Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es üblicherweise nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zunächst eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.
@@ -143,39 +141,39 @@ Nach Abschluss der Clustereinrichtung können Sie jetzt eine Verbindung herstell
 
 ### Herstellen einer Verbindung mit einem unsicheren Cluster
 
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
-    ```
+```powershell
+Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
+```
 
 ### Herstellen einer Verbindung mit einem sicheren Cluster
 
-    1. Führen Sie die folgenden Befehle aus, um das Zertifikat auf dem Computer einzurichten, den Sie zum Ausführen des PowerShell-Befehls „Connect-serviceFabricCluster“ verwenden möchten.
+1. Führen Sie die folgenden Befehle aus, um das Zertifikat auf dem Computer einzurichten, den Sie zum Ausführen des PowerShell-Befehls „Connect-serviceFabricCluster“ verwenden möchten.
 
-        ```powershell
-        Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-                -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-                -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-        ```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
 
-    2. Führen Sie den folgenden PS aus, um die Verbindung zu einem sicheren Cluster auszuführen. Die Details des Zertifikats entsprechen Ihren Angaben im Portal.
+2. Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem sicheren Cluster herzustellen. Die Zertifikatdetails entsprechen Ihren Angaben im Portal.
 
-        ```powershell
-        Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-                  -KeepAliveIntervalInSec 10 `
-                  -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-                  -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-                  -StoreLocation CurrentUser -StoreName My
-        ```
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
+              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
-Beispielsweise sollte der PS-Befehls oben wie der Folgende aussehen.
+    Beispielsweise sollte der obige PowerShell-Befehl ähnlich wie der Folgende aussehen:
 
-        ```powershell
-        Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
-                  -KeepAliveIntervalInSec 10 `
-                  -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
-                  -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
-                  -StoreLocation CurrentUser -StoreName My
-        ```
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
+              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
 ### Bereitstellen Ihrer App
 Nachdem Sie die Verbindung hergestellt haben, führen Sie die folgenden Befehle zum Bereitstellen der Anwendung aus. Ersetzen Sie dabei die angezeigten Pfade durch die entsprechenden Pfade auf Ihrem Computer. Im folgenden Beispiel wird die Beispielanwendung zur Wortzählung bereitgestellt:
@@ -209,7 +207,7 @@ Nachdem Sie die Verbindung hergestellt haben, führen Sie die folgenden Befehle 
 
 ## Herstellen einer Remoteverbindung mit einer Instanz der VM-Skalierungsgruppe oder einem Clusterknoten
 
-Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Ausführliche Informationen finden Sie unter [How to RDP into your VMSS instance (Herstellen einer Verbindung mit Ihrer VMSS-Instanz per RDP)](service-fabric-cluster-nodetypes.md).
+Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node).
 
 ## Nächste Schritte
 
@@ -231,4 +229,4 @@ Machen Sie sich nach dem Erstellen eines Clusters mit dem Schützen des Clusters
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

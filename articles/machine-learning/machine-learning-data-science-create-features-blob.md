@@ -13,23 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/10/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #Erstellen von Features für Azure-Blob-Speicherdaten mithilfe von Panda
 
-
-##Einführung
-
-In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-Blob-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets erstellen. Nach der Beschreibung des Ladens von Daten in einen Panda-Datenrahmen wird erläutert, wie kategorische Features mit Indikatorwerten und Klassifizierungsfeatures mithilfe von Python-Skripts generiert werden.
+In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets erstellen. Nach der Beschreibung des Ladens der Daten in einen Panda-Datenrahmen wird erläutert, wie mithilfe von Python-Skripts mit Indikatorwerten und Klassifizierungsfeatures kategorische Features generiert werden.
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Ein Azure-Blob-Speicherkonto erstellt haben, in dem Sie Daten speichern. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../hdinsight-get-started.md#storage)
+## Voraussetzungen
+In diesem Artikel wird davon ausgegangen, dass Sie ein Azure-Blobspeicherkonto erstellt und darin Ihre Daten gespeichert haben. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../hdinsight-get-started.md#storage)
 
 
 ## Laden der Daten in ein Pandas-DataFrame
@@ -141,4 +137,4 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

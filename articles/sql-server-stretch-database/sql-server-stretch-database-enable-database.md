@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # Aktivieren von Stretch-Datenbank für eine Datenbank
@@ -133,4 +133,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 
 [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

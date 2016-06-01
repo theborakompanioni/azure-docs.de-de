@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2016" 
+	ms.date="04/28/2016" 
 	ms.author="sdanie"/>
 
 # FAQ zu Azure API Management
@@ -35,6 +35,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Info
 -	[Ist die Gateway-IP-Adresse für API Management konstant? Kann ich sie in Firewallregeln verwenden?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
 -	[Kann ich einen OAuth 2.0-Autorisierungsserver mit AD FS-Sicherheit konfigurieren?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
 -	[Welche Routingmethode verwendet API Management in einer Bereitstellung in mehreren geografischen Standorten?](#what-routing-method-does-api-management-use-when-deployed-to-multiple-geographic-locations)
+-	[Kann ich eine API Management-Dienstinstanz mithilfe einer ARM-Vorlage erstellen?](#can-i-create-an-api-management-service-instance-using-an-arm-template)
 
 
 
@@ -42,7 +43,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Info
 
 -	Sie können Ihre Fragen im [MSDN-Forum zu API Management](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt) stellen.
 -	Sie können uns eine E-Mail an folgende Adresse senden: `apimgmt@microsoft.com`.
--	Sie können uns eine [Anfrage zu einem Feature](https://feedback.azure.com/forums/248703-api-management) senden.
+-	Sie können uns einen [Funktionswunsch](https://feedback.azure.com/forums/248703-api-management) übermitteln.
 
 ### Was bedeutet es, wenn ein Feature sich in der Vorschau befindet?
 
@@ -53,8 +54,8 @@ Ein Feature, das sich in der Vorschauphase befindet, ist funktionell abgeschloss
 Es werden verschiedene Optionen unterstützt.
 
 1. Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Konfigurieren der API-Einstellungen](api-management-howto-create-apis.md#configure-api-settings).
-2. Verwenden Sie die gegenseitige SSL-Authentifizierung, die unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben ist.
-3. Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Wenn Sie über eine API Management-Instanz des Standard- oder Premium-Tarifs verfügen, bleibt die IP-Adresse des Gateways unverändert, und Sie können Ihre Whitelist für das Zulassen dieser IP-Adresse konfigurieren. Sie können die IP-Adresse Ihrer API Management-Instanz auf dem **Dashboard** im klassischen Azure-Portal abrufen.
+2. Verwenden Sie die gegenseitige SSL-Authentifizierung, wie sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben ist.
+3. Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Wenn Sie über eine API Management-Instanz des Standard- oder Premium-Tarifs verfügen, bleibt die IP-Adresse des Gateways unverändert, und Sie können Ihre Whitelist für das Zulassen dieser IP-Adresse konfigurieren. Sie können die IP-Adresse Ihrer API Management-Instanz im klassischen Azure-Portal auf dem **Dashboard** abrufen.
 4. Sie können Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz (klassisch) verbinden. Weitere Informationen finden Sie unter [Einrichten von VPN-Verbindungen in Azure API Management](api-management-howto-setup-vpn.md).
 
 ### Wie kann ich eine API Management-Instanz in eine neue Instanz kopieren?
@@ -71,7 +72,18 @@ Ja, Sie können die Instanz mithilfe der [API Management-REST-API](https://msdn.
 
 ### Wie kann ich Benutzer zur Administratorengruppe hinzufügen?
 
-Aktuell sind Administratoren auf Benutzer beschränkt, die sich über das klassische Azure-Portal und im Rahmen von Azure-Abonnements mit der API Management-Instanz als Administratoren oder Co-Administratoren anmelden. Benutzer, die im Herausgeberportal erstellt wurden, können nicht als Administratoren benannt oder zur Administratorengruppe hinzugefügt werden.
+Sie können dies mithilfe der folgenden Schritte erreichen:
+
+1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com) an. 
+2. Navigieren Sie zu der Ressourcengruppe, die die gewünschte API Management-Instanz enthält.
+3. Fügen Sie den gewünschten Benutzer zur Rolle „Mitwirkender für API Management“ hinzu.
+
+Nach diesem Schritt kann sich der neu hinzugefügte Administrator mithilfe von Azure PowerShell-[Cmdlets](https://msdn.microsoft.com/library/mt613507.aspx) als Administrator anmelden:
+
+1. Melden Sie sich mithilfe des `Login-AzureRmAccount`-Cmdlets an.
+2. Legen Sie den Kontext auf das Abonnement fest, das den Service enthält. Verwenden Sie dazu `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
+3. Rufen Sie das SSO-Token ab. Verwenden Sie dazu `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
+4. Kopieren Sie die URL, und fügen Sie sie in den Browser ein. Der Benutzer sollte nun Zugriff auf das Verwaltungsportal haben.
 
 
 ### Weshalb ist die Richtlinie, die ich hinzufügen möchte, im Richtlinien-Editor nicht aktiviert?
@@ -82,7 +94,7 @@ Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen 
 ### Wie erziele ich API-Versionsverwaltung mit API Management?
 
 -	Sie können in API Management separate APIs für die verschiedenen Versionen konfigurieren. Sie können z.B. `MyAPI v1` und `MyAPI v2` als unterschiedliche APIs bereitstellen, und Entwickler können auswählen, welche Version sie verwenden möchten.
--	Sie können Ihre API auch mit einer Dienst-URL konfigurieren, die kein Versionssegment enthält. Beispiel: `https://my.api`. Dann können Sie ein Versionssegment für die [URL umschreiben](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL)-Vorlage für jeden Vorgang konfigurieren. Sie können beispielsweise einen Vorgang mit der [URL-Vorlage](api-management-howto-add-operations.md#url-template) `/resource` und der [URL umschreiben](api-management-howto-add-operations.md#rewrite-url-template)-Vorlage `/v1/Resource` einrichten. Auf diese Weise können Sie den Wert des Versionssegments für jeden Vorgang separat ändern.
+-	Sie können Ihre API auch mit einer Dienst-URL konfigurieren, die kein Versionssegment enthält. Beispiel: `https://my.api`. Dann können Sie ein Versionssegment für die [URL-Umschreibevorlage](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) für jeden Vorgang konfigurieren. Sie können beispielsweise einen Vorgang mit der [URL-Vorlage](api-management-howto-add-operations.md#url-template) `/resource` und der [URL-Umschreibevorlage](api-management-howto-add-operations.md#rewrite-url-template) `/v1/Resource` einrichten. Auf diese Weise können Sie den Wert des Versionssegments für jeden Vorgang separat ändern.
 -	Wenn Sie ein „standardmäßiges“ Versionssegment in der Dienst-URL der API beibehalten möchten, können Sie für ausgewählte Vorgänge eine Richtlinie festlegen, die die [set-backend-service](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService)-Richtlinie nutzt, um den Anforderungspfad für das Back-End zu ändern.
 
 ### Wie kann ich mehrere Umgebungen für APIs konfigurieren, z.B. für Sandkasten und Produktion?
@@ -96,7 +108,7 @@ Zurzeit stehen folgenden Optionen zur Verfügung:
 
 Zurzeit bieten wir eingeschränkte Unterstützung für SOAP in Azure API Management an; wir untersuchen dieses Feature weiter. Wir sind sehr daran interessiert, Beispiel-WSDLs von Ihren Kunden sowie eine Beschreibung der Features zu erhalten, die sie benötigen. So können wir das Feature fokussiert weiterentwickeln. Nutzen Sie bitte die Kontaktinformationen unter [Wie kann ich dem API Management-Team eine Frage stellen?](#how-can-i-ask-a-question-to-the-api-management-team), um sich mit uns in Verbindung zu setzen.
 
-Wenn Sie das Feature sofort einsetzen möchten, finden Sie einige Problemumgehungen, die von unserer Community vorgeschlagen wurden, unter [Azure API Management - APIM, consuming a SOAP WCF service over HTTP](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html) (Azure API Management – APIM, zur Verwendung eines SOAP-WCF-Diensts über HTTP).
+Wenn Sie das Feature sofort einsetzen möchten, finden Sie einige Problemumgehungen, die von unserer Community vorgeschlagen wurden, unter [Azure API Management - APIM, consuming a SOAP WCF service over HTTP](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html) (Azure API Management – APIM, Verwendung eines SOAP-WCF-Diensts über HTTP).
 
 Die Implementierung der Lösung auf diese Weise erfordert die manuelle Konfiguration von Richtlinien und unterstützt keine WSDL-Import-/Exportvorgänge. Zudem müssen Benutzer den Text von Anforderungen formen, die mithilfe der Testkonsole im Entwicklerportal erstellt wurden.
 
@@ -121,4 +133,8 @@ Informationen zum Konfigurieren dieses Szenarios finden Sie unter [Using AD FS i
 
 API Management verwendet die [Routingmethode für Leistungsdatenverkehr](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method). Eingehender Datenverkehr wird zum nächstgelegenen API-Gateway weitergeleitet. Wenn eine Region offline geht, wird der eingehende Datenverkehr automatisch an das nächstgelegene Gateway weitergeleitet. Weitere Informationen zu Routingmethoden für Datenverkehr finden Sie unter [Traffic Manager-Routingmethoden](../traffic-manager/traffic-manager-routing-methods.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+### Kann ich eine API Management-Dienstinstanz mithilfe einer ARM-Vorlage erstellen?
+
+Ja. Weitere Informationen finden Sie in den Schnellstartvorlagen für den [Azure API Management-Dienst](http://aka.ms/apimtemplate).
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Node.js"
+	pageTitle="Herstellen von Verbindungen mit SQL-Datenbank mithilfe von Node.js | Microsoft Azure"
 	description="Zeigt ein Node.js-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank."
 	services="sql-database"
 	documentationCenter=""
@@ -38,4 +38,4 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 [Proof of Concept connecting to SQL using Node.js](https://msdn.microsoft.com/library/mt715784.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von Node.js)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
     
 # Problembehandlung bei der CDN-Dateikomprimierung
@@ -45,11 +45,13 @@ Zuerst sollten Sie eine schnelle Integritätsprüfung der Anforderung durchführ
 - Überprüfen Sie die Anforderung, die an die Endpunkt-URL gesendet wird (`<endpointname>.azureedge.net`), nicht Ihre ursprüngliche Anforderung.
 - Überprüfen Sie, ob die Anforderung einen **Accept-Encoding**-Header enthält und ob der Wert für diesen Header **gzip**, **deflate** oder **bzip2** enthält.
 
+> [AZURE.NOTE] **Azure CDN von Akamai**-Profile unterstützen nur **gzip**-Codierung.
+
 ![CDN-Anforderungsheader](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
 ### Überprüfen Sie die Komprimierungseinstellungen (Standard-CDN-Profil)
 
-> [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil sich im **Standard**-Tarif befindet.
+> [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil ein **Azure CDN Standard von Verizon**- oder **Azure CDN Standard von Akamai**-Profil ist.
 
 Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, und klicken Sie auf die Schaltfläche **Konfigurieren**.
 
@@ -60,7 +62,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 ### Überprüfen Sie die Komprimierungseinstellungen (Premium-CDN-Profil)
 
-> [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil sich im **Premium**-Tarif befindet.
+> [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil ein **Azure CDN Premium von Verizon**-Profil ist.
 
 Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, und klicken Sie auf die Schaltfläche **Verwalten**. Das zusätzliche Portal wird geöffnet. Zeigen Sie auf die Registerkarte **HTTP Groß** und dann auf das Flyout **Cacheeinstellungen**. Klicken Sie auf **Komprimierung**.
 
@@ -72,6 +74,8 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 ### Überprüfen, ob der Inhalt zwischengespeichert wird
 
+> [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil ein **Azure CDN von Verizon**-Profil (Standard oder Premium) ist.
+
 Überprüfen Sie mithilfe der Entwicklertools Ihres Browsers die Antwortheader, um sicherzustellen, dass die Datei in der Region zwischengespeichert wird, in der sie angefordert wird.
 
 - Überprüfen Sie den Antwortheader **Server**. Dieser Header sollte das Format **Plattform (POP-/Server-ID)** aufweisen, wie im Beispiel unten gezeigt.
@@ -81,9 +85,11 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 ### Überprüfen, ob die Datei die Größenanforderungen erfüllt
 
+> [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil ein **Azure CDN von Verizon**-Profil (Standard oder Premium) ist.
+
 Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanforderungen erfüllen:
 
 - Größer als 128 Bytes.
 - Kleiner als 1 MB.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

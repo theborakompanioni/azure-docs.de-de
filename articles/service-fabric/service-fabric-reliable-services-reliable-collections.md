@@ -34,7 +34,7 @@ Reliable Collections können als natürliche Weiterentwicklung der **System.Coll
 - Asynchron: APIs sind asynchron, um sicherzustellen, dass Threads bei einer E/A nicht blockiert werden.
 - Transaktional: APIs nutzen die Abstraktion von Transaktionen, damit Sie mehrere Reliable Collections auf einfache Weise in einem Dienst verwalten können.
 
-Zuverlässige Auflistungen zeichnen sich durch von Beginn an starke Konsistenzgarantien aus, was die Argumentation hinsichtlich Anwendungszuständen erleichtert. Eine starke Konsistenz wird erreicht, indem Transaktionscommits erst abgeschlossen werden, nachdem die gesamte Transaktion auf ein Quorum von Replikaten (einschließlich des primären Replikats) angewendet wurde. Um eine schwächere Konsistenz zu erreichen, können Anwendungen eine Bestätigung zurück an den Client/Antragsteller senden, bevor der asynchrone Commit zurückgegeben wird.
+Zuverlässige Auflistungen zeichnen sich durch von Beginn an starke Konsistenzgarantien aus, was die Argumentation hinsichtlich Anwendungszuständen erleichtert. Eine starke Konsistenz wird erreicht, indem Transaktionscommits erst abgeschlossen werden, nachdem die gesamte Transaktion in einem Mehrheitsquorum von Replikaten (einschließlich des primären Replikats) protokolliert wurde. Um eine schwächere Konsistenz zu erreichen, können Anwendungen eine Bestätigung zurück an den Client/Antragsteller senden, bevor der asynchrone Commit zurückgegeben wird.
 
 Die Reliable Collections-APIs sind eine Weiterentwicklung der APIs für gleichzeitige Auflistungen (im Namespace **System.Collections.Concurrent**):
 
@@ -55,7 +55,7 @@ Zuverlässige Auflistungen wählen automatisch je nach Vorgang und Rolle des Rep
 Es gibt zwei Isolationsstufen, die von zuverlässigen Auflistungen unterstützt werden:
 
 - **Wiederholbarer Lesevorgang**: Gibt an, dass Anweisungen keine Daten lesen können, die geändert wurden, für die aber von anderen Transaktionen noch kein Commit ausgeführt wurde. Darüber hinaus können von der aktuellen Transaktion gelesene Daten erst nach Abschluss dieser von anderen Transaktionen geändert werden. Weitere Informationen finden Sie unter [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
-- **Momentaufnahme**: Gibt an, dass von Anweisungen in einer Transaktion gelesene Daten der im Hinblick auf Transaktionen konsistenten Version der Daten entsprechen, die zu Beginn der Transaktion vorhanden waren. Die Transaktion kann nur Datenänderungen erkennen, die vor dem Start der Transaktion festgeschrieben wurden. Nach dem Start der aktuellen Transaktion von anderen Transaktionen vorgenommene Datenänderungen sind für Anweisungen, die in der aktuellen Transaktion ausgeführt werden, nicht sichtbar. Es erscheint daher, als ob die Anweisungen in einer Transaktion eine Momentaufnahme der festgeschriebenen Daten erhalten, die zu Beginn der Transaktion vorhanden waren. Weitere Informationen finden Sie unter [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+- **Momentaufnahme**: Gibt an, dass von Anweisungen in einer Transaktion gelesene Daten der im Hinblick auf Transaktionen konsistenten Version der Daten entsprechen, die zu Beginn der Transaktion vorhanden waren. Die Transaktion kann nur Datenänderungen erkennen, die vor dem Start der Transaktion festgeschrieben wurden. Nach dem Start der aktuellen Transaktion von anderen Transaktionen vorgenommene Datenänderungen sind für Anweisungen, die in der aktuellen Transaktion ausgeführt werden, nicht sichtbar. Es erscheint daher, als ob die Anweisungen in einer Transaktion eine Momentaufnahme der festgeschriebenen Daten erhalten, die zu Beginn der Transaktion vorhanden waren. Momentaufnahmen sind über zuverlässige Sammlungen hinweg konsistent. Weitere Informationen finden Sie unter [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
 
 Das zuverlässige Wörterbuch und die zuverlässige Warteschlange unterstützen beide "Read Your Writes". Mit anderen Worten sind jegliche Schreibvorgänge innerhalb einer Transaktion für den nachfolgenden Lesevorgang sichtbar, wenn dieser derselben Transaktion angehört.
 
@@ -87,9 +87,11 @@ Zuverlässige Auflistungen verwenden immer exklusive Sperren. Für Lesevorgänge
 
 Die Kompatibilitätsmatrix für Sperren finden Sie unten:
 
-| Anforderung\\Gewährt | Keine | Shared  | Aktualisieren | Exklusiv |
+| Anforderung\\Gewährt | Keine | Shared | Aktualisieren | Exklusiv |
+
 | ----------------- | :----------- | :----------- | :---------- | :----------- |
 | Shared  | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
+
 | Aktualisieren | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Exklusiv | Kein Konflikt | Konflikt: | Konflikt: | Konflikt: |
 
@@ -99,24 +101,28 @@ Das vorangegangene Deadlockszenario ist ein hervorragendes Beispiel, wie Aktuali
 
 ## Recommendations
 
-- Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen zurückgegeben wurde (z.B. `TryPeekAsync` oder `TryGetAsync`). Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
+- Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen (z.B. `TryPeekAsync` oder `TryGetValueAsync`) zurückgegeben wurde. Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
 - Tiefenkopieren Sie zurückgegebene benutzerdefinierte Objekte, bevor Sie diese ändern. Da bei Strukturen und integrierten Typen eine Wertübergabe erfolgt, ist hier keine Tiefenkopie erforderlich.
 - Verwenden Sie `TimeSpan.MaxValue` nicht für Timeouts. Timeouts sollten verwendet werden, um Deadlocks zu erkennen.
 - Erstellen Sie keine Transaktion innerhalb der `using`-Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
+- Stellen Sie sicher, die Ihre `IComparable<TKey>`-Implementierung richtig ist. Dies ist erforderlich, damit das System Prüfpunkte zusammenfügen kann.
+- Sie sollten zwecks Notfallwiederherstellung die Verwendung der Funktionen „Backup“ und „Wiederherstellung“ in Betracht ziehen.
 
 hier folgen einige Punkte, die es zu beachten gilt:
 
 - Das Standardtimeout beträgt 4 Sekunden für alle Reliable Collections-APIs. Die meisten Benutzer sollten diesen Wert nicht überschreiben.
 - Das Standardabbruchtoken ist `CancellationToken.None` in allen APIs für zuverlässige Auflistungen.
-- Der Schlüsseltyp-Parameter (*TKey*) für ein Reliable Dictionary muss `GetHashCode()` und `Equals()` richtig implementieren. Schlüssel müssen unveränderlich sein.
-- Aufzählungen haben innerhalb einer Auflistung konsistente Momentaufnahmen. Aufzählungen mehrerer Auflistungen sind jedoch nicht über Auflistungen hinweg konsistent.
+- Der Schlüsseltyp-Parameter (*TKey*) für ein zuverlässiges Wörterbuch muss `GetHashCode()` und `Equals()` richtig implementieren. Schlüssel müssen unveränderlich sein.
 - Zum Erreichen einer hohen Verfügbarkeit der zuverlässigen Auflistungen sollte jeder Dienst mindestens ein Ziel und eine Mindestgröße von 3 bei der Replikatgruppe haben.
+- Lesevorgänge auf dem sekundären Replikat dürfen Versionen lesen, die nicht im Quorum committet wurden. Dies bedeutet, dass Datenversionen, die von einem einzelnen sekundären Replikat gelesen werden, falsch weiterverarbeitet werden können. Da Lesevorgänge von primären Replikaten immer stabil sind, können hier nie fehlerhafte Versionen auftreten.
 
 ## Nächste Schritte
 
 - [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+- [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
+- [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 - [Erste Schritte mit Web-API-Diensten von Service Fabric](service-fabric-reliable-services-communication-webapi.md)
 - [Erweiterte Verwendung des Reliable Services-Programmiermodells](service-fabric-reliable-services-advanced-usage.md)
 - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

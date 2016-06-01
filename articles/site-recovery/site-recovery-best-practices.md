@@ -33,7 +33,7 @@ Site Recovery ist ein Azure-Dienst, der einen Beitrag zu Ihrer BCDR-Strategie le
 
 **Komponente** | **Replizieren in Azure (mit VMM)** | **Replizieren in Azure (ohne VMM)** | **Replizieren an einem sekundären Standort (mit VMM)**
 ---|---|---|---
-**VMM** | Mindestens einen VMM-Server, der unter System Center 2012 R2 ausgeführt wird. Der VMM-Server muss mindestens eine Cloud mit einer oder mehreren VMM-Hostgruppen enthalten. | Nicht zutreffend | In System Center 2012 R2 wird mindestens ein VMM-Server ausgeführt. Es wird ein VMM-Server an jedem Standort empfohlen. Der VMM-Server muss mindestens eine Cloud mit einer oder mehreren VMM-Hostgruppen enthalten. Für die Clouds sollte das Hyper-V-Funktionsprofil eingestellt sein. 
+**VMM** | Mindestens einen VMM-Server, der unter System Center 2012 R2 ausgeführt wird. Der VMM-Server muss mindestens eine Cloud mit einer oder mehreren VMM-Hostgruppen enthalten. | Nicht zutreffend | In System Center 2012 R2 wird mindestens ein VMM-Server ausgeführt. Es wird ein VMM-Server an jedem Standort empfohlen. Der VMM-Server muss mindestens eine Cloud mit einer oder mehreren VMM-Hostgruppen enthalten. Für die Clouds sollte das Hyper-V-Funktionsprofil eingestellt sein.
 **Hyper-V** | Mindestens ein Hyper-V-Hostserver im lokalen Rechenzentrum mit Windows Server 2012 R2 oder höher. Der Hyper-V-Server muss sich in einer Hostgruppe in einer VMM-Cloud befinden. | Mindestens ein Hyper-V-Server am Quell- und Zielstandort mit Windows Server 2012 R2 oder höher. | Mindestens ein Hyper-V-Server am Quell- und Zielstandort mit Windows Server 2012 oder höher mit den aktuellsten Updates. Der Hyper-V-Server muss sich in einer Hostgruppe in einer VMM-Cloud befinden.
 **Virtuelle Computer** | Sie benötigen mindestens eine VM auf dem Hyper-V-Quellserver. VMs, für die eine Replikation in Azure ausgeführt wird, müssen die [Anforderungen für virtuelle Azure-Computer](#azure-virtual-machine-requirements) erfüllen. <br> Sie können die [Integration Services](https://technet.microsoft.com/library/dn798297.aspx) in der VM installieren oder aktualisieren, indem Sie die [hier](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4) angegebenen Schritte ausführen. | Mindestens eine VM auf dem Hyper-V-Quellserver. VMs, für die eine Replikation in Azure ausgeführt wird, müssen die [Anforderungen für virtuelle Azure-Computer](#azure-virtual-machine-requirements) erfüllen. <br> Sie können die [Integration Services](https://technet.microsoft.com/library/dn798297.aspx) in der VM installieren oder aktualisieren, indem Sie die [hier](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4) angegebenen Schritte ausführen. | Mindestens eine VM in der VMM-Quellcloud <br> Sie können die [Integration Services](https://technet.microsoft.com/library/dn798297.aspx) in der VM installieren oder aktualisieren, indem Sie die [hier](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4) angegebenen Schritte ausführen.
 **Azure-Konto** | Sie benötigen ein [Azure](https://azure.microsoft.com/)-Konto und ein Azure-Abonnement. | Nicht zutreffend | Sie benötigen ein [Azure](https://azure.microsoft.com/)-Konto und ein Azure-Abonnement.
@@ -57,9 +57,9 @@ In der Tabelle werden die Anforderungen für die Replikation von VMware-VMs und 
 
 **Komponente** | **Replizieren in Azure (erweitert)** | **Replizieren an einem sekundären Standort**
 ---|---|---
-**Lokaler primärer Standort** | Sie installieren einen Verwaltungsserver, auf dem alle Site Recovery-Komponenten (Konfiguration, Prozess, Masterziel) ausgeführt werden. | Sie installieren einen Prozessserver zum Zwischenspeichern, Komprimieren und Verschlüsseln von replizierten Daten, bevor diese an den sekundären Standort gesendet werden. Sie können zusätzliche Prozessserver für den Lastenausgleich oder für Fehlertoleranz installieren. 
-**Lokaler sekundärer Standort** | Nicht zutreffend | Sie installieren einen einzelnen Konfigurationsserver, der zum Konfigurieren, Verwalten und Überwachen der Bereitstellung verwendet wird.<br/><br>Es wird empfohlen, einen vContinuum-Server zu installieren, um die Serververwaltung zu vereinfachen.<br/><br/>Sie müssen den Masterzielserver als virtuellen Computer einrichten, der auf dem sekundären vSphere-Server ausgeführt wird. 
-**VMware vCenter/ESXi** | Für die Replikation von VMware-VMs (oder das Failback physischer Server) an Ihrem primären Standort benötigen Sie einen vSphere ESX/ESXi-Host am primären Standort. Zum Verwalten der ESXi-Hosts wird außerdem ein vCenter-Server empfohlen. | Am primären und sekundären Standort benötigen Sie einen oder mehrere VMware ESXi-Hosts (sowie optional einen vCenter-Server). 
+**Lokaler primärer Standort** | Sie installieren einen Verwaltungsserver, auf dem alle Site Recovery-Komponenten (Konfiguration, Prozess, Masterziel) ausgeführt werden. | Sie installieren einen Prozessserver zum Zwischenspeichern, Komprimieren und Verschlüsseln von replizierten Daten, bevor diese an den sekundären Standort gesendet werden. Sie können zusätzliche Prozessserver für den Lastenausgleich oder für Fehlertoleranz installieren.
+**Lokaler sekundärer Standort** | Nicht zutreffend | Sie installieren einen einzelnen Konfigurationsserver, der zum Konfigurieren, Verwalten und Überwachen der Bereitstellung verwendet wird.<br/><br>Es wird empfohlen, einen vContinuum-Server zu installieren, um die Serververwaltung zu vereinfachen.<br/><br/>Sie müssen den Masterzielserver als virtuellen Computer einrichten, der auf dem sekundären vSphere-Server ausgeführt wird.
+**VMware vCenter/ESXi** | Für die Replikation von VMware-VMs (oder das Failback physischer Server) an Ihrem primären Standort benötigen Sie einen vSphere ESX/ESXi-Host am primären Standort. Zum Verwalten der ESXi-Hosts wird außerdem ein vCenter-Server empfohlen. | Am primären und sekundären Standort benötigen Sie einen oder mehrere VMware ESXi-Hosts (sowie optional einen vCenter-Server).
 **Failback** | Sie benötigen eine VMware-Umgebung, um ein Failback von Azure auszuführen. Dies gilt auch für die Replikation von physischen Servern.<br/><br/>Sie müssen einen Prozessserver als virtuellen Azure-Computer einrichten. <br/><br/>Der Konfigurationsserver fungiert als Masterzielserver. Aber wenn Failbacks bei großen Datenverkehrsvolumen ausgeführt werden, kann es ratsam sein, einen zusätzlichen lokalen Masterzielserver einzurichten. [Weitere Informationen](site-recovery-failback-azure-to-vmware-classic.md)| Failbacks vom sekundären zum primären Standort sind nur mit VMware möglich, selbst wenn das Failover bei einem physischen Computer ausgeführt wurde. Für das Failback müssen Sie einen Masterzielserver als einen virtuellen Computer auf dem primären vSphere-Server einrichten.
 **Azure-Konto** | Sie benötigen ein [Azure](https://azure.microsoft.com/)-Konto und ein Azure-Abonnement. | Nicht zutreffend
 **Azure-Speicher** | Sie benötigen ein [Azure-Speicherkonto](../storage/storage-redundancy.md#geo-redundant-storage), um replizierte Daten zu speichern. Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden bei einem Failover hochgefahren. | Nicht zutreffend
@@ -85,7 +85,7 @@ Anzahl von Betriebssystem-Datenträgern | 1 | Für die Überprüfung der Vorauss
 Anzahl von Datenträgern für Daten | Maximal 16 (der Höchstwert ist eine Funktion der Größe des erstellten virtuellen Computers: 16 = XL) | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Größe des VHD-Datenträgers | Maximal 1.023 GB | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
-Statische IP-Adresse | Unterstützt | Wenn für den primären virtuellen Computer eine statische IP-Adresse verwendet wird, können Sie die statische IP-Adresse für den virtuellen Computer angeben, der in Azure erstellt wird. Beachten Sie, dass statische IP-Adressen für einen virtuellen Linux-Computer unter Hyper-V nicht unterstützt werden. 
+Statische IP-Adresse | Unterstützt | Wenn für den primären virtuellen Computer eine statische IP-Adresse verwendet wird, können Sie die statische IP-Adresse für den virtuellen Computer angeben, der in Azure erstellt wird. Beachten Sie, dass statische IP-Adressen für einen virtuellen Linux-Computer unter Hyper-V nicht unterstützt werden.
 iSCSI-Datenträger | Nicht unterstützt | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Freigegebene VHD | Nicht unterstützt | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Fiber-Channel-Datenträger | Nicht unterstützt | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
@@ -112,7 +112,19 @@ Mit den folgenden Tipps können Sie Ihre Bereitstellung optimieren und skalieren
 - **RPO**: Site Recovery unterstützt beim Replizieren zu Azure eine nahezu synchrone Recovery Point Objective (RPO). So wird für eine ausreichende Bandbreite zwischen Ihrem Rechenzentrum und Azure gesorgt.
 
 
+##Dienst-URLs
+Stellen Sie sicher, dass die folgenden URLs vom Server aus zugänglich sind:
 
+
+**URLs** | **VMM zu VMM** | **VMM zu Azure** | **Hyper-V-Standort zu Azure** | **VMware zu Azure**
+---|---|---|---|---
+ *.accesscontrol.windows.net | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich
+ *.backup.windowsazure.com | | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich
+ *.hypervrecoverymanager.windowsazure.com | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich
+ *.store.core.windows.net | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich
+ *.blob.core.windows.net | | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich
+ https://www.msftncsi.com/ncsi.txt | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich | Zugriff erforderlich
+ https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi | | | | Zugriff erforderlich
 
 
 ## Nächste Schritte
@@ -127,4 +139,4 @@ Nachdem Sie die allgemeinen Bereitstellungsanforderungen kennengelernt und mitei
 - [Replizieren von Hyper-V-VMs an einem sekundären Standort mit SAN](site-recovery-vmm-san.md)
 - [Replizieren von Hyper-V-VMs mit einem einzelnen VMM-Server](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

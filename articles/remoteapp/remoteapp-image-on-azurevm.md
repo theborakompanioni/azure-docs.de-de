@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/05/2016" 
+    ms.date="05/12/2016" 
     ms.author="elizapo" />
 
 
@@ -21,7 +21,7 @@
 
 Sie können Azure RemoteApp-Images (mit den Apps, die Sie in der Sammlung freigeben) von einem virtuellen Azure-Computer erstellen. Alternativ können Sie ein Image eines virtuellen Computers aus dem Azure-VM-Imagekatalog verwenden, das allen Anforderungen an Azure RemoteApp-Images entspricht. Sie können dieses VM-Image als Ausgangspunkt für eigene VMs verwenden. Suchen Sie in der Bibliothek einfach nach dem Image "Windows Server Remote Desktop Session Host".
 
-Der Vorgang zum Erstellen eigener Images basierend auf einer Azure-VM umfasst zwei Schritte – Erstellen des Images und anschließendes Hochladen aus der Azure-VM-Bibliothek nach Azure RemoteApp.
+Der Vorgang zum Erstellen eigener Images basierend auf einer Azure-VM umfasst zwei Schritte – Erstellen des Images und anschließendes Hochladen aus der Azure-VM-Bibliothek nach Azure RemoteApp.
 
 ## Erstellen benutzerdefinierter Images auf Grundlage einer Azure-VM
 
@@ -54,8 +54,8 @@ Führen Sie diese Schritte aus, um das neue Image in Azure RemoteApp zu importie
 3. Wählen Sie auf der nächsten Seite das benutzerdefinierte Image aus der Liste aus, und bestätigen Sie, dass Sie die bei der Erstellung des Images aufgeführten Schritte ausgeführt haben. Klicken Sie auf **Weiter**.
 4. Geben Sie einen Namen für das neue RemoteApp-Image ein, und wählen Sie den Speicherort aus. Klicken Sie dann auf das Häkchen, um den Importvorgang zu starten.
 
-> [AZURE.NOTE] Sie können Images von jedem Azure-Speicherort, der virtuelle Azure-Computer unterstützt, in jeden Azure-Speicherort importieren, der von Azure-RemoteApp unterstützt wird. Je nach Speicherort kann der Importvorgang bis zu 25 Minuten dauern.
+> [AZURE.NOTE] Sie können Images von jedem Azure-Speicherort, der virtuelle Azure-Computer unterstützt, in jeden Azure-Speicherort importieren, der von Azure-RemoteApp unterstützt wird. Je nach Speicherort kann der Importvorgang bis zu 25 Minuten dauern.
 
-Sie können jetzt Ihre neue Sammlung erstellen – je nach Anforderung entweder eine [Cloudsammlung](remoteapp-create-cloud-deployment.md) oder eine [Hybridsammlung](remoteapp-create-hybrid-deployment.md).
+Sie können jetzt Ihre neue Sammlung erstellen – je nach Anforderung entweder eine [Cloudsammlung](remoteapp-create-cloud-deployment.md) oder eine [Hybridsammlung](remoteapp-create-hybrid-deployment.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

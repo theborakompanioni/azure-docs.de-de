@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="04/19/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Bereitstellen von Registrierung und Anmeldung für Kunden mit LinkedIn-Konten
@@ -38,18 +38,18 @@ Um LinkedIn als Identitätsanbieter in Azure Active Directory (Azure AD) B2C ve
 
 	>[AZURE.NOTE] Der **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
 
-6. Geben Sie im Feld **Authorized Redirect URLs** (unter **OAuth 2.0**) den Wert `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contoso.onmicrosoft.com“). Klicken Sie auf **Add** und dann auf **Update**.
+6. Geben Sie im Feld **Authorized Redirect URLs** (unter **OAuth 2.0**) den Wert `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contoso.onmicrosoft.com“). Klicken Sie auf **Add** und dann auf **Update**. Beim Wert für **{tenant}** wird die Groß-/Kleinschreibung beachtet.
 
     ![LinkedIn – Einrichten einer App](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 
 ## Konfigurieren von LinkedIn als Identitätsanbieter in Ihrem Mandanten
 
 1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf dem Blatt „B2C-Funktionen“ auf **Identitätsanbieter**.
+2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Geben Sie einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters unter **Name** ein. Geben Sie z. B. "LI" ein.
 5. Klicken Sie auf **Typ des Identitätsanbieters**, wählen Sie **LinkedIn** aus, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und den geheimen Clientschlüssel der LinkedIn-Anwendung ein, die Sie zuvor erstellt haben.
 7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die LinkedIn-Konfiguration zu speichern.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -19,13 +19,13 @@
 
 # Gewusst wie: Markieren eines virtuellen Linux-Computers in Azure
 
-Dieser Artikel beschreibt verschiedene Methoden zum Markieren eines virtuellen Linux-Computers mit Tags in Azure mithilfe von Azure Resource Manager. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 15 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Beachten Sie, dass Tags nur für Ressourcen unterstützt werden, die über den Azure-Ressourcen-Manager erstellt werden.
+In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Linux-Computers in Azure mithilfe des Resource Manager-Bereitstellungsmodells beschrieben. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 15 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Beachten Sie, dass Tags nur für Ressourcen unterstützt werden, die über das Resource Manager-Bereitstellungsmodell erstellt wurden.
 
 [AZURE.INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## Erstellen von Tags mit der Azure-Befehlszeilenschnittstelle
 
-Das Erstellen von Tags wird auch für Ressourcen unterstützt, die bereits über die Azure-Befehlszeilenschnittstelle erstellt wurden. Richten Sie zunächst die [Umgebung für Ihre Azure-Befehlszeilenschnittstelle][] ein. Melden Sie sich über die Azure-Befehlszeilenschnittstelle in Ihrem Abonnement an und wechseln Sie in den ARM-Modus (`azure config mode arm`).
+Das Erstellen von Tags wird auch für Ressourcen unterstützt, die bereits über die Azure-Befehlszeilenschnittstelle erstellt wurden. Richten Sie zunächst die [Umgebung für Ihre Azure-Befehlszeilenschnittstelle][] ein. Melden Sie sich über die Azure-Befehlszeilenschnittstelle in Ihrem Abonnement an und wechseln Sie in den Resource Manager-Modus (`azure config mode arm`).
 
 Sie können alle Eigenschaften für einen bestimmten virtuellen Computer einschließlich der Tags anzeigen, indem Sie den folgenden Befehl verwenden:
 
@@ -42,12 +42,11 @@ Um alle Tags zu entfernen, können Sie den **–T**-Parameter im `azure vm set`-
 
 Nun, da wir unseren Ressourcen über die Azure-Befehlszeilenschnittstelle und das Portal Tags zugewiesen haben, werfen wir einen Blick auf die Nutzungsdetails, um die Tags im Abrechnungsportal anzuzeigen.
 
-
-
+[AZURE.INCLUDE [virtual-machines-common-tag-usage](../../includes/virtual-machines-common-tag-usage.md)]
 
 ## Nächste Schritte
 
-* Weitere Informationen zum Markieren Ihrer Azure-Ressourcen finden Sie unter [Übersicht über den Azure Ressourcen-Manager][] und [Verwenden von Tags zum Organisieren von Azure-Ressourcen][].
+* Weitere Informationen zum Markieren Ihrer Azure-Ressourcen finden Sie unter [Übersicht über den Azure Resource Manager][] und [Verwenden von Tags zum Organisieren von Azure-Ressourcen][].
 * Informationen dazu, wie Tags Ihnen helfen können, die Verwendung Ihrer Azure-Ressourcen zu verwalten, finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure][] und [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure][].
 
 
@@ -55,9 +54,9 @@ Nun, da wir unseren Ressourcen über die Azure-Befehlszeilenschnittstelle und da
 
 
 [Umgebung für Ihre Azure-Befehlszeilenschnittstelle]: ./xplat-cli-azure-resource-manager.md
-[Übersicht über den Azure Ressourcen-Manager]: ../resource-group-overview.md
+[Übersicht über den Azure Resource Manager]: ../resource-group-overview.md
 [Verwenden von Tags zum Organisieren von Azure-Ressourcen]: ../resource-group-using-tags.md
 [Informationen zu Ihrer Rechnung für Microsoft Azure]: ../billing-understand-your-bill.md
 [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

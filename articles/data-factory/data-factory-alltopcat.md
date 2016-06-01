@@ -4,7 +4,7 @@
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
-	manager="jhubbard"
+	manager="paulettm"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="05/12/2016"
 	ms.author="spelluru"/>
 
 
@@ -22,14 +22,6 @@
 In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Dienst aufgelistet. Sie können auf dieser Webseite mit **STRG+F** nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.
 
 
-
-
-## Neu
-
-
-| Titel | Beschreibung |
-| :-- | :-- |
-| [Aufrufen von Spark-Programmen aus Data Factory](data-factory-spark.md) | Erfahren Sie, wie Sie Spark-Programme mithilfe der MapReduce-Aktivität aus einer Azure Data Factory aufrufen. |
 
 
 ## Wichtige Konzepte
@@ -58,11 +50,6 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 | [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit einer Kopieraktivität, indem Sie den von der Data Factory unterstützten Kopier-Assistenten verwenden. |
 | [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors](data-factory-get-started-using-editor.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors im Azure-Portal. |
 | [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio](data-factory-get-started-using-vs.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe von Visual Studio. |
-| [Tutorial: Verschieben und Verarbeiten von Protokolldateien mit Azure Data Factory (Azure-Portal)](data-factory-tutorial.md) | In diesem fortgeschrittenen Tutorial wird ein sehr praxisnahes Szenario beschrieben und mithilfe des Azure Data Factory-Diensts und des Data Factory-Editors im Azure-Portal implementiert. |
-| [Tutorial: Verschieben und Verarbeiten von Protokolldateien mit Data Factory [PowerShell]](data-factory-tutorial-using-powershell.md) | In diesem fortgeschrittenen Tutorial wird ein sehr praxisnahes Szenario beschrieben und mithilfe des Azure Data Factory-Diensts und Azure PowerShell implementiert. |
-| [Exemplarische Vorgehensweise: Kopieren von Ausgabedaten in eine lokale SQL Server-Datenbank (Azure-Portal)](data-factory-tutorial-extend-onpremises.md) | Diese exemplarische Vorgehensweise baut auf dem Tutorial mit dem Data Factory-Editor im Azure-Portal auf, indem die Pipeline Ausgabedaten in eine SQL Server-Datenbank kopiert. |
-| [Exemplarische Vorgehensweise: Kopieren von Ausgabedaten in eine lokale SQL Server-Datenbank (Azure PowerShell)](data-factory-tutorial-extend-onpremises-using-powershell.md) | Diese exemplarische Vorgehensweise baut auf dem Tutorial mit Verwendung der Azure PowerShell auf, indem die Pipeline Ausgabedaten in eine SQL Server-Datenbank kopiert. |
-
 
 ## Datenverschiebung
 
@@ -105,6 +92,7 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 | [Hive-Aktivität](data-factory-hive-activity.md) | Erfahren Sie, wie Sie die Hive-Aktivität in Azure Data Factory verwenden können, um Hive-Abfragen in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen. |
 | [HPC und Datenorchestrierung mit Azure Batch und Data Factory](data-factory-data-processing-using-batch.md) | Beschreibt, wie Sie große Datenmengen in einer Azure Data Factory-Pipeline verarbeiten, indem Sie die parallele Verarbeitung von Azure Batch nutzen. |
 | [Aufrufen von MapReduce-Programmen über Data Factory](data-factory-map-reduce.md) | Erfahren Sie, wie Sie Daten verarbeiten, indem Sie MapReduce-Programme mithilfe einer Azure Data Factory auf einen Azure HDInsight-Cluster anwenden. |
+| [Aufrufen von Spark-Programmen aus Data Factory](data-factory-spark.md) | Erfahren Sie, wie Sie Spark-Programme mithilfe der MapReduce-Aktivität aus einer Azure Data Factory aufrufen. |
 | [Pig-Aktivität](data-factory-pig-activity.md) | Erfahren Sie, wie Sie die Pig-Aktivität in Azure Data Factory verwenden können, um Pig-Abfragen in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen. |
 | [Ausführen eines U-SQL-Skripts auf Azure Data Lake Analytics in Azure Data Factory](data-factory-usql-activity.md) | Erläutert die Datenverarbeitung durch Ausführen eines U-SQL-Skripts mit einem Azure Data Lake Analytics-Computedienst. |
 | [SQL Server-Aktivität "Gespeicherte Prozedur"](data-factory-stored-proc-activity.md) | Informationen, wie Sie die SQL Server-Aktivität "Gespeicherte Prozedur" in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank oder einem Azure SQL Data Warehouse verwenden können. |
@@ -156,7 +144,6 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 | [Azure Data Factory – Häufig gestellte Fragen](data-factory-faq.md) | Häufig gestellte Fragen zu Azure Data Factory |
 | [Azure Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md) | Enthält eine Liste der Funktionen und Systemvariablen von Azure Data Factory. |
 | [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) | Beschreibt die Benennungsregeln für Data Factory-Entitäten. |
-| [Versionshinweise für Azure Data Factory](data-factory-release-notes.md) | DataFactory – Anmerkungen zur Version |
 | [Problembehandlung bei Data Factory](data-factory-troubleshoot.md) | Erfahren Sie, wie Sie Probleme mithilfe von Azure Data Factory beheben. |
 
 
@@ -170,4 +157,4 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 
 - Lernpfaddiagramm: [Data Factory](http://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

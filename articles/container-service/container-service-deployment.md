@@ -20,7 +20,7 @@
 
 # Bereitstellen eines Azure Container Service-Clusters
 
-Azure Container Service ermöglicht eine schnelle Bereitstellung beliebter Open-Source-Lösungen für Container-Clustering und die Orchestrierung. Mithilfe von Azure Container Service können Sie DC/OS- und Docker Swarm-Cluster mit Azure Resource Manager-Vorlagen oder im Azure-Portal bereitstellen. Sie stellen diese Cluster bereit, indem Sie Azure Virtual Machine-Skalierungsgruppen verwenden. Für die Cluster werden Azure-Netzwerk- und Speicherangebote genutzt. Für den Zugriff auf Azure Container Service benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion]( http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren.
+Azure Container Service ermöglicht eine schnelle Bereitstellung beliebter Open-Source-Lösungen für Container-Clustering und die Orchestrierung. Mithilfe von Azure Container Service können Sie DC/OS- und Docker Swarm-Cluster mit Azure Resource Manager-Vorlagen oder im Azure-Portal bereitstellen. Sie stellen diese Cluster bereit, indem Sie Azure Virtual Machine-Skalierungsgruppen verwenden. Für die Cluster werden Azure-Netzwerk- und Speicherangebote genutzt. Für den Zugriff auf Azure Container Service benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren.
 
 In diesem Dokument werden Sie durch die Bereitstellung eines Azure Container Service-Clusters mit dem [Azure-Portal](#creating-a-service-using-the-azure-portal), der [Azure-Befehlszeilenschnittstelle (CLI)](#creating-a-service-using-the-azure-cli) und dem [Azure PowerShell-Modul](#creating-a-service-using-powershell) geführt.
 
@@ -40,7 +40,7 @@ Geben Sie Folgendes ein:
 - Abonnement: Wählen Sie ein Azure-Abonnement aus.
 - Ressourcengruppe: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
 - Standort: Wählen Sie eine Azure-Region für die Azure-Container Service-Bereitstellung aus.
-- Öffentlicher SSH-Schlüssel: Fügen Sie den öffentlichen Schlüssel hinzu, der für die Authentifizierung gegenüber Azure Container Dienst Virtual Machines verwendet werden soll. Es ist sehr wichtig, dass dieser Schlüssel keine Zeilenumbrüche enthält und das Präfix „ssh-rsa“ sowie das Postfix „username@domain“ aufweist. Er sollte in etwa wie folgt aussehen: „**ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm**“. Eine Anleitung zum Erstellen von SSH-Schlüsseln finden Sie in den [Linux]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/)- und [Windows]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)-Artikeln.
+- Öffentlicher SSH-Schlüssel: Fügen Sie den öffentlichen Schlüssel hinzu, der für die Authentifizierung gegenüber Azure Container Dienst Virtual Machines verwendet werden soll. Es ist sehr wichtig, dass dieser Schlüssel keine Zeilenumbrüche enthält und das Präfix „ssh-rsa“ sowie das Postfix „username@domain“ aufweist. Er sollte in etwa wie folgt aussehen: „**ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm**“. Eine Anleitung zum Erstellen von SSH-Schlüsseln finden Sie in den [Linux](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/)- und [Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)-Artikeln.
 
 Klicken Sie auf **OK**, wenn Sie bereit sind, den Vorgang fortzusetzen.
 
@@ -82,7 +82,7 @@ Nachdem die Bereitstellung abgeschlossen ist, ist der Azure Container Service-Cl
 
 ## Erstellen eines Diensts mit der Azure-Befehlszeilenschnittstelle
 
-Um eine Instanz von Azure Container Service über die Befehlszeile zu erstellen, benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion]( http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren. Außerdem muss die Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein.
+Um eine Instanz von Azure Container Service über die Befehlszeile zu erstellen, benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, können Sie sich für eine [kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935) registrieren. Außerdem muss die Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein.
 
 Wählen Sie zum Bereitstellen eines DC/OS- oder Docker Swarm-Clusters in GitHub eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
 
@@ -142,12 +142,12 @@ Um eine Parameterdatei als Beispiel anzuzeigen, die den Namen `azuredeploy.param
 
 ## Erstellen eines Diensts mit PowerShell
 
-Sie können einen Azure Container Service-Cluster auch mit PowerShell bereitstellen. Dieses Dokument basiert auf Version 1.0 des [Azure PowerShell-Moduls]( https://azure.microsoft.com/blog/azps-1-0/).
+Sie können einen Azure Container Service-Cluster auch mit PowerShell bereitstellen. Dieses Dokument basiert auf Version 1.0 des [Azure PowerShell-Moduls](https://azure.microsoft.com/blog/azps-1-0/).
 
 Wählen Sie zum Bereitstellen eines DC/OS- oder Docker Swarm-Clusters eine der folgenden Vorlagen aus. Beachten Sie, dass diese beiden Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
 
-* [DC/OS-Vorlage]( https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
-* [Swarm-Vorlage]( https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [DC/OS-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [Swarm-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 Prüfen Sie vor dem Erstellen eines Clusters in Ihrem Azure-Abonnement, dass Ihre PowerShell-Sitzung bei Azure angemeldet ist. Hierfür können Sie den Befehl `Get-AzureRMSubscription` verwenden:
 
@@ -191,6 +191,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
  
 Da Sie nun einen funktionierenden Cluster haben, lesen Sie die folgenden Dokumente, um Informationen zur Verbindung und Verwaltung zu erhalten.
  
-[Herstellen der Verbindung mit einem Azure Container Service-Cluster](./container-service-connect.md) [Arbeiten mit Azure Container Service und DC/OS](./container-service-mesos-marathon-rest.md) [Arbeiten mit Azure Container Service und Docker Swarm](./container-service-docker-swarm.md)
+[Herstellen der Verbindung mit einem Azure Container Service-Cluster](container-service-connect.md) [Arbeiten mit Azure Container Service und DC/OS](container-service-mesos-marathon-rest.md) [Arbeiten mit Azure Container Service und Docker Swarm](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

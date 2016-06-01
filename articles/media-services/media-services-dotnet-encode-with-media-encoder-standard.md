@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"
+ 	ms.date="05/03/2016"
 	ms.author="juliako;anilmur"/>
 
 
@@ -37,12 +37,15 @@ Wenn Ihr Ausgabemedienobjekt speicherverschlüsselt ist, müssen Sie die Übermi
 
 Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409) beschrieben sind.
 
-###MES-Eingabe- und Ausgabemetadaten
+###Eingabe- und Ausgabemetadaten
 
-Die Eingabemetadaten für den Encoder werden [hier](http://msdn.microsoft.com/library/azure/dn783120.aspx) beschrieben.
+Wenn Sie ein Eingabeasset (oder -assets) mithilfe von MES codieren, erhalten Sie bei erfolgreichem Abschluss dieser Codieraufgabe ein Ausgabeasset. Das Ausgabeasset enthält Video- und Audioinhalte, Miniaturansichten, das Manifest usw. Dies hängt von den verwendeten Codierungsvoreinstellungen ab.
 
-Die Ausgabemetadaten für den Encoder werden [hier](http://msdn.microsoft.com/library/azure/dn783217.aspx) beschrieben.
+Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Eingabeasset. Der Namen der XML-Metadatendatei weist das folgende Format auf: <asset_id>\_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4\_metadata.xml“), wobei <asset_id> der AssetId-Wert des Eingabeassets ist. Das Schema dieser XML-Eingabemetadaten ist [hier](http://msdn.microsoft.com/library/azure/dn783120.aspx) beschrieben.
 
+Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: <source_file_name>\_manifest.xml (z.B. „BigBuckBunny\_manifest.xml“). Das Schema dieser XML-Ausgabemetadaten ist [hier](http://msdn.microsoft.com/library/azure/dn783217.aspx) beschrieben.
+
+Wenn Sie eine der beiden Metadatendateien untersuchen möchten, können Sie einen SAS-Locator erstellen und die Datei auf Ihren lokalen Computer herunterladen. Ein Beispiel zum Erstellen eines SAS-Locators mit der Möglichkeit zum Herunterladen der Datei finden Sie in den .NET SDK-Erweiterungen für Media Services.
 
 ##Beispiel herunterladen
 
@@ -147,4 +150,4 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 [Erstellen von Miniaturansichten über Media Encoder Standard mit .NET](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

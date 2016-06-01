@@ -50,22 +50,22 @@ Führen Sie zum Erstellen eines internen Lastenausgleichs über das Azure-Portal
 
 Navigieren Sie nach der Erstellung des Lastenausgleichs zur Lastenausgleichsressource, um sie zu konfigurieren. Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor Sie eine Lastenausgleichsregel konfigurieren.
 
-### Schritt 1
+### Schritt 1
 
 Konfigurieren eines Back-End-Pools:
 
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**. 
-3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
+3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
 
-### Schritt 2 
+### Schritt 2 
 
 Konfigurieren eines Tests:
  
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**. 
-3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
+3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Test hinzufügen** einen **Namen** für den Test ein.
 5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
 6. Geben Sie unter **Port** den Port an, der beim Zugreifen auf den Test verwendet werden soll.
@@ -74,7 +74,7 @@ Konfigurieren eines Tests:
 5. Geben Sie unter **Fehlerschwellenwert** an, wie viele Versuche fehlschlagen sollen, bevor die Back-End-VM als „fehlerhaft“ markiert wird.
 5. Klicken Sie zum Erstellen des Tests auf **OK**.
 
-### Schritt 3
+### Schritt 3
 
 Konfigurieren von Lastenausgleichsregeln:
 
@@ -97,4 +97,4 @@ Konfigurieren von Lastenausgleichsregeln:
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

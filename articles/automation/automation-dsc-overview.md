@@ -5,7 +5,8 @@
    documentationCenter="dev-center-name" 
    authors="coreyp-at-msft" 
    manager="stevenka" 
-   editor="tysonn"/>
+   editor="tysonn"
+   keywords="PowerShell DSC, Desired State Configuration, Konfiguration des gewünschten Zustands, PowerShell DSC Azure"/>
 
 <tags
    ms.service="automation"
@@ -13,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="04/29/2016"
-   ms.author="coreyp"/>
+   ms.date="05/10/2016"
+   ms.author="magoedte;coreyp"/>
 
 # Azure Automation DSC – Übersicht #
 
@@ -98,6 +99,8 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 
 ##Häufige / bekannte Probleme:##
 
+- Wenn beim Upgrade auf WMF 5 RTM der Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut.
+
 - Azure Automation DSC bietet zurzeit keine Unterstützung für teilweise oder zusammengesetzte DSC-Konfigurationen. Zusammengesetzte DSC-Ressourcen können jedoch importiert und genau wie in der lokalen PowerShell verwendet werden, um die Wiederverwendung von Konfigurationen zu ermöglichen.
 
 - Für den PowerShell DSC-Agent für Windows muss die neueste Version von WMF 5 installiert werden, um eine Kommunikation mit Azure Automation zu ermöglichen. Die neueste Version des PowerShell DSC-Agents für Linux muss installiert sein, um unter Linux eine Kommunikation mit Azure Automation zu ermöglichen.
@@ -112,11 +115,9 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 
 - Nach der Registrierung handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, die nach einem Jahr abläuft. Zu diesem Zeitpunkt kann das Registrierungsprotokoll für den PowerShell-DSC Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, schlägt die Kommunikation mit Azure Automation fehl und der Knoten wird als „nicht reagierend“ markiert. Die erneute Registrierung erfolgt auf dieselbe Weise wie die ursprüngliche Registrierung des Knotens. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.
 
-- Wenn beim Upgrade auf WMF 5 RTM der Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut. Löschen Sie vor der erneuten Registrierung die Datei `$env:windir\system32\configuration\DSCEngineCache.mof`.
+- Wenn beim Upgrade auf WMF 5 RTM der Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut. Löschen Sie vor der Neuregistrierung die Datei „$env:windir\\system32\\configuration\\DSCEngineCache.mof“.
 
 - PowerShell DSC-Cmdlets funktionieren möglicherweise nicht, wenn WMF 5 RTM zusätzlich zu WMF 5 Produktion Preview installiert ist. Um dieses Problem zu beheben, führen Sie den folgenden Befehl in einer PowerShell-Sitzung mit erhöhten Rechten (als Administrator) aus: `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
-
-- Wenn Sie zuvor auf einem Computer die Funktionen von WMF 4 PowerShell DSC verwendet haben, tritt beim Abrufen von Konfigurationsinformationen aus Azure Automation DSC für diesen Computer unter Umständen ein Fehler mit folgender Ausnahme auf: „Fehler bei der Entschlüsselung“. Um dieses Problem zu beheben, löschen Sie die Dateien `$env:windir\system32\configuration\Current.mof`, `$env:windir\system32\configuration\DSCEngineCache.mof`, `$env:windir\system32\configuration\DSCStatusHistory.mof`. Registrieren Sie den Computer anschließend erneut in Azure Automation DSC.
  
 
 ##Verwandte Artikel##
@@ -127,4 +128,4 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 - [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 - [Kontinuierliche Bereitstellung für IaaS-VMs mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

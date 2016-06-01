@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="05/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Migrieren von SQL-Code nach SQL Data Warehouse
 
-Um sicherzustellen, dass der Code mit SQL Data Warehouse kompatibel ist, müssen Sie wahrscheinlich Änderungen an der Codebasis vornehmen. Mit einigen SQL Data Warehouse-Funktionen kann die Leistung erheblich verbessert werden, da sie speziell für die direkte verteilte Ausführung entwickelt wurden. Um jedoch eine gleichbleibende Leistung und Skalierung zu gewährleisten, sind einige Funktionen auch nicht verfügbar.
+Wenn Sie den Ihren Code von einer anderen Datenbank zu SQL Data Warehouse migrieren, müssen Sie höchstwahrscheinlich Änderungen an der Codebasis vornehmen. Mit einigen SQL Data Warehouse-Funktionen kann die Leistung erheblich verbessert werden, da sie speziell für eine verteilte Ausführung entwickelt wurden. Um jedoch eine gleichbleibende Leistung und Skalierung zu gewährleisten, sind einige Funktionen auch nicht verfügbar.
 
-## Transact-SQL-Codeänderungen
+## Allgemeine T-SQL-Einschränkungen
 
 Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL Data Warehouse nicht unterstützt werden. Über die Links gelangen Sie zu Problemumgehungen für die nicht unterstützten Funktionen:
 
@@ -52,36 +52,38 @@ Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL D
 
 Glücklicherweise können die meisten dieser Einschränkungen umgangen werden. Die entsprechenden Erläuterungen finden Sie in den jeweiligen oben referenzierten Artikeln.
 
-### Allgemeine Tabellenausdrücke
-Die aktuelle Implementierung von allgemeinen Tabellenausdrücken (CTEs) in SQL Data Warehouse weist die folgenden Funktionen und Einschränkungen auf:
+## Unterstützte CTE-Funktionen
 
-**Funktionalität allgemeiner Tabellenausdrücke (CTE)**
-+ Ein allgemeiner Tabellenausdruck kann in einer SELECT-Anweisung angegeben werden.
-+ Ein allgemeiner Tabellenausdruck kann in einer CREATE VIEW-Anweisung angegeben werden.
-+ Ein allgemeiner Tabellenausdruck kann in einer CREATE TABLE AS SELECT (CTAS)-Anweisung angegeben werden.
-+ Ein allgemeiner Tabellenausdruck kann in einer CREATE REMOTE TABLE AS SELECT (CRTAS)-Anweisung angegeben werden.
-+ Ein allgemeiner Tabellenausdruck kann in einer CREATE EXTERNAL TABLE AS SELECT (CETAS)-Anweisung angegeben werden.
-+ Eine Remotetabelle kann über einen allgemeinen Tabellenausdruck referenziert werden.
-+ Eine externe Tabelle kann über einen allgemeinen Tabellenausdruck referenziert werden.
-+ In einem allgemeinen Tabellenausdruck können mehrere Abfragedefinitionen definiert werden.
+Allgemeine Tabellenausdrücke (CTEs) werden in SQL Data Warehouse teilweise unterstützt. Die folgenden CTE-Funktionen werden derzeit unterstützt:
 
-**Einschränkungen bei allgemeinen Tabellenausdrücken (CTE)**
-+ Auf einen allgemeinen Tabellenausdruck muss eine einzelne SELECT-Anweisung folgen. INSERT-, UPDATE-, DELETE- und MERGE-Anweisungen werden nicht unterstützt.
-+ Ein allgemeiner Tabellenausdruck, der Verweise auf sich selbst (einen rekursiven allgemeinen Tabellenausdrucks) enthält, wird nicht unterstützt (siehe nachfolgenden Abschnitt).
-+ Es ist maximal eine WITH-Klausel in einem allgemeinen Tabellenausdruck zulässig. Beispiel: Wenn eine Abfragedefinition für einen allgemeinen Tabellenausdruck eine Unterabfrage enthält, kann nicht diese Unterabfrage keine geschachtelte WITH-Klausel enthalten, die einen anderen allgemeinen Tabellenausdruck definiert.
-+ Eine ORDER BY-Klausel kann in der Abfragedefinition für einen allgemeinen Tabellenausdruck nur verwendet werden, wenn eine TOP-Klausel angegeben wurde.
-+ Wenn ein allgemeiner Tabellenausdruck in einer Anweisung verwendet wird, die Teil einer Batchinstanz ist, muss der Anweisung davor ein Semikolon folgen.
-+ Bei Verwendung in Anweisungen, die mit sp\_prepare vorbereitet wurden, verhalten sich allgemeine Tabellenausdrücke genauso, wie andere SELECT-Anweisungen in PDW. Wenn CTEs jedoch als Teil von CETAS verwendet werden, die mit „sp\_prepare“ vorbereitet werden, kann das Verhalten von SQL Server- und anderen PDW-Anweisungen aufgrund der Art, wie die Bindung für „sp\_prepare“ implementiert wird, abweichen. Falls die das CTE referenzierende SELECT-Anweisung eine falsche Spalte verwendet, die im CTE nicht vorhanden ist, wird „sp\_prepare“ übergeben, ohne dass der Fehler erkannt wird. Der Fehler wird dann aber während „sp\_execute“ ausgegeben.
+- Ein allgemeiner Tabellenausdruck kann in einer SELECT-Anweisung angegeben werden.
+- Ein allgemeiner Tabellenausdruck kann in einer CREATE VIEW-Anweisung angegeben werden.
+- Ein allgemeiner Tabellenausdruck kann in einer CREATE TABLE AS SELECT (CTAS)-Anweisung angegeben werden.
+- Ein allgemeiner Tabellenausdruck kann in einer CREATE REMOTE TABLE AS SELECT (CRTAS)-Anweisung angegeben werden.
+- Ein allgemeiner Tabellenausdruck kann in einer CREATE EXTERNAL TABLE AS SELECT (CETAS)-Anweisung angegeben werden.
+- Eine Remotetabelle kann über einen allgemeinen Tabellenausdruck referenziert werden.
+- Eine externe Tabelle kann über einen allgemeinen Tabellenausdruck referenziert werden.
+- In einem allgemeinen Tabellenausdruck können mehrere Abfragedefinitionen definiert werden.
 
-### Rekursive allgemeine Tabellenausdrücke (CTE)
+## Einschränkungen bei allgemeinen Tabellenausdrücken (CTE)
 
-Dies ist ein komplexes Migrationsszenario. Es wird empfohlen, den CTE zu unterteilen und in einzelnen Schritten zu behandeln. In der Regel können Sie eine Schleife verwenden und eine temporäre Tabelle auffüllen, während Sie die rekursiven Zwischenabfragen durchlaufen. Sobald die temporäre Tabelle aufgefüllt ist, können Sie die Daten als ein einzelnes Resultset zurückgeben. Ein ähnlicher Ansatz wurde als Lösung für `GROUP BY WITH CUBE` im Artikel zur [GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option][] verwendet.
+Allgemeine Tabellenausdrücke weisen einige der folgenden Einschränkungen in SQL Data Warehouse auf:
+
+- Auf einen allgemeinen Tabellenausdruck muss eine einzelne SELECT-Anweisung folgen. INSERT-, UPDATE-, DELETE- und MERGE-Anweisungen werden nicht unterstützt.
+- Ein allgemeiner Tabellenausdruck, der Verweise auf sich selbst (einen rekursiven allgemeinen Tabellenausdrucks) enthält, wird nicht unterstützt (siehe nachfolgenden Abschnitt).
+- Es ist maximal eine WITH-Klausel in einem allgemeinen Tabellenausdruck zulässig. Beispiel: Wenn eine Abfragedefinition für einen allgemeinen Tabellenausdruck eine Unterabfrage enthält, kann nicht diese Unterabfrage keine geschachtelte WITH-Klausel enthalten, die einen anderen allgemeinen Tabellenausdruck definiert.
+- Eine ORDER BY-Klausel kann in der Abfragedefinition für einen allgemeinen Tabellenausdruck nur verwendet werden, wenn eine TOP-Klausel angegeben wurde.
+- Wenn ein allgemeiner Tabellenausdruck in einer Anweisung verwendet wird, die Teil einer Batchinstanz ist, muss der Anweisung davor ein Semikolon folgen.
+- Bei Verwendung in Anweisungen, die mit sp\_prepare vorbereitet wurden, verhalten sich allgemeine Tabellenausdrücke genauso, wie andere SELECT-Anweisungen in PDW. Wenn CTEs jedoch als Teil von CETAS verwendet werden, die mit „sp\_prepare“ vorbereitet werden, kann das Verhalten von SQL Server- und anderen PDW-Anweisungen aufgrund der Art, wie die Bindung für „sp\_prepare“ implementiert wird, abweichen. Falls die das CTE referenzierende SELECT-Anweisung eine falsche Spalte verwendet, die im CTE nicht vorhanden ist, wird „sp\_prepare“ übergeben, ohne dass der Fehler erkannt wird. Der Fehler wird dann aber während „sp\_execute“ ausgegeben.
+
+## Rekursive CTEs
+
+Rekursive CTEs werden in SQL Data Warehouse nicht unterstützt. Die Migration rekursiver CTEs kann mehr oder weniger komplex sein, und die beste Vorgehensweise besteht darin, diese in mehrere Schritte aufzuteilen. In der Regel können Sie eine Schleife verwenden und eine temporäre Tabelle auffüllen, während Sie die rekursiven Zwischenabfragen durchlaufen. Sobald die temporäre Tabelle aufgefüllt ist, können Sie die Daten als ein einzelnes Resultset zurückgeben. Ein ähnlicher Ansatz wurde als Lösung für `GROUP BY WITH CUBE` im Artikel zur [GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option][] verwendet.
 
 ### Systemfunktionen
 
-Es werden auch einige Systemfunktionen nicht unterstützt. Zu den wichtigsten Funktionen, die normalerweise in Data Warehousing verwendet, gehören u. a.:
+Es werden auch einige Systemfunktionen nicht unterstützt. Zu den wichtigsten Funktionen, die normalerweise in Data Warehousing verwendet, gehören u. a.:
 
-- NEWID()
 - NEWSEQUENTIALID()
 - @@NESTLEVEL()
 - @@IDENTITY()
@@ -130,4 +132,4 @@ Hinweise zur Entwicklung des Codes finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

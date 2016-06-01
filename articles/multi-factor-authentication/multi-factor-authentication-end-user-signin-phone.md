@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Anmelden über das Büro- oder Mobiltelefon mit Azure Multi-Factor Authentication
@@ -38,4 +38,13 @@ Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- od
 
 <li>Sie sollten jetzt angemeldet sein.</li>
 
-<!---HONumber=AcomDC_0218_2016-->
+
+
+
+
+
+
+
+ 
+
+<!---HONumber=AcomDC_0518_2016-->

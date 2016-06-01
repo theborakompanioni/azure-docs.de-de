@@ -11,17 +11,17 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="05/08/2016" 
 	ms.author="josephd"/>
 
 # Bereitstellen einer hochverfügbaren Branchenanwendung in Azure
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
 
-Dieser Artikel enthält Links zu den schrittweisen Anweisungen für die Bereitstellung einer hochverfügbaren, webbasierten, nur im Intranet verfügbaren Branchenanwendung mit SQL Server AlwaysOn-Verfügbarkeitsgruppen in Azure-Infrastrukturdiensten. Die Anwendung wird auf folgenden Computern gehostet:
+Dieser Artikel enthält Links zu den schrittweisen Anweisungen für die Bereitstellung einer hochverfügbaren, webbasierten, nur im Intranet verfügbaren Branchenanwendung mit SQL Server AlwaysOn-Verfügbarkeitsgruppen in Azure-Infrastrukturdiensten. Die Anwendung wird auf folgenden Computern gehostet:
 
 - Zwei Webserver
 - Zwei Datenbankserver
@@ -73,9 +73,9 @@ Sie stellen diese Konfiguration in den folgenden Phasen bereit:
 
 - [Phase 1: Konfigurieren von Azure](virtual-machines-windows-ps-lob-ph1.md): Erstellen Sie Speicherkonten, Verfügbarkeitsgruppen und ein standortübergreifendes virtuelles Netzwerk.
 - [Phase 2: Konfigurieren der Domänencontroller](virtual-machines-windows-ps-lob-ph2.md): Erstellen und konfigurieren Sie Replikate der Domänencontroller für Active Directory Domain Services (AD DS).
-- [Phase 3: Konfigurieren der SQL Server-Infrastruktur](virtual-machines-windows-ps-lob-ph3.md): Erstellen und konfigurieren Sie die virtuellen Computer, auf denen SQL Server ausgeführt wird, und aktivieren Sie SQL Server-AlwaysOn-Verfügbarkeitsgruppen.
+- [Phase 3: Konfigurieren der SQL Server-Infrastruktur](virtual-machines-windows-ps-lob-ph3.md): Erstellen und konfigurieren Sie die virtuellen Computer, auf denen SQL Server ausgeführt wird, erstellen Sie den Cluster, und aktivieren Sie SQL Server-AlwaysOn-Verfügbarkeitsgruppen.
 - [Phase 4: Konfigurieren der Webserver](virtual-machines-windows-ps-lob-ph4.md): Erstellen und konfigurieren Sie die beiden virtuellen Webservercomputer.
-- [Phase 5: Hinzufügen der Anwendungsdatenbanken zu einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe](virtual-machines-windows-ps-lob-ph5.md): Bereiten Sie die Datenbanken für die Branchenanwendung vor, und fügen Sie sie zu einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe hinzu.
+- [Phase 5: Hinzufügen der Anwendungsdatenbanken zu einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe](virtual-machines-windows-ps-lob-ph5.md): Bereiten Sie die Datenbanken für die Branchenanwendung vor, und fügen Sie sie einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe hinzu.
 
 Diese Bereitstellung folgt der [Architekturblaupause für Branchenanwendungen](http://msdn.microsoft.com/dn630664) und beinhaltet die neuesten Empfehlungen.
 
@@ -93,4 +93,4 @@ Weitere Informationen zum Entwickeln von IT-Workloads für Azure finden Sie in d
 
 - Starten Sie die Konfiguration dieser Workload mit [Phase 1](virtual-machines-windows-ps-lob-ph1.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -78,8 +78,10 @@ Um Logik-Apps mit Outlook.com zu erstellen, müssen Sie zuerst eine **Verbindung
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für Outlook.com|
+|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für Outlook.com|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Outlook.com](../../includes/connectors-create-api-outlook.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -585,7 +587,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 
 
-### Object
+### Objekt
 
 
 | Eigenschaftenname | Datentyp | Erforderlich |
@@ -630,7 +632,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 |IsRead|Boolescher Wert|Nein |
 |HasAttachment|Boolescher Wert|Nein |
 |DateTimeReceived|string|Nein |
-|Attachments|array|Nein |
+|Anlagen|array|Nein |
 |From|string|Nein |
 |Cc|string|Nein |
 |Bcc|string|Nein |
@@ -813,7 +815,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 |Options|string|Ja |
 |Body|string|Nein |
 |Importance|string|Nein |
-|Attachments|array|Nein |
+|Anlagen|array|Nein |
 |To|string|Ja |
 
 
@@ -912,4 +914,4 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

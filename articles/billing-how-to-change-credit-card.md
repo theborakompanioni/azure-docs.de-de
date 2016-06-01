@@ -18,7 +18,7 @@
 	ms.date="05/05/2016"
 	ms.author="genli"/>
 
-# Gewusst wie: Ändern der für die Zahlung einer Azure-Rechnung verwendeten Kreditkarte
+# Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte
 
 Mitunter müssen Sie Details der Kreditkarte in Ihren Kontoinformationen aktualisieren oder die für die Zahlung von Rechnungen verwendete Kreditkarte ändern.
 
@@ -51,4 +51,4 @@ Wenn sich die Kreditkartennummer infolge von Verlust, Diebstahl oder Ablauf der 
 3. Wählen Sie rechts auf der Seite die Option **Zahlungsmethode ändern**.
 4. Klicken Sie auf der Seite **Zahlungsmethode wählen** auf den Dropdownpfeil neben der Kreditkarte, wählen Sie die zu verwendende Kreditkarte aus, und klicken Sie dann auf ![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png), um das Fenster zu schließen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

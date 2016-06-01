@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="05/16/2016"
 	ms.author="jeedes"/>
 
 
 # Tutorial: Azure Active Directory-Integration mit TargetProcess
 
-In diesem Tutorial erfahren Sie, wie Sie TargetProcess in Azure Active Directory (Azure AD) integrieren können.<br>Die Integration von TargetProcess in Azure AD bietet Ihnen folgende Vorteile:
+Dieses Tutorial soll Ihnen zeigen, wie Sie TargetProcess in Azure Active Directory (Azure AD) integrieren.
+
+Die Integration von TargetProcess in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf TargetProcess hat. 
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei TargetProcess anzumelden (einmaliges Anmelden).
@@ -45,7 +47,9 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
  
 ## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. <br> Das in diesem Tutorial beschriebene Szenario besteht aus zwei großen Bausteinen:
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
+
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von TargetProcess aus dem Katalog 
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -56,20 +60,38 @@ Zum Konfigurieren der Integration von TargetProcess in Azure AD müssen Sie Targ
 
 **Um TargetProcess aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br> ![Active Directory][1]<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+
+	![Active Directory][1]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.<br><br> ![Anwendungen][2]<br>
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.<br><br> ![Anwendungen][3]<br>
-5. Klicken Sie im Dialogfeld **What do you want to do** auf **Anwendung aus dem Katalog hinzufügen**.<br><br> ![Anwendungen][4]<br>
-6. Geben Sie im Suchfeld als Suchbegriff **TargetProcess** ein.<br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_01.png)<br>
-7. Wählen Sie im Ergebnisbereich **TargetProcess** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_10.png)<br>
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+
+	![Anwendungen][2]
+
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+
+	![Anwendungen][3]
+
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+
+	![Anwendungen][4]
+
+6. Geben Sie im Suchfeld als Suchbegriff **TargetProcess** ein.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_01.png)
+
+7. Wählen Sie im Ergebnisbereich **TargetProcess** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_10.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in TargetProcess konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in TargetProcess als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TargetProcess muss eine Linkbeziehung eingerichtet werden.<br> Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für den **Benutzernamen** in TargetProcess zuweisen.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in TargetProcess als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TargetProcess muss eine Linkbeziehung eingerichtet werden.
+
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für den **Benutzernamen** in TargetProcess zuweisen.
  
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei TargetProcess müssen Sie die folgenden Bausteine ausführen:
 
@@ -89,11 +111,17 @@ Zum Konfigurieren des einmaligen Anmeldens für TargetProcess benötigen Sie ein
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in TargetProcess die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **TargetProcess** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen. <br><br> ![Einmaliges Anmelden konfigurieren][6] <br>
+1. Klicken Sie im klassischen Azure AD-Portal auf der Anwendungsintegrationsseite für **TargetProcess** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TargetProcess anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**. <br><br> ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_02.png) <br>
+	![Einmaliges Anmelden konfigurieren][6]
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_03.png) <br>
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TargetProcess anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_02.png)
+
+3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_03.png)
 
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der TargetProcess-Anwendung verwenden (z. B. **https://fabrikam.TargetProcess.com/*).
@@ -101,7 +129,9 @@ Zum Konfigurieren des einmaligen Anmeldens für TargetProcess benötigen Sie ein
     b. Klicken Sie auf **Weiter**.
  
  
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für TargetProcess** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_04.png) <br>
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für TargetProcess** die folgenden Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_04.png)
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
@@ -111,13 +141,21 @@ Zum Konfigurieren des einmaligen Anmeldens für TargetProcess benötigen Sie ein
 1. Melden Sie sich bei Ihrer TargetProcess-Anwendung als Administrator an.
 
 
-1. Klicken Sie im oberen Menü auf **Setup**. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_05.png) <br>
+1. Klicken Sie im oberen Menü auf **Setup**.
 
-1. Klicken Sie auf **Einstellungen**. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_06.png) <br>
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_05.png)
 
-1. Klicken Sie auf **Einmaliges Anmelden**. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_07.png) <br>
+1. Klicken Sie auf **Einstellungen**.
 
-1. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_08.png) <br>
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_06.png)
+
+1. Klicken Sie auf **Einmaliges Anmelden**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_07.png)
+
+1. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ folgende Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_08.png)
 
     a. Klicken Sie auf **Einmaliges Anmelden aktivieren**.
 
@@ -128,35 +166,51 @@ Zum Konfigurieren des einmaligen Anmeldens für TargetProcess benötigen Sie ein
     d. Klicken Sie auf **JIT-Bereitstellung aktivieren**.
 
 
-6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus und klicken Sie dann auf **Weiter**. <br><br>![Azure AD – einmaliges Anmelden][10]<br>
+6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**. <br><br>![Azure AD – einmaliges Anmelden][11]
+	![Azure AD – einmaliges Anmelden][10]
+
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+
+	![Azure AD – einmaliges Anmelden][11]
 
 
 
 
 ### Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.<br> Wählen Sie in der Benutzerliste **Britta Simon** aus.<br><br>![Azure AD-Benutzer erstellen][20]<br>
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+
+![Azure AD-Benutzer erstellen][20]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_09.png)<br> 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_09.png)
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_03.png) <br>
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_03.png)
  
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_04.png) <br>
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_05.png) <br>
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_04.png)
 
-    a. Wählen Sie als "Benutzertyp" die Option "Neuer Benutzer in Ihrer Organisation" aus.
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_05.png)
+
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
     b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
 
     c. Klicken Sie auf **Weiter**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_06.png) <br>
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_06.png)
  
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
@@ -166,9 +220,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Wählen Sie in der Liste **Rolle** die Rolle **Benutzer** aus. e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_07.png) <br>
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_07.png)
  
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_08.png) <br>
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_08.png)
   
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -187,25 +245,37 @@ Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung.
 
 ### Zuweisen des Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf TargetProcess erhält. <br><br>![Benutzer zuweisen][200] <br>
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf TargetProcess erhält.
+
+![Benutzer zuweisen][200]
 
 **Um Britta Simon TargetProcess zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Benutzer zuweisen][201] <br>
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-2. Wählen Sie in der Anwendungsliste **TargetProcess** aus. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_09.png) <br>
+	![Benutzer zuweisen][201]
 
-1. Klicken Sie im oberen Menü auf **Benutzer**. <br><br>![Benutzer zuweisen][203] <br>
+2. Wählen Sie in der Anwendungsliste **TargetProcess** aus.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_09.png)
+
+1. Klicken Sie im oberen Menü auf **Benutzer**.
+
+	![Benutzer zuweisen][203]
 
 1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**. <br><br>![Benutzer zuweisen][205]
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+
+	![Benutzer zuweisen][205]
 
 
 
 ### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Zugriffsbereichs.<br> Wenn Sie im Zugriffsbereich auf die Kachel „TargetProcess“ klicken, sollten Sie automatisch bei Ihrer TargetProcess-Anwendung angemeldet werden.
+In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „TargetProcess“ klicken, sollten Sie automatisch bei Ihrer TargetProcess-Anwendung angemeldet werden.
 
 
 ## Zusätzliche Ressourcen
@@ -232,4 +302,4 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

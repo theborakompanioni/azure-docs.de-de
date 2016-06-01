@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/27/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals
@@ -45,6 +45,12 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 	* [Erstellen Sie einen Ordner im Data Lake-Speicher](data-lake-store-get-started-portal.md#createfolder).
 	* [Laden Sie eine Datei in Ihren Data Lake-Speicher hoch](data-lake-store-get-started-portal.md#uploaddata). Wenn Sie Beispieldaten zum Hochladen verwenden möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData) herunterladen.
 
+## Lernen Sie schnell mithilfe von Videos?
+
+Sehen Sie sich die folgenden Videos an, um zu verstehen, wie HDInsight-Cluster mit Zugriff auf den Data Lake-Speicher bereitgestellt werden.
+
+* [Erstellen eines HDInsight-Clusters mit Zugriff auf den Data Lake-Speicher](https://mix.office.com/watch/l93xri2yhtp2)
+* [Zugreifen auf Daten im Data Lake-Speicher mit Hive- und Pig-Skripts](https://mix.office.com/watch/1n9g5w0fiqv1q), nachdem der Cluster eingerichtet wurde
 
 ## Erstellen eines HDInsight-Clusters mit Zugriff auf den Azure Data Lake-Speicher
 
@@ -81,7 +87,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Cluster, für den der D
 
 			![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
-		* Laden Sie auf dem Blatt **Azure Active Directory-Identität für den Cluster** das Zertifikat (.pfx) hoch, das dem ausgewählten Dienstprinzipal zugeordnet ist, und geben Sie dann das Zertifikatkennwort an.
+		* Laden Sie auf dem Blatt **Azure Active Directory-Identität für den Cluster** das Zertifikat (PFX) hoch, das dem ausgewählten Dienstprinzipal zugeordnet ist, und geben Sie dann das Zertifikatkennwort an.
 
 		* Klicken Sie auf **ADLS-Zugriff verwalten**. In diesem Bereich werden die Data Lake-Speicherkonten angezeigt, die dem Abonnement zugeordnet sind. Sie können die Berechtigungen aber nur für das von Ihnen erstellte Konto festlegen. Wählen Sie Berechtigungen vom Typ LESEN/SCHREIBEN/AUSFÜHREN für das Konto aus, das Sie dem HDInsight-Cluster zuordnen möchten, und klicken Sie dann auf **Berechtigungen speichern**.
 
@@ -107,7 +113,7 @@ Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträg
 
 	Sie können auch direkt zu Ambari navigieren, indem Sie in einem Webbrowser https://CLUSTERNAME.azurehdinsight.net aufrufen (wobei **CLUSTERNAME** der Name Ihres HDInsight-Clusters ist).
 
-2. Öffnen Sie die Hive-Ansicht. Klicken Sie im Seitenmenü auf die Gruppe der Quadrate (neben dem Link und der Schaltfläche für **Admin** rechts auf der Seite), um verfügbare Ansichten aufzulisten. Wählen Sie die **Hive**-Ansicht aus.
+2. Öffnen Sie die Hive-Ansicht. Klicken Sie im Seitenmenü auf die Gruppe der Quadrate (neben dem Link und der Schaltfläche für **Admin** rechts auf der Seite), um verfügbare Ansichten aufzulisten. Wählen Sie die Ansicht **Hive** aus.
 
 	![Ambari-Ansichten auswählen](./media/data-lake-store-hdinsight-hadoop-use-portal/selecthiveview.png)
 
@@ -232,7 +238,7 @@ Sie können den Data Lake-Speicher verwenden, um dort Daten aus einer Storm-Topo
 
 Mit HBase-Clustern können Sie den Data Lake-Speicher sowohl als Standardspeicher als auch zusätzlichen Speicher verwenden. Gehen Sie dazu wie folgt vor:
 
-1.  Wählen Sie auf dem Blatt **Datenquelle** für **HBase-Datenspeicherort** **Data Lake-Speicher** aus.
+1.  Wählen Sie auf dem Blatt **Datenquelle** für **HBase-Datenspeicherort** die Option **Data Lake-Speicher** aus.
 2.  Wählen Sie den Namen des Data Lake-Speichers aus, den Sie verwenden möchten, oder erstellen Sie einen neuen.
 3.  Geben Sie zum Abschluss den **HBase-Stammordner** im Data Lake-Speicher an. Wenn das Data Lake-Speicherkonto keinen Stammordner besitzt, erstellen Sie einen neuen.
 
@@ -240,7 +246,7 @@ Mit HBase-Clustern können Sie den Data Lake-Speicher sowohl als Standardspeiche
 
 ### Überlegungen zur Verwendung des Data Lake-Speichers als Standardspeicher für HBase-Cluster
 
-* Sie können das gleiche Data Lake-Speicherkonto für mehrere HBase-Cluster verwenden. Allerdings muss der **HBase-Stammordner**, den Sie für den Cluster bereitstellen (Schritt 4 im Screenshot oben), eindeutig sein. Sie **dürfen nicht** für zwei verschiedene HBase-Cluster den gleichen Stammordner verwenden.
+* Sie können das gleiche Data Lake-Speicherkonto für mehrere HBase-Cluster verwenden. Allerdings muss der **HBase-Stammordner**, den Sie für den Cluster bereitstellen (Schritt 4 im Screenshot oben), eindeutig sein. Sie dürfen für zwei verschiedene HBase-Cluster **nicht** den gleichen Stammordner verwenden.
 * Obwohl Sie das Data Lake-Speicherkonto als Standardspeicher verwenden, werden die Protokolldateien des HBase-Clusters weiterhin in den mit dem Cluster verbundenen Azure Storage-Blobs (WASB) gespeichert. Dies wird im Screenshot oben im blauen Feld hervorgehoben.
 
 
@@ -252,4 +258,4 @@ Mit HBase-Clustern können Sie den Data Lake-Speicher sowohl als Standardspeiche
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/28/2016"
+   ms.date="05/12/2016"
    ms.author="chackdan"/>
 
 
@@ -53,6 +53,7 @@ Voraussetzungen für jeden Computer, den Sie dem Cluster hinzufügen möchten:
 - .NET Framework 4.5.1 oder höher, vollständig installiert
 - Windows PowerShell 3.0
 - Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer Administratorrechte besitzen.
+- Der „RemoteRegistry“-Dienst sollte auf allen Computern ausgeführt werden.
 
 ### Schritt 3: Bestimmen der anfänglichen Clustergröße
 Jeder Knoten besteht aus einem vollständigen Service Fabric-Stapel und ist ein einzelnes Element des Service Fabric-Clusters. In einer normalen Service Fabric-Bereitstellung ist ein Knoten pro BS-Instanz (physisch oder virtuell) vorhanden. Die Clustergröße wird durch Ihre geschäftlichen Anforderungen bestimmt; Sie benötigen jedoch eine minimale Clustergröße von drei Knoten (Computer/VMs). Beachten Sie, dass Sie für Entwicklungszwecke über mehrere Knoten auf einem bestimmten Computer verfügen können. In einer Produktionsumgebung unterstützt Service Fabric nur einen Knoten pro physischen oder virtuellen Computer.
@@ -114,4 +115,4 @@ Lesen Sie die folgenden Dokumente zur Vorbereitung auf die ersten Schritte der E
 Weitere Informationen über Azure-Cluster und eigenständige Cluster finden Sie unter:
 - [Umgebungsunabhängige Bereitstellung (Deploy Anywhere) unter Windows Server und Linux mit Service Fabric](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

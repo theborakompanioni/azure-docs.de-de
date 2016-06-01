@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/25/2016" 
+	ms.date="05/15/2016" 
 	ms.author="juliako"/>
 
 #Erweiterte Codierung mit dem Media Encoder Premium Workflow
 
->[AZURE.NOTE]– Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
->
->- Der in diesem Thema beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar.
+>[AZURE.NOTE] Der in diesem Thema beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar.
+
+Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
 
 ##Übersicht
 
@@ -268,6 +268,7 @@ Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichte
 	}
 
 
+Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
 
 ##Media Services-Lernpfade
 
@@ -277,4 +278,4 @@ Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichte
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

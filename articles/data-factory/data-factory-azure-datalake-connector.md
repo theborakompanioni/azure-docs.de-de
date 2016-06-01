@@ -464,8 +464,8 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset un
 | folderPath | Der Pfad zum Container und Ordner im Azure Data Lake-Speicher. | Ja |
 | fileName | Der Name der Datei im Azure Data Lake-Speicher. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss. <br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn fileName nicht angegeben ist, umfasst das Kopieren alle Dateien in folderPath für das Eingabedataset.<br/><br/>Wenn fileName für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: Data.<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt | Nein |
 | partitionedBy | "partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt „Nutzen der partitionedBy-Eigenschaft“ unten finden Sie Details und Beispiele. | Nein |
-| Format | Drei Formattypen werden unterstützt: **TextFormat**, **AvroFormat** und **JsonFormat**. Sie müssen die type-Eigenschaft unter "format" auf einen dieser Werte festlegen. Wenn das Format auf "TextFormat" festgelegt ist, können Sie zusätzliche optionale Eigenschaften für das Format angeben. Im Abschnitt [Angeben von "TextFormat"](#specifying-textformat) unten finden Sie weitere Details. Lesen Sie den Abschnitt [AvroFormat angeben](#specifying-avroformat), wenn Sie AvroFormat verwenden. Lesen Sie den Abschnitt [JsonFormat angeben](#specifying-jsonformat), wenn Sie JsonFormat verwenden. | Nein
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsgrade werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten im **AvroFormat** zurzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
+| Format | Drei Formattypen werden unterstützt: **TextFormat**, **AvroFormat** und **JsonFormat**. Sie müssen die **type**-Eigenschaft unter „format“ auf einen dieser Werte festlegen. Wenn das Format auf "TextFormat" festgelegt ist, können Sie zusätzliche optionale Eigenschaften für das Format angeben. Weitere Informationen finden Sie in den Abschnitten [Angeben von „TextFormat“](#specifying-textformat), [Angeben von „AvroFormat“](#specifying-avroformat) und [Angeben von „JsonFormat“](#specifying-jsonformat). | Nein
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsgrade werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten in **AvroFormat** zurzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
 
 ### Nutzen der Eigenschaft "partitionedBy"
 Wie bereits erwähnt, können Sie die dynamischen Werte "folderPath" und "fileName" für Zeitreihendaten mit dem Abschnitt **partitionedBy**, mit Data Factory-Makros und mit den Systemvariablen "SliceStart" und "SliceEnd" angeben, die die Start- und Endzeit für einen bestimmten Slice festlegen.
@@ -496,51 +496,8 @@ Im obigen Beispiel wird {Slice} durch den Wert der Data Factory-Systemvariablen 
 
 Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von "SliceStart" in separate Variablen extrahiert, die von den Eigenschaften "folderPath" und "fileName" verwendet werden.
 
-### Angeben von "TextFormat"
-
-Wenn das Format auf **TextFormat** festgelegt ist, können Sie die folgenden **optionalen** Eigenschaften im Abschnitt **Format** angeben.
-
-| Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- |
-| columnDelimiter | Das Zeichen, das als Spaltentrennzeichen in einer Datei verwendet wird. Derzeit ist nur ein Zeichen zulässig. Dieses Tag ist optional. Der Standardwert ist das Komma (,). | Nein |
-| rowDelimiter | Das Zeichen, das als Zeilentrennzeichen in einer Datei verwendet wird. Derzeit ist nur ein Zeichen zulässig. Dieses Tag ist optional. Der Standardwert ist einer der Folgenden: ["\\r\\n", "\\r", "\\n"]. | Nein |
-| escapeChar | Das Sonderzeichen, das als Escapezeichen für das Spaltentrennzeichen im Inhalt dient. Dieses Tag ist optional. Kein Standardwert. Sie dürfen maximal ein Zeichen für diese Eigenschaft angeben.<br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text (Beispiel: „Hello, world“) verwenden möchten, können Sie „$“ als Escapezeichen definieren und die Zeichenfolge „Hello$, world“ in der Quelle verwenden.<br/><br/>Beachten Sie, dass Sie „escapeChar“ und „quoteChar“ nicht gleichzeitig für eine Tabelle angeben können. | Nein | 
-| quoteChar | Das Sonderzeichen, das als Anführungszeichen für einen Zeichenfolgenwert dient. Die Spalten- und Zeilentrennzeichen innerhalb der Anführungszeichen werden als Teil des Zeichenfolgenwerts behandelt. Dieses Tag ist optional. Kein Standardwert. Sie dürfen nicht mehr als ein Zeichen für diese Eigenschaft angeben.<br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text (Beispiel: <Hello  world>) verwenden möchten, können Sie '"' als Anführungszeichen definieren und die Zeichenfolge <"Hello, world"> in der Quelle verwenden. Diese Eigenschaft gilt für Eingabe- und Ausgabetabellen.<br/><br/>Beachten Sie, dass Sie „escapeChar“ und „quoteChar“ nicht gleichzeitig für eine Tabelle angeben können. | Nein |
-| nullValue | Die Zeichen, die zur Darstellung von NULL-Werten im Blobdateiinhalt dienen. Dieses Tag ist optional. Der Standardwert ist „\\N“.<br/><br/>Beispielsweise wird gemäß dem oben genannten Beispiel „NaN“ im Blob beim Kopieren (z.B. in SQL Server) als NULL-Wert übersetzt. | Nein |
-| encodingName | Geben Sie den Codierungsnamen an. Eine Liste der gültigen Codierungsnamen finden Sie unter [Encoding.EncodingName-Eigenschaft](https://msdn.microsoft.com/library/system.text.encoding.aspx). Beispiel: Windows-1250 oder Shift-JIS. Der Standardwert lautet "UTF-8". | Nein | 
-
-#### TextFormat-Beispiel
-Im folgenden Beispiel werden einige der Formateigenschaften für "TextFormat" gezeigt.
-
-	"typeProperties":
-	{
-	    "folderPath": "mycontainer/myfolder",
-	    "fileName": "myfilename"
-	    "format":
-	    {
-	        "type": "TextFormat",
-	        "columnDelimiter": ",",
-	        "rowDelimiter": ";",
-	        "quoteChar": """,
-	        "NullValue": "NaN"
-	    }
-	},
-
-Um "escapeChar" anstelle von "quoteChar" zu verwenden, ersetzen Sie die Zeile mit "quoteChar" durch Folgendes:
-
-	"escapeChar": "$",
-
-### Angeben von "AvroFormat"
-Wenn das Format auf "AvroFormat" festgelegt ist, müssen Sie im Abschnitt "Format" innerhalb des Abschnitts "typeProperties" keine Eigenschaften angeben. Beispiel:
-
-	"format":
-	{
-	    "type": "AvroFormat",
-	}
-
-Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das [Apache Hive-Tutorial](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe) an.
-
-[AZURE.INCLUDE [data-factory-json-format](../../includes/data-factory-json-format.md)]
+[AZURE.INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
+ 
 
 ### Unterstützung für die Komprimierung  
 Die Verarbeitung großer Datenmengen kann zu E/A- und Netzwerkengpässen führen. Aus diesem Grund kann die Komprimierung von Daten in Speichern nicht nur die Datenübertragung im Netzwerk beschleunigen und Speicherplatz sparen, sondern auch erhebliche Leistungssteigerungen bei der Verarbeitung von Big Data bewirken. Zu diesem Zeitpunkt wird die Komprimierung für dateibasierte Datenspeicher wie etwa Azure-Blobs oder das lokale Dateisystem unterstützt.
@@ -614,4 +571,4 @@ Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

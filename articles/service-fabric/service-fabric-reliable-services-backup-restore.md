@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/15/2016"
+   ms.date="05/13/2016"
    ms.author="mcoskun"/>
 
 # Sichern und Wiederherstellen von Reliable Services und Reliable Actors
@@ -193,4 +193,4 @@ Der Reliable State Manager ermöglicht das Wiederherstellen aus einer Sicherung 
 
 **RestoreAsync** löscht zuerst jeden bestehenden Status in dem primären Replikat, von dem es aufgerufen wurde. Danach erstellt der Reliable State Manager alle Reliable Objects, die im Sicherungsordner vorhanden sind. Als Nächstes werden die Reliable Objects angewiesen, ihre Prüfpunkte im Sicherungsordner wiederherzustellen. Schließlich stellt der Reliable State Manager seinen eigenen Status aus den Protokolldatensätzen im Sicherungsordner wieder her und führt die Wiederherstellung aus. Im Rahmen des Wiederherstellungsprozesses werden ab dem „Startpunkt“ beginnende Vorgänge, die Protokolldatensätze in den Sicherungsordner ausgeführt haben, in den Reliable Objects wiederholt. Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

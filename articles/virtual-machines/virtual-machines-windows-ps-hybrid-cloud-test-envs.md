@@ -11,7 +11,7 @@
 <tags
 	ms.service="virtual-machines-windows"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="Windows"
+	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="index-page"
 	ms.date="04/01/2016"
@@ -52,4 +52,4 @@ Für Organisationen und Einzelpersonen, für die eine direkte Internetverbindung
 
 - Erfahren Sie mehr über [Implementierungsrichtlinien](virtual-machines-linux-infrastructure-service-guidelines.md), um eine benutzerdefinierte Entwicklungs-/Testbereitstellung oder eine Produktionsbereitstellung in Azure-Infrastrukturdiensten zu entwerfen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -16,7 +16,9 @@
  ms.date="04/29/2016"
  ms.author="elfarber"/>
 
-# Tutorial: Suchen nach Gerätezwillingen mithilfe von Abfragen (Vorschau)
+# Tutorial: Gewusst wie: Suchen nach Gerätezwillingen mithilfe von Abfragen mit C# (Vorschau)
+
+[AZURE.INCLUDE [iot-hub-device-management-query-selector](../../includes/iot-hub-device-management-query-selector.md)]
 
 Mit der Azure IoT-Geräteverwaltung können Sie Gerätezwillinge – Dienstdarstellungen eines physischen Geräts – mit Abfragen suchen. Sie können Abfragen basierend auf Geräteeigenschaften, Diensteigenschaften oder Tags im Gerätezwilling durchführen. Sie können Tags und Eigenschaften zur Abfrage verwenden:
 
@@ -28,11 +30,11 @@ Weitere Informationen zu Gerätezwillingen und Abfragen finden Sie unter [Überb
 
 ## Ausführen des Beispiels einer Geräteabfrage
 
-Das folgende Beispiel legt die Funktionalität des Tutorials [Get started with Azure IoT Hub device management using C# (preview)][lnk-get-started] (Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mit C# [Vorschau]) dar. Auf der Basis, dass die verschiedenen simulierten Geräte ausgeführt werden, wird eine Abfrage durchgeführt, um bestimmte Geräte zu suchen.
+Das folgende Beispiel erweitert die Funktionalität des Tutorials [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)][lnk-get-started]. Auf der Basis, dass die verschiedenen simulierten Geräte ausgeführt werden, wird eine Abfrage durchgeführt, um bestimmte Geräte zu suchen.
 
 ### Voraussetzungen 
 
-Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Get started with Azure IoT Hub device management using C# (preview)][lnk-get-started] (Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mit C# [Vorschau]) abgeschlossen haben. Das bedeutet, dass Ihre simulierten Geräte ausgeführt werden müssen. Wenn Sie den Vorgang zuvor abgeschlossen haben, starten Sie Ihre simulierten Geräte jetzt neu.
+Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)][lnk-get-started] abgeschlossen haben. Das bedeutet, dass Ihre simulierten Geräte ausgeführt werden müssen. Wenn Sie den Vorgang zuvor abgeschlossen haben, starten Sie Ihre simulierten Geräte jetzt neu.
 
 ### Starten des Beispiels
 
@@ -53,26 +55,29 @@ Abfragen, die Geräte- und Diensteigenschaften betreffen, werden mit einer JSON-
 - **Project**: der Ausdruck, der die Felder aus dem Geräteobjekt angibt, die in das Abfrageresultset einbezogen werden (äquivalent zu SELECT in SQL):
 
   ```
-  var query = JsonConvert.SerializeObject(
-      project = new
-      {
-        all = false,
-        properties = new []
-        {
-          new
-          {
-            name = "CustomerId",
-            type = "service"
-          },
-          new
-          {
-            name = "Weight",
-            type = "service"
-          }
-        }
-      }
-  );
-```
+	  var query = JsonConvert.SerializeObject(
+		  new
+		  {
+			  project = new
+			  {
+				  all = false,
+				  properties = new[]
+				  {
+					  new
+					  {
+					  name = "CustomerId",
+					  type = "service"
+					  },
+					  new
+					  {
+					  name = "Weight",
+					  type = "service"
+					  }
+				  }
+			  }
+		  }
+	  );
+	```
 
 - **Filter**: der Ausdruck, der die Geräteobjekte einschränkt, die in das Abfrageresultset einbezogen werden (äquivalent zu WHERE in SQL):
 
@@ -172,7 +177,7 @@ Es gibt einige Einschränkungen der Implementierung von Abfragen in die öffentl
 
 -   Bei der Verwendung von Abfrageausdrücken bei Abfragen nach Dienst- oder Geräteeigenschaften werden nur 100 Geräte zurückgegeben. Ein Beispiel zum Implementieren des Auslagerns ist in [unserer Abfragebibliothek][lnk-query-samples] verfügbar.
 
-Ausführlichere Informationen über Syntax und verfügbare Felder für JSON sind [verfügbar][lnk-query-expression-guide]. Außerdem finden Sie Beispielabfragen in unserer [Abfrageausdrückebibliothek][lnk-query-samples].
+Ausführlichere Informationen über Syntax und verfügbare Felder für JSON sind [verfügbar][lnk-query-expression-guide]. Außerdem finden Sie Beispielabfragen in unserer [Bibliothek mit Abfrageausdrücken][lnk-query-samples].
 
 ### Abfrage nach Geräte- und Diensteigenschaften
 
@@ -196,7 +201,7 @@ var foundDevices = await registryManager.QueryDevicesAsync(new[] { "bacon" }, 10
 
 ### Geräteimplementierung
 
-Die Abfrage wird durch die Clientbibliothek der Azure IoT Hub-Geräteverwaltung aktiviert. Solange die Geräteeigenschaften synchronisiert werden (wie in [Tutorial: Verwenden des Gerätezwillings][lnk-twin-tutorial]) beschrieben, können Sie sie abfragen. Geräteeigenschaften sind nur verfügbar, nachdem das physische Gerät eine Verbindung mit IoT Hub hergestellt hat und Anfangswerte bereitstellt.
+Die Abfrage wird durch die Clientbibliothek der Azure IoT Hub-Geräteverwaltung aktiviert. Solange die Geräteeigenschaften synchronisiert werden (wie in [Tutorial: Verwenden des Gerätezwillings][lnk-twin-tutorial] beschrieben), können Sie sie abfragen. Geräteeigenschaften sind nur verfügbar, nachdem das physische Gerät eine Verbindung mit IoT Hub hergestellt hat und Anfangswerte bereitstellt.
 
 ## Nächste Schritte
 
@@ -216,4 +221,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 [lnk-query-expression-guide]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/node/service/devdoc/query_expression_requirements.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

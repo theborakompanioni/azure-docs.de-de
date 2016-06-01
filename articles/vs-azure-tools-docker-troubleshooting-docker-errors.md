@@ -12,92 +12,108 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/15/2016"
    ms.author="tarcher" />
 
-# Problembehandlung von Docker-Fehlern
+# Problembehandlung bei der Visual Studio Docker-Entwicklung
 
-Nachdem Sie alle Einstellungen für den Docker-Container Ihrer App konfiguriert haben, sollten Sie sich überzeugen, dass die Einstellungen und Pfade richtig sind. Visual Studio bietet eine Schaltfläche "Überprüfen" im Dialogfeld „Veröffentlichen“, die Sie dabei unterstützt.
+Bei der Arbeit mit der Preview-Version von Visual Studio-Tools für Docker können für solche Versionen typische Probleme auftreten. Es folgen einige häufig auftretende Probleme und entsprechende Lösungen.
 
-Dieses Thema hilft Ihnen, die häufigsten Probleme beim Hosten von Visual Studio-Apps in Docker zu diagnostizieren und entweder zu beheben oder zu umgehen. Dieses Thema wird laufend um weitere Probleme erweitert, sowie sie bekannt werden.
+##Fehler beim Konfigurieren der Datei „Program.cs“ zur Docker-Unterstützung
 
-## Sie erhalten eine Fehlerbenachrichtigung, wenn Sie versuchen, die Verbindung mit Ihrem Docker-Host im Dialogfeld "Web veröffentlichen" zu überprüfen
-
-Für dieses Problem gibt es eine Reihe möglicher Lösungen.
-
-- Überprüfen Sie im Dialogfeld **Veröffentlichen** auf der Registerkarte **Verbindung**, ob die **Server-URL** richtig und die `:<port_number>` am Ende der **Server-URL** der Port ist, an dem der Docker-Daemon lauscht.
-
-- Erweitern Sie im Dialogfeld **Veröffentlichen** auf der Registerkarte **Verbindung** den Abschnitt **Docker – Erweiterte Optionen**, und stellen Sie sicher, dass die richtigen **Authentifizierungsoptionen** angegeben wurden.
-  - Wenn der Docker-Daemon auf dem Server für die Verwendung von TLS-Sicherheit konfiguriert ist, sucht die Windows-Befehlszeilenschnittstelle von Docker (docker.exe) standardmäßig im Ordner `<%userprofile%>\.docker` nach dem Clientschlüssel (key.pem) und dem Zertifikat (cert.pem). Wenn diese Elemente nicht vorhanden sind, müssen sie mithilfe von OpenSSL erstellt werden. Weitere Informationen zum Konfigurieren von Docker für TLS finden Sie unter [Protect the Docker Daemon Socket with HTTPS](https://docs.docker.com/articles/https/) (in englischer Sprache).
-
-	Eine Möglichkeit sicherzustellen, dass Docker ordnungsgemäß vom Windows-Client beim Linux-Server authentifiziert wird, besteht darin, den Inhalt des Textfelds "Vorschau" in ein neues Befehlsfenster zu kopieren und `<command>` in "Info" zu ändern, wie hier gezeigt:
-
-    ```
-    // This example assumes the Docker daemon is configured to use the default port
-    // of 2376 to listen for connections.docker.
-
-    --tls -H tcp://contoso.cloudapp.net:2376 info
-    ```
-
-    Alternativ zum Kopieren der Clientzertifikat- und Schlüsseldateien in den Ordner ".docker" können Sie die **Authentifizierungsoptionen** durch Hinzufügen der folgenden Parameter ändern:
-
-    ```
-    --tls --tlscert=C:\mycert\cert.pem --tlskey=C:\mycert\key.pem
-    ```
-- Stellen Sie sicher, dass der Docker-Daemon auf dem Docker-Hostcomputer Version 1.6 oder höher ist.
-
-## Timeoutfehler beim Verwenden eigener Zertifikate ohne Clientzertifikat im Docker-Ordner
-
-Wenn Sie zum Erstellen des Docker-Hosts in Visual Studio eigene Zertifikate verwenden möchten (also im Dialogfeld **Virtuellen Computer in Microsoft Azure erstellen** das Kontrollkästchen **Docker-Zertifikate automatisch erstellen** deaktivieren), müssen Sie die Clientzertifikat- und Schlüsseldateien (cert.pem bzw. key.pem) in den Docker-Ordner (`<%userprofile%>\.docker`) kopieren. Andernfalls erhalten Sie beim Veröffentlichen Ihres Projekts nach einer Stunde einen Timeoutfehler, und der Veröffentlichungsvorgang schlägt fehl.
-
-## PowerShell 3.0 ist zum Veröffentlichen in Docker-Containern erforderlich
-
-Wenn Sie Windows 7 oder Windows Server 2008 als Betriebssystem verwenden, müssen Sie zuerst PowerShell 3.0 installieren, bevor Sie in Docker-Containern veröffentlichen können. PowerShell 3.0 ist im [Windows Management Framework 3.0](https://www.microsoft.com/de-DE/download/details.aspx?id=34595) enthalten. Nach der Installation müssen Sie das System neu starten.
-
-Als alternative Problemumgehung können Sie ein Upgrade auf Windows 8.1 oder Windows 10 ausführen, in denen PowerShell 3.0 bereits enthalten ist.
-
-## Das PowerShell-Fenster wird nicht automatisch geschlossen
-
-Nach dem Erstellen eines virtuellen Computers wird das PowerShell-Fenster manchmal nicht automatisch geschlossen. Durch Schließen dieses Fensters wird auch Visual Studio geschlossen. Da sich das Fenster nicht auf Visual Studio- oder Docker-Funktionen auswirkt, lassen Sie es geöffnet, bis Sie Ihre Arbeit abgeschlossen haben.
-
-## Häufig gestellte Fragen
-
-F: Wie erstelle ich einen neuen Docker-fähigen Linux-Computer mithilfe der Visual Studio-Tools in Azure?
-
-A: Informationen dazu finden Sie unter [Hosten von Web-Apps in Docker](vs-azure-tools-docker-hosting-web-apps-in-docker.md).
-
-F: Welche Visual Studio-Projektvorlagen werden zur Veröffentlichung in einem Linux-Docker-Container unterstützt?
-
-A: Visual Studio unterstützt aktuell die Webvorlagen für C#-Konsolenanwendung (Paket) und C#-ASP.NET 5-Vorschau, einschließlich:
-
-- Leer
-
-- Web-API
-
-- Webanwendung.
-
-F: Wie veröffentliche ich ein ASP.NET 5-Web- oder -Konsolenprojekt in Docker mithilfe von MSBUILD über die Befehlszeile?
-
-A: Verwenden Sie den folgenden MSBUILD-Befehl:
-
-    `msbuild <projectname.xproj> /p:deployOnBuild=true;publishProfile=<profilename>`
-
-F: Wie veröffentliche ich ein ASP.NET 5-Web- oder -Konsolenprojekt in Docker mithilfe von PowerShell über die Befehlszeile?
-
-A: Verwenden Sie den folgenden PowerShell-Befehl:
-
+Beim Hinzufügen von Docker-Unterstützung muss `.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS"))` zu „WebHostBuilder()“ hinzugefügt werden. Wenn die Datei „Program.cs“, die Funktion „Main()“ oder eine neue „WebHostBuilder“-Klasse nicht gefunden wurde, wird eine Warnung angezeigt.„UseUrls()“ ist erforderlich, damit Kestrel den eingehenden Datenverkehr über „localhost“ hinaus überwachen kann, wenn die Ausführung in einem Docker-Container erfolgt. Nach Fertigstellung sieht der typische Code wie folgt aus:
 ```
-.\contoso-Docker-publish.ps1 -packOutput $env:USERPROFILE\AppData\Local\Temp\PublishTemp -pubxmlFile .\contoso-Docker.pubxml
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var host = new WebHostBuilder()
+            .UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS") ?? String.Empty)
+            .UseKestrel()
+            .UseContentRoot(Directory.GetCurrentDirectory() ?? "")
+            .UseIISIntegration()
+            .UseStartup<Startup>()
+            .Build();
+
+        host.Run();
+    }
+}
 ```
+„UseUrls()“ hat „WebHost“ so konfiguriert, dass eingehender URL-Datenverkehr überwacht wird. Die [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS) konfigurieren die Umgebungsvariable im „dockerfile.debug“/release“-Modus wie folgt:
+```
+# Configure the listening port to 80
+ENV ASPNETCORE_SERVER.URLS http://*:80
+```
+## Volumezuordnung funktioniert nicht
+Zum Aktivieren der Funktionen zum Bearbeiten und Aktualisieren ist die Volumezuordnung so konfiguriert, dass der Quellcode Ihres Projekts mit dem Ordner „.app“ im Container gemeinsam genutzt wird. Bei Änderungen von Dateien auf Ihrem Hostcomputer verwendet das Verzeichnis „/app“ der Container dasselbe Verzeichnis. In „docker-compose.debug.yml“ ermöglicht die folgende Konfiguration die Volumezuordnung:
+```
+    volumes:
+      - ..:/app
+```
+Zum Überprüfen, ob die Volumezuordnung funktioniert, probieren Sie den folgenden Befehl:
 
-F: Ich habe einen eigenen Linux-Server, auf dem Docker installiert ist. Wie gebe ich das im Dialogfeld **Veröffentlichen im Web** an?
+**Windows**
+```
+docker run -it -v /c/Users/Public:/wormhole busybox
+cd wormhole
+/ # ls
+```
+Im Ordner „Users/Public“ sollte eine Verzeichnisliste angezeigt werden. Wenn keine Dateien angezeigt werden und Ihr Ordner „/c/Users/Public“ nicht leer ist, ist die Volumezuordnung nicht ordnungsgemäß konfiguriert.
+```
+bin       etc       proc      sys       usr       wormhole
+dev       home      root      tmp       var
+```
+Wechseln Sie zum Verzeichnis „wormhole“, um den Inhalt des Verzeichnisses `/c/Users/Public` anzuzeigen:
+```
+/ # cd wormhole/
+/wormhole # ls
+AccountPictures  Downloads        Music            Videos
+Desktop          Host             NuGet.Config     a.txt
+Documents        Libraries        Pictures         desktop.ini
+/wormhole #
+```
+**Hinweis:** *Bei der Arbeit mit Linux-VMs wird im Containerdateisystem Groß-/Kleinschreibung unterschieden.*
 
-A: Lesen Sie den Abschnitt **Bereitstellen eines benutzerdefinierten Docker-Hosts** im Thema [Hosten von Web-Apps in Docker](vs-azure-tools-docker-hosting-web-apps-in-docker.md).
+Wenn Sie den Inhalt nicht anzeigen können, probieren Sie Folgendes:
 
-F: Ich verwende einen eigenen Linux-Server, auf dem Docker installiert ist. Wie kann ich Schlüssel und Zertifikate generieren, um die Authentifizierung mithilfe von TLS zu konfigurieren?
+**Betaversion von Docker für Windows**
+- Überprüfen Sie, ob die Docker für Windows-Desktop-App ausgeführt wird, indem Sie auf der Taskleiste nach dem Walsymbol suchen, das weiß und funktionsbereit angezeigt werden muss.
+- Überprüfen Sie, ob die Volumezuordnung konfiguriert ist, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Walsymbol klicken, „Einstellungen“ auswählen und dann auf **Freigegebene Laufwerke verwalten** klicken.
 
-A: Eine Möglichkeit besteht darin, OpenSSL auf dem Server zu verwenden, um die erforderlichen Zertifikate und Schlüssel für die Zertifizierungsstelle, den Server und den Client zu erzeugen. Anschließend können Sie Software von Drittanbietern verwenden, um eine SSH/SFTP-Verbindung herzustellen, und dann die Zertifikate auf den lokalen Windows-Entwicklungscomputer kopieren. Standardmäßig versucht die Docker-Befehlszeilenschnittstelle, die Zertifikate im Ordner `<userprofile>\.docker` zu verwenden.
+**Docker Toolbox mit VirtualBox**
 
-Eine weitere Option besteht darin, OpenSSL für Windows herunterzuladen die erforderlichen Zertifikate und Schlüssel zu generieren und anschließend die Zertifizierungsstelle, die Serverzertifikate und die Schlüssel auf den Linux-Computer hochzuladen. Weitere Informationen zum Einrichten einer sicheren Verbindung mit Docker finden Sie unter [Protect the Docker Daemon Socket mit HTTPS](https://docs.docker.com/articles/https/) (in englischer Sprache).
+VirtualBox gibt `C:\Users` standardmäßig als `c:/Users` frei. Falls möglich, verschieben Sie Ihr Projekt unter dieses Verzeichnis. Fügen Sie es andernfalls den [freigegebenen Ordnern](https://www.virtualbox.org/manual/ch04.html#sharedfolders) von VirtualBox manuell hinzu.
+	
+##Erstellung: Fehler beim Erstellen des Images, Fehler beim Überprüfen der TLS-Verbindung: Der Host wird nicht ausgeführt
 
-<!---HONumber=AcomDC_0420_2016-->
+- Überprüfen Sie, ob der Docker-Standardhost in Betrieb ist. Siehe dazu den Artikel zum [Konfigurieren des Docker-Clients](./vs-azure-tools-docker-setup.md).
+
+##Verwenden von Microsoft Edge als Standardbrowser
+
+Wenn Sie den Microsoft Edge-Browser verwenden, wird die Website möglicherweise nicht geöffnet, weil Edge die IP-Adresse als ungesichert einstuft. Führen Sie die folgenden Schritte aus, um dieses Problem zu beheben:
+1. Geben Sie im Windows-Startmenübefehl „Ausführen“ `Internet Options` ein.
+2. Tippen Sie auf **Internetoptionen**, wenn diese Option angezeigt wird. 
+2. Tippen Sie auf die Registerkarte **Sicherheit**.
+3. Wählen Sie die Zone **Lokales Intranet** aus.
+4. Tippen Sie auf **Sites**. 
+5. Fügen Sie die IP-Adresse Ihres virtuellen Computers (in diesem Fall der Docker-Host) in der Liste hinzu. 
+6. Aktualisieren Sie die Seite in Edge. Die Website sollte nun verfügbar sein und angezeigt werden. 
+7. Weitere Informationen zu diesem Problem finden Sie in Scott Hanselmans Blogbeitrag [Microsoft Edge can't see or open VirtualBox-hosted local web sites](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx) (Über VirtualBox gehostete lokale Websites können in Microsoft Edge nicht angezeigt oder geöffnet werden). 
+
+##Problembehandlung bei Versionen bis 0.15
+
+
+###Das Ausführen der App hat zur Folge, dass PowerShell geöffnet, eine Fehlermeldung angezeigt und PowerShell wieder geschlossen wird. Die Browserseite wird nicht geöffnet.
+
+Dabei könnte es sich um einen Fehler während des folgenden Vorgangs handeln: `docker-compose-up` Führen Sie die folgenden Schritte aus, um den Fehler anzuzeigen:
+
+1. Öffnen Sie die Datei `Properties\launchSettings.json`. Wechseln Sie zum Docker-Eintrag.
+1. Wechseln Sie zur Zeile, die wie folgt beginnt:
+
+    "commandLineArgs": "-ExecutionPolicy RemoteSigned …"
+	
+1. Fügen Sie den `-noexit`-Parameter hinzu. Die Zeile sollte nun wie folgt aussehen: Durch diese Änderung bleibt PowerShell geöffnet, sodass Sie den Fehler anzeigen können.
+
+	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …"
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)
@@ -24,7 +24,7 @@ Wenn Sie Verlaufsdaten in einer separaten Tabelle speichern, können Sie Stretch
 
 Wenn Sie kein Filterprädikat angeben, wird die gesamte Tabelle migriert.
 
-Wenn Sie den Assistenten zum Aktivieren einer Datenbank für Stretch ausführen, können Sie in RC3 eine ganze Tabelle migrieren oder ein einfaches datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat zur Auswahl der zu migrierenden Zeilen verwenden, führen Sie einen der folgenden Schritte aus.
+Wenn Sie den Assistenten zum Aktivieren einer Datenbank für Stretch ausführen, können Sie eine ganze Tabelle migrieren oder ein einfaches datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat zur Auswahl der zu migrierenden Zeilen verwenden, führen Sie einen der folgenden Schritte aus.
 
 -   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und ein Prädikat anzugeben.
 
@@ -508,4 +508,4 @@ Nachdem Sie das Filterprädikat entfernt haben, sind alle Zeilen in der Tabelle 
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

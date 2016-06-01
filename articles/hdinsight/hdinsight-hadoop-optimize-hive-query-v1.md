@@ -21,9 +21,11 @@
 
 Hadoop-Cluster sind standardmäßig nicht leistungsoptimiert. In diesem Artikel werden einige der gängigsten Optimierungsmethoden für die Leistung von Hive vorgestellt, die Sie auf unsere Abfragen anwenden können.
 
-[AZURE.INCLUDE [Portal](../../includes/hdinsight-azure-portal.md)]
-
-* [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md)
+> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das klassische Azure-Portal verwendet. Microsoft empfiehlt die Verwendung des klassischen Azure-Portals nicht für die Erstellung neuer Dienste. Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
+>
+> Dieses Dokument enthält außerdem Informationen zur Verwendung von Azure PowerShell. Die bereitgestellten Codeausschnitte basieren auf Befehlen, die Azure Service Management (ASM) zur Zusammenarbeit mit HDInsight verwenden, und sind __veraltet__. Diese Befehle werden zum 1. Januar 2017 eingestellt.
+>
+>Eine Version dieses Dokuments, die das Azure-Portal verwendet, finden Sie zusammen mit PowerShell-Codeausschnitten, die den Azure Resource Manager (ARM) verwenden, unter [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md).
 
 ##Horizontales Skalieren der Worker-Knoten
 
@@ -218,4 +220,4 @@ In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Protokollsuch-API für Log Analytics | Microsoft Azure"
-	description="Dieser Artikel bietet ein Tutorial, in dem beschrieben wird, wie Sie die Protokollsuch-API von Log Analytics in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt."
+	pageTitle="Log Analytics-REST-API für die Protokollsuche | Microsoft Azure"
+	description="Dieser Artikel enthält ein allgemeines Tutorial, in dem beschrieben wird, wie Sie die Log Analytics-REST-API für die Suche in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt."
 	services="log-analytics"
 	documentationCenter=""
 	authors="bandersmsft"
@@ -17,21 +17,21 @@
 	ms.author="banders"/>
 
 
-# Protokollsuch-API für Log Analytics
+# Log Analytics-REST-API für die Protokollsuche
 
-Dieser Artikel bietet ein Tutorial, in dem beschrieben wird, wie Sie die Protokollsuch-API von Log Analytics in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt. Einige Beispiele in diesem Artikel verweisen auf Operational Insights – dies ist der Name der Vorgängerversion von Log Analytics.
+Dieser Artikel enthält ein allgemeines Tutorial, in dem beschrieben wird, wie Sie die Log Analytics-REST-API für die Suche in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt. Einige Beispiele in diesem Artikel verweisen auf Operational Insights – dies ist der Name der Vorgängerversion von Log Analytics.
 
-## Übersicht über die Protokollsuch-API
+## Übersicht über die Protokollsuch-REST-API
 
-Die Protokollsuch-API von Log Analytics ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-API. In diesem Dokument finden Sie Beispiele, in denen über [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open Source-Befehlszeilentool, das den Aufruf der Azure-Ressourcen-Manager-API vereinfacht. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die Protokollsuch-API von Log Analytics zuzugreifen. Mit diesen Tools können Sie die RESTful-API von Azure Resource Manager für Aufrufe an OMS-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API wird Ihnen Suchergebnisse im JSON-Format ausgeben, und Sie können die Suchergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
+Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-API. In diesem Dokument finden Sie Beispiele, in denen über [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open Source-Befehlszeilentool, das den Aufruf der Azure-Ressourcen-Manager-API vereinfacht. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die Protokollsuch-API von Log Analytics zuzugreifen. Eine weitere Option besteht in der Verwendung des Azure PowerShell-Moduls für Operational Insights, das Cmdlets für den Zugriff auf die Suche enthält. Mit diesen Tools können Sie die RESTful-API von Azure Resource Manager für Aufrufe an OMS-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API wird Ihnen Suchergebnisse im JSON-Format ausgeben, und Sie können die Suchergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
 
 Der Azure-Ressourcen-Manager kann über eine [Library für .NET](https://msdn.microsoft.com/library/azure/dn910477.aspx) oder eine [REST-API](https://msdn.microsoft.com/library/azure/mt163658.aspx) verwendet werden. Überprüfen Sie die verlinkten Webseiten, um mehr zu erfahren.
 
-## Tutorial zu den Grundlagen der Log Analytics-Protokollsuch-API
+## Allgemeines Tutorial zur Log Analytics-REST-API für die Protokollsuche
 
 ### Verwendung von ARMClient
 
-1. Installieren Sie [Chocolatey](https://chocolatey.org/), ein Open Source Computer-Paket-Manager für Windows. Öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie den folgenden Befehl aus:
+1. Installieren Sie [Chocolatey](https://chocolatey.org/), ein Open Source-Paket-Manager für Windows. Öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie den folgenden Befehl aus:
 
     ```
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
@@ -51,7 +51,7 @@ Der Azure-Ressourcen-Manager kann über eine [Library für .NET](https://msdn.mi
     armclient login
     ```
 
-    Eine erfolgreiche Anmeldung listet alle Abonnements auf, die mit dem angegebenen Konto verknüpft sind. Beispiel:
+    Eine erfolgreiche Anmeldung listet alle Abonnements auf, die mit dem angegebenen Konto verknüpft sind:
 
     ```
     PS C:\Users\SampleUserName> armclient login
@@ -63,13 +63,13 @@ Der Azure-Ressourcen-Manager kann über eine [Library für .NET](https://msdn.mi
     Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Example Name 3)
     ```
 
-2. Operations Management Suite-Arbeitsbereiche aufrufen. Beispiel:
+2. Rufen Sie die Operations Management Suite-Arbeitsbereiche auf:
 
     ```
     armclient get /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces?api-version=2015-03-20
     ```
 
-    Ein erfolgreicher Get-Aufruf gibt alle Arbeitsbereiche aus, die mit dem Abonnement verknüpft sind. Beispiel:
+    Ein erfolgreicher Get-Aufruf gibt alle Arbeitsbereiche aus, die mit dem Abonnement verknüpft sind:
 
     ```
     {
@@ -87,18 +87,18 @@ Der Azure-Ressourcen-Manager kann über eine [Library für .NET](https://msdn.mi
        ]
     }
     ```
-3. Erstellen Sie Ihre Search-Variable. Beispiel:
+3. Erstellen Sie Ihre Suchvariable:
 
     ```
     $mySearch = "{ 'top':150, 'query':'Error'}";
     ```
-4. Führen Sie mit der neuen Search-Variable eine Suche durch. Beispiel:
+4. Führen Sie mit der neuen Suchvariablen eine Suche durch:
 
     ```
     armclient post /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{WORKSPACE NAME}/search?api-version=2015-03-20 $mySearch
     ```
 
-## Referenzbeispiele für die Such-API von Log Analytics
+## Referenzbeispiele für die Log Analytics-REST-API für die Suche
 Die folgenden Beispiele zeigen Ihnen, wie Sie die Search-API verwenden können.
 
 ### Search – Aktion/Lesen
@@ -197,7 +197,7 @@ Die folgende Tabelle beschreibt die verfügbaren Eigenschaften.
 	armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2015-03-20
 ```
 
->[AZURE.NOTE] Wenn die Suche den Status "Ausstehend" zurückgibt, können die aktualisierten Ergebnisse über diese API aufgerufen werden. Nach 6 Minuten wird das Ergebnis der Suche aus dem Cache gelöscht, und es wird "Http Fehlend" zurückgegeben. Wenn die anfängliche Suchanforderung sofort den Status "Erfolgreich" zurückgibt, wird sie nicht zum Cache hinzugefügt. Dadurch gibt diese API bei einer Abfrage "Http Fehlend" zurück. Der Inhalt eines "Http 200"-Ergebnisses wird im gleichen Format wie die ursprüngliche Suchanforderung erstellt, nur mit aktualisierten Werten.
+>[AZURE.NOTE] Wenn die Suche den Status "Ausstehend" zurückgibt, können die aktualisierten Ergebnisse über diese API aufgerufen werden. Nach sechs Minuten wird das Ergebnis der Suche aus dem Cache gelöscht, und es wird „HTTP Fehlend“ zurückgegeben. Wenn die anfängliche Suchanforderung sofort den Status „Erfolgreich“ zurückgibt, wird sie nicht zum Cache hinzugefügt. Dadurch gibt diese API bei einer Abfrage „HTTP Fehlend“ zurück. Der Inhalt eines „HTTP 200“-Ergebnisses wird im gleichen Format wie die ursprüngliche Suchanforderung erstellt, nur mit aktualisierten Werten.
 
 ### Gespeicherte Suchvorgänge - nur REST
 
@@ -379,7 +379,7 @@ Die Abfrage, die für die Gruppendefinition verwendet wird, muss einen Satz von 
 
 Die Definition der gespeicherten Suche muss eine Markierung namens „Group“ mit dem Wert „Computer“ aufweisen, damit die Suche als Computergruppe klassifiziert werden kann.
 
-	$etag=get-date -f yyyy-MM-ddThh:mm:ss.msZ
+	$etag=Get-Date -Format yyyy-MM-ddThh:mm:ss.msZ
 	$groupName="My Computer Group"
 	$groupQuery = "Computer=srv* | Distinct Computer"
 	$groupCategory="My Computer Groups"
@@ -402,4 +402,4 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 
 - Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md), um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

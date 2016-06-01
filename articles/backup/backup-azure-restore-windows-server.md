@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Wiederherstellen von Daten auf Windows Server- oder Windows-Clientcomputern aus Azure | Microsoft Azure"
+   pageTitle="Wiederherstellen von Daten auf einem Windows-Server oder -Client von Azure unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft Azure"
    description="Erfahren Sie, wie Daten auf einem Windows Server- oder Windows-Clientcomputer wiederhergestellt werden."
    services="backup"
    documentationCenter=""
@@ -13,16 +13,23 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="01/25/2016"
+	 ms.date="05/10/2016"
 	 ms.author="trinadhk; jimpark; markgal;"/>
 
-# Wiederherstellen von Windows Server- oder Windows-Clientcomputern
+# Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
+
+> [AZURE.SELECTOR]
+- [Azure-Portal](backup-azure-restore-windows-server.md)
+- [Klassisches Portal](backup-azure-restore-windows-server-classic.md)
+
 In diesem Artikel werden die erforderlichen Schritte für zwei Arten von Wiederherstellungsvorgängen erläutert:
 
 - Wiederherstellen von Daten auf dem gleichen Computer, auf dem die Sicherungen erstellt wurden
 - Wiederherstellen von Daten auf einem beliebigen anderen Computer
 
-In beiden Fällen werden die Daten aus dem Azure Backup-Tresor abgerufen.
+In beiden Fällen werden die Daten aus dem Azure Recovery Services-Tresor abgerufen.
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
 
 ## Wiederherstellen von Daten auf demselben Computer
 Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer wiederherstellen möchten (auf dem die Sicherung erstellt wurde), können Sie die folgenden Schritte zum Wiederherstellen der Daten ausführen.
@@ -69,12 +76,12 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
 - *Quellcomputer* – Der ursprüngliche Computer, von dem die Sicherung erstellt wurde und der zurzeit nicht verfügbar ist.
 - *Zielcomputer* – Der Computer, auf dem die Daten wiederhergestellt werden.
-- *Beispieltresor* – Der Sicherungstresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind. <br/>
+- *Beispieltresor* – Der Recovery Services-Tresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind. <br/>
 
 > [AZURE.NOTE] Sicherungen von einem Computer können nicht auf einem Computer wiederhergestellt werden, auf dem eine frühere Version des Betriebssystems ausgeführt wird. Wenn beispielsweise Sicherungen auf einem Windows 7-Computer erstellt werden, können diese auf einem Computer unter Windows 8 oder höher wiederhergestellt werden. Umgekehrt ist dies jedoch nicht möglich.
 
 1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem *Zielcomputer*.
-2. Stellen Sie sicher, dass der *Zielcomputer* und der *Quellcomputer* in demselben Sicherungstresor registriert sind.
+2. Stellen Sie sicher, dass der *Zielcomputer* und der *Quellcomputer* bei dem gleichen Recovery Services-Tresor registriert sind.
 3. Klicken Sie auf **Daten wiederherstellen**, um den Workflow zu initiieren.
 
     ![Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/recover.png)
@@ -83,7 +90,7 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
     ![Anderer Server](./media/backup-azure-restore-windows-server/anotherserver.png)
 
-5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor* entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Sicherungstresor angezeigt, der der Tresor-Anmeldeinformationsdatei entspricht.
+5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor* entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor entspricht.
 
 6. Wählen Sie den *Quellcomputer* aus der Liste der angezeigten Computer aus.
 
@@ -108,12 +115,6 @@ In diesen Schritten wird folgende Terminologie verwendet:
 11. Klicken Sie nach dem Bereitstellen der Eingabe auf **Wiederherstellen**. Die Wiederherstellung der gesicherten Dateien am angegebenen Ziel wird ausgelöst.
 
 ## Nächste Schritte
-- [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
-- Besuchen Sie das [Azure Sicherungs-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
+- Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).
 
-## Weitere Informationen
-- [Azure Backup – Übersicht](http://go.microsoft.com/fwlink/p/?LinkId=222425)
-- [Sichern von virtuellen Azure-Computern](backup-azure-vms-introduction.md)
-- [Sichern von Microsoft-Workloads](backup-azure-dpm-introduction.md)
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="mblythe" 
+	manager="paulettm" 
 	editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="02/04/2016" 
+	ms.date="05/17/2016" 
 	ms.author="heidist"/>
 
 # Verwalten Ihres Suchdiensts in Microsoft Azure
@@ -47,7 +47,7 @@ Wenn Sie sich anmelden möchten, finden Sie entsprechende Informationen unter [E
 
 ##Suchanalyse
 
-Sie können während der Suchaktivitäten der Benutzer Daten sammeln, um besser zu verstehen, wie Ihr leistungsfähig Ihr Suchdienst ist, welche Begriffe gesucht werden und ob für diese Suchbegriffe Treffer zurückgegeben werden. Am besten lassen sich diese Daten mithilfe eines Power BI-Inhaltspakets analysieren und visualisieren. Der erste Schritt besteht im Aktivieren einer Analyse des Suchdatenverkehrs. Informationen zur Vorgehensweise finden Sie unter [Analyzing your Azure Search traffic](https://azure.microsoft.com/blog/analyzing-your-azure-search-traffic/) (Analysieren Ihres Azure Search-Datenverkehrs).
+Sie können während der Suchaktivitäten der Benutzer Daten sammeln, um besser zu verstehen, wie Ihr leistungsfähig Ihr Suchdienst ist, welche Begriffe gesucht werden und ob für diese Suchbegriffe Treffer zurückgegeben werden. Am besten lassen sich diese Daten mithilfe eines Power BI-Inhaltspakets analysieren und visualisieren. Der erste Schritt besteht im Aktivieren einer Analyse des Suchdatenverkehrs. Informationen zur Vorgehensweise finden Sie unter [Analyzing your Azure Search traffic](https://azure.microsoft.com/blog/analyzing-your-azure-search-traffic/) (Analysieren Ihres Azure Search-Datenverkehrs).
 
 <a id="sub-2"></a>
 ## Verwaltungsaufgaben
@@ -58,7 +58,6 @@ Obwohl einige Dienst Co-Administratoren haben können, hat ein Azure-Suchdienst 
 +	Verwaltung und Verteilung der API-Schlüssel.
 +	Überwachen der Ressourcenauslastung
 +	Herauf- oder Herabskalieren (nur für die Standardsuche)
-+	Starten bzw. Stoppen des Dienstes
 +	Festlegen von Rollen zum Steuern des Verwaltungszugriffs
 
 <a id="sub-3"></a>
@@ -119,7 +118,7 @@ Mit der Suchdienst-API können Sie Gesamtzahlen für Dokumente und Indizes abruf
 <a id="sub-6"></a>
 ## Herauf- oder Herunterskalieren
 
-Jeder Suchdienst enthält zunächst ein Minimum von einem Replikat und einer Partition. Wenn Sie sich mit den Tarifen [Basic oder Standard](search-limits-quotas-capacity.md) für fest zugeordnete Ressourcen angemeldet haben, können Sie im Dienstdashboard auf die Kachel **SKALIEREN** klicken, um die Anzahl der Replikate und Partitionen für Ihren Dienst anzupassen.
+Jeder Suchdienst enthält zunächst ein Minimum von einem Replikat und einer Partition. Wenn Sie sich mit den Tarifen [Basic oder Standard](search-limits-quotas-capacity.md) für fest zugeordnete Ressourcen angemeldet haben, können Sie im Dienstdashboard auf die Kachel **STAFFELUNG** klicken, um die Anzahl der Partitionen und Replikate für Ihren Dienst anzupassen.
 
 Wenn Sie zusätzliche Kapazität über eine dieser Ressourcen hinzufügen, wird diese vom Dienst automatisch verwendet. Sie müssen nichts weiter tun. Allerdings kann eine kleine Verzögerung auftreten, bevor die Auswirkungen der neuen Ressource spürbar sind. Die Bereitstellung zusätzlicher Ressourcen kann 15 Minuten oder mehr in Anspruch nehmen.
 
@@ -159,15 +158,6 @@ Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [A
 
 > [AZURE.VIDEO azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications]
 
-<a id="sub-7"></a>
-## Starten bzw. Stoppen des Dienstes
-
-Sie können Dienste mithilfe der Befehle im Dienst-Dashboard starten, anhalten oder sogar löschen.
-
- ![][11]
-
-
-Beim Starten oder Anhalten von Diensten wird die Abrechnung nicht deaktiviert. Sie müssen den Dienst komplett löschen, um Kosten komplett zu vermeiden. Alle zu Ihrem Dienst gehörenden Daten werden bei der Außerbetriebnahme Ihres Dienstes gelöscht.
 
 <a id="sub-8"></a>
 ## Festlegen von Rollen für administrativen Zugriff
@@ -180,7 +170,7 @@ Bei Azure Search bestimmt die rollenbasierte Zugriffssteuerung die folgenden Ver
 Rolle|Aufgabe
 ---|---
 Besitzer|Starten, Beenden oder Löschen des Diensts.<p>Erstellen und Anzeigen von Administrator- und Abfrageschlüsseln.<p>Anzeigen des Dienststatus, einschließlich Indexanzahl, Indexnamen, Dokumentanzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten).<p>Abonnement- und Dienstadministratoren sind automatisch Mitglieder der Besitzerrolle.
-Mitwirkender|Verfügt über die gleiche Zugriffsebene wie Besitzer mit Ausnahme der Rollenverwaltung. So kann z. B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern.
+Mitwirkender|Verfügt über die gleiche Zugriffsebene wie Besitzer mit Ausnahme der Rollenverwaltung. So kann z. B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern.
 Reader|Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können einen Dienst nicht starten oder beenden und auch keine Admin-Schlüssel anzeigen.
 
 Beachten Sie, dass die Rollen keine Zugriffsrechte für den Dienstendpunkt erteilen. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung über das Azure-Vorschauportal](../active-directory/role-based-access-control-configure.md) im Abschnitt "Autorisierung für Verwaltungsvorgänge vs. Datenvorgänge".
@@ -194,16 +184,14 @@ Rollen bieten Zugriffssteuerung, nachdem der Dienst erstellt wurde. Nur Abonneme
 [Manage the api-keys]: #sub-4
 [Monitor resource usage]: #sub-5
 [Scale up or down]: #sub-6
-[Start or Stop the Service]: #sub-7
 [Set roles to control administrative access]: #sub-8
 
 <!--Image references-->
 [8]: ./media/search-manage/Azure-Search-Manage-1-URL.png
 [9]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
-[11]: ./media/search-manage/Azure-Search-Manage-4-StartStop.png
 
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,12 +3,12 @@
 Die Java-Clientbibliothek für Event Hubs steht für die Verwendung in Maven-Projekten im [zentralen Maven-Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) zur Verfügung. Sie können darauf verweisen, indem Sie in der Maven-Projektdatei die folgende Abhängigkeitsdeklaration verwenden:
 
 ``` XML
-<dependency> 
-    <groupId>com.microsoft.azure</groupId> 
-    <artifactId>azure-eventhubs-clients</artifactId> 
-    <version>0.6.0</version> 
-</dependency>   
- ```
+<dependency>
+	<groupId>com.microsoft.azure</groupId>
+	<artifactId>azure-eventhubs</artifactId>
+	<version>0.6.9</version>
+</dependency>
+```
  
 Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt veröffentlichten JAR-Dateien aus dem [zentralen Maven-Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) oder vom [Versionsverteilungspunkt auf GitHub](https://github.com/Azure/azure-event-hubs/releases) abrufen.
 
@@ -56,5 +56,3 @@ Anschließend erstellen Sie ein einzelnes Ereignis, indem Sie eine Zeichenfolge 
 }
 
 ``` 
-
-<!---HONumber=AcomDC_0323_2016-->

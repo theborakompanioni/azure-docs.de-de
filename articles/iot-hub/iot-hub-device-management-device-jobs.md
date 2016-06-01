@@ -18,6 +18,9 @@
 
 # Tutorial: Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen (Vorschau)
 
+[AZURE.INCLUDE [iot-hub-device-management-job-selector](../../includes/iot-hub-device-management-jobs-selector.md)]
+
+## Einführung
 Die Azure IoT-Geräteverwaltung ermöglicht Ihnen, mithilfe von Geräteaufträgen mit physischen Geräten zu interagieren. Nachdem Sie den Gerätezwilling (die Dienstdarstellung eines physischen Geräts) identifiziert haben, können Sie mithilfe von Geräteaufträgen mit dem entsprechenden physischen Gerät interagieren. Geräteaufträge aktivieren die Koordination von komplexen Prozessen auf mehreren Geräten. Dieser Prozess kann mehrere Schritte und Vorgänge mit langer Laufzeit enthalten.
 
 Es gibt sechs Typen von Geräteaufträgen, die zurzeit von der Azure IoT Hub-Geräteverwaltung bereitgestellt werden (es werden zusätzliche Aufträge hinzugefügt, sobald Kunden sie benötigen):
@@ -29,9 +32,9 @@ Es gibt sechs Typen von Geräteaufträgen, die zurzeit von der Azure IoT Hub-Ger
 - **Geräteeigenschaft lesen**: Dient zum Abrufen des aktuellsten Werts einer Geräteeigenschaft auf dem physischen Gerät.
 - **Geräteeigenschaft schreiben**: Ändert eine Geräteeigenschaft auf dem physischen Gerät.
 
-Weitere Informationen zur Verwendung jedes dieser Aufträge finden Sie in der [API-Dokumentation][lnk-apidocs].
+Weitere Informationen zur Verwendung der einzelnen Aufträge finden Sie in der [API-Dokumentation][lnk-apidocs].
 
-Sie können den Auftragsverlauf abfragen, um den Status von Aufträgen zu erkennen, die Sie gestartet haben. Einige Beispiele für Abfragen finden Sie in [unserer Abfrageausdrucksbibliothek][lnk-query-samples].
+Sie können den Auftragsverlauf abfragen, um den Status von Aufträgen zu erkennen, die Sie gestartet haben. Einige Beispiele für Abfragen finden Sie in [unserer Bibliothek mit Abfrageausdrücken][lnk-query-samples].
 
 ## Verwenden von Geräteaufträgen zum Ausführen von Firmwareupdates: Architektur
 
@@ -53,11 +56,11 @@ Schritte für den Firmwareupdate-Geräteauftrag:
 
 ## Ausführen des Beispiels des Firmwareupdates
 
-Das folgende Beispiel legt die Funktionalität des Tutorials [Get started with Azure IoT Hub device management using C# (preview)][lnk-get-started] (Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mit C# [Vorschau]) dar. Auf der Basis, dass die verschiedenen simulierten Geräte ausgeführt werden, wird ein Auftrag zum Aktualisieren der Firmware auf allen Geräten gestartet.
+Das folgende Beispiel erweitert die Funktionalität des Tutorials [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)][lnk-get-started]. Auf der Basis, dass die verschiedenen simulierten Geräte ausgeführt werden, wird ein Auftrag zum Aktualisieren der Firmware auf allen Geräten gestartet.
 
 ### Voraussetzungen 
 
-Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Get started with Azure IoT Hub device management using C# (preview)][lnk-get-started] (Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mit C# [Vorschau]) abgeschlossen haben. Das bedeutet, dass Ihre simulierten Geräte ausgeführt werden müssen. Wenn Sie den Vorgang zuvor abgeschlossen haben, starten Sie Ihre simulierten Geräte jetzt neu.
+Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von C# (Vorschau)][lnk-get-started] abgeschlossen haben. Das bedeutet, dass Ihre simulierten Geräte ausgeführt werden müssen. Wenn Sie den Vorgang zuvor abgeschlossen haben, starten Sie Ihre simulierten Geräte jetzt neu.
 
 ### Starten des Beispiels
 
@@ -122,7 +125,7 @@ private static async Task OutputRunningJobs()
 }
 ```
 
-Wenn der übergeordnete Geräteauftrag abgeschlossen ist, gibt das Beispiel eine Liste aller Geräteaufträge aus. Dies wird in der Abbildung unten dargestellt. Der übergeordnete Auftrag wird nur abgeschlossen, nachdem alle zugehörigen untergeordneten Aufträge abgeschlossen sind. Im folgenden Screenshot ist der übergeordnete Auftrag der letzte Auftrag in der Liste, was Sie daran erkennen, dass die **ParentJobId** **''** lautet. Im übergeordneten Auftrag ist das Feld **Reason** auch auf eine Zeichenfolge festgelegt, die das aggregierte Ergebnis der Abfrage angibt. In diesem Fall gibt sie an, dass alle 6 Geräte erfolgreich aktualisiert wurden.
+Wenn der übergeordnete Geräteauftrag abgeschlossen ist, gibt das Beispiel eine Liste aller Geräteaufträge aus. Dies wird in der Abbildung unten dargestellt. Der übergeordnete Auftrag wird nur abgeschlossen, nachdem alle zugehörigen untergeordneten Aufträge abgeschlossen sind. Im folgenden Screenshot ist der übergeordnete Auftrag der letzte Auftrag in der Liste, was Sie daran erkennen, dass **ParentJobId** gleich **''** lautet. Im übergeordneten Auftrag ist das Feld **Reason** auch auf eine Zeichenfolge festgelegt, die das aggregierte Ergebnis der Abfrage angibt. In diesem Fall gibt sie an, dass alle 6 Geräte erfolgreich aktualisiert wurden.
 
 ![][img-output2]
 
@@ -130,7 +133,7 @@ Die obige Liste wird durch Abfragen für alle Aufträge und Sortieren nach Start
 
 ![][img-properties]
 
-Weitere Beispiele für das Abfragen des Geräteauftragsverlaufs finden Sie in [unserer Abfrageausdrückebibliothek][lnk-query-samples].
+Weitere Beispiele für das Abfragen des Geräteauftragsverlaufs finden Sie in [unserer Bibliothek mit Abfrageausdrücken][lnk-query-samples].
 
 ### Details zur Gerätesimulatorimplementierung
 
@@ -154,7 +157,7 @@ Die Clientbibliothek der Azure IoT Hub-Geräteverwaltung übernimmt die Kommunik
 
 Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalten Sie in den folgenden Tutorials:
 
-- die Clientbibliothek der Azure IoT Hub-Geräteverwaltung bietet ein End-to-End-Beispiel mit einem [Intel Edison-Gerät][lnk-edison].
+- Die Clientbibliothek der Azure IoT Hub-Geräteverwaltung bietet ein End-to-End-Beispiel mit einem [Intel Edison-Gerät][lnk-edison].
 
 - [Verwenden des Gerätezwillings][lnk-twin-tutorial]
 
@@ -175,4 +178,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-github-firmware]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/c/iotdm_client/samples/iotdm_simple_sample/iotdm_simple_sample.c
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

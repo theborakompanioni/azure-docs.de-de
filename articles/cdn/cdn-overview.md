@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/11/2016"
+	ms.date="05/24/2016"
 	ms.author="casoper"/>
 
 # Übersicht über das Azure Content Delivery Network (CDN)
 
-Das Azure Content Delivery Network (CDN) speichert statische Webinhalte an strategisch platzierten Standorten zwischen, um beim Bereitstellen von Inhalten für Benutzer einen maximalen Durchsatz zu ermöglichen. Das CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite durch Zwischenspeichern der Inhalte auf physischen Knoten auf der ganzen Welt. Eine Liste mit den aktuellen CDN-Knotenstandorten finden Sie unter [POP-Standorte von Azure Content Delivery Network (CDN)](cdn-pop-locations.md).
+> [AZURE.NOTE] In diesem Dokument wird beschrieben, worum es sich beim Azure Content Delivery Network (CDN) handelt, wie es funktioniert und über welche Features die einzelnen Azure CDN-Produkte verfügen. Wenn Sie diese Informationen überspringen und direkt auf ein Tutorial zum Erstellen eines CDN-Endpunkts zugreifen möchten, helfen Ihnen die Informationen unter [Verwenden von Azure CDN](cdn-create-new-endpoint.md) weiter. Eine Liste mit den aktuellen CDN-Knotenstandorten finden Sie unter [POP-Standorte von Azure Content Delivery Network (CDN)](cdn-pop-locations.md).
+
+Das Azure Content Delivery Network (CDN) speichert statische Webinhalte an strategisch platzierten Standorten zwischen, um beim Bereitstellen von Inhalten für Benutzer einen maximalen Durchsatz zu ermöglichen. Das CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite durch Zwischenspeichern der Inhalte auf physischen Knoten auf der ganzen Welt.
 
 Die Verwendung des CDN zum Zwischenspeichern von Websiteobjekten bietet folgende Vorteile:
 
@@ -50,7 +52,7 @@ Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN 
 
 | | Standard Akamai | Standard Verizon | Premium Verizon |
 |-------|-----------------|------------------|-----------------|
-| Einfache Integration in Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web-Apps](../app-service-web/cdn-websites-with-cdn.md) und[ Media Services](../media-services/media-services-manage-origins.md#enable_cdn) | **&#x2713;** | **&#x2713;** | **&#x2713;**|
+| Einfache Integration in Azure-Dienste wie [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web-Apps](../app-service-web/cdn-websites-with-cdn.md) und [Media Services](../media-services/media-services-manage-origins.md#enable_cdn) | **&#x2713;** | **&#x2713;** | **&#x2713;**|
 | HTTPS-Unterstützung | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | Lastenausgleich | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | DDoS-Schutz | **&#x2713;** | **&#x2713;** | **&#x2713;** |
@@ -72,8 +74,8 @@ Informationen zu den ersten Schritten mit CDN finden Sie unter [Verwenden von Az
 
 Wenn Sie bereits CDN-Kunde sind, können Sie jetzt Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) verwalten.
 
-Im [Video zu unserer Build 2016-Sitzung](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
+Im [Video zu unserer Build 2016-Veranstaltung](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
 
 Preisinformationen finden Sie unter [Content Delivery Network (CDN) – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

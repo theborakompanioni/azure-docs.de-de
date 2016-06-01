@@ -49,4 +49,14 @@ SQL-Datenbank bietet automatisch Verwaltung und Datenschutz, die Ihre App benöt
 
 Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+## Nächste Schritte
+
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
+
+## Weitere Informationen
+
+Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+ 
+Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
+
+<!---HONumber=AcomDC_0518_2016-->

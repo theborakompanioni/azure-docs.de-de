@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/04/2016"
+ 	ms.date="05/11/2016"
 	ms.author="juliako"/>
 
 #Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten 
 
 Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unter Verwendung der folgenden Formate dynamisch verschlüsseln:
 
-- **Unverschlüsselter Schlüssel mit AES-128-Umschlag**: Der gesamte Block wird mit dem **AES-128 CTR**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. [hier finden Sie weitere Informationen](media-services-protect-with-aes128.md)
+- **Unverschlüsselter Schlüssel mit AES-128-Umschlag**: Der gesamte Block wird mit dem **AES-128 CBC**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. [hier finden Sie weitere Informationen](media-services-protect-with-aes128.md)
 
 - **Apple FairPlay**: Die einzelnen Audio- und Videosamples werden mit dem **AES-128 CBC**-Modus verschlüsselt. **FairPlay Streaming** (FPS) ist in die Gerätebetriebssysteme integriert und wird von iOS und Apple TV nativ unterstützt. Safari unter OS X ermöglicht FPS durch Unterstützung der EME-Schnittstelle (Encrypted Media Extensions).
 
@@ -97,10 +97,14 @@ Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Med
 
 1. Erstellen eines "OnDemand"-Locators, um eine Streaming-URL zu erhalten.
 
->[AZURE.NOTE] Azure Media Player unterstützt standardmäßig keine FairPlay-Wiedergabe. Sie benötigen den Beispiel-Player des Apple-Entwicklerkontos, um FairPlay-Wiedergabe unter MAC OSX zu erhalten.
->
->Sie können Apps auch mithilfe des iOS-SDK entwickeln.
+##Verwenden der FairPlay-Schlüsselübermittlung nach Player-/Client-Apps
 
+Kunden können Player-Apps mithilfe des iOS SDK entwickeln. Damit FairPlay-Inhalte wiedergegeben werden können, müssen Kunden das Lizenzaustauschprotokoll implementieren. Das Lizenzaustauschprotokoll wird nicht von Apple angegeben. Es hängt jeweils von der App ab, wie Schlüsselübermittlungsanforderungen gesendet werden. Der AMS-FairPlay-Schlüsselübermittlungsdienst erwartet das SPC als POST-Nachricht mit Verschlüsselung vom Typ „www-form-url“ im folgenden Format:
+
+	spc=<Base64 encoded SPC>
+
+>[AZURE.NOTE] Azure Media Player unterstützt standardmäßig keine FairPlay-Wiedergabe. Kunden benötigen den Beispiel-Player des Apple-Entwicklerkontos, um FairPlay-Wiedergabe unter MAC OSX zu erhalten.
+ 
 
 ##.NET-Beispiel
 
@@ -536,4 +540,4 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

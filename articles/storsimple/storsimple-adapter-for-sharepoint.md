@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/14/2016"
+   ms.date="05/16/2016"
    ms.author="v-sharos" />
 
 # Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
@@ -23,11 +23,11 @@ Der StorSimple-Adapter für SharePoint ist eine Komponente, mit der Sie flexible
 
 Der StorSimple-Adapter für SharePoint dient als Remote BLOB Storage (RBS)-Anbieter und nutzt die SQL Server Remote BLOB Storage-Funktion zum Speichern von nicht strukturiertem SharePoint-Inhalt (in Form von BLOBs) auf einem Dateiserver, der von einem StorSimple-Gerät unterstützt wird.
 
->[AZURE.NOTE] Der StorSimple-Adapter für SharePoint unterstützt SharePoint Server 2010 Remote BLOB Storage (RBS). SharePoint Server 2010 External BLOB Storage (EBS) wird nicht unterstützt.
+>[AZURE.NOTE] Der StorSimple-Adapter für SharePoint unterstützt SharePoint Server 2010 Remote BLOB Storage (RBS). SharePoint Server 2010 External BLOB Storage (EBS) wird nicht unterstützt.
 
 - Sie können den StorSimple-Adapter für SharePoint im Microsoft Download Center unter [StorSimple-Adapter für SharePoint][1] herunterladen.
 
-- Informationen zur Planung für RBS und RBS-Einschränkungen finden Sie unter [Verwenden von RBS in SharePoint 2013][2] und [Planen von RBS (SharePoint Server 2010)][3].
+- Informationen zur Planung für RBS und RBS-Einschränkungen finden Sie unter [Verwenden von RBS in SharePoint 2013][2] und [Planen von RBS (SharePoint Server 2010)][3].
 
 Im Rest dieser Übersicht werden kurz die Rolle des StorSimple-Adapters für SharePoint und die SharePoint-Kapazitäts- und Leistungsgrenzen beschrieben, mit denen Sie vertraut sein sollten, bevor Sie den Adapter installieren und konfigurieren. Wechseln Sie nach dem Lesen dieser Informationen zu [Installation des StorSimple-Adapters für SharePoint](#storsimple-adapter-for-sharepoint-installation), um mit der Einrichtung des Adapters zu beginnen.
 
@@ -35,7 +35,7 @@ Im Rest dieser Übersicht werden kurz die Rolle des StorSimple-Adapters für Sha
 
 Auf einer SharePoint-Website wird Inhalt in Form von nicht strukturierten BLOB-Daten in einer oder mehreren Inhaltsdatenbanken gespeichert. Standardmäßig werden diese Datenbanken auf Computern gehostet, auf denen SQL Server ausgeführt wird und die Teil einer SharePoint-Serverfarm sind. Die Größe von BLOBs kann schnell zunehmen und viel lokalen Speicherplatz belegen. Aus diesem Grund kann es ratsam sein, sich nach einer anderen kostengünstigeren Speicherlösung umzusehen. SQL Server verfügt über eine Technologie mit dem Namen Remote Blob Storage (RBS), mit der Sie BLOB-Inhalt im Dateisystem außerhalb der SQL Server-Datenbank speichern können. Bei RBS können sich BLOBs im Dateisystem auf dem Computer befinden, auf dem SQL Server ausgeführt wird, oder sie können im Dateisystem auf einem anderen Servercomputer gespeichert werden.
 
-RBS erfordert die Verwendung eines RBS-Anbieters, z. B. den StorSimple-Adapter für SharePoint, um RBS unter SharePoint zu aktivieren. Der StorSimple-Adapter für SharePoint funktioniert zusammen mit RBS, sodass Sie BLOBs auf einen Server verschieben können, der mit dem Microsoft Azure StorSimple-System gesichert wird. Microsoft Azure StorSimple speichert die BLOB-Daten dann basierend auf ihrer Verwendung lokal oder in der Cloud. BLOBs, die sehr aktiv sind (meist als Tier 1-Daten oder „Hot Data“ bezeichnet), sind lokal gespeichert. Weniger aktive Daten und Archivdaten befinden sich in der Cloud. Nachdem Sie RBS für eine Inhaltsdatenbank aktiviert haben, werden alle in SharePoint neu erstellten BLOB-Inhalte auf dem StorSimple-Gerät gespeichert, und nicht in der Inhaltsdatenbank.
+RBS erfordert die Verwendung eines RBS-Anbieters, z. B. den StorSimple-Adapter für SharePoint, um RBS unter SharePoint zu aktivieren. Der StorSimple-Adapter für SharePoint funktioniert zusammen mit RBS, sodass Sie BLOBs auf einen Server verschieben können, der mit dem Microsoft Azure StorSimple-System gesichert wird. Microsoft Azure StorSimple speichert die BLOB-Daten dann basierend auf ihrer Verwendung lokal oder in der Cloud. BLOBs, die sehr aktiv sind (meist als Tier 1-Daten oder „Hot Data“ bezeichnet), sind lokal gespeichert. Weniger aktive Daten und Archivdaten befinden sich in der Cloud. Nachdem Sie RBS für eine Inhaltsdatenbank aktiviert haben, werden alle in SharePoint neu erstellten BLOB-Inhalte auf dem StorSimple-Gerät gespeichert, und nicht in der Inhaltsdatenbank.
 
 Die Microsoft Azure StorSimple-Implementierung von RBS bietet die folgenden Vorteile:
 
@@ -43,23 +43,23 @@ Die Microsoft Azure StorSimple-Implementierung von RBS bietet die folgenden Vort
 
 - Azure StorSimple verwendet die Deduplizierung und Komprimierung, um die Datengröße zu reduzieren.
 
-- Azure StorSimple sorgt durch Momentaufnahmen lokal und in der Cloud für den Schutz der Daten. Wenn Sie die Datenbank selbst auf dem StorSimple-Gerät anordnen, können Sie die Inhaltsdatenbank und BLOBs zusammen auf ausfallsichere Weise sichern. (Das Verschieben der Inhaltsdatenbank auf das Gerät wird nur für das Gerät der Serie StorSimple 8000 unterstützt. Diese Funktion wird für die Serien 5000 und 7000 nicht unterstützt.)
+- Azure StorSimple sorgt durch Momentaufnahmen lokal und in der Cloud für den Schutz der Daten. Wenn Sie die Datenbank selbst auf dem StorSimple-Gerät anordnen, können Sie die Inhaltsdatenbank und BLOBs zusammen auf ausfallsichere Weise sichern. (Das Verschieben der Inhaltsdatenbank auf das Gerät wird nur für das Gerät der Serie StorSimple 8000 unterstützt. Diese Funktion wird für die Serien 5000 und 7000 nicht unterstützt.)
 
-- Azure StorSimple enthält Funktionen für die Notfallwiederherstellung, z. B. Failover, Datei- und Volumewiederherstellung (einschließlich Testwiederherstellung) und die schnelle Wiederherstellung von Daten.
+- Azure StorSimple enthält Funktionen für die Notfallwiederherstellung, z. B. Failover, Datei- und Volumewiederherstellung (einschließlich Testwiederherstellung) und die schnelle Wiederherstellung von Daten.
 
-- Sie können Software für die Datenwiederherstellung, z. B. Kroll Ontrack PowerControls, mit StorSimple-Momentaufnahmen von BLOB-Daten verwenden, um eine Wiederherstellung von SharePoint-Inhalten auf Elementebene durchzuführen. (Diese Software für die Datenwiederherstellung muss separat erworben werden.)
+- Sie können Software für die Datenwiederherstellung, z. B. Kroll Ontrack PowerControls, mit StorSimple-Momentaufnahmen von BLOB-Daten verwenden, um eine Wiederherstellung von SharePoint-Inhalten auf Elementebene durchzuführen. (Diese Software für die Datenwiederherstellung muss separat erworben werden.)
 
 - Der StorSimple-Adapter für SharePoint wird mit dem SharePoint-Zentraladministration-Portal verknüpft, damit Sie Ihre gesamte SharePoint-Lösung von einem zentralen Ort aus verwalten können.
 
-Das Verschieben von BLOB-Inhalten in das Dateisystem kann auch zu weiteren Kosteneinsparungen und Vorteilen führen. Mit der Nutzung von RBS können Sie beispielsweise den Umfang der teuren Tier 1-Speicherung reduzieren. Da RBS außerdem eine Verkleinerung der Inhaltsdatenbank bewirkt, kann damit die Anzahl von Datenbanken verringert werden, die in der SharePoint-Serverfarm erforderlich sind. Andere Faktoren, z. B. Größenbeschränkungen für Datenbanken und die Menge an Nicht-RBS-Inhalt, können sich aber ebenfalls auf die Speicheranforderungen auswirken. Weitere Informationen zu den Kosten und Vorteilen der Verwendung von RBS finden Sie unter [Planen von RBS (SharePoint Server 2010)][4] und [Verwenden von RBS in SharePoint 2013][5].
+Das Verschieben von BLOB-Inhalten in das Dateisystem kann auch zu weiteren Kosteneinsparungen und Vorteilen führen. Mit der Nutzung von RBS können Sie beispielsweise den Umfang der teuren Tier 1-Speicherung reduzieren. Da RBS außerdem eine Verkleinerung der Inhaltsdatenbank bewirkt, kann damit die Anzahl von Datenbanken verringert werden, die in der SharePoint-Serverfarm erforderlich sind. Andere Faktoren, z. B. Größenbeschränkungen für Datenbanken und die Menge an Nicht-RBS-Inhalt, können sich aber ebenfalls auf die Speicheranforderungen auswirken. Weitere Informationen zu den Kosten und Vorteilen der Verwendung von RBS finden Sie unter [Planen von RBS (SharePoint Server 2010)][4] und [Verwenden von RBS in SharePoint 2013][5].
 
 ### Kapazitäts- und Leistungsgrenzen
 
-Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten Sie sich über die getesteten Leistungs- und Kapazitätsgrenzen von SharePoint Server 2010 und SharePoint Server 2013 sowie den Zusammenhang dieser Grenzen mit einer akzeptablen Leistung informieren. Weitere Informationen finden Sie unter [Softwarebeschränkungen und -grenzen für SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx).
+Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten Sie sich über die getesteten Leistungs- und Kapazitätsgrenzen von SharePoint Server 2010 und SharePoint Server 2013 sowie den Zusammenhang dieser Grenzen mit einer akzeptablen Leistung informieren. Weitere Informationen finden Sie unter [Softwarebeschränkungen und -grenzen für SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx).
 
 Überprüfen Sie Folgendes, bevor Sie RBS konfigurieren:
 
-- Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB. 
+- Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB. 
 
     **So messen Sie die Größe der Inhaltsdatenbank und BLOBs**
 
@@ -71,11 +71,11 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
 
      2. Führen Sie eine der folgenden SQL-Abfragen in SQL Management Studio im SQL Server-Feld für jede Inhaltsdatenbank aus, und fügen Sie das Ergebnis der Zahl hinzu, die Sie im ersten Schritt abgerufen haben.
 
-        Geben Sie für SharePoint 2013-Inhaltsdatenbanken Folgendes ein:
+        Geben Sie für SharePoint 2013-Inhaltsdatenbanken Folgendes ein:
 
         `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[DocStreams] WHERE [Content] IS NULL`
 
-        Geben Sie für SharePoint 2010-Inhaltsdatenbanken Folgendes ein:
+        Geben Sie für SharePoint 2010-Inhaltsdatenbanken Folgendes ein:
 
         `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[AllDocs] WHERE [Content] IS NULL`
 
@@ -103,13 +103,13 @@ Stellen Sie vor der Installation des StorSimple-Adapters für SharePoint sicher,
 
 Der StorSimple-Adapter für SharePoint funktioniert mit der folgenden Hardware und Software:
 
-- Unterstützte Betriebssysteme – Windows Server 2008 R2 SP1, Windows Server 2012 und Windows Server 2012 R2 
+- Unterstützte Betriebssysteme – Windows Server 2008 R2 SP1, Windows Server 2012 und Windows Server 2012 R2 
 
-- Unterstützte SharePoint-Versionen – SharePoint Server 2010 und SharePoint Server 2013
+- Unterstützte SharePoint-Versionen – SharePoint Server 2010 und SharePoint Server 2013
 
-- Unterstützte SQL Server-Versionen – SQL Server 2008 Enterprise Edition, SQL Server 2008 R2 Enterprise Edition und SQL Server 2012 Enterprise Edition
+- Unterstützte SQL Server-Versionen – SQL Server 2008 Enterprise Edition, SQL Server 2008 R2 Enterprise Edition und SQL Server 2012 Enterprise Edition
 
-- Unterstützte StorSimple-Geräte – StorSimple 8000-Serie, StorSimple 7000-Serie und StorSimple 5000-Serie
+- Unterstützte StorSimple-Geräte – StorSimple 8000-Serie, StorSimple 7000-Serie und StorSimple 5000-Serie
 
 ### Voraussetzungen für die Konfiguration des StorSimple-Geräts
 
@@ -125,7 +125,7 @@ Stellen Sie sicher, dass Ihr StorSimple-Gerät richtig konfiguriert ist und dass
 
 Stellen Sie außerdem sicher, dass das Volume für die BLOB-Externalisierung die folgenden Anforderungen erfüllt:
 
-- Das Volume muss mit einer Größe der Zuordnungseinheiten von 64 KB formatiert sein.
+- Das Volume muss mit einer Größe der Zuordnungseinheiten von 64 KB formatiert sein.
 
 - Ihre Web-Front-End (WFE)- und Anwendungsserver müssen über einen Universal Naming Convention (UNC)-Pfad auf das Volume zugreifen können.
 
@@ -167,11 +167,11 @@ Stellen Sie sicher, dass Ihre SharePoint-Serverfarm wie folgt richtig konfigurie
 
 Stellen Sie sicher, dass Sie eine unterstützte Version von SQL Server verwenden. Nur die folgenden Versionen werden unterstützt und können mit RBS verwendet werden:
 
-- SQL Server 2008 Enterprise Edition
+- SQL Server 2008 Enterprise Edition
 
-- SQL Server 2008 R2 Enterprise Edition
+- SQL Server 2008 R2 Enterprise Edition
 
-- SQL Server 2012 Enterprise Edition
+- SQL Server 2012 Enterprise Edition
 
 BLOBs können nur auf den Volumes extern ausgelagert werden, die vom StorSimple-Gerät für SQL Server bereitgestellt werden. Es werden keine anderen Ziele für die externe BLOB-Auslagerung unterstützt.
 
@@ -199,13 +199,13 @@ Wenn Objekte von einer SharePoint-Website gelöscht werden, werden sie nicht aut
 
 Dieses Wartungsprogramm (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) wird auf allen SharePoint WFE-Servern und -Anwendungsservern automatisch installiert, wenn Sie RBS aktivieren. Das Programm wird am folgenden Speicherort installiert: *Startlaufwerk*:\\Programme\\Microsoft SQL Remote Blob Storage 10.50\\Maintainer\\
 
-Informationen zum Konfigurieren und Verwenden des Wartungsprogramms finden Sie unter [RBS-Verwaltung in SharePoint Server 2013][8].
+Informationen zum Konfigurieren und Verwenden des Wartungsprogramms finden Sie unter [RBS-Verwaltung in SharePoint Server 2013][8].
 
 >[AZURE.IMPORTANT] Der RBS-Wartungsprogramm ist ressourcenintensiv. Planen Sie seine Ausführung nur für Zeiten, in denen in der SharePoint-Farm geringe Aktivität herrscht.
 
 ### Sofortiges Löschen von verwaisten BLOBs
 
-Wenn Sie verwaiste BLOBs sofort löschen müssen, können Sie die folgende Anleitung verwenden. Beachten Sie, dass diese Anleitung ein Beispiel dafür ist, wie dieser Schritt in einer SharePoint 2013-Umgebung mit den folgenden Komponenten ausgeführt werden kann:
+Wenn Sie verwaiste BLOBs sofort löschen müssen, können Sie die folgende Anleitung verwenden. Beachten Sie, dass diese Anleitung ein Beispiel dafür ist, wie dieser Schritt in einer SharePoint 2013-Umgebung mit den folgenden Komponenten ausgeführt werden kann:
 
 - Der Name der Inhaltsdatenbank lautet „WSS\_Content“.
 - Der SQL Server-Name lautet „SHRPT13-SQL12\\SHRPT13“.
@@ -226,7 +226,7 @@ Verwenden Sie das folgende Verfahren zum Aktualisieren des SharePoint-Servers mi
 >
 >- Nach Abschluss der Aktualisierung/Neuinstallation müssen Sie RBS für die Inhaltsdatenbanken aktivieren. Weitere Informationen finden Sie unter [Konfigurieren von RBS](#configure-rbs).
 >
->- Wenn Sie RBS für eine SharePoint-Farm konfigurieren, die über eine sehr große Zahl von Datenbanken verfügt (mehr als 200), kann es für die Seite **SharePoint-Zentraladministration** zu einer Zeitüberschreitung kommen. Aktualisieren Sie die Seite, falls dies passiert. Dies wirkt sich nicht auf den Konfigurationsprozess aus.
+>- Wenn Sie RBS für eine SharePoint-Farm konfigurieren, die über eine sehr große Zahl von Datenbanken verfügt (mehr als 200), kann es für die Seite **SharePoint-Zentraladministration** zu einer Zeitüberschreitung kommen. Aktualisieren Sie die Seite, falls dies passiert. Dies wirkt sich nicht auf den Konfigurationsprozess aus.
 
 [AZURE.INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
  
@@ -261,7 +261,7 @@ Vor dem Deinstallieren der Software „StorSimple-Adapter für SharePoint“ mü
 
 5. Löschen Sie die Objekte aus SharePoint, und laden Sie sie dann wieder hoch.
 
-Alternativ dazu können Sie das Microsoft` RBS Migrate()` PowerShell-Cmdlet aus SharePoint verwenden. Weitere Informationen finden Sie unter [Migrieren von Inhalten in den und aus dem Remote-BLOB-Speicher (Remote BLOB Storage, RBS) (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx).
+Alternativ dazu können Sie das Microsoft` RBS Migrate()` PowerShell-Cmdlet aus SharePoint verwenden. Weitere Informationen finden Sie unter [Migrieren von Inhalten in den und aus dem Remote-BLOB-Speicher (Remote BLOB Storage, RBS) (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx).
 
 Fahren Sie nach dem Verschieben der BLOBs zurück in die Inhaltsdatenbank mit dem nächsten Schritt fort: [Deinstallieren des Adapters](#uninstall-the-adapter).
 
@@ -308,4 +308,4 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/de-DE/library/ff943565.aspx
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

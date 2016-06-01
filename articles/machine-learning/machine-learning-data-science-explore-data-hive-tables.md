@@ -13,16 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="hangzh;bradsev" />
 
 # Durchsuchen von Daten in Hive-Tabellen mithilfe von Hive-Abfragen 
 
-## Einführung
+Dieses Dokument enthält Hive-Beispielskripts, die zum Durchsuchen von Daten in Hive-Tabellen in einem HDInsight Hadoop-Cluster verwendet werden.
 
-Dieses Dokument enthält Hive-Beispielskripts, die zum Durchsuchen von Daten in den Hive-Tabellen verwendet werden.
-
-Das nachstehende **Menü** enthält Links zu Themen, in denen die Verwendung von Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. Diese Aufgabe ist ein Teil des Cortana-Analyseprozesses (CAP).
+Das nachstehende **Menü** enthält Links zu Themen, in denen die Verwendung von Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird.
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -80,4 +78,4 @@ Beispiele für Abfragen speziell für Szenarios mit den [NYC Taxi Trip-Daten](ht
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

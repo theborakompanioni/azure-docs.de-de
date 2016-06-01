@@ -52,7 +52,7 @@ Beim Entwerfen der Clientbibliothek der Geräteverwaltung wurde auf Portabilitä
 1.	Die Erstellung wurde per LWM2M mit dem COAP-Standardprotokoll durchgeführt, um die Erweiterbarkeit für einen Bereich von unterschiedlichen Geräten abzudecken.
 2.	Sie wurde in ANSI C99 geschrieben, um die Portabilität für viele verschiedene Plattformen zu vereinfachen.
 3.	Die Bibliothek ist per TCP/TLS und Azure IoT Hub-Authentifizierung (SAS-Token) geschützt, damit sie auch in Szenarien mit hohen Sicherheitsanforderungen verwendet werden kann.
-4.	Basiert auf dem [Eclipse Wakaama][lnk-Wakaama]-OSS-Projekt, um vorhandenes Wissen zu nutzen und wieder in die Community einfließen zu lassen.
+4.	Basiert auf dem [Eclipse Wakaama][lnk-Wakaama]-OSS-Projekt, um vorhandenen Code zu nutzen und wieder in die Community einfließen zu lassen.
 
 ### Relevante LWM2M-Konzepte
 Wir haben den LWM2M-Standard gewählt, um die Erweiterbarkeit für einen weiten Bereich unterschiedlicher Geräte abzudecken. Um die Entwicklung zu vereinfachen, haben wir das Protokoll größtenteils abstrahiert. Es ist jedoch wichtig, die grundlegenden Prinzipien der Bibliothek zu verstehen, vor allem das Datenmodell und die Übertragung der Daten.
@@ -69,7 +69,7 @@ Beachten Sie, dass dieses Modell zwei Beziehungen der Art „1:n“ umfasst:
 - **Objekte und Ressourcen**: Jedes Objekt kann mehrere Ressourcen umfassen. Beispielsweise kann ein Objekt die Ressourcen für das Firmwareupdate des Contoso-Geräts enthalten, z.B. den Paket-URI, unter dem das neue Image gespeichert ist.
 
 #### Muster „Beobachten/Benachrichtigen“: Übertragung von Daten in LWM2M
-Zusätzlich zu diesen Konzepten ist es wichtig zu verstehen, wie Daten vom Gerät zum Dienst fließen. Hierzu wird von LWM2M das Muster „Beobachten/Benachrichtigen“ („Observe/Notify“) definiert. Wenn das physische Gerät eine Verbindung mit dem Dienst herstellt, initiiert es Beobachtungen für die ausgewählten Geräteeigenschaften. Anschließend benachrichtigt das physische Gerät den Dienst über Änderungen an den Geräteeigenschaften.
+Zusätzlich zu diesen Konzepten ist es wichtig zu verstehen, wie Daten vom Gerät zum Dienst fließen. Hierzu wird von LWM2M das Muster „Beobachten/Benachrichtigen“ („Observe/Notify“) definiert. Wenn das physische Gerät eine Verbindung mit dem Dienst herstellt, initiiert IoT Hub „Beobachtungen“ der ausgewählten Geräteeigenschaften. Anschließend benachrichtigt das physische Gerät den Dienst über Änderungen an den Geräteeigenschaften.
 
 In unserer Clientbibliothek haben wir das Muster „Beobachten/Benachrichtigen“ implementiert, um Geräteverwaltungsdaten vom Gerät an IoT Hub zu senden. Das Muster wird mit zwei Parametern gesteuert:
 
@@ -152,7 +152,7 @@ Um praktische Erfahrungen zu sammeln, können Sie die folgenden Ressourcen verwe
 
 - Beispiel für Intel Edison-Firmwareupdate: Dies ist ein Beispiel, bei dem Geräteverwaltungsfunktionen für ein Intel Edison-Gerät aktiviert sind. Weitere Informationen finden Sie unter [iotdm\_edison\_sample][lnk-edison-sample].
 - Beispiel für simulierte Geräte: Ein plattformunabhängiges Gerätebeispiel, das auf Linux- und Windows-Geräten ausgeführt werden kann. Weitere Informationen finden Sie unter [iotdm\_simple\_sample][lnk-simple-sample].
-- Weitere Informationen zu LWM2M-Objekten finden Sie unter [OMNA Lightweight M2M (LWM2M) Object & Resource Registry][lnk-oma] (OMNA Lightweight M2M (LWM2M) – Objekt- und Ressourcenregistrierung).
+- Weitere Informationen zu LWM2M-Objekten finden Sie unter [OMNA Lightweight M2M (LWM2M) Object & Resource Registry][lnk-oma] \(OMNA Lightweight M2M (LWM2M) – Objekt- und Ressourcenregistrierung).
 
 ## Anhang: Derzeit unterstützte LWM2M-Objekte und -Ressourcen
 
@@ -222,4 +222,4 @@ Um praktische Erfahrungen zu sammeln, können Sie die folgenden Ressourcen verwe
 [lnk-github2]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/lwm2m_objects
 [lnk-oma]: http://technical.openmobilealliance.org/Technical/technical-information/omna/lightweight-m2m-lwm2m-object-registry
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

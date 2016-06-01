@@ -14,13 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/16/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit der SMTP-API
 Stellen Sie eine Verbindung mit einem SMTP-Server zum Senden von E-Mail her. Die SMTP-API kann in Folgendem verwendet werden:
 
-- Logik-Apps
+- Logik-Apps (in diesem Thema erläutert)
+- PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -69,7 +70,8 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 
 | Name | Datentyp | Erforderlich|
 |---|---|---|
-|To|string|no|
+|To  
+|string|no|
 |CC|string|no|
 |Betreff|string|no|
 |Body|string|no|
@@ -92,6 +94,6 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

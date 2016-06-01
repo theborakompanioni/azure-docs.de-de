@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="05/06/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern
@@ -42,7 +42,9 @@ So verwalten Sie geschützte virtuelle Computer
     ![Aufträge](./media/backup-azure-manage-vms/backup-job.png)
 
 ## Bedarfsabhängig Sicherung eines virtuellen Computers
-Sie können eine bedarfsabhängige Sicherung eines virtuellen Computers erstellen, sobald dieser für den Schutz konfiguriert ist. Wenn die erste Sicherung für den virtuellen Computer ansteht, wird mithilfe einer bedarfsabhängigen Sicherung eine vollständige Kopie des virtuellen Computers im Azure-Sicherungstresor erstellt. Wenn die erste Sicherung abgeschlossen ist, werden bei einer bedarfsabhängigen Sicherung nur Änderungen an einer vorherigen Sicherung an den Azure-Sicherungstresor gesendet.
+Sie können eine bedarfsabhängige Sicherung eines virtuellen Computers erstellen, sobald dieser für den Schutz konfiguriert ist. Wenn die erste Sicherung für den virtuellen Computer ansteht, wird mithilfe einer bedarfsabhängigen Sicherung eine vollständige Kopie des virtuellen Computers im Azure-Sicherungstresor erstellt. Wenn die erste Sicherung abgeschlossen ist, werden bei einer bedarfsabhängigen Sicherung nur Änderungen an einer vorherigen Sicherung an den Azure-Sicherungstresor gesendet, d.h. sie ist stets inkrementell.
+
+>[AZURE.NOTE] Der Aufbewahrungszeitraum einer bedarfsabhängigen Sicherung wird auf den Wert festgelegt, der in der Sicherungsrichtlinie für den virtuellen Computer für die tägliche Aufbewahrung festgelegt ist.
 
 So führen Sie die bedarfsabhängige Sicherung eines virtuellen Computers aus:
 
@@ -198,62 +200,38 @@ So zeigen Sie die einem Sicherungstresor entsprechenden Vorgangsprotokolle an:
     ![Vorgangsdetails](./media/backup-azure-manage-vms/ops-logs-details-window.png)
 
 ## Warnungsbenachrichtigungen
-Sie können benutzerdefinierte Warnungsbenachrichtigungen für die Aufträge im Portal abrufen. Definieren Sie hierfür auf PowerShell basierende Warnungsregeln für Vorgangsprotokollereignisse.
-
-Ereignisbasierte Warnungen können im Azure-Ressourcenmodus verwendet werden. Wechseln Sie in den Azure-Ressourcenmodus, indem Sie das folgende Cmdlet im Befehlsmodus mit erhöhten Rechten ausführen:
-
-```
-PS C:\> Switch-AzureMode AzureResourceManager
-```
+Sie können benutzerdefinierte Warnungsbenachrichtigungen für die Aufträge im Portal abrufen. Definieren Sie hierfür auf PowerShell basierende Warnungsregeln für Vorgangsprotokollereignisse. Wir empfehlen die Verwendung von *PowerShell Version 1.3.0 oder höher*.
 
 Der folgende Beispielbefehl dient zum Definieren einer benutzerdefinierten Benachrichtigung zur Warnung bei Sicherungsfehlern:
 
 ```
-PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault' -EventName Backup  -EventSource Administrative -Level Error -OperationName 'Microsoft.Backup/backupVault/Backup' -ResourceProvider Microsoft.Backup -Status Failed  -SubStatus Failed -RuleType Event -Location eastus -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -Name Backup-Failed -Description 'Backup failed for one of the VMs in vault trinadhkVault' -CustomEmails 'contoso@microsoft.com' -SendToServiceOwners
+PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
+PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.Backup/backupVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault -Actions $actionEmail
 ```
 
 **ResourceId**: Sie erhalten diese aus dem Popup "Vorgangsprotokolle", wie im vorherigen im Abschnitt beschrieben. "ResourceUri" im Popup-Detailfenster eines Vorgangs entspricht der "ResourceId", die für dieses Cmdlet bereitgestellt werden muss.
 
-**EventName**: Für Warnungen zur IaaS-VM-Sicherung werden folgende Werte unterstützt: Register,Unregister,ConfigureProtection,Backup,Restore,StopProtection,DeleteBackupData,CreateProtectionPolicy,DeleteProtectionPolicy,UpdateProtectionPolicy
+**OperationName**: Hat das Format „Microsoft.Backup/backupvault/<EventName>“, wobei OperationName folgende Werte haben kann: Register,Unregister,ConfigureProtection,Backup,Restore,StopProtection,DeleteBackupData,CreateProtectionPolicy,DeleteProtectionPolicy,UpdateProtectionPolicy.
 
-**Level**: Unterstützte Werte sind "Informational" und "Error". Verwenden Sie "Error" für Warnungen bei fehlerhaften Aktionen und "Informational" für Meldungen bei erfolgreichen Aufträgen.
-
-**OperationName**: Liegt im Format "Microsoft.Backup/backupvault/<EventName>" vor, wobei "EventName" der obigen Beschreibung entspricht.
-
-**Status**: Unterstützte Werte sind "Started", "Succeeded" und "Failed". Es wird empfohlen, "Informational" als Ebene für den Status "Succeeded" zu verwenden.
-
-**SubStatus**: Identisch mit dem Status für Sicherungsvorgänge
-
-**RuleType**: Behalten Sie *Event* bei, da Sicherungswarnungen auf Ereignissen basieren.
+**Status**: Unterstützte Werte sind "Started", "Succeeded" und "Failed".
 
 **ResourceGroup**: Ressourcengruppe der Ressource, für die der Vorgang ausgelöst wird. Sie können diese aus dem ResourceId-Wert abrufen. Der Wert zwischen den Feldern */resourceGroups/* und */providers/* im ResourceId-Wert ist der Wert für "ResourceGroup".
 
 **Name**: Name der Warnungsregel.
 
-**Description**: Beschreibung der Warnungsregel.
-
 **CustomEmails**: Geben Sie die benutzerdefinierte E-Mail-Adresse an, an die die Warnungsbenachrichtigung gesendet werden soll.
 
-**SendToServiceOwners**: Mit dieser Option wird die Warnungsbenachrichtigung an alle Administratoren und Co-Administratoren des Abonnements gesendet.
-
-Ein Beispiel für eine Warnungs-E-Mail sieht folgendermaßen aus:
-
-Beispielheader:
-
-![Warnungsheader](./media/backup-azure-manage-vms/alert-header.png)
-
-Beispieltext der Warnungs-E-Mail:
-
-![Warnungstext](./media/backup-azure-manage-vms/alert-body.png)
+**SendToServiceOwners**: Mit dieser Option wird die Warnungsbenachrichtigung an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail**-Cmdlet verwendet werden.
 
 ### Einschränkungen für Warnungen
 Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 
 1. Warnungen werden auf allen virtuellen Computern im Sicherungstresor ausgelöst. Sie können diese Einstellung nicht so anpassen, dass Sie Warnungen für eine bestimmte Gruppe von virtuellen Computern in einem Sicherungstresor erhalten.
-2. Warnungen werden automatisch aufgelöst, wenn im nächsten Warnungszeitraum kein der Warnung entsprechendes Ereignis ausgelöst wird. Verwenden Sie den Parameter *WindowSize* im Cmdlet "Add-AlertRule", um die Dauer zum Auslösen der Warnung festzulegen.
+2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../azure-portal/insights-powershell-samples.md/#create-alert-rules)
+3. Sie erhalten Warnungen von „alerts-noreply@mail.windowsazure.com“. Sie können den E-Mail-Absender derzeit nicht ändern. 
 
 ## Nächste Schritte
 
 - [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

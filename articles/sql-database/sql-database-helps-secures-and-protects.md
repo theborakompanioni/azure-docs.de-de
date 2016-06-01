@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure SQL-Datenbank hilft, sichert und schützt"
+   pageTitle="Azure SQL-Datenbank sichert und schützt"
    description="Erfahren Sie, wie SQL-Datenbank hilft, sichert und schützt"
    keywords=""
    services="sql-database"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/04/2016"
+   ms.date="05/13/2016"
    ms.author="carlrab"/>
    
-# Azure SQL-Datenbank hilft, sichert und schützt
+# Azure SQL-Datenbank sichert und schützt
 
 ## Sichern und Schützen Ihrer App-Daten
 
@@ -25,7 +25,7 @@ Azure SQL-Datenbank unterstützt Millionen von unternehmenswichtigen Datenbanken
 
 ![helps-secures-and-protects](./media/sql-database-helps-secures-and-protects/sql-database-helps-secures-and-protects.png)
 
-## Im Notfall
+## Wir halten Ihnen den Rücken frei!
 
 Sie können nur hoffen, nicht auf vorhandene Sicherungen zugreifen oder eine Notfallwiederherstellung ausführen zu müssen. Aber falls dies doch notwendig ist, kann Ihnen SQL-Datenbank helfen. Mit einer Verfügbarkeit von 99,99 %, automatischen Sicherungen, Point-in-Time-Wiederherstellung, integrierter Georeplikation und Failoveroptionen wissen Sie immer, dass Ihre App sicher und geschützt ist.
 
@@ -45,4 +45,14 @@ SQL-Datenbank bietet mehrere Datenschutzebenen. Ihre Daten werden durch Verschl�
 
 Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+## Nächste Schritte
+
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
+
+## Weitere Informationen
+
+Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+ 
+Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Installieren von .NET in einer Clouddienstrolle"
+   pageTitle="Installieren von .NET in einer Clouddienstrolle | Microsoft Azure"
    description="Dieser Artikel beschreibt die manuelle Installation eines .NET Frameworks in Clouddienstweb- und Workerrollen."
    services="cloud-services"
    documentationCenter=".net"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/17/2016"
+   ms.date="05/17/2016"
    ms.author="adegeo"/>
 
 # Installieren von .NET in einer Clouddienstrolle 
@@ -183,4 +183,4 @@ Wenn Sie Ihren Dienst bereitstellen, wird die Startaufgabe ausgeführt und das .
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

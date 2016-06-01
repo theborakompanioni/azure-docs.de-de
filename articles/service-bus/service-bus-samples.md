@@ -1,25 +1,27 @@
 <properties 
-   pageTitle="Service Bus-Beispiele – Übersicht | Microsoft Azure"
-   description="Kategorisiert und beschreibt Service Bus-Beispiele und bietet entsprechende Links."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus-Beispiele – Übersicht | Microsoft Azure"
+    description="Kategorisiert und beschreibt Service Bus-Beispiele und bietet entsprechende Links."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # Service Bus-Beispiele:
 
 In den Service Bus-Beispielen werden die Hauptfeatures von [Service Bus](https://azure.microsoft.com/services/service-bus/) (Clouddienst) und [Service Bus für Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) veranschaulicht. Dieser Artikel kategorisiert und beschreibt die verfügbaren Beispiele und stellt Links zu jedem der Beispiele zur Verfügung.
 
 >[AZURE.NOTE] Die Service Bus-Beispiele werden nicht zusammen mit dem SDK installiert. Zum Abrufen der Beispiele besuchen Sie die [Azure SDK-Beispielseite](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5).
+>
+>Außerdem finden Sie [hier](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) ein aktualisierten Satz von Service Bus-Nachrichtenbeispielen (sie werden in diesem Artikel nicht behandelt). Relaybeispiele finden Sie [hier](https://github.com/Azure-Samples/azure-servicebus-relay-samples).
 
 ## Service Bus-Brokermessaging
 
@@ -132,4 +134,4 @@ Konzeptionelle Übersichten über Service Bus finden Sie in den folgenden Themen
 - [Service Bus-Architektur](service-bus-architecture.md)
 - [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

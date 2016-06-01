@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie Sie die Data Factory-Kopieraktivität zum Verschi
 Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen Oracle-Datenbank herstellen kann, muss Folgendes installiert werden:
 
 - Datenverwaltungsgateway auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md). 
-- Oracle-Datenanbieter für .NET. Dies ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html) enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Hostcomputer, auf dem das Gateway installiert ist. 
+- Oracle-Datenanbieter für .NET. Dieser ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html) enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Hostcomputer, auf dem das Gateway installiert ist. [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
 > [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
@@ -292,7 +292,7 @@ XML | String
 
 ## Tipps zur Problembehandlung
 
-**Problem:** Folgende **Fehlermeldung** wird angezeigt: Bei der Kopieraktivität wurden ungültige Parameter gefunden: UnknownParameterName. Detaillierte Meldung: Der angeforderte .Net Framework-Datenprovider kann nicht gefunden werden. Er ist ggf. nicht installiert.
+** Problem:** Folgende **Fehlermeldung** wird angezeigt: Bei der Kopieraktivität wurden ungültige Parameter gefunden: UnknownParameterName. Detaillierte Meldung: Der angeforderte .Net Framework-Datenprovider kann nicht gefunden werden. Er ist ggf. nicht installiert.
 
 **Mögliche Ursachen**
 
@@ -316,4 +316,4 @@ XML | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

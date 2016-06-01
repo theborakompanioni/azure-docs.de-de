@@ -45,7 +45,7 @@ Es gibt mehrere [Beispiele](app-insights-export-telemetry.md#code-samples), die 
         // Request id becomes the operation id of child events 
         "id": "fCOhCdCnZ9I=",  
         "name": "GET Home/Index",
-        "count": 1, // Always 1
+        "count": 1, // 100% / sampling rate
         "durationMetric": {
           "value": 1046804.0, // 10000000 == 1 second
           // Currently the following fields are redundant:
@@ -127,23 +127,26 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.data.isSynthetic | boolean | Anforderung scheint von einem Bot oder Webtest zu stammen. |
 | context.data.samplingRate | number | Prozentsatz der vom SDK generierten Telemetriedaten, die an das Portal gesendet werden. Bereich liegt zwischen 0.0 und 100.0.|
 | context.device | object | Clientgerät |
+| context.device.browser | string | IE, Chrome, ... |
+| context.device.browserVersion | string | Chrome 48.0, ... |
 | context.device.deviceModel | string | |
 | context.device.deviceName | string | |
 | context.device.id | string | |
-| context.device.locale | string | Beispielsweise en-GB, de-DE |
+| context.device.locale | string | en-GB, de-DE, ... |
 | context.device.network | string | |
 | context.device.oemName | string | |
-| context.device.osVersion | string | |
-| context.device.roleInstance | string | |
+| context.device.osVersion | string | Hostbetriebssystem |
+| context.device.roleInstance | string | ID des Serverhosts |
 | context.device.roleName | string | |
-| context.device.type | string | |
+| context.device.type | Zeichenfolge | PC, Browser, ... |
 | context.location | object | Abgeleitet von „clientip“. |
-| context.location.city | string | |
+| context.location.city | string | Abgeleitet von „clientip“, falls bekannt |
 | context.location.clientip | string | Letztes Oktagon wird als 0 anonymisiert. |
 | context.location.continent | string | |
 | context.location.country | string | |
-| context.location.province | string | |
+| context.location.province | string | Bundesland oder Kanton |
 | context.operation.id | string | Elemente mit derselben Vorgangs-ID werden im Portal als verwandte Elemente angezeigt. Üblicherweise die Anforderungs-ID. |
+| context.operation.name | string | URL oder Anforderungsname |
 | context.operation.parentId | string | Ermöglicht geschachtelte verwandte Elemente. |
 | context.session.id | string | ID einer Gruppe von Vorgängen derselben Quelle. Ein Zeitraum von 30 Minuten ohne Vorgang signalisiert das Ende einer Sitzung. |
 | context.session.isFirst | boolean | |
@@ -164,8 +167,8 @@ Von [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) generi
 
 |Pfad|Typ|Hinweise|
 |---|---|---|
-| event [0] count | integer | |
-| event [0] name | string | Ereignisname, maximal 250 Zeichen. |
+| event [0] count | integer | 100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| event [0] name | string | Ereignisname. Max. Länge: 250 |
 | event [0] url | string | |
 | event [0] urlData.base | string | |
 | event [0] urlData.host | string | |
@@ -178,7 +181,7 @@ Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Bro
 |Pfad|Typ|Hinweise|
 |---|---|---|
 | basicException [0] assembly | string | |
-| basicException [0] count | integer | |
+| basicException [0] count | ganze Zahl | 100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
 | basicException [0] exceptionGroup | string | |
 | basicException [0] exceptionType | string | |string | |
 | basicException [0] failedUserCodeMethod | string | |
@@ -187,7 +190,7 @@ Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Bro
 | basicException [0] hasFullStack | boolean | |
 | basicException [0] id | string | |
 | basicException [0] method | string | |
-| basicException [0] message | string | Ausnahmemeldung, maximal 10.000 Zeichen.|
+| basicException [0] message | string | Ausnahmemeldung. Max. Länge: 10.000|
 | basicException [0] outerExceptionMessage | string | |
 | basicException [0] outerExceptionThrownAtAssembly | string | |
 | basicException [0] outerExceptionThrownAtMethod | string | |
@@ -198,7 +201,7 @@ Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Bro
 | basicException [0] parsedStack [0] level | integer | |
 | basicException [0] parsedStack [0] line | integer | |
 | basicException [0] parsedStack [0] method | string | |
-| basicException [0] stack | string | Maximal 10.000|
+| basicException [0] stack | string | Max. Länge: 10.000|
 | basicException [0] typeName | string | |
 
 
@@ -212,32 +215,32 @@ Gesendet von [TrackTrace](app-insights-api-custom-events-metrics.md#track-trace)
 |---|---|---|
 | message [0] loggerName | string ||
 | message [0] parameters | string ||
-| message [0] raw | string | Die Protokollmeldung, maximale Länge: 10.000. Sie können diese Zeichenfolgen im Portal suchen. |
+| message [0] raw | string | Die Protokollmeldung, maximale Länge: 10.000. |
 | message [0] severityLevel | string | |
 
 
 
 ## Remoteabhängigkeit
 
-Gesendet von TrackDependency. Werden zum Berichten von Leistung und Nutzung von [Aufrufen von abhängigen Komponenten](app-insights-asp-net-dependencies.md) auf dem Server sowie von AJAX-Aufrufen im Browser verwendet.
+Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [Aufrufen von abhängigen Komponenten](app-insights-asp-net-dependencies.md) auf dem Server sowie von AJAX-Aufrufen im Browser verwendet.
 
 |Pfad|Typ|Hinweise|
 |---|---|---|
 | remoteDependency [0] async | boolean | |
 | remoteDependency [0] baseName | string | |
-| remoteDependency [0] commandName | string | Beispiel: asp „home/index“ |
-| remoteDependency [0] count | integer | |
+| remoteDependency [0] commandName | string | Beispiel: "home/index" |
+| remoteDependency [0] count | ganze Zahl | 100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
 | remoteDependency [0] dependencyTypeName | string | HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value | number | Zeit vom Aufruf bis zum Abschließen der Antwort durch die Abhängigkeit. |
 | remoteDependency [0] id | string | |
-| remoteDependency [0] name | string | URL, maximal 250 Zeichen.|
+| remoteDependency [0] name | string | URL, Max. Länge: 250|
 | remoteDependency [0] resultCode | string | Aus HTTP-Abhängigkeit |
 | remoteDependency [0] success | boolean | |
 | remoteDependency [0] type | string | HTTP, SQL, ... |
-| remoteDependency [0] url | string | Maximal 2.000 |
-| remoteDependency [0] urlData.base | string | Maximal 2.000 |
+| remoteDependency [0] url | string | Max. Länge: 2000 |
+| remoteDependency [0] urlData.base | string | Max. Länge: 2000 |
 | remoteDependency [0] urlData.hashTag | string | |
-| remoteDependency [0] urlData.host | string | Max. 200|
+| remoteDependency [0] urlData.host | string | Max. Länge: 200 |
 
 
 ## Anforderungen
@@ -247,12 +250,12 @@ Gesendet von [TrackRequest](app-insights-api-custom-events-metrics.md#track-requ
 
 |Pfad|Typ|Hinweise|
 |---|---|---|
-| request [0] count | integer | |
+| request [0] count | ganze Zahl | 100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
 | request [0] durationMetric.value | number | Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
 | request [0] id | string | Vorgangs-ID |
-| request [0] name | string | GET/POST + URL-Basis, maximal 250 Zeichen. |
+| request [0] name | string | GET/POST + URL-Basis. Max. Länge: 250 |
 | request [0] responseCode | integer | HTTP-Antwort, die an den Client gesendet wird. |
-| request [0] success | boolean | Standard == responseCode<400 |
+| request [0] success | boolean | Standard == (responseCode &lt; 400) |
 | request [0] url | string | Host nicht eingeschlossen |
 | request [0] urlData.base | string | |
 | request [0] urlData.hashTag | string | |
@@ -286,9 +289,9 @@ Gesendet von trackPageView() oder [stopTrackPage](app-insights-api-custom-events
 
 |Pfad|Typ|Hinweise|
 |---|---|---|
-| view [0] count | integer | |
-| view [0] durationMetric.value | integer | Wert optional in trackPageView() oder über start/stopTrackPage festgelegt. Ist nicht dasselbe wie die clientPerformance-Werte. |
-| view [0] name | string | Seitentitel, maximal 250 Zeichen. |
+| view [0] count | ganze Zahl | 100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| view [0] durationMetric.value | integer | Wert optional in trackPageView() oder über startTrackPage() - stopTrackPage() festgelegt. Ist nicht dasselbe wie die clientPerformance-Werte. |
+| view [0] name | string | Seitentitel, Max. Länge: 250 |
 | view [0] url | string | |
 | view [0] urlData.base | string | |
 | view [0] urlData.hashTag | string | |
@@ -304,11 +307,11 @@ Liefert Berichtdaten zu [Verfügbarkeitswebtests](app-insights-monitor-web-app-a
 |---|---|---|
 | availability [0] availabilityMetric.name | string | availability |
 | availability [0] availabilityMetric.value | number |1\.0 oder 0.0 |
-| availability [0] count | integer | |
+| availability [0] count | ganze Zahl | 100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
 | availability [0] dataSizeMetric.name | string | |
 | availability [0] dataSizeMetric.value | integer | |
 | availability [0] durationMetric.name | string | |
-| availability [0] durationMetric.value | number | Länge des Tests. 1e7==1s |
+| availability [0] durationMetric.value | number | Dauer des Tests. 1e7==1s |
 | availability [0] message | string | Fehlerdiagnose |
 | availability [0] result | string | Erfolgreich/Fehler |
 | availability [0] runLocation | string | Geoquelle der HTTP-Anforderung. |
@@ -323,7 +326,7 @@ Liefert Berichtdaten zu [Verfügbarkeitswebtests](app-insights-monitor-web-app-a
 
 Generiert von TrackMetric().
 
-Die Metrik befindet sich in context.custom.metrics[0].
+Der Metrikwert befindet sich in context.custom.metrics[0].
 
 Beispiel:
 
@@ -365,7 +368,7 @@ Informationen zu Metrikwerten werden, sowohl in Metrikberichten als auch an ande
         "sampledValue": 468.71603053650279
       }
 
-Aktuell – dies kann sich in Zukunft ändern – sind in allen Werten, die von den SDK-Standardmodulen berichtet werden, `count==1` und nur die Felder `name` und `value` von Interesse. Dies wäre nur anders, wenn Sie eigene TrackMetric-Aufrufe schreiben, in denen Sie die weiteren Parameter festlegen.
+Derzeit – dies kann sich in Zukunft ändern – sind in allen Werten, die von den SDK-Standardmodulen berichtet werden, `count==1` und nur die Felder `name` und `value` von Interesse. Dies wäre nur anders, wenn Sie eigene TrackMetric-Aufrufe schreiben, in denen Sie die weiteren Parameter festlegen.
 
 Der Zweck der weiteren Felder besteht darin, Metriken im SDK zu aggregieren, um den Datenverkehr im Portal zu verringern. Sie könnten beispielsweise den Durchschnitt für mehrere aufeinanderfolgende Lesevorgänge ermitteln, bevor jeder Metrikbericht gesendet wird. Anschließend könnten Sie die Mindest-, Maximal- und Standardabweichung und den Aggregatwert (Summe oder Durchschnitt) berechnen und die Anzahl auf die Anzahl von Lesevorgängen festlegen, die der Bericht repräsentiert
 
@@ -386,4 +389,4 @@ Sofern nicht anders angegeben, wird die Dauer in Zehnteln einer Mikrosekunde ang
 * [Fortlaufender Export](app-insights-export-telemetry.md)
 * [Codebeispiele](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

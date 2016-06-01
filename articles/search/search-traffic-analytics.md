@@ -14,59 +14,50 @@
 	ms.workload="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="01/26/2016" 
+	ms.date="04/21/2016" 
 	ms.author="betorres"
 />
 
 
 # Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“
 
-„Datenverkehrsanalyse durchsuchen“ ist ein Azure Search-Feature, mit dem Sie Einblick in Ihren Suchdienst und Erkenntnisse über Ihre Benutzer und deren Verhalten erhalten. Wenn Sie dieses Feature aktivieren, werden Ihre Suchdienstdaten auf ein Speicherkonto Ihrer Wahl kopiert. Diese Daten umfassen die Suchdienstprotokolle und die aggregierten operativen Metriken. Dort können Sie die Nutzungsdaten in beliebiger Weise bearbeiten.
-
+„Datenverkehrsanalyse durchsuchen“ ist ein Azure Search-Feature, mit dem Sie Einblick in Ihren Suchdienst und Erkenntnisse über Ihre Benutzer und deren Verhalten erhalten. Wenn Sie dieses Feature aktivieren, werden Ihre Suchdienstdaten auf ein Speicherkonto Ihrer Wahl kopiert. Diese Daten umfassen die Suchdienstprotokolle und die aggregierten operativen Metriken, die Sie zur weiteren Analyse verarbeiten und bearbeiten können.
 
 ## Aktivieren von „Datenverkehrsanalyse durchsuchen“
+
+Sie benötigen ein Speicherkonto, das sich in der gleichen Region und dem gleichen Abonnement befindet wie Ihr Suchdienst.
+
+> [AZURE.IMPORTANT] Für dieses Speicherkonto fallen Standardgebühren an.
+
+Nach der Aktivierung beginnt innerhalb von fünf bis zehn Minuten der Datenfluss in Ihr Speicherkonto in die folgenden zwei BLOB-Container:
+
+    insights-logs-operationlogs: search traffic logs
+    insights-metrics-pt1m: aggregated metrics
+
 
 ### 1\. Verwenden des Portals
 Öffnen Sie Ihren Azure Search-Dienst im [Azure-Portal](http://portal.azure.com). Unter „Einstellungen“ finden Sie die Option „Datenverkehrsanalyse durchsuchen“.
 
 ![][1]
 
-Wählen Sie diese Option aus, und ein neues Blatt wird geöffnet. Ändern Sie den Status in **Ein**, wählen Sie das Azure Storage-Konto, in das die Daten kopiert werden, und wählen Sie die Daten aus, die Sie kopieren möchten: Protokolle, Metriken oder beides. Sie sollten Protokolle und Metriken kopieren.
+Wählen Sie diese Option aus, und ein neues Blatt wird geöffnet. Ändern Sie den Status in **Ein**, wählen Sie das Azure Storage-Konto, in das die Daten kopiert werden, und wählen Sie die Daten aus, die Sie kopieren möchten: Protokolle, Metriken oder beides. Sie sollten Protokolle und Metriken kopieren. Die Aufbewahrungsrichtlinie für Ihre Daten kann auf einen Wert zwischen 1 und 356 festgelegt werden. Wenn Sie keine Aufbewahrungsrichtlinie anwenden und die Daten unbegrenzt speichern möchten, legen Sie für die Aufbewahrungsdauer (in Tagen) „0“ fest.
 
 ![][2]
 
+### 2\. Verwenden von PowerShell
 
-> [AZURE.IMPORTANT] Das Speicherkonto muss sich in der gleichen Region und dem gleichen Abonnement wie Ihr Suchdienst befinden.
-> 
-> Für dieses Speicherkonto fallen Standardgebühren an.
+Stellen Sie zunächst sicher, dass Sie die aktuellen [Azure PowerShell-Cmdlets](https://github.com/Azure/azure-powershell/releases) installiert haben.
 
-### 2\. Mithilfe von PowerShell
+Rufen Sie anschließend die Ressourcen-IDs für Ihren Suchdienst und Ihr Speicherkonto ab. Sie finden sie im Portal unter „Einstellungen -> Eigenschaften -> Ressourcen-ID“.
 
-Sie können dieses Feature auch aktivieren, indem Sie die folgenden PowerShell-Cmdlets ausführen.
+![][3]
 
 ```PowerShell
 Login-AzureRmAccount
-Set-AzureRmDiagnosticSetting -ResourceId <SearchService ResourceId> StorageAccountId <StorageAccount ResourceId> -Enabled $true
+$SearchServiceResourceId = "Your Search service resource id"
+$StorageAccountResourceId = "Your Storage account resource id"
+Set-AzureRmDiagnosticSetting -ResourceId $SearchServiceResourceId StorageAccountId $StorageAccountResourceId -Enabled $true
 ```
-
--   **SearchService ResourceId**: ```
-/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Search/searchServices/<searchServiceName>
-```
-
- 
--  **StorageAccount ResourceId**: Sie finden es im Portal in „Einstellungen -> Eigenschaften -> ResourceId“. ```
-New: /subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>
-OR
-Classic: /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ClassicStorage/storageAccounts/<storageAccountName>
-```
-
-----------
-
-Nach der Aktivierung beginnt innerhalb von 5 bis 10 Minuten der Datenfluss auf Ihr Speicherkonto. Zwei neue Container finden Sie in Ihrem Blobspeicher:
-
-    insights-logs-operationlogs: search traffic logs
-    insights-metrics-pt1m: aggregated metrics
-
 
 ## Grundlegendes zu den Daten
 
@@ -111,7 +102,8 @@ Die Metrikblobs enthalten aggregierte Werte für Ihren Suchdienst. Jede Datei ha
 
 Verfügbare Metriken:
 
-- Latenz
+- Wartezeit
+- SearchQueriesPerSecond
 
 ####Metrikenschema
 
@@ -135,9 +127,9 @@ Zunächst sollten Sie Ihre Daten mit [Power BI](https://powerbi.microsoft.com) u
 
 #### Power BI Online
 
-[Power BI-Inhaltspaket](https://app.powerbi.com/getdata/services/azure-search): Erstellen Sie ein Power BI-Dashboard und einen Satz von Power BI-Berichten, die Ihre Daten automatisch anzeigen und visuelle Einblicke in Ihren Suchdienst gestatten. Informationen finden Sie auf der [Hilfeseite zum Inhaltspaket](https://powerbi.microsoft.com/de-DE/documentation/powerbi-content-pack-azure-search/).
+[Power BI-Inhaltspaket](https://app.powerbi.com/getdata/services/azure-search): Erstellen Sie ein Power BI-Dashboard und einen Satz von Power BI-Berichten, die Ihre Daten automatisch anzeigen und visuelle Einblicke in Ihren Suchdienst gestatten. Informationen finden Sie auf der [Hilfeseite zum Inhaltspaket](https://powerbi.microsoft.com/de-DE/documentation/powerbi-content-pack-azure-search/).
 
-![][3]
+![][4]
 
 #### Power BI Desktop
 
@@ -146,17 +138,17 @@ Zunächst sollten Sie Ihre Daten mit [Power BI](https://powerbi.microsoft.com) u
 1. Öffnen eines neuen Power BI Desktop-Berichts
 2. Wählen Sie „Daten abrufen -> Mehr...“
 
-	![][4]
+	![][5]
 
 3. Wählen Sie „Microsoft Azure-Blobspeicher“ und „Verbinden“.
 
-	![][5]
+	![][6]
 
 4. Geben Sie Namen und Kontoschlüssel des Speicherkontos ein.
 5. Wählen Sie „insight-logs-operationlogs“ und „insights-metrics-pt1mm“ und klicken Sie dann auf „Bearbeiten“.
 6. Der Abfrage-Editor wird geöffnet. Stellen Sie sicher, dass „insight-logs-operationlogs“ auf der linken Seite ausgewählt ist. Öffnen Sie jetzt den erweiterten Editor durch Auswahl von „Ansicht -> Erweiterter Editor“.
 
-	![][6]
+	![][7]
 
 7. Behalten Sie die ersten beiden Zeilen bei, und ersetzen Sie den Rest durch die folgende Abfrage:
 
@@ -223,9 +215,10 @@ Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Infor
 
 [1]: ./media/search-traffic-analytics/SettingsBlade.png
 [2]: ./media/search-traffic-analytics/DiagnosticsBlade.png
-[3]: ./media/search-traffic-analytics/Dashboard.png
-[4]: ./media/search-traffic-analytics/GetData.png
-[5]: ./media/search-traffic-analytics/BlobStorage.png
-[6]: ./media/search-traffic-analytics/QueryEditor.png
+[3]: ./media/search-traffic-analytics/ResourceId.png
+[4]: ./media/search-traffic-analytics/Dashboard.png
+[5]: ./media/search-traffic-analytics/GetData.png
+[6]: ./media/search-traffic-analytics/BlobStorage.png
+[7]: ./media/search-traffic-analytics/QueryEditor.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

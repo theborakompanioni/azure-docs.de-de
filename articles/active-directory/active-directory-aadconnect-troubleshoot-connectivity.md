@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="04/27/2016"
 	ms.author="andkjell"/>
 
 # Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect
@@ -26,9 +26,8 @@ In diesem Artikel zeigen wir Ihnen, wie Fabrikam durch seinen Proxy mit Azure AD
 
 Zunächst stellen wir sicher, dass [**machine.config**](active-directory-aadconnect-prerequisites.md#connectivity) richtig konfiguriert ist. ![machineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/machineconfig.png)
 
-> [AZURE.NOTE] In einigen Nicht-Microsoft-Blogs ist dokumentiert, dass Änderungen stattdessen an „miiserver.exe.config“ vorgenommen werden sollen. Diese Datei wird jedoch mit jeder Aktualisierung überschrieben. Selbst wenn das System nach der Erstinstallation funktionieren sollte, ist das nach der ersten Aktualisierung nicht mehr der Fall. Daher wird empfohlen, stattdessen „machine.config“ zu aktualisieren.
-
-
+>[AZURE.NOTE]
+In einigen Nicht-Microsoft-Blogs ist dokumentiert, dass Änderungen stattdessen an „miiserver.exe.config“ vorgenommen werden sollen. Diese Datei wird jedoch mit jeder Aktualisierung überschrieben. Selbst wenn das System nach der Erstinstallation funktionieren sollte, ist das nach der ersten Aktualisierung nicht mehr der Fall. Daher wird empfohlen, stattdessen „machine.config“ zu aktualisieren.
 
 Der Proxyserver muss die erforderlichen URLs geöffnet haben. Die offizielle Liste ist unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) zu finden.
 
@@ -87,7 +86,7 @@ Falls Sie alle obigen Schritte ausgeführt haben und immer noch keine Verbindung
 - Sie werden sehen, dass die DNS-Auflösung den tatsächlichen Host im DNS-Namen von nsatc.net und anderen Namespaces anzeigt, anstatt unter microsoftonline.com. Es werden jedoch keine Webdienstanfragen an die eigentlichen Servernamen gestellt und Sie müssen diese dem Proxy nicht hinzufügen.
 - Die Endpunkte „adminwebservice“ und „provisioningapi“ (siehe unten in den Protokollen) sind Ermittlungsendpunkte und werden benutzt, um die tatsächlich zu verwendeten Endpunkte zu finden. Sie unterschieden sich je nach Ihrer Region.
 
-### Verweiseproxyprotokolle
+### Verweisproxyprotokolle
 Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations-Assistenten, von der er entnommen wurde. (Doppelte Einträge, die zum selben Endpunkt führen, wurden entfernt). Sie können ihn als Referenz für Ihre eigenen Proxy- und Netzwerkprotokolle verwenden. Die tatsächlichen Endpunkte können in Ihrer Umgebung abweichen (insbesondere die *kursiv* gesetzten).
 
 **Herstellen einer Verbindung mit Azure AD**
@@ -126,6 +125,42 @@ Time | URL
 1/11/2016 8:49 | connect://*bba900-anchor*.microsoftonline.com:443
 1/11/2016 8:49 | connect://*bba800-anchor*.microsoftonline.com:443
 
+## Authentifizierungsfehler
+Dieser Abschnitt deckt Fehler ab, die von ADAL (der von Azure AD Connect verwendeten Authentifizierungsbibliothek) und PowerShell zurückgegeben werden können. Die Fehlererläuterungen sollen Sie beim Verständnis der nächsten Schritte unterstützen.
+
+### Ungültige Anmeldedaten
+Ungültiger Benutzername oder ungültiges Kennwort. Weitere Informationen finden Sie unter [Das Kennwort kann nicht überprüft werden](#the-password-cannot-be-verified).
+
+### Unbekannter Benutzertyp
+Ihr Azure AD-Verzeichnis wurde nicht gefunden oder kann nicht aufgelöst werden. Versuchen Sie möglicherweise, sich mit einem Benutzernamen in einer nicht überprüften Domäne anzumelden?
+
+### Fehler bei Benutzerbereichserkennung
+Es liegen Probleme mit der Netzwerk- oder Proxykonfiguration vor. Das Netzwerk kann nicht erreicht werden, siehe [Konnektivitätsprobleme mit dem Installations-Assistent beheben](#troubleshoot-connectivity-issues-in-the-installation-wizard).
+
+### Benutzerkennwort abgelaufen
+Ihre Anmeldeinformationen sind abgelaufen. Ändern Sie Ihr Kennwort.
+
+### AuthorizationFailure
+Unbekannter Fehler.
+
+### Authentifizierung abgebrochen
+Das MFA-Captcha (Multi-Factor Authentication) wurde abgebrochen.
+
+### ConnectToMSOnline
+Die Authentifizierung war erfolgreich, aber es liegt ein Authentifizierung bei Azure AD PowerShell vor.
+
+### AzureRoleMissing
+Die Authentifizierung war erfolgreich. Sie sind kein globaler Administrator.
+
+### PrivilegedIdentityManagement
+Die Authentifizierung war erfolgreich. Privileged Identity Management wurde aktiviert, und Sie sind aktuell kein globaler Administrator. Weitere Informationen finden Sie unter [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
+
+### CompanyInfoUnavailable
+Die Authentifizierung war erfolgreich. Es konnten keine Unternehmensinformationen aus Azure AD abgerufen werden.
+
+### RetrieveDomains
+Die Authentifizierung war erfolgreich. Es konnten keine Domäneninformationen aus Azure AD abgerufen werden.
+
 ## Schritte zur Problembehandlung für frühere Versionen.
 Ab Build 1.1.105.0 (veröffentlicht im Februar 2016) wurde der Anmelde-Assistent eingestellt. Dieser Abschnitt und die Konfiguration sind eigentlich nicht mehr erforderlich, werden aber als Referenz beibehalten.
 
@@ -135,9 +170,9 @@ Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfigur
 Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen kann oder der Proxy die Anfrage nicht zulässt. ![nonetsh](./media/active-directory-aadconnect-troubleshoot-connectivity/nonetsh.png)
 
 - Falls dieser Fehler angezeigt wird, prüfen Sie die Proxykonfiguration in [netsh](active-directory-aadconnect-prerequisites.md#connectivity).![netshshow](./media/active-directory-aadconnect-troubleshoot-connectivity/netshshow.png)
-- Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity), um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
+- Falls die Konfiguration keine Fehler aufweist, befolgen Sie die Schritte unter [Proxykonnektivität überprüfen](#verify-proxy-connectivity), um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
 
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

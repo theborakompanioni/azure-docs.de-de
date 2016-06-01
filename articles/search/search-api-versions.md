@@ -22,7 +22,7 @@ Für Azure Search sind regelmäßig Funktionsupdates verfügbar. Manchmal, aber 
 
 In der Regel versuchen wir, neue Versionen nur im Bedarfsfall zu veröffentlichen, da es einen gewissen Aufwand erfordern kann, wenn Sie Ihren Code aktualisieren, um eine neue API-Version zu verwenden. Wir veröffentlichen nur dann eine neue Version, wenn wir einen Aspekt der API in einer Weise ändern müssen, die die Abwärtskompatibilität beeinträchtigt. Ursache hierfür können Fehlerbehebungen bei vorhandenen Funktionen sein, oder neue Funktionen, die vorhandene API-Oberflächenbereiche ändern.
 
-Wir befolgen die gleiche Regel bei SDK-Updates. Das Azure Search-SDK folgt den Regeln der [semantischen Versionierung](http://semver.org/), d. h., dass seine Version aus drei Teilen besteht: Haupt-, Neben- und Buildnummer (z. B. 1.1.0). Wir veröffentlichen nur dann eine neue Hauptversion des SDK, wenn Änderungen die Abwärtskompatibilität beeinträchtigen. Bei Funktionsupdates ohne Beeinträchtigung der Abwärtskompatibilität setzen wir die Nebenversion herauf, und für Programmfehlerbehebungen setzen wir nur die Buildversion herauf.
+Wir befolgen die gleiche Regel bei SDK-Updates. Das Azure Search-SDK folgt den Regeln der [semantischen Versionierung](http://semver.org/), d. h., dass seine Version aus drei Teilen besteht: Haupt-, Neben- und Buildnummer (z. B. 1.1.0). Wir veröffentlichen nur dann eine neue Hauptversion des SDK, wenn Änderungen die Abwärtskompatibilität beeinträchtigen. Bei Funktionsupdates ohne Beeinträchtigung der Abwärtskompatibilität setzen wir die Nebenversion herauf, und für Programmfehlerbehebungen setzen wir nur die Buildversion herauf.
 
 ##Momentaufnahme aktueller Versionen 
 
@@ -35,7 +35,7 @@ Schnittstellen|Letzte Hauptversion|Status
 [Dienst-REST-API (Vorschau)](search-api-2015-02-28-preview.md)|2015-02-28-Preview|Vorschau
 [Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn832684.aspx)|2015-08-19|Allgemein verfügbar
 
-Für die REST-APIs muss bei jedem Aufruf die `api-version` einbezogen werden. Dies erleichtert das Ansprechen einer bestimmten Version, z. B. einer Vorschau-API. Das folgende Beispiel veranschaulicht, wie der Parameter `api-version` angegeben wird:
+Für die REST-APIs muss bei jedem Aufruf die `api-version` einbezogen werden. Dies erleichtert das Ansprechen einer bestimmten Version, z. B. einer Vorschau-API. Das folgende Beispiel veranschaulicht, wie der Parameter `api-version` angegeben wird:
 
     GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2015-02-28
 
@@ -53,7 +53,7 @@ Das .NET SDK ist jetzt allgemein verfügbar, und derzeit wird bereits die nächs
 
 .NET SDK-Version|REST-API-Version|Merkmale|ETA
 ----------------|----------------|--------|---
-1\.1|2015-02-28|Lucene-Abfragesyntax|Februar 2016
+1\.1|2015-02-28|Lucene-Abfragesyntax|Februar 2016
 2\.x-Vorschau|2015-02-28-Preview|Benutzerdefinierte Analyse, Azure-Blob-Indexer, Feldzuordnungen, ETags|Die Funktionen werden ab Q1 2016 bereitgestellt
 2\.x|Neue GA-API-Version|Identisch mit 2.x-Vorschau|Bald nach Abschluss der 2.x-Vorschau
 
@@ -65,9 +65,8 @@ Previewfunktionen werden nicht unbedingt zu einer GA-Version migriert. Während 
 
 Aber weil Änderungen bei Previewfunktionen vorbehalten sind, raten wir davon ab, Produktionscode zu schreiben, der von Vorschauversionen abhängig ist. Wenn Sie eine ältere Vorschauversion verwenden, sollten Sie zur allgemein verfügbaren Version (GA) migrieren.
 
-- Für das .NET SDK: Anleitung zur Codemigration finden Sie unter [Upgrade auf Version 1.1 des Azure Search .NET SDK](search-dotnet-sdk-migration.md).
-- Für die REST-API: Anleitung zur Codemigration finden Sie unter [Umstellung von der Vorschau-API-Version = 2014* auf API-Version = 2015 ](search-transition-from-preview.md).
+Für das .NET SDK: Anleitung zur Codemigration finden Sie unter [Upgrade auf Version 1.1 des Azure Search .NET SDK](search-dotnet-sdk-migration.md).
 
 Allgemeine Verfügbarkeit bedeutet, dass Azure Search jetzt der Vereinbarung zum Servicelevel (SLA) unterliegt. Die SLA finden Sie unter [SLA für Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python"
+	pageTitle="Herstellen von Verbindungen mit SQL-Datenbank mithilfe von Python | Microsoft Azure"
 	description="Zeigt ein Python-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank."
 	services="sql-database"
 	documentationCenter=""
@@ -47,4 +47,4 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

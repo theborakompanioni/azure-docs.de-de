@@ -22,7 +22,7 @@
 
 In Azure App Service können Sie Ihre App (Web, mobil oder API) mit einem virtuellen Azure-Netzwerk (VNET) in Ihrem Abonnement verbinden. Dieses Feature heißt „VNET-Integration“. Das Feature „VNET-Integration“ sollte nicht mit dem Feature „App Service-Umgebung“ verwechselt werden, mit dem Sie eine Instanz von Azure App Service in Ihrem virtuellen Netzwerk ausführen können.
 
-Das Feature „VNET-Integration“ bietet im neuen Portal eine Benutzeroberfläche (UI), mit der Sie virtuelle Netzwerke integrieren können, die entweder über das klassische Bereitstellungsmodell oder über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Weitere Informationen über das Feature finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](web-sites-integrate-with-vnet).
+Das Feature „VNET-Integration“ bietet im neuen Portal eine Benutzeroberfläche (UI), mit der Sie virtuelle Netzwerke integrieren können, die entweder über das klassische Bereitstellungsmodell oder über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Weitere Informationen über das Feature finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](web-sites-integrate-with-vnet.md).
 
 Dieser Artikel behandelt weniger die Verwendung der Benutzeroberfläche, sondern vielmehr das Ermöglichen der Integration über PowerShell. Da die Befehle für jedes Bereitstellungsmodell unterschiedlich lauten, enthält dieser Artikel einen Abschnitt für jedes Bereitstellungsmodell.
 
@@ -725,4 +725,4 @@ Auch wenn das Skript „delete“ anzeigt, wird nicht das virtuelle Netzwerk gel
 [createvpngateway]: http://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/
 [azureportal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

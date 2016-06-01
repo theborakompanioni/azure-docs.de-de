@@ -1,13 +1,13 @@
-<properties 
+<properties
    pageTitle="Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung über das klassische Bereitstellungsmodell und PowerShell | Microsoft Azure"
-   description="Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNets) mit ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell."
+   description="Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell."
    services="expressroute"
    documentationCenter="na"
    authors="ganesr"
    manager="carmonm"
    editor=""
    tags="azure-service-management"/>
-<tags 
+<tags
    ms.service="expressroute"
    ms.devlang="na"
    ms.topic="article"
@@ -25,7 +25,7 @@
 
 
 
-Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNets) mit ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
+Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mit Azure ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -33,27 +33,28 @@ Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNets) mi
 
 ## Konfigurationsvoraussetzungen
 
-1. Sie benötigen die neueste Version der Azure PowerShell-Module. Sie können das neueste PowerShell-Modul aus dem PowerShell-Abschnitt der [Azure-Downloadseite](https://azure.microsoft.com/downloads/) herunterladen. Befolgen Sie die Anleitung auf der Seite [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Sie erhalten dort eine Schritt-für-Schritt-Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module. 
+1. Sie benötigen die neueste Version der Azure PowerShell-Module. Sie können das neueste PowerShell-Modul im Abschnitt „PowerShell“ auf der Seite [Downloads](https://azure.microsoft.com/downloads/) für Azure herunterladen. Eine Schritt-für-Schritt-Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module erhalten Sie auf der Seite [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 2. Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
-3. Sie benötigen eine aktive ExpressRoute-Verbindung. 
-	- Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren. 
-	- Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-classic.md). 
-	- Das private Azure-Peering muss konfiguriert sein, und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft muss aktiv sein, damit End-to-End-Konnektivität bereitgestellt werden kann.
+3. Sie benötigen eine aktive ExpressRoute-Verbindung.
+	- Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren.
+	- Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-classic.md).
+	- Vergewissern Sie sich, dass das private Azure-Peering konfiguriert wurde und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft aktiv ist, damit End-to-End-Konnektivität bereitgestellt werden kann.
+    - Sie müssen ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt haben. Befolgen Sie die Anweisungen zum [Konfigurieren eines virtuellen Netzwerks für ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
-Sie können bis zu 10 VNets mit einer ExpressRoute-Verbindung verknüpfen. Alle ExpressRoute-Verbindungen müssen sich in derselben geopolitischen Region befinden. Wenn Sie das ExpressRoute Premium-Add-On aktiviert haben, können Sie eine größere Anzahl von virtuellen Netzwerken mit der ExpressRoute-Verbindung verknüpfen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md).
+Sie können bis zu 10 virtuelle Netzwerke mit einer ExpressRoute-Verbindung verknüpfen. Alle ExpressRoute-Verbindungen müssen sich in derselben geopolitischen Region befinden. Wenn Sie das ExpressRoute Premium-Add-On aktiviert haben, können Sie eine größere Anzahl von virtuellen Netzwerken mit der ExpressRoute-Verbindung verknüpfen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md).
 
-## Herstellen einer Verbindung zwischen einem VNet in demselben Abonnement und einer Verbindung
+## Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in demselben Abonnement und einer Verbindung
 
 Sie können das folgende Cmdlet verwenden, um ein virtuelles Netzwerk mit einer ExpressRoute-Verbindung zu verknüpfen. Stellen Sie sicher, dass das Gateway für das virtuelle Netzwerk erstellt wurde und für das Erstellen von Verknüpfungen bereit ist, bevor Sie das Cmdlet ausführen.
 
 	New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 	Provisioned
 
-## Herstellen einer Verbindung zwischen einem VNet in einem anderen Abonnement und einer Verbindung
+## Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in einem anderen Abonnement und einer Verbindung
 
-Eine ExpressRoute-Verbindung kann für mehrere Abonnements freigegeben werden. Die folgende Abbildung zeigt eine einfache schematische Darstellung der Freigabe von ExpressRoute-Verbindungen für mehrere Abonnements.
+Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die folgende Abbildung zeigt eine einfache schematische Darstellung der Freigabe von Lasten für ExpressRoute-Verbindungen für mehrere Abonnements.
 
-Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören. Jede der Abteilungen innerhalb der Organisation kann ihr eigenes Abonnement zum Bereitstellen von Diensten verwenden, für die Verbindung mit dem lokalen Netzwerk kann jedoch eine einzelne gemeinsam genutzte ExpressRoute-Verbindung verwendet werden. Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Verbindung nutzen.
+Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören. Jede der Abteilungen innerhalb der Organisation kann ihr eigenes Abonnement zum Bereitstellen von Diensten verwenden, für die Verbindung mit dem lokalen Netzwerk können die Abteilungen jedoch eine einzelne gemeinsam genutzte ExpressRoute-Verbindung verwenden. Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Verbindung nutzen.
 
 >[AZURE.NOTE] Konnektivitäts- und Bandbreitengebühren für die dedizierte Verbindung werden dem Besitzer der ExpressRoute-Verbindung in Rechnung gestellt. Alle virtuellen Netzwerke verwenden gemeinsam dieselbe Bandbreite.
 
@@ -61,65 +62,65 @@ Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, di
 
 ### Verwaltung
 
-Der *Verbindungsbesitzer* ist der Administrator/Co-Administrator des Abonnements, in dem die ExpressRoute-Verbindung erstellt wird. Der Besitzer der Verbindung kann Administratoren/Co-Administratoren anderer Abonnements (im Workflowdiagramm *Verbindungsbenutzer* genannt) für die Nutzung der dedizierten Verbindung in seinem Besitz autorisieren. Verbindungsbenutzer, die für die Nutzung der ExpressRoute-Verbindung einer Organisation autorisiert sind, können ein VNet in ihrem Abonnement mit der ExpressRoute-Verbindung verknüpfen, sobald sie autorisiert wurden.
+Der *Verbindungsbesitzer* ist der Administrator/Co-Administrator des Abonnements, in dem die ExpressRoute-Verbindung erstellt wird. Der Besitzer der Verbindung kann Administratoren/Co-Administratoren anderer Abonnements (*Verbindungsbenutzer* genannt) für die Nutzung der dedizierten Verbindung in seinem Besitz autorisieren. Verbindungsbenutzer, die für die Nutzung der ExpressRoute-Verbindung einer Organisation autorisiert sind, können ein virtuelles Netzwerk in ihrem Abonnement mit der ExpressRoute-Verbindung verknüpfen, sobald sie autorisiert wurden.
 
 Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu ändern und aufzuheben. Das Aufheben einer Autorisierung führt dazu, dass alle Verknüpfungen aus dem Abonnement gelöscht werden, dessen Zugriff aufgehoben wurde.
 
-### Aktionen als Verbindungsbesitzer 
+### Aktionen als Verbindungsbesitzer
 
 #### Erstellen einer Autorisierung
-	
-Der Verbindungsbesitzer autorisiert die Administratoren anderer Abonnements für die Nutzung der angegebenen Verbindung. Im folgenden Beispiel ermöglicht der Administrator der Verbindung (Contoso IT) dem Administrator eines anderen Abonnements (Dev-Test) das Verknüpfen von 2 VNETs mit der Verbindung, indem dessen Microsoft-ID angegeben wird. Das Cmdlet sendet keine E-Mail an die angegebene Microsoft-ID. Der Verbindungsbesitzer muss den Besitzer des anderen Abonnements explizit darüber benachrichtigen, dass die Autorisierung erfolgt ist.
+
+Der Verbindungsbesitzer autorisiert die Administratoren anderer Abonnements für die Nutzung der angegebenen Verbindung. Im folgenden Beispiel ermöglicht der Administrator der Verbindung (Contoso IT) dem Administrator eines anderen Abonnements (Dev-Test) das Verknüpfen von bis zu zwei virtuellen Netzwerken mit der Verbindung. Der Contoso-IT-Administrator ermöglicht dies durch die Angabe der Microsoft-ID von Dev-Test. Das Cmdlet sendet keine E-Mail an die angegebene Microsoft-ID. Der Verbindungsbesitzer muss den Besitzer des anderen Abonnements explizit darüber benachrichtigen, dass die Autorisierung erfolgt ist.
 
 	New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
-		
-	Description         : Dev-Test Links 
-	Limit               : 2 
-	LinkAuthorizationId : ********************************** 
-	MicrosoftIds        : devtest@contoso.com 
+
+	Description         : Dev-Test Links
+	Limit               : 2
+	LinkAuthorizationId : **********************************
+	MicrosoftIds        : devtest@contoso.com
 	Used                : 0
 
 #### Überprüfen von Autorisierungen
 
-Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine bestimmte Verbindung ausgestellten Autorisierungen überprüfen.
+Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine bestimmte Verbindung ausgestellten Autorisierungen überprüfen:
 
 	Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
-	
-	Description         : EngineeringTeam 
-	Limit               : 3 
-	LinkAuthorizationId : #################################### 
-	MicrosoftIds        : engadmin@contoso.com 
-	Used                : 1 
-	
-	Description         : MarketingTeam 
-	Limit               : 1 
-	LinkAuthorizationId : @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
-	MicrosoftIds        : marketingadmin@contoso.com 
-	Used                : 0 
-	
-	Description         : Dev-Test Links 
-	Limit               : 2 
-	LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-	MicrosoftIds        : salesadmin@contoso.com 
-	Used                : 2 
-	
+
+	Description         : EngineeringTeam
+	Limit               : 3
+	LinkAuthorizationId : ####################################
+	MicrosoftIds        : engadmin@contoso.com
+	Used                : 1
+
+	Description         : MarketingTeam
+	Limit               : 1
+	LinkAuthorizationId : @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	MicrosoftIds        : marketingadmin@contoso.com
+	Used                : 0
+
+	Description         : Dev-Test Links
+	Limit               : 2
+	LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+	MicrosoftIds        : salesadmin@contoso.com
+	Used                : 2
+
 
 #### Aktualisieren von Autorisierungen
 
-Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung die Autorisierungen bearbeiten.
+Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung die Autorisierungen bearbeiten:
 
 	Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
-		
-	Description         : Dev-Test Links 
-	Limit               : 5 
-	LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-	MicrosoftIds        : devtest@contoso.com 
+
+	Description         : Dev-Test Links
+	Limit               : 5
+	LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+	MicrosoftIds        : devtest@contoso.com
 	Used                : 0
 
 
 #### Löschen von Autorisierungen
 
-Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung Autorisierungen für einen Benutzer widerrufen oder löschen.
+Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung Autorisierungen für einen Benutzer widerrufen oder löschen:
 
 	Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
 
@@ -131,7 +132,7 @@ Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung Autorisierungen für
 Mit dem folgenden Cmdlet können Benutzer einer Verbindung Autorisierungen überprüfen.
 
 	Get-AzureAuthorizedDedicatedCircuit
-		
+
 	Bandwidth                        : 200
 	CircuitName                      : ContosoIT
 	Location                         : Washington DC
@@ -144,16 +145,16 @@ Mit dem folgenden Cmdlet können Benutzer einer Verbindung Autorisierungen über
 
 #### Abrufen von Verknüpfungsautorisierungen
 
-Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsautorisierung abrufen.
+Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsautorisierung abrufen:
 
-	New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1' 
-		
-	State VnetName 
-	----- -------- 
+	New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
+
+	State VnetName
+	----- --------
 	Provisioned SalesVNET1
 
 ## Nächste Schritte
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

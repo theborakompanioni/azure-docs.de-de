@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="04/06/2016"
+	ms.date="05/13/2016"
 	ms.author="chrande"/>
 
 # NodeJS-Entwicklerreferenz zu Azure Functions
@@ -138,10 +138,22 @@ context.res = { status: 202, body: 'You successfully ordered more coffee!' };
 
 Die Node-Version ist derzeit auf `5.9.1` festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
 
-Sie können Pakete in Ihr Funktionsverzeichnis aufnehmen (d. h. über `npm install`) und sie auf die übliche Weise in Ihre Funktion importieren (d. h. über `require('packagename')`).
+Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.json* in den Ordner Ihrer Funktion im Dateisystem der Funktionen-App hochladen. Anweisungen zum Hochladen von Dateien finden Sie im Abschnitt **Aktualisieren von Funktionen-App-Dateien** im entsprechenden Thema der [Referenz für Azure Functions-Entwickler](functions-reference.md#fileupdate).
+
+Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der Funktionen-App verwenden:
+
+1. Navigieren Sie zu: `https://<function_app_name>.scm.azurewebsites.net`.
+
+2. Klicken Sie auf **Debugkonsole > CMD**.
+
+3. Navigieren Sie zu `D:\home\site\wwwroot<function_name>`.
+
+4. Führen Sie `npm install` aus.
+
+Nach der Installation der benötigten Pakete importieren Sie Ihre Funktion auf übliche Weise (z. B. über `require('packagename')`).
 
 ```javascript
-// Import the underescore.js library
+// Import the underscore.js library
 var _ = require('underscore');
 var version = process.version; // version === 'v5.9.1'
 
@@ -163,4 +175,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

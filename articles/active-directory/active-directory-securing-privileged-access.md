@@ -34,7 +34,8 @@ Um die Sicherheit der Administratorauthentifizierung zu erhöhen, sollten Sie Mu
 Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Sie bietet eine leistungsfähige Authentifizierung mittels verschiedener einfacher Überprüfungsoptionen: Telefonanruf, SMS, Benachrichtigung in der mobilen App, Überprüfungscode und Drittanbieter-OATH-Token.
 
 Eine Übersicht über die Funktionsweise von Azure Multi-Factor Authentication finden Sie im folgenden Video.
-<center>[AZURE.VIDEO windows-azure-multi-factor-authentication]</center>
+
+>[AZURE.VIDEO windows-azure-multi-factor-authentication]
 
 Weitere Informationen finden Sie unter [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) (MFA für Office 365 und MFA für Azure).
 
@@ -50,7 +51,7 @@ Um Berechtigungen nicht unnötig lange zu gewähren und den Einblick in die Verw
 
 ## Angriffserkennung
 
-[Azure Active Directory Identity Protection](active-directory-identityprotection.d) bietet eine umfassende Übersicht über Risikoereignisse und potenzielle Sicherheitsrisiken, die für die Identitäten Ihrer Organisation bestehen. Basierend auf Risikoereignissen berechnet Identity Protection eine Benutzerrisikostufe für jeden Benutzer, sodass Sie risikobasierte Richtlinien konfigurieren können, um die Identitäten Ihrer Organisation automatisch zu schützen. Mit diesen Richtlinien in Verbindung mit anderen Steuerungselementen für den bedingten Zugriff, die von Azure Active Directory und EMS bereitgestellt werden, können Benutzer blockiert oder Vorschläge unterbreitet werden. Hierzu gehören Kennwortzurücksetzungen und die Durchsetzung der Multi-Factor Authentication.
+[Azure Active Directory Identity Protection](active-directory-identityprotection.md) bietet eine umfassende Übersicht über Risikoereignisse und potenzielle Sicherheitsrisiken, die für die Identitäten Ihrer Organisation bestehen. Basierend auf Risikoereignissen berechnet Identity Protection eine Benutzerrisikostufe für jeden Benutzer, sodass Sie risikobasierte Richtlinien konfigurieren können, um die Identitäten Ihrer Organisation automatisch zu schützen. Mit diesen Richtlinien in Verbindung mit anderen Steuerungselementen für den bedingten Zugriff, die von Azure Active Directory und EMS bereitgestellt werden, können Benutzer blockiert oder Vorschläge unterbreitet werden. Hierzu gehören Kennwortzurücksetzungen und die Durchsetzung der Multi-Factor Authentication.
 
 ![Azure AD Identity Protection][3]
 
@@ -74,7 +75,7 @@ Um Sicherheitsrisiken zu verringern, sollten Sie Ihr Rollen- und Delegierungsmod
 - [Steuerung des bedingten Zugriffs](active-directory-conditional-access.md) aktivieren
 
 
-Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersecurity solutions](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx) (Cybersicherheitslösungen).
+Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Wenn Sie weitere Informationen zum Einsatz von Microsoft-Diensten im Zusammenhang mit einem dieser Themen wünschen, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersicherheitslösungen](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 <!--Image references-->
 [1]: ./media/active-directory-privileged-identity-management-configure/Search_PIM.png
@@ -82,4 +83,4 @@ Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden 
 [3]: ./media/active-directory-identityprotection/29.png
 [4]: ./media/active-directory-conditional-access/conditionalaccess-saas-apps.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

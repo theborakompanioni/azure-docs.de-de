@@ -44,24 +44,3 @@ Fügen Sie ein neues Tag über das Portal durch Definieren Ihres eigenen Schlüs
 Ihr neues Tag sollte jetzt in der Liste der Tags für die Ressource angezeigt werden.
 
 ![Neues gespeichertes Tag im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
-
-
-## Anzeigen der Tags in den Nutzungsdetails
-
-Tags, die vom Azure-Ressourcen-Manager in Compute-, Netzwerk- und Storage-Ressourcen platziert werden, finden Sie in Ihren Nutzungsdetails im [Abrechnungsportal](https://account.windowsazure.com/) wieder.
-
-Klicken Sie auf **Nutzungsdetails herunterladen**, um die Nutzungsdetails in Ihrem Abonnement anzuzeigen.
-
-![Nutzungsdetails im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-tags-usage-details.png)
-
-Wählen Sie die Abrechnungsanweisung und die **Version 2** der Nutzungsdetails aus:
-
-![Version 2 der Vorschau der Nutzungsdetails im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-version2-usage-details.png)
-
-Den Verwendungsdetails können Sie alle Tags in der Spalte **Tags** entnehmen:
-
-![Spalte für Tags im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-tags-column.png)
-
-Durch Analysieren dieser Tags zusammen mit der Nutzung erhalten Organisationen neue Einblicke in die Nutzung Ihrer Daten.
-
-<!---HONumber=AcomDC_0406_2016-->

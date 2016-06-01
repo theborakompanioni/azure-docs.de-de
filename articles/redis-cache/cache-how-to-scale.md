@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Skalieren von Azure Redis Cache" 
+	pageTitle="Gewusst wie: Skalieren von Azure Redis Cache | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Azure Redis Cache-Instanzen skalieren" 
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/18/2016" 
 	ms.author="sdanie"/>
 
 # Skalieren von Azure Redis Cache
 
->[AZURE.NOTE] Die Skalierungsfunktion von Azure Redis Cache befindet sich derzeit in der Vorschau. Während des Vorschauzeitraums können Sie nicht auf einen Premium-Tarif-Cache herauf bzw. davon herunter skalieren, aber Sie können den Tarif innerhalb eines Premium-Caches ändern. Bei einem Premium-Cache mit aktivierter Clusterunterstützung können Sie außerdem [die Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size).
+>[AZURE.NOTE] Die Skalierungsfunktion von Azure Redis Cache befindet sich derzeit in der Vorschau.
 
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Wenn sich die Anforderungen Ihrer Anwendung ändern, nachdem der Cache erstellt wurde, können Sie die Größe des Caches auf dem Blatt **Ändern des Tarifs** im [Azure-Portal](https://portal.azure.com) skalieren.
 
@@ -38,7 +38,7 @@ Wenn Sie feststellen, dass Ihr Cache die Anforderungen Ihrer Anwendung nicht meh
 ## Skalieren eines Caches
 Zum Skalieren Ihres Caches [navigieren Sie zum Cache](cache-configure.md#configure-redis-cache-settings) im [Azure-Portal](https://portal.azure.com) und klicken dann auf **Einstellungen**, **Tarif**.
 
-Sie können auch auf dem Abschnitt **Standard-Ebene** oder **Basic-Ebene** auf dem Blatt **Redis-Cache** klicken.
+Sie können auch auf den Abschnitt **Tarif** auf dem Blatt **Redis-Cache** klicken.
 
 ![Tarif][redis-cache-pricing-tier-part]
 
@@ -48,9 +48,11 @@ Wählen Sie auf dem Blatt **Tarif** den gewünschten Tarif aus, und klicken Sie 
 
 >[AZURE.NOTE] Sie können mit den folgenden Einschränkungen auf eine andere Preisstufe skalieren.
 >
->-	Sie können keine Skalierung auf oder aus einem **Premium**-Cache vornehmen.
->-	Ein **Standard**-Cache kann nicht auf einen **Basic**-Cache skaliert werden.
+>-	Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
+>    -    Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
+>    -    Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
 >-	Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
+>-	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
 >-	Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
 
 Während der Cache in den neuen Tarif skaliert wird, wird auf dem Blatt **Redis Cache** der Status **Skalierung** angezeigt.
@@ -62,6 +64,10 @@ Wenn die Skalierung abgeschlossen ist, ändert sich der Status von **Wird skalie
 ## Automatisieren eines Skalierungsvorgangs
 
 Sie können Ihre Azure Redis Cache-Instanzen nicht nur über das Azure-Portal skalieren, sondern auch mithilfe der Azure Redis Cache-PowerShell-Cmdlets, über die Azure-Befehlszeilenschnittstelle (Azure CLI) und mithilfe der Microsoft Azure-Verwaltungsbibliotheken.
+
+-	[Skalieren mithilfe von PowerShell](#scale-using-powershell)
+-	[Skalieren über die Azure-Befehlszeilenschnittstelle](#scale-using-azure-cli)
+-	[Skalieren mithilfe der Microsoft Azure-Verwaltungsbibliotheken](#scale-using-maml)
 
 ### Skalieren mithilfe von PowerShell
 
@@ -105,64 +111,69 @@ Weitere Informationen finden Sie im Beispiel [Verwalten von Redis Cache mithilfe
 
 Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierung von Azure Redis Cache-Instanzen.
 
-## Kann ich eine Skalierung auf, aus oder innerhalb eines Premium-Caches vornehmen?
+-	[Kann ich eine Skalierung auf einen Premium-Cache, aus diesem oder innerhalb von diesem vornehmen?](#can-i-scale-to-from-or-within-a-premium-cache)
+-	[Muss ich nach dem Skalieren den Namen oder die Zugriffsschlüssel für den Cache ändern?](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
+-	[Wie funktioniert die Skalierung?](#how-does-scaling-work)
+-	[Gehen während der Skalierung Daten aus dem Cache verloren?](#will-i-lose-data-from-my-cache-during-scaling)
+-	[Ist der Cache während der Skalierung verfügbar?](#will-my-cache-be-available-during-scaling)
+-	[Nicht unterstützte Vorgänge](#operations-that-are-not-supported)
+-	[Wie lange dauert die Skalierung?](#how-long-does-scaling-take)
+-	[Woher weiß ich, dass die Skalierung abgeschlossen ist?](#how-can-i-tell-when-scaling-is-complete)
+-	[Warum befindet sich dieses Feature in der Vorschau?](#why-is-this-feature-in-preview)
 
--	Eine Skalierung auf einen **Premium**-Cachetarif von den Tarifen **Basic** oder **Standard** ist nicht möglich.
--	Eine Skalierung von einem **Premium**-Cachetarif auf die Tarife **Basic** oder **Standard** ist nicht möglich.
+### Kann ich eine Skalierung auf einen Premium-Cache, aus diesem oder innerhalb von diesem vornehmen?
+
+-	Eine Skalierung von einem **Premium**-Cache auf die niedrigeren Tarife **Basic** oder **Standard** ist nicht möglich.
 -	Eine Skalierung von einem bestimmten **Premium**-Cachetarif zu einem anderen ist jedoch möglich.
--	Wenn Sie beim Erstellen des **Premium**-Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size).
+-	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
+-	Wenn Sie beim Erstellen des **Premium**-Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size). Zum gegenwärtigen Zeitpunkt können Sie die Clusterunterstützung nicht auf einem vorhandenen Cache aktivieren, der ohne Clustering erstellt wurde.
 
-Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
+    Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
 
-## Muss ich nach dem Skalieren den Namen oder die Zugriffsschlüssel für den Cache ändern?
+### Muss ich nach dem Skalieren den Namen oder die Zugriffsschlüssel für den Cache ändern?
 
 Nein, Cachename und -schlüssel bleiben während eines Skalierungsvorgangs unverändert.
 
-## Wie funktioniert die Skalierung?
+### Wie funktioniert die Skalierung?
 
-Wenn ein **Basic**-Cache auf eine andere Größe skaliert wird, wird er heruntergefahren, und es wird ein neuer Cache mit der neuen Größe bereitgestellt. Während dieser Zeit ist der Cache nicht verfügbar, und alle Daten im Cache gehen verloren.
+-	Wenn ein **Basic**-Cache auf eine andere Größe skaliert wird, wird er heruntergefahren, und es wird ein neuer Cache mit der neuen Größe bereitgestellt. Während dieser Zeit ist der Cache nicht verfügbar, und alle Daten im Cache gehen verloren.
+-	Wenn ein **Basic**-Cache auf einen **Standard**-Cache skaliert wird, wird ein Replikatcache bereitgestellt, und die Daten werden aus dem primären Cache in den Replikatcache kopiert. Der Cache bleibt während des Skalierungsvorgangs verfügbar.
+-	Wenn ein **Standard**-Cache auf eine andere Größe oder auf einen **Premium**-Cache skaliert wird, wird eines der Replikate heruntergefahren und mit der neuen Größe erneut bereitgestellt, und die Daten werden übertragen. Anschließend führt das andere Replikat ein Failover aus, bevor es erneut bereitgestellt wird. Dieser Vorgang ähnelt dem, der beim Ausfall eines Cacheknotens durchgeführt wird.
 
-Wenn ein **Basic**-Cache auf einen **Standard**-Cache skaliert wird, wird ein Replikatcache bereitgestellt, und die Daten werden aus dem primären Cache in den Replikatcache kopiert. Der Cache bleibt während des Skalierungsvorgangs verfügbar.
+### Gehen bei der Skalierung Daten aus dem Cache verloren?
 
-Wenn ein **Standard**-Cache auf eine andere Größe skaliert wird, wird eines der Replikate heruntergefahren und mit der neuen Größe erneut bereitgestellt, und die Daten werden übertragen. Anschließend führt das andere Replikat ein Failover aus, bevor es erneut bereitgestellt wird. Dieser Prozess ähnelt dem Prozess, der beim Ausfall eines Cacheknotens durchgeführt wird.
+-	Wenn ein **Basic**-Cache auf eine neue Größe skaliert wird, gehen alle Daten verloren, und der Cache ist während des Skalierungsvorgangs nicht verfügbar.
+-	Wenn ein **Basic**-Cache auf einen **Standard**-Cache skaliert wird, werden die Daten im Cache in der Regel beibehalten.
+-	Wenn ein **Standard**-Cache auf eine größere Größe oder auf einen höheren Tarif bzw. ein **Premium**-Cache auf eine größere Größe skaliert wird, bleiben normalerweise alle Daten erhalten. Wenn Sie einen **Standard**-Cache oder einen **Premium**-Cache auf eine kleinere Größe herunterskalieren, können Daten verloren gehen, je nachdem, ob der neue Cache groß genug für alle bisher enthaltenen Daten ist. Wenn Daten beim Herunterskalieren verloren gehen, werden die Schlüssel mithilfe der Entfernungsrichtlinie [allkeys-lru](http://redis.io/topics/lru-cache) entfernt. 
 
-## Gehen während der Skalierung Daten aus dem Cache verloren?
 
-Wenn ein **Basic**-Cache auf eine neue Größe skaliert wird, gehen alle Daten verloren, und der Cache ist während des Skalierungsvorgangs nicht verfügbar.
+Hinweis: Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine SLA (Service Level Agreement, Vereinbarung zum Servicelevel) von 99,9 % für Verfügbarkeit, aber keine SLA für Datenverlust.
 
-Wenn ein **Basic**-Cache auf einen **Standard**-Cache skaliert wird, werden die Daten im Cache in der Regel beibehalten.
+### Ist der Cache während der Skalierung verfügbar?
 
-Wenn ein **Standard**-Cache auf eine größere Größe skaliert wird, bleiben in der Regel alle Daten erhalten. Wenn Sie einen **Standard**-Cache auf eine kleinere Größe herunterskalieren, können Daten verloren gehen, je nachdem, ob der neue Cache groß genug für alle im alten Cache enthaltenen Daten ist. Wenn Daten beim Herunterskalieren verloren gehen, werden die Schlüssel mithilfe der Entfernungsrichtlinie [allkeys-lru](http://redis.io/topics/lru-cache) entfernt.
+-	**Standard**- und **Premium**-Caches bleiben während des Skalierungsvorgangs verfügbar.
+-	**Basic**-Caches sind während der Skalierung auf eine andere Größe offline, bleiben jedoch bei der Skalierung von **Basic** auf **Standard** verfügbar.
 
-Hinweis: Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine SLA (Service Level Agreement, Vereinbarung zum Servicelevel) von 99,9 % für Verfügbarkeit, aber keine SLA für Datenverlust.
+### Nicht unterstützte Vorgänge
 
-## Ist der Cache während der Skalierung verfügbar?
-
-**Standard**-Caches bleiben während des Skalierungsvorgangs verfügbar.
-
-**Basic**-Caches sind während der Skalierung auf eine andere Größe offline, bleiben jedoch bei der Skalierung von **Basic** auf **Standard** verfügbar.
-
-## Nicht unterstützte Vorgänge
-
-Sie können keine Skalierung auf oder aus einem **Premium**-Cache vornehmen.
-
-Ein **Standard**-Cache kann nicht zu einem **Basic**-Cache geändert werden.
-
-Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
-
-Sie können von einem **C0**-Cache (250 MB) auf eine größere Größe hochskalieren, Sie können jedoch einen größeren Cache nicht auf **C0** herunterskalieren.
+-	Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
+    -    Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
+    -    Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
+-	Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
+-	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
+-	Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
 
 Wenn bei einem Skalierungsvorgang ein Fehler auftritt, versucht der Dienst, den Vorgang rückgängig zu machen, und der Cache wird auf die ursprüngliche Größe zurückgesetzt.
 
-## Wie lange dauert die Skalierung?
+### Wie lange dauert die Skalierung?
 
-Die Skalierung dauert ca. 20 Minuten, je nachdem, wie viele Daten sich im Cache befinden.
+Die Skalierung dauert ca. 20 Minuten, je nachdem, wie viele Daten sich im Cache befinden.
 
-## Woher weiß ich, dass die Skalierung abgeschlossen ist?
+### Woher weiß ich, dass die Skalierung abgeschlossen ist?
 
 Im Azure-Portal können Sie den Fortschritt der Skalierung anzeigen. Wenn die Skalierung abgeschlossen ist, ändert sich der Status des Caches zu **Wird ausgeführt**.
 
-## Warum befindet sich diese Funktion in der Vorschau?
+### Warum befindet sich dieses Feature in der Vorschau?
 
 Wir haben die Funktion veröffentlicht, um Feedback zu erhalten. Basierend auf dem Feedback werden wir diese Funktion in Kürze in der allgemein verfügbaren Version veröffentlichen.
 
@@ -178,4 +189,4 @@ Wir haben die Funktion veröffentlicht, um Feedback zu erhalten. Basierend auf d
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

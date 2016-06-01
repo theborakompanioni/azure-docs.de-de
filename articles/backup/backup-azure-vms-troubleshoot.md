@@ -13,46 +13,35 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="05/16/2016"
 	ms.author="trinadhk;jimpark;"/>
 
 
 # Problembehandlung bei der Sicherung virtueller Azure-Computer
+
+> [AZURE.SELECTOR]
+- [Recovery Services-Tresor](backup-azure-vms-troubleshoot.md)
+- [Sicherungstresor](backup-azure-vms-troubleshoot-classic.md)
+
 Sie können die Problembehandlung für Fehler, die beim Verwenden von Azure Backup auftreten, mit den Informationen in der unten angegebenen Tabelle durchführen.
-
-## Ermittlung
-
-| Sicherungsvorgang | Fehlerdetails | Problemumgehung |
-| -------- | -------- | -------|
-| Ermittlung | Fehler beim Entdecken neuer Elemente – Microsoft Azure Backup hat einen internen Fehler festgestellt. Warten Sie einige Minuten, und versuchen Sie es dann erneut. | Wiederholen Sie den Ermittlungsvorgang nach 15 Minuten.
-| Ermittlung | Fehler beim Entdecken neuer Elemente – Ein anderer Ermittlungsvorgang wird bereits ausgeführt. Bitte warten Sie, bis der aktuelle Ermittlungsvorgang abgeschlossen ist. | Keine |
-
-## Registrieren
-| Sicherungsvorgang | Fehlerdetails | Problemumgehung |
-| -------- | -------- | -------|
-| Registrieren | Für die Anzahl von Datenträgern für Daten, die dem virtuellen Computer zugeordnet sind, wurde die unterstützte Obergrenze überschritten. Trennen Sie einige Datenträger für Daten von diesem virtuellen Computer, und wiederholen Sie den Vorgang. Azure Backup unterstützt bis zu 16 Datenträger für Daten, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind. | Keine |
-| Registrieren | Für Microsoft Azure Backup ist ein interner Fehler aufgetreten. Warten Sie einige Minuten, und wiederholen Sie anschließend den Vorgang. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. | Dieser Fehler kann aufgrund einer der folgenden nicht unterstützten Konfigurationen auftreten: <ul><li>Premium LRS</ul>. |
-| Registrieren | Fehler bei der Registrierung aufgrund einer Zeitüberschreitung beim Installieren des Agents | Überprüfen Sie, ob die Betriebssystemversion des virtuellen Computers unterstützt wird. |
-| Registrieren | Fehler beim Ausführen des Befehls – Für dieses Element wird ein anderer Vorgang ausgeführt. Warten Sie, bis der aktuelle Vorgang abgeschlossen ist. | Keine |
-| Registrieren | Virtuelle Computer mit virtuellen Festplatten, die in Storage Premium gespeichert sind, werden für die Sicherung nicht unterstützt. | Keine |
-| Registrieren | Der Agent für virtuelle Computer ist nicht auf dem virtuellen Computer vorhanden. Installieren Sie den VM-Agent (erforderliche Voraussetzung), und starten Sie den Vorgang erneut. | [Erfahren Sie mehr](#vm-agent) über die VM-Agent-Installation und die dazugehörige Überprüfung. |
 
 ## Sicherung
 
 | Sicherungsvorgang | Fehlerdetails | Problemumgehung |
 | -------- | -------- | -------|
-| Sicherung | Zeitüberschreitung beim Kopieren von VHDs aus dem Sicherungstresor – Versuchen Sie, den Vorgang nach einigen Minuten zu wiederholen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. | Dies passiert, wenn zu viele zu kopierende Daten vorhanden sind. Vergewissern Sie sich, dass Sie weniger als 16 Datenträger verwenden. |
-| Sicherung | Die Kommunikation mit dem VM-Agent im Hinblick auf den Status der Momentaufnahme war nicht möglich. Zeitüberschreitung bei Momentaufnahme für VM-Unteraufgabe – Weitere Informationen zur Lösung dieses Problems finden Sie im Handbuch zur Problembehandlung. | Dieser Fehler wird ausgelöst, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. <ul> <li>Informationen zum [Debuggen von VM-Agent-Problemen](#vm-agent) <li>Informationen zum [Debuggen von Netzwerkproblemen](#networking) <li>Wenn der VM-Agent problemlos ausgeführt wird, helfen Ihnen folgende Informationen weiter: [Problembehandlung für Probleme mit VM-Momentaufnahmen](#Troubleshoot-VM-Snapshot-Issues)</ul><br>Wenn der VM-Agent keine Probleme verursacht, sollten Sie die VM neu starten. Gelegentlich kann ein falscher Status des virtuellen Computers Probleme verursachen. Durch einen Neustart des virtuellen Computers wird der Status zurückgesetzt. |
-| Sicherung | Interner Fehler bei der Sicherung – Versuchen Sie, den Vorgang nach einigen Minuten zu wiederholen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. | Dieser Fehler kann aus zwei Gründen auftreten: <ol><li> Es sind zu viele zu kopierende Daten vorhanden. <li>Der ursprüngliche virtuelle Computer wurde gelöscht, sodass keine Sicherung erstellt werden kann. Um die Sicherungsdaten für einen gelöschten virtuellen Computer beizubehalten und gleichzeitig die Sicherungsfehler zu vermeiden, heben Sie den Schutz für den virtuellen Computer auf und wählen die Option zum Beibehalten der Daten. So werden der Sicherungszeitplan und die wiederkehrenden Fehlermeldungen vermieden. |
+| Sicherung | Zeitüberschreitung beim Kopieren von VHDs aus dem Sicherungstresor – Versuchen Sie, den Vorgang nach einigen Minuten zu wiederholen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. | Dies passiert, wenn zu viele zu kopierende Daten vorhanden sind. Vergewissern Sie sich, dass Sie weniger als 16 Datenträger verwenden. |
+| Sicherung | Die Kommunikation mit dem VM-Agent im Hinblick auf den Status der Momentaufnahme war nicht möglich. Zeitüberschreitung bei Momentaufnahme für VM-Unteraufgabe – Weitere Informationen zur Lösung dieses Problems finden Sie im Handbuch zur Problembehandlung. | Dieser Fehler wird ausgelöst, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. Erfahren Sie mehr über das [Debuggen von VM-Momentaufnahmeproblemen](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md). <br> Wenn der VM-Agent keine Probleme verursacht, starten Sie die VM neu. Gelegentlich kann ein falscher Status des virtuellen Computers Probleme verursachen. Durch einen Neustart des virtuellen Computers wird der Status zurückgesetzt. |
+| Sicherung | Interner Fehler bei der Sicherung – Versuchen Sie, den Vorgang nach einigen Minuten zu wiederholen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. | Sie können diese Fehlermeldung aus 2 Gründen erhalten: <ol><li> Es liegt ein vorübergehendes Problem mit dem Zugriff auf den VM-Speicher vor. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/), um festzustellen, ob ein akutes Problem im Zusammenhang mit Compute/Speicher/Netzwerk in der Region vorliegt. Versuchen Sie nach der Behebung des Problems erneut, das Backup durchzuführen. <li>Der ursprüngliche virtuelle Computer wurde gelöscht, sodass keine Sicherung erstellt werden kann. Um die Sicherungsdaten für einen gelöschten virtuellen Computer beizubehalten und gleichzeitig die Sicherungsfehler zu vermeiden, heben Sie den Schutz für den virtuellen Computer auf und wählen die Option zum Beibehalten der Daten. So werden der Sicherungszeitplan und die wiederkehrenden Fehlermeldungen vermieden. |
 | Sicherung | Fehler beim Installieren der Azure Recovery Services-Erweiterung auf dem ausgewählten Element – Der VM-Agent ist eine Voraussetzung für die Azure Recovery Services-Erweiterung. Installieren Sie den Azure-VM-Agent, und starten Sie den Registrierungsvorgang erneut. | <ol> <li>Überprüfen Sie, ob der VM-Agent richtig installiert wurde. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> [Erfahren Sie mehr](#validating-vm-agent-installation) über die VM-Agent-Installation und die dazugehörige Überprüfung. |
 | Sicherung | Fehler bei der Ausführung des Befehls – Für dieses Element wird ein anderer Vorgang ausgeführt. Warten Sie, bis der aktuelle Vorgang abgeschlossen ist, und wiederholen Sie anschließend Ihren Vorgang. | Ein vorhandener Sicherungs- oder Wiederherstellungsauftrag wird für den virtuellen Computer ausgeführt. Ein neuer Auftrag kann erst gestartet werden, wenn die Ausführung des aktuellen Auftrags abgeschlossen ist. |
-| Sicherung | Die Erweiterungsinstallation ist mit dem Fehler "COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen" fehlgeschlagen. | Dies bedeutet i. d. R., dass der COM+-Dienst nicht ausgeführt wird. Wenden Sie sich an den Microsoft Support, um Hilfe beim Beheben dieses Problems zu erhalten. |
+| Sicherung | Die Erweiterungsinstallation ist mit dem Fehler "COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen" fehlgeschlagen. | Dies bedeutet i. d. R., dass der COM+-Dienst nicht ausgeführt wird. Wenden Sie sich an den Microsoft Support, um Hilfe beim Beheben dieses Problems zu erhalten. |
 | Sicherung | Der Momentaufnahmevorgang ist mit folgendem VSS-Vorgangsfehler fehlgeschlagen: "Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden." | Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben ist. |
 | Sicherung | Virtuelle Computer mit virtuellen Festplatten, die in Storage Premium gespeichert sind, werden für die Sicherung nicht unterstützt. | Keine |
 | Sicherung | Der virtuelle Azure-Computer wurde nicht gefunden. | Dies tritt auf, wenn der primäre virtuelle Computer gelöscht wurde, die Sicherungsrichtlinie jedoch weiterhin einen virtuellen Computer für die Sicherung sucht. Gehen Sie wie folgt vor, um diesen Fehler zu beheben: <ol><li>Erstellen Sie einen neuen virtuellen Computer mit demselben Namen und demselben Ressourcengruppennamen [Clouddienstnamen]. <br>(ODER) <li> Deaktivieren Sie den Schutz für den virtuellen Computer, damit keine Sicherungsaufträge erstellt werden.</ol> |
 | Sicherung | Der Agent für virtuelle Computer ist nicht auf dem virtuellen Computer vorhanden. Installieren Sie den VM-Agent (erforderliche Voraussetzung), und starten Sie den Vorgang erneut. | [Erfahren Sie mehr](#vm-agent) über die VM-Agent-Installation und die dazugehörige Überprüfung. |
 
 ## Aufträge
+
 | Vorgang | Fehlerdetails | Problemumgehung |
 | -------- | -------- | -------|
 | Auftrag abbrechen | Der Abbruch wird für diesen Auftragstyp nicht unterstützt. Warten Sie, bis der Auftrag abgeschlossen ist. | Keine |
@@ -65,7 +54,7 @@ Sie können die Problembehandlung für Fehler, die beim Verwenden von Azure Back
 | Vorgang | Fehlerdetails | Problemumgehung |
 | -------- | -------- | -------|
 | Wiederherstellen | Cloudinterner Fehler bei der Wiederherstellung | <ol><li>Der Clouddienst, in dem Sie die Wiederherstellung durchführen möchten, ist mit DNS-Einstellungen konfiguriert. Prüfen Sie <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br>Wenn "Address" konfiguriert ist, bedeutet dies, dass DNS-Einstellungen konfiguriert wurden.<br> <li>Der Clouddienst, in dem Sie die Wiederherstellung durchführen möchten, ist mit ReservedIP konfiguriert, und vorhandene virtuelle Computer im Clouddienst weisen den Status „Beendet“ auf.<br>Mithilfe des folgenden PowerShell-Cmdlets können Sie überprüfen, ob ein Clouddienst über eine reservierte IP-Adresse verfügt:<br>$deployment = Get-AzureDeployment-ServiceName "Servicename"-Slot "Production" $DEP ReservedIPName <br><li>Sie versuchen, eine virtuelle Maschine mit der folgenden speziellen Netzwerkkonfigurationen im selben Clouddienst wiederherzustellen. <br>- Virtuelle Computer unter der Konfiguration des Load Balancers (intern und extern)<br>- Virtuelle Computer mit mehreren reservierten IP-Adressen<br> Virtuelle Computer mit mehreren NICs<br>Wählen Sie einen neuen Clouddienst in der Benutzeroberfläche aus, oder wechseln Sie zu [Überlegungen zur Wiederherstellung](backup-azure-restore-vms.md/#restoring-vms-with-special-network-configurations) für virtuelle Computer mit speziellen Netzwerkkonfigurationen</ol> |
-| Wiederherstellen | Der ausgewählte DNS-Name ist bereits vergeben. Geben Sie einen anderen DNS-Namen an, und versuchen Sie es erneut. | Der DNS-Name bezieht sich hier auf den Clouddienstnamen (der i. d. R. auf ".cloudapp.net" endet). Dieser muss eindeutig sein. Wenn der vorliegende Fehler auftritt, müssen Sie während der Wiederherstellung einen anderen Namen für den virtuellen Computer auswählen. <br><br> Beachten Sie, dass dieser Fehler nur Benutzern des Azure-Portals angezeigt wird. Der Wiederherstellungsvorgang über PowerShell ist erfolgreich, da nur die Datenträger wiederhergestellt werden und kein virtueller Computer erstellt wird. Der Fehler tritt auf, wenn der virtuelle Computer nach Abschluss des Wiederherstellungsvorgangs für die Datenträger explizit von Ihnen erstellt wird. |
+| Wiederherstellen | Der ausgewählte DNS-Name ist bereits vergeben. Geben Sie einen anderen DNS-Namen an, und versuchen Sie es erneut. | Der DNS-Name bezieht sich hier auf den Clouddienstnamen (der i. d. R. auf ".cloudapp.net" endet). Dieser muss eindeutig sein. Wenn der vorliegende Fehler auftritt, müssen Sie während der Wiederherstellung einen anderen Namen für den virtuellen Computer auswählen. <br><br> Beachten Sie, dass dieser Fehler nur Benutzern des Azure-Portals angezeigt wird. Der Wiederherstellungsvorgang über PowerShell ist erfolgreich, da nur die Datenträger wiederhergestellt werden und kein virtueller Computer erstellt wird. Der Fehler tritt auf, wenn der virtuelle Computer nach Abschluss des Wiederherstellungsvorgangs für die Datenträger explizit von Ihnen erstellt wird. |
 | Wiederherstellen | Die angegebene Konfiguration des virtuellen Netzwerks ist nicht korrekt. Geben Sie eine andere Konfiguration des virtuellen Netzwerks an, und versuchen Sie es erneut. | Keine |
 | Wiederherstellen | Der angegebene Clouddienst verwendet eine reservierte IP, die nicht mit der Konfiguration des virtuellen Computers übereinstimmt, der wiederhergestellt werden soll. Geben Sie einen anderen Clouddienst an, der keine reservierte IP verwendet, oder wählen Sie einen anderen Wiederherstellungspunkt aus. | Keine |
 | Wiederherstellen | Der Clouddienst hat den Grenzwert für die Anzahl der Eingabeendpunkte erreicht. Wiederholen Sie den Vorgang, indem Sie einen anderen Clouddienst angeben oder einen vorhandenen Endpunkt verwenden. | Keine |
@@ -117,16 +106,16 @@ So überprüfen Sie die Version des VM-Agents auf virtuellen Windows-Computern
 ## Problembehandlung für Probleme mit VM-Momentaufnahmen
 Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Speicher ausgegeben. Wenn Sie bei der Ausführung von Momentaufnahmenaufgaben keinen Zugriff auf Speicherung oder Verzögerung haben, ist der Sicherungsvorgang unter Umständen nicht erfolgreich. Es kann die unten angegebenen Gründe haben, wenn für Momentaufnahmenaufgaben ein Fehler auftritt.
 
-1. Netzwerkzugriff auf Storage wird per NSG blockiert<br> Lesen Sie weitere Informationen zum [Aktivieren des Netzwerkzugriffs](backup-azure-vms-prepare.md#2-network-connectivity) auf Storage durch das Setzen von IPs auf eine Positivliste oder per Proxyserver.
-2.  VMs mit konfigurierter SQL Server-Sicherung können zu Verzögerungen bei der Momentaufnahmenaufgabe führen <br> Standardmäßig wird bei der VM-Sicherung eine vollständige VSS-Sicherung auf Windows-VMs ausgegeben. Auf VMs, auf denen SQL-Server ausgeführt werden und die SQL Server-Sicherung konfiguriert ist, kann dies eine Verzögerung bei der Ausführung von Momentaufnahmen zur Folge haben. Legen Sie den folgenden Registrierungsschlüssel fest, wenn bei Ihnen aufgrund von Problemen mit Momentaufnahmen Sicherungsfehler auftreten.
+1. Netzwerkzugriff auf Storage wird per NSG blockiert<br> Lesen Sie weitere Informationen zum [Aktivieren des Netzwerkzugriffs](backup-azure-vms-prepare.md#2-network-connectivity) auf Storage, indem IPs auf eine Whitelist gesetzt werden, oder per Proxyserver.
+2.  VMs mit konfigurierter SQL Server-Sicherung können zu Verzögerungen bei der Momentaufnahmenaufgabe führen <br> Standardmäßig wird bei der VM-Sicherung eine vollständige VSS-Sicherung auf Windows-VMs ausgeführt. Auf VMs, auf denen SQL-Server ausgeführt werden und die SQL Server-Sicherung konfiguriert ist, kann dies eine Verzögerung bei der Ausführung von Momentaufnahmen zur Folge haben. Legen Sie den folgenden Registrierungsschlüssel fest, wenn bei Ihnen aufgrund von Problemen mit Momentaufnahmen Sicherungsfehler auftreten.
 
 	```
 	[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
 	"USEVSSCOPYBACKUP"="TRUE"
 	```
-3.  Der VM-Status wird falsch gemeldet, da die VM im RDP heruntergefahren ist. <br> Wenn Sie die virtuelle Maschine im RDP heruntergefahren haben, sollten Sie im Portal überprüfen, ob der VM-Status richtig wiedergegeben wird. Falls nicht, beenden Sie die VM im Portal, indem Sie im VM-Dashboard die Option „Herunterfahren“ verwenden.
-4.  Viele VMs desselben Clouddiensts sind so konfiguriert, dass die Sicherung zur selben Zeit durchgeführt wird.<br> Die bewährte Methode besteht darin, für die VMs eines Clouddiensts unterschiedliche Sicherungszeitpläne zu verwenden.
-5.  Die VM wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt.<br> Wenn die virtuelle Maschine bei hoher CPU-Auslastung (> 90 %) oder Arbeitsspeicherauslastung ausgeführt wird, wird die Momentaufnahmenaufgabe in die Warteschlange eingereiht und verzögert und erreicht schließlich die Zeitüberschreitung. Versuchen Sie es in diesem Fall mit bedarfsgesteuerten Sicherungen.
+3.  Der VM-Status wird falsch gemeldet, da die VM im RDP heruntergefahren ist. <br> Wenn Sie die VM im RDP heruntergefahren haben, sollten Sie im Portal überprüfen, ob der VM-Status richtig wiedergegeben wird. Falls nicht, beenden Sie die VM im Portal, indem Sie im VM-Dashboard die Option „Herunterfahren“ verwenden.
+4.  Wenn mehr als vier VMs gemeinsam den gleichen Clouddienst nutzen, konfigurieren Sie mehrere Sicherungsrichtlinien zum Bereitstellen der Sicherungszeiten, sodass höchstens vier VM-Sicherungen gleichzeitig gestartet werden. Versuchen Sie, die Sicherungsstartzeiten für verschiedene Richtlinien mit einer Stunde Abstand zu verteilen. 
+5.  Die VM wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt.<br> Wenn die virtuelle Maschine bei hoher CPU-Auslastung (> 90 %) oder Arbeitsspeicherauslastung ausgeführt wird, wird die Momentaufnahmenaufgabe in die Warteschlange eingereiht und verzögert und erreicht schließlich die Zeitüberschreitung. Versuchen Sie es in diesem Fall mit bedarfsgesteuerten Sicherungen.
 
 <br>
 
@@ -134,7 +123,7 @@ Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Spe
 Wie bei allen Erweiterungen ist für die Backup-Erweiterung der Zugriff auf das öffentliche Internet erforderlich, damit sie funktioniert. Wenn kein Zugriff auf das öffentliche Internet besteht, kann dies zu unterschiedlichen Ergebnissen führen:
 
 - Beim Installieren der Erweiterung kann ein Fehler auftreten.
-- Bei den Sicherungsvorgängen (z. B. Datenträger-Momentaufnahme) kann ein Fehler auftreten.
+- Bei den Sicherungsvorgängen (z. B. Datenträger-Momentaufnahme) kann ein Fehler auftreten.
 - Beim Anzeigen des Status für den Sicherungsvorgang kann ein Fehler auftreten.
 
 Die Notwendigkeit zur Auflösung von öffentlichen Internetadressen wird [hier](http://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx) beschrieben. Sie müssen die DNS-Konfigurationen für das VNET überprüfen und sicherstellen, dass die Azure-URIs aufgelöst werden können.
@@ -151,4 +140,4 @@ Nachdem die Namensauflösung richtig eingerichtet wurde, muss auch der Zugriff a
 
 >[AZURE.NOTE] Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese über die Plattform konfigurieren. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Lesen Sie weitere Informationen zum [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

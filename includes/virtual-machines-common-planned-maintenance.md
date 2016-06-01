@@ -59,7 +59,7 @@ Der geplante Wartungsvorgang wirkt sich bei dieser Art von Konfiguration eines v
 
 ## E-Mail-Benachrichtigung
 
-Nur bei virtuellen Computern mit Konfigurationen mit einzelnen und mehreren Instanzen informiert Azure im Voraus per E-Mail über geplante Wartungsarbeiten (eine Woche im Voraus). Diese E-Mail wird an die E-Mail-Konten des Kontoadministrators und die des Co-Administrators gesendet, die im Abonnement bereitgestellt werden. Hier ist ein Beispiel für diese Art von E-Mail:
+Nur bei virtuellen Computern mit Konfigurationen mit einzelnen und mehreren Instanzen informiert Azure im Voraus per E-Mail über geplante Wartungsarbeiten (eine Woche im Voraus). Diese E-Mail wird an die E-Mail-Konten des Abonnementadministrators und des Co-Administrators gesendet. Hier ist ein Beispiel für diese Art von E-Mail:
 
 <!--Image reference-->
 ![][image1]
@@ -80,7 +80,9 @@ Südostasien | Ostasien
 Ostchina | Nordchina
 Japan Ost | Japan (Westen)
 Brasilien Süd | USA (Mitte/Süden)
-Australien (Südost) | Australien (Osten)
+Australien (Südost) | Australien (Ost)
+Indien, Mitte | Indien, Süden
+Indien, Westen | Indien, Süden
 US Government, Iowa | US Government, Virginia
 
 <!--Anchors-->

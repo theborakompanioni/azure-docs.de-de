@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Analysieren von CDN-Verwendungsmustern
+
+[AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
 Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen:
 
@@ -86,7 +88,7 @@ Dieser Bericht zeigt die Verteilung der Cachetreffer und Cachefehler für eine C
 
 - TCP\_MISS: Dieser Status gibt an, dass auf dem POP, der dem Client am nächsten liegt, keine zwischengespeicherte Version des angeforderten Medienobjekts gefunden wurde. Das Medienobjekt wird entweder von einem Ursprungsserver oder von einem Ursprungsschutzserver angefordert. Wenn der Ursprungsserver oder der Ursprungsschutzserver ein Medienobjekt zurückgibt, wird es für den Client bereitgestellt und sowohl auf dem Client als auch auf dem Edgeserver zwischengespeichert. Andernfalls wird ein anderer Statuscode als 200 zurückgegeben (z. B. 403 Verboten, 404 Nicht gefunden usw.).
 
-- TCP\_EXPIRED \_HIT: Dieser Status wird gemeldet, wenn eine Anforderung, die an ein Medienobjekt mit abgelaufener TTL gerichtet war (z. B. "max-age" des Medienobjekts abgelaufen), direkt vom POP für den Client bereitgestellt wurde.
+- TCP\_EXPIRED \_HIT: Dieser Status wird gemeldet, wenn eine Anforderung, die an ein Medienobjekt mit abgelaufener TTL gerichtet war (z. B. "max-age" des Medienobjekts abgelaufen), direkt vom POP für den Client bereitgestellt wurde.
 
 	Eine abgelaufene Anforderung führt in der Regel zu einer Anforderung zur erneuten Überprüfung an den ursprünglichen Server. Damit TCP\_EXPIRED \_HIT auftritt, muss der Ursprungsserver angeben, dass keine neuere Version des Medienobjekts vorhanden ist. In dieser Situation werden normalerweise die Header "Cache-Control" und "Expires" des Medienobjekts aktualisiert.
 
@@ -142,4 +144,4 @@ Dieser Bericht zeigt die Verteilung des Datenverkehrs in IPV4 und IPV6.
 
 Berichte können nur über die letzten 18 Monate generiert werden.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

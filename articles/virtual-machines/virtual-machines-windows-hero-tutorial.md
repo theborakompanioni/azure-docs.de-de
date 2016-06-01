@@ -116,4 +116,4 @@ Wenn Sie den virtuellen Computer erneut verwenden möchten, klicken Sie einfach 
 
 * Darüber hinaus haben Sie die Möglichkeit zum [Erstellen eines virtuellen Windows-Computers mit PowerShell](virtual-machines-windows-ps-create.md) sowie zum [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-quick-create-cli.md) mithilfe der Azure-Befehlszeilenschnittstelle.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!----HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="04/22/2016"   
 	ms.author="adsolank;juliako;"/>
 
 
@@ -56,7 +56,7 @@ Untertiteldateien in diesen Formaten können verwendet werden, um Hörgeschädig
 
 ##Taskkonfiguration (Voreinstellung)
 
-Wenn Sie eine Indizierungsaufgabe mit **Azure Media Indexer 2 Preview* erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben.
+Wenn Sie eine Indizierungsaufgabe mit **Azure Media Indexer 2 Preview** erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben.
 
 Die folgende JSON legt verfügbare Parameter fest.
 
@@ -289,4 +289,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

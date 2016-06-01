@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mandia"/>
 
 
@@ -236,14 +236,15 @@ Sie können auch die **relativen** oder **absoluten** Werte sowie ein **Zeitinte
 
 ##### So zeigen Sie Metriken im Diagramm an oder entfernen diese daraus:
 1. Wählen Sie die Registerkarte **Überwachen** aus.
-2. Klicken Sie auf der Taskleiste auf **Metriken hinzufügen**: 
+2. Klicken Sie auf der Taskleiste auf **Metriken hinzufügen**:
+<br/>
 !["Metriken hinzufügen" auswählen][AddMetrics]
 3. Prüfen Sie die Leistungsmetriken, die Sie anzeigen möchten.
 4. Wählen Sie das Häkchen aus, um zur Registerkarte **Überwachen** zurückzukehren.
 5. Wählen Sie den Kreis neben der Metrik aus, um den Wert dieser Metrik im Diagramm anzuzeigen.  
 
 	Die Metrik **CPU-Auslastung** ist grau unterlegt. Das heißt, ihr Wert wird im Diagramm nicht angezeigt:  
-![Metrik "CPU-.Auslastung" ist deaktiviert][GrayedMetric]  
+![Metrik "CPU-.Auslastung" ist deaktiviert][GrayedMetric]
 
 	Wählen Sie den ausgegrauten Kreis, sodass die Metrik **CPU-Auslastung** ihre Ausgabe im Diagramm anzeigt:  
 ![Metrik "CPU-.Auslastung" ist aktiviert][EnabledMetric]
@@ -365,4 +366,4 @@ Nun, da Sie mit den verschiedenen Registerkarten vertraut sind, können Sie mehr
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

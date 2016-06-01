@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="04/14/2016"
+   ms.date="05/12/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure AD Connect-Installation auf die aktuelle Version zu aktualisieren. Wir empfehlen, dass Sie immer die aktuelle Version von Azure AD Connect nutzen.
 
-Wenn Sie von DirSync aktualisieren möchten, lesen Sie [Aktualisieren des Microsoft Azure Active Directory-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md).
+Wenn Sie von DirSync aktualisieren möchten, lesen Sie [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md).
 
 Es gibt verschiedene Strategien für das Upgrade von Azure AD Connect.
 
@@ -27,14 +27,14 @@ Es gibt verschiedene Strategien für das Upgrade von Azure AD Connect.
 | --- | --- |
 | [Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) | Für Kunden mit einer Expressinstallation ist dies die einfachste Methode. |
 | [Direktes Upgrade](#in-place-upgrade) | Wenn Sie über einen einzelnen Server verfügen, aktualisieren Sie die Installation direkt auf dem Server. |
-| [Swing-Migration](#swing-migration) | Wenn Sie über zwei Server verfügen, können einen der Server mit der neuen Version vorbereiten und den aktiven Server ändern, wenn Sie bereit sind.
+| [Swing-Migration](#swing-migration) | Wenn Sie über zwei Server verfügen, können Sie einen der Server mit der neuen Version vorbereiten und den aktiven Server ändern, wenn Sie bereit sind.
 
 Die erforderlichen Berechtigungen finden Sie unter den [erforderlichen Berechtigungen für das Upgrade](active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 ## Direktes Upgrade
 Ein direktes Upgrade funktioniert für das Aktualisieren von Azure AD Sync oder Azure AD Connect. Es funktioniert nicht für DirSync oder für eine Lösung mit FIM und Azure AD-Connector.
 
-Dies ist die bevorzugte Methode, wenn Sie über einen einzelnen Server und weniger als etwa 100.000 Objekte verfügen. Nach dem Upgrade werden ein vollständiger Import und eine vollständige Synchronisierung ausgeführt. Dadurch wird sichergestellt, dass die neue Konfiguration auf alle vorhandenen Objekte im System angewendet wird. Dies kann einige Stunden. Die Dauer ist abhängig von der Anzahl der Objekte, die vom Synchronisierungsmodul berücksichtigt werden. Die normale geplante Deltasynchronisierung (standardmäßig alle 30 Minuten) wird angehalten, aber die Kennwortsynchronisierung wird fortgesetzt. Sie sollten das direkte Upgrade am Wochenende durchführen.
+Dies ist die bevorzugte Methode, wenn Sie über einen einzelnen Server und weniger als etwa 100.000 Objekte verfügen. Nach dem Upgrade werden ein vollständiger Import und eine vollständige Synchronisierung durchgeführt, wenn Änderungen an den standardmäßigen Synchronisierungsregeln vorliegen. Dadurch wird sichergestellt, dass die neue Konfiguration auf alle vorhandenen Objekte im System angewendet wird. Dies kann einige Stunden. Die Dauer ist abhängig von der Anzahl der Objekte, die vom Synchronisierungsmodul berücksichtigt werden. Die normale geplante Deltasynchronisierung (standardmäßig alle 30 Minuten) wird angehalten, aber die Kennwortsynchronisierung wird fortgesetzt. Sie sollten das direkte Upgrade am Wochenende durchführen. Wenn Sie an der Standardkonfiguration der neuen Azure AD Connect-Version keine Änderungen durchgeführt haben, wird stattdessen ein normaler Deltaimport/eine Deltasynchronisierung durchgeführt.
 
 ![Direktes Upgrade](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
@@ -51,7 +51,7 @@ Auf den beiden Servern können verschiedene Versionen verwendet werden. Sie kön
 
 Hinweis: Es wurde festgestellt, dass einige Kunden für dieses Verfahren drei oder vier Server verwenden möchten. Da der Stagingserver aktualisiert wird, verfügen Sie während dieser Zeit nicht über einen Sicherungsserver für eine etwaige [Notfallwiederherstellung](active-directory-aadconnectsync-operations.md#disaster-recovery). Mit maximal vier Servern kann ein neuer Satz aus primären/Standbyservern mit der neuen Version vorbereitet werden. Dadurch ist sichergestellt, dass immer ein Stagingserver zur Verfügung steht.
 
-Diese Schritte funktionieren auch bei einem Wechsel von Azure AD Sync oder einer Lösung mit FIM und Azure AD-Connector. Diese Schritte funktionieren nicht für DirSync, aber die entsprechende Methode einer Swing-Migration (wird auch als parallele Bereitstellung bezeichnet) mit den Schritten für DirSync finden Sie unter [Aktualisieren des Microsoft Azure Active Directory-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md).
+Diese Schritte funktionieren auch bei einem Wechsel von Azure AD Sync oder einer Lösung mit FIM und Azure AD-Connector. Diese Schritte funktionieren nicht für DirSync, aber die entsprechende Methode einer Swing-Migration (wird auch als parallele Bereitstellung bezeichnet) mit den Schritten für DirSync finden Sie unter [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md).
 
 ### Schritte bei der Swing-Migration
 
@@ -85,4 +85,4 @@ Folgendes muss auf beiden Servern auf die gleiche Weise konfiguriert sein:
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

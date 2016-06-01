@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/10/2016"
 	ms.author="piyushjo" />
 
 
@@ -24,6 +24,41 @@ Wenn Sie bereits eine ältere Version unseres SDK in Ihrer Anwendung integriert 
 Möglicherweise müssen Sie mehrere Verfahren befolgen, wenn Sie mehrere Versionen des SDK verpasst haben. Wenn Sie beispielsweise von 1.4.0 zu 1.6.0 migrieren, müssen Sie zunächst den Vorgang „von 1.4.0 zu 1.5.0“ ausführen und anschließend den Vorgang „1.5.0 zu 1.6.0“.
 
 Unabhängig von der Version, für die Sie das Upgrade ausführen, müssen Sie die `mobile-engagement-VERSION.jar` durch die neue Version ersetzen.
+
+##Von 4.2.0 zu 4.2.1
+
+Dieser Schritt kann im Prinzip für jede Version des SDK ausgeführt werden. Dabei handelt es sich um eine Verbesserung in Bezug auf die Sicherheit bei der Integration von Reach-Aktivitäten.
+
+Es wird empfohlen, allen Reach-Aktivitäten nun `exported="false"` hinzuzufügen.
+
+Reach-Aktivitäten sollten in `AndroidManifest.xml` jetzt wie folgt aussehen:
+
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
+			  <intent-filter>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
+			    <category android:name="android.intent.category.DEFAULT" />
+			    <data android:mimeType="text/plain" />
+			  </intent-filter>
+			</activity>
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
+			  <intent-filter>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
+			    <category android:name="android.intent.category.DEFAULT" />
+			    <data android:mimeType="text/html" />
+			  </intent-filter>
+			</activity>
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementPollActivity" android:theme="@android:style/Theme.Light" android:exported="false">
+			  <intent-filter>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.POLL"/>
+			    <category android:name="android.intent.category.DEFAULT" />
+			  </intent-filter>
+			</activity>
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog" android:exported="false">
+			  <intent-filter>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.LOADING"/>
+			    <category android:name="android.intent.category.DEFAULT"/>
+			  </intent-filter>
+			</activity>
 
 ##Von 4.0.0 zu 4.1.0
 
@@ -113,7 +148,7 @@ Betten Sie die neue `res/layout/engagement_loading.xml`-Datei in Ihr Projekt ein
 
 ##Von 2.4.0 zu 3.0.0
 
-Im Folgenden wird beschrieben, wie Sie die Migration einer SDK-Integration vom Capptain-Dienst, der von Capptain-SAS angeboten wird, in eine App von Azure Mobile Engagement durchführen. Wenn Sie von einer früheren Version migrieren, sehen Sie auf der Capptain-Website nach, wie eine Migration auf Version 2.4.0 durchgeführt wird. Führen Sie anschließend das folgende Verfahren aus.
+Im Folgenden wird beschrieben, wie Sie die Migration einer SDK-Integration vom Capptain-Dienst, der von Capptain-SAS angeboten wird, in eine App von Azure Mobile Engagement durchführen. Wenn Sie von einer früheren Version migrieren, sehen Sie auf der Capptain-Website nach, wie eine Migration auf Version 2.4.0 durchgeführt wird. Führen Sie anschließend das folgende Verfahren aus.
 
 >[AZURE.IMPORTANT] Capptain und Mobile Engagement sind nicht dieselben Dienste, und die unten beschriebene Vorgehensweise hebt nur hervor, wie die Migration der Clientapp durchzuführen ist. Bei der Migration des SDK in die App werden Ihre Daten NICHT von den Capptain-Servern zu den Mobile Engagement-Servern migriert.
 
@@ -149,7 +184,7 @@ Entfernen Sie diesen Abschnitt aus der Datei `AndroidManifest.xml`, wenn diese v
 
 ### Java-API
 
-Jeder Aufruf einer beliebigen Java-Klasse des SDKs muss umbenannt werden, z. B. muss `CapptainAgent.getInstance(this)` in `EngagementAgent.getInstance(this)` sowie `extends CapptainActivity` in `extends EngagementActivity` umbenannt werden usw.
+Jeder Aufruf einer beliebigen Java-Klasse des SDKs muss umbenannt werden, z. B. muss `CapptainAgent.getInstance(this)` in `EngagementAgent.getInstance(this)` sowie `extends CapptainActivity` in `extends EngagementActivity` umbenannt werden usw.
 
 Wenn die Integration mit den Standardeinstellungsdateien des Agent erfolgt ist, wird jetzt der Standarddateiname `engagement.agent` verwendet, während der Schlüssel `engagement:agent` lautet.
 
@@ -386,4 +421,4 @@ Die Umbenennung kann sich auf die Proguard-Konfiguration auswirken. Die Regeln s
 			}
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

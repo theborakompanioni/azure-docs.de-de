@@ -66,7 +66,7 @@ Datenwissenschaftler muss in Zusammenarbeit mit Fachbereichsexperten die Feature
 
 ## 4\. Erstellen von Vorhersagemodellen 
 
-Datenwissenschaftler erstellen Analysemodelle zum Vorhersagen der Hauptvariablen, die von den Geschäftsanforderungen bestimmt werden. Diese werden wiederum im Planungsschritt anhand von Daten definiert, die bereinigt und Features zugeordnet wurden. Machine Learning-Systeme unterstützen mehrere **Modellierungsalgorithmen**, die für eine Vielzahl von Fällen geeignet sind. Anleitungen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice,md).
+Datenwissenschaftler erstellen Analysemodelle zum Vorhersagen der Hauptvariablen, die von den Geschäftsanforderungen bestimmt werden. Diese werden wiederum im Planungsschritt anhand von Daten definiert, die bereinigt und Features zugeordnet wurden. Machine Learning-Systeme unterstützen mehrere **Modellierungsalgorithmen**, die für eine Vielzahl von Fällen geeignet sind. Anleitungen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
 Datenwissenschaftler müssen das am besten geeignete Modell für die jeweilige Vorhersageaufgabe wählen. Es ist nicht ungewöhnlich, dass Ergebnisse aus mehreren Modellen kombiniert werden müssen, um die besten Ergebnisse zu erzielen. Die Eingabedaten für die Modellierung sind in der Regel nach dem Zufallsprinzip in drei Teile unterteilt:
 
@@ -91,4 +91,4 @@ Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Pro
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

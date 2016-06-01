@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM | Microsoft Azure"
+	pageTitle="Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM | Microsoft Azure"
 	description="Erfahren Sie, wie Sie Ihre eigenen Artefakte für die Verwendung mit DevTest Labs erstellen."
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-#Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM
+#Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM
 
 > [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Gewusst wie: Erstellen benutzerdefinierter Artefakte](/documentation/videos/how-to-author-custom-artifacts)
 
@@ -103,7 +103,7 @@ Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert e
 
 Erstellen Sie Ihr benutzerdefiniertes Artefakt anhand der nachstehend aufgeführten Schritte:
 
-1. Installieren eines JSON-Editors: Sie benötigen zum Bearbeiten von Artefaktdefinitionsdateien einen JSON-Editor. Empfehlenswert ist [Visual Studio Code](https://code.visualstudio.com/), der für Windows, Linux und OS X verfügbar ist.
+1. Installieren eines JSON-Editors: Sie benötigen zum Bearbeiten von Artefaktdefinitionsdateien einen JSON-Editor. Empfehlenswert ist [Visual Studio Code](https://code.visualstudio.com/), der für Windows, Linux und OS X verfügbar ist.
 
 1. Abrufen einer Beispieldatei „artifactfile.json“: Sehen Sie sich die vom Azure DevTest Labs-Team erstellten Artefakte in unserem [GitHub-Repository](https://github.com/Azure/azure-devtestlab) (in englischer Sprache) an, in dem wir eine umfangreiche Bibliothek von Artefakten erstellt haben, die Ihnen beim Erstellen eigener Artefakte helfen. Laden Sie eine Artefaktdefinitionsdatei herunter, und nehmen Sie an dieser Änderungen vor, um eigene Artefakte zu erstellen.
 
@@ -118,10 +118,10 @@ Erstellen Sie Ihr benutzerdefiniertes Artefakt anhand der nachstehend aufgeführ
 
 	![Beispiel-Git-Repository für Artefakte](./media/devtest-lab-artifact-author/git-repo.png)
 
-1. Fügen Sie das Artefaktrepository dem Lab hinzu. Weitere Informationen hierzu finden Sie im Artikel [Hinzufügen eines Git-Artefaktrepositorys zu Ihrem DevTest Lab](devtest-lab-add-artifact-repo.md).
+1. Fügen Sie das Artefaktrepository dem Lab hinzu. Weitere Informationen hierzu finden Sie im Artikel [Hinzufügen eines Git-Artefaktrepositorys zu einem Lab](devtest-lab-add-artifact-repo.md).
 
 ## Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihrem [DevTest Lab ein Git-Artefaktrepository hinzufügen](devtest-lab-add-artifact-repo.md).
+- Erfahren Sie, wie Sie einem [Lab ein Git-Artefaktrepository hinzufügen](devtest-lab-add-artifact-repo.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Echtzeitstatistiken in Microsoft Azure CDN
 
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
+
 ## Übersicht
 
 Dieses Dokument erläutert Echtzeitstatistiken in Microsoft Azure CDN. Diese Funktionalität bietet Echtzeitdaten über die Leistung unseres CDN bei der Übermittlung von Inhalten an Ihre Clients.
-
-> [AZURE.NOTE] Echtzeitstatistiken sind ein Feature des CDN-Tarifs „Premium“. Einen Vergleich der Features der CDN-Tarife „Standard“ und „Premium“ finden Sie in der [Übersicht über das Azure CDN](cdn-overview.md).
 
 Die folgenden Diagramme sind bei der Anzeige von Echtzeitstatistiken für die HTTP-basierten Plattformen verfügbar:
 
@@ -99,4 +99,4 @@ Diese grafische Darstellung der durchschnittlichen Anzahl von Verbindungen pro M
 * [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
 * [Analysieren der Edgeleistung](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

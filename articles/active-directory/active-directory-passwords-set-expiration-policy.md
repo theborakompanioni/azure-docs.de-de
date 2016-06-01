@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="05/16/2016"
 	ms.author="curtand"/>
 
 
 # Festlegen von Kennwortablaufrichtlinien in Azure Active Directory
-> [AZURE.NOTE]Dieses Thema enthält Onlinehilfeinhalte für Clouddienste wie Microsoft Intune und Office 365, die auf Microsoft Azure Active Directory als Identitäts- und Verzeichnisdienste zurückgreifen.
+> [AZURE.NOTE] Dieses Thema enthält Onlinehilfeinhalte für Clouddienste wie Microsoft Intune und Office 365, die auf Microsoft Azure Active Directory als Identitäts- und Verzeichnisdienste zurückgreifen.
 
 Als globaler Administrator für einen Microsoft-Clouddienst können Sie mit dem Microsoft Azure Active Directory-Modul für Windows PowerShell festlegen, dass Benutzerkennwörter nicht ablaufen. Sie können auch Windows PowerShell-Cmdlets verwenden, um die Konfiguration zu entfernen, die angibt, dass Kennwörter nicht ablaufen, oder um anzuzeigen, welche Benutzerkennwörter nicht ablaufen.
 
-  >[AZURE.NOTE]Nur Kennwörter für Benutzerkonten, die nicht über die Verzeichnissynchronisierung synchronisiert werden, kann so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen über die Verzeichnissynchronisierung finden Sie in der Liste der Themen unter [Fahrplan zur Verzeichnissynchronisierung](https://msdn.microsoft.com/library/azure/hh967642.aspx).
+  > [AZURE.NOTE] Nur Kennwörter für Benutzerkonten, die nicht über die Verzeichnissynchronisierung synchronisiert werden, kann so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen über die Verzeichnissynchronisierung finden Sie in der Liste der Themen unter [Fahrplan zur Verzeichnissynchronisierung](https://msdn.microsoft.com/library/azure/hh967642.aspx).
 
 Damit Sie Windows PowerShell-Cmdlets verwenden können, müssen Sie sie zunächst installieren.
 
@@ -64,4 +64,4 @@ Damit Sie Windows PowerShell-Cmdlets verwenden können, müssen Sie sie zunächs
 
 	- Um für die Kennwörter aller Benutzer in einer Organisation festzulegen, dass sie nie ablaufen, führen Sie das folgende Cmdlet aus: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0518_2016-->

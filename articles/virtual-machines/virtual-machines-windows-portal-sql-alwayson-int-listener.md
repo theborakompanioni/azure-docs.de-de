@@ -20,7 +20,7 @@
 
 In diesem Thema erfahren Sie, wie Sie einen internen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, die unter dem Resource Manager-Modell ausgeführt werden. Eine AlwaysOn-Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]klassisches Modell.
 
 Für diese Aufgabe benötigen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die AlwaysOn-Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung des internen Load Balancers ab.
 
@@ -267,4 +267,4 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 - Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb des gleichen virtuellen Netzwerks.
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erste Schritte mit Azure Blob Storage mit .NET | Microsoft Azure"
+	pageTitle="Erste Schritte mit Azure Blob Storage (Objektspeicher) mit .NET | Microsoft Azure"
 	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	services="storage"
 	documentationCenter=".net"
@@ -395,4 +395,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

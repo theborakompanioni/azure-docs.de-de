@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Hinzufügen einer VM mit Artefakten zu einem DevTest Lab | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine VM mit Artefakten einem DevTest Lab hinzufügen."
+	pageTitle="Hinzufügen einer VM mit Artefakten zu einem Lab | Microsoft Azure"
+	description="Erfahren Sie, wie Sie eine VM mit Artefakten in DevTest Labs hinzufügen."
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# Hinzufügen einer VM mit Artefakten zu einem DevTest Lab
+# Hinzufügen einer VM mit Artefakten zu einem Lab
 
-> [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Gewusst wie: Erstellen von VMs mit Artefakten in einem DevTest Lab](/documentation/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab).
+> [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Erstellen von VMs mit Artefakten in einem Lab](/documentation/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab).
 
 ## Übersicht
 
-Sie erstellen eine VM in einem DevTest Lab aus einem Basisimage, das entweder ein [benutzerdefiniertes Image](./devtest-lab-create-template.md) oder ein Marketplace-Image ist.
+Sie erstellen eine VM in einem Lab aus einer *Basis*, die entweder ein [benutzerdefiniertes Image](./devtest-lab-create-template.md), eine [Formel](./devtest-lab-manage-formulas.md) oder ein [Marketplace-Image](./devtest-lab-configure-marketplace-images.md) ist.
 
-Mit DevTest Lab-*Artefakten* können Sie *Aktionen* angeben, die ausgeführt werden, wenn die VM erstellt wird.
+Mit DevTest Labs-*Artefakten* können Sie *Aktionen* angeben, die ausgeführt werden, wenn die VM erstellt wird.
 
 Artefaktaktionen können Prozeduren ausführen, z.B. die Ausführung von Windows PowerShell-Skripts und Bash-Befehlen und eine Softwareinstallation.
 
@@ -34,27 +34,23 @@ In diesem Artikel wird die Erstellung eines virtuellen Computers in Ihrem Lab mi
 
 ## Hinzufügen einer VM mit Artefakten
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
 
 1. Tippen Sie in der Liste der Labs auf das Lab, in dem Sie den neuen virtuellen Computer erstellen möchten.
 
-1. Tippen Sie auf dem Blatt des Labs auf **+ Lab-VM**, wie in der folgenden Abbildung dargestellt. ![DevTest Lab-Startblatt](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+1. Tippen Sie auf dem Blatt des Labs auf **+ Lab-VM**, wie in der folgenden Abbildung dargestellt. ![Schaltfläche „Lab-VM hinzufügen“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+
+1. Wählen Sie auf dem Blatt **Basisdesign auswählen** eine Basis für die VM aus.
 
 1. Geben Sie auf dem Blatt **Lab-VM** einen Namen für den neuen virtuellen Computer in das Textfeld **Name der Lab-VM** ein.
 
-1. Tippen Sie auf **Basis/Erforderliche Einstellungen konfigurieren**, und wählen Sie ein Basisimage für die VM aus.
-
-    ![Lab-VM-Einstellungen](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-lab-vm-blade-1.png)
-
-1. Nach dem Auswählen eines Basisimages und Tippen auf **OK** wird das Blatt **Lab-VM** erweitert, um Benutzeroberflächen-Elemente für die Angabe von Informationen zu Benutzerkonten einschließlich **Benutzername**, **Authentifizierungstyp** (wenn Linux das Betriebssystem für die ausgewählte Basis ist) und **Kennwort** (unter Voraussetzung des Authentifizierungstyps *Kennwort*) einzubeziehen.
-
-    ![Erweitertes Lab-VM-Blatt](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-lab-vm-blade-2.png)
+	![Blatt „Lab-VM“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-lab-vm-blade.png)
 
 1. Geben Sie einen **Benutzernamen** ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden.
 
-1. Wenn das Betriebssystem für die ausgewählte Basis Linux ist, geben Sie entweder *Kennwort* oder *Öffentlicher SSH-Schlüssel* als Authentifizierungstyp ein.
+1. Wenn das Betriebssystem für die ausgewählte Basis Linux ist, geben Sie entweder *Kennwort* oder *Öffentlicher SSH-Schlüssel* als Authentifizierungstyp an.
 
 1. Geben Sie je nach angegebenem Authentifizierungstyp ein Kennwort oder einen öffentlichen SSH-Schlüssel ein.
 
@@ -62,21 +58,23 @@ In diesem Artikel wird die Erstellung eines virtuellen Computers in Ihrem Lab mi
 
 1. Tippen Sie auf **Virtuelles Netzwerk**, und wählen Sie das gewünschte virtuelle Netzwerk aus.
 
-1. Tippen Sie auf **Subnetz**, und wählen Sie das Subnetz.
+1. Tippen Sie auf **Subnetz**, und wählen Sie das Subnetz aus.
 
-1. Wenn die Lab-Richtlinie öffentliche IP-Adressen für das ausgewählte Subnetz zulässt, geben Sie durch Auswahl von **Ja** oder **Nein** an, ob die IP-Adresse öffentlich sein soll. Andernfalls ist diese Option deaktiviert und als **Nein** ausgewählt.
+1. Wenn die Labrichtlinie öffentliche IP-Adressen für das ausgewählte Subnetz zulässt, geben Sie durch Auswahl von **Ja** oder **Nein** an, ob die IP-Adresse öffentlich sein soll. Andernfalls ist diese Option deaktiviert und als **Nein** festgelegt.
 
 1. Tippen Sie auf **Artefakte**, und wählen Sie aus der Liste der Artefakte die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. **Hinweis:** Wenn Sie noch nicht mit DevTest Labs oder dem Konfigurieren von Artefakten vertraut sind, fahren Sie mit dem Abschnitt [Hinzufügen eines vorhandenen Artefakts zu einer VM](#add-an-existing-artifact-to-a-vm) fort, und kehren Sie dann hierher zurück.
+
+1. Wenn Sie die ARM-Vorlage anzeigen oder kopieren möchten, fahren Sie mit dem Abschnitt [Speichern der ARM-Vorlage](#save-arm-template) fort, und kehren Sie anschließend hierher Seite zurück.
 
 1. Tippen Sie auf **Erstellen**, um die angegebene VM dem Lab hinzuzufügen.
 
 1. Auf dem Blatt für das Lab wird der Status der VM-Erstellung angezeigt: erst als **Erstellung**, dann als **Wird ausgeführt**, nachdem die VM gestartet wurde.
 
-1. Gehen Sie zum Abschnitt [Nächste Schritte](#next-steps).
+1. Wechseln Sie zum Abschnitt [Nächste Schritte](#next-steps).
 
 ## Hinzufügen eines vorhandenen Artefakts zu einer VM
 
-Beim Erstellen eines virtuellen Computers können Sie vorhandene Artefakte hinzufügen. Jedes Lab enthält Artefakte aus dem öffentlichen DevTest Lab-Artefaktrepository, sowie Artefakte, die Sie erstellt und Ihrem eigenen Artefaktrepository hinzugefügt haben. Informationen zum Erstellen von Artefakten finden Sie im Artikel [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
+Beim Erstellen eines virtuellen Computers können Sie vorhandene Artefakte hinzufügen. Jedes Lab enthält Artefakte aus dem öffentlichen DevTest Labs-Artefaktrepository, sowie Artefakte, die Sie erstellt und Ihrem eigenen Artefaktrepository hinzugefügt haben. Informationen zum Erstellen von Artefakten finden Sie im Artikel [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM](devtest-lab-artifact-author.md).
 
 1. Tippen Sie auf dem Blatt **Lab-VM** auf **Artefakte**. 
 
@@ -96,7 +94,7 @@ Beim Erstellen eines virtuellen Computers können Sie vorhandene Artefakte hinzu
 
 Standardmäßig werden die Aktionen der Artefakte in der Reihenfolge ausgeführt, in der sie der VM hinzugefügt wurden. Die folgenden Schritte veranschaulichen, wie Sie die Reihenfolge ändern, in der die Artefakte ausgeführt werden.
 
-1. Tippen Sie oben auf dem Blatt **Artefakte hinzufügen** auf den Link, der die Zahl der Artefakte angibt, die der VM hinzugefügt wurden.
+1. Tippen Sie oben auf dem Blatt **Artefakte hinzufügen** auf den Link, der die Anzahl der Artefakte angibt, die der VM hinzugefügt wurden.
 
     ![](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 
@@ -108,7 +106,7 @@ Standardmäßig werden die Aktionen der Artefakte in der Reihenfolge ausgeführt
 
 Die folgenden Schritte veranschaulichen das Anzeigen oder Ändern der Parameter eines Artefakts:
 
-1. Tippen Sie oben auf dem Blatt **Artefakte hinzufügen** auf den Link, der die Zahl der Artefakte angibt, die der VM hinzugefügt wurden.
+1. Tippen Sie oben auf dem Blatt **Artefakte hinzufügen** auf den Link, der die Anzahl der Artefakte angibt, die der VM hinzugefügt wurden.
 
     ![](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 
@@ -118,9 +116,28 @@ Die folgenden Schritte veranschaulichen das Anzeigen oder Ändern der Parameter 
 
 1. Tippen Sie auf **OK**, um das Blatt **Ausgewählte Artefakte** zu schließen.
 
+## Speichern der ARM-Vorlage
+
+Eine ARM-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiederholbaren Bereitstellung. Mit den folgenden Schritte wird erläutert, wie die ARM-Vorlage für die zu erstellende VM gespeichert wird. Nach dem Speichern können Sie die ARM-Vorlage zum [Bereitstellen neuer VMs mit Azure PowerShell](../resource-group-overview/#template-deployment) nutzen.
+
+1. Tippen Sie auf dem Blatt **Lab-VM** auf **ARM-Vorlage anzeigen**.
+
+1. Markieren Sie auf dem Blatt **Azure Resource Manager-Vorlage anzeigen** den gesamten Text der Vorlage.
+
+1. Kopieren Sie den markierten Text in die Zwischenablage.
+
+1. Tippen Sie auf **OK**, um das Blatt **Azure Resource Manager-Vorlage anzeigen** zu schließen.
+
+1. Öffnen Sie einen Text-Editor.
+
+1. Fügen Sie den Text der Vorlage aus der Zwischenablage ein.
+
+1. Speichern Sie die Datei für eine spätere Verwendung.
+
 ## Nächste Schritte
 
-- Sobald die VM erstellt ist, können Sie sich durch Tippen auf **Verbinden** auf dem Blatt der VM mit der VM verbinden.
-- Informationen zum Erstellen von Artefakten finden Sie im Artikel [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
+- Sobald die VM erstellt wurde, können Sie durch Tippen auf **Verbinden** auf dem Blatt der VM eine Verbindung mit der VM herstellen.
+- Informieren Sie sich über das [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
+- Untersuchen Sie den [DevTest Labs-ARM-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

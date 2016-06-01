@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="05/16/2016" 
 	ms.author="tomfitz"/>
 
 # Sperren von Ressourcen mit dem Azure-Ressourcen-Manager
 
-Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen. Wenn Ressourcen gesperrt sind, können autorisierte Benutzer diese immer noch lesen und ändern, jedoch nicht löschen.
+Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Sie können die Sperrebene auf **CanNotDelete** oder **ReadOnly** festlegen. **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können. **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource nur lesen, sie aber nicht ändern oder löschen können.
 
-Im Gegensatz zur rollenbasierten Access Control verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen anzuwenden. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
+Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
 
 Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle untergeordneten Ressourcen diese Sperre.
 
@@ -28,11 +28,29 @@ Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle unter
 
 Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktionen vom Typ **Microsoft.Authorization/*** oder **Microsoft.Authorization/locks/*** haben. Von den integrierten Rollen verfügen nur **Owner** (Besitzer) und **User Access Administrator** (Benutzerzugriffsadministrator) über diese Aktionen.
 
+## Erstellen einer Sperre über das Portal
+
+Wählen Sie auf dem Blatt „Eigenschaften“ der Ressource, Ressourcengruppe oder des Abonnements, die/das Sie sperren möchten, **Sperren** aus.
+
+![Sperre auswählen](./media/resource-group-lock-resources/select-lock.png)
+
+Wählen Sie zum Hinzufügen einer Sperre **Hinzufügen** aus. Wenn Sie stattdessen eine Sperre auf einer übergeordneten Ebene erstellen möchten, die von der ausgewählten Ressource geerbt werden soll, wählen Sie das übergeordnete Element (z. B. wie unten gezeigt Abonnement) aus.
+
+![Sperre hinzufügen](./media/resource-group-lock-resources/add-lock.png)
+
+Weisen Sie der Sperre einen Namen und eine Ebene zu. Optional können Sie Notizen hinzufügen, die beschreiben, warum die Sperre erforderlich ist.
+
+![Sperre festlegen](./media/resource-group-lock-resources/set-lock.png)
+
+Um die Sperre zu löschen, wählen Sie die Schaltfläche mit den Auslassungszeichen und dann aus den verfügbaren Optionen **Löschen** aus.
+
+![Sperre löschen](./media/resource-group-lock-resources/delete-lock.png)
+
 ## Erstellen einer Sperre in einer Vorlage
 
 Das folgende Beispiel zeigt eine Vorlage, mit der eine Sperre für ein Speicherkonto erstellt wird. Das Speicherkonto, für das die Sperre gelten soll, wird als Parameter bereitgestellt. Der Name der Sperre wird erstellt, indem der Ressourcenname mit **/Microsoft.Authorization/** und dem Namen der Sperre, in diesem Fall **myLock**, verkettet wird.
 
-Der bereitgestellte Typ ist Ressourcentyp-spezifisch. Für Speicher ist dies der Typ "Microsoft.Storage/storageaccounts/providers/locks".
+Der bereitgestellte Typ ist ressourcentypspezifisch. Für Speicher ist dies der Typ "Microsoft.Storage/storageaccounts/providers/locks".
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -90,4 +108,4 @@ Azure PowerShell bietet auch andere Befehle für die Arbeit mit Sperren, z. B. 
 - Informationen dazu, wie Sie die Ressourcengruppe für eine Ressource ändern, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe](resource-group-move-resources.md).
 - Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

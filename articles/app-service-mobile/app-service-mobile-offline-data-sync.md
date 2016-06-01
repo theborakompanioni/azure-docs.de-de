@@ -60,7 +60,7 @@ Ein *Synchronisierungskontext* ist einem mobilen Client-Objekt zugeordnet (z. B.
 
 Ein lokaler Speicher wird mithilfe einer Initialisierungsmethode wie `IMobileServicesSyncContext.InitializeAsync(localstore)` im [.NET-Client-SDK] dem Synchronisierungskontext zugeordnet.
 
-## So funktioniert die Offlinesynchronisierung
+## <a name="how-sync-works"></a>So funktioniert die Offlinesynchronisierung
 
 Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderungen mit einem Azure Mobile App-Back-End synchronisiert werden sollen. Nichts wird an das Back-End gesendet, bis ein Aufruf für einen *Pushvorgang* für lokale Änderungen erfolgt. Auf ähnliche Weise wird der lokale Speicher nur dann mit neuen Daten aufgefüllt, wenn ein Aufruf für einen *Pullvorgang* von Daten erfolgt.
 
@@ -76,9 +76,10 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 
   Der Name der Abfrage kann eine beliebige Zeichenfolge sein, muss aber für jede logische Abfrage in Ihrer App eindeutig sein. Andernfalls könnten unterschiedliche Pullvorgänge den gleichen Zeitstempel für die inkrementelle Synchronisierung überschreiben, sodass Ihre Abfragen falsche Ergebnisse zurückgeben.
 
-  Wenn die Abfrage einen Parameter aufweist, ist das Integrieren des Parameterwerts eine Möglichkeit zum Erstellen eindeutiger Abfragenamen. Wenn Sie beispielsweise nach der Benutzer-ID filtern, könnte Ihr eindeutiger Abfragename so aussehen:
+  Wenn die Abfrage einen Parameter aufweist, ist das Integrieren des Parameterwerts eine Möglichkeit zum Erstellen eindeutiger Abfragenamen. Wenn Sie beispielsweise nach der Benutzer-ID filtern, könnte Ihr eindeutiger Abfragename so aussehen (in C#):
 
-		await todoTable.PullAsync("todoItems" + userid, syncTable.Where(u => u.UserId = userid));
+		await todoTable.PullAsync("todoItems" + userid, 
+			syncTable.Where(u => u.UserId = userid));
 
   Wenn Sie die inkrementelle Synchronisierung deaktivieren möchten, übergeben Sie `null` als Abfrage-ID. In diesem Fall werden alle Datensätze bei jedem Aufruf von `PullAsync` abgerufen, was möglicherweise ineffizient ist.
 
@@ -104,4 +105,4 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 [Windows 8.1: Aktivieren der Offline-Synchronisierung]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 [Windows 8.1: Offlinesynchronisierung aktivieren]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

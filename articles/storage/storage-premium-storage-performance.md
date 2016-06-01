@@ -111,7 +111,7 @@ Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher u
 | **Max. Arbeitsspeicher** | Für die reibungslose Ausführung der Anwendung erforderlicher Arbeitsspeicher | Zugesicherte verwendete Bytes (%) | vmstat verwenden |
 | **Max. CPU** | Für die reibungslose Ausführung der Anwendung erforderliche CPU-Größe | % Prozessorzeit | %util |
 
-Weitere Informationen zu [iostat](http://linuxcommand.org/man_pages/iostat1.html) und [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx) (Systemmonitor).
+Weitere Informationen zu [iostat](http://linuxcommand.org/man_pages/iostat1.html) und Systemmonitor [PerfMon](https://msdn.microsoft.com/library/aa645516(v=vs.71).aspx).
 
 
 ## Optimieren der Anwendungsleistung  
@@ -180,7 +180,7 @@ Hochleistungs-VMs stehen in mehreren Größen mit jeweils einer anderen Anzahl v
 | Standard\_DS14 | 16 | 112 GB | Betriebssystem = 1023 GB <br> Lokales SSD = 224 GB | 32 | 576 GB | 50\.000 IOPS <br> 512 MB pro Sekunde | 4\.000 IOPS und 33 MB pro Sekunde |
 | Standard\_GS5 | 32 | 448 GB | Betriebssystem = 1.023 GB <br> Lokales SSD = 896 GB | 64 | 4\.224 GB | 80\.000 IOPS <br> 2.000 MB pro Sekunde | 5\.000 IOPS und 50 MB pro Sekunde |
 
-Eine vollständige Übersicht mit allen verfügbaren Azure-VM-Größen finden Sie unter [Größen für virtuelle Azure-Computer](../virtual-machines/virtual-machines-linux-sizes.md). Wählen Sie eine VM-Größe, die Ihre Anforderungen an die Anwendungsleistung erfüllen und entsprechend skaliert werden kann. Berücksichtigen Sie darüber hinaus folgende wichtige Aspekte bei der Wahl der VM-Größe.
+Eine vollständige Übersicht mit allen verfügbaren Azure-VM-Größen finden Sie unter [Windows VM-Größen](../virtual-machines/virtual-machines-windows-sizes.md) oder [Linux VM-Größen](../virtual-machines/virtual-machines-linux-sizes.md). Wählen Sie eine VM-Größe, die Ihre Anforderungen an die Anwendungsleistung erfüllen und entsprechend skaliert werden kann. Berücksichtigen Sie darüber hinaus folgende wichtige Aspekte bei der Wahl der VM-Größe.
 
 
 *Skalierungslimits* Die maximalen IOPS-Limits pro VM und Datenträger sind unterschiedlich und voneinander unabhängig. Stellen Sie sicher, dass die Anwendung die IOPS innerhalb der Limits der VM sowie der angefügten Storage Premium-Datenträger unterstützt. Andernfalls wird die Anwendungsleistung gedrosselt.
@@ -320,7 +320,7 @@ Beispiel: Wenn in SQL Server der MAXDOP-Wert für eine Abfrage auf 4 festgelegt 
 
 *Optimale Warteschlangenlänge*  
 Eine sehr hohe Warteschlangenlänge hat jedoch auch Nachteile. Wenn der Wert zu hoch ist, versucht die Anwendung, eine sehr hohe IOPS-Rate zu erzielen. Außer wenn die Anwendung über beständige Datenträger mit ausreichend bereitgestellten IOPS verfügt, kann sich dies negativ auf die Anwendungslatenz auswirken. Die folgende Formel zeigt die Beziehung zwischen IOPS, Latenz und Warteschlangenlänge.  
-![](media/storage-premium-storage-performance/image6.png)
+	![](media/storage-premium-storage-performance/image6.png)
 
 Die Warteschlangenlänge darf nicht auf einen beliebig hohen Wert festgelegt werden. Wichtig ist ein optimaler Wert, der der Anwendung genügend IOPS bieten kann, ohne für mehr Latenz zu sorgen. Wenn z. B. die Anwendungslatenz 1 Millisekunde sein muss, ist die erforderliche Warteschlangenlänge zum Erzielen von 5.000 IOPS wie folgt: WL = 5000 x 0,001 = 5.
 
@@ -460,8 +460,8 @@ Führen Sie den folgenden Befehl aus, um einen 30-sekündigen FIO-Test zu starte
 
 	sudo fio --runtime 30 fiowrite.ini
 
-Während der Testausführung können Sie die Anzahl der Schreib-IOPS erkennen, die die VM und Premium-Datenträger zu bieten haben. Wie im folgenden Beispiel gezeigt, schöpft die DS14-VM ihre maximale IOPS-Schreibkapazität von 50.000 IOPS aus.
-![](media/storage-premium-storage-performance/image11.png)
+Während der Testausführung können Sie die Anzahl der Schreib-IOPS erkennen, die die VM und Premium-Datenträger zu bieten haben. Wie im folgenden Beispiel gezeigt, schöpft die DS14-VM ihre maximale IOPS-Schreibkapazität von 50.000 IOPS aus.  
+	![](media/storage-premium-storage-performance/image11.png)
 
 *Maximale Lese-IOPS*  
 Erstellen Sie die Auftragsdatei mit den folgenden Spezifikationen, um die maximale Lese-IOPS zu erhalten. Nennen Sie die Datei „fioread.ini“.
@@ -498,7 +498,7 @@ Führen Sie den folgenden Befehl aus, um einen 30-sekündigen FIO-Test zu starte
 
 	sudo fio --runtime 30 fioread.ini
 
-Während der Testausführung können Sie die Anzahl der Lese-IOPS erkennen, die die VM und Premium-Datenträger zu bieten haben. Wie im folgenden Beispiel gezeigt, schöpft die DS14-VM ihre maximale IOPS-Lesekapazität von 64.000 IOPS aus. Dies ist eine Kombination aus Datenträger- und Cacheleistung.  
+Während der Testausführung können Sie die Anzahl der Lese-IOPS erkennen, die die VM und Premium-Datenträger zu bieten haben. Wie im folgenden Beispiel gezeigt, schöpft die DS14-VM ihre maximale IOPS-Lesekapazität von 64.000 IOPS aus. Dies ist eine Kombination aus Datenträger- und Cacheleistung.  
 	![](media/storage-premium-storage-performance/image12.png)
 
 *Maximale Lese- und Schreib-IOPS*  
@@ -570,4 +570,4 @@ Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Me
 - [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](../virtual-machines/virtual-machines-windows-sql-performance.md)
 - [Azure Storage Premium bietet höchste Leistung für SQL Server in Azure-VM](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx) 
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

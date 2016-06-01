@@ -3,8 +3,8 @@
 	description="Erfahren Sie, wie Sie SQL Server Management Studio für die Verwaltung von SQL-Datenbankservern und -Datenbanken verwenden." 
 	services="sql-database" 
 	documentationCenter=".net" 
-	authors="jeffgoll" 
-	manager="jeffreyg" 
+	authors="stevestein" 
+	manager="jhubbard" 
 	editor="tysonn"/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
-	ms.author="jeffreyg"/>
+	ms.date="05/09/2016" 
+	ms.author="sstein"/>
 
 
 # Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio 
@@ -25,9 +25,11 @@
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-Sie können SQL Server Management Studio (SSMS) verwenden, um logische Server und Datenbanken der Azure SQL-Datenbank zu verwalten. Dieses Thema enthält Anleitungen für häufige Aufgaben mit SSMS. Sie sollten bereits einen logischen Server und eine logische Datenbank in der Azure SQL-Datenbank erstellt haben, bevor Sie beginnen. Unter [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started.md) und im Artikel zum [Verbinden und Abfragen mithilfe von SSMS](sql-database-connect-query-ssms.md) finden Sie Informationen dazu, wie Sie eine Verbindung herstellen und dann eine einfache SELECT-Abfrage ausführen.
+Sie können SQL Server Management Studio (SSMS) verwenden, um logische Server und Datenbanken der Azure SQL-Datenbank zu verwalten. Dieses Thema enthält Anleitungen für häufige Aufgaben mit SSMS. Sie sollten bereits einen logischen Server und eine logische Datenbank in der Azure SQL-Datenbank erstellt haben, bevor Sie beginnen. Weitere Informationen zum Herstellen einer Verbindung und dem Ausführen einer einfachen SELECT-Abfrage finden Sie unter [Erstellen Ihrer ersten SQL-Datenbank](sql-database-get-started.md) und im Artikel zum [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
 
-Es wird empfohlen, dass Sie die neueste Version von SSMS verwenden, wenn Sie mit der Azure SQL-Datenbank arbeiten. Klicken Sie hierfür auf [Herunterladen von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+Es wird empfohlen, dass Sie die neueste Version von SSMS verwenden, wenn Sie mit der Azure SQL-Datenbank arbeiten.
+
+> [AZURE.IMPORTANT] Sie müssen die neueste Version von Management Studio (SSMS) verwenden, um immer auf dem gleichen Updatestand wie Microsoft Azure und SQL-Datenbank zu sein. Eine ältere Version von SSMS funktioniert nicht mit der SQL-Datenbank. Die aktuelle Version erhalten Sie unter [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) (Herunterladen von SQL Server Management Studio (SSMS)).
 
 ## Erstellen und Verwalten von Azure SQL-Datenbanken
 
@@ -35,7 +37,7 @@ Während Sie mit der **Master**-Datenbank verbunden sind, können Sie neue Daten
 
 Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **System Databases**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**, um ein Abfragefenster in Management Studio zu öffnen.
 
--   Verwenden Sie die Anweisung **CREATE DATABASE**, um eine neue Datenbank zu erstellen. Weitere Informationen finden Sie unter [CREATE DATABASE (SQL-Datenbank)](https://msdn.microsoft.com/library/dn268335.aspx). Die folgende Anweisung erstellt eine neue Datenbank mit dem Namen **myTestDB** und gibt an, dass es sich um eine Datenbank der Standard S0-Edition mit einer maximalen Standardgröße von 250 GB handelt.
+-   Verwenden Sie die Anweisung **CREATE DATABASE**, um eine neue Datenbank zu erstellen. Weitere Informationen finden Sie unter [CREATE DATABASE (SQL-Datenbank)](https://msdn.microsoft.com/library/dn268335.aspx). Die folgende Anweisung erstellt eine neue Datenbank mit dem Namen **myTestDB** und gibt an, dass es sich um eine Datenbank der Standard S0-Edition mit einer maximalen Standardgröße von 250 GB handelt.
 
         CREATE DATABASE myTestDB
         (EDITION='Standard',
@@ -43,7 +45,7 @@ Während Sie mit der **Master**-Datenbank verbunden sind, können Sie neue Daten
 
 Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
 
--   Mit der Anweisung **ALTER DATABASE** können Sie eine vorhandene Datenbank anpassen und beispielsweise den Namen oder die Edition der Datenbank ändern. Weitere Informationen finden Sie unter [ALTER DATABASE (SQL-Datenbank)](https://msdn.microsoft.com/library/ms174269.aspx). Die folgende Anweisung ändert die im vorherigen Schritt erstellte Datenbank und legt die Edition auf „Standard S1“ fest.
+-   Mit der Anweisung **ALTER DATABASE** können Sie eine vorhandene Datenbank anpassen und beispielsweise den Namen oder die Edition der Datenbank ändern. Weitere Informationen finden Sie unter [ALTER DATABASE (SQL-Datenbank)](https://msdn.microsoft.com/library/ms174269.aspx). Die folgende Anweisung ändert die im vorherigen Schritt erstellte Datenbank und legt die Edition auf „Standard S1“ fest.
 
         ALTER DATABASE myTestDB
         MODIFY
@@ -106,7 +108,7 @@ Die Datenbank vom Typ **master** überwacht alle Anmeldungen und verfolgt, welch
 
 ## Überwachen von SQL-Datenbanken mit dynamischen Verwaltungssichten</h2>
 
-SQL-Datenbank unterstützt mehrere Dynamic Management Views, mit denen Sie eine Einzeldatenbank überwachen können. Im Folgenden finden Sie einige wenige Beispiele für die Art Überwachungsdaten, die Sie mit diesen Ansichten abrufen können. Umfassende Details und weitere Anwendungsbeispiele finden Sie unter [Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten](https://msdn.microsoft.com/library/azure/ff394114.aspx).
+SQL-Datenbank unterstützt mehrere Dynamic Management Views, mit denen Sie eine Einzeldatenbank überwachen können. Im Folgenden finden Sie einige wenige Beispiele für die Art Überwachungsdaten, die Sie mit diesen Ansichten abrufen können. Umfassende Details und weitere Anwendungsbeispiele finden Sie unter [Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten](https://msdn.microsoft.com/library/azure/ff394114.aspx).
 
 -   Die Abfrage einer dynamischen Verwaltungsansicht erfordert die Berechtigung **VIEW DATABASE STATE**. Wenn Sie einem bestimmten Benutzer die Berechtigung **VIEW DATABASE STATE** zuweisen möchten, stellen Sie mit Ihrer Hauptanmeldung für die Serverebene eine Verbindung zu der Datenbank her, die Sie verwalten möchten, und führen Sie bezogen auf sie die folgende Anweisung aus:
 
@@ -149,4 +151,4 @@ SQL-Datenbank unterstützt mehrere Dynamic Management Views, mit denen Sie eine 
  
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

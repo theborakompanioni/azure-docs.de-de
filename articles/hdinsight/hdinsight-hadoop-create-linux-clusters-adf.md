@@ -45,7 +45,7 @@ Eine Liste der Data Factory-Datentransformationsaktivitäten zusätzlich zur Hiv
 
 Es gibt viele Vorteile bei der Verwendung von HDInsight mit Data Factory:
 
-- HDInsight-Cluster werden stündlich abgerechnet, unabhängig davon, ob Sie sie verwenden oder nicht. Mit Data Factory werden die Cluster bei Bedarf erstellt. Zudem werden die Cluster automatisch gelöscht, wenn die Aufträge abgeschlossen sind. Sie bezahlen also nur für die Ausführungszeit von Aufträgen und eine kurze Leerlaufzeit (Gültigkeitsdauer).
+- Die Abrechnung für HDInsight-Cluster erfolgt anteilsmäßig auf Minutenbasis, unabhängig davon, ob Sie sie verwenden oder nicht. Mit Data Factory werden die Cluster bei Bedarf erstellt. Zudem werden die Cluster automatisch gelöscht, wenn die Aufträge abgeschlossen sind. Sie bezahlen also nur für die Ausführungszeit von Aufträgen und eine kurze Leerlaufzeit (Gültigkeitsdauer).
 - Sie können einen Workflow mit einer Data Factory-Pipeline erstellen.
 - Sie können rekursive Aufträge planen.  
 
@@ -54,7 +54,7 @@ Es gibt viele Vorteile bei der Verwendung von HDInsight mit Data Factory:
 Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 - [Azure-Abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater). 
+- Azure-CLI oder Azure PowerShell 
 
     [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
@@ -189,7 +189,7 @@ Wenn Sie Hilfe mit diesem PowerShell-Skript benötigen, lesen Sie [Verwenden von
  
 ## Erstellen einer Data Factory
 
-Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind, können Sie eine Azure Data Factory erstellen. Es gibt mehrere Methoden zum Erstellen einer Data Factory. In diesem Tutorial verwenden Sie das Azure-Portal zum Aufrufen einer benutzerdefinierten ARM-Vorlage. Sie können die ARM-Vorlage auch über die [Azure-Befehlszeilenschnittstelle](../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows) und [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) aufrufen. Andere Methoden für die Erstellung einer Data Factory finden Sie unter [Tutorial: Erstellen der ersten Data Factory](../data-factory/data-factory-build-your-first-pipeline.md).
+Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind, können Sie eine Azure Data Factory erstellen. Es gibt mehrere Methoden zum Erstellen einer Data Factory. In diesem Tutorial verwenden Sie das Azure-Portal zum Aufrufen einer benutzerdefinierten ARM-Vorlage. Sie können die ARM-Vorlage auch über die [Azure-Befehlszeilenschnittstelle](../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows) und [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) aufrufen. Andere Methoden für die Erstellung einer Data Factory finden Sie unter [Tutorial: Erstellen Ihrer ersten Data Factory](../data-factory/data-factory-build-your-first-pipeline.md).
 
 Die ARM-Vorlage der obersten Ebene enthält:
 
@@ -318,7 +318,7 @@ Die Ressource *hdinsight-hive-on-demand* enthält vier Ressourcen:
     
     Die Eingaben, Ausgaben und der Skriptpfad werden definiert.
     
-**So erstellen Sie eine Data Factory**
+So erstellen Sie eine **Data Factory**
 
 1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die ARM-Vorlage im Azure-Portal zu öffnen. Die Vorlage befindet sich unter https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. 
 
@@ -438,4 +438,4 @@ In diesem Artikel haben Sie gelernt, wie Sie mit Azure Data Factory einen bedarf
 - [HDInsight-Dokumentation](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [Data Factory-Dokumentation](https://azure.microsoft.com/documentation/services/data-factory/)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

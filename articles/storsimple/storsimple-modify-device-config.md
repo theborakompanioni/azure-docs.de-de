@@ -4,7 +4,7 @@
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
-   manager="carolz" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="01/15/2016"
+   ms.date="05/16/2016"
    ms.author="v-sharos"/>
 
 # Verwenden des StorSimple Manager-Diensts, um eine StorSimple-Gerätekonfiguration zu ändern
@@ -77,13 +77,13 @@ DATA 0 ist standardmäßig cloudfähig. Wenn Sie DATA 0 konfigurieren, müssen S
 
 In StorSimple 8000 Series Update 1 ist die Routingmetrik von DATA 0 auf den niedrigsten Wert festgelegt. Daher wird, wenn Ihr Gerät unter StorSimple 8000 Series Update 1 ausgeführt wird, der gesamte Clouddatenverkehr über DATA 0 weitergeleitet. Merken Sie sich dies, wenn Ihr StorSimple-Gerät mehrere cloudfähige Netzwerkschnittstellen hat.
 
->[AZURE.NOTE]Die festen IP-Adressen für den Controller werden dazu verwendet, die Updates für das Gerät vorzunehmen. Aus diesem Grund müssen die festen IP-Adressen routingfähig sein und eine Verbindung mit dem Internet herstellen können.
+>[AZURE.NOTE] Die festen IP-Adressen für den Controller werden dazu verwendet, die Updates für das Gerät vorzunehmen. Aus diesem Grund müssen die festen IP-Adressen routingfähig sein und eine Verbindung mit dem Internet herstellen können.
 
 Für jede Netzwerkschnittstelle werden die folgenden Parameter angezeigt:
 
 - **Geschwindigkeit** – Dieser Parameter ist nicht benutzerkonfigurierbar. DATA 0, DATA 1, DATA 4 und DATA 5 sind immer 1-GbE-Schnittstellen, und DATA 2 und DATA 3 sind 10-GbE-Schnittstellen.
 
-     >[AZURE.NOTE]Geschwindigkeit und Duplexmodus werden immer automatisch ausgehandelt. Großrahmen werden nicht unterstützt.
+     >[AZURE.NOTE] Geschwindigkeit und Duplexmodus werden immer automatisch ausgehandelt. Großrahmen werden nicht unterstützt.
  
 - **Schnittstellenstatus** – Eine Schnittstelle kann aktiviert oder deaktiviert sein. Wenn sie aktiviert ist, versucht das Gerät, die Schnittstelle zu verwenden. Es wird empfohlen, dass nur die Schnittstellen aktiviert werden, die mit dem Netzwerk verbunden sind und verwendet werden. Deaktivieren Sie alle Schnittstellen, die Sie nicht verwenden.
 
@@ -104,7 +104,7 @@ Für jede Netzwerkschnittstelle werden die folgenden Parameter angezeigt:
 
 Sie können Controller 0 und Controller 1 über das klassische Azure-Portal neu konfigurieren.
 
->[AZURE.NOTE]
+>[AZURE.NOTE] 
 >
 >- Um ordnungsgemäßen Betrieb zu gewährleisten, sollten Sie die Schnittstellengeschwindigkeit und den Duplexmodus an dem Switch überprüfen, mit dem jede Geräteschnittstelle verbunden ist. Switchschnittstellen müssen entweder Gigabit-Ethernet (1000 MBit/s) aushandeln oder für Gigabit-Ethernet konfiguriert sein und im Vollduplexmodus arbeiten. Schnittstellen, die mit niedrigeren Geschwindigkeiten oder im Halbduplexmodus arbeiten, führen zu Leistungsproblemen.
 >
@@ -129,4 +129,4 @@ Führen Sie die folgenden Schritte aus, wenn Sie die VIPs für eine der Netzwerk
 - Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
      
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter="na"
    authors="stevestein"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor="monicar" />
 <tags
    ms.service="sql-database"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="02/23/2016"
+   ms.date="05/09/2016"
    ms.author="sstein" />
 
 # Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition
@@ -31,7 +31,7 @@ Um Sie bei der Aktualisierung von Web- und Business-Datenbanken zu unterstützen
 
 ## Warum werden meine Web und Business Edition-Datenbanken im Azure-Portal als zurückgezogen angezeigt?
 
-Da Datenbanken der Web und Business Editionen nach September 2015 nicht mehr verfügbar sind, werden Web- und Business-Datenbanken im Portal als zurückgezogen gekennzeichnet. Die Bezeichnung "Zurückgezogen" soll auch daran erinnern, dass vorhandene Web- und Business-Datenbanken auf Standard, Basic oder Premium aktualisiert werden sollten. Ausführliche Informationen zum Aktualisieren vorhandener Web- oder Business-Datenbanken auf die neuen Dienstebenen finden Sie unter [Upgrade auf Azure SQL-Datenbank V12](sql-database-upgrade-server-portal.md).
+Da Datenbanken der Web und Business Editionen nach September 2015 nicht mehr verfügbar sind, werden Web- und Business-Datenbanken im Portal als zurückgezogen gekennzeichnet. Die Bezeichnung "Zurückgezogen" soll auch daran erinnern, dass vorhandene Web- und Business-Datenbanken auf Standard, Basic oder Premium aktualisiert werden sollten. Ausführliche Informationen zum Aktualisieren vorhandener Web- oder Business-Datenbanken auf die neuen Dienstebenen finden Sie unter [Upgrade auf Azure SQL-Datenbank V12](sql-database-upgrade-server-portal.md).
 
 ## Welche neue Dienstebene ist die beste Wahl für die Aktualisierung meiner vorhandenen Web- oder Business-Datenbank?
 
@@ -68,4 +68,4 @@ Azure SQL-Datenbanken der Editionen Basic, Standard und Premium werden nach Stun
 
 [Upgrade auf SQL-Datenbank V12](sql-database-upgrade-server-portal.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

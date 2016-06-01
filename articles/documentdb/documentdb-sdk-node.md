@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="04/26/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB SDK
@@ -37,8 +37,12 @@
 
 ##Versionshinweise
 
+###<a name="1.7.0"/>1.7.0</a>
+
+- Unterstützung des TTL-Features (Time To Live) für Dokumente hinzugefügt.
+
 ###<a name="1.6.0"/>1.6.0</a>
-- Implementierte [partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) 
+- [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert. 
 
 ###<a name="1.5.6"/>1.5.6</a>
 
@@ -108,7 +112,7 @@
 
 - Möglichkeit zum Abfragen von Konflikten durch Hinzufügen von „readConflicts“, „readConflictAsync“ und „queryConflicts“ implementiert.
 - API-Dokumentation aktualisiert.
-- Problem [41](https://github.com/Azure/azure-documentdb-node/issues/41) – „client.createDocumentAsync“-Fehler  
+- Problem [41](https://github.com/Azure/azure-documentdb-node/issues/41) – „client.createDocumentAsync“-Fehler
 
 ### <a name="1.0.0"/>1.0.0</a>
 
@@ -128,6 +132,7 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
+| [1\.7.0](#1.7.0) | 26. April 2016 |--- 
 | [1\.6.0](#1.6.0) | 29. März 2016 |--- 
 | [1\.5.6](#1.5.6) | 8. März 2016 |--- 
 | [1\.5.5](#1.5.5) | 2. Februar 2016 |--- 
@@ -140,17 +145,17 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 | [1\.3.0](#1.3.0) | 6. Oktober 2015 |--- 
 | [1\.2.2](#1.2.2) | 10. September 2015 |--- 
 | [1\.2.1](#1.2.1) | 15. August 2015 |--- 
-| [1\.2.0](#1.2.0) | 5. August 2015 |--- 
+| [1\.2.0](#1.2.0) | 05. August 2015 |--- 
 | [1\.1.0](#1.1.0) | 9. Juli 2015 |--- 
 | [1\.0.3](#1.0.3) | 4. Juni 2015 |--- 
-| [1\.0.2](#1.0.2) | 23 Mai 2015 |--- 
+| [1\.0.2](#1.0.2) | 23. Mai 2015 |--- 
 | [1\.0.1](#1.0.1) | 15. Mai 2015 |--- 
 | [1\.0.0](#1.0.0) | 8. April 2015 |--- 
-| 0.9.4-Vorabversion | 6. April 2015 | 29. Februar 2016 
-| 0.9.3-Vorabversion | 14. Januar 2015 | 29. Februar 2016 
-| 0.9.2-Vorabversion | 18. Dezember 2014 | 29. Februar 2016 
-| 0.9.1-Vorabversion | 22. August 2014 | 29. Februar 2016 
-| 0.9.0-Vorabversion | 21. August 2014 | 29. Februar 2016
+| 0.9.4-prelease | 6. April 2015 | 29. Februar 2016 
+| 0.9.3-prelease | 14. Januar 2015 | 29. Februar 2016 
+| 0.9.2-prelease | 18. Dezember 2014 | 29. Februar 2016 
+| 0.9.1-prelease | 22. August 2014 | 29. Februar 2016 
+| 0.9.0-prelease | 21. August 2014 | 29. Februar 2016
 
 
 ## Häufig gestellte Fragen
@@ -160,4 +165,4 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

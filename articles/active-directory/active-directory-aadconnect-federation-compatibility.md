@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Azure AD-Verbund – Kompatibilitätsliste
@@ -215,8 +215,8 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 | Client- |Support |Ausnahmen|
 | --------- | --------- |--------- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |*Kerberos-Verträge werden unterstützt|
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt|
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |*Kerberos-Verträge werden unterstützt| 
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Integrierte Windows-Authentifizierung wird nicht unterstützt| 
 | E-Mail-Clients wie Outlook und ActiveSync | Unterstützt |Keine|
 
 **NetIQ unterstützt die Kerberos-Authentifizierung über die Konfiguration eines Kerberos-Vertrags. Wenn Sie Unterstützung bei dieser Konfiguration benötigen, wenden Sie sich an NetIQ, oder lesen Sie den Einrichtungsleitfaden. Weitere Informationen zu NetIQ Access Manager finden Sie unter [NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html).
@@ -320,4 +320,4 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 Weitere Informationen finden Sie unter [AuthAnvil Single Sign On](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="05/09/2016"
 	ms.author="szark"/>
 
-# <a id="nonendorsed"> </a>Informationen zu nicht unterstützten Verteilungen #
+# Informationen zu nicht unterstützten Verteilungen #
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -41,11 +41,11 @@ Daher wird empfohlen, dass Sie nach Möglichkeit mit einem unserer [Linux auf Az
 Der Rest dieses Artikels bietet eine allgemeine Hilfe für das Ausführen Ihrer Linux-Verteilung auf Azure.
 
 
-## <a id="linuxinstall"> </a>Allgemeine Installationshinweise für Linux ##
+## Allgemeine Installationshinweise für Linux ##
 
-- Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren.
+- Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren. Wenn Sie VirtualBox verwenden, bedeutet dies, dass Sie **Feste Größe** auswählen und nicht die Standardeinstellung, die dynamisch beim Erstellen des Datenträgers zugewiesen wird.
 
-- Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. LVM oder [RAID](virtual-machines-linux-configure-raid.md) können bei Bedarf auf Datenträgern verwendet werden.
+- Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](virtual-machines-linux-configure-lvm.md) oder [RAID](virtual-machines-linux-configure-raid.md) kann wahlweise auf Datenträgern verwendet werden.
 
 - NUMA wird bei größeren VMs aufgrund eines Fehlers in den Linux Kernel-Versionen unter 2.6.37 nicht unterstützt. Dieses Problem betrifft in erster Linie jene Verteilungen, die den Red Hat 2.6.32-Upstream-Kernel verwenden. Bei der manuellen Installation des Azure Linux Agent (waagent) wird NUMA in der GRUB-Konfiguration für das Linux-Kernel automatisch deaktiviert.
 
@@ -56,7 +56,7 @@ Der Rest dieses Artikels bietet eine allgemeine Hilfe für das Ausführen Ihrer 
 
 ### Installieren von Linux ohne Hyper-V ###
 
-In einigen Fällen enthalten Linux-Installationsprogramme möglicherweise keine Treiber für Hyper-V in der anfänglichen Ramdisk (initrd oder initramfs), bis sie erkennen, dass sie eine Hyper-V-Umgebung ausführen. Wenn ein anderes Virtualisierungssystem (z. B. Virtualbox oder KVM) zur Vorbereitung des Linux-Image verwendet wird, müssen Sie möglicherweise das Image "initrd" neu erstellen, um sicherzustellen, dass mindestens die Kernelmodule `hv_vmbus` und `hv_storvsc` auf der anfänglichen Ramdisk verfügbar sind. Dies ist ein bekanntes Problem, zumindest auf Systemen, die auf der Red Hat-Upstream-Verteilung basieren.
+In einigen Fällen enthalten Linux-Installationsprogramme möglicherweise keine Treiber für Hyper-V in der anfänglichen Ramdisk (initrd oder initramfs), bis sie erkennen, dass sie eine Hyper-V-Umgebung ausführen. Wenn ein anderes Virtualisierungssystem (z. B. Virtualbox oder KVM) zur Vorbereitung des Linux-Image verwendet wird, müssen Sie möglicherweise das Image "initrd" neu erstellen, um sicherzustellen, dass mindestens die Kernelmodule `hv_vmbus` und `hv_storvsc` auf der anfänglichen Ramdisk verfügbar sind. Dies ist ein bekanntes Problem, zumindest auf Systemen, die auf der Red Hat-Upstream-Verteilung basieren.
 
 Der Mechanismus für die Neuerstellung des Images "initrd" oder "initramfs" variiert je nach der Verteilung. In der Dokumentation zu Ihrer Verteilung oder über den Support erhalten Sie Informationen zur geeigneten Vorgehensweise. Es folgt ein Beispiel für das Neuerstellen des Image "initrd" mit dem Hilfsprogramm `mkinitrd`:
 
@@ -72,7 +72,7 @@ Erstellen Sie das Image "initrd" anschließend mithilfe der Kernelmodule `hv_vmb
 
 ### Ändern der Größe von virtuellen Festplatten ###
 
-VHD-Images auf Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Normalerweise sollten mit Hyper-V erstellte virtuelle Festplatten bereits korrekt ausgerichtet sein. Wenn die virtuelle Festplatte nicht ordnungsgemäß ausgerichtet wurde, wird möglicherweise sinngemäß die folgende Fehlermeldung angezeigt, wenn Sie versuchen, ein *Image* von der virtuellen Festplatte zu erstellen:
+VHD-Images auf Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Normalerweise sollten mit Hyper-V erstellte virtuelle Festplatten bereits korrekt ausgerichtet sein. Wenn die virtuelle Festplatte nicht ordnungsgemäß ausgerichtet wurde, wird möglicherweise sinngemäß die folgende Fehlermeldung angezeigt, wenn Sie versuchen, ein *Image* von der virtuellen Festplatte zu erstellen:
 
 	"The VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. The size must be a whole number (in MBs).”
 
@@ -85,7 +85,7 @@ Zur Umgehung des Problems können Sie die Größe des virtuellen Computers mithi
 
 		# qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
 
- 2. Berechnen Sie die erforderliche Größe des Datenträger-Image, um sicherzustellen, dass die virtuelle Größe auf 1 MB ausgerichtet wird. Das folgenden Bash-Shell-Skript kann dabei helfen. Das Skript verwendet "`qemu-img info`", um die virtuelle Größe des Datenträger-Image zu ermitteln, und berechnet dann die Größe bis zum nächsten MB:
+ 2. Berechnen Sie die erforderliche Größe des Datenträger-Image, um sicherzustellen, dass die virtuelle Größe auf 1 MB ausgerichtet wird. Das folgenden Bash-Shell-Skript kann dabei helfen. Das Skript verwendet "`qemu-img info`", um die virtuelle Größe des Datenträger-Image zu ermitteln, und berechnet dann die Größe bis zum nächsten MB:
 
 		rawdisk="MyLinuxVM.raw"
 		vhddisk="MyLinuxVM.vhd"
@@ -109,11 +109,11 @@ Zur Umgehung des Problems können Sie die Größe des virtuellen Computers mithi
 
 ## Linux-Kernelanforderungen ##
 
-Die Treiber für die Linux-Integrationsdienste (Linux Integration Services, LIS) für Hyper-V und Azure tragen direkt zum Linux-Upstream-Kernel bei. Viele Distributionen, die eine neue Linux-Kernelversion (d. h. 3.x) enthalten, verfügen bereits über diese Treiber oder bieten ansonsten zurückportierte Versionen dieser Treiber mit ihren Kerneln. Diese Treiber werden ständig im Upstream-Kernel mit neuen Fehlerbehebungen und Features aktualisiert. Daher empfiehlt sich, nach Möglichkeit eine [bestätigte Distribution](virtual-machines-linux-endorsed-distros.md) auszuführen, die diese Fehlerbehebungen und Updates enthält.
+Die Treiber für die Linux-Integrationsdienste (Linux Integration Services, LIS) für Hyper-V und Azure tragen direkt zum Linux-Upstream-Kernel bei. Viele Distributionen, die eine neue Linux-Kernelversion (d. h. 3.x) enthalten, verfügen bereits über diese Treiber oder bieten ansonsten zurückportierte Versionen dieser Treiber mit ihren Kerneln. Diese Treiber werden ständig im Upstream-Kernel mit neuen Fehlerbehebungen und Features aktualisiert. Daher empfiehlt sich, nach Möglichkeit eine [bestätigte Distribution](virtual-machines-linux-endorsed-distros.md) auszuführen, die diese Fehlerbehebungen und Updates enthält.
 
 Wenn Sie eine Variante der Red Hat Enterprise Linux-Versionen **6.0-6.3** ausführen, müssen Sie die neuesten LIS-Treiber für Hyper-V installieren. Die Treiber sind [unter diesem Speicherort](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409) zu finden. Ab RHEL **6.4+** (und Ableitungen) sind die LIS-Treiber bereits im Kernel enthalten. Daher sind keine zusätzlichen Installationspakete nötig, um diese Systeme auf Azure auszuführen.
 
-Wenn ein benutzerdefiniertes Kernel erforderlich ist, empfiehlt es sich, eine neuere Kernelversion (d. h. **3.8+**) zu verwenden. Für Verteilungen oder Anbieter, die ihr eigenes Kernel verwalten, ist das Zurückportieren der LIS-Treiber vom Upstream-Kernel zu Ihrem benutzerdefinierten Kernel mit einem gewissen Aufwand verbunden. Selbst wenn Sie bereits eine relativ aktuelle Kernelversion ausführen, wird dringend empfohlen, die Upstream-Fehlerbehebungen in den LIS-Treibern nachzuverfolgen und diese bei Bedarf zurück zu portieren. Der Ort der LIS-Treiberquelldateien ist in der Datei [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) in der Linux-Kernelquellstruktur verfügbar:
+Wenn ein benutzerdefiniertes Kernel erforderlich ist, empfiehlt es sich, eine neuere Kernelversion (d. h. **3.8+**) zu verwenden. Für Verteilungen oder Anbieter, die ihr eigenes Kernel verwalten, ist das Zurückportieren der LIS-Treiber vom Upstream-Kernel zu Ihrem benutzerdefinierten Kernel mit einem gewissen Aufwand verbunden. Selbst wenn Sie bereits eine relativ aktuelle Kernelversion ausführen, wird dringend empfohlen, die Upstream-Fehlerbehebungen in den LIS-Treibern nachzuverfolgen und diese bei Bedarf zurück zu portieren. Der Ort der LIS-Treiberquelldateien ist in der Datei [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) in der Linux-Kernelquellstruktur verfügbar:
 
 	F:	arch/x86/include/asm/mshyperv.h
 	F:	arch/x86/include/uapi/asm/hyperv.h
@@ -164,7 +164,7 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md) (waagent) is
 
 	Weder der Graphical Boot noch der Quiet Boot sind in einer Cloudumgebung nützlich, in der alle Protokolle an den seriellen Port gesendet werden sollen.
 
-	Die Option `crashkernel` kann bei Bedarf konfiguriert bleiben. Beachten Sie jedoch, dass dieser Parameter die Menge an verfügbarem Arbeitsspeicher im virtuellen Computer um 128 MB oder mehr reduziert, was bei kleineren virtuellen Computern problematisch sein kann.
+	Die Option `crashkernel` kann bei Bedarf konfiguriert bleiben. Beachten Sie jedoch, dass dieser Parameter die Menge an verfügbarem Arbeitsspeicher im virtuellen Computer um 128 MB oder mehr reduziert, was bei kleineren virtuellen Computern problematisch sein kann.
 
 - Installieren des Azure Linux Agent
 
@@ -193,6 +193,8 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md) (waagent) is
 		# export HISTSIZE=0
 		# logout
 
+	>[AZURE.NOTE] In Virtualbox wird nach dem Ausführen von „waagent -force -deprovision“ möglicherweise der folgende Fehler angezeigt: `[Errno 5] Input/output error`. Diese Fehlermeldung ist nicht kritisch und kann ignoriert werden.
+
 - Sie müssen den virtuellen Computer anschließend herunterfahren und die virtuelle Festplatte in Azure hochladen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/07/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Konfigurieren von Azure Multi-Factor Authentication
@@ -98,11 +98,9 @@ Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifiziere
 1.	Melden Sie sich bei http://azure.microsoft.com an.
 2.	Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 3.	Wenn im Azure Multi-Factor Authentication-Verwaltungsportal links neben dem Namen Ihres Mandanten oder Azure MFA-Anbieters ein Pluszeichen („+“) angezeigt wird, klicken Sie darauf, um die verschiedenen Replikationsgruppen des MFA-Servers und die Azure Standardgruppe anzuzeigen. Klicken Sie auf die passende Gruppe.
-4.	Klicken Sie unter „Benutzerverwaltung“ auf **Einmalumgehung**.
-![Cloud](./media/multi-factor-authentication-whats-next/create1.png)
+4.	Klicken Sie unter „Benutzerverwaltung“ auf **Einmalumgehung**. ![Cloud](./media/multi-factor-authentication-whats-next/create1.png)
 5.	Klicken Sie auf der Seite „Einmalumgehung“ auf **Neue Einmalumgehung**.
-6.	Geben Sie den Benutzernamen, die Anzahl von Sekunden, für die die Umgehung vorhanden sein soll, und den Grund für die Umgehung ein, und klicken Sie dann auf **Umgehen**.
-![Cloud](./media/multi-factor-authentication-whats-next/create2.png)
+6.	Geben Sie den Benutzernamen, die Anzahl von Sekunden, für die die Umgehung vorhanden sein soll, und den Grund für die Umgehung ein, und klicken Sie dann auf **Umgehen**. ![Cloud](./media/multi-factor-authentication-whats-next/create2.png)
 7.	An diesem Punkt muss sich der Benutzer anmelden, bevor die Einmalumgehung abläuft.
 
 
@@ -136,14 +134,10 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 2.	Melden Sie sich bei http://azure.microsoft.com an.
 3.	Folgen Sie den Anweisungen im oberen Teil dieser Seite, um zum MFA-Verwaltungsportal zu gelangen.
 4.	Klicken Sie im Abschnitt „Konfigurieren“ des Azure Multi-Factor Authentication-Verwaltungsportals auf „Sprachnachrichten“.
-5.	Klicken Sie im Abschnitt „Sprachnachrichten“ auf **Neue Sprachnachricht**.
-![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)
-6.	Klicken Sie auf der Seite „Konfigurieren: Neue Sprachnachrichten“ auf **Audiodateien verwalten**.
-![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)
-7.	Klicken Sie auf der Seite „Konfigurieren: Audiodateien“ auf **Audiodatei hochladen**.
-![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)
-8.	Klicken Sie auf der Seite „Konfigurieren: Audiodatei hochladen“ auf **Durchsuchen**, navigieren Sie zu Ihrer Sprachnachricht, und klicken Sie dann auf **Öffnen**.
-![Cloud](./media/multi-factor-authentication-whats-next/custom4.png)
+5.	Klicken Sie im Abschnitt „Sprachnachrichten“ auf **Neue Sprachnachricht**. ![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)
+6.	Klicken Sie auf der Seite „Konfigurieren: Neue Sprachnachrichten“ auf **Audiodateien verwalten**. ![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)
+7.	Klicken Sie auf der Seite „Konfigurieren: Audiodateien“ auf **Audiodatei hochladen**. ![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)
+8.	Klicken Sie auf der Seite „Konfigurieren: Audiodatei hochladen“ auf **Durchsuchen**, navigieren Sie zu Ihrer Sprachnachricht, und klicken Sie dann auf **Öffnen**. ![Cloud](./media/multi-factor-authentication-whats-next/custom4.png)
 9.	Fügen Sie eine Beschreibung hinzu, und klicken Sie auf "Hochladen".
 10.	Sobald dies abgeschlossen ist, sehen Sie eine Meldung, dass Sie die Datei erfolgreich hochgeladen haben.
 11.	Klicken Sie auf der linken Seite auf "Sprachnachrichten".
@@ -152,8 +146,7 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 14.	Wenn diese Nachricht für eine bestimmte Anwendung gedacht ist, geben Sie dies im Feld "Anwendung" ein.
 15.	Wählen Sie in "Nachrichtentyp" den Nachrichtentyp aus, der von der neuen benutzerdefinierten Nachricht überschrieben wird.
 16.	Wählen Sie aus der Dropdownliste "Audiodatei" Ihre Audiodatei aus.
-17.	Klicken Sie auf **Erstellen**. Es wird eine Meldung angezeigt, die besagt, dass Sie erfolgreich eine Sprachnachricht erstellt haben.
-![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
+17.	Klicken Sie auf **Erstellen**. Es wird eine Meldung angezeigt, die besagt, dass Sie erfolgreich eine Sprachnachricht erstellt haben. ![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 
 
@@ -356,8 +349,7 @@ Da Benutzer jedoch MFA für vertrauenswürdige Geräte speichern können, wird d
 3. Klicken Sie unter „Active Directory“ auf das Verzeichnis, in dem Sie das Speichern der Multi-Factor Authentication für Geräte einrichten möchten.
 4. Klicken Sie im ausgewählten Verzeichnis auf "Konfigurieren".
 5. Klicken Sie im Abschnitt "Multi-Factor Authentication" auf "Diensteinstellungen verwalten".
-6. Aktivieren oder deaktivieren Sie auf der Seite „Diensteinstellungen“ unter „Geräteeinstellungen von Benutzern verwalten“ die Option **Benutzern erlauben, Multi-Factor Authentication auf Geräten zu speichern, denen sie vertrauen**.
-![Speichern von Geräten](./media/multi-factor-authentication-whats-next/remember.png)
+6. Aktivieren oder deaktivieren Sie auf der Seite „Diensteinstellungen“ unter „Geräteeinstellungen von Benutzern verwalten“ die Option **Benutzern erlauben, Multi-Factor Authentication auf Geräten zu speichern, denen sie vertrauen**. ![Speichern von Geräten](./media/multi-factor-authentication-whats-next/remember.png)
 8. Legen Sie die Anzahl von Tagen fest, an denen Sie die Aussetzung zulassen möchten. Der Standardwert ist 14 Tage.
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
@@ -384,4 +376,4 @@ Methode|Beschreibung
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

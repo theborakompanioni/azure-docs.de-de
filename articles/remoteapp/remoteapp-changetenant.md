@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/05/2016"
+    ms.date="05/05/2016"
     ms.author="elizapo" />
 
 
@@ -47,4 +47,4 @@ Wenn Sie einen anderen Mandanten verwenden möchten, führen Sie die folgenden S
 
 Nun können Sie den neuen Azure AD-Mandanten für die Zugriffskontrolle auf das Azure-Abonnement und zum Konfigurieren des Benutzerzugriffs in Azure RemoteApp verwenden.
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

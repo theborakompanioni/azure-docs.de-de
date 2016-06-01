@@ -34,7 +34,7 @@ Hier erfahren Sie, wie Sie eine neue SQL-Datenbank mit PowerShell-Cmdlets erstel
 
 ## Datenbankeinrichtung: Erstellen einer Ressourcengruppe, eines Servers und einer Firewallregel
 
-Nachdem Sie Zugriff auf Cmdlets für Ihr ausgewähltes Azure-Abonnement haben, können Sie im nächsten Schritt die Ressourcengruppe einrichten, die den Server enthält, auf dem die Datenbank erstellt wird. Sie können den nächsten Befehl für einen beliebigen gültigen Speicherort anpassen. Führen Sie **(Get-AzureRmLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** aus, um eine Liste der gültigen Speicherorte abzurufen.
+Nachdem Sie Zugriff auf Cmdlets für Ihr ausgewähltes Azure-Abonnement haben, können Sie im nächsten Schritt die Ressourcengruppe einrichten, die den Server enthält, auf dem die Datenbank erstellt wird. Sie können den nächsten Befehl für einen beliebigen gültigen Speicherort anpassen. Führen Sie **(Get-AzureRmLocation | Where-Object { $\_.Providers -eq "Microsoft.Sql" }).Location** aus, um eine Liste mit den gültigen Speicherorten abzurufen.
 
 Führen Sie den folgenden Befehl aus, um eine neue Ressourcengruppe zu erstellen:
 
@@ -120,4 +120,4 @@ Nachdem Sie eine neue SQL-Datenbank erstellt und grundlegende Datenbankeinrichtu
 
 - [Azure SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Hinzufügen von Pushbenachrichtigungen zu Ihrer universellen Windows Runtime 8.1-App | Azure Mobile Apps"
-	description="Erfahren Sie, wie Sie Azure Mobile App Service-Apps und Azure Notification Hubs verwenden, um Pushbenachrichtigungen an Ihre Windows-App zu senden."
+	pageTitle="Hinzufügen von Pushbenachrichtigungen zu Ihrer App für die universelle Windows-Plattform (UWP) | Azure Mobile Apps"
+	description="Erfahren Sie, wie Sie Azure Mobile App Service-Apps und Azure Notification Hubs verwenden, um Pushbenachrichtigungen an Ihre App für die universelle Windows-Plattform (UWP) zu senden."
 	services="app-service\mobile,notification-hubs"
 	documentationCenter="windows"
 	authors="ggailey777"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/15/2016"
 	ms.author="glenga"/>
 
 # Hinzufügen von Pushbenachrichtigungen zu Ihrer universellen Windows Runtime 8.1-App
@@ -22,18 +22,9 @@
 
 ##Übersicht
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile App Service-Apps und Azure Notification Hubs Pushbenachrichtigungen an eine universelle Windows-Runtime 8.1-App senden. In diesem Szenario sendet das Mobile App-Back-End eine Pushbenachrichtigung an alle Windows-Apps, die beim Windows-Benachrichtigungsdienst (Windows Notification Service, WNS) registriert sind, wenn ein neues Element hinzugefügt wird.
+In diesem Thema erfahren Sie, wie Sie mithilfe von Mobile Apps in Azure App Service und mit Azure Notification Hubs Pushbenachrichtigungen an eine App für die universelle Windows-Plattform (UWP) senden. In diesem Szenario sendet das Mobile App-Back-End eine Pushbenachrichtigung an alle Windows-Apps, die beim Windows-Benachrichtigungsdienst (Windows Notification Service, WNS) registriert sind, wenn ein neues Element hinzugefügt wird.
 
-Dieses Lernprogramm baut auf dem App Service-Schnellstart für mobile Apps auf. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie zunächst das Lernprogramm [Erstellen einer Windows-App](app-service-mobile-windows-store-dotnet-get-started.md) abschließen. Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Pushbenachrichtigungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) (in englischer Sprache).
-
-##Voraussetzungen
-
-Für dieses Lernprogramm benötigen Sie Folgendes:
-
-* Ein aktives [Microsoft Store-Konto](http://go.microsoft.com/fwlink/p/?LinkId=280045)
-* [Visual Studio Community 2013.](https://go.microsoft.com/fwLink/p/?LinkID=391934)
-* Schließen Sie das [Schnellstart-Lernprogramm](app-service-mobile-windows-store-dotnet-get-started.md) ab.
-
+Dieses Tutorial baut auf dem Mobile App-Schnellstart auf. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie zunächst das Lernprogramm [Erstellen einer Windows-App](app-service-mobile-windows-store-dotnet-get-started.md) abschließen. Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Pushbenachrichtigungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) (in englischer Sprache).
 
 ##<a name="create-hub"></a>Erstellen eines Notification Hubs
 
@@ -43,8 +34,23 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 
 Bevor Sie Pushbenachrichtigungen von Azure an Ihre Windows-Apps senden können, müssen Sie Ihre App an den Windows Store übermitteln. Sie können dann das Serverprojekt zur Integration mit dem WNS konfigurieren.
 
-[AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
+1. Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das UWP-App-Projekt, und klicken Sie dann auf **Store** > **App mit Store verknüpfen...** 
 
+    ![Zuordnen der App zu Windows Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    
+2. Klicken Sie im Assistenten auf **Weiter**, melden Sie sich mit Ihrem Microsoft-Konto an, geben Sie unter **App-Namen reservieren** einen Namen für Ihre App ein, und klicken Sie dann auf **Reservieren**.
+
+3. Nachdem die App-Registrierung erfolgreich erstellt wurde, wählen Sie den Namen der neuen App aus, klicken Sie auf **Weiter** und dann auf **Zuordnen**. Auf diese Weise werden die erforderlichen Windows Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
+
+7. Navigieren Sie zum [Windows-Entwicklungscenter](https://dev.windows.com/de-DE/overview), melden Sie sich mit Ihrem Microsoft-Konto an, klicken Sie auf die neue App-Registrierung unter **Meine Apps**, und erweitern Sie dann **Dienste** > **Pushbenachrichtigungen**.
+
+8. Klicken Sie auf der Seite **Pushbenachrichtigungen** auf **Live-Dienste-Website** unter **Microsoft Azure Mobile Services**.
+
+9. Notieren Sie sich den auf der Registrierungsseite unter **Anwendungsgeheimnisse** angezeigten Wert sowie die **Paket-SID**. Sie benötigen diese Daten später beim Konfigurieren des Back-Ends für die mobile App.
+
+	![Zuordnen der App zu Windows Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+
+    > [AZURE.IMPORTANT] Der geheime Clientschlüssel und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung. Die **Anwendungs-ID** wird zusammen mit dem geheimen Schlüssel zum Konfigurieren der Microsoft-Kontoauthentifizierung verwendet.
 
 ##Konfigurieren des Back-Ends zum Senden von Pushbenachrichtigungen
 
@@ -155,7 +161,9 @@ Nachdem die Pushbenachrichtigungen in der App aktiviert wurden, müssen Sie ihr 
 
 ##<a id="update-app"></a>Hinzufügen von Pushbenachrichtigungen zur App
 
-1. Öffnen Sie die freigegebene Projektdatei **App.xaml.cs**, und fügen Sie folgenden `using`-Anweisungen hinzu:
+Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert werden. Wenn Sie die Authentifizierung bereits aktiviert haben, achten Sie darauf, dass sich der Benutzer anmeldet, bevor die Registrierung für Pushbenachrichtigungen ausgeführt wird. Weitere Informationen finden Sie unter [Authenticate first](https://github.com/Azure-Samples/app-service-mobile-windows-quickstart/blob/master/README.md#authenticate-first) (Zuerst Authentifizieren) im vollständigen Schnellstartbeispiel.
+
+1. Öffnen Sie die Projektdatei **App.xaml.cs**, und fügen Sie die folgenden `using`-Anweisungen hinzu:
 
 		using System.Threading.Tasks;
         using Windows.Networking.PushNotifications;
@@ -185,15 +193,7 @@ Nachdem die Pushbenachrichtigungen in der App aktiviert wurden, müssen Sie ihr 
 
     Dadurch wird sichergestellt, dass der kurzlebige ChannelURI-Wert bei jedem Anwendungsstart registriert wird.
 
-    >[AZURE.NOTE] Wenn Sie auch Authentifizierung aktiviert haben, achten Sie darauf, dass der Benutzer sich vor dem Versuch der Registrierung von Pushbenachrichtigungen anmeldet. Weitere Informationen finden Sie unter [Authenticate first](https://github.com/Azure-Samples/app-service-mobile-windows-quickstart/blob/master/README.md#authenticate-first) (Zuerst Authentifizieren) im vollständigen Schnellstartbeispiel.
-
-4. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **Package.appxmanifest** der Windows Store-App, und legen Sie unter **Benachrichtigungen** die Option **Toastfähig** auf **Ja** fest.
-
-    Klicken Sie im Menü **Datei** auf **Alle speichern**.
-
-5. Wiederholen Sie den vorherigen Schritt für das Windows Phone Store-App-Projekt.
-
-Ihre App kann jetzt Popupbenachrichtigungen empfangen.
+4. Erstellen Sie Ihr UWP-App-Projekt erneut. Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
 ##<a id="test"></a>Testen von Pushbenachrichtigungen in der App
 
@@ -213,4 +213,4 @@ Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 <!-- Images. -->
 ))) )
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

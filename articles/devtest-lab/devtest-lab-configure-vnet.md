@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Konfigurieren eines virtuellen Netzwerks für ein DevTest Lab | Microsoft Azure"
-	description="Erfahren Sie, wie Sie ein vorhandenes virtuelles Netzwerk und ein Subnetz konfigurieren und auf einem virtuellen Computer verwenden."
+	pageTitle="Konfigurieren eines virtuellen Netzwerks für ein Lab | Microsoft Azure"
+	description="Erfahren Sie, wie Sie mit DevTest Labs ein vorhandenes virtuelles Netzwerk und ein Subnetz konfigurieren und auf einem virtuellen Computer verwenden."
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# Konfigurieren eines virtuellen Netzwerks für ein DevTest Lab
+# Konfigurieren eines virtuellen Netzwerks für ein Lab
 
 ## Übersicht
 
-Wie im Artikel [Hinzufügen einer VM mit Artefakten zu einem Azure DevTest Lab](devtest-lab-add-vm-with-artifacts.md) erläutert, können Sie beim Erstellen eines virtuellen Computers in einem Lab ein konfiguriertes virtuelles Netzwerk (und ein Subnetz) für diesen virtuellen Computer angeben. Ein Szenario hierfür wäre, wenn Sie von Ihren virtuellen Computern aus auf Ihre Unternehmensnetzwerkressourcen zugreifen möchten, und zwar über das virtuelle Netzwerk, das mit ExpressRoute oder Standort-zu-Standort-VPN eingerichtet wurde. In den folgenden Abschnitten wird veranschaulicht, wie Sie Ihr vorhandenes virtuelles Netzwerk den Virtual Network-Einstellungen hinzufügen, sodass es beim Erstellen Ihrer virtuellen Computer zur Auswahl steht.
+Wie im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md) erläutert, können Sie beim Erstellen eines virtuellen Computers in einem Lab ein konfiguriertes virtuelles Netzwerk (und ein Subnetz) für diesen virtuellen Computer angeben. Ein Szenario hierfür wäre, wenn Sie von Ihren virtuellen Computern aus auf Ihre Unternehmensnetzwerkressourcen zugreifen möchten, und zwar über das virtuelle Netzwerk, das mit ExpressRoute oder Standort-zu-Standort-VPN eingerichtet wurde. In den folgenden Abschnitten wird veranschaulicht, wie Sie Ihr vorhandenes virtuelles Netzwerk den Virtual Network-Einstellungen hinzufügen, sodass es beim Erstellen Ihrer virtuellen Computer zur Auswahl steht.
 
-## Konfigurieren eines virtuellen Netzwerks für ein DevTest Lab über das Azure-Portal
-Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtuellen Netzwerks (und Subnetzes) zu einem DevTest Lab, sodass es beim Erstellen eines virtuellen Computers in dem gleichen Labor verwendet werden kann.
+## Konfigurieren eines virtuellen Netzwerks für ein Lab über das Azure-Portal
+Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtuellen Netzwerks (und Subnetzes) zu einem Lab, sodass es beim Erstellen eines virtuellen Computers in dem gleichen Lab verwendet werden kann.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
 
@@ -63,10 +63,10 @@ Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtu
 
 1. Tippen Sie auf **Speichern**.
 
-1. Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines neuen virtuellen Computers ausgewählt werden. Dies wird im Artikel [Hinzufügen einer VM mit Artefakten zu einem Azure DevTest Lab](devtest-lab-add-vm-with-artifacts.md) erläutert.
+1. Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines neuen virtuellen Computers ausgewählt werden. Dies wird im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md) erläutert.
 
 ## Nächste Schritte
 
-Nachdem Sie Ihrem Lab die gewünschten virtuellen Netzwerke hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem DevTest Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
+Nachdem Sie Ihrem Lab die gewünschten virtuellen Netzwerke hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
 
@@ -31,7 +31,7 @@ Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Az
 
 > [AZURE.NOTE] In Ihrer PHP-Installation muss außerdem die [OpenSSL-Erweiterung](http://php.net/openssl) installiert und aktiviert sein.
 
-In diesem Artikel verwenden Sie Dienstfunktionen, die lokal innerhalb einer PHP-Anwendung oder im Code, der innerhalb einer Azure-Webrolle, -Workerrolle oder -Website ausgeführt wird, aufgerufen werden können.
+In diesem Artikel wird beschrieben, wie Sie die Dienstfunktionen verwenden, die sowohl lokal in einer PHP-Anwendung aufgerufen werden können als auch als Code in einer Azure-Webrolle, -Workerrolle oder als Website
 
 ## Abrufen der Azure-Clientbibliotheken
 
@@ -234,7 +234,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB (der Header, der die standardmäßigen und die benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben). Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Obergrenze für die Warteschlangengröße beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Azure-Warteschlangen und Service Bus-Warteschlangen][].
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB (der Header, der die standardmäßigen und die benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben). Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Obergrenze für die Warteschlangengröße beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][].
 
 ## Empfangen von Nachrichten aus einem Abonnement
 
@@ -336,6 +336,6 @@ Nachdem Sie mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, fin
 [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
 [sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [require-once]: http://php.net/require_once
-[Azure-Warteschlangen und Service Bus-Warteschlangen]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
+[Service Bus-Kontingente]: service-bus-quotas.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

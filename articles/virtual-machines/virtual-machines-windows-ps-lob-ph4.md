@@ -11,13 +11,13 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
-# Branchenanwendungs-Workload, Phase 4: Konfigurieren der Webserver
+# Branchenanwendungs-Workload, Phase 4: Konfigurieren der Webserver
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
 
@@ -27,21 +27,21 @@ Diese Phase muss vor Beginn von [Phase 5](virtual-machines-windows-ps-lob-ph5.md
 
 ## Erstellen der virtuellen Computer für die Webserver in Azure
 
-Es gibt zwei virtuelle Computer, die als Webserver fungieren. Auf diesen können Sie ASP.NET-Anwendungen oder ältere Anwendungen bereitstellen, die von IIS 8 (Internetinformationsdienste) in Windows Server 2012 R2 gehostet werden können.
+Es gibt zwei virtuelle Computer, die als Webserver fungieren. Auf diesen können Sie ASP.NET-Anwendungen oder ältere Anwendungen bereitstellen, die von IIS 8 (Internetinformationsdienste) in Windows Server 2012 R2 gehostet werden können.
 
 Zunächst konfigurieren Sie den internen Lastenausgleich, sodass Azure den Clientdatenverkehr an die Branchenanwendung gleichmäßig auf die zwei Webserver verteilt. Dazu müssen Sie eine interne Lastenausgleichsinstanz konfigurieren, die aus einem Namen und einer eigenen IP-Adresse aus dem Adressraum des Subnetzes besteht, das Sie Ihrem virtuellen Azure-Netzwerk zugewiesen haben.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Geben Sie die Werte für die Variablen ein, lassen Sie dabei aber die < and >-Zeichen weg. Die Werte für die folgenden Azure PowerShell-Befehlssätze entnehmen Sie den folgenden Tabellen:
 
 - Tabelle M für Ihre virtuellen Computer
 - Tabelle V für die Einstellungen Ihres virtuellen Netzwerks
 - Tabelle S für Ihr Subnetz
-- Tabelle ST für Ihre Speicherkonten
+- Tabelle ST für Ihre Speicherkonten
 - Tabelle A für Ihre Verfügbarkeitsgruppen
 
-Die Tabelle M haben Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md), die Tabellen V, S, ST und A haben Sie in [Phase 1](virtual-machines-windows-ps-lob-ph1.md) ausgefüllt.
+Die Tabelle M haben Sie in [Phase 2](virtual-machines-windows-ps-lob-ph2.md), die Tabellen V, S, ST und A haben Sie in [Phase 1](virtual-machines-windows-ps-lob-ph1.md) ausgefüllt.
 
 Führen Sie nach der Bereitstellung der richtigen Werte den daraus resultierenden Befehlsblock an der Azure-PowerShell-Eingabeaufforderung aus.
 
@@ -149,6 +149,6 @@ In diesem Diagramm sehen Sie die nach erfolgreichem Abschluss dieser Phase erste
 
 ## Nächster Schritt
 
-- Zum Abschließen der Konfiguration dieser Workload wechseln Sie zu [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
+- Zum Abschließen der Konfiguration dieser Workload wechseln Sie zu [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

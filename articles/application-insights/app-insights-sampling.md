@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="05/07/2016" 
 	ms.author="awills"/>
 
 #  Erstellen von Stichproben in Application Insights
@@ -24,11 +24,23 @@ Das Erstellen von Stichproben ist ein Feature in Application Insights, mit der S
 
 Für das Erstellen von Stichproben ist gegenwärtig die Betaversion verfügbar. Für die Zukunft ist eine Überarbeitung dieser Version geplant.
 
+## Kurz gesagt:
+
+* Bei der Stichprobenerstellung wird ein Datensatz von *n* Datensätzen beibehalten, und der Rest wird verworfen. Beispielsweise wird eines von fünf Ereignissen beibehalten – das ergibt einen Stichproben-Prozentsatz von 20%.
+* Die Stichprobenerstellung wird automatisch durchgeführt, wenn Ihre Anwendung sehr viele Telemetriedaten sendet. Die automatische Stichprobenerstellung wird nur bei hohem Datenvolumen und nur bei ASP.NET-Webserver-Apps wirksam.
+* Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Preisübersichtsseite auf dem Portal (um die Menge der beibehaltenen Telemetriedaten festzulegen und dadurch das monatliche Kontingent einzuhalten), oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK, um den Netzwerkdatenverkehr zu reduzieren.
+* Der aktuelle Stichproben-Prozentsatz ist eine Eigenschaft des jeweiligen Datensatzes. Öffnen Sie im Suchfenster ein Ereignis, z.B. eine Anforderung. Erweitern Sie den Eintrag mit den Auslassungspunkten „...“ zum Anzeigen aller Eigenschaften, suchen Sie die Eigenschaft „* count“ (z.B. „request count“ oder „event count“, je nach Art der Telemetrie). Wenn hier ein Wert größer als 1 angezeigt wird, werden Stichproben erstellt. Eine Anzahl von 3 würde bedeuten, dass der Stichproben-Prozentsatz 33% beträgt: Jeder beibehaltene Datensatz steht für 3 ursprünglich generierte Datensätze.
+* Wenn Sie benutzerdefinierte Ereignisse protokollieren und sicherstellen möchten, dass ein Satz von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen Sie sicherstellen, dass alle Einzelereignisse den gleichen Wert für „OperationId“ haben.
+* Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](app-insights-analytics-tour.md#counting-sampled-data). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)` verwenden.
+
+
+## Arten der Stichprobenerstellung
+
 Es gibt drei alternative Methoden zur Stichprobenerstellung:
 
 * **Adaptive Stichprobenerstellung**: Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Standardmäßig ist dies SDK-Version 2.0.0-beta3.
-* **Stichprobenerstellung mit festem Prozentsatz**: Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET-Server und von den Benutzerbrowsern gesendet wird. Sie legen die Rate fest.
-* **Erfassungs-Stichprobenerstellung**: Verringert die Menge an Telemetriedaten, die vom Application Insights-Dienst beibehalten werden, nach einer von Ihnen festgelegten Rate. Obwohl dies nicht den Telemetriedatenverkehr verringert, werden Sie dabei unterstützt, Ihr monatliches Kontingent einzuhalten. 
+* **Stichprobenerstellung mit festem Prozentsatz**: Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET-Server und von den Benutzerbrowsern gesendet wird. Sie legen den Prozentsatz fest.
+* **Erfassungs-Stichprobenerstellung**: Verringert die Menge an Telemetriedaten, die vom Application Insights-Dienst beibehalten werden, nach einem von Ihnen festgelegten Prozentsatz. Obwohl dies nicht den Telemetriedatenverkehr verringert, werden Sie dabei unterstützt, Ihr monatliches Kontingent einzuhalten. 
 
 ## Erfassungs-Stichprobenerstellung
 
@@ -36,13 +48,15 @@ Diese Form der Stichprobenerstellung arbeitet an dem Punkt, an dem die Telemetri
 
 Verwenden Sie diese Art der Stichprobenerstellung, wenn Ihre App häufig das monatliche Kontingent überschreitet und Sie keine der SDK-basierten Formen der Stichprobenerstellung verwenden können.
 
-Legen Sie die Rate für die Stichprobenerstellung auf dem Blatt „Kontingente und Preise“ fest:
+Legen Sie den Prozentsatz bzw. die Rate für die Stichprobenerstellung auf dem Blatt „Kontingente und Preise“ fest:
 
 ![Klicken Sie auf dem Blatt zur Anwendungsübersicht auf „Einstellungen“ > „Kontingent“ > „Stichproben“. Wählen Sie anschließend eine Stichprobenrate aus, und klicken Sie auf „Aktualisieren“.](./media/app-insights-sampling/04.png)
 
 Wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorithmus zugehörige Telemetrieelemente bei. So sind Sie beispielsweise in der Lage, in Search die zu einer bestimmten Ausnahme gehörende Anforderung in den Telemetriedaten zu ermitteln. Metrikwerte wie z. B. die Anforderungs- und Ausnahmerate werden korrekt beibehalten.
 
-Das Erfassungssampling wird nicht ausgeführt, während SDK-basiertes Sampling mit adaptiver oder fester Rate ausgeführt wird. Wenn die Samplingrate im SDK unter 100 % liegt, wird die von Ihnen eingestellte Samplingrate für die Erfassung ignoriert.
+Datenpunkte, die bei der Stichprobenerstellung verworfen werden, stehen in keinem Application Insights-Feature zur Verfügung, auch nicht in [Fortlaufender Export](app-insights-export-telemetry.md).
+
+Die Erfassungs-Stichprobenerstellung wird nicht ausgeführt, wenn gleichzeitig eine SDK-basierte Stichprobenerstellung mit adaptivem oder festem Prozentsatz ausgeführt wird. Wenn der Stichproben-Prozentsatz im SDK unter 100% liegt, wird der von Ihnen eingestellte Stichproben-Prozentsatz für die Erfassung ignoriert.
 
 
 ## Adaptive Stichprobenerstellung auf Ihrem Webserver
@@ -74,7 +88,7 @@ In [ApplicationInsights.config](app-insights-configuration-with-applicationinsig
 
     Gibt an, nach welchem Zeitraum der Stichproben-Prozentsatz verringert werden darf, um weniger Daten zu erfassen, wenn sich der Wert für den Stichproben-Prozentsatz geändert hat.
 
-* `<SamplingPercentageIncreaseTimeout>00:15:00</SamplingPercentageDecreaseTimeout>`
+* `<SamplingPercentageIncreaseTimeout>00:15:00</SamplingPercentageIncreaseTimeout>`
 
     Gibt an, nach welchem Zeitraum der Stichproben-Prozentsatz erhöht werden darf, um mehr Daten zu erfassen, wenn sich der Wert für den Stichproben-Prozentsatz geändert hat.
 
@@ -96,7 +110,7 @@ In [ApplicationInsights.config](app-insights-configuration-with-applicationinsig
 
 ### Alternative: Konfigurieren der adaptiven Stichprobenerstellung in Code
 
-Anstatt die Stichproben in der config-Datei anzupassen, können Sie Code verwenden. Dadurch können Sie eine Rückruffunktion angeben, die aufgerufen wird, wenn die Abtastrate neu ausgewertet wird. Z. B. können Sie herausfinden, welche Samplingrate verwendet wird.
+Anstatt die Stichproben in der config-Datei anzupassen, können Sie Code verwenden. Dadurch können Sie eine Rückruffunktion angeben, die aufgerufen wird, wenn die Stichprobenrate neu ausgewertet wird. Zum Beispiel können Sie herausfinden, welcher Stichproben-Prozentsatz verwendet wird.
 
 Entfernen Sie den `AdaptiveSamplingTelemetryProcessor`-Knoten aus der .config-Datei.
 
@@ -242,6 +256,7 @@ Anstatt den Stichprobenerstellungsparameter in der config-Datei festzulegen, kö
 
 ([Informieren Sie sich über Telemetrieprozessoren](app-insights-api-filtering-sampling.md#filtering).)
 
+
 ## Wann sollten Sie die Stichprobenerstellung nutzen?
 
 Die adaptive Stichprobenerstellung ist automatisch aktiviert, wenn Sie das ASP.NET-SDK ab Version 2.0.0-beta3 verwenden. Die Erfassungs-Stichprobenerstellung kann unabhängig von der verwendeten SDK-Version (auf unserem Server) verwendet werden.
@@ -315,9 +330,7 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
  * Ja, bei der adaptiven Stichprobenerstellung wird der Stichproben-Prozentsatz langsam auf Basis des aktuell beobachteten Telemetrievolumens verändert.
 
-*Kann ich den Stichproben-Prozentsatz bei der adaptiven Stichprobenerstellung ermitteln?*
-
- * Ja – Verwenden Sie die Codemethode zum Konfigurieren der adaptiven Stichprobenerstellung, und Sie können einen Rückruf bereitstellen, der die Abtastrate abruft. Wenn Sie fortlaufenden Export verwenden, wird die Samplingrate in den exportierten Datenpunkten aufgeführt.
+ 
 
 *Wie kann ich bei einer Stichprobenerstellung mit festem Prozentsatz für meine App den idealen Prozentsatz ermitteln?*
 
@@ -343,4 +356,4 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
  * Initialisieren Sie eine separate Instanz von TelemetryClient mit einer neuen TelemetryConfiguration (nicht die standardmäßig aktivierte). Verwenden Sie diese zum Senden der seltenen Ereignisse.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

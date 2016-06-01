@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
@@ -167,7 +167,7 @@ Für Data Lake Analytics wird die rollenbasierte Zugriffssteuerung mit Azure Act
 |Mitwirkender|Sie können auf das Portal zugreifen und Aufträge senden und überwachen. Zum Senden von Aufträgen benötigt ein Mitwirkender auch die Lese- oder Schreibberechtigung für die Data Lake-Speicherkonten.|
 |DataLakeAnalyticsDeveloper | Benutzer können Aufträge senden und alle Aufträge überwachen, aber sie können nur eigene Aufträge abbrechen. Sie können beispielsweise nicht ihr eigenes Konto verwalten, keine Benutzer hinzufügen, keine Berechtigungen ändern und das Konto nicht löschen. Um Aufträge ausführen zu können, benötigen sie Lese- oder Schreibzugriff auf die Data Lake-Speicherkonten. | 
 |Leser|Sie können alles anzeigen, aber keine Änderungen vornehmen.|  
-|DevTest Lab-Benutzer|Sie können alles anzeigen und virtuelle Computer verbinden, starten, neu starten und herunterfahren.|  
+|DevTest Labs-Benutzer|Sie können alles anzeigen und virtuelle Computer verbinden, starten, neu starten und herunterfahren.|  
 |Benutzerzugriffsadministrator|Ermöglicht Ihnen die Verwaltung von Benutzerzugriffen auf Azure-Ressourcen.|  
 
 Informationen zum Erstellen von Azure Active Directory-Benutzern und -Sicherheitsgruppen finden Sie unter [Was ist Azure Active Directory?](../active-directory/active-directory-whatis.md)
@@ -293,4 +293,4 @@ Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen si
 - [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

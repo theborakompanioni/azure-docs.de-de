@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -20,7 +20,7 @@
 
 # Anleitungen zum Caching
 
-![Leitfadenlogo](media/best-practices-caching/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 Zwischenspeichern ist eine gängige Methode zur Verbesserung der Leistung und Skalierbarkeit eines Systems. Dies geschieht durch vorübergehendes Kopieren häufig verwendeter Daten in einen schnellen Speicher, der sich in der Nähe der Anwendung befindet. Wenn sich dieser schnelle Datenspeicher näher an der Anwendung befindet als die ursprüngliche Datenquelle, kann Zwischenspeichern die Antwortzeiten für Clientanwendungen erheblich verbessern und die Daten schneller bereitstellen.
 
@@ -934,4 +934,4 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 - Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 - Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="bradsev" />
 
 # Einrichten von Data Science-Umgebungen für die Verwendung im Cortana-Analyseprozess
@@ -27,4 +27,4 @@ Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

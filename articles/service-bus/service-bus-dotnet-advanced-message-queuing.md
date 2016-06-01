@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="sethmanheim" 
 	manager="timlt" 
-	editor="tysonn"/>
+	editor=""/>
 
 <tags 
 	ms.service="service-bus" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
 # Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus
@@ -40,7 +40,7 @@ In der aktuellen Version gibt es ein paar API-Features, die bei Verwendung von A
 
 ### Konfigurieren über "App.config"
 
-Es ist empfehlenswert, für Anwendungen die Konfigurationsdatei "App.config" zu verwenden, um die Einstellungen zu speichern. Bei Service Bus-Anwendungen können Sie die Datei "App.config" verwenden, um die Service Bus-Verbindungszeichenfolge (**ConnectionString**) zu speichern. Diese Beispielanwendung verwendet auch "App.config", um den Name der Servicebus-Nachrichtenentität zu speichern, den sie verwendet.
+Es wird empfohlen, dass Anwendungen für die Speicherung von Einstellungen die Konfigurationsdatei „App.config“ verwenden. Bei Service Bus-Anwendungen können Sie die Datei "App.config" verwenden, um die Service Bus-Verbindungszeichenfolge (**ConnectionString**) zu speichern. Diese Beispielanwendung verwendet auch "App.config", um den Name der Servicebus-Nachrichtenentität zu speichern, den sie verwendet.
 
 Nachfolgend ist eine beispielhafte "App.config"-Datei dargestellt:
 
@@ -306,11 +306,11 @@ Die folgenden Funktionen der .NET-Servicebus-API werden bei der Verwendung von A
 * Verlängern der Sitzungssperre
 * Einige geringfügige Unterschiede bezüglich des Verhaltens
 
-Weitere Informationen finden Sie im in der [Übersicht über Service Bus mit AMQP](service-bus-amqp-dotnet.md). Dieses Thema enthält eine detaillierte Liste mit nicht unterstützten APIs.
+Weitere Informationen finden Sie im in der [Übersicht über Service Bus mit AMQP](service-bus-amqp-dotnet.md). Dieser Artikel enthält eine detaillierte Liste der nicht unterstützten APIs.
 
 ## Zusammenfassung
 
-In diesem Thema wurde gezeigt, wie Sie auf die Brokermessagingfunktionen (Warteschlangen und Veröffentlichen/Abonnieren) für Service Bus aus .NET mithilfe von AMQP 1.0 und der .NET-API für Service Bus zugreifen.
+In diesem Artikel wurde gezeigt, wie Sie mithilfe von AMQP 1.0 und der .NET-API für Service Bus von .NET aus auf die Brokermessagingfunktionen für Service Bus (Warteschlangen und Themen veröffentlichen/abonnieren) zugreifen.
 
 Sie können Servicebus AMQP 1.0 auch in anderen Sprachen verwenden, einschließlich Java, C, Python und PHP. Komponenten, die mit diesen Sprachen geschrieben wurden, können mit AMQP 1.0 in Service Bus Nachrichten zuverlässig und bei voller Vertraulichkeit austauschen. Weitere Informationen finden Sie im in der [Übersicht über Service Bus mit AMQP](service-bus-amqp-dotnet.md).
 
@@ -322,6 +322,6 @@ Nachdem Sie sich einen Überblick über Service Bus und AMQP mit .NET verschafft
 * [Verwenden der JMS-Programmierschnittstelle (Java Message Service) mit Service Bus & AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
  
-[klassischen Azure-Portal]: http://manage.windowsazure.com
+[klassischen Azure-Portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->
