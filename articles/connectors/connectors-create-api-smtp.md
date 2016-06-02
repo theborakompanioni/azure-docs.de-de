@@ -58,7 +58,8 @@ Nachdem Sie eine Verbindung hergestellt haben, geben Sie die SMTP-Eigenschaften,
 Gilt für Version: 1.0.
 
 ### E-Mail senden
-Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
+Sendet eine E-Mail an einen oder mehrere Empfänger.  
+```POST: /SendEmail```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -70,8 +71,7 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 
 | Name | Datentyp | Erforderlich|
 |---|---|---|
-|To  
-|string|no|
+|To|string|no|
 |CC|string|no|
 |Betreff|string|no|
 |Body|string|no|
@@ -97,3 +97,4 @@ Sendet eine E-Mail an einen oder mehrere Empfänger. ```POST: /SendEmail```
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 <!---HONumber=AcomDC_0518_2016-->
+

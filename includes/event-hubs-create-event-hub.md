@@ -2,7 +2,7 @@
 
 1. Melden Sie sich beim [klassischen Azure-Portal][] an, und klicken Sie im unteren Teil des Bildschirms auf **NEU**.
 
-2. Klicken Sie auf **App Services**, **Service Bus**,** Event Hub** und auf **Schnellerfassung**.
+2. Klicken Sie auf **App Services**, **Service Bus**,**Event Hub** und auf **Schnellerfassung**.
 
 	![][1]
 
@@ -24,3 +24,5 @@ Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Em
 [2]: ./media/event-hubs-create-event-hub/create-event-hub2.png
 [3]: ./media/event-hubs-create-event-hub/create-event-hub3.png
 [4]: ./media/event-hubs-create-event-hub/create-conn-str1.png
+
+
