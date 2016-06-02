@@ -20,9 +20,11 @@ So erstellen Sie einen Namespace
 
 2.  Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
 
-3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**. ![][0]
+3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**.
+    ![][0]
 
-4.  Geben Sie im Dialogfeld **Add a new namespace** einen Namen für den Namespace ein. Das System prüft sofort, ob dieser Name verfügbar ist.![][2]
+4.  Geben Sie im Dialogfeld **Add a new namespace** einen Namen für den Namespace ein. Das System prüft sofort, ob dieser Name verfügbar ist.
+    ![][2]
 
 5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der Sie Ihre Rechnerressourcen bereitstellen.)
 
@@ -39,11 +41,14 @@ Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung eines T
 
 ### So rufen Sie die Anmeldeinformationen im Verwaltungsportal ab
 
-1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste der verfügbaren Namespaces anzuzeigen: ![][0]
+1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste der verfügbaren Namespaces anzuzeigen:
+    ![][0]
 
-2.  Klicken Sie in der angezeigten Liste auf den Namespace, den Sie gerade erstellt haben: ![][3]
+2.  Klicken Sie in der angezeigten Liste auf den Namespace, den Sie gerade erstellt haben:
+    ![][3]
 
-3.  Klicken Sie auf **Konfigurieren**, um die Richtlinien für den gemeinsamen Zugriff auf Ihren Namespace anzuzeigen. ![](./media/service-bus-java-how-to-create-topic/sb-queues-14.png)
+3.  Klicken Sie auf **Konfigurieren**, um die Richtlinien für den gemeinsamen Zugriff auf Ihren Namespace anzuzeigen.
+	![](./media/service-bus-java-how-to-create-topic/sb-queues-14.png)
 
 4.  Notieren Sie den Primärschlüssel oder kopieren Sie ihn in die Zwischenablage.
 
@@ -56,3 +61,6 @@ Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung eines T
 
   [6]: ./media/service-bus-java-how-to-create-topic/getting-started-multi-tier-27.png
   [34]: ./media/service-bus-java-how-to-create-topic/VSProperties.png
+
+
+
