@@ -21,9 +21,9 @@ Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag v
 
 #### Platzhalter-Ressourceneintragssätze
 
-Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einer Datensatzgruppe ohne Platzhalter). Datensatzgruppen mit Platzhaltern werden für alle Datensatztypen mit Ausnahme von NS und SOA unterstützt.  
+Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einer Datensatzgruppe ohne Platzhalter). Datensatzgruppen mit Platzhaltern werden für alle Datensatztypen mit Ausnahme von NS und SOA unterstützt.
 
-Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „\*“ oder einen Namen, dessen Bezeichnung mit „\*“ beginnt, z. B. „\*.foo“.
+Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „ * “ oder einen Namen, dessen Bezeichnung mit „ * “ beginnt, z. B. „*.foo“.
 
 #### CNAME-Ressourceneintragssätze
 

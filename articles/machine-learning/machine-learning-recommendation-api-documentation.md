@@ -93,7 +93,10 @@ Es wird eine Anforderung „Modell erstellen“ erstellt.
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
-|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 | | apiVersion | 1.0 | ||| | Anforderungstext | NONE |
+|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 |
+| apiVersion | 1.0 |
+|||
+| Anforderungstext | NONE |
 
 
 **Antwort**:
