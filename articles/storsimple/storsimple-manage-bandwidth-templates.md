@@ -64,9 +64,9 @@ Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu erstellen.
    3. Wählen Sie in der Dropdownliste eine **Startzeit** aus. Dies liegt den Beginn des Zeitplans fest.
    4. Wählen Sie in der Dropdownliste eine **Endzeit** aus. Dies liegt das Ende des Zeitplans fest.
 
-         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
+         > [AZURE.NOTE] Überlappende Zeitpläne sind nicht erlaubt. Falls durch die Start- und Endzeiten ein überlappender Zeitplan entsteht, erhalten Sie eine entsprechende Fehlermeldung.
 
-   5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen (Uploads und Downloads) verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
+   5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
 
    6. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). Die Vorlage, die Sie erstellt haben, wird der Liste der Bandbreitenvorlagen auf der Seite **Konfigurieren** des Diensts hinzugefügt.
 

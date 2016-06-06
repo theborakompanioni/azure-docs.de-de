@@ -95,7 +95,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
 	2. Geben Sie einen **Namen** für die Data Factory ein.
 	3. Wählen Sie das **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
 	4. Wählen Sie die **Ressourcengruppe** für die Data Factory aus.
-	5. Wählen Sie **USA, Westen**, ** USA, Osten** oder **Europa, Norden** als **Region** aus.
+	5. Wählen Sie **USA, Westen**, **USA, Osten** oder **Europa, Norden** als **Region** aus.
 	6. Klicken Sie auf **Weiter**. 
 9. Geben Sie auf der Seite **Configure data stores** (Datenspeicher konfigurieren) eine vorhandene **Azure SQL-Datenbank** und ein **Azure-Speicherkonto** an (oder erstellen Sie diese neu), und klicken Sie anschließend auf „Weiter“. 
 10. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**. 

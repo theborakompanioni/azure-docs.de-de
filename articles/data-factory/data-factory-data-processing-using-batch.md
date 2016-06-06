@@ -539,7 +539,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     2.  Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
 
-    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**. ** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**. **Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
     4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
     

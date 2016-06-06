@@ -39,7 +39,7 @@ mscrl.microsoft.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlis
 *.verisign.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen.
 *.entrust.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) für MFA herunterzuladen.
 *.windows.net | HTTPS/443 | Wird für die Anmeldung bei Azure AD verwendet.
-secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
+*.secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
 *.microsoftonline.com | HTTPS/443 | Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet.
 
 ## Fehler im Assistenten
@@ -54,7 +54,7 @@ Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kan
 - Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity), um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
 
 ### Der MFA-Endpunkt ist nicht erreichbar
-Dieser Fehler wird angezeigt, wenn der Endpunkt ****https://secure.aadcdn.microsoftonline-p.com** nicht erreicht werden kann und der globale Administrator MFA aktiviert hat. ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsoftonline-p.com** nicht erreicht werden kann und der globale Administrator MFA aktiviert hat. ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - Wenn diese Meldung angezeigt wird, stellen Sie sicher, dass dem Proxy der Endpunkt „secure.aadcdn.microsoftonline-p.com“ hinzugefügt wurde.
 

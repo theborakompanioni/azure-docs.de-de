@@ -37,7 +37,7 @@ Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Inf
 Die folgenden wichtigen Verbesserungen wurden mit Update 2.1 durchgeführt.
 
  
-- **Optimierte automatisierte Speicherplatzrückgewinnung ** – Wenn Daten auf bedarfsabhängigen, bereitgestellten Volumes gelöscht werden, müssen die nicht verwendeten Speicherblöcke zurückgewonnen werden. In dieser Version wurde der Prozess zur Speicherplatzrückgewinnung in der Cloud verbessert, was dazu führt, dass nicht genutzter Speicherplatz im Vergleich mit den vorherigen Versionen schneller wieder verfügbar ist.
+- **Optimierte automatisierte Speicherplatzrückgewinnung** – Wenn Daten auf bedarfsabhängigen, bereitgestellten Volumes gelöscht werden, müssen die nicht verwendeten Speicherblöcke zurückgewonnen werden. In dieser Version wurde der Prozess zur Speicherplatzrückgewinnung in der Cloud verbessert, was dazu führt, dass nicht genutzter Speicherplatz im Vergleich mit den vorherigen Versionen schneller wieder verfügbar ist.
 
 
 - **Leistungssteigerungen der Momentaufnahme** – Update 2.1 hat die Verarbeitungsdauer einer Cloudmomentaufnahme in bestimmten Szenarien verbessert, in denen große Datenmengen verwendet werden und es nur geringe bis keine Datenänderungen gibt. Ein Szenario, das von dieser Erweiterung profitieren würde, wären die Archiv-Volumes.
