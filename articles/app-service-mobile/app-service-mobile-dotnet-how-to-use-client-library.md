@@ -78,6 +78,7 @@ Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datens�
 * [Löschen von Daten](#deleting)
 * [Lösung von Konflikten und optimistische Parallelität](#optimisticconcurrency)
 * [Binden an eine Windows-Benutzeroberfläche](#binding)
+* [Ändern der Seitengröße](#pagesize)
 
 ###<a name="instantiating"></a>Erstellen von Tabellenverweisen
 
@@ -148,7 +149,7 @@ Diese Abfrage kann auch in mehrere Klauseln aufgeteilt werden:
 
 Beide Methoden sind äquivalent und können frei austauschbar verwendet werden. Die erste Option – Verketten mehrerer Prädikate in einer Abfrage – ist kompakter und deshalb empfehlenswert.
 
-Die `Where`-Klausel unterstützt Vorgänge, die in die OData-Teilmenge übersetzt werden können. Dazu gehören relationale Operatoren (==, !=, <, <=, >, >=), arithmetische Operatoren (+, -, /, *, %), Zahlengenauigkeit (Math.Floor, Math.Ceiling), Zeichenfolgenfunktionen (Length, Substring, Replace, IndexOf, StartsWith, EndsWith), Datumseigenschaften (Year, Month, Day, Hour, Minute, Second), Zugriffseigenschaften von Objekten und Ausdrücke mit Kombinationen dieser Typen. Wenn Sie überlegen, was das Server-SDK unterstützt, können Sie die [OData v3-Dokumentation] berücksichtigen.
+Die `Where`-Klausel unterstützt Vorgänge, die in die OData-Teilmenge übersetzt werden können. Dazu gehören relationale Operatoren (==, !=, <, <=, >, >=), arithmetische Operatoren (+, -, /, *, %), Zahlengenauigkeit (Math.Floor, Math.Ceiling), Zeichenfolgenfunktionen (Length, Substring, Replace, IndexOf, StartsWith, EndsWith), Datumseigenschaften (Year, Month, Day, Hour, Minute, Second), Zugriffseigenschaften von Objekten und Ausdrücke mit Kombinationen dieser Typen. Wenn Sie wissen möchten, was das Server-SDK unterstützt, lesen Sie die [OData v3-Dokumentation].
 
 ###<a name="sorting"></a>Gewusst wie: Sortieren zurückgegebener Daten
 
@@ -234,7 +235,7 @@ Sie erhalten JSON-Werte zurück, die Sie wie einen Eigenschaftenbehälter verwen
 
 ### <a name="inserting"></a>Einfügen von Daten in ein Mobile App-Back-End
 
-Alle Clienttypen müssen einen Member mit dem Namen **Id** enthalten. Dies ist standardmäßig eine Zeichenfolge. Diese **Id** ist für die Durchführung von CRUD-Vorgängen und den Offlinezustand erforderlich. Der folgende Code zeigt, wie Sie mit der Methode [InsertAsync] neue Zeilen in eine Tabelle einfügen können. Der Parameter enthält die einzufügenden Daten als .NET-Objekt.
+Alle Clienttypen müssen einen Member mit dem Namen **Id** enthalten. Dies ist standardmäßig eine Zeichenfolge. Diese **Id** ist für die Durchführung von CRUD-Vorgängen und den Offlinezustand erforderlich. Der folgende Code zeigt, wie Sie mit der [InsertAsync]-Methode neue Zeilen in eine Tabelle einfügen. Der Parameter enthält die einzufügenden Daten als .NET-Objekt.
 
 	await todoTable.InsertAsync(todoItem);
 
@@ -265,14 +266,14 @@ Zeichenfolgen-IDs bieten Ihnen die folgenden Vorteile:
 * Datensätze aus unterschiedlichen Tabellen oder Datenbanken lassen sich leichter zusammenführen.
 * ID-Werte lassen sich möglicherweise leichter in die Anwendungslogik integrieren.
 
-Wenn der ID-Wert einer Zeichenfolge für keine eingefügten Datensätze festgelegt ist, generiert das Mobile App-Back-End einen eindeutigen Wert für die ID. Sie können die Methode [Guid.NewGuid] verwenden, um eigene ID-Werte entweder auf dem Client oder im Back-End zu generieren.
+Wenn der ID-Wert einer Zeichenfolge für keine eingefügten Datensätze festgelegt ist, generiert das Mobile App-Back-End einen eindeutigen Wert für die ID. Sie können die [Guid.NewGuid]-Methode verwenden, um eigene ID-Werte entweder auf dem Client oder im Back-End zu generieren.
 
     JObject jo = new JObject();
     jo.Add("id", Guid.NewGuid().ToString("N"));
 
 ###<a name="modifying"></a>Ändern von Daten in einem Mobile App-Back-End
 
-Der folgende Code zeigt, wie Sie mit der Methode [UpdateAsync] einen vorhandenen Datensatz mit der gleichen ID und neuen Daten aktualisieren können. Der Parameter enthält die zu aktualisierenden Daten als .NET-Objekt.
+Der folgende Code zeigt, wie Sie mit der [UpdateAsync]-Methode einen vorhandenen Datensatz mit der gleichen ID und neuen Daten aktualisieren können. Der Parameter enthält die zu aktualisierenden Daten als .NET-Objekt.
 
 	await todoTable.UpdateAsync(todoItem);
 
@@ -284,11 +285,11 @@ Zum Löschen von nicht typisierten Daten können Sie [Json.NET] wie folgt verwen
 	jo.Add("Complete", false);
 	var inserted = await table.UpdateAsync(jo);
 
-Beim Ausführen eines Updates muss ein `id`-Feld angegeben werden. Sie wird benötigt, damit das Back-End erkennen kann, welche Instanz aktualisiert werden soll. Das `id`-Feld können Sie dem Ergebnis des `InsertAsync`-Aufrufs entnehmen. Eine `ArgumentException` wird ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Werts zu aktualisieren.
+Beim Ausführen eines Updates muss ein `id`-Feld angegeben werden. Sie wird benötigt, damit das Back-End erkennen kann, welche Instanz aktualisiert werden soll. Das `id`-Feld können Sie dem Ergebnis des `InsertAsync`-Aufrufs entnehmen. Es wird eine `ArgumentException` ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Werts zu aktualisieren.
 
 ###<a name="deleting"></a>Löschen von Daten in einem Mobile App-Back-End
 
-Der folgende Code zeigt, wie Sie existierende Instanzen mit der Methode [DeleteAsync] löschen können. Die Instanz wird durch das `id`-Feld identifiziert, das in `todoItem` festgelegt wird.
+Der folgende Code zeigt, wie Sie vorhandene Instanzen mit der [DeleteAsync]-Methode löschen können. Die Instanz wird durch das `id`-Feld identifiziert, das in `todoItem` festgelegt wird.
 
 	await todoTable.DeleteAsync(todoItem);
 
@@ -298,13 +299,13 @@ Zum Löschen von nicht typisierten Daten können Sie Json.NET wie folgt verwende
 	jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 	await table.DeleteAsync(jo);
 
-Beachten Sie, dass Sie bei einer Löschanforderung eine ID angeben müssen. Andere Eigenschaften werden nicht an den Dienst übergeben oder vom Dienst ignoriert. Das Ergebnis eines `DeleteAsync`-Aufrufs lautet normalerweise `null`. Sie erhalten die zu übergebende ID im Ergebnis des `InsertAsync`-Aufrufs. Eine `MobileServiceInvalidOperationException` wird ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Felds zu löschen.
+Beachten Sie, dass Sie bei einer Löschanforderung eine ID angeben müssen. Andere Eigenschaften werden nicht an den Dienst übergeben oder vom Dienst ignoriert. Das Ergebnis eines `DeleteAsync`-Aufrufs lautet normalerweise `null`. Sie erhalten die zu übergebende ID im Ergebnis des `InsertAsync`-Aufrufs. Es wird eine `MobileServiceInvalidOperationException` ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Felds zu löschen.
 
-###<a name="optimisticconcurrency"></a>Verwenden der optimistischen Parallelität zur Lösung von Konflikten
+###<a name="optimisticconcurrency"></a>Gewusst wie: Verwenden der optimistischen Parallelität zur Lösung von Konflikten
 
 Zwei oder mehr Clients können gleichzeitig versuchen, das gleiche Element zu bearbeiten. Ohne Konflikterkennung würde der letzte Schreibvorgang alle vorherigen Aktualisierungen überschreiben, selbst wenn dies nicht so gewollt wäre. Die *Steuerung für optimistische Parallelität* nimmt an, dass jede Transaktion Commits ausführen kann und sperrt daher keine Ressourcen. Vor dem Commit einer Transaktion prüft die Steuerung für optimistische Parallelität, ob die Daten von einer anderen Transaktion geändert wurden. Falls die Daten geändert wurden, wird für die Transaktion, die den Commit durchführen sollte, ein Rollback durchgeführt.
 
-Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version`-Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `\version`-Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>`. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version`-Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
+Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version`-Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `\version`-Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>` aus. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version`-Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
 
 Definieren Sie eine Spalte in der Tabellenklasse für die `version`-Systemeigenschaft, um optimistische Parallelität zu aktivieren. Beispiel:
 
@@ -329,7 +330,7 @@ Anwendungen, die nicht typisierte Tabellen verwenden, können die optimistische 
 	//Enable optimistic concurrency by retrieving version
 	todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
-Zusätzlich zum Aktivieren der optimistischen Parallelität müssen Sie auch die `MobileServicePreconditionFailedException<T>`-Ausnahme beim Aufrufen von [UpdateAsync] im Code abfangen. Lösen Sie den Konflikt durch Anwenden der richtigen `version` auf den aktualisierte Datensatz, und rufen Sie [UpdateAsync] mit dem aufgelösten Datensatz auf. Der folgende Code zeigt, wie ein erkannter Schreibkonflikt gelöst werden kann:
+Zusätzlich zum Aktivieren der optimistischen Parallelität müssen Sie auch die `MobileServicePreconditionFailedException<T>`-Ausnahme beim Aufrufen von [UpdateAsync] im Code abfangen. Lösen Sie den Konflikt durch Anwenden der richtigen `version` auf den aktualisierten Datensatz, und rufen Sie [UpdateAsync] mit dem aufgelösten Datensatz auf. Der folgende Code zeigt, wie ein erkannter Schreibkonflikt gelöst werden kann:
 
 	private async void UpdateToDoItem(TodoItem item)
 	{
@@ -385,11 +386,11 @@ Zusätzlich zum Aktivieren der optimistischen Parallelität müssen Sie auch die
 	    await msgDialog.ShowAsync();
 	}
 
-Weitere Informationen finden Sie in dem Thema [Synchronisierung von Offlinedaten in Azure Mobile Apps].
+Weitere Informationen finden Sie in dem Thema [Synchronisieren von Offlinedaten in Azure Mobile Apps].
 
 ###<a name="binding"></a>Binden von Mobile Apps-Daten an eine Windows-Benutzeroberfläche
 
-In diesem Abschnitt wird das Anzeigen zurückgegebener Datenobjekte mithilfe von Benutzeroberflächenelementen in einer Windows-App beschrieben. Sie können den folgenden Beispielcode zur Bindung an die Quelle der Liste mit einer Abfrage unvollständiger Elemente in `todoTable` und deren Anzeige in einer sehr einfachen Liste ausführen. [MobileServiceCollection] erstellt eine Bindungsauflistung, die Mobile Apps unterstützt.
+In diesem Abschnitt wird das Anzeigen zurückgegebener Datenobjekte mithilfe von Benutzeroberflächenelementen in einer Windows-App beschrieben. Sie können den folgenden Beispielcode zur Bindung an die Quelle der Liste mit einer Abfrage unvollständiger Elemente in `todoTable` und deren Anzeige in einer sehr einfachen Liste ausführen. [MobileServiceCollection] erstellt eine Bindungssammlung, die Mobile Apps unterstützt.
 
 	// This query filters out completed TodoItems.
 	MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
@@ -420,6 +421,17 @@ Die Sammlung, die durch den Aufruf von `ToCollectionAsync` bzw. `ToCollection` e
 
 Stellen Sie sich vor, Ihre Tabelle hat viele Felder, aber Sie möchten nur einen Teil der Felder in Ihrem Steuerelement anzeigen. Folgen Sie der weiter oben bereitgestellten Anleitung im Abschnitt [Bestimmte Spalten auswählen](#selecting), um bestimmte Spalten für die Anzeige auf der Benutzeroberfläche auszuwählen.
 
+###<a name="pagesize"></a>Ändern der Seitengröße
+
+Azure Mobile Apps gibt standardmäßig maximal 50 Elemente pro Anforderung zurück. Sie können dies ändern, indem Sie auf dem Server die maximale Seitengröße und auf Clientseite die angeforderte Seitengröße erhöhen. Um die angeforderte Größe zu erhöhen, verwenden Sie eine Überladung von `PullAsync`, mit der Sie `PullOptions` angeben:
+
+    PullOptions pullOptions = new PullOptions
+		{
+			MaxPageSize = 100
+		};
+
+Wenn PageSize auf dem Server gleich oder größer 100 ist, werden bis zu 100 Elemente in jeder Anforderung zurückgegeben.
+
 ##<a name="#customapi"></a>Arbeiten mit einer benutzerdefinierten API
 
 Mit einer benutzerdefinierten API können Sie benutzerdefinierte Endpunkte definieren, die Serverfunktionen zur Verfügung stellen, welche keinem Einfüge-, Aktualisierungs-, Lösch- oder Lesevorgang zugeordnet sind. Durch die Verwendung einer benutzerdefinierten API erhalten Sie mehr Kontrolle über das Messaging, einschließlich Lesen und Einstellen der HTTP-Nachrichten-Header sowie Definieren eines von JSON abweichenden Nachrichtentextformats.
@@ -437,10 +449,10 @@ Mobile Apps unterstützt Authentifizierung und Autorisierung von App-Benutzern m
 
 Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein _Serverfluss_ und ein _Clientfluss_. Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
 
-In jedem Fall müssen Sie die App bei Ihrem Identitätsanbieter registrieren. Der Identitätsanbieter stellt eine Client-ID und einen geheimen Clientschlüssel bereit. Anschließend müssen Sie die Azure App Service-Authentifizierung/-Autorisierung mit der Client-ID und dem geheimen Clientschlüssel von Ihrem Identitätsanbieter konfigurieren. Weitere Informationen finden Sie in den detaillierten Anleitung im Tutorial [Hinzufügen der Authentifizierung zu Ihrer Windows-App].
+In jedem Fall müssen Sie die App bei Ihrem Identitätsanbieter registrieren. Der Identitätsanbieter stellt eine Client-ID und einen geheimen Clientschlüssel bereit. Anschließend müssen Sie die Azure App Service-Authentifizierung/-Autorisierung mit der Client-ID und dem geheimen Clientschlüssel von Ihrem Identitätsanbieter konfigurieren. Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Hinzufügen von Authentifizierung zu Ihrer App].
 
 ###<a name="serverflow"></a>Serverfluss
-Rufen Sie nach der Registrierung bei Ihrem Identitätsanbieter „MobileServiceClient.[LoginAsync-Methode]“ mit dem [MobileServiceAuthenticationProvider]-Wert Ihres Anbieters auf. Der folgende Beispielcode startet eine Serverfluss-Anmeldung über Facebook.
+Rufen Sie nach der Registrierung bei Ihrem Identitätsanbieter MobileServiceClient.[LoginAsync-Methode] mit dem [MobileServiceAuthenticationProvider]-Wert Ihres Anbieters auf. Der folgende Beispielcode startet eine Serverfluss-Anmeldung über Facebook.
 
 	private MobileServiceUser user;
 	private async System.Threading.Tasks.Task Authenticate()
@@ -597,21 +609,21 @@ Für Windows Phone-Apps können Sie die Daten mithilfe der [ProtectedData]-Klass
 
 ### <a name="adal"></a>Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
 
-Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um Benutzer mithilfe von Azure Active Directory bei Ihrer Anwendung anzumelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den Methoden vom Typ `loginAsync()` häufig vorgezogen.
+Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um Benutzer mithilfe von Azure Active Directory bei Ihrer Anwendung anzumelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den `loginAsync()`-Methoden häufig vorgezogen.
 
-1. Konfigurieren Sie Ihr Mobile App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [Gewusst wie: Konfigurieren von App Service für die Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
+1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [Gewusst wie: Konfigurieren von App Service für die Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
 
 2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.CLients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
 
 3. Fügen Sie auf Grundlage der verwendeten Plattform den unten stehenden Code zu Ihrer Anwendung hinzu. Nehmen Sie dabei die folgenden Änderungen vor:
 
-* Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, unter dem Sie Ihre Anwendung bereitgestellt haben. Verwenden Sie dabei folgendes Format: https://login.windows.net/contoso.onmicrosoft.com. Sie können diesen Wert auf der Registerkarte „Domäne“ in Ihrer Azure Active Directory-Instanz im [klassischen Azure-Portal] kopieren.
+* Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, unter dem Sie Ihre Anwendung bereitgestellt haben. Das Format sollte https://login.windows.net/contoso.onmicrosoft.com entsprechen. Sie können diesen Wert auf der Registerkarte „Domäne“ in Ihrer Azure Active Directory-Instanz im [klassischen Azure-Portal] kopieren.
 
-* Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr Mobile App-Back-End. Diese finden Sie im Portal auf der Registerkarte **Erweitert** unter **Azure Active Directory-Einstellungen**.
+* Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr mobiles App-Back-End. Sie finden diese im Portal auf der Registerkarte **Erweitert** unter **Azure Active Directory-Einstellungen**.
 
 * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 
-* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website, und verwenden Sie dabei das HTTPS-Schema. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
+* Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
 
 Der für jede Plattform erforderliche Code:
 
@@ -723,7 +735,7 @@ Mit dem Mobile Apps-Client können Sie die App für Pushbenachrichtigungen mit A
 
 Zu einer Pushbenachrichtigung an den WNS BENÖTIGEN Sie eine Windows Store-Paket-SID (siehe unten). Beachten Sie, dass in diesem Beispiel zwei Tags in der Registrierung enthalten sind. Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
 
-Beachten Sie, dass die Anforderung von Tags vom Client nicht unterstützt wird. Tag-Anforderungen werden automatisch aus der Registrierung gelöscht. Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen. Rufen Sie anstelle der Methode `RegisterNativeAsync()` die [benutzerdefinierte API](#customapi) auf.
+Beachten Sie, dass die Anforderung von Tags vom Client nicht unterstützt wird. Tag-Anforderungen werden automatisch aus der Registrierung gelöscht. Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen. Rufen Sie anstelle der `RegisterNativeAsync()`-Methode die [benutzerdefinierte API](#customapi) auf.
 
 ###<a name="package-sid"></a>Abrufen einer Windows Store-Paket-SID
 
@@ -746,7 +758,7 @@ Xamarin-Apps erfordern zusätzlichen Code zum Registrieren einer App unter iOS o
 
 ###<a name="register-xplat"></a>Gewusst wie: Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen
 
-Verwenden Sie die Methode `RegisterAsync()` wie folgt, um Vorlagen zu registrieren:
+Verwenden Sie die `RegisterAsync()`-Methode wie folgt, um Vorlagen zu registrieren:
 
         JObject templates = myTemplates();
         MobileService.GetPush().RegisterAsync(channel.Uri, templates);
@@ -851,13 +863,13 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 <!-- Internal URLs. -->
 [Erstellen einer Windows-App]: app-service-mobile-windows-store-dotnet-get-started.md
 [Authentifizierung zu Ihrer App hinzufügen]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Hinzufügen der Authentifizierung zu Ihrer Windows-App]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Work with .NET backend SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Arbeiten Sie mit dem Back-End-Server-SDK für Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [How to use the Node.js backend SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 [How to: Define a table controller]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-define-a-table-controller
 [Define Tables using a Dynamic Schema]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
-[Synchronisierung von Offlinedaten in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Synchronisieren von Offlinedaten in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Hinzufügen von Pushbenachrichtigungen zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Gewusst wie: Konfigurieren von App Service für die Active Directory-Anmeldung]: app-service-mobile-how-to-configure-active-directory-authentication.md
@@ -910,4 +922,4 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource-Anweisungen]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -5,7 +5,7 @@ Eine Verfügbarkeitsgruppe hilft, dass Ihre virtuellen Computer während eines A
 
 Sie sollten eine Kombination aus Verfügbarkeitssätzen und Endpunkten mit Lastenausgleich verwenden, um sicherzustellen, dass Ihre Anwendung stets verfügbar ist und effizient ausgeführt wird. Details über Endpunkte mit Lastenausgleich finden Sie unter [Lastenausgleich für Azure-Infrastrukturdienste][].
 
-Beim klassischen Bereitstellungsmodell können Sie mithilfe einer der beiden folgenden Optionen virtuelle Maschinen in eine Verfügbarkeitsgruppe versetzen:
+Mithilfe einer der beiden folgenden Optionen können Sie klassische virtuelle Computer einer Verfügbarkeitsgruppe hinzufügen:
 
 - [Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe][]. Fügen Sie der Gruppe anschließend die neuen virtuellen Computer hinzu, wenn Sie diese virtuellen Computer erstellen.
 - [Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu][].
@@ -14,57 +14,55 @@ Beim klassischen Bereitstellungsmodell können Sie mithilfe einer der beiden fol
 
 ## <a id="createset"> </a>Option 1: Erstellen Sie gleichzeitig einen virtuellen Computer und eine Verfügbarkeitsgruppe##
 
-Dafür können Sie entweder das klassische Azure-Portal oder die Azure PowerShell-Befehle verwenden.
+Dafür können Sie entweder das Azure-Portal oder die Azure PowerShell-Befehle verwenden.
 
-Verwenden des klassischen Azure-Portals:
+So verwenden Sie das Azure-Portal:
 
-1. Melden Sie sich beim klassischen Azure-Portal an, falls noch nicht geschehen.
+1. Melden Sie sich beim Azure-Portal an, falls Sie dies noch nicht getan haben.
 
-2. Klicken Sie in der Befehlsleiste auf **Neu**.
+2. Klicken Sie im Hub-Menü auf **+ Neu** und anschließend auf **Virtueller Computer**.
+    
+    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
 
-3. Klicken Sie auf **Virtueller Computer** und dann auf **Aus Katalog**.
+3. Wählen Sie das zu verwendende Marketplace-VM-Image aus. Sie können auswählen, ob Sie einen virtuellen Linux- oder einen virtuellen Windows-Computer erstellen.
 
-4. Verwenden Sie die ersten beiden Bildschirme zum Auswählen eines Images, eines Benutzernamens, eines Kennworts usw. Weitere Details finden Sie unter [Erstellen eines virtuellen Windows-Computers][].
+4. Stellen Sie für den ausgewählten virtuellen Computer sicher, dass als Bereitstellungsmodell **Klassisch** festgelegt ist, und klicken Sie dann auf **Erstellen**.
+    
+    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
 
-5. Im dritten Bildschirm können Sie die Ressourcen für Netzwerk, Speicher und Verfügbarkeit konfigurieren. Gehen Sie wie folgt vor:
+5. Geben Sie einen Namen, einen Benutzernamen und ein Kennwort für den virtuellen Computer (Windows-Computer) oder den öffentlichen SSH-Schlüssel (Linux-Computer) ein.
 
-	1. Wählen Sie den entsprechenden Clouddienst. Lassen Sie die Option **Einen neuen Clouddienst erstellen** ausgewählt (es sei denn, Sie fügen diesen neuen virtuellen Computer einem vorhandenen VM-Clouddienst hinzu). Geben Sie dann unter **DNS-Name des Clouddiensts** einen Namen ein. Der DNS-Name wird ein Teil des URI, der zum Kontaktieren des virtuellen Computers verwendet wird. Der Clouddienst fungiert als eine Kommunikations- und Isolationsgruppe. Alle virtuellen Computer im selben Clouddienst können miteinander kommunizieren, für den Lastenausgleich eingerichtet werden und in derselben Verfügbarkeitsgruppe platziert werden.
+6. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie anschließend auf **Auswählen**, um den Vorgang fortzusetzen.
 
-	2. Geben Sie unter **Region/Affinitätsgruppe/Virtuelles Netzwerk** ein virtuelles Netzwerk an, wenn Sie eins einsetzen möchten. **Wichtig**: Wenn der virtuelle Computer ein virtuelles Netzwerk verwenden soll, müssen Sie ihn bei seiner Erstellung in das virtuelle Netzwerk einbinden. Sie können den virtuellen Computer nicht in ein virtuelles Netzwerk einbinden, nachdem Sie den virtuellen Computer erstellt haben. Weitere Informationen finden Sie unter [Virtuelle Netzwerke im Überblick][].
+7. Navigieren Sie zu **Optionale Konfiguration > Verfügbarkeitsgruppe**, und wählen Sie die Verfügbarkeitsgruppe aus, der Sie den virtuellen Computer hinzufügen möchten.
+    
+    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png)
 
-	3. Erstellen Sie die Verfügbarkeitsgruppe. Belassen Sie die Auswahl unter **Verfügbarkeitsgruppe** bei **Verfügbarkeitsgruppe erstellen**. Geben Sie dann einen Namen für die Gruppe ein.
+8. Überprüfen Sie die Konfigurationseinstellungen. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-	4. Erstellen Sie die Standardendpunkte, und fügen Sie bei Bedarf weitere hinzu. Sie können Endpunkt auch später hinzufügen.
-
-	![Erstellen einer Verfügbarkeitsgruppe für einen neuen virtuellen Computer](./media/virtual-machines-common-classic-configure-availability/VMavailabilityset.png)
-
-6. Klicken Sie im vierten Bildschirm auf die zu installierenden Erweiterungen. Erweiterungen bieten Features, die die Verwaltung des virtuellen Computers vereinfachen, beispielsweise das Ausführen von Antischadsoftware oder das Zurücksetzen von Kennwörtern. Details finden Sie im Thema zum [Azure VM-Agent und VM-Erweiterungen](../articles/virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md).
-
-7.	Klicken Sie auf den Pfeil, um den virtuellen Computer und den Verfügbarkeitssatz zu erstellen.
-
-	Wenn Sie im Dashboard des neuen virtuellen Computers auf **Konfigurieren** klicken, sehen Sie, dass der virtuelle Computer zur neuen Verfügbarkeitsgruppe gehört.
+9. Im Hub-Menü können Sie unter **Virtuelle Computer** den Erstellungsstatus des virtuellen Computers nachverfolgen.
 
 Beachten Sie [Erstellen von virtuellen Windows-Computern mit PowerShell und dem klassischen Bereitstellungsmodell](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md), wenn Sie einen virtuellen Azure-Computer mithilfe von Azure PowerShell-Befehlen erstellen und einer neuen oder vorhandenen Verfügbarkeitsgruppe hinzufügen.
 
 ## <a id="addmachine"> </a>Option 2: Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu##
 
-Im klassischen Azur-Portal können Sie einer vorhandenen Verfügbarkeitsgruppe vorhandene virtuelle Computer hinzufügen oder einen neuen virtuellen Computer für sie erstellen. (Beachten Sie, dass die virtuellen Computer in derselben Verfügbarkeitsgruppe zum selben Clouddienst gehören müssen.) Die Schritte sind beinah identisch. Mit Azure PowerShell können Sie einer vorhandenen Verfügbarkeitsgruppe den virtuellen Computer hinzufügen.
+Im Azure-Portal können Sie einer vorhandenen Verfügbarkeitsgruppe vorhandene klassische virtuelle Computer hinzufügen oder eine neue Verfügbarkeitsgruppe für Computer erstellen. (Beachten Sie, dass die virtuellen Computer in derselben Verfügbarkeitsgruppe zum selben Clouddienst gehören müssen.) Die Schritte sind beinah identisch. Mit Azure PowerShell können Sie einer vorhandenen Verfügbarkeitsgruppe den virtuellen Computer hinzufügen.
 
-1. Melden Sie sich beim klassischen Azure-Portal an, falls noch nicht geschehen.
+1. Melden Sie sich beim Azure-Portal an, falls Sie dies noch nicht getan haben.
 
-2. Klicken Sie in der Befehlsleiste auf **Virtuelle Computer**.
+2. Klicken Sie im Hub-Menü auf **Virtuelle Computer (klassisch)**.
+    
+    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
 
 3. Klicken Sie in der Liste der virtuellen Computer auf die Namen der virtuellen Computer, die Sie der Gruppe hinzufügen möchten.
 
-4. Klicken Sie auf den Registerkarten unter dem Namen des virtuellen Computers auf **Konfigurieren**.
+4. Wählen Sie in den **Einstellungen** des virtuellen Computers **Verfügbarkeitsgruppe**.
+    
+    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
 
-5. Suchen Sie im Abschnitt „Einstellungen“ nach **Verfügbarkeitsgruppe**. Führen Sie einen der folgenden Schritte aus:
-
-	A: Wählen Sie **Verfügbarkeitsgruppe erstellen**, und geben Sie einen Namen für die Gruppe ein.
-
-	B. Wählen Sie **Verfügbarkeitsgruppe auswählen**, und wählen Sie eine Gruppe aus der Liste aus.
-
-	![Erstellen einer Verfügbarkeitsgruppe für einen vorhandenen virtuellen Computer](./media/virtual-machines-common-classic-configure-availability/VMavailabilityExistingVM.png)
+5. Wählen Sie die Verfügbarkeitsgruppe aus, der Sie virtuelle Computer hinzufügen möchten. Die virtuellen Computer müssen zum selben Clouddienst gehören wie die Verfügbarkeitsgruppe.
+    
+    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
 
 6. Klicken Sie auf **Speichern**.
 
@@ -85,8 +83,8 @@ Um Azure PowerShell-Befehle zu verwenden, öffnen Sie eine Azure PowerShell-Sitz
 [Lastenausgleich für Azure-Infrastrukturdienste]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
 [Verwalten der Verfügbarkeit virtueller Computer]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
 
-[Erstellen eines virtuellen Windows-Computers]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
-[Virtuelle Netzwerke im Überblick]: ../articles/virtual-network/virtual-networks-overview.md
+[Create a virtual machine running Windows]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Virtual Network overview]: ../articles/virtual-network/virtual-networks-overview.md
 [Artikel für klassische VMs]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

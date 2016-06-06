@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="05/24/2016" 
 	ms.author="mimig"/>
 
 # Speicherung und vorhersagbare Leistungsbereitstellung in DocumentDB
-DocumentDB ist ein vollständig verwalteter, skalierbarer dokumentorientierter NoSQL-Datenbankdienst für JSON-Dokumente. Mit DocumentDB müssen Sie keine virtuellen Computer mieten, Software bereitstellen, Datenbanken überwachen oder sich Gedanken über die Notfallwiederherstellung machen. DocumentDB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten.
+DocumentDB ist ein vollständig verwalteter, skalierbarer dokumentorientierter NoSQL-Datenbankdienst für JSON-Dokumente. Mit DocumentDB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. DocumentDB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten.
 
 Sie können sich mit DocumentDB vertraut machen, indem Sie über das [Azure-Portal](documentdb-create-account.md) ein [Datenbankkonto erstellen](https://portal.azure.com/). DocumentDB wird in Einheiten aus SSD-gestütztem Speicher und Durchsatz angeboten. Diese Einheiten werden bereitgestellt, indem in Ihrem Datenbankkonto Datenbanksammlungen erstellt werden. Für jede Sammlung gilt ein reservierter Durchsatz. Wenn sich die Durchsatzanforderungen Ihrer Anwendung ändern, können Sie diese Einstellung dynamisch ändern, indem Sie die [Leistungsebene](documentdb-performance-levels.md) für jede Sammlung festlegen.
 
@@ -123,7 +123,7 @@ Die Auswahl der standardmäßigen Konsistenzebene hat Auswirkungen auf den Durch
 Anleitungen zum Ändern Ihrer Konsistenzebene im Azure-Portal finden Sie unter [Verwalten eines DocumentDB-Kontos](documentdb-manage-account.md#consistency). Weitere Informationen zu Konsistenzebenen finden Sie unter [Verwenden von Konsistenzebenen](documentdb-consistency-levels.md).
 
 ## Bereitgestellter Dokumentspeicher und Index-Overhead
-DocumentDB unterstützt die Erstellung von einzelnen Partitionen und partitionierten Sammlungen. Für jede Partition in DocumentDB werden bis zu 10 GB an SSD-gestütztem Speicher unterstützt. Die 10 GB Dokumentspeicher umfassen die Dokumente plus den Speicher für den Index. Standardmäßig wird eine DocumentDB-Auflistung so konfiguriert, dass alle Dokumente automatisch indiziert werden, ohne dass explizit irgendwelche sekundären Indizes oder Schemas erforderlich wären. Basierend auf den Anwendungen, die DocumentDB nutzen, liegt der Index-Overhead normalerweise zwischen 2 und 20 %. Durch die von DocumentDB verwendete Indizierungstechnologie wird sichergestellt, dass der Index-Overhead, unabhängig von den Werten der Eigenschaften, bei den Standardeinstellungen 80 % der Größe der Dokumente nicht überschreitet.
+DocumentDB unterstützt die Erstellung von einzelnen Partitionen und partitionierten Sammlungen. Für jede Partition in DocumentDB werden bis zu 10 GB an SSD-gestütztem Speicher unterstützt. Die 10 GB Dokumentspeicher umfassen die Dokumente plus den Speicher für den Index. Standardmäßig wird eine DocumentDB-Auflistung so konfiguriert, dass alle Dokumente automatisch indiziert werden, ohne dass explizit irgendwelche sekundären Indizes oder Schemas erforderlich wären. Basierend auf den Anwendungen, die DocumentDB nutzen, liegt der Index-Overhead normalerweise zwischen 2 und 20 %. Durch die von DocumentDB verwendete Indizierungstechnologie wird sichergestellt, dass der Index-Overhead, unabhängig von den Werten der Eigenschaften, bei den Standardeinstellungen 80 % der Größe der Dokumente nicht überschreitet.
 
 Standardmäßig werden alle Dokumente von DocumentDB automatisch indiziert. Wenn Sie den Indizierungsaufwand jedoch optimieren möchten, können Sie beim Einfügen oder Ersetzen eines Dokuments bestimmte Dokumente aus der Indizierung ausschließen (siehe [Indizierungsrichtlinien für DocumentDB](documentdb-indexing-policies.md)). Sie können eine DocumentDB-Auflistung so konfigurieren, dass alle Dokumente innerhalb der Auflistung von der Indizierung ausgeschlossen werden. Sie können eine DocumentDB-Sammlung auch so konfigurieren, dass nur bestimmte Eigenschaften oder Pfade mit Platzhaltern in Ihren JSON-Dokumenten selektiv indiziert werden (siehe [Konfigurieren der Indizierungsrichtlinie einer Sammlung](documentdb-indexing-policies.md#configuring-the-indexing-policy-of-a-collection)). Durch das Ausschließen von Eigenschaften oder Dokumenten wird auch der Schreibdurchsatz verbessert, was bedeutet, dass Sie weniger Anforderungseinheiten verbrauchen.
 ## Nächste Schritte
@@ -132,4 +132,4 @@ Anweisungen zur Überwachung der Leistungsebenen im Azure-Portal finden Sie unte
 Weitere Informationen zum Auswählen von Leistungsebenen für Sammlungen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md).
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0525_2016-->

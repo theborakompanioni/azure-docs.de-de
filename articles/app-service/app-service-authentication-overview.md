@@ -26,7 +26,7 @@ App Service nutzt die Verbundidentität. Dabei werden Kontenspeicherung und Benu
 
 Mit folgenden Tutorials können Sie sofort loslegen:
 
-- [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] \(oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
+- [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] (oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
 - [Benutzerauthentifizierung für API-Apps in Azure App Service][apia-user]
 - [Erste Schritte mit Azure App Service – Teil 2][web-getstarted]
 
@@ -102,7 +102,7 @@ App Service übergibt einige Benutzerinformationen mithilfe spezieller Header an
 
 Anhand dieser Header kann jeder Code unabhängig von Programmiersprache oder Framework die benötigten Informationen ermitteln. Bei ASP.NET 4.6-Apps wird **ClaimsPrincipal** automatisch mit entsprechenden Werten festgelegt.
 
-Über eine HTTP GET-Anforderung kann Ihre Anwendung zusätzliche Benutzerdetails vom `/.auth/me`-Endpunkt Ihrer Anwendung abrufen. Wenn die Anforderung ein gültiges Token enthält, wird eine JSON-Nutzlast mit Details zum verwendeten Anbieter, dem zugrunde liegenden Anbietertoken und einigen anderen Benutzerinformationen zurückgegeben. Die Mobile Apps-Server-SDKs enthalten Hilfsmethoden für die Verwendung dieser Daten. Weitere Informationen finden Sie unter [Verwenden des Azure Mobile Apps SDK für Node.js](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md/#howto-tables-getidentity) sowie unter [Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md/#user-info).
+Über eine HTTP GET-Anforderung kann Ihre Anwendung zusätzliche Benutzerdetails vom `/.auth/me`-Endpunkt Ihrer Anwendung abrufen. Wenn die Anforderung ein gültiges Token enthält, wird eine JSON-Nutzlast mit Details zum verwendeten Anbieter, dem zugrunde liegenden Anbietertoken und einigen anderen Benutzerinformationen zurückgegeben. Die Mobile Apps-Server-SDKs enthalten Hilfsmethoden für die Verwendung dieser Daten. Weitere Informationen finden Sie unter [Gewusst wie: Verwenden des Azure Mobile Apps SDK für Node.js](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) sowie unter [Arbeiten mit dem .NET-Back-End-Server-SDK für Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## Dokumentation und zusätzliche Ressourcen
 
@@ -115,7 +115,7 @@ In den folgenden Tutorials erfahren Sie, wie Sie App Service für die Verwendung
 - [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung][MSA]
 - [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung][Twitter]
 
-Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] \(geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
+Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] (geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
 
 ### Webanwendungen
 In den folgenden Tutorials erfahren Sie, wie Sie die Authentifizierung einer Webanwendung hinzufügen:
@@ -174,8 +174,8 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md/#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md/#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md/#adal
+[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
+[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
+[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

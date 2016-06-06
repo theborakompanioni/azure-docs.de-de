@@ -16,7 +16,7 @@ Verwenden Sie VNets für Folgendes:
 
 - Unterstützung von Hybrid Cloud-Szenarios
 									
-	VNets bieten flexible Möglichkeiten, verschiedene Hybrid Cloud-Szenarios zu unterstützen. Sie können cloudbasierte Anwendungen auf sichere Weise mit beliebigen lokalen Systemen wie z. B. Mainframes oder Unix-Systemen verbinden.
+	VNets bieten flexible Möglichkeiten, verschiedene Hybrid Cloud-Szenarios zu unterstützen. Sie können cloudbasierte Anwendungen auf sichere Weise mit beliebigen lokalen Systemen wie z. B. Mainframes oder Unix-Systemen verbinden.
 
 ### Wie finde ich heraus, ob ich ein virtuelles Netzwerk benötige?
 
@@ -28,7 +28,7 @@ Auf der Webseite [Dokumentation zu virtuellen Netzwerken](https://azure.microsof
 
 ### Welche Dienste können in VNets genutzt werden?
 
-VNets können mit einer Vielzahl unterschiedlicher Azure-Dienste, z. B. Cloud Services (PaaS), Virtual Machines und Web-Apps, verwendet werden. Es gibt jedoch auch einige Dienste, die in einem VNet nicht unterstützt werden. Überprüfen Sie den spezifischen Dienst, den Sie verwenden möchten, und vergewissern Sie sich, ob er kompatibel ist.
+VNets können mit einer Vielzahl unterschiedlicher Azure-Dienste, z. B. Cloud Services (PaaS), Virtual Machines und Web-Apps, verwendet werden. Es gibt jedoch auch einige Dienste, die in einem VNet nicht unterstützt werden. Überprüfen Sie den spezifischen Dienst, den Sie verwenden möchten, und vergewissern Sie sich, ob er kompatibel ist.
 
 ### Können VNets ohne standortübergreifende Konnektivität verwendet werden?
 
@@ -136,7 +136,7 @@ Ja. Sie haben die Möglichkeit, IP-Adressen von DNS-Servern in den Einstellungen
 
 ### Wie viele DNS-Server können angegeben werden?
 
-Sie können bis zu 12 DNS-Server angeben.
+Sie können bis zu 12 DNS-Server angeben.
 
 ### Können DNS-Server geändert werden, nachdem das Netzwerk erstellt wurde?
 
@@ -147,7 +147,7 @@ Ja. Sie können die Liste der DNS-Server für das VNet jederzeit ändern. Wenn S
 
 Der von Azure bereitgestellte DNS-Dienst ist ein von Microsoft angebotener mehrinstanzenfähiger DNS-Dienst. In Azure werden alle Ihre virtuellen Computer und Rolleninstanzen in diesem Dienst registriert. Dieser Dienst stellt die Namensauflösung nach dem Hostnamen für virtuelle Computer und Rolleninstanzen, die im gleichen Clouddienst enthalten sind, und nach dem FQDN für virtuelle Computer und Rolleninstanzen im gleichen VNet zur Verfügung.
 
-> [AZURE.NOTE] Die mandantenübergreifende Namensauflösung mithilfe des von Azure bereitgestellten DNS-Diensts ist derzeit auf die ersten 100 Clouddienste im virtuellen Netzwerk beschränkt. Diese Einschränkung gilt nicht, wenn Sie einen eigenen DNS-Server verwenden.
+> [AZURE.NOTE] Die mandantenübergreifende Namensauflösung mithilfe des von Azure bereitgestellten DNS-Diensts ist derzeit auf die ersten 100 Clouddienste im virtuellen Netzwerk beschränkt. Diese Einschränkung gilt nicht, wenn Sie einen eigenen DNS-Server verwenden.
 
 ### Können DNS-Einstellungen für einzelne virtuelle Computer und Dienste überschrieben werden?
 
@@ -183,7 +183,7 @@ Ja. Sie können alle von Azure unterstützten Linux-Distributionen bereitstellen
 
 ### Kann ich eine interne IP-Adresse für einen virtuellen Computer reservieren, den ich zu einem späteren Zeitpunkt erstelle?
 
-Nein. Sie können keine interne IP-Adresse reservieren. Wenn eine interne IP-Adresse verfügbar ist, wird sie einem virtuellen Computer oder einer Rolleninstanz durch den DHCP-Server zugewiesen. Dieser virtuelle Computer ist möglicherweise der Computer, dem Sie die interne IP-Adresse zuweisen möchten, möglicherweise aber auch nicht. Sie können jedoch die interne IP-Adresse eines bereits erstellten virtuellen Computers in eine verfügbare interne IP-Adresse ändern.
+Nein. Sie können keine interne IP-Adresse reservieren. Wenn eine interne IP-Adresse verfügbar ist, wird sie durch den DHCP-Server einem virtuellen Computer oder einer Rolleninstanz zugewiesen. Dieser virtuelle Computer ist möglicherweise der Computer, dem Sie die interne IP-Adresse zuweisen möchten, möglicherweise aber auch nicht. Sie können jedoch die interne IP-Adresse eines bereits erstellten virtuellen Computers in eine verfügbare interne IP-Adresse ändern.
 
 ### Ändern sich interne IP-Adressen für virtuelle Computer in einem VNet?
 
@@ -270,4 +270,4 @@ Ja. VNets und die standortübergreifende Konnektivität können mithilfe von RES
 
 Ja. Sie können PowerShell und Befehlszeilentools für zahlreiche Plattformen verwenden. Weitere Informationen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=317721).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

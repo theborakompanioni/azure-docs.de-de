@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/25/2016"
 	ms.author="sdanie"/>
 
 # Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
@@ -75,4 +75,4 @@ Wenn Sie die gewünschten Regionen entfernt haben, klicken Sie auf **Speichern**
 [Einheit]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

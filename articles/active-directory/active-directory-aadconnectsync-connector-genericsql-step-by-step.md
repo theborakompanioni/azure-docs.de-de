@@ -13,14 +13,14 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/08/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell"/>
 
 # Schrittweise Anleitung für den generischen SQL-Connector
 Dieses Thema ist eine schrittweise Anleitung. Damit erstellen Sie eine einfache HR-Beispieldatenbank und verwenden sie, um einige Benutzer und deren Gruppenmitgliedschaft zu importieren.
 
 ## Vorbereiten der Beispieldatenbank
-Führen Sie auf einem Server mit SQL Server das SQL-Skript aus [Anhang A](#appendix-a) aus. Dadurch wird eine Beispieldatenbank mit dem Namen GSQLDEMO erstellt. Das Objektmodell für die erstellte Datenbank sieht folgendermaßen aus:
+Führen Sie auf einem Server mit SQL Server das SQL-Skript aus [Anhang A](#appendix-a) aus. Dadurch wird eine Beispieldatenbank mit dem Namen GSQLDEMO erstellt. Das Objektmodell für die erstellte Datenbank sieht folgendermaßen aus:
 
 ![Objektmodell](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\objectmodel.png)
 
@@ -32,9 +32,9 @@ Der generische SQL-Connector verwendet ODBC für die Verbindung mit dem Remotese
 1. Starten Sie das ODBC-Verwaltungshilfsprogramm auf Ihrem Server: ![ODBC](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc.png)
 2. Wählen Sie die Registerkarte **Datei-DSN** aus. Klicken Sie auf **Hinzufügen**. ![ODBC 1](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc1.png)
 3. Der Standardtreiber sollte gut funktionieren, wählen Sie ihn also aus, und klicken Sie auf **Weiter**. ![ODBC 2](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc2.png)
-4. Geben Sie der Datei einen Namen, z. B. **GenericSQL**. ![ODBC 3](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc3.png)
+4. Geben Sie der Datei einen Namen, z. B. **GenericSQL**. ![ODBC 3](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc3.png)
 5. Klicken Sie auf **Fertig stellen**. ![ODBC 4](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc4.png)
-6. Konfigurieren Sie jetzt die Verbindung. Geben Sie eine gute Beschreibung der Datenquelle ein, und geben Sie den Namen des Servers mit SQL Server an. ![ODBC 5](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc5.png)
+6. Konfigurieren Sie jetzt die Verbindung. Geben Sie eine gute Beschreibung der Datenquelle ein, und geben Sie den Namen des Servers mit SQL Server an. ![ODBC 5](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc5.png)
 7. Wählen Sie die Art der Authentifizierung bei SQL aus. In diesem Fall wird die Windows-Authentifizierung verwendet. ![ODBC 6](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc6.png)
 8. Geben Sie den Namen der Beispieldatenbank **GSQLDEMO** an. ![ODBC 7](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc7.png)
 9. Behalten Sie die Standardeinstellungen auf diesem Bildschirm bei. Klicken Sie auf **Fertig stellen**. ![ODBC 8](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\odbc8.png)
@@ -73,7 +73,7 @@ Geben Sie einige Testdaten in die Beispieldatenbank ein. Wenn Sie bereit sind, w
 
 Hier sehen Sie einen Benutzer mit zwei Telefonnummern und eine Gruppe mit einigen Mitgliedern. ![CS 1](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\cs1.png) ![CS 2](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\cs2.png)
 
-## Anhang A
+## Anhang A
 **SQL-Skript zum Erstellen der Beispieldatenbank**
 
 ```SQL
@@ -173,4 +173,4 @@ ALTER TABLE [dbo].[USERPHONE] CHECK CONSTRAINT [FK_USERPHONE_USER]
 GO
 ```
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

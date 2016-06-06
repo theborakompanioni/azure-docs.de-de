@@ -109,7 +109,7 @@ Im Folgenden sind die Komponenten und deren Beziehungen für die Azure-Dienstver
 
 ## Vorteile der Verwendung von Ressourcen-Manager und Ressourcengruppen
 
-Mit dem Ressourcen-Manager wurde das Konzept der Ressourcengruppen eingeführt. Jede über den Ressourcen-Manager erstellte Ressource befindet sich in einer Ressourcengruppe. Das Ressourcen-Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
+Mit dem Ressourcen-Manager wurde das Konzept der Ressourcengruppen eingeführt. Jede über den Ressourcen-Manager erstellte Ressource befindet sich in einer Ressourcengruppe. Das Resource Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
 
 - Sie müssen die Dienste für Ihre Lösung nicht mehr einzeln bearbeiten, sondern können sie als Gruppe bereitstellen, verwalten und überwachen.
 - Sie können die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
@@ -175,4 +175,4 @@ Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellun
 - Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

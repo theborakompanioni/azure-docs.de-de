@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/17/2016"
+	ms.date="05/18/2016"
 	ms.author="juliako"/>
 
 #Übersicht über Livestreaming mit Azure Media Services
@@ -39,7 +39,7 @@ Mit **Microsoft Azure Media Services** (AMS) können Sie Livestreaminginhalte er
 
 Bei der Übermittlung Ihrer Inhalte für Kunden besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen bereitzustellen. Dazu codieren Sie den Datenstrom mit Liveencodern in einen Videodatenstrom mit mehreren Bitraten (adaptive Bitrate). Verwenden Sie die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md) von Media Services, um den Datenstrom dynamisch erneut in verschiedene Protokolle zu packen. Media Services unterstützt die Übermittlung der folgenden Streamingtechnologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
 
-In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streamingendpunkte** alle Livestreamingfunktionen, einschließlich Erfassung, Formatierung, DVR, Sicherheit, Skalierbarkeit und Redundanz.
+Im Abschnitt [Livestreaming-Aufgaben](media-services-manage-channels-overview.md#tasks) finden Sie Verknüpfungen zu Themen, in welchen veranschaulicht wird, wie die beschriebenen Aufgaben auszuführen sind.
 
 Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
@@ -116,11 +116,13 @@ Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass S
 
 ##Hinweise zur Gebührenberechnung
 
-Für einen Live Encoding-Kanal beginnt die Berechnung von Gebühren, sobald der Status über die API in „Wird ausgeführt“ geändert wird.
+Für einen Kanal beginnt die Berechnung von Gebühren, sobald der Status über die API in „Wird ausgeführt“ geändert wird.
 
 In der folgenden Tabelle ist dargestellt, wie Kanalzustände den Abrechnungszuständen in der API und im klassischen Azure-Portal zugeordnet werden. Beachten Sie, dass sich die Zustände zwischen der API und der Benutzeroberfläche des Portals leicht unterscheiden. Sobald ein Kanal über die API in den Zustand „Wird ausgeführt“ oder im klassischen Azure-Portal in den Zustand „Bereit“ oder „Streaming“ versetzt wird, wird die Abrechnung aktiv.
 
-Um die weitere Gebührenberechnung für den Kanal zu beenden, müssen Sie den Kanal über die API oder im klassischen Azure-Portal beenden. Sie sind für das Beenden Ihrer Kanäle verantwortlich, wenn Sie die Nutzung des Live Encoding-Kanals abgeschlossen haben. Wenn Sie einen Codierkanal nicht beenden, werden weiter Gebühren berechnet.
+Um die weitere Gebührenberechnung für den Kanal zu beenden, müssen Sie den Kanal über die API oder im klassischen Azure-Portal beenden. Sie sind für das Beenden Ihrer Kanäle verantwortlich, wenn Sie die Nutzung des Kanals abgeschlossen haben. Wenn Sie den Kanal nicht beenden, werden weiter Gebühren berechnet.
+
+>[AZURE.NOTE]Bei der Arbeit mit Standardkanälen deaktiviert AMS alle Kanäle automatisch, die 12 Stunden nach Verlust des Eingabefeeds immer noch den Status „Wird ausgeführt“ haben, und wenn keine Programme ausgeführt werden. Allerdings wird Ihnen dennoch die Zeit in Rechnung gestellt, die der Kanal den Status „Wird ausgeführt“ hatte.
 
 ###<a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus 
 
@@ -164,4 +166,4 @@ Beendet|Beendet|Nein
 
 [Media Services-Konzepte](media-services-concepts.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

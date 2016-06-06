@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    ms.author="masnider"/>
 
 
@@ -27,7 +27,7 @@ Der Clusterressourcen-Manager von Service Fabric ermöglicht eine sehr detaillie
 Die einzelnen Punkte im Detail:
 
 ## Platzierungseinschränkungen
-Platzierungseinschränkungen steuern, an welchen Knoten im Cluster ein Dienst tatsächlich ausgeführt werden kann. In der Regel ist die Ausführung einer bestimmten benannten Dienstinstanz oder aller Dienste eines Typs auf einen bestimmten Typ von Knoten beschränkt. Platzierungseinschränkungen hingegen sind erweiterbar – Sie können eine beliebige Anzahl von Eigenschaften auf Grundlage des Knotentyps definieren, und dann mit Einschränkungen für sie festlegen, wann der Dienst erstellt wird. Platzierungseinschränkungen sind über die Lebensdauer des Diensts dynamisch aktualisierbar, sodass Sie auf Veränderungen im Cluster reagieren können.
+Platzierungseinschränkungen steuern, an welchen Knoten im Cluster ein Dienst tatsächlich ausgeführt werden kann. In der Regel ist die Ausführung einer bestimmten benannten Dienstinstanz oder aller Dienste eines Typs auf einen bestimmten Typ von Knoten beschränkt. Platzierungseinschränkungen hingegen sind erweiterbar – Sie können eine beliebige Anzahl von Eigenschaften auf Grundlage des Knotentyps definieren, und dann mit Einschränkungen für sie festlegen, wann der Dienst erstellt wird. Platzierungseinschränkungen sind über die Lebensdauer des Diensts dynamisch aktualisierbar, sodass Sie auf Veränderungen im Cluster reagieren können. Weitere Informationen zu Platzierungseinschränkungen und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-properties).
 
 ## Metriken
 Metriken stellen die Liste der Ressourcen dar, auf die der Dienst verteilt wird, und enthalten Informationen darüber, wie viel von einer Ressource jedes Replikat oder jede Instanz des Diensts standardmäßig konsumiert. Metriken enthalten auch eine Gewichtung dessen, wie wichtig sie für den Dienst sind, falls Kompromisse erforderlich sind.
@@ -43,4 +43,4 @@ Es gibt weitere Platzierungsregeln, die in erster Linie in geografisch verstreut
 - Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md).
 - Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

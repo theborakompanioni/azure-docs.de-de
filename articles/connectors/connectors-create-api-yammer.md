@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der Yammer-API zu Ihren Logik-Apps | Microsoft Azure"
-description="Übersicht über die Yammer-API und REST-API-Parameter"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Hinzufügen des Yammer-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+description="Übersicht über den Yammer-Connector mit REST-API-Parametern"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Yammer-API
+# Erste Schritte mit dem Yammer-Connector
 
 Verbinden Sie sich mit Yammer, um auf Konversationen in Ihrem Unternehmensnetzwerk zuzugreifen.
 
@@ -38,10 +38,10 @@ Trigger | Aktionen
 --- | ---
 <ul><li>Wenn es in einer Gruppe eine neue Nachricht gibt</li><li>Wenn es in meinem Feed „Folgen“ eine neue Nachricht gibt</li></ul>| <ul><li>Alle Nachrichten abrufen</li><li>Nachrichten in einer Gruppe abrufen</li><li>Nachrichten aus meinem Feed „Folgen“ abrufen</li><li>Nachricht senden</li><li>Wenn es in einer Gruppe eine neue Nachricht gibt</li><li>Wenn es in meinem Feed „Folgen“ eine neue Nachricht gibt</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit Yammer
-Um die Yammer-API zu verwenden, stellen Sie zunächst eine **Verbindung** her und geben dann die Details für diese Eigenschaften an:
+Stellen Sie zum Verwenden des Yammer-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -195,4 +195,4 @@ Wenn eine Gruppen-ID angegeben ist, wird die Nachricht an die angegebene Gruppe,
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

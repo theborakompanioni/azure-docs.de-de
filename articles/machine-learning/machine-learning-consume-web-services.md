@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd"
-	ms.date="02/21/2016"
+	ms.date="05/22/2016"
 	ms.author="garye" />
 
 
@@ -56,9 +56,9 @@ Ein Beispiel für RRS ist das Überprüfen der Authentizität einer Anwendung. H
 
 ## Stapelausführungsdienst (Batch Execution Service BES)
 
-Ein Stapelausführungsdienst (Batch Execution Service, BES) ist ein Dienst zur asynchronen Bewertung eines umfangreichen Stapels von Datensätzen. Die Eingabe für den BES enthält einen Stapel von Datensätzen aus verschiedenen Quellen, z. B. Blobs, Tabellen in Azure, SQL Azure, HDInsight (beispielsweise Ergebnisse einer Hive-Abfrage) oder HTTP-Quellen. Die Ausgabe des BES enthält die Ergebnisse der Wertung. Die Ergebnisse werden in eine Datei im Azure-Blob-Speicher geschrieben, und Daten aus dem Speicherendpunkt werden in der Antwort zurückgegeben.
+Ein Stapelausführungsdienst (Batch Execution Service, BES) ist ein Dienst zur asynchronen Bewertung eines umfangreichen Stapels von Datensätzen. Die Eingabe für den BES enthält einen Stapel von Datensätzen aus verschiedenen Quellen, z. B. Blobs, Tabellen in Azure, SQL Azure, HDInsight (beispielsweise Ergebnisse einer Hive-Abfrage) oder HTTP-Quellen. Die Ausgabe des BES enthält die Ergebnisse der Wertung. Die Ergebnisse werden in eine Datei im Azure-Blob-Speicher geschrieben, und Daten aus dem Speicherendpunkt werden in der Antwort zurückgegeben.
 
-Ein BES ist nützlich, wenn Antworten nicht sofort benötigt werden, z. B. für regelmäßig geplante Bewertungen für einzelne Benutzer oder Geräte im Internet der Dinge (IOT).
+Ein BES ist nützlich, wenn Antworten nicht sofort benötigt werden, z. B. für regelmäßig geplante Bewertungen für einzelne Benutzer oder Geräte im Internet der Dinge (IOT).
 
 ## Beispiele
 Zum Erläutern der Funktionsweise von RRS und BES greifen wir auf ein Beispiel eines Azure-Webdiensts zurück. Dieser Dienst wird in einem IOT-Szenario (Internet der Dinge) verwendet werden. Der Einfachheit halber sendet unser Gerät nur einen Wert, `cog_speed`, und erhält eine einzelne Antwort zurück.
@@ -70,7 +70,7 @@ Vier Arten von Informationen sind erforderlich, um den RRS- oder den BES-Dienst 
 3.	Die erwarteten **Anforderungsheader** und der **Text** der API, die auf der API-Hilfeseite für den ausgewählten Dienst verfügbar sind
 4.	Die erwarteten **Antwortheader** und der **Text** der API, die auf der API-Hilfeseite für den ausgewählten Dienst verfügbar sind
 
-In den folgenden beiden Beispielen wird die Sprache C# verwendet, um den erforderlichen Code zu veranschaulichen. Die Zielplattform ist dabei ein Windows 8-Desktop.
+In den folgenden beiden Beispielen wird die Sprache C# verwendet, um den erforderlichen Code zu veranschaulichen. Die Zielplattform ist dabei ein Windows 8-Desktop.
 
 ### RRS-Beispiel
 Klicken Sie auf dem Dashboard des Diensts unter **API HELP PAGE** auf **REQUEST/RESPONSE**, um die API-Hilfeseite anzuzeigen. Auf dieser Seite finden Sie neben dem URI Eingabe- und Ausgabedefinitionen sowie Codebeispiele. Die API-Eingabe speziell für diesen Dienst wird nachstehend gezeigt und bildet die Nutzlast des API-Aufrufs.
@@ -685,4 +685,4 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 	        "operationId": "getSwaggerDocument",
 	        
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/04/2016"
+   ms.date="05/19/2016"
    ms.author="larryfr"/>
 
 
@@ -77,6 +77,12 @@ Es wird empfohlen, jeweils ein einzelnes Subnetz für die einzelnen HDInsight-Cl
 Für Windows-basierte Cluster ist ein virtuelles Azure-Netzwerk der Version 1 (klassisch) erforderlich, für Linux-basierte Cluster dagegen ein virtuelles Azure-Netzwerk der Version 2 (Azure-Ressourcen-Manager). Wenn nicht der richtige Netzwerktyp vorhanden ist, kann das Netzwerk nicht zum Erstellen des Clusters verwendet werden.
 
 Wenn sich Ressourcen in einem virtuellen Netzwerk befinden, das nicht von dem zu erstellenden Cluster verwendet werden kann, dann können Sie ein neues virtuelles Netzwerk erstellen, das vom Cluster verwendet werden kann, und es mit dem inkompatiblen virtuellen Netzwerk verbinden. Anschließend können Sie den Cluster in der erforderlichen Netzwerkversion erstellen, und da die beiden Netzwerke verknüpft sind, kann auf die Ressourcen im anderen Netzwerk zugegriffen werden. Weitere Informationen zum Herstellen einer Verbindung zwischen klassischen und neuen virtuellen Netzwerken finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../virtual-network/virtual-networks-arm-asm-s2s.md).
+
+###Benutzerdefiniertes DNS
+
+Wenn Sie ein virtuelles Netzwerk erstellen, stellt Azure eine Standardnamensauflösung für Azure-Dienste wie HDInsight bereit, die im Netzwerk installiert sind. Möglicherweise müssen Sie jedoch Ihr eigenes Domain Name System (DNS) für Situationen wie die plattformübergreifende Auflösung des Domänennamens verwenden. So beispielsweise bei der Kommunikation zwischen Diensten in zwei verknüpften virtuelle Netzwerken. HDInsight unterstützt sowohl die Standardnamensauflösung von Azure als auch das benutzerdefinierte DNS, wenn es mit Azure Virtual Network verwendet wird.
+
+Weitere Informationen zur Verwendung eigener DNS-Server in Azure Virtual Network finden Sie im Abschnitt __Namensauflösung mithilfe eines eigenen DNS-Servers__ des Dokuments [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
 ###Geschützte virtuelle Netzwerke
 
@@ -182,7 +188,7 @@ __Verwenden der Azure-Befehlszeilenschnittstelle__
         azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule3 -p "*" -o "*" -u "443" -f "168.61.48.131" -e "VirtualNetwork" -c "Allow" -y 302 -r "Inbound"
         azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "443" -f "138.91.141.162" -e "VirtualNetwork" -c "Allow" -y 303 -r "Inbound"
 
-3. Nachdem die Regeln erstellt wurden, gehen Sie wie folgt vor, um die neue Netzwerksicherheitsgruppe einem Subnetz zuzuordnen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das Azure Virtual Network enthält. Ersetzen Sie __VNETNAME__ und __SUBNETNAME__ durch den Namen des Azure Virtual Network und des Subnetzes, das Sie bei der Installation von HDInsight verwenden.
+3. Nachdem die Regeln erstellt wurden, gehen Sie wie folgt vor, um die neue Netzwerksicherheitsgruppe einem Subnetz zuzuordnen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das Azure Virtual Network enthält. Ersetzen Sie __VNETNAME__ und __SUBNETNAME__ durch den Namen des virtuellen Azure-Netzwerks und des Subnetzes, das Sie bei der Installation von HDInsight verwenden.
 
         azure network vnet subnet set RESOURCEGROUPNAME VNETNAME SUBNETNAME -w "/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
     
@@ -195,7 +201,7 @@ __Verwenden der Azure-Befehlszeilenschnittstelle__
 > * Azure PowerShell – ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
 > * Azure-Befehlszeilenschnittstelle – ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
 
-Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md). Informationen zum Steuern des Routings in einem Azure Virtual Network finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
+Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md). Informationen zum Steuern des Routings in einem virtuellen Azure-Netzwerk finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
 
 ##<a id="tasks"></a>Aufgaben und Informationen
 
@@ -303,4 +309,4 @@ In den folgenden Beispielen wird die Verwendung von HDInsight mit Azure Virtual 
 
 Weitere Informationen zu virtuellen Azure Virtual-Netzwerken finden Sie unter [Überblick über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

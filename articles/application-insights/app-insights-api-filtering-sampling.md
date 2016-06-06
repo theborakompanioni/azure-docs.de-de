@@ -3,7 +3,7 @@
 	description="Schreiben Sie Plug-Ins für das SDK, um die Telemetriedaten vor dem Senden der an das Application Insights-Portal zu filtern, aus diesen Stichproben zu erstellen oder ihnen Eigenschaften hinzuzufügen." 
 	services="application-insights"
     documentationCenter="" 
-	authors="alancameronwills" 
+	authors="beckylino" 
 	manager="douge"/>
  
 <tags 
@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
-	ms.author="awills"/>
+	ms.date="05/19/2016" 
+	ms.author="borooji"/>
 
 # Stichprobenerstellung, Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
@@ -30,13 +30,10 @@ Derzeit sind diese Features für das ASP.NET-SDK verfügbar.
 
 Vorbereitung:
 
-* Installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App. Installieren Sie die NuGet-Pakete manuell, und wählen Sie die neueste *Vorabversion* aus.
-* Probieren Sie die [Application Insights-API](app-insights-api-custom-events-metrics.md) aus. 
+* Installieren Sie das [Application Insights-SDK für ASP.NET v2](app-insights-asp-net.md) in Ihrer App. 
 
 
 ## Stichproben
-
-*Diese Funktion steht als Betaversion zur Verfügung.*
 
 Bei der [Erstellung von Stichproben](app-insights-sampling.md) handelt es sich um die empfohlene Methode zum Reduzieren des Datenverkehrs bei gleichzeitig präzisen Statistiken. Der Filter wählt verwandte Elemente, damit Sie zwischen den Elementen in der Diagnose navigieren können. Ereigniszähler werden im metrischen Explorer angepasst, um die gefilterten Elemente zu kompensieren.
 
@@ -77,7 +74,7 @@ Um eine Stichprobenerstellung mit festem Prozentsatz für die Daten von Webseite
 * Legen Sie einen Prozentsatz fest (in diesem Beispiel „10“), der „100/N“ entspricht. Dabei steht N für eine Ganzzahl. Beispiele: 50 (=100/2), 33,33 (=100/3), 25 (=100/4) oder 10 (=100/10). 
 * Wenn Sie auch auf dem Server die [Stichprobenerstellung mit festem Prozentsatz](app-insights-sampling.md) aktivieren, wird die Stichprobenerstellung zwischen Client und Server synchronisiert, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 
-[Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
+[Erfahren Sie mehr über Sampling](app-insights-sampling.md).
 
 <a name="filtering"></a>
 ## Filtern: ITelemetryProcessor
@@ -88,11 +85,11 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
 
 > [AZURE.WARNING] Die Filterung der vom SDK gesendeten Telemetriedaten mithilfe von Prozessoren kann die im Portal angezeigten Statistiken verfälschen und die Nachverfolgung verwandter Elemente erschweren.
 > 
-> Verwenden Sie stattdessen die [Stichprobenerstellung](#sampling).
+> Verwenden Sie stattdessen [Sampling](#sampling).
 
 ### Erstellen eines Telemetrieprozessors
 
-1. Aktualisieren Sie das Application Insights-SDK auf die neueste Version (2.0.0-beta2 oder höher). Klicken Sie im Visual Studio-Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie „NuGet-Pakete verwalten“ aus. Wählen Sie im NuGet-Paket-Manager **Vorabversion einschließen** aus, und suchen Sie nach "Microsoft.ApplicationInsights.Web".
+1. Vergewissern Sie sich, dass in Ihrem Projekt das Application Insights-SDK in Version 2.0.0 oder höher verwendet wird. Klicken Sie im Visual Studio-Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie „NuGet-Pakete verwalten“ aus. Aktivieren Sie im NuGet-Paket-Manager „Microsoft.ApplicationInsights.Web“.
 
 1. Implementieren Sie zum Erstellen eines Filters „ITelemetryProcessor“. Hierbei handelt es sich um einen weiteren Erweiterungspunkt wie Telemetriemodul, Telemetrieinitiliasierer und Telemetriekanal.
 
@@ -239,6 +236,11 @@ public void Process(ITelemetry item)
 }
 
 ```
+
+#### Diagnostizieren von Abhängigkeitsproblemen
+
+In [diesem Blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) wird ein Projekt zur Diagnose von Abhängigkeitsproblemen beim automatischen Senden regulärer Pings an Abhängigkeiten beschrieben.
+
 
 <a name="add-properties"></a>
 ## Hinzufügen von Eigenschaften: ITelemetryInitializer
@@ -419,4 +421,4 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 # Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
@@ -50,7 +50,7 @@ Geben Sie einen Namen für die Anwendung ein, wählen Sie** Webanwendung und/ode
 
 Kopieren Sie für den **Anmelde-URL** den Wert für **Umleitungs-URL** aus dem Abschnitt **Azure Active Directory** der Registerkarte **Externe Identitäten** im Herausgeberportal, und entfernen Sie das Suffix **-aad** am Ende der URL. In diesem Beispiel erhält **Anmelde-URL** den Wert `https://aad03.portal.current.int-azure-api.net/signin`.
 
-Geben Sie für die **App-ID-URL** entweder die Standarddomäne oder eine benutzerdefinierte Domäne für das Azure Active Directory-Verzeichnis ein, und hängen Sie eine eindeutige Zeichenfolge an die Domäne an. In diesem Beispiel wird die Standarddomäne ****https://contoso5api.onmicrosoft.com** mit dem Suffix **/api** angegeben.
+Geben Sie für die **App-ID-URL** entweder die Standarddomäne oder eine benutzerdefinierte Domäne für das Azure Active Directory-Verzeichnis ein, und hängen Sie eine eindeutige Zeichenfolge an die Domäne an. In diesem Beispiel wird die Standarddomäne **https://contoso5api.onmicrosoft.com** mit dem Suffix **/api** angegeben.
 
 ![Neue Azure Active Directory-Anwendung – Eigenschaften][api-management-new-aad-application-2]
 
@@ -84,7 +84,7 @@ Wechseln Sie zurück zum Herausgeberportal, und fügen Sie die aus der Azure Act
 
 ![Client-ID][api-management-client-id]
 
-Wechseln Sie zurück zur Azure Active Directory-Konfiguration, klicken Sie im Abschnitt **Schlüssel** auf die Dropdownliste **Dauer auswählen**, und geben Sie ein Intervall an. In diesem Beispiel wird der Wert **1 Jahr** verwendet.
+Wechseln Sie zurück zur Azure Active Directory-Konfiguration, klicken Sie im Abschnitt **Schlüssel** auf die Dropdownliste **Dauer auswählen**, und geben Sie ein Intervall an. In diesem Beispiel wird der Wert **1 Jahr** verwendet.
 
 ![Schlüssel][api-management-aad-key-before-save]
 
@@ -228,4 +228,4 @@ Der Benutzer ist jetzt beim Entwicklerportal für Ihre API Management-Dienstinst
 
 [Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

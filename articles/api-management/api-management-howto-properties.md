@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/18/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 
@@ -71,7 +71,7 @@ Beim Betrachten der [Verfolgung mit dem API-Inspektor](api-management-howto-api-
 
 ![Verfolgung mit dem API-Inspektor][api-management-api-inspector-trace]
 
-Beachten Sie, dass Eigenschaftswerte zwar Richtlinienausdrücke enthalten können, Eigenschaftswerte aber keine anderen Eigenschaften enthalten können. Wenn Text, der einen Eigenschaftsverweis enthält, als Eigenschaftswert verwendet wird, z. B. `Property value text {{MyProperty}}`, wird dieser Eigenschaftsverweis nicht ersetzt, und er wird als Bestandteil des Eigenschaftswerts eingebunden.
+Beachten Sie, dass Eigenschaftswerte zwar Richtlinienausdrücke enthalten können, Eigenschaftswerte aber keine anderen Eigenschaften enthalten können. Wenn Text, der einen Eigenschaftsverweis enthält, als Eigenschaftswert verwendet wird, z. B. `Property value text {{MyProperty}}`, wird dieser Eigenschaftsverweis nicht ersetzt, und er wird als Bestandteil des Eigenschaftswerts eingebunden.
 
 ## So erstellen Sie eine Eigenschaft
 
@@ -149,4 +149,4 @@ Geben Sie zum Filtern der Eigenschaftenliste nach Tagwerten ein oder mehrere Tag
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

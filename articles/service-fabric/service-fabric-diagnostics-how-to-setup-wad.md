@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/08/2016"
+   ms.date="05/20/2016"
    ms.author="toddabel"/>
 
 
@@ -59,11 +59,11 @@ Nach dem Exportieren der Dateien ist eine Änderung erforderlich. Bearbeiten Sie
 ### Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung mithilfe des Azure Resource Managers
 Wenn Sie einen Cluster mithilfe des Ressourcen-Managers erstellen möchten, müssen Sie der Ressourcen-Manager-Vorlage vom Typ „Vollständiger Cluster“ vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad). Um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen, öffnen Sie die Datei **azuredeploy.json** und suchen nach **IaaSDiagnostics**. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
 
-Alternativ können Sie das Ressourcen-Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Informationen zu den Parametern, die an den Befehl übergeben werden müssen, finden Sie weiter unten. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mit PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md).
+Alternativ können Sie das Ressourcen-Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureRmResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Informationen zu den Parametern, die an den Befehl übergeben werden müssen, finden Sie weiter unten. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mit PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md).
 
 ```powershell
 
-New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
 ```
 
 ### Bereitstellen der Diagnoseerweiterung für einen vorhandenen Cluster
@@ -173,10 +173,10 @@ Nachdem Sie die Datei **template.json** wie beschrieben geändert haben, veröff
 
 
 ## Aktualisieren der Diagnose zum Sammeln und Hochladen von Protokollen aus neuen EventSource-Kanälen
-Wenn Sie die Diagnose für das Sammeln von Protokollen aus neuen EventSource-Kanälen aktualisieren möchten, die eine neu bereitzustellende Anwendung darstellen, müssen Sie einfach nur die gleichen Schritte wie im [obigen Abschnitt](#deploywadarm) ausführen, in denen das Einrichten der Diagnose für einen vorhandenen Cluster beschrieben wird. Sie müssen den *EtwEventSourceProviderConfiguration*-Abschnitt in der Datei **template.json** aktualisieren, um Einträge für die neuen EventSource-Elemente hinzuzufügen, bevor Sie das Konfigurationsupdate mit dem PowerShell-Befehl *New-AzureResourceGroupDeployment* ausführen.
+Wenn Sie die Diagnose für das Sammeln von Protokollen aus neuen EventSource-Kanälen aktualisieren möchten, die eine neu bereitzustellende Anwendung darstellen, müssen Sie einfach nur die gleichen Schritte wie im [obigen Abschnitt](#deploywadarm) ausführen, in denen das Einrichten der Diagnose für einen vorhandenen Cluster beschrieben wird. Sie müssen den *EtwEventSourceProviderConfiguration*-Abschnitt in der Datei **template.json** aktualisieren, um Einträge für die neuen EventSource-Elemente hinzuzufügen, bevor Sie das Konfigurationsupdate mit dem PowerShell-Befehl *New-AzureRmResourceGroupDeployment* ausführen.
 
 
 ## Nächste Schritte
 Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) und [Reliable Services](service-fabric-reliable-services-diagnostics.md) ausgegeben werden, um besser zu verstehen, welche Ereignisse Sie beim Behandeln von Problemen untersuchen sollten.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

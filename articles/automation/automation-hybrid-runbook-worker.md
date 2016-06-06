@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/18/2016"
+   ms.date="05/20/2016"
    ms.author="bwren" />
 
 # Azure Automation – Hybrid-Runbook-Worker
@@ -31,7 +31,7 @@ Sie können einen oder mehrere Computer in Ihrem Datencenter als Hybrid-Runbook-
 
 Es gelten keine eingehenden Firewallanforderungen zur Unterstützung von Hybrid-Runbook-Workern. Der Agent auf dem lokalen Computer initiiert die gesamte Kommunikation mit Azure Automation in der Cloud. Wenn ein Runbook gestartet wird, erstellt Azure Automation eine Anweisung, die vom Agent abgerufen wird. Der Agent ruft anschließend das Runbook und alle Parameter über einen Pullvorgang ab. Außerdem werden alle im Runbook verwendeten [Objekte](http://msdn.microsoft.com/library/dn939988.aspx) aus Azure Automation abgerufen.
 
->[AZURE.NOTE] Hybrid Runbook Worker unterstützen gegenwärtig keine [DSC-Konfigurationen](automation-dsc-overview.md).
+>[AZURE.NOTE] Zurzeit wird keine Kompilierung von [DSC-Konfigurationen](automation-dsc-overview.md) in Automation DSC auf einem Hybrid Runbook Worker unterstützt.
 
 ## Hybrid-Runbook-Workergruppen
 
@@ -57,11 +57,13 @@ Firewallanforderungen:
 
 - Der auf dem lokalen Computer ausgeführte Hybrid Runbook Worker muss an Port 443, 9354 und 30000-30199 über ausgehenden Zugriff auf „*.cloudapp.net“ verfügen.
 
+>[AZURE.NOTE] Es wird nicht empfohlen, das Hybrid Runbook Worker-Feature auf einem Domänencontroller in Ihrer Umgebung zu installieren.
+
 ## Installieren von Hybrid-Runbook-Worker
 Das folgende Verfahren beschreibt die Installation und Konfiguration von Hybrid Runbook Worker. Führen Sie die ersten beiden Schritte einmal für Ihre Automation-Umgebung durch, und wiederholen Sie dann die verbleibenden Schritte für jeden Workercomputer.
 
 ### 1\. Erstellen eines Operations Management Suite-Arbeitsbereichs
-Sofern Sie noch nicht über einen Operations Management Suite-Arbeitsbereich verfügen, erstellen Sie diesen mithilfe der Anweisungen unter [Einrichten Ihres Arbeitsbereichs](https://technet.microsoft.com/library/mt484119.aspx). Wenn Sie bereits über einen Arbeitsbereich verfügen, können Sie diesen verwenden.
+Sofern Sie noch nicht über einen Operations Management Suite-Arbeitsbereich verfügen, erstellen Sie diesen mithilfe der Anweisungen unter [Verwalten des Zugriffs auf Log Analytics](https://technet.microsoft.com/library/mt484119.aspx). Wenn Sie bereits über einen Arbeitsbereich verfügen, können Sie diesen verwenden.
 
 ### 2\. Hinzufügen der Automation-Lösung zum Operations Management Suite-Arbeitsbereich
 Die Funktionalität von Operations Management Suite kann durch Lösungen erweitert werden. Die Automation-Lösung fügt Azure Automation Funktionalität hinzu, einschließlich der Unterstützung für Hybrid Runbook Worker. Wenn Sie die Lösung Ihrem Arbeitsbereich hinzufügen, werden Workerkomponenten automatisch per Push auf den Agent-Computer übertragen, den Sie im nächsten Schritt installieren werden.
@@ -81,7 +83,7 @@ Wenn Sie Operations Management Suite einen Agent hinzufügen, lädt die Automati
 Öffnen Sie eine PowerShell-Sitzung im Administratormodus, und führen Sie die folgenden Befehle zum Importieren des Moduls aus.
 
 	cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation<version>\HybridRegistration"
-	Import-Module HybridRegistration.psd1
+	Import-Module .\HybridRegistration.psd1
 
 
 Führen Sie dann das Cmdlet **Add-HybridRunbookWorker** mit der folgenden Syntax aus:
@@ -127,7 +129,7 @@ Für Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, können S
 
 Runbooks werden standardmäßig im Kontext des lokalen Systemkontos auf dem lokalen Computer ausgeführt. Deshalb müssen sie sich bei Ressourcen authentifizieren, auf die sie zugreifen.
 
-Sie können die Objekte [Anmeldeinformationen](http://msdn.microsoft.com/library/dn940015.aspx) und [Zertifikat](http://msdn.microsoft.com/library/dn940013.aspx) in Ihrem Runbook gemeinsam mit Cmdlets zur Angabe von Anmeldeinformationen verwenden, um eine Authentifizierung für verschiedene Ressourcen durchzuführen. Das folgende Beispiel zeigt einen Teil eines Runbooks, mit dem ein Computer neu gestartet wird. Es werden Anmeldeinformationen aus einem Anmeldeinformationsobjekt und der Name des Computers aus einem Variablenobjekt abgerufen, anschließend werden diese Werte im Cmdlet "Restart-Computer" eingesetzt.
+Sie können die [Anmeldeinformationsobjekte](http://msdn.microsoft.com/library/dn940015.aspx) und [Zertifikatobjekte](http://msdn.microsoft.com/library/dn940013.aspx) in Ihrem Runbook gemeinsam mit Cmdlets zur Angabe von Anmeldeinformationen verwenden, um eine Authentifizierung für verschiedene Ressourcen durchzuführen. Das folgende Beispiel zeigt einen Teil eines Runbooks, mit dem ein Computer neu gestartet wird. Es werden Anmeldeinformationen aus einem Anmeldeinformationsobjekt und der Name des Computers aus einem Variablenobjekt abgerufen, anschließend werden diese Werte im Cmdlet "Restart-Computer" eingesetzt.
 
 	$Cred = Get-AutomationCredential "MyCredential"
 	$Computer = Get-AutomationVariable "ComputerName"
@@ -193,4 +195,4 @@ Sie können anhand der folgenden Kriterien prüfen, ob Azure Automation mit Hybr
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

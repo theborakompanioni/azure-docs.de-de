@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/22/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # Austauschen des EBOD-Controllers eines StorSimple-Geräts
@@ -28,7 +28,7 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 
 - In alle nicht verwendeten Einschubfächer müssen leere EBOD-Module eingesetzt werden. Das Gehäuse wird nicht ordnungsgemäß gekühlt, wenn ein Einschubfach leer bleibt.
 
-- Der EBOD-Controller kann bei laufendem Betrieb ausgebaut bzw. ausgetauscht werden. Bauen Sie ein fehlerhaftes Modul erst aus, wenn ein Austauschmodul verfügbar ist. Sobald Sie den Austauschvorgang eingeleitet haben, muss dieser binnen 10 Minuten abgeschlossen werden.
+- Der EBOD-Controller kann bei laufendem Betrieb ausgebaut bzw. ausgetauscht werden. Bauen Sie ein fehlerhaftes Modul erst aus, wenn ein Austauschmodul verfügbar ist. Sobald Sie den Austauschvorgang eingeleitet haben, muss dieser binnen 10 Minuten abgeschlossen werden.
 
 >[AZURE.IMPORTANT] Bevor Sie versuchen, StorSimple-Komponenten auszubauen oder auszutauschen, sollten Sie sich mit den [Konventionen für Sicherheitssymbole](storsimple-safety.md#safety-icon-conventions) und anderen [Sicherheitsvorkehrungen](storsimple-safety.md) vertraut machen.
 
@@ -87,19 +87,19 @@ Im folgenden Verfahren sowie in der Tabelle wird erläutert, wie ein EBOD-Contro
 
 4. Schließen Sie die Kabel wieder an. Verwenden Sie die genaue Konfiguration, die vor dem Austausch vorhanden war. Der folgenden Abbildung und Tabelle können Sie die Einzelheiten entnehmen, wie die Kabel anzuschließen sind.
 
-    ![Stromverkabelung des 4 HE-Geräts](./media/storsimple-ebod-controller-replacement/IC770723.png)
+    ![Stromverkabelung des 4 HE-Geräts](./media/storsimple-ebod-controller-replacement/IC770723.png)
 
     **Abbildung 4** Erneutes Anschließen der Kabel
 
     |Bezeichnung|Beschreibung|
     |:----|:----------|
     |1|Primäres Gehäuse|
-    |2|PCM 0|
-    |3|PCM 1|
-    |4|Controller 0|
-    |5|Controller 1|
-    |6|EBOD-Controller 0|
-    |7|EBOD-Controller 1|
+    |2|PCM 0|
+    |3|PCM 1|
+    |4|Controller 0|
+    |5|Controller 1|
+    |6|EBOD-Controller 0|
+    |7|EBOD-Controller 1|
     |8|EBOD-Gehäuse|
     |9|Power Distribution Units|
 
@@ -107,4 +107,4 @@ Im folgenden Verfahren sowie in der Tabelle wird erläutert, wie ein EBOD-Contro
 
 Erfahren Sie mehr zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0525_2016-->

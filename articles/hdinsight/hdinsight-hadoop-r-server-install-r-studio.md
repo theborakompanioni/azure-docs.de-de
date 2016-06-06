@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="05/24/2016"
    ms.author="jeffstok"/>
 
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
 ## Voraussetzungen
 
-* Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server auf HDInsight-Clustern](hdinsight-hadoop-r-server-get-started.mdulet).
+* Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md).
 * Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen. 
 
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 1. Identifizieren Sie den Edgeknoten des Clusters. Für einen HDInsight-Cluster mit R Server gilt die folgende Namenskonvention für Hauptknoten und Edgeknoten.
 
 	* Hauptknoten: `CLUSTERNAME-ssh.azurehdinsight.net`
-	* Edgeknoten: `rserver.CLUSTERNAME.ssh.azurehdinsight.net` 
+	* Edgeknoten: `r-server.CLUSTERNAME-ssh.azurehdinsight.net` 
 
 3. Greifen Sie unter Verwendung des obigen Namensmusters per SSH auf den Edgeknoten des Clusters zu.
  
@@ -75,7 +75,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
 	* Öffnen Sie auf einem Linux-Client oder auf einem Windows-Client (unter Verwendung von [Cygwin](http://www.redhat.com/services/custom/cygwin/)) eine Terminalsitzung, und verwenden Sie den folgenden Befehl:
 
-			ssh -L localhost:8787:localhost:8787 USERNAME@rserver.CLUSTERNAME.ssh.azurehdinsight.net
+			ssh -L localhost:8787:localhost:8787 USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.net
 			
 		Ersetzen Sie **USERNAME** mit einem SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** mit dem Namen des HDInsight-Clusters.
 
@@ -124,4 +124,4 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

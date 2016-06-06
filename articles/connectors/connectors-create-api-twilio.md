@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der Twilio-API zu Ihren Logik-Apps | Microsoft Azure"
-description="Übersicht über die Twilio-API und REST-API-Parameter"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Hinzufügen des Twilio-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+description="Übersicht über den Twilio-Connector mit REST-API-Parametern"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/12/2016"
+ms.date="05/18/2016"
 ms.author="mandia"/>
 
-# Erste Schritte mit der Twilio-API
+# Erste Schritte mit dem Twilio-Connector
 
 Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichten zu senden und zu empfangen.
 
@@ -31,16 +31,16 @@ Mit Twilio können Sie folgende Aktionen ausführen:
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
-Die Twilio-API bietet die folgenden Aktionen. Es gibt keine Trigger.
+Der Twilio-Connector beinhaltet die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen|
 | --- | --- |
 |Keine| <ul><li>Nachricht abrufen</li><li>Nachrichten auflisten</li><li>Nachricht senden</li></ul>|
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit Twilio
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Twilio-Werte ein:
+Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, geben Sie die folgenden Twilio-Werte ein:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -249,4 +249,4 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/25/2016" 
 	ms.author="antonba"/>
 
 # Delegieren von Benutzerregistrierung und Produktabonnierung
@@ -109,7 +109,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 	- **operation**: gibt den Typ der Delegierungsanforderung an. Für Produktabonnierungsanfragen sind die folgenden Optionen gültig:
 		- „Subscribe“: Anfrage für ein Abonnement eines Produkts mit der angegebenen ID (siehe unten) für den Benutzer
 		- „Unsubscribe“: Anfrage zur Beendigung des Abonnement für ein Produkt durch den Benutzer
-		- „Renew“: Anfrage zur Erneuerung eines Abonnements durch den Benutzer (weil dieses z. B. demnächst abläuft)
+		- „Renew“: Anfrage zur Erneuerung eines Abonnements durch den Benutzer (weil dieses z. B. demnächst abläuft)
 	- **productId**: Die ID des Produkts, das der Benutzer abonnieren möchte
 	- **userId**: Die ID des Benutzers, der die Anforderung gestellt hat
 	- **salt**: Eine spezielle Salt-Zeichenfolge, mit der ein Sicherheitshash generiert wird
@@ -178,4 +178,4 @@ Weitere Informationen zum Delegieren finden Sie im folgenden Video.
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 # Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
@@ -96,7 +96,7 @@ Klicken Sie auf **Speichern**, um die Konfigurationsänderungen der API zu speic
 
 ## Nächste Schritte
 
-Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absichern von Back-End-Diensten es gibt, z. B. HTTP-Standardauthentifizierung oder Authentifizierung mit gemeinsamem geheimen Schlüssel.
+Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absichern von Back-End-Diensten es gibt, z. B. HTTP-Standardauthentifizierung oder Authentifizierung mit gemeinsamem geheimen Schlüssel.
 
 > [AZURE.VIDEO last-mile-security]
 
@@ -129,7 +129,7 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 
 [Azure API Management-REST-API-Zertifikatsentität]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel]: https://azure.microsoft.com/de-DE/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel]: https://azure.microsoft.com/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
@@ -141,4 +141,4 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

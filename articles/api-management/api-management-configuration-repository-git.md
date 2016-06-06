@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/21/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 
@@ -162,7 +162,7 @@ Die Dateien und Ordner im lokalen Git-Repository enthalten die Konfigurationsinf
 | Ordner „products“ | Enthält die Konfiguration für die Produkte in der Dienstinstanz |
 | Ordner „templates“ | Enthält die Konfiguration für die E-Mail-Vorlagen in der Dienstinstanz |
 
-Jeder Ordner kann eine oder mehrere Dateien enthalten, und in einigen Fällen einen oder mehrere Ordner, z. B. ein Ordner für jede API, jedes Produkt oder jede Gruppe. Die Dateien in jedem Ordner gelten für den Entitätstyp, der durch den Namen des Ordners beschrieben wird.
+Jeder Ordner kann eine oder mehrere Dateien enthalten, und in einigen Fällen einen oder mehrere Ordner, z. B. ein Ordner für jede API, jedes Produkt oder jede Gruppe. Die Dateien in jedem Ordner gelten für den Entitätstyp, der durch den Namen des Ordners beschrieben wird.
 
 | Dateityp | Zweck |
 |-----------|------------------------------------------------------------------------|
@@ -297,4 +297,4 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

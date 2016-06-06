@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der Slack-API zu Ihren Logik-Apps | Microsoft Azure"
-description="Erste Schritte mit der Slack-API (bzw. dem Slack-Connector) in Ihren Microsoft Azure App Service-Logik-Apps"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Verwenden des Slack-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erste Schritte mit dem Slack-Connector in Ihren Microsoft Azure App Service-Logik-Apps"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Slack-API
+# Erste Schritte mit dem Slack-Connector
 
 Slack ist ein Tool für die Kommunikation in Teams, das alle Kommunikationen in Ihrem Team zentral zusammenführt und unmittelbar durchsuchbar und überall verfügbar macht.
 
@@ -42,7 +42,7 @@ Sie können diese Aktionen ausführen:
 |--- | ---|
 |PostMessage|Sendet eine Nachricht an einen bestimmten Kanal.|
 ## Herstellen einer Verbindung mit Slack
-Um die Slack-API zu verwenden, stellen Sie zunächst eine **Verbindung** her und geben dann die Details für diese Eigenschaften an:
+Stellen Sie zum Verwenden des Slack-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -52,18 +52,13 @@ Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfigur
 
 1. Wählen Sie **Wiederholung** aus.
 2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
-3. Wählen Sie **Aktion hinzufügen**.
-![Slack konfigurieren][1]  
+3. Wählen Sie **Aktion hinzufügen**. ![Slack konfigurieren][1]  
 4. Geben Sie in das Suchfeld „Slack“ ein, und warten Sie, bis die Suche alle Einträge mit Slack im Namen zurückgibt.
 5. Wählen Sie **Slack – Nachricht veröffentlichen** aus.
-6. Wählen Sie **Bei Slack anmelden**:
-![Slack konfigurieren][2]
-7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren.
-![Slack konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App:
-![Slack konfigurieren][5] 
-9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu.
-![Slack konfigurieren][6]
+6. Wählen Sie **Bei Slack anmelden**: ![Slack konfigurieren][2]
+7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren. ![Slack konfigurieren][3]  
+8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App: ![Slack konfigurieren][5] 
+9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu. ![Slack konfigurieren][6]
 10. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
 
 
@@ -486,4 +481,4 @@ Keine der Eigenschaften ist erforderlich.
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/07/2016"
+   ms.date="05/24/2016"
    ms.author="v-sharos" />
 
 # Was ist der StorSimple Snapshot Manager?
@@ -25,7 +25,7 @@ Diese Übersicht bietet eine Einführung in StorSimple Snapshot Manager, eine Be
 
 Eine Übersicht über das gesamte Microsoft Azure StorSimple-System, einschließlich StorSimple-Gerät, StorSimple Manager-Dienst, StorSimple Snapshot Manager und StorSimple-Adapter für SharePoint, finden Sie unter [StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung](storsimple-overview.md).
  
->[AZURE.NOTE]
+>[AZURE.NOTE] 
 >
 >- StorSimple Snapshot Manager eignet sich nicht zur Verwaltung von Microsoft Azure StorSimple Virtual Arrays (auch bekannt als lokale virtuelle StorSimple-Geräte).
 >
@@ -38,9 +38,9 @@ Der StorSimple Snapshot Manager stellt eine zentrale Verwaltungskonsole bereit, 
 - Konfigurieren, Sichern und Löschen von Volumes
 - Konfigurieren von Volumegruppen, um sicherzustellen, dass gesicherte Daten anwendungskonsistent sind
 - Verwalten von Sicherungsrichtlinien, damit die Daten nach einem vordefinierten Zeitplan gesichert werden.
-- Erstellen unabhängiger Kopien von Daten, die in der Cloud gespeichert und für die Notfallwiederherstellung verwendet werden können
+- Erstellen lokaler und cloudbasierter Momentaufnahmen, die in der Cloud gespeichert und für die Notfallwiederherstellung verwendet werden können.
 
-Mit dem StorSimple Snapshot Manager können Sie Volumes bereitstellen und diese dann in Volumegruppen konfigurieren, i. d. R. nach Anwendung. Der StorSimple Snapshot Manager verwendet diese Volumegruppen zum Erstellen von anwendungskonsistenten Sicherungskopien. (Anwendungskonsistenz ist gegeben, wenn alle zugehörigen Dateien und Datenbanken synchron sind und den tatsächlichen Zustand der Anwendung zu einem bestimmten Zeitpunkt darstellen.)
+StorSimple Snapshot Manager ruft die Liste der Anwendungen ab, die für den VSS-Anbieter auf dem Host registriert sind. Damit anwendungskonsistente Sicherungen erstellt werden, überprüft der Manager anschließend die von einer Anwendung verwendeten Volumes und schlägt zu konfigurierende Volumegruppen vor. Der StorSimple Snapshot Manager verwendet diese Volumegruppen zum Erstellen von anwendungskonsistenten Sicherungskopien. (Anwendungskonsistenz ist gegeben, wenn alle zugehörigen Dateien und Datenbanken synchron sind und den tatsächlichen Zustand der Anwendung zu einem bestimmten Zeitpunkt darstellen.)
 
 StorSimple Snapshot Manager-Sicherungen sind inkrementelle Momentaufnahmen, die nur die Änderungen seit der letzten Sicherung erfassen. Deshalb verbrauchen die Sicherungen weniger Speicherplatz und können schnell erstellt und wiederhergestellt werden. Der StorSimple Snapshot Manager verwendet den Windows-Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass in den Momentaufnahmen anwendungskonsistente Daten erfasst werden. (Weitere Informationen finden Sie im Abschnitt "Integration in den Windows-Volumeschattenkopie-Dienst".) Sie können mit dem StorSimple Snapshot Manager Sicherungszeitpläne erstellen oder sofortige Sicherungen anlegen. Wenn Sie anschließend Daten aus einer Sicherung wiederherstellen müssen, ermöglicht der StorSimple Snapshot Manager die Auswahl aus in einem Katalog mit lokalen oder Cloudmomentaufnahmen. Azure StorSimple stellt nur die erforderlichen Daten wieder her, wenn sie benötigt werden – dies verhindert Verzögerungen bei der Datenverfügbarkeit.)
 
@@ -62,7 +62,7 @@ Sie können den StorSimple Snapshot Manager zum Konfigurieren und Sichern der fo
 
 - **Freigegebene Clustervolumes**: Bei freigegebenen Clustervolumes (CSV) können mehrere Knoten in einem Failovercluster gleichzeitig auf demselben Datenträger lesen oder schreiben. Failover von einem Knoten auf einen anderen Knoten können sehr schnell durchgeführt werden, ohne dass eine Änderung am Besitz für das Laufwerk erforderlich ist oder dass ein Volume bereitgestellt, seine Bereitstellung aufgehoben oder ein Volume entfernt werden muss.
 
->[AZURE.IMPORTANT]Mischen Sie keine freigegebene Clustervolumes mit nicht freigegebenen Clustervolumes in derselben Momentaufnahme. Das Vermischen von freigegebenen Clustervolumes mit nicht freigegebenen Clustervolumes in einer Momentaufnahme wird nicht unterstützt.
+>[AZURE.IMPORTANT] Mischen Sie keine freigegebene Clustervolumes mit nicht freigegebenen Clustervolumes in derselben Momentaufnahme. Das Vermischen von freigegebenen Clustervolumes mit nicht freigegebenen Clustervolumes in einer Momentaufnahme wird nicht unterstützt.
  
 Sie können mit dem StorSimple Snapshot Manager komplette Volumegruppen oder einzelne Volumes klonen und einzelne Dateien wiederherstellen.
 
@@ -79,7 +79,7 @@ Der StorSimple Snapshot Manager verwendet Volumegruppen zum Erstellen von anwend
 
 Volumegruppen sind nicht dasselbe wie Volumecontainer. Ein Volumecontainer enthält ein oder mehrere Volumes, die gemeinsame Einstellungen für das Cloudspeicherkonto und andere Attribute wie die Verschlüsselung und die Bandbreitenauslastung haben. Ein Volumecontainer kann bis zu 256 nach Bedarf bereitgestellte StorSimple-Volumes enthalten. Weitere Informationen zu Volumecontainern finden Sie unter [Verwalten von Volumecontainern](storsimple-manage-volume-containers.md). Volumegruppen sind Sammlungen von Volumes, die Sie für Sicherungsvorgänge konfigurieren. Wenn Sie zwei Volumes, die zu verschiedenen Volumecontainern gehören, in einer einzelnen Volumegruppe platzieren und dann eine Sicherungsrichtlinie für diese Volumegruppe erstellen, wird jedes Volume mithilfe des zugehörigen Speicherkontos im entsprechenden Volumecontainer gesichert.
 
->[AZURE.NOTE]Alle Volumes in einer Volumegruppe müssen von einem Cloud-Service Provider stammen.
+>[AZURE.NOTE] Alle Volumes in einer Volumegruppe müssen von einem Cloud-Service Provider stammen.
 
 ## Integration in den Windows-Volumeschattenkopie-Dienst
 
@@ -156,4 +156,4 @@ Informationen zum Überwachen von Sicherungsaufträgen finden Sie unter [Anzeige
 
 - [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) herunterladen.
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0525_2016-->

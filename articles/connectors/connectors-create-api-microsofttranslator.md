@@ -1,13 +1,13 @@
 <properties
-	pageTitle="Hinzufügen von Microsoft Translator zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Microsoft Translator-API und REST-API-Parameter"
-	services=""
+    pageTitle="Hinzufügen von Microsoft Translator zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Microsoft Translator-Connector mit REST-API-Parametern"
+    services=""
     suite=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -15,11 +15,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der Microsoft Translator-API
-Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Die Microsoft Translator-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem Microsoft Translator-Connector
+Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Der Microsoft Translator-Connector kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 - PowerApps
@@ -32,9 +32,9 @@ Mit Microsoft Translator können Sie folgende Aktionen ausführen:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die von Microsoft Translator abgerufen werden. 
 - Verwenden von Aktionen, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn beispielsweise eine neue Datei in Dropbox erstellt wird, können Sie den Text in der Datei mit Microsoft Translator in eine andere Sprache übersetzen.
-- Hinzufügen der Microsoft Translator-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
+- Hinzufügen des Microsoft Translator-Connectors zu PowerApps Enterprise. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -45,7 +45,12 @@ Trigger | Aktionen
 --- | ---
 Keine | <ul><li>Sprache erkennen</li><li>Text-to-Speech</li><li>Text übersetzen</li><li>Sprachen abrufen</li><li>Sprachen für Sprachausgabe abrufen</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
+
+
+## Herstellen einer Verbindung mit Microsoft Translator
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 
 
 ## Swagger-REST-API – Referenz
@@ -62,11 +67,11 @@ Erkennt die Ausgangssprache des angegebenen Texts. ```GET: /Detect```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Text-to-Speech    
-Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in Sprache. ```GET: /Speak```
+Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in eine Sprachausgabe. ```GET: /Speak```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -77,11 +82,11 @@ Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in Sprache
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Text übersetzen    
-Konvertiert Text mit Microsoft Translator in eine bestimmte Sprache. ```GET: /Translate```
+Übersetzt Text mit Microsoft Translator in eine angegebene Sprache. ```GET: /Translate```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -94,7 +99,7 @@ Konvertiert Text mit Microsoft Translator in eine bestimmte Sprache. ```GET: /Tr
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Sprachen abrufen    
@@ -106,11 +111,11 @@ Es gibt keine Parameter für diesen Aufruf.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Sprachen für Sprachausgabe abrufen    
-Ruft die verfügbaren Sprachen für die Sprachsynthese ab. ```GET: /SpeakLanguages```
+Ruft die für die Sprachsynthese verfügbaren Sprachen ab. ```GET: /SpeakLanguages```
 
 Es gibt keine Parameter für diesen Aufruf.
 
@@ -118,7 +123,7 @@ Es gibt keine Parameter für diesen Aufruf.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ## Objektdefinitionen
 
@@ -132,7 +137,7 @@ Es gibt keine Parameter für diesen Aufruf.
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 
@@ -141,4 +146,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/connectors-create-api-microsofttranslator/register-your-application.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

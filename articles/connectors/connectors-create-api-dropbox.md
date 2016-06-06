@@ -1,13 +1,13 @@
 <properties
-	pageTitle="Hinzufügen der Dropbox-API zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Dropbox-API und REST-API-Parameter"
-	services=""
+    pageTitle="Hinzufügen des Dropbox-Connectors zu PowerApps Enterprise oder Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Dropbox-Connector mit REST-API-Parametern"
+    services=""
     suite=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -15,11 +15,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/20/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der Dropbox-API 
-Verbinden Sie sich mit Dropbox, um Dateien zu verwalten, d. h. erstellen, abrufen usw. Die Dropbox-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem Dropbox-Connector 
+Verbinden Sie sich mit Dropbox, um Dateien zu verwalten, d. h. erstellen, abrufen usw. Der Dropbox-Connector kann verwendet werden in:
 
 - Logik-Apps 
 - PowerApps
@@ -38,9 +38,9 @@ Dropbox ermöglicht Folgendes:
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Dropbox abgerufen werden. 
 - Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
 - Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in Dropbox erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
-- Hinzufügen der Dropbox-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
+- Fügen Sie den Dropbox-Connector zu PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -51,14 +51,13 @@ Trigger | Aktionen
 --- | ---
 <ul><li>Wenn eine Datei erstellt wird</li><li>Wenn eine Datei geändert wird</li></ul> | <ul><li>Datei erstellen</li><li>Wenn eine Datei erstellt wird</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt anhand der ID abrufen</li><li>Datei mithilfe des Pfads abrufen</li><li>Dateimetadaten anhand der ID abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Datei aktualisieren</li><li>Wenn eine Datei geändert wird</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen der Verbindung mit Dropbox
 
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie den Logik-Apps das Herstellen einer Verbindung mit Dropbox erlauben.
+Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, müssen Sie den Logik-Apps das Herstellen einer Verbindung mit Ihrer Dropbox erlauben.
 
-1. Melden Sie sich bei Ihrem Dropbox-Konto an.
-2. Wählen Sie **Autorisieren** aus, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrer Dropbox verbinden und diese nutzen. 
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Dropbox](../../includes/connectors-create-api-dropbox.md)]
 
 Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Dropbox-Eigenschaften ein, z. B. Ordnerpfad oder Dateiname. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -80,7 +79,7 @@ Lädt eine Datei in Dropbox hoch. ```POST: /datasets/default/files```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Wenn eine Datei erstellt wird    
@@ -94,7 +93,7 @@ Löst einen Datenfluss aus, wenn in einem Dropbox-Ordner eine neue Datei erstell
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei kopieren    
@@ -102,15 +101,15 @@ Kopiert eine Datei in Dropbox. ```POST: /datasets/default/copyFile```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query|(Keine) |URL zur Quelldatei|
-|Ziel|string|Ja|query| (Keine)|Zieldateipfad in Dropbox, einschließlich Zieldateiname|
+|source|string|Ja|query|(Keine) |URL zur Quelldatei|
+|destination|string|Ja|query| (Keine)|Zieldateipfad in Dropbox, einschließlich Zieldateiname|
 |overwrite|Boolescher Wert|no|query|(Keine) |Überschreibt die Zieldatei, falls auf „True“ festgelegt|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei löschen    
@@ -124,27 +123,27 @@ Löscht eine Datei aus Dropbox. ```DELETE: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Archiv in Ordner extrahieren    
-Extrahiert eine Archivdatei in einen Ordner in Dropbox (Beispiel: ZIP). **```POST: /datasets/default/extractFolderV2```**
+Extrahiert eine Archivdatei in einen Ordner in Dropbox (Beispiel: .zip). **```POST: /datasets/default/extractFolderV2```**
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query|(Keine) |Pfad zur Archivdatei|
-|Ziel|string|Ja|query|(Keine) |Pfad in Dropbox, in den der Archivinhalt extrahiert wird|
+|source|string|Ja|query|(Keine) |Pfad zur Archivdatei|
+|destination|string|Ja|query|(Keine) |Pfad in Dropbox, in den der Archivinhalt extrahiert wird|
 |overwrite|Boolescher Wert|no|query|(Keine) |Überschreibt die Zieldateien, falls auf „True“ festgelegt|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand der ID abrufen    
-Ruft den Dateiinhalt anhand der ID aus Dropbox ab. ```GET: /datasets/default/files/{id}/content```
+Ruft Dateiinhalte mithilfe der ID aus Dropbox ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -154,11 +153,11 @@ Ruft den Dateiinhalt anhand der ID aus Dropbox ab. ```GET: /datasets/default/fil
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand des Pfads abrufen    
-Ruft den Dateiinhalt anhand des Pfads aus Dropbox ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft Dateiinhalte mithilfe des Pfads aus Dropbox ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -168,11 +167,11 @@ Ruft den Dateiinhalt anhand des Pfads aus Dropbox ab. ```GET: /datasets/default/
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand der ID abrufen    
-Ruft Dateimetadaten anhand der Datei-ID aus Dropbox ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten mithilfe der Datei-ID aus Dropbox ab. ```GET: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -182,11 +181,11 @@ Ruft Dateimetadaten anhand der Datei-ID aus Dropbox ab. ```GET: /datasets/defaul
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand des Pfads abrufen    
-Ruft Dateimetadaten anhand des Pfads aus Dropbox ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Dateimetadaten mithilfe des Pfads aus Dropbox ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -196,7 +195,7 @@ Ruft Dateimetadaten anhand des Pfads aus Dropbox ab. ```GET: /datasets/default/G
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren    
@@ -211,7 +210,7 @@ Aktualisiert eine Datei in Dropbox. ```PUT: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Wenn eine Datei geändert wird    
@@ -225,7 +224,7 @@ Löst einen Datenfluss aus, wenn in einem Dropbox-Ordner eine Datei geändert wi
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -241,7 +240,7 @@ Löst einen Datenfluss aus, wenn in einem Dropbox-Ordner eine Datei geändert wi
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -251,7 +250,7 @@ Löst einen Datenfluss aus, wenn in einem Dropbox-Ordner eine Datei geändert wi
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -286,4 +285,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [10]: ./media/connectors-create-api-dropbox/dropbox-create-app-page1.png
 [11]: ./media/connectors-create-api-dropbox/dropbox-create-app-page2.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

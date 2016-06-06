@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="05/23/2016"
 	ms.author="tamram"/>
 
 # Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
@@ -28,7 +28,7 @@ Sie können CORS-Regeln einzeln für jeden der Speicherdienste festlegen, indem 
 
 Eine CORS-Anforderung von einer Ursprungsdomäne kann aus zwei separaten Anforderungen bestehen:
 
-- Einer Preflight-Anforderung, durch die die vom Dienst auferlegten CORS-Einschränkungen abgefragt werden. Die Preflight-Anforderung ist erforderlich, sofern die Anforderungsmethode keine [einfache Methode](http://www.w3.org/TR/cors/) (d. h. GET, HEAD oder POST) ist.
+- Einer Preflight-Anforderung, durch die die vom Dienst auferlegten CORS-Einschränkungen abgefragt werden. Die Preflight-Anforderung ist erforderlich, sofern die Anforderungsmethode keine [einfache Methode](http://www.w3.org/TR/cors/) (d. h. GET, HEAD oder POST) ist.
 
 - Die für die gewünschte Ressource ausgeführte tatsächliche Anforderung.
 
@@ -78,7 +78,7 @@ Jedes in der CORS-Regel enthaltene Element wird unten beschrieben:
 
 - **MaxAgeInSeconds**: Die maximale Zeit, über die die OPTIONS-Preflight-Anforderung vom Browser zwischengespeichert werden soll.
 
-Die Angabe von Headern mit Präfix wird von den Azure Storage-Diensten sowohl für das **AllowedHeaders**-Element als auch für das **ExposedHeaders**-Element unterstützt. Um eine Headerkategorie zuzulassen, können Sie für diese Kategorie ein gemeinsames Präfix angeben. Wenn Sie z. B. *x-ms-meta** als Header mit Präfix angeben, wird eine Regel erstellt, durch die alle Header abgeglichen werden, die mit "x-ms-meta" beginnen.
+Die Angabe von Headern mit Präfix wird von den Azure Storage-Diensten sowohl für das **AllowedHeaders**-Element als auch für das **ExposedHeaders**-Element unterstützt. Um eine Headerkategorie zuzulassen, können Sie für diese Kategorie ein gemeinsames Präfix angeben. Wenn Sie z. B. *x-ms-meta** als Header mit Präfix angeben, wird eine Regel erstellt, durch die alle Header abgeglichen werden, die mit "x-ms-meta" beginnen.
 
 Für CORS-Regeln gelten die folgenden Einschränkungen:
 
@@ -86,8 +86,8 @@ Für CORS-Regeln gelten die folgenden Einschränkungen:
 - Die maximale Größe aller Einstellungen für CORS-Regeln in der Anforderung sollte 2 KB nicht überschreiten. XML-Tags werden hierbei nicht eingerechnet.
 - Die Länge eines zulässigen Headers oder Ursprungs bzw. eines verfügbar gemachten Headers sollte maximal 256 Zeichen betragen.
 - Zulässige und verfügbar gemachte Header können in folgender Form vorkommen:
-  - Literale Header, bei denen der genaue Headername angegeben ist, z. B. **x-ms-meta-processed**. In der Anforderung können maximal 64 literale Header angegeben werden.
-  - Header mit Präfix, bei denen ein Präfix des Headers angegeben ist, z. B. **x-ms-meta-data***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
+  - Literale Header, bei denen der genaue Headername angegeben ist, z. B. **x-ms-meta-processed**. In der Anforderung können maximal 64 literale Header angegeben werden.
+  - Header mit Präfix, bei denen ein Präfix des Headers angegeben ist, z. B. **x-ms-meta-data***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
 - Die Methoden (oder HTTP-Verben), die im **AllowedMethods**-Element angegeben sind, müssen den Methoden entsprechen, die von Azure Storage-Dienst-APIs unterstützt werden. Unterstützte Methoden sind DELETE, GET, HEAD, MERGE, POST, OPTIONS und PUT.
 
 ## Grundlagen zur Auswertungslogik für CORS-Regeln
@@ -195,4 +195,4 @@ Nicht erfolgreiche Preflight-Anforderungen werden nicht berechnet.
 
 [W3C-Spezifikation für CORS (Cross-Origin Resource Sharing)](http://www.w3.org/TR/cors/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

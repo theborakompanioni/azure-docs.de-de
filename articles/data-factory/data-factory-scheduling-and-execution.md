@@ -33,9 +33,11 @@ Im Abschnitt **scheduler** in der JSON der Aktivität können Sie einen sich wie
 
 Wie oben gezeigt, wird durch Angabe eines Zeitplans für die Aktivität eine Reihe rollierender Zeitfenster erstellt. Rollierende Zeitfenster sind eine Reihe sich nicht überlappender zusammenhängender Zeitintervalle mit fester Größe. Diese logischen rollierenden Fenster für die Aktivität heißen **Aktivitätsfenster**.
  
-Für das derzeit ausgeführte Aktivitätsfenster kann in der JSON der Aktivität über die Systemvariablen **WindowStart** und **WindowEnd** auf das dem Aktivitätsfenster zugeordnete Intervall zugegriffen werden. Sie können diese Variablen für verschiedene Zwecke in der JSON Ihrer Aktivität und Skripts verwenden, die der Aktivität zugeordnet sind, einschließlich Auswahl von Daten in den Ein- und Ausgabedatasets, die Zeitreihendaten darstellen.
+Für das derzeit ausgeführte Aktivitätsfenster kann in der JSON der Aktivität über die Systemvariablen [WindowStart](data-factory-functions-variables.md#data-factory-system-variables) und [WindowEnd](data-factory-functions-variables.md#data-factory-system-variables) auf das dem Aktivitätsfenster zugeordnete Zeitintervall zugegriffen werden. Sie können diese Variablen für verschiedene Zwecke in der JSON Ihrer Aktivität und Skripts verwenden, die der Aktivität zugeordnet sind, einschließlich Auswahl von Daten in den Ein- und Ausgabedatasets, die Zeitreihendaten darstellen.
 
-Die Eigenschaft **scheduler** unterstützt dieselben untergeordneten Eigenschaften wie die Eigenschaft **availability** in einem Dataset. Weitere Informationen zu den für „scheduler“ verfügbaren Eigenschaften, einschließlich Planen eines bestimmten Zeitversatzes sowie Festlegen des Modus zum Abstimmen der Verarbeitung am Anfang oder Ende des Aktivitätsfensters, finden Sie im Artikel [Dataset: Availability](data-factory-create-datasets.md#Availability).
+Die Eigenschaft **scheduler** unterstützt dieselben untergeordneten Eigenschaften wie die Eigenschaft **availability** in einem Dataset. Weitere Informationen zu den für „scheduler“ verfügbaren Eigenschaften, einschließlich Planen eines bestimmten Zeitversatzes sowie Festlegen des Modus zum Abstimmen der Verarbeitung am Anfang oder Ende des Intervalls für das Aktivitätsfenster, finden Sie im Artikel [Dataset: Availability](data-factory-create-datasets.md#Availability).
+
+Das Angeben von „scheduler“-Eigenschaften für eine Aktivität ist zu diesem Zeitpunkt optional. Wenn Sie diese angeben, müssen sie mit dem Rhythmus übereinstimmen, den Sie in der Definition des Ausgabedatasets angegeben haben. Zu diesem Zeitpunkt steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe erzeugt. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen.
 
 ## Datasets und Datenslices von Zeitreihen
 
@@ -52,9 +54,11 @@ Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstel
 
 ![Scheduler für "availability"](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
-Die stündlichen Datenslices für das Ein- und Ausgabedataset werden im Diagramm gezeigt. Das Diagramm zeigt drei Eingabeslices, die für die Verarbeitung bereit sind, und die laufende Aktivitätsausführung "10-11AM", die den Ausgabeslice "10-11AM" erzeugt.
+Die stündlichen Datenslices für das Ein- und Ausgabedataset werden im Diagramm gezeigt. Das Diagramm zeigt drei Eingabeslices, die für die Verarbeitung bereit sind, und die laufende Aktivitätsausführung „10-11 AM“, die den Ausgabeslice „10-11 AM“ erzeugt.
 
-Auf das Zeitintervall des aktuell erzeugten Slices kann in der JSON des Datasets über die Variablen **SliceStart** und **SliceEnd** zugegriffen werden.
+Auf das Zeitintervall des aktuell erzeugten Slices kann in der JSON des Datasets über die Variablen [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) und [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables) zugegriffen werden.
+
+Derzeit erfordert Data Factory, dass der in der Aktivität angegebene Zeitplan exakt mit dem Zeitplan übereinstimmt, der in "availability" für das Ausgabedataset angegeben ist. Das heißt, dass "WindowStart" und "WindowEnd" sowie "SliceStart" und "SliceEnd" immer dem gleichen Zeitraum und einem einzelnen Ausgabeslice zugeordnet sind.
 
 Weitere Informationen zu verschiedenen Eigenschaften, die im Abschnitt "availability" verfügbar sind, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md).
 
@@ -220,11 +224,11 @@ Im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) wurde das
  
 Sie können das Startdatum des aktiven Zeitraums der Pipeline in der Vergangenheit festlegen. Data Factory berechnet anschließend automatisch alle (nachträglich aufgefüllten Datenslices) in der Vergangenheit und beginnt mit ihrer Verarbeitung.
 
-Nachträglich aufgefüllte Datenslices können für eine parallele Ausführung konfiguriert werden. Legen Sie hierzu die "concurrency"-Eigenschaft im Abschnitt **policy** der JSON der Aktivität fest, was im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) erklärt wird.
+Nachträglich aufgefüllte Datenslices können für eine parallele Ausführung konfiguriert werden. Legen Sie hierzu die Eigenschaft **concurrency** im Abschnitt **policy** der JSON der Aktivität fest, was im Artikel zum [Erstellen von Pipelines](data-factory-create-pipelines.md) erklärt wird.
 
 ## Wiederholen fehlerhafter Datenslices und automatische Nachverfolgung von Datenabhängigkeiten
 
-Sie können die Ausführung von Slices umfassend visuell überwachen. Weitere Informationen finden Sie im Artikel [Überwachen und Verwalten von Pipelines](data-factory-monitor-manage-pipelines.md).
+Sie können die Ausführung von Slices umfassend visuell überwachen. Weitere Informationen finden Sie unter **Überwachen und Verwalten von Pipelines mithilfe von** [Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [der App „Überwachen und Verwalten“](data-factory-monitor-manage-app.md).
 
 Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Aktivität1 erstellt ein Zeitreihen-Dataset mit Slices als Ausgabe, die als Eingabe von Aktivität2 verwendet wird, um die endgültige Ausgabe des Zeitreihen-Datasets zu erstellen.
 
@@ -235,9 +239,9 @@ Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Aktivität1 erstellt
 Das obige Diagramm zeigt, dass bei den letzten drei Slices ein Fehler beim Erstellen des Slices "9-10 AM" für **Dataset2** aufgetreten ist. Data Factory verfolgt Abhängigkeiten für das Zeitreihen-Dataset automatisch nach und unterlässt als Ergebnis das Auslösen der Aktivitätsausführung für den nachgelagerten Slice "9-10 AM".
 
 
-Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnoseprotokolle detailliert nach dem fehlerhaften Slice durchsuchen, um die Ursache des Problems zu finden und zu beseitigen. Nachdem Sie das Problem behoben haben, können Sie auch ganz einfach die Aktivitätsausführung auslösen, um den fehlerhaften Slice zu erstellen. Weitere Informationen zum Auslösen von Wiederholungen und Grundlegendes zu Statusübergängen bei Datenslices finden Sie im Artikel [Überwachung und Verwaltung](data-factory-monitor-manage-pipelines.md).
+Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnoseprotokolle detailliert nach dem fehlerhaften Slice durchsuchen, um die Ursache des Problems zu finden und zu beseitigen. Nachdem Sie das Problem behoben haben, können Sie auch ganz einfach die Aktivitätsausführung auslösen, um den fehlerhaften Slice zu erstellen. Weitere Informationen zum Auslösen von Wiederholungen und Grundlegendes zu Statusübergängen für Datenslices finden Sie unter **Überwachen und Verwalten von Pipelines mithilfe von** [Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [der App „Überwachen und Verwalten“](data-factory-monitor-manage-app.md).
 
-Nachdem Sie die Wiederholung ausgelöst haben und der Slice "9-10 AM" für "Dataset2" bereit ist, löst Data Factory die Ausführung für den von "9-10 AM" abhängigen Slice für das endgültige Dataset aus (siehe die nachstehende Abbildung).
+Nachdem Sie die Wiederholung ausgelöst haben und der Slice „9-10 AM“ für „Dataset2“ bereit ist, löst Data Factory die Ausführung für den von „9-10 AM“ abhängigen Slice für das endgültige Dataset aus (siehe das nachstehende Diagramm).
 
 ![Wiederholen eines fehlerhaften Slices](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
@@ -698,4 +702,4 @@ Beachten Sie Folgendes:
 
   
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

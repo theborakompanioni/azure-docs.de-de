@@ -20,22 +20,22 @@
 
 # Machine Learning – Cheat Sheet für Algorithmen für Microsoft Azure Machine Learning Studio
 
-Das **Microsoft Azure Machine Learning – Cheat Sheet für Algorithmen** erleichtert Ihnen die Auswahl des richtigen Lernalgorithmus für Vorhersageanalyselösungen aus der Microsoft Azure Machine Learning-Algorithmusbibliothek.
+Mithilfe des **Cheat Sheet für Algorithmen für Microsoft Azure Machine Learning** können Sie den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) verfügt über eine große Anzahl von Algorithmen für maschinelles Lernen für Ihre Vorhersageanalyselösungen. Diese Algorithmen sind in die allgemeinen Kategorien für maschinelles Lernen ***Regression***, ***Klassifizierung***, ***Clustering*** und ***Anomalienerkennung*** unterteilt. Jede dieser Kategorien gilt für eine andere Art von Problemen beim maschinellen Lernen.
+[Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Regression***, ***Klassifizierung***, ***Clustering*** und ***Erkennung von Anomalien***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
-> [AZURE.NOTE] Eine ausführliche Anleitung zur Verwendung des Cheat Sheets finden Sie im Artikel [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
-## Machine Learning Cheat Sheet für Algorithmen herunterladen
+## Herunterladen: Cheat Sheet für Machine Learning-Algorithmen
 
-Laden Sie das Cheat Sheet für Algorithmen für maschinelles Lernen herunter, mit dem Sie einen Algorithmus für maschinelles Lernen auswählen können. Drucken Sie das Cheat Sheet in Tabloid-Größe (11 x 17 Zoll) aus, um schnell darauf zugreifen zu können.
-
-**Sie können das Cheat Sheet hier herunterladen: [Microsoft Azure Machine Learning Algorithm Cheat Sheet](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)** (in englischer Sprache).
+**Das Cheat Sheet hier herunterladen: [Cheat Sheet für Microsoft Azure Machine Learning-Algorithmen (28 x 43 cm)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)** (in englischer Sprache).
 
 ![Machine Learning Cheat Sheet für Algorithmen: Wie wähle ich einen Algorithmus für maschinelles Lernen aus?][cheat-sheet]
 
 [cheat-sheet]: ./media/machine-learning-algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
+Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat herunterladen und drucken, um praktische Hilfe bei der Wahl eines Algorithmus zu erhalten.
+
+> [AZURE.NOTE] Eine ausführliche Anleitung zur Verwendung des Cheat Sheets finden Sie im Artikel [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
 ## Weitere Hilfe zu Algorithmen
 
@@ -79,7 +79,7 @@ Laden Sie das Cheat Sheet für Algorithmen für maschinelles Lernen herunter, mi
 <a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
 <img src="C:\Users\garye\azure-content-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
 </a>
---> 
+-->
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
@@ -87,4 +87,4 @@ Laden Sie das Cheat Sheet für Algorithmen für maschinelles Lernen herunter, mi
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

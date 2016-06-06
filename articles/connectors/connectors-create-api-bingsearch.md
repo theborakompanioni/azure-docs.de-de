@@ -1,13 +1,13 @@
 <properties
-	pageTitle="Hinzufügen der Bing-Such-API zu PowerApps oder Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Bing-Such-API und REST-API-Parameter"
-	services=""
+    pageTitle="Hinzufügen des Bing-Suche-Connectors zu PowerApps oder Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Bing-Suche-Connector mit REST-API-Parametern"
+    services=""
     suite=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -15,11 +15,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der Bing-Such-API 
-Verbinden Sie sich mit der Bing-Suche, um Nachrichten, Videos und mehr zu suchen. Die Bing-Such-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem Bing-Suche-Connector 
+Verbinden Sie sich mit der Bing-Suche, um Nachrichten, Videos und mehr zu suchen. Der Bing-Suche-Connector kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 - PowerApps
@@ -33,9 +33,9 @@ Die Bing-Suche ermöglicht Folgendes:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus einer Suche abgerufen werden. 
 - Verwenden von Aktionen, um Bilder, Nachrichten und mehr zu suchen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. ein Video suchen und dann Twitter verwenden, um das Video in einem Twitter-Feed zu posten.
-- Hinzufügen der Bing-Such-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
+- Hinzufügen des Bing-Suche-Connectors zu PowerApps Enterprise. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
@@ -46,7 +46,7 @@ Trigger | Aktionen
 --- | ---
 Keine | <ul><li>Web durchsuchen</li><li>Videos suchen</li><li>Bilder suchen</li><li>Nachrichten suchen</li><li>Verwandte Informationen suchen</li><li>Schreibweisen suchen</li><li>Alles suchen</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 
 ## Swagger-REST-API – Referenz
@@ -70,7 +70,7 @@ Ruft Websites aus einer Bing-Suche ab. ```GET: /Web```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Videos suchen 
@@ -92,7 +92,7 @@ Ruft Videos aus einer Bing-Suche ab. ```GET: /Video```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Bilder suchen    
@@ -113,7 +113,7 @@ Ruft Bilder aus einer Bing-Suche ab. ```GET: /Image```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Nachrichten suchen    
@@ -136,7 +136,7 @@ Ruft neue Ergebnisse aus einer Bing-Suche ab. ```GET: /News```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Schreibweisen suchen    
@@ -156,7 +156,7 @@ Ruft Rechtschreibvorschläge ab. ```GET: /SpellingSuggestions```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Verwandte Informationen suchen    
@@ -176,7 +176,7 @@ Ruft verwandte Suchergebnisse aus einer Bing-Suche ab. ```GET: /RelatedSearch```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Alles suchen    
@@ -203,7 +203,7 @@ Ruft alle Websites, Videos, Bilder usw. aus einer Bing-Suche ab. ```GET: /Compos
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -298,4 +298,4 @@ Ruft alle Websites, Videos, Bilder usw. aus einer Bing-Suche ab. ```GET: /Compos
 
 Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

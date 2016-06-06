@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure-Sicherheit auf Channel 9 | Microsoft Azure"
+   pageTitle="Azure-Sicherheitsvideos auf Channel 9 | Microsoft Azure"
    description="Der Artikel umfasst eine Aufstellung ausgewählter Präsentationen zur Azure-Sicherheit auf Channel 9. Channel 9 ist eine Community, die die Menschen, die unsere Produkte nutzen, mit den Menschen hinter unseren Produkten zusammenbringt."
    services="security"
    documentationCenter="na"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="05/19/2016"
    ms.author="terrylan"/>
 
-# Azure-Sicherheit auf Channel 9
+# Azure-Sicherheitsvideos auf Channel 9
 
 [Channel 9](https://channel9.msdn.com/) ist eine Community. Hier treten die Menschen hinter unseren Produkten in den Vordergrund und kommen in Kontakt mit den Menschen, die die Produkte nutzen.
 
@@ -45,6 +45,7 @@ Nehmen Sie an dieser Sitzung teil, und erleben Sie die Microsoft-Sicherheitsplat
 Jack Richins erläutert [Scott](https://channel9.msdn.com/Niners/Glucose), wie sich seine SQL Server-Datenbanken auf Instanzen von virtuellen Azure-Computern problemlos verschlüsseln lassen. Dies ist einfacher, als Sie denken!
 
 Bereiche, die in diesem Video behandelt werden:
+
 - Grundlegendes zu Verschlüsselung und SQL Server
 - Grundlegendes zu Datenschutz-API, Hauptschlüsseln und Zertifikaten
 - Erstellen von Hauptschlüsseln und Zertifikaten und Verschlüsseln der Datenbank mit SQL-Befehlen
@@ -67,4 +68,4 @@ Narayan Annamalai, Senior Program Manager, erklärt Scott die Verwendung von Net
 
 Amit Bapat führt Scott in Azure Key Vault ein. Mit Azure Key Vault können Sie Schlüssel und geheime Daten wie Kennwörter mithilfe von Schlüsseln verschlüsseln, die in HSMs (Hardware Security Module) gespeichert sind. Azure Key Vault kann zur cloudbasierten und hardwarebasierten Verwaltung geheimer Daten in Microsoft Azure eingesetzt werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

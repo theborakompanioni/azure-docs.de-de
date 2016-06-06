@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/23/2016"
 	ms.author="mithal;garye" />
 
 # Cheat Sheet für eine automatisierte Datenpipeline für Azure Machine Learning-Vorhersagen
@@ -41,4 +41,4 @@ Sie können das Cheat Sheet hier herunterladen: **[Cheat Sheet für eine automat
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

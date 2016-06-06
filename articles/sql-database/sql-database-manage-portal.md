@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Verwalten von Azure SQL-Datenbanken über das klassische Azure-Portal"
-	description="Erfahren Sie, wie Sie das klassische Azure-Portal verwenden, um eine relationale Datenbank mithilfe des klassischen Azure-Portals in der Cloud zu verwalten."
+	pageTitle="Verwalten von Azure SQL-Datenbanken über das Azure-Portal"
+	description="Erfahren Sie, wie Sie das Azure-Portal verwenden, um eine relationale Datenbank mithilfe des Azure-Portals in der Cloud zu verwalten."
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
-	ms.date="05/10/2016"
+	ms.date="05/20/2016"
 	ms.author="sstein"/>
 
 
@@ -74,4 +74,4 @@ Azure SQL-Datenbanken können konfiguriert werden, um bereits übergebene Transa
 
 - [SQL-Datenbank](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

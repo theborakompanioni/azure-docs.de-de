@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Häufige Azure-Bereitstellungsfehler | Microsoft Azure"
+   pageTitle="Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Azure"
    description="Beschreibt, wie Sie häufige Fehler bei der Bereitstellung mit Azure Resource Manager beheben können."
    services="azure-resource-manager"
    documentationCenter=""
-   tags=""
+   tags="top-support-issue"
    authors="tfitzmac"
    manager="timlt"
    editor="tysonn"/>
@@ -14,14 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="05/18/2016"
    ms.author="tomfitz"/>
 
-# Beheben von häufigen Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager
+# Problembehandlung bei häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager
 
-In diesem Thema wird beschrieben, wie Sie einige der häufigsten Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Informationen zur Problembehandlung für eine Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen](resource-manager-troubleshoot-deployments-portal.md).
-
-Einige Fehler lassen sich vermeiden, indem Sie Ihre Vorlage und die Parameter vor der Bereitstellung überprüfen. Beispiele zur Überprüfung der Vorlage finden Sie unter [Bereitstellen einer Ressource mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+In diesem Thema wird beschrieben, wie Sie einige der häufigsten Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Es wird davon ausgegangen, dass Sie eine Nachricht gesehen haben, die den Fehler beschreibt. Wenn Sie weitere Informationen über die Ursache des Bereitstellungsfehlers benötigen, finden Sie diese unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md).
 
 ## Ungültige Vorlage oder Ressource
 
@@ -42,7 +40,7 @@ Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websit
 
 ## Die Ressource kann während der Bereitstellung nicht gefunden werden
 
-Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzeitig Ressourcen erstellt werden. Wenn eine Ressource nach der anderen Ressource bereitgestellt werden muss, müssen Sie das **dependsOn**-Element in der Vorlage verwenden, um eine Abhängigkeit zur anderen Ressource herzustellen. Beim Bereitstellen einer Web-App muss z. B. der App Service-Plan vorhanden sein. Wenn Sie nicht angegeben haben, dass die Web-App vom App Service-Plan abhängig ist, erstellt Resource Manager beide Ressourcen zur gleichen Zeit. Wenn Sie versuchen, eine Eigenschaft für die Web-App festzulegen, erhalten Sie eine Fehlermeldung, dass die App Service-Planressource nicht gefunden werden kann, da sie noch nicht vorhanden ist. Sie können diesen Fehler verhindern, indem Sie die Abhängigkeit in der Web-App festlegen.
+Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzeitig Ressourcen erstellt werden. Wenn eine Ressource nach einer anderen Ressource bereitgestellt werden muss, müssen Sie das **dependsOn**-Element in der Vorlage verwenden, um eine Abhängigkeit zur anderen Ressource herzustellen. Beim Bereitstellen einer Web-App muss z. B. der App Service-Plan vorhanden sein. Wenn Sie nicht angegeben haben, dass die Web-App vom App Service-Plan abhängig ist, erstellt Resource Manager beide Ressourcen zur gleichen Zeit. Wenn Sie versuchen, eine Eigenschaft für die Web-App festzulegen, erhalten Sie eine Fehlermeldung, dass die App Service-Planressource nicht gefunden werden kann, da sie noch nicht vorhanden ist. Sie können diesen Fehler verhindern, indem Sie die Abhängigkeit in der Web-App festlegen.
 
     {
       "apiVersion": "2015-08-01",
@@ -112,7 +110,7 @@ Informationen zur REST-API finden Sie unter [Abrufen von Informationen zu einem 
 
 Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](azure-subscription-service-limits.md).
 
-Um die Kontingente Ihres eigenen Abonnements für Kerne zu untersuchen, verwenden Sie den `azure vm list-usage`-Befehl in der Azure-CLI. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
+Zum Untersuchen der Kontingente Ihres eigenen Abonnements für Kerne können Sie den Befehl `azure vm list-usage` in der Azure-Befehlszeilenschnittstelle verwenden. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
 
     azure vm list-usage
     
@@ -131,7 +129,7 @@ Wenn Sie versuchen, eine Vorlage bereitzustellen, die mehr als vier Kerne in der
     serviceRequestId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     statusMessage:{"error":{"code":"OperationNotAllowed","message":"Operation results in exceeding quota limits of Core. Maximum allowed: 4, Current in use: 4, Additional requested: 2."}}
 
-In PowerShell können Sie alternativ das **Get-AzureRmVMUsage**-Cmdlet verwenden.
+In PowerShell können Sie alternativ das Cmdlet **Get-AzureRmVMUsage** verwenden.
 
     Get-AzureRmVMUsage
     
@@ -156,9 +154,9 @@ In diesen Fällen sollten Sie zum Portal navigieren und ein Supportproblem einre
 
 Möglicherweise wird während der Bereitstellung ein Fehler angezeigt, da das Konto oder ein Dienstprinzipal, der versucht die Ressourcen bereitzustellen, keinen Zugriff zum Ausführen dieser Aktionen hat. Mit Azure Active Directory können Sie oder Ihr Administrator sehr genau kontrollieren, welche Identitäten auf welche Ressourcen Zugriff haben. Wenn Ihr Konto der Leserrolle zugewiesen ist, kann es beispielsweise keine neuen Ressourcen erstellen. In diesem Fall wird eine Fehlermeldung angezeigt, die darauf hinweist, dass die Autorisierung fehlgeschlagen ist.
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
+Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
 
-Neben rollenbasierter Zugriffskontrolle können Ihre Bereitstellungsaktionen von Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Einzelheiten zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
+Neben rollenbasierter Zugriffssteuerung können Ihre Bereitstellungsaktionen auch durch Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien zum Verwalten von Ressourcen und Steuern des Zugriffs](resource-manager-policy.md).
 
 ## Überprüfen der Ressourcenanbieterregistrierung
 
@@ -211,7 +209,7 @@ Dies gibt alle verfügbaren Ressourcenanbieter und Ihren Registrierungsstatus zu
     ...
     info:    provider list command OK
 
-Um einen Ressourcenanbieter zu registrieren, verwenden Sie den `azure provider register`-Befehl, und geben Sie den zu registrierenden *Namespace* an.
+Um einen Ressourcenanbieter zu registrieren, verwenden Sie den Befehl `azure provider register`, und geben Sie den zu registrierenden *Namespace* an.
 
     azure provider register Microsoft.Cdn
 
@@ -223,7 +221,11 @@ Informationen zum Registrieren eines Anbieters finden Sie unter [Registrieren ei
 
 ## Fehler der benutzerdefinierten Skripterweiterung
 
-Bei einem Fehler für eine benutzerdefinierte Skripterweiterung beim Bereitstellen eines virtuellen Computers siehe [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md) oder [Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md).
+Bei einem Fehler für eine benutzerdefinierte Skripterweiterung beim Bereitstellen eines virtuellen Computers finden Sie weitere Informationen unter [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md) und [Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md).
+
+## Fehler bei der Bereitstellung und Zuordnung von virtuellen Computern
+
+Wenn Sie einen virtuellen Computer bereitstellen möchten und ein Fehler bei der Bereitstellung des Betriebssystemimages aufgetreten ist, finden Sie weitere Informationen unter [Problembehandlung beim Erstellen einer neuen VM](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md) und [Problembehandlung bei Zuordnungsfehlern](./virtual-machines/virtual-machines-windows-allocation-failure.md).
 
 ## Verstehen, wann eine Bereitstellung bereit ist 
 
@@ -234,6 +236,8 @@ Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatu
 ## Nächste Schritte
 
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Weitere Informationen zu Aktionen zum Bestimmen der Fehler während der Bereitstellung finden Sie unter [Problembehandlung von Ressourcengruppenbereitstellungen](resource-manager-troubleshoot-deployments-portal.md).
+- Weitere Informationen zu Aktionen zum Bestimmen der Fehler während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md).
+- Informationen zur Problembehandlung bei Remotedesktopprotokoll-Fehlern auf Windows-basierten virtuellen Computern finden Sie unter [Problembehandlung bei Remotedesktopverbindungen](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md).
+- Informationen zur Problembehandlung bei Secure Shell-Fehlern auf Linux-basierten virtuellen Computern finden Sie unter [Problembehandlung bei Secure Shell-Verbindungen](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

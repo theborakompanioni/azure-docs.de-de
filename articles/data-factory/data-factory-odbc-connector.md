@@ -352,9 +352,20 @@ Bevor Sie den GE Historian-Speicher in einer Data Factory-Lösung verwenden kön
 
 Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Verwendung von ODBC-Datenspeichern als Quelldatenspeicher in einem Kopiervorgang zu erhalten.
 
-[AZURE.INCLUDE [data-factory-troubleshoot-connectivity](../../includes/data-factory-troubleshoot-connectivity.md)]
+## Behandeln von Konnektivitätsproblemen
+Verwenden Sie die Registerkarte **Diagnose** im **Datenverwaltungsgateway-Konfigurations-Manager**, um Verbindungsprobleme zu behandeln.
+
+1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**. Sie können entweder „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe“ direkt ausführen oder nach **Gateway** suchen, um einen Link zur Anwendung **Microsoft-Datenverwaltungsgateway** zu finden, wie in der folgenden Abbildung dargestellt. 
+
+	![Gateway suchen](./media/data-factory-odbc-connector/search-gateway.png)
+2. Wechseln Sie zur Registerkarte **Diagnose**.
+
+	![Gatewaydiagnose](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png) 
+3. Wählen Sie den **Typ** von Datenspeicher (verknüpfter Dienst) aus. 
+4. Geben Sie die **Authentifizierung** an, und geben Sie **Anmeldeinformationen** oder die **Verbindungszeichenfolge** ein, um eine Verbindung mit dem Datenspeicher herzustellen. 
+5. Klicken Sie auf **Verbindung testen**, um die Verbindung mit dem Datenspeicher zu testen. 
 
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Problembehandlung bei der Bereitstellung mit der Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-   description="Beschreibt, wie Sie mit der Azure-Befehlszeilenschnittstelle Probleme in der Resource Manager-Bereitstellung erkennen und beheben können."
+   pageTitle="Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle | Microsoft Azure"
+   description="Beschreibt, wie Sie mit der Azure-Befehlszeilenschnittstelle Probleme in der Resource Manager-Bereitstellung erkennen können."
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="03/21/2016"
+   ms.date="05/19/2016"
    ms.author="tomfitz"/>
 
-# Problembehandlung beim Bereitstellen von Ressourcengruppen mit der Azure-Befehlszeilenschnittstelle
+# Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle
 
 > [AZURE.SELECTOR]
 - [Portal](resource-manager-troubleshoot-deployments-portal.md)
@@ -25,7 +25,7 @@
 - [Azure-Befehlszeilenschnittstelle](resource-manager-troubleshoot-deployments-cli.md)
 - [REST-API](resource-manager-troubleshoot-deployments-rest.md)
 
-Wenn Sie einen Fehler beim Bereitstellen von Ressourcen in Azure erhalten haben, müssen Sie die aufgetretenen Fehler beheben. Die Azure-Befehlszeilenschnittstelle enthält Befehle, die es Ihnen ermöglichen, die Fehler zu finden und potenzielle Korrekturen zu ermitteln.
+Wenn Sie einen Fehler beim Bereitstellen von Ressourcen in Azure erhalten haben, empfiehlt es sich, weitere Details zu den ausgeführten Bereitstellungsvorgängen anzuzeigen. Die Azure-Befehlszeilenschnittstelle enthält Befehle, die es Ihnen ermöglichen, die Fehler zu finden und potenzielle Korrekturen zu ermitteln.
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
@@ -121,4 +121,4 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 - Informationen zur Überwachung anderer Arten von Aktionen anhand der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 - Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

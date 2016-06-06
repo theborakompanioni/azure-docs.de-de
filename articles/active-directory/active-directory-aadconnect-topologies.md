@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
 	ms.topic="article"
-    ms.date="04/21/2016"
+    ms.date="05/19/2016"
     ms.author="andkjell"/>
 
 # Topologien für Azure AD Connect
@@ -21,16 +21,16 @@ Das Ziel dieses Themas ist, verschiedene lokale und Azure AD-Topologien mit Azur
 
 Legende für Bilder im Dokument:
 
-| Beschreibung | Symbol |
-|-----|-----|
-| Lokale Active Directory-Gesamtstruktur | ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)|
-| Active Directory mit gefiltertem Import | ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)|
-| Azure AD Connect-Synchronisierungsserver | ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync1.png)|
-| Azure AD Connect-Synchronisierungsserver "Stagingmodus" | ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync2.png)|
-| GALSync mit FIM2010 oder MIM2016 | ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync3.png)|
-| Azure AD Connect-Synchronisierungsserver, detailliert |![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync4.png)|
-| Azure AD-Verzeichnis |![AAD](./media/active-directory-aadconnect-topologies/LegendAAD.png)|
-| Nicht unterstütztes Szenario | ![Nicht unterstützt](./media/active-directory-aadconnect-topologies/LegendUnsupported.png)
+Beschreibung | Symbol
+-----|-----
+Lokale Active Directory-Gesamtstruktur| ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)
+Active Directory mit gefiltertem Import| ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)
+Azure AD Connect-Synchronisierungsserver| ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync1.png)
+Azure AD Connect-Synchronisierungsserver "Stagingmodus"| ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync2.png)
+GALSync mit FIM2010 oder MIM2016| ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync3.png)
+Azure AD Connect-Synchronisierungsserver, detailliert| ![Synchronisierung](./media/active-directory-aadconnect-topologies/LegendSync4.png)
+Azure AD-Verzeichnis |![AAD](./media/active-directory-aadconnect-topologies/LegendAAD.png)
+Nicht unterstütztes Szenario | ![Nicht unterstützt](./media/active-directory-aadconnect-topologies/LegendUnsupported.png)
 
 
 ## Einzelne Gesamtstruktur, einzelnes Azure AD-Verzeichnis
@@ -116,15 +116,15 @@ In diesem Szenario vertraut mindestens eine **Ressourcengesamtstruktur** allen *
 ## Office 365 und Überlegungen zur Netzwerktopologie
 Für einige Office 365-Workloads gelten bestimmte Einschränkungen für unterstützte Topologien. Wenn Sie eine dieser Optionen verwenden möchten, lesen Sie das Thema zu unterstützten Topologien für die Workload.
 
-| Workload | |
-| --------- | --------- |
-| Exchange Online |	Wenn mehrere Exchange-Organisationen lokal vorhanden sind (d. h. Exchange für mehrere Gesamtstrukturen bereitgestellt wurde), müssen Sie Exchange 2013 SP1 oder höher verwenden. Weitere Informationen finden Sie hier: [Hybrid-Bereitstellungen mit mehreren Active Directory-Gesamtstrukturen](https://technet.microsoft.com/de-DE/library/jj873754.aspx) |
-| Skype for Business | Bei Verwendung mehrerer lokaler Gesamtstrukturen wird nur die Kontoressourcengesamtstruktur-Topologie unterstützt. Weitere Informationen zu unterstützten Topologien finden Sie hier: [Anforderungen an die Umgebung für Skype for Business Server 2015](https://technet.microsoft.com/de-DE/library/dn933910.aspx) |
+Workload |  
+--------- | ---------
+Exchange Online | Wenn mehrere Exchange-Organisationen lokal vorhanden sind (d. h. Exchange für mehrere Gesamtstrukturen bereitgestellt wurde), müssen Sie Exchange 2013 SP1 oder höher verwenden. Weitere Informationen finden Sie hier: [Hybrid-Bereitstellungen mit mehreren Active Directory-Gesamtstrukturen](https://technet.microsoft.com/library/jj873754.aspx)
+Skype for Business | Bei Verwendung mehrerer lokaler Gesamtstrukturen wird nur die Kontoressourcengesamtstruktur-Topologie unterstützt. Weitere Informationen zu unterstützten Topologien finden Sie hier: [Anforderungen an die Umgebung für Skype for Business Server 2015](https://technet.microsoft.com/library/dn933910.aspx)
 
 ## Stagingserver
 ![Stagingserver](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
 
-Azure AD Connect unterstützt die Installation eines zweiten Servers im Stagingmodus. Ein Server in diesem Modus liest Daten aus allen verbundenen Verzeichnissen, schreibt jedoch nichts. Er verwendet den normalen Synchronisierungszyklus und verfügt daher über eine aktualisierte Kopie der Identitätsdaten. Bei einem notfallbedingten Ausfall des primären Servers kann ein Failover auf den Stagingserver durchgeführt werden. Hierzu wird der Azure AD Connect-Assistent verwendet. Dieser zweite Server kann sich vorzugsweise in einem anderen Datencenter befinden, da keine Infrastruktur mit dem primären Server gemeinsam genutzt wird. Jede am primären Server vorgenommene Konfigurationsänderung muss manuell an den zweiten Server kopiert werden.
+Azure AD Connect unterstützt die Installation eines zweiten Servers im **Stagingmodus**. Ein Server in diesem Modus liest Daten aus allen verbundenen Verzeichnissen, schreibt jedoch nichts. Er verwendet den normalen Synchronisierungszyklus und verfügt daher über eine aktualisierte Kopie der Identitätsdaten. Bei einem notfallbedingten Ausfall des primären Servers kann ein Failover auf den Stagingserver durchgeführt werden. Hierzu wird der Azure AD Connect-Assistent verwendet. Dieser zweite Server kann sich vorzugsweise in einem anderen Datencenter befinden, da keine Infrastruktur mit dem primären Server gemeinsam genutzt wird. Jede am primären Server vorgenommene Konfigurationsänderung muss manuell an den zweiten Server kopiert werden.
 
 Ein Stagingserver kann auch verwendet werden, um eine neue benutzerdefinierte Konfiguration und deren Auswirkungen auf die Daten zu testen. Sie können eine Vorschau der Änderungen anzeigen und die Konfiguration anpassen. Wenn Sie mit der neuen Konfiguration zufrieden sind, können Sie den Stagingserver zum aktiven Server machen und den alten aktiven Server in den Stagingmodus versetzen.
 
@@ -135,9 +135,9 @@ Sie können mehrere Stagingserver verwenden, wenn Sie mehrere Sicherungen in ver
 ## Mehrere Azure AD-Verzeichnisse
 Microsoft empfiehlt die Verwendung eines einzelnen Verzeichnisses in Azure AD für eine Organisation. Lesen Sie vor der Verwendung mehrerer Azure AD-Verzeichnisse die folgenden Themen zu gängigen Szenarien, in denen Sie ein einzelnes Verzeichnis verwenden können:
 
-| Thema | |
-| --------- | --------- |
-| Delegieren mithilfe administrativer Einheiten | [Verwaltung administrativer Einheiten in Azure AD](active-directory-administrative-units-management.md)
+Thema |  
+--------- | ---------
+Delegieren mithilfe administrativer Einheiten | [Verwaltung administrativer Einheiten in Azure AD](active-directory-administrative-units-management.md)
 
 ![Mehrere Gesamtstrukturen – mehrere Verzeichnisse](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 
@@ -187,4 +187,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

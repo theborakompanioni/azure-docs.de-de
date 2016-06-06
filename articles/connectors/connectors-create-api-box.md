@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der Box-API zu Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Box-API und REST-API-Parameter"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Hinzufügen des Box-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Box-Connector mit REST-API-Parametern"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der Box-API
-Verbinden Sie sich mit Box, um Dateien zu erstellen, zu löschen usw. Die Box-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem Box-Connector
+Verbinden Sie sich mit Box, um Dateien zu erstellen, zu löschen usw. Der Box-Connector kann verwendet werden in:
 
 - Logik-Apps (in diesem Thema erläutert)
 - PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
@@ -40,13 +40,12 @@ Box weist die folgenden Trigger und Aktionen auf.
 | --- | --- |
 |<ul><li>Wenn eine Datei erstellt wird</li><li>Wenn eine Datei geändert wird</li></ul> | <ul><li>Datei erstellen</li><li>Wenn eine Datei erstellt wird</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt anhand der ID abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten anhand der ID abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Datei aktualisieren</li><li>Wenn eine Datei geändert wird</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit Box
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Box erlauben.
+Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Ihrer Box erlauben.
 
-1. Melden Sie sich bei Ihrem Box-Konto an.
-2. Wählen Sie **Autorisieren** aus, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrem Box-Konto verbinden und es nutzen. 
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Box](../../includes/connectors-create-api-box.md)]
 
 Nachdem Sie die Verbindung hergestellt haben, geben Sie die Box-Eigenschaften ein. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -117,7 +116,7 @@ Löscht eine Datei aus Box. ```DELETE: /datasets/default/files/{id}```
 
 
 ### Archiv in Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner in Box (Beispiel: ZIP). ```POST: /datasets/default/extractFolderV2```
+Extrahiert eine Archivdatei in einen Ordner in Box (Beispiel: .zip). ```POST: /datasets/default/extractFolderV2```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -133,7 +132,7 @@ Extrahiert eine Archivdatei in einen Ordner in Box (Beispiel: ZIP). ```POST: /da
 
 
 ### Dateiinhalt anhand der ID abrufen
-Ruft den Dateiinhalt anhand der ID aus Box ab. ```GET: /datasets/default/files/{id}/content```
+Ruft Dateiinhalte mithilfe der ID aus Box ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -147,7 +146,7 @@ Ruft den Dateiinhalt anhand der ID aus Box ab. ```GET: /datasets/default/files/{
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft den Dateiinhalt anhand des Pfads aus Box ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft Dateiinhalte mithilfe des Pfads aus Box ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -161,7 +160,7 @@ Ruft den Dateiinhalt anhand des Pfads aus Box ab. ```GET: /datasets/default/GetF
 
 
 ### Dateimetadaten anhand der ID abrufen
-Ruft Dateimetadaten aus Box anhand der Datei-ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten aus Box mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -175,7 +174,7 @@ Ruft Dateimetadaten aus Box anhand der Datei-ID ab. ```GET: /datasets/default/fi
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten aus Box anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Dateimetadaten aus Box mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -261,6 +260,6 @@ Löst einen Datenfluss aus, wenn in einem Box-Ordner eine Datei geändert wird. 
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

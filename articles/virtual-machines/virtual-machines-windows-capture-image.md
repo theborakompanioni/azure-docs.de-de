@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie im Resource Manager-Bereitstellungsmodell ein Image eines Windows-basierten virtuellen Azure-Computers erfassen können."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/13/2016"
-	ms.author="dkshir"/>
+	ms.author="cynthn"/>
 
 # Erfassen eines virtuellen Windows-Computers im Resource Manager-Bereitstellungsmodell
 
@@ -210,4 +210,4 @@ Sie sollten nun den neu erstellten virtuellen Computer im [Azure-Portal](https:/
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

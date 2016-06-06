@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="05/23/2016" 
 	ms.author="sdanie"/>
 
 # Importieren und Exportieren von Daten in Azure Redis Cache
@@ -26,7 +26,7 @@ Dieser Artikel enthält eine Anleitung zum Importieren und Exportieren von Daten
 
 ## Importieren
 
-Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Caches mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Redis Cache die RDB-Dateien aus dem Azure-Speicher in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
+Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Redis Cache die RDB-Dateien aus dem Azure-Speicher in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
 
 >[AZURE.NOTE] Stellen Sie vor Beginn des Importvorgangs sicher, dass die Redis-Datenbankdateien (RDB) in Seitenblobs in einen Azure-Speicher hochgeladen wurden, der sich in derselben Region und unter demselben Abonnement wie Ihre Azure Redis Cache-Instanz befindet. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/storage-dotnet-how-to-use-blobs.md). Wenn Sie die RDB-Datei mit der Funktion [Azure Redis Cache Export](#export) exportiert haben, ist Ihre RDB-Datei bereits in einem Seitenblob gespeichert und für den Import bereit.
 
@@ -59,7 +59,7 @@ Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von be
 
 ## Export
 
-Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten als Redis-kompatible RDB-Dateien exportieren. Sie können diese Funktion nutzen, um Daten von einer Azure Redis Cache-Instanz zur anderen oder auf einen anderen Redis-Server zu verschieben. Während des Exportvorgangs wird auf der VM, von der die Azure Redis Cache-Serverinstanz gehostet wird, eine temporäre Datei erstellt, und die Datei wird in das angegebene Speicherkonto hochgeladen. Nachdem der Exportvorgang mit dem Status „Erfolg“ oder „Fehler“ abgeschlossen wurde, wird die temporäre Datei gelöscht.
+Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten als Redis-kompatible RDB-Dateien exportieren. Sie können diese Funktion nutzen, um Daten von einer Azure Redis Cache-Instanz zur anderen oder auf einen anderen Redis-Server zu verschieben. Während des Exportvorgangs wird auf dem virtuellen Computer, von dem die Azure Redis Cache-Serverinstanz gehostet wird, eine temporäre Datei erstellt, und die Datei wird in das angegebene Speicherkonto hochgeladen. Nachdem der Exportvorgang mit dem Status „Erfolg“ oder „Fehler“ abgeschlossen wurde, wird die temporäre Datei gelöscht.
 
 1. Um den aktuellen Inhalt des Caches in den Speicher zu exportieren, [navigieren Sie im Azure-Portal zum Cache](cache-configure.md#configure-redis-cache-settings) und klicken für die Cacheinstanz im Blatt **Einstellungen** auf **Daten exportieren**.
 
@@ -94,6 +94,7 @@ Dieser Abschnitt enthält häufig gestellte Fragen zum Import/Export-Feature.
 -	[Kann ich Daten von beliebigen Redis-Servern importieren?](#can-i-import-data-from-any-redis-server)
 -	[Ist der Cache während eines Import- oder Exportvorgangs verfügbar?](#will-my-cache-be-available-during-an-importexport-operation)
 -	[Kann ich Import/Export mit dem Redis-Cluster nutzen?](#can-i-use-importexport-with-redis-cluster)
+-	[Wie funktioniert Import/Export bei einer benutzerdefinierten Einstellung für Datenbanken?](#how-does-importexport-work-with-a-custom-databases-setting)
 -	[Wie unterscheidet sich Import/Export von der Redis-Persistenz?](#how-is-importexport-different-from-redis-persistence)
 -	[Kann ich Import/Export mit PowerShell, per CLI oder mit anderen Verwaltungsclients automatisieren?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
 -	[Ich habe während des Import/Export-Vorgangs einen Zeitüberschreitungsfehler erhalten. Was bedeutet das?](#i-received-a-timeout-error-during-my-importexport-operation.-what-does-it-mean)
@@ -116,7 +117,16 @@ Ja. Zusätzlich zum Importieren von Daten, die aus Azure Redis Cache-Instanzen e
 
 ### Kann ich Import/Export mit dem Redis-Cluster nutzen?
 
-Ja. Sie können einen Import bzw. Export auch zwischen einem gruppierten Cache und einem nicht gruppierten Cache durchführen. Da der Redis-Cluster nur Datenbank 0 unterstützt, können Sie keine Daten importieren, die in einer anderen Datenbank als Datenbank 0 gespeichert sind. Wenn gruppierte Cachedaten importiert werden, werden die Schlüssel auf die Shards des Clusters verteilt.
+Ja. Sie können einen Import bzw. Export auch zwischen einem gruppierten Cache und einem nicht gruppierten Cache durchführen. Da der Redis-Cluster [nur Datenbank 0 unterstützt](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), werden Daten in anderen Datenbanken als 0 nicht importiert. Wenn gruppierte Cachedaten importiert werden, werden die Schlüssel auf die Shards des Clusters verteilt.
+
+### Wie funktioniert Import/Export bei einer benutzerdefinierten Einstellung für Datenbanken?
+
+Bei einigen Tarifen gibt es unterschiedliche [Grenzwerte für Datenbanken](cache-configure.md#databases). Wenn Sie bei der Cacheerstellung einen benutzerdefinierten Wert für die `databases`-Einstellung konfiguriert haben, müssen Sie beim Importieren einige Punkte beachten.
+
+-	Beim Importieren in einen Tarif mit einem niedrigeren `databases`-Grenzwert als bei dem Tarif, aus dem Sie exportieren:
+	-	Wenn Sie die Standardanzahl für `databases` verwenden (sie beträgt bei allen Tarifen 16), gehen keine Daten verloren.
+	-	Wenn Sie eine benutzerdefinierte Anzahl für `databases` verwenden, die innerhalb der Grenzwerte für den Tarif liegt, in den Sie importieren, gehen keine Daten verloren.
+	-	Wenn Ihre exportierten Daten Daten in einer Datenbank enthalten, die die Grenzwerte des neuen Tarifs überschreitet, werden die Daten aus diesen höheren Datenbanken nicht importiert.
 
 ### Wie unterscheidet sich Import/Export von der Redis-Persistenz?
 
@@ -158,4 +168,4 @@ Import/Export funktioniert nur mit RDB-Dateien, die als Seitenblobs gespeichert 
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

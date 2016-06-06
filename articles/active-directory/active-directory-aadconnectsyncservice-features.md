@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="05/19/2016"
 	ms.author="andkjell;markvi"/>
 
 # Features des Azure AD Connect-Synchronisierungsdiensts
@@ -33,23 +33,23 @@ Viele dieser Einstellungen können nur von Azure AD Connect geändert werden.
 
 Folgende Einstellungen können durch `Set-MsolDirSyncFeature` konfiguriert werden:
 
-| DirSyncFeature | Kommentar |
-| --- | --- |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) | Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
-| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) | Ermöglicht Objekten den Beitritt zu userPrincipalName zusätzlich zur primären SMTP-Adresse. |
-| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) | Ermöglicht dem Synchronisierungsmodul die Aktualisierung des userPrincipalName-Attributs für verwaltete/lizenzierte Benutzer (keine Verbundbenutzer). |
+DirSyncFeature | Kommentar
+--- | ---
+ [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) | Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird.
+[EnableSoftMatchOnUpn](#userprincipalname-soft-match) | Ermöglicht Objekten den Beitritt zu userPrincipalName zusätzlich zur primären SMTP-Adresse.
+[SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) | Ermöglicht dem Synchronisierungsmodul die Aktualisierung des userPrincipalName-Attributs für verwaltete/lizenzierte Benutzer (keine Verbundbenutzer).
 
 Nachdem Sie ein Feature aktiviert haben, kann es nicht wieder deaktiviert werden.
 
 Die folgenden Eigenschaften werden von Azure AD Connect konfiguriert und können von `Set-MsolDirSyncFeature` nicht geändert werden:
 
-| DirSyncFeature | Kommentar |
-| --- | --- |
-| DeviceWriteback | [Azure AD Connect: Aktivieren des Geräterückschreibens](active-directory-aadconnect-feature-device-writeback.md) |
-| DirectoryExtensions | [Azure AD Connect Sync: Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) |
-| PasswordSync | [Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) |
-| UnifiedGroupWriteback | [Vorschau: Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) |
-| UserWriteback | Derzeit nicht unterstützt. |
+DirSyncFeature | Kommentar
+--- | ---
+DeviceWriteback | [Azure AD Connect: Aktivieren des Geräterückschreibens](active-directory-aadconnect-feature-device-writeback.md)
+DirectoryExtensions | [Azure AD Connect Sync: Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md)
+PasswordSync | [Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md)
+UnifiedGroupWriteback | [Vorschau: Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback)
+UserWriteback | Derzeit nicht unterstützt.
 
 ## Resilienz bei doppelten Attributen
 Damit die Bereitstellung von Objekten mit doppelten UPN-/proxyAddress-Werten nicht mit einem Fehler abgebrochen wird, wird das doppelte Attribut unter Quarantäne gestellt und bei Bedarf ein temporärer Wert zugewiesen. Wenn der Konflikt gelöst ist, wird der temporäre UPN-Wert automatisch auf den richtigen Wert gesetzt. Dieses Verhalten kann für UPN und proxyAddress separat aktiviert werden. Weitere Informationen finden Sie unter [Identitätssynchronisierung und Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
@@ -100,4 +100,4 @@ Diese Einstellungen werden für alle Azure AD-Verzeichnisse in Zukunft aktiviert
 
 - [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

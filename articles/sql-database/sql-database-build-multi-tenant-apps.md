@@ -21,7 +21,7 @@
 
 ## Nutzen elastischer Pools und Entwickeln von effizienteren mehrinstanzenfähigen Apps
 
-Wenn Sie als SaaS-Entwickler eine mehrinstanzenfähige App für eine Vielzahl von Kunden erstellen, gehen Sie häufig Kompromisse im Hinblick auf Leistung, Verwaltung und Sicherheit ein. Mit den Pools für elastische Datenbanken von Azure SQL-Datenbank gehören diese Kompromisse der Vergangenheit an. Die Pools unterstützen Sie bei der Verwaltung und Überwachung mehrinstanzenfähiger Apps und ermöglichen es Ihnen, von der Isolation eines Kunden pro Datenbank zu profitieren.
+Wenn Sie als SaaS-Entwickler eine mehrinstanzenfähige App für eine Vielzahl von Kunden erstellen, gehen Sie häufig Kompromisse im Hinblick auf Leistung, Verwaltung und Sicherheit ein. Mit den Pools für elastische Datenbanken von Azure SQL-Datenbank gehören diese Kompromisse der Vergangenheit an. Die Pools unterstützen Sie bei der Verwaltung und Überwachung mehrinstanzenfähiger Apps und ermöglichen es Ihnen, von der Isolation eines Kunden pro Datenbank zu profitieren. Informationen finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
 
 ![build-multi-tenant-apps](./media/sql-database-build-multi-tenant-apps/sql-database-build-multi-tenant-apps.png)
 
@@ -57,7 +57,7 @@ Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenb
 
 ## Nächste Schritte
 
-Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/), und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
 ## Weitere Informationen
 
@@ -65,4 +65,4 @@ Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/se
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

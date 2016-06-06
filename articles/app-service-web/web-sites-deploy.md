@@ -126,7 +126,7 @@ Im [Azure-Portal](https://portal.azure.com) können Sie die lokale Git-Bereitste
 * [Publishing to Azure Web Sites from any git/hg repo (Veröffentlichen auf Azure-Websites aus beliebigen git/hg-Repositorys, in englischer Sprache)](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html).  
 
 ## Bereitstellen über eine IDE
-Wenn Sie bereits [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) mit einem [Azure SDK](https://azure.microsoft.com/downloads/) oder andere IDE-Suites wie [Xcode](https://developer.apple.com/xcode/) und [Eclipse](https://www.eclipse.org) verwenden, können Sie die Bereitstellung für Azure direkt aus der IDE durchführen. Diese Option ist ideal für allein arbeitende Entwickler.
+Wenn Sie bereits [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) mit einem [Azure SDK](https://azure.microsoft.com/downloads/) oder andere IDE-Suites wie [Xcode](https://developer.apple.com/xcode/), [Eclipse](https://www.eclipse.org) oder [IntelliJ IDEA](https://www.jetbrains.com/idea/) verwenden, können Sie die Bereitstellung für Azure direkt aus der IDE durchführen. Diese Option ist ideal für allein arbeitende Entwickler.
 
 Visual Studio unterstützt alle drei Bereitstellungsprozesse (FTP, Git und Web Deploy). Mit anderen IDEs ist die Bereitstellung in App Service möglich, wenn diese über eine FTP- oder Git-Integration verfügen (siehe [Übersicht über die Bereitstellungsprozesse](#overview)).
 
@@ -147,13 +147,21 @@ Nachteile der Bereitstellung mit einer IDE:
 - Integrierter Azure Explorer
 - Differenzbereitstellung (diff-only) 
 
-###<a name="vs"></a>Direktes Bereitstellen aus Visual Studio
+###<a name="vs"></a>Gewusst wie: direktes Bereitstellen aus Visual Studio
 
 * [Erste Schritte mit Azure und ASP.NET](web-sites-dotnet-get-started.md). In dieser Ressource wird das Erstellen und Bereitstellen eines einfachen ASP.NET MVC-Webprojekts mithilfe von Visual Studio und Web Deploy erläutert.
 * [Bereitstellen von Azure-Webaufträgen mit Visual Studio](websites-dotnet-deploy-webjobs.md). Hier erfahren Sie, wie Sie Konsolenanwendungsprojekte für die Bereitstellung als WebJobs konfigurieren.  
 * [Bereitstellen einer sicheren ASP.NET MVC 5-Anwendung mit Mitgliedschafts-, OAuth- und SQL-Datenbank in Web-Apps](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md). In dieser Ressource wird das Erstellen und Bereitstellen eines ASP.NET MVC-Webprojekts mit einer SQL-Datenbank unter Verwendung von Visual Studio, Web Deploy und Entity Framework Code First-Migrationen erläutert.
 * [ASP.NET-Webbereitstellung mithilfe von Visual Studio](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction) Dabei handelt es sich um eine Lernprogrammserie mit zwölf Teilen, in der die Bereitstellungsaufgaben vollständig vorgestellt werden. Seit dem Erscheinen des Lernprogramms sind einige Azure-Bereitstellungsfunktionen hinzugefügt worden. Hinweise erläutern, welche Informationen fehlen.
 * [Deploying an ASP.NET Website to Azure in Visual Studio 2012 from a Git Repository directly (Direktes Bereitstellen einer ASP.NET-Website auf Azure in Visual Studio 2012 über ein Git-Repository, in englischer Sprache)](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881). In diesem Artikel wird erläutert, wie ein ASP.NET-Webprojekt in Visual Studio bereitgestellt wird und wie das Git-Plug-In verwendet wird, um den Code für Git zu übernehmen und Azure mit dem Git-Repository zu verknüpfen. Visual Studio 2013 und höhere Versionen bieten eine integrierte Git-Unterstützung. Daher ist die Installation eines Plug-Ins nicht erforderlich.
+
+###<a name="aztk"></a>Gewusst wie: Bereitstellen mithilfe der Azure-Toolkits für Eclipse und IntelliJ IDEA
+
+Microsoft ermöglicht das Bereitstellen von Web-Apps in Azure direkt aus Eclipse und IntelliJ über [Azure Toolkit für Eclipse](../azure-toolkit-for-eclipse.md) und [Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij.md). Die folgenden Tutorials veranschaulichen die Schritte für die Bereitstellung einer einfachen „Hello World“-Web-App in Azure mithilfe einer der IDEs:
+
+*  [Erstellen einer „Hello World“-Web-App für Azure in Eclipse](./app-service-web-eclipse-create-hello-world-web-app.md). In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Toolkit für Eclipse eine „Hello World“-Web-App für Azure erstellen und bereitstellen.
+*  [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ](./app-service-web-intellij-create-hello-world-web-app.md). In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Toolkit für IntelliJ eine „Hello World“-Web-App für Azure erstellen und bereitstellen.
+
 
 ## <a name="automate"></a>Automatisieren der Bereitstellung mit Befehlszeilentools
 
@@ -219,11 +227,11 @@ Weitere Informationen finden Sie in der folgenden Ressource:
 
 In einigen Szenarios möchten Sie ggf. in der Lage sein, bequem zwischen einer Staging- und einer Produktionsversion Ihrer App zu wechseln. Weitere Informationen hierzu finden Sie unter [Stagingbereitstellung in Web-Apps](web-sites-staged-publishing.md).
 
-Die Aufstellung eines Sicherungs- und Wiederherstellungsplans ist ein wesentlicher Bestandteil jedes Bereitstellungsworkflows. Weitere Informationen zur Sicherungs- und Wiederherstellungsfunktion von App Service finden Sie unter [Sichern von Web-Apps](web-sites-backup.md).
+Die Aufstellung eines Sicherungs- und Wiederherstellungsplans ist ein wesentlicher Bestandteil jedes Bereitstellungsworkflows. Weitere Informationen zum Sicherungs- und Wiederherstellungsfeature von App Service finden Sie unter [Sichern von Web-Apps](web-sites-backup.md).
 
-Informationen zur Verwendung der rollenbasierten Zugriffssteuerung von Azure zum Verwalten des Zugriffs auf die App Service-Bereitstellung finden Sie unter [RBAC and Web App Publishing](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/) (Rollenbasierte Zugriffssteuerung und Web App-Veröffentlichung).
+Informationen zur Verwendung der rollenbasierten Zugriffssteuerung von Azure zum Verwalten des Zugriffs auf die App Service-Bereitstellung finden Sie unter [RBAC and Web App Publishing](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/) (Rollenbasierte Zugriffssteuerung und Web-App-Veröffentlichung).
 
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

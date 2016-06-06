@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Konfigurieren einer Verfügbarkeitsgruppe für klassische VMs | Microsoft Azure"
-	description="Konfigurieren Sie eine Verfügbarkeitsgruppe für einen neuen oder vorhandenen virtuellen Computer im klassischen Bereitstellungsmodell mithilfe des klassischen Azure-Portals und mit Azure PowerShell."
+	description="Konfigurieren Sie eine Verfügbarkeitsgruppe für einen neuen oder vorhandenen virtuellen Computer im klassischen Bereitstellungsmodell mithilfe des Azure-Portals und mit Azure PowerShell."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

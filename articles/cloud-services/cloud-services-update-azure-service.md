@@ -47,17 +47,19 @@ Die folgende Tabelle zeigt die zulässigen Änderungen an einen Dienst während 
 |---|---|---|---|
 |Betriebssystemversion|Ja|Ja|Ja
 |.NET-Vertrauensebene|Ja|Ja|Ja|
-|Größe des virtuellen Computers|Ja*|Ja|Ja|
-|Einstellungen für den lokalen Speicher|Nur Erhöhen*|Ja|Ja|
+|Größe des virtuellen Computers <sup>1</sup>|Ja<sup>2</sup>|Ja|Ja|
+|Einstellungen für den lokalen Speicher|Nur Erhöhen <sup>2</sup>|Ja|Ja|
 |Rollen in einem Dienst hinzufügen oder entfernen|Ja|Ja|Ja|
 |Anzahl der Instanzen einer bestimmten Rolle|Ja|Ja|Ja|
-|Anzahl oder Typ der Endpunkte für einen Dienst|Ja*|Nein|Ja|
+|Anzahl oder Typ der Endpunkte für einen Dienst|Ja<sup>2</sup>|Nein|Ja|
 |Namen und Werte von Konfigurationseinstellungen|Ja|Ja|Ja|
 |Werte (aber keine Namen) von Konfigurationseinstellungen|Ja|Ja|Ja|
 |Neue Zertifikate hinzufügen|Ja|Ja|Ja|
 |Vorhandene Zertifikate ändern|Ja|Ja|Ja|
 |Neuen Code bereitstellen|Ja|Ja|Ja|
-* Erfordert Azure SDK 1.5 oder höher.
+<sup>1</sup>Größenänderung beschränkt auf die Teilmenge der Größen, die für den Clouddienst verfügbar sind.
+
+<sup>2</sup>Erfordert Azure SDK 1.5 oder höher.
 
 > [AZURE.WARNING] Wenn die Größe des virtuellen Computers geändert wird, werden dadurch lokale Daten zerstört.
 
@@ -180,4 +182,4 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 ## Nächste Schritte
 [Verwalten von Clouddiensten](cloud-services-how-to-manage.md)<br> [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)<br> [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)<br>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

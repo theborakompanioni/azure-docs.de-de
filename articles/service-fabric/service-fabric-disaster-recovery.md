@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/03/2016"
+   ms.date="05/25/2016"
    ms.author="seanmck"/>
 
 # Notfallwiederherstellung in Azure Service Fabric
@@ -38,7 +38,7 @@ Sie können das Layout Ihres Clustern in Fehlerdomänen mithilfe der von [Servic
 
 ### Geografische Verteilung
 
-Es gibt derzeit weltweit 22 Azure-Regionen. 5 weitere sind bereits angekündigt. Eine einzelne Region kann ein oder mehrere physische Rechenzentren enthalten, was u. a. von der Nachfrage und der Verfügbarkeit geeigneter Standorte abhängt. Beachten Sie jedoch, dass auch in Regionen mit mehreren physische Rechenzentren es keine Garantie gibt, dass die VMs in Ihrem Cluster gleichmäßig auf diese physischen Standorte verteilt sind. Derzeit werden sogar alle VMs für einen bestimmten Cluster an einem einzelnen physischen Standort bereitgestellt.
+Es gibt derzeit weltweit [25 Azure-Regionen][azure-regions]. Einige weitere sind bereits angekündigt. Eine einzelne Region kann ein oder mehrere physische Rechenzentren enthalten, was u. a. von der Nachfrage und der Verfügbarkeit geeigneter Standorte abhängt. Beachten Sie jedoch, dass auch in Regionen mit mehreren physische Rechenzentren es keine Garantie gibt, dass die VMs in Ihrem Cluster gleichmäßig auf diese physischen Standorte verteilt sind. Derzeit werden sogar alle VMs für einen bestimmten Cluster an einem einzelnen physischen Standort bereitgestellt.
 
 ## Umgang mit Ausfällen
 
@@ -46,7 +46,7 @@ Es gibt verschiedene Arten von Ausfällen, die sich auf Ihren Cluster auswirken 
 
 ### Ausfall einzelner VMs
 
-Wie bereits erwähnt, stellen Ausfälle einzelner Computer, entweder in der VM oder bei Hardware oder Software, die diese in einer Fehlerdomäne hostet, an sich kein Risiko dar. Service Fabric erkennt den Ausfall in der Regel binnen Sekunden und reagiert basierend auf dem Status des Clusters entsprechend. Wenn z. B. der Knoten die primären Replikate einer Partition gehostet hat, wird aus den sekundären Replikaten der Partition ein neues primäres ausgewählt. Wenn Azure die ausgefallene VM reaktiviert, tritt diese automatisch dem Cluster bei und übernimmt dann gleich ihren Anteil am Workload.
+Wie bereits erwähnt, stellen Ausfälle einzelner Computer, entweder in der VM oder bei Hardware oder Software, die diese in einer Fehlerdomäne hostet, an sich kein Risiko dar. Service Fabric erkennt den Ausfall in der Regel binnen Sekunden und reagiert basierend auf dem Status des Clusters entsprechend. Wenn z. B. der Knoten die primären Replikate einer Partition gehostet hat, wird aus den sekundären Replikaten der Partition ein neues primäres ausgewählt. Wenn Azure die ausgefallene VM reaktiviert, tritt diese automatisch dem Cluster bei und übernimmt dann gleich ihren Anteil am Workload.
 
 ### Mehrere gleichzeitige Computerausfälle
 
@@ -56,7 +56,7 @@ Solange die Mehrheit der Knoten verfügbar bleibt, setzt der Cluster im Allgemei
 
 #### Quorumverlust
 
-Wenn eine Mehrheit der Replikate für die Partition eines zustandsbehafteten Diensts ausfällt, wechselt die Partition in einen Zustand, der als „Quorumverlust“ bezeichnet wird. An diesem Punkt beendet Service Fabric das Zulassen von Schreibvorgängen in dieser Partition, um sicherzustellen, dass ihr Status konsistent und zuverlässig bleibt. Tatsächlich nehmen wir einen Zeitraum der Nichtverfügbarkeit in Kauf, um dafür zu sorgen, dass Clients nicht informiert werden, dass ihre Daten gespeichert wurden, wenn das gar nicht der Fall ist. Wenn Sie sich für das Zulassen von Lesevorgängen aus sekundären Replikaten für diesen zustandsbehafteten Dienst entschieden haben, können Sie diese Lesevorgänge in diesem Zustand fortsetzen. Eine Partition behält den Zustand „Quorumverlust“ so lange, bis eine ausreichende Anzahl von Replikaten reaktiviert ist oder der Clusteradministrator das System mithilfe des Cmdlets [Repair-ServiceFabricPartition API](repair-partition-ps) zum Fortsetzen zwingt. Das Ausführen dieser Aktion, solange das primäre Replikat ausgefallen ist, führt zu Datenverlust.
+Wenn eine Mehrheit der Replikate für die Partition eines zustandsbehafteten Diensts ausfällt, wechselt die Partition in einen Zustand, der als „Quorumverlust“ bezeichnet wird. An diesem Punkt beendet Service Fabric das Zulassen von Schreibvorgängen in dieser Partition, um sicherzustellen, dass ihr Status konsistent und zuverlässig bleibt. Tatsächlich nehmen wir einen Zeitraum der Nichtverfügbarkeit in Kauf, um dafür zu sorgen, dass Clients nicht informiert werden, dass ihre Daten gespeichert wurden, wenn das gar nicht der Fall ist. Wenn Sie sich für das Zulassen von Lesevorgängen aus sekundären Replikaten für diesen zustandsbehafteten Dienst entschieden haben, können Sie diese Lesevorgänge in diesem Zustand fortsetzen. Eine Partition behält den Zustand „Quorumverlust“ so lange, bis eine ausreichende Anzahl von Replikaten reaktiviert ist oder der Clusteradministrator das System mithilfe des Cmdlets [Repair-ServiceFabricPartition API][repair-partition-ps] zum Fortsetzen zwingt. Das Ausführen dieser Aktion, solange das primäre Replikat ausgefallen ist, führt zu Datenverlust.
 
 Systemdienste können auch einen Quorumverlust erleiden, wobei die Auswirkung spezifisch für den jeweiligen Dienst ist. Beispielsweise wirkt sich der Quorumverlust im Naming Service auf die Namensauflösung aus. Im Failover-Manager-Dienst verhindert der Quorumverlust hingegen das Erstellen neuer Dienste und Failover. Beachten Sie, dass im Gegensatz zu Ihren eigenen Diensten das Reparieren von Systemdiensten *nicht* empfohlen wird. Stattdessen empfiehlt es sich, einfach zu warten, bis die ausgefallenen Replikate wieder aktiv sind.
 
@@ -64,11 +64,11 @@ Systemdienste können auch einen Quorumverlust erleiden, wobei die Auswirkung sp
 
 Sie können das Risiko eines Quorumverlusts minimieren, indem Sie die Zielgröße des Replikatsatzes für Ihren Dienst erhöhen. Hilfreich ist es, sich die Anzahl der benötigten Replikate als Anzahl nicht verfügbarer Knoten vorzustellen, die Sie auf einmal tolerieren können, während diese für Schreibvorgänge verfügbar bleiben. Dabei ist zu bedenken, dass Knoten zusätzlich zu Hardwareausfällen durch Anwendungs- oder Clusterupgrades vorübergehend nicht verfügbar sein können.
 
-Sehen Sie sich die folgenden Beispiele unter der Annahme an, dass Sie Ihre Dienste mit dem „MinReplicaSetSize“-Wert 3 konfiguriert haben, dem niedrigsten für Produktionsdienste empfohlenen Wert. Beim „TargetReplicaSetSize“-Wert 3 (ein primäres und zwei sekundäre Replikate) führt ein Hardwarefehler während eines Upgrades (zwei Replikate ausgefallen) zum Quorumverlust, woraufhin Ihr Dienst schreibgeschützt wird. Wenn Sie alternativ über 5 Replikate verfügen, können Sie zwei Ausfälle während des Upgrades überstehen (drei Replikate ausgefallen), da die verbleibenden 2 Replikate weiter mit dem Mindestreplikatsatz ein Quorum bilden können.
+Sehen Sie sich die folgenden Beispiele unter der Annahme an, dass Sie Ihre Dienste mit dem „MinReplicaSetSize“-Wert 3 konfiguriert haben, dem niedrigsten für Produktionsdienste empfohlenen Wert. Beim „TargetReplicaSetSize“-Wert 3 (ein primäres und zwei sekundäre Replikate) führt ein Hardwarefehler während eines Upgrades (zwei Replikate ausgefallen) zum Quorumverlust, woraufhin Ihr Dienst schreibgeschützt wird. Wenn Sie alternativ über 5 Replikate verfügen, können Sie zwei Ausfälle während des Upgrades überstehen (drei Replikate ausgefallen), da die verbleibenden 2 Replikate weiter mit dem Mindestreplikatsatz ein Quorum bilden können.
 
 ### Rechenzentrumsausfälle oder -zerstörung
 
-In seltenen Fällen können physische Rechenzentren aufgrund eines Ausfalls des Stroms oder der Netzwerkverbindung vorübergehend nicht verfügbar sein. In diesen Fällen sind auch Ihre Service Fabric-Cluster und -Anwendungen nicht verfügbar, aber Ihre Daten bleiben erhalten. Für in Azure ausgeführte Cluster können Sie neueste Informationen zu Ausfällen auf der [Azure-Statusseite](azure-status-dashboard) nachlesen.
+In seltenen Fällen können physische Rechenzentren aufgrund eines Ausfalls des Stroms oder der Netzwerkverbindung vorübergehend nicht verfügbar sein. In diesen Fällen sind auch Ihre Service Fabric-Cluster und -Anwendungen nicht verfügbar, aber Ihre Daten bleiben erhalten. Für in Azure ausgeführte Cluster können Sie neueste Informationen zu Ausfällen auf der [Azure-Statusseite][azure-status-dashboard] nachlesen.
 
 Im äußerst unwahrscheinlichen Fall der Zerstörung eines gesamten physischen Rechenzentrums gehen sämtliche Service Fabric-Cluster samt Zustand verloren.
 
@@ -82,7 +82,6 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 }
 ```
 
->[AZURE.NOTE] Sicherung und Wiederherstellung sind derzeit nur für die Reliable Services-API verfügbar. Sicherung und Wiederherstellung für Reliable Actors werden in einer künftigen Version verfügbar sein.
 
 ### Softwareausfälle und andere Möglichkeiten von Datenverlust
 
@@ -92,20 +91,21 @@ Als Ursache von Datenverlust sind Codefehler in Diensten, Benutzerfehler und Sic
 
 - Informationen zum Simulieren verschiedener Ausfälle mit dem [Testability-Framework](service-fabric-testability-overview.md).
 - Lesen Sie weitere Artikel zu Wiederherstellung und hoher Verfügbarkeit. Microsoft hat sehr umfassende Anleitungen zu diesen Themen veröffentlicht. Während sich einige dieser Dokumente auf bestimmte Techniken für die Verwendung in anderen Produkten beziehen, enthalten viele allgemeine bewährte Methoden, die auch im Service Fabric-Kontext befolgt werden können:
- - [Checkliste für die Verfügbarkeit](azure-availability-checklist)
- - [Ausführen von Notfallwiederherstellungsverfahren](disaster-recovery-drill)
- - [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](dr-ha-guide)
+ - [Checkliste für die Verfügbarkeit](../best-practices-availability-checklist.md)
+ - [Ausführen von Notfallwiederherstellungsverfahren](../sql-database/sql-database-disaster-recovery-drills.md)
+ - [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen][dr-ha-guide]
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/de-DE/library/mt163522.aspx
-[azure-status-dashboard]: https://azure.microsoft.com/de-DE/status/
-[azure-availability-checklist]: https://azure.microsoft.com/de-DE/documentation/articles/best-practices-availability-checklist/
-[disaster-recovery-drill]: https://azure.microsoft.com/de-DE/documentation/articles/sql-database-disaster-recovery-drills/
+[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[azure-status-dashboard]: https://azure.microsoft.com/status/
+[azure-regions]: https://azure.microsoft.com/regions/
+[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+
 
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

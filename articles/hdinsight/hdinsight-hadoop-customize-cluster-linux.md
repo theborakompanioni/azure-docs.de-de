@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="05/25/2016"
 	ms.author="larryfr"/>
 
 # Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
@@ -27,9 +27,17 @@ HDInsight verfügt über eine Konfigurationsoption mit der Bezeichnung **Skripta
 
 Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie eine URL und die Parameter angeben und das dann auf den HDInsight-Clusterknoten ausgeführt wird. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
 
-* Es ist eine Beschränkung auf die __Ausführung nur auf bestimmten Knotentypen__ möglich, z.B. Hauptknoten oder Workerknoten.
+* Sie müssen als URI gespeichert werden, der über den HDInsight-Cluster verfügbar ist. Dies sind zwei mögliche Speicherorte:
 
-* Hierfür kann __Permanent__ oder __Ad-hoc__ gewählt werden.
+    * Ein Blob-Speicherkonto, das entweder das primäre oder das zusätzliche Speicherkonto für den HDInsight-Cluster darstellt. Da HDInsight während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt wird, stellen diese eine Möglichkeit dar, eine nicht öffentliche Skriptaktion zu verwenden.
+    
+    * Ein öffentlich lesbarer URI wie ein Azure-Blob, GitHub, OneDrive, Dropbox usw.
+    
+    Beispiele für den URI für Skripts, die im Blobcontainer (öffentlich lesbar) gespeichert werden, finden Sie im Abschnitt [Script Action-Beispielskripts](#example-script-action-scripts).
+
+* Sie können auf die __Ausführung auf nur bestimmten Knotentypen__ beschränkt werden, z.B. Hauptknoten oder Workerknoten.
+
+* Sie können __permanent__ oder __ad-hoc__ sein.
 
     __Permanente__ Skripts sind Skripts, die auf Workerknoten angewendet und automatisch auf neuen Knoten ausgeführt werden, die beim zentralen Hochskalieren eines Clusters erstellt werden.
 
@@ -37,17 +45,17 @@ Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie eine URL und die Par
 
     > [AZURE.IMPORTANT] Permanente Skriptaktionen müssen einen eindeutigen Namen haben.
 
-    __Ad-hoc__-Skripts sind nicht permanent. Sie können ein Ad-hoc-Skript aber nachträglich zu einem permanenten Skript machen oder ein permanentes Skript zu einem Ad-hoc-Skript herunterstufen.
+    __Ad-hoc__-Skripts sind nicht permanent. Sie können ein Ad-hoc-Skript aber nachträglich in ein permanentes Skript oder ein permanentes Skript in ein Ad-hoc-Skript umwandeln.
 
     > [AZURE.IMPORTANT] Skriptaktionen, die während der Clustererstellung verwendet werden, werden automatisch zu permanenten Skripts.
     >
     > Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
 
-* Es können __Parameter__ akzeptiert werden, die vom Skript während der Ausführung verwendet werden.
+* Sie können __Parameter__ akzeptieren, die von den Skripts während der Ausführung verwendet werden.
 
 * Sie werden mit __Stammebenenberechtigungen__ auf den Clusterknoten ausgeführt.
 
-* Sie können über das __Azure-Portal__, __Azure PowerShell__, die __Azure-Befehlszeilenschnittstelle (CLI)__ oder das __HDInsight .NET SDK__ verwendet werden.
+* Sie können über das __Azure-Portal__, die __Azure PowerShell__, die __Azure-Befehlszeilenschnittstelle (CLI)__ oder das __HDInsight .NET SDK__ verwendet werden.
 
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
@@ -85,7 +93,7 @@ Im Gegensatz zu Skriptaktionen, die während der Clustererstellung verwendet wer
 >
 > Skriptaktionen werden mit Stammberechtigungen ausgeführt. Stellen Sie also sicher, dass Sie die Auswirkungen eines Skripts verstehen, bevor Sie es auf den Cluster anwenden.
 
-Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus für erfolgreiche Skripts von __Wird ausgeführt__ in __Akzeptiert__ und über __HDInsight-Konfiguration__ dann wieder in __Wird ausgeführt__. Der Status des Skripts wird im Verlauf der Skriptaktion protokolliert, sodass Sie ermitteln können, ob ein Skript erfolgreich ausgeführt wurde. Beispielsweise können Sie das PowerShell-Cmdlet `Get-AzureRmHDInsightScriptActionHistory` verwenden, um den Status eines Skripts anzuzeigen. Die Ausgabe dieses Befehls sieht etwa so aus:
+Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus für erfolgreiche Skripts von __Wird ausgeführt__ in __Akzeptiert__ und über __HDInsight-Konfiguration__ schließlich wieder in __Wird ausgeführt__. Der Status des Skripts wird im Verlauf der Skriptaktion protokolliert, sodass Sie ermitteln können, ob ein Skript erfolgreich ausgeführt wurde. Beispielsweise können Sie das PowerShell-Cmdlet `Get-AzureRmHDInsightScriptActionHistory` verwenden, um den Status eines Skripts anzuzeigen. Die Ausgabe dieses Befehls sieht etwa so aus:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 2/23/2016 7:40:55 PM
@@ -104,7 +112,7 @@ Name | Skript
 **Installieren von R** | https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh. Siehe [Installieren und Verwenden von R in HDInsight-Clustern](hdinsight-hadoop-r-scripts-linux.md).
 **Installieren von Solr** | https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md).
 **Installieren von Giraph** | https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md).
-| **Vorabladen von Hive-Bibliotheken** | https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Siehe [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
+| **Vorabladen von Hive-Bibliotheken** | https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Weitere Informationen finden Sie unter [Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## Verwenden einer Skriptaktion während der Clustererstellung
 
@@ -426,15 +434,13 @@ Dieser Abschnitt enthält Beispiele zu den verschiedenen Anwendungsmöglichkeite
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren HDInsight-Cluster aus.
 
-2. Wählen Sie auf dem Blatt für den HDInsight-Cluster die Option __Einstellungen__ aus.
+2. Wählen Sie auf dem Blatt für den HDInsight-Cluster die Kachel __Skriptaktionen__ aus.
 
-    ![Symbol „Einstellungen“](./media/hdinsight-hadoop-customize-cluster-linux/settingsicon.png)
+    ![Kachel „Skriptaktionen“](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
 
-3. Wählen Sie auf dem Blatt „Einstellungen“ die Option __Skriptaktionen__ aus.
+    > [AZURE.NOTE] Sie können auch auf dem Blatt „Einstellungen“ __Alle Einstellungen__ und anschließend __Skriptaktionen__ auswählen.
 
-    ![Link „Skriptaktionen“](./media/hdinsight-hadoop-customize-cluster-linux/settings.png)
-
-4. Wählen Sie oben auf dem Blatt „Skriptaktionen“ die Option __Neue übermitteln__ aus.
+4. Wählen Sie oben auf dem Blatt „Skriptaktionen“ __Neue übermitteln__ aus.
 
     ![Symbol „Neue übermitteln“](./media/hdinsight-hadoop-customize-cluster-linux/newscriptaction.png)
 
@@ -442,7 +448,7 @@ Dieser Abschnitt enthält Beispiele zu den verschiedenen Anwendungsmöglichkeite
 
     * __Name:__ Der Anzeigename für diese Skriptaktion. In diesem Beispiel ist dies `R`.
     * __SKRIPT-URI:__ Der URI für das Skript. In diesem Beispiel ist dies `https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh`.
-    * __Hauptknoten__, __Worker__ und __Zookeeper__: Aktivieren Sie die Knoten, auf die das Skript angewendet werden soll. In diesem Beispiel sind Haupt- und Workerknoten aktiviert.
+    * __Hauptknoten__, __Worker__ und __Zookeeper:__ Aktivieren Sie die Knoten, auf die das Skript angewendet werden soll. In diesem Beispiel sind Haupt- und Workerknoten aktiviert.
     * __PARAMETER:__ Falls das Skript Parameter akzeptiert, können Sie diese hier eingeben.
     * __PERMANENT:__ Aktivieren Sie diesen Eintrag, wenn das Skript dauerhaft gespeichert werden soll, damit es beim zentralen Hochskalieren des Clusters auf neue Workerknoten angewendet wird.
 
@@ -495,11 +501,11 @@ Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfig
 
         azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
 
-    Wenn Sie die Parameter für diesen Befehl weglassen, werden Sie zur Angabe der Parameter aufgefordert. Wenn das mit `-u` angegebene Skript Parameter akzeptiert, können Sie diese mit dem `-p`-Parameter angeben.
+    Wenn Sie die Parameter für diesen Befehl weglassen, werden Sie zur Angabe der Parameter aufgefordert. Wenn das mit `-u` angegebene Skript Parameter akzeptiert, können Sie diese mit dem Parameter `-p` angeben.
 
-    Gültige __Knotentypen__ sind __headnode__, __workernode__ und __zookeeper__. Wenn das Skript auf mehrere Knotentypen angewendet werden soll, geben Sie die Typen getrennt durch ein Semikolon (;) ein. Beispiel: `-n headnode;workernode`.
+    Gültige __Knotentypen__ sind __Hauptknoten__, __Workerknoten__ und __Zookeeper-Knoten__. Wenn das Skript auf mehrere Knotentypen angewendet werden soll, geben Sie die Typen getrennt durch ein Semikolon (;) ein. Beispiel: `-n headnode;workernode`.
 
-    Fügen Sie zum dauerhaften Speichern des Skripts `--persistOnSuccess` ein. Sie können das Skript auch mithilfe von `azure hdinsight script-action persisted set` zu einem späteren Zeitpunkt dauerhaft speichern.
+    Fügen Sie `--persistOnSuccess` hinzu, um das Skript dauerhaft zu speichern. Sie können das Skript auch mithilfe von `azure hdinsight script-action persisted set` zu einem späteren Zeitpunkt dauerhaft speichern.
     
     Nach Abschluss des Auftrags sollten Sie eine Ausgabe ähnlich der folgenden erhalten:
     
@@ -521,11 +527,11 @@ Ein Beispiel für die Verwendung des .NET SDK zum Anwenden von Skripts auf einen
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren HDInsight-Cluster aus.
 
-2. Wählen Sie auf dem Blatt für den HDInsight-Cluster die Option __Einstellungen__ aus.
+2. Wählen Sie auf dem Blatt für den HDInsight-Cluster __Einstellungen__ aus.
 
     ![Symbol „Einstellungen“](./media/hdinsight-hadoop-customize-cluster-linux/settingsicon.png)
 
-3. Wählen Sie auf dem Blatt „Einstellungen“ die Option __Skriptaktionen__ aus.
+3. Wählen Sie auf dem Blatt „Einstellungen“ __Skriptaktionen__ aus.
 
     ![Link „Skriptaktionen“](./media/hdinsight-hadoop-customize-cluster-linux/settings.png)
 
@@ -537,7 +543,7 @@ Ein Beispiel für die Verwendung des .NET SDK zum Anwenden von Skripts auf einen
 
     ![Blatt mit Eigenschaften von Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionproperties.png)
 
-6. Sie können auf dem Blatt „Skriptaktionen“ auch die Option __...__ rechts neben den Einträgen verwenden, um Aktionen wie das erneute Ausführen, Beibehalten oder (für permanente Aktionen) Löschen durchzuführen.
+6. Sie können auf dem Blatt „Skriptaktionen“ auch __...__ rechts neben den Einträgen verwenden, um Aktionen wie das erneute Ausführen, Beibehalten oder (für permanente Aktionen) Löschen durchzuführen.
 
     ![Skriptaktionen – Nutzung von „...“](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
 
@@ -550,7 +556,7 @@ Ein Beispiel für die Verwendung des .NET SDK zum Anwenden von Skripts auf einen
 | Set-AzureRmHDInsightPersistedScriptAction | Höherstufen einer Ad-hoc-Skriptaktion zu einer permanenten Skriptaktion |
 | Remove-AzureRmHDInsightPersistedScriptAction | Herunterstufen einer permanenten Skriptaktion auf eine Ad-hoc-Aktion |
 
-> [AZURE.IMPORTANT] Mit der Verwendung von `Remove-AzureRmHDInsightPersistedScriptAction` werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Flag „Persisted“ entfernt. Auf diese Weise wird das Skript nicht für neue Workerknoten ausgeführt, die dem Cluster hinzugefügt werden.
+> [AZURE.IMPORTANT] Mit der Verwendung von `Remove-AzureRmHDInsightPersistedScriptAction` werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Flag „Permanent“ entfernt. Auf diese Weise wird das Skript nicht für neue Workerknoten ausgeführt, die dem Cluster hinzugefügt werden.
 
 Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Höherstufen und dann zum Herunterstufen eines Skripts verwendet werden.
 
@@ -581,7 +587,7 @@ Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Hö
 | `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` | Höherstufen einer Ad-hoc-Skriptaktion zu einer permanenten Skriptaktion |
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` | Herunterstufen einer permanenten Skriptaktion auf eine Ad-hoc-Aktion |
 
-> [AZURE.IMPORTANT] Mit der Verwendung von `azure hdinsight script-action persisted delete` werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Flag „Persisted“ entfernt. Auf diese Weise wird das Skript nicht für neue Workerknoten ausgeführt, die dem Cluster hinzugefügt werden.
+> [AZURE.IMPORTANT] Mit der Verwendung von `azure hdinsight script-action persisted delete` werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Flag „Permanent“ entfernt. Auf diese Weise wird das Skript nicht für neue Workerknoten ausgeführt, die dem Cluster hinzugefügt werden.
 
 ### Verwenden des HDInsight .NET SDK
 
@@ -684,4 +690,4 @@ Informationen und Beispiele zum Erstellen und Verwenden von Skripts zum Anpassen
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Phasen während der Clustererstellung"
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->
