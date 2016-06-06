@@ -40,7 +40,7 @@ Ressourcen, die über den Ressourcen-Manager erstellt wurden, weisen folgende Me
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -109,7 +109,7 @@ Im Folgenden sind die Komponenten und deren Beziehungen für die Azure-Dienstver
 
 ## Vorteile der Verwendung von Ressourcen-Manager und Ressourcengruppen
 
-Mit dem Ressourcen-Manager wurde das Konzept der Ressourcengruppen eingeführt. Jede über den Ressourcen-Manager erstellte Ressource befindet sich in einer Ressourcengruppe. Das Ressourcen-Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
+Mit dem Ressourcen-Manager wurde das Konzept der Ressourcengruppen eingeführt. Jede über den Ressourcen-Manager erstellte Ressource befindet sich in einer Ressourcengruppe. Das Resource Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
 
 - Sie müssen die Dienste für Ihre Lösung nicht mehr einzeln bearbeiten, sondern können sie als Gruppe bereitstellen, verwalten und überwachen.
 - Sie können die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
@@ -175,4 +175,4 @@ Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellun
 - Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

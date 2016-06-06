@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/18/2016"
 	ms.author="jgao"/>
 
 
@@ -146,7 +146,7 @@ Das RunHiveScript enthält mehrere Variablen. Die Werte werden übergeben, wenn 
 <tr><td>${hiveOutputFolder}</td><td>Gibt den Ausgabeordner für die Hive-Anweisung INSERT OVERWRITE an. Dieser entspricht dem für den Sqoop-Export angegebenen Ordner (export-dir).</td></tr>
 </table>
 
-Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight der Version 2.1).
+Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight der Version 2.1).
 
 
 Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skriptdatei enthält drei HiveQL-Anweisungen:
@@ -355,9 +355,9 @@ Hier ist das Skript. Sie können das Skript mit Windows PowerShell ISE ausführe
 		-Type Standard_LRS
 	
 	# Create the default Blob container
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+	$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
 									-ResourceGroupName $resourceGroupName `
-									-Name $defaultStorageAccountName |  %{ $_.Key1 }
+									-Name $defaultStorageAccountName)[0].Value
 	$defaultStorageAccountContext = New-AzureStorageContext `
 										-StorageAccountName $defaultStorageAccountName `
 										-StorageAccountKey $defaultStorageAccountKey 
@@ -602,9 +602,9 @@ Sie können das folgende PowerShell-Beispielskript verwenden:
 	$sqlDatabaseTableName = "log4jLogsCount"
 
 	Write-host "Delete the Hive script output file ..." -ForegroundColor Green
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+	$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
-                                -Name $defaultStorageAccountName |  %{ $_.Key1 }
+                                -Name $defaultStorageAccountName)[0].Value
 	$destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
 	Remove-AzureStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $defaultBlobContainerName
 
@@ -680,4 +680,4 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

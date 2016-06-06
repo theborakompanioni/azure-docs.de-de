@@ -13,21 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Gewähren des Zugriffs zur Verwaltung von Azure AD Privileged Identity Management
 
-Der erste Benutzer, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, muss ein globaler Administrator sein. Andere globale Administratoren haben jedoch nicht standardmäßig Zugriff auf PIM und können daher temporäre Zuweisungen nicht verwalten. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer den anderen Administratoren die Rolle des Sicherheitsadministrators zuweisen. Diese Zuweisung muss innerhalb von PIM erfolgen und kann nicht über PowerShell oder andere Portale geändert werden.
+Der erste Benutzer, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, muss ein globaler Administrator sein. Andere globale Administratoren haben jedoch nicht standardmäßig Zugriff auf PIM und können daher temporäre Zuweisungen nicht verwalten. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer den anderen Administratoren die Rolle des Administrators für privilegierte Rollen zuweisen. Diese Zuweisung muss innerhalb von PIM erfolgen und kann nicht über PowerShell oder andere Portale geändert werden.
 
 > [AZURE.NOTE] Für die Verwaltung von Azure AD PIM ist Azure MFA erforderlich. Da Microsoft-Konten nicht für Azure MFA registriert werden können, kann ein Benutzer, der sich mit einem Microsoft-Konto anmeldet, nicht auf Azure AD PIM zugreifen.
 
-Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle „Sicherheitsadministrator“ vorhanden sind, falls ein Benutzer gesperrt oder ein Konto gelöscht wird.
+Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle des Administrators für privilegierte Rollen vorhanden sind, falls ein Benutzer gesperrt oder ein Konto gelöscht wird.
 
 ## Gewähren des Zugriffs für einen anderen Benutzer zur Verwaltung von PIM
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an, und wählen Sie auf dem Dashboard die App **Azure AD Privileged Identity Management** aus.
-2. Wählen Sie die Rolle **Sicherheitsadministrator** aus. Es wird eine Liste der Benutzer angezeigt, die diese Rolle derzeit innehaben.
+2. Wählen Sie die Rolle **privileged role administrator** (Administrator für privilegierte Rollen) aus. Es wird eine Liste der Benutzer angezeigt, die diese Rolle derzeit innehaben.
 3. Klicken Sie auf **Hinzufügen**. Ein Assistenten-Blatt wird geöffnet. Die Rolle ist bereits ausgewählt.
 4. Klicken Sie auf **Benutzer auswählen**. Das Blatt mit der Benutzerliste wird geöffnet.
 5. Geben Sie den Namen des Benutzers in das Suchfeld ein. Wenn der Benutzer im Verzeichnis enthalten ist, wird sein Konto während der Eingabe angezeigt.
@@ -41,9 +41,9 @@ Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle „Sicherh
 
 ## Entfernen der Zugriffsrechte eines Benutzers für die Verwaltung von PIM
 
-Bevor Sie einen Benutzer aus der Rolle „Sicherheitsadministrator“ entfernen, stellen Sie sicher, dass dieser Rolle danach noch mindestens zwei Benutzer zugewiesen sind.
+Bevor Sie einen Benutzer aus der Rolle der Administratoren für privilegierte Rollen entfernen, stellen Sie sicher, dass dieser Rolle danach noch mindestens zwei Benutzer zugewiesen sind.
 
-1. Klicken Sie auf dem PIM-Dashboard auf die Rolle **Sicherheitsadministrator**. Es wird eine Liste der Benutzer angezeigt, die diese Rolle derzeit innehaben.
+1. Klicken Sie auf dem PIM-Dashboard auf die Rolle **privileged role administrator** (Administrator für privilegierte Rollen). Es wird eine Liste der Benutzer angezeigt, die diese Rolle derzeit innehaben.
 2. Klicken Sie auf den Benutzer in der Benutzerliste.
 3. Klicken Sie auf **Entfernen**. Eine Bestätigungsmeldung wird angezeigt.
 4. Klicken Sie auf **Ja**, um die Rolle des Benutzers zu entfernen.
@@ -52,4 +52,4 @@ Bevor Sie einen Benutzer aus der Rolle „Sicherheitsadministrator“ entfernen,
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

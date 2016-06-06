@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/24/2016"    
+	ms.date="05/19/2016"    
 	ms.author="juliako"/>
 
 
@@ -47,7 +47,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 - Geben Sie das zu codierende Asset an.
 - Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
-- Übermitteln des Auftrags.
+- Übermitteln Sie den Auftrag.
 	
 		using System;
 		using System.Collections.Generic;
@@ -236,6 +236,20 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 		}
 
 
+##Unterstützung relativer Größen
+
+Beim Generieren von Miniaturansichten müssen Sie nicht immer die Ausgabebreite und -höhe in Pixel angeben. Sie können sie in Prozent im Bereich [1 %, ..., 100 %] angeben.
+
+###JSON-Voreinstellung 
+	
+	"Width": "100%",
+	"Height": "100%"
+
+###XML-Voreinstellung
+	
+	<Width>100%</Width>
+	<Height>100%</Height>
+	
 ##<a id="thumbnails"></a>Generieren von Miniaturansichten
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.
@@ -869,11 +883,11 @@ Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokume
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-##<a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
+##<a id="deinterlacing"></a>Deaktivieren des automatischen De-Interlacings
 
-Kunden müssen nichts tun, wenn sie wünschen, dass das Interlacing der die Interlace-Inhalte automatisch aufgehoben wird. Bei Aktivierung des automatischen Deinterlacings (Standard) übernimmt MWS die automatische Erkennung von Frames mit Zeilensprung und hebt das Interlacing nur für Frames auf, die als Interlaced markiert sind.
+Kunden müssen nichts tun, wenn sie wünschen, dass das Interlacing der die Interlace-Inhalte automatisch aufgehoben wird. Bei Aktivierung des automatischen De-Interlacings (Standard) übernimmt MWS die automatische Erkennung von Frames mit Zeilensprung und hebt das Interlacing nur für Frames auf, die als Interlaced markiert sind.
 
-Sie können das automatische Deinterlacing deaktivieren. Diese Option wird jedoch nicht empfohlen.
+Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedoch nicht empfohlen.
 
 ###JSON-Voreinstellung
 	
@@ -1072,4 +1086,4 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
 
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Automatisierte Sicherung für virtuelle SQL Server-Computer (klassisch) | Microsoft Azure"
-	description="Erläutert das Feature „Automatisierte Sicherung“ für SQL Server auf virtuellen Azure-Computern mithilfe des klassischen Bereitstellungsmodus."
+	description="Erläutert das Feature „Automatisierte Sicherung“ für SQL Server auf virtuellen Azure-Computern unter Verwendung des Resource Manager."
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -13,16 +13,46 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/08/2016"
+	ms.date="05/18/2016"
 	ms.author="jroth" />
 
 # Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)
 
-Die automatisierte Sicherung konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einer Azure-VM, auf der SQL Server 2014 Standard oder Enterprise ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure-Blob-Speicher nutzen.
+> [AZURE.SELECTOR]
+- [Ressourcen-Manager](virtual-machines-windows-sql-automated-backup.md)
+- [Klassisch](virtual-machines-windows-classic-sql-automated-backup.md)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+Die automatisierte Sicherung konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einer Azure-VM, auf der SQL Server 2014 Standard oder Enterprise ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure-Blob-Speicher nutzen. Die automatische Sicherung basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](virtual-machines-windows-classic-sql-server-agent-extension.md).
 
-## Einstellungen für die automatisierte Sicherung
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. Die Resource Manager-Version dieses Artikels finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-backup.md).
+
+## Voraussetzungen
+
+Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Voraussetzungen:
+
+**Betriebssystem:**
+
+- Windows Server 2012
+- Windows Server 2012 R2
+
+**SQL Server-Version/-Edition:**
+
+- SQL Server 2014 Standard
+- SQL Server 2014 Enterprise
+- SQL Server 2016 Standard
+- SQL Server 2016 Enterprise
+
+**Datenbankkonfiguration:**
+
+- Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden.
+
+**Azure PowerShell:**
+
+- [Installieren Sie die aktuellen Azure PowerShell-Befehle](../powershell-install-configure.md), wenn Sie die automatisierte Sicherung mit PowerShell konfigurieren möchten.
+
+>[AZURE.NOTE] Die automatisierte Sicherung basiert auf der Erweiterung für den SQL Server-IaaS-Agent. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [SQL Server IaaS Agent Extension](virtual-machines-windows-classic-sql-server-agent-extension.md) (Erweiterung für den SQL Server-IaaS-Agent).
+
+## Einstellungen
 
 In der folgenden Tabelle werden die Optionen beschrieben, die für die automatisierte Sicherung konfiguriert werden können. Die tatsächlichen Konfigurationsschritte variieren abhängig davon, ob Sie das Azure-Portal oder Azure Windows PowerShell-Befehle verwenden.
 
@@ -34,11 +64,9 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 |**Verschlüsselung**|Aktivieren/Deaktivieren (deaktiviert)|Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto im gleichen automaticbackup-Container (mit derselben Namenskonvention). Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten.|
 |**Kennwort**|Kennworttext (keiner)|Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde.|
 
-## Konfigurieren der automatisierten Sicherung im Azure-Portal
+## Konfiguration im Portal
 
-Sie können das Azure-Portal zum Konfigurieren der automatisierten Sicherung verwenden, wenn Sie einen neuen virtuellen Computer mit SQL Server 2014 erstellen.
-
->[AZURE.NOTE] Die automatisierte Sicherung basiert auf dem SQL Server-IaaS-Agent. Zum Installieren und Konfigurieren des Agents muss der Azure-VM-Agent auf dem virtuellen Zielcomputer ausgeführt werden. Bei neueren Katalogimages für virtuelle Computer ist diese Option standardmäßig aktiviert, der Azure-VM-Agent ist auf vorhandenen virtuellen Computern aber möglicherweise nicht installiert. Wenn Sie ein eigenes Image für virtuelle Computer verwenden, müssen Sie auch den SQL Server-IaaS-Agent installieren. Weitere Informationen finden Sie unter [VM-Agent und Erweiterungen](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/).
+Sie können das Azure-Portal zum Konfigurieren der automatisierten Sicherung verwenden, wenn Sie einen neuen virtuellen Computer mit SQL Server 2014 im klassischen Bereitstellungsmodell erstellen.
 
 Der folgende Azure-Portal-Screenshot zeigt die oben beschriebenen Optionen unter **OPTIONALE KONFIGURATION** | **AUTOMATISIERTE SQL-SICHERUNG**.
 
@@ -48,9 +76,9 @@ Wählen Sie für vorhandene virtuelle Computer mit SQL Server 2014 die Einstellu
 
 ![Konfigurieren der automatisierten Sicherung im Azure-Portal](./media/virtual-machines-windows-classic-sql-automated-backup/IC792133.jpg)
 
->[AZURE.NOTE] Wenn Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
+>[AZURE.NOTE] Wenn Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
 
-## Konfigurieren der automatisierten Sicherung mit PowerShell
+## Konfiguration mit PowerShell
 
 Im folgenden PowerShell-Beispiel wird die automatisierte Sicherung für eine vorhandene SQL Server 2014-VM konfiguriert. Der Befehl **New-AzureVMSqlServerAutoBackupConfig** konfiguriert die Einstellungen der automatisierten Sicherung zum Speichern von Sicherungen in dem mit der $storageaccount-Variable angegebenen Azure-Speicherkonto. Die Sicherungen werden für 10 Tage beibehalten. Der Befehl **Set AzureVMSqlServerExtension** aktualisiert die angegebene Azure-VM mit diesen Einstellungen.
 
@@ -76,33 +104,7 @@ Um die Verschlüsselung zu aktivieren, ändern Sie das vorherige Skript, um den 
 
 Führen Sie zum Deaktivieren der automatisierten Sicherung das gleiche Skript ohne den **-Enable**-Parameter für **New-AzureVMSqlServerAutoBackupConfig** aus. Ähnlich wie die Installation kann auch das Deaktivieren der automatisierten Sicherung mehrere Minuten dauern.
 
-## Deaktivieren und Deinstallieren des SQL Server-IaaS-Agents
-
-Verwenden Sie den folgenden Befehl, wenn Sie den SQL Server-IaaS-Agent für die automatisierte Sicherung und für automatisiertes Patchen deaktivieren möchten:
-
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -Disable | Update-AzureVM
-
-Verwenden Sie zum Deinstallieren des SQL Server-IaaS-Agents die folgende Syntax:
-
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension –Uninstall | Update-AzureVM
-
-Sie können die Erweiterung auch mit dem Befehl **Remove-AzureVMSqlServerExtension** deinstallieren:
-
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Remove-AzureVMSqlServerExtension | Update-AzureVM
-
 >[AZURE.NOTE] Durch das Deaktivieren und Deinstallieren des SQL Server-IaaS-Agents werden die zuvor konfigurierten Managed Backup-Einstellungen nicht entfernt. Die automatisierte Sicherung sollte vor dem Deaktivieren oder Deinstallieren des SQL Server-IaaS-Agents deaktiviert werden.
-
-## Kompatibilität
-
-Die folgenden Produkte sind mit den SQL Server-IaaS-Agent-Funktionen für die automatisierte Sicherung kompatibel:
-
-- Windows Server 2012
-
-- Windows Server 2012 R2
-
-- SQL Server 2014 Standard
-
-- SQL Server 2014 Enterprise
 
 ## Nächste Schritte
 
@@ -110,8 +112,8 @@ Die automatisierte Sicherung konfiguriert Managed Backup für Azure-VMs. Lesen S
 
 Weitere Informationen zur Sicherung und Wiederherstellung für SQL Server auf Azure-VMs finden Sie im folgenden Thema: [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md).
 
-Eine verwandte Funktion für SQL Server-VMs in Azure ist die [automatisierte Anwendung von Patches für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md).
+Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter [SQL Server IaaS Agent Extension](virtual-machines-windows-classic-sql-server-agent-extension.md) (Erweiterung für den SQL Server-IaaS-Agent).
 
-Lesen Sie auch die weiteren [Ressourcen für die Ausführung von SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
+Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

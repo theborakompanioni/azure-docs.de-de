@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="douge" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/11/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 
@@ -43,7 +43,7 @@ Wenn Sie auf eine Vorlage klicken, wird die Seite im Entwicklerportal geöffnet,
 
 ![Vorlage „Produktliste“][api-management-developer-portal-templates-overview]
 
-Mit einigen Vorlage, z. B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst.
+Mit einigen Vorlagen, z.B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst.
 
 ![Vorlage „Benutzerprofil“][api-management-user-profile-templates]
 
@@ -137,7 +137,7 @@ Klicken Sie auf **Ja**, um den Vorgang zu bestätigen und die Vorlagendaten im E
 
 ![Veröffentlichung bestätigen][api-management-publish-template-confirm]
 
-Zum Veröffentlichen aller aktuell nicht veröffentlichten Vorlagenversionen klicken Sie in der Vorlagenliste auf **Veröffentlichen**. Nicht veröffentlichte Vorlagen sind mit einem Stern gekennzeichnet, der an den Vorlagennamen angefügt ist. In diesem Beispiel werden die Vorlagen **Produktliste** und **Produkt** veröffentlicht.
+Zum Veröffentlichen aller aktuell nicht veröffentlichten Vorlagenversionen klicken Sie in der Vorlagenliste auf **Veröffentlichen**. Nicht veröffentlichte Vorlagen sind mit einem Sternchen gekennzeichnet, der an den Vorlagennamen angefügt ist. In diesem Beispiel werden die Vorlagen **Produktliste** und **Produkt** veröffentlicht.
 
 ![Vorlagen veröffentlichen][api-management-publish-templates]
 
@@ -207,4 +207,4 @@ Im folgenden Video erfahren Sie, wie Sie Vorlagen nutzen können, um die API um 
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

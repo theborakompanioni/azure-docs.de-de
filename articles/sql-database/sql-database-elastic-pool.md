@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/28/2016"
+	ms.date="05/23/2016"
 	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -26,7 +26,7 @@ Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten
 
 ## So funktioniert's
 
-Ein weit verbreitetes Saas-Anwendungsmuster ist das Einzelmandanten-Datenbankmodell: Jeder Kunde erhält eine Datenbank. Jeder Kunde (jede Datenbank) verfügt über nicht vorhersagbare Ressourcenanforderungen für Arbeitsspeicher, E/A und CPU. Wie ordnen Sie bei einer schwankenden Nutzung mit Spitzen- und Tiefstwerten also Ressourcen zu? In der Vergangenheit hatten Sie zwei Optionen: (1) überdimensionierte Bereitstellung der Ressourcen, die sich an der Nutzung zu Spitzenzeiten orientiert (samt der damit verbundenen Kosten) oder (2) unterdimensionierte Bereitstellung, um Kosten einzusparen, zu Lasten von Leistung und Kundenzufriedenheit während der Spitzenzeiten. Pools für elastische Datenbanken beheben dieses Problem, indem sichergestellt wird, dass Datenbanken zum benötigten Zeitpunkt über die erforderlichen Leistungsressourcen verfügen, wobei gleichzeitig ein einfacher Mechanismus für die Ressourcenbelegung bei einem vorhersagbaren Budget geboten wird.
+Ein weit verbreitetes Saas-Anwendungsmuster ist das Einzelmandanten-Datenbankmodell: Jeder Kunde erhält eine Datenbank. Jeder Kunde (jede Datenbank) verfügt über nicht vorhersagbare Ressourcenanforderungen für Arbeitsspeicher, E/A und CPU. Wie ordnen Sie bei einer schwankenden Nutzung mit Spitzen- und Tiefstwerten also Ressourcen zu? In der Vergangenheit hatten Sie zwei Optionen: (1) überdimensionierte Bereitstellung der Ressourcen, die sich an der Nutzung zu Spitzenzeiten orientiert (samt der damit verbundenen Kosten) oder (2) unterdimensionierte Bereitstellung, um Kosten einzusparen, zu Lasten von Leistung und Kundenzufriedenheit während der Spitzenzeiten. Pools für elastische Datenbanken beheben dieses Problem, indem sichergestellt wird, dass Datenbanken zum benötigten Zeitpunkt über die erforderlichen Leistungsressourcen verfügen, wobei gleichzeitig ein einfacher Mechanismus für die Ressourcenbelegung bei einem vorhersagbaren Budget geboten wird. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
 
 > [AZURE.VIDEO elastic-databases-helps-saas-developers-tame-explosive-growth]
 
@@ -81,7 +81,7 @@ Datenbanken, die für Pools für elastische Datenbanken besonders geeignet sind,
 
 Mit einem Pool werden die Verwaltungsaufgaben vereinfacht, indem Skripts in **[elastischen Aufträgen](sql-database-elastic-jobs-overview.md)** ausgeführt werden. Durch einen Auftrag für die elastische Datenbank werden die meisten aufwändigen Schritte beseitigt, die bei der Verwendung einer großen Zahl von Datenbanken anfallen. Lesen Sie sich [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md) durch, bevor Sie beginnen.
 
-Weitere Informationen zu anderen Tools finden Sie unter [SQL-Datenbank – Features und Tools für elastische Datenbanken verwenden](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/).
+Weitere Informationen zu anderen Tools finden Sie unter [SQL-Datenbank – Features und Tools elastischer Datenbanken verwenden](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/).
 
 ## Funktionen der Geschäftskontinuität für Datenbanken in einem Pool
 
@@ -104,4 +104,4 @@ Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

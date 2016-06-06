@@ -671,7 +671,7 @@ Wie im folgenden Diagramm dargestellt, können Sie im Azure Batch-Explorer die A
 ![Azure Batch-Aufgaben][image-data-factory-azure-batch-tasks]
 
 
-### Debuggen der Pipeline
+## Debuggen der Pipeline
 Das Debuggen umfasst einige grundlegende Verfahren:
 
 1.	Wenn der Eingabeslice nicht auf **Bereit** festgelegt ist, stellen Sie sicher, dass die Struktur des Eingabeordners korrekt ist und die Datei **file.txt** im Eingabeordner vorhanden ist. 
@@ -689,6 +689,10 @@ Das Debuggen umfasst einige grundlegende Verfahren:
 4.	Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen auf der **obersten Ebene** angesiedelt sein und dürfen keine Unterordner haben.
 5.	Stellen Sie sicher, dass **AssemblyName** (MyDotNetActivity.dll), **EntryPoint**(MyDotNetActivityNS.MyDotNetActivity), **PackageFile** (customactivitycontainer/Mycustomactivity.ZIP), und **PackageLinkedService** (sollte auf den Azure Blob-Speicher verweisen, der die Zip-Datei enthält) auf die richtigen Werte festgelegt sind. 
 6.	Wenn Sie einen Fehler behoben haben und den Slice erneut verarbeiten wollen, klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice und klicken Sie anschließend auf **Ausführen**. 
+7.	Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er während der Laufzeit nicht. Die bewährte Methode bei der Verwendung von Azure Batch ist die Aufbewahrung aller geheimen Schlüssel in **Azure KeyVault**, die Verwendung eines zertifikatsbasierten Dienstprinzipals zum Schützen des **Schlüsseltresors** und die Verteilung des Zertifikats an Azure Batch-Pool. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
+
+	Es existiert eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Verbindungszeichenfolgen-Einstellungen erstellen, ein den verknüpften Dienst verwendendes Dataset erstellen und das Dataset als Dummyeingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
+
 
 
 ## Aktualisieren der benutzerdefinierten Aktivität
@@ -697,7 +701,7 @@ Wenn Sie den Code für die benutzerdefinierte Aktivität aktualisieren, führen 
 ## Daten kopieren/verschieben 
 Die Kopieraktivität kopiert die Daten aus einem **Quelldatenspeicher** in einen **Senkendatenspeicher**. Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores).
 
-Wenn Sie Daten in/aus einem Datenspeicher verschieben müssen, der nicht von der **Kopieraktivität** unterstützt wird, können Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben der Daten verwenden. Weitere Informationen finden Sie auch im [Beispiel für ein Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) auf GitHub.
+Wenn Sie Daten zu/von einem Datenspeicher verschieben müssen, der von der **Kopieraktivität** nicht unterstützt wird, können Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben der Daten verwenden. Weitere Informationen finden Sie auch im [Beispiel für ein Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) auf GitHub.
 
 ## Anwendungsdomänenisolierung 
 Das [Beispiel für eine anwendungsdomänenübergreifende Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) zeigt Ihnen, wie Sie eine .NET-Aktivität für Azure Data Factory erstellen, die nicht auf die vom Azure Data Factory-Startprogramm verwendeten Assemblyversionen (z.B. WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x usw.) beschränkt ist.
@@ -718,7 +722,7 @@ Sie können erweiterte Eigenschaften in der Aktivität JSON wie folgt deklariere
 
 Im obigen Beispiel gibt es zwei erweiterte Eigenschaften: **SliceStart** und **DataFactoryName**. Der Wert für „SliceStart“ basiert auf der SliceStart-Systemvariablen. Eine Liste der unterstützten Systemvariablen finden Sie unter [Systemvariablen](data-factory-scheduling-and-execution.md#data-factory-system-variables). Der Wert für „DataFactoryName“ ist hartcodiert und auf „CustomActivityFactory“ festgelegt.
 
-Um auf diese erweiterten Eigenschaften in der **Execute**-Methode zuzugreifen, verwenden Sie Code wie den folgenden:
+Verwenden Sie Code wie den folgenden, um auf diese erweiterten Eigenschaften in der **Execute**-Methode zuzugreifen:
 
 	// to get extended properties (for example: SliceStart)
 	DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
@@ -762,7 +766,7 @@ Der Azure Data Factory-Dienst unterstützt das Erstellen eines Clusters bei Beda
 	1. Geben Sie für die Eigenschaft **clusterSize** die Größe des HDInsight-Clusters an.
 	3. Geben Sie für die **timeToLive**-Eigenschaft an, wie lange sich der Cluster im Leerlauf befinden darf, bevor er gelöscht wird.
 	4. Geben Sie für die **version**-Eigenschaft die HDInsight-Version an, die Sie verwenden möchten. Wenn Sie diese Eigenschaft ausschließen, wird die neueste Version verwendet.  
-	5. Geben Sie für **linkedServiceName** den Dienst **AzureStorageLinkedService** an, den Sie im Tutorial „Erste Schritte“ erstellt haben.
+	5. Geben Sie für **linkedServiceName** den **AzureStorageLinkedService** an, den Sie im Tutorial „Erste Schritte“ erstellt haben.
 
 			{
 			    "name": "HDInsightOnDemandLinkedService",
@@ -886,4 +890,4 @@ Beispiel | Aktion der benutzerdefinierten Aktivität
 
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -22,7 +22,7 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
 
 Bevor Sie ein SSL-Zertifikat anfordern, müssen Sie zuerst festlegen, welche Domänennamen durch das Zertifikat geschützt werden. Davon hängt ab, welchen Typ von Zertifikat Sie benötigen. Wenn Sie lediglich einen einzelnen Domänennamen wie **contoso.com** oder **www.contoso.com** schützen müssen, reicht ein Basiszertifikat aus. Wenn Sie mehrere Domänennamen, wie z. B. **contoso.com**, **www.contoso.com** und **mail.contoso.com**, sichern müssen, erhalten Sie ein [Platzhalterzertifikat](http://en.wikipedia.org/wiki/Wildcard_certificate) oder ein [Zertifikat mit einem alternativen Antragstellernamen](http://en.wikipedia.org/wiki/SubjectAltName) (SubjectAltName).
 
-Mit App Service verwendete SSL-Zertifikate müssen von einer [Zertifizierungsstelle](http://en.wikipedia.org/wiki/Certificate_authority) (CA) signiert werden. Wenn Sie noch kein Zertifikat haben, müssen Sie eines von einem Unternehmen erwerben, das SSL-Zertifikate ausstellt. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] \(Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
+Mit App Service verwendete SSL-Zertifikate müssen von einer [Zertifizierungsstelle](http://en.wikipedia.org/wiki/Certificate_authority) (CA) signiert werden. Wenn Sie noch kein Zertifikat haben, müssen Sie eines von einem Unternehmen erwerben, das SSL-Zertifikate ausstellt. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] (Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
 
 Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure erfüllen:
 
@@ -40,7 +40,7 @@ Um ein SSL-Zertifikat für die Verwendung mit Azure App Service zu erhalten, mü
 - [Abrufen eines SubjectAltName-Zertifikats mit OpenSSL](#bkmk_subjectaltname)
 - [Generieren selbstsignierter Zertifikate (nur für Testzwecke)](#bkmk_selfsigned)
 
-> [AZURE.NOTE] Wenn Sie die Schritte befolgen, werden Sie aufgefordert, einen **Allgemeinen Namen**, z. B. `www.contoso.com` einzugeben. Für Platzhalterzertifikate sollte dieser Wert \*\.domainname (z. B. \*\.contoso.com) lauten. Wenn Sie einen Platzhalternamen wie \*\.contoso.com und einen Stammdomänennamen wie contoso.com unterstützen müssen, können Sie ein Platzhalterzertifikat für einen alternativen Antragstellernamen (subjectAltName) verwenden.
+> [AZURE.NOTE] Wenn Sie die Schritte befolgen, werden Sie aufgefordert, einen **Allgemeinen Namen**, z. B. `www.contoso.com` einzugeben. Für Platzhalterzertifikate sollte dieser Wert "*.domainname" (z. B. *.contoso.com) lauten. Wenn Sie einen Platzhalternamen wie "*.contoso.com" und einen Stammdomänennamen wie "contoso.com" unterstützen müssen, können Sie ein Platzhalterzertifikat für einen alternativen Antragstellernamen (subjectAltName) verwenden.
 >
 > Zertifikate für die Kryptografie für elliptische Kurven (ECC) werden für Azure App Service zwar unterstützt, sie sind jedoch noch relativ neu, daher sollten Sie bei Ihrer Zertifizierungsstelle erfragen, wie genau Sie die CSR-Datei erstellen.
 
@@ -84,7 +84,7 @@ Certreq.exe ist ein Windows-Dienstprogramm zum Erstellen von Zertifikatanforderu
 
 5. Senden Sie die Datei **myrequest.csr** an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Dazu müssen Sie die Datei eventuell hochladen oder im Editor öffnen und den Inhalt direkt in ein Webformular eingeben.
 
-	Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] \(Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
+	Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] (Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
 
 6. Wenn die Zertifizierungsstelle Ihnen eine Zertifikatdatei (.CER) zur Verfügung gestellt hat, speichern Sie diese Datei auf dem Computer, mit dem die Anforderung generiert wurde. Verwenden Sie anschließend den folgenden Befehl, um die Anforderung zu akzeptieren und den Prozess der Zertifikatgenerierung abzuschließen.
 
@@ -141,7 +141,7 @@ Jetzt können Sie die exportierte PFX-Datei zu Ihrer App in Azure App Service ho
 
 	Nach Abschluss dieses Prozesses haben Sie zwei Dateien: **myserver.key** und **server.csr**. Die Datei **server.csr** enthält die Zertifikatsignieranforderung.
 
-3. Senden Sie die Zertifikatsignieranforderung an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] \(Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
+3. Senden Sie die Zertifikatsignieranforderung an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] (Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
 
 4. Sobald Sie ein Zertifikat von einer Zertifizierungsstelle erhalten haben, speichern Sie es in einer Datei mit dem Namen **myserver.crt**. Wenn die Zertifizierungsstelle das Zertifikat im Textformat bereitgestellt hat, fügen Sie den Zertifikattext einfach in die Datei **myserver.crt** ein. In einem Texteditor sieht der Dateiinhalt etwa folgendermaßen aus:
 
@@ -191,7 +191,7 @@ Wenn Sie mit IIS-Manager vertraut sind, können Sie damit ein Zertifikat generie
 
 1. Generieren einer CSR-Datei mit IIS-Manager für die Zertifizierungsstelle. Weitere Informationen zum Generieren einer CSR finden Sie unter [Anfordern eines Internetserverzertifikats (IIS 7)][iiscsr].
 
-2. Senden Sie die Zertifikatsignieranforderung an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] \(Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
+2. Senden Sie die Zertifikatsignieranforderung an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] (Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
 
 3. Tragen Sie in die CSR das von der Zertifizierungsstelle bereitgestellte Zertifikat ein. Weitere Informationen zum Ausfüllen der CSR finden Sie unter [Installieren eines Internetserverzertifikats (IIS 7)][installcertiis].
 
@@ -203,7 +203,7 @@ Wenn Sie mit IIS-Manager vertraut sind, können Sie damit ein Zertifikat generie
 
 	> [AZURE.NOTE] Aktivieren Sie während des Exportprozesses die Option <strong>Ja, privaten Schlüssel exportieren</strong>. Damit wird der private Schlüssel in das exportierte Zertifikat einbezogen.
 
-	> [AZURE.NOTE] Aktivieren Sie während des Exportprozesses die Optionen **Alle Zertifikate im Zertifizierungspfad einbeziehen** und **Alle erweiterten Eigenschaften exportieren**. Damit werden alle Zwischenzertifikate in das exportierte Zertifikat einbezogen.
+	> Aktivieren Sie während des Exportprozesses die Optionen **Alle Zertifikate im Zertifizierungspfad einbeziehen** und **Alle erweiterten Eigenschaften exportieren**. Damit werden alle Zwischenzertifikate in das exportierte Zertifikat einbezogen.
 
 <a name="bkmk_subjectaltname"></a>
 ### Erhalten eines SubjectAltName-Zertifikats mit OpenSSL
@@ -261,7 +261,7 @@ Mit OpenSSL kann eine Zertifikatanforderung erstellt werden, welche die SubjectA
 
 	Nach Abschluss dieses Prozesses haben Sie zwei Dateien: **myserver.key** und **server.csr**. Die Datei **server.csr** enthält die Zertifikatsignieranforderung.
 
-3. Senden Sie die Zertifikatsignieranforderung an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] \(Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
+3. Senden Sie die Zertifikatsignieranforderung an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu erhalten. Eine Liste von Zertifizierungsstellen finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] (Windows- und Windows Phone 8-SSL-Stammzertifikatsprogramm [Mitgliedszertifizierungsstellen] – in englischer Sprache) im Microsoft TechNet Wiki.
 
 4. Sobald Sie ein Zertifikat von einer Zertifizierungsstelle erhalten haben, speichern Sie es in einer Datei mit dem Namen **myserver.crt**. Wenn die Zertifizierungsstelle das Zertifikat im Textformat bereitgestellt hat, fügen Sie den Zertifikattext einfach in die Datei **myserver.crt** ein. In einem Texteditor sieht der Dateiinhalt etwa folgendermaßen aus:
 
@@ -435,13 +435,13 @@ Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutze
 
 	![Hochladen des SSL-Zertifikats][uploadcert]
 
-9. Wählen Sie auf der Registerkarte **SSL-Einstellungen** im Abschnitt **SSL-Bindungen** mithilfe der Dropdownlisten den Domänennamen, der mit SSL geschützt werden soll, sowie das zu verwendende Zertifikat aus. Sie können auch auswählen, ob die SSL auf Basis der [Servernamensanzeige][sni] \(Server Name Indication, SNI) oder eine IP-basierte SSL verwendet werden soll.
+9. Wählen Sie auf der Registerkarte **SSL-Einstellungen** im Abschnitt **SSL-Bindungen** mithilfe der Dropdownlisten den Domänennamen, der mit SSL geschützt werden soll, sowie das zu verwendende Zertifikat aus. Sie können auch auswählen, ob die SSL auf Basis der [Servernamensanzeige][sni] (Server Name Indication, SNI) oder eine IP-basierte SSL verwendet werden soll.
 
 	![SSL-Bindungen][sslbindings]
 
 	* Bei IP-basiertem SSL wird ein Zertifikat mit einem Domänennamen verknüpft, indem die dedizierte öffentliche IP-Adresse des Servers dem Domänennamen zugeordnet wird. Voraussetzung dafür ist, dass jeder mit Ihrem Dienst verknüpfte Domänenname (contoso.com, fabricam.com usw.) eine dedizierte IP-Adresse hat. Dies ist die herkömmliche Methode der Verknüpfung von SSL-Zertifikaten mit einem Webserver.
 
-	* SNI-basiertes SSL ist eine Erweiterung für SSL und [Transport Layer Security][tls] \(TLS). Dabei können mehrere Domänen die gleiche IP-Adresse gemeinsam nutzen, während jede Domäne über eigene Sicherheitszertifikate verfügt. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI, ältere Browser hingegen möglicherweise nicht. Weitere Informationen über SNI finden Sie im Wikipedia-Artikel [Server Name Indication][sni] \(in englischer Sprache).
+	* SNI-basiertes SSL ist eine Erweiterung für SSL und [Transport Layer Security][tls] (TLS). Dabei können mehrere Domänen die gleiche IP-Adresse gemeinsam nutzen, während jede Domäne über eigene Sicherheitszertifikate verfügt. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI, ältere Browser hingegen möglicherweise nicht. Weitere Informationen über SNI finden Sie im Wikipedia-Artikel [Server Name Indication][sni] (in englischer Sprache).
 
 10. Klicken Sie auf **Speichern**, um die Änderungen zu speichern und SSL zu aktivieren.
 
@@ -455,7 +455,9 @@ Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutze
 >
 > 2. Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt genannte IP-Adresse verweist.
 
-> [AZURE.NOTE] Wenn Sie **IP-basiertes SSL** einer Web-App hinzufügen, die bereits über eine **SNI-Bindung** mit einem anderen Zertifikat verfügt, wird der Hostname der Website dieser IP-Adresse neu zugeordnet, sobald IP-SSL für die Web-App aktiviert wurde. Wenn also ein anderer Hostname mit dem CNAME für den Hostnamen der Website versehen ist, empfängt diese auch Datenverkehr für die IP-SSL-Adresse. Für diese Fälle haben wir einen weiteren DNS-Eintrag erstellt: sni.&lt;Name Ihrer Web-App&gt;.azurewebsites.net, wobei &lt;Name Ihrer Web-App&gt; für den Namen Ihrer Azure App Service-Web-App steht. Daher sollten Sie die DNS-Einträge, die auf den in der SNI-Bindung verwendeten Namen verweisen, so ändern, dass sie stattdessen auf sni.&lt;Name Ihrer Web-App&gt;.azurewebsites.net verweisen.
+<br> Wenn Sie **IP-basiertes SSL** einer Web-App hinzufügen, die bereits über eine **SNI-Bindung** mit einem anderen Zertifikat verfügt, wird der Hostname der Website dieser IP-Adresse neu zugeordnet, sobald IP-SSL für die Web-App aktiviert wurde. Wenn also ein anderer Hostname mit dem CNAME für den Hostnamen der Website versehen ist, empfängt diese auch Datenverkehr für die IP-SSL-Adresse.
+
+Für diese Fälle haben wir einen weiteren DNS-Eintrag erstellt: sni.&lt;Name Ihrer Web-App&gt;.azurewebsites.net, wobei &lt;Name Ihrer Web-App&gt; für den Namen Ihrer Azure App Service-Web-App steht. Daher sollten Sie die DNS-Einträge, die auf den in der SNI-Bindung verwendeten Namen verweisen, so ändern, dass sie stattdessen auf sni.&lt;Name Ihrer Web-App&gt;.azurewebsites.net verweisen.
 
 Sie sollten jetzt in der Lage sein, Ihre App über `HTTPS://` anstelle von `HTTP://` zu erreichen. Auf diese Weise können Sie überprüfen, ob das Zertifikat richtig konfiguriert wurde.
 
@@ -523,7 +525,7 @@ Um die automatisch generierte Datei von der App abzurufen und zu ändern, führe
 
 		Die Datei "web.config" für Java-Anwendungen mit Apache Tomcat enthält keinen Abschnitt **&lt;rewrite>**. Deshalb müssen Sie den Abschnitt **&lt;rewrite>** aus dem Beispiel zum Abschnitt **&lt;system.webServer>** hinzufügen.
 
-4. Stellen Sie das Projekt (einschließlich der aktualisierten web.config-Datei) erneut für Azure bereit
+4. Legen Sie sie wieder im Ordner „/site/wwwroot“ ab.
 
 Sobald Sie eine web.config-Datei mit einer Umschreibungsregeln zur Erzwingung von HTTPS bereitstellen, sollte sie sofort in Kraft treten und alle Anfragen zu HTTPS umleiten.
 
@@ -564,3 +566,5 @@ Weitere Informationen zum IIS-URL-Rewrite-Modul finden Sie unter der Dokumentati
 [certwiz2]: ./media/configure-ssl-web-site/waws-certwiz2.png
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
+
+<!---HONumber=AcomDC_0525_2016-->

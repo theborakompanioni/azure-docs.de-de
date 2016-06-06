@@ -52,11 +52,8 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit RSS
-Um Logik-Apps mit RSS zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
-|Eigenschaft| Erforderlich|Beschreibung|
-| ---|---|---|
-Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit einem RSS-Feed](../../includes/connectors-create-api-rss.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -135,4 +132,4 @@ Alle RSS-Feedelemente auflisten: Ruft alle RSS-Feedelemente ab.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

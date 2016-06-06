@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Verwalten der Einstellungen für die Rollenaktivierung in Azure AD Privileged Identity Management
 
-Ein Sicherheitsadministrator kann Azure AD Privileged Identity Management (PIM) in der Organisation anpassen und hierbei auch die Art und Weise ändern, in der ein Benutzer eine temporäre Rollenzuweisung aktiviert.
+Ein Administrator für privilegierte Rollen kann Azure AD Privileged Identity Management (PIM) in der Organisation anpassen und hierbei auch die Art und Weise ändern, in der ein Benutzer eine temporäre Rollenzuweisung aktiviert.
 
 ## Verwalten der Rollenaktivierungseinstellungen
 
@@ -32,7 +32,8 @@ Ein Sicherheitsadministrator kann Azure AD Privileged Identity Management (PIM) 
 8. Klicken Sie auf **Speichern**.
 
 Sie können MFA für hoch privilegierte Rollen für Azure AD und Office 365 nicht deaktivieren. Dazu gehören folgende Rollen:
-- Globaler Administrator  
+- Globaler Administrator
+- Administrator für privilegierte Rollen   
 - Benutzerkontoadministrator  
 - Verzeichnisautor  
 - Partnersupport der Ebene 1  
@@ -53,4 +54,4 @@ Weitere Informationen zum Verwenden von MFA mit PIM finden Sie unter [Erfordern 
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

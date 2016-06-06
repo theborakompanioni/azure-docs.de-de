@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der Office 365 Users-API zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Office 365-Benutzer-API und REST-API-Parameter"
-	services=""	
-	documentationCenter="" 	
-	authors="msftman"	
-	manager="erikre"	
-	editor="" 
-	tags="connectors" />
+    pageTitle="Hinzufügen des Office 365-Benutzer-Connectors zu PowerApps Enterprise oder Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Office 365-Benutzer-Connector mit REST-API-Parametern"
+    services=""    
+    documentationCenter=""     
+    authors="msftman"    
+    manager="erikre"    
+    editor="" 
+    tags="connectors" />
 
 <tags
 ms.service="multiple"
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Office 365-Benutzer-API
+# Erste Schritte mit dem Office 365-Benutzer-Connector
 
-Stellen Sie eine Verbindung mit der Office 365-Benutzer-API her, um Profile abzurufen, Benutzer zu suchen und vieles mehr. Die Office 365-Benutzer-API kann verwendet werden von:
+Stellen Sie eine Verbindung mit der Office 365-Benutzer-API her, um Profile abzurufen, Benutzer zu suchen und vieles mehr. Der Office 365 Benutzer-Connector kann verwendet werden in:
 
 - Logik-Apps 
 - PowerApps
@@ -37,29 +37,28 @@ Mit der Office 365-Benutzer-API können Sie folgende Aktionen ausführen:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus der Office 365-Benutzer-API abgerufen werden. 
 - Verwenden von Aktionen zum Abrufen von direkt unterstellten Mitarbeitern oder Benutzerprofilen von Vorgesetzten und vieles mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Rufen Sie beispielsweise die direkt unterstellten Mitarbeiter einer Person ab, und aktualisieren Sie mit diesen Informationen eine Azure SQL-Datenbank. 
-- Fügen Sie die Office 365-Benutzer-API in PowerApps Enterprise hinzu. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
+- Fügen Sie den Office 365-Benutzer-Connector in PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 
-Die Office 365-Benutzer-API verfügt über die folgenden Aktionen. Es gibt keine Trigger.
+Der Office 365-Benutzer-Connector verfügt über die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen|
 | --- | --- |
 |Keine | <ul><li>Vorgesetzten abrufen</li><li>Mein Profil abrufen</li><li>Direkt unterstellte Mitarbeiter abrufen</li><li>Benutzerprofil abrufen</li><li>Nach Benutzern suchen</li></ul>|
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 
 ## Herstellen einer Verbindung mit Office 365-Benutzern
 
-Wenn Sie Ihren Logik-Apps diese API hinzufügen, müssen Sie sich bei Ihrem Konto für die Office 365-Benutzer-API anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto gestatten.
+Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, müssen Sie sich bei Ihrem Office 365-Benutzer-Konto anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto erlauben.
 
-1. Melden Sie sich bei Ihrem Konto für die Office 365-Benutzer-API an.
-2. Erlauben Sie Ihren Logik-Apps, sich mit Ihrem Office 365-Konto zu verbinden und es zu nutzen. 
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Office 365-Benutzer](../../includes/connectors-create-api-office365users.md)]
 
 Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Eigenschaften für die Office 365-Benutzer-API ein, z. B. die Benutzer-ID. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -84,7 +83,7 @@ Es gibt keine Parameter für diesen Aufruf.
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Benutzerprofil abrufen 
@@ -104,7 +103,7 @@ Ruft ein bestimmtes Benutzerprofil ab. ```GET: /users/{userId}```
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Vorgesetzten abrufen 
@@ -124,7 +123,7 @@ Ruft das Benutzerprofil des Vorgesetzten des angegebenen Benutzers ab. ```GET: /
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -145,7 +144,7 @@ Direkt unterstellte Mitarbeiter abrufen. ```GET: /users/{userId}/directReports``
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -166,7 +165,7 @@ Ruft die Suchergebnisse für Benutzerprofile ab. ```GET: /users```
 |401|Nicht autorisiert|
 |403|Verboten (403)|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -204,4 +203,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [10]: ./media/connectors-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/connectors-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

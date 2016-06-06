@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="01/12/2016"
-	ms.author="erikre"/>
+	ms.author="cephalin"/>
 
 # Konfigurieren eines benutzerdefinierten (direkt von GoDaddy erworbenen) Domänennamens in Azure App Service
 
@@ -81,4 +81,4 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
 ## Änderungen
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0525_2016-->

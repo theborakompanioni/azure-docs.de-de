@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/18/2016"
+	ms.date="05/25/2016"
 	ms.author="jroth"/>
 
 # Übersicht zu SQL Server auf virtuellen Azure-Computern
@@ -33,8 +33,8 @@ Die Ausführung von SQL Server auf einem virtuellen Azure-Computer stellt eine M
 |---:|---|---|
 |![SQL Server auf virtuellen Azure-Computern](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-virtual-machine.png)|[SQL Server auf virtuellen Azure-Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/)|Ausführen von SQL Server auf virtuellen Azure-Computern Direkte Verwaltung des virtuellen Computers und Ausführung Ihrer Datenbank auf Verkaufsversionen von SQL Server. |
 |![SQL-Datenbank](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-database.png)|[SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)|Verwenden Sie den SQL-Datenbankdienst, um auf Ihre Datenbank zuzugreifen und sie zu skalieren, ohne die zugrunde liegende Infrastruktur verwalten zu müssen.|
-|![SQL Data Warehouse](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-data-warehouse.png)|[SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)|Verwenden Sie Azure SQL Data Warehouse, um große Mengen an relationalen und nicht relationalen Daten zu verarbeiten. Bietet skalierbare Data Warehousing-Funktionen als Dienst.|
-|![SQL Server Stretch-Datenbank](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-stretch-database.png)|[SQL Server Stretch-Datenbank](https://azure.microsoft.com/services/sql-server-stretch-database/)|Dynamisches lokales Stretchen von Transaktionsdaten aus Microsoft SQL Server 2016 in Azure.|
+|![SQL Data Warehouse](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-data-warehouse.png)|[SQL Data Warehouse](https://azure.microsoft.com/de-DE/services/sql-data-warehouse/)|Verwenden Sie Azure SQL Data Warehouse, um große Mengen an relationalen und nicht relationalen Daten zu verarbeiten. Bietet skalierbare Data Warehousing-Funktionen als Dienst.|
+|![SQL Server Stretch-Datenbank](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-stretch-database.png)|[SQL Server Stretch-Datenbank](https://azure.microsoft.com/de-DE/services/sql-server-stretch-database/)|Dynamisches lokales Stretchen von Transaktionsdaten aus Microsoft SQL Server 2016 in Azure.|
 
 >[AZURE.NOTE] Einen vollständigen Vergleich zwischen SQL-VMs und SQL-Datenbank finden Sie unter [Auswählen einer SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md).
 
@@ -47,7 +47,7 @@ Nachdem Sie sich für ein Abonnement angemeldet haben, besteht die einfachste M�
 Dabei müssen Sie beachten, dass es zwei Modelle zum Erstellen und Verwalten von virtuellen Azure-Computern gibt: klassisch und mit Ressourcen-Manager. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md). Jedes Thema sollte sein Zielmodell deutlich angeben, sofern es nicht sowohl der klassischen Methode als auch dem Resource Manager entspricht, so wie in diesem Artikel.
 
 ## Auswählen eines SQL-VM-Image
-Die folgende Tabelle enthält eine Matrix der SQL Server-Images, die im Katalog der virtuellen Computer verfügbar sind. Klicken Sie zum Erstellen eines virtuellen Computers für diese Version, Edition und dieses Betriebssystem auf einen der Links in der Tabelle.
+Die folgende Tabelle enthält eine Matrix der SQL Server-Images, die im Katalog der virtuellen Computer verfügbar sind. Klicken Sie basierend auf Version, Edition und Betriebssystem auf einen der Links in der Tabelle. Klicken Sie dann auf der Marketplace-Seite auf die Schaltfläche **Virtuellen Computer erstellen**.
 
 |SQL Server-Version|Betriebssystem|SQL Server-Edition|
 |---|---|---|
@@ -61,9 +61,11 @@ Die folgende Tabelle enthält eine Matrix der SQL Server-Images, die im Katalog 
 
 >[AZURE.NOTE] Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP) ist standardmäßig aktiviert. Bei Bedarf können Sie das CEIP nach der Bereitstellung des virtuellen Computers anpassen oder deaktivieren. Stellen Sie über Remotedesktop eine Verbindung mit dem virtuellen Computer her, und führen Sie das Hilfsprogramm **Fehler- und Verwendungsberichterstellung von SQL Server** aus.
 
+Benötigen Sie weitere Unterstützung bei der Erstellung eines neuen virtuellen SQL-Computers? Lesen Sie die ausführliche exemplarische Vorgehensweise im [Tutorial zur Bereitstellung](virtual-machines-windows-portal-sql-server-provision.md).
+
 Zusätzlich zu diesen vorkonfigurierten Images können Sie auch [einen virtuellen Azure-Computer](virtual-machines-windows-hero-tutorial.md) ohne vorinstallierte SQL Server-Instanz erstellen. Sie können eine beliebige SQL Server-Instanz darauf installieren, für die Sie über eine Lizenz verfügen. Sie migrieren Ihre Lizenz nach Azure, um SQL Server auf einem virtuellen Azure-Computer auszuführen. Diese Migration erfolgt gemäß [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). In diesem Szenario bezahlen Sie lediglich für die Compute- und Speicher[kosten](https://azure.microsoft.com/pricing/details/virtual-machines/) in Azure, die im Zusammenhang mit dem virtuellen Computer anfallen.
 
-Um die besten VM-Konfigurationseinstellungen für Ihr SQL Server-Image zu bestimmen, lesen Sie sich [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md) durch. Für Produktionsworkloads ist **DS3** die empfohlene Mindestgröße des virtuellen Computers für SQL Server Enterprise Edition, und **DS2** für Standard Edition.
+Um die besten VM-Konfigurationseinstellungen für Ihr SQL Server-Image zu bestimmen, lesen Sie sich [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md) durch. Für Produktionsworkloads ist **DS3** die empfohlene Mindestgröße virtueller Computer für SQL Server Enterprise Edition. **DS2** ist die empfohlene Mindestgröße virtueller Computer für Produktionsworkloads für Standard Edition.
 
 ## Migrieren Ihrer Daten
 
@@ -84,10 +86,10 @@ Die [SQL Server-URL-Sicherung](https://msdn.microsoft.com/library/dn435916.aspx)
 
 ## Nächste Schritte
 
-Zuerst [erstellen Sie Ihre eigene SQL Server-VM im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
+Zuerst [erstellen Sie Ihren eigenen virtuellen SQL Server-Computer im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
 Überprüfen Sie dann [bewährte Methoden für Leistung](virtual-machines-windows-sql-performance.md) und [Migrationstechniken](virtual-machines-windows-migrate-sql.md), wenn Sie erwägen, Ihre SQL Server-Workloads auf virtuelle Azure-Computer zu verschieben.
 
-Wenn Sie weitere Informationen zu SQL Server auf virtuellen Azure-Computern wünschen, lesen Sie den Artikel [SQL Server auf virtuellen Azure-Computern – FAQ](virtual-machines-windows-sql-server-iaas-faq.md). Oder fügen Sie Ihre Kommentare zur Interaktion mit Microsoft und der Community beliebigen SQL-VM-Themen an.
+Haben Sie weitere Fragen zu SQL Server auf virtuellen Azure-Computern? Lesen Sie zunächst [SQL Server auf virtuellen Azure-Computern – FAQ](virtual-machines-windows-sql-server-iaas-faq.md). Fügen Sie außerdem Ihre Fragen oder Kommentare zur Interaktion mit Microsoft und der Community beliebigen SQL-VM-Themen an.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

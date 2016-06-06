@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/17/2016"
+   ms.date="05/20/2016"
    ms.author="larryfr"/>
 
 # Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux
@@ -46,7 +46,7 @@ Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von Stor
 
 2. Verwenden Sie zum Starten einer Beispieltopologie den folgenden Befehl:
 
-        storm jar storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology WordCount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology WordCount
 
     Hierdurch wird die WordCount-Beispieltopologie im Cluster gestartet. Nach dem Zufallsprinzip werden Sätze generiert und die Instanzen jedes Worts in den Sätzen gezählt.
 
@@ -145,7 +145,7 @@ Weitere Informationen finden Sie unter [Storm UI REST API](http://storm.apache.o
 
 ### Basis-URI
 
-Der Basis-URI für die REST-API auf Linux-basierten HDInsight-Clustern ist auf dem Hauptknoten unter **https://HEADNODEFQDN:8744/api/v1/** verfügbar. Der Domänenname des Hauptknotens wird während der Clustererstellung generiert und ist nicht statisch.
+Der Basis-URI für die REST-API auf Linux-basierten HDInsight-Clustern ist auf dem Hauptknoten unter ****https://HEADNODEFQDN:8744/api/v1/** verfügbar. Der Domänenname des Hauptknotens wird während der Clustererstellung generiert und ist nicht statisch.
 
 Sie können den vollqualifizierten Domänennamen (FQDN) für den Clusterhauptknoten auf unterschiedliche Arten ermitteln:
 
@@ -170,4 +170,4 @@ Nachdem Sie erfahren haben, wie Sie Topologien mithilfe des Storm-Dashboards ber
 
 Eine Liste weiterer Beispieltopologien finden Sie unter [Beispieltopologien für Storm auf HDInsight](hdinsight-storm-example-topology.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

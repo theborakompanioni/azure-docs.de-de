@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/09/2016" 
+	ms.date="05/18/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
@@ -82,7 +82,7 @@ Wenn Sie den Cursor auf das Symbol oder die Benachrichtigung in der Taskleiste b
 ## So deaktivieren/aktivieren Sie das Feature für die automatische Aktualisierung
 Sie können das Feature für die automatische Aktualisierung wie folgt deaktivieren und aktivieren:
 
-1. Starten Sie Windows PowerShell auf dem Gatewaycomputer. 
+1. Starten Sie Windows **PowerShell** auf dem Gatewaycomputer als Administrator (**Als Administrator ausführen**). 
 2. Wechseln Sie in den Ordner „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.   
 
@@ -93,43 +93,38 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 		.\GatewayAutoUpdateToggle.ps1  -on  
 
 ## Port- und Sicherheitsaspekte
-Es gibt zwei Firewalls, die berücksichtigt werden müssen: Die **Unternehmensfirewall**, die auf dem zentralen Router des Unternehmens ausgeführt wird, und die **Windows-Firewall**, die als Daemon auf dem lokalen Computer mit dem installierten Gateway konfiguriert ist.
+Es gibt zwei Firewalls, die berücksichtigt werden müssen: Die **Unternehmensfirewall**, die auf dem zentralen Router des Unternehmens ausgeführt wird, und die **Windows-Firewall**, die als Daemon auf dem lokalen Computer konfiguriert ist, auf dem das Gateway installiert ist.
 
 ![Firewalls](./media/data-factory-move-data-between-onprem-and-cloud/firewalls.png)
 
 ### Verbinden des Gateways mit Clouddiensten
-Um die Verbindung des Gateways mit Azure Data Factory und anderen Clouddiensten aufrechtzuerhalten, müssen Sie sicherstellen, dass die ausgehende Regel für die **TCP**-Ports **80** und **443** konfiguriert ist. Optional können Sie auch die Ports **9350** bis **9354** aktivieren. Sie werden von Microsoft Azure Service Bus zum Herstellen einer Verbindung zwischen Azure Data Factory und dem Datenverwaltungsgateway verwendet und können eine Verbesserung der Kommunikationsleistung bewirken.
+Sie müssen sicherstellen, dass die ausgehende Regel für die **TCP**-Ports **80** und **443** konfiguriert ist, um die Verbindung des Gateways mit Azure Data Factory und anderen Clouddiensten aufrechtzuerhalten. Optional können Sie auch die Ports **9350** bis **9354** aktivieren. Sie werden von Microsoft Azure Service Bus zum Herstellen einer Verbindung zwischen Azure Data Factory und dem Datenverwaltungsgateway verwendet und bewirken möglicherweise eine Verbesserung der Kommunikationsleistung zwischen ihnen.
 
 Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
 | Domänennamen | Ports | Beschreibung |
 | ------ | --------- | ------------ |
-| *.servicebus.windows.net | 443, 80 | Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) |
-| *.servicebus.windows.net | 9350-9354 | Optionales Service Bus Relay per TCP |
-| *.core.windows.net | 443 | HTTPS |
-| *.clouddatahub.net | 443 | HTTPS |
-| graph.windows.net | 443 | HTTPS |
-| login.windows.net | 443 | HTTPS | 
+| **.servicebus.windows.net | 443, 80 | Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) | | *.servicebus.windows.net | 9350-9354, 5671 | Optionales Service Bus Relay per TCP | | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
 
 Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktiviert. Falls nicht, können Sie die Domänen und Ports auf dem Gatewaycomputer entsprechend konfigurieren.
 
 ### Festlegen von Anmeldeinformationen
-Der eingehende Port **8050** wird von der Anwendung zum **Festlegen der Anmeldeinformationen** genutzt, um die Anmeldeinformationen an das Gateway weiterzugeben, wenn Sie im Azure-Portal einen lokalen verknüpften Dienst einrichten (Details hierzu weiter unten im Artikel). Während der Einrichtung des Gateways wird es von der Datenverwaltungsgateway-Installation standardmäßig auf dem Gatewaycomputer geöffnet.
+Der eingehende Port **8050** wird von der Anwendung **Anmeldeinformationen festlegen** genutzt, um die Anmeldeinformationen an das Gateway weiterzugeben, wenn Sie im Azure-Portal einen lokalen verknüpften Dienst einrichten (Details hierzu weiter unten im Artikel). Während der Einrichtung des Gateways wird es von der Datenverwaltungsgateway-Installation standardmäßig auf dem Gatewaycomputer geöffnet.
  
 Wenn Sie die Firewall eines Drittanbieters verwenden, können Sie Port 8050 manuell öffnen. Falls beim Einrichten des Gateways ein Firewallproblem auftritt, können Sie versuchen, den folgenden Befehl zum Installieren des Gateways ohne Konfiguration der Firewall zu verwenden.
 
 	msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Falls Sie die Entscheidung treffen, Port 8050 auf dem Gatewaycomputer nicht zu öffnen, müssen Sie zum Einrichten eines lokalen verknüpften Diensts andere Verfahren als die Anwendung zum **Festlegen der Anmeldeinformationen** nutzen, um die Datenspeicher-Anmeldeinformationen zu konfigurieren. Beispielsweise können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](#set-credentials-and-securityy).
+Falls Sie die Entscheidung treffen, den Port 8050 auf dem Gatewaycomputer nicht zu öffnen, müssen Sie zum Einrichten eines lokalen verknüpften Diensts andere Verfahren als die Anwendung **Anmeldeinformationen festlegen** nutzen, um die Datenspeicher-Anmeldeinformationen zu konfigurieren. Beispielsweise könnten Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](#set-credentials-and-securityy).
 
 **Gehen Sie wie folgt vor, um Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher zu kopieren:**
 
 Sie müssen sicherstellen, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. So kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Sie müssen Regeln für jeden Datenspeicher aktivieren, der am Kopiervorgang beteiligt ist.
 
-Zum Kopieren aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke** müssen Sie beispielsweise die ausgehende **TCP**-Kommunikation über Port **1433** für die Windows-Firewall und die Unternehmensfirewall zulassen. Außerdem müssen Sie die Firewalleinstellungen des Azure SQL-Servers konfigurieren, um die IP-Adresse des Gatewaycomputers der Liste mit den zulässigen IP-Adressen hinzuzufügen.
+Zum Kopieren aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** müssen Sie beispielsweise die ausgehende **TCP**-Kommunikation über Port **1433** für die Windows-Firewall und die Unternehmensfirewall zulassen. Außerdem müssen Sie die Firewalleinstellungen des Azure SQL-Servers konfigurieren, um die IP-Adresse des Gatewaycomputers der Liste mit den zulässigen IP-Adressen hinzuzufügen.
 
 ### Proxyserver-Aspekte
-Standardmäßig nutzt das Datenverwaltungsgateway die Proxyeinstellungen aus Internet Explorer und verwendet für den Zugriff darauf Standardanmeldeinformationen. Falls dies für Sie nicht geeignet ist, können Sie die **Proxyserver-Einstellungen** wie unten gezeigt weiter konfigurieren, um sicherzustellen, dass das Gateway eine Verbindung mit Azure Data Factory herstellen kann:
+Standardmäßig nutzt das Datenverwaltungsgateway die Proxyeinstellungen aus Internet Explorer und verwendet für den Zugriff darauf Standardanmeldeinformationen. Falls dies für Sie nicht geeignet ist, können Sie die **Proxyservereinstellungen** wie unten gezeigt weiter konfigurieren, um sicherzustellen, dass das Gateway eine Verbindung mit Azure Data Factory herstellen kann:
 
 1.	Erstellen Sie nach dem Installieren des Datenverwaltungsgateways im Datei-Explorer eine sichere Kopie von „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config“, um die Originaldatei zu sichern.
 2.	Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config“. Sie finden das Standardtag für „system.net“ wie folgt:
@@ -150,7 +145,7 @@ Standardmäßig nutzt das Datenverwaltungsgateway die Proxyeinstellungen aus Int
 
 			<proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
 
-3. Speichern Sie die Konfigurationsdatei am ursprünglichen Speicherort, und starten Sie den Datenverwaltungsgateway-Dienst, um die Änderungen zu übernehmen. Dies ist über **Start** > **Services.msc** möglich, oder klicken Sie im **Datenverwaltungsgateway-Konfigurations-Manager** auf die Schaltfläche **Dienst beenden** und dann auf **Dienst starten**. Wenn der Dienst nicht gestartet wird, wurde der bearbeiteten Anwendungskonfigurationsdatei wahrscheinlich eine falsche XML-Tagsyntax hinzugefügt.
+3. Speichern Sie die Konfigurationsdatei am ursprünglichen Speicherort, und starten Sie den Datenverwaltungsgateway-Dienst, um die Änderungen zu übernehmen. Dies ist über **Start** > **Services.msc** möglich, oder klicken Sie im **Datenverwaltungsgateway-Konfigurations-Manager** auf die Schaltfläche **Dienst beenden** und anschließend auf **Dienst starten**. Wenn der Dienst nicht gestartet wird, wurde der bearbeiteten Anwendungskonfigurationsdatei wahrscheinlich eine falsche XML-Tagsyntax hinzugefügt.
 
 Zusätzlich zu den obigen Punkten müssen Sie auch sicherstellen, dass Microsoft Azure in der Positivliste Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen.
 
@@ -165,7 +160,7 @@ Wenn Sie auf die unten aufgeführten Fehler treffen, liegt dies meist an der uns
 
 - Ausführliche Informationen hierzu finden Sie in den Gatewayprotokollen und Windows-Ereignisprotokollen. Sie befinden sich in der **Ereignisanzeige** von Windows unter **Anwendungs- und Dienstprotokolle** > **Datenverwaltungsgateway**. Suchen Sie bei der Behandlung von Problemen mit Gateways in der Ereignisanzeige nach Fehlerereignissen.
 - Falls das Gateway nach dem **Ändern des Zertifikats** nicht mehr funktioniert, starten Sie den **Datenverwaltungsgateway-Dienst** neu (beenden und starten), indem Sie das Tool „Microsoft-Datenverwaltungsgateway-Konfigurations-Manager“ oder das Applet „Dienste“ in der Systemsteuerung verwenden. Falls weiterhin ein Fehler angezeigt wird, müssen Sie für Benutzer des Datenverwaltungsgateway-Diensts unter Umständen explizite Berechtigungen erteilen, damit sie auf das Zertifikat im Zertifikat-Manager (certmgr.msc) zugreifen können. Das standardmäßige Benutzerkonto für den Dienst lautet: **NT Service\\DIAHostService**. 
-- Wenn Fehler in Bezug auf die Datenspeicherverbindung oder Treiber auftreten, starten Sie auf dem Computer mit dem Gateway den **Konfigurations-Manager für Datenverwaltungsgateways**. Wechseln Sie zur Registerkarte **Diagnose**, auf der Sie entsprechende Werte für die Felder in der Gruppe **Testen Sie die Verbindung mit einer lokalen Datenquelle mithilfe dieses Gateways** auswählen bzw. eingeben. Klicken Sie dann auf **Verbindung testen**, um zu prüfen, ob Sie sich auf dem Computer mit dem Gateway mithilfe der Verbindungs- und Anmeldeinformationen mit einer lokalen Datenquelle verbinden können. Wenn das Testen der Verbindung weiter misslingt, nachdem Sie einen Treiber installiert haben, starten Sie das Gateway neu, damit es die letzte Änderung übernimmt.  
+- Wenn Fehler in Bezug auf die Datenspeicherverbindung oder Treiber auftreten, starten Sie auf dem Gatewaycomputer den **Datenverwaltungsgateway-Konfigurations-Manager**. Wechseln Sie zur Registerkarte **Diagnose**, auf der Sie entsprechende Werte für die Felder in der Gruppe **Testen Sie die Verbindung mit einer lokalen Datenquelle mithilfe dieses Gateways** auswählen bzw. eingeben. Klicken Sie anschließend auf **Verbindung testen**, um zu prüfen, ob Sie sich auf dem Gatewaycomputer mithilfe der Verbindungs- und Anmeldeinformationen mit einer lokalen Datenquelle verbinden können. Wenn das Testen der Verbindung weiter misslingt, nachdem Sie einen Treiber installiert haben, starten Sie das Gateway neu, damit es die letzte Änderung übernimmt.  
 
 	![Verbindung testen](./media/data-factory-move-data-between-onprem-and-cloud/TestConnection.png)
 		
@@ -217,9 +212,9 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 	> [AZURE.NOTE] 
 	Hierfür ist Internet Explorer oder ein mit Microsoft ClickOnce kompatibler Webbrowser erforderlich.
 	> 
-	> Navigieren Sie bei Verwendung von Chrome zum [Chrome Web Store](https://chrome.google.com/webstore/), führen Sie eine Suche mit dem Begriff „ClickOnce“ durch, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
+	> Navigieren Sie bei der Verwendung von Chrome zum [Chrome Web Store](https://chrome.google.com/webstore/), führen Sie eine Suche mit dem Schlagwort „ClickOnce“ durch, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie diese.
 	>  
-	> Gehen Sie bei Firefox genauso vor (Installation des Add-Ins). Klicken Sie auf der Symbolleiste auf die Schaltfläche **Menü öffnen** (**drei waagerechte Striche** in der oberen rechten Ecke), klicken Sie auf **Add-Ons**, suchen Sie nach dem Stichwort „ClickOnce“, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
+	> Gehen Sie bei Firefox genauso vor (Installation des Add-Ins). Klicken Sie auf der Symbolleiste auf die Schaltfläche **Menü öffnen** (**drei waagerechte Striche** oben rechts), klicken Sie auf **Add-Ons**, suchen Sie nach dem Schlagwort „ClickOnce“, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie diese.
 
 	![Blatt "Gateway konfigurieren"](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
@@ -276,6 +271,8 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
             		"userName": "<Specify user name if you are using Windows Authentication. Example: <domain>\<user>",
             		"password": "<Specify password for the user account>"
         		}
+                
+            > [AZURE.NOTE] Wenn Sie die Windows-Authentifizierung verwenden (IntegratedSecurity=true), ist das Angeben von Benutzername und Kennwort optional. Wenn Sie diese Eigenschaften nicht angeben, verwendet das Datenverwaltungsgateway für den Zugriff auf die Datenbank die Anmeldeinformationen des Benutzers, der am Gatewaycomputer angemeldet ist. Wenn das Gateway andere Anmeldeinformationen für den Zugriff auf die Datenbank verwenden soll, geben Sie den Benutzernamen und das Kennwort explizit an.
 
 	4. Bei Verwendung der SQL-Authentifizierung:
 		1. Geben Sie für die Datenbank **Servername**, **Datenbankname**, **Benutzer-ID** und **Kennwort** in **connectionString** an.       
@@ -296,7 +293,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 1. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **Neuer Datenspeicher** und dann auf **Azure-Speicher**.
 2. Geben Sie den Namen des Azure-Speicherkontos für **Kontoname** ein.
 3. Geben Sie den Schlüssel des Azure-Speicherkontos für **Kontoschlüssel** ein.
-4. Klicken Sie auf **Bereitstellen**, um **AzureStorageLinkedService** bereitzustellen.
+4. Klicken Sie auf **Bereitstellen**, um den **AzureStorageLinkedService** bereitzustellen.
    
  
 ### Schritt 4: Erstellen von Eingabe- und Ausgabedatasets
@@ -480,7 +477,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 	- Der Abschnitt "activities" enthält nur eine Aktivität, deren **type** auf **Copy** festgelegt ist.
 	- **Input** für die Aktivität ist auf **EmpOnPremSQLTable** und **output** auf **OutputBlobTable** festgelegt.
 	- Im Abschnitt **transformation** ist **SqlSource** als **Quelltyp** und **BlobSink** als **Senkentyp** angegeben.
-	- Die SQL-Abfrage **select * from emp** ist für die **sqlReaderQuery**-Eigenschaft von **SqlSource** angegeben.
+- Die SQL-Abfrage **select * from emp** ist für die **sqlReaderQuery**-Eigenschaft von **SqlSource** angegeben.
 
 	Ersetzen Sie den Wert der **start**-Eigenschaft durch den aktuellen Tag und den Wert der **end**-Eigenschaft durch den nächsten Tag. Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Angabe für **end** ist optional, wird aber in diesem Lernprogramm verwendet.
 	
@@ -590,7 +587,7 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
 ## Festlegen von Anmeldeinformationen und Sicherheit
 Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie folgt vor:
 
-1. Klicken Sie in der Strukturansicht auf einen bestehenden **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen neuen verknüpften Dienst, der ein Datenverwaltungsgateway erfordert (z. B. SQL Server oder Oracle). 
+1. Klicken Sie in der Strukturansicht auf einen bestehenden **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen neuen verknüpften Dienst, der ein Datenverwaltungsgateway erfordert (z.B. SQL Server oder Oracle). 
 2. Geben Sie im JSON-Editor für die **gatewayName**-Eigenschaft den Namen des Gateways ein. 
 3. Geben Sie den Servernamen für die **Data Source**-Eigenschaft in **connectionString** an.
 4. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** an.    
@@ -616,9 +613,9 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
 
 Wenn Sie auf das Portal auf einem Computer zugreifen, der sich vom Computer mit dem Gateway unterscheidet, müssen Sie sicherstellen, dass die Anwendung "Anmeldeinformations-Manager" eine Verbindung mit dem Gatewaycomputer herstellen kann. Wenn die Anwendung den Computer mit dem Gateway nicht erreichen kann, können Sie keine Anmeldeinformationen für die Datenquelle festlegen und die Verbindung mit der Datenquelle nicht testen.
 
-Wenn Sie die Anwendung **Anmeldeinformationen festlegen** über das Azure-Portal gestartet haben, um Anmeldeinformationen für eine lokale Datenquelle festzulegen, werden die Anmeldeinformationen im Portal mit dem Zertifikat verschlüsselt, das Sie auf der Registerkarte **Zertifikat** des **Datenverwaltungsgateway-Konfigurations-Managers** auf dem Gatewaycomputer angegeben haben.
+Wenn Sie die Anwendung **Anmeldeinformationen festlegen** über das Azure-Portal gestartet haben, um Anmeldeinformationen für eine lokale Datenquelle festzulegen, verschlüsselt das Portal die Anmeldeinformationen mit dem Zertifikat, das Sie auf der Registerkarte **Zertifikat** des **Datenverwaltungsgateway-Konfigurations-Managers** auf dem Gatewaycomputer angegeben haben.
 
-Wenn Sie einen API-basierten Ansatz zum Verschlüsseln der Anmeldeinformationen nutzen möchten, können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden, um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen, die von diesem Cmdlet zurückgegeben werden, dem **EncryptedCredential**-Element von [connectionString](https://msdn.microsoft.com/library/mt603647.aspx) in der JSON-Datei, die Sie mit dem Cmdlet **New-AzureRmDataFactoryLinkedService** verwenden, oder im Portal im Data Factory-Editor dem JSON-Ausschnitt hinzufügen.
+Wenn Sie einen API-basierten Ansatz zum Verschlüsseln der Anmeldeinformationen nutzen möchten, können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden, um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen, die von diesem Cmdlet zurückgegeben werden, dem **EncryptedCredential**-Element von **connectionString** in der JSON-Datei, die Sie mit dem Cmdlet [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) verwenden, oder im Portal im Data Factory-Editor dem JSON-Ausschnitt hinzufügen.
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 
@@ -682,8 +679,7 @@ Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entf
 ## Datenfluss beim Kopieren mit dem Datenverwaltungsgateway
 Wenn Sie eine Kopieraktivität in einer Datenpipeline verwenden, um lokale Daten in der Cloud zur weiteren Verarbeitung zu erfassen oder um Ergebnisdaten in der Cloud wieder in einen lokalen Datenspeicher zu exportieren, verwendet die Kopieraktivität intern ein Gateway zum Übertragen von Daten aus der lokalen Datenquelle in die Cloud und umgekehrt.
 
-Im Folgenden sind der allgemeine Datenfluss und eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway angegeben:
-![Datenfluss über ein Gateway](./media/data-factory-move-data-between-onprem-and-cloud/data-flow-using-gateway.png)
+Im Folgenden sind der allgemeine Datenfluss und eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway angegeben:![Datenfluss über ein Gateway](./media/data-factory-move-data-between-onprem-and-cloud/data-flow-using-gateway.png)
 
 1.	Der Datenentwickler erstellt entweder über das [Azure-Portal](https://portal.azure.com) oder mit einem [PowerShell-Cmdlet](https://msdn.microsoft.com/library/dn820234.aspx) ein neues Gateway für Azure Data Factory. 
 2.	Der Datenentwickler verwendet den Bereich "Verknüpfte Dienste", um einen neuen verknüpften Dienst für einen lokalen Datenspeicher mit dem Gateway zu definieren. Als Teil der Einrichtung des verknüpften Diensts verwendet der Datenentwickler die Anwendung "Anmeldeinformationen festlegen", wie in der schrittweisen exemplarischen Vorgehensweise veranschaulicht, um Authentifizierungstypen und Anmeldeinformationen anzugeben. Die Anwendung "Anmeldeinformationen festlegen" kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit dem Gateway, um die Anmeldeinformationen zu speichern.
@@ -692,4 +688,4 @@ Im Folgenden sind der allgemeine Datenfluss und eine Zusammenfassung der Schritt
 5.	Das Gateway entschlüsselt die Anmeldeinformationen mit dem gleichen Zertifikat und stellt dann mit dem richtigen Authentifizierungstyp eine Verbindung mit dem lokalen Datenspeicher her.
 6.	Das Gateway kopiert Daten aus dem lokalen Speicher in einen Cloudspeicher oder aus einem Cloudspeicher in einen lokalen Datenspeicher. Dies ist abhängig von der Konfiguration der Kopieraktivität in der Datenpipeline. Hinweis: Für diesen Schritt kommuniziert das Gateway über einen sicheren Kanal (HTTPS) direkt mit dem cloudbasierten Speicherdienst (z. B. Azure Blob, Azure SQL usw.).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

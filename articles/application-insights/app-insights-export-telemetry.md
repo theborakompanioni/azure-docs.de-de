@@ -117,7 +117,7 @@ Hierbei gilt:
 
 ![Zeigen Sie die Telemetriedaten mit einem geeigneten Tool an](./media/app-insights-export-telemetry/06-json.png)
 
-Zeiten werden mithilfe von Teilstrichen dargestellt: 10.000 Teilstriche = 1 ms. Diese Werte zeigen beispielsweise einen Zeitraum von 10 ms für das Senden einer Anforderung aus dem Browser, von 30 ms für den Empfang und von 1,8 s für die Verarbeitung der Seite im Browser:
+Zeiten werden mithilfe von Teilstrichen dargestellt: 10.000 Teilstriche = 1 ms. Diese Werte zeigen beispielsweise einen Zeitraum von 1 ms für das Senden einer Anforderung aus dem Browser, von 3 ms für den Empfang und von 1,8 s für die Verarbeitung der Seite im Browser:
 
 	"sendRequest": {"value": 10000.0},
 	"receiveRequest": {"value": 30000.0},
@@ -229,4 +229,4 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/28/2016"
+	ms.date="05/19/2016"
 	ms.author="heidist"/>
 
 # Grenzwerte für den Azure Search-Dienst
@@ -40,7 +40,7 @@ API-Schlüssel werden für die Dienstauthentifizierung verwendet. Es gibt zwei A
 
 ## Grenzwerte für Anforderungen
 
-- Maximal 16 MB pro Anforderung <sup>1</sup>
+- Maximal 16 MB pro Anforderung <sup>1</sup>
 - Maximale URL-Länge von 8 KB
 - Maximal 1000 Dokumente pro Batch von Hochlade-, Zusammenführungs- oder Löschvorgängen für Indizes
 - Maximal 32 Felder in $orderby-Klausel
@@ -51,7 +51,7 @@ API-Schlüssel werden für die Dienstauthentifizierung verwendet. Es gibt zwei A
 - Maximale Rückgabe von 1000 Dokumenten pro Seite mit Suchergebnissen
 - Maximale Rückgabe von 100 Vorschlägen pro Anforderung der Vorschlags-API
 
-<sup>1</sup> In Azure Search darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die ansonsten keine theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Unterstützte Datentypen (Azure Search)](https://msdn.microsoft.com/library/azure/dn798938.aspx)).
+<sup>1</sup> In Azure Search darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die ansonsten keine theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Unterstützte Datentypen (Azure Search)](https://msdn.microsoft.com/library/azure/dn798938.aspx)).
 
 ## Abfragen pro Sekunde
 
@@ -59,4 +59,4 @@ Auch wenn in der Preisübersicht und im obigen Diagramm mit den [Tarifgrenzwerte
 
 Auf der Standard-Stufe können Sie den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Im Abschnitt mit bewährten Methoden unter [Verwalten der Suchlösung](search-manage.md) finden Sie Anleitungen zur Berechnung des QPS-Werts für Ihre Workloads.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

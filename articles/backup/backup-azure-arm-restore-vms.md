@@ -153,11 +153,11 @@ Es ist möglich, VMs mit den folgenden speziellen Netzwerkkonfigurationen zu sic
 
 Zum vollständigen Wiederherstellen der virtuellen Computer nach der Wiederherstellung von Datenträgern gehen Sie folgendermaßen vor:
 
-1. Stellen Sie die Datenträger mit [PowerShell](backup-azure-vms-automation.md/#restore-an-azure-vm) aus einem Recovery Services-Tresor wieder her.
+1. Stellen Sie die Datenträger mit [PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) aus einem Recovery Services-Tresor wieder her.
 
 2. Erstellen Sie die für den Lastenausgleich/mehrere NICs/mehrere reservierte IP-Adressen erforderliche VM-Konfiguration mithilfe der PowerShell-Cmdlets, und verwenden Sie sie zum Erstellen der VM mit der gewünschten Konfiguration.
 	- Erstellen Sie die VM im Clouddienst mit [internem Load Balancer](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
-	- Erstellen Sie die VM zum Herstellen einer Verbindung dem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
+	- Erstellen Sie die VM zum Herstellen einer Verbindung dem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/de-DE/documentation/articles/load-balancer-internet-getstarted/).
 	- Erstellen Sie die VM mit [mehreren NICs](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
 	- Erstellen Sie die VM mit [mehreren reservierten IP-Adressen](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
 
@@ -167,4 +167,4 @@ Jetzt können Sie Ihre virtuellen Computer wiederherstellen. Informationen zu h�
 - [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
 - [Verwalten virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

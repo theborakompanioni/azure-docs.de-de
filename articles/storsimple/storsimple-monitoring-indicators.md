@@ -4,7 +4,7 @@
     services="storsimple"
     documentationCenter="NA"
     authors="alkohli"
-    manager="carolz"
+    manager="carmonm"
     editor="" />
  <tags 
     ms.service="storsimple"
@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="03/21/2016"
+    ms.date="05/24/2016"
     ms.author="alkohli" />
 
 # Verwalten von Geräten mithilfe von StorSimple-Überwachungsindikatoren   
@@ -144,7 +144,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob das Controllermodul ordnu
 | Fehler-LED (bernsteinfarben) | Zeigt einen Fehler im Controller an.        
 | OK-LED (grün) | Gleichmäßig leuchtendes Grün zeigt an, dass der Controller ordnungsgemäß funktioniert. Blinkendes Grün zeigt einen VPD-Konfigurationsfehler des Controllers an. |
 | SAS-Aktivitäts-LEDs (grün) | Gleichmäßiges leuchtendes Grün zeigt eine Verbindung ohne aktuelle Aktivität an. Blinkendes Grün zeigt an, dass für die Verbindung eine laufende Aktivität besteht. |
-| Ethernetstatus-LEDs | Rechte Seite = Verbindung/Netzwerkaktivität: (gleichmäßig grün) Verbindung aktiv, (blinkend grün) Netzwerkaktivität. Linke Seite = Netzwerkgeschwindigkeit: 1000 MBit/s (gelb), 100 MBit/s (grün) und 10 MBit/s (AUS). Je nach Komponentenmodell kann diese LED auch blinken, wenn die Netzwerkschnittstelle nicht aktiviert ist. |
+| Ethernetstatus-LEDs | Rechte Seite = Verbindung/Netzwerkaktivität: (gleichmäßig grün) Verbindung aktiv, (blinkend grün) Netzwerkaktivität. Linke Seite = Netzwerkgeschwindigkeit: 1000 MBit/s (gelb), 100 MBit/s (grün) und 10 MBit/s (AUS). Je nach Komponentenmodell kann diese LED auch blinken, wenn die Netzwerkschnittstelle nicht aktiviert ist. |
 | POST-LEDs | Gibt den Startstatus an, wenn der Controller eingeschaltet wird. Wenn das StorSimple-Gerät nicht startet, kann der Microsoft-Support anhand dieser LED ermitteln, an welchem Punkt des Startvorgangs der Fehler aufgetreten ist. |
 
 >[AZURE.IMPORTANT] 
@@ -163,12 +163,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob das EBOD-Controllermodul 
 
 |Status | E/A-Modul OK (grün) | E/A-Modulfehler (bernsteinfarben) | Aktivität am Hostport (grün) |
 |-------|----------------------|-------------------------------|----------------------------|
-| Controllermodul OK | EIN | AUS | - |
-| Controllermodulfehler | AUS | EIN | - |
-| Keine externe Hostportverbindung | - | - | AUS |
-| Externe Hostportverbindung – keine Aktivität | - | - | EIN |
-| Externe Hostportverbindung – Aktivität | - | - | Blinken |
-| Metadatenfehler des Controllermoduls | Blinken | - | - |
+| Controllermodul OK | EIN | AUS | - | | Controllermodulfehler | AUS | EIN | - | | Keine externe Hostportverbindung | - | - | AUS | | Externe Hostportverbindung – keine Aktivität | - | - | EIN | | Externe Hostportverbindung – Aktivität | - | - | Blinken | | Metadatenfehler des Controllermoduls | Blinken | - | - |
 
 ## Indikator-LEDs des Datenträgerlaufwerks am primären und am EBOD-Gehäuse
 
@@ -262,6 +257,4 @@ Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](stors
 
  
 
-<!----HONumber=AcomDC_0323_2016-->
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

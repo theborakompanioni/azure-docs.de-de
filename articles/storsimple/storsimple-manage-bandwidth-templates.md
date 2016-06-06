@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple Manager-Diensts
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu erstellen.
    3. Wählen Sie in der Dropdownliste eine **Startzeit** aus. Dies liegt den Beginn des Zeitplans fest.
    4. Wählen Sie in der Dropdownliste eine **Endzeit** aus. Dies liegt das Ende des Zeitplans fest.
 
-         > [AZURE.NOTE] Überlappende Zeitpläne sind nicht erlaubt. Falls durch die Start- und Endzeiten ein überlappender Zeitplan entsteht, erhalten Sie eine entsprechende Fehlermeldung.
+         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
 
    5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen (Uploads und Downloads) verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
 
@@ -172,4 +172,4 @@ Folgen Sie diesen Empfehlungen für Ihr StorSimple-Gerät:
 
 Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

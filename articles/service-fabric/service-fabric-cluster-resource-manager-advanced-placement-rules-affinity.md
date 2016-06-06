@@ -1,6 +1,6 @@
 <properties
    pageTitle="Clusterressourcen-Manager von Service Fabric – Affinität | Microsoft Azure"
-   description="Übersicht über zusätzlichen Platzierungsrichtlinien und -regeln für Service Fabric-Dienste"
+   description="Übersicht über die Konfiguration der Affinität für Service Fabric-Dienste"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -13,26 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    ms.author="masnider"/>
 
 # Konfigurieren und Verwenden der Dienstaffinität in Service Fabric
 
-Affinität ist einer der Aspekte, der zumindest auf den ersten Blick, für eine Microservice-Umgebung eigentlich nicht sinnvoll ist. Das liegt daran, dass Affinität in einer Microservice-Umgebung wirklich nicht sinnvoll ist. Affinität ist ein Steuerungsinstrument, das hauptsächlich bereitgestellt wird, um den Übergang von größeren zuvor monolithischen Anwendungen in die Welt der Cloud und Microservices zu vereinfachen.
+Affinität ist einer der Aspekte, der zumindest auf den ersten Blick, für eine Microservice-Umgebung eigentlich nicht sinnvoll ist. Affinität ist ein Steuerungsinstrument, das hauptsächlich bereitgestellt wird, um den Übergang von größeren zuvor monolithischen Anwendungen in die Welt der Cloud und Microservices zu vereinfachen. Sie kann auch in bestimmten Fällen als legitime Optimierung zum Verbessern der Leistung von Diensten verwendet werden, obwohl dabei Nebeneffekte auftreten.
 
 Angenommen, Sie überführen eine größere App bzw. eine, die nicht mit Blick auf Microservices entwickelt wurde, in Service Fabric. Dies ist tatsächlich ziemlich üblich, und wir hatten einige Kunden (intern und extern) in dieser Situation. Sie beginnen mit dem Überführen der gesamten App in die Umgebung, wandeln sie in ein Paket um, und führen sie aus. Anschließend unterteilen Sie sie in verschiedene kleinere Dienste, die alle miteinander kommunizieren.
 
 Doch dann ertönt ein „Huch“. Das „Huch“ gehört meist zu einer dieser Kategorien:
 
 1. Es stellt sich heraus, dass Komponente X in der monolithischen App über eine nicht dokumentierte Abhängigkeit von Komponente Y verfügte, die wir gerade in einen Dienst umgewandelt und im Cluster verschoben haben. Die ist jetzt unterbrochen.
-2.	Diese Elemente kommunizieren über (lokale Named Pipes | freigegebenen Speicher | Dateien auf dem Datenträger), doch ich muss unbedingt in der Lage sein, sie unabhängig zu aktualisieren, um die Sache ein wenig zu beschleunigen.
-3.	Alles ist in Ordnung, doch es stellt sich heraus, dass diese beiden Komponenten sehr kommunikativ bzw. leistungsabhängig sein. Denn nachdem ich sie in getrennte Dienste verschoben hatte, ging meine Leistung den Bach herunter.
+2.	Diese Elemente kommunizieren über (lokale Named Pipes | freigegebenen Speicher | Dateien auf dem Datenträger), doch ich muss unbedingt in der Lage sein, sie unabhängig zu aktualisieren, um die Sache ein wenig zu beschleunigen. Ich entferne die harte Abhängigkeit später.
+3.	Alles ist in Ordnung, doch es stellt sich heraus, dass diese beiden Komponenten sehr kommunikativ bzw. leistungsabhängig sind. Denn nachdem ich sie in getrennte Dienste verschoben hatte, ging meine Leistung den Bach herunter, und die gesamte Anwendung ist jetzt nicht mehr nutzbar.
 
 In allen diesen Fällen wollen wir nicht, dass unser Aufwand für das Refactoring umsonst war, und auch nicht zum monolithischen Ansatz zurück. Doch wir wollen versuchen, die Dinge wieder auf die Reihe zu bekommen, sodass sie sich lokal „anfühlen“, bis wir eine Lösung gefunden haben.
 
 Vorgehensweise Wir könnten also versuchen, mit Affinität zu arbeiten.
 
-## Funktionsweise der Affinität
+## Konfigurieren von Affinität
 Um für Affinität zu sorgen, definieren Sie eine Affinitätsbeziehung zwischen zwei Diensten. Sie können sich das so vorstellen, dass ein Dienst auf einen anderen „zeigt“ und angibt, dass dieser Dienst nur dort ausgeführt werden kann, wo auch der andere ausgeführt wird. Mitunter wird dies als Beziehung über- und untergeordneter Dienste bezeichnet (wobei der untergeordnete auf den übergeordneten Dienst zeigt). Dadurch stellen Sie sicher, dass die Replikate oder Instanzen eines Diensts auf denselben Knoten platziert werden wie die Replikate oder Instanzen des Dienst, zu dem eine Affinität besteht.
 
 ``` csharp
@@ -49,11 +49,10 @@ Affinität wird mithilfe eines von mehreren Korrelationschemen dargestellt und w
 ![Affinitätsmodi und ihre Auswirkungen][Image1]
 
 ### Anstreben des gewünschten Zustands
-Es gibt einige Unterschiede zwischen Affinität und monolithischen Architekturen. Fast alle lassen sich zu der Tatsache zusammenfassen, dass eine Affinitätsbeziehung für bestes Bemühen steht, da es sich grundlegend um verschiedene Dienste handelt, die beispielsweise unabhängig voneinander ausfallen können. Andere Aspekte können dazu führen, dass andere Replikate des Diensts getrennt werden, z. B. Kapazitätseinschränkungen.
-
+Es gibt einige Unterschiede zwischen Affinität und monolithischen Architekturen. Fast alle lassen sich zu der Tatsache zusammenfassen, dass eine Affinitätsbeziehung für bestes Bemühen steht, da es sich grundlegend um verschiedene Dienste handelt, die beispielsweise unabhängig voneinander ausfallen können. Andere Aspekte – z.B. Kapazitätseinschränkungen – können dazu führen, dass andere Replikate oder Instanzen der Dienste, zu denen eine Affinität besteht, getrennt werden. In diesen Fällen besteht zwar eine Affinitätsbeziehung, doch vorübergehend wird sie aufgrund der anderen Einschränkungen nicht erzwungen. Wenn es möglich ist, alle anderen Einschränkungen und die Affinität zu einem späteren Zeitpunkt zu erzwingen, wird dies automatisch korrigiert.
 
 ### Ketten im Vergleich zu Sternen
-Derzeit können wir Ketten von Affinitätsbeziehungen nicht modellieren. Dies bedeutet, dass ein Dienst, der ein untergeordneter Dienst einer Affinitätsbeziehung ist, kein übergeordneter Dienst in einer anderen Affinitätsbeziehung sein kann. Wenn Sie diese Art von Beziehung modellieren möchten, müssen Sie sie als Stern und nicht als Kette modellieren, indem Sie den untersten untergeordneten Dienst als übergeordneten Dienst des übergeordneten Dienst des „mittleren“ untergeordneten Diensts darstellen.
+Derzeit können wir Ketten von Affinitätsbeziehungen nicht modellieren. Dies bedeutet, dass ein Dienst, der ein untergeordneter Dienst einer Affinitätsbeziehung ist, kein übergeordneter Dienst in einer anderen Affinitätsbeziehung sein kann. Wenn Sie diese Art von Beziehung modellieren möchten, müssen Sie sie als Stern und nicht als Kette modellieren, indem Sie den untersten untergeordneten Dienst als übergeordneten Dienst des übergeordneten Diensts des „mittleren“ untergeordneten Diensts darstellen. Abhängig von der Anordnung der Dienste muss möglicherweise ein Dienst als „Platzhalter“ erstellt werden, um für mehrere untergeordnete Elemente als übergeordnetes Element zu dienen.
 
 ![Ketten im Vergleich zu Sternen im Kontext von Affinitätsbeziehungen][Image2]
 
@@ -64,8 +63,9 @@ Der letzte wichtige Affinitätsaspekt ist, dass Affinitätsbeziehungen nicht unt
 
 ## Nächste Schritte
 - Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen, [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
+- Viele Gründen, aus denen Benutzer versuchen, Affinität anzuwenden, wie z.B. die Ausführung von Diensten auf eine kleine Gruppe von Computern zu begrenzen, und zu versuchen, die Last einer Sammlung von Diensten zu aggregieren, werden eigentlich besser durch Anwendungsgruppen unterstützt. Weitere Informationen finden Sie unter [Introduction to Application Groups](service-fabric-cluster-resource-manager-application-groups.md) (Einführung zu Anwendungsgruppen).
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

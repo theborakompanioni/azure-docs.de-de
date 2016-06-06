@@ -108,12 +108,14 @@ Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inha
 Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
 
 
-###   Szenario 4: Deaktivieren der Linux-Überwachungserweiterung
+###   Szenario 4: Verhindern, dass die Erweiterung Protokolle sammelt
+In diesem Abschnitt wird beschrieben, wie Sie verhindern, dass die Erweiterung Protokolle sammelt. Beachten Sie, dass der Überwachungs-Agent-Prozess auch nach dieser Neukonfiguration weiterhin ausgeführt wird. Wenn Sie den Überwachungs-Agent-Prozess vollständig beenden möchten, muss die Erweiterung daher derzeit deinstalliert werden. Zukünftig fügen wir möglicherweise eine Konfigurationseigenschaft hinzu, die die Erweiterung einfach deaktiviert (wodurch der Überwachungs-Agent-Prozess ebenfalls vollständig beendet wird). Die Deinstallation der gesamten Erweiterung ist dann nicht mehr erforderlich.
+
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt, der in Szenario 1 beschrieben wurde. Erstellen Sie eine weitere Datei namens „PublicConfig.json“ mit folgendem Inhalt.
 
 	{
      	"perfCfg":[],
-     	"enableSyslog":”False”
+     	"enableSyslog":"false"
 	}
 
 
@@ -137,4 +139,4 @@ Wenn Sie in Szenario 2 und 3 „fileCfg“ oder „perfCfg“ aktiviert haben,
 ## Bekannte Probleme
 - In Version 2.0 kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur über Skripts zugegriffen werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

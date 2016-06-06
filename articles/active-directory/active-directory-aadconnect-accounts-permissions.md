@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/14/2016"
+   ms.date="05/19/2016"
    ms.author="andkjell;billmath"/>
 
 
@@ -28,18 +28,18 @@ Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
 ## Verwandte Dokumentation
 Wenn Sie die Dokumentation zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md) nicht gelesen haben, finden Sie in der folgenden Tabelle Links zu verwandten Themen.
 
-| Thema | |
-| --------- | --------- |
-| Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](active-directory-aadconnect-get-started-express.md) |
-| Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md) |
-| Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md) |
+Thema |  
+--------- | ---------
+Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](active-directory-aadconnect-get-started-express.md)
+Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md)
+Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 
 
 ## Installation mit Express-Einstellungen
 In den Expresseinstellungen fordert der Installations-Assistent zur Angabe von AD DS Enterprise-Administratoranmeldeinformationen auf, damit Ihr lokales Active Directory mit den erforderlichen Berechtigungen für Azure AD Connect konfiguriert werden kann. Bei einem Upgrade von DirSync werden die AD DS Enterprise-Administratoranmeldeinformationen verwendet, um das Kennwort für das von DirSync verwendete Konto zurückzusetzen. Sie müssen außerdem Ihre globalen Azure AD-Administratoranmeldeinformationen eingeben.
 
 Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen| Verwendung
-------------- | ------------- |------------- |------------- |
+------------- | ------------- |------------- |-------------
 N/V|Benutzer, der den Installations-Assistenten ausführt| Administrator des lokalen Servers| <li>Erstellt das lokale Konto, das als [Dienstkonto für das Synchronisierungsmodul](#azure-ad-connect-sync-service-account) verwendet wird.
 Herstellen einer Verbindung mit Azure AD| Azure AD-Verzeichnisanmeldeinformationen | Globale Administratorrolle in Azure AD | <li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis.</li> <li>Erstellen des [Azure AD-Kontos](#azure-ad-service-account), das für die fortlaufenden Synchronisierungsvorgänge in Azure AD verwendet wird.</li>
 Herstellen einer Verbindung mit AD DS | Lokale Active Directory-Anmeldeinformationen | Mitglied der Gruppe "Unternehmensadministratoren" in Active Directory| <li>Erstellt ein [Konto](#active-directory-account) in Active Directory und gewährt Zugriff darauf. Dieses erstellte Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung.</li>
@@ -51,19 +51,19 @@ Diese Anmeldeinformationen werden nur während der Installation verwendet und ni
 Diese Anmeldeinformationen werden nur während der Installation verwendet und nicht mehr, nachdem die Installation abgeschlossen ist. Sie dienen zum Erstellen des [Azure AD-Kontos](#azure-ad-service-account) zum Synchronisieren der Änderungen mit Azure AD. Das Konto aktiviert auch Synchronisierung als Feature in Azure AD.
 
 ### Berechtigungen für das erstellte AD DS-Konto für Expresseinstellungen
-Das [Konto](#active-directory-account), das für Lese- und Schreibvorgänge in AD DS erstellt wurde, besitzt die folgenden Berechtigungen, wenn es über die Expresseinstellungen erstellt wird:
+Das [Konto](#active-directory-account), das für Lese- und Schreibvorgänge in AD DS erstellt wurde, besitzt die folgenden Berechtigungen, wenn es mit den Expresseinstellungen erstellt wird:
 
-| Berechtigung | Verwendung |
-| ---- | ---- |
-| <li>Verzeichnisänderungen replizieren</li><li> Verzeichnisänderungen replizieren: Alle | Kennwortsynchronisierung |
-| Alle Eigenschaften lesen/schreiben: Benutzer | Importieren und Exchange-Hybridbereitstellung |
-| Alle Eigenschaften lesen/schreiben: iNetOrgPerson | Importieren und Exchange-Hybridbereitstellung |
-| Alle Eigenschaften lesen/schreiben: Gruppe | Importieren und Exchange-Hybridbereitstellung |
-| Alle Eigenschaften lesen/schreiben: Kontakt | Importieren und Exchange-Hybridbereitstellung |
-| Kennwort zurücksetzen | Vorbereitung für das Aktivieren des Rückschreibens von Kennwörtern |
+Berechtigung | Verwendung
+---- | ----
+<li>Verzeichnisänderungen replizieren</li><li> Verzeichnisänderungen replizieren: Alle | Kennwortsynchronisierung
+Alle Eigenschaften lesen/schreiben: Benutzer | Importieren und Exchange-Hybridbereitstellung
+Alle Eigenschaften lesen/schreiben: iNetOrgPerson | Importieren und Exchange-Hybridbereitstellung
+Alle Eigenschaften lesen/schreiben: Gruppe | Importieren und Exchange-Hybridbereitstellung
+Alle Eigenschaften lesen/schreiben: Kontakt | Importieren und Exchange-Hybridbereitstellung
+Kennwort zurücksetzen | Vorbereitung für das Aktivieren des Rückschreibens von Kennwörtern
 
 ## Installation mit benutzerdefinierten Einstellungen
-Wenn Sie benutzerdefinierte Einstellungen verwenden, muss das Konto für die Verbindung mit Active Directory vor der Installation erstellt werden. Die Berechtigungen, die Sie diesem Konto erteilen müssen, finden Sie unter [Erstellen des AD DS-Kontos](#create-the-ad-ds-account).
+Wenn Sie benutzerdefinierte Einstellungen verwenden, muss das Konto für die Verbindung mit Active Directory vor der Installation erstellt werden. Die Berechtigungen, die Sie diesem Konto erteilen müssen, finden Sie unter [Erstellen des AD DS-Kontos](#create-the-ad-ds-account).
 
 Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen| Verwendung
 ------------- | ------------- |------------- |-------------
@@ -81,22 +81,22 @@ Bei der Installation von Azure AD Connect muss das auf der Seite **Verzeichniss
 
 Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funktionen ab. Wenn Sie über mehrere Domänen verfügen, müssen die Berechtigungen für alle Domänen in der Gesamtstruktur erteilt werden. Wenn Sie keine dieser Funktionen aktivieren, sind die **Domänenbenutzer**-Standardberechtigungen ausreichend.
 
-| Funktion | Berechtigungen |
-| ------ | ------ |
-| Kennwortsynchronisierung | <li>Verzeichnisänderungen replizieren</li> <li>Alle Verzeichnisänderungen replizieren |
-| Exchange-Hybridbereitstellung | Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind. |
-| Rückschreiben von Kennwörtern | Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions) für Benutzer dokumentiert sind. |
-| Geräterückschreiben | Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md) beschrieben.|
-| Gruppenrückschreiben | Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten in der Organisationseinheit, in der sich die Verteilergruppen befinden sollen.|
+Funktion | Berechtigungen
+------ | ------
+Kennwortsynchronisierung | <li>Verzeichnisänderungen replizieren</li> <li>Alle Verzeichnisänderungen replizieren
+Exchange-Hybridbereitstellung | Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind.
+Rückschreiben von Kennwörtern | Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions) für Benutzer dokumentiert sind.
+Geräterückschreiben | Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md) beschrieben.
+Gruppenrückschreiben | Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten in der Organisationseinheit, in der sich die Verteilergruppen befinden sollen.
 
 ## Upgrade
 Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie folgende Berechtigungen:
 
-| Prinzipal | Erforderliche Berechtigungen | Verwendung |
-| ---- | ---- | ---- |
-| Benutzer, der den Installations-Assistenten ausführt | Administrator des lokalen Servers | Aktualisieren von Binärdateien. |
-| Benutzer, der den Installations-Assistenten ausführt | Mitglied von ADSyncAdmins | Vornehmen von Änderungen an den Synchronisierungsregeln und anderen Konfigurationen. |
-| Benutzer, der den Installations-Assistenten ausführt | Bei Verwendung eines vollständigen SQL-Servers: DBO (oder ähnlich) der Datenbank für das Synchronisierungsmodul | Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
+Prinzipal | Erforderliche Berechtigungen | Verwendung
+---- | ---- | ----
+Benutzer, der den Installations-Assistenten ausführt | Administrator des lokalen Servers | Aktualisieren von Binärdateien.
+Benutzer, der den Installations-Assistenten ausführt | Mitglied von ADSyncAdmins | Vornehmen von Änderungen an den Synchronisierungsregeln und anderen Konfigurationen.
+Benutzer, der den Installations-Assistenten ausführt | Bei Verwendung eines vollständigen SQL-Servers: DBO (oder ähnlich) der Datenbank für das Synchronisierungsmodul | Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten.
 
 ## Weitere Informationen zu den erstellten Konten
 
@@ -107,7 +107,7 @@ Wenn Sie Express-Einstellungen verwenden, wird ein Konto für die Synchronisieru
 ![AD-Konto](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect-Synchronisierungsdienstkonten
-Der Installations-Assistent erstellt ein lokales Dienstkonto (sofern das Konto nicht zur Verwendung in benutzerdefinierten Einstellungen angegeben wird). Das Konto ist mit dem Präfix **AAD\_** versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird das Konto in der Domäne erstellt. Wenn Sie SQL Server auf einem Remoteserver verwenden oder wenn Sie einen Proxy verwenden, für den eine Authentifizierung erforderlich ist, muss sich das Dienstkonto **AAD\_** in der Domäne befinden.
+Der Installations-Assistent erstellt ein lokales Dienstkonto (sofern das Konto nicht zur Verwendung in benutzerdefinierten Einstellungen angegeben wird). Das Konto ist mit dem Präfix **AAD\_** versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird das Konto in der Domäne erstellt. Wenn Sie SQL Server auf einem Remoteserver verwenden oder wenn Sie einen Proxy verwenden, für den eine Authentifizierung erforderlich ist, muss sich das Dienstkonto **AAD\_** in der Domäne befinden.
 
 ![Synchronisierungsdienstkonto](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
@@ -134,4 +134,4 @@ Das Dienstkonto wird mit einem langen komplexen Kennwort erstellt, das nicht abl
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

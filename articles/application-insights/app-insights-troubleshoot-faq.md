@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
+	ms.date="05/13/2016" 
 	ms.author="awills"/>
  
 # Fragen – Application Insights für ASP.NET
@@ -39,7 +39,7 @@
 * Sie müssen Ihre Kreditkartendaten angeben, um sich bei Microsoft Azure registrieren zu können. Es werden jedoch keinerlei Gebühren abgebucht, sofern Sie keinen kostenpflichtigen Azure-Dienst nutzen oder explizit auf einen kostenpflichtigen Tarif aktualisieren.
 * Wenn Ihre App mehr Daten sendet, als in Ihrem Kontingent für den Free-Tarif enthalten sind, wird die Protokollierung eingestellt. In diesem Fall können Sie zu einem kostenpflichtigen Tarif wechseln oder warten, bis das Kontingent am Monatsende zurückgesetzt wird.
 * Daten für die grundlegende Nutzung sowie Sitzungsdaten unterliegen keinen Kontingenten.
-* Es gibt auch eine kostenlose 30-Tage-Testversion, in der Sie die Premium-Funktionen kostenlos nutzen können.
+* Es gibt auch eine kostenlose 30-Tage-Testversion, in der Sie die zahlungspflichtigen Funktionen kostenlos nutzen können.
 * Jede Anwendungsressource verfügt über ein eigenes Kontingent, und Sie können den Tarif für jede Ressource unabhängig von den anderen festlegen.
 
 #### Was beinhalten die kostenpflichtigen Tarife?
@@ -126,7 +126,6 @@ Informationen hierzu finden Sie unter [Datenaufbewahrung und Datenschutz][data].
 <tr><td>Benutzerdefinierte Metriken auf Servern</td><td><a href="../app-insights-api-custom-events-metrics/">Nachverfolgen von Aufrufe im Servercode</a></td><td>Business Intelligence</td></tr>
 </table>
 
-Wenn Ihr Webdienst auf einem virtuellen Azure-Computer ausgeführt wird, erhalten Sie dort auch eine [Diagnose][azurediagnostic].
 
 ## Automation
 
@@ -139,7 +138,6 @@ Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Appli
 
 <!--Link references-->
 
-[azurediagnostic]: ../insights-how-to-use-diagnostics.md
 [data]: app-insights-data-retention-privacy.md
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
@@ -147,4 +145,4 @@ Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Appli
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

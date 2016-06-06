@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Starten einer Sicherheitsüberprüfung in Azure AD Privileged Identity Management
 
-Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen „veralteten“ Rollenzuweisungen zu verringern, sollten Sicherheitsadministratoren die den Benutzern zugewiesenen Rollen regelmäßig überprüfen. Dieses Dokument beschreibt die Schritte zum Starten einer Sicherheitsüberprüfung in Azure AD Privileged Identity Management (PIM).
+Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen „veralteten“ Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen die den Benutzern zugewiesenen Rollen regelmäßig überprüfen. Dieses Dokument beschreibt die Schritte zum Starten einer Sicherheitsüberprüfung in Azure AD Privileged Identity Management (PIM).
 
 ## Starten einer Sicherheitsüberprüfung
 > [AZURE.NOTE] Wenn Sie die PIM-Anwendung noch nicht zu Ihrem Dashboard im Azure-Portal hinzugefügt haben, finden Sie die notwendigen Schritte unter [Erste Schritte mit Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
@@ -64,4 +64,4 @@ Sie können den Fortschritt der Überprüfungen durch die Benutzer im Azure AD P
 ## Inhaltsverzeichnis zu PIM
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

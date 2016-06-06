@@ -23,7 +23,7 @@ Azure Security Center empfiehlt die Anwendung der Datenträgerverschlüsselung, 
 
 Bei der Datenträgerverschlüsselung werden das [BitLocker](https://technet.microsoft.com/library/cc732774.aspx)-Feature (Branchenstandard) von Windows und das [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)-Feature von Linux verwendet, um das Betriebssystem und die Daten zu verschlüsseln. Dies trägt zum Schutz Ihrer Daten und zur Erfüllung der Sicherheits- und Complianceanforderungen Ihres Unternehmens bei. Die Datenverschlüsselung ist in den [Azure-Schlüsseltresor](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresor-Abonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den VM-Datenträgern im Ruhezustand in [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) verschlüsselt sind.
 
-> [AZURE.NOTE] Azure Disk Encryption wird für die folgenden Windows Server-Betriebssysteme unterstützt: Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2. Eine Datenträgerverschlüsselung wird für die folgenden Linux-Betriebssysteme unterstützt: Ubuntu, CentOS, SUSE und SUSE Linux Enterprise Server (SLES).
+> [AZURE.NOTE] Azure Disk Encryption wird für die folgenden Windows Server-Betriebssysteme unterstützt: Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2. Eine Datenträgerverschlüsselung wird für die folgenden Linux-Betriebssysteme unterstützt: Ubuntu, CentOS, SUSE und SUSE Linux Enterprise Server (SLES).
 
 ## Implementieren der Empfehlung
 
@@ -39,9 +39,9 @@ Zum Verschlüsseln virtueller Azure-Computer, für die von Security Center festg
 - Rufen Sie das für Azure Disk Encryption erforderliche PowerShell-Skript ab, und führen Sie es aus.
 - Verschlüsseln Sie Ihre virtuellen Computer.
 
-Unter [Verschlüsseln eines virtuellen Azure-Computers](security-center-disk-encryption.md) werden Sie durch diese Schritte geführt. In diesem Thema wird davon ausgegangen, dass Sie Windows 10 als Clientcomputer verwenden, von dem aus Sie die Datenträgerverschlüsselung konfigurieren.
+Unter [Verschlüsseln eines virtuellen Azure-Computers](security-center-disk-encryption.md) werden Sie durch diese Schritte geführt. In diesem Thema wird davon ausgegangen, dass Sie Windows 10 als Clientcomputer verwenden, von dem aus Sie die Datenträgerverschlüsselung konfigurieren.
 
-Ihnen stehen verschiedene Methoden zur Verfügung, um die Voraussetzungen einzurichten und die Verschlüsselung für virtuelle Azure-Computer zu konfigurieren. Wenn Sie bereits über Kenntnisse in Azure PowerShell oder Azure-CLI verfügen, ziehen Sie möglicherweise andere Methoden vor. Informationen zu diesen anderen Methoden finden Sie unter [Azure-Datenträgerverschlüsselung](../azure-security-disk-encryption.md).
+Ihnen stehen verschiedene Methoden zur Verfügung, um die Voraussetzungen einzurichten und die Verschlüsselung für virtuelle Azure-Computer zu konfigurieren. Wenn Sie bereits über Kenntnisse in Azure PowerShell oder Azure-CLI verfügen, ziehen Sie möglicherweise andere Methoden vor. Informationen über diese anderen Ansätze erfahren Sie unter [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](../security/azure-security-disk-encryption.md).
 
 
 
@@ -49,9 +49,9 @@ Ihnen stehen verschiedene Methoden zur Verfügung, um die Voraussetzungen einzur
 
 In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Datenträgerverschlüsselung anwenden“ implementieren. Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter folgenden Themen:
 
-- [Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (Verschlüsselung und Schlüsselverwaltung mit dem Azure-Schlüsseltresor, Video, 36 Min. 39 Sek.): Erfahren Sie, wie Sie die Verwaltung der Datenträgerverschlüsselung für IaaS-VMs und den Azure-Schlüsseltresor nutzen, um Ihre Daten besser zu schützen.
+- [Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (Verschlüsselung und Schlüsselverwaltung mit dem Azure-Schlüsseltresor, Video, 36 Min. 39 Sek.): Erfahren Sie, wie Sie die Verwaltung der Datenträgerverschlüsselung für IaaS-VMs und den Azure-Schlüsseltresor nutzen, um Ihre Daten besser zu schützen.
 - [Verschlüsseln eines virtuellen Azure-Computers](security-center-disk-encryption.md) (Dokument): Erfahren Sie, wie virtuelle Azure-Computer verschlüsselt werden.
-- [Azure-Datenträgerverschlüsselung](../azure-security-disk-encryption.md) (Dokument): Enthält Informationen zum Aktivieren der Datenträgerverschlüsselung für Windows- und Linux-VMs.
+- [Azure-Datenträgerverschlüsselung](../security/azure-security-disk-encryption.md) (Dokument): Enthält Informationen zum Aktivieren der Datenträgerverschlüsselung für Windows- und Linux-VMs.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -67,4 +67,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

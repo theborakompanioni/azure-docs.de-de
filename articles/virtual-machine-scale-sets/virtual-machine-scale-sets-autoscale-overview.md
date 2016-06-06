@@ -21,7 +21,7 @@
 
 Automatische Skalierung virtueller Computer in einer Skalierungsgruppe bedeutet, dass Computer in der Gruppe erstellt oder daraus gelöscht werden, wenn dies für eine Anwendung erforderlich ist, damit Leistungsanforderungen erfüllt und Vereinbarungen zum Servicelevel (SLAs) eingehalten werden. Wenn das Arbeitsvolumen zunimmt, benötigt eine Anwendung unter Umständen zusätzliche Ressourcen, um ihre Aufgaben effizient auszuführen.
 
-Die automatische Skalierung ist ein automatisierter Prozess, der den Verwaltungsaufwand erleichtert. Aufgrund der geringeren Aufwands ist es nicht erforderlich, die Systemleistung durchgehend zu überwachen oder Entscheidungen in Bezug auf das Hinzufügen oder Entfernen von Ressourcen zu treffen. Skalieren ist ein flexibler Prozess. Bei steigender Auslastung des Systems können weitere Ressourcen bereitgestellt werden, bei geringerer Nachfrage ist es jedoch auch möglich, Ressourcen freizugeben, um Kosten zu verringern und gleichzeitig die Leistung beizubehalten und die Einhaltung der SLAs sicherzustellen.
+Bei der automatischen Skalierung handelt es sich um einen automatisierten Prozess, der den Verwaltungsaufwand reduziert, indem die Systemleistung durchgehend überwacht wird und Entscheidungen in Bezug auf das Hinzufügen oder Entfernen von nicht erforderlichen Ressourcen getroffen werden. Skalieren ist ein flexibler Prozess. Bei steigender Auslastung des Systems können weitere Ressourcen bereitgestellt werden, bei geringerer Nachfrage ist es jedoch auch möglich, Ressourcen freizugeben, um Kosten zu verringern und gleichzeitig die Leistung beizubehalten und die Einhaltung der SLAs sicherzustellen.
 
 Richten Sie die automatische Skalierung für eine Skalierungsgruppe mit einer Azure Resource Manager-Vorlage, Azure PowerShell oder der Azure-CLI ein.
 
@@ -209,4 +209,4 @@ Wenn die durchschnittliche Threadanzahl nach einer Abkühlperiode von fünf Minu
 1. Informationen zu den ersten Schritten beim Erstellen einer Skalierungsgruppe finden Sie unter [Create a Windows Virtual Machine Scale Set](virtual-machine-scale-sets-windows-create.md) (Erstellen einer Skalierungsgruppe für virtuelle Windows-Computer).
 2. Unter [Autoscale Windows Virtual Machine Scale Sets](virtual-machine-scale-sets-windows-autoscale.md) (Automatische Skalierung von Skalierungsgruppen mit virtuellen Windows-Computern) oder [Autoscale Linux Virtual Machine Scale Sets](virtual-machine-scale-sets-linux-autoscale.md)( Automatische Skalierung von Skalierungsgruppen mit virtuellen Linux-Computern) finden Sie ein Beispiel dazu, wie eine Skalierungsgruppe erstellt wird, bei der die automatische Skalierung konfiguriert ist.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

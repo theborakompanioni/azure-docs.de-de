@@ -32,7 +32,7 @@ Sie können nicht den Speicherort der Ressource ändern. Wenn Sie ein Ressource 
 Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen: Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
 
 1. Der Dienst muss die Möglichkeit unterstützen, Ressourcen zu verschieben. In der Liste unten finden Sie Informationen, welche [Dienste das Verschieben von Ressourcen unterstützen](#services-that-support-move).
-2. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde. Weitere Informationen zum Überprüfen des Registrierungsstatus und zum Registrieren von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../resource-manager-supported-services/#resource-providers-and-types).
+2. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde. Weitere Informationen zum Überprüfen des Registrierungsstatus und zum Registrieren von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../resource-manager-supported-services.md#resource-providers-and-types).
 3. Wenn Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, verwenden Sie die neueste Version. Führen Sie zum Aktualisieren Ihrer Version den Microsoft-Webplattform-Installer aus, und überprüfen Sie, ob eine neue Version verfügbar ist. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md) und [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md).
 4. Wenn Sie eine App Service-App verschieben, müssen Sie die [App Service-Einschränkungen](#app-service-limitations) kennen.
 5. Wenn Sie Ressourcen verschieben, die Sie mithilfe des klassischen Bereitstellungsmodells bereitgestellt haben, müssen Sie [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations) kennen.
@@ -48,6 +48,7 @@ Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressour
 - CDN
 - Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 - Data Factory
+- DNS
 - DocumentDB
 - HDInsight-Cluster
 - Schlüsseltresor
@@ -57,9 +58,9 @@ Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressour
 - Redis-Cache
 - Scheduler
 - Suche
-- Speicherung (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- Storage (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 - SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle zugehörigen Datenbanken verschoben.
-- Virtuelle Computer (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 
 ## Dienste, die das Verschieben teilweise unterstützen
 
@@ -75,7 +76,7 @@ Die folgenden Dienste unterstützen derzeit nicht das Verschieben einer Ressourc
 - ExpressRoute
 - Speicher
 - Virtual Machines
-- Virtuelle Netzwerke (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 
 ## App Service-Einschränkungen
 
@@ -93,10 +94,10 @@ Angenommen, Ihre Ressourcengruppe enthält folgende Ressourcen:
 
 Die Optionen sind wie folgt:
 
-- **web-a**, **plan-a**, **web-b** und **plan-b** verschieben
-- **web-a** und **web-b** verschieben
-- **web-a** verschieben
-- **web-b** verschieben
+- Verschieben von **web-a**, **plan-a**, **web-b** und **plan-b**
+- Verschieben von **web-a** und **web-b**
+- Verschieben von **web-a**
+- Verschieben von **web-b**
 
 Allen anderen Kombinationen umfassen entweder das Verschieben einer Ressource, die nicht verschoben werden kann (Application Insights), oder das Hinterlassen eines Ressourcentyps, der beim Verschieben eines App Service-Plans (beliebiger Typ von App Service-Ressource) nicht hinterlassen werden darf.
 
@@ -169,7 +170,7 @@ Beim Verschieben von Ressourcen, die über das klassische Modell bereitgestellt 
 
 ![Klassische Ressourcen verschieben](./media/resource-group-move-resources/edit-rg-icon.png)
 
-Wählen Sie unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations) die zu verschiebenden Ressourcen aus. Klicken Sie auf **OK**, um das Verschieben zu starten.
+Wählen Sie unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations) die zu verschiebenden Ressourcen aus. Klicken Sie auf **OK**, um mit dem Verschieben zu beginnen.
 
  ![Klassische Ressourcen auswählen](./media/resource-group-move-resources/select-classic-resources.png)
  
@@ -227,7 +228,7 @@ Führen Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengrup
 
 Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressourcen an. Weitere Informationen zur REST-Verschiebung finden Sie unter [Verschieben von Ressourcen](https://msdn.microsoft.com/library/azure/mt218710.aspx).
 
-Zum Verschieben von **klassischen Ressourcen in ein neues Abonnement** müssen Sie allerdings verschiedene REST-Vorgänge ausführen. Um zu überprüfen, ob ein Abonnement als Quell- oder Zielabonnement an einer abonnementübergreifenden Verschiebung klassischer Ressourcen teilnehmen kann, führen Sie den folgenden Vorgang aus:
+Zum Verschieben von **klassischen Ressourcen in ein neues Abonnement** müssen Sie jedoch unterschiedliche REST-Vorgänge ausführen. Um zu überprüfen, ob ein Abonnement als Quell- oder Zielabonnement an einer abonnementübergreifenden Verschiebung klassischer Ressourcen teilnehmen kann, führen Sie den folgenden Vorgang aus:
 
     POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
     
@@ -266,9 +267,9 @@ Mit dem Anforderungstext:
 
 
 ## Nächste Schritte
-- Weitere Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](powershell-azure-resource-manager.md).
-- Weitere Informationen zu Befehlen der Azure-Befehlszeilenschnittstelle zum Verwalten Ihres Abonnements finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Resource Manager](xplat-cli-azure-resource-manager.md).
-- Weitere Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
-- Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
+- Weitere Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](powershell-azure-resource-manager.md).
+- Weitere Informationen zu Befehlen der Azure-Befehlszeilenschnittstelle zum Verwalten Ihres Abonnements finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Resource Manager](xplat-cli-azure-resource-manager.md).
+- Weitere Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
+- Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

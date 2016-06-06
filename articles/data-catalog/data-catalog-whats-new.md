@@ -13,18 +13,28 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/06/2016"
+   ms.date="05/20/2016"
    ms.author="maroche"/>
 
 # Neuigkeiten in Azure Data Catalog
 
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
 
+## Neues im Release der Woche ab dem 20. Mai 2016
+
+In der Woche ab dem 20. Mai 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Erweiterungen im Data Catalog-Unternehmensglossar, die es Benutzern ermöglichen, mehrere Glossarbegriffe in einem einzigen Vorgang zu aktualisieren. Benutzer können mehrere Begriffe auswählen, um folgende Felder zu bearbeiten:
+    - Übergeordneter Begriff: Der Benutzer kann einen neuen übergeordneten Begriff auswählen. Alle ausgewählten Begriffe werden so aktualisiert, dass sie untergeordnete Begriffe des ausgewählten übergeordneten Begriffs darstellen. Wenn alle ausgewählten Begriffe über denselben übergeordneten Begriff verfügen, wird dieser übergeordnete Begriff im Textfeld angezeigt. Andernfalls ist das Feld „übergeordneter Begriff“ leer.   
+    - Tags und Beteiligte: Benutzer können Tags und Beteiligte für mehrere Glossarbegriffe mithilfe desselben Szenarios wie beim Markieren mehrerer Datenassets hinzufügen und entfernen.
+
+Weitere Informationen zum Unternehmensglossar finden Sie unter [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Einrichten des Unternehmensglossars für gesteuertes Markieren)
+
 ## Neuigkeiten in der Version der Woche ab dem 6. Mai 2016
 
 In der Woche ab dem 6. Mai 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
-- Ein Unternehmensglossar, mit dem Katalogadministratoren Geschäftsbedingungen und Hierarchien definieren können, um ein allgemeines Geschäftsvokabular zu erstellen. Benutzer können registrierte Datenassets mit Glossarbegriffen markieren, um das Erkennen und Verstehen des Kataloginhalts zu vereinfachen. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md).  
+- Ein Unternehmensglossar, mit dem Katalogadministratoren Geschäftsbedingungen und Hierarchien definieren können, um ein allgemeines Geschäftsvokabular zu erstellen. Benutzer können registrierte Datenassets mit Glossarbegriffen markieren, um das Erkennen und Verstehen des Kataloginhalts zu vereinfachen. Weitere Informationen finden Sie unter [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Einrichten des Unternehmensglossars für gesteuertes Markieren)  
 
 > [AZURE.NOTE] Das Unternehmensglossar ist nur in der Standard Edition von Azure Data Catalog verfügbar. Die kostenlose Edition bietet keine Funktionen für gesteuertes Markieren bzw. ein Unternehmensglossar.
 
@@ -41,7 +51,7 @@ In der Woche ab dem 19. Februar 2016 wurden Azure Data Catalog folgende Funktio
 
 - Eine neu gestaltete Datenquellenauswahl im Tool zum Registrieren von Datenquellen von Azure Data Catalog. Das Tool zum Registrieren von Datenquellen wurde aktualisiert, um Benutzern das Suchen und Auswählen der von Azure Data Catalog unterstützten Datenquellen zu erleichtern.
 - Unterstützung für zehn weitere Sprachen im Azure Data Catalog-Portal und dem Tool zum Registrieren von Datenquellen. Zusätzlich zu Englisch ist Azure Data Catalog jetzt in Deutsch, Spanisch, Französisch, Italienisch, Japanisch, Koreanisch, Portugiesisch (Brasilien), Russisch, Chinesisch (vereinfacht) und Chinesisch (traditionell) verfügbar. Die in Azure Data Catalog verwendete Sprache entspricht den in Windows oder im Webbrowser des Benutzers festgelegten Spracheinstellungen.
-- Unterstützung für die Georeplikation von Azure Data Catalog-Daten für die Geschäftskontinuität und Notfallwiederherstellung. Alle Azure Data Catalog-Inhalte, einschließlich Datenquellenmetadaten und per Crowdsourcing gesammelter Kommentare, werden jetzt zwischen zwei Azure-Regionen repliziert, ohne dass für Kunden zusätzliche Kosten anfallen. Die Azure-Regionen sind vorab festgelegt, mindestens 500 Meilen voneinander entfernt und entsprechen der unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](../best-practices-availability-paired-regions.md) beschriebenen Zuordnung.
+- Unterstützung für die Georeplikation von Azure Data Catalog-Daten für die Geschäftskontinuität und Notfallwiederherstellung. Alle Azure Data Catalog-Inhalte, einschließlich Datenquellenmetadaten und per Crowdsourcing gesammelter Kommentare, werden jetzt zwischen zwei Azure-Regionen repliziert, ohne dass für Kunden zusätzliche Kosten anfallen. Die Azure-Regionen sind vorab festgelegt, mindestens 500 Meilen voneinander entfernt und entsprechen der unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](../best-practices-availability-paired-regions.md) beschriebenen Zuordnung.
 
 
 ## Neuigkeiten in der Version der Woche ab dem 5. Februar 2016
@@ -65,7 +75,7 @@ In der Woche ab dem 29. Januar 2016 wurden Azure Data Catalog folgende Funktio
    + PostgreSQL – Tabelle, Ansicht und Datenbank
 - Unterstützung für „Open in SQL Server Data Tools“ für SQL Server-Datenquellen (einschließlich Azure SQL-Datenbank und Azure SQL Data Warehouse).  
 
-> [AZURE.NOTE] „Open in SQL Server Data Tools“ erfordert die Installation von Visual Studio 2013 mit Update 4 und SQL Server-Tools. Zum Installieren der aktuellen Version von SQL Server Data Tools besuchen Sie [Download der neuesten SQL Server-Datatools](https://msdn.microsoft.com/library/mt204009.aspx).
+> [AZURE.NOTE] „Open in SQL Server Data Tools“ erfordert die Installation von Visual Studio 2013 mit Update 4 und SQL Server-Tools. Zum Installieren der aktuellen Version von SQL Server Data Tools gehen Sie zu [Download der neuesten SQL Server-Datatools](https://msdn.microsoft.com/library/mt204009.aspx).
 
 ## Neuerungen in der Version der Woche ab dem 22. Januar 2016
 
@@ -225,4 +235,4 @@ In der Woche ab dem 21. August 2015 wurden Azure Data Catalog folgende Funktione
 - Nur Standard Edition: Beim Hinzufügen von Besitzern zu Datenbeständen unterstützt Azure Data Catalog jetzt sowohl Benutzerkonten als auch Sicherheitsgruppen als Besitzer. Um eine Sicherheitsgruppe als Besitzer für ausgewählte Datenasset hinzuzufügen, können Sie entweder den Anzeigenamen der Gruppe oder die UPN-E-Mail-Adresse der Gruppe (sofern vorhanden) eingeben.
 - Unterstützung für Datenquellen in Azure Blob Storage. Benutzer können nun Azure Storage-Blobs und -Verzeichnisse registrieren und ermitteln.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

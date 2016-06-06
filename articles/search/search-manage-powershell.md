@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="powershell" 
-	ms.date="03/08/2016" 
+	ms.date="05/23/2016" 
 	ms.author="seasa"/>
 
 # Verwalten des Azure Search-Diensts mit PowerShell
@@ -27,7 +27,7 @@ In diesem Thema werden die PowerShell-Befehle zur Durchführung vieler Verwaltun
 
 ## Voraussetzungen
  
-- Azure PowerShell 1.0 oder höher muss installiert sein. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+- Azure PowerShell 1.0 oder höher muss installiert sein. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 - Sie müssen in PowerShell wie im Folgenden beschrieben bei Ihrem Azure-Abonnement angemeldet sein.
 
 Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
@@ -103,6 +103,9 @@ Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden 
 		-ResourceName $serviceName `
 		-ApiVersion 2015-08-19 `
 		-Action $queryKeyDescription).Key
+	
+	# View your query key
+	$queryKey
 
 	# Delete query key
 	Remove-AzureRmResource `
@@ -126,7 +129,7 @@ Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden 
 	
 Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen: Erstellen eines [Index](search-what-is-an-index.md), [Abfragen eines Index](search-query-overview.md) und schließlich Erstellen und Verwalten von eigenen Suchanwendungen, die Azure Search verwendet.
 
-- [Erstellen eines Azure Search-Index im Azure-Portal](search-create-index-portal.md)
+- [Erstellen eines Azure Search-Index im Azure-Portal](search-create-index-portal.md)
 
 - [Abfragen eines Azure Search-Index per Suchexplorer im Azure-Portal](search-explorer.md)
 
@@ -136,4 +139,4 @@ Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen
 
 - [Analysieren Ihres Azure Search-Datenverkehrs](search-traffic-analytics.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

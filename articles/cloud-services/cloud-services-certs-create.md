@@ -57,10 +57,15 @@ Es gibt zwei einfache Möglichkeiten zum Erstellen eines Zertifikats unter Windo
 
 ### makecert.exe
 
-Dieses Dienstprogramm wird mit Visual Studio 2013/2015 installiert. Es handelt sich um ein Konsolendienstprogramm, mit dem Sie Zertifikate erstellen und installieren können. Wenn Sie die Verknüpfung **Developer-Eingabeaufforderung für VS2015** starten, die bei der Installation von Visual Studio erstellt wird, wird eine Eingabeaufforderung angezeigt, in der dieses Tool im Pfad angegeben ist.
+Dieses Hilfsprogramm ist veraltet und wird hier nicht länger beschrieben. Weitere Informationen hierzu finden Sie in [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa386968).
 
-    makecert -sky exchange -r -n "CN=[CertificateName]" -pe -a sha1 -len 2048 -ss My -sv [CertificateName].pvk [CertificateName].cer
+### PowerShell
 
+```
+$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
+$password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
+```
 
 ### Internetinformationsdienste (IIS)
 
@@ -80,4 +85,4 @@ Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in
 
 >[AZURE.NOTE] Im Azure-Portal erfolgt der Zugriff auf die API nicht über Verwaltungszertifikate, sondern über Benutzerkonten.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

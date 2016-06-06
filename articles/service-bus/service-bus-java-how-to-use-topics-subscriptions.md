@@ -22,7 +22,51 @@
 
 In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure-SDK für Java][]. Die behandelten Szenarien umfassen das **Erstellen von Themen und Abonnements**, das **Erstellen von Abonnementfiltern**, das **Senden von Nachrichten an ein Thema**, das **Empfangen von Nachrichten von einem Abonnement** und das **Löschen von Themen und Abonnements**.
 
-[AZURE.INCLUDE [service-bus-java-how-to-create-topic](../../includes/service-bus-java-how-to-create-topic.md)]
+## Was sind Service Bus-Themen und -Abonnements?
+
+Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommunikation über das *Veröffentlichen/Abonnieren*. Bei der Verwendung von Themen und Abonnements kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über ein Thema aus, das als Zwischenstufe fungiert.
+
+![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
+
+Anders als bei Service Bus-Warteschlangen, bei denen jede Nachricht von einem einzelnen Consumer verarbeitet wird, bieten Themen und Abonnements eine 1:n-Kommunikationsform mit einem Veröffentlichungs- und Abonnementsmuster. Es ist möglich, mehrere Abonnements zu einem Thema anzumelden. Wenn eine Nachricht an ein Thema gesendet wird, steht sie in jedem Abonnement zur Verfügung, wo sie unabhängig von den anderen Abonnements verarbeitet wird.
+
+Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nachrichten enthält, die an das Thema gesendet wurden. Sie können optional auch Filterregeln für einzelne Abonnements eines Themas anmelden. Auf diese Weise können Sie filtern/einschränken, welche Nachrichten an ein Thema von welchen Themenabonnements empfangen werden.
+
+Mit Service Bus-Themen und -Abonnements können Sie sehr viele Nachrichten an sehr viele Benutzer und Anwendungen verarbeiten.
+
+## Erstellen eines Dienstnamespaces
+
+Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
+
+So erstellen Sie einen Namespace
+
+1.  Melden Sie sich beim [klassischen Azure-Portal][] an.
+
+2.  Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
+
+3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**. ![][0]
+
+4.  Geben Sie im Dialogfeld **Add a new namespace** einen Namen für den Namespace ein. Das System prüft sofort, ob dieser Name verfügbar ist.![][2]
+
+5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der Sie Ihre Rechnerressourcen bereitstellen.)
+
+	WICHTIG: Wählen Sie **dieselbe Region**, in der Sie auch Ihre Anwendung einsetzen möchten. Dies sorgt für die beste Leistung.
+
+6. 	Übernehmen Sie für die übrigen Felder im Dialogfeld die Standardwerte (**Messaging** und **Standardstufe**), und klicken Sie anschließend auf das Häkchen. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
+
+## Abrufen der Standard-Anmeldeinformationen für den Namespace
+
+Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung eines Themas oder Abonnements im neuen Namespace, müssen Sie die Anmeldeinformationen für den Namespace abrufen. Diese Anmeldeinformation erhalten Sie im Portal.
+
+### So rufen Sie die Anmeldeinformationen im Verwaltungsportal ab
+
+1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste der verfügbaren Namespaces anzuzeigen: ![][0]
+
+2.  Klicken Sie in der angezeigten Liste auf den Namespace, den Sie gerade erstellt haben: ![][3]
+
+3.  Klicken Sie auf **Konfigurieren**, um die Richtlinien für den gemeinsamen Zugriff auf Ihren Namespace anzuzeigen. ![](./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-14.png)
+
+4.  Notieren Sie den Primärschlüssel oder kopieren Sie ihn in die Zwischenablage.
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 
@@ -67,7 +111,7 @@ Die **ServiceBusService**-Klasse enthält Methoden zum Erstellen, Aufzählen und
 		System.exit(-1);
 	}
 
-Mit den Methoden in **TopicInfo** können die Eigenschaften des Themas (z.B. der Standardwert für die Gültigkeitsdauer (Time To Live, TTL) dahingehend eingerichtet werden, dass er auf an das Thema gesendete Nachrichten angewendet wird). Das folgende Beispiel zeigt, wie ein Thema mit der Bezeichnung `TestTopic` mit einer maximalen Größe von 5 GB erstellt wird:
+Mit den Methoden in **TopicInfo** können die Eigenschaften des Themas (z.B. der Standardwert für die Gültigkeitsdauer [Time To Live, TTL] dahingehend eingerichtet werden, dass er auf an das Thema gesendete Nachrichten angewendet wird). Das folgende Beispiel zeigt, wie ein Thema mit der Bezeichnung `TestTopic` mit einer maximalen Größe von 5 GB erstellt wird:
 
     long maxSizeInMegabytes = 5120;  
 	TopicInfo topicInfo = new TopicInfo("TestTopic");  
@@ -146,7 +190,7 @@ service.sendTopicMessage("TestTopic", message);
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 MB (der Header, der die standardmäßigen und die benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 MB haben). Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## Empfangen von Nachrichten aus einem Abonnement
 
@@ -245,5 +289,9 @@ Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind,
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+  
+  [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
+  [2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
+  [3]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-09.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Upgrade auf Version 1.1 des Azure Search .NET SDK | Microsoft Azure | Gehosteter Cloudsuchdienst"
-   description="Upgrade auf Version 1.1 des Azure Search .NET SDK"
+   pageTitle="Upgrade auf Version 1.1 des Azure Search .NET SDK | Microsoft Azure | Gehosteter Cloudsuchdienst"
+   description="Upgrade auf Version 1.1 des Azure Search .NET SDK"
    services="search"
    documentationCenter=""
    authors="brjohnstmsft"
@@ -13,21 +13,21 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="03/09/2016"
+   ms.date="05/18/2016"
    ms.author="brjohnst"/>
 
-# Upgrade auf Version 1.1 des Azure Search .NET SDK
+# Upgrade auf Version 1.1 des Azure Search .NET SDK
 
-Wenn Sie die Version 1.0.2-preview oder eine frühere Version des [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die erste allgemein verfügbare Version 1.1.
+Wenn Sie die Version 1.0.2-preview oder eine frühere Version des [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die erste allgemein verfügbare Version 1.1.
 
 Eine allgemeinere exemplarische Vorgehensweise für das SDK sowie Beispiele finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
-Azure Search .NET SDK Version 1.1 enthält mehrere wichtige Änderungen gegenüber Versionen vor 1.0.0-preview (dies schließt Versionen 0.13.0-preview und älter ein). Dabei handelt es sich hauptsächlich um kleinere Änderungen, sodass zum Ändern Ihres Codes nur ein geringer Aufwand erforderlich sein sollte. Anweisungen zum Ändern Ihres Codes, um die neue SDK-Version zu verwenden, finden Sie unter [Schritte zum Upgrade](#UpgradeSteps).
+Azure Search .NET SDK Version 1.1 enthält mehrere wichtige Änderungen gegenüber Versionen vor 1.0.0-preview (dies schließt Versionen 0.13.0-preview und älter ein). Dabei handelt es sich hauptsächlich um kleinere Änderungen, sodass zum Ändern Ihres Codes nur ein geringer Aufwand erforderlich sein sollte. Anweisungen zum Ändern Ihres Codes, um die neue SDK-Version zu verwenden, finden Sie unter [Schritte zum Upgrade](#UpgradeSteps).
 
 <a name="WhatsNew"></a>
-## Neuerungen in Version 1.1
+## Neuerungen in Version 1.1
 
-Für Version 1.1 gilt dieselbe REST-API-Version wie für ältere Versionen des Azure Search .NET SDK (2015-02-28), daher gibt es keine neuen Dienstfeatures in dieser Version. Es gibt jedoch einige neue clientseitige Serialisierungsfeatures.
+Für Version 1.1 gilt dieselbe REST-API-Version wie für ältere Versionen des Azure Search .NET SDK (2015-02-28), daher gibt es keine neuen Dienstfeatures in dieser Version. Es gibt jedoch einige neue clientseitige Serialisierungsfeatures.
 
 Das SDK verwendet JSON.NET zum Serialisieren und Deserialisieren von Dokumenten. Die neue Version des SDK unterstützt die benutzerdefinierte Serialisierung über `JsonConverter` und `IContractResolver`. (Weitere Einzelheiten finden Sie in der [JSON.NET-Dokumentation](http://www.newtonsoft.com/json/help/html/Introduction.htm).) Dies kann nützlich sein, wenn Sie eine vorhandene Modellklasse aus der Anwendung für die Verwendung mit Azure Search und andere fortgeschrittenere Szenarien anpassen möchten. Bei einer benutzerdefinierten Serialisierung bieten sich zum Beispiel folgende Möglichkeiten:
 
@@ -55,14 +55,14 @@ Wenn Sie zuvor Version 0.13.0-preview oder älter verwendet haben, sollten Erste
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-Der nächste Schritt besteht darin, die Buildfehler einzeln zu beheben. Für die meisten müssen einige Klassen- und Methodennamen geändert werden, die im SDK umbenannt wurden. [Liste mit wichtigen Änderungen in Version 1.1](#ListOfChanges) enthält eine Liste mit diesen Namensänderungen.
+Der nächste Schritt besteht darin, die Buildfehler einzeln zu beheben. Für die meisten müssen einige Klassen- und Methodennamen geändert werden, die im SDK umbenannt wurden. [Liste mit wichtigen Änderungen in Version 1.1](#ListOfChanges) enthält eine Liste mit diesen Namensänderungen.
 
-Wenn Sie benutzerdefinierte Klassen zum Modellieren von Dokumenten verwenden und diese Klassen Eigenschaften mit primitiven Datentypen umfassen, die keine NULL-Werte zulassen (z. B. `int` oder `bool` in C#), gibt es in der Version 1.1 des SDK eine Programmfehlerbehebung, die Sie kennen sollten. Weitere Details finden Sie unter [Fehlerbehebungen in Version 1.1](#BugFixes).
+Wenn Sie benutzerdefinierte Klassen zum Modellieren von Dokumenten verwenden und diese Klassen Eigenschaften mit primitiven Datentypen umfassen, die keine NULL-Werte zulassen (z. B. `int` oder `bool` in C#), gibt es in der Version 1.1 des SDK eine Programmfehlerbehebung, die Sie kennen sollten. Weitere Details finden Sie unter [Fehlerbehebungen in Version 1.1](#BugFixes).
 
-Sobald Sie alle Buildfehler behoben haben, können Sie Änderungen an Ihrer Anwendung vornehmen, um nach Bedarf die neue Funktionalität zu nutzen. Das benutzerdefinierte Serialisierungsfeature im neuen SDK wird unter [Neuerungen in Version 1.1](#WhatsNew) ausführlich beschrieben.
+Sobald Sie alle Buildfehler behoben haben, können Sie Änderungen an Ihrer Anwendung vornehmen, um nach Bedarf die neue Funktionalität zu nutzen. Das benutzerdefinierte Serialisierungsfeature im neuen SDK wird unter [Neuerungen in Version 1.1](#WhatsNew) ausführlich beschrieben.
 
 <a name="ListOfChanges"></a>
-## Liste mit wichtigen Änderungen in Version 1.1
+## Liste mit wichtigen Änderungen in Version 1.1
 
 Die folgende Liste ist nach der Wahrscheinlichkeit sortiert, dass die Änderung sich auf den Anwendungscode auswirkt.
 
@@ -116,7 +116,7 @@ Zum Beheben von Buildfehlern können Sie diesen Code folgendermaßen ändern:
 <a name="OperationMethodChanges"></a>
 ### Änderungen an der Vorgangsmethode
 
-Jeder Vorgang im Azure Search .NET SDK wird als eine Reihe von Methodenüberladungen für synchrone und asynchrone Aufrufer verfügbar gemacht. Die Signaturen und die Faktorisierung dieser Methodenüberladungen wurden in der Version 1.1 geändert.
+Jeder Vorgang im Azure Search .NET SDK wird als eine Reihe von Methodenüberladungen für synchrone und asynchrone Aufrufer verfügbar gemacht. Die Signaturen und die Faktorisierung dieser Methodenüberladungen wurden in der Version 1.1 geändert.
 
 Durch den Vorgang „Indexstatistiken abrufen“ in älteren Versionen des SDK wurden beispielsweise folgende Signaturen verfügbar gemacht:
 
@@ -139,7 +139,7 @@ In `IndexOperationsExtensions`:
         this IIndexOperations operations,
         string indexName);
 
-Die Methodensignaturen für denselben Vorgang sehen in Version 1.1 folgendermaßen aus:
+Die Methodensignaturen für denselben Vorgang sehen in Version 1.1 folgendermaßen aus:
 
 In `IIndexesOperations`:
 
@@ -165,7 +165,7 @@ In `IndexesOperationsExtensions`:
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-Ab Version 1.1 werden Vorgangsmethoden in Azure Search .NET SDK anders organisiert:
+Ab Version 1.1 werden Vorgangsmethoden in Azure Search .NET SDK anders organisiert:
 
  - Optionale Parameter werden jetzt als Standardparameter statt als zusätzliche Methodenüberladungen modelliert. Dadurch verringert sich die Anzahl an Methodenüberladungen zum Teil erheblich.
  - Bei den Erweiterungsmethoden werden jetzt viele irrelevante HTTP-Details für den Aufrufer ausgeblendet. Ältere Versionen des SDK gaben zum Beispiel ein Antwortobjekt mit einem HTTP-Statuscode zurück, den Sie häufig nicht überprüfen mussten, weil Vorgangsmethoden für jeden Statuscode, der einen Fehler angibt, `CloudException` auslösen. Die neuen Erweiterungsmethoden geben nur Modellobjekte zurück, sodass Sie sie nicht extra in Ihrem Code entpacken müssen.
@@ -181,7 +181,7 @@ Angenommen, Sie verwenden folgenden Code:
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
-    sp.ScoringParameters = new[] { "featuredParam:featured", "mapCenterParam:" + lon + "," + lat };
+    sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
 
 Zum Beheben von Buildfehlern können Sie diesen Code folgendermaßen ändern:
 
@@ -190,7 +190,7 @@ Zum Beheben von Buildfehlern können Sie diesen Code folgendermaßen ändern:
     sp.ScoringParameters =
         new[]
         {
-            new ScoringParameter("featuredParam", "featured"),
+            new ScoringParameter("featuredParam", new[] { "featured" }),
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
@@ -349,21 +349,21 @@ Die Schnittstellennamen der Vorgangsgruppen wurden alle geändert und stimmen je
 Diese Änderung wird sich wahrscheinlich nicht auf Ihren Code auswirken, es sei denn, Sie haben Modelle dieser Schnittstellen zu Testzwecken erstellt.
 
 <a name="BugFixes"></a>
-## Fehlerbehebungen in Version 1.1
+## Fehlerbehebungen in Version 1.1
 
 In älteren Versionen des Azure Search .NET SDK lag ein Fehler in Bezug auf die Serialisierung benutzerdefinierter Modellklassen vor. Der Fehler konnte auftreten, wenn Sie eine benutzerdefinierte Modellklasse mit einer Eigenschaft erstellt haben, deren Typ keine NULL-Werte zuließ.
 
 ### Schritte zum Reproduzieren
 
-Erstellen Sie eine benutzerdefinierte Modellklasse mit einer Eigenschaft, deren Typ keine NULL-Werte zulässt. Fügen Sie z. B. eine öffentliche `UnitCount`-Eigenschaft vom Typ `int` anstelle von `int?` hinzu.
+Erstellen Sie eine benutzerdefinierte Modellklasse mit einer Eigenschaft, deren Typ keine NULL-Werte zulässt. Fügen Sie z. B. eine öffentliche `UnitCount`-Eigenschaft vom Typ `int` anstelle von `int?` hinzu.
 
-Wenn Sie ein Dokument mit dem Standardwert dieses Typs indizieren (z. B. 0 für `int`), lautet das Feld in Azure Search NULL. Wenn Sie anschließend nach diesem Dokument suchen, gibt der `Search`-Aufruf `JsonSerializationException` mit der Begründung aus, dass `null` nicht in `int` konvertiert werden kann.
+Wenn Sie ein Dokument mit dem Standardwert dieses Typs indizieren (z. B. 0 für `int`), lautet das Feld in Azure Search NULL. Wenn Sie anschließend nach diesem Dokument suchen, gibt der `Search`-Aufruf `JsonSerializationException` mit der Begründung aus, dass `null` nicht in `int` konvertiert werden kann.
 
 Filter funktionieren möglicherweise auch nicht wie erwartet, da anstelle des gewünschten Werts NULL in den Index geschrieben wurde.
 
 ### Details zur Korrektur
 
-Wir haben dieses Problem in Version 1.1 des SDK behoben. Wenn Sie jetzt eine Modellklasse wie die folgende verwenden:
+Wir haben dieses Problem in Version 1.1 des SDK behoben. Wenn Sie jetzt eine Modellklasse wie die folgende verwenden:
 
     public class Model
     {
@@ -372,7 +372,7 @@ Wir haben dieses Problem in Version 1.1 des SDK behoben. Wenn Sie jetzt eine Mod
         public int IntValue { get; set; }
     }
 
-und `IntValue` auf 0 setzen, wird dieser Wert jetzt bei der Übertragung richtig als 0 serialisiert und auch als 0 im Index gespeichert. Auch der Roundtrip funktioniert erwartungsgemäß.
+und `IntValue` auf 0 setzen, wird dieser Wert jetzt bei der Übertragung richtig als 0 serialisiert und auch als 0 im Index gespeichert. Auch der Roundtrip funktioniert erwartungsgemäß.
 
 Bei diesem Ansatz gibt es ein potenzielles Problem, das Sie beachten sollten: Wenn Sie einen Modelltyp mit einer Eigenschaft verwenden, die keine NULL-Werte zulässt, müssen Sie **garantieren**, dass keine Dokumente im Index für das entsprechende Wert einen NULL-Wert enthalten. Weder das SDK noch die Azure Search-REST-API hilft Ihnen, dies durchzusetzen.
 
@@ -391,4 +391,4 @@ Wir freuen uns auf Ihr Feedback zum SDK! Wenn Probleme auftreten, können Sie si
 
 Vielen Dank für die Nutzung von Azure Search!
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -539,7 +539,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     2.  Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
 
-    3.  Geben Sie die ID des Pools für die **poolName** -Eigenschaft ein**.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**. ** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
     4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
     
@@ -834,7 +834,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
     **Hinweis:** Wenn Sie die Ausgabedatei 2015-11-16-01.txt nicht gelöscht haben, bevor Sie es mit 5 Eingabedateien versuchen, sehen Sie eine Zeile aus der vorherigen Sliceausführung und fünf Zeilen aus der aktuellen Sliceausführung. Der Inhalt wird standardmäßig an die Ausgabedatei angefügt, wenn sie bereits vorhanden ist.
 
-### Debuggen der Pipeline
+## Debuggen der Pipeline
 
 Das Debuggen umfasst einige grundlegende Verfahren:
 
@@ -877,6 +877,9 @@ Das Debuggen umfasst einige grundlegende Verfahren:
     ![](./media/data-factory-data-processing-using-batch/image21.png)
 
     **Hinweis:** sehen Sie einen **Container** im Azure Blob-Speicher **adfjobs**. Dieser Container wird nicht automatisch gelöscht, jedoch können Sie ihn nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Azure Batch-**Auftrag** mit dem Namen: **adf-< Pool-ID/Name>:job-0000000001**. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.
+7. Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er während der Laufzeit nicht. Die bewährte Methode bei der Verwendung von Azure Batch ist die Aufbewahrung aller geheimen Schlüssel in **Azure KeyVault**, die Verwendung eines zertifikatsbasierten Dienstprinzipals zum Schützen des Schlüsseltresors und die Verteilung des Zertifikats an Azure Batch-Pool. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
+
+	Es existiert eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Verbindungszeichenfolgen-Einstellungen erstellen, ein den verknüpften Dienst verwendendes Dataset erstellen und das Dataset als Dummyeingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
 
 ### Erweitern des Beispiels
 
@@ -937,4 +940,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="05/20/2016"
 	ms.author="jeffstok" />
 
 
@@ -59,8 +59,14 @@ So erstellen Sie ein Event Hub
 
 Wir haben eine Clientanwendung bereitgestellt, die Beispielmetadaten für eingehende Anrufe generiert und diese per Push an den Event Hub übermittelt. Gehen Sie folgendermaßen vor, um diese Anwendung einzurichten.
 
-1.	Herunterladen der Datei [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)
+1.	Herunterladen der Datei [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) Entzippen Sie sie anschließend in ein Verzeichnis.
+
+    **Hinweis**: Windows blockiert möglicherweise die heruntergeladene ZIP-Datei. Klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie „Eigenschaften“. Wenn die Meldung „Die Datei stammt von einem anderen Computer. Der Zugriff wurde aus Sicherheitsgründen eventuell blockiert.“ angezeigt wird, aktivieren Sie das Feld „Nicht mehr blockieren“, und klicken Sie für die ZIP-Datei auf „Übernehmen“.
+
 2.	Ersetzen Sie die Werte „Microsoft.ServiceBus.ConnectionString“ und „EventHubName“ in **telcodatagen.exe.config** durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs.
+
+    **Hinweis:** Die im Azure-Portal kopierte Verbindungszeichenfolge stellt den Namen der Verbindung ans Ende. Entfernen Sie „;EntityPath=<value>“ aus dem Feld „add key=“.
+
 3.	Starten Sie die Anwendung. Die Nutzung lautet wie folgt:
 
    telcodatagen.exe [#NumCDRsPerHour] [SIM-Kartenbetrugswahrscheinlichkeit] [#DurationHours]
@@ -129,7 +135,7 @@ Nun, da wir einen Datenstrom von Telekommunikationsereignissen haben, können wi
 Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell zum Beschreiben der Transformationen für Echtzeitverarbeitung. Weitere Informationen zur Sprache finden Sie in der [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/dn834998.aspx) (in englischer Sprache). Dieses Tutorial hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Ihren Anrufdatenstrom in Echtzeit.
 
 #### Optional: Beispieleingabedaten
-Um die Abfrage mit den tatsächlichen Auftragsdaten zu überprüfen, können Sie die **Beispieldaten**-Funktion verwenden, um Ereignisse aus Ihrem Datenstrom zu extrahieren und eine JSON-Datei der Ereignisse zum Testen zu erstellen. Die folgenden Schritte veranschaulichen die Vorgehensweise. Zudem finden Sie die Beispieldatei [telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) für Testzwecke.
+Um die Abfrage mit den tatsächlichen Auftragsdaten zu überprüfen, können Sie die **Beispieldaten**-Funktion verwenden, um Ereignisse aus Ihrem Datenstrom zu extrahieren und eine JSON-Datei der Ereignisse zum Testen zu erstellen. Die folgenden Schritte veranschaulichen die Vorgehensweise. Zudem haben wir die Beispieldatei [telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) für Testzwecke bereitgestellt.
 
 1.	Wählen Sie Ihre Event Hub-Eingabe aus, und klicken Sie am unteren Seitenrand auf **Beispieldaten**.
 2.	Geben Sie im daraufhin angezeigten Dialogfeld eine **Startzeit** für das Sammeln der Daten und die **Dauer** ein, während der zusätzliche Daten verarbeitet werden sollen.
@@ -259,4 +265,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -374,7 +374,7 @@ Sie können den folgenden Befehl ausführen, um Entitäten mithilfe der Manifest
 
 ### Nur Daten kopieren, die im Ziel nicht vorhanden sind.
 
-Die Parameter `/XO` und `/XN` erlauben Ihnen, jeweils ältere oder neuere Quellressourcen vom Kopieren auszuschließen. Falls Sie nur Quellressourcen kopieren wollen, die im Ziel nicht existieren, können Sie beide Parameter im AzCopy-Befehl angeben.
+Die Parameter `/XO` und `/XN` erlauben Ihnen, jeweils ältere oder neuere Quellressourcen vom Kopieren auszuschließen. Dies wird nicht unterstützt, wenn es sich bei Quelle oder Ziel um eine Tabelle handelt. Falls Sie nur Quellressourcen kopieren wollen, die im Ziel nicht existieren, können Sie beide Parameter im AzCopy-Befehl angeben.
 
 	/Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /XO /XN
 
@@ -864,4 +864,4 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 - [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

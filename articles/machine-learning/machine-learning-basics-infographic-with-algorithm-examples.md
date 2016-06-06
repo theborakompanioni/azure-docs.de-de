@@ -20,17 +20,17 @@
 
 # Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen
 
-Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen des maschinellen Lernens herunter, um die gängigen Algorithmen für häufige Fragen zum maschinellen Lernen zu identifizieren. Links zu Algorithmusbeispielen helfen Einsteigern im Bereich des maschinellen Lernens beim Verständnis, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
+Laden Sie diese leicht verständliche Übersicht über die Machine Learning-Grundlagen in Form einer Infografik herunter. Lernen Sie beliebte Algorithmen kennen, die zum Beantworten gängiger Fragen zum Machine Learning genutzt werden. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
 
-## In Machine Learning Studio verfügbare, häufig verwendete Algorithmen
+## Beliebte Algorithmen in Machine Learning Studio
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) verfügt über eine große Anzahl von Algorithmen für das maschinelle Lernen, mit denen Sie Predictive Analytics-Probleme lösen können. Der nachstehende herunterladbare Infografik veranschaulicht, wie die vier Arten von Algorithmen für maschinelles Lernen – **Regression**, **Anomalieerkennung**, **Clusterbildung** und **Klassifizierung** – Ihre Fragen zum maschinellen Lernen beantworten können.
+[Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine große Bibliothek von Algorithmen für Predictive Analytics. Die Infografik zeigt beliebte Typen von Algorithmen: **Regression**, **Erkennung von Anomalien**, **Clustering** und **Klassifizierung**.
 
-Die [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) enthält viele Beispiele, die Anwendungsbeispiele für diese Algorithmen in Lösungen der realen Welt zeigen. Über eingebettete Links in der Infografik gelangen Sie zu funktionsfähigen Beispielen für die einzelnen Algorithmen.
+Die [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) zeigt, wie diese Algorithmen in praktischen Lösungen zum Einsatz kommen. Folgen Sie den Links in der Infografik, um funktionierende Beispiele anzuzeigen.
 
-## Infografik zu Grundlagen des maschinellen Lernens herunterladen
+## Die Infografik mit Algorithmusbeispielen herunterladen
 
-**[Download: Infografik zu Grundlagen des maschinellen Lernens mit Links zu Algorithmusbeispielen](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Herunterladen: Infografik zu Machine Learning-Grundlagen mit Links zu Algorithmusbeispielen (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 
 ![Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Häufig verwendete Algorithmen. Maschinelles Lernen für Einsteiger.](./media/machine-learning-basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
@@ -52,4 +52,4 @@ Die [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) ent
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

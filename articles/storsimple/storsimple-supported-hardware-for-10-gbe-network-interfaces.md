@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/26/2016"
+   ms.date="05/25/2016"
    ms.author="alkohli" />
 
 # Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
@@ -130,4 +130,4 @@ Die folgende Tabelle enthält die Switches, die von Mellanox unterstützt werden
 
 Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](storsimple-monitor-hardware-status.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0525_2016-->

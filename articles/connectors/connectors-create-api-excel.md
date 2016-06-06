@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der Excel-API zu PowerApps Enterprise | Microsoft Azure"
-description="Übersicht über die Excel-API und REST-API-Parameter"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Hinzufügen des Excel-Connectors zu PowerApps Enterprise | Microsoft Azure"
+description="Übersicht über den Excel-Connector mit REST-API-Parametern"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,20 +14,20 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/25/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Excel-API
+# Erste Schritte mit dem Excel-Connector
 
-Stelen Sie eine Verbindung mit Excel her, um eine Zeile einzufügen, eine Zeile zu löschen und mehr. Die Excel-API kann in Folgendem verwendet werden:
+Stelen Sie eine Verbindung mit Excel her, um eine Zeile einzufügen, eine Zeile zu löschen und mehr. Der Excel-Connector kann verwendet werden in:
 
 - PowerApps
 
 Mit Excel können Sie folgende Aktionen ausführen:
 
-- Fügen Sie PowerApps Enterprise die Excel-API hinzu. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
+- Fügen Sie den Excel-Connector in PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 ## Trigger und Aktionen
 Excel bietet die folgenden Aktionen. Es gibt keine Trigger.
@@ -36,7 +36,7 @@ Excel bietet die folgenden Aktionen. Es gibt keine Trigger.
 |--- | ---|
 |Keine | <ul><li>Zeilen abrufen</li><li>Zeile einfügen</li><li>Zeile löschen</li><li>Zeile abrufen</li><li>Tabellen abrufen</li><li>Zeile aktualisieren</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Swagger-REST-API – Referenz
 Gilt für Version: 1.0.
@@ -58,7 +58,7 @@ Gilt für Version: 1.0.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -80,7 +80,7 @@ Gilt für Version: 1.0.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -102,7 +102,7 @@ Gilt für Version: 1.0.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -125,7 +125,7 @@ Gilt für Version: 1.0.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -143,7 +143,7 @@ Gilt für Version: 1.0.
 
 | Name | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -153,7 +153,7 @@ Gilt für Version: 1.0.
 
 | Name | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -208,4 +208,4 @@ Gilt für Version: 1.0.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erstellen einer PowerApp](../power-apps/powerapps-get-started-azure-portal.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

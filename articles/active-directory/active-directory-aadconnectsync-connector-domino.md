@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/20/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell"/>
 
 # Technische Referenz für den Lotus Domino-Connector
@@ -32,12 +32,12 @@ Der Lotus Domino-Connector ermöglicht die Integration des Synchronisierungsdie
 
 Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen Connectorversion unterstützten Features:
 
-| Funktion | Support |
-| --- | --- |
-| Verbundene Datenquelle | Server: <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>Client:<li>Lotus Notes 9.x</li> |
-| Szenarios | <li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li> |
-| Vorgänge | <li>Vollständiger Import und Deltaimport</li><li>Export</li><li>Kennwort auf HTTP-Kennwort festlegen und ändern</li> |
-| Schema | <li>Person (Roamingbenutzer, Kontakt (Person ohne Zertifikat))</li><li>Gruppe</li><li>Ressource (Ressource, Raum, Onlinebesprechung)</li><li>Mail-In-Datenbank</li><li>Dynamische Ermittlung von Attributen für unterstützte Objekte</li> |
+Funktion | Support
+--- | ---
+Verbundene Datenquelle | Server: <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>Client:<li>Lotus Notes 9.x</li>
+Szenarios | <li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li>
+Vorgänge | <li>Vollständiger Import und Deltaimport</li><li>Export</li><li>Kennwort auf HTTP-Kennwort festlegen und ändern</li>
+Schema | <li>Person (Roamingbenutzer, Kontakt (Person ohne Zertifikat))</li><li>Gruppe</li><li>Ressource (Ressource, Raum, Onlinebesprechung)</li><li>Mail-In-Datenbank</li><li>Dynamische Ermittlung von Attributen für unterstützte Objekte</li>
 
 Der Lotus Domino-Connector nutzt für die Kommunikation mit dem Lotus Domino-Server den Lotus Notes-Client. Daher muss auf dem Synchronisierungsserver ein unterstützter Lotus Notes-Client installiert sein. Die Kommunikation zwischen Client und Server wird über die .NET-Interop-Schnittstelle für Lotus Notes (Interop.domino.dll) implementiert. Diese Schnittstelle ermöglicht die Kommunikation zwischen der Microsoft-.NET-Plattform und dem Lotus Notes-Client und unterstützt den Zugriff auf Lotus Domino-Dokumente und -Sichten. Abhängig von der ausgewählten Deltaimportmethode kann für den Deltaimport ggf. auch die systemeigene C++-Schnittstelle verwendet werden.
 
@@ -59,10 +59,10 @@ Zum Ausführen der unterstützten Vorgänge des Lotus Domino-Connectors müssen
 
 Die folgende Tabelle gibt Aufschluss über die erforderlichen Berechtigungen für die einzelnen Vorgänge:
 
-| Vorgang | Zugriffsrechte |
-| --- | --- |
-| Importieren | <li>Öffentliche Dokumente lesen</li><li> Administrator mit Vollzugriff (Als Administrator mit Vollzugriff haben Sie automatisch effektiven Zugriff in der ACL.)</li> |
-| Exportieren und Kennwort festlegen | Effektiver Zugriff: <li>Dokumente erstellen</li><li>Dokumente löschen</li><li>Öffentliche Dokumente lesen</li><li>Öffentliche Dokumente schreiben</li><li>Dokumente replizieren oder kopieren</li>Für Exportvorgänge müssen zudem folgende Rollen zugewiesen werden: <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |
+Vorgang | Zugriffsrechte
+--- | ---
+Importieren | <li>Öffentliche Dokumente lesen</li><li> Administrator mit Vollzugriff (Als Administrator mit Vollzugriff haben Sie automatisch effektiven Zugriff in der ACL.)</li>
+Exportieren und Kennwort festlegen | Effektiver Zugriff: <li>Dokumente erstellen</li><li>Dokumente löschen</li><li>Öffentliche Dokumente lesen</li><li>Öffentliche Dokumente schreiben</li><li>Dokumente replizieren oder kopieren</li>Für Exportvorgänge müssen zudem folgende Rollen zugewiesen werden: <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li>
 
 ### Direkte Vorgänge und AdminP
 
@@ -70,21 +70,21 @@ Vorgänge werden entweder direkt oder aber über den AdminP-Prozess an das Domin
 
 **Primäres Adressbuch**
 
-| Objekt | Erstellen | Aktualisieren | Löschen |
-| --- | --- | --- | --- |
-| Person | AdminP | Direkt | AdminP |
-| Gruppe | AdminP | Direkt | AdminP |
-| Mail-In-Datenbank | Direkt | Direkt | Direkt |
-| Ressource | AdminP | Direkt | AdminP |
+Objekt | Erstellen | Aktualisieren | Löschen
+--- | --- | --- | ---
+Person | AdminP | Direkt | AdminP
+Gruppe | AdminP | Direkt | AdminP
+Mail-In-Datenbank | Direkt | Direkt | Direkt
+Ressource | AdminP | Direkt | AdminP
 
 **Sekundäres Adressbuch**
 
-| Objekt | Erstellen | Aktualisieren | Löschen |
-| --- | --- | --- | --- |
-| Person | – | Direkt | Direkt |
-| Gruppe | Direkt | Direkt | Direkt |
-| Mail-In-Datenbank | Direkt | Direkt | Direkt |
-| Ressource | – | – | – |
+Objekt | Erstellen | Aktualisieren | Löschen
+--- | --- | --- | ---
+Person | – | Direkt | Direkt
+Gruppe | Direkt | Direkt | Direkt
+Mail-In-Datenbank | Direkt | Direkt | Direkt
+Ressource | – | – | –
 
 Beim Erstellen einer Ressource wird ein Notes-Dokument erstellt. Analog dazu wird beim Löschen einer Ressource auch das Notes-Dokument gelöscht.
 
@@ -327,11 +327,11 @@ Alle diese Vorgänge werden in Lotus Domino ausgeführt und anschließend in den
 
 Eine Ressource ist eine andere Art von Datenbank in Lotus Domino. Bei Ressourcen kann es sich etwa um Konferenzräume mit unterschiedlichen Arten von Ausstattung (beispielsweise Projektoren) handeln. Der Lotus Domino-Connector unterstützt Unterarten von Ressourcen. Diese werden auf der Grundlage des Ressourcentypattributs definiert:
 
-| Ressourcentyp | Ressourcentypattribut |
-| --- | --- |
-| Raum | 1 |
-| Ressource (Sonstiges) | 2 |
-| Onlinebesprechung | 3 |
+Ressourcentyp | Ressourcentypattribut
+--- | ---
+Raum | 1
+Ressource (Sonstiges) | 2
+Onlinebesprechung | 3
 
 Für die ordnungsgemäße Verwendung des Ressourcenobjekttyps ist Folgendes erforderlich:
 
@@ -409,21 +409,21 @@ Bei der Bereitstellung von Personenobjekten für Ihr Lotus Domino-Verzeichnis b
 
 In der folgenden Tabelle werden diese Eigenschaften aufgeführt und beschrieben:
 
-| Eigenschaft | Beschreibung |
-| --- | --- |
-| \_MMS\_AltFullName | Der alternative vollständige Name des Benutzers. |
-| \_MMS\_AltFullNameLanguage | Die Sprache für die Angabe des alternativen vollständigen Namens des Benutzers. |
-| \_MMS\_CertDaysToExpire | Die Anzahl von Tagen (ab dem aktuellen Datum) bis zum Ablauf des Zertifikats. Ohne Angabe wird standardmäßig ein Datum verwendet, das vom aktuellen Datum aus zwei Jahre in der Zukunft liegt. |
-| \_MMS\_Certifier | Eigenschaft, die den Organisationshierarchienamen des Zertifizierers enthält. Beispiel: OU=OrganizationUnit,O=Org,C=Country. |
-| \_MMS\_IDPath | Ist diese Eigenschaft leer, wird auf dem Synchronisierungsserver keine lokale Benutzer-ID-Datei erstellt. Enthält die Eigenschaft einen Dateinamen, wird eine Benutzer-ID-Datei im Ordner „madata“ erstellt. Die Eigenschaft kann auch einen vollständigen Pfad enthalten, an dem die Benutzer-ID-Datei erstellt werden soll. |
-| \_MMS\_IDRegType | Personen können in Kontakte, US-Benutzer und internationale Benutzer unterteilt werden. Die folgende Tabelle enthält die möglichen Werte:<li>0: Kontakt</li><li>1: US-Benutzer</li><li>2: internationaler Benutzer</li> |
-| \_MMS\_IDStoreType | Erforderliche Eigenschaft für US-Benutzer und internationale Benutzer. Die Eigenschaft enthält einen Ganzzahlwert, der angibt, ob die Benutzer-ID als Anlage im Notes-Adressbuch oder in der Maildatei der Person gespeichert wird. Wenn es sich bei der Benutzer-ID-Datei um eine Anlage im Adressbuch handelt, kann sie optional mit „\_MMS\_IDPath“ als Datei erstellt werden.<li>Leer: Die ID-Datei wird im ID-Tresor gespeichert./Es gibt keine ID-Datei (für Kontakte).</li><li> 1: Anlage im Notes-Adressbuch. Für als Anlage verwendete Benutzer-ID-Dateien muss die Eigenschaft „\_MMS\_Password“ festgelegt werden.</li><li>2: Speichert die ID in der Maildatei der Person. „\_MMS\_UseAdminP“ muss auf „false“ festgelegt werden, damit die Maildatei bei der Registrierung der Person erstellt werden kann. Für Benutzer-ID-Dateien muss die Eigenschaft „\_MMS\_Password“ festgelegt werden.</li>
-| \_MMS\_MailQuotaSizeLimit | Die für die E-Mail-Dateidatenbank zulässige Anzahl von Megabytes. |
-| \_MMS\_MailQuotaWarningThreshold | Die Anzahl von Megabytes für die E-Mail-Dateidatenbank, bei deren Überschreitung eine Warnung ausgegeben wird. |
-| \_MMS\_MailTemplateName | Die E-Mail-Vorlagendatei, die zum Erstellen der E-Mail-Datei des Benutzers verwendet wird. Ist eine Vorlage angegeben, wird die Maildatei unter Verwendung der angegebenen Vorlage erstellt. Ist keine Vorlage angegeben, wird die Datei auf der Grundlage der Standardvorlagendatei erstellt. |
-| \_MMS\_OU | Optionale Eigenschaft zum Angeben des Namens der Organisationseinheit unter dem Zertifizierer. Bei Kontakten muss diese Eigenschaft leer sein. |
-| \_MMS\_Password | Erforderliche Eigenschaft für Benutzer. Die Eigenschaft enthält das Kennwort für die ID-Datei des Objekts. |
-| \_MMS\_UseAdminP | Legen Sie diese Eigenschaft auf „true“ fest, wenn die Maildatei durch den AdminP-Prozess auf dem Domino-Server (und damit asynchron zum Exportvorgang) erstellt werden soll. Ist die Eigenschaft auf „false“ festgelegt, wird die Maildatei mit dem Domino-Benutzer (synchron im Exportvorgang) erstellt. |
+Eigenschaft | Beschreibung
+--- | ---
+\_MMS\_AltFullName | Der alternative vollständige Name des Benutzers.
+\_MMS\_AltFullNameLanguage | Die Sprache für die Angabe des alternativen vollständigen Namens des Benutzers.
+\_MMS\_CertDaysToExpire | Die Anzahl von Tagen (ab dem aktuellen Datum) bis zum Ablauf des Zertifikats. Ohne Angabe wird standardmäßig ein Datum verwendet, das vom aktuellen Datum aus zwei Jahre in der Zukunft liegt.
+\_MMS\_Certifier | Eigenschaft, die den Organisationshierarchienamen des Zertifizierers enthält. Beispiel: OU=OrganizationUnit,O=Org,C=Country.
+\_MMS\_IDPath | Ist diese Eigenschaft leer, wird auf dem Synchronisierungsserver keine lokale Benutzer-ID-Datei erstellt. Enthält die Eigenschaft einen Dateinamen, wird eine Benutzer-ID-Datei im Ordner „madata“ erstellt. Die Eigenschaft kann auch einen vollständigen Pfad enthalten, an dem die Benutzer-ID-Datei erstellt werden soll.
+\_MMS\_IDRegType | Personen können in Kontakte, US-Benutzer und internationale Benutzer unterteilt werden. Die folgende Tabelle enthält die möglichen Werte:<li>0: Kontakt</li><li>1: US-Benutzer</li><li>2: internationaler Benutzer</li>
+\_MMS\_IDStoreType | Erforderliche Eigenschaft für US-Benutzer und internationale Benutzer. Die Eigenschaft enthält einen Ganzzahlwert, der angibt, ob die Benutzer-ID als Anlage im Notes-Adressbuch oder in der Maildatei der Person gespeichert wird. Wenn es sich bei der Benutzer-ID-Datei um eine Anlage im Adressbuch handelt, kann sie optional mit „\_MMS\_IDPath“ als Datei erstellt werden.<li>Leer: Die ID-Datei wird im ID-Tresor gespeichert./Es gibt keine ID-Datei (für Kontakte).</li><li> 1: Anlage im Notes-Adressbuch. Für als Anlage verwendete Benutzer-ID-Dateien muss die Eigenschaft „\_MMS\_Password“ festgelegt werden.</li><li>2: Speichert die ID in der Maildatei der Person. „\_MMS\_UseAdminP“ muss auf „false“ festgelegt werden, damit die Maildatei bei der Registrierung der Person erstellt werden kann. Für Benutzer-ID-Dateien muss die Eigenschaft „\_MMS\_Password“ festgelegt werden.</li>
+\_MMS\_MailQuotaSizeLimit | Die für die E-Mail-Dateidatenbank zulässige Anzahl von Megabytes.
+\_MMS\_MailQuotaWarningThreshold | Die Anzahl von Megabytes für die E-Mail-Dateidatenbank, bei deren Überschreitung eine Warnung ausgegeben wird.
+\_MMS\_MailTemplateName | Die E-Mail-Vorlagendatei, die zum Erstellen der E-Mail-Datei des Benutzers verwendet wird. Ist eine Vorlage angegeben, wird die Maildatei unter Verwendung der angegebenen Vorlage erstellt. Ist keine Vorlage angegeben, wird die Datei auf der Grundlage der Standardvorlagendatei erstellt.
+\_MMS\_OU | Optionale Eigenschaft zum Angeben des Namens der Organisationseinheit unter dem Zertifizierer. Bei Kontakten muss diese Eigenschaft leer sein.
+\_MMS\_Password | Erforderliche Eigenschaft für Benutzer. Die Eigenschaft enthält das Kennwort für die ID-Datei des Objekts.
+\_MMS\_UseAdminP | Legen Sie diese Eigenschaft auf „true“ fest, wenn die Maildatei durch den AdminP-Prozess auf dem Domino-Server (und damit asynchron zum Exportvorgang) erstellt werden soll. Ist die Eigenschaft auf „false“ festgelegt, wird die Maildatei mit dem Domino-Benutzer (synchron im Exportvorgang) erstellt.
 
 Bei einem Benutzer mit zugeordneter ID-Datei muss die Eigenschaft „\_MMS\_Password“ einen Wert enthalten. Für den E-Mail-Zugriff über den Lotus Notes-Client müssen die Eigenschaften „MailServer“ und „MailFile“ eines Benutzers einen Wert enthalten.
 
@@ -449,13 +449,13 @@ Der Lotus Domino-Connector unterstützt im Synchronisierungsdienst hauptsächli
 
 In diesem Abschnitt werden die Attribute aufgeführt, die für die einzelnen unterstützten Objekttypen erforderlich sind, um das Objekt an einen Domino-Server exportieren zu können.
 
-| Objekttyp | Erforderliche Attribute |
-| --- | --- |
-| Gruppe | <li>ListName</li> |
-| Mail-In-Datenbank | <li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
-| Person | <li>LastName</li><li>MailFile</li><li>ShortName</li><li>\_MMS\_Password</li><li>\_MMS\_IDStoreType</li><li>\_MMS\_Certifier</li><li>\_MMS\_IDRegType</li><li>\_MMS\_UseAdminP</li> |
-| Kontakt (Person ohne Zertifizierer) | <li>\_MMS\_IDRegType</li> |
-| Ressource | <li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>Site</li><li>DisplayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
+Objekttyp | Erforderliche Attribute
+--- | ---
+Gruppe | <li>ListName</li>
+Mail-In-Datenbank | <li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li>
+Person | <li>LastName</li><li>MailFile</li><li>ShortName</li><li>\_MMS\_Password</li><li>\_MMS\_IDStoreType</li><li>\_MMS\_Certifier</li><li>\_MMS\_IDRegType</li><li>\_MMS\_UseAdminP</li>
+Kontakt (Person ohne Zertifizierer) | <li>\_MMS\_IDRegType</li>
+Ressource | <li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>Site</li><li>DisplayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li>
 
 ## Allgemeine Probleme und Fragen
 
@@ -539,4 +539,4 @@ Das Schema kann in Domino auf unterschiedliche Arten erweitert werden, sodass es
 
 -	Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

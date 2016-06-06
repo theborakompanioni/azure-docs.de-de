@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="05/23/2016"
 	ms.author="emgerner"/>
 
 # Verwenden des Warteschlangenspeichers mit Python
@@ -76,7 +76,7 @@ Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Wartesc
 
 ## Ändern des Inhalts von Nachrichten in der Warteschlange
 
-Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht eine Arbeitsaufgabe darstellt, können Sie diese Funktion verwenden, um den Status der Aufgabe zu aktualisieren. Der folgende Code verwendet die **update\_message**-Methode zum Aktualisieren einer Nachricht. Das Sichtbarkeitstimeout ist auf 0 festgelegt, d. h., die Nachricht wird sofort angezeigt, und der Inhalt wird aktualisiert.
+Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht eine Arbeitsaufgabe darstellt, können Sie diese Funktion verwenden, um den Status der Aufgabe zu aktualisieren. Der folgende Code verwendet die **update\_message**-Methode zum Aktualisieren einer Nachricht. Das Sichtbarkeitstimeout ist auf 0 festgelegt, d. h., die Nachricht wird sofort angezeigt, und der Inhalt wird aktualisiert.
 
 	messages = queue_service.get_messages('taskqueue')
 	for message in messages:
@@ -107,4 +107,4 @@ Nachdem Sie sich nun mit den Grundlagen von Queue Storage vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

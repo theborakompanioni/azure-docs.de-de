@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
@@ -21,7 +21,7 @@
 
 Dieser Artikel bietet hilfreiche Anleitungen zur Behandlung von Problemen bei der Microsoft Azure StorSimple-Bereitstellung . Er beschreibt allgemeine Probleme, mögliche Ursachen und empfohlene Schritte zum Beheben von Problemen bei der StorSimple-Konfiguration. Diese Informationen gelten sowohl für lokale physische als auch für virtuelle StorSimple-Geräte.
 
-> [AZURE.NOTE]Gerätekonfigurationsbezogene Probleme können bei der ersten Bereitstellung oder im späteren Betrieb auftreten. In diesem Artikel liegt der Fokus auf der Problembehandlung bei der erstmaligen Bereitstellung. Um Probleme mit betriebsbereiten Geräten zu beheben, navigieren Sie zu [Troubleshoot operational device issues](storsimple-troubleshoot-operational-device.md) (in englischer Sprache).
+> [AZURE.NOTE] Gerätekonfigurationsbezogene Probleme können bei der ersten Bereitstellung oder im späteren Betrieb auftreten. In diesem Artikel liegt der Fokus auf der Problembehandlung bei der erstmaligen Bereitstellung. Um Probleme mit betriebsbereiten Geräten zu beheben, navigieren Sie zu [Troubleshoot operational device issues](storsimple-troubleshoot-operational-device.md) (in englischer Sprache).
 
 Dieser Artikel beschreibt weiterhin die Tools für die Problembehandlung bei StorSimple-Bereitstellungen und bietet eine schrittweise Anleitung zur Problembehandlung.
 
@@ -51,7 +51,7 @@ In den folgenden Schritten werden die Schritte des Setup-Assistenten zusammengef
   - Das Geräteadministratorkennwort wird zur Anmeldung am Gerät verwendet. Das Standardkennwort für das Gerät lautet **Password1**.
   - Das StorSimple-Momentaufnahme-Manager-Kennwort ist erforderlich, wenn Sie ein Gerät für die Verwendung mit dem StorSimple-Momentaufnahme-Manager konfigurieren. Sie müssen zunächst das Kennwort im Setup-Assistenten festlegen. Anschließend können Sie es im StorSimple-Manager-Dienst ändern und erneut festlegen. Mit diesem Kennwort wird das Gerät im StorSimple-Momentaufnahme-Manager authentifiziert.
  
-    > [AZURE.IMPORTANT]Kennwörter werden vor der Registrierung erfasst, aber erst nach erfolgreicher Registrierung des Geräts angewendet. Wenn beim Zuweisen des Kennworts ein Fehler auftritt, werden Sie aufgefordert, das Kennwort erneut anzugeben, bis die erforderlichen Kennwörter (gemäß den Komplexitätsanforderungen) erfasst wurden.
+    > [AZURE.IMPORTANT] Kennwörter werden vor der Registrierung erfasst, aber erst nach erfolgreicher Registrierung des Geräts angewendet. Wenn beim Zuweisen des Kennworts ein Fehler auftritt, werden Sie aufgefordert, das Kennwort erneut anzugeben, bis die erforderlichen Kennwörter (gemäß den Komplexitätsanforderungen) erfasst wurden.
 
 4. Registrieren des Geräts: Im letzten Schritt wird das Gerät im StorSimple-Manager-Dienst in Microsoft Azure registriert. Die Registrierung erfordert ein [Abrufen den Dienstregistrierungsschlüssels](storsimple-manage-service.md#get-the-service-registration-key) aus dem klassischen Azure-Portal sowie dessen Angabe im Setup-Assistenten. Nachdem das Gerät erfolgreich registriert wurde, wird ein Verschlüsselungsschlüssel für Dienstdaten bereitgestellt. Achten Sie darauf, dass Sie diesen Verschlüsselungsschlüssel an einem sicheren Ort speichern, da alle nachfolgenden Geräte mit dem Dienst registriert werden müssen.
 
@@ -117,7 +117,7 @@ Beim Einrichten der Geräteadministrator- und StorSimple-Momentaufnahme-Manager-
 
 Kennwörter werden vor der Registrierung erfasst, aber erst nach erfolgreicher Registrierung des Geräts angewendet. Der Workflow zur Kennwortwiederherstellung erfordert, dass das Gerät registriert wurde.
 
-> [AZURE.IMPORTANT]Nach einem Fehler beim Anwenden eines Kennworts versucht die Software im Allgemeinen wiederholt, das Kennwort zu erfassen, bis dies erfolgreich ist. In seltenen Fällen kann das Kennwort nicht angewendet werden. In diesem Fall können Sie das Gerät registrieren und den Vorgang fortsetzen, jedoch kann das Kennwort nicht geändert werden. Sie erhalten keinen Hinweis darauf, welches Kennwort nicht geändert wurde: das Kennwort für den Geräteadministrator oder das Kennwort für den StorSimple-Momentaufnahme-Manager. Tritt dieser Fall ein, empfehlen wir, beide Kennwörter zu ändern.
+> [AZURE.IMPORTANT] Nach einem Fehler beim Anwenden eines Kennworts versucht die Software im Allgemeinen wiederholt, das Kennwort zu erfassen, bis dies erfolgreich ist. In seltenen Fällen kann das Kennwort nicht angewendet werden. In diesem Fall können Sie das Gerät registrieren und den Vorgang fortsetzen, jedoch kann das Kennwort nicht geändert werden. Sie erhalten keinen Hinweis darauf, welches Kennwort nicht geändert wurde: das Kennwort für den Geräteadministrator oder das Kennwort für den StorSimple-Momentaufnahme-Manager. Tritt dieser Fall ein, empfehlen wir, beide Kennwörter zu ändern.
 
 Sie können die Kennwörter im klassischen Azure-Portal über den StorSimple Manager-Dienst zurücksetzen. Weitere Informationen finden Sie unter:
 
@@ -163,7 +163,7 @@ Ein Supportpaket enthält alle relevanten Protokolle, die das Microsoft Support-
   1. Führen Sie den Befehl **eventvwr** auf dem Windows-Client aus. Dadurch wird die Ereignisanzeige gestartet.
   2. Klicken Sie im Bereich **Aktionen** auf **Gespeichertes Protokoll öffnen**, und zeigen Sie auf die Protokolldateien im ETVX/ETW-Format (das Supportpaket). Die Datei kann jetzt angezeigt werden. Nach dem Öffnen der Datei können Sie die Datei als Text speichern, indem Sie mit der rechten Maustaste klicken.
    
-    > [AZURE.IMPORTANT]Sie können auch das Cmdlet **Get-WinEvent** verwenden, um diese Datei in Windows PowerShell zu öffnen. Weitere Informationen finden Sie in der Windows PowerShell-Cmdlet-Referenzdokumentation unter [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx).
+    > [AZURE.IMPORTANT] Sie können auch das Cmdlet **Get-WinEvent** verwenden, um diese Datei in Windows PowerShell zu öffnen. Weitere Informationen finden Sie in der Windows PowerShell-Cmdlet-Referenzdokumentation unter [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx).
 
 5. Wenn die Protokolle in der Ereignisanzeige geöffnet sind, suchen Sie nach den folgenden Protokollen, die Probleme im Zusammenhang mit der Gerätekonfiguration enthalten:
 
@@ -261,7 +261,7 @@ Aktivieren Sie Ping zum Beheben von Verbindungsproblemen mit diesem Cmdlet, wenn
 
 Im Folgenden sind Beispiele für die Ausgabe des Cmdlets `Test-Connection` aufgeführt.
 
-> [AZURE.NOTE]Im ersten Beispiel wird das Gerät mit einem falschen DNS konfiguriert. Im zweiten Beispiel ist der DNS richtig.
+> [AZURE.NOTE] Im ersten Beispiel wird das Gerät mit einem falschen DNS konfiguriert. Im zweiten Beispiel ist der DNS richtig.
  
 **Beispielausgabe – falsche DNS**
 
@@ -328,7 +328,7 @@ Die Protokolldateien "CiSCommandletLog0Curr.errlog" und "CiSAgentsvc0Curr.errlog
 
 Weitere Informationen zur Verwendung des Cmdlets finden Sie unter [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) in der Windows PowerShell-Referenzdokumentation.
 
-> [AZURE.IMPORTANT]Sie können dieses Cmdlet für den aktiven und den passiven Controller ausführen.
+> [AZURE.IMPORTANT] Sie können dieses Cmdlet für den aktiven und den passiven Controller ausführen.
  
 Im Folgenden sind Beispiele für die Ausgabe des Cmdlets `Test-HcsmConnection` aufgeführt.
 
@@ -537,11 +537,11 @@ Der Fehler kann eine der folgenden Ursachen haben:
 
 1. Überprüfen Sie Ihre Gerätekonfiguration: Führen Sie auf dem aktiven Controller `Invoke-HcsSetupWizard` aus.
 
-     >[AZURE.NOTE]Der Setup-Assistent muss auf dem aktiven Controller ausgeführt werden. Um sicherzustellen, dass Sie mit dem aktiven Controller verbunden sind, überprüfen Sie das Banner in der seriellen Konsole. Das Banner zeigt an, ob eine Verbindung mit Controller 0 oder 1 besteht und ob der Controller aktiv oder passiv ist. Weitere Informationen finden Sie unter [Identifizieren eines aktiven Controllers auf Ihrem Gerät](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
+     > [AZURE.NOTE] Der Setup-Assistent muss auf dem aktiven Controller ausgeführt werden. Um sicherzustellen, dass Sie mit dem aktiven Controller verbunden sind, überprüfen Sie das Banner in der seriellen Konsole. Das Banner zeigt an, ob eine Verbindung mit Controller 0 oder 1 besteht und ob der Controller aktiv oder passiv ist. Weitere Informationen finden Sie unter [Identifizieren eines aktiven Controllers auf Ihrem Gerät](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
  
 2. Stellen Sie sicher, dass das Gerät richtig verkabelt ist: Überprüfen Sie das Netzwerkkabel an der Rückseite des Geräts. Die Verkabelung ist von Modell zu Modell unterschiedlich. Weitere Informationen finden Sie unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md) oder [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
 
-     >[AZURE.NOTE]Bei Verwendung von 10-GbE-Netzwerkanschlüsssen, müssen Sie die bereitgestellten QSFP-SFP-Adapter und SFP-Kabel verwenden. Weitere Informationen finden Sie unter der [list of cables, switches, and transceivers recommended by the OEM supplier for Mellanox ports](http://www.mellanox.com/page/cables?mtag=cable_overview) (in englischer Sprache).
+     > [AZURE.NOTE] Bei Verwendung von 10-GbE-Netzwerkanschlüsssen, müssen Sie die bereitgestellten QSFP-SFP-Adapter und SFP-Kabel verwenden. Weitere Informationen finden Sie unter der [list of cables, switches, and transceivers recommended by the OEM supplier for Mellanox ports](http://www.mellanox.com/page/cables?mtag=cable_overview) (in englischer Sprache).
  
 3. Überprüfen Sie die Integrität der Netzwerkschnittstelle:
 
@@ -559,7 +559,7 @@ Der Fehler kann eine der folgenden Ursachen haben:
   - Führen Sie den Setup-Assistenten erneut aus (führen Sie **Invoke-HcsSetupWizard**) aus, und geben Sie die Werte erneut ein, um sicherzustellen, dass keine Fehler vorliegen. 
   - Überprüfen Sie den verwendeten Registrierungsschlüssel. Der gleiche Registrierungsschlüssel kann für die Verbindung mehrerer Geräte mit dem StorSimple-Manager-Dienst verwendet werden. Verwenden Sie das Verfahren in [Abrufen des Dienstregistrierungsschlüssels](storsimple-manage-service.md#get-the-service-registration-key), um sicherzustellen, dass Sie den richtigen Registrierungsschlüssel nutzen.
 
-    > [AZURE.IMPORTANT]Wenn Sie mehrere Dienste ausführen, müssen Sie sicherstellen, dass der Registrierungsschlüssel für den entsprechenden Dienst verwendet wird, um das Gerät zu registrieren. Wenn Sie ein Gerät mit dem falschen StorSimple-Manager-Dienst registriert haben, wenden Sie sich für die nächsten Schritte [an den Microsoft Support](storsimple-contact-microsoft-support.md). Sie müssen das Gerät möglicherweise auf die Werkseinstellungen zurücksetzen (kann zu Datenverlusten führen), um anschließend eine Verbindung mit dem gewünschten Dienst herzustellen.
+    > [AZURE.IMPORTANT] Wenn Sie mehrere Dienste ausführen, müssen Sie sicherstellen, dass der Registrierungsschlüssel für den entsprechenden Dienst verwendet wird, um das Gerät zu registrieren. Wenn Sie ein Gerät mit dem falschen StorSimple-Manager-Dienst registriert haben, wenden Sie sich für die nächsten Schritte [an den Microsoft Support](storsimple-contact-microsoft-support.md). Sie müssen das Gerät möglicherweise auf die Werkseinstellungen zurücksetzen (kann zu Datenverlusten führen), um anschließend eine Verbindung mit dem gewünschten Dienst herzustellen.
 
 6. Verwenden Sie das Cmdlet "Test-Connection", um sicherzustellen, dass eine Netzwerkverbindung mit dem externen Netzwerk besteht. Weitere Informationen finden Sie unter [Problembehandlung mit dem Cmdlet "Test-Connection"](#troubleshoot-with-the-test-connection-cmdlet).
 
@@ -577,4 +577,4 @@ Informationen zur [Problembehandlung bei einem betriebsbereiten Gerät](storsimp
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
-   ms.author="tomfitz"/>
+   ms.date="05/25/2016"
+   ms.author="magoedte;tomfitz"/>
 
 # Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager
 
@@ -35,9 +35,7 @@ Die folgenden Tabellen zeigen, welche Dienste Bereitstellung und Verwaltung übe
 | Dynamics Lifecycle Services | Ja | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (Vorschau) | Ja | [Service Fabric REST](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
 | Virtual Machines | Ja | [VM REST](https://msdn.microsoft.com/library/azure/mt163647.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) | [Microsoft.Compute](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Compute%22&type=Code) |
-| Virtual Machines (klassisch) | Eingeschränkt | - | - | 
-| Remote App | Nein | - | - | 
-| Cloud Services (klassisch) | Eingeschränkt (siehe unten) | - | - | - |
+| Virtual Machines (klassisch) | Eingeschränkt | - | - | | Remote App | Nein | - | - | | Cloud Services (klassisch) | Eingeschränkt (siehe unten) | - | - | - |
 
 "Virtuelle Computer (klassisch)" bezieht sich auf Ressourcen, die über das klassische Bereitstellungsmodell statt über das Ressourcen-Manager-Bereitstellungsmodell bereitgestellt wurden. Im Allgemeinen unterstützen diese Ressourcen keine Ressourcen-Manager-Vorgänge, es wurden jedoch einige Vorgänge aktiviert. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](resource-manager-deployment-model.md).
 
@@ -90,8 +88,7 @@ Cloud Services (klassisch) kann mit anderen klassischen Ressourcen verwendet wer
 | Data Lake-Speicher | Ja | | | |
 | HDInsights | Ja | [HDInsights REST](https://msdn.microsoft.com/library/azure/mt622197.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
 | Stream Analytics | Ja | [Stream Analytics REST](https://msdn.microsoft.com/library/azure/dn835031.aspx) | | [Microsoft.StreamAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.StreamAnalytics%22&type=Code) |
-| Machine Learning | Nein | - | - | 
-| Data Catalog | Nein | - | - |
+| Machine Learning | Nein | - | - | | Data Catalog | Nein | - | - |
 
 ## Internet der Dinge
 
@@ -133,7 +130,7 @@ Azure Active Directory arbeitet mit dem Ressourcen-Manager zusammen, um die roll
 
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Schema | Schnellstartvorlagen |
 | ------- | ------- | -------- | ------ | ------ |
-| Automation | Ja | | | [Microsoft.Automation](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Automation%22&type=Code) |
+| Automation | Ja | [Automation REST](https://azure.microsoft.com/documentation/articles/resource-manager-supported-services/) | | [Microsoft.Automation](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Automation%22&type=Code) |
 | Schlüsseltresor | Ja | [Referenz zur Schlüsseltresor-REST-API](https://msdn.microsoft.com/library/azure/dn903609.aspx) | [Schlüsseltresor](resource-manager-template-keyvault.md)<br />[Geheimer Schlüssel im Tresor](resource-manager-template-keyvault-secret.md) | [Microsoft.KeyVault](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.KeyVault%22&type=Code) |
 | Operational Insights | Ja | | | [Microsoft.OperationalInsights](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.OperationalInsights%22&type=Code) |
 | Recovery Services | Ja | | | |
@@ -303,4 +300,4 @@ Sie können die Datei öffnen und nach dem Element **apiVersions** suchen.
 - Weitere Informationen zum Erstellen von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 - Informationen zum Bereitstellen von Vorlagen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

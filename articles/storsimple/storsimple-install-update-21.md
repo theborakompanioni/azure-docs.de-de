@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/18/2016"
+   ms.date="05/25/2016"
    ms.author="alkohli" />
 
 # Installieren von Update 2.1 auf Ihrem StorSimple-Gerät
@@ -42,7 +42,7 @@ Wenn Sie Update 2 oder höher anwenden (einschließlich Update 2.1), wird Micros
 
 [AZURE.INCLUDE [storsimple-install-update2-via-portal](../../includes/storsimple-install-update2-via-portal.md)]
 
-12. Stellen Sie sicher, dass auf Ihrem Gerät **Update 2.1 der StorSimple 8000-Serie (6.3.9600.17704)** ausgeführt wird. Das **Datum der letzten Aktualisierung** hat sich ebenfalls geändert. 
+12. Stellen Sie sicher, dass auf Ihrem Gerät **Update 2.1 der StorSimple 8000-Serie (6.3.9600.17705)** ausgeführt wird. Das **Datum der letzten Aktualisierung** hat sich ebenfalls geändert. 
 
 	Wenn Sie eine Version vor Update 2 aktualisieren, werden Sie auch feststellen, dass Wartungsmodus-Updates verfügbar sind. (Diese Meldung wird nach der Updateinstallation unter Umständen noch bis zu 24 Stunden lang angezeigt.)
 
@@ -78,25 +78,27 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 #### Herunterladen von Updates für ein Gerät mit der Update 2-Software
 
-Wenn Ihr Gerät mit Update 2 ausgeführt wird, müssen Sie die folgenden Hotfixes in der vorgeschriebenen Reihenfolge herunterladen und installieren:
+**Wenn auf Ihrem Gerät Update 2 ausgeführt wird**, müssen Sie die folgenden Hotfixes in der vorgeschriebenen Reihenfolge herunterladen und installieren:
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 1\. | KB3162954 | Softwareupdate | Normal | ~ 45 Min. |
+| 1\. | KB3162954 | Softwareupdate &#42; | Normal | ~ 45 Min. |
 | 2\. | KB3146621 | iSCSI-Paket | Normal | ~ 20 Min. |
 | 3\. | KB3103616 | WMI-Paket | Normal | ~ 12 Min. |
 
 
+ &#42; *Beachten Sie, dass das Softwareupdate aus zwei Binärdateien besteht: `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` und `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe`. Das Update für die Gerätesoftware `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` muss vor dem Cis- und Mds-Agent `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe` installiert werden.*
+
 #### Herunterladen von Updates für ein Gerät mit der Software vor Update 2
 
-Wenn Ihr Gerät die Versionen 0.2, 0.3, 1.0, und 1.1 ausführt, müssen Sie das LSI-Treiber- und Firmware-Update herunterladen. Dieses Update ist bereits installiert, wenn Sie Update 1.2 oder 2 ausführen.
+**Wenn auf Ihrem Gerät die Versionen 0.2, 0.3, 1.0 und 1.1 ausgeführt werden**, müssen Sie das LSI-Treiber- und Firmwareupdate herunterladen und installieren. Dieses Update ist bereits installiert, wenn Sie Update 1.2 oder 2 ausführen.
  
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
 | 4\. | KB3121900 | LSI-Treiber und Firmware | Normal | ~ 20 Min. |
 
 
-<br></br> Wenn Ihr Gerät die Versionen 0.2, 0.3, 1.0, 1.1, und 1.2 ausführt, müssen Sie die Spaceport- und Storport-Fehlerbehebung installieren. Diese sind bereits installiert, wenn Sie Update 2 ausführen
+<br></br> **Wenn auf Ihrem Gerät die Versionen 0.2, 0.3, 1.0, 1.1 und 1.2 ausgeführt werden**, müssen Sie die Spaceport- und Storport-Fehlerbehebung herunterladen und installieren. Diese sind bereits installiert, wenn Sie Update 2 ausführen
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
@@ -130,4 +132,4 @@ Führen Sie die folgenden Schritte aus, um diese Datei herunterzuladen und die H
 
 Weitere Informationen finden Sie unter [Versionshinweise zu Update 2.1](storsimple-update21-release-notes.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

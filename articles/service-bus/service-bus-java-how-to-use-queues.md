@@ -22,13 +22,59 @@
 
 In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure-SDK für Java][]. Die Szenarien behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
 
-[AZURE.INCLUDE [service-bus-java-how-to-create-queue](../../includes/service-bus-java-how-to-create-queue.md)]
+## Was sind Service Bus-Warteschlangen?
+
+Service Bus-Warteschlangen unterstützen ein Kommunikationsmodell namens **Brokermessaging**. Bei der Verwendung von Warteschlangen kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über eine Warteschlange aus, die als Zwischenstufe (Broker) fungiert. Ein Nachrichtenproducer (Absender) übergibt eine Nachricht an die Warteschlange und setzt seine Funktion fort. Ein Nachrichtenconsumer (Empfänger) ruft die Nachricht asynchron aus der Warteschlange ab und verarbeitet sie. Der Producer muss nicht auf eine Antwort vom Consumer warten, um seine Funktion fortzusetzen und weitere Nachrichten zu schicken. Warteschlangen liefern die Nachrichten im **First In, First Out (FIFO)**-Verfahren an einen oder mehrere Consumer. Die Nachrichten werden also normalerweise in der gleichen Reihenfolge von den Consumern empfangen und verarbeitet, wie sie in die Warteschlange übergeben wurden, und jede Nachricht wird nur von einem Consumer verarbeitet.
+
+![Konzepte für Warteschlangen](./media/service-bus-java-how-to-use-queues/sb-queues-08.png)
+
+Service Bus-Warteschlangen sind eine Allzwecktechnologie für viele unterschiedliche Szenarien:
+
+- Kommunikation zwischen Web- und Workerrollen in Azure-Anwendungen mit mehreren Ebenen
+- Kommunikation zwischen lokalen Apps und von Azure gehosteten Apps in einer Hybridlösung
+- Kommunikation zwischen Komponenten einer verteilten lokalen Anwendung, die in verschiedenen Organisationen oder Abteilungen einer Organisation laufen
+
+Warteschlangen unterstützen Sie bei der einfacheren horizontalen Skalierung Ihrer Anwendungen und führen zu einer robusten Architektur.
+
+## Erstellen eines Dienstnamespaces
+
+Um mit der Verwendung von Service Bus-Warteschlangen in Azure beginnen zu können, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
+
+So erstellen Sie einen Namespace
+
+1.  Melden Sie sich beim [klassischen Azure-Portal][] an.
+
+2.  Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
+
+3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**. ![](./media/service-bus-java-how-to-use-queues/sb-queues-03.png)
+
+4.  Geben Sie im Dialogfeld **Add a new namespace** einen Namen für den Namespace ein. Das System prüft sofort, ob dieser Name verfügbar ist.![](./media/service-bus-java-how-to-use-queues/sb-queues-04.png)
+
+5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der Sie Ihre Rechnerressourcen bereitstellen.)
+
+	WICHTIG: Wählen Sie **dieselbe Region**, in der Sie auch Ihre Anwendung einsetzen möchten. Dies sorgt für die beste Leistung.
+
+6. 	Übernehmen Sie für die weiteren Felder im Dialogfeld die Standardwerte (**Messaging** und **Standardstufe**), und klicken Sie anschließend auf das Häkchen. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
+
+Der neue Namespace wird innerhalb kurzer Zeit aktiviert und anschließend im Azure-Portal angezeigt. Fahren Sie erst fort, wenn der Status als **Aktiv** angezeigt wird.
+
+## Abrufen der Standard-Anmeldeinformationen für den Namespace
+
+Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung einer Warteschlange im neuen Namespace, müssen Sie die Anmeldeinformationen für den Namespace abrufen. Diese Anmeldeinformation erhalten Sie im Portal.
+
+1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste verfügbarer Namespaces anzuzeigen: ![](./media/service-bus-java-how-to-use-queues/sb-queues-13.png)
+
+2.  Klicken Sie in der angezeigten Liste auf den Namespace, den Sie gerade erstellt haben.
+
+3.  Klicken Sie auf **Konfigurieren**, um die Richtlinien für den gemeinsamen Zugriff auf Ihren Namespace anzuzeigen. ![](./media/service-bus-java-how-to-use-queues/sb-queues-14.png)
+
+4.  Notieren Sie den Primärschlüssel oder kopieren Sie ihn in die Zwischenablage.
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 
 Stellen Sie sicher, dass Sie das [Azure SDK für Java][] vor dem Erstellen dieses Beispiels installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
 
-![](media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
 Fügen Sie die folgenden `import`-Anweisungen am Anfang der Java-Datei ein:
 
@@ -106,7 +152,7 @@ Das folgende Beispiel veranschaulicht, wie fünf Testnachrichten an den **Messag
          service.sendQueueMessage("TestQueue", message);
     }
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB (der Header, der die standardmäßigen und die benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben). Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## Empfangen von Nachrichten aus einer Warteschlange
 
@@ -189,5 +235,6 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
   [Azure Toolkit für Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
   [Service Bus-Warteschlangen, -Themen und -Abonnements]: service-bus-queues-topics-subscriptions.md
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+  [klassischen Azure-Portal]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

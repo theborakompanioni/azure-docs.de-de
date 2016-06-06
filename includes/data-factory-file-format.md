@@ -220,3 +220,18 @@ Beachten Sie Folgendes:
 - Wenn auf derselben Ebene doppelte Namen vorkommen, wählt die Kopieraktivität den letzten aus.
 - Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Zwei Eigenschaften mit demselben Namen, aber unterschiedlicher Schreibweise, werden als zwei getrennte Eigenschaften behandelt. 
 
+### Angeben von „OrcFormat“
+Wenn das Format auf „OrcFormat“ festgelegt ist, müssen Sie im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
+
+	"format":
+	{
+	    "type": "OrcFormat",
+	}
+
+Beachten Sie Folgendes:
+ 
+-	Wenn Sie Daten im OCR-Format zwischen lokalen und cloudbasierten Datenspeichern (und nicht ORC-Dateien unverändert von der Quelle in die Senke) kopieren, müssen Sie auf dem Gatewaycomputer JRE (Java Runtime Environment) installieren. 
+-	Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
+-	Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in eines der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit steht keine Option zur Außerkraftsetzung dieses Verhaltens zur Verfügung. 
+
+<!---HONumber=AcomDC_0525_2016-->

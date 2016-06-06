@@ -19,18 +19,33 @@
 # Azure Data Factory – .NET-API-Änderungsprotokoll 
 Dieser Artikel enthält Informationen zu Änderungen am Azure Data Factory SDK einer bestimmten Version. [Hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) finden Sie das neueste NuGet-Paket für Azure Data Factory.
 
+## Version 4.7.0
+Veröffentlichungsdatum: 20.5.2016
+
+### Hinzugefügte Features
+* Es wurde ein neuer StorageFormat-Typ vom Typ [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) hinzugefügt, um Dateien im einspaltig optimierten Zeilenformat (ORC) zu kopieren.
+* Hinzufügen von [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx)- und PolyBaseSettings-Eigenschaften zu SqlDWSink.
+    * Ermöglicht die Verwendung von PolyBase zum Kopieren von Daten in SQL Data Warehouse.
+
+## Version 4.6.1
+Veröffentlichungsdatum: 26.4.2016
+
+### Fehlerbehebungen
+* Repariert die HTTP-Anforderung zum Auflisten von Aktivitätsfenstern.
+    * Entfernt den Ressourcengruppennamen und den Data Factory-Namen von der Anforderungsnutzlast.
+
 ## Version 4.6.0
 Veröffentlichungsdatum: 14.04.2016
 
 ### Hinzugefügte Features
 
-- Folgende Eigenschaften wurden zu [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) hinzugefügt:
+- Die folgende Eigenschaften wurden zu [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) hinzugefügt:
 	- [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
 	- [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
 	- [Datasets](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-- Folgende Eigenschaften wurden zu [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) hinzugefügt:
+- Die folgende Eigenschaften wurden zu [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) hinzugefügt:
 	- [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-- Der neue [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx)-Typ [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) wurde hinzugefügt, um Datasets zu definieren, deren Daten im JSON-Format vorliegen. 
+- Es wurde ein neuer [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx)-Typ vom Typ [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) hinzugefügt, um Datasets zu definieren, deren Daten im JSON-Format vorliegen. 
 
 ## Version 4.5.0
 Veröffentlichungsdatum: 24.02.2016
@@ -149,4 +164,4 @@ Veröffentlichungsdatum: 02.10.2015
 
 - Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datenquellen. Die Klassen [SQLSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) und [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) verfügen über die folgenden Eigenschaften, um dies zu unterstützen: **SqlReaderStoredProcedureName** und **StoredProcedureParameters**. In den Artikeln [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) auf Azure.com finden Sie ausführliche Informationen zu diesen Eigenschaften.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -68,7 +68,7 @@ Bei der Verwendung von SDKs (oder Produktintegrationen), die nicht IoT Hub-fähi
 
     ![][img-eventhubcompatible]
 
-> [AZURE.NOTE] Wenn für das SDK ein Wert für **Hostname** oder **Namespace** erforderlich ist, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net** und der **Namespace** **iothub-ns-myiothub-1234**.
+> [AZURE.NOTE] Wenn für das SDK ein Wert für **Hostname** oder **Namespace** erforderlich ist, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um ****sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net** und der **Namespace** **iothub-ns-myiothub-1234**.
 
 Sie können in diesem Fall eine beliebige gemeinsam genutzte Sicherheitsrichtlinie mit den **ServiceConnect**-Berechtigungen zur Verbindungsherstellung mit dem angegebenen Event Hub verwenden.
 
@@ -204,7 +204,7 @@ Weitere Informationen zur Erstellung und Verwendung von Sicherheitstoken finden 
 
 Jedes unterstützte Protokoll, z. B. AMQP, MQTT und HTTP, transportiert Token auf unterschiedliche Weise.
 
-HTTP implementiert die Authentifizierung, indem ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen wird. Das Token kann auch über den Abfrageparameter **Authorization** transportiert werden.
+HTTP implementiert die Authentifizierung, indem ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen wird.
 
 Bei Verwendung von [AMQP][lnk-amqp] unterstützt IoT Hub [SASL PLAIN][lnk-sasl-plain] und die auf [AMQP-Ansprüchen basierte Sicherheit][lnk-cbs].
 
@@ -221,7 +221,7 @@ Bei Verwenden von MQTT enthält das CONNECT-Paket die Geräte-ID als „Client-I
 
 ##### Beispiel: #####
 
-Benutzername (bei DeviceId wird die Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
+Benutzername (bei „Geräte-ID“ wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
 
 Kennwort (SAS mit dem Geräte-Explorer generieren): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -236,7 +236,7 @@ Bei Verwendung von SASL PLAIN kann ein Client, der eine Verbindung mit einem IoT
 
 ### Gültigkeitsbereich für Anmeldeinformationen auf Hubebene
 
-Sie können den Bereich für Sicherheitsrichtlinien auf Hubebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise lautet der Endpunkt zum Senden von D2C-Nachrichten von einem Gerät **/devices/{deviceId}/messages/events**. Sie können eine SAS-Richtlinie (Shared Access Policy) auf Hubebene mit **DeviceConnect**-Berechtigungen auch zum Signieren eines Tokens verwenden, dessen resourceURI-Element **/devices/{deviceId}** lautet. So wird ein Token erstellt, das nur zum Senden von Gerätenachrichten im Namen des Geräts mit dieser **deviceId** verwendet werden kann.
+Sie können den Bereich für Sicherheitsrichtlinien auf Hubebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise lautet der Endpunkt zum Senden von D2C-Nachrichten von einem Gerät **/devices/{Geräte-ID}/messages/events**. Sie können eine SAS-Richtlinie (Shared Access Policy) auf Hubebene mit **DeviceConnect**-Berechtigungen auch zum Signieren eines Tokens verwenden, dessen resourceURI-Element **/devices/{Geräte-ID}** lautet. So wird ein Token erstellt, das nur zum Senden von Gerätenachrichten im Namen des Geräts mit dieser **deviceId** verwendet werden kann.
 
 Dieser Mechanismus ist mit einer [Event Hubs-Herausgeberrichtlinie][lnk-event-hubs-publisher-policy] vergleichbar und ermöglicht die Implementierung von benutzerdefinierten Authentifizierungsmethoden. Siehe hierzu den Abschnitt zur Sicherheit unter [Entwerfen der Lösung][lnk-guidance-security].
 
@@ -267,7 +267,8 @@ Die folgende Tabelle zeigt den Satz an Systemeigenschaften in IoT Hub-Nachrichte
 | -------- | ----------- |
 | MessageId | Eine vom Benutzer festgelegte Kennung für die Nachricht, wird üblicherweise für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
 | Sequenznummer | Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |
-| To | Gibt in [C2D](#c2d)-Nachrichten das Ziel an. |
+| To  
+ | Gibt in [C2D](#c2d)-Nachrichten das Ziel an. |
 | ExpiryTimeUtc | Datum und Uhrzeit des Nachrichtenablaufs. |
 | EnqueuedTime | Datum und Uhrzeit des Empfangs der Nachricht durch IoT Hub. |
 | CorrelationId | Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |
@@ -332,7 +333,7 @@ Ausführliche Informationen zum Verwenden des D2C-Messaging finden Sie unter [Io
 
 In vielen Fällen senden Geräte nicht nur Telemetriedatenpunkte, sondern auch Nachrichten und Anforderungen, die eine Ausführung und Verarbeitung auf der Anwendungsschicht mit der Geschäftslogik erfordern. Beispiele: Kritische Warnungen, die eine bestimmte Aktion im Back-End auslösen müssen, oder Geräteantworten auf vom Back-End gesendete Befehle.
 
-Weitere Informationen zur besten Verarbeitungsmethode für diese Art von Nachrichten finden Sie unter [Lernprogramm: Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-guidance-d2c-processing].
+Weitere Informationen zur besten Verarbeitungsmethode für diese Art von Nachrichten finden Sie unter [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-guidance-d2c-processing].
 
 #### Optionen für die D2C-Konfiguration <a id="d2cconfiguration"></a>
 
@@ -369,7 +370,7 @@ Die Eigenschaft **ConnectionAuthMethod** enthält ein serialisiertes JSON-Objekt
 
 Wie im Abschnitt [Endpunkte](#endpoints) beschrieben, können Sie C2D-Nachrichten über einen dienstseitigen Endpunkt (**/messages/devicebound**) senden. Ein Gerät kann diese Nachrichten über einen geräteseitigen Endpunkt (**/devices/{deviceId}/messages/devicebound**) empfangen.
 
-Jede C2D-Nachricht wird einem bestimmten Gerät zugeordnet, indem die **to**-Eigenschaft auf **/devices/{deviceId}/messages/devicebound** festgelegt wird.
+Jede C2D-Nachricht wird einem bestimmten Gerät zugeordnet, indem die **to**-Eigenschaft auf **/devices/{Geräte-ID}/messages/devicebound** festgelegt wird.
 
 **Wichtig**: Jede Gerätewarteschlange kann maximal 50 C2D-Nachrichten enthalten. Der Versuch, eine größere Anzahl von Nachrichten an dasselbe Gerät zu senden, führt zu einem Fehler.
 
@@ -494,7 +495,7 @@ Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die
 
 Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Das bedeutet, dass das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten) dauert. Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Geräteidentitätsregistrierung registriert sind.
 
-Der Blogbeitrag [IoT Hub throttling and you][lnk-throttle-blog] \(Was habe ich mit der IoT Hub-Drosselung zu tun?) enthält eine ausführliche Erläuterung der IoT Hub-Drosselung.
+Der Blogbeitrag [IoT Hub throttling and you][lnk-throttle-blog] (Was habe ich mit der IoT Hub-Drosselung zu tun?) enthält eine ausführliche Erläuterung der IoT Hub-Drosselung.
 
 **Hinweis**: Die Kontingente oder Drosselungsgrenzwerte können jederzeit angehoben werden, indem die Anzahl von bereitgestellten Einheiten in einem IoT Hub erhöht wird.
 
@@ -557,4 +558,4 @@ Nachdem Sie in diesem Dokument einen Überblick über die Entwicklung für IoT H
 [lnk-mqtt-support]: iot-hub-mqtt-support.md
 [lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

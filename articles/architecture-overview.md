@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/16/2015" 
+	ms.date="05/19/2016" 
 	ms.author="robb"/>
 
 #Anwendungsarchitektur in Microsoft Azure
@@ -50,7 +50,7 @@ In den Plänen wird der [Cloud- und Enterprise-Symbolsatz](#symbol-and-icon-sets
 
 ##Visio-Vorlage "3D Blueprint"
 
-Die 3D-Versionen der [Microsoft-Architekturpläne](http://aka.ms/azblueprints) wurden zunächst in einem Nicht-Microsoft-Tool erstellt. Eine neue Vorlage für Visio 2013 (und höher) wurde am 5. August 2015 im Rahmen eines [Zertifizierungskurses zur Microsoft-Architektur auf EDX.ORG](#microsoft-architecture-certification-course) bereitgestellt.
+Die 3D-Versionen der [Microsoft-Architekturpläne](http://aka.ms/azblueprints) wurden zunächst in einem Nicht-Microsoft-Tool erstellt. Eine neue Vorlage für Visio 2013 (und höher) wurde am 5. August 2015 im Rahmen eines [Zertifizierungskurses zur Microsoft-Architektur auf EDX.ORG](#microsoft-architecture-certification-course) bereitgestellt.
 
 Die Vorlage steht auch außerhalb des Kurses zur Verfügung.
 
@@ -85,4 +85,4 @@ Microsoft veröffentlicht mehrere architekturbezogene Poster/Infografiken. Dazu 
 
 ![Infografiken zur Azure-Architektur](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

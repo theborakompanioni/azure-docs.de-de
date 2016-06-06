@@ -104,7 +104,7 @@ Nach Auswertung aller Empfehlungen entscheiden Sie, welche zuerst angewendet wer
 4. Weitere Informationen zur Antischadsoftware-Lösung werden angezeigt. Klicken Sie auf **Erstellen**.
 5. Geben Sie die erforderlichen Konfigurationseinstellungen auf dem Blatt **Erweiterung hinzufügen** ein, und wählen Sie anschließend **OK**. ![][6]
 
-[Microsoft Antimalware](../azure-security-antimalware.md) ist jetzt auf dem ausgewählten virtuellen Computer aktiv.
+[Microsoft Antimalware](../security/azure-security-antimalware.md) ist jetzt auf dem ausgewählten virtuellen Computer aktiv.
 
 
 ## Nächste Schritte
@@ -124,4 +124,4 @@ In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center v
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

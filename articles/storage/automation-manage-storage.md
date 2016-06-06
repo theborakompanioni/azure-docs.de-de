@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/23/2016"
 	ms.author="jolevy"/>
 
 
@@ -50,4 +50,4 @@ Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendu
 Azure Automation-Tutorial [Erstellen oder Importieren eines Runbooks in Azure Automation](../automation/automation-creating-importing-runbook.md).
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

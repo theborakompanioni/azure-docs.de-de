@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="05/19/2016"
 	ms.author="genemi"/>
 
 
@@ -54,6 +54,23 @@ Ein wichtiges Ziel für SQL-Datenbank V12 war, die Kompatibilität mit Microsoft
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](http://msdn.microsoft.com/library/mt629158.aspx)
 
 Informationen zu den wenigen noch nicht unterstützten SQL-Datenbankfunktionen finden Sie [hier](sql-database-transact-sql-information.md).
+
+
+### Kompatibilitätsgrad 130
+
+
+> [AZURE.IMPORTANT] Ab **Juni 2016** beginnt der Kompatibilitätsgrad *neu* erstellter Datenbanken unter Azure SQL-Datenbank V12 bei 130. Dies entspricht Microsoft SQL Server 2016 GA.
+> 
+> Sie können natürlich auch `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` verwenden.
+> 
+> Der Kompatibilitätsgrad der vor Juni 2016 erstellten Datenbanken wird nicht standardmäßig geändert. Darüber hinaus wird der Grad einer Datenbank bei einem Upgrade von V11 auf V12 nicht geändert.
+
+
+
+Eine Erklärung, wie Sie Ihre wichtigsten Abfragen zwischen dem aktuellen und dem früheren Kompatibilitätsgrad vergleichen können, finden Sie in folgendem Artikel:
+
+- [Improved Query Performance with Compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md) (Verbesserte Abfrageleistung mit Kompatibilitätsgrad 130 in Azure SQL-Datenbank)
+
 
 
 ## Mehr Premium-Performance, neue Leistungsstufen
@@ -166,4 +183,4 @@ Wenn Sie noch nicht V12 ausführen, können Sie ein Upgrade des logischen Server
 
 [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

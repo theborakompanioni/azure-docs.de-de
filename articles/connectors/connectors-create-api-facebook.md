@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der Facebook-API zu Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Facebook-API und REST-API-Parameter"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Hinzufügen des Facebook-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Facebook-Connector mit REST-API-Parametern"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der Facebook-API
-Verbinden Sie sich mit Facebook, um z. B. die Chronik zu ergänzen oder einen Seitenfeed abzurufen. Die Facebook-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem Facebook-Connector
+Verbinden Sie sich mit Facebook, um z. B. die Chronik zu ergänzen oder einen Seitenfeed abzurufen. Der Facebook-Connector kann verwendet werden in:
 
 - Logik-Apps (in diesem Thema erläutert)
 - PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
@@ -35,16 +35,16 @@ Facebook ermöglicht Folgendes:
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
-Die Facebook-API weist die folgenden Trigger und Aktionen auf.
+Der Facebook-Connector weist die folgenden Trigger und Aktionen auf.
 
 | Trigger | Aktionen|
 | --- | --- |
 | <ul><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li></ul> |<ul><li>Feed aus meiner Chronik abrufen</li><li>Beitrag meiner Chronik hinzufügen</li><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li><li>Seitenfeed abrufen</li><li>Benutzerchronik abrufen</li><li>Beitrag der Seite hinzufügen</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit Facebook
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Facebook erlauben.
+Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Ihrem Facebook-Konto erlauben.
 
 1. Melden Sie sich bei Ihrem Facebook-Konto an.
 2. Wählen Sie **Autorisieren** aus, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrer Facebook-Präsenz verbinden und diese nutzen. 
@@ -436,4 +436,4 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

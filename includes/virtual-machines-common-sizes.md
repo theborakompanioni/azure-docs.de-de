@@ -5,7 +5,7 @@ Die Standardgrößen bestehen aus mehreren Serien: A, D, DS, G und GS. Beachten 
 
 *   VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger. Einzelheiten finden Sie in der Ankündigung im Azure-Blog unter [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) (Neue VM-Größen der D-Serie, in englischer Sprache).
 
-*   Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon ® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz gebracht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+*   Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
 *   Virtuelle Computer der G-Serie bieten den meisten Arbeitsspeicher und werden auf Hosts mit Prozessoren der Intel Xeon E5 V3-Familie ausgeführt.
 
@@ -45,13 +45,7 @@ Wir haben das Konzept der Azure-Berechnungseinheit ACU (Azure Compute Unit) erst
 |[Standard\_A0](#standard-tier-a-series) |50 |
 |[Standard\_A1-4](#standard-tier-a-series) |100 |
 |[Standard\_A5-7](#standard-tier-a-series) |100 |
-|[A8-A11](#standard-tier-a-series) |225 *| 
-|[D1-14](#standard-tier-d-series) |160 | 
-|[D1-15v2](#standard-tier-dv2-series) |210 - 250 *| 
-|[DS1-14](#standard-tier-ds-series) |160 | 
-|[DS1-15v2](#standard-tier-dsv2-series) |210-250* | 
-|[G1-5](#standard-tier-g-series) |180 - 240 *| 
-|[GS1-5](#standard-tier-gs-series) |180 - 240 *|
+|[A8-A11](#standard-tier-a-series) |225 *| |[D1-14](#standard-tier-d-series) |160 | |[D1-15v2](#standard-tier-dv2-series) |210 - 250 *| |[DS1-14](#standard-tier-ds-series) |160 | |[DS1-15v2](#standard-tier-dsv2-series) |210-250* | |[G1-5](#standard-tier-g-series) |180 - 240 *| |[GS1-5](#standard-tier-gs-series) |180 - 240 *|
 
 
 Mit * gekennzeichnete ACUs verwenden die Intel® Turbo-Technologie, um die CPU-Frequenz zu erhöhen eine Leistungssteigerung zu erzielen. Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
@@ -193,5 +187,4 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
 - Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
 
-
-
+<!---HONumber=AcomDC_0525_2016-->

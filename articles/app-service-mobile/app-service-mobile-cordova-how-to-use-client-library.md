@@ -3,8 +3,8 @@
 	description="Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps"
 	services="app-service\mobile"
 	documentationCenter="javascript"
-	authors="adrianhall"
-	manager="dwrede"
+	authors="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="03/07/2016"
-	ms.author="adrianha"/>
+	ms.date="05/23/2016"
+	ms.author="ggailey"/>
 
 # Verwenden der Apache Cordova-Clientbibliothek für Azure Mobile Apps
 
@@ -135,6 +135,6 @@ Verwenden Sie das Notification Hubs SDK zum Senden von Pushbenachrichtigungen vo
 [phonegap-plug-in-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Dokumentation „Query-Objekt“]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Der Sicherheits-Assistent von Azure AD Privileged Identity Management
@@ -26,10 +26,10 @@ Bevor Ihre Organisation mit der Verwendung von PIM beginnt, sind alle Rollenzuwe
 
 Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisungen des Administrators zu ändern.
 
-> [AZURE.WARNING] Es muss unbedingt mindestens ein globaler Administrator sowie mehrere Sicherheitsadministratoren mit einem Organisationskonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Sicherheitsadministrator vorhanden ist, kann die Organisation PIM nicht mehr verwalten, sollte dieses Konto gelöscht werden. Ändern Sie eine Rollenzuweisung außerdem nicht zu „temporär“, wenn ein Benutzer über ein Microsoft-Konto verfügt. Wenn Sie planen, zur Aktivierung dieser Rolle MFA als erforderlich festzulegen, wird diese Rolle für den Benutzer gesperrt.
+> [AZURE.WARNING] Es müssen unbedingt mindestens ein globaler Administrator sowie mehrere Administratoren für privilegierte Rollen mit einem Organisationskonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Administrator für privilegierte Rollen vorhanden ist, kann die Organisation PIM nicht mehr verwalten, sollte dieses Konto gelöscht werden. Ändern Sie eine Rollenzuweisung außerdem nicht zu „temporär“, wenn ein Benutzer über ein Microsoft-Konto verfügt. Wenn Sie planen, zur Aktivierung dieser Rolle MFA als erforderlich festzulegen, wird diese Rolle für den Benutzer gesperrt.
 
 
-Nachdem Sie Änderungen vorgenommen haben, wird der Assistent nicht mehr angezeigt. Wenn Sie oder ein anderer Sicherheitsadministrator sich PIM das nächste Mal verwenden, wird das PIM-Dashboard angezeigt.
+Nachdem Sie Änderungen vorgenommen haben, wird der Assistent nicht mehr angezeigt. Wenn Sie oder ein anderer Administrator für privilegierte Rollen PIM das nächste Mal verwenden, wird das PIM-Dashboard angezeigt.
 
 - Wenn Sie Benutzer zu Rollen hinzufügen oder aus Rollen entfernen oder permanente in temporäre Zuweisungen ändern möchten, finden Sie weitere Informationen unter [Hinzufügen oder Entfernen einer Benutzerrolle](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
 - Wenn Sie weiteren Benutzern Verwaltungszugriff auf PIM gewähren möchten, finden Sie weitere Informationen unter [Gewähren des Zugriffs zur Verwaltung von PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)
@@ -39,4 +39,4 @@ Nachdem Sie Änderungen vorgenommen haben, wird der Assistent nicht mehr angezei
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

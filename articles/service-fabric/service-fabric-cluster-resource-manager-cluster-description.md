@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    ms.author="masnider"/>
 
 # Beschreiben eines Service Fabric-Clusters
@@ -157,6 +157,8 @@ Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstr
 
 Platzierungseinschränkungen (und zahlreiche weitere Eigenschaften, über die wir sprechen werden) werden für jede unterschiedliche Dienstinstanz angegeben. Updates ersetzen (überschreiben) immer die vorherige Angabe.
 
+Es muss auch darauf hingewiesen werden, dass an diesem Punkt die Eigenschaften auf einem Knoten über die Clusterdefinition definiert werden und daher nicht ohne ein Upgrade des Clusters aktualisiert werden können.
+
 ## Kapazität
 Eine der wichtigsten Aufgaben eines Orchestrators besteht in der Verwaltung des Ressourcenverbrauchs im Cluster. Bei einer effizienten Dienstausführung sollen keine Knoten überlastet oder zu wenig ausgelastet sein. Eine Überlastung führt zu Ressourcenkonflikten und niedriger Leistung und eine zu geringe Auslastung zu einer Verschwendung von Ressourcen. Denken wir vor dem Lastenausgleich (dazu kommen wir gleich) jedoch zunächst an etwas Grundlegenderes: Warum stellen wir nicht einfach sicher, dass immer ausreichend Ressourcen vorhanden sind?
 
@@ -202,13 +204,14 @@ ClusterManifest.xml
 
 Möglicherweise ändert sich die Last eines Diensts auch dynamisch. In diesem Fall kann der Ort, an dem ein Replikat oder eine Instanz derzeit platziert ist, ungültig werden, da durch die kombinierte Nutzung aller Replikate und Instanzen auf dem Knoten die Kapazität dieses Knotens überschritten wird. Auf das Szenario, in dem sich die Last dynamisch ändern kann, gehen wir später genauer ein. Die Kapazität wird jedoch genauso behandelt: Die Service Fabric-Ressourcenverwaltung schaltet sich automatisch ein und reduziert die Kapazität des Knotens, indem Sie Replikate oder Instanzen auf diesem Knoten auf andere Knoten verschiebt. Dabei versucht der Ressourcen-Manager, die Kosten aller Verschiebungen zu minimieren (auf die Kosten kommen wir später zu sprechen).
 
-##Clusterkapazität
+## Clusterkapazität
 Wie verhindern wir eine Überlastung des Clusters? Bei der dynamischen Auslastung kann nicht viel unternommen werden, da die Auslastung von Diensten unabhängig von den vom Ressourcen-Manager unternommenen Aktionen rasant ansteigen kann: Ein Cluster, der heute noch genügend Spielraum bietet, hat morgen womöglich nicht mehr ausreichend Kapazität, wenn Sie berühmt werden. Es gibt jedoch einige integrierte Sicherheitsmechanismen, die allgemeine Fehler verhindern. Zunächst einmal können wir die Erstellung neuer Workloads verhindern, die eine Überlastung des Clusters verursachen.
 
 Angenommen, Sie erstellen einen einfachen zustandslosen Dienst, dem eine bestimmte Last zugeordnet ist (weitere Informationen zur Meldung standardmäßiger und dynamischer Auslastung finden Sie weiter unten). Bei diesem Dienst gehen wir davon aus, dass er für eine gewisse Ressource, z. B. Speicherplatz, verwendet wird und standardmäßig fünf Speicherplatzeinheiten pro Dienstinstanz verbraucht. Sie möchten drei Instanzen des Diensts erstellen. Prima. Das bedeutet, dass im Cluster 15 Speicherplatzeinheiten vorhanden sein müssen, damit wir diese Dienstinstanzen überhaupt erstellen können. Service Fabric berechnet kontinuierlich die gesamte Kapazität und den Verbrauch der einzelnen Metriken, sodass einfach bestimmt werden kann, ob der Aufruf zur Diensterstellung abgewiesen werden soll, falls nicht ausreichend Platz zur Verfügung steht.
 
 Hinweis: Da nur die Anforderung besteht, dass 15 Einheiten vorhanden sein müssen, kann dieser Platz auf verschiedene Art und Weise zugewiesen werden: Beispielsweise kann eine Kapazitätseinheit auf 15 verschiedenen Knoten oder es können drei Kapazitätseinheiten auf fünf verschiedenen Knoten übrig sein. Ist nicht ausreichend Kapazität auf drei verschiedenen Knoten vorhanden, organisiert Service Fabric die bereits im Cluster bestehenden Dienste neu, um Platz auf den drei erforderlichen Knoten zu schaffen. Solche Neuanordnung ist fast immer möglich, es sei denn, der Cluster als Ganzes ist fast vollständig voll.
 
+## Gepufferte Kapazität
 Wir haben der für jeden Knoten angegebenen Kapazität reservierten Puffer hinzugefügt, um Benutzer bei der Verwaltung der gesamten Clusterkapazität zu unterstützen. Diese Einstellung ist optional, ermöglicht Benutzern jedoch die Reservierung eines Teils der Knotengesamtkapazität, sodass dieser Teil nur für die Platzierung von Diensten während Upgrades und Ausfällen verwendet wird – also in Fällen, in denen die Kapazität des Clusters anderweitig eingeschränkt ist. Heute wird der Puffer global pro Metrik für alle Knoten über das Clustermanifest angegeben. Der von Ihnen ausgewählte Wert für die reservierte Kapazität ist eine Funktion, die angibt, welche Ressourcen Ihrer Dienste stärker eingeschränkt sind und wie viele Fehler- und Upgradedomänen der Cluster enthält. Im Allgemeinen bedeutet eine höhere Anzahl von Fehler- und Upgradedomänen, dass Sie eine geringere Menge für die gepufferte Kapazität auswählen müssen, da bei Upgrades und Ausfällen ein geringerer Anteil Ihres Clusters nicht verfügbar ist. Beachten Sie, dass die Angabe des Pufferprozentsatzes nur sinnvoll ist, wenn Sie auch die Knotenkapazität für eine Metrik angegeben haben.
 
 ClusterManifest.xml
@@ -262,4 +265,4 @@ LoadMetricInformation     :
 [Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

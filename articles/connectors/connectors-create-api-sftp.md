@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der SFTP-API zu Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die SFTP-API und REST-API-Parameter"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Hinzufügen des SFTP-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+    description="Übersicht über den SFTP-Connector mit REST-API-Parametern"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der SFTP-API
-Sie stellen eine Verbindung mit einem SFTP-Server her, um Dateien zu verwalten. Sie können auf dem SFTP-Server verschiedene Aufgaben ausführen, z. B. Dateien hochladen, Dateien löschen und mehr. Die SFTP-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem SFTP-Connector 
+Sie stellen eine Verbindung mit einem SFTP-Server her, um Dateien zu verwalten. Sie können auf dem SFTP-Server verschiedene Aufgaben ausführen, z. B. Dateien hochladen, Dateien löschen und mehr. Der SFTP-Connector kann verwendet werden in:
 
 - Logik-Apps
 
@@ -34,17 +34,17 @@ Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Ers
 
 
 ## Trigger und Aktionen
-Die SFTP-API verfügt über folgende Trigger und Aktionen:
+Der SFTP-Connector verfügt über folgende Trigger und Aktionen.
 
 Trigger | Actions
 --- | ---
 <ul><li>Wenn eine Datei geändert oder erstellt wird </li></ul> | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Datei aktualisieren</li><li>Wenn eine Datei erstellt oder geändert wird </li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 
 ## Herstellen einer Verbindung mit SFTP
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte ein:
+Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte ein:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -52,6 +52,10 @@ Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte e
 |Benutzername| Ja | Geben Sie den Benutzernamen für die Verbindung mit dem SFTP-Server ein.|
 |Kennwort | Ja | Geben Sie das Kennwort für den Benutzernamen ein.|
 |SSH Server Host Key Finger Print | Ja | Geben Sie den Fingerabdruck des öffentlichen Hostschlüssels für den SSH-Server ein. <br/><br/>In der Regel erhalten Sie diesen Schlüssel vom Serveradministrator. Sie können auch die Tools ```WinSCP``` oder ```ssh-keygen-g3 -F``` verwenden, um den Hostschlüssel-Fingerabdruck abzurufen. | 
+
+Hier ist eine schrittweise Vorgehensweise zum Herstellen der Verbindung:
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit SFTP](../../includes/connectors-create-api-sftp.md)]
 
 Nachdem Sie eine Verbindung hergestellt haben, geben Sie die SFTP-Eigenschaften ein, z. B. Ordnerpfad oder Datei. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -62,7 +66,7 @@ Nachdem Sie eine Verbindung hergestellt haben, geben Sie die SFTP-Eigenschaften 
 Gilt für Version: 1.0.
 
 ### Datei erstellen
-Lädt eine Datei per SFTP hoch. ```POST: /datasets/default/files```
+Lädt eine Datei in SFTP hoch. ```POST: /datasets/default/files```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -74,14 +78,14 @@ Lädt eine Datei per SFTP hoch. ```POST: /datasets/default/files```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Datei kopieren
-Kopiert eine Datei auf den SFTP-Server. ```POST: /datasets/default/copyFile```
+Kopiert eine Datei in SFTP. ```POST: /datasets/default/copyFile```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query| (Keine)|Pfad zur Quelldatei|
+|source|string|Ja|query| (Keine)|Pfad zur Quelldatei|
 |Ziel|string|Ja|query|(Keine) |Pfad zur Zieldatei, einschließlich des Dateinamens|
 |overwrite|Boolescher Wert|no|query|(Keine)|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
 
@@ -89,10 +93,10 @@ Kopiert eine Datei auf den SFTP-Server. ```POST: /datasets/default/copyFile```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Datei löschen 
-Löscht eine Datei auf dem SFTP-Server. ```DELETE: /datasets/default/files/{id}```
+Löscht eine Datei in SFTP. ```DELETE: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -102,25 +106,25 @@ Löscht eine Datei auf dem SFTP-Server. ```DELETE: /datasets/default/files/{id}`
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner auf dem SFTP-Server (Beispiel: ZIP). ```POST: /datasets/default/extractFolderV2```
+Extrahiert eine Archivdatei in einen Ordner mithilfe von SFTP (Beispiel: .zip). ```POST: /datasets/default/extractFolderV2```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query|(Keine) |Pfad zur Archivdatei|
-|Ziel|string|Ja|query|(Keine) |Pfad zum Zielordner|
+|source|string|Ja|query|(Keine) |Pfad zur Archivdatei|
+|destination|string|Ja|query|(Keine) |Pfad zum Zielordner|
 |overwrite|Boolescher Wert|no|query|(Keine)|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Dateiinhalte abrufen
-Ruft den Dateiinhalt anhand der ID vom SFTP-Server ab. ```GET: /datasets/default/files/{id}/content```
+Ruft Dateiinhalte mithilfe der ID von SFTP ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -130,11 +134,11 @@ Ruft den Dateiinhalt anhand der ID vom SFTP-Server ab. ```GET: /datasets/default
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft den Dateiinhalt anhand des Pfads vom SFTP-Server ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft Dateiinhalte mithilfe des Pfads von SFTP ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -144,11 +148,11 @@ Ruft den Dateiinhalt anhand des Pfads vom SFTP-Server ab. ```GET: /datasets/defa
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten abrufen 
-Ruft Dateimetadaten vom SFTP-Server anhand der Datei-ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten von SFTP mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -158,11 +162,11 @@ Ruft Dateimetadaten vom SFTP-Server anhand der Datei-ID ab. ```GET: /datasets/de
 | Name | Beschreibung |
 | --- | --- |
 | 200 | OK | 
-| die Standardeinstellung | Fehler beim Vorgang.
+| default | Fehler beim Vorgang.
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten vom SFTP-Server anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Dateimetadaten von SFTP mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -172,11 +176,11 @@ Ruft Dateimetadaten vom SFTP-Server anhand des Pfads ab. ```GET: /datasets/defau
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren
-Aktualisiert den Dateiinhalt per SFTP. ```PUT: /datasets/default/files/{id}```
+Aktualisiert den Dateiinhalt mithilfe von SFTP. ```PUT: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -187,11 +191,11 @@ Aktualisiert den Dateiinhalt per SFTP. ```PUT: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Wenn eine Datei oder geändert erstellt wird 
-Löst einen Workflow aus, wenn eine Datei auf dem SFTP-Server geändert wird. ```GET: /datasets/default/triggers/onupdatedfile```
+Löst einen Workflow aus, wenn eine Datei in SFTP geändert wird. ```GET: /datasets/default/triggers/onupdatedfile```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -201,7 +205,7 @@ Löst einen Workflow aus, wenn eine Datei auf dem SFTP-Server geändert wird. ``
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -217,7 +221,7 @@ Löst einen Workflow aus, wenn eine Datei auf dem SFTP-Server geändert wird. ``
 
 | Name | Datentyp | Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -227,7 +231,7 @@ Löst einen Workflow aus, wenn eine Datei auf dem SFTP-Server geändert wird. ``
 
 | Name | Datentyp | Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -250,4 +254,4 @@ Löst einen Workflow aus, wenn eine Datei auf dem SFTP-Server geändert wird. ``
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

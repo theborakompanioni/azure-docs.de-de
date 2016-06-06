@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der FTP-API zu Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die FTP-API und REST-API-Parameter"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Hinzufügen des FTP-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+    description="Übersicht über den FTP-Connector mit REST-API-Parametern"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der FTP-API
-Stellen Sie eine Verbindung mit einem FTP-Server her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, zu löschen usw. Die FTP-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem FTP-Connector
+Stellen Sie eine Verbindung mit einem FTP-Server her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, zu löschen usw. Der FTP-Connector kann verwendet werden in:
 
 - Logik-Apps (in diesem Thema erläutert)
 - PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
@@ -41,16 +41,12 @@ Trigger | Actions
 --- | ---
 <ul><li>Ruft eine aktualisierte Datei ab</li></ul> | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Aktualisierte Datei abrufen</li><li>Datei aktualisieren</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer FTP-Verbindung
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte ein:
 
-|Eigenschaft| Erforderlich|Beschreibung|
-| ---|---|---|
-|Serveradresse| Ja | Geben Sie den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse des FTP-Servers ein.|
-|Benutzername| Ja | Geben Sie den Benutzernamen für die Verbindung mit dem FTP-Server ein.|
-|Kennwort | Ja | Geben Sie das Kennwort für den Benutzernamen ein.|
+
+>[AZURE.INCLUDE [Schritte zum Herstellen einer FTP-Verbindung](../../includes/connectors-create-api-ftp.md)]
 
 Nachdem Sie eine Verbindung hergestellt haben, geben Sie die FTP-Eigenschaften ein, z. B. Quelldatei oder Zielordner. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -103,7 +99,7 @@ Löscht eine Datei auf dem FTP-Server. ```DELETE: /datasets/default/files/{id}``
 |default|Fehler beim Vorgang.|
 
 ### Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner auf dem FTP-Server (Beispiel: ZIP). ```POST: /datasets/default/extractFolderV2```
+Extrahiert eine Archivdatei in einen Ordner auf dem FTP-Server (Beispiel: .zip). ```POST: /datasets/default/extractFolderV2```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -118,7 +114,7 @@ Extrahiert eine Archivdatei in einen Ordner auf dem FTP-Server (Beispiel: ZIP). 
 |default|Fehler beim Vorgang.|
 
 ### Dateiinhalte abrufen
-Ruft den Dateiinhalt anhand der ID vom FTP-Server ab. ```GET: /datasets/default/files/{id}/content```
+Ruft Dateiinhalte mithilfe der ID vom FTP-Server ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -132,7 +128,7 @@ Ruft den Dateiinhalt anhand der ID vom FTP-Server ab. ```GET: /datasets/default/
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft den Dateiinhalt anhand des Pfads vom FTP-Server ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft Dateiinhalte mithilfe des Pfads vom FTP-Server ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -146,7 +142,7 @@ Ruft den Dateiinhalt anhand des Pfads vom FTP-Server ab. ```GET: /datasets/defau
 
 
 ### Dateimetadaten abrufen 
-Ruft Dateimetadaten auf dem FTP-Server anhand der Datei-ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten vom FTP-Server mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -160,7 +156,7 @@ Ruft Dateimetadaten auf dem FTP-Server anhand der Datei-ID ab. ```GET: /datasets
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten auf dem FTP-Server anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Dateimetadaten vom FTP-Server mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -246,6 +242,6 @@ Aktualisiert eine Datei auf dem FTP-Server. ```PUT: /datasets/default/files/{id}
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

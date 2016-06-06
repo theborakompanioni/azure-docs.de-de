@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der OneDrive-API zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
-description="Übersicht über die OneDrive-API und REST-API-Parameter"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Hinzufügen des OneDrive-Connectors zu PowerApps Enterprise oder Logik-Apps | Microsoft Azure"
+description="Übersicht über den OneDrive-Connector mit REST-API-Parametern"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/12/2016"
+ms.date="05/18/2016"
 ms.author="mandia"/>
 
-# Erste Schritte mit der OneDrive-API
+# Erste Schritte mit dem OneDrive-Connector
 
-Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. Die OneDrive-API kann in Folgendem verwendet werden:
+Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. Der OneDrive-Connector kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 - PowerApps
@@ -37,24 +37,24 @@ OneDrive ermöglicht Folgendes:
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus OneDrive abgerufen werden. 
 - Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
 - Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in OneDrive erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
-- Hinzufügen der OneDrive-API zu PowerApps Enterprise. Die Benutzer können diese API anschließend in ihren Apps verwenden. 
+- Fügen Sie den OneDrive-Connector in PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
-Die OneDrive-API weist die folgenden Trigger und Aktionen auf.
+Der OneDrive-Connector enthält die folgenden Trigger und Aktionen.
 
 | Trigger | Aktionen|
 | --- | --- |
 |<ul><li>Wenn eine Datei erstellt wird</li><li>Wenn eine Datei geändert wird</li></ul> | <ul><li>Datei erstellen</li><li>Dateien in einem Ordner auflisten</li><li>Wenn eine Datei erstellt wird</li><li>Datei kopieren</li><li>Datei löschen</li><li>Ordner extrahieren</li><li>Dateiinhalt anhand der ID abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten anhand der ID abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Stammordner auflisten</li><li>Datei aktualisieren</li><li>Wenn eine Datei geändert wird</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit OneDrive
 
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit OneDrive erlauben.
+Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Ihrem OneDrive erlauben.
 
 1. Melden Sie sich bei Ihrem OneDrive-Konto an.
 2. Erlauben Sie, dass Ihre Logik-Apps sich mit Ihrem OneDrive verbinden und es nutzen. 
@@ -312,4 +312,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
 [7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

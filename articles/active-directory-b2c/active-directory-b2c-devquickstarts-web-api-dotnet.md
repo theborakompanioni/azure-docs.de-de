@@ -58,7 +58,9 @@ Beachten Sie, dass in diesem Artikel nicht behandelt wird, wie die gerade erstel
 
 ## Herunterladen des Codes
 
-Der Code für dieses Tutorial [wird auf GitHub verwaltet](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet). Zum Erstellen des Beispiels können Sie [das Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
+[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-devquickstarts-bug-fix.md)]
+
+Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [das Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git
@@ -70,7 +72,7 @@ Nachdem Sie den Beispielcode heruntergeladen haben, öffnen Sie zum Einstieg die
 
 ## Konfigurieren des Aufgabendiensts
 
-Wenn `TaskService` eine Anforderung von `TaskWebApp` erhält, sucht er nach einem gültigen Zugriffstoken zum Authentifizieren der Anforderung. Zum Überprüfen des Zugriffstokens müssen Sie `TaskService` Informationen zur App bereitstellen. Öffnen Sie im Projekt `TaskService` die Datei `web.config` im Stammverzeichnis des Projekts, und ersetzen Sie die Werte im Abschnitt `<appSettings>`:
+Wenn `TaskService` eine Anforderung von `TaskWebApp` erhält, sucht er nach einem gültigen Zugriffstoken zum Authentifizieren der Anforderung. Zum Überprüfen des Zugriffstokens müssen Sie `TaskService` Informationen zur App bereitstellen. Öffnen Sie im `TaskService`-Projekt die Datei `web.config` im Stammverzeichnis des Projekts, und ersetzen Sie die Werte im Abschnitt `<appSettings>`:
 
 ```
 <appSettings>
@@ -88,8 +90,7 @@ Wenn `TaskService` eine Anforderung von `TaskWebApp` erhält, sucht er nach eine
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-Dieser Artikel behandelt nicht die Details der Sicherung von `TaskService`. Um zu erfahren, wie eine Web-API sicher Anforderungen mithilfe von Azure AD B2C authentifiziert, sehen Sie sich unseren 
-[Artikel mit den ersten Schritten für die Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) an.
+Dieser Artikel behandelt nicht die Details der Sicherung von `TaskService`. Um zu erfahren, wie eine Web-API sicher Anforderungen mithilfe von Azure AD B2C authentifiziert, sehen Sie sich unseren [Artikel mit den ersten Schritten für die Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) an.
 
 ## Konfigurieren der Aufgaben-Web-App
 
@@ -252,7 +253,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ### Abrufen eines Zugriffstoken in den Controllern
 
-Nachdem Sie ein Zugriffstoken für den `TaskService`-Back-End erhalten und im ADAL-Tokencache gespeichert haben, müssen Sie es verwenden. `TasksController` ist verantwortlich für die Kommunikation mit der `TaskService`-API und sendet die HTTP-Anforderungen an die API, um Aufgaben zu lesen, zu erstellen und zu löschen. Bevor eine HTTP-Anforderung gesendet wird, rufen Sie ein Token von ADAL ab:
+Nachdem Sie ein Zugriffstoken für das `TaskService`-Back-End erhalten und im ADAL-Tokencache gespeichert haben, müssen Sie es verwenden. `TasksController` ist verantwortlich für die Kommunikation mit der `TaskService`-API und sendet die HTTP-Anforderungen an die API, um Aufgaben zu lesen, zu erstellen und zu löschen. Bevor eine HTTP-Anforderung gesendet wird, rufen Sie ein Token von ADAL ab:
 
 ```C#
 // Controllers\TasksController.cs
@@ -389,4 +390,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/15/2016" 
+	ms.date="05/17/2016" 
 	ms.author="awills"/>
 
 # Verwalten von Preisen und Kontingenten für Application Insights
@@ -35,8 +35,7 @@ Die Wahl des Tarifs wirkt sich auf Folgendes aus:
 
 * [Monatliches Kontingent](#monthly-quota): Die Menge der Telemetriedaten, die Sie jeden Monat analysieren können.
 * [Datenrate](#data-rate): Die maximale Rate, mit der Daten aus Ihrer App verarbeitet werden können.
-* [Aufbewahrung](#data-retention): Die Dauer der Aufbewahrung Ihrer Daten zur Ansicht im Application Insights-Portal.
-* [Fortlaufender Export](#continuous-export): Die Möglichkeit des Exports von Daten in andere Tools und Dienste.
+* [Fortlaufender Export](#continuous-export) – Die Möglichkeit des Exports von Daten in andere Tools und Dienste.
 
 Diese Grenzwerte werden für jede Application Insights-Ressource separat festgelegt.
 
@@ -101,8 +100,6 @@ Es gibt drei Buckets, die getrennt gezählt werden:
 
 
 
-
-
 *Was geschieht, wenn meine App, das Pro-Sekunde-Volumen überschreitet?*
 
 * Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Einige Versionen des SDK versuchen in diesem Fall, die Daten erneut zu senden, sodass über Minuten hinweg die vielfache Menge gesendet wird; andere wie beispielsweise JavaScript SDK löschen die abgelehnten Daten einfach.
@@ -112,7 +109,7 @@ Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über 
 *Woher weiß ich, wie viele Datenpunkte meine App sendet?*
 
 * Öffnen Sie „Einstellungen/Kontingent und Preise“, um das Diagramm mit dem Datenvolumen anzuzeigen.
-* Oder fügen Sie im Metrik-Explorer ein neues Diagramm hinzu, und wählen Sie **Datenpunktvolumen** als Metrik aus. Aktivieren Sie „Gruppierung“, und gruppieren Sie nach **Datentyp**.
+* Oder fügen Sie im Metrik-Explorer ein neues Diagramm hinzu, und wählen Sie **Datenpunktvolumen** als Metrik aus. Aktivieren Sie "Gruppierung", und gruppieren Sie nach **Datentyp**.
 
 
 ### Tipps zur Reduzierung der Datenrate
@@ -125,24 +122,9 @@ Wenn Begrenzungsdrosselungen auftreten, können Sie verschiedene Schritte ausfü
 * Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden. 
 
 
-### Begrenzungen von Namen
-
-1.	Bis zu 200 eindeutige Metriknamen und 200 eindeutige Eigenschaftennamen für Ihre Anwendung. Zu den Metriken gehören Daten, die über TrackMetric gesendet werden, sowie Messungen für andere Datentypen wie z. B. Ereignisse. [Metriken und Eigenschaftennamen][api] gelten global pro Instrumentationsschlüssel und werden nicht auf den Datentyp begrenzt.
-2.	[Eigenschaften][apiproperties] können nur zur Filterung und zur Gruppierung verwendet werden, solange sie weniger als 100 eindeutige Werte für jede Eigenschaft aufweisen. Sobald es mehr als 100 eindeutige Werte gibt, kann die Eigenschaft zwar noch zur Suche und Filterung, jedoch nicht mehr für Filter verwendet werden.
-3.	Standardeigenschaften wie z. B. RequestName und die Seiten-URL, sind auf 1000 eindeutige Werte pro Woche beschränkt. Nach 1000 eindeutigen Werten werden zusätzliche Werte als „Andere Werte“ gekennzeichnet. Der ursprüngliche Wert kann nach wie vor für die Volltextsuche und die Filterung verwendet werden.
-
-## Beibehaltung von Daten
-
-Ihr Tarif bestimmt, wie lange Daten im Portal aufbewahrt werden und dadurch auch, wie weit zurück Sie die Zeiträume festlegen können.
-
-
-* Rohdatenpunkte (also Instanzen, die Sie bei der Diagnosesuche überprüfen können): 7 Tage.
-* Aggregierte Daten (d. h. Zählungen, Mittelwerte und andere statistischen Daten, die im Metrik-Explorer angezeigt werden) werden im Maß von 1 Minute für 30 Tage und 1 Stunde oder 1 Tag (abhängig vom Typ) für 90 Tage aufbewahrt.
-
-
 ## Stichproben
 
-Die [Stichprobenerstellung](app-insights-sampling.md) ist eine Methode, die Menge der von Ihrer App beibehaltenen Telemetriedaten zu verringern, während die Möglichkeit erhalten bleibt, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln und korrekte Ereigniszahlen zu erhalten. Die Stichprobenerstellung unterstützt Sie dabei, innerhalb Ihres monatlichen Kontingents zu bleiben.
+Die [Stichprobenerstellung](app-insights-sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln und korrekte Ereigniszahlen zu erhalten. Die Stichprobenerstellung unterstützt Sie dabei, innerhalb Ihres monatlichen Kontingents zu bleiben.
 
 Es gibt verschiedene Formen der Stichprobenerstellung. Wir empfehlen die [adaptive Stichprobenerstellung](app-insights-sampling.md), bei der die Menge der an Ihre App gesendeten Telemetriedaten automatisch angepasst wird. Die Stichprobenerstellung findet im SDK Ihrer Web-App statt, sodass der Telemetriedatenverkehr im Netzwerk verringert wird. Sie können die Stichprobenerstellung nutzen, wenn Sie .NET Framework für Ihre Web-App verwenden: Installieren Sie einfach die neueste (Beta-) Version des SDK.
 
@@ -155,9 +137,18 @@ Die Stichprobenerstellung ist eine effektive Möglichkeit, die Gebühren zu senk
 
 ## Anzeigen der Rechnung für Ihr Azure-Abonnement
 
-Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt. Sie sehen die Details zu Ihrer Azure-Rechnung im Bereich „Abrechnung“ des Azure-Portals oder im [Azure-Abrechnungsportal](https://account.windowsazure.com/Subscriptions).
+Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt. Sie sehen die Details zu Ihrer Azure-Rechnung im Bereich "Abrechnung" des Azure-Portals oder im [Azure-Abrechnungsportal](https://account.windowsazure.com/Subscriptions).
 
 ![Wählen Sie im seitlichen Menü die Option „Abrechnung“.](./media/app-insights-pricing/02-billing.png)
+
+
+
+## Begrenzungen von Namen
+
+1.	Bis zu 200 eindeutige Metriknamen und 200 eindeutige Eigenschaftennamen für Ihre Anwendung. Zu den Metriken gehören Daten, die über TrackMetric gesendet werden, sowie Messungen für andere Datentypen wie z. B. Ereignisse. [Metriken und Eigenschaftennamen][api] gelten global pro Instrumentationsschlüssel und werden nicht auf den Datentyp begrenzt.
+2.	[Eigenschaften][apiproperties] können nur zur Filterung und zur Gruppierung verwendet werden, solange sie weniger als 100 eindeutige Werte für jede Eigenschaft aufweisen. Sobald es mehr als 100 eindeutige Werte gibt, kann die Eigenschaft zwar noch zur Suche und Filterung, jedoch nicht mehr für Filter verwendet werden.
+3.	Standardeigenschaften wie z. B. RequestName und die Seiten-URL, sind auf 1000 eindeutige Werte pro Woche beschränkt. Nach 1000 eindeutigen Werten werden zusätzliche Werte als „Andere Werte“ gekennzeichnet. Der ursprüngliche Wert kann nach wie vor für die Volltextsuche und die Filterung verwendet werden.
+
 
 ## Zusammenfassung der Grenzwerte
 
@@ -173,4 +164,4 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

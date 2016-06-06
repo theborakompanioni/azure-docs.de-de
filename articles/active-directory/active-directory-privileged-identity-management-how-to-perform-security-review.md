@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Ausführen einer Sicherheitsüberprüfung in Azure AD Privileged Identity Management
 
 Azure Active Directory (AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen die privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Office 365 oder Microsoft Intune verwalten.
 
-Wenn Ihnen eine Administratorrolle zugewiesen wurde, werden Sie vom Sicherheitsadministrator Ihrer Organisation möglicherweise gebeten, regelmäßig zu überprüfen, ob Sie diese Rolle für Ihre Aufgaben benötigen, und dies zu bestätigen. Sie erhalten möglicherweise eine E-Mail mit einem Link, oder Sie können direkt zum [Azure-Portal](https://portal.azure.com) wechseln. Führen Sie die Schritte in diesem Artikel aus, um die Ihnen zugewiesenen Rollen selbst zu überprüfen.
+Wenn Ihnen eine Administratorrolle zugewiesen wurde, werden Sie vom Administrator für privilegierte Rollen Ihrer Organisation möglicherweise gebeten, regelmäßig zu überprüfen, ob Sie diese Rolle für Ihre Aufgaben benötigen, und dies zu bestätigen. Sie erhalten möglicherweise eine E-Mail mit einem Link, oder Sie können direkt zum [Azure-Portal](https://portal.azure.com) wechseln. Führen Sie die Schritte in diesem Artikel aus, um die Ihnen zugewiesenen Rollen selbst zu überprüfen.
 
-Wenn Sie Sicherheitsadministrator sind und sich für die Sicherheitsüberprüfungen interessieren, erhalten Sie weitere Informationen unter [Starten einer Sicherheitsüberprüfung](active-directory-privileged-identity-management-how-to-start-security-review.md).
+Wenn Sie Administrator für privilegierte Rollen sind und sich für die Sicherheitsüberprüfungen interessieren, erhalten Sie weitere Informationen unter [Gewusst wie: Starten einer Sicherheitsüberprüfung](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
 ## Hinzufügen der Anwendung Privileged Identity Management
 
@@ -49,4 +49,4 @@ Der Zugriff wird erst geändert, wenn [die Überprüfung abgeschlossen ist](acti
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

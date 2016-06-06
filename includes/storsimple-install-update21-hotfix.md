@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 05/18/16-->
+<!--author=alkohli last changed: 05/19/16-->
 
 #### So laden Sie Hotfixes herunter
 
@@ -95,9 +95,9 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
 
     Daraufhin sollten die folgenden Versionen angezeigt werden.
 
-    - HcsSoftwareVersion: 6.3.9600.17704
-    - CisAgentVersion: 1.0.9299.0
-    - MdsAgentVersion: 330.0.4698.13
+    - `HcsSoftwareVersion: 6.3.9600.17705`
+    - `CisAgentVersion: 1.0.9299.0`
+    - `MdsAgentVersion: 30.0.4698.16` 
 
 	Wenn die Versionsnummern nach dem Anwenden des Updates nicht geändert werden, bedeutet dies, dass der Hotfix nicht angewendet werden konnte. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
 
@@ -184,7 +184,7 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
         -----------------------MAINTENANCE MODE------------------------
     	Microsoft Azure StorSimple Appliance Model 8100
     	Name: Update2-8100-SHG0997879L76YD
-    	Software Version: 6.3.9600.17704
+    	Software Version: 6.3.9600.17705
     	Copyright (C) 2014 Microsoft Corporation. All rights reserved.
     	You are connected to Controller1
     	---------------------------------------------------------------
@@ -238,3 +238,5 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
     `Exit-HcsMaintenanceMode`
 
 1. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodus-Updates im Portal angezeigt wird.
+
+<!---HONumber=AcomDC_0525_2016-->

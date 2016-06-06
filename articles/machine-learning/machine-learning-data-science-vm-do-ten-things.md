@@ -404,7 +404,7 @@ Wenn Ihre Daten sich im Azure-Blobspeicher befinden, können Sie die Daten mit e
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-In Visual Studio können Sie Daten aus dem Blobspeicher lesen, einige Datenmanipulationen ausführen, Features entwickeln und die resultierenden Daten entweder in Azure Data Lake oder im Azure-Blobspeicher ausgeben. Wenn Sie auf die Daten im Blobspeicher verweisen, verwenden Sie **wasb://**; wenn Sie auf die Daten in Azure Data Lake verweisen, verwenden Sie **swbhdfs://**.
+In Visual Studio können Sie Daten aus dem Blobspeicher lesen, einige Datenmanipulationen ausführen, Features entwickeln und die resultierenden Daten entweder in Azure Data Lake oder im Azure-Blobspeicher ausgeben. Wenn Sie auf die Daten im Blobspeicher verweisen, verwenden Sie ****wasb://**; wenn Sie auf die Daten in Azure Data Lake verweisen, verwenden Sie ****swbhdfs://**.
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
@@ -910,4 +910,4 @@ Sie können andere in diesem Artikel dargestellte Azure-Datendienste und -Analys
 ## Zusammenfassung
 Dies sind nur einige Dinge, die mit der Microsoft Data Science Virtual Machine möglich sind. Sie können viele weitere Dinge tun, um sie als wirksame Analyseumgebung zu nutzen.
 
-<!----HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der Dynamic CRM Online-API-in PowerApps Enterprise oder zu Ihren Logik-Apps | Microsoft Azure"
-description="Übersicht über die CRM Online-API und REST-API-Parameter"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Hinzufügen des Dynamic CRM Online-Connectors in PowerApps Enterprise oder zu Ihren Logik-Apps | Microsoft Azure"
+description="Übersicht über den CRM Online-Connector mit REST-API-Parametern"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor="" tags="connectors" />
 
 <tags
@@ -13,11 +13,11 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der CRM-API
-Verbinden Sie sich mit Dynamics CRM Online, um z. B. einen neuen Datensatz zu erstellen oder ein Element zu aktualisieren. Die CRM Online-API kann verwendet werden von:
+# Erste Schritte mit dem CRM-Connector
+Verbinden Sie sich mit Dynamics CRM Online, um z. B. einen neuen Datensatz zu erstellen oder ein Element zu aktualisieren. Der CRM-Online-Connector kann verwendet werden in:
 
 - Logik-Apps
 - PowerApps
@@ -29,25 +29,25 @@ Verbinden Sie sich mit Dynamics CRM Online, um z. B. einen neuen Datensatz zu er
 CRM Online ermöglicht Folgendes:
 
 - Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus CRM Online abgerufen werden. 
-- Verwenden von Aktionen, die z. B. einen Datensatz löschen oder Entitäten abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein Element in CRM aktualisiert wird, können Sie z. B. über Office 365 eine E-Mail senden.
+- Verwenden von Aktionen, die z. B. einen Datensatz löschen oder Entitäten abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein Element in CRM aktualisiert wird, können Sie z. B. über Office 365 eine E-Mail senden.
 
 
-Informationen zum Hinzufügen einer API in PowerApps Enterprise finden Sie unter [Registrieren einer API in PowerApps](../power-apps/powerapps-register-from-available-apis.md).
+Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
-Die CRM-API bietet die folgenden Aktionen. Es gibt keine Trigger.
+Der CRM-Connector beinhaltet die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen|
 | --- | --- |
 |Keine| <ul><li>Neuen Datensatz erstellen</li><li>Datensätze abrufen</li><li>Datensatz löschen</li><li>Datensatz abrufen</li><li>Entitäten abrufen</li><li>Element aktualisieren</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit CRM Online
 
-Wenn Sie die API Ihren Logik-Apps hinzufügen, müssen Sie sich bei Dynamic CRM Online anmelden. Führen Sie folgende Schritte aus, um sich bei CRM Online anzumelden und die Konfiguration der **Verbindung** in Ihrer Logik-App abzuschließen:
+Wenn Sie den Connector Ihren Logik-Apps hinzufügen, müssen Sie sich bei Dynamic CRM Online anmelden. Führen Sie folgende Schritte aus, um sich bei CRM Online anzumelden und die Konfiguration der **Verbindung** in Ihrer Logik-App abzuschließen:
 
 1. Wählen Sie in Ihrer Logik-App **Aktion hinzufügen** aus: ![Konfigurieren von CRM Online][13]
 4. Geben Sie in das Suchfeld „CRM“ ein, und warten Sie, bis die Suche alle Einträge mit CRM im Namen zurückgibt.
@@ -57,7 +57,7 @@ Wenn Sie die API Ihren Logik-Apps hinzufügen, müssen Sie sich bei Dynamic CRM 
 8. Kehren Sie nach der Anmeldung zur Logik-App zurück, um diese zu vervollständigen. Dazu fügen Sie weitere benötigte Trigger und Aktionen hinzu.
 9. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
 
-Nachdem Sie die Verbindung hergestellt haben, geben Sie die CRM Online-Eigenschaften ein, z. B. Tabelle oder Dataset. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie die Verbindung hergestellt haben, geben Sie die CRM Online-Eigenschaften ein, z. B. Tabelle oder Dataset. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -77,7 +77,7 @@ Erstellt einen neuen Datensatz in einer Entität. ```POST: /datasets/{dataset}/t
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datensätze abrufen 
@@ -96,7 +96,7 @@ Erstellt einen neuen Datensatz in einer Entität. ```POST: /datasets/{dataset}/t
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -110,7 +110,7 @@ Es gibt keine Parameter für diesen Aufruf.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -127,7 +127,7 @@ Dient zum Abrufen eines bestimmten Datensatzes, der für eine CRM-Entität vorha
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Element aus einer Liste löschen 
 Löscht ein Element aus einer Liste. ```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
@@ -142,7 +142,7 @@ Löscht ein Element aus einer Liste. ```DELETE: /datasets/{dataset}/tables/{tabl
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -160,7 +160,7 @@ Dient zum teilweisen Aktualisieren eines für eine CRM-Entität vorhandenen Date
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Entitäten abrufen 
 Dient zum Abrufen der Liste der Entitäten, die in einer CRM-Instanz vorhanden sind. ```GET: /datasets/{dataset}/tables```
@@ -173,7 +173,7 @@ Dient zum Abrufen der Liste der Entitäten, die in einer CRM-Instanz vorhanden s
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -189,7 +189,7 @@ Dient zum Abrufen der Liste der Entitäten, die in einer CRM-Instanz vorhanden s
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -199,7 +199,7 @@ Dient zum Abrufen der Liste der Entitäten, die in einer CRM-Instanz vorhanden s
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -268,4 +268,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [14]: ./media/connectors-create-api-crmonline/crmconfig2.png
 [15]: ./media/connectors-create-api-crmonline/crmconfig3.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

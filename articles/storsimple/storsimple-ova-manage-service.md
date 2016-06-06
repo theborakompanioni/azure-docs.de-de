@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/05/2016"
+   ms.date="05/19/2016"
    ms.author="alkohli" />
 
 # Bereitstellen des StorSimple Manager-Diensts für StorSimple Virtual Array
@@ -38,7 +38,7 @@ Folgende häufig anfallenden Aufgaben können über die StorSimple Manager-Seite
 - Abrufen des Dienstregistrierungsschlüssels
 - Neugenerieren des Dienstregistrierungsschlüssels
 
-In diesem Lernprogramm wird beschrieben, wie diese Aufgaben durchgeführt werden.
+In diesem Lernprogramm wird beschrieben, wie diese Aufgaben durchgeführt werden. Die in diesem Artikel enthaltenen Informationen gelten nur für StorSimple Virtual Arrays. Weitere Informationen zur StorSimple 8000-Serie finden Sie unter [Bereitstellen des StorSimple Manager-Diensts](storsimple-manage-service.md).
 
 ## Erstellen von Diensten
 
@@ -51,6 +51,8 @@ Erstellen Sie mithilfe der Option **Schnellerfassung** einen StorSimple Manager-
 Sie können beim Erstellen des Diensts auch ein Standardspeicherkonto generieren.
 
 Mit einem Dienst können mehrere Geräte verwaltet werden. Ein Gerät kann jedoch nicht mehrere Dienste umfassen. Große Unternehmen können mit mehreren Dienstinstanzen mit verschiedenen Abonnements, Organisationen oder sogar Bereitstellungsstandorten arbeiten.
+
+> [AZURE.NOTE] Sie benötigen separate Instanzen des StorSimple Manager-Diensts, um StorSimple-Geräte der Serie 8000 und StorSimple Virtual Arrays zu verwalten.
 
 Führen Sie die folgenden Schritte aus, um einen Dienst zu erstellen.
 
@@ -111,4 +113,4 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0525_2016-->

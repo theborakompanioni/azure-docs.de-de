@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/16/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell"/>
 
 # Technische Referenz für den generischen LDAP-Connector
@@ -30,18 +30,18 @@ Bei Verweisen auf IETF-RFCs wird in diesem Dokument folgendes Format verwendet: 
 
 ## Übersicht über den generischen LDAP-Connector
 
-Der generische LDAP-Connector ermöglicht die Integration des Synchronisierungsdiensts in einen LDAP-Server (Version 3).
+Der generische LDAP-Connector ermöglicht die Integration des Synchronisierungsdiensts in einen LDAP-Server (Version 3).
 
 Bestimmte Vorgänge und Schema-Elemente (etwa zum Ausführen eines Deltaimports) werden in den IETF-RFCs nicht behandelt. Für diese Vorgänge werden nur explizit angegebene LDAP-Verzeichnisse unterstützt.
 
 Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen Connectorversion unterstützten Features:
 
-| Funktion | Support |
-| --- | --- |
-| Verbundene Datenquelle | Der Connector wird für alle (RFC 4510-konformen) LDAP v3-Server unterstützt. Er wurde mit folgenden Tools getestet: <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory – Globaler Katalog (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (vorher Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>**Wichtige nicht unterstützte Verzeichnisse:** <li>Microsoft Active Directory-Domänendienste (AD DS) [Verwenden Sie stattdessen den integrierten Active Directory Connector]</li><li>Oracle Internet Directory (OID)</li> |
-| Szenarien | <li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li> |
-| Vorgänge |Die folgenden Vorgänge werden für alle LDAP-Verzeichnisse unterstützt: <li>Vollständiger Import</li><li>Export</li>Folgende Vorgänge werden nur für angegebene Verzeichnisse unterstützt:<li>Deltaimport</li><li>Kennwort festlegen, Kennwort ändern</li> |
-| Schema | <li>Das Schema wird auf der Grundlage des LDAP-Schemas erkannt (RFC3673 und RFC4512/4.2).</li><li>Unterstützt strukturelle Klassen, Erweiterungsklassen und die Objektklasse „extensibleObject“ (RFC4512/4.3).</li>
+Funktion | Support
+--- | --- |
+Verbundene Datenquelle | Der Connector wird für alle (RFC 4510-konformen) LDAP v3-Server unterstützt. Er wurde mit folgenden Tools getestet: <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory – Globaler Katalog (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (vorher Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>**Wichtige nicht unterstützte Verzeichnisse:** <li>Microsoft Active Directory-Domänendienste (AD DS) [Verwenden Sie stattdessen den integrierten Active Directory Connector]</li><li>Oracle Internet Directory (OID)</li>
+Szenarien | <li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li>
+Vorgänge |Die folgenden Vorgänge werden für alle LDAP-Verzeichnisse unterstützt: <li>Vollständiger Import</li><li>Export</li>Folgende Vorgänge werden nur für angegebene Verzeichnisse unterstützt:<li>Deltaimport</li><li>Kennwort festlegen, Kennwort ändern</li>
+Schema | <li>Das Schema wird auf der Grundlage des LDAP-Schemas erkannt (RFC3673 und RFC4512/4.2).</li><li>Unterstützt strukturelle Klassen, Erweiterungsklassen und die Objektklasse „extensibleObject“ (RFC4512/4.3).</li>
 
 ### Unterstützung von Deltaimport und Kennwortverwaltung
 
@@ -83,7 +83,7 @@ Unterstützte Verzeichnisse für Deltaimport und Kennwortverwaltung:
     - Unterstützt alle Vorgänge für den Deltaimport
     - Unterstützt Kennwort festlegen und Kennwort ändern
 - RadiantOne Virtual Directory Server (VDS)
-    - Mindestens Version 7.1.1 erforderlich
+    - Mindestens Version 7.1.1 erforderlich
     - Unterstützt alle Vorgänge für den Deltaimport
     - Unterstützt Kennwort festlegen und Kennwort ändern
 -  Sun One Directory Server
@@ -106,9 +106,9 @@ Zur Durchführung von Import- und Exportvorgängen für die Objekte im verbunden
 
 ### Ports und Protokolle
 
-Der Connector verwendet die in der Konfiguration angegebene Portnummer. Diese ist standardmäßig auf 389 (LDAP) bzw. auf 636 (LDAPS) festgelegt.
+Der Connector verwendet die in der Konfiguration angegebene Portnummer. Diese ist standardmäßig auf 389 (LDAP) bzw. auf 636 (LDAPS) festgelegt.
 
-Bei Verwendung von LDAPS muss SSL 3.0 oder TLS verwendet werden. SSL 2.0 wird nicht unterstützt und kann nicht aktiviert werden.
+Bei Verwendung von LDAPS muss SSL 3.0 oder TLS verwendet werden. SSL 2.0 wird nicht unterstützt und kann nicht aktiviert werden.
 
 ### Erforderliche Steuerelemente und Features
 
@@ -145,7 +145,7 @@ Der Connector versucht zu erkennen, ob die Optionen auf dem Server vorhanden sin
 
 Der Deltaimport ist nur verfügbar, wenn ein Supportverzeichnis erkannt wurde. Momentan werden folgende Methoden verwendet:
 
-- LDAP-Zugriffsprotokoll. Siehe [http://www.openldap.org/doc/admin24/overlays.html#Access Logging](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
+- LDAP-Zugriffsprotokoll. Siehe „http://www.openldap.org/doc/admin24/overlays.html#Access Logging“ (http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
 - LDAP-Änderungsprotokoll. Siehe [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
 - Zeitstempel. Für Novell/NetIQ eDirectory verwendet der Connector den letzten Datums-/Uhrzeitwert zum Abrufen erstellter und aktualisierter Objekte. Novell/NetIQ eDirectory bietet keine entsprechende Möglichkeit zum Abrufen gelöschter Objekte. Diese Option kann auch verwendet werden, wenn auf dem LDAP-Server keine andere Deltaimportmethode aktiv ist. Mit dieser Option können keine gelöschten Objekte importiert werden.
 - USNChanged. Siehe [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
@@ -154,7 +154,7 @@ Der Deltaimport ist nur verfügbar, wenn ein Supportverzeichnis erkannt wurde. M
 
 Folgende LDAP-Features werden nicht unterstützt:
 
-- LDAP-Verweise zwischen Servern (RFC 4511/4.1.10)
+- LDAP-Verweise zwischen Servern (RFC 4511/4.1.10)
 
 ## Erstellen eines neuen Connectors
 
@@ -205,19 +205,19 @@ Der Änderungsprotokoll-DN ist der vom Delta-Änderungsprotokoll verwendete Name
 
 Die folgende Liste gibt Aufschluss über die standardmäßigen Änderungsprotokoll-DNs:
 
-| Verzeichnis | Delta-Änderungsprotokoll |
-| --- | --- |
-| Microsoft AD LDS und AD GC | Automatische Erkennung. USNChanged. |
-| Apache Directory Server | Nicht verfügbar. |
-| Directory 389 | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog** |
-| IBM Tivoli DS | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog** |
-| Isode Directory | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
-| Novell/NetIQ eDirectory | Nicht verfügbar. Zeitstempel. Der Connector verwendet den Datums-/Uhrzeitwert der letzten Aktualisierung, um hinzugefügte und aktualisierte Datensätze abzurufen. |
-| Open DJ/DS | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog** |
-| Open LDAP | Zugriffsprotokoll. Zu verwendender Standardwert: **cn=accesslog** |
-| Oracle DSEE | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog** |
-| RadiantOne VDS | Virtuelles Verzeichnis. Abhängig vom mit VDS verbundenen Verzeichnis. |
-| Sun One Directory Server | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog** |
+Verzeichnis | Delta-Änderungsprotokoll
+--- | ---
+Microsoft AD LDS und AD GC | Automatische Erkennung. USNChanged.
+Apache Directory Server | Nicht verfügbar.
+Directory 389 | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
+IBM Tivoli DS | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
+Isode Directory | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
+Novell/NetIQ eDirectory | Nicht verfügbar. Zeitstempel. Der Connector verwendet den Datums-/Uhrzeitwert der letzten Aktualisierung, um hinzugefügte und aktualisierte Datensätze abzurufen.
+Open DJ/DS | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
+Open LDAP | Zugriffsprotokoll. Zu verwendender Standardwert: **cn=accesslog**
+Oracle DSEE | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
+RadiantOne VDS | Virtuelles Verzeichnis. Abhängig vom mit VDS verbundenen Verzeichnis.
+Sun One Directory Server | Änderungsprotokoll. Zu verwendender Standardwert: **cn=changelog**
 
 Das Kennwortattribut ist der Name des Attributs, das der Connector bei Kennwortänderungen/-festlegungen zum Festlegen des Kennworts verwenden soll. Er ist standardmäßig auf **userPassword** festgelegt, kann jedoch bei Bedarf für ein bestimmtes LDAP-System angepasst werden.
 
@@ -225,7 +225,7 @@ In der Liste mit zusätzlichen Partitionen können weitere Namespaces hinzugefü
 
 ### Konfigurieren der Bereitstellungshierarchie
 
-Auf dieser Seite können Sie die DN-Komponente (beispielsweise die Organisationseinheit) dem bereitzustellenden Objekttyp (z. B. „organizationalUnit“) zuordnen.
+Auf dieser Seite können Sie die DN-Komponente (beispielsweise die Organisationseinheit) dem bereitzustellenden Objekttyp (z. B. „organizationalUnit“) zuordnen.
 
 ![Bereitstellungshierarchie](./media/active-directory-aadconnectsync-connector-genericldap/provisioninghierarchy.png)
 
@@ -249,19 +249,19 @@ Diese Seite besitzt immer einen vorkonfigurierten Wert und kann nicht geändert 
 
 Im Anschluss finden Sie eine Liste mit LDAP-Servern und verwendetem Anker:
 
-| Verzeichnis | Ankerattribut |
-| --- | --- |
-| Microsoft AD LDS und AD GC | objectGUID |
-| 389 Directory Server | dn |
-| Apache Directory | dn |
-| IBM Tivoli DS | dn |
-| Isode Directory | dn |
-| Novell/NetIQ eDirectory | GUID |
-| Open DJ/DS | dn |
-| Open LDAP | dn |
-| Oracle ODSEE | dn |
-| RadiantOne VDS | dn |
-| Sun One Directory Server | dn |
+Verzeichnis | Ankerattribut
+--- | ---
+Microsoft AD LDS und AD GC | objectGUID
+389 Directory Server | dn
+Apache Directory | dn
+IBM Tivoli DS | dn
+Isode Directory | dn
+Novell/NetIQ eDirectory | GUID
+Open DJ/DS | dn
+Open LDAP | dn
+Oracle ODSEE | dn
+RadiantOne VDS | dn
+Sun One Directory Server | dn
 
 ## Sonstige Hinweise
 
@@ -279,4 +279,4 @@ Bei Verzeichnissen mit einem datums-/uhrzeitbasierten Delta-Änderungsprotokoll 
 
 -	Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

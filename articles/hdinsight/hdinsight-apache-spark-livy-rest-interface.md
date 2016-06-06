@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="05/24/2016"
 	ms.author="nitinme"/>
 
 
 # Remoteübermittlung von Spark-Aufträgen an einen HDInsight Spark-Cluster unter Linux mithilfe von Livy (Vorschau)
 
-Der Apache Spark-Cluster unter Azure-HDInsight bietet mit Livy eine REST-Schnittstelle zur ortsunabhängigen Remoteübermittlung von Aufträgen an einen Spark-Cluster. Eine ausführliche Dokumentation finden Sie unter [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
+Der Apache Spark-Cluster in Azure HDInsight bietet mit Livy eine REST-Schnittstelle zur Remoteübermittlung von Aufträgen an einen Spark-Cluster. Eine ausführliche Dokumentation finden Sie unter [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
 
 Mit Livy können Sie interaktive Spark-Shells ausführen oder Batchaufträge zur Ausführung in Spark übermitteln. In diesem Artikel wird die Übermittlung von Batchaufträgen mithilfe von Livy behandelt. Die Syntax weiter unten verwendet cURL für an den Livy-Endpunkt gerichtete REST-Aufrufe.
 
@@ -69,6 +69,14 @@ Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clu
 **Beispiel**:
 
 	curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
+
+## Livy und hohe Verfügbarkeit
+
+Livy bietet hohe Verfügbarkeit für im Cluster ausgeführte Spark-Aufträge. Nachstehend sind einige Beispiele angegeben.
+
+* Wenn der Livy-Dienst nach der Übermittlung eines Remoteauftrags an einen Spark-Cluster abstürzt, wird der Auftrag weiterhin im Hintergrund ausgeführt. Wenn Livy wieder funktioniert, stellt es den Status des Auftrags wieder her und erstattet Bericht.
+
+* Jupyter Notebooks für HDInsight wird am Back-End durch Livy unterstützt. Wenn ein Notebook einen Spark-Auftrag ausführt und der Livy-Dienst neu gestartet wird, führt das Notebook weiterhin die Codezellen aus.
 
 ## Beispiele
 
@@ -189,4 +197,4 @@ Führen Sie die folgenden Schritte aus:
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

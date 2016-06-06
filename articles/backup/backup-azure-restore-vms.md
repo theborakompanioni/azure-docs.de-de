@@ -65,9 +65,9 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Computer aus den Sic
   - Geben Sie den Namen des virtuellen Computers an: In einem bestimmten Clouddienst sollte der Name des virtuellen Computers eindeutig sein. Das Überschreiben vorhandener VMs wird nicht unterstützt. 
   - Wählen Sie einen Clouddienst für den virtuellen Computer aus: Dies ist für das Erstellen eines virtuellen Computers erforderlich. Sie können entweder einen vorhandenen Clouddienst verwenden oder einen neuen Clouddienst erstellen.
 
-        Es kann ein beliebiger Name für den Clouddienst gewählt werden, dieser muss jedoch eindeutig sein. Typischerweise wird der Clouddienstname einer öffentlich zugänglichen URL der Form "[Clouddienst].cloudapp.net" zugeordnet. Azure lässt die Erstellung eines neuen Clouddiensts nicht zu, wenn der Name bereits verwendet wird. Wenn Sie einen neuen Clouddienst erstellen, erhält dieser denselben Namen wie der virtuelle Computer – deshalb sollte der gewählte VM-Name eindeutig sein, um auf den zugeordneten Clouddienst angewendet werden zu können.
+        Whatever cloud service name is picked should be globally unique. Typically, the cloud service name gets associated with a public-facing URL in the form of [cloudservice].cloudapp.net. Azure will not allow you to create a new cloud service if the name has already been used. If you choose to create select create a new cloud service, it will be given the same name as the virtual machine – in which case the VM name picked should be unique enough to be applied to the associated cloud service.
 
-        Es werden nur Clouddienste und virtuelle Netzwerke angezeigt, die keiner Affinitätsgruppe in den Details zur Instanzenwiederherstellung zugeordnet sind. [Weitere Informationen](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+        We only display cloud services and virtual networks that are not associated with any affinity groups in the restore instance details. [Learn More](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
 2. Wählen Sie ein Speicherkonto für den virtuellen Computer aus: Dies ist für das Erstellen des virtuellen Computers erforderlich. Sie können aus vorhandenen Speicherkonten in der gleichen Region auswählen, in der sich auch der Azure Backup-Tresor befindet. Wir unterstützen keine Speicherkonten, die zonenredundant sind oder dem Premium-Speichertyp entsprechen.
 
@@ -100,7 +100,7 @@ Nach dem Abschluss des Wiederherstellungsvorgangs wird dieser auf der Registerka
 
 ![Wiederherstellungsauftrag abgeschlossen](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-Nach dem Wiederherstellen des virtuellen Computers müssen Sie möglicherweise die auf dem ursprünglichen virtuellen Computer vorhandenen Erweiterungen neu installieren und für den virtuellen Computer im Azure-Portal [die Endpunkte ändern](virtual-machines-set-up-endpoints).
+Nach dem Wiederherstellen des virtuellen Computers müssen Sie möglicherweise die auf dem ursprünglichen virtuellen Computer vorhandenen Erweiterungen neu installieren und für den virtuellen Computer im Azure-Portal [die Endpunkte ändern](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 
 ## Sicherung für wiederhergestellte virtuelle Computer
 Wenn Sie den virtuellen Computer unter dem gleichen Clouddienst mit dem gleichen Namen wie die ursprünglich gesicherte VM wiederhergestellt haben, wird die VM nach der Wiederherstellung weiterhin gesichert. Wenn Sie entweder die VM unter einem anderen Clouddienst wiederhergestellt oder einen anderen Namen für die wiederhergestellte VM angegeben haben, wird sie als neue VM behandelt, und Sie müssen die Sicherung für die wiederhergestellte VM einrichten.
@@ -142,11 +142,11 @@ PowerShell bietet die Möglichkeit, nur die VM-Datenträger aus einer Sicherung 
 
 Zum vollständigen Wiederherstellen des virtuellen Computers im Anschluss an die Wiederherstellung von Datenträgern gehen Sie so vor:
 
-1. Stellen Sie die Datenträger aus dem Sicherungstresor mithilfe von [Azure Backup PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) wieder her.
+1. Stellen Sie die Datenträger aus dem Sicherungstresor mithilfe von [Azure Backup PowerShell](../backup-azure-vms-classic-automation.md#restore-an-azure-vm) wieder her.
 
 2. Erstellen mithilfe der PowerShell-Cmdlets die für Load Balancer/mehrere NICs/mehrere reservierte IP-Adressen erforderliche VM-Konfiguration, und verwenden Sie sie zum Erstellen der VM mit der gewünschten Konfiguration.
 	- Erstellen Sie die VM im Clouddienst mit [internem Load Balancer](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
-	- Erstellen Sie die VM zum Herstellen einer Verbindung dem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
+	- Erstellen Sie die VM zum Herstellen einer Verbindung dem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/de-DE/documentation/articles/load-balancer-internet-getstarted/).
 	- Erstellen Sie die VM mit [mehreren NICs](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
 	- Erstellen Sie die VM mit [mehreren reservierten IP-Adressen](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
 
@@ -155,4 +155,4 @@ Zum vollständigen Wiederherstellen des virtuellen Computers im Anschluss an die
 - [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
 - [Verwalten virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

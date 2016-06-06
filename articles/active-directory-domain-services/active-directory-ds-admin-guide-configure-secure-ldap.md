@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="05/20/2016"
 	ms.author="maheshu"/>
 
 # Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD-Domänendienste verwaltete Domäne
@@ -30,7 +30,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 
 4. Ein **Zertifikat, das zum Aktivieren von sicherem LDAP verwendet werden kann**
     - **Empfohlen**: Beschaffen Sie ein Zertifikat von Ihrer Unternehmenszertifizierungsstelle oder von einer öffentlichen Zertifizierungsstelle. Dies ist die wesentlich sicherere Konfigurationsoption.
-	- Alternativ kann können Sie [ein selbstsigniertes Zertifikat erstellen](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-1---obtain-a-certificate-for-secure-ldap). Das Verfahren dafür wird weiter unten in diesem Artikel beschrieben.
+	- Alternativ kann können Sie [ein selbstsigniertes Zertifikat erstellen](#task-1---obtain-a-certificate-for-secure-ldap). Das Verfahren dafür wird weiter unten in diesem Artikel beschrieben.
 
 <br>
 
@@ -60,7 +60,7 @@ Zuerst müssen Sie das Zertifikat beschaffen, das Sie zum Zugreifen auf die verw
 ### Option A (empfohlen): Beschaffen eines Zertifikats für sicheres LDAP von einer Zertifizierungsstelle
 Wenn Ihre Organisation eine unternehmensinterne Public Key-Infrastruktur (PKI) unterhält, müssen Sie das Zertifikat von der Unternehmenszertifizierungsstelle (ZS) für Ihre Organisation beschaffen. Wenn Ihre Organisation ihre Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, müssen Sie das Zertifikat für sicheres LDAP von der öffentlichen Zertifizierungsstelle beschaffen.
 
-Stellen Sie beim Anfordern des Zertifikats sicher, dass alle Anforderungen erfüllt werden, die unter [Anforderungen an ein Zertifikat für sicheres LDAP](./active-directory-ds-admin-guide-configure-secure-ldap.md/#requirements-for-the-secure-ldap-certificate) aufgeführt sind.
+Stellen Sie beim Anfordern des Zertifikats sicher, dass alle Anforderungen erfüllt werden, die unter [Anforderungen an ein Zertifikat für sicheres LDAP](#requirements-for-the-secure-ldap-certificate) aufgeführt sind.
 
 Beachten Sie: Die Clientcomputer, die eine Verbindung mit der verwalteten Domäne über sicheres LDAP herstellen sollen, müssen dem Aussteller des Zertifikats für sicheres LDAP (LDAPS) vertrauen.
 
@@ -147,7 +147,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 
     ![Exportieren des Zertifikats – Kennwort angeben](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
-	> [AZURE.NOTE] Notieren Sie sich dieses Kennwort. Sie benötigen es zum Aktivieren von sicherem LDAP für diese verwaltete Domäne in [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain).
+	> [AZURE.NOTE] Notieren Sie sich dieses Kennwort. Sie benötigen es zum Aktivieren von sicherem LDAP für diese verwaltete Domäne in [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne](#task-3---enable-secure-ldap-for-the-managed-domain).
 
 15. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an.
 
@@ -201,7 +201,7 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 ## Aufgabe 4: Aktivieren des Zugriffs über sicheres LDAP und eine Internetverbindung
 **Optionale Aufgabe**: Überspringen Sie diese Aufgabe, wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten.
 
-Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain) beschriebenen Schritte vollständig ausgeführt haben.
+Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](#task-3---enable-secure-ldap-for-the-managed-domain) beschriebenen Schritte vollständig ausgeführt haben.
 
 1. Auf der Seite **Konfigurieren** wird im Abschnitt **Domänendienste** eine Option **SICHEREN LDAP-ZUGRIFF ÜBER DAS INTERNET AKTIVIEREN** angezeigt. Die Einstellung hierfür ist standardmäßig auf **NEIN** festgelegt, weil der Internetzugriff auf die verwaltete Domäne über sicheres LDAP in der Standardeinstellung deaktiviert ist.
 
@@ -224,7 +224,7 @@ Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](./active-direc
 ## Aufgabe 5: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet
 **Optionale Aufgabe**: Überspringen Sie diese Aufgabe, wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten.
 
-Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 4](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-4---enable-secure-ldap-access-over-the-internet) beschriebenen Schritte vollständig ausgeführt haben.
+Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 4](#task-4---enable-secure-ldap-access-over-the-internet) beschriebenen Schritte vollständig ausgeführt haben.
 
 Nachdem Sie den Zugriff auf Ihre verwaltete Domäne über sicheres LDAP und eine Internetverbindung aktiviert haben, müssen Sie das DNS aktualisieren, damit die Clientcomputer die verwaltete Domäne finden können. Am Ende von Aufgabe 4 wird auf der Registerkarte **Konfigurieren** im Feld **EXTERNE IP-ADRESSE FÜR LDAPS-ZUGRIFF** eine externe IP-Adresse angezeigt.
 
@@ -242,4 +242,4 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 
 - [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

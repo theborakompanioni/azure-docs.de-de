@@ -21,7 +21,7 @@
 
 ## Nutzen elastischer Pools und Entwickeln von effizienteren mehrinstanzenfähigen Apps
 
-Wenn Sie als SaaS-Entwickler eine mehrinstanzenfähige App für eine Vielzahl von Kunden erstellen, gehen Sie häufig Kompromisse im Hinblick auf Leistung, Verwaltung und Sicherheit ein. Mit den Pools für elastische Datenbanken von Azure SQL-Datenbank gehören diese Kompromisse der Vergangenheit an. Die Pools unterstützen Sie bei der Verwaltung und Überwachung mehrinstanzenfähiger Apps und ermöglichen es Ihnen, von der Isolation eines Kunden pro Datenbank zu profitieren.
+Wenn Sie als SaaS-Entwickler eine mehrinstanzenfähige App für eine Vielzahl von Kunden erstellen, gehen Sie häufig Kompromisse im Hinblick auf Leistung, Verwaltung und Sicherheit ein. Mit den Pools für elastische Datenbanken von Azure SQL-Datenbank gehören diese Kompromisse der Vergangenheit an. Die Pools unterstützen Sie bei der Verwaltung und Überwachung mehrinstanzenfähiger Apps und ermöglichen es Ihnen, von der Isolation eines Kunden pro Datenbank zu profitieren. Informationen finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
 
 ![build-multi-tenant-apps](./media/sql-database-build-multi-tenant-apps/sql-database-build-multi-tenant-apps.png)
 
@@ -47,17 +47,17 @@ Basic-, Standard- und Premium-Pools bieten eine große Auswahl an Leistungs-, Sp
 
 Zusätzlich zu den elastischen Pools stehen Features von SQL-Datenbank zur Verfügung, die Sie bei der Verwaltung operativer Aktivitäten über mehrere Datenbanken hinweg unterstützen:
 
-**Ausführen von datenbankübergreifenden Abfragen und Berichten** [Abfragen elastischer Datenbanken](sql-database-elastic-query-overview.md) ermöglichen es Ihnen, Abfragen oder Berichte über die Datenbanken in Ihrem elastischen Pool hinweg auszuführen und in einem Arbeitsschritt auf Remotedaten zuzugreifen, die in verschiedenen Datenbanken Ihres Pools gespeichert sind.
+** Ausführen von datenbankübergreifenden Abfragen und Berichten ** [Abfragen elastischer Datenbanken](sql-database-elastic-query-overview.md) ermöglichen es Ihnen, Abfragen oder Berichte über die Datenbanken in Ihrem elastischen Pool hinweg auszuführen und in einem Arbeitsschritt auf Remotedaten zuzugreifen, die in verschiedenen Datenbanken Ihres Pools gespeichert sind.
 
-**Ausführen datenbankübergreifender Transaktionen** [Transaktionen für elastische Datenbanken](sql-database-elastic-transactions-overview.md) ermöglichen es Ihnen, Transaktionen und Vorgänge über verschiedene Datenbanken in SQL-Datenbank hinweg auszuführen (z.B. bei der Verarbeitung von datenbankübergreifenden Finanztransaktionen oder beim Aktualisieren des Bestands in einer Datenbank und in Bestellungen).
+** Ausführen datenbankübergreifender Transaktionen ** [Transaktionen für elastische Datenbanken](sql-database-elastic-transactions-overview.md) ermöglichen es Ihnen, Transaktionen und Vorgänge über verschiedene Datenbanken in SQL-Datenbank hinweg auszuführen (z.B. bei der Verarbeitung von datenbankübergreifenden Finanztransaktionen oder beim Aktualisieren des Bestands in einer Datenbank und in Bestellungen).
 
-**Ausführen derselben Vorgänge in verschiedenen Datenbanken** [Aufträge für elastische Datenbanken](sql-database-elastic-jobs-overview.md) ermöglichen Ihnen das Ausführen administrativer Vorgänge, z.B. das Neuerstellen von Indizes oder eine Schemaaktualisierung für jede Datenbank in Ihrem elastischen Pool.
+** Ausführen derselben Vorgänge in verschiedenen Datenbanken ** [Aufträge für elastische Datenbanken](sql-database-elastic-jobs-overview.md) ermöglichen Ihnen das Ausführen administrativer Vorgänge, z.B. das Neuerstellen von Indizes oder eine Schemaaktualisierung für jede Datenbank in Ihrem elastischen Pool.
 
 Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
 ## Nächste Schritte
 
-Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/), und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
 ## Weitere Informationen
 
@@ -65,4 +65,4 @@ Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/se
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->
