@@ -159,11 +159,11 @@ App Service unterstützt viele Wege zur Bereitstellung Ihres Codes in einer API-
 
         node server.js
 
-1. Wenn Sie zu ****http://localhost:8000/contacts** navigieren, wird die JSON-Ausgabe der Kontaktliste angezeigt (oder Sie werden je nach Browser zum Herunterladen aufgefordert).
+1. Wenn Sie zu **http://localhost:8000/contacts** navigieren, wird die JSON-Ausgabe der Kontaktliste angezeigt (oder Sie werden je nach Browser zum Herunterladen aufgefordert).
 
     ![API-Aufruf alle Kontakte](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
-1. Wenn Sie zu ****http://localhost:8000/contacts/2** navigieren, wird der entsprechende Kontakt für diesen ID-Wert angezeigt.
+1. Wenn Sie zu **http://localhost:8000/contacts/2** navigieren, wird der entsprechende Kontakt für diesen ID-Wert angezeigt.
 
     ![API-Aufruf bestimmter Kontakt](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 
