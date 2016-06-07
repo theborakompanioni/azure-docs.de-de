@@ -21,8 +21,8 @@
 | Kurzübersicht |
 | --------------- |
 | [Logik-Apps – Definitionssprache](https://msdn.microsoft.com/library/azure/mt643789.aspx) |
-| [Logik-Apps Managed API Documentation](https://azure.microsoft.com/documentation/articles/apis-list) (Verwaltete API für Logik-Apps – Dokumentation) |
-| [Logik-Apps – Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps) |
+| [Logik-Apps – Connector-Dokumentation](../connectors/apis-list.md) |
+| [Logik-Apps – Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=azurelogicapps) |
 
 Azure App Service ist eine vollständig verwaltete PaaS-Lösung (Platform-as-a-Service) für Entwickler, die das Erstellen von Web-Apps, mobilen Apps und Integrations-Apps vereinfacht. Logik-Apps sind ein Teil dieser Produktfamilie. Sie ermöglichen es technisch orientierten Benutzern und Entwicklern, die Ausführung von Geschäftsprozessen und Workflows zu automatisieren. Die praktische Umsetzung erfolgt mithilfe eines leicht zu bedienenden visuellen Designers.
 
@@ -68,6 +68,7 @@ Es folgt eine Beschreibung einiger der wichtigsten Elemente von Logik-Apps.
 ## Erste Schritte  
 
  - Befolgen Sie zum Einstieg in Logik-Apps das Lernprogramm [Erstellen einer Logik-App][create].  
+ - [Anzeigen allgemeiner Beispiele und Szenarien](app-service-logic-examples-and-scenarios.md)
  - [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694) 
  - [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
 - Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][appservice].
@@ -80,4 +81,4 @@ Es folgt eine Beschreibung einiger der wichtigsten Elemente von Logik-Apps.
 [rules]: app-service-logic-use-biztalk-rules.md
 [templates]: app-service-logic-use-logic-app-templates.md
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

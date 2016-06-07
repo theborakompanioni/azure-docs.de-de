@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/16/2016"
+   ms.date="05/26/2016"
    ms.author="cherylmc"/>
 
 
@@ -103,7 +103,7 @@ Standardrouten sind nur für Sitzungen mit privatem Azure-Peering zulässig. In 
 
 **Hinweis**: Das Ankündigen von Standardrouten führt dazu, dass die Aktivierung von Windows- und anderen VM-Lizenzen verloren geht. Führen Sie die Schritte [dieser Anleitung](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) aus, um dies zu umgehen.
 
-## Unterstützung für BGP-Communitys (in Kürze verfügbar)
+## Unterstützung für BGP-Communitys
 
 
 Dieser Abschnitt enthält eine Übersicht darüber, wie BGP-Communitys mit ExpressRoute verwendet werden. Microsoft kündigt Routen in den Pfaden für das öffentliche Peering und Microsoft-Peering an, und die Routen sind dabei mit den entsprechenden Communitywerten versehen. Die Gründe für diese Vorgehensweise und die Details zu den Communitywerten sind weiter unten beschrieben. Microsoft berücksichtigt aber keine Communitywerte, mit denen Routen gekennzeichnet sind, die gegenüber Microsoft angekündigt werden.
@@ -116,7 +116,7 @@ Die Seite [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md)
 
 Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf hohe Verfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie die gleiche Gruppe von Präfixen, die von Microsoft über die Pfade für das öffentliche Peering und das Microsoft-Peering angekündigt werden. Dies bedeutet, dass Sie dann mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Dies kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Daraus können sich für verschiedene Dienste suboptimale Konnektivitätsleistungen ergeben.
 
-Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsoft-Peering angekündigt werden, mit den passenden BGP-Communitywerten, um die Region anzugeben, in der die Präfixe gehostet werden. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und Kunden optimales Routing zu bieten.
+Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsoft-Peering angekündigt werden, mit den passenden BGP-Communitywerten, um die Region anzugeben, in der die Präfixe gehostet werden. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Kunden](expressroute-optimize-routing.md) zu bieten.
 
 | **Geopolitische Region** | **Microsoft Azure-Region** | **BGP-Communitywert** |
 |---|---|---|
@@ -163,10 +163,7 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | **CRM Online** | 12076:5040 |
 | **Andere Office 365-Dienste** | 12076:5100 |
 
-
-### Ändern von Routingvoreinstellungen
-
-Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen festgelegt werden. Sie müssen ein BGP-Sitzungspaar pro Peering einrichten, um sicherzustellen, dass die Anforderungen für die [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) erfüllt sind. Sie können Ihr Netzwerk aber so konfigurieren, dass ein bestimmter Link vorrangig behandelt wird, indem Sie standardmäßige Verfahren zur BGP-Routenänderung verwenden. Sie können unterschiedliche lokale BGP-Voreinstellungen auf jeden Link anwenden, damit ein Pfad von Ihrem Netzwerk zu Microsoft gegenüber dem anderen Pfad vorgezogen wird. Sie können den AS-PATH bei Routenankündigungen voranstellen, um den Datenverkehrsfluss von Microsoft in Ihr Netzwerk zu beeinflussen.
+>[AZURE.NOTE] Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen für die gegenüber Microsoft angekündigten Routen festgelegt werden.
 
 ## Nächste Schritte
 
@@ -176,4 +173,4 @@ Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen festgelegt wer
 	- [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

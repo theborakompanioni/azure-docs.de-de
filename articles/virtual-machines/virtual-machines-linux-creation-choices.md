@@ -21,8 +21,6 @@
 
 Virtuelle Computer können mit Azure und dem Resource Manager-Bereitstellungsmodell auf unterschiedliche Arten erstellt werden, um den Anforderungen unterschiedlicher Benutzer und Szenarien gerecht zu werden. Dieser Artikel fasst die Unterschiede und die Entscheidungen zusammen, die Sie beim Erstellen Ihres virtuellen Linux-Computers treffen können.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 ## Tool-Optionen
 
 ### Befehlsshell: Azure-Befehlszeilenschnittstelle 
@@ -67,4 +65,4 @@ Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf e
 
 * Schritte zum schnellen Zurücksetzen von Kennwörtern oder SSH-Schlüsseln sowie zum Verwalten von Benutzern finden Sie [hier](virtual-machines-linux-using-vmaccess-extension.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

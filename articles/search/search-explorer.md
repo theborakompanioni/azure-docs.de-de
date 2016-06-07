@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="ashmaka"
 />
 # Abfragen des Azure Search-Indexes mit dem Azure-Portal
@@ -47,4 +47,4 @@ In diesem Leitfaden erfahren Sie, wie Sie Ihren Azure Search-Index im Azure-Port
 
 ![](./media/search-explorer/search-bar.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

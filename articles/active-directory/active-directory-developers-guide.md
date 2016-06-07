@@ -99,16 +99,15 @@ Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsb
 
 ### Authentifizierungsprotokolle
 
-- [SAML 2.0-Protokoll – Referenz](https://msdn.microsoft.com/library/azure/dn195591.aspx): Mit dem SAML 2.0-Protokoll können Anwendungen für Benutzer das einmalige Anmelden bereitstellen.
+- [Azure Active Directory-Authentifizierungsprotokolle](active-directory-protocols.md): Erfahren Sie mehr über die verschiedenen von Azure Active Directory unterstützten Authentifizierungs- und Autorisierungsprotokolle.
 
+- [SAML 2.0-Protokoll – Referenz](active-directory-saml-protocol-reference.md): Mit dem SAML 2.0-Protokoll können Anwendungen für Benutzer das einmalige Anmelden bereitstellen.
 
-- [OAuth 2.0-Protokoll – Referenz](https://msdn.microsoft.com/library/azure/dn645545.aspx): Mit dem OAuth 2.0-Protokoll können Sie den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure Active Directory-Mandanten autorisieren.
+- [OAuth 2.0-Protokoll – Referenz](active-directory-protocols-oauth-code.md): Mit dem OAuth 2.0-Protokoll können Sie den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure Active Directory-Mandanten autorisieren.
 
+- [OpenID Connect 1.0-Protokoll – Referenz](active-directory-protocols-openid-connect-code.md): Mit dem OpenID Connect 1.0-Protokoll wird OAuth 2.0 um die Verwendung als Authentifizierungsprotokoll erweitert.
 
-- [OpenID Connect 1.0-Protokoll – Referenz](https://msdn.microsoft.com/library/azure/dn645541.aspx): Mit dem OpenID Connect 1.0-Protokoll wird OAuth 2.0 um die Verwendung als Authentifizierungsprotokoll erweitert.
-
-
-- [WS-Federation 1.2-Protokoll – Referenz](https://msdn.microsoft.com/library/azure/dn903702.aspx): Das WS-Federation 1.2-Protokoll ist in der Web Services Federation-Spezifikation, Version 1.2, festgelegt.
+- [WS-Federation 1.2-Protokoll ](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory unterstützt WS-Federation 1.2, wie es in der Spezifikation zu Web Services Federation Version 1.2 angegeben ist.
 
 - [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md): Verwenden Sie dieses Handbuch, um die Ansprüche in SAML 2.0- und JSON-Webtoken (JWT) zu verstehen und auszuwerten.
 
@@ -140,4 +139,4 @@ In diesen Übersichtspräsentationen zur Entwicklung von Apps mithilfe von Azure
 
 - [Azure Active Directory auf Twitter](https://twitter.com/azuread): Azure Active Directory-Ankündigungen in höchstens 140 Zeichen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

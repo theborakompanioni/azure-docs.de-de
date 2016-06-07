@@ -475,22 +475,9 @@ Weitere Informationen zum Service Bus finden Sie in den folgenden Ressourcen:
 * [Servicebus-Dienstseite][sbwacom]  
 * [Verwenden von Servicebus-Warteschlangen][sbwacomqhowto]  
 
-Weitere Informationen über Szenarien mit mehreren Ebenen und die Bereitstellung von Anwendungen in Cloud-Diensten finden Sie unter:
+Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 
 * [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]  
-
-Sie können das Front-End einer Anwendung mit mehreren Ebenen anstelle eines Azure-Cloud-Diensts auch als Azure-Website implementieren.
-
-Um die Anwendung aus diesem Lernprogramm als Standard-Webprojekt anstelle einer Cloud-Dienst-Webrolle zu erstellen, führen Sie die Schritte in diesem Lernprogramm mit den folgenden Unterschieden aus:
-
-1. Wählen Sie bei der Projekterstellung die Projektvorlage **ASP.NET MVC Webanwendung** in der Kategorie **Web** anstelle der Vorlage **Cloud-Dienst** in der Kategorie **Cloud**. Führen Sie anschließend dieselben Schritte zur Erstellung der MVC-Anwendung durch, bis Sie zum Abschnitt **Cloud-Konfigurations-Manager** gelangen.
-
-2. Erstellen Sie die Workerrolle in einer neuen, separaten Lösung, analog zu den ursprünglichen Anweisungen für die Webrolle. Nun erstellen Sie jedoch nur die Workerrolle im Cloud-Dienst-Projekt. Befolgen Sie anschließend dieselben Anweisungen für die Erstellung der Workerrolle.
-
-3. Sie können Front-End und Back-End entweder separat testen oder beide simultan in separaten Visual Studio-Instanzen ausführen.
-
-Informationen zum Bereitstellen des Front-Ends auf einer Azure-Website finden Sie unter [Erstellen einer ASP.NET-Web-App in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md). Informationen zur Bereitstellung des Back-Ends für einen Azure-Clouddienst finden Sie unter [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage].
-
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
@@ -545,4 +532,4 @@ Informationen zum Bereitstellen des Front-Ends auf einer Azure-Website finden Si
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

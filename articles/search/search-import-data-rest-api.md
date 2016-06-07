@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="ashmaka"/>
 
 # Hochladen von Daten in Azure Search über die REST-API
@@ -118,7 +118,7 @@ In diesem Fall verwenden wir `upload`, `mergeOrUpload` und `delete` als Suchakti
 
 Wir gehen davon aus, dass der Index in diesem Beispiel („hotels“) bereits mit einigen Dokumenten gefüllt ist. Beachten Sie, dass bei `mergeOrUpload` nicht alle möglichen Dokumentfelder festgelegt werden mussten und dass bei `delete` nur der Dokumentschlüssel (`hotelId`) definiert wurde.
 
-Beachten Sie außerdem, dass nur bis zu 1000 Dokumente (oder 16 MB) in einer einzigen Indizierungsanforderung enthalten sein können.
+Beachten Sie außerdem, dass nur bis zu 1000 Dokumente (oder 16 MB) in einer einzigen Indizierungsanforderung enthalten sein können.
 
 ## IV. Erläuterungen zum HTTP-Antwortcode
 #### 200
@@ -168,4 +168,4 @@ Weitere Informationen zu Dokumentaktionen und Antworten bei Erfolg/Fehler finden
 ## Weiter
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen in Azure Search](search-query-overview.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

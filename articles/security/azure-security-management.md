@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="05/26/2016"
    ms.author="terrylan"/>
 
 # Sicherheitsverwaltung in Azure
@@ -185,7 +185,7 @@ In der Abbildung unten ist das portable Image ein in die Domäne eingebundenes S
 
 ![][4]
 
-Es ist wichtig zu beachten, dass USB-Laufwerke leichter als durchschnittliche Desktop-PCs verloren gehen. Die Verwendung von BitLocker zum Verschlüsseln des gesamten Volumes sowie eines sicheren Kennworts verringert die Wahrscheinlichkeit, dass ein Angreifer das Laufwerkimage für böswillige Zwecke nutzen kann. Wenn der USB-Speicherstick verloren geht, kann die Gefahr durch Widerrufen und [Ausgeben eines neuen Verwaltungszertifikats](https://technet.microsoft.com/library/hh831574.aspx) und ein schnelles Zurücksetzen des Kennworts zusätzlich verringert werden. Administrative Überwachungsprotokolle sind in Azure angeordnet, nicht auf dem Client, sodass die Gefahr eines potenziellen Datenverlusts weiter reduziert wird.
+Es ist wichtig zu beachten, dass USB-Laufwerke leichter als durchschnittliche Desktop-PCs verloren gehen. Die Verwendung von BitLocker zum Verschlüsseln des gesamten Volumes sowie eines sicheren Kennworts verringert die Wahrscheinlichkeit, dass ein Angreifer das Laufwerkimage für schädliche Zwecke nutzen kann. Wenn der USB-Speicherstick verloren geht, kann die Gefahr durch Widerrufen und [Ausgeben eines neuen Verwaltungszertifikats](https://technet.microsoft.com/library/hh831574.aspx) und ein schnelles Zurücksetzen des Kennworts zusätzlich verringert werden. Administrative Überwachungsprotokolle sind in Azure angeordnet, nicht auf dem Client, sodass die Gefahr eines potenziellen Datenverlusts weiter reduziert wird.
 
 ## Bewährte Methoden
 
@@ -247,4 +247,4 @@ Die folgenden Ressourcen enthalten allgemeinere Informationen zu Azure und verwa
 [3]: ./media/azure-security-management/hardened-workstation-enabled-with-hyper-v.png
 [4]: ./media/azure-security-management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

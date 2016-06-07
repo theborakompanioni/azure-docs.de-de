@@ -13,43 +13,58 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/09/2016"
+	ms.date="05/27/2016"
 	ms.author="tdykstra"/>
 
-# Erste Schritte mit API-Apps und ASP.NET in Azure App Service
+# Erste Schritte mit API-Apps, ASP.NET und Swagger in Azure App Service
 
 [AZURE.INCLUDE [Auswahl](../../includes/app-service-api-get-started-selector.md)]
 
-## Übersicht
+Dies ist das erste Tutorial einer Reihe von Tutorials zur Verwendung der Features von Azure App Service, die als Unterstützung beim Entwickeln und Hosten von RESTful-APIs dienen. In diesem Tutorial wird die Unterstützung für API-Metadaten im Swagger-Format behandelt.
 
-Dies ist das erste Tutorial einer Reihe von Tutorials zur Verwendung der Features von Azure App Service, die als Unterstützung beim Entwickeln und Hosten von RESTful-APIs dienen:
+Sie lernen Folgendes:
 
-* Integrierte Unterstützung für API-Metadaten
-* Unterstützung der [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-* Unterstützung für Authentifizierung und Autorisierung
+* Erstellen und Bereitstellen von [API-Apps](app-service-api-apps-why-best-platform.md) in Azure App Service mit integrierten Tools von Visual Studio 2015
+* Automatisieren der API-Ermittlung mit dem Swashbuckle-NuGet-Paket zum dynamischen Generieren von Metadaten der Swagger-API
+* Verwenden von Metadaten der Swagger-API zum automatischen Generieren von Clientcode für eine API-App
 
-Sie stellen eine Beispielanwendung für zwei [API-Apps](app-service-api-apps-why-best-platform.md) und eine Web-App in Azure App Service bereit. Die Beispielanwendung ist eine Aufgabenliste, die über ein SPA-Front-End (Single-Page-Anwendung), eine ASP.NET-Web-API für die mittlere Ebene und eine ASP.NET-Web-API für die Datenebene verfügt. Das SPA-Front-End basiert auf dem [AngularJS](https://angularjs.org/)-Framework.
+## Beispielanwendung – Übersicht
+
+In diesem Tutorial arbeiten Sie mit einer einfachen Aufgabenlisten-Beispielanwendung. Die Anwendung verfügt über ein SPA-Front-End (Single-Page-Anwendung), eine ASP.NET-Web-API für die mittlere Ebene und eine ASP.NET-Web-API für die Datenebene.
 
 ![API-Apps-Beispielanwendung – Diagramm](./media/app-service-api-dotnet-get-started/noauthdiagram.png)
 
-Hier ist ein Screenshot des SPA-Front-Ends angegeben.
+Hier ist ein Screenshot des [AngularJS](https://angularjs.org/)-Front-Ends angegeben.
 
 ![API-Apps-Beispielanwendung – Aufgabenliste](./media/app-service-api-dotnet-get-started/todospa.png)
 
-Wenn Sie dieses Tutorial abgeschlossen haben, sind die beiden Web-APIs für App Service-API-Apps einsatzbereit. Nach Abschluss des folgenden Tutorials wird die gesamte Anwendung in der Cloud ausgeführt, und die SPA ist in eine App Service-Web-App eingebettet. In den nachfolgenden Tutorials fügen Sie dann die Authentifizierung und Autorisierung hinzu.
+Die Visual Studio-Projektmappe enthält drei Projekte:
 
-## Sie lernen Folgendes
+![](./media/app-service-api-dotnet-get-started/projectsinse.png)
 
-In diesem Lernprogramm lernen Sie Folgendes:
+* **ToDoListAngular** – Front-End: AngularJS-SPA zum Aufrufen der mittleren Ebene 
 
-* Verwenden von API-Apps und Web-Apps in Azure App Service mit integrierten Tools von Visual Studio 2015
-* Automatisieren der API-Ermittlung mit dem Swashbuckle-NuGet-Paket zum dynamischen Generieren der JSON-Daten für die Swagger-API
-* Automatisches Generieren von Clientcode zum Nutzen einer API-App über einen .NET-Client
-* Verwenden des Azure-Portals zum Konfigurieren des Endpunkts für die Metadaten der API-App
+* **ToDoListAPI** – Mittlere Ebene: ASP.NET-Web-API-Projekt zum Aufrufen der Datenebene und Durchführen von CRUD-Operationen für Aufgabenelemente
+
+* **ToDoListDataAPI** – Datenebene: ASP.NET-Web-API-Projekt zum Durchführen von CRUD-Operationen für Aufgabenelemente
+
+Die Architektur mit drei Ebenen ist eine von vielen Architekturen, die Sie mit API-Apps implementieren können. Sie wird hier nur zu Demonstrationszwecken verwendet. Der Code auf jeder Ebene ist so einfach wie möglich gehalten, um die Features von API-Apps zu veranschaulichen. Beispielsweise wird für die Datenebene Serverspeicher anstelle einer Datenbank als Persistenzmechanismus verwendet.
+
+Wenn Sie dieses Tutorial abgeschlossen haben, sind die beiden Web-API-Projekte in der Cloud für App Service-API-Apps einsatzbereit.
+
+Im nächsten Tutorial der Reihe wird das SPA-Front-End für die Cloud bereitgestellt.
 
 ## Voraussetzungen
 
-[AZURE.INCLUDE [Voraussetzungen](../../includes/app-service-api-dotnet-get-started-prereqs.md)]
+* ASP.NET-Web-API: In der Anleitung des Tutorials wird davon ausgegangen, dass Sie über Grundkenntnisse in Bezug auf die Verwendung der ASP.NET-[Web-API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) in Visual Studio verfügen.
+
+* Azure-Konto: Sie können [ein kostenloses Azure-Konto eröffnen](/pricing/free-trial/?WT.mc_id=A261C142F) oder die [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+
+	Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751). Dort können Sie direkt eine kurzzeitige Start-App in App Service erstellen – ohne Kreditkarte und weitere Verpflichtungen.
+
+* Visual Studio 2015 mit [Azure SDK für .NET](http://go.microsoft.com/fwlink/?linkid=518003): Über das SDK wird Visual Studio 2015 automatisch installiert, falls die Anwendung noch nicht installiert ist.
+
+	>[AZURE.NOTE] Abhängig von der Anzahl an bereits bestehenden SDK-Abhängigkeiten auf Ihrem Computer kann der Installationsvorgang des SDK von mehreren Minuten bis hin zu einer halben Stunde oder länger dauern.
 
 ## Herunterladen der Beispielanwendung 
 
@@ -59,53 +74,11 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 2. Öffnen Sie die Projektmappe ToDoList in Visual Studio 2015 oder 2013.
 
-	Die Visual Studio-Projektmappe ist eine Beispielanwendung, bei der einfache Aufgabenelemente eingesetzt werden, die eine Beschreibung und einen Besitzer umfassen. Die Projektmappe enthält drei Projekte:
-
-	![](./media/app-service-api-dotnet-get-started/projectsinse.png)
-
-	* **ToDoListAngular** – Front-End: AngularJS-SPA zum Aufrufen der mittleren Ebene 
-
-	* **ToDoListAPI** – Mittlere Ebene: ASP.NET-Web-API-Projekt zum Aufrufen der Datenebene und Durchführen von CRUD-Operationen für Aufgabenelemente
-
-	* **ToDoListDataAPI** – Datenebene: ASP.NET-Web-API-Projekt zum Durchführen von CRUD-Operationen für Aufgabenelemente
-
-	Die Architektur mit drei Ebenen ist typisch für viele Anwendungen, aber nicht für jedes Szenario geeignet. Hier wird sie hauptsächlich für eine Demonstration der API-Apps-Features genutzt, und der Code auf jeder Ebene wurde daher entsprechend vereinfacht. Im Gegensatz zu einer echten Anwendung verfügt die mittlere Ebene nicht über eine nennenswerte Geschäftslogik. Außerdem wird für die Datenebene als Persistenzmechanismus anstelle einer Datenbank Serverspeicher verwendet. Dies bedeutet, dass bei jedem Neustart der Anwendung alle Änderungen verloren gehen.
-
 2. Erstellen Sie die Projektmappe, um die NuGet-Pakete wiederherzustellen.
 
-## Optional: Lokales Ausführen der Anwendung
+	Wenn Sie die Anwendung vor der Bereitstellung in Betrieb sehen möchten, können Sie sie lokal ausführen. Achten Sie hierbei nur darauf, dass es sich bei allen drei Projekten um Startprojekte handelt. Sie müssen Internet Explorer oder Edge verwenden, da diese Browser ursprungsübergreifende JavaScript-Aufrufe von `http://localhost`-URLs zulassen.
 
-In diesem Abschnitt stellen Sie sicher, dass Sie den Client lokal ausführen und die API aufrufen können, während sie ebenfalls lokal ausgeführt wird.
-
-**Hinweis:** Diese Anweisungen gelten für Internet Explorer und Edge-Browser, da diese Browser ursprungsübergreifende Aufrufe von und an `http://localhost`-URLs ermöglichen. Wenn Sie Chrome verwenden, starten Sie den Browser mit dem Switch `--disable-web-security`. Wenn Sie Firefox verwenden, überspringen Sie diesen Abschnitt.
-
-1. Legen Sie alle drei Projekte als Startprojekte fest, und zwar in der Reihenfolge ToDoListDataAPI, ToDoListAPI und dann ToDoListAngular.
-
-	a. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Eigenschaften**.
-
-	b. Wählen Sie **Mehrere Startprojekte**, und bringen Sie die Projekte dann in die richtige Reihenfolge.
-
-	c. Legen Sie für jedes Projekt **Aktion** auf **Start** fest.
-
-2. Drücken Sie die Taste F5, oder klicken Sie auf **Debuggen > Debugging starten**, um die Projekte im Debugmodus zu starten.
-
-	Es werden drei Browserfenster geöffnet. In zwei Browserfenstern werden Seiten mit dem Fehler HTTP 403 angezeigt (Verzeichnissuche unzulässig). Dies ist für Web-API-Projekte normal. Im dritten Fenster wird die AngularJS-Benutzeroberfläche angezeigt.
-
-	In einigen Browsern werden Dialogfelder mit dem Hinweis angezeigt, dass das Projekt für die Verwendung von SSL konfiguriert ist. Gewünschte Aktion
-
-3. Klicken Sie im Browserfenster, in dem die AngularJS-Benutzeroberfläche angezeigt wird, auf die Registerkarte **Aufgabenliste**.
-
-	Auf der Benutzeroberfläche werden zwei standardmäßige Aufgabenelemente angezeigt.
-
-	![API-Apps-Beispielanwendung – Aufgabenliste](./media/app-service-api-dotnet-get-started/todospa.png)
-
-4. Fügen Sie Aufgabenelemente hinzu, und bearbeiten und löschen Sie sie, um herauszufinden, wie die Anwendung funktioniert.
-
-	Alle vorgenommenen Änderungen werden im Arbeitsspeicher gespeichert und gehen verloren, wenn Sie die Anwendung neu starten.
-
-3. Schließen Sie das Browserfenster, und beenden Sie das Debuggen von Visual Studio.
-
-## Verwenden von Swagger-Metadaten und -Benutzeroberfläche
+## Verwenden von Metadaten und der Benutzeroberfläche der Swagger-API
 
 In Azure App Service ist Unterstützung für [Swagger 2.0](http://swagger.io/)-API-Metadaten integriert. Jede API-App kann einen URL-Endpunkt angeben, der Metadaten für die API im Swagger-JSON-Format zurückgibt. Die Metadaten, die von diesem Endpunkt zurückgegeben werden, können zum Generieren von Clientcode verwendet werden.
 
@@ -127,7 +100,7 @@ In diesem Abschnitt des Tutorials geht es um die generierten Swagger 2.0-Metadat
 
 	![JSON-Metadaten in IE herunterladen](./media/app-service-api-dotnet-get-started/iev1json.png)
 
-	Wenn Sie Chrome, Firefox oder Edge verwenden, zeigt der Browser die JSON-Daten im Browserfenster an.
+	Wenn Sie Chrome, Firefox oder Edge verwenden, zeigt der Browser die JSON-Daten im Browserfenster an. JSON-Code wird in unterschiedlichen Browsern auch unterschiedlich behandelt, und Ihr Browserfenster sieht unter Umständen nicht genau wie im Beispiel aus.
 
 	![JSON-Metadaten in Chrome](./media/app-service-api-dotnet-get-started/chromev1json.png)
 
@@ -192,7 +165,7 @@ In diesem Abschnitt des Tutorials geht es um die generierten Swagger 2.0-Metadat
 
 5. Klicken Sie in der Liste auf die erste **Get**-Schaltfläche.
 
-6. Geben Sie ein Sternchen als Wert für den Parameter `owner` ein, und klicken Sie dann auf **Ausprobieren**.
+6. Geben Sie im Abschnitt **Parameters** ein Sternchen als Wert für den Parameter `owner` ein, und klicken Sie dann auf **Ausprobieren**.
 
 	Beim Hinzufügen der Authentifizierung in späteren Tutorials stellt die mittlere Ebene die tatsächliche Benutzer-ID für die Datenebene bereit. Bisher verfügen alle Aufgaben über ein Sternchen als Besitzer-ID, während die Anwendung ohne aktivierte Authentifizierung ausgeführt wird.
 
@@ -232,9 +205,9 @@ Swashbuckle funktioniert mit allen ASP.NET-Web-API-Projekten. Wenn Sie die Gener
 
 **Hinweis:** Swagger-Metadaten enthalten für jeden API-Vorgang eine eindeutige ID. Swashbuckle generiert standardmäßig ggf. doppelte Swagger-Vorgangs-IDs für Ihre Web-API-Controllermethoden. Dies geschieht, wenn Ihr Controller überladene HTTP-Methoden aufweist, z.B. `Get()` und `Get(id)`. Informationen zur Behandlung von Überladungen finden Sie unter [Anpassen von mit Swashbuckle generierten API-Definitionen](app-service-api-dotnet-swashbuckle-customize.md). Wenn Sie ein Web-API-Projekt in Visual Studio mithilfe der Azure-API-App-Vorlage erstellen, wird Code, der eindeutige Vorgangs-IDs automatisch generiert, der Datei *SwaggerConfig.cs* hinzugefügt.
 
-## Erstellen einer API-App in Azure und Bereitstellen des Projekts ToDoListAPI für die API-App
+## <a id="createapiapp"></a> Erstellen einer API-App in Azure und Bereitstellen von Code für die App
 
-In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assistenten **Web veröffentlichen** integriert sind, um eine neue API-App in Azure zu erstellen. Sie können dann das Projekt ToDoListDataAPI für die neue API-App bereitstellen und die API aufrufen, indem Sie die Swagger-Benutzeroberfläche erneut ausführen, und zwar dieses Mal während der Ausführung in der Cloud.
+In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assistenten **Web veröffentlichen** integriert sind, um eine neue API-App in Azure zu erstellen. Sie können dann das Projekt ToDoListDataAPI für die neue API-App bereitstellen und die API aufrufen, indem Sie die Swagger-Benutzeroberfläche ausführen.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt „ToDoListDataAPI“, und klicken Sie dann auf **Veröffentlichen**.
 
@@ -256,17 +229,11 @@ In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assisten
 
 	![App-Typ im App Service-Dialogfeld](./media/app-service-api-dotnet-get-started/apptype.png)
 
-	Der App-Typ bestimmt nicht die Features, die für die neue API-App, Web-App oder mobile App verfügbar sind. Alle API-App-Features, die in diesen Tutorials veranschaulicht werden, sind für alle drei Typen verfügbar. Die einzigen Unterschiede sind das im Azure-Portal angezeigte Symbol und der Text für den App-Typ sowie die Reihenfolge, in der Features auf einigen Seiten im Portal aufgeführt werden. Das Azure-Portal wird später in diesem Tutorial noch vorgestellt. Es ist eine Webschnittstelle zum Verwalten von Azure-Ressourcen.
+4. Geben Sie einen **API-App-Namen** ein, der in der Domäne *azurewebsites.net* eindeutig ist. Sie können den von Visual Studio vorgeschlagenen Standardnamen übernehmen.
 
-	Für diese Tutorials wird das SPA-Front-End in einer Web-App ausgeführt und jedes Web-API-Back-End in einer API-App. Es würde jedoch alles genauso funktionieren, wenn alle drei Apps Web-Apps oder API-Apps wären. Zudem könnte eine einzelne API-App oder Web-App sowohl das SPA-Front-End als auch das Back-End der mittleren Ebene hosten.
+	Wenn Sie einen Namen eingeben, der bereits von einer anderen Person verwendet wurde, wird rechts ein rotes Ausrufezeichen angezeigt.
 
-4. Geben Sie einen **API-App-Namen** ein, der in der Domäne *azurewebsites.net* eindeutig ist, beispielsweise „ToDoListDataAPI“ mit einer angehängten Nummer.
-
-	Visual Studio schlägt einen eindeutigen Namen vor, indem an den Projektnamen eine Zeichenfolge mit Datum und Uhrzeit angefügt wird. Wenn Sie möchten, können Sie diesen Namen akzeptieren.
-
-	Wenn Sie einen Namen eingeben, der von einer anderen Person bereits verwendet wurde, wird rechts ein rotes Ausrufungszeichen anstelle eines grünen Häkchens angezeigt. Sie müssen dann einen anderen Namen eingeben.
-
-	Dieser Name wird von Azure als Präfix für die URL Ihrer Anwendung verwendet. Die vollständige URL besteht aus diesem Namen und dem Zusatz *.azurewebsites.net*. Wenn der Name beispielsweise `ToDoListDataAPI` lautet, ist die URL `todolistdataapi.azurewebsites.net`.
+	Die URL der API-App lautet `{APi app name}.azurewebsites.net`.
 
 6. Klicken Sie in der Dropdownliste **Ressourcengruppe** auf **Neu**, und geben Sie dann „ToDoListGroup“ oder einen beliebigen anderen Namen ein.
 
@@ -286,7 +253,7 @@ In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assisten
 
 5. Wählen Sie in der Dropdownliste **Standort** den Standort aus, der Ihnen am nächsten liegt.
 
-	Mit dieser Einstellung wird das Azure-Rechenzentrum angegeben, in dem Ihre App ausgeführt wird. In diesem Lernprogramm können Sie ohne spürbaren Unterschied eine beliebige Region auswählen. Für eine Produktions-App sollte sich der Server aber so nah wie möglich bei den Clients befinden, mit denen darauf zugegriffen wird, um [Latenz](http://www.bing.com/search?q=web%20latency%20introduction&qs=n&form=QBRE&pq=web%20latency%20introduction&sc=1-24&sp=-1&sk=&cvid=eefff99dfc864d25a75a83740f1e0090) zu minimieren.
+	Mit dieser Einstellung wird das Azure-Rechenzentrum angegeben, in dem Ihre App ausgeführt wird. Wählen Sie einen Standort in Ihrer Nähe, um die [Latenz](http://www.bing.com/search?q=web%20latency%20introduction&qs=n&form=QBRE&pq=web%20latency%20introduction&sc=1-24&sp=-1&sk=&cvid=eefff99dfc864d25a75a83740f1e0090) möglichst gering zu halten.
 
 5. Klicken Sie in der Dropdownliste **Größe** auf **Free**.
 
@@ -301,8 +268,6 @@ In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assisten
 	![Im Dialogfeld „App Service erstellen“ auf „Erstellen“ klicken](./media/app-service-api-dotnet-get-started/clickcreate.png)
 
 	Visual Studio erstellt die API-App und ein Veröffentlichungsprofil, das alle erforderlichen Einstellungen für die API-App enthält. Anschließend wird der Assistent **Web veröffentlichen** geöffnet, den Sie verwenden, um das Projekt bereitzustellen.
-
-	**Hinweis**: Es gibt auch andere Wege zum Erstellen von API-Apps in Azure App Service. Wenn Sie in Visual Studio ein neues Projekt erstellen, können Sie Azure-Ressourcen dafür beispielsweise genauso wie eben für ein vorhandenes Projekt erstellen. Sie können API-Apps auch erstellen, indem Sie das [Azure-Portal](https://portal.azure.com/), [Azure-Cmdlets für Windows PowerShell](../powershell-install-configure.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](../xplat-cli.md) verwenden.
 
 	Der Assistent **Web veröffentlichen** wird auf der Registerkarte **Verbindung** geöffnet (unten dargestellt).
 
@@ -364,23 +329,17 @@ In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assisten
 
 	Wenn Sie eine API-App auswählen, um Clientcode dafür zu generieren, ruft Visual Studio die Metadaten über diese URL ab.
 
-## <a id="codegen"></a> Nutzen der API-App mit generiertem Clientcode
+## <a id="codegen"></a> Generieren von Clientcode für die Datenebene
 
 Einer der Vorteile der Integration von Swagger in Azure API-Apps ist die automatische Codegenerierung. Generierte Clientklassen erleichtern es, Code zu schreiben, der eine API-App aufruft.
 
-In diesem Abschnitt erfahren Sie, wie Sie eine API-App per ASP.NET-Web-API-Code nutzen.
+Das Projekt ToDoListAPI verfügt bereits über den generierten Clientcode, aber in den folgenden Schritten löschen Sie ihn und erstellen ihn neu, um die Codegenerierung zu erlernen.
 
-### Generieren von Clientcode
-
-Sie können Clientcode für eine API-App mit Visual Studio oder über die Befehlszeile generieren. In diesem Tutorial verwenden Sie Visual Studio. Informationen zur Vorgehensweise mit der Befehlszeile finden Sie auf GitHub.com im Repository [Azure/autorest](https://github.com/azure/autorest) in der Infodatei.
-
-Das Projekt ToDoListAPI verfügt bereits über den generierten Clientcode, aber wir werden ihn löschen und neu generieren, damit Sie die Vorgehensweise erlernen.
-
-1. Löschen Sie im **Projektmappen-Explorer** von Visual Studio im Projekt „ToDoListAPI“ den Ordner *ToDoListDataAPI*.
-
-	Dieser Ordner wurde mithilfe des Codegenerierungsprozesses erstellt, den Sie gleich durchlaufen werden.
+1. Löschen Sie im **Projektmappen-Explorer** von Visual Studio im Projekt „ToDoListAPI“ den Ordner *ToDoListDataAPI*. **Wichtiger Hinweis: Löschen Sie nur den Ordner und nicht das Projekt „ToDoListDataAPI“.**
 
 	![Generierten Clientcode löschen](./media/app-service-api-dotnet-get-started/deletecodegen.png)
+
+	Dieser Ordner wurde mithilfe des Codegenerierungsprozesses erstellt, den Sie gleich durchlaufen werden.
 
 2. Klicken Sie mit der rechten Maustaste auf das Projekt „ToDoListAPI“, und klicken Sie dann auf **Hinzufügen > REST-API-Client**.
 
@@ -394,13 +353,11 @@ Das Projekt ToDoListAPI verfügt bereits über den generierten Clientcode, aber 
 
 	![API-App für Codegenerierung auswählen](./media/app-service-api-dotnet-get-started/codegenselect.png)
 
-	In diesem Dialogfeld haben Sie mehrere Möglichkeiten zum Organisieren von API-Apps in der Liste, falls die Liste für den Bildlauf zu lang wird. Außerdem können Sie eine Suchzeichenfolge eingeben, um API-Apps nach dem Namen zu filtern.
-
 	Beachten Sie Folgendes: Wenn Sie zurück zum Dialogfeld **REST-API-Client hinzufügen** wechseln, sehen Sie, dass das Textfeld mit dem URL-Wert der API-Definition gefüllt wurde. Diesen Wert kennen Sie bereits aus dem Portal.
 
 	![URL der API-Definition](./media/app-service-api-dotnet-get-started/codegenurlplugged.png)
 
-	Eine alternative Möglichkeit zum Abrufen von Metadaten für die Codegenerierung ist das direkte Eingeben von Code, anstatt das Dialogfeld „Durchsuchen“ zu verwenden. Eine weitere Alternative ist die Verwendung der Option **Vorhandene Swagger-Metadatendatei auswählen**. Wenn Sie beispielsweise vor der Bereitstellung für Azure Clientcode generieren möchten, können Sie das Web-API-Projekt lokal ausführen. Navigieren Sie zu der URL, unter der die Swagger-JSON-Datei bereitgestellt wird, speichern Sie die Datei, und wählen Sie sie hier aus.
+	>[AZURE.TIP] Eine alternative Möglichkeit zum Abrufen von Metadaten für die Codegenerierung ist das direkte Eingeben von Code, anstatt das Dialogfeld „Durchsuchen“ zu verwenden. Falls Sie vor der Bereitstellung für Azure Clientcode generieren möchten, können Sie das Web-API-Projekt lokal ausführen. Navigieren Sie zu der URL, unter der die Swagger-JSON-Datei bereitgestellt wird, speichern Sie die Datei, und verwenden Sie die Option **Vorhandene Swagger-Metadatendatei auswählen**.
 
 9. Klicken Sie im Dialogfeld **REST-API-Client hinzufügen** auf **OK**.
 
@@ -434,23 +391,34 @@ Das Projekt ToDoListAPI verfügt bereits über den generierten Clientcode, aber 
 
 	Der Konstruktorparameter ruft die Endpunkt-URL aus der App-Einstellung `toDoListDataAPIURL` ab. In der Datei „Web.config“ ist dieser Wert auf die lokale IIS Express-URL des API-Projekts festgelegt, damit Sie die Anwendung lokal ausführen können. Wenn Sie den Konstruktorparameter weglassen, ist der Standardendpunkt die URL, aus der Sie den Code generiert haben.
 
-6. Ihre Clientklasse wird unter einem anderen Namen basierend auf dem Namen Ihrer API-App generiert. Ändern Sie den Code in *Controllers\\ToDoListController.cs*, damit der Typname mit den Daten übereinstimmt, die in Ihrem Projekt generiert wurden. Wenn Sie Ihre API-App beispielsweise ToDoListDataAPI0121 nennen, sieht der Code wie folgt aus:
+6. Ihre Clientklasse wird unter einem anderen Namen basierend auf dem Namen Ihrer API-App generiert. Ändern Sie den Code in *Controllers\\ToDoListController.cs*, damit der Typname mit den Daten übereinstimmt, die in Ihrem Projekt generiert wurden. Wenn Ihre API-App beispielsweise den Namen „ToDoListDataAPI0121“ hat, können Sie diesen Code ändern:
+
+		private static ToDoListDataAPI NewDataAPIClient()
+		{
+		    var client = new ToDoListDataAPI(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
+
+Und zwar in diesen Code:
 
 		private static ToDoListDataAPI0121 NewDataAPIClient()
 		{
 		    var client = new ToDoListDataAPI0121(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
 
-### Erstellen einer API-App zum Hosten der mittleren Ebene
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt „ToDoListAPI“ (nicht „ToDoListDataAPI“), und klicken Sie dann auf **Veröffentlichen**.
+## Erstellen einer API-App zum Hosten der mittleren Ebene
+
+Weiter oben haben Sie [die API-App für die Datenebene erstellt und Code dafür bereitgestellt](#createapiapp). Nun verwenden Sie das gleiche Verfahren für die API-App der mittleren Ebene.
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt „ToDoListAPI“ für die mittlere Ebene (nicht „ToDoListDataAPI“ für die Datenebene), und klicken Sie dann auf **Veröffentlichen**.
+
+	![In Visual Studio auf „Veröffentlichen“ klicken](./media/app-service-api-dotnet-get-started/pubinmenu2.png)
 
 3.  Klicken Sie auf der Registerkarte **Profil** des Assistenten **Web veröffentlichen** auf **Microsoft Azure App Service**.
 
 5. Klicken Sie im Dialogfeld **App Service** auf **Neu**.
 
-3. Geben Sie im Dialogfeld **App Service erstellen** auf der Registerkarte **Hosten** einen **API-App-Namen** ein, der in der Domäne *azurewebsites.net* eindeutig ist.
+3. Übernehmen Sie im Dialogfeld **App Service erstellen** auf der Registerkarte **Hosten** den standardmäßigen **API-App-Namen**, oder geben Sie einen Namen ein, der in der Domäne *azurewebsites.net* eindeutig ist.
 
-5. Wählen Sie das gewünschte Azure-**Abonnement** aus.
+5. Wählen Sie das Azure-**Abonnement** aus, das Sie verwendet haben.
 
 6. Wählen Sie in der Dropdownliste **Ressourcengruppe** die Ressourcengruppe aus, die Sie weiter oben erstellt haben.
 
@@ -464,7 +432,7 @@ Das Projekt ToDoListAPI verfügt bereits über den generierten Clientcode, aber 
 
 	Visual Studio stellt das Projekt ToDoListAPI in der neuen API-App bereit und öffnet einen Browser mit der URL der API-App. Die Seite mit dem Hinweis, dass die Erstellung erfolgreich war, wird angezeigt.
 
-### Festlegen der API-App-URL für die Datenebene in der API-App für die mittlere Ebene
+## Konfigurieren der mittleren Ebene zum Aufrufen der Datenebene
 
 Wenn Sie jetzt die API-App der mittleren Ebene aufrufen, würde versucht werden, die Datenebene mit der localhost-URL aufzurufen, die noch in der Datei „Web.config“ enthalten ist. In diesem Abschnitt geben Sie die API-App-URL für die Datenebene in eine Umgebungseinstellung in der API-App für die mittlere Ebene ein. Wenn der Code in der API-App für die mittlere Ebene die URL-Einstellung der Datenebene abruft, überschreibt die Umgebungseinstellung die Angaben in der Datei „Web.config“.
  
@@ -485,52 +453,42 @@ Wenn Sie jetzt die API-App der mittleren Ebene aufrufen, würde versucht werden,
 
 	Wenn der Code in Azure ausgeführt wird, überschreibt dieser Wert nun die localhost-URL in der Datei „Web.config“.
 
-### Testen des Aufrufs von ToDoListDataAPI durch ToDoListAPI
+## Test
 
-11. Navigieren Sie in einem Browserfenster zur URL der neuen API-App der mittleren Ebene, die Sie gerade erstellt haben (per Klick auf die URL im Hauptblatt der API-App im Portal).
+11. Navigieren Sie in einem Browserfenster zur URL der neuen API-App der mittleren Ebene, die Sie gerade für ToDoListAPI erstellt haben. Sie können darauf zugreifen, indem Sie im Portal auf dem Hauptblatt der API-App auf die URL klicken.
 
 13. Fügen Sie der URL in der Adresszeile des Browsers „swagger“ hinzu, und drücken Sie dann die EINGABETASTE. (Die URL lautet `http://{apiappname}.azurewebsites.net/swagger`.)
 
-	Im Browser wird die gleiche Swagger-Benutzeroberfläche wie zuvor für „ToDoListDataAPI“ angezeigt. `owner` ist jetzt jedoch kein erforderliches Feld für den Get-Vorgang, weil die API-App der mittleren Ebene diesen Wert für Sie an die API-App der Datenebene sendet. (Wenn Sie die Tutorials zur Authentifizierung durcharbeiten, sendet die mittlere Ebene für den Parameter `owner` echte Benutzer-IDs. Vorerst wird ein Sternchen hartcodiert.)
+	Im Browser wird die gleiche Swagger-Benutzeroberfläche wie zuvor für „ToDoListDataAPI“ angezeigt. `owner` ist jetzt aber kein erforderliches Feld für den Get-Vorgang, weil die API-App der mittleren Ebene diesen Wert für Sie an die API-App der Datenebene sendet. (Wenn Sie die Tutorials zur Authentifizierung durcharbeiten, sendet die mittlere Ebene für den Parameter `owner` echte Benutzer-IDs. Vorerst wird ein Sternchen hartcodiert.)
 
 12. Probieren Sie die Get-Methode und die anderen Methoden aus, um zu überprüfen, ob die API-App der mittleren Ebene die API-App der Datenebene erfolgreich aufruft.
 
 	![Swagger-Benutzeroberfläche – Get-Methode](./media/app-service-api-dotnet-get-started/midtierget.png)
 
-Weitere Informationen zum generierten Client finden Sie im [AutoRest-GitHub-Repository](https://github.com/azure/autorest). Falls Sie Probleme bei der Verwendung des generierten Clients haben, können Sie ein [Problem im AutoRest-Repository](https://github.com/azure/autorest/issues) öffnen.
-
-## <a id="creating"></a> Optional: Erstellen eines API-App-Projekts von Grund auf
-
-In diesem Tutorial laden Sie ASP.NET-Web-API-Projekte für die Bereitstellung in App Service herunter, anstatt Projekte von Grund auf neu zu erstellen. Zum Erstellen eines Projekts, das Sie in einer API-App bereitstellen möchten, können Sie ein typisches Web-API-Projekt erstellen und das Swashbuckle-Paket installieren. Alternativ können Sie die **Azure-API-App**-Vorlage für neue Projekte verwenden. Klicken Sie zum Verwenden dieser Vorlage auf **Datei > Neu > Projekt > ASP.NET-Webanwendung > Azure-API-App**.
-
-![API-App-Vorlage in Visual Studio](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
-
-Die Projektvorlage **Azure-API-App** hat die gleiche Funktion wie wenn Sie die ASP.NET 4.5.2-Vorlage **Leer** auswählen, auf das Kontrollkästchen zum Hinzufügen der Web-API-Unterstützung klicken und anschließend das Swashbuckle-Paket installieren. Außerdem wird mit der Vorlage Swashbuckle-Konfigurationscode hinzugefügt, der dafür bestimmt ist, die Erstellung von doppelten Swagger-Vorgangs-IDs zu verhindern.
-
-## Optional: API-Definitions-URL in Azure-Ressourcen-Manager-Vorlagen
-
-In diesem Tutorial wurde die API-Definitions-URL in Visual Studio und im Azure-Portal veranschaulicht. Sie können die API-Definitions-URL für eine API-App auch konfigurieren, indem Sie [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) in Befehlszeilentools verwenden, beispielsweise in [Azure PowerShell](../powershell-install-configure.md) und der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
-
-Öffnen Sie die [Datei „azuredeploy.json“ im Repository für die Beispielanwendung dieses Tutorials](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json), um ein Beispiel für eine Azure Resource Manager-Vorlage zum Festlegen der API-Definitionseigenschaft anzuzeigen. Suchen Sie nach dem Abschnitt der Vorlage, die wie im folgenden Beispiel aussieht:
-
-		"apiDefinition": {
-		  "url": "https://todolistdataapi.azurewebsites.net/swagger/docs/v1"
-		}
-
 ## Problembehandlung
 
-Wenn Sie beim Durcharbeiten dieses Tutorials auf ein Problem stoßen, sollten Sie sich vergewissern, dass Sie die aktuelle Version des Azure SDK für .NET verwenden. Die einfachste Möglichkeit besteht hierbei darin, [Azure SDK für Visual Studio 2015 herunterzuladen](http://go.microsoft.com/fwlink/?linkid=518003). Wenn Sie die aktuelle Version installiert haben, werden Sie vom Webplattform-Installer darüber informiert, dass keine Installation erforderlich ist.
+Falls beim Durcharbeiten dieses Tutorials Probleme auftreten, helfen Ihnen diese Hinweise zur Problembehandlung weiter:
 
-Zwei der Projektnamen sind ähnlich („ToDoListAPI“, „ToDoListDataAPI“). Wenn Ihre Arbeit mit einem Projekt nicht so funktioniert, wie es in den Anweisungen beschrieben ist, stellen Sie sicher, dass Sie das richtige Projekt geöffnet haben.
+* Stellen Sie sicher, dass Sie die aktuelle Version des [Azure SDK für .NET](http://go.microsoft.com/fwlink/?linkid=518003) verwenden.
 
-Falls Sie sich in einem Unternehmensnetzwerk befinden und versuchen, die Bereitstellung für Azure App Service über eine Firewall durchzuführen, sollten Sie sicherstellen, dass die Ports 443 und 8172 für Web Deploy geöffnet sind. Wenn Sie diese Ports nicht öffnen können, helfen Ihnen die anderen Bereitstellungsoptionen unten im Abschnitt „Nächste Schritte“ weiter.
+* Zwei der Projektnamen sind ähnlich („ToDoListAPI“, „ToDoListDataAPI“). Wenn Ihre Arbeit mit einem Projekt nicht so funktioniert, wie es in den Anweisungen beschrieben ist, stellen Sie sicher, dass Sie das richtige Projekt geöffnet haben.
 
-Falls Sie versehentlich das falsche Projekt für eine API-App bereitstellen und dann später das richtige Projekt bereitstellen, erhalten Sie ggf. Fehler vom Typ „Routennamen müssen eindeutig sein“. Stellen Sie das Projekt erneut für die API-App bereit, und wählen Sie auf der Registerkarte **Einstellungen** des Assistenten **Web veröffentlichen** die Option **Nicht übereinstimmende Dateien im Ziel entfernen**, um dies zu korrigieren .
+* Falls Sie sich in einem Unternehmensnetzwerk befinden und versuchen, die Bereitstellung für Azure App Service über eine Firewall durchzuführen, sollten Sie sicherstellen, dass die Ports 443 und 8172 für Web Deploy geöffnet sind. Wenn Sie diese Ports nicht öffnen können, können Sie andere Bereitstellungsmethoden nutzen. Weitere Informationen finden Sie unter [Bereitstellen der App in Azure App Service](../app-service-web/web-sites-deploy.md).
+
+* Fehler vom Typ „Routennamen müssen eindeutig sein“: Diese Fehler können auftreten, wenn Sie versehentlich das falsche Projekt für eine API-App bereitstellen und dann später das richtige Projekt bereitstellen. Stellen Sie das richtige Projekt erneut für die API-App bereit, und wählen Sie auf der Registerkarte **Einstellungen** des Assistenten **Web veröffentlichen** die Option **Nicht übereinstimmende Dateien im Ziel entfernen**, um dies zu korrigieren.
 
 Nachdem Ihre ASP.NET-API-App in Azure App Service ausgeführt wird, ist es ratsam, sich weiter über Visual Studio-Features zu informieren, mit denen die Problembehandlung vereinfacht werden kann. Informationen zu Protokollierung, Remotedebuggen und weiteren Themen finden Sie unter [Problembehandlung von Azure App Service-Apps in Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md).
 
 ## Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie API-Apps erstellen, Code dafür bereitstellen, Clientcode generieren und die Apps dann über .NET-Clients nutzen. Im nächsten Tutorial wird gezeigt, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen](app-service-api-cors-consume-javascript.md). In weiteren Tutorials dieser Serie wird die Implementierung von Authentifizierung und Autorisierung erläutert.
+Sie haben erfahren, wie Sie vorhandene Web-API-Projekte für API-Apps bereitstellen, Clientcode für API-Apps generieren und API-Apps von .NET-Clients nutzen. Im nächsten Tutorial dieser Reihe wird gezeigt, wie Sie [CORS zum Nutzen von API-Apps über JavaScript-Clients verwenden](app-service-api-cors-consume-javascript.md).
+ 
+Weitere Informationen zum Generieren von Clientcode finden Sie im [Azure/AutoRest](https://github.com/azure/autorest)-Repository auf „GitHub.com“. Falls Sie Probleme bei der Verwendung des generierten Clients haben, können Sie ein [Problem im AutoRest-Repository](https://github.com/azure/autorest/issues) öffnen.
 
-<!----HONumber=AcomDC_0518_2016-->
+Falls Sie neue API-App-Projekte von Grund auf neu erstellen möchten, können Sie die **Azure-API-App**-Vorlage verwenden.
+
+![API-App-Vorlage in Visual Studio](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
+
+Die Projektvorlage **Azure-API-App** entspricht folgenden Schritten: Auswählen der ASP.NET 4.5.2-Vorlage **Leer**, Klicken auf das Kontrollkästchen zum Hinzufügen der Web-API-Unterstützung und anschließendes Installieren des Swashbuckle-NuGet-Pakets. Außerdem wird mit der Vorlage Swashbuckle-Konfigurationscode hinzugefügt, der dafür bestimmt ist, die Erstellung von doppelten Swagger-Vorgangs-IDs zu verhindern. Nachdem Sie ein API-App-Projekt erstellt haben, können Sie es wie in diesem Tutorial gezeigt für eine API-App bereitstellen.
+
+<!---HONumber=AcomDC_0601_2016-->

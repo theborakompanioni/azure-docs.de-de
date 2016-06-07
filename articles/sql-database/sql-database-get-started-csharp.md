@@ -5,7 +5,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -14,12 +14,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="csharp"
    ms.workload="data-management"
-   ms.date="03/24/2016"
+   ms.date="05/26/2016"
    ms.author="sstein"/>
 
 # Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
 
-**Einzeldatenbank**
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-get-started.md)
@@ -44,10 +43,10 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 ## Installieren der erforderlichen Bibliotheken
 
-Zum Einrichten einer SQL-Datenbank mit C# erhalten Sie die erforderlichen Verwaltungsbibliotheken, indem Sie über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**) die folgenden Pakete installieren:
+Für die Einrichtung einer SQL-Datenbank mit C# erhalten Sie die erforderlichen Verwaltungsbibliotheken, indem Sie über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**) die folgenden Pakete installieren:
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 
@@ -165,7 +164,7 @@ Beim Ressourcen-Manager müssen alle Ressourcen in einer Ressourcengruppe erstel
 
 ## Erstellen eines Servers
 
-SQL-Datenbanken befinden sich auf Servern. Der Servername muss global für alle Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann.
+SQL-Datenbanken befinden sich auf Servern. Der Servername muss global für alle Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann.
 
     static void CreateServer()
     {
@@ -268,8 +267,8 @@ Im folgenden Beispiel werden diese Komponenten erstellt: Ressourcengruppe, Serve
 
 
     using Microsoft.Azure;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.Management.Sql;
     using Microsoft.Azure.Management.Sql.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -457,4 +456,4 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -20,8 +20,8 @@
 
 | Kurzübersicht |
 | --------------- |
-| [Logik-Apps – Definitionssprache](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
-| [Logik-Apps – Connector-Dokumentation](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
+| [Logik-Apps – Definitionssprache](https://msdn.microsoft.com/library/azure/mt643789.aspx) |
+| [Logik-Apps – Connector-Dokumentation](../connectors/apis-list.md) |
 | [Logik-Apps – Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=azurelogicapps) |
 
 In diesem Thema wird veranschaulicht, wie Sie in nur wenigen Minuten in [App Services-Logik-Apps](app-service-logic-what-are-logic-apps.md) einsteigen können. Wir durchlaufen einen Workflow, mit dessen Hilfe Sie eine Gruppe von Tweets, an denen Sie interessiert sind, an ein Postfach übermitteln können.
@@ -30,7 +30,7 @@ Für dieses Szenario benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement
 - Ein Twitter-Konto
-- Ein Office 365-Konto
+- Ein Office 365-Konto
 
 ## Erstellen einer neuen Logik-App zum Empfangen von Tweets per E-Mail
 
@@ -43,7 +43,7 @@ Für dieses Szenario benötigen Sie Folgendes:
 7. Jetzt geben Sie das Schlüsselwort ein, nach dem Twitter durchsucht werden soll. ![Twitter-Suche](./media/app-service-logic-create-a-logic-app/twittersearch.png)
 
 5. Wählen Sie das Pluszeichen (+) aus, und wählen Sie dann die Option **Aktion hinzufügen** oder **Bedingung hinzufügen**: ![Plus](./media/app-service-logic-create-a-logic-app/plus.png)
-6. Wenn Sie **Aktion hinzufügen** wählen, werden alle Connectors mit den jeweiligen verfügbaren Aktionen aufgeführt. Sie können dann auswählen, welcher Connector und welche Aktion Ihrer Logik-App hinzugefügt wird. Sie können z. B. **Office 365 – E-Mail senden** und weitere Office 365-Aktionen auswählen: ![Actions](./media/app-service-logic-create-a-logic-app/actions.png)
+6. Wenn Sie **Aktion hinzufügen** wählen, werden alle Connectors mit den jeweiligen verfügbaren Aktionen aufgeführt. Sie können dann auswählen, welcher Connector und welche Aktion Ihrer Logik-App hinzugefügt wird. Sie können z. B. **Office 365 – E-Mail senden** und weitere Office 365-Aktionen auswählen: ![Actions](./media/app-service-logic-create-a-logic-app/actions.png)
 
 7. Nun müssen Sie die Parameter für die gewünschten E-Mails ausfüllen: ![Parameter](./media/app-service-logic-create-a-logic-app/parameters.png)
 
@@ -67,4 +67,4 @@ In weniger als 5 Minuten haben Sie eine einfache Logik-App eingerichtet, die in 
 [Azure portal]: https://portal.azure.com
 [Verwenden von Logik-App-Features]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

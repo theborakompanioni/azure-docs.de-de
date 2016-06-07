@@ -21,6 +21,7 @@
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
 
 In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL Data Warehouse-Instanz veranschaulicht, das mit der SQL Server Data Tools-Erweiterung (SSDT) in Visual Studio nur wenige Minuten dauert. Nachdem die Verbindung hergestellt wurde, führen Sie eine einfache Abfrage aus.
 
@@ -98,7 +99,7 @@ Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierun
 <!--Arcticles-->
 [Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 [Installieren von Visual Studio und SSDT]: sql-data-warehouse-install-visual-studio.md
-[Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung]: ../sql-database/sql-database-aad-authentication.md
+[Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung]: ../sql-data-warehouse/sql-data-warehouse-get-started-connect-aad-authentication.md
 [die Daten mit Power BI zu visualisieren]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 
 <!--Other-->
@@ -115,4 +116,4 @@ Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierun
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen."
 	services="batch"
 	documentationCenter=""
-	authors="dlepow"
+	authors="mmacy"
 	manager="timlt"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="05/26/2016"
 	ms.author="marsma"/>
 
 # Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal
@@ -22,19 +22,19 @@
 - [Azure-Portal](batch-account-create-portal.md)
 - [Batch Management .NET](batch-management-dotnet.md)
 
-Das [Azure-Portal][azure_portal] enthält Tools zum Erstellen und Verwalten eines Azure Batch-Kontos, die Sie für die Verarbeitung paralleler Workloads in großem Umfang verwenden können. In diesem Artikel wird die Erstellung eines Batch-Kontos mit dem Portal beschrieben, und es werden einige der wichtigsten Einstellungen und Eigenschaften eines Batch-Kontos erläutert. Für die Anwendungen und Dienste, die Sie mit Batch entwickeln, sind beispielsweise die URL Ihres Kontos und ein Zugriffsschlüssel zum Kommunizieren mit den APIs des Batch-Diensts erforderlich. Die URL und der Schlüssel sind im Azure-Portal enthalten.
+Das [Azure-Portal][azure_portal] enthält Tools zum Erstellen und Verwalten eines Azure Batch-Kontos, die Sie für die Verarbeitung paralleler Workloads in großem Umfang verwenden können. In diesem Artikel wird die Erstellung eines Batch-Kontos mit dem Portal beschrieben, und es werden wichtige Einstellungen und Eigenschaften eines Batch-Kontos erläutert. Für die Anwendungen und Dienste, die Sie mit Batch entwickeln, sind beispielsweise die URL Ihres Kontos und ein Zugriffsschlüssel zum Kommunizieren mit den APIs des Batch-Diensts erforderlich. Die URL und der Schlüssel sind im Azure-Portal enthalten.
 
->[AZURE.NOTE] Das Azure-Portal unterstützt derzeit eine Teilmenge der Features, die im Batch-Dienst verfügbar sind, z.B. Kontoerstellung und die Verwaltung von Kontoeinstellungen und Eigenschaften. Der vollständige Featuresatz von Batch, z.B. das Erstellen und Ausführen von Aufträgen und Aufgaben, ist für Entwickler über die Batch-APIs verfügbar.
+>[AZURE.NOTE] Das Azure-Portal unterstützt derzeit eine Teilmenge der Features des Batch-Diensts, z.B. Kontoerstellung, Verwaltung von Kontoeinstellungen und Eigenschaften und Erstellung und Überwachung von Pools und Aufträgen. Der vollständige Funktionssatz steht Entwicklern über die Batch-APIs zur Verfügung.
 
 ## Erstellen eines Batch-Kontos
 
 1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
 
-2. Klicken Sie auf **Neu** > **Compute** > **Batch-Dienst**.
+2. Klicken Sie auf **Neu** > **Virtuelle Computer** > **Batch-Dienst**.
 
 	![Batch im Marketplace][marketplace_portal]
 
-3. Prüfen Sie die Informationen auf dem Blatt **Batchdienst**, und klicken Sie dann auf **Erstellen**. Beachten Sie, dass die Auswahl des Bereitstellungsmodells deaktiviert ist. Dies liegt daran, dass für Batch nur das Ressourcengruppen-Bereitstellungsmodell verwendet wird.
+3. Prüfen Sie die Informationen auf dem Blatt **Batchdienst**, und klicken Sie dann auf **Erstellen**. Beachten Sie, dass für Batch nur das Resource Manager-Bereitstellungsmodell verwendet wird.
 
 	![Batch-Dienst, Blatt „Erstellen“ im Azure-Portal][3]
 
@@ -42,15 +42,15 @@ Das [Azure-Portal][azure_portal] enthält Tools zum Erstellen und Verwalten eine
 
     ![Erstellen eines Batch-Kontos][account_portal]
 
-	a. **Kontoname:** Geben Sie einen eindeutigen Namen für das Batch-Konto an. Dieser Name muss innerhalb der Azure-Region, in der das Konto erstellt wird, eindeutig sein (siehe *Standort* weiter unten). Er darf nur Kleinbuchstaben und Zahlen enthalten und muss 3 bis 24 Zeichen lang sein.
+	a. **Kontoname:** Dies ist ein eindeutiger Name für das Batch-Konto. Dieser Name muss innerhalb der Azure-Region, in der das Konto erstellt wird, eindeutig sein (siehe *Standort* weiter unten). Er darf nur Kleinbuchstaben und Zahlen enthalten und muss 3 bis 24 Zeichen lang sein.
 
-	b. **Abonnement:** Wählen Sie ein Abonnement aus, unter dem das Batch-Konto erstellt werden soll. Wenn Sie nur über ein Abonnement verfügen, ist es standardmäßig ausgewählt.
+	b. **Abonnement:** Dies ist ein Abonnement, unter dem das Batch-Konto erstellt werden soll. Wenn Sie nur über ein Abonnement verfügen, ist es standardmäßig ausgewählt.
 
-	c. **Ressourcengruppe:** Wählen Sie eine Ressourcengruppe für das neue Batch-Konto aus, oder erstellen Sie eine neue, falls Ihr Abonnement keine Ressourcengruppen enthält.
+	c. **Ressourcengruppe:** Eine Ressourcengruppe für Ihr neues Batch-Konto. Optional können Sie auch eine neue Ressourcengruppe erstellen.
 
-	d. **Standort:** Wählen Sie eine Azure-Region aus, in der das Batch-Konto erstellt werden soll. Nur die Bereiche, die von Ihrem Abonnement und der Ressourcengruppe unterstützt werden, werden als Optionen angezeigt.
+	d. **Standort:** Eine Azure-Region, in der das Batch-Konto erstellt werden soll. Nur die Bereiche, die von Ihrem Abonnement und der Ressourcengruppe unterstützt werden, werden als Optionen angezeigt.
 
-    e. **Speicherkonto** (optional): Sie können Ihrem neuen Batch-Konto ein Speicherkonto vom Typ **Allgemein** zuordnen (sprich: eine Verknüpfung erstellen). Bei dem Feature [Anwendungspakete](batch-application-packages.md) von Batch wird das verknüpfte Speicherkonto für die Speicherung und Wiederherstellung von Anwendungspaketen verwendet. Weitere Informationen zu diesem Feature finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
+    e. **Speicherkonto** (optional): Ein Speicherkonto vom Typ **Allgemein**, das Sie dem neuen Batch-Konto zuordnen bzw. damit verknüpfen. Bei dem Feature [Anwendungspakete](batch-application-packages.md) von Batch wird das verknüpfte Speicherkonto für die Speicherung und Wiederherstellung von Anwendungspaketen verwendet. Weitere Informationen zu diesem Feature finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
 
      > [AZURE.TIP] Für das erneute Generieren von Schlüsseln in einem verknüpften Speicherkonto sind besondere Punkte zu beachten. Ausführliche Informationen finden Sie unter [Zu berücksichtigende Aspekte für Batch-Konten](#considerations-for-batch-accounts).
 
@@ -64,15 +64,15 @@ Auf dem Blatt für das Batch-Konto werden mehrere Eigenschaften für das Konto a
 
 * **Batch-Konto-URL:** Mit dieser URL haben Sie Zugriff auf Ihr Batch-Konto, wenn Sie APIs wie die [Batch-REST][api_rest]-API oder die [Batch .NET][api_net]-Clientbibliothek verwenden. Verwendetes Format:
 
-  `https://<account_name>.<region>.batch.azure.com`
+    `https://<account_name>.<region>.batch.azure.com`
 
-* **Zugriffsschlüssel:** Klicken Sie zum Anzeigen und Verwalten der Zugriffsschlüssel Ihres Batch-Kontos auf das Schlüsselsymbol, um das Blatt **Schlüssel verwalten** zu öffnen, oder klicken Sie auf **Alle Einstellungen** > **Schlüssel**. Ein Zugriffsschlüssel wird für die Kommunikation mit den Batch-Dienst-APIs (beispielsweise mit [Batch-REST][api_rest] oder mit der [Batch .NET][api_net]-Clientbibliothek) benötigt.
+* **Zugriffsschlüssel:** Klicken Sie zum Anzeigen und Verwalten der Zugriffsschlüssel Ihres Batch-Kontos auf das Schlüsselsymbol, um das Blatt **Schlüssel verwalten** zu öffnen, oder klicken Sie auf **Alle Einstellungen** > **Schlüssel**. Ein Zugriffsschlüssel wird für die Kommunikation mit den Batch-Dienst-APIs benötigt, z.B. [Batch-REST][api_rest] oder die [Batch .NET][api_net]-Clientbibliothek.
 
- ![Batch-Kontoschlüssel][account_keys]
+    ![Batch-Kontoschlüssel][account_keys]
 
 * **Alle Einstellungen:** Klicken Sie zum Verwalten aller Einstellungen für das Batch-Konto oder zum Anzeigen seiner Eigenschaften auf **Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen. Dieses Blatt ermöglicht den Zugriff auf alle Einstellungen und Eigenschaften für das Konto, z.B. das Anzeigen der Kontokontingente, Auswählen eines Azure Storage-Kontos für die Verknüpfung mit dem Batch-Konto und das Verwalten von Benutzern.
 
- ![Batch-Konto, Blätter mit Einstellungen und Eigenschaften][5]
+    ![Batch-Konto, Blätter mit Einstellungen und Eigenschaften][5]
 
 ## Zu berücksichtigende Aspekte für Batch-Konten
 
@@ -88,7 +88,7 @@ Auf dem Blatt für das Batch-Konto werden mehrere Eigenschaften für das Konto a
 
   ![Speicherkontoschlüssel erneut generieren][4]
 
-> [AZURE.IMPORTANT] Von Batch wird derzeit *ausschließlich* der Speicherkontotyp **Allgemein** unterstützt, wie in [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) unter Schritt 5 ([Erstellen Sie ein Speicherkonto.](../storage/storage-create-storage-account.md#create-a-storage-account)) beschrieben. Verwenden Sie beim Verknüpfen eines Azure-Speicherkontos mit Ihrem Batch-Konto *ausschließlich* ein Speicherkonto vom Typ **Allgemein**.
+> [AZURE.IMPORTANT] Von Batch wird derzeit *ausschließlich* der Speicherkontotyp **Allgemein** unterstützt, wie in [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) unter Schritt 5 ([Erstellen Sie ein Speicherkonto](../storage/storage-create-storage-account.md#create-a-storage-account)) beschrieben. Verwenden Sie beim Verknüpfen eines Azure Storage-Kontos mit Ihrem Batch-Konto *ausschließlich* ein Speicherkonto vom Typ **Allgemein**.
 
 ## Nächste Schritte
 
@@ -109,4 +109,4 @@ Auf dem Blatt für das Batch-Konto werden mehrere Eigenschaften für das Konto a
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

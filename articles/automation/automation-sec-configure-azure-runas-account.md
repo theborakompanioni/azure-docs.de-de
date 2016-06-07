@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/16/2016"
+    ms.date="06/01/2016"
     ms.author="magoedte"/>
 
 # Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“
@@ -68,13 +68,10 @@ Mit dem unten angegebenen Verfahren wird ein vorhandenes Automation-Konto aktual
 
 Stellen Sie vor dem Fortfahren Folgendes sicher:
 
-1. Sie haben das [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](http://go.microsoft.com/fwlink/p/?linkid=236297) heruntergeladen und installiert.
-2. Sie haben ein Automation-Konto erstellt. Dieses Konto wird unten im Skript als Wert für die Parameter -AutomationAccountName und -ApplicationDisplayName angegeben.
-3. Sie haben das [Azure Automation Authoring Toolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.2) installiert.
+1. Sie haben [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) heruntergeladen und installiert, wenn Sie Windows 7 ausführen. Wenn Sie Windows Server 2012 R2, Windows Server 2012, Windows 2008 R2, Windows 8.1 und Windows 7 SP1 ausführen, ist [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) für die Installation verfügbar.
+2. Azure PowerShell 1.0. Informationen zu dieser Version und deren Installation finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). 
+3. Sie haben ein Automation-Konto erstellt. Dieses Konto wird unten im Skript als Wert für die Parameter -AutomationAccountName und -ApplicationDisplayName angegeben.
 
-```
-Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
-```
 
 Mit dem PowerShell-Skript wird Folgendes konfiguriert:
 
@@ -246,4 +243,4 @@ Das Skript enthält zwei zusätzliche Codezeilen, um Verweise auf einen Abonneme
 - Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

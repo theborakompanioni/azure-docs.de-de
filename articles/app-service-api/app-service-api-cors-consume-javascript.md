@@ -18,11 +18,7 @@
 
 # Nutzen einer API-App aus JavaScript mit CORS
 
-## Übersicht
-
-App Service bietet integrierte Unterstützung für CORS (Cross Origin Resource Sharing), das JavaScript-Clients domänenübergreifende Aufrufe von APIs ermöglicht, die in API-Apps, Web-Apps oder mobilen Apps gehostet werden. Mit diesem Feature von App Service können Sie CORS nutzen, ohne in Ihrer API Code schreiben zu müssen.
-
-[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) ist ein Internetprotokoll, mit dem Sie API-Aufrufe aus JavaScript für eine andere Domäne als die Domäne durchführen können, aus der der Browser den JavaScript-Code geladen hat. Ohne CORS können Sie von einer Webseite der Domäne „contoso.com“ einen API-Endpunkt in „contoso.com“, aber nicht einen Endpunkt in „fabrikam.com“aufrufen.
+App Service bietet integrierte Unterstützung für [CORS (Cross Origin Resource Sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), das JavaScript-Clients domänenübergreifende Aufrufe von APIs ermöglicht, die in API-Apps gehostet werden. Unter App Service können Sie den CORS-Zugriff auf Ihre API konfigurieren, ohne Code in Ihrer API zu schreiben.
 
 Dieser Artikel enthält zwei Abschnitte:
 
@@ -30,7 +26,7 @@ Dieser Artikel enthält zwei Abschnitte:
 
 * Der Artikel beginnt mit dem Abschnitt [Fortsetzen der Erste-Schritte-Tutorials für .NET](#tutorialstart) und ist ein Tutorial, mit dem die CORS-Unterstützung veranschaulicht wird. Hierfür wird fortgeführt, was Sie im [ersten Tutorial zu den ersten Schritten mit API-Apps](app-service-api-dotnet-get-started.md) begonnen haben.
 
-## <a id="corsconfig"></a> Gewusst wie: Konfigurieren von CORS in Azure App Service
+## <a id="corsconfig"></a> Konfigurieren von CORS in Azure App Service
 
 Sie können CORS im Azure-Portal oder über [Azure Resource Manager](../resource-group-overview.md)-Tools konfigurieren.
 
@@ -104,7 +100,7 @@ In der [ToDoList-Beispielanwendung](https://github.com/Azure-Samples/app-service
 
 ### Erstellen einer neuen Web-App für das Projekt ToDoListAngular
 
-Das Verfahren zum Erstellen einer neuen Web-App und Bereitstellen eines Projekts dafür ähnelt der Vorgehensweise im ersten Tutorial dieser Reihe. Der einzige Unterschied besteht darin, dass der App-Typ **Web-App** lautet , und nicht **API-App**.
+Das Verfahren zum Erstellen einer neuen App Service-Web-App und Bereitstellen eines Projekts dafür ähnelt der Vorgehensweise beim [Erstellen und Bereitstellen einer API-App im ersten Tutorial dieser Reihe](app-service-api-dotnet-get-started.md#createapiapp). Der einzige Unterschied besteht darin, dass der App-Typ **Web-App** lautet , und nicht **API-App**. Screenshots der Dialogfelder:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt ToDoListAngular, und klicken Sie dann auf **Veröffentlichen**.
 
@@ -190,8 +186,8 @@ Das Verfahren zum Erstellen einer neuen Web-App und Bereitstellen eines Projekts
 
 ## Konfigurieren Sie CORS für die API-App der mittleren Ebene
 
-In diesem Abschnitt konfigurieren Sie die API-App ToDoListAPI, um JavaScript-Aufrufe von der Web-App zuzulassen, die Sie für das Projekt ToDoListAngular erstellt haben.
- 
+In diesem Abschnitt konfigurieren Sie die CORS-Einstellung in Azure für die ToDoListAPI-API-App der mittleren Ebene. Mit dieser Einstellung kann die API-App der mittleren Ebene JavaScript-Aufrufe von der Web-App empfangen, die Sie für das Projekt ToDoListAngular erstellt haben.
+
 8. Wechseln Sie in einem Browser zum [Azure-Portal](https://portal.azure.com/).
 
 2. Klicken Sie auf **App Services** und dann auf die API-App ToDoListAPI (mittlere Ebene).
@@ -273,19 +269,20 @@ Wenn Sie Azure API Management mit einer API-App verwenden, konfigurieren Sie COR
  
 ## Problembehandlung
 
-Wenn Sie beim Durcharbeiten dieses Tutorials auf ein Problem stoßen, sollten Sie sich vergewissern, dass Sie die aktuelle Version des Azure SDK für .NET verwenden. Die einfachste Möglichkeit ist hierbei das [Herunterladen des Azure SDK für Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). Wenn Sie die aktuelle Version installiert haben, werden Sie vom Webplattform-Installer darüber informiert, dass keine Installation erforderlich ist.
+Falls beim Durcharbeiten dieses Tutorials Probleme auftreten, helfen Ihnen die unten angegebenen Hinweise zur Problembehandlung weiter.
 
-Falls Sie nach dem Festlegen einer URL auf dem Blatt „CORS“ im Portal weiterhin CORS-Fehler erhalten, sollten Sie noch einmal überprüfen, ob die richtigen Änderungen an den richtigen Stellen vorgenommen wurden. Beispiel:
+* Stellen Sie sicher, dass Sie die aktuelle Version des [Azure SDK für .NET für Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003) verwenden.
 
-* Stellen Sie sicher, dass Sie das Protokoll richtig eingegeben haben (`https`, nicht `http`) und dass `https` zum Ausführen der Front-End-Web-App verwendet wird.
+* Stellen Sie sicher, dass Sie `https` in der CORS-Einstellung eingegeben haben und `https` zum Ausführen der Front-End-Web-App verwenden.
+
 * Vergewissern Sie sich, dass Sie die CORS-Einstellung in der API-App der mittleren Ebene eingegeben haben, nicht in der Front-End-Web-App.
 
-Wenn Sie CORS sowohl im Anwendungscode als auch in Azure App Service konfigurieren, sollten Sie berücksichtigen, dass die App Service-CORS-Einstellung alles überschreibt, was Sie im Anwendungscode durchführen.
+* Wenn Sie CORS sowohl im Anwendungscode als auch in Azure App Service konfigurieren, sollten Sie berücksichtigen, dass die App Service-CORS-Einstellung alles überschreibt, was Sie im Anwendungscode durchführen.
 
 Weitere Informationen zu Visual Studio-Features, mit denen die Problembehandlung vereinfacht wird, finden Sie unter [Problembehandlung von Azure App Service-Apps in Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md).
 
 ## Nächste Schritte 
 
-In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Wenn Sie mehr über API-Apps erfahren möchten, lesen Sie die [Einführung in die Authentifizierung in App Service](../app-service/app-service-authentication-overview.md), und wechseln Sie dann zum Tutorial [Benutzerauthentifizierung für API-Apps ](app-service-api-dotnet-user-principal-auth.md).
+In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Wenn Sie mehr über API-Apps erfahren möchten, lesen Sie die [Einführung in die Authentifizierung in App Service](../app-service/app-service-authentication-overview.md), und wechseln Sie dann zum Tutorial [Benutzerauthentifizierung für API-Apps](app-service-api-dotnet-user-principal-auth.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->
