@@ -43,6 +43,9 @@ Die folgende Tabelle enthält die SQL-Fehlercodes für Fehler bei Verbindungsver
 
 ### Häufigste Datenbankverbindungsfehler und vorübergehende Fehler
 
+Die Azure-Infrastruktur verfügt über die Möglichkeit, Server dynamisch neu zu konfigurieren, wenn hohe Workloads im SQL-Datenbankdienst auftreten. Dieses dynamische Verhalten führt jedoch u.U. dazu, dass die Verbindung zwischen Ihrem Clientprogramm und der SQL-Datenbank getrennt wird. Diese Art der Fehlerbedingung wird als *Übergangsfehler* bezeichnet.
+
+Wenn das Clientprogramm über Wiederholungslogik verfügt, kann es versuchen, erneut eine Verbindung herzustellen, nachdem der vorübergehende Fehler Zeit hatte, sich selbst zu korrigieren. Es wird empfohlen, dass vor dem ersten Wiederholungsversuch eine Verzögerungszeit von fünf Sekunden verwendet wird. Wiederholungsversuche nach weniger als fünf Sekunden können den Clouddienst überfordern. Für jeden nachfolgenden Wiederholungsversuch sollte die Verzögerung exponentiell steigen, bis zu einem Maximum von 60 Sekunden.
 
 Vorübergehende Fehler machen sich in der Regel in Form einer der folgenden Fehlermeldungen von Ihren Clientprogrammen bemerkbar:
 
@@ -54,13 +57,13 @@ Vorübergehende Fehler machen sich in der Regel in Form einer der folgenden Fehl
 
 - System.Data.Entity.Core.EntityCommandExecutionException: Fehler beim Ausführen der Befehlsdefinition. Details siehe innere Ausnahme. ---> System.Data.SqlClient.SqlException: Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: Sitzungsanbieter, Fehler: 19 – Physische Verbindung kann nicht verwendet werden)
 
-Vorübergehende Fehler sollten in Ihrem Clientprogramm eine Ausführung der von Ihnen entworfenen *Wiederholungslogik* auslösen, um den Vorgang erneut durchzuführen. Codebeispiele zur Wiederholungslogik finden Sie unter:
-
+Codebeispiele zur Wiederholungslogik finden Sie unter:
 
 - [Connection Libraries for SQL Database and SQL Server (Verbindungsbibliotheken für SQL-Datenbanken und SQL Server, in englischer Sprache)](sql-database-libraries.md)
 
 - [Maßnahmen zum Behandeln von Verbindungsfehlern und vorübergehenden Fehlern in SQL-Datenbank](sql-database-connectivity-issues.md)
 
+Eine Erörterung der *Sperrfrist* für Clients, die ADO.NET verwenden, finden Sie unter [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### Fehlercodes für vorübergehende Fehler
 
@@ -168,10 +171,7 @@ Verwandte Themen:
 | 40870 | EX\_USER | Die minimale DTU-Anzahl pro Datenbank kann nicht mehr als (%d) für Dienstebene "%.*ls" betragen. | Minimale DTUs pro Datenbank; Dienstebene des elastischen Pools. | Es wurde versucht, eine minimale DTU-Anzahl pro Datenbank festzulegen, die über der unterstützten Grenze liegt. | Sie sollten in Betracht ziehen, die Dienstebene des elastischen Pools zu verwenden, die die gewünschte Einstellung unterstützt. |
 | 40873 | EX\_USER | Die Anzahl der Datenbanken (%d) und minimalen DTUs pro Datenbank (%d) darf die DTU-Anzahl des elastischen Pools (%d) nicht überschreiten. | Anzahl der Datenbanken im elastischen Pool; minimale DTUs pro Datenbank; DTUs im elastischen Pool. | Es wurde versucht, eine Mindestanzahl von DTUs für den elastischen Pool anzugeben, die die DTU-Anzahl des elastischen Pools überschreitet. | Sie sollten in Betracht ziehen, die Anzahl der DTUs im elastischen Pool zu erhöhen oder die Mindestanzahl der DTUs pro Datenbank zu verringern, oder Sie verringern die Anzahl der Datenbanken im elastischen Pool. |
 | 40877 | EX\_USER | Ein elastischer Pool kann nur gelöscht werden, wenn er keine Datenbanken enthält. | Keine | Der elastische Pool enthält eine oder mehrere Datenbanken und kann nicht gelöscht werden. | Entfernen Sie Datenbanken aus dem elastischen Pool, um ihn zu löschen. |
-| 40881 | EX\_USER | Der elastische Pool "%.*ls" hat den Grenzwert für die Anzahl an Datenbanken erreicht. Der Grenzwert für die Datenbankanzahl im elastischen Pool darf (%d) für einen elastischen Pool mit (%d) DTUs nicht überschreiten. | Name des elastischen Pools; Grenzwert für die Datenbankanzahl im elastischen Pool; DTUs für Ressourcenpool. |Es wurde versucht, eine Datenbank zu erstellen oder zum elastischen Pool hinzuzufügen, während der Grenzwert für die Datenbankanzahl des elastischen Pools erreicht wurde. | Bitte erhöhen Sie nach Möglichkeit die DTU-Anzahl des elastischen Pools, um die Begrenzung für Datenbanken zu steigern, oder entfernen Sie Datenbanken aus dem elastischen Pool. |
-| 40889 | EX\_USER | Die Begrenzung für DTUs oder Speicher für den elastischen Pool "%.*ls" kann nicht verkleinert werden, da nicht genügend Speicherplatz für die Datenbanken verfügbar wäre. | Name der elastischen Pools. | Es wurde versucht, die Speicherbegrenzung des elastischen Pools unter die Speicherauslastung zu verringern. | Reduzieren Sie die Speicherauslastung der einzelnen Datenbanken im elastischen Pool, oder entfernen Sie Datenbanken aus dem Pool, um die DTUs oder Speicherbegrenzung zu verringern. |
-| 40891 | EX\_USER | Die Mindestanzahl von DTUs pro Datenbank (%d) darf die Höchstanzahl von DTUs pro Datenbank (%d) nicht überschreiten. | DTU-Mindestanzahl pro Datenbank; DTU-Höchstanzahl pro Datenbank. | Es wurde versucht, die DTU-Mindestanzahl pro Datenbank höher festzulegen, als die maximale DTU-Anzahl pro Datenbank. | Stellen Sie sicher, dass die Mindestanzahl von DTUs pro Datenbank nicht die Höchstanzahl von DTUs pro Datenbank überschreitet. |
-| TBD | EX\_USER | Die Speichergröße für eine einzelne Datenbank in einem elastischen Pool darf die maximal zulässige Größe für die Dienstebene des elastischen Pools "%.*ls" nicht überschreiten. | Dienstebene des elastischen Pools | Die maximale Größe der Datenbank überschreitet die maximale Größe, die von der Dienstebene des elastische Pools zugelassen wird. | Legen Sie die maximale Größe der Datenbank höchstens auf die maximal zulässige Größe der Dienstebene des elastische Pools fest. |
+| 40881 | EX\_USER | Der elastische Pool "%.*ls" hat den Grenzwert für die Anzahl an Datenbanken erreicht. Der Grenzwert für die Datenbankanzahl im elastischen Pool darf (%d) für einen elastischen Pool mit (%d) DTUs nicht überschreiten. | Name des elastischen Pools; Grenzwert für die Datenbankanzahl im elastischen Pool; DTUs für Ressourcenpool. | Es wurde versucht, eine Datenbank zu erstellen oder zum elastischen Pool hinzuzufügen, während der Grenzwert für die Datenbankanzahl des elastischen Pools erreicht wurde. | Bitte erhöhen Sie nach Möglichkeit die DTU-Anzahl des elastischen Pools, um die Begrenzung für Datenbanken zu steigern, oder entfernen Sie Datenbanken aus dem elastischen Pool. | | 40889 | EX\_USER | Die Begrenzung für DTUs oder Speicher für den elastischen Pool "%.*ls" kann nicht verkleinert werden, da nicht genügend Speicherplatz für die Datenbanken verfügbar wäre. | Name der elastischen Pools. | Es wurde versucht, die Speicherbegrenzung des elastischen Pools unter die Speicherauslastung zu verringern. | Reduzieren Sie die Speicherauslastung der einzelnen Datenbanken im elastischen Pool, oder entfernen Sie Datenbanken aus dem Pool, um die DTUs oder Speicherbegrenzung zu verringern. | | 40891 | EX\_USER | Die Mindestanzahl von DTUs pro Datenbank (%d) darf die Höchstanzahl von DTUs pro Datenbank (%d) nicht überschreiten. | DTU-Mindestanzahl pro Datenbank; DTU-Höchstanzahl pro Datenbank. | Es wurde versucht, die DTU-Mindestanzahl pro Datenbank höher festzulegen, als die maximale DTU-Anzahl pro Datenbank. | Stellen Sie sicher, dass die Mindestanzahl von DTUs pro Datenbank nicht die Höchstanzahl von DTUs pro Datenbank überschreitet. | | TBD | EX\_USER | Die Speichergröße für eine einzelne Datenbank in einem elastischen Pool darf die maximal zulässige Größe für die Dienstebene des elastischen Pools "%.*ls" nicht überschreiten. | Dienstebene des elastischen Pools | Die maximale Größe der Datenbank überschreitet die maximale Größe, die von der Dienstebene des elastische Pools zugelassen wird. | Legen Sie die maximale Größe der Datenbank höchstens auf die maximal zulässige Größe der Dienstebene des elastische Pools fest. |
 
 
 ## Allgemeine Fehler
@@ -253,4 +253,4 @@ Die folgende Tabelle enthält alle allgemeinen Fehler, die nicht in eine der vor
 - [Azure SQL-Datenbanken – Allgemeine Einschränkungen und Leitlinien](sql-database-general-limitations.md)
 - [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-resource-limits.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

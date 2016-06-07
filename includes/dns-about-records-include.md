@@ -23,8 +23,10 @@ Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag v
 
 Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einer Datensatzgruppe ohne Platzhalter). Datensatzgruppen mit Platzhaltern werden für alle Datensatztypen mit Ausnahme von NS und SOA unterstützt.
 
-Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „*“ oder einen Namen, dessen Bezeichnung mit „*“ beginnt, z. B. „*.foo“.
+Um eine Datensatzgruppe mit Platzhaltern zu erstellen, verwenden Sie den Namen der Datensatzgruppe „ * “ oder einen Namen, dessen Bezeichnung mit „ * “ beginnt, z. B. „*.foo“.
 
 #### CNAME-Ressourceneintragssätze
 
 CNAME-Datensatzgruppen können nicht gleichzeitig neben anderen Datensatzgruppen mit dem gleichen Namen vorhanden sein. Sie können einen CNAME z.B. nicht mit dem relativen Namen „www“, und gleichzeitig einen A-Eintrag mit dem relativen Namen „www“ erstellen. Da die Zonenspitze (Name = " @") immer die NS- und SOA-Datensatzgruppen enthält, die beim Erstellen der Zone erstellt wurden, bedeutet dies, dass Sie keine CNAME-Datensatzgruppe an der Zonenspitze erstellen können. Diese Einschränkungen ergeben sich aus den DNS-Standards; sie sind keine Einschränkungen von Azure DNS.
+
+

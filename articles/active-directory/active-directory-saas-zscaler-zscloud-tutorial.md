@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="02/29/2016" 
+    ms.date="05/25/2016" 
     ms.author="jeedes" />
 
 
@@ -22,7 +22,7 @@ In diesem Tutorial wird die Integration von Azure und Zscaler ZSCloud erläutert
 -   Ein gültiges Azure-Abonnement
 -   Ein Zscaler ZSCloud-Abonnement, für das einmaliges Anmelden aktiviert ist
   
-Nach Abschluss dieses Tutorials können sich die Zscaler ZSCloud zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Zscaler ZSCloud-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können Sie die [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) nutzen.
+Nach Abschluss dieses Tutorials können sich die Zscaler ZSCloud zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Zscaler ZSCloud-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können Sie die [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) nutzen.
   
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -96,7 +96,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Verwaltung](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800206.png "Verwaltung")
 
-7.  Klicken Sie unter **Administratoren & Rollen verwalten ** auf **Benutzer & Authentifizierung verwalten**.
+7.  Klicken Sie unter **Administratoren & Rollen verwalten** auf **Benutzer & Authentifizierung verwalten**.
 
     ![Benutzer & Authentifizierung verwalten](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800207.png "Benutzer & Authentifizierung verwalten")
 
@@ -202,4 +202,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

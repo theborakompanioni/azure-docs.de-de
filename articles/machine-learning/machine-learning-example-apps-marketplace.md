@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="05/24/2016" 
 	ms.author="luisca"/>
 
 # Machine Learning-Apps im Azure Marketplace
@@ -35,7 +35,7 @@ Zu diesen Apps gehören beispielsweise:
   
 
 ##Erkennung von Anomalien##
-Eine API, über die anomale Ereignisse in Zeitreihendaten (z. B. Servertelemetriedaten oder sensorbasierte Daten) erkannt werden.
+Eine API, über die anomale Ereignisse in Zeitreihendaten (z. B. Servertelemetriedaten oder sensorbasierte Daten) erkannt werden.
 
 [Link zum Marketplace](https://datamarket.azure.com/dataset/aml_labs/anomalydetection)
 
@@ -52,4 +52,4 @@ Mit dieser API kann unstrukturierter Text für Aufgaben wie Stimmungsanalyse und
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/18/2016"
 	ms.author="jgao"/>
 
 #Analysieren von Flugverspätungsdaten mit Hive in HDInsight
@@ -57,7 +57,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 **In diesem Lernprogramm verwendete Dateien**
 
-In diesem Lernprogramm werden Flugdaten hinsichtlich der termingerechten Durchführung von Fluggesellschaften des [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] \(RITA) verwendet. Eine Kopie der Daten wurde in einen Azure-Blobspeichercontainer mit öffentlicher Blobzugriffsberechtigung hochgeladen. Ein Teil des PowerShell-Skripts kopiert die Daten aus dem öffentlichen Blobcontainer in den standardmäßigen Blobcontainer des Clusters. Das HiveQL-Skript wird ebenfalls in denselben Blobcontainer kopiert. Weitere Informationen darüber, wie Sie die Daten in Ihr eigenes Speicherkonto einfügen/hochladen und die HiveQL-Skriptdatei erstellen/hochladen können, finden Sie in [Anhang A](#appendix-a) und [Anhang B](#appendix-b).
+In diesem Lernprogramm werden Flugdaten hinsichtlich der termingerechten Durchführung von Fluggesellschaften des [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (RITA) verwendet. Eine Kopie der Daten wurde in einen Azure-Blobspeichercontainer mit öffentlicher Blobzugriffsberechtigung hochgeladen. Ein Teil des PowerShell-Skripts kopiert die Daten aus dem öffentlichen Blobcontainer in den standardmäßigen Blobcontainer des Clusters. Das HiveQL-Skript wird ebenfalls in denselben Blobcontainer kopiert. Weitere Informationen darüber, wie Sie die Daten in Ihr eigenes Speicherkonto einfügen/hochladen und die HiveQL-Skriptdatei erstellen/hochladen können, finden Sie in [Anhang A](#appendix-a) und [Anhang B](#appendix-b).
 
 In der folgenden Tabelle sind die in diesem Lernprogramm verwendeten Dateien aufgelistet:
 
@@ -139,7 +139,7 @@ Hadoop MapReduce verwendet Stapelbearbeitung. Die kosteneffizienteste Möglichke
 		New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName -Location $location -Type Standard_LRS
 		
 		# Create the default Blob container
-		$defaultStorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName |  %{ $_.Key1 }
+		$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
 		$defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey 
 		New-AzureStorageContainer -Name $defaultBlobContainerName -Context $defaultStorageAccountContext 
 		
@@ -245,7 +245,7 @@ Das Hochladen der Datendatei und der HiveQL-Skriptdateien (siehe [Anhang B](#ap
 
 **So laden Sie die Flugdaten herunter**
 
-1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] \(RITA) auf.
+1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (RITA) auf.
 2. Wählen Sie auf der Website die folgenden Werte aus:
 
 	<table border="1">
@@ -308,7 +308,7 @@ Das Hochladen der Datendatei und der HiveQL-Skriptdateien (siehe [Anhang B](#ap
 		}
 		
 		# Validate the container
-		$storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName | %{$_.Key1}
+		$storageAccountKey = (Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
 		$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 		
 		if (-not (Get-AzureStorageContainer -Context $storageContext |Where-Object{$_.Name -eq $blobContainerName}))
@@ -429,7 +429,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Hive Data Definiti
 		}
 		
 		# Validate the container
-		$storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName | %{$_.Key1}
+		$storageAccountKey = (Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
 		$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 		
 		if (-not (Get-AzureStorageContainer -Context $storageContext |Where-Object{$_.Name -eq $blobContainerName}))
@@ -538,7 +538,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Hive Data Definiti
 		Write-Host "`nUploading the Hive script to the default Blob container ..." -ForegroundColor Green
 		
 		# Create a storage context object
-		$storageAccountKey = Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName | %{$_.Key1}
+		$storageAccountKey = (Get-AzureRmStorageAccountKey -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
 		$destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 		
 		# Upload the file from local workstation to Blob storage
@@ -742,4 +742,4 @@ Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine H
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

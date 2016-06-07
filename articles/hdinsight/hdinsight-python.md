@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="04/26/2016" 
+	ms.date="05/20/2016" 
 	ms.author="larryfr"/>
 
 #Verwenden von Python mit Hive und Pig in HDInsight
@@ -46,7 +46,7 @@ Python kann als UDF von Hive aus mittels der Hive QL **TRANSFORM**-Anweisung ver
 	add file wasb:///streaming.py;
 
 	SELECT TRANSFORM (clientid, devicemake, devicemodel)
-	  USING 'streaming.py' AS
+	  USING 'python streaming.py' AS
 	  (clientid string, phoneLable string, phoneHash string)
 	FROM hivesampletable
 	ORDER BY clientid LIMIT 50;
@@ -189,7 +189,7 @@ Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und 
 
 		add file wasb:///streaming.py;
 		SELECT TRANSFORM (clientid, devicemake, devicemodel)
-		  USING 'streaming.py' AS
+		  USING ' pythonstreaming.py' AS
 		  (clientid string, phoneLabel string, phoneHash string)
 		FROM hivesampletable
 		ORDER BY clientid LIMIT 50;
@@ -240,10 +240,9 @@ In diesen Schritten wird Microsoft Azure PowerShell verwendet. Wen es nicht bere
         $resourceGroup = $clusterInfo.ResourceGroup
         $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
         $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=Get-AzureRmStorageAccountKey `
+        $storageAccountKey=(Get-AzureRmStorageAccountKey `
             -Name $storageAccountName `
-            -ResourceGroupName $resourceGroup `
-            | %{ $_.Key1 }
+        -ResourceGroupName $resourceGroup)[0].Value
 
 		#Create a storage content and upload the file
         $context = New-AzureStorageContext `
@@ -280,10 +279,9 @@ Das folgende Skript führt das Skript __streaming.py__ aus. Vor dem Ausführen w
     $resourceGroup = $clusterInfo.ResourceGroup
     $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
     $container=$clusterInfo.DefaultStorageContainer
-    $storageAccountKey=Get-AzureRmStorageAccountKey `
+    $storageAccountKey=(Get-AzureRmStorageAccountKey `
         -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup `
-        | %{ $_.Key1 }
+        -ResourceGroupName $resourceGroup)[0].Value
     #Create a storage content and upload the file
     $context = New-AzureStorageContext `
         -StorageAccountName $storageAccountName `
@@ -347,10 +345,9 @@ Im Folgenden wird das Skript __jython.py__ verwendet. Vor dem Ausführen werden 
     $resourceGroup = $clusterInfo.ResourceGroup
     $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
     $container=$clusterInfo.DefaultStorageContainer
-    $storageAccountKey=Get-AzureRmStorageAccountKey `
+    $storageAccountKey=(Get-AzureRmStorageAccountKey `
         -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup `
-        | %{ $_.Key1 }
+        -ResourceGroupName $resourceGroup)[0].Value
     
     #Create a storage content and upload the file
     $context = New-AzureStorageContext `
@@ -449,4 +446,4 @@ Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie In
 
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

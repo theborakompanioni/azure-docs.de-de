@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/29/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli@microsoft.com" />
 
 # Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
@@ -197,4 +197,4 @@ Sie können die Hilfe in der Windows PowerShell-Schnittstelle problemlos aktuali
 ## Nächste Schritte
 Wenn Probleme auf Ihrem StorSimple-Gerät bei einem der zuvor genannten Workflows auftreten, konsultieren Sie die [Tools zur Problembehandlung für StorSimple-Bereitstellungen](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0525_2016-->

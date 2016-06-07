@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="05/31/2016"
    ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
@@ -62,7 +62,7 @@ Eine Möglichkeit, Daten für Berichte und Analysen verfügbar zu machen, ist da
 Informationen zu den ersten Schritten zum Entwickeln Ihres Data Warehouse finden Sie unter [Entwicklungsübersicht][].
 
 ## Bücher
-[Big Data Warehousing](https://www.manning.com/books/big-data-warehousing) von Karthik Ramachandran, Istvan Szededi und Richard L. Saltzer (Manning Publications). [Kapitel 1](https://manning-content.s3.amazonaws.com/download/e/3d94acd-9512-46c8-b0b0-8c9c3c6a303b/BDW_MEAP_ch1.pdf)
+[Big Data Warehousing](https://www.manning.com/books/big-data-warehousing) von Karthik Ramachandran, Istvan Szededi und Richard L. Saltzer (Manning Publications). [Kapitel 1](https://manning-content.s3.amazonaws.com/download/e/3d94acd-9512-46c8-b0b0-8c9c3c6a303b/BDW_MEAP_ch1.pdf)
 
 <!--Image references-->
 
@@ -73,4 +73,4 @@ Informationen zu den ersten Schritten zum Entwickeln Ihres Data Warehouse finden
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

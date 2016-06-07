@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="03/08/2016"
+   ms.date="05/18/2016"
    ms.author="brjohnst"/>
 
 # Azure-Suchdienst-REST-API: Version 2015-02-28-Preview
 
 Dieser Artikel bildet die Referenzdokumentation zu `api-version=2015-02-28-Preview`. Diese Vorschauversion erweitert die aktuelle allgemein verfügbare Version [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) durch folgende experimentelle Features erweitert:
 
-- Abfrageparameter `moreLikeThis` in der [Dokumente durchsuchen](#SearchDocs)-API. Findet andere Dokumente, die für ein bestimmtes Dokument relevant sind.
+- `moreLikeThis`-Abfrageparameter in der [Dokumente durchsuchen](#SearchDocs)-API. Findet andere Dokumente, die für ein bestimmtes Dokument relevant sind.
 
 Einige zusätzliche Teile der REST-API, Version `2015-02-28-Preview`, werden separat dokumentiert. Diese umfassen:
 
@@ -1056,35 +1056,112 @@ Der Anforderungstext enthält ein oder mehrere zu indizierende Dokumente. Dokume
 
 **Antwort**
 
-Für eine erfolgreiche Antwort wird als Statuscode "200 OK" zurückgeben. Dies bedeutet, dass alle Elemente erfolgreich indiziert wurden (dies ist auch am Feld "status" zu erkennen, das für alle Elemente auf "true" gesetzt ist):
+Für eine erfolgreiche Antwort wird als Statuscode „200“ (OK) zurückgeben. Dies bedeutet, dass alle Elemente erfolgreich indiziert wurden. Dies ist daran zu erkennen, dass für die Eigenschaft `status` für alle Elemente „true“ festgelegt ist, und für die Eigenschaft `statusCode` „201“ (für neu hochgeladene Dokumente) oder „200“ (für zusammengeführte oder gelöschte Dokumente):
 
     {
       "value": [
         {
-          "key": "unique_key_of_document",
+          "key": "unique_key_of_new_document",
           "status": true,
-          "errorMessage": null
+          "errorMessage": null,
+          "statusCode": 201
+        },
+        {
+          "key": "unique_key_of_merged_document",
+          "status": true,
+          "errorMessage": null,
+          "statusCode": 200
+        },
+        {
+          "key": "unique_key_of_deleted_document",
+          "status": true,
+          "errorMessage": null,
+          "statusCode": 200
         }
       ]
     }  
 
-Wenn mindestens ein Element erfolgreich indiziert wurde, wird der Statuscode "207" zurückgegeben (dies ist auch am Feld "status" zu erkennen, das für alle nicht indizierten Elemente auf "false" gesetzt ist):
+Statuscode „207“ (Multistatus) wird zurückgegeben, wenn mindestens ein Element nicht erfolgreich indiziert wurde. Bei Elementen, die nicht indiziert wurden, ist für das Feld `status` „false“ festgelegt. Die Eigenschaften `errorMessage` und `statusCode` geben den Grund für den Indizierfehler an:
 
     {
       "value": [
         {
-          "key": "unique_key_of_document",
+          "key": "unique_key_of_document_1",
           "status": false,
-          "errorMessage": "The search service is too busy to process this document. Please try again later."
+          "errorMessage": "The search service is too busy to process this document. Please try again later.",
+          "statusCode": 503
+        },
+        {
+          "key": "unique_key_of_document_2",
+          "status": false,
+          "errorMessage": "Document not found.",
+          "statusCode": 404
+        },
+        {
+          "key": "unique_key_of_document_3",
+          "status": false,
+          "errorMessage": "Index is temporarily unavailable because it was updated with the 'allowIndexDowntime' flag set to 'true'. Please try again later.",
+          "statusCode": 422
         }
       ]
     }  
 
-Die Eigenschaft `errorMessage` gibt nach Möglichkeit den Grund für den Indizierfehler an.
+Die folgende Tabelle erläutert die verschiedenen Statuscodes pro Dokument, die in der Antwort zurückgegeben werden können. Beachten Sie, dass einige Probleme mit der Anforderung selbst anzeigen, während andere auf temporäre Fehler hinweisen. Das Letztere sollten Sie nach einer Verzögerung erneut versuchen.
 
-**Hinweis**: Wenn der Clientcode als Antwort häufig "207" erhält, kann es daran liegen, dass das System überlastet ist. Sie können dies anhand der Eigenschaft `errorMessage` überprüfen. Wenn dies der Fall ist, sollten ***Indexanforderungen eingeschränkt*** werden. Nimmt der Indizierdatenverkehr nicht ab, kann dies dazu führen, dass alle Anforderungen mit dem Fehler "503" abgelehnt werden.
+<table style="font-size:12">
+    <tr>
+		<th>Statuscode</th>
+		<th>Bedeutung</th>
+		<th>Wiederholbar</th>
+		<th>Hinweise</th>
+	</tr>
+    <tr>
+		<td>200</td>
+		<td>Dokument wurde erfolgreich geändert oder gelöscht.</td>
+		<td>–</td>
+		<td>Löschvorgänge sind <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a>. Also auch wenn ein Dokumentschlüssel im Index nicht vorhanden ist, führt der Versuch, einen Löschvorgang mit diesem Schlüssel auszuführen, zum Statuscode „200“.</td>
+	</tr>
+    <tr>
+		<td>201</td>
+		<td>Dokument wurde erfolgreich erstellt.</td>
+		<td>–</td>
+		<td></td>
+	</tr>
+    <tr>
+		<td>400</td>
+		<td>Das Dokument enthielt einen Fehler, der die Indizierung verhindert hat.</td>
+		<td>Nein</td>
+		<td>Die Fehlermeldung in der Antwort weist darauf hin, was mit dem Dokument falsch ist.</td>
+	</tr>
+    <tr>
+		<td>404</td>
+		<td>Das Dokument konnte nicht zusammengeführt werden, weil der angegebene Schlüssel nicht im Index vorhanden ist.</td>
+		<td>Nein</td>
+		<td>Dieser Fehler tritt nicht für Uploads auf, da sie neue Dokumente erstellen, und nicht für Löschungen, da sie <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent</a> sind.</td>
+	</tr>
+    <tr>
+		<td>409</td>
+		<td>Ein Versionskonflikt wurde erkannt, als Sie versuchten, ein Dokument zu indizieren.</td>
+		<td>Ja</td>
+		<td>Dies kann vorkommen, wenn Sie versuchen, mehr als einmal gleichzeitig das gleiche Dokument zu indizieren.</td>
+	</tr>
+    <tr>
+		<td>422</td>
+		<td>Der Index ist vorübergehend nicht verfügbar, da er aktualisiert wurde, als das Flag „allowIndexDowntime“ auf „true“ gesetzt war.</td>
+		<td>Ja</td>
+		<td></td>
+	</tr>
+    <tr>
+		<td>503</td>
+		<td>Ihr Suchdienst ist vorübergehend nicht verfügbar, möglicherweise aufgrund starker Auslastung.</td>
+		<td>Ja</td>
+		<td>Der Code sollte in diesem Fall vor Wiederholungsversuchen warten, oder es besteht das Risiko, dass die Nichtverfügbarkeit des Diensts verlängert wird.</td>
+	</tr>
+</table> 
 
-Der Statuscode "429" gibt an, dass Sie Ihr Kontingent hinsichtlich der Anzahl der Dokumente pro Index überschritten haben. Erstellen Sie in diesem Fall entweder einen neuen Index oder aktualisieren Sie auf höhere Kapazitätsgrenzen.
+**Hinweis**: Wenn der Clientcode als Antwort häufig "207" erhält, kann es daran liegen, dass das System überlastet ist. Sie können zur Bestätigung die Eigenschaft `statusCode` auf „503“ überprüfen. Wenn dies der Fall ist, sollten ***Indexanforderungen eingeschränkt*** werden. Nimmt der Indizierdatenverkehr nicht ab, kann dies dazu führen, dass alle Anforderungen mit dem Fehler "503" abgelehnt werden.
+
+Der Statuscode „429“ gibt an, dass Sie Ihr Kontingent hinsichtlich der Anzahl der Dokumente pro Index überschritten haben. Erstellen Sie in diesem Fall entweder einen neuen Index oder aktualisieren Sie auf höhere Kapazitätsgrenzen.
 
 **Beispiel:**
 
@@ -1150,7 +1227,7 @@ Ein Vorgang vom Typ **Search** wird als GET- oder POST-Anforderung ausgegeben un
 
 Wenn die API **Search** mittels „HTTP GET“ aufrufen, darf die Länge der angeforderten URL maximal 8 KB betragen. Dies ist für die meisten Anwendungen ausreichend. Manche Anwendungen erzeugen jedoch sehr große Abfragen oder OData-Filterausdrücke. Bei solchen Anwendungen ist HTTP POST besser geeignet, da dadurch größere Filter und Abfragen als mit GET möglich sind. Bei POST stellt die Anzahl der Begriffe oder Klauseln in einer Abfrage die Einschränkung dar, nicht die Größe der unformatierten Abfrage, da die maximal zulässige Größe für Anforderungen bei POST etwa 16 MB ist.
 
-> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Suchabfragen und Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Suchabfragen und Filtern finden Sie in den Themen zur [Lucene-Abfragesyntax](https://msdn.microsoft.com/library/mt589323.aspx) und zur [OData-Ausdruckssyntax](https://msdn.microsoft.com/library/dn798921.aspx). **Anforderung**
+> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Suchabfragen und Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Suchabfragen und Filtern finden Sie in den Artikeln [Lucene-Abfragesyntax in Azure Search](https://msdn.microsoft.com/library/mt589323.aspx) und [OData-Ausdruckssyntax für Azure Search](https://msdn.microsoft.com/library/dn798921.aspx). **Anforderung**
 
 Für Dienstanforderungen ist HTTPS erforderlich. Die Anforderung **Search** kann mit der GET- oder POST-Methode erstellt werden.
 
@@ -1244,9 +1321,13 @@ Darüber hinaus ist die URL-Codierung nur erforderlich, wenn Sie die REST-API di
 
 `scoringProfile=[string]` (optional): Der Name des Bewertungsprofils, mit dem Ergebnisstände übereinstimmender Dokumente zum Sortieren der Ergebnisse bewertet werden.
 
-`scoringParameter=[string]` (Null oder höher): Gibt den Wert für jeden in einer Bewertungsfunktion definierten Parameter (z. B. `referencePointParameter`) im Format "Name:Wert" an. Beispiel: Wenn das Bewertungsprofil eine Funktion mit einem Parameter namens "mylocation" definiert, lautet die Option für die Abfragezeichenfolge "&scoringParameter=mylocation:-122.2,44.8"
+`scoringParameter=[string]` (Null oder höher): Gibt den Wert für jeden in einer Bewertungsfunktion definierten Parameter (z.B. `referencePointParameter`) im Format `name-value1,value2,...` an.
 
-> [AZURE.NOTE] Wenn Sie **Search** mithilfe von „POST“ aufrufen, heißt dieser Parameter nicht `scoringParameter`, sondern `scoringParameters`. Darüber hinaus muss ein JSON-Zeichenfolgenarray mit jeweils separaten Name/Wert-Paaren angegeben werden.
+- Beispiel: Wenn das Bewertungsprofil eine Funktion mit einem Parameter namens „mylocation“ definiert, lautet die Option für die Abfragezeichenfolge `&scoringParameter=mylocation--122.2,44.8`. Der erste Bindestrich trennt den Namen aus der Werteliste, und der zweite Bindestrich ist Teil des ersten Werts (Länge in diesem Beispiel).
+- Für Bewertungsparameter wie für Tagverstärkung, die Kommas enthalten können, können Sie solche Werte in der Liste mit einfachen Anführungszeichen als Escapezeichen versehen. Wenn die Werte selbst einfache Anführungszeichen enthalten, können Sie sie verdoppeln, um sie mit Escapezeichen zu versehen.
+  - Wenn Sie z.B. bei einem Tagverstärkungsparameter namens „mytag“ die Tagwerte „Hello, O'Brien“ und „Smith“ verstärken möchten, wäre die Abfragezeichenfolgenoption `&scoringParameter=mytag-'Hello, O''Brien',Smith`. Beachten Sie, dass Anführungszeichen nur erforderlich sind für Werte, die Kommas enthalten.
+
+> [AZURE.NOTE] Wenn Sie **Search** mithilfe von „POST“ aufrufen, heißt dieser Parameter nicht `scoringParameter`, sondern `scoringParameters`. Darüber hinaus muss ein JSON-Zeichenfolgenarray mit jeweils separaten `name-values`-Paaren angegeben werden.
 
 `minimumCoverage` (optional, Standardwert ist 100): Eine Zahl zwischen 0 und 100, die den Prozentsatz des Index angibt, der von einer Suchabfrage abgedeckt werden muss, damit diese als erfolgreich gilt. Standardmäßig muss der gesamte Index verfügbar sein, da `Search` sonst den HTTP-Statuscode "503" zurück gibt. Wenn Sie `minimumCoverage` festlegen und `Search` erfolgreich ist, werden der Statuscode "HTTP 200" und ein Wert für `@search.coverage` in der Antwort zurückgegeben. Letzterer gibt den in Prozentsatz des Index an, der in die Abfrage einbezogen wurde.
 
@@ -1492,13 +1573,13 @@ Beachten Sie, dass jeweils nur ein Index abgefragt werden kann. Erstellen Sie f�
 13) Durchsuchen Sie den Index in der Annahme, dass ein Bewertungsprofil namens "geo" mit zwei Bewertungsfunktionen für die Entfernung vorhanden ist. Dabei definiert die eine Funktion einen Parameter namens "currentLocation" und die andere Funktion einen Parameter namens "lastLocation".
 
 
-    GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&scoringParameter=lastLocation:-121.499,44.2113&api-version=2015-02-28-Preview
+    GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&scoringParameter=lastLocation--121.499,44.2113&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
     {
       "search": "something",
       "scoringProfile": "geo",
-      "scoringParameters": [ "currentLocation:-122.123,44.77233", "lastLocation:-121.499,44.2113" ]
+      "scoringParameters": [ "currentLocation--122.123,44.77233", "lastLocation--121.499,44.2113" ]
     }
 
 14) Suchen Sie Dokumente im Index mithilfe der [einfachen Abfragesyntax](https://msdn.microsoft.com/library/dn798920.aspx). Diese Abfrage gibt Hotels zurück, deren durchsuchbare Felder die Begriffe "Komfort" und "Standort" aber nicht "Motel" enthalten:
@@ -1639,7 +1720,7 @@ Ein Vorgang vom Typ **Suggestions** wird als GET- oder POST-Anforderung ausgegeb
 
 Wenn Sie die API **Suggestions** mittels „HTTP GET“ aufrufen, darf die Länge der angeforderten URL maximal 8 KB betragen. Dies ist für die meisten Anwendungen ausreichend. Manche Anwendungen erzeugen jedoch sehr große Abfragen. Das gilt insbesondere für OData-Filterausdrücke. Bei solchen Anwendungen ist HTTP POST besser geeignet, da dadurch größere Filter als mit GET möglich sind. Bei POST stellt die Anzahl der Klauseln in einem Filter die Einschränkung dar, nicht die Größe der unformatierten Filterzeichenfolge, da die maximal zulässige Größe für Anforderungen bei POST etwa 16 MB ist.
 
-> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Filtern finden Sie unter [OData-Ausdruckssyntax für Azure-Suche](https://msdn.microsoft.com/library/dn798921.aspx).
+> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Filtern finden Sie unter [OData-Ausdruckssyntax für Azure Search](https://msdn.microsoft.com/library/dn798921.aspx).
 
 **Anforderung**
 
@@ -1772,4 +1853,4 @@ Rufen Sie 5 Vorschläge mit der Teilsuche nach "lux" ab.
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

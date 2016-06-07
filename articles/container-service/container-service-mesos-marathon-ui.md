@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Container Service-Containerverwaltung über die Web-Benutzeroberfläche | Microsoft Azure"
-   description="Stellen Sie mithilfe der Marathon-Webbenutzeroberfläche Container für einen Azure Container Service-Clusterdienst bereit."
+   description="Stellen Sie mit der Marathon-Webbenutzeroberfläche Container für einen Azure Container Service-Clusterdienst bereit."
    services="container-service"
    documentationCenter=""
    authors="neilpeterson"
@@ -31,17 +31,17 @@ Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem
 
 Navigieren Sie mit eingerichtetem Secure Shell (SSH)-Tunnel zu http://localhost/. Dadurch wird die DC/OS-Webbenutzeroberfläche geladen, und es werden Informationen zum Cluster angezeigt, etwa genutzte Ressourcen, aktive Agents und ausgeführte Dienste.
 
-![](media/dcos/dcos2.png)
+![DC/OS-Benutzeroberfläche](media/dcos/dcos2.png)
 
 ## Erkunden der Marathon-Benutzeroberfläche
 
-Navigieren Sie zum Anzeigen der Marathon-Benutzeroberfläche zu http://localhost/Marathon. Auf diesem Bildschirm können Sie einen neuen Container oder eine andere Anwendung auf dem Azure Container Service-DC/OS-Cluster starten. Sie können auch Informationen zu ausgeführten Containern und Anwendungen anzeigen.
+Navigieren Sie zum Anzeigen der Marathon-Benutzeroberfläche zu http://localhost/Marathon. Auf diesem Bildschirm können Sie einen neuen Container oder eine andere Anwendung im Azure Container Service-DC/OS-Cluster starten. Sie können auch Informationen zu ausgeführten Containern und Anwendungen anzeigen.
 
-![](media/dcos/dcos3.png)
+![Marathon-Benutzeroberfläche](media/dcos/dcos3.png)
 
 ## Bereitstellen eines Containers im Docker-Format
 
-Klicken Sie zum Bereitstellen eines neuen Containers mithilfe von Marathon auf die Schaltfläche **Anwendung erstellen**, und geben Sie die folgenden Informationen in das Formular ein. Klicken Sie anschließend auf **Anwendung erstellen**.
+Klicken Sie zum Bereitstellen eines neuen Containers mithilfe von Marathon auf die Schaltfläche **Anwendung erstellen**, und geben Sie die folgenden Informationen in das Formular ein:
 
 Feld | Wert
 ----------------|-----------
@@ -51,50 +51,50 @@ Netzwerk | Überbrückt
 Hostport | 80
 Protokoll | TCP
 
-![](media/dcos/dcos4.png)
+![Neue Anwendungsbenutzeroberfläche – Allgemein](media/dcos/dcos4.png)
 
-![](media/dcos/dcos5.png)
+![Neue Anwendungsbenutzeroberfläche – Docker-Container](media/dcos/dcos5.png)
 
-![](media/dcos/dcos6.png)
+![Neue Anwendungsbenutzeroberfläche – Ports und Dienstermittlung](media/dcos/dcos6.png)
 
-Verwenden Sie zum statischen Zuordnen eines Containerports zu einem Port des Agents den JSON-Modus. Wechseln Sie im Assistenten für die neue Anwendung mithilfe des Umschalters in den JSON-Modus, und geben Sie im Abschnitt „portMappings“ der Anwendungsdefinition Folgendes ein. In diesem Beispiel wird Port 80 des Containers an Port 80 des DC/OS-Agents gebunden. Sobald die Änderung vorgenommen wurde, kann der JSON-Modus im Assistenten beendet werden.
+Sie müssen den JSON-Modus verwenden, wenn Sie den Containerport statisch einem Port auf dem Agent zuordnen möchten. Wechseln Sie im Assistenten „Neue Anwendung“ hierzu mit dem Umschalter in den **JSON-Modus**. Geben Sie im Abschnitt `portMappings` der Anwendungsdefinition dann Folgendes ein. In diesem Beispiel wird Port 80 des Containers an Port 80 des DC/OS-Agents gebunden. Nachdem Sie diese Änderung vorgenommen haben, können Sie den JSON-Modus für den Assistenten wieder deaktivieren.
 
 ```none
 “hostPort”: 80,
 ```
 
-![](media/dcos/dcos13.png)
+![Neue Anwendungsbenutzeroberfläche – Beispiel für Port 80](media/dcos/dcos13.png)
 
-Der DC/OS-Cluster wird mit einem Satz von privaten und öffentlichen Agents bereitgestellt. Damit über das Internet auf Anwendungen zugegriffen werden kann, müssen die Anwendungen auf einem öffentlichen Agent bereitgestellt werden. Wählen Sie dazu im Assistenten für die neue Anwendung die Registerkarte „Optional“, und geben Sie für die akzeptierten Ressourcenrollen „slave\_public“ ein.
+Der DC/OS-Cluster wird mit einem Satz von privaten und öffentlichen Agents bereitgestellt. Damit der Cluster auf Anwendungen über das Internet zugreifen kann, müssen Sie die Anwendungen auf einem öffentlichen Agent bereitstellen. Wählen Sie dazu im Assistenten für die neue Anwendung die Registerkarte **Optional**, und geben Sie unter **Accepted Resource Roles** (Akzeptierte Ressourcenrollen) den Text **slave\_public** ein.
 
-![](media/dcos/dcos14.png)
+![Neue Anwendungsbenutzeroberfläche – Einstellung für öffentlichen Agent](media/dcos/dcos14.png)
 
 Auf der Marathon-Hauptseite können Sie den Bereitstellungsstatus für den Container anzeigen.
 
-![](media/dcos/dcos7.png)
+![Hauptseite der Marathon-Benutzeroberfläche – Containerbereitstellungsstatus](media/dcos/dcos7.png)
 
-Wenn Sie zurück zur DC/OS-App wechseln (http://localhost/), sehen Sie, dass jetzt eine Aufgabe – in diesem Fall ein Container im Docker-Format – auf dem DC/OS-Cluster ausgeführt wird.
+Wenn Sie zurück zur DC/OS-Webbenutzeroberfläche (http://localhost/) wechseln, sehen Sie, dass eine Aufgabe – in diesem Fall ein Container im Docker-Format – auf dem DC/OS-Cluster ausgeführt wird.
 
-![](media/dcos/dcos8.png)
+![DC/OS-Webbenutzeroberfläche – Im Cluster ausgeführte Aufgabe](media/dcos/dcos8.png)
 
 Sie sehen auch, auf welchem Clusterknoten die Aufgabe ausgeführt wird.
 
-![](media/dcos/dcos9.png)
+![DC/OS-Webbenutzeroberfläche – Aufgabenclusterknoten](media/dcos/dcos9.png)
 
 ## Skalieren der Container
 
-Auf der Marathon-Benutzeroberfläche kann die Anzahl der Instanzen eines Containers skaliert werden. Navigieren Sie dazu zur Marathon-Seite, wählen Sie den zu skalierenden Container aus, und klicken Sie auf die Schaltfläche **Skalieren**. Geben Sie im Fenster **Anwendung skalieren** die gewünschte Anzahl der Containerinstanzen ein, und wählen Sie **Anwendung skalieren**.
+Sie können auf der Marathon-Benutzeroberfläche die Anzahl der Instanzen eines Containers skalieren. Navigieren Sie hierfür zur **Marathon**-Seite, wählen Sie den zu skalierenden Container aus, und klicken Sie auf die Schaltfläche **Skalieren**. Geben Sie im Dialogfeld **Anwendung skalieren** die gewünschte Anzahl der Containerinstanzen ein, und wählen Sie **Anwendung skalieren**.
 
-![](media/dcos/dcos10.png)
+![Marathon-Benutzeroberfläche – Dialogfeld „Anwendung skalieren“](media/dcos/dcos10.png)
 
-Sobald der Skalierungsvorgang abgeschlossen ist, sehen Sie mehrere Instanzen derselben Aufgabe auf DC/OS-Agents verteilt.
+Sobald der Skalierungsvorgang abgeschlossen ist, sehen Sie, dass mehrere Instanzen derselben Aufgabe auf DC/OS-Agents verteilt sind.
 
-![](media/dcos/dcos11.png)
+![Dashboard der DC/OS-Webbenutzeroberfläche – Auf Agents verteilte Aufgabe](media/dcos/dcos11.png)
 
-![](media/dcos/dcos12.png)
+![DC/OS-Webbenutzeroberfläche – Knoten](media/dcos/dcos12.png)
 
 ## Nächste Schritte
 
-[Arbeiten mit der DC/OS- und Marathon-API](container-service-mesos-marathon-rest.md)
+- [Verwenden von DC/OS und der Marathon-API](container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

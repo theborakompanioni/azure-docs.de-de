@@ -1,10 +1,10 @@
 <properties
-pageTitle="Verwenden der Azure Service Bus-API in Ihren Logik-Apps | Microsoft Azure"
-description="Erste Schritte mit der Azure Service Bus-API (Connector) in Ihren Microsoft Azure App Service-Logik-Apps"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Verwenden des Azure Service Bus-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erste Schritte mit dem Azure Service Bus-Connector in Ihren Microsoft Azure App Service-Logik-Apps"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/23/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Azure Service Bus-API
+# Erste Schritte mit dem Azure Service Bus-Connector 
 
 Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange, Empfangen aus Abonnements usw.
 
@@ -31,9 +31,9 @@ Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Ers
 
 ## Trigger und Aktionen
 
-Die Azure Service Bus-API kann als Aktion verwendet werden. Sie verfügt über Trigger. Alle APIs unterstützen Daten im JSON- und XML-Format.
+Der Azure Service Bus-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
- Die Azure Service Bus-API verfügt über die folgenden Aktionen und/oder Trigger:
+ Der Azure Service Bus-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
 ### Azure Service Bus-Aktionen
 Sie können die folgenden Aktionen ausführen:
@@ -51,26 +51,9 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Erstellen einer Verbindung mit Azure Service Bus
-Zur Verwendung der Azure Service Bus-API stellen Sie zunächst eine **Verbindung** her und geben dann die Details für diese Eigenschaften an:
+Zur Verwendung des Azure Service Bus-Connectors stellen Sie zunächst eine **Verbindung** her und geben anschließend die Details für diese Eigenschaften an:
 
-|Eigenschaft| Erforderlich|Beschreibung|
-| ---|---|---|
-|ConnectionString|Ja|Angeben einer Azure Service Bus-Verbindungszeichenfolge|  
-
-Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung** aus, die Sie dann in Ihrer Logik-App verwenden können:
-
-1. Wählen Sie **Wiederholung** aus.
-2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.![Service Bus konfigurieren][1] 
-3. Wählen Sie **Aktion hinzufügen**.
-![Service Bus konfigurieren][2]   
-4. Geben Sie in das Suchfeld **Service Bus** ein, und warten Sie, bis die Suche alle Einträge mit „Service Bus“ im Namen zurückgibt.
-5. Wählen Sie **Service Bus – Nachricht senden**.
-![Service Bus konfigurieren][3]
-7. Geben Sie einen **Verbindungsnamen** und eine **Verbindungszeichenfolge** ein, und wählen Sie dann **Verbindung erstellen**:
-![Service Bus konfigurieren][4]
-7. Nachdem die Verbindung erstellt wurde, wird das Dialogfeld **Nachricht senden** angezeigt. Geben Sie die erforderlichen Informationen zum Senden einer Nachricht ein.
-![Service Bus konfigurieren][5]
-8. Klicken Sie oben im Menü auf die Schaltfläche **Speichern**, um Ihre Arbeit zu speichern.    
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit ServiceBus](../../includes/connectors-create-api-servicebus.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -94,7 +77,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung*
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -114,7 +97,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung*
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -135,20 +118,20 @@ Führen Sie die folgenden Schritte zum Erstellen einer Service Bus-**Verbindung*
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
 
 ## Objektdefinitionen: 
 
- **ServiceBusMessage:** Nachricht besteht aus Inhalt und Eigenschaften.
+ **ServiceBusMessage:** Nachricht besteht aus Inhalt und Eigenschaften
 
 Erforderliche Eigenschaften für ServiceBusMessage:
 
 ContentTransferEncoding
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -162,11 +145,4 @@ ContentTransferEncoding
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-[1]: ./media/connectors-create-api-servicebus/connectionconfig1.png
-[2]: ./media/connectors-create-api-servicebus/connectionconfig2.png
-[3]: ./media/connectors-create-api-servicebus/connectionconfig3.png
-[4]: ./media/connectors-create-api-servicebus/connectionconfig4.png
-[5]: ./media/connectors-create-api-servicebus/connectionconfig5.png
-[6]: ./media/connectors-create-api-servicebus/connectionconfig6.png
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

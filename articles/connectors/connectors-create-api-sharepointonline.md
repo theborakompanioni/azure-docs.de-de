@@ -1,10 +1,10 @@
 <properties
-pageTitle="Verwenden der SharePoint Online-API in Ihren Logik-Apps oder PowerApps | Microsoft Azure"
-description="Erste Schritte mit der SharePoint Online-API für Azure App Service in Ihren Logik-Apps und PowerApps."
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Verwenden des SharePoint Online-Connectors in Ihren Logik-Apps oder PowerApps | Microsoft Azure"
+description="Erste Schritte mit dem SharePoint Online-Connector für Azure App Service in Ihren Logik-Apps und PowerApps."
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der SharePoint Online-API
+# Erste Schritte mit dem SharePoint Online-Connector 
 
-Der SharePoint-Verbindungsanbieter stellt eine API zum Arbeiten mit Listen in SharePoint zur Verfügung.
+Der SharePoint-Connector bietet eine Methode zum Arbeiten mit Listen in SharePoint.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -32,9 +32,9 @@ Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Ers
 
 ## Trigger und Aktionen
 
-Die SharePoint-API kann als Aktion verwendet werden und verfügt über Trigger. Alle APIs unterstützen Daten im JSON- und XML-Format.
+Der SharePoint-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
-Die SharePoint-API verfügt über die folgenden Aktionen und/oder Trigger:
+Der SharePoint-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
 ### SharePoint-Aktionen
 Sie können diese Aktionen ausführen:
@@ -66,25 +66,21 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit SharePoint
-Stellen Sie zum Verwenden der SharePoint-API zunächst eine **Verbindung** her, und geben Sie dann die Details für diese Eigenschaften an:
+Stellen Sie zum Verwenden des SharePoint-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
 |Tokenverschlüsselung|Ja|Bereitstellen von SharePoint-Anmeldeinformationen|
 
-Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Identität (Benutzername und Kennwort, Smartcard-Anmeldeinformationen usw.) für SharePoint Online bereitstellen. Nachdem Sie authentifiziert wurden, können Sie die SharePoint Online-API in Ihrer Logik-App verwenden.
+Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Identität (Benutzername und Kennwort, Smartcard-Anmeldeinformationen usw.) für SharePoint Online bereitstellen. Nachdem Sie authentifiziert wurden, können Sie den SharePoint Online-Connector in Ihrer Logik-App verwenden.
 
 Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** zu erstellen, die Sie in Ihrer Logik-App verwenden können:
 
-1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt:
-![SharePoint konfigurieren][1]  
+1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt: ![SharePoint konfigurieren][1]  
 2. Wählen Sie **SharePoint Online – Wenn eine Datei erstellt wird** aus.   
-3. Wählen Sie **Bei SharePoint Online anmelden**:
-![SharePoint konfigurieren][2]    
-4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren.
-![SharePoint konfigurieren][3]     
-5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **Wenn eine Datei erstellt wird**.
-![SharePoint konfigurieren][4]  
+3. Wählen Sie **Bei SharePoint Online anmelden**: ![SharePoint konfigurieren][2]    
+4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren. ![SharePoint konfigurieren][3]     
+5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **Wenn eine Datei erstellt wird**. ![SharePoint konfigurieren][4]  
 6. Sie können dann weitere Trigger und Aktionen hinzufügen, die Sie benötigen, um Ihre Logik-App abzuschließen.   
 7. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.  
 
@@ -110,7 +106,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -132,7 +128,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -153,7 +149,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -174,7 +170,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -195,7 +191,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -216,7 +212,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -239,7 +235,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -262,7 +258,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -283,7 +279,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -304,7 +300,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -327,7 +323,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -352,7 +348,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -377,7 +373,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -399,7 +395,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -421,7 +417,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -443,7 +439,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -466,7 +462,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 ------
 
 
@@ -705,4 +701,4 @@ Keine der Eigenschaften ist erforderlich.
 [4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.workload="multiple"
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="04/20/2016"
 	ms.author="danlep"/>
 
@@ -234,4 +234,4 @@ Mithilfe der Azure-Befehlszeilenschnittstelle können Sie entweder eine Vorlage 
 * Weitere Informationen zur Verwendung des Azure-Ressourcen-Managers mit Azure PowerShell finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](powershell-azure-resource-manager.md).
 * Weitere Informationen zum Verwenden von Azure Resource Manager im Azure-Portal finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

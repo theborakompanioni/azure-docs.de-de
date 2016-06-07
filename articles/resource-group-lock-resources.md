@@ -22,7 +22,7 @@ Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengr
 
 Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
 
-Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle untergeordneten Ressourcen diese Sperre.
+Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle untergeordneten Ressourcen diese Sperre. Die restriktivste Sperre in der Vererbung hat Vorrang.
 
 ## Personen in Ihrer Organisation, die Sperren erstellen oder löschen können
 
@@ -30,21 +30,21 @@ Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktio
 
 ## Erstellen einer Sperre über das Portal
 
-Wählen Sie auf dem Blatt „Eigenschaften“ der Ressource, Ressourcengruppe oder des Abonnements, die/das Sie sperren möchten, **Sperren** aus.
+1. Wählen Sie auf dem Blatt „Eigenschaften“ der Ressource, der Ressourcengruppe oder des Abonnements, die bzw. das Sie sperren möchten, **Sperren** aus.
 
-![Sperre auswählen](./media/resource-group-lock-resources/select-lock.png)
+      ![Sperre auswählen](./media/resource-group-lock-resources/select-lock.png)
 
-Wählen Sie zum Hinzufügen einer Sperre **Hinzufügen** aus. Wenn Sie stattdessen eine Sperre auf einer übergeordneten Ebene erstellen möchten, die von der ausgewählten Ressource geerbt werden soll, wählen Sie das übergeordnete Element (z. B. wie unten gezeigt Abonnement) aus.
+2. Wählen Sie zum Hinzufügen einer Sperre **Hinzufügen** aus. Wenn Sie stattdessen eine Sperre auf einer übergeordneten Ebene erstellen möchten, die von der ausgewählten Ressource geerbt werden soll, wählen Sie das übergeordnete Element (z. B. wie unten gezeigt Abonnement) aus.
 
-![Sperre hinzufügen](./media/resource-group-lock-resources/add-lock.png)
+      ![Sperre hinzufügen](./media/resource-group-lock-resources/add-lock.png)
 
-Weisen Sie der Sperre einen Namen und eine Ebene zu. Optional können Sie Notizen hinzufügen, die beschreiben, warum die Sperre erforderlich ist.
+3. Weisen Sie der Sperre einen Namen und eine Ebene zu. Optional können Sie Notizen hinzufügen, die beschreiben, warum die Sperre erforderlich ist.
 
-![Sperre festlegen](./media/resource-group-lock-resources/set-lock.png)
+      ![Sperre festlegen](./media/resource-group-lock-resources/set-lock.png)
 
-Um die Sperre zu löschen, wählen Sie die Schaltfläche mit den Auslassungszeichen und dann aus den verfügbaren Optionen **Löschen** aus.
+4. Um die Sperre zu löschen, wählen Sie die Schaltfläche mit den Auslassungszeichen und dann aus den verfügbaren Optionen **Löschen** aus.
 
-![Sperre löschen](./media/resource-group-lock-resources/delete-lock.png)
+      ![Sperre löschen](./media/resource-group-lock-resources/delete-lock.png)
 
 ## Erstellen einer Sperre in einer Vorlage
 
@@ -108,4 +108,4 @@ Azure PowerShell bietet auch andere Befehle für die Arbeit mit Sperren, z. B. 
 - Informationen dazu, wie Sie die Ressourcengruppe für eine Ressource ändern, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe](resource-group-move-resources.md).
 - Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

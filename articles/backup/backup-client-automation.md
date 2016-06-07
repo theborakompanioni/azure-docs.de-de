@@ -13,17 +13,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="05/23/2016"
 	ms.author="markgal;jimpark;nkolli"/>
 
 
 # Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
+
+> [AZURE.SELECTOR]
+- [ARM](backup-client-automation.md)
+- [Klassisch](backup-client-automation-classic.md)
 
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 
 ## Installieren von Azure PowerShell
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+
+Dieser Artikel konzentriert sich auf die Azure Resource Manager (ARM)-PowerShell-Cmdlets, die Ihnen ermöglichen einen Recovery Services-Tresor in einer Ressourcengruppe zu verwenden.
 
 Im Oktober 2015 wurde Azure PowerShell 1.0 veröffentlicht. Diese Version war der Nachfolger der Version 0.9.8 und brachte einige bedeutende Änderungen, insbesondere beim Benennungsmuster von Cmdlets. Cmdlet-Namen der Version 1.0 haben das Muster {Verb}-AzureRm{Nomen}, während Namen der Version 0.9.8 nicht **Rm** enthalten (z. B. „New-AzureRmResourceGroup“ statt „New-AzureResourceGroup“). Wenn Sie Azure PowerShell 0.9.8 verwenden, müssen Sie zunächst den Ressourcen-Manager-Modus aktivieren, indem Sie den Befehl **Switch-AzureMode AzureResourceManager** ausführen. Dieser Befehl ist ab Version 1.0 nicht erforderlich.
 
@@ -34,23 +40,56 @@ Wenn Sie Ihre Skripts, die für Version 0.9.8 geschrieben wurden, in einer Umgeb
 
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
+## Erstellen eines Recovery Services-Tresors
 
-## Erstellen eines Sicherungstresors
+Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen. Ein Recovery Services-Tresor unterscheidet sich von einem Sicherungstresor.
 
-> [AZURE.WARNING] Kunden, die Azure Backup zum ersten Mal verwenden, müssen den Azure Backup-Anbieter registrieren, der mit ihrem Abonnement verwendet werden soll. Führen Sie hierzu den folgenden Befehl aus: Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzureRMResourceProvider** verwenden, um den Azure Recovery Service-Anbieter für Ihr Abonnement zu registrieren.
 
-Sie können mit dem Cmdlet **New-AzureRmBackupVault** einen neuen Sicherungstresor erstellen. Der Sicherungstresor ist eine ARM-Ressource. Deshalb müssen Sie ihn innerhalb einer Ressourcengruppe einfügen. Führen Sie die folgenden Befehle in einer Azure PowerShell-Konsole mit erhöhten Rechten aus:
+    ```
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
+
+2. Der Recovery Services-Tresor ist eine ARM-Ressource. Deshalb müssen Sie ihn in eine Ressourcengruppe einfügen. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Wenn Sie eine neue Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort für die Ressourcengruppe an.
+
+    ```
+    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    ```
+
+3. Verwenden Sie das Cmdlet **New-AzureRmRecoveryServicesVault** zum Erstellen des neuen Tresors. Stellen Sie sicher, dass Sie den gleichen Speicherort für den Tresor angeben, der für die Ressourcengruppe verwendet wurde.
+
+    ```
+    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
+    ```
+
+4. Geben Sie den Typ der zu verwendenden Speicherredundanz an – entweder [lokal redundanter Speicher (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) oder [geografisch redundanter Speicher (GRS)](../storage/storage-redundancy.md#geo-redundant-storage). Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
+
+    > [AZURE.TIP] Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
+
+    ```
+    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    ```
+
+## Anzeigen von Tresoren in einem Abonnement
+Verwenden Sie **Get-AzureRmRecoveryServicesVault**, um die Liste aller Tresore im aktuellen Abonnement anzuzeigen. Mithilfe dieses Befehls können Sie überprüfen, ob ein neuer Tresor erstellt wurde, oder um festzustellen, welche Tresore im Abonnement verfügbar sind.
+
+Führen Sie den Befehl Get-AzureRmRecoveryServicesVault aus, damit alle Tresore im Abonnement aufgelistet werden.
 
 ```
-PS C:\> New-AzureResourceGroup –Name “test-rg” -Region “West US”
-PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GeoRedundant
+PS C:\> Get-AzureRmRecoveryServicesVault
+Name              : Contoso-vault
+ID                : /subscriptions/1234
+Type              : Microsoft.RecoveryServices/vaults
+Location          : WestUS
+ResourceGroupName : Contoso-docs-rg
+SubscriptionId    : 1234-567f-8910-abc
+Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
-
-Mit dem Cmdlet **Get-AzureRmBackupVault** können Sie die Sicherungstresore in einem Abonnement auflisten.
 
 
 ## Installieren des Azure Backup-Agents
-Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](http://aka.ms/azurebackup_agent) oder im Dashboard des Sicherungstresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\\Downloads*.
+Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](http://aka.ms/azurebackup_agent) oder im Dashboard des Recovery Services-Tresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\\Downloads*.
 
 Um den Agent zu installieren, führen Sie den folgenden Befehl in einer PowerShell-Konsole mit erhöhten Rechten aus:
 
@@ -88,32 +127,25 @@ Die verfügbaren Optionen umfassen:
 | /pw | Proxykennwort | - |
 
 
-## Registrieren beim Azure Backup-Dienst
-Vor der Registrierung beim Azure Backup-Dienst müssen Sie sicherstellen, dass die [Voraussetzungen](backup-configure-vault.md) erfüllt sind. Die Voraussetzungen lauten wie folgt:
+## Registrieren von Windows-Server oder Windows-Client bei einem Recovery Services-Tresor
 
-- Gültiges Azure-Abonnement
-- Ein Sicherungstresor
-
-Führen Sie zum Herunterladen der Tresoranmeldedaten das Cmdlet **Get-AzureRmBackupVaultCredentials** in einer Azure PowerShell-Konsole aus, und speichern Sie sie an einem geeigneten Speicherort, z. B. *C:\\Downloads*.
+Laden Sie nach dem Erstellen des Recovery Services-Tresors den neuesten Agent sowie die Tresoranmeldeinformationen herunter, und speichern Sie sie an einem zentralen Ort wie C:\\Downloads.
 
 ```
-PS C:\> $credspath = "C:"
-PS C:\> $credsfilename = Get-AzureRMBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
-PS C:\> $credsfilename
-f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
+PS C:\> $credspath = "C:\downloads"
+PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-Das Registrieren des Computer beim Tresor erfolgt mithilfe des [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx)-Cmdlets:
+Führen Sie auf dem Windows-Server oder Windows-Clientcomputer das Cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) aus, um den Computer beim Tresor zu registrieren.
 
 ```
 PS C:\> $cred = $credspath + $credsfilename
-PS C:\> Start-OBRegistration -VaultCredentials $cred -Confirm:$false
-
-CertThumbprint      : 7a2ef2caa2e74b6ed1222a5e89288ddad438df2
+PS C:\> Start-OBRegistration-VaultCredentials $cred -Confirm:$false
+CertThumbprint      :7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
-ServiceResourceName : test-vault
-Region              : West US
-
+ServiceResourceName: testvault
+Region              :West US
 Machine registration succeeded.
 ```
 
@@ -145,13 +177,13 @@ Server properties updated successfully
 > [AZURE.IMPORTANT] Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
 
 ## Sichern von Dateien und Ordnern
-All Ihre Sicherungen von Windows-Servern und -Clients in Azure Backup werden durch eine Richtlinie gesteuert. Die Richtlinie besteht aus drei Teilen:
+Alle Sicherungen von Windows-Servern und -Clients in Azure Backup werden durch eine Richtlinie gesteuert. Die Richtlinie besteht aus drei Teilen:
 
 1. Ein **Sicherungszeitplan** gibt an, wann Sicherungen erstellt und mit dem Dienst synchronisiert werden müssen.
 2. Ein **Aufbewahrungszeitplan**, der angibt, wie lange die Wiederherstellungspunkte in Azure beibehalten werden sollen.
 3. Eine **Spezifikation für den Ein-/Ausschluss von Dateien** bestimmt, welche Dateien gesichert werden sollen.
 
-Da wir die Sicherung automatisieren, gehen wir hier davon aus, dass nichts konfiguriert wurde. Als Erstes erstellen wir eine neue Sicherungsrichtlinie mithilfe des [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx)-Cmdlets und verwenden sie.
+Da wir die Sicherung automatisieren, gehen wir hier davon aus, dass nichts konfiguriert wurde. Als Erstes erstellen wir eine neue Sicherungsrichtlinie mithilfe des Cmdlets [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx).
 
 ```
 PS C:\> $newpolicy = New-OBPolicy
@@ -595,4 +627,4 @@ Weitere Informationen zu Azure Backup für Windows-Server und -Clients finden Si
 - [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
 - [Sichern von Windows-Servern](backup-configure-vault.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

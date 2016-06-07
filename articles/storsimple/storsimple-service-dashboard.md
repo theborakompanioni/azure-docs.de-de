@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="05/24/2016"
    ms.author="v-sharos" />
 
 # Verwenden des Dashboards des StorSimple Manager-Diensts
@@ -76,4 +76,4 @@ Sie können die Vorgangsprotokolle anzeigen, indem Sie auf den entsprechenden Li
 
 - Erfahren Sie mehr über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

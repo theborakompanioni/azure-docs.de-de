@@ -6,6 +6,6 @@ Nachdem Sie sich nun mit den Grundlagen von Azure Blob Storage vertraut gemacht 
 - Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
   - Informationen zum Arbeiten mit Azure Storage-Tabellen finden Sie unter [Erste Schritte mit Azure Table Storage mithilfe von .NET](../articles/storage/storage-dotnet-how-to-use-tables.md).
   - Informationen zum Arbeiten mit Azure Storage-Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mithilfe von .NET](../articles/storage/storage-dotnet-how-to-use-queues.md).
-  - Informationen zum Speichern relationaler Daten finden Sie unter [Verwenden von Azure SQL-Datenbank in .NET-Anwendungen](../articles/sql-database/sql-database-dotnet-how-to-use.md).
+  - Informationen zum Speichern relationaler Daten finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](../articles/sql-database/sql-database-develop-dotnet-simple.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

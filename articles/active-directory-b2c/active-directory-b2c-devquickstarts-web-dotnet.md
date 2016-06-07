@@ -40,9 +40,13 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch w
 
 ## Erstellen der Richtlinien
 
-In Azure AD B2C wird jede Benutzeroberfläche durch eine [Richtlinie](active-directory-b2c-reference-policies.md) definiert. Dieses Codebeispiel enthält drei Benutzeroberflächen, für die Identitäten relevant sind: Registrierung, Anmeldung und Profilbearbeitung. Sie müssen eine Richtlinie jedes Typs erstellen, wie im [Artikel zu Richtlinienreferenzen](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) beschrieben. Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+In Azure AD B2C wird jede Benutzeroberfläche durch eine [Richtlinie](active-directory-b2c-reference-policies.md) definiert. Dieses Codebeispiel enthält drei Benutzeroberflächen, für die Identitäten relevant sind: Registrierung, Anmeldung und Profilbearbeitung. Sie müssen eine Richtlinie jedes Typs erstellen, wie im [Artikel zu Richtlinienreferenzen](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) beschrieben.
 
-- Wählen Sie auf dem Blatt für den Identitätsanbieter **Registrierung mit Benutzer-ID** oder **E-Mail-Registrierung** aus.
+>[AZURE.NOTE] Azure AD B2C unterstützt auch eine kombinierte Richtlinie für die Registrierung oder Anmeldung, die in diesem Tutorial jedoch nicht behandelt wird. Sie finden die Richtlinie für die Registrierung oder Anmeldung in [diesem verwandten Tutorial](active-directory-b2c-devquickstarts-web-dotnet-susi.md).
+
+Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+
+- Wählen Sie auf dem Blatt für den Identitätsanbieter **User ID sign-up** (Registrierung mit Benutzer-ID) oder **Email sign-up** (E-Mail-Registrierung) aus.
 - Wählen Sie den **Anzeigenamen** und andere Registrierungsattribute in der Registrierungsrichtlinie aus.
 - Wählen Sie den Anspruch **Anzeigename** als Anwendungsanspruch in den Richtlinien aus. Sie können auch andere Ansprüche auswählen.
 - Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Sie benötigen diese Richtliniennamen später.
@@ -53,7 +57,9 @@ Nachdem Sie die drei Richtlinien erstellt haben, können Sie Ihre App erstellen.
 
 ## Herunterladen des Codes und Konfigurieren der Authentifizierung
 
-Der Code für dieses Beispiel wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
+[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-devquickstarts-bug-fix.md)]
+
+Der Code für dieses Beispiel wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [das Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -95,7 +101,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-Fügen Sie als Nächstes dem Projekt eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** und **Neues Element**, und suchen Sie dann nach „OWIN“. Ändern Sie die Klassendeklaration in `public partial class Startup`. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei implementiert. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(...)` auf. Rufen Sie in dieser Methode `ConfigureAuth(...)` auf, um die Authentifizierung für Ihre App einzurichten.
+Fügen Sie als Nächstes dem Projekt eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** und **Neues Element** aus, und suchen Sie dann nach „OWIN“. Ändern Sie die Klassendeklaration in `public partial class Startup`. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei implementiert. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(...)` auf. Rufen Sie in dieser Methode `ConfigureAuth(...)` auf, um die Authentifizierung für Ihre App einzurichten.
 
 ```C#
 // Startup.cs
@@ -233,7 +239,7 @@ public void Profile()
 }
 ```
 
-Sie können auch ein benutzerdefiniertes `PolicyAuthorize`-Tag in Ihren Controllern verwenden, um die Ausführung einer bestimmten Richtlinie durchzusetzen, wenn der Benutzer nicht angemeldet ist. Öffnen Sie `Controllers\HomeController.cs`, und fügen Sie dem Anspruchscontroller das Tag `[PolicyAuthorize]` hinzu. Ersetzen Sie die Beispielrichtlinie durch eine eigene Anmelderichtlinie.
+Sie können auch ein benutzerdefiniertes `PolicyAuthorize`-Tag in Ihren Controllern verwenden, um die Ausführung einer bestimmten Richtlinie durchzusetzen, wenn der Benutzer nicht angemeldet ist. Öffnen Sie `Controllers\HomeController.cs`, und fügen Sie dem Anspruchscontroller das `[PolicyAuthorize]`-Tag hinzu. Ersetzen Sie die Beispielrichtlinie durch eine eigene Anmelderichtlinie.
 
 ```C#
 // Controllers\HomeController.cs
@@ -341,4 +347,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0525_2016-->

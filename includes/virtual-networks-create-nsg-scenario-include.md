@@ -13,7 +13,7 @@ In diesem Szenario erstellen Sie eine NSG für jedes Subnetz im virtuellen Netzw
 	- **sql-rule**. Mit dieser Regel ist nur SQL-Verkehr aus dem Subnetz *FrontEnd* zulässig.
 	- **web-rule**. Diese Regel verweigert dem gesamten Datenverkehr aus dem Subnetz *BackEnd* ins Internet.
 
-Durch die Kombination dieser Regeln wird ein DMZ-ähnliches Szenario erstellt, in dem das Back-End-Subnetz nur eingehenden Datenverkehr für SQL-Datenverkehr aus dem Front-End-Subnetz empfangen kann und keinen Zugriff auf das Internet hat, während das Front-End-Subnetz mit dem Internet kommunizieren und nur eingehende HTTP-Anforderungen empfangen kann.
+Durch die Kombination dieser Regeln wird ein DMZ-ähnliches Szenario erstellt, in dem das Back-End-Subnetz nur eingehenden Datenverkehr für SQL aus dem Front-End-Subnetz empfangen kann und keinen Zugriff auf das Internet hat, während das Front-End-Subnetz mit dem Internet kommunizieren und nur eingehende HTTP-Anforderungen empfangen kann.
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0525_2016-->

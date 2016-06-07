@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer | Microsoft Azure"
    description="Der Artikel enthält eine Übersicht über die Microsoft Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer."
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriDio"
    manager="swadhwa"
    editor="TomSh"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/15/2016"
+   ms.date="05/23/2016"
    ms.author="devtiw"/>
 
 
@@ -36,7 +36,7 @@ Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 - Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-Computern, die mit einer vorverschlüsselten VHD und Verschlüsselungsschlüsseln erstellt werden
 - Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-VM-Computern, die über Images aus dem Azure-Katalog erstellt werden 
 - Aktivieren der Verschlüsselung auf vorhandenen virtuellen IaaS-Computern, die bereits unter Azure ausgeführt werden 
-- Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs  
+- Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs 
 
 Wenn diese Lösung in Microsoft Azure aktiviert ist, wird für virtuelle IaaS-Computer Folgendes unterstützt:
 
@@ -78,7 +78,7 @@ Beim Aktivieren und Bereitstellen der Azure-Datenträgerverschlüsselung für vi
 - Verschlüsselung des Betriebssystemvolumes zum Schützen des Startvolumes im Ruhezustand im Kundenspeicher
 
 	- Die Verschlüsselung des Betriebssystemvolumes auf IaaS-VMs unter Linux, die bereits in Azure ausgeführt werden, wird derzeit nicht unterstützt. Die Verschlüsselung des Betriebssystemvolumes für IaaS-VMs unter Linux wird nur für Szenarien mit vorverschlüsselter VHD unterstützt.
-	
+
 - Verschlüsselung von Datenvolumes zum Schützen der Datenvolumes im Ruhezustand im Kundenspeicher
 
 - Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs
@@ -845,4 +845,4 @@ Sie können diese Anleitung aus dem [TechNet-Katalog](https://gallery.technet.mi
 
 [Explore Azure Disk Encryption with Azure PowerShell - Part 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

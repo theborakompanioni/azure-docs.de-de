@@ -64,4 +64,4 @@ Informationen zur Verwaltung Ihrer Ressourceneintragssätze und Einträge finden
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!----HONumber=AcomDC_0518_2016-->

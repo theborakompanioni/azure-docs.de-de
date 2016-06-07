@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/17/2016"
+   ms.date="05/18/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Sichern einer Datenbank in SQL Data Warehouse
@@ -33,7 +33,7 @@ Verbindungen mit SQL Data Warehouse können verschlüsselt werden, indem Sie den
 
 Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL Data Warehouse unterstützt derzeit die SQL Server-Authentifizierung mit Benutzername und Kennwort sowie eine Vorschauversion von Azure Active Directory.
 
-Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Server Admin"-Anmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. "dbo" (database owner) authentifizieren.
+Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Server Admin"-Anmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich mittels SQL Server-Authentifizierung bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. „dbo“ (database owner) authentifizieren.
 
 Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein anderes Konto für die Authentifizierung verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen SQL-Injection-Angriff anfällig ist.
 
@@ -53,7 +53,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit][] und [Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication][] \(Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung).
+Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][]. Weitere Informationen zur Verwendung der Azure AD-Vorschau für SQL Data Warehouse finden Sie unter [Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication][] (Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung).
 
 
 ## Autorisierung
@@ -106,7 +106,7 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--MSDN references-->
 [Firewall für die Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee621782.aspx
 [Datenbankrollen]: https://msdn.microsoft.com/library/ms189121.aspx
-[Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit]: https://msdn.microsoft.com/library/ee336235.aspx
+[Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee336235.aspx
 [Berechtigungen]: https://msdn.microsoft.com/library/ms191291.aspx
 [Gespeicherten Prozeduren]: https://msdn.microsoft.com/library/ms190782.aspx
 [Transparent Data Encryption]: https://go.microsoft.com/fwlink/?LinkId=526242
@@ -115,4 +115,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -66,4 +66,4 @@ Informationen zur Verwaltung Ihrer Datensatzgruppen und Datensätze finden Sie u
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!----HONumber=AcomDC_0525_2016-->

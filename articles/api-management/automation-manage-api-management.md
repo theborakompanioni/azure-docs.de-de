@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="05/24/2016"
 	ms.author="csand"/>
 
 
@@ -42,6 +42,6 @@ Hier sind einige Beispiele für die Verwendung von API Management mit Automation
 
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Einsatz zur Verwaltung von Azure API Management vertraut gemacht haben, folgen Sie diesen Links, um weitere Informationen zu erhalten.
 
-* Tutorial [Erste Schritte](../automation/automation-first-runbook-graphical) zu Azure Automation
+* Siehe das Tutorial [Erste Schritte](../automation/automation-first-runbook-graphical.md) zu Azure Automation.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

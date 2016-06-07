@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der Azure Blob Storage-API in Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Azure Blob Storage-API und die REST-API-Parameter"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Hinzufügen des Azure Blob Storage-Connectors in Ihren Logik-Apps | Microsoft Azure"
+    description="Übersicht über den Azure Blob Storage-Connector mit REST-API-Parametern"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Erste Schritte mit der Azure-Blobspeicher-API
-Stellen Sie eine Verbindung mit einem Azure-Blob her, um Dateien in einem Blobcontainer zu verwalten, d. h,. Dateien zu erstellen, zu löschen usw. Die Azure Blob Storage-API kann in Folgendem verwendet werden:
+# Erste Schritte mit dem Azure Blob Storage-Connector
+Stellen Sie eine Verbindung mit einem Azure-Blob her, um Dateien in einem Blobcontainer zu verwalten, d. h,. Dateien zu erstellen, zu löschen usw. Der Azure Blob Storage-Connector kann in Folgendem verwendet werden:
 
 - Logik-Apps 
 
@@ -38,15 +38,11 @@ Ein Azure-Blob bietet die folgenden Aktionen. Es gibt keine Trigger.
 | --- | --- |
 | Keine. | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Datei aktualisieren</li></ul> |
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen einer Verbindung mit einem Azure-Blob
-Wenn Sie Ihren Logik-Apps diese API hinzufügen, geben Sie die folgenden Werte des Speicherkontos ein:
 
-|Eigenschaft| Erforderlich|Beschreibung|
-| ---|---|---|
-|Azure-Speicherkontoname | Ja | Namen des Blobspeicherkontos|
-|Zugriffsschlüssel für das Azure-Speicherkonto | Ja | Zugriffsschlüssel Ihres Blobspeicherkontos|
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Azure Blob Storage](../../includes/connectors-create-api-azureblobstorage.md)]
 
 Nachdem Sie die Verbindung hergestellt haben, geben Sie die Blobeigenschaften ein, z. B. Ordnerpfad oder Dateiname. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
@@ -57,7 +53,7 @@ Nachdem Sie die Verbindung hergestellt haben, geben Sie die Blobeigenschaften ei
 Gilt für Version: 1.0.
 
 ### Datei erstellen
-Lädt eine lokale Datei in Azure Blob Storage hoch. ```POST: /datasets/default/files```
+Lädt eine Datei in Azure Blob Storage hoch. ```POST: /datasets/default/files```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -69,22 +65,22 @@ Lädt eine lokale Datei in Azure Blob Storage hoch. ```POST: /datasets/default/f
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ### Datei kopieren
 Kopiert eine Datei in Azure Blob Storage. ```POST: /datasets/default/copyFile```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query|(Keine) |URL zur Quelldatei|
-|Ziel|string|Ja|query| (Keine)|Zieldateipfad in Azure Blob Storage, einschließlich Zieldateiname|
+|source|string|Ja|query|(Keine) |URL zur Quelldatei|
+|destination|string|Ja|query| (Keine)|Zieldateipfad in Azure Blob Storage, einschließlich Zieldateiname|
 |overwrite|Boolescher Wert|no|query|(Keine) |Überschreibt die Zieldatei, falls auf „True“ festgelegt|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei löschen
@@ -98,27 +94,27 @@ Löscht eine Datei aus Azure Blob Storage. ```DELETE: /datasets/default/files/{i
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Archiv in Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner in Azure Blob Storage (Beispiel: ZIP). ```POST: /datasets/default/ExtractFolderV2```
+Extrahiert eine Archivdatei in einen Ordner in Azure Blob Storage (Beispiel: .zip). ```POST: /datasets/default/ExtractFolderV2```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|Quelle|string|Ja|query| (Keine)|Pfad zur Archivdatei|
-|Ziel|string|Ja|query|(Keine) |Pfad in Azure Blob Storage zum Extrahieren des Archivinhalts|
+|source|string|Ja|query| (Keine)|Pfad zur Archivdatei|
+|destination|string|Ja|query|(Keine) |Pfad in Azure Blob Storage zum Extrahieren des Archivinhalts|
 |overwrite|Boolescher Wert|no|query|(Keine) |Überschreibt die Zieldateien, falls auf „True“ festgelegt|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt abrufen
-Ruft Dateiinhalte aus Azure Blob Storage anhand der ID ab. ```GET: /datasets/default/files/{id}/content```
+Ruft Dateiinhalte aus Azure Blob Storage mithilfe der ID ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -128,11 +124,11 @@ Ruft Dateiinhalte aus Azure Blob Storage anhand der ID ab. ```GET: /datasets/def
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft Dateiinhalte aus Azure Blob Storage anhand des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft Dateiinhalte aus Azure Blob Storage mithilfe des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -142,11 +138,11 @@ Ruft Dateiinhalte aus Azure Blob Storage anhand des Pfads ab. ```GET: /datasets/
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten abrufen
-Ruft Dateimetadaten aus Azure Blob Storage anhand der Datei-ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten aus Azure Blob Storage mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -156,11 +152,11 @@ Ruft Dateimetadaten aus Azure Blob Storage anhand der Datei-ID ab. ```GET: /data
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten aus Azure Blob Storage anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Dateimetadaten aus Azure Blob Storage mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -170,7 +166,7 @@ Ruft Dateimetadaten aus Azure Blob Storage anhand des Pfads ab. ```GET: /dataset
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren
@@ -185,7 +181,7 @@ Aktualisiert eine Datei in Azure Blob Storage. ```PUT: /datasets/default/files/{
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 ## Objektdefinitionen
 
@@ -200,7 +196,7 @@ Aktualisiert eine Datei in Azure Blob Storage. ```PUT: /datasets/default/files/{
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 |tableDisplayName|string|no|
@@ -210,7 +206,7 @@ Aktualisiert eine Datei in Azure Blob Storage. ```PUT: /datasets/default/files/{
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|Quelle|string|no|
+|source|string|no|
 |displayName|string|no|
 |urlEncoding|string|no|
 
@@ -234,4 +230,4 @@ Aktualisiert eine Datei in Azure Blob Storage. ```PUT: /datasets/default/files/{
 
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

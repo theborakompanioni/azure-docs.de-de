@@ -66,7 +66,18 @@ Mobile App als zweiter Faktor|* | * | *
 Telefonanruf als zweiter Faktor|* | * | *
 SMS als zweiter Faktor|* | * | *
 App-Kennwörter für Clients, die MFA nicht unterstützen|* | * | *
-Administrative Kontrolle über Authentifizierungsmethoden| **| *| * PIN-Modus| | | * Betrugswarnung| | | * MFA-Berichte| | | * Einmalumgehung| | | * Benutzerdefinierte Begrüßungen für Telefonanrufe| | | * Benutzerdefinierte Anrufer-ID für Telefonanrufe| | | * Bestätigung von Ereignissen| | | * Vertrauenswürdige IPs| | | * Aussetzen der Multi-Factor Authentication für gespeicherte Geräte (öffentliche Vorschau)| | | * MFA-SDK| | | * MFA für lokale Anwendungen mit MFA-Server| | | *
+Administrative Kontrolle über Authentifizierungsmethoden| **| *| * 
+PIN-Modus| | | * 
+Betrugswarnung| | | * 
+MFA-Berichte| | | * 
+Einmalumgehung| | | * 
+Benutzerdefinierte Begrüßungen für Telefonanrufe| | | * 
+Benutzerdefinierte Anrufer-ID für Telefonanrufe| | | * 
+Bestätigung von Ereignissen| | | * 
+Vertrauenswürdige IPs| | | * 
+Aussetzen der Multi-Factor Authentication für gespeicherte Geräte (öffentliche Vorschau)| | | * 
+MFA-SDK| | | * 
+MFA für lokale Anwendungen mit MFA-Server| | | *
 
 
 ##Beziehen von Azure Multi-Factor Authentication
@@ -91,4 +102,4 @@ Wählen Sie das Pro-Arbeitsplatz-Modell oder das nutzungsbasierte Modell, das am
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!----HONumber=AcomDC_0518_2016-->

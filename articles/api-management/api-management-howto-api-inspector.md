@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 # Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management
@@ -261,4 +261,4 @@ Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location**-URL h
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

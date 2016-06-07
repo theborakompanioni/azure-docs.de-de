@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Erfordern von MFA in Azure AD Privileged Identity Management
@@ -26,7 +26,7 @@ Sie können auch festlegen, dass Benutzer eine mehrstufige Authentifizierung dur
 
 ## Erfordern von MFA in Azure AD Privileged Identity Management
 
-Wenn Sie Identitäten in PIM als Sicherheitsadministrator verwalten, werden möglicherweise Warnungen angezeigt, die MFA für privilegierte Konten empfehlen. Klicken Sie im PIM-Dashboard auf die Sicherheitswarnung. Anschließend wird ein neues Blatt mit einer Liste der Administratorkonten geöffnet, für die MFA erforderlich sein sollte. Sie können MFA als erforderlich festlegen, indem Sie mehrere Rollen auswählen und dann auf die Schaltfläche **Korrigieren** klicken. Alternativ können Sie auf die Auslassungspunkte neben einzelnen Rollen und dann auf die Schaltfläche **Korrigieren** klicken.
+Wenn Sie Identitäten in PIM als Administrator für privilegierte Rollen verwalten, werden möglicherweise Warnungen angezeigt, die MFA für privilegierte Konten empfehlen. Klicken Sie im PIM-Dashboard auf die Sicherheitswarnung. Anschließend wird ein neues Blatt mit einer Liste der Administratorkonten geöffnet, für die MFA erforderlich sein sollte. Sie können MFA als erforderlich festlegen, indem Sie mehrere Rollen auswählen und dann auf die Schaltfläche **Korrigieren** klicken. Alternativ können Sie auf die Auslassungspunkte neben einzelnen Rollen und dann auf die Schaltfläche **Korrigieren** klicken.
 
 > [AZURE.IMPORTANT] Da die Registrierung von Microsoft-Konten (z. B. @outlook.com, @live.com oder @hotmail.com) für Azure MFA derzeit nicht unterstützt wird, werden diese Konten nicht als temporäre Administratoren für hoch privilegierte Rollen zugelassen. Wenn Benutzer weiterhin Workloads mit einem Microsoft-Konto verwalten müssen, wandeln Sie sie vorübergehend in permanente Administratoren um.
 
@@ -45,4 +45,4 @@ Wenn sich Benutzer lokal authentifizieren, können Sie alternativ festlegen, das
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

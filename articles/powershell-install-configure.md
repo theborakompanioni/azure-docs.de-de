@@ -32,7 +32,7 @@ Es folgen die beiden Methoden, mit denen Sie Azure PowerShell installieren könn
 
 Die Installation von Azure PowerShell 1.0 und höher per WebPI ist mit der Installation der Version 0.9.x identisch. Laden Sie [Azure PowerShell](http://aka.ms/webpi-azps) herunter, und starten Sie die Installation. Falls Sie Azure PowerShell 0.9.x installiert haben, wird Version 0.9.x im Rahmen des Upgrades deinstalliert. Wenn Sie Azure PowerShell-Module aus dem PowerShell-Katalog installiert haben, werden die Module vor der Installation automatisch vom Installationsprogramm entfernt, um die Einheitlichkeit der Azure PowerShell-Umgebung sicherzustellen.
 
-> [AZURE.NOTE] Wenn Sie bereits Azure-Module aus dem PowerShell-Katalog installiert haben, entfernt das Installationsprogramm diese automatisch. Dies vermeidet Verwirrung in Bezug darauf, welche Modulversionen Sie installiert haben und wo sich diese befinden. Module des PowerShell-Katalogs werden normalerweise unter **%Programme%\\WindowsPowerShell\\Modules** installiert. Im Gegensatz dazu installiert das WebPI-Installationsprogramm die Azure-Module unter „**%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\PowerShell**“. Wenn während der Installation ein Fehler auftritt, können Sie die Azure*-Ordner aus Ihrem Ordner **%ProgramFiles%\\WindowsPowerShell\\Modules** entfernen und die Installation erneut durchführen.
+> [AZURE.NOTE] Wenn Sie bereits Azure-Module aus dem PowerShell-Katalog installiert haben, entfernt das Installationsprogramm diese automatisch. Dies vermeidet Verwirrung in Bezug darauf, welche Modulversionen Sie installiert haben und wo sich diese befinden. Module des PowerShell-Katalogs werden normalerweise unter **%Programme%\WindowsPowerShell\Modules** installiert. Im Gegensatz dazu installiert das WebPI-Installationsprogramm die Azure-Module unter „**%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell**“. Wenn während der Installation ein Fehler auftritt, können Sie die Azure*-Ordner aus Ihrem Ordner **%ProgramFiles%\WindowsPowerShell\Modules** entfernen und die Installation erneut durchführen.
 
 Nach Abschluss der Installation sollte Ihre ```$env:PSModulePath```-Einstellung die Verzeichnisse mit den Azure PowerShell-Cmdlets enthalten.
 
@@ -52,9 +52,11 @@ Wenn beim Laden oder Ausführen des Cmdlets eine Fehlermeldung wie die folgende 
         + FullyQualifiedErrorId : CommandNotFoundException
 ```
 
-This can be corrected by restarting the machine or importing the cmdlets from C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\ as following (where XXXX is the version of PowerShell installed:
+Das Problem kann durch einen Neustart des Computers oder durch Importieren der Cmdlets aus „C:\Programme\WindowsPowerShell\Modules\Azure\XXXX\“ (XXXX ist die installierte PowerShell-Version) behoben werden. Importieren Sie die Cmdlets wie folgt:
 ```
-import-module "C:\\Program Files\\WindowsPowerShell\\Modules\\Azure\\XXXX\\azure.psd1" import-module "C:\\Program Files\\WindowsPowerShell\\Modules\\Azure\\XXXX\\expressroute\\expressroute.psd1" ```
+import-module "C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\azure.psd1"
+import-module "C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\expressroute\expressroute.psd1"
+```
 
 ###Installieren von Azure PowerShell aus dem PowerShell-Katalog
 
@@ -76,7 +78,7 @@ Sie können die Cmdlets über die Windows PowerShell-Standardkonsole oder über 
 
 - Auf einem Computer, auf dem mindestens Windows 8 oder Windows Server 2012 ausgeführt wird, können Sie die integrierte Suche verwenden. Beginnen Sie auf dem Bildschirm **Start** mit der Eingabe von „power“. Daraufhin wird eine entsprechende Liste von Anwendungen zurückgegeben, die auch Windows PowerShell umfasst. Klicken Sie auf eine dieser beiden Anwendungen, um die Konsole zu öffnen. (Klicken Sie mit der rechten Maustaste auf das Symbol, um die Anwendung an den **Startbildschirm** anzuheften.)
 
-- Verwenden Sie auf einem Computer, auf dem eine niedrigere Version als Windows 8 oder Windows Server 2012 ausgeführt wird, das **Startmenü**. Klicken Sie im **Startmenü** auf **Alle Programme**, **Zubehör** und den **Windows PowerShell**-Ordner, und klicken Sie dann auf **Windows PowerShell**.
+- Verwenden Sie auf einem Computer, auf dem eine niedrigere Version als Windows 8 oder Windows Server 2012 ausgeführt wird, das **Startmenü**. Klicken Sie im **Startmenü** auf **Alle Programme**, **Zubehör** und den **Windows PowerShell**-Ordner, und klicken Sie dann auf **Windows PowerShell**.
 
 Sie können auch die **Windows PowerShell ISE** ausführen, um Menüelemente und Tastenkombinationen zum Durchführen vieler Aufgaben zu nutzen, die Sie auch in der Windows PowerShell-Konsole durchführen würden. Geben Sie zum Verwenden der ISE in der Windows PowerShell-Konsole „Cmd.exe“ ein, oder geben Sie im Feld **Ausführen** den Befehl **powershell\_ise.exe** ein.
 
@@ -175,6 +177,6 @@ Einfache Anleitungen zur Verwendung von Windows PowerShell finden Sie unter [Ver
 
 Referenzinformationen zu den Cmdlets finden Sie unter [Azure-Cmdlet-Referenz](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx).
 
-Beispielskripts und Anleitungen zur Unterstützung bei der Erstellung von Skripts zum Verwalten von Azure finden Sie im [Script Center](http://go.microsoft.com/fwlink/p/?LinkId=321940).
+Beispielskripts und Anleitungen zur Unterstützung bei der Skripterstellung zum Verwalten von Azure finden Sie im [Script Center](http://go.microsoft.com/fwlink/p/?LinkId=321940).
 
 <!---HONumber=AcomDC_0518_2016-->

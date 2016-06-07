@@ -142,6 +142,8 @@ Wenn Sie beabsichtigen, sich am WebJobs.SDK-Projekt zu beteiligen, benötigen Si
 		Host.Functions.TimerTrigger-CSharp
 		Job host started
 
+	Wenn Sie das WebHost-Projekt starten, erhalten Sie eine leere Browserseite, da kein Inhalt vorhanden ist, der als Basis-URL des Projekts dienen kann. Informationen zu Verwenden von URLs für HTTP-Triggerfunktionen finden Sie im Abschnitt [API-Schlüssel](#apikeys).
+
 ## Anzeigen der Funktionsausgabe
 
 Wechseln Sie zum Dashboard für Ihre Funktions-App, um Funktionsaufrufe anzuzeigen und Ausgabe für sie zu protokollieren.
@@ -150,7 +152,7 @@ Das Dashboard befindet sich unter folgender URL:
 
 	https://{function app name}.scm.azurewebsites.net/azurejobs/#/functions
 
-Die Seite **Funktionen** zeigt eine Liste der ausgeführten Funktionen und eine Liste der Funktionsaufrufe.
+Die Seite **Funktionen** zeigt eine Liste der ausgeführten Funktionen und eine Liste der Funktionsaufrufe an.
 
 ![Aufrufdetail](./media/functions-run-local/invocationdetail.png)
 
@@ -160,7 +162,7 @@ Klicken Sie auf einen Aufruf, um die Seite **Aufrufdetails** anzuzeigen. Diese g
 
 ## <a id="apikeys"></a> API-Schlüssel für HTTP-Trigger
 
-Zum Ausführen einer HTTP- oder WebHook-Funktion brauchen Sie einen API-Schlüssel, sofern Sie `"authLevel": "anonymous"` nicht in die Datei *function.json* aufnehmen.
+Zum Ausführen einer HTTP- oder Webhookfunktion benötigen Sie einen API-Schlüssel, oder Sie müssen `"authLevel": "anonymous"` in die Datei *function.json* aufnehmen.
 
 Wenn der API-Schlüssel beispielsweise `12345` lautet, können Sie die *HttpTrigger*-Funktion mit der folgenden URL auslösen, wenn das Projekt „WebJobs.Script.WebHost“ ausgeführt wird.
 
@@ -168,7 +170,7 @@ Wenn der API-Schlüssel beispielsweise `12345` lautet, können Sie die *HttpTrig
 
 (Alternativ dazu können Sie den API-Schlüssel im `x-functions-key`-HTTP-Header einfügen.)
 
-API-Schlüssel werden in `.json`-Dateien im Ordner [App\_Data/secrets](https://github.com/Azure/azure-webjobs-sdk-script/tree/master/src/WebJobs.Script.WebHost/App_Data/secrets) im WebJobs.Script.WebHost-Projekt gespeichert.
+API-Schlüssel werden in `.json`-Dateien im Ordner [App\_Data/secrets](https://github.com/Azure/azure-webjobs-sdk-script/tree/master/src/WebJobs.Script.WebHost/App_Data/secrets) im Projekt „WebJobs.Script.WebHost“ gespeichert.
 
 ### API-Schlüssel, die für alle HTTP- und WebHook-Funktionen gelten
 
@@ -181,17 +183,17 @@ Die Datei *host.json* im Ordner *App\_Data/secrets* enthält zwei Schlüssel:
 }
 ```
 
-Die `functionKey`-Eigenschaft speichert einen Schlüssel, der für jede HTTP- oder WebHook-Funktion verwendet werden kann, wenn für diese bestimmte Funktion keine Außerkraftsetzung definiert ist. Dadurch entfällt die Notwendigkeit, immer neue API-Schlüssel für jede von Ihnen erstellte Funktion zu definieren.
+Die `functionKey`-Eigenschaft speichert einen Schlüssel, der für jede HTTP- oder Webhook-Funktion verwendet werden kann, wenn für diese bestimmte Funktion keine Außerkraftsetzung definiert ist. Dadurch entfällt die Notwendigkeit, immer neue API-Schlüssel für jede von Ihnen erstellte Funktion zu definieren.
 
-Die `masterKey`-Eigenschaft speichert einen Schlüssel, der in einigen Testszenarien nützlich ist:
+Die `masterKey`-Eigenschaft speichert einen Schlüssel, der in einigen Testszenarios nützlich ist:
 
 * Wenn Sie eine WebHook-Funktion mit einem Hauptschlüssel aufrufen, umgeht das WebJobs-SDK die Überprüfung der Signatur des WebHook-Anbieters.
 
-* Wenn Sie eine HTTP- oder WebHook-Funktion mit einem Hauptschlüssel aufrufen, wird die Funktion auch dann ausgelöst, wenn sie in der Datei *function.json* deaktiviert ist. Hiermit steht im Azure-Portal die Schaltfläche **Ausführen** selbst für deaktivierte Funktionen zur Verfügung.
+* Wenn Sie eine HTTP- oder Webhook-Funktion mit einem Hauptschlüssel aufrufen, wird die Funktion auch dann ausgelöst, wenn sie in der Datei *function.json* deaktiviert ist. Im Azure-Portal steht hiermit die Schaltfläche **Ausführen** selbst für deaktivierte Funktionen zur Verfügung.
  
 ### API-Schlüssel, die für einzelne Funktionen gelten
 
-Dateien mit dem Namen *{Funktionsname}.json* enthalten den API-Schlüssel für eine bestimmte Funktion. Z. B. wird durch den folgenden JSON-Beispielinhalt in *App\_Data/secrets/HttpTrigger.json* der API-Schlüssel für die `HttpTrigger`-Funktion festgelegt.
+Dateien mit dem Namen *{Funktionsname}.json* enthalten den API-Schlüssel für eine bestimmte Funktion. Beispielsweise wird durch den folgenden JSON-Beispielinhalt in *App\_Data/secrets/HttpTrigger.json* der API-Schlüssel für die `HttpTrigger`-Funktion festgelegt.
 
 ```json
 {
@@ -199,13 +201,17 @@ Dateien mit dem Namen *{Funktionsname}.json* enthalten den API-Schlüssel für e
 }
 ```
 
+## Verwenden von NuGet-Paketverweisen in Funktionen  
+
+Aufgrund der Art, auf die NuGet-Verweise zurzeit verarbeitet werden, müssen Sie sicherstellen, dass Sie während der Ausführung des Hosts einen Schreibvorgang mit der Datei *project.json* ausführen („touch“). Der Host überwacht Dateiänderungen und löst eine Wiederherstellung aus, wenn Änderungen erkannt werden. *NuGet.exe* (3.3.0 empfohlen) muss sich außerdem in Ihrem Pfad befinden, oder die Umgebungsvariable „AzureWebJobs\_NuGetPath“ muss auf den Pfad zu *NuGet.exe* festgelegt werden.
+
 ## Problembehandlung
 
 Änderungen an Umgebungsvariablen, die während der Ausführung von Visual Studio vorgenommen werden, werden nicht automatisch angewendet. Wenn Sie eine Umgebungsvariable nach dem Start von Visual Studio geändert oder hinzugefügt haben, fahren Sie Visual Studio herunter, und starten Sie es neu, um sicherzustellen, dass die aktuellen Werte übernommen werden.
 
-Beim Debuggen erhalten Sie möglicherweise weitere Informationen zu Ausnahmen, indem Sie **Common Language Runtime-Ausnahmen** im Fenster **Ausnahmeeinstellungen** auswählen (STRG-ALT-E zum Öffnen des Fensters).
+Beim Debuggen erhalten Sie möglicherweise weitere Informationen zu Ausnahmen, indem Sie im Fenster **Ausnahmeeinstellungen** die Option **Common Language Runtime Exceptions** (Common Language Runtime-Ausnahmen) auswählen (STRG-ALT-E zum Öffnen des Fensters).
 
-Eine andere Möglichkeit, während des Debuggens weitere Ausnahmeinformationen zu erhalten, besteht darin, einen Haltepunkt im `catch`-Block der Hauptschleife für den Skripthost festzulegen. Diesen finden Sie im WebJobs.Script-Projekt in *Host/ScriptHostManager.cs* in der `RunAndBlock`-Methode.
+Eine andere Möglichkeit, während des Debuggens weitere Ausnahmeinformationen zu erhalten, besteht darin, einen Haltepunkt im `catch`-Block der Hauptschleife für den Skripthost festzulegen. Diesen finden Sie im Projekt „WebJobs.Script“ in *Host/ScriptHostManager.cs* in der `RunAndBlock`-Methode.
 
 ## Nächste Schritte
 
@@ -216,4 +222,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

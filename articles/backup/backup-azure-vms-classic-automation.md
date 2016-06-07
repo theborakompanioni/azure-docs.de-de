@@ -20,8 +20,8 @@
 # Bereitstellen und Verwalten von Sicherungen für Azure-VMs mit PowerShell
 
 > [AZURE.SELECTOR]
-- [ARM-VM-PowerShell](backup-azure-vms-automation.md)
-- [Klassische VM-PowerShell](backup-azure-vms-classic-automation.md)
+- [ARM](backup-azure-vms-automation.md)
+- [Klassisch](backup-azure-vms-classic-automation.md)
 
 In diesem Artikel wird beschrieben, wie Sie Azure PowerShell zum Sichern und Wiederherstellen von Azure-IaaS-VMs verwenden.
 
@@ -342,4 +342,4 @@ $DAILYBACKUPSTATS | Out-GridView
 
 Wenn Sie der Berichtsausgabe Diagrammfunktionen hinzufügen möchten, erfahren Sie Näheres im TechNet-Blog unter [Charting with PowerShell](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx) (Diagrammerstellung mit PowerShell).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

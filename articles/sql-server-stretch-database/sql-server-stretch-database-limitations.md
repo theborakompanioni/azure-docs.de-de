@@ -30,7 +30,7 @@ Tabellen, für die Stretch aktiviert ist, weisen die folgenden Einschränkungen 
 
 ### DML-Vorgänge
 
--   Die Befehle UPDATE oder DELETE können nicht für Zeilen einer Tabelle ausgeführt werden, für die Stretch aktiviert ist, oder in einer Ansicht, die Tabellen enthält, für die Stretch aktiviert ist.
+-   Die Befehle UPDATE oder DELETE können nicht für migrierte Zeilen oder für zur Migration berechtigte Zeilen in einer Tabelle, für die Stretch aktiviert ist, oder in einer Ansicht mit Tabellen ausgeführt werden, für die Stretch aktiviert ist.
 
 -   Sie können in einem verknüpften Server keine Zeilen mit dem Befehl INSERT in eine Tabelle einfügen, für die Stretch aktiviert ist.
 
@@ -96,4 +96,4 @@ Die folgenden Elemente verhindern derzeit das Aktivieren von Stretch für eine T
 
 [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

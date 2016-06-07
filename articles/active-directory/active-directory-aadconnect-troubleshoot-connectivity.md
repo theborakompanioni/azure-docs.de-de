@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="05/19/2016"
 	ms.author="andkjell"/>
 
 # Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect
@@ -33,17 +33,17 @@ Der Proxyserver muss die erforderlichen URLs geöffnet haben. Die offizielle Lis
 
 Die folgende Tabelle zeigt die Grundvoraussetzungen für eine Verbindung mit Azure AD. Diese Liste beinhaltet keine optionalen Funktionen, wie die Kennwortrückschreibung oder Azure AD Connect Health. Sie soll bei der Problembehebung während der Erstkonfiguration helfen.
 
-| URL | Port | Beschreibung |
-| ---- | ---- | ---- |
-| mscrl.microsoft.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen. |
-| *.verisign.com | HTTP/80 | Wird zum Herunterladen von CRL-Listen verwendet. | 
-| *.trust.com | HTTP/80 | Wird zum Herunterladen von CRL-Listen für MFA verwendet. | 
-| *.windows.net | HTTPS/443 | Wird zum Anmelden bei Azure AD verwendet. | 
-| *.secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet. | 
-| *.microsoftonline.com | HTTPS/443 | Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet. |
+URL | Port | Beschreibung
+---- | ---- | ----
+mscrl.microsoft.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen.
+*.verisign.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen.
+*.entrust.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) für MFA herunterzuladen.
+*.windows.net | HTTPS/443 | Wird für die Anmeldung bei Azure AD verwendet.
+*.secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
+*.microsoftonline.com | HTTPS/443 | Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet.
 
 ## Fehler im Assistenten
-Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf der Seite **Mit Azure AD verbinden** verwendet er den aktuell angemeldeten Benutzer. Auf der Seite **Konfigurieren** wechselt er auf das [Konto, das den Dienst für das Synchronisierungsmodul ausführt](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts). Die Proxykonfigurationen, die wir vornehmen, gelten für den ganzen Computer. Daher werden auftretende Probleme höchstwahrscheinlich bereits auf der Seite **Mit Azure AD verbinden** des Assistenten angezeigt.
+Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf der Seite **Mit Azure AD verbinden** verwendet er den aktuell angemeldeten Benutzer. Auf der Seite **Konfigurieren** wechselt er zu dem [Konto, das den Dienst für das Synchronisierungsmodul ausführt](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts). Unsere Proxykonfigurationen gelten für den ganzen Computer. Daher werden auftretende Probleme höchstwahrscheinlich bereits auf der Seite **Mit Azure AD verbinden** des Assistenten angezeigt.
 
 Dies sind die häufigsten Fehler im Installations-Assistenten:
 
@@ -70,14 +70,14 @@ PowerShell wird die Konfiguration aus machine.config verwenden, um den Proxy zu 
 
 Wenn der Proxy richtig konfiguriert ist, sollten Sie einen Erfolgsstatus erhalten: ![proxy200](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest200.png)
 
-Falls Sie die Meldung **Verbindung mit dem Remoteserver konnte nicht hergestellt werden** erhalten, versucht PowerShell entweder gerade einen direkten Aufruf durchzuführen, ohne den Proxy zu verwenden, oder das DNS ist nicht richtig konfiguriert. Stellen Sie sicher, dass die Datei **machine.config** richtig konfiguriert ist. ![unabletoconnect](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequestunable.png)
+Falls Sie die Meldung **Die Verbindung mit dem Remoteserver kann nicht hergestellt werden** erhalten, versucht PowerShell entweder gerade einen direkten Aufruf durchzuführen, ohne den Proxy zu verwenden, oder das DNS ist nicht richtig konfiguriert. Stellen Sie sicher, dass die Datei **machine.config** richtig konfiguriert ist. ![unabletoconnect](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequestunable.png)
 
 Falls der Proxy nicht richtig konfiguriert ist, tritt folgender Fehler auf: ![proxy200](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest403.png) ![proxy407](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest407.png)
 
-| Error | Fehlertext | Kommentar |
-| ---- | ---- | ---- |
-| 403 | Verboten (403) | Der Proxy wurde für die angeforderte URL nicht geöffnet. Rufen Sie die Proxykonfiguration erneut auf, und stellen Sie sicher, dass die [URLs](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet wurden. |
-| 407 | Proxyauthentifizierung erforderlich | Der Proxyserver erfordert eine Anmeldung, die nicht erfolgt ist. Stellen Sie sicher, dass Sie in den Konfigurationen von machine.config eine entsprechende Einstellung vorgenommen haben, falls Ihr Proxyserver eine Authentifizierung erfordert. Gehen Sie außerdem sicher, dass Sie sowohl für den Benutzer, der den Assistenten ausführt, als auch für das Dienstkonto Domänenkonten verwenden. |
+Error | Fehlertext | Kommentar
+---- | ---- | ---- |
+403 | Verboten (403) | Der Proxy wurde für die angeforderte URL nicht geöffnet. Rufen Sie die Proxykonfiguration erneut auf, und stellen Sie sicher, dass die [URLs](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet wurden.
+407 | Proxyauthentifizierung erforderlich | Der Proxyserver erfordert eine Anmeldung, die nicht erfolgt ist. Stellen Sie sicher, dass Sie in den Konfigurationen von machine.config eine entsprechende Einstellung vorgenommen haben, falls Ihr Proxyserver eine Authentifizierung erfordert. Gehen Sie außerdem sicher, dass Sie sowohl für den Benutzer, der den Assistenten ausführt, als auch für das Dienstkonto Domänenkonten verwenden.
 
 ## Das Kommunikationsmuster zwischen Azure AD Connect und Azure AD
 Falls Sie alle obigen Schritte ausgeführt haben und immer noch keine Verbindung herstellen können, sollten Sie sich Ihre Netzwerkprotokolle ansehen. Dieser Abschnitt dokumentiert ein normales und erfolgreiches Konnektivitätsmuster. Er zeigt auch häufig auftretende Meldungen, die Sie aber ignorieren können, wenn Sie die Netzwerkprotokolle lesen.
@@ -87,7 +87,7 @@ Falls Sie alle obigen Schritte ausgeführt haben und immer noch keine Verbindung
 - Die Endpunkte „adminwebservice“ und „provisioningapi“ (siehe unten in den Protokollen) sind Ermittlungsendpunkte und werden benutzt, um die tatsächlich zu verwendeten Endpunkte zu finden. Sie unterschieden sich je nach Ihrer Region.
 
 ### Verweisproxyprotokolle
-Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations-Assistenten, von der er entnommen wurde. (Doppelte Einträge, die zum selben Endpunkt führen, wurden entfernt). Sie können ihn als Referenz für Ihre eigenen Proxy- und Netzwerkprotokolle verwenden. Die tatsächlichen Endpunkte können in Ihrer Umgebung abweichen (insbesondere die *kursiv* gesetzten).
+Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations-Assistenten, von der er entnommen wurde. (Doppelte Einträge, die zum selben Endpunkt führen, wurden entfernt). Sie können ihn als Referenz für Ihre eigenen Proxy- und Netzwerkprotokolle verwenden. Die tatsächlichen Endpunkte können in Ihrer Umgebung abweichen (insbesondere die *kursiv* formierten).
 
 **Herstellen einer Verbindung mit Azure AD**
 
@@ -135,7 +135,7 @@ Ungültiger Benutzername oder ungültiges Kennwort. Weitere Informationen finden
 Ihr Azure AD-Verzeichnis wurde nicht gefunden oder kann nicht aufgelöst werden. Versuchen Sie möglicherweise, sich mit einem Benutzernamen in einer nicht überprüften Domäne anzumelden?
 
 ### Fehler bei Benutzerbereichserkennung
-Es liegen Probleme mit der Netzwerk- oder Proxykonfiguration vor. Das Netzwerk kann nicht erreicht werden, siehe [Konnektivitätsprobleme mit dem Installations-Assistent beheben](#troubleshoot-connectivity-issues-in-the-installation-wizard).
+Es liegen Probleme mit der Netzwerk- oder Proxykonfiguration vor. Das Netzwerk kann nicht erreicht werden. Siehe [Konnektivitätsprobleme mit dem Installations-Assistenten beheben](#troubleshoot-connectivity-issues-in-the-installation-wizard).
 
 ### Benutzerkennwort abgelaufen
 Ihre Anmeldeinformationen sind abgelaufen. Ändern Sie Ihr Kennwort.
@@ -170,9 +170,9 @@ Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfigur
 Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen kann oder der Proxy die Anfrage nicht zulässt. ![nonetsh](./media/active-directory-aadconnect-troubleshoot-connectivity/nonetsh.png)
 
 - Falls dieser Fehler angezeigt wird, prüfen Sie die Proxykonfiguration in [netsh](active-directory-aadconnect-prerequisites.md#connectivity).![netshshow](./media/active-directory-aadconnect-troubleshoot-connectivity/netshshow.png)
-- Falls die Konfiguration keine Fehler aufweist, befolgen Sie die Schritte unter [Proxykonnektivität überprüfen](#verify-proxy-connectivity), um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
+- Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity), um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
 
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

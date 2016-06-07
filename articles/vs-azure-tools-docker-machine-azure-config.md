@@ -27,7 +27,7 @@ Das Ausführen von [Docker](https://www.docker.com/)-Containern erfordert eine H
 
 Erstellen Sie Docker-Host-VMs in Azure mit dem Befehl `docker-machine create` unter Verwendung des Treibers `azure`.
 
-Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle (CLI)](xplat-cli-install.md) oder das [Azure-Portal](https:/portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen.
+Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) oder das [Azure-Portal](https:/portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen.
 
 **Verwenden des Azure-Portals**
 - Wählen Sie auf der linken Seite „Abonnements“ aus, und kopieren Sie die Abonnement-ID.
@@ -107,4 +107,4 @@ Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfung
 
 Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

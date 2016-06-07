@@ -180,6 +180,14 @@ Im folgende Beispiel wird ein Tabellencontroller initialisiert, der Entity Frame
 
 Ein Beispiel für einen Tabellencontroller, der für den Datenzugriff in einer Azure SQL-Datenbank das Entity Framework verwendet, finden Sie im Azure-Portal in der **TodoItemController**-Klasse im Downloadbereich des Schnellstartserverprojekts.
 
+### Gewusst wie: Anpassen der Größe der Tabellenauslagerungsdatei
+
+Azure Mobile Apps gibt standardmäßig 50 Datensätze pro Anforderung zurück. Dadurch wird sichergestellt, dass der Client nicht seinen UI-Thread und den Server zu lange auslastet, um eine gute Benutzerfunktionalität zu gewährleisten. Sie müssen die „zulässige Abfragegröße“ auf Serverseite sowie die Größe der Auslagerungsdatei auf Clientseite erhöhen, um die Größe der Tabellenauslagerungsdatei zu ändern. Um die Größe der Auslagerungsdatei zu erhöhen, passen Sie den Tabellencontroller mit der folgenden Zeile an:
+
+    [EnableQuery(PageSize = 500)]
+
+Stellen Sie sicher, dass die PageSize mindestens der Größe entspricht, die vom Client angefordert wird. Weitere Informationen zum Ändern der Größe der Clientauslagerungsdatei finden Sie in der Clientdokumentation.
+
 ## Gewusst wie: Definieren eines benutzerdefinierten API-Controllers
 
 Der benutzerdefinierte API-Controller bietet Grundfunktionen für Ihr Mobile App-Back-End, indem ein Endpunkt verfügbar gemacht wird. Mit dem [MobileAppController]-Attribut können Sie einen mobilspezifischen API-Controller registrieren. Mit diesem Attribut wird die Route registriert und zudem das JSON-Serialisierungsprogramm für Mobile Apps eingerichtet.
@@ -192,7 +200,7 @@ Der benutzerdefinierte API-Controller bietet Grundfunktionen für Ihr Mobile App
 
 		using Microsoft.Azure.Mobile.Server.Config;
 
-4. Wenden Sie das Attribut **[MobileAppController]** wie im folgenden Beispiel auf die API-Controller-Klassendefinition an:
+4. Wenden Sie das **[MobileAppController]**-Attribut wie im folgenden Beispiel auf die API-Controller-Klassendefinition an:
 
 		[MobileAppController]
 		public class CustomController : ApiController
@@ -279,7 +287,7 @@ Die `AppServiceLoginHandler.CreateToken()`-Methode enthält die Parameter _audie
 
 Sie müssen darüber hinaus eine Lebensdauer für das ausgestellte Token sowie alle Ansprüche angeben, die aufgenommen werden sollen. Wie im Beispielcode gezeigt, müssen Sie den Anspruch „Betreff“ angeben.
 
-Sie können den Clientcode auch vereinfachen, um die `loginAsync()`-Methode (die Benennung kann zwischen Plattformen variieren) anstelle einer manuellen HTTP POST-Methode zu verwenden. Sie verwenden die Überlagerung, die einen zusätzlichen Parameter verwendet, der mit dem Assertionsprojekt zusammenhängt, das Sie bereitstellen möchten. Der Anbieter sollte in diesem Fall einen benutzerdefinierten Namen Ihrer Wahl tragen. Auf dem Server erfolgt Ihre Anmeldeaktion dann unter dem Pfad _/.auth/login/{benutzerdefinierterProvidername}_, der diesen benutzerdefinierten Namen enthält. Um den Controller unter diesem Pfad zu speichern, fügen Sie Ihrer HttpConfiguration eine Route hinzu, bevor Sie Ihre MobileAppConfiguration anwenden.
+Sie können den Clientcode auch vereinfachen, um die `loginAsync()`-Methode (die Benennung kann zwischen Plattformen variieren) anstelle einer manuellen HTTP POST-Methode zu verwenden. Sie verwenden die Überlagerung, die einen zusätzlichen Parameter verwendet, der mit dem Assertionsprojekt zusammenhängt, das Sie bereitstellen möchten. Der Anbieter sollte in diesem Fall einen benutzerdefinierten Namen Ihrer Wahl tragen. Auf dem Server erfolgt Ihre Anmeldeaktion dann unter dem Pfad _/.auth/login/{benutzerdefinierterAnbietername}_, der diesen benutzerdefinierten Namen enthält. Um den Controller unter diesem Pfad zu speichern, fügen Sie Ihrer HttpConfiguration eine Route hinzu, bevor Sie Ihre MobileAppConfiguration anwenden.
 
 		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" });
 
@@ -324,10 +332,6 @@ Der folgende Code ruft die Erweiterungsmethode **GetAppServiceIdentityAsync** au
     }
 
 Beachten Sie, dass für `System.Security.Principal` eine using-Anweisung hinzugefügt werden muss, damit die Erweiterungsmethode **GetAppServiceIdentityAsync** funktioniert.
-
-###<a name="authorize"></a>Vorgehensweise: Einschränken des Datenzugriffs für autorisierte Benutzer
-
-Es ist häufig erwünscht, die Daten einzuschränken, die an einen bestimmten authentifizierten Benutzer zurückgegeben werden. Diese Art von Datenpartitionierung erfolgt durch das Einbinden einer userId-Spalte in die Tabelle, und das Speichern der SID des Benutzers, wenn die Daten eingefügt werden
 
 ## Vorgehensweise: Hinzufügen von Pushbenachrichtigungen zu einem Serverprojekt
 
@@ -462,4 +466,4 @@ Ihr lokal ausgeführter Server kann nun Token überprüfen, die der Client vom c
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

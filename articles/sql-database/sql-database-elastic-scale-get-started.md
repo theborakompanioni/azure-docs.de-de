@@ -3,7 +3,7 @@
 	description="Grundlegende Erläuterung der Funktion „Tools für elastische Datenbanken“ von Azure SQL, einschließlich einer einfachen Beispiel-App." 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove" 
 	editor="sidneyh"/>
 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/22/2016" 
-	ms.author="ddove;sidneyh"/>
+	ms.date="05/24/2016" 
+	ms.author="sidneyh"/>
 
 # Erste Schritte mit Tools für elastische Datenbanken
 
 In diesem Dokument werden die Entwicklerfunktionen durch Ausführen der Beispiel-App vorgestellt. Mit dem Beispiel wird eine einfache Sharding-Anwendung erstellt, und es werden die wichtigsten Funktionen von Tools für elastische Datenbanken erkundet. Das Beispiel veranschaulicht die Funktionen der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md).
+
+Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Beachten Sie, dass die Bibliothek mit der unten beschriebenen Beispiel-App installiert wird.
 
 ## Voraussetzungen
 
@@ -35,7 +37,7 @@ Die Beispielanwendung unter **Elastische Datenbank mit Azure SQL – Erste Schri
     ![Neues Projekt > Online][2]
 3. Klicken Sie anschließend unter **Beispiele** auf **Visual C#**.
 
-    ![Auf Visual C# klicken][3]
+    ![Auf Visual C# klicken][3]
 4. Geben Sie in das Suchfeld **elastische Datenbank** ein, um nach dem Beispiel zu suchen. Der Titel **Tools für elastische Datenbanken für Azure SQL – Erste Schritte** wird angezeigt.
 
     ![Suchfeld][1]
@@ -68,7 +70,7 @@ Herzlichen Glückwunsch! Sie haben Ihre erste Sharding-Anwendung mit den Tools f
 
 Die Tools für elastische Datenbanken sind kostenlos. Durch Tools für elastische Datenbanken entstehen keine zusätzlichen Gebühren zu den Kosten der Azure-Nutzung.
 
-Die Beispielanwendung erstellt z. B. neue Datenbanken. Die Kosten richten sich nach der Azure SQL DB-Datenbankedition, die Sie wählen, sowie nach der Azure-Nutzung Ihrer Anwendung.
+Die Beispielanwendung erstellt z. B. neue Datenbanken. Die Kosten richten sich nach der Azure SQL DB-Datenbankedition, die Sie wählen, sowie nach der Azure-Nutzung Ihrer Anwendung.
 
 Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
 
@@ -83,6 +85,7 @@ Weitere Informationen zu den Tools für elastische Datenbanken finden Sie unter:
 -    Blog: [Elastic Scale-Ankündigung](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 -    Channel 9: [Elastic Scale – Übersichtsvideo](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 -    Diskussionsforum: [Azure SQL-Datenbank – Forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+-    So messen Sie die Leistung: [Leistungsindikatoren für den Shardzuordnungs-Manager](sql-database-elastic-database-client-library.md)
 
 
 <!--Anchors-->
@@ -98,4 +101,4 @@ Weitere Informationen zu den Tools für elastische Datenbanken finden Sie unter:
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

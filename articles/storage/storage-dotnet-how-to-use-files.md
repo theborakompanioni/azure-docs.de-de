@@ -258,11 +258,36 @@ Um die Dateifreigabe über einen lokalen Client bereitzustellen, müssen Sie zue
 
 ## Entwickeln mit Dateispeicher
 
-Zum programmgesteuerten Verwenden des Dateispeichers können Sie Speicherclientbibliotheken für .NET und Java oder die Azure Storage-REST-API verwenden. Das Beispiel in diesem Abschnitt veranschaulicht, wie Sie mit einer Dateifreigabe arbeiten, indem Sie die [Azure Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/mt347887.aspx) über eine einfache Konsolenanwendung verwenden, die auf dem Desktop ausgeführt wird.
+Zum Schreiben von Code, mit dem Dateispeicher aufgerufen wird, können Sie Speicherclientbibliotheken für .NET und Java oder die Azure Storage-REST-API verwenden. Das Beispiel in diesem Abschnitt veranschaulicht, wie Sie mit einer Dateifreigabe arbeiten, indem Sie die [Azure Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/mt347887.aspx) über eine einfache Konsolenanwendung verwenden, die auf dem Desktop ausgeführt wird.
 
-[AZURE.INCLUDE [storage-dotnet-install-library-include](../../includes/storage-dotnet-install-library-include.md)]
+### Erstellen der Konsolenanwendung und Abrufen der Assembly
 
-[AZURE.INCLUDE [storage-dotnet-save-connection-string-include](../../includes/storage-dotnet-save-connection-string-include.md)]
+So erstellen Sie eine neue Konsolenanwendung in Visual Studio und installieren das NuGet-Paket mit der Clientbibliothek von Azure Storage:
+
+1. Wählen Sie in Visual Studio **Datei -> Neues Projekt**, und wählen Sie dann **Windows -> Konsolenanwendung** aus der Liste der Visual C#-Vorlagen aus.
+2. Stellen Sie einen Namen für die Konsolenanwendung bereit, und klicken Sie dann auf **OK**.
+3. Nachdem Ihr Projekt erstellt wurde, klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf das Projekt und wählen **NuGet-Pakete verwalten** aus. Suchen Sie online nach „WindowsAzure.Storage“, und klicken Sie auf **Installieren**, um das Paket „Azure Storage-Clientbibliothek für .NET“ und die zugehörigen Abhängigkeiten zu installieren.
+
+In den Codebeispielen in diesem Artikel wird auch die [Microsoft Azure Configuration Manager-Bibliothek](https://msdn.microsoft.com/library/azure/mt634646.aspx) zum Abrufen der Speicherverbindungszeichenfolge von einer app.config-Datei in der Konsolenanwendung verwendet. Mit Azure Configuration Manager können Sie die Verbindungszeichenfolge zur Laufzeit abrufen, unabhängig davon, ob Ihre Anwendung in Microsoft Azure oder von einer Desktop-, Mobil- oder Webanwendung ausgeführt wird.
+
+Klicken Sie zum Installieren des Azure Configuration Manager-Pakets im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie online nach „ConfigurationManager“, und klicken Sie zum Installieren des Pakets auf **Installieren**.
+
+Die Verwendung von Azure Configuration Manager ist optional. Sie können auch eine API wie die [ConfigurationManager-Klasse](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) von .NET Framework verwenden.
+
+### Speichern Ihrer Speicherkonto-Anmeldeinformationen in der Datei „app.config“
+
+Als Nächstes speichern Sie Ihre Anmeldeinformationen in der Datei „app.config“ des Projekts. Bearbeiten Sie die Datei „app.config“ ähnlich wie im folgenden Beispiel, indem Sie `myaccount` durch den Namen Ihres Speicherkontos und `mykey` durch den Schlüssel Ihres Speicherkontos ersetzen.
+
+	<?xml version="1.0" encoding="utf-8" ?>
+	<configuration>
+	    <startup>
+	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+	    </startup>
+	    <appSettings>
+	        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==" />
+	    </appSettings>
+	</configuration>
+
 
 > [AZURE.NOTE] Die neueste Version des Azure-Speicheremulators bietet keine Unterstützung für Dateispeicher. Die Verbindungszeichenfolge muss auf ein Azure-Speicherkonto in der Cloud verweisen, um mit Dateispeicher arbeiten zu können.
 
@@ -508,7 +533,7 @@ Sie können Metriken für Dateispeicher über das [Azure-Portal](https://portal.
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Storage-Clientbibliothek für .NET zum Aktivieren von Metriken für File Storage verwenden.
 
-Fügen Sie zunächst der Datei „program.cs“ die folgenden `using`-Anweisungen zusätzlich zu den oben genannten Anweisungen hinzu:
+Fügen Sie zunächst der Datei „program.cs“ zusätzlich zu den oben genannten Anweisungen die folgenden `using`-Anweisungen hinzu:
 
 	using Microsoft.WindowsAzure.Storage.File.Protocol;
 	using Microsoft.WindowsAzure.Storage.Shared.Protocol;
@@ -642,4 +667,4 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 - [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd" 
-	ms.date="02/10/2016"
+	ms.date="05/16/2016"
 	ms.author="himad"/>
 
 
@@ -42,4 +42,4 @@ Nach dem Erstellen kann der Endpunkt über synchrone APIs, Batch-APIs und Excel-
  
  Beachten Sie, dass Sie den Standardendpunkt weder mit dem Studio noch hier löschen können, wenn Sie Endpunkte hinzugefügt haben. Dadurch wird ein Fehler ausgelöst.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

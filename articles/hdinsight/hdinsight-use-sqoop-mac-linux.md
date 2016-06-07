@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="05/24/2016"
 	ms.author="larryfr"/>
 
 #Verwenden von Sqoop mit Hadoop in HDInsight (SSH)
@@ -29,20 +29,76 @@ Erfahren Sie, wie Sqoop zum Importieren und Exportieren zwischen einem Linux-bas
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-
-- **Hadoop-Cluster in HDInsight**. Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+- Ein **Hadoop-Cluster in HDInsight** und eine __Azure SQL-Datenbank__: Die Schritte in diesem Dokument basieren auf dem Cluster und der Datenbank, die in dem Dokument [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database) erstellt wurden. Wenn Sie bereits über einen HDInsight-Cluster und eine SQL-Datenbank verfügen, können Sie sie für die in diesem Dokument verwendeten Werte einsetzen.
 - **Arbeitsstation**: ein Computer mit einem SSH-Client.
-- **Azure CLI**: Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../xplat-cli-install.md)
 
-    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+##Installieren von FreeTDS
+
+1. Stellen Sie über SSH eine Verbindung mit dem Linux-basierten HDInsight-Cluster her. Verwenden Sie für die Verbindung die Adresse `CLUSTERNAME-ssh.azurehdinsight.net` und den Port `22`.
+
+	Weitere Informationen zur Verwendung von SSH zum Verbindungsaufbau mit HDInsight finden Sie in den folgenden Dokumenten:
+
+    * **Linux-, Unix- und OS X-Clients**: [Verbinden mit einem Linux-basierten HDInsight-Cluster unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
+
+    * **Windows-Clients**: [Verbinden mit einem Linux-basierten HDInsight-Cluster unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
+
+3. Geben Sie den folgenden Befehl für die Installation von FreeTDS ein:
+
+        sudo apt-get --assume-yes install freetds-dev freetds-bin
+
+    FreeTDS wird in mehreren Schritten verwendet, um eine Verbindung zur SQL-Datenbank herzustellen.
+
+##Erstellen der Tabelle in einer SQL-Datenbank
+
+> [AZURE.IMPORTANT] Wenn Sie einen HDInsight-Cluster und eine SQL-Datenbank verwenden, die Sie anhand der Schritte unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md) erstellt haben, ignorieren Sie die Schritte in diesem Abschnitt, da die Datenbank und die Tabelle als Teil der Schritte im anderen Dokument bereits erstellt wurden.
+
+1. Verwenden Sie über die SSH-Verbindung zu HDInsight den folgenden Befehl, um eine Verbindung zu dem SQL-Datenbankserver herzustellen und die Tabelle zu erstellen, die in den weiteren Schritten benötigt wird.
+
+        TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
+
+    Eine Ausgabe ähnlich der folgenden wird angezeigt:
+
+        locale is "en_US.UTF-8"
+        locale charset is "UTF-8"
+        using default charset "UTF-8"
+        Default database being set to sqooptest
+        1>
+
+5. Geben Sie bei der Eingabeaufforderung `1>` folgende Zeilen ein:
+
+        CREATE TABLE [dbo].[mobiledata](
+        [clientid] [nvarchar](50),
+        [querytime] [nvarchar](50),
+        [market] [nvarchar](50),
+        [deviceplatform] [nvarchar](50),
+        [devicemake] [nvarchar](50),
+        [devicemodel] [nvarchar](50),
+        [state] [nvarchar](50),
+        [country] [nvarchar](50),
+        [querydwelltime] [float],
+        [sessionid] [bigint],
+        [sessionpagevieworder] [bigint])
+        GO
+        CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
+        GO
+
+    Nach Eingabe der Anweisung `GO` werden die vorherigen Anweisungen ausgewertet. Zunächst wird die Tabelle **mobiledata** erstellt und dieser dann ein gruppierter Index hinzugefügt (für SQL-Datenbank erforderlich).
+
+    Stellen Sie wie folgt sicher, dass die Tabelle erstellt wurde:
+
+        SELECT * FROM information_schema.tables
+        GO
+
+    Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
+
+        TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+        sqooptest       dbo     mobiledata      BASE TABLE
+
+8. Geben Sie zum Beenden des Dienstprogramms tsql an der Eingabeaufforderung `1>` die Zeichenfolge `exit` ein.
 
 ##Sqoop-Export
 
-2. Verwenden Sie den folgenden Befehl, um einen Link zum SQL Server JDBC-Treiber aus dem Sqoop-Verzeichnis "lib" zu erstellen. Dies ermöglicht Sqoop die Nutzung dieses Treibers zur Kommunikation mit der SQL-Datenbank.
-
-        sudo ln /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /usr/hdp/current/sqoop-client/lib/sqljdbc41.jar
-
-3. Verwenden Sie den folgenden Befehl, um zu überprüfen, ob Sqoop Ihre SQL-Datenbank erreichen kann:
+3. Verwenden Sie den folgenden Befehl über die SSH-Verbindung zu HDInsight, um sicherzustellen, dass Sqoop Ihre SQL-Datenbank sehen kann:
 
         sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
 
@@ -144,4 +200,4 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

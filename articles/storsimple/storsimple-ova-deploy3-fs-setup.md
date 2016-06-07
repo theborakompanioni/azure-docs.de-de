@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/07/2016"
+   ms.date="05/20/2016"
    ms.author="alkohli"/>
 
 # Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver
@@ -104,7 +104,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
 
 	1.  Geben Sie die **Webproxy-URL** in diesem Format an: *http://&lt;host-IP-Adresse oder FQDN&gt;:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
 
-	2.  Geben Sie unter **Authentifizierung** die Option **Einfach**, **NTLM**, oder **Keine** an.
+	2.  Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
 
 	3.  Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
 
@@ -118,15 +118,15 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
 
 	1.  Legen Sie über die Dropdownliste die **Zeitzone** basierend auf dem geografischen Standort fest, an dem das Gerät bereitgestellt wird. Die Standardzeitzone für Ihr Gerät ist „PST“. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
 
-	2.  Geben Sie einen **Primären NTP-Server** für das Gerät an, oder übernehmen Sie den Standardwert „time.windows.com“. Stellen Sie sicher, dass Ihr Netzwerk NTP-Datenverkehr vom Rechenzentrum ins Internet zulässt.
+	2.  Geben Sie einen **primären NTP-Server** für das Gerät an, oder übernehmen Sie den Standardwert „time.windows.com“. Stellen Sie sicher, dass Ihr Netzwerk NTP-Datenverkehr vom Rechenzentrum ins Internet zulässt.
 
-	3.  Geben Sie optional einen **Sekundären NTP-Server** für Ihr Gerät an.
+	3.  Geben Sie optional einen **sekundären NTP-Server** für Ihr Gerät an.
 
-	4.  Klicken Sie auf **Übernehmen**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
+	4.  Klicken Sie auf **Apply**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
 
 1.  Konfigurieren Sie die Cloudeinstellungen für Ihr Gerät. In diesem Schritt führen Sie die lokale Gerätekonfiguration durch und registrieren das Gerät dann beim StorSimple Manager-Dienst.
 
-    1.  Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) für StorSimple Virtual Array beschafft haben.
+    1.  Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) für StorSimple Virtual Array erhalten haben.
 
     2.  Überspringen Sie diesen Schritt, wenn dies das erste Gerät ist, das Sie bei diesem Dienst registrieren, und fahren Sie mit dem nächsten Schritt fort. Falls dies nicht das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den **Dienstdaten-Verschlüsselungsschlüssel** angeben. Dieser Schlüssel ist zusammen mit dem Dienstregistrierungsschlüssel zum Registrieren weiterer Geräte beim StorSimple Manager-Dienst erforderlich. Sehen Sie sich die weiteren Informationen zum Abrufen des [Dienstdaten-Verschlüsselungsschlüssels](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) für Ihre lokale Webbenutzeroberfläche an.
 
@@ -232,4 +232,4 @@ Im Video wird gezeigt, wie Sie ein StorSimple Virtual Array als Dateiserver konf
 
 Erfahren Sie, wie Sie die lokale Webbenutzeroberfläche verwenden, um [Ihr StorSimple Virtual Array zu verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -67,7 +67,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
-	Login-AzureRmAccountt
+	Login-AzureRmAccount
 
 Überprüfen Sie die Abonnements für das Konto.
 
@@ -174,4 +174,4 @@ Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS 
 
 Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

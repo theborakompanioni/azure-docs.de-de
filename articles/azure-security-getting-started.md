@@ -1,19 +1,19 @@
 <properties
    pageTitle="Erste Schritte mit Microsoft Azure-Sicherheit | Microsoft Azure"
    description="Dieser Artikel bietet einen Überblick über die Sicherheitsfunktionen von Microsoft Azure sowie allgemeine Informationen für Organisationen, die ihre Ressourcen zu einem Cloudanbieter migrieren."
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriDio"
    manager="swadhwa"
    editor="TomSh"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="05/23/2016"
    ms.author="yuridio"/>
 
 #Erste Schritte mit Microsoft Azure-Sicherheit
@@ -241,4 +241,4 @@ Azure verfügt über Sicherheitskontrollen, um die Bedrohungsabwehr zu implement
 
 [Active Directory-Blog](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0525_2016-->

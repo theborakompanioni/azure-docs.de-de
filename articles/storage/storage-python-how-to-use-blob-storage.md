@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verwenden des Azure-Blob-Speichers mit Python | Microsoft Azure"
+	pageTitle="Verwenden des Azure-Blobspeichers (Objektspeicher) mit Python | Microsoft Azure"
 	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	services="storage"
 	documentationCenter="python"
@@ -22,6 +22,8 @@
 
 ## Übersicht
 
+Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+
 In diesem Artikel wird die Durchführung gängiger Szenarien mit dem Blob-Speicher demonstriert. Die Beispiele sind in Python geschrieben und verwenden das [Microsoft Azure Storage-SDK für Python]. Die behandelten Szenarien umfassen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs.
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -30,7 +32,7 @@ In diesem Artikel wird die Durchführung gängiger Szenarien mit dem Blob-Speich
 
 ## Erstellen eines Containers
 
-Erstellen Sie je dem Typ des Blobs, das Sie verwenden möchten, ein **BlockBlobService**-, ein **AppendBlobService**- oder ein **PageBlobService**-Objekt. Der folgende Code verwendet ein **BlockBlobService**-Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Blockblobspeicher zugreifen möchten, den folgenden Code hinzu.
+Erstellen Sie basierend auf dem Typ des Blobs, das Sie verwenden möchten, ein **BlockBlobService**-, ein **AppendBlobService**- oder ein **PageBlobService**-Objekt. Der folgende Code verwendet ein **BlockBlobService**-Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Blockblobspeicher zugreifen möchten, den folgenden Code hinzu.
 
 	from azure.storage.blob import BlockBlobService
 
@@ -59,7 +61,7 @@ Nach dieser Änderung kann jeder Benutzer im Internet Blobs in einem öffentlich
 
 Verwenden Sie zum Erstellen eines Blockblobs und zum Hochladen von Daten die Methoden **create\_blob\_from\_path**, **create\_blob\_from\_stream**, **create\_blob\_from\_bytes** oder **create\_blob\_from\_text**. Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
 
-**create\_blob\_from\_path** lädt den Inhalt einer Datei aus dem angegebenen Pfad hoch, und **create\_blob\_from\_stream** lädt den Inhalt aus einer bereits geöffneten Datei/einem Stream. **create\_blob\_from\_bytes** lädt ein Byte-Array hoch, und **create\_blob\_from\_text** lädt den angegebenen Textwert unter Verwendung der festgelegten Codierung (standardmäßig UTF-8) hoch.
+**create\_blob\_from\_path** lädt den Inhalt einer Datei aus dem angegebenen Pfad hoch, und **create\_blob\_from\_stream** lädt den Inhalt aus einer bereits geöffneten Datei/einem Datenstrom. **create\_blob\_from\_bytes** lädt ein Byte-Array hoch, und **create\_blob\_from\_text** lädt den angegebenen Textwert unter Verwendung der festgelegten Codierung (standardmäßig UTF-8) hoch.
 
 Das folgende Beispiel lädt den Inhalt der Datei **sunset.png** in das Blob **myblob** hoch.
 
@@ -125,4 +127,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/23/2016"
    ms.author="larryfr"/>
 
 #Ausführen von Pig-Aufträgen mit PowerShell
@@ -58,7 +58,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
         #Login to your Azure subscription
         Login-AzureRmAccount
         #Get credentials for the admin/HTTPs account
-        $creds=Get-Credential
+        $creds = Get-Credential
 
         #Specify the cluster name
         $clusterName = "CLUSTERNAME"
@@ -66,12 +66,11 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
         #Get the cluster info so we can get the resource group, storage, etc.
         $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
         $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=Get-AzureRmStorageAccountKey `
+        $storageAccountName = $clusterInfo.DefaultStorageAccount.split('.')[0]
+        $container = $clusterInfo.DefaultStorageContainer
+        $storageAccountKey = (Get-AzureRmStorageAccountKey `
             -Name $storageAccountName `
-            -ResourceGroupName $resourceGroup `
-            | %{ $_.Key1 }
+        -ResourceGroupName $resourceGroup)[0].Value
 
         #Store the Pig Latin into $QueryString
         $QueryString =  @"
@@ -117,7 +116,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
         } else {
             # Something went wrong, display error output
             # Print the output of the Pig job.
-            Write-Host "Display the standard output ..." -ForegroundColor Green
+            Write-Host "Display the standard error output ..." -ForegroundColor Green
             Get-AzureRmHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $pigJob.JobId `
@@ -128,7 +127,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
                 -DisplayOutputType StandardError
         }
 
-2. Öffnen Sie eine neue Azure PowerShell-Eingabeaufforderung. Navigieren Sie zum Speicherort der Datei **pigjob.ps1**, und verwenden Sie folgenden Befehl zum Ausführen des Skripts:
+2. Öffnen Sie eine neue Windows PowerShell-Eingabeaufforderung. Navigieren Sie zum Speicherort der Datei **pigjob.ps1**, und verwenden Sie folgenden Befehl zum Ausführen des Skripts:
 
 		.\pigjob.ps1
         
@@ -151,7 +150,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 Wenn nach Abschluss des Auftrags keine Informationen zurückgegeben werden, ist während der Verarbeitung möglicherweise ein Fehler aufgetreten. Um Fehlerinformationen für diesen Auftrag anzuzeigen, fügen Sie folgenden Befehl am Ende der Datei **pigjob.ps1** hinzu. Anschließend speichern Sie die Datei und führen sie erneut aus.
 
 	# Print the output of the Pig job.
-	Write-Host "Display the standard output ..." -ForegroundColor Green
+	Write-Host "Display the standard error output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
@@ -179,4 +178,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

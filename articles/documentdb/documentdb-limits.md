@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="05/19/2016" 
 	ms.author="arramac"/>
 
 
@@ -26,4 +26,4 @@ In der folgenden Tabelle werden die Grenzen und Kontingenterzwingungen von Docum
 
 Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](documentdb-increase-limits.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

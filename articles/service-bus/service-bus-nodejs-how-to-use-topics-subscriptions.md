@@ -27,7 +27,7 @@ In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements ü
 
 ## Erstellen einer Node.js-Anwendung
 
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website], [Node.js-Clouddienst][Node.js Cloud Service] \(mithilfe von Windows PowerShell) oder Website mit WebMatrix.
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website], [Node.js-Clouddienst][Node.js Cloud Service] (mithilfe von Windows PowerShell) oder Website mit WebMatrix.
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 
@@ -251,7 +251,7 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 MB (der Header, der die standardmäßigen und die benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 MB haben). Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## Empfangen von Nachrichten aus einem Abonnement
 
@@ -328,4 +328,4 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen vertraut sind, finden 
   [Node.js-Webanwendung mit Speicher]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

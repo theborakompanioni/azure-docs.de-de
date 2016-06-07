@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Testen eines Runbooks in Azure Automation"
+	pageTitle="Testen eines Runbooks in Azure Automation | Microsoft Azure"
 	description="Bevor Sie ein Runbook in Azure Automation veröffentlichen, können Sie es testen, um sicherzustellen, dass es wie erwartet funktioniert. In diesem Artikel wird beschrieben, wie Sie ein Runbook testen und die Ausgabe anzeigen."
 	services="automation"
 	documentationCenter=""
 	authors="mgoedtel"
-	manager="stevenka"
+	manager="jwhit"
 	editor="tysonn" />
 <tags 
 	ms.service="automation"
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="02/23/2016"
+	ms.date="05/24/2016"
 	ms.author="magoedte;bwren" />
 
 # Testen eines Runbooks in Azure Automation
@@ -27,32 +27,20 @@ Das Verfahren zum Testen der verschiedenen [Runbooktypen](automation-runbook-typ
 
 Sie können mit jedem [Runbooktyp](automation-runbook-types.md) im Azure-Portal arbeiten.
 
-1. Öffnen Sie die Entwurfsversion des Runbooks entweder im [Text-Editor](automation-editing-a-runbook#Portal) oder im [grafischen Editor](automation-graphical-authoring-intro.md).
+1. Öffnen Sie die Entwurfsversion des Runbooks entweder im [Text-Editor](automation-editing-a-runbook.md#Portal) oder im [grafischen Editor](automation-graphical-authoring-intro.md).
 2. Klicken Sie auf die Schaltfläche **Test** um das Blatt "Test" zu öffnen.
 3. Wenn das Runbook über Parameter verfügt, werden diese im linken Bereich aufgeführt. Hier können Sie die für den Test zu verwendenden Werte angeben.
-4. Wenn Sie den Test auf einem [Hybrid Runbook Worker](automation-hybrid), ausführen möchten, ändern Sie die **Testlaufeinstellungen** auf **Hybrid Worker**, und wählen Sie den Namen der Zielgruppe aus. Andernfalls behalten Sie den Standardwert **Azure** bei, um den Test in der Cloud auszuführen.
+4. Wenn Sie den Test auf einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), ausführen möchten, ändern Sie die **Testlaufeinstellungen** auf **Hybrid Worker**, und wählen Sie den Namen der Zielgruppe aus. Andernfalls behalten Sie den Standardwert **Azure** bei, um den Test in der Cloud auszuführen.
 5. Klicken Sie auf die Schaltfläche **Start**, um den Test zu starten.
 6. Wenn das Runbook ein [PowerShell-Workflow](automation-runbook-types.md#powershell-workflow-runbooks) oder [grafisch](automation-runbook-types.md#graphical-runbooks) ist, können Sie es während des Tests mit den Schaltflächen unterhalb des Ausgabebereichs beenden oder anhalten. Wenn Sie das Runbook anhalten, wird die aktuelle Aktivität vor der Unterbrechung abgeschlossen. Nachdem das Runbook angehalten wurde, können Sie es beenden oder erneut starten.
 7. Untersuchen Sie die Ausgabe des Runbooks im Ausgabebereich.
 
 
+## Nächste Schritte
 
-## So starten Sie ein Runbook im Azure-Portal
+- Informationen zum Erstellen oder Importieren eines Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md).
+- Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
+- Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
+- Weitere Informationen zum Konfigurieren von Runbooks für die Rückgabe von Meldungen und Fehlern einschließlich der empfohlenen Methoden finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md).
 
-Sie können im Azure-Portal nur [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) verwenden.
-
-
-1. [Öffnen Sie die Entwurfsversion des Runbooks](automation-edit-textual-runbook.md#to-edit-a-runbook-with-the-azure-portal).
-2. Klicken Sie auf die Schaltfläche **Test**, um den Test zu starten. Wenn das Runbook über Parameter verfügt, wird ein Dialogfeld angezeigt, in dem Sie Werte festlegen können, die für den Test verwendet werden sollen.
-6. Sie können das Runbook während des Tests mit den Schaltflächen unterhalb des Ausgabebereichs beenden oder anhalten. Wenn Sie das Runbook anhalten, wird die aktuelle Aktivität vor der Unterbrechung abgeschlossen. Nachdem das Runbook angehalten wurde, können Sie es beenden oder erneut starten.
-7. Untersuchen Sie die Ausgabe des Runbooks im Ausgabebereich.
-
-
-## Verwandte Artikel
-
-- [Erstellen und Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md)
-- [Grafische Runbooks in Azure Automation](automation-graphical-authoring-intro.md)
-- [Bearbeiten von Textrunbooks in Azure Automation](automation-edit-textual-runbook.md)
-- [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

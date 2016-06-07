@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der SQL Azure-API zu Ihren Logik-Apps | Microsoft Azure"
-	description="Übersicht über die SQL Azure-API und REST-API-Parameter"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Hinzufügen des SQL Azure-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+    description="Übersicht über den SQL Azure-Connector mit REST-API-Parametern"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/19/2016"
    ms.author="mandia"/>
 
 
-# Erste Schritte mit der SQL Azure-API
+# Erste Schritte mit dem SQL Azure-Connector
 Stellen Sie eine Verbindung mit der Azure SQL-Datenbank her, um Tabellen und Zeilen zu verwalten, z.B. Einfügen von Zeilen, Abrufen von Tabellen usw.
 
-Die Azure SQL-Datenbank-API kann verwendet werden in:
+Der Azure SQL-Datenbank-Connector kann verwendet werden in:
 
 - Logik-Apps (in diesem Thema erläutert)
 - PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
@@ -43,16 +43,14 @@ Trigger | Aktionen
 --- | ---
 Keine | <ul><li>Zeile abrufen</li><li>Zeilen abrufen</li><li>Zeile einfügen</li><li>Zeile löschen</li><li>Tabellen abrufen</li><li>Zeile aktualisieren</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
 ## Herstellen der SQL-Verbindung
-Wenn Sie diese API Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte ein:
 
-|Eigenschaft| Erforderlich|Beschreibung|
-| ---|---|---|
-|SQL-Verbindungszeichenfolge|Ja|Eingeben der Verbindungszeichenfolge für die Azure SQL-Datenbank|
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit SQL](../../includes/connectors-create-api-sqlazure.md)]
 
-Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ein, z. B. den Tabellennamen. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+
+Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ein, z.B. den Tabellennamen. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
@@ -60,7 +58,7 @@ Nachdem Sie die Verbindung hergestellt haben, geben Sie die SQL-Eigenschaften ei
 Gilt für Version: 1.0.
 
 ### Zeile abrufen 
-Ruft eine einzelne Zeile aus einer SQL-Tabelle ab.```GET: /datasets/default/tables/{table}/items/{id}```
+Ruft eine einzelne Zeile aus einer SQL-Tabelle ab. ```GET: /datasets/default/tables/{table}/items/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -226,6 +224,6 @@ Aktualisiert eine vorhandene Zeile in einer SQL-Tabelle. ```PATCH: /datasets/def
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

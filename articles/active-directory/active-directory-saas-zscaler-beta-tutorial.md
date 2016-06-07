@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="02/29/2016" 
+    ms.date="05/25/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit ZScaler Beta
@@ -21,7 +21,7 @@ In diesem Tutorial wird die Integration von Azure und ZScaler Beta erläutert. D
 -   Ein gültiges Azure-Abonnement
 -   Ein ZScaler Beta-Abonnement, für das einmaliges Anmelden aktiviert ist
   
-Nach Abschluss dieses Tutorials können sich die ZScaler Beta zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer ZScaler Beta-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Nach Abschluss dieses Tutorials können sich die ZScaler Beta zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer ZScaler Beta-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -201,4 +201,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

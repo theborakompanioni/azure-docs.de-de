@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verwenden des Blob-Speichers mit Ruby | Microsoft Azure"
+	pageTitle="Verwenden des Blobspeichers (Objektspeicher) mit Ruby | Microsoft Azure"
 	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	services="storage"
 	documentationCenter="ruby"
@@ -23,6 +23,8 @@
 
 ## Übersicht
 
+Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+
 In diesem Leitfaden wird die Durchführung gängiger Szenarien mit Blob Storage demonstriert. Die Beispiele wurden mit der Ruby-API erstellt. Die behandelten Szenarien umfassen **Hochladen, Auflisten, Herunterladen** und **Löschen** von Blobs.
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -31,7 +33,7 @@ In diesem Leitfaden wird die Durchführung gängiger Szenarien mit Blob Storage 
 
 ## Erstellen einer Ruby-Anwendung
 
-Erstellen Sie eine Ruby-Anwendung. Anweisungen finden Sie unter [Ruby on Rails Web application on an Azure VM](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md) (Ruby on Rails-Webanwendung auf virtuellen Azure-Computern).
+Erstellen Sie eine Ruby-Anwendung. Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md).
 
 ## Konfigurieren der Anwendung für den Zugriff auf Storage
 
@@ -155,4 +157,4 @@ Unter den folgenden Links erhalten Sie weitere Informationen zu komplexeren Spei
 - [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby)-Repository auf GitHub
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

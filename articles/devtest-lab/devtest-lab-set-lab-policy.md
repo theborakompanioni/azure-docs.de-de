@@ -44,13 +44,13 @@ Um die Richtlinien für ein Lab anzeigen und ändern zu können, gehen Sie folge
 
 	- [Allowed VM Sizes](#set-allowed-vm-sizes): Wählen Sie die Liste der im Lab zulässigen VM-Größen aus. Ein Benutzer kann nur aus dieser Liste virtuelle Computer erstellen.
 
-	- [Maximum VMs per user](#set-maximum-vms-per-user): Geben Sie die maximale Anzahl von virtuellen Computern an, die für ein Lab erstellt werden können, sowie die maximale Anzahl von virtuellen Computern, die von einem Benutzer erstellt werden können.
+	- [Maximum VMs per user](#set-maximum-vms-per-user) (maximale Anzahl von VMs pro Benutzer): Geben Sie die maximale Anzahl von VMs an, die ein Benutzer erstellen kann.
 
-	- [Total VMs allowed](#set-total-vms-allowed): Geben Sie die maximale Anzahl von virtuellen Computern an, die für ein Lab erstellt werden können, sowie die maximale Anzahl von virtuellen Computern, die von einem Benutzer erstellt werden können.
+	- [Total VMs allowed](#set-total-vms-allowed) (erlaubtes Maximum von VMs): Geben Sie die maximale Anzahl von VMs an, die in einem Lab erstellt werden kann.
 
-	- [Auto shutdown](#set-auto-shutdown): Geben Sie den Zeitpunkt an, zu dem die virtuellen Computer des aktuellen Labs heruntergefahren werden müssen.
+	- [Auto shutdown](#set-auto-shutdown) (automatisches Herunterfahren): Geben Sie den Zeitpunkt an, zu dem die VMs des aktuellen Labs automatisch herunterfahren.
 
-	- [Auto start ](#set-auto-start): Geben Sie den Zeitpunkt an, zu dem die virtuellen Computer des aktuellen Labs heruntergefahren werden müssen.
+	- [Auto start](#set-auto-start) (automatisches Starten): Geben Sie den Zeitpunkt an, zu dem die virtuellen Computer des aktuellen Labs automatisch starten.
 
 ## Festlegen von zulässigen VM-Größen
 
@@ -135,4 +135,4 @@ Sobald Sie die verschiedenen VM-Richtlinieneinstellungen für Ihr Lab definiert 
 - [Konfigurieren von Marketplace-Images](./devtest-lab-configure-marketplace-images.md): DevTest Labs unterstützt die Erstellung neuer virtueller Computer auf der Basis von Azure Marketplace-Images. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen neuer virtueller Computer in einem Lab verwendet werden können.
 - [Erstellen eines virtuellen Computers in einem Lab](./devtest-lab-add-vm-with-artifacts.md): In diesem Artikel wird veranschaulicht, wie Sie einen neuen virtuellen Computer aus einem Basisimage erstellen (entweder ein benutzerdefiniertes Image oder ein Marketplace-Image) und wie Sie mit Artefakten im virtuellen Computer arbeiten.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

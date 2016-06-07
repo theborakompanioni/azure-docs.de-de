@@ -24,11 +24,11 @@ Dieser Artikel soll Ihnen helfen, die Versionen zu verfolgen, die veröffentlich
 
 Liste der verwandten Themen:
 
-| Thema | |
-| --------- | --------- |
-| Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect. |
-| Erforderliche Berechtigungen | Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt. |
-| Herunterladen| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771) |
+Thema |  
+--------- | --------- |
+Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
+Erforderliche Berechtigungen | Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt.
+Herunterladen| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771)
 
 ## 1\.1.180.0
 Veröffentlicht im Mai 2016
@@ -70,7 +70,7 @@ Veröffentlicht im Februar 2016
 **Behobene Probleme:**
 
 - Ein Upgrade von früheren Versionen kann nicht ausgeführt werden, wenn die Installation nicht im Standardordner **C:\\Programme** durchgeführt wird.
-- Wenn Sie bei der Installation am Ende des Installations-Assistenten die Option **Starten Sie den Synchronisierungsvorgang** deaktivieren, wird der Scheduler durch erneutes Ausführen des Installations-Assistenten nicht aktiviert.
+- Wenn Sie bei der Installation am Ende des Installations-Assistenten die Option **Start the synchronization process** (Synchronisierung starten) deaktivieren, wird der Scheduler durch erneutes Ausführen des Installations-Assistenten nicht aktiviert.
 - Auf Servern, auf denen das Datums-/Uhrzeitformat nicht dem US-englischen Format entspricht, wird der Planer nicht wie erwartet ausgeführt. Außerdem wird verhindert, dass `Get-ADSyncScheduler` korrekte Zeitangaben zurückgibt.
 - Wenn Sie eine frühere Version von Azure AD Connect mit AD FS als Anmeldeoption und Upgrade installiert haben, können Sie den Installations-Assistenten nicht erneut ausführen.
 
@@ -284,4 +284,4 @@ Veröffentlicht im September 2014
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

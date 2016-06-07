@@ -3,7 +3,7 @@
 	description="Hier erfahren Sie, wie Sie das Image eines virtuellen Windows-Computers zur Verwendung mit dem Resource Manager-Bereitstellungsmodell hochladen."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="cynthn"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-resource-manager"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/06/2016"
-	ms.author="dkshir"/>
+	ms.author="cynthn"/>
 
 # Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen
 
@@ -261,4 +261,4 @@ Der neu erstellte virtuelle Computer müsste nun im [Azure-Portal](https://porta
 
 Informationen zum Verwalten des neuen virtuellen Computers mithilfe von Azure PowerShell finden Sie unter [Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

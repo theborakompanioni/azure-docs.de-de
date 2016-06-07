@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/18/2016"
+   ms.date="05/19/2016"
    ms.author="alkohli" />
 
 # Versionsanmerkungen zu Update 2.1 der StorSimple 8000-Serie  
@@ -21,7 +21,7 @@
 
 Die folgenden Versionsanmerkungen beschreiben die neuen Features und weisen auf wichtige offene Probleme bei Update 2.1 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind.
 
-Update 2.1 kann auf alle StorSimple-Geräte angewendet werden, auf denen Release (GA) oder Update 0.1 bis Update 2 ausgeführt wird. Update 2.1 ist die Geräteversion 6.3.9600.17704 zugeordnet.
+Update 2.1 kann auf alle StorSimple-Geräte angewendet werden, auf denen Release (GA) oder Update 0.1 bis Update 2 ausgeführt wird. Update 2.1 ist die Geräteversion 6.3.9600.17705 zugeordnet.
 
 Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Informationen in den Versionsanmerkungen sorgfältig durch.
 
@@ -111,4 +111,4 @@ Dieses Update kann nicht auf das virtuelle Gerät angewendet werden. Es müssen 
 
 Erfahren Sie, wie Sie [Update 2.1 auf Ihrem StorSimple-Gerät installieren](storsimple-install-update-21.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -114,17 +114,47 @@ Im obigen Beispiel stellen "otherLinkedServiceName1" und "otherLinkedServiceName
 
 ## Slices – Häufig gestellte Fragen
 
+### Wieso weisen meine Eingabeslices nicht den Status „Bereit“ auf? 
+Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eingabedataset nicht auf **TRUE** festzulegen, wenn die Eingabedaten zur Data Factory extern sind (nicht von Data Factory erstellt wurden).
+
+Im folgenden Beispiel müssen Sie nur im **Dataset1** **external** auf TRUE festlegen.
+
+**DataFactory1** Pipeline 1: DataSet1 -> Aktivität1 -> DataSet2 -> Aktivität2 -> DataSet3 Pipeline 2: DataSet3-> Aktivität3 -> DataSet4
+
+Wenn Sie über eine andere Data Factory mit einer Pipeline, die Dataset4 nimmt, verfügen (erstellen von Pipeline 2 in Data Factory 1), müssen Sie Dataset4 als externes Dataset markieren, da das Dataset von einer anderen Data Factory (DataFactory1, nicht DataFactory2) erstellt wird.
+
+**DataFactory2** Pipeline 1: Dataset4->Aktivität4->Dataset5
+
+Wenn die Eigenschaft „external“ richtig festgelegt wurde, überprüfen Sie, ob die Eingabedaten an dem Speicherort existieren, der in der Definition des Eingabedatasets angegeben wurde.
+
+### Wie kann ein Slice zu einer anderen Zeit als Mitternacht ausgeführt werden, wenn der Slice täglich erstellt wird?
+Verwenden Sie die **offset**-Eigenschaft, um die Zeit anzugeben, zu der der Slice erstellt werden soll. Weitere Informationen zu dieser Eigenschaft finden Sie im Abschnitt [Dataset: Availability](data-factory-create-datasets.md#Availability). Hier ist ein kurzes Beispiel:
+
+	"availability":
+	{
+	    "frequency": "Day",
+	    "interval": 1,
+	    "offset": "06:00:00"
+	}
+
+Tägliche Slices starten um **6:00 Uhr** anstelle der Standardzeit (Mitternacht).
+
 ### Wie kann ich einen Slice erneut ausführen?
 Sie können einen Slice auf eine der folgenden Arten erneut ausführen:
 
-- Klicken Sie im Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**. 
-- Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, und legen Sie dabei den Status für den Slice auf **Waiting** fest.   
+- Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#re-run-selected-activity-windows).   
+- Klicken Sie im Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.
+- Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slice auf **Waiting** festgelegt ist.   
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
 
 Unter [Set-AzureRmDataFactorySliceStatus][set-azure-datafactory-slice-status] finden Sie ausführliche Informationen zum Cmdlet.
 
 ### Wie lange hat die Verarbeitung eines Slices gedauert?
+Verwenden Sie den Aktivitätsfenster-Explorer in der App „Überwachen und Verwalten“, um zu erfahren, wie lange es gedauert hat, einen Datenslice zu verarbeiten. Weitere Informationen finden Sie unter [Aktivitätsfenster-Explorer](data-factory-monitor-manage-app.md#activity-window-explorer).
+
+Sie können auch wie folgt im Azure-Portal vorgehen:
+
 1. Klicken Sie auf der Kachel **Datasets** auf das Blatt **DATA FACTORY** für Ihre Data Factory.
 2. Klicken Sie auf dem Blatt **Datasets** auf das gewünschte Dataset.
 3. Wählen Sie auf dem Blatt **TABELLE** in der Liste **Zuletzt verwendete Slices** den gewünschten Slice aus.
@@ -152,4 +182,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

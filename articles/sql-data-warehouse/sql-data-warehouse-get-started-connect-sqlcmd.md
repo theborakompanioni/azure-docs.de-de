@@ -19,8 +19,10 @@
 # Verbinden und Abfragen mit SQLCMD
 
 > [AZURE.SELECTOR]
-- [Visual Studio][]
-- [SQLCMD][]
+- [Visual Studio](sql-data-warehouse-get-started-connect.md)
+- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
+
 
 In dieser exemplarischen Vorgehensweise wird das Verbinden mit und Abfragen einer Azure SQL Data Warehouse-Datenbank veranschaulicht, was mit dem Hilfsprogramm SQLCMD.EXE nur wenige Minuten dauert. In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
 
@@ -80,7 +82,7 @@ Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versu
 Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierung finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung][].
 
 <!--Articles-->
-[Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung]: ../sql-database/sql-database-aad-authentication.md
+[Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung]: ../sql-data-warehouse/sql-data-warehouse-get-started-connect-aad-authentication.md
 [eine Verbindung mit Power BI herzustellen]: ./sql-data-warehouse-integrate-power-bi.md
 [Visual Studio]: ./sql-data-warehouse-get-started-connect.md
 [SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
@@ -93,4 +95,4 @@ Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierun
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

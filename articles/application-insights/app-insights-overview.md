@@ -116,12 +116,14 @@ Wählen Sie für weitere Details Ihren App-Typ unter "Erste Schritte" in der Nav
 
 * Fragen und Probleme:
  * [Problembehandlung][qna]
- * [MSDN-Forum](https://social.msdn.microsoft.com/Forums/vstudio/de-DE/home?forum=ApplicationInsights)
+ * [MSDN-Forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * Fehler:
  * [Kontakt](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * Vorschläge:
  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
+* Blog:
+ * [Application Insights-Blog](https://azure.microsoft.com/blog/tag/application-insights)
 
 
 ## Videos
@@ -155,4 +157,4 @@ Wählen Sie für weitere Details Ihren App-Typ unter "Erste Schritte" in der Nav
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

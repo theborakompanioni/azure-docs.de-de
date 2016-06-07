@@ -92,11 +92,11 @@ Führen Sie den folgenden Befehl aus, um dem virtuellen Computer, der mit dem ob
 
 ## Nächste Schritte
 
-[Reservierte IP](virtual-networks-reserved-public-ip)
+[Reservierte IP](virtual-networks-reserved-public-ip.md)
 
-[Öffentliche IP auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip)
+[Öffentliche IP auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md)
 
 [Reservierte IP-REST-APIs](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0525_2016-->

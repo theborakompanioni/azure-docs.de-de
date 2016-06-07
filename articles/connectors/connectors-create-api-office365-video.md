@@ -1,10 +1,10 @@
 <properties
-pageTitle="Hinzufügen der Office 365-Video-API zu Ihren Logik-Apps | Microsoft Azure"
-description="Erste Schritte mit der Office 365-Video-API (Connector) in Ihren Microsoft Azure App Service-Logik-Apps"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Verwenden des Office 365-Video-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erste Schritte mit dem Office 365-Video-Connector in Ihren Microsoft Azure App Service-Logik-Apps"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,40 +14,39 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/23/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit der Office 365-Video-API
-Stellen Sie eine Verbindung mit Office 365 Video her, um Informationen über ein Office 365-Video oder eine Liste von Videos abzurufen und vieles mehr. Die Office 365 Video-API kann verwendet werden von:
+# Erste Schritte mit dem Office 365-Video-Connector
+Stellen Sie eine Verbindung mit Office 365 Video her, um Informationen über ein Office 365-Video oder eine Liste von Videos abzurufen und vieles mehr. Der Office 365-Video-Connector kann verwendet werden in:
 
 - Logik-Apps 
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Diese API wird in den vorherigen Schemaversionen nicht unterstützt.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Dieser Connector wird in den vorherigen Schemaversionen nicht unterstützt.
 
 Mit Office 365 Video können Sie folgende Aktionen ausführen:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Office 365 Video abgerufen werden. 
-- Verwenden Sie Aktionen zum Überprüfen des Videoportalstatus, zum Abrufen einer Liste mit allen Videos in einem Kanal und vieles mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. mit der Bing-Such-API nach Office 365-Videos suchen und dann mithilfe der Office 365 Video-API Informationen zu diesem Video abrufen. Wenn das Video Ihre Anforderungen erfüllt, können Sie es auf Facebook veröffentlichen. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Office 365 Video abgerufen werden. 
+- Verwenden Sie Aktionen zum Überprüfen des Videoportalstatus, zum Abrufen einer Liste mit allen Videos in einem Kanal und vieles mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z.B. mit dem Bing-Suche-Connector nach Office 365-Videos suchen und anschließend mithilfe des Office 365-Video-Connectors Informationen zu diesem Video abrufen. Wenn das Video Ihre Anforderungen erfüllt, können Sie es auf Facebook veröffentlichen. 
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 
-Die Office 365 Video-API verfügt über die folgenden Aktionen. Es gibt keine Trigger.
+Der Office 365-Video-Connector verfügt über die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen|
 | --- | --- |
 | Keine | <ul><li>Videoportalstatus überprüfen</li><li>Alle anzeigbaren Kanäle abrufen</li><li>Wiedergabe-URL des Azure Media Services-Manifests für ein Video abrufen</li><li>Bearertoken für den Zugriff auf die Videoentschlüsselung abrufen</li><li>Informationen über ein bestimmtes Office 365-Video abrufen</li><li>Alle in einem Kanal vorhandenen Office 365-Videos auflisten</li></ul>
 
-Alle APIs unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
-## Herstellen einer Verbindung mit der Office 365 Video-API
-Wenn Sie Ihren Logik-Apps diese API hinzufügen, müssen Sie sich bei Ihrem Office 365 Video-Konto anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto gestatten.
+## Herstellen einer Verbindung mit dem Office 365-Video-Connector
+Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, müssen Sie sich bei Ihrem Office 365-Video-Konto anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto erlauben.
 
-1. Melden Sie sich bei Ihrem Office 365 Video-Konto an.
-2. Erlauben Sie Ihren Logik-Apps, sich mit Ihrem Office 365-Konto zu verbinden und es zu nutzen. 
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Office 365-Video](../../includes/connectors-create-api-office365video.md)]
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Office 365 Video-Eigenschaften ein, z. B. den Mandantennamen oder die Kanal-ID. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Office 365 Video-Eigenschaften ein, z. B. den Mandantennamen oder die Kanal-ID. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
 >[AZURE.TIP] Sie können dieselbe Office 365 Video-Verbindung in anderen Logik-Apps verwenden.
 
@@ -71,7 +70,7 @@ Gilt für Version: 1.0.
 |401|Nicht autorisiert|
 |404|Nicht gefunden|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -92,13 +91,13 @@ Ruft alle Kanäle ab, auf die der Benutzer Anzeigezugriff hat. ```GET: /{tenant}
 |401|Nicht autorisiert|
 |404|Nicht gefunden|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 
-### Listet alle in einem Kanal vorhandenen Office 365-Videos auf 
-Listet alle in einem Kanal vorhandenen Office 365-Videos auf. ```GET: /{tenant}/Channels/{channelId}/Videos```
+### Listet alle in einem Kanal vorhandenen Office 365-Videos auf 
+Listet alle in einem Kanal vorhandenen Office 365-Videos auf. ```GET: /{tenant}/Channels/{channelId}/Videos```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -115,13 +114,13 @@ Listet alle in einem Kanal vorhandenen Office 365-Videos auf. ```GET: /{tenant}/
 |401|Nicht autorisiert|
 |404|Nicht gefunden|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
 
-### Ruft Informationen über ein bestimmtes Office 365-Video ab 
-Ruft Informationen über ein bestimmtes Office 365-Video ab. ```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}```
+### Ruft Informationen über ein bestimmtes Office 365-Video ab 
+Ruft Informationen über ein bestimmtes Office 365-Video ab. ```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -139,7 +138,7 @@ Ruft Informationen über ein bestimmtes Office 365-Video ab. ```GET: /{tenant}/C
 |401|Nicht autorisiert|
 |404|Nicht gefunden|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -164,7 +163,7 @@ Ruft die Wiedergabe-URL des Azure Media Services-Manifests für ein Video ab. ``
 |401|Nicht autorisiert|
 |404|Nicht gefunden|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 
@@ -188,7 +187,7 @@ Ruft das Bearertoken für den Zugriff auf die Videoentschlüsselung ab. ```GET: 
 |401|Nicht autorisiert|
 |404|Nicht gefunden|
 |500|Interner Serverfehler|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|default|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -221,4 +220,4 @@ Ruft das Bearertoken für den Zugriff auf die Videoentschlüsselung ab. ```GET: 
 ## Nächste Schritte
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0525_2016-->

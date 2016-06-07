@@ -94,7 +94,7 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 	string Echo(string text);
 	```
 
-1. Deklarieren Sie direkt im Anschluss an die `IEchoContract`-Schnittstellendefinition einen Kanal mit Vererbung von `IEchoChannel` und Vererbung an die `IClientChannel`-Schnittstelle, wie im folgenden Beispiel gezeigt:
+1. Deklarieren Sie direkt im Anschluss an die `IEchoContract`-Schnittstellendefinition einen Kanal mit Vererbung von `IEchoContract` und Vererbung an die `IClientChannel`-Schnittstelle, wie im folgenden Beispiel gezeigt:
 
 	```
     public interface IEchoChannel : IEchoContract, IClientChannel { }
@@ -783,4 +783,4 @@ Weitere Informationen zu Service Bus finden Sie in den folgenden Themen.
 [5]: ./media/service-bus-relay-tutorial/set-projects.png
 [6]: ./media/service-bus-relay-tutorial/set-depend.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

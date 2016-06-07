@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/04/2016"
+   ms.date="05/20/2016"
    ms.author="larryfr"/>
 
 #Verwenden der Hive-Ansicht mit Hadoop in HDInsight
@@ -109,7 +109,7 @@ Wählen Sie rechts vom Editor das Symbol __Einstellungen__.
 
 ![Symbole](./media/hdinsight-hadoop-use-hive-ambari-view/settings.png)
 
-Die Einstellungen können verwendet werden, um verschiedene Hive-Einstellungen zu ändern, z. B. das Ausführungsmodul für Hive von Tez (Standard) in MapReduce.
+Die Einstellungen können verwendet werden, um verschiedene Hive-Einstellungen zu ändern, z. B. das Ausführungsmodul für Hive von Tez (Standard) in MapReduce.
 
 ###Visuelle Erläuterung
 
@@ -199,4 +199,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

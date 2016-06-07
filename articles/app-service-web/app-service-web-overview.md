@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/16/2016"
+	ms.date="05/25/2016"
 	ms.author="tdykstra"/>
 
 # Web-Apps – Übersicht
@@ -34,29 +34,39 @@ Beispiele für typische Anwendungsszenarien, für die Sie Web-Apps verwenden kö
 
 ## Gründe für die Verwendung von Web-Apps
 
-Hier sind einige wichtige Funktionen von Web-Apps aufgeführt:
+Hier sind einige wichtige Features von App Service aufgeführt, die für Web-Apps gelten:
 
-- **Vertraut und schnell**: Nutzen Sie Ihre vorhandenen Kenntnisse, und arbeiten Sie in Ihrer bevorzugten Programmiersprache, Frameworkumgebung und integrierten Entwicklungsumgebung (IDE). Stellen Sie neue Web-Apps und den Code dafür innerhalb weniger Sekunden bereit.
+- **Vollständig verwaltete Plattform**: Automatisches Betriebssystem- und Framework-Patching, integrierter Support für die Sicherung und Notfallwiederherstellung. 
 
-- **Für Unternehmen konzipiert**: Web-Apps sind auf das Entwickeln und Hosten sicherer, unternehmenskritischer Anwendungen ausgelegt. Entwickeln Sie in Active Directory integrierte Unternehmens-Apps, die sich sicher mit lokalen Ressourcen verbinden. Hosten Sie sie anschließend auf einer sicheren Cloudplattform, die die Anforderungen von [ISO](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [SOC](https://www.microsoft.com/TrustCenter/Compliance/SOC) und [PCI](https://www.microsoft.com/TrustCenter/Compliance/pci) erfüllt. All dies ist mit einer [Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/app-service/) für Unternehmen möglich.
+- **Nutzen Sie Ihre vorhandenen Kenntnisse:** Arbeiten Sie in Ihrer bevorzugten Programmiersprache und Framework- und Entwicklungsumgebung. App Service unterstützt .NET, Node.js, Java, PHP und Python.
 
-- **Globale Skalierbarkeit**: Web-Apps ermöglichen Ihnen das schnelle [zentrale Hochskalieren](../app-service/app-service-scale.md) oder [horizontale Hochskalieren](../azure-portal/insights-how-to-scale.md), um alle eingehenden Kundenanforderungen zu bewältigen. Wählen Sie Anzahl und Größe der virtuellen Computer manuell aus, oder richten Sie die automatische Skalierung basierend auf Last oder Zeitplan ein. Web-Apps werden in der globalen Rechenzentrum-Infrastruktur von Microsoft gehostet und vereinfachen die Replizierung von Daten- und Hostingdiensten an mehreren Standorten.
+- **Schnelle Bereitstellung:** Stellen Sie neue Apps und den Code dafür innerhalb weniger Sekunden bereit.
 
-- **Azure Marketplace**: Sie können eine Auswahl aus einer ständig wachsenden [Liste mit Webanwendungsvorlagen](https://azure.microsoft.com/marketplace/) treffen. Nutzen Sie das Beste aus der OSS-App-Community mit 1-Klick-Installation von Paketen wie z. B. Wordpress, Joomla und Drupal.
+- **Continuous Integration**: Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket [Continuous Integration und die fortlaufende Bereitstellung](../app-service-web/app-service-continous-deployment.md) ein.
 
-- **Continuous Integration**: Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket Workflows für [Continuous Integration und die fortlaufende Bereitstellung](app-service-continous-deployment.md) ein. Sie können Ihre Web-App bei jedem erfolgreichen Eincheckvorgang für Code oder bei Integrationstests automatisch erstellen, testen und bereitstellen lassen.
+- **Staging- und Testumgebungen**: Implementieren Sie die [Stagingbereitstellung](../app-service-web/web-sites-staged-publishing.md), um den Code in einer Präproduktionsumgebung zu überprüfen, die mit Ihrer Produktionsumgebung identisch ist. Wenn alles bereit ist, geben Sie durch einen Ersetzungsvorgang eine neue Version der App ohne Ausfallzeiten frei.
 
-- **Staging- und Testumgebungen**: Implementieren Sie die [Stagingbereitstellung](web-sites-staged-publishing.md), um den Code in einer Präproduktionsumgebung zu überprüfen, die mit Ihrer Produktionsumgebung identisch ist. Wenn alles bereit ist, geben Sie durch einen Ersetzungsvorgang eine neue Version der App ohne Ausfallzeiten frei.
+- **Test in der Produktion**: Heben Sie Stagingbereitstellungen auf die nächste Stufe, und führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md) durch, um Ihren neuen Code mit einem konfigurierbaren Bruchteil Ihres aktiven Datenverkehrs zu überprüfen.
 
-- **Test in der Produktion**: Heben Sie Stagingbereitstellungen auf die nächste Stufe, und führen Sie [A/B-Tests](app-service-web-test-in-production-get-start.md) durch, um Ihren neuen Code mit einem konfigurierbaren Bruchteil Ihres aktiven Datenverkehrs zu überprüfen.
+- **Authentifizierung und Autorisierung**: Schützen Sie eine App vor nicht authentifiziertem Zugriff, ohne dafür Ihren Code ändern zu müssen. Mit integrierten Authentifizierungsdiensten wird der Zugriff durch Benutzer, Benutzer repräsentierende Clients oder Dienste für Ihre Apps geschützt. Folgende Identitätsanbieter werden unterstützt: Azure Active Directory, Facebook, Twitter, Google und Microsoft-Konto. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md).
 
-- **WebJobs**: [Führen Sie Programme oder Skripts auf virtuellen Web-Apps-Computern aus](web-sites-create-web-jobs.md). Führen Sie Aufträge fortlaufend, nach einem Zeitplan oder per Auslösung durch Ereignisse aus. Das Azure [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md) vereinfacht für den Code, den Sie schreiben, die Integration in andere Azure-Dienste, z.B. Speicherwarteschlangen, -blobs und -tabellen sowie Service Bus-Warteschlangen und -Themen.
+- **Herstellen einer Verbindung mit beliebigen Diensten:** Verbinden Sie Ihre App mit integrierten [Connectors](../connectors/apis-list.md) in wenigen Minuten mit Unternehmenssystemen oder SaaS-Plattformen (Software as a Service). Wählen Sie aus über 50 Connectors für Unternehmenssysteme wie SAP, Siebel und Oracle, gängige SaaS-Dienste für Unternehmen, darunter Salesforce und Office 365, sowie gängige Internetdienste wie Facebook, Twitter und Dropbox.
 
-- **Hybridverbindungen**: Zugriff auf lokale Daten mit [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [VNET](../app-service-web/web-sites-integrate-with-vnet.md).
+- **Globale Skalierbarkeit:** Skalieren Sie [zentral hoch](../app-service/app-service-scale.md) oder [horizontal hoch](../azure-portal/insights-how-to-scale.md), um eingehende Datenlasten von Kunden zu verarbeiten. Wählen Sie Anzahl und Größe der virtuellen Computer manuell aus, oder richten Sie die automatische Skalierung basierend auf Last oder Zeitplan ein. Apps werden in der globalen Rechenzentrum-Infrastruktur von Microsoft gehostet und vereinfachen die Replizierung von Daten- und Hostingdiensten an mehreren Standorten.
 
-- **Visual Studio-Integration**: Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen, Nutzen, Debuggen und Verwalten von Web-Apps. Weitere Informationen finden Sie unter [Announcing the Azure SDK 2.8.1 for .NET](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-1-for-net/) (in englischer Sprache).
+- **Für Unternehmen konzipiert**: App Service ist auf das Entwickeln und Hosten sicherer, unternehmenskritischer Anwendungen ausgelegt. Entwickeln Sie in Active Directory integrierte Unternehmens-Apps, die sich sicher mit lokalen Ressourcen verbinden. Hosten Sie sie anschließend auf einer sicheren Cloudplattform, die die Anforderungen von [ISO, SOC und PCI](https://www.microsoft.com/TrustCenter/) erfüllt. All dies ist mit einer [Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/app-service/) (SLA) für Unternehmen möglich.
 
-Außerdem können für eine Web-App die Features verwendet werden, die von [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) (z.B. CORS-Unterstützung) und [mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) (z.B. Pushbenachrichtigungen) bereitgestellt werden. Umgekehrt ist dies auch möglich: Sie können eine API-App oder mobile App verwenden, um eine Webanwendung zu hosten und die Web-Apps-Features wie automatische Skalierung und Stagingbereitstellung zu nutzen. Die einzigen Unterschiede zwischen diesen drei App-Typen (API, Web, mobil) sind der Name und das Symbol im Azure-Portal. Weitere Informationen zu App-Typen in App Service finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/app-service-value-prop-what-is.md).
+- **Azure Marketplace**: Sie können eine Auswahl aus einer ständig wachsenden [Liste mit Anwendungsvorlagen](https://azure.microsoft.com/marketplace/) treffen. Nutzen Sie das Beste aus der OSS-App-Community mit 1-Klick-Installation von Paketen wie WordPress, Joomla und Drupal.
+
+- **WebJobs**: [Führen Sie Programme oder Skripts auf App Service-VMs aus](../app-service-web/web-sites-create-web-jobs.md). Führen Sie Aufträge fortlaufend, nach einem Zeitplan oder per Auslösung durch Ereignisse aus. Das Azure [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) vereinfacht den Code, den Sie für die Integration in andere Azure- und Drittanbieterdienste schreiben.
+
+- **Hybridverbindungen**: Zugriff auf lokale Daten mit [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [Azure Virtual Networks](../app-service-web/web-sites-integrate-with-vnet.md).
+
+- **Visual Studio-Integration**: Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen, Nutzen, Debuggen und Verwalten von Web-Apps, mobilen Apps und API-Apps.
+
+Außerdem können für eine Web-App die Features verwendet werden, die von [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) (z.B. CORS-Unterstützung) und [mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) (z.B. Pushbenachrichtigungen) bereitgestellt werden. Die einzigen Unterschiede zwischen diesen drei App-Typen (API, Web, mobil) sind der Name und das Symbol im Azure-Portal. Weitere Informationen zu App-Typen in App Service finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/app-service-value-prop-what-is.md).
+
+Neben Web-Apps in App Service bietet Azure noch andere Dienste an, die zum Hosten von Websites und Webanwendungen verwendet werden können. In den meisten Fällen sind Web-Apps die beste Wahl. Erwägen Sie für eine Microservice-Architektur die Verwendung von [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). Wenn Sie eine bessere Kontrolle über die VMs benötigen, auf denen Ihr Code ausgeführt wird, können Sie [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) einsetzen. Weitere Informationen zur Wahl zwischen diesen Azure-Diensten finden Sie unter [Azure App Service, Virtual Machines, Service Fabric und Cloud Services – Vergleich](choose-web-site-cloud-service-vm.md).
 
 ## Erste Schritte
 
@@ -64,4 +74,4 @@ Führen Sie die Schritte im Tutorial [Bereitstellen Ihrer ersten Web-App für Az
 
 Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

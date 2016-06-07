@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="03/03/2016"
+	ms.date="05/23/2016"
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen der ersten Data Factory (Übersicht)
@@ -46,7 +46,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 1.	Erstellen Sie die **Data Factory**. Eine Data Factory kann eine oder mehrere Datenpipelines enthalten, die Daten verschieben und verarbeiten. 
 2.	Erstellen Sie die **verknüpften Dienste**. Sie erstellen einen verknüpften Dienst, um einen Datenspeicher oder einen Computedienst mit der Data Factory zu verknüpfen. Ein Datenspeicher wie Azure Storage hält Ein-/Ausgabedaten von Aktivitäten in der Pipeline. Ein Computedienst wie Azure HDInsight verarbeitet/transformiert Daten.    
 3.	Erstellen von **Datasets** für Eingabe und Ausgabe Ein Eingabedataset stellt die Eingabe für eine Aktivität in der Pipeline dar, und ein Ausgabedataset stellt die Ausgabe für die Aktivität dar.
-3.	Erstellen Sie die **Pipeline**. Eine Pipeline kann eine oder mehrere Aktivitäten wie z. B. Kopieraktivität zum Kopieren von Daten aus einer Quelle an ein Ziel oder HDInsight Hive-Aktivität zum Transformieren von Eingabedaten mithilfe des Hive-Skripts zum Erzeugen von Ausgabedaten aufweisen. Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript ausführt. Das Skript erstellt zuerst eine externe Tabelle, die auf die Webprotokollrohdaten im Azure-Blobspeicher verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
+3.	Erstellen Sie die **Pipeline**. Eine Pipeline kann eine oder mehrere Aktivitäten wie z. B. Kopieraktivität zum Kopieren von Daten aus einer Quelle an ein Ziel oder HDInsight Hive-Aktivität zum Transformieren von Eingabedaten mithilfe des Hive-Skripts zum Erzeugen von Ausgabedaten aufweisen. Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript ausführt. Das Skript erstellt zuerst eine externe Tabelle, die auf die Webprotokollrohdaten im Azure-Blobspeicher verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
 
 Ihre erste Pipeline mit dem Namen **MyFirstPipeline** verwendet eine Hive-Aktivität zum Transformieren und Analysieren eines Webprotokolls, das Sie in den Ordner **inputdata** im Container **adfgetstarted** (adfgetstarted/inputdata) in Ihrem Azure-Blobspeicher hochladen.
  
@@ -185,7 +185,7 @@ Erstellen Sie mithilfe des Editors eine Datei namens **input.log** in **c:\\adfg
 
 ### Hochladen von Eingabe- und HQL-Datei in Ihren Azure-Blobspeicher
 
-Sie können jedes Tool Ihrer Wahl für diese Aufgabe verwenden (z. B. [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) oder CloudXPlorer von ClumsyLeaf Software). Dieser Abschnitt enthält Anweisungen zur Verwendung des AzCopy-Tools.
+Sie können jedes Tool Ihrer Wahl für diese Aufgabe verwenden (z. B. [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) oder CloudXPlorer von ClumsyLeaf Software). Dieser Abschnitt enthält Anweisungen zur Verwendung des AzCopy-Tools.
 	 
 2. So bereiten Sie den Azure-Speicher für das Tutorial vor:
 	1. Laden Sie die [neueste Version von **AzCopy**](http://aka.ms/downloadazcopy) oder die [neueste Vorschauversion](http://aka.ms/downloadazcopypr) herunter. Im Artikel [Verwenden von AzCopy ](../storage/storage-use-azcopy.md) finden Sie eine Anleitung zur Verwendung des Hilfsprogramms.
@@ -222,4 +222,4 @@ Jetzt können Sie mit dem Tutorial beginnen. Klicken Sie oben auf eine der Regis
 - Visual Studio
 - Azure-Ressourcen-Manager-Vorlagen 
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

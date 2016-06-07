@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="05/23/2016"
    ms.author="terrylan"/>
 
 # Microsoft Trust Center
@@ -26,15 +26,15 @@ Und wir haben die Antworten: Da es sich um Ihre Daten handelt, entscheiden Sie, 
 
 Im Microsoft Trust Center finden Sie Folgendes:
 
-- [Sicherheit:](https://www.microsoft.com/TrustCenter/Security/default.aspx) Erfahren Sie, wie alle Microsoft-Clouddienste gesichert werden.
-- [Datenschutz:](https://www.microsoft.com/TrustCenter/Privacy/default.aspx) Erfahren Sie, wie Microsoft den Schutz Ihrer Daten in der Microsoft-Cloud gewährleistet.
-- [Compliance:](https://www.microsoft.com/TrustCenter/Compliance/default.aspx) Finden Sie heraus, wie Organisationen dank der Zusammenarbeit mit Microsoft internationale, länder- und branchenspezifische Anforderungen hinsichtlich der Erfassung und Nutzung personenbezogener Daten erfüllen können.
-- [Transparenz:](https://www.microsoft.com/TrustCenter/Transparency/default.aspx) Lesen Sie, wie Sie Ihre Daten kontrollieren können und was Microsoft daran setzt, dass Sie möglichst viel über die Verarbeitung der Daten erfahren.
-- [Produkte und Dienste:](https://www.microsoft.com/TrustCenter/CloudServices/default.aspx) Hier finden Sie alle Produkte und Dienste der Microsoft Cloud an einem zentralen Ort.
-- [Service Trust-Portal](https://www.microsoft.com/TrustCenter/STP/default.aspx) Hier finden Sie Kopien der unabhängigen Prüfberichte zu Microsoft-Clouddiensten sowie Risikobewertungen, bewährte Methoden für die Sicherheit und zugehörige Materialien.
-- [Neuigkeiten:](https://www.microsoft.com/TrustCenter/Whats-New/default.aspx) Informieren Sie sich über Neuigkeiten in Microsoft Cloud Trust.
-- [Ressourcen:](https://www.microsoft.com/TrustCenter/Resources/default.aspx) Hier finden Sie Whitepaper, Videos und Fallstudien zur Vertrauenswürdigkeit der Microsoft Cloud.
+- [Sicherheit:](https://aka.ms/tcsecurity) Erfahren Sie, wie alle Microsoft Cloud Services gesichert werden.
+- [Datenschutz:](https://aka.ms/tcprivacy) Erfahren Sie, wie Microsoft den Schutz Ihrer Daten in der Microsoft Cloud gewährleistet.
+- [Compliance:](https://aka.ms/tccompliance) Finden Sie heraus, wie Organisationen dank der Zusammenarbeit mit Microsoft nationale, länder- und branchenspezifische Anforderungen hinsichtlich der Erfassung und Nutzung personenbezogener Daten erfüllen können.
+- [Transparenz:](https://aka.ms/tctransparency) Lesen Sie, wie Sie Ihre Daten in der Cloud kontrollieren können, und was Microsoft daran setzt, dass Sie möglichst viel über die Verarbeitung der Daten erfahren.
+- [Produkte und Dienste:](https://aka.ms/tcproductsservices) Hier finden Sie alle Produkte und Dienste der Microsoft Cloud an einem zentralen Ort.
+- [Service Trust-Portal](https://aka.ms/tcservicetrportal) Hier finden Sie Kopien der unabhängigen Prüfberichte zu Microsoft Cloud Services sowie Risikobewertungen, bewährte Methoden für die Sicherheit und zugehörige Materialien.
+- [Neuigkeiten:](https://aka.ms/tcwhatsnew) Informieren Sie sich über Neuigkeiten in Microsoft Cloud Trust.
+- [Ressourcen:](https://aka.ms/tcresources) Hier finden Sie Whitepapers, Videos und Fallstudien zur Vertrauenswürdigkeit der Microsoft Cloud.
 
 Im [Microsoft Trust Center](https://www.microsoft.com/trustcenter) finden Sie alle Informationen, die Sie benötigen, um zu verstehen, wie wir die Microsoft Cloud sichern.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

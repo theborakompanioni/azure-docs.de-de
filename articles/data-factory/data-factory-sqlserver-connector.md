@@ -412,8 +412,10 @@ Sie können Anmeldeinformationen mithilfe des **New-AzureRmDataFactoryEncryptVal
 	    "properties":
 	    {
 	        "type": "OnPremisesSqlLinkedService",
-	        "connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
-	        "gatewayName": "<gateway name>"
+			"typeProperties": {
+	        	"connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
+	        	"gatewayName": "<gateway name>"
+			}
 	    }
 	}
 
@@ -426,10 +428,12 @@ Wenn Benutzername und Kennwort angegeben werden, werden diese Informationen vom 
 	     "Properties":
 	     {
 	         "type": "OnPremisesSqlLinkedService",
-	         "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
-	         "username": "<domain\\username>",
-	         "password": "<password>",
-	         "gatewayName": "<gateway name>"
+			 "typeProperties": {
+	         	"ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
+	         	"username": "<domain\\username>",
+	         	"password": "<password>",
+	         	"gatewayName": "<gateway name>"
+			}
 	     }
 	}
 
@@ -642,4 +646,4 @@ Die Zuordnung ist mit der SQL Server-Datentypzuordnung für ADO.NET identisch.
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

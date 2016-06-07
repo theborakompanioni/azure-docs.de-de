@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="05/20/2016" 
 	ms.author="awills"/>
 
 
@@ -103,25 +103,25 @@ Sie können auch Spalten umbenennen und neue definieren:
 
     requests 
     | top 10 by timestamp desc 
-    | project timestamp, 
-               timeOfDay = floor(timestamp % 1d, 1s), 
-               name, 
-               response = resultCode
+    | project  
+            name, 
+            response = resultCode,
+            timestamp, 
+            ['time of day'] = floor(timestamp % 1d, 1s)
 ```
 
 ![result](./media/app-insights-analytics-tour/270.png)
 
-Im skalaren Ausdruck:
-
+* [Spaltennamen](app-insights-analytics-reference.md#names) können Leerzeichen oder Symbole enthalten, wenn diese wie folgt in Klammern stehen: `['...']` oder `["..."]`
 * `%` ist der übliche Modulo-Operator. 
 * `1d` (die Ziffer Eins, gefolgt von einem „d“) ist ein Zeitraumliteral für einen Tag. Dies sind einige weitere Zeitraumliterale: `12h`, `30m`, `10s`, `0.01s`.
 * `floor` (Alias `bin`) rundet einen Wert auf das nächste Vielfache des von Ihnen angegebenen Basiswerts ab. `floor(aTime, 1s)` rundet demnach eine Zeit auf die nächstniedrigere Sekunde ab.
 
-[Ausdrücke](app-insights-analytics-reference.md#scalars) können alle üblichen Operatoren (`+`, `-`, ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
+[Ausdrücke](app-insights-analytics-reference.md#scalars) können alle üblichen Operatoren (`+`, `-` ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
 
     
 
-## [extend](app-insights-analytics-reference.md#extend-operator): Berechnen von Spalten
+## [extend:](app-insights-analytics-reference.md#extend-operator) Berechnen von Spalten
 
 Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](app-insights-analytics-reference.md#extend-operator):
 
@@ -132,7 +132,7 @@ Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-[`extend`](app-insights-analytics-reference.md#extend-operator) ist weniger ausführlich als die Nutzung von [`project`](app-insights-analytics-reference.md#project-operator), wenn Sie alle vorhandenen Spalten beibehalten möchten.
+[`extend`](app-insights-analytics-reference.md#extend-operator) ist weniger ausführlich als [`project`](app-insights-analytics-reference.md#project-operator), wenn Sie alle vorhandenen Spalten beibehalten möchten.
 
 
 ## Zugreifen auf geschachtelte Objekte
@@ -151,7 +151,7 @@ Sie können sie vereinfachen, indem Sie nur die für Sie interessanten Eigenscha
 
 ## Benutzerdefinierte Eigenschaften und Messungen
 
-Wenn Ihre Anwendung [benutzerdefinierte Dimensionen (Eigenschaften) und benutzerdefinierte Messungen](app-insights-api-custom-events-metrics.md#properties) an Ereignisse anfügt, dann sehen Sie sie in den Objekten `customDimensions` und `customMeasurements`.
+Wenn Ihre Anwendung [benutzerdefinierte Dimensionen (Eigenschaften) und benutzerdefinierte Messungen](app-insights-api-custom-events-metrics.md#properties) an Ereignisse anfügt, dann sehen Sie sie im `customDimensions`-Objekt und `customMeasurements`-Objekt.
 
 
 Zum Beispiel kann Ihre App Folgendes einfügen:
@@ -178,7 +178,7 @@ Und so extrahieren Sie diese Werte in Analytics:
 > [AZURE.NOTE] Im [Metrik-Explorer](app-insights-metrics-explorer.md) werden im Blatt „Metriken“ alle benutzerdefinierten und an einen Telemetrietyp angefügten Messungen zusammen mit den Metriken angezeigt, die mithilfe von `TrackMetric()` gesendet wurden. In Analytics hingegen bleiben die benutzerdefinierten Messungen weiterhin an den jeweiligen Telemetrietyp gebunden, und die Metriken werden in ihrem eigenen `metrics`-Datenstrom angezeigt.
 
 
-## [summarize](app-insights-analytics-reference.md#summarize-operator): Aggregieren von Zeilengruppen
+## [summarize:](app-insights-analytics-reference.md#summarize-operator) Aggregieren von Zeilengruppen
 
 `Summarize` wendet eine angegebene *Aggregationsfunktion* auf Zeilengruppen an.
 
@@ -197,7 +197,7 @@ Außerdem können Ergebnisse nach der Tageszeit gruppiert werden:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Beachten Sie, dass wir die Funktion `bin` (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwendeten, würde jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet werden. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute Abrundungsfunktion `floor` handelt, ist hierfür die einfachste Möglichkeit.
+Beachten Sie, dass wir die `bin`-Funktion (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute `floor`-Funktion zum Abrunden handelt, ist hierfür die einfachste Möglichkeit.
 
 Wir können dasselbe Verfahren anwenden, um Bereiche für Zeichenfolgen zu reduzieren:
 
@@ -242,7 +242,7 @@ Es gibt jedoch noch eine bessere Ansicht als die Tabelle. Betrachten Sie die Erg
 Beachten Sie, dass die Diagrammdarstellung die Uhrzeitangaben immer in der richtigen Reihenfolge anzeigt, auch wenn wir die Ergebnisse nicht nach Zeit sortiert haben (wie es in der Tabellenansicht der Fall ist).
 
 
-## [where](app-insights-analytics-reference.md#where-operator): Filtern nach einer Bedingung
+## [where:](app-insights-analytics-reference.md#where-operator) Filtern nach einer Bedingung
 
 Wenn Sie die Application Insights-Überwachung für die [Client](app-insights-javascript.md)- und Serverseite der App eingerichtet haben, stammen einige der Telemetriedaten in der Datenbank aus Browsern.
 
@@ -260,7 +260,7 @@ Sehen Sie sich nur die vom Browser gemeldeten Ausnahmen an:
 
 Der `where`-Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige Punkte:
 
- * `and`, `or`: Boolesche Operatoren
+ * `and`, `or`: boolesche Operatoren
  * `==`, `<>`: gleich und ungleich
  * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich. Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
@@ -450,7 +450,7 @@ Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten a
 
 
 
-## [let](app-insights-analytics-reference.md#let-clause): Zuweisen eines Ergebnisses zu einer Variablen
+## [let:](app-insights-analytics-reference.md#let-clause) Zuweisen eines Ergebnisses zu einer Variablen
 
 Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks auszusortieren. Die Ergebnisse sind wie folgt unverändert:
 
@@ -469,4 +469,4 @@ Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die e
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->
