@@ -76,7 +76,7 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 
 	>[AZURE.IMPORTANT] In diesem Tutorial wird der C#-Namespace **Microsoft.ServiceBus.Samples** verwendet. Hierbei handelt es sich um den Namespace des durch den Vertrag verwalteten Typs, der im Schritt [Konfigurieren des WCF-Clients](#configure-the-wcf-client) in der Konfigurationsdatei verwendet wird. Sie können beim Erstellen dieses Beispiels jeden gewünschten Namespace angeben, das Tutorial funktioniert jedoch nur, wenn Sie anschließend die Namespaces des Vertrags und des Diensts in der Anwendungskonfigurationsdatei entsprechend ändern. Der in der Datei "App.config" angegebene Namespace muss mit dem in Ihren C#-Dateien angegebenen Namespace identisch sein.
 
-1. Definieren Sie direkt nach der Namespacedeklaration `Microsoft.ServiceBus.Samples` (jedoch innerhalb des Namespace) eine neue Schnittstelle namens `IEchoContract`, und wenden Sie das Attribut `ServiceContractAttribute` mit dem Namespacewert **http://samples.microsoft.com/ServiceModel/Relay/** auf die Schnittstelle an. Der Namespacewert unterscheidet sich von dem Namespace, den Sie im gesamten Codebereich verwenden. Der Namespacewert wird stattdessen als eindeutiger Bezeichner für diesen Vertrag verwendet. Das explizite Angeben des Namespace verhindert, dass der Standardwert für den Namespace dem Vertragsnamen hinzugefügt wird.
+1. Definieren Sie direkt nach der Namespacedeklaration `Microsoft.ServiceBus.Samples` (jedoch innerhalb des Namespace) eine neue Schnittstelle namens `IEchoContract`, und wenden Sie das Attribut `ServiceContractAttribute` mit dem Namespacewert ****http://samples.microsoft.com/ServiceModel/Relay/** auf die Schnittstelle an. Der Namespacewert unterscheidet sich von dem Namespace, den Sie im gesamten Codebereich verwenden. Der Namespacewert wird stattdessen als eindeutiger Bezeichner für diesen Vertrag verwendet. Das explizite Angeben des Namespace verhindert, dass der Standardwert für den Namespace dem Vertragsnamen hinzugefügt wird.
 
 	```
 	[ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -94,7 +94,7 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 	string Echo(string text);
 	```
 
-1. Deklarieren Sie direkt im Anschluss an die `IEchoContract`-Schnittstellendefinition einen Kanal mit Vererbung von `IEchoChannel` und Vererbung an die `IClientChannel`-Schnittstelle, wie im folgenden Beispiel gezeigt:
+1. Deklarieren Sie direkt im Anschluss an die `IEchoContract`-Schnittstellendefinition einen Kanal mit Vererbung von `IEchoContract` und Vererbung an die `IClientChannel`-Schnittstelle, wie im folgenden Beispiel gezeigt:
 
 	```
     public interface IEchoChannel : IEchoContract, IClientChannel { }
@@ -783,4 +783,4 @@ Weitere Informationen zu Service Bus finden Sie in den folgenden Themen.
 [5]: ./media/service-bus-relay-tutorial/set-projects.png
 [6]: ./media/service-bus-relay-tutorial/set-depend.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

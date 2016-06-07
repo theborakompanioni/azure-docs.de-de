@@ -1,7 +1,7 @@
 <properties
 
 	pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
-	description="How to create and manage groups to manage Azure resource access using Azure Active Directory."
+	description="How to create and manage groups to manage Azure users using Azure Active Directory."
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -14,19 +14,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/18/2016"
+	ms.date="05/26/2016"
 	ms.author="curtand"/>
 
 
 # Verwalten von Gruppen in Azure Active Directory
 
-Eines der wichtigsten Features von Azure Active Directory (Azure AD) ist die Möglichkeit, den Zugriff auf Ressourcen zu verwalten. Bei diesen Ressourcen kann es sich um Objekte im Verzeichnis oder um Ressourcen handeln, die außerhalb des Verzeichnisses vorliegen, z.B. SaaS-Anwendungen, Azure-Dienste, SharePoint-Websites oder lokale Ressourcen. Darüber hinaus kann ein Ressourcenbesitzer für eine Azure AD-Gruppe den Zugriff auf eine Ressource zuweisen. Den Mitgliedern dieser Gruppe wird so Zugriff auf die Ressource gewährt. Der Besitzer der Gruppe verwaltet dann die Mitgliedschaft in der Gruppe. Der Besitzer der Ressource delegiert quasi die Berechtigung zum Zuweisen von Benutzern zu dieser Gruppe an den Besitzer der Gruppe.
+Ein Feature der Benutzerverwaltung von Azure Active Directory (Azure AD) ist die Möglichkeit, Gruppen mit Benutzern zu erstellen. Sie können eine Gruppe dann verwenden, um einer Klasse von Benutzern Lizenzen zuzuweisen. Außerdem können Sie Gruppen verwenden, um folgenden Ressourcen Berechtigungen zuzuweisen:
+
+- Ressourcen, z.B. Objekte im Verzeichnis
+- Verzeichnisexterne Ressourcen, z.B. SaaS-Anwendungen, Azure-Dienste, SharePoint-Websites oder lokale Ressourcen
+
+Darüber hinaus kann ein Ressourcenbesitzer für eine Azure AD-Gruppe den Zugriff auf eine Ressource zuweisen. Den Mitgliedern dieser Gruppe wird so Zugriff auf die Ressource gewährt. Der Besitzer der Gruppe verwaltet dann die Mitgliedschaft in der Gruppe. Der Besitzer der Ressource delegiert quasi die Berechtigung zum Zuweisen von Benutzern zu dieser Gruppe an den Besitzer der Gruppe.
 
 ## Wie erstelle ich eine Gruppe?
 
-**So erstellen Sie eine Gruppe**
-
-Diese Aufgabe kann unter Verwendung des Office 365-Kontoportals, des Windows Intune-Kontoportals oder des Azure-Portals ausgeführt werden – je nach den Diensten, die Ihre Organisation abonniert hat. Weitere Informationen zur Verwendung von Portalen zum Verwalten von Azure Active Directory finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](active-directory-administer.md).
+Diese Aufgabe kann unter Verwendung des Office 365-Kontoportals, des Windows Intune-Kontoportals oder des klassischen Azure-Portals ausgeführt werden – je nach den Diensten, die Ihre Organisation abonniert hat. Weitere Informationen zur Verwendung von anderen Portalen als dem Azure-Portal zum Verwalten von Azure Active Directory finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](active-directory-administer.md).
 
 1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory**, und wählen Sie dann den Namen des Verzeichnisses Ihrer Organisation.
 
@@ -72,7 +75,7 @@ In Azure AD können Sie leicht eine einfache Regel einrichten (bei der nur ein e
 > [AZURE.NOTE] Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt.
 >
 > Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
-> 
+>
 > - Dem Administrator, der die Regel für eine Gruppe verwaltet
 > - Allen Benutzern, die mit der Regel als Mitglied der Gruppe ausgewählt werden
 
@@ -102,4 +105,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

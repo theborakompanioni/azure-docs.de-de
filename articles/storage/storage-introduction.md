@@ -46,7 +46,7 @@ Der Azure-Speicher ist weltweit und von jeder Art von Anwendung erreichbar, egal
 
 Azure Storage unterstützt Kunden mit verschiedenen Betriebssystemen (z.B. Windows und Linux) und einer Vielzahl von Programmiersprachen (darunter .NET, Java, Node.js, Python, Ruby, PHP und C++ sowie mobile Programmiersprachen) für eine problemlose Entwicklung. Azure Storage macht auch Datenressourcen über einfache REST-APIs verfügbar, die auf jedem Client ausgeführt werden können, der Daten über HTTP/HTTPS senden und empfangen kann.
 
-Azure Premium Storage bietet eine leistungsstarke Datenträgerunterstützung mit niedriger Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Mit Azure Premium Storage können Sie mehrere persistente Datenträger an einen virtuellen Computer anfügen und diese gemäß Ihren Leistungsanforderungen konfigurieren. Jeder Datenträger wird für maximale E/A-Leistung von einer SSD-Festplatte in Azure Premium Storage unterstützt. Weitere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage-premium-storage-preview-portal).
+Azure Premium Storage bietet eine leistungsstarke Datenträgerunterstützung mit niedriger Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Mit Azure Premium Storage können Sie mehrere persistente Datenträger an einen virtuellen Computer anfügen und diese gemäß Ihren Leistungsanforderungen konfigurieren. Jeder Datenträger wird für maximale E/A-Leistung von einer SSD-Festplatte in Azure Premium Storage unterstützt. Weitere Informationen finden Sie unter Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern.
 
 ## Anwenden der Azure Storage-Dienste
 
@@ -132,7 +132,34 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Acces
 
 ## Replikation für Dauerhaftigkeit und hohe Verfügbarkeit
 
-[AZURE.INCLUDE [storage-replication-options-include](../../includes/storage-replication-options-include.md)]
+Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen sowie das [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/) auch bei vorübergehend auftretenden Hardwareausfällen zu erfüllen. Wenn Sie ein Speicherkonto erstellen, müssen Sie eine der folgenden Replikationsoptionen auswählen:
+
+- **Lokal redundanter Speicher (LRS)** Lokal redundanter Speicher verwaltet drei Kopien Ihrer Daten. LRS wird innerhalb eines einzelnen Standorts dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardware-Ausfällen, jedoch nicht vor dem Ausfall eines einzelnen Standorts.  
+  
+	LRS wird zu günstigen Preisen angeboten. Für maximale Stabilität empfehlen wir, dass Sie georedundanten Speicher (nachfolgend beschrieben) verwenden.
+
+
+- **Zonenredundanter Speicher (ZRS)** Zonenredundanter Speicher verwaltet drei Kopien Ihrer Daten. ZRS wird über zwei oder drei Standorte hinweg dreimal repliziert, entweder innerhalb einer einzelnen Region oder über zwei Regionen hinweg, wodurch eine höhere Stabilität als bei LRS entsteht. ZRS stellt sicher, dass Ihre Daten innerhalb einer einzelnen Region stabil sind.
+
+	ZRS liefert eine höhere Stabilität als LRS. Für maximale Stabilität empfehlen wir jedoch, dass Sie georedundanten Speicher (nachfolgend beschrieben) verwenden.
+
+	> [AZURE.NOTE] ZRS ist derzeit nur für Blockblobs verfügbar und wird nur in Version 2014-02-14 und höher unterstützt.
+	> 
+	> Sobald Sie Ihr Speicherkonto erstellt und die ZRS ausgewählt haben, ist die Wahl eines anderen Replikationstyps nicht mehr möglich.
+
+- **Georedundanter Speicher (GRS)**. Nach der Erstellung Ihres Speicherkontos ist geografisch redundanter Speicher standardmäßig aktiviert. GRS bewahrt sechs Kopien Ihrer Daten auf. Mit GRS werden Ihre Daten dreimal innerhalb der primären Region und dreimal in einer sekundären Region hunderte von Kilometern von der primären Region entfernt repliziert, wodurch höchste Stabilität erreicht wird. Im Falle eines Ausfalls in der primären Region führt Azure Storage ein Failover auf die sekundäre Region aus. Durch GRS wird sichergestellt, dass Ihre Daten in zwei separaten Regionen stabil sind.
+
+
+- **Georedundanter Speicher mit Lesezugriff (RA-GRS)** Georedundanter Speicher mit Lesezugriff repliziert Ihre Daten an einem sekundären geografischen Standort und stellt Lesezugriff auf die Daten am sekundären Standort bereit. Mithilfe von georedundantem Speicher mit Lesezugriff können Sie entweder vom primären oder vom sekundären Speicherort aus auf Ihre Daten zugreifen, falls einer der Speicherorte nicht verfügbar ist.
+
+	> [AZURE.IMPORTANT] Die Art der Datenreplikation kann nach der Speicherkontoerstellung geändert werden, sofern bei der Kontoerstellung nicht die ZRS-Option angegeben wurde. Beachten Sie jedoch, dass unter Umständen zusätzlich einmalige Datenübertragungskosten anfallen, wenn Sie von LRS zu GRS oder RA-GRS wechseln.
+ 
+Weitere Details zu den Speicherreplikationsoptionen finden Sie unter [Azure-Speicherreplikation](storage-redundancy.md).
+
+Preisinformationen für die Speicherkontoreplikation finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+
+Architekturdetails zur Beständigkeit von Azure Storage finden Sie unter [SOSP Paper – Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (SOSP-Dokument – Azure Storage: Ein hoch verfügbarer Cloud-Speicherdienst mit starker Konsistenz).
+
 
 ## Übertragen von Daten in und aus Azure Storage
 
@@ -233,4 +260,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 - [Verwenden des Warteschlangenspeichers mit Python](storage-python-how-to-use-queue-storage.md)
 - [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

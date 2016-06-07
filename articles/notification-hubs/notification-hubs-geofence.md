@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/16/2016"
+	ms.date="05/31/2016"
 	ms.author="dendeli"/>
     
 # Geofencing-Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data
@@ -378,8 +378,8 @@ Zunächst sollten Sie ggf. sicherstellen, dass die Geofences dynamisch sind. Hie
 
 Außerdem kann es bei der Sicherstellung, dass die Bereitstellung für die richtigen Teilnehmer erfolgt, ratsam sein, das [Tagging](notification-hubs-routing-tag-expressions.md) zu verwenden.
 
-In der oben gezeigten Projektmappe wird ein Szenario beschrieben, bei dem Sie viele verschiedene Plattformen nutzen können. Daher haben wir das Geofencing nicht auf systemspezifische Funktionen beschränkt. Die universelle Windows-Plattform verfügt aber standardmäßig über Funktionen zum [Erkennen von Geofences](msdn.microsoft.com/de-DE/windows/uwp/maps-and-location/set-up-a-geofence).
+In der oben gezeigten Projektmappe wird ein Szenario beschrieben, bei dem Sie viele verschiedene Plattformen nutzen können. Daher haben wir das Geofencing nicht auf systemspezifische Funktionen beschränkt. Die universelle Windows-Plattform verfügt aber standardmäßig über Funktionen zum [Erkennen von Geofences](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence).
 
 Weitere Informationen zu Notification Hubs-Funktionen finden Sie in unserem [Dokumentationsportal](https://azure.microsoft.com/documentation/services/notification-hubs/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

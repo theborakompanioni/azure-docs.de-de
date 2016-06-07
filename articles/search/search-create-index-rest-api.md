@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="ashmaka"/>
 
 # Erstellen eines Azure Search-Indexes mit der REST-API
@@ -106,4 +106,4 @@ Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, stellen Si
 ## Weiter
 Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den Index hochladen](search-what-is-data-import.md) und mit dem Durchsuchen der Daten beginnen.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

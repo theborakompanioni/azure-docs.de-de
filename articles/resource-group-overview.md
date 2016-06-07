@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/20/2016"
+   ms.date="05/27/2016"
    ms.author="tomfitz"/>
 
 # Übersicht über den Azure-Ressourcen-Manager
@@ -127,13 +127,13 @@ Der Azure-Ressourcen-Manager unterstützt Cross-Origin Resource Sharing (CORS). 
 
 ## Nächste Schritte
 
-- Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md).
-- Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Vorlagen](resource-group-template-deploy.md).
+- Eine einfache Einführung in die Verwendung von Vorlagen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
+- Eine ausführlichere exemplarische Vorgehensweise zum Erstellen einer Vorlage finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
 - Grundlegende Informationen zu den Funktionen, die in einer Vorlage verwendet werden können, finden Sie unter [Vorlagenfunktionen](resource-group-template-functions.md).
-- Anleitungen zum Entwerfen von Vorlagen finden Sie unter [Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-design-templates.md).
+- Informationen zum Verwenden von Visual Studio mit Resource Manager finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 Hier sehen Sie eine Videodemonstration dieser Übersicht:
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

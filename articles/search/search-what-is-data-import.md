@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="ashmaka"/>
 
 # Hochladen von Daten in Azure Search
@@ -35,7 +35,7 @@ Dieser Ansatz bezieht sich auf die programmgesteuerte Übertragung Ihrer Daten a
 
 Sie können die [REST-API](https://msdn.microsoft.com/library/azure/dn798930.aspx) oder [.NET SDK](search-import-data-dotnet.md) zur Push-Übertragung von Daten in einen Index verwenden. Es gibt derzeit keine Toolunterstützung für die Push-Übertragung von Daten über das Portal.
 
-Dieser Ansatz ist flexibler als ein Pull-Modell, da Sie Dokumente einzeln oder in Batches hochladen können (bis zu 1000 pro Batch oder 16 MB, je nachdem, welches Limit zuerst erreicht wird). Das Push-Modell ermöglicht Ihnen auch das Hochladen von Dokumenten in Azure Search, unabhängig davon, wo sich Ihre Daten befinden.
+Dieser Ansatz ist flexibler als ein Pull-Modell, da Sie Dokumente einzeln oder in Batches hochladen können (bis zu 1000 pro Batch oder 16 MB, je nachdem, welches Limit zuerst erreicht wird). Das Push-Modell ermöglicht Ihnen auch das Hochladen von Dokumenten in Azure Search, unabhängig davon, wo sich Ihre Daten befinden.
 
 ### Abrufen von Daten in einen Index mithilfe von Pull
 
@@ -45,4 +45,4 @@ Diese Funktion wird in Azure Search über *Indexer* implementiert, die derzeit f
 
 Die Indexer-Funktion steht sowohl im [Azure-Portal](search-import-data-portal.md) als auch in der [REST-API](https://msdn.microsoft.com/library/azure/dn946891.aspx) zur Verfügung.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

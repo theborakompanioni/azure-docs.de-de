@@ -1,23 +1,23 @@
 <properties 
-   pageTitle=".NET-Lernprogramm zu Service Bus-Brokermessaging | Microsoft Azure"
-   description=".NET-Lernprogramm zu Brokermessaging"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle=".NET-Lernprogramm zu Service Bus-Brokermessaging | Microsoft Azure"
+    description=".NET-Lernprogramm zu Brokermessaging"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/14/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/25/2016"
+    ms.author="sethm" />
 
 # .NET-Tutorial zu Service Bus-Brokermessaging
 
-Azure Service Bus bietet zwei umfassende Messaginglösungen. Bei der ersten Lösung wird ein zentralisierter Relaydienst in der Cloud ausgeführt, der verschiedene Transportprotokolle und Webdienststandards unterstützt, z. B. SOAP, WS-* und REST. Der Client benötigt keine direkte Verbindung zum lokalen Dienst und muss auch nicht wissen, wo der Dienst angesiedelt ist, und für den lokalen Dienst sind keine geöffneten eingehenden Ports in der Firewall notwendig.
+Azure Service Bus bietet zwei umfassende Messaginglösungen. Bei der ersten Lösung wird ein zentralisierter Relaydienst in der Cloud ausgeführt, der verschiedene Transportprotokolle und Webdienststandards unterstützt, z.B. SOAP, WS-* und REST. Der Client benötigt keine direkte Verbindung zum lokalen Dienst und muss auch nicht wissen, wo der Dienst angesiedelt ist, und für den lokalen Dienst sind keine geöffneten eingehenden Ports in der Firewall notwendig.
 
 Bei der zweiten Messaginglösung werden Brokermessagingfunktionen aktiviert. Diese können Sie sich als asynchrone oder entkoppelte Nachrichtenfunktionen vorstellen, die unter Verwendung der Service Bus-Messaginginfrastruktur verschiedene Szenarien wie Veröffentlichung/Abonnements, vorübergehende Entkopplung und Lastenausgleich unterstützen. Entkoppelte Kommunikation hat viele Vorteile, beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
 
@@ -27,17 +27,17 @@ In diesem Lernprogramm sollen Sie einen Überblick erhalten und praktische Erfah
 
 Warteschlangen liefern die Nachrichten im First In, First Out (FIFO)-Verfahren an einen oder mehrere Consumer. FIFO bedeutet, dass Nachrichten normalerweise in der zeitlichen Reihenfolge von den Consumern empfangen und verarbeitet werden, in der sie in die Warteschlange eingereiht wurden, und jede Nachricht wird nur von einem Nachrichtenconsumer empfangen und verarbeitet. Ein Hauptvorteil von Warteschlangen ist die *zeitliche Entkopplung* von Anwendungskomponenten. Anders ausgedrückt: Die Producer und Consumer müssen Nachrichten nicht gleichzeitig senden und empfangen, da sie dauerhaft in der Warteschlange gespeichert werden. Ein weiterer Vorteil ist der *Belastungsausgleich*, durch den Producer und Consumer die Möglichkeit haben, Nachrichten mit unterschiedlichen Raten zu senden und zu empfangen.
 
-Es folgen einige administrative und vorbereitende Schritte, die Sie ausführen sollten, bevor Sie mit dem Lernprogramm beginnen. Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels (Shared Access Signature). Ein Dienstnamespace stellt eine Anwendungsgrenze für jede Anwendung, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen Service Bus gegenüber der Anwendung authentifiziert wird.
+Es folgen einige administrative und vorbereitende Schritte, die Sie ausführen sollten, bevor Sie mit dem Lernprogramm beginnen. Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels (Shared Access Signature). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen Service Bus gegenüber der Anwendung authentifiziert wird.
 
 ### Erstellen eines Dienstnamespace und Abrufen eines SAS-Schlüssels
 
 1. Rufen Sie zum Erstellen eines Dienstnamespace das [klassische Azure-Portal][] auf. Klicken Sie auf der linken Seite auf **Service Bus** und anschließend auf **Erstellen**. Geben Sie einen Namen für den Namespace ein, und klicken Sie auf das Häkchen.
 
-1. Klicken Sie im Hauptfenster des [klassischen Azure-Portals][] auf den Namen des Namespaces, den Sie im vorherigen Schritt erstellt haben.
+1. Klicken Sie im Hauptfenster des Portals auf den Namen des Namespace, den Sie im vorherigen Schritt erstellt haben.
 
 1. Klicken Sie auf **Konfigurieren**.
 
-1. Notieren Sie sich im Abschnitt **Shared Access Signature-Generator** den Primärschlüssel, der der **RootManagerSharedAccessKey**-Richtlinie zugeordnet ist, oder kopieren Sie ihn in die Zwischenablage. Sie verwenden diesen Wert später im Lernprogramm.
+1. Notieren Sie sich den Primärschlüssel, der der **RootManageSharedAccessKey**-Richtlinie zugeordnet ist, oder kopieren Sie ihn in die Zwischenablage. Sie verwenden diesen Wert später im Tutorial.
 
 Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei Hilfsfunktionen, mit denen eine kommagetrennte Liste von Nachrichten in ein stark typisiertes [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)-.NET-[List](https://msdn.microsoft.com/library/6sh2ey19.aspx)-Objekt geladen wird.
 
@@ -48,14 +48,14 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 1. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** aus, und klicken Sie auf **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**), klicken Sie auf die Vorlage **Konsolenanwendung**, und vergeben Sie den Namen **QueueSample**. Verwenden Sie den standardmäßigen **Speicherort**. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 1. Verwenden Sie den NuGet-Paket-Manager, um Ihrem Projekt die Service Bus-Bibliotheken hinzuzufügen:
-	1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektordner, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-	2. Suchen Sie im Dialogfeld **Nuget-Pakete verwalten** online nach **Service Bus**, und klicken Sie auf **Installieren**. <br />
+	1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **QueueSample**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
+	2. Klicken Sie im Dialogfeld **NuGet-Pakete verwalten** auf die Registerkarte **Durchsuchen**, und suchen Sie nach **Azure Service Bus**. Klicken Sie anschießend auf **Installieren**. <br />
 1. Doppelklicken Sie im Projektmappen-Explorer auf die Datei „Program.cs“, um sie im Visual Studio-Editor zu öffnen. Ändern Sie den Namespacenamen vom Standardnamen `QueueSample` in `Microsoft.ServiceBus.Samples`.
 
 	```
 	Microsoft.ServiceBus.Samples
 	{
-	    …
+	    ...
 	```
 
 1. Ändern Sie die `using`-Anweisungen wie im folgenden Code gezeigt.
@@ -66,6 +66,7 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 	using System.Data;
 	using System.IO;
 	using System.Threading;
+	using System.Threading.Tasks;
 	using Microsoft.ServiceBus.Messaging;
 	```
 
@@ -96,14 +97,14 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 
 1. Navigieren Sie zur Datei „Data.csv“, die Sie in Schritt 6 erstellt haben. Klicken Sie auf die Datei und dann auf **Hinzufügen**. Stellen Sie sicher, dass in der Liste mit den Dateitypen **Alle Dateien (*.*)** ausgewählt ist.
 
-### Erstellen einer Funktion zum Analysieren einer Liste mit Nachrichten
+### Erstellen einer Methode zum Analysieren einer Liste mit Nachrichten
 
-1. Deklarieren Sie vor der `Main()`-Methode zwei Variablen: Eine mit dem Typ **DataTable**, die die Liste mit den Nachrichten in „Data.csv“ enthält. Die andere sollte den Typ „List-Objekt“ haben und für [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) stark typisiert sein. Letztere ist die Liste mit den Brokernachrichten, die in den nachfolgenden Schritten des Lernprogramms verwendet werden.
+1. Deklarieren Sie in der `Program`-Klasse vor der `Main()`-Methode zwei Variablen: Eine mit dem Typ **DataTable**, die die Liste mit den Nachrichten in „Data.csv“ enthält. Die andere sollte den Typ „List-Objekt“ haben und für [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) stark typisiert sein. Letztere ist die Liste mit den Brokernachrichten, die in den nachfolgenden Schritten des Lernprogramms verwendet werden.
 
 	```
 	namespace Microsoft.ServiceBus.Samples
 	{
-	    public class Program
+	    class Program
 	    {
 	
 	        private static DataTable issues;
@@ -159,7 +160,7 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 	}
 	```
 
-### Erstellen einer Funktion zum Laden der Liste mit den Nachrichten
+### Erstellen einer Methode zum Laden der Liste mit den Nachrichten
 
 1. Definieren Sie außerhalb von `Main()` eine `GenerateMessages()`-Methode, die das von `ParseCSVFile()` zurückgegebene **DataTable**-Objekt verwendet und die Tabelle in eine stark typisierte Liste mit Brokernachrichten lädt. Die Methode gibt dann wie im folgenden Beispiel das **List**-Objekt zurück. 
 
@@ -183,7 +184,7 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 	}
 	```
 
-1. Fügen Sie in `Main()` direkt unterhalb des Aufrufs von `ParseCSVFile()` eine Anweisung hinzu, mit der die `GenerateMessages()`-Methode mit dem Rückgabewert von `ParseCSVFile()` als Argument aufgerufen wird:
+1. Fügen Sie in `Main()` direkt nach dem Aufruf von `ParseCSVFile()` eine Anweisung hinzu, mit der die `GenerateMessages()`-Methode mit dem Rückgabewert von `ParseCSVFile()` als Argument aufgerufen wird:
 
 	```
 	public static void Main(string[] args)
@@ -230,7 +231,7 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 	}
 	```
 
-1. Fügen Sie in `Main()` direkt unterhalb des Aufrufs von `GenerateMessages()` eine Anweisung hinzu, mit der die `CollectUserInput()`-Methode aufgerufen wird:
+1. Fügen Sie in `Main()` direkt nach dem Aufruf von `GenerateMessages()` eine Anweisung hinzu, mit der die `CollectUserInput()`-Methode aufgerufen wird:
 
 	```
 	public static void Main(string[] args)
@@ -247,20 +248,20 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
 
 ### Erstellen Sie die Lösung.
 
-In Visual Studio können Sie im Menü **Erstellen** auf **Projektmappe erstellen** klicken, oder drücken Sie F6, um die Genauigkeit der bisherigen Arbeit zu bestätigen.
+In Visual Studio können Sie im Menü **Erstellen** auf **Projektmappe erstellen** klicken, oder drücken Sie **STRG+UMSCHALT+B**, um die Genauigkeit der bisherigen Arbeit zu bestätigen.
 
 ## Erstellen von Verwaltungsanmeldeinformationen
 
 In diesem Schritt definieren Sie die Verwaltungsvorgänge, die Sie zum Erstellen von Shared Access Signature (SAS)-Anmeldeinformationen zur Autorisierung Ihrer Anwendung verwenden.
 
-1. Aus Gründen der Übersichtlichkeit sind in diesem Lernprogramm alle Warteschlangenvorgänge in einer separaten Methode angeordnet. Erstellen Sie in der `Program`-Klasse unterhalb der `Main()`-Methode die `Queue()`-Methode. Beispiel:
+1. Aus Gründen der Übersichtlichkeit sind in diesem Lernprogramm alle Warteschlangenvorgänge in einer separaten Methode angeordnet. Erstellen Sie eine asynchrone `Queue()`-Methode in der `Program`-Klasse nach der `Main()`-Methode. Beispiel:
  
 	```
 	public static void Main(string[] args)
 	{
 	…
 	}
-	static void Queue()
+	static async Task Queue()
 	{
 	}
 	```
@@ -268,18 +269,17 @@ In diesem Schritt definieren Sie die Verwaltungsvorgänge, die Sie zum Erstellen
 1. Der nächste Schritt ist die Erstellung von SAS-Anmeldeinformationen mit einem [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Objekt. Bei der Erstellungsmethode werden der SAS-Schlüsselname und der Wert verwendet, die über die `CollectUserInput()`-Methode abgerufen wurden. Fügen Sie den folgenden Code in die Methode `Queue()` ein:
 
 	```
-	static void Queue()
+	static async Task Queue()
 	{
 	    // Create management credentials
 	    TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName,sasKeyValue);
 	}
 	```
-### Erstellen des Namespace-Managers
 
-1. Erstellen Sie ein neues Namespace-Verwaltungsobjekt mit einem URI, der den Namespacenamen und die Verwaltungsanmeldeinformationen aus dem vorherigen Schritt als Argumente enthält. Fügen Sie diesen Code direkt unterhalb des Codes hinzu, den Sie im vorherigen Schritt hinzugefügt haben:
+2. Erstellen Sie ein neues Namespace-Verwaltungsobjekt mit einem URI, der den Namespacenamen und die Verwaltungsanmeldeinformationen aus dem vorherigen Schritt als Argumente enthält. Fügen Sie diesen Code direkt nach dem Code hinzu, den Sie im vorherigen Schritt hinzugefügt haben. Ersetzen Sie `<yourNamespace>` durch den Namen Ihres Dienstnamespace:
 	
 	```
-	NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", <namespaceName>, string.Empty), credentials);
+	NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
 	```
 
 ### Beispiel
@@ -292,11 +292,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.ServiceBus.Messaging;
 
 namespace Microsoft.ServiceBus.Samples
 {
-  class Program
+  public class Program
   {
     private static DataTable issues;
     private static List<BrokeredMessage> MessageList;
@@ -314,14 +315,14 @@ namespace Microsoft.ServiceBus.Samples
       CollectUserInput();
 
       // Add this call
-      Queue();
+      Task.WaitAll(Queue());
     }
 
-    static void Queue()
+    static async Task Queue()
     {
       // Create management credentials
       TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName, sasKeyValue);
-      NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
+      NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
     }
 
     static DataTable ParseCSVFile()
@@ -389,25 +390,29 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-Im nächsten Schritt erstellen Sie die Warteschlange, an die Nachrichten gesendet werden.
-
 ## Senden von Nachrichten an die Warteschlange
 
 In diesem Schritt erstellen Sie eine Warteschlange und senden dann die Nachrichten, die in der Liste mit den Brokernachrichten enthalten sind, an diese Warteschlange.
 
 ### Erstellen der Warteschlange und Senden von Nachrichten an die Warteschlange
 
-1. Erstellen Sie zuerst die Warteschlange. Geben Sie ihr beispielsweise den Namen `myQueue`, und deklarieren Sie sie direkt nach den Verwaltungsvorgängen, die Sie im letzten Schritt hinzugefügt haben:
+1. Erstellen Sie zuerst die Warteschlange. Geben Sie ihr beispielsweise den Namen `myQueue`, und deklarieren Sie sie direkt nach den Verwaltungsvorgängen, die Sie im letzten Schritt in der `Queue()`-Methode hinzugefügt haben:
 
 	```
-	QueueDescription myQueue;
-	myQueue = namespaceClient.CreateQueue("IssueTrackingQueue");
+    QueueDescription myQueue;
+
+    if (namespaceClient.QueueExists("IssueTrackingQueue"))
+    {
+        namespaceClient.DeleteQueue("IssueTrackingQueue");
+    }
+
+    myQueue = namespaceClient.CreateQueue("IssueTrackingQueue");
 	```
 
-1. Erstellen Sie in der `Queue()`-Methode ein Messagingfactoryobjekt mit einem neu erstellten Service Bus-URI als Argument. Fügen Sie den folgenden Code direkt nach den Verwaltungsvorgängen hinzu, die Sie im letzten Schritt hinzugefügt haben:
+1. Erstellen Sie in der `Queue()`-Methode ein Messagingfactoryobjekt mit einem neu erstellten Service Bus-URI als Argument. Fügen Sie den folgenden Code direkt nach den Verwaltungsvorgängen hinzu, die Sie im letzten Schritt hinzugefügt haben. Ersetzen Sie `<yourNamespace>` durch den Namen Ihres Dienstnamespace:
 
 	```
-	MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
+	MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
 	```
 
 1. Erstellen Sie als Nächstes das Warteschlangenobjekt mithilfe der [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx)-Klasse. Fügen Sie den folgenden Code direkt nach dem Code hinzu, den Sie im letzten Schritt hinzugefügt haben:
@@ -425,7 +430,7 @@ In diesem Schritt erstellen Sie eine Warteschlange und senden dann die Nachricht
 	{
 	    var issue = MessageList[count];
 	    issue.Label = issue.Properties["IssueTitle"].ToString();
-	    myQueueClient.Send(issue);
+	    await myQueueClient.SendAsync(issue);
 	    Console.WriteLine(string.Format("Message sent: {0}, {1}", issue.Label, issue.MessageId));
 	}
 	```
@@ -436,49 +441,51 @@ In diesem Schritt rufen Sie die Liste mit den Nachrichten aus der Warteschlange 
 
 ### Erstellen eines Empfängers und Empfangen von Nachrichten aus der Warteschlange
 
-Durchlaufen Sie in der `Queue()`-Methode die Warteschlange, und empfangen Sie die Nachrichten mit der [Microsoft.ServiceBus.Messaging.QueueClient.Receive](https://msdn.microsoft.com/library/azure/hh322678.aspx)-Methode, indem Sie jede Nachricht in der Konsole ausgeben. Fügen Sie den folgenden Code direkt unterhalb des Codes hinzu, den Sie im vorherigen Schritt hinzugefügt haben:
+Durchlaufen Sie in der `Queue()`-Methode die Warteschlange, und empfangen Sie die Nachrichten mit der [QueueClient.ReceiveAsync](https://msdn.microsoft.com/library/azure/dn130423.aspx)-Methode, indem Sie jede Nachricht in der Konsole ausgeben. Fügen Sie den folgenden Code direkt nach dem Code hinzu, den Sie im vorherigen Schritt hinzugefügt haben:
 
-	```
-	Console.WriteLine("Now receiving messages from Queue.");
-	BrokeredMessage message;
-	while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 1, seconds: 5))) != null)
-	    {
-	        Console.WriteLine(string.Format("Message received: {0}, {1}, {2}", message.SequenceNumber, message.Label, message.MessageId));
-	        message.Complete();
+```
+Console.WriteLine("Now receiving messages from Queue.");
+BrokeredMessage message;
+while ((message = await myQueueClient.ReceiveAsync(new TimeSpan(hours: 0, minutes: 1, seconds: 5))) != null)
+    {
+        Console.WriteLine(string.Format("Message received: {0}, {1}, {2}", message.SequenceNumber, message.Label, message.MessageId));
+        message.Complete();
 	
-	        Console.WriteLine("Processing message (sleeping...)");
-	        Thread.Sleep(1000);
-	    }
-	```
+        Console.WriteLine("Processing message (sleeping...)");
+        Thread.Sleep(1000);
+    }
+```
 
-### Beenden der `Queue()`-Methode und Bereinigen der Ressourcen
+Beachten Sie, dass `Thread.Sleep` nur verwendet wird, um die Nachrichtenverarbeitung zu simulieren. In einer echten Nachrichtenanwendung benötigen Sie dieses Element wahrscheinlich nicht.
+
+### Beenden der Queue-Methode und Bereinigen der Ressourcen
 
 Fügen Sie direkt nach dem vorherigen Code den folgenden Code hinzu, um die Messagingfactory und Warteschlangenressourcen zu bereinigen:
 
-	```
-	factory.Close();
-	myQueueClient.Close();
-	namespaceClient.DeleteQueue("IssueTrackingQueue");
-	```
+```
+factory.Close();
+myQueueClient.Close();
+namespaceClient.DeleteQueue("IssueTrackingQueue");
+```
 
-### Aufrufen der `Queue()`-Methode
+### Aufrufen der Queue-Methode
 
 Der letzte Schritt ist das Hinzufügen einer Anweisung, mit der die `Queue()`-Methode von `Main()` aufgerufen wird. Fügen Sie am Ende von Main() die folgende hervorgehobene Codezeile hinzu:
 	
-	```
-	public static void Main(string[] args)
-	{
-	    // Collect user input
-	    CollectUserInput();
+```
+public static void Main(string[] args)
+{
+    // Collect user input
+    CollectUserInput();
 	
-	    // Populate test data
-	    issues = ParseCSVFile();
-	    MessageList = GenerateMessages(issues);
+    // Populate test data
+    issues = ParseCSVFile();
+    MessageList = GenerateMessages(issues);
 	
-	    // Add this call
-	    Queue();
-	}
-	```
+    // Add this call
+    Queue();
+}
+```
 
 ### Beispiel
 
@@ -490,131 +497,144 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.ServiceBus.Messaging;
 
 namespace Microsoft.ServiceBus.Samples
 {
-  class Program
-  {
-    private static DataTable issues;
-    private static List<BrokeredMessage> MessageList;
-    private static string ServiceNamespace;
-    private static string sasKeyName = "RootManageSharedAccessKey";
-    private static string sasKeyValue;
-
-    static void Main(string[] args)
+    public class Program
     {
-      // Populate test data
-      issues = ParseCSVFile();
-      MessageList = GenerateMessages(issues);
+        private static DataTable issues;
+        private static List<BrokeredMessage> MessageList;
 
-      // Collect user input
-      CollectUserInput();
+        // Add these variables
+        private static string ServiceNamespace;
+        private static string sasKeyName = "RootManageSharedAccessKey";
+        private static string sasKeyValue;
 
-      // Add this call
-      Queue();
-    }
-
-    static void Queue()
-    {
-      // Create management credentials
-      TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName, sasKeyValue);
-      NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
-
-      QueueDescription myQueue;
-      myQueue = namespaceClient.CreateQueue("IssueTrackingQueue");
-
-      MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
-      QueueClient myQueueClient = factory.CreateQueueClient("IssueTrackingQueue");
-
-      // Send messages
-      Console.WriteLine("Now sending messages to the Queue.");
-      for (int count = 0; count < 6; count++)
-      {
-        var issue = MessageList[count];
-        issue.Label = issue.Properties["IssueTitle"].ToString();
-        myQueueClient.Send(issue);
-        Console.WriteLine(string.Format("Message sent: {0}, {1}", issue.Label, issue.MessageId));
-      }
-
-      Console.WriteLine("Now receiving messages from Queue.");
-      BrokeredMessage message;
-      while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 1, seconds: 5))) != null)
-      {
-        Console.WriteLine(string.Format("Message received: {0}, {1}, {2}", message.SequenceNumber, message.Label, message.MessageId));
-        message.Complete();
-
-        Console.WriteLine("Processing message (sleeping...)");
-        Thread.Sleep(1000);
-      }
-
-      factory.Close();
-      myQueueClient.Close();
-      namespaceClient.DeleteQueue("IssueTrackingQueue");
-    }
-
-    static DataTable ParseCSVFile()
-    {
-      DataTable tableIssues = new DataTable("Issues");
-      string path = @"..\..\data.csv";
-      try
-      {
-        using (StreamReader readFile = new StreamReader(path))
+        static void Main(string[] args)
         {
-          string line;
-          string[] row;
 
-          // create the columns
-          line = readFile.ReadLine();
-          foreach (string columnTitle in line.Split(','))
-          {
-            tableIssues.Columns.Add(columnTitle);
-          }
+            // Populate test data
+            issues = ParseCSVFile();
+            MessageList = GenerateMessages(issues);
 
-          while ((line = readFile.ReadLine()) != null)
-          {
-            row = line.Split(',');
-            tableIssues.Rows.Add(row);
-          }
+            // Collect user input
+            CollectUserInput();
+
+            Queue();
+
         }
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine("Error:" + e.ToString());
-      }
 
-      return tableIssues;
-    }
-
-    static List<BrokeredMessage> GenerateMessages(DataTable issues)
-    {
-      // Instantiate the brokered list object
-      List<BrokeredMessage> result = new List<BrokeredMessage>();
-
-      // Iterate through the table and create a brokered message for each row
-      foreach (DataRow item in issues.Rows)
-      {
-        BrokeredMessage message = new BrokeredMessage();
-        foreach (DataColumn property in issues.Columns)
+        static async Task Queue()
         {
-          message.Properties.Add(property.ColumnName, item[property]);
+            // Create management credentials
+            TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName, sasKeyValue);
+            NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
+
+            QueueDescription myQueue;
+
+            if (namespaceClient.QueueExists("IssueTrackingQueue"))
+            {
+                namespaceClient.DeleteQueue("IssueTrackingQueue");
+            }
+            
+            myQueue = namespaceClient.CreateQueue("IssueTrackingQueue");
+            
+            MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
+
+            QueueClient myQueueClient = factory.CreateQueueClient("IssueTrackingQueue");
+
+            // Send messages
+            Console.WriteLine("Now sending messages to the queue.");
+            for (int count = 0; count < 6; count++)
+            {
+                var issue = MessageList[count];
+                issue.Label = issue.Properties["IssueTitle"].ToString();
+                await myQueueClient.SendAsync(issue);
+                Console.WriteLine(string.Format("Message sent: {0}, {1}", issue.Label, issue.MessageId));
+            }
+
+            Console.WriteLine("Now receiving messages from Queue.");
+            BrokeredMessage message;
+            while ((message = await myQueueClient.ReceiveAsync(new TimeSpan(hours: 0, minutes: 1, seconds: 5))) != null)
+            {
+                Console.WriteLine(string.Format("Message received: {0}, {1}, {2}", message.SequenceNumber, message.Label, message.MessageId));
+                message.Complete();
+
+                Console.WriteLine("Processing message (sleeping...)");
+                Thread.Sleep(1000);
+            }
+
+            factory.Close();
+            myQueueClient.Close();
+            namespaceClient.DeleteQueue("IssueTrackingQueue");
+
+
         }
-        result.Add(message);
-      }
-      return result;
-    }
 
-    static void CollectUserInput()
-    {
-      // User service namespace
-      Console.Write("Please enter the service namespace to use: ");
-      ServiceNamespace = Console.ReadLine();
+        static void CollectUserInput()
+        {
+            // User service namespace
+            Console.Write("Please enter the namespace to use: ");
+            ServiceNamespace = Console.ReadLine();
 
-      // Issuer key
-      Console.Write("Please enter the issuer key to use: ");
-      sasKeyValue = Console.ReadLine();
+            // Issuer key
+            Console.Write("Enter the SAS key to use: ");
+            sasKeyValue = Console.ReadLine();
+        }
+
+        static List<BrokeredMessage> GenerateMessages(DataTable issues)
+        {
+            // Instantiate the brokered list object
+            List<BrokeredMessage> result = new List<BrokeredMessage>();
+
+            // Iterate through the table and create a brokered message for each row
+            foreach (DataRow item in issues.Rows)
+            {
+                BrokeredMessage message = new BrokeredMessage();
+                foreach (DataColumn property in issues.Columns)
+                {
+                    message.Properties.Add(property.ColumnName, item[property]);
+                }
+                result.Add(message);
+            }
+            return result;
+        }
+
+        static DataTable ParseCSVFile()
+        {
+            DataTable tableIssues = new DataTable("Issues");
+            string path = @"..\..\data.csv";
+            try
+            {
+                using (StreamReader readFile = new StreamReader(path))
+                {
+                    string line;
+                    string[] row;
+
+                    // create the columns
+                    line = readFile.ReadLine();
+                    foreach (string columnTitle in line.Split(','))
+                    {
+                        tableIssues.Columns.Add(columnTitle);
+                    }
+
+                    while ((line = readFile.ReadLine()) != null)
+                    {
+                        row = line.Split(',');
+                        tableIssues.Rows.Add(row);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error:" + e.ToString());
+            }
+
+            return tableIssues;
+        }
     }
-  }
 }
 ```
 
@@ -624,19 +644,7 @@ Nachdem Sie die obigen Schritte abgeschlossen haben, können Sie die **QueueSamp
 
 ### Erstellen der QueueSample-Anwendung
 
-Klicken Sie in Visual Studio im Menü **Erstellen** auf **Projektmappe erstellen**, oder drücken Sie F6. Überprüfen Sie beim Auftreten von Fehlern, ob Ihr Code fehlerfrei ist. Verwenden Sie hierzu das vollständige Beispiel, das am Ende des vorherigen Schritts angegeben ist.
-
-### Ausführen der QueueSample-Anwendung
-
-1. Vor dem Ausführen der Anwendung müssen Sie sicherstellen, dass Sie einen Dienstnamespace erstellt und einen SAS-Schlüssel abgerufen haben. Dies ist unter [Einführung und Voraussetzungen](#introduction-and-prerequisites) beschrieben.
-
-1. Öffnen Sie einen Webbrowser, und navigieren Sie zum [klassischen Azure-Portal][].
-
-1. Klicken Sie im linken Bereich auf **Service Bus**.
-
-1. Klicken Sie auf den Namen des Namespace, den Sie verwenden möchten. Klicken Sie unten auf der Seite auf **Verbindungsinformationen**. Notieren Sie sich die Verbindungszeichenfolge mit dem SAS-Schlüssel, oder kopieren Sie sie in die Zwischenablage.
-
-1. Klicken Sie in Visual Studio im Menü **Debuggen** auf **Debuggen starten**, oder drücken Sie F5. Geben Sie bei Aufforderung den Namen des Dienstnamespace und den Schlüssel aus dem vorherigen Schritt ein.
+Klicken Sie in Visual Studio im Menü **Erstellen** auf **Projektmappe erstellen**, oder drücken Sie **STRG+UMSCHALT+B**. Überprüfen Sie beim Auftreten von Fehlern, ob Ihr Code fehlerfrei ist. Verwenden Sie hierzu das vollständige Beispiel, das am Ende des vorherigen Schritts angegeben ist.
 
 ## Nächste Schritte
 
@@ -649,7 +657,5 @@ Weitere Informationen zu [Service Bus](https://azure.microsoft.com/services/serv
 - [Service Bus-Architektur](service-bus-architecture.md)
 
 [klassische Azure-Portal]: http://manage.windowsazure.com
-[klassischen Azure-Portal]: http://manage.windowsazure.com
-[klassischen Azure-Portals]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0601_2016-->

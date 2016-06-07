@@ -261,8 +261,43 @@ Sie können auch die App „Überwachung und Verwaltung“ verwenden, um Ihre Da
 
 > [AZURE.IMPORTANT] Die Eingabedatei wird bei erfolgreicher Verarbeitung des Slice gelöscht. Wenn Sie den Slice erneut ausführen oder das Tutorial nochmals durchgehen möchten, laden Sie die Eingabedatei (input.log) daher in den Ordner „inputdata“ des Containers „adfgetstarted“ hoch.
 
+## ARM-Vorlage zum Erstellen eines Gateways
+Hier ist eine ARM-Beispielvorlage zum Erstellen eines logischen Gateways im Hintergrund angegeben. Beachten Sie, dass Sie ein Gateway auf Ihrem lokalen Computer oder Ihrer Azure IaaS-VM installieren und das Gateway beim Data Factory-Dienst per Schlüssel registrieren müssen. Ausführlichere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
-## Siehe auch
+	{
+	    "contentVersion": "1.0.0.0",
+	    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	    "parameters": {
+	    },
+	    "variables": {
+	        "dataFactoryName":  "GatewayUsingArmDF",
+	        "apiVersion": "2015-10-01",
+	        "singleQuote": "'"
+	    },
+	    "resources": [
+	        {
+	            "name": "[variables('dataFactoryName')]",
+	            "apiVersion": "[variables('apiVersion')]",
+	            "type": "Microsoft.DataFactory/datafactories",
+	            "location": "eastus",
+	            "resources": [
+	                {
+	                    "dependsOn": [ "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]" ],
+	                    "type": "gateways",
+	                    "apiVersion": "[variables('apiVersion')]",
+	                    "name": "GatewayUsingARM",
+	                    "properties": {
+	                    	"description": "my gateway"
+						}
+	                }            
+				]
+	        }
+	    ]
+	}
+
+Mit dieser Vorlage wird eine Data Factory mit dem Namen GatewayUsingArmDF und dem Gateway GatewayUsingARM erstellt.
+
+## Weitere Informationen
 | Thema | Beschreibung |
 | :---- | :---- |
 | [Transformationsaktivitäten von Daten](data-factory-data-transformation-activities.md) | Dieser Artikel enthält eine Liste mit Transformationsaktivitäten von Daten (z.B. die HDInsight Hive-Transformation, die Sie in diesem Tutorial verwendet haben), die von Azure Data Factory unterstützt werden. |
@@ -273,4 +308,4 @@ Sie können auch die App „Überwachung und Verwaltung“ verwenden, um Ihre Da
 
   
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->
