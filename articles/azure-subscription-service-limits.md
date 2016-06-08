@@ -291,4 +291,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!----HONumber=AcomDC_0525_2016-->
