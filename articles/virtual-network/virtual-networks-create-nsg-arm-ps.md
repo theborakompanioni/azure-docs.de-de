@@ -182,4 +182,4 @@ Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-BackEnd* basierend auf de
 
 		Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-<!---HONumber=AcomDC_0525_2016-->
+<!-----HONumber=AcomDC_0525_2016-->
