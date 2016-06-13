@@ -1,9 +1,9 @@
 <properties 
-   pageTitle="Traffic Manager – Routingmethoden für Datenverkehr | Microsoft Azure"
-   description="Diese Artikel erläutern Ihnen die verschiedenen Routingmethode für Datenverkehr, die von Traffic Manager verwendet werden"
+   pageTitle="Traffic Manager – Methoden für das Datenverkehrsrouting | Microsoft Azure"
+   description="Diese Artikel erläutern Ihnen die verschiedenen Methoden für das Datenverkehrsrouting, die von Traffic Manager verwendet werden"
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="jtuliani"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -12,122 +12,118 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.date="05/25/2016"
+   ms.author="jtuliani" />
 
-# Traffic Manager-Routingmethoden
+# Traffic Manager-Methoden für das Datenverkehrsrouting
 
-Drei Routingmethoden für Datenverkehr sind in Traffic Manager verfügbar. Jedes Traffic Manager-Profil kann immer nur eine Routingmethode für Datenverkehr verwenden. Sie können jedoch jederzeit eine andere Routingmethode für Ihr Profil auswählen.
+Dieser Artikel beschreibt die von Azure Traffic Manager unterstützten Methoden für das Datenverkehrsrouting. Diese werden verwendet, um Endbenutzer an den richtigen Dienstendpunkt weiterzuleiten.
 
-Beachten Sie unbedingt, dass alle Routingmethoden für Datenverkehr eine Endpunktüberwachung vorsehen. Nachdem Sie bei der Konfiguration des Traffic Manager-Profils die Routingmethode für Datenverkehr angegeben haben, die Ihre Anforderungen am besten erfüllt, konfigurieren Sie die Überwachungseinstellungen. Wenn die Überwachung ordnungsgemäß konfiguriert ist, überwacht Traffic Manager den Status Ihrer Endpunkte, die aus Cloud-Diensten und Websites bestehen, und sendet keinen Datenverkehr an Endpunkte, die wahrscheinlich nicht verfügbar sind. Informationen zur Traffic Manager-Überwachung finden Sie unter [Traffic Manager-Überwachung](traffic-manager-monitoring.md).
+> [AZURE.NOTE] Die ARM-API (Azure Resource Manager) für Traffic Manager verwendet eine andere Terminologie als die ASM-API (Azure Service Manager). Diese Änderung wurde aufgrund von Kundenfeedback eingeführt, um die Klarheit zu verbessern und Missverständnisse zu reduzieren. In diesem Artikel wird die ARM-Terminologie verwendet. Folgende Unterschiede bestehen:
 
-Die drei folgenden Traffic Manager-Routingmethoden für Datenverkehr stehen zur Verfügung:
+>- In ARM wird der Begriff „Methode für das Datenverkehrsrouting“ verwendet, um den Algorithmus zu beschreiben, mit dem festgelegt wird, an welchen Endpunkt ein bestimmter Endbenutzer zu einer bestimmten Zeit weitergeleitet werden soll. In ASM wird dies als „Lastenausgleichsmethode“ bezeichnet.
 
-- **Failover:** Wählen Sie „Failover“ aus, wenn sich Endpunkte in demselben oder in verschiedenen Azure-Rechenzentren (im klassischen Azure-Portal als „Regionen“ bezeichnet) befinden und Sie einen primären Endpunkt für den gesamten Datenverkehr verwenden, jedoch Sicherungen für den Fall bereitstellen möchten, dass die primären oder Sicherungsendpunkte nicht verfügbar sind. Weitere Informationen finden Sie unter [Routingmethode für Failoverdatenverkehr](#failover-traffic-routing-method).
+>- In ARM bezeichnet der Begriff „gewichtet“ die Methode für das Datenverkehrsrouting, die den Datenverkehr auf alle verfügbaren Endpunkte verteilt, basierend auf der für jeden Endpunkt definierten Gewichtung. In ASM wird dies „Roundrobin“ genannt.
+>- In ARM wird der Begriff „Priorität“ verwendet, um die Methode für das Datenverkehrsrouting zu beschreiben, die sämtlichen Datenverkehr an den ersten verfügbaren Endpunkt einer geordneten Liste weiterleitet. In ASM wird dies als „Failover“ bezeichnet.
 
-- **Round Robin**: Wählen Sie "Roundrobin" aus, wenn Sie die Last auf eine Reihe von Endpunkten in demselben oder in verschiedenen Datencentern verteilen möchten. Weitere Informationen finden Sie unter [Routingmethode für Roundrobin-Datenverkehr](#round-robin-traffic-routing-method).
+> In allen Fällen besteht der einzige Unterschied in der Benennung. Es gibt keinen Unterschied in der Funktionalität.
 
-- **Leistung**: Wählen Sie Leistung aus, wenn sich die Endpunkte an unterschiedlichen geografischen Standorten befinden und anfordernde Clients den "nächstgelegenen" Endpunkt (im Hinblick auf die geringste Wartezeit) verwenden sollen. Weitere Informationen finden Sie unter [Routingmethode für Leistungsdatenverkehr](#performance-traffic-routing-method).
 
-Beachten Sie, dass Azure Websites bereits Funktionen für Failover- und Roundrobin-Datenverkehrs-Routingmethoden für Websites in einem Datencenter unabhängig vom Websitemodus zur Verfügung stellen. Traffic Manager ermöglicht das Angeben von Failover- und Roundrobin-Datenverkehrsrouting für Websites in verschiedenen Datencentern.
+Azure Traffic Manager unterstützt eine Reihe von Algorithmen, um zu bestimmen, wie Endbenutzer an die verschiedenen Endpunkte weitergeleitet werden. Diese werden als Methoden für das Datenverkehrsrouting bezeichnet. Die Methode für das Datenverkehrsrouting wird auf jede empfangene DNS-Abfrage angewendet, um zu bestimmen, welcher Endpunkt in der DNS-Antwort zurückgegeben werden soll.
 
->[AZURE.NOTE] Die DNS-Gültigkeitsdauer (TTL) informiert DNS-Clients und -Resolver auf DNS-Servern, wie lange die aufgelösten Namen zwischengespeichert werden sollen. Clients verwenden weiterhin einen bestimmten Endpunkt beim Auflösen des Domänennamens, bis der lokale DNS-Cacheeintrag für den Namen abläuft.
+Drei Methoden für das Datenverkehrsrouting sind in Traffic Manager verfügbar:
 
-## Routingmethode für Failoverdatenverkehr
+- **Priorität**: Wählen Sie „Priorität“ aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt nicht verfügbar ist. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](#wriority-traffic-routing-method).
 
-Organisationen möchten häufig sicherstellen, dass ihre Dienste zuverlässig funktionieren. Dazu stellen sie Sicherungsprogramme für den Fall bereit, dass der primäre Dienst ausfällt. Der Failover-Lastenausgleich für Dienste wird häufig implementiert, indem eine Reihe identischer Endpunkte bereitgestellt und Datenverkehr an einen primären Dienst gesendet wird. Dabei wird eine Liste mit mindestens einer Sicherung verwendet. Wenn der primäre Dienst nicht verfügbar ist, werden anfordernde Clients an den nächsten Dienst in der Reihenfolge verwiesen. Wenn der erste und der zweite aufgeführte Dienst nicht verfügbar sind, wird der Datenverkehr an den dritten Dienst gesendet usw.
+- **Gewichtet**: Wählen Sie „Gewichtet“, wenn Sie Datenverkehr über eine Gruppe von Endpunkten verteilen möchten – gleichmäßig oder gemäß einer von Ihnen definieren Gewichtung. Weitere Informationen finden Sie unter [Gewichtete Methode für das Datenverkehrsrouting](#weighted-traffic-routing-method).
 
-Wenn Sie die Routingmethode für Failoverdatenverkehr konfigurieren, ist die Reihenfolge der ausgewählten Endpunkte von Bedeutung. Mithilfe des klassischen Azure-Portals können Sie die Failoverreihenfolge auf der Seite „Konfiguration“ für das Profil konfigurieren.
+- **Leistung**: Wählen Sie „Leistung“ aus, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden und Endbenutzer an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet werden sollen. Weitere Informationen finden Sie unter [Leistungsorientierte Methode für das Datenverkehrsrouting](#performance-traffic-routing-method).
 
-Abbildung 1 zeigt ein Beispiel für die Routingmethode für Failoverdatenverkehr für eine Reihe von Endpunkten.
+> [AZURE.NOTE] Alle Traffic Manager-Profile umfassen eine kontinuierliche Überwachung der Endpunktintegrität und automatisches Endpunktfailover. Dies wird für alle Methoden für das Datenverkehrsrouting unterstützt. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md).
 
-![Traffic Manager-Routingmethode für Failover](./media/traffic-manager-routing-methods/IC750592.jpg)
+Ein einzelnes Traffic Manager-Profil kann nur eine einzige Methode für das Datenverkehrsrouting verwenden. Sie können jederzeit eine andere Methode für das Datenverkehrsrouting für Ihr Profil auswählen. Änderungen werden innerhalb einer Minute angewendet, und es entstehen keine Ausfallzeiten. Methoden für das Datenverkehrsrouting können durch Verwendung geschachtelter Traffic Manager-Profile kombiniert werden. So können Sie ausgefeilte und flexible Konfigurationen für das Datenverkehrsrouting erstellen, um die Anforderungen größerer und komplexerer Anwendungen zu erfüllen. Weitere Informationen finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
-**Abbildung 1**
+## Prioritätsmethode für das Datenverkehrsrouting
 
-Die folgenden nummerierten Schritte entsprechen den Ziffern in Abbildung 1.
+Wenn Organisationen die Zuverlässigkeit ihrer Dienste gewährleisten möchten, stellen sie häufig einen oder mehrere Backupdienste bereit, für den Fall, dass der primäre Dienst ausfällt. Mithilfe der prioritätsbasierten Methode für das Datenverkehrsrouting können Azure-Kunden dieses Failovermuster problemlos implementieren.
 
-1. Traffic Manager empfängt eine eingehende Anforderung von einem Client über DNS und sucht nach dem Profil.
-2. Das Profil enthält eine sortierte Liste mit Endpunkten. Traffic Manager überprüft, welcher Endpunkt der erste in der Liste ist. Wenn der Endpunkt (basierend auf der aktuellen Endpunktüberwachung) online ist, wird der DNS-Name dieses Endpunkts in der DNS-Antwort an den Client angegeben. Wenn der Endpunkt offline ist, ermittelt Traffic Manager den nächsten Onlineendpunkt in der Liste. In diesem Beispiel ist CS-A offline (nicht verfügbar), CS-B ist jedoch online (verfügbar).
-3. Traffic Manager gibt den Domänennamen von CS-B an den DNS-Server des Clients zurück, der den Domänennamen in eine IP-Adresse auflöst und diese an den Client sendet.
-4. Der Client initiiert Datenverkehr an CS-B.
+![Prioritätsbasierte Methode für das Datenverkehrsrouting in Azure Traffic Manager][1]
 
-## Routingmethode für Round-Robin-Datenverkehr
+Das Traffic Manager-Profil wird mit einer priorisierten Liste von Dienstendpunkten konfiguriert. Standardmäßig wird der gesamte Endbenutzerdatenverkehr an den primären Endpunkt (mit der höchsten Priorität) gesendet. Wenn der primäre Endpunkt nicht verfügbar ist (basierend auf dem konfigurierten Endpunktstatus [aktiviert oder nicht aktiviert] und der kontinuierlichen Endpunktüberwachung) werden Benutzer an den zweiten Endpunkt verwiesen. Wenn weder der primäre noch der sekundäre Endpunkt verfügbar sind, wird der Datenverkehr an den dritten Endpunkt gesendet usw.
 
-Ein gängiges Muster für das Datenverkehrsrouting besteht darin, eine Reihe identischer Endpunkte bereitzustellen und Datenverkehr im Roundrobin-Verfahren an die einzelnen Endpunkte zu senden. Die Methode "Roundrobin" teilt den Datenverkehr auf verschiedene Endpunkte auf. Dabei wird ein fehlerfreier Endpunkt nach dem Zufallsprinzip ausgewählt und kein Datenverkehr an Dienste gesendet, die ausgefallen sind. Weitere Informationen finden Sie unter [Traffic Manager-Überwachung](traffic-manager-monitoring.md).
+Die Konfiguration der Endpunktprioritäten wird in den APIs von ARM (sowie dem neuen Azure-Portal) und ASM (sowie dem klassischen Portal) unterschiedlich ausgeführt:
 
-Abbildung 2 zeigt ein Beispiel für die Routingmethode für Roundrobin-Datenverkehr für eine Reihe von Endpunkten.
+- In den ARM-APIs wird die Endpunktpriorität mithilfe der für jeden Endpunkt definierten Prioritätseigenschaft explizit konfiguriert. Diese Eigenschaft muss einen Wert zwischen 1 und 1000 annehmen können, wobei niedrigere Werte eine höhere Priorität darstellen. Der gleiche Prioritätswert kann nicht für mehrere Endpunkte konfiguriert werden. Die Eigenschaft ist optional. Wird sie nicht angegeben, wird eine Standardpriorität basierend auf der Endpunktreihenfolge verwendet.
 
-![Traffic Manager-Routingmethode für Roundrobin](./media/traffic-manager-routing-methods/IC750593.jpg)
+- In den ASM-APIs wird die Endpunktpriorität implizit konfiguriert, basierend auf der Reihenfolge, in der die Endpunkte in der Profildefinition aufgeführt sind. Sie können die Failoverreihenfolge auch im klassischen Azure-Portal auf der Konfigurationsseite für das Profil konfigurieren.
 
-**Abbildung 2**
+## Gewichtete Methode für das Datenverkehrsrouting
 
-Die folgenden nummerierten Schritte entsprechen den Ziffern in Abbildung 2.
+Eine gängige Methode, um sowohl hohe Verfügbarkeit als auch maximale Dienstnutzung sicherzustellen, besteht darin, eine Gruppe von Endpunkten bereitzustellen und den Datenverkehr auf alle Endpunkte zu verteilen – entweder gleichmäßig oder anhand einer vordefinierten Gewichtung. Dies wird durch die gewichtete Methode für das Datenverkehrsrouting unterstützt.
 
-1. Traffic Manager empfängt eine eingehende Anforderung von einem Client und sucht nach dem Profil.
-2. Das Profil enthält eine Liste von Endpunkten. Traffic Manager wählt einen zufälligen Endpunkt aus dieser Liste aus. Dabei werden alle Offlineendpunkte (nicht verfügbare Endpunkte), die von der Traffic Manager-Endpunktüberwachung ermittelt wurden, ausgeschlossen. In diesem Beispiel ist dies der Endpunkt CS-B.
-3. Traffic Manager gibt den Domänennamen von CS-B an den DNS-Server des Clients zurück. Der DNS-Server des Clients löst diesen Domänennamen in eine IP-Adresse auf und sendet diese an den Client.
-4. Der Client initiiert Datenverkehr an CS-B.
+![Gewichtete Methode für das Datenverkehrsrouting in Azure Traffic Manager][2]
 
-Das Routing von Roundrobin-Datenverkehr unterstützt auch die gewichtete Verteilung des Netzwerkdatenverkehrs. Abbildung 3 zeigt ein Beispiel für die gewichtete Routingmethode für Roundrobin-Datenverkehr für eine Reihe von Endpunkten.
+Bei der gewichteten Methode für das Datenverkehrsrouting wird jedem Endpunkt im Rahmen der Traffic Manager-Profilkonfiguration eine Gewichtung zugewiesen. Jede Gewichtung ist eine Ganzzahl zwischen 1 und 1000. Dieser Parameter ist optional. Wenn er nicht angegeben wird, wird die Standardgewichtung 1 verwendet.
+  
+Der Endbenutzerdatenverkehr wird auf alle verfügbaren Dienstendpunkte verteilt (basierend auf dem konfigurierten Endpunktstatus [aktiviert oder nicht aktiviert] und der kontinuierlichen Endpunktüberwachung). Für jede empfangene DNS-Abfrage wird nach dem Zufallsprinzip ein verfügbarer Endpunkt ausgewählt. Die Wahrscheinlichkeit basiert hierbei auf der Gewichtung, die diesem und den anderen verfügbaren Endpunkten zugewiesen wurde.
 
-![Gewichtete Routingmethode für Roundrobin](./media/traffic-manager-routing-methods/IC750594.png)
-
-**Abbildung 3**
-
-Gewichtetes Routing von Roundrobin-Datenverkehr ermöglicht das Verteilen der Last auf verschiedene Endpunkte basierend auf einem zugewiesenen "Gewichtungswert" jedes Endpunkts. Je höher die Gewichtung ist, desto häufiger wird ein Endpunkt zurückgegeben. In den folgenden Szenarien kann diese Methode sinnvoll sein:
+Die Verwendung der gleichen Gewichtung für alle Endpunkte führt zu einer gleichmäßigen Verteilung des Datenverkehrs. Dies eignet sich ideal zur Sicherstellung einer konsistenten Auslastung über eine Gruppe identischer Endpunkte hinweg. Wenn für bestimmte Endpunkte eine höhere (oder niedrigere) Gewichtung verwendet wird, werden diese Endpunkte häufiger (oder seltener) in den DNS-Antworten zurückgegeben und empfangen daher mehr (oder weniger) Datenverkehr. Dadurch wird eine Reihe nützlicher Szenarien ermöglicht:
 
 - Allmähliches Anwendungsupgrade: Weisen Sie einen Prozentwert des Datenverkehrs zu, der an einen neuen Endpunkt weitergeleitet wird, und erhöhen Sie den Datenverkehr dann im Lauf der Zeit allmählich auf 100 %.
+
 - Anwendungsmigration zu Azure: Erstellen Sie ein Profil mit Azure- und externen Endpunkten, und geben Sie die Gewichtung des Datenverkehrs an, der an jeden Endpunkt weitergeleitet wird.
+
 - Erweiterung in die Cloud für zusätzliche Kapazität: Erweitern Sie eine lokale Bereitstellung schnell in die Cloud, indem Sie diese hinter einem Traffic Manager-Profil zur Verfügung stellen. Wenn Sie zusätzliche Kapazität in der Cloud benötigen, können Sie weitere Endpunkte hinzufügen oder aktivieren. Geben Sie dann an, welcher Teil des Datenverkehrs an jeden Endpunkt gesendet wird.
 
-Zurzeit kann das klassische Azure-Portal nicht zum Konfigurieren von gewichtetem Datenverkehrsrouting verwendet werden. Azure stellt programmgesteuerten Zugriff auf diese Methode mithilfe der zugehörigen Dienstverwaltungs-REST-API und der Azure PowerShell-Cmdlets zur Verfügung.
+Ein gewichtetes Datenverkehrsrouting kann über das neue Azure-Portal konfiguriert werden, nicht jedoch über das klassische Portal. Dieses Routing kann sowohl über ARM als auch ASM mithilfe von Azure PowerShell, der Azure-Befehlszeilenschnittstelle und der Azure-REST-APIs konfiguriert werden.
 
-Informationen zur Verwendung der REST-APIs finden Sie unter [Vorgänge für Traffic Manager (REST-API-Referenz)](http://go.microsoft.com/fwlink/p/?LinkId=313584).
+Hinweis: DNS-Antworten werden sowohl von Clients als auch von den rekursiven DNS-Servern zwischengespeichert, die von diesen Clients für ihre DNS-Abfragen verwendet werden. Es ist wichtig, die potenziellen Auswirkungen dieser Zwischenspeicherung auf gewichtete Datenverkehrsverteilungen zu verstehen. Wenn die Anzahl von Clients und rekursiven DNS-Servern hoch ist – wie es bei Anwendungen mit Internetzugriff in der Regel der Fall ist –, funktioniert die Verteilung des Datenverkehrs wie erwartet. Wenn die Anzahl von Clients oder rekursiven DNS-Servern jedoch gering ist, kann diese Zwischenspeicherung die Verteilung des Datenverkehrs massiv verzerren. Hier finden Sie einige häufige Szenarien, in denen dies auftreten kann:
 
-Informationen zur Verwendung der Azure PowerShell-Cmdlets finden Sie unter [Azure Traffic Manager-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769). Eine Beispielkonfiguration finden Sie unter [Azure Traffic Manager External Endpoints and Weighted Round Robin via PowerShell](https://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/) in englischer Sprache im Azure-Blog.
+- Entwicklungs- und Testumgebungen
+- Kommunikation zwischen Anwendungen
+- Anwendungen mit einer kleinen Benutzerbasis, die eine gemeinsame rekursive DNS-Infrastruktur nutzen, beispielsweise die Mitarbeiter einer Organisation.
 
-Wenn Sie das Profil von einem einzelnen Client aus testen und das gleichmäßige oder gewichtete Roundrobin-Verhalten beobachten möchten, überprüfen Sie, ob der DNS-Name in die verschiedenen IP-Adressen für die Endpunkte gemäß den gleichmäßigen oder gewichteten Werten im Profil aufgelöst wird. Beim Testen müssen Sie clientseitiges DNS-Caching deaktivieren oder den DNS-Cache zwischen den einzelnen Versuchen löschen, damit sichergestellt ist, dass eine neue Abfrage des DNS-Namens gesendet wird.
+Diese Auswirkungen der DNS-Zwischenspeicherung gelten für alle DNS-basierten Systeme für das Datenverkehrsrouting, nicht nur für Azure Traffic Manager. In einigen Fällen lässt sich das Problem möglicherweise durch eine explizite Bereinigung des DNS-Cache umgehen. In anderen Fällen eignet sich eine alternative Methode für das Datenverkehrsrouting besser.
 
-## Routingmethode für Leistungsdatenverkehr
+## Leistungsorientierte Methode für das Datenverkehrsrouting
 
-Wenn Sie das Routing von Datenverkehr für Endpunkte in verschiedenen Datencentern weltweit einrichten möchten, können Sie eingehenden Datenverkehr an den nächstgelegenen Endpunkt (den Endpunkt mit der kürzesten Wartezeit zwischen dem anfordernden Client und dem Endpunkt) weiterleiten. Normalerweise entspricht der "nächstgelegene" Endpunkt direkt der kürzesten geografischen Distanz. Die Routingmethode für Leistungsdatenverkehr ermöglicht Ihnen eine Verteilung basierend auf Standort und Latenz, kann jedoch nicht die Echtzeitänderungen in der Netzwerkkonfiguration bzw. Last berücksichtigen.
+Die Reaktionsfähigkeit vieler Anwendungen kann verbessert werden, indem Sie Endpunkte an mindestens zwei Standorten auf der ganzen Welt bereitstellen und Endbenutzer an den Standort weiterleiten, der ihnen am nächsten liegt. Dies ist der Zweck der leistungsorientierten Methode für das Datenverkehrsrouting.
 
-Die Routingmethode für Leistungsdatenverkehr sucht den anfordernden Client und leitet ihn zum nächstgelegenen Endpunkt weiter. Die "Nähe" wird durch eine Internetlatenztabelle ermittelt, welche die Roundtripzeit zwischen verschiedenen IP-Adressen und den einzelnen Azure-Datencentern anzeigt. Diese Tabelle wird in regelmäßigen Abständen aktualisiert und spiegelt nicht die Leistung über das Internet in Echtzeit wider. Diese Methode berücksichtigt nicht die Arbeitsauslastung eines bestimmten Diensts. Traffic Manager überwacht jedoch Ihre Endpunkte auf der Grundlage der ausgewählten Methode und schließt diese nicht in die DNS-Abfrageantworten ein, wenn sie nicht verfügbar sind. Anders ausgedrückt, umfasst das Routing von Leistungsdatenverkehr also auch die Routingmethode für Failoverdatenverkehr.
+![Leistungsorientiere Methode für das Datenverkehrsrouting in Azure Traffic Manager][3]
 
-Abbildung 4 zeigt ein Beispiel für die Routingmethode für Leistungsdatenverkehr für eine Reihe von Endpunkten.
+Um die Reaktionsfähigkeit zu maximieren, ist der nächstgelegene Endpunkt nicht unbedingt derjenige, der geografisch am nächsten liegt. Stattdessen bestimmt diese Methode für das Datenverkehrsrouting, welcher Endpunkt dem Endbenutzer hinsichtlich der Netzwerklatenz am nächsten liegt. Dies wird durch eine Internetlatenztabelle ermittelt, welche die Roundtripzeit zwischen IP-Adressbereichen und den einzelnen Azure-Rechenzentren anzeigt.
 
-![Traffic Manager-Routingmethode für Leistung](./media/traffic-manager-routing-methods/IC753237.jpg)
+Traffic Manager untersucht jede eingehende DNS-Anforderung und ermittelt die IP-Quelladresse dieser Anforderung in der Internetlatenztabelle. So wird die Latenz zwischen dieser IP-Adresse und jedem Azure-Rechenzentrum bestimmt. Traffic Manager wählt aus, welcher der verfügbaren Endpunkte (basierend auf dem konfigurierten Endpunktstatus [aktiviert oder nicht aktiviert] und der kontinuierlichen Endpunktüberwachung) die geringste Latenz aufweist, und gibt diesen Endpunkt in der DNS-Antwort zurück. Daher wird der Endbenutzer an den Endpunkt weitergeleitet, der die geringste Latenz und damit die beste Leistung bietet.
 
-**Abbildung 4**
+Wie unter [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md) erläutert, empfängt Traffic Manager DNS-Abfragen nicht direkt von Endbenutzern, sondern vom rekursiven DNS-Dienst, für dessen Verwendung die Endbenutzer konfiguriert wurden. Daher handelt es sich bei der IP-Adresse, die zur Ermittlung des nächstgelegenen Endpunkts verwendet wird, nicht um die IP-Adresse eines Endbenutzers, sondern um die IP-Adresse des zugehörigen rekursiven DNS-Diensts. In der Praxis lässt sich diese IP-Adresse für diesen Zweck gut verwenden.
 
-Die folgenden nummerierten Schritte entsprechen den Ziffern in Abbildung 4.
+Um Änderungen im globalen Internet sowie die Hinzufügung neuer Azure-Regionen zu berücksichtigen, aktualisiert Traffic Manager die verwendete Internetlatenztabelle regelmäßig. Schwankungen der Leistung oder Auslastung im Internet können dabei jedoch nicht in Echtzeit einberechnet werden.
 
-1. Traffic Manager erstellt die Internetlatenztabelle in regelmäßigen Abständen. Die Traffic Manager-Infrastruktur führt Tests aus, um die Roundtripzeiten zwischen verschiedenen Punkten weltweit und den Azure-Datencentern zu bestimmen, in denen Endpunkte gehostet werden.
-2. Traffic Manager empfängt eine eingehende Anforderung von einem Client über den lokalen DNS-Server und sucht nach dem Profil.
-3. Traffic Manager ermittelt die Zeile in der Internetlatenztabelle für die IP-Adresse der eingehenden DNS-Anforderung. Da der lokale DNS-Server des Benutzers eine iterative DNS-Abfrage ausführt, um den autorisierenden DNS-Server für den Traffic Manager-Profilnamen zu ermitteln, wird die DNS-Abfrage von der IP-Adresse des lokalen DNS-Servers des Clients gesendet.
-4. Traffic Manager ermittelt das Datencenter mit der kürzesten Zeitangabe für die Datencenter, die die im Profil definierten Endpunkte hosten. In diesem Beispiel ist dies CS-B.
-5. Traffic Manager gibt den Domänennamen von CS-B an den lokalen DNS-Server des Clients zurück, der den Domänennamen in eine IP-Adresse auflöst und diese an den Client sendet.
-6. Der Client initiiert Datenverkehr an CS-B.
+Die leistungsorientierte Methode für das Datenverkehrsrouting berücksichtigt nicht die Auslastung eines bestimmten Dienstendpunkts. Traffic Manager überwacht jedoch Ihre Endpunkte und schließt diese nicht in die DNS-Abfrageantworten ein, wenn sie nicht verfügbar sind.
 
-**Beachten Sie Folgendes:**
+Beachten Sie Folgendes:
 
-- Wenn das Profil mehrere Endpunkte im selben Datencenter enthält, wird der an dieses Datencenter gerichtete Datenverkehr gleichmäßig auf die verfügbaren Endpunkte verteilt, die gemäß der Endpunktüberwachung verfügbar und fehlerfrei sind.
-- Wenn alle Endpunkte in einem bestimmten Datencenter gemäß der Endpunktüberwachung nicht verfügbar sind, wird der an diese Endpunkte gerichtete Datenverkehr auf alle verfügbaren Endpunkte verteilt, die im Profil angegeben sind, und nicht auf den oder die nächstgelegenen Endpunkt(e). Auf diese Weise können Sie kaskadierende Fehler vermeiden, die auftreten können, wenn der nächstgelegene Endpunkt überlastet ist.
-- Wenn die Internetlatenztabelle aktualisiert wird, stellen Sie ggf. einen Unterschied bei den Mustern und der Auslastung für den Datenverkehr in Ihren Endpunkten fest. Diese Änderungen sollten nur geringfügiger Natur sein.
-- Wenn die Routingmethode für Leistungsdatenverkehr mit externen Endpunkten verwendet wird, müssen Sie den Speicherort dieser Endpunkte angeben. Wählen Sie die Azure-Region aus, die Ihrer Bereitstellung am nächsten ist. Weitere Informationen finden Sie unter [Verwalten von Endpunkten in Traffic Manager](traffic-manager-endpoints.md).
+- Wenn Ihr Profil mehrere Endpunkte in der gleichen Azure-Region enthält, wird der an diese Region geleitete Datenverkehr gleichmäßig auf die verfügbaren Endpunkte verteilt (basierend auf dem konfigurierten Endpunktstatus [aktiviert oder nicht aktiviert] und der kontinuierlichen Endpunktüberwachung). Wenn Sie eine andere Verteilung des Datenverkehrs innerhalb einer Region bevorzugen, können Sie dies mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md) erreichen.
 
-## Traffic Manager-Abbildungen
+- Wenn alle Endpunkte in einer bestimmten Azure-Region heruntergestuft wurden (basierend auf der kontinuierlichen Endpunktüberwachung), wird der an diese Endpunkte gerichtete Datenverkehr auf alle anderen verfügbaren Endpunkte verteilt, die im Profil angegeben sind – nicht auf den oder die nächstgelegenen Endpunkt(e). Auf diese Weise können Sie kaskadierende Fehler vermeiden, die auftreten können, wenn der nächstgelegene Endpunkt überlastet ist. Wenn Sie die Failoversequenz für Endpunkte lieber definieren möchten, können Sie dies in [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md) tun.
 
-Wenn Sie die Abbildungen in diesem Thema als PowerPoint-Folien in Ihrer eigenen Präsentation zu Traffic Manager verwenden oder für Ihre eigenen Zwecke ändern möchten, lesen Sie [Traffic Manager figures in MSDN documentation](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99) (in englischer Sprache).
+- Wenn die leistungsorientierte Methode für das Datenverkehrsrouting mit externen oder geschachtelten Endpunkten verwendet wird, müssen Sie den Standort dieser Endpunkte angeben. Wählen Sie die Ihrer Bereitstellung am nächsten gelegene Azure-Region – als Optionen sind die Azure-Regionen verfügbar, da sie die Standorte sind, die von der Internetlatenztabelle unterstützt werden.
+
+- Der Algorithmus, mit dem der für einen bestimmten Benutzer zurückzugebende Endpunkt ausgewählt wird, ist deterministisch – es findet keine zufällige Auswahl statt. Wiederholte DNS-Abfragen des gleichen Clients werden an den gleichen Endpunkt geleitet. Allerdings sollten Sie sich bei der leistungsorientierten Methode für das Datenverkehrsrouting nicht darauf verlassen, dass ein bestimmter Benutzer immer an eine bestimmte Bereitstellung weitergeleitet wird (dies ist z.B. dann erforderlich, wenn die Benutzerdaten für diesen Benutzer nur an einem Ort gespeichert sind). Dies liegt daran, dass Benutzer, wenn sie unterwegs sind, üblicherweise verschiedene rekursive DNS-Server verwenden und daher an einen anderen Endpunkt weitergeleitet werden. Auch Updates der Internetlatenztabelle können sich auswirken.
+
+- Wenn die Internetlatenztabelle aktualisiert wird, stellen Sie möglicherweise fest, dass einige Clients an einen anderen Endpunkt weitergeleitet werden. Dies reflektiert ein genaueres Routing basierend auf aktuellen Latenzdaten, und die Anzahl der davon betroffenen Benutzer dürfte gering sein. Diese Updates sind wichtig, um angesichts der kontinuierlichen Entwicklung des Internets die Genauigkeit der leistungsorientierten Methode für das Datenverkehrsrouting sicherzustellen.
+
 
 ## Nächste Schritte
 
-[Traffic Manager-Überwachung](traffic-manager-monitoring.md)
+Erfahren Sie, wie Sie mithilfe der [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md) hoch verfügbare Anwendungen entwickeln.
 
-[Erstellen eines Profils](traffic-manager-manage-profiles.md)
+Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-manage-profiles.md)
 
-[Hinzufügen eines Endpunkts](traffic-manager-endpoints.md)
- 
 
-<!---HONumber=AcomDC_0323_2016-->
+<!--Image references-->
+[1]: ./media/traffic-manager-routing-methods/priority.png
+[2]: ./media/traffic-manager-routing-methods/weighted.png
+[3]: ./media/traffic-manager-routing-methods/performance.png
+
+<!---HONumber=AcomDC_0601_2016-->

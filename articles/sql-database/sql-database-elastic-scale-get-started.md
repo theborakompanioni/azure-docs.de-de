@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2016" 
-	ms.author="sidneyh"/>
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
 # Erste Schritte mit Tools für elastische Datenbanken
 
@@ -101,4 +101,4 @@ Weitere Informationen zu den Tools für elastische Datenbanken finden Sie unter:
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -75,7 +75,7 @@ Um einen Azure-Dienstclient zu erstellen, müssen Sie die **ServicesBuilder**-Kl
 Für die hier erläuterten Beispiele wird die Verbindungszeichenfolge direkt weitergegeben.
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 	
@@ -91,7 +91,7 @@ Sie können Verwaltungsvorgänge für Service Bus-Themen über die **ServiceBusR
 Das folgende Beispiel zeigt, wie Sie einen **ServiceBusRestProxy** instanziieren und **ServiceBusRestProxy->createTopic** aufrufen, um das Thema `mytopic` im Namespace `MySBNamespace` zu erstellen:
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -126,7 +126,7 @@ Themenabonnements werden ebenfalls mit der **ServiceBusRestProxy->createSubscrip
 **MatchAll** ist der Standardfilter, der verwendet wird, wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird. Wenn der Filter **MatchAll** verwendet wird, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements gestellt. Mit dem folgenden Beispiel wird ein Abonnement namens "mysubscription" erstellt, für das der Standardfilter **MatchAll** verwendet wird.
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -191,7 +191,7 @@ Wenn jetzt eine Nachricht an das `mytopic`-Thema gesendet wird, wird diese nun s
 Um eine Nachricht an ein Service Bus-Thema zu senden, ruft Ihre Anwendung die **ServiceBusRestProxy->sendTopicMessage**-Methode auf. Der folgende Code zeigt, wie Sie eine Nachricht an das zuvor erstellte `mytopic`-Thema im `MySBNamespace`-Dienstnamespace senden können.
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -247,7 +247,7 @@ Im **PeekLock**-Modus ist der Nachrichtenempfang zweistufig. Dadurch können Anw
 Das folgende Beispiel zeigt, wie eine Nachricht mit dem (nicht standardmäßig verwendeten) **PeekLock**-Modus empfangen und verarbeitet werden kann.
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -300,7 +300,7 @@ Verwenden Sie zum Löschen eines Themas oder Abonnements die **ServiceBusRestPro
 Im folgenden Beispiel wird gezeigt, wie ein Thema (`mytopic`) und die darin registrierten Abonnements gelöscht werden.
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\ServiceBus\ServiceBusService;
 use WindowsAzure\ServiceBus\ServiceBusSettings;
@@ -338,4 +338,4 @@ Nachdem Sie mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, fin
 [require-once]: http://php.net/require_once
 [Service Bus-Kontingente]: service-bus-quotas.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

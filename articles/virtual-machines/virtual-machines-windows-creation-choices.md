@@ -21,20 +21,17 @@
 
 Azure bietet verschiedene Möglichkeiten zum Erstellen eines virtuellen Computers, da virtuelle Computer für verschiedene Benutzer und Zwecke geeignet sind. Daher müssen Sie einige Optionen für den virtuellen Computer und dessen Erstellung auswählen. Dieser Artikel bietet einen Überblick über diese Optionen sowie Links zu Anweisungen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
-
 ## Azure-Portal
 
 Über das Azure-Portal lassen sich virtuelle Computer sehr einfach testen. Dies gilt insbesondere dann, wenn Sie noch nicht viel Erfahrung mit Azure haben.
 
-[Create a virtual machine running Windows using the portal](virtual-machines-windows-hero-tutorial.md) (Erstellen eines virtuellen Windows-Computers mithilfe des Portals)
+[Create a virtual machine running Windows using the portal (Erstellen eines virtuellen Windows-Computers mithilfe des Portals)](virtual-machines-windows-hero-tutorial.md)
 
 ## Microsoft Azure PowerShell
 
 Falls Sie lieber in einer Befehlsshell arbeiten, können Sie Azure PowerShell verwenden.
 
-- [Create a Windows VM using PowerShell](virtual-machines-windows-ps-create.md) (Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell)
+- [Create a Windows VM using PowerShell (Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell)](virtual-machines-windows-ps-create.md)
 - [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md)
 
 ## Vorlage
@@ -47,4 +44,4 @@ Virtuelle Computer benötigen verschiedene Ressourcen (wie etwa Verfügbarkeitsg
 
 [Bereitstellen von Azure-Ressourcen mithilfe der Computing-, Netzwerk- und Speicherbibliotheken von .NET](virtual-machines-windows-csharp.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

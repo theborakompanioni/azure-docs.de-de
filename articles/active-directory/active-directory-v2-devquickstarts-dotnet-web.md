@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0: .NET-Web-App | Microsoft Azure"
+	pageTitle="Azure AD v2.0: .NET-Web-App | Microsoft Azure"
 	description="Vorgehensweise beim Erstellen einer .NET MVC-Web-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
 	services="active-directory"
 	documentationCenter=".net"
@@ -207,4 +207,8 @@ Weitere Ressourcen:
 - [Das v2.0-Entwicklerhandbuch >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow-Tag „azure-active-directory“ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_0323_2016-->
+## Abrufen von Sicherheitsupdates für unsere Produkte
+
+Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
+
+<!---HONumber=AcomDC_0601_2016-->

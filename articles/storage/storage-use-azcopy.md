@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/06/2016"
+	ms.date="05/26/2016"
 	ms.author="micurd"/>
 
 # Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy
@@ -374,13 +374,15 @@ Sie können den folgenden Befehl ausführen, um Entitäten mithilfe der Manifest
 
 ### Nur Daten kopieren, die im Ziel nicht vorhanden sind.
 
-Die Parameter `/XO` und `/XN` erlauben Ihnen, jeweils ältere oder neuere Quellressourcen vom Kopieren auszuschließen. Dies wird nicht unterstützt, wenn es sich bei Quelle oder Ziel um eine Tabelle handelt. Falls Sie nur Quellressourcen kopieren wollen, die im Ziel nicht existieren, können Sie beide Parameter im AzCopy-Befehl angeben.
+Die Parameter `/XO` und `/XN` erlauben Ihnen, jeweils ältere oder neuere Quellressourcen vom Kopieren auszuschließen. Falls Sie nur Quellressourcen kopieren wollen, die im Ziel nicht existieren, können Sie beide Parameter im AzCopy-Befehl angeben.
 
 	/Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /XO /XN
 
 	/Source:C:\myfolder /Dest:http://myaccount.file.core.windows.net/myfileshare /DestKey:<destkey> /S /XO /XN
 
 	/Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:http://myaccount.blob.core.windows.net/mycontainer1 /SourceKey:<sourcekey> /DestKey:<destkey> /S /XO /XN
+
+Hinweis: Dies wird nicht unterstützt, wenn es sich bei Quelle oder Ziel um eine Tabelle handelt.
 
 ### Verwenden einer Antwortdatei zum Angeben von Befehlszeilenparametern
 
@@ -479,9 +481,9 @@ Wenn Sie nach der Option `/V` einen relativen Pfad angeben, z. B. `/V:test/azco
 
 Die Option `/NC` gibt die Anzahl der gleichzeitigen Kopiervorgänge an. AzCopy startet standardmäßig eine bestimmte Anzahl gleichzeitiger Vorgänge zum Erhöhen des Datenübertragungsdurchsatzes. Bei Tabellenvorgängen entspricht die Anzahl gleichzeitiger Vorgänge der Anzahl der verfügbaren Prozessoren. Bei Blob- und Dateivorgängen entspricht die Anzahl gleichzeitiger Vorgänge der achtfachen Anzahl der verfügbaren Prozessoren. Wenn Sie AzCopy in einem Netzwerk mit geringer Bandbreite ausführen, können Sie eine niedrigere Anzahl für „/NC“ angeben, um Fehler durch gleichzeitig verwendete Ressourcen zu vermeiden.
 
-### AzCopy gegen Azure-Speicheremulator ausführen
+### AzCopy über Azure-Speicheremulator ausführen
 
-Sie können AzCopy gegen [Azure-Speicheremulator](storage-use-emulator.md) für Blobs ausführen.
+Sie können AzCopy über den [Azure-Speicheremulator](storage-use-emulator.md) ausführen. Für Blobs:
 
 	AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
 
@@ -593,7 +595,7 @@ Momentaufnahmen werden standardmäßig nicht kopiert.
 
 Gibt ausführliche Statusmeldungen in eine Protokolldatei aus.
 
-Die ausführliche Protokolldatei erhält standardmäßig die Bezeichnung „AzCopyVerbose.log“ in `%LocalAppData%\Microsoft\Azure\AzCopy`. Wenn Sie für diese Option einen vorhandenen Dateispeicherort angeben, wird das ausführliche Protokoll an diese Datei angefügt.
+Die ausführliche Protokolldatei erhält in `%LocalAppData%\Microsoft\Azure\AzCopy` standardmäßig die Bezeichnung „AzCopyVerbose.log“. Wenn Sie für diese Option einen vorhandenen Dateispeicherort angeben, wird das ausführliche Protokoll an diese Datei angefügt.
 
 **Gilt für:** Blobs, Dateien, Tabellen
 
@@ -864,4 +866,4 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 - [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

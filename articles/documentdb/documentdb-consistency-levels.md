@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/24/2016"
+	ms.date="05/27/2016"
 	ms.author="mimig"/>
 
 # Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB
@@ -66,9 +66,9 @@ Die Konsistenzebene "Eventual" bietet die schwächste Lesekonsistenz, jedoch die
 
 	![Screenshot mit dem Symbol „Einstellungen“ und dem Eintrag „Standardkonsistenz“](./media/documentdb-consistency-levels/database-consistency-level-1.png)
 
-5. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus und klicken Sie auf **Speichern**.
+5. Wählen Sie auf dem Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **OK**.
 
-	![Screenshot mit der Konsistenzebene und der Schaltfläche „Speichern“](./media/documentdb-consistency-levels/database-consistency-level-2.png)
+	![Screenshot mit der Konsistenzebene und der Schaltfläche „OK“](./media/documentdb-consistency-levels/database-consistency-level-2.png)
 
 ## Konsistenzebenen für Abfragen
 
@@ -91,4 +91,4 @@ Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile 
 -	Peter Bailis, Shivaram Venkataraman, Michael J. Franklin, Joseph M. Hellerstein, Ion Stoica. Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums. [http://vldb.org/pvldb/vol5/p776\_peterbailis\_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 -	Werner Vogels. Eventual Consistent - Revisited. [http://allthingsdistributed.com/2008/12/eventually\_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

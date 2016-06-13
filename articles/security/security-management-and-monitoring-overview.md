@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="05/26/2016"
    ms.author="terrylan"/>
 
 # Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
@@ -28,7 +28,7 @@ Im folgenden Diagramm sind die Informationen zur Verteilung der Zuständigkeiten
 
 ![Gemeinsame Verantwortung][1]
 
-Ausführlichere Informationen zur Sicherheitsverwaltung finden Sie unter [Sicherheitsverwaltung in Azure](../azure-security-management.md).
+Ausführlichere Informationen zur Sicherheitsverwaltung finden Sie unter [Sicherheitsverwaltung in Azure](azure-security-management.md).
 
 Hier sind die wichtigsten Features aufgeführt, die in diesem Artikel behandelt werden:
 
@@ -134,4 +134,4 @@ Weitere Informationen:
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

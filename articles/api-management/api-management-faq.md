@@ -36,6 +36,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Info
 -	[Kann ich einen OAuth 2.0-Autorisierungsserver mit AD FS-Sicherheit konfigurieren?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
 -	[Welche Routingmethode verwendet API Management in einer Bereitstellung in mehreren geografischen Standorten?](#what-routing-method-does-api-management-use-when-deployed-to-multiple-geographic-locations)
 -	[Kann ich eine API Management-Dienstinstanz mithilfe einer ARM-Vorlage erstellen?](#can-i-create-an-api-management-service-instance-using-an-arm-template)
+-	[Kann ich ein selbstsigniertes SSL-Zertifikat für ein Back-End verwenden?](#can-i-use-a-self-signed-ssl-certificate-for-a-backend)
 
 
 
@@ -47,7 +48,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Info
 
 ### Was bedeutet es, wenn ein Feature sich in der Vorschau befindet?
 
-Ein Feature, das sich in der Vorschauphase befindet, ist funktionell abgeschlossen, wir suchen jedoch aktiv nach Feedback zu diesem Feature. Es ist möglich, dass wir als Reaktion auf Kundenfeedback eine wichtige Änderung vornehmen, und raten daher von der Verwendung der Funktion in Produktionsumgebungen ab. Wenn Sie Feedback zu Vorschaufeatures haben, senden Sie uns Ihre Kommentare über eine der unter [Wie kann ich dem API Management-Team eine Frage stellen?](#how-can-i-ask-a-question-to-the-api-management-team) beschriebenen Methoden.
+Ein Feature, das sich in der Vorschauphase befindet, ist funktionell abgeschlossen, wir suchen jedoch aktiv nach Feedback zu diesem Feature. Es ist möglich, dass wir als Reaktion auf Kundenfeedback eine wichtige Änderung vornehmen, und raten daher von der Verwendung der Funktion in Produktionsumgebungen ab. Wenn Sie Feedback zu Vorschaufeatures haben, können Sie uns Ihre Kommentare über eine der unter [Wie kann ich dem API Management-Team eine Frage stellen?](#how-can-i-ask-a-question-to-the-api-management-team) beschriebenen Methoden senden.
 
 ### Welche Optionen werden unterstützt, um die Verbindung zwischen dem API Management-Gateway und meinen Back-End-Diensten abzusichern?
 
@@ -81,8 +82,8 @@ Sie können dies mithilfe der folgenden Schritte erreichen:
 Nach diesem Schritt kann sich der neu hinzugefügte Administrator mithilfe von Azure PowerShell-[Cmdlets](https://msdn.microsoft.com/library/mt613507.aspx) als Administrator anmelden:
 
 1. Melden Sie sich mithilfe des `Login-AzureRmAccount`-Cmdlets an.
-2. Legen Sie den Kontext auf das Abonnement fest, das den Service enthält. Verwenden Sie dazu `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
-3. Rufen Sie das SSO-Token ab. Verwenden Sie dazu `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
+2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
+3. Rufen Sie das SSO-Token ab. Verwenden Sie hierfür `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
 4. Kopieren Sie die URL, und fügen Sie sie in den Browser ein. Der Benutzer sollte nun Zugriff auf das Verwaltungsportal haben.
 
 
@@ -108,7 +109,7 @@ Zurzeit stehen folgenden Optionen zur Verfügung:
 
 Zurzeit bieten wir eingeschränkte Unterstützung für SOAP in Azure API Management an; wir untersuchen dieses Feature weiter. Wir sind sehr daran interessiert, Beispiel-WSDLs von Ihren Kunden sowie eine Beschreibung der Features zu erhalten, die sie benötigen. So können wir das Feature fokussiert weiterentwickeln. Nutzen Sie bitte die Kontaktinformationen unter [Wie kann ich dem API Management-Team eine Frage stellen?](#how-can-i-ask-a-question-to-the-api-management-team), um sich mit uns in Verbindung zu setzen.
 
-Wenn Sie das Feature sofort einsetzen möchten, finden Sie einige Problemumgehungen, die von unserer Community vorgeschlagen wurden, unter [Azure API Management - APIM, consuming a SOAP WCF service over HTTP](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html) (Azure API Management – APIM, Verwendung eines SOAP-WCF-Diensts über HTTP).
+Falls Sie das Feature sofort einsetzen möchten, finden Sie einige Problemumgehungen, die von unserer Community vorgeschlagen wurden, unter [Azure API Management - APIM, consuming a SOAP WCF service over HTTP](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html) (Azure API Management – APIM, Verwendung eines SOAP-WCF-Diensts über HTTP).
 
 Die Implementierung der Lösung auf diese Weise erfordert die manuelle Konfiguration von Richtlinien und unterstützt keine WSDL-Import-/Exportvorgänge. Zudem müssen Benutzer den Text von Anforderungen formen, die mithilfe der Testkonsole im Entwicklerportal erstellt wurden.
 
@@ -137,4 +138,12 @@ API Management verwendet die [Routingmethode für Leistungsdatenverkehr](../traf
 
 Ja. Weitere Informationen finden Sie in den Schnellstartvorlagen für den [Azure API Management-Dienst](http://aka.ms/apimtemplate).
 
-<!---HONumber=AcomDC_0525_2016-->
+### Kann ich ein selbstsigniertes SSL-Zertifikat für ein Back-End verwenden?
+
+Ja. Führen Sie folgende Schritte aus:
+
+1. Erstellen Sie eine [Back-End](https://msdn.microsoft.com/library/azure/dn935030.aspx)-Entität mit der Verwaltungs-API.
+2. Legen Sie die skipCertificateChainValidation-Eigenschaft auf „true“ fest.
+3. Wenn Sie die Verwendung eines selbstsignierten Zertifikats nicht mehr zulassen möchten, können Sie die Back-End-Entität löschen oder die skipCertificateChainValidation-Eigenschaft auf „false“ festlegen.
+
+<!---HONumber=AcomDC_0601_2016-->

@@ -19,8 +19,6 @@
 
 # Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 [AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
 Führen Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl aus:
@@ -41,7 +39,7 @@ Diese drei Eigenschaften sind im oben dargestellten Vorlagenausschnitt „publis
 
 Im nächsten Schritt zur Erstellung einer Erweiterungsvorlage wird das Format für die Bereitstellung von Konfigurationsparametern festgelegt. Jede Erweiterung unterstützt einen eigenen Satz von Parametern.
 
-Eine Beispielkonfiguration für Linux-Erweiterungen finden Sie unter [Beispiele für Linux-Erweiterungen](virtual-machines-linux-extensions-configuration-samples.md).
+Beispielkonfigurationen für Linux-Erweiterungen finden Sie unter [Beispiele für Linux-Erweiterungen](virtual-machines-linux-extensions-configuration-samples.md).
 
 Eine vollständige Vorlage mit VM-Erweiterungen finden Sie hier:
 
@@ -49,4 +47,4 @@ Eine vollständige Vorlage mit VM-Erweiterungen finden Sie hier:
 
 Die erstellte Vorlage können Sie anschließend über die Azure-Befehlszeilenschnittstelle bereitstellen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

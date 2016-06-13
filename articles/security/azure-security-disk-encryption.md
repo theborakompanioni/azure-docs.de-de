@@ -91,7 +91,7 @@ Beim Aktivieren und Bereitstellen der Azure-Datenträgerverschlüsselung für vi
 
 Die Azure-Datenträgerverschlüsselung für virtuelle IaaS-Computer für Windows und Linux umfasst die Datenträgerverschlüsselungserweiterung für Windows, Datenträgerverschlüsselungserweiterung für Linux, Datenträgerverschlüsselungs-PowerShell-Cmdlets, Datenträgerverschlüsselungs-CLI-Cmdlets und Azure-Ressourcen-Manager-Vorlagen für die Datenträgerverschlüsselung. Die Lösung für die Azure-Datenträgerverschlüsselung wird auf virtuellen IaaS-Computern unter dem Windows- oder Linux-Betriebssystem unterstützt. Weitere Informationen zu den unterstützten Betriebssystemen finden Sie unten im Abschnitt „Voraussetzungen“.
 
-****Hinweis:** Für die Verschlüsselung von VM-Datenträgern per Azure Disk Encryption fallen keine Gebühren an.
+**Hinweis:** Für die Verschlüsselung von VM-Datenträgern per Azure Disk Encryption fallen keine Gebühren an.
 
 ### Wertbeitrag
 
@@ -169,7 +169,7 @@ Azure Disk Encryption wird für die folgenden Windows-Client-SKUs unterstützt: 
 
 	- Beispiel für eine gültige URL des geheimen Schlüssels:
 
-		**https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- Beispiel für gültigen KRK-Schlüsselverschlüsselungsschlüssel:
 
@@ -183,7 +183,7 @@ Azure Disk Encryption wird für die folgenden Windows-Client-SKUs unterstützt: 
 
 	- Akzeptierte Schlüsseltresor-URL:
 
-		**https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 - Die virtuellen IaaS-Computer müssen die folgenden Anforderungen an die Netzwerkendpunktkonfiguration erfüllen, um die Azure-Datenträgerverschlüsselung zu erfüllen:
 
@@ -262,23 +262,23 @@ Sie können die Azure AD-Client-ID und den geheimen Schlüssel auch über das Az
 
 1\. Klicken Sie wie in der Abbildung unten gezeigt auf die Registerkarte „Active Directory“:
 
-![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption\disk-encryption-fig3.JPG)
+![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption/disk-encryption-fig3.JPG)
 
 2\. Klicken Sie auf „Anwendung hinzufügen“, und geben Sie den Anwendungsnamen wie unten gezeigt ein:
 
-![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption\disk-encryption-fig4.JPG)
+![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption/disk-encryption-fig4.JPG)
 
 3\. Klicken Sie auf die Pfeilschaltfläche, und konfigurieren Sie die Eigenschaften der App wie unten gezeigt:
 
-![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption\disk-encryption-fig5.JPG)
+![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption/disk-encryption-fig5.JPG)
 
 4\. Klicken Sie unten links auf das Häkchen, um den Vorgang abzuschließen. Die Konfigurationsseite der App wird angezeigt. Beachten Sie, dass sich die Azure AD-Client-ID unten auf der Seite befindet. Dies ist in der Abbildung unten dargestellt.
 
-![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption\disk-encryption-fig6.JPG)
+![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption/disk-encryption-fig6.JPG)
 
 5\. Speichern Sie den geheimen Azure AD-Clientschlüssel, indem Sie auf die Schaltfläche „Speichern“ klicken. Klicken Sie auf die Schaltfläche „Speichern“, und sehen Sie sich den geheimen Schlüssel im Textfeld „Schlüssel“ an. Dies ist der geheime Azure AD-Clientschlüssel. Sie sollten den geheimen Azure AD-Clientschlüssel entsprechend schützen.
 
-![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption\disk-encryption-fig7.JPG)
+![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption/disk-encryption-fig7.JPG)
 
 
 **Hinweis:** Der obige Fluss wird im Portal nicht unterstützt.
@@ -845,4 +845,4 @@ Sie können diese Anleitung aus dem [TechNet-Katalog](https://gallery.technet.mi
 
 [Explore Azure Disk Encryption with Azure PowerShell - Part 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

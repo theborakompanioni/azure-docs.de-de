@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0: AngularJS – Erste Schritte | Microsoft Azure"
+	pageTitle="Azure AD v2.0: AngularJS – Erste Schritte | Microsoft Azure"
 	description="Vorgehensweise beim Erstellen einer einseitigen AngularJS-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
 	services="active-directory"
 	documentationCenter=""
@@ -21,14 +21,14 @@
 
 In diesem Artikel verwenden wir den v2.0-Endpunkt von Azure Active Directory, um einer AngularJS-App eine Anmeldung mit Microsoft-basierten Konten hinzuzufügen. Mit dem v2.0-Endpunkt können Sie eine einzelne Integration in Ihrer App ausführen und Benutzer mit persönlichen Konten sowie mit Geschäfts-, Schul- oder Unikonten authentifizieren.
 
-Bei dem Beispiel handelt es sich um eine einfache Aufgabenlisten-App mit einer Seite, die die Aufgaben in einer Back-End-REST-API speichert. Sie ist mit dem .NET 4.5 MVC-Framework geschrieben und wird mit einem OAuth-Bearertoken aus Azure AD gesichert. Die AngularJS-App verwendet unsere Open Source-JavaScript-Authentifizierungsbibliothek [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js), um den gesamten Anmeldeprozess abzuwickeln und Token für den Aufruf der REST-API abzurufen. Nach dem gleichen Muster kann die Authentifizierung auch bei anderen REST-APIs durchgeführt werden, z. B. bei [Microsoft Graph](https://graph.microsoft.com).
+Bei dem Beispiel handelt es sich um eine einfache Aufgabenlisten-App mit einer Seite, die die Aufgaben in einer Back-End-REST-API speichert. Sie ist mit dem .NET 4.5 MVC-Framework geschrieben und wird mit einem OAuth-Bearertoken aus Azure AD gesichert. Die AngularJS-App verwendet unsere Open Source-JavaScript-Authentifizierungsbibliothek [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js), um den gesamten Anmeldeprozess abzuwickeln und Token für den Aufruf der REST-API abzurufen. Nach dem gleichen Muster kann die Authentifizierung auch bei anderen REST-APIs durchgeführt werden, z. B. bei [Microsoft Graph](https://graph.microsoft.com).
 
 > [AZURE.NOTE]
 	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 ## Herunterladen
 
-Bevor Sie anfangen können, müssen Sie Visual Studio herunterladen und installieren. Anschließend können Sie eine Skelett-App [herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) oder klonen:
+Bevor Sie anfangen können, müssen Sie Visual Studio herunterladen und installieren. Anschließend können Sie eine Skelett-App [herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) oder klonen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-DotNet.git
@@ -221,12 +221,16 @@ return $http.get('/api/tasks');
 ...
 ```
 
-Glückwunsch! Ihre in Azure AD integrierte einseitige App ist nun vollständig. Genießen Sie das. Jetzt können Benutzer authentifiziert werden, die zugehörige Back-End-REST-API kann mit OpenID Connect sicher aufgerufen werden, und es können grundlegende Informationen zum Benutzer abgerufen werden. Standardmäßig werden Benutzer mit einem persönlichen Microsoft- oder einem Geschäfts- oder Schulkonto von Azure AD unterstützt. Führen Sie die App aus, und navigieren Sie in einem Browser zu `https://localhost:44326/`. Melden Sie sich mit einem persönlichen Microsoft-Konto oder einem Geschäfts- oder Schulkonto an. Fügen Sie der Aufgabenliste des Benutzers Aufgaben hinzu, und melden Sie sich ab. Versuchen Sie, sich mit dem anderen Kontotyp anzumelden. Falls Sie zum Erstellen von Geschäfts- oder Schulbenutzern einen Azure AD-Mandanten benötigen, [erfahren Sie hier, wie Sie einen Mandanten einrichten](active-directory-howto-tenant.md) (kostenlos).
+Glückwunsch! Ihre in Azure AD integrierte einseitige App ist nun vollständig. Genießen Sie das. Jetzt können Benutzer authentifiziert werden, die zugehörige Back-End-REST-API kann mit OpenID Connect sicher aufgerufen werden, und es können grundlegende Informationen zum Benutzer abgerufen werden. Standardmäßig werden Benutzer mit einem persönlichen Microsoft- oder einem Geschäfts- oder Schulkonto von Azure AD unterstützt. Führen Sie die App aus, und navigieren Sie in einem Browser zu `https://localhost:44326/`. Melden Sie sich mit einem persönlichen Microsoft-Konto oder einem Geschäfts- oder Schulkonto an. Fügen Sie der Aufgabenliste des Benutzers Aufgaben hinzu, und melden Sie sich ab. Versuchen Sie, sich mit dem anderen Kontotyp anzumelden. Falls Sie zum Erstellen von Geschäfts- oder Schulbenutzern einen Azure AD-Mandanten benötigen, [erfahren Sie hier, wie Sie einen Mandanten einrichten](active-directory-howto-tenant.md) (kostenlos).
 
 Weitere Informationen zum v2.0-Endpunkt finden Sie im [v2.0- Entwicklerhandbuch](active-directory-appmodel-v2-overview.md). Weitere Ressourcen:
 
 - [Azure-Beispiele auf GitHub >>](https://github.com/Azure-Samples)
 - [Azure AD auf Stack Overflow >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
-- Azure AD-Dokumentation auf [Azure.com >>](https://azure.microsoft.com/documentation/services/active-directory/)
+- Azure AD-Dokumentation auf [Azure.com >>](https://azure.microsoft.com/documentation/services/active-directory/)
 
-<!---HONumber=AcomDC_0323_2016-->
+## Abrufen von Sicherheitsupdates für unsere Produkte
+
+Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
+
+<!---HONumber=AcomDC_0601_2016-->

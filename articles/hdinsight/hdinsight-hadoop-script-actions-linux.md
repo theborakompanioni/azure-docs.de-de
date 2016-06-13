@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/14/2016"
+    ms.date="05/31/2016"
     ms.author="larryfr"/>
 
 # Entwickeln von Skriptaktionen mit HDInsight
 
-Skriptaktionen stellen eine Möglichkeit zum Anpassen von Azure HDInsight-Clustern dar, indem Cluster-Konfigurationseinstellungen angegeben oder zusätzliche Dienste, Tools oder andere Software auf dem Cluster installiert werden. Sie können Skriptaktionen während der Clustererstellung oder auf einem ausgeführten Cluster verwenden.
+Skriptaktionen stellen eine Möglichkeit zum Anpassen von Azure HDInsight-Clustern dar, indem Clusterkonfigurationseinstellungen angegeben oder zusätzliche Dienste, Tools oder andere Software auf dem Cluster installiert werden. Sie können Skriptaktionen während der Clustererstellung oder auf einem ausgeführten Cluster verwenden.
 
 > [AZURE.NOTE] Die Informationen in diesem Artikel gelten für Linux-basierte HDInsight-Cluster. Informationen zur Verwendung von Skriptaktionen mit Windows-basierten Clustern finden Sie unter [Entwickeln von Skriptaktionen mit HDInsight (Windows)](hdinsight-hadoop-script-actions.md).
 
@@ -26,7 +26,7 @@ Skriptaktionen stellen eine Möglichkeit zum Anpassen von Azure HDInsight-Cluste
 
 Skriptaktionen sind Bash-Skripts, die Azure auf dem Clusterknoten ausführt, um Konfigurationsänderungen vorzunehmen oder Software zu installieren. Eine Skriptaktion wird als Stamm ausgeführt und bietet Vollzugriffsrechte auf die Clusterknoten.
 
-Eine Skriptaktion kann mithilfe der folgenden Methoden angewendet werden:
+Skriptaktionen können mithilfe der folgenden Methoden angewendet werden:
 
 | Verwenden Sie dies, um ein Skript anzuwenden... | Während der Clustererstellung... | In einem ausgeführten Cluster... |
 | ----- |:-----:|:-----:|
@@ -59,7 +59,7 @@ In den verschiedenen HDInsight-Versionen sind unterschiedliche Versionen von Had
 
 ### <a name="bPS2"></a>Einrichten stabiler Verknüpfungen mit Skriptressourcen
 
-Benutzer müssen dafür sorgen, dass alle Skripts und Ressourcen, die im Skript verwendet werden, für die gesamte Nutzungsdauer des Clusters verfügbar bleiben und dass sich die Versionen dieser Dateien während dieses Zeitraums nicht ändern. Diese Ressourcen werden benötigt, wenn während der Skalierungsvorgänge neue Knoten zum Cluster hinzugefügt werden.
+Sie müssen dafür sorgen, dass alle Skripts und Ressourcen, die im Skript verwendet werden, für die gesamte Nutzungsdauer des Clusters verfügbar bleiben und dass sich die Versionen dieser Dateien während dieses Zeitraums nicht ändern. Diese Ressourcen werden benötigt, wenn während der Skalierungsvorgänge neue Knoten zum Cluster hinzugefügt werden.
 
 Die bewährte Methode ist das Herunterladen und Archivieren aller Daten in einem Azure-Speicherkonto Ihres Abonnements.
 
@@ -95,7 +95,7 @@ Mit dem folgenden Code wird beispielsweise die Datei "giraph-examples.jar" aus d
 
 Die während der Skriptausführung in STDOUT und STDERR geschriebenen Informationen werden protokolliert und können über die Ambari-Webbenutzeroberfläche angezeigt werden.
 
-> [AZURE.NOTE] Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden und ein Fehler bei der Erstellung auftritt, finden Sie im Problembehandlungsabschnitt in [Customize HDInsight clusters using script actions](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) (Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
+> [AZURE.NOTE] Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
 
 Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel:
 
@@ -107,7 +107,7 @@ Standardmäßig wird durch `echo` der String an STDOUT gesendet. Soll dieser an 
 
 Damit werden die an STDOUT gesendeten Informationen (1, Standardwert und daher hier nicht aufgeführt) an STDERR (2) umgeleitet. Weitere Informationen zur E/A-Umleitung finden Sie unter [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html).
 
-Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
+Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 
 ###<a name="bps8"></a>Speichern von Dateien im ASCII-Format mit LF-Zeilenenden
 
@@ -118,7 +118,7 @@ Bash-Skripts sollten im ASCII-Format und mit LF als Zeilenende gespeichert werde
 
 ## <a name="helpermethods"></a>Hilfsmethoden für benutzerdefinierte Skripts
 
-Script Action-Hilfsmethoden sind Hilfsprogramme, die Sie zum Schreiben von benutzerdefinierten Skripts verwenden können. Diese werden in der Datei [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) definiert und können wie folgt in Ihre Skripts eingefügt werden:
+Hilfsmethoden für Skriptaktionen sind Hilfsprogramme, die Sie zum Schreiben von benutzerdefinierten Skripts verwenden können. Diese werden in der Datei [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) definiert und können wie folgt in Ihre Skripts eingefügt werden:
 
     # Import the helper method module.
     wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
@@ -181,7 +181,7 @@ Es folgen unsere Schritte bei der Vorbereitung der Bereitstellung dieser Skripts
 
 ## <a name="runScriptAction"></a>Ausführen einer Skriptaktion
 
-Sie können Skriptaktionen zum Anpassen von HDInsight-Clustern über das Azure-Portal, Azure PowerShell, Azure Resource Manager (ARM)-Vorlagen oder über das HDInsight .NET SDK ausführen. Anweisungen hierzu finden Sie unter [Verwenden einer Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md).
+Sie können Skriptaktionen zum Anpassen von HDInsight-Clustern über das Azure-Portal, Azure PowerShell, Azure Resource Manager-Vorlagen (ARM) oder über das HDInsight .NET SDK ausführen. Anweisungen hierzu finden Sie unter [Verwenden einer Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="sampleScripts"></a>Beispiele benutzerdefinierter Skripts
 
@@ -227,10 +227,10 @@ Ersetzen Sie den oben aufgeführten Befehl __INFILE__ durch die Datei mit Bytere
 
 ## <a name="seeAlso"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie HDInsight-Cluster mithilfe von Skriptaktionen anpassen ([Customize HDInsight clusters using script actions](hdinsight-hadoop-customize-cluster-linux.md)).
+* Erfahren Sie, wie Sie [mit Skriptaktionen HDInsight-Cluster anpassen können](hdinsight-hadoop-customize-cluster-linux.md).
 
 * Verwenden Sie die [HDInsight .NET SDK-Referenz](https://msdn.microsoft.com/library/mt271028.aspx), um mehr über das Erstellen von .NET-Anwendungen zu erfahren, die HDInsight verwalten.
 
 * Verwenden Sie die [HDInsight-REST-API](https://msdn.microsoft.com/library/azure/mt622197.aspx), um zu erfahren, wie Sie REST verwenden, um Verwaltungsaktionen auf HDInsight-Clustern auszuführen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->

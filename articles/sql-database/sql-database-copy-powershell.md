@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -46,29 +46,9 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 
 
-## Konfigurieren der Anmeldeinformationen und Auswählen des Abonnements
+## Kopieren der SQL-Datenbank
 
-Zuerst müssen Sie den Zugriff auf Ihr Azure-Konto einrichten. Starten Sie also PowerShell, und führen Sie dann das folgende Cmdlet aus. Geben Sie auf dem Anmeldebildschirm die E-Mail-Adresse und das Kennwort wie für die Anmeldung beim klassischen Azure-Portal ein.
-
-	Add-AzureAccount
-
-Nach der erfolgreichen Anmeldung werden einige Informationen auf dem Bildschirm angezeigt, wie die ID, mit der Sie sich angemeldet haben, und die Azure-Abonnements, auf die Sie zugreifen können.
-
-
-### Auswählen des Azure-Abonnements
-
-Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID oder den Anmeldenamen für das Abonnement (**-SubscriptionName**). Sie können die Abonnement-ID aus den Informationen im vorherigen Schritt kopieren. Falls Sie über mehrere Abonnements verfügen und mehr Details benötigen, können Sie auch das **Get-AzureSubscription**-Cmdlet ausführen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Wenn Sie Ihre Abonnementinformationen haben, führen Sie das folgende Cmdlet aus:
-
-	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
-
-Nach dem erfolgreichen Ausführen von **Select-AzureSubscription** kehren Sie zur PowerShell-Eingabeaufforderung zurück. Wenn Sie über mehrere Abonnements verfügen, können Sie **Get-AzureSubscription** ausführen und überprüfen, ob das gewünschte Abonnement den Wert **IsCurrent: True** aufweist.
-
-
-## Einrichten der Variablen für Ihre jeweilige Umgebung
-
-Es gibt einige Variablen, bei denen Sie die Beispielwerte durch die speziellen Werte für Ihre Datenbank und Ihre Server ersetzen müssen.
-
-Ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Umgebung:
+Es gibt einige Variablen, bei denen Sie die Beispielwerte durch die speziellen Werte für Ihre Datenbank und Ihre Server ersetzen müssen. Ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Umgebung:
 
     # The name of the server on which the source database resides.
     $ServerName = "sourceServerName"
@@ -86,14 +66,14 @@ Ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Umgebung:
 
 
 
-## Kopieren einer SQL-Datenbank auf denselben Server
+### Kopieren einer SQL-Datenbank auf denselben Server
 
 Mit diesem Befehl wird die Anforderung zum Kopieren der Datenbank an den Dienst gesendet. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Kopiervorgang abgeschlossen ist.
 
     # Copy a database to the same server
     Start-AzureSqlDatabaseCopy -ServerName $ServerName -DatabaseName $DatabaseName -PartnerDatabase $PartnerDatabaseName
 
-## Kopieren einer SQL-Datenbank auf einen anderen Server
+### Kopieren einer SQL-Datenbank auf einen anderen Server
 
 Mit diesem Befehl wird die Anforderung zum Kopieren der Datenbank an den Dienst gesendet. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Kopiervorgang abgeschlossen ist.
 
@@ -109,7 +89,7 @@ Nach dem Ausführen von **Start-AzureSqlDatabaseCopy** können Sie den Status de
     Get-AzureSqlDatabaseOperation -ServerName $ServerName -DatabaseName $DatabaseName
 
 
-## Kopieren eines SQL-Datenbank-PowerShell-Skripts
+## PowerShell-Beispielskript
 
     # The name of the server where the source database resides
     $ServerName = "sourceServerName"
@@ -146,4 +126,4 @@ Nach dem Ausführen von **Start-AzureSqlDatabaseCopy** können Sie den Status de
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

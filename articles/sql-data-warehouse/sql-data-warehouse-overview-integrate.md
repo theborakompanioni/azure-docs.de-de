@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="05/31/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #Nutzen anderer Dienste mit SQL Data Warehouse
@@ -38,6 +38,7 @@ Weitere Informationen finden Sie unter [Integration in Power BI](./sql-data-ware
 Azure Data Factory bietet Benutzern eine verwaltete Plattform zur Erstellung von Pipelines zum Extrahieren und Laden. Die SQL Data Warehouse-Integration in Azure Data Factory umfasst Folgendes:
 
 + **Gespeicherte Prozeduren**: Orchestrieren Sie die Ausführung von gespeicherten Prozeduren in SQL Data Warehouse.
++ **Kopieren**: Verwenden Sie Azure Data Factory, um Daten nach SQL Data Warehouse zu verschieben. Dieser Vorgang kann im Hintergrund PolyBase oder den standardmäßigen Mechanismus von Azure Data Factory zum Verschieben von Daten verwenden. 
 
 Weitere Informationen finden Sie unter[Integration in Azure Data Factory](./sql-data-warehouse-integrate-azure-data-factory.md) oder in der [Azure Data Factory-Dokumentation](https://azure.microsoft.com/documentation/services/data-factory/).
 
@@ -71,4 +72,4 @@ Weitere Informationen finden Sie unter[Integration in Azure Stream Analytics](./
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

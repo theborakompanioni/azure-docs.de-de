@@ -19,8 +19,6 @@
 
 # Einrichten einer SharePoint-Intranetfarm in einer Hybrid Cloud zu Testzwecken
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 In diesem Thema lernen Sie Schritt für Schritt, wie Sie eine Hybrid Cloud-Umgebung zum Testen einer in Microsoft Azure gehosteten Intranet-Sharepoint-Farm erstellen. Hier sehen Sie die daraus resultierende Konfiguration.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sp/virtual-machines-windows-ps-hybrid-cloud-test-env-sp-ph3.png)
@@ -224,4 +222,4 @@ Ihre SharePoint-Intranetfarm kann jetzt in einer Hybrid Cloud-Umgebung getestet 
 
 - [Konfigurieren](https://technet.microsoft.com/library/ee836142.aspx) der SharePoint-Farm
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="05/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -42,7 +42,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 
 
 
-<br><br>![Konfigurieren der einmaligen Anmeldung][0]<br>
+![Konfigurieren der einmaligen Anmeldung][0]
 
 
  
@@ -53,20 +53,32 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Doc
 
 ### Führen Sie die folgenden Schritte aus, um die Anwendungsintegration für DocuSign zu aktivieren:
 
-1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**. <br><br>![Konfigurieren der einmaligen Anmeldung][1]<br>
+1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
+
+	![Konfigurieren der einmaligen Anmeldung][1]
 
 2. Wählen Sie in der Liste Verzeichnis das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Konfigurieren der einmaligen Anmeldung][2]<br>
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**. <br><br>![Anwendungen][3]<br>
+	![Konfigurieren der einmaligen Anmeldung][2]
 
-5. Klicken Sie im Dialogfeld „Was möchten Sie tun?“ auf **Anwendung aus dem Katalog hinzufügen**. <br><br>![Konfigurieren der einmaligen Anmeldung][4]<br>
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+
+	![Anwendungen][3]
+
+5. Klicken Sie im Dialogfeld „Was möchten Sie tun?“ auf **Anwendung aus dem Katalog hinzufügen**.
+
+	![Konfigurieren der einmaligen Anmeldung][4]
 
 
-6. Geben Sie im Suchfeld das Wort **DocuSign** ein. <br><br>![Konfigurieren der einmaligen Anmeldung][5]<br>
+6. Geben Sie im Suchfeld das Wort **DocuSign** ein.
 
-7. Wählen Sie im Ergebnisbereich **DocuSign** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>![Konfigurieren der einmaligen Anmeldung][6]<br>
+	![Konfigurieren der einmaligen Anmeldung][5]
+
+7. Wählen Sie im Ergebnisbereich **DocuSign** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+
+	![Konfigurieren der einmaligen Anmeldung][6]
 
 
 
@@ -78,32 +90,48 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ### So konfigurieren Sie einmaliges Anmelden
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **DocuSign** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld „Einmaliges Anmelden konfigurieren“ zu öffnen. <br><br>![Konfigurieren der einmaligen Anmeldung][7]<br>
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **DocuSign** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld „Einmaliges Anmelden konfigurieren“ zu öffnen.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei DocuSign anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf „Weiter“. <br><br>![Konfigurieren der einmaligen Anmeldung][8]<br>
+	![Konfigurieren der einmaligen Anmeldung][7]
 
-3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **DocuSign-Anmelde-URL** die URL Ihres DocuSign-Mandanten ein, und klicken Sie auf **Weiter**. Für die URL gilt das folgende Schema: *https://<yourcompanyname>.docusign.net/Member/MemberLogin.aspx?ssoname=<yourSSOInstanceName>* <br><br>![Konfigurieren der einmaligen Anmeldung][9]<br>
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei DocuSign anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf „Weiter“.
+
+	![Konfigurieren der einmaligen Anmeldung][8]
+
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+
+	![Konfigurieren der einmaligen Anmeldung][9]
+
+	a. Geben Sie im Textfeld **Anmelde-URL** die URL Ihres DocuSign-Mandanten im folgenden Format ein: `https://<company name>.docusign.net/Member/MemberLogin.aspx?ssoname=<SSO instance name>`
+
+	b. Klicken Sie auf **Weiter**.
 
 
     > [AZURE.TIP] Falls Sie die App-URL für Ihren Mandanten nicht kennen, können Sie sich unter SSOSetup@Docusign.com an DocuSign wenden, um die vom Service Provider initiierte SSO-URL für den Mandanten zu erfragen.
  
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für DocuSign** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer. <br><br>![Konfigurieren der einmaligen Anmeldung][10]<br>
+4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für DocuSign** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
+
+	![Konfigurieren der einmaligen Anmeldung][10]
 
 
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der **DocuSign**-Unternehmenswebsite als Administrator an.
 
 
-6. Erweitern Sie oben im Menü das Benutzermenü, klicken Sie auf **Einstellungen**, und erweitern Sie dann links im Navigationsbereich die Option **Kontenverwaltung**. Klicken Sie anschließend auf **Features**. <br><br>![Konfigurieren der einmaligen Anmeldung][11]<br>
+6. Erweitern Sie oben im Menü das Benutzermenü, klicken Sie auf **Einstellungen**, und erweitern Sie dann links im Navigationsbereich die Option **Kontenverwaltung**. Klicken Sie anschließend auf **Features**.
+
+	![Konfigurieren der einmaligen Anmeldung][11]
 
 7. Klicken Sie auf **SAML-Konfiguration** und dann auf den Link **SAML-Konfiguration**.
 
 
 
-8. Führen Sie im Abschnitt **SAML 2.0-Konfiguration** die folgenden Schritte aus: <br><br>![Konfigurieren der einmaligen Anmeldung][13]<br>
+8. Führen Sie im Abschnitt **SAML 2.0-Konfiguration** die folgenden Schritte aus:
+
+	![Konfigurieren der einmaligen Anmeldung][13]
 
 
-    a. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für DocuSign** den Wert für „Aussteller-URL“, und fügen Sie ihn in das Textfeld **Endpunkt-URL für Identitätsanbieter-Aussteller** ein.
+    a. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für DocuSign** den Wert für „Aussteller-URL**“, und fügen Sie ihn in das Textfeld **Endpunkt-URL für Identitätsanbieter-Aussteller** ein.
 
     > [AZURE.IMPORTANT] Wenn diese Konfigurationsoption nicht verfügbar ist, können Sie sich an Ihren Ansprechpartner bei DocuSign oder per E-Mail an das SSO-Supportteam wenden ([SSOSetup@docusign.com](mailto:SSOSetup@docusign.com)).
  
@@ -116,9 +144,13 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     d. Klicken Sie auf **Speichern**.
 
 
-9. Wählen Sie im klassischen Azure-Portal die **Bestätigung zur Konfiguration der einmaligen Anmeldung** aus, und klicken Sie dann auf **Weiter**. <br><br>![Anwendungen][14]<br>
+9. Wählen Sie im klassischen Azure-Portal die **Bestätigung zur Konfiguration des einmaligen Anmeldens** aus, und klicken Sie dann auf **Weiter**.
 
-10. Klicken Sie auf der Seite **Bestätigung für einmaliges Anmelden** auf **Abschließen**. <br><br>![Anwendungen][15]<br>
+	![Anwendungen][14]
+
+10. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+
+	![Anwendungen][15]
 
 
  
@@ -129,16 +161,22 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 ### So konfigurieren Sie die Benutzerbereitstellung
 
-1. Klicken Sie im **klassischen Azure-Portal** auf der **Anwendungsintegrationsseite für DocuSign** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld „Benutzerbereitstellung konfigurieren“ zu öffnen. <br><br>![Konfigurieren der Kontobereitstellung][30]<br>
+1. Klicken Sie im **klassischen Azure-Portal** auf der **Anwendungsintegrationsseite für DocuSign** auf **Kontobereitstellung konfigurieren**, um das Dialogfeld „Benutzerbereitstellung konfigurieren“ zu öffnen.
+
+	![Konfigurieren der Kontobereitstellung][30]
  
 
-2. Geben Sie auf der Seite **Einstellungen und Administrator-Anmeldeinformationen** zum Aktivieren der automatischen Benutzerbereitstellung die Anmeldeinformationen eines DocuSign-Kontos mit ausreichenden Rechten ein, und klicken Sie auf **Weiter**. <br><br>![Konfigurieren der Kontobereitstellung][31]<br>
+2. Geben Sie auf der Seite **Einstellungen und Administrator-Anmeldeinformationen** zum Aktivieren der automatischen Benutzerbereitstellung die Anmeldeinformationen eines DocuSign-Kontos mit ausreichenden Rechten ein, und klicken Sie auf **Weiter**.
 
-3. Klicken Sie im Dialogfeld **Verbindung testen** auf **Test starten**, und klicken Sie auf **Weiter**, wenn der Test erfolgreich ist. <br><br>![Konfigurieren der Kontobereitstellung][32]<br>
+	![Konfigurieren der Kontobereitstellung][31]
+
+3. Klicken Sie im Dialogfeld **Verbindung testen** auf **Test starten**, und klicken Sie auf **Weiter**, wenn der Test erfolgreich ist.
+
+	![Konfigurieren der Kontobereitstellung][32]
 
 3. Klicken Sie auf der Bestätigungsseite auf **Abschließen**.
 
-<br><br>![Konfigurieren der Kontobereitstellung][33]<br>
+![Konfigurieren der Kontobereitstellung][33]
  
 
 ## Zuweisen von Benutzern
@@ -149,22 +187,28 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 1. Erstellen Sie im **klassischen Azure-Portal** ein Testkonto.
 
-2. Klicken Sie auf der **Anwendungsintegrationsseite für DocuSign** auf **Benutzer zuweisen**. <br><br>![Zuweisen von Benutzern][40]<br>
+2. Klicken Sie auf der **Anwendungsintegrationsseite für DocuSign** auf **Benutzer zuweisen**.
+
+	![Zuweisen von Benutzern][40]
  
 
-3. Wählen Sie den Testbenutzer aus, und klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
+3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
 
-<br><br>![Zuweisen von Benutzern][41]<br>
-
-
-Nach 10 Minuten können Sie überprüfen, ob das Konto mit DocuSign synchronisiert wurde.
-
-Als ersten Überprüfungsschritt können Sie den Bereitstellungsstatus überprüfen, indem Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für DocuSign auf „Dashboard“ klicken. <br><br>![Zuweisen von Benutzern][42]<br>
-
-Ein erfolgreich abgeschlossener Benutzerbereitstellungszyklus wird durch einen entsprechenden Status angezeigt: <br><br>![Zuweisen von Benutzern][43]<br>
+	![Zuweisen von Benutzern][41]
 
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich.
+Nach 10 Minuten können Sie überprüfen, ob das Konto mit DocuSign synchronisiert wurde.
+
+Als ersten Überprüfungsschritt können Sie den Bereitstellungsstatus überprüfen, indem Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für DocuSign auf „Dashboard“ klicken.
+
+![Zuweisen von Benutzern][42]
+
+Ein erfolgreich abgeschlossener Benutzerbereitstellungszyklus wird durch einen entsprechenden Status angezeigt:
+
+![Zuweisen von Benutzern][43]
+
+
+Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich.
 
 Weitere Informationen zum Zugriffsbereich finden Sie unter „Einführung in den Zugriffsbereich“.
 
@@ -208,4 +252,4 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter „Einführung in den
 [42]: ./media/active-directory-saas-docussign-tutorial/tutorial_docusign_17.png
 [43]: ./media/active-directory-saas-docussign-tutorial/tutorial_docusign_18.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

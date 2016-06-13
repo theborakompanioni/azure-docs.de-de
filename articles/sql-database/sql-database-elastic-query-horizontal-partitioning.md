@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/26/2016"
-    ms.author="torsteng;sidneyh" />
+    ms.date="05/27/2016"
+    ms.author="torsteng" />
 
 # Horizontal hochskalierte Clouddatenbanken übergreifende Berichte (Vorschau)
 
@@ -208,4 +208,4 @@ Verwenden Sie herkömmliche SQL Server-Verbindungszeichenfolgen, um Ihre Anwendu
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

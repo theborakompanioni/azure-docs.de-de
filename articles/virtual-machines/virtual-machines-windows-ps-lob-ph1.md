@@ -19,8 +19,6 @@
 
 # Branchenanwendungs-Workload, Phase 1: Konfigurieren von Azure
  
-[AZURE.INCLUDE [learn-about-deployment-models-rm-include](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
- 
 In dieser Phase der Bereitstellung einer nur im Intranet verfügbaren Branchenanwendung mit hoher Verfügbarkeit in den Azure-Infrastrukturdiensten erstellen Sie die Azure-Netzwerk- und Speicherinfrastruktur. Diese Phase muss vor Beginn von [Phase 2](virtual-machines-windows-ps-lob-ph2.md) ausgeführt worden sein. Eine Übersicht über alle Phasen finden Sie unter [Bereitstellen einer hochverfügbaren Branchenanwendung in Azure](virtual-machines-windows-lob-overview.md).
 
 Azure muss mit den folgenden grundlegenden Netzwerkkomponenten bereitgestellt werden:
@@ -220,4 +218,4 @@ Hier sehen Sie die nach erfolgreichem Abschluss dieser Phase erstellte Konfigura
 
 - Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 2](virtual-machines-windows-ps-lob-ph2.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

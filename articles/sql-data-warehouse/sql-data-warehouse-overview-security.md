@@ -99,7 +99,7 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 
 <!--Article references-->
 [Herstellen einer Verbindung mit SQL Data Warehouse]: sql-data-warehouse-develop-connections.md
-[Erste Schritte mit der SQL-Datenbanküberwachung]: sql-database-auditing-get-started.md
+[Erste Schritte mit der SQL-Datenbanküberwachung]: sql-database-auditing-overview.md
 
 <!--MSDN references-->
 [Firewall für die Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -113,4 +113,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -59,6 +59,7 @@ Diese Funktion wird zurzeit als Vorschau angezeigt. Wir arbeiten daran, neue Fun
 - Easy Auth-Einstellungen werden nicht geklont
 - Kudu-Erweiterungen werden nicht geklont
 - TiP-Regeln werden nicht geklont
+- Datenbankinhalte werden nicht geklont
 
 
 ### Referenzen ###
@@ -72,4 +73,4 @@ Diese Funktion wird zurzeit als Vorschau angezeigt. Wir arbeiten daran, neue Fun
 [1]: ./media/app-service-web-app-cloning-portal/CloningBlade.png
 [2]: ./media/app-service-web-app-cloning-portal/CloneSettings.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

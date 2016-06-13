@@ -19,8 +19,6 @@
 
 # Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 In diesem Thema werden die Schritte zum Erstellen einer Hybrid Cloud-Umgebung zum Testen einer in Microsoft Azure gehosteten webbasierten Branchenanwendung erläutert. Hier sehen Sie die daraus resultierende Konfiguration.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
@@ -130,7 +128,7 @@ Verknüpfen Sie SQL1 als Nächstes mit der Active Directory-Domäne CORP, indem 
 
 Verwenden Sie das Konto „CORP\\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
 
-Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit SQL1 *mithilfe des lokalen Administratorkontos*.
+Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit SQL1 mithilfe des *lokalen Administratorkontos*.
 
 Konfigurieren Sie anschließend SQL Server 2014 so, dass das Laufwerk F: für neue Datenbanken und Berechtigungen für Benutzerkonten verwendet werden kann.
 
@@ -220,4 +218,4 @@ Diese Umgebung kann jetzt zum Bereitstellen von webbasierten Anwendungen auf LOB
 
 - Stellen Sie die [Produktionsumgebung](virtual-machines-windows-lob-overview.md) bereit.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

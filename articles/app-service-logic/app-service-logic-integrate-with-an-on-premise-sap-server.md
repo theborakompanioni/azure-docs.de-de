@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="05/31/2016"
 	ms.author="sameerch"/>
 
 
@@ -21,13 +21,13 @@
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
-Mithilfe des [SAP-Connectors](app-service-logic-connector-sap.md) können Sie Web-, mobile und Logik-Apps von Azure App Services in Ihren vorhandenen SAP-Server integrieren. Dadurch können Sie RFCs, BAPIs und tRFCs aufrufen sowie IDocs an den SAP-Server senden, auch wenn dieser sich hinter Ihrer lokalen Firewall befindet.
+Mithilfe des [SAP-Connectors](app-service-logic-connector-sap.md) können Sie Web-, Mobil- und Logik-Apps von Azure App Services in Ihren vorhandenen SAP-Server integrieren. Dadurch können Sie RFCs, BAPIs und tRFCs aufrufen sowie IDocs an den SAP-Server senden, auch wenn dieser sich hinter Ihrer lokalen Firewall befindet.
 
 Wenn Sie über einen lokalen SAP-Server verfügen, verwenden Sie einen Hybridlistener, um wie dargestellt eine Verbindung zum SAP-Connector herzustellen:
 
 ![Datenfluss der Hybridkonnektivität][1]
 
-Während ein SAP-Connector in der Cloud keine direkte Verbindung zu einem SAP-Server hinter einer lokalen Firewall herstellen kann, können Sie die Lücke mithilfe des Hybridlisteners schließen. Dies richten Sie durch Hosten eines Relay-Endpunkts ein, der dem Connector erlaubt, eine sichere Verbindung mit dem SAP-Server herzustellen.
+Während ein SAP-Connector in der Cloud keine direkte Verbindung mit einem SAP-Server hinter einer lokalen Firewall herstellen kann, können Sie die Lücke mithilfe des Hybridlisteners schließen. Dies richten Sie durch Hosten eines Relay-Endpunkts ein, der dem Connector erlaubt, eine sichere Verbindung mit dem SAP-Server herzustellen.
 
 
 ## Verschiedene Möglichkeiten zur Integration mit SAP
@@ -103,7 +103,7 @@ Auf dem Blatt des Connectors sehen Sie, dass der Hybridverbindungsstatus *Verbun
 
 
 ## Verwenden des SAP-Connectors in Logik-Apps
-Sobald der SAP-Connector erstellt wurde, kann es innerhalb des Workflows Ihrer Logik-Apps verwendet werden. Erstellen Sie dazu eine neue Logik-App über **Neu** > **Logik-Apps** > **Erstellen**. Geben Sie die Metadaten für die Logik-App mit der Ressourcengruppe ein.
+Sobald der SAP-Connector erstellt wurde, kann er im Workflow Ihrer Logik-Apps verwendet werden. Erstellen Sie dazu eine neue Logik-App über **Neu** > **Logik-Apps** > **Erstellen**. Geben Sie die Metadaten für die Logik-App, einschließlich Ressourcengruppe, ein.
 
 Wählen Sie **Triggers and actions** aus. Der Workflow-Designer für Logik-Apps wird geöffnet.
 
@@ -124,4 +124,4 @@ Für die ausgewählte Aktion sehen Sie die Eingabe- und Ausgabeparameter. Sie k�
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://www.microsoft.com/download/details.aspx?id=35552
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

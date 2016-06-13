@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="05/26/2016" 
 	ms.author="tomfitz"/>
 
 # Sperren von Ressourcen mit dem Azure-Ressourcen-Manager
 
-Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Sie können die Sperrebene auf **CanNotDelete** oder **ReadOnly** festlegen. **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können. **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource nur lesen, sie aber nicht ändern oder löschen können.
+Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Sie können die Sperrebene auf **CanNotDelete** oder **ReadOnly** festlegen.
+
+- **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können. 
+- **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource lesen, sie aber nicht ändern oder Aktionen für sie ausführen können. Die Berechtigung für die Ressource ist auf die Rolle **Leser** beschränkt. Die Anwendung von **ReadOnly** kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, bei denen es sich scheinbar um Lesevorgänge handelt, zusätzliche Aktionen erfordern. Das Festlegen von **ReadOnly** für ein Speicherkonto hindert beispielsweise alle Benutzer am Auflisten der Schlüssel. Der Vorgang zum Auflisten von Schlüsseln wird über eine POST-Anforderung behandelt, da die zurückgegebenen Schlüssel für Schreibvorgänge zur Verfügung stehen. Weiteres Beispiel: Das Festlegen von **ReadOnly** für eine App Service-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
 
 Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
 
@@ -34,7 +37,7 @@ Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktio
 
       ![Sperre auswählen](./media/resource-group-lock-resources/select-lock.png)
 
-2. Wählen Sie zum Hinzufügen einer Sperre **Hinzufügen** aus. Wenn Sie stattdessen eine Sperre auf einer übergeordneten Ebene erstellen möchten, die von der ausgewählten Ressource geerbt werden soll, wählen Sie das übergeordnete Element (z. B. wie unten gezeigt Abonnement) aus.
+2. Wählen Sie zum Hinzufügen einer Sperre **Hinzufügen**. Wenn Sie stattdessen eine Sperre auf einer übergeordneten Ebene erstellen möchten, die von der ausgewählten Ressource geerbt werden soll, wählen Sie das übergeordnete Element (z. B. wie unten gezeigt Abonnement) aus.
 
       ![Sperre hinzufügen](./media/resource-group-lock-resources/add-lock.png)
 
@@ -42,7 +45,7 @@ Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktio
 
       ![Sperre festlegen](./media/resource-group-lock-resources/set-lock.png)
 
-4. Um die Sperre zu löschen, wählen Sie die Schaltfläche mit den Auslassungszeichen und dann aus den verfügbaren Optionen **Löschen** aus.
+4. Um die Sperre zu löschen, wählen Sie die Schaltfläche mit den Auslassungszeichen und dann in den verfügbaren Optionen **Löschen**.
 
       ![Sperre löschen](./media/resource-group-lock-resources/delete-lock.png)
 
@@ -108,4 +111,4 @@ Azure PowerShell bietet auch andere Befehle für die Arbeit mit Sperren, z. B. 
 - Informationen dazu, wie Sie die Ressourcengruppe für eine Ressource ändern, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe](resource-group-move-resources.md).
 - Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

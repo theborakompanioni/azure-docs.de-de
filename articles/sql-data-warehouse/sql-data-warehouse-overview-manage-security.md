@@ -53,7 +53,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][]. Weitere Informationen zur Verwendung der Azure AD-Vorschau für SQL Data Warehouse finden Sie unter [Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication][] (Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung).
+Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][]. Weitere Informationen zur Verwendung der Azure AD-Vorschau für SQL Data Warehouse finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung][].
 
 
 ## Autorisierung
@@ -101,7 +101,7 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 [Herstellen einer Verbindung mit SQL Data Warehouse]: ./sql-data-warehouse-develop-connections.md
 [Erste Schritte mit der SQL-Datenbanküberwachung]: ./sql-data-warehouse-overview-auditing.md
 [Erste Schritte mit Transparent Data Encryption (TDE)]: ./sql-data-warehouse-encryption-tde.md
-[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]: ./sql-data-warehouse-aad-authentication.md
+[Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
 
 <!--MSDN references-->
 [Firewall für die Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -115,4 +115,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

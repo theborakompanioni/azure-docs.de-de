@@ -1,10 +1,10 @@
 <properties 
    pageTitle="SQL-Datenbank-Geschäftskontinuität während Anwendungsupgrades" 
-   description="Dieser Abschnitt enthält Hilfestellung für Geschäftskontinuität, um Ausfallzeiten während Anwendungsupgrades zu vermeiden." 
+   description="Dieser Abschnitt enthält eine Anleitung zum Vermeiden von Ausfallzeiten während eines Anwendungsupgrades." 
    services="sql-database"
    documentationCenter="" 
    authors="elfisher" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="02/09/2016"
+   ms.date="05/27/2016"
    ms.author="elfish"/>
 
-#Aktualisieren von Anwendungen ohne Ausfallzeit
+#Aktualisieren einer Anwendung ohne Ausfallzeiten
 
 Im Zusammenhang mit Microsoft Azure bezieht sich der Begriff "Anwendung" auf Komponenten wie Front-Ends, Dienste, die in einem Clouddienst bereitgestellt werden, oder die Datenebene zum Beibehalten von Anwendungsdaten oder Metadaten. Cloudanwendungen sind häufig darauf ausgelegt, durchgehend ohne Unterbrechungen ausgeführt zu werden. Beim Einführen einer neuen Version der Anwendung kann es zu Störungen wie z. B. weniger verfügbaren Funktionen oder sogar vollständigen Ausfällen kommen, wenn Änderungen auf Datenebene auf die Live-Website übernommen werden.
 
@@ -27,8 +27,9 @@ Beim Entwerfen des Anwendungsaktualisierungsvorgangs sollte das wichtigste Ziel 
 3.	Möglichkeit zum Rollback bei Fehlern während des Upgrades
 4.	Insgesamt anfallende Kosten. Dies schließt die Kosten von zusätzlichen erforderlichen Anwendungskomponenten zum Erstellen einer temporären Kopie (z. B. zusätzliche Premium-Datenbanken für aktive Georeplikation) und die Mehrkosten für temporäre Bereitstellungen während des Aktualisierungsvorgangs ein. 
 
-Wenn die Anwendung vorübergehend im schreibgeschützten Modus betrieben werden kann, ist es möglich, den Aktualisierungsablauf so zu entwerfen, dass Ausfallzeiten effektiv vermieden werden können. Ausführliche Informationen zum Implementieren des Aktualisierungsablaufs in Ihrer spezifischen Anwendungstopologie finden Sie unter [Minimale Unterbrechung für Azure SQL-Datenbank bei parallelen Anwendungsupgrades](https://msdn.microsoft.com/library/azure/dn790385.aspx)
+Wenn die Anwendung vorübergehend im schreibgeschützten Modus betrieben werden kann, ist es möglich, den Aktualisierungsablauf so zu entwerfen, dass Ausfallzeiten effektiv vermieden werden können. Ausführliche Informationen zum Implementieren des Aktualisierungsablaufs für Ihre spezifische Anwendungstopologie finden Sie unter [Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank](sql-database-manage-application-rolling-upgrade.md).
+ 
  
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/20/2016"
+   ms.date="05/26/2016"
    ms.author="alkohli"/>
 
 # Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver
@@ -94,7 +94,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
 
 	> [AZURE.NOTE]
 	> 
-	> Stellen Sie sicher, dass sich Ihr virtuelles Array in einer eigenen Organisationseinheit (OU) für Active Directory befindet und keine Gruppenrichtlinienobjekte (GPO) darauf angewendet werden.
+	> Stellen Sie sicher, dass sich Ihr virtuelles Array in einer eigenen Organisationseinheit für Active Directory befindet und keine Gruppenrichtlinienobjekte darauf angewendet werden oder geerbt sind. Gruppenrichtlinien können Anwendung wie beispielsweise Virenschutzsoftware auf dem StorSimple Virtual Array installieren. Die Installation zusätzlicher Software wird nicht unterstützt und kann zur Beschädigung von Daten führen.
 
 1.  Optional: Konfigurieren Sie Ihren Webproxyserver. Die Webproxykonfiguration ist optional. Achten Sie jedoch bei Verwendung eines Webproxys darauf, dass dieser nur hier konfiguriert werden kann.
 
@@ -192,7 +192,7 @@ Führen Sie die folgenden Schritte im [klassischen Azure-Portal](https://manage.
 
     3.  Wählen Sie einen Verwendungstyp für die Freigabe aus. Der Verwendungstyp kann **Mehrstufig** oder **Lokal** lauten. „Mehrstufig“ ist die Standardeinstellung. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokal** für die Freigabe aus. Wählen Sie für alle anderen Daten **Mehrstufig** für die Freigabe aus.
 
-	Eine lokale Freigabe wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf der Freigabe lokal auf dem Gerät verbleiben und nicht in die Cloud übergehen. Eine mehrstufige Freigabe wird mit schlanker Speicherzuweisung bereitgestellt und kann sehr schnell erstellt werden. Wenn Sie eine mehrstufige Freigabe erstellen, werden 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen.
+	Eine lokale Freigabe wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf der Freigabe lokal auf dem Gerät verbleiben und nicht in die Cloud übergehen. Eine mehrstufige Freigabe dagegen wird mit schlanker Speicherzuweisung bereitgestellt. Wenn Sie eine mehrstufige Freigabe erstellen, werden 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen.
 
 1.  Geben Sie die bereitgestellte Kapazität für die Freigabe an. Beachten Sie, dass die angegebene Kapazität kleiner als die verfügbare Kapazität sein sollte. Bei Verwendung einer mehrstufigen Freigabe sollte die Freigabegröße zwischen 500 GB und 20 TB liegen. Geben Sie für eine lokale Freigabe eine Freigabegröße zwischen 50 GB und 2 TB an. Verwenden Sie die verfügbare Kapazität als Richtschnur für die Bereitstellung einer Freigabe. Wenn die verfügbare lokale Kapazität 0 GB beträgt, können Sie keine lokalen oder mehrstufigen Freigaben bereitstellen.
 
@@ -232,4 +232,4 @@ Im Video wird gezeigt, wie Sie ein StorSimple Virtual Array als Dateiserver konf
 
 Erfahren Sie, wie Sie die lokale Webbenutzeroberfläche verwenden, um [Ihr StorSimple Virtual Array zu verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

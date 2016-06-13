@@ -3,7 +3,7 @@
    description="Bewährte Methoden für die Datenserialisierung und ihre Auswirkung auf parallele Anwendungsupgrades."
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="04/14/2016"
-   ms.author="jesseb"/>
+   ms.author="vturecek"/>
 
 
 # Auswirkungen der Datenserialisierung auf Anwendungsupgrades
@@ -65,6 +65,5 @@ Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](servic
 Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md) beschäftigen.
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
- 
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine benutzerdefinierte Benutzerdomäne dem Blob Storage-Endpunkt für ein Azure Storage-Konto zuordnen."
+	description="Erfahren Sie, wie Sie im klassischen Azure-Portal eine benutzerdefinierte Benutzerdomäne dem Blobspeicher-Endpunkt für ein Azure Speicherkonto zuordnen."
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
@@ -22,9 +22,6 @@
 ## Übersicht
 
 Sie können eine benutzerdefinierte Domäne für den Zugriff auf Blob-Daten in Ihrem Azure-Speicherkonto konfigurieren. Der Standardendpunkt für Blob Storage ist „https://<*meinSpeicherkonto*>.blob.core.windows.net“. Wenn Sie dem Blob-Endpunkt für Ihr Speicherkonto eine benutzerdefinierte Domäne und Unterdomäne wie z. B. **www.contoso.com** zuordnen, können Benutzer auch unter Verwendung dieser Domäne auf Blob-Daten in Ihrem Speicherkonto zugreifen.
-
-
-> [AZURE.NOTE]	Die Vorgehensweisen in dieser Aufgabe gelten für Azure-Speicherkonten. Informationen zu Clouddiensten finden Sie unter <a href = "/develop/net/common-tasks/custom-dns/">Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst</a>. Informationen zu Websites finden Sie unter <a href="/develop/net/common-tasks/custom-dns-web-site/">Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service</a>.
 
 Es gibt zwei Methoden, um Ihre benutzerdefinierte Domäne auf den Blob-Endpunkt für Ihr Speicherkonto zu verweisen. Die einfachste Methode besteht darin, einen CNAME-Datensatz zu erstellen, der Ihre benutzerdefinierte Domäne und Unterdomäne dem Blob-Endpunkt zuordnet. Ein CNAME-Datensatz ist eine DNS-Funktion, die eine Quelldomäne einer Zieldomäne zuordnet. In diesem Fall ist die Quelldomäne Ihre benutzerdefinierte Domäne und Unterdomäne (beachten Sie, dass die Unterdomäne immer erforderlich ist). Die Zieldomäne ist der Blob-Dienstendpunkt.
 
@@ -112,8 +109,23 @@ Sie können z. B. den folgenden URI verwenden, um über eine benutzerdefinierte
 
 -   http://photos.contoso.com/myforms/applicationform.htm
 
-## Weitere Ressourcen
+## Aufheben der Registrierung einer benutzerdefinierten Domäne in Ihrem Speicherkonto
+
+Um die Registrierung einer benutzerdefinierten Domäne aufzuheben, gehen Sie folgendermaßen vor:
+
+1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) an. 
+
+2. Klicken Sie im Navigationsbereich auf **Speicher**.
+
+3. Klicken Sie auf der Seite **Speicher** auf den Namen des Speicherkontos, um das Dashboard anzuzeigen.
+
+5. Klicken Sie im Menüband auf **Domäne verwalten**.
+
+6. Klicken Sie im Dialogfeld **Benutzerdefinierte Domäne verwalten** auf **Registrierung aufheben**.
+
+
+## Zusätzliche Ressourcen
 
 -   [Zuordnen einer benutzerdefinierten Domäne zu einem CDN-Endpunkt (Content Delivery Network, Netzwerk für die Inhaltsübermittlung)](../cdn/cdn-map-content-to-custom-domain.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/02/2016"
+   ms.date="05/31/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
@@ -108,12 +108,25 @@ Wenn ein Benutzer Azure Security Center öffnet, werden nur Empfehlungen und War
 
 Damit Sie eine Sicherheitsrichtlinie bearbeiten können, müssen Sie ein Besitzer oder Mitwirkender des Abonnements sein.
 
+## Virtual Machines
+
 ### Welche Typen von virtuellen Maschinen werden unterstützt?
 Virtuelle Computer, die mit dem [klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden, werden unterstützt. Dies gilt auch für virtuelle Computer, die zu Azure Service Fabric-Clustern gehören.
 
 Zugriffssteuerungslisten-Empfehlungen gelten derzeit für virtuelle Maschinen (klassisch). Netzwerksicherheitsgruppen gelten derzeit nur für virtuelle Maschinen (Ressourcen-Manager).
 
-### Werden virtuelle Linux-Computer unterstützt?
-Azure Security Center bietet eine Basisüberwachung für virtuelle Linux-Computer (nur für die Ubuntu-Versionen 12.04, 14.04, 14.10 und 15.04). Zukünftig werden weitere Sicherheitintegritätsüberwachung und Datensammlung/-analysen verfügbar sein, und es sollen weitere Linux-Distributionen unterstützt werden.
+Unterstützte virtuelle Windows-Computer:
 
-<!---HONumber=AcomDC_0504_2016-->
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
+
+Unterstützte virtuelle Linux-Computer:
+
+- Ubuntu-Versionen 12.04, 14.04, 15.10, 16.04
+- Debian-Versionen 7.0, 8.0
+- CentOS-Versionen 6.0, 7.0
+- Red Hat Enterprise Linux-Versionen (RHEL) 6, 7
+- SUSE Linux Enterprise Server-Versionen (SLES) 11, 12
+
+<!---HONumber=AcomDC_0601_2016-->

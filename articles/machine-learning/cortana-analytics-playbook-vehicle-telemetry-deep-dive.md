@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2016" 
+	ms.date="05/27/2016" 
 	ms.author="bradsev" />
 
 
@@ -387,7 +387,7 @@ Dieses Muster gilt auch für Szenarien, bei denen Sie eine Branchenanwendung in 
 
 Klicken Sie auf [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?LinkId=717078), um die Visual Studio-Projektmappe „RealtimeDashboardApp“ zur Verwendung für Anpassungen herunterzuladen.
 
-****So führen Sie die Echtzeit-Dashboardanwendung aus **
+**So führen Sie die Echtzeit-Dashboardanwendung aus**
 
 1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link „Echtzeit-Dashboardanwendung herunterladen“. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *Abbildung 17 – Setupanweisungen zum PowerBI-Dashboard*
 2.	Lokales Extrahieren und Speichern ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *Abbildung 18 – Ordner „RealtimeDashboardApp“*
@@ -706,4 +706,4 @@ Klicken Sie hier, um eine ausführliche Anleitung zum Einrichten der PowerBI-Ber
 
 In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Vehicle Telemetry Analytics) ausführlich beschrieben. Es wird ein Lambda-Architekturmuster für die Echtzeit- und Batchanalyse mit Vorhersagen und Aktionen veranschaulicht. Dieses Muster gilt für eine Vielzahl von Anwendungsfällen, für die „Hot Path“-Analysen (Echtzeit) und „Cold Path“-Analysen (Batch) erforderlich sind.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

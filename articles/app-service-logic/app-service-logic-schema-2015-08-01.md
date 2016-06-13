@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="05/31/2016"
 	ms.author="stepsic"/>
 	
 # Neue Schemaversion „2015-08-01-preview“
@@ -27,15 +27,17 @@ Die neue Schema- und API-Version für Logik-Apps enthält eine Reihe von Verbess
 
 ## 1\. Verschieben von API-Verbindungen
 
-Die größte Änderung besteht darin, dass Sie zur Verwendung von APIs nicht mehr API-Apps in Ihrem Azure-Abonnement bereitstellen müssen. Zwei Arten von APIs können verwendet werden: * Verwaltete APIs * Benutzerdefinierte Web-APIs
+Die größte Änderung besteht darin, dass Sie zur Verwendung von APIs nicht mehr API-Apps in Ihrem Azure-Abonnement bereitstellen müssen. Es gibt zwei Möglichkeiten für die Verwendung von APIs:
+* Verwaltete APIs
+* Ihre benutzerdefinierten Web-APIs
 
 Diese beiden API-Arten werden etwas unterschiedlich gehandhabt, da sich ihre Verwaltungs- und Hostingmodelle unterscheiden. Ein Vorteil dieses Modells besteht darin, dass Sie nicht mehr auf in Ihrer Ressourcengruppe bereitgestellte Ressourcen beschränkt sind.
 
 ### Verwaltete APIs
 
-Es gibt eine Reihe von APIs, die von Microsoft in Ihrem Namen verwaltet werden, beispielsweise Office 365, Salesforce, Twitter, FTP usw. Einige dieser verwalteten APIs können ohne weitere Bearbeitung verwendet werden, etwa Bing Translate, wohingegen andere APIs konfiguriert werden müssen. Diese Konfiguration wird als *Verbindung* bezeichnet.
+Es gibt eine Reihe von APIs, die von Microsoft in Ihrem Namen verwaltet werden, beispielsweise Office 365, Salesforce, Twitter, FTP usw. Einige dieser verwalteten APIs können ohne weitere Bearbeitung verwendet werden, etwa Bing Translate, wohingegen andere APIs konfiguriert werden müssen. Diese Konfiguration wird als *Verbindung* (Connection) bezeichnet.
 
-Wenn Sie Office 365 verwenden, müssen Sie beispielsweise eine Verbindung erstellen, die Ihr Office 365-Anmeldetoken enthält. Dieses Token wird sicher gespeichert und aktualisiert, damit Ihre Logik-App jederzeit die Office 365-API aufrufen kann. Wenn Sie eine Verbindung mit Ihrer SQL Server-Instanz oder dem FTP-Server herstellen möchten, müssen Sie eine Verbindung erstellen, die die Verbindungszeichenfolge enthält.
+Wenn Sie Office 365 verwenden, müssen Sie beispielsweise eine Verbindung erstellen, die Ihr Office 365-Anmeldetoken enthält. Dieses Token wird sicher gespeichert und aktualisiert, damit Ihre Logik-App jederzeit die Office 365-API aufrufen kann. Wenn Sie eine Verbindung mit Ihrer SQL Server-Instanz oder dem FTP-Server herstellen möchten, müssen Sie eine Verbindung erstellen, die die Verbindungszeichenfolge enthält.
 
 Innerhalb dieser Definition werden diese Aktionen als `APIConnection` bezeichnet. Hier sehen Sie ein Beispiel für eine Verbindung, die Office 365 zum Senden einer E-Mail aufruft:
 
@@ -66,7 +68,7 @@ Innerhalb dieser Definition werden diese Aktionen als `APIConnection` bezeichnet
 }
 ```
 
-Das `host`-Objekt stellt den Teil der Eingaben dar, der eindeutig für API-Verbindungen gilt. Das Objekt umfasst zwei Teile: `api` und `connection`.
+Das `host`-Objekt stellt den Teil der Eingaben dar, der nur für API-Verbindungen gilt. Das Objekt umfasst zwei Teile: `api` und `connection`.
 
 `api` enthält die Laufzeit-URL, unter der die verwaltete API gehostet wird. Durch den Aufruf von `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` können Sie alle für Sie verfügbaren verwalteten APIs anzeigen.
 
@@ -190,9 +192,10 @@ Sie sehen in diesem Beispiel, dass es sich bei den Verbindungen lediglich um nor
 
 ### Ihre benutzerdefinierten Web-APIs
 
-Wenn Sie eigene (d. h. nicht von Microsoft verwaltete) APIs einsetzen, sollten Sie für den Aufruf die integrierte **HTTP**-Aktion verwenden. Für die optimale Nutzung sollten Sie einen Swagger-Endpunkt für Ihre API verfügbar machen. Dadurch kann der Logik-App-Designer die Ein- und Ausgaben für Ihre API rendern. Ohne Swagger kann der Designer die Ein- und Ausgaben nur als nicht transparente JSON-Objekte anzeigen.
+Wenn Sie eigene (also nicht von Microsoft verwaltete) APIs einsetzen, sollten Sie für das Aufrufen die integrierte **HTTP**-Aktion verwenden. Für die optimale Nutzung sollten Sie einen Swagger-Endpunkt für Ihre API verfügbar machen. Dadurch kann der Logik-App-Designer die Ein- und Ausgaben für Ihre API rendern. Ohne Swagger kann der Designer die Ein- und Ausgaben nur als nicht transparente JSON-Objekte anzeigen.
 
-Hier sehen Sie ein Beispiel für die neue `metadata.apiDefinitionUrl`-Eigenschaft: ```
+Hier sehen Sie ein Beispiel für die neue `metadata.apiDefinitionUrl`-Eigenschaft:
+```
 {
    "actions": {
         "mycustomAPI": {
@@ -215,7 +218,8 @@ Wenn Sie Ihre Web-API unter **App Service** hosten, wird sie automatisch in der 
 
 Wenn Sie zuvor eine API-App bereitgestellt haben, können Sie sie über die **HTTP**-Aktion aufrufen.
 
-Beispiel: Wenn Sie Dropbox zum Auflisten von Dateien verwenden, ist in der Schemaversionsdefinition **2014-12-01-preview** etwa Folgendes enthalten: ```
+Beispiel: Wenn Sie Dropbox zum Auflisten von Dateien verwenden, ist in der Schemaversionsdefinition **2014-12-01-preview** etwa Folgendes enthalten:
+```
 {
     "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
     "contentVersion": "1.0.0.0",
@@ -286,8 +290,8 @@ Informationen zu den einzelnen Eigenschaften:
 | Aktionseigenschaft | Beschreibung |
 | --------------- | -----------  |
 | `type` | `Http` anstelle von `APIapp` |
-| `metadata.apiDefinitionUrl` | Wenn Sie diese Aktion im Logik-App-Designer verwenden möchten, sollten Sie den Metadatenendpunkt aufnehmen. Dieser wird erstellt aus: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` | Dieser wird erstellt aus: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `metadata.apiDefinitionUrl` | Wenn Sie diese Aktion im Logik-App-Designer verwenden möchten, sollten Sie den Metadatenendpunkt aufnehmen. Wird erstellt aus: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` | Wird erstellt aus: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` | Immer `POST` |
 | `inputs.body` | Identisch mit den API-App-Parametern | 
 | `inputs.authentication` | Identisch mit der API-App-Authentifizierung |
@@ -418,7 +422,7 @@ Im Rahmen dieser Änderungen wurde die Funktion `@accessKeys()` entfernt und dur
 
 ## 4\. Aufrufen von untergeordneten Workflows
 
-Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Workflow aufrufen, das Zugriffstoken abrufen und anschließend dieses Token in die Definition der Logik-App einfügen, die den untergeordneten Workflow aufrufen soll. Bei der neuen Schemaversion generiert das Logik-App-Modul zur Laufzeit automatisch eine SAS für den untergeordneten Workflow. Das bedeutet, dass Sie keine geheimen Schlüssel in die Definition einfügen müssen. Beispiel:
+Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Workflow aufrufen, das Zugriffstoken abrufen und dieses Token anschließend in die Definition der Logik-App einfügen, die den untergeordneten Workflow aufrufen soll. Bei der neuen Schemaversion generiert das Logik-App-Modul zur Laufzeit automatisch eine SAS für den untergeordneten Workflow. Das bedeutet, dass Sie keine geheimen Schlüssel in die Definition einfügen müssen. Beispiel:
 
 ```
 "mynestedwf" : {
@@ -444,9 +448,9 @@ Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Wo
 }
 ```
 
-Eine zweite Verbesserung ist, dass die untergeordneten Workflows vollen Zugriff auf die eingehenden Anforderung erhalten. Das bedeutet, dass Sie Parameter im Abschnitt *queries* und im Objekt *headers* übergeben und den gesamten Text vollständig festlegen können.
+Eine zweite Verbesserung ist, dass die untergeordneten Workflows vollen Zugriff auf die eingehenden Anforderung erhalten. Dies bedeutet, dass Sie Parameter im Abschnitt *queries* und im Objekt *headers* übergeben und den gesamten Text vollständig festlegen können.
 
-Schließlich müssen Änderungen am untergeordneten Workflow vorgenommen werden. Zuvor konnten Sie einen untergeordneten Workflow einfach aufrufen. Nun müssen Sie einen Trigger-Endpunkt im Workflow festlegen, den der übergeordnete Workflow aufruft. Im Allgemeinen bedeutet das, dass Sie einen Trigger vom Typ **Manuell** hinzufügen und ihn dann in der übergeordneten Definition verwenden. Beachten Sie, dass die `host`-Eigenschaft ein spezielles `triggerName`-Element enthält, da Sie immer angeben müssen, welchen Trigger Sie aufrufen.
+Schließlich müssen Änderungen am untergeordneten Workflow vorgenommen werden. Zuvor konnten Sie einen untergeordneten Workflow einfach aufrufen. Nun müssen Sie einen Trigger-Endpunkt im Workflow festlegen, den der übergeordnete Workflow aufruft. Im Allgemeinen bedeutet dies, dass Sie einen Trigger vom Typ **Manuell** hinzufügen und ihn dann in der übergeordneten Definition verwenden. Beachten Sie, dass die `host`-Eigenschaft ein spezielles `triggerName`-Element enthält, da Sie immer angeben müssen, welchen Trigger Sie aufrufen.
 
 ## Weitere Änderungen
 
@@ -454,9 +458,9 @@ Schließlich müssen Änderungen am untergeordneten Workflow vorgenommen werden.
 Alle Aktionstypen unterstützen jetzt die neue Eingabe **queries**. Dabei kann es sich um ein strukturiertes Objekt handeln, sodass Sie die Zeichenfolge nicht manuell zusammensetzen müssen.
 
 ### parse()-Funktion umbenannt
-Da wir bald weitere Inhaltstypen hinzufügen, wurde die Funktion `parse()` umbenannt in `json()`.
+Da wir bald weitere Inhaltstypen hinzufügen, wurde die Funktion `parse()` in `json()` umbenannt.
 
 ## In Kürze verfügbar: Enterprise Integration-APIs
 Zu diesem Zeitpunkt sind noch keine verwalteten Versionen der Enterprise Integration-APIs verfügbar (z. B. AS2). Wie in der [Roadmap](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) beschrieben, stehen diese in Kürze zur Verfügung. In der Zwischenzeit können Sie Ihre vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Die Vorgehensweise wird weiter oben unter „Verwenden der bereits bereitgestellten API-Apps“ beschrieben.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="05/26/2016"
 	ms.author="markusvi"/>
 
 
@@ -35,7 +35,7 @@ Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist ni
 „***<OriginalPrefix>+<4DigitNumber>@<InitialTenantDomain>.onmicrosoft.com***“.  
 Ist das Attribut nicht erforderlich (etwa im Falle von **ProxyAddress**), wird das Konfliktattribut einfach von Azure Active Directory unter Quarantäne gestellt, und die Objekterstellung oder -aktualisierung wird fortgesetzt.
 
-Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden jedoch nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.
+Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden aber nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.
 
 Zur Unterstützung dieses Verhaltens wurde den Objektklassen für Benutzer, Gruppen und Kontakte ein neues Attribut hinzugefügt:  
 **DirSyncProvisioningErrors**.
@@ -82,7 +82,7 @@ Führen Sie nach dem Herstellen der Verbindung den folgenden Befehl aus, um eine
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-Dadurch erhalten Sie ein Ergebnis wie das folgende:  
+Das Ergebnis sieht beispielsweise wie folgt aus:  
  ![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")
 
 
@@ -122,29 +122,20 @@ Die Ergebnisse einer Abfrage können mithilfe von zwei Flags sortiert werden:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## Verwaltungsportal von Office 365
-Der Bericht im Office 365-Portal enthält nur Objekte vom Typ **Benutzer**, für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten vom Typ **Gruppe**, **Kontakt** oder **Öffentlicher Ordner**.
+## Office 365-Verwaltungsportal
 
-**Diese Fehler können im Verwaltungsportal von Office 365 wie folgt angezeigt werden**:
+Sie können Fehler bei der Verzeichnissynchronisierung im Office 365 Admin Center anzeigen. Der Bericht im Office 365-Portal enthält nur Objekte vom Typ **Benutzer**, für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten vom Typ **Gruppe**, **Kontakt** oder **Öffentlicher Ordner**.
 
-1.	Melden Sie sich als Mandantenadministrator bei **portal.office.com** an.
 
-2.	Klicken Sie auf **Benutzer > Aktive Benutzer**.  
-![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/2.png "Aktive Benutzer")
+![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1234.png "Aktive Benutzer")
 
-3.	Falls für Objekte im Mandanten Fehler vorliegen, die auf doppelte Attribute zurückzuführen sind, wird am oberen Seitenrand eine Warnung angezeigt:  
-![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/3.png "Aktive Benutzer")
+Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung im Office 365 Admin Center finden Sie unter [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/de-DE/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
-4.	Wählen Sie in der Dropdownliste „Ansicht auswählen“ die Option „Benutzer mit Fehlern“ aus, um objektspezifische Details anzuzeigen:  
-![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/4.png "Aktive Benutzer")
-
-5.	Klicken Sie auf ein Objekt, um in der rechten unteren Bildschirmecke weitere Konfliktdetails anzuzeigen:  
-![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/5.png "Aktive Benutzer")
 
 ### Fehlerbericht für die Identitätssynchronisierung
 Wenn dieses neue Verhalten bei einem Objekt mit einem Konflikt aufgrund eines doppelten Attributs angewendet wird, enthält die standardmäßige Fehlerberichts-E-Mail für die Identitätssynchronisierung, die an den Kontakt für technische Benachrichtigungen des Mandanten gesendet wird, eine entsprechende Benachrichtigung. Bei diesem Verhalten gibt es jedoch eine wichtige Änderung. In der Vergangenheit wurden Informationen zu einem Konflikt aufgrund eines doppelten Attributs in jeden nachfolgenden Fehlerbericht einbezogen, bis der Konflikt behoben wurde. Bei Verwendung des neuen Verhaltens erscheint die Fehlerbenachrichtigung für einen bestimmten Konflikt lediglich einmal (zu dem Zeitpunkt, zu dem das in Konflikt stehende Attribut isoliert wird).
 
-Hier sehen Sie ein Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAddress-Konflikt:  
+Hier sehen Sie ein Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAddress-Konflikt: 
     ![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Aktive Benutzer")
 
 ## Beheben von Konflikten
@@ -157,8 +148,7 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 **Grundverhalten:**
 
-1. Bei einem Benutzer mit einer bestimmten Attributkonfiguration treten immer wieder Exportfehler auf, obwohl Attribute eigentlich isoliert werden sollten.  
-Beispiel:
+1. Bei einem Benutzer mit einer bestimmten Attributkonfiguration treten immer wieder Exportfehler auf, obwohl Attribute eigentlich isoliert werden sollten. Beispiel:
 
     a. In Active Directory wird ein neuer Benutzer mit dem UPN-Wert **Joe@contoso.com** und dem ProxyAddress-Wert **smtp:Joe@contoso.com** erstellt.
 
@@ -176,7 +166,7 @@ Beispiel:
 
     d. Der UPN-Wert von UserA wird nicht automatisch korrigiert und muss manuell aktualisiert werden.
 
-3. Wenn zwei Gruppen lokal mit der gleichen SMTP-Adresse erstellt werden, kann eine davon beim ersten Versuch nicht erfolgreich bereitgestellt werden, und es tritt ein Standardfehler für doppelte Werte vom Typ **ProxyAddress** auf. Der doppelte Wert wird beim nächsten Synchronisierungszyklus jedoch ordnungsgemäß isoliert.
+3. Wenn zwei Gruppen lokal mit der gleichen SMTP-Adresse erstellt werden, kann eine davon beim ersten Versuch nicht erfolgreich bereitgestellt werden, und es tritt ein Standardfehler für doppelte Werte vom Typ **ProxyAddress** auf. Der doppelte Wert wird beim nächsten Synchronisierungszyklus aber richtig isoliert.
 
 **PowerShell-Cmdlets**:
 
@@ -198,7 +188,7 @@ Beispiel:
 
     b. Anschließend wird versucht, **Benutzer B** mit **UPN = User@contoso.com** zu synchronisieren.
 
-    c. Der UPN-Wert von **Benutzer B** wird in **User1234@contoso.onmicrosoft.com** geändert, und **User@contoso.com** wird zu **DirSyncProvisioningErrors** hinzugefügt.
+    c. Der UPN-Wert von **Benutzer B** wird in **User1234@contoso.onmicrosoft.com** geändert, und **User@contoso.com** wird **DirSyncProvisioningErrors** hinzugefügt.
 
     d. Die Fehlermeldung für **Benutzer B** sollte angeben, dass **Benutzer A** bereits den UPN-Wert **User@contoso.com** besitzt, enthält aber den displayName-Wert von **Benutzer B**.
 
@@ -208,6 +198,8 @@ Beispiel:
 
 - [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 
-- [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+- [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/de-DE/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+
+<!---HONumber=AcomDC_0601_2016-->

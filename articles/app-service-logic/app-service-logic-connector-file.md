@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="05/31/2016"
 	ms.author="rajram"/>
 
 # Erste Schritte mit dem Datei-Connector und das Hinzufügen zur Logik-App
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
 
-Stellen Sie eine Verbindung mit einem Dateisystem her, um z. B. Dateien auf einem Hostcomputer hochzuladen und herunterzuladen. Logik-Apps können basierend auf einer Vielzahl von Datenquellen ausgelöst werden und Connectors anbieten, um Daten abzurufen und zu verarbeiten. Sie können den Datei-Connector dem geschäftlichen Workflow hinzufügen und Daten im Rahmen dieses Workflows in einer Logik-App verarbeiten.
+Stellen Sie eine Verbindung mit einem Dateisystem her, um z. B. Dateien auf einem Hostcomputer hochzuladen und herunterzuladen. Logik-Apps können basierend auf einer Vielzahl von Datenquellen ausgelöst werden und Connectors anbieten, um Daten abzurufen und zu verarbeiten. Sie können den Datei-Connector dem geschäftlichen Workflow hinzufügen und Daten im Rahmen dieses Workflows in einer Logik-App verarbeiten.
 
-Der Datei-Connector verwendet den Hybrid Connection Manager für eine Hybridkonnektivität mit dem Dateisystem.
+Der Datei-Connector verwendet den Hybrid Connection Manager für eine Hybridkonnektivität mit dem Hostdateisystem.
 
 ## Erstellen eines Datei-Connectors für Ihre Logik-App ##
 Zur Verwendung des Datei-Connectors müssen Sie zunächst eine Instanz der Datei-Connector-API-App erstellen. Gehen Sie dazu folgendermaßen vor:
 
 1.	Öffnen Sie den Azure Marketplace mit der Option "+NEU" auf der linken Seite im Azure-Portal.
-2.	Navigieren Sie zu "Marketplace > API-Apps" und suchen Sie nach "Datei-Connector".
+2.	Navigieren Sie zu „Marketplace > API-Apps“, und suchen Sie nach „Datei-Connector“.
 3.	Konfigurieren Sie den Datei-Connector wie folgt: ![][1]
 
 	- **Name** – Geben Sie einen Namen für den Datei-Connector ein.
@@ -43,18 +43,18 @@ Zur Verwendung des Datei-Connectors müssen Sie zunächst eine Instanz der Datei
 4. Klicken Sie auf "Erstellen". Ein neuer Datei-Connector wird erstellt.
 
 ## Hybrid Connection Manager konfigurieren ##
-Sobald die API-App-Instanz erstellt wurde, navigieren Sie zu deren Dashboard. Klicken Sie dazu auf "Durchsuchen" > "API-Apps" > "Wählen Sie Ihre Datei-Connector-API-App aus". Hier muss der Hybrid Connection Manager konfiguriert werden. Weitere Informationen zum Konfigurieren des Hybrid Connection Managers und zur Problembehebung finden Sie unter [Hybrid Connection Manager verwenden].
+Sobald die API-App-Instanz erstellt wurde, navigieren Sie zu deren Dashboard. Klicken Sie dazu auf „Durchsuchen“ > „API-Apps“ >, und wählen Sie Ihre Datei-Connector-API-App aus. Hier muss der Hybrid Connection Manager konfiguriert werden. Weitere Informationen zum Konfigurieren des Hybrid Connection Managers und zur Problembehebung finden Sie unter [Hybrid Connection Manager verwenden].
 
 ## Verwenden des Datei-Connectors in Logik-Apps ##
-Sobald Ihre API-App erstellt wurde, können Sie den Datei-Connector als Trigger oder Aktion für Ihre Logik-App verwenden. Gehen Sie hierzu wie folgt vor:
+Sobald Ihre API-App erstellt wurde, können Sie den Datei-Connector als Aktion für Ihre Logik-App verwenden. Gehen Sie hierzu wie folgt vor:
 
 1.	Erstellen Sie eine neue Logik-App, und wählen Sie dieselbe Ressourcengruppe aus, in der sich der Datei-Connector befindet. Befolgen Sie die Anweisungen zum [Erstellen einer neuen Logik-App].
 
-2.	Öffnen Sie "Trigger und Aktionen" innerhalb der erstellten Logik-App, um den Logik-App-Designer zu öffnen und den Ablauf zu konfigurieren.
+2.	Öffnen Sie „Trigger und Aktionen“ innerhalb der erstellten Logik-App, um den Logik-App-Designer zu öffnen und den Workflow zu konfigurieren.
 
-3.	Der Datei-Connector wird im Abschnitt "API-Apps in dieser Ressourcengruppe" im Katalog auf der rechten Seite angezeigt.
+3.	Der Datei-Connector wird im Abschnitt „API-Apps in dieser Ressourcengruppe“ im Katalog auf der rechten Seite angezeigt.
 
-4.	Sie können die Datei-Connector-API-App im Editor bearbeiten, indem Sie auf "Datei-Connector" klicken. Der Datei-Connector macht einen Trigger und vier Aktionen verfügbar: ![][5]
+4.	Sie können die Datei-Connector-API-App im Editor bearbeiten, indem Sie auf „Datei-Connector“ klicken. Der Datei-Connector macht einen Trigger und vier Aktionen verfügbar: ![][5]
 
 6.	Diese machen wiederum verschiedene Eigenschaften verfügbar. In der folgenden Abbildung sind die Eigenschaften für den Trigger und die Dateiabrufaktion aufgelistet: ![][6]
 
@@ -63,14 +63,14 @@ Sobald Ihre API-App erstellt wurde, können Sie den Datei-Connector als Trigger 
 > [AZURE.NOTE] Der Datei-Trigger löscht die Datei, nachdem sie erfolgreich aus dem Ordner gelesen wurde.
 
 ## Datei-Connector-REST-APIs ##
-Um den Connector außerhalb einer Logik-App zu verwenden, können die vom Connector zur Verfügung gestellten REST-APIs genutzt werden. Sie können diese API-Definitionen mit "Durchsuchen" -> "API-App" -> "Datei-Connector" anzeigen. Klicken Sie jetzt auf die Lupe "API-Definition" im Abschnitt "Zusammenfassung", um alle APIs anzuzeigen, die von diesem Connector zur Verfügung gestellt werden: ![][7]
+Um den Connector außerhalb einer Logik-App zu verwenden, können die vom Connector zur Verfügung gestellten REST-APIs genutzt werden. Sie können diese API-Definitionen mit „Durchsuchen“ > „API-App“ > „Datei-Connector“ anzeigen. Klicken Sie jetzt auf die Lupe "API-Definition" im Abschnitt "Zusammenfassung", um alle APIs anzuzeigen, die von diesem Connector zur Verfügung gestellt werden: ![][7]
 
-Ausführliche Informationen zu den APIs finden sie unter [File Connector (in englischer Sprache)].
+Ausführliche Informationen zu den APIs finden sie unter [File Connector] (Datei-Connector).
 
 ## Mehr mit Ihrem Connector machen
-Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
+Der Connector ist nun erstellt, und Sie können ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
->[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) sofort kostenlos eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 
@@ -84,7 +84,7 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 
 <!-- Links -->
 [Erstellen einer neuen Logik-App]: app-service-logic-create-a-logic-app.md
-[File Connector (in englischer Sprache)]: https://msdn.microsoft.com/library/dn936296.aspx
+[File Connector]: https://msdn.microsoft.com/library/dn936296.aspx
 [Hybrid Connection Manager verwenden]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="03/31/2016"
-   ms.author="jesseb; mikhegn; vturecek"/>
+   ms.author="vturecek;mikhegn"/>
 
 # Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio
 
@@ -70,7 +70,7 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster, klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren**.
 
     ![Aktivieren des Remotedebuggens][enableremotedebugging]
-    
+
     Dadurch wird der Vorgang zum Aktivieren der Remotedebuggen-Erweiterung sowie der benötigten Netzwerkkonfigurationen auf Ihren Clusterknoten gestartet.
 
 2. Klicken Sie im **Cloud-Explorer** mit der rechten Maustaste auf den Clusterknoten, und wählen Sie **Debugger anfügen**
@@ -80,20 +80,20 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 3. Wählen Sie im Dialogfeld **An den Prozess anhängen** den Prozess, den Sie debuggen möchten, und klicken Sie auf **Anhängen**
 
     ![Prozess wählen][chooseprocess]
-    
+
     Der Name des Prozesses, an den Sie anhängen möchten, ist derselbe Name wie Ihr Dienstprojekt-Assemblyname.
 
     Der Debugger wird an alle den Prozess ausführenden Knoten angehängt.
     - Falls Sie einen zustandslosen Dienst debuggen, sind alle Instanzen des Diensts auf allen Knoten Teil der Debugsitzung.
     - Falls Sie einen zustandsbehafteten Dienst debuggen, ist nur das primäre Replikat der jeweiligen Partition aktiv und wird somit vom Debugger behandelt. Falls das primäre Replikat während der Debugsitzung verschoben wird, ist die Verarbeitung dieses Replikats immer noch Teil der Debugsitzung.
     - Um nur relevante Partitionen oder Instanzen eines bestimmten Diensts abzufangen, können Sie bedingte Haltepunkte verwenden, um nur eine bestimmte Partition oder Instanz zu unterbrechen.
-        
+
     ![Bedingter Haltepunkt][conditionalbreakpoint]
-    
+
     > [AZURE.NOTE] Das Debuggen eines Service Fabric-Clusters mit mehreren Instanzen desselben Namens des ausführbaren Diensts wird derzeit nicht unterstützt.
-    
+
 4. Nach dem Debuggen Ihrer Anwendung können Sie die Remotedebuggen-Erweiterung deaktivieren, indem Sie im **Cloud-Explorer** mit der rechten Maustaste auf den Cluster klicken und **Debuggen deaktivieren** wählen.
-    
+
     ![Deaktivieren des Remotedebuggen][disableremotedebugging]
 
 ## Streaming von Ablaufverfolgungen aus einem Remoteclusterknoten
@@ -108,17 +108,17 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster, klicken Sie mit der rechten Maustaste, und wählen Sie **Streaming von Ablaufverfolgungen aktivieren**
 
     ![Aktivieren des Remotestreaming von Ablaufverfolgungen][enablestreamingtraces]
-    
+
     Dadurch wird der Vorgang zum Aktivieren der Erweiterung „Streaming von Ablaufverfolgungen“ sowie der benötigten Netzwerkkonfigurationen auf Ihren Clusterknoten gestartet.
 
 2. Erweitern Sie im **Cloud-Explorer** das **Knoten**-Element, klicken Sie mit der rechten Maustaste auf den Knoten, von dem aus Sie Ablaufverfolgungen streamen möchten, und wählen Sie **Streaming von Ablaufverfolgungen anzeigen**.
 
     ![Remotestreaming von Ablaufverfolgungen anzeigen][viewremotestreamingtraces]
-    
+
     Wiederholen Sie Schritt 2 für beliebig viele Knoten, von denen Sie Ablaufverfolgungen anzeigen möchten. Der Datenstrom jedes Knotens wird in einem dedizierten Fenster angezeigt.
-    
+
     Sie können jetzt die von Service Fabric und Ihren Diensten ausgegebenen Ablaufverfolgungen sehen. Falls Sie die Ereignisse filtern möchten, damit nur eine bestimmte Anwendung angezeigt wird, geben Sie einfach den Namen der Anwendung in den Filter ein.
-    
+
     ![Streaming von Ablaufverfolgungen anzeigen][viewingstreamingtraces]
 
 4. Sobald Sie mit dem Streaming von Ablaufverfolgungen von Ihrem Cluster fertig sind, können Sie das Remotestreaming von Ablaufverfolgungen deaktivieren, indem Sie im **Cloud-Explorer** mit der rechten Maustaste auf Ihren Cluster klicken und **Streaming von Ablaufverfolgungen deaktivieren** wählen.
@@ -146,4 +146,4 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png
 [disablestreamingtraces]: ./media/service-fabric-debugging-your-application/disablestreamingtraces.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->

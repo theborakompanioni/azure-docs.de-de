@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erstellen eines Azure Search-Diensts mit dem Azure-Portal | Microsoft Azure | Gehosteter Cloudsuchdienst"
-	description="Erlernen Sie das Bereitstellen eines Azure Search-Diensts über das Azure-Portal."
+	description="Erlernen Sie das Bereitstellen eines Azure Search-Diensts über das Azure-Portal."
 	services="search"
 	authors="ashmaka"
 	documentationCenter=""/>
@@ -11,10 +11,10 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/10/2016"
+	ms.date="05/31/2016"
 	ms.author="ashmaka"/>
 
-# Erstellen eines Azure Search-Diensts über das Azure-Portal
+# Erstellen eines Azure Search-Diensts über das Azure-Portal
 
 In diesem Leitfaden lernen Sie, wie Sie einen Azure Search-Dienst mithilfe des [Azure-Portals](https://portal.azure.com/) erstellen (oder bereitstellen).
 
@@ -63,7 +63,7 @@ Sobald die Bereitstellung Ihres Diensts abgeschlossen ist, können Sie ihn Ihren
 
 Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen verarbeiten. [Ein Dienst benötigt zwei Replikate, um eine Nur-Lese-SLA zu erreichen, und drei Replikate zum Erreichen einer SLA mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-1. Öffnen Sie im Azure-Portal das Verwaltungsblatt für Ihren Azure Search-Dienst.
+1. Öffnen Sie im Azure-Portal das Verwaltungsblatt für Ihren Azure Search-Dienst.
 2. Wählen Sie auf dem Blatt „Einstellungen“ die Option „Skalieren“ aus.
 3. Sie können den Dienst skalieren, indem Sie Replikate oder Partitionen hinzufügen.
   * Der Dienst kann nicht über 36 Sucheinheiten hinaus skaliert werden. Die Gesamtzahl von Sucheinheiten entspricht dem Produkt der Replikate und Partitionen (Replikate * Partitionen = Sucheinheiten insgesamt).
@@ -74,4 +74,4 @@ Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen ve
 ## Weiter
 Nach der Bereitstellung eines Azure Search-Diensts können Sie einen [Azure Search-Index definieren](search-what-is-an-index.md), damit Sie Ihre Daten hochladen und durchsuchen können.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -12,7 +12,7 @@
    ms.service="sql-database"
    ms.devlang="NA"
    ms.topic="article"
-   ms.tgt_pltfrm="performance"
+   ms.tgt_pltfrm="sqldb-performance"
    ms.workload="data-management"
    ms.date="05/25/2016"
    ms.author="carlrab"/>
@@ -34,41 +34,42 @@ Der Betrieb des Abfragespeichers in Azure SQL-Datenbank basiert auf diesen beide
 
 Für die Auswirkungen auf die Workload des Kunden gelten zwei Aspekte:
 
-- ***Verfügbarkeit***: Der Servicelevel (SLA) für SQL-Datenbank wird nicht reduziert, wenn der Abfragespeicher ausgeführt wird.
-- ***Leistung***: Der durchschnittliche Mehraufwand, der durch den Abfragespeicher anfällt, liegt normalerweise im Bereich von 1 bis 2%.
+- ***Verfügbarkeit:*** Die [SLA für SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database/v1_0/) wird nicht reduziert, wenn der Abfragespeicher ausgeführt wird.
+- ***Leistung:*** Der durchschnittliche Mehraufwand, der durch den Abfragespeicher anfällt, liegt normalerweise im Bereich von 1 bis 2 %.
 
-Für den Abfragespeicher in Azure werden eingeschränkte Ressourcen verwendet (CPU, Arbeitsspeicher, Datenträger-E/A, Größe auf Datenträger usw.). Es werden verschiedene Systembeschränkungen beachtet, damit die normale Workload möglichst wenig beeinträchtigt wird. Im Allgemeinen werden für den Abfragespeicher diese beiden Ressourceneinschränkungen beachtet:
+Für den Abfragespeicher in Azure werden eingeschränkte Ressourcen verwendet (CPU, Arbeitsspeicher, Datenträger-E/A, Größe auf Datenträger usw.). Es werden verschiedene Systemeinschränkungen beachtet, damit die reguläre Workload möglichst wenig beeinträchtigt wird:
 
 - ***Statische Einschränkungen:*** Einschränkungen aufgrund der Ressourcenkapazität einer bestimmten Dienstebene (Basic, Standard, Premium, Elastischer Pool).
-- ***Dynamische Einschränkungen:*** Einschränkungen, die sich durch den aktuellen Verbrauch einer Workload ergeben (z.B. die verfügbaren Ressourcen).
+- ***Dynamische Einschränkungen:*** Einschränkungen, die sich durch den aktuellen Verbrauch einer Workload ergeben (also die verfügbaren Ressourcen).
 
 Zur Sicherstellung eines unterbrechungsfreien und zuverlässigen Betriebs verfügt Azure SQL-Datenbank für den Abfragespeicher über eine permanente Überwachungsinfrastruktur, mit der wichtige Betriebsdaten aus jeder Datenbank gesammelt werden. Auf diese Weise werden ständig mehrere technische KPIs überwacht, um für einen zuverlässigen Betrieb zu sorgen:
 
 - Anzahl von Ausnahmen und automatischen Problemlösungen
 - Anzahl von Datenbanken mit dem Status READ\_ONLY und Dauer des Status READ\_ONLY
+- Top-Datenbanken mit einem über dem Grenzwert befindlichen Arbeitsspeicherverbrauch für den Abfragespeicher
 - Top-Datenbanken nach Häufigkeit und Dauer der automatischen Bereinigung
 - Top-Datenbanken nach Dauer des Ladens von Daten in den Arbeitsspeicher (während der Initialisierung)
 - Top-Datenbanken nach Dauer der Datenleerung auf Datenträger
 
 Azure SQL-Datenbank nutzt die gesammelten Daten für folgende Zwecke:
 
-- ***Lösen oder Eindämmen von Problemen, die vom Abfragespeicher verursacht werden:*** Azure SQL-Datenbank kann mit geringer Latenz (weniger als eine Stunde) Probleme erkennen und lösen, die sich stark auf die Workload von Kunden auswirken. Probleme werden am häufigsten behandelt, indem der Abfragespeicher vorübergehend deaktiviert wird (***OFF***).
 - ***Erlernen von Verwendungsmustern für eine große Zahl von Datenbanken und Verbessern der Zuverlässigkeit und Qualität von Funktionen:*** Der Abfragespeicher wird mit jedem Update von Azure SQL-Datenbank verbessert. 
+- ***Lösen oder Minimieren von Problemen, die vom Abfragespeicher verursacht werden:*** Azure SQL-Datenbank kann innerhalb kurzer Zeit (weniger als eine Stunde) Probleme erkennen und minimieren oder lösen, die sich erheblich auf die Workload von Kunden auswirken. Probleme werden am häufigsten behandelt, indem der Abfragespeicher vorübergehend deaktiviert wird (***OFF***).
 
-Von Zeit zu Zeit werden mit Updates des Abfragespeichers Änderungen an den Standardeinstellungen vorgenommen, die auf interne und in seltenen Fällen auch auf externe Konfigurationen für Kunden angewendet werden. Aus diesem Grund kann sich die Nutzung des Abfragespeichers unter Azure SQL-Datenbank für Kunden gegenüber lokalen Umgebungen unterscheiden, da von der Abfragespeicher-Plattform automatische Aktionen durchgeführt werden:
+Von Zeit zu Zeit werden mit Updates des Abfragespeichers Änderungen an den Standardeinstellungen vorgenommen, die auf interne und in seltenen Fällen auch auf externe Konfigurationen für Kunden angewendet werden. Aus diesem Grund kann sich die Nutzung des Abfragespeichers unter Azure SQL-Datenbank für Kunden gegenüber lokalen Umgebungen unterscheiden, da von der Azure-Plattform automatische Aktionen durchgeführt werden:
 
 - Der Status des Abfragespeichers kann in ***OFF*** geändert werden, um Probleme zu lösen, und dann wieder in ***ON***, nachdem das Problem behoben wurde.
 - Die Konfiguration des Abfragespeichers kann geändert werden, um einen zuverlässigen Betrieb sicherzustellen. Hierbei gibt es folgende Möglichkeiten:
     - Individuelle Datenbankänderungen, mit denen Probleme aufgrund von Instabilität oder Unzuverlässigkeit behoben werden.
     - Globale Einführung optimaler Konfigurationsänderungen, aus denen sich Vorteile für alle Datenbanken ergeben, die den Abfragespeicher nutzen.
 
-Die Deaktivierung des Abfragespeichers (***OFF***) ist eine automatische Aktion für individuelle Datenbanken. Sie wird durchgeführt, wenn sich ein Produktverhalten negativ auf Benutzerdatenbanken auswirkt, für die der Erkennungsmechanismus eine Warnung ausgelöst hat. Für eine betroffene Datenbank bleibt der Abfragespeicher deaktiviert (***OFF***), bis eine neue Version mit der verbesserten Implementierung des Abfragespeichers verfügbar ist. Wenn der Übergang in den Status ***OFF*** erfolgt, wird der Kunde per E-Mail informiert und gebeten, den Abfragespeicher erst wieder zu aktivieren, nachdem eine neue Version bereitgestellt wurde. Nach einem neuen Rollout aktiviert die Infrastruktur von Azure SQL-Datenbank den Abfragespeicher automatisch für alle Datenbanken, für die er auf ***OFF*** festgelegt wurde.
+Die Deaktivierung des Abfragespeichers (***OFF***) ist eine automatische Aktion für individuelle Datenbanken. Sie wird durchgeführt, wenn sich ein Produktverhalten negativ auf Benutzerdatenbanken auswirkt, für die der Erkennungsmechanismus eine Warnung ausgelöst hat. Für eine betroffene Datenbank bleibt der Abfragespeicher deaktiviert (***OFF***), bis eine neue Version mit der verbesserten Implementierung des Abfragespeichers verfügbar ist. Wenn der Übergang in den Status ***OFF*** erfolgt, wird der Kunde per E-Mail informiert. Dem Kunden wird empfohlen, den Abfragespeicher erst wieder zu aktivieren, nachdem eine neue Version bereitgestellt wurde. Nach dem Rollout einer neuen Version aktiviert die Infrastruktur von Azure SQL-Datenbank den Abfragespeicher automatisch für alle Datenbanken, für die er auf ***OFF*** festgelegt wurde.
 
 In selteneren Fällen werden von Azure SQL-Datenbank unter Umständen neue Konfigurationsstandardeinstellungen für alle Benutzerdatenbanken erzwungen, die im Hinblick auf den zuverlässigen Betrieb und die fortlaufende Datensammlung optimiert sind.
 
 ## Optimale Konfiguration des Abfragespeichers
 
-In diesem Abschnitt werden die optimalen Standardeinstellungen der Konfiguration beschrieben, mit denen der zuverlässige Betrieb des Abfragespeichers und der abhängigen Features sichergestellt wird, z.B. [SQL Database Advisor and Performance Dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/) (SQL-Datenbank-Ratgeber und Leistungsdashboard). Die Standardkonfiguration ist für die fortlaufende Datensammlung optimiert. Dies bedeutet, dass möglichst wenig Zeit im Status OFF bzw. READ\_ONLY verbracht wird.
+Dieser Abschnitt beschreibt die optimalen Standardeinstellungen der Konfiguration, mit denen der zuverlässige Betrieb des Abfragespeichers und der abhängigen Features sichergestellt wird, z.B. [SQL-Datenbank-Ratgeber und Leistungsdashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Die Standardkonfiguration ist für die fortlaufende Datensammlung optimiert. Dies bedeutet, dass möglichst wenig Zeit im Status OFF bzw. READ\_ONLY verbracht wird.
 
 | Konfiguration | Beschreibung | Standard | Kommentar |
 | ------------- | ----------- | ------- | ------- |
@@ -80,9 +81,9 @@ In diesem Abschnitt werden die optimalen Standardeinstellungen der Konfiguration
 | FLUSH\_INTERVAL\_SECONDS | Gibt an, wie lange gesammelte Laufzeitstatistiken maximal im Arbeitsspeicher aufbewahrt werden, bevor die Leerung auf Datenträger erfolgt. | 900 | Für neue Datenbanken erzwungen |
 ||||||
 
-Die obigen Standardeinstellungen werden in der letzten Phase der Abfragespeicheraktivierung automatisch auf alle Azure SQL-Datenbanken angewendet. Nach diesem Optimierungsschritt werden die von Kunden festgelegten Konfigurationswerte für Azure SQL-Datenbank nicht mehr geändert, es sei denn, sie wirken sich negativ auf die primäre Workload oder den zuverlässigen Betrieb des Abfragespeichers aus.
+> [AZURE.IMPORTANT] Diese Standardeinstellungen werden in der letzten Phase der Abfragespeicheraktivierung automatisch auf alle Azure SQL-Datenbanken angewendet (siehe wichtigen Hinweis oben). Nach diesem Optimierungsschritt werden die von Kunden festgelegten Konfigurationswerte für Azure SQL-Datenbank nicht mehr geändert, es sei denn, sie wirken sich negativ auf die primäre Workload oder den zuverlässigen Betrieb des Abfragespeichers aus.
 
-Falls Sie weiterhin Ihre benutzerdefinierten Einstellungen nutzen möchten, helfen Ihnen die Informationen unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx) weiter, um die Konfiguration wieder in den vorherigen Zustand zu versetzen. Lesen Sie sich den Artikel [Best Practices with the Query Store](https://msdn.microsoft.com/library/mt604821.aspx) (Bewährte Methoden für den Abfragespeicher) durch, um zu erfahren, wie Sie die optimalen Konfigurationsparameter auswählen.
+Falls Sie weiterhin Ihre benutzerdefinierten Einstellungen nutzen möchten, helfen Ihnen die Informationen unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx) weiter, um die Konfiguration wieder in den vorherigen Zustand zu versetzen. Lesen Sie den Artikel [Bewährte Methoden für den Abfragespeicher](https://msdn.microsoft.com/library/mt604821.aspx), um zu erfahren, wie Sie die optimalen Konfigurationsparameter auswählen.
 
 ## Nächste Schritte
 
@@ -92,10 +93,12 @@ Falls Sie weiterhin Ihre benutzerdefinierten Einstellungen nutzen möchten, helf
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) (Ein Flugdatenschreiber für Ihre Datenbank) 
-
-- [Query Store Usage Scenarios](https://msdn.microsoft.com/library/mt614796.aspx) (Verwendungsszenarien für den Abfragespeicher)
+- [A flight data recorder for your database (Ein Flugdatenschreiber für Ihre Datenbank)](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
 
 - [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+- [Query Store Usage Scenarios (Verwendungsszenarien für den Abfragespeicher)](https://msdn.microsoft.com/library/mt614796.aspx)
+
+- [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
+
+<!---HONumber=AcomDC_0601_2016-->

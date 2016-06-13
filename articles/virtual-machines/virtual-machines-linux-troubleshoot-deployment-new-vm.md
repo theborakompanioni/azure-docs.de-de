@@ -23,13 +23,11 @@
 
 [AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]klassisches Bereitstellungsmodell.
-
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Sammeln von Überwachungsprotokollen
 
-Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zum durchzuführenden Prozess:
+Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise.
 
 [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md)
 
@@ -59,20 +57,20 @@ Laden Sie zur Behebung dieser Fehler die ursprüngliche (lokal verfügbare) virt
 
 **Lösung:**
 
-Löschen Sie zur Behebung dieser Fehler das aktuelle Image über das Portal, und [erfassen Sie es auf der Grundlage der aktuellen VHDs erneut](virtual-machines-linux-capture-image.md). Verwenden Sie dabei die gleiche Einstellung (generalisiert/spezialisiert), die auch für das Betriebssystem verwendet wird.
+Löschen Sie zur Behebung dieser Fehler das aktuelle Image aus dem Portal, und [erfassen Sie es auf der Grundlage der aktuellen VHDs erneut](virtual-machines-linux-capture-image.md). Verwenden Sie dabei die gleiche Einstellung (generalisiert/spezialisiert), die auch für das Betriebssystem verwendet wird.
 
-## Problem: Benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
+## Problem: benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
 Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Computer an einen Cluster gesendet wird, der entweder nicht über genügend Speicherplatz verfügt oder die angeforderte VM-Größe nicht unterstützt.
 
-**Ursache 1:** Der Cluster unterstützt nicht die angeforderte Größe des virtuellen Computers.
+**Ursache 1:** Der Cluster unterstützt die angeforderte Größe des virtuellen Computers nicht.
 
 **Lösung 1:**
 
 - Wiederholen Sie die Anforderung mit einer geringeren Größe des virtuellen Computers.
 - Wenn die Größe des angeforderten virtuellen Computers nicht geändert werden kann:
-  - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe. Klicken Sie auf **Ressourcengruppen** > *Ihre Ressourcengruppe* > **Ressourcen** > *Ihre Verfügbarkeitsgruppe* > **Virtual Machines** > *Ihr virtueller Computer* > **Beenden**.
+  - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe. Klicken Sie auf **Ressourcengruppen** > *Ihre Ressourcengruppe* > **Ressourcen** > *Ihre Verfügbarkeitsgruppe* > **Virtuelle Computer** > *Ihr virtueller Computer* > **Beenden**.
   - Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
-  - Starten Sie zunächst den neuen virtuellen Computer, und wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
+  - Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
 **Ursache 2:** Der Cluster besitzt keine freien Ressourcen.
 
@@ -83,4 +81,4 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   - Erstellen Sie einen neuen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
   - Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -19,8 +19,6 @@
 
 # Verwenden Sie für virtuelle Azure Resource Manager-Computer diese PowerShell:
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell
-
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
 
 Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
@@ -108,4 +106,4 @@ Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich 
 
 * [Erstellen einer Richtlinie](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

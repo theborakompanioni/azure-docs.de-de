@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="05/31/2016"
 	ms.author="stepsic"/>
 
 # Überwachen von Logik-Apps
 
-Nach dem [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen. Um den Verlauf anzuzeigen, wählen Sie **Durchsuchen** und dann **Logik-Apps** aus. Eine Liste der Logik-Apps in Ihrem Abonnement wird angezeigt. Jede Logik-App lässt sich auswählen, **aktivieren** und **deaktivieren**. **Aktivierte** Logik-Apps bedeutet, dass Trigger Ihre Logik-App in Reaktion auf auslösende Ereignisse ausführen. **Deaktivierte** Logik-Apps werden nicht als Reaktion auf Ereignisse ausgeführt.
+Nach dem [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen. Wählen Sie zum Anzeigen des Verlaufs **Durchsuchen** und dann **Logik-Apps**. Eine Liste der Logik-Apps in Ihrem Abonnement wird angezeigt. Jede Logik-App lässt sich auswählen, **aktivieren** und **deaktivieren**. **Aktivierte** Logik-Apps bedeutet, dass Trigger Ihre Logik-App in Reaktion auf auslösende Ereignisse ausführen. **Deaktivierte** Logik-Apps werden nicht als Reaktion auf Ereignisse ausgeführt.
 
 ![Übersicht](./media/app-service-logic-monitor-your-logic-apps/overview.png)
 
@@ -51,9 +51,12 @@ Für jeden Trigger können Sie anzeigen, ob er **ausgelöst** bzw. nicht ausgel�
 
 Beachten Sie, dass für *Pushtrigger* *nicht* angezeigt wird, wie oft hier eine Ausführung gestartet wurde. Stattdessen sehen Sie die *Rückrufregistrierungs*-Aufrufe, wenn die Logik-App sich registriert, um zurückgerufen zu werden. Falls Ihr Pushtrigger nicht funktioniert, liegt ggf. ein Problem mit der Registrierung vor (was Sie unter "Ausgaben" erkennen können). Andernfalls müssen Sie diese API speziell untersuchen.
 
+## Aktivieren der Azure-Diagnose
+
+Sie können Diagnoseinformationen aktivieren, um Laufzeitdaten für Ihre Workflows abzurufen und zu speichern. Führen Sie auf dem Blatt „Logik-App“ einen Bildlauf nach unten zu den Diagrammen zur **Überwachung** aus, und wählen Sie **Click here to enable diagnostics** (Hier klicken, um die Diagnose zu aktivieren). Sie können dann ein Speicherkonto in der Region der Logik-App konfigurieren und in der Logik-App **Protokolle** oder **Metriken** abonnieren. Bei der Einstellung **Protokolle** wird ein Ereignis gesendet, wenn eine Ausführung, eine Aktion oder ein Ereignis gestartet oder abgeschlossen wird. **Metriken** stellen aggregierte Daten zur Anzahl der Ausführungen in einem bestimmten Zeitfenster bereit.
+
 ## Aktivieren der Versionsverwaltung
 
-Es gibt eine Funktion, die auf der Benutzeroberfläche derzeit nicht verfügbar ist (in Planung), aber über die [REST-API](https://msdn.microsoft.com/library/azure/mt643788.aspx) zur Verfügung steht. Wenn Sie die Definition einer Logik-App aktualisieren, wird die vorherige Version der Definition gespeichert. Dies liegt daran, dass wenn eine Ausführung bereits läuft, diese Ausführung auf die Version der Logik-App verweist, die zum Zeitpunkt des Ausführungsbeginns vorhanden war. Definitionen laufender Ausführungen können nicht geändert werden. Die REST-API für den Versionsverlauf ermöglicht Ihnen den Zugriff auf diese Informationen.
- 
+Es gibt eine zusätzliche Funktion, die auf der Benutzeroberfläche derzeit nicht verfügbar ist (in Planung), aber über die [REST-API](https://msdn.microsoft.com/library/azure/mt643788.aspx) zur Verfügung steht. Wenn Sie die Definition einer Logik-App aktualisieren, wird die vorherige Version der Definition gespeichert. Dies liegt daran, dass wenn eine Ausführung bereits läuft, diese Ausführung auf die Version der Logik-App verweist, die zum Zeitpunkt des Ausführungsbeginns vorhanden war. Definitionen laufender Ausführungen können nicht geändert werden. Die REST-API für den Versionsverlauf ermöglicht Ihnen den Zugriff auf diese Informationen.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

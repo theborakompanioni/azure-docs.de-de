@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/31/2016" 
 	ms.author="bradsev;gopitk" />
 
 
@@ -87,8 +87,13 @@ Der [Cortana-Analyseprozess](https://azure.microsoft.com/documentation/learning-
 
 Wenngleich der CAP nicht bestimmte Arten von **Dokumentationsinhalten** vorschreibt, es ist eine bewährte Methode, die Ergebnisse der Datenuntersuchung, Modellierung und Auswertung zu dokumentieren und den dazugehörigen Code zu speichern, damit die Analyse bei Bedarf wiederholt kann. Dies ermöglicht außerdem die Wiederverwendung der Analyseergebnisse bei der Arbeit mit anderen Anwendungen mit ähnlichen Daten und Vorhersageaufgaben.
 
-Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Siehe [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md) und [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md).
+Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Siehe z.B.:
+
+- [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
+- [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md).
+- [Data Science mit Spark in Azure HD.mdnsight](machine-learning-data-science-spark-overview.md)
+- [Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise](machine-learning-data-science-process-data-lake-walkthrough.md)
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

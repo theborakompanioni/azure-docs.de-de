@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
 # Importieren aus einer BACPAC-Datei in SQL-Datenbank per SqlPackage
@@ -49,4 +49,15 @@ Führen Sie die unten angegebenen Schritte aus, um das Befehlszeilen-Hilfsprogra
 
 	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+## Nächste Schritte
+
+- [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+
+## Weitere Informationen
+
+- [SQL-Datenbank V12](sql-database-v12-whats-new.md)
+- [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
+
+<!---HONumber=AcomDC_0601_2016-->
