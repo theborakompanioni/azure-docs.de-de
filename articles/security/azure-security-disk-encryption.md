@@ -91,7 +91,7 @@ Beim Aktivieren und Bereitstellen der Azure-Datenträgerverschlüsselung für vi
 
 Die Azure-Datenträgerverschlüsselung für virtuelle IaaS-Computer für Windows und Linux umfasst die Datenträgerverschlüsselungserweiterung für Windows, Datenträgerverschlüsselungserweiterung für Linux, Datenträgerverschlüsselungs-PowerShell-Cmdlets, Datenträgerverschlüsselungs-CLI-Cmdlets und Azure-Ressourcen-Manager-Vorlagen für die Datenträgerverschlüsselung. Die Lösung für die Azure-Datenträgerverschlüsselung wird auf virtuellen IaaS-Computern unter dem Windows- oder Linux-Betriebssystem unterstützt. Weitere Informationen zu den unterstützten Betriebssystemen finden Sie unten im Abschnitt „Voraussetzungen“.
 
-****Hinweis:** Für die Verschlüsselung von VM-Datenträgern per Azure Disk Encryption fallen keine Gebühren an.
+**Hinweis:** Für die Verschlüsselung von VM-Datenträgern per Azure Disk Encryption fallen keine Gebühren an.
 
 ### Wertbeitrag
 
@@ -169,7 +169,7 @@ Azure Disk Encryption wird für die folgenden Windows-Client-SKUs unterstützt: 
 
 	- Beispiel für eine gültige URL des geheimen Schlüssels:
 
-		**https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- Beispiel für gültigen KRK-Schlüsselverschlüsselungsschlüssel:
 
@@ -183,7 +183,7 @@ Azure Disk Encryption wird für die folgenden Windows-Client-SKUs unterstützt: 
 
 	- Akzeptierte Schlüsseltresor-URL:
 
-		**https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 - Die virtuellen IaaS-Computer müssen die folgenden Anforderungen an die Netzwerkendpunktkonfiguration erfüllen, um die Azure-Datenträgerverschlüsselung zu erfüllen:
 

@@ -206,7 +206,7 @@ Konfigurieren Sie dann LOB1 für IIS, und testen Sie den Zugriff von CLIENT1.
 10.	Klicken Sie auf der Seite "Installationsauswahl bestätigen" auf **Installieren**.
 11.	Warten Sie, bis die Installation der Komponenten abgeschlossen ist, und klicken Sie dann auf **Schließen**.
 12.	Melden Sie sich am Computer CLIENT1 mit den Anmeldeinformationen des Kontos „CORP\\User1“ an, und starten Sie Internet Explorer.
-13.	Geben Sie in die Adressleiste ****http://lob1/** ein, und drücken Sie dann die EINGABETASTE. Die Standardwebseite für IIS 8 sollte angezeigt werden.
+13.	Geben Sie in die Adressleiste **http://lob1/** ein, und drücken Sie dann die EINGABETASTE. Die Standardwebseite für IIS 8 sollte angezeigt werden.
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 

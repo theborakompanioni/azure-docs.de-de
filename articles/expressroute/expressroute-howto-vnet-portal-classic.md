@@ -50,14 +50,14 @@ Mit den folgenden Schritte werden ein klassisches VNet und ein Gateway für virt
 5. Die Seite **Site-to-Site-Konnektivität** wird angezeigt, wenn Sie im vorherigen Schritt ausgewählt haben, dass Sie ein neues lokales Netzwerk angeben. Geben Sie zur Konfiguration des lokalen Netzwerks die folgenden Informationen ein, und klicken Sie dann auf den Pfeil "Weiter".
 
 	- **Name** – Der Name, den Sie Ihrem lokalen Netzwerkstandort geben möchten.
-	- **Adressraum** – Umfasst Start-IP und CIDR (Anzahl der Adressen). Sie können einen beliebigen Adressbereich angeben, solange er sich nicht mit dem Adressbereich Ihres virtuellen Netzwerks überschneidet. Normalerweise werden die Adressbereiche für Ihre lokalen Netzwerke angegeben, aber im Fall von ExpressRoute werden diese Einstellungen nicht verwendet. Diese Einstellung ist jedoch erforderlich, um das lokale Netzwerk zu erstellen, wenn Sie das klassische Portal verwenden.
+	- **Adressraum**– Umfasst Start-IP und CIDR (Anzahl der Adressen). Sie können einen beliebigen Adressbereich angeben, solange er sich nicht mit dem Adressbereich Ihres virtuellen Netzwerks überschneidet. Normalerweise werden die Adressbereiche für Ihre lokalen Netzwerke angegeben, aber im Fall von ExpressRoute werden diese Einstellungen nicht verwendet. Diese Einstellung ist jedoch erforderlich, um das lokale Netzwerk zu erstellen, wenn Sie das klassische Portal verwenden.
 	- **Adressraum hinzufügen** – Diese Einstellung ist für ExpressRoute nicht relevant.
 
 
 6. Geben Sie auf der Seite **Virtual Network Address Spaces** die folgenden Informationen ein, und klicken Sie dann in der unteren rechten Ecke auf das Häkchen, um das Netzwerk zu konfigurieren.
 
-	- **Adressraum** – Umfasst Start-IP und die Anzahl der Adressen. Stellen Sie sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überschneiden.
-	- **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich.
+	- **Adressraum**– Umfasst Start-IP und die Anzahl der Adressen. Stellen Sie sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überschneiden.
+	- **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich.
 	- **Gatewaysubnetz hinzufügen** – Klicken Sie auf diese Option, um das Gatewaysubnetz hinzuzufügen. Das Gatewaysubnetz wird nur für das Gateway des virtuellen Netzwerks verwendet, und es ist für diese Konfiguration erforderlich.<BR>Das Gatewaysubnetz-CIDR (Anzahl von Adressen) für ExpressRoute muss /28 oder größer sein (/ 27, / 26 usw.). Dadurch werden genügend IP-Adressen in diesem Subnetz ermöglicht, damit die Konfiguration funktioniert. Wenn Sie im klassischen Portal das Kontrollkästchen zur Verwendung von ExpressRoute aktiviert haben, wird im Portal ein Gatewaysubnetz mit/28 angegeben. Beachten Sie, dass Sie die Anzahl der CIDR-Adressen im klassischen Portal nicht anpassen können. Das Gatewaysubnetz wird im klassischen Portal als **Gateway** angezeigt, obwohl der tatsächliche Name des erstellten Gatewaysubnetzes eigentlich **GatewaySubnet** lautet. Sie können diesen Namen mithilfe von PowerShell oder im Azure-Portal anzeigen.
 
 7. Klicken Sie auf das Häkchen am rechten unteren Rand der Seite, damit das virtuelle Netzwerk erstellt wird. Sobald der Vorgang abgeschlossen ist, wird im klassischen Portal auf der Seite **Netzwerke** unter **Status** der Eintrag **Erstellt** angezeigt.

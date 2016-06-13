@@ -215,7 +215,7 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und regis
 4. Geben Sie unter **Proxyeinstellungen** an, wie für den Anbieter, der auf dem VMM-Server ausgeführt wird, über das Internet eine Verbindung mit Site Recovery hergestellt wird.
 
 	- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Ohne Proxy direkt verbinden** aus.
-	- - Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus.
+	- Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus.
 	- Wenn für den vorhandenen Proxy eine Authentifizierung erforderlich ist, oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Mit benutzerdefinierten Proxyeinstellungen verbinden** aus.
 	- Bei einem benutzerdefinierten Proxy müssen Sie die Adresse, den Port und Anmeldeinformationen eingeben.
 	- Bei Verwendung eines Proxys sollten Sie die unter [Voraussetzungen](#provider-and-agent-prerequisites) beschriebenen URLs bereits zugelassen haben.

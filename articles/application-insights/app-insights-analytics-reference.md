@@ -1393,7 +1393,17 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || | `<` | Kleiner | `<=` | Kleiner gleich | `>` | Größer |`>=` | Größer gleich | `<>` | Ungleich | `!=` | Ungleich
+| - | Subtrahieren |
+| * | Multiplizieren |
+| / | Dividieren |
+| % | Modulo |
+||
+| `<` | Kleiner
+| `<=` | Kleiner gleich
+| `>` | Größer
+|`>=` | Größer gleich
+| `<>` | Ungleich
+| `!=` | Ungleich
 
 
 ### abs

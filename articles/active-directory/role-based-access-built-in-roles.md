@@ -415,7 +415,8 @@ Kann den Benutzerzugriff auf Azure-Ressourcen verwalten
 
 | **Aktionen** ||
 | ------- | ------ |
-| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | | Microsoft.Authorization/* | Verwalten der Autorisierung |
+| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | 
+| Microsoft.Authorization/* | Verwalten der Autorisierung |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von klassischen virtuellen Computern

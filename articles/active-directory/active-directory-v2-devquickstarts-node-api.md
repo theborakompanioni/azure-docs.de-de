@@ -645,7 +645,8 @@ Vergewissern Sie sich zunächst, dass Ihre MonogoDB-Instanz ausgeführt wird.
 
 Wechseln Sie danach zum Verzeichnis, und beginnen Sie mit dem Curling.
 
-`$ cd azuread` `$ node server.js`
+`$ cd azuread`
+`$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
 
