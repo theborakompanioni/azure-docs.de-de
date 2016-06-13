@@ -17,34 +17,34 @@
    ms.workload="na"
    ms.date="03/09/2016"
    ms.author="edlaure"/>
-  
+
 # Skalieren von Azure Functions
-     
+
 ## Einführung
 
-Einer der Vorteile von Azure Functions ist, dass Ihr ausgeführter Code Ressourcen nur dann verbraucht, wenn sie wirklich benötigt werden. Das bedeutet, dass Sie nicht für virtuelle Computer im Leerlauf bezahlen oder Kapazitäten für den Fall reservieren müssen, dass sie möglicherweise benötigt werden. Stattdessen weist die Plattform Rechenleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf hoch, um die Last zu verarbeiten. Wenn der Code nicht mehr ausgeführt wird, wird die Leistung wieder herunterskaliert.
+Ein Vorteil von Azure Functions ist, dass Computeressourcen nur bei Bedarf genutzt werden. Das bedeutet, dass Sie nicht für virtuelle Computer im Leerlauf bezahlen oder Kapazitäten für den Fall reservieren müssen, dass sie möglicherweise benötigt werden. Stattdessen weist die Plattform Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf hoch, um die Last zu verarbeiten. Wenn der Code nicht mehr ausgeführt wird, wird die Leistung wieder herunterskaliert.
 
-Der Mechanismus für diese neue Funktion ist der dynamische Serviceplan. Dieser neue Serviceplan stellt einen dynamischen Container für Ihren Code bereit, der sich bei Bedarf hochskalieren lässt. Ihnen wird nur die Arbeitsspeichermenge berechnet, die Ihr Code nutzt, sowie die Dauer der Ausführung, gemessen in Gigabytesekunden.
+Der Mechanismus für diese neue Funktion ist der dynamische Serviceplan.
 
 In diesem Artikel erhalten Sie einen Überblick über die Funktionsweise des dynamischen Serviceplans und die bedarfsgesteuerte Skalierung der Plattform zur Ausführung des Codes.
 
-Wenn Sie noch nicht mit Azure Functions vertraut sind, lesen Sie die [Übersicht zu Azure Functions](functions-overview.md), um die Funktionsweise besser zu verstehen.
+Wenn Sie noch nicht mit Azure Functions vertraut sind, lesen Sie den Artikel [Übersicht zu Azure Functions](functions-overview.md), um die Funktionsweise besser zu verstehen.
 
-## Konfigurieren Ihrer Funktionen-App
+## Konfigurieren von Azure Functions
 
-Im Zusammenhang mit der Skalierung müssen zwei wichtige Entscheidungen getroffen werden:
+Zwei wichtige Einstellungen beziehen sich auf die Skalierung:
 
-* [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) oder dynamischer Serviceplan 
-* Größe des Arbeitsspeichers für die Ausführungsumgebung 
+* [Azure App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) oder dynamischer Serviceplan
+* Größe des Arbeitsspeichers für die Ausführungsumgebung
 
-Die Kosten einer Funktion ändern sich je nach Art des Serviceplans, den Sie auswählen. Bei dynamischen Serviceplänen richten sich die Kosten nach der Ausführungszeit, der Arbeitsspeichergröße und der Anzahl der Ausführungen. Kosten entstehen nur, wenn Sie tatsächlich Code ausführen.
+Die Kosten einer Funktion ändern sich je nach Serviceplan, den Sie auswählen. Bei einem dynamischen Serviceplan richten sich die Kosten nach der Ausführungszeit, der Arbeitsspeichergröße und der Anzahl der Ausführungen. Gebühren fallen nur an, wenn Ihr Code tatsächlich ausgeführt wird.
 
-Bei regulären Serviceplänen können Sie Ihre Funktionen auf vorhandenen virtuellen Computern hosten, die auch zur Ausführung von anderem Code verwendet werden können. Die Bezahlung für diese virtuellen Computer erfolgt monatlich, und es entstehen keine weiteren Kosten für die Ausführung von Funktionen auf diesen Computern.
+Ein App Service-Plan hostet Ihre Funktionen auf vorhandenen virtuellen Computern, die auch zur Ausführung von anderem Code verwendet werden können. Die Bezahlung für diese virtuellen Computer erfolgt monatlich, und es entstehen keine weiteren Kosten für die Ausführung von Funktionen auf diesen Computern.
 
 ## Auswählen eines Serviceplans
 
-Beim Erstellen von Funktionen-Apps können Sie sich zwischen einem dynamischen Serviceplan (neu!) oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) entscheiden. In einem App Service-Plan werden Ihre Funktionen auf einem dedizierten virtuellen Computer ausgeführt – auf die gleiche Weise, wie heute Web-Apps (für Basic-, Standard- oder Premium-SKUs) funktionieren. Dieser dedizierte virtuelle Computer ist Ihren Apps bzw. Funktionen zugeordnet und steht zur Verfügung, unabhängig davon, ob Code aktiv ausgeführt wird oder nicht. Diese Option eignet sich besonders, wenn Sie über virtuelle Computer verfügen, auf denen bereits anderer Code ausgeführt wird, die jedoch nicht vollständig ausgelastet sind, oder wenn Sie Funktionen kontinuierlich oder nahezu kontinuierlich ausführen möchten. Bei Verwendung eines virtuellen Computers hängen die Kosten nicht von der Laufzeit oder der Arbeitsspeichergröße ab – so können Sie die Kosten für eine große Anzahl von Funktionen mit langer Ausführungszeit auf die Kosten des virtuellen Computers bzw. der virtuellen Computer beschränken, auf dem/denen die Funktionen ausgeführt werden.
+Beim Erstellen von Funktionen können Sie zwischen der Ausführung nach einem dynamischen Serviceplan oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) wählen. In einem App Service-Plan werden Ihre Funktionen auf einem dedizierten virtuellen Computer ausgeführt – auf die gleiche Weise, wie heute Web-Apps für Basic-, Standard- oder Premium-SKUs funktionieren. Dieser dedizierte virtuelle Computer ist Ihren Apps und Funktionen zugeordnet und steht immer zur Verfügung, unabhängig davon, ob Code aktiv ausgeführt wird oder nicht. Diese Option eignet sich besonders, wenn Sie über nicht ausgelastete virtuelle Computer verfügen, auf denen bereits anderer Code ausgeführt wird, oder wenn Sie Funktionen kontinuierlich oder nahezu kontinuierlich ausführen möchten. Mit einem virtuellen Computer werden Kosten von der Laufzeit und der Arbeitsspeichergröße entkoppelt. Daher können Sie die Kosten für viele Funktionen mit langer Ausführungsdauer auf die Kosten für einen oder mehrere virtuelle Computer begrenzen, auf denen sie ausgeführt werden.
 
 [AZURE.INCLUDE [Dynamischer Serviceplan](../../includes/functions-dynamic-service-plan.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

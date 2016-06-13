@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/22/2016"
+   ms.date="05/25/2016"
    ms.author="terrylan"/>
 
 # Sicherheit in Azure – bewährte Methoden und Muster
@@ -34,11 +34,11 @@ Für jede bewährte Methode erläutern wir Folgendes:
 
 Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muster zur Azure-Sicherheit zur Verfügung. Besuchen Sie unbedingt regelmäßig diese Website, um stets über Updates unserer wachsenden Liste bewährter Methoden und Muster zur Azure-Sicherheit informiert zu sein:
 
-- [Bewährte Methoden für die Azure-Netzwerksicherheit](../azure-security-network-security-best-practices.md)
+- [Bewährte Methoden für die Azure-Netzwerksicherheit](azure-security-network-security-best-practices.md)
 - [Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure](azure-security-data-encryption-best-practices.md)
 - [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
 - [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
 - [Best Practices für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
 - [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

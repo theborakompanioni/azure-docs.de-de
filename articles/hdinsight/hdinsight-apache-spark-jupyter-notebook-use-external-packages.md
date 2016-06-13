@@ -26,12 +26,12 @@ Sie können das [Maven Repository](http://search.maven.org/) nach einer vollstä
 
 In diesem Artikel erfahren Sie, wie Sie das Paket [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) mit Jupyter Notebook verwenden.
 
-**Voraussetzungen:**
+##Voraussetzungen
 
 Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
-- Einen Apache Spark-Cluster unter HDInsight (Linux). Anleitungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+- Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## Verwenden von externen Paketen mit Jupyter Notebooks 
 
@@ -57,7 +57,7 @@ Sie benötigen Folgendes:
 		{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }
 
 
-	>[AZURE.IMPORTANT] Wenn Sie vergessen, den Kernel in der ersten Zelle zu konfigurieren, können Sie `%%configure` mit dem `-f`-Parameter verwenden. Allerdings wird die Sitzung dadurch neu gestartet, und der bisherige Fortschritt geht verloren.
+	>[AZURE.IMPORTANT] Wenn Sie vergessen, den Kernel in der ersten Zelle zu konfigurieren, können Sie `%%configure` mit dem Parameter `-f` verwenden. Allerdings wird die Sitzung dadurch neu gestartet, und der bisherige Fortschritt geht verloren.
 
 5. Im obigen Codeausschnitt erwartet `packages` eine Liste von Maven-Koordinaten im zentralen Maven-Repository. In diesem Codeausschnitt ist `com.databricks:spark-csv_2.10:1.4.0` die Maven-Koordinate für das Paket **spark-csv**. Nachstehend finden Sie eine Anleitung zur Erstellung von Koordinaten für ein Paket.
 
@@ -67,7 +67,7 @@ Sie benötigen Folgendes:
 
 	![Verwenden von externen Paketen mit Jupyter Notebook](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Verwenden von externen Paketen mit Jupyter Notebook")
 
-	c. Verketten Sie die drei Werte, die durch einen Doppelpunkt getrennt sind (**:**).
+	c. Verketten Sie die drei Werte, getrennt durch einen Doppelpunkt (**:**).
 
 		com.databricks:spark-csv_2.10:1.4.0
 
@@ -118,4 +118,4 @@ Sie benötigen Folgendes:
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

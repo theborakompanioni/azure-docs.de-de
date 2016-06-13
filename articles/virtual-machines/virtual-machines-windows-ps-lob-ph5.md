@@ -19,8 +19,6 @@
 
 # Branchenanwendungs-Workload, Phase 5: Erstellen der Verfügbarkeitsgruppe und Hinzufügen der Anwendungsdatenbanken
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 In dieser letzten Phase der Bereitstellung einer hochverfügbaren Branchenanwendung in den Azure-Infrastrukturdiensten erstellen Sie eine neue SQL Server AlwaysOn-Verfügbarkeitsgruppe und fügen die Datenbanken der Anwendung hinzu.
 
 Eine Übersicht über alle Phasen finden Sie unter [Bereitstellen einer hochverfügbaren Branchenanwendung in Azure](virtual-machines-windows-lob-overview.md).
@@ -119,4 +117,4 @@ Nach der Erstellung des Listeners müssen Sie alle virtuellen Webservercomputer 
 
 - Wenn Sie Ihren eigenen IT-Workload in Azure bereitstellen, finden Sie weitere Informationen in diesen [Richtlinien](virtual-machines-linux-infrastructure-service-guidelines.md) .
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

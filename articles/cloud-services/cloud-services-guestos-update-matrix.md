@@ -52,7 +52,7 @@ Das Gastbetriebssystem November 201511-02 wurde am 4. Januar 2016 für die Berei
 ## Releases von Familie 4
 **Windows Server 2012 R2**
 
-Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2 (Hinweis 2)
+Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 >[AZURE.NOTE] Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
 
@@ -182,7 +182,7 @@ Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, lesen Sie bitte die [Deak
 ## Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme
 Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird [hier][retirepolicy] erläutert.
 
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/de-DE/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Updateeinstellungen für Azure-Gast-BS]: cloud-services-how-to-configure.md
 [rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
@@ -203,4 +203,4 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

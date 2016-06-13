@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="05/26/2016"
    ms.author="yurid"/>
 
 # Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
@@ -38,7 +38,7 @@ Der Artikel enthält bewährte Methoden zur Azure-Identitätsverwaltung und Sich
 - Ermöglichen des einmaligen Anmeldens (SSO)
 - Bereitstellen der Kennwortverwaltung
 - Erzwingen der Multi-Factor Authentication (MFA) für Benutzer
-- Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC) 
+- Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC)
 - Steuern von Standorten, an denen Ressourcen erstellt werden, mit Resource Manager
 - Anleiten von Entwicklern zur Nutzung von Identitätsfunktionen für SaaS-Apps
 - Aktives Überwachen auf verdächtige Aktivitäten
@@ -91,25 +91,25 @@ Eine Alternative für Organisationen, die die gesamte Authentifizierung weiterhi
 Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 
 ## Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC)
- 
+
 Das Einschränken des Zugriffs basierend auf den Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
- 
+
 Sie können [integrierte RBAC-Rollen](../active-directory/role-based-access-built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudbediener in Betracht, die Speicherkonten verwalten müssen, und die Rolle *Klassischer Speicherkontomitwirkender *, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudbediener, die VMs und Speicherkonten verwalten müssen, der Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen ihren Benutzern unter Umständen mehr Berechtigungen als erforderlich. Dies kann zur Kompromittierung von Daten führen, indem Benutzern erlaubt wird, auf bestimmte Arten von Daten zuzugreifen (z.B. Daten mit hoher geschäftlicher Bedeutung), auf die sie eigentlich keinen Zugriff haben dürften.
- 
+
 Lesen Sie den Artikel [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure Active Directory-Ressourcen](../active-directory/role-based-access-control-configure.md), um mehr über die Azure RBAC zu erfahren.
 
 ## Steuern von Standorten, an denen Ressourcen erstellt werden, mit Resource Manager
 
 Es ist sehr wichtig, für Cloudbediener die Durchführung von Aufgaben zu ermöglichen und gleichzeitig die Nichteinhaltung von Konventionen zu verhindern, die zum Verwalten der Ressourcen einer Organisation erforderlich sind. Organisationen, die die Orte steuern möchten, an denen Ressourcen erstellt werden, sollten diese Orte hartcodieren.
- 
+
 Hierzu können Organisationen Sicherheitsrichtlinien erstellen, die über Definitionen verfügen, mit denen die jeweils verweigerten Aktionen oder Ressourcen beschrieben werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z. B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource.
 
 > [AZURE.NOTE] Dies ist nicht das Gleiche wie RBAC. RBAC wird genutzt, um die Benutzer zu authentifizieren, die über die Berechtigung zum Erstellen dieser Ressourcen verfügen.
 
 Nutzen Sie den [Azure Resource Manager](../resource-group-overview.md), um benutzerdefinierte Richtlinien auch für Szenarien zu erstellen, in denen die Organisation Vorgänge nur zulassen möchte, wenn die entsprechende Kostenstelle zugeordnet ist. Andernfalls wird die Anforderung verweigert.
- 
+
 Organisationen, die die Erstellung von Ressourcen nicht steuern, sind anfälliger dafür, dass Benutzer den Dienst durch die Erstellung von mehr Ressourcen als benötigt missbrauchen. Das Absichern der Ressourcenerstellung ist ein wichtiger Schritt zum Schützen eines Szenarios mit mehreren Mandanten.
 
 Weitere Informationen zur Erstellung von Richtlinien mit Azure Resource Manager erhalten Sie, wenn Sie den Artikel [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](../resource-manager-policy.md) lesen.
@@ -134,4 +134,4 @@ Im Gegensatz dazu ist Azure AD Identity Protection ein aktives Überwachungssyst
 
 Für Organisationen, die ihre Identitätssysteme nicht aktiv überwachen, besteht das Risiko, dass Anmeldeinformationen kompromittiert werden. Ohne das Wissen, dass diese Anmeldeinformationen für verdächtige Aktivitäten genutzt werden, können Organisationen dieser Art von Bedrohung nicht begegnen. Weitere Informationen zu Azure Identity Protection finden Sie im Artikel [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

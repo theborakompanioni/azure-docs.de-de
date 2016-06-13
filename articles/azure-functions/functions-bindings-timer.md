@@ -47,9 +47,7 @@ Der Trigger mit Timer übernimmt automatisch das horizontale Hochskalieren über
 
 ## Format des Zeitplanausdrucks
 
-Der Zeitplanausdruck kann ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit sechs Feldern sein: {Sekunde} {Minute} {Stunde} {Tag} {Monat} {Wochentag}. In vielen Dokumenten mit CRON-Ausdrücken, die online zu finden sind, wird das Feld {Sekunde} ausgelassen. Wenn Sie daher aus einem dieser Dokumente kopieren, müssen Sie das zusätzliche Feld berücksichtigen.
-
-Der Zeitplanausdruck kann auch im Format *hh:mm:ss* vorliegen, um die Verzögerung zwischen den Zeitpunkten der Funktionsauslösung anzugeben.
+Der Zeitplanausdruck ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit sechs Feldern: {Sekunde} {Minute} {Stunde} {Tag} {Monat} {Wochentag}. In vielen Dokumenten mit CRON-Ausdrücken, die online zu finden sind, wird das Feld {Sekunde} ausgelassen. Wenn Sie daher aus einem dieser Dokumente kopieren, müssen Sie das zusätzliche Feld berücksichtigen.
 
 Hier sind einige Beispiele für Zeitplanausdrücke aufgeführt.
 
@@ -67,13 +65,6 @@ Sofort und anschließend alle zwei Stunden auslösen:
 "runOnStartup": true,
 ```
 
-Alle 15 Sekunden auslösen:
-
-```json
-"schedule": "00:00:15",
-"runOnStartup": false,
-```
-
 ## C#-Codebeispiel für Trigger mit Timer
 
 Dieses C#-Codebeispiel schreibt bei jedem Auslösen der Funktion ein Protokoll.
@@ -89,4 +80,4 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

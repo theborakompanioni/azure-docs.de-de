@@ -24,10 +24,11 @@ Das Klonen einer App wird zurzeit nur im Premium-Tarif der App Service-Pläne un
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
+Weitere Informationen zur Verwendung Azure Resource Manager-basierter Azure-PowerShell-Cmdlets zum Verwalten Ihrer Web-Apps finden Sie unter [Azure Resource Manager-basierte PowerShell-Befehle zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md).
 
 ## Klonen einer vorhandenen App ##
 
-Das Szenario: Der Benutzer einer vorhandenen Web-App im Süden der USA möchte den Inhalt in eine neue Web-App im Norden der USA klonen. Dies kann mithilfe der ARM-Version des PowerShell-Cmdlets zum Erstellen einer neuen Web-App mit der Option SourceWebApp erfolgen.
+Das Szenario: Der Benutzer einer vorhandenen Web-App im Süden der USA möchte den Inhalt in eine neue Web-App im Norden der USA klonen. Dies kann mithilfe der Azure Resource Manager-Version des PowerShell-Cmdlets zum Erstellen einer neuen Web-App mit der Option „-SourceWebApp“ erfolgen.
 
 Wenn wir den Namen der Ressourcengruppe kennen, die die Web-App der Quelle enthält, können wir den folgenden PowerShell-Befehl verwenden, um die Informationen der Web-App der Quelle zu erhalten (in diesem Fall mit der Bezeichnung Quellen-Web-App):
 
@@ -77,17 +78,17 @@ Das folgende Beispiel zeigt, wie man einen Klon der Quellen-Web-App in einer neu
 
 ## Konfigurieren des Traffic Managers beim Klonen einer App ##
 
-Die Erstellung von Web-Apps für mehrere Regionen und die Konfiguration von Azure Traffic Manager zum Leiten von Datenverkehr an alle diese Web-Apps sind wichtig, um sicherzustellen, dass die Apps der Kunden hoch verfügbar sind. Beim Klonen einer vorhandenen Web-App haben Sie die Option, beide Web-Apps entweder mit einem neuen Traffic Manager-Profil oder mit einem vorhandenen Profil zu verbinden. Beachten Sie jedoch, dass nur die ARM-Version von Traffic Manager unterstützt wird.
+Die Erstellung von Web-Apps für mehrere Regionen und die Konfiguration von Azure Traffic Manager zum Leiten von Datenverkehr an alle diese Web-Apps sind wichtig, um sicherzustellen, dass die Apps der Kunden hoch verfügbar sind. Beim Klonen einer vorhandenen Web-App haben Sie die Option, beide Web-Apps entweder mit einem neuen Traffic Manager-Profil oder mit einem vorhandenen Profil zu verbinden. Beachten Sie jedoch, dass nur die Azure Resource Manager-Version von Traffic Manager unterstützt wird.
 
 ### Erstellen eines neuen Traffic Manager-Profils während eine App geklont wird ###
 
-Das Szenario: Der Benutzer möchte eine Web-App in eine andere Region klonen, während er gleichzeitig ein ARM Traffic Manager-Profil anlegt, das beide Web-Apps enthält. Das folgende Beispiel zeigt, wie man einen Klon der Quellen-Web-App in einer neuen Web-App erstellt und gleichzeitig ein neues Traffic Manager-Profil erstellt:
+Das Szenario: Der Benutzer möchte eine Web-App in eine andere Region klonen, während er gleichzeitig ein Azure Resource Manager-Traffic Manager-Profil anlegt, das beide Web-Apps enthält. Das folgende Beispiel zeigt, wie man einen Klon der Quellen-Web-App in einer neuen Web-App erstellt und gleichzeitig ein neues Traffic Manager-Profil erstellt:
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 
 ### Hinzufügen neuer geklonter Web-Apps zu einem vorhandenen Traffic Manager-Profil ###
 
-Szenario: Der Benutzer besitzt bereits ein ARM Traffic Manager-Profil, dem er beide Web-Apps als Endpunkte hinzufügen möchte. Zu diesem Zweck müssen wir zuerst die vorhandene Traffic Manager-Profil-ID zusammenstellen. Dazu benötigen wir die Abonnement-ID, den Namen der Ressourcengruppe und den vorhandenen Traffic Manager-Profilnamen.
+Szenario: Der Benutzer besitzt bereits ein Azure Resource Manager-Traffic Manager-Profil, dem er beide Web-Apps als Endpunkte hinzufügen möchte. Zu diesem Zweck müssen wir zuerst die vorhandene Traffic Manager-Profil-ID zusammenstellen. Dazu benötigen wir die Abonnement-ID, den Namen der Ressourcengruppe und den vorhandenen Traffic Manager-Profilnamen.
 
     $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
 
@@ -106,13 +107,15 @@ Dieses Feature ist zurzeit in der Vorschau. Wir arbeiten daran, neue Funktionen 
 - Easy Auth-Einstellungen werden nicht geklont
 - Kudu-Erweiterungen werden nicht geklont
 - TiP-Regeln werden nicht geklont
+- Datenbankinhalte werden nicht geklont
 
 
 ### Referenzen ###
+- [Azure Resource Manager-basierte PowerShell-Befehle zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md)
 - [Klonen einer Web-App über das Azure-Portal](app-service-web-app-cloning-portal.md)
 - [Sichern von Web-Apps in Azure App Service](web-sites-backup.md)
 - [Azure-Ressourcen-Manager-Unterstützung für Azure Traffic Manager – Vorschau](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
 - [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md)
 - [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie PowerShell zum Verwalten eines Pools für elastische Datenbanken nutzen"  
 	services="sql-database" 
     documentationCenter="" 
-    authors="stevestein" 
+    authors="srinia" 
     manager="jhubbard" 
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="05/10/2016"
-    ms.author="sidneyh"/>
+    ms.date="05/27/2016"
+    ms.author="srinia"/>
 
 # Überwachen und Verwalten eines Pools für elastische Datenbanken mit PowerShell 
 
@@ -28,7 +28,7 @@ Verwalten eines [Pools für elastische Datenbanken](sql-database-elastic-pool.md
 
 Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 
-Werte für Pools finden Sie unter [eDTUs und Speicherbeschränkungen](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases).
+Werte für Pools finden Sie unter [eDTUs und Speicherbeschränkungen](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
 ## Voraussetzungen
 
@@ -44,7 +44,7 @@ Mit dem Cmdlet [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure
 
 ## Ändern Sie die Leistungseinstellungen eines Pools
 
-Bei beeinträchtigter Leistung können Sie die Einstellungen des Pools ändern, um Wachstum zu ermöglichen. Verwenden Sie dazu das Cmdlet [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx). Legen Sie den „-Dtu“-Parameter auf die eDTUs pro Pool fest. Mögliche Werte sind unter [eDTUs und Speicherbeschränkungen](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases) aufgeführt.
+Bei beeinträchtigter Leistung können Sie die Einstellungen des Pools ändern, um Wachstum zu ermöglichen. Verwenden Sie dazu das Cmdlet [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx). Legen Sie den „-Dtu“-Parameter auf die eDTUs pro Pool fest. Mögliche Werte sind unter [eDTUs und Speicherbeschränkungen](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases) aufgeführt.
 
     Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
 
@@ -103,9 +103,70 @@ So rufen Sie die Metriken ab
 
     $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
 
+## Eine Warnung zu einer Poolressource hinzufügen
+
+Sie können Regeln zu Ressourcen hinzufügen, um E-Mail-Benachrichtigungen oder Warnzeichenfolgen an [URL-Endpunkte](https://msdn.microsoft.com/library/mt718036.aspx) zu senden, wenn die Ressource einen von Ihnen eingerichteten Nutzungsschwellenwert erreicht. Verwenden Sie das Cmdlet Add-AzureRmMetricAlertRule.
+
+Dieses Beispiel fügt eine Warnung hinzu, damit eine Benachrichtigung gesendet wird, wenn die eDTU-Nutzung eines Pools einen bestimmten Schwellenwert überschreitet.
+
+    # Set up your resource ID configurations
+    $subscriptionId = '<Azure subscription id>'      # Azure subscription ID
+    $location =  '<location'                         # Azure region
+    $resourceGroupName = '<resource group name>'     # Resource Group
+    $serverName = '<server name>'                    # server name
+    $poolName = '<elastic pool name>'                # pool name 
+
+    #$Target Resource ID
+    $ResourceID = '/subscriptions/' + $subscriptionId + '/resourceGroups/' +$resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/elasticpools/' + $poolName
+
+    # Create an email action
+    $actionEmail = New-AzureRmAlertRuleEmail -SendToServiceOwners -CustomEmail JohnDoe@contoso.com
+
+    # create a unique rule name
+    $alertName = $poolName + "- DTU consumption rule"
+
+    # Create an alert rule for DTU_consumption_percent
+    Add-AzureRMMetricAlertRule -Name $alertName -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $ResourceID -MetricName "DTU_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail 
+
+## Hinzufügen von Warnungen zu allen Datenbanken in einem Pool
+
+Sie können Regeln zu allen Datenbanken in einem elastischen Pool hinzufügen, um E-Mail-Benachrichtigungen oder Warnzeichenfolgen an [URL-Endpunkte](https://msdn.microsoft.com/library/mt718036.aspx) zu senden, wenn eine Ressource einen durch die Warnung eingerichteten Nutzungsschwellenwert erreicht.
+
+Dieses Beispiel fügt jeder Datenbank in einem Pool eine Warnung hinzu, damit eine Benachrichtigung gesendet wird, wenn die DTU-Nutzung einer Datenbank einen bestimmten Schwellenwert überschreitet.
+
+    # Set up your resource ID configurations
+    $subscriptionId = '<Azure subscription id>'      # Azure subscription ID
+    $location = '<location'                          # Azure region
+    $resourceGroupName = '<resource group name>'     # Resource Group
+    $serverName = '<server name>'                    # server name
+    $poolName = '<elastic pool name>'                # pool name 
+
+    # Get the list of databases in this pool.
+    $dbList = Get-AzureRmSqlElasticPoolDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -ElasticPoolName $poolName
+
+    # Create an email action
+    $actionEmail = New-AzureRmAlertRuleEmail -SendToServiceOwners -CustomEmail JohnDoe@contoso.com
+
+    # Get resource usage metrics for a database in an elastic database for the specified time interval.
+    foreach ($db in $dbList)
+    {
+    $dbResourceId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/databases/' + $db.DatabaseName
+
+    # create a unique rule name
+    $alertName = $db.DatabaseName + "- DTU consumption rule"
+
+    # Create an alert rule for DTU_consumption_percent
+    Add-AzureRMMetricAlertRule -Name $alertName  -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $dbResourceId -MetricName "dtu_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail
+
+    # drop the alert rule
+    #Remove-AzureRmAlertRule -ResourceGroup $resourceGroupName -Name $alertName
+    } 
+
+
+
 ## Sammeln und Überwachen von Ressourcennutzungsdaten über mehrere Pools in einem Abonnement hinweg
 
-Wenn Sie über eine große Anzahl von Datenbanken in einem Abonnement verfügen, ist es mühselig, jeden elastischen Pool einzeln zu überwachen. Stattdessen können PowerShell-Cmdlets und T-SQL-Abfragen für SQL-Datenbank kombiniert werden, um Ressourcennutzungsdaten aus mehreren Pools und ihren Datenbanken zu sammeln, um eine Überwachung und Analyse der Ressourcennutzung durchzuführen. Eine [einfache Implementierung](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) eines solchen Satzes an PowerShell-Skripts steht im GitHub-Repository für SQL Server-Beispiele zur Verfügung. Hier finden Sie außerdem eine Dokumentation zur Funktionsweise und Verwendung der Beispiele.
+Wenn Sie über eine große Anzahl von Datenbanken in einem Abonnement verfügen, ist es mühselig, jeden elastischen Pool einzeln zu überwachen. Stattdessen können PowerShell-Cmdlets und T-SQL-Abfragen für SQL-Datenbank kombiniert werden, um Ressourcennutzungsdaten aus mehreren Pools und ihren Datenbanken zu sammeln, um eine Überwachung und Analyse der Ressourcennutzung durchzuführen. Eine [Beispielimplementierung](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) eines solchen PowerShell-Skriptsatzes steht im GitHub-Repository für SQL Server-Beispiele zur Verfügung. Hier finden Sie außerdem eine Dokumentation zur Funktionsweise und Verwendung der Beispiele.
 
 Um diese Beispielimplementierung zu verwenden, führen Sie die nachfolgend aufgeführten Schritte aus.
 
@@ -209,6 +270,6 @@ Mit dem Cmdlet „Stop-“ wird der Vorgang abgebrochen, nicht angehalten. Ein U
 ## Nächste Schritte
 
 - [Erstellen elastischer Aufträge](sql-database-elastic-jobs-overview.md): Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
-- Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Skalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
+- Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md) finden Sie weitere Informationen über die Verwendung elastischer Datenbanktools für die horizontale Skalierung, für die Verschiebung von Daten, für Abfragen oder für die Erstellung von Transaktionen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

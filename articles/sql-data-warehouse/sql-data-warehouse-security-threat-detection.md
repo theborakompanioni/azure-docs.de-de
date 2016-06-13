@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erste Schritte mit der Bedrohungserkennung von SQL Data Warehouse"
-   description="Erste Schritte mit der Bedrohungserkennung von SQL Data Warehouse"
+   description="Erste Schritte mit der Bedrohungserkennung"
    services="sql-data-warehouse"
    documentationCenter=""
    authors="lodipalm"
@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="05/31/2016"
    ms.author="lodipalm;sonyama;barbkess"/>
 
 
-# Erste Schritte mit der Bedrohungserkennung von SQL Data Warehouse
+# Erste Schritte mit der Bedrohungserkennung
 
 ## Übersicht
 
 Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Die Bedrohungserkennung befindet sich in der Vorschauphase und wird für SQL Data Warehouse unterstützt.
 
-Die Bedrohungserkennung bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anomalen Aktivitäten bereitgestellt. Benutzer können die verdächtigen Ereignisse mithilfe der [Azure SQL Data Warehouse-Überwachung]sql-data-warehouse-auditing-get-started.md) untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch zurückzuführen sind oder die Verletzung der Datensicherheit oder den Missbrauch von Daten im Data Warehouse zum Ziel haben. Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für das Data Warehouse. Das Fachwissen eines Sicherheitsexperten oder die Verwaltung komplexer Sicherheitsüberwachungssysteme sind dabei nicht erforderlich.
+Die Bedrohungserkennung bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anomalen Aktivitäten bereitgestellt. Die Benutzer können die verdächtigen Ereignisse mithilfe der [Azure SQL Data Warehouse-Überwachung](sql-data-warehouse-auditing-overview.md) untersuchen, um zu ermitteln, ob ein Datenzugriff, die Verletzung der Datensicherheit oder der Missbrauch von Daten im Data Warehouse versucht wurde. Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für das Data Warehouse. Das Fachwissen eines Sicherheitsexperten oder die Verwaltung komplexer Sicherheitsüberwachungssysteme sind dabei nicht erforderlich.
 
 So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankaktivitäten, die auf eine potenzielle Einschleusung von SQL-Befehlen hindeuten. Die Einschleusung von SQL-Befehlen ist ein verbreitetes Sicherheitsproblem für Webanwendungen im Internet und wird für Angriffe auf datengesteuerte Anwendungen verwendet. Die Angreifer nutzen Sicherheitslücken der Anwendung, um böswillige SQL-Anweisungen in Eingabefelder der Anwendung einzuschleusen und so an die in der Datenbank enthaltenen Daten zu gelangen oder diese zu verändern.
 
@@ -55,7 +55,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankakt
 
 	![Navigationsbereich][4]
 
-2. Klicken Sie in der E-Mail auf den Link für das Azure SQL-Überwachungsprotokoll, um das klassische Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
+2. Klicken Sie in der E-Mail auf den Link für das Azure SQL-Überwachungsprotokoll, um das klassische Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
 
 	![Navigationsbereich][5]
 
@@ -63,7 +63,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankakt
 
 	![Navigationsbereich][6]
 
-4. Klicken Sie auf dem Blatt mit den Überwachungsdatensätzen auf **In Excel öffnen**, um eine vorkonfigurierte Excel-Vorlage zu öffnen, das Überwachungsprotokoll zu importieren und eine ausführlichere Analyse für die Zeit des verdächtigen Ereignisses durchzuführen.<br/> **Hinweis:** Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
+4. Klicken Sie auf dem Blatt mit den Überwachungsdatensätzen auf **In Excel öffnen**, um eine vorkonfigurierte Excel-Vorlage zu öffnen, das Überwachungsprotokoll zu importieren und eine ausführlichere Analyse für die Zeit des verdächtigen Ereignisses durchzuführen.<br/> **Hinweis:** Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
 
 	![Navigationsbereich][7]
 
@@ -89,4 +89,4 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankakt
 [8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
 [9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -3,18 +3,18 @@
     description="Es wird beschrieben, wie Sie T-SQL verwenden, um eine Azure SQL-Datenbank in einem elastischen Pool zu erstellen. Außerdem können Sie T-SQL nutzen, um die Datenbank in Pools bzw. aus Pools zu verschieben." 
 	services="sql-database" 
     documentationCenter="" 
-    authors="sidneyh" 
+    authors="srinia" 
     manager="jhubbard" 
     editor=""/>
 
 <tags
     ms.service="sql-database"
     ms.devlang="NA"
-    ms.topic="get-started-article"
+    ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="04/28/2016"
-    ms.author="sidneyh"/>
+    ms.date="05/27/2016"
+    ms.author="srinia"/>
 
 # Überwachen und Verwalten eines Pools für elastische Datenbanken per Transact-SQL  
 
@@ -46,13 +46,13 @@ Verwenden Sie den Befehl ALTER DATABASE mit MODIFY, und legen Sie die Option SER
 	-- Move the database named db1 to a pool named P1M125  
 
 ## Verschieben einer Datenbank in einen elastischen Pool 
-Verwenden Sie den Befehl ALTER DATABASE mit MODIFY, und legen Sie die Option SERVICE\_OBJECTIVE als ELASTIC_POOL fest. Legen Sie den Namen auf den Namen des Zielpools fest.
+Verwenden Sie den Befehl ALTER DATABASE mit MODIFY, und legen Sie die Option SERVICE\_OBJECTIVE als ELASTIC\_POOL fest. Legen Sie den Namen auf den Namen des Zielpools fest.
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
 	-- Move the database named db1 to a pool named S3100.
 
 ## Verschieben einer Datenbank aus einem elastischen Pool
-Verwenden Sie den Befehl ALTER DATABASE, und legen Sie SERVICE_OBJECTIVE auf eine Leistungsebene fest (S0, S1 usw.).
+Verwenden Sie den Befehl ALTER DATABASE, und legen Sie SERVICE\_OBJECTIVE auf eine Leistungsebene fest (S0, S1 usw.).
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
 	-- Changes the database into a stand-alone database with the service objective S1.
@@ -84,4 +84,4 @@ Nach dem Erstellen eines Pools für elastische Datenbanken können Sie elastisch
 
 Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Skalierung, zum Verschieben von Daten, für Abfrage oder zum Erstellen von Transaktionen.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

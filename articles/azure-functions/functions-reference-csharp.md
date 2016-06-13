@@ -160,7 +160,10 @@ Um NuGet-Pakete in einer C#-Funktion zu verwenden, laden Sie die Datei *project.
 }
 ```
 
+Nur .NET Framework 4.6 wird unterstützt. Stellen Sie also sicher, dass Ihre Datei *project.json* `net46` wie hier gezeigt angibt.
+
 Beim Hochladen der Datei *project.json* erhält die Laufzeit die Pakete und fügt automatisch Verweise auf die Paketassemblys hinzu. Sie müssen keine `#r "AssemblyName"`-Direktiven hinzufügen. Fügen Sie Ihrer Datei *run.csx* einfach die erforderlichen `using`-Anweisungen hinzu, um die in den NuGet-Paketen definierten Typen zu verwenden.
+
 
 ### Hochladen einer Datei „project.json“
 
@@ -191,7 +194,7 @@ Beim Hochladen der Datei *project.json* erhält die Laufzeit die Pakete und füg
 
 ## Umgebungsvariablen
 
-Verwenden Sie `System.Environment.GetEnvironmentVariable` zum Abrufen einer Umgebungsvariablen oder des Werts einer App-Einstellung (siehe das folgende Codebeispiel):
+Verwenden Sie `System.Environment.GetEnvironmentVariable` zum Abrufen einer Umgebungsvariable oder des Werts einer App-Einstellung (siehe das folgende Codebeispiel):
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
@@ -210,7 +213,7 @@ public static string GetEnvironmentVariable(string name)
 
 ## Wiederverwenden von CSX-Code
 
-Sie können in Ihrer Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX*-Dateien definiert sind. Verwenden Sie hierzu, wie im folgenden Beispiel gezeigt, `#load`-Direktiven in Ihrer Datei *run.csx*.
+Sie können in Ihrer Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX*-Dateien definiert sind. Verwenden Sie hierzu `#load`-Direktiven in Ihrer Datei *run.csx*, wie im folgenden Beispiel gezeigt.
 
 Beispiel für *run.csx*:
 
@@ -235,11 +238,11 @@ public static void MyLogger(TraceWriter log, string logtext)
 
 Sie können mit der `#load`-Direktive einen relativen Pfad verwenden:
 
-* `#load "mylogger.csx"` lädt eine Datei, die sich im Funktionenordner befindet.
+* `#load "mylogger.csx"` lädt eine Datei, die sich im Funktionsordner befindet.
 
-* `#load "loadedfiles\mylogger.csx"` lädt eine Datei, die sich in einem Ordner im Funktionenordner befindet.
+* `#load "loadedfiles\mylogger.csx"` lädt eine Datei, die sich in einem Ordner im Funktionsordner befindet.
 
-* `#load "..\shared\mylogger.csx"` lädt eine Datei, die sich in einem Ordner auf derselben Ebene wie der Funktionenordner direkt unter *wwwroot* befindet.
+* `#load "..\shared\mylogger.csx"` lädt eine Datei, die sich in einem Ordner auf derselben Ebene wie der Funktionsordner direkt unter *wwwroot* befindet.
  
 Die `#load`-Direktive kann nur mit *CSX*-Dateien (C#-Skript), nicht mit *CS*-Dateien verwendet werden.
 
@@ -251,4 +254,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

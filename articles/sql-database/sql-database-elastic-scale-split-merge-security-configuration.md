@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/26/2016" 
-    ms.author="torsteng;sidneyh" />
+    ms.date="05/27/2016" 
+    ms.author="torsteng" />
 
 
 # Split-Merge-Sicherheitskonfiguration  
@@ -357,7 +357,7 @@ Jede Person, für die ein Clientzertifikat ausgegeben wurde, muss folgende Schri
 * Wählen Sie im daraufhin geöffneten Dialogfeld "Zertifikat" die Registerkarte "Details".
 * Stellen Sie sicher, dass unter "Anzeigen" die Option "Alle" angezeigt wird.
 * Wählen Sie das Feld mit dem Namen "Fingerabdruck" in der Liste aus.
-* Kopieren des Werts des Fingerabdrucks **Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer** Löschen aller Leerzeichen
+* Kopieren des Werts des Fingerabdrucks ** Löschen nicht sichtbarer Unicode-Zeichen vor der ersten Ziffer ** Löschen aller Leerzeichen
 
 ## Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei
 
@@ -487,4 +487,4 @@ In dieser Datenbank gespeicherte Anmeldeinformationen werden verschlüsselt. Ste
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

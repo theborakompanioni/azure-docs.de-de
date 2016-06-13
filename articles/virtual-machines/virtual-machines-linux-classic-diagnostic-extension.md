@@ -63,10 +63,10 @@ Ab Version 2.0 werden standardmäßig folgende Daten gesammelt:
 
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConf.json“ mit folgendem Inhalt:
 
-	{
-     	"storageAccountName":"the storage account to receive data",
-     	"storageAccountKey":"the key of the account"
-	}
+    {
+        "storageAccountName" : "the storage account to receive data",
+        "storageAccountKey" : "the key of the account"
+    }
 
 Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** aus.
 
@@ -80,12 +80,15 @@ Alle unterstützten Anbieter und Variablen finden Sie in diesem [Dokument](https
 
 Rsyslog-Daten werden standardmäßig gesammelt.
 
-	{
-      	"perfCfg":[
-           	{"query":"SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation","table":"LinuxMemory"
-           	}
-          ]
-	}
+    {
+      	"perfCfg":
+      	[
+      	    {
+      	        "query" : "SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
+      	        "table" : "LinuxMemory"
+      	    }
+      	]
+    }
 
 
 Schritt 2: Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
@@ -96,30 +99,32 @@ In diesem Abschnitt erfahren Sie, wie Sie bestimmte Protokolldateien sammeln und
 
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt, der in Szenario 1 beschrieben wurde. Erstellen Sie eine weitere Datei namens „PublicConfig.json“ mit folgendem Inhalt.
 
-	{
-      	"fileCfg":[
-           	{"file":"/var/log/mysql.err",
-             "table":"mysqlerr"
-           	}
-          ]
-	}
+    {
+        "fileCfg" : 
+        [
+            {
+                "file" : "/var/log/mysql.err",
+                "table" : "mysqlerr"
+             }
+        ]
+    }
 
 
 Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
 
 
 ###   Szenario 4: Verhindern, dass die Erweiterung Protokolle sammelt
-In diesem Abschnitt wird beschrieben, wie Sie verhindern, dass die Erweiterung Protokolle sammelt. Beachten Sie, dass der Überwachungs-Agent-Prozess auch nach dieser Neukonfiguration weiterhin ausgeführt wird. Wenn Sie den Überwachungs-Agent-Prozess vollständig beenden möchten, muss die Erweiterung daher derzeit deinstalliert werden. Zukünftig fügen wir möglicherweise eine Konfigurationseigenschaft hinzu, die die Erweiterung einfach deaktiviert (wodurch der Überwachungs-Agent-Prozess ebenfalls vollständig beendet wird). Die Deinstallation der gesamten Erweiterung ist dann nicht mehr erforderlich.
+In diesem Abschnitt wird beschrieben, wie Sie verhindern, dass die Erweiterung Protokolle sammelt. Beachten Sie, dass der Überwachungs-Agent-Prozess auch nach dieser Neukonfiguration weiterhin ausgeführt wird. Wenn Sie den Überwachungs-Agent-Prozess vollständig beenden möchten, deaktivieren Sie die Erweiterung. Der Befehl zum Deaktivieren der Erweiterung lautet **azure vm extension set --disable <vm_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'**.
 
 Schritt 1: Erstellen Sie eine Datei namens „PrivateConfig.json“ mit dem Inhalt, der in Szenario 1 beschrieben wurde. Erstellen Sie eine weitere Datei namens „PublicConfig.json“ mit folgendem Inhalt.
 
-	{
-     	"perfCfg":[],
-     	"enableSyslog":"false"
-	}
+    {
+        "perfCfg" : [],
+        "enableSyslog" : "false"
+    }
 
 
-Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json--public-config-path PublicConfig.json** aus.
+Schritt 2. Führen Sie **azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** aus.
 
 
 ## Überprüfen der Daten
@@ -139,4 +144,4 @@ Wenn Sie in Szenario 2 und 3 „fileCfg“ oder „perfCfg“ aktiviert haben,
 ## Bekannte Probleme
 - In Version 2.0 kann auf die Rsyslog-Informationen und die benutzerdefinierte Protokolldatei nur über Skripts zugegriffen werden.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

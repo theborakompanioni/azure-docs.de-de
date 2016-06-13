@@ -57,7 +57,7 @@ Eine [Befehlszeilenschnittstelle](powershell-install-configure.md), mit der Azur
 Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Microsoft Azure zum Bereitstellen von Ressourcen verwendet werden. (Das andere ist das klassische Bereitstellungsmodell.) Einige Azure-Ressourcen können entweder in dem einen oder dem anderen Modell bereitgestellt werden, während andere in beiden Modellen bereitgestellt werden können. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.
 
 
-### <a name="faultdomain"></a>Fehlerdomäne  
+### <a name="fault-domain"></a>Fehlerdomäne  
 Die Sammlung virtueller Computer in einer Verfügbarkeitsgruppe, die theoretisch zur selben Zeit ausfallen können. Ein Beispiel ist eine Gruppe von Computern in einem Rack, die gemeinsam eine Stromquelle und denselben Netzwerkswitch verwenden. In Azure werden die virtuellen Computer in einer Verfügbarkeitsgruppe automatisch auf mehrere Fehlerdomänen verteilt. Siehe auch [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/virtual-machines-windows-manage-availability.md) oder [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/virtual-machines-linux-manage-availability.md).
 
 
@@ -110,7 +110,7 @@ Ein Dienst, über den Sie die Ressourcen beziehen, die Sie über Resource Manage
 
 
 ### <a name="role"></a>Rolle  
-Eine Möglichkeit zum Steuern des Zugriffs, die Benutzern, Gruppen und Diensten zugewiesen werden kann. Rolle können verschiedene Aktionen ausführen und so beispielsweise Azure-Ressourcen erstellen, verwalten und lesen. Siehe auch [RBAC: Integrierte Rollen](./active-directory/role-based-access-built-in-roles.md).
+Eine Möglichkeit zum Steuern des Zugriffs, die Benutzern, Gruppen und Diensten zugewiesen werden kann. Rollen können verschiedene Aktionen ausführen und so beispielsweise Azure-Ressourcen erstellen, verwalten und lesen. Siehe auch [RBAC: Integrierte Rollen](./active-directory/role-based-access-built-in-roles.md).
 
 
 ### <a name="sla"></a>Vereinbarung zum Servicelevel (SLA)  
@@ -142,7 +142,7 @@ Eine Ressource, die Verhalten oder Features implementiert, die entweder andere P
 
 
 ### <a name="vnet"></a>Virtuelles Netzwerk  
-Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und von allen anderen Azure-Mandanten isoliert ist. Es kann über ein [Azure-VPN-Gateway](vpn-gateway-about-vpngateways/) mit anderen virtuellen Netzwerken und über [verschiedene Optionen](vpn-gateway-cross-premises-options/) mit Ihrem lokalen Netzwerk verbunden werden. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Siehe auch [Übersicht über Azure Virtual Network](./virtual-network/virtual-networks-overview.md).
+Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und von allen anderen Azure-Mandanten isoliert ist. Es kann über [Azure VPN Gateway](./vpn-gateway/vpn-gateway-about-vpngateways.md) mit anderen virtuellen Azure-Netzwerken und über [verschiedene Optionen](./vpn-gateway/vpn-gateway-cross-premises-options.md) mit Ihrem lokalen Netzwerk verbunden werden. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Siehe auch [Übersicht über Azure Virtual Network](./virtual-network/virtual-networks-overview.md).
 
 ###**Weitere Informationen**  
 - [Erste Schritte mit Azure](https://azure.microsoft.com/get-started/)
@@ -150,4 +150,4 @@ Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und 
 - [Azure für Ihre Geschäftsanwendungen](https://azure.microsoft.com/overview/business-apps-on-azure/)
 - [Azure in Ihrem Rechenzentrum](https://azure.microsoft.com/overview/business-apps-on-azure/) 
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

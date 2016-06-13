@@ -23,7 +23,7 @@
 
 ##Übersicht
 
-Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP-Live-Streaming (HLS)-Streams übermitteln, die mit Advanced Encryption Standards (AES) (mit 128-bit-Schlüsseln) oder [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) geschützt sind. AMS ermöglicht Ihnen auch, mit Widevine DRM verschlüsselte DASH-Datenströme zu liefern. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt.
+Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP-Live-Streaming-Datenströme (HLS) übermitteln, die mit Advanced Encryption Standards (AES) (mit 128-Bit-Verschlüsselungschlüsseln) oder [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) geschützt sind. AMS ermöglicht Ihnen auch, mit Widevine DRM verschlüsselte DASH-Datenströme bereitzustellen. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt.
 
 Media Services bietet einen **Schlüssel-/Lizenzübermittlungsdienst**, von dem die Clients AES-Schlüssel oder PlayReady/Widevine-Lizenzen zur Wiedergabe von verschlüsselten Inhalten abrufen können.
 
@@ -400,6 +400,7 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
 ##<a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
 
 ###<a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -442,4 +443,4 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
 Nachdem Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Thema [Konfigurieren einer Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md) fort.
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -35,8 +35,8 @@ Führen Sie die folgenden Schritte aus, um mit SSMS mithilfe einer Prinzipalanme
      ![Neue Firewall auf Serverebene](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
  
      
- ## Durchführen der Problembehandlung für Verbindungsfehler
+## Durchführen der Problembehandlung für Verbindungsfehler
 
 Die häufigste Ursache für Verbindungsfehler sind Unregelmäßigkeiten beim Servernamen (Erinnerung: <*Servername*> ist der Name des logischen Servers, nicht der Datenbank), Benutzernamen oder Kennwort sowie das Verbieten der Verbindung durch den Server aus Sicherheitsgründen.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

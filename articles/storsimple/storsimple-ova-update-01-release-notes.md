@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/24/2016"
+   ms.date="05/27/2016"
    ms.author="alkohli" />
 
 # Versionshinweise zu Update 0.1 für StorSimple Virtual Array
@@ -29,17 +29,17 @@ Die Versionshinweise werden fortlaufend aktualisiert, und wenn schwerwiegende Pr
 
 Update 0.1 enthält folgende Fehlerbehebungen und Verbesserungen:
 
-- **Resilienz bei Cloudausfällen**: Diese Version enthält mehrere Fehlerbehebungen für Notfallwiederherstellung, Sicherung, Wiederherstellung und Tiering im Falle einer Unterbrechung der Cloudkonnektivität. 
+- **Verbesserte Resilienz bei Cloudausfällen**: Diese Version enthält mehrere Fehlerbehebungen für Notfallwiederherstellung, Sicherung, Wiederherstellung und Tiering im Fall einer Unterbrechung der Cloudverbindung. 
 
 - **Schnellere Wiederherstellung**: Diese Version enthält Fehlerbehebungen, die die Ausführungsdauer der Wiederherstellungsaufträge erheblich verringern.
 
 - **Optimierte automatisierte Speicherplatzrückgewinnung **: Wenn Daten auf spärlich bereitgestellten Volumes gelöscht werden, müssen die nicht verwendeten Speicherblöcke wieder freigegeben werden. In dieser Version wurde der Prozess zur Speicherplatzrückgewinnung in der Cloud verbessert, was dazu führt, dass nicht genutzter Speicherplatz im Vergleich mit den vorherigen Versionen schneller wieder verfügbar ist.
 
-- **Neue VHD-, VHDX- und VMDK-Dateien**: Im klassischen Azure-Portal sind neue VHD-, VHDX- und VMDK-Dateien verfügbar. Diese Images können zur Bereitstellung neuer Update 0.1-Geräte heruntergeladen werden.
+- **Neue Images für virtuelle Datenträger**: Im klassischen Azure-Portal sind neue VHD-, VHDX- und VMDK-Dateien verfügbar. Diese Images können zur Bereitstellung neuer Update 0.1-Geräte heruntergeladen werden.
 
 - **Verbesserte Präzision des Auftragsstatus im Portal**: In der früheren Version der Software wurde der Auftragsstatus im Portal nicht präzise angegeben. Dieses Problem wurde in dieser Version behoben.
 
-- **Fehlerbehebungen im Zusammenhang mit Domänenbeitritt und Umbenennung** des Geräts.
+- **Domänenbeitritt** Fehlerbehebungen im Zusammenhang mit Domänenbeitritt und Umbenennung des Geräts.
 
 
 ## In Update 0.1 behobene Probleme
@@ -83,4 +83,4 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für S
 
 [Installieren Sie Update 0.1](storsimple-ova-install-update-01.md) für StorSimple Virtual Array.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

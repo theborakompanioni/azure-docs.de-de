@@ -19,8 +19,6 @@
 
 # Branchenanwendungs-Workload, Phase 4: Konfigurieren der Webserver
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 In dieser Phase der Bereitstellung einer hochverfügbaren Branchenanwendung in den Azure-Infrastrukturdiensten erstellen Sie die Webserver und laden Ihre Branchenanwendung auf die Server.
 
 Diese Phase muss vor Beginn von [Phase 5](virtual-machines-windows-ps-lob-ph5.md) ausgeführt worden sein. Eine Übersicht über alle Phasen finden Sie unter [Bereitstellen einer hochverfügbaren Branchenanwendung in Azure](virtual-machines-windows-lob-overview.md).
@@ -151,4 +149,4 @@ In diesem Diagramm sehen Sie die nach erfolgreichem Abschluss dieser Phase erste
 
 - Zum Abschließen der Konfiguration dieser Workload wechseln Sie zu [Phase 5](virtual-machines-windows-ps-lob-ph5.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->
